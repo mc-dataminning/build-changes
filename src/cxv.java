@@ -1,69 +1,44 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.List;
 
-public class cxv {
-   private final Map<ald, cxv.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(cxy $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+public class cxv extends cyo {
+   public cxv(cyo.a $$0) {
+      super($$0);
    }
 
-   public float a(cxy $$0, float $$1) {
-      ald $$2 = this.b($$0);
-      cxv.a $$3 = this.a.get($$2);
-      if ($$3 != null) {
-         float $$4 = (float)($$3.b - $$3.a);
-         float $$5 = (float)$$3.b - ((float)this.b + $$1);
-         return azk.a($$5 / $$4, 0.0F, 1.0F);
+   @Override
+   public bty a(dcn $$0) {
+      dip $$1 = $$0.q();
+      iu $$2 = $$0.a();
+      dzo $$3 = $$1.a_($$2);
+      if (!$$3.a(dlw.cv) && !$$3.a(dlw.I)) {
+         return bty.d;
       } else {
-         return 0.0F;
-      }
-   }
+         iu $$4 = $$2.d();
+         if (!$$1.v($$4)) {
+            return bty.d;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<bwa> $$8 = $$1.a_(null, new fdr($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bty.d;
+            } else {
+               if ($$1 instanceof aro) {
+                  clp $$9 = new clp($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), eeo.t, $$4);
+                  edo $$10 = ((aro)$$1).F();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
 
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<ald, cxv.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<ald, cxv.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.b($$1.getKey());
+               $$0.n().h(1);
+               return bty.a;
             }
          }
       }
-   }
-
-   public ald b(cxy $$0) {
-      dba $$1 = $$0.a(kx.z);
-      ald $$2 = md.g.b($$0.h());
-      return $$1 == null ? $$2 : $$1.c().orElse($$2);
-   }
-
-   public void a(cxy $$0, int $$1) {
-      this.a(this.b($$0), $$1);
-   }
-
-   public void a(ald $$0, int $$1) {
-      this.a.put($$0, new cxv.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void a(ald $$0) {
-      this.a.remove($$0);
-      this.b($$0);
-   }
-
-   protected void b(ald $$0, int $$1) {
-   }
-
-   protected void b(ald $$0) {
-   }
-
-   static record a(int a, int b) {
    }
 }

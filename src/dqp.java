@@ -1,14 +1,7 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dqp extends dud {
-   public static final MapCodec<dqp> b = b(dqp::new);
+public interface dqp {
+   boolean a(@Nullable bwz var1, dhv var2, iu var3, dzo var4, evu var5);
 
-   @Override
-   public MapCodec<dqp> a() {
-      return b;
-   }
-
-   protected dqp(dyl.d $$0) {
-      super(dsc.b.e, $$0);
-   }
+   boolean a(diq var1, iu var2, dzo var3, evv var4);
 }

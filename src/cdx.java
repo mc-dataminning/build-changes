@@ -1,146 +1,86 @@
-import java.util.EnumSet;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class cdx extends cdn {
-   protected final bwz a;
-   private final double b;
-   private final boolean c;
-   private evh d;
-   private double e;
-   private double f;
-   private double g;
-   private int h;
-   private int i;
-   private final int j = 20;
-   private long k;
-   private static final long l = 20L;
+public class cdx extends ces {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
 
-   public cdx(bwz $$0, double $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.a(EnumSet.of(cdn.a.a, cdn.a.b));
+   public cdx(bxh $$0, double $$1) {
+      super($$0, $$1, 240, false);
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      long $$0 = this.a.dV().ae();
-      if ($$0 - this.k < 20L) {
-         return false;
+   protected fdw h() {
+      float $$0 = this.b.dV().A.i();
+      if (this.b.dV().A.i() < 0.3F) {
+         return this.k();
       } else {
-         this.k = $$0;
-         bwr $$1 = this.a.f();
-         if ($$1 == null) {
-            return false;
-         } else if (!$$1.bK()) {
-            return false;
+         fdw $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
+            }
          } else {
-            this.d = this.a.O().a($$1, 0);
-            return this.d != null ? true : this.a.i($$1);
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
+            }
          }
+
+         return $$1 == null ? this.k() : $$1;
       }
    }
 
-   @Override
-   public boolean c() {
-      bwr $$0 = this.a.f();
-      if ($$0 == null) {
-         return false;
-      } else if (!$$0.bK()) {
-         return false;
-      } else if (!this.c) {
-         return !this.a.O().k();
-      } else if (!this.a.a($$0.dv())) {
-         return false;
+   @Nullable
+   private fdw k() {
+      return chv.a(this.b, 10, 7);
+   }
+
+   @Nullable
+   private fdw l() {
+      aro $$0 = (aro)this.b.dV();
+      List<cqe> $$1 = $$0.a(bwj.bD, this.b.cR().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
       } else {
-         if ($$0 instanceof cqi $$1 && ($$1.U_() || $$1.b())) {
-            return false;
-         }
-
-         return true;
+         cqe $$2 = $$1.get(this.b.dV().A.a($$1.size()));
+         fdw $$3 = $$2.dt();
+         return chv.a(this.b, 10, 7, $$3);
       }
    }
 
-   @Override
-   public void d() {
-      this.a.O().a(this.d, this.b);
-      this.a.v(true);
-      this.h = 0;
-      this.i = 0;
-   }
-
-   @Override
-   public void e() {
-      bwr $$0 = this.a.f();
-      if (!bvz.e.test($$0)) {
-         this.a.h(null);
-      }
-
-      this.a.v(false);
-      this.a.O().m();
-   }
-
-   @Override
-   public boolean Q_() {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      bwr $$0 = this.a.f();
-      if ($$0 != null) {
-         this.a.J().a($$0, 30.0F, 30.0F);
-         this.h = Math.max(this.h - 1, 0);
-         if ((this.c || this.a.P().a($$0))
-            && this.h <= 0
-            && (this.e == 0.0 && this.f == 0.0 && this.g == 0.0 || $$0.i(this.e, this.f, this.g) >= 1.0 || this.a.dY().i() < 0.05F)) {
-            this.e = $$0.dA();
-            this.f = $$0.dC();
-            this.g = $$0.dG();
-            this.h = 4 + this.a.dY().a(7);
-            double $$1 = this.a.g((bvs)$$0);
-            if ($$1 > 1024.0) {
-               this.h += 10;
-            } else if ($$1 > 256.0) {
-               this.h += 5;
-            }
-
-            if (!this.a.O().a($$0, this.b)) {
-               this.h += 15;
-            }
-
-            this.h = this.a(this.h);
-         }
-
-         this.i = Math.max(this.i - 1, 0);
-         this.a($$0);
+   @Nullable
+   private fdw m() {
+      jx $$0 = this.n();
+      if ($$0 == null) {
+         return null;
+      } else {
+         iu $$1 = this.a($$0);
+         return $$1 == null ? null : chv.a(this.b, 10, 7, fdw.c($$1));
       }
    }
 
-   protected void a(bwr $$0) {
-      if (this.b($$0)) {
-         this.h();
-         this.a.a(btp.a);
-         this.a.c(a(this.a), $$0);
-      }
+   @Nullable
+   private jx n() {
+      aro $$0 = (aro)this.b.dV();
+      List<jx> $$1 = jx.a(jx.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.A.a($$1.size()));
    }
 
-   protected void h() {
-      this.i = this.a(20);
+   @Nullable
+   private iu a(jx $$0) {
+      aro $$1 = (aro)this.b.dV();
+      cib $$2 = $$1.A();
+      List<iu> $$3 = $$2.c($$0x -> true, $$0.k(), 8, cib.b.b).map(cic::g).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.A.a($$3.size()));
    }
 
-   protected boolean i() {
-      return this.i <= 0;
-   }
-
-   protected boolean b(bwr $$0) {
-      return this.i() && this.a.i($$0) && this.a.P().a($$0);
-   }
-
-   protected int k() {
-      return this.i;
-   }
-
-   protected int l() {
-      return this.a(20);
+   private boolean a(cqe $$0) {
+      return $$0.a(this.b.dV().ae());
    }
 }

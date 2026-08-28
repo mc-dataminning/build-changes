@@ -1,20 +1,33 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-
-public record def(int c) {
-   public static final Codec<def> a = RecordCodecBuilder.create($$0 -> $$0.group(ays.m.fieldOf("value").forGetter(def::a)).apply($$0, def::new));
-   public static final yt<ByteBuf, def> b = yt.a(yr.h, def::a, def::new);
-
-   public def(int c) {
-      if (c <= 0) {
-         throw new IllegalArgumentException("Enchantment value must be positive, but was " + c);
-      } else {
-         this.c = c;
-      }
+public record def(cys a, cys b, cys c) implements ddp {
+   @Override
+   public cys a(int $$0) {
+      return switch ($$0) {
+         case 0 -> this.a;
+         case 1 -> this.b;
+         case 2 -> this.c;
+         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
+      };
    }
 
+   @Override
    public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.f() && this.b.f() && this.c.f();
+   }
+
+   public cys c() {
+      return this.a;
+   }
+
+   public cys d() {
+      return this.b;
+   }
+
+   public cys e() {
       return this.c;
    }
 }

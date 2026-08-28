@@ -1,78 +1,50 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.stream.Stream;
 
-public class bpx implements bpy {
-   public static final bpx a = new bpx();
-
-   private bpx() {
+public interface bpx {
+   static bpr<StringReader> a(String $$0) {
+      return new bpx.b($$0);
    }
 
-   @Override
-   public void a() {
+   static bpr<StringReader> a(char $$0) {
+      return new bpx.a($$0);
    }
 
-   @Override
-   public void b() {
+   public static record a(char a) implements bpr<StringReader> {
+      @Override
+      public boolean a(bpn<StringReader> $$0, bpp $$1, bpj $$2) {
+         $$0.b().skipWhitespace();
+         int $$3 = $$0.c();
+         if ($$0.b().canRead() && $$0.b().read() == this.a) {
+            return true;
+         } else {
+            $$0.a().a($$3, $$0x -> Stream.of(String.valueOf(this.a)), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
+            return false;
+         }
+      }
+
+      public char c() {
+         return this.a;
+      }
    }
 
-   @Override
-   public void a(String $$0) {
-   }
+   public static record b(String a) implements bpr<StringReader> {
+      @Override
+      public boolean a(bpn<StringReader> $$0, bpp $$1, bpj $$2) {
+         $$0.b().skipWhitespace();
+         int $$3 = $$0.c();
+         String $$4 = $$0.b().readUnquotedString();
+         if (!$$4.equals(this.a)) {
+            $$0.a().a($$3, $$0x -> Stream.of(this.a), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
+            return false;
+         } else {
+            return true;
+         }
+      }
 
-   @Override
-   public void a(Supplier<String> $$0) {
-   }
-
-   @Override
-   public void a(brk $$0) {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public void b(String $$0) {
-   }
-
-   @Override
-   public void b(Supplier<String> $$0) {
-   }
-
-   @Override
-   public bqg d(String $$0) {
-      return bqg.a;
-   }
-
-   @Override
-   public bqg c(Supplier<String> $$0) {
-      return bqg.a;
-   }
-
-   @Override
-   public void a(String $$0, int $$1) {
-   }
-
-   @Override
-   public void a(Supplier<String> $$0, int $$1) {
-   }
-
-   @Override
-   public bpz d() {
-      return bpv.a;
-   }
-
-   @Nullable
-   @Override
-   public bpt.a c(String $$0) {
-      return null;
-   }
-
-   @Override
-   public Set<Pair<String, brk>> e() {
-      return ImmutableSet.of();
+      public String c() {
+         return this.a;
+      }
    }
 }

@@ -1,24 +1,23 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class djr extends dku {
-   public static final MapCodec<djr> a = b(djr::new);
+public class djr {
+   public static final Codec<djr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(lx.bj.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, djr::new)
+   );
+   private final lv b;
+   private final float c;
 
-   @Override
-   public MapCodec<djr> a() {
-      return a;
+   public djr(lv $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public djr(dyl.d $$0) {
-      super($$0);
+   public lv a() {
+      return this.b;
    }
 
-   @Override
-   protected drf a_(dym $$0) {
-      return drf.a;
-   }
-
-   @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return fdl.a();
+   public boolean a(azt $$0) {
+      return $$0.i() <= this.c;
    }
 }

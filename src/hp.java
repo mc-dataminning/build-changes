@@ -1,32 +1,106 @@
-import com.mojang.brigadier.StringReader;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.brigadier.RedirectModifier;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.context.ContextChain.Stage;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Collection;
+import java.util.List;
 
-public record hp(String b, hn c) {
-   public static final Codec<hp> a = Codec.STRING.comapFlatMap(hp::a, hp::a);
+public class hp<T extends ek<T>> {
+   @VisibleForTesting
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ww.b("command.forkLimit", $$0));
+   private final String b;
+   private final ContextChain<T> c;
 
-   public static DataResult<hp> a(String $$0) {
-      try {
-         ho $$1 = new ho(new StringReader($$0), true);
-         return DataResult.success(new hp($$0, $$1.t()));
-      } catch (CommandSyntaxException var2) {
-         return DataResult.error(() -> "Invalid selector component: " + $$0 + ": " + var2.getMessage());
+   public hp(String $$0, ContextChain<T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   protected void a(T $$0, List<T> $$1, hj<T> $$2, hl $$3, he $$4) {
+      ContextChain<T> $$5 = this.c;
+      he $$6 = $$4;
+      List<T> $$7 = $$1;
+      if ($$5.getStage() != Stage.EXECUTE) {
+         $$2.c().a(() -> "prepare " + this.b);
+
+         try {
+            for (int $$8 = $$2.d(); $$5.getStage() != Stage.EXECUTE; $$5 = $$5.nextStage()) {
+               CommandContext<T> $$9 = $$5.getTopContext();
+               if ($$9.isForked()) {
+                  $$6 = $$6.b();
+               }
+
+               RedirectModifier<T> $$10 = $$9.getRedirectModifier();
+               if ($$10 instanceof hh<T> $$11) {
+                  $$11.a($$0, $$7, $$5, $$6, hk.a($$2, $$3));
+                  return;
+               }
+
+               if ($$10 != null) {
+                  $$2.e();
+                  boolean $$12 = $$6.a();
+                  List<T> $$13 = new ObjectArrayList();
+
+                  for (T $$14 : $$7) {
+                     try {
+                        Collection<T> $$15 = ContextChain.runModifier($$9, $$14, ($$0x, $$1x, $$2x) -> {
+                        }, $$12);
+                        if ($$13.size() + $$15.size() >= $$8) {
+                           $$0.a(a.create($$8), $$12, $$2.b());
+                           return;
+                        }
+
+                        $$13.addAll($$15);
+                     } catch (CommandSyntaxException var20) {
+                        $$14.a(var20, $$12, $$2.b());
+                        if (!$$12) {
+                           return;
+                        }
+                     }
+                  }
+
+                  $$7 = $$13;
+               }
+            }
+         } finally {
+            $$2.c().c();
+         }
+      }
+
+      if ($$7.isEmpty()) {
+         if ($$6.c()) {
+            $$2.a(new hf<>($$3, ht.a()));
+         }
+      } else {
+         CommandContext<T> $$17 = $$5.getTopContext();
+         if ($$17.getCommand() instanceof hg<T> $$19) {
+            hk<T> $$20 = hk.a($$2, $$3);
+
+            for (T $$21 : $$7) {
+               $$19.a($$21, $$5, $$6, $$20);
+            }
+         } else {
+            if ($$6.c()) {
+               T $$22 = $$7.get(0);
+               $$22 = $$22.b(ef.chain($$22.p(), $$3.d()));
+               $$7 = List.of($$22);
+            }
+
+            hs<T> $$23 = new hs<>(this.b, $$6, $$17);
+            hr.a($$2, $$3, $$7, ($$1x, $$2x) -> new hf<>($$1x, $$23.bind((T)$$2x)));
+         }
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 instanceof hp $$1 && this.b.equals($$1.b)) {
-         return true;
+   protected void a(hj<T> $$0, hl $$1) {
+      hm $$2 = $$0.b();
+      if ($$2 != null) {
+         $$2.a($$1.c(), this.b);
       }
-
-      return false;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
    }
 
    @Override
@@ -34,11 +108,47 @@ public record hp(String b, hn c) {
       return this.b;
    }
 
-   public String a() {
-      return this.b;
+   public static class a<T extends ek<T>> extends hp<T> implements hi<T> {
+      private final he b;
+      private final T c;
+      private final List<T> d;
+
+      public a(String $$0, ContextChain<T> $$1, he $$2, T $$3, List<T> $$4) {
+         super($$0, $$1);
+         this.c = $$3;
+         this.d = $$4;
+         this.b = $$2;
+      }
+
+      @Override
+      public void execute(hj<T> $$0, hl $$1) {
+         this.a(this.c, this.d, $$0, $$1, this.b);
+      }
    }
 
-   public hn b() {
-      return this.c;
+   public static class b<T extends ek<T>> extends hp<T> implements hi<T> {
+      private final T b;
+
+      public b(String $$0, ContextChain<T> $$1, T $$2) {
+         super($$0, $$1);
+         this.b = $$2;
+      }
+
+      @Override
+      public void execute(hj<T> $$0, hl $$1) {
+         this.a($$0, $$1);
+         this.a(this.b, List.of(this.b), $$0, $$1, he.a);
+      }
+   }
+
+   public static class c<T extends ek<T>> extends hp<T> implements hn<T> {
+      public c(String $$0, ContextChain<T> $$1) {
+         super($$0, $$1);
+      }
+
+      public void a(T $$0, hj<T> $$1, hl $$2) {
+         this.a($$1, $$2);
+         this.a($$0, List.of($$0), $$1, $$2, he.a);
+      }
    }
 }

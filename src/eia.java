@@ -1,31 +1,66 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eia implements ejv {
-   public static final Codec<eia> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dym.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dym.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dym.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dym.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               efs.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, eia::new)
-   );
-   public final dym b;
-   public final dym c;
-   public final dym d;
-   public final dym e;
-   public final efs f;
-   public final boolean g;
+public class eia extends eit<eko> {
+   public eia(Codec<eko> $$0) {
+      super($$0);
+   }
 
-   public eia(dym $$0, dym $$1, dym $$2, dym $$3, efs $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   @Override
+   public boolean a(eiv<eko> $$0) {
+      djo $$1 = $$0.b();
+      eko $$2 = $$0.f();
+      azt $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
+
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
+      }
+
+      if ($$6 == 0) {
+         return false;
+      } else {
+         iu.a $$8 = $$0.e().k();
+         iu.a $$9 = $$8.k().c($$2.b());
+
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
+            }
+
+            $$9.c($$2.b());
+         }
+
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               eko.a $$13 = $$2.a().get($$11);
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
+               }
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
+
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
+      }
    }
 }

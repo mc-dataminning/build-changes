@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fgv {
+   <T> fic<T> a(String var1, fib<T> var2);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@few
-@fev
-interface fgv {
+   <T> void a(fic<T> var1);
+
+   <T> fic<T> b(fic<T> var1);
+
+   void a(fgv var1);
+
+   void a();
+
+   void a(Runnable var1);
 }

@@ -1,59 +1,76 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public class djj extends diw {
-   public static final MapCodec<djj> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alb.d(diz.ai), alb.d(diz.aj), alb.d(diz.ak), alb.d(diz.al), alb.d(diz.am)).apply($$0, $$0.stable(djj::new))
+public record djj(tx d, Optional<djj.a> e, Optional<bwm> f) {
+   public static final String a = "entity";
+   public static final Codec<djj> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               tx.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
+               djj.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
+               bwm.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, djj::new)
    );
-   private final js<dis> c;
-   private final js<dis> d;
-   private final js<dis> e;
-   private final js<dis> f;
-   private final js<dis> g;
+   public static final Codec<bsj<djj>> c = bsj.a(b);
 
-   public static djj a(jt<dis> $$0) {
-      return new djj($$0.b(diz.ai), $$0.b(diz.aj), $$0.b(diz.ak), $$0.b(diz.al), $$0.b(diz.am));
+   public djj() {
+      this(new tx(), Optional.empty(), Optional.empty());
    }
 
-   private djj(js<dis> $$0, js<dis> $$1, js<dis> $$2, js<dis> $$3, js<dis> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   @Override
-   protected Stream<js<dis>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
-   }
-
-   @Override
-   protected MapCodec<? extends diw> a() {
-      return b;
-   }
-
-   @Override
-   public js<dis> getNoiseBiome(int $$0, int $$1, int $$2, djb.f $$3) {
-      int $$4 = kd.c($$0);
-      int $$5 = kd.c($$1);
-      int $$6 = kd.c($$2);
-      int $$7 = kl.a($$4);
-      int $$8 = kl.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
-         return this.c;
-      } else {
-         int $$9 = (kl.a($$4) * 2 + 1) * 8;
-         int $$10 = (kl.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new eee.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
+   public djj(tx d, Optional<djj.a> e, Optional<bwm> f) {
+      if (d.e("id")) {
+         ale $$3 = ale.c(d.l("id"));
+         if ($$3 != null) {
+            d.a("id", $$3.toString());
          } else {
-            return $$11 < -0.21875 ? this.f : this.g;
+            d.r("id");
          }
+      }
+
+      this.d = d;
+      this.e = e;
+      this.f = f;
+   }
+
+   public tx a() {
+      return this.d;
+   }
+
+   public Optional<djj.a> b() {
+      return this.e;
+   }
+
+   public Optional<bwm> c() {
+      return this.f;
+   }
+
+   public static record a(azc<Integer> b, azc<Integer> c) {
+      private static final azc<Integer> d = new azc<>(0, 15);
+      public static final Codec<djj.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, djj.a::new)
+      );
+
+      private static DataResult<azc<Integer>> a(azc<Integer> $$0) {
+         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
+      }
+
+      private static MapCodec<azc<Integer>> a(String $$0) {
+         return azc.a.lenientOptionalFieldOf($$0, d).validate(djj.a::a);
+      }
+
+      public boolean a(iu $$0, aro $$1) {
+         return this.b.a($$1.a(diy.b, $$0)) && this.c.a($$1.a(diy.a, $$0));
+      }
+
+      public azc<Integer> a() {
+         return this.b;
+      }
+
+      public azc<Integer> b() {
+         return this.c;
       }
    }
 }

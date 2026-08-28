@@ -1,29 +1,112 @@
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.serialization.Codec;
-import java.util.Arrays;
-import java.util.Locale;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import org.apache.commons.io.FilenameUtils;
 
-public class fn extends gi<eel.a> {
-   private static final Codec<eel.a> a = bag.a(fn::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
+public class fn<T> implements ArgumentType<Collection<je.c<T>>> {
+   private static final Collection<String> b = List.of("minecraft:*", "*:asset", "*");
+   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> ww.b("argument.resource_selector.not_found", $$0, $$1));
+   final ald<? extends jr<T>> c;
+   private final jg<T> d;
 
-   private static eel.a[] b() {
-      return Arrays.stream(eel.a.values()).filter(eel.a::d).toArray(eel.a[]::new);
+   fn(ee $$0, ald<? extends jr<T>> $$1) {
+      this.c = $$1;
+      this.d = $$0.e($$1);
    }
 
-   private fn() {
-      super(a, fn::b);
+   public Collection<je.c<T>> a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = a(b($$0));
+      List<je.c<T>> $$2 = this.d.c().filter($$1x -> a($$1, $$1x.h().a())).toList();
+      if ($$2.isEmpty()) {
+         throw a.createWithContext($$0, $$1, this.c.a());
+      } else {
+         return $$2;
+      }
    }
 
-   public static fn a() {
-      return new fn();
+   public static <T> Collection<je.c<T>> a(StringReader $$0, jg<T> $$1) {
+      String $$2 = a(b($$0));
+      return $$1.c().filter($$1x -> a($$2, $$1x.h().a())).toList();
    }
 
-   public static eel.a a(CommandContext<ex> $$0, String $$1) {
-      return (eel.a)$$0.getArgument($$1, eel.a.class);
+   private static String b(StringReader $$0) {
+      int $$1 = $$0.getCursor();
+
+      while ($$0.canRead() && a($$0.peek())) {
+         $$0.skip();
+      }
+
+      return $$0.getString().substring($$1, $$0.getCursor());
    }
 
-   @Override
-   protected String a(String $$0) {
-      return $$0.toLowerCase(Locale.ROOT);
+   private static boolean a(char $$0) {
+      return ale.a($$0) || $$0 == '*' || $$0 == '?';
+   }
+
+   private static String a(String $$0) {
+      return !$$0.contains(":") ? "minecraft:" + $$0 : $$0;
+   }
+
+   private static boolean a(String $$0, ale $$1) {
+      return FilenameUtils.wildcardMatch($$1.toString(), $$0);
+   }
+
+   public static <T> fn<T> a(ee $$0, ald<? extends jr<T>> $$1) {
+      return new fn<>($$0, $$1);
+   }
+
+   public static <T> Collection<je.c<T>> a(CommandContext<ei> $$0, String $$1, ald<? extends jr<T>> $$2) {
+      return (Collection<je.c<T>>)$$0.getArgument($$1, Collection.class);
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return en.b(this.d.c_().map(ald::a).map(ale::toString), $$1);
+   }
+
+   public Collection<String> getExamples() {
+      return b;
+   }
+
+   public static class a<T> implements ie<fn<T>, fn.a<T>.a> {
+      public void a(fn.a<T>.a $$0, vs $$1) {
+         $$1.b($$0.b);
+      }
+
+      public fn.a<T>.a a(vs $$0) {
+         return new fn.a.a($$0.r());
+      }
+
+      public void a(fn.a<T>.a $$0, JsonObject $$1) {
+         $$1.addProperty("registry", $$0.b.a().toString());
+      }
+
+      public fn.a<T>.a a(fn<T> $$0) {
+         return new fn.a.a($$0.c);
+      }
+
+      public final class a implements ie.a<fn<T>> {
+         final ald<? extends jr<T>> b;
+
+         a(final ald<? extends jr<T>> $$1) {
+            this.b = $$1;
+         }
+
+         public fn<T> a(ee $$0) {
+            return new fn<>($$0, this.b);
+         }
+
+         @Override
+         public ie<fn<T>, ?> a() {
+            return a.this;
+         }
+      }
    }
 }

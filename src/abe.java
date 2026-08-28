@@ -1,23 +1,15 @@
-import java.util.HashSet;
-import java.util.Set;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public record abe(Set<ald> b) implements zc<aaz> {
-   public static final yt<vr, abe> a = zc.a(abe::a, abe::new);
-
-   private abe(vr $$0) {
-      this($$0.a(HashSet::new, vr::q));
-   }
-
-   private void a(vr $$0) {
-      $$0.a(this.b, vr::a);
-   }
+public record abe(List<auh> b) implements zd<aba> {
+   public static final yu<ByteBuf, abe> a = yu.a(auh.a.a(ys.a()), abe::b, abe::new);
 
    @Override
-   public ze<abe> a() {
-      return abf.c;
+   public zf<abe> a() {
+      return abg.d;
    }
 
-   public void a(aaz $$0) {
+   public void a(aba $$0) {
       $$0.a(this);
    }
 }

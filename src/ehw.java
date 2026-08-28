@@ -1,35 +1,59 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ehw implements ejv {
-   public static final Codec<ehw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ald.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               ald.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               eth.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               eth.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ehw::new)
-   );
-   public final List<ald> b;
-   public final List<ald> c;
-   public final js<etg> d;
-   public final js<etg> e;
-   public final int f;
+public class ehw extends eit<elh> {
+   private static final dzo a = dlw.nB.m().b(dky.b, Integer.valueOf(1)).b(dky.c, eaa.a).b(dky.d, Integer.valueOf(0));
+   private static final dzo b = a.b(dky.c, eaa.c).b(dky.d, Integer.valueOf(1));
+   private static final dzo c = a.b(dky.c, eaa.c);
+   private static final dzo d = a.b(dky.c, eaa.b);
 
-   public ehw(List<ald> $$0, List<ald> $$1, js<etg> $$2, js<etg> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+   public ehw(Codec<elh> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(eiv<elh> $$0) {
+      int $$1 = 0;
+      iu $$2 = $$0.e();
+      djo $$3 = $$0.b();
+      azt $$4 = $$0.d();
+      elh $$5 = $$0.f();
+      iu.a $$6 = $$2.k();
+      iu.a $$7 = $$2.k();
+      if ($$3.v($$6)) {
+         if (dlw.nB.m().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
+
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(efn.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, dlw.l.m(), 2);
+                        }
+                     }
+                  }
+               }
+            }
+
+            for (int $$14 = 0; $$14 < $$8 && $$3.v($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(ja.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(ja.a, 1), c, 2);
+               $$3.a($$6.c(ja.a, 1), d, 2);
+            }
+         }
+
+         $$1++;
       }
+
+      return $$1 > 0;
    }
 }

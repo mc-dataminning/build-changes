@@ -1,33 +1,54 @@
-public record ddh(cxy a, cxy b, cxy c) implements dcr {
-   @Override
-   public cxy a(int $$0) {
-      return switch ($$0) {
-         case 0 -> this.a;
-         case 1 -> this.b;
-         case 2 -> this.c;
-         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
-      };
+import java.util.Map;
+
+public class ddh extends ddx {
+   public ddh(dcw $$0) {
+      super("", $$0, ddy.a(Map.of('#', ddf.a(cyw.rz), 'x', ddf.a(cyw.sV)), "###", "#x#", "###"), new cys(cyw.vm));
    }
 
    @Override
-   public int a() {
-      return 3;
+   public boolean a(dcx $$0, dip $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cys $$2 = c($$0);
+         if ($$2.f()) {
+            return false;
+         } else {
+            exp $$3 = czf.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.e() ? false : $$3.f < 4;
+            }
+         }
+      }
    }
 
    @Override
-   public boolean b() {
-      return this.a.f() && this.b.f() && this.c.f();
+   public cys a(dcx $$0, jg.a $$1) {
+      cys $$2 = c($$0).c(1);
+      $$2.b(kj.O, dbp.b);
+      return $$2;
    }
 
-   public cxy c() {
-      return this.a;
+   private static cys c(dcx $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         cys $$2 = $$0.a($$1);
+         if ($$2.c(kj.M)) {
+            return $$2;
+         }
+      }
+
+      return cys.k;
    }
 
-   public cxy d() {
-      return this.b;
+   @Override
+   public boolean al_() {
+      return true;
    }
 
-   public cxy e() {
-      return this.c;
+   @Override
+   public ddt<ddh> a() {
+      return ddt.f;
    }
 }

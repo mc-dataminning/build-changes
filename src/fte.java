@@ -1,48 +1,55 @@
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-public enum fte implements bag {
-   a("uniform"),
-   b("jp");
+public class fte {
+   @Nullable
+   private ftb a;
+   private Duration b = Duration.ZERO;
+   private long c;
+   private boolean d;
 
-   public static final Codec<fte> c = bag.a(fte::values);
-   private final String d;
-
-   private fte(final String $$0) {
-      this.d = $$0;
+   public void a(Duration $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public void a(@Nullable ftb $$0) {
+      this.a = $$0;
    }
 
-   public static class a {
-      private final Map<fte, Boolean> c;
-      public static final Codec<fte.a> a = Codec.unboundedMap(fte.c, Codec.BOOL).xmap(fte.a::new, $$0 -> $$0.c);
-      public static final fte.a b = new fte.a(Map.of());
+   @Nullable
+   public ftb a() {
+      return this.a;
+   }
 
-      public a(Map<fte, Boolean> $$0) {
-         this.c = $$0;
-      }
-
-      public boolean a(Set<fte> $$0) {
-         for (Entry<fte, Boolean> $$1 : this.c.entrySet()) {
-            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
-               return false;
+   public void a(boolean $$0, boolean $$1, fvx $$2) {
+      if (this.a == null) {
+         this.d = false;
+      } else {
+         boolean $$3 = $$0 || $$1 && fof.Q().aX().b();
+         if ($$3 != this.d) {
+            if ($$3) {
+               this.c = af.c();
             }
+
+            this.d = $$3;
          }
 
-         return true;
+         if ($$3 && af.c() - this.c > this.b.toMillis()) {
+            fxi $$4 = fof.Q().z;
+            if ($$4 != null) {
+               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
+            }
+         }
       }
+   }
 
-      public fte.a a(fte.a $$0) {
-         Map<fte, Boolean> $$1 = new HashMap<>($$0.c);
-         $$1.putAll(this.c);
-         return new fte.a(Map.copyOf($$1));
+   private fzv a(fvx $$0, boolean $$1, boolean $$2) {
+      return (fzv)(!$$1 && $$2 && fof.Q().aX().b() ? new fzq($$0) : new fzx($$0));
+   }
+
+   public void a(fvn $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
       }
    }
 }

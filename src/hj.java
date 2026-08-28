@@ -1,279 +1,136 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import it.unimi.dsi.fastutil.objects.ReferenceArraySet;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
+import com.google.common.collect.Queues;
+import com.mojang.brigadier.context.ContextChain;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Deque;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class hj {
-   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wv.b("argument.item.id.invalid", $$0));
-   static final DynamicCommandExceptionType g = new DynamicCommandExceptionType($$0 -> wv.b("arguments.item.component.unknown", $$0));
-   static final Dynamic2CommandExceptionType h = new Dynamic2CommandExceptionType(($$0, $$1) -> wv.b("arguments.item.component.malformed", $$0, $$1));
-   static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wv.c("arguments.item.component.expected"));
-   static final DynamicCommandExceptionType j = new DynamicCommandExceptionType($$0 -> wv.b("arguments.item.component.repeated", $$0));
-   private static final DynamicCommandExceptionType k = new DynamicCommandExceptionType($$0 -> wv.b("arguments.item.malformed", $$0));
-   public static final char a = '[';
-   public static final char b = ']';
-   public static final char c = ',';
-   public static final char d = '=';
-   public static final char e = '!';
-   static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> l = SuggestionsBuilder::buildFuture;
-   final ju.b<cxu> m;
-   final DynamicOps<ut> n;
+public class hj<T> implements AutoCloseable {
+   private static final int a = 10000000;
+   private static final Logger b = LogUtils.getLogger();
+   private final int c;
+   private final int d;
+   private final bqj e;
+   @Nullable
+   private hm f;
+   private int g;
+   private boolean h;
+   private final Deque<hf<T>> i = Queues.newArrayDeque();
+   private final List<hf<T>> j = new ObjectArrayList();
+   private int k;
 
-   public hj(ju.a $$0) {
-      this.m = $$0.e(me.K);
-      this.n = $$0.a(uk.a);
+   public hj(int $$0, int $$1, bqj $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.g = $$0;
    }
 
-   public hj.a a(StringReader $$0) throws CommandSyntaxException {
-      final MutableObject<js<cxu>> $$1 = new MutableObject();
-      final ku.a $$2 = ku.a();
-      this.a($$0, new hj.d() {
-         @Override
-         public void a(js<cxu> $$0) {
-            $$1.setValue($$0);
-         }
-
-         @Override
-         public <T> void a(kw<T> $$0, T $$1x) {
-            $$2.a($$0, $$1);
-         }
-
-         @Override
-         public <T> void a(kw<T> $$0) {
-            $$2.a($$0);
-         }
-      });
-      js<cxu> $$3 = Objects.requireNonNull((js<cxu>)$$1.getValue(), "Parser gave no item");
-      ku $$4 = $$2.a();
-      a($$0, $$3, $$4);
-      return new hj.a($$3, $$4);
-   }
-
-   private static void a(StringReader $$0, js<cxu> $$1, ku $$2) throws CommandSyntaxException {
-      kt $$3 = ky.a($$1.a().g(), $$2);
-      DataResult<baq> $$4 = cxy.a($$3);
-      $$4.getOrThrow($$1x -> k.createWithContext($$0, $$1x));
-   }
-
-   public void a(StringReader $$0, hj.d $$1) throws CommandSyntaxException {
-      int $$2 = $$0.getCursor();
-
-      try {
-         new hj.b($$0, $$1).a();
-      } catch (CommandSyntaxException var5) {
-         $$0.setCursor($$2);
-         throw var5;
+   private static <T extends ek<T>> hl a(hj<T> $$0, ef $$1) {
+      if ($$0.k == 0) {
+         return new hl(0, $$1, $$0.i::clear);
+      } else {
+         int $$2 = $$0.k + 1;
+         return new hl($$2, $$1, $$0.b($$2));
       }
    }
 
-   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-      StringReader $$1 = new StringReader($$0.getInput());
-      $$1.setCursor($$0.getStart());
-      hj.c $$2 = new hj.c();
-      hj.b $$3 = new hj.b($$1, $$2);
-
-      try {
-         $$3.a();
-      } catch (CommandSyntaxException var6) {
-      }
-
-      return $$2.a($$0, $$1);
+   public static <T extends ek<T>> void a(hj<T> $$0, hy<T> $$1, T $$2, ef $$3) {
+      $$0.a(new hf<>(a($$0, $$3), new hq<>($$1, $$2.p(), false).bind($$2)));
    }
 
-   public static record a(js<cxu> a, ku b) {
+   public static <T extends ek<T>> void a(hj<T> $$0, String $$1, ContextChain<T> $$2, T $$3, ef $$4) {
+      $$0.a(new hf<>(a($$0, $$4), new hp.b<>($$1, $$2, $$3)));
    }
 
-   class b {
-      private final StringReader b;
-      private final hj.d c;
+   private void f() {
+      this.h = true;
+      this.j.clear();
+      this.i.clear();
+   }
 
-      b(final StringReader $$0, final hj.d $$1) {
-         this.b = $$0;
-         this.c = $$1;
+   public void a(hf<T> $$0) {
+      if (this.j.size() + this.i.size() > 10000000) {
+         this.f();
       }
 
-      public void a() throws CommandSyntaxException {
-         this.c.a(this::d);
-         this.b();
-         this.c.a(this::a);
-         if (this.b.canRead() && this.b.peek() == '[') {
-            this.c.a(hj.l);
-            this.c();
-         }
-      }
-
-      private void b() throws CommandSyntaxException {
-         int $$0 = this.b.getCursor();
-         ald $$1 = ald.a(this.b);
-         this.c.a(hj.this.m.a(alc.a(me.K, $$1)).orElseThrow(() -> {
-            this.b.setCursor($$0);
-            return hj.f.createWithContext(this.b, $$1);
-         }));
-      }
-
-      private void c() throws CommandSyntaxException {
-         this.b.expect('[');
-         this.c.a(this::e);
-         Set<kw<?>> $$0 = new ReferenceArraySet();
-
-         while (this.b.canRead() && this.b.peek() != ']') {
-            this.b.skipWhitespace();
-            if (this.b.canRead() && this.b.peek() == '!') {
-               this.b.skip();
-               this.c.a(this::f);
-               kw<?> $$1 = a(this.b);
-               if (!$$0.add($$1)) {
-                  throw hj.j.create($$1);
-               }
-
-               this.c.a($$1);
-               this.c.a(hj.l);
-               this.b.skipWhitespace();
-            } else {
-               kw<?> $$2 = a(this.b);
-               if (!$$0.add($$2)) {
-                  throw hj.j.create($$2);
-               }
-
-               this.c.a(this::c);
-               this.b.skipWhitespace();
-               this.b.expect('=');
-               this.c.a(hj.l);
-               this.b.skipWhitespace();
-               this.a($$2);
-               this.b.skipWhitespace();
-            }
-
-            this.c.a(this::b);
-            if (!this.b.canRead() || this.b.peek() != ',') {
-               break;
-            }
-
-            this.b.skip();
-            this.b.skipWhitespace();
-            this.c.a(this::e);
-            if (!this.b.canRead()) {
-               throw hj.i.createWithContext(this.b);
-            }
-         }
-
-         this.b.expect(']');
-         this.c.a(hj.l);
-      }
-
-      public static kw<?> a(StringReader $$0) throws CommandSyntaxException {
-         if (!$$0.canRead()) {
-            throw hj.i.createWithContext($$0);
-         } else {
-            int $$1 = $$0.getCursor();
-            ald $$2 = ald.a($$0);
-            kw<?> $$3 = md.ao.a($$2);
-            if ($$3 != null && !$$3.d()) {
-               return $$3;
-            } else {
-               $$0.setCursor($$1);
-               throw hj.g.createWithContext($$0, $$2);
-            }
-         }
-      }
-
-      private <T> void a(kw<T> $$0) throws CommandSyntaxException {
-         int $$1 = this.b.getCursor();
-         ut $$2 = new uu(this.b).d();
-         DataResult<T> $$3 = $$0.c().parse(hj.this.n, $$2);
-         this.c.a($$0, (T)$$3.getOrThrow($$2x -> {
-            this.b.setCursor($$1);
-            return hj.h.createWithContext(this.b, $$0.toString(), $$2x);
-         }));
-      }
-
-      private CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-         if ($$0.getRemaining().isEmpty()) {
-            $$0.suggest(String.valueOf('['));
-         }
-
-         return $$0.buildFuture();
-      }
-
-      private CompletableFuture<Suggestions> b(SuggestionsBuilder $$0) {
-         if ($$0.getRemaining().isEmpty()) {
-            $$0.suggest(String.valueOf(','));
-            $$0.suggest(String.valueOf(']'));
-         }
-
-         return $$0.buildFuture();
-      }
-
-      private CompletableFuture<Suggestions> c(SuggestionsBuilder $$0) {
-         if ($$0.getRemaining().isEmpty()) {
-            $$0.suggest(String.valueOf('='));
-         }
-
-         return $$0.buildFuture();
-      }
-
-      private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0) {
-         return fc.a(hj.this.m.c_().map(alc::a), $$0);
-      }
-
-      private CompletableFuture<Suggestions> e(SuggestionsBuilder $$0) {
-         $$0.suggest(String.valueOf('!'));
-         return this.a($$0, String.valueOf('='));
-      }
-
-      private CompletableFuture<Suggestions> f(SuggestionsBuilder $$0) {
-         return this.a($$0, "");
-      }
-
-      private CompletableFuture<Suggestions> a(SuggestionsBuilder $$0, String $$1) {
-         String $$2 = $$0.getRemaining().toLowerCase(Locale.ROOT);
-         fc.a(md.ao.k(), $$2, $$0x -> ((alc)$$0x.getKey()).a(), $$2x -> {
-            kw<?> $$3 = (kw<?>)$$2x.getValue();
-            if ($$3.b() != null) {
-               ald $$4 = ((alc)$$2x.getKey()).a();
-               $$0.suggest($$4 + $$1);
-            }
-         });
-         return $$0.buildFuture();
+      if (!this.h) {
+         this.j.add($$0);
       }
    }
 
-   static class c implements hj.d {
-      private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> a = hj.l;
-
-      @Override
-      public void a(Function<SuggestionsBuilder, CompletableFuture<Suggestions>> $$0) {
-         this.a = $$0;
-      }
-
-      public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0, StringReader $$1) {
-         return this.a.apply($$0.createOffset($$1.getCursor()));
+   public void a(int $$0) {
+      while (!this.i.isEmpty() && this.i.peek().a().c() >= $$0) {
+         this.i.removeFirst();
       }
    }
 
-   public interface d {
-      default void a(js<cxu> $$0) {
+   public hl.a b(int $$0) {
+      return () -> this.a($$0);
+   }
+
+   public void a() {
+      this.g();
+
+      while (true) {
+         if (this.g <= 0) {
+            b.info("Command execution stopped due to limit (executed {} commands)", this.c);
+            break;
+         }
+
+         hf<T> $$0 = this.i.pollFirst();
+         if ($$0 == null) {
+            return;
+         }
+
+         this.k = $$0.a().c();
+         $$0.a(this);
+         if (this.h) {
+            b.error("Command execution stopped due to command queue overflow (max {})", 10000000);
+            break;
+         }
+
+         this.g();
       }
 
-      default <T> void a(kw<T> $$0, T $$1) {
+      this.k = 0;
+   }
+
+   private void g() {
+      for (int $$0 = this.j.size() - 1; $$0 >= 0; $$0--) {
+         this.i.addFirst(this.j.get($$0));
       }
 
-      default <T> void a(kw<T> $$0) {
-      }
+      this.j.clear();
+   }
 
-      default void a(Function<SuggestionsBuilder, CompletableFuture<Suggestions>> $$0) {
+   public void a(@Nullable hm $$0) {
+      this.f = $$0;
+   }
+
+   @Nullable
+   public hm b() {
+      return this.f;
+   }
+
+   public bqj c() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public void e() {
+      this.g--;
+   }
+
+   @Override
+   public void close() {
+      if (this.f != null) {
+         this.f.close();
       }
    }
 }

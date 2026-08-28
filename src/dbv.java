@@ -1,96 +1,89 @@
-public class dbv extends dcb {
-   public dbv(dby $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-   public boolean a(dbz $$0, dhp $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
+public record dbv(List<dbv.a> c, float d, int e, boolean f) {
+   public static final Codec<dbv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dbv.a.a.listOf().fieldOf("rules").forGetter(dbv::a),
+               Codec.FLOAT.optionalFieldOf("default_mining_speed", 1.0F).forGetter(dbv::b),
+               ays.l.optionalFieldOf("damage_per_block", 1).forGetter(dbv::c),
+               Codec.BOOL.optionalFieldOf("can_destroy_blocks_in_creative", true).forGetter(dbv::d)
+            )
+            .apply($$0, dbv::new)
+   );
+   public static final yu<wh, dbv> b = yu.a(dbv.a.b.a(ys.a()), dbv::a, ys.l, dbv::b, ys.h, dbv::c, ys.b, dbv::d, dbv::new);
 
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cxy $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.c(kx.V)) {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               } else {
-                  if (!$$5.a(axi.bR)) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
-   }
-
-   public cxy a(dbz $$0, ju.a $$1) {
-      int $$2 = 0;
-      cxy $$3 = cxy.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxy $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.c(kx.V)) {
-               if (!$$3.f()) {
-                  return cxy.k;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(axi.bR)) {
-                  return cxy.k;
-               }
-
-               $$2++;
-            }
+   public float a(dzo $$0) {
+      for (dbv.a $$1 : this.c) {
+         if ($$1.d.isPresent() && $$0.a($$1.c)) {
+            return $$1.d.get();
          }
       }
 
-      dbe $$6 = $$3.a(kx.V);
-      if (!$$3.f() && $$2 >= 1 && $$6 != null) {
-         dbe $$7 = $$6.b();
-         if ($$7 == null) {
-            return cxy.k;
-         } else {
-            cxy $$8 = $$3.c($$2);
-            $$8.b(kx.V, $$7);
-            return $$8;
-         }
-      } else {
-         return cxy.k;
-      }
+      return this.d;
    }
 
-   @Override
-   public kb<cxy> a(dbz $$0) {
-      kb<cxy> $$1 = kb.a($$0.a(), cxy.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cxy $$3 = $$0.a($$2);
-         cxy $$4 = $$3.h().j();
-         if (!$$4.f()) {
-            $$1.set($$2, $$4);
-         } else if ($$3.c(kx.V)) {
-            $$1.set($$2, $$3.c(1));
-            break;
+   public boolean b(dzo $$0) {
+      for (dbv.a $$1 : this.c) {
+         if ($$1.e.isPresent() && $$0.a($$1.c)) {
+            return $$1.e.get();
          }
       }
 
-      return $$1;
+      return false;
    }
 
-   @Override
-   public dcv<dbv> a() {
-      return dcv.d;
+   public List<dbv.a> a() {
+      return this.c;
+   }
+
+   public float b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.f;
+   }
+
+   public static record a(ji<dlu> c, Optional<Float> d, Optional<Boolean> e) {
+      public static final Codec<dbv.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  jt.a(mg.i).fieldOf("blocks").forGetter(dbv.a::a),
+                  ays.o.optionalFieldOf("speed").forGetter(dbv.a::b),
+                  Codec.BOOL.optionalFieldOf("correct_for_drops").forGetter(dbv.a::c)
+               )
+               .apply($$0, dbv.a::new)
+      );
+      public static final yu<wh, dbv.a> b = yu.a(ys.c(mg.i), dbv.a::a, ys.l.a(ys::a), dbv.a::b, ys.b.a(ys::a), dbv.a::c, dbv.a::new);
+
+      public static dbv.a a(ji<dlu> $$0, float $$1) {
+         return new dbv.a($$0, Optional.of($$1), Optional.of(true));
+      }
+
+      public static dbv.a a(ji<dlu> $$0) {
+         return new dbv.a($$0, Optional.empty(), Optional.of(false));
+      }
+
+      public static dbv.a b(ji<dlu> $$0, float $$1) {
+         return new dbv.a($$0, Optional.of($$1), Optional.empty());
+      }
+
+      public ji<dlu> a() {
+         return this.c;
+      }
+
+      public Optional<Float> b() {
+         return this.d;
+      }
+
+      public Optional<Boolean> c() {
+         return this.e;
+      }
    }
 }

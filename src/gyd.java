@@ -1,24 +1,27 @@
-public abstract class gyd<S extends hak, M extends gea<S>> extends gyt<S, M> {
-   public gyd(gwc<S, M> $$0) {
-      super($$0);
+public class gyd extends gue<cjs, hdw, ghn> {
+   private static final ale a = ale.b("textures/entity/turtle/big_sea_turtle.png");
+
+   public gyd(gvk.a $$0) {
+      super($$0, new ghn($$0.a(gif.dC)), new ghn($$0.a(gif.dD)), 0.7F);
    }
 
-   @Override
-   public void a(fho $$0, gny $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (this.a($$3)) {
-         float $$6 = $$3.u;
-         M $$7 = this.c();
-         fhs $$8 = $$1.getBuffer(goi.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
-         $$7.a($$3);
-         $$7.a($$0, $$8, $$2, hgi.d, -8355712);
-      }
+   protected float a(hdw $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.83F : $$1;
    }
 
-   protected abstract boolean a(S var1);
+   public hdw b() {
+      return new hdw();
+   }
 
-   protected abstract float a(float var1);
+   public void a(cjs $$0, hdw $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = !$$0.bj() && $$0.aJ();
+      $$1.b = $$0.t();
+      $$1.c = !$$0.n_() && $$0.q();
+   }
 
-   protected abstract ald a();
-
-   protected abstract M c();
+   public ale b(hdw $$0) {
+      return a;
+   }
 }

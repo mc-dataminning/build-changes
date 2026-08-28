@@ -1,51 +1,61 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.UUID;
 
-public interface aaf {
-   aaf.b<? extends aaf> a();
+public record aaf(aaf.a c) implements aag {
+   public static final yu<vs, aaf> a = aag.a(aaf::a, aaf::new);
+   public static final aag.b<aaf> b = aag.a("debug/breeze");
 
-   static <B extends ByteBuf, T extends aaf> yt<B, T> a(yw<B, T> $$0, yu<B, T> $$1) {
-      return yt.a($$0, $$1);
+   private aaf(vs $$0) {
+      this(new aaf.a($$0));
    }
 
-   static <T extends aaf> aaf.b<T> a(String $$0) {
-      return new aaf.b<>(ald.b($$0));
+   private void a(vs $$0) {
+      this.c.a($$0);
    }
 
-   static <B extends vr> yt<B, aaf> a(final aaf.a<B> $$0, List<aaf.c<? super B, ?>> $$1) {
-      final Map<ald, yt<? super B, ? extends aaf>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), aaf.c::b));
-      return new yt<B, aaf>() {
-         private yt<? super B, ? extends aaf> a(ald $$0x) {
-            yt<? super B, ? extends aaf> $$1 = $$2.get($$0);
-            return $$1 != null ? $$1 : $$0.create($$0);
-         }
-
-         private <T extends aaf> void a(B $$0x, aaf.b<T> $$1, aaf $$2x) {
-            $$0.a($$1.a());
-            yt<B, T> $$3 = this.a($$1.a);
-            $$3.encode($$0, (T)$$2);
-         }
-
-         public void a(B $$0x, aaf $$1) {
-            this.a($$0, $$1.a(), $$1);
-         }
-
-         public aaf a(B $$0x) {
-            ald $$1 = $$0.q();
-            return (aaf)this.a($$1).decode($$0);
-         }
-      };
+   @Override
+   public aag.b<aaf> a() {
+      return b;
    }
 
-   public interface a<B extends vr> {
-      yt<B, ? extends aaf> create(ald var1);
+   public aaf.a b() {
+      return this.c;
    }
 
-   public static record b<T extends aaf>(ald a) {
-   }
+   public static record a(UUID a, int b, Integer c, iu d) {
+      public a(vs $$0) {
+         this($$0.n(), $$0.readInt(), $$0.c(vs::readInt), $$0.c(iu.b));
+      }
 
-   public static record c<B extends vr, T extends aaf>(aaf.b<T> a, yt<B, T> b) {
+      public void a(vs $$0) {
+         $$0.a(this.a);
+         $$0.q(this.b);
+         $$0.a(this.c, vs::q);
+         $$0.a(this.d, iu.b);
+      }
+
+      public String a() {
+         return agj.a(this.a);
+      }
+
+      @Override
+      public String toString() {
+         return this.a();
+      }
+
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public Integer d() {
+         return this.c;
+      }
+
+      public iu e() {
+         return this.d;
+      }
    }
 }

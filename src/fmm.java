@@ -1,26 +1,8 @@
-public enum fmm {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private static final fmm[] d = values();
-   private final boolean e;
-   private final boolean f;
-
-   private fmm(final boolean $$0, final boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   public boolean a() {
-      return this.e;
-   }
-
-   public boolean b() {
-      return this.f;
-   }
-
-   public fmm c() {
-      return d[(this.ordinal() + 1) % d.length];
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fmm {
 }

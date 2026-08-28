@@ -1,28 +1,104 @@
-public abstract class gtd<T extends cqp, S extends gzr> extends gue<T, S> {
-   private final gcv a;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-   public gtd(guf.a $$0) {
-      super($$0);
-      this.a = new gcv($$0.a(ghc.l));
+public class gtd implements gtf.a {
+   final fof a;
+   private double b = Double.MIN_VALUE;
+   private final int c = 12;
+   @Nullable
+   private gtd.a d;
+
+   public gtd(fof $$0) {
+      this.a = $$0;
    }
 
-   public void a(S $$0, fho $$1, gny $$2, int $$3) {
-      $$1.a();
-      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.a));
-      fhs $$4 = $$2.getBuffer(goi.f(this.a($$0)));
-      this.a.a($$0);
-      this.a.a($$1, $$4, $$3, hgi.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   @Override
+   public void a(fiq $$0, gpd $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)af.d();
+      if ($$5 - this.b > 3.0E9) {
+         this.b = $$5;
+         hmk $$6 = this.a.V();
+         if ($$6 != null) {
+            this.d = new gtd.a($$6, $$2, $$4);
+         } else {
+            this.d = null;
+         }
+      }
+
+      if (this.d != null) {
+         Map<dhw, String> $$7 = this.d.b.getNow(null);
+         double $$8 = this.a.j.k().b().e * 0.85;
+
+         for (Entry<dhw, String> $$9 : this.d.a.entrySet()) {
+            dhw $$10 = $$9.getKey();
+            String $$11 = $$9.getValue();
+            if ($$7 != null) {
+               $$11 = $$11 + $$7.get($$10);
+            }
+
+            String[] $$12 = $$11.split("\n");
+            int $$13 = 0;
+
+            for (String $$14 : $$12) {
+               gtf.a($$0, $$1, $$14, (double)jx.a($$10.h, 8), $$8 + (double)$$13, (double)jx.a($$10.i, 8), -1, 0.15F, true, 0.0F, true);
+               $$13 -= 2;
+            }
+         }
+      }
    }
 
-   protected abstract ald a(S var1);
+   final class a {
+      final Map<dhw, String> a;
+      final CompletableFuture<Map<dhw, String>> b;
 
-   public void a(T $$0, S $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.k($$2);
-      $$1.b = $$0.l($$2);
-      $$1.c = (float)$$0.c - $$2;
+      a(final hmk $$0, final double $$1, final double $$2) {
+         gjd $$3 = gtd.this.a.s;
+         ald<dip> $$4 = $$3.aj();
+         int $$5 = jx.a($$1);
+         int $$6 = jx.a($$2);
+         Builder<dhw, String> $$7 = ImmutableMap.builder();
+         giz $$8 = $$3.h();
+
+         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
+            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
+               dhw $$11 = new dhw($$9, $$10);
+               String $$12 = "";
+               ebv $$13 = $$8.a($$9, $$10, false);
+               $$12 = $$12 + "Client: ";
+               if ($$13 == null) {
+                  $$12 = $$12 + "0n/a\n";
+               } else {
+                  $$12 = $$12 + ($$13.E() ? " E" : "");
+                  $$12 = $$12 + "\n";
+               }
+
+               $$7.put($$11, $$12);
+            }
+         }
+
+         this.a = $$7.build();
+         this.b = $$0.a(() -> {
+            aro $$4x = $$0.a($$4);
+            if ($$4x == null) {
+               return ImmutableMap.of();
+            } else {
+               Builder<dhw, String> $$5x = ImmutableMap.builder();
+               arl $$6x = $$4x.m();
+
+               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
+                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
+                     dhw $$9x = new dhw($$7x, $$8x);
+                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
+                  }
+               }
+
+               return $$5x.build();
+            }
+         });
+      }
    }
 }

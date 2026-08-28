@@ -1,108 +1,126 @@
-public class dvd extends dwu {
-   private kb<cxy> d = kb.a(27, cxy.k);
-   private final dvz e = new dvz() {
-      @Override
-      protected void a(dhp $$0, jj $$1, dym $$2) {
-         dvd.this.a($$2, awk.bz);
-         dvd.this.a($$2, true);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
+
+public class dvd extends dta {
+   public static final MapCodec<dvd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ebc.a.fieldOf("wood_type").forGetter(dta::d), t()).apply($$0, dvd::new));
+   public static final eam<ja> b = dpt.e;
+   private static final Map<ja.a, feq> c = fen.a(dlu.a(16.0, 4.0, 14.0, 16.0));
+   private static final Map<ja.a, feq> e = fen.a(fen.a(c.get(ja.a.c), dlu.a(14.0, 2.0, 0.0, 10.0)));
+
+   @Override
+   public MapCodec<dvd> a() {
+      return a;
+   }
+
+   public dvd(ebc $$0, dzn.d $$1) {
+      super($$0, $$1.a($$0.e()));
+      this.l(this.B.b().b(b, ja.c).b(d, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected bty a(cys $$0, dzo $$1, dip $$2, iu $$3, cqs $$4, btx $$5, fds $$6) {
+      if ($$2.c_($$3) instanceof dyb $$7 && this.a($$1, $$4, $$6, $$7, $$0)) {
+         return bty.e;
       }
 
-      @Override
-      protected void b(dhp $$0, jj $$1, dym $$2) {
-         dvd.this.a($$2, awk.by);
-         dvd.this.a($$2, false);
-      }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-      @Override
-      protected void a(dhp $$0, jj $$1, dym $$2, int $$3, int $$4) {
-      }
+   private boolean a(dzo $$0, cqs $$1, fds $$2, dyb $$3, cys $$4) {
+      return !$$3.a($$3.a($$1), $$1) && $$4.h() instanceof cyh && !this.a($$2, $$0);
+   }
 
-      @Override
-      protected boolean a(cqi $$0) {
-         if ($$0.bP instanceof ctw) {
-            btj $$1 = ((ctw)$$0.bP).l();
-            return $$1 == dvd.this;
-         } else {
-            return false;
+   private boolean a(fds $$0, dzo $$1) {
+      return $$0.c().o() == $$1.c(b).o();
+   }
+
+   @Override
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return e.get($$0.c(b).o());
+   }
+
+   @Override
+   protected feq b_(dzo $$0, dhv $$1, iu $$2) {
+      return this.a($$0, $$1, $$2, feb.a());
+   }
+
+   @Override
+   protected feq b(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return c.get($$0.c(b).o());
+   }
+
+   public boolean b(dzo $$0, dis $$1, iu $$2) {
+      ja $$3 = $$0.c(b).h();
+      ja $$4 = $$0.c(b).i();
+      return this.a($$1, $$0, $$2.a($$3), $$4) || this.a($$1, $$0, $$2.a($$4), $$3);
+   }
+
+   public boolean a(dis $$0, dzo $$1, iu $$2, ja $$3) {
+      dzo $$4 = $$0.a_($$2);
+      return $$4.a(axa.aC) ? $$4.c(b).o().a($$1.c(b)) : $$4.a($$0, $$2, $$3, dub.a);
+   }
+
+   @Nullable
+   @Override
+   public dzo a(dcl $$0) {
+      dzo $$1 = this.m();
+      evv $$2 = $$0.q().b_($$0.a());
+      dis $$3 = $$0.q();
+      iu $$4 = $$0.a();
+
+      for (ja $$5 : $$0.f()) {
+         if ($$5.o().d() && !$$5.o().a($$0.k())) {
+            ja $$6 = $$5.g();
+            $$1 = $$1.b(b, $$6);
+            if ($$1.a($$3, $$4) && this.b($$1, $$3, $$4)) {
+               return $$1.b(d, Boolean.valueOf($$2.a() == evw.c));
+            }
          }
       }
-   };
 
-   public dvd(jj $$0, dym $$1) {
-      super(dvn.B, $$0, $$1);
+      return null;
    }
 
    @Override
-   protected void b(tw $$0, ju.a $$1) {
-      super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         btk.a($$0, this.d, $$1);
-      }
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      return $$4.o() == $$0.c(b).h().o() && !$$0.a($$1, $$3) ? dlw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(tw $$0, ju.a $$1) {
-      super.a($$0, $$1);
-      this.d = kb.a(this.b(), cxy.k);
-      if (!this.b_($$0)) {
-         btk.b($$0, this.d, $$1);
-      }
+   public float h(dzo $$0) {
+      return $$0.c(b).p();
    }
 
    @Override
-   public int b() {
-      return 27;
+   protected dzo a(dzo $$0, dsm $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected kb<cxy> f() {
-      return this.d;
+   protected dzo a(dzo $$0, dqv $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(kb<cxy> $$0) {
-      this.d = $$0;
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(b, d);
    }
 
    @Override
-   protected wv j() {
-      return wv.c("container.barrel");
+   public dwn a(iu $$0, dzo $$1) {
+      return new dxo($$0, $$1);
    }
 
    @Override
-   protected ctn a(int $$0, cqh $$1) {
-      return ctw.a($$0, $$1, this);
+   protected boolean a(dzo $$0, ewk $$1) {
+      return false;
    }
 
+   @Nullable
    @Override
-   public void c_(cqi $$0) {
-      if (!this.p && !$$0.U_()) {
-         this.e.a($$0, this.i(), this.aw_(), this.m());
-      }
-   }
-
-   @Override
-   public void c(cqi $$0) {
-      if (!this.p && !$$0.U_()) {
-         this.e.b($$0, this.i(), this.aw_(), this.m());
-      }
-   }
-
-   public void k() {
-      if (!this.p) {
-         this.e.c(this.i(), this.aw_(), this.m());
-      }
-   }
-
-   void a(dym $$0, boolean $$1) {
-      this.n.a(this.aw_(), $$0.b(dka.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(dym $$0, awj $$1) {
-      kn $$2 = $$0.c(dka.b).q();
-      double $$3 = (double)this.o.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.o.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.o.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.n.a(null, $$3, $$4, $$5, $$1, awl.e, 0.5F, this.n.A.i() * 0.1F + 0.9F);
+   public <T extends dwn> dwo<T> a(dip $$0, dzo $$1, dwp<T> $$2) {
+      return a($$2, dwp.i, dyb::a);
    }
 }

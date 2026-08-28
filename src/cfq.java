@@ -1,32 +1,36 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public enum cfq implements bag {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public class cfq<T extends bwz> extends cfo<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<cfq> n = bag.a(cfq::values);
+   public cfq(csi $$0, Class<T> $$1, boolean $$2, @Nullable cho.a $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
 
-   private cfq(final String $$0, final int $$1, final int $$2, final int $$3, final int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public boolean b() {
+      if (this.j > 0 || !this.e.dY().h()) {
+         return false;
+      } else if (!((csi)this.e).gE()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
+   }
+
+   @Override
+   public void d() {
+      this.j = b(200);
+      super.d();
    }
 }

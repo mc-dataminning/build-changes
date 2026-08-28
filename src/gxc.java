@@ -1,22 +1,20 @@
-public class gxc extends guy<cny, hbc> {
-   private static final ald a = ald.b("textures/entity/illager/vindicator.png");
+public class gxc extends gue<cji, hdc, ggk> {
+   private static final ale a = ale.b("textures/entity/bear/polarbear.png");
 
-   public gxc(guf.a $$0) {
-      super($$0, new gep<>($$0.a(ghc.dH)), 0.5F);
-      this.a(new gyl<hbc, gep<hbc>>(this) {
-         public void a(fho $$0, gny $$1, int $$2, hbc $$3, float $$4, float $$5) {
-            if ($$3.c) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
+   public gxc(gvk.a $$0) {
+      super($$0, new ggk($$0.a(gif.cy)), new ggk($$0.a(gif.cz)), 0.9F);
    }
 
-   public ald a(hbc $$0) {
+   public ale a(hdc $$0) {
       return a;
    }
 
-   public hbc b() {
-      return new hbc();
+   public hdc b() {
+      return new hdc();
+   }
+
+   public void a(cji $$0, hdc $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
    }
 }

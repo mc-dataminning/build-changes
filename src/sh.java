@@ -1,32 +1,19 @@
-import javax.annotation.Nullable;
+public class sh extends RuntimeException {
+   protected final ww a;
+   protected final int b;
 
-public class sh extends sg {
-   private final jj c;
-   private final jj d;
+   public sh(ww $$0, int $$1) {
+      super($$0.getString());
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   public sh(wv $$0, jj $$1, jj $$2, int $$3) {
-      super($$0, $$3);
-      this.c = $$1;
-      this.d = $$2;
+   public ww a() {
+      return ww.a("test.error.tick", this.a, this.b);
    }
 
    @Override
-   public wv a() {
-      return wv.a("test.error.position", this.a, this.c.u(), this.c.v(), this.c.w(), this.d.u(), this.d.v(), this.d.w(), this.b);
-   }
-
-   @Nullable
-   public String b() {
-      return super.getMessage();
-   }
-
-   @Nullable
-   public jj c() {
-      return this.d;
-   }
-
-   @Nullable
-   public jj d() {
-      return this.c;
+   public String getMessage() {
+      return this.a().getString();
    }
 }

@@ -1,109 +1,145 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class eit extends ehr<ekl> {
-   public eit(Codec<ekl> $$0) {
-      super($$0);
+public abstract class eit<FC extends ekx> {
+   public static final eit<ele> e = a("no_op", new ejn(ele.a));
+   public static final eit<elt> f = a("tree", new ekf(elt.a));
+   public static final eit<elk> g = a("flower", new ejr(elk.a));
+   public static final eit<elk> h = a("no_bonemeal_flower", new ejr(elk.a));
+   public static final eit<elk> i = a("random_patch", new ejr(elk.a));
+   public static final eit<ekp> j = a("block_pile", new eib(ekp.a));
+   public static final eit<els> k = a("spring_feature", new eke(els.a));
+   public static final eit<ele> l = a("chorus_plant", new eie(ele.a));
+   public static final eit<ell> m = a("replace_single_block", new eju(ell.a));
+   public static final eit<ele> n = a("void_start_platform", new ekk(ele.a));
+   public static final eit<ele> o = a("desert_well", new eil(ele.a));
+   public static final eit<eiy> p = a("fossil", new eix(eiy.a));
+   public static final eit<ekz> q = a("huge_red_mushroom", new eje(ekz.a));
+   public static final eit<ekz> r = a("huge_brown_mushroom", new ejb(ekz.a));
+   public static final eit<ele> s = a("ice_spike", new ejf(ele.a));
+   public static final eit<ele> t = a("glowstone_blob", new eja(ele.a));
+   public static final eit<ele> u = a("freeze_top_layer", new ekc(ele.a));
+   public static final eit<ele> v = a("vines", new ekj(ele.a));
+   public static final eit<eko> w = a("block_column", new eia(eko.a));
+   public static final eit<elw> x = a("vegetation_patch", new eki(elw.a));
+   public static final eit<elw> y = a("waterlogged_vegetation_patch", new ekl(elw.a));
+   public static final eit<eln> z = a("root_system", new ejv(eln.a));
+   public static final eit<elc> A = a("multiface_growth", new ejl(elc.a));
+   public static final eit<elv> B = a("underwater_magma", new ekh(elv.a));
+   public static final eit<ele> C = a("monster_room", new ejk(ele.a));
+   public static final eit<ele> D = a("blue_ice", new eic(ele.a));
+   public static final eit<ekq> E = a("iceberg", new ejg(ekq.a));
+   public static final eit<ekq> F = a("forest_rock", new ehz(ekq.a));
+   public static final eit<eku> G = a("disk", new eim(eku.a));
+   public static final eit<eji.a> H = a("lake", new eji(eji.a.a));
+   public static final eit<elf> I = a("ore", new ejo(elf.a));
+   public static final eit<ele> J = a("end_platform", new eir(ele.a));
+   public static final eit<elr> K = a("end_spike", new ekd(elr.a));
+   public static final eit<ele> L = a("end_island", new eiq(ele.a));
+   public static final eit<ekw> M = a("end_gateway", new eip(ekw.a));
+   public static final ejz N = a("seagrass", new ejz(elh.k));
+   public static final eit<ele> O = a("kelp", new ejh(ele.a));
+   public static final eit<ele> P = a("coral_tree", new eij(ele.a));
+   public static final eit<ele> Q = a("coral_mushroom", new eii(ele.a));
+   public static final eit<ele> R = a("coral_claw", new eig(ele.a));
+   public static final eit<eks> S = a("sea_pickle", new ejy(eks.a));
+   public static final eit<elp> T = a("simple_block", new eka(elp.a));
+   public static final eit<elh> U = a("bamboo", new ehw(elh.k));
+   public static final eit<ejc> V = a("huge_fungus", new ejd(ejc.a));
+   public static final eit<eld> W = a("nether_forest_vegetation", new ejm(eld.c));
+   public static final eit<ele> X = a("weeping_vines", new ekm(ele.a));
+   public static final eit<elu> Y = a("twisting_vines", new ekg(elu.a));
+   public static final eit<ekr> Z = a("basalt_columns", new ehx(ekr.a));
+   public static final eit<ekt> aa = a("delta_feature", new eik(ekt.a));
+   public static final eit<elm> ab = a("netherrack_replace_blobs", new ejt(elm.a));
+   public static final eit<elb> ac = a("fill_layer", new eiw(elb.a));
+   public static final eid ad = a("bonus_chest", new eid(ele.a));
+   public static final eit<ele> ae = a("basalt_pillar", new ehy(ele.a));
+   public static final eit<elf> af = a("scattered_ore", new ejw(elf.a));
+   public static final eit<elj> ag = a("random_selector", new ejs(elj.a));
+   public static final eit<elq> ah = a("simple_random_selector", new ekb(elq.a));
+   public static final eit<eli> ai = a("random_boolean_selector", new ejq(eli.a));
+   public static final eit<eky> aj = a("geode", new eiz(eky.b));
+   public static final eit<ekv> ak = a("dripstone_cluster", new ein(ekv.a));
+   public static final eit<ela> al = a("large_dripstone", new ejj(ela.a));
+   public static final eit<elg> am = a("pointed_dripstone", new ejp(elg.a));
+   public static final eit<elo> an = a("sculk_patch", new ejx(elo.a));
+   private final MapCodec<eif<FC, eit<FC>>> a;
+
+   private static <C extends ekx, F extends eit<C>> F a(String $$0, F $$1) {
+      return jr.a(mf.O, $$0, $$1);
    }
 
-   @Override
-   public boolean a(eht<ekl> $$0) {
-      dio $$1 = $$0.b();
-      jj $$2 = $$0.e();
-      if (!$$1.a_($$2).l()) {
-         return false;
-      } else {
-         azs $$3 = $$0.d();
-         jj $$4 = $$0.e();
-         ekl $$5 = $$0.f();
-         jj.a $$6 = $$4.k();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
-         }
+   public eit(Codec<FC> $$0) {
+      this.a = $$0.fieldOf("config").xmap($$0x -> new eif<>(this, $$0x), eif::c);
+   }
 
-         return true;
+   public MapCodec<eif<FC, eit<FC>>> a() {
+      return this.a;
+   }
+
+   protected void a(dix $$0, iu $$1, dzo $$2) {
+      $$0.a($$1, $$2, 3);
+   }
+
+   public static Predicate<dzo> a(axp<dlu> $$0) {
+      return $$1 -> !$$1.a($$0);
+   }
+
+   protected void a(djo $$0, iu $$1, dzo $$2, Predicate<dzo> $$3) {
+      if ($$3.test($$0.a_($$1))) {
+         $$0.a($$1, $$2, 2);
       }
    }
 
-   private static boolean a(dio $$0, ekl $$1, jj $$2) {
-      jj.a $$3 = $$2.k();
+   public abstract boolean a(eiv<FC> var1);
 
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(jo.b);
-         dym $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
-            return false;
-         }
-      }
-
-      return true;
+   public boolean a(FC $$0, djo $$1, ebm $$2, azt $$3, iu $$4) {
+      return $$1.f_($$4) ? this.a(new eiv<>(Optional.empty(), $$1, $$2, $$3, $$4, $$0)) : false;
    }
 
-   private static boolean a(dym $$0, int $$1, int $$2) {
-      if ($$0.l()) {
-         return true;
-      } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.y().a(axf.a);
-      }
+   protected static boolean a(dzo $$0) {
+      return $$0.a(axa.bg);
    }
 
-   private static boolean a(dio $$0, eak $$1, ekl $$2, azs $$3, jj.a $$4, jj $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(jo.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            jj $$7 = $$4.e();
-            if ($$0.b_($$7).a(axf.b) || !$$0.a_($$7).e()) {
-               return false;
-            }
+   public static boolean b(dzo $$0) {
+      return $$0.a(axa.ah);
+   }
 
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
-            }
+   public static boolean a(div $$0, iu $$1) {
+      return $$0.a($$1, eit::b);
+   }
+
+   public static boolean a(Function<iu, dzo> $$0, iu $$1, Predicate<dzo> $$2) {
+      iu.a $$3 = new iu.a();
+
+      for (ja $$4 : ja.values()) {
+         $$3.a($$1, $$4);
+         if ($$2.test($$0.apply($$3))) {
+            return true;
          }
       }
 
       return false;
    }
 
-   private static void a(jj $$0, int $$1, dio $$2, ekl $$3, azs $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      jj.a $$7 = $$0.k();
-
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
-      }
+   public static boolean a(Function<iu, dzo> $$0, iu $$1) {
+      return a($$0, $$1, dzn.a::l);
    }
 
-   private static void a(dio $$0, ekl $$1, azs $$2, int $$3, int $$4, jj.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<dym> $$7 = $$1x -> $$1x.a($$1.e);
+   protected void a(djo $$0, iu $$1) {
+      iu.a $$2 = $$1.k();
 
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
+      for (int $$3 = 0; $$3 < 2; $$3++) {
+         $$2.c(ja.b);
+         if ($$0.a_($$2).l()) {
+            return;
          }
 
-         $$5.p($$3);
-         $$5.r($$4);
-      }
-   }
-
-   private static void a(dio $$0, ekl $$1, azs $$2, jj $$3, jj.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
-
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.u($$4)) {
-            dym $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.d()).c($$0, $$4, jo.a)) {
-               $$0.a($$4, $$8, 2);
-            }
-         }
+         $$0.z($$2).e($$2);
       }
    }
 }

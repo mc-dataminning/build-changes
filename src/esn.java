@@ -1,64 +1,97 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Optional;
+import java.util.function.IntFunction;
 
-public class esn extends etf {
-   public static final MapCodec<esn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eth.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bsv.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, esn::new)
+public class esn extends eqi {
+   public static final MapCodec<esn> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), esn.a.c.fieldOf("mineshaft_type").forGetter($$0x -> $$0x.e)).apply($$0, esn::new)
    );
-   private final etf b;
-   private final bsv c;
+   private final esn.a e;
 
-   public esn(etf $$0, bsv $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public esn(eqi.c $$0, esn.a $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   protected eth<?> a() {
-      return eth.o;
+   public Optional<eqi.b> a(eqi.a $$0) {
+      $$0.f().j();
+      dhw $$1 = $$0.h();
+      iu $$2 = new iu($$1.b(), 50, $$1.e());
+      era $$3 = new era();
+      int $$4 = this.a($$3, $$0);
+      return Optional.of(new eqi.b($$2.b(0, $$4, 0), Either.right($$3)));
    }
 
-   @Override
-   public final List<eti.d> a(dig $$0, jj $$1, jj $$2, List<eti.d> $$3, List<eti.d> $$4, ete $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            af.b(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
-            return $$4;
-         } else {
-            azs $$6 = azs.a($$0.a().E()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = af.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
-
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  eti.d $$12 = $$3.get($$11);
-                  eti.d $$13 = $$4.get($$11);
-                  eti.d $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
-
-               return $$4;
-            }
-         }
+   private int a(era $$0, eqi.a $$1) {
+      dhw $$2 = $$1.h();
+      egm $$3 = $$1.f();
+      ebm $$4 = $$1.b();
+      esm.d $$5 = new esm.d(0, $$3, $$2.a(2), $$2.b(2), this.e);
+      $$0.a($$5);
+      $$5.a($$5, $$0, $$3);
+      int $$6 = $$4.f();
+      if (this.e == esn.a.b) {
+         iu $$7 = $$0.d().g();
+         int $$8 = $$4.a($$7.u(), $$7.w(), efn.a.a, $$1.i(), $$1.d());
+         int $$9 = $$8 <= $$6 ? $$6 : azk.b($$3, $$6, $$8);
+         int $$10 = $$9 - $$7.v();
+         $$0.a($$10);
+         return $$10;
       } else {
-         return $$4;
+         return $$0.a($$6, $$4.g(), $$3, 10);
+      }
+   }
+
+   @Override
+   public eqr<?> e() {
+      return eqr.h;
+   }
+
+   public static enum a implements bai {
+      a("normal", dlw.X, dlw.n, dlw.eh),
+      b("mesa", dlw.ad, dlw.t, dlw.kI);
+
+      public static final Codec<esn.a> c = bai.a(esn.a::values);
+      private static final IntFunction<esn.a> d = aya.a(Enum::ordinal, values(), aya.a.a);
+      private final String e;
+      private final dzo f;
+      private final dzo g;
+      private final dzo h;
+
+      private a(final String $$0, final dlu $$1, final dlu $$2, final dlu $$3) {
+         this.e = $$0;
+         this.f = $$1.m();
+         this.g = $$2.m();
+         this.h = $$3.m();
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      public static esn.a a(int $$0) {
+         return d.apply($$0);
+      }
+
+      public dzo b() {
+         return this.f;
+      }
+
+      public dzo d() {
+         return this.g;
+      }
+
+      public dzo e() {
+         return this.h;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
       }
    }
 }

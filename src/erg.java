@@ -1,28 +1,12 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
 
-public class erg extends epg {
-   public static final MapCodec<erg> d = a(erg::new);
+public interface erg<SP extends erf> {
+   erg<erd> a = a("random_spread", erd.a);
+   erg<erc> b = a("concentric_rings", erc.a);
 
-   public erg(epg.c $$0) {
-      super($$0);
-   }
+   MapCodec<SP> codec();
 
-   @Override
-   public Optional<epg.b> a(epg.a $$0) {
-      return a($$0, eel.a.a, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(epy $$0, epg.a $$1) {
-      dgw $$2 = $$1.h();
-      efk $$3 = $$1.f();
-      jj $$4 = new jj($$2.d(), 90, $$2.e());
-      drm $$5 = drm.a($$3);
-      erf.a($$1.e(), $$4, $$5, $$0, $$3);
-   }
-
-   @Override
-   public epp<?> e() {
-      return epp.e;
+   private static <SP extends erf> erg<SP> a(String $$0, MapCodec<SP> $$1) {
+      return jr.a(mf.P, $$0, () -> $$1);
    }
 }

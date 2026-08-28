@@ -1,53 +1,17 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-import org.joml.Quaternionf;
+import java.io.IOException;
 
-public enum hit implements hji {
-   a(0, 0),
-   b(0, 90),
-   c(0, 180),
-   d(0, 270),
-   e(90, 0),
-   f(90, 90),
-   g(90, 180),
-   h(90, 270),
-   i(180, 0),
-   j(180, 90),
-   k(180, 180),
-   l(180, 270),
-   m(270, 0),
-   n(270, 90),
-   o(270, 180),
-   p(270, 270);
+public class hit extends avg<int[]> {
+   private static final ale a = ale.b("textures/colormap/grass.png");
 
-   private static final int q = 360;
-   private static final Map<Integer, hit> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (hit)$$0));
-   private final j s;
-   private final h t;
-   private final int u;
-
-   private static int b(int $$0, int $$1) {
-      return $$0 * 360 + $$1;
+   protected int[] a(avb $$0, bqj $$1) {
+      try {
+         return hiv.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
+      }
    }
 
-   private hit(final int $$0, final int $$1) {
-      this.u = b($$0, $$1);
-      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
-      this.s = new j(null, $$2, null, null);
-      this.t = h.a($$0, $$1);
-   }
-
-   @Override
-   public j a() {
-      return this.s;
-   }
-
-   public static hit a(int $$0, int $$1) {
-      return r.get(b(azk.b($$0, 360), azk.b($$1, 360)));
-   }
-
-   public h c() {
-      return this.t;
+   protected void a(int[] $$0, avb $$1, bqj $$2) {
+      din.a($$0);
    }
 }

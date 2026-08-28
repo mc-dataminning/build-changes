@@ -1,16 +1,13 @@
-import com.mojang.serialization.MapCodec;
 import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public abstract class djo<E extends dvl> extends dkg {
-   protected final Supplier<dvn<? extends E>> a;
+public interface djo extends djg {
+   long E();
 
-   protected djo(dyl.d $$0, Supplier<dvn<? extends E>> $$1) {
-      super($$0);
-      this.a = $$1;
+   default boolean f_(iu $$0) {
+      return true;
    }
 
-   @Override
-   protected abstract MapCodec<? extends djo<E>> a();
-
-   public abstract dnc.c<? extends dvt> a(dym var1, dhp var2, jj var3, boolean var4);
+   default void a(@Nullable Supplier<String> $$0) {
+   }
 }

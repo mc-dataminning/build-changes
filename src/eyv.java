@@ -1,22 +1,20 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import java.util.Objects;
+import java.util.function.Consumer;
 
-public interface eyv<T extends eyv<T>> {
-   T b(eyz.a var1);
+@FunctionalInterface
+interface eyv {
+   eyv b = ($$0, $$1) -> false;
+   eyv c = ($$0, $$1) -> true;
 
-   default <E> T a(Iterable<E> $$0, Function<E, eyz.a> $$1) {
-      T $$2 = this.c();
+   boolean expand(eyn var1, Consumer<ezc> var2);
 
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   default eyv and(eyv $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
    }
 
-   default <E> T a(E[] $$0, Function<E, eyz.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
+   default eyv or(eyv $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
    }
-
-   T c();
 }

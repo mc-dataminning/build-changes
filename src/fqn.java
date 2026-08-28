@@ -1,100 +1,104 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
 
-public class fqn extends fqd {
-   public static final int f = 120;
-   public static final int m = 150;
-   public static final int n = 200;
-   public static final int o = 20;
-   public static final int p = 8;
-   protected static final fqn.b q = $$0 -> $$0.get();
-   protected final fqn.c r;
-   protected final fqn.b s;
-
-   public static fqn.a a(wv $$0, fqn.c $$1) {
-      return new fqn.a($$0, $$1);
+public class fqn {
+   public static hep.b a(ale $$0) {
+      return new hej.a($$0, List.of());
    }
 
-   protected fqn(int $$0, int $$1, int $$2, int $$3, wv $$4, fqn.c $$5, fqn.b $$6) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.r = $$5;
-      this.s = $$6;
+   public static hep.b a(ale $$0, fpq... $$1) {
+      return new hej.a($$0, List.of($$1));
    }
 
-   @Override
-   public void b() {
-      this.r.onPress(this);
+   public static fpq a(int $$0) {
+      return new fpl($$0);
    }
 
-   @Override
-   protected xj d() {
-      return this.s.createNarrationMessage(() -> super.d());
+   public static hep.b a(hep.b... $$0) {
+      return new hem.a(List.of($$0));
    }
 
-   @Override
-   public void a(fuk $$0) {
-      this.c($$0);
+   public static hep.b a(ale $$0, hhd.a $$1) {
+      return new hew.a($$0, $$1);
    }
 
-   public static class a {
-      private final wv a;
-      private final fqn.c b;
-      @Nullable
-      private fry c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private fqn.b h = fqn.q;
-
-      public a(wv $$0, fqn.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public fqn.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public fqn.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fqn.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public fqn.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public fqn.a a(@Nullable fry $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fqn.a a(fqn.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public fqn a() {
-         fqn $$0 = new fqn(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
-      }
+   public static heu.a a(hep.b $$0, float $$1) {
+      return new heu.a($$1, $$0);
    }
 
-   public interface b {
-      xj createNarrationMessage(Supplier<xj> var1);
+   public static hep.b a(hfz $$0, hep.b $$1, heu.a... $$2) {
+      return new heu.b($$0, 1.0F, List.of($$2), Optional.of($$1));
    }
 
-   public interface c {
-      void onPress(fqn var1);
+   public static hep.b a(hfz $$0, float $$1, hep.b $$2, heu.a... $$3) {
+      return new heu.b($$0, $$1, List.of($$3), Optional.of($$2));
+   }
+
+   public static hep.b a(hfz $$0, hep.b $$1, List<heu.a> $$2) {
+      return new heu.b($$0, 1.0F, $$2, Optional.of($$1));
+   }
+
+   public static hep.b a(hfz $$0, List<heu.a> $$1) {
+      return new heu.b($$0, 1.0F, $$1, Optional.empty());
+   }
+
+   public static hep.b a(hfz $$0, float $$1, List<heu.a> $$2) {
+      return new heu.b($$0, $$1, $$2, Optional.empty());
+   }
+
+   public static hep.b a(hfc $$0, hep.b $$1, hep.b $$2) {
+      return new hen.a($$0, $$1, $$2);
+   }
+
+   public static <T> hev.b<T> a(T $$0, hep.b $$1) {
+      return new hev.b<>(List.of($$0), $$1);
+   }
+
+   public static <T> hev.b<T> a(List<T> $$0, hep.b $$1) {
+      return new hev.b<>($$0, $$1);
+   }
+
+   @SafeVarargs
+   public static <T> hep.b a(hgp<T> $$0, hep.b $$1, hev.b<T>... $$2) {
+      return a($$0, $$1, List.of($$2));
+   }
+
+   public static <T> hep.b a(hgp<T> $$0, hep.b $$1, List<hev.b<T>> $$2) {
+      return new hev.c(new hev.d<>($$0, $$2), Optional.of($$1));
+   }
+
+   @SafeVarargs
+   public static <T> hep.b a(hgp<T> $$0, hev.b<T>... $$1) {
+      return a($$0, List.of($$1));
+   }
+
+   public static <T> hep.b a(hgp<T> $$0, List<hev.b<T>> $$1) {
+      return new hev.c(new hev.d<>($$0, $$1), Optional.empty());
+   }
+
+   public static hfc a() {
+      return new hfl();
+   }
+
+   public static hfc a(ki<?> $$0) {
+      return new hfh($$0, false);
+   }
+
+   public static hep.b a(hep.b $$0, hep.b $$1) {
+      return a(new hgh(), $$1, a(dip.i, $$0));
+   }
+
+   public static <T extends Comparable<T>> hep.b a(ear<T> $$0, hep.b $$1, Map<T, hep.b> $$2) {
+      List<hev.b<String>> $$3 = $$2.entrySet().stream().sorted(Entry.comparingByKey()).map($$1x -> {
+         String $$2x = $$0.b((T)$$1x.getKey());
+         return new hev.b<>(List.of($$2x), (hep.b)$$1x.getValue());
+      }).toList();
+      return a(new hgl($$0.f()), $$1, $$3);
+   }
+
+   public static hep.b b(hep.b $$0, hep.b $$1) {
+      return a(hgm.a("MM-dd", "", Optional.empty()), $$1, List.of(a(List.of("12-24", "12-25", "12-26"), $$0)));
    }
 }

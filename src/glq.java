@@ -1,40 +1,30 @@
-public class glq extends gmh {
-   private final gmc a;
+public class glq extends gld {
+   private static final int a = 12235202;
 
-   glq(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gmc $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.5F);
-      this.n = false;
-      this.b($$7);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public gll b() {
-      return gll.c;
+   protected glq(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gng $$8) {
+      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
+      float $$9 = (float)Math.random() * 0.2F;
+      this.v = (float)axu.b(12235202) / 255.0F - $$9;
+      this.w = (float)axu.c(12235202) / 255.0F - $$9;
+      this.x = (float)axu.d(12235202) / 255.0F - $$9;
    }
 
    @Override
    public void a() {
+      this.u = 0.88F * this.u;
+      this.B = 0.92F * this.B;
       super.a();
-      this.b(this.a);
    }
 
-   public static record a(gmc a) implements glk<lx> {
-      public glh a(lx $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         glq $$8 = new glq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.b();
-         $$8.z = $$0.b();
-         $$8.a($$1.A.a(12) + 8);
-         return $$8;
+   public static class a implements gmo<mb> {
+      private final gng a;
+
+      public a(gng $$0) {
+         this.a = $$0;
+      }
+
+      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new glq($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

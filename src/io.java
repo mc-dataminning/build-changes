@@ -1,7 +1,49 @@
-import java.util.List;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType.StringType;
 
-public interface io<T> {
-   ald a();
+public class io implements ie<StringArgumentType, io.a> {
+   public void a(io.a $$0, vs $$1) {
+      $$1.a((Enum<?>)$$0.b);
+   }
 
-   List<ic<T>> b();
+   public io.a a(vs $$0) {
+      StringType $$1 = $$0.b(StringType.class);
+      return new io.a($$1);
+   }
+
+   public void a(io.a $$0, JsonObject $$1) {
+      $$1.addProperty("type", switch ($$0.b) {
+         case SINGLE_WORD -> "word";
+         case QUOTABLE_PHRASE -> "phrase";
+         case GREEDY_PHRASE -> "greedy";
+         default -> throw new MatchException(null, null);
+      });
+   }
+
+   public io.a a(StringArgumentType $$0) {
+      return new io.a($$0.getType());
+   }
+
+   public final class a implements ie.a<StringArgumentType> {
+      final StringType b;
+
+      public a(final StringType $$1) {
+         this.b = $$1;
+      }
+
+      public StringArgumentType a(ee $$0) {
+         return switch (this.b) {
+            case SINGLE_WORD -> StringArgumentType.word();
+            case QUOTABLE_PHRASE -> StringArgumentType.string();
+            case GREEDY_PHRASE -> StringArgumentType.greedyString();
+            default -> throw new MatchException(null, null);
+         };
+      }
+
+      @Override
+      public ie<StringArgumentType, ?> a() {
+         return io.this;
+      }
+   }
 }

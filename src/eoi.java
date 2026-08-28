@@ -1,38 +1,29 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eoi extends eor {
-   public static final MapCodec<eoi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
+public class eoi {
+   public static final Codec<eoi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, edl.c).fieldOf("height").forGetter(eoi::a), mf.e.q().fieldOf("block").orElse(dlw.a).forGetter($$0x -> $$0x.b().b()))
             .apply($$0, eoi::new)
    );
+   private final dlu b;
    private final int c;
-   private final double d;
-   private final double e;
 
-   private eoi(int $$0, double $$1, double $$2) {
+   public eoi(int $$0, dlu $$1) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+      this.b = $$1;
    }
 
-   public static eoi a(int $$0, double $$1, double $$2) {
-      return new eoi($$0, $$1, $$2);
+   public int a() {
+      return this.c;
    }
 
-   @Override
-   protected int a(azs $$0, jj $$1) {
-      double $$2 = dis.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public dzo b() {
+      return this.b.m();
    }
 
    @Override
-   public eoo<?> b() {
-      return eoo.g;
+   public String toString() {
+      return (this.c != 1 ? this.c + "*" : "") + mf.e.b(this.b);
    }
 }

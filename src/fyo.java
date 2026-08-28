@@ -1,44 +1,49 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
 import java.util.List;
 
-public class fyo implements fyr {
-   private static final int a = 10;
-   private static final int b = 2;
-   private final List<ProfileResult> c;
+public class fyo {
+   private static final int a = 30;
+   private static final int b = 16;
+   private static final int c = 4;
+   private final int d;
+   private List<ale> e = List.of();
+   private int f;
+   private int g;
 
-   public fyo(fyo.a $$0) {
-      this.c = $$0.a();
+   public fyo(int $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public int a(fpx $$0) {
-      return this.c.size() * 12 + 2;
+   public void a(List<ale> $$0) {
+      if (!this.e.equals($$0)) {
+         this.e = $$0;
+         this.g = 0;
+      }
+
+      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
+         this.g = (this.g + 1) % this.e.size();
+      }
    }
 
-   @Override
-   public int b(fpx $$0) {
-      int $$1 = 0;
-
-      for (ProfileResult $$2 : this.c) {
-         int $$3 = $$0.b($$2.profile().getName());
-         if ($$3 > $$1) {
-            $$1 = $$3;
+   public void a(cuk $$0, frc $$1, float $$2, int $$3, int $$4) {
+      cwh $$5 = $$0.b(this.d);
+      if (!this.e.isEmpty() && !$$5.h()) {
+         boolean $$6 = this.e.size() > 1 && this.f >= 30;
+         float $$7 = $$6 ? this.a($$2) : 1.0F;
+         if ($$7 < 1.0F) {
+            int $$8 = Math.floorMod(this.g - 1, this.e.size());
+            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
          }
-      }
 
-      return $$1 + 10 + 6;
-   }
-
-   @Override
-   public void a(fpx $$0, int $$1, int $$2, int $$3, int $$4, fpz $$5) {
-      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
-         ProfileResult $$7 = this.c.get($$6);
-         int $$8 = $$2 + 2 + $$6 * 12;
-         frm.a($$5, fnd.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
-         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
+         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
       }
    }
 
-   public static record a(List<ProfileResult> a) implements cvu {
+   private void a(cwh $$0, ale $$1, float $$2, frc $$3, int $$4, int $$5) {
+      $$3.a(gpn::H, $$1, $$4 + $$0.e, $$5 + $$0.f, 16, 16, axu.a($$2));
+   }
+
+   private float a(float $$0) {
+      float $$1 = (float)(this.f % 30) + $$0;
+      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

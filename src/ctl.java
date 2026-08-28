@@ -1,46 +1,75 @@
-public class ctl {
-   public static final ctk a = new ctk.a().a(4).a(0.3F).b();
-   public static final ctk b = new ctk.a().a(5).a(0.6F).b();
-   public static final ctk c = new ctk.a().a(3).a(0.3F).b();
-   public static final ctk d = new ctk.a().a(1).a(0.6F).b();
-   public static final ctk e = a(6).b();
-   public static final ctk f = new ctk.a().a(5).a(0.6F).b();
-   public static final ctk g = new ctk.a().a(3).a(0.6F).b();
-   public static final ctk h = new ctk.a().a(2).a(0.3F).b();
-   public static final ctk i = new ctk.a().a(4).a(0.3F).a().b();
-   public static final ctk j = new ctk.a().a(2).a(0.1F).b();
-   public static final ctk k = new ctk.a().a(8).a(0.8F).b();
-   public static final ctk l = new ctk.a().a(6).a(0.6F).b();
-   public static final ctk m = new ctk.a().a(5).a(0.6F).b();
-   public static final ctk n = new ctk.a().a(6).a(0.8F).b();
-   public static final ctk o = new ctk.a().a(8).a(0.8F).b();
-   public static final ctk p = new ctk.a().a(5).a(0.6F).b();
-   public static final ctk q = new ctk.a().a(6).a(0.8F).b();
-   public static final ctk r = new ctk.a().a(2).a(0.1F).b();
-   public static final ctk s = new ctk.a().a(1).a(0.3F).b();
-   public static final ctk t = new ctk.a().a(4).a(1.2F).a().b();
-   public static final ctk u = new ctk.a().a(4).a(1.2F).a().b();
-   public static final ctk v = new ctk.a().a(6).a(1.2F).b();
-   public static final ctk w = new ctk.a().a(6).a(0.1F).a().b();
-   public static final ctk x = new ctk.a().a(2).a(0.3F).b();
-   public static final ctk y = a(6).b();
-   public static final ctk z = new ctk.a().a(2).a(0.3F).b();
-   public static final ctk A = new ctk.a().a(2).a(0.3F).b();
-   public static final ctk B = new ctk.a().a(3).a(0.3F).b();
-   public static final ctk C = new ctk.a().a(1).a(0.3F).b();
-   public static final ctk D = new ctk.a().a(1).a(0.1F).b();
-   public static final ctk E = new ctk.a().a(8).a(0.3F).b();
-   public static final ctk F = new ctk.a().a(3).a(0.3F).b();
-   public static final ctk G = a(10).b();
-   public static final ctk H = new ctk.a().a(4).a(0.1F).b();
-   public static final ctk I = new ctk.a().a(2).a(0.1F).b();
-   public static final ctk J = new ctk.a().a(2).a(0.8F).b();
-   public static final ctk K = a(6).a().b();
-   public static final ctk L = new ctk.a().a(2).a(0.1F).b();
-   public static final ctk M = new ctk.a().a(2).a(0.1F).b();
-   public static final ctk N = new ctk.a().a(1).a(0.1F).b();
+public class ctl extends cte {
+   private float b;
+   private float c;
 
-   private static ctk.a a(int $$0) {
-      return new ctk.a().a($$0).a(0.6F);
+   public ctl(bwj<?> $$0, dip $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   public bty a(cqs $$0, btx $$1) {
+      if (!$$0.fX() && !this.ca() && (this.dV().C || $$0.n(this))) {
+         this.c = this.b;
+         if (!this.dV().C) {
+            return (bty)($$0.n(this) ? bty.c : bty.e);
+         } else {
+            return bty.a;
+         }
+      } else {
+         return bty.e;
+      }
+   }
+
+   @Override
+   protected cyo o() {
+      return cyw.oq;
+   }
+
+   @Override
+   public cys dI() {
+      return new cys(cyw.oq);
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3) {
+         if (this.ca()) {
+            this.bO();
+         }
+
+         if (this.I() == 0) {
+            this.l(-this.J());
+            this.d(10);
+            this.b(50.0F);
+            this.bC();
+         }
+      }
+   }
+
+   @Override
+   public boolean z() {
+      return true;
+   }
+
+   @Override
+   public void h() {
+      double $$0 = (double)this.dL();
+      fdw $$1 = this.dt();
+      super.h();
+      double $$2 = ((double)this.dL() - $$0) % 360.0;
+      if (this.dV().C && $$1.f(this.dt()) > 0.01) {
+         this.b += (float)$$2;
+         this.b %= 360.0F;
+      }
+   }
+
+   @Override
+   protected void a(bwa $$0, bwa.b $$1) {
+      super.a($$0, $$1);
+      if (this.dV().C && $$0 instanceof cqs $$2 && $$2.gP() && b(this.dV())) {
+         float $$3 = (float)azk.e(0.5, (double)this.c, (double)this.b);
+         $$2.w($$2.dL() - ($$3 - this.c));
+         this.c = $$3;
+      }
    }
 }

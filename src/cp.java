@@ -2,41 +2,32 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class cp extends dz<cp.a> {
+public class cp extends dj<cp.a> {
    @Override
    public Codec<cp.a> a() {
       return cp.a.a;
    }
 
-   public void a(aro $$0, cxy $$1, int $$2) {
-      this.a($$0, $$2x -> $$2x.a($$1, $$2));
+   public void a(arp $$0, fdw $$1, int $$2) {
+      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
-   public static record a(Optional<bi> b, Optional<cv> c, dk.d d, dk.d e) implements dz.a {
+   public static record a(Optional<bi> b, Optional<bo> c, cv.d d) implements dj.a {
       public static final Codec<cp.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bx.b.optionalFieldOf("player").forGetter(cp.a::a),
-                  cv.a.optionalFieldOf("item").forGetter(cp.a::b),
-                  dk.d.d.optionalFieldOf("durability", dk.d.c).forGetter(cp.a::c),
-                  dk.d.d.optionalFieldOf("delta", dk.d.c).forGetter(cp.a::d)
+                  bo.a.optionalFieldOf("distance").forGetter(cp.a::b),
+                  cv.d.d.optionalFieldOf("duration", cv.d.c).forGetter(cp.a::c)
                )
                .apply($$0, cp.a::new)
       );
 
-      public static aq<cp.a> a(Optional<cv> $$0, dk.d $$1) {
-         return a(Optional.empty(), $$0, $$1);
+      public static aq<cp.a> a(bo $$0) {
+         return ap.v.a(new cp.a(Optional.empty(), Optional.of($$0), cv.d.c));
       }
 
-      public static aq<cp.a> a(Optional<bi> $$0, Optional<cv> $$1, dk.d $$2) {
-         return ap.u.a(new cp.a($$0, $$1, $$2, dk.d.c));
-      }
-
-      public boolean a(cxy $$0, int $$1) {
-         if (this.c.isPresent() && !this.c.get().a($$0)) {
-            return false;
-         } else {
-            return !this.d.d($$0.p() - $$1) ? false : this.e.d($$0.o() - $$1);
-         }
+      public boolean a(arp $$0, fdw $$1, int $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1.d, $$1.e, $$1.f, $$0.dA(), $$0.dC(), $$0.dG()) ? false : this.d.d($$2);
       }
 
       @Override
@@ -44,16 +35,12 @@ public class cp extends dz<cp.a> {
          return this.b;
       }
 
-      public Optional<cv> b() {
+      public Optional<bo> b() {
          return this.c;
       }
 
-      public dk.d c() {
+      public cv.d c() {
          return this.d;
-      }
-
-      public dk.d d() {
-         return this.e;
       }
    }
 }

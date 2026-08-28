@@ -1,29 +1,45 @@
-public record ada(int b, float c) implements zc<abr> {
-   public static final yt<vr, ada> a = zc.a(ada::a, ada::new);
+public class ada implements zd<abs> {
+   public static final yu<vs, ada> a = zd.a(ada::a, ada::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   public ada(bwr $$0) {
-      this($$0.ar(), $$0.eL());
+   public ada(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private ada(vr $$0) {
-      this($$0.l(), $$0.readFloat());
+   private ada(vs $$0) {
+      this.b = $$0.x();
+      this.c = $$0.l();
+      this.d = $$0.readInt();
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(vs $$0) {
+      $$0.f(this.b);
+      $$0.c(this.c);
+      $$0.q(this.d);
    }
 
    @Override
-   public ze<ada> a() {
-      return agk.I;
+   public zf<ada> a() {
+      return agl.H;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public float e() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

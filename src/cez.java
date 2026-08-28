@@ -1,16 +1,67 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cez extends cfa {
-   public cez(bwz $$0, double $$1) {
-      super($$0, $$1);
+public class cez extends cdv {
+   private final ckx a;
+   private final double b;
+   private double c;
+   private double d;
+   private double e;
+
+   public cez(ckx $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(cdv.a.a));
    }
 
-   @Nullable
    @Override
-   protected fcu h() {
-      fcu $$0 = this.b.h(0.0F);
-      int $$1 = 8;
-      fcu $$2 = chm.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : chi.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
+   public boolean b() {
+      if (!this.a.gH() && this.a.ca()) {
+         fdw $$0 = chs.a(this.a, 5, 4);
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public void d() {
+      this.a.O().a(this.c, this.d, this.e, this.b);
+   }
+
+   @Override
+   public boolean c() {
+      return !this.a.gH() && !this.a.O().k() && this.a.ca();
+   }
+
+   @Override
+   public void a() {
+      if (!this.a.gH() && this.a.dY().a(this.a(50)) == 0) {
+         bwa $$0 = this.a.cZ();
+         if ($$0 == null) {
+            return;
+         }
+
+         if ($$0 instanceof cqs $$1) {
+            int $$2 = this.a.gN();
+            int $$3 = this.a.gS();
+            if ($$3 > 0 && this.a.dY().a($$3) < $$2) {
+               this.a.f($$1);
+               return;
+            }
+
+            this.a.u(5);
+         }
+
+         this.a.bO();
+         this.a.gW();
+         this.a.dV().a(this.a, (byte)6);
+      }
    }
 }

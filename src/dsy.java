@@ -1,79 +1,41 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.function.Function;
 
-public class dsy extends dkg implements doe {
-   public static final MapCodec<dsy> a = b(dsy::new);
-   public static final dzk<dzw> b = dzc.bm;
+public interface dsy {
+   int d = 1;
+   int e = 4;
+   eao f = eae.V;
 
-   @Override
-   public MapCodec<dsy> a() {
-      return a;
-   }
+   default Function<dzo, feq> a(eam<ja> $$0, eao $$1) {
+      Map<ja, feq> $$2 = fen.c(dlu.a(0.0, 0.0, 0.0, 8.0, this.b(), 8.0));
+      return $$3 -> {
+         feq $$4 = fen.a();
+         ja $$5 = $$3.c($$0);
+         int $$6 = $$3.c($$1);
 
-   protected dsy(dyl.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, dzw.b));
-   }
-
-   @Override
-   public dvl a(jj $$0, dym $$1) {
-      return new dxe($$0, $$1);
-   }
-
-   @Override
-   protected btq a(dym $$0, dhp $$1, jj $$2, cqi $$3, fcq $$4) {
-      dvl $$5 = $$1.c_($$2);
-      if ($$5 instanceof dxe) {
-         return (btq)(((dxe)$$5).a($$3) ? btq.a : btq.e);
-      } else {
-         return btq.e;
-      }
-   }
-
-   @Override
-   public void a(dhp $$0, jj $$1, dym $$2, @Nullable bwr $$3, cxy $$4) {
-      if (!$$0.C) {
-         if ($$3 != null) {
-            dvl $$5 = $$0.c_($$1);
-            if ($$5 instanceof dxe) {
-               ((dxe)$$5).a($$3);
-            }
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$4 = fen.a($$4, $$2.get($$5));
+            $$5 = $$5.i();
          }
-      }
+
+         return $$4.b();
+      };
    }
 
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b);
+   default eao c() {
+      return f;
    }
 
-   @Override
-   protected void a(dym $$0, dhp $$1, jj $$2, dku $$3, @Nullable ewb $$4, boolean $$5) {
-      if ($$1 instanceof arn) {
-         if ($$1.c_($$2) instanceof dxe $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.E();
-            if ($$8 && !$$9) {
-               $$7.d(true);
-               this.a((arn)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.d(false);
-            }
-         }
-      }
+   default double b() {
+      return 1.0;
    }
 
-   private void a(arn $$0, dxe $$1) {
-      switch ($$1.v()) {
-         case a:
-            $$1.c(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.C();
-         case d:
-      }
+   default boolean a(dzo $$0, dcl $$1, eao $$2) {
+      return !$$1.h() && $$1.n().a($$0.b().h()) && $$0.c($$2) < 4;
+   }
+
+   default dzo a(dcl $$0, dlu $$1, eao $$2, eam<ja> $$3) {
+      dzo $$4 = $$0.q().a_($$0.a());
+      return $$4.a($$1) ? $$4.b($$2, Integer.valueOf(Math.min(4, $$4.c($$2) + 1))) : $$1.m().b($$3, $$0.g().g());
    }
 }

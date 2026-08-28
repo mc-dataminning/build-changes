@@ -1,27 +1,32 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
 
-public class dhd {
-   public static final dhd a = new dhd(ImmutableList.of("vanilla"), ImmutableList.of());
-   public static final Codec<dhd> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
-            .apply($$0, dhd::new)
+public record dhd(je<dhf> c, je<dhh> d) implements dbx {
+   public static final Codec<dhd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dhf.c.fieldOf("material").forGetter(dhd::a), dhh.c.fieldOf("pattern").forGetter(dhd::b)).apply($$0, dhd::new)
    );
-   private final List<String> c;
-   private final List<String> d;
+   public static final yu<wh, dhd> b = yu.a(dhf.d, dhd::a, dhh.d, dhd::b, dhd::new);
+   private static final ww e = ww.c(af.a("item", ale.b("smithing_template.upgrade"))).a(n.h);
 
-   public dhd(List<String> $$0, List<String> $$1) {
-      this.c = ImmutableList.copyOf($$0);
-      this.d = ImmutableList.copyOf($$1);
+   @Override
+   public void a(cyo.b $$0, Consumer<ww> $$1, dah $$2, ke $$3) {
+      $$1.accept(e);
+      $$1.accept(wv.a().b(this.d.a().a(this.c)));
+      $$1.accept(wv.a().b(this.c.a().b()));
    }
 
-   public List<String> a() {
+   public ale a(String $$0, ald<dgz> $$1) {
+      dhe.a $$2 = this.a().a().a().a($$1);
+      return this.b().a().a().a((UnaryOperator<String>)($$2x -> $$0 + "/" + $$2x + "_" + $$2.a()));
+   }
+
+   public je<dhf> a() {
       return this.c;
    }
 
-   public List<String> b() {
+   public je<dhh> b() {
       return this.d;
    }
 }

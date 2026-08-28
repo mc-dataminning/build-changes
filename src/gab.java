@@ -1,51 +1,32 @@
-import java.util.List;
+public class gab extends gaf {
+   private static final ww b = ww.c("multiplayerWarning.header").a(n.r);
+   private static final ww c = ww.c("multiplayerWarning.message");
+   private static final ww d = ww.c("multiplayerWarning.check");
+   private static final ww s = b.f().f("\n").b(c);
+   private final fxi u;
 
-public class gab extends gae<ctp> {
-   private static final fsa h = new fsa(
-      ald.b("recipe_book/furnace_filter_enabled"),
-      ald.b("recipe_book/furnace_filter_disabled"),
-      ald.b("recipe_book/furnace_filter_enabled_highlighted"),
-      ald.b("recipe_book/furnace_filter_disabled_highlighted")
-   );
-   private final wv i;
-
-   public gab(ctp $$0, wv $$1, List<gae.a> $$2) {
-      super($$0, $$2);
-      this.i = $$1;
+   public gab(fxi $$0) {
+      super(b, c, d, s);
+      this.u = $$0;
    }
 
    @Override
-   protected void a() {
-      this.e.a(h);
-   }
-
-   @Override
-   protected boolean a(cvk $$0) {
-      return switch ($$0.d) {
-         case 0, 1, 2 -> true;
-         default -> false;
-      };
-   }
-
-   @Override
-   protected void a(gac $$0, ddr $$1, bav $$2) {
-      $$0.b(this.f.l(), $$2, $$1.d());
-      if ($$1 instanceof ddq $$3) {
-         $$0.a(this.f.k.get(0), $$2, $$3.b());
-         cvk $$4 = this.f.k.get(1);
-         if ($$4.g().f()) {
-            $$0.a($$4, $$2, $$3.c());
+   protected fvf m() {
+      fvi $$0 = fvi.e().a(8);
+      $$0.a(frq.a(wv.i, $$0x -> {
+         if (this.a.a()) {
+            this.m.n.u = true;
+            this.m.n.az();
          }
-      }
+
+         this.m.a(new gaa(this.u));
+      }).a());
+      $$0.a(frq.a(wv.k, $$0x -> this.aK_()).a());
+      return $$0;
    }
 
    @Override
-   protected wv b() {
-      return this.i;
-   }
-
-   @Override
-   protected void a(gai $$0, cqn $$1) {
-      $$0.a($$1, $$0x -> $$0x instanceof ddq);
+   public void aK_() {
+      this.m.a(this.u);
    }
 }

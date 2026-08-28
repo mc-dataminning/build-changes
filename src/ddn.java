@@ -1,115 +1,80 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ddn implements dca {
-   final String c;
-   final dby d;
-   final dch e;
-   final dch f;
-   final ddo g;
-   @Nullable
-   private dck h;
+public class ddn {
+   private final ddn.a[] a;
+   private WeakReference<ddq> b = new WeakReference<>(null);
 
-   public ddn(String $$0, dby $$1, dch $$2, dch $$3, ddo $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   public ddn(int $$0) {
+      this.a = new ddn.a[$$0];
    }
 
-   public boolean a(dbz $$0, dhp $$1) {
-      if ($$0.e() != 2) {
-         return false;
+   public Optional<ddo<dcy>> a(aro $$0, dcx $$1) {
+      if ($$1.b()) {
+         return Optional.empty();
       } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
+         this.a($$0);
 
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cxy $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if (!$$2 && this.e.a($$5) && $$5.h() != this.g.b().a()) {
-                  $$2 = true;
-               } else {
-                  if ($$3 || !this.f.a($$5)) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            ddn.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1)) {
+               this.a($$2);
+               return Optional.ofNullable($$3.d());
             }
          }
 
-         return $$2 && $$3;
+         return this.a($$1, $$0);
       }
    }
 
-   public cxy a(dbz $$0, ju.a $$1) {
-      cxy $$2 = cxy.k;
+   private void a(aro $$0) {
+      ddq $$1 = $$0.t();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
+   }
+
+   private Optional<ddo<dcy>> a(dcx $$0, aro $$1) {
+      Optional<ddo<dcy>> $$2 = $$1.t().a(ddu.a, $$0, $$1);
+      this.a($$0, $$2.orElse(null));
+      return $$2;
+   }
+
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         ddn.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
+   }
+
+   private void a(dcx $$0, @Nullable ddo<dcy> $$1) {
+      jn<cys> $$2 = jn.a($$0.a(), cys.k);
 
       for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         cxy $$4 = $$0.a($$3);
-         if (!$$4.f() && this.e.a($$4) && $$4.h() != this.g.b().a()) {
-            $$2 = $$4;
+         $$2.set($$3, $$0.a($$3).c(1));
+      }
+
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new ddn.a($$2, $$0.f(), $$0.g(), $$1);
+   }
+
+   static record a(jn<cys> a, int b, int c, @Nullable ddo<dcy> d) {
+      public boolean a(dcx $$0) {
+         if (this.b == $$0.f() && this.c == $$0.g()) {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cys.c(this.a.get($$1), $$0.a($$1))) {
+                  return false;
+               }
+            }
+
+            return true;
+         } else {
+            return false;
          }
-      }
-
-      return this.g.a($$2);
-   }
-
-   @Override
-   public List<ddr> g() {
-      return List.of(new ddw(List.of(this.e.c(), this.f.c()), this.g.a(), new ddx.d(cyc.fe)));
-   }
-
-   @Override
-   public dcv<ddn> a() {
-      return dcv.m;
-   }
-
-   @Override
-   public String j() {
-      return this.c;
-   }
-
-   @Override
-   public dck ak_() {
-      if (this.h == null) {
-         this.h = dck.b(List.of(this.e, this.f));
-      }
-
-      return this.h;
-   }
-
-   @Override
-   public dby c() {
-      return this.d;
-   }
-
-   public static class a implements dcv<ddn> {
-      private static final MapCodec<ddn> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  dby.e.fieldOf("category").orElse(dby.d).forGetter($$0x -> $$0x.d),
-                  dch.d.fieldOf("input").forGetter($$0x -> $$0x.e),
-                  dch.d.fieldOf("material").forGetter($$0x -> $$0x.f),
-                  ddo.a.fieldOf("result").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, ddn::new)
-      );
-      public static final yt<wg, ddn> w = yt.a(yr.o, $$0 -> $$0.c, dby.g, $$0 -> $$0.d, dch.a, $$0 -> $$0.e, dch.a, $$0 -> $$0.f, ddo.b, $$0 -> $$0.g, ddn::new);
-
-      @Override
-      public MapCodec<ddn> a() {
-         return x;
-      }
-
-      @Override
-      public yt<wg, ddn> b() {
-         return w;
       }
    }
 }

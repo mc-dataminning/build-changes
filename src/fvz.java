@@ -1,5 +1,8 @@
-public abstract class fvz implements frq {
-   public boolean a() {
-      return true;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fvz {
 }

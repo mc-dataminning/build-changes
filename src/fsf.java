@@ -1,29 +1,39 @@
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class fsf extends fsc {
-   private static final int f = 500;
+public class fsf extends fro {
+   private final fra a;
 
-   public fsf(fpx $$0, bop $$1) {
-      super($$0, $$1);
+   public fsf(fra $$0, ww $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
+      this.a = $$0;
    }
 
    @Override
-   protected void d(fpz $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
+   protected void b(frc $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.F() + this.A() / 2;
+      int $$5 = this.G() + this.y() / 2;
+      ww $$6 = this.B();
+      $$0.b(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1);
+      String $$7 = fwx.a(af.c());
+      $$0.b(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712);
    }
 
    @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
+   protected void a(fvn $$0) {
    }
 
    @Override
-   protected int b(double $$0) {
-      return (int)Math.round($$0 * 60.0 / 500.0);
+   public void a(hnc $$0) {
    }
 
    @Override
-   protected int a(long $$0) {
-      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
+   public boolean E() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fqz a(fvt $$0) {
+      return null;
    }
 }

@@ -1,74 +1,62 @@
-import javax.annotation.Nullable;
+public enum eap implements bai {
+   a("harp", awl.sG, eap.a.a),
+   b("basedrum", awl.sA, eap.a.a),
+   c("snare", awl.sJ, eap.a.a),
+   d("hat", awl.sH, eap.a.a),
+   e("bass", awl.sB, eap.a.a),
+   f("flute", awl.sE, eap.a.a),
+   g("bell", awl.sC, eap.a.a),
+   h("guitar", awl.sF, eap.a.a),
+   i("chime", awl.sD, eap.a.a),
+   j("xylophone", awl.sK, eap.a.a),
+   k("iron_xylophone", awl.sL, eap.a.a),
+   l("cow_bell", awl.sM, eap.a.a),
+   m("didgeridoo", awl.sN, eap.a.a),
+   n("bit", awl.sO, eap.a.a),
+   o("banjo", awl.sP, eap.a.a),
+   p("pling", awl.sI, eap.a.a),
+   q("zombie", awl.sQ, eap.a.b),
+   r("skeleton", awl.sR, eap.a.b),
+   s("creeper", awl.sS, eap.a.b),
+   t("dragon", awl.sT, eap.a.b),
+   u("wither_skeleton", awl.sU, eap.a.b),
+   v("piglin", awl.sV, eap.a.b),
+   w("custom_head", awl.Bp, eap.a.c);
 
-public class eap extends eat {
-   private final js<dis> n;
+   private final String x;
+   private final je<awk> y;
+   private final eap.a z;
 
-   public eap(dhp $$0, dgw $$1, js<dis> $$2) {
-      super($$0, $$1);
-      this.n = $$2;
+   private eap(final String $$0, final je<awk> $$1, final eap.a $$2) {
+      this.x = $$0;
+      this.y = $$1;
+      this.z = $$2;
    }
 
    @Override
-   public dym a_(jj $$0) {
-      return dkw.nD.m();
+   public String c() {
+      return this.x;
    }
 
-   @Nullable
-   @Override
-   public dym a(jj $$0, dym $$1, int $$2) {
-      return null;
+   public je<awk> a() {
+      return this.y;
    }
 
-   @Override
-   public eut b_(jj $$0) {
-      return euu.a.g();
+   public boolean b() {
+      return this.z == eap.a.a;
    }
 
-   @Override
-   public int i(jj $$0) {
-      return 0;
+   public boolean d() {
+      return this.z == eap.a.c;
    }
 
-   @Nullable
-   @Override
-   public dvl a(jj $$0, eat.b $$1) {
-      return null;
+   public boolean e() {
+      return this.z != eap.a.a;
    }
 
-   @Override
-   public void b(dvl $$0) {
-   }
-
-   @Override
-   public void a(dvl $$0) {
-   }
-
-   @Override
-   public void d(jj $$0) {
-   }
-
-   @Override
-   public boolean E() {
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      return true;
-   }
-
-   @Override
-   public arb F() {
-      return arb.b;
-   }
-
-   @Override
-   public js<dis> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.n;
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

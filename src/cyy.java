@@ -1,37 +1,48 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class cyy extends cxu {
-   public static final int a = 5;
-   public static final float b = 3.0F;
+public record cyy(je<awk> e, ww f, float g, int h) {
+   public static final Codec<cyy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awk.b.fieldOf("sound_event").forGetter(cyy::b),
+               wy.a.fieldOf("description").forGetter(cyy::c),
+               ays.o.fieldOf("length_in_seconds").forGetter(cyy::d),
+               ays.a(0, 15).fieldOf("comparator_output").forGetter(cyy::e)
+            )
+            .apply($$0, cyy::new)
+   );
+   public static final yu<wh, cyy> b = yu.a(awk.d, cyy::b, wy.b, cyy::c, ys.l, cyy::d, ys.h, cyy::e, cyy::new);
+   public static final Codec<je<cyy>> c = alb.a(mg.aT);
+   public static final yu<wh, je<cyy>> d = ys.a(mg.aT, b);
+   private static final int i = 20;
 
-   public cyy(cxu.a $$0) {
-      super($$0);
+   public int a() {
+      return azk.f(this.g * 20.0F);
    }
 
-   @Override
-   public wv a(cxy $$0) {
-      cwv $$1 = $$0.a(kx.al);
-      return (wv)($$1 != null ? wv.c(this.m + "." + $$1.b()) : super.a($$0));
+   public boolean a(long $$0) {
+      return $$0 >= (long)(this.a() + 20);
    }
 
-   @Override
-   public void a(cxy $$0, cxu.b $$1, List<wv> $$2, czn $$3) {
-      cwc.a($$0, $$2);
+   public static Optional<je<cyy>> a(jg.a $$0, cys $$1) {
+      cyx $$2 = $$1.a(kj.ae);
+      return $$2 != null ? $$2.a().a($$0) : Optional.empty();
    }
 
-   @Override
-   public cya b(cxy $$0) {
-      return cya.d;
+   public je<awk> b() {
+      return this.e;
    }
 
-   @Override
-   public int a(cxy $$0, bwr $$1) {
-      return 72000;
+   public ww c() {
+      return this.f;
    }
 
-   @Override
-   public btq a(dhp $$0, cqi $$1, btp $$2) {
-      $$1.c($$2);
-      return btq.c;
+   public float d() {
+      return this.g;
+   }
+
+   public int e() {
+      return this.h;
    }
 }

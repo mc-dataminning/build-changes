@@ -1,11 +1,8 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface fbi {
-   @Nullable
-   ut a(exl var1);
-
-   Set<bat<?>> b();
-
-   fbh a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fbi {
 }

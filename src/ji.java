@@ -1,53 +1,225 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Either;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Spliterator;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public class ji {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<jo, j> b = Maps.newEnumMap(
-      Map.of(
-         jo.d,
-         j.a(),
-         jo.f,
-         new j(null, new Quaternionf().rotateY((float) (Math.PI / 2)), null, null),
-         jo.e,
-         new j(null, new Quaternionf().rotateY((float) (-Math.PI / 2)), null, null),
-         jo.c,
-         new j(null, new Quaternionf().rotateY((float) Math.PI), null, null),
-         jo.b,
-         new j(null, new Quaternionf().rotateX((float) (-Math.PI / 2)), null, null),
-         jo.a,
-         new j(null, new Quaternionf().rotateX((float) (Math.PI / 2)), null, null)
-      )
-   );
-   private static final Map<jo, j> c = Maps.newEnumMap(af.a(b, j::b));
+public interface ji<T> extends Iterable<je<T>> {
+   Stream<je<T>> a();
 
-   public static j a(j $$0) {
-      Matrix4f $$1 = new Matrix4f().translation(0.5F, 0.5F, 0.5F);
-      $$1.mul($$0.c());
-      $$1.translate(-0.5F, -0.5F, -0.5F);
-      return new j($$1);
+   int b();
+
+   boolean c();
+
+   Either<axp<T>, List<je<T>>> d();
+
+   Optional<je<T>> a(azt var1);
+
+   je<T> a(int var1);
+
+   boolean a(je<T> var1);
+
+   boolean a(jh<T> var1);
+
+   Optional<axp<T>> e();
+
+   @Deprecated
+   @VisibleForTesting
+   static <T> ji.c<T> a(jh<T> $$0, axp<T> $$1) {
+      return new ji.c<T>($$0, $$1) {
+         @Override
+         protected List<je<T>> g() {
+            throw new UnsupportedOperationException("Tag " + this.h() + " can't be dereferenced during construction");
+         }
+      };
    }
 
-   public static j b(j $$0) {
-      Matrix4f $$1 = new Matrix4f().translation(-0.5F, -0.5F, -0.5F);
-      $$1.mul($$0.c());
-      $$1.translate(0.5F, 0.5F, 0.5F);
-      return new j($$1);
+   static <T> ji<T> f() {
+      return (ji<T>)ji.a.a;
    }
 
-   public static j a(j $$0, jo $$1) {
-      jo $$2 = jo.a($$0.c(), $$1);
-      j $$3 = $$0.b();
-      if ($$3 == null) {
-         a.debug("Failed to invert transformation {}", $$0);
-         return j.a();
-      } else {
-         j $$4 = c.get($$1).a($$3).a(b.get($$2));
-         return a($$4);
+   @SafeVarargs
+   static <T> ji.a<T> a(je<T>... $$0) {
+      return new ji.a<>(List.of($$0));
+   }
+
+   static <T> ji.a<T> a(List<? extends je<T>> $$0) {
+      return new ji.a<>(List.copyOf($$0));
+   }
+
+   @SafeVarargs
+   static <E, T> ji.a<T> a(Function<E, je<T>> $$0, E... $$1) {
+      return a(Stream.of($$1).map($$0).toList());
+   }
+
+   static <E, T> ji.a<T> a(Function<E, je<T>> $$0, Collection<E> $$1) {
+      return a($$1.stream().map($$0).toList());
+   }
+
+   public static final class a<T> extends ji.b<T> {
+      static final ji.a<?> a = new ji.a(List.of());
+      private final List<je<T>> b;
+      @Nullable
+      private Set<je<T>> c;
+
+      a(List<je<T>> $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      protected List<je<T>> g() {
+         return this.b;
+      }
+
+      @Override
+      public boolean c() {
+         return true;
+      }
+
+      @Override
+      public Either<axp<T>, List<je<T>>> d() {
+         return Either.right(this.b);
+      }
+
+      @Override
+      public Optional<axp<T>> e() {
+         return Optional.empty();
+      }
+
+      @Override
+      public boolean a(je<T> $$0) {
+         if (this.c == null) {
+            this.c = Set.copyOf(this.b);
+         }
+
+         return this.c.contains($$0);
+      }
+
+      @Override
+      public String toString() {
+         return "DirectSet[" + this.b + "]";
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            if ($$0 instanceof ji.a<?> $$1 && this.b.equals($$1.b)) {
+               return true;
+            }
+
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return this.b.hashCode();
+      }
+   }
+
+   public abstract static class b<T> implements ji<T> {
+      protected abstract List<je<T>> g();
+
+      @Override
+      public int b() {
+         return this.g().size();
+      }
+
+      @Override
+      public Spliterator<je<T>> spliterator() {
+         return this.g().spliterator();
+      }
+
+      @Override
+      public Iterator<je<T>> iterator() {
+         return this.g().iterator();
+      }
+
+      @Override
+      public Stream<je<T>> a() {
+         return this.g().stream();
+      }
+
+      @Override
+      public Optional<je<T>> a(azt $$0) {
+         return af.b(this.g(), $$0);
+      }
+
+      @Override
+      public je<T> a(int $$0) {
+         return this.g().get($$0);
+      }
+
+      @Override
+      public boolean a(jh<T> $$0) {
+         return true;
+      }
+   }
+
+   public static class c<T> extends ji.b<T> {
+      private final jh<T> a;
+      private final axp<T> b;
+      @Nullable
+      private List<je<T>> c;
+
+      c(jh<T> $$0, axp<T> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      void b(List<je<T>> $$0) {
+         this.c = List.copyOf($$0);
+      }
+
+      public axp<T> h() {
+         return this.b;
+      }
+
+      @Override
+      protected List<je<T>> g() {
+         if (this.c == null) {
+            throw new IllegalStateException("Trying to access unbound tag '" + this.b + "' from registry " + this.a);
+         } else {
+            return this.c;
+         }
+      }
+
+      @Override
+      public boolean c() {
+         return this.c != null;
+      }
+
+      @Override
+      public Either<axp<T>, List<je<T>>> d() {
+         return Either.left(this.b);
+      }
+
+      @Override
+      public Optional<axp<T>> e() {
+         return Optional.of(this.b);
+      }
+
+      @Override
+      public boolean a(je<T> $$0) {
+         return $$0.a(this.b);
+      }
+
+      @Override
+      public String toString() {
+         return "NamedSet(" + this.b + ")[" + this.c + "]";
+      }
+
+      @Override
+      public boolean a(jh<T> $$0) {
+         return this.a.a($$0);
       }
    }
 }

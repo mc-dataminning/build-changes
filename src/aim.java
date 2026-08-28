@@ -1,33 +1,29 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class aim implements zd<agn> {
+   public static final yu<vs, aim> a = zd.a(aim::a, aim::new);
+   private final btx b;
 
-public class aim implements zc<agm> {
-   public static final yt<vr, aim> a = zc.a(aim::a, aim::new);
-   private final UUID b;
-
-   public aim(UUID $$0) {
+   public aim(btx $$0) {
       this.b = $$0;
    }
 
-   private aim(vr $$0) {
-      this.b = $$0.n();
+   private aim(vs $$0) {
+      this.b = $$0.b(btx.class);
    }
 
-   private void a(vr $$0) {
+   private void a(vs $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public ze<aim> a() {
-      return agk.cm;
+   public zf<aim> a() {
+      return agl.cl;
    }
 
-   public void a(agm $$0) {
+   public void a(agn $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bvs a(arn $$0) {
-      return $$0.b(this.b);
+   public btx b() {
+      return this.b;
    }
 }

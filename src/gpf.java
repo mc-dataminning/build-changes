@@ -1,45 +1,81 @@
-public class gpf {
-   protected final int[] a;
-   protected final int b;
-   protected final jo c;
-   protected final hgs d;
-   private final boolean e;
-   private final int f;
+import java.util.Optional;
 
-   public gpf(int[] $$0, int $$1, jo $$2, hgs $$3, boolean $$4, int $$5) {
+public class gpf implements gpd {
+   private final gpd.a a;
+   private final gpd.a b = gpd.a(new fin(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
+
+   public gpf(gpd.a $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
    }
 
-   public hgs a() {
-      return this.d;
+   @Override
+   public fiu getBuffer(gpn $$0) {
+      if ($$0.V()) {
+         fiu $$1 = this.b.getBuffer($$0);
+         return new gpf.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         fiu $$2 = this.a.getBuffer($$0);
+         Optional<gpn> $$3 = $$0.U();
+         if ($$3.isPresent()) {
+            fiu $$4 = this.b.getBuffer($$3.get());
+            gpf.a $$5 = new gpf.a($$4, this.c, this.d, this.e, this.f);
+            return fix.a($$5, $$2);
+         } else {
+            return $$2;
+         }
+      }
    }
 
-   public int[] b() {
-      return this.a;
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public boolean c() {
-      return this.b != -1;
+   public void a() {
+      this.b.b();
    }
 
-   public int d() {
-      return this.b;
-   }
+   static record a(fiu a, int b) implements fiu {
+      public a(fiu $$0, int $$1, int $$2, int $$3, int $$4) {
+         this($$0, axu.a($$4, $$1, $$2, $$3));
+      }
 
-   public jo e() {
-      return this.c;
-   }
+      @Override
+      public fiu a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2).a(this.b);
+         return this;
+      }
 
-   public boolean f() {
-      return this.e;
-   }
+      @Override
+      public fiu a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
 
-   public int g() {
-      return this.f;
+      @Override
+      public fiu a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fiu a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fiu b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fiu b(float $$0, float $$1, float $$2) {
+         return this;
+      }
    }
 }

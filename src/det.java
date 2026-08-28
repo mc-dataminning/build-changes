@@ -1,54 +1,63 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 
-public record det(jw<buu> d, deo e, deo f, deo g, deo h) implements dey {
+public record det(int f, int g, List<dev> h, dev i, dev j) implements dep {
    public static final MapCodec<det> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               kh.a(me.W).fieldOf("to_apply").forGetter(det::b),
-               deo.b.fieldOf("min_duration").forGetter(det::c),
-               deo.b.fieldOf("max_duration").forGetter(det::d),
-               deo.b.fieldOf("min_amplifier").forGetter(det::e),
-               deo.b.fieldOf("max_amplifier").forGetter(det::f)
+               Codec.INT.fieldOf("width").forGetter(det::b),
+               Codec.INT.fieldOf("height").forGetter(det::c),
+               dev.a.listOf().fieldOf("ingredients").forGetter(det::f),
+               dev.a.fieldOf("result").forGetter(det::d),
+               dev.a.fieldOf("crafting_station").forGetter(det::e)
             )
             .apply($$0, det::new)
    );
+   public static final yu<wh, det> b = yu.a(ys.h, det::b, ys.h, det::c, dev.b.a(ys.a()), det::f, dev.b, det::d, dev.b, det::e, det::new);
+   public static final dep.a<det> c = new dep.a<>(a, b);
 
-   @Override
-   public void a(arn $$0, int $$1, deg $$2, bvs $$3, fcu $$4) {
-      if ($$3 instanceof bwr $$5) {
-         azs $$6 = $$5.dY();
-         Optional<js<buu>> $$7 = this.d.a($$6);
-         if ($$7.isPresent()) {
-            int $$8 = Math.round(azk.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);
-            int $$9 = Math.max(0, Math.round(azk.b($$6, this.g.a($$1), this.h.a($$1))));
-            $$5.a(new buw($$7.get(), $$8, $$9));
-         }
+   public det(int f, int g, List<dev> h, dev i, dev j) {
+      if (h.size() != f * g) {
+         throw new IllegalArgumentException("Invalid shaped recipe display contents");
+      } else {
+         this.f = f;
+         this.g = g;
+         this.h = h;
+         this.i = i;
+         this.j = j;
       }
    }
 
    @Override
-   public MapCodec<det> a() {
-      return a;
+   public dep.a<det> a() {
+      return c;
    }
 
-   public jw<buu> b() {
-      return this.d;
+   @Override
+   public boolean a(cub $$0) {
+      return this.h.stream().allMatch($$1 -> $$1.a($$0)) && dep.super.a($$0);
    }
 
-   public deo c() {
-      return this.e;
-   }
-
-   public deo d() {
+   public int b() {
       return this.f;
    }
 
-   public deo e() {
+   public int c() {
       return this.g;
    }
 
-   public deo f() {
+   public List<dev> f() {
       return this.h;
+   }
+
+   @Override
+   public dev d() {
+      return this.i;
+   }
+
+   @Override
+   public dev e() {
+      return this.j;
    }
 }

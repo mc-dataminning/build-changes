@@ -1,43 +1,34 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class bjt extends DataFix {
-   private static final Logger a = LogUtils.getLogger();
-
+public class bjt extends bhq {
    public bjt(Schema $$0) {
-      super($$0, true);
+      super($$0, false, "TippedArrowPotionToItemFix", bit.D, "minecraft:arrow");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = this.getInputSchema().getType(biq.z);
-      Type<?> $$1 = this.getOutputSchema().getType(biq.z);
-      return this.a($$0, $$1);
-   }
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Potion").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("custom_potion_effects").result();
+      Optional<Dynamic<T>> $$3 = $$0.get("Color").result();
+      return $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()
+         ? $$0
+         : $$0.remove("Potion").remove("custom_potion_effects").remove("Color").update("item", $$3x -> {
+            Dynamic<?> $$4 = $$3x.get("tag").orElseEmptyMap();
+            if ($$1.isPresent()) {
+               $$4 = $$4.set("Potion", $$1.get());
+            }
 
-   private <T> TypeRewriteRule a(Type<Pair<String, String>> $$0, Type<T> $$1) {
-      return this.fixTypeEverywhere("UnflattenTextComponentFix", $$0, $$1, $$1x -> $$2 -> af.a($$1, a($$1x, (String)$$2.getSecond()), true).getValue());
-   }
+            if ($$2.isPresent()) {
+               $$4 = $$4.set("custom_potion_effects", $$2.get());
+            }
 
-   private static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
-      try {
-         JsonElement $$2 = JsonParser.parseString($$1);
-         if (!$$2.isJsonNull()) {
-            return new Dynamic($$0, JsonOps.INSTANCE.convertTo($$0, $$2));
-         }
-      } catch (Exception var3) {
-         a.error("Failed to unflatten text component json: {}", $$1, var3);
-      }
+            if ($$3.isPresent()) {
+               $$4 = $$4.set("CustomPotionColor", $$3.get());
+            }
 
-      return new Dynamic($$0, $$0.createString($$1));
+            return $$3x.set("tag", $$4);
+         });
    }
 }

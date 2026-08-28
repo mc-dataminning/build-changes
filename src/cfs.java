@@ -1,59 +1,40 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.EnumSet;
 
-public class cfs<T> {
-   private final T a;
-   private long b;
+public class cfs extends cfv {
+   private final bxv a;
+   private bwz b;
+   private int c;
 
-   public cfs(T $$0, long $$1) {
+   public cfs(bxv $$0) {
+      super($$0, false);
       this.a = $$0;
-      this.b = $$1;
-   }
-
-   public void a() {
-      if (this.e()) {
-         this.b--;
-      }
-   }
-
-   public static <T> cfs<T> a(T $$0) {
-      return new cfs<>($$0, Long.MAX_VALUE);
-   }
-
-   public static <T> cfs<T> a(T $$0, long $$1) {
-      return new cfs<>($$0, $$1);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public T c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b <= 0L;
+      this.a(EnumSet.of(cdv.a.d));
    }
 
    @Override
-   public String toString() {
-      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   public boolean b() {
+      if (this.a.q() && !this.a.gq()) {
+         bwz $$0 = this.a.e();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.eq();
+            int $$1 = $$0.es();
+            return $$1 != this.c && this.a(this.b, cho.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
-   @bar
-   public boolean e() {
-      return this.b != Long.MAX_VALUE;
-   }
+   @Override
+   public void d() {
+      this.e.g(this.b);
+      bwz $$0 = this.a.e();
+      if ($$0 != null) {
+         this.c = $$0.es();
+      }
 
-   public static <T> Codec<cfs<T>> a(Codec<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
-                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
-               )
-               .apply($$1, ($$0xx, $$1x) -> new cfs<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
-      );
+      super.d();
    }
 }

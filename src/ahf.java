@@ -1,20 +1,30 @@
-public record ahf(bom b) implements zc<agm> {
-   public static final yt<vr, ahf> a = zc.a(ahf::a, ahf::new);
+public record ahf(int b, int c, boolean d) implements zd<agn> {
+   public static final yu<vs, ahf> a = zd.a(ahf::a, ahf::new);
 
-   private ahf(vr $$0) {
-      this($$0.b(bom.class));
+   private ahf(vs $$0) {
+      this($$0.l(), $$0.x(), $$0.readBoolean());
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.b);
+   private void a(vs $$0) {
+      $$0.c(this.b);
+      $$0.f(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public ze<ahf> a() {
-      return agk.bC;
+   public zf<ahf> a() {
+      return agl.bB;
    }
 
-   public void a(agm $$0) {
+   public void a(agn $$0) {
       $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

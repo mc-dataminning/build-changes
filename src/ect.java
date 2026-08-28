@@ -1,61 +1,16 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public interface ect {
+   void a(Throwable var1, ede var2, dhw var3);
 
-public class ect<T extends ecr> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
-   private final Map<UUID, T> c = Maps.newHashMap();
+   void b(Throwable var1, ede var2, dhw var3);
 
-   public <U extends T> void a(ecy<T, U> $$0, axv<U> $$1) {
-      ObjectIterator var3 = this.b.values().iterator();
-
-      while (var3.hasNext()) {
-         T $$2 = (T)var3.next();
-         U $$3 = (U)$$0.a($$2);
-         if ($$3 != null && $$1.accept($$3).a()) {
-            return;
-         }
-      }
+   static z a(dhw $$0, dhw $$1) {
+      o $$2 = o.a(new IllegalStateException("Retrieved chunk position " + $$0 + " does not match requested " + $$1), "Chunk found in invalid location");
+      p $$3 = $$2.a("Misplaced Chunk");
+      $$3.a("Stored Position", $$0::toString);
+      return new z($$2);
    }
 
-   public Iterable<T> a() {
-      return Iterables.unmodifiableIterable(this.b.values());
-   }
-
-   public void a(T $$0) {
-      UUID $$1 = $$0.cG();
-      if (this.c.containsKey($$1)) {
-         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
-      } else {
-         this.c.put($$1, $$0);
-         this.b.put($$0.ar(), $$0);
-      }
-   }
-
-   public void b(T $$0) {
-      this.c.remove($$0.cG());
-      this.b.remove($$0.ar());
-   }
-
-   @Nullable
-   public T a(int $$0) {
-      return (T)this.b.get($$0);
-   }
-
-   @Nullable
-   public T a(UUID $$0) {
-      return this.c.get($$0);
-   }
-
-   public int b() {
-      return this.c.size();
+   default void a(dhw $$0, dhw $$1, ede $$2) {
+      this.a(a($$0, $$1), $$2, $$1);
    }
 }

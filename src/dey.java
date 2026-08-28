@@ -1,33 +1,44 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dey extends dez {
-   Codec<dey> b = md.au.q().dispatch(dey::a, Function.identity());
-
-   static MapCodec<? extends dey> a(kf<MapCodec<? extends dey>> $$0) {
-      kf.a($$0, "all_of", des.a.a);
-      kf.a($$0, "apply_mob_effect", det.a);
-      kf.a($$0, "change_item_damage", deu.a);
-      kf.a($$0, "damage_entity", dev.a);
-      kf.a($$0, "explode", dfb.a);
-      kf.a($$0, "ignite", dfc.a);
-      kf.a($$0, "play_sound", dfe.a);
-      kf.a($$0, "replace_block", dfg.a);
-      kf.a($$0, "replace_disk", dfh.a);
-      kf.a($$0, "run_function", dfi.a);
-      kf.a($$0, "set_block_properties", dfj.a);
-      kf.a($$0, "spawn_particles", dfl.a);
-      return kf.a($$0, "summon_entity", dfm.a);
-   }
-
-   void a(arn var1, int var2, deg var3, bvs var4, fcu var5);
+public record dey(dev f, dev g, dev h, dev i, dev j) implements dep {
+   public static final MapCodec<dey> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dev.a.fieldOf("template").forGetter(dey::b),
+               dev.a.fieldOf("base").forGetter(dey::c),
+               dev.a.fieldOf("addition").forGetter(dey::f),
+               dev.a.fieldOf("result").forGetter(dey::d),
+               dev.a.fieldOf("crafting_station").forGetter(dey::e)
+            )
+            .apply($$0, dey::new)
+   );
+   public static final yu<wh, dey> b = yu.a(dev.b, dey::b, dev.b, dey::c, dev.b, dey::f, dev.b, dey::d, dev.b, dey::e, dey::new);
+   public static final dep.a<dey> c = new dep.a<>(a, b);
 
    @Override
-   default void a(arn $$0, int $$1, deg $$2, bvs $$3, fcu $$4, boolean $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4);
+   public dep.a<dey> a() {
+      return c;
+   }
+
+   public dev b() {
+      return this.f;
+   }
+
+   public dev c() {
+      return this.g;
+   }
+
+   public dev f() {
+      return this.h;
    }
 
    @Override
-   MapCodec<? extends dey> a();
+   public dev d() {
+      return this.i;
+   }
+
+   @Override
+   public dev e() {
+      return this.j;
+   }
 }

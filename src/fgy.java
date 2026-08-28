@@ -1,34 +1,134 @@
-public record fgy(int a, int b, boolean c, int d) implements fgz<ffy> {
-   public ffy a() {
-      return new ffz(this.a, this.b, this.c);
+import com.google.common.collect.ImmutableList;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
+import java.util.Objects;
+
+public class fgy extends fha {
+   public static final int a = 854;
+   public static final int b = 480;
+   static final fgy.b l = new fgy.b(854, 480);
+
+   public fgy(int $$0, int $$1) {
+      super(true);
+      this.e($$0, $$1);
    }
 
-   public void a(ffy $$0) {
-      $$0.b(axu.j(this.d), axu.k(this.d), axu.l(this.d), axu.i(this.d));
+   private void e(int $$0, int $$1) {
+      fgy.b $$2 = this.f($$0, $$1);
+      this.h = GlStateManager.glGenFramebuffers();
+      GlStateManager._glBindFramebuffer(36160, this.h);
+      GlStateManager._bindTexture(this.i);
+      GlStateManager._texParameter(3553, 10241, 9728);
+      GlStateManager._texParameter(3553, 10240, 9728);
+      GlStateManager._texParameter(3553, 10242, 33071);
+      GlStateManager._texParameter(3553, 10243, 33071);
+      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
+      GlStateManager._bindTexture(this.j);
+      GlStateManager._texParameter(3553, 34892, 0);
+      GlStateManager._texParameter(3553, 10241, 9728);
+      GlStateManager._texParameter(3553, 10240, 9728);
+      GlStateManager._texParameter(3553, 10242, 33071);
+      GlStateManager._texParameter(3553, 10243, 33071);
+      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
+      GlStateManager._bindTexture(0);
+      this.e = $$2.a;
+      this.f = $$2.b;
+      this.c = $$2.a;
+      this.d = $$2.b;
+      this.b();
+      GlStateManager._glBindFramebuffer(36160, 0);
    }
 
-   public void b(ffy $$0) {
-      $$0.a();
+   private fgy.b f(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.i = TextureUtil.generateTextureId();
+      this.j = TextureUtil.generateTextureId();
+      fgy.a $$2 = fgy.a.a;
+
+      for (fgy.b $$3 : fgy.b.a($$0, $$1)) {
+         $$2 = fgy.a.a;
+         if (this.a($$3)) {
+            $$2 = $$2.a(fgy.a.b);
+         }
+
+         if (this.b($$3)) {
+            $$2 = $$2.a(fgy.a.c);
+         }
+
+         if ($$2 == fgy.a.d) {
+            return $$3;
+         }
+      }
+
+      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
    }
 
-   @Override
-   public boolean a(fgz<?> $$0) {
-      return !($$0 instanceof fgy $$1) ? false : this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+   private boolean a(fgy.b $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._getError();
+      GlStateManager._bindTexture(this.i);
+      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
+      return GlStateManager._getError() != 1285;
    }
 
-   public int b() {
-      return this.a;
+   private boolean b(fgy.b $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._getError();
+      GlStateManager._bindTexture(this.j);
+      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
+      return GlStateManager._getError() != 1285;
    }
 
-   public int c() {
-      return this.b;
+   static enum a {
+      a,
+      b,
+      c,
+      d;
+
+      private static final fgy.a[] e = values();
+
+      fgy.a a(fgy.a $$0) {
+         return e[this.ordinal() | $$0.ordinal()];
+      }
    }
 
-   public boolean d() {
-      return this.c;
-   }
+   static class b {
+      public final int a;
+      public final int b;
 
-   public int e() {
-      return this.d;
+      b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      static List<fgy.b> a(int $$0, int $$1) {
+         RenderSystem.assertOnRenderThreadOrInit();
+         int $$2 = RenderSystem.maxSupportedTextureSize();
+         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new fgy.b($$0, $$1), fgy.l) : ImmutableList.of(fgy.l);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            fgy.b $$1 = (fgy.b)$$0;
+            return this.a == $$1.a && this.b == $$1.b;
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.a, this.b);
+      }
+
+      @Override
+      public String toString() {
+         return this.a + "x" + this.b;
+      }
    }
 }

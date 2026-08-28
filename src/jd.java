@@ -1,49 +1,33 @@
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType.StringType;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 
-public class jd implements iu<StringArgumentType, jd.a> {
-   public void a(jd.a $$0, vr $$1) {
-      $$1.a((Enum<?>)$$0.b);
+public record jd(ald<dip> d, iu e) {
+   public static final MapCodec<jd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dip.h.fieldOf("dimension").forGetter(jd::a), iu.a.fieldOf("pos").forGetter(jd::b)).apply($$0, jd::a)
+   );
+   public static final Codec<jd> b = a.codec();
+   public static final yu<ByteBuf, jd> c = yu.a(ald.b(mg.bm), jd::a, iu.b, jd::b, jd::a);
+
+   public static jd a(ald<dip> $$0, iu $$1) {
+      return new jd($$0, $$1);
    }
 
-   public jd.a a(vr $$0) {
-      StringType $$1 = $$0.b(StringType.class);
-      return new jd.a($$1);
+   @Override
+   public String toString() {
+      return this.d + " " + this.e;
    }
 
-   public void a(jd.a $$0, JsonObject $$1) {
-      $$1.addProperty("type", switch ($$0.b) {
-         case SINGLE_WORD -> "word";
-         case QUOTABLE_PHRASE -> "phrase";
-         case GREEDY_PHRASE -> "greedy";
-         default -> throw new MatchException(null, null);
-      });
+   public boolean a(ald<dip> $$0, iu $$1, int $$2) {
+      return this.d.equals($$0) && this.e.l($$1) <= $$2;
    }
 
-   public jd.a a(StringArgumentType $$0) {
-      return new jd.a($$0.getType());
+   public ald<dip> a() {
+      return this.d;
    }
 
-   public final class a implements iu.a<StringArgumentType> {
-      final StringType b;
-
-      public a(final StringType $$1) {
-         this.b = $$1;
-      }
-
-      public StringArgumentType a(et $$0) {
-         return switch (this.b) {
-            case SINGLE_WORD -> StringArgumentType.word();
-            case QUOTABLE_PHRASE -> StringArgumentType.string();
-            case GREEDY_PHRASE -> StringArgumentType.greedyString();
-            default -> throw new MatchException(null, null);
-         };
-      }
-
-      @Override
-      public iu<StringArgumentType, ?> a() {
-         return jd.this;
-      }
+   public iu b() {
+      return this.e;
    }
 }

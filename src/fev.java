@@ -1,11 +1,46 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.Nonnull;
-import javax.annotation.meta.TypeQualifierDefault;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-@Nonnull
-@TypeQualifierDefault({ElementType.FIELD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface fev {
+class fev {
+   private final Reference2ObjectOpenHashMap<fet, fey> a = new Reference2ObjectOpenHashMap(16, 0.5F);
+
+   @Nullable
+   public fey a(fet $$0) {
+      return (fey)this.a.get($$0);
+   }
+
+   public fey a(fet $$0, Consumer<fey> $$1) {
+      return (fey)this.a.computeIfAbsent($$0, $$1x -> {
+         fey $$2 = new fey();
+         $$1.accept($$2);
+         return $$2;
+      });
+   }
+
+   public boolean b(fet $$0) {
+      return this.a.remove($$0) != null;
+   }
+
+   public boolean a() {
+      return !this.a.isEmpty();
+   }
+
+   public Object2IntMap<fet> b() {
+      Object2IntMap<fet> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
+   }
+
+   void a(fet $$0, fey $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   Map<fet, fey> c() {
+      return Collections.unmodifiableMap(this.a);
+   }
 }

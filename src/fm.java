@@ -1,110 +1,152 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
+import com.google.gson.JsonObject;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.datafixers.util.Either;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
 
-public class fm implements ArgumentType<fm.a> {
-   private static final Collection<String> b = Arrays.asList("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("argument.player.unknown"));
+public class fm<T> implements ArgumentType<fm.c<T>> {
+   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
+   final ald<? extends jr<T>> b;
 
-   public static Collection<GameProfile> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return ((fm.a)$$0.getArgument($$1, fm.a.class)).getNames((ex)$$0.getSource());
+   public fm(ald<? extends jr<T>> $$0) {
+      this.b = $$0;
    }
 
-   public static fm a() {
-      return new fm();
+   public static <T> fm<T> a(ald<? extends jr<T>> $$0) {
+      return new fm<>($$0);
    }
 
-   public <S> fm.a a(StringReader $$0, S $$1) throws CommandSyntaxException {
-      return a($$0, ho.a($$1));
+   public static <T> fm.c<T> a(CommandContext<ei> $$0, String $$1, ald<jr<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      fm.c<?> $$4 = (fm.c<?>)$$0.getArgument($$1, fm.c.class);
+      Optional<fm.c<T>> $$5 = $$4.a($$2);
+      return $$5.orElseThrow(() -> $$3.create($$4));
    }
 
-   public fm.a a(StringReader $$0) throws CommandSyntaxException {
-      return a($$0, true);
-   }
+   public fm.c<T> a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '#') {
+         int $$1 = $$0.getCursor();
 
-   private static fm.a a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '@') {
-         ho $$2 = new ho($$0, $$1);
-         hn $$3 = $$2.t();
-         if ($$3.b()) {
-            throw fk.c.createWithContext($$0);
-         } else {
-            return new fm.b($$3);
+         try {
+            $$0.skip();
+            ale $$2 = ale.a($$0);
+            return new fm.d<>(axp.a(this.b, $$2));
+         } catch (CommandSyntaxException var4) {
+            $$0.setCursor($$1);
+            throw var4;
          }
       } else {
-         int $$4 = $$0.getCursor();
-
-         while ($$0.canRead() && $$0.peek() != ' ') {
-            $$0.skip();
-         }
-
-         String $$5 = $$0.getString().substring($$4, $$0.getCursor());
-         return $$1x -> {
-            Optional<GameProfile> $$2 = $$1x.l().at().a($$5);
-            return Collections.singleton($$2.orElseThrow(a::create));
-         };
+         ale $$4 = ale.a($$0);
+         return new fm.b<>(ald.a(this.b, $$4));
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      if ($$0.getSource() instanceof fc $$2) {
-         StringReader $$3 = new StringReader($$1.getInput());
-         $$3.setCursor($$1.getStart());
-         ho $$4 = new ho($$3, ho.a($$2));
-
-         try {
-            $$4.t();
-         } catch (CommandSyntaxException var7) {
-         }
-
-         return $$4.a($$1, $$1x -> fc.b($$2.q(), $$1x));
-      } else {
-         return Suggestions.empty();
-      }
+      return $$0.getSource() instanceof en $$2 ? $$2.a(this.b, en.a.c, $$1, $$0) : $$1.buildFuture();
    }
 
    public Collection<String> getExamples() {
-      return b;
+      return a;
    }
 
-   @FunctionalInterface
-   public interface a {
-      Collection<GameProfile> getNames(ex var1) throws CommandSyntaxException;
+   public static class a<T> implements ie<fm<T>, fm.a<T>.a> {
+      public void a(fm.a<T>.a $$0, vs $$1) {
+         $$1.b($$0.b);
+      }
+
+      public fm.a<T>.a a(vs $$0) {
+         return new fm.a.a($$0.r());
+      }
+
+      public void a(fm.a<T>.a $$0, JsonObject $$1) {
+         $$1.addProperty("registry", $$0.b.a().toString());
+      }
+
+      public fm.a<T>.a a(fm<T> $$0) {
+         return new fm.a.a($$0.b);
+      }
+
+      public final class a implements ie.a<fm<T>> {
+         final ald<? extends jr<T>> b;
+
+         a(final ald<? extends jr<T>> $$1) {
+            this.b = $$1;
+         }
+
+         public fm<T> a(ee $$0) {
+            return new fm<>(this.b);
+         }
+
+         @Override
+         public ie<fm<T>, ?> a() {
+            return a.this;
+         }
+      }
    }
 
-   public static class b implements fm.a {
-      private final hn a;
-
-      public b(hn $$0) {
-         this.a = $$0;
+   static record b<T>(ald<T> a) implements fm.c<T> {
+      @Override
+      public Either<ald<T>, axp<T>> a() {
+         return Either.left(this.a);
       }
 
       @Override
-      public Collection<GameProfile> getNames(ex $$0) throws CommandSyntaxException {
-         List<aro> $$1 = this.a.d($$0);
-         if ($$1.isEmpty()) {
-            throw fk.e.create();
-         } else {
-            List<GameProfile> $$2 = Lists.newArrayList();
+      public <E> Optional<fm.c<E>> a(ald<? extends jr<E>> $$0) {
+         return this.a.d($$0).map(fm.b::new);
+      }
 
-            for (aro $$3 : $$1) {
-               $$2.add($$3.gh());
-            }
+      public boolean a(je<T> $$0) {
+         return $$0.a(this.a);
+      }
 
-            return $$2;
-         }
+      @Override
+      public String b() {
+         return this.a.a().toString();
+      }
+
+      public ald<T> c() {
+         return this.a;
+      }
+   }
+
+   public interface c<T> extends Predicate<je<T>> {
+      Either<ald<T>, axp<T>> a();
+
+      <E> Optional<fm.c<E>> a(ald<? extends jr<E>> var1);
+
+      String b();
+   }
+
+   static record d<T>(axp<T> a) implements fm.c<T> {
+      @Override
+      public Either<ald<T>, axp<T>> a() {
+         return Either.right(this.a);
+      }
+
+      @Override
+      public <E> Optional<fm.c<E>> a(ald<? extends jr<E>> $$0) {
+         return this.a.e($$0).map(fm.d::new);
+      }
+
+      public boolean a(je<T> $$0) {
+         return $$0.a(this.a);
+      }
+
+      @Override
+      public String b() {
+         return "#" + this.a.b();
+      }
+
+      public axp<T> c() {
+         return this.a;
       }
    }
 }

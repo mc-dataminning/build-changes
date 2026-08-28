@@ -1,27 +1,57 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-public record cs(Optional<bf<dak, cr.a>> c, dk.d d) implements ea<dal> {
-   public static final Codec<cs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bf.a(cr.a.a).optionalFieldOf("explosions").forGetter(cs::b), dk.d.d.optionalFieldOf("flight_duration", dk.d.c).forGetter(cs::c))
-            .apply($$0, cs::new)
-   );
-
+public class cs extends dj<cs.a> {
    @Override
-   public kw<dal> a() {
-      return kx.ah;
+   public Codec<cs.a> a() {
+      return cs.a.a;
    }
 
-   public boolean a(cxy $$0, dal $$1) {
-      return this.c.isPresent() && !this.c.get().a($$1.b()) ? false : this.d.d($$1.a());
+   public void a(arp $$0, bwy $$1, List<bwa> $$2) {
+      List<eyn> $$3 = $$2.stream().map($$1x -> bx.b($$0, $$1x)).collect(Collectors.toList());
+      eyn $$4 = bx.b($$0, $$1);
+      this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
-   public Optional<bf<dak, cr.a>> b() {
-      return this.c;
-   }
+   public static record a(Optional<bi> b, Optional<bi> c, Optional<bi> d) implements dj.a {
+      public static final Codec<cs.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bx.b.optionalFieldOf("player").forGetter(cs.a::a),
+                  bx.b.optionalFieldOf("lightning").forGetter(cs.a::b),
+                  bx.b.optionalFieldOf("bystander").forGetter(cs.a::c)
+               )
+               .apply($$0, cs.a::new)
+      );
 
-   public dk.d c() {
-      return this.d;
+      public static aq<cs.a> a(Optional<bx> $$0, Optional<bx> $$1) {
+         return ap.V.a(new cs.a(Optional.empty(), bx.a($$0), bx.a($$1)));
+      }
+
+      public boolean a(eyn $$0, List<eyn> $$1) {
+         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || !$$1.stream().noneMatch(this.d.get()::a);
+      }
+
+      @Override
+      public void a(bj $$0) {
+         dj.a.super.a($$0);
+         $$0.a(this.c, ".lightning");
+         $$0.a(this.d, ".bystander");
+      }
+
+      @Override
+      public Optional<bi> a() {
+         return this.b;
+      }
+
+      public Optional<bi> b() {
+         return this.c;
+      }
+
+      public Optional<bi> c() {
+         return this.d;
+      }
    }
 }

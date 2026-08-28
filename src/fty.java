@@ -1,163 +1,72 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.function.Consumer;
 
-public class fty extends ftw {
-   private final fty.b c;
-   private final List<fty.a> d = new ArrayList<>();
-   private final fue e = fue.i();
+public class fty implements fua {
+   private static final ale a = ale.b("toast/recipe");
+   private static final long e = 5000L;
+   private static final ww f = ww.c("recipe.toast.title");
+   private static final ww g = ww.c("recipe.toast.description");
+   private final List<fty.a> h = new ArrayList<>();
+   private long i;
+   private boolean j;
+   private fua.a k = fua.a.b;
+   private int l;
 
-   public fty(int $$0, int $$1, fty.b $$2) {
-      this(0, 0, $$0, $$1, $$2);
-   }
-
-   public fty(int $$0, int $$1, int $$2, int $$3, fty.b $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      if (!this.d.isEmpty()) {
-         int $$0 = 0;
-         int $$1 = this.c.b(this);
-
-         for (fty.a $$2 : this.d) {
-            $$0 += this.c.a($$2);
-            $$1 = Math.max($$1, this.c.b($$2));
-         }
-
-         int $$3 = this.c.a(this) - $$0;
-         int $$4 = this.c.c(this);
-         Iterator<fty.a> $$5 = this.d.iterator();
-         fty.a $$6 = $$5.next();
-         this.c.a($$6, $$4);
-         $$4 += this.c.a($$6);
-         if (this.d.size() >= 2) {
-            c $$7 = new c($$3, this.d.size() - 1);
-
-            while ($$7.hasNext()) {
-               $$4 += $$7.nextInt();
-               fty.a $$8 = $$5.next();
-               this.c.a($$8, $$4);
-               $$4 += this.c.a($$8);
-            }
-         }
-
-         int $$9 = this.c.d(this);
-
-         for (fty.a $$10 : this.d) {
-            this.c.a($$10, $$9, $$1);
-         }
-
-         switch (this.c) {
-            case a:
-               this.b = $$1;
-               break;
-            case b:
-               this.a = $$1;
-         }
-      }
+   private fty() {
    }
 
    @Override
-   public void b(Consumer<fud> $$0) {
-      this.d.forEach($$1 -> $$0.accept($$1.a));
+   public fua.a a() {
+      return this.k;
    }
 
-   public fue b() {
-      return this.e.g();
+   @Override
+   public void a(fub $$0, long $$1) {
+      if (this.j) {
+         this.i = $$1;
+         this.j = false;
+      }
+
+      if (this.h.isEmpty()) {
+         this.k = fua.a.b;
+      } else {
+         this.k = (double)($$1 - this.i) >= 5000.0 * $$0.d() ? fua.a.b : fua.a.a;
+      }
+
+      this.l = (int)((double)$$1 / Math.max(1.0, 5000.0 * $$0.d() / (double)this.h.size()) % (double)this.h.size());
    }
 
-   public fue c() {
-      return this.e;
+   @Override
+   public void a(frc $$0, fra $$1, long $$2) {
+      $$0.a(gpn::H, a, 0, 0, this.c(), this.d());
+      $$0.a($$1, f, 30, 7, -11534256, false);
+      $$0.a($$1, g, 30, 18, -16777216, false);
+      fty.a $$3 = this.h.get(this.l);
+      $$0.c().a();
+      $$0.c().b(0.6F, 0.6F, 1.0F);
+      $$0.b($$3.a(), 3, 3);
+      $$0.c().b();
+      $$0.b($$3.b(), 8, 8);
    }
 
-   public <T extends fud> T a(T $$0) {
-      return this.a($$0, this.b());
+   private void a(cys $$0, cys $$1) {
+      this.h.add(new fty.a($$0, $$1));
+      this.j = true;
    }
 
-   public <T extends fud> T a(T $$0, fue $$1) {
-      this.d.add(new fty.a($$0, $$1));
-      return $$0;
+   public static void a(fub $$0, dep $$1) {
+      fty $$2 = $$0.a(fty.class, b);
+      if ($$2 == null) {
+         $$2 = new fty();
+         $$0.a($$2);
+      }
+
+      bax $$3 = dew.a($$0.c().s);
+      cys $$4 = $$1.e().b($$3);
+      cys $$5 = $$1.d().b($$3);
+      $$2.a($$4, $$5);
    }
 
-   public <T extends fud> T a(T $$0, Consumer<fue> $$1) {
-      return this.a($$0, af.a(this.b(), $$1));
-   }
-
-   static class a extends ftw.a {
-      protected a(fud $$0, fue $$1) {
-         super($$0, $$1);
-      }
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      int a(fud $$0) {
-         return switch (this) {
-            case a -> $$0.A();
-            case b -> $$0.y();
-         };
-      }
-
-      int a(fty.a $$0) {
-         return switch (this) {
-            case a -> $$0.b();
-            case b -> $$0.a();
-         };
-      }
-
-      int b(fud $$0) {
-         return switch (this) {
-            case a -> $$0.y();
-            case b -> $$0.A();
-         };
-      }
-
-      int b(fty.a $$0) {
-         return switch (this) {
-            case a -> $$0.a();
-            case b -> $$0.b();
-         };
-      }
-
-      void a(fty.a $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1, $$0.b());
-               break;
-            case b:
-               $$0.b($$1, $$0.a());
-         }
-      }
-
-      void a(fty.a $$0, int $$1, int $$2) {
-         switch (this) {
-            case a:
-               $$0.b($$1, $$2);
-               break;
-            case b:
-               $$0.a($$1, $$2);
-         }
-      }
-
-      int c(fud $$0) {
-         return switch (this) {
-            case a -> $$0.F();
-            case b -> $$0.G();
-         };
-      }
-
-      int d(fud $$0) {
-         return switch (this) {
-            case a -> $$0.G();
-            case b -> $$0.F();
-         };
-      }
+   static record a(cys a, cys b) {
    }
 }

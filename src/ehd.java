@@ -1,29 +1,20 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ehd<FC extends ejv, F extends ehr<FC>>(F d, FC e) {
-   public static final Codec<ehd<?, ?>> a = md.O.q().dispatch($$0 -> $$0.d, ehr::a);
-   public static final Codec<js<ehd<?, ?>>> b = akz.a(me.aP, a);
-   public static final Codec<jw<ehd<?, ?>>> c = kh.a(me.aP, a);
+class ehd extends ehf {
+   public static final MapCodec<ehd> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehd::new));
 
-   public boolean a(dio $$0, eak $$1, azs $$2, jj $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
-   }
-
-   public Stream<ehd<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
+   public ehd(jz $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
+   protected boolean a(dzo $$0) {
+      return $$0.v();
    }
 
-   public F b() {
-      return this.d;
-   }
-
-   public FC c() {
-      return this.e;
+   @Override
+   public egv<?> a() {
+      return egv.f;
    }
 }

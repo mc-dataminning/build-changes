@@ -1,27 +1,30 @@
-public class gxa extends gvl<cnx, hcs, ggl> {
-   private static final ald a = ald.b("textures/entity/illager/vex.png");
-   private static final ald j = ald.b("textures/entity/illager/vex_charging.png");
+public class gxa extends gwb<cpg, hda, ggg> {
+   private static final ale j = ale.b("textures/entity/piglin/piglin.png");
+   private static final ale k = ale.b("textures/entity/piglin/piglin_brute.png");
+   public static final gzd.a a = new gzd.a(0.0F, 0.0F, 1.0019531F);
 
-   public gxa(guf.a $$0) {
-      super($$0, new ggl($$0.a(ghc.dE)), 0.3F);
-      this.a(new gyl<>(this));
+   public gxa(gvk.a $$0, gie $$1, gie $$2, gie $$3, gie $$4, gie $$5, gie $$6) {
+      super($$0, new ggg($$0.a($$1)), new ggg($$0.a($$2)), 0.5F, a);
+      this.a(new gzn<>(this, new gfq($$0.a($$3)), new gfq($$0.a($$4)), new gfq($$0.a($$5)), new gfq($$0.a($$6)), $$0.h()));
    }
 
-   protected int a(cnx $$0, jj $$1) {
-      return 15;
+   public ale a(hda $$0) {
+      return $$0.a ? k : j;
    }
 
-   public ald a(hcs $$0) {
-      return $$0.a ? j : a;
+   public hda b() {
+      return new hda();
    }
 
-   public hcs b() {
-      return new hcs();
-   }
-
-   public void a(cnx $$0, hcs $$1, float $$2) {
+   public void a(cpg $$0, hda $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gzp.a($$0, $$1, this.h);
-      $$1.a = $$0.t();
+      $$1.a = $$0.aq() == bwj.aS;
+      $$1.d = $$0.x();
+      $$1.c = (float)cxl.b($$0.fA(), $$0);
+      $$1.b = $$0.q();
+   }
+
+   protected boolean b(hda $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

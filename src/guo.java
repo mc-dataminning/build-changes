@@ -1,23 +1,22 @@
-public class guo extends gvl<ckd, hau, gef> {
-   public guo(guf.a $$0) {
-      super($$0, new gef($$0.a(ghc.aV)), 0.3F);
+public class guo extends guc<cnd, hbc> {
+   private static final ale a = ale.b("textures/entity/skeleton/bogged.png");
+   private static final ale j = ale.b("textures/entity/skeleton/bogged_overlay.png");
+
+   public guo(gvk.a $$0) {
+      super($$0, gif.G, gif.H, new gej($$0.a(gif.F)));
+      this.a(new hab<>(this, $$0.f(), gif.I, j));
    }
 
-   public ald a(hau $$0) {
-      return $$0.f;
+   public ale a(hbc $$0) {
+      return a;
    }
 
-   public hau b() {
-      return new hau();
+   public hbc a() {
+      return new hbc();
    }
 
-   public void a(ckd $$0, hau $$1, float $$2) {
+   public void a(cnd $$0, hbc $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.bj();
-      $$1.b.a($$0.bI);
-      $$1.c.a($$0.bJ);
-      $$1.d.a($$0.bK);
-      $$1.e.a($$0.bL);
-      $$1.f = $$0.x().a().a();
+      $$1.a = $$0.gr();
    }
 }

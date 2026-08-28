@@ -1,19 +1,12 @@
-import javax.annotation.Nullable;
-
-public class hax extends hbk {
-   public float a;
+public class hax extends hcp {
+   public ckd.e a;
    public float b;
-   public fcu c;
-   @Nullable
-   public fcu d;
-   @Nullable
-   public fcu e;
-   @Nullable
-   public fcu f;
-   public float g;
-   public float h;
+   public float c;
+   public float d;
+   public float e;
 
    public hax() {
-      this.c = fcu.c;
+      this.a = ckd.e.a;
+      this.d = 1.0F;
    }
 }

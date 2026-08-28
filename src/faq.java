@@ -1,35 +1,41 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public class faq implements fau {
-   private static final faq b = new faq();
-   public static final MapCodec<faq> a = MapCodec.unit(b);
+public class faq extends faa {
+   public static final MapCodec<faq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  ezz.e.a(dbg.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
+                  ays.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, faq::new)
+   );
+   public static final dbh b = new dbh(0, List.of());
+   private final Optional<ezz.e<dbg>> c;
+   private final Optional<Integer> d;
 
-   private faq() {
+   protected faq(List<fbw> $$0, Optional<ezz.e<dbg>> $$1, Optional<Integer> $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public fav b() {
-      return faw.l;
+   protected cys a(cys $$0, eyn $$1) {
+      $$0.a(kj.aj, b, this::a);
+      return $$0;
+   }
+
+   private dbh a(dbh $$0) {
+      return new dbh(this.d.orElseGet($$0::a), this.c.<List<dbg>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
    }
 
    @Override
-   public Set<bat<?>> a() {
-      return Set.of(faf.j);
-   }
-
-   public boolean a(exl $$0) {
-      Float $$1 = $$0.c(faf.j);
-      if ($$1 != null) {
-         azs $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
-      }
-   }
-
-   public static fau.a c() {
-      return () -> b;
+   public fac<faq> b() {
+      return fad.K;
    }
 }

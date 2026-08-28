@@ -1,82 +1,162 @@
-public class gdb extends gea<gzu> {
-   public static final ghm a = ghm.scaling(0.5F);
-   private static final String b = "bone";
-   private static final String c = "stinger";
-   private static final String d = "left_antenna";
-   private static final String e = "right_antenna";
-   private static final String f = "front_legs";
-   private static final String g = "middle_legs";
-   private static final String i = "back_legs";
-   private final ghd j;
-   private final ghd k;
-   private final ghd l;
-   private final ghd m;
-   private final ghd n;
-   private final ghd o;
-   private final ghd p;
-   private final ghd q;
-   private final ghd r;
-   private float s;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public gdb(ghd $$0) {
-      super($$0);
-      this.j = $$0.b("bone");
-      ghd $$1 = this.j.b("body");
-      this.p = $$1.b("stinger");
-      this.q = $$1.b("left_antenna");
-      this.r = $$1.b("right_antenna");
-      this.k = this.j.b("right_wing");
-      this.l = this.j.b("left_wing");
-      this.m = this.j.b("front_legs");
-      this.n = this.j.b("middle_legs");
-      this.o = this.j.b("back_legs");
-   }
-
-   public static ghj a() {
-      ghl $$0 = new ghl();
-      ghn $$1 = $$0.a();
-      ghn $$2 = $$1.a("bone", ghi.c(), ghf.a(0.0F, 19.0F, 0.0F));
-      ghn $$3 = $$2.a("body", ghi.c().a(0, 0).a(-3.5F, -4.0F, -5.0F, 7.0F, 7.0F, 10.0F), ghf.a);
-      $$3.a("stinger", ghi.c().a(26, 7).a(0.0F, -1.0F, 5.0F, 0.0F, 1.0F, 2.0F), ghf.a);
-      $$3.a("left_antenna", ghi.c().a(2, 0).a(1.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), ghf.a(0.0F, -2.0F, -5.0F));
-      $$3.a("right_antenna", ghi.c().a(2, 3).a(-2.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), ghf.a(0.0F, -2.0F, -5.0F));
-      ghh $$4 = new ghh(0.001F);
-      $$2.a("right_wing", ghi.c().a(0, 18).a(-9.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), ghf.a(-1.5F, -4.0F, -3.0F, 0.0F, -0.2618F, 0.0F));
-      $$2.a("left_wing", ghi.c().a(0, 18).a().a(0.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), ghf.a(1.5F, -4.0F, -3.0F, 0.0F, 0.2618F, 0.0F));
-      $$2.a("front_legs", ghi.c().a("front_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 1), ghf.a(1.5F, 3.0F, -2.0F));
-      $$2.a("middle_legs", ghi.c().a("middle_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 3), ghf.a(1.5F, 3.0F, 0.0F));
-      $$2.a("back_legs", ghi.c().a("back_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 5), ghf.a(1.5F, 3.0F, 2.0F));
-      return ghj.a($$0, 64, 64);
-   }
-
-   public void a(gzu $$0) {
-      super.a($$0);
-      this.s = $$0.a;
-      this.p.k = $$0.b;
-      if (!$$0.c) {
-         float $$1 = $$0.u * 120.32113F * (float) (Math.PI / 180.0);
-         this.k.f = 0.0F;
-         this.k.g = azk.b($$1) * (float) Math.PI * 0.15F;
-         this.l.e = this.k.e;
-         this.l.f = this.k.f;
-         this.l.g = -this.k.g;
-         this.m.e = (float) (Math.PI / 4);
-         this.n.e = (float) (Math.PI / 4);
-         this.o.e = (float) (Math.PI / 4);
+public class gdb {
+   static final ale b = ale.b("spectator/close");
+   static final ale c = ale.b("spectator/scroll_left");
+   static final ale d = ale.b("spectator/scroll_right");
+   private static final gdd e = new gdb.a();
+   private static final gdd f = new gdb.b(-1, true);
+   private static final gdd g = new gdb.b(1, true);
+   private static final gdd h = new gdb.b(1, false);
+   private static final int i = 8;
+   static final ww j = ww.c("spectatorMenu.close");
+   static final ww k = ww.c("spectatorMenu.previous_page");
+   static final ww l = ww.c("spectatorMenu.next_page");
+   public static final gdd a = new gdd() {
+      @Override
+      public void a(gdb $$0) {
       }
 
-      if (!$$0.d && !$$0.c) {
-         float $$2 = azk.b($$0.u * 0.18F);
-         this.j.e = 0.1F + $$2 * (float) Math.PI * 0.025F;
-         this.q.e = $$2 * (float) Math.PI * 0.03F;
-         this.r.e = $$2 * (float) Math.PI * 0.03F;
-         this.m.e = -$$2 * (float) Math.PI * 0.1F + (float) (Math.PI / 8);
-         this.o.e = -$$2 * (float) Math.PI * 0.05F + (float) (Math.PI / 4);
-         this.j.c = this.j.c - azk.b($$0.u * 0.18F) * 0.9F;
+      @Override
+      public ww aO_() {
+         return wv.a;
       }
 
-      if (this.s > 0.0F) {
-         this.j.e = azk.j(this.s, this.j.e, 3.0915928F);
+      @Override
+      public void a(frc $$0, float $$1, float $$2) {
+      }
+
+      @Override
+      public boolean aP_() {
+         return false;
+      }
+   };
+   private final gde m;
+   private gdc n;
+   private int o = -1;
+   int p;
+
+   public gdb(gde $$0) {
+      this.n = new gda();
+      this.m = $$0;
+   }
+
+   public gdd a(int $$0) {
+      int $$1 = $$0 + this.p * 6;
+      if (this.p > 0 && $$0 == 0) {
+         return f;
+      } else if ($$0 == 7) {
+         return $$1 < this.n.a().size() ? g : h;
+      } else if ($$0 == 8) {
+         return e;
+      } else {
+         return $$1 >= 0 && $$1 < this.n.a().size() ? (gdd)MoreObjects.firstNonNull(this.n.a().get($$1), a) : a;
+      }
+   }
+
+   public List<gdd> a() {
+      List<gdd> $$0 = Lists.newArrayList();
+
+      for (int $$1 = 0; $$1 <= 8; $$1++) {
+         $$0.add(this.a($$1));
+      }
+
+      return $$0;
+   }
+
+   public gdd b() {
+      return this.a(this.o);
+   }
+
+   public gdc c() {
+      return this.n;
+   }
+
+   public void b(int $$0) {
+      gdd $$1 = this.a($$0);
+      if ($$1 != a) {
+         if (this.o == $$0 && $$1.aP_()) {
+            $$1.a(this);
+         } else {
+            this.o = $$0;
+         }
+      }
+   }
+
+   public void d() {
+      this.m.a(this);
+   }
+
+   public int e() {
+      return this.o;
+   }
+
+   public void a(gdc $$0) {
+      this.n = $$0;
+      this.o = -1;
+      this.p = 0;
+   }
+
+   public gdf f() {
+      return new gdf(this.a(), this.o);
+   }
+
+   static class a implements gdd {
+      @Override
+      public void a(gdb $$0) {
+         $$0.d();
+      }
+
+      @Override
+      public ww aO_() {
+         return gdb.j;
+      }
+
+      @Override
+      public void a(frc $$0, float $$1, float $$2) {
+         $$0.a(gpn::H, gdb.b, 0, 0, 16, 16, axu.a($$2, $$1, $$1, $$1));
+      }
+
+      @Override
+      public boolean aP_() {
+         return true;
+      }
+   }
+
+   static class b implements gdd {
+      private final int a;
+      private final boolean b;
+
+      public b(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(gdb $$0) {
+         $$0.p = $$0.p + this.a;
+      }
+
+      @Override
+      public ww aO_() {
+         return this.a < 0 ? gdb.k : gdb.l;
+      }
+
+      @Override
+      public void a(frc $$0, float $$1, float $$2) {
+         int $$3 = axu.a($$2, $$1, $$1, $$1);
+         if (this.a < 0) {
+            $$0.a(gpn::H, gdb.c, 0, 0, 16, 16, $$3);
+         } else {
+            $$0.a(gpn::H, gdb.d, 0, 0, 16, 16, $$3);
+         }
+      }
+
+      @Override
+      public boolean aP_() {
+         return this.b;
       }
    }
 }

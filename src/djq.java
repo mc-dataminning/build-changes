@@ -1,63 +1,42 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class djq extends dkg {
-   public static final dzd a = dzc.A;
-   private final dsc.a b;
+public class djq {
+   public static final Codec<djq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awk.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, djq::new)
+   );
+   public static final djq b = new djq(awl.h, 6000, 8, 2.0);
+   private final je<awk> c;
+   private final int d;
+   private final int e;
+   private final double f;
 
-   public djq(dsc.a $$0, dyl.d $$1) {
-      super($$1);
-      this.b = $$0;
-      this.l(this.B.b().b(a, Boolean.valueOf(false)));
+   public djq(je<awk> $$0, int $$1, int $$2, double $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   @Override
-   protected abstract MapCodec<? extends djq> a();
-
-   @Override
-   public dvl a(jj $$0, dym $$1) {
-      return new dxb($$0, $$1);
+   public je<awk> a() {
+      return this.c;
    }
 
-   @Nullable
-   @Override
-   public <T extends dvl> dvm<T> a(dhp $$0, dym $$1, dvn<T> $$2) {
-      if ($$0.C) {
-         boolean $$3 = $$1.a(dkw.hl) || $$1.a(dkw.hm) || $$1.a(dkw.hn) || $$1.a(dkw.ho);
-         if ($$3) {
-            return a($$2, dvn.q, dxb::a);
-         }
-      }
-
-      return null;
+   public int b() {
+      return this.d;
    }
 
-   public dsc.a b() {
-      return this.b;
+   public int c() {
+      return this.e;
    }
 
-   @Override
-   protected boolean a(dym $$0, evi $$1) {
-      return false;
-   }
-
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public dym a(dbn $$0) {
-      return this.m().b(a, Boolean.valueOf($$0.q().C($$0.a())));
-   }
-
-   @Override
-   protected void a(dym $$0, dhp $$1, jj $$2, dku $$3, @Nullable ewb $$4, boolean $$5) {
-      if (!$$1.C) {
-         boolean $$6 = $$1.C($$2);
-         if ($$6 != $$0.c(a)) {
-            $$1.a($$2, $$0.b(a, Boolean.valueOf($$6)), 2);
-         }
-      }
+   public double d() {
+      return this.f;
    }
 }

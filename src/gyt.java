@@ -1,25 +1,21 @@
-public abstract class gyt<S extends hak, M extends gea<? super S>> {
-   private final gwc<S, M> a;
+public class gyt extends gwb<cop, heh, ghy> {
+   private static final ale a = ale.b("textures/entity/piglin/zombified_piglin.png");
 
-   public gyt(gwc<S, M> $$0) {
-      this.a = $$0;
+   public gyt(gvk.a $$0, gie $$1, gie $$2, gie $$3, gie $$4, gie $$5, gie $$6) {
+      super($$0, new ghy($$0.a($$1)), new ghy($$0.a($$2)), 0.5F, gxa.a);
+      this.a(new gzn<>(this, new gfq($$0.a($$3)), new gfq($$0.a($$4)), new gfq($$0.a($$5)), new gfq($$0.a($$5)), $$0.h()));
    }
 
-   protected static <S extends hbk> void a(gea<S> $$0, ald $$1, fho $$2, gny $$3, int $$4, S $$5, int $$6) {
-      if (!$$5.z) {
-         $$0.a($$5);
-         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+   public ale a(heh $$0) {
+      return a;
    }
 
-   protected static void b(gea<?> $$0, ald $$1, fho $$2, gny $$3, int $$4, hbk $$5, int $$6) {
-      fhs $$7 = $$3.getBuffer(goi.g($$1));
-      $$0.a($$2, $$7, $$4, gvg.a($$5, 0.0F), $$6);
+   public heh b() {
+      return new heh();
    }
 
-   public M d() {
-      return this.a.c();
+   public void a(cop $$0, heh $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gh();
    }
-
-   public abstract void a(fho var1, gny var2, int var3, S var4, float var5, float var6);
 }

@@ -1,103 +1,104 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import java.util.stream.IntStream;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
 
-public record goo(Map<String, String> c, Set<String> d) {
-   public static final goo a = new goo(Map.of(), Set.of());
-   public static final Codec<goo> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(goo::d),
-               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(goo::e)
-            )
-            .apply($$0, goo::new)
-   );
+public class goo {
+   private static final int a = 6;
+   private final List<ale> b;
 
-   public static goo.a a() {
-      return new goo.a();
+   public goo(ale $$0) {
+      this.b = IntStream.range(0, 6).mapToObj($$1 -> $$0.e($$0.a() + "_" + $$1 + ".png")).toList();
    }
 
-   public goo a(goo $$0) {
-      if (this.c()) {
-         return $$0;
-      } else if ($$0.c()) {
-         return this;
-      } else {
-         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
-         $$1.putAll(this.c);
-         $$1.putAll($$0.c);
-         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
-         $$2.addAll(this.d);
-         $$2.addAll($$0.d);
-         return new goo($$1.buildKeepingLast(), $$2.build());
-      }
-   }
+   public void a(fof $$0, float $$1, float $$2, float $$3) {
+      fis $$4 = fis.b();
+      Matrix4f $$5 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aO().k() / (float)$$0.aO().l(), 0.05F, 10.0F);
+      RenderSystem.backupProjectionMatrix();
+      RenderSystem.setProjectionMatrix($$5, ffz.a);
+      Matrix4fStack $$6 = RenderSystem.getModelViewStack();
+      $$6.pushMatrix();
+      $$6.rotationX((float) Math.PI);
+      RenderSystem.setShader(gon.i);
+      RenderSystem.enableBlend();
+      RenderSystem.disableCull();
+      RenderSystem.depthMask(false);
+      int $$7 = 2;
 
-   public String b() {
-      StringBuilder $$0 = new StringBuilder();
+      for (int $$8 = 0; $$8 < 4; $$8++) {
+         $$6.pushMatrix();
+         float $$9 = ((float)($$8 % 2) / 2.0F - 0.5F) / 256.0F;
+         float $$10 = ((float)($$8 / 2) / 2.0F - 0.5F) / 256.0F;
+         float $$11 = 0.0F;
+         $$6.translate($$9, $$10, 0.0F);
+         $$6.rotateX($$1 * (float) (Math.PI / 180.0));
+         $$6.rotateY($$2 * (float) (Math.PI / 180.0));
 
-      for (Entry<String, String> $$1 : this.c.entrySet()) {
-         String $$2 = $$1.getKey();
-         String $$3 = $$1.getValue();
-         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
-      }
+         for (int $$12 = 0; $$12 < 6; $$12++) {
+            RenderSystem.setShaderTexture(0, this.b.get($$12));
+            fil $$13 = $$4.a(fiv.c.h, fio.j);
+            int $$14 = Math.round(255.0F * $$3) / ($$8 + 1);
+            if ($$12 == 0) {
+               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
+            }
 
-      for (String $$4 : this.d) {
-         $$0.append("#define ").append($$4).append('\n');
-      }
+            if ($$12 == 1) {
+               $$13.a(1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
+            }
 
-      return $$0.toString();
-   }
+            if ($$12 == 2) {
+               $$13.a(1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
+            }
 
-   public boolean c() {
-      return this.c.isEmpty() && this.d.isEmpty();
-   }
+            if ($$12 == 3) {
+               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
+            }
 
-   public Map<String, String> d() {
-      return this.c;
-   }
+            if ($$12 == 4) {
+               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
+            }
 
-   public Set<String> e() {
-      return this.d;
-   }
+            if ($$12 == 5) {
+               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
+            }
 
-   public static class a {
-      private final Builder<String, String> a = ImmutableMap.builder();
-      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
-
-      a() {
-      }
-
-      public goo.a a(String $$0, String $$1) {
-         if ($$1.isBlank()) {
-            throw new IllegalArgumentException("Cannot define empty string");
-         } else {
-            this.a.put($$0, b($$1));
-            return this;
+            fim.a($$13.b());
          }
+
+         $$6.popMatrix();
+         RenderSystem.colorMask(true, true, true, false);
       }
 
-      private static String b(String $$0) {
-         return $$0.replaceAll("\n", "\\\\\n");
-      }
+      RenderSystem.colorMask(true, true, true, true);
+      RenderSystem.restoreProjectionMatrix();
+      $$6.popMatrix();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableCull();
+      RenderSystem.enableDepthTest();
+   }
 
-      public goo.a a(String $$0, float $$1) {
-         this.a.put($$0, String.valueOf($$1));
-         return this;
-      }
-
-      public goo.a a(String $$0) {
-         this.b.add($$0);
-         return this;
-      }
-
-      public goo a() {
-         return new goo(this.a.build(), this.b.build());
+   public void a(hib $$0) {
+      for (ale $$1 : this.b) {
+         $$0.a($$1);
       }
    }
 }

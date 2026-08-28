@@ -1,33 +1,75 @@
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
-public class bei extends bes {
+public class bei extends DataFix {
+   private static final Set<String> a = Sets.newHashSet(
+      new String[]{
+         "ArmorStand",
+         "Bat",
+         "Blaze",
+         "CaveSpider",
+         "Chicken",
+         "Cow",
+         "Creeper",
+         "EnderDragon",
+         "Enderman",
+         "Endermite",
+         "EntityHorse",
+         "Ghast",
+         "Giant",
+         "Guardian",
+         "LavaSlime",
+         "MushroomCow",
+         "Ozelot",
+         "Pig",
+         "PigZombie",
+         "Rabbit",
+         "Sheep",
+         "Shulker",
+         "Silverfish",
+         "Skeleton",
+         "Slime",
+         "SnowMan",
+         "Spider",
+         "Squid",
+         "Villager",
+         "VillagerGolem",
+         "Witch",
+         "WitherBoss",
+         "Wolf",
+         "Zombie"
+      }
+   );
+
    public bei(Schema $$0, boolean $$1) {
-      super("EntityHorseSplitFix", $$0, $$1);
+      super($$0, $$1);
    }
 
-   @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      if (Objects.equals("EntityHorse", $$0)) {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-         int $$3 = $$2.get("Type").asInt(0);
-
-         String $$4 = switch ($$3) {
-            case 1 -> "Donkey";
-            case 2 -> "Mule";
-            case 3 -> "ZombieHorse";
-            case 4 -> "SkeletonHorse";
-            default -> "Horse";
-         };
-         Type<?> $$5 = (Type<?>)this.getOutputSchema().findChoiceType(biq.D).types().get($$4);
-         return Pair.of($$4, af.a($$1, $$5, $$0x -> $$0x.remove("Type")));
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.get("HealF").asNumber().result();
+      Optional<Number> $$2 = $$0.get("Health").asNumber().result();
+      float $$3;
+      if ($$1.isPresent()) {
+         $$3 = $$1.get().floatValue();
+         $$0 = $$0.remove("HealF");
       } else {
-         return Pair.of($$0, $$1);
+         if (!$$2.isPresent()) {
+            return $$0;
+         }
+
+         $$3 = $$2.get().floatValue();
       }
+
+      return $$0.set("Health", $$0.createFloat($$3));
+   }
+
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(bit.D), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 }

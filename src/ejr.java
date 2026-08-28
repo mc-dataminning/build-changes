@@ -1,41 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejr implements ejv {
-   public static final Codec<ejr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dym.a.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dym.a.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               bsv.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               bsv.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ejr::new)
-   );
-   private final dym b;
-   private final dym c;
-   private final bsv d;
-   private final bsv e;
-
-   public ejr(dym $$0, dym $$1, bsv $$2, bsv $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public class ejr extends eit<elk> {
+   public ejr(Codec<elk> $$0) {
+      super($$0);
    }
 
-   public dym a() {
-      return this.b;
-   }
+   @Override
+   public boolean a(eiv<elk> $$0) {
+      elk $$1 = $$0.f();
+      azt $$2 = $$0.d();
+      iu $$3 = $$0.e();
+      djo $$4 = $$0.b();
+      int $$5 = 0;
+      iu.a $$6 = new iu.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
 
-   public dym b() {
-      return this.c;
-   }
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
+         }
+      }
 
-   public bsv c() {
-      return this.d;
-   }
-
-   public bsv d() {
-      return this.e;
+      return $$5 > 0;
    }
 }

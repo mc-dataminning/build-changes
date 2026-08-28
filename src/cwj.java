@@ -1,86 +1,89 @@
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntLists;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class cwj extends cyt {
-   public static final int a = 20;
-   public static final int b = 15;
+public class cwj {
+   private static final List<cwi> b = af.a(new ArrayList<>(), $$0 -> {
+      a($$0, "contents", 0);
+      a($$0, "container.", 0, 54);
+      a($$0, "hotbar.", 0, 9);
+      a($$0, "inventory.", 9, 27);
+      a($$0, "enderchest.", 200, 27);
+      a($$0, "villager.", 300, 8);
+      a($$0, "horse.", 500, 15);
+      int $$1 = bwk.a.a(98);
+      int $$2 = bwk.b.a(98);
+      a($$0, "weapon", $$1);
+      a($$0, "weapon.mainhand", $$1);
+      a($$0, "weapon.offhand", $$2);
+      a($$0, "weapon.*", $$1, $$2);
+      $$1 = bwk.f.a(100);
+      $$2 = bwk.e.a(100);
+      int $$5 = bwk.d.a(100);
+      int $$6 = bwk.c.a(100);
+      int $$7 = bwk.g.a(105);
+      a($$0, "armor.head", $$1);
+      a($$0, "armor.chest", $$2);
+      a($$0, "armor.legs", $$5);
+      a($$0, "armor.feet", $$6);
+      a($$0, "armor.body", $$7);
+      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
+      a($$0, "saddle", bwk.h.a(106));
+      a($$0, "horse.chest", 499);
+      a($$0, "player.cursor", 499);
+      a($$0, "player.crafting.", 500, 4);
+   });
+   public static final Codec<cwi> a = bai.b(() -> b.toArray(new cwi[0]));
+   private static final Function<String, cwi> c = bai.a(b.toArray(new cwi[0]), $$0 -> $$0);
 
-   public cwj(cxu.a $$0) {
-      super($$0);
+   private static cwi a(String $$0, int $$1) {
+      return cwi.a($$0, IntLists.singleton($$1));
    }
 
-   @Override
-   public boolean a(cxy $$0, dhp $$1, bwr $$2, int $$3) {
-      if (!($$2 instanceof cqi $$4)) {
-         return false;
-      } else {
-         cxy $$5 = $$4.e($$0);
-         if ($$5.f()) {
-            return false;
-         } else {
-            int $$6 = this.a($$0, $$2) - $$3;
-            float $$7 = a($$6);
-            if ((double)$$7 < 0.1) {
-               return false;
-            } else {
-               List<cxy> $$8 = a($$0, $$5, $$4);
-               if ($$1 instanceof arn $$9 && !$$8.isEmpty()) {
-                  this.a($$9, $$4, $$4.fz(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
-               }
+   private static cwi a(String $$0, IntList $$1) {
+      return cwi.a($$0, IntLists.unmodifiable($$1));
+   }
 
-               $$1.a(null, $$4.dA(), $$4.dC(), $$4.dG(), awk.aG, awl.h, 1.0F, 1.0F / ($$1.C_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
-               $$4.b(awu.c.b(this));
-               return true;
-            }
-         }
+   private static cwi a(String $$0, int... $$1) {
+      return cwi.a($$0, IntList.of($$1));
+   }
+
+   private static void a(List<cwi> $$0, String $$1, int $$2) {
+      $$0.add(a($$1, $$2));
+   }
+
+   private static void a(List<cwi> $$0, String $$1, int $$2, int $$3) {
+      IntList $$4 = new IntArrayList($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         int $$6 = $$2 + $$5;
+         $$0.add(a($$1 + $$5, $$6));
+         $$4.add($$6);
       }
+
+      $$0.add(a($$1 + "*", $$4));
    }
 
-   @Override
-   protected void a(bwr $$0, crb $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bwr $$6) {
-      $$1.a($$0, $$0.dN(), $$0.dL() + $$5, 0.0F, $$3, $$4);
+   private static void a(List<cwi> $$0, String $$1, int... $$2) {
+      $$0.add(a($$1, $$2));
    }
 
-   public static float a(int $$0) {
-      float $$1 = (float)$$0 / 20.0F;
-      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
-      if ($$1 > 1.0F) {
-         $$1 = 1.0F;
-      }
-
-      return $$1;
+   @Nullable
+   public static cwi a(String $$0) {
+      return c.apply($$0);
    }
 
-   @Override
-   public int a(cxy $$0, bwr $$1) {
-      return 72000;
+   public static Stream<String> a() {
+      return b.stream().map(bai::c);
    }
 
-   @Override
-   public cya b(cxy $$0) {
-      return cya.e;
-   }
-
-   @Override
-   public btq a(dhp $$0, cqi $$1, btp $$2) {
-      cxy $$3 = $$1.b($$2);
-      boolean $$4 = !$$1.e($$3).f();
-      if (!$$1.fU() && !$$4) {
-         return btq.d;
-      } else {
-         $$1.c($$2);
-         return btq.c;
-      }
-   }
-
-   @Override
-   public Predicate<cxy> b() {
-      return c;
-   }
-
-   @Override
-   public int c() {
-      return 15;
+   public static Stream<String> b() {
+      return b.stream().filter($$0 -> $$0.b() == 1).map(bai::c);
    }
 }

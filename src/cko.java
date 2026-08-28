@@ -1,59 +1,30 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cko extends ckm {
-   public cko(bwb<? extends cko> $$0, dhp $$1) {
-      super($$0, $$1);
+public interface cko {
+   ald<ckn> a = a(cjq.a);
+   ald<ckn> b = a(cjq.b);
+   ald<ckn> c = a(cjq.c);
+
+   private static ald<ckn> a(ale $$0) {
+      return ald.a(mg.aR, $$0);
    }
 
-   @Override
-   protected awj u() {
-      return awk.hA;
+   static void a(qh<ckn> $$0) {
+      a($$0, a, "entity/frog/temperate_frog", csy.a(0));
+      a($$0, b, "entity/frog/warm_frog", awz.aj);
+      a($$0, c, "entity/frog/cold_frog", awz.ai);
    }
 
-   @Override
-   protected awj gQ() {
-      return awk.hB;
+   private static void a(qh<ckn> $$0, ald<ckn> $$1, String $$2, axp<djs> $$3) {
+      ji<djs> $$4 = $$0.a(mg.aG).b($$3);
+      a($$0, $$1, $$2, csy.a(new csr($$4), 1));
    }
 
-   @Override
-   protected awj l_() {
-      return awk.hD;
+   private static void a(qh<ckn> $$0, ald<ckn> $$1, String $$2, csy $$3) {
+      $$0.a($$1, new ckn(new iv(ale.b($$2)), $$3));
    }
 
-   @Nullable
-   @Override
-   protected awj gs() {
-      return awk.hE;
-   }
-
-   @Override
-   protected awj e(buh $$0) {
-      return awk.hF;
-   }
-
-   @Override
-   public boolean a(cig $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return !($$0 instanceof cko) && !($$0 instanceof ckp) ? false : this.gY() && ((ckn)$$0).gY();
-      }
-   }
-
-   @Override
-   protected void gX() {
-      this.a(awk.hG, 0.4F, 1.0F);
-   }
-
-   @Nullable
-   @Override
-   public bvi a(arn $$0, bvi $$1) {
-      bwb<? extends ckn> $$2 = $$1 instanceof ckp ? bwb.aF : bwb.I;
-      ckn $$3 = $$2.a($$0, bwa.e);
-      if ($$3 != null) {
-         this.a($$1, $$3);
-      }
-
-      return $$3;
+   static Optional<je.c<ckn>> a(azt $$0, js $$1, csx $$2) {
+      return csu.a($$1.f(mg.aR).c(), je::a, $$0, $$2);
    }
 }

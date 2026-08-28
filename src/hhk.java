@@ -1,75 +1,108 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class hhk extends aue {
-   private static final aua e = new aua(wv.c("resourcePack.vanilla.description"), ab.b().a(ato.a), Optional.empty());
-   private static final ate f = ate.a(aua.b, e);
-   public static final String d = "high_contrast";
-   private static final Map<String, wv> g = Map.of(
-      "programmer_art", wv.c("resourcePack.programmer_art.name"), "high_contrast", wv.c("resourcePack.high_contrast.name")
-   );
-   private static final atl h = new atl("vanilla", wv.c("resourcePack.vanilla.name"), aul.c, Optional.of(c));
-   private static final atn i = new atn(true, auh.b.b, false);
-   private static final atn j = new atn(false, auh.b.a, false);
-   private static final ald k = ald.b("resourcepacks");
-   @Nullable
-   private final Path l;
+public abstract class hhk implements AutoCloseable {
+   public static final int a = -1;
+   protected int b = -1;
+   protected boolean c;
+   private int d = 10497;
+   private int e = 10497;
+   private int f = 9986;
+   private int g = 9729;
 
-   public hhk(Path $$0, fck $$1) {
-      super(ato.a, b($$0), k, $$1);
-      this.l = this.a($$0);
-   }
+   public void a(boolean $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$1;
+      int $$2;
+      if ($$0) {
+         $$1 = 33071;
+         $$2 = 33071;
+      } else {
+         $$1 = 10497;
+         $$2 = 10497;
+      }
 
-   private static atl a(String $$0, wv $$1) {
-      return new atl($$0, $$1, aul.c, Optional.of(aug.a($$0)));
-   }
+      boolean $$5 = this.d != $$1;
+      boolean $$6 = this.e != $$2;
+      if ($$5 || $$6) {
+         this.c();
+         if ($$5) {
+            GlStateManager._texParameter(3553, 10242, $$1);
+            this.d = $$1;
+         }
 
-   @Nullable
-   private Path a(Path $$0) {
-      if (ab.aU && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
+         if ($$6) {
+            GlStateManager._texParameter(3553, 10243, $$2);
+            this.e = $$2;
          }
       }
-
-      return null;
    }
 
-   private static atq b(Path $$0) {
-      atr $$1 = new atr().a(f).a("minecraft", "realms");
-      return $$1.b().a().a(ato.a, $$0).a(h);
+   public void a(baq $$0, boolean $$1) {
+      this.a($$0.a(this.c), $$1);
    }
 
-   @Override
-   protected wv a(String $$0) {
-      wv $$1 = g.get($$0);
-      return (wv)($$1 != null ? $$1 : wv.b($$0));
-   }
-
-   @Nullable
-   @Override
-   protected auh a(atm $$0) {
-      return auh.a(h, b($$0), ato.a, i);
-   }
-
-   @Nullable
-   @Override
-   protected auh a(String $$0, auh.c $$1, wv $$2) {
-      return auh.a(a($$0, $$2), $$1, ato.a, j);
-   }
-
-   @Override
-   protected void a(BiConsumer<String, Function<String, auh>> $$0) {
-      super.a($$0);
-      if (this.l != null) {
-         this.a(this.l, $$0);
+   public void a(boolean $$0, boolean $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$2;
+      int $$3;
+      if ($$0) {
+         $$2 = $$1 ? 9987 : 9729;
+         $$3 = 9729;
+      } else {
+         $$2 = $$1 ? 9986 : 9728;
+         $$3 = 9728;
       }
+
+      boolean $$6 = this.f != $$2;
+      boolean $$7 = this.g != $$3;
+      if ($$7 || $$6) {
+         this.c();
+         if ($$6) {
+            GlStateManager._texParameter(3553, 10241, $$2);
+            this.f = $$2;
+         }
+
+         if ($$7) {
+            GlStateManager._texParameter(3553, 10240, $$3);
+            this.g = $$3;
+         }
+      }
+   }
+
+   public int a() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      if (this.b == -1) {
+         this.b = TextureUtil.generateTextureId();
+      }
+
+      return this.b;
+   }
+
+   public void b() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            if (this.b != -1) {
+               TextureUtil.releaseTextureId(this.b);
+               this.b = -1;
+            }
+         });
+      } else if (this.b != -1) {
+         TextureUtil.releaseTextureId(this.b);
+         this.b = -1;
+      }
+   }
+
+   public void c() {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
+      } else {
+         GlStateManager._bindTexture(this.a());
+      }
+   }
+
+   @Override
+   public void close() {
    }
 }

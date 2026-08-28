@@ -1,55 +1,18 @@
-public class gwd extends gvl<cjd, hcb, gfp> {
-   private static final ald a = ald.b("textures/entity/fish/salmon.png");
-   private final gfp j;
-   private final gfp k;
-   private final gfp l;
-
-   public gwd(guf.a $$0) {
-      super($$0, new gfp($$0.a(ghc.cG)), 0.4F);
-      this.j = new gfp($$0.a(ghc.cI));
-      this.k = new gfp($$0.a(ghc.cG));
-      this.l = new gfp($$0.a(ghc.cH));
+public abstract class gwd<T extends cna, S extends hch> extends gwq<T, S, gfs<S>> {
+   protected gwd(gvk.a $$0, gfs<S> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(new gzd<>(this, $$0.f()));
    }
 
-   public void a(cjd $$0, hcb $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gw();
-   }
-
-   public ald a(hcb $$0) {
-      return a;
-   }
-
-   public hcb b() {
-      return new hcb();
-   }
-
-   protected void a(hcb $$0, fho $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 1.0F;
-      float $$5 = 1.0F;
-      if (!$$0.ak) {
-         $$4 = 1.3F;
-         $$5 = 1.7F;
-      }
-
-      float $$6 = $$4 * 4.3F * azk.a($$5 * 0.6F * $$0.u);
-      $$1.a(a.d.rotationDegrees($$6));
-      if (!$$0.ak) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
-   }
-
-   public void a(hcb $$0, fho $$1, gny $$2, int $$3) {
-      if ($$0.a == cjd.a.a) {
-         this.g = this.j;
-      } else if ($$0.a == cjd.a.c) {
-         this.g = this.l;
-      } else {
-         this.g = this.k;
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+      hau.a($$0, $$1, this.h);
+      $$1.b = $$0.bZ();
+      $$1.d = $$0.fx();
+      $$1.j = $$0.j();
+      $$1.k = $$1.j == cna.a.f ? cxl.b($$0.fA(), $$0) : 0;
+      $$1.l = $$0.fC();
+      $$1.m = $$0.D($$2);
+      $$1.c = $$0.gh();
    }
 }

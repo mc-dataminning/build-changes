@@ -1,24 +1,79 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.io.IOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.List;
 
-public class fdm extends fdo {
-   private final fdo b;
-   private final jo.a c;
-   private static final DoubleList d = new fda(1);
+public class fdm {
+   private final PathMatcher a;
 
-   public fdm(fdo $$0, jo.a $$1, int $$2) {
-      super(a($$0.a, $$1, $$2));
-      this.b = $$0;
-      this.c = $$1;
+   public fdm(PathMatcher $$0) {
+      this.a = $$0;
    }
 
-   private static fdd a(fdd $$0, jo.a $$1, int $$2) {
-      return new fdn(
-         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
-      );
+   public void a(Path $$0, List<fdn> $$1) throws IOException {
+      Path $$2 = Files.readSymbolicLink($$0);
+      if (!this.a.matches($$2)) {
+         $$1.add(new fdn($$0, $$2));
+      }
    }
 
-   @Override
-   public DoubleList a(jo.a $$0) {
-      return $$0 == this.c ? d : this.b.a($$0);
+   public List<fdn> a(Path $$0) throws IOException {
+      List<fdn> $$1 = new ArrayList<>();
+      this.a($$0, $$1);
+      return $$1;
+   }
+
+   public List<fdn> a(Path $$0, boolean $$1) throws IOException {
+      List<fdn> $$2 = new ArrayList<>();
+
+      BasicFileAttributes $$3;
+      try {
+         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      } catch (NoSuchFileException var6) {
+         return $$2;
+      }
+
+      if ($$3.isRegularFile()) {
+         throw new IOException("Path " + $$0 + " is not a directory");
+      } else {
+         if ($$3.isSymbolicLink()) {
+            if (!$$1) {
+               this.a($$0, $$2);
+               return $$2;
+            }
+
+            $$0 = Files.readSymbolicLink($$0);
+         }
+
+         this.b($$0, $$2);
+         return $$2;
+      }
+   }
+
+   public void b(Path $$0, final List<fdn> $$1) throws IOException {
+      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
+         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            if ($$1.isSymbolicLink()) {
+               fdm.this.a($$0, $$1);
+            }
+         }
+
+         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.preVisitDirectory($$0, $$1);
+         }
+
+         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.visitFile($$0, $$1);
+         }
+      });
    }
 }

@@ -1,39 +1,40 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eml extends emq {
-   public static final MapCodec<eml> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eml::new, $$0 -> $$0.b);
-   private final float b;
+public class eml extends emj {
+   public static final MapCodec<eml> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, eml::new)
+   );
+   protected final int b;
 
-   public eml(float $$0) {
-      this.b = $$0;
+   public eml(btd $$0, btd $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected emr<?> a() {
-      return emr.e;
+   protected emk<?> a() {
+      return emk.g;
    }
 
    @Override
-   public void a(emq.a $$0) {
-      azs $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<jj> $$2 = $$0.c();
-         if (!$$2.isEmpty()) {
-            int $$3 = $$2.getFirst().v();
-            $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-               for (jo $$3x : jo.c.a) {
-                  if ($$1.i() <= 0.25F) {
-                     jo $$4 = $$3x.g();
-                     jj $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                     if ($$0.a($$5)) {
-                        $$0.a($$5, dkw.fX.m().b(dmb.c, Integer.valueOf($$1.a(3))).b(dmb.e, $$3x));
-                     }
-                  }
-               }
-            });
-         }
+   protected void a(div $$0, emj.b $$1, azt $$2, elt $$3, int $$4, emj.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
+         int $$11 = $$7 + $$5.b() + 1 - $$10;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
       }
+   }
+
+   @Override
+   public int a(azt $$0, int $$1, elt $$2) {
+      return this.b;
+   }
+
+   @Override
+   protected boolean a(azt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

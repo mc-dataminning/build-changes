@@ -1,77 +1,44 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dbn extends dbp {
-   private final jj b;
-   protected boolean a = true;
+public record dbn(Map<String, dbn.a> c) {
+   public static final dbn a = new dbn(Map.of());
+   public static final Codec<dbn> b = Codec.unboundedMap(Codec.STRING, dbn.a.a).xmap(dbn::new, dbn::a);
 
-   public dbn(cqi $$0, btp $$1, cxy $$2, fcq $$3) {
-      this($$0.dV(), $$0, $$1, $$2, $$3);
+   public dbn a(String $$0, dbn.a $$1) {
+      return new dbn(af.a(this.c, $$0, $$1));
    }
 
-   public dbn(dbp $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   public Map<String, dbn.a> a() {
+      return this.c;
    }
 
-   protected dbn(dhp $$0, @Nullable cqi $$1, btp $$2, cxy $$3, fcq $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.b().a($$4.c());
-      this.a = $$0.a_($$4.b()).a(this);
-   }
-
-   public static dbn a(dbn $$0, jj $$1, jo $$2) {
-      return new dbn(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new fcq(
-            new fcu((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
+   public static record a(je<exk> b, double c, double d, float e) {
+      public static final Codec<dbn.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  exk.b.fieldOf("type").forGetter(dbn.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(dbn.a::b),
+                  Codec.DOUBLE.fieldOf("z").forGetter(dbn.a::c),
+                  Codec.FLOAT.fieldOf("rotation").forGetter(dbn.a::d)
+               )
+               .apply($$0, dbn.a::new)
       );
-   }
 
-   @Override
-   public jj a() {
-      return this.a ? super.a() : this.b;
-   }
+      public je<exk> a() {
+         return this.b;
+      }
 
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
-   }
+      public double b() {
+         return this.c;
+      }
 
-   public boolean c() {
-      return this.a;
-   }
+      public double c() {
+         return this.d;
+      }
 
-   public jo d() {
-      return jo.a(this.o())[0];
-   }
-
-   public jo e() {
-      return jo.a(this.o(), jo.a.b);
-   }
-
-   public jo[] f() {
-      jo[] $$0 = jo.a(this.o());
-      if (this.a) {
-         return $$0;
-      } else {
-         jo $$1 = this.k();
-         int $$2 = 0;
-
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
-         }
-
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
-
-         return $$0;
+      public float d() {
+         return this.e;
       }
    }
 }

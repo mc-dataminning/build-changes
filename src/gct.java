@@ -1,37 +1,70 @@
-public class gct extends geo<gzq> {
-   public gct(ghd $$0) {
-      super($$0);
+import java.util.Set;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
+
+public record gct(egl a, jr<edm> b, egi c, jl<aln> d, alp e, djn f, gco g) {
+   public gct(egj $$0, jl<aln> $$1, alp $$2, djn $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3, new gco(gcv.a.a, Set.of(), null));
    }
 
-   public static ghj a(ghh $$0) {
-      ghl $$1 = geo.a($$0, 0.0F);
-      ghn $$2 = $$1.a();
-      ghn $$3 = $$2.a("head", ghi.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), ghf.a(0.0F, 1.0F, 0.0F));
-      $$3.a("hat", ghi.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), ghf.a);
-      $$2.a("right_leg", ghi.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), ghf.a(-1.9F, 11.0F, 0.0F));
-      $$2.a("left_leg", ghi.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), ghf.a(1.9F, 11.0F, 0.0F));
-      return ghj.a($$1, 64, 32);
+   public gct(egl $$0, egi $$1, jl<aln> $$2, alp $$3, djn $$4, gco $$5) {
+      this($$0, $$2.a(aln.c).f(mg.bn), $$1, $$2.a(aln.c), $$3, $$4, $$5);
    }
 
-   public void a(gzq $$0) {
-      super.a($$0);
-      this.o.e = (float) (Math.PI / 180.0) * $$0.l.b();
-      this.o.f = (float) (Math.PI / 180.0) * $$0.l.c();
-      this.o.g = (float) (Math.PI / 180.0) * $$0.l.d();
-      this.q.e = (float) (Math.PI / 180.0) * $$0.m.b();
-      this.q.f = (float) (Math.PI / 180.0) * $$0.m.c();
-      this.q.g = (float) (Math.PI / 180.0) * $$0.m.d();
-      this.s.e = (float) (Math.PI / 180.0) * $$0.n.b();
-      this.s.f = (float) (Math.PI / 180.0) * $$0.n.c();
-      this.s.g = (float) (Math.PI / 180.0) * $$0.n.d();
-      this.r.e = (float) (Math.PI / 180.0) * $$0.o.b();
-      this.r.f = (float) (Math.PI / 180.0) * $$0.o.c();
-      this.r.g = (float) (Math.PI / 180.0) * $$0.o.d();
-      this.u.e = (float) (Math.PI / 180.0) * $$0.p.b();
-      this.u.f = (float) (Math.PI / 180.0) * $$0.p.c();
-      this.u.g = (float) (Math.PI / 180.0) * $$0.p.d();
-      this.t.e = (float) (Math.PI / 180.0) * $$0.q.b();
-      this.t.f = (float) (Math.PI / 180.0) * $$0.q.c();
-      this.t.g = (float) (Math.PI / 180.0) * $$0.q.d();
+   public gct a(egl $$0, egi $$1) {
+      return new gct($$0, this.b, $$1, this.d, this.e, this.f, this.g);
+   }
+
+   public gct a(gct.b $$0) {
+      return new gct($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f, this.g);
+   }
+
+   public gct a(gct.a $$0) {
+      return new gct(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f, this.g);
+   }
+
+   public js.b a() {
+      return this.d.a();
+   }
+
+   public void b() {
+      for (edm $$0 : this.d()) {
+         $$0.b().a();
+      }
+   }
+
+   public egl c() {
+      return this.a;
+   }
+
+   public jr<edm> d() {
+      return this.b;
+   }
+
+   public egi e() {
+      return this.c;
+   }
+
+   public jl<aln> f() {
+      return this.d;
+   }
+
+   public alp g() {
+      return this.e;
+   }
+
+   public djn h() {
+      return this.f;
+   }
+
+   public gco i() {
+      return this.g;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<js.b, egi, egi> {
+   }
+
+   public interface b extends UnaryOperator<egl> {
    }
 }

@@ -1,44 +1,32 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bzn extends byi<cpu> {
-   private final float c;
-
-   public bzn(float $$0) {
-      super(ImmutableMap.of(cft.n, cfu.c, cft.o, cfu.c), Integer.MAX_VALUE);
-      this.c = $$0;
+public class bzn {
+   public static <T extends bwz> byr<bwz> a(bwj<? extends T> $$0, int $$1, cgb<T> $$2, float $$3, int $$4) {
+      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
    }
 
-   protected boolean a(arn $$0, cpu $$1) {
-      cqi $$2 = $$1.x();
-      return $$1.bK() && $$2 != null && !$$1.bj() && !$$1.T && $$1.g($$2) <= 16.0 && $$2.bP != null;
-   }
-
-   protected boolean a(arn $$0, cpu $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(arn $$0, cpu $$1, long $$2) {
-      this.a($$1);
-   }
-
-   protected void c(arn $$0, cpu $$1, long $$2) {
-      bxr<?> $$3 = $$1.eb();
-      $$3.b(cft.n);
-      $$3.b(cft.o);
-   }
-
-   protected void d(arn $$0, cpu $$1, long $$2) {
-      this.a($$1);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   private void a(cpu $$0) {
-      bxr<?> $$1 = $$0.eb();
-      $$1.a(cft.n, new cfw(new byt($$0.x(), false), this.c, 2));
-      $$1.a(cft.o, new byt($$0.x(), true));
+   public static <E extends bwz, T extends bwz> byr<E> a(bwj<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, cgb<T> $$4, float $$5, int $$6) {
+      int $$7 = $$1 * $$1;
+      Predicate<bwz> $$8 = $$2x -> $$0.equals($$2x.aq()) && $$3.test((T)$$2x);
+      return ccd.a(
+         (Function<ccd.b<E>, ? extends App<ccd.c<E>, ccg<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(cgb.o), $$6x.c(cgb.n), $$6x.b(cgb.h))
+               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
+                     cgd $$13 = $$6x.b($$9);
+                     if ($$2.test((E)$$11) && $$13.d($$8)) {
+                        Optional<bwz> $$14 = $$13.a($$3xxxx -> $$3xxxx.g($$11) <= (double)$$7 && $$8.test($$3xxxx));
+                        $$14.ifPresent($$5xxxx -> {
+                           $$6xx.a($$5xxxx);
+                           $$7x.a(new bzb($$5xxxx, true));
+                           $$8x.a(new cge(new bzb($$5xxxx, false), $$5, $$6));
+                        });
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

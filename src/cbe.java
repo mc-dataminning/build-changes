@@ -1,28 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class cbe {
-   public static <E extends bwr> bzt<E> a(List<Pair<? extends cby<? super E>, Integer>> $$0) {
-      return a($$0, byw.a.b, byw.b.a);
-   }
-
-   public static <E extends bwr> bzt<E> a(List<Pair<? extends cby<? super E>, Integer>> $$0, byw.a $$1, byw.b $$2) {
-      car<cby<? super E>> $$3 = new car<>();
-      $$0.forEach($$1x -> $$3.a((cby<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return cbv.a((Function<cbv.b<E>, ? extends App<cbv.c<E>, cby<E>>>)($$3x -> $$3x.a((cby<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == byw.a.b) {
-               $$3.a();
-            }
-
-            for (cby<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == byw.b.a) {
-                  break;
-               }
-            }
-
-            return true;
-         }))));
+   public static byr<bwz> a(Function<bwz, Optional<cae>> $$0, Predicate<bwz> $$1, int $$2, int $$3, float $$4) {
+      return ccd.a(
+         (Function<ccd.b<bwz>, ? extends App<ccd.c<bwz>, ccg<bwz>>>)($$5 -> $$5.group($$5.a(cgb.o), $$5.a(cgb.n))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<cae> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        cae $$11 = $$10.get();
+                        if ($$8.dt().a((jo)$$11.a(), (double)$$3)) {
+                           return false;
+                        } else {
+                           cae $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new cge($$12, $$4, $$2));
+                           return true;
+                        }
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

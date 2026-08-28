@@ -1,131 +1,165 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.base.Suppliers;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.IntUnaryOperator;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface hik {
-   Codec<hik> a = hik.d.d.dispatch(hik::a, hik.d::a);
-   hik b = new hik.b();
+public record hik(List<ale> d, ale e, Map<String, ale> f, String g) implements hie {
+   static final Logger h = LogUtils.getLogger();
+   public static final String b = "_";
+   public static final MapCodec<hik> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.list(ale.a).fieldOf("textures").forGetter(hik::b),
+               ale.a.fieldOf("palette_key").forGetter(hik::c),
+               Codec.unboundedMap(Codec.STRING, ale.a).fieldOf("permutations").forGetter(hik::d),
+               Codec.STRING.optionalFieldOf("separator", "_").forGetter(hik::e)
+            )
+            .apply($$0, hik::new)
+   );
 
-   hik.d a();
+   public hik(List<ale> $$0, ale $$1, Map<String, ale> $$2) {
+      this($$0, $$1, $$2, "_");
+   }
 
-   public static record a(int d, int e, hik.a.a f, boolean g) implements hik {
-      public static final MapCodec<hik.a> c = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     ays.m.fieldOf("width").forGetter(hik.a::b),
-                     ays.m.fieldOf("height").forGetter(hik.a::c),
-                     hik.a.a.g.fieldOf("border").forGetter(hik.a::d),
-                     Codec.BOOL.optionalFieldOf("stretch_inner", false).forGetter(hik.a::e)
-                  )
-                  .apply($$0, hik.a::new)
-         )
-         .validate(hik.a::a);
+   @Override
+   public void a(avb $$0, hie.a $$1) {
+      Supplier<int[]> $$2 = Suppliers.memoize(() -> a($$0, this.e));
+      Map<String, Supplier<IntUnaryOperator>> $$3 = new HashMap<>();
+      this.f.forEach(($$3x, $$4x) -> $$3.put($$3x, Suppliers.memoize(() -> a($$2.get(), a($$0, $$4x)))));
 
-      private static DataResult<hik.a> a(hik.a $$0) {
-         hik.a.a $$1 = $$0.d();
-         if ($$1.a() + $$1.c() >= $$0.b()) {
-            return DataResult.error(() -> "Nine-sliced texture has no horizontal center slice: " + $$1.a() + " + " + $$1.c() + " >= " + $$0.b());
+      for (ale $$4 : this.d) {
+         ale $$5 = a.a($$4);
+         Optional<auz> $$6 = $$0.getResource($$5);
+         if ($$6.isEmpty()) {
+            h.warn("Unable to find texture {}", $$5);
          } else {
-            return $$1.b() + $$1.d() >= $$0.c()
-               ? DataResult.error(() -> "Nine-sliced texture has no vertical center slice: " + $$1.b() + " + " + $$1.d() + " >= " + $$0.c())
-               : DataResult.success($$0);
-         }
-      }
+            hij $$7 = new hij($$5, $$6.get(), $$3.size());
 
-      @Override
-      public hik.d a() {
-         return hik.d.c;
-      }
-
-      public int b() {
-         return this.d;
-      }
-
-      public int c() {
-         return this.e;
-      }
-
-      public hik.a.a d() {
-         return this.f;
-      }
-
-      public boolean e() {
-         return this.g;
-      }
-
-      public static record a(int a, int b, int c, int d) {
-         private static final Codec<hik.a.a> e = ays.m.flatComapMap($$0 -> new hik.a.a($$0, $$0, $$0, $$0), $$0 -> {
-            OptionalInt $$1 = $$0.e();
-            return $$1.isPresent() ? DataResult.success($$1.getAsInt()) : DataResult.error(() -> "Border has different side sizes");
-         });
-         private static final Codec<hik.a.a> f = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     ays.l.fieldOf("left").forGetter(hik.a.a::a),
-                     ays.l.fieldOf("top").forGetter(hik.a.a::b),
-                     ays.l.fieldOf("right").forGetter(hik.a.a::c),
-                     ays.l.fieldOf("bottom").forGetter(hik.a.a::d)
-                  )
-                  .apply($$0, hik.a.a::new)
-         );
-         static final Codec<hik.a.a> g = Codec.either(e, f).xmap(Either::unwrap, $$0 -> $$0.e().isPresent() ? Either.left($$0) : Either.right($$0));
-
-         private OptionalInt e() {
-            return this.a() == this.b() && this.b() == this.c() && this.c() == this.d() ? OptionalInt.of(this.a()) : OptionalInt.empty();
+            for (Entry<String, Supplier<IntUnaryOperator>> $$8 : $$3.entrySet()) {
+               ale $$9 = $$4.g(this.g + $$8.getKey());
+               $$1.a($$9, new hik.a($$7, $$8.getValue(), $$9));
+            }
          }
       }
    }
 
-   public static record b() implements hik {
-      public static final MapCodec<hik.b> c = MapCodec.unit(hik.b::new);
+   private static IntUnaryOperator a(int[] $$0, int[] $$1) {
+      if ($$1.length != $$0.length) {
+         h.warn("Palette mapping has different sizes: {} and {}", $$0.length, $$1.length);
+         throw new IllegalArgumentException();
+      } else {
+         Int2IntMap $$2 = new Int2IntOpenHashMap($$1.length);
 
-      @Override
-      public hik.d a() {
-         return hik.d.a;
+         for (int $$3 = 0; $$3 < $$0.length; $$3++) {
+            int $$4 = $$0[$$3];
+            if (axu.a($$4) != 0) {
+               $$2.put(axu.g($$4), $$1[$$3]);
+            }
+         }
+
+         return $$1x -> {
+            int $$2x = axu.a($$1x);
+            if ($$2x == 0) {
+               return $$1x;
+            } else {
+               int $$3x = axu.g($$1x);
+               int $$4x = $$2.getOrDefault($$3x, axu.f($$3x));
+               int $$5 = axu.a($$4x);
+               return axu.c($$2x * $$5 / 255, $$4x);
+            }
+         };
       }
    }
 
-   public static record c(int d, int e) implements hik {
-      public static final MapCodec<hik.c> c = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ays.m.fieldOf("width").forGetter(hik.c::b), ays.m.fieldOf("height").forGetter(hik.c::c)).apply($$0, hik.c::new)
-      );
+   private static int[] a(avb $$0, ale $$1) {
+      Optional<auz> $$2 = $$0.getResource(a.a($$1));
+      if ($$2.isEmpty()) {
+         h.error("Failed to load palette image {}", $$1);
+         throw new IllegalArgumentException();
+      } else {
+         try {
+            int[] var5;
+            try (
+               InputStream $$3 = $$2.get().d();
+               fhq $$4 = fhq.a($$3);
+            ) {
+               var5 = $$4.e();
+            }
 
-      @Override
-      public hik.d a() {
-         return hik.d.b;
-      }
-
-      public int b() {
-         return this.d;
-      }
-
-      public int c() {
-         return this.e;
+            return var5;
+         } catch (Exception var11) {
+            h.error("Couldn't load texture {}", $$1, var11);
+            throw new IllegalArgumentException();
+         }
       }
    }
 
-   public static enum d implements bag {
-      a("stretch", hik.b.c),
-      b("tile", hik.c.c),
-      c("nine_slice", hik.a.c);
+   @Override
+   public MapCodec<hik> a() {
+      return c;
+   }
 
-      public static final Codec<hik.d> d = bag.a(hik.d::values);
-      private final String e;
-      private final MapCodec<? extends hik> f;
+   public List<ale> b() {
+      return this.d;
+   }
 
-      private d(final String $$0, final MapCodec<? extends hik> $$1) {
-         this.e = $$0;
-         this.f = $$1;
+   public ale c() {
+      return this.e;
+   }
+
+   public Map<String, ale> d() {
+      return this.f;
+   }
+
+   public String e() {
+      return this.g;
+   }
+
+   static record a(hij a, Supplier<IntUnaryOperator> b, ale c) implements hie.b {
+      @Nullable
+      public hht a(hid $$0) {
+         Object var3;
+         try {
+            fhq $$1 = this.a.a().a(this.b.get());
+            return new hht(this.c, new hjm($$1.a(), $$1.b()), $$1, avd.a);
+         } catch (IllegalArgumentException | IOException var7) {
+            hik.h.error("unable to apply palette to {}", this.c, var7);
+            var3 = null;
+         } finally {
+            this.a.b();
+         }
+
+         return (hht)var3;
       }
 
       @Override
-      public String c() {
-         return this.e;
+      public void a() {
+         this.a.b();
       }
 
-      public MapCodec<? extends hik> a() {
-         return this.f;
+      public hij b() {
+         return this.a;
+      }
+
+      public Supplier<IntUnaryOperator> c() {
+         return this.b;
+      }
+
+      public ale d() {
+         return this.c;
       }
    }
 }

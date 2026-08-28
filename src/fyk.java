@@ -1,66 +1,100 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class fyk extends fxx<cva> {
+   private static final ale G = ale.b("container/crafter/disabled_slot");
+   private static final ale H = ale.b("container/crafter/powered_redstone");
+   private static final ale I = ale.b("container/crafter/unpowered_redstone");
+   private static final ale J = ale.b("textures/gui/container/crafter.png");
+   private static final ww K = ww.c("gui.togglable_slot");
+   private final cqs L;
 
-public class fyk extends fwf {
-   private static final List<dzx> a = List.of(dzx.values());
-   private static final wv b = wv.c(dkw.pE.v());
-   private static final wv c = wv.c("test_block.message");
-   private final jj d;
-   private dzx s;
-   private String u;
-   @Nullable
-   private fqw v;
-
-   public fyk(dxf $$0) {
-      super(b);
-      this.d = $$0.aw_();
-      this.s = $$0.d();
-      this.u = $$0.t();
+   public fyk(cva $$0, cqr $$1, ww $$2) {
+      super($$0, $$1, $$2);
+      this.L = $$1.k;
    }
 
    @Override
-   public void aN_() {
-      this.c(fqn.a(wu.d, $$0 -> this.m()).a(this.n / 2 - 4 - 150, 210, 150, 20).a());
-      this.c(fqn.a(wu.e, $$0 -> this.E()).a(this.n / 2 + 4, 210, 150, 20).a());
-      this.c(fqu.<dzx>a(dzx::a).a(a).a().a(this.s).a(this.n / 2 - 4 - 150, 185, 50, 20, b, ($$0, $$1) -> this.a($$1)));
-      this.v = new fqw(this.p, this.n / 2 - 152, 80, 240, 20, wv.c("test_block.message"));
-      this.v.f(128);
-      this.v.a(this.u);
-      this.c(this.v);
-      this.b(this.v);
-      this.a(this.s);
+   protected void aN_() {
+      super.aN_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
    @Override
-   public void a(fpz $$0, int $$1, int $$2, float $$3) {
+   protected void a(cwh $$0, int $$1, int $$2, cuv $$3) {
+      if ($$0 instanceof cvb && !$$0.h() && !this.L.U_()) {
+         switch ($$3) {
+            case a:
+               if (this.z.e($$1)) {
+                  this.a($$1);
+               } else if (this.z.g().f()) {
+                  this.b($$1);
+               }
+               break;
+            case c:
+               cys $$4 = this.L.gi().a($$2);
+               if (this.z.e($$1) && !$$4.f()) {
+                  this.a($$1);
+               }
+         }
+      }
+
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 10, 16777215);
-      $$0.b(this.p, c, this.n / 2 - 153, 70, 10526880);
-      $$0.b(this.p, this.s.b(), this.n / 2 - 153, 174, 10526880);
+   }
+
+   private void a(int $$0) {
+      this.a($$0, true);
+   }
+
+   private void b(int $$0) {
+      this.a($$0, false);
+   }
+
+   private void a(int $$0, boolean $$1) {
+      this.z.a($$0, $$1);
+      super.a($$0, this.z.l, $$1);
+      float $$2 = $$1 ? 1.0F : 0.75F;
+      this.L.a(awl.Bp.a(), 0.4F, $$2);
    }
 
    @Override
-   public boolean k() {
-      return false;
+   public void a(frc $$0, cwh $$1) {
+      if ($$1 instanceof cvb $$2 && this.z.e($$1.d)) {
+         this.a($$0, $$2);
+         return;
+      }
+
+      super.a($$0, $$1);
    }
 
-   private void m() {
-      this.u = this.v.a();
-      this.m.L().b(new aij(this.d, this.s, this.u));
-      this.aK_();
+   private void a(frc $$0, cvb $$1) {
+      $$0.a(gpn::H, G, $$1.e - 1, $$1.f - 1, 18, 18);
    }
 
    @Override
-   public void aK_() {
-      this.E();
+   public void a(frc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0);
+      this.a($$0, $$1, $$2);
+      if (this.B instanceof cvb && !this.z.e(this.B.d) && this.z.g().f() && !this.B.h() && !this.L.U_()) {
+         $$0.a(this.p, K, $$1, $$2);
+      }
    }
 
-   private void E() {
-      this.m.a(null);
+   private void d(frc $$0) {
+      int $$1 = this.n / 2 + 9;
+      int $$2 = this.o / 2 - 48;
+      ale $$3;
+      if (this.z.l()) {
+         $$3 = H;
+      } else {
+         $$3 = I;
+      }
+
+      $$0.a(gpn::H, $$3, $$1, $$2, 16, 16);
    }
 
-   private void a(dzx $$0) {
-      this.s = $$0;
-      this.v.k = $$0 != dzx.a;
+   @Override
+   protected void a(frc $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gpn::H, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

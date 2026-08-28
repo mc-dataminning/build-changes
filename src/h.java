@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.joml.Matrix3f;
 
-public enum h implements bag {
+public enum h implements bai {
    a("identity", i.a, false, false, false),
    b("rot_180_face_xy", i.a, true, true, false),
    c("rot_180_face_xz", i.a, true, false, true),
@@ -57,11 +57,11 @@ public enum h implements bag {
    U("rot_90_ref_z_neg", i.b, false, true, true),
    V("rot_90_ref_z_pos", i.b, true, false, true);
 
-   private static final jo.a[] X = jo.a.values();
+   private static final ja.a[] X = ja.a.values();
    private final Matrix3f Y;
    private final String Z;
    @Nullable
-   private Map<jo, jo> aa;
+   private Map<ja, ja> aa;
    private final boolean ab;
    private final boolean ac;
    private final boolean ad;
@@ -122,21 +122,21 @@ public enum h implements bag {
       return this.Z;
    }
 
-   public jo a(jo $$0) {
+   public ja a(ja $$0) {
       if (this.aa == null) {
-         this.aa = af.a(jo.class, $$0x -> {
-            jo.a $$1 = $$0x.o();
-            jo.b $$2 = $$0x.f();
-            jo.a $$3 = this.b($$1);
-            jo.b $$4 = this.a($$3) ? $$2.c() : $$2;
-            return jo.a($$3, $$4);
+         this.aa = af.a(ja.class, $$0x -> {
+            ja.a $$1 = $$0x.o();
+            ja.b $$2 = $$0x.f();
+            ja.a $$3 = this.b($$1);
+            ja.b $$4 = this.a($$3) ? $$2.c() : $$2;
+            return ja.a($$3, $$4);
          });
       }
 
       return this.aa.get($$0);
    }
 
-   public boolean a(jo.a $$0) {
+   public boolean a(ja.a $$0) {
       switch ($$0) {
          case a:
             return this.ab;
@@ -148,12 +148,12 @@ public enum h implements bag {
       }
    }
 
-   public jo.a b(jo.a $$0) {
+   public ja.a b(ja.a $$0) {
       return X[this.ae.a($$0.ordinal())];
    }
 
-   public jq a(jq $$0) {
-      return jq.a(this.a($$0.a()), this.a($$0.b()));
+   public jc a(jc $$0) {
+      return jc.a(this.a($$0.a()), this.a($$0.b()));
    }
 
    public static h a(int $$0, int $$1) {

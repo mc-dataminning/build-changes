@@ -1,30 +1,10 @@
-public record ia(int a, eu b, ia.a c) {
-   public void a(int $$0) {
-      this.b.onSuccess($$0);
-   }
+import com.mojang.brigadier.CommandDispatcher;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public void a() {
-      this.b.onFailure();
-   }
-
-   public void b() {
-      this.c.discard();
-   }
-
-   public int c() {
-      return this.a;
-   }
-
-   public eu d() {
-      return this.b;
-   }
-
-   public ia.a e() {
-      return this.c;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void discard();
+public record ia<T>(ale a, List<hn<T>> b) implements hw<T>, hy<T> {
+   @Override
+   public hy<T> a(@Nullable tx $$0, CommandDispatcher<T> $$1) throws el {
+      return this;
    }
 }

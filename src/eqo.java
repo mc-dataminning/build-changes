@@ -1,90 +1,44 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public abstract class eqo {
-   public static final Codec<eqo> f = md.ag.q().dispatch("element_type", eqo::a, eqp::codec);
-   private static final js<etg> a = js.a(new etg(List.of()));
-   @Nullable
-   private volatile eqq.a b;
+public record eqo(List<eqo.a> c, erf d) {
+   public static final Codec<eqo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eqo.a.a.listOf().fieldOf("structures").forGetter(eqo::a), erf.b.fieldOf("placement").forGetter(eqo::b)).apply($$0, eqo::new)
+   );
+   public static final Codec<je<eqo>> b = ala.a(mg.bb, a);
 
-   protected static <E extends eqo> RecordCodecBuilder<E, eqq.a> e() {
-      return eqq.a.c.fieldOf("projection").forGetter(eqo::f);
+   public eqo(je<eqi> $$0, erf $$1) {
+      this(List.of(new eqo.a($$0, 1)), $$1);
    }
 
-   protected eqo(eqq.a $$0) {
-      this.b = $$0;
+   public static eqo.a a(je<eqi> $$0, int $$1) {
+      return new eqo.a($$0, $$1);
    }
 
-   public abstract kn a(etj var1, drm var2);
-
-   public abstract List<eti.a> a(etj var1, jj var2, drm var3, azs var4);
-
-   public abstract eoy a(etj var1, jj var2, drm var3);
-
-   public abstract boolean a(etj var1, dio var2, dil var3, eak var4, jj var5, jj var6, drm var7, eoy var8, azs var9, ess var10, boolean var11);
-
-   public abstract eqp<?> a();
-
-   public void a(dhq $$0, eti.d $$1, jj $$2, drm $$3, azs $$4, eoy $$5) {
+   public static eqo.a a(je<eqi> $$0) {
+      return new eqo.a($$0, 1);
    }
 
-   public eqo a(eqq.a $$0) {
-      this.b = $$0;
-      return this;
+   public List<eqo.a> a() {
+      return this.c;
    }
 
-   public eqq.a f() {
-      eqq.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
-      } else {
-         return $$0;
+   public erf b() {
+      return this.d;
+   }
+
+   public static record a(je<eqi> b, int c) {
+      public static final Codec<eqo.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eqi.b.fieldOf("structure").forGetter(eqo.a::a), ays.m.fieldOf("weight").forGetter(eqo.a::b)).apply($$0, eqo.a::new)
+      );
+
+      public je<eqi> a() {
+         return this.b;
       }
-   }
 
-   public int g() {
-      return 1;
-   }
-
-   public static Function<eqq.a, eqh> h() {
-      return $$0 -> eqh.b;
-   }
-
-   public static Function<eqq.a, eql> a(String $$0) {
-      return $$1 -> new eql(Either.left(ald.a($$0)), a, $$1, Optional.empty());
-   }
-
-   public static Function<eqq.a, eql> a(String $$0, js<etg> $$1) {
-      return $$2 -> new eql(Either.left(ald.a($$0)), $$1, $$2, Optional.empty());
-   }
-
-   public static Function<eqq.a, eqn> b(String $$0) {
-      return $$1 -> new eqn(Either.left(ald.a($$0)), a, $$1, Optional.empty());
-   }
-
-   public static Function<eqq.a, eqn> b(String $$0, js<etg> $$1) {
-      return $$2 -> new eqn(Either.left(ald.a($$0)), $$1, $$2, Optional.empty());
-   }
-
-   public static Function<eqq.a, eqn> a(String $$0, ess $$1) {
-      return $$2 -> new eqn(Either.left(ald.a($$0)), a, $$2, Optional.of($$1));
-   }
-
-   public static Function<eqq.a, eqn> a(String $$0, js<etg> $$1, ess $$2) {
-      return $$3 -> new eqn(Either.left(ald.a($$0)), $$1, $$3, Optional.of($$2));
-   }
-
-   public static Function<eqq.a, eqi> a(js<eok> $$0) {
-      return $$1 -> new eqi($$0, $$1);
-   }
-
-   public static Function<eqq.a, eqm> b(List<Function<eqq.a, ? extends eqo>> $$0) {
-      return $$1 -> new eqm($$0.stream().map($$1x -> (eqo)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+      public int b() {
+         return this.c;
+      }
    }
 }

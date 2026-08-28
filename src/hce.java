@@ -1,11 +1,7 @@
-import javax.annotation.Nullable;
+public class hce extends hcp {
+   public final hes i = new hes();
 
-public class hce extends hbk {
-   public fcu a = fcu.c;
-   @Nullable
-   public cwv b;
-   public float c;
-   public float d;
-   public float e;
-   public jo f = jo.a;
+   public static void a(bwz $$0, hce $$1, heq $$2) {
+      $$2.a($$1.i, $$0.fa(), cyq.h, false, $$0);
+   }
 }

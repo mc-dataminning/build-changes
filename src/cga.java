@@ -1,125 +1,59 @@
-public class cga extends cgb {
-   private boolean p;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   public cga(bwt $$0, dhp $$1) {
-      super($$0, $$1);
+public class cga<T> {
+   private final T a;
+   private long b;
+
+   public cga(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   protected evj a(int $$0) {
-      this.o = new evp();
-      return new evj(this.o, $$0);
-   }
-
-   @Override
-   protected boolean a() {
-      return this.a.aJ() || this.a.bm() || this.a.bZ();
-   }
-
-   @Override
-   protected fcu b() {
-      return new fcu(this.a.dA(), (double)this.r(), this.a.dG());
-   }
-
-   @Override
-   public evh a(jj $$0, int $$1) {
-      eat $$2 = this.b.S().a(kl.a($$0.u()), kl.a($$0.w()));
-      if ($$2 == null) {
-         return null;
-      } else {
-         if ($$2.a_($$0).l()) {
-            jj.a $$3 = $$0.k().c(jo.a);
-
-            while ($$3.v() > this.b.G_() && $$2.a_($$3).l()) {
-               $$3.c(jo.a);
-            }
-
-            if ($$3.v() > this.b.G_()) {
-               return super.a($$3.d(), $$1);
-            }
-
-            $$3.q($$0.v() + 1);
-
-            while ($$3.v() <= this.b.ao() && $$2.a_($$3).l()) {
-               $$3.c(jo.b);
-            }
-
-            $$0 = $$3;
-         }
-
-         if (!$$2.a_($$0).e()) {
-            return super.a($$0, $$1);
-         } else {
-            jj.a $$4 = $$0.k().c(jo.b);
-
-            while ($$4.v() <= this.b.ao() && $$2.a_($$4).e()) {
-               $$4.c(jo.b);
-            }
-
-            return super.a($$4.j(), $$1);
-         }
+   public void a() {
+      if (this.e()) {
+         this.b--;
       }
    }
 
-   @Override
-   public evh a(bvs $$0, int $$1) {
-      return this.a($$0.dv(), $$1);
+   public static <T> cga<T> a(T $$0) {
+      return new cga<>($$0, Long.MAX_VALUE);
    }
 
-   private int r() {
-      if (this.a.bj() && this.o()) {
-         int $$0 = this.a.dB();
-         dym $$1 = this.b.a_(jj.a(this.a.dA(), (double)$$0, this.a.dG()));
-         int $$2 = 0;
+   public static <T> cga<T> a(T $$0, long $$1) {
+      return new cga<>($$0, $$1);
+   }
 
-         while ($$1.a(dkw.J)) {
-            $$1 = this.b.a_(jj.a(this.a.dA(), (double)(++$$0), this.a.dG()));
-            if (++$$2 > 16) {
-               return this.a.dB();
-            }
-         }
+   public long b() {
+      return this.b;
+   }
 
-         return $$0;
-      } else {
-         return azk.a(this.a.dC() + 0.5);
-      }
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
    }
 
    @Override
-   protected void d() {
-      super.d();
-      if (this.p) {
-         if (this.b.h(jj.a(this.a.dA(), this.a.dC() + 0.5, this.a.dG()))) {
-            return;
-         }
-
-         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
-            evf $$1 = this.c.a($$0);
-            if (this.b.h(new jj($$1.a, $$1.b, $$1.c))) {
-               this.c.b($$0);
-               return;
-            }
-         }
-      }
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
    }
 
-   protected boolean a(evk $$0) {
-      if ($$0 == evk.j) {
-         return false;
-      } else {
-         return $$0 == evk.i ? false : $$0 != evk.b;
-      }
+   @bat
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
    }
 
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
-   public void c(boolean $$0) {
-      this.p = $$0;
-   }
-
-   public void d(boolean $$0) {
-      this.o.d($$0);
+   public static <T> Codec<cga<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new cga<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

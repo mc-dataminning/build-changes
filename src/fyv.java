@@ -1,34 +1,30 @@
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class fyv {
-   private static final ald f = ald.b("tooltip/background");
-   private static final ald g = ald.b("tooltip/frame");
-   public static final int a = 12;
-   private static final int h = 3;
-   public static final int b = 3;
-   public static final int c = 3;
-   public static final int d = 3;
-   public static final int e = 3;
-   private static final int i = 9;
+public class fyv extends fya {
+   public static final float c = 4.5F;
+   private static final Vector3f d = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int s = 16;
+   private static final int u = 16;
+   private final ale v = ale.b("textures/gui/hanging_signs/" + this.b.b() + ".png");
 
-   public static void a(fpz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, @Nullable ald $$6) {
-      int $$7 = $$1 - 3 - 9;
-      int $$8 = $$2 - 3 - 9;
-      int $$9 = $$3 + 3 + 3 + 18;
-      int $$10 = $$4 + 3 + 3 + 18;
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, (float)$$5);
-      $$0.a(goi::H, a($$6), $$7, $$8, $$9, $$10);
-      $$0.a(goi::H, b($$6), $$7, $$8, $$9, $$10);
-      $$0.c().b();
+   public fyv(dyb $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, ww.c("hanging_sign.edit"));
    }
 
-   private static ald a(@Nullable ald $$0) {
-      return $$0 == null ? f : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_background"));
+   @Override
+   protected void a(frc $$0, dzo $$1) {
+      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
    }
 
-   private static ald b(@Nullable ald $$0) {
-      return $$0 == null ? g : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_frame"));
+   @Override
+   protected void c(frc $$0) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(gpn::H, this.v, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
+   }
+
+   @Override
+   protected Vector3f m() {
+      return d;
    }
 }

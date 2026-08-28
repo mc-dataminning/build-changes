@@ -1,73 +1,44 @@
 import com.mojang.serialization.Codec;
 import java.util.List;
 
-public class eij extends ehr<eka> {
-   public eij(Codec<eka> $$0) {
+public class eij extends eih {
+   public eij(Codec<ele> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eht<eka> $$0) {
-      dio $$1 = $$0.b();
-      jj $$2 = $$0.e();
-      azs $$3 = $$0.d();
-      eka $$4 = $$0.f();
-      if (!c($$1.a_($$2))) {
-         return false;
-      } else {
-         List<jo> $$5 = $$4.a($$3);
-         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+   protected boolean a(diq $$0, azt $$1, iu $$2, dzo $$3) {
+      iu.a $$4 = $$2.k();
+      int $$5 = $$1.a(3) + 1;
+
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
             return true;
-         } else {
-            jj.a $$6 = $$2.k();
-
-            for (jo $$7 : $$5) {
-               $$6.g($$2);
-               List<jo> $$8 = $$4.a($$3, $$7.g());
-
-               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
-                  $$6.a($$2, $$7);
-                  dym $$10 = $$1.a_($$6);
-                  if (!c($$10) && !$$10.a($$4.b)) {
-                     break;
-                  }
-
-                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
-                     return true;
-                  }
-               }
-            }
-
-            return false;
          }
+
+         $$4.c(ja.b);
       }
-   }
 
-   public static boolean a(dio $$0, jj $$1, dym $$2, eka $$3, azs $$4, List<jo> $$5) {
-      jj.a $$6 = $$1.k();
+      iu $$7 = $$4.j();
+      int $$8 = $$1.a(3) + 2;
+      List<ja> $$9 = ja.c.a.c($$1);
 
-      for (jo $$7 : $$5) {
-         dym $$8 = $$0.a_($$6.a($$1, $$7));
-         if ($$8.a($$3.h)) {
-            dym $$9 = $$3.b.c($$2, $$0, $$1, $$7);
-            if ($$9 == null) {
-               return false;
+      for (ja $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
+
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(ja.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
             }
-
-            $$0.a($$1, $$9, 3);
-            $$0.y($$1).e($$1);
-            if ($$4.i() < $$3.g) {
-               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
-            }
-
-            return true;
          }
       }
 
-      return false;
-   }
-
-   private static boolean c(dym $$0) {
-      return $$0.l() || $$0.a(dkw.J);
+      return true;
    }
 }

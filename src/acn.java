@@ -1,37 +1,33 @@
-public class acn implements zc<abr> {
-   public static final yt<wg, acn> a = zc.a(acn::a, acn::new);
+public class acn implements zd<abs> {
+   public static final yu<vs, acn> a = zd.a(acn::a, acn::new);
    private final int b;
    private final int c;
    private final int d;
-   private final cxy e;
 
-   public acn(int $$0, int $$1, int $$2, cxy $$3) {
+   public acn(int $$0, int $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
-      this.e = $$3.v();
    }
 
-   private acn(wg $$0) {
+   private acn(vs $$0) {
       this.b = $$0.x();
-      this.c = $$0.l();
+      this.c = $$0.readShort();
       this.d = $$0.readShort();
-      this.e = cxy.h.decode($$0);
    }
 
-   private void a(wg $$0) {
+   private void a(vs $$0) {
       $$0.f(this.b);
-      $$0.c(this.c);
+      $$0.m(this.c);
       $$0.m(this.d);
-      cxy.h.encode($$0, this.e);
    }
 
    @Override
-   public ze<acn> a() {
-      return agk.v;
+   public zf<acn> a() {
+      return agl.u;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
@@ -40,14 +36,10 @@ public class acn implements zc<abr> {
    }
 
    public int e() {
-      return this.d;
-   }
-
-   public cxy f() {
-      return this.e;
-   }
-
-   public int g() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

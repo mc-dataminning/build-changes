@@ -1,65 +1,107 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dmh extends dkg implements dsb {
+public class dmh extends dlu {
    public static final MapCodec<dmh> a = b(dmh::new);
-   public static final dzd b = dzc.I;
-   private static final fdo c = dku.a(6.0);
+   public static final int b = 6;
+   public static final eao c = eae.aB;
+   public static final int d = b(0);
+   private static final feq[] e = dlu.a(6, $$0 -> dlu.a((double)(1 + $$0 * 2), 0.0, 1.0, 15.0, 8.0, 15.0));
 
    @Override
    public MapCodec<dmh> a() {
       return a;
    }
 
-   public dmh(dyl.d $$0) {
+   protected dmh(dzn.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, Boolean.valueOf(true)));
+      this.l(this.B.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b);
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return e[$$0.c(c)];
    }
 
    @Override
-   public dvl a(jj $$0, dym $$1) {
-      return new dvy($$0, $$1);
+   protected bty a(cys $$0, dzo $$1, dip $$2, iu $$3, cqs $$4, btx $$5, fds $$6) {
+      cyo $$7 = $$0.h();
+      if ($$0.a(axi.aN) && $$1.c(c) == 0 && dlu.a($$7) instanceof dmk $$8) {
+         $$0.a(1, $$4);
+         $$2.a(null, $$3, awl.dt, awm.e, 1.0F, 1.0F);
+         $$2.b($$3, dml.a($$8));
+         $$2.a($$4, eeo.c, $$3);
+         $$4.b(awv.c.b($$7));
+         return bty.a;
+      } else {
+         return bty.f;
+      }
    }
 
-   @Nullable
    @Override
-   public <T extends dvl> dvm<T> a(dhp $$0, dym $$1, dvn<T> $$2) {
-      return a($$2, dvn.A, $$0.C ? dvy::a : dvy::b);
-   }
+   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
+      if ($$1.C) {
+         if (a($$1, $$2, $$0, $$3).a()) {
+            return bty.a;
+         }
 
-   @Override
-   protected eut b_(dym $$0) {
-      return $$0.c(b) ? euu.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, euu.c, euu.c.a($$1));
+         if ($$3.b(btx.a).f()) {
+            return bty.c;
+         }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return a($$1, $$2, $$0, $$3);
+   }
+
+   protected static bty a(diq $$0, iu $$1, dzo $$2, cqs $$3) {
+      if (!$$3.t(false)) {
+         return bty.e;
+      } else {
+         $$3.a(awv.U);
+         $$3.gt().a(2, 0.1F);
+         int $$4 = $$2.c(c);
+         $$0.a($$3, eeo.m, $$1);
+         if ($$4 < 6) {
+            $$0.a($$1, $$2.b(c, Integer.valueOf($$4 + 1)), 3);
+         } else {
+            $$0.a($$1, false);
+            $$0.a($$3, eeo.f, $$1);
+         }
+
+         return bty.a;
+      }
    }
 
    @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return c;
-   }
-
-   @Nullable
-   @Override
-   public dym a(dbn $$0) {
-      eut $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.a(axf.a) && $$1.e() == 8));
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      return $$4 == ja.a && !$$0.a($$1, $$3) ? dlw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean a(dym $$0, evi $$1) {
+   protected boolean a(dzo $$0, dis $$1, iu $$2) {
+      return $$1.a_($$2.e()).e();
+   }
+
+   @Override
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   protected int a(dzo $$0, dip $$1, iu $$2) {
+      return b($$0.c(c));
+   }
+
+   public static int b(int $$0) {
+      return (7 - $$0) * 2;
+   }
+
+   @Override
+   protected boolean c_(dzo $$0) {
+      return true;
+   }
+
+   @Override
+   protected boolean a(dzo $$0, ewk $$1) {
       return false;
    }
 }

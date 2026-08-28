@@ -1,137 +1,61 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class cmd extends clt {
+   private static final int b = 100;
+   private static final int c = 10;
+   private static final int d = 20;
+   private static final int e = 150;
+   private static final cho f = cho.a().a(150.0);
+   private final cho g;
+   private int h;
 
-public abstract class cmd extends bvs {
-   private static final Logger b = LogUtils.getLogger();
-   private int c;
-   protected jj a;
-
-   protected cmd(bwb<? extends cmd> $$0, dhp $$1) {
-      super($$0, $$1);
+   public cmd(clq $$0) {
+      super($$0);
+      this.g = cho.a().a(20.0).a(($$1, $$2) -> Math.abs($$1.dC() - $$0.dC()) <= 10.0);
    }
-
-   protected cmd(bwb<? extends cmd> $$0, dhp $$1, jj $$2) {
-      this($$0, $$1);
-      this.a = $$2;
-   }
-
-   protected abstract void f();
 
    @Override
-   public void h() {
-      if (this.dV() instanceof arn $$0) {
-         this.aA();
-         if (this.c++ == 100) {
-            this.c = 0;
-            if (!this.dQ() && !this.g()) {
-               this.at();
-               this.a($$0, null);
+   public void a(aro $$0) {
+      this.h++;
+      bwz $$1 = $$0.a(this.g, this.a, this.a.dA(), this.a.dC(), this.a.dG());
+      if ($$1 != null) {
+         if (this.h > 25) {
+            this.a.t().a(cmg.h);
+         } else {
+            fdw $$2 = new fdw($$1.dA() - this.a.dA(), 0.0, $$1.dG() - this.a.dG()).d();
+            fdw $$3 = new fdw((double)azk.a(this.a.dL() * (float) (Math.PI / 180.0)), 0.0, (double)(-azk.b(this.a.dL() * (float) (Math.PI / 180.0)))).d();
+            float $$4 = (float)$$3.b($$2);
+            float $$5 = (float)(Math.acos((double)$$4) * 180.0F / (float)Math.PI) + 0.5F;
+            if ($$5 < 0.0F || $$5 > 10.0F) {
+               double $$6 = $$1.dA() - this.a.c.dA();
+               double $$7 = $$1.dG() - this.a.c.dG();
+               double $$8 = azk.a(azk.d(180.0 - azk.d($$6, $$7) * 180.0F / (float)Math.PI - (double)this.a.dL()), -100.0, 100.0);
+               this.a.bH *= 0.8F;
+               float $$9 = (float)Math.sqrt($$6 * $$6 + $$7 * $$7) + 1.0F;
+               float $$10 = $$9;
+               if ($$9 > 40.0F) {
+                  $$9 = 40.0F;
+               }
+
+               this.a.bH += (float)$$8 * (0.7F / $$9 / $$10);
+               this.a.w(this.a.dL() + this.a.bH);
             }
          }
-      }
-   }
-
-   public abstract boolean g();
-
-   @Override
-   public boolean bG() {
-      return true;
-   }
-
-   @Override
-   public boolean v(bvs $$0) {
-      if ($$0 instanceof cqi $$1) {
-         return !this.dV().a($$1, this.a) ? true : this.b(this.dW().a($$1), 0.0F);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean b(buh $$0) {
-      return !this.d($$0);
-   }
-
-   @Override
-   public boolean a(arn $$0, buh $$1, float $$2) {
-      if (this.d($$1)) {
-         return false;
-      } else if (!$$0.O().c(dhl.c) && $$1.d() instanceof bwt) {
-         return false;
-      } else {
-         if (!this.dQ()) {
-            this.c($$0);
-            this.bC();
-            this.a($$0, $$1.d());
+      } else if (this.h >= 100) {
+         $$1 = $$0.a(f, this.a, this.a.dA(), this.a.dC(), this.a.dG());
+         this.a.t().a(cmg.e);
+         if ($$1 != null) {
+            this.a.t().a(cmg.i);
+            this.a.t().b(cmg.i).a(new fdw($$1.dA(), $$1.dC(), $$1.dG()));
          }
-
-         return true;
       }
    }
 
    @Override
-   public boolean a(dhi $$0) {
-      return $$0.h() ? super.a($$0) : true;
+   public void c() {
+      this.h = 0;
    }
 
    @Override
-   public void a(bwv $$0, fcu $$1) {
-      if (this.dV() instanceof arn $$2 && !this.dQ() && $$1.h() > 0.0) {
-         this.c($$2);
-         this.a($$2, null);
-      }
-   }
-
-   @Override
-   public void j(double $$0, double $$1, double $$2) {
-      if (this.dV() instanceof arn $$3 && !this.dQ() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
-         this.c($$3);
-         this.a($$3, null);
-      }
-   }
-
-   @Override
-   public void b(tw $$0) {
-      jj $$1 = this.j();
-      $$0.a("TileX", $$1.u());
-      $$0.a("TileY", $$1.v());
-      $$0.a("TileZ", $$1.w());
-   }
-
-   @Override
-   public void a(tw $$0) {
-      jj $$1 = new jj($$0.h("TileX"), $$0.h("TileY"), $$0.h("TileZ"));
-      if (!$$1.a(this.dv(), 16.0)) {
-         b.error("Block-attached entity at invalid position: {}", $$1);
-      } else {
-         this.a = $$1;
-      }
-   }
-
-   public abstract void a(arn var1, @Nullable bvs var2);
-
-   @Override
-   protected boolean bI() {
-      return false;
-   }
-
-   @Override
-   public void a_(double $$0, double $$1, double $$2) {
-      this.a = jj.a($$0, $$1, $$2);
-      this.f();
-      this.ar = true;
-   }
-
-   public jj j() {
-      return this.a;
-   }
-
-   @Override
-   public void a(arn $$0, bwq $$1) {
-   }
-
-   @Override
-   public void i_() {
+   public cmg<cmd> h() {
+      return cmg.g;
    }
 }

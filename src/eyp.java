@@ -1,65 +1,41 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class eyp extends eyy {
-   public static final MapCodec<eyp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(fbr.a.fieldOf("levels").forGetter($$0x -> $$0x.b), kh.a(me.aS).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
-            .apply($$0, eyp::new)
-   );
-   private final fbq b;
-   private final Optional<jw<deh>> c;
+public record eyp<T>(ald<jr<T>> d, Codec<T> e, eyp.a<T> f) {
+   public static final eyp<fbw> a = new eyp<>(mg.bq, fbw.e, e());
+   public static final eyp<fab> b = new eyp<>(mg.bp, fad.c, e());
+   public static final eyp<eys> c = new eyp<>(mg.bo, eys.d, f());
 
-   eyp(List<fau> $$0, fbq $$1, Optional<jw<deh>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   public void a(eyt $$0, ald<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
    }
 
-   @Override
-   public eza<eyp> b() {
-      return ezb.g;
+   public static Stream<eyp<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   @Override
-   public Set<bat<?>> a() {
-      return this.b.a();
+   private static <T extends eyo> eyp.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   @Override
-   public cxy a(cxy $$0, exl $$1) {
-      azs $$2 = $$1.b();
-      kg $$3 = $$1.d().F_();
-      return dej.a($$2, $$0, this.b.a($$1), $$3, this.c);
+   private static eyp.a<eys> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public static eyp.a a(ju.a $$0, fbq $$1) {
-      return new eyp.a($$1).a($$0.e(me.aS).b(axc.n));
+   public ald<jr<T>> b() {
+      return this.d;
    }
 
-   public static class a extends eyy.a<eyp.a> {
-      private final fbq a;
-      private Optional<jw<deh>> b = Optional.empty();
+   public Codec<T> c() {
+      return this.e;
+   }
 
-      public a(fbq $$0) {
-         this.a = $$0;
-      }
+   public eyp.a<T> d() {
+      return this.f;
+   }
 
-      protected eyp.a a() {
-         return this;
-      }
-
-      public eyp.a a(jw<deh> $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      @Override
-      public eyz b() {
-         return new eyp(this.g(), this.a, this.b);
-      }
+   @FunctionalInterface
+   public interface a<T> {
+      void run(eyt var1, ald<T> var2, T var3);
    }
 }

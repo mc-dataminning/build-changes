@@ -1,41 +1,27 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
 public class did {
-   private final List<did.a> a = Lists.newArrayList();
+   public static final did a = new did(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<did> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, did::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
 
-   public void a(jj $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new did.a($$0, $$1));
-      }
+   public did(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   public double b(jj $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
-
-         for (did.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
+   public List<String> a() {
+      return this.c;
    }
 
-   static class a {
-      private final jj a;
-      private final double b;
-
-      public a(jj $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public double a(jj $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
-      }
+   public List<String> b() {
+      return this.d;
    }
 }

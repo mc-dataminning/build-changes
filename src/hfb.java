@@ -1,16 +1,22 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public record hfb() implements hfi<alc<bwb<?>>> {
-   public static final hfi.a<hfb, alc<bwb<?>>> a = hfi.a.a(MapCodec.unit(new hfb()), alc.a(me.z));
+public class hfb {
+   private static final ays.b<ale, MapCodec<? extends hfc>> b = new ays.b<>();
+   public static final MapCodec<hfc> a = b.a(ale.a).dispatchMap("property", hfc::a, $$0 -> $$0);
 
-   @Nullable
-   public alc<bwb<?>> a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3, cxw $$4) {
-      return $$2 == null ? null : $$2.aq().r().h();
-   }
-
-   @Override
-   public hfi.a<hfb, alc<bwb<?>>> a() {
-      return a;
+   public static void a() {
+      b.a(ale.b("custom_model_data"), hfd.a);
+      b.a(ale.b("using_item"), hfl.a);
+      b.a(ale.b("broken"), hey.a);
+      b.a(ale.b("damaged"), hfe.a);
+      b.a(ale.b("fishing_rod/cast"), hfg.a);
+      b.a(ale.b("has_component"), hfh.a);
+      b.a(ale.b("bundle/has_selected_item"), hez.a);
+      b.a(ale.b("selected"), hfk.a);
+      b.a(ale.b("carried"), hfi.a);
+      b.a(ale.b("extended_view"), hff.a);
+      b.a(ale.b("keybind_down"), hfj.a);
+      b.a(ale.b("view_entity"), hfm.a);
+      b.a(ale.b("component"), hfa.a);
    }
 }

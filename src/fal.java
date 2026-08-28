@@ -1,59 +1,63 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
 
-public record fal(alc<fau> b) implements fau {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<fal> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alc.a(me.bp).fieldOf("name").forGetter(fal::c)).apply($$0, fal::new));
+public class fal extends faa {
+   public static final MapCodec<fal> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  ald.a(mg.bo).fieldOf("name").forGetter($$0x -> $$0x.b),
+                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
+                  mf.j.r().fieldOf("type").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, fal::new)
+   );
+   private final ald<eys> b;
+   private final long c;
+   private final je<dwp<?>> d;
 
-   @Override
-   public fav b() {
-      return faw.p;
+   private fal(List<fbw> $$0, ald<eys> $$1, long $$2, je<dwp<?>> $$3) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public void a(exr $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else if ($$0.a(this.b)) {
-         $$0.b("Condition " + this.b.a() + " is recursively called");
+   public fac<fal> b() {
+      return fad.y;
+   }
+
+   @Override
+   public cys a(cys $$0, eyn $$1) {
+      if ($$0.f()) {
+         return $$0;
       } else {
-         fau.super.a($$0);
-         $$0.a()
-            .c(this.b)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
+         $$0.b(kj.at, new dbt(this.b, this.c));
+         return $$0;
       }
    }
 
-   public boolean a(exl $$0) {
-      fau $$1 = $$0.a().c(this.b).map(js.c::a).orElse(null);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b.a());
-         return false;
+   @Override
+   public void a(eyt $$0) {
+      super.a($$0);
+      if (!$$0.b()) {
+         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
       } else {
-         exl.c<?> $$2 = exl.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
+         if ($$0.a().c(this.b).isEmpty()) {
+            $$0.b("Missing loot table used for container: " + this.b.a());
          }
       }
    }
 
-   public static fau.a a(alc<fau> $$0) {
-      return () -> new fal($$0);
+   public static faa.a<?> a(dwp<?> $$0, ald<eys> $$1) {
+      return a($$2 -> new fal($$2, $$1, 0L, $$0.a()));
    }
 
-   public alc<fau> c() {
-      return this.b;
+   public static faa.a<?> a(dwp<?> $$0, ald<eys> $$1, long $$2) {
+      return a($$3 -> new fal($$3, $$1, $$2, $$0.a()));
    }
 }

@@ -1,38 +1,22 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public enum fms {
+   a(0, epy.a),
+   b(1, epy.b),
+   c(2, epy.c),
+   d(3, epy.d);
 
-public class fms {
-   private final gia a;
-   private int b = -1;
-   @Nullable
-   private Consumer<tw> c;
+   private final int e;
+   private final ww f;
 
-   public fms(gia $$0) {
-      this.a = $$0;
+   private fms(final int $$0, final ald<epx> $$1) {
+      this.e = $$0;
+      this.f = ww.c($$1.a().h("generator"));
    }
 
-   public boolean a(int $$0, @Nullable tw $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
-      }
+   public ww a() {
+      return this.f;
    }
 
-   private int a(Consumer<tw> $$0) {
-      this.c = $$0;
-      return ++this.b;
-   }
-
-   public void a(int $$0, Consumer<tw> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ahh($$2, $$0));
-   }
-
-   public void a(jj $$0, Consumer<tw> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new agp($$2, $$0));
+   public int b() {
+      return this.e;
    }
 }

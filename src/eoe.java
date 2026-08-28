@@ -1,44 +1,76 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class eoe extends eon {
-   public static final MapCodec<eoe> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(jj.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, eoe::new)
-   );
-   private final List<jj> c;
+public abstract class eoe {
+   public static final Codec<eoe> c = mf.V.q().dispatch(eoe::a, eof::a);
+   private static final int a = 32;
+   private static final int b = 24;
+   public static final int d = 80;
+   protected final int e;
+   protected final int f;
+   protected final int g;
 
-   public static eoe a(jj... $$0) {
-      return new eoe(List.of($$0));
+   protected static <P extends eoe> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
+         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
+         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   private eoe(List<jj> $$0) {
-      this.c = $$0;
+   public eoe(int $$0, int $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public Stream<jj> a_(eol $$0, azs $$1, jj $$2) {
-      int $$3 = kl.a($$2.u());
-      int $$4 = kl.a($$2.w());
-      boolean $$5 = false;
+   protected abstract eof<?> a();
 
-      for (jj $$6 : this.c) {
-         if (a($$3, $$4, $$6)) {
-            $$5 = true;
-            break;
-         }
+   public abstract List<emj.a> a(div var1, BiConsumer<iu, dzo> var2, azt var3, int var4, iu var5, elt var6);
+
+   public int a(azt $$0) {
+      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
+   }
+
+   private static boolean c(div $$0, iu $$1) {
+      return $$0.a($$1, $$0x -> eit.b($$0x) && !$$0x.a(dlw.i) && !$$0x.a(dlw.fA));
+   }
+
+   protected static void a(div $$0, BiConsumer<iu, dzo> $$1, azt $$2, iu $$3, elt $$4) {
+      if ($$4.k || !c($$0, $$3)) {
+         $$1.accept($$3, $$4.c.a($$2, $$3));
       }
-
-      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
    }
 
-   private static boolean a(int $$0, int $$1, jj $$2) {
-      return $$0 == kl.a($$2.u()) && $$1 == kl.a($$2.w());
+   protected boolean b(div $$0, BiConsumer<iu, dzo> $$1, azt $$2, iu $$3, elt $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
    }
 
-   @Override
-   public eoo<?> b() {
-      return eoo.o;
+   protected boolean a(div $$0, BiConsumer<iu, dzo> $$1, azt $$2, iu $$3, elt $$4, Function<dzo, dzo> $$5) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(div $$0, BiConsumer<iu, dzo> $$1, azt $$2, iu.a $$3, elt $$4) {
+      if (this.b($$0, $$3)) {
+         this.b($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   protected boolean a(div $$0, iu $$1) {
+      return ekf.d($$0, $$1);
+   }
+
+   public boolean b(div $$0, iu $$1) {
+      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(axa.u));
    }
 }

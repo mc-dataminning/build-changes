@@ -1,30 +1,27 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public record fbw(exl.b c) implements fbz {
-   public static final MapCodec<fbw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(exl.b.e.fieldOf("target").forGetter(fbw::c)).apply($$0, fbw::new));
-   public static final Codec<fbw> b = exl.b.e.xmap(fbw::new, fbw::c);
+public interface fbw extends eyo, Predicate<eyn> {
+   Codec<fbw> d = mf.F.q().dispatch("condition", fbw::b, fbx::a);
+   Codec<fbw> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, fbj.b));
+   Codec<je<fbw>> f = ala.a(mg.bq, e);
 
-   public static fbz a(exl.b $$0) {
-      return new fbw($$0);
-   }
+   fbx b();
 
-   @Override
-   public fby a() {
-      return fca.c;
-   }
+   @FunctionalInterface
+   public interface a {
+      fbw build();
 
-   @Nullable
-   @Override
-   public fdy a(exl $$0) {
-      return $$0.c(this.c.a());
-   }
+      default fbw.a invert() {
+         return fbt.a(this);
+      }
 
-   @Override
-   public Set<bat<?>> b() {
-      return Set.of(this.c.a());
+      default fbk.a or(fbw.a $$0) {
+         return fbk.a(this, $$0);
+      }
+
+      default fbj.a and(fbw.a $$0) {
+         return fbj.a(this, $$0);
+      }
    }
 }

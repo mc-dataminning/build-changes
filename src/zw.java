@@ -1,20 +1,11 @@
-public record zw(aqx b) implements zc<zv> {
-   public static final yt<vr, zw> a = zc.a(zw::a, zw::new);
+public interface zw extends abp {
+   void a(zz var1);
 
-   private zw(vr $$0) {
-      this(new aqx($$0));
-   }
+   void a(aaa var1);
 
-   private void a(vr $$0) {
-      this.b.a($$0);
-   }
+   void a(zy var1);
 
-   @Override
-   public ze<zw> a() {
-      return zu.l;
-   }
+   void a(aab var1);
 
-   public void a(zv $$0) {
-      $$0.a(this);
-   }
+   void a(zx var1);
 }

@@ -1,14 +1,14 @@
 import io.netty.buffer.ByteBuf;
 
-public record ahp(int b, boolean c) implements zc<agm> {
-   public static final yt<ByteBuf, ahp> a = yt.a(yr.h, ahp::b, yr.b, ahp::e, ahp::new);
+public record ahp(iu b, boolean c) implements zd<agn> {
+   public static final yu<ByteBuf, ahp> a = yu.a(iu.b, ahp::b, ys.b, ahp::e, ahp::new);
 
    @Override
-   public ze<ahp> a() {
-      return agk.bP;
+   public zf<ahp> a() {
+      return agl.bO;
    }
 
-   public void a(agm $$0) {
+   public void a(agn $$0) {
       $$0.a(this);
    }
 

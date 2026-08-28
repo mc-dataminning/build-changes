@@ -1,14 +1,7 @@
-import java.util.function.Consumer;
+import com.mojang.authlib.GameProfile;
 
-public interface ase {
-   void a(Consumer<zc<?>> var1);
-
-   ase.a a();
-
-   public static record a(String a) {
-      @Override
-      public String toString() {
-         return this.a;
-      }
+public record ase(GameProfile a, int b, aqy c, boolean d) {
+   public static ase a(GameProfile $$0, boolean $$1) {
+      return new ase($$0, 0, aqy.a(), $$1);
    }
 }

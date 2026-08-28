@@ -1,174 +1,142 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dyr {
-   private final Predicate<dyq>[][][] a;
-   private final int b;
-   private final int c;
-   private final int d;
+public record dyr(int d, float e, float f, float g, float h, int i, bsj<djj> j, bsj<ald<eys>> k, ald<eys> l) {
+   public static final dyr a = b().a();
+   public static final Codec<dyr> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(dyr::c),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(dyr::d),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(dyr::e),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(dyr::f),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(dyr::g),
+               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(dyr::h),
+               djj.c.optionalFieldOf("spawn_potentials", bsj.a()).forGetter(dyr::i),
+               bsj.a(ald.a(mg.bo)).optionalFieldOf("loot_tables_to_eject", a.k).forGetter(dyr::j),
+               ald.a(mg.bo).optionalFieldOf("items_to_drop_when_ominous", a.l).forGetter(dyr::k)
+            )
+            .apply($$0, dyr::new)
+   );
+   public static final Codec<je<dyr>> c = ala.a(mg.bg, b);
 
-   public dyr(Predicate<dyq>[][][] $$0) {
-      this.a = $$0;
-      this.b = $$0.length;
-      if (this.b > 0) {
-         this.c = $$0[0].length;
-         if (this.c > 0) {
-            this.d = $$0[0][0].length;
-         } else {
-            this.d = 0;
-         }
-      } else {
-         this.c = 0;
-         this.d = 0;
-      }
+   public int a(int $$0) {
+      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
    }
 
-   public int a() {
-      return this.b;
+   public int b(int $$0) {
+      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
    }
 
-   public int b() {
-      return this.c;
+   public long a() {
+      return 160L;
+   }
+
+   public static dyr.a b() {
+      return new dyr.a();
+   }
+
+   public dyr a(bwj<?> $$0) {
+      tx $$1 = new tx();
+      $$1.a("id", mf.f.b($$0).toString());
+      djj $$2 = new djj($$1, Optional.empty(), Optional.empty());
+      return new dyr(this.d, this.e, this.f, this.g, this.h, this.i, bsj.a($$2), this.k, this.l);
    }
 
    public int c() {
       return this.d;
    }
 
-   @VisibleForTesting
-   public Predicate<dyq>[][][] d() {
-      return this.a;
+   public float d() {
+      return this.e;
    }
 
-   @Nullable
-   @VisibleForTesting
-   public dyr.b a(dhs $$0, jj $$1, jo $$2, jo $$3) {
-      LoadingCache<jj, dyq> $$4 = a($$0, false);
-      return this.a($$1, $$2, $$3, $$4);
+   public float e() {
+      return this.f;
    }
 
-   @Nullable
-   private dyr.b a(jj $$0, jo $$1, jo $$2, LoadingCache<jj, dyq> $$3) {
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         for (int $$5 = 0; $$5 < this.c; $$5++) {
-            for (int $$6 = 0; $$6 < this.b; $$6++) {
-               if (!this.a[$$6][$$5][$$4].test((dyq)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
-                  return null;
-               }
-            }
-         }
-      }
-
-      return new dyr.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
+   public float f() {
+      return this.g;
    }
 
-   @Nullable
-   public dyr.b a(dhs $$0, jj $$1) {
-      LoadingCache<jj, dyq> $$2 = a($$0, false);
-      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
-
-      for (jj $$4 : jj.c($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
-         for (jo $$5 : jo.values()) {
-            for (jo $$6 : jo.values()) {
-               if ($$6 != $$5 && $$6 != $$5.g()) {
-                  dyr.b $$7 = this.a($$4, $$5, $$6, $$2);
-                  if ($$7 != null) {
-                     return $$7;
-                  }
-               }
-            }
-         }
-      }
-
-      return null;
+   public float g() {
+      return this.h;
    }
 
-   public static LoadingCache<jj, dyq> a(dhs $$0, boolean $$1) {
-      return CacheBuilder.newBuilder().build(new dyr.a($$0, $$1));
+   public int h() {
+      return this.i;
    }
 
-   protected static jj a(jj $$0, jo $$1, jo $$2, int $$3, int $$4, int $$5) {
-      if ($$1 != $$2 && $$1 != $$2.g()) {
-         kn $$6 = new kn($$1.j(), $$1.k(), $$1.l());
-         kn $$7 = new kn($$2.j(), $$2.k(), $$2.l());
-         kn $$8 = $$6.d($$7);
-         return $$0.b(
-            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
-         );
-      } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
-      }
+   public bsj<djj> i() {
+      return this.j;
    }
 
-   static class a extends CacheLoader<jj, dyq> {
-      private final dhs a;
-      private final boolean b;
+   public bsj<ald<eys>> j() {
+      return this.k;
+   }
 
-      public a(dhs $$0, boolean $$1) {
+   public ald<eys> k() {
+      return this.l;
+   }
+
+   public static class a {
+      private int a = 4;
+      private float b = 6.0F;
+      private float c = 2.0F;
+      private float d = 2.0F;
+      private float e = 1.0F;
+      private int f = 40;
+      private bsj<djj> g = bsj.a();
+      private bsj<ald<eys>> h = bsj.<ald<eys>>b().a(eyj.aM).a(eyj.aL).a();
+      private ald<eys> i = eyj.aP;
+
+      public dyr.a a(int $$0) {
          this.a = $$0;
-         this.b = $$1;
+         return this;
       }
 
-      public dyq a(jj $$0) {
-         return new dyq(this.a, $$0, this.b);
-      }
-   }
-
-   public static class b {
-      private final jj a;
-      private final jo b;
-      private final jo c;
-      private final LoadingCache<jj, dyq> d;
-      private final int e;
-      private final int f;
-      private final int g;
-
-      public b(jj $$0, jo $$1, jo $$2, LoadingCache<jj, dyq> $$3, int $$4, int $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
+      public dyr.a a(float $$0) {
+         this.b = $$0;
+         return this;
       }
 
-      public jj a() {
-         return this.a;
+      public dyr.a b(float $$0) {
+         this.c = $$0;
+         return this;
       }
 
-      public jo b() {
-         return this.b;
+      public dyr.a c(float $$0) {
+         this.d = $$0;
+         return this;
       }
 
-      public jo c() {
-         return this.c;
+      public dyr.a d(float $$0) {
+         this.e = $$0;
+         return this;
       }
 
-      public int d() {
-         return this.e;
+      public dyr.a b(int $$0) {
+         this.f = $$0;
+         return this;
       }
 
-      public int e() {
-         return this.f;
+      public dyr.a a(bsj<djj> $$0) {
+         this.g = $$0;
+         return this;
       }
 
-      public int f() {
-         return this.g;
+      public dyr.a b(bsj<ald<eys>> $$0) {
+         this.h = $$0;
+         return this;
       }
 
-      public dyq a(int $$0, int $$1, int $$2) {
-         return (dyq)this.d.getUnchecked(dyr.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
+      public dyr.a a(ald<eys> $$0) {
+         this.i = $$0;
+         return this;
       }
 
-      @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
+      public dyr a() {
+         return new dyr(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i);
       }
    }
 }

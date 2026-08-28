@@ -1,25 +1,26 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
 
-record eqr(alc<eqq> c, alc<eqq> d) implements eqs {
-   static MapCodec<eqr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alc.a(me.bc).fieldOf("alias").forGetter(eqr::c), alc.a(me.bc).fieldOf("target").forGetter(eqr::d)).apply($$0, eqr::new)
-   );
+public interface eqr<S extends eqi> {
+   eqr<esc> a = a("buried_treasure", esc.d);
+   eqr<ese> b = a("desert_pyramid", ese.d);
+   eqr<esg> c = a("end_city", esg.d);
+   eqr<esp> d = a("fortress", esp.e);
+   eqr<esi> e = a("igloo", esi.d);
+   eqr<esj> f = a("jigsaw", esj.i);
+   eqr<esl> g = a("jungle_temple", esl.d);
+   eqr<esn> h = a("mineshaft", esn.d);
+   eqr<esr> i = a("nether_fossil", esr.d);
+   eqr<est> j = a("ocean_monument", est.d);
+   eqr<esv> k = a("ocean_ruin", esv.d);
+   eqr<esx> l = a("ruined_portal", esx.d);
+   eqr<esz> m = a("shipwreck", esz.d);
+   eqr<etb> n = a("stronghold", etb.d);
+   eqr<etd> o = a("swamp_hut", etd.d);
+   eqr<etf> p = a("woodland_mansion", etf.d);
 
-   @Override
-   public void a(azs $$0, BiConsumer<alc<eqq>, alc<eqq>> $$1) {
-      $$1.accept(this.c, this.d);
-   }
+   MapCodec<S> codec();
 
-   @Override
-   public Stream<alc<eqq>> a() {
-      return Stream.of(this.d);
-   }
-
-   @Override
-   public MapCodec<eqr> b() {
-      return a;
+   private static <S extends eqi> eqr<S> a(String $$0, MapCodec<S> $$1) {
+      return jr.a(mf.R, $$0, () -> $$1);
    }
 }

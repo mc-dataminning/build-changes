@@ -1,261 +1,607 @@
-import javax.annotation.Nullable;
-import org.joml.Matrix3f;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalDouble;
 import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import org.joml.Matrix4fStack;
 
-public class gpm {
-   public static final int a = 8;
-   private static final float d = 1.0F / (float)Math.cos((float) (Math.PI / 8)) - 1.0F;
-   private static final float e = 1.0F / (float)Math.cos((float) (Math.PI / 4)) - 1.0F;
-   public static final int b = 4;
-   private static final int f = 3;
-   public static final int c = 4;
-
-   public static gpf a(Vector3f $$0, Vector3f $$1, gph $$2, hgs $$3, jo $$4, hji $$5, @Nullable gpi $$6, boolean $$7, int $$8) {
-      gpj $$9 = $$2.d();
-      if ($$5.b()) {
-         $$9 = a($$2.d(), $$4, $$5.a());
+public abstract class gpm {
+   public static final double a = 8.0;
+   protected final String b;
+   private final Runnable aY;
+   private final Runnable aZ;
+   protected static final gpm.p c = new gpm.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
+   });
+   protected static final gpm.p d = new gpm.p("additive_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final gpm.p e = new gpm.p("lightning_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final gpm.p f = new gpm.p(
+      "glint_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
       }
-
-      float[] $$10 = new float[$$9.a.length];
-      System.arraycopy($$9.a, 0, $$10, 0, $$10.length);
-      float $$11 = $$3.k();
-      float $$12 = ($$9.a[0] + $$9.a[0] + $$9.a[2] + $$9.a[2]) / 4.0F;
-      float $$13 = ($$9.a[1] + $$9.a[1] + $$9.a[3] + $$9.a[3]) / 4.0F;
-      $$9.a[0] = azk.h($$11, $$9.a[0], $$12);
-      $$9.a[2] = azk.h($$11, $$9.a[2], $$12);
-      $$9.a[1] = azk.h($$11, $$9.a[1], $$13);
-      $$9.a[3] = azk.h($$11, $$9.a[3], $$13);
-      int[] $$14 = a($$9, $$3, $$4, a($$0, $$1), $$5.a(), $$6);
-      jo $$15 = a($$14);
-      System.arraycopy($$10, 0, $$9.a, 0, $$10.length);
-      if ($$6 == null) {
-         a($$14, $$15);
+   );
+   protected static final gpm.p g = new gpm.p(
+      "crumbling_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
       }
-
-      return new gpf($$14, $$2.b(), $$15, $$3, $$7, $$8);
-   }
-
-   public static gpj a(gpj $$0, jo $$1, j $$2) {
-      Matrix4f $$3 = ji.a($$2, $$1).c();
-      float $$4 = $$0.a($$0.c(0));
-      float $$5 = $$0.b($$0.c(0));
-      Vector4f $$6 = $$3.transform(new Vector4f($$4 / 16.0F, $$5 / 16.0F, 0.0F, 1.0F));
-      float $$7 = 16.0F * $$6.x();
-      float $$8 = 16.0F * $$6.y();
-      float $$9 = $$0.a($$0.c(2));
-      float $$10 = $$0.b($$0.c(2));
-      Vector4f $$11 = $$3.transform(new Vector4f($$9 / 16.0F, $$10 / 16.0F, 0.0F, 1.0F));
-      float $$12 = 16.0F * $$11.x();
-      float $$13 = 16.0F * $$11.y();
-      float $$14;
-      float $$15;
-      if (Math.signum($$9 - $$4) == Math.signum($$12 - $$7)) {
-         $$14 = $$7;
-         $$15 = $$12;
+   );
+   protected static final gpm.p h = new gpm.p(
+      "overlay_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gpm.p i = new gpm.p(
+      "translucent_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+            GlStateManager.SourceFactor.ONE,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gpm.p j = new gpm.p("vignette_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final gpm.p k = new gpm.p(
+      "crosshair_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR,
+            GlStateManager.SourceFactor.ONE,
+            GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gpm.p l = new gpm.p("mojang_logo_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(770, 1);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final gpm.p m = new gpm.p(
+      "nausea_overlay_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gpm.m n = new gpm.m();
+   protected static final gpm.m o = new gpm.m(gon.f);
+   protected static final gpm.m p = new gpm.m(gon.d);
+   protected static final gpm.m q = new gpm.m(gon.h);
+   protected static final gpm.m r = new gpm.m(gon.g);
+   protected static final gpm.m s = new gpm.m(gon.e);
+   protected static final gpm.m t = new gpm.m(gon.i);
+   protected static final gpm.m u = new gpm.m(gon.c);
+   protected static final gpm.m v = new gpm.m(gon.j);
+   protected static final gpm.m w = new gpm.m(gon.k);
+   protected static final gpm.m x = new gpm.m(gon.l);
+   protected static final gpm.m y = new gpm.m(gon.m);
+   protected static final gpm.m z = new gpm.m(gon.n);
+   protected static final gpm.m A = new gpm.m(gon.o);
+   protected static final gpm.m B = new gpm.m(gon.p);
+   protected static final gpm.m C = new gpm.m(gon.q);
+   protected static final gpm.m D = new gpm.m(gon.r);
+   protected static final gpm.m E = new gpm.m(gon.s);
+   protected static final gpm.m F = new gpm.m(gon.t);
+   protected static final gpm.m G = new gpm.m(gon.u);
+   protected static final gpm.m H = new gpm.m(gon.v);
+   protected static final gpm.m I = new gpm.m(gon.w);
+   protected static final gpm.m J = new gpm.m(gon.x);
+   protected static final gpm.m K = new gpm.m(gon.y);
+   protected static final gpm.m L = new gpm.m(gon.z);
+   protected static final gpm.m M = new gpm.m(gon.A);
+   protected static final gpm.m N = new gpm.m(gon.B);
+   protected static final gpm.m O = new gpm.m(gon.C);
+   protected static final gpm.m P = new gpm.m(gon.D);
+   protected static final gpm.m Q = new gpm.m(gon.E);
+   protected static final gpm.m R = new gpm.m(gon.F);
+   protected static final gpm.m S = new gpm.m(gon.G);
+   protected static final gpm.m T = new gpm.m(gon.H);
+   protected static final gpm.m U = new gpm.m(gon.I);
+   protected static final gpm.m V = new gpm.m(gon.J);
+   protected static final gpm.m W = new gpm.m(gon.K);
+   protected static final gpm.m X = new gpm.m(gon.L);
+   protected static final gpm.m Y = new gpm.m(gon.Y);
+   protected static final gpm.m Z = new gpm.m(gon.M);
+   protected static final gpm.m aa = new gpm.m(gon.N);
+   protected static final gpm.m ab = new gpm.m(gon.O);
+   protected static final gpm.m ac = new gpm.m(gon.P);
+   protected static final gpm.m ad = new gpm.m(gon.Q);
+   protected static final gpm.m ae = new gpm.m(gon.R);
+   protected static final gpm.m af = new gpm.m(gon.S);
+   protected static final gpm.m ag = new gpm.m(gon.T);
+   protected static final gpm.m ah = new gpm.m(gon.U);
+   protected static final gpm.m ai = new gpm.m(gon.V);
+   protected static final gpm.m aj = new gpm.m(gon.W);
+   protected static final gpm.m ak = new gpm.m(gon.X);
+   protected static final gpm.m al = new gpm.m(gon.Z);
+   protected static final gpm.m am = new gpm.m(gon.aa);
+   protected static final gpm.m an = new gpm.m(gon.ab);
+   protected static final gpm.m ao = new gpm.m(gon.ac);
+   protected static final gpm.m ap = new gpm.m(gon.ad);
+   protected static final gpm.n aq = new gpm.n(hhy.d, baq.b, true);
+   protected static final gpm.n ar = new gpm.n(hhy.d, baq.b, false);
+   protected static final gpm.e as = new gpm.e();
+   protected static final gpm.o at = new gpm.o("default_texturing", () -> {
+   }, () -> {
+   });
+   protected static final gpm.o au = new gpm.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gpm.o av = new gpm.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gpm.g aw = new gpm.g(true);
+   protected static final gpm.g ax = new gpm.g(false);
+   protected static final gpm.l ay = new gpm.l(true);
+   protected static final gpm.l az = new gpm.l(false);
+   protected static final gpm.c aA = new gpm.c(true);
+   protected static final gpm.c aB = new gpm.c(false);
+   protected static final gpm.d aC = new gpm.d("always", 519);
+   protected static final gpm.d aD = new gpm.d("==", 514);
+   protected static final gpm.d aE = new gpm.d("<=", 515);
+   protected static final gpm.d aF = new gpm.d(">", 516);
+   protected static final gpm.q aG = new gpm.q(true, true);
+   protected static final gpm.q aH = new gpm.q(true, false);
+   protected static final gpm.q aI = new gpm.q(false, true);
+   protected static final gpm.f aJ = new gpm.f("no_layering", () -> {
+   }, () -> {
+   });
+   protected static final gpm.f aK = new gpm.f("polygon_offset_layering", () -> {
+      RenderSystem.polygonOffset(-1.0F, -10.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
+   });
+   protected static final gpm.f aL = new gpm.f("view_offset_z_layering", () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.pushMatrix();
+      RenderSystem.getProjectionType().a($$0, 1.0F);
+   }, () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.popMatrix();
+   });
+   protected static final gpm.f aM = new gpm.f("view_offset_z_layering_forward", () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.pushMatrix();
+      RenderSystem.getProjectionType().a($$0, -1.0F);
+   }, () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.popMatrix();
+   });
+   protected static final gpm.f aN = new gpm.f("world_border_layering", () -> {
+      RenderSystem.polygonOffset(-3.0F, -3.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
+   });
+   protected static final gpm.k aO = new gpm.k("main_target", () -> fof.Q().h().a(false), () -> {
+   });
+   protected static final gpm.k aP = new gpm.k("outline_target", () -> {
+      fha $$0 = fof.Q().f.q();
+      if ($$0 != null) {
+         $$0.a(false);
       } else {
-         $$14 = $$12;
-         $$15 = $$7;
+         fof.Q().h().a(false);
       }
-
-      float $$18;
-      float $$19;
-      if (Math.signum($$10 - $$5) == Math.signum($$13 - $$8)) {
-         $$18 = $$8;
-         $$19 = $$13;
+   }, () -> fof.Q().h().a(false));
+   protected static final gpm.k aQ = new gpm.k("translucent_target", () -> {
+      fha $$0 = fof.Q().f.r();
+      if ($$0 != null) {
+         $$0.a(false);
       } else {
-         $$18 = $$13;
-         $$19 = $$8;
+         fof.Q().h().a(false);
+      }
+   }, () -> fof.Q().h().a(false));
+   protected static final gpm.k aR = new gpm.k("particles_target", () -> {
+      fha $$0 = fof.Q().f.t();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         fof.Q().h().a(false);
+      }
+   }, () -> fof.Q().h().a(false));
+   protected static final gpm.k aS = new gpm.k("weather_target", () -> {
+      fha $$0 = fof.Q().f.u();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         fof.Q().h().a(false);
+      }
+   }, () -> fof.Q().h().a(false));
+   protected static final gpm.k aT = new gpm.k("clouds_target", () -> {
+      fha $$0 = fof.Q().f.v();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         fof.Q().h().a(false);
+      }
+   }, () -> fof.Q().h().a(false));
+   protected static final gpm.k aU = new gpm.k("item_entity_target", () -> {
+      fha $$0 = fof.Q().f.s();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         fof.Q().h().a(false);
+      }
+   }, () -> fof.Q().h().a(false));
+   protected static final gpm.h aV = new gpm.h(OptionalDouble.of(1.0));
+   protected static final gpm.b aW = new gpm.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
+   });
+   protected static final gpm.b aX = new gpm.b("or_reverse", () -> {
+      RenderSystem.enableColorLogicOp();
+      RenderSystem.logicOp(GlStateManager.h.n);
+   }, () -> RenderSystem.disableColorLogicOp());
+
+   public gpm(String $$0, Runnable $$1, Runnable $$2) {
+      this.b = $$0;
+      this.aY = $$1;
+      this.aZ = $$2;
+   }
+
+   public void a() {
+      this.aY.run();
+   }
+
+   public void b() {
+      this.aZ.run();
+   }
+
+   @Override
+   public String toString() {
+      return this.b;
+   }
+
+   private static void a(float $$0) {
+      long $$1 = (long)((double)af.c() * fof.Q().n.ap().c() * 8.0);
+      float $$2 = (float)($$1 % 110000L) / 110000.0F;
+      float $$3 = (float)($$1 % 30000L) / 30000.0F;
+      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
+      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
+      RenderSystem.setTextureMatrix($$4);
+   }
+
+   static class a extends gpm {
+      private final boolean aY;
+
+      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
+         super($$0, $$1, $$2);
+         this.aY = $$3;
       }
 
-      float $$22 = (float)Math.toRadians((double)$$0.b);
-      Matrix3f $$23 = new Matrix3f($$3);
-      Vector3f $$24 = $$23.transform(new Vector3f(azk.b($$22), azk.a($$22), 0.0F));
-      int $$25 = Math.floorMod(-((int)Math.round(Math.toDegrees(Math.atan2((double)$$24.y(), (double)$$24.x())) / 90.0)) * 90, 360);
-      return new gpj(new float[]{$$14, $$18, $$15, $$19}, $$25);
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aY + "]";
+      }
    }
 
-   private static int[] a(gpj $$0, hgs $$1, jo $$2, float[] $$3, j $$4, @Nullable gpi $$5) {
-      int[] $$6 = new int[32];
+   protected static class b extends gpm {
+      public b(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
 
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         a($$6, $$7, $$2, $$0, $$3, $$1, $$4, $$5);
+   protected static class c extends gpm.a {
+      public c(boolean $$0) {
+         super("cull", () -> {
+            if (!$$0) {
+               RenderSystem.disableCull();
+            }
+         }, () -> {
+            if (!$$0) {
+               RenderSystem.enableCull();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class d extends gpm {
+      private final String aY;
+
+      public d(String $$0, int $$1) {
+         super("depth_test", () -> {
+            if ($$1 != 519) {
+               RenderSystem.enableDepthTest();
+               RenderSystem.depthFunc($$1);
+            }
+         }, () -> {
+            if ($$1 != 519) {
+               RenderSystem.disableDepthTest();
+               RenderSystem.depthFunc(515);
+            }
+         });
+         this.aY = $$0;
       }
 
-      return $$6;
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aY + "]";
+      }
    }
 
-   private static float[] a(Vector3f $$0, Vector3f $$1) {
-      float[] $$2 = new float[jo.values().length];
-      $$2[gnm.a.f] = $$0.x() / 16.0F;
-      $$2[gnm.a.e] = $$0.y() / 16.0F;
-      $$2[gnm.a.d] = $$0.z() / 16.0F;
-      $$2[gnm.a.c] = $$1.x() / 16.0F;
-      $$2[gnm.a.b] = $$1.y() / 16.0F;
-      $$2[gnm.a.a] = $$1.z() / 16.0F;
-      return $$2;
+   protected static class e extends gpm {
+      public e(Runnable $$0, Runnable $$1) {
+         super("texture", $$0, $$1);
+      }
+
+      e() {
+         super("texture", () -> {
+         }, () -> {
+         });
+      }
+
+      protected Optional<ale> c() {
+         return Optional.empty();
+      }
    }
 
-   private static void a(int[] $$0, int $$1, jo $$2, gpj $$3, float[] $$4, hgs $$5, j $$6, @Nullable gpi $$7) {
-      gnm.b $$8 = gnm.a($$2).a($$1);
-      Vector3f $$9 = new Vector3f($$4[$$8.a], $$4[$$8.b], $$4[$$8.c]);
-      a($$9, $$7);
-      a($$9, $$6);
-      a($$0, $$1, $$9, $$5, $$3);
+   protected static class f extends gpm {
+      public f(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
    }
 
-   private static void a(int[] $$0, int $$1, Vector3f $$2, hgs $$3, gpj $$4) {
-      int $$5 = $$1 * 8;
-      $$0[$$5] = Float.floatToRawIntBits($$2.x());
-      $$0[$$5 + 1] = Float.floatToRawIntBits($$2.y());
-      $$0[$$5 + 2] = Float.floatToRawIntBits($$2.z());
-      $$0[$$5 + 3] = -1;
-      $$0[$$5 + 4] = Float.floatToRawIntBits($$3.a($$4.a($$1) / 16.0F));
-      $$0[$$5 + 4 + 1] = Float.floatToRawIntBits($$3.c($$4.b($$1) / 16.0F));
+   protected static class g extends gpm.a {
+      public g(boolean $$0) {
+         super("lightmap", () -> {
+            if ($$0) {
+               fof.Q().j.l().c();
+            }
+         }, () -> {
+            if ($$0) {
+               fof.Q().j.l().b();
+            }
+         }, $$0);
+      }
    }
 
-   private static void a(Vector3f $$0, @Nullable gpi $$1) {
-      if ($$1 != null) {
-         Vector3f $$2;
-         Vector3f $$3;
-         switch ($$1.b()) {
-            case a:
-               $$2 = new Vector3f(1.0F, 0.0F, 0.0F);
-               $$3 = new Vector3f(0.0F, 1.0F, 1.0F);
-               break;
-            case b:
-               $$2 = new Vector3f(0.0F, 1.0F, 0.0F);
-               $$3 = new Vector3f(1.0F, 0.0F, 1.0F);
-               break;
-            case c:
-               $$2 = new Vector3f(0.0F, 0.0F, 1.0F);
-               $$3 = new Vector3f(1.0F, 1.0F, 0.0F);
-               break;
-            default:
-               throw new IllegalArgumentException("There are only 3 axes");
+   protected static class h extends gpm {
+      private final OptionalDouble aY;
+
+      public h(OptionalDouble $$0) {
+         super("line_width", () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               if ($$0.isPresent()) {
+                  RenderSystem.lineWidth((float)$$0.getAsDouble());
+               } else {
+                  RenderSystem.lineWidth(Math.max(2.5F, (float)fof.Q().aO().k() / 1920.0F * 2.5F));
+               }
+            }
+         }, () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               RenderSystem.lineWidth(1.0F);
+            }
+         });
+         this.aY = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + (this.aY.isPresent() ? this.aY.getAsDouble() : "window_scale") + "]";
+      }
+   }
+
+   protected static class i extends gpm.e {
+      private final Optional<ale> aY;
+
+      i(List<gpm.i.b> $$0) {
+         super(() -> {
+            for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+               gpm.i.b $$2 = $$0.get($$1);
+               hib $$3 = fof.Q().aa();
+               hhk $$4 = $$3.b($$2.a);
+               $$4.a($$2.b, $$2.c);
+               RenderSystem.setShaderTexture($$1, $$4.a());
+            }
+         }, () -> {
+         });
+         this.aY = $$0.isEmpty() ? Optional.empty() : Optional.of($$0.getFirst().a);
+      }
+
+      @Override
+      protected Optional<ale> c() {
+         return this.aY;
+      }
+
+      public static gpm.i.a d() {
+         return new gpm.i.a();
+      }
+
+      public static final class a {
+         private final Builder<gpm.i.b> a = new Builder();
+
+         public gpm.i.a a(ale $$0, boolean $$1, boolean $$2) {
+            this.a.add(new gpm.i.b($$0, $$1, $$2));
+            return this;
          }
 
-         Quaternionf $$10 = new Quaternionf().rotationAxis($$1.c() * (float) (Math.PI / 180.0), $$2);
-         if ($$1.d()) {
-            if (Math.abs($$1.c()) == 22.5F) {
-               $$3.mul(d);
-            } else {
-               $$3.mul(e);
+         public gpm.i a() {
+            return new gpm.i(this.a.build());
+         }
+      }
+
+      static record b(ale a, boolean b, boolean c) {
+      }
+   }
+
+   protected static final class j extends gpm.o {
+      public j(float $$0, float $$1) {
+         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
+      }
+   }
+
+   protected static class k extends gpm {
+      public k(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class l extends gpm.a {
+      public l(boolean $$0) {
+         super("overlay", () -> {
+            if ($$0) {
+               fof.Q().j.m().a();
+            }
+         }, () -> {
+            if ($$0) {
+               fof.Q().j.m().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class m extends gpm {
+      private final Optional<gpv> aY;
+
+      public m(gpv $$0) {
+         super("shader", () -> RenderSystem.setShader($$0), () -> {
+         });
+         this.aY = Optional.of($$0);
+      }
+
+      public m() {
+         super("shader", RenderSystem::clearShader, () -> {
+         });
+         this.aY = Optional.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aY + "]";
+      }
+   }
+
+   protected static class n extends gpm.e {
+      private final Optional<ale> aY;
+      private final baq aZ;
+      private final boolean ba;
+
+      public n(ale $$0, baq $$1, boolean $$2) {
+         super(() -> {
+            hib $$3 = fof.Q().aa();
+            hhk $$4 = $$3.b($$0);
+            $$4.a($$1, $$2);
+            RenderSystem.setShaderTexture(0, $$4.a());
+         }, () -> {
+         });
+         this.aY = Optional.of($$0);
+         this.aZ = $$1;
+         this.ba = $$2;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aY + "(blur=" + this.aZ + ", mipmap=" + this.ba + ")]";
+      }
+
+      @Override
+      protected Optional<ale> c() {
+         return this.aY;
+      }
+   }
+
+   protected static class o extends gpm {
+      public o(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class p extends gpm {
+      public p(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class q extends gpm {
+      private final boolean aY;
+      private final boolean aZ;
+
+      public q(boolean $$0, boolean $$1) {
+         super("write_mask_state", () -> {
+            if (!$$1) {
+               RenderSystem.depthMask($$1);
             }
 
-            $$3.add(1.0F, 1.0F, 1.0F);
-         } else {
-            $$3.set(1.0F, 1.0F, 1.0F);
-         }
-
-         a($$0, new Vector3f($$1.a()), new Matrix4f().rotation($$10), $$3);
-      }
-   }
-
-   private static void a(Vector3f $$0, j $$1) {
-      if ($$1 != j.a()) {
-         a($$0, new Vector3f(0.5F, 0.5F, 0.5F), $$1.c(), new Vector3f(1.0F, 1.0F, 1.0F));
-      }
-   }
-
-   private static void a(Vector3f $$0, Vector3f $$1, Matrix4f $$2, Vector3f $$3) {
-      Vector4f $$4 = $$2.transform(new Vector4f($$0.x() - $$1.x(), $$0.y() - $$1.y(), $$0.z() - $$1.z(), 1.0F));
-      $$4.mul(new Vector4f($$3, 1.0F));
-      $$0.set($$4.x() + $$1.x(), $$4.y() + $$1.y(), $$4.z() + $$1.z());
-   }
-
-   private static jo a(int[] $$0) {
-      Vector3f $$1 = new Vector3f(Float.intBitsToFloat($$0[0]), Float.intBitsToFloat($$0[1]), Float.intBitsToFloat($$0[2]));
-      Vector3f $$2 = new Vector3f(Float.intBitsToFloat($$0[8]), Float.intBitsToFloat($$0[9]), Float.intBitsToFloat($$0[10]));
-      Vector3f $$3 = new Vector3f(Float.intBitsToFloat($$0[16]), Float.intBitsToFloat($$0[17]), Float.intBitsToFloat($$0[18]));
-      Vector3f $$4 = new Vector3f($$1).sub($$2);
-      Vector3f $$5 = new Vector3f($$3).sub($$2);
-      Vector3f $$6 = new Vector3f($$5).cross($$4).normalize();
-      if (!$$6.isFinite()) {
-         return jo.b;
-      } else {
-         jo $$7 = null;
-         float $$8 = 0.0F;
-
-         for (jo $$9 : jo.values()) {
-            kn $$10 = $$9.q();
-            Vector3f $$11 = new Vector3f((float)$$10.u(), (float)$$10.v(), (float)$$10.w());
-            float $$12 = $$6.dot($$11);
-            if ($$12 >= 0.0F && $$12 > $$8) {
-               $$8 = $$12;
-               $$7 = $$9;
+            if (!$$0) {
+               RenderSystem.colorMask($$0, $$0, $$0, $$0);
             }
-         }
-
-         return $$7 == null ? jo.b : $$7;
-      }
-   }
-
-   private static void a(int[] $$0, jo $$1) {
-      int[] $$2 = new int[$$0.length];
-      System.arraycopy($$0, 0, $$2, 0, $$0.length);
-      float[] $$3 = new float[jo.values().length];
-      $$3[gnm.a.f] = 999.0F;
-      $$3[gnm.a.e] = 999.0F;
-      $$3[gnm.a.d] = 999.0F;
-      $$3[gnm.a.c] = -999.0F;
-      $$3[gnm.a.b] = -999.0F;
-      $$3[gnm.a.a] = -999.0F;
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         int $$5 = 8 * $$4;
-         float $$6 = Float.intBitsToFloat($$2[$$5]);
-         float $$7 = Float.intBitsToFloat($$2[$$5 + 1]);
-         float $$8 = Float.intBitsToFloat($$2[$$5 + 2]);
-         if ($$6 < $$3[gnm.a.f]) {
-            $$3[gnm.a.f] = $$6;
-         }
-
-         if ($$7 < $$3[gnm.a.e]) {
-            $$3[gnm.a.e] = $$7;
-         }
-
-         if ($$8 < $$3[gnm.a.d]) {
-            $$3[gnm.a.d] = $$8;
-         }
-
-         if ($$6 > $$3[gnm.a.c]) {
-            $$3[gnm.a.c] = $$6;
-         }
-
-         if ($$7 > $$3[gnm.a.b]) {
-            $$3[gnm.a.b] = $$7;
-         }
-
-         if ($$8 > $$3[gnm.a.a]) {
-            $$3[gnm.a.a] = $$8;
-         }
-      }
-
-      gnm $$9 = gnm.a($$1);
-
-      for (int $$10 = 0; $$10 < 4; $$10++) {
-         int $$11 = 8 * $$10;
-         gnm.b $$12 = $$9.a($$10);
-         float $$13 = $$3[$$12.a];
-         float $$14 = $$3[$$12.b];
-         float $$15 = $$3[$$12.c];
-         $$0[$$11] = Float.floatToRawIntBits($$13);
-         $$0[$$11 + 1] = Float.floatToRawIntBits($$14);
-         $$0[$$11 + 2] = Float.floatToRawIntBits($$15);
-
-         for (int $$16 = 0; $$16 < 4; $$16++) {
-            int $$17 = 8 * $$16;
-            float $$18 = Float.intBitsToFloat($$2[$$17]);
-            float $$19 = Float.intBitsToFloat($$2[$$17 + 1]);
-            float $$20 = Float.intBitsToFloat($$2[$$17 + 2]);
-            if (azk.a($$13, $$18) && azk.a($$14, $$19) && azk.a($$15, $$20)) {
-               $$0[$$11 + 4] = $$2[$$17 + 4];
-               $$0[$$11 + 4 + 1] = $$2[$$17 + 4 + 1];
+         }, () -> {
+            if (!$$1) {
+               RenderSystem.depthMask(true);
             }
-         }
+
+            if (!$$0) {
+               RenderSystem.colorMask(true, true, true, true);
+            }
+         });
+         this.aY = $$0;
+         this.aZ = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[writeColor=" + this.aY + ", writeDepth=" + this.aZ + "]";
       }
    }
 }

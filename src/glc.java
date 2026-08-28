@@ -1,17 +1,49 @@
-public class glc extends glv {
-   protected glc(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gmc $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
+public class glc extends gnl {
+   private final gng a;
+
+   glc(gjd $$0, double $$1, double $$2, double $$3, double $$4, gng $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$5;
+      this.t = 4;
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
    }
 
-   public static class a implements glk<lz> {
-      private final gmc a;
+   @Override
+   public int a(float $$0) {
+      return 15728880;
+   }
 
-      public a(gmc $$0) {
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
+   }
+
+   @Override
+   public gmp b() {
+      return gmp.b;
+   }
+
+   public static class a implements gmo<mb> {
+      private final gng a;
+
+      public a(gng $$0) {
          this.a = $$0;
       }
 
-      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new glc($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new glc($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

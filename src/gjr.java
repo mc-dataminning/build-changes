@@ -1,85 +1,144 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public final class gjr {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final gjr c = new gjr(HostAndPort.fromParts("server.invalid", 25565));
+public class gjr {
+   @Nullable
+   private gjr.a a;
+   @Nullable
+   private gjr.b b;
 
-   public gjr(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
-   }
-
-   private gjr(HostAndPort $$0) {
-      this.b = $$0;
-   }
-
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
+   public void a(ald<? extends jr<?>> $$0, List<jv.a> $$1) {
+      if (this.a == null) {
+         this.a = new gjr.a();
       }
+
+      this.a.a($$0, $$1);
    }
 
-   public int b() {
-      return this.b.getPort();
+   public void a(Map<ald<? extends jr<?>>, axr.a> $$0) {
+      if (this.b == null) {
+         this.b = new gjr.b();
+      }
+
+      $$0.forEach(this.b::a);
    }
 
-   public static gjr a(String $$0) {
-      if ($$0 == null) {
-         return c;
-      } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new gjr($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
+   private static <T> jr.a<T> a(js.b $$0, ald<? extends jr<? extends T>> $$1, axr.a $$2) {
+      jr<T> $$3 = $$0.f($$1);
+      return $$3.a($$2.a($$3));
+   }
+
+   private js a(ave $$0, gjr.a $$1, boolean $$2) {
+      jl<gjg> $$3 = gjg.a();
+      js.b $$4 = $$3.b(gjg.b);
+      Map<ald<? extends jr<?>>, akz.c> $$5 = new HashMap<>();
+      $$1.a.forEach(($$1x, $$2x) -> $$5.put($$1x, new akz.c($$2x, axr.a.a)));
+      List<jr.a<?>> $$6 = new ArrayList<>();
+      if (this.b != null) {
+         this.b.a(($$4x, $$5x) -> {
+            if (!$$5x.a()) {
+               if (jv.a($$4x)) {
+                  $$5.compute($$4x, ($$1xx, $$2xx) -> {
+                     List<jv.a> $$3xx = $$2xx != null ? $$2xx.a() : List.of();
+                     return new akz.c($$3xx, $$5x);
+                  });
+               } else if (!$$2) {
+                  $$6.add(a($$4, $$4x, $$5x));
+               }
+            }
+         });
+      }
+
+      List<jg.b<?>> $$7 = axq.a($$4, $$6);
+
+      js.b $$8;
+      try {
+         $$8 = akz.a($$5, $$0, $$7, akz.c).e();
+      } catch (Exception var13) {
+         o $$10 = o.a(var13, "Network Registry Load");
+         a($$10, $$5, $$6);
+         throw new z($$10);
+      }
+
+      js $$12 = $$3.a(gjg.b, $$8).a();
+      $$6.forEach(jr.a::d);
+      return $$12;
+   }
+
+   private static void a(o $$0, Map<ald<? extends jr<?>>, akz.c> $$1, List<jr.a<?>> $$2) {
+      p $$3 = $$0.a("Received Elements and Tags");
+      $$3.a(
+         "Dynamic Registries",
+         () -> $$1.entrySet()
+               .stream()
+               .sorted(Comparator.comparing($$0xx -> ((ald)$$0xx.getKey()).a()))
+               .map(
+                  $$0xx -> String.format(
+                        Locale.ROOT,
+                        "\n\t\t%s: elements=%d tags=%d",
+                        ((ald)$$0xx.getKey()).a(),
+                        ((akz.c)$$0xx.getValue()).a().size(),
+                        ((akz.c)$$0xx.getValue()).b().b()
+                     )
+               )
+               .collect(Collectors.joining())
+      );
+      $$3.a(
+         "Static Registries",
+         () -> $$2.stream()
+               .sorted(Comparator.comparing($$0xx -> $$0xx.a().a()))
+               .map($$0xx -> String.format(Locale.ROOT, "\n\t\t%s: tags=%d", $$0xx.a().a(), $$0xx.b()))
+               .collect(Collectors.joining())
+      );
+   }
+
+   private void a(gjr.b $$0, js.b $$1, boolean $$2) {
+      $$0.a(($$2x, $$3) -> {
+         if ($$2 || jv.a($$2x)) {
+            a($$1, $$2x, $$3).d();
          }
-      }
+      });
    }
 
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
-         }
-      } catch (IllegalArgumentException var3) {
-      }
-
-      return false;
-   }
-
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public js.b a(ave $$0, js.b $$1, boolean $$2) {
+      js $$3;
+      if (this.a != null) {
+         $$3 = this.a($$0, this.a, $$2);
       } else {
-         return $$0 instanceof gjr ? this.b.equals(((gjr)$$0).b) : false;
+         if (this.b != null) {
+            this.a(this.b, $$1, !$$2);
+         }
+
+         $$3 = $$1;
+      }
+
+      return $$3.e();
+   }
+
+   static class a {
+      final Map<ald<? extends jr<?>>, List<jv.a>> a = new HashMap<>();
+
+      public void a(ald<? extends jr<?>> $$0, List<jv.a> $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   static class b {
+      private final Map<ald<? extends jr<?>>, axr.a> a = new HashMap<>();
+
+      public void a(ald<? extends jr<?>> $$0, axr.a $$1) {
+         this.a.put($$0, $$1);
+      }
+
+      public void a(BiConsumer<? super ald<? extends jr<?>>, ? super axr.a> $$0) {
+         this.a.forEach($$0);
+      }
    }
 }

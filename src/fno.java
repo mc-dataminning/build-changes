@@ -1,26 +1,26 @@
-import java.util.function.BooleanSupplier;
+public enum fno {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-public class fno extends fnb {
-   private final BooleanSupplier h;
+   private static final fno[] d = values();
+   private final boolean e;
+   private final boolean f;
 
-   public fno(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, fgj.b.a, $$1, $$2);
-      this.h = $$3;
+   private fno(final boolean $$0, final boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
-      } else {
-         super.a($$0);
-      }
+   public boolean a() {
+      return this.e;
    }
 
-   @Override
-   protected void n() {
-      super.a(false);
+   public boolean b() {
+      return this.f;
+   }
+
+   public fno c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

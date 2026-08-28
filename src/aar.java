@@ -1,26 +1,21 @@
-public record aar(jj c, int d) implements aaf {
-   public static final yt<vr, aar> a = aaf.a(aar::a, aar::new);
-   public static final aaf.b<aar> b = aaf.a("debug/poi_ticket_count");
+public record aar(iu c) implements aag {
+   public static final yu<vs, aar> a = aag.a(aar::a, aar::new);
+   public static final aag.b<aar> b = aag.a("debug/poi_removed");
 
-   private aar(vr $$0) {
-      this($$0.e(), $$0.readInt());
+   private aar(vs $$0) {
+      this($$0.e());
    }
 
-   private void a(vr $$0) {
+   private void a(vs $$0) {
       $$0.a(this.c);
-      $$0.q(this.d);
    }
 
    @Override
-   public aaf.b<aar> a() {
+   public aag.b<aar> a() {
       return b;
    }
 
-   public jj b() {
+   public iu b() {
       return this.c;
-   }
-
-   public int c() {
-      return this.d;
    }
 }

@@ -1,97 +1,41 @@
-import java.util.Objects;
+import java.util.List;
 
-public class fxy extends fxc implements fya<cut> {
-   private final cut y;
-   private final cub z = new cub() {
-      @Override
-      public void a(ctn $$0, int $$1, cxy $$2) {
-         fxy.this.M();
-      }
+public abstract class fxy<T extends cum> extends fxz<T> {
+   private final ale G;
+   private final ale H;
+   private final ale I;
 
-      @Override
-      public void a(ctn $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fxy.this.N();
-         }
-      }
-   };
-
-   public fxy(cut $$0, cqh $$1, wv $$2) {
-      this.y = $$0;
-   }
-
-   public cut L() {
-      return this.y;
+   public fxy(T $$0, cqr $$1, ww $$2, ww $$3, ale $$4, ale $$5, ale $$6, List<gbh.a> $$7) {
+      super($$0, new gbe($$0, $$3, $$7), $$1, $$2);
+      this.G = $$4;
+      this.H = $$5;
+      this.I = $$6;
    }
 
    @Override
-   protected void aN_() {
+   public void aN_() {
       super.aN_();
-      this.y.a(this.z);
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
    @Override
-   public void aK_() {
-      this.m.t.p();
-      super.aK_();
+   protected fvw G() {
+      return new fvw(this.C + 20, this.o / 2 - 49);
    }
 
    @Override
-   public void aE_() {
-      super.aE_();
-      this.y.b(this.z);
-   }
-
-   @Override
-   protected void m() {
-      if (this.m.t.gv()) {
-         this.c(fqn.a(wu.d, $$0 -> this.aK_()).a(this.n / 2 - 100, 196, 98, 20).a());
-         this.c(fqn.a(wv.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.m();
+   protected void a(frc $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.C;
+      int $$5 = this.D;
+      $$0.a(gpn::H, this.G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      if (this.z.o()) {
+         int $$6 = 14;
+         int $$7 = azk.f(this.z.n() * 13.0F) + 1;
+         $$0.a(gpn::H, this.H, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
       }
-   }
 
-   @Override
-   protected void G() {
-      this.g(1);
-   }
-
-   @Override
-   protected void H() {
-      this.g(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.y.m()) {
-         this.g(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void g(int $$0) {
-      this.m.r.a(this.y.l, $$0);
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   void M() {
-      cxy $$0 = this.y.l();
-      this.a(Objects.requireNonNullElse(fxc.a.a($$0), fxc.d));
-   }
-
-   void N() {
-      this.a(this.y.m());
-   }
-
-   @Override
-   protected void I() {
-      this.m.t.p();
+      int $$8 = 24;
+      int $$9 = azk.f(this.z.m() * 24.0F);
+      $$0.a(gpn::H, this.I, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
    }
 }

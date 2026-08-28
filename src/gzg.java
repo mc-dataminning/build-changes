@@ -1,27 +1,16 @@
-public class gzg extends gyd<hcx, ggr> {
-   private static final ald a = ald.b("textures/entity/wither/wither_armor.png");
-   private final ggr b;
+public class gzg extends gzy<hef, gey> {
+   private static final ale a = ale.b("textures/entity/zombie/drowned_outer_layer.png");
+   private final gey b;
+   private final gey c;
 
-   public gzg(gwc<hcx, ggr> $$0, ggz $$1) {
+   public gzg(gxh<hef, gey> $$0, gic $$1) {
       super($$0);
-      this.b = new ggr($$1.a(ghc.dN));
+      this.b = new gey($$1.a(gif.aJ));
+      this.c = new gey($$1.a(gif.aG));
    }
 
-   protected boolean a(hcx $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected float a(float $$0) {
-      return azk.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected ald a() {
-      return a;
-   }
-
-   protected ggr b() {
-      return this.b;
+   public void a(fiq $$0, gpd $$1, int $$2, hef $$3, float $$4, float $$5) {
+      gey $$6 = $$3.aj ? this.c : this.b;
+      a($$6, a, $$0, $$1, $$2, $$3, -1);
    }
 }

@@ -1,62 +1,71 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dng extends dna {
-   private static final Logger f = LogUtils.getLogger();
-   public static final MapCodec<dng> e = b(dng::new);
-   private static final le g = new ld();
+public class dng extends dor {
+   public static final MapCodec<dng> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(mf.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), t()).apply($$0, dng::new)
+   );
+   private final dlu b;
 
    @Override
    public MapCodec<dng> a() {
-      return e;
+      return a;
    }
 
-   public dng(dyl.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected le a(dhp $$0, cxy $$1) {
-      return g;
+   public dng(dlu $$0, dzn.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   public dvl a(jj $$0, dym $$1) {
-      return new dwh($$0, $$1);
+   public void a(dip $$0, iu $$1, dzo $$2, dzo $$3, cmw $$4) {
+      if (a($$0, $$1, $$3)) {
+         $$0.a($$1, this.b.m(), 3);
+      }
    }
 
    @Override
-   protected void a(arn $$0, dym $$1, jj $$2) {
-      dwg $$3 = $$0.a($$2, dvn.g).orElse(null);
-      if ($$3 == null) {
-         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
-      } else {
-         lb $$4 = new lb($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.A);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-         } else {
-            cxy $$6 = $$3.a($$5);
-            if (!$$6.f()) {
-               jo $$7 = $$0.a_($$2).c(b);
-               btj $$8 = dwo.a($$0, $$2.a($$7));
-               cxy $$9;
-               if ($$8 == null) {
-                  $$9 = g.dispense($$4, $$6);
-               } else {
-                  $$9 = dwo.a($$3, $$8, $$6.c(1), $$7.g());
-                  if ($$9.f()) {
-                     $$9 = $$6.v();
-                     $$9.h(1);
-                  } else {
-                     $$9 = $$6.v();
-                  }
-               }
+   public dzo a(dcl $$0) {
+      dhv $$1 = $$0.q();
+      iu $$2 = $$0.a();
+      dzo $$3 = $$1.a_($$2);
+      return a($$1, $$2, $$3) ? this.b.m() : super.a($$0);
+   }
 
-               $$3.a($$5, $$9);
+   private static boolean a(dhv $$0, iu $$1, dzo $$2) {
+      return o($$2) || a($$0, $$1);
+   }
+
+   private static boolean a(dhv $$0, iu $$1) {
+      boolean $$2 = false;
+      iu.a $$3 = $$1.k();
+
+      for (ja $$4 : ja.values()) {
+         dzo $$5 = $$0.a_($$3);
+         if ($$4 != ja.a || o($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (o($$5) && !$$5.c($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
             }
          }
       }
+
+      return $$2;
+   }
+
+   private static boolean o(dzo $$0) {
+      return $$0.y().a(axf.a);
+   }
+
+   @Override
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      return a($$1, $$3) ? this.b.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   public int b(dzo $$0, dhv $$1, iu $$2) {
+      return $$0.a($$1, $$2).ak;
    }
 }

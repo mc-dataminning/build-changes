@@ -1,20 +1,20 @@
-public record ags(String b) implements zc<agm> {
-   public static final yt<vr, ags> a = zc.a(ags::a, ags::new);
+public record ags(int b) implements zd<agn> {
+   public static final yu<vs, ags> a = zd.a(ags::a, ags::new);
 
-   private ags(vr $$0) {
-      this($$0.p());
+   private ags(vs $$0) {
+      this($$0.l());
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.b);
+   private void a(vs $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public ze<ags> a() {
-      return agk.bp;
+   public zf<ags> a() {
+      return agl.bo;
    }
 
-   public void a(agm $$0) {
+   public void a(agn $$0) {
       $$0.a(this);
    }
 }

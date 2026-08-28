@@ -1,46 +1,39 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 import java.util.Set;
 
-public record fax(Optional<bx> b, exl.b c) implements fau {
-   public static final MapCodec<fax> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bx.a.optionalFieldOf("predicate").forGetter(fax::c), exl.b.e.fieldOf("entity").forGetter(fax::d)).apply($$0, fax::new)
-   );
+public class fax extends faa {
+   static final MapCodec<fax> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(fct.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, fax::new));
+   private final fcs b;
 
-   @Override
-   public fav b() {
-      return faw.f;
+   private fax(List<fbw> $$0, fcs $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<bat<?>> a() {
-      return Set.of(faf.f, this.c.a());
+   public Set<bav<?>> a() {
+      return this.b.a();
    }
 
-   public boolean a(exl $$0) {
-      bvs $$1 = $$0.c(this.c.a());
-      fcu $$2 = $$0.c(faf.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   @Override
+   public fac<fax> b() {
+      return fad.Q;
    }
 
-   public static fau.a a(exl.b $$0) {
-      return a($$0, bx.a.a());
+   @Override
+   public cys a(cys $$0, eyn $$1) {
+      int $$2 = azk.a(this.b.a($$1), 0, 4);
+      $$0.b(kj.ad, new dbq($$2));
+      return $$0;
    }
 
-   public static fau.a a(exl.b $$0, bx.a $$1) {
-      return () -> new fax(Optional.of($$1.b()), $$0);
-   }
-
-   public static fau.a a(exl.b $$0, bx $$1) {
-      return () -> new fax(Optional.of($$1), $$0);
-   }
-
-   public Optional<bx> c() {
+   public fcs c() {
       return this.b;
    }
 
-   public exl.b d() {
-      return this.c;
+   public static faa.a<?> a(fcs $$0) {
+      return a($$1 -> new fax($$1, $$0));
    }
 }

@@ -1,263 +1,145 @@
-import java.util.List;
-import java.util.Objects;
+import com.google.common.annotations.VisibleForTesting;
 import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public enum dxs implements bag {
-   a("inactive", 0, dxs.b.a, -1.0, false),
-   b("waiting_for_players", 4, dxs.b.b, 200.0, true),
-   c("active", 8, dxs.b.c, 1000.0, true),
-   d("waiting_for_reward_ejection", 8, dxs.b.b, -1.0, false),
-   e("ejecting_reward", 8, dxs.b.b, -1.0, false),
-   f("cooldown", 0, dxs.b.d, -1.0, false);
+public class dxs extends dwn implements ffi.a {
+   public static final String b = "RecordItem";
+   public static final String c = "ticks_since_song_started";
+   private cys d = cys.k;
+   private final cyz e = new cyz(this::k, this.aw_());
 
-   private static final float g = 40.0F;
-   private static final int h = azk.d(30.0F);
-   private final String i;
-   private final int j;
-   private final double k;
-   private final dxs.b l;
-   private final boolean m;
-
-   private dxs(final String $$0, final int $$1, final dxs.b $$2, final double $$3, final boolean $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.l = $$2;
-      this.k = $$3;
-      this.m = $$4;
+   public dxs(iu $$0, dzo $$1) {
+      super(dwp.e, $$0, $$1);
    }
 
-   dxs a(jj $$0, dxo $$1, arn $$2) {
-      dxr $$3 = $$1.f();
-      dxp $$4 = $$1.b();
-
-      return switch (this) {
-         case a -> $$3.a($$1, $$2, b) == null ? this : b;
-         case b -> {
-            if (!$$1.a($$2)) {
-               $$3.b();
-               yield this;
-            } else if (!$$3.a($$1, $$2.A)) {
-               yield a;
-            } else {
-               $$3.a($$2, $$0, $$1);
-               yield $$3.c.isEmpty() ? this : c;
-            }
-         }
-         case c -> {
-            if (!$$1.a($$2)) {
-               $$3.b();
-               yield b;
-            } else if (!$$3.a($$1, $$2.A)) {
-               yield a;
-            } else {
-               int $$5 = $$3.a($$0);
-               $$3.a($$2, $$0, $$1);
-               if ($$1.e()) {
-                  this.a($$2, $$0, $$1);
-               }
-
-               if ($$3.a($$4, $$5)) {
-                  if ($$3.c()) {
-                     $$3.e = $$2.ae() + (long)$$1.g();
-                     $$3.g = 0;
-                     $$3.f = 0L;
-                     yield d;
-                  }
-               } else if ($$3.a($$2, $$4, $$5)) {
-                  $$1.c($$2, $$0).ifPresent($$4x -> {
-                     $$3.d.add($$4x);
-                     $$3.g++;
-                     $$3.f = $$2.ae() + (long)$$4.h();
-                     $$4.i().a($$2.C_()).ifPresent($$2xx -> {
-                        $$3.h = Optional.of($$2xx);
-                        $$1.j();
-                     });
-                  });
-               }
-
-               yield this;
-            }
-         }
-         case d -> {
-            if ($$3.a($$2, 40.0F, $$1.g())) {
-               $$2.a(null, $$0, awk.mI, awl.e);
-               yield e;
-            } else {
-               yield this;
-            }
-         }
-         case e -> {
-            if (!$$3.b($$2, (float)h, $$1.g())) {
-               yield this;
-            } else if ($$3.c.isEmpty()) {
-               $$2.a(null, $$0, awk.mJ, awl.e);
-               $$3.i = Optional.empty();
-               yield f;
-            } else {
-               if ($$3.i.isEmpty()) {
-                  $$3.i = $$4.j().a($$2.C_());
-               }
-
-               $$3.i.ifPresent($$3x -> $$1.a($$2, $$0, $$3x));
-               $$3.c.remove($$3.c.iterator().next());
-               yield this;
-            }
-         }
-         case f -> {
-            $$3.a($$2, $$0, $$1);
-            if (!$$3.c.isEmpty()) {
-               $$3.g = 0;
-               $$3.f = 0L;
-               yield c;
-            } else if ($$3.a($$2)) {
-               $$1.b($$2, $$0);
-               $$3.a();
-               yield b;
-            } else {
-               yield this;
-            }
-         }
-      };
+   public cyz j() {
+      return this.e;
    }
 
-   private void a(arn $$0, jj $$1, dxo $$2) {
-      dxr $$3 = $$2.f();
-      dxp $$4 = $$2.b();
-      cxy $$5 = $$3.a($$0, $$4, $$1).a($$0.A).orElse(cxy.k);
-      if (!$$5.f()) {
-         if (this.a($$0, $$3)) {
-            a($$0, $$1, $$2, $$3).ifPresent($$4x -> {
-               bwx $$5x = bwx.a($$0, $$5);
-               $$5x.f($$4x);
-               $$0.b($$5x);
-               float $$6 = ($$0.C_().i() - $$0.C_().i()) * 0.2F + 1.0F;
-               $$0.a(null, jj.a((kc)$$4x), awk.mD, awl.e, 1.0F, $$6);
-               $$3.e = $$0.ae() + $$2.d().a();
-            });
+   public void k() {
+      this.n.a(this.aw_(), this.m().b());
+      this.e();
+   }
+
+   private void a(boolean $$0) {
+      if (this.n != null && this.n.a_(this.aw_()) == this.m()) {
+         this.n.a(this.aw_(), this.m().b(dqa.b, Boolean.valueOf($$0)), 2);
+         this.n.a(eeo.c, this.aw_(), eeo.a.a(this.m()));
+      }
+   }
+
+   public void s() {
+      if (this.n != null && !this.n.C) {
+         iu $$0 = this.aw_();
+         cys $$1 = this.f();
+         if (!$$1.f()) {
+            this.h();
+            fdw $$2 = fdw.a($$0, 0.5, 1.01, 0.5).a(this.n.A, 0.7F);
+            cys $$3 = $$1.v();
+            cmx $$4 = new cmx(this.n, $$2.a(), $$2.b(), $$2.c(), $$3);
+            $$4.j();
+            this.n.b($$4);
          }
       }
    }
 
-   private static Optional<fcu> a(arn $$0, jj $$1, dxo $$2, dxr $$3) {
-      List<cqi> $$4 = $$3.c
-         .stream()
-         .map($$0::a)
-         .filter(Objects::nonNull)
-         .filter($$2x -> !$$2x.b() && !$$2x.U_() && $$2x.bK() && $$2x.g($$1.b()) <= (double)azk.h($$2.h()))
-         .toList();
-      if ($$4.isEmpty()) {
-         return Optional.empty();
-      } else {
-         bvs $$5 = a($$4, $$3.d, $$2, $$1, $$0);
-         return $$5 == null ? Optional.empty() : a($$5, $$0);
-      }
+   public static void a(dip $$0, iu $$1, dzo $$2, dxs $$3) {
+      $$3.e.b($$0, $$2);
    }
 
-   private static Optional<fcu> a(bvs $$0, arn $$1) {
-      fcu $$2 = $$0.dt();
-      fcu $$3 = $$2.a(jo.b, (double)($$0.dr() + 2.0F + (float)$$1.A.a(4)));
-      fcq $$4 = $$1.a(new dgy($$2, $$3, dgy.a.c, dgy.b.a, fcz.a()));
-      fcu $$5 = $$4.b().b().a(jo.a, 1.0);
-      jj $$6 = jj.a((kc)$$5);
-      return !$$1.a_($$6).g($$1, $$6).c() ? Optional.empty() : Optional.of($$5);
-   }
-
-   @Nullable
-   private static bvs a(List<cqi> $$0, Set<UUID> $$1, dxo $$2, jj $$3, arn $$4) {
-      Stream<bvs> $$5 = $$1.stream().map($$4::b).filter(Objects::nonNull).filter($$2x -> $$2x.bK() && $$2x.g($$3.b()) <= (double)azk.h($$2.h()));
-      List<? extends bvs> $$6 = $$4.A.h() ? $$5.toList() : $$0;
-      if ($$6.isEmpty()) {
-         return null;
-      } else {
-         return $$6.size() == 1 ? $$6.getFirst() : af.a($$6, $$4.A);
-      }
-   }
-
-   private boolean a(arn $$0, dxr $$1) {
-      return $$0.ae() >= $$1.e;
-   }
-
-   public int a() {
-      return this.j;
-   }
-
-   public double b() {
-      return this.k;
-   }
-
-   public boolean d() {
-      return this.k >= 0.0;
-   }
-
-   public boolean e() {
-      return this.m;
-   }
-
-   public void a(dhp $$0, jj $$1, boolean $$2) {
-      this.l.emit($$0, $$0.C_(), $$1, $$2);
+   public int u() {
+      return cyy.a(this.n.F_(), this.d).map(je::a).map(cyy::e).orElse(0);
    }
 
    @Override
-   public String c() {
-      return this.i;
-   }
+   protected void a(tx $$0, jg.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("RecordItem", 10)) {
+         this.d = cys.a($$1, (uu)$$0.p("RecordItem")).orElse(cys.k);
+      } else {
+         if (!this.d.f()) {
+            this.e.a(this.n, this.m());
+         }
 
-   static class a {
-      private static final int a = 0;
-      private static final int b = 4;
-      private static final int c = 8;
+         this.d = cys.k;
+      }
 
-      private a() {
+      if ($$0.b("ticks_since_song_started", 4)) {
+         cyy.a($$1, this.d).ifPresent($$1x -> this.e.a($$1x, $$0.i("ticks_since_song_started")));
       }
    }
 
-   interface b {
-      dxs.b a = ($$0, $$1, $$2, $$3) -> {
-      };
-      dxs.b b = ($$0, $$1, $$2, $$3) -> {
-         if ($$1.a(2) == 0) {
-            fcu $$4 = $$2.b().a($$1, 0.9F);
-            a($$3 ? lv.N : lv.aM, $$4, $$0);
-         }
-      };
-      dxs.b c = ($$0, $$1, $$2, $$3) -> {
-         fcu $$4 = $$2.b().a($$1, 1.0F);
-         a(lv.ah, $$4, $$0);
-         a($$3 ? lv.N : lv.F, $$4, $$0);
-      };
-      dxs.b d = ($$0, $$1, $$2, $$3) -> {
-         fcu $$4 = $$2.b().a($$1, 0.9F);
-         if ($$1.a(3) == 0) {
-            a(lv.ah, $$4, $$0);
-         }
-
-         if ($$0.ae() % 20L == 0L) {
-            fcu $$5 = $$2.b().b(0.0, 0.5, 0.0);
-            int $$6 = $$0.C_().a(4) + 20;
-
-            for (int $$7 = 0; $$7 < $$6; $$7++) {
-               a(lv.ah, $$5, $$0);
-            }
-         }
-      };
-
-      private static void a(lz $$0, fcu $$1, dhp $$2) {
-         $$2.a($$0, $$1.a(), $$1.b(), $$1.c(), 0.0, 0.0, 0.0);
+   @Override
+   protected void b(tx $$0, jg.a $$1) {
+      super.b($$0, $$1);
+      if (!this.f().f()) {
+         $$0.a("RecordItem", this.f().a($$1));
       }
 
-      void emit(dhp var1, azs var2, jj var3, boolean var4);
+      if (this.e.b() != null) {
+         $$0.a("ticks_since_song_started", this.e.c());
+      }
    }
 
-   static class c {
-      private static final double a = -1.0;
-      private static final double b = 200.0;
-      private static final double c = 1000.0;
+   @Override
+   public cys f() {
+      return this.d;
+   }
 
-      private c() {
+   @Override
+   public cys c(int $$0) {
+      cys $$1 = this.d;
+      this.b(cys.k);
+      return $$1;
+   }
+
+   @Override
+   public void b(cys $$0) {
+      this.d = $$0;
+      boolean $$1 = !this.d.f();
+      Optional<je<cyy>> $$2 = cyy.a(this.n.F_(), this.d);
+      this.a($$1);
+      if ($$1 && $$2.isPresent()) {
+         this.e.a(this.n, $$2.get());
+      } else {
+         this.e.a(this.n, this.m());
       }
+   }
+
+   @Override
+   public int aj_() {
+      return 1;
+   }
+
+   @Override
+   public dwn t() {
+      return this;
+   }
+
+   @Override
+   public boolean b(int $$0, cys $$1) {
+      return $$1.c(kj.ae) && this.a($$0).f();
+   }
+
+   @Override
+   public boolean a(btr $$0, int $$1, cys $$2) {
+      return $$0.a_(cys::f);
+   }
+
+   @Override
+   public void a(iu $$0, dzo $$1) {
+      this.s();
+   }
+
+   @VisibleForTesting
+   public void c(cys $$0) {
+      this.d = $$0;
+      cyy.a(this.n.F_(), $$0).ifPresent($$0x -> this.e.a($$0x, 0L));
+      this.n.a(this.aw_(), this.m().b());
+      this.e();
+   }
+
+   @VisibleForTesting
+   public void v() {
+      cyy.a(this.n.F_(), this.f()).ifPresent($$0 -> this.e.a(this.n, (je<cyy>)$$0));
    }
 }

@@ -1,33 +1,28 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class hmb implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final bot<hma> b;
-   private final bsg c;
+public class hmb<T> extends hmc<T> {
+   private final hmg<T> c;
 
-   public hmb(FileChannel $$0, Executor $$1) {
-      this.b = new bot<>(hma.a, $$0);
-      this.c = new bsg($$1, "telemetry-event-log");
-   }
-
-   public hmc a() {
-      return $$0 -> this.c.a_(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
-            }
-         });
+   public hmb(Function<T, Stream<String>> $$0, Function<T, Stream<ale>> $$1, List<T> $$2) {
+      super($$1, $$2);
+      this.c = hmg.plainText($$2, $$0);
    }
 
    @Override
-   public void close() {
-      this.c.a_(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
+   protected List<T> a(String $$0) {
+      return this.c.search($$0);
+   }
+
+   @Override
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      List<T> $$4 = this.c.search($$1);
+      Iterator<T> $$5 = new hme<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new hmd<T>($$2.iterator(), $$5, this.a));
    }
 }

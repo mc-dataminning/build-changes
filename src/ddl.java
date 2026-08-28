@@ -1,31 +1,23 @@
-import java.util.List;
+public class ddl {
+   public static final ddm a = a("crafting_building_blocks");
+   public static final ddm b = a("crafting_redstone");
+   public static final ddm c = a("crafting_equipment");
+   public static final ddm d = a("crafting_misc");
+   public static final ddm e = a("furnace_food");
+   public static final ddm f = a("furnace_blocks");
+   public static final ddm g = a("furnace_misc");
+   public static final ddm h = a("blast_furnace_blocks");
+   public static final ddm i = a("blast_furnace_misc");
+   public static final ddm j = a("smoker_food");
+   public static final ddm k = a("stonecutter");
+   public static final ddm l = a("smithing");
+   public static final ddm m = a("campfire");
 
-public class ddl extends ddd {
-   public ddl(String $$0, dch $$1, cxy $$2) {
-      super($$0, $$1, $$2);
+   private static ddm a(String $$0) {
+      return jr.a(mf.az, $$0, new ddm());
    }
 
-   @Override
-   public dcw<ddl> b() {
-      return dcw.f;
-   }
-
-   @Override
-   public dcv<ddl> a() {
-      return dcv.s;
-   }
-
-   @Override
-   public List<ddr> g() {
-      return List.of(new deb(this.k().c(), this.c(), new ddx.d(cyc.xv)));
-   }
-
-   public ddx c() {
-      return new ddx.f(this.l());
-   }
-
-   @Override
-   public dco h() {
-      return dcn.k;
+   public static ddm a(jr<ddm> $$0) {
+      return m;
    }
 }

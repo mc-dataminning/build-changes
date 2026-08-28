@@ -1,59 +1,110 @@
-public interface feg extends btj {
-   cxy f();
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   default cxy c(int $$0) {
-      return this.f().a($$0);
-   }
-
-   void b(cxy var1);
-
-   default cxy h() {
-      return this.c(this.aj_());
-   }
-
-   @Override
-   default int b() {
-      return 1;
-   }
-
-   @Override
-   default boolean c() {
-      return this.f().f();
-   }
-
-   @Override
-   default void a() {
-      this.h();
-   }
-
-   @Override
-   default cxy b(int $$0) {
-      return this.a($$0, this.aj_());
-   }
-
-   @Override
-   default cxy a(int $$0) {
-      return $$0 == 0 ? this.f() : cxy.k;
-   }
-
-   @Override
-   default cxy a(int $$0, int $$1) {
-      return $$0 != 0 ? cxy.k : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, cxy $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
-      }
-   }
-
-   public interface a extends feg {
-      dvl t();
-
+public class feg implements feb {
+   protected static final feb a = new feg(false, -Double.MAX_VALUE, cys.k, $$0 -> false, null) {
       @Override
-      default boolean a(cqi $$0) {
-         return btj.a(this.t(), $$0);
+      public boolean a(feq $$0, iu $$1, boolean $$2) {
+         return $$2;
       }
+   };
+   private final boolean b;
+   private final double c;
+   private final cys d;
+   private final Predicate<evv> e;
+   @Nullable
+   private final bwa f;
+
+   protected feg(boolean $$0, double $$1, cys $$2, Predicate<evv> $$3, @Nullable bwa $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+   }
+
+   @Deprecated
+   protected feg(bwa $$0, boolean $$1) {
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:625)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:627)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
+      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: aload 1
+      // 02: invokevirtual bwa.ch ()Z
+      // 05: aload 1
+      // 06: invokevirtual bwa.dC ()D
+      // 09: aload 1
+      // 0a: instanceof bwz
+      // 0d: ifeq 1a
+      // 10: aload 1
+      // 11: checkcast bwz
+      // 14: invokevirtual bwz.fa ()Lcys;
+      // 17: goto 1d
+      // 1a: getstatic cys.k Lcys;
+      // 1d: iload 2
+      // 1e: ifeq 29
+      // 21: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, feg.b (Levv;)Z, (Levv;)Z ]
+      // 26: goto 46
+      // 29: aload 1
+      // 2a: instanceof bwz
+      // 2d: ifeq 41
+      // 30: aload 1
+      // 31: checkcast bwz
+      // 34: dup
+      // 35: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+      // 38: pop
+      // 39: invokedynamic test (Lbwz;)Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, bwz.a (Levv;)Z, (Levv;)Z ]
+      // 3e: goto 46
+      // 41: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, feg.a (Levv;)Z, (Levv;)Z ]
+      // 46: aload 1
+      // 47: invokespecial feg.<init> (ZDLcys;Ljava/util/function/Predicate;Lbwa;)V
+      // 4a: return
+   }
+
+   @Override
+   public boolean a(cyo $$0) {
+      return this.d.a($$0);
+   }
+
+   @Override
+   public boolean a(evv $$0, evv $$1) {
+      return this.e.test($$1) && !$$0.a().a($$1.a());
+   }
+
+   @Override
+   public feq a(dzo $$0, dhz $$1, iu $$2) {
+      return $$0.b($$1, $$2, this);
+   }
+
+   @Override
+   public boolean b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean a(feq $$0, iu $$1, boolean $$2) {
+      return this.c > (double)$$1.v() + $$0.c(ja.a.b) - 1.0E-5F;
+   }
+
+   @Nullable
+   public bwa c() {
+      return this.f;
    }
 }

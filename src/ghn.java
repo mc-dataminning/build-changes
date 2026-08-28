@@ -1,68 +1,59 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
 
-public class ghn {
-   private final List<ghg> a;
-   private final ghf b;
-   private final Map<String, ghn> c = Maps.newHashMap();
+public class ghn extends ggo<hdw> {
+   private static final String i = "egg_belly";
+   public static final gip a = new gea(true, 120.0F, 0.0F, 9.0F, 6.0F, 120.0F, Set.of("head"));
+   private final gig j;
 
-   ghn(List<ghg> $$0, ghf $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public ghn(gig $$0) {
+      super($$0);
+      this.j = $$0.b("egg_belly");
    }
 
-   public ghn a(String $$0, ghi $$1, ghf $$2) {
-      ghn $$3 = new ghn($$1.b(), $$2);
-      return this.a($$0, $$3);
+   public static gim a() {
+      gio $$0 = new gio();
+      giq $$1 = $$0.a();
+      $$1.a("head", gil.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), gii.a(0.0F, 19.0F, -10.0F));
+      $$1.a(
+         "body",
+         gil.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
+         gii.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      $$1.a("egg_belly", gil.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), gii.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      int $$2 = 1;
+      $$1.a("right_hind_leg", gil.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), gii.a(-3.5F, 22.0F, 11.0F));
+      $$1.a("left_hind_leg", gil.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), gii.a(3.5F, 22.0F, 11.0F));
+      $$1.a("right_front_leg", gil.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), gii.a(-5.0F, 21.0F, -4.0F));
+      $$1.a("left_front_leg", gil.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), gii.a(5.0F, 21.0F, -4.0F));
+      return gim.a($$0, 128, 64);
    }
 
-   public ghn a(String $$0, ghn $$1) {
-      ghn $$2 = this.c.put($$0, $$1);
-      if ($$2 != null) {
-         $$1.c.putAll($$2.c);
-      }
-
-      return $$1;
-   }
-
-   public ghn a(String $$0) {
-      ghn $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("No child with name: " + $$0);
+   public void a(hdw $$0) {
+      super.a($$0);
+      float $$1 = $$0.ad;
+      float $$2 = $$0.ae;
+      if ($$0.a) {
+         float $$3 = $$0.b ? 4.0F : 1.0F;
+         float $$4 = $$0.b ? 2.0F : 1.0F;
+         float $$5 = $$1 * 5.0F;
+         float $$6 = azk.b($$3 * $$5);
+         float $$7 = azk.b($$5);
+         this.f.f = -$$6 * 8.0F * $$2 * $$4;
+         this.g.f = $$6 * 8.0F * $$2 * $$4;
+         this.d.f = -$$7 * 3.0F * $$2;
+         this.e.f = $$7 * 3.0F * $$2;
       } else {
-         return this.a($$0, ghi.c(), $$1.b);
+         float $$8 = 0.5F * $$2;
+         float $$9 = azk.b($$1 * 0.6662F * 0.6F) * $$8;
+         this.d.e = $$9;
+         this.e.e = -$$9;
+         this.f.g = -$$9;
+         this.g.g = $$9;
       }
-   }
 
-   public ghd a(int $$0, int $$1) {
-      Object2ObjectArrayMap<String, ghd> $$2 = this.c
-         .entrySet()
-         .stream()
-         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((ghn)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
-      List<ghd.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).toList();
-      ghd $$4 = new ghd($$3, $$2);
-      $$4.a(this.b);
-      $$4.b(this.b);
-      return $$4;
-   }
-
-   public ghn b(String $$0) {
-      return this.c.get($$0);
-   }
-
-   public Set<Entry<String, ghn>> a() {
-      return this.c.entrySet();
-   }
-
-   public ghn a(UnaryOperator<ghf> $$0) {
-      ghn $$1 = new ghn(this.a, $$0.apply(this.b));
-      $$1.c.putAll(this.c);
-      return $$1;
+      this.j.k = $$0.c;
+      if (this.j.k) {
+         this.v.c--;
+      }
    }
 }

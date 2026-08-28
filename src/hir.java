@@ -1,70 +1,45 @@
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
-public class hir implements AutoCloseable {
-   private final Map<ald, hir.a> a;
+public class hir {
+   private static final hja[] a = new hja[]{
+      a("textures/entity/player/slim/alex.png", hja.a.a),
+      a("textures/entity/player/slim/ari.png", hja.a.a),
+      a("textures/entity/player/slim/efe.png", hja.a.a),
+      a("textures/entity/player/slim/kai.png", hja.a.a),
+      a("textures/entity/player/slim/makena.png", hja.a.a),
+      a("textures/entity/player/slim/noor.png", hja.a.a),
+      a("textures/entity/player/slim/steve.png", hja.a.a),
+      a("textures/entity/player/slim/sunny.png", hja.a.a),
+      a("textures/entity/player/slim/zuri.png", hja.a.a),
+      a("textures/entity/player/wide/alex.png", hja.a.b),
+      a("textures/entity/player/wide/ari.png", hja.a.b),
+      a("textures/entity/player/wide/efe.png", hja.a.b),
+      a("textures/entity/player/wide/kai.png", hja.a.b),
+      a("textures/entity/player/wide/makena.png", hja.a.b),
+      a("textures/entity/player/wide/noor.png", hja.a.b),
+      a("textures/entity/player/wide/steve.png", hja.a.b),
+      a("textures/entity/player/wide/sunny.png", hja.a.b),
+      a("textures/entity/player/wide/zuri.png", hja.a.b)
+   };
 
-   public hir(Map<ald, ald> $$0, hgu $$1) {
-      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
-         hgr $$2 = new hgr((ald)$$1x.getKey());
-         $$1.a((ald)$$1x.getKey(), $$2);
-         return new hir.a($$2, (ald)$$1x.getValue());
-      }));
+   public static ale a() {
+      return b().a();
    }
 
-   public hgr a(ald $$0) {
-      return this.a.get($$0).a();
+   public static hja b() {
+      return a[6];
    }
 
-   @Override
-   public void close() {
-      this.a.values().forEach(hir.a::close);
-      this.a.clear();
+   public static hja a(UUID $$0) {
+      return a[Math.floorMod($$0.hashCode(), a.length)];
    }
 
-   public Map<ald, CompletableFuture<hir.b>> a(ava $$0, int $$1, Executor $$2) {
-      return af.a(
-         this.a, (Function<? super hir.a, CompletableFuture<hir.b>>)($$3 -> hgn.a($$3.a).a($$0, $$3.b, $$1, $$2).thenApply($$1xx -> new hir.b($$3.a, $$1xx)))
-      );
+   public static hja a(GameProfile $$0) {
+      return a($$0.getId());
    }
 
-   static record a(hgr a, ald b) implements AutoCloseable {
-
-      @Override
-      public void close() {
-         this.a.f();
-      }
-   }
-
-   public static class b {
-      private final hgr a;
-      private final hgn.a b;
-
-      public b(hgr $$0, hgn.a $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Nullable
-      public hgs a(ald $$0) {
-         return this.b.f().get($$0);
-      }
-
-      public hgs a() {
-         return this.b.e();
-      }
-
-      public CompletableFuture<Void> b() {
-         return this.b.g();
-      }
-
-      public void c() {
-         this.a.a(this.b);
-      }
+   private static hja a(String $$0, hja.a $$1) {
+      return new hja(ale.b($$0), null, null, null, $$1, true);
    }
 }

@@ -1,74 +1,97 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.List;
+import java.util.function.Supplier;
 
-public abstract class fqe extends fqg implements fsj {
-   @Nullable
-   private fsk a;
-   private boolean c;
+public class fqe implements fqc {
+   private final dlu a;
+   private final List<fqe.b> b = Lists.newArrayList();
 
-   public fqe(int $$0, int $$1, int $$2, int $$3, wv $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public final boolean aG_() {
-      return this.c;
-   }
-
-   @Override
-   public final void b_(boolean $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   @Override
-   public fsk aH_() {
-      return this.a;
-   }
-
-   @Override
-   public void a(@Nullable fsk $$0) {
-      if (this.a != null) {
-         this.a.a(false);
-      }
-
-      if ($$0 != null) {
-         $$0.a(true);
-      }
-
+   private fqe(dlu $$0) {
       this.a = $$0;
    }
 
-   @Nullable
    @Override
-   public fpw a(fuq $$0) {
-      return fsj.super.a($$0);
+   public dlu a() {
+      return this.a;
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      boolean $$3 = this.c($$0, $$1, $$2);
-      return fsj.super.a($$0, $$1, $$2) || $$3;
+   public static fqe a(dlu $$0) {
+      return new fqe($$0);
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      return fsj.super.b($$0, $$1, $$2);
+   public fqe a(List<fqi> $$0) {
+      this.b.add(new fqe.b($$0));
+      return this;
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      return fsj.super.a($$0, $$1, $$2, $$3, $$4);
+   public fqe a(fqi $$0) {
+      return this.a(ImmutableList.of($$0));
    }
 
-   @Override
-   public boolean aI_() {
-      return fsj.super.aI_();
+   public fqe a(fqd $$0, List<fqi> $$1) {
+      this.b.add(new fqe.a($$0, $$1));
+      return this;
    }
 
-   @Override
-   public void a(boolean $$0) {
-      fsj.super.a($$0);
+   public fqe a(fqd $$0, fqi... $$1) {
+      return this.a($$0, ImmutableList.copyOf($$1));
+   }
+
+   public fqe a(fqd $$0, fqi $$1) {
+      return this.a($$0, ImmutableList.of($$1));
+   }
+
+   public JsonElement b() {
+      dzp<dlu, dzo> $$0 = this.a.l();
+      this.b.forEach($$1x -> $$1x.a($$0));
+      JsonArray $$1 = new JsonArray();
+      this.b.stream().map(fqe.b::a).forEach($$1::add);
+      JsonObject $$2 = new JsonObject();
+      $$2.add("multipart", $$1);
+      return $$2;
+   }
+
+   static class a extends fqe.b {
+      private final fqd a;
+
+      a(fqd $$0, List<fqi> $$1) {
+         super($$1);
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(dzp<?, ?> $$0) {
+         this.a.a($$0);
+      }
+
+      @Override
+      public void a(JsonObject $$0) {
+         $$0.add("when", this.a.get());
+      }
+   }
+
+   static class b implements Supplier<JsonElement> {
+      private final List<fqi> a;
+
+      b(List<fqi> $$0) {
+         this.a = $$0;
+      }
+
+      public void a(dzp<?, ?> $$0) {
+      }
+
+      public void a(JsonObject $$0) {
+      }
+
+      public JsonElement a() {
+         JsonObject $$0 = new JsonObject();
+         this.a($$0);
+         $$0.add("apply", fqi.a(this.a));
+         return $$0;
+      }
    }
 }

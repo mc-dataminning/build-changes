@@ -1,64 +1,67 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class gao extends gan<gjb.a> {
-   private static final wv C = wv.c("gui.chatReport.title");
-   private static final wv D = wv.c("gui.chatReport.select_chat");
-   private frf E;
-   private fqn F;
-   private fqn G;
+public abstract class gao extends fxi {
+   protected final fxi b;
+   protected final foj c;
+   @Nullable
+   protected fsn d;
+   public final fve s = new fve(this);
 
-   private gao(fwf $$0, gji $$1, gjb.a $$2) {
-      super(C, $$0, $$1, $$2);
-   }
-
-   public gao(fwf $$0, gji $$1, UUID $$2) {
-      this($$0, $$1, new gjb.a($$2, $$1.a().b()));
-   }
-
-   public gao(fwf $$0, gji $$1, gjb $$2) {
-      this($$0, $$1, new gjb.a($$2, $$1.a().b()));
+   public gao(fxi $$0, foj $$1, ww $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected void E() {
-      this.F = this.z.a(fqn.a(D, $$0 -> this.m.a(new gaq(this, this.y, this.A, $$0x -> {
-            this.A = $$0x;
-            this.G();
-         }))).a(280).a());
-      this.G = fqn.a(c, $$0 -> this.m.a(new gat(this, this.A.i(), gjh.a, $$0x -> {
-            this.A.a($$0x);
-            this.G();
-         }))).a(280).a();
-      this.z.a(ftx.a(this.p, this.G, b));
-      this.E = this.a(280, 9 * 8, $$0 -> {
-         this.A.a($$0);
-         this.G();
+   protected void aN_() {
+      this.G();
+      this.F();
+      this.E();
+      this.s.a($$1 -> {
+         fro var10000 = this.c($$1);
       });
-      this.z.a(ftx.a(this.p, this.E, d, $$0 -> $$0.e(12)));
+      this.c();
    }
 
-   @Override
    protected void G() {
-      IntSet $$0 = this.A.a();
-      if ($$0.isEmpty()) {
-         this.F.b(D);
-      } else {
-         this.F.b(wv.a("gui.chatReport.selected_chat", $$0.size()));
-      }
+      this.s.a(this.l, this.p);
+   }
 
-      gjg $$1 = this.A.i();
-      if ($$1 != null) {
-         this.G.b($$1.b());
-      } else {
-         this.G.b(c);
+   protected void F() {
+      this.d = this.s.c(new fsn(this.m, this.n, this));
+      this.m();
+      if (this.d.b(this.c.av()) instanceof frx $$0) {
+         this.q = $$0;
+         this.q.j = this.m.aY().a();
       }
+   }
 
-      super.G();
+   protected abstract void m();
+
+   protected void E() {
+      this.s.b(frq.a(wv.d, $$0 -> this.aK_()).a(200).a());
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.E.b($$0, $$1, $$2);
+   protected void c() {
+      this.s.a();
+      if (this.d != null) {
+         this.d.a(this.n, this.s);
+      }
+   }
+
+   @Override
+   public void aE_() {
+      this.m.n.az();
+   }
+
+   @Override
+   public void aK_() {
+      if (this.d != null) {
+         this.d.b();
+      }
+
+      this.m.a(this.b);
    }
 }

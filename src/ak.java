@@ -92,12 +92,12 @@ public class ak implements Comparable<ak> {
       return "AdvancementProgress{criteria=" + this.e + ", requirements=" + this.f + "}";
    }
 
-   public void a(vr $$0) {
-      $$0.a(this.e, vr::a, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(vs $$0) {
+      $$0.a(this.e, vs::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static ak b(vr $$0) {
-      Map<String, ar> $$1 = $$0.a(vr::p, ar::b);
+   public static ak b(vs $$0) {
+      Map<String, ar> $$1 = $$0.a(vs::p, ar::b);
       return new ak($$1);
    }
 
@@ -122,7 +122,7 @@ public class ak implements Comparable<ak> {
    }
 
    @Nullable
-   public wv d() {
+   public ww d() {
       if (this.e.isEmpty()) {
          return null;
       } else {
@@ -131,7 +131,7 @@ public class ak implements Comparable<ak> {
             return null;
          } else {
             int $$1 = this.h();
-            return wv.a("advancements.progress", $$1, $$0);
+            return ww.a("advancements.progress", $$1, $$0);
          }
       }
    }

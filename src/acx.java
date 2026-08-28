@@ -1,20 +1,26 @@
-public record acx(dgw b) implements zc<abr> {
-   public static final yt<vr, acx> a = zc.a(acx::a, acx::new);
+import java.util.Optional;
 
-   private acx(vr $$0) {
-      this($$0.f());
-   }
-
-   private void a(vr $$0) {
-      $$0.a(this.b);
-   }
+public record acx(fdw b, Optional<fdw> c, lv d, je<awk> e) implements zd<abs> {
+   public static final yu<wh, acx> a = yu.a(fdw.b, acx::b, fdw.b.a(ys::a), acx::e, lx.bk, acx::f, awk.d, acx::g, acx::new);
 
    @Override
-   public ze<acx> a() {
-      return agk.F;
+   public zf<acx> a() {
+      return agl.E;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
+   }
+
+   public Optional<fdw> e() {
+      return this.c;
+   }
+
+   public lv f() {
+      return this.d;
+   }
+
+   public je<awk> g() {
+      return this.e;
    }
 }

@@ -1,23 +1,59 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface dir {
+   int H_();
 
-public class dir {
-   public static final Codec<dir> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(lv.bj.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, dir::new)
-   );
-   private final lt b;
-   private final float c;
+   int G_();
 
-   public dir(lt $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   default int ao() {
+      return this.G_() + this.H_() - 1;
    }
 
-   public lt a() {
-      return this.b;
+   default int ap() {
+      return this.ar() - this.aq() + 1;
    }
 
-   public boolean a(azs $$0) {
-      return $$0.i() <= this.c;
+   default int aq() {
+      return jx.a(this.G_());
+   }
+
+   default int ar() {
+      return jx.a(this.ao());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 >= this.G_() && $$0 <= this.ao();
+   }
+
+   default boolean t(iu $$0) {
+      return this.e($$0.v());
+   }
+
+   default boolean e(int $$0) {
+      return $$0 < this.G_() || $$0 > this.ao();
+   }
+
+   default int f(int $$0) {
+      return this.g(jx.a($$0));
+   }
+
+   default int g(int $$0) {
+      return $$0 - this.aq();
+   }
+
+   default int h(int $$0) {
+      return $$0 + this.aq();
+   }
+
+   static dir e(final int $$0, final int $$1) {
+      return new dir() {
+         @Override
+         public int H_() {
+            return $$1;
+         }
+
+         @Override
+         public int G_() {
+            return $$0;
+         }
+      };
    }
 }

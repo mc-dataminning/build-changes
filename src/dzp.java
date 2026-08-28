@@ -1,112 +1,159 @@
 import com.google.common.base.MoreObjects;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Decoder;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class dzp<T extends Comparable<T>> {
-   private final Class<T> a;
-   private final String b;
-   @Nullable
-   private Integer c;
-   private final Codec<T> d = Codec.STRING
-      .comapFlatMap(
-         $$0x -> this.b($$0x)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
-         this::b
-      );
-   private final Codec<dzp.a<T>> e = this.d.xmap(this::c, dzp.a::b);
+public class dzp<O, S extends dzq<O, S>> {
+   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
+   private final O b;
+   private final ImmutableSortedMap<String, ear<?>> c;
+   private final ImmutableList<S> d;
 
-   protected dzp(String $$0, Class<T> $$1) {
-      this.a = $$1;
-      this.b = $$0;
+   protected dzp(Function<O, S> $$0, O $$1, dzp.b<O, S> $$2, Map<String, ear<?>> $$3) {
+      this.b = $$1;
+      this.c = ImmutableSortedMap.copyOf($$3);
+      Supplier<S> $$4 = () -> $$0.apply($$1);
+      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
+      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
+
+      while ($$7.hasNext()) {
+         Entry<String, ear<?>> $$6 = (Entry<String, ear<?>>)$$7.next();
+         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
+      }
+
+      MapCodec<S> $$7x = $$5;
+      Map<Map<ear<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
+      List<S> $$9 = Lists.newArrayList();
+      Stream<List<Pair<ear<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
+      UnmodifiableIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         ear<?> $$11 = (ear<?>)var11.next();
+         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
+               List<Pair<ear<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
+               $$3x.add(Pair.of($$11, $$2x));
+               return $$3x;
+            }));
+      }
+
+      $$10.forEach($$5x -> {
+         Reference2ObjectArrayMap<ear<?>, Comparable<?>> $$6 = new Reference2ObjectArrayMap($$5x.size());
+
+         for (Pair<ear<?>, Comparable<?>> $$7xx : $$5x) {
+            $$6.put((ear)$$7xx.getFirst(), (Comparable)$$7xx.getSecond());
+         }
+
+         S $$8x = $$2.create($$1, $$6, $$7);
+         $$8.put($$6, $$8x);
+         $$9.add($$8x);
+      });
+
+      for (S $$12 : $$9) {
+         $$12.a($$8);
+      }
+
+      this.d = ImmutableList.copyOf($$9);
    }
 
-   public dzp.a<T> c(T $$0) {
-      return new dzp.a<>(this, $$0);
+   private static <S extends dzq<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, ear<T> $$3) {
+      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
+      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dzq)((dzq)$$1x.getFirst()).b($$3, ((ear.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
    }
 
-   public dzp.a<T> a(dyo<?, ?> $$0) {
-      return new dzp.a<>(this, $$0.c(this));
-   }
-
-   public Stream<dzp.a<T>> c() {
-      return this.a().stream().map(this::c);
-   }
-
-   public Codec<T> d() {
+   public ImmutableList<S> a() {
       return this.d;
    }
 
-   public Codec<dzp.a<T>> e() {
-      return this.e;
+   public S b() {
+      return (S)this.d.get(0);
    }
 
-   public String f() {
+   public O c() {
       return this.b;
    }
 
-   public Class<T> g() {
-      return this.a;
+   public Collection<ear<?>> d() {
+      return this.c.values();
    }
-
-   public abstract List<T> a();
-
-   public abstract String b(T var1);
-
-   public abstract Optional<T> b(String var1);
-
-   public abstract int a(T var1);
 
    @Override
    public String toString() {
-      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+      return MoreObjects.toStringHelper(this)
+         .add("block", this.b)
+         .add("properties", this.c.values().stream().map(ear::f).collect(Collectors.toList()))
+         .toString();
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof dzp<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+   @Nullable
+   public ear<?> a(String $$0) {
+      return (ear<?>)this.c.get($$0);
+   }
+
+   public static class a<O, S extends dzq<O, S>> {
+      private final O a;
+      private final Map<String, ear<?>> b = Maps.newHashMap();
+
+      public a(O $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public final int hashCode() {
-      if (this.c == null) {
-         this.c = this.b();
+      public dzp.a<O, S> a(ear<?>... $$0) {
+         for (ear<?> $$1 : $$0) {
+            this.a($$1);
+            this.b.put($$1.f(), $$1);
+         }
+
+         return this;
       }
 
-      return this.c;
-   }
-
-   public int b() {
-      return 31 * this.a.hashCode() + this.b.hashCode();
-   }
-
-   public <U, S extends dyo<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
-      DataResult<T> $$3 = this.d.parse($$0, $$2);
-      return $$3.map($$1x -> $$1.b(this, $$1x)).setPartial($$1);
-   }
-
-   public static record a<T extends Comparable<T>>(dzp<T> a, T b) {
-      public a(dzp<T> a, T b) {
-         if (!a.a().contains(b)) {
-            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
+      private <T extends Comparable<T>> void a(ear<T> $$0) {
+         String $$1 = $$0.f();
+         if (!dzp.a.matcher($$1).matches()) {
+            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
          } else {
-            this.a = a;
-            this.b = b;
+            Collection<T> $$2 = $$0.a();
+            if ($$2.size() <= 1) {
+               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
+            } else {
+               for (T $$3 : $$2) {
+                  String $$4 = $$0.b($$3);
+                  if (!dzp.a.matcher($$4).matches()) {
+                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
+                  }
+               }
+
+               if (this.b.containsKey($$1)) {
+                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
+               }
+            }
          }
       }
 
-      @Override
-      public String toString() {
-         return this.a.f() + "=" + this.a.b(this.b);
+      public dzp<O, S> a(Function<O, S> $$0, dzp.b<O, S> $$1) {
+         return new dzp<>($$0, this.a, $$1, this.b);
       }
+   }
+
+   public interface b<O, S> {
+      S create(O var1, Reference2ObjectArrayMap<ear<?>, Comparable<?>> var2, MapCodec<S> var3);
    }
 }

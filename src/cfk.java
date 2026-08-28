@@ -1,40 +1,32 @@
-import java.util.EnumSet;
-
-public class cfk extends cfn {
-   private final bxn a;
-   private bwr b;
+public class cfk extends cef {
+   private final com b;
    private int c;
 
-   public cfk(bxn $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(cdn.a.d));
-   }
-
-   @Override
-   public boolean b() {
-      if (this.a.q() && !this.a.gq()) {
-         bwr $$0 = this.a.e();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.eq();
-            int $$1 = $$0.es();
-            return $$1 != this.c && this.a(this.b, chg.a) && this.a.a(this.b, $$0);
-         }
-      } else {
-         return false;
-      }
+   public cfk(com $$0, double $$1, boolean $$2) {
+      super($$0, $$1, $$2);
+      this.b = $$0;
    }
 
    @Override
    public void d() {
-      this.e.h(this.b);
-      bwr $$0 = this.a.e();
-      if ($$0 != null) {
-         this.c = $$0.es();
-      }
-
       super.d();
+      this.c = 0;
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.b.v(false);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.c++;
+      if (this.c >= 5 && this.k() < this.l() / 2) {
+         this.b.v(true);
+      } else {
+         this.b.v(false);
+      }
    }
 }

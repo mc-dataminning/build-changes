@@ -1,71 +1,19 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class dbp {
-   @Nullable
-   private final cqi a;
-   private final btp b;
-   private final fcq c;
-   private final dhp d;
-   private final cxy e;
+public enum dbp {
+   a(0),
+   b(1);
 
-   public dbp(cqi $$0, btp $$1, fcq $$2) {
-      this($$0.dV(), $$0, $$1, $$0.b($$1), $$2);
+   public static final IntFunction<dbp> c = aya.a(dbp::a, values(), aya.a.a);
+   public static final yu<ByteBuf, dbp> d = ys.a(c, dbp::a);
+   private final int e;
+
+   private dbp(final int $$0) {
+      this.e = $$0;
    }
 
-   protected dbp(dhp $$0, @Nullable cqi $$1, btp $$2, cxy $$3, fcq $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
-   }
-
-   protected final fcq j() {
-      return this.c;
-   }
-
-   public jj a() {
-      return this.c.b();
-   }
-
-   public jo k() {
-      return this.c.c();
-   }
-
-   public fcu l() {
-      return this.c.g();
-   }
-
-   public boolean m() {
-      return this.c.e();
-   }
-
-   public cxy n() {
+   public int a() {
       return this.e;
-   }
-
-   @Nullable
-   public cqi o() {
-      return this.a;
-   }
-
-   public btp p() {
-      return this.b;
-   }
-
-   public dhp q() {
-      return this.d;
-   }
-
-   public jo g() {
-      return this.a == null ? jo.c : this.a.cO();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fX();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dL();
    }
 }

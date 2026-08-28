@@ -1,20 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class hgb {
-   @Nullable
-   public ald a;
-   public final List<hgb.a> b = new ArrayList<>();
+public record hgb(float b) implements hfz {
+   public static final MapCodec<hgb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ays.o.optionalFieldOf("period", 1.0F).forGetter(hgb::b)).apply($$0, hgb::new)
+   );
 
-   public static class a {
-      @Nullable
-      public hgs a;
-      public byte b;
-      public byte c;
-      public byte d;
-      public boolean e;
-      @Nullable
-      public wv f;
+   @Override
+   public float a(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3) {
+      return $$2 != null && $$2.fA() == $$0 ? (float)$$2.fB() % this.b : 0.0F;
+   }
+
+   @Override
+   public MapCodec<hgb> a() {
+      return a;
    }
 }

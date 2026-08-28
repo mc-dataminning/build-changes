@@ -1,12 +1,15 @@
-public record aef(awo b) implements zc<abr> {
-   public static final yt<vr, aef> a = yt.a(awo.a, aef::b, aef::new);
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+
+public record aef(List<der> b) implements zd<abs> {
+   public static final yu<ByteBuf, aef> a = yu.a(der.a.a(ys.a()), aef::b, aef::new);
 
    @Override
-   public ze<aef> a() {
-      return agk.am;
+   public zf<aef> a() {
+      return agl.al;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 }

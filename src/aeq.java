@@ -1,45 +1,37 @@
-public class aeq implements zc<abr> {
-   public static final yt<vr, aeq> a = zc.a(aeq::a, aeq::new);
+public class aeq implements zd<abs> {
+   public static final yu<vs, aeq> a = zd.a(aeq::a, aeq::new);
    private final double b;
    private final double c;
-   private final long d;
 
-   public aeq(eae $$0) {
-      this.b = $$0.i();
-      this.c = $$0.k();
-      this.d = $$0.j();
+   public aeq(ebg $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
    }
 
-   private aeq(vr $$0) {
+   private aeq(vs $$0) {
       this.b = $$0.readDouble();
       this.c = $$0.readDouble();
-      this.d = $$0.m();
    }
 
-   private void a(vr $$0) {
+   private void a(vs $$0) {
       $$0.a(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
    }
 
    @Override
-   public ze<aeq> a() {
-      return agk.aw;
+   public zf<aeq> a() {
+      return agl.av;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
    public double b() {
-      return this.b;
-   }
-
-   public double e() {
       return this.c;
    }
 
-   public long f() {
-      return this.d;
+   public double e() {
+      return this.b;
    }
 }

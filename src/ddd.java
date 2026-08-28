@@ -1,86 +1,66 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public abstract class ddd implements dcl<dde> {
-   private final dch c;
-   private final cxy d;
-   private final String e;
-   @Nullable
-   private dck f;
+public class ddd extends dcz {
+   private static final ddf c = ddf.a(cyw.vy);
 
-   public ddd(String $$0, dch $$1, cxy $$2) {
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public ddd(dcw $$0) {
+      super($$0);
+   }
+
+   public boolean a(dcx $$0, dip $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cys $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.h() instanceof cxr) {
+                  $$2 = true;
+               } else {
+                  if (!c.a($$5)) {
+                     return false;
+                  }
+
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
+   }
+
+   public cys a(dcx $$0, jg.a $$1) {
+      IntList $$2 = new IntArrayList();
+      cys $$3 = null;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cys $$5 = $$0.a($$4);
+         if ($$5.h() instanceof cxr $$7) {
+            $$2.add($$7.a().f());
+         } else if (c.a($$5)) {
+            $$3 = $$5.c(1);
+         }
+      }
+
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a(kj.ai, dbg.a, $$2, dbg::a);
+         return $$3;
+      } else {
+         return cys.k;
+      }
    }
 
    @Override
-   public abstract dcv<? extends ddd> a();
-
-   @Override
-   public abstract dcw<? extends ddd> b();
-
-   public boolean a(dde $$0, dhp $$1) {
-      return this.c.a($$0.c());
-   }
-
-   @Override
-   public String j() {
-      return this.e;
-   }
-
-   public dch k() {
-      return this.c;
-   }
-
-   protected cxy l() {
-      return this.d;
-   }
-
-   @Override
-   public dck ak_() {
-      if (this.f == null) {
-         this.f = dck.a(this.c);
-      }
-
-      return this.f;
-   }
-
-   public cxy a(dde $$0, ju.a $$1) {
-      return this.d.v();
-   }
-
-   @FunctionalInterface
-   public interface a<T extends ddd> {
-      T create(String var1, dch var2, cxy var3);
-   }
-
-   public static class b<T extends ddd> implements dcv<T> {
-      private final MapCodec<T> w;
-      private final yt<wg, T> x;
-
-      protected b(ddd.a<T> $$0) {
-         this.w = RecordCodecBuilder.mapCodec(
-            $$1 -> $$1.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter(ddd::j),
-                     dch.d.fieldOf("ingredient").forGetter(ddd::k),
-                     cxy.d.fieldOf("result").forGetter(ddd::l)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.x = yt.a(yr.o, ddd::j, dch.a, ddd::k, cxy.i, ddd::l, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
-
-      @Override
-      public yt<wg, T> b() {
-         return this.x;
-      }
+   public ddt<ddd> a() {
+      return ddt.i;
    }
 }

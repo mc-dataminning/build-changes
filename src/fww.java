@@ -1,111 +1,101 @@
-public abstract class fww<T extends cvc> extends fwu<T> implements gaj {
-   private final gae<?> G;
-   private boolean H;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   public fww(T $$0, gae<?> $$1, cqh $$2, wv $$3) {
-      super($$0, $$2, $$3);
-      this.G = $$1;
+public class fww extends fxi {
+   private static final long a = 2000L;
+   private final asc b;
+   private long c = -1L;
+   private boolean d;
+   private static final Object2IntMap<ecm> s = af.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(ecm.c, 5526612);
+      $$0.put(ecm.d, 10066329);
+      $$0.put(ecm.e, 6250897);
+      $$0.put(ecm.f, 8434258);
+      $$0.put(ecm.g, 13750737);
+      $$0.put(ecm.h, 7497737);
+      $$0.put(ecm.i, 3159410);
+      $$0.put(ecm.j, 2213376);
+      $$0.put(ecm.k, 13421772);
+      $$0.put(ecm.l, 16769184);
+      $$0.put(ecm.m, 15884384);
+      $$0.put(ecm.n, 16777215);
+   });
+
+   public fww(asc $$0) {
+      super(fnw.a);
+      this.b = $$0;
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.H = this.n < 379;
-      this.G.a(this.n, this.o, this.m, this.H);
-      this.C = this.G.a(this.n, this.s);
-      this.M();
-   }
-
-   protected abstract fut G();
-
-   private void M() {
-      fut $$0 = this.G();
-      this.c(new fqz($$0.a(), $$0.b(), 20, 18, gae.a, $$0x -> {
-         this.G.c();
-         this.C = this.G.a(this.n, this.s);
-         fut $$1 = this.G();
-         $$0x.c($$1.a(), $$1.b());
-         this.H();
-      }));
-      this.d(this.G);
-   }
-
-   protected void H() {
+   public boolean aC_() {
+      return false;
    }
 
    @Override
-   public void a(fpz $$0, int $$1, int $$2, float $$3) {
-      if (this.G.d() && this.H) {
-         this.b($$0, $$1, $$2, $$3);
+   protected boolean aM_() {
+      return false;
+   }
+
+   @Override
+   public void aE_() {
+      this.d = true;
+      this.d(true);
+   }
+
+   @Override
+   protected void b(fvn $$0) {
+      if (this.d) {
+         $$0.a(fvm.a, ww.c("narrator.loading.done"));
       } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
-
-      this.G.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-      this.G.a($$0, $$1, $$2, this.B);
-   }
-
-   @Override
-   protected void c(fpz $$0) {
-      super.c($$0);
-      this.G.a($$0, this.I());
-   }
-
-   protected boolean I() {
-      return true;
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.G.a($$0, $$1) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.G.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.G.a($$0, $$1, $$2)) {
-         this.a(this.G);
-         return true;
-      } else {
-         return this.H && this.G.d() ? true : super.a($$0, $$1, $$2);
+         $$0.a(fvm.a, this.m());
       }
    }
 
-   @Override
-   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
-      return (!this.H || !this.G.d()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private ww m() {
+      return ww.a("loading.progress", azk.a(this.b.f(), 0, 100));
    }
 
    @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.s) || $$1 >= (double)($$3 + this.u);
-      return this.G.a($$0, $$1, this.C, this.D, this.s, this.u, $$4) && $$5;
-   }
-
-   @Override
-   protected void a(cvk $$0, int $$1, int $$2, cty $$3) {
+   public void a(frc $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.G.b($$0);
+      long $$4 = af.c();
+      if ($$4 - this.c > 2000L) {
+         this.c = $$4;
+         this.d(true);
+      }
+
+      int $$5 = this.n / 2;
+      int $$6 = this.o / 2;
+      a($$0, this.b, $$5, $$6, 2, 0);
+      int $$7 = this.b.e() + 9 + 2;
+      $$0.a(this.p, this.m(), $$5, $$6 - $$7, 16777215);
    }
 
-   @Override
-   public void E() {
-      super.E();
-      this.G.e();
-   }
+   public static void a(frc $$0, asc $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$4 + $$5;
+      int $$7 = $$1.d();
+      int $$8 = $$7 * $$6 - $$5;
+      int $$9 = $$1.e();
+      int $$10 = $$9 * $$6 - $$5;
+      int $$11 = $$2 - $$10 / 2;
+      int $$12 = $$3 - $$10 / 2;
+      int $$13 = $$8 / 2 + 1;
+      int $$14 = -16772609;
+      if ($$5 != 0) {
+         $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
+         $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
+         $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
+         $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+      }
 
-   @Override
-   public void L() {
-      this.G.g();
-   }
-
-   @Override
-   public void a(ddr $$0) {
-      this.G.a($$0);
+      for (int $$15 = 0; $$15 < $$9; $$15++) {
+         for (int $$16 = 0; $$16 < $$9; $$16++) {
+            ecm $$17 = $$1.a($$15, $$16);
+            int $$18 = $$11 + $$15 * $$6;
+            int $$19 = $$12 + $$16 * $$6;
+            $$0.a($$18, $$19, $$18 + $$4, $$19 + $$4, axu.f(s.getInt($$17)));
+         }
+      }
    }
 }

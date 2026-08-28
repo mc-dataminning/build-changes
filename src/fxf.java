@@ -1,82 +1,71 @@
-public class fxf extends fwt {
-   private final dvw u;
-   private fqu<dvw.a> v;
-   private fqu<Boolean> w;
-   private fqu<Boolean> x;
-   private dvw.a y = dvw.a.c;
-   private boolean z;
-   private boolean A;
+import javax.annotation.Nullable;
 
-   public fxf(dvw $$0) {
-      this.u = $$0;
+public class fxf extends fxi implements azs {
+   @Nullable
+   private ww a;
+   @Nullable
+   private ww b;
+   private int c;
+   private boolean d;
+   private final boolean s;
+
+   public fxf(boolean $$0) {
+      super(fnw.a);
+      this.s = $$0;
    }
 
    @Override
-   dgq m() {
-      return this.u.a();
+   public boolean aC_() {
+      return false;
    }
 
    @Override
-   int E() {
-      return 135;
+   protected boolean aM_() {
+      return false;
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.v = this.c(fqu.<dvw.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> wv.c("advMode.mode.sequence");
-            case b -> wv.c("advMode.mode.auto");
-            case c -> wv.c("advMode.mode.redstone");
-         };
-      }).a(dvw.a.values()).a().a(this.y).a(this.n / 2 - 50 - 100 - 4, 165, 100, 20, wv.c("advMode.mode"), ($$0, $$1) -> this.y = $$1));
-      this.w = this.c(
-         fqu.a(wv.c("advMode.mode.conditional"), wv.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.z)
-            .a(this.n / 2 - 50, 165, 100, 20, wv.c("advMode.type"), ($$0, $$1) -> this.z = $$1)
-      );
-      this.x = this.c(
-         fqu.a(wv.c("advMode.mode.autoexec.bat"), wv.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.A)
-            .a(this.n / 2 + 50 + 4, 165, 100, 20, wv.c("advMode.triggering"), ($$0, $$1) -> this.A = $$1)
-      );
-      this.f(false);
-   }
-
-   private void f(boolean $$0) {
-      this.c.j = $$0;
-      this.s.j = $$0;
-      this.v.j = $$0;
-      this.w.j = $$0;
-      this.x.j = $$0;
-   }
-
-   public void G() {
-      dgq $$0 = this.u.a();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.p();
-      this.y = this.u.s();
-      this.z = this.u.t();
-      this.A = this.u.d();
-      this.s.a($$1);
-      this.v.a(this.y);
-      this.w.a(this.z);
-      this.x.a(this.A);
-      this.c($$1);
-      this.f(true);
+   public void a(ww $$0) {
+      this.b($$0);
    }
 
    @Override
-   public void a(fnd $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.f(true);
+   public void b(ww $$0) {
+      this.a = $$0;
+      this.c(ww.c("menu.working"));
    }
 
    @Override
-   protected void a(dgq $$0) {
-      this.m.L().b(new aie(jj.a((kc)$$0.g()), this.a.a(), this.y, $$0.p(), this.z, this.A));
+   public void c(ww $$0) {
+      this.b = $$0;
+      this.a(0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public void a() {
+      this.d = true;
+   }
+
+   @Override
+   public void a(frc $$0, int $$1, int $$2, float $$3) {
+      if (this.d) {
+         if (this.s) {
+            this.m.a(null);
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         if (this.a != null) {
+            $$0.a(this.p, this.a, this.n / 2, 70, 16777215);
+         }
+
+         if (this.b != null && this.c != 0) {
+            $$0.a(this.p, ww.i().b(this.b).f(" " + this.c + "%"), this.n / 2, 90, 16777215);
+         }
+      }
    }
 }

@@ -2,43 +2,34 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dr extends dz<dr.a> {
+public class dr extends dj<dr.a> {
    @Override
    public Codec<dr.a> a() {
       return dr.a.a;
    }
 
-   public void a(aro $$0, cxy $$1, bvs $$2) {
-      exl $$3 = bx.b($$0, $$2);
-      this.a($$0, $$2x -> $$2x.a($$1, $$3));
+   public void a(arp $$0, bwa $$1) {
+      eyn $$2 = bx.b($$0, $$1);
+      this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   public static record a(Optional<bi> b, Optional<cv> c, Optional<bi> d) implements dz.a {
+   public static record a(Optional<bi> b, Optional<bi> c) implements dj.a {
       public static final Codec<dr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bx.b.optionalFieldOf("player").forGetter(dr.a::a),
-                  cv.a.optionalFieldOf("item").forGetter(dr.a::b),
-                  bx.b.optionalFieldOf("entity").forGetter(dr.a::c)
-               )
-               .apply($$0, dr.a::new)
+         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(dr.a::a), bx.b.optionalFieldOf("entity").forGetter(dr.a::b)).apply($$0, dr.a::new)
       );
 
-      public static aq<dr.a> a(Optional<bi> $$0, cv.a $$1, Optional<bi> $$2) {
-         return ap.T.a(new dr.a($$0, Optional.of($$1.b()), $$2));
+      public static aq<dr.a> a(bx.a $$0) {
+         return ap.o.a(new dr.a(Optional.empty(), Optional.of(bx.a($$0))));
       }
 
-      public static aq<dr.a> a(cv.a $$0, Optional<bi> $$1) {
-         return a(Optional.empty(), $$0, $$1);
-      }
-
-      public boolean a(cxy $$0, exl $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
+      public boolean a(eyn $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
       public void a(bj $$0) {
-         dz.a.super.a($$0);
-         $$0.a(this.d, ".entity");
+         dj.a.super.a($$0);
+         $$0.a(this.c, ".entity");
       }
 
       @Override
@@ -46,12 +37,8 @@ public class dr extends dz<dr.a> {
          return this.b;
       }
 
-      public Optional<cv> b() {
+      public Optional<bi> b() {
          return this.c;
-      }
-
-      public Optional<bi> c() {
-         return this.d;
       }
    }
 }

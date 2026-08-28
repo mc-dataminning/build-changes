@@ -1,50 +1,76 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
+import java.util.List;
+import org.apache.commons.lang3.mutable.Mutable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class enq extends enn {
+public class enq extends ens {
    public static final MapCodec<enq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eff.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), eff.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, enq::new)
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, enq::new)
    );
-   private static final Logger b = LogUtils.getLogger();
-   private final eff d;
-   private final eff e;
-   private final LongSet f = new LongOpenHashSet();
+   private final float b;
+   private final float c;
+   private final float d;
 
-   private enq(eff $$0, eff $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   @Override
+   protected ent<?> a() {
+      return ent.c;
    }
 
-   public static enq a(eff $$0, eff $$1) {
-      return new enq($$0, $$1);
+   public enq(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public int a(azs $$0, efi $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
-            b.warn("Empty height range: {}", this);
+   public void a(ens.a $$0) {
+      azt $$1 = $$0.b();
+      djo $$2 = (djo)$$0.a();
+      List<iu> $$3 = af.a($$0.c(), $$1);
+      if (!$$3.isEmpty()) {
+         Mutable<iu> $$4 = new MutableObject($$3.getFirst());
+         $$3.forEach($$1x -> {
+            if ($$1x.v() < ((iu)$$4.getValue()).v()) {
+               $$4.setValue($$1x);
+            }
+         });
+         iu $$5 = (iu)$$4.getValue();
+         if ($$1.i() < this.d) {
+            $$2.F_().a(mg.aK).flatMap($$0x -> $$0x.a(ro.J)).ifPresent($$3x -> ((eif)$$3x.a()).a($$2, $$2.a().m().g(), $$1, $$5.d()));
          }
 
-         return $$2;
-      } else {
-         return azk.b($$0, $$2, $$3);
+         $$0.c().forEach($$2x -> {
+            if ($$1.i() < this.c) {
+               iu $$3x = $$2x.e();
+               if ($$0.a($$3x)) {
+                  a($$3x, $$0);
+               }
+            }
+         });
+         $$0.d().forEach($$2x -> {
+            if ($$1.i() < this.b) {
+               iu $$3x = $$2x.e();
+               if ($$0.a($$3x)) {
+                  a($$3x, $$0);
+               }
+            }
+         });
       }
    }
 
-   @Override
-   public eno<?> a() {
-      return eno.b;
-   }
+   private static void a(iu $$0, ens.a $$1) {
+      while ($$1.a($$0.e()) && !((double)$$1.b().i() < 0.5)) {
+         $$1.a($$0, dlw.uc.m().b(dpn.b, Boolean.valueOf(false)));
+         $$0 = $$0.e();
+      }
 
-   @Override
-   public String toString() {
-      return "[" + this.d + "-" + this.e + "]";
+      $$1.a($$0, dlw.uc.m().b(dpn.b, Boolean.valueOf(true)));
    }
 }

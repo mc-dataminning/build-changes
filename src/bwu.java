@@ -1,57 +1,135 @@
-import com.mojang.serialization.Codec;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public enum bwu implements bag {
-   a("monster", 70, false, false, 128),
-   b("creature", 10, true, true, 128),
-   c("ambient", 15, true, false, 128),
-   d("axolotls", 5, true, false, 128),
-   e("underground_water_creature", 5, true, false, 128),
-   f("water_creature", 5, true, false, 128),
-   g("water_ambient", 20, true, false, 64),
-   h("misc", -1, true, true, 128);
+public class bwu {
+   public static final int a = 3;
+   private final bwa b;
+   private int c;
+   private final bwu.a d = new bwu.a(0, fdw.c, 0.0F, 0.0F);
+   @Nullable
+   private fdw e;
+   @Nullable
+   private fdv f;
+   @Nullable
+   private final Consumer<bwu> g;
 
-   public static final Codec<bwu> i = bag.a(bwu::values);
-   private final int j;
-   private final boolean k;
-   private final boolean l;
-   private final String m;
-   private final int n = 32;
-   private final int o;
-
-   private bwu(final String $$0, final int $$1, final boolean $$2, final boolean $$3, final int $$4) {
-      this.m = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.o = $$4;
+   public bwu(bwa $$0) {
+      this($$0, 3, null);
    }
 
-   public String a() {
-      return this.m;
+   public bwu(bwa $$0, int $$1) {
+      this($$0, $$1, null);
    }
 
-   @Override
-   public String c() {
-      return this.m;
+   public bwu(bwa $$0, @Nullable Consumer<bwu> $$1) {
+      this($$0, 3, $$1);
    }
 
-   public int b() {
-      return this.j;
+   public bwu(bwa $$0, int $$1, @Nullable Consumer<bwu> $$2) {
+      this.c = $$1;
+      this.b = $$0;
+      this.g = $$2;
+   }
+
+   public fdw a() {
+      return this.d.a > 0 ? this.d.b : this.b.dt();
+   }
+
+   public float b() {
+      return this.d.a > 0 ? this.d.c : this.b.dL();
+   }
+
+   public float c() {
+      return this.d.a > 0 ? this.d.d : this.b.dN();
+   }
+
+   public void a(fdw $$0, float $$1, float $$2) {
+      if (this.c == 0) {
+         this.b.b($$0, $$1, $$2);
+         this.f();
+      } else {
+         this.d.a = this.c;
+         this.d.b = $$0;
+         this.d.c = $$1;
+         this.d.d = $$2;
+         this.e = this.b.dt();
+         this.f = new fdv(this.b.dN(), this.b.dL());
+         if (this.g != null) {
+            this.g.accept(this);
+         }
+      }
    }
 
    public boolean d() {
-      return this.k;
+      return this.d.a > 0;
    }
 
-   public boolean e() {
-      return this.l;
+   public void a(int $$0) {
+      this.c = $$0;
    }
 
-   public int f() {
-      return this.o;
+   public void e() {
+      if (!this.d()) {
+         this.f();
+      } else {
+         double $$0 = 1.0 / (double)this.d.a;
+         if (this.e != null) {
+            fdw $$1 = this.b.dt().d(this.e);
+            if (this.b.dV().a(this.b, this.b.ax().c(this.d.b.e($$1)))) {
+               this.d.a($$1);
+            }
+         }
+
+         if (this.f != null) {
+            float $$2 = this.b.dL() - this.f.j;
+            float $$3 = this.b.dN() - this.f.i;
+            this.d.a($$2, $$3);
+         }
+
+         double $$4 = azk.d($$0, this.b.dA(), this.d.b.d);
+         double $$5 = azk.d($$0, this.b.dC(), this.d.b.e);
+         double $$6 = azk.d($$0, this.b.dG(), this.d.b.f);
+         fdw $$7 = new fdw($$4, $$5, $$6);
+         float $$8 = (float)azk.e($$0, (double)this.b.dL(), (double)this.d.c);
+         float $$9 = (float)azk.d($$0, (double)this.b.dN(), (double)this.d.d);
+         this.b.b($$7);
+         this.b.b($$8, $$9);
+         this.d.a();
+         this.e = $$7;
+         this.f = new fdv(this.b.dN(), this.b.dL());
+      }
    }
 
-   public int g() {
-      return 32;
+   public void f() {
+      this.d.a = 0;
+      this.e = null;
+      this.f = null;
+   }
+
+   static class a {
+      protected int a;
+      fdw b;
+      float c;
+      float d;
+
+      a(int $$0, fdw $$1, float $$2, float $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public void a() {
+         this.a--;
+      }
+
+      public void a(fdw $$0) {
+         this.b = this.b.e($$0);
+      }
+
+      public void a(float $$0, float $$1) {
+         this.c += $$0;
+         this.d += $$1;
+      }
    }
 }

@@ -1,80 +1,42 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class ehs {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<arn, ehs.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<arn, ehs.b>() {
-         public ehs.b a(arn $$0) {
-            return new ehs.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
+public class ehs extends ehq {
+   public ehs(Codec<ehp> $$0) {
+      super($$0);
+      this.h = ImmutableSet.of(evw.e, evw.c);
+   }
+
+   @Override
+   protected int a() {
+      return 10;
+   }
+
+   @Override
+   protected float a(azt $$0) {
+      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   }
+
+   @Override
+   protected double b() {
+      return 5.0;
+   }
+
+   protected boolean a(eho $$0, ehp $$1, ebl $$2, Function<iu, je<djs>> $$3, ebk $$4, iu.a $$5, iu.a $$6, eez $$7, MutableBoolean $$8) {
+      if (this.a($$1, $$2.a_($$5))) {
+         dzo $$9;
+         if ($$5.v() <= $$0.a() + 31) {
+            $$9 = g.g();
+         } else {
+            $$9 = e;
          }
-      });
 
-   public static void a(arn $$0) {
-      try {
-         ((ehs.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
+         $$2.a($$5, $$9);
+         return true;
+      } else {
+         return false;
       }
-   }
-
-   public static void a(arn $$0, ehd<?, ?> $$1, Optional<eok> $$2) {
-      try {
-         ((ehs.b)b.get($$0)).a().computeInt(new ehs.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
-   }
-
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
-
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.aj().a().toString();
-               boolean $$3 = $$0.p().x();
-               kf<eok> $$4 = $$0.F_().f(me.aY);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::d).<ald>map(alc::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
-            }
-         );
-   }
-
-   static record a(ehd<?, ?> a, Optional<eok> b) {
-   }
-
-   static record b(Object2IntMap<ehs.a> a, MutableInt b) {
    }
 }

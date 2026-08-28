@@ -1,50 +1,58 @@
-public class aht implements zc<agm> {
-   public static final yt<vr, aht> a = zc.a(aht::a, aht::new);
-   private final int b;
-   private final aht.a c;
-   private final int d;
+public class aht implements zd<agn> {
+   public static final yu<vs, aht> a = zd.a(aht::a, aht::new);
+   private final iu b;
+   private final ja c;
+   private final aht.a d;
+   private final int e;
 
-   public aht(bvs $$0, aht.a $$1) {
-      this($$0, $$1, 0);
+   public aht(aht.a $$0, iu $$1, ja $$2, int $$3) {
+      this.d = $$0;
+      this.b = $$1.j();
+      this.c = $$2;
+      this.e = $$3;
    }
 
-   public aht(bvs $$0, aht.a $$1, int $$2) {
-      this.b = $$0.ar();
-      this.c = $$1;
-      this.d = $$2;
+   public aht(aht.a $$0, iu $$1, ja $$2) {
+      this($$0, $$1, $$2, 0);
    }
 
-   private aht(vr $$0) {
-      this.b = $$0.l();
-      this.c = $$0.b(aht.a.class);
-      this.d = $$0.l();
+   private aht(vs $$0) {
+      this.d = $$0.b(aht.a.class);
+      this.b = $$0.e();
+      this.c = ja.a($$0.readUnsignedByte());
+      this.e = $$0.l();
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
+   private void a(vs $$0) {
+      $$0.a(this.d);
+      $$0.a(this.b);
+      $$0.l(this.c.d());
+      $$0.c(this.e);
    }
 
    @Override
-   public ze<aht> a() {
-      return agk.bT;
+   public zf<aht> a() {
+      return agl.bS;
    }
 
-   public void a(agm $$0) {
+   public void a(agn $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public iu b() {
       return this.b;
    }
 
-   public aht.a e() {
+   public ja e() {
       return this.c;
    }
 
-   public int f() {
+   public aht.a f() {
       return this.d;
+   }
+
+   public int g() {
+      return this.e;
    }
 
    public static enum a {
@@ -54,8 +62,6 @@ public class aht implements zc<agm> {
       d,
       e,
       f,
-      g,
-      h,
-      i;
+      g;
    }
 }

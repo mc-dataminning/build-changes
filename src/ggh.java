@@ -1,18 +1,36 @@
-public class ggh extends gew {
-   public static final ald a = ald.b("textures/entity/trident.png");
+import org.joml.Quaternionf;
 
-   public ggh(ghd $$0) {
-      super($$0, goi::d);
+public class ggh<T extends hdb> extends gfr<T> {
+   private static final String a = "cape";
+   private final gig b = this.q.b("cape");
+
+   public ggh(gig $$0) {
+      super($$0);
    }
 
-   public static ghj a() {
-      ghl $$0 = new ghl();
-      ghn $$1 = $$0.a();
-      ghn $$2 = $$1.a("pole", ghi.c().a(0, 6).a(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), ghf.a);
-      $$2.a("base", ghi.c().a(4, 0).a(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), ghf.a);
-      $$2.a("left_spike", ghi.c().a(4, 3).a(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), ghf.a);
-      $$2.a("middle_spike", ghi.c().a(0, 0).a(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), ghf.a);
-      $$2.a("right_spike", ghi.c().a(4, 3).a().a(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), ghf.a);
-      return ghj.a($$0, 32, 32);
+   public static gim a() {
+      gio $$0 = gfr.a(gik.a, 0.0F);
+      giq $$1 = $$0.a();
+      giq $$2 = $$1.a("head");
+      $$2.a("hat");
+      giq $$3 = $$1.a("body");
+      $$1.a("left_arm");
+      $$1.a("right_arm");
+      $$1.a("left_leg");
+      $$1.a("right_leg");
+      $$3.a("cape", gil.c().a(0, 0).a(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, gik.a, 1.0F, 0.5F), gii.a(0.0F, 0.0F, 2.0F, 0.0F, (float) Math.PI, 0.0F));
+      return gim.a($$0, 64, 64);
+   }
+
+   public void a(T $$0) {
+      super.a($$0);
+      this.b
+         .a(
+            new Quaternionf()
+               .rotateY((float) -Math.PI)
+               .rotateX((6.0F + $$0.c / 2.0F + $$0.b) * (float) (Math.PI / 180.0))
+               .rotateZ($$0.d / 2.0F * (float) (Math.PI / 180.0))
+               .rotateY((180.0F - $$0.d / 2.0F) * (float) (Math.PI / 180.0))
+         );
    }
 }

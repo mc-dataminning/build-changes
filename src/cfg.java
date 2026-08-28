@@ -1,68 +1,41 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cfg<T extends bwr> extends cfn {
-   private static final int i = 10;
-   protected final Class<T> a;
-   protected final int b;
+public class cfg<T extends bxb> extends cdv {
+   private final T a;
+   private final cys b;
+   private final Predicate<? super T> c;
    @Nullable
-   protected bwr c;
-   protected chg d;
+   private final awk d;
 
-   public cfg(bwt $$0, Class<T> $$1, boolean $$2) {
-      this($$0, $$1, 10, $$2, false, null);
-   }
-
-   public cfg(bwt $$0, Class<T> $$1, boolean $$2, chg.a $$3) {
-      this($$0, $$1, 10, $$2, false, $$3);
-   }
-
-   public cfg(bwt $$0, Class<T> $$1, boolean $$2, boolean $$3) {
-      this($$0, $$1, 10, $$2, $$3, null);
-   }
-
-   public cfg(bwt $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable chg.a $$5) {
-      super($$0, $$3, $$4);
-      this.a = $$1;
-      this.b = b($$2);
-      this.a(EnumSet.of(cdn.a.d));
-      this.d = chg.a().a(this.l()).a($$5);
+   public cfg(T $$0, cys $$1, @Nullable awk $$2, Predicate<? super T> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
    }
 
    @Override
    public boolean b() {
-      if (this.b > 0 && this.e.dY().a(this.b) != 0) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
+      return this.c.test(this.a);
    }
 
-   protected fcp a(double $$0) {
-      return this.e.cR().c($$0, $$0, $$0);
-   }
-
-   protected void h() {
-      arn $$0 = a(this.e);
-      if (this.a != cqi.class && this.a != aro.class) {
-         this.c = $$0.a(this.e.dV().a(this.a, this.a(this.l()), $$0x -> true), this.i(), this.e, this.e.dA(), this.e.dE(), this.e.dG());
-      } else {
-         this.c = $$0.a(this.i(), this.e, this.e.dA(), this.e.dE(), this.e.dG());
-      }
+   @Override
+   public boolean c() {
+      return this.a.fy();
    }
 
    @Override
    public void d() {
-      this.e.h(this.c);
-      super.d();
+      this.a.a(bwk.a, this.b.v());
+      this.a.c(btx.a);
    }
 
-   public void a(@Nullable bwr $$0) {
-      this.c = $$0;
-   }
-
-   private chg i() {
-      return this.d.a(this.l());
+   @Override
+   public void e() {
+      this.a.a(bwk.a, cys.k);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.dY().i() * 0.2F + 0.9F);
+      }
    }
 }

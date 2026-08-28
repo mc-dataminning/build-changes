@@ -1,59 +1,71 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
 
-public class ezt extends eyy {
-   public static final MapCodec<ezt> a = RecordCodecBuilder.mapCodec(
+public class ezt extends faa {
+   public static final axp<eqi> a = axl.l;
+   public static final je<exk> b = exl.i;
+   public static final byte c = 2;
+   public static final int d = 50;
+   public static final boolean e = true;
+   public static final MapCodec<ezt> f = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  wx.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
-                  eyx.a(256).forGetter($$0x -> $$0x.c),
-                  exl.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
+                  axp.a(mg.bc).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
+                  exk.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
+                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
+                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
+                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
                )
             )
             .apply($$0, ezt::new)
    );
-   private final List<wv> b;
-   private final eyx c;
-   private final Optional<exl.b> d;
+   private final axp<eqi> h;
+   private final je<exk> i;
+   private final byte j;
+   private final int k;
+   private final boolean l;
 
-   public ezt(List<fau> $$0, List<wv> $$1, eyx $$2, Optional<exl.b> $$3) {
+   ezt(List<fbw> $$0, axp<eqi> $$1, je<exk> $$2, byte $$3, int $$4, boolean $$5) {
       super($$0);
-      this.b = List.copyOf($$1);
-      this.c = $$2;
-      this.d = $$3;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = $$5;
    }
 
    @Override
-   public eza<ezt> b() {
-      return ezb.A;
+   public fac<ezt> b() {
+      return fad.q;
    }
 
    @Override
-   public Set<bat<?>> a() {
-      return this.d.<Set<bat<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
+   public Set<bav<?>> a() {
+      return Set.of(fbh.f);
    }
 
    @Override
-   public cxy a(cxy $$0, exl $$1) {
-      $$0.a(kx.j, dao.a, $$1x -> new dao(this.a($$1x, $$1)));
-      return $$0;
-   }
-
-   private List<wv> a(@Nullable dao $$0, exl $$1) {
-      if ($$0 == null && this.b.isEmpty()) {
-         return List.of();
+   public cys a(cys $$0, eyn $$1) {
+      if (!$$0.a(cyw.vm)) {
+         return $$0;
       } else {
-         UnaryOperator<wv> $$2 = ezu.a($$1, this.d.orElse(null));
-         List<wv> $$3 = this.b.stream().map($$2).toList();
-         return this.c.a($$0.a(), $$3, 256);
+         fdw $$2 = $$1.c(fbh.f);
+         if ($$2 != null) {
+            aro $$3 = $$1.d();
+            iu $$4 = $$3.a(this.h, iu.a((jo)$$2), this.k, this.l);
+            if ($$4 != null) {
+               cys $$5 = czf.a($$3, $$4.u(), $$4.w(), this.j, true, true);
+               czf.a($$3, $$5);
+               exp.a($$5, $$4, "+", this.i);
+               return $$5;
+            }
+         }
+
+         return $$0;
       }
    }
 
@@ -61,33 +73,53 @@ public class ezt extends eyy {
       return new ezt.a();
    }
 
-   public static class a extends eyy.a<ezt.a> {
-      private Optional<exl.b> a = Optional.empty();
-      private final Builder<wv> b = ImmutableList.builder();
-      private eyx c = eyx.a.b;
+   public static class a extends faa.a<ezt.a> {
+      private axp<eqi> a;
+      private je<exk> b;
+      private byte c;
+      private int d;
+      private boolean e;
 
-      public ezt.a a(eyx $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public ezt.a a(exl.b $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public ezt.a a(wv $$0) {
-         this.b.add($$0);
-         return this;
+      public a() {
+         this.a = ezt.a;
+         this.b = ezt.b;
+         this.c = 2;
+         this.d = 50;
+         this.e = true;
       }
 
       protected ezt.a a() {
          return this;
       }
 
+      public ezt.a a(axp<eqi> $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public ezt.a a(je<exk> $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public ezt.a a(byte $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public ezt.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public ezt.a a(boolean $$0) {
+         this.e = $$0;
+         return this;
+      }
+
       @Override
-      public eyz b() {
-         return new ezt(this.g(), this.b.build(), this.c, this.a);
+      public fab b() {
+         return new ezt(this.g(), this.a, this.b, this.c, this.d, this.e);
       }
    }
 }

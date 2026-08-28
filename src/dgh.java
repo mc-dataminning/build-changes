@@ -1,37 +1,45 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dgh(ald e, js<cxu> f, wv g, boolean h) {
-   public static final Codec<dgh> a = RecordCodecBuilder.create(
+public record dgh(das d, jz e, Optional<je<eeo>> f) implements dfw {
+   public static final MapCodec<dgh> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               ald.a.fieldOf("asset_id").forGetter(dgh::a),
-               cxu.e.fieldOf("template_item").forGetter(dgh::b),
-               wx.a.fieldOf("description").forGetter(dgh::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(dgh::d)
+               das.b.fieldOf("properties").forGetter(dgh::b),
+               jz.g.optionalFieldOf("offset", jz.i).forGetter(dgh::c),
+               eeo.aj.optionalFieldOf("trigger_game_event").forGetter(dgh::d)
             )
             .apply($$0, dgh::new)
    );
-   public static final yt<wg, dgh> b = yt.a(ald.b, dgh::a, cxu.f, dgh::b, wx.b, dgh::c, yr.b, dgh::d, dgh::new);
-   public static final Codec<js<dgh>> c = akz.a(me.bh, a);
-   public static final yt<wg, js<dgh>> d = yr.a(me.bh, b);
 
-   public wv a(js<dgf> $$0) {
-      return this.g.f().c($$0.a().d().a());
+   public dgh(das $$0) {
+      this($$0, jz.i, Optional.of(eeo.c));
    }
 
-   public ald a() {
+   @Override
+   public void a(aro $$0, int $$1, dfe $$2, bwa $$3, fdw $$4) {
+      iu $$5 = iu.a((jo)$$4).a(this.e);
+      dzo $$6 = $$3.dV().a_($$5);
+      dzo $$7 = this.d.a($$6);
+      if ($$6 != $$7 && $$3.dV().a($$5, $$7, 3)) {
+         this.f.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+      }
+   }
+
+   @Override
+   public MapCodec<dgh> a() {
+      return a;
+   }
+
+   public das b() {
+      return this.d;
+   }
+
+   public jz c() {
       return this.e;
    }
 
-   public js<cxu> b() {
+   public Optional<je<eeo>> d() {
       return this.f;
-   }
-
-   public wv c() {
-      return this.g;
-   }
-
-   public boolean d() {
-      return this.h;
    }
 }

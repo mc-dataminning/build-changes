@@ -1,30 +1,24 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class cbb {
-   public static byj<cpu> a(cft<List<jr>> $$0, float $$1, int $$2, int $$3, cft<jr> $$4) {
-      MutableLong $$5 = new MutableLong(0L);
-      return cbv.a(
-         (Function<cbv.b<cpu>, ? extends App<cbv.c<cpu>, cby<cpu>>>)($$6 -> $$6.group($$6.a(cft.n), $$6.b($$0), $$6.b($$4))
-               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
-                     List<jr> $$11 = $$6.b($$6x);
-                     jr $$12 = $$6.b($$7);
-                     if ($$11.isEmpty()) {
-                        return false;
-                     } else {
-                        jr $$13 = $$11.get($$8.C_().a($$11.size()));
-                        if ($$13 != null && $$8.aj() == $$13.a() && $$12.b().a($$9.dt(), (double)$$3)) {
-                           if ($$10 > $$5.getValue()) {
-                              $$5xx.a(new cfw($$13.b(), $$1, $$2));
-                              $$5.setValue($$10 + 100L);
-                           }
+   private static final float a = 0.3F;
 
-                           return true;
-                        } else {
-                           return false;
-                        }
+   public static cab<bwz> a() {
+      return ccd.a(
+         (Function<ccd.b<bwz>, ? extends App<ccd.c<bwz>, ccg<bwz>>>)($$0 -> $$0.group($$0.a(cgb.n), $$0.a(cgb.o), $$0.b(cgb.e), $$0.b(cgb.h), $$0.c(cgb.r))
+               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     jd $$9 = $$0.b($$3);
+                     cgd $$10 = $$0.b($$4);
+                     if ($$6.C_().a(100) == 0 && $$6.aj() == $$9.a() && $$9.b().a($$7.dt(), 4.0) && $$10.d($$0xxx -> bwj.bD.equals($$0xxx.aq()))) {
+                        $$10.a($$1xx -> bwj.bD.equals($$1xx.aq()) && $$1xx.g($$7) <= 32.0).ifPresent($$3xx -> {
+                           $$5.a($$3xx);
+                           $$2.a(new bzb($$3xx, true));
+                           $$1.a(new cge(new bzb($$3xx, false), 0.3F, 1));
+                        });
+                        return true;
+                     } else {
+                        return false;
                      }
                   }))
       );

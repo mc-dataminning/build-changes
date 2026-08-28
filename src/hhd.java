@@ -1,46 +1,16 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hhd {
-   private final ald a;
-   private final auy b;
-   private final AtomicReference<fgo> c = new AtomicReference<>();
-   private final AtomicInteger d;
+public interface hhd<T> {
+   void a(@Nullable T var1, cyq var2, fiq var3, gpd var4, int var5, int var6, boolean var7);
 
-   public hhd(ald $$0, auy $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = new AtomicInteger($$2);
-   }
+   @Nullable
+   T b(cys var1);
 
-   public fgo a() throws IOException {
-      fgo $$0 = this.c.get();
-      if ($$0 == null) {
-         synchronized (this) {
-            $$0 = this.c.get();
-            if ($$0 == null) {
-               try (InputStream $$1 = this.b.d()) {
-                  $$0 = fgo.a($$1);
-                  this.c.set($$0);
-               } catch (IOException var9) {
-                  throw new IOException("Failed to load image " + this.a, var9);
-               }
-            }
-         }
-      }
+   public interface a {
+      @Nullable
+      hhd<?> a(gic var1);
 
-      return $$0;
-   }
-
-   public void b() {
-      int $$0 = this.d.decrementAndGet();
-      if ($$0 <= 0) {
-         fgo $$1 = this.c.getAndSet(null);
-         if ($$1 != null) {
-            $$1.close();
-         }
-      }
+      MapCodec<? extends hhd.a> a();
    }
 }

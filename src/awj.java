@@ -1,37 +1,18 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+public class awj {
+   private static final int h = 20;
+   private static final int i = 600;
+   private static final int j = 12000;
+   private static final int k = 24000;
+   private static final int l = 6000;
+   public static final awi a = new awi(awl.qK, 20, 600, true);
+   public static final awi b = new awi(awl.qm, 12000, 24000, false);
+   public static final awi c = new awi(awl.qn, 0, 0, true);
+   public static final awi d = new awi(awl.qH, 0, 0, true);
+   public static final awi e = new awi(awl.qI, 6000, 24000, true);
+   public static final awi f = a(awl.rj);
+   public static final awi g = a(awl.qJ);
 
-public record awj(ald e, Optional<Float> f) {
-   public static final Codec<awj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ald.a.fieldOf("sound_id").forGetter(awj::a), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(awj::b)).apply($$0, awj::a)
-   );
-   public static final Codec<js<awj>> b = akz.a(me.al, a);
-   public static final yt<ByteBuf, awj> c = yt.a(ald.b, awj::a, yr.l.a(yr::a), awj::b, awj::a);
-   public static final yt<wg, js<awj>> d = yr.a(me.al, c);
-
-   private static awj a(ald $$0, Optional<Float> $$1) {
-      return $$1.<awj>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
-   }
-
-   public static awj a(ald $$0) {
-      return new awj($$0, Optional.empty());
-   }
-
-   public static awj a(ald $$0, float $$1) {
-      return new awj($$0, Optional.of($$1));
-   }
-
-   public float a(float $$0) {
-      return this.f.orElse($$0 > 1.0F ? 16.0F * $$0 : 16.0F);
-   }
-
-   public ald a() {
-      return this.e;
-   }
-
-   public Optional<Float> b() {
-      return this.f;
+   public static awi a(je<awk> $$0) {
+      return new awi($$0, 12000, 24000, false);
    }
 }

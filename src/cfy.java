@@ -1,40 +1,32 @@
-public class cfy extends cgb {
-   public cfy(bwt $$0, dhp $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum cfy implements bai {
+   a("major_negative", -5, 100, 10, 10),
+   b("minor_negative", -1, 200, 20, 20),
+   c("minor_positive", 1, 25, 1, 5),
+   d("major_positive", 5, 20, 0, 20),
+   e("trading", 1, 25, 2, 20);
+
+   public static final int f = 25;
+   public static final int g = 20;
+   public static final int h = 2;
+   public final String i;
+   public final int j;
+   public final int k;
+   public final int l;
+   public final int m;
+   public static final Codec<cfy> n = bai.a(cfy::values);
+
+   private cfy(final String $$0, final int $$1, final int $$2, final int $$3, final int $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
    }
 
    @Override
-   protected evj a(int $$0) {
-      this.o = new evc(false);
-      return new evj(this.o, $$0);
-   }
-
-   @Override
-   protected boolean a() {
-      return true;
-   }
-
-   @Override
-   protected fcu b() {
-      return new fcu(this.a.dA(), this.a.e(0.5), this.a.dG());
-   }
-
-   @Override
-   protected double a(fcu $$0) {
-      return $$0.e;
-   }
-
-   @Override
-   protected boolean a(fcu $$0, fcu $$1) {
-      return this.a.bm() ? a(this.a, $$0, $$1, false) : false;
-   }
-
-   @Override
-   public boolean a(jj $$0) {
-      return !this.b.a_($$0.e()).l();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public String c() {
+      return this.i;
    }
 }

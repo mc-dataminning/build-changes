@@ -1,202 +1,120 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class qt {
-   private static final efc.o a = a(dkw.a);
-   private static final efc.o b = a(dkw.I);
-   private static final efc.o c = a(dkw.hG);
-   private static final efc.o d = a(dkw.hH);
-   private static final efc.o e = a(dkw.iY);
-   private static final efc.o f = a(dkw.N);
-   private static final efc.o g = a(dkw.jN);
-   private static final efc.o h = a(dkw.b);
-   private static final efc.o i = a(dkw.tp);
-   private static final efc.o j = a(dkw.j);
-   private static final efc.o k = a(dkw.l);
-   private static final efc.o l = a(dkw.k);
-   private static final efc.o m = a(dkw.fA);
-   private static final efc.o n = a(dkw.i);
-   private static final efc.o o = a(dkw.rr);
-   private static final efc.o p = a(dkw.O);
-   private static final efc.o q = a(dkw.L);
-   private static final efc.o r = a(dkw.bc);
-   private static final efc.o s = a(dkw.ja);
-   private static final efc.o t = a(dkw.ec);
-   private static final efc.o u = a(dkw.to);
-   private static final efc.o v = a(dkw.rt);
-   private static final efc.o w = a(dkw.eb);
-   private static final efc.o x = a(dkw.J);
-   private static final efc.o y = a(dkw.K);
-   private static final efc.o z = a(dkw.ei);
-   private static final efc.o A = a(dkw.ej);
-   private static final efc.o B = a(dkw.ek);
-   private static final efc.o C = a(dkw.el);
-   private static final efc.o D = a(dkw.pV);
-   private static final efc.o E = a(dkw.oR);
-   private static final efc.o F = a(dkw.oP);
-   private static final efc.o G = a(dkw.lm);
-   private static final efc.o H = a(dkw.oY);
-   private static final efc.o I = a(dkw.fU);
-
-   private static efc.o a(dku $$0) {
-      return efc.a($$0.m());
-   }
-
-   public static efc.o a() {
-      return a(true, false, true);
-   }
-
-   public static efc.o a(boolean $$0, boolean $$1, boolean $$2) {
-      efc.f $$3 = efc.a(eff.a(97), 2);
-      efc.f $$4 = efc.a(eff.a(256), 0);
-      efc.f $$5 = efc.b(eff.a(63), -1);
-      efc.f $$6 = efc.b(eff.a(74), 1);
-      efc.f $$7 = efc.a(eff.a(60), 0);
-      efc.f $$8 = efc.a(eff.a(62), 0);
-      efc.f $$9 = efc.a(eff.a(63), 0);
-      efc.f $$10 = efc.a(-1, 0);
-      efc.f $$11 = efc.a(0, 0);
-      efc.f $$12 = efc.b(-6, -1);
-      efc.f $$13 = efc.b();
-      efc.f $$14 = efc.a(diz.X, diz.Y);
-      efc.f $$15 = efc.a();
-      efc.o $$16 = efc.a(efc.a($$11, n), j);
-      efc.o $$17 = efc.a(efc.a(efc.e, r), q);
-      efc.o $$18 = efc.a(efc.a(efc.e, h), p);
-      efc.f $$19 = efc.a(diz.Q, diz.N, diz.O);
-      efc.f $$20 = efc.a(diz.f);
-      efc.o $$21 = efc.a(
-         efc.a(efc.a(diz.K), efc.a(efc.a(efc.a(eeu.X, -0.0125, 0.0125), o), h)),
-         efc.a(efc.a(diz.P), efc.a(efc.a(efc.a(eeu.Y, -0.05, 0.05), $$18), h)),
-         efc.a(efc.a(diz.u), efc.a(a(1.0), h)),
-         efc.a($$19, $$17),
-         efc.a($$20, $$17),
-         efc.a(efc.a(diz.aa), h)
+   public static void a(qh<eqi> $$0) {
+      jf<djs> $$1 = $$0.a(mg.aG);
+      jf<ers> $$2 = $$0.a(mg.bd);
+      $$0.a(
+         eqc.a,
+         new esj(
+            new eqi.c.a($$1.b(awz.y)).a(Map.of(bxc.a, new eqp(eqp.a.b, bsj.a(new dke.c(bwj.aT, 1, 1))))).a(eqt.c).a(),
+            $$2.b(qm.a),
+            7,
+            eoo.a(egh.a(0)),
+            true,
+            efn.a.a
+         )
       );
-      efc.o $$22 = efc.a(efc.a(eeu.Z, 0.45, 0.58), efc.a($$11, v));
-      efc.o $$23 = efc.a(efc.a(eeu.Z, 0.35, 0.6), efc.a($$11, v));
-      efc.o $$24 = efc.a(
-         efc.a(efc.a(diz.I), efc.a(efc.a($$15, s), efc.a(efc.a(eeu.aa, -0.5, 0.2), s), efc.a(efc.a(eeu.ab, -0.0625, 0.025), w), efc.a($$11, t))),
-         efc.a(efc.a(diz.H), efc.a(efc.a($$15, h), $$22, efc.a($$11, t))),
-         efc.a(efc.a(diz.J), h),
-         efc.a(efc.a(diz.G), efc.a($$22, j)),
-         $$21,
-         efc.a(efc.a(diz.x), efc.a(a(1.75), h)),
-         efc.a(efc.a(diz.v), efc.a(efc.a(a(2.0), $$18), efc.a(a(1.0), h), efc.a(a(-1.0), j), $$18)),
-         efc.a(efc.a(diz.h), u),
-         j
+      $$0.a(eqc.b, new esn(new eqi.c.a($$1.b(awz.t)).a(efj.a.d).a(), esn.a.a));
+      $$0.a(eqc.c, new esn(new eqi.c.a($$1.b(awz.u)).a(efj.a.d).a(), esn.a.b));
+      $$0.a(eqc.d, new etf(new eqi.c($$1.b(awz.Q))));
+      $$0.a(eqc.e, new esl(new eqi.c($$1.b(awz.s))));
+      $$0.a(eqc.f, new ese(new eqi.c($$1.b(awz.q))));
+      $$0.a(eqc.g, new esi(new eqi.c($$1.b(awz.r))));
+      $$0.a(eqc.h, new esz(new eqi.c($$1.b(awz.G)), false));
+      $$0.a(eqc.i, new esz(new eqi.c($$1.b(awz.F)), true));
+      $$0.a(
+         eqc.j,
+         new etd(
+            new eqi.c.a($$1.b(awz.J))
+               .a(Map.of(bxc.a, new eqp(eqp.a.a, bsj.a(new dke.c(bwj.bI, 1, 1))), bxc.b, new eqp(eqp.a.a, bsj.a(new dke.c(bwj.u, 1, 1)))))
+               .a()
+         )
       );
-      efc.o $$25 = efc.a(
-         efc.a(efc.a(diz.I), efc.a(efc.a($$15, s), efc.a(efc.a(eeu.aa, 0.0, 0.2), s), efc.a(efc.a(eeu.ab, 0.0, 0.025), w), efc.a($$11, t))),
-         efc.a(efc.a(diz.H), efc.a(efc.a($$15, h), $$23, efc.a($$11, t))),
-         efc.a(efc.a(diz.J), efc.a(efc.a($$15, h), efc.a($$11, t))),
-         efc.a(efc.a(diz.G), efc.a($$23, efc.a($$11, t))),
-         $$21,
-         efc.a(efc.a(diz.x), efc.a(efc.a(a(1.75), h), efc.a(a(-0.5), l))),
-         efc.a(efc.a(diz.v), efc.a(efc.a(a(2.0), $$18), efc.a(a(1.0), h), efc.a(a(-1.0), $$16), $$18)),
-         efc.a(efc.a(diz.o, diz.p), efc.a(efc.a(a(1.75), l), efc.a(a(-0.95), k))),
-         efc.a(efc.a(diz.e), efc.a($$11, t)),
-         efc.a(efc.a(diz.h), u),
-         efc.a(efc.a(diz.Z), m),
-         $$16
+      $$0.a(eqc.k, new etb(new eqi.c.a($$1.b(awz.H)).a(eqt.b).a()));
+      $$0.a(
+         eqc.l,
+         new est(
+            new eqi.c.a($$1.b(awz.v))
+               .a(Map.of(bxc.a, new eqp(eqp.a.b, bsj.a(new dke.c(bwj.ai, 2, 4))), bxc.e, new eqp(eqp.a.b, dke.a), bxc.d, new eqp(eqp.a.b, dke.a)))
+               .a()
+         )
       );
-      efc.f $$26 = efc.a(eeu.N, -0.909, -0.5454);
-      efc.f $$27 = efc.a(eeu.N, -0.1818, 0.1818);
-      efc.f $$28 = efc.a(eeu.N, 0.5454, 0.909);
-      efc.o $$29 = efc.a(
-         efc.a(
-            efc.a,
-            efc.a(
-               efc.a(efc.a(diz.D), efc.a($$3, efc.a(efc.a($$26, l), efc.a($$27, l), efc.a($$28, l), $$16))),
-               efc.a(efc.a(diz.g), efc.a($$8, efc.a(efc.a($$9), efc.a(efc.a(eeu.W, 0.0), x)))),
-               efc.a(efc.a(diz.h), efc.a($$7, efc.a(efc.a($$9), efc.a(efc.a(eeu.W, 0.0), x))))
-            )
-         ),
-         efc.a(
-            efc.a(diz.B, diz.C, diz.D),
-            efc.a(
-               efc.a(
-                  efc.a,
-                  efc.a(
-                     efc.a($$4, d),
-                     efc.a($$6, efc.a(efc.a($$26, e), efc.a($$27, e), efc.a($$28, e), efc.e())),
-                     efc.a($$10, efc.a(efc.a(efc.e, g), f)),
-                     efc.a(efc.a($$13), d),
-                     efc.a($$12, c),
-                     $$18
-                  )
-               ),
-               efc.a($$5, efc.a(efc.a($$9, efc.a(efc.a($$6), d)), efc.e())),
-               efc.a(efc.b, efc.a($$12, c))
-            )
-         ),
-         efc.a(efc.a, efc.a($$10, efc.a(efc.a($$14, efc.a($$13, efc.a(efc.a($$11, a), efc.a(efc.d(), w), x))), $$25))),
-         efc.a($$12, efc.a(efc.a(efc.a, efc.a($$14, efc.a($$13, x))), efc.a(efc.b, $$24), efc.a($$19, efc.a(efc.c, r)), efc.a($$20, efc.a(efc.d, r)))),
-         efc.a(efc.a, efc.a(efc.a(efc.a(diz.I, diz.J), h), efc.a(efc.a(diz.Q, diz.R, diz.S), $$17), $$18))
+      $$0.a(eqc.m, new esv(new eqi.c($$1.b(awz.w)), esv.a.b, 0.3F, 0.9F));
+      $$0.a(eqc.n, new esv(new eqi.c($$1.b(awz.x)), esv.a.a, 0.3F, 0.9F));
+      $$0.a(eqc.o, new esp(new eqi.c.a($$1.b(awz.R)).a(Map.of(bxc.a, new eqp(eqp.a.a, esp.d))).a(efj.a.h).a()));
+      $$0.a(eqc.p, new esr(new eqi.c.a($$1.b(awz.S)).a(efj.a.h).a(eqt.c).a(), eos.a(egh.a(32), egh.c(2))));
+      $$0.a(eqc.q, new esg(new eqi.c($$1.b(awz.W))));
+      $$0.a(eqc.r, new esc(new eqi.c.a($$1.b(awz.p)).a(efj.a.d).a()));
+      $$0.a(eqc.s, new esj(new eqi.c($$1.b(awz.T)), $$2.b(qd.a), 6, eoo.a(egh.a(33)), false));
+      $$0.a(eqc.t, new esj(new eqi.c.a($$1.b(awz.L)).a(eqt.c).a(), $$2.b(qn.a), 6, eoo.a(egh.a(0)), true, efn.a.a));
+      $$0.a(eqc.u, new esj(new eqi.c.a($$1.b(awz.K)).a(eqt.c).a(), $$2.b(qj.a), 6, eoo.a(egh.a(0)), true, efn.a.a));
+      $$0.a(eqc.v, new esj(new eqi.c.a($$1.b(awz.M)).a(eqt.c).a(), $$2.b(qq.a), 6, eoo.a(egh.a(0)), true, efn.a.a));
+      $$0.a(eqc.w, new esj(new eqi.c.a($$1.b(awz.N)).a(eqt.c).a(), $$2.b(qr.a), 6, eoo.a(egh.a(0)), true, efn.a.a));
+      $$0.a(eqc.x, new esj(new eqi.c.a($$1.b(awz.O)).a(eqt.c).a(), $$2.b(qv.a), 6, eoo.a(egh.a(0)), true, efn.a.a));
+      $$0.a(
+         eqc.y,
+         new esx(
+            new eqi.c($$1.b(awz.E)),
+            List.of(new esx.a(esw.b.e, 1.0F, 0.2F, false, false, true, false, 0.5F), new esx.a(esw.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+         )
       );
-      Builder<efc.o> $$30 = ImmutableList.builder();
-      if ($$1) {
-         $$30.add(efc.a(efc.a(efc.a("bedrock_roof", eff.c(5), eff.b())), b));
-      }
-
-      if ($$2) {
-         $$30.add(efc.a(efc.a("bedrock_floor", eff.a(), eff.b(5)), b));
-      }
-
-      efc.o $$31 = efc.a(efc.c(), $$29);
-      $$30.add($$0 ? $$31 : $$29);
-      $$30.add(efc.a(efc.a("deepslate", eff.a(0), eff.a(8)), i));
-      return efc.a((efc.o[])$$30.build().toArray(efc.o[]::new));
-   }
-
-   public static efc.o b() {
-      efc.f $$0 = efc.a(eff.a(31), 0);
-      efc.f $$1 = efc.a(eff.a(32), 0);
-      efc.f $$2 = efc.b(eff.a(30), 0);
-      efc.f $$3 = efc.a(efc.b(eff.a(35), 0));
-      efc.f $$4 = efc.a(eff.c(5), 0);
-      efc.f $$5 = efc.b();
-      efc.f $$6 = efc.a(eeu.ac, -0.012);
-      efc.f $$7 = efc.a(eeu.ad, -0.012);
-      efc.f $$8 = efc.a(eeu.ae, -0.012);
-      efc.f $$9 = efc.a(eeu.af, 0.54);
-      efc.f $$10 = efc.a(eeu.ag, 1.17);
-      efc.f $$11 = efc.a(eeu.ah, 0.0);
-      efc.o $$12 = efc.a($$8, efc.a($$2, efc.a($$3, p)));
-      return efc.a(
-         efc.a(efc.a("bedrock_floor", eff.a(), eff.b(5)), b),
-         efc.a(efc.a(efc.a("bedrock_roof", eff.c(5), eff.b())), b),
-         efc.a($$4, z),
-         efc.a(efc.a(diz.ah), efc.a(efc.a(efc.f, C), efc.a(efc.b, efc.a($$12, efc.a($$11, C), D)))),
-         efc.a(efc.a(diz.ag), efc.a(efc.a(efc.f, efc.a(efc.a($$11, A), B)), efc.a(efc.b, efc.a($$12, efc.a($$11, A), B)))),
-         efc.a(
-            efc.a,
-            efc.a(
-               efc.a(efc.a($$1), efc.a($$5, y)),
-               efc.a(efc.a(diz.ae), efc.a(efc.a($$9), efc.a($$0, efc.a(efc.a($$10, E), F)))),
-               efc.a(efc.a(diz.af), efc.a(efc.a($$9), efc.a($$0, efc.a(efc.a($$10, G), H))))
-            )
-         ),
-         efc.a(
-            efc.a(diz.ad),
-            efc.a(
-               efc.a(efc.b, efc.a($$6, efc.a(efc.a(efc.a($$5), efc.a($$2, efc.a($$3, A))), z))),
-               efc.a(efc.a, efc.a($$0, efc.a($$3, efc.a($$7, efc.a(efc.a($$1, p), efc.a(efc.a($$5), p))))))
-            )
-         ),
-         z
+      $$0.a(eqc.z, new esx(new eqi.c($$1.b(awz.z)), new esx.a(esw.b.b, 0.0F, 0.0F, false, false, false, false, 1.0F)));
+      $$0.a(eqc.A, new esx(new eqi.c($$1.b(awz.A)), new esx.a(esw.b.a, 0.5F, 0.8F, true, true, false, false, 1.0F)));
+      $$0.a(eqc.B, new esx(new eqi.c($$1.b(awz.C)), new esx.a(esw.b.c, 0.0F, 0.5F, false, true, false, false, 1.0F)));
+      $$0.a(
+         eqc.C,
+         new esx(
+            new eqi.c($$1.b(awz.D)),
+            List.of(new esx.a(esw.b.d, 1.0F, 0.2F, false, false, true, false, 0.5F), new esx.a(esw.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+         )
       );
-   }
-
-   public static efc.o c() {
-      return I;
-   }
-
-   public static efc.o d() {
-      return a;
-   }
-
-   private static efc.f a(double $$0) {
-      return efc.a(eeu.N, $$0 / 8.25, Double.MAX_VALUE);
+      $$0.a(eqc.D, new esx(new eqi.c($$1.b(awz.B)), new esx.a(esw.b.c, 0.0F, 0.8F, false, false, true, false, 1.0F)));
+      $$0.a(eqc.E, new esx(new eqi.c($$1.b(awz.V)), new esx.a(esw.b.f, 0.5F, 0.0F, false, false, false, true, 1.0F)));
+      $$0.a(
+         eqc.F,
+         new esj(
+            new eqi.c.a($$1.b(awz.U))
+               .a(Arrays.stream(bxc.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new eqp(eqp.a.b, bsj.a()))))
+               .a(efj.a.h)
+               .a(eqt.d)
+               .a(),
+            $$2.b(py.a),
+            Optional.of(ale.b("city_anchor")),
+            7,
+            eoo.a(egh.a(-27)),
+            false,
+            Optional.empty(),
+            116,
+            List.of(),
+            esj.d,
+            esj.e
+         )
+      );
+      $$0.a(eqc.G, new esj(new eqi.c.a($$1.b(awz.P)).a(efj.a.d).a(eqt.b).a(), $$2.b(qx.a), 7, eoo.a(egh.a(-15)), false, efn.a.a));
+      $$0.a(
+         eqc.H,
+         new esj(
+            new eqi.c.a($$1.b(awz.I))
+               .a(efj.a.d)
+               .a(eqt.e)
+               .a(Arrays.stream(bxc.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new eqp(eqp.a.a, bsj.a()))))
+               .a(),
+            $$2.b(qy.a),
+            Optional.empty(),
+            20,
+            eos.a(egh.a(-40), egh.a(-20)),
+            false,
+            Optional.empty(),
+            116,
+            qy.c,
+            new eri(10),
+            etu.a
+         )
+      );
    }
 }

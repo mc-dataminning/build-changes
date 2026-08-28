@@ -1,53 +1,45 @@
-public class aip implements zc<agm> {
-   public static final yt<vr, aip> a = zc.a(aip::a, aip::new);
-   private final btp b;
-   private final int c;
-   private final float d;
-   private final float e;
+public class aip implements zd<agn> {
+   public static final yu<vs, aip> a = zd.a(aip::a, aip::new);
+   private final fds b;
+   private final btx c;
+   private final int d;
 
-   public aip(btp $$0, int $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.c = $$1;
+   public aip(btx $$0, fds $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
       this.d = $$2;
-      this.e = $$3;
    }
 
-   private aip(vr $$0) {
-      this.b = $$0.b(btp.class);
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+   private aip(vs $$0) {
+      this.c = $$0.b(btx.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
    }
 
-   private void a(vr $$0) {
+   private void a(vs $$0) {
+      $$0.a(this.c);
       $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+      $$0.c(this.d);
    }
 
    @Override
-   public ze<aip> a() {
-      return agk.co;
+   public zf<aip> a() {
+      return agl.cn;
    }
 
-   public void a(agm $$0) {
+   public void a(agn $$0) {
       $$0.a(this);
    }
 
-   public btp b() {
-      return this.b;
-   }
-
-   public int e() {
+   public btx b() {
       return this.c;
    }
 
-   public float f() {
-      return this.d;
+   public fds e() {
+      return this.b;
    }
 
-   public float g() {
-      return this.e;
+   public int f() {
+      return this.d;
    }
 }

@@ -1,19 +1,33 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record aen(wv b, Optional<byte[]> c) implements zc<abr> {
-   public static final yt<ByteBuf, aen> a = yt.a(wx.f, aen::b, yr.n.a(yr::a), aen::e, aen::new);
+public class aen implements zd<abs> {
+   public static final yu<vs, aen> a = zd.a(aen::a, aen::new);
+   @Nullable
+   private final ale b;
 
-   @Override
-   public ze<aen> a() {
-      return agk.at;
+   public aen(@Nullable ale $$0) {
+      this.b = $$0;
    }
 
-   public void a(abr $$0) {
+   private aen(vs $$0) {
+      this.b = $$0.c(vs::q);
+   }
+
+   private void a(vs $$0) {
+      $$0.a(this.b, vs::a);
+   }
+
+   @Override
+   public zf<aen> a() {
+      return agl.as;
+   }
+
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public Optional<byte[]> e() {
-      return this.c;
+   @Nullable
+   public ale b() {
+      return this.b;
    }
 }

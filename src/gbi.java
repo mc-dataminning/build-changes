@@ -1,262 +1,182 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class gbi extends fwf {
-   private static final wv a = wv.c("editGamerule.title");
-   private static final int b = 8;
-   final fub c = new fub(this);
-   private final Consumer<Optional<dhl>> d;
-   private final Set<gbi.f> s = Sets.newHashSet();
-   private final dhl u;
+public class gbi {
+   public static final int a = 20;
+   private static final ftd b = new ftd(ale.b("recipe_book/page_forward"), ale.b("recipe_book/page_forward_highlighted"));
+   private static final ftd c = new ftd(ale.b("recipe_book/page_backward"), ale.b("recipe_book/page_backward_highlighted"));
+   private final List<gbk> d = Lists.newArrayListWithCapacity(20);
    @Nullable
-   private gbi.g v;
+   private gbk e;
+   private final gbg f;
+   private fof g;
+   private final gbh<?> h;
+   private List<gbl> i = ImmutableList.of();
+   private fsw j;
+   private fsw k;
+   private int l;
+   private int m;
+   private fnq n;
    @Nullable
-   private fqn w;
+   private der o;
+   @Nullable
+   private gbl p;
+   private boolean q;
 
-   public gbi(dhl $$0, Consumer<Optional<dhl>> $$1) {
-      super(a);
-      this.u = $$0;
-      this.d = $$1;
-   }
+   public gbi(gbh<?> $$0, gbo $$1, boolean $$2) {
+      this.h = $$0;
+      this.f = new gbg($$1, $$2);
 
-   @Override
-   protected void aN_() {
-      this.c.a(a, this.p);
-      this.v = this.c.c(new gbi.g(this.u));
-      fuf $$0 = this.c.b(fuf.e().a(8));
-      this.w = $$0.a(fqn.a(wu.d, $$0x -> this.d.accept(Optional.of(this.u))).a());
-      $$0.a(fqn.a(wu.e, $$0x -> this.aK_()).a());
-      this.c.a($$1 -> {
-         fql var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.c.a();
-      if (this.v != null) {
-         this.v.a(this.n, this.c);
+      for (int $$3 = 0; $$3 < 20; $$3++) {
+         this.d.add(new gbk($$1));
       }
    }
 
-   @Override
-   public void aK_() {
-      this.d.accept(Optional.empty());
+   public void a(fof $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.n = $$0.t.m();
+
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
+      }
+
+      this.j = new fsw($$1 + 93, $$2 + 137, 12, 17, false);
+      this.j.a(b);
+      this.k = new fsw($$1 + 38, $$2 + 137, 12, 17, true);
+      this.k.a(c);
    }
 
-   private void m() {
-      if (this.w != null) {
-         this.w.j = this.s.isEmpty();
+   public void a(List<gbl> $$0, boolean $$1, boolean $$2) {
+      this.i = $$0;
+      this.q = $$2;
+      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
+      if (this.l <= this.m || $$1) {
+         this.m = 0;
       }
+
+      this.e();
    }
 
-   void a(gbi.f $$0) {
-      this.s.add($$0);
-      this.m();
-   }
+   private void e() {
+      int $$0 = 20 * this.m;
+      bax $$1 = dew.a(this.g.s);
 
-   void b(gbi.f $$0) {
-      this.s.remove($$0);
-      this.m();
-   }
-
-   public class a extends gbi.d {
-      private final fqu<Boolean> c;
-
-      public a(final wv $$1, final List<ayw> $$2, final String $$3, final dhl.a $$4) {
-         super($$2, $$1);
-         this.c = fqu.b($$4.a()).a().a($$1x -> $$1x.c().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
-         this.a.add(this.c);
-      }
-
-      @Override
-      public void a(fpz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$2, $$3);
-         this.c.j($$3 + $$4 - 45);
-         this.c.k($$2);
-         this.c.a($$0, $$6, $$7, $$9);
-      }
-   }
-
-   public class b extends gbi.f {
-      final wv b;
-
-      public b(final wv $$1) {
-         super(null);
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(fpz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(gbi.this.m.h, this.b, $$3 + $$4 / 2, $$2 + 5, -1);
-      }
-
-      @Override
-      public List<? extends fsk> aD_() {
-         return ImmutableList.of();
-      }
-
-      @Override
-      public List<? extends fui> b() {
-         return ImmutableList.of(new fui() {
-            @Override
-            public fui.a w() {
-               return fui.a.b;
-            }
-
-            @Override
-            public void b(fuk $$0) {
-               $$0.a(fuj.a, b.this.b);
-            }
-         });
-      }
-   }
-
-   @FunctionalInterface
-   interface c<T extends dhl.g<T>> {
-      gbi.f create(wv var1, List<ayw> var2, String var3, T var4);
-   }
-
-   public abstract class d extends gbi.f {
-      private final List<ayw> c;
-      protected final List<fql> a = Lists.newArrayList();
-
-      public d(@Nullable final List<ayw> $$1, final wv $$2) {
-         super($$1);
-         this.c = gbi.this.m.h.c($$2, 175);
-      }
-
-      @Override
-      public List<? extends fsk> aD_() {
-         return this.a;
-      }
-
-      @Override
-      public List<? extends fui> b() {
-         return this.a;
-      }
-
-      protected void a(fpz $$0, int $$1, int $$2) {
-         if (this.c.size() == 1) {
-            $$0.b(gbi.this.m.h, this.c.get(0), $$2, $$1 + 5, -1);
-         } else if (this.c.size() >= 2) {
-            $$0.b(gbi.this.m.h, this.c.get(0), $$2, $$1, -1);
-            $$0.b(gbi.this.m.h, this.c.get(1), $$2, $$1 + 10, -1);
+      for (int $$2 = 0; $$2 < this.d.size(); $$2++) {
+         gbk $$3 = this.d.get($$2);
+         if ($$0 + $$2 < this.i.size()) {
+            gbl $$4 = this.i.get($$0 + $$2);
+            $$3.a($$4, this.q, this, $$1);
+            $$3.k = true;
+         } else {
+            $$3.k = false;
          }
       }
+
+      this.f();
    }
 
-   public class e extends gbi.d {
-      private final fqw d;
-
-      public e(final wv $$1, final List<ayw> $$2, final String $$3, final dhl.d $$4) {
-         super($$2, $$1);
-         this.d = new fqw(gbi.this.m.h, 10, 5, 44, 20, $$1.f().f("\n").f($$3).f("\n"));
-         this.d.a(Integer.toString($$4.a()));
-         this.d.b($$1x -> {
-            if ($$4.b($$1x)) {
-               this.d.m(14737632);
-               gbi.this.b(this);
-            } else {
-               this.d.m(-65536);
-               gbi.this.a(this);
-            }
-         });
-         this.a.add(this.d);
-      }
-
-      @Override
-      public void a(fpz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, $$2, $$3);
-         this.d.j($$3 + $$4 - 45);
-         this.d.k($$2);
-         this.d.a($$0, $$6, $$7, $$9);
-      }
+   private void f() {
+      this.j.k = this.l > 1 && this.m < this.l - 1;
+      this.k.k = this.l > 1 && this.m > 0;
    }
 
-   public abstract static class f extends fqt.a<gbi.f> {
-      @Nullable
-      final List<ayw> a;
-
-      public f(@Nullable List<ayw> $$0) {
-         this.a = $$0;
-      }
-   }
-
-   public class g extends fqt<gbi.f> {
-      private static final int m = 24;
-
-      public g(final dhl $$1) {
-         super(fnd.Q(), gbi.this.n, gbi.this.c.d(), gbi.this.c.c(), 24);
-         final Map<dhl.b, Map<dhl.e<?>, gbi.f>> $$2 = Maps.newHashMap();
-         $$1.a(new dhl.c() {
-            @Override
-            public void b(dhl.e<dhl.a> $$0, dhl.f<dhl.a> $$1x) {
-               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> gbi.this.new a($$0x, $$1xxx, $$2xx, $$3));
-            }
-
-            @Override
-            public void c(dhl.e<dhl.d> $$0, dhl.f<dhl.d> $$1x) {
-               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> gbi.this.new e($$0x, $$1xxx, $$2xx, $$3));
-            }
-
-            private <T extends dhl.g<T>> void a(dhl.e<T> $$0, gbi.c<T> $$1x) {
-               wv $$2 = wv.c($$0.b());
-               wv $$3 = wv.b($$0.a()).a(n.o);
-               T $$4 = $$1.b($$0);
-               String $$5 = $$4.b();
-               wv $$6 = wv.a("editGamerule.default", wv.b($$5)).a(n.h);
-               String $$7 = $$0.b() + ".description";
-               List<ayw> $$10;
-               String $$11;
-               if (hia.a($$7)) {
-                  Builder<ayw> $$8 = ImmutableList.builder().add($$3.g());
-                  wv $$9 = wv.c($$7);
-                  gbi.this.p.c($$9, 150).forEach($$8::add);
-                  $$10 = $$8.add($$6.g()).build();
-                  $$11 = $$9.getString() + "\n" + $$6.getString();
-               } else {
-                  $$10 = ImmutableList.of($$3.g(), $$6.g());
-                  $$11 = $$6.getString();
-               }
-
-               $$2.computeIfAbsent($$0.c(), $$0x -> Maps.newHashMap()).put($$0, $$1.create($$2, $$10, $$11, $$4));
-            }
-         });
-         $$2.entrySet()
-            .stream()
-            .sorted(Entry.comparingByKey())
-            .forEach(
-               $$0x -> {
-                  this.b(gbi.this.new b(wv.c(((dhl.b)$$0x.getKey()).a()).a(n.r, n.o)));
-                  ((Map)$$0x.getValue())
-                     .entrySet()
-                     .stream()
-                     .sorted(Entry.comparingByKey(Comparator.comparing(dhl.e::a)))
-                     .forEach($$0xx -> this.b((gbi.f)$$0xx.getValue()));
-               }
-            );
+   public void a(frc $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      if (this.l > 1) {
+         ww $$6 = ww.a("gui.recipebook.page", this.m + 1, this.l);
+         int $$7 = this.g.h.a($$6);
+         $$0.b(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1);
       }
 
-      @Override
-      public void b(fpz $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         gbi.f $$4 = this.x();
-         if ($$4 != null && $$4.a != null) {
-            gbi.this.b($$4.a);
+      this.e = null;
+
+      for (gbk $$8 : this.d) {
+         $$8.a($$0, $$3, $$4, $$5);
+         if ($$8.k && $$8.D()) {
+            this.e = $$8;
          }
       }
+
+      this.k.a($$0, $$3, $$4, $$5);
+      this.j.a($$0, $$3, $$4, $$5);
+      this.f.a($$0, $$3, $$4, $$5);
+   }
+
+   public void a(frc $$0, int $$1, int $$2) {
+      if (this.g.z != null && this.e != null && !this.f.c()) {
+         cys $$3 = this.e.e();
+         ale $$4 = $$3.a(kj.G);
+         $$0.a(this.g.h, this.e.a($$3), $$1, $$2, $$4);
+      }
+   }
+
+   @Nullable
+   public der a() {
+      return this.o;
+   }
+
+   @Nullable
+   public gbl b() {
+      return this.p;
+   }
+
+   public void c() {
+      this.f.b(false);
+   }
+
+   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.o = null;
+      this.p = null;
+      if (this.f.c()) {
+         if (this.f.a($$0, $$1, $$2)) {
+            this.o = this.f.b();
+            this.p = this.f.a();
+         } else {
+            this.f.b(false);
+         }
+
+         return true;
+      } else if (this.j.a($$0, $$1, $$2)) {
+         this.m++;
+         this.e();
+         return true;
+      } else if (this.k.a($$0, $$1, $$2)) {
+         this.m--;
+         this.e();
+         return true;
+      } else {
+         bax $$7 = dew.a(this.g.s);
+
+         for (gbk $$8 : this.d) {
+            if ($$8.a($$0, $$1, $$2)) {
+               if ($$2 == 0) {
+                  this.o = $$8.c();
+                  this.p = $$8.a();
+               } else if ($$2 == 1 && !this.f.c() && !$$8.b()) {
+                  this.f.a($$8.a(), $$7, this.q, $$8.F(), $$8.G(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$8.A());
+               }
+
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public void a(der $$0) {
+      this.h.a($$0);
+   }
+
+   public fnq d() {
+      return this.n;
+   }
+
+   protected void a(Consumer<fro> $$0) {
+      $$0.accept(this.j);
+      $$0.accept(this.k);
+      this.d.forEach($$0);
    }
 }

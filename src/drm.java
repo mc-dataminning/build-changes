@@ -1,115 +1,51 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
 
-public enum drm implements bag {
-   a(0, "none", h.a),
-   b(1, "clockwise_90", h.u),
-   c(2, "180", h.c),
-   d(3, "counterclockwise_90", h.v);
+public abstract class drm extends dlu {
+   public static final eaf b = eae.N;
+   public static final eaf c = eae.O;
+   public static final eaf d = eae.P;
+   public static final eaf e = eae.Q;
+   public static final eaf f = eae.L;
+   public static final eaf g = eae.M;
+   public static final Map<ja, eaf> h = ImmutableMap.copyOf(Maps.newEnumMap(Map.of(ja.c, b, ja.f, c, ja.d, d, ja.e, e, ja.b, f, ja.a, g)));
+   private final Function<dzo, feq> a;
 
-   public static final IntFunction<drm> e = aya.a(drm::b, values(), aya.a.b);
-   public static final Codec<drm> f = bag.a(drm::values);
-   public static final yt<ByteBuf, drm> g = yr.a(e, drm::b);
-   private final int h;
-   private final String i;
-   private final h j;
-
-   private drm(final int $$0, final String $$1, final h $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-   }
-
-   public drm a(drm $$0) {
-      return switch ($$0) {
-         case b -> {
-            switch (this) {
-               case a:
-                  yield b;
-               case b:
-                  yield c;
-               case c:
-                  yield d;
-               case d:
-                  yield a;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case c -> {
-            switch (this) {
-               case a:
-                  yield c;
-               case b:
-                  yield d;
-               case c:
-                  yield a;
-               case d:
-                  yield b;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case d -> {
-            switch (this) {
-               case a:
-                  yield d;
-               case b:
-                  yield a;
-               case c:
-                  yield b;
-               case d:
-                  yield c;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         default -> this;
-      };
-   }
-
-   public h a() {
-      return this.j;
-   }
-
-   public jo a(jo $$0) {
-      if ($$0.o() == jo.a.b) {
-         return $$0;
-      } else {
-         return switch (this) {
-            case b -> $$0.h();
-            case c -> $$0.g();
-            case d -> $$0.i();
-            default -> $$0;
-         };
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      return switch (this) {
-         case b -> ($$0 + $$1 / 4) % $$1;
-         case c -> ($$0 + $$1 / 2) % $$1;
-         case d -> ($$0 + $$1 * 3 / 4) % $$1;
-         default -> $$0;
-      };
-   }
-
-   public static drm a(azs $$0) {
-      return af.a(values(), $$0);
-   }
-
-   public static List<drm> b(azs $$0) {
-      return af.b(values(), $$0);
+   protected drm(float $$0, dzn.d $$1) {
+      super($$1);
+      this.a = this.a($$0);
    }
 
    @Override
-   public String c() {
-      return this.i;
+   protected abstract MapCodec<? extends drm> a();
+
+   private Function<dzo, feq> a(float $$0) {
+      feq $$1 = dlu.a((double)$$0);
+      Map<ja, feq> $$2 = fen.d(dlu.c((double)$$0, 0.0, 8.0));
+      return this.a($$2x -> {
+         feq $$3 = $$1;
+
+         for (Entry<ja, eaf> $$4 : h.entrySet()) {
+            if ($$2x.c($$4.getValue())) {
+               $$3 = fen.a($$2.get($$4.getKey()), $$3);
+            }
+         }
+
+         return $$3;
+      });
    }
 
-   private int b() {
-      return this.h;
+   @Override
+   protected boolean e_(dzo $$0) {
+      return false;
+   }
+
+   @Override
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return this.a.apply($$0);
    }
 }

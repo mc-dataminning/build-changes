@@ -1,33 +1,35 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class ezy extends eyy {
-   public static final MapCodec<ezy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(dbd.d.fieldOf("pages").forGetter($$0x -> $$0x.b), eyx.a(100).forGetter($$0x -> $$0x.c))).apply($$0, ezy::new)
-   );
-   private final List<asf<String>> b;
-   private final eyx c;
+public class ezy extends faa {
+   public static final MapCodec<ezy> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(eym.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, ezy::new));
+   private final eym b;
 
-   protected ezy(List<fau> $$0, List<asf<String>> $$1, eyx $$2) {
+   private ezy(List<fbw> $$0, eym $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   protected cxy a(cxy $$0, exl $$1) {
-      $$0.a(kx.U, dbd.a, this::a);
+   public fac<ezy> b() {
+      return fad.w;
+   }
+
+   @Override
+   public Set<bav<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public cys a(cys $$0, eyn $$1) {
+      int $$2 = this.b.a($$1, $$0.M());
+      $$0.e($$2);
       return $$0;
    }
 
-   public dbd a(dbd $$0) {
-      List<asf<String>> $$1 = this.c.a($$0.a(), this.b, 100);
-      return $$0.b($$1);
-   }
-
-   @Override
-   public eza<ezy> b() {
-      return ezb.O;
+   public static faa.a<?> a(eym $$0) {
+      return a($$1 -> new ezy($$1, $$0));
    }
 }

@@ -1,62 +1,42 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record dbl(float c) implements dbi {
-   private static final float f = 16.0F;
-   public static final MapCodec<dbl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ays.o.optionalFieldOf("diameter", 16.0F).forGetter(dbl::b)).apply($$0, dbl::new)
-   );
-   public static final yt<wg, dbl> b = yt.a(yr.l, dbl::b, dbl::new);
+public record dbl(List<ww> e, List<ww> f) implements dbx {
+   public static final dbl a = new dbl(List.of());
+   public static final int b = 256;
+   private static final xt g = xt.a.a(n.f).b(true);
+   public static final Codec<dbl> c = wy.a.sizeLimitedListOf(256).xmap(dbl::new, dbl::a);
+   public static final yu<wh, dbl> d = wy.b.a(ys.c(256)).a(dbl::new, dbl::a);
 
-   public dbl() {
-      this(16.0F);
+   public dbl(List<ww> $$0) {
+      this($$0, Lists.transform($$0, $$0x -> wz.a($$0x.f(), g)));
+   }
+
+   public dbl(List<ww> e, List<ww> f) {
+      if (e.size() > 256) {
+         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
+      } else {
+         this.e = e;
+         this.f = f;
+      }
+   }
+
+   public dbl a(ww $$0) {
+      return new dbl(af.a(this.e, $$0));
    }
 
    @Override
-   public dbi.a<dbl> a() {
-      return dbi.a.d;
+   public void a(cyo.b $$0, Consumer<ww> $$1, dah $$2, ke $$3) {
+      this.f.forEach($$1);
    }
 
-   @Override
-   public boolean a(dhp $$0, cxy $$1, bwr $$2) {
-      boolean $$3 = false;
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         double $$5 = $$2.dA() + ($$2.dY().j() - 0.5) * (double)this.c;
-         double $$6 = azk.a($$2.dC() + ($$2.dY().j() - 0.5) * (double)this.c, (double)$$0.G_(), (double)($$0.G_() + ((arn)$$0).l() - 1));
-         double $$7 = $$2.dG() + ($$2.dY().j() - 0.5) * (double)this.c;
-         if ($$2.bZ()) {
-            $$2.bP();
-         }
-
-         fcu $$8 = $$2.dt();
-         if ($$2.b($$5, $$6, $$7, true)) {
-            $$0.a(edm.R, $$8, edm.a.a($$2));
-            awl $$10;
-            awj $$9;
-            if ($$2 instanceof ciq) {
-               $$9 = awk.jP;
-               $$10 = awl.g;
-            } else {
-               $$9 = awk.fj;
-               $$10 = awl.h;
-            }
-
-            $$0.a(null, $$2.dA(), $$2.dC(), $$2.dG(), $$9, $$10);
-            $$2.k();
-            $$3 = true;
-            break;
-         }
-      }
-
-      if ($$3 && $$2 instanceof cqi $$13) {
-         $$13.gO();
-      }
-
-      return $$3;
+   public List<ww> a() {
+      return this.e;
    }
 
-   public float b() {
-      return this.c;
+   public List<ww> b() {
+      return this.f;
    }
 }

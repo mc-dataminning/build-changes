@@ -1,150 +1,122 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.LongSortedSet;
+import java.util.Objects;
+import java.util.Spliterators;
+import java.util.PrimitiveIterator.OfLong;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public class edy implements eef.c {
-   public static final int a = 12;
-   private static final int f = 24;
-   private static final float[] g = af.a(new float[13824], $$0 -> {
-      for (int $$1 = 0; $$1 < 24; $$1++) {
-         for (int $$2 = 0; $$2 < 24; $$2++) {
-            for (int $$3 = 0; $$3 < 24; $$3++) {
-               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)a($$2 - 12, $$3 - 12, $$1 - 12);
-            }
-         }
-      }
-   });
-   private final ObjectListIterator<edy.a> h;
-   private final ObjectListIterator<eqj> i;
+public class edy<T extends edt> {
+   public static final int a = 2;
+   public static final int b = 4;
+   private final Class<T> c;
+   private final Long2ObjectFunction<eei> d;
+   private final Long2ObjectMap<edx<T>> e = new Long2ObjectOpenHashMap();
+   private final LongSortedSet f = new LongAVLTreeSet();
 
-   public static edy a(dil $$0, dgw $$1) {
-      int $$2 = $$1.d();
-      int $$3 = $$1.e();
-      ObjectList<edy.a> $$4 = new ObjectArrayList(10);
-      ObjectList<eqj> $$5 = new ObjectArrayList(32);
-      $$0.a($$1, $$0x -> $$0x.d() != epr.a).forEach($$5x -> {
-         epr $$6 = $$5x.h().d();
+   public edy(Class<T> $$0, Long2ObjectFunction<eei> $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-         for (epk $$7 : $$5x.i()) {
-            if ($$7.a($$1, 12)) {
-               if ($$7 instanceof epc) {
-                  epc $$8 = (epc)$$7;
-                  eqq.a $$9 = $$8.b().f();
-                  if ($$9 == eqq.a.b) {
-                     $$4.add(new edy.a($$8.f(), $$6, $$8.d()));
-                  }
+   public void a(fdr $$0, axv<edx<T>> $$1) {
+      int $$2 = jx.a($$0.a - 2.0);
+      int $$3 = jx.a($$0.b - 4.0);
+      int $$4 = jx.a($$0.c - 2.0);
+      int $$5 = jx.a($$0.d + 2.0);
+      int $$6 = jx.a($$0.e + 0.0);
+      int $$7 = jx.a($$0.f + 2.0);
 
-                  for (eqj $$10 : $$8.e()) {
-                     int $$11 = $$10.a();
-                     int $$12 = $$10.c();
-                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
-                        $$5.add($$10);
-                     }
-                  }
-               } else {
-                  $$4.add(new edy.a($$7.f(), $$6, 0));
+      for (int $$8 = $$2; $$8 <= $$5; $$8++) {
+         long $$9 = jx.b($$8, 0, 0);
+         long $$10 = jx.b($$8, -1, -1);
+         LongIterator $$11 = this.f.subSet($$9, $$10 + 1L).iterator();
+
+         while ($$11.hasNext()) {
+            long $$12 = $$11.nextLong();
+            int $$13 = jx.c($$12);
+            int $$14 = jx.d($$12);
+            if ($$13 >= $$3 && $$13 <= $$6 && $$14 >= $$4 && $$14 <= $$7) {
+               edx<T> $$15 = (edx<T>)this.e.get($$12);
+               if ($$15 != null && !$$15.a() && $$15.c().b() && $$1.accept($$15).a()) {
+                  return;
                }
             }
          }
-      });
-      return new edy($$4.iterator(), $$5.iterator());
-   }
-
-   @VisibleForTesting
-   public edy(ObjectListIterator<edy.a> $$0, ObjectListIterator<eqj> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   @Override
-   public double a(eee.b $$0) {
-      int $$1 = $$0.a();
-      int $$2 = $$0.b();
-      int $$3 = $$0.c();
-      double $$4 = 0.0;
-
-      while (this.h.hasNext()) {
-         edy.a $$5 = (edy.a)this.h.next();
-         eoy $$6 = $$5.a();
-         int $$7 = $$5.c();
-         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
-         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
-         int $$10 = $$6.i() + $$7;
-         int $$11 = $$2 - $$10;
-
-         int $$12 = switch ($$5.b()) {
-            case a -> 0;
-            case b, c -> $$11;
-            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
-            case e -> Math.max(0, Math.max($$6.i() - $$2, $$2 - $$6.l()));
-         };
-
-         $$4 += switch ($$5.b()) {
-            case a -> 0.0;
-            case b -> a((double)$$8, (double)$$12 / 2.0, (double)$$9);
-            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
-            case e -> a((double)$$8 / 2.0, (double)$$12 / 2.0, (double)$$9 / 2.0) * 0.8;
-         };
       }
-
-      this.h.back(Integer.MAX_VALUE);
-
-      while (this.i.hasNext()) {
-         eqj $$13 = (eqj)this.i.next();
-         int $$14 = $$1 - $$13.a();
-         int $$15 = $$2 - $$13.b();
-         int $$16 = $$3 - $$13.c();
-         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
-      }
-
-      this.i.back(Integer.MAX_VALUE);
-      return $$4;
    }
 
-   @Override
-   public double a() {
-      return Double.NEGATIVE_INFINITY;
-   }
-
-   @Override
-   public double b() {
-      return Double.POSITIVE_INFINITY;
-   }
-
-   private static double a(double $$0, double $$1, double $$2) {
-      double $$3 = azk.g($$0, $$1, $$2);
-      return azk.a($$3, 0.0, 6.0, 1.0, 0.0);
-   }
-
-   private static double a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$0 + 12;
-      int $$5 = $$1 + 12;
-      int $$6 = $$2 + 12;
-      if (a($$4) && a($$5) && a($$6)) {
-         double $$7 = (double)$$3 + 0.5;
-         double $$8 = azk.f((double)$$0, $$7, (double)$$2);
-         double $$9 = -$$7 * azk.g($$8 / 2.0) / 2.0;
-         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+   public LongStream a(long $$0) {
+      int $$1 = dhw.a($$0);
+      int $$2 = dhw.b($$0);
+      LongSortedSet $$3 = this.a($$1, $$2);
+      if ($$3.isEmpty()) {
+         return LongStream.empty();
       } else {
-         return 0.0;
+         OfLong $$4 = $$3.iterator();
+         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
       }
    }
 
-   private static boolean a(int $$0) {
-      return $$0 >= 0 && $$0 < 24;
+   private LongSortedSet a(int $$0, int $$1) {
+      long $$2 = jx.b($$0, 0, $$1);
+      long $$3 = jx.b($$0, -1, $$1);
+      return this.f.subSet($$2, $$3 + 1L);
    }
 
-   private static double a(int $$0, int $$1, int $$2) {
-      return a($$0, (double)$$1 + 0.5, $$2);
+   public Stream<edx<T>> b(long $$0) {
+      return this.a($$0).<edx<T>>mapToObj(this.e::get).filter(Objects::nonNull);
    }
 
-   private static double a(int $$0, double $$1, int $$2) {
-      double $$3 = azk.f((double)$$0, $$1, (double)$$2);
-      return Math.pow(Math.E, -$$3 / 16.0);
+   private static long f(long $$0) {
+      return dhw.c(jx.b($$0), jx.d($$0));
    }
 
-   @VisibleForTesting
-   public static record a(eoy a, epr b, int c) {
+   public edx<T> c(long $$0) {
+      return (edx<T>)this.e.computeIfAbsent($$0, this::g);
+   }
+
+   @Nullable
+   public edx<T> d(long $$0) {
+      return (edx<T>)this.e.get($$0);
+   }
+
+   private edx<T> g(long $$0) {
+      long $$1 = f($$0);
+      eei $$2 = (eei)this.d.get($$1);
+      this.f.add($$0);
+      return new edx<>(this.c, $$2);
+   }
+
+   public LongSet a() {
+      LongSet $$0 = new LongOpenHashSet();
+      this.e.keySet().forEach($$1 -> $$0.add(f($$1)));
+      return $$0;
+   }
+
+   public void b(fdr $$0, axv<T> $$1) {
+      this.a($$0, $$2 -> $$2.a($$0, $$1));
+   }
+
+   public <U extends T> void a(eea<T, U> $$0, fdr $$1, axv<U> $$2) {
+      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
+   }
+
+   public void e(long $$0) {
+      this.e.remove($$0);
+      this.f.remove($$0);
+   }
+
+   @bat
+   public int b() {
+      return this.f.size();
    }
 }

@@ -1,36 +1,108 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
+import com.mojang.logging.LogUtils;
+import java.time.Instant;
 import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record xq(int b, UUID c, UUID d) {
-   public static final Codec<xq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ays.l.fieldOf("index").forGetter(xq::b), km.a.fieldOf("sender").forGetter(xq::c), km.a.fieldOf("session_id").forGetter(xq::d))
-            .apply($$0, xq::new)
-   );
-
-   public static xq a(UUID $$0) {
-      return a($$0, af.e);
-   }
-
-   public static xq a(UUID $$0, UUID $$1) {
-      return new xq(0, $$0, $$1);
-   }
-
-   public void a(azw.a $$0) throws SignatureException {
-      $$0.update(km.b(this.c));
-      $$0.update(km.b(this.d));
-      $$0.update(Ints.toByteArray(this.b));
-   }
-
-   public boolean a(xq $$0) {
-      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
-   }
-
+public class xq {
+   static final Logger a = LogUtils.getLogger();
    @Nullable
-   public xq a() {
-      return this.b == Integer.MAX_VALUE ? null : new xq(this.b + 1, this.c, this.d);
+   xr b;
+   Instant c = Instant.EPOCH;
+
+   public xq(UUID $$0, UUID $$1) {
+      this.b = xr.a($$0, $$1);
+   }
+
+   public xq.c a(baa $$0) {
+      return $$1 -> {
+         xr $$2 = this.b;
+         if ($$2 == null) {
+            return null;
+         } else {
+            this.b = $$2.a();
+            return new xi($$0.sign($$2x -> xm.a($$2x, $$2, $$1)));
+         }
+      };
+   }
+
+   public xq.b a(final cqv $$0) {
+      final azz $$1 = $$0.a();
+      return new xq.b() {
+         @Override
+         public xm unpack(@Nullable xi $$0x, xp $$1x) throws xq.a {
+            if ($$0 == null) {
+               throw new xq.a(xq.a.a);
+            } else if ($$0.b().a()) {
+               throw new xq.a(xq.a.c);
+            } else {
+               xr $$2 = xq.this.b;
+               if ($$2 == null) {
+                  throw new xq.a(xq.a.b);
+               } else if ($$1.b().isBefore(xq.this.c)) {
+                  this.setChainBroken();
+                  throw new xq.a(xq.a.e);
+               } else {
+                  xq.this.c = $$1.b();
+                  xm $$3 = new xm($$2, $$0, $$1, null, xa.c);
+                  if (!$$3.a($$1)) {
+                     this.setChainBroken();
+                     throw new xq.a(xq.a.d);
+                  } else {
+                     if ($$3.a(Instant.now())) {
+                        xq.a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$1.a());
+                     }
+
+                     xq.this.b = $$2.a();
+                     return $$3;
+                  }
+               }
+            }
+         }
+
+         @Override
+         public void setChainBroken() {
+            xq.this.b = null;
+         }
+      };
+   }
+
+   public static class a extends xw {
+      static final ww a = ww.c("chat.disabled.missingProfileKey");
+      static final ww b = ww.c("chat.disabled.chain_broken");
+      static final ww c = ww.c("chat.disabled.expiredProfileKey");
+      static final ww d = ww.c("chat.disabled.invalid_signature");
+      static final ww e = ww.c("chat.disabled.out_of_order_chat");
+
+      public a(ww $$0) {
+         super($$0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      static xq.b unsigned(UUID $$0, BooleanSupplier $$1) {
+         return ($$2, $$3) -> {
+            if ($$1.getAsBoolean()) {
+               throw new xq.a(xq.a.a);
+            } else {
+               return xm.a($$0, $$3.a());
+            }
+         };
+      }
+
+      xm unpack(@Nullable xi var1, xp var2) throws xq.a;
+
+      default void setChainBroken() {
+      }
+   }
+
+   @FunctionalInterface
+   public interface c {
+      xq.c a = $$0 -> null;
+
+      @Nullable
+      xi pack(xp var1);
    }
 }

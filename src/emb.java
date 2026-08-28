@@ -1,49 +1,40 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.OptionalInt;
 
-public class emb extends elz {
-   public static final MapCodec<emb> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dym.a.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  ays.b(dym.a.listOf()).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  ays.b(dym.a.listOf()).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
+public class emb extends ely {
+   public static final MapCodec<emb> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
+               a()
             )
             .apply($$0, emb::new)
    );
-   private final float g;
-   private final float h;
-   private final dym i;
-   private final List<dym> j;
-   private final List<dym> k;
+   private final int e;
+   private final int f;
+   private final int g;
 
-   public emb(long $$0, etw.a $$1, float $$2, float $$3, float $$4, dym $$5, List<dym> $$6, List<dym> $$7) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+   public emb(int $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, OptionalInt.empty());
+   }
+
+   public emb(int $$0, int $$1, int $$2, OptionalInt $$3) {
+      super($$3);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   protected elx<?> a() {
-      return elx.c;
+   protected elz<?> b() {
+      return elz.a;
    }
 
    @Override
-   public dym a(azs $$0, jj $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return af.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? af.a(this.k, $$0) : this.i;
-      }
+   public int a(int $$0, int $$1) {
+      return $$1 < this.e ? this.f : this.g;
    }
 }

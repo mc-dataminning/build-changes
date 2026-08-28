@@ -1,59 +1,85 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cyz extends cxu {
-   protected static final Map<dku, dym> a = Maps.newHashMap(
-      new Builder()
-         .put(dkw.i, dkw.lg.m())
-         .put(dkw.j, dkw.lg.m())
-         .put(dkw.l, dkw.lg.m())
-         .put(dkw.k, dkw.lg.m())
-         .put(dkw.fA, dkw.lg.m())
-         .put(dkw.tn, dkw.lg.m())
-         .build()
-   );
+public class cyz {
+   public static final int a = 20;
+   private long b;
+   @Nullable
+   private je<cyy> c;
+   private final iu d;
+   private final cyz.a e;
 
-   public cyz(czm $$0, float $$1, float $$2, cxu.a $$3) {
-      super($$3.a($$0, awz.bF, $$1, $$2, false));
+   public cyz(cyz.a $$0, iu $$1) {
+      this.e = $$0;
+      this.d = $$1;
    }
 
-   @Override
-   public btq a(dbp $$0) {
-      dhp $$1 = $$0.q();
-      jj $$2 = $$0.a();
-      dym $$3 = $$1.a_($$2);
-      if ($$0.k() == jo.a) {
-         return btq.e;
-      } else {
-         cqi $$4 = $$0.o();
-         dym $$5 = a.get($$3.b());
-         dym $$6 = null;
-         if ($$5 != null && $$1.a_($$2.d()).l()) {
-            $$1.a($$4, $$2, awk.xu, awl.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof dlj && $$3.c(dlj.b)) {
-            if (!$$1.w_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
+   public boolean a() {
+      return this.c != null;
+   }
 
-            dlj.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.b(dlj.b, Boolean.valueOf(false));
-         }
+   @Nullable
+   public cyy b() {
+      return this.c == null ? null : this.c.a();
+   }
 
-         if ($$6 != null) {
-            if (!$$1.C) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(edm.c, $$2, edm.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, bwr.d($$0.p()));
-               }
-            }
+   public long c() {
+      return this.b;
+   }
 
-            return btq.a;
+   public void a(je<cyy> $$0, long $$1) {
+      if (!$$0.a().a($$1)) {
+         this.c = $$0;
+         this.b = $$1;
+      }
+   }
+
+   public void a(diq $$0, je<cyy> $$1) {
+      this.c = $$1;
+      this.b = 0L;
+      int $$2 = $$0.F_().f(mg.aT).a(this.c.a());
+      $$0.a(null, 1010, this.d, $$2);
+      this.e.notifyChange();
+   }
+
+   public void a(diq $$0, @Nullable dzo $$1) {
+      if (this.c != null) {
+         this.c = null;
+         this.b = 0L;
+         $$0.a(eeo.F, this.d, eeo.a.a($$1));
+         $$0.c(1011, this.d, 0);
+         this.e.notifyChange();
+      }
+   }
+
+   public void b(diq $$0, @Nullable dzo $$1) {
+      if (this.c != null) {
+         if (this.c.a().a(this.b)) {
+            this.a($$0, $$1);
          } else {
-            return btq.e;
+            if (this.d()) {
+               $$0.a(eeo.E, this.d, eeo.a.a($$1));
+               a($$0, this.d);
+            }
+
+            this.b++;
          }
       }
+   }
+
+   private boolean d() {
+      return this.b % 20L == 0L;
+   }
+
+   private static void a(diq $$0, iu $$1) {
+      if ($$0 instanceof aro $$2) {
+         fdw $$3 = fdw.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.C_().a(4) / 24.0F;
+         $$2.a(lx.ad, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void notifyChange();
    }
 }

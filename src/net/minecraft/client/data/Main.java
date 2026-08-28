@@ -25,9 +25,9 @@ public class Main {
          Path $$7 = Paths.get((String)$$5.value($$6));
          boolean $$8 = $$6.has($$4);
          boolean $$9 = $$8 || $$6.has($$3);
-         alf.a();
-         fmn.a();
-         mj $$10 = new mj($$7, ab.b(), true);
+         alg.a();
+         fnp.a();
+         ml $$10 = new ml($$7, ab.b(), true);
          a($$10, $$9);
          $$10.a();
       } else {
@@ -35,9 +35,10 @@ public class Main {
       }
    }
 
-   public static void a(mj $$0, boolean $$1) {
-      mj.a $$2 = $$0.a($$1);
-      $$2.a(foy::new);
-      $$2.a(fov::new);
+   public static void a(ml $$0, boolean $$1) {
+      ml.a $$2 = $$0.a($$1);
+      $$2.a(fqb::new);
+      $$2.a(fpy::new);
+      $$2.a(fpw::new);
    }
 }

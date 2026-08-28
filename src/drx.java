@@ -1,77 +1,37 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class drx extends dle implements dkx, dpp {
+public class drx extends dlu {
    public static final MapCodec<drx> a = b(drx::new);
-   private static final fdo b = dku.b(12.0, 0.0, 12.0);
 
    @Override
    public MapCodec<drx> a() {
       return a;
    }
 
-   protected drx(dyl.d $$0) {
+   protected drx(dzn.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean b(dym $$0, dgv $$1, jj $$2) {
-      return $$0.c($$1, $$2, jo.b) && !$$0.a(dkw.ll);
-   }
-
-   @Nullable
-   @Override
-   public dym a(dbn $$0) {
-      eut $$1 = $$0.q().b_($$0.a());
-      return $$1.a(axf.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      dym $$8 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      if (!$$8.l()) {
-         $$2.a($$3, euu.c, euu.c.a($$1));
+   protected bty a(cys $$0, dzo $$1, dip $$2, iu $$3, cqs $$4, btx $$5, fds $$6) {
+      if (!$$0.a(cyw.sW)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$2.C) {
+         return bty.a;
+      } else {
+         ja $$7 = $$6.c();
+         ja $$8 = $$7.o() == ja.a.b ? $$4.cO().g() : $$7;
+         $$2.a(null, $$3, awl.vG, awm.e, 1.0F, 1.0F);
+         $$2.a($$3, dlw.er.m().b(dmp.b, $$8), 11);
+         cmx $$9 = new cmx(
+            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cys(cyw.sZ, 4)
+         );
+         $$9.n(0.05 * (double)$$8.j() + $$2.A.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.A.j() * 0.02);
+         $$2.b($$9);
+         $$0.a(1, $$4, bwz.d($$5));
+         $$2.a($$4, eeo.M, $$3);
+         $$4.b(awv.c.b(cyw.sW));
+         return bty.a;
       }
-
-      return $$8;
-   }
-
-   @Override
-   public boolean a(dhs $$0, jj $$1, dym $$2) {
-      return $$0.a_($$1.d()).a(dkw.J);
-   }
-
-   @Override
-   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
-      return true;
-   }
-
-   @Override
-   protected eut b_(dym $$0) {
-      return euu.c.a(false);
-   }
-
-   @Override
-   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
-      dym $$4 = dkw.bE.m();
-      dym $$5 = $$4.b(dtg.d, dzi.a);
-      jj $$6 = $$2.d();
-      $$0.a($$2, $$4, 2);
-      $$0.a($$6, $$5, 2);
-   }
-
-   @Override
-   public boolean a(@Nullable bwr $$0, dgv $$1, jj $$2, dym $$3, eus $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dhq $$0, jj $$1, dym $$2, eut $$3) {
-      return false;
    }
 }

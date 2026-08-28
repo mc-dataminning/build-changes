@@ -1,24 +1,27 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class euc extends euh<euc.a> {
-   protected euc(eaw $$0) {
-      super(dhy.b, $$0, new euc.a(new Long2ObjectOpenHashMap()));
+public class euc extends eue {
+   public static final MapCodec<euc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dzo.a.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
+            .apply($$0, euc::new)
+   );
+   private final dzo b;
+   private final float d;
+
+   public euc(dzo $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected int a(long $$0) {
-      long $$1 = kl.e($$0);
-      eao $$2 = this.a($$1, false);
-      return $$2 == null ? 0 : $$2.a(kl.b(jj.a($$0)), kl.b(jj.b($$0)), kl.b(jj.c($$0)));
+   public boolean a(dzo $$0, azt $$1) {
+      return $$0 == this.b && $$1.i() < this.d;
    }
 
-   protected static final class a extends eue<euc.a> {
-      public a(Long2ObjectOpenHashMap<eao> $$0) {
-         super($$0);
-      }
-
-      public euc.a a() {
-         return new euc.a(this.a.clone());
-      }
+   @Override
+   protected euf<?> a() {
+      return euf.f;
    }
 }

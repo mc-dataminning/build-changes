@@ -1,122 +1,37 @@
-import java.util.EnumSet;
+public class cea extends cdv {
+   private final cjn a;
+   private boolean b;
 
-public abstract class cea extends cdn {
-   private static final int g = 1200;
-   private static final int h = 1200;
-   private static final int i = 200;
-   protected final bwz a;
-   public final double b;
-   protected int c;
-   protected int d;
-   private int j;
-   protected jj e = jj.c;
-   private boolean k;
-   private final int l;
-   private final int m;
-   protected int f;
-
-   public cea(bwz $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, 1);
-   }
-
-   public cea(bwz $$0, double $$1, int $$2, int $$3) {
+   public cea(cjn $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.l = $$2;
-      this.f = 0;
-      this.m = $$3;
-      this.a(EnumSet.of(cdn.a.a, cdn.a.c));
    }
 
    @Override
    public boolean b() {
-      if (this.c > 0) {
-         this.c--;
+      if (!(this.a.e() instanceof arp $$0)) {
          return false;
       } else {
-         this.c = this.a(this.a);
-         return this.n();
+         boolean $$1 = !$$0.U_() && !$$0.gj().b && !$$0.bj() && !$$0.av;
+         return !this.a.gq() && $$1 && this.a.gG();
       }
    }
 
-   protected int a(bwz $$0) {
-      return b(200 + $$0.dY().a(200));
-   }
-
    @Override
-   public boolean c() {
-      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dV(), this.e);
+   public boolean P_() {
+      return !this.b;
    }
 
    @Override
    public void d() {
-      this.h();
-      this.d = 0;
-      this.j = this.a.dY().a(this.a.dY().a(1200) + 1200) + 1200;
-   }
-
-   protected void h() {
-      this.a.O().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, this.b);
-   }
-
-   public double i() {
-      return 1.0;
-   }
-
-   protected jj k() {
-      return this.e.d();
-   }
-
-   @Override
-   public boolean Q_() {
-      return true;
+      this.b = false;
    }
 
    @Override
    public void a() {
-      jj $$0 = this.k();
-      if (!$$0.a(this.a.dt(), this.i())) {
-         this.k = false;
-         this.d++;
-         if (this.l()) {
-            this.a.O().a((double)$$0.u() + 0.5, (double)$$0.v(), (double)$$0.w() + 0.5, this.b);
-         }
-      } else {
-         this.k = true;
-         this.d--;
-      }
-   }
-
-   public boolean l() {
-      return this.d % 40 == 0;
-   }
-
-   protected boolean m() {
-      return this.k;
-   }
-
-   protected boolean n() {
-      int $$0 = this.l;
-      int $$1 = this.m;
-      jj $$2 = this.a.dv();
-      jj.a $$3 = new jj.a();
-
-      for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
-               for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
-                  $$3.a($$2, $$6, $$4 - 1, $$7);
-                  if (this.a.a($$3) && this.a(this.a.dV(), $$3)) {
-                     this.e = $$3;
-                     return true;
-                  }
-               }
-            }
+      if (!this.b && !this.a.x() && !this.a.O_()) {
+         if (this.a.e() instanceof arp $$0 && this.a.cR().c($$0.cR())) {
+            this.b = this.a.b($$0);
          }
       }
-
-      return false;
    }
-
-   protected abstract boolean a(dhs var1, jj var2);
 }

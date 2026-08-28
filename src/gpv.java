@@ -1,16 +1,7 @@
-import com.google.common.collect.Streams;
-import java.util.function.Predicate;
-
-public class gpv implements gpw {
-   public static final String a = "AND";
-   private final Iterable<? extends gpw> d;
-
-   public gpv(Iterable<? extends gpw> $$0) {
-      this.d = $$0;
-   }
-
+public record gpv(ale a, fiv b, gpt c) {
    @Override
-   public Predicate<dym> getPredicate(dyn<dku, dym> $$0) {
-      return af.a(Streams.stream(this.d).map($$1 -> $$1.getPredicate($$0)).toList());
+   public String toString() {
+      String $$0 = this.a + " (" + this.b + ")";
+      return !this.c.c() ? $$0 + " with " + this.c : $$0;
    }
 }

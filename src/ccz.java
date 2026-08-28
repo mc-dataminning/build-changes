@@ -1,77 +1,32 @@
-import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
+public class ccz extends ccx {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-public class ccz extends cdn {
-   private static final chg d = chg.b().a(8.0).d();
-   protected final cig a;
-   private final Class<? extends cig> e;
-   protected final arn b;
-   @Nullable
-   protected cig c;
-   private int f;
-   private final double g;
-
-   public ccz(cig $$0, double $$1) {
-      this($$0, $$1, (Class<? extends cig>)$$0.getClass());
-   }
-
-   public ccz(cig $$0, double $$1, Class<? extends cig> $$2) {
-      this.a = $$0;
-      this.b = a($$0);
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(cdn.a.a, cdn.a.b));
-   }
-
-   @Override
-   public boolean b() {
-      if (!this.a.gA()) {
-         return false;
-      } else {
-         this.c = this.h();
-         return this.c != null;
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.bK() && this.c.gA() && this.f < 60 && !this.c.gn();
-   }
-
-   @Override
-   public void e() {
-      this.c = null;
-      this.f = 0;
+   public ccz(bxb $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
    @Override
    public void a() {
-      this.a.J().a(this.c, 10.0F, (float)this.a.ac());
-      this.a.O().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
-         this.g();
-      }
-   }
-
-   @Nullable
-   private cig h() {
-      List<? extends cig> $$0 = this.b.a(this.e, d, this.a, this.a.cR().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      cig $$2 = null;
-
-      for (cig $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.gn() && this.a.g($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.g($$3);
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.aX = this.a(this.a.aX, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.x(this.a(this.a.dN(), $$0x + 10.0F, this.c)));
+      } else {
+         if (this.a.O().k()) {
+            this.a.x(this.a(this.a.dN(), 0.0F, 5.0F));
          }
+
+         this.a.aX = this.a(this.a.aX, this.a.aV, this.b);
       }
 
-      return $$2;
-   }
-
-   protected void g() {
-      this.a.a(this.b, this.c);
+      float $$0 = azk.h(this.a.aX - this.a.aV);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aV -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aV += 4.0F;
+      }
    }
 }

@@ -1,130 +1,63 @@
-import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayDeque;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public class xj implements wv {
-   private final ww c;
-   private final List<wv> d;
-   private xs e;
-   private ayw f = ayw.a;
+public class xj {
+   public static final int a = -1;
+   private static final int b = 128;
+   private final xi[] c;
+
+   public xj(int $$0) {
+      this.c = new xi[$$0];
+   }
+
+   public static xj a() {
+      return new xj(128);
+   }
+
+   public int a(xi $$0) {
+      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
+         if ($$0.equals(this.c[$$1])) {
+            return $$1;
+         }
+      }
+
+      return -1;
+   }
+
    @Nullable
-   private tr g;
-
-   xj(ww $$0, List<wv> $$1, xs $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public xi a(int $$0) {
+      return this.c[$$0];
    }
 
-   public static xj a(ww $$0) {
-      return new xj($$0, Lists.newArrayList(), xs.a);
-   }
-
-   @Override
-   public ww b() {
-      return this.c;
-   }
-
-   @Override
-   public List<wv> c() {
-      return this.d;
-   }
-
-   public xj b(xs $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   @Override
-   public xs a() {
-      return this.e;
-   }
-
-   public xj f(String $$0) {
-      return $$0.isEmpty() ? this : this.b(wv.b($$0));
-   }
-
-   public xj b(wv $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public xj a(UnaryOperator<xs> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public xj c(xs $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public xj a(n... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public xj a(n $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   public xj b(int $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   @Override
-   public ayw g() {
-      tr $$0 = tr.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
+   public void a(xp $$0, @Nullable xi $$1) {
+      List<xi> $$2 = $$0.d().a();
+      ArrayDeque<xi> $$3 = new ArrayDeque<>($$2.size() + 1);
+      $$3.addAll($$2);
+      if ($$1 != null) {
+         $$3.add($$1);
       }
 
-      return this.f;
+      this.a($$3);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof xj $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+   @VisibleForTesting
+   void a(List<xi> $$0) {
+      this.a(new ArrayDeque<>($$0));
+   }
+
+   private void a(ArrayDeque<xi> $$0) {
+      Set<xi> $$1 = new ObjectOpenHashSet($$0);
+
+      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
+         xi $$3 = this.c[$$2];
+         this.c[$$2] = $$0.removeLast();
+         if ($$3 != null && !$$1.contains($$3)) {
+            $$0.addFirst($$3);
+         }
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.h();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
-         }
-
-         if ($$1 && $$2) {
-            $$0.append(", ");
-         }
-
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
-
-         $$0.append(']');
-      }
-
-      return $$0.toString();
    }
 }

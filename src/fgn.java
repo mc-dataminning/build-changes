@@ -1,3 +1,8 @@
-public interface fgn {
-   fgm createMonitor(long var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@ffy
+@ffx
+interface fgn {
 }

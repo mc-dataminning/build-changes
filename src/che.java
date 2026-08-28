@@ -1,25 +1,33 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class che extends cgs<cpl> {
+public class che extends chh<bwz> {
    @Override
-   public Set<cft<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cft.C)));
+   public Set<cgb<?>> a() {
+      return ImmutableSet.of(cgb.j, cgb.k, cgb.l, cgb.m);
    }
 
-   protected void a(arn $$0, cpl $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.aq() == bwb.bR)
-         .or(() -> a($$1, $$0xx -> $$0xx.aq() != bwb.bR))
-         .ifPresentOrElse($$1x -> $$1.eb().a(cft.C, $$1x), () -> $$1.eb().b(cft.C));
+   @Override
+   protected void a(aro $$0, bwz $$1) {
+      List<cqs> $$2 = $$0.z()
+         .stream()
+         .filter(bwh.f)
+         .filter($$1x -> $$1.a($$1x, this.a($$1)))
+         .sorted(Comparator.comparingDouble($$1::g))
+         .collect(Collectors.toList());
+      bxz<?> $$3 = $$1.eb();
+      $$3.a(cgb.j, $$2);
+      List<cqs> $$4 = $$2.stream().filter($$2x -> b($$0, $$1, $$2x)).collect(Collectors.toList());
+      $$3.a(cgb.k, $$4.isEmpty() ? null : $$4.get(0));
+      List<cqs> $$5 = $$4.stream().filter($$2x -> c($$0, $$1, $$2x)).toList();
+      $$3.a(cgb.m, $$5);
+      $$3.a(cgb.l, $$5.isEmpty() ? null : $$5.get(0));
    }
 
-   private static Optional<bwr> a(cpl $$0, Predicate<bwr> $$1) {
-      return $$0.eb().c(cft.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
+   protected double a(bwz $$0) {
+      return $$0.h(byf.m);
    }
 }

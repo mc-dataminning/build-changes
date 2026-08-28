@@ -1,82 +1,49 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dsc extends djq {
-   public static final MapCodec<dsc> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dsc.a.b.fieldOf("kind").forGetter(djq::b), t()).apply($$0, dsc::new));
-   public static final int d = dzs.a();
-   private static final int b = d + 1;
-   public static final dzm e = dzc.bd;
-   private static final fdo f = dku.b(8.0, 0.0, 8.0);
-   private static final fdo g = dku.b(10.0, 0.0, 8.0);
+public class dsc extends dlu {
+   public static final MapCodec<dsc> a = b(dsc::new);
+   public static final eaf b = dsd.b;
 
    @Override
-   public MapCodec<? extends dsc> a() {
-      return c;
+   public MapCodec<dsc> a() {
+      return a;
    }
 
-   protected dsc(dsc.a $$0, dyl.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(e, Integer.valueOf(0)));
+   public dsc(dzn.d $$0) {
+      super($$0);
+      this.l(this.m().b(b, Boolean.valueOf(false)));
    }
 
+   @Nullable
    @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return this.b() == dsc.b.h ? g : f;
+   public dzo a(dcl $$0) {
+      return this.m().b(b, Boolean.valueOf($$0.q().D($$0.a())));
    }
 
    @Override
-   protected fdo d_(dym $$0) {
-      return fdl.a();
-   }
-
-   @Override
-   public dym a(dbn $$0) {
-      return super.a($$0).b(e, Integer.valueOf(dzs.a($$0.i())));
-   }
-
-   @Override
-   protected dym a(dym $$0, drm $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected dym a(dym $$0, dpv $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      super.a($$0);
-      $$0.a(e);
-   }
-
-   public interface a extends bag {
-      Map<String, dsc.a> a = new Object2ObjectArrayMap();
-      Codec<dsc.a> b = Codec.stringResolver(bag::c, a::get);
-   }
-
-   public static enum b implements dsc.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
-
-      private final String j;
-
-      private b(final String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
+   protected void a(dzo $$0, dip $$1, iu $$2, dlu $$3, @Nullable exd $$4, boolean $$5) {
+      if (!$$1.C) {
+         boolean $$6 = $$0.c(b);
+         if ($$6 != $$1.D($$2)) {
+            if ($$6) {
+               $$1.a($$2, this, 4);
+            } else {
+               $$1.a($$2, $$0.a(b), 2);
+            }
+         }
       }
+   }
 
-      @Override
-      public String c() {
-         return this.j;
+   @Override
+   protected void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      if ($$0.c(b) && !$$1.D($$2)) {
+         $$1.a($$2, $$0.a(b), 2);
       }
+   }
+
+   @Override
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(b);
    }
 }

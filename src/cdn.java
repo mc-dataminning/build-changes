@@ -1,65 +1,72 @@
 import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public abstract class cdn {
-   private final EnumSet<cdn.a> a = EnumSet.noneOf(cdn.a.class);
+public class cdn extends cdv {
+   private static final int a = 40;
+   private static final Predicate<dzo> b = dzx.a(dlw.bA);
+   private final bxb c;
+   private final dip d;
+   private int e;
 
-   public abstract boolean b();
-
-   public boolean c() {
-      return this.b();
-   }
-
-   public boolean P_() {
-      return true;
-   }
-
-   public void d() {
-   }
-
-   public void e() {
-   }
-
-   public boolean Q_() {
-      return false;
-   }
-
-   public void a() {
-   }
-
-   public void a(EnumSet<cdn.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   public cdn(bxb $$0) {
+      this.c = $$0;
+      this.d = $$0.dV();
+      this.a(EnumSet.of(cdv.a.a, cdv.a.b, cdv.a.c));
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public boolean b() {
+      if (this.c.dY().a(this.c.n_() ? 50 : 1000) != 0) {
+         return false;
+      } else {
+         iu $$0 = this.c.dv();
+         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.e()).a(dlw.i);
+      }
    }
 
-   public EnumSet<cdn.a> j() {
-      return this.a;
+   @Override
+   public void d() {
+      this.e = this.a(40);
+      this.d.a(this.c, (byte)10);
+      this.c.O().m();
    }
 
-   protected int a(int $$0) {
-      return this.Q_() ? $$0 : b($$0);
+   @Override
+   public void e() {
+      this.e = 0;
    }
 
-   protected static int b(int $$0) {
-      return azk.e($$0, 2);
+   @Override
+   public boolean c() {
+      return this.e > 0;
    }
 
-   protected static arn a(bvs $$0) {
-      return (arn)$$0.dV();
+   public int h() {
+      return this.e;
    }
 
-   protected static arn a(dhp $$0) {
-      return (arn)$$0;
-   }
+   @Override
+   public void a() {
+      this.e = Math.max(0, this.e - 1);
+      if (this.e == this.a(4)) {
+         iu $$0 = this.c.dv();
+         if (b.test(this.d.a_($$0))) {
+            if (a(this.d).O().c(dil.c)) {
+               this.d.b($$0, false);
+            }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+            this.c.R();
+         } else {
+            iu $$1 = $$0.e();
+            if (this.d.a_($$1).a(dlw.i)) {
+               if (a(this.d).O().c(dil.c)) {
+                  this.d.c(2001, $$1, dlu.j(dlw.i.m()));
+                  this.d.a($$1, dlw.j.m(), 2);
+               }
+
+               this.c.R();
+            }
+         }
+      }
    }
 }

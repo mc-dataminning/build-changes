@@ -1,97 +1,339 @@
-public abstract class fqg extends fql {
-   public static final int b = 6;
-   private double a;
-   private static final ald c = ald.b("widget/scroller");
-   private static final ald d = ald.b("widget/scroller_background");
-   private boolean e;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-   public fqg(int $$0, int $$1, int $$2, int $$3, wv $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
+public abstract class fqg {
+   private final Map<fqh, List<fqi>> a = Maps.newHashMap();
 
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (!this.k) {
-         return false;
-      } else {
-         this.a(this.g() - $$3 * this.o());
-         return true;
+   protected void a(fqh $$0, List<fqi> $$1) {
+      List<fqi> $$2 = this.a.put($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalStateException("Value " + $$0 + " is already defined");
       }
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.e) {
-         if ($$1 < (double)this.G()) {
-            this.a(0.0);
-         } else if ($$1 > (double)this.I()) {
-            this.a((double)this.i());
-         } else {
-            double $$5 = (double)Math.max(1, this.i());
-            int $$6 = this.k();
-            double $$7 = Math.max(1.0, $$5 / (double)(this.h - $$6));
-            this.a(this.g() + $$4 * $$7);
-         }
+   Map<fqh, List<fqi>> a() {
+      this.c();
+      return ImmutableMap.copyOf(this.a);
+   }
 
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
+   private void c() {
+      List<ear<?>> $$0 = this.b();
+      Stream<fqh> $$1 = Stream.of(fqh.a());
+
+      for (ear<?> $$2 : $$0) {
+         $$1 = $$1.flatMap($$1x -> $$2.c().map($$1x::a));
+      }
+
+      List<fqh> $$3 = $$1.filter($$0x -> !this.a.containsKey($$0x)).collect(Collectors.toList());
+      if (!$$3.isEmpty()) {
+         throw new IllegalStateException("Missing definition for properties: " + $$3);
       }
    }
 
-   @Override
-   public void b(double $$0, double $$1) {
-      this.e = false;
+   abstract List<ear<?>> b();
+
+   public static <T1 extends Comparable<T1>> fqg.a<T1> a(ear<T1> $$0) {
+      return new fqg.a<>($$0);
    }
 
-   public double g() {
-      return this.a;
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> fqg.b<T1, T2> a(ear<T1> $$0, ear<T2> $$1) {
+      return new fqg.b<>($$0, $$1);
    }
 
-   public void a(double $$0) {
-      this.a = azk.a($$0, 0.0, (double)this.i());
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> fqg.c<T1, T2, T3> a(ear<T1> $$0, ear<T2> $$1, ear<T3> $$2) {
+      return new fqg.c<>($$0, $$1, $$2);
    }
 
-   public boolean c(double $$0, double $$1, int $$2) {
-      this.e = this.j() && this.g($$2) && $$0 >= (double)this.l() && $$0 <= (double)(this.l() + 6) && $$1 >= (double)this.G() && $$1 < (double)this.I();
-      return this.e;
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> fqg.d<T1, T2, T3, T4> a(
+      ear<T1> $$0, ear<T2> $$1, ear<T3> $$2, ear<T4> $$3
+   ) {
+      return new fqg.d<>($$0, $$1, $$2, $$3);
    }
 
-   public void h() {
-      this.a(this.a);
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>> fqg.e<T1, T2, T3, T4, T5> a(
+      ear<T1> $$0, ear<T2> $$1, ear<T3> $$2, ear<T4> $$3, ear<T5> $$4
+   ) {
+      return new fqg.e<>($$0, $$1, $$2, $$3, $$4);
    }
 
-   public int i() {
-      return Math.max(0, this.n() - this.h);
-   }
+   public static class a<T1 extends Comparable<T1>> extends fqg {
+      private final ear<T1> a;
 
-   protected boolean j() {
-      return this.i() > 0;
-   }
+      a(ear<T1> $$0) {
+         this.a = $$0;
+      }
 
-   protected int k() {
-      return azk.a((int)((float)(this.h * this.h) / (float)this.n()), 32, this.h - 8);
-   }
+      @Override
+      public List<ear<?>> b() {
+         return ImmutableList.of(this.a);
+      }
 
-   protected int l() {
-      return this.H() - 6;
-   }
+      public fqg.a<T1> a(T1 $$0, List<fqi> $$1) {
+         fqh $$2 = fqh.a(this.a.c($$0));
+         this.a($$2, $$1);
+         return this;
+      }
 
-   protected int m() {
-      return Math.max(this.G(), (int)this.a * (this.h - this.k()) / this.i() + this.G());
-   }
+      public fqg.a<T1> a(T1 $$0, fqi $$1) {
+         return this.a($$0, Collections.singletonList($$1));
+      }
 
-   protected void a(fpz $$0) {
-      if (this.j()) {
-         int $$1 = this.l();
-         int $$2 = this.k();
-         int $$3 = this.m();
-         $$0.a(goi::H, d, $$1, this.G(), 6, this.y());
-         $$0.a(goi::H, c, $$1, $$3, 6, $$2);
+      public fqg a(Function<T1, fqi> $$0) {
+         this.a.a().forEach($$1 -> this.a((T1)$$1, $$0.apply((T1)$$1)));
+         return this;
+      }
+
+      public fqg b(Function<T1, List<fqi>> $$0) {
+         this.a.a().forEach($$1 -> this.a((T1)$$1, $$0.apply((T1)$$1)));
+         return this;
       }
    }
 
-   protected abstract int n();
+   public static class b<T1 extends Comparable<T1>, T2 extends Comparable<T2>> extends fqg {
+      private final ear<T1> a;
+      private final ear<T2> b;
 
-   protected abstract double o();
+      b(ear<T1> $$0, ear<T2> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public List<ear<?>> b() {
+         return ImmutableList.of(this.a, this.b);
+      }
+
+      public fqg.b<T1, T2> a(T1 $$0, T2 $$1, List<fqi> $$2) {
+         fqh $$3 = fqh.a(this.a.c($$0), this.b.c($$1));
+         this.a($$3, $$2);
+         return this;
+      }
+
+      public fqg.b<T1, T2> a(T1 $$0, T2 $$1, fqi $$2) {
+         return this.a($$0, $$1, Collections.singletonList($$2));
+      }
+
+      public fqg a(BiFunction<T1, T2, fqi> $$0) {
+         this.a.a().forEach($$1 -> this.b.a().forEach($$2 -> this.a((T1)$$1, (T2)$$2, $$0.apply((T1)$$1, (T2)$$2))));
+         return this;
+      }
+
+      public fqg b(BiFunction<T1, T2, List<fqi>> $$0) {
+         this.a.a().forEach($$1 -> this.b.a().forEach($$2 -> this.a((T1)$$1, (T2)$$2, $$0.apply((T1)$$1, (T2)$$2))));
+         return this;
+      }
+   }
+
+   public static class c<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> extends fqg {
+      private final ear<T1> a;
+      private final ear<T2> b;
+      private final ear<T3> c;
+
+      c(ear<T1> $$0, ear<T2> $$1, ear<T3> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public List<ear<?>> b() {
+         return ImmutableList.of(this.a, this.b, this.c);
+      }
+
+      public fqg.c<T1, T2, T3> a(T1 $$0, T2 $$1, T3 $$2, List<fqi> $$3) {
+         fqh $$4 = fqh.a(this.a.c($$0), this.b.c($$1), this.c.c($$2));
+         this.a($$4, $$3);
+         return this;
+      }
+
+      public fqg.c<T1, T2, T3> a(T1 $$0, T2 $$1, T3 $$2, fqi $$3) {
+         return this.a($$0, $$1, $$2, Collections.singletonList($$3));
+      }
+
+      public fqg a(fqg.h<T1, T2, T3, fqi> $$0) {
+         this.a
+            .a()
+            .forEach($$1 -> this.b.a().forEach($$2 -> this.c.a().forEach($$3 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3)))));
+         return this;
+      }
+
+      public fqg b(fqg.h<T1, T2, T3, List<fqi>> $$0) {
+         this.a
+            .a()
+            .forEach($$1 -> this.b.a().forEach($$2 -> this.c.a().forEach($$3 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3)))));
+         return this;
+      }
+   }
+
+   public static class d<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> extends fqg {
+      private final ear<T1> a;
+      private final ear<T2> b;
+      private final ear<T3> c;
+      private final ear<T4> d;
+
+      d(ear<T1> $$0, ear<T2> $$1, ear<T3> $$2, ear<T4> $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Override
+      public List<ear<?>> b() {
+         return ImmutableList.of(this.a, this.b, this.c, this.d);
+      }
+
+      public fqg.d<T1, T2, T3, T4> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, List<fqi> $$4) {
+         fqh $$5 = fqh.a(this.a.c($$0), this.b.c($$1), this.c.c($$2), this.d.c($$3));
+         this.a($$5, $$4);
+         return this;
+      }
+
+      public fqg.d<T1, T2, T3, T4> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, fqi $$4) {
+         return this.a($$0, $$1, $$2, $$3, Collections.singletonList($$4));
+      }
+
+      public fqg a(fqg.g<T1, T2, T3, T4, fqi> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d.a().forEach($$4 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4)))
+                              )
+                     )
+            );
+         return this;
+      }
+
+      public fqg b(fqg.g<T1, T2, T3, T4, List<fqi>> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d.a().forEach($$4 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4)))
+                              )
+                     )
+            );
+         return this;
+      }
+   }
+
+   public static class e<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>>
+      extends fqg {
+      private final ear<T1> a;
+      private final ear<T2> b;
+      private final ear<T3> c;
+      private final ear<T4> d;
+      private final ear<T5> e;
+
+      e(ear<T1> $$0, ear<T2> $$1, ear<T3> $$2, ear<T4> $$3, ear<T5> $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      @Override
+      public List<ear<?>> b() {
+         return ImmutableList.of(this.a, this.b, this.c, this.d, this.e);
+      }
+
+      public fqg.e<T1, T2, T3, T4, T5> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, T5 $$4, List<fqi> $$5) {
+         fqh $$6 = fqh.a(this.a.c($$0), this.b.c($$1), this.c.c($$2), this.d.c($$3), this.e.c($$4));
+         this.a($$6, $$5);
+         return this;
+      }
+
+      public fqg.e<T1, T2, T3, T4, T5> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, T5 $$4, fqi $$5) {
+         return this.a($$0, $$1, $$2, $$3, $$4, Collections.singletonList($$5));
+      }
+
+      public fqg a(fqg.f<T1, T2, T3, T4, T5, fqi> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d
+                                       .a()
+                                       .forEach(
+                                          $$4 -> this.e
+                                                .a()
+                                                .forEach(
+                                                   $$5 -> this.a(
+                                                         (T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5)
+                                                      )
+                                                )
+                                       )
+                              )
+                     )
+            );
+         return this;
+      }
+
+      public fqg b(fqg.f<T1, T2, T3, T4, T5, List<fqi>> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d
+                                       .a()
+                                       .forEach(
+                                          $$4 -> this.e
+                                                .a()
+                                                .forEach(
+                                                   $$5 -> this.a(
+                                                         (T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5)
+                                                      )
+                                                )
+                                       )
+                              )
+                     )
+            );
+         return this;
+      }
+   }
+
+   @FunctionalInterface
+   public interface f<P1, P2, P3, P4, P5, R> {
+      R apply(P1 var1, P2 var2, P3 var3, P4 var4, P5 var5);
+   }
+
+   @FunctionalInterface
+   public interface g<P1, P2, P3, P4, R> {
+      R apply(P1 var1, P2 var2, P3 var3, P4 var4);
+   }
+
+   @FunctionalInterface
+   public interface h<P1, P2, P3, R> {
+      R apply(P1 var1, P2 var2, P3 var3);
+   }
 }

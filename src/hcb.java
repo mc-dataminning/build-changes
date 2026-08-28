@@ -1,3 +1,5 @@
-public class hcb extends hbk {
-   public cjd.a a = cjd.a.b;
+public class hcb extends hcp {
+   public boolean a = true;
+   public boolean b = true;
+   public float c;
 }

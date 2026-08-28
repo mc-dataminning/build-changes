@@ -1,80 +1,121 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class glu extends gnl {
+   private static final float a = 0.0025F;
+   private static final int b = 300;
+   private static final int F = 300;
+   private float G;
+   private final float H;
+   private final float I;
+   private final float J;
+   private boolean K;
+   private boolean L;
+   private double M;
+   private double N;
+   private double O;
 
-public abstract class glu extends glh {
-   protected float D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-
-   protected glu(ghz $$0, double $$1, double $$2, double $$3) {
+   protected glu(gjd $$0, double $$1, double $$2, double $$3, gng $$4, float $$5, float $$6, boolean $$7, boolean $$8, float $$9, float $$10) {
       super($$0, $$1, $$2, $$3);
-   }
-
-   protected glu(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public glu.a p() {
-      return glu.a.a;
+      this.a($$4.a(this.r.a(12), 12));
+      this.G = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
+      this.H = this.r.i();
+      this.I = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
+      this.J = $$6;
+      this.K = $$7;
+      this.L = $$8;
+      this.t = 300;
+      this.u = $$5 * 1.2F * 0.0025F;
+      float $$11 = $$9 * (this.r.h() ? 0.05F : 0.075F);
+      this.D = $$11;
+      this.b($$11, $$11);
+      this.B = 1.0F;
+      this.k = (double)(-$$10);
+      this.M = Math.cos(Math.toRadians((double)(this.H * 60.0F))) * (double)this.J;
+      this.N = Math.sin(Math.toRadians((double)(this.H * 60.0F))) * (double)this.J;
+      this.O = Math.toRadians((double)(1000.0F + this.H * 3000.0F));
    }
 
    @Override
-   public void a(fhs $$0, fml $$1, float $$2) {
-      Quaternionf $$3 = new Quaternionf();
-      this.p().setRotation($$3, $$1, $$2);
-      if (this.z != 0.0F) {
-         $$3.rotateZ(azk.h($$2, this.A, this.z));
+   public gmp b() {
+      return gmp.b;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
       }
 
-      this.a($$0, $$1, $$3, $$2);
+      if (!this.o) {
+         float $$0 = (float)(300 - this.t);
+         float $$1 = Math.min($$0 / 300.0F, 1.0F);
+         double $$2 = 0.0;
+         double $$3 = 0.0;
+         if (this.L) {
+            $$2 += this.M * Math.pow((double)$$1, 1.25);
+            $$3 += this.N * Math.pow((double)$$1, 1.25);
+         }
+
+         if (this.K) {
+            $$2 += (double)$$1 * Math.cos((double)$$1 * this.O) * (double)this.J;
+            $$3 += (double)$$1 * Math.sin((double)$$1 * this.O) * (double)this.J;
+         }
+
+         this.j += $$2 * 0.0025F;
+         this.l += $$3 * 0.0025F;
+         this.k = this.k - (double)this.u;
+         this.G = this.G + this.I / 20.0F;
+         this.A = this.z;
+         this.z = this.z + this.G / 20.0F;
+         this.a(this.j, this.k, this.l);
+         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
+            this.k();
+         }
+
+         if (!this.o) {
+            this.j = this.j * (double)this.B;
+            this.k = this.k * (double)this.B;
+            this.l = this.l * (double)this.B;
+         }
+      }
    }
 
-   protected void a(fhs $$0, fml $$1, Quaternionf $$2, float $$3) {
-      fcu $$4 = $$1.b();
-      float $$5 = (float)(azk.d((double)$$3, this.d, this.g) - $$4.a());
-      float $$6 = (float)(azk.d((double)$$3, this.e, this.h) - $$4.b());
-      float $$7 = (float)(azk.d((double)$$3, this.f, this.i) - $$4.c());
-      this.a($$0, $$2, $$5, $$6, $$7, $$3);
+   public static class a implements gmo<mb> {
+      private final gng a;
+
+      public a(gng $$0) {
+         this.a = $$0;
+      }
+
+      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new glu($$1, $$2, $$3, $$4, this.a, 0.25F, 2.0F, false, true, 1.0F, 0.0F);
+      }
    }
 
-   protected void a(fhs $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = this.b($$5);
-      float $$7 = this.c();
-      float $$8 = this.d();
-      float $$9 = this.e();
-      float $$10 = this.f();
-      int $$11 = this.a($$5);
-      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, -1.0F, $$6, $$8, $$10, $$11);
-      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, 1.0F, $$6, $$8, $$9, $$11);
-      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, 1.0F, $$6, $$7, $$9, $$11);
-      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, -1.0F, $$6, $$7, $$10, $$11);
+   public static class b implements gmo<mb> {
+      private final gng a;
+
+      public b(gng $$0) {
+         this.a = $$0;
+      }
+
+      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new glu($$1, $$2, $$3, $$4, this.a, 0.07F, 10.0F, true, false, 2.0F, 0.021F);
+      }
    }
 
-   private void a(fhs $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
-      Vector3f $$11 = new Vector3f($$5, $$6, 0.0F).rotate($$1).mul($$7).add($$2, $$3, $$4);
-      $$0.a($$11.x(), $$11.y(), $$11.z()).a($$8, $$9).a(this.v, this.w, this.x, this.y).c($$10);
-   }
+   public static class c implements gmo<lq> {
+      private final gng a;
 
-   public float b(float $$0) {
-      return this.D;
-   }
+      public c(gng $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   public glh d(float $$0) {
-      this.D *= $$0;
-      return super.d($$0);
-   }
-
-   protected abstract float c();
-
-   protected abstract float d();
-
-   protected abstract float e();
-
-   protected abstract float f();
-
-   public interface a {
-      glu.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
-      glu.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
-
-      void setRotation(Quaternionf var1, fml var2, float var3);
+      public gml a(lq $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gml $$8 = new glu($$1, $$2, $$3, $$4, this.a, 0.07F, 10.0F, true, false, 2.0F, 0.021F);
+         $$8.a($$0.b(), $$0.c(), $$0.d());
+         return $$8;
+      }
    }
 }

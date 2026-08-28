@@ -1,88 +1,52 @@
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public abstract class heq {
-   private final boolean a;
+public class heq {
+   private final Function<ale, hep> a;
+   private final Function<ale, hel.a> b;
 
-   protected heq(boolean $$0) {
-      this.a = $$0;
+   public heq(hkn $$0) {
+      this.a = $$0::a;
+      this.b = $$0::b;
    }
 
-   public float a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3) {
-      bvs $$4 = (bvs)($$2 != null ? $$2 : $$0.J());
-      if ($$4 == null) {
-         return 0.0F;
-      } else {
-         if ($$1 == null && $$4.dV() instanceof ghz $$5) {
-            $$1 = $$5;
-         }
+   public void a(hes $$0, cys $$1, cyq $$2, boolean $$3, bwz $$4) {
+      this.a($$0, $$1, $$2, $$3, $$4.dV(), $$4, $$4.ar() + $$2.ordinal());
+   }
 
-         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
+   public void a(hes $$0, cys $$1, cyq $$2, bwa $$3) {
+      this.a($$0, $$1, $$2, false, $$3.dV(), null, $$3.ar());
+   }
+
+   public void a(hes $$0, cys $$1, cyq $$2, boolean $$3, @Nullable dip $$4, @Nullable bwz $$5, int $$6) {
+      $$0.b();
+      if (!$$1.f()) {
+         $$0.a = $$2;
+         $$0.b = $$3;
+         this.a($$0, $$1, $$2, $$4, $$5, $$6);
       }
    }
 
-   protected abstract float a(cxy var1, ghz var2, int var3, bvs var4);
-
-   protected boolean b() {
-      return this.a;
+   private static void b(cys $$0) {
+      if ($$0.h() instanceof cxa $$1 && $$1.c() instanceof dkq) {
+         dbs $$2 = $$0.a(kj.ak);
+         if ($$2 != null && !$$2.b()) {
+            $$0.e(kj.ak);
+            $$2.a().thenAcceptAsync($$1x -> $$0.b(kj.ak, $$1x), fof.Q());
+         }
+      }
    }
 
-   protected heq.a a(float $$0) {
-      return this.a ? b($$0) : c();
+   public void a(hes $$0, cys $$1, cyq $$2, @Nullable dip $$3, @Nullable bwz $$4, int $$5) {
+      b($$1);
+      ale $$6 = $$1.a(kj.i);
+      if ($$6 != null) {
+         this.a.apply($$6).a($$0, $$1, this, $$2, $$3 instanceof gjd $$7 ? $$7 : null, $$4, $$5);
+      }
    }
 
-   public static heq.a b(final float $$0) {
-      return new heq.a() {
-         private float b;
-         private float c;
-         private long d;
-
-         @Override
-         public float a() {
-            return this.b;
-         }
-
-         @Override
-         public boolean a(long $$0x) {
-            return this.d != $$0;
-         }
-
-         @Override
-         public void a(long $$0x, float $$1) {
-            this.d = $$0;
-            float $$2 = azk.b($$1 - this.b + 0.5F, 1.0F) - 0.5F;
-            this.c += $$2 * 0.1F;
-            this.c = this.c * $$0;
-            this.b = azk.b(this.b + this.c, 1.0F);
-         }
-      };
-   }
-
-   public static heq.a c() {
-      return new heq.a() {
-         private float a;
-
-         @Override
-         public float a() {
-            return this.a;
-         }
-
-         @Override
-         public boolean a(long $$0) {
-            return true;
-         }
-
-         @Override
-         public void a(long $$0, float $$1) {
-            this.a = $$1;
-         }
-      };
-   }
-
-   public interface a {
-      float a();
-
-      boolean a(long var1);
-
-      void a(long var1, float var3);
+   public boolean a(cys $$0) {
+      ale $$1 = $$0.a(kj.i);
+      return $$1 == null ? true : this.b.apply($$1).a();
    }
 }

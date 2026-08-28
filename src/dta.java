@@ -1,86 +1,142 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class dta extends dku {
-   public static final MapCodec<dta> a = b(dta::new);
-   public static final dzm b = dzc.az;
-   private static final fdo c = dku.b(12.0, 0.0, 16.0);
+public abstract class dta extends dlg implements dtb {
+   public static final eaf d = eae.I;
+   private static final feq a = dlu.b(8.0, 0.0, 16.0);
+   private final ebc b;
 
-   @Override
-   public MapCodec<dta> a() {
-      return a;
-   }
-
-   protected dta(dyl.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, Integer.valueOf(0)));
-   }
-
-   @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return c;
+   protected dta(ebc $$0, dzn.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected void a(dym $$0, arn $$1, jj $$2, azs $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
+   protected abstract MapCodec<? extends dta> a();
 
    @Override
-   protected void b(dym $$0, arn $$1, jj $$2, azs $$3) {
-      if ($$1.u($$2.d())) {
-         int $$4 = 1;
-
-         while ($$1.a_($$2.c($$4)).a(this)) {
-            $$4++;
-         }
-
-         if ($$4 < 3) {
-            int $$5 = $$0.c(b);
-            if ($$5 == 15) {
-               $$1.b($$2.d(), this.m());
-               $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 260);
-            } else {
-               $$1.a($$2, $$0.b(b, Integer.valueOf($$5 + 1)), 260);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      if (!$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, evw.c, evw.c.a($$1));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean a(dym $$0, dhs $$1, jj $$2) {
-      dym $$3 = $$1.a_($$2.e());
-      if ($$3.a(this)) {
-         return true;
-      } else {
-         if ($$3.a(awz.ah) || $$3.a(awz.J)) {
-            jj $$4 = $$2.e();
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return a;
+   }
 
-            for (jo $$5 : jo.c.a) {
-               dym $$6 = $$1.a_($$4.a($$5));
-               eut $$7 = $$1.b_($$4.a($$5));
-               if ($$7.a(axf.a) || $$6.a(dkw.lk)) {
-                  return true;
+   @Override
+   public boolean a(dzo $$0) {
+      return true;
+   }
+
+   @Override
+   public dwn a(iu $$0, dzo $$1) {
+      return new dyb($$0, $$1);
+   }
+
+   @Override
+   protected bty a(cys $$0, dzo $$1, dip $$2, iu $$3, cqs $$4, btx $$5, fds $$6) {
+      if ($$2.c_($$3) instanceof dyb $$7) {
+         czu $$10 = $$0.h() instanceof czu $$9 ? $$9 : null;
+         boolean $$11 = $$10 != null && $$4.gv();
+         if (!$$2.C) {
+            if ($$11 && !$$7.u() && !this.a($$4, $$7)) {
+               boolean $$12 = $$7.a($$4);
+               if ($$10.a($$7.a($$12), $$4) && $$10.a($$2, $$7, $$12, $$4)) {
+                  $$7.a($$4, $$2, $$3, $$12);
+                  $$4.b(awv.c.b($$0.h()));
+                  $$2.a(eeo.c, $$7.aw_(), eeo.a.a($$4, $$7.m()));
+                  $$0.a(1, $$4);
+                  return bty.a;
+               } else {
+                  return bty.f;
                }
+            } else {
+               return bty.f;
             }
+         } else {
+            return !$$11 && !$$7.u() ? bty.c : bty.a;
          }
-
-         return false;
+      } else {
+         return bty.e;
       }
    }
 
    @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b);
+   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
+      if ($$1.c_($$2) instanceof dyb $$5) {
+         if ($$1.C) {
+            af.b(new IllegalStateException("Expected to only call this on server"));
+         }
+
+         boolean $$7 = $$5.a($$3);
+         boolean $$8 = $$5.a($$3, $$1, $$2, $$7);
+         if ($$5.u()) {
+            $$1.a(null, $$5.aw_(), $$5.d(), awm.e);
+            return bty.b;
+         } else if ($$8) {
+            return bty.b;
+         } else if (!this.a($$3, $$5) && $$3.gv() && this.b($$3, $$5, $$7)) {
+            this.a($$3, $$5, $$7);
+            return bty.b;
+         } else {
+            return bty.e;
+         }
+      } else {
+         return bty.e;
+      }
+   }
+
+   private boolean b(cqs $$0, dyb $$1, boolean $$2) {
+      dyc $$3 = $$1.a($$2);
+      return Arrays.stream($$3.b($$0.aa())).allMatch($$0x -> $$0x.equals(wv.a) || $$0x.b() instanceof yd);
+   }
+
+   public abstract float h(dzo var1);
+
+   public fdw o(dzo $$0) {
+      return new fdw(0.5, 0.5, 0.5);
+   }
+
+   @Override
+   protected evv b_(dzo $$0) {
+      return $$0.c(d) ? evw.c.a(false) : super.b_($$0);
+   }
+
+   public ebc d() {
+      return this.b;
+   }
+
+   public static ebc a(dlu $$0) {
+      ebc $$1;
+      if ($$0 instanceof dta) {
+         $$1 = ((dta)$$0).d();
+      } else {
+         $$1 = ebc.b;
+      }
+
+      return $$1;
+   }
+
+   public void a(cqs $$0, dyb $$1, boolean $$2) {
+      $$1.a($$0.cG());
+      $$0.a($$1, $$2);
+   }
+
+   private boolean a(cqs $$0, dyb $$1) {
+      UUID $$2 = $$1.t();
+      return $$2 != null && !$$2.equals($$0.cG());
+   }
+
+   @Nullable
+   @Override
+   public <T extends dwn> dwo<T> a(dip $$0, dzo $$1, dwp<T> $$2) {
+      return a($$2, dwp.h, dyb::a);
    }
 }

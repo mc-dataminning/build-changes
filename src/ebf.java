@@ -1,18 +1,15 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Map;
-import javax.annotation.Nullable;
+public enum ebf {
+   a(4259712),
+   b(16724016),
+   c(2138367);
 
-public interface ebf {
-   @Nullable
-   epo a(epg var1);
+   private final int d;
 
-   void a(epg var1, epo var2);
+   private ebf(final int $$0) {
+      this.d = $$0;
+   }
 
-   LongSet b(epg var1);
-
-   void a(epg var1, long var2);
-
-   Map<epg, LongSet> h();
-
-   void b(Map<epg, LongSet> var1);
+   public int a() {
+      return this.d;
+   }
 }

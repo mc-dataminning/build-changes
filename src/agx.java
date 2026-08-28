@@ -1,34 +1,20 @@
-public class agx implements zc<agm> {
-   public static final yt<vr, agx> a = zc.a(agx::a, agx::new);
-   private final agx.a b;
+public record agx(float b) implements zd<agn> {
+   public static final yu<vs, agx> a = zd.a(agx::a, agx::new);
 
-   public agx(agx.a $$0) {
-      this.b = $$0;
+   private agx(vs $$0) {
+      this($$0.readFloat());
    }
 
-   private agx(vr $$0) {
-      this.b = $$0.b(agx.a.class);
-   }
-
-   private void a(vr $$0) {
+   private void a(vs $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public ze<agx> a() {
-      return agk.bu;
+   public zf<agx> a() {
+      return agl.bt;
    }
 
-   public void a(agm $$0) {
+   public void a(agn $$0) {
       $$0.a(this);
-   }
-
-   public agx.a b() {
-      return this.b;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

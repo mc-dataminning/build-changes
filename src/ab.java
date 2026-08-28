@@ -8,22 +8,22 @@ public class ab {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 4304;
+   public static final int b = 4308;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "25w03a";
+   public static final String d = "25w04a";
    @Deprecated
    public static final int e = 770;
    @Deprecated
-   public static final int f = 230;
+   public static final int f = 231;
    public static final int g = 4292;
    private static final int bl = 30;
    public static final boolean h = true;
    @Deprecated
-   public static final int i = 48;
+   public static final int i = 49;
    @Deprecated
-   public static final int j = 63;
+   public static final int j = 64;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -156,10 +156,10 @@ public class ab {
    }
 
    public static int c() {
-      return 1073742054;
+      return 1073742055;
    }
 
-   public static boolean a(dgw $$0) {
+   public static boolean a(dhw $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !ar ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;
@@ -168,6 +168,6 @@ public class ab {
    static {
       ResourceLeakDetector.setLevel(aH);
       CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES = false;
-      CommandSyntaxException.BUILT_IN_EXCEPTIONS = new er();
+      CommandSyntaxException.BUILT_IN_EXCEPTIONS = new ec();
    }
 }

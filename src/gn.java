@@ -1,109 +1,94 @@
-import com.google.gson.JsonObject;
 import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
 
-public class gn implements ArgumentType<Integer> {
-   private static final Collection<String> a = Arrays.asList("0d", "0s", "0t", "0");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wv.c("argument.time.invalid_unit"));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wv.b("argument.time.tick_count_too_low", $$1, $$0));
-   private static final Object2IntMap<String> d = new Object2IntOpenHashMap();
-   final int e;
+public class gn {
+   private static final char c = '~';
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("argument.pos.missing.double"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ww.c("argument.pos.missing.int"));
+   private final boolean d;
+   private final double e;
 
-   private gn(int $$0) {
-      this.e = $$0;
+   public gn(boolean $$0, double $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static gn a() {
-      return new gn(0);
+   public double a(double $$0) {
+      return this.d ? this.e + $$0 : this.e;
    }
 
-   public static gn a(int $$0) {
-      return new gn($$0);
+   public static gn a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '^') {
+         throw gm.b.createWithContext($$0);
+      } else if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         boolean $$2 = b($$0);
+         int $$3 = $$0.getCursor();
+         double $$4 = $$0.canRead() && $$0.peek() != ' ' ? $$0.readDouble() : 0.0;
+         String $$5 = $$0.getString().substring($$3, $$0.getCursor());
+         if ($$2 && $$5.isEmpty()) {
+            return new gn(true, 0.0);
+         } else {
+            if (!$$5.contains(".") && !$$2 && $$1) {
+               $$4 += 0.5;
+            }
+
+            return new gn($$2, $$4);
+         }
+      }
    }
 
-   public Integer a(StringReader $$0) throws CommandSyntaxException {
-      float $$1 = $$0.readFloat();
-      String $$2 = $$0.readUnquotedString();
-      int $$3 = d.getOrDefault($$2, 0);
-      if ($$3 == 0) {
+   public static gn a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '^') {
+         throw gm.b.createWithContext($$0);
+      } else if (!$$0.canRead()) {
          throw b.createWithContext($$0);
       } else {
-         int $$4 = Math.round($$1 * (float)$$3);
-         if ($$4 < this.e) {
-            throw c.createWithContext($$0, $$4, this.e);
+         boolean $$1 = b($$0);
+         double $$2;
+         if ($$0.canRead() && $$0.peek() != ' ') {
+            $$2 = $$1 ? $$0.readDouble() : (double)$$0.readInt();
          } else {
-            return $$4;
+            $$2 = 0.0;
          }
+
+         return new gn($$1, $$2);
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      StringReader $$2 = new StringReader($$1.getRemaining());
-
-      try {
-         $$2.readFloat();
-      } catch (CommandSyntaxException var5) {
-         return $$1.buildFuture();
+   public static boolean b(StringReader $$0) {
+      boolean $$1;
+      if ($$0.peek() == '~') {
+         $$1 = true;
+         $$0.skip();
+      } else {
+         $$1 = false;
       }
 
-      return fc.b(d.keySet(), $$1.createOffset($$1.getStart() + $$2.getCursor()));
+      return $$1;
    }
 
-   public Collection<String> getExamples() {
-      return a;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof gn $$1)) {
+         return false;
+      } else {
+         return this.d != $$1.d ? false : Double.compare($$1.e, this.e) == 0;
+      }
    }
 
-   static {
-      d.put("d", 24000);
-      d.put("s", 20);
-      d.put("t", 1);
-      d.put("", 1);
+   @Override
+   public int hashCode() {
+      int $$0 = this.d ? 1 : 0;
+      long $$1 = Double.doubleToLongBits(this.e);
+      return 31 * $$0 + (int)($$1 ^ $$1 >>> 32);
    }
 
-   public static class a implements iu<gn, gn.a.a> {
-      public void a(gn.a.a $$0, vr $$1) {
-         $$1.q($$0.b);
-      }
-
-      public gn.a.a a(vr $$0) {
-         int $$1 = $$0.readInt();
-         return new gn.a.a($$1);
-      }
-
-      public void a(gn.a.a $$0, JsonObject $$1) {
-         $$1.addProperty("min", $$0.b);
-      }
-
-      public gn.a.a a(gn $$0) {
-         return new gn.a.a($$0.e);
-      }
-
-      public final class a implements iu.a<gn> {
-         final int b;
-
-         a(final int $$1) {
-            this.b = $$1;
-         }
-
-         public gn a(et $$0) {
-            return gn.a(this.b);
-         }
-
-         @Override
-         public iu<gn, ?> a() {
-            return a.this;
-         }
-      }
+   public boolean a() {
+      return this.d;
    }
 }

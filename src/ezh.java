@@ -1,30 +1,64 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class ezh extends eyy {
-   public static final MapCodec<ezh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ku.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, ezh::new)
-   );
-   private final ku b;
+public class ezh extends eyw {
+   public static final MapCodec<ezh> a = a(ezh::new);
 
-   private ezh(List<fau> $$0, ku $$1) {
-      super($$0);
-      this.b = $$1;
+   ezh(List<ezd> $$0, List<fbw> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public eza<ezh> b() {
-      return ezb.k;
+   public eze a() {
+      return ezb.h;
    }
 
    @Override
-   public cxy a(cxy $$0, exl $$1) {
-      $$0.a(this.b);
-      return $$0;
+   protected eyv a(List<? extends eyv> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (eyv)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (eyv $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+      };
    }
 
-   public static <T> eyy.a<?> a(kw<T> $$0, T $$1) {
-      return a($$2 -> new ezh($$2, ku.a().a($$0, $$1).a()));
+   public static ezh.a a(ezd.a<?>... $$0) {
+      return new ezh.a($$0);
+   }
+
+   public static class a extends ezd.a<ezh.a> {
+      private final Builder<ezd> a = ImmutableList.builder();
+
+      public a(ezd.a<?>... $$0) {
+         for (ezd.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected ezh.a a() {
+         return this;
+      }
+
+      @Override
+      public ezh.a c(ezd.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public ezd b() {
+         return new ezh(this.a.build(), this.f());
+      }
    }
 }

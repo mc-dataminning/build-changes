@@ -1,44 +1,37 @@
-import java.util.List;
+public class aed implements zd<abs> {
+   public static final yu<vs, aed> a = zd.a(aed::a, aed::new);
+   private final int b;
+   private final double c;
 
-public record aed(List<aed.a> b, boolean c) implements zc<abr> {
-   public static final yt<wg, aed> a = yt.a(aed.a.c.a(yr.a()), aed::b, yr.b, aed::e, aed::new);
-
-   @Override
-   public ze<aed> a() {
-      return agk.ak;
+   public aed(int $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(abr $$0) {
+   private aed(vs $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+   }
+
+   private void a(vs $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public zf<aed> a() {
+      return agl.bj;
+   }
+
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
-   public static record a(dds d, byte e) {
-      public static final byte a = 1;
-      public static final byte b = 2;
-      public static final yt<wg, aed.a> c = yt.a(dds.a, aed.a::c, yr.c, aed.a::d, aed.a::new);
-
-      public a(dds $$0, boolean $$1, boolean $$2) {
-         this($$0, (byte)(($$1 ? 1 : 0) | ($$2 ? 2 : 0)));
-      }
-
-      public boolean a() {
-         return (this.e & 1) != 0;
-      }
-
-      public boolean b() {
-         return (this.e & 2) != 0;
-      }
-
-      public dds c() {
-         return this.d;
-      }
-
-      public byte d() {
-         return this.e;
-      }
+   public double e() {
+      return this.c;
    }
 }

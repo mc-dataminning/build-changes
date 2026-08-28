@@ -1,36 +1,52 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class bsv {
-   private static final Codec<Either<Integer, bsv>> a = Codec.either(Codec.INT, md.K.q().dispatch(bsv::c, bsw::codec));
-   public static final Codec<bsv> c = a.xmap(
-      $$0 -> (bsv)$$0.map(bss::a, $$0x -> $$0x), $$0 -> $$0.c() == bsw.a ? Either.left(((bss)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<bsv> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<bsv> e = b(1, Integer.MAX_VALUE);
+public class bsv extends btd {
+   public static final MapCodec<bsv> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bsv::new)
+      )
+      .validate(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0)
+      );
+   private final int b;
+   private final int f;
 
-   public static Codec<bsv> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
+   private bsv(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
    }
 
-   public static <T extends bsv> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return $$2.validate($$2x -> a($$0, $$1, $$2x));
+   public static bsv a(int $$0, int $$1) {
+      return new bsv($$0, $$1);
    }
 
-   private static <T extends bsv> DataResult<T> a(int $$0, int $$1, T $$2) {
-      if ($$2.a() < $$0) {
-         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-      } else {
-         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-      }
+   @Override
+   public int a(azt $$0) {
+      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
    }
 
-   public abstract int a(azs var1);
+   @Override
+   public int a() {
+      return this.b;
+   }
 
-   public abstract int a();
+   @Override
+   public int b() {
+      return this.f;
+   }
 
-   public abstract int b();
+   @Override
+   public bte<?> c() {
+      return bte.c;
+   }
 
-   public abstract bsw<?> c();
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
+   }
 }

@@ -1,65 +1,80 @@
-public abstract class hkc extends hjy {
-   private static final float o = 0.0F;
-   private static final float p = 1.2F;
-   private static final float q = 0.0F;
-   protected final cih n;
-   private boolean r;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public hkc(cih $$0, awj $$1, awl $$2) {
-      super($$1, $$2, hkp.t());
-      this.n = $$0;
-      this.f = (double)((float)$$0.dA());
-      this.g = (double)((float)$$0.dC());
-      this.h = (double)((float)$$0.dG());
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+public class hkc {
+   private static final Logger a = LogUtils.getLogger();
+   private static final akx b = akx.a("items");
+
+   public static CompletableFuture<hkc.a> a(avb $$0, Executor $$1) {
+      js.b $$2 = gjg.a().a();
+      return CompletableFuture.<Map<ale, auz>>supplyAsync(() -> b.a($$0), $$1)
+         .thenCompose(
+            $$2x -> {
+               List<CompletableFuture<hkc.b>> $$3 = new ArrayList<>($$2x.size());
+               $$2x.forEach(
+                  ($$3x, $$4) -> $$3.add(
+                        CompletableFuture.supplyAsync(
+                           () -> {
+                              ale $$3xx = b.b($$3x);
+
+                              try {
+                                 hkc.b var8;
+                                 try (Reader $$4x = $$4.e()) {
+                                    azp $$5 = new azp($$2);
+                                    DynamicOps<JsonElement> $$6 = $$5.a(JsonOps.INSTANCE);
+                                    hel $$7 = hel.a
+                                       .parse($$6, JsonParser.parseReader($$4x))
+                                       .ifError(
+                                          $$2xxxx -> a.error(
+                                                "Couldn't parse item model '{}' from pack '{}': {}", new Object[]{$$3xx, $$4.b(), $$2xxxx.message()}
+                                             )
+                                       )
+                                       .result()
+                                       .map($$1xxxx -> $$5.b() ? $$1xxxx.a($$5.a()) : $$1xxxx)
+                                       .orElse(null);
+                                    var8 = new hkc.b($$3xx, $$7);
+                                 }
+
+                                 return var8;
+                              } catch (Exception var11) {
+                                 a.error("Failed to open item model {} from pack '{}'", new Object[]{$$3x, $$4.b(), var11});
+                                 return new hkc.b($$3xx, null);
+                              }
+                           },
+                           $$1
+                        )
+                     )
+               );
+               return af.d($$3).thenApply($$0xx -> {
+                  Map<ale, hel> $$1xx = new HashMap<>();
+
+                  for (hkc.b $$2xx : $$0xx) {
+                     if ($$2xx.b != null) {
+                        $$1xx.put($$2xx.a, $$2xx.b);
+                     }
+                  }
+
+                  return new hkc.a($$1xx);
+               });
+            }
+         );
    }
 
-   @Override
-   public void q() {
-      boolean $$0 = this.p();
-      if ($$0 && !this.m()) {
-         fnd.Q().ak().a((hkq)this.o());
-         this.r = true;
-      }
-
-      if (!this.n.dQ() && !this.r) {
-         this.f = (double)((float)this.n.dA());
-         this.g = (double)((float)this.n.dC());
-         this.h = (double)((float)this.n.dG());
-         float $$1 = (float)this.n.dy().i();
-         if ($$1 >= 0.01F) {
-            this.e = azk.h(azk.a($$1, this.u(), this.v()), this.u(), this.v());
-            this.d = azk.h(azk.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
-         } else {
-            this.e = 0.0F;
-            this.d = 0.0F;
-         }
-      } else {
-         this.n();
-      }
+   public static record a(Map<ale, hel> a) {
    }
 
-   private float u() {
-      return this.n.n_() ? 1.1F : 0.7F;
+   static record b(ale a, @Nullable hel b) {
    }
-
-   private float v() {
-      return this.n.n_() ? 1.5F : 1.1F;
-   }
-
-   @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public boolean s() {
-      return !this.n.bb();
-   }
-
-   protected abstract hjy o();
-
-   protected abstract boolean p();
 }

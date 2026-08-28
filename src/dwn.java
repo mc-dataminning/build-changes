@@ -1,15 +1,287 @@
-public interface dwn extends btj {
-   fcp y_ = dku.b(16.0, 11.0, 32.0).e().get(0);
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   default fcp ah_() {
-      return y_;
+public abstract class dwn {
+   private static final Logger d = LogUtils.getLogger();
+   private final dwp<?> e;
+   @Nullable
+   protected dip n;
+   protected final iu o;
+   protected boolean p;
+   private dzo f;
+   private kg g = kg.a;
+
+   public dwn(dwp<?> $$0, iu $$1, dzo $$2) {
+      this.e = $$0;
+      this.o = $$1.j();
+      this.a($$2);
+      this.f = $$2;
    }
 
-   double C();
+   private void a(dzo $$0) {
+      if (!this.b($$0)) {
+         throw new IllegalStateException("Invalid block entity " + this.k() + " state at " + this.o + ", got " + $$0);
+      }
+   }
 
-   double D();
+   public boolean b(dzo $$0) {
+      return this.e.a($$0);
+   }
 
-   double E();
+   public static iu b(tx $$0) {
+      return new iu($$0.h("x"), $$0.h("y"), $$0.h("z"));
+   }
 
-   boolean F();
+   @Nullable
+   public dip i() {
+      return this.n;
+   }
+
+   public void a(dip $$0) {
+      this.n = $$0;
+   }
+
+   public boolean l() {
+      return this.n != null;
+   }
+
+   protected void a(tx $$0, jg.a $$1) {
+   }
+
+   public final void c(tx $$0, jg.a $$1) {
+      this.a($$0, $$1);
+      dwn.a.a.parse($$1.a(ul.a), $$0).resultOrPartial($$0x -> d.warn("Failed to load components: {}", $$0x)).ifPresent($$0x -> this.g = $$0x);
+   }
+
+   public final void d(tx $$0, jg.a $$1) {
+      this.a($$0, $$1);
+   }
+
+   protected void b(tx $$0, jg.a $$1) {
+   }
+
+   public final tx b(jg.a $$0) {
+      tx $$1 = this.d($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   public final tx c(jg.a $$0) {
+      tx $$1 = this.d($$0);
+      this.c($$1);
+      return $$1;
+   }
+
+   public final tx d(jg.a $$0) {
+      tx $$1 = new tx();
+      this.b($$1, $$0);
+      dwn.a.a.encodeStart($$0.a(ul.a), this.g).resultOrPartial($$0x -> d.warn("Failed to save components: {}", $$0x)).ifPresent($$1x -> $$1.a((tx)$$1x));
+      return $$1;
+   }
+
+   public final tx e(jg.a $$0) {
+      tx $$1 = new tx();
+      this.b($$1, $$0);
+      return $$1;
+   }
+
+   public final tx f(jg.a $$0) {
+      tx $$1 = this.e($$0);
+      this.d($$1);
+      return $$1;
+   }
+
+   private void c(tx $$0) {
+      ale $$1 = dwp.a(this.p());
+      if ($$1 == null) {
+         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
+      } else {
+         $$0.a("id", $$1.toString());
+      }
+   }
+
+   public static void a(tx $$0, dwp<?> $$1) {
+      $$0.a("id", dwp.a($$1).toString());
+   }
+
+   private void d(tx $$0) {
+      this.c($$0);
+      $$0.a("x", this.o.u());
+      $$0.a("y", this.o.v());
+      $$0.a("z", this.o.w());
+   }
+
+   @Nullable
+   public static dwn a(iu $$0, dzo $$1, tx $$2, jg.a $$3) {
+      String $$4 = $$2.l("id");
+      ale $$5 = ale.c($$4);
+      if ($$5 == null) {
+         d.error("Block entity has invalid type: {}", $$4);
+         return null;
+      } else {
+         return mf.j.b($$5).map($$3x -> {
+            try {
+               return $$3x.a($$0, $$1);
+            } catch (Throwable var5x) {
+               d.error("Failed to create block entity {}", $$4, var5x);
+               return null;
+            }
+         }).map($$3x -> {
+            try {
+               $$3x.c($$2, $$3);
+               return $$3x;
+            } catch (Throwable var5x) {
+               d.error("Failed to load data for block entity {}", $$4, var5x);
+               return null;
+            }
+         }).orElseGet(() -> {
+            d.warn("Skipping BlockEntity with id {}", $$4);
+            return null;
+         });
+      }
+   }
+
+   public void e() {
+      if (this.n != null) {
+         a(this.n, this.o, this.f);
+      }
+   }
+
+   protected static void a(dip $$0, iu $$1, dzo $$2) {
+      $$0.q($$1);
+      if (!$$2.l()) {
+         $$0.b($$1, $$2.b());
+      }
+   }
+
+   public iu aw_() {
+      return this.o;
+   }
+
+   public dzo m() {
+      return this.f;
+   }
+
+   @Nullable
+   public zd<abs> at_() {
+      return null;
+   }
+
+   public tx a(jg.a $$0) {
+      return new tx();
+   }
+
+   public boolean n() {
+      return this.p;
+   }
+
+   public void ar_() {
+      this.p = true;
+   }
+
+   public void o() {
+      this.p = false;
+   }
+
+   public void a(iu $$0, dzo $$1) {
+      if (this instanceof btr $$2 && this.n != null) {
+         btu.a(this.n, $$0, $$2);
+      }
+   }
+
+   public boolean a_(int $$0, int $$1) {
+      return false;
+   }
+
+   public void a(p $$0) {
+      $$0.a("Name", this::k);
+      if (this.n != null) {
+         p.a($$0, this.n, this.o, this.m());
+         p.a($$0, this.n, this.o, this.n.a_(this.o));
+      }
+   }
+
+   private String k() {
+      return mf.j.b(this.p()) + " // " + this.getClass().getCanonicalName();
+   }
+
+   public dwp<?> p() {
+      return this.e;
+   }
+
+   @Deprecated
+   public void c(dzo $$0) {
+      this.a($$0);
+      this.f = $$0;
+   }
+
+   protected void a(ke $$0) {
+   }
+
+   public final void a(cys $$0) {
+      this.a($$0.c(), $$0.d());
+   }
+
+   public final void a(kg $$0, kh $$1) {
+      final Set<ki<?>> $$2 = new HashSet<>();
+      $$2.add(kj.aa);
+      $$2.add(kj.aq);
+      final kg $$3 = kk.a($$0, $$1);
+      this.a(new ke() {
+         @Nullable
+         @Override
+         public <T> T a(ki<? extends T> $$0) {
+            $$2.add($$0);
+            return $$3.a($$0);
+         }
+
+         @Override
+         public <T> T a(ki<? extends T> $$0, T $$1) {
+            $$2.add($$0);
+            return $$3.a($$0, $$1);
+         }
+      });
+      kh $$4 = $$1.a($$2::contains);
+      this.g = $$4.e().a();
+   }
+
+   protected void a(kg.a $$0) {
+   }
+
+   @Deprecated
+   public void a(tx $$0) {
+   }
+
+   public final kg q() {
+      kg.a $$0 = kg.a();
+      $$0.a(this.g);
+      this.a($$0);
+      return $$0.a();
+   }
+
+   public kg r() {
+      return this.g;
+   }
+
+   public void a(kg $$0) {
+      this.g = $$0;
+   }
+
+   @Nullable
+   public static ww a(@Nullable uu $$0, jg.a $$1) {
+      return $$0 == null
+         ? null
+         : (ww)wy.a.parse($$1.a(ul.a), $$0).resultOrPartial($$0x -> d.warn("Failed to parse custom name, discarding: {}", $$0x)).orElse(null);
+   }
+
+   static class a {
+      public static final Codec<kg> a = kg.b.optionalFieldOf("components", kg.a).codec();
+
+      private a() {
+      }
+   }
 }

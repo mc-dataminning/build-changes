@@ -1,30 +1,31 @@
-import java.util.Objects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public interface fcz {
-   static fcz a() {
-      return fde.a;
+public record fcz(String b) implements fdb {
+   public static final MapCodec<fcz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(fcz::c)).apply($$0, fcz::new));
+
+   public static fdb a(String $$0) {
+      return new fcz($$0);
    }
 
-   static fcz a(bvs $$0) {
-      Objects.requireNonNull($$0);
-
-      return (fcz)(switch ($$0) {
-         case csh $$1 -> csh.b($$1.dV()) ? new fdi($$1, false) : new fde($$0, false);
-         default -> new fde($$0, false);
-      });
+   @Override
+   public fda a() {
+      return fdc.b;
    }
 
-   static fcz a(bvs $$0, boolean $$1) {
-      return new fde($$0, $$1);
+   @Override
+   public ffa a(eyn $$0) {
+      return ffa.c(this.b);
    }
 
-   boolean b();
+   @Override
+   public Set<bav<?>> b() {
+      return Set.of();
+   }
 
-   boolean a(fdo var1, jj var2, boolean var3);
-
-   boolean a(cxu var1);
-
-   boolean a(eut var1, eut var2);
-
-   fdo a(dym var1, dgz var2, jj var3);
+   public String c() {
+      return this.b;
+   }
 }

@@ -1,61 +1,43 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+import org.slf4j.Logger;
 
-public record fbc(Optional<Long> b, exk c) implements fau {
-   public static final MapCodec<fbc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(fbc::c), exk.a.fieldOf("value").forGetter(fbc::d)).apply($$0, fbc::new)
-   );
+public class fbc extends faa {
+   private static final Logger b = LogUtils.getLogger();
+   public static final MapCodec<fbc> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, fbc::new));
 
-   @Override
-   public fav b() {
-      return faw.q;
+   private fbc(List<fbw> $$0) {
+      super($$0);
    }
 
    @Override
-   public Set<bat<?>> a() {
-      return this.c.a();
+   public fac<fbc> b() {
+      return fad.l;
    }
 
-   public boolean a(exl $$0) {
-      arn $$1 = $$0.d();
-      long $$2 = $$1.af();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
+   @Override
+   public cys a(cys $$0, eyn $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         dec $$2 = new dec($$0);
+         Optional<ddo<ded>> $$3 = $$1.d().t().a(ddu.b, $$2, $$1.d());
+         if ($$3.isPresent()) {
+            cys $$4 = $$3.get().b().a($$2, $$1.d().F_());
+            if (!$$4.f()) {
+               return $$4.c($$0.M());
+            }
+         }
+
+         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         return $$0;
       }
-
-      return this.c.b($$0, (int)$$2);
    }
 
-   public static fbc.a a(exk $$0) {
-      return new fbc.a($$0);
-   }
-
-   public Optional<Long> c() {
-      return this.b;
-   }
-
-   public exk d() {
-      return this.c;
-   }
-
-   public static class a implements fau.a {
-      private Optional<Long> a = Optional.empty();
-      private final exk b;
-
-      public a(exk $$0) {
-         this.b = $$0;
-      }
-
-      public fbc.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public fbc a() {
-         return new fbc(this.a, this.b);
-      }
+   public static faa.a<?> c() {
+      return a(fbc::new);
    }
 }

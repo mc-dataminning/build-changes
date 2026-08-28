@@ -1,26 +1,35 @@
-import java.util.function.Consumer;
+public class fsp {
+   public static final int a = 8;
+   public static final int b = 8;
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 40;
+   public static final int f = 8;
+   public static final int g = 8;
+   public static final int h = 8;
+   public static final int i = 64;
+   public static final int j = 64;
 
-public class fsp implements fsq {
-   private final wv b;
-   protected final fua a = new fua();
-
-   public fsp(wv $$0) {
-      this.b = $$0;
+   public static void a(frc $$0, hja $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, -1);
    }
 
-   @Override
-   public wv a() {
-      return this.b;
+   public static void a(frc $$0, hja $$1, int $$2, int $$3, int $$4, int $$5) {
+      a($$0, $$1.a(), $$2, $$3, $$4, true, false, $$5);
    }
 
-   @Override
-   public void a(Consumer<fql> $$0) {
-      this.a.a($$0);
+   public static void a(frc $$0, ale $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, int $$7) {
+      int $$8 = 8 + ($$6 ? 8 : 0);
+      int $$9 = 8 * ($$6 ? -1 : 1);
+      $$0.a(gpn::H, $$1, $$2, $$3, 8.0F, (float)$$8, $$4, $$4, 8, $$9, 64, 64, $$7);
+      if ($$5) {
+         a($$0, $$1, $$2, $$3, $$4, $$6, $$7);
+      }
    }
 
-   @Override
-   public void a(fuu $$0) {
-      this.a.a();
-      ftz.a(this.a, $$0, 0.5F, 0.16666667F);
+   private static void a(frc $$0, ale $$1, int $$2, int $$3, int $$4, boolean $$5, int $$6) {
+      int $$7 = 8 + ($$5 ? 8 : 0);
+      int $$8 = 8 * ($$5 ? -1 : 1);
+      $$0.a(gpn::H, $$1, $$2, $$3, 40.0F, (float)$$7, $$4, $$4, 8, $$8, 64, 64, $$6);
    }
 }

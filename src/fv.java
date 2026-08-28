@@ -2,47 +2,41 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public interface fv<T extends dk<?>> extends ArgumentType<T> {
-   static fv.b a() {
-      return new fv.b();
+public class fv implements ArgumentType<String> {
+   private static final Collection<String> a = Arrays.asList("foo", "123");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ww.b("team.notFound", $$0));
+
+   public static fv a() {
+      return new fv();
    }
 
-   static fv.a b() {
-      return new fv.a();
-   }
-
-   public static class a implements fv<dk.c> {
-      private static final Collection<String> a = Arrays.asList("0..5.2", "0", "-5.4", "-100.76..", "..100");
-
-      public static dk.c a(CommandContext<ex> $$0, String $$1) {
-         return (dk.c)$$0.getArgument($$1, dk.c.class);
-      }
-
-      public dk.c a(StringReader $$0) throws CommandSyntaxException {
-         return dk.c.a($$0);
-      }
-
-      public Collection<String> getExamples() {
-         return a;
+   public static few a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      String $$2 = (String)$$0.getArgument($$1, String.class);
+      ffb $$3 = ((ei)$$0.getSource()).l().aJ();
+      few $$4 = $$3.b($$2);
+      if ($$4 == null) {
+         throw b.create($$2);
+      } else {
+         return $$4;
       }
    }
 
-   public static class b implements fv<dk.d> {
-      private static final Collection<String> a = Arrays.asList("0..5", "0", "-5", "-100..", "..100");
+   public String a(StringReader $$0) throws CommandSyntaxException {
+      return $$0.readUnquotedString();
+   }
 
-      public static dk.d a(CommandContext<ex> $$0, String $$1) {
-         return (dk.d)$$0.getArgument($$1, dk.d.class);
-      }
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return $$0.getSource() instanceof en ? en.b(((en)$$0.getSource()).r(), $$1) : Suggestions.empty();
+   }
 
-      public dk.d a(StringReader $$0) throws CommandSyntaxException {
-         return dk.d.a($$0);
-      }
-
-      public Collection<String> getExamples() {
-         return a;
-      }
+   public Collection<String> getExamples() {
+      return a;
    }
 }

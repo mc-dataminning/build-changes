@@ -1,124 +1,56 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class caq extends byi<cpu> {
-   private static final int c = 900;
-   private static final int d = 40;
-   @Nullable
-   private cxy e;
-   private final List<cxy> f = Lists.newArrayList();
-   private int g;
-   private int h;
-   private int i;
-
-   public caq(int $$0, int $$1) {
-      super(ImmutableMap.of(cft.r, cfu.a), $$0, $$1);
+@Deprecated
+public class caq {
+   public static byr<bwz> a(float $$0, btj $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   public boolean a(arn $$0, cpu $$1) {
-      bxr<?> $$2 = $$1.eb();
-      if ($$2.c(cft.r).isEmpty()) {
-         return false;
-      } else {
-         bwr $$3 = $$2.c(cft.r).get();
-         return $$3.aq() == bwb.bR && $$1.bK() && $$3.bK() && !$$1.n_() && $$1.g($$3) <= 17.0;
-      }
+   public static byr<bwz> a(bwj<?> $$0, float $$1, btj $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.aq()));
    }
 
-   public boolean a(arn $$0, cpu $$1, long $$2) {
-      return this.a($$0, $$1) && this.i > 0 && $$1.eb().c(cft.r).isPresent();
+   private static byr<bwz> a(float $$0, btj $$1, Predicate<bwz> $$2) {
+      float $$3 = $$0 * $$0;
+      caq.a $$4 = new caq.a($$1);
+      return ccd.a(
+         (Function<ccd.b<bwz>, ? extends App<ccd.c<bwz>, ccg<bwz>>>)($$3x -> $$3x.group($$3x.c(cgb.o), $$3x.b(cgb.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bwz> $$9 = $$3x.<cgd>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g($$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else if (!$$4.a($$6.A)) {
+                        return false;
+                     } else {
+                        $$4x.a(new bzb($$9.get(), true));
+                        return true;
+                     }
+                  }))
+      );
    }
 
-   public void b(arn $$0, cpu $$1, long $$2) {
-      super.d($$0, $$1, $$2);
-      this.d($$1);
-      this.g = 0;
-      this.h = 0;
-      this.i = 40;
-   }
+   public static final class a {
+      private final btj a;
+      private int b;
 
-   public void c(arn $$0, cpu $$1, long $$2) {
-      bwr $$3 = this.d($$1);
-      this.a($$3, $$1);
-      if (!this.f.isEmpty()) {
-         this.e($$1);
-      } else {
-         c($$1);
-         this.i = Math.min(this.i, 40);
-      }
-
-      this.i--;
-   }
-
-   public void d(arn $$0, cpu $$1, long $$2) {
-      super.b($$0, $$1, $$2);
-      $$1.eb().b(cft.r);
-      c($$1);
-      this.e = null;
-   }
-
-   private void a(bwr $$0, cpu $$1) {
-      boolean $$2 = false;
-      cxy $$3 = $$0.fa();
-      if (this.e == null || !cxy.b(this.e, $$3)) {
-         this.e = $$3;
-         $$2 = true;
-         this.f.clear();
-      }
-
-      if ($$2 && !this.e.f()) {
-         this.b($$1);
-         if (!this.f.isEmpty()) {
-            this.i = 900;
-            this.a($$1);
+      public a(btj $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
          }
       }
-   }
 
-   private void a(cpu $$0) {
-      a($$0, this.f.get(0));
-   }
-
-   private void b(cpu $$0) {
-      for (dgn $$1 : $$0.gr()) {
-         if (!$$1.r() && this.a($$1)) {
-            this.f.add($$1.h());
+      public boolean a(azt $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
          }
-      }
-   }
-
-   private boolean a(dgn $$0) {
-      return cxy.b(this.e, $$0.b()) || cxy.b(this.e, $$0.c());
-   }
-
-   private static void c(cpu $$0) {
-      $$0.a(bwc.a, cxy.k);
-      $$0.a(bwc.a, 0.085F);
-   }
-
-   private static void a(cpu $$0, cxy $$1) {
-      $$0.a(bwc.a, $$1);
-      $$0.a(bwc.a, 0.0F);
-   }
-
-   private bwr d(cpu $$0) {
-      bxr<?> $$1 = $$0.eb();
-      bwr $$2 = $$1.c(cft.r).get();
-      $$1.a(cft.o, new byt($$2, true));
-      return $$2;
-   }
-
-   private void e(cpu $$0) {
-      if (this.f.size() >= 2 && ++this.g >= 40) {
-         this.h++;
-         this.g = 0;
-         if (this.h > this.f.size() - 1) {
-            this.h = 0;
-         }
-
-         a($$0, this.f.get(this.h));
       }
    }
 }

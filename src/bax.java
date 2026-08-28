@@ -1,76 +1,86 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import com.google.common.collect.Sets;
+import java.util.IdentityHashMap;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public enum bax {
-   a(biq.a),
-   b(biq.b),
-   c(biq.c),
-   d(biq.d),
-   e(biq.e),
-   f(biq.f),
-   g(biq.g),
-   h(biq.h),
-   i(biq.i),
-   j(biq.j),
-   k(biq.k),
-   l(biq.l),
-   m(biq.m),
-   n(biq.o),
-   o(biq.n),
-   p(biq.p),
-   q(biq.q),
-   r(biq.O),
-   s(biq.r);
+public class bax {
+   private final Map<bav<?>, Object> a;
 
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
-
-   private bax(final TypeReference $$0) {
-      this.u = $$0;
+   bax(Map<bav<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   static int a() {
-      return ab.b().d().c();
+   public boolean a(bav<?> $$0) {
+      return this.a.containsKey($$0);
    }
 
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(bax.a())));
+   public <T> T b(bav<T> $$0) {
+      T $$1 = (T)this.a.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
+      } else {
+         return $$1;
+      }
+   }
+
+   @Nullable
+   public <T> T c(bav<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null; _,_->_")
+   public <T> T a(bav<T> $$0, @Nullable T $$1) {
+      return (T)this.a.getOrDefault($$0, $$1);
+   }
+
+   public static class a {
+      private final Map<bav<?>, Object> a = new IdentityHashMap<>();
+
+      public <T> bax.a a(bav<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public <T> bax.a b(bav<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.a.remove($$0);
+         } else {
+            this.a.put($$0, $$1);
          }
 
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = bax.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
+         return this;
+      }
+
+      public <T> T a(bav<T> $$0) {
+         T $$1 = (T)this.a.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
          }
-      };
-   }
+      }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
-   }
+      @Nullable
+      public <T> T b(bav<T> $$0) {
+         return (T)this.a.get($$0);
+      }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   public tw a(DataFixer $$0, tw $$1, int $$2, int $$3) {
-      return (tw)this.a($$0, new Dynamic(uk.a, $$1), $$2, $$3).getValue();
-   }
-
-   public tw a(DataFixer $$0, tw $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   static {
-      t = Set.of(a.u);
+      public bax a(baw $$0) {
+         Set<bav<?>> $$1 = Sets.difference(this.a.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<bav<?>> $$2 = Sets.difference($$0.a(), this.a.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new bax(this.a);
+            }
+         }
+      }
    }
 }

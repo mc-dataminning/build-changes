@@ -1,33 +1,48 @@
 import com.mojang.serialization.MapCodec;
 
-public class dsl extends dkh {
-   public static final MapCodec<dsl> b = b(dsl::new);
+public class dsl extends dlu {
+   public static final MapCodec<dsl> c = b(dsl::new);
+   public static final eam<ja.a> d = eae.K;
 
    @Override
-   public MapCodec<dsl> a() {
-      return b;
+   public MapCodec<? extends dsl> a() {
+      return c;
    }
 
-   public dsl(dyl.d $$0) {
-      super($$0, 2.0F);
-   }
-
-   @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      return this.a($$0, $$1, $$3) ? this.m() : dkw.a.m();
+   public dsl(dzn.d $$0) {
+      super($$0);
+      this.l(this.m().b(d, ja.a.b));
    }
 
    @Override
-   protected boolean a(dym $$0, dhs $$1, jj $$2) {
-      return o($$1.a_($$2.e()));
+   protected dzo a(dzo $$0, dsm $$1) {
+      return b($$0, $$1);
    }
 
-   public static boolean o(dym $$0) {
-      return $$0.a(awz.aV);
+   public static dzo b(dzo $$0, dsm $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((ja.a)$$0.c(d)) {
+               case a:
+                  return $$0.b(d, ja.a.c);
+               case c:
+                  return $$0.b(d, ja.a.a);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
+      }
    }
 
    @Override
-   protected boolean g(dym $$0) {
-      return true;
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   public dzo a(dcl $$0) {
+      return this.m().b(d, $$0.k().o());
    }
 }

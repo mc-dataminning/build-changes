@@ -1,53 +1,25 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
+public class cgp extends chb {
+   public static final float a = 8.0F;
 
-public class cgp<T extends bwr> extends cgz<T> {
-   private final BiPredicate<T, bwr> a;
-   private final Predicate<T> b;
-   private final cft<Boolean> c;
-   private final int d;
+   @Override
+   protected boolean a(aro $$0, bwz $$1, bwz $$2) {
+      return this.b($$1, $$2) && $$2.bj() && (this.b($$2) || this.a($$1, $$2)) && chh.c($$0, $$1, $$2);
+   }
 
-   public cgp(int $$0, BiPredicate<T, bwr> $$1, Predicate<T> $$2, cft<Boolean> $$3, int $$4) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
+   private boolean a(bwz $$0, bwz $$1) {
+      return !$$0.eb().a(cgb.V) && $$1.aq().a(axd.j);
+   }
+
+   private boolean b(bwz $$0) {
+      return $$0.aq().a(axd.i);
+   }
+
+   private boolean b(bwz $$0, bwz $$1) {
+      return $$1.g($$0) <= 64.0;
    }
 
    @Override
-   protected void a(arn $$0, T $$1) {
-      if (!this.b.test($$1)) {
-         this.c($$1);
-      } else {
-         this.a($$1);
-      }
-   }
-
-   @Override
-   public Set<cft<?>> a() {
-      return Set.of(cft.g);
-   }
-
-   @Override
-   public void a(T $$0) {
-      Optional<List<bwr>> $$1 = $$0.eb().c(cft.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
-         if ($$2) {
-            this.b($$0);
-         }
-      }
-   }
-
-   public void b(T $$0) {
-      $$0.eb().a(this.c, true, (long)this.d);
-   }
-
-   public void c(T $$0) {
-      $$0.eb().b(this.c);
+   protected cgb<bwz> b() {
+      return cgb.C;
    }
 }

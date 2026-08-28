@@ -1,181 +1,158 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
 
-public class gbk extends fwf {
-   private static final wv a = wv.c("selectWorld.experiments");
-   private static final wv b = wv.c("selectWorld.experiments.info").a(n.m);
-   private static final int c = 310;
-   private static final int d = 130;
-   private final fub s = new fub(this);
-   private final fwf u;
-   private final auk v;
-   private final Consumer<auk> w;
-   private final Object2BooleanMap<auh> x = new Object2BooleanLinkedOpenHashMap();
-   @Nullable
-   private gbk.a y;
+public class gbk extends fro {
+   private static final ale a = ale.b("recipe_book/slot_many_craftable");
+   private static final ale b = ale.b("recipe_book/slot_craftable");
+   private static final ale c = ale.b("recipe_book/slot_many_uncraftable");
+   private static final ale d = ale.b("recipe_book/slot_uncraftable");
+   private static final float e = 15.0F;
+   private static final int f = 25;
+   private static final ww m = ww.c("gui.recipebook.moreRecipes");
+   private gbl n = gbl.a;
+   private List<gbk.a> o = List.of();
+   private boolean p;
+   private final gbo q;
+   private float r;
 
-   public gbk(fwf $$0, auk $$1, Consumer<auk> $$2) {
-      super(a);
-      this.u = $$0;
-      this.v = $$1;
-      this.w = $$2;
+   public gbk(gbo $$0) {
+      super(0, 0, 25, 25, wv.a);
+      this.q = $$0;
+   }
 
-      for (auh $$3 : $$1.d()) {
-         if ($$3.l() == aul.d) {
-            this.x.put($$3, $$1.g().contains($$3));
-         }
+   public void a(gbl $$0, boolean $$1, gbi $$2, bax $$3) {
+      this.n = $$0;
+      List<deq> $$4 = $$0.a($$1 ? gbl.a.b : gbl.a.a);
+      this.o = $$4.stream().map($$1x -> new gbk.a($$1x.a(), $$1x.a($$3))).toList();
+      this.p = a(this.o);
+      List<der> $$5 = $$4.stream().map(deq::a).filter($$2.d()::b).toList();
+      if (!$$5.isEmpty()) {
+         $$5.forEach($$2::a);
+         this.r = 15.0F;
       }
    }
 
-   @Override
-   protected void aN_() {
-      this.s.a(a, this.p);
-      fuf $$0 = this.s.c(fuf.d());
-      $$0.a(new frh(b, this.p).d(310), $$0x -> $$0x.e(15));
-      gbp.a $$1 = gbp.a(299).a(2, true).b(4);
-      this.x.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.x.getBoolean($$1x), $$1xx -> this.x.put($$1x, $$1xx)).a($$1x.c()));
-      fuc $$2 = $$1.a().a();
-      this.y = new gbk.a($$2, 310, 130);
-      $$0.a(this.y);
-      fuf $$3 = this.s.b(fuf.e().a(8));
-      $$3.a(fqn.a(wu.d, $$0x -> this.m()).a());
-      $$3.a(fqn.a(wu.e, $$0x -> this.aK_()).a());
-      this.s.a($$1x -> {
-         fql var10000 = this.c($$1x);
-      });
-      this.c();
-   }
+   private static boolean a(List<gbk.a> $$0) {
+      Iterator<cys> $$1 = $$0.stream().flatMap($$0x -> $$0x.b().stream()).iterator();
+      if (!$$1.hasNext()) {
+         return true;
+      } else {
+         cys $$2 = $$1.next();
 
-   private static wv a(auh $$0) {
-      String $$1 = "dataPack." + $$0.g() + ".name";
-      return (wv)(hia.a($$1) ? wv.c($$1) : $$0.b());
-   }
-
-   @Override
-   protected void c() {
-      this.y.i(130);
-      this.s.a();
-      int $$0 = this.o - this.s.b() - this.y.J().c();
-      this.y.i(this.y.y() + $$0);
-      this.y.h();
-   }
-
-   @Override
-   public wv i() {
-      return wu.a(super.i(), b);
-   }
-
-   @Override
-   public void aK_() {
-      this.m.a(this.u);
-   }
-
-   private void m() {
-      List<auh> $$0 = new ArrayList<>(this.v.g());
-      List<auh> $$1 = new ArrayList<>();
-      this.x.forEach(($$2, $$3) -> {
-         $$0.remove($$2);
-         if ($$3) {
-            $$1.add($$2);
-         }
-      });
-      $$0.addAll(Lists.reverse($$1));
-      this.v.b($$0.stream().map(auh::g).toList());
-      this.w.accept(this.v);
-   }
-
-   public class a extends fqe {
-      private final List<fql> a = new ArrayList<>();
-      private final fuc c;
-
-      public a(final fuc $$1, final int $$2, final int $$3) {
-         super(0, 0, $$2, $$3, wu.a);
-         this.c = $$1;
-         $$1.a(this::a);
-      }
-
-      public void a(fql $$0) {
-         this.a.add($$0);
-      }
-
-      @Override
-      protected int n() {
-         return this.c.y();
-      }
-
-      @Override
-      protected double o() {
-         return 10.0;
-      }
-
-      @Override
-      protected void b(fpz $$0, int $$1, int $$2, float $$3) {
-         $$0.c(this.F(), this.G(), this.F() + this.g, this.G() + this.h);
-         $$0.c().a();
-         $$0.c().a(0.0, -this.g(), 0.0);
-
-         for (fql $$4 : this.a) {
-            $$4.a($$0, $$1, $$2, $$3);
-         }
-
-         $$0.c().b();
-         $$0.e();
-         this.a($$0);
-      }
-
-      @Override
-      protected void a(fuk $$0) {
-      }
-
-      @Override
-      public fuu b(fus $$0) {
-         return new fuu(this.F(), this.G(), this.g, this.n());
-      }
-
-      @Override
-      public void a(@Nullable fsk $$0) {
-         super.a($$0);
-         if ($$0 != null) {
-            fuu $$1 = this.J();
-            fuu $$2 = $$0.J();
-            int $$3 = (int)((double)$$2.b() - this.g() - (double)$$1.b());
-            int $$4 = (int)((double)$$2.c() - this.g() - (double)$$1.c());
-            if ($$3 < 0) {
-               this.a(this.g() + (double)$$3 - 14.0);
-            } else if ($$4 > 0) {
-               this.a(this.g() + (double)$$4 + 14.0);
+         while ($$1.hasNext()) {
+            cys $$3 = $$1.next();
+            if (!cys.c($$2, $$3)) {
+               return false;
             }
          }
+
+         return true;
+      }
+   }
+
+   public gbl a() {
+      return this.n;
+   }
+
+   @Override
+   public void b(frc $$0, int $$1, int $$2, float $$3) {
+      ale $$4;
+      if (this.n.a()) {
+         if (this.g()) {
+            $$4 = a;
+         } else {
+            $$4 = b;
+         }
+      } else if (this.g()) {
+         $$4 = c;
+      } else {
+         $$4 = d;
       }
 
-      @Override
-      public List<? extends fsk> aD_() {
-         return this.a;
+      boolean $$8 = this.r > 0.0F;
+      if ($$8) {
+         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.r / 15.0F * (float) Math.PI));
+         $$0.c().a();
+         $$0.c().a((float)(this.F() + 8), (float)(this.G() + 12), 0.0F);
+         $$0.c().b($$9, $$9, 1.0F);
+         $$0.c().a((float)(-(this.F() + 8)), (float)(-(this.G() + 12)), 0.0F);
+         this.r -= $$3;
       }
 
-      @Override
-      public void j(int $$0) {
-         super.j($$0);
-         this.c.j($$0);
-         this.c.a();
+      $$0.a(gpn::H, $$4, this.F(), this.G(), this.g, this.h);
+      cys $$10 = this.e();
+      int $$11 = 4;
+      if (this.g() && this.p) {
+         $$0.a($$10, this.F() + $$11 + 1, this.G() + $$11 + 1, 0, 10);
+         $$11--;
       }
 
-      @Override
-      public void k(int $$0) {
-         super.k($$0);
-         this.c.k($$0);
-         this.c.a();
+      $$0.b($$10, this.F() + $$11, this.G() + $$11);
+      if ($$8) {
+         $$0.c().b();
+      }
+   }
+
+   private boolean g() {
+      return this.o.size() > 1;
+   }
+
+   public boolean b() {
+      return this.o.size() == 1;
+   }
+
+   public der c() {
+      int $$0 = this.q.currentIndex() % this.o.size();
+      return this.o.get($$0).a;
+   }
+
+   public cys e() {
+      int $$0 = this.q.currentIndex();
+      int $$1 = this.o.size();
+      int $$2 = $$0 / $$1;
+      int $$3 = $$0 - $$1 * $$2;
+      return this.o.get($$3).a($$2);
+   }
+
+   public List<ww> a(cys $$0) {
+      List<ww> $$1 = new ArrayList<>(fxi.a(fof.Q(), $$0));
+      if (this.g()) {
+         $$1.add(m);
       }
 
-      @Override
-      public Collection<? extends fui> L() {
-         return this.a;
+      return $$1;
+   }
+
+   @Override
+   public void a(fvn $$0) {
+      $$0.a(fvm.a, ww.a("narration.recipe", this.e().y()));
+      if (this.g()) {
+         $$0.a(fvm.d, ww.c("narration.button.usage.hovered"), ww.c("narration.recipe.usage.more"));
+      } else {
+         $$0.a(fvm.d, ww.c("narration.button.usage.hovered"));
+      }
+   }
+
+   @Override
+   public int A() {
+      return 25;
+   }
+
+   @Override
+   protected boolean g(int $$0) {
+      return $$0 == 0 || $$0 == 1;
+   }
+
+   static record a(der a, List<cys> b) {
+
+      public cys a(int $$0) {
+         if (this.b.isEmpty()) {
+            return cys.k;
+         } else {
+            int $$1 = $$0 % this.b.size();
+            return this.b.get($$1);
+         }
       }
    }
 }

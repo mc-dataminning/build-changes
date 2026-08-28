@@ -1,9 +1,10 @@
-import java.util.stream.Stream;
+public record bpi<T>(String a) {
+   @Override
+   public String toString() {
+      return "<" + this.a + ">";
+   }
 
-public interface bpi<S> {
-   Stream<String> possibleValues(bpf<S> var1);
-
-   static <S> bpi<S> b() {
-      return $$0 -> Stream.empty();
+   public static <T> bpi<T> a(String $$0) {
+      return new bpi<>($$0);
    }
 }

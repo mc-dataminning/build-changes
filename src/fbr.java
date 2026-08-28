@@ -1,21 +1,85 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-public class fbr {
-   private static final Codec<fbq> h = md.G.q().dispatch(fbq::b, fbp::a);
-   public static final Codec<fbq> a = Codec.lazyInitialized(() -> {
-      Codec<fbq> $$0 = Codec.withAlternative(h, fbu.a.codec());
-      return Codec.either(fbn.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof fbn $$1 ? Either.left($$1) : Either.right($$0x));
-   });
-   public static final fbp b = a("constant", fbn.a);
-   public static final fbp c = a("uniform", fbu.a);
-   public static final fbp d = a("binomial", fbm.a);
-   public static final fbp e = a("score", fbs.a);
-   public static final fbp f = a("storage", fbt.a);
-   public static final fbp g = a("enchantment_level", fbo.a);
+public record fbr(Map<String, eym> b, eyn.b c) implements fbw {
+   public static final MapCodec<fbr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, eym.a).fieldOf("scores").forGetter(fbr::c), eyn.b.e.fieldOf("entity").forGetter(fbr::d))
+            .apply($$0, fbr::new)
+   );
 
-   private static fbp a(String $$0, MapCodec<? extends fbq> $$1) {
-      return kf.a(md.G, ald.b($$0), new fbp($$1));
+   @Override
+   public fbx b() {
+      return fby.h;
+   }
+
+   @Override
+   public Set<bav<?>> a() {
+      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public boolean a(eyn $$0) {
+      bwa $$1 = $$0.c(this.c.a());
+      if ($$1 == null) {
+         return false;
+      } else {
+         ffb $$2 = $$0.d().g();
+
+         for (Entry<String, eym> $$3 : this.b.entrySet()) {
+            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   protected boolean a(eyn $$0, bwa $$1, ffb $$2, String $$3, eym $$4) {
+      fet $$5 = $$2.a($$3);
+      if ($$5 == null) {
+         return false;
+      } else {
+         fex $$6 = $$2.d($$1, $$5);
+         return $$6 == null ? false : $$4.b($$0, $$6.a());
+      }
+   }
+
+   public static fbr.a a(eyn.b $$0) {
+      return new fbr.a($$0);
+   }
+
+   public Map<String, eym> c() {
+      return this.b;
+   }
+
+   public eyn.b d() {
+      return this.c;
+   }
+
+   public static class a implements fbw.a {
+      private final Builder<String, eym> a = ImmutableMap.builder();
+      private final eyn.b b;
+
+      public a(eyn.b $$0) {
+         this.b = $$0;
+      }
+
+      public fbr.a a(String $$0, eym $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fbw build() {
+         return new fbr(this.a.build(), this.b);
+      }
    }
 }

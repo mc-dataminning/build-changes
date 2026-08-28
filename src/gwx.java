@@ -1,52 +1,38 @@
-public class gwx extends gvl<cjj, hcq, gea<hcq>> {
-   private final gea<hcq> a = this.c();
-   private final gea<hcq> j;
-   private static final ald k = ald.b("textures/entity/fish/tropical_a.png");
-   private static final ald l = ald.b("textures/entity/fish/tropical_b.png");
+public class gwx extends gwq<cje, hcx, ggc> {
+   private static final ale a = ale.b("textures/entity/parrot/parrot_red_blue.png");
+   private static final ale j = ale.b("textures/entity/parrot/parrot_blue.png");
+   private static final ale k = ale.b("textures/entity/parrot/parrot_green.png");
+   private static final ale l = ale.b("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final ale m = ale.b("textures/entity/parrot/parrot_grey.png");
 
-   public gwx(guf.a $$0) {
-      super($$0, new ggi($$0.a(ghc.dA)), 0.15F);
-      this.j = new ggj($$0.a(ghc.dy));
-      this.a(new gzc(this, $$0.f()));
+   public gwx(gvk.a $$0) {
+      super($$0, new ggc($$0.a(gif.bX)), 0.3F);
    }
 
-   public ald a(hcq $$0) {
-      return switch ($$0.a.a()) {
-         case a -> k;
-         case b -> l;
-      };
+   public ale a(hcx $$0) {
+      return a($$0.a);
    }
 
-   public hcq b() {
-      return new hcq();
+   public hcx b() {
+      return new hcx();
    }
 
-   public void a(cjj $$0, hcq $$1, float $$2) {
+   public void a(cje $$0, hcx $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gy();
-      $$1.b = $$0.gw().d();
-      $$1.c = $$0.gx().d();
+      $$1.a = $$0.gE();
+      float $$3 = azk.h($$2, $$0.bM, $$0.bJ);
+      float $$4 = azk.h($$2, $$0.bL, $$0.bK);
+      $$1.b = (azk.a($$3) + 1.0F) * $$4;
+      $$1.c = ggc.a($$0);
    }
 
-   public void a(hcq $$0, fho $$1, gny $$2, int $$3) {
-      this.g = switch ($$0.a.a()) {
-         case a -> this.a;
-         case b -> this.j;
+   public static ale a(cje.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> j;
+         case c -> k;
+         case d -> l;
+         case e -> m;
       };
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected int b(hcq $$0) {
-      return $$0.b;
-   }
-
-   protected void a(hcq $$0, fho $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * azk.a(0.6F * $$0.u);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.ak) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
    }
 }

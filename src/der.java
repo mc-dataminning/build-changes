@@ -1,20 +1,9 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 
-public record der(deo c) implements dfa {
-   public static final MapCodec<der> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(deo.b.fieldOf("value").forGetter(der::b)).apply($$0, der::new));
+public record der(int b) {
+   public static final yu<ByteBuf, der> a = yu.a(ys.h, der::a, der::new);
 
-   @Override
-   public float a(int $$0, azs $$1, float $$2) {
-      return $$2 + this.c.a($$0);
-   }
-
-   @Override
-   public MapCodec<der> a() {
-      return a;
-   }
-
-   public deo b() {
-      return this.c;
+   public int a() {
+      return this.b;
    }
 }

@@ -1,34 +1,39 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
 
-public record ed(Map<cvl, cv> b) {
-   public static final Codec<ed> a = Codec.unboundedMap(cvm.a, cv.a).xmap(ed::new, ed::a);
+public class ed {
+   public static final Codec<ed> a = ale.a.xmap(ed::new, ed::a);
+   private final ale b;
+   private boolean c;
+   private Optional<hw<ei>> d = Optional.empty();
 
-   public boolean a(bvs $$0) {
-      for (Entry<cvl, cv> $$1 : this.b.entrySet()) {
-         if (!a($$0, $$1.getValue(), $$1.getKey().a())) {
-            return false;
-         }
-      }
-
-      return true;
+   public ed(ale $$0) {
+      this.b = $$0;
    }
 
-   private static boolean a(bvs $$0, cv $$1, IntList $$2) {
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         int $$4 = $$2.getInt($$3);
-         bxi $$5 = $$0.a_($$4);
-         if ($$1.a($$5.a())) {
+   public Optional<hw<ei>> a(alt $$0) {
+      if (!this.c) {
+         this.d = $$0.a(this.b);
+         this.c = true;
+      }
+
+      return this.d;
+   }
+
+   public ale a() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         if ($$0 instanceof ed $$1 && this.a().equals($$1.a())) {
             return true;
          }
+
+         return false;
       }
-
-      return false;
-   }
-
-   public Map<cvl, cv> a() {
-      return this.b;
    }
 }

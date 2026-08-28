@@ -1,48 +1,36 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
-public record fbt(ald b, fp.g c) implements fbq {
-   public static final MapCodec<fbt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ald.a.fieldOf("storage").forGetter(fbt::c), fp.g.a.fieldOf("path").forGetter(fbt::d)).apply($$0, fbt::new)
-   );
+public record fbt(fbw b) implements fbw {
+   public static final MapCodec<fbt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fbw.e.fieldOf("term").forGetter(fbt::c)).apply($$0, fbt::new));
 
    @Override
-   public fbp b() {
-      return fbr.f;
+   public fbx b() {
+      return fby.a;
    }
 
-   private Optional<um> c(exl $$0) {
-      tw $$1 = $$0.d().p().aK().a(this.b);
-
-      try {
-         List<ut> $$2 = this.c.a($$1);
-         if ($$2.size() == 1 && $$2.get(0) instanceof um $$3) {
-            return Optional.of($$3);
-         }
-      } catch (CommandSyntaxException var6) {
-      }
-
-      return Optional.empty();
+   public boolean a(eyn $$0) {
+      return !this.b.test($$0);
    }
 
    @Override
-   public float b(exl $$0) {
-      return this.c($$0).map(um::k).orElse(0.0F);
+   public Set<bav<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public int a(exl $$0) {
-      return this.c($$0).map(um::g).orElse(0);
+   public void a(eyt $$0) {
+      fbw.super.a($$0);
+      this.b.a($$0);
    }
 
-   public ald c() {
+   public static fbw.a a(fbw.a $$0) {
+      fbt $$1 = new fbt($$0.build());
+      return () -> $$1;
+   }
+
+   public fbw c() {
       return this.b;
-   }
-
-   public fp.g d() {
-      return this.c;
    }
 }

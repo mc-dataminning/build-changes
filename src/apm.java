@@ -1,158 +1,20 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Arrays;
-import java.util.Locale;
 
 public class apm {
-   private static final float a = 10000.0F;
-   private static final String b = String.valueOf(20);
-
-   public static void a(CommandDispatcher<ex> $$0) {
+   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a(
-                                 "tick"
-                              )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(ey.a("query").executes($$0x -> a((ex)$$0x.getSource()))))
-                        .then(
-                           ey.a("rate")
-                              .then(
-                                 ey.a("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
-                                    .suggests(($$0x, $$1) -> fc.a(new String[]{b}, $$1))
-                                    .executes($$0x -> a((ex)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "rate")))
-                              )
-                        ))
-                     .then(
-                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("step").executes($$0x -> b((ex)$$0x.getSource(), 1)))
-                              .then(ey.a("stop").executes($$0x -> b((ex)$$0x.getSource()))))
-                           .then(
-                              ey.a("time", gn.a(1))
-                                 .suggests(($$0x, $$1) -> fc.a(new String[]{"1t", "1s"}, $$1))
-                                 .executes($$0x -> b((ex)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                           )
-                     ))
-                  .then(
-                     ((LiteralArgumentBuilder)ey.a("sprint").then(ey.a("stop").executes($$0x -> c((ex)$$0x.getSource()))))
-                        .then(
-                           ey.a("time", gn.a(1))
-                              .suggests(($$0x, $$1) -> fc.a(new String[]{"60s", "1d", "3d"}, $$1))
-                              .executes($$0x -> a((ex)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                        )
-                  ))
-               .then(ey.a("unfreeze").executes($$0x -> a((ex)$$0x.getSource(), false))))
-            .then(ey.a("freeze").executes($$0x -> a((ex)$$0x.getSource(), true)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("tellraw").requires($$0x -> $$0x.c(2)))
+            .then(ej.a("targets", ev.d()).then(ej.a("message", er.a($$1)).executes($$0x -> {
+               int $$1x = 0;
+
+               for (arp $$2 : ev.f($$0x, "targets")) {
+                  $$2.b(wz.a((ei)$$0x.getSource(), er.a($$0x, "message"), $$2, 0), false);
+                  $$1x++;
+               }
+
+               return $$1x;
+            })))
       );
-   }
-
-   private static String a(long $$0) {
-      return String.format(Locale.ROOT, "%.1f", (float)$$0 / (float)bam.b);
-   }
-
-   private static int a(ex $$0, float $$1) {
-      alx $$2 = $$0.l().aP();
-      $$2.a($$1);
-      String $$3 = String.format(Locale.ROOT, "%.1f", $$1);
-      $$0.a(() -> wv.a("commands.tick.rate.success", $$3), true);
-      return (int)$$1;
-   }
-
-   private static int a(ex $$0) {
-      alx $$1 = $$0.l().aP();
-      String $$2 = a($$0.l().aQ());
-      float $$3 = $$1.f();
-      String $$4 = String.format(Locale.ROOT, "%.1f", $$3);
-      if ($$1.a()) {
-         $$0.a(() -> wv.c("commands.tick.status.sprinting"), false);
-         $$0.a(() -> wv.a("commands.tick.query.rate.sprinting", $$4, $$2), false);
-      } else {
-         if ($$1.l()) {
-            $$0.a(() -> wv.c("commands.tick.status.frozen"), false);
-         } else if ($$1.h() < $$0.l().aQ()) {
-            $$0.a(() -> wv.c("commands.tick.status.lagging"), false);
-         } else {
-            $$0.a(() -> wv.c("commands.tick.status.running"), false);
-         }
-
-         String $$5 = a($$1.h());
-         $$0.a(() -> wv.a("commands.tick.query.rate.running", $$4, $$2, $$5), false);
-      }
-
-      long[] $$6 = Arrays.copyOf($$0.l().aR(), $$0.l().aR().length);
-      Arrays.sort($$6);
-      String $$7 = a($$6[$$6.length / 2]);
-      String $$8 = a($$6[(int)((double)$$6.length * 0.95)]);
-      String $$9 = a($$6[(int)((double)$$6.length * 0.99)]);
-      $$0.a(() -> wv.a("commands.tick.query.percentiles", $$7, $$8, $$9, $$6.length), false);
-      return (int)$$3;
-   }
-
-   private static int a(ex $$0, int $$1) {
-      boolean $$2 = $$0.l().aP().b($$1);
-      if ($$2) {
-         $$0.a(() -> wv.c("commands.tick.sprint.stop.success"), true);
-      }
-
-      $$0.a(() -> wv.c("commands.tick.status.sprinting"), true);
-      return 1;
-   }
-
-   private static int a(ex $$0, boolean $$1) {
-      alx $$2 = $$0.l().aP();
-      if ($$1) {
-         if ($$2.a()) {
-            $$2.c();
-         }
-
-         if ($$2.j()) {
-            $$2.b();
-         }
-      }
-
-      $$2.a($$1);
-      if ($$1) {
-         $$0.a(() -> wv.c("commands.tick.status.frozen"), true);
-      } else {
-         $$0.a(() -> wv.c("commands.tick.status.running"), true);
-      }
-
-      return $$1 ? 1 : 0;
-   }
-
-   private static int b(ex $$0, int $$1) {
-      alx $$2 = $$0.l().aP();
-      boolean $$3 = $$2.a($$1);
-      if ($$3) {
-         $$0.a(() -> wv.a("commands.tick.step.success", $$1), true);
-      } else {
-         $$0.b(wv.c("commands.tick.step.fail"));
-      }
-
-      return 1;
-   }
-
-   private static int b(ex $$0) {
-      alx $$1 = $$0.l().aP();
-      boolean $$2 = $$1.b();
-      if ($$2) {
-         $$0.a(() -> wv.c("commands.tick.step.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(wv.c("commands.tick.step.stop.fail"));
-         return 0;
-      }
-   }
-
-   private static int c(ex $$0) {
-      alx $$1 = $$0.l().aP();
-      boolean $$2 = $$1.c();
-      if ($$2) {
-         $$0.a(() -> wv.c("commands.tick.sprint.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(wv.c("commands.tick.sprint.stop.fail"));
-         return 0;
-      }
    }
 }

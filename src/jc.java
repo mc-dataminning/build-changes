@@ -1,57 +1,51 @@
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.LongArgumentType;
+public enum jc implements bai {
+   a("down_east", ja.a, ja.f),
+   b("down_north", ja.a, ja.c),
+   c("down_south", ja.a, ja.d),
+   d("down_west", ja.a, ja.e),
+   e("up_east", ja.b, ja.f),
+   f("up_north", ja.b, ja.c),
+   g("up_south", ja.b, ja.d),
+   h("up_west", ja.b, ja.e),
+   i("west_up", ja.e, ja.b),
+   j("east_up", ja.f, ja.b),
+   k("north_up", ja.c, ja.b),
+   l("south_up", ja.d, ja.b);
 
-public class jc implements iu<LongArgumentType, jc.a> {
-   public void a(jc.a $$0, vr $$1) {
-      boolean $$2 = $$0.b != Long.MIN_VALUE;
-      boolean $$3 = $$0.c != Long.MAX_VALUE;
-      $$1.l(iw.a($$2, $$3));
-      if ($$2) {
-         $$1.b($$0.b);
+   private static final int m = ja.values().length;
+   private static final jc[] n = af.a(new jc[m * m], $$0 -> {
+      for (jc $$1 : values()) {
+         $$0[b($$1.q, $$1.p)] = $$1;
       }
+   });
+   private final String o;
+   private final ja p;
+   private final ja q;
 
-      if ($$3) {
-         $$1.b($$0.c);
-      }
+   private static int b(ja $$0, ja $$1) {
+      return $$0.ordinal() * m + $$1.ordinal();
    }
 
-   public jc.a a(vr $$0) {
-      byte $$1 = $$0.readByte();
-      long $$2 = iw.a($$1) ? $$0.readLong() : Long.MIN_VALUE;
-      long $$3 = iw.b($$1) ? $$0.readLong() : Long.MAX_VALUE;
-      return new jc.a($$2, $$3);
+   private jc(final String $$0, final ja $$1, final ja $$2) {
+      this.o = $$0;
+      this.q = $$1;
+      this.p = $$2;
    }
 
-   public void a(jc.a $$0, JsonObject $$1) {
-      if ($$0.b != Long.MIN_VALUE) {
-         $$1.addProperty("min", $$0.b);
-      }
-
-      if ($$0.c != Long.MAX_VALUE) {
-         $$1.addProperty("max", $$0.c);
-      }
+   @Override
+   public String c() {
+      return this.o;
    }
 
-   public jc.a a(LongArgumentType $$0) {
-      return new jc.a($$0.getMinimum(), $$0.getMaximum());
+   public static jc a(ja $$0, ja $$1) {
+      return n[b($$0, $$1)];
    }
 
-   public final class a implements iu.a<LongArgumentType> {
-      final long b;
-      final long c;
+   public ja a() {
+      return this.q;
+   }
 
-      a(final long $$1, final long $$2) {
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public LongArgumentType a(et $$0) {
-         return LongArgumentType.longArg(this.b, this.c);
-      }
-
-      @Override
-      public iu<LongArgumentType, ?> a() {
-         return jc.this;
-      }
+   public ja b() {
+      return this.p;
    }
 }

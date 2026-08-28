@@ -1,7 +1,9 @@
-public class gdl extends ged<haa> {
-   public static final ghm a = ghm.scaling(0.8F);
-
-   public gdl(ghd $$0) {
+public class gdl extends RuntimeException {
+   public gdl(String $$0) {
       super($$0);
+   }
+
+   public gdl(String $$0, Throwable $$1) {
+      super($$0, $$1);
    }
 }

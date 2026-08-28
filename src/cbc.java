@@ -1,28 +1,43 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class cbc<T extends bwt> extends byi<T> {
-   private final float c;
-
-   public cbc(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
+public class cbc {
+   public static <E extends bxb> byr<E> a(cbc.b<E> $$0) {
+      return a(($$0x, $$1) -> true, $$0);
    }
 
-   public static <T extends bwt> boolean a(T $$0) {
-      return $$0.bj() && $$0.b(axf.a) > $$0.dp() || $$0.bw();
+   public static <E extends bxb> byr<E> a(cbc.a<E> $$0, cbc.b<E> $$1) {
+      return ccd.a(
+         (Function<ccd.b<E>, ? extends App<ccd.c<E>, ccg<E>>>)($$2 -> $$2.group($$2.c(cgb.p), $$2.a(cgb.F)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
+                  if (!$$0.test($$4, (E)$$5)) {
+                     return false;
+                  } else {
+                     Optional<? extends bwz> $$7 = $$1.get($$4, (E)$$5);
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        bwz $$8 = $$7.get();
+                        if (!$$5.c($$8)) {
+                           return false;
+                        } else {
+                           $$2x.a($$8);
+                           $$3.b();
+                           return true;
+                        }
+                     }
+                  }
+               }))
+      );
    }
 
-   protected boolean a(arn $$0, bwt $$1) {
-      return a($$1);
+   @FunctionalInterface
+   public interface a<E> {
+      boolean test(aro var1, E var2);
    }
 
-   protected boolean a(arn $$0, bwt $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(arn $$0, bwt $$1, long $$2) {
-      if ($$1.dY().i() < this.c) {
-         $$1.N().a();
-      }
+   @FunctionalInterface
+   public interface b<E> {
+      Optional<? extends bwz> get(aro var1, E var2);
    }
 }

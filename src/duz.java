@@ -1,104 +1,70 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class duz extends dvl implements btt {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 6;
-   private static final String c = "patterns";
+public class duz extends dlg {
+   public static final MapCodec<duz> a = b(duz::new);
+   public static final ear<dzb> b = eae.bC;
+   public static final eam<ja> c = dpt.e;
+   public static final eaf d = eae.bE;
+
+   @Override
+   public MapCodec<duz> a() {
+      return a;
+   }
+
+   public duz(dzn.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(c, ja.c).b(b, dzb.a).b(d, Boolean.valueOf(false)));
+   }
+
+   @Override
+   public bty a(cys $$0, dzo $$1, dip $$2, iu $$3, cqs $$4, btx $$5, fds $$6) {
+      if (!$$0.f() && $$1.c(b) == dzb.b) {
+         if ($$2 instanceof aro $$7) {
+            if (!($$7.c_($$3) instanceof dyw $$8)) {
+               return bty.f;
+            }
+
+            dyw.b.a($$7, $$3, $$1, $$8.f(), $$8.a(), $$8.c(), $$4, $$0);
+         }
+
+         return bty.b;
+      } else {
+         return bty.f;
+      }
+   }
+
    @Nullable
-   private wv d;
-   private final cwv e;
-   private dvb f = dvb.a;
-
-   public duz(jj $$0, dym $$1) {
-      this($$0, $$1, ((djl)$$1.b()).b());
-   }
-
-   public duz(jj $$0, dym $$1, cwv $$2) {
-      super(dvn.u, $$0, $$1);
-      this.e = $$2;
+   @Override
+   public dwn a(iu $$0, dzo $$1) {
+      return new dyw($$0, $$1);
    }
 
    @Override
-   public wv al() {
-      return (wv)(this.d != null ? this.d : wv.c("block.minecraft.banner"));
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(c, b, d);
    }
 
    @Nullable
    @Override
-   public wv an() {
-      return this.d;
+   public <T extends dwn> dwo<T> a(dip $$0, dzo $$1, dwp<T> $$2) {
+      return $$0 instanceof aro $$3
+         ? a($$2, dwp.S, ($$1x, $$2x, $$3x, $$4) -> dyw.b.a($$3, $$2x, $$3x, $$4.f(), $$4.a(), $$4.c()))
+         : a($$2, dwp.S, ($$0x, $$1x, $$2x, $$3x) -> dyw.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
    }
 
    @Override
-   protected void b(tw $$0, ju.a $$1) {
-      super.b($$0, $$1);
-      alb<ut> $$2 = $$1.a(uk.a);
-      if (!this.f.equals(dvb.a)) {
-         $$0.a("patterns", (ut)dvb.b.encodeStart($$2, this.f).getOrThrow());
-      }
-
-      if (this.d != null) {
-         $$0.a("CustomName", (ut)wx.a.encodeStart($$2, this.d).getOrThrow());
-      }
+   public dzo a(dcl $$0) {
+      return this.m().b(c, $$0.g().g());
    }
 
    @Override
-   protected void a(tw $$0, ju.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.e("CustomName")) {
-         this.d = a($$0.c("CustomName"), $$1);
-      }
-
-      if ($$0.e("patterns")) {
-         dvb.b
-            .parse($$1.a(uk.a), $$0.c("patterns"))
-            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
-            .ifPresent($$0x -> this.f = $$0x);
-      }
-   }
-
-   public abx a() {
-      return abx.a(this);
+   public dzo a(dzo $$0, dsm $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
    }
 
    @Override
-   public tw a(ju.a $$0) {
-      return this.d($$0);
-   }
-
-   public dvb b() {
-      return this.f;
-   }
-
-   public cxy c() {
-      cxy $$0 = new cxy(djz.a(this.e));
-      $$0.b(this.q());
-      return $$0;
-   }
-
-   public cwv f() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(kr $$0) {
-      super.a($$0);
-      this.f = $$0.a(kx.ak, dvb.a);
-      this.d = $$0.a(kx.g);
-   }
-
-   @Override
-   protected void a(kt.a $$0) {
-      super.a($$0);
-      $$0.a(kx.ak, this.f);
-      $$0.a(kx.g, this.d);
-   }
-
-   @Override
-   public void a(tw $$0) {
-      $$0.r("patterns");
-      $$0.r("CustomName");
+   public dzo a(dzo $$0, dqv $$1) {
+      return $$0.a($$1.a($$0.c(c)));
    }
 }

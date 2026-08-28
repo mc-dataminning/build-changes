@@ -1,9 +1,10 @@
-public interface dxj {
-   void a();
+public class dxj extends dxi {
+   public dxj(iu $$0, dzo $$1) {
+      super(dwp.g, $$0, $$1);
+   }
 
-   boolean b();
-
-   jj c();
-
-   String d();
+   @Override
+   protected ww j() {
+      return ww.c("container.dropper");
+   }
 }

@@ -1,60 +1,101 @@
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class hmm {
-   private boolean a;
-   @Nullable
-   private hmg.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+   static final AtomicInteger a = new AtomicInteger(0);
+   static final Logger b = LogUtils.getLogger();
 
-   public hmm(@Nullable String $$0) {
-      this.d = $$0;
-   }
+   public static class a extends Thread {
+      private final hmm.b a;
+      private final InetAddress b;
+      private final MulticastSocket c;
 
-   public void a(hmh.a $$0) {
-      if (this.c != null) {
-         $$0.a(hmg.j, !this.c.equals("vanilla"));
+      public a(hmm.b $$0) throws IOException {
+         super("LanServerDetector #" + hmm.a.incrementAndGet());
+         this.a = $$0;
+         this.setDaemon(true);
+         this.setUncaughtExceptionHandler(new r(hmm.b));
+         this.c = new MulticastSocket(4445);
+         this.b = InetAddress.getByName("224.0.2.60");
+         this.c.setSoTimeout(5000);
+         this.c.joinGroup(this.b);
       }
 
-      $$0.a(hmg.k, this.a());
-   }
+      @Override
+      public void run() {
+         byte[] $$0 = new byte[1024];
 
-   private hmg.c a() {
-      gio $$0 = fnd.Q().S();
-      if ($$0 != null && $$0.e()) {
-         return hmg.c.a;
-      } else {
-         return fnd.Q().U() ? hmg.c.b : hmg.c.c;
-      }
-   }
+         while (!this.isInterrupted()) {
+            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
 
-   public boolean a(hmd $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(hme.b, $$0x -> {
-            $$0x.a(hmg.n, this.b);
-            if (this.d != null) {
-               $$0x.a(hmg.o, this.d);
+            try {
+               this.c.receive($$1);
+            } catch (SocketTimeoutException var5) {
+               continue;
+            } catch (IOException var6) {
+               hmm.b.error("Couldn't ping server", var6);
+               break;
             }
-         });
-         return true;
-      } else {
-         return false;
+
+            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
+            hmm.b.debug("{}: {}", $$1.getAddress(), $$4);
+            this.a.a($$4, $$1.getAddress());
+         }
+
+         try {
+            this.c.leaveGroup(this.b);
+         } catch (IOException var4) {
+         }
+
+         this.c.close();
       }
    }
 
-   public void a(dhm $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? hmg.b.e : hmg.b.a;
-         case b -> hmg.b.b;
-         case c -> hmg.b.c;
-         case d -> hmg.b.d;
-      };
-   }
+   public static class b {
+      private final List<hml> a = Lists.newArrayList();
+      private boolean b;
 
-   public void a(String $$0) {
-      this.c = $$0;
+      @Nullable
+      public synchronized List<hml> a() {
+         if (this.b) {
+            List<hml> $$0 = List.copyOf(this.a);
+            this.b = false;
+            return $$0;
+         } else {
+            return null;
+         }
+      }
+
+      public synchronized void a(String $$0, InetAddress $$1) {
+         String $$2 = hmn.a($$0);
+         String $$3 = hmn.b($$0);
+         if ($$3 != null) {
+            $$3 = $$1.getHostAddress() + ":" + $$3;
+            boolean $$4 = false;
+
+            for (hml $$5 : this.a) {
+               if ($$5.b().equals($$3)) {
+                  $$5.c();
+                  $$4 = true;
+                  break;
+               }
+            }
+
+            if (!$$4) {
+               this.a.add(new hml($$2, $$3));
+               this.b = true;
+            }
+         }
+      }
    }
 }

@@ -1,26 +1,40 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@FunctionalInterface
-public interface epu<C extends ejv> {
-   Optional<ept<C>> createGenerator(epu.a<C> var1);
+public class epu extends epo {
+   public static final MapCodec<epu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               efn.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, epu::new)
+   );
+   private final efn.a c;
+   private final int d;
+   private final int e;
 
-   static <C extends ejv> epu<C> simple(Predicate<epu.a<C>> $$0, ept<C> $$1) {
-      Optional<ept<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
+   private epu(efn.a $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   static <C extends ejv> Predicate<epu.a<C>> checkForBiomeOnTop(eel.a $$0) {
-      return $$1 -> $$1.a($$0);
+   public static epu a(efn.a $$0, int $$1, int $$2) {
+      return new epu($$0, $$1, $$2);
    }
 
-   public static record a<C extends ejv>(eak a, diw b, eez c, long d, dgw e, C f, dhr g, Predicate<js<dis>> h, etj i, kg j) {
-      public boolean a(eel.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         js<dis> $$4 = this.a.d().getNoiseBiome(kd.a($$1), kd.a($$3), kd.a($$2), this.c.b());
-         return this.h.test($$4);
-      }
+   @Override
+   protected boolean a(epn $$0, azt $$1, iu $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   }
+
+   @Override
+   public epq<?> b() {
+      return epq.c;
    }
 }

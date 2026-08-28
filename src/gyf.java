@@ -1,13 +1,27 @@
-public abstract class gyf<S extends hak, M extends gea<S>> extends gyt<S, M> {
-   public gyf(gwc<S, M> $$0) {
-      super($$0);
+public class gyf extends gwq<coh, hdx, gho> {
+   private static final ale a = ale.b("textures/entity/illager/vex.png");
+   private static final ale j = ale.b("textures/entity/illager/vex_charging.png");
+
+   public gyf(gvk.a $$0) {
+      super($$0, new gho($$0.a(gif.dE)), 0.3F);
+      this.a(new gzq<>(this));
    }
 
-   @Override
-   public void a(fho $$0, gny $$1, int $$2, S $$3, float $$4, float $$5) {
-      fhs $$6 = $$1.getBuffer(this.a());
-      this.d().a($$0, $$6, $$2, hgi.d);
+   protected int a(coh $$0, iu $$1) {
+      return 15;
    }
 
-   public abstract goi a();
+   public ale a(hdx $$0) {
+      return $$0.a ? j : a;
+   }
+
+   public hdx b() {
+      return new hdx();
+   }
+
+   public void a(coh $$0, hdx $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      hau.a($$0, $$1, this.h);
+      $$1.a = $$0.t();
+   }
 }

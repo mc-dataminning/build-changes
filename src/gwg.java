@@ -1,60 +1,79 @@
-import java.util.Objects;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+public class gwg extends gvj<cmx, hcm> {
+   private static final float a = 0.15F;
+   private static final float g = 0.0F;
+   private static final float h = 0.0F;
+   private static final float i = 0.09375F;
+   private final heq j;
+   private final azt k = azt.a();
 
-public class gwg extends gvl<cnp, hce, gfu> {
-   private static final ald a = got.i.b().a((UnaryOperator<String>)($$0 -> "textures/" + $$0 + ".png"));
-   private static final ald[] j = got.j.stream().map($$0 -> $$0.b().a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"))).toArray(ald[]::new);
-
-   public gwg(guf.a $$0) {
-      super($$0, new gfu($$0.a(ghc.cO)), 0.0F);
+   public gwg(gvk.a $$0) {
+      super($$0);
+      this.j = $$0.b();
+      this.e = 0.15F;
+      this.f = 0.75F;
    }
 
-   public fcu a(hce $$0) {
-      return $$0.a;
+   public hcm a() {
+      return new hcm();
    }
 
-   public boolean a(cnp $$0, grr $$1, double $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else {
-         fcu $$5 = $$0.L(0.0F);
-         if ($$5 == null) {
-            return false;
-         } else {
-            bwb<?> $$6 = $$0.aq();
-            float $$7 = $$6.m() / 2.0F;
-            float $$8 = $$6.l() / 2.0F;
-            fcu $$9 = fcu.c($$0.dv());
-            return $$1.a(new fcp($$5.d, $$5.e + (double)$$7, $$5.f, $$9.d, $$9.e + (double)$$7, $$9.f).c((double)$$8, (double)$$7, (double)$$8));
-         }
+   public void a(cmx $$0, hcm $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.u = (float)$$0.g() + $$2;
+      $$1.d = $$0.b;
+      $$1.a($$0, $$0.f(), this.j);
+   }
+
+   public void a(hcm $$0, fiq $$1, gpd $$2, int $$3) {
+      if (!$$0.a.c()) {
+         $$1.a();
+         float $$4 = 0.25F;
+         float $$5 = azk.a($$0.u / 10.0F + $$0.d) * 0.1F + 0.1F;
+         float $$6 = $$0.a.f().d.y();
+         $$1.a(0.0F, $$5 + 0.25F * $$6, 0.0F);
+         float $$7 = cmx.f($$0.u, $$0.d);
+         $$1.a(a.d.rotation($$7));
+         a($$1, $$2, $$3, $$0, this.k);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   public ald b(hce $$0) {
-      return a($$0.b);
-   }
+   public static void a(fiq $$0, gpd $$1, int $$2, hck $$3, azt $$4) {
+      $$4.b((long)$$3.c);
+      int $$5 = $$3.b;
+      hes $$6 = $$3.a;
+      boolean $$7 = $$6.d();
+      float $$8 = $$6.f().d.x();
+      float $$9 = $$6.f().d.y();
+      float $$10 = $$6.f().d.z();
+      if (!$$7) {
+         float $$11 = -0.0F * (float)($$5 - 1) * 0.5F * $$8;
+         float $$12 = -0.0F * (float)($$5 - 1) * 0.5F * $$9;
+         float $$13 = -0.09375F * (float)($$5 - 1) * 0.5F * $$10;
+         $$0.a($$11, $$12, $$13);
+      }
 
-   public hce b() {
-      return new hce();
-   }
+      for (int $$14 = 0; $$14 < $$5; $$14++) {
+         $$0.a();
+         if ($$14 > 0) {
+            if ($$7) {
+               float $$15 = ($$4.i() * 2.0F - 1.0F) * 0.15F;
+               float $$16 = ($$4.i() * 2.0F - 1.0F) * 0.15F;
+               float $$17 = ($$4.i() * 2.0F - 1.0F) * 0.15F;
+               $$0.a($$15, $$16, $$17);
+            } else {
+               float $$18 = ($$4.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
+               float $$19 = ($$4.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
+               $$0.a($$18, $$19, 0.0F);
+            }
+         }
 
-   public void a(cnp $$0, hce $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = Objects.requireNonNullElse($$0.L($$2), fcu.c);
-      $$1.b = $$0.t();
-      $$1.c = $$0.K($$2);
-      $$1.d = $$0.aW;
-      $$1.e = $$0.aU;
-      $$1.f = $$0.n();
-   }
-
-   public static ald a(@Nullable cwv $$0) {
-      return $$0 == null ? a : j[$$0.a()];
-   }
-
-   protected void a(hce $$0, fho $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2 + 180.0F, $$3);
-      $$1.a($$0.f.g().b(), 0.0F, 0.5F, 0.0F);
+         $$6.a($$0, $$1, $$2, hhp.d);
+         $$0.b();
+         if (!$$7) {
+            $$0.a(0.0F * $$8, 0.0F * $$9, 0.09375F * $$10);
+         }
+      }
    }
 }

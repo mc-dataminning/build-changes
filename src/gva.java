@@ -1,34 +1,43 @@
-public class gva extends gvl<cis, hbe, geq> {
-   private static final ald a = ald.b("textures/entity/iron_golem/iron_golem.png");
+public class gva<T extends ckw> extends gua<T, hbl, gex> {
+   private final ale a;
 
-   public gva(guf.a $$0) {
-      super($$0, new geq($$0.a(ghc.bw)), 0.7F);
-      this.a(new gyj(this));
-      this.a(new gyk(this, $$0.d()));
+   public gva(gvk.a $$0, gva.a $$1) {
+      super($$0, new gex($$0.a($$1.d)), new gex($$0.a($$1.e)));
+      this.a = $$1.c;
+      this.a(new haa<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new gfe($$0.a($$1.g)), new gfe($$0.a($$1.h))));
    }
 
-   public ald a(hbe $$0) {
-      return a;
+   public ale a(hbl $$0) {
+      return this.a;
    }
 
-   public hbe b() {
-      return new hbe();
+   public hbl a() {
+      return new hbl();
    }
 
-   public void a(cis $$0, hbe $$1, float $$2) {
+   public void a(T $$0, hbl $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.n() > 0.0F ? (float)$$0.n() - $$2 : 0.0F;
-      $$1.b = $$0.q();
-      $$1.c = $$0.m();
+      $$1.a = $$0.t();
    }
 
-   protected void a(hbe $$0, fho $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (!((double)$$0.ae < 0.01)) {
-         float $$4 = 13.0F;
-         float $$5 = $$0.ad + 6.0F;
-         float $$6 = (Math.abs($$5 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$6));
+   public static enum a {
+      a(ale.b("textures/entity/horse/donkey.png"), gif.av, gif.aw, hkf.d.k, gif.ax, gif.ay),
+      b(ale.b("textures/entity/horse/mule.png"), gif.bL, gif.bM, hkf.d.l, gif.bN, gif.bO);
+
+      final ale c;
+      final gie d;
+      final gie e;
+      final hkf.d f;
+      final gie g;
+      final gie h;
+
+      private a(final ale $$0, final gie $$1, final gie $$2, final hkf.d $$3, final gie $$4, final gie $$5) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = $$5;
       }
    }
 }

@@ -1,42 +1,31 @@
-public class gyg extends gyt<hat, gee> {
-   public gyg(gwc<hat, gee> $$0) {
-      super($$0);
+public class gyg extends gue<cqe, hdz, ghq> {
+   private static final ale j = ale.b("textures/entity/villager/villager.png");
+   public static final gzd.a a = new gzd.a(-0.1171875F, -0.07421875F, 1.0F);
+
+   public gyg(gvk.a $$0) {
+      super($$0, new ghq($$0.a(gif.dF)), new ghq($$0.a(gif.dG)), 0.5F);
+      this.a(new gzd<>(this, $$0.f(), a));
+      this.a(new hai<>(this, $$0.e(), "villager"));
+      this.a(new gzc<>(this));
    }
 
-   public void a(fho $$0, gny $$1, int $$2, hat $$3, float $$4, float $$5) {
-      hdn $$6 = $$3.i;
-      if (!$$6.c()) {
-         boolean $$7 = $$3.d;
-         boolean $$8 = $$3.aj;
-         $$0.a();
-         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
-         if ($$8) {
-            float $$9 = 0.75F;
-            $$0.b(0.75F, 0.75F, 0.75F);
-         }
+   public ale a(hdz $$0) {
+      return j;
+   }
 
-         $$0.a(a.f.rotation($$3.a));
-         $$0.a(a.d.rotationDegrees($$4));
-         $$0.a(a.b.rotationDegrees($$5));
-         if ($$3.aj) {
-            if ($$7) {
-               $$0.a(0.4F, 0.26F, 0.15F);
-            } else {
-               $$0.a(0.06F, 0.26F, -0.5F);
-            }
-         } else if ($$7) {
-            $$0.a(0.46F, 0.26F, 0.22F);
-         } else {
-            $$0.a(0.06F, 0.27F, -0.5F);
-         }
+   protected float b(hdz $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.5F : $$1;
+   }
 
-         $$0.a(a.b.rotationDegrees(90.0F));
-         if ($$7) {
-            $$0.a(a.f.rotationDegrees(90.0F));
-         }
+   public hdz b() {
+      return new hdz();
+   }
 
-         $$6.a($$0, $$1, $$2, hgi.d);
-         $$0.b();
-      }
+   public void a(cqe $$0, hdz $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      hce.a($$0, $$1, this.h);
+      $$1.a = $$0.q() > 0;
+      $$1.b = $$0.gy();
    }
 }

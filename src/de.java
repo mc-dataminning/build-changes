@@ -1,46 +1,30 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class de extends dz<de.a> {
+public record de(boolean d, boolean e) implements by {
+   public static final MapCodec<de> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("has_raid", false).forGetter(de::b), Codec.BOOL.optionalFieldOf("is_captain", false).forGetter(de::c))
+            .apply($$0, de::new)
+   );
+   public static final de c = new de(false, true);
+
    @Override
-   public Codec<de.a> a() {
-      return de.a.a;
+   public MapCodec<de> a() {
+      return bz.e;
    }
 
-   public void a(aro $$0, fcu $$1, int $$2) {
-      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
+   @Override
+   public boolean a(bwa $$0, aro $$1, @Nullable fdw $$2) {
+      return !($$0 instanceof csi $$3) ? false : $$3.gD() == this.d && $$3.gC() == this.e;
    }
 
-   public static record a(Optional<bi> b, Optional<bo> c, dk.d d) implements dz.a {
-      public static final Codec<de.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bx.b.optionalFieldOf("player").forGetter(de.a::a),
-                  bo.a.optionalFieldOf("distance").forGetter(de.a::b),
-                  dk.d.d.optionalFieldOf("duration", dk.d.c).forGetter(de.a::c)
-               )
-               .apply($$0, de.a::new)
-      );
+   public boolean b() {
+      return this.d;
+   }
 
-      public static aq<de.a> a(bo $$0) {
-         return ap.v.a(new de.a(Optional.empty(), Optional.of($$0), dk.d.c));
-      }
-
-      public boolean a(aro $$0, fcu $$1, int $$2) {
-         return this.c.isPresent() && !this.c.get().a($$1.d, $$1.e, $$1.f, $$0.dA(), $$0.dC(), $$0.dG()) ? false : this.d.d($$2);
-      }
-
-      @Override
-      public Optional<bi> a() {
-         return this.b;
-      }
-
-      public Optional<bo> b() {
-         return this.c;
-      }
-
-      public dk.d c() {
-         return this.d;
-      }
+   public boolean c() {
+      return this.e;
    }
 }

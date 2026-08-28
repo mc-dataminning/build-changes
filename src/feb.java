@@ -1,83 +1,30 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Objects;
 
-public abstract class feb {
-   public boolean a(@Nullable feb $$0) {
-      return $$0 == null ? false : this == $$0;
+public interface feb {
+   static feb a() {
+      return feg.a;
    }
 
-   public abstract String b();
+   static feb a(bwa $$0) {
+      Objects.requireNonNull($$0);
 
-   public abstract xj d(wv var1);
-
-   public abstract boolean i();
-
-   public abstract boolean h();
-
-   public abstract feb.b j();
-
-   public abstract n n();
-
-   public abstract Collection<String> g();
-
-   public abstract feb.b k();
-
-   public abstract feb.a l();
-
-   public static enum a {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      private static final Map<String, feb.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (feb.a)$$0));
-      public final String e;
-      public final int f;
-
-      @Nullable
-      public static feb.a a(String $$0) {
-         return g.get($$0);
-      }
-
-      private a(final String $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public wv a() {
-         return wv.c("team.collision." + this.e);
-      }
+      return (feb)(switch ($$0) {
+         case cte $$1 -> cte.b($$1.dV()) ? new fek($$1, false) : new feg($$0, false);
+         default -> new feg($$0, false);
+      });
    }
 
-   public static enum b {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
-
-      private static final Map<String, feb.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (feb.b)$$0));
-      public final String e;
-      public final int f;
-
-      public static String[] a() {
-         return g.keySet().toArray(new String[0]);
-      }
-
-      @Nullable
-      public static feb.b a(String $$0) {
-         return g.get($$0);
-      }
-
-      private b(final String $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public wv b() {
-         return wv.c("team.visibility." + this.e);
-      }
+   static feb a(bwa $$0, boolean $$1) {
+      return new feg($$0, $$1);
    }
+
+   boolean b();
+
+   boolean a(feq var1, iu var2, boolean var3);
+
+   boolean a(cyo var1);
+
+   boolean a(evv var1, evv var2);
+
+   feq a(dzo var1, dhz var2, iu var3);
 }

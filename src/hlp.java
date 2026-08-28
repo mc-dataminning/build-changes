@@ -1,11 +1,50 @@
-import javax.annotation.Nullable;
+public class hlp extends hlf {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final cte s;
+   private float t = 0.0F;
 
-public record hlp(@Nullable awh a, float b) {
-   public hlp(awh $$0) {
-      this($$0, 1.0F);
+   public hlp(cte $$0) {
+      super(awl.pv, awm.g, hlw.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.dA());
+      this.g = (double)((float)$$0.dC());
+      this.h = (double)((float)$$0.dG());
    }
 
-   public boolean a(hkp $$0) {
-      return this.a == null ? false : this.a.d() && !this.a.a().a().a().equals($$0.a());
+   @Override
+   public boolean s() {
+      return !this.s.bb();
+   }
+
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.s.dQ()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.s.dA());
+         this.g = (double)((float)this.s.dC());
+         this.h = (double)((float)this.s.dG());
+         float $$0 = (float)this.s.dy().i();
+         boolean $$1 = !this.s.cq() && this.s.f() instanceof ctt;
+         if ($$0 >= 0.01F && this.s.dV().u().i() && !$$1) {
+            this.t = azk.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = azk.h(azk.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         } else {
+            this.t = 0.0F;
+            this.d = 0.0F;
+         }
+      }
    }
 }

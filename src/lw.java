@@ -1,18 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 
-public abstract class lw implements lt {
-   public static final float e = 0.01F;
-   public static final float f = 4.0F;
-   protected static final Codec<Float> g = Codec.FLOAT
-      .validate($$0 -> $$0 >= 0.01F && $$0 <= 4.0F ? DataResult.success($$0) : DataResult.error(() -> "Value must be within range [0.01;4.0]: " + $$0));
-   private final float a;
+public abstract class lw<T extends lv> {
+   private final boolean a;
 
-   public lw(float $$0) {
-      this.a = azk.a($$0, 0.01F, 4.0F);
+   protected lw(boolean $$0) {
+      this.a = $$0;
    }
 
-   public float d() {
+   public boolean b() {
       return this.a;
    }
+
+   public abstract MapCodec<T> c();
+
+   public abstract yu<? super wh, T> d();
 }

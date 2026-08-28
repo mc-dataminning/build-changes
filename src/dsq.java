@@ -1,53 +1,84 @@
 import com.mojang.serialization.MapCodec;
 
-public class dsq extends dku {
-   public static final MapCodec<dsq> a = b(dsq::new);
-   private static final fdo b = dku.b(12.0, 13.0, 16.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
+public class dsq extends dof implements dsp {
+   public static final MapCodec<dsq> b = b(dsq::new);
 
    @Override
    public MapCodec<dsq> a() {
-      return a;
+      return b;
    }
 
-   public dsq(dyl.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected boolean a(dym $$0, dhs $$1, jj $$2) {
-      return dku.a($$1, $$2.d(), jo.a) && !$$1.z($$2);
+   public dsq(dzn.d $$0) {
+      super(bta.a(1), $$0);
    }
 
    @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      return $$4 == jo.b && !this.a($$0, $$1, $$3) ? dkw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+   public int a(dsu.a $$0, diq $$1, iu $$2, azt $$3, dsu $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         iu $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               iu $$10 = $$7.d();
+               dzo $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.A().e(), awm.e, 1.0F, 1.0F);
+            }
 
-   @Override
-   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(lv.aC, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      jj.a $$10 = new jj.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + azk.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + azk.a($$3, -10, 10));
-         dym $$12 = $$1.a_($$10);
-         if (!$$12.m($$1, $$10)) {
-            $$1.a(lv.aG, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
+            return Math.max(0, $$6 - $$9);
+         } else {
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
          }
+      } else {
+         return $$6;
+      }
+   }
+
+   private static int a(dsu $$0, iu $$1, iu $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = azk.l((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = azk.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   }
+
+   private dzo a(diq $$0, iu $$1, azt $$2, boolean $$3) {
+      dzo $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = dlw.rz.m().b(dst.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = dlw.ru.m();
+      }
+
+      return $$4.b(eae.I) && !$$0.b_($$1).c() ? $$4.b(eae.I, Boolean.valueOf(true)) : $$4;
+   }
+
+   private static boolean a(diq $$0, iu $$1) {
+      dzo $$2 = $$0.a_($$1.d());
+      if ($$2.l() || $$2.a(dlw.J) && $$2.y().b(evw.c)) {
+         int $$3 = 0;
+
+         for (iu $$4 : iu.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            dzo $$5 = $$0.a_($$4);
+            if ($$5.a(dlw.ru) || $$5.a(dlw.rz)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
    @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return b;
+   public boolean d() {
+      return false;
    }
 }

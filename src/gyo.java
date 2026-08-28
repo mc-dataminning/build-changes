@@ -1,51 +1,46 @@
-public class gyo extends gyt<hbp, gdq> {
-   private final gpc a;
+public class gyo extends gvj<csb, hed> {
+   private static final ale a = ale.b("textures/entity/wither/wither_invulnerable.png");
+   private static final ale g = ale.b("textures/entity/wither/wither.png");
+   private final gha h;
 
-   public gyo(gwc<hbp, gdq> $$0, gpc $$1) {
+   public gyo(gvk.a $$0) {
       super($$0);
-      this.a = $$1;
+      this.h = new gha($$0.a(gif.dS));
    }
 
-   public void a(fho $$0, gny $$1, int $$2, hbp $$3, float $$4, float $$5) {
-      if (!$$3.aj) {
-         boolean $$6 = $$3.ao && $$3.z;
-         if (!$$3.z || $$6) {
-            dym $$7 = $$3.a.a();
-            int $$8 = gvg.a($$3, 0.0F);
-            his $$9 = this.a.a($$7);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            this.d().b().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-         }
-      }
+   public static gim a() {
+      gio $$0 = new gio();
+      giq $$1 = $$0.a();
+      $$1.a("head", gil.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gii.a);
+      return gim.a($$0, 64, 64);
    }
 
-   private void a(fho $$0, gny $$1, int $$2, boolean $$3, dym $$4, int $$5, his $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(goi.s(hgr.d)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
-      }
+   protected int a(csb $$0, iu $$1) {
+      return 15;
+   }
+
+   public void a(hed $$0, fiq $$1, gpd $$2, int $$3) {
+      $$1.a();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      fiu $$4 = $$2.getBuffer(this.h.a(this.a($$0)));
+      this.h.a(0.0F, $$0.c, $$0.b);
+      this.h.a($$1, $$4, $$3, hhp.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private ale a(hed $$0) {
+      return $$0.a ? a : g;
+   }
+
+   public hed b() {
+      return new hed();
+   }
+
+   public void a(csb $$0, hed $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.o();
+      $$1.c = $$0.l($$2);
+      $$1.b = $$0.k($$2);
    }
 }

@@ -1,127 +1,117 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiPredicate;
 
-public interface efs extends BiPredicate<dio, jj> {
-   Codec<efs> b = md.M.q().dispatch(efs::a, eft::codec);
-   efs c = a(dkw.a);
-   efs d = a(dkw.a, dkw.J);
+public record efs(efv j, dzo k, dzo l, eft m, ege.o n, List<dkb.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+   public static final Codec<efs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               efv.a.fieldOf("noise").forGetter(efs::f),
+               dzo.a.fieldOf("default_block").forGetter(efs::g),
+               dzo.a.fieldOf("default_fluid").forGetter(efs::h),
+               eft.a.fieldOf("noise_router").forGetter(efs::i),
+               ege.o.b.fieldOf("surface_rule").forGetter(efs::j),
+               dkb.d.a.listOf().fieldOf("spawn_target").forGetter(efs::k),
+               Codec.INT.fieldOf("sea_level").forGetter(efs::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(efs::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(efs::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(efs::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(efs::n)
+            )
+            .apply($$0, efs::new)
+   );
+   public static final Codec<je<efs>> b = ala.a(mg.aV, a);
+   public static final ald<efs> c = ald.a(mg.aV, ale.b("overworld"));
+   public static final ald<efs> d = ald.a(mg.aV, ale.b("large_biomes"));
+   public static final ald<efs> e = ald.a(mg.aV, ale.b("amplified"));
+   public static final ald<efs> f = ald.a(mg.aV, ale.b("nether"));
+   public static final ald<efs> g = ald.a(mg.aV, ale.b("end"));
+   public static final ald<efs> h = ald.a(mg.aV, ale.b("caves"));
+   public static final ald<efs> i = ald.a(mg.aV, ale.b("floating_islands"));
 
-   eft<?> a();
-
-   static efs a(List<efs> $$0) {
-      return new efq($$0);
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   static efs a(efs... $$0) {
-      return a(List.of($$0));
+   public boolean b() {
+      return this.r;
    }
 
-   static efs a(efs $$0, efs $$1) {
-      return a(List.of($$0, $$1));
+   public boolean c() {
+      return this.s;
    }
 
-   static efs b(List<efs> $$0) {
-      return new efr($$0);
+   public egm.a d() {
+      return this.t ? egm.a.a : egm.a.b;
    }
 
-   static efs b(efs... $$0) {
-      return b(List.of($$0));
+   public static void a(qh<efs> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
    }
 
-   static efs b(efs $$0, efs $$1) {
-      return b(List.of($$0, $$1));
+   private static efs b(qh<?> $$0) {
+      return new efs(efv.d, dlw.fU.m(), dlw.a.m(), efu.a($$0.a(mg.aM)), qu.c(), List.of(), 0, true, false, false, true);
    }
 
-   static efs a(kn $$0, List<dku> $$1) {
-      return new efy($$0, jw.a(dku::p, $$1));
+   private static efs c(qh<?> $$0) {
+      return new efs(efv.c, dlw.ei.m(), dlw.K.m(), efu.a($$0.a(mg.aM), $$0.a(mg.aW)), qu.b(), List.of(), 32, false, false, false, true);
    }
 
-   static efs c(List<dku> $$0) {
-      return a(kn.i, $$0);
+   private static efs a(qh<?> $$0, boolean $$1, boolean $$2) {
+      return new efs(efv.b, dlw.b.m(), dlw.J.m(), efu.a($$0.a(mg.aM), $$0.a(mg.aW), $$2, $$1), qu.a(), new dki().a(), 63, false, true, true, false);
    }
 
-   static efs a(kn $$0, dku... $$1) {
-      return a($$0, List.of($$1));
+   private static efs d(qh<?> $$0) {
+      return new efs(efv.e, dlw.b.m(), dlw.J.m(), efu.b($$0.a(mg.aM), $$0.a(mg.aW)), qu.a(false, true, true), List.of(), 32, false, false, false, true);
    }
 
-   static efs a(dku... $$0) {
-      return a(kn.i, $$0);
+   private static efs e(qh<?> $$0) {
+      return new efs(efv.f, dlw.b.m(), dlw.J.m(), efu.c($$0.a(mg.aM), $$0.a(mg.aW)), qu.a(false, false, false), List.of(), -64, false, false, false, true);
    }
 
-   static efs a(kn $$0, axp<dku> $$1) {
-      return new efx($$0, $$1);
+   public static efs e() {
+      return new efs(efv.b, dlw.b.m(), dlw.a.m(), efu.a(), qu.d(), List.of(), 63, true, false, false, false);
    }
 
-   static efs a(axp<dku> $$0) {
-      return a(kn.i, $$0);
+   public efv f() {
+      return this.j;
    }
 
-   static efs b(kn $$0, List<eus> $$1) {
-      return new efz($$0, jw.a(eus::k, $$1));
+   public dzo g() {
+      return this.k;
    }
 
-   static efs a(kn $$0, eus... $$1) {
-      return b($$0, List.of($$1));
+   public dzo h() {
+      return this.l;
    }
 
-   static efs a(eus... $$0) {
-      return a(kn.i, $$0);
+   public eft i() {
+      return this.m;
    }
 
-   static efs a(efs $$0) {
-      return new ega($$0);
+   public ege.o j() {
+      return this.n;
    }
 
-   static efs a(kn $$0) {
-      return new egb($$0);
+   public List<dkb.d> k() {
+      return this.o;
    }
 
-   static efs b() {
-      return a(kn.i);
+   public int l() {
+      return this.p;
    }
 
-   static efs a(dym $$0, kn $$1) {
-      return new egg($$1, $$0);
+   public boolean m() {
+      return this.r;
    }
 
-   static efs a(kn $$0, jo $$1) {
-      return new efv($$0, $$1);
-   }
-
-   static efs a(jo $$0) {
-      return a(kn.i, $$0);
-   }
-
-   static efs b(kn $$0) {
-      return new egc($$0);
-   }
-
-   static efs c() {
-      return b(kn.i);
-   }
-
-   static efs d() {
-      return c(kn.i);
-   }
-
-   static efs c(kn $$0) {
-      return a($$0, euu.a);
-   }
-
-   static efs d(kn $$0) {
-      return new efw($$0);
-   }
-
-   static efs e() {
-      return ege.a;
-   }
-
-   static efs e(kn $$0) {
-      return new egf($$0);
-   }
-
-   static efs f() {
-      return e(kn.i);
+   public boolean n() {
+      return this.t;
    }
 }

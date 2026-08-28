@@ -1,45 +1,37 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class aez implements zd<abs> {
+   public static final yu<vs, aez> a = zd.a(aez::a, aez::new);
+   private final iu b;
+   private final float c;
 
-public class aez implements zc<abr> {
-   public static final yt<vr, aez> a = zc.a(aez::a, aez::new);
-   private final fdq b;
-   private final String c;
-
-   public aez(fdq $$0, @Nullable fdr $$1) {
+   public aez(iu $$0, float $$1) {
       this.b = $$0;
-      if ($$1 == null) {
-         this.c = "";
-      } else {
-         this.c = $$1.b();
-      }
+      this.c = $$1;
    }
 
-   private aez(vr $$0) {
-      this.b = $$0.a(fdq.u);
-      this.c = $$0.p();
+   private aez(vs $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readFloat();
    }
 
-   private void a(vr $$0) {
-      $$0.a(fdq::a, this.b);
+   private void a(vs $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
    }
 
    @Override
-   public ze<aez> a() {
-      return agk.aE;
+   public zf<aez> a() {
+      return agl.aD;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public fdq b() {
+   public iu b() {
       return this.b;
    }
 
-   @Nullable
-   public String e() {
-      return Objects.equals(this.c, "") ? null : this.c;
+   public float e() {
+      return this.c;
    }
 }

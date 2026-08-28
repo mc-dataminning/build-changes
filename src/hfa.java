@@ -1,16 +1,17 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hfa() implements hfi<alc<dhp>> {
-   public static final hfi.a<hfa, alc<dhp>> a = hfi.a.a(MapCodec.unit(new hfa()), alc.a(me.bl));
+public record hfa(ks.a<?> b) implements hfc {
+   public static final MapCodec<hfa> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ks.a("predicate").forGetter(hfa::b)).apply($$0, hfa::new));
 
-   @Nullable
-   public alc<dhp> a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3, cxw $$4) {
-      return $$1 != null ? $$1.aj() : null;
+   @Override
+   public boolean get(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3, cyq $$4) {
+      return this.b.b().a($$0);
    }
 
    @Override
-   public hfi.a<hfa, alc<dhp>> a() {
+   public MapCodec<hfa> a() {
       return a;
    }
 }

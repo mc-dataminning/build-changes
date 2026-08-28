@@ -1,10 +1,10 @@
 public class axj {
-   public static final axp<cmj> a = a("placeable");
+   public static final axp<cmt> a = a("placeable");
 
    private axj() {
    }
 
-   private static axp<cmj> a(String $$0) {
-      return axp.a(me.X, ald.b($$0));
+   private static axp<cmt> a(String $$0) {
+      return axp.a(mg.aX, ale.b($$0));
    }
 }

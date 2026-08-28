@@ -1,41 +1,62 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
+import java.util.Optional;
 
-public record dgf(String e, js<cxu> f, Map<alc<dga>, String> g, wv h) {
-   public static final Codec<dgf> a = RecordCodecBuilder.create(
+public record dgf(dfm d, dfm e, jz f, Optional<egu> g, emy h, Optional<je<eeo>> i) implements dfw {
+   public static final MapCodec<dgf> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               ays.C.fieldOf("asset_name").forGetter(dgf::a),
-               cxu.e.fieldOf("ingredient").forGetter(dgf::b),
-               Codec.unboundedMap(alc.a(dgb.a), Codec.STRING).optionalFieldOf("override_armor_assets", Map.of()).forGetter(dgf::c),
-               wx.a.fieldOf("description").forGetter(dgf::d)
+               dfm.b.fieldOf("radius").forGetter(dgf::b),
+               dfm.b.fieldOf("height").forGetter(dgf::c),
+               jz.g.optionalFieldOf("offset", jz.i).forGetter(dgf::d),
+               egu.b.optionalFieldOf("predicate").forGetter(dgf::e),
+               emy.a.fieldOf("block_state").forGetter(dgf::f),
+               eeo.aj.optionalFieldOf("trigger_game_event").forGetter(dgf::g)
             )
             .apply($$0, dgf::new)
    );
-   public static final yt<wg, dgf> b = yt.a(
-      yr.o, dgf::a, cxu.f, dgf::b, yr.a(Object2ObjectOpenHashMap::new, alc.b(dgb.a), yr.o), dgf::c, wx.b, dgf::d, dgf::new
-   );
-   public static final Codec<js<dgf>> c = akz.a(me.bg, a);
-   public static final yt<wg, js<dgf>> d = yr.a(me.bg, b);
 
-   public static dgf a(String $$0, cxu $$1, wv $$2, Map<alc<dga>, String> $$3) {
-      return new dgf($$0, md.g.e($$1), $$3, $$2);
+   @Override
+   public void a(aro $$0, int $$1, dfe $$2, bwa $$3, fdw $$4) {
+      iu $$5 = iu.a((jo)$$4).a(this.f);
+      azt $$6 = $$3.dY();
+      int $$7 = (int)this.d.a($$1);
+      int $$8 = (int)this.e.a($$1);
+
+      for (iu $$9 : iu.c($$5.b(-$$7, 0, -$$7), $$5.b($$7, Math.min($$8 - 1, 0), $$7))) {
+         if ($$9.c($$4.a(), (double)$$9.v() + 0.5, $$4.c()) < (double)azk.h($$7)
+            && this.g.map($$2x -> $$2x.test($$0, $$9)).orElse(true)
+            && $$0.b($$9, this.h.a($$6, $$9))) {
+            this.i.ifPresent($$3x -> $$0.a($$3, $$3x, $$9));
+         }
+      }
    }
 
-   public String a() {
+   @Override
+   public MapCodec<dgf> a() {
+      return a;
+   }
+
+   public dfm b() {
+      return this.d;
+   }
+
+   public dfm c() {
       return this.e;
    }
 
-   public js<cxu> b() {
+   public jz d() {
       return this.f;
    }
 
-   public Map<alc<dga>, String> c() {
+   public Optional<egu> e() {
       return this.g;
    }
 
-   public wv d() {
+   public emy f() {
       return this.h;
+   }
+
+   public Optional<je<eeo>> g() {
+      return this.i;
    }
 }

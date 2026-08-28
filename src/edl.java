@@ -1,104 +1,233 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.file.Path;
 import java.util.Optional;
-import java.util.Set;
+import java.util.OptionalLong;
 
-public class edl implements edp {
-   private final List<edo> b = Lists.newArrayList();
-   private final Set<edo> c = Sets.newHashSet();
-   private final List<edo> d = Lists.newArrayList();
-   private boolean e;
-   private final arn f;
-   private final int g;
-   private final edl.a h;
+public record edl(
+   OptionalLong m, boolean n, boolean o, boolean p, boolean q, double r, boolean s, boolean t, int u, int v, int w, axp<dlu> x, ale y, float z, edl.a A
+) {
+   public static final int a = iu.e;
+   public static final int b = 16;
+   public static final int c = (1 << a) - 32;
+   public static final int d = (c >> 1) - 1;
+   public static final int e = d - c + 1;
+   public static final int f = d << 4;
+   public static final int g = e << 4;
+   public static final Codec<edl> h = ays.e(
+      RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ays.a(Codec.LONG.lenientOptionalFieldOf("fixed_time")).forGetter(edl::f),
+                  Codec.BOOL.fieldOf("has_skylight").forGetter(edl::g),
+                  Codec.BOOL.fieldOf("has_ceiling").forGetter(edl::h),
+                  Codec.BOOL.fieldOf("ultrawarm").forGetter(edl::i),
+                  Codec.BOOL.fieldOf("natural").forGetter(edl::j),
+                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(edl::k),
+                  Codec.BOOL.fieldOf("bed_works").forGetter(edl::l),
+                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(edl::m),
+                  Codec.intRange(e, d).fieldOf("min_y").forGetter(edl::n),
+                  Codec.intRange(16, c).fieldOf("height").forGetter(edl::o),
+                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(edl::p),
+                  axp.b(mg.i).fieldOf("infiniburn").forGetter(edl::q),
+                  ale.a.fieldOf("effects").orElse(edj.e).forGetter(edl::r),
+                  Codec.FLOAT.fieldOf("ambient_light").forGetter(edl::s),
+                  edl.a.a.forGetter(edl::t)
+               )
+               .apply($$0, edl::new)
+      )
+   );
+   public static final yu<wh, je<edl>> i = ys.b(mg.aN);
+   public static final int j = 8;
+   public static final float[] k = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
+   public static final Codec<je<edl>> l = ala.a(mg.aN, h);
 
-   public edl(arn $$0, int $$1, edl.a $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-   }
-
-   @Override
-   public boolean a() {
-      return this.b.isEmpty();
-   }
-
-   @Override
-   public void a(edo $$0) {
-      if (this.e) {
-         this.d.add($$0);
+   public edl(
+      OptionalLong m, boolean n, boolean o, boolean p, boolean q, double r, boolean s, boolean t, int u, int v, int w, axp<dlu> x, ale y, float z, edl.a A
+   ) {
+      if (v < 16) {
+         throw new IllegalStateException("height has to be at least 16");
+      } else if (u + v > d + 1) {
+         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
+      } else if (w > v) {
+         throw new IllegalStateException("logical_height cannot be higher than height");
+      } else if (v % 16 != 0) {
+         throw new IllegalStateException("height has to be multiple of 16");
+      } else if (u % 16 != 0) {
+         throw new IllegalStateException("min_y has to be a multiple of 16");
       } else {
-         this.b.add($$0);
+         this.m = m;
+         this.n = n;
+         this.o = o;
+         this.p = p;
+         this.q = q;
+         this.r = r;
+         this.s = s;
+         this.t = t;
+         this.u = u;
+         this.v = v;
+         this.w = w;
+         this.x = x;
+         this.y = y;
+         this.z = z;
+         this.A = A;
       }
-
-      agj.a(this.f, $$0);
    }
 
-   @Override
-   public void b(edo $$0) {
-      if (this.e) {
-         this.c.add($$0);
-      } else {
-         this.b.remove($$0);
-      }
-
-      if (this.b.isEmpty()) {
-         this.h.apply(this.g);
-      }
-   }
-
-   @Override
-   public boolean a(js<edm> $$0, fcu $$1, edm.a $$2, edp.a $$3) {
-      this.e = true;
-      boolean $$4 = false;
-
-      try {
-         Iterator<edo> $$5 = this.b.iterator();
-
-         while ($$5.hasNext()) {
-            edo $$6 = $$5.next();
-            if (this.c.remove($$6)) {
-               $$5.remove();
-            } else {
-               Optional<fcu> $$7 = a(this.f, $$1, $$6);
-               if ($$7.isPresent()) {
-                  $$3.visit($$6, $$7.get());
-                  $$4 = true;
-               }
-            }
+   @Deprecated
+   public static DataResult<ald<dip>> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.asNumber().result();
+      if ($$1.isPresent()) {
+         int $$2 = $$1.get().intValue();
+         if ($$2 == -1) {
+            return DataResult.success(dip.j);
          }
-      } finally {
-         this.e = false;
+
+         if ($$2 == 0) {
+            return DataResult.success(dip.i);
+         }
+
+         if ($$2 == 1) {
+            return DataResult.success(dip.k);
+         }
       }
 
-      if (!this.d.isEmpty()) {
-         this.b.addAll(this.d);
-         this.d.clear();
-      }
-
-      if (!this.c.isEmpty()) {
-         this.b.removeAll(this.c);
-         this.c.clear();
-      }
-
-      return $$4;
+      return dip.h.parse($$0);
    }
 
-   private static Optional<fcu> a(arn $$0, fcu $$1, edo $$2) {
-      Optional<fcu> $$3 = $$2.a().a($$0);
-      if ($$3.isEmpty()) {
-         return Optional.empty();
+   public static double a(edl $$0, edl $$1) {
+      double $$2 = $$0.k();
+      double $$3 = $$1.k();
+      return $$2 / $$3;
+   }
+
+   public static Path a(ald<dip> $$0, Path $$1) {
+      if ($$0 == dip.i) {
+         return $$1;
+      } else if ($$0 == dip.k) {
+         return $$1.resolve("DIM1");
       } else {
-         double $$4 = jj.a($$3.get()).j(jj.a((kc)$$1));
-         int $$5 = $$2.b() * $$2.b();
-         return $$4 > (double)$$5 ? Optional.empty() : $$3;
+         return $$0 == dip.j ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
       }
    }
 
-   @FunctionalInterface
-   public interface a {
-      void apply(int var1);
+   public boolean a() {
+      return this.m.isPresent();
+   }
+
+   public float a(long $$0) {
+      double $$1 = azk.e((double)this.m.orElse($$0) / 24000.0 - 0.25);
+      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
+      return (float)($$1 * 2.0 + $$2) / 3.0F;
+   }
+
+   public int b(long $$0) {
+      return (int)($$0 / 24000L % 8L + 8L) % 8;
+   }
+
+   public boolean b() {
+      return this.A.a();
+   }
+
+   public boolean c() {
+      return this.A.b();
+   }
+
+   public btd d() {
+      return this.A.c();
+   }
+
+   public int e() {
+      return this.A.d();
+   }
+
+   public OptionalLong f() {
+      return this.m;
+   }
+
+   public boolean g() {
+      return this.n;
+   }
+
+   public boolean h() {
+      return this.o;
+   }
+
+   public boolean i() {
+      return this.p;
+   }
+
+   public boolean j() {
+      return this.q;
+   }
+
+   public double k() {
+      return this.r;
+   }
+
+   public boolean l() {
+      return this.s;
+   }
+
+   public boolean m() {
+      return this.t;
+   }
+
+   public int n() {
+      return this.u;
+   }
+
+   public int o() {
+      return this.v;
+   }
+
+   public int p() {
+      return this.w;
+   }
+
+   public axp<dlu> q() {
+      return this.x;
+   }
+
+   public ale r() {
+      return this.y;
+   }
+
+   public float s() {
+      return this.z;
+   }
+
+   public edl.a t() {
+      return this.A;
+   }
+
+   public static record a(boolean b, boolean c, btd d, int e) {
+      public static final MapCodec<edl.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.BOOL.fieldOf("piglin_safe").forGetter(edl.a::a),
+                  Codec.BOOL.fieldOf("has_raids").forGetter(edl.a::b),
+                  btd.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(edl.a::c),
+                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(edl.a::d)
+               )
+               .apply($$0, edl.a::new)
+      );
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public boolean b() {
+         return this.c;
+      }
+
+      public btd c() {
+         return this.d;
+      }
+
+      public int d() {
+         return this.e;
+      }
    }
 }

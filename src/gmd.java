@@ -1,54 +1,49 @@
-public class gmd extends glt {
-   gmd(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gmc $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)axu.b($$7), (float)axu.c($$7), (float)axu.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
-      this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+public class gmd extends gnl {
+   private final gng a;
+
+   protected gmd(gjd $$0, double $$1, double $$2, double $$3, double $$4, gng $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
    public void a() {
-      super.a();
-      if (!this.o) {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
          this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
-
-         if (this.c.a_(jj.a(this.g, this.h, this.i)).l()) {
-            this.k -= 0.0074F;
-         }
       }
    }
 
-   public static class a implements glk<lz> {
-      private final gmc a;
-
-      public a(gmc $$0) {
-         this.a = $$0;
-      }
-
-      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gmd($$1, $$2, $$3, $$4, $$5, $$6, $$7, axu.a(255, 204, 31, 102), this.a);
-      }
+   @Override
+   public gmp b() {
+      return gmp.b;
    }
 
-   public static class b implements glk<lz> {
-      private final gmc a;
+   public static class a implements gmo<mb> {
+      private final gng a;
 
-      public b(gmc $$0) {
+      public a(gng $$0) {
          this.a = $$0;
       }
 
-      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gmd($$1, $$2, $$3, $$4, $$5, $$6, $$7, axu.a(255, 255, 255, 255), this.a);
+      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gmd($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

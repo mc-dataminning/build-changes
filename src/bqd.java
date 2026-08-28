@@ -1,25 +1,45 @@
-public final class bqd implements Comparable<bqd> {
-   public final double a;
-   public final double b;
-   public final long c;
-   public final String d;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 
-   public bqd(String $$0, double $$1, double $$2, long $$3) {
-      this.d = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public class bqd implements bqh {
+   public static final bqd a = new bqd();
+
+   private bqd() {
    }
 
-   public int a(bqd $$0) {
-      if ($$0.a < this.a) {
-         return -1;
-      } else {
-         return $$0.a > this.a ? 1 : $$0.d.compareTo(this.d);
-      }
+   @Override
+   public List<bql> a(String $$0) {
+      return Collections.emptyList();
    }
 
-   public int a() {
-      return (this.d.hashCode() & 11184810) + 4473924;
+   @Override
+   public boolean a(Path $$0) {
+      return false;
+   }
+
+   @Override
+   public long a() {
+      return 0L;
+   }
+
+   @Override
+   public int b() {
+      return 0;
+   }
+
+   @Override
+   public long c() {
+      return 0L;
+   }
+
+   @Override
+   public int d() {
+      return 0;
+   }
+
+   @Override
+   public String e() {
+      return "";
    }
 }

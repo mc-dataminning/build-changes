@@ -1,96 +1,99 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dma extends dqm {
-   public static final MapCodec<dma> a = b(dma::new);
+public class dma extends dlg implements doq {
+   public static final MapCodec<dma> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               mf.e.q().fieldOf("turns_into").forGetter(dma::b),
+               mf.b.q().fieldOf("brush_sound").forGetter(dma::c),
+               mf.b.q().fieldOf("brush_completed_sound").forGetter(dma::d),
+               t()
+            )
+            .apply($$0, dma::new)
+   );
+   private static final eao c = eae.by;
+   public static final int b = 2;
+   private final dlu d;
+   private final awk e;
+   private final awk f;
 
    @Override
    public MapCodec<dma> a() {
       return a;
    }
 
-   protected dma(dyl.d $$0) {
-      super(10.0F, $$0);
-      this.l(
-         this.B
-            .b()
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-            .b(f, Boolean.valueOf(false))
-            .b(g, Boolean.valueOf(false))
-      );
+   public dma(dlu $$0, awk $$1, awk $$2, dzn.d $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.l(this.B.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public dym a(dbn $$0) {
-      return a($$0.q(), $$0.a(), this.m());
-   }
-
-   public static dym a(dgv $$0, jj $$1, dym $$2) {
-      dym $$3 = $$0.a_($$1.e());
-      dym $$4 = $$0.a_($$1.d());
-      dym $$5 = $$0.a_($$1.f());
-      dym $$6 = $$0.a_($$1.i());
-      dym $$7 = $$0.a_($$1.g());
-      dym $$8 = $$0.a_($$1.h());
-      dku $$9 = $$2.b();
-      return $$2.c(g, Boolean.valueOf($$3.a($$9) || $$3.a(dkw.kX) || $$3.a(dkw.fU)))
-         .c(f, Boolean.valueOf($$4.a($$9) || $$4.a(dkw.kX)))
-         .c(b, Boolean.valueOf($$5.a($$9) || $$5.a(dkw.kX)))
-         .c(c, Boolean.valueOf($$6.a($$9) || $$6.a(dkw.kX)))
-         .c(d, Boolean.valueOf($$7.a($$9) || $$7.a(dkw.kX)))
-         .c(e, Boolean.valueOf($$8.a($$9) || $$8.a(dkw.kX)));
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      if (!$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else {
-         boolean $$8 = $$6.a(this) || $$6.a(dkw.kX) || $$4 == jo.a && $$6.a(dkw.fU);
-         return $$0.b(h.get($$4), Boolean.valueOf($$8));
+   public void a(dzo $$0, dip $$1, iu $$2, dzo $$3, boolean $$4) {
+      $$1.a($$2, this, 2);
+   }
+
+   @Override
+   public dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      $$2.a($$3, this, 2);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   public void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      if ($$1.c_($$2) instanceof dws $$4) {
+         $$4.a($$1);
+      }
+
+      if (dor.n($$1.a_($$2.e())) && $$2.v() >= $$1.G_()) {
+         cmw $$5 = cmw.a($$1, $$2, $$0);
+         $$5.g();
       }
    }
 
    @Override
-   protected void a(dym $$0, arn $$1, jj $$2, azs $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   public void a(dip $$0, iu $$1, cmw $$2) {
+      fdw $$3 = $$2.cR().f();
+      $$0.c(2001, iu.a((jo)$$3), dlu.j($$2.j()));
+      $$0.a($$2, eeo.f, $$3);
    }
 
    @Override
-   protected boolean a(dym $$0, dhs $$1, jj $$2) {
-      dym $$3 = $$1.a_($$2.e());
-      boolean $$4 = !$$1.a_($$2.d()).l() && !$$3.l();
-
-      for (jo $$5 : jo.c.a) {
-         jj $$6 = $$2.a($$5);
-         dym $$7 = $$1.a_($$6);
-         if ($$7.a(this)) {
-            if ($$4) {
-               return false;
-            }
-
-            dym $$8 = $$1.a_($$6.e());
-            if ($$8.a(this) || $$8.a(dkw.fU)) {
-               return true;
-            }
+   public void a(dzo $$0, dip $$1, iu $$2, azt $$3) {
+      if ($$3.a(16) == 0) {
+         iu $$4 = $$2.e();
+         if (dor.n($$1.a_($$4))) {
+            double $$5 = (double)$$2.u() + $$3.j();
+            double $$6 = (double)$$2.v() - 0.05;
+            double $$7 = (double)$$2.w() + $$3.j();
+            $$1.a(new lp(lx.C, $$0), $$5, $$6, $$7, 0.0, 0.0, 0.0);
          }
       }
-
-      return $$3.a(this) || $$3.a(dkw.fU);
    }
 
+   @Nullable
    @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b, c, d, e, f, g);
+   public dwn a(iu $$0, dzo $$1) {
+      return new dws($$0, $$1);
    }
 
-   @Override
-   protected boolean a(dym $$0, evi $$1) {
-      return false;
+   public dlu b() {
+      return this.d;
+   }
+
+   public awk c() {
+      return this.e;
+   }
+
+   public awk d() {
+      return this.f;
    }
 }

@@ -1,63 +1,19 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public final class daa {
-   public static final daa a = new daa(List.of());
-   public static final Codec<daa> b = cxy.b.listOf().xmap(daa::new, $$0 -> $$0.d);
-   public static final yt<wg, daa> c = cxy.i.a(yr.a()).a(daa::new, $$0 -> $$0.d);
-   private final List<cxy> d;
-
-   private daa(List<cxy> $$0) {
-      this.d = $$0;
-   }
-
-   public static daa a(cxy $$0) {
-      return new daa(List.of($$0.v()));
-   }
-
-   public static daa a(List<cxy> $$0) {
-      return new daa(List.copyOf(Lists.transform($$0, cxy::v)));
-   }
-
-   public boolean a(cxu $$0) {
-      for (cxy $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public List<cxy> a() {
-      return Lists.transform(this.d, cxy::v);
-   }
-
-   public boolean b() {
-      return this.d.isEmpty();
+public class daa extends cww {
+   public daa(cyo.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof daa $$1 && cxy.a(this.d, $$1.d)) {
-            return true;
-         }
-
-         return false;
-      }
+   public cqz a(dip $$0, cys $$1, bwz $$2, @Nullable cys $$3) {
+      return new crs($$0, $$2, $$1.c(1), $$3);
    }
 
    @Override
-   public int hashCode() {
-      return cxy.a(this.d);
-   }
-
-   @Override
-   public String toString() {
-      return "ChargedProjectiles[items=" + this.d + "]";
+   public crm a(dip $$0, jo $$1, cys $$2, ja $$3) {
+      crs $$4 = new crs($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.b = cqz.a.b;
+      return $$4;
    }
 }

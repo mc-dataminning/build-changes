@@ -1,21 +1,44 @@
-public class gff extends geo<hbw> {
-   public gff(ghd $$0) {
+public class gff extends gfd<hbr> {
+   private static final String a = "base";
+   private static final String b = "upper_jaw";
+   private static final String c = "lower_jaw";
+   private final gig d;
+   private final gig e;
+   private final gig f;
+
+   public gff(gig $$0) {
       super($$0);
+      this.d = $$0.b("base");
+      this.e = this.d.b("upper_jaw");
+      this.f = this.d.b("lower_jaw");
    }
 
-   public static ghj a() {
-      ghl $$0 = geo.a(ghh.a, 0.0F);
-      ghn $$1 = $$0.a();
-      ghn $$2 = $$1.a("head");
-      $$2.a("hat");
-      $$1.a("body");
-      $$1.a("left_arm");
-      $$1.a("right_arm");
-      $$1.a("left_leg");
-      $$1.a("right_leg");
-      ghi $$3 = ghi.c().a(24, 0).a(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, new ghh(1.0F));
-      $$2.a("left_ear", $$3, ghf.a(-6.0F, -6.0F, 0.0F));
-      $$2.a("right_ear", $$3, ghf.a(6.0F, -6.0F, 0.0F));
-      return ghj.a($$0, 64, 64);
+   public static gim a() {
+      gio $$0 = new gio();
+      giq $$1 = $$0.a();
+      giq $$2 = $$1.a("base", gil.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), gii.a(-5.0F, 24.0F, -5.0F));
+      gil $$3 = gil.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
+      $$2.a("upper_jaw", $$3, gii.a(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
+      $$2.a("lower_jaw", $$3, gii.a(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
+      return gim.a($$0, 64, 32);
+   }
+
+   public void a(hbr $$0) {
+      super.a($$0);
+      float $$1 = $$0.b;
+      float $$2 = Math.min($$1 * 2.0F, 1.0F);
+      $$2 = 1.0F - $$2 * $$2 * $$2;
+      this.e.g = (float) Math.PI - $$2 * 0.35F * (float) Math.PI;
+      this.f.g = (float) Math.PI + $$2 * 0.35F * (float) Math.PI;
+      this.d.c = this.d.c - ($$1 + azk.a($$1 * 2.7F)) * 7.2F;
+      float $$3 = 1.0F;
+      if ($$1 > 0.9F) {
+         $$3 *= (1.0F - $$1) / 0.1F;
+      }
+
+      this.v.c = 24.0F - 20.0F * $$3;
+      this.v.h = $$3;
+      this.v.i = $$3;
+      this.v.j = $$3;
    }
 }

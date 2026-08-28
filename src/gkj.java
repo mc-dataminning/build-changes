@@ -1,43 +1,67 @@
-import org.joml.Vector3f;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class gkj extends gkl<lp> {
-   private final Vector3f a;
-   private final Vector3f b;
-
-   protected gkj(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lp $$7, gmc $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.b(), $$9);
-      this.b = this.a($$7.c(), $$9);
+public record gkj(String a, @Nullable gkj.a b) {
+   public static gkj a() {
+      return a(null);
    }
 
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   public static gkj a(String $$0) {
+      return a(new gkj.a.b($$0));
    }
 
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+   public static gkj a(fkh $$0) {
+      return a(new gkj.a.a($$0));
    }
 
-   @Override
-   public void a(fhs $$0, fml $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
+   public static gkj a(@Nullable gkj.a $$0) {
+      return new gkj(g(), $$0);
    }
 
-   public static class a implements glk<lp> {
-      private final gmc a;
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
 
-      public a(gmc $$0) {
-         this.a = $$0;
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof gkj.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof gkj.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("25w04a");
+      if (fof.e().a()) {
+         $$0.append(" (modded)");
       }
 
-      public glh a(lp $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gkj($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      return $$0.toString();
+   }
+
+   public String e() {
+      return this.a;
+   }
+
+   @Nullable
+   public gkj.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements gkj.a {
+         public a(fkh $$0) {
+            this($$0.a, $$0.p);
+         }
+      }
+
+      public static record b(String a) implements gkj.a {
       }
    }
 }

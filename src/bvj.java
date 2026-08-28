@@ -1,53 +1,24 @@
-import java.util.function.Consumer;
-
-public class bvj {
-   private static final int a = Integer.MIN_VALUE;
-   private int b = Integer.MIN_VALUE;
-
-   public void a(int $$0) {
-      this.b = $$0;
+class bvj extends bvc {
+   protected bvj(bvd $$0, int $$1, lv $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public void b(int $$0) {
-      if (!this.b()) {
-         this.a($$0);
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 == 1;
+   }
+
+   @Override
+   public boolean a(aro $$0, bwz $$1, int $$2) {
+      if ($$1 instanceof arp $$3 && !$$1.U_()) {
+         iu $$4 = $$3.ag();
+         if ($$4 != null) {
+            $$0.B().a($$3, $$4);
+            $$3.af();
+            return false;
+         }
       }
-   }
 
-   public void a(boolean $$0, int $$1) {
-      if ($$0) {
-         this.b($$1);
-      } else {
-         this.a();
-      }
-   }
-
-   public void a() {
-      this.b = Integer.MIN_VALUE;
-   }
-
-   public void a(Consumer<bvj> $$0) {
-      if (this.b()) {
-         $$0.accept(this);
-      }
-   }
-
-   public void a(int $$0, float $$1) {
-      if (this.b()) {
-         this.b -= (int)((float)$$0 * $$1);
-      }
-   }
-
-   public long a(float $$0) {
-      float $$1 = $$0 - (float)this.b;
-      return (long)($$1 * 50.0F);
-   }
-
-   public boolean b() {
-      return this.b != Integer.MIN_VALUE;
-   }
-
-   public void a(bvj $$0) {
-      this.b = $$0.b;
+      return true;
    }
 }

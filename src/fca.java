@@ -1,16 +1,28 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.Set;
 
-public class fca {
-   private static final Codec<fbz> d = md.I.q().dispatch(fbz::a, fby::a);
-   public static final Codec<fbz> a = Codec.lazyInitialized(
-      () -> Codec.either(fbw.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof fbw $$1 ? Either.left($$1) : Either.right($$0))
-   );
-   public static final fby b = a("fixed", fbx.a);
-   public static final fby c = a("context", fbw.a);
+public class fca implements fbw {
+   private static final fca b = new fca();
+   public static final MapCodec<fca> a = MapCodec.unit(b);
 
-   private static fby a(String $$0, MapCodec<? extends fbz> $$1) {
-      return kf.a(md.I, ald.b($$0), new fby($$1));
+   private fca() {
+   }
+
+   @Override
+   public fbx b() {
+      return fby.g;
+   }
+
+   @Override
+   public Set<bav<?>> a() {
+      return Set.of(fbh.b);
+   }
+
+   public boolean a(eyn $$0) {
+      return $$0.a(fbh.b);
+   }
+
+   public static fbw.a c() {
+      return () -> b;
    }
 }

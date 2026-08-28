@@ -1,76 +1,138 @@
-import java.util.Arrays;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.File;
+import java.net.URI;
+import java.nio.file.Path;
 
-public class wu {
-   public static final wv a = wv.i();
-   public static final wv b = wv.c("options.on");
-   public static final wv c = wv.c("options.off");
-   public static final wv d = wv.c("gui.done");
-   public static final wv e = wv.c("gui.cancel");
-   public static final wv f = wv.c("gui.yes");
-   public static final wv g = wv.c("gui.no");
-   public static final wv h = wv.c("gui.ok");
-   public static final wv i = wv.c("gui.proceed");
-   public static final wv j = wv.c("gui.continue");
-   public static final wv k = wv.c("gui.back");
-   public static final wv l = wv.c("gui.toTitle");
-   public static final wv m = wv.c("gui.acknowledge");
-   public static final wv n = wv.c("chat.link.open");
-   public static final wv o = wv.c("gui.copy_link_to_clipboard");
-   public static final wv p = wv.c("menu.disconnect");
-   public static final wv q = wv.c("connect.failed.transfer");
-   public static final wv r = wv.c("connect.failed");
-   public static final wv s = wv.b("\n");
-   public static final wv t = wv.b(". ");
-   public static final wv u = wv.b("...");
-   public static final wv v = a();
+public interface wu {
+   Codec<wu> a = wu.a.h.dispatch("action", wu::a, $$0 -> $$0.k);
 
-   public static xj a() {
-      return wv.b(" ");
-   }
+   wu.a a();
 
-   public static xj a(long $$0) {
-      return wv.a("gui.days", $$0);
-   }
+   public static enum a implements bai {
+      a("open_url", true, wu.e.b),
+      b("open_file", false, wu.d.b),
+      c("run_command", true, wu.f.b),
+      d("suggest_command", true, wu.g.b),
+      e("change_page", true, wu.b.b),
+      f("copy_to_clipboard", true, wu.c.b);
 
-   public static xj b(long $$0) {
-      return wv.a("gui.hours", $$0);
-   }
+      public static final Codec<wu.a> g = bai.a(wu.a::values);
+      public static final Codec<wu.a> h = g.validate(wu.a::a);
+      private final boolean i;
+      private final String j;
+      final MapCodec<? extends wu> k;
 
-   public static xj c(long $$0) {
-      return wv.a("gui.minutes", $$0);
-   }
-
-   public static wv a(boolean $$0) {
-      return $$0 ? b : c;
-   }
-
-   public static xj a(wv $$0, boolean $$1) {
-      return wv.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
-   }
-
-   public static xj a(wv $$0, wv $$1) {
-      return wv.a("options.generic_value", $$0, $$1);
-   }
-
-   public static xj a(wv... $$0) {
-      xj $$1 = wv.i();
-
-      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-         $$1.b($$0[$$2]);
-         if ($$2 != $$0.length - 1) {
-            $$1.b(t);
-         }
+      private a(final String $$0, final boolean $$1, final MapCodec<? extends wu> $$2) {
+         this.j = $$0;
+         this.i = $$1;
+         this.k = $$2;
       }
 
-      return $$1;
+      public boolean a() {
+         return this.i;
+      }
+
+      @Override
+      public String c() {
+         return this.j;
+      }
+
+      public static DataResult<wu.a> a(wu.a $$0) {
+         return !$$0.a() ? DataResult.error(() -> "Click event type not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      }
    }
 
-   public static wv b(wv... $$0) {
-      return a(Arrays.asList($$0));
+   public static record b(int c) implements wu {
+      public static final MapCodec<wu.b> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.m.fieldOf("page").forGetter(wu.b::b)).apply($$0, wu.b::new));
+
+      @Override
+      public wu.a a() {
+         return wu.a.e;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 
-   public static wv a(Collection<? extends wv> $$0) {
-      return wy.a($$0, s);
+   public static record c(String c) implements wu {
+      public static final MapCodec<wu.c> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("value").forGetter(wu.c::b)).apply($$0, wu.c::new)
+      );
+
+      @Override
+      public wu.a a() {
+         return wu.a.f;
+      }
+
+      public String b() {
+         return this.c;
+      }
+   }
+
+   public static record d(String c) implements wu {
+      public static final MapCodec<wu.d> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("path").forGetter(wu.d::c)).apply($$0, wu.d::new)
+      );
+
+      public d(File $$0) {
+         this($$0.toString());
+      }
+
+      public d(Path $$0) {
+         this($$0.toFile());
+      }
+
+      public File b() {
+         return new File(this.c);
+      }
+
+      @Override
+      public wu.a a() {
+         return wu.a.b;
+      }
+   }
+
+   public static record e(URI c) implements wu {
+      public static final MapCodec<wu.e> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.D.fieldOf("url").forGetter(wu.e::b)).apply($$0, wu.e::new));
+
+      @Override
+      public wu.a a() {
+         return wu.a.a;
+      }
+
+      public URI b() {
+         return this.c;
+      }
+   }
+
+   public static record f(String c) implements wu {
+      public static final MapCodec<wu.f> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.E.fieldOf("command").forGetter(wu.f::b)).apply($$0, wu.f::new));
+
+      @Override
+      public wu.a a() {
+         return wu.a.c;
+      }
+
+      public String b() {
+         return this.c;
+      }
+   }
+
+   public static record g(String c) implements wu {
+      public static final MapCodec<wu.g> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.E.fieldOf("command").forGetter(wu.g::b)).apply($$0, wu.g::new));
+
+      @Override
+      public wu.a a() {
+         return wu.a.d;
+      }
+
+      public String b() {
+         return this.c;
+      }
    }
 }

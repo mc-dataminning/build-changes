@@ -1,113 +1,61 @@
-import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class gqg<T extends dvl & dvf> implements gqk<T> {
-   public static final ald a = ald.b("textures/entity/beacon_beam.png");
-   public static final int b = 1024;
+public class gqg {
+   private Map<dzo, hjz> a = Map.of();
+   private final hkn b;
 
-   public gqg(gql.a $$0) {
+   public gqg(hkn $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public void a(T $$0, float $$1, fho $$2, gny $$3, int $$4, int $$5) {
-      long $$6 = $$0.i().ae();
-      List<dvf.a> $$7 = $$0.a();
-      int $$8 = 0;
+   public hhz a(dzo $$0) {
+      return this.b($$0).d();
+   }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         dvf.a $$10 = $$7.get($$9);
-         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
-         $$8 += $$10.c();
+   public hjz b(dzo $$0) {
+      hjz $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         $$1 = this.b.a();
       }
+
+      return $$1;
    }
 
-   private static void a(fho $$0, gny $$1, float $$2, long $$3, int $$4, int $$5, int $$6) {
-      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
+   public hkn a() {
+      return this.b;
    }
 
-   public static void a(fho $$0, gny $$1, ald $$2, float $$3, float $$4, long $$5, int $$6, int $$7, int $$8, float $$9, float $$10) {
-      int $$11 = $$6 + $$7;
-      $$0.a();
-      $$0.a(0.5, 0.0, 0.5);
-      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
-      float $$13 = $$7 < 0 ? $$12 : -$$12;
-      float $$14 = azk.i($$13 * 0.2F - (float)azk.d($$13 * 0.1F));
-      $$0.a();
-      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
-      float $$15 = 0.0F;
-      float $$18 = 0.0F;
-      float $$19 = -$$9;
-      float $$20 = 0.0F;
-      float $$21 = 0.0F;
-      float $$22 = -$$9;
-      float $$23 = 0.0F;
-      float $$24 = 1.0F;
-      float $$25 = -1.0F + $$14;
-      float $$26 = (float)$$7 * $$4 * (0.5F / $$9) + $$25;
-      a($$0, $$1.getBuffer(goi.e($$2, false)), $$8, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$19, 0.0F, 0.0F, $$22, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
-      $$15 = -$$10;
-      float $$28 = -$$10;
-      $$18 = -$$10;
-      $$19 = -$$10;
-      $$23 = 0.0F;
-      $$24 = 1.0F;
-      $$25 = -1.0F + $$14;
-      $$26 = (float)$$7 * $$4 + $$25;
-      a($$0, $$1.getBuffer(goi.e($$2, true)), axu.c(32, $$8), $$6, $$11, $$15, $$28, $$10, $$18, $$19, $$10, $$10, $$10, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
+   public void a(Map<dzo, hjz> $$0) {
+      this.a = $$0;
    }
 
-   private static void a(
-      fho $$0,
-      fhs $$1,
-      int $$2,
-      int $$3,
-      int $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15,
-      float $$16
-   ) {
-      fho.a $$17 = $$0.c();
-      a($$17, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$11, $$12, $$9, $$10, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$7, $$8, $$11, $$12, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$9, $$10, $$5, $$6, $$13, $$14, $$15, $$16);
+   public static hko c(dzo $$0) {
+      return a(mf.e.b($$0.b()), $$0);
    }
 
-   private static void a(
-      fho.a $$0, fhs $$1, int $$2, int $$3, int $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
-   ) {
-      a($$0, $$1, $$2, $$4, $$5, $$6, $$10, $$11);
-      a($$0, $$1, $$2, $$3, $$5, $$6, $$10, $$12);
-      a($$0, $$1, $$2, $$3, $$7, $$8, $$9, $$12);
-      a($$0, $$1, $$2, $$4, $$7, $$8, $$9, $$11);
+   public static hko a(ale $$0, dzo $$1) {
+      return new hko($$0, b($$1.G()));
    }
 
-   private static void a(fho.a $$0, fhs $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      $$1.a($$0, $$4, (float)$$3, $$5).a($$2).a($$6, $$7).b(hgi.d).c(15728880).b($$0, 0.0F, 1.0F, 0.0F);
+   public static String b(Map<ear<?>, Comparable<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (Entry<ear<?>, Comparable<?>> $$2 : $$0.entrySet()) {
+         if ($$1.length() != 0) {
+            $$1.append(',');
+         }
+
+         ear<?> $$3 = $$2.getKey();
+         $$1.append($$3.f());
+         $$1.append('=');
+         $$1.append(a($$3, $$2.getValue()));
+      }
+
+      return $$1.toString();
    }
 
-   @Override
-   public boolean a(T $$0) {
-      return true;
-   }
-
-   @Override
-   public int aQ_() {
-      return 256;
-   }
-
-   @Override
-   public boolean a(T $$0, fcu $$1) {
-      return fcu.b($$0.aw_()).d(1.0, 0.0, 1.0).a((kc)$$1.d(1.0, 0.0, 1.0), (double)this.aQ_());
+   private static <T extends Comparable<T>> String a(ear<T> $$0, Comparable<?> $$1) {
+      return $$0.b((T)$$1);
    }
 }

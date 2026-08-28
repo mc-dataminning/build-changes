@@ -1,138 +1,33 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonParser;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.security.PublicKey;
-import java.time.DateTimeException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class ghs extends gfd<hbp> {
+   private static final int a = 16;
+   private final gig b;
+   private final gig c;
+   private final gig d;
 
-public class ghs implements gim {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Duration c = Duration.ofHours(1L);
-   private static final Path d = Path.of("profilekeys");
-   private final UserApiService e;
-   private final Path f;
-   private CompletableFuture<Optional<cqk>> g = CompletableFuture.completedFuture(Optional.empty());
-   private Instant h = Instant.EPOCH;
+   public ghs(gig $$0) {
+      super($$0, gpn::j);
+      this.b = $$0.b("bone");
+      this.d = this.b.b("wind");
+      this.c = this.b.b("wind_charge");
+   }
 
-   public ghs(UserApiService $$0, UUID $$1, Path $$2) {
-      this.e = $$0;
-      this.f = $$2.resolve(d).resolve($$1 + ".json");
+   public static gim a() {
+      gio $$0 = new gio();
+      giq $$1 = $$0.a();
+      giq $$2 = $$1.a("bone", gil.c(), gii.a(0.0F, 0.0F, 0.0F));
+      $$2.a(
+         "wind",
+         gil.c().a(15, 20).a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F, new gik(0.0F)).a(0, 9).a(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F, new gik(0.0F)),
+         gii.a(0.0F, 0.0F, 0.0F, 0.0F, -0.7854F, 0.0F)
+      );
+      $$2.a("wind_charge", gil.c().a(0, 0).a(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, new gik(0.0F)), gii.a(0.0F, 0.0F, 0.0F));
+      return gim.a($$0, 64, 32);
    }
 
    @Override
-   public CompletableFuture<Optional<cqk>> a() {
-      this.h = Instant.now().plus(c);
-      this.g = this.g.thenCompose(this::a);
-      return this.g;
-   }
-
-   @Override
-   public boolean b() {
-      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(cqk::a).orElse(true) : false;
-   }
-
-   private CompletableFuture<Optional<cqk>> a(Optional<cqk> $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         if ($$0.isPresent() && !$$0.get().a()) {
-            if (!ab.aU) {
-               this.a(null);
-            }
-
-            return $$0;
-         } else {
-            try {
-               cqk $$1 = this.a(this.e);
-               this.a($$1);
-               return Optional.ofNullable($$1);
-            } catch (ayi | MinecraftClientException | IOException var3) {
-               b.error("Failed to retrieve profile key pair", var3);
-               this.a(null);
-               return $$0;
-            }
-         }
-      }, af.j());
-   }
-
-   private Optional<cqk> c() {
-      if (Files.notExists(this.f)) {
-         return Optional.empty();
-      } else {
-         try {
-            Optional var2;
-            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
-               var2 = cqk.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
-            }
-
-            return var2;
-         } catch (Exception var6) {
-            b.error("Failed to read profile key pair file {}", this.f, var6);
-            return Optional.empty();
-         }
-      }
-   }
-
-   private void a(@Nullable cqk $$0) {
-      try {
-         Files.deleteIfExists(this.f);
-      } catch (IOException var3) {
-         b.error("Failed to delete profile key pair file {}", this.f, var3);
-      }
-
-      if ($$0 != null) {
-         if (ab.aU) {
-            cqk.a.encodeStart(JsonOps.INSTANCE, $$0).ifSuccess($$0x -> {
-               try {
-                  Files.createDirectories(this.f.getParent());
-                  Files.writeString(this.f, $$0x.toString());
-               } catch (Exception var3x) {
-                  b.error("Failed to write profile key pair file {}", this.f, var3x);
-               }
-            });
-         }
-      }
-   }
-
-   @Nullable
-   private cqk a(UserApiService $$0) throws ayi, IOException {
-      KeyPairResponse $$1 = $$0.getKeyPair();
-      if ($$1 != null) {
-         cql.a $$2 = a($$1);
-         return new cqk(ayh.a($$1.keyPair().privateKey()), new cql($$2), Instant.parse($$1.refreshedAfter()));
-      } else {
-         return null;
-      }
-   }
-
-   private static cql.a a(KeyPairResponse $$0) throws ayi {
-      KeyPair $$1 = $$0.keyPair();
-      if ($$1 != null && !Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
-         try {
-            Instant $$2 = Instant.parse($$0.expiresAt());
-            PublicKey $$3 = ayh.b($$1.publicKey());
-            ByteBuffer $$4 = $$0.publicKeySignature();
-            return new cql.a($$2, $$3, $$4.array());
-         } catch (IllegalArgumentException | DateTimeException var5) {
-            throw new ayi(var5);
-         }
-      } else {
-         throw new ayi(new MissingException("Missing public key"));
-      }
+   public void a(hbp $$0) {
+      super.a($$0);
+      this.c.f = -$$0.u * 16.0F * (float) (Math.PI / 180.0);
+      this.d.f = $$0.u * 16.0F * (float) (Math.PI / 180.0);
    }
 }

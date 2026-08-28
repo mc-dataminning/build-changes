@@ -1,33 +1,13 @@
-public class fyd extends fqn {
-   private static final ald a = ald.b("widget/page_forward_highlighted");
-   private static final ald b = ald.b("widget/page_forward");
-   private static final ald c = ald.b("widget/page_backward_highlighted");
-   private static final ald d = ald.b("widget/page_backward");
-   private final boolean u;
-   private final boolean v;
+import java.util.List;
 
-   public fyd(int $$0, int $$1, boolean $$2, fqn.c $$3, boolean $$4) {
-      super($$0, $$1, 23, 13, wu.a, $$3, q);
-      this.u = $$2;
-      this.v = $$4;
-   }
+public class fyd extends fxy<cuq> {
+   private static final ale G = ale.b("container/blast_furnace/lit_progress");
+   private static final ale H = ale.b("container/blast_furnace/burn_progress");
+   private static final ale I = ale.b("textures/gui/container/blast_furnace.png");
+   private static final ww J = ww.c("gui.recipebook.toggleRecipes.blastable");
+   private static final List<gbh.a> K = List.of(new gbh.a(gbn.c), new gbh.a(cyw.au, ddl.h), new gbh.a(cyw.pL, cyw.qz, ddl.i));
 
-   @Override
-   public void b(fpz $$0, int $$1, int $$2, float $$3) {
-      ald $$4;
-      if (this.u) {
-         $$4 = this.D() ? a : b;
-      } else {
-         $$4 = this.D() ? c : d;
-      }
-
-      $$0.a(goi::H, $$4, this.F(), this.G(), 23, 13);
-   }
-
-   @Override
-   public void a(hlv $$0) {
-      if (this.v) {
-         $$0.a(hkk.a(awk.cy, 1.0F));
-      }
+   public fyd(cuq $$0, cqr $$1, ww $$2) {
+      super($$0, $$1, $$2, J, I, G, H, K);
    }
 }

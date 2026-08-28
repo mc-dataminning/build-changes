@@ -1,38 +1,79 @@
-public enum fwo {
-   a(
-      ald.b("advancements/box_obtained"),
-      ald.b("advancements/task_frame_obtained"),
-      ald.b("advancements/challenge_frame_obtained"),
-      ald.b("advancements/goal_frame_obtained")
-   ),
-   b(
-      ald.b("advancements/box_unobtained"),
-      ald.b("advancements/task_frame_unobtained"),
-      ald.b("advancements/challenge_frame_unobtained"),
-      ald.b("advancements/goal_frame_unobtained")
-   );
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   private final ald c;
-   private final ald d;
-   private final ald e;
-   private final ald f;
+public class fwo extends fxi {
+   private static final ww a = ww.c("addServer.enterIp");
+   private frq b;
+   private final gjs c;
+   private frz d;
+   private final BooleanConsumer s;
+   private final fxi u;
 
-   private fwo(final ald $$0, final ald $$1, final ald $$2, final ald $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public fwo(fxi $$0, BooleanConsumer $$1, gjs $$2) {
+      super(ww.c("selectServer.direct"));
+      this.u = $$0;
+      this.c = $$2;
+      this.s = $$1;
    }
 
-   public ald a() {
-      return this.c;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.b.j || this.aH_() != this.d || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.m();
+         return true;
+      }
    }
 
-   public ald a(ao $$0) {
-      return switch ($$0) {
-         case a -> this.d;
-         case b -> this.e;
-         case c -> this.f;
-      };
+   @Override
+   protected void aN_() {
+      this.d = new frz(this.p, this.n / 2 - 100, 116, 200, 20, ww.c("addServer.enterIp"));
+      this.d.f(128);
+      this.d.a(this.m.n.Y);
+      this.d.b($$0 -> this.E());
+      this.d(this.d);
+      this.b = this.c(frq.a(ww.c("selectServer.select"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
+      this.c(frq.a(wv.e, $$0 -> this.s.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+      this.E();
+   }
+
+   @Override
+   protected void aB_() {
+      this.b(this.d);
+   }
+
+   @Override
+   public void a(fof $$0, int $$1, int $$2) {
+      String $$3 = this.d.a();
+      this.b($$0, $$1, $$2);
+      this.d.a($$3);
+   }
+
+   private void m() {
+      this.c.b = this.d.a();
+      this.s.accept(true);
+   }
+
+   @Override
+   public void aK_() {
+      this.m.a(this.u);
+   }
+
+   @Override
+   public void aE_() {
+      this.m.n.Y = this.d.a();
+      this.m.n.az();
+   }
+
+   private void E() {
+      this.b.j = gkv.b(this.d.a());
+   }
+
+   @Override
+   public void a(frc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
+      this.d.a($$0, $$1, $$2, $$3);
    }
 }

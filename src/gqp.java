@@ -1,58 +1,159 @@
-public class gqp implements gqk<dvq> {
-   private final gvd a;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.io.Reader;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public gqp(gql.a $$0) {
-      this.a = $$0.e();
+public class gqp implements hku {
+   @VisibleForTesting
+   static final Gson a = new GsonBuilder()
+      .registerTypeAdapter(gqp.class, new gqp.a())
+      .registerTypeAdapter(gql.class, new gql.a())
+      .registerTypeAdapter(gqm.class, new gqm.a())
+      .registerTypeAdapter(gqo.class, new gqo.a())
+      .registerTypeAdapter(gqt.class, new gqt.a())
+      .registerTypeAdapter(gqu.class, new gqu.a())
+      .create();
+   private final List<gql> b;
+   @Nullable
+   private final hku.a e;
+   @Nullable
+   private final Boolean f;
+   @Nullable
+   private final gqu g;
+   @VisibleForTesting
+   private final gqw.a h;
+   @Nullable
+   private hku i;
+   @Nullable
+   private final ale j;
+
+   public static gqp a(Reader $$0) {
+      return aza.a(a, $$0, gqp.class);
    }
 
-   public void a(dvq $$0, float $$1, fho $$2, gny $$3, int $$4, int $$5) {
-      if ($$0.i() != null) {
-         int $$6 = $$0.m().c(dzc.by);
-         if ($$6 > 0) {
-            jo $$7 = $$0.c();
-            if ($$7 != null) {
-               cxy $$8 = $$0.d();
-               if (!$$8.f()) {
-                  $$2.a();
-                  $$2.a(0.0F, 0.5F, 0.0F);
-                  float[] $$9 = this.a($$7, $$6);
-                  $$2.a($$9[0], $$9[1], $$9[2]);
-                  $$2.a(a.d.rotationDegrees(75.0F));
-                  boolean $$10 = $$7 == jo.f || $$7 == jo.e;
-                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
-                  $$2.b(0.5F, 0.5F, 0.5F);
-                  int $$11 = gnu.a($$0.i(), $$0.m(), $$0.aw_().a($$7));
-                  this.a.a($$8, cxw.i, $$11, hgi.d, $$2, $$3, $$0.i(), 0);
-                  $$2.b();
-               }
-            }
+   public gqp(@Nullable ale $$0, List<gql> $$1, gqw.a $$2, @Nullable Boolean $$3, @Nullable hku.a $$4, @Nullable gqu $$5) {
+      this.b = $$1;
+      this.f = $$3;
+      this.e = $$4;
+      this.h = $$2;
+      this.j = $$0;
+      this.g = $$5;
+   }
+
+   @Nullable
+   @Override
+   public Boolean a() {
+      return this.f;
+   }
+
+   @Nullable
+   @Override
+   public hku.a b() {
+      return this.e;
+   }
+
+   @Override
+   public void a(hkr.a $$0) {
+      if (this.j != null) {
+         this.i = $$0.a(this.j);
+      }
+   }
+
+   @Nullable
+   @Override
+   public hku c() {
+      return this.i;
+   }
+
+   @Override
+   public gqw.a d() {
+      return this.h;
+   }
+
+   @Nullable
+   @Override
+   public gqu e() {
+      return this.g;
+   }
+
+   @Override
+   public hjz a(gqw $$0, hki $$1, hkp $$2, boolean $$3, boolean $$4, gqu $$5) {
+      return this.b.isEmpty() && this.i != null ? this.i.a($$0, $$1, $$2, $$3, $$4, $$5) : hks.a(this.b, $$0, $$1.a(), $$2, $$3, $$4, true, $$5);
+   }
+
+   @Nullable
+   @VisibleForTesting
+   List<gql> f() {
+      return this.b;
+   }
+
+   @Nullable
+   @VisibleForTesting
+   ale g() {
+      return this.j;
+   }
+
+   public static class a implements JsonDeserializer<gqp> {
+      public gqp a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         List<gql> $$4 = this.a($$2, $$3);
+         String $$5 = this.c($$3);
+         gqw.a $$6 = this.b($$3);
+         Boolean $$7 = this.a($$3);
+         gqu $$8 = null;
+         if ($$3.has("display")) {
+            JsonObject $$9 = aza.u($$3, "display");
+            $$8 = (gqu)$$2.deserialize($$9, gqu.class);
+         }
+
+         hku.a $$10 = null;
+         if ($$3.has("gui_light")) {
+            $$10 = hku.a.a(aza.i($$3, "gui_light"));
+         }
+
+         ale $$11 = $$5.isEmpty() ? null : ale.a($$5);
+         return new gqp($$11, $$4, $$6, $$7, $$10, $$8);
+      }
+
+      private gqw.a b(JsonObject $$0) {
+         if ($$0.has("textures")) {
+            JsonObject $$1 = aza.u($$0, "textures");
+            return gqw.a($$1, hhy.d);
+         } else {
+            return gqw.a.a;
          }
       }
-   }
 
-   private float[] a(jo $$0, int $$1) {
-      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
-      float $$3 = (float)$$1 / 10.0F * 0.75F;
-      switch ($$0) {
-         case f:
-            $$2[0] = 0.73F + $$3;
-            break;
-         case e:
-            $$2[0] = 0.25F - $$3;
-            break;
-         case b:
-            $$2[1] = 0.25F + $$3;
-            break;
-         case a:
-            $$2[1] = -0.23F - $$3;
-            break;
-         case c:
-            $$2[2] = 0.25F - $$3;
-            break;
-         case d:
-            $$2[2] = 0.73F + $$3;
+      private String c(JsonObject $$0) {
+         return aza.a($$0, "parent", "");
       }
 
-      return $$2;
+      @Nullable
+      protected Boolean a(JsonObject $$0) {
+         return $$0.has("ambientocclusion") ? aza.k($$0, "ambientocclusion") : null;
+      }
+
+      protected List<gql> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         if (!$$1.has("elements")) {
+            return List.of();
+         } else {
+            List<gql> $$2 = new ArrayList<>();
+
+            for (JsonElement $$3 : aza.v($$1, "elements")) {
+               $$2.add((gql)$$0.deserialize($$3, gql.class));
+            }
+
+            return $$2;
+         }
+      }
    }
 }

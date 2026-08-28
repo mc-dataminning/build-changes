@@ -1,35 +1,67 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Optional;
+import java.util.Set;
 
-public class eyt extends eyy {
-   public static final MapCodec<eyt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(cv.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), ezb.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
-            .apply($$0, eyt::new)
-   );
-   private final cv b;
-   private final eyz c;
+public class eyt {
+   private final azr a;
+   private final baw b;
+   private final Optional<jf.a> c;
+   private final Set<ald<?>> d;
 
-   private eyt(List<fau> $$0, cv $$1, eyz $$2) {
-      super($$0);
+   public eyt(azr $$0, baw $$1, jf.a $$2) {
+      this($$0, $$1, Optional.of($$2), Set.of());
+   }
+
+   public eyt(azr $$0, baw $$1) {
+      this($$0, $$1, Optional.empty(), Set.of());
+   }
+
+   private eyt(azr $$0, baw $$1, Optional<jf.a> $$2, Set<ald<?>> $$3) {
+      this.a = $$0;
       this.b = $$1;
       this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public eza<eyt> b() {
-      return ezb.v;
+   public eyt a(String $$0) {
+      return new eyt(this.a.a($$0), this.b, this.c, this.d);
    }
 
-   @Override
-   public cxy a(cxy $$0, exl $$1) {
-      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
+   public eyt a(String $$0, ald<?> $$1) {
+      Set<ald<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new eyt(this.a.a($$0), this.b, this.c, $$2);
    }
 
-   @Override
-   public void a(exr $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
+   public boolean a(ald<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
+
+   public void a(eyo $$0) {
+      Set<bav<?>> $$1 = $$0.a();
+      Set<bav<?>> $$2 = Sets.difference($$1, this.b.b());
+      if (!$$2.isEmpty()) {
+         this.a.b("Parameters " + $$2 + " are not provided in this context");
+      }
+   }
+
+   public jf.a a() {
+      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
+   }
+
+   public boolean b() {
+      return this.c.isPresent();
+   }
+
+   public eyt a(baw $$0) {
+      return new eyt(this.a, $$0, this.c, this.d);
+   }
+
+   public azr c() {
+      return this.a;
    }
 }

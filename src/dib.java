@@ -1,25 +1,25 @@
-public final class dib implements eag {
-   private final int a;
-   private final dym[] b;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public dib(int $$0, dym[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public interface dib extends dih, dis, diu {
+   @Override
+   default <T extends dwn> Optional<T> a(iu $$0, dwp<T> $$1) {
+      return dis.super.a($$0, $$1);
    }
 
    @Override
-   public dym a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dkw.a.m();
+   default List<feq> c(@Nullable bwa $$0, fdr $$1) {
+      return dih.super.c($$0, $$1);
    }
 
    @Override
-   public void a(int $$0, dym $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
-      } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
-      }
+   default boolean a(@Nullable bwa $$0, feq $$1) {
+      return dih.super.a($$0, $$1);
+   }
+
+   @Override
+   default iu a(efn.a $$0, iu $$1) {
+      return dis.super.a($$0, $$1);
    }
 }

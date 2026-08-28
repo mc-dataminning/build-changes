@@ -1,43 +1,62 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
 
-public class elc extends elh {
-   public static final MapCodec<elc> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elc::new));
-   protected final int b;
+public class elc implements ekx {
+   public static final Codec<elc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               mf.e.q().fieldOf("block").flatXmap(elc::a, DataResult::success).orElse((dqz)dlw.fu).forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
+               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
+               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
+               jt.a(mg.i).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, elc::new)
+   );
+   public final dqz b;
+   public final int c;
+   public final boolean d;
+   public final boolean e;
+   public final boolean f;
+   public final float g;
+   public final ji<dlu> h;
+   private final ObjectArrayList<ja> i;
 
-   protected static <P extends elc> P3<Mu<P>, bsv, bsv, Integer> a(Instance<P> $$0) {
-      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
+   private static DataResult<dqz> a(dlu $$0) {
+      return $$0 instanceof dqz $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface spreadeable block");
    }
 
-   public elc(bsv $$0, bsv $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
+   public elc(dqz $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, ji<dlu> $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = new ObjectArrayList(6);
+      if ($$3) {
+         this.i.add(ja.b);
+      }
 
-   @Override
-   protected eli<?> a() {
-      return eli.a;
-   }
+      if ($$2) {
+         this.i.add(ja.a);
+      }
 
-   @Override
-   protected void a(dhv $$0, elh.b $$1, azs $$2, ekr $$3, int $$4, elh.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      if ($$4) {
+         ja.c.a.forEach(this.i::add);
       }
    }
 
-   @Override
-   public int a(azs $$0, int $$1, ekr $$2) {
-      return this.b;
+   public List<ja> a(azt $$0, ja $$1) {
+      return af.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
    }
 
-   @Override
-   protected boolean a(azs $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
+   public List<ja> a(azt $$0) {
+      return af.a(this.i, $$0);
    }
 }

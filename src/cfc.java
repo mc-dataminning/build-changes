@@ -1,32 +1,48 @@
-public class cfc extends cdx {
-   private final coc b;
-   private int c;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public cfc(coc $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class cfc extends cdv {
+   private final cnf a;
+   @Nullable
+   private bwz b;
+
+   public cfc(cnf $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cdv.a.a));
+   }
+
+   @Override
+   public boolean b() {
+      bwz $$0 = this.a.f();
+      return this.a.n() > 0 || $$0 != null && this.a.g($$0) < 9.0;
    }
 
    @Override
    public void d() {
-      super.d();
-      this.c = 0;
+      this.a.O().m();
+      this.b = this.a.f();
    }
 
    @Override
    public void e() {
-      super.e();
-      this.b.v(false);
+      this.b = null;
+   }
+
+   @Override
+   public boolean Q_() {
+      return true;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.g(this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.P().a(this.b)) {
+         this.a.b(-1);
       } else {
-         this.b.v(false);
+         this.a.b(1);
       }
    }
 }

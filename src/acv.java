@@ -1,24 +1,40 @@
-public record acv(int b, bxe c, boolean d) implements zc<abr> {
-   public static final yt<vr, acv> a = yt.a(yr.h, acv::b, bxe.a, acv::e, yr.b, acv::f, acv::new);
+import javax.annotation.Nullable;
 
-   public static acv a(bvs $$0) {
-      return new acv($$0.ar(), new bxe($$0.du(), $$0.dy(), $$0.dL(), $$0.dN()), $$0.aJ());
+public class acv implements zd<abs> {
+   public static final yu<vs, acv> a = zd.a(acv::a, acv::new);
+   private final int b;
+   private final byte c;
+
+   public acv(bwa $$0, byte $$1) {
+      this.b = $$0.ar();
+      this.c = $$1;
+   }
+
+   private acv(vs $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
+   }
+
+   private void a(vs $$0) {
+      $$0.q(this.b);
+      $$0.l(this.c);
    }
 
    @Override
-   public ze<acv> a() {
-      return agk.D;
+   public zf<acv> a() {
+      return agl.C;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public bxe e() {
-      return this.c;
+   @Nullable
+   public bwa a(dip $$0) {
+      return $$0.a(this.b);
    }
 
-   public boolean f() {
-      return this.d;
+   public byte b() {
+      return this.c;
    }
 }

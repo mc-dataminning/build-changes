@@ -1,62 +1,112 @@
-import java.util.List;
+public class cxf extends cyo {
+   public static final int a = 10;
+   private static final int b = 200;
 
-public class cxf extends cxu implements cys {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final double b = 0.15;
-
-   public cxf(cxu.a $$0) {
+   public cxf(cyo.a $$0) {
       super($$0);
    }
 
    @Override
-   public btq a(dbp $$0) {
-      dhp $$1 = $$0.q();
-      if ($$1 instanceof arn $$2) {
-         cxy $$3 = $$0.n();
-         fcu $$4 = $$0.l();
-         jo $$5 = $$0.k();
-         crb.a(new cqw($$1, $$0.o(), $$4.d + (double)$$5.j() * 0.15, $$4.e + (double)$$5.k() * 0.15, $$4.f + (double)$$5.l() * 0.15, $$3), $$2, $$3);
-         $$3.h(1);
+   public bty a(dcn $$0) {
+      cqs $$1 = $$0.o();
+      if ($$1 != null && this.a($$1).d() == fdu.a.b) {
+         $$1.c($$0.p());
       }
 
-      return btq.a;
+      return bty.c;
    }
 
    @Override
-   public btq a(dhp $$0, cqi $$1, btp $$2) {
-      if ($$1.fI()) {
-         cxy $$3 = $$1.b($$2);
-         if ($$0 instanceof arn $$4) {
-            crb.a(new cqw($$0, $$3, $$1), $$4, $$3);
-            $$3.a(1, $$1);
-            $$1.b(awu.c.b(this));
+   public cyu b(cys $$0) {
+      return cyu.j;
+   }
+
+   @Override
+   public int a(cys $$0, bwz $$1) {
+      return 200;
+   }
+
+   @Override
+   public void a(dip $$0, bwz $$1, cys $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof cqs $$4) {
+         fdu $$6 = this.a($$4);
+         if ($$6 instanceof fds $$7 && $$6.d() == fdu.a.b) {
+            int $$9 = this.a($$2, $$1) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               iu $$11 = $$7.b();
+               dzo $$12 = $$0.a_($$11);
+               bws $$13 = $$1.fz() == btx.a ? $$4.fx() : $$4.fx().e();
+               if ($$12.D() && $$12.o() != dsf.a) {
+                  this.a($$0, $$7, $$12, $$1.h(0.0F), $$13);
+               }
+
+               awk $$15;
+               if ($$12.b() instanceof dma $$14) {
+                  $$15 = $$14.c();
+               } else {
+                  $$15 = awl.cS;
+               }
+
+               $$0.a($$4, $$11, $$15, awm.e);
+               if ($$0 instanceof aro $$17 && $$0.c_($$11) instanceof dws $$18) {
+                  boolean $$19 = $$18.a($$0.ae(), $$17, $$4, $$7.c(), $$2);
+                  if ($$19) {
+                     bwk $$20 = $$2.equals($$4.a(bwk.b)) ? bwk.b : bwk.a;
+                     $$2.a(1, $$4, $$20);
+                  }
+               }
+            }
+
+            return;
          }
 
-         return btq.a;
+         $$1.fD();
       } else {
-         return btq.e;
+         $$1.fD();
       }
    }
 
-   @Override
-   public void a(cxy $$0, cxu.b $$1, List<wv> $$2, czn $$3) {
-      dal $$4 = $$0.a(kx.ah);
-      if ($$4 != null) {
-         $$4.a($$1, $$2::add, $$3);
+   private fdu a(cqs $$0) {
+      return cro.a($$0, bwh.h, $$0.gK());
+   }
+
+   private void a(dip $$0, fds $$1, dzo $$2, fdw $$3, bws $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == bws.b ? 1 : -1;
+      int $$7 = $$0.C_().b(7, 12);
+      lp $$8 = new lp(lx.b, $$2);
+      ja $$9 = $$1.c();
+      cxf.a $$10 = cxf.a.a($$3, $$9);
+      fdw $$11 = $$1.g();
+
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.d - (double)($$9 == ja.e ? 1.0E-6F : 0.0F),
+            $$11.e,
+            $$11.f - (double)($$9 == ja.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.C_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.C_().j()
+         );
       }
    }
 
-   @Override
-   public crb a(dhp $$0, kc $$1, cxy $$2, jo $$3) {
-      return new cqw($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
-   }
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
 
-   @Override
-   public cys.a b() {
-      return cys.a.a().a(cxf::a).a(1.0F).b(0.5F).a(1004).a();
-   }
+      public static cxf.a a(fdw $$0, ja $$1) {
+         double $$2 = 0.0;
 
-   private static fcu a(lb $$0, jo $$1) {
-      return $$0.a().b((double)$$1.j() * 0.5000099999997474, (double)$$1.k() * 0.5000099999997474, (double)$$1.l() * 0.5000099999997474);
+         return switch ($$1) {
+            case a, b -> new cxf.a($$0.c(), 0.0, -$$0.a());
+            case c -> new cxf.a(1.0, 0.0, -0.1);
+            case d -> new cxf.a(-1.0, 0.0, 0.1);
+            case e -> new cxf.a(-0.1, 0.0, -1.0);
+            case f -> new cxf.a(0.1, 0.0, 1.0);
+         };
+      }
    }
 }

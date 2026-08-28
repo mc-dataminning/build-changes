@@ -1,30 +1,18 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import org.slf4j.Logger;
+import java.net.Proxy;
+import javax.annotation.Nullable;
 
-public class fjh extends fjt {
-   private static final Logger b = LogUtils.getLogger();
-   public List<fjf> a;
+public class fjh {
+   @Nullable
+   private static Proxy a;
 
-   public static fjh a(String $$0) {
-      fjh $$1 = new fjh();
-      $$1.a = new ArrayList<>();
+   @Nullable
+   public static Proxy a() {
+      return a;
+   }
 
-      try {
-         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
-         if ($$2.get("servers").isJsonArray()) {
-            for (JsonElement $$4 : $$2.get("servers").getAsJsonArray()) {
-               $$1.a.add(fjf.a($$4.getAsJsonObject()));
-            }
-         }
-      } catch (Exception var6) {
-         b.error("Could not parse McoServerList: {}", var6.getMessage());
+   public static void a(Proxy $$0) {
+      if (a == null) {
+         a = $$0;
       }
-
-      return $$1;
    }
 }

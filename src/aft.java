@@ -1,23 +1,86 @@
-import io.netty.buffer.ByteBuf;
+public class aft implements zd<abs> {
+   public static final yu<wh, aft> a = zd.a(aft::a, aft::new);
+   public static final float b = 8.0F;
+   private final je<awk> c;
+   private final awm d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final float h;
+   private final float i;
+   private final long j;
 
-public class aft implements zc<abr> {
-   public static final aft a = new aft();
-   public static final yt<ByteBuf, aft> b = yt.a(a);
+   public aft(je<awk> $$0, awm $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = (int)($$2 * 8.0);
+      this.f = (int)($$3 * 8.0);
+      this.g = (int)($$4 * 8.0);
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+   }
 
-   private aft() {
+   private aft(wh $$0) {
+      this.c = awk.d.decode($$0);
+      this.d = $$0.b(awm.class);
+      this.e = $$0.readInt();
+      this.f = $$0.readInt();
+      this.g = $$0.readInt();
+      this.h = $$0.readFloat();
+      this.i = $$0.readFloat();
+      this.j = $$0.readLong();
+   }
+
+   private void a(wh $$0) {
+      awk.d.encode($$0, this.c);
+      $$0.a(this.d);
+      $$0.q(this.e);
+      $$0.q(this.f);
+      $$0.q(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.b(this.j);
    }
 
    @Override
-   public ze<aft> a() {
-      return agk.aX;
+   public zf<aft> a() {
+      return agl.aW;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public je<awk> b() {
+      return this.c;
+   }
+
+   public awm e() {
+      return this.d;
+   }
+
+   public double f() {
+      return (double)((float)this.e / 8.0F);
+   }
+
+   public double g() {
+      return (double)((float)this.f / 8.0F);
+   }
+
+   public double h() {
+      return (double)((float)this.g / 8.0F);
+   }
+
+   public float i() {
+      return this.h;
+   }
+
+   public float j() {
+      return this.i;
+   }
+
+   public long k() {
+      return this.j;
    }
 }

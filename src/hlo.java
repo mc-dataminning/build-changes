@@ -1,58 +1,34 @@
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+public class hlo extends hlf {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final cnp r;
 
-public class hlo implements hli {
-   private final hlo.a a;
-   private hli b;
-   private final BufferedInputStream c;
-
-   public hlo(hlo.a $$0, InputStream $$1) throws IOException {
-      this.a = $$0;
-      this.c = new BufferedInputStream($$1);
-      this.c.mark(Integer.MAX_VALUE);
-      this.b = $$0.create(new hlo.b(this.c));
+   public hlo(cnp $$0) {
+      super(awl.lQ, awm.f, hlw.t());
+      this.r = $$0;
+      this.k = hlw.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
    @Override
-   public AudioFormat a() {
-      return this.b.a();
+   public boolean s() {
+      return !this.r.bb();
    }
 
    @Override
-   public ByteBuffer a(int $$0) throws IOException {
-      ByteBuffer $$1 = this.b.a($$0);
-      if (!$$1.hasRemaining()) {
-         this.b.close();
-         this.c.reset();
-         this.b = this.a.create(new hlo.b(this.c));
-         $$1 = this.b.a($$0);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.b.close();
-      this.c.close();
-   }
-
-   @FunctionalInterface
-   public interface a {
-      hli create(InputStream var1) throws IOException;
-   }
-
-   static class b extends FilterInputStream {
-      b(InputStream $$0) {
-         super($$0);
-      }
-
-      @Override
-      public void close() {
+   public void q() {
+      if (!this.r.dQ() && this.r.f() == null) {
+         this.f = (double)((float)this.r.dA());
+         this.g = (double)((float)this.r.dC());
+         this.h = (double)((float)this.r.dG());
+         float $$0 = this.r.L(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
       }
    }
 }

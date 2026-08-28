@@ -1,11 +1,11 @@
-public class hba extends hal {
-   public ckw a;
-   public ckr h;
-   public cxy i;
+import javax.annotation.Nullable;
 
-   public hba() {
-      this.a = ckw.a;
-      this.h = ckr.a;
-      this.i = cxy.k;
+public class hba extends hbj {
+   @Nullable
+   public bvx.b.a a;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
    }
 }

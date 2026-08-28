@@ -1,26 +1,80 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cx {
-   public static final cw.a<co> a = a("damage", co.a);
-   public static final cw.a<cq.a> b = a("enchantments", cq.a.a);
-   public static final cw.a<cq.b> c = a("stored_enchantments", cq.b.a);
-   public static final cw.a<cu> d = a("potion_contents", cu.a);
-   public static final cw.a<cn> e = a("custom_data", cn.a);
-   public static final cw.a<cm> f = a("container", cm.a);
-   public static final cw.a<cl> g = a("bundle_contents", cl.a);
-   public static final cw.a<cr> h = a("firework_explosion", cr.a);
-   public static final cw.a<cs> i = a("fireworks", cs.a);
-   public static final cw.a<da> j = a("writable_book_content", da.a);
-   public static final cw.a<db> k = a("written_book_content", db.a);
-   public static final cw.a<ck> l = a("attribute_modifiers", ck.a);
-   public static final cw.a<cy> m = a("trim", cy.a);
-   public static final cw.a<ct> n = a("jukebox_playable", ct.a);
+public record cx(cv.c b, cv.c c, cv.c d, cv.c e, cv.c f, cv.c g, cv.c h) {
+   public static final Codec<cx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cv.c.d.optionalFieldOf("x", cv.c.c).forGetter(cx::a),
+               cv.c.d.optionalFieldOf("y", cv.c.c).forGetter(cx::b),
+               cv.c.d.optionalFieldOf("z", cv.c.c).forGetter(cx::c),
+               cv.c.d.optionalFieldOf("speed", cv.c.c).forGetter(cx::d),
+               cv.c.d.optionalFieldOf("horizontal_speed", cv.c.c).forGetter(cx::e),
+               cv.c.d.optionalFieldOf("vertical_speed", cv.c.c).forGetter(cx::f),
+               cv.c.d.optionalFieldOf("fall_distance", cv.c.c).forGetter(cx::g)
+            )
+            .apply($$0, cx::new)
+   );
 
-   private static <T extends cw> cw.a<T> a(String $$0, Codec<T> $$1) {
-      return kf.a(md.aq, $$0, new cw.a<>($$1));
+   public static cx a(cv.c $$0) {
+      return new cx(cv.c.c, cv.c.c, cv.c.c, $$0, cv.c.c, cv.c.c, cv.c.c);
    }
 
-   public static cw.a<?> a(kf<cw.a<?>> $$0) {
-      return a;
+   public static cx b(cv.c $$0) {
+      return new cx(cv.c.c, cv.c.c, cv.c.c, cv.c.c, $$0, cv.c.c, cv.c.c);
+   }
+
+   public static cx c(cv.c $$0) {
+      return new cx(cv.c.c, cv.c.c, cv.c.c, cv.c.c, cv.c.c, $$0, cv.c.c);
+   }
+
+   public static cx d(cv.c $$0) {
+      return new cx(cv.c.c, cv.c.c, cv.c.c, cv.c.c, cv.c.c, cv.c.c, $$0);
+   }
+
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (this.b.d($$0) && this.c.d($$1) && this.d.d($$2)) {
+         double $$4 = azk.f($$0, $$1, $$2);
+         if (!this.e.e($$4)) {
+            return false;
+         } else {
+            double $$5 = azk.e($$0, $$2);
+            if (!this.f.e($$5)) {
+               return false;
+            } else {
+               double $$6 = Math.abs($$1);
+               return !this.g.d($$6) ? false : this.h.d($$3);
+            }
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public cv.c a() {
+      return this.b;
+   }
+
+   public cv.c b() {
+      return this.c;
+   }
+
+   public cv.c c() {
+      return this.d;
+   }
+
+   public cv.c d() {
+      return this.e;
+   }
+
+   public cv.c e() {
+      return this.f;
+   }
+
+   public cv.c f() {
+      return this.g;
+   }
+
+   public cv.c g() {
+      return this.h;
    }
 }

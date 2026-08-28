@@ -1,56 +1,89 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
 
-public class ejf extends ehr<ekt> {
-   public ejf(Codec<ekt> $$0) {
+public class ejf extends eit<ele> {
+   public ejf(Codec<ele> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eht<ekt> $$0) {
-      dio $$1 = $$0.b();
-      jj $$2 = $$0.e();
-      ekt $$3 = $$0.f();
-      azs $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
+   public boolean a(eiv<ele> $$0) {
+      iu $$1 = $$0.e();
+      azt $$2 = $$0.d();
+      djo $$3 = $$0.b();
+
+      while ($$3.v($$1) && $$1.v() > $$3.G_() + 2) {
+         $$1 = $$1.e();
+      }
+
+      if (!$$3.a_($$1).a(dlw.ec)) {
          return false;
       } else {
-         jj $$6 = $$2.h($$5.getAsInt());
-         kn $$7 = new kn($$3.c, $$3.c, $$3.c);
-         eoy $$8 = eoy.a($$6.b($$7), $$6.a($$7));
-         return jj.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, dkw.ll.m(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
+         $$1 = $$1.b($$2.a(4));
+         int $$4 = $$2.a(4) + 7;
+         int $$5 = $$4 / 4 + $$2.a(2);
+         if ($$5 > 1 && $$2.a(60) == 0) {
+            $$1 = $$1.b(10 + $$2.a(30));
+         }
 
-   private static OptionalInt a(dio $$0, jj $$1, ekt $$2) {
-      Predicate<dym> $$3 = $$0x -> $$0x.a(dkw.J);
-      Predicate<dym> $$4 = $$0x -> !$$0x.a(dkw.J);
-      Optional<eeb> $$5 = eeb.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(eeb::c).orElseGet(OptionalInt::empty);
-   }
+         for (int $$6 = 0; $$6 < $$4; $$6++) {
+            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
+            int $$8 = azk.f($$7);
 
-   private boolean b(dio $$0, jj $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
-         for (jo $$2 : jo.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
+            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+               float $$10 = (float)azk.a($$9) - 0.25F;
+
+               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
+                  float $$12 = (float)azk.a($$11) - 0.25F;
+                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
+                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
+                     dzo $$13 = $$3.a_($$1.b($$9, $$6, $$11));
+                     if ($$13.l() || b($$13) || $$13.a(dlw.ec) || $$13.a(dlw.eb)) {
+                        this.a($$3, $$1.b($$9, $$6, $$11), dlw.ja.m());
+                     }
+
+                     if ($$6 != 0 && $$8 > 1) {
+                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
+                        if ($$13.l() || b($$13) || $$13.a(dlw.ec) || $$13.a(dlw.eb)) {
+                           this.a($$3, $$1.b($$9, -$$6, $$11), dlw.ja.m());
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         int $$14 = $$5 - 1;
+         if ($$14 < 0) {
+            $$14 = 0;
+         } else if ($$14 > 1) {
+            $$14 = 1;
+         }
+
+         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
+            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
+               iu $$17 = $$1.b($$15, -1, $$16);
+               int $$18 = 50;
+               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
+                  $$18 = $$2.a(5);
+               }
+
+               while ($$17.v() > 50) {
+                  dzo $$19 = $$3.a_($$17);
+                  if (!$$19.l() && !b($$19) && !$$19.a(dlw.ec) && !$$19.a(dlw.eb) && !$$19.a(dlw.ja)) {
+                     break;
+                  }
+
+                  this.a($$3, $$17, dlw.ja.m());
+                  $$17 = $$17.e();
+                  if (--$$18 <= 0) {
+                     $$17 = $$17.c($$2.a(5) + 1);
+                     $$18 = $$2.a(5);
+                  }
+               }
             }
          }
 
          return true;
-      } else {
-         return false;
       }
-   }
-
-   private boolean a(dhq $$0, jj $$1) {
-      dym $$2 = $$0.a_($$1);
-      return $$2.a(dkw.J) || $$2.l();
    }
 }

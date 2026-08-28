@@ -1,62 +1,194 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Locale;
-import java.util.function.Function;
 
-public class apv implements apw {
-   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wv.c("commands.data.block.invalid"));
-   public static final Function<String, apx.c> a = $$0 -> new apx.c() {
-         @Override
-         public apw a(CommandContext<ex> $$0x) throws CommandSyntaxException {
-            jj $$1 = gu.a($$0, $$0 + "Pos");
-            dvl $$2 = ((ex)$$0.getSource()).e().c_($$1);
-            if ($$2 == null) {
-               throw apv.b.create();
+public class apv {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("commands.worldborder.center.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ww.c("commands.worldborder.set.failed.nochange"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ww.c("commands.worldborder.set.failed.small"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(ww.a("commands.worldborder.set.failed.big", 5.999997E7F));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(ww.a("commands.worldborder.set.failed.far", 2.9999984E7));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(ww.c("commands.worldborder.warning.time.failed"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(ww.c("commands.worldborder.warning.distance.failed"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(ww.c("commands.worldborder.damage.buffer.failed"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(ww.c("commands.worldborder.damage.amount.failed"));
+
+   public static void a(CommandDispatcher<ei> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a(
+                                 "worldborder"
+                              )
+                              .requires($$0x -> $$0x.c(2)))
+                           .then(
+                              ej.a("add")
+                                 .then(
+                                    ((RequiredArgumentBuilder)ej.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ei)$$0x.getSource(),
+                                                   ((ei)$$0x.getSource()).e().A_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
+                                                   0L
+                                                )
+                                          ))
+                                       .then(
+                                          ej.a("time", IntegerArgumentType.integer(0))
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ei)$$0x.getSource(),
+                                                      ((ei)$$0x.getSource()).e().A_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
+                                                      ((ei)$$0x.getSource()).e().A_().j() + (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
+                                                   )
+                                             )
+                                       )
+                                 )
+                           ))
+                        .then(
+                           ej.a("set")
+                              .then(
+                                 ((RequiredArgumentBuilder)ej.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
+                                       .executes($$0x -> a((ei)$$0x.getSource(), DoubleArgumentType.getDouble($$0x, "distance"), 0L)))
+                                    .then(
+                                       ej.a("time", IntegerArgumentType.integer(0))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ei)$$0x.getSource(),
+                                                   DoubleArgumentType.getDouble($$0x, "distance"),
+                                                   (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
+                                                )
+                                          )
+                                    )
+                              )
+                        ))
+                     .then(ej.a("center").then(ej.a("pos", gl.a()).executes($$0x -> a((ei)$$0x.getSource(), gl.a($$0x, "pos"))))))
+                  .then(
+                     ((LiteralArgumentBuilder)ej.a("damage")
+                           .then(
+                              ej.a("amount")
+                                 .then(
+                                    ej.a("damagePerBlock", FloatArgumentType.floatArg(0.0F))
+                                       .executes($$0x -> b((ei)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "damagePerBlock")))
+                                 )
+                           ))
+                        .then(
+                           ej.a("buffer")
+                              .then(
+                                 ej.a("distance", FloatArgumentType.floatArg(0.0F))
+                                    .executes($$0x -> a((ei)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "distance")))
+                              )
+                        )
+                  ))
+               .then(ej.a("get").executes($$0x -> a((ei)$$0x.getSource()))))
+            .then(
+               ((LiteralArgumentBuilder)ej.a("warning")
+                     .then(
+                        ej.a("distance")
+                           .then(
+                              ej.a("distance", IntegerArgumentType.integer(0))
+                                 .executes($$0x -> b((ei)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "distance")))
+                           )
+                     ))
+                  .then(
+                     ej.a("time")
+                        .then(
+                           ej.a("time", IntegerArgumentType.integer(0)).executes($$0x -> a((ei)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                        )
+                  )
+            )
+      );
+   }
+
+   private static int a(ei $$0, float $$1) throws CommandSyntaxException {
+      ebg $$2 = $$0.l().J().A_();
+      if ($$2.n() == (double)$$1) {
+         throw h.create();
+      } else {
+         $$2.b((double)$$1);
+         $$0.a(() -> ww.a("commands.worldborder.damage.buffer.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
+         return (int)$$1;
+      }
+   }
+
+   private static int b(ei $$0, float $$1) throws CommandSyntaxException {
+      ebg $$2 = $$0.l().J().A_();
+      if ($$2.o() == (double)$$1) {
+         throw i.create();
+      } else {
+         $$2.c((double)$$1);
+         $$0.a(() -> ww.a("commands.worldborder.damage.amount.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
+         return (int)$$1;
+      }
+   }
+
+   private static int a(ei $$0, int $$1) throws CommandSyntaxException {
+      ebg $$2 = $$0.l().J().A_();
+      if ($$2.q() == $$1) {
+         throw f.create();
+      } else {
+         $$2.b($$1);
+         $$0.a(() -> ww.a("commands.worldborder.warning.time.success", $$1), true);
+         return $$1;
+      }
+   }
+
+   private static int b(ei $$0, int $$1) throws CommandSyntaxException {
+      ebg $$2 = $$0.l().J().A_();
+      if ($$2.r() == $$1) {
+         throw g.create();
+      } else {
+         $$2.c($$1);
+         $$0.a(() -> ww.a("commands.worldborder.warning.distance.success", $$1), true);
+         return $$1;
+      }
+   }
+
+   private static int a(ei $$0) {
+      double $$1 = $$0.l().J().A_().i();
+      $$0.a(() -> ww.a("commands.worldborder.get", String.format(Locale.ROOT, "%.0f", $$1)), false);
+      return azk.a($$1 + 0.5);
+   }
+
+   private static int a(ei $$0, fdv $$1) throws CommandSyntaxException {
+      ebg $$2 = $$0.l().J().A_();
+      if ($$2.a() == (double)$$1.i && $$2.b() == (double)$$1.j) {
+         throw a.create();
+      } else if (!((double)Math.abs($$1.i) > 2.9999984E7) && !((double)Math.abs($$1.j) > 2.9999984E7)) {
+         $$2.c((double)$$1.i, (double)$$1.j);
+         $$0.a(() -> ww.a("commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", $$1.i), String.format(Locale.ROOT, "%.2f", $$1.j)), true);
+         return 0;
+      } else {
+         throw e.create();
+      }
+   }
+
+   private static int a(ei $$0, double $$1, long $$2) throws CommandSyntaxException {
+      ebg $$3 = $$0.l().J().A_();
+      double $$4 = $$3.i();
+      if ($$4 == $$1) {
+         throw b.create();
+      } else if ($$1 < 1.0) {
+         throw c.create();
+      } else if ($$1 > 5.999997E7F) {
+         throw d.create();
+      } else {
+         if ($$2 > 0L) {
+            $$3.a($$4, $$1, $$2);
+            if ($$1 > $$4) {
+               $$0.a(() -> ww.a("commands.worldborder.set.grow", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
             } else {
-               return new apv($$2, $$1);
+               $$0.a(() -> ww.a("commands.worldborder.set.shrink", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
             }
+         } else {
+            $$3.a($$1);
+            $$0.a(() -> ww.a("commands.worldborder.set.immediate", String.format(Locale.ROOT, "%.1f", $$1)), true);
          }
 
-         @Override
-         public ArgumentBuilder<ex, ?> a(ArgumentBuilder<ex, ?> $$0x, Function<ArgumentBuilder<ex, ?>, ArgumentBuilder<ex, ?>> $$1) {
-            return $$0.then(ey.a("block").then($$1.apply(ey.a($$0 + "Pos", gu.a()))));
-         }
-      };
-   private final dvl c;
-   private final jj d;
-
-   public apv(dvl $$0, jj $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public void a(tw $$0) {
-      dym $$1 = this.c.i().a_(this.d);
-      this.c.c($$0, this.c.i().F_());
-      this.c.e();
-      this.c.i().a(this.d, $$1, $$1, 3);
-   }
-
-   @Override
-   public tw a() {
-      return this.c.b(this.c.i().F_());
-   }
-
-   @Override
-   public wv b() {
-      return wv.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
-   }
-
-   @Override
-   public wv a(ut $$0) {
-      return wv.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), ul.c($$0));
-   }
-
-   @Override
-   public wv a(fp.g $$0, double $$1, int $$2) {
-      return wv.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+         return (int)($$1 - $$4);
+      }
    }
 }

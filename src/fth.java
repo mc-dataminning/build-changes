@@ -1,17 +1,40 @@
-public record fth(goi a, goi b, goi c) {
-   public static fth a(ald $$0) {
-      return new fth(goi.v($$0), goi.z($$0), goi.x($$0));
+import java.util.Locale;
+
+public class fth extends ftf {
+   private static final int f = 30;
+   private static final double g = 33.333333333333336;
+
+   public fth(fra $$0, box $$1) {
+      super($$0, $$1);
    }
 
-   public static fth b(ald $$0) {
-      return new fth(goi.u($$0), goi.y($$0), goi.w($$0));
+   @Override
+   protected void d(frc $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
+      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
+      $$0.a(gpn.L(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
+      int $$4 = fof.Q().n.h().c();
+      if ($$4 > 0 && $$4 <= 250) {
+         $$0.a(gpn.L(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
+      }
    }
 
-   public goi a(fpx.a $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
-         case c -> this.c;
-      };
+   @Override
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   }
+
+   @Override
+   protected int b(double $$0) {
+      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
+   }
+
+   @Override
+   protected int a(long $$0) {
+      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
+   }
+
+   private static double c(double $$0) {
+      return $$0 / 1000000.0;
    }
 }

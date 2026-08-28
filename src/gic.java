@@ -1,13 +1,24 @@
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public enum gic {
-   a,
-   b;
+public class gic {
+   public static final gic a = new gic(Map.of());
+   private final Map<gie, gim> b;
 
-   private static final List<gic> c = List.of(values());
-   private static final kg.b d = kg.a(md.aG);
+   public gic(Map<gie, gim> $$0) {
+      this.b = $$0;
+   }
 
-   public static jz<gic> a() {
-      return new jz<>(c).a(a, d);
+   public gig a(gie $$0) {
+      gim $$1 = this.b.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("No model for layer " + $$0);
+      } else {
+         return $$1.a();
+      }
+   }
+
+   public static gic a() {
+      return new gic(ImmutableMap.copyOf(gid.a()));
    }
 }

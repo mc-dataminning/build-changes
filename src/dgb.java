@@ -1,21 +1,20 @@
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dgb {
-   alc<? extends kf<dga>> a = alc.a(ald.b("equipment_asset"));
-   alc<dga> b = a("leather");
-   alc<dga> c = a("chainmail");
-   alc<dga> d = a("iron");
-   alc<dga> e = a("gold");
-   alc<dga> f = a("diamond");
-   alc<dga> g = a("turtle_scute");
-   alc<dga> h = a("netherite");
-   alc<dga> i = a("armadillo_scute");
-   alc<dga> j = a("elytra");
-   alc<dga> k = a("saddle");
-   Map<cwv, alc<dga>> l = af.a(cwv.class, $$0 -> a($$0.c() + "_carpet"));
-   alc<dga> m = a("trader_llama");
+public record dgb(dfm c) implements dfy {
+   public static final MapCodec<dgb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dfm.b.fieldOf("factor").forGetter(dgb::b)).apply($$0, dgb::new));
 
-   static alc<dga> a(String $$0) {
-      return alc.a(a, ald.b($$0));
+   @Override
+   public float a(int $$0, azt $$1, float $$2) {
+      return $$2 * this.c.a($$0);
+   }
+
+   @Override
+   public MapCodec<dgb> a() {
+      return a;
+   }
+
+   public dfm b() {
+      return this.c;
    }
 }

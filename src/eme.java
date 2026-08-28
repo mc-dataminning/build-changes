@@ -1,49 +1,43 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public record eme(elw b, List<eme.a> c) {
-   public static final Codec<eme> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(elw.a.fieldOf("fallback").forGetter(eme::a), eme.a.a.listOf().fieldOf("rules").forGetter(eme::b)).apply($$0, eme::new)
-   );
+public class eme extends emj {
+   public static final MapCodec<eme> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eme::new));
+   protected final int b;
 
-   public static eme a(elw $$0) {
-      return new eme($$0, List.of());
+   protected static <P extends eme> P3<Mu<P>, btd, btd, Integer> a(Instance<P> $$0) {
+      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
    }
 
-   public static eme a(dku $$0) {
-      return a(elw.a($$0));
+   public eme(btd $$0, btd $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public dym a(dio $$0, azs $$1, jj $$2) {
-      for (eme.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
+   @Override
+   protected emk<?> a() {
+      return emk.a;
+   }
+
+   @Override
+   protected void a(div $$0, emj.b $$1, azt $$2, elt $$3, int $$4, emj.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
-
-      return this.b.a($$1, $$2);
    }
 
-   public elw a() {
+   @Override
+   public int a(azt $$0, int $$1, elt $$2) {
       return this.b;
    }
 
-   public List<eme.a> b() {
-      return this.c;
-   }
-
-   public static record a(efs b, elw c) {
-      public static final Codec<eme.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(efs.b.fieldOf("if_true").forGetter(eme.a::a), elw.a.fieldOf("then").forGetter(eme.a::b)).apply($$0, eme.a::new)
-      );
-
-      public efs a() {
-         return this.b;
-      }
-
-      public elw b() {
-         return this.c;
-      }
+   @Override
+   protected boolean a(azt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
    }
 }

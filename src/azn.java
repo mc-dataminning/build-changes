@@ -3,7 +3,7 @@ public interface azn {
 
    String a();
 
-   default wv d() {
-      return wv.c(this.a());
+   default ww d() {
+      return ww.c(this.a());
    }
 }

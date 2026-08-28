@@ -1,91 +1,77 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public abstract class evg {
-   protected evm b;
-   protected bwt c;
-   protected final Int2ObjectMap<evf> d = new Int2ObjectOpenHashMap();
-   protected int e;
-   protected int f;
-   protected int g;
-   protected boolean h = true;
-   protected boolean i;
-   protected boolean j;
-   protected boolean k;
+public abstract class evg<M extends evg<M>> {
+   private static final int b = 2;
+   private final long[] c = new long[2];
+   private final ebq[] d = new ebq[2];
+   private boolean e;
+   protected final Long2ObjectOpenHashMap<ebq> a;
 
-   public void a(dic $$0, bwt $$1) {
-      this.b = new evm($$0, $$1);
-      this.c = $$1;
-      this.d.clear();
-      this.e = azk.d($$1.dq() + 1.0F);
-      this.f = azk.d($$1.dr() + 1.0F);
-      this.g = azk.d($$1.dq() + 1.0F);
+   protected evg(Long2ObjectOpenHashMap<ebq> $$0) {
+      this.a = $$0;
+      this.c();
+      this.e = true;
    }
 
-   public void b() {
-      this.b = null;
-      this.c = null;
+   public abstract M b();
+
+   public ebq a(long $$0) {
+      ebq $$1 = ((ebq)this.a.get($$0)).b();
+      this.a.put($$0, $$1);
+      this.c();
+      return $$1;
    }
 
-   protected evf b(jj $$0) {
-      return this.c($$0.u(), $$0.v(), $$0.w());
+   public boolean b(long $$0) {
+      return this.a.containsKey($$0);
    }
 
-   protected evf c(int $$0, int $$1, int $$2) {
-      return (evf)this.d.computeIfAbsent(evf.b($$0, $$1, $$2), $$3 -> new evf($$0, $$1, $$2));
+   @Nullable
+   public ebq c(long $$0) {
+      if (this.e) {
+         for (int $$1 = 0; $$1 < 2; $$1++) {
+            if ($$0 == this.c[$$1]) {
+               return this.d[$$1];
+            }
+         }
+      }
+
+      ebq $$2 = (ebq)this.a.get($$0);
+      if ($$2 == null) {
+         return null;
+      } else {
+         if (this.e) {
+            for (int $$3 = 1; $$3 > 0; $$3--) {
+               this.c[$$3] = this.c[$$3 - 1];
+               this.d[$$3] = this.d[$$3 - 1];
+            }
+
+            this.c[0] = $$0;
+            this.d[0] = $$2;
+         }
+
+         return $$2;
+      }
    }
 
-   public abstract evf a();
-
-   public abstract evo a(double var1, double var3, double var5);
-
-   protected evo b(double $$0, double $$1, double $$2) {
-      return new evo(this.c(azk.a($$0), azk.a($$1), azk.a($$2)));
+   @Nullable
+   public ebq d(long $$0) {
+      return (ebq)this.a.remove($$0);
    }
 
-   public abstract int a(evf[] var1, evf var2);
-
-   public abstract evk a(evm var1, int var2, int var3, int var4, bwt var5);
-
-   public abstract evk a(evm var1, int var2, int var3, int var4);
-
-   public evk a(bwt $$0, jj $$1) {
-      return this.a(new evm($$0.dV(), $$0), $$1.u(), $$1.v(), $$1.w());
+   public void a(long $$0, ebq $$1) {
+      this.a.put($$0, $$1);
    }
 
-   public void a(boolean $$0) {
-      this.h = $$0;
+   public void c() {
+      for (int $$0 = 0; $$0 < 2; $$0++) {
+         this.c[$$0] = Long.MAX_VALUE;
+         this.d[$$0] = null;
+      }
    }
 
-   public void b(boolean $$0) {
-      this.i = $$0;
-   }
-
-   public void c(boolean $$0) {
-      this.j = $$0;
-   }
-
-   public void d(boolean $$0) {
-      this.k = $$0;
-   }
-
-   public boolean d() {
-      return this.h;
-   }
-
-   public boolean e() {
-      return this.i;
-   }
-
-   public boolean f() {
-      return this.j;
-   }
-
-   public boolean g() {
-      return this.k;
-   }
-
-   public static boolean a(dym $$0) {
-      return $$0.a(awz.aN) || $$0.a(dkw.K) || $$0.a(dkw.ll) || dlj.h($$0) || $$0.a(dkw.fQ);
+   public void d() {
+      this.e = false;
    }
 }

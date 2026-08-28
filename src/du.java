@@ -1,30 +1,53 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public record du(boolean d, boolean e) implements by {
-   public static final MapCodec<du> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("has_raid", false).forGetter(du::b), Codec.BOOL.optionalFieldOf("is_captain", false).forGetter(du::c))
-            .apply($$0, du::new)
-   );
-   public static final du c = new du(false, true);
-
+public class du extends dj<du.a> {
    @Override
-   public MapCodec<du> a() {
-      return bz.e;
+   public Codec<du.a> a() {
+      return du.a.a;
    }
 
-   @Override
-   public boolean a(bvs $$0, arn $$1, @Nullable fcu $$2) {
-      return !($$0 instanceof crw $$3) ? false : $$3.gD() == this.d && $$3.gC() == this.e;
+   public void a(arp $$0, bwa $$1, fdw $$2, int $$3) {
+      eyn $$4 = bx.b($$0, $$1);
+      this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
    }
 
-   public boolean b() {
-      return this.d;
-   }
+   public static record a(Optional<bi> b, cv.d c, Optional<bi> d) implements dj.a {
+      public static final Codec<du.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bx.b.optionalFieldOf("player").forGetter(du.a::a),
+                  cv.d.d.optionalFieldOf("signal_strength", cv.d.c).forGetter(du.a::b),
+                  bx.b.optionalFieldOf("projectile").forGetter(du.a::c)
+               )
+               .apply($$0, du.a::new)
+      );
 
-   public boolean c() {
-      return this.e;
+      public static aq<du.a> a(cv.d $$0, Optional<bi> $$1) {
+         return ap.M.a(new du.a(Optional.empty(), $$0, $$1));
+      }
+
+      public boolean a(eyn $$0, fdw $$1, int $$2) {
+         return !this.c.d($$2) ? false : !this.d.isPresent() || this.d.get().a($$0);
+      }
+
+      @Override
+      public void a(bj $$0) {
+         dj.a.super.a($$0);
+         $$0.a(this.d, ".projectile");
+      }
+
+      @Override
+      public Optional<bi> a() {
+         return this.b;
+      }
+
+      public cv.d b() {
+         return this.c;
+      }
+
+      public Optional<bi> c() {
+         return this.d;
+      }
    }
 }

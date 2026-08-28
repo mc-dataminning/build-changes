@@ -1,20 +1,22 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehc extends ehr<ekc> {
-   public ehc(Codec<ekc> $$0) {
-      super($$0);
+class ehc implements egu {
+   public static final MapCodec<ehc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(egu.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, ehc::new)
+   );
+   private final egu e;
+
+   public ehc(egu $$0) {
+      this.e = $$0;
+   }
+
+   public boolean a(djo $$0, iu $$1) {
+      return !this.e.test($$0, $$1);
    }
 
    @Override
-   public boolean a(eht<ekc> $$0) {
-      dio $$1 = $$0.b();
-      jj $$2 = $$0.e();
-      azs $$3 = $$0.d();
-      if ($$1.u($$2) && $$1.a_($$2.e()).a(dkw.fU)) {
-         dlz.a($$1, $$2, $$3, 8);
-         return true;
-      } else {
-         return false;
-      }
+   public egv<?> a() {
+      return egv.k;
    }
 }

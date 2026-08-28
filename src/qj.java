@@ -1,24 +1,219 @@
-import java.util.OptionalLong;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class qj {
-   public static void a(qg<ecj> $$0) {
+   public static final ald<ers> a = qo.a("village/desert/town_centers");
+   private static final ald<ers> b = qo.a("village/desert/terminators");
+   private static final ald<ers> c = qo.a("village/desert/zombie/terminators");
+
+   public static void a(qh<ers> $$0) {
+      jf<epm> $$1 = $$0.a(mg.aZ);
+      je<epm> $$2 = $$1.b(sa.j);
+      je<epm> $$3 = $$1.b(sa.a);
+      jf<eui> $$4 = $$0.a(mg.ba);
+      je<eui> $$5 = $$4.b(qp.e);
+      je<eui> $$6 = $$4.b(qp.p);
+      jf<ers> $$7 = $$0.a(mg.bd);
+      je<ers> $$8 = $$7.b(qo.a);
+      je<ers> $$9 = $$7.b(b);
+      je<ers> $$10 = $$7.b(c);
       $$0.a(
-         ech.a,
-         new ecj(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, awz.bd, ech.e, 0.0F, new ecj.a(false, true, btb.a(0, 7), 0))
+         a,
+         new ers(
+            $$8,
+            ImmutableList.of(
+               Pair.of(erq.a("village/desert/town_centers/desert_meeting_point_1"), 98),
+               Pair.of(erq.a("village/desert/town_centers/desert_meeting_point_2"), 98),
+               Pair.of(erq.a("village/desert/town_centers/desert_meeting_point_3"), 49),
+               Pair.of(erq.a("village/desert/zombie/town_centers/desert_meeting_point_1", $$5), 2),
+               Pair.of(erq.a("village/desert/zombie/town_centers/desert_meeting_point_2", $$5), 2),
+               Pair.of(erq.a("village/desert/zombie/town_centers/desert_meeting_point_3", $$5), 1)
+            ),
+            ers.a.b
+         )
       );
-      $$0.a(
-         ech.b,
-         new ecj(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, awz.be, ech.f, 0.1F, new ecj.a(true, false, bss.a(7), 15))
+      qo.a(
+         $$0,
+         "village/desert/streets",
+         new ers(
+            $$9,
+            ImmutableList.of(
+               Pair.of(erq.a("village/desert/streets/corner_01"), 3),
+               Pair.of(erq.a("village/desert/streets/corner_02"), 3),
+               Pair.of(erq.a("village/desert/streets/straight_01"), 4),
+               Pair.of(erq.a("village/desert/streets/straight_02"), 4),
+               Pair.of(erq.a("village/desert/streets/straight_03"), 3),
+               Pair.of(erq.a("village/desert/streets/crossroad_01"), 3),
+               Pair.of(erq.a("village/desert/streets/crossroad_02"), 3),
+               Pair.of(erq.a("village/desert/streets/crossroad_03"), 3),
+               Pair.of(erq.a("village/desert/streets/square_01"), 3),
+               Pair.of(erq.a("village/desert/streets/square_02"), 3),
+               Pair.of(erq.a("village/desert/streets/turn_01"), 3)
+            ),
+            ers.a.a
+         )
       );
-      $$0.a(
-         ech.c,
-         new ecj(
-            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, awz.bf, ech.g, 0.0F, new ecj.a(false, true, btb.a(0, 7), 0)
+      qo.a(
+         $$0,
+         "village/desert/zombie/streets",
+         new ers(
+            $$10,
+            ImmutableList.of(
+               Pair.of(erq.a("village/desert/zombie/streets/corner_01"), 3),
+               Pair.of(erq.a("village/desert/zombie/streets/corner_02"), 3),
+               Pair.of(erq.a("village/desert/zombie/streets/straight_01"), 4),
+               Pair.of(erq.a("village/desert/zombie/streets/straight_02"), 4),
+               Pair.of(erq.a("village/desert/zombie/streets/straight_03"), 3),
+               Pair.of(erq.a("village/desert/zombie/streets/crossroad_01"), 3),
+               Pair.of(erq.a("village/desert/zombie/streets/crossroad_02"), 3),
+               Pair.of(erq.a("village/desert/zombie/streets/crossroad_03"), 3),
+               Pair.of(erq.a("village/desert/zombie/streets/square_01"), 3),
+               Pair.of(erq.a("village/desert/zombie/streets/square_02"), 3),
+               Pair.of(erq.a("village/desert/zombie/streets/turn_01"), 3)
+            ),
+            ers.a.a
+         )
+      );
+      qo.a(
+         $$0,
+         "village/desert/houses",
+         new ers(
+            $$9,
+            ImmutableList.of(
+               Pair.of(erq.a("village/desert/houses/desert_small_house_1"), 2),
+               Pair.of(erq.a("village/desert/houses/desert_small_house_2"), 2),
+               Pair.of(erq.a("village/desert/houses/desert_small_house_3"), 2),
+               Pair.of(erq.a("village/desert/houses/desert_small_house_4"), 2),
+               Pair.of(erq.a("village/desert/houses/desert_small_house_5"), 2),
+               Pair.of(erq.a("village/desert/houses/desert_small_house_6"), 1),
+               Pair.of(erq.a("village/desert/houses/desert_small_house_7"), 2),
+               Pair.of(erq.a("village/desert/houses/desert_small_house_8"), 2),
+               Pair.of(erq.a("village/desert/houses/desert_medium_house_1"), 2),
+               Pair.of(erq.a("village/desert/houses/desert_medium_house_2"), 2),
+               Pair.of(erq.a("village/desert/houses/desert_butcher_shop_1"), 2),
+               Pair.of(erq.a("village/desert/houses/desert_tool_smith_1"), 2),
+               new Pair[]{
+                  Pair.of(erq.a("village/desert/houses/desert_fletcher_house_1"), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_shepherd_house_1"), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_armorer_1"), 1),
+                  Pair.of(erq.a("village/desert/houses/desert_fisher_1"), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_tannery_1"), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_cartographer_house_1"), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_library_1"), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_mason_1"), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_weaponsmith_1"), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_temple_1"), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_temple_2"), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_large_farm_1", $$6), 11),
+                  Pair.of(erq.a("village/desert/houses/desert_farm_1", $$6), 4),
+                  Pair.of(erq.a("village/desert/houses/desert_farm_2", $$6), 4),
+                  Pair.of(erq.a("village/desert/houses/desert_animal_pen_1"), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_animal_pen_2"), 2),
+                  Pair.of(erq.h(), 5)
+               }
+            ),
+            ers.a.b
+         )
+      );
+      qo.a(
+         $$0,
+         "village/desert/zombie/houses",
+         new ers(
+            $$10,
+            ImmutableList.of(
+               Pair.of(erq.a("village/desert/zombie/houses/desert_small_house_1", $$5), 2),
+               Pair.of(erq.a("village/desert/zombie/houses/desert_small_house_2", $$5), 2),
+               Pair.of(erq.a("village/desert/zombie/houses/desert_small_house_3", $$5), 2),
+               Pair.of(erq.a("village/desert/zombie/houses/desert_small_house_4", $$5), 2),
+               Pair.of(erq.a("village/desert/zombie/houses/desert_small_house_5", $$5), 2),
+               Pair.of(erq.a("village/desert/zombie/houses/desert_small_house_6", $$5), 1),
+               Pair.of(erq.a("village/desert/zombie/houses/desert_small_house_7", $$5), 2),
+               Pair.of(erq.a("village/desert/zombie/houses/desert_small_house_8", $$5), 2),
+               Pair.of(erq.a("village/desert/zombie/houses/desert_medium_house_1", $$5), 2),
+               Pair.of(erq.a("village/desert/zombie/houses/desert_medium_house_2", $$5), 2),
+               Pair.of(erq.a("village/desert/houses/desert_butcher_shop_1", $$5), 2),
+               Pair.of(erq.a("village/desert/houses/desert_tool_smith_1", $$5), 2),
+               new Pair[]{
+                  Pair.of(erq.a("village/desert/houses/desert_fletcher_house_1", $$5), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_shepherd_house_1", $$5), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_armorer_1", $$5), 1),
+                  Pair.of(erq.a("village/desert/houses/desert_fisher_1", $$5), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_tannery_1", $$5), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_cartographer_house_1", $$5), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_library_1", $$5), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_mason_1", $$5), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_weaponsmith_1", $$5), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_temple_1", $$5), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_temple_2", $$5), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_large_farm_1", $$5), 7),
+                  Pair.of(erq.a("village/desert/houses/desert_farm_1", $$5), 4),
+                  Pair.of(erq.a("village/desert/houses/desert_farm_2", $$5), 4),
+                  Pair.of(erq.a("village/desert/houses/desert_animal_pen_1", $$5), 2),
+                  Pair.of(erq.a("village/desert/houses/desert_animal_pen_2", $$5), 2),
+                  Pair.of(erq.h(), 5)
+               }
+            ),
+            ers.a.b
          )
       );
       $$0.a(
-         ech.d,
-         new ecj(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, awz.bd, ech.e, 0.0F, new ecj.a(false, true, btb.a(0, 7), 0))
+         b,
+         new ers(
+            $$8,
+            ImmutableList.of(Pair.of(erq.a("village/desert/terminators/terminator_01"), 1), Pair.of(erq.a("village/desert/terminators/terminator_02"), 1)),
+            ers.a.a
+         )
+      );
+      $$0.a(
+         c,
+         new ers(
+            $$8,
+            ImmutableList.of(
+               Pair.of(erq.a("village/desert/terminators/terminator_01"), 1), Pair.of(erq.a("village/desert/zombie/terminators/terminator_02"), 1)
+            ),
+            ers.a.a
+         )
+      );
+      qo.a(
+         $$0,
+         "village/desert/decor",
+         new ers(
+            $$8,
+            ImmutableList.of(Pair.of(erq.a("village/desert/desert_lamp_1"), 10), Pair.of(erq.a($$2), 4), Pair.of(erq.a($$3), 4), Pair.of(erq.h(), 10)),
+            ers.a.b
+         )
+      );
+      qo.a(
+         $$0,
+         "village/desert/zombie/decor",
+         new ers(
+            $$8,
+            ImmutableList.of(Pair.of(erq.a("village/desert/desert_lamp_1", $$5), 10), Pair.of(erq.a($$2), 4), Pair.of(erq.a($$3), 4), Pair.of(erq.h(), 10)),
+            ers.a.b
+         )
+      );
+      qo.a(
+         $$0,
+         "village/desert/villagers",
+         new ers(
+            $$8,
+            ImmutableList.of(
+               Pair.of(erq.a("village/desert/villagers/nitwit"), 1),
+               Pair.of(erq.a("village/desert/villagers/baby"), 1),
+               Pair.of(erq.a("village/desert/villagers/unemployed"), 10)
+            ),
+            ers.a.b
+         )
+      );
+      qo.a($$0, "village/desert/camel", new ers($$8, ImmutableList.of(Pair.of(erq.a("village/desert/camel_spawn"), 1)), ers.a.b));
+      qo.a(
+         $$0,
+         "village/desert/zombie/villagers",
+         new ers(
+            $$8,
+            ImmutableList.of(Pair.of(erq.a("village/desert/zombie/villagers/nitwit"), 1), Pair.of(erq.a("village/desert/zombie/villagers/unemployed"), 10)),
+            ers.a.b
+         )
       );
    }
 }

@@ -1,122 +1,262 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
-import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class ebu implements ecu<bvs> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Entities";
-   private static final String c = "Position";
-   private final arn d;
-   private final ecf e;
-   private final LongSet f = new LongOpenHashSet();
-   private final bsg g;
+public class ebu extends ecf {
+   private final ebv n;
+   private final boolean o;
 
-   public ebu(ecf $$0, arn $$1, Executor $$2) {
-      this.e = $$0;
-      this.d = $$1;
-      this.g = new bsg($$2, "entity-deserializer");
+   public ebu(ebv $$0, boolean $$1) {
+      super($$0.f(), eci.a, $$0.l, $$0.H().F_().f(mg.aG), $$0.v());
+      this.n = $$0;
+      this.o = $$1;
+   }
+
+   @Nullable
+   @Override
+   public dwn c_(iu $$0) {
+      return this.n.c_($$0);
    }
 
    @Override
-   public CompletableFuture<ecp<bvs>> a(dgw $$0) {
-      if (this.f.contains($$0.a())) {
-         return CompletableFuture.completedFuture(b($$0));
-      } else {
-         CompletableFuture<Optional<tw>> $$1 = this.e.a($$0);
-         this.b($$1, $$0);
-         return $$1.thenApplyAsync($$1x -> {
-            if ($$1x.isEmpty()) {
-               this.f.add($$0.a());
-               return b($$0);
-            } else {
-               try {
-                  dgw $$2 = a((tw)$$1x.get());
-                  if (!Objects.equals($$0, $$2)) {
-                     a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
-                     this.d.p().a($$2, $$0, this.e.a());
-                  }
-               } catch (Exception var6) {
-                  a.warn("Failed to parse chunk {} position info", $$0, var6);
-                  this.d.p().a(var6, this.e.a(), $$0);
-               }
-
-               tw $$4 = this.e.a((tw)$$1x.get(), -1);
-               uc $$5 = $$4.c("Entities", 10);
-               List<bvs> $$6 = bwb.a($$5, this.d, bwa.r).collect(ImmutableList.toImmutableList());
-               return new ecp<>($$0, $$6);
-            }
-         }, this.g::a_);
-      }
-   }
-
-   private static dgw a(tw $$0) {
-      int[] $$1 = $$0.n("Position");
-      return new dgw($$1[0], $$1[1]);
-   }
-
-   private static void a(tw $$0, dgw $$1) {
-      $$0.a("Position", new ua(new int[]{$$1.h, $$1.i}));
-   }
-
-   private static ecp<bvs> b(dgw $$0) {
-      return new ecp<>($$0, ImmutableList.of());
+   public dzo a_(iu $$0) {
+      return this.n.a_($$0);
    }
 
    @Override
-   public void a(ecp<bvs> $$0) {
-      dgw $$1 = $$0.a();
-      if ($$0.c()) {
-         if (this.f.add($$1.a())) {
-            this.a(this.e.a($$1, null), $$1);
-         }
-      } else {
-         uc $$2 = new uc();
-         $$0.b().forEach($$1x -> {
-            tw $$2x = new tw();
-            if ($$1x.e($$2x)) {
-               $$2.add($$2x);
-            }
-         });
-         tw $$3 = ul.e(new tw());
-         $$3.a("Entities", $$2);
-         a($$3, $$1);
-         this.a(this.e.a($$1, $$3), $$1);
-         this.f.remove($$1.a());
+   public evv b_(iu $$0) {
+      return this.n.b_($$0);
+   }
+
+   @Override
+   public ebw b(int $$0) {
+      return this.o ? this.n.b($$0) : super.b($$0);
+   }
+
+   @Nullable
+   @Override
+   public dzo a(iu $$0, dzo $$1, int $$2) {
+      return this.o ? this.n.a($$0, $$1, $$2) : null;
+   }
+
+   @Override
+   public void a(dwn $$0) {
+      if (this.o) {
+         this.n.a($$0);
       }
    }
 
-   private void a(CompletableFuture<?> $$0, dgw $$1) {
-      $$0.exceptionally($$1x -> {
-         a.error("Failed to store entity chunk {}", $$1, $$1x);
-         this.d.p().b($$1x, this.e.a(), $$1);
-         return null;
-      });
+   @Override
+   public void a(bwa $$0) {
+      if (this.o) {
+         this.n.a($$0);
+      }
    }
 
-   private void b(CompletableFuture<?> $$0, dgw $$1) {
-      $$0.exceptionally($$1x -> {
-         a.error("Failed to load entity chunk {}", $$1, $$1x);
-         this.d.p().a($$1x, this.e.a(), $$1);
-         return null;
-      });
+   @Override
+   public void a(ecm $$0) {
+      if (this.o) {
+         super.a($$0);
+      }
+   }
+
+   @Override
+   public ebw[] d() {
+      return this.n.d();
+   }
+
+   @Override
+   public void a(efn.a $$0, long[] $$1) {
+   }
+
+   private efn.a c(efn.a $$0) {
+      if ($$0 == efn.a.a) {
+         return efn.a.b;
+      } else {
+         return $$0 == efn.a.c ? efn.a.d : $$0;
+      }
+   }
+
+   @Override
+   public efn a(efn.a $$0) {
+      return this.n.a($$0);
+   }
+
+   @Override
+   public int a(efn.a $$0, int $$1, int $$2) {
+      return this.n.a(this.c($$0), $$1, $$2);
+   }
+
+   @Override
+   public je<djs> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   @Override
+   public dhw f() {
+      return this.n.f();
+   }
+
+   @Nullable
+   @Override
+   public eqq a(eqi $$0) {
+      return this.n.a($$0);
+   }
+
+   @Override
+   public void a(eqi $$0, eqq $$1) {
+   }
+
+   @Override
+   public Map<eqi, eqq> g() {
+      return this.n.g();
+   }
+
+   @Override
+   public void a(Map<eqi, eqq> $$0) {
+   }
+
+   @Override
+   public LongSet b(eqi $$0) {
+      return this.n.b($$0);
+   }
+
+   @Override
+   public void a(eqi $$0, long $$1) {
+   }
+
+   @Override
+   public Map<eqi, LongSet> h() {
+      return this.n.h();
+   }
+
+   @Override
+   public void b(Map<eqi, LongSet> $$0) {
+   }
+
+   @Override
+   public void i() {
+      this.n.i();
+   }
+
+   @Override
+   public boolean s() {
+      return false;
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   @Override
+   public ecm n() {
+      return this.n.n();
+   }
+
+   @Override
+   public void d(iu $$0) {
+   }
+
+   @Override
+   public void e(iu $$0) {
+   }
+
+   @Override
+   public void a(tx $$0) {
+   }
+
+   @Nullable
+   @Override
+   public tx f(iu $$0) {
+      return this.n.f($$0);
+   }
+
+   @Nullable
+   @Override
+   public tx a(iu $$0, jg.a $$1) {
+      return this.n.a($$0, $$1);
+   }
+
+   @Override
+   public void a(Predicate<dzo> $$0, BiConsumer<iu, dzo> $$1) {
+      this.n.a($$0, $$1);
+   }
+
+   @Override
+   public ffr<dlu> q() {
+      return this.o ? this.n.q() : ffh.a();
+   }
+
+   @Override
+   public ffr<evu> r() {
+      return this.o ? this.n.r() : ffh.a();
+   }
+
+   @Override
+   public ebl.a a(long $$0) {
+      return this.n.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public egq v() {
+      return this.n.v();
+   }
+
+   @Override
+   public ebk E() {
+      if (this.o) {
+         return super.E();
+      } else {
+         throw (UnsupportedOperationException)af.b(new UnsupportedOperationException("Meaningless in this context"));
+      }
+   }
+
+   @Override
+   public ebk F() {
+      if (this.o) {
+         return super.F();
+      } else {
+         throw (UnsupportedOperationException)af.b(new UnsupportedOperationException("Meaningless in this context"));
+      }
+   }
+
+   public ebv G() {
+      return this.n;
+   }
+
+   @Override
+   public boolean x() {
+      return this.n.x();
    }
 
    @Override
    public void a(boolean $$0) {
-      this.e.a($$0).join();
-      this.g.a();
+      this.n.a($$0);
    }
 
    @Override
-   public void close() throws IOException {
-      this.e.close();
+   public void a(djv $$0, dkb.f $$1) {
+      if (this.o) {
+         this.n.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void C() {
+      this.n.C();
+   }
+
+   @Override
+   public evf D() {
+      return this.n.D();
    }
 }

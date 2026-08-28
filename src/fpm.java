@@ -1,32 +1,27 @@
-import java.util.function.UnaryOperator;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class fpm {
-   @Deprecated
-   public static ald a(String $$0) {
-      return ald.b("block/" + $$0);
+public record fpm(int b, int c) implements fpq {
+   public static final MapCodec<fpm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ays.l.optionalFieldOf("index", 0).forGetter(fpm::b), ays.i.fieldOf("default").forGetter(fpm::c)).apply($$0, fpm::new)
+   );
+
+   @Override
+   public int a(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2) {
+      dbb $$3 = $$0.a(kj.p);
+      if ($$3 != null) {
+         Integer $$4 = $$3.d(this.b);
+         if ($$4 != null) {
+            return axu.f($$4);
+         }
+      }
+
+      return axu.f(this.c);
    }
 
-   public static ald b(String $$0) {
-      return ald.b("item/" + $$0);
-   }
-
-   public static ald a(dku $$0, String $$1) {
-      ald $$2 = md.e.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
-   }
-
-   public static ald a(dku $$0) {
-      ald $$1 = md.e.b($$0);
-      return $$1.f("block/");
-   }
-
-   public static ald a(cxu $$0) {
-      ald $$1 = md.g.b($$0);
-      return $$1.f("item/");
-   }
-
-   public static ald a(cxu $$0, String $$1) {
-      ald $$2 = md.g.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
+   @Override
+   public MapCodec<fpm> a() {
+      return a;
    }
 }

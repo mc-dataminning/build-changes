@@ -1,4 +1,8 @@
-public class har extends hak {
-   public boolean a;
-   public final hdn b = new hdn();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface har {
 }

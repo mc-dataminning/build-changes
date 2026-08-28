@@ -1,18 +1,18 @@
 import com.mojang.serialization.MapCodec;
 
 public class bz {
-   public static final MapCodec<dg> a = a("lightning", dg.b);
+   public static final MapCodec<cr> a = a("lightning", cr.b);
    public static final MapCodec<cd> b = a("fishing_hook", cd.c);
-   public static final MapCodec<ds> c = a("player", ds.c);
-   public static final MapCodec<ec> d = a("slime", ec.b);
-   public static final MapCodec<du> e = a("raider", du.b);
-   public static final MapCodec<dx> f = a("sheep", dx.b);
+   public static final MapCodec<dc> c = a("player", dc.c);
+   public static final MapCodec<dm> d = a("slime", dm.b);
+   public static final MapCodec<de> e = a("raider", de.b);
+   public static final MapCodec<dh> f = a("sheep", dh.b);
 
    private static <T extends by> MapCodec<T> a(String $$0, MapCodec<T> $$1) {
-      return kf.a(md.ap, $$0, $$1);
+      return jr.a(mf.an, $$0, $$1);
    }
 
-   public static MapCodec<? extends by> a(kf<MapCodec<? extends by>> $$0) {
+   public static MapCodec<? extends by> a(jr<MapCodec<? extends by>> $$0) {
       return a;
    }
 }

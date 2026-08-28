@@ -1,30 +1,36 @@
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.UUID;
-import org.slf4j.Logger;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public class fiy extends fjt {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
-   public UUID d;
-   public Date e;
+public interface fiy {
+   fiy a = a(0.0F, 0.0F, 0.0F);
+   fiy b = a((fiy.a)($$0 -> -$$0.z()));
 
-   public static fiy a(JsonObject $$0) {
-      fiy $$1 = new fiy();
+   static fiy a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
+   }
 
-      try {
-         $$1.a = flp.b("invitationId", $$0, "");
-         $$1.b = flp.b("worldName", $$0, "");
-         $$1.c = flp.b("worldOwnerName", $$0, "");
-         $$1.d = flp.a("worldOwnerUuid", $$0, af.e);
-         $$1.e = flp.b("date", $$0);
-      } catch (Exception var3) {
-         f.error("Could not parse PendingInvite: {}", var3.getMessage());
-      }
+   static fiy a(Vector3f $$0) {
+      return a($$0::distanceSquared);
+   }
 
-      return $$1;
+   static fiy a(fiy.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
+
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
+         }
+
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
+   }
+
+   int[] sort(Vector3f[] var1);
+
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

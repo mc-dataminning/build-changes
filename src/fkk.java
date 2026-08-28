@@ -1,120 +1,81 @@
-import java.util.Locale;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import org.slf4j.Logger;
 
-public class fkk extends hne {
-   private static final wv a = wv.c("mco.backup.info.title");
-   private static final wv b = wv.c("mco.backup.unknown");
-   private final fwf c;
-   final fiu C;
-   final fub D = new fub(this);
-   private fkk.a E;
+public class fkk extends fkv {
+   private static final Logger b = LogUtils.getLogger();
+   public Map<Long, List<ProfileResult>> a = Map.of();
 
-   public fkk(fwf $$0, fiu $$1) {
-      super(a);
-      this.c = $$0;
-      this.C = $$1;
-   }
+   public static fkk a(String $$0) {
+      fkk $$1 = new fkk();
+      Builder<Long, List<ProfileResult>> $$2 = ImmutableMap.builder();
 
-   @Override
-   public void aN_() {
-      this.D.a(a, this.p);
-      this.E = this.D.c(new fkk.a(this.m));
-      this.D.b(fqn.a(wu.k, $$0 -> this.aK_()).a());
-      this.c();
-      this.D.a($$1 -> {
-         fql var10000 = this.c($$1);
-      });
-   }
-
-   @Override
-   protected void c() {
-      this.E.b(this.n, this.D.d());
-      this.D.a();
-   }
-
-   @Override
-   public void aK_() {
-      this.m.a(this.c);
-   }
-
-   wv a(String $$0, String $$1) {
-      String $$2 = $$0.toLowerCase(Locale.ROOT);
-      if ($$2.contains("game") && $$2.contains("mode")) {
-         return this.b($$1);
-      } else {
-         return (wv)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : wv.b($$1));
-      }
-   }
-
-   private wv a(String $$0) {
       try {
-         return flf.a.get(Integer.parseInt($$0)).b();
-      } catch (Exception var3) {
-         return b;
+         JsonObject $$3 = aza.a($$0);
+         if (aza.d($$3, "lists")) {
+            for (JsonElement $$5 : $$3.getAsJsonArray("lists")) {
+               JsonObject $$6 = $$5.getAsJsonObject();
+               String $$7 = fmr.b("playerList", $$6, null);
+               List<ProfileResult> $$9;
+               if ($$7 != null) {
+                  JsonElement $$8 = JsonParser.parseString($$7);
+                  if ($$8.isJsonArray()) {
+                     $$9 = a($$8.getAsJsonArray());
+                  } else {
+                     $$9 = Lists.newArrayList();
+                  }
+               } else {
+                  $$9 = Lists.newArrayList();
+               }
+
+               $$2.put(fmr.a("serverId", $$6, -1L), $$9);
+            }
+         }
+      } catch (Exception var11) {
+         b.error("Could not parse RealmsServerPlayerLists: {}", var11.getMessage());
       }
+
+      $$1.a = $$2.build();
+      return $$1;
    }
 
-   private wv b(String $$0) {
-      try {
-         return flf.b.get(Integer.parseInt($$0)).e();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
+   private static List<ProfileResult> a(JsonArray $$0) {
+      List<ProfileResult> $$1 = new ArrayList<>($$0.size());
+      MinecraftSessionService $$2 = fof.Q().am();
 
-   class a extends frj<fkk.b> {
-      public a(final fnd $$0) {
-         super($$0, fkk.this.n, fkk.this.D.d(), fkk.this.D.c(), 36);
-         if (fkk.this.C.e != null) {
-            fkk.this.C.e.forEach(($$0x, $$1) -> this.b(fkk.this.new b($$0x, $$1)));
+      for (JsonElement $$3 : $$0) {
+         if ($$3.isJsonObject()) {
+            UUID $$4 = fmr.a("playerId", $$3.getAsJsonObject(), null);
+            if ($$4 != null && !fof.Q().b($$4)) {
+               try {
+                  ProfileResult $$5 = $$2.fetchProfile($$4, false);
+                  if ($$5 != null) {
+                     $$1.add($$5);
+                  }
+               } catch (Exception var7) {
+                  b.error("Could not get name for {}", $$4, var7);
+               }
+            }
          }
       }
+
+      return $$1;
    }
 
-   class b extends frj.a<fkk.b> {
-      private static final wv b = wv.c("mco.backup.entry.templateName");
-      private static final wv c = wv.c("mco.backup.entry.gameDifficulty");
-      private static final wv d = wv.c("mco.backup.entry.name");
-      private static final wv e = wv.c("mco.backup.entry.gameServerVersion");
-      private static final wv f = wv.c("mco.backup.entry.uploaded");
-      private static final wv g = wv.c("mco.backup.entry.enabledPack");
-      private static final wv h = wv.c("mco.backup.entry.description");
-      private static final wv i = wv.c("mco.backup.entry.gameMode");
-      private static final wv j = wv.c("mco.backup.entry.seed");
-      private static final wv k = wv.c("mco.backup.entry.worldType");
-      private static final wv l = wv.c("mco.backup.entry.undefined");
-      private final String m;
-      private final String n;
-
-      public b(final String $$0, final String $$1) {
-         this.m = $$0;
-         this.n = $$1;
-      }
-
-      @Override
-      public void a(fpz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.b(fkk.this.p, this.a(this.m), $$3, $$2, -6250336);
-         $$0.b(fkk.this.p, fkk.this.a(this.m, this.n), $$3, $$2 + 12, -1);
-      }
-
-      private wv a(String $$0) {
-         return switch ($$0) {
-            case "template_name" -> b;
-            case "game_difficulty" -> c;
-            case "name" -> d;
-            case "game_server_version" -> e;
-            case "uploaded" -> f;
-            case "enabled_packs" -> g;
-            case "description" -> h;
-            case "game_mode" -> i;
-            case "seed" -> j;
-            case "world_type" -> k;
-            default -> l;
-         };
-      }
-
-      @Override
-      public wv a() {
-         return wv.a("narrator.select", this.m + " " + this.n);
-      }
+   public List<ProfileResult> a(long $$0) {
+      List<ProfileResult> $$1 = this.a.get($$0);
+      return $$1 != null ? $$1 : List.of();
    }
 }

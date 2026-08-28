@@ -1,15 +1,27 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class asx implements ase {
-   public static final ase.a a = new ase.a("join_world");
+public interface asx {
+   asx e = new asx() {
+      @Override
+      public CompletableFuture<ash> a(String $$0) {
+         return CompletableFuture.completedFuture(ash.a($$0));
+      }
 
-   @Override
-   public void a(Consumer<zc<?>> $$0) {
-      $$0.accept(aba.a);
+      @Override
+      public CompletableFuture<List<ash>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(ash::a).collect(ImmutableList.toImmutableList()));
+      }
+   };
+
+   default void a() {
    }
 
-   @Override
-   public ase.a a() {
-      return a;
+   default void b() {
    }
+
+   CompletableFuture<ash> a(String var1);
+
+   CompletableFuture<List<ash>> a(List<String> var1);
 }

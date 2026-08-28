@@ -1,15 +1,20 @@
-import java.lang.Thread.UncaughtExceptionHandler;
-import org.slf4j.Logger;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import javax.annotation.Nullable;
 
-public class fjy implements UncaughtExceptionHandler {
-   private final Logger a;
+public class fjy {
+   private final Gson a = new Gson();
 
-   public fjy(Logger $$0) {
-      this.a = $$0;
+   public String a(fkp $$0) {
+      return this.a.toJson($$0);
    }
 
-   @Override
-   public void uncaughtException(Thread $$0, Throwable $$1) {
-      this.a.error("Caught previously unhandled exception", $$1);
+   public String a(JsonElement $$0) {
+      return this.a.toJson($$0);
+   }
+
+   @Nullable
+   public <T extends fkp> T a(String $$0, Class<T> $$1) {
+      return (T)this.a.fromJson($$0, $$1);
    }
 }

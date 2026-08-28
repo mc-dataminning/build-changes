@@ -1,43 +1,30 @@
-public class gkx extends glf {
-   private final double a;
-   private final int b;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-   gkx(ghz $$0, double $$1, double $$2, double $$3, double $$4, int $$5, int $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$4;
-      this.t = $$5;
-      this.b = $$6;
+public class gkx {
+   public static final gkx a = new gkx(gkw.b, gky.createDnsSrvRedirectHandler(), gkt.a());
+   private final gkw b;
+   private final gky c;
+   private final gkt d;
+
+   @VisibleForTesting
+   gkx(gkw $$0, gky $$1, gkt $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public void a() {
-      if (this.s % (this.b + 1) == 0) {
-         for (int $$0 = 0; $$0 < 3; $$0++) {
-            double $$1 = this.g + (this.r.j() - this.r.j()) * this.a;
-            double $$2 = this.h + (this.r.j() - this.r.j()) * this.a;
-            double $$3 = this.i + (this.r.j() - this.r.j()) * this.a;
-            this.c.a(lv.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+   public Optional<gku> a(gkv $$0) {
+      Optional<gku> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<gkv> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
          }
-      }
 
-      if (this.s++ == this.t) {
-         this.k();
-      }
-   }
-
-   public static class a implements glk<lz> {
-      private final double a;
-      private final int b;
-      private final int c;
-
-      public a(double $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gkx($$1, $$2, $$3, $$4, this.a, this.b, this.c);
+         return $$1;
+      } else {
+         return Optional.empty();
       }
    }
 }

@@ -1,20 +1,76 @@
-public class glx extends gkz {
-   protected glx(ghz $$0, double $$1, double $$2, double $$3, double $$4, gmc $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.t = 16;
-      this.D = 1.5F;
-      this.b($$5);
+public class glx extends gnl {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final int G;
+   private final int H;
+
+   glx(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
+      super($$0, $$1, $$2, $$3);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
+      this.n = false;
+      this.t = (int)(Math.random() * 5.0) + 25;
+      this.G = $$7;
+      this.H = $$8;
    }
 
-   public static class a implements glk<lz> {
-      private final gmc a;
+   @Override
+   public gmp b() {
+      return gmp.b;
+   }
 
-      public a(gmc $$0) {
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         float $$1 = 1.0F - $$0;
+         this.g = this.a + this.j * (double)$$1;
+         this.h = this.b + this.k * (double)$$1;
+         this.i = this.F + this.l * (double)$$1;
+         int $$2 = axu.a($$0, this.G, this.H);
+         this.a((float)axu.b($$2) / 255.0F, (float)axu.c($$2) / 255.0F, (float)axu.d($$2) / 255.0F);
+         this.e((float)axu.a($$2) / 255.0F);
+      }
+   }
+
+   public static class a implements gmo<mb> {
+      private final gng a;
+
+      public a(gng $$0) {
          this.a = $$0;
       }
 
-      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new glx($$1, $$2, $$3, $$4, $$5, this.a);
+      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         glx $$8 = new glx($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
+         $$8.d(azk.b($$1.C_(), 3.0F, 5.0F));
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

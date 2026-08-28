@@ -1,16 +1,22 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public interface hfw<T> {
-   void a(@Nullable T var1, cxw var2, fho var3, gny var4, int var5, int var6, boolean var7);
+public record hfw(boolean b) implements hfz {
+   public static final MapCodec<hfw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(hfw::b)).apply($$0, hfw::new)
+   );
 
-   @Nullable
-   T b(cxy var1);
+   @Override
+   public float a(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3) {
+      float $$4 = (float)$$0.o();
+      float $$5 = (float)$$0.p();
+      return this.b ? azk.a($$4 / $$5, 0.0F, 1.0F) : azk.a($$4, 0.0F, $$5);
+   }
 
-   public interface a {
-      @Nullable
-      hfw<?> a(ggz var1);
-
-      MapCodec<? extends hfw.a> a();
+   @Override
+   public MapCodec<hfw> a() {
+      return a;
    }
 }

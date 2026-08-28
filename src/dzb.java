@@ -1,102 +1,116 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
+public enum dzb implements bai {
+   a("inactive", dzb.a.a) {
+      @Override
+      protected void a(aro $$0, iu $$1, dyy $$2, dza $$3, boolean $$4) {
+         $$3.a(cys.k);
+         $$0.c(3016, $$1, $$4 ? 1 : 0);
+      }
+   },
+   b("active", dzb.a.b) {
+      @Override
+      protected void a(aro $$0, iu $$1, dyy $$2, dza $$3, boolean $$4) {
+         if (!$$3.b()) {
+            dyw.b.a($$0, this, $$2, $$3, $$1);
+         }
 
-public record dzb(String s, boolean t, boolean u, boolean v, dzb.a w, dsn x, awj y, awj z, awj A, awj B, awj C, awj D, awj E, awj F) {
-   private static final Map<String, dzb> G = new Object2ObjectArrayMap();
-   public static final Codec<dzb> a = Codec.stringResolver(dzb::b, G::get);
-   public static final dzb b = a(new dzb("iron", false, false, false, dzb.a.a, dsn.bo, awk.nP, awk.nQ, awk.nX, awk.nY, awk.pq, awk.pr, awk.Ac, awk.Ad));
-   public static final dzb c = a(new dzb("copper", true, true, false, dzb.a.a, dsn.aj, awk.fP, awk.fQ, awk.fW, awk.fX, awk.pq, awk.pr, awk.Ac, awk.Ad));
-   public static final dzb d = a(new dzb("gold", false, true, false, dzb.a.a, dsn.g, awk.nP, awk.nQ, awk.nX, awk.nY, awk.pq, awk.pr, awk.Ac, awk.Ad));
-   public static final dzb e = a(new dzb("stone", true, true, false, dzb.a.b, dsn.f, awk.nP, awk.nQ, awk.nX, awk.nY, awk.Ah, awk.Ai, awk.Ac, awk.Ad));
-   public static final dzb f = a(
-      new dzb("polished_blackstone", true, true, false, dzb.a.b, dsn.f, awk.nP, awk.nQ, awk.nX, awk.nY, awk.Ah, awk.Ai, awk.Ac, awk.Ad)
-   );
-   public static final dzb g = a(new dzb("oak"));
-   public static final dzb h = a(new dzb("spruce"));
-   public static final dzb i = a(new dzb("birch"));
-   public static final dzb j = a(new dzb("acacia"));
-   public static final dzb k = a(new dzb("cherry", true, true, true, dzb.a.a, dsn.aV, awk.eG, awk.eH, awk.eI, awk.eJ, awk.eM, awk.eN, awk.eK, awk.eL));
-   public static final dzb l = a(new dzb("jungle"));
-   public static final dzb m = a(new dzb("dark_oak"));
-   public static final dzb n = a(new dzb("pale_oak"));
-   public static final dzb o = a(new dzb("crimson", true, true, true, dzb.a.a, dsn.aU, awk.rw, awk.rx, awk.ry, awk.rz, awk.rC, awk.rD, awk.rA, awk.rB));
-   public static final dzb p = a(new dzb("warped", true, true, true, dzb.a.a, dsn.aU, awk.rw, awk.rx, awk.ry, awk.rz, awk.rC, awk.rD, awk.rA, awk.rB));
-   public static final dzb q = a(new dzb("mangrove"));
-   public static final dzb r = a(new dzb("bamboo", true, true, true, dzb.a.a, dsn.aT, awk.bo, awk.bp, awk.bq, awk.br, awk.bu, awk.bv, awk.bs, awk.bt));
+         $$0.c(3015, $$1, $$4 ? 1 : 0);
+      }
+   },
+   c("unlocking", dzb.a.b) {
+      @Override
+      protected void a(aro $$0, iu $$1, dyy $$2, dza $$3, boolean $$4) {
+         $$0.a(null, $$1, awl.BH, awm.e);
+      }
+   },
+   d("ejecting", dzb.a.b) {
+      @Override
+      protected void a(aro $$0, iu $$1, dyy $$2, dza $$3, boolean $$4) {
+         $$0.a(null, $$1, awl.BJ, awm.e);
+      }
 
-   public dzb(String $$0) {
-      this($$0, true, true, true, dzb.a.a, dsn.b, awk.DT, awk.DU, awk.DV, awk.DW, awk.DZ, awk.Ea, awk.DX, awk.DY);
+      @Override
+      protected void a(aro $$0, iu $$1, dyy $$2, dza $$3) {
+         $$0.a(null, $$1, awl.BB, awm.e);
+      }
+   };
+
+   private static final int e = 20;
+   private static final int f = 20;
+   private static final int g = 20;
+   private static final int h = 20;
+   private final String i;
+   private final dzb.a j;
+
+   dzb(final String $$0, final dzb.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   private static dzb a(dzb $$0) {
-      G.put($$0.s, $$0);
-      return $$0;
+   @Override
+   public String c() {
+      return this.i;
    }
 
-   public static Stream<dzb> a() {
-      return G.values().stream();
+   public int a() {
+      return this.j.c;
    }
 
-   public String b() {
-      return this.s;
+   public dzb a(aro $$0, iu $$1, dyy $$2, dyz $$3, dza $$4) {
+      return switch (this) {
+         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
+         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
+         case c -> {
+            $$3.b($$0.ae() + 20L);
+            yield d;
+         }
+         case d -> {
+            if ($$3.d().isEmpty()) {
+               $$3.e();
+               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
+            } else {
+               float $$5 = $$3.h();
+               this.a($$0, $$1, $$3.g(), $$5);
+               $$4.a($$3.f());
+               boolean $$6 = $$3.d().isEmpty();
+               int $$7 = $$6 ? 20 : 20;
+               $$3.b($$0.ae() + (long)$$7);
+               yield d;
+            }
+         }
+      };
    }
 
-   public boolean c() {
-      return this.t;
+   private static dzb a(aro $$0, iu $$1, dyy $$2, dyz $$3, dza $$4, double $$5) {
+      $$4.a($$0, $$1, $$3, $$2, $$5);
+      $$3.b($$0.ae() + 20L);
+      return $$4.c() ? b : a;
    }
 
-   public boolean d() {
-      return this.u;
+   public void a(aro $$0, iu $$1, dzb $$2, dyy $$3, dza $$4, boolean $$5) {
+      this.a($$0, $$1, $$3, $$4);
+      $$2.a($$0, $$1, $$3, $$4, $$5);
    }
 
-   public boolean e() {
-      return this.v;
+   protected void a(aro $$0, iu $$1, dyy $$2, dza $$3, boolean $$4) {
    }
 
-   public dzb.a f() {
-      return this.w;
+   protected void a(aro $$0, iu $$1, dyy $$2, dza $$3) {
    }
 
-   public dsn g() {
-      return this.x;
+   private void a(aro $$0, iu $$1, cys $$2, float $$3) {
+      lf.a($$0, $$2, 2, ja.b, fdw.c($$1).a(ja.b, 1.2));
+      $$0.c(3017, $$1, 0);
+      $$0.a(null, $$1, awl.BD, awm.e, 1.0F, 0.8F + 0.4F * $$3);
    }
 
-   public awj h() {
-      return this.y;
-   }
+   static enum a {
+      a(6),
+      b(12);
 
-   public awj i() {
-      return this.z;
-   }
+      final int c;
 
-   public awj j() {
-      return this.A;
-   }
-
-   public awj k() {
-      return this.B;
-   }
-
-   public awj l() {
-      return this.C;
-   }
-
-   public awj m() {
-      return this.D;
-   }
-
-   public awj n() {
-      return this.E;
-   }
-
-   public awj o() {
-      return this.F;
-   }
-
-   public static enum a {
-      a,
-      b;
+      private a(final int $$0) {
+         this.c = $$0;
+      }
    }
 }

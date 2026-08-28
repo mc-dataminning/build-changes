@@ -1,48 +1,81 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cdt extends cdn {
-   private final bwt a;
-   private bwr b;
-   private final float c;
+public class cdt extends cdv {
+   private final bxv a;
+   @Nullable
+   private bwz b;
+   private final double c;
+   private final cgj d;
+   private int e;
+   private final float f;
+   private final float g;
+   private float h;
 
-   public cdt(bwt $$0, float $$1) {
+   public cdt(bxv $$0, double $$1, float $$2, float $$3) {
       this.a = $$0;
       this.c = $$1;
-      this.a(EnumSet.of(cdn.a.c, cdn.a.a));
+      this.d = $$0.O();
+      this.g = $$2;
+      this.f = $$3;
+      this.a(EnumSet.of(cdv.a.a, cdv.a.b));
+      if (!($$0.O() instanceof cgi) && !($$0.O() instanceof cgh)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
+      }
    }
 
    @Override
    public boolean b() {
-      if (this.a.cX()) {
+      bwz $$0 = this.a.e();
+      if ($$0 == null) {
+         return false;
+      } else if (this.a.gt()) {
+         return false;
+      } else if (this.a.g((bwa)$$0) < (double)(this.g * this.g)) {
          return false;
       } else {
-         this.b = this.a.f();
-         if (this.b == null) {
-            return false;
-         } else {
-            double $$0 = this.a.g(this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
-               return false;
-            } else {
-               return !this.a.aJ() ? false : this.a.dY().a(b(5)) == 0;
-            }
-         }
+         this.b = $$0;
+         return true;
       }
    }
 
    @Override
    public boolean c() {
-      return !this.a.aJ();
+      if (this.d.k()) {
+         return false;
+      } else {
+         return this.a.gt() ? false : !(this.a.g((bwa)this.b) <= (double)(this.f * this.f));
+      }
    }
 
    @Override
    public void d() {
-      fcu $$0 = this.a.dy();
-      fcu $$1 = new fcu(this.b.dA() - this.a.dA(), 0.0, this.b.dG() - this.a.dG());
-      if ($$1.h() > 1.0E-7) {
-         $$1 = $$1.d().c(0.4).e($$0.c(0.2));
+      this.e = 0;
+      this.h = this.a.a(ewm.j);
+      this.a.a(ewm.j, 0.0F);
+   }
+
+   @Override
+   public void e() {
+      this.b = null;
+      this.d.m();
+      this.a.a(ewm.j, this.h);
+   }
+
+   @Override
+   public void a() {
+      boolean $$0 = this.a.gs();
+      if (!$$0) {
+         this.a.J().a(this.b, 10.0F, (float)this.a.ac());
       }
 
-      this.a.n($$1.d, (double)this.c, $$1.f);
+      if (--this.e <= 0) {
+         this.e = this.a(10);
+         if ($$0) {
+            this.a.gr();
+         } else {
+            this.d.a(this.b, this.c);
+         }
+      }
    }
 }

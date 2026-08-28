@@ -1,19 +1,15 @@
-import java.util.function.Consumer;
+import java.lang.Thread.UncaughtExceptionHandler;
+import org.slf4j.Logger;
 
-public class fla {
-   private static final int a = 8226750;
-   private static final wv b = wv.c("mco.info").b(8226750);
-   private static final wv c = wv.c("mco.warning").b(-65536);
+public class fla implements UncaughtExceptionHandler {
+   private final Logger a;
 
-   public static frp a(fwf $$0, wv $$1, Consumer<frp> $$2) {
-      return new frp.a($$0, b).a($$1).a(wu.j, $$2).a(wu.e, frp::aK_).a();
+   public fla(Logger $$0) {
+      this.a = $$0;
    }
 
-   public static frp b(fwf $$0, wv $$1, Consumer<frp> $$2) {
-      return new frp.a($$0, c).a($$1).a(wu.j, $$2).a(wu.e, frp::aK_).a();
-   }
-
-   public static frp c(fwf $$0, wv $$1, Consumer<frp> $$2) {
-      return new frp.a($$0, c).a($$1).a(wu.h, $$2).a();
+   @Override
+   public void uncaughtException(Thread $$0, Throwable $$1) {
+      this.a.error("Caught previously unhandled exception", $$1);
    }
 }

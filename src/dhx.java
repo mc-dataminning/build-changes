@@ -1,25 +1,25 @@
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public interface dhx {
-   boolean a(jj var1, dym var2, int var3, int var4);
+public class dhx {
+   private final fdw a;
+   private final fdw b;
+   private final Predicate<dzo> c;
 
-   default boolean a(jj $$0, dym $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   public dhx(fdw $$0, fdw $$1, Predicate<dzo> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   boolean a(jj var1, boolean var2);
-
-   default boolean b(jj $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   public fdw a() {
+      return this.b;
    }
 
-   default boolean a(jj $$0, boolean $$1, @Nullable bvs $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   public fdw b() {
+      return this.a;
    }
 
-   boolean a(jj var1, boolean var2, @Nullable bvs var3, int var4);
-
-   default boolean b(bvs $$0) {
-      return false;
+   public Predicate<dzo> c() {
+      return this.c;
    }
 }

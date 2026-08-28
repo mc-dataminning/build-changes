@@ -1,6 +1,10 @@
-public class hcx extends hbk {
-   public float[] a = new float[2];
-   public float[] b = new float[2];
-   public float c;
-   public boolean d;
+public class hcx extends hcp {
+   public cje.b a;
+   public float b;
+   public ggc.a c;
+
+   public hcx() {
+      this.a = cje.b.a;
+      this.c = ggc.a.a;
+   }
 }

@@ -1,13 +1,19 @@
-public class czq extends cxu {
-   public czq(cxu.a $$0) {
-      super($$0);
+public class czq extends cyp {
+   private final arp a;
+
+   public czq(arp $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public btq a(dhp $$0, cqi $$1, btp $$2) {
-      cxy $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(awu.c.b(this));
-      return btq.a;
+   protected void b(ale $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.f.b(new acp($$0, $$1));
+   }
+
+   @Override
+   protected void b(ale $$0) {
+      super.b($$0);
+      this.a.f.b(new acp($$0, 0));
    }
 }

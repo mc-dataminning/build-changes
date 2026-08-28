@@ -1,21 +1,34 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emd extends elw {
-   public static final MapCodec<emd> b = dym.a.fieldOf("state").xmap(dyl.a::b, dku::m).xmap(emd::new, $$0 -> $$0.c);
-   private final dku c;
+public class emd extends emj {
+   public static final MapCodec<emd> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, emd::new));
 
-   public emd(dku $$0) {
-      this.c = $$0;
+   public emd(btd $$0, btd $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected elx<?> a() {
-      return elx.f;
+   protected emk<?> a() {
+      return emk.d;
    }
 
    @Override
-   public dym a(azs $$0, jj $$1) {
-      jo.a $$2 = jo.a.a($$0);
-      return this.c.m().c(drl.d, $$2);
+   protected void a(div $$0, emj.b $$1, azt $$2, elt $$3, int $$4, emj.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      iu $$10 = $$5.a().b($$8);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
+   }
+
+   @Override
+   public int a(azt $$0, int $$1, elt $$2) {
+      return 0;
+   }
+
+   @Override
+   protected boolean a(azt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

@@ -1,71 +1,164 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public abstract class dz<T extends dz.a> implements as<T> {
-   private final Map<all, Set<as.a<T>>> a = Maps.newIdentityHashMap();
+public record dz(@Nullable Float c, @Nullable Float d) {
+   public static final dz a = new dz(null, null);
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ww.c("argument.range.ints"));
 
-   @Override
-   public final void a(all $$0, as.a<T> $$1) {
-      this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
+   public static dz a(float $$0) {
+      return new dz($$0, $$0);
    }
 
-   @Override
-   public final void b(all $$0, as.a<T> $$1) {
-      Set<as.a<T>> $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         $$2.remove($$1);
-         if ($$2.isEmpty()) {
-            this.a.remove($$0);
+   public static dz a(float $$0, float $$1) {
+      return new dz($$0, $$1);
+   }
+
+   public static dz b(float $$0) {
+      return new dz($$0, null);
+   }
+
+   public static dz c(float $$0) {
+      return new dz(null, $$0);
+   }
+
+   public boolean d(float $$0) {
+      if (this.c != null && this.d != null && this.c > this.d && this.c > $$0 && this.d < $$0) {
+         return false;
+      } else {
+         return this.c != null && this.c > $$0 ? false : this.d == null || !(this.d < $$0);
+      }
+   }
+
+   public boolean a(double $$0) {
+      if (this.c != null && this.d != null && this.c > this.d && (double)(this.c * this.c) > $$0 && (double)(this.d * this.d) < $$0) {
+         return false;
+      } else {
+         return this.c != null && (double)(this.c * this.c) > $$0 ? false : this.d == null || !((double)(this.d * this.d) < $$0);
+      }
+   }
+
+   public JsonElement a() {
+      if (this == a) {
+         return JsonNull.INSTANCE;
+      } else if (this.c != null && this.d != null && this.c.equals(this.d)) {
+         return new JsonPrimitive(this.c);
+      } else {
+         JsonObject $$0 = new JsonObject();
+         if (this.c != null) {
+            $$0.addProperty("min", this.c);
+         }
+
+         if (this.d != null) {
+            $$0.addProperty("max", this.c);
+         }
+
+         return $$0;
+      }
+   }
+
+   public static dz a(@Nullable JsonElement $$0) {
+      if ($$0 == null || $$0.isJsonNull()) {
+         return a;
+      } else if (aza.b($$0)) {
+         float $$1 = aza.e($$0, "value");
+         return new dz($$1, $$1);
+      } else {
+         JsonObject $$2 = aza.m($$0, "value");
+         Float $$3 = $$2.has("min") ? aza.m($$2, "min") : null;
+         Float $$4 = $$2.has("max") ? aza.m($$2, "max") : null;
+         return new dz($$3, $$4);
+      }
+   }
+
+   public static dz a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
+      return a($$0, $$1, $$0x -> $$0x);
+   }
+
+   public static dz a(StringReader $$0, boolean $$1, Function<Float, Float> $$2) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw cv.a.createWithContext($$0);
+      } else {
+         int $$3 = $$0.getCursor();
+         Float $$4 = a(b($$0, $$1), $$2);
+         Float $$5;
+         if ($$0.canRead(2) && $$0.peek() == '.' && $$0.peek(1) == '.') {
+            $$0.skip();
+            $$0.skip();
+            $$5 = a(b($$0, $$1), $$2);
+            if ($$4 == null && $$5 == null) {
+               $$0.setCursor($$3);
+               throw cv.a.createWithContext($$0);
+            }
+         } else {
+            if (!$$1 && $$0.canRead() && $$0.peek() == '.') {
+               $$0.setCursor($$3);
+               throw b.createWithContext($$0);
+            }
+
+            $$5 = $$4;
+         }
+
+         if ($$4 == null && $$5 == null) {
+            $$0.setCursor($$3);
+            throw cv.a.createWithContext($$0);
+         } else {
+            return new dz($$4, $$5);
          }
       }
    }
 
-   @Override
-   public final void a(all $$0) {
-      this.a.remove($$0);
-   }
+   @Nullable
+   private static Float b(StringReader $$0, boolean $$1) throws CommandSyntaxException {
+      int $$2 = $$0.getCursor();
 
-   protected void a(aro $$0, Predicate<T> $$1) {
-      all $$2 = $$0.S();
-      Set<as.a<T>> $$3 = this.a.get($$2);
-      if ($$3 != null && !$$3.isEmpty()) {
-         exl $$4 = bx.b($$0, $$0);
-         List<as.a<T>> $$5 = null;
+      while ($$0.canRead() && c($$0, $$1)) {
+         $$0.skip();
+      }
 
-         for (as.a<T> $$6 : $$3) {
-            T $$7 = $$6.a();
-            if ($$1.test($$7)) {
-               Optional<bi> $$8 = $$7.a();
-               if ($$8.isEmpty() || $$8.get().a($$4)) {
-                  if ($$5 == null) {
-                     $$5 = Lists.newArrayList();
-                  }
-
-                  $$5.add($$6);
-               }
+      String $$3 = $$0.getString().substring($$2, $$0.getCursor());
+      if ($$3.isEmpty()) {
+         return null;
+      } else {
+         try {
+            return Float.parseFloat($$3);
+         } catch (NumberFormatException var5) {
+            if ($$1) {
+               throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerInvalidDouble().createWithContext($$0, $$3);
+            } else {
+               throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.readerInvalidInt().createWithContext($$0, $$3);
             }
          }
-
-         if ($$5 != null) {
-            for (as.a<T> $$9 : $$5) {
-               $$9.a($$2);
-            }
-         }
       }
    }
 
-   public interface a extends at {
-      @Override
-      default void a(bj $$0) {
-         $$0.a(this.a(), ".player");
+   private static boolean c(StringReader $$0, boolean $$1) {
+      char $$2 = $$0.peek();
+      if (($$2 < '0' || $$2 > '9') && $$2 != '-') {
+         return $$1 && $$2 == '.' ? !$$0.canRead(2) || $$0.peek(1) != '.' : false;
+      } else {
+         return true;
       }
+   }
 
-      Optional<bi> a();
+   @Nullable
+   private static Float a(@Nullable Float $$0, Function<Float, Float> $$1) {
+      return $$0 == null ? null : $$1.apply($$0);
+   }
+
+   @Nullable
+   public Float b() {
+      return this.c;
+   }
+
+   @Nullable
+   public Float c() {
+      return this.d;
    }
 }

@@ -1,20 +1,16 @@
-public record abv(int b) implements zc<abr> {
-   public static final yt<vr, abv> a = zc.a(abv::a, abv::new);
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private abv(vr $$0) {
-      this($$0.l());
-   }
-
-   private void a(vr $$0) {
-      $$0.c(this.b);
-   }
+public record abv(Object2IntMap<aws<?>> b) implements zd<abs> {
+   private static final yu<wh, Object2IntMap<aws<?>>> c = ys.a(Object2IntOpenHashMap::new, aws.a, ys.h);
+   public static final yu<wh, abv> a = c.a(abv::new, abv::b);
 
    @Override
-   public ze<abv> a() {
-      return agk.f;
+   public zf<abv> a() {
+      return agl.e;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 }

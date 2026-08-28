@@ -1,27 +1,16 @@
-public class gxw extends gyd<had, gds> {
-   private static final ald a = ald.b("textures/entity/creeper/creeper_armor.png");
-   private final gds b;
+public class gxw extends gwq<ckq, hcp, ghj> {
+   private static final ale a = ale.b("textures/entity/tadpole/tadpole.png");
 
-   public gxw(gwc<had, gds> $$0, ggz $$1) {
-      super($$0);
-      this.b = new gds($$1.a(ghc.an));
-   }
-
-   protected boolean a(had $$0) {
-      return $$0.b;
+   public gxw(gvk.a $$0) {
+      super($$0, new ghj($$0.a(gif.dt)), 0.14F);
    }
 
    @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected ald a() {
+   public ale b(hcp $$0) {
       return a;
    }
 
-   protected gds b() {
-      return this.b;
+   public hcp b() {
+      return new hcp();
    }
 }

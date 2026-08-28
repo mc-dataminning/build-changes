@@ -1,33 +1,29 @@
-public class adp implements zc<abr> {
-   public static final yt<wg, adp> a = yt.a(yr.w, adp::b, yr.a(me.V), adp::e, wx.d, adp::f, adp::new);
-   private final int b;
-   private final cuw<?> c;
-   private final wv d;
+public class adp implements zd<abs> {
+   public static final yu<vs, adp> a = zd.a(adp::a, adp::new);
+   private final btx b;
 
-   public adp(int $$0, cuw<?> $$1, wv $$2) {
+   public adp(btx $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   }
+
+   private adp(vs $$0) {
+      this.b = $$0.b(btx.class);
+   }
+
+   private void a(vs $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public ze<adp> a() {
-      return agk.X;
+   public zf<adp> a() {
+      return agl.W;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public btx b() {
       return this.b;
-   }
-
-   public cuw<?> e() {
-      return this.c;
-   }
-
-   public wv f() {
-      return this.d;
    }
 }

@@ -1,42 +1,48 @@
 import java.util.EnumSet;
 
-public class ceb extends cdn {
-   private final bwz a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
+public class ceb extends cdv {
+   private final bxb a;
+   private bwz b;
+   private final float c;
 
-   public ceb(bwz $$0, double $$1) {
+   public ceb(bxb $$0, float $$1) {
       this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(cdn.a.a));
+      this.c = $$1;
+      this.a(EnumSet.of(cdv.a.c, cdv.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.a.ga()) {
+      if (this.a.cX()) {
          return false;
       } else {
-         fcu $$0 = chk.a(this.a, 16, 7, fcu.c(this.a.gb()), (float) (Math.PI / 2));
-         if ($$0 == null) {
+         this.b = this.a.f();
+         if (this.b == null) {
             return false;
          } else {
-            this.b = $$0.d;
-            this.c = $$0.e;
-            this.d = $$0.f;
-            return true;
+            double $$0 = this.a.g((bwa)this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aJ() ? false : this.a.dY().a(b(5)) == 0;
+            }
          }
       }
    }
 
    @Override
    public boolean c() {
-      return !this.a.O().k();
+      return !this.a.aJ();
    }
 
    @Override
    public void d() {
-      this.a.O().a(this.b, this.c, this.d, this.e);
+      fdw $$0 = this.a.dy();
+      fdw $$1 = new fdw(this.b.dA() - this.a.dA(), 0.0, this.b.dG() - this.a.dG());
+      if ($$1.h() > 1.0E-7) {
+         $$1 = $$1.d().c(0.4).e($$0.c(0.2));
+      }
+
+      this.a.n($$1.d, (double)this.c, $$1.f);
    }
 }

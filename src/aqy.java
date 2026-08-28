@@ -1,42 +1,33 @@
-public record aqy(int a, int b) {
-   private static final long c = 32L;
-   private static final long d = 4294967295L;
+public record aqy(String b, int c, cqp d, boolean e, int f, bws g, boolean h, boolean i, arg j) {
+   public static final int a = 16;
 
-   public dgw a() {
-      return new dgw(kl.a(this.a), kl.a(this.b));
+   public aqy(vs $$0) {
+      this(
+         $$0.d(16),
+         $$0.readByte(),
+         $$0.b(cqp.class),
+         $$0.readBoolean(),
+         $$0.readUnsignedByte(),
+         $$0.b(bws.class),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.b(arg.class)
+      );
    }
 
-   public long b() {
-      return a(this.a, this.b);
+   public void a(vs $$0) {
+      $$0.a(this.b);
+      $$0.l(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.l(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
    }
 
-   public static long a(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
-   }
-
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.a + ", " + this.b + "]";
-   }
-
-   @Override
-   public int hashCode() {
-      return dgw.d(this.a, this.b);
-   }
-
-   public int c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
+   public static aqy a() {
+      return new aqy("en_us", 2, cqp.a, true, 0, cqs.bt, false, false, arg.a);
    }
 }

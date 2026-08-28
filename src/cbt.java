@@ -1,48 +1,41 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class cbt extends byi<cpu> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
+public class cbt {
+   private static final int a = 16;
 
-   public cbt() {
-      super(ImmutableMap.of(cft.c, cfu.a, cft.o, cfu.c));
+   public static byr<bwz> a(Predicate<je<cie>> $$0, cgb<jd> $$1) {
+      return ccd.a((Function<ccd.b<bwz>, ? extends App<ccd.c<bwz>, ccg<bwz>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               jd $$6 = $$2.b($$2x);
+               iu $$7 = $$6.b();
+               if ($$3.aj() == $$6.a() && $$7.a($$4.dt(), 16.0)) {
+                  aro $$8 = $$3.p().a($$6.a());
+                  if ($$8 == null || !$$8.A().a($$7, $$0)) {
+                     $$2x.b();
+                  } else if (a($$8, $$7, $$4)) {
+                     $$2x.b();
+                     if (!a($$8, $$7)) {
+                        $$3.A().b($$7);
+                        agk.c($$3, $$7);
+                     }
+                  }
+
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 
-   protected boolean b(arn $$0, cpu $$1) {
-      if ($$0.ae() - this.e < 300L) {
-         return false;
-      } else if ($$0.A.a(2) != 0) {
-         return false;
-      } else {
-         this.e = $$0.ae();
-         jr $$2 = $$1.eb().c(cft.c).get();
-         return $$2.a() == $$0.aj() && $$2.b().a($$1.dt(), 1.73);
-      }
+   private static boolean a(aro $$0, iu $$1, bwz $$2) {
+      dzo $$3 = $$0.a_($$1);
+      return $$3.a(axa.T) && $$3.c(dln.c) && !$$2.fQ();
    }
 
-   protected void a(arn $$0, cpu $$1, long $$2) {
-      bxr<cpu> $$3 = $$1.eb();
-      $$3.a(cft.K, $$2);
-      $$3.c(cft.c).ifPresent($$1x -> $$3.a(cft.o, new byl($$1x.b())));
-      $$1.gE();
-      this.a($$0, $$1);
-      if ($$1.gD()) {
-         $$1.gC();
-      }
-   }
-
-   protected void a(arn $$0, cpu $$1) {
-   }
-
-   protected boolean b(arn $$0, cpu $$1, long $$2) {
-      Optional<jr> $$3 = $$1.eb().c(cft.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         jr $$4 = $$3.get();
-         return $$4.a() == $$0.aj() && $$4.b().a($$1.dt(), 1.73);
-      }
+   private static boolean a(aro $$0, iu $$1) {
+      List<cqe> $$2 = $$0.a(cqe.class, new fdr($$1), bwz::fQ);
+      return !$$2.isEmpty();
    }
 }

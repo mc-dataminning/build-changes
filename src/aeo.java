@@ -1,12 +1,19 @@
-public record aeo(wv b) implements zc<abr> {
-   public static final yt<wg, aeo> a = yt.a(wx.d, aeo::b, aeo::new);
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+
+public record aeo(ww b, Optional<byte[]> c) implements zd<abs> {
+   public static final yu<ByteBuf, aeo> a = yu.a(wy.f, aeo::b, ys.n.a(ys::a), aeo::e, aeo::new);
 
    @Override
-   public ze<aeo> a() {
-      return agk.au;
+   public zf<aeo> a() {
+      return agl.at;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
+   }
+
+   public Optional<byte[]> e() {
+      return this.c;
    }
 }

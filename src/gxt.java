@@ -1,40 +1,30 @@
-public class gxt extends gyt<hbw, gfg> {
-   private final geo<hbw> a;
-   private final hix b;
+public class gxt<T extends cjp> extends gue<T, hdo, ghh> {
+   private static final ale a = ale.b("textures/entity/squid/squid.png");
 
-   public gxt(gwc<hbw, gfg> $$0, ggz $$1, hix $$2) {
-      super($$0);
-      this.a = new gfe<>($$1.a(ghc.cp));
-      this.b = $$2;
+   public gxt(gvk.a $$0, ghh $$1, ghh $$2) {
+      super($$0, $$1, $$2, 0.7F);
    }
 
-   private boolean a(cxy $$0, hiy.d $$1) {
-      dgc $$2 = $$0.a(kx.E);
-      if ($$2 != null && !$$2.d().isEmpty()) {
-         hiy $$3 = this.b.a($$2.d().get());
-         return !$$3.a($$1).isEmpty();
-      } else {
-         return false;
-      }
+   public ale a(hdo $$0) {
+      return a;
    }
 
-   public void a(fho $$0, gny $$1, int $$2, hbw $$3, float $$4, float $$5) {
-      if (!$$3.z && $$3.ay) {
-         hhu $$6 = $$3.a;
-         if ($$6.c() != null) {
-            if (!this.a($$3.W, hiy.d.c)) {
-               $$0.a();
-               if (this.a($$3.W, hiy.d.a)) {
-                  $$0.a(0.0F, -0.053125F, 0.06875F);
-               }
+   public hdo b() {
+      return new hdo();
+   }
 
-               fhs $$7 = $$1.getBuffer(goi.d($$6.c()));
-               this.d().a(this.a);
-               this.a.a($$3);
-               this.a.a($$0, $$7, $$2, hgi.d);
-               $$0.b();
-            }
-         }
-      }
+   public void a(T $$0, hdo $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = azk.h($$2, $$0.bM, $$0.bL);
+      $$1.b = azk.h($$2, $$0.bG, $$0.bF);
+      $$1.c = azk.h($$2, $$0.bI, $$0.bH);
+   }
+
+   protected void a(hdo $$0, fiq $$1, float $$2, float $$3) {
+      $$1.a(0.0F, $$0.aj ? 0.25F : 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$2));
+      $$1.a(a.b.rotationDegrees($$0.b));
+      $$1.a(a.d.rotationDegrees($$0.c));
+      $$1.a(0.0F, $$0.aj ? -0.6F : -1.2F, 0.0F);
    }
 }

@@ -1,30 +1,45 @@
-import java.util.Set;
+public class afz implements zd<abs> {
+   public static final yu<vs, afz> a = zd.a(afz::a, afz::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-public record afz(int b, bxe c, Set<bxf> d, boolean e) implements zc<abr> {
-   public static final yt<vr, afz> a = yt.a(yr.h, afz::b, bxe.a, afz::e, bxf.m, afz::f, yr.b, afz::g, afz::new);
+   public afz(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
 
-   public static afz a(int $$0, bxe $$1, Set<bxf> $$2, boolean $$3) {
-      return new afz($$0, $$1, $$2, $$3);
+   private afz(vs $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = $$0.l();
+   }
+
+   private void a(vs $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.c(this.d);
    }
 
    @Override
-   public ze<afz> a() {
-      return agk.bd;
+   public zf<afz> a() {
+      return agl.bc;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public bxe e() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 
-   public Set<bxf> f() {
+   public int f() {
       return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
    }
 }

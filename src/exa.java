@@ -1,313 +1,197 @@
-import java.nio.file.Path;
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class exa implements Comparable<exa> {
-   public static final wv a = wv.c("selectWorld.select");
-   private final dht b;
-   private final exb c;
-   private final String d;
-   private final boolean e;
-   private final boolean f;
-   private final boolean g;
-   private final Path h;
-   @Nullable
-   private wv i;
+public class exa extends exf {
+   private final Deque<iu> b = new ArrayDeque<>();
+   private final Deque<iu> c = new ArrayDeque<>();
+   private final Object2IntMap<iu> d = new Object2IntLinkedOpenHashMap();
 
-   public exa(dht $$0, exb $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.e = $$3;
+   public exa(dsb $$0) {
+      super($$0);
    }
 
-   public String a() {
-      return this.d;
-   }
+   @Override
+   public void a(dip $$0, iu $$1, dzo $$2, @Nullable exd $$3, boolean $$4) {
+      exd $$5 = a($$0, $$3);
+      this.a($$0, $$1, $$5);
+      ObjectIterator<Entry<iu>> $$6 = this.d.object2IntEntrySet().iterator();
 
-   public String b() {
-      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
-   }
+      for (boolean $$7 = true; $$6.hasNext(); $$7 = false) {
+         Entry<iu> $$8 = (Entry<iu>)$$6.next();
+         iu $$9 = (iu)$$8.getKey();
+         int $$10 = $$8.getIntValue();
+         int $$11 = b($$10);
+         dzo $$12 = $$0.a_($$9);
+         if ($$12.a(this.a) && !$$12.c(dsb.f).equals($$11)) {
+            int $$13 = 2;
+            if (!$$4 || !$$7) {
+               $$13 |= 128;
+            }
 
-   public Path c() {
-      return this.h;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public long f() {
-      return this.c.b();
-   }
-
-   public int a(exa $$0) {
-      if (this.f() < $$0.f()) {
-         return 1;
-      } else {
-         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
-      }
-   }
-
-   public dht g() {
-      return this.b;
-   }
-
-   public dhm h() {
-      return this.b.b();
-   }
-
-   public boolean i() {
-      return this.b.c();
-   }
-
-   public boolean j() {
-      return this.b.e();
-   }
-
-   public xj k() {
-      return bah.b(this.c.c()) ? wv.c("selectWorld.versionUnknown") : wv.b(this.c.c());
-   }
-
-   public exb l() {
-      return this.c;
-   }
-
-   public boolean m() {
-      return this.o().a();
-   }
-
-   public boolean n() {
-      return this.o() == exa.a.b;
-   }
-
-   public exa.a o() {
-      ag $$0 = ab.b();
-      int $$1 = $$0.d().c();
-      int $$2 = this.c.d().c();
-      if (!$$0.g() && $$2 < $$1) {
-         return exa.a.c;
-      } else {
-         return $$2 > $$1 ? exa.a.b : exa.a.a;
-      }
-   }
-
-   public boolean p() {
-      return this.f;
-   }
-
-   public boolean q() {
-      return !this.p() && !this.d() ? !this.r() : true;
-   }
-
-   public boolean r() {
-      return ab.b().d().a(this.c.d());
-   }
-
-   public wv s() {
-      if (this.i == null) {
-         this.i = this.z();
-      }
-
-      return this.i;
-   }
-
-   private wv z() {
-      if (this.p()) {
-         return wv.c("selectWorld.locked").a(n.m);
-      } else if (this.d()) {
-         return wv.c("selectWorld.conversion").a(n.m);
-      } else if (!this.r()) {
-         return wv.a("selectWorld.incompatible.info", this.k()).a(n.m);
-      } else {
-         xj $$0 = this.i() ? wv.i().b(wv.c("gameMode.hardcore").b(-65536)) : wv.c("gameMode." + this.h().b());
-         if (this.j()) {
-            $$0.f(", ").b(wv.c("selectWorld.commands"));
-         }
-
-         if (this.e()) {
-            $$0.f(", ").b(wv.c("selectWorld.experimental").a(n.o));
-         }
-
-         xj $$1 = this.k();
-         xj $$2 = wv.b(", ").b(wv.c("selectWorld.version")).b(wu.v);
-         if (this.m()) {
-            $$2.b($$1.a(this.n() ? n.m : n.u));
+            $$0.a($$9, $$12.b(dsb.f, Integer.valueOf($$11)), $$13);
          } else {
-            $$2.b($$1);
+            $$6.remove();
+         }
+      }
+
+      this.a($$0);
+   }
+
+   private void a(dip $$0) {
+      this.d.forEach(($$1, $$2) -> {
+         exd $$3 = a($$2);
+         dzo $$4 = $$0.a_($$1);
+
+         for (ja $$5 : $$3.f()) {
+            if (a($$4, $$5)) {
+               iu $$6 = $$1.a($$5);
+               dzo $$7 = $$0.a_($$6);
+               exd $$8 = $$3.c($$5);
+               $$0.a($$7, $$6, this.a, $$8, false);
+               if ($$7.d($$0, $$6)) {
+                  for (ja $$9 : $$8.f()) {
+                     if ($$9 != $$5.g()) {
+                        $$0.b($$6.a($$9), this.a, $$8.c($$9));
+                     }
+                  }
+               }
+            }
+         }
+      });
+   }
+
+   private static boolean a(dzo $$0, ja $$1) {
+      eam<eat> $$2 = dsb.g.get($$1);
+      return $$2 == null ? $$1 == ja.a : $$0.c($$2).a();
+   }
+
+   private static exd a(dip $$0, @Nullable exd $$1) {
+      exd $$2;
+      if ($$1 != null) {
+         $$2 = $$1;
+      } else {
+         $$2 = exd.a($$0.A);
+      }
+
+      return $$2.a(ja.b).a(exd.a.a);
+   }
+
+   private void a(dip $$0, iu $$1, exd $$2) {
+      dzo $$3 = $$0.a_($$1);
+      if ($$3.a(this.a)) {
+         this.a($$1, $$3.c(dsb.f), $$2);
+         this.b.add($$1);
+      } else {
+         this.a($$0, $$1, 0, $$2, true);
+      }
+
+      while (!this.b.isEmpty()) {
+         iu $$4 = this.b.removeFirst();
+         int $$5 = this.d.getInt($$4);
+         exd $$6 = a($$5);
+         int $$7 = b($$5);
+         int $$8 = this.a($$0, $$4);
+         int $$9 = this.b($$0, $$4);
+         int $$10 = Math.max($$8, $$9);
+         int $$11;
+         if ($$10 < $$7) {
+            if ($$8 > 0 && !this.c.contains($$4)) {
+               this.c.add($$4);
+            }
+
+            $$11 = 0;
+         } else {
+            $$11 = $$10;
          }
 
-         $$0.b($$2);
-         return $$0;
+         if ($$11 != $$7) {
+            this.a($$4, $$11, $$6);
+         }
+
+         this.a($$0, $$4, $$11, $$6, $$7 > $$10);
+      }
+
+      while (!this.c.isEmpty()) {
+         iu $$13 = this.c.removeFirst();
+         int $$14 = this.d.getInt($$13);
+         int $$15 = b($$14);
+         int $$16 = this.a($$0, $$13);
+         int $$17 = this.b($$0, $$13);
+         int $$18 = Math.max($$16, $$17);
+         exd $$19 = a($$14);
+         if ($$18 > $$15) {
+            this.a($$13, $$18, $$19);
+         } else if ($$18 < $$15) {
+            throw new IllegalStateException("Turning off wire while trying to turn it on. Should not happen.");
+         }
+
+         this.a($$0, $$13, $$18, $$19, false);
       }
    }
 
-   public wv t() {
-      return a;
+   private static int a(exd $$0, int $$1) {
+      return $$0.i() << 4 | $$1;
    }
 
-   public boolean u() {
-      return !this.q();
+   private static exd a(int $$0) {
+      return exd.a($$0 >> 4);
    }
 
-   public boolean v() {
-      return !this.d() && !this.p();
+   private static int b(int $$0) {
+      return $$0 & 15;
    }
 
-   public boolean w() {
-      return !this.q();
+   private void a(iu $$0, int $$1, exd $$2) {
+      this.d.compute($$0, ($$2x, $$3) -> $$3 == null ? a($$2, $$1) : a(a($$3), $$1));
    }
 
-   public boolean x() {
-      return !this.q();
-   }
-
-   public boolean y() {
-      return true;
-   }
-
-   public static enum a {
-      a(false, false, ""),
-      b(true, true, "downgrade"),
-      c(true, false, "snapshot");
-
-      private final boolean d;
-      private final boolean e;
-      private final String f;
-
-      private a(final boolean $$0, final boolean $$1, final String $$2) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
+   private void a(dip $$0, iu $$1, int $$2, exd $$3, boolean $$4) {
+      for (ja $$5 : $$3.g()) {
+         iu $$6 = $$1.a($$5);
+         this.b($$0, $$6, $$2, $$3.b($$5), $$4);
       }
 
-      public boolean a() {
-         return this.d;
-      }
+      for (ja $$7 : $$3.h()) {
+         iu $$8 = $$1.a($$7);
+         boolean $$9 = $$0.a_($$8).d($$0, $$8);
 
-      public boolean b() {
-         return this.e;
-      }
-
-      public String c() {
-         return this.f;
+         for (ja $$10 : $$3.g()) {
+            iu $$11 = $$1.a($$10);
+            if ($$7 == ja.b && !$$9) {
+               iu $$12 = $$8.a($$10);
+               this.b($$0, $$12, $$2, $$3.b($$10), $$4);
+            } else if ($$7 == ja.a && !$$0.a_($$11).d($$0, $$11)) {
+               iu $$13 = $$8.a($$10);
+               this.b($$0, $$13, $$2, $$3.b($$10), $$4);
+            }
+         }
       }
    }
 
-   public static class b extends exa {
-      private static final wv b = wv.c("recover_world.warning").a($$0 -> $$0.a(-65536));
-      private static final wv c = wv.c("recover_world.button");
-      private final long d;
+   private void b(dip $$0, iu $$1, int $$2, exd $$3, boolean $$4) {
+      dzo $$5 = $$0.a_($$1);
+      if ($$5.a(this.a)) {
+         int $$6 = this.a($$1, $$5);
+         if ($$6 < $$2 - 1 && !this.c.contains($$1)) {
+            this.c.add($$1);
+            this.a($$1, $$6, $$3);
+         }
 
-      public b(String $$0, Path $$1, long $$2) {
-         super(null, null, $$0, false, false, false, $$1);
-         this.d = $$2;
-      }
-
-      @Override
-      public String b() {
-         return this.a();
-      }
-
-      @Override
-      public wv s() {
-         return b;
-      }
-
-      @Override
-      public long f() {
-         return this.d;
-      }
-
-      @Override
-      public boolean q() {
-         return false;
-      }
-
-      @Override
-      public wv t() {
-         return c;
-      }
-
-      @Override
-      public boolean u() {
-         return true;
-      }
-
-      @Override
-      public boolean v() {
-         return false;
-      }
-
-      @Override
-      public boolean w() {
-         return false;
-      }
-
-      @Override
-      public boolean x() {
-         return false;
+         if ($$4 && $$6 > $$2 && !this.b.contains($$1)) {
+            this.b.add($$1);
+            this.a($$1, $$6, $$3);
+         }
       }
    }
 
-   public static class c extends exa {
-      private static final wv b = wv.c("symlink_warning.more_info");
-      private static final wv c = wv.c("symlink_warning.title").b(-65536);
-
-      public c(String $$0, Path $$1) {
-         super(null, null, $$0, false, false, false, $$1);
-      }
-
-      @Override
-      public String b() {
-         return this.a();
-      }
-
-      @Override
-      public wv s() {
-         return c;
-      }
-
-      @Override
-      public long f() {
-         return -1L;
-      }
-
-      @Override
-      public boolean q() {
-         return false;
-      }
-
-      @Override
-      public wv t() {
-         return b;
-      }
-
-      @Override
-      public boolean u() {
-         return true;
-      }
-
-      @Override
-      public boolean v() {
-         return false;
-      }
-
-      @Override
-      public boolean w() {
-         return false;
-      }
-
-      @Override
-      public boolean x() {
-         return false;
-      }
+   @Override
+   protected int a(iu $$0, dzo $$1) {
+      int $$2 = this.d.getOrDefault($$0, -1);
+      return $$2 != -1 ? b($$2) : super.a($$0, $$1);
    }
 }

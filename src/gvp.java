@@ -1,36 +1,38 @@
-public class gvp extends gue<bwx, hbf> {
-   private static final float a = 40.0F;
-   private static final int g = 50;
-   private final hdl h;
-   private final azs i = azs.a();
+public class gvp extends gvj<cmw, hbu> {
+   private final gqh a;
 
-   protected gvp(guf.a $$0) {
+   public gvp(gvk.a $$0) {
       super($$0);
-      this.h = $$0.b();
+      this.e = 0.5F;
+      this.a = $$0.d();
    }
 
-   public hbf a() {
-      return new hbf();
+   public boolean a(cmw $$0, gsw $$1, double $$2, double $$3, double $$4) {
+      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.j() != $$0.dV().a_($$0.dv());
    }
 
-   public void a(bwx $$0, hbf $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      cxy $$3 = $$0.g();
-      $$1.a($$0, $$3, this.h);
-   }
-
-   public void a(hbf $$0, fho $$1, gny $$2, int $$3) {
-      if (!$$0.a.c()) {
+   public void a(hbu $$0, fiq $$1, gpd $$2, int $$3) {
+      dzo $$4 = $$0.c;
+      if ($$4.o() == dsf.b) {
          $$1.a();
-         if ($$0.u <= 50.0F) {
-            float $$4 = Math.min($$0.u, 50.0F) / 50.0F;
-            $$1.b($$4, $$4, $$4);
-         }
-
-         float $$5 = azk.h($$0.u * 40.0F);
-         $$1.a(a.d.rotationDegrees($$5));
-         gvb.a($$1, $$2, 15728880, $$0, this.i);
+         $$1.a(-0.5, 0.0, -0.5);
+         this.a.b().a($$0, this.a.a($$4), $$4, $$0.b, $$1, $$2.getBuffer(gov.b($$4)), false, azt.a(), $$4.b($$0.a), hhp.d);
          $$1.b();
+         super.a($$0, $$1, $$2, $$3);
       }
+   }
+
+   public hbu a() {
+      return new hbu();
+   }
+
+   public void a(cmw $$0, hbu $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      iu $$3 = iu.a($$0.dA(), $$0.cR().e, $$0.dG());
+      $$1.a = $$0.f();
+      $$1.b = $$3;
+      $$1.c = $$0.j();
+      $$1.d = $$0.dV().u($$3);
+      $$1.e = $$0.dV();
    }
 }

@@ -1,28 +1,28 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record bo(dk.c b, dk.c c, dk.c d, dk.c e, dk.c f) {
+public record bo(cv.c b, cv.c c, cv.c d, cv.c e, cv.c f) {
    public static final Codec<bo> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dk.c.d.optionalFieldOf("x", dk.c.c).forGetter(bo::a),
-               dk.c.d.optionalFieldOf("y", dk.c.c).forGetter(bo::b),
-               dk.c.d.optionalFieldOf("z", dk.c.c).forGetter(bo::c),
-               dk.c.d.optionalFieldOf("horizontal", dk.c.c).forGetter(bo::d),
-               dk.c.d.optionalFieldOf("absolute", dk.c.c).forGetter(bo::e)
+               cv.c.d.optionalFieldOf("x", cv.c.c).forGetter(bo::a),
+               cv.c.d.optionalFieldOf("y", cv.c.c).forGetter(bo::b),
+               cv.c.d.optionalFieldOf("z", cv.c.c).forGetter(bo::c),
+               cv.c.d.optionalFieldOf("horizontal", cv.c.c).forGetter(bo::d),
+               cv.c.d.optionalFieldOf("absolute", cv.c.c).forGetter(bo::e)
             )
             .apply($$0, bo::new)
    );
 
-   public static bo a(dk.c $$0) {
-      return new bo(dk.c.c, dk.c.c, dk.c.c, $$0, dk.c.c);
+   public static bo a(cv.c $$0) {
+      return new bo(cv.c.c, cv.c.c, cv.c.c, $$0, cv.c.c);
    }
 
-   public static bo b(dk.c $$0) {
-      return new bo(dk.c.c, $$0, dk.c.c, dk.c.c, dk.c.c);
+   public static bo b(cv.c $$0) {
+      return new bo(cv.c.c, $$0, cv.c.c, cv.c.c, cv.c.c);
    }
 
-   public static bo c(dk.c $$0) {
-      return new bo(dk.c.c, dk.c.c, dk.c.c, dk.c.c, $$0);
+   public static bo c(cv.c $$0) {
+      return new bo(cv.c.c, cv.c.c, cv.c.c, cv.c.c, $$0);
    }
 
    public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
@@ -36,23 +36,23 @@ public record bo(dk.c b, dk.c c, dk.c d, dk.c e, dk.c f) {
       }
    }
 
-   public dk.c a() {
+   public cv.c a() {
       return this.b;
    }
 
-   public dk.c b() {
+   public cv.c b() {
       return this.c;
    }
 
-   public dk.c c() {
+   public cv.c c() {
       return this.d;
    }
 
-   public dk.c d() {
+   public cv.c d() {
       return this.e;
    }
 
-   public dk.c e() {
+   public cv.c e() {
       return this.f;
    }
 }

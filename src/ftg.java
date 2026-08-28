@@ -1,112 +1,62 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public class ftg extends hgd implements hge {
-   private static final int d = 256;
-   private final fth e;
-   private final boolean f;
-   private final ftg.a g;
+public class ftg extends ftf {
+   private static final int f = -16711681;
+   private static final int g = -6250241;
+   private static final int h = -65536;
+   private static final int i = 1024;
+   private static final int j = 1048576;
+   private static final int k = 1048576;
 
-   public ftg(fth $$0, boolean $$1) {
-      this.f = $$1;
-      this.g = new ftg.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? fgo.b.a : fgo.b.d, this.a(), 256, 256);
-      this.a(false, false);
-      this.e = $$0;
+   public ftg(fra $$0, box $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void close() {
-      this.b();
+   protected void d(frc $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, 64);
+      this.a($$0, $$1, $$2, $$3, 1024);
+      this.a($$0, $$1, $$2, $$3, 16384);
+      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
    }
 
-   @Nullable
-   public ftj a(ffo $$0) {
-      if ($$0.c() != this.f) {
-         return null;
+   private void a(frc $$0, int $$1, int $$2, int $$3, int $$4) {
+      this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
+   }
+
+   private void a(frc $$0, int $$1, int $$2, int $$3, String $$4) {
+      this.a($$0, $$4, $$1 + 1, $$3 + 1);
+      $$0.a(gpn.L(), $$1, $$1 + $$2 - 1, $$3, -1);
+   }
+
+   @Override
+   protected String a(double $$0) {
+      return c(e($$0));
+   }
+
+   private static String c(double $$0) {
+      if ($$0 >= 1048576.0) {
+         return String.format(Locale.ROOT, "%.1f MiB/s", $$0 / 1048576.0);
       } else {
-         ftg.a $$1 = this.g.a($$0);
-         if ($$1 != null) {
-            this.c();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new ftj(
-               this.e,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
-         }
+         return $$0 >= 1024.0 ? String.format(Locale.ROOT, "%.1f KiB/s", $$0 / 1024.0) : String.format(Locale.ROOT, "%d B/s", azk.a($$0));
       }
    }
 
    @Override
-   public void a(ald $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
+   protected int b(double $$0) {
+      return d(e($$0));
    }
 
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private ftg.a e;
-      @Nullable
-      private ftg.a f;
-      private boolean g;
+   private static int d(double $$0) {
+      return (int)Math.round(Math.log($$0 + 1.0) * 60.0 / Math.log(1048576.0));
+   }
 
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
+   @Override
+   protected int a(long $$0) {
+      return this.a(e((double)$$0), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
+   }
 
-      @Nullable
-      ftg.a a(ffo $$0) {
-         if (this.e != null && this.f != null) {
-            ftg.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
-
-            return $$1;
-         } else if (this.g) {
-            return null;
-         } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new ftg.a(this.a, this.b, $$2, this.d);
-                  this.f = new ftg.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new ftg.a(this.a, this.b, this.c, $$3);
-                  this.f = new ftg.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
-
-               return this.e.a($$0);
-            }
-         }
-      }
+   private static double e(double $$0) {
+      return $$0 * 20.0;
    }
 }

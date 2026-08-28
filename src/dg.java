@@ -1,33 +1,37 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record dg(dk.d c, Optional<bx> d) implements by {
-   public static final MapCodec<dg> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dk.d.d.optionalFieldOf("blocks_set_on_fire", dk.d.c).forGetter(dg::b), bx.a.optionalFieldOf("entity_struck").forGetter(dg::c))
-            .apply($$0, dg::new)
-   );
-
-   public static dg a(dk.d $$0) {
-      return new dg($$0, Optional.empty());
-   }
-
+public class dg extends dj<dg.a> {
    @Override
-   public MapCodec<dg> a() {
-      return bz.a;
+   public Codec<dg.a> a() {
+      return dg.a.a;
    }
 
-   @Override
-   public boolean a(bvs $$0, arn $$1, @Nullable fcu $$2) {
-      return !($$0 instanceof bwq $$3) ? false : this.c.d($$3.g()) && (this.d.isEmpty() || $$3.j().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+   public void a(arp $$0, ddo<?> $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public dk.d b() {
-      return this.c;
+   public static aq<dg.a> a(ald<ddj<?>> $$0) {
+      return ap.g.a(new dg.a(Optional.empty(), $$0));
    }
 
-   public Optional<bx> c() {
-      return this.d;
+   public static record a(Optional<bi> b, ald<ddj<?>> c) implements dj.a {
+      public static final Codec<dg.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(dg.a::a), ald.a(mg.bs).fieldOf("recipe").forGetter(dg.a::b)).apply($$0, dg.a::new)
+      );
+
+      public boolean a(ddo<?> $$0) {
+         return this.c == $$0.a();
+      }
+
+      @Override
+      public Optional<bi> a() {
+         return this.b;
+      }
+
+      public ald<ddj<?>> b() {
+         return this.c;
+      }
    }
 }

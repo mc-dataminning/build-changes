@@ -1,20 +1,40 @@
-public interface fis {
-   fii b();
+import javax.annotation.Nullable;
 
-   void d();
+public class fis {
+   private static final int a = 786432;
+   private final fin b;
+   @Nullable
+   private static fis c;
 
-   static fis f() {
-      return new fis() {
-         private final fii a = new fii();
+   public static void a() {
+      if (c != null) {
+         throw new IllegalStateException("Tesselator has already been initialized");
+      } else {
+         c = new fis();
+      }
+   }
 
-         @Override
-         public fii b() {
-            return this.a;
-         }
+   public static fis b() {
+      if (c == null) {
+         throw new IllegalStateException("Tesselator has not been initialized");
+      } else {
+         return c;
+      }
+   }
 
-         @Override
-         public void d() {
-         }
-      };
+   public fis(int $$0) {
+      this.b = new fin($$0);
+   }
+
+   public fis() {
+      this(786432);
+   }
+
+   public fil a(fiv.c $$0, fiv $$1) {
+      return new fil(this.b, $$0, $$1);
+   }
+
+   public void c() {
+      this.b.b();
    }
 }

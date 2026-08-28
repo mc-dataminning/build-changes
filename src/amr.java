@@ -1,132 +1,268 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Collection;
+import java.util.Collections;
 
 public class amr {
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "localhost";
-   private static final String d = "0.0.0.0";
-   private static final int e = 10000;
-   private static final int f = 100;
-   public static BiMap<String, alc<dhp>> a = ImmutableBiMap.of("o", dhp.i, "n", dhp.j, "e", dhp.k);
-   @Nullable
-   private static amj g;
-   @Nullable
-   private static ami h;
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ww.b("commands.bossbar.create.failed", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ww.b("commands.bossbar.unknown", $$0));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(ww.c("commands.bossbar.set.players.unchanged"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(ww.c("commands.bossbar.set.name.unchanged"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(ww.c("commands.bossbar.set.color.unchanged"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(ww.c("commands.bossbar.set.style.unchanged"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(ww.c("commands.bossbar.set.value.unchanged"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(ww.c("commands.bossbar.set.max.unchanged"));
+   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(ww.c("commands.bossbar.set.visibility.unchanged.hidden"));
+   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(ww.c("commands.bossbar.set.visibility.unchanged.visible"));
+   public static final SuggestionProvider<ei> a = ($$0, $$1) -> en.a(((ei)$$0.getSource()).l().aM().a(), $$1);
 
-   public static void a(CommandDispatcher<ex> $$0) {
+   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("chase")
-                  .then(
-                     ((LiteralArgumentBuilder)ey.a("follow")
-                           .then(
-                              ((RequiredArgumentBuilder)ey.a("host", StringArgumentType.string())
-                                    .executes($$0x -> b((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
-                                 .then(
-                                    ey.a("port", IntegerArgumentType.integer(1, 65535))
-                                       .executes(
-                                          $$0x -> b(
-                                                (ex)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
-                                             )
-                                       )
-                                 )
-                           ))
-                        .executes($$0x -> b((ex)$$0x.getSource(), "localhost", 10000))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)ey.a("lead")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a(
+                              "bossbar"
+                           )
+                           .requires($$0x -> $$0x.c(2)))
                         .then(
-                           ((RequiredArgumentBuilder)ey.a("bind_address", StringArgumentType.string())
-                                 .executes($$0x -> a((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
+                           ej.a("add")
                               .then(
-                                 ey.a("port", IntegerArgumentType.integer(1024, 65535))
-                                    .executes(
-                                       $$0x -> a(
-                                             (ex)$$0x.getSource(),
-                                             StringArgumentType.getString($$0x, "bind_address"),
-                                             IntegerArgumentType.getInteger($$0x, "port")
-                                          )
-                                    )
+                                 ej.a("id", fj.a())
+                                    .then(ej.a("name", er.a($$1)).executes($$0x -> a((ei)$$0x.getSource(), fj.a($$0x, "id"), er.a($$0x, "name"))))
                               )
                         ))
-                     .executes($$0x -> a((ex)$$0x.getSource(), "0.0.0.0", 10000))
+                     .then(ej.a("remove").then(ej.a("id", fj.a()).suggests(a).executes($$0x -> e((ei)$$0x.getSource(), a($$0x))))))
+                  .then(ej.a("list").executes($$0x -> a((ei)$$0x.getSource()))))
+               .then(
+                  ej.a("set")
+                     .then(
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a(
+                                                "id", fj.a()
+                                             )
+                                             .suggests(a)
+                                             .then(
+                                                ej.a("name")
+                                                   .then(ej.a("name", er.a($$1)).executes($$0x -> a((ei)$$0x.getSource(), a($$0x), er.a($$0x, "name"))))
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a(
+                                                                     "color"
+                                                                  )
+                                                                  .then(ej.a("pink").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), bto.a.a))))
+                                                               .then(ej.a("blue").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), bto.a.b))))
+                                                            .then(ej.a("red").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), bto.a.c))))
+                                                         .then(ej.a("green").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), bto.a.d))))
+                                                      .then(ej.a("yellow").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), bto.a.e))))
+                                                   .then(ej.a("purple").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), bto.a.f))))
+                                                .then(ej.a("white").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), bto.a.g)))
+                                          ))
+                                       .then(
+                                          ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("style")
+                                                         .then(ej.a("progress").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), bto.b.a))))
+                                                      .then(ej.a("notched_6").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), bto.b.b))))
+                                                   .then(ej.a("notched_10").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), bto.b.c))))
+                                                .then(ej.a("notched_12").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), bto.b.d))))
+                                             .then(ej.a("notched_20").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), bto.b.e)))
+                                       ))
+                                    .then(
+                                       ej.a("value")
+                                          .then(
+                                             ej.a("value", IntegerArgumentType.integer(0))
+                                                .executes($$0x -> a((ei)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "value")))
+                                          )
+                                    ))
+                                 .then(
+                                    ej.a("max")
+                                       .then(
+                                          ej.a("max", IntegerArgumentType.integer(1))
+                                             .executes($$0x -> b((ei)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "max")))
+                                       )
+                                 ))
+                              .then(
+                                 ej.a("visible")
+                                    .then(
+                                       ej.a("visible", BoolArgumentType.bool())
+                                          .executes($$0x -> a((ei)$$0x.getSource(), a($$0x), BoolArgumentType.getBool($$0x, "visible")))
+                                    )
+                              ))
+                           .then(
+                              ((LiteralArgumentBuilder)ej.a("players").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), Collections.emptyList())))
+                                 .then(ej.a("targets", ev.d()).executes($$0x -> a((ei)$$0x.getSource(), a($$0x), ev.d($$0x, "targets"))))
+                           )
+                     )
                ))
-            .then(ey.a("stop").executes($$0x -> a((ex)$$0x.getSource())))
+            .then(
+               ej.a("get")
+                  .then(
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("id", fj.a())
+                                 .suggests(a)
+                                 .then(ej.a("value").executes($$0x -> a((ei)$$0x.getSource(), a($$0x)))))
+                              .then(ej.a("max").executes($$0x -> b((ei)$$0x.getSource(), a($$0x)))))
+                           .then(ej.a("visible").executes($$0x -> c((ei)$$0x.getSource(), a($$0x)))))
+                        .then(ej.a("players").executes($$0x -> d((ei)$$0x.getSource(), a($$0x))))
+                  )
+            )
       );
    }
 
-   private static int a(ex $$0) {
-      if (h != null) {
-         h.b();
-         $$0.a(() -> wv.b("You have now stopped chasing"), false);
-         h = null;
-      }
-
-      if (g != null) {
-         g.b();
-         $$0.a(() -> wv.b("You are no longer being chased"), false);
-         g = null;
-      }
-
-      return 0;
+   private static int a(ei $$0, amg $$1) {
+      $$0.a(() -> ww.a("commands.bossbar.get.value", $$1.e(), $$1.c()), true);
+      return $$1.c();
    }
 
-   private static boolean b(ex $$0) {
-      if (g != null) {
-         $$0.b(wv.b("Chase server is already running. Stop it using /chase stop"));
-         return true;
-      } else if (h != null) {
-         $$0.b(wv.b("You are already chasing someone. Stop it using /chase stop"));
-         return true;
+   private static int b(ei $$0, amg $$1) {
+      $$0.a(() -> ww.a("commands.bossbar.get.max", $$1.e(), $$1.d()), true);
+      return $$1.d();
+   }
+
+   private static int c(ei $$0, amg $$1) {
+      if ($$1.f()) {
+         $$0.a(() -> ww.a("commands.bossbar.get.visible.visible", $$1.e()), true);
+         return 1;
       } else {
-         return false;
-      }
-   }
-
-   private static int a(ex $$0, String $$1, int $$2) {
-      if (b($$0)) {
+         $$0.a(() -> ww.a("commands.bossbar.get.visible.hidden", $$1.e()), true);
          return 0;
-      } else {
-         g = new amj($$1, $$2, $$0.l().ag(), 100);
+      }
+   }
 
-         try {
-            g.a();
-            $$0.a(() -> wv.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
-         } catch (IOException var4) {
-            b.error("Failed to start chase server", var4);
-            $$0.b(wv.b("Failed to start chase server on port " + $$2));
-            g = null;
+   private static int d(ei $$0, amg $$1) {
+      if ($$1.g().isEmpty()) {
+         $$0.a(() -> ww.a("commands.bossbar.get.players.none", $$1.e()), true);
+      } else {
+         $$0.a(() -> ww.a("commands.bossbar.get.players.some", $$1.e(), $$1.g().size(), wz.b($$1.g(), cqs::m_)), true);
+      }
+
+      return $$1.g().size();
+   }
+
+   private static int a(ei $$0, amg $$1, boolean $$2) throws CommandSyntaxException {
+      if ($$1.f() == $$2) {
+         if ($$2) {
+            throw k.create();
+         } else {
+            throw j.create();
+         }
+      } else {
+         $$1.d($$2);
+         if ($$2) {
+            $$0.a(() -> ww.a("commands.bossbar.set.visible.success.visible", $$1.e()), true);
+         } else {
+            $$0.a(() -> ww.a("commands.bossbar.set.visible.success.hidden", $$1.e()), true);
          }
 
          return 0;
       }
    }
 
-   private static int b(ex $$0, String $$1, int $$2) {
-      if (b($$0)) {
-         return 0;
+   private static int a(ei $$0, amg $$1, int $$2) throws CommandSyntaxException {
+      if ($$1.c() == $$2) {
+         throw h.create();
       } else {
-         h = new ami($$1, $$2, $$0.l());
-         h.a();
-         $$0.a(
-            () -> wv.b(
-                  "You are now chasing "
-                     + $$1
-                     + ":"
-                     + $$2
-                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
-               ),
-            false
-         );
+         $$1.a($$2);
+         $$0.a(() -> ww.a("commands.bossbar.set.value.success", $$1.e(), $$2), true);
+         return $$2;
+      }
+   }
+
+   private static int b(ei $$0, amg $$1, int $$2) throws CommandSyntaxException {
+      if ($$1.d() == $$2) {
+         throw i.create();
+      } else {
+         $$1.b($$2);
+         $$0.a(() -> ww.a("commands.bossbar.set.max.success", $$1.e(), $$2), true);
+         return $$2;
+      }
+   }
+
+   private static int a(ei $$0, amg $$1, bto.a $$2) throws CommandSyntaxException {
+      if ($$1.k().equals($$2)) {
+         throw f.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> ww.a("commands.bossbar.set.color.success", $$1.e()), true);
          return 0;
+      }
+   }
+
+   private static int a(ei $$0, amg $$1, bto.b $$2) throws CommandSyntaxException {
+      if ($$1.l().equals($$2)) {
+         throw g.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> ww.a("commands.bossbar.set.style.success", $$1.e()), true);
+         return 0;
+      }
+   }
+
+   private static int a(ei $$0, amg $$1, ww $$2) throws CommandSyntaxException {
+      ww $$3 = wz.a($$0, $$2, null, 0);
+      if ($$1.i().equals($$3)) {
+         throw e.create();
+      } else {
+         $$1.a($$3);
+         $$0.a(() -> ww.a("commands.bossbar.set.name.success", $$1.e()), true);
+         return 0;
+      }
+   }
+
+   private static int a(ei $$0, amg $$1, Collection<arp> $$2) throws CommandSyntaxException {
+      boolean $$3 = $$1.a($$2);
+      if (!$$3) {
+         throw d.create();
+      } else {
+         if ($$1.g().isEmpty()) {
+            $$0.a(() -> ww.a("commands.bossbar.set.players.success.none", $$1.e()), true);
+         } else {
+            $$0.a(() -> ww.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), wz.b($$2, cqs::m_)), true);
+         }
+
+         return $$1.g().size();
+      }
+   }
+
+   private static int a(ei $$0) {
+      Collection<amg> $$1 = $$0.l().aM().b();
+      if ($$1.isEmpty()) {
+         $$0.a(() -> ww.c("commands.bossbar.list.bars.none"), false);
+      } else {
+         $$0.a(() -> ww.a("commands.bossbar.list.bars.some", $$1.size(), wz.b($$1, amg::e)), false);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(ei $$0, ale $$1, ww $$2) throws CommandSyntaxException {
+      amh $$3 = $$0.l().aM();
+      if ($$3.a($$1) != null) {
+         throw b.create($$1.toString());
+      } else {
+         amg $$4 = $$3.a($$1, wz.a($$0, $$2, null, 0));
+         $$0.a(() -> ww.a("commands.bossbar.create.success", $$4.e()), true);
+         return $$3.b().size();
+      }
+   }
+
+   private static int e(ei $$0, amg $$1) {
+      amh $$2 = $$0.l().aM();
+      $$1.b();
+      $$2.a($$1);
+      $$0.a(() -> ww.a("commands.bossbar.remove.success", $$1.e()), true);
+      return $$2.b().size();
+   }
+
+   public static amg a(CommandContext<ei> $$0) throws CommandSyntaxException {
+      ale $$1 = fj.a($$0, "id");
+      amg $$2 = ((ei)$$0.getSource()).l().aM().a($$1);
+      if ($$2 == null) {
+         throw c.create($$1.toString());
+      } else {
+         return $$2;
       }
    }
 }

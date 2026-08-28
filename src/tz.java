@@ -2,37 +2,36 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class tz extends um {
-   private static final int c = 12;
-   public static final tz a = new tz(0.0F);
-   public static final uv<tz> b = new uv.a<tz>() {
-      public tz a(DataInput $$0, uf $$1) throws IOException {
-         return tz.a(d($$0, $$1));
+public class tz implements uu {
+   private static final int c = 8;
+   public static final uw<tz> a = new uw<tz>() {
+      public tz a(DataInput $$0, ug $$1) {
+         $$1.b(8L);
+         return tz.b;
       }
 
       @Override
-      public uq.b a(DataInput $$0, uq $$1, uf $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static float d(DataInput $$0, uf $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readFloat();
+      public ur.b a(DataInput $$0, ur $$1, ug $$2) {
+         $$2.b(8L);
+         return $$1.a();
       }
 
       @Override
-      public int c() {
-         return 4;
+      public void a(DataInput $$0, int $$1, ug $$2) {
+      }
+
+      @Override
+      public void b(DataInput $$0, ug $$1) {
       }
 
       @Override
       public String a() {
-         return "FLOAT";
+         return "END";
       }
 
       @Override
       public String b() {
-         return "TAG_Float";
+         return "TAG_End";
       }
 
       @Override
@@ -40,34 +39,33 @@ public class tz extends um {
          return true;
       }
    };
-   private final float w;
+   public static final tz b = new tz();
 
-   private tz(float $$0) {
-      this.w = $$0;
-   }
-
-   public static tz a(float $$0) {
-      return $$0 == 0.0F ? a : new tz($$0);
+   private tz() {
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeFloat(this.w);
    }
 
    @Override
    public int a() {
-      return 12;
+      return 8;
    }
 
    @Override
    public byte b() {
-      return 5;
+      return 0;
    }
 
    @Override
-   public uv<tz> c() {
-      return b;
+   public uw<tz> c() {
+      return a;
+   }
+
+   @Override
+   public String toString() {
+      return this.p_();
    }
 
    public tz e() {
@@ -75,57 +73,12 @@ public class tz extends um {
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof tz && this.w == ((tz)$$0).w;
-   }
-
-   @Override
-   public int hashCode() {
-      return Float.floatToIntBits(this.w);
-   }
-
-   @Override
-   public void a(ux $$0) {
+   public void a(uy $$0) {
       $$0.a(this);
    }
 
    @Override
-   public long f() {
-      return (long)this.w;
-   }
-
-   @Override
-   public int g() {
-      return azk.d(this.w);
-   }
-
-   @Override
-   public short h() {
-      return (short)(azk.d(this.w) & 65535);
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(azk.d(this.w) & 0xFF);
-   }
-
-   @Override
-   public double j() {
-      return (double)this.w;
-   }
-
-   @Override
-   public float k() {
-      return this.w;
-   }
-
-   @Override
-   public Number l() {
-      return this.w;
-   }
-
-   @Override
-   public uq.b a(uq $$0) {
-      return $$0.a(this.w);
+   public ur.b a(ur $$0) {
+      return $$0.a();
    }
 }

@@ -1,14 +1,16 @@
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface hfs extends hfw<Void> {
-   @Nullable
-   default Void a(cxy $$0) {
-      return null;
+public record hfs() implements hfz {
+   public static final MapCodec<hfs> a = MapCodec.unit(new hfs());
+
+   @Override
+   public float a(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3) {
+      return $$2 instanceof cqs $$4 ? $$4.gE().a($$0, 0.0F) : 0.0F;
    }
 
-   default void a(@Nullable Void $$0, cxw $$1, fho $$2, gny $$3, int $$4, int $$5, boolean $$6) {
-      this.a($$1, $$2, $$3, $$4, $$5, $$6);
+   @Override
+   public MapCodec<hfs> a() {
+      return a;
    }
-
-   void a(cxw var1, fho var2, gny var3, int var4, int var5, boolean var6);
 }

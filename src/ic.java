@@ -1,8 +1,8 @@
-@FunctionalInterface
-public interface ic<T> {
-   void execute(T var1, hy<T> var2, ia var3);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   default hx<T> bind(T $$0) {
-      return ($$1, $$2) -> this.execute($$0, $$1, $$2);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ic {
 }

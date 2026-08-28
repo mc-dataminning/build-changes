@@ -1,77 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dkz extends dkg {
-   public static final MapCodec<dkz> a = b(dkz::new);
-   public static final dzd[] b = new dzd[]{dzc.n, dzc.o, dzc.p};
-   private static final fdo c = fdl.a(dku.b(2.0, 2.0, 14.0), dku.b(14.0, 0.0, 2.0));
+public class dkz extends dkl {
+   public static final MapCodec<dkz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cxq.q.fieldOf("color").forGetter(dkl::b), t()).apply($$0, dkz::new));
+   public static final eao b = eae.bd;
+   private static final Map<cxq, dlu> c = Maps.newHashMap();
+   private static final feq d = dlu.b(8.0, 0.0, 16.0);
 
    @Override
    public MapCodec<dkz> a() {
       return a;
    }
 
-   public dkz(dyl.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b[0], Boolean.valueOf(false)).b(b[1], Boolean.valueOf(false)).b(b[2], Boolean.valueOf(false)));
+   public dkz(cxq $$0, dzn.d $$1) {
+      super($$0, $$1);
+      this.l(this.B.b().b(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   public dvl a(jj $$0, dym $$1) {
-      return new dvp($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dvl> dvm<T> a(dhp $$0, dym $$1, dvn<T> $$2) {
-      return $$0.C ? null : a($$2, dvn.m, dvp::a);
+   protected boolean a(dzo $$0, dis $$1, iu $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return c;
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return d;
    }
 
    @Override
-   protected btq a(dym $$0, dhp $$1, jj $$2, cqi $$3, fcq $$4) {
-      if (!$$1.C && $$1.c_($$2) instanceof dvp $$5) {
-         $$3.a($$5);
-         $$3.a(awu.aa);
-      }
-
-      return btq.a;
+   public dzo a(dcl $$0) {
+      return this.m().b(b, Integer.valueOf(eau.a($$0.i() + 180.0F)));
    }
 
    @Override
-   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
-      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
-      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
-      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
-      $$1.a(lv.ah, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      return $$4 == ja.a && !$$0.a($$1, $$3) ? dlw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(dym $$0, arn $$1, jj $$2, boolean $$3) {
-      btm.a($$0, $$1, $$2);
+   protected dzo a(dzo $$0, dsm $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected boolean c_(dym $$0) {
-      return true;
+   protected dzo a(dzo $$0, dqv $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected int a(dym $$0, dhp $$1, jj $$2) {
-      return ctn.a($$1.c_($$2));
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(b);
    }
 
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b[0], b[1], b[2]);
-   }
-
-   @Override
-   protected boolean a(dym $$0, evi $$1) {
-      return false;
+   public static dlu a(cxq $$0) {
+      return c.getOrDefault($$0, dlw.jh);
    }
 }

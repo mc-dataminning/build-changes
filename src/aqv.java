@@ -1,69 +1,87 @@
-public abstract class aqv extends euf {
-   protected aqv(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.util.List;
+import java.util.stream.IntStream;
+import javax.annotation.Nullable;
+
+public class aqv {
+   public static final int a = aqr.b + 2;
+   private final List<Long2ObjectLinkedOpenHashMap<List<Runnable>>> b = IntStream.range(0, a).mapToObj($$0x -> new Long2ObjectLinkedOpenHashMap()).toList();
+   private volatile int c = a;
+   private final String d;
+
+   public aqv(String $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return $$0 == dgw.c;
-   }
-
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         dgw $$3 = new dgw($$0);
-         int $$4 = $$3.h;
-         int $$5 = $$3.i;
-
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               long $$8 = dgw.c($$4 + $$6, $$5 + $$7);
-               if ($$8 != $$0) {
-                  this.b($$0, $$8, $$1, $$2);
-               }
+   protected void a(int $$0, dhw $$1, int $$2) {
+      if ($$0 < a) {
+         Long2ObjectLinkedOpenHashMap<List<Runnable>> $$3 = this.b.get($$0);
+         List<Runnable> $$4 = (List<Runnable>)$$3.remove($$1.a());
+         if ($$0 == this.c) {
+            while (this.b() && this.b.get(this.c).isEmpty()) {
+               this.c++;
             }
+         }
+
+         if ($$4 != null && !$$4.isEmpty()) {
+            ((List)this.b.get($$2).computeIfAbsent($$1.a(), $$0x -> Lists.newArrayList())).addAll($$4);
+            this.c = Math.min(this.c, $$2);
          }
       }
    }
 
-   @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-      dgw $$4 = new dgw($$0);
-      int $$5 = $$4.h;
-      int $$6 = $$4.i;
+   protected void a(Runnable $$0, long $$1, int $$2) {
+      ((List)this.b.get($$2).computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$0);
+      this.c = Math.min(this.c, $$2);
+   }
 
-      for (int $$7 = -1; $$7 <= 1; $$7++) {
-         for (int $$8 = -1; $$8 <= 1; $$8++) {
-            long $$9 = dgw.c($$5 + $$7, $$6 + $$8);
-            if ($$9 == $$0) {
-               $$9 = dgw.c;
+   protected void a(long $$0, boolean $$1) {
+      for (Long2ObjectLinkedOpenHashMap<List<Runnable>> $$2 : this.b) {
+         List<Runnable> $$3 = (List<Runnable>)$$2.get($$0);
+         if ($$3 != null) {
+            if ($$1) {
+               $$3.clear();
             }
 
-            if ($$9 != $$1) {
-               int $$10 = this.b($$9, $$0, this.c($$9));
-               if ($$3 > $$10) {
-                  $$3 = $$10;
-               }
-
-               if ($$3 == 0) {
-                  return $$3;
-               }
+            if ($$3.isEmpty()) {
+               $$2.remove($$0);
             }
          }
       }
 
-      return $$3;
+      while (this.b() && this.b.get(this.c).isEmpty()) {
+         this.c++;
+      }
+   }
+
+   @Nullable
+   public aqv.a a() {
+      if (!this.b()) {
+         return null;
+      } else {
+         int $$0 = this.c;
+         Long2ObjectLinkedOpenHashMap<List<Runnable>> $$1 = this.b.get($$0);
+         long $$2 = $$1.firstLongKey();
+         List<Runnable> $$3 = (List<Runnable>)$$1.removeFirst();
+
+         while (this.b() && this.b.get(this.c).isEmpty()) {
+            this.c++;
+         }
+
+         return new aqv.a($$2, $$3);
+      }
+   }
+
+   public boolean b() {
+      return this.c < a;
    }
 
    @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return $$0 == dgw.c ? this.b($$1) : $$2 + 1;
+   public String toString() {
+      return this.d + " " + this.c + "...";
    }
 
-   protected abstract int b(long var1);
-
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(dgw.c, $$0, $$1, $$2);
+   public static record a(long a, List<Runnable> b) {
    }
 }

@@ -1,60 +1,57 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.LongArgumentType;
 
-class in<T extends ez<T>> {
-   @Nullable
-   private List<ic<T>> a = new ArrayList<>();
-   @Nullable
-   private List<ip.a<T>> b;
-   private final List<String> c = new ArrayList<>();
+public class in implements ie<LongArgumentType, in.a> {
+   public void a(in.a $$0, vs $$1) {
+      boolean $$2 = $$0.b != Long.MIN_VALUE;
+      boolean $$3 = $$0.c != Long.MAX_VALUE;
+      $$1.l(ih.a($$2, $$3));
+      if ($$2) {
+         $$1.b($$0.b);
+      }
 
-   public void a(ic<T> $$0) {
-      if (this.b != null) {
-         this.b.add(new ip.c<>($$0));
-      } else {
-         this.a.add($$0);
+      if ($$3) {
+         $$1.b($$0.c);
       }
    }
 
-   private int a(String $$0) {
-      int $$1 = this.c.indexOf($$0);
-      if ($$1 == -1) {
-         $$1 = this.c.size();
-         this.c.add($$0);
-      }
-
-      return $$1;
+   public in.a a(vs $$0) {
+      byte $$1 = $$0.readByte();
+      long $$2 = ih.a($$1) ? $$0.readLong() : Long.MIN_VALUE;
+      long $$3 = ih.b($$1) ? $$0.readLong() : Long.MAX_VALUE;
+      return new in.a($$2, $$3);
    }
 
-   private IntList a(List<String> $$0) {
-      IntArrayList $$1 = new IntArrayList($$0.size());
-
-      for (String $$2 : $$0) {
-         $$1.add(this.a($$2));
+   public void a(in.a $$0, JsonObject $$1) {
+      if ($$0.b != Long.MIN_VALUE) {
+         $$1.addProperty("min", $$0.b);
       }
 
-      return $$1;
+      if ($$0.c != Long.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
+      }
    }
 
-   public void a(String $$0, int $$1, T $$2) {
-      ir $$3 = ir.a($$0, $$1);
-      if (this.a != null) {
-         this.b = new ArrayList<>(this.a.size() + 1);
+   public in.a a(LongArgumentType $$0) {
+      return new in.a($$0.getMinimum(), $$0.getMaximum());
+   }
 
-         for (ic<T> $$4 : this.a) {
-            this.b.add(new ip.c<>($$4));
-         }
+   public final class a implements ie.a<LongArgumentType> {
+      final long b;
+      final long c;
 
-         this.a = null;
+      a(final long $$1, final long $$2) {
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      this.b.add(new ip.b<>($$3, this.a($$3.b()), $$2));
-   }
+      public LongArgumentType a(ee $$0) {
+         return LongArgumentType.longArg(this.b, this.c);
+      }
 
-   public im<T> a(ald $$0) {
-      return (im<T>)(this.b != null ? new ip<>($$0, this.b, this.c) : new iq<>($$0, this.a));
+      @Override
+      public ie<LongArgumentType, ?> a() {
+         return in.this;
+      }
    }
 }

@@ -28,7 +28,7 @@ public class azk {
          $$0x[$$1x] = (float)Math.sin((double)$$1x * Math.PI * 2.0 / 65536.0);
       }
    });
-   private static final azs q = azs.b();
+   private static final azt q = azt.b();
    private static final int[] r = new int[]{
       0, 1, 28, 2, 29, 14, 24, 3, 30, 22, 20, 15, 25, 17, 4, 8, 31, 27, 13, 23, 21, 19, 16, 7, 26, 12, 18, 6, 11, 5, 10, 9
    };
@@ -132,15 +132,15 @@ public class azk {
       return Math.floorDiv($$0, $$1);
    }
 
-   public static int a(azs $$0, int $$1, int $$2) {
+   public static int a(azt $$0, int $$1, int $$2) {
       return $$1 >= $$2 ? $$1 : $$0.a($$2 - $$1 + 1) + $$1;
    }
 
-   public static float a(azs $$0, float $$1, float $$2) {
+   public static float a(azt $$0, float $$1, float $$2) {
       return $$1 >= $$2 ? $$1 : $$0.i() * ($$2 - $$1) + $$1;
    }
 
-   public static double a(azs $$0, double $$1, double $$2) {
+   public static double a(azt $$0, double $$1, double $$2) {
       return $$1 >= $$2 ? $$1 : $$0.j() * ($$2 - $$1) + $$1;
    }
 
@@ -288,7 +288,7 @@ public class azk {
    }
 
    @Deprecated
-   public static long a(kn $$0) {
+   public static long a(jz $$0) {
       return b($$0.u(), $$0.v(), $$0.w());
    }
 
@@ -299,7 +299,7 @@ public class azk {
       return $$3 >> 16;
    }
 
-   public static UUID a(azs $$0) {
+   public static UUID a(azt $$0) {
       long $$1 = $$0.g() & -61441L | 16384L;
       long $$2 = $$0.g() & 4611686018427387903L | Long.MIN_VALUE;
       return new UUID($$1, $$2);
@@ -317,7 +317,7 @@ public class azk {
       return ($$0 - $$1) / ($$2 - $$1);
    }
 
-   public static boolean a(fcu $$0, fcu $$1, fcp $$2) {
+   public static boolean a(fdw $$0, fdw $$1, fdr $$2) {
       double $$3 = ($$2.a + $$2.d) * 0.5;
       double $$4 = ($$2.d - $$2.a) * 0.5;
       double $$5 = $$0.d - $$3;
@@ -519,8 +519,8 @@ public class azk {
       return $$1 + $$0 * ($$2 - $$1);
    }
 
-   public static fcu a(double $$0, fcu $$1, fcu $$2) {
-      return new fcu(d($$0, $$1.d, $$2.d), d($$0, $$1.e, $$2.e), d($$0, $$1.f, $$2.f));
+   public static fdw a(double $$0, fdw $$1, fdw $$2) {
+      return new fdw(d($$0, $$1.d, $$2.d), d($$0, $$1.e, $$2.e), d($$0, $$1.f, $$2.f));
    }
 
    public static double d(double $$0, double $$1, double $$2) {
@@ -615,7 +615,7 @@ public class azk {
    }
 
    public static double l(double $$0) {
-      return $$0 + (2.0 * azs.a((long)a($$0 * 3000.0)).j() - 1.0) * 1.0E-7 / 2.0;
+      return $$0 + (2.0 * azt.a((long)a($$0 * 3000.0)).j() - 1.0) * 1.0E-7 / 2.0;
    }
 
    public static int d(int $$0, int $$1) {
@@ -626,15 +626,15 @@ public class azk {
       return -Math.floorDiv(-$$0, $$1);
    }
 
-   public static int b(azs $$0, int $$1, int $$2) {
+   public static int b(azt $$0, int $$1, int $$2) {
       return $$0.a($$2 - $$1 + 1) + $$1;
    }
 
-   public static float b(azs $$0, float $$1, float $$2) {
+   public static float b(azt $$0, float $$1, float $$2) {
       return $$0.i() * ($$2 - $$1) + $$1;
    }
 
-   public static float c(azs $$0, float $$1, float $$2) {
+   public static float c(azt $$0, float $$1, float $$2) {
       return $$1 + (float)$$0.k() * $$2;
    }
 

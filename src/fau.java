@@ -1,27 +1,23 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface fau extends exm, Predicate<exl> {
-   Codec<fau> d = md.F.q().dispatch("condition", fau::b, fav::a);
-   Codec<fau> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, fah.b));
-   Codec<js<fau>> f = akz.a(me.bp, e);
+public class fau extends faa {
+   public static final MapCodec<fau> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(cyo.e.fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, fau::new));
+   private final je<cyo> b;
 
-   fav b();
+   private fau(List<fbw> $$0, je<cyo> $$1) {
+      super($$0);
+      this.b = $$1;
+   }
 
-   @FunctionalInterface
-   public interface a {
-      fau build();
+   @Override
+   public fac<fau> b() {
+      return fad.f;
+   }
 
-      default fau.a invert() {
-         return far.a(this);
-      }
-
-      default fai.a or(fau.a $$0) {
-         return fai.a(this, $$0);
-      }
-
-      default fah.a and(fau.a $$0) {
-         return fah.a(this, $$0);
-      }
+   @Override
+   public cys a(cys $$0, eyn $$1) {
+      return $$0.a(this.b.a());
    }
 }

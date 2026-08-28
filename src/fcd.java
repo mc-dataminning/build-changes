@@ -1,29 +1,31 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class fcd implements fcf<MinecraftServer> {
-   final ald a;
+public record fcd(Optional<cl> b) implements fbw {
+   public static final MapCodec<fcd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cl.a.optionalFieldOf("predicate").forGetter(fcd::c)).apply($$0, fcd::new));
 
-   public fcd(ald $$0) {
-      this.a = $$0;
+   @Override
+   public fbx b() {
+      return fby.j;
    }
 
-   public void a(MinecraftServer $$0, fch<MinecraftServer> $$1, long $$2) {
-      als $$3 = $$0.aE();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   @Override
+   public Set<bav<?>> a() {
+      return Set.of(fbh.i);
    }
 
-   public static class a extends fcf.a<MinecraftServer, fcd> {
-      public a() {
-         super(ald.b("function"), fcd.class);
-      }
+   public boolean a(eyn $$0) {
+      cys $$1 = $$0.c(fbh.i);
+      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   }
 
-      public void a(tw $$0, fcd $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   public static fbw.a a(cl.a $$0) {
+      return () -> new fcd(Optional.of($$0.b()));
+   }
 
-      public fcd a(tw $$0) {
-         ald $$1 = ald.a($$0.l("Name"));
-         return new fcd($$1);
-      }
+   public Optional<cl> c() {
+      return this.b;
    }
 }

@@ -1,158 +1,130 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class dmp extends dkg {
+public class dmp extends dpt {
    public static final MapCodec<dmp> a = b(dmp::new);
-   public static final dzk<jo.a> b = dzc.K;
-   public static final dzk<dzg> c = dzc.bD;
-   public static final dzd d = dzc.w;
+   public static final eam<ja> b = dpt.e;
+   @Nullable
+   private dzt c;
+   @Nullable
+   private dzt d;
+   @Nullable
+   private dzt f;
+   @Nullable
+   private dzt g;
+   private static final Predicate<dzo> h = $$0 -> $$0 != null && ($$0.a(dlw.er) || $$0.a(dlw.es));
 
    @Override
-   public MapCodec<dmp> a() {
+   public MapCodec<? extends dmp> a() {
       return a;
    }
 
-   protected dmp(dyl.d $$0) {
+   protected dmp(dzn.d $$0) {
       super($$0);
-      this.l(this.m().b(b, jo.a.b).b(c, dzg.a).b(d, Boolean.valueOf(false)));
+      this.l(this.B.b().b(b, ja.c));
    }
 
    @Override
-   public dvl a(jj $$0, dym $$1) {
-      return new dwb($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dvl> dvm<T> a(dhp $$0, dym $$1, dvn<T> $$2) {
-      if ($$0.C) {
-         return null;
-      } else {
-         return $$1.c(c) != dzg.a ? a($$2, dvn.k, dwb::a) : null;
+   protected void a(dzo $$0, dip $$1, iu $$2, dzo $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
    }
 
-   public static boolean a(dhp $$0) {
-      return $$0.X();
+   public boolean a(dis $$0, iu $$1) {
+      return this.b().a($$0, $$1) != null || this.r().a($$0, $$1) != null;
    }
 
-   @Override
-   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
-      if (a($$1)) {
-         if ($$0.c(c) != dzg.a) {
-            if ($$3.a(16) == 0 && a($$1, $$2)) {
-               $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awk.gB, awl.e, 1.0F, 1.0F, false);
+   private void a(dip $$0, iu $$1) {
+      dzt.b $$2 = this.q().a($$0, $$1);
+      if ($$2 != null) {
+         cjo $$3 = bwj.bl.a($$0, bwi.k);
+         if ($$3 != null) {
+            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
+         }
+      } else {
+         dzt.b $$4 = this.y().a($$0, $$1);
+         if ($$4 != null) {
+            cja $$5 = bwj.ap.a($$0, bwi.k);
+            if ($$5 != null) {
+               $$5.x(true);
+               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
             }
          }
       }
    }
 
-   @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      $$2.a($$3, this, 1);
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+   private static void a(dip $$0, dzt.b $$1, bwa $$2, iu $$3) {
+      a($$0, $$1);
+      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
+      $$0.b($$2);
 
-   @Override
-   protected void a(dym $$0, arn $$1, jj $$2, azs $$3) {
-      dym $$4 = e($$0, $$1, $$2);
-      if ($$4 != $$0) {
-         $$1.a($$2, $$4, 3);
+      for (arp $$4 : $$0.a(arp.class, $$2.cR().g(5.0))) {
+         ap.o.a($$4, $$2);
       }
+
+      b($$0, $$1);
    }
 
-   private static dym e(dym $$0, dhp $$1, jj $$2) {
-      boolean $$3 = b($$0, $$1, $$2);
-      boolean $$4 = $$0.c(c) == dzg.a;
-      return $$3 && $$4 ? $$0.b(c, a($$1) ? dzg.c : dzg.b) : $$0;
-   }
-
-   public static boolean b(dym $$0, dhs $$1, jj $$2) {
-      jo.a $$3 = $$0.c(b);
-
-      for (jo $$4 : $$3.g()) {
-         dym $$5 = $$1.a_($$2.a($$4));
-         if (!$$5.a(awz.w) || $$5.c(b) != $$3) {
-            return false;
+   public static void a(dip $$0, dzt.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dzs $$4 = $$1.a($$2, $$3, 0);
+            $$0.a($$4.d(), dlw.a.m(), 2);
+            $$0.c(2001, $$4.d(), dlu.j($$4.a()));
          }
       }
-
-      return true;
    }
 
-   private static boolean a(dhq $$0, jj $$1) {
-      for (jo $$2 : jo.values()) {
-         jj $$3 = $$1.a($$2);
-         dym $$4 = $$0.a_($$3);
-         if (!$$4.a(awz.w)) {
-            return false;
+   public static void b(dip $$0, dzt.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dzs $$4 = $$1.a($$2, $$3, 0);
+            $$0.a($$4.d(), dlw.a);
          }
       }
-
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public dym a(dbn $$0) {
-      return e(this.m().b(b, $$0.k().o()), $$0.q(), $$0.a());
    }
 
    @Override
-   protected dym a(dym $$0, drm $$1) {
-      return drl.b($$0, $$1);
+   public dzo a(dcl $$0) {
+      return this.m().b(b, $$0.g().g());
    }
 
    @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b, c, d);
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(b);
    }
 
-   @Override
-   protected void a(dym $$0, arn $$1, jj $$2, boolean $$3) {
-      btm.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(dym $$0, arn $$1, jj $$2, dhi $$3, BiConsumer<cxy, jj> $$4) {
-      if ($$1.c_($$2) instanceof dwb $$5 && $$3 instanceof dif $$6 && $$3.b().a()) {
-         $$5.a($$6.k());
-         if ($$3.c() instanceof cqi $$7 && $$3.b().a()) {
-            this.a($$7, $$0, $$1, $$2);
-         }
+   private dzt b() {
+      if (this.c == null) {
+         this.c = dzu.a().a(" ", "#", "#").a('#', dzs.a(dzx.a(dlw.ec))).b();
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4);
+      return this.c;
    }
 
-   @Override
-   public dym a(dhp $$0, jj $$1, dym $$2, cqi $$3) {
-      if ($$0.c_($$1) instanceof dwb $$4) {
-         $$4.a($$3.dW().a($$3));
-         this.a($$3, $$2, $$0, $$1);
+   private dzt q() {
+      if (this.d == null) {
+         this.d = dzu.a().a("^", "#", "#").a('^', dzs.a(h)).a('#', dzs.a(dzx.a(dlw.ec))).b();
       }
 
-      return super.a($$0, $$1, $$2, $$3);
+      return this.d;
    }
 
-   private void a(cqi $$0, dym $$1, dhp $$2, jj $$3) {
-      if (!$$0.gk() && !$$0.U_() && $$1.c(d) && $$2 instanceof arn $$4) {
-         this.a($$4, $$3, $$2.A.a(20, 24));
+   private dzt r() {
+      if (this.f == null) {
+         this.f = dzu.a().a("~ ~", "###", "~#~").a('#', dzs.a(dzx.a(dlw.cp))).a('~', $$0 -> $$0.a().l()).b();
       }
+
+      return this.f;
    }
 
-   @Override
-   protected boolean c_(dym $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dym $$0, dhp $$1, jj $$2) {
-      if ($$0.c(c) == dzg.a) {
-         return 0;
-      } else {
-         return $$1.c_($$2) instanceof dwb $$3 ? $$3.d() : 0;
+   private dzt y() {
+      if (this.g == null) {
+         this.g = dzu.a().a("~^~", "###", "~#~").a('^', dzs.a(h)).a('#', dzs.a(dzx.a(dlw.cp))).a('~', $$0 -> $$0.a().l()).b();
       }
+
+      return this.g;
    }
 }

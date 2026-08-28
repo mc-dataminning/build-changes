@@ -1,52 +1,68 @@
+import com.mojang.datafixers.Products.P4;
+import com.mojang.datafixers.Products.P5;
+import com.mojang.datafixers.Products.P9;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Set;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.Optional;
 
-public class erc extends epf {
-   public static final MapCodec<erc> d = a(erc::new);
+public class erc extends erf {
+   public static final MapCodec<erc> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, erc::new));
+   private final int c;
+   private final int d;
+   private final int e;
+   private final ji<djs> f;
 
-   public erc(epg.c $$0) {
-      super(erb::new, 21, 21, $$0);
+   private static P9<Mu<erc>, jz, erf.c, Float, Integer, Optional<erf.a>, Integer, Integer, Integer, ji<djs>> b(Instance<erc> $$0) {
+      P5<Mu<erc>, jz, erf.c, Float, Integer, Optional<erf.a>> $$1 = a($$0);
+      P4<Mu<erc>, Integer, Integer, Integer, ji<djs>> $$2 = $$0.group(
+         Codec.intRange(0, 1023).fieldOf("distance").forGetter(erc::a),
+         Codec.intRange(0, 1023).fieldOf("spread").forGetter(erc::b),
+         Codec.intRange(1, 4095).fieldOf("count").forGetter(erc::c),
+         jt.a(mg.aG).fieldOf("preferred_biomes").forGetter(erc::d)
+      );
+      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
+   }
+
+   public erc(jz $$0, erf.c $$1, float $$2, int $$3, Optional<erf.a> $$4, int $$5, int $$6, int $$7, ji<djs> $$8) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+      this.f = $$8;
+   }
+
+   public erc(int $$0, int $$1, int $$2, ji<djs> $$3) {
+      this(jz.i, erf.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public ji<djs> d() {
+      return this.f;
    }
 
    @Override
-   public void a(dio $$0, dil $$1, eak $$2, azs $$3, eoy $$4, dgw $$5, epv $$6) {
-      Set<jj> $$7 = bac.a(kn::i);
-
-      for (epk $$8 : $$6.c()) {
-         if ($$8 instanceof erb $$9) {
-            $$7.addAll($$9.b());
-            a($$4, $$0, $$9.c());
-         }
-      }
-
-      ObjectArrayList<jj> $$10 = new ObjectArrayList($$7.stream().toList());
-      azs $$11 = azs.a($$0.E()).e().a($$6.b().g());
-      af.c($$10, $$11);
-      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
-      ObjectListIterator var12 = $$10.iterator();
-
-      while (var12.hasNext()) {
-         jj $$13 = (jj)var12.next();
-         if ($$12 > 0) {
-            $$12--;
-            a($$4, $$0, $$13);
-         } else if ($$4.b($$13)) {
-            $$0.a($$13, dkw.L.m(), 2);
-         }
-      }
-   }
-
-   private static void a(eoy $$0, dio $$1, jj $$2) {
-      if ($$0.b($$2)) {
-         $$1.a($$2, dkw.M.m(), 2);
-         $$1.a($$2, dvn.O).ifPresent($$1x -> $$1x.a(exh.aY, $$2.a()));
-      }
+   protected boolean a(ebn $$0, int $$1, int $$2) {
+      List<dhw> $$3 = $$0.a(this);
+      return $$3 == null ? false : $$3.contains(new dhw($$1, $$2));
    }
 
    @Override
-   public epp<?> e() {
-      return epp.b;
+   public erg<?> e() {
+      return erg.b;
    }
 }

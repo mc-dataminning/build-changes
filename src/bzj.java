@@ -1,34 +1,28 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bzj extends byi<bwt> {
-   public static final int c = 100;
-   private final btb d;
-   private final awj e;
-
-   public bzj(btb $$0, awj $$1) {
-      super(ImmutableMap.of(cft.o, cfu.c, cft.U, cfu.a), 100);
-      this.d = $$0;
-      this.e = $$1;
+public class bzj {
+   private static iu a(bxb $$0, iu $$1) {
+      azt $$2 = $$0.dV().A;
+      return $$1.b(a($$2), 0, a($$2));
    }
 
-   protected boolean a(arn $$0, bwt $$1, long $$2) {
-      return !$$1.aJ();
+   private static int a(azt $$0) {
+      return $$0.a(3) - 1;
    }
 
-   protected void b(arn $$0, bwt $$1, long $$2) {
-      $$1.q(true);
-      $$1.b(bxd.g);
-   }
+   public static <E extends bxb> cab<E> a(cgb<iu> $$0, int $$1, float $$2) {
+      return ccd.a(
+         (Function<ccd.b<E>, ? extends App<ccd.c<E>, ccg<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(cgb.p), $$3.c(cgb.n), $$3.a(cgb.o))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     iu $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dv(), (double)$$1);
+                     if (!$$8) {
+                        bys.a($$5x, a($$5x, $$7), $$2, $$1);
+                     }
 
-   protected void c(arn $$0, bwt $$1, long $$2) {
-      if ($$1.aJ()) {
-         $$1.i($$1.dy().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, awl.g, 2.0F, 1.0F);
-      }
-
-      $$1.q(false);
-      $$1.b(bxd.a);
-      $$1.eb().b(cft.U);
-      $$1.eb().a(cft.T, this.d.a($$0.A));
+                     return true;
+                  }))
+      );
    }
 }

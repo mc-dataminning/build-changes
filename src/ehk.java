@@ -1,54 +1,52 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehk extends ehr<ejs> {
-   public ehk(Codec<ejs> $$0) {
-      super($$0);
+public class ehk extends ehm {
+   public static final Codec<ehk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ehm.d.forGetter($$0x -> $$0x), btb.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), ehk.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, ehk::new)
+   );
+   public final btb b;
+   public final ehk.a c;
+
+   public ehk(float $$0, eop $$1, btb $$2, egh $$3, ehn $$4, ji<dlu> $$5, btb $$6, ehk.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   @Override
-   public boolean a(eht<ejs> $$0) {
-      ejs $$1 = $$0.f();
-      jj $$2 = $$0.e();
-      dio $$3 = $$0.b();
-      azs $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      jj.a $$10 = new jj.a();
-
-      for (jj $$11 : jj.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
-      }
-
-      return $$5;
+   public ehk(ehm $$0, btb $$1, ehk.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
    }
 
-   protected boolean a(ejs $$0, dio $$1, azs $$2, int $$3, int $$4, jj.a $$5) {
-      boolean $$6 = false;
-      boolean $$7 = false;
+   public static class a {
+      public static final Codec<ehk.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  btb.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  btb.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  ays.l.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  btb.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, ehk.a::new)
+      );
+      public final btb b;
+      public final btb c;
+      public final int d;
+      public final btb e;
+      public final float f;
+      public final float g;
 
-      for (int $$8 = $$3; $$8 > $$4; $$8--) {
-         $$5.q($$8);
-         if ($$0.b().test($$1, $$5)) {
-            dym $$9 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$9, 2);
-            if (!$$7) {
-               this.a($$1, $$5);
-            }
-
-            $$6 = true;
-            $$7 = true;
-         } else {
-            $$7 = false;
-         }
+      public a(btb $$0, btb $$1, int $$2, btb $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
       }
-
-      return $$6;
    }
 }

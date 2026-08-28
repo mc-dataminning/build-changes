@@ -1,8 +1,9 @@
-public class hch extends hbk {
-   public boolean a;
-   public final bvj b = new bvj();
-   public final bvj c = new bvj();
-   public final bvj d = new bvj();
-   public final bvj e = new bvj();
-   public final bvj f = new bvj();
+public class hch extends hau {
+   public boolean b;
+   public boolean c;
+   public bws d = bws.b;
+   public cna.a j = cna.a.h;
+   public int k;
+   public int l;
+   public float m;
 }

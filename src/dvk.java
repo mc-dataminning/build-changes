@@ -1,20 +1,33 @@
-public class dvk extends duy {
-   public dvk(jj $$0, dym $$1) {
-      super(dvn.D, $$0, $$1, dcw.c);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class dvk extends dni implements dvj {
+   public static final MapCodec<dvk> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dvj.a.e.fieldOf("weathering_state").forGetter(dvk::q), t()).apply($$0, dvk::new)
+   );
+   private final dvj.a e;
+
+   @Override
+   protected MapCodec<dvk> a() {
+      return d;
+   }
+
+   public dvk(dvj.a $$0, dzn.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected wv j() {
-      return wv.c("container.blast_furnace");
+   protected void b(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected int a(dwk $$0, cxy $$1) {
-      return super.a($$0, $$1) / 2;
+   protected boolean f(dzo $$0) {
+      return dvj.c($$0.b()).isPresent();
    }
 
-   @Override
-   protected ctn a(int $$0, cqh $$1) {
-      return new ctt($$0, $$1, this, this.m);
+   public dvj.a q() {
+      return this.e;
    }
 }

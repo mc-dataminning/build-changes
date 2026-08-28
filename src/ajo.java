@@ -1,5 +1,7 @@
-public record ajo(ald a) implements ajm {
+public record ajo() implements ajm {
+   public static final ajo a = new ajo();
+
    @Override
-   public void a(vr $$0) {
+   public void a(vs $$0) {
    }
 }

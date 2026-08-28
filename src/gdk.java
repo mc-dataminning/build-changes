@@ -1,63 +1,98 @@
-public class gdk extends gdj {
-   private static final String c = "saddle";
-   private static final String d = "bridle";
-   private static final String e = "reins";
-   private final ghd f = this.b.b("reins");
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-   public gdk(ghd $$0) {
-      super($$0);
+public class gdk {
+   public final gdk.d a;
+   public final fhg b;
+   public final gdk.a c;
+   public final gdk.b d;
+   public final gdk.c e;
+
+   public gdk(gdk.d $$0, fhg $$1, gdk.a $$2, gdk.b $$3, gdk.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static ghj c() {
-      ghl $$0 = b();
-      ghn $$1 = $$0.a();
-      ghn $$2 = $$1.b("body");
-      ghn $$3 = $$2.b("head");
-      ghh $$4 = new ghh(0.05F);
-      $$2.a(
-         "saddle",
-         ghi.c()
-            .a(74, 64)
-            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$4)
-            .a(92, 114)
-            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$4)
-            .a(0, 89)
-            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$4),
-         ghf.a(0.0F, 0.0F, 0.0F)
-      );
-      $$3.a(
-         "reins",
-         ghi.c()
-            .a(98, 42)
-            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
-            .a(84, 57)
-            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
-            .a(98, 42)
-            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
-         ghf.a(0.0F, 0.0F, 0.0F)
-      );
-      $$3.a(
-         "bridle",
-         ghi.c()
-            .a(60, 87)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$4)
-            .a(21, 64)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$4)
-            .a(50, 64)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$4)
-            .a(74, 70)
-            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
-            .a(74, 70)
-            .a()
-            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
-         ghf.a(0.0F, 0.0F, 0.0F)
-      );
-      return ghj.a($$0, 128, 128);
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
+
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public Path a() {
+         return this.d == null ? this.c.toPath() : hiu.a(this.c.toPath(), this.d);
+      }
    }
 
-   @Override
-   public void a(gzz $$0) {
-      super.a($$0);
-      this.f.k = $$0.b;
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+      public final boolean f;
+
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4, boolean $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
+   }
+
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !baj.h(this.b) || !baj.h(this.c) || !baj.h(this.d);
+      }
+
+      @Nullable
+      public String b() {
+         return this.a;
+      }
+
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
+   }
+
+   public static class d {
+      public final fos a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(fos $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

@@ -1,155 +1,217 @@
-import com.google.common.collect.Lists;
+import com.google.gson.JsonObject;
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.UUID;
+import java.util.function.Supplier;
 import net.minecraft.server.MinecraftServer;
 
-public class fo implements gf<fo.a> {
-   private static final Collection<String> a = Arrays.asList("Hello world!", "foo", "@e", "Hello @p :)");
-   static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wv.b("argument.message.too_long", $$0, $$1));
+public class fo implements ArgumentType<fo.b> {
+   public static final SuggestionProvider<ei> a = ($$0, $$1) -> {
+      StringReader $$2 = new StringReader($$1.getInput());
+      $$2.setCursor($$1.getStart());
+      gz $$3 = new gz($$2, gz.a((ei)$$0.getSource()));
 
-   public static fo a() {
-      return new fo();
+      try {
+         $$3.t();
+      } catch (CommandSyntaxException var5) {
+      }
+
+      return $$3.a($$1, $$1x -> en.b(((ei)$$0.getSource()).q(), $$1x));
+   };
+   private static final Collection<String> b = Arrays.asList("Player", "0123", "*", "@e");
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ww.c("argument.scoreHolder.empty"));
+   final boolean d;
+
+   public fo(boolean $$0) {
+      this.d = $$0;
    }
 
-   public static wv a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      fo.a $$2 = (fo.a)$$0.getArgument($$1, fo.a.class);
-      return $$2.a((ex)$$0.getSource());
+   public static ffa a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1).iterator().next();
    }
 
-   public static void a(CommandContext<ex> $$0, String $$1, Consumer<xl> $$2) throws CommandSyntaxException {
-      fo.a $$3 = (fo.a)$$0.getArgument($$1, fo.a.class);
-      ex $$4 = (ex)$$0.getSource();
-      wv $$5 = $$3.a($$4);
-      ev $$6 = $$4.n();
-      xl $$7 = $$6.a($$1);
-      if ($$7 != null) {
-         a($$2, $$4, $$7.a($$5));
+   public static Collection<ffa> b(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, Collections::emptyList);
+   }
+
+   public static Collection<ffa> c(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, ((ei)$$0.getSource()).l().aJ()::e);
+   }
+
+   public static Collection<ffa> a(CommandContext<ei> $$0, String $$1, Supplier<Collection<ffa>> $$2) throws CommandSyntaxException {
+      Collection<ffa> $$3 = ((fo.b)$$0.getArgument($$1, fo.b.class)).getNames((ei)$$0.getSource(), $$2);
+      if ($$3.isEmpty()) {
+         throw ev.d.create();
       } else {
-         b($$2, $$4, xl.a($$3.a).a($$5));
+         return $$3;
       }
    }
 
-   private static void a(Consumer<xl> $$0, ex $$1, xl $$2) {
-      MinecraftServer $$3 = $$1.l();
-      CompletableFuture<asg> $$4 = a($$1, $$2);
-      wv $$5 = $$3.bk().decorate($$1.i(), $$2.d());
-      $$1.o().append($$4, $$3x -> {
-         xl $$4x = $$2.a($$5).a($$3x.e());
-         $$0.accept($$4x);
-      });
+   public static fo a() {
+      return new fo(false);
    }
 
-   private static void b(Consumer<xl> $$0, ex $$1, xl $$2) {
-      wq $$3 = $$1.l().bk();
-      wv $$4 = $$3.decorate($$1.i(), $$2.d());
-      $$0.accept($$2.a($$4));
+   public static fo b() {
+      return new fo(true);
    }
 
-   private static CompletableFuture<asg> a(ex $$0, xl $$1) {
-      aro $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cG()) ? $$2.Z().a($$1.c()) : CompletableFuture.completedFuture(asg.a($$1.c()));
+   public fo.b a(StringReader $$0) throws CommandSyntaxException {
+      return this.a($$0, true);
    }
 
-   public fo.a a(StringReader $$0) throws CommandSyntaxException {
-      return fo.a.a($$0, true);
+   public <S> fo.b a(StringReader $$0, S $$1) throws CommandSyntaxException {
+      return this.a($$0, gz.a($$1));
    }
 
-   public <S> fo.a a(StringReader $$0, @Nullable S $$1) throws CommandSyntaxException {
-      return fo.a.a($$0, ho.a($$1));
+   private fo.b a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '@') {
+         gz $$2 = new gz($$0, $$1);
+         gy $$3 = $$2.t();
+         if (!this.d && $$3.a() > 1) {
+            throw ev.a.createWithContext($$0);
+         } else {
+            return new fo.c($$3);
+         }
+      } else {
+         int $$4 = $$0.getCursor();
+
+         while ($$0.canRead() && $$0.peek() != ' ') {
+            $$0.skip();
+         }
+
+         String $$5 = $$0.getString().substring($$4, $$0.getCursor());
+         if ($$5.equals("*")) {
+            return ($$0x, $$1x) -> {
+               Collection<ffa> $$2 = (Collection<ffa>)$$1x.get();
+               if ($$2.isEmpty()) {
+                  throw c.create();
+               } else {
+                  return $$2;
+               }
+            };
+         } else {
+            List<ffa> $$6 = List.of(ffa.c($$5));
+            if ($$5.startsWith("#")) {
+               return ($$1x, $$2) -> $$6;
+            } else {
+               try {
+                  UUID $$7 = UUID.fromString($$5);
+                  return ($$2, $$3) -> {
+                     MinecraftServer $$4x = $$2.l();
+                     ffa $$5x = null;
+                     List<ffa> $$6x = null;
+
+                     for (aro $$7x : $$4x.L()) {
+                        bwa $$8 = $$7x.b($$7);
+                        if ($$8 != null) {
+                           if ($$5x == null) {
+                              $$5x = $$8;
+                           } else {
+                              if ($$6x == null) {
+                                 $$6x = new ArrayList<>();
+                                 $$6x.add($$5x);
+                              }
+
+                              $$6x.add($$8);
+                           }
+                        }
+                     }
+
+                     if ($$6x != null) {
+                        return $$6x;
+                     } else {
+                        return $$5x != null ? List.of($$5x) : $$6;
+                     }
+                  };
+               } catch (IllegalArgumentException var7) {
+                  return ($$2, $$3) -> {
+                     MinecraftServer $$4x = $$2.l();
+                     arp $$5x = $$4x.ag().a($$5);
+                     return $$5x != null ? List.of($$5x) : $$6;
+                  };
+               }
+            }
+         }
+      }
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 
-   public static record a(String a, fo.b[] b) {
+   public static class a implements ie<fo, fo.a.a> {
+      private static final byte a = 1;
 
-      wv a(ex $$0) throws CommandSyntaxException {
-         return this.a($$0, ho.a($$0));
-      }
-
-      public wv a(ex $$0, boolean $$1) throws CommandSyntaxException {
-         if (this.b.length != 0 && $$1) {
-            xj $$2 = wv.b(this.a.substring(0, this.b[0].a()));
-            int $$3 = this.b[0].a();
-
-            for (fo.b $$4 : this.b) {
-               wv $$5 = $$4.a($$0);
-               if ($$3 < $$4.a()) {
-                  $$2.f(this.a.substring($$3, $$4.a()));
-               }
-
-               $$2.b($$5);
-               $$3 = $$4.b();
-            }
-
-            if ($$3 < this.a.length()) {
-               $$2.f(this.a.substring($$3));
-            }
-
-            return $$2;
-         } else {
-            return wv.b(this.a);
+      public void a(fo.a.a $$0, vs $$1) {
+         int $$2 = 0;
+         if ($$0.b) {
+            $$2 |= 1;
          }
+
+         $$1.l($$2);
       }
 
-      public static fo.a a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-         if ($$0.getRemainingLength() > 256) {
-            throw fo.b.create($$0.getRemainingLength(), 256);
-         } else {
-            String $$2 = $$0.getRemaining();
-            if (!$$1) {
-               $$0.setCursor($$0.getTotalLength());
-               return new fo.a($$2, new fo.b[0]);
-            } else {
-               List<fo.b> $$3 = Lists.newArrayList();
-               int $$4 = $$0.getCursor();
+      public fo.a.a a(vs $$0) {
+         byte $$1 = $$0.readByte();
+         boolean $$2 = ($$1 & 1) != 0;
+         return new fo.a.a($$2);
+      }
 
-               while (true) {
-                  int $$5;
-                  hn $$7;
-                  while (true) {
-                     if (!$$0.canRead()) {
-                        return new fo.a($$2, $$3.toArray(new fo.b[0]));
-                     }
+      public void a(fo.a.a $$0, JsonObject $$1) {
+         $$1.addProperty("amount", $$0.b ? "multiple" : "single");
+      }
 
-                     if ($$0.peek() == '@') {
-                        $$5 = $$0.getCursor();
+      public fo.a.a a(fo $$0) {
+         return new fo.a.a($$0.d);
+      }
 
-                        try {
-                           ho $$6 = new ho($$0, true);
-                           $$7 = $$6.t();
-                           break;
-                        } catch (CommandSyntaxException var8) {
-                           if (var8.getType() != ho.h && var8.getType() != ho.f) {
-                              throw var8;
-                           }
+      public final class a implements ie.a<fo> {
+         final boolean b;
 
-                           $$0.setCursor($$5 + 1);
-                        }
-                     } else {
-                        $$0.skip();
-                     }
-                  }
+         a(final boolean $$1) {
+            this.b = $$1;
+         }
 
-                  $$3.add(new fo.b($$5 - $$4, $$0.getCursor() - $$4, $$7));
-               }
-            }
+         public fo a(ee $$0) {
+            return new fo(this.b);
+         }
+
+         @Override
+         public ie<fo, ?> a() {
+            return a.this;
          }
       }
    }
 
-   public static record b(int a, int b, hn c) {
-      public wv a(ex $$0) throws CommandSyntaxException {
-         return hn.a(this.c.b($$0));
+   @FunctionalInterface
+   public interface b {
+      Collection<ffa> getNames(ei var1, Supplier<Collection<ffa>> var2) throws CommandSyntaxException;
+   }
+
+   public static class c implements fo.b {
+      private final gy a;
+
+      public c(gy $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public Collection<ffa> getNames(ei $$0, Supplier<Collection<ffa>> $$1) throws CommandSyntaxException {
+         List<? extends bwa> $$2 = this.a.b($$0);
+         if ($$2.isEmpty()) {
+            throw ev.d.create();
+         } else {
+            return List.copyOf($$2);
+         }
       }
    }
 }

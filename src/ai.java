@@ -1,8 +1,8 @@
 import java.util.List;
 
-public record ai(ald c, ah d) {
-   public static final yt<wg, ai> a = yt.a(ald.b, ai::a, ah.b, ai::b, ai::new);
-   public static final yt<wg, List<ai>> b = a.a(yr.a());
+public record ai(ale c, ah d) {
+   public static final yu<wh, ai> a = yu.a(ale.b, ai::a, ah.b, ai::b, ai::new);
+   public static final yu<wh, List<ai>> b = a.a(ys.a());
 
    @Override
    public boolean equals(Object $$0) {
@@ -27,7 +27,7 @@ public record ai(ald c, ah d) {
       return this.c.toString();
    }
 
-   public ald a() {
+   public ale a() {
       return this.c;
    }
 

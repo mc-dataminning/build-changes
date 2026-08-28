@@ -1,52 +1,33 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public record cr(cr.a c) implements ea<dak> {
-   public static final Codec<cr> a = cr.a.a.xmap(cr::new, cr::b);
+public record cr(cv.d c, Optional<bx> d) implements by {
+   public static final MapCodec<cr> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(cv.d.d.optionalFieldOf("blocks_set_on_fire", cv.d.c).forGetter(cr::b), bx.a.optionalFieldOf("entity_struck").forGetter(cr::c))
+            .apply($$0, cr::new)
+   );
+
+   public static cr a(cv.d $$0) {
+      return new cr($$0, Optional.empty());
+   }
 
    @Override
-   public kw<dak> a() {
-      return kx.ag;
+   public MapCodec<cr> a() {
+      return bz.a;
    }
 
-   public boolean a(cxy $$0, dak $$1) {
-      return this.c.a($$1);
+   @Override
+   public boolean a(bwa $$0, aro $$1, @Nullable fdw $$2) {
+      return !($$0 instanceof bwy $$3) ? false : this.c.d($$3.g()) && (this.d.isEmpty() || $$3.j().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
-   public cr.a b() {
+   public cv.d b() {
       return this.c;
    }
 
-   public static record a(Optional<dak.a> b, Optional<Boolean> c, Optional<Boolean> d) implements Predicate<dak> {
-      public static final Codec<cr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  dak.a.g.optionalFieldOf("shape").forGetter(cr.a::a),
-                  Codec.BOOL.optionalFieldOf("has_twinkle").forGetter(cr.a::b),
-                  Codec.BOOL.optionalFieldOf("has_trail").forGetter(cr.a::c)
-               )
-               .apply($$0, cr.a::new)
-      );
-
-      public boolean a(dak $$0) {
-         if (this.b.isPresent() && this.b.get() != $$0.a()) {
-            return false;
-         } else {
-            return this.c.isPresent() && this.c.get() != $$0.e() ? false : !this.d.isPresent() || this.d.get() == $$0.d();
-         }
-      }
-
-      public Optional<dak.a> a() {
-         return this.b;
-      }
-
-      public Optional<Boolean> b() {
-         return this.c;
-      }
-
-      public Optional<Boolean> c() {
-         return this.d;
-      }
+   public Optional<bx> c() {
+      return this.d;
    }
 }

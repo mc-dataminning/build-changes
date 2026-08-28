@@ -1,25 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record fbo(deo b) implements fbq {
-   public static final MapCodec<fbo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(deo.b.fieldOf("amount").forGetter(fbo::c)).apply($$0, fbo::new));
+public interface fbo<T extends fbo<T>> {
+   T b(fbw.a var1);
 
-   @Override
-   public float b(exl $$0) {
-      int $$1 = $$0.b(faf.k);
-      return this.b.a($$1);
+   default <E> T a_(Iterable<E> $$0, Function<E, fbw.a> $$1) {
+      T $$2 = this.d();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
 
-   @Override
-   public fbp b() {
-      return fbr.g;
-   }
-
-   public static fbo a(deo $$0) {
-      return new fbo($$0);
-   }
-
-   public deo c() {
-      return this.b;
-   }
+   T d();
 }

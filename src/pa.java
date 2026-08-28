@@ -1,56 +1,25 @@
-import java.util.concurrent.CompletableFuture;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class pa extends pp<dva> {
-   public pa(mm $$0, CompletableFuture<ju.a> $$1) {
-      super($$0, me.d, $$1);
-   }
+public class pa implements oz.a {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = atp.b.a() + "/minecraft/structure/";
 
    @Override
-   protected void a(ju.a $$0) {
-      this.b(awx.a)
-         .a(
-            dvc.b,
-            dvc.c,
-            dvc.d,
-            dvc.e,
-            dvc.f,
-            dvc.g,
-            dvc.h,
-            dvc.i,
-            dvc.j,
-            dvc.k,
-            dvc.l,
-            dvc.m,
-            dvc.n,
-            dvc.o,
-            dvc.p,
-            dvc.q,
-            dvc.r,
-            dvc.s,
-            dvc.t,
-            dvc.u,
-            dvc.v,
-            dvc.w,
-            dvc.x,
-            dvc.y,
-            dvc.z,
-            dvc.A,
-            dvc.B,
-            dvc.C,
-            dvc.D,
-            dvc.E,
-            dvc.G,
-            dvc.H
-         );
-      this.b(awx.b).a(dvc.M);
-      this.b(awx.c).a(dvc.K);
-      this.b(awx.d).a(dvc.L);
-      this.b(awx.e).a(dvc.N);
-      this.b(awx.f).a(dvc.J);
-      this.b(awx.g).a(dvc.O);
-      this.b(awx.h).a(dvc.P);
-      this.b(awx.i).a(dvc.Q);
-      this.b(awx.j).a(dvc.I);
-      this.b(awx.k).a(dvc.F);
+   public tx apply(String $$0, tx $$1) {
+      return $$0.startsWith(b) ? a($$0, $$1) : $$1;
+   }
+
+   public static tx a(String $$0, tx $$1) {
+      euk $$2 = new euk();
+      int $$3 = um.b($$1, 500);
+      int $$4 = 4292;
+      if ($$3 < 4292) {
+         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 4292, $$0});
+      }
+
+      tx $$5 = baz.f.a(bba.a(), $$1, $$3);
+      $$2.a(mf.e, $$5);
+      return $$2.a(new tx());
    }
 }

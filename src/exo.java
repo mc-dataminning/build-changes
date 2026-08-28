@@ -1,95 +1,48 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public class exo {
-   private final arn a;
-   private final bav b;
-   private final Map<ald, exo.b> c;
-   private final float d;
+public class exo extends exh {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
 
-   public exo(arn $$0, bav $$1, Map<ald, exo.b> $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static exh.a<exo> a() {
+      return new exh.a<>(exo::new, exo::b, baz.k);
    }
 
-   public arn a() {
-      return this.a;
+   public exo() {
+      this.b.defaultReturnValue(-1);
    }
 
-   public bav b() {
-      return this.b;
-   }
+   public static exo b(tx $$0, jg.a $$1) {
+      exo $$2 = new exo();
 
-   public void a(ald $$0, Consumer<cxy> $$1) {
-      exo.b $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.add($$1);
-      }
-   }
-
-   public float c() {
-      return this.d;
-   }
-
-   public static class a {
-      private final arn a;
-      private final bav.a b = new bav.a();
-      private final Map<ald, exo.b> c = Maps.newHashMap();
-      private float d;
-
-      public a(arn $$0) {
-         this.a = $$0;
-      }
-
-      public arn a() {
-         return this.a;
-      }
-
-      public <T> exo.a a(bat<T> $$0, T $$1) {
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      public <T> exo.a b(bat<T> $$0, @Nullable T $$1) {
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      public <T> T a(bat<T> $$0) {
-         return this.b.a($$0);
-      }
-
-      @Nullable
-      public <T> T b(bat<T> $$0) {
-         return this.b.b($$0);
-      }
-
-      public exo.a a(ald $$0, exo.b $$1) {
-         exo.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
+      for (String $$3 : $$0.e()) {
+         if ($$0.b($$3, 99)) {
+            $$2.b.put($$3, $$0.h($$3));
          }
       }
 
-      public exo.a a(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public exo a(bau $$0) {
-         bav $$1 = this.b.a($$0);
-         return new exo(this.a, $$1, this.c, this.d);
-      }
+      return $$2;
    }
 
-   @FunctionalInterface
-   public interface b {
-      void add(Consumer<cxy> var1);
+   @Override
+   public tx a(tx $$0, jg.a $$1) {
+      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<String> $$2 = (Entry<String>)var3.next();
+         $$0.a((String)$$2.getKey(), $$2.getIntValue());
+      }
+
+      return $$0;
+   }
+
+   public exn b() {
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.g();
+      return new exn($$0);
    }
 }

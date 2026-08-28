@@ -1,23 +1,8 @@
-public enum dzv implements bag {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private final String f;
-
-   private dzv(final String $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.f;
-   }
-
-   @Override
-   public String c() {
-      return this.f;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dzv {
 }

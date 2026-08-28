@@ -1,101 +1,57 @@
 import javax.annotation.Nullable;
 
-public class cls extends clj {
-   private static final int b = 200;
-   private static final int c = 4;
-   private static final int d = 10;
-   private int e;
-   private int f;
-   @Nullable
-   private bvk g;
+public abstract class cls implements cma {
+   protected final clq a;
 
-   public cls(clg $$0) {
-      super($$0);
+   public cls(clq $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return false;
    }
 
    @Override
    public void b() {
-      this.e++;
-      if (this.e % 2 == 0 && this.e < 10) {
-         fcu $$0 = this.a.K(1.0F).d();
-         $$0.b((float) (-Math.PI / 4));
-         double $$1 = this.a.c.dA();
-         double $$2 = this.a.c.e(0.5);
-         double $$3 = this.a.c.dG();
-
-         for (int $$4 = 0; $$4 < 8; $$4++) {
-            double $$5 = $$1 + this.a.dY().k() / 2.0;
-            double $$6 = $$2 + this.a.dY().k() / 2.0;
-            double $$7 = $$3 + this.a.dY().k() / 2.0;
-
-            for (int $$8 = 0; $$8 < 6; $$8++) {
-               this.a.dV().a(lv.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
-            }
-
-            $$0.b((float) (Math.PI / 16));
-         }
-      }
    }
 
    @Override
-   public void a(arn $$0) {
-      this.e++;
-      if (this.e >= 200) {
-         if (this.f >= 4) {
-            this.a.t().a(clw.e);
-         } else {
-            this.a.t().a(clw.g);
-         }
-      } else if (this.e == 10) {
-         fcu $$1 = new fcu(this.a.c.dA() - this.a.dA(), 0.0, this.a.c.dG() - this.a.dG()).d();
-         float $$2 = 5.0F;
-         double $$3 = this.a.c.dA() + $$1.d * 5.0 / 2.0;
-         double $$4 = this.a.c.dG() + $$1.f * 5.0 / 2.0;
-         double $$5 = this.a.c.e(0.5);
-         double $$6 = $$5;
-         jj.a $$7 = new jj.a($$3, $$5, $$4);
+   public void a(aro $$0) {
+   }
 
-         while ($$0.u($$7)) {
-            if (--$$6 < 0.0) {
-               $$6 = $$5;
-               break;
-            }
-
-            $$7.b($$3, $$6, $$4);
-         }
-
-         $$6 = (double)(azk.a($$6) + 1);
-         this.g = new bvk($$0, $$3, $$6, $$4);
-         this.g.a(this.a);
-         this.g.a(5.0F);
-         this.g.a(200);
-         this.g.a(lv.h);
-         this.g.b(0.25F);
-         this.g.a(new buw(buy.g));
-         $$0.b(this.g);
-      }
+   @Override
+   public void a(clp $$0, iu $$1, bup $$2, @Nullable cqs $$3) {
    }
 
    @Override
    public void c() {
-      this.e = 0;
-      this.f++;
    }
 
    @Override
    public void d() {
-      if (this.g != null) {
-         this.g.at();
-         this.g = null;
-      }
    }
 
    @Override
-   public clw<cls> h() {
-      return clw.f;
+   public float e() {
+      return 0.6F;
    }
 
-   public void i() {
-      this.f = 0;
+   @Nullable
+   @Override
+   public fdw f() {
+      return null;
+   }
+
+   @Override
+   public float a(bup $$0, float $$1) {
+      return $$1;
+   }
+
+   @Override
+   public float g() {
+      float $$0 = (float)this.a.dy().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

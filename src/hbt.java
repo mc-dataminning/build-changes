@@ -1,4 +1,3 @@
-public class hbt extends hbk {
-   public float a;
-   public int b;
+public class hbt extends hbp {
+   public int a;
 }

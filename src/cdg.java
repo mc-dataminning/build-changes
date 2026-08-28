@@ -1,70 +1,62 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cdg extends cdn {
-   protected final bwz a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final dhp f;
+public class cdg extends cdv {
+   private final bxh a;
 
-   public cdg(bwz $$0, double $$1) {
+   public cdg(bxh $$0) {
       this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dV();
-      this.a(EnumSet.of(cdn.a.a));
+      this.a(EnumSet.of(cdv.a.a, cdv.a.b));
    }
 
    @Override
    public boolean b() {
-      if (this.a.f() != null) {
-         return false;
-      } else if (!this.f.V()) {
-         return false;
-      } else if (!this.a.bY()) {
-         return false;
-      } else if (!this.f.h(this.a.dv())) {
-         return false;
-      } else {
-         return !this.a.a(bwc.f).f() ? false : this.h();
-      }
-   }
-
-   protected boolean h() {
-      fcu $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.d;
-         this.c = $$0.e;
-         this.d = $$0.f;
-         return true;
-      }
+      return this.a.ct() < 140;
    }
 
    @Override
    public boolean c() {
-      return !this.a.O().k();
+      return this.b();
+   }
+
+   @Override
+   public boolean P_() {
+      return false;
    }
 
    @Override
    public void d() {
-      this.a.O().a(this.b, this.c, this.d, this.e);
+      this.h();
    }
 
-   @Nullable
-   protected fcu i() {
-      azs $$0 = this.a.dY();
-      jj $$1 = this.a.dv();
+   private void h() {
+      Iterable<iu> $$0 = iu.b(
+         azk.a(this.a.dA() - 1.0), this.a.dB(), azk.a(this.a.dG() - 1.0), azk.a(this.a.dA() + 1.0), azk.a(this.a.dC() + 8.0), azk.a(this.a.dG() + 1.0)
+      );
+      iu $$1 = null;
 
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         jj $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
-            return fcu.c($$3);
+      for (iu $$2 : $$0) {
+         if (this.a(this.a.dV(), $$2)) {
+            $$1 = $$2;
+            break;
          }
       }
 
-      return null;
+      if ($$1 == null) {
+         $$1 = iu.a(this.a.dA(), this.a.dC() + 8.0, this.a.dG());
+      }
+
+      this.a.O().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
+   }
+
+   @Override
+   public void a() {
+      this.h();
+      this.a.a(0.02F, new fdw((double)this.a.bg, (double)this.a.bh, (double)this.a.bi));
+      this.a.a(bxd.a, this.a.dy());
+   }
+
+   private boolean a(dis $$0, iu $$1) {
+      dzo $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(dlw.nF)) && $$2.a(ewk.a);
    }
 }

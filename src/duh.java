@@ -1,96 +1,91 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.mojang.serialization.MapCodec;
 
-public interface duh extends dlw<duh.a> {
-   Supplier<BiMap<dku, dku>> v_ = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(dkw.rA, dkw.rB)
-            .put(dkw.rB, dkw.rC)
-            .put(dkw.rC, dkw.rD)
-            .put(dkw.rJ, dkw.rI)
-            .put(dkw.rI, dkw.rH)
-            .put(dkw.rH, dkw.rG)
-            .put(dkw.rN, dkw.rM)
-            .put(dkw.rM, dkw.rL)
-            .put(dkw.rL, dkw.rK)
-            .put(dkw.rZ, dkw.rY)
-            .put(dkw.rY, dkw.rX)
-            .put(dkw.rX, dkw.rW)
-            .put(dkw.rV, dkw.rU)
-            .put(dkw.rU, dkw.rT)
-            .put(dkw.rT, dkw.rS)
-            .put(dkw.sq, dkw.sr)
-            .put(dkw.sr, dkw.st)
-            .put(dkw.st, dkw.ss)
-            .put(dkw.sy, dkw.sz)
-            .put(dkw.sz, dkw.sB)
-            .put(dkw.sB, dkw.sA)
-            .put(dkw.sG, dkw.sH)
-            .put(dkw.sH, dkw.sI)
-            .put(dkw.sI, dkw.sJ)
-            .put(dkw.sO, dkw.sP)
-            .put(dkw.sP, dkw.sQ)
-            .put(dkw.sQ, dkw.sR)
-            .build()
-   );
-   Supplier<BiMap<dku, dku>> w_ = Suppliers.memoize(() -> v_.get().inverse());
+public class duh extends dlu {
+   public static final MapCodec<duh> a = b(duh::new);
+   private static final eao b = eae.aW;
+   private static final int c = 20;
+   private static final int d = 8;
 
-   static Optional<dku> a(dku $$0) {
-      return Optional.ofNullable((dku)w_.get().get($$0));
+   @Override
+   public MapCodec<duh> a() {
+      return a;
    }
 
-   static dku b(dku $$0) {
-      dku $$1 = $$0;
-
-      for (dku $$2 = (dku)w_.get().get($$0); $$2 != null; $$2 = (dku)w_.get().get($$2)) {
-         $$1 = $$2;
-      }
-
-      return $$1;
-   }
-
-   static Optional<dym> b(dym $$0) {
-      return a($$0.b()).map($$1 -> $$1.m($$0));
-   }
-
-   static Optional<dku> c(dku $$0) {
-      return Optional.ofNullable((dku)v_.get().get($$0));
-   }
-
-   static dym c(dym $$0) {
-      return b($$0.b()).m($$0);
+   public duh(dzn.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   default Optional<dym> k_(dym $$0) {
-      return c($$0.b()).map($$1 -> $$1.m($$0));
+   protected void a(dip $$0, dzo $$1, fds $$2, crm $$3) {
+      int $$4 = a((diq)$$0, $$1, $$2, (bwa)$$3);
+      if ($$3.q() instanceof arp $$6) {
+         $$6.a(awv.aE);
+         ap.M.a($$6, $$3, $$2.g(), $$4);
+      }
+   }
+
+   private static int a(diq $$0, dzo $$1, fds $$2, bwa $$3) {
+      int $$4 = a($$2, $$2.g());
+      int $$5 = $$3 instanceof cqz ? 20 : 8;
+      if (!$$0.U().a($$2.b(), $$1.b())) {
+         a($$0, $$1, $$4, $$2.b(), $$5);
+      }
+
+      return $$4;
+   }
+
+   private static int a(fds $$0, fdw $$1) {
+      ja $$2 = $$0.c();
+      double $$3 = Math.abs(azk.e($$1.d) - 0.5);
+      double $$4 = Math.abs(azk.e($$1.e) - 0.5);
+      double $$5 = Math.abs(azk.e($$1.f) - 0.5);
+      ja.a $$6 = $$2.o();
+      double $$7;
+      if ($$6 == ja.a.b) {
+         $$7 = Math.max($$3, $$5);
+      } else if ($$6 == ja.a.c) {
+         $$7 = Math.max($$3, $$4);
+      } else {
+         $$7 = Math.max($$4, $$5);
+      }
+
+      return Math.max(1, azk.c(15.0 * azk.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
+   }
+
+   private static void a(diq $$0, dzo $$1, int $$2, iu $$3, int $$4) {
+      $$0.a($$3, $$1.b(b, Integer.valueOf($$2)), 3);
+      $$0.a($$3, $$1.b(), $$4);
    }
 
    @Override
-   default float aq_() {
-      return this.c() == duh.a.a ? 0.75F : 1.0F;
+   protected void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      if ($$0.c(b) != 0) {
+         $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 3);
+      }
    }
 
-   public static enum a implements bag {
-      a("unaffected"),
-      b("exposed"),
-      c("weathered"),
-      d("oxidized");
+   @Override
+   protected int a(dzo $$0, dhv $$1, iu $$2, ja $$3) {
+      return $$0.c(b);
+   }
 
-      public static final Codec<duh.a> e = bag.a(duh.a::values);
-      private final String f;
+   @Override
+   protected boolean f_(dzo $$0) {
+      return true;
+   }
 
-      private a(final String $$0) {
-         this.f = $$0;
-      }
+   @Override
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(b);
+   }
 
-      @Override
-      public String c() {
-         return this.f;
+   @Override
+   protected void a(dzo $$0, dip $$1, iu $$2, dzo $$3, boolean $$4) {
+      if (!$$1.w_() && !$$0.a($$3.b())) {
+         if ($$0.c(b) > 0 && !$$1.U().a($$2, this)) {
+            $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 18);
+         }
       }
    }
 }

@@ -1,51 +1,53 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class elf extends elh {
-   public static final MapCodec<elf> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, elf::new));
+public class elf implements ekx {
+   public static final Codec<elf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.list(elf.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, elf::new)
+   );
+   public final List<elf.a> b;
+   public final int c;
+   public final float d;
 
-   public elf(bsv $$0, bsv $$1) {
-      super($$0, $$1);
+   public elf(List<elf.a> $$0, int $$1, float $$2) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = $$2;
    }
 
-   @Override
-   protected eli<?> a() {
-      return eli.i;
+   public elf(List<elf.a> $$0, int $$1) {
+      this($$0, $$1, 0.0F);
    }
 
-   @Override
-   protected void a(dhv $$0, elh.b $$1, azs $$2, ekr $$3, int $$4, elh.a $$5, int $$6, int $$7, int $$8) {
-      jj $$9 = $$5.a().b($$8);
-      boolean $$10 = $$5.c();
-      if ($$10) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
-         if ($$2.h()) {
-            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
-         }
-      } else {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
-      }
+   public elf(eue $$0, dzo $$1, int $$2, float $$3) {
+      this(ImmutableList.of(new elf.a($$0, $$1)), $$2, $$3);
    }
 
-   @Override
-   public int a(azs $$0, int $$1, ekr $$2) {
-      return 4;
+   public elf(eue $$0, dzo $$1, int $$2) {
+      this(ImmutableList.of(new elf.a($$0, $$1)), $$2, 0.0F);
    }
 
-   @Override
-   protected boolean b(azs $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
+   public static elf.a a(eue $$0, dzo $$1) {
+      return new elf.a($$0, $$1);
    }
 
-   @Override
-   protected boolean a(azs $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && !$$5) {
-         return $$1 == $$4 && $$3 == $$4;
-      } else {
-         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
+   public static class a {
+      public static final Codec<elf.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eue.c.fieldOf("target").forGetter($$0x -> $$0x.b), dzo.a.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, elf.a::new)
+      );
+      public final eue b;
+      public final dzo c;
+
+      a(eue $$0, dzo $$1) {
+         this.b = $$0;
+         this.c = $$1;
       }
    }
 }

@@ -1,68 +1,90 @@
-import com.google.common.base.Splitter;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
-import java.util.List;
-
-public class gih extends SimpleChannelInboundHandler<ByteBuf> {
-   private static final Splitter a = Splitter.on('\u0000').limit(6);
-   private final gjr b;
-   private final gih.a c;
-
-   public gih(gjr $$0, gih.a $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public void channelActive(ChannelHandlerContext $$0) throws Exception {
-      super.channelActive($$0);
-      ByteBuf $$1 = $$0.alloc().buffer();
-
-      try {
-         $$1.writeByte(254);
-         $$1.writeByte(1);
-         $$1.writeByte(250);
-         ash.a($$1, "MC|PingHost");
-         int $$2 = $$1.writerIndex();
-         $$1.writeShort(0);
-         int $$3 = $$1.writerIndex();
-         $$1.writeByte(127);
-         ash.a($$1, this.b.a());
-         $$1.writeInt(this.b.b());
-         int $$4 = $$1.writerIndex() - $$3;
-         $$1.setShort($$2, $$4);
-         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
-      } catch (Exception var6) {
-         $$1.release();
-         throw var6;
-      }
-   }
-
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
-      short $$2 = $$1.readUnsignedByte();
-      if ($$2 == 255) {
-         String $$3 = ash.a($$1);
-         List<String> $$4 = a.splitToList($$3);
-         if ("§1".equals($$4.get(0))) {
-            int $$5 = azk.a($$4.get(1), 0);
-            String $$6 = $$4.get(2);
-            String $$7 = $$4.get(3);
-            int $$8 = azk.a($$4.get(4), -1);
-            int $$9 = azk.a($$4.get(5), -1);
-            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
-         }
-      }
-
-      $$0.close();
-   }
-
-   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
-      $$0.close();
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void handleResponse(int var1, String var2, String var3, int var4, int var5);
-   }
+public class gih {
+   public static final String a = "left_fin";
+   public static final String b = "right_fin";
+   public static final String c = "top_fin";
+   public static final String d = "bottom_fin";
+   public static final String e = "tail_fin";
+   public static final String f = "left_blue_fin";
+   public static final String g = "right_blue_fin";
+   public static final String h = "left_arm";
+   public static final String i = "right_arm";
+   public static final String j = "left_wing";
+   public static final String k = "right_wing";
+   public static final String l = "left_wing_base";
+   public static final String m = "right_wing_base";
+   public static final String n = "left_wing_tip";
+   public static final String o = "right_wing_tip";
+   public static final String p = "left_ear";
+   public static final String q = "right_ear";
+   public static final String r = "left_leg";
+   public static final String s = "right_leg";
+   public static final String t = "left_hind_leg";
+   public static final String u = "right_hind_leg";
+   public static final String v = "left_mid_leg";
+   public static final String w = "right_mid_leg";
+   public static final String x = "left_front_leg";
+   public static final String y = "right_front_leg";
+   public static final String z = "left_hind_foot";
+   public static final String A = "right_hind_foot";
+   public static final String B = "left_front_foot";
+   public static final String C = "right_front_foot";
+   public static final String D = "feet";
+   public static final String E = "left_hind_leg_tip";
+   public static final String F = "right_hind_leg_tip";
+   public static final String G = "left_front_leg_tip";
+   public static final String H = "right_front_leg_tip";
+   public static final String I = "left_lid";
+   public static final String J = "right_lid";
+   public static final String K = "left_chest";
+   public static final String L = "right_chest";
+   public static final String M = "left_horn";
+   public static final String N = "right_horn";
+   public static final String O = "left_eye";
+   public static final String P = "right_eye";
+   public static final String Q = "jaw";
+   public static final String R = "nose";
+   public static final String S = "arms";
+   public static final String T = "tail";
+   public static final String U = "cube";
+   public static final String V = "beak";
+   public static final String W = "back_fin";
+   public static final String X = "mane";
+   public static final String Y = "neck";
+   public static final String Z = "mouth";
+   public static final String aa = "upper_mouth";
+   public static final String ab = "head";
+   public static final String ac = "hat";
+   public static final String ad = "body";
+   public static final String ae = "upper_body";
+   public static final String af = "hat_rim";
+   public static final String ag = "jacket";
+   public static final String ah = "top_gills";
+   public static final String ai = "left_gills";
+   public static final String aj = "right_gills";
+   public static final String ak = "root";
+   public static final String al = "croaking_body";
+   public static final String am = "tongue";
+   public static final String an = "tongue_r1";
+   public static final String ao = "left_hand";
+   public static final String ap = "right_hand";
+   public static final String aq = "left_foot";
+   public static final String ar = "right_foot";
+   public static final String as = "eyes";
+   public static final String at = "right_tendril";
+   public static final String au = "left_tendril";
+   public static final String av = "right_ribcage";
+   public static final String aw = "left_ribcage";
+   public static final String ax = "wind_body";
+   public static final String ay = "wind_top";
+   public static final String az = "wind_mid";
+   public static final String aA = "wind_bottom";
+   public static final String aB = "rods";
+   public static final String aC = "mushrooms";
+   public static final String aD = "bone";
+   public static final String aE = "left_paddle";
+   public static final String aF = "right_paddle";
+   public static final String aG = "bottom";
+   public static final String aH = "chest_bottom";
+   public static final String aI = "chest_lid";
+   public static final String aJ = "chest_lock";
 }

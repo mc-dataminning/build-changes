@@ -1,44 +1,46 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.function.UnaryOperator;
 
-public record dfg(kn d, Optional<efs> e, elw f, Optional<js<edm>> g) implements dey {
-   public static final MapCodec<dfg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kn.g.optionalFieldOf("offset", kn.i).forGetter(dfg::b),
-               efs.b.optionalFieldOf("predicate").forGetter(dfg::c),
-               elw.a.fieldOf("block_state").forGetter(dfg::d),
-               edm.aj.optionalFieldOf("trigger_game_event").forGetter(dfg::e)
-            )
-            .apply($$0, dfg::new)
-   );
+public interface dfg {
+   Codec<ki<?>> a = Codec.lazyInitialized(() -> mf.aq.q());
+   Codec<kg> b = kg.a(a);
+   ki<List<dfc<dfy>>> c = a("damage_protection", $$0 -> $$0.a(dfc.a(dfy.b, fbg.t).listOf()));
+   ki<List<dfc<dfu>>> d = a("damage_immunity", $$0 -> $$0.a(dfc.a(dfu.b, fbg.t).listOf()));
+   ki<List<dfc<dfy>>> e = a("damage", $$0 -> $$0.a(dfc.a(dfy.b, fbg.t).listOf()));
+   ki<List<dfc<dfy>>> f = a("smash_damage_per_fallen_block", $$0 -> $$0.a(dfc.a(dfy.b, fbg.t).listOf()));
+   ki<List<dfc<dfy>>> g = a("knockback", $$0 -> $$0.a(dfc.a(dfy.b, fbg.t).listOf()));
+   ki<List<dfc<dfy>>> h = a("armor_effectiveness", $$0 -> $$0.a(dfc.a(dfy.b, fbg.t).listOf()));
+   ki<List<dfo<dfw>>> i = a("post_attack", $$0 -> $$0.a(dfo.a(dfw.b, fbg.t).listOf()));
+   ki<List<dfc<dfw>>> j = a("hit_block", $$0 -> $$0.a(dfc.a(dfw.b, fbg.x).listOf()));
+   ki<List<dfc<dfy>>> k = a("item_damage", $$0 -> $$0.a(dfc.a(dfy.b, fbg.u).listOf()));
+   ki<List<dfv>> l = a("attributes", $$0 -> $$0.a(dfv.a.codec().listOf()));
+   ki<List<dfo<dfy>>> m = a("equipment_drops", $$0 -> $$0.a(dfo.b(dfy.b, fbg.t).listOf()));
+   ki<List<dfc<dfx>>> n = a("location_changed", $$0 -> $$0.a(dfc.a(dfx.c, fbg.v).listOf()));
+   ki<List<dfc<dfw>>> o = a("tick", $$0 -> $$0.a(dfc.a(dfw.b, fbg.w).listOf()));
+   ki<List<dfc<dfy>>> p = a("ammo_use", $$0 -> $$0.a(dfc.a(dfy.b, fbg.u).listOf()));
+   ki<List<dfc<dfy>>> q = a("projectile_piercing", $$0 -> $$0.a(dfc.a(dfy.b, fbg.u).listOf()));
+   ki<List<dfc<dfw>>> r = a("projectile_spawned", $$0 -> $$0.a(dfc.a(dfw.b, fbg.w).listOf()));
+   ki<List<dfc<dfy>>> s = a("projectile_spread", $$0 -> $$0.a(dfc.a(dfy.b, fbg.w).listOf()));
+   ki<List<dfc<dfy>>> t = a("projectile_count", $$0 -> $$0.a(dfc.a(dfy.b, fbg.w).listOf()));
+   ki<List<dfc<dfy>>> u = a("trident_return_acceleration", $$0 -> $$0.a(dfc.a(dfy.b, fbg.w).listOf()));
+   ki<List<dfc<dfy>>> v = a("fishing_time_reduction", $$0 -> $$0.a(dfc.a(dfy.b, fbg.w).listOf()));
+   ki<List<dfc<dfy>>> w = a("fishing_luck_bonus", $$0 -> $$0.a(dfc.a(dfy.b, fbg.w).listOf()));
+   ki<List<dfc<dfy>>> x = a("block_experience", $$0 -> $$0.a(dfc.a(dfy.b, fbg.u).listOf()));
+   ki<List<dfc<dfy>>> y = a("mob_experience", $$0 -> $$0.a(dfc.a(dfy.b, fbg.w).listOf()));
+   ki<List<dfc<dfy>>> z = a("repair_with_xp", $$0 -> $$0.a(dfc.a(dfy.b, fbg.u).listOf()));
+   ki<dfy> A = a("crossbow_charge_time", $$0 -> $$0.a(dfy.b));
+   ki<List<cxl.b>> B = a("crossbow_charging_sounds", $$0 -> $$0.a(cxl.b.a.listOf()));
+   ki<List<je<awk>>> C = a("trident_sound", $$0 -> $$0.a(awk.b.listOf()));
+   ki<bas> D = a("prevent_equipment_drop", $$0 -> $$0.a(bas.b));
+   ki<bas> E = a("prevent_armor_change", $$0 -> $$0.a(bas.b));
+   ki<dfy> F = a("trident_spin_attack_strength", $$0 -> $$0.a(dfy.b));
 
-   @Override
-   public void a(arn $$0, int $$1, deg $$2, bvs $$3, fcu $$4) {
-      jj $$5 = jj.a((kc)$$4).a(this.d);
-      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dY(), $$5))) {
-         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
-      }
+   static ki<?> a(jr<ki<?>> $$0) {
+      return c;
    }
 
-   @Override
-   public MapCodec<dfg> a() {
-      return a;
-   }
-
-   public kn b() {
-      return this.d;
-   }
-
-   public Optional<efs> c() {
-      return this.e;
-   }
-
-   public elw d() {
-      return this.f;
-   }
-
-   public Optional<js<edm>> e() {
-      return this.g;
+   private static <T> ki<T> a(String $$0, UnaryOperator<ki.a<T>> $$1) {
+      return jr.a(mf.aq, $$0, $$1.apply(ki.a()).b());
    }
 }

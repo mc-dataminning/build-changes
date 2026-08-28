@@ -1,38 +1,16 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public final class fdc implements fdg {
-   private final fda a;
-   private final int b;
-   private final int c;
+public class fdc {
+   private static final Codec<fdb> d = mf.I.q().dispatch(fdb::a, fda::a);
+   public static final Codec<fdb> a = Codec.lazyInitialized(
+      () -> Codec.either(fcy.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof fcy $$1 ? Either.left($$1) : Either.right($$0))
+   );
+   public static final fda b = a("fixed", fcz.a);
+   public static final fda c = a("context", fcy.a);
 
-   fdc(int $$0, int $$1) {
-      this.a = new fda((int)fdl.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
-   }
-
-   @Override
-   public boolean a(fdg.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+   private static fda a(String $$0, MapCodec<? extends fdb> $$1) {
+      return jr.a(mf.I, ale.b($$0), new fda($$1));
    }
 }

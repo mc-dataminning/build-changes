@@ -8,24 +8,24 @@ public interface ayw {
 
    boolean accept(ayx var1);
 
-   static ayw codepoint(int $$0, xs $$1) {
+   static ayw codepoint(int $$0, xt $$1) {
       return $$2 -> $$2.accept(0, $$1, $$0);
    }
 
-   static ayw forward(String $$0, xs $$1) {
-      return $$0.isEmpty() ? a : $$2 -> baf.a($$0, $$1, $$2);
+   static ayw forward(String $$0, xt $$1) {
+      return $$0.isEmpty() ? a : $$2 -> bah.a($$0, $$1, $$2);
    }
 
-   static ayw forward(String $$0, xs $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> baf.a($$0, $$1, decorateOutput($$3, $$2));
+   static ayw forward(String $$0, xt $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> bah.a($$0, $$1, decorateOutput($$3, $$2));
    }
 
-   static ayw backward(String $$0, xs $$1) {
-      return $$0.isEmpty() ? a : $$2 -> baf.b($$0, $$1, $$2);
+   static ayw backward(String $$0, xt $$1) {
+      return $$0.isEmpty() ? a : $$2 -> bah.b($$0, $$1, $$2);
    }
 
-   static ayw backward(String $$0, xs $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> baf.b($$0, $$1, decorateOutput($$3, $$2));
+   static ayw backward(String $$0, xt $$1, Int2IntFunction $$2) {
+      return $$0.isEmpty() ? a : $$3 -> bah.b($$0, $$1, decorateOutput($$3, $$2));
    }
 
    static ayx decorateOutput(ayx $$0, Int2IntFunction $$1) {

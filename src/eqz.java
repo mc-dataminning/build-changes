@@ -1,53 +1,92 @@
-public class eqz {
-   public static class a extends epk {
-      public a(jj $$0) {
-         super(epx.aa, 0, new eoy($$0));
-      }
+import java.util.Locale;
 
-      public a(tw $$0) {
-         super(epx.aa, $$0);
-      }
+public interface eqz {
+   eqz a = a(esm.a::new, "MSCorridor");
+   eqz b = a(esm.b::new, "MSCrossing");
+   eqz c = a(esm.d::new, "MSRoom");
+   eqz d = a(esm.e::new, "MSStairs");
+   eqz e = a(eso.a::new, "NeBCr");
+   eqz f = a(eso.b::new, "NeBEF");
+   eqz g = a(eso.c::new, "NeBS");
+   eqz h = a(eso.d::new, "NeCCS");
+   eqz i = a(eso.e::new, "NeCTB");
+   eqz j = a(eso.f::new, "NeCE");
+   eqz k = a(eso.g::new, "NeSCSC");
+   eqz l = a(eso.h::new, "NeSCLT");
+   eqz m = a(eso.i::new, "NeSC");
+   eqz n = a(eso.j::new, "NeSCRT");
+   eqz o = a(eso.k::new, "NeCSR");
+   eqz p = a(eso.l::new, "NeMT");
+   eqz q = a(eso.o::new, "NeRC");
+   eqz r = a(eso.p::new, "NeSR");
+   eqz s = a(eso.q::new, "NeStart");
+   eqz t = a(eta.a::new, "SHCC");
+   eqz u = a(eta.b::new, "SHFC");
+   eqz v = a(eta.c::new, "SH5C");
+   eqz w = a(eta.d::new, "SHLT");
+   eqz x = a(eta.e::new, "SHLi");
+   eqz y = a(eta.g::new, "SHPR");
+   eqz z = a(eta.h::new, "SHPH");
+   eqz A = a(eta.i::new, "SHRT");
+   eqz B = a(eta.j::new, "SHRC");
+   eqz C = a(eta.l::new, "SHSD");
+   eqz D = a(eta.m::new, "SHStart");
+   eqz E = a(eta.n::new, "SHS");
+   eqz F = a(eta.o::new, "SHSSD");
+   eqz G = a(esk::new, "TeJP");
+   eqz H = a(esu.a::a, "ORP");
+   eqz I = a(esh.a::new, "Iglu");
+   eqz J = a(esw::new, "RUPO");
+   eqz K = a(etc::new, "TeSH");
+   eqz L = a(esd::new, "TeDP");
+   eqz M = a(ess.h::new, "OMB");
+   eqz N = a(ess.j::new, "OMCR");
+   eqz O = a(ess.k::new, "OMDXR");
+   eqz P = a(ess.l::new, "OMDXYR");
+   eqz Q = a(ess.m::new, "OMDYR");
+   eqz R = a(ess.n::new, "OMDYZR");
+   eqz S = a(ess.o::new, "OMDZR");
+   eqz T = a(ess.p::new, "OMEntry");
+   eqz U = a(ess.q::new, "OMPenthouse");
+   eqz V = a(ess.s::new, "OMSimple");
+   eqz W = a(ess.t::new, "OMSimpleT");
+   eqz X = a(ess.u::new, "OMWR");
+   eqz Y = a(esf.a::new, "ECP");
+   eqz Z = a(ete.i::new, "WMP");
+   eqz aa = a(esb.a::new, "BTP");
+   eqz ab = a(esy.a::new, "Shipwreck");
+   eqz ac = a(esq.a::new, "NeFos");
+   eqz ad = a(eqe::new, "jigsaw");
+
+   eqm load(eqy var1, tx var2);
+
+   private static eqz a(eqz $$0, String $$1) {
+      return jr.a(mf.Q, $$1.toLowerCase(Locale.ROOT), $$0);
+   }
+
+   private static eqz a(eqz.a $$0, String $$1) {
+      return a((eqz)$$0, $$1);
+   }
+
+   private static eqz a(eqz.b $$0, String $$1) {
+      return a((eqz)$$0, $$1);
+   }
+
+   public interface a extends eqz {
+      eqm load(tx var1);
 
       @Override
-      protected void a(epw $$0, tw $$1) {
+      default eqm load(eqy $$0, tx $$1) {
+         return this.load($$1);
       }
+   }
+
+   public interface b extends eqz {
+      eqm load(eul var1, tx var2);
 
       @Override
-      public void a(dio $$0, dil $$1, eak $$2, azs $$3, eoy $$4, dgw $$5, jj $$6) {
-         int $$7 = $$0.a(eel.a.c, this.f.h(), this.f.j());
-         jj.a $$8 = new jj.a(this.f.h(), $$7, this.f.j());
-
-         while ($$8.v() > $$0.G_()) {
-            dym $$9 = $$0.a_($$8);
-            dym $$10 = $$0.a_($$8.e());
-            if ($$10 == dkw.bc.m() || $$10 == dkw.b.m() || $$10 == dkw.g.m() || $$10 == dkw.c.m() || $$10 == dkw.e.m()) {
-               dym $$11 = !$$9.l() && !this.b($$9) ? $$9 : dkw.L.m();
-
-               for (jo $$12 : jo.values()) {
-                  jj $$13 = $$8.a($$12);
-                  dym $$14 = $$0.a_($$13);
-                  if ($$14.l() || this.b($$14)) {
-                     jj $$15 = $$13.e();
-                     dym $$16 = $$0.a_($$15);
-                     if (($$16.l() || this.b($$16)) && $$12 != jo.b) {
-                        $$0.a($$13, $$10, 3);
-                     } else {
-                        $$0.a($$13, $$11, 3);
-                     }
-                  }
-               }
-
-               this.f = new eoy($$8);
-               this.a($$0, $$4, $$3, $$8, exh.F, null);
-               return;
-            }
-
-            $$8.e(0, -1, 0);
-         }
-      }
-
-      private boolean b(dym $$0) {
-         return $$0 == dkw.J.m() || $$0 == dkw.K.m();
+      default eqm load(eqy $$0, tx $$1) {
+         return this.load($$0.c(), $$1);
       }
    }
 }

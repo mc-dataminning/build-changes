@@ -1,158 +1,101 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class cug {
+   private int a = 20;
+   private float b = 5.0F;
+   private float c;
+   private int d;
 
-public class cug extends cto {
-   private static final int p = 3;
-   private static final int q = 3;
-   public static final int o = 0;
-   private static final int r = 1;
-   private static final int s = 9;
-   private static final int t = 10;
-   private static final int u = 10;
-   private static final int v = 37;
-   private static final int w = 37;
-   private static final int x = 46;
-   private final cua y;
-   private final cqi z;
-   private boolean A;
-
-   public cug(int $$0, cqh $$1) {
-      this($$0, $$1, cua.a);
+   private void b(int $$0, float $$1) {
+      this.a = azk.a($$0 + this.a, 0, 20);
+      this.b = azk.a($$1 + this.b, 0.0F, (float)this.a);
    }
 
-   public cug(int $$0, cqh $$1, cua $$2) {
-      super(cuw.m, $$0, 3, 3);
-      this.y = $$2;
-      this.z = $$1.k;
-      this.a(this.z, 124, 35);
-      this.d(30, 17);
-      this.c($$1, 8, 84);
+   public void a(int $$0, float $$1) {
+      this.b($$0, cuf.a($$0, $$1));
    }
 
-   protected static void a(ctn $$0, arn $$1, cqi $$2, cuf $$3, cvf $$4, @Nullable dcq<dca> $$5) {
-      dbz $$6 = $$3.ax_();
-      aro $$7 = (aro)$$2;
-      cxy $$8 = cxy.k;
-      Optional<dcq<dca>> $$9 = $$1.p().aI().a(dcw.a, $$6, $$1, $$5);
-      if ($$9.isPresent()) {
-         dcq<dca> $$10 = $$9.get();
-         dca $$11 = $$10.b();
-         if ($$4.a($$7, $$10)) {
-            cxy $$12 = $$11.a($$6, $$1.F_());
-            if ($$12.a($$1.K())) {
-               $$8 = $$12;
-            }
+   public void a(cuh $$0) {
+      this.b($$0.a(), $$0.b());
+   }
+
+   public void a(arp $$0) {
+      aro $$1 = $$0.y();
+      btv $$2 = $$1.an();
+      if (this.c > 4.0F) {
+         this.c -= 4.0F;
+         if (this.b > 0.0F) {
+            this.b = Math.max(this.b - 1.0F, 0.0F);
+         } else if ($$2 != btv.a) {
+            this.a = Math.max(this.a - 1, 0);
          }
       }
 
-      $$4.a(0, $$8);
-      $$0.a(0, $$8);
-      $$7.f.b(new acn($$0.l, $$0.k(), 0, $$8));
-   }
-
-   @Override
-   public void a(btj $$0) {
-      if (!this.A) {
-         this.y.a(($$0x, $$1) -> {
-            if ($$0x instanceof arn $$2) {
-               a(this, $$2, this.z, this.m, this.n, null);
+      boolean $$3 = $$1.O().c(dil.k);
+      if ($$3 && this.b > 0.0F && $$0.gu() && this.a >= 20) {
+         this.d++;
+         if (this.d >= 10) {
+            float $$4 = Math.min(this.b, 6.0F);
+            $$0.c($$4 / 6.0F);
+            this.a($$4);
+            this.d = 0;
+         }
+      } else if ($$3 && this.a >= 18 && $$0.gu()) {
+         this.d++;
+         if (this.d >= 80) {
+            $$0.c(1.0F);
+            this.a(6.0F);
+            this.d = 0;
+         }
+      } else if (this.a <= 0) {
+         this.d++;
+         if (this.d >= 80) {
+            if ($$0.eF() > 10.0F || $$2 == btv.d || $$0.eF() > 1.0F && $$2 == btv.c) {
+               $$0.a($$1, $$0.dW().j(), 1.0F);
             }
-         });
+
+            this.d = 0;
+         }
+      } else {
+         this.d = 0;
       }
    }
 
-   @Override
-   public void l() {
-      this.A = true;
-   }
-
-   @Override
-   public void a(arn $$0, dcq<dca> $$1) {
-      this.A = false;
-      a(this, $$0, this.z, this.m, this.n, $$1);
-   }
-
-   @Override
-   public void a(cqi $$0) {
-      super.a($$0);
-      this.y.a(($$1, $$2) -> this.a($$0, this.m));
-   }
-
-   @Override
-   public boolean b(cqi $$0) {
-      return a(this.y, $$0, dkw.cI);
-   }
-
-   @Override
-   public cxy b(cqi $$0, int $$1) {
-      cxy $$2 = cxy.k;
-      cvk $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cxy $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 == 0) {
-            this.y.a(($$2x, $$3x) -> $$4.h().a($$4, $$2x, $$0));
-            if (!this.a($$4, 10, 46, true)) {
-               return cxy.k;
-            }
-
-            $$3.b($$4, $$2);
-         } else if ($$1 >= 10 && $$1 < 46) {
-            if (!this.a($$4, 1, 10, false)) {
-               if ($$1 < 37) {
-                  if (!this.a($$4, 37, 46, false)) {
-                     return cxy.k;
-                  }
-               } else if (!this.a($$4, 10, 37, false)) {
-                  return cxy.k;
-               }
-            }
-         } else if (!this.a($$4, 10, 46, false)) {
-            return cxy.k;
-         }
-
-         if ($$4.f()) {
-            $$3.e(cxy.k);
-         } else {
-            $$3.d();
-         }
-
-         if ($$4.M() == $$2.M()) {
-            return cxy.k;
-         }
-
-         $$3.a($$0, $$4);
-         if ($$1 == 0) {
-            $$0.a($$4, false);
-         }
+   public void a(tx $$0) {
+      if ($$0.b("foodLevel", 99)) {
+         this.a = $$0.h("foodLevel");
+         this.d = $$0.h("foodTickTimer");
+         this.b = $$0.j("foodSaturationLevel");
+         this.c = $$0.j("foodExhaustionLevel");
       }
-
-      return $$2;
    }
 
-   @Override
-   public boolean a(cxy $$0, cvk $$1) {
-      return $$1.c != this.n && super.a($$0, $$1);
+   public void b(tx $$0) {
+      $$0.a("foodLevel", this.a);
+      $$0.a("foodTickTimer", this.d);
+      $$0.a("foodSaturationLevel", this.b);
+      $$0.a("foodExhaustionLevel", this.c);
    }
 
-   @Override
-   public cvk m() {
-      return this.k.get(0);
+   public int a() {
+      return this.a;
    }
 
-   @Override
-   public List<cvk> n() {
-      return this.k.subList(1, 10);
+   public boolean b() {
+      return this.a < 20;
    }
 
-   @Override
-   public cvd ai_() {
-      return cvd.a;
+   public void a(float $$0) {
+      this.c = Math.min(this.c + $$0, 40.0F);
    }
 
-   @Override
-   protected cqi q() {
-      return this.z;
+   public float c() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(float $$0) {
+      this.b = $$0;
    }
 }

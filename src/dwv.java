@@ -1,98 +1,159 @@
-import com.google.common.annotations.VisibleForTesting;
-
-public class dwv extends dvl implements edo.b<dwv.a> {
-   private final dwv.a a;
-
-   public dwv(jj $$0, dym $$1) {
-      super(dvn.L, $$0, $$1);
-      this.a = new dwv.a($$1, new edi($$0));
-   }
-
-   public static void a(dhp $$0, jj $$1, dym $$2, dwv $$3) {
-      $$3.a.d().a($$0, $$1, $$0.C_(), true);
-   }
-
-   @Override
-   protected void a(tw $$0, ju.a $$1) {
-      super.a($$0, $$1);
-      this.a.b.a($$0);
-   }
-
-   @Override
-   protected void b(tw $$0, ju.a $$1) {
-      this.a.b.b($$0);
-      super.b($$0, $$1);
-   }
-
-   public dwv.a a() {
-      return this.a;
-   }
-
-   public static class a implements edo {
-      public static final int a = 8;
-      final dru b;
-      private final dym c;
-      private final edq d;
-
-      public a(dym $$0, edq $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         this.b = dru.a();
+public class dwv extends dxw implements dxu {
+   private static final int d = 1;
+   private jn<cys> e = jn.a(27, cys.k);
+   private final dxb f = new dxb() {
+      @Override
+      protected void a(dip $$0, iu $$1, dzo $$2) {
+         dwv.a($$0, $$1, $$2, awl.eS);
       }
 
       @Override
-      public edq a() {
-         return this.d;
+      protected void b(dip $$0, iu $$1, dzo $$2) {
+         dwv.a($$0, $$1, $$2, awl.eQ);
       }
 
       @Override
-      public int b() {
-         return 8;
+      protected void a(dip $$0, iu $$1, dzo $$2, int $$3, int $$4) {
+         dwv.this.a($$0, $$1, $$2, $$3, $$4);
       }
 
       @Override
-      public edo.a c() {
-         return edo.a.b;
-      }
-
-      @Override
-      public boolean a(arn $$0, js<edm> $$1, edm.a $$2, fcu $$3) {
-         if ($$1.a(edm.p) && $$2.a() instanceof bwr $$4) {
-            if (!$$4.eK()) {
-               buh $$5 = $$4.eH();
-               int $$6 = $$4.a($$0, x.a($$5, buh::d));
-               if ($$4.en() && $$6 > 0) {
-                  this.b.a(jj.a((kc)$$3.a(jo.b, 0.5)), $$6);
-                  this.a($$0, $$4);
-               }
-
-               $$4.eJ();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, jj.a((kc)$$1x), this.c, $$0.C_()));
-            }
-
-            return true;
-         } else {
+      protected boolean a(cqs $$0) {
+         if (!($$0.bQ instanceof cut)) {
             return false;
+         } else {
+            btr $$1 = ((cut)$$0.bQ).l();
+            return $$1 == dwv.this || $$1 instanceof btq && ((btq)$$1).a(dwv.this);
+         }
+      }
+   };
+   private final dww g = new dww();
+
+   protected dwv(dwp<?> $$0, iu $$1, dzo $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public dwv(iu $$0, dzo $$1) {
+      this(dwp.b, $$0, $$1);
+   }
+
+   @Override
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   protected ww j() {
+      return ww.c("container.chest");
+   }
+
+   @Override
+   protected void a(tx $$0, jg.a $$1) {
+      super.a($$0, $$1);
+      this.e = jn.a(this.b(), cys.k);
+      if (!this.b_($$0)) {
+         bts.b($$0, this.e, $$1);
+      }
+   }
+
+   @Override
+   protected void b(tx $$0, jg.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c_($$0)) {
+         bts.a($$0, this.e, $$1);
+      }
+   }
+
+   public static void a(dip $$0, iu $$1, dzo $$2, dwv $$3) {
+      $$3.g.a();
+   }
+
+   static void a(dip $$0, iu $$1, dzo $$2, awk $$3) {
+      eag $$4 = $$2.c(dmx.d);
+      if ($$4 != eag.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == eag.c) {
+            ja $$8 = dmx.i($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
+         }
+
+         $$0.a(null, $$5, $$6, $$7, $$3, awm.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.g.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   @Override
+   public void c_(cqs $$0) {
+      if (!this.p && !$$0.U_()) {
+         this.f.a($$0, this.i(), this.aw_(), this.m());
+      }
+   }
+
+   @Override
+   public void c(cqs $$0) {
+      if (!this.p && !$$0.U_()) {
+         this.f.b($$0, this.i(), this.aw_(), this.m());
+      }
+   }
+
+   @Override
+   protected jn<cys> f() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(jn<cys> $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.g.a($$0);
+   }
+
+   public static int a(dhv $$0, iu $$1) {
+      dzo $$2 = $$0.a_($$1);
+      if ($$2.x()) {
+         dwn $$3 = $$0.c_($$1);
+         if ($$3 instanceof dwv) {
+            return ((dwv)$$3).f.a();
          }
       }
 
-      @VisibleForTesting
-      public dru d() {
-         return this.b;
-      }
+      return 0;
+   }
 
-      private void a(arn $$0, jj $$1, dym $$2, azs $$3) {
-         $$0.a($$1, $$2.b(drr.b, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(lv.K, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, awk.wK, awl.e, 2.0F, 0.6F + $$3.i() * 0.4F);
-      }
+   public static void a(dwv $$0, dwv $$1) {
+      jn<cys> $$2 = $$0.f();
+      $$0.a($$1.f());
+      $$1.a($$2);
+   }
 
-      private void a(dhp $$0, bwr $$1) {
-         if ($$1.eq() instanceof aro $$3) {
-            buh $$4 = $$1.eH() == null ? $$0.al().a((cqi)$$3) : $$1.eH();
-            ap.Z.a($$3, $$1, $$4);
-         }
+   @Override
+   protected cuk a(int $$0, cqr $$1) {
+      return cut.a($$0, $$1, this);
+   }
+
+   public void k() {
+      if (!this.p) {
+         this.f.c(this.i(), this.aw_(), this.m());
       }
+   }
+
+   protected void a(dip $$0, iu $$1, dzo $$2, int $$3, int $$4) {
+      dlu $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

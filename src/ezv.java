@@ -1,39 +1,35 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class ezv extends eyy {
-   static final MapCodec<ezv> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(fbr.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, ezv::new));
-   private final fbq b;
+public class ezv extends faa {
+   public static final MapCodec<ezv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(cl.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), fad.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, ezv::new)
+   );
+   private final cl b;
+   private final fab c;
 
-   private ezv(List<fau> $$0, fbq $$1) {
+   private ezv(List<fbw> $$0, cl $$1, fab $$2) {
       super($$0);
       this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public Set<bat<?>> a() {
-      return this.b.a();
+   public fac<ezv> b() {
+      return fad.v;
    }
 
    @Override
-   public eza<ezv> b() {
-      return ezb.Q;
+   public cys a(cys $$0, eyn $$1) {
+      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
    }
 
    @Override
-   public cxy a(cxy $$0, exl $$1) {
-      int $$2 = azk.a(this.b.a($$1), 0, 4);
-      $$0.b(kx.ac, new dat($$2));
-      return $$0;
-   }
-
-   public fbq c() {
-      return this.b;
-   }
-
-   public static eyy.a<?> a(fbq $$0) {
-      return a($$1 -> new ezv($$1, $$0));
+   public void a(eyt $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
    }
 }

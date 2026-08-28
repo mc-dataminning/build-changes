@@ -1,64 +1,80 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class gmy {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = cqh.g();
-   public static final Codec<gmy> a = Codec.PASSTHROUGH.listOf().validate($$0 -> af.a($$0, c)).xmap(gmy::new, $$0 -> $$0.f);
-   private static final DynamicOps<ut> d = uk.a;
-   private static final Dynamic<?> e = new Dynamic(d, (ut)cxy.f.encodeStart(d, cxy.k).getOrThrow());
-   private List<Dynamic<?>> f;
+public abstract class gmy extends gml {
+   protected float D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
 
-   private gmy(List<Dynamic<?>> $$0) {
-      this.f = $$0;
+   protected gmy(gjd $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public gmy() {
-      this(Collections.nCopies(c, e));
+   protected gmy(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public List<cxy> a(ju.a $$0) {
-      return this.f
-         .stream()
-         .map($$1 -> cxy.f.parse(alb.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(cxy.k))
-         .toList();
+   public gmy.a p() {
+      return gmy.a.a;
    }
 
-   public void a(cqh $$0, kg $$1) {
-      alb<ut> $$2 = $$1.a(d);
-      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
-
-      for (int $$4 = 0; $$4 < c; $$4++) {
-         cxy $$5 = $$0.a($$4);
-         Optional<Dynamic<?>> $$6 = cxy.f
-            .encodeStart($$2, $$5)
-            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
-            .map($$0x -> new Dynamic(d, $$0x));
-         $$3.add($$6.orElse(e));
+   @Override
+   public void a(fiu $$0, fnn $$1, float $$2) {
+      Quaternionf $$3 = new Quaternionf();
+      this.p().setRotation($$3, $$1, $$2);
+      if (this.z != 0.0F) {
+         $$3.rotateZ(azk.h($$2, this.A, this.z));
       }
 
-      this.f = $$3.build();
+      this.a($$0, $$1, $$3, $$2);
    }
 
-   public boolean a() {
-      for (Dynamic<?> $$0 : this.f) {
-         if (!a($$0)) {
-            return false;
-         }
-      }
-
-      return true;
+   protected void a(fiu $$0, fnn $$1, Quaternionf $$2, float $$3) {
+      fdw $$4 = $$1.b();
+      float $$5 = (float)(azk.d((double)$$3, this.d, this.g) - $$4.a());
+      float $$6 = (float)(azk.d((double)$$3, this.e, this.h) - $$4.b());
+      float $$7 = (float)(azk.d((double)$$3, this.f, this.i) - $$4.c());
+      this.a($$0, $$2, $$5, $$6, $$7, $$3);
    }
 
-   private static boolean a(Dynamic<?> $$0) {
-      return e.equals($$0);
+   protected void a(fiu $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = this.b($$5);
+      float $$7 = this.c();
+      float $$8 = this.d();
+      float $$9 = this.e();
+      float $$10 = this.f();
+      int $$11 = this.a($$5);
+      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, -1.0F, $$6, $$8, $$10, $$11);
+      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, 1.0F, $$6, $$8, $$9, $$11);
+      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, 1.0F, $$6, $$7, $$9, $$11);
+      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, -1.0F, $$6, $$7, $$10, $$11);
+   }
+
+   private void a(fiu $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
+      Vector3f $$11 = new Vector3f($$5, $$6, 0.0F).rotate($$1).mul($$7).add($$2, $$3, $$4);
+      $$0.a($$11.x(), $$11.y(), $$11.z()).a($$8, $$9).a(this.v, this.w, this.x, this.y).c($$10);
+   }
+
+   public float b(float $$0) {
+      return this.D;
+   }
+
+   @Override
+   public gml d(float $$0) {
+      this.D *= $$0;
+      return super.d($$0);
+   }
+
+   protected abstract float c();
+
+   protected abstract float d();
+
+   protected abstract float e();
+
+   protected abstract float f();
+
+   public interface a {
+      gmy.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
+      gmy.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
+
+      void setRotation(Quaternionf var1, fnn var2, float var3);
    }
 }

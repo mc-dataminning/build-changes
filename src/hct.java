@@ -1,6 +1,3 @@
-import javax.annotation.Nullable;
-
-public interface hct {
-   @Nullable
-   cpv a();
+public class hct extends hcs {
+   public float n = -1.0F;
 }

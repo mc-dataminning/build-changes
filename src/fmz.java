@@ -1,32 +1,53 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum fmz implements azn, bag {
-   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
-   b(1, "afk", "options.inactivityFpsLimit.afk");
+public class fmz extends fnd {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ww c = ww.c("mco.configure.world.closing");
+   private final fkh d;
+   private final flq e;
 
-   public static final Codec<fmz> c = bag.a(fmz::values);
-   private final int d;
-   private final String e;
-   private final String f;
-
-   private fmz(final int $$0, final String $$1, final String $$2) {
+   public fmz(fkh $$0, flq $$1) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$2;
    }
 
    @Override
-   public int b() {
-      return this.d;
+   public void run() {
+      fjg $$0 = fjg.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.f();
+               this.d.e = fkh.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (fld var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
+      }
    }
 
    @Override
-   public String a() {
-      return this.f;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+   public ww a() {
+      return c;
    }
 }

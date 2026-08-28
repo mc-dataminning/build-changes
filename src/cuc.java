@@ -1,9 +1,12 @@
-public interface cuc {
-   void a(ctn var1, kb<cxy> var2, cxy var3, int[] var4);
+public class cuc {
+   private final String a;
 
-   void a(ctn var1, int var2, cxy var3);
+   public cuc(String $$0) {
+      this.a = $$0;
+   }
 
-   void a(ctn var1, cxy var2);
-
-   void a(ctn var1, int var2, int var3);
+   @Override
+   public String toString() {
+      return this.a;
+   }
 }

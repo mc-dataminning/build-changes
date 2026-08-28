@@ -1,27 +1,22 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ma(fcu c, int d, int e) implements lt {
-   public static final MapCodec<ma> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fcu.a.fieldOf("target").forGetter(ma::b), ays.i.fieldOf("color").forGetter(ma::c), ays.m.fieldOf("duration").forGetter(ma::d))
-            .apply($$0, ma::new)
-   );
-   public static final yt<wg, ma> b = yt.a(fcu.b, ma::b, yr.g, ma::c, yr.h, ma::d, ma::new);
+public class ma implements lv {
+   public static final MapCodec<ma> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.INT.fieldOf("delay").forGetter($$0x -> $$0x.c)).apply($$0, ma::new));
+   public static final yu<wh, ma> b = yu.a(ys.h, $$0 -> $$0.c, ma::new);
+   private final int c;
+
+   public ma(int $$0) {
+      this.c = $$0;
+   }
 
    @Override
-   public lu<ma> a() {
-      return lv.W;
+   public lw<ma> a() {
+      return lx.aY;
    }
 
-   public fcu b() {
+   public int b() {
       return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

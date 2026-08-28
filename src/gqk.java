@@ -1,15 +1,45 @@
-public interface gqk<T extends dvl> {
-   void a(T var1, float var2, fho var3, gny var4, int var5, int var6);
+public class gqk {
+   protected final int[] a;
+   protected final int b;
+   protected final ja c;
+   protected final hhz d;
+   private final boolean e;
+   private final int f;
 
-   default boolean a(T $$0) {
-      return false;
+   public gqk(int[] $$0, int $$1, ja $$2, hhz $$3, boolean $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   default int aQ_() {
-      return 64;
+   public hhz a() {
+      return this.d;
    }
 
-   default boolean a(T $$0, fcu $$1) {
-      return fcu.b($$0.aw_()).a((kc)$$1, (double)this.aQ_());
+   public int[] b() {
+      return this.a;
+   }
+
+   public boolean c() {
+      return this.b != -1;
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   public ja e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.f;
    }
 }

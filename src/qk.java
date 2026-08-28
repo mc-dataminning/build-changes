@@ -1,72 +1,24 @@
+import java.util.OptionalLong;
+
 public class qk {
-   @Deprecated
-   public static final etw.a a = new etw.a(-3, 1.0, 1.0, 1.0, 0.0);
-
-   public static void a(qg<etw.a> $$0) {
-      a($$0, 0, eeu.a, eeu.b, eeu.c, eeu.d);
-      a($$0, -2, eeu.e, eeu.f, eeu.g, eeu.h);
-      a($$0, eeu.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(eeu.j, a);
-      a($$0, eeu.k, -3, 1.0);
-      a($$0, eeu.l, -7, 1.0);
-      a($$0, eeu.m, -1, 1.0);
-      a($$0, eeu.n, -5, 1.0);
-      a($$0, eeu.o, -7, 1.0, 1.0);
-      a($$0, eeu.p, -8, 1.0);
-      a($$0, eeu.q, -8, 1.0);
-      a($$0, eeu.r, -7, 1.0);
-      a($$0, eeu.s, -8, 1.0);
-      a($$0, eeu.t, -11, 1.0);
-      a($$0, eeu.u, -11, 1.0);
-      a($$0, eeu.v, -7, 1.0);
-      a($$0, eeu.w, -7, 1.0);
-      a($$0, eeu.x, -11, 1.0);
-      a($$0, eeu.y, -8, 1.0);
-      a($$0, eeu.z, -5, 1.0);
-      a($$0, eeu.A, -8, 1.0);
-      a($$0, eeu.B, -7, 0.4, 0.5, 1.0);
-      a($$0, eeu.C, -8, 1.0);
-      a($$0, eeu.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, eeu.E, -8, 1.0);
-      a($$0, eeu.F, -7, 1.0);
-      a($$0, eeu.G, -7, 1.0);
-      a($$0, eeu.H, -5, 1.0);
-      a($$0, eeu.I, -8, 1.0);
-      a($$0, eeu.J, -8, 1.0);
-      a($$0, eeu.K, -7, 1.0);
-      a($$0, eeu.L, -7, 1.0);
-      a($$0, eeu.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eeu.N, -6, 1.0, 1.0, 1.0);
-      a($$0, eeu.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, eeu.P, -8, 1.0);
-      a($$0, eeu.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eeu.R, -8, 1.0);
-      a($$0, eeu.S, -6, 1.0, 1.0, 1.0);
-      a($$0, eeu.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eeu.U, -3, 1.0);
-      a($$0, eeu.V, -6, 1.0, 1.0, 1.0);
-      a($$0, eeu.W, -2, 1.0);
-      a($$0, eeu.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eeu.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eeu.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eeu.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eeu.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eeu.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, eeu.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, eeu.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, eeu.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, eeu.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, eeu.ah, -4, 1.0);
-   }
-
-   private static void a(qg<etw.a> $$0, int $$1, alc<etw.a> $$2, alc<etw.a> $$3, alc<etw.a> $$4, alc<etw.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(qg<etw.a> $$0, alc<etw.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new etw.a($$2, $$3, $$4));
+   public static void a(qh<edl> $$0) {
+      $$0.a(
+         edj.a,
+         new edl(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, axa.bd, edj.e, 0.0F, new edl.a(false, true, btj.a(0, 7), 0))
+      );
+      $$0.a(
+         edj.b,
+         new edl(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, axa.be, edj.f, 0.1F, new edl.a(true, false, bta.a(7), 15))
+      );
+      $$0.a(
+         edj.c,
+         new edl(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, axa.bf, edj.g, 0.0F, new edl.a(false, true, btj.a(0, 7), 0)
+         )
+      );
+      $$0.a(
+         edj.d,
+         new edl(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, axa.bd, edj.e, 0.0F, new edl.a(false, true, btj.a(0, 7), 0))
+      );
    }
 }

@@ -1,79 +1,51 @@
 import com.mojang.serialization.Codec;
 
-public class eje extends ehr<eks> {
-   public eje(Codec<eks> $$0) {
+public class eje extends ehv {
+   public eje(Codec<ekz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eht<eks> $$0) {
-      dio $$1 = $$0.b();
-      jj $$2 = $$0.e();
-      if (a($$1, $$2)) {
-         return false;
-      } else {
-         azs $$3 = $$0.d();
-         eks $$4 = $$0.f();
-         int $$5 = $$4.a();
-         int $$6 = $$4.b();
-         int $$7 = $$4.c();
-         jj.a $$8 = new jj.a();
+   protected void a(diq $$0, azt $$1, iu $$2, int $$3, iu.a $$4, ekz $$5) {
+      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
+         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
+         int $$8 = $$5.d - 2;
 
-         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
-            $$8.g($$2).e(azk.a($$3, -$$5, $$5), azk.a($$3, -$$6, $$6), azk.a($$3, -$$5, $$5));
-            if (a($$1, $$8) && !a($$1, (jj)$$8)) {
-               int $$10 = azk.a($$3, 1, $$7);
-               if ($$3.a(6) == 0) {
-                  $$10 *= 2;
+         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
+            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
+               boolean $$11 = $$9 == -$$7;
+               boolean $$12 = $$9 == $$7;
+               boolean $$13 = $$10 == -$$7;
+               boolean $$14 = $$10 == $$7;
+               boolean $$15 = $$11 || $$12;
+               boolean $$16 = $$13 || $$14;
+               if ($$6 >= $$3 || $$15 != $$16) {
+                  $$4.a($$2, $$9, $$6, $$10);
+                  dzo $$17 = $$5.b.a($$1, $$2);
+                  if ($$17.b(dpu.e) && $$17.b(dpu.c) && $$17.b(dpu.b) && $$17.b(dpu.d) && $$17.b(dpu.f)) {
+                     $$17 = $$17.b(dpu.f, Boolean.valueOf($$6 >= $$3 - 1))
+                        .b(dpu.e, Boolean.valueOf($$9 < -$$8))
+                        .b(dpu.c, Boolean.valueOf($$9 > $$8))
+                        .b(dpu.b, Boolean.valueOf($$10 < -$$8))
+                        .b(dpu.d, Boolean.valueOf($$10 > $$8));
+                  }
+
+                  this.a($$0, $$4, $$17);
                }
-
-               if ($$3.a(5) == 0) {
-                  $$10 = 1;
-               }
-
-               int $$11 = 17;
-               int $$12 = 25;
-               a($$1, $$3, $$8, $$10, 17, 25);
             }
          }
-
-         return true;
       }
    }
 
-   private static boolean a(dhq $$0, jj.a $$1) {
-      do {
-         $$1.e(0, -1, 0);
-         if ($$0.s($$1)) {
-            return false;
-         }
-      } while ($$0.a_($$1).l());
-
-      $$1.e(0, 1, 0);
-      return true;
-   }
-
-   public static void a(dhq $$0, azs $$1, jj.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 1; $$6 <= $$3; $$6++) {
-         if ($$0.u($$2)) {
-            if ($$6 == $$3 || !$$0.u($$2.d())) {
-               $$0.a($$2, dkw.pd.m().b(dol.e, Integer.valueOf(azk.a($$1, $$4, $$5))), 2);
-               break;
-            }
-
-            $$0.a($$2, dkw.pe.m(), 2);
-         }
-
-         $$2.c(jo.b);
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+      if ($$3 < $$1 && $$3 >= $$1 - 3) {
+         $$4 = $$2;
+      } else if ($$3 == $$1) {
+         $$4 = $$2;
       }
-   }
 
-   private static boolean a(dhq $$0, jj $$1) {
-      if (!$$0.u($$1)) {
-         return true;
-      } else {
-         dym $$2 = $$0.a_($$1.e());
-         return !$$2.a(dkw.ei) && !$$2.a(dkw.oP) && !$$2.a(dkw.oR);
-      }
+      return $$4;
    }
 }

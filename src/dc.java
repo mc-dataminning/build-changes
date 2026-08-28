@@ -1,101 +1,264 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Iterator;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMaps;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap.Entry;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class dc extends dz<dc.a> {
+public record dc(cv.d d, cg e, List<dc.e<?>> f, Object2BooleanMap<ald<ddj<?>>> g, Map<ale, dc.c> h, Optional<bx> i, Optional<ci> j) implements by {
+   public static final int b = 100;
+   public static final MapCodec<dc> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               cv.d.d.optionalFieldOf("level", cv.d.c).forGetter(dc::b),
+               cg.c.optionalFieldOf("gamemode", cg.a).forGetter(dc::c),
+               dc.e.a.listOf().optionalFieldOf("stats", List.of()).forGetter(dc::d),
+               ays.f(ald.a(mg.bs)).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(dc::e),
+               Codec.unboundedMap(ale.a, dc.c.b).optionalFieldOf("advancements", Map.of()).forGetter(dc::f),
+               bx.a.optionalFieldOf("looking_at").forGetter(dc::g),
+               ci.a.optionalFieldOf("input").forGetter(dc::h)
+            )
+            .apply($$0, dc::new)
+   );
+
    @Override
-   public Codec<dc.a> a() {
-      return dc.a.a;
-   }
+   public boolean a(bwa $$0, aro $$1, @Nullable fdw $$2) {
+      if (!($$0 instanceof arp $$3)) {
+         return false;
+      } else if (!this.d.d($$3.ce)) {
+         return false;
+      } else if (!this.e.a($$3.h.b())) {
+         return false;
+      } else {
+         aww $$5 = $$3.I();
 
-   public void a(aro $$0, Collection<bvs> $$1, @Nullable cxy $$2) {
-      List<exl> $$3 = Lists.newArrayList();
-      Set<bwb<?>> $$4 = Sets.newHashSet();
+         for (dc.e<?> $$6 : this.f) {
+            if (!$$6.a($$5)) {
+               return false;
+            }
+         }
 
-      for (bvs $$5 : $$1) {
-         $$4.add($$5.aq());
-         $$3.add(bx.b($$0, $$5));
-      }
+         awq $$7 = $$3.J();
+         ObjectIterator var13 = this.g.object2BooleanEntrySet().iterator();
 
-      this.a($$0, $$3x -> $$3x.a($$3, $$4.size(), $$2));
-   }
+         while (var13.hasNext()) {
+            Entry<ald<ddj<?>>> $$8 = (Entry<ald<ddj<?>>>)var13.next();
+            if ($$7.b((ald<ddj<?>>)$$8.getKey()) != $$8.getBooleanValue()) {
+               return false;
+            }
+         }
 
-   public static record a(Optional<bi> b, List<bi> c, dk.d d, Optional<cv> e) implements dz.a {
-      public static final Codec<dc.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bx.b.optionalFieldOf("player").forGetter(dc.a::a),
-                  bx.b.listOf().optionalFieldOf("victims", List.of()).forGetter(dc.a::b),
-                  dk.d.d.optionalFieldOf("unique_entity_types", dk.d.c).forGetter(dc.a::c),
-                  cv.a.optionalFieldOf("fired_from_weapon").forGetter(dc.a::d)
-               )
-               .apply($$0, dc.a::new)
-      );
+         if (!this.h.isEmpty()) {
+            alm $$9 = $$3.S();
+            alr $$10 = $$3.cV().aD();
 
-      public static aq<dc.a> a(jt<cxu> $$0, bx.a... $$1) {
-         return ap.H.a(new dc.a(Optional.empty(), bx.a($$1), dk.d.c, Optional.of(cv.a.a().a($$0, cyc.wZ).b())));
-      }
-
-      public static aq<dc.a> a(jt<cxu> $$0, dk.d $$1) {
-         return ap.H.a(new dc.a(Optional.empty(), List.of(), $$1, Optional.of(cv.a.a().a($$0, cyc.wZ).b())));
-      }
-
-      public boolean a(Collection<exl> $$0, int $$1, @Nullable cxy $$2) {
-         if (!this.e.isPresent() || $$2 != null && this.e.get().a($$2)) {
-            if (!this.c.isEmpty()) {
-               List<exl> $$3 = Lists.newArrayList($$0);
-
-               for (bi $$4 : this.c) {
-                  boolean $$5 = false;
-                  Iterator<exl> $$6 = $$3.iterator();
-
-                  while ($$6.hasNext()) {
-                     exl $$7 = $$6.next();
-                     if ($$4.a($$7)) {
-                        $$6.remove();
-                        $$5 = true;
-                        break;
-                     }
-                  }
-
-                  if (!$$5) {
-                     return false;
-                  }
+            for (java.util.Map.Entry<ale, dc.c> $$11 : this.h.entrySet()) {
+               ai $$12 = $$10.a($$11.getKey());
+               if ($$12 == null || !$$11.getValue().test($$9.b($$12))) {
+                  return false;
                }
             }
-
-            return this.d.d($$1);
-         } else {
-            return false;
          }
+
+         if (this.i.isPresent()) {
+            fdw $$13 = $$3.bE();
+            fdw $$14 = $$3.h(1.0F);
+            fdw $$15 = $$13.b($$14.d * 100.0, $$14.e * 100.0, $$14.f * 100.0);
+            fdt $$16 = cro.a($$3.dV(), $$3, $$13, $$15, new fdr($$13, $$15).g(1.0), $$0x -> !$$0x.U_(), 0.0F);
+            if ($$16 == null || $$16.d() != fdu.a.c) {
+               return false;
+            }
+
+            bwa $$17 = $$16.a();
+            if (!this.i.get().a($$3, $$17) || !$$3.E($$17)) {
+               return false;
+            }
+         }
+
+         return !this.j.isPresent() || this.j.get().a($$3.ai());
+      }
+   }
+
+   @Override
+   public MapCodec<dc> a() {
+      return bz.c;
+   }
+
+   public cv.d b() {
+      return this.d;
+   }
+
+   public cg c() {
+      return this.e;
+   }
+
+   public List<dc.e<?>> d() {
+      return this.f;
+   }
+
+   public Object2BooleanMap<ald<ddj<?>>> e() {
+      return this.g;
+   }
+
+   public Map<ale, dc.c> f() {
+      return this.h;
+   }
+
+   public Optional<bx> g() {
+      return this.i;
+   }
+
+   public Optional<ci> h() {
+      return this.j;
+   }
+
+   static record a(Object2BooleanMap<String> c) implements dc.c {
+      public static final Codec<dc.a> a = ays.f(Codec.STRING).xmap(dc.a::new, dc.a::a);
+
+      public boolean a(ak $$0) {
+         ObjectIterator var2 = this.c.object2BooleanEntrySet().iterator();
+
+         while (var2.hasNext()) {
+            Entry<String> $$1 = (Entry<String>)var2.next();
+            ar $$2 = $$0.c((String)$$1.getKey());
+            if ($$2 == null || $$2.a() != $$1.getBooleanValue()) {
+               return false;
+            }
+         }
+
+         return true;
       }
 
-      @Override
-      public void a(bj $$0) {
-         dz.a.super.a($$0);
-         $$0.a(this.c, ".victims");
+      public Object2BooleanMap<String> a() {
+         return this.c;
+      }
+   }
+
+   static record b(boolean c) implements dc.c {
+      public static final Codec<dc.b> a = Codec.BOOL.xmap(dc.b::new, dc.b::a);
+
+      public boolean a(ak $$0) {
+         return $$0.a() == this.c;
       }
 
-      @Override
-      public Optional<bi> a() {
+      public boolean a() {
+         return this.c;
+      }
+   }
+
+   interface c extends Predicate<ak> {
+      Codec<dc.c> b = Codec.either(dc.b.a, dc.a.a).xmap(Either::unwrap, $$0 -> {
+         if ($$0 instanceof dc.b $$1) {
+            return Either.left($$1);
+         } else if ($$0 instanceof dc.a $$2) {
+            return Either.right($$2);
+         } else {
+            throw new UnsupportedOperationException();
+         }
+      });
+   }
+
+   public static class d {
+      private cv.d a = cv.d.c;
+      private cg b = cg.a;
+      private final Builder<dc.e<?>> c = ImmutableList.builder();
+      private final Object2BooleanMap<ald<ddj<?>>> d = new Object2BooleanOpenHashMap();
+      private final Map<ale, dc.c> e = Maps.newHashMap();
+      private Optional<bx> f = Optional.empty();
+      private Optional<ci> g = Optional.empty();
+
+      public static dc.d a() {
+         return new dc.d();
+      }
+
+      public dc.d a(cv.d $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public <T> dc.d a(awu<T> $$0, je.c<T> $$1, cv.d $$2) {
+         this.c.add(new dc.e<>($$0, $$1, $$2));
+         return this;
+      }
+
+      public dc.d a(ald<ddj<?>> $$0, boolean $$1) {
+         this.d.put($$0, $$1);
+         return this;
+      }
+
+      public dc.d a(cg $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public dc.d a(bx.a $$0) {
+         this.f = Optional.of($$0.b());
+         return this;
+      }
+
+      public dc.d a(ale $$0, boolean $$1) {
+         this.e.put($$0, new dc.b($$1));
+         return this;
+      }
+
+      public dc.d a(ale $$0, Map<String, Boolean> $$1) {
+         this.e.put($$0, new dc.a(new Object2BooleanOpenHashMap($$1)));
+         return this;
+      }
+
+      public dc.d a(ci $$0) {
+         this.g = Optional.of($$0);
+         return this;
+      }
+
+      public dc b() {
+         return new dc(this.a, this.b, this.c.build(), this.d, this.e, this.f, this.g);
+      }
+   }
+
+   static record e<T>(awu<T> b, je<T> c, cv.d d, Supplier<aws<T>> e) {
+      public static final Codec<dc.e<?>> a = mf.v.q().dispatch(dc.e::a, dc.e::a);
+
+      public e(awu<T> $$0, je<T> $$1, cv.d $$2) {
+         this($$0, $$1, $$2, Suppliers.memoize(() -> $$0.b($$1.a())));
+      }
+
+      private static <T> MapCodec<dc.e<T>> a(awu<T> $$0) {
+         return RecordCodecBuilder.mapCodec(
+            $$1 -> $$1.group($$0.b().r().fieldOf("stat").forGetter(dc.e::b), cv.d.d.optionalFieldOf("value", cv.d.c).forGetter(dc.e::c))
+                  .apply($$1, ($$1x, $$2) -> new dc.e<>($$0, $$1x, $$2))
+         );
+      }
+
+      public boolean a(aww $$0) {
+         return this.d.d($$0.a(this.e.get()));
+      }
+
+      public awu<T> a() {
          return this.b;
       }
 
-      public List<bi> b() {
+      public je<T> b() {
          return this.c;
       }
 
-      public dk.d c() {
+      public cv.d c() {
          return this.d;
       }
 
-      public Optional<cv> d() {
+      public Supplier<aws<T>> d() {
          return this.e;
       }
    }

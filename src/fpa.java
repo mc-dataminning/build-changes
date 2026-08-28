@@ -1,115 +1,544 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-public interface fpa extends Supplier<JsonElement> {
-   void a(dyn<?, ?> var1);
-
-   static fpa.c a() {
-      return new fpa.c();
-   }
-
-   static fpa a(fpa... $$0) {
-      return new fpa.a(fpa.b.a, Arrays.asList($$0));
-   }
-
-   static fpa b(fpa... $$0) {
-      return new fpa.a(fpa.b.b, Arrays.asList($$0));
-   }
-
-   public static class a implements fpa {
-      private final fpa.b a;
-      private final List<fpa> b;
-
-      a(fpa.b $$0, List<fpa> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(dyn<?, ?> $$0) {
-         this.b.forEach($$1 -> $$1.a($$0));
-      }
-
-      public JsonElement b() {
-         JsonArray $$0 = new JsonArray();
-         this.b.stream().map(Supplier::get).forEach($$0::add);
-         JsonObject $$1 = new JsonObject();
-         $$1.add(this.a.c, $$0);
-         return $$1;
-      }
-   }
-
-   public static enum b {
-      a("AND"),
-      b("OR");
-
-      final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-   }
-
-   public static class c implements fpa {
-      private final Map<dzp<?>, String> a = Maps.newHashMap();
-
-      private static <T extends Comparable<T>> String a(dzp<T> $$0, Stream<T> $$1) {
-         return $$1.<CharSequence>map($$0::b).collect(Collectors.joining("|"));
-      }
-
-      private static <T extends Comparable<T>> String c(dzp<T> $$0, T $$1, T[] $$2) {
-         return a($$0, Stream.concat(Stream.of($$1), Stream.of($$2)));
-      }
-
-      private <T extends Comparable<T>> void a(dzp<T> $$0, String $$1) {
-         String $$2 = this.a.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Tried to replace " + $$0 + " value from " + $$2 + " to " + $$1);
-         }
-      }
-
-      public final <T extends Comparable<T>> fpa.c a(dzp<T> $$0, T $$1) {
-         this.a($$0, $$0.b($$1));
-         return this;
-      }
-
-      @SafeVarargs
-      public final <T extends Comparable<T>> fpa.c a(dzp<T> $$0, T $$1, T... $$2) {
-         this.a($$0, c($$0, $$1, $$2));
-         return this;
-      }
-
-      public final <T extends Comparable<T>> fpa.c b(dzp<T> $$0, T $$1) {
-         this.a($$0, "!" + $$0.b($$1));
-         return this;
-      }
-
-      @SafeVarargs
-      public final <T extends Comparable<T>> fpa.c b(dzp<T> $$0, T $$1, T... $$2) {
-         this.a($$0, "!" + c($$0, $$1, $$2));
-         return this;
-      }
-
-      public JsonElement b() {
-         JsonObject $$0 = new JsonObject();
-         this.a.forEach(($$1, $$2) -> $$0.addProperty($$1.f(), $$2));
-         return $$0;
-      }
-
-      @Override
-      public void a(dyn<?, ?> $$0) {
-         List<dzp<?>> $$1 = this.a.keySet().stream().filter($$1x -> $$0.a($$1x.f()) != $$1x).collect(Collectors.toList());
-         if (!$$1.isEmpty()) {
-            throw new IllegalStateException("Properties " + $$1 + " are missing from " + $$0);
-         }
-      }
-   }
+public class fpa {
+   public static final fou a = fou.a.a(1.5F)
+      .a()
+      .a(
+         "root",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(0.0F, 0.0F, 2.5F), fot.b.b),
+            new fov(1.0F, fow.b(0.0F, 0.0F, -2.5F), fot.b.b),
+            new fov(1.5F, fow.b(0.0F, 0.0F, 2.5F), fot.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(2.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.375F, fow.b(-2.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.75F, fow.b(2.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(1.125F, fow.b(-2.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(1.5F, fow.b(2.5F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(22.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.75F, fow.b(-22.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(1.5F, fow.b(22.5F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fot(
+            fot.d.a,
+            new fov(0.0F, fow.a(0.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.4583F, fow.a(0.0F, 4.0F, 0.0F), fot.b.b),
+            new fov(0.75F, fow.a(0.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(1.5F, fow.a(0.0F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(-22.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.75F, fow.b(22.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(1.5F, fow.b(-22.5F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fot(
+            fot.d.a,
+            new fov(0.0F, fow.a(0.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.75F, fow.a(0.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(1.2083F, fow.a(0.0F, 4.0F, 0.0F), fot.b.b),
+            new fov(1.5F, fow.a(0.0F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(-20.4F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.75F, fow.b(22.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(1.375F, fow.b(-22.5F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.5F, fow.b(-20.4F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fot(
+            fot.d.a,
+            new fov(0.0F, fow.a(0.0F, -0.21F, 0.0F), fot.b.b),
+            new fov(0.75F, fow.a(0.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(1.0833F, fow.a(0.0F, 4.0F, 0.0F), fot.b.b),
+            new fov(1.375F, fow.a(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.5F, fow.a(0.0F, -0.21F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(22.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.625F, fow.b(-22.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(1.5F, fow.b(22.5F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fot(
+            fot.d.a,
+            new fov(0.0F, fow.a(0.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.375F, fow.a(0.0F, 4.0F, 0.0F), fot.b.b),
+            new fov(0.625F, fow.a(0.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(1.5F, fow.a(0.0F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.375F, fow.b(0.0F, 0.0F, -22.5F), fot.b.b),
+            new fov(0.75F, fow.b(0.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(1.125F, fow.b(0.0F, 0.0F, -22.5F), fot.b.b),
+            new fov(1.5F, fow.b(0.0F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.375F, fow.b(0.0F, 0.0F, 22.5F), fot.b.b),
+            new fov(0.75F, fow.b(0.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(1.125F, fow.b(0.0F, 0.0F, 22.5F), fot.b.b),
+            new fov(1.5F, fow.b(0.0F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a(
+         "tail",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(15.94102F, -8.42106F, 20.94102F), fot.b.b),
+            new fov(0.75F, fow.b(15.94102F, 8.42106F, -20.94102F), fot.b.b),
+            new fov(1.5F, fow.b(15.94102F, -8.42106F, 20.94102F), fot.b.b)
+         )
+      )
+      .b();
+   public static final fou b = fou.a.a(2.0F)
+      .a(
+         "body",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.3F, fow.b(30.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.8F, fow.b(24.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(2.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fot(
+            fot.d.a,
+            new fov(0.0F, fow.a(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.3F, fow.a(0.0F, 0.0F, 1.0F), fot.b.a),
+            new fov(1.8F, fow.a(0.0F, -6.0F, 1.0F), fot.b.a),
+            new fov(2.0F, fow.a(0.0F, -19.9F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.0F, fow.b(-30.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.5F, fow.b(-30.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(2.0F, fow.b(-90.0F, 10.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fot(
+            fot.d.a,
+            new fov(0.0F, fow.a(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.0F, fow.a(0.0F, -2.0F, 11.0F), fot.b.a),
+            new fov(1.5F, fow.a(0.0F, -2.0F, 11.0F), fot.b.a),
+            new fov(1.7F, fow.a(0.0F, -8.4F, 11.4F), fot.b.a),
+            new fov(2.0F, fow.a(0.0F, -20.6F, 12.0F), fot.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.0F, fow.b(-30.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.5F, fow.b(-30.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(2.0F, fow.b(-90.0F, -10.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fot(
+            fot.d.a,
+            new fov(0.0F, fow.a(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.0F, fow.a(0.0F, -2.0F, 11.0F), fot.b.a),
+            new fov(1.5F, fow.a(0.0F, -2.0F, 11.0F), fot.b.a),
+            new fov(1.7F, fow.a(0.0F, -8.4F, 11.4F), fot.b.a),
+            new fov(2.0F, fow.a(0.0F, -20.6F, 12.0F), fot.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(0.5F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.5F, fow.b(-10.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.7F, fow.b(-15.0F, -3.0F, 0.0F), fot.b.a),
+            new fov(1.9F, fow.b(-65.0F, -9.0F, 0.0F), fot.b.a),
+            new fov(2.0F, fow.b(-90.0F, -15.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fot(
+            fot.d.a,
+            new fov(0.0F, fow.a(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(0.5F, fow.a(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.5F, fow.a(0.0F, 0.0F, 1.0F), fot.b.a),
+            new fov(1.7F, fow.a(1.0F, -0.62F, 0.25F), fot.b.a),
+            new fov(1.9F, fow.a(0.5F, -11.25F, 2.5F), fot.b.a),
+            new fov(2.0F, fow.a(1.0F, -20.5F, 5.0F), fot.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(0.5F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.5F, fow.b(-10.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.7F, fow.b(-15.0F, 3.0F, 0.0F), fot.b.a),
+            new fov(1.9F, fow.b(-65.0F, 9.0F, 0.0F), fot.b.a),
+            new fov(2.0F, fow.b(-90.0F, 15.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fot(
+            fot.d.a,
+            new fov(0.0F, fow.a(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(0.5F, fow.a(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.5F, fow.a(0.0F, 0.0F, 1.0F), fot.b.a),
+            new fov(1.7F, fow.a(-1.0F, -0.62F, 0.25F), fot.b.a),
+            new fov(1.9F, fow.a(-0.5F, -11.25F, 2.5F), fot.b.a),
+            new fov(2.0F, fow.a(-1.0F, -20.5F, 5.0F), fot.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(0.7F, fow.b(-27.5F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.5F, fow.b(-21.25F, 0.0F, 0.0F), fot.b.a),
+            new fov(2.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "tail",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(5.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.7F, fow.b(5.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.9F, fow.b(80.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(2.0F, fow.b(50.0F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .b();
+   public static final fou c = fou.a.a(1.0F)
+      .a("body", new fot(fot.d.b, new fov(0.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a), new fov(1.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a)))
+      .a("body", new fot(fot.d.a, new fov(0.0F, fow.a(0.0F, -19.9F, 0.0F), fot.b.a), new fov(1.0F, fow.a(0.0F, -19.9F, 0.0F), fot.b.a)))
+      .a("right_front_leg", new fot(fot.d.b, new fov(0.0F, fow.b(-90.0F, 10.0F, 0.0F), fot.b.a), new fov(1.0F, fow.b(-90.0F, 10.0F, 0.0F), fot.b.a)))
+      .a("right_front_leg", new fot(fot.d.a, new fov(0.0F, fow.a(0.0F, -20.6F, 12.0F), fot.b.a), new fov(1.0F, fow.a(0.0F, -20.6F, 12.0F), fot.b.a)))
+      .a("left_front_leg", new fot(fot.d.b, new fov(0.0F, fow.b(-90.0F, -10.0F, 0.0F), fot.b.a), new fov(1.0F, fow.b(-90.0F, -10.0F, 0.0F), fot.b.a)))
+      .a("left_front_leg", new fot(fot.d.a, new fov(0.0F, fow.a(0.0F, -20.6F, 12.0F), fot.b.a), new fov(1.0F, fow.a(0.0F, -20.6F, 12.0F), fot.b.a)))
+      .a("left_hind_leg", new fot(fot.d.b, new fov(0.0F, fow.b(-90.0F, -15.0F, 0.0F), fot.b.a), new fov(1.0F, fow.b(-90.0F, -15.0F, 0.0F), fot.b.a)))
+      .a("left_hind_leg", new fot(fot.d.a, new fov(0.0F, fow.a(1.0F, -20.5F, 5.0F), fot.b.a), new fov(1.0F, fow.a(1.0F, -20.5F, 5.0F), fot.b.a)))
+      .a("right_hind_leg", new fot(fot.d.b, new fov(0.0F, fow.b(-90.0F, 15.0F, 0.0F), fot.b.a), new fov(1.0F, fow.b(-90.0F, 15.0F, 0.0F), fot.b.a)))
+      .a("right_hind_leg", new fot(fot.d.a, new fov(0.0F, fow.a(-1.0F, -20.5F, 5.0F), fot.b.a), new fov(1.0F, fow.a(-1.0F, -20.5F, 5.0F), fot.b.a)))
+      .a("head", new fot(fot.d.b, new fov(0.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a), new fov(1.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a)))
+      .a("tail", new fot(fot.d.b, new fov(0.0F, fow.b(50.0F, 0.0F, 0.0F), fot.b.a), new fov(1.0F, fow.b(50.0F, 0.0F, 0.0F), fot.b.a)))
+      .b();
+   public static final fou d = fou.a.a(2.6F)
+      .a(
+         "body",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(0.7F, fow.b(-17.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(1.8F, fow.b(-17.83F, 0.0F, 0.0F), fot.b.b),
+            new fov(2.3F, fow.b(-5.83F, 0.0F, 0.0F), fot.b.a),
+            new fov(2.6F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fot(
+            fot.d.a,
+            new fov(0.0F, fow.a(0.0F, -19.9F, 0.0F), fot.b.a),
+            new fov(0.7F, fow.a(0.0F, -19.9F, -3.0F), fot.b.a),
+            new fov(1.4F, fow.a(0.0F, -12.76F, -4.0F), fot.b.b),
+            new fov(1.8F, fow.a(0.0F, -10.1F, -4.0F), fot.b.b),
+            new fov(2.3F, fow.a(0.0F, -2.9F, -2.0F), fot.b.a),
+            new fov(2.6F, fow.a(0.0F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(-90.0F, 10.0F, 0.0F), fot.b.a),
+            new fov(0.5F, fow.b(-90.0F, 10.0F, 0.0F), fot.b.a),
+            new fov(1.1F, fow.b(-49.06F, 10.0F, 0.0F), fot.b.a),
+            new fov(1.8F, fow.b(-22.5F, 10.0F, 0.0F), fot.b.a),
+            new fov(2.3F, fow.b(-25.0F, 10.0F, 0.0F), fot.b.a),
+            new fov(2.6F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fot(
+            fot.d.a,
+            new fov(0.0F, fow.a(0.0F, -20.6F, 12.0F), fot.b.a),
+            new fov(0.5F, fow.a(0.0F, -20.6F, 8.0F), fot.b.a),
+            new fov(1.1F, fow.a(0.0F, -7.14F, 4.42F), fot.b.a),
+            new fov(1.8F, fow.a(0.0F, -1.27F, -1.33F), fot.b.a),
+            new fov(2.3F, fow.a(0.0F, -1.27F, -0.33F), fot.b.a),
+            new fov(2.6F, fow.a(0.0F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(-90.0F, -10.0F, 0.0F), fot.b.a),
+            new fov(0.5F, fow.b(-90.0F, -10.0F, 0.0F), fot.b.a),
+            new fov(1.1F, fow.b(-49.06F, -10.0F, 0.0F), fot.b.a),
+            new fov(1.8F, fow.b(-22.5F, -10.0F, 0.0F), fot.b.a),
+            new fov(2.3F, fow.b(-25.0F, -10.0F, 0.0F), fot.b.a),
+            new fov(2.6F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fot(
+            fot.d.a,
+            new fov(0.0F, fow.a(0.0F, -20.6F, 12.0F), fot.b.a),
+            new fov(0.5F, fow.a(0.0F, -20.6F, 8.0F), fot.b.a),
+            new fov(1.1F, fow.a(0.0F, -7.14F, 4.42F), fot.b.a),
+            new fov(1.8F, fow.a(0.0F, -1.27F, -1.33F), fot.b.a),
+            new fov(2.3F, fow.a(0.0F, -1.27F, -0.33F), fot.b.a),
+            new fov(2.6F, fow.a(0.0F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(-90.0F, -15.0F, 0.0F), fot.b.a),
+            new fov(0.3F, fow.b(-90.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(0.6F, fow.b(-90.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.1F, fow.b(-60.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.9F, fow.b(35.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(2.2F, fow.b(30.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(2.6F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fot(
+            fot.d.a,
+            new fov(0.0F, fow.a(1.0F, -20.5F, 5.0F), fot.b.a),
+            new fov(0.3F, fow.a(-2.0F, -20.5F, 3.0F), fot.b.a),
+            new fov(0.6F, fow.a(-2.0F, -20.5F, 3.0F), fot.b.a),
+            new fov(1.1F, fow.a(-2.0F, -10.5F, 2.0F), fot.b.a),
+            new fov(1.5F, fow.a(-2.0F, -0.4F, -3.9F), fot.b.a),
+            new fov(1.9F, fow.a(-2.0F, -4.3F, -9.8F), fot.b.a),
+            new fov(2.2F, fow.a(-1.0F, -2.5F, -5.0F), fot.b.a),
+            new fov(2.6F, fow.a(0.0F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(-90.0F, 15.0F, 0.0F), fot.b.a),
+            new fov(0.3F, fow.b(-90.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(0.6F, fow.b(-90.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.1F, fow.b(-60.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.9F, fow.b(35.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(2.2F, fow.b(30.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(2.6F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fot(
+            fot.d.a,
+            new fov(0.0F, fow.a(-1.0F, -20.5F, 5.0F), fot.b.a),
+            new fov(0.3F, fow.a(2.0F, -20.5F, 3.0F), fot.b.a),
+            new fov(0.6F, fow.a(2.0F, -20.5F, 3.0F), fot.b.a),
+            new fov(1.1F, fow.a(2.0F, -10.5F, 2.0F), fot.b.a),
+            new fov(1.5F, fow.a(2.0F, -0.4F, -3.9F), fot.b.a),
+            new fov(1.9F, fow.a(2.0F, -4.3F, -9.8F), fot.b.a),
+            new fov(2.2F, fow.a(1.0F, -2.5F, -5.0F), fot.b.a),
+            new fov(2.6F, fow.a(0.0F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(0.3F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(0.8F, fow.b(55.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(2.0F, fow.b(65.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(2.4F, fow.b(0.0F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .a(
+         "tail",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(50.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(0.4F, fow.b(55.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(0.9F, fow.b(55.0F, 0.0F, 0.0F), fot.b.a),
+            new fov(1.5F, fow.b(17.5F, 0.0F, 0.0F), fot.b.a),
+            new fov(2.6F, fow.b(5.0F, 0.0F, 0.0F), fot.b.a)
+         )
+      )
+      .b();
+   public static final fou e = fou.a.a(0.5F)
+      .a()
+      .a("body", new fot(fot.d.b, new fov(0.0F, fow.b(5.0F, 0.0F, 0.0F), fot.b.a), new fov(0.5F, fow.b(5.0F, 0.0F, 0.0F), fot.b.a)))
+      .a(
+         "tail",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(67.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.125F, fow.b(112.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.25F, fow.b(67.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.375F, fow.b(112.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.5F, fow.b(67.5F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(10.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.125F, fow.b(0.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.25F, fow.b(10.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.375F, fow.b(0.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.5F, fow.b(10.0F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(44.97272F, 1.76749F, -1.76833F), fot.b.b),
+            new fov(0.125F, fow.b(-90.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.25F, fow.b(44.97272F, 1.76749F, -1.76833F), fot.b.b),
+            new fov(0.375F, fow.b(-90.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.5F, fow.b(44.97272F, 1.76749F, -1.76833F), fot.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(-90.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.125F, fow.b(44.97272F, -1.76749F, 1.76833F), fot.b.b),
+            new fov(0.25F, fow.b(-90.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.375F, fow.b(44.97272F, -1.76749F, 1.76833F), fot.b.b),
+            new fov(0.5F, fow.b(-90.0F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(90.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.125F, fow.b(-45.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.25F, fow.b(90.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.375F, fow.b(-45.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.5F, fow.b(90.0F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(-45.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.125F, fow.b(90.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.25F, fow.b(-45.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.375F, fow.b(90.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(0.5F, fow.b(-45.0F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a("left_ear", new fot(fot.d.b, new fov(0.0F, fow.b(0.0F, -67.5F, 0.0F), fot.b.a), new fov(0.5F, fow.b(0.0F, -67.5F, 0.0F), fot.b.a)))
+      .a("right_ear", new fot(fot.d.b, new fov(0.0F, fow.b(0.0F, 67.5F, 0.0F), fot.b.a), new fov(0.5F, fow.b(0.0F, 67.5F, 0.0F), fot.b.a)))
+      .b();
+   public static final fou f = fou.a.a(4.0F)
+      .a(
+         "tail",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(5.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(1.0F, fow.b(4.98107F, 0.43523F, -4.98107F), fot.b.b),
+            new fov(3.0F, fow.b(4.9872F, -0.29424F, 3.36745F), fot.b.b),
+            new fov(4.0F, fow.b(5.0F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a(
+         "head",
+         new fot(
+            fot.d.b,
+            new fov(0.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.b),
+            new fov(2.0F, fow.b(-2.5F, 0.0F, 0.0F), fot.b.b),
+            new fov(4.0F, fow.b(0.0F, 0.0F, 0.0F), fot.b.b)
+         )
+      )
+      .a(
+         "left_ear",
+         new fot(
+            fot.d.b,
+            new fov(2.5F, fow.b(0.0F, 0.0F, -45.0F), fot.b.b),
+            new fov(2.625F, fow.b(0.0F, 0.0F, 22.5F), fot.b.b),
+            new fov(2.75F, fow.b(0.0F, 0.0F, -45.0F), fot.b.b),
+            new fov(2.875F, fow.b(0.0F, 0.0F, 22.5F), fot.b.b),
+            new fov(3.0F, fow.b(0.0F, 0.0F, -45.0F), fot.b.b)
+         )
+      )
+      .a(
+         "right_ear",
+         new fot(
+            fot.d.b,
+            new fov(2.5F, fow.b(0.0F, 0.0F, 45.0F), fot.b.b),
+            new fov(2.625F, fow.b(0.0F, 0.0F, -22.5F), fot.b.b),
+            new fov(2.75F, fow.b(0.0F, 0.0F, 45.0F), fot.b.b),
+            new fov(2.875F, fow.b(0.0F, 0.0F, -22.5F), fot.b.b),
+            new fov(3.0F, fow.b(0.0F, 0.0F, 45.0F), fot.b.b)
+         )
+      )
+      .b();
 }

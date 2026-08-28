@@ -1,59 +1,60 @@
-public class gjz extends gmh {
-   private final gmc a;
+import com.mojang.serialization.Codec;
+import java.time.Instant;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   protected gjz(
-      ghz $$0,
-      double $$1,
-      double $$2,
-      double $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      double $$7,
-      double $$8,
-      double $$9,
-      float $$10,
-      gmc $$11,
-      float $$12,
-      int $$13,
-      float $$14,
-      boolean $$15
-   ) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.u = $$14;
-      this.C = true;
-      this.a = $$11;
-      this.j *= (double)$$4;
-      this.k *= (double)$$5;
-      this.l *= (double)$$6;
-      this.j += $$7;
-      this.k += $$8;
-      this.l += $$9;
-      float $$16 = $$0.A.i() * $$12;
-      this.v = $$16;
-      this.w = $$16;
-      this.x = $$16;
-      this.D *= 0.75F * $$10;
-      this.t = (int)((double)$$13 / ((double)$$0.A.i() * 0.8 + 0.2) * (double)$$10);
-      this.t = Math.max(this.t, 1);
-      this.b($$11);
-      this.n = $$15;
+public enum gjz implements bai {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
+
+   public static final Codec<gjz> d = bai.a(gjz::values);
+   private final String e;
+
+   private gjz(final String $$0) {
+      this.e = $$0;
+   }
+
+   public static gjz a(xm $$0, ww $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
+      }
+   }
+
+   private static boolean a(xm $$0, ww $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         ww $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
+      }
+   }
+
+   private static boolean a(ww $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), xt.a).orElse(false);
+   }
+
+   private static boolean a(xt $$0) {
+      return !$$0.l().equals(xt.b);
+   }
+
+   public boolean a() {
+      return this == c;
+   }
+
+   @Nullable
+   public fnz a(xm $$0) {
+      return switch (this) {
+         case b -> fnz.a($$0.c());
+         case c -> fnz.c();
+         default -> null;
+      };
    }
 
    @Override
-   public gll b() {
-      return gll.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * azk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   public String c() {
+      return this.e;
    }
 }

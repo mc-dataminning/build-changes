@@ -1,123 +1,143 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class fsn implements gcb {
-   private static final ald a = ald.b("hud/hotbar");
-   private static final ald b = ald.b("hud/hotbar_selection");
-   private static final long c = 5000L;
-   private static final long d = 2000L;
-   private final fnd e;
-   private long f;
-   @Nullable
-   private gby g;
+public class fsn extends frw<fsn.a> {
+   private static final int a = 310;
+   private static final int m = 25;
+   private final gao n;
 
-   public fsn(fnd $$0) {
-      this.e = $$0;
+   public fsn(fof $$0, int $$1, gao $$2) {
+      super($$0, $$1, $$2.s.d(), $$2.s.c(), 25);
+      this.e = false;
+      this.n = $$2;
    }
 
-   public void a(int $$0) {
-      this.f = af.c();
-      if (this.g != null) {
-         this.g.b($$0);
-      } else {
-         this.g = new gby(this);
+   public void a(foi<?> $$0) {
+      this.b(fsn.b.a(this.c.n, $$0, this.n));
+   }
+
+   public void a(foi<?>... $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         foi<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
+         this.b(fsn.b.a(this.c.n, $$0[$$1], $$2, this.n));
       }
    }
 
-   private float c() {
-      long $$0 = this.f - af.c() + 5000L;
-      return azk.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
-   }
-
-   public void a(fpz $$0) {
-      if (this.g != null) {
-         float $$1 = this.c();
-         if ($$1 <= 0.0F) {
-            this.g.d();
-         } else {
-            int $$2 = $$0.a() / 2;
-            $$0.c().a();
-            $$0.c().a(0.0F, 0.0F, -90.0F);
-            int $$3 = azk.d((float)$$0.b() - 22.0F * $$1);
-            gcc $$4 = this.g.f();
-            this.a($$0, $$1, $$2, $$3, $$4);
-            $$0.c().b();
-         }
+   public void a(List<fro> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
+         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
       }
    }
 
-   protected void a(fpz $$0, float $$1, int $$2, int $$3, gcc $$4) {
-      int $$5 = axu.a($$1);
-      $$0.a(goi::H, a, $$2 - 91, $$3, 182, 22, $$5);
-      if ($$4.a() >= 0) {
-         $$0.a(goi::H, b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23, $$5);
-      }
-
-      for (int $$6 = 0; $$6 < 9; $$6++) {
-         this.a($$0, $$6, $$0.a() / 2 - 90 + $$6 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$6));
-      }
-   }
-
-   private void a(fpz $$0, int $$1, int $$2, float $$3, float $$4, gca $$5) {
-      if ($$5 != gby.a) {
-         $$0.c().a();
-         $$0.c().a((float)$$2, $$3, 0.0F);
-         float $$6 = $$5.aP_() ? 1.0F : 0.25F;
-         $$5.a($$0, $$6, $$4);
-         $$0.c().b();
-         int $$7 = (int)($$4 * 255.0F);
-         if ($$7 > 3 && $$5.aP_()) {
-            wv $$8 = this.e.n.S[$$1].k();
-            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$7 << 24));
-         }
-      }
-   }
-
-   public void b(fpz $$0) {
-      int $$1 = (int)(this.c() * 255.0F);
-      if ($$1 > 3 && this.g != null) {
-         gca $$2 = this.g.b();
-         wv $$3 = $$2 == gby.a ? this.g.c().b() : $$2.aO_();
-         if ($$3 != null) {
-            int $$4 = this.e.h.a($$3);
-            int $$5 = ($$0.a() - $$4) / 2;
-            int $$6 = $$0.b() - 35;
-            $$0.a(this.e.h, $$3, $$5, $$6, $$4, axu.c($$1, -1));
-         }
-      }
+   public void a(fro $$0, @Nullable fro $$1) {
+      this.b(fsn.a.a($$0, $$1, this.n));
    }
 
    @Override
-   public void a(gby $$0) {
-      this.g = null;
-      this.f = 0L;
+   public int a() {
+      return 310;
    }
 
-   public boolean a() {
-      return this.g != null;
-   }
-
-   public void b(int $$0) {
-      int $$1 = this.g.e() + $$0;
-
-      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == gby.a || !this.g.a($$1).aP_())) {
-         $$1 += $$0;
+   @Nullable
+   public fro b(foi<?> $$0) {
+      for (fsn.a $$1 : this.aD_()) {
+         if ($$1 instanceof fsn.b $$2) {
+            fro $$3 = $$2.a.get($$0);
+            if ($$3 != null) {
+               return $$3;
+            }
+         }
       }
 
-      if ($$1 >= 0 && $$1 <= 8) {
-         this.g.b($$1);
-         this.f = af.c();
-      }
+      return null;
    }
 
    public void b() {
-      this.f = af.c();
-      if (this.a()) {
-         int $$0 = this.g.e();
-         if ($$0 != -1) {
-            this.g.b($$0);
+      for (fsn.a $$0 : this.aD_()) {
+         if ($$0 instanceof fsn.b) {
+            fsn.b $$1 = (fsn.b)$$0;
+
+            for (fro $$2 : $$1.a.values()) {
+               if ($$2 instanceof foi.i<?> $$3) {
+                  $$3.c();
+               }
+            }
          }
-      } else {
-         this.g = new gby(this);
+      }
+   }
+
+   public Optional<ftn> e(double $$0, double $$1) {
+      for (fsn.a $$2 : this.aD_()) {
+         for (ftn $$3 : $$2.aD_()) {
+            if ($$3.a_($$0, $$1)) {
+               return Optional.of($$3);
+            }
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   protected static class a extends frw.a<fsn.a> {
+      private final List<fro> a;
+      private final fxi b;
+      private static final int c = 160;
+
+      a(List<fro> $$0, fxi $$1) {
+         this.a = ImmutableList.copyOf($$0);
+         this.b = $$1;
+      }
+
+      public static fsn.a a(List<fro> $$0, fxi $$1) {
+         return new fsn.a($$0, $$1);
+      }
+
+      public static fsn.a a(fro $$0, @Nullable fro $$1, fxi $$2) {
+         return $$1 == null ? new fsn.a(ImmutableList.of($$0), $$2) : new fsn.a(ImmutableList.of($$0, $$1), $$2);
+      }
+
+      @Override
+      public void a(frc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = 0;
+         int $$11 = this.b.n / 2 - 155;
+
+         for (fro $$12 : this.a) {
+            $$12.c($$11 + $$10, $$2);
+            $$12.a($$0, $$6, $$7, $$9);
+            $$10 += 160;
+         }
+      }
+
+      @Override
+      public List<? extends ftn> aD_() {
+         return this.a;
+      }
+
+      @Override
+      public List<? extends fvl> b() {
+         return this.a;
+      }
+   }
+
+   protected static class b extends fsn.a {
+      final Map<foi<?>, fro> a;
+
+      private b(Map<foi<?>, fro> $$0, gao $$1) {
+         super(ImmutableList.copyOf($$0.values()), $$1);
+         this.a = $$0;
+      }
+
+      public static fsn.b a(foj $$0, foi<?> $$1, gao $$2) {
+         return new fsn.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
+      }
+
+      public static fsn.b a(foj $$0, foi<?> $$1, @Nullable foi<?> $$2, gao $$3) {
+         fro $$4 = $$1.a($$0);
+         return $$2 == null ? new fsn.b(ImmutableMap.of($$1, $$4), $$3) : new fsn.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
       }
    }
 }

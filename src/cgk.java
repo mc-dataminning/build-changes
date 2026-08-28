@@ -1,22 +1,50 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class cgk extends cgt {
-   public static final float a = 10.0F;
+public class cgk extends cgi {
+   @Nullable
+   private iu p;
 
-   @Override
-   protected boolean a(arn $$0, bwr $$1, bwr $$2) {
-      return !$$1.eb().a(cft.V) && cgz.c($$0, $$1, $$2) && ckd.j($$2) && !this.a($$1, $$2) ? $$2.a($$1, 10.0) : false;
-   }
-
-   private boolean a(bwr $$0, bwr $$1) {
-      List<UUID> $$2 = $$0.eb().c(cft.ab).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cG());
+   public cgk(bxb $$0, dip $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected cft<bwr> b() {
-      return cft.C;
+   public ewj a(iu $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public ewj a(bwa $$0, int $$1) {
+      this.p = $$0.dv();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(bwa $$0, double $$1) {
+      ewj $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dv();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.k()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dt(), (double)this.a.dq())
+               && (!(this.a.dC() > (double)this.p.v()) || !iu.a((double)this.p.u(), this.a.dC(), (double)this.p.w()).a(this.a.dt(), (double)this.a.dq()))) {
+               this.a.L().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

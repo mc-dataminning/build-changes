@@ -1,46 +1,29 @@
-public record aaw(jj c, float d, float e, float f, float g, float h) implements aaf {
-   public static final yt<vr, aaw> a = aaf.a(aaw::a, aaw::new);
-   public static final aaf.b<aaw> b = aaf.a("debug/worldgen_attempt");
+import java.util.HashSet;
+import java.util.Set;
 
-   private aaw(vr $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+public record aaw(Set<jx> c, Set<jx> d) implements aag {
+   public static final yu<vs, aaw> a = aag.a(aaw::a, aaw::new);
+   public static final aag.b<aaw> b = aag.a("debug/village_sections");
+
+   private aaw(vs $$0) {
+      this($$0.a(HashSet::new, vs::g), $$0.a(HashSet::new, vs::g));
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
+   private void a(vs $$0) {
+      $$0.a(this.c, vs::a);
+      $$0.a(this.d, vs::a);
    }
 
    @Override
-   public aaf.b<aaw> a() {
+   public aag.b<aaw> a() {
       return b;
    }
 
-   public jj b() {
+   public Set<jx> b() {
       return this.c;
    }
 
-   public float c() {
+   public Set<jx> c() {
       return this.d;
-   }
-
-   public float d() {
-      return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
    }
 }

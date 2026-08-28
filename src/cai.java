@@ -2,55 +2,70 @@ import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-@Deprecated
 public class cai {
-   public static byj<bwr> a(float $$0, btb $$1) {
-      return a($$0, $$1, $$0x -> true);
+   private static final int a = 10;
+   private static final int b = 7;
+   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
+
+   public static cab<bxh> a(float $$0) {
+      return a($$0, true);
    }
 
-   public static byj<bwr> a(bwb<?> $$0, float $$1, btb $$2) {
-      return a($$1, $$2, $$1x -> $$0.equals($$1x.aq()));
+   public static cab<bxh> a(float $$0, boolean $$1) {
+      return a($$0, $$0x -> chv.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.bj());
    }
 
-   private static byj<bwr> a(float $$0, btb $$1, Predicate<bwr> $$2) {
-      float $$3 = $$0 * $$0;
-      cai.a $$4 = new cai.a($$1);
-      return cbv.a(
-         (Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$3x -> $$3x.group($$3x.c(cft.o), $$3x.b(cft.h))
-               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<bwr> $$9 = $$3x.<cfv>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g((bvs)$$7) <= (double)$$3));
-                     if ($$9.isEmpty()) {
-                        return false;
-                     } else if (!$$4.a($$6.A)) {
-                        return false;
-                     } else {
-                        $$4x.a(new byt($$9.get(), true));
-                        return true;
-                     }
-                  }))
-      );
+   public static byr<bxh> a(float $$0, int $$1, int $$2) {
+      return a($$0, $$2x -> chv.a($$2x, $$1, $$2), $$0x -> true);
    }
 
-   public static final class a {
-      private final btb a;
-      private int b;
+   public static byr<bxh> b(float $$0) {
+      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
+   }
 
-      public a(btb $$0) {
-         if ($$0.a() <= 1) {
-            throw new IllegalArgumentException();
+   public static byr<bxh> c(float $$0) {
+      return a($$0, cai::a, bwa::bj);
+   }
+
+   private static cab<bxh> a(float $$0, Function<bxh, fdw> $$1, Predicate<bxh> $$2) {
+      return ccd.a((Function<ccd.b<bxh>, ? extends App<ccd.c<bxh>, ccg<bxh>>>)($$3 -> $$3.group($$3.c(cgb.n)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               if (!$$2.test($$5)) {
+                  return false;
+               } else {
+                  Optional<fdw> $$7 = Optional.ofNullable($$1.apply($$5));
+                  $$3x.a($$7.map($$1xxxx -> new cge($$1xxxx, $$0, 0)));
+                  return true;
+               }
+            })));
+   }
+
+   @Nullable
+   private static fdw a(bxh $$0) {
+      fdw $$1 = null;
+      fdw $$2 = null;
+
+      for (int[] $$3 : c) {
+         if ($$1 == null) {
+            $$2 = bys.a($$0, $$3[0], $$3[1]);
          } else {
-            this.a = $$0;
+            $$2 = $$0.dt().e($$0.dt().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
          }
+
+         if ($$2 == null || $$0.dV().b_(iu.a((jo)$$2)).c()) {
+            return $$1;
+         }
+
+         $$1 = $$2;
       }
 
-      public boolean a(azs $$0) {
-         if (this.b == 0) {
-            this.b = this.a.a($$0) - 1;
-            return false;
-         } else {
-            return --this.b == 0;
-         }
-      }
+      return $$2;
+   }
+
+   @Nullable
+   private static fdw a(bxh $$0, int $$1, int $$2) {
+      fdw $$3 = $$0.h(0.0F);
+      return chq.a($$0, $$1, $$2, -2, $$3.d, $$3.f, (float) (Math.PI / 2));
    }
 }

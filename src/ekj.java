@@ -1,19 +1,26 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ekj implements ejv {
-   public static final Codec<ekj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(ekd.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, ekj::new)
-   );
-   public final List<ekd.a> b;
-
-   public ekj(dym $$0, dym $$1) {
-      this(ImmutableList.of(ekd.a(new esm($$0), $$1)));
+public class ekj extends eit<ele> {
+   public ekj(Codec<ele> $$0) {
+      super($$0);
    }
 
-   public ekj(List<ekd.a> $$0) {
-      this.b = $$0;
+   @Override
+   public boolean a(eiv<ele> $$0) {
+      djo $$1 = $$0.b();
+      iu $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.v($$2)) {
+         return false;
+      } else {
+         for (ja $$3 : ja.values()) {
+            if ($$3 != ja.a && dva.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, dlw.ft.m().b(dva.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 }

@@ -1,13 +1,21 @@
-public class gxm extends gsy<coc, hda, ggt<hda>> {
-   public gxm(guf.a $$0) {
-      this($$0, ghc.dZ, ghc.ea, ghc.ei, ghc.ej, ghc.eb, ghc.ec);
+public class gxm extends gwq<coa, hcp, ggy> {
+   private static final ale a = ale.b("textures/entity/silverfish.png");
+
+   public gxm(gvk.a $$0) {
+      super($$0, new ggy($$0.a(gif.cR)), 0.3F);
    }
 
-   public hda b() {
-      return new hda();
+   @Override
+   protected float aR_() {
+      return 180.0F;
    }
 
-   public gxm(guf.a $$0, ghb $$1, ghb $$2, ghb $$3, ghb $$4, ghb $$5, ghb $$6) {
-      super($$0, new ggt<>($$0.a($$1)), new ggt<>($$0.a($$2)), new ggt<>($$0.a($$3)), new ggt<>($$0.a($$4)), new ggt<>($$0.a($$5)), new ggt<>($$0.a($$6)));
+   @Override
+   public ale b(hcp $$0) {
+      return a;
+   }
+
+   public hcp b() {
+      return new hcp();
    }
 }

@@ -3,28 +3,28 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class bq extends dz<bq.a> {
+public class bq extends dj<bq.a> {
    @Override
    public Codec<bq.a> a() {
       return bq.a.a;
    }
 
-   public void a(aro $$0, @Nullable bvs $$1) {
-      exl $$2 = $$1 != null ? bx.b($$0, $$1) : null;
+   public void a(arp $$0, @Nullable bwa $$1) {
+      eyn $$2 = $$1 != null ? bx.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
-   public static record a(Optional<bi> b, Optional<dl> c, Optional<bi> d) implements dz.a {
+   public static record a(Optional<bi> b, Optional<cw> c, Optional<bi> d) implements dj.a {
       public static final Codec<bq.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bx.b.optionalFieldOf("player").forGetter(bq.a::a),
-                  dl.a.optionalFieldOf("effects").forGetter(bq.a::b),
+                  cw.a.optionalFieldOf("effects").forGetter(bq.a::b),
                   bx.b.optionalFieldOf("source").forGetter(bq.a::c)
                )
                .apply($$0, bq.a::new)
       );
 
-      public static aq<bq.a> a(dl.a $$0) {
+      public static aq<bq.a> a(cw.a $$0) {
          return ap.B.a(new bq.a(Optional.empty(), $$0.b(), Optional.empty()));
       }
 
@@ -32,13 +32,13 @@ public class bq extends dz<bq.a> {
          return ap.B.a(new bq.a(Optional.empty(), Optional.empty(), Optional.of(bx.a($$0.b()))));
       }
 
-      public boolean a(aro $$0, @Nullable exl $$1) {
-         return this.c.isPresent() && !this.c.get().a((bwr)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
+      public boolean a(arp $$0, @Nullable eyn $$1) {
+         return this.c.isPresent() && !this.c.get().a((bwz)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
       }
 
       @Override
       public void a(bj $$0) {
-         dz.a.super.a($$0);
+         dj.a.super.a($$0);
          $$0.a(this.d, ".source");
       }
 
@@ -47,7 +47,7 @@ public class bq extends dz<bq.a> {
          return this.b;
       }
 
-      public Optional<dl> b() {
+      public Optional<cw> b() {
          return this.c;
       }
 

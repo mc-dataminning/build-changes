@@ -1,75 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejc extends ehr<ekq> {
-   public ejc(Codec<ekq> $$0) {
-      super($$0);
-   }
+public class ejc implements ekx {
+   public static final Codec<ejc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dzo.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
+               dzo.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
+               dzo.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
+               dzo.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
+               egu.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, ejc::new)
+   );
+   public final dzo b;
+   public final dzo c;
+   public final dzo d;
+   public final dzo e;
+   public final egu f;
+   public final boolean g;
 
-   @Override
-   public boolean a(eht<ekq> $$0) {
-      ekq $$1 = $$0.f();
-      dio $$2 = $$0.b();
-      jj $$3 = $$0.e();
-      if (!$$2.a_($$3.d()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.e()).a($$1.f)) {
-         return false;
-      } else {
-         dym $$4 = $$2.a_($$3);
-         if (!$$4.l() && !$$4.a($$1.f)) {
-            return false;
-         } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.i()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.u($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.i())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.e())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
-         }
-      }
+   public ejc(dzo $$0, dzo $$1, dzo $$2, dzo $$3, egu $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 }

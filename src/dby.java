@@ -1,30 +1,32 @@
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public enum dby implements bag {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
+public record dby(float c, Optional<ale> d) {
+   public static final Codec<dby> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ays.o.fieldOf("seconds").forGetter(dby::b), ale.a.optionalFieldOf("cooldown_group").forGetter(dby::c)).apply($$0, dby::new)
+   );
+   public static final yu<wh, dby> b = yu.a(ys.l, dby::b, ale.b.a(ys::a), dby::c, dby::new);
 
-   public static final Codec<dby> e = bag.a(dby::values);
-   public static final IntFunction<dby> f = aya.a(dby::a, values(), aya.a.a);
-   public static final yt<ByteBuf, dby> g = yr.a(f, dby::a);
-   private final String h;
-   private final int i;
-
-   private dby(final String $$0, final int $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public dby(float $$0) {
+      this($$0, Optional.empty());
    }
 
-   @Override
-   public String c() {
-      return this.h;
+   public int a() {
+      return (int)(this.c * 20.0F);
    }
 
-   private int a() {
-      return this.i;
+   public void a(cys $$0, bwz $$1) {
+      if ($$1 instanceof cqs $$2) {
+         $$2.gE().a($$0, this.a());
+      }
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public Optional<ale> c() {
+      return this.d;
    }
 }

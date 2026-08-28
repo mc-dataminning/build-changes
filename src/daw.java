@@ -1,60 +1,73 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public record daw(List<daw.a> e) implements dac, day {
+public final class daw implements dbx {
    public static final daw a = new daw(List.of());
-   public static final int b = 160;
-   public static final Codec<daw> c = daw.a.a.listOf().xmap(daw::new, daw::a);
-   public static final yt<wg, daw> d = daw.a.b.a(yr.a()).a(daw::new, daw::a);
+   public static final Codec<daw> b = cys.b.listOf().xmap(daw::new, $$0 -> $$0.d);
+   public static final yu<wh, daw> c = cys.i.a(ys.a()).a(daw::new, $$0 -> $$0.d);
+   private final List<cys> d;
 
-   public daw a(daw.a $$0) {
-      return new daw(af.a(this.e, $$0));
+   private daw(List<cys> $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public void a(dhp $$0, bwr $$1, cxy $$2, dab $$3) {
-      for (daw.a $$4 : this.e) {
-         $$1.a($$4.a());
+   public static daw a(cys $$0) {
+      return new daw(List.of($$0.v()));
+   }
+
+   public static daw a(List<cys> $$0) {
+      return new daw(List.copyOf(Lists.transform($$0, cys::v)));
+   }
+
+   public boolean a(cyo $$0) {
+      for (cys $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
       }
+
+      return false;
+   }
+
+   public List<cys> a() {
+      return Lists.transform(this.d, cys::v);
+   }
+
+   public boolean b() {
+      return this.d.isEmpty();
    }
 
    @Override
-   public void a(cxu.b $$0, Consumer<wv> $$1, czn $$2) {
-      if ($$2.b()) {
-         List<buw> $$3 = new ArrayList<>();
-
-         for (daw.a $$4 : this.e) {
-            $$3.add($$4.a());
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof daw $$1 && cys.a(this.d, $$1.d)) {
+            return true;
          }
 
-         czu.a($$3, $$1, 1.0F, $$0.b());
+         return false;
       }
    }
 
-   public List<daw.a> a() {
-      return this.e;
+   @Override
+   public int hashCode() {
+      return cys.a(this.d);
    }
 
-   public static record a(js<buu> c, int d) {
-      public static final Codec<daw.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(buu.a.fieldOf("id").forGetter(daw.a::b), Codec.INT.lenientOptionalFieldOf("duration", 160).forGetter(daw.a::c))
-               .apply($$0, daw.a::new)
-      );
-      public static final yt<wg, daw.a> b = yt.a(buu.b, daw.a::b, yr.h, daw.a::c, daw.a::new);
+   @Override
+   public String toString() {
+      return "ChargedProjectiles[items=" + this.d + "]";
+   }
 
-      public buw a() {
-         return new buw(this.c, this.d);
-      }
-
-      public js<buu> b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
+   @Override
+   public void a(cyo.b $$0, Consumer<ww> $$1, dah $$2, ke $$3) {
+      for (cys $$4 : this.d) {
+         $$1.accept(ww.c("item.minecraft.crossbow.projectile").b(wv.v).b($$4.K()));
+         dbw $$5 = $$4.a(kj.q, dbw.c);
+         $$4.a($$0, $$5, null, dah.a, $$1x -> $$1.accept(ww.b("  ").b($$1x).a(n.h)));
       }
    }
 }

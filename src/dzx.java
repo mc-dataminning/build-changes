@@ -1,37 +1,51 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public enum dzx implements bag {
-   a(0, "start"),
-   b(1, "log"),
-   c(2, "fail"),
-   d(3, "accept");
+public class dzx implements Predicate<dzo> {
+   public static final Predicate<dzo> a = $$0 -> true;
+   private final dzp<dlu, dzo> b;
+   private final Map<ear<?>, Predicate<Object>> c = Maps.newHashMap();
 
-   private static final IntFunction<dzx> g = aya.a($$0 -> $$0.h, values(), aya.a.a);
-   public static final bag.a<dzx> e = bag.a(dzx::values);
-   public static final yt<ByteBuf, dzx> f = yr.a(g, $$0 -> $$0.h);
-   private final int h;
-   private final String i;
-   private final wv j;
-   private final wv k;
-
-   private dzx(final int $$0, final String $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = wv.c("test_block.mode." + $$1);
-      this.k = wv.c("test_block.mode_info." + $$1);
+   private dzx(dzp<dlu, dzo> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public String c() {
-      return this.i;
+   public static dzx a(dlu $$0) {
+      return new dzx($$0.l());
    }
 
-   public wv a() {
-      return this.j;
+   public boolean a(@Nullable dzo $$0) {
+      if ($$0 != null && $$0.b().equals(this.b.c())) {
+         if (this.c.isEmpty()) {
+            return true;
+         } else {
+            for (Entry<ear<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
+               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
    }
 
-   public wv b() {
-      return this.k;
+   protected <T extends Comparable<T>> boolean a(dzo $$0, ear<T> $$1, Predicate<Object> $$2) {
+      T $$3 = $$0.c($$1);
+      return $$2.test($$3);
+   }
+
+   public <V extends Comparable<V>> dzx a(ear<V> $$0, Predicate<Object> $$1) {
+      if (!this.b.d().contains($$0)) {
+         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
+      } else {
+         this.c.put($$0, $$1);
+         return this;
+      }
    }
 }

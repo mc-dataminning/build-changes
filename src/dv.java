@@ -1,80 +1,49 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Optional;
 
-public class dv extends dz<dv.a> {
+public class dv extends dj<dv.a> {
    @Override
    public Codec<dv.a> a() {
       return dv.a.a;
    }
 
-   public void a(aro $$0, alc<dcl<?>> $$1, List<cxy> $$2) {
-      this.a($$0, $$2x -> $$2x.b($$1, $$2));
+   public void a(arp $$0, cpz $$1, cys $$2) {
+      eyn $$3 = bx.b($$0, $$1);
+      this.a($$0, $$2x -> $$2x.a($$3, $$2));
    }
 
-   public static record a(Optional<bi> b, alc<dcl<?>> c, List<cv> d) implements dz.a {
+   public static record a(Optional<bi> b, Optional<bi> c, Optional<cl> d) implements dj.a {
       public static final Codec<dv.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bx.b.optionalFieldOf("player").forGetter(dv.a::a),
-                  alc.a(me.br).fieldOf("recipe_id").forGetter(dv.a::b),
-                  cv.a.listOf().optionalFieldOf("ingredients", List.of()).forGetter(dv.a::c)
+                  bx.b.optionalFieldOf("villager").forGetter(dv.a::c),
+                  cl.a.optionalFieldOf("item").forGetter(dv.a::d)
                )
                .apply($$0, dv.a::new)
       );
 
-      public static aq<dv.a> a(alc<dcl<?>> $$0, List<cv.a> $$1) {
-         return ap.ac.a(new dv.a(Optional.empty(), $$0, $$1.stream().map(cv.a::b).toList()));
+      public static aq<dv.a> b() {
+         return ap.t.a(new dv.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public static aq<dv.a> a(alc<dcl<?>> $$0) {
-         return ap.ac.a(new dv.a(Optional.empty(), $$0, List.of()));
+      public static aq<dv.a> a(bx.a $$0) {
+         return ap.t.a(new dv.a(Optional.of(bx.a($$0)), Optional.empty(), Optional.empty()));
       }
 
-      public static aq<dv.a> b(alc<dcl<?>> $$0) {
-         return ap.ad.a(new dv.a(Optional.empty(), $$0, List.of()));
+      public boolean a(eyn $$0, cys $$1) {
+         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 
-      boolean b(alc<dcl<?>> $$0, List<cxy> $$1) {
-         if ($$0 != this.c) {
-            return false;
-         } else {
-            List<cxy> $$2 = new ArrayList<>($$1);
-
-            for (cv $$3 : this.d) {
-               boolean $$4 = false;
-               Iterator<cxy> $$5 = $$2.iterator();
-
-               while ($$5.hasNext()) {
-                  if ($$3.a($$5.next())) {
-                     $$5.remove();
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
+      @Override
+      public void a(bj $$0) {
+         dj.a.super.a($$0);
+         $$0.a(this.c, ".villager");
       }
 
       @Override
       public Optional<bi> a() {
          return this.b;
-      }
-
-      public alc<dcl<?>> b() {
-         return this.c;
-      }
-
-      public List<cv> c() {
-         return this.d;
       }
    }
 }

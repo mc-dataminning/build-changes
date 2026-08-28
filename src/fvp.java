@@ -1,74 +1,46 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-public class fvp implements AutoCloseable {
-   private static final ald a = ald.b("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final hgu d;
-   private final ald e;
-   @Nullable
-   private hgf f;
-   private boolean g;
+public class fvp<T> {
+   private final T b;
+   private final BiConsumer<Consumer<String>, T> c;
+   public static final fvp<?> a = new fvp<>(bas.a, ($$0, $$1) -> {
+   });
 
-   private fvp(hgu $$0, ald $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   private fvp(T $$0, BiConsumer<Consumer<String>, T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static fvp a(hgu $$0, String $$1) {
-      return new fvp($$0, ald.b("worlds/" + af.a($$1, ald::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   public static fvp<?> a(String $$0) {
+      return new fvp<>($$0, Consumer::accept);
    }
 
-   public static fvp b(hgu $$0, String $$1) {
-      return new fvp($$0, ald.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   public static fvp<?> a(ww $$0) {
+      return new fvp<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
    }
 
-   public void a(fgo $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new hgf($$0);
-            } else {
-               this.f.a($$0);
-               this.f.d();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
+   public static fvp<?> a(List<ww> $$0) {
+      return new fvp<>($$0, ($$1, $$2) -> $$0.stream().map(ww::getString).forEach($$1));
    }
 
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
-      }
-   }
-
-   public ald b() {
-      return this.f != null ? this.e : a;
+   public void a(Consumer<String> $$0) {
+      this.c.accept($$0, this.b);
    }
 
    @Override
-   public void close() {
-      this.a();
-      this.g = true;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fvp<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+      }
    }
 
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
-      }
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

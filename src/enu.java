@@ -1,16 +1,45 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public record enu(eep.c[] a) implements eep.c {
-   @Nullable
+public class enu extends ens {
+   public static final MapCodec<enu> a = MapCodec.unit(() -> enu.b);
+   public static final enu b = new enu();
+
    @Override
-   public dym calculate(eee.b $$0) {
-      for (eep.c $$1 : this.a) {
-         dym $$2 = $$1.calculate($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
+   protected ent<?> a() {
+      return ent.a;
+   }
 
-      return null;
+   @Override
+   public void a(ens.a $$0) {
+      azt $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            iu $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dva.d);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            iu $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dva.f);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            iu $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dva.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            iu $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dva.c);
+            }
+         }
+      });
    }
 }

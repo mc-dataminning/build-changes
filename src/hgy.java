@@ -1,75 +1,40 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class hgy {
-   private static final Logger a = LogUtils.getLogger();
-   private static final akw b = new akw("atlases", ".json");
-   private final List<hgx> c;
+public class hgy implements hgz {
+   private final gfz a;
+   private final hkg b;
 
-   private hgy(List<hgx> $$0) {
-      this.c = $$0;
+   public hgy(gfz $$0, hkg $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public List<Function<hgw, hgm>> a(ava $$0) {
-      final Map<ald, hgx.b> $$1 = new HashMap<>();
-      hgx.a $$2 = new hgx.a() {
-         @Override
-         public void a(ald $$0, hgx.b $$1x) {
-            hgx.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
-            }
-         }
-
-         @Override
-         public void a(Predicate<ald> $$0) {
-            Iterator<Entry<ald, hgx.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<ald, hgx.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
-            }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<hgw, hgm>> $$3 = ImmutableList.builder();
-      $$3.add((Function<hgw, hgm>)$$0x -> hgh.b());
-      $$3.addAll($$1.values());
-      return $$3.build();
+   @Override
+   public void a(cyq $$0, fiq $$1, gpd $$2, int $$3, int $$4, boolean $$5) {
+      gsa.a($$1, $$2, $$3, $$4, this.a, this.b);
    }
 
-   public static hgy a(ava $$0, ald $$1) {
-      ald $$2 = b.a($$1);
-      List<hgx> $$3 = new ArrayList<>();
+   public static record a(ebc b, Optional<ale> c) implements hhd.a {
+      public static final MapCodec<hgy.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ebc.a.fieldOf("wood_type").forGetter(hgy.a::b), ale.a.optionalFieldOf("texture").forGetter(hgy.a::c)).apply($$0, hgy.a::new)
+      );
 
-      for (auy $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends hgx>)hha.h.parse($$6).getOrThrow());
-         } catch (Exception var11) {
-            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
-         }
+      public a(ebc $$0) {
+         this($$0, Optional.empty());
       }
 
-      return new hgy($$3);
+      @Override
+      public MapCodec<hgy.a> a() {
+         return a;
+      }
+
+      @Override
+      public hhd<?> a(gic $$0) {
+         gfz $$1 = gsa.a($$0, this.b, gsa.a.c);
+         hkg $$2 = this.c.<hkg>map(gpy.r::a).orElseGet(() -> gpy.b(this.b));
+         return new hgy($$1, $$2);
+      }
    }
 }

@@ -1,23 +1,13 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class fjo extends fjt implements fjn {
-   @SerializedName("regionName")
-   private final String a;
-   @SerializedName("ping")
-   private final int b;
-
-   public fjo(String $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public abstract class fjo extends RuntimeException {
+   @Nullable
+   public ww a() {
+      return null;
    }
 
-   public int a() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
+   @Nullable
+   public ww[] b() {
+      return null;
    }
 }

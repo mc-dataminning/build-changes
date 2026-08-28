@@ -1,9 +1,13 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-
 public enum baq {
-   a;
+   a,
+   b,
+   c;
 
-   public static final Codec<baq> b = Codec.unit(a);
-   public static final yt<ByteBuf, baq> c = yt.a(a);
+   public boolean a(boolean $$0) {
+      return switch (this) {
+         case a -> true;
+         case b -> false;
+         default -> $$0;
+      };
+   }
 }

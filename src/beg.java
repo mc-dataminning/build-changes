@@ -1,75 +1,28 @@
-import com.google.common.collect.Sets;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.Set;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class beg extends DataFix {
-   private static final Set<String> a = Sets.newHashSet(
-      new String[]{
-         "ArmorStand",
-         "Bat",
-         "Blaze",
-         "CaveSpider",
-         "Chicken",
-         "Cow",
-         "Creeper",
-         "EnderDragon",
-         "Enderman",
-         "Endermite",
-         "EntityHorse",
-         "Ghast",
-         "Giant",
-         "Guardian",
-         "LavaSlime",
-         "MushroomCow",
-         "Ozelot",
-         "Pig",
-         "PigZombie",
-         "Rabbit",
-         "Sheep",
-         "Shulker",
-         "Silverfish",
-         "Skeleton",
-         "Slime",
-         "SnowMan",
-         "Spider",
-         "Squid",
-         "Villager",
-         "VillagerGolem",
-         "Witch",
-         "WitherBoss",
-         "Wolf",
-         "Zombie"
-      }
-   );
+public class beg extends bhp {
+   private final Map<String, String> c;
 
-   public beg(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public beg(Schema $$0, String $$1, String $$2, Map<String, String> $$3) {
+      super($$0, false, $$1, bit.D, $$2);
+      this.c = $$3;
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.get("HealF").asNumber().result();
-      Optional<Number> $$2 = $$0.get("Health").asNumber().result();
-      float $$3;
-      if ($$1.isPresent()) {
-         $$3 = $$1.get().floatValue();
-         $$0 = $$0.remove("HealF");
-      } else {
-         if (!$$2.isPresent()) {
-            return $$0;
-         }
-
-         $$3 = $$2.get().floatValue();
+      for (Entry<String, String> $$1 : this.c.entrySet()) {
+         $$0 = $$0.renameField($$1.getKey(), $$1.getValue());
       }
 
-      return $$0.set("Health", $$0.createFloat($$3));
+      return $$0;
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(biq.D), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

@@ -1,120 +1,58 @@
-import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
+import com.google.gson.annotations.SerializedName;
+import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
-public interface fmt {
-   fmt a = new fmt.a(0.0F);
-   fmt b = new fmt.a(1.0F);
+public class fmt {
+   private static final String a = "realms_persistence.json";
+   private static final fjy b = new fjy();
+   private static final Logger c = LogUtils.getLogger();
 
-   float a();
+   public fmt.a a() {
+      return b();
+   }
 
-   float a(boolean var1);
+   public void a(fmt.a $$0) {
+      b($$0);
+   }
 
-   float b();
+   public static fmt.a b() {
+      Path $$0 = c();
 
-   public static class a implements fmt {
-      private final float c;
-
-      a(float $$0) {
-         this.c = $$0;
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         fmt.a $$2 = b.a($$1, fmt.a.class);
+         if ($$2 != null) {
+            return $$2;
+         }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
       }
 
-      @Override
-      public float a() {
-         return this.c;
-      }
+      return new fmt.a();
+   }
 
-      @Override
-      public float a(boolean $$0) {
-         return this.c;
-      }
+   public static void b(fmt.a $$0) {
+      Path $$1 = c();
 
-      @Override
-      public float b() {
-         return this.c;
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   public static class b implements fmt {
-      private float c;
-      private float d;
-      private float e;
-      private float f;
-      private long g;
-      private long h;
-      private final float i;
-      private final FloatUnaryOperator j;
-      private boolean k;
-      private boolean l;
+   private static Path c() {
+      return fof.Q().q.toPath().resolve("realms_persistence.json");
+   }
 
-      public b(float $$0, long $$1, FloatUnaryOperator $$2) {
-         this.i = 1000.0F / $$0;
-         this.h = this.g = $$1;
-         this.j = $$2;
-      }
-
-      public int a(long $$0, boolean $$1) {
-         this.b($$0);
-         return $$1 ? this.a($$0) : 0;
-      }
-
-      private int a(long $$0) {
-         this.c = (float)($$0 - this.g) / this.j.apply(this.i);
-         this.g = $$0;
-         this.d = this.d + this.c;
-         int $$1 = (int)this.d;
-         this.d -= (float)$$1;
-         return $$1;
-      }
-
-      private void b(long $$0) {
-         this.e = (float)($$0 - this.h) / this.i;
-         this.h = $$0;
-      }
-
-      public void b(boolean $$0) {
-         if ($$0) {
-            this.c();
-         } else {
-            this.d();
-         }
-      }
-
-      private void c() {
-         if (!this.k) {
-            this.f = this.d;
-         }
-
-         this.k = true;
-      }
-
-      private void d() {
-         if (this.k) {
-            this.d = this.f;
-         }
-
-         this.k = false;
-      }
-
-      public void c(boolean $$0) {
-         this.l = $$0;
-      }
-
-      @Override
-      public float a() {
-         return this.c;
-      }
-
-      @Override
-      public float a(boolean $$0) {
-         if (!$$0 && this.l) {
-            return 1.0F;
-         } else {
-            return this.k ? this.f : this.d;
-         }
-      }
-
-      @Override
-      public float b() {
-         return this.e > 7.0F ? 0.5F : this.e;
-      }
+   public static class a implements fkp {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

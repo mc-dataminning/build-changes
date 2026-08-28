@@ -1,14 +1,5 @@
-import java.util.List;
-
 public interface sl {
-   String a = "default";
-   alc<tj> b = a("default");
+   void a(sj var1);
 
-   private static alc<tj> a(String $$0) {
-      return alc.a(me.be, ald.b($$0));
-   }
-
-   static void a(qg<tj> $$0) {
-      $$0.a(b, new tj.a(List.of()));
-   }
+   void b(sj var1);
 }

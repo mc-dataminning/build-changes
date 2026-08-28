@@ -1,102 +1,218 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class fvd extends fwf {
-   private static final int d = 20;
-   private final wv s;
-   private frg u = frg.a;
-   protected wv a;
-   protected wv b;
-   private int v;
-   protected final BooleanConsumer c;
-   private final List<fqn> w = Lists.newArrayList();
+public class fvd extends fuz {
+   private final List<fvg> c = new ArrayList<>();
+   private final List<fvd.a> d = new ArrayList<>();
+   private final fvh e = fvh.i();
+   private int f = 0;
+   private int g = 0;
 
-   public fvd(BooleanConsumer $$0, wv $$1, wv $$2) {
-      this($$0, $$1, $$2, wu.f, wu.g);
+   public fvd() {
+      this(0, 0);
    }
 
-   public fvd(BooleanConsumer $$0, wv $$1, wv $$2, wv $$3, wv $$4) {
-      super($$1);
-      this.c = $$0;
-      this.s = $$2;
-      this.a = $$3;
-      this.b = $$4;
+   public fvd(int $$0, int $$1) {
+      super($$0, $$1, 0, 0);
    }
 
    @Override
-   public wv i() {
-      return wu.a(super.i(), this.s);
-   }
+   public void a() {
+      super.a();
+      int $$0 = 0;
+      int $$1 = 0;
 
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.u = frg.a(this.p, this.s, this.n - 50);
-      int $$0 = azk.a(this.E() + this.F() + 20, this.o / 6 + 96, this.o - 24);
-      this.w.clear();
-      this.a($$0);
-   }
-
-   protected void a(int $$0) {
-      this.a(fqn.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
-      this.a(fqn.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
-   }
-
-   protected void a(fqn $$0) {
-      this.w.add(this.c($$0));
-   }
-
-   @Override
-   public void a(fpz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.m(), 16777215);
-      this.u.a($$0, this.n / 2, this.E());
-   }
-
-   private int m() {
-      int $$0 = (this.o - this.F()) / 2;
-      return azk.a($$0 - 20 - 9, 10, 80);
-   }
-
-   private int E() {
-      return this.m() + 20;
-   }
-
-   private int F() {
-      return this.u.a() * 9;
-   }
-
-   public void b(int $$0) {
-      this.v = $$0;
-
-      for (fqn $$1 : this.w) {
-         $$1.j = false;
+      for (fvd.a $$2 : this.d) {
+         $$0 = Math.max($$2.c(), $$0);
+         $$1 = Math.max($$2.d(), $$1);
       }
-   }
 
-   @Override
-   public void e() {
-      super.e();
-      if (--this.v == 0) {
-         for (fqn $$0 : this.w) {
-            $$0.j = true;
+      int[] $$3 = new int[$$1 + 1];
+      int[] $$4 = new int[$$0 + 1];
+
+      for (fvd.a $$5 : this.d) {
+         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
+         c $$7 = new c($$6, $$5.e);
+
+         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
+            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
+         }
+
+         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
+         c $$10 = new c($$9, $$5.f);
+
+         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
+            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
          }
       }
+
+      int[] $$12 = new int[$$1 + 1];
+      int[] $$13 = new int[$$0 + 1];
+      $$12[0] = 0;
+
+      for (int $$14 = 1; $$14 <= $$1; $$14++) {
+         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
+      }
+
+      $$13[0] = 0;
+
+      for (int $$15 = 1; $$15 <= $$0; $$15++) {
+         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
+      }
+
+      for (fvd.a $$16 : this.d) {
+         int $$17 = 0;
+
+         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
+            $$17 += $$3[$$18];
+         }
+
+         $$17 += this.g * ($$16.f - 1);
+         $$16.a(this.F() + $$12[$$16.d], $$17);
+         int $$19 = 0;
+
+         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
+            $$19 += $$4[$$20];
+         }
+
+         $$19 += this.f * ($$16.e - 1);
+         $$16.b(this.G() + $$13[$$16.c], $$19);
+      }
+
+      this.a = $$12[$$1] + $$3[$$1];
+      this.b = $$13[$$0] + $$4[$$0];
    }
 
-   @Override
-   public boolean aC_() {
-      return false;
+   public <T extends fvg> T a(T $$0, int $$1, int $$2) {
+      return this.a($$0, $$1, $$2, this.b());
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.accept(false);
-         return true;
+   public <T extends fvg> T a(T $$0, int $$1, int $$2, fvh $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, $$3);
+   }
+
+   public <T extends fvg> T a(T $$0, int $$1, int $$2, Consumer<fvh> $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, af.a(this.b(), $$3));
+   }
+
+   public <T extends fvg> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
+   }
+
+   public <T extends fvg> T a(T $$0, int $$1, int $$2, int $$3, int $$4, fvh $$5) {
+      if ($$3 < 1) {
+         throw new IllegalArgumentException("Occupied rows must be at least 1");
+      } else if ($$4 < 1) {
+         throw new IllegalArgumentException("Occupied columns must be at least 1");
       } else {
-         return super.a($$0, $$1, $$2);
+         this.d.add(new fvd.a($$0, $$1, $$2, $$3, $$4, $$5));
+         this.c.add($$0);
+         return $$0;
+      }
+   }
+
+   public <T extends fvg> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<fvh> $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, af.a(this.b(), $$5));
+   }
+
+   public fvd a(int $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public fvd b(int $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public fvd c(int $$0) {
+      return this.a($$0).b($$0);
+   }
+
+   @Override
+   public void b(Consumer<fvg> $$0) {
+      this.c.forEach($$0);
+   }
+
+   public fvh b() {
+      return this.e.g();
+   }
+
+   public fvh c() {
+      return this.e;
+   }
+
+   public fvd.b d(int $$0) {
+      return new fvd.b($$0);
+   }
+
+   static class a extends fuz.a {
+      final int c;
+      final int d;
+      final int e;
+      final int f;
+
+      a(fvg $$0, int $$1, int $$2, int $$3, int $$4, fvh $$5) {
+         super($$0, $$5.h());
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+      }
+
+      public int c() {
+         return this.c + this.e - 1;
+      }
+
+      public int d() {
+         return this.d + this.f - 1;
+      }
+   }
+
+   public final class b {
+      private final int b;
+      private int c;
+
+      b(final int $$1) {
+         this.b = $$1;
+      }
+
+      public <T extends fvg> T a(T $$0) {
+         return this.a($$0, 1);
+      }
+
+      public <T extends fvg> T a(T $$0, int $$1) {
+         return this.a($$0, $$1, this.c());
+      }
+
+      public <T extends fvg> T a(T $$0, fvh $$1) {
+         return this.a($$0, 1, $$1);
+      }
+
+      public <T extends fvg> T a(T $$0, int $$1, fvh $$2) {
+         int $$3 = this.c / this.b;
+         int $$4 = this.c % this.b;
+         if ($$4 + $$1 > this.b) {
+            $$3++;
+            $$4 = 0;
+            this.c = azk.d(this.c, this.b);
+         }
+
+         this.c += $$1;
+         return fvd.this.a($$0, $$3, $$4, 1, $$1, $$2);
+      }
+
+      public fvd a() {
+         return fvd.this;
+      }
+
+      public fvh b() {
+         return fvd.this.b();
+      }
+
+      public fvh c() {
+         return fvd.this.c();
       }
    }
 }

@@ -1,4 +1,4 @@
-public class hcd extends hak {
-   public float a;
-   public float b;
+public class hcd extends hcp {
+   public int a;
+   public boolean b;
 }

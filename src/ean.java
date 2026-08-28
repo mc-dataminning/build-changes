@@ -1,55 +1,20 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.io.IOException;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+public enum ean implements bai {
+   a("top"),
+   b("bottom");
 
-public abstract class ean implements eaw, AutoCloseable {
-   @Nullable
-   public eat a(int $$0, int $$1, boolean $$2) {
-      return (eat)this.a($$0, $$1, ebk.n, $$2);
+   private final String c;
+
+   private ean(final String $$0) {
+      this.c = $$0;
    }
-
-   @Nullable
-   public eat a(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
-   }
-
-   @Nullable
-   @Override
-   public eav c(int $$0, int $$1) {
-      return this.a($$0, $$1, ebk.c, false);
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, ebk.n, false) != null;
-   }
-
-   @Nullable
-   public abstract eaj a(int var1, int var2, ebk var3, boolean var4);
-
-   public abstract void a(BooleanSupplier var1, boolean var2);
-
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-   }
-
-   public abstract String e();
-
-   public abstract int j();
 
    @Override
-   public void close() throws IOException {
+   public String toString() {
+      return this.c;
    }
 
-   public abstract eui q();
-
-   public void b(boolean $$0) {
-   }
-
-   public boolean a(dgw $$0, boolean $$1) {
-      return false;
-   }
-
-   public LongSet k() {
-      return LongSet.of();
+   @Override
+   public String c() {
+      return this.c;
    }
 }

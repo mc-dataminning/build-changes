@@ -1,20 +1,37 @@
-public record ace(int b) implements zc<abr> {
-   public static final yt<vr, ace> a = zc.a(ace::a, ace::new);
+public class ace implements zd<abs> {
+   public static final yu<vs, ace> a = zd.a(ace::a, ace::new);
+   private final btv b;
+   private final boolean c;
 
-   private ace(vr $$0) {
-      this($$0.l());
+   public ace(btv $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.b);
+   private ace(vs $$0) {
+      this.b = btv.a($$0.readUnsignedByte());
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(vs $$0) {
+      $$0.l(this.b.a());
+      $$0.a(this.c);
    }
 
    @Override
-   public ze<ace> a() {
-      return agk.m;
+   public zf<ace> a() {
+      return agl.l;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
+   }
+
+   public boolean b() {
+      return this.c;
+   }
+
+   public btv e() {
+      return this.b;
    }
 }

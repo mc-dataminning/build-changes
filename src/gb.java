@@ -1,152 +1,137 @@
-import com.google.gson.JsonObject;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.datafixers.util.Either;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class gb<T> implements ArgumentType<gb.c<T>> {
-   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   final alc<? extends kf<T>> b;
+public class gb implements ArgumentType<gb.b> {
+   private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "#stone", "#stone[foo=bar]{baz=nbt}");
+   private final jg<dlu> b;
 
-   public gb(alc<? extends kf<T>> $$0) {
-      this.b = $$0;
+   public gb(ee $$0) {
+      this.b = $$0.e(mg.i);
    }
 
-   public static <T> gb<T> a(alc<? extends kf<T>> $$0) {
-      return new gb<>($$0);
+   public static gb a(ee $$0) {
+      return new gb($$0);
    }
 
-   public static <T> gb.c<T> a(CommandContext<ex> $$0, String $$1, alc<kf<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      gb.c<?> $$4 = (gb.c<?>)$$0.getArgument($$1, gb.c.class);
-      Optional<gb.c<T>> $$5 = $$4.a($$2);
-      return $$5.orElseThrow(() -> $$3.create($$4));
+   public gb.b a(StringReader $$0) throws CommandSyntaxException {
+      return a(this.b, $$0);
    }
 
-   public gb.c<T> a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '#') {
-         int $$1 = $$0.getCursor();
+   public static gb.b a(jg<dlu> $$0, StringReader $$1) throws CommandSyntaxException {
+      return (gb.b)gd.b($$0, $$1, true).map($$0x -> new gb.a($$0x.a(), $$0x.b().keySet(), $$0x.c()), $$0x -> new gb.c($$0x.a(), $$0x.b(), $$0x.c()));
+   }
 
-         try {
-            $$0.skip();
-            ald $$2 = ald.a($$0);
-            return new gb.d<>(axp.a(this.b, $$2));
-         } catch (CommandSyntaxException var4) {
-            $$0.setCursor($$1);
-            throw var4;
-         }
-      } else {
-         ald $$4 = ald.a($$0);
-         return new gb.b<>(alc.a(this.b, $$4));
-      }
+   public static Predicate<dzs> a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      return (Predicate<dzs>)$$0.getArgument($$1, gb.b.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof fc $$2 ? $$2.a(this.b, fc.a.c, $$1, $$0) : $$1.buildFuture();
+      return gd.a(this.b, $$1, true, true);
    }
 
    public Collection<String> getExamples() {
       return a;
    }
 
-   public static class a<T> implements iu<gb<T>, gb.a<T>.a> {
-      public void a(gb.a<T>.a $$0, vr $$1) {
-         $$1.b($$0.b);
+   static class a implements gb.b {
+      private final dzo a;
+      private final Set<ear<?>> b;
+      @Nullable
+      private final tx c;
+
+      public a(dzo $$0, Set<ear<?>> $$1, @Nullable tx $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      public gb.a<T>.a a(vr $$0) {
-         return new gb.a.a($$0.r());
-      }
+      public boolean a(dzs $$0) {
+         dzo $$1 = $$0.a();
+         if (!$$1.a(this.a.b())) {
+            return false;
+         } else {
+            for (ear<?> $$2 : this.b) {
+               if ($$1.c($$2) != this.a.c($$2)) {
+                  return false;
+               }
+            }
 
-      public void a(gb.a<T>.a $$0, JsonObject $$1) {
-         $$1.addProperty("registry", $$0.b.a().toString());
-      }
-
-      public gb.a<T>.a a(gb<T> $$0) {
-         return new gb.a.a($$0.b);
-      }
-
-      public final class a implements iu.a<gb<T>> {
-         final alc<? extends kf<T>> b;
-
-         a(final alc<? extends kf<T>> $$1) {
-            this.b = $$1;
+            if (this.c == null) {
+               return true;
+            } else {
+               dwn $$3 = $$0.b();
+               return $$3 != null && um.a(this.c, $$3.b($$0.c().F_()), true);
+            }
          }
+      }
 
-         public gb<T> a(et $$0) {
-            return new gb<>(this.b);
-         }
-
-         @Override
-         public iu<gb<T>, ?> a() {
-            return a.this;
-         }
+      @Override
+      public boolean a() {
+         return this.c != null;
       }
    }
 
-   static record b<T>(alc<T> a) implements gb.c<T> {
-      @Override
-      public Either<alc<T>, axp<T>> a() {
-         return Either.left(this.a);
-      }
-
-      @Override
-      public <E> Optional<gb.c<E>> a(alc<? extends kf<E>> $$0) {
-         return this.a.d($$0).map(gb.b::new);
-      }
-
-      public boolean a(js<T> $$0) {
-         return $$0.a(this.a);
-      }
-
-      @Override
-      public String b() {
-         return this.a.a().toString();
-      }
-
-      public alc<T> c() {
-         return this.a;
-      }
+   public interface b extends Predicate<dzs> {
+      boolean a();
    }
 
-   public interface c<T> extends Predicate<js<T>> {
-      Either<alc<T>, axp<T>> a();
+   static class c implements gb.b {
+      private final ji<dlu> a;
+      @Nullable
+      private final tx b;
+      private final Map<String, String> c;
 
-      <E> Optional<gb.c<E>> a(alc<? extends kf<E>> var1);
+      c(ji<dlu> $$0, Map<String, String> $$1, @Nullable tx $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+      }
 
-      String b();
-   }
+      public boolean a(dzs $$0) {
+         dzo $$1 = $$0.a();
+         if (!$$1.a(this.a)) {
+            return false;
+         } else {
+            for (Entry<String, String> $$2 : this.c.entrySet()) {
+               ear<?> $$3 = $$1.b().l().a($$2.getKey());
+               if ($$3 == null) {
+                  return false;
+               }
 
-   static record d<T>(axp<T> a) implements gb.c<T> {
-      @Override
-      public Either<alc<T>, axp<T>> a() {
-         return Either.right(this.a);
+               Comparable<?> $$4 = (Comparable<?>)$$3.b($$2.getValue()).orElse(null);
+               if ($$4 == null) {
+                  return false;
+               }
+
+               if ($$1.c($$3) != $$4) {
+                  return false;
+               }
+            }
+
+            if (this.b == null) {
+               return true;
+            } else {
+               dwn $$5 = $$0.b();
+               return $$5 != null && um.a(this.b, $$5.b($$0.c().F_()), true);
+            }
+         }
       }
 
       @Override
-      public <E> Optional<gb.c<E>> a(alc<? extends kf<E>> $$0) {
-         return this.a.e($$0).map(gb.d::new);
-      }
-
-      public boolean a(js<T> $$0) {
-         return $$0.a(this.a);
-      }
-
-      @Override
-      public String b() {
-         return "#" + this.a.b();
-      }
-
-      public axp<T> c() {
-         return this.a;
+      public boolean a() {
+         return this.b != null;
       }
    }
 }

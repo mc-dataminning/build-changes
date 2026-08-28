@@ -1,419 +1,110 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.io.Writer;
-import java.util.List;
-import java.util.Queue;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public class edc<T extends ecr> implements AutoCloseable {
-   static final Logger a = LogUtils.getLogger();
-   final Set<UUID> b = Sets.newHashSet();
-   final ecz<T> c;
-   private final ecu<T> d;
-   private final ect<T> e;
-   final ecw<T> f;
-   private final eda<T> g;
-   private final Long2ObjectMap<edg> h = new Long2ObjectOpenHashMap();
-   private final Long2ObjectMap<edc.b> i = new Long2ObjectOpenHashMap();
-   private final LongSet j = new LongOpenHashSet();
-   private final Queue<ecp<T>> k = Queues.newConcurrentLinkedQueue();
+public final class edc implements AutoCloseable {
+   public static final String a = ".mca";
+   private static final int b = 256;
+   private final Long2ObjectLinkedOpenHashMap<edb> c = new Long2ObjectLinkedOpenHashMap();
+   private final ede d;
+   private final Path e;
+   private final boolean f;
 
-   public edc(Class<T> $$0, ecz<T> $$1, ecu<T> $$2) {
-      this.e = new ect<>();
-      this.f = new ecw<>($$0, this.h);
-      this.h.defaultReturnValue(edg.a);
-      this.i.defaultReturnValue(edc.b.a);
-      this.c = $$1;
-      this.d = $$2;
-      this.g = new edb<>(this.e, this.f);
+   edc(ede $$0, Path $$1, boolean $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.d = $$0;
    }
 
-   void a(long $$0, ecv<T> $$1) {
-      if ($$1.a()) {
-         this.f.e($$0);
-      }
-   }
-
-   private boolean b(T $$0) {
-      if (!this.b.add($$0.cG())) {
-         a.warn("UUID of added entity already exists: {}", $$0);
-         return false;
+   private edb b(dhw $$0) throws IOException {
+      long $$1 = dhw.c($$0.h(), $$0.i());
+      edb $$2 = (edb)this.c.getAndMoveToFirst($$1);
+      if ($$2 != null) {
+         return $$2;
       } else {
-         return true;
+         if (this.c.size() >= 256) {
+            ((edb)this.c.removeLast()).close();
+         }
+
+         v.c(this.e);
+         Path $$3 = this.e.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
+         edb $$4 = new edb(this.d, $$3, this.e, this.f);
+         this.c.putAndMoveToFirst($$1, $$4);
+         return $$4;
       }
    }
 
-   public boolean a(T $$0) {
-      return this.a($$0, false);
+   @Nullable
+   public tx a(dhw $$0) throws IOException {
+      edb $$1 = this.b($$0);
+
+      tx var4;
+      try (DataInputStream $$2 = $$1.a($$0)) {
+         if ($$2 == null) {
+            return null;
+         }
+
+         var4 = uk.a($$2);
+      }
+
+      return var4;
    }
 
-   private boolean a(T $$0, boolean $$1) {
-      if (!this.b($$0)) {
-         return false;
+   public void a(dhw $$0, ur $$1) throws IOException {
+      edb $$2 = this.b($$0);
+
+      try (DataInputStream $$3 = $$2.a($$0)) {
+         if ($$3 != null) {
+            uk.a((DataInput)$$3, $$1, ug.a());
+         }
+      }
+   }
+
+   protected void a(dhw $$0, @Nullable tx $$1) throws IOException {
+      edb $$2 = this.b($$0);
+      if ($$1 == null) {
+         $$2.d($$0);
       } else {
-         long $$2 = kl.c($$0.dv());
-         ecv<T> $$3 = this.f.c($$2);
-         $$3.a($$0);
-         $$0.a(new edc.a($$0, $$2, $$3));
-         if (!$$1) {
-            this.c.g($$0);
-         }
-
-         edg $$4 = a($$0, $$3.c());
-         if ($$4.b()) {
-            this.e($$0);
-         }
-
-         if ($$4.a()) {
-            this.c($$0);
-         }
-
-         return true;
-      }
-   }
-
-   static <T extends ecr> edg a(T $$0, edg $$1) {
-      return $$0.dU() ? edg.c : $$1;
-   }
-
-   public boolean a(dgw $$0) {
-      return ((edg)this.h.get($$0.a())).a();
-   }
-
-   public void a(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, true));
-   }
-
-   public void b(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, false));
-   }
-
-   void c(T $$0) {
-      this.c.e($$0);
-   }
-
-   void d(T $$0) {
-      this.c.d($$0);
-   }
-
-   void e(T $$0) {
-      this.e.a($$0);
-      this.c.c($$0);
-   }
-
-   void f(T $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-   }
-
-   public void a(dgw $$0, arb $$1) {
-      edg $$2 = edg.a($$1);
-      this.a($$0, $$2);
-   }
-
-   public void a(dgw $$0, edg $$1) {
-      long $$2 = $$0.a();
-      if ($$1 == edg.a) {
-         this.h.remove($$2);
-         this.j.add($$2);
-      } else {
-         this.h.put($$2, $$1);
-         this.j.remove($$2);
-         this.b($$2);
-      }
-
-      this.f.b($$2).forEach($$1x -> {
-         edg $$2x = $$1x.a($$1);
-         boolean $$3 = $$2x.b();
-         boolean $$4 = $$1.b();
-         boolean $$5 = $$2x.a();
-         boolean $$6 = $$1.a();
-         if ($$5 && !$$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::d);
-         }
-
-         if ($$3 && !$$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::f);
-         } else if (!$$3 && $$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::e);
-         }
-
-         if (!$$5 && $$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dU()).forEach(this::c);
-         }
-      });
-   }
-
-   private void b(long $$0) {
-      edc.b $$1 = (edc.b)this.i.get($$0);
-      if ($$1 == edc.b.a) {
-         this.c($$0);
-      }
-   }
-
-   private boolean a(long $$0, Consumer<T> $$1) {
-      edc.b $$2 = (edc.b)this.i.get($$0);
-      if ($$2 == edc.b.b) {
-         return false;
-      } else {
-         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(ecr::dT)).collect(Collectors.toList());
-         if ($$3.isEmpty()) {
-            if ($$2 == edc.b.c) {
-               this.d.a(new ecp<>(new dgw($$0), ImmutableList.of()));
-            }
-
-            return true;
-         } else if ($$2 == edc.b.a) {
-            this.c($$0);
-            return false;
-         } else {
-            this.d.a(new ecp<>(new dgw($$0), $$3));
-            $$3.forEach($$1);
-            return true;
+         try (DataOutputStream $$3 = $$2.c($$0)) {
+            uk.a($$1, (DataOutput)$$3);
          }
       }
-   }
-
-   private void c(long $$0) {
-      this.i.put($$0, edc.b.b);
-      dgw $$1 = new dgw($$0);
-      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
-         a.error("Failed to read chunk {}", $$1, $$1x);
-         return null;
-      });
-   }
-
-   private boolean d(long $$0) {
-      boolean $$1 = this.a($$0, $$0x -> $$0x.db().forEach(this::g));
-      if (!$$1) {
-         return false;
-      } else {
-         this.i.remove($$0);
-         return true;
-      }
-   }
-
-   private void g(ecr $$0) {
-      $$0.c(bvs.e.c);
-      $$0.a(ecs.a);
-   }
-
-   private void g() {
-      this.j.removeIf($$0 -> this.h.get($$0) != edg.a ? true : this.d($$0));
-   }
-
-   private void h() {
-      ecp<T> $$0;
-      while (($$0 = this.k.poll()) != null) {
-         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
-         this.i.put($$0.a().a(), edc.b.c);
-      }
-   }
-
-   public void a() {
-      this.h();
-      this.g();
-   }
-
-   private LongSet i() {
-      LongSet $$0 = this.f.a();
-      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
-
-      while (var2.hasNext()) {
-         Entry<edc.b> $$1 = (Entry<edc.b>)var2.next();
-         if ($$1.getValue() == edc.b.c) {
-            $$0.add($$1.getLongKey());
-         }
-      }
-
-      return $$0;
-   }
-
-   public void b() {
-      this.i().forEach($$0 -> {
-         boolean $$1 = this.h.get($$0) == edg.a;
-         if ($$1) {
-            this.d($$0);
-         } else {
-            this.a($$0, $$0x -> {
-            });
-         }
-      });
-   }
-
-   public void c() {
-      LongSet $$0 = this.i();
-
-      while (!$$0.isEmpty()) {
-         this.d.a(false);
-         this.h();
-         $$0.removeIf($$0x -> {
-            boolean $$1 = this.h.get($$0x) == edg.a;
-            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
-            });
-         });
-      }
-
-      this.d.a(true);
    }
 
    @Override
    public void close() throws IOException {
-      this.c();
-      this.d.close();
-   }
+      ayr<IOException> $$0 = new ayr<>();
+      ObjectIterator var2 = this.c.values().iterator();
 
-   public boolean a(UUID $$0) {
-      return this.b.contains($$0);
-   }
+      while (var2.hasNext()) {
+         edb $$1 = (edb)var2.next();
 
-   public eda<T> d() {
-      return this.g;
-   }
-
-   public boolean a(jj $$0) {
-      return ((edg)this.h.get(dgw.a($$0))).a();
-   }
-
-   public boolean b(dgw $$0) {
-      return ((edg)this.h.get($$0.a())).a();
-   }
-
-   public boolean a(long $$0) {
-      return this.i.get($$0) == edc.b.c;
-   }
-
-   public void a(Writer $$0) throws IOException {
-      ayj $$1 = ayj.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
-      this.f.a().forEach($$1x -> {
-         edc.b $$2 = (edc.b)this.i.get($$1x);
-         this.f.a($$1x).forEach($$2x -> {
-            ecv<T> $$3 = this.f.d($$2x);
-            if ($$3 != null) {
-               try {
-                  $$1.a(kl.b($$2x), kl.c($$2x), kl.d($$2x), $$3.c(), $$2, $$3.d());
-               } catch (IOException var7) {
-                  throw new UncheckedIOException(var7);
-               }
-            }
-         });
-      });
-   }
-
-   @bar
-   public String e() {
-      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
-   }
-
-   @bar
-   public int f() {
-      return this.e.b();
-   }
-
-   class a implements ecs {
-      private final T c;
-      private long d;
-      private ecv<T> e;
-
-      a(final T $$0, final long $$1, final ecv<T> $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      @Override
-      public void a() {
-         jj $$0 = this.c.dv();
-         long $$1 = kl.c($$0);
-         if ($$1 != this.d) {
-            edg $$2 = this.e.c();
-            if (!this.e.b(this.c)) {
-               edc.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, kl.a(this.d), $$1});
-            }
-
-            edc.this.a(this.d, this.e);
-            ecv<T> $$3 = edc.this.f.c($$1);
-            $$3.a(this.c);
-            this.e = $$3;
-            this.d = $$1;
-            this.a($$2, $$3.c());
+         try {
+            $$1.close();
+         } catch (IOException var5) {
+            $$0.a(var5);
          }
       }
 
-      private void a(edg $$0, edg $$1) {
-         edg $$2 = edc.a(this.c, $$0);
-         edg $$3 = edc.a(this.c, $$1);
-         if ($$2 == $$3) {
-            if ($$3.b()) {
-               edc.this.c.a(this.c);
-            }
-         } else {
-            boolean $$4 = $$2.b();
-            boolean $$5 = $$3.b();
-            if ($$4 && !$$5) {
-               edc.this.f(this.c);
-            } else if (!$$4 && $$5) {
-               edc.this.e(this.c);
-            }
+      $$0.a();
+   }
 
-            boolean $$6 = $$2.a();
-            boolean $$7 = $$3.a();
-            if ($$6 && !$$7) {
-               edc.this.d(this.c);
-            } else if (!$$6 && $$7) {
-               edc.this.c(this.c);
-            }
+   public void a() throws IOException {
+      ObjectIterator var1 = this.c.values().iterator();
 
-            if ($$5) {
-               edc.this.c.a(this.c);
-            }
-         }
-      }
-
-      @Override
-      public void a(bvs.e $$0) {
-         if (!this.e.b(this.c)) {
-            edc.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, kl.a(this.d), $$0});
-         }
-
-         edg $$1 = edc.a(this.c, this.e.c());
-         if ($$1.a()) {
-            edc.this.d(this.c);
-         }
-
-         if ($$1.b()) {
-            edc.this.f(this.c);
-         }
-
-         if ($$0.a()) {
-            edc.this.c.f(this.c);
-         }
-
-         edc.this.b.remove(this.c.cG());
-         this.c.a(a);
-         edc.this.a(this.d, this.e);
+      while (var1.hasNext()) {
+         edb $$0 = (edb)var1.next();
+         $$0.b();
       }
    }
 
-   static enum b {
-      a,
-      b,
-      c;
+   public ede b() {
+      return this.d;
    }
 }

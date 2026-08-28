@@ -1,85 +1,52 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import java.util.Optional;
 
-public record fap(Map<String, exk> b, exl.b c) implements fau {
+public class fap extends faa {
    public static final MapCodec<fap> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, exk.a).fieldOf("scores").forGetter(fap::c), exl.b.e.fieldOf("entity").forGetter(fap::d))
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  dbg.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
+                  dbg.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
+                  dbg.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
+                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+               )
+            )
             .apply($$0, fap::new)
    );
+   public static final dbg b = new dbg(dbg.a.a, IntList.of(), IntList.of(), false, false);
+   final Optional<dbg.a> c;
+   final Optional<IntList> d;
+   final Optional<IntList> e;
+   final Optional<Boolean> f;
+   final Optional<Boolean> h;
 
-   @Override
-   public fav b() {
-      return faw.h;
+   public fap(List<fbw> $$0, Optional<dbg.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.h = $$5;
    }
 
    @Override
-   public Set<bat<?>> a() {
-      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
+   protected cys a(cys $$0, eyn $$1) {
+      $$0.a(kj.ai, b, this::a);
+      return $$0;
    }
 
-   public boolean a(exl $$0) {
-      bvs $$1 = $$0.c(this.c.a());
-      if ($$1 == null) {
-         return false;
-      } else {
-         fdz $$2 = $$0.d().g();
-
-         for (Entry<String, exk> $$3 : this.b.entrySet()) {
-            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   private dbg a(dbg $$0) {
+      return new dbg(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
    }
 
-   protected boolean a(exl $$0, bvs $$1, fdz $$2, String $$3, exk $$4) {
-      fdr $$5 = $$2.a($$3);
-      if ($$5 == null) {
-         return false;
-      } else {
-         fdv $$6 = $$2.d($$1, $$5);
-         return $$6 == null ? false : $$4.b($$0, $$6.a());
-      }
-   }
-
-   public static fap.a a(exl.b $$0) {
-      return new fap.a($$0);
-   }
-
-   public Map<String, exk> c() {
-      return this.b;
-   }
-
-   public exl.b d() {
-      return this.c;
-   }
-
-   public static class a implements fau.a {
-      private final Builder<String, exk> a = ImmutableMap.builder();
-      private final exl.b b;
-
-      public a(exl.b $$0) {
-         this.b = $$0;
-      }
-
-      public fap.a a(String $$0, exk $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fau build() {
-         return new fap(this.a.build(), this.b);
-      }
+   @Override
+   public fac<fap> b() {
+      return fad.L;
    }
 }

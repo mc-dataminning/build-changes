@@ -1,49 +1,33 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record fba(float b, deo c, js<deh> g) implements fau {
+public class fba extends faa {
    public static final MapCodec<fba> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("unenchanted_chance").forGetter(fba::c),
-               deo.b.fieldOf("enchanted_chance").forGetter(fba::d),
-               deh.c.fieldOf("enchantment").forGetter(fba::e)
-            )
-            .apply($$0, fba::new)
+      $$0 -> a($$0).and($$0.group(dcb.d.fieldOf("pages").forGetter($$0x -> $$0x.b), ezz.a(100).forGetter($$0x -> $$0x.c))).apply($$0, fba::new)
    );
+   private final List<asg<String>> b;
+   private final ezz c;
 
-   @Override
-   public fav b() {
-      return faw.e;
+   protected fba(List<fbw> $$0, List<asg<String>> $$1, ezz $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public Set<bat<?>> a() {
-      return Set.of(faf.d);
+   protected cys a(cys $$0, eyn $$1) {
+      $$0.a(kj.U, dcb.a, this::a);
+      return $$0;
    }
 
-   public boolean a(exl $$0) {
-      bvs $$1 = $$0.c(faf.d);
-      int $$3 = $$1 instanceof bwr $$2 ? dej.a(this.g, $$2) : 0;
-      float $$4 = $$3 > 0 ? this.c.a($$3) : this.b;
-      return $$0.b().i() < $$4;
+   public dcb a(dcb $$0) {
+      List<asg<String>> $$1 = this.c.a($$0.a(), this.b, 100);
+      return $$0.b($$1);
    }
 
-   public static fau.a a(ju.a $$0, float $$1, float $$2) {
-      ju.b<deh> $$3 = $$0.e(me.aS);
-      return () -> new fba($$1, new deo.e($$1 + $$2, $$2), $$3.b(dem.s));
-   }
-
-   public float c() {
-      return this.b;
-   }
-
-   public deo d() {
-      return this.c;
-   }
-
-   public js<deh> e() {
-      return this.g;
+   @Override
+   public fac<fba> b() {
+      return fad.O;
    }
 }

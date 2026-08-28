@@ -1,25 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-record eqw(bsb<List<eqs>> c) implements eqs {
-   static MapCodec<eqw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bsb.b(Codec.list(eqs.b)).fieldOf("groups").forGetter(eqw::c)).apply($$0, eqw::new));
+@FunctionalInterface
+public interface eqw<C extends ekx> {
+   Optional<eqv<C>> createGenerator(eqw.a<C> var1);
 
-   @Override
-   public void a(azs $$0, BiConsumer<alc<eqq>, alc<eqq>> $$1) {
-      this.c.a($$0).ifPresent($$2 -> $$2.forEach($$2x -> $$2x.a($$0, $$1)));
+   static <C extends ekx> eqw<C> simple(Predicate<eqw.a<C>> $$0, eqv<C> $$1) {
+      Optional<eqv<C>> $$2 = Optional.of($$1);
+      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
    }
 
-   @Override
-   public Stream<alc<eqq>> a() {
-      return this.c.d().stream().flatMap($$0 -> $$0.a().stream()).flatMap(eqs::a);
+   static <C extends ekx> Predicate<eqw.a<C>> checkForBiomeOnTop(efn.a $$0) {
+      return $$1 -> $$1.a($$0);
    }
 
-   @Override
-   public MapCodec<eqw> b() {
-      return a;
+   public static record a<C extends ekx>(ebm a, djw b, egb c, long d, dhw e, C f, dir g, Predicate<je<djs>> h, eul i, js j) {
+      public boolean a(efn.a $$0) {
+         int $$1 = this.e.b();
+         int $$2 = this.e.c();
+         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
+         je<djs> $$4 = this.a.d().getNoiseBiome(jp.a($$1), jp.a($$3), jp.a($$2), this.c.b());
+         return this.h.test($$4);
+      }
    }
 }

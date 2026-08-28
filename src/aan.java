@@ -1,26 +1,35 @@
-public record aan(long c, jj d) implements aaf {
-   public static final yt<vr, aan> a = aaf.a(aan::a, aan::new);
-   public static final aaf.b<aan> b = aaf.a("debug/neighbors_update");
+public record aan(aan.a c) implements aag {
+   public static final yu<vs, aan> a = aag.a(aan::a, aan::new);
+   public static final aag.b<aan> b = aag.a("debug/hive");
 
-   private aan(vr $$0) {
-      this($$0.m(), $$0.e());
+   private aan(vs $$0) {
+      this(new aan.a($$0));
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(vs $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public aaf.b<aan> a() {
+   public aag.b<aan> a() {
       return b;
    }
 
-   public long b() {
+   public aan.a b() {
       return this.c;
    }
 
-   public jj c() {
-      return this.d;
+   public static record a(iu a, String b, int c, int d, boolean e) {
+      public a(vs $$0) {
+         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
+
+      public void a(vs $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.q(this.c);
+         $$0.q(this.d);
+         $$0.a(this.e);
+      }
    }
 }

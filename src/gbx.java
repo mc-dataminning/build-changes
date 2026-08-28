@@ -1,22 +1,57 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.UUID;
+import java.util.function.Supplier;
 
-public class gbx implements gbz {
-   private static final wv a = wv.c("spectatorMenu.root.prompt");
-   private final List<gca> b = Lists.newArrayList();
+public class gbx extends gbq<gkn.a> {
+   private static final int C = 85;
+   private static final int D = 178;
+   private static final ww E = ww.c("gui.abuseReport.skin.title");
+   private fsi F;
+   private frq G;
 
-   public gbx() {
-      this.b.add(new gcd());
-      this.b.add(new gce());
+   private gbx(fxi $$0, gkm $$1, gkn.a $$2) {
+      super(E, $$0, $$1, $$2);
+   }
+
+   public gbx(fxi $$0, gkm $$1, UUID $$2, Supplier<hja> $$3) {
+      this($$0, $$1, new gkn.a($$2, $$3, $$1.a().b()));
+   }
+
+   public gbx(fxi $$0, gkm $$1, gkn $$2) {
+      this($$0, $$1, new gkn.a($$2, $$1.a().b()));
    }
 
    @Override
-   public List<gca> a() {
-      return this.b;
+   protected void E() {
+      fvi $$0 = this.z.a(fvi.e().a(8));
+      $$0.c().e();
+      $$0.a(new fsq(85, 120, this.m.aS(), this.A.e().a()));
+      fvi $$1 = $$0.a(fvi.d().a(8));
+      this.G = frq.a(c, $$0x -> this.m.a(new gbw(this, this.A.i(), gkl.b, $$0xx -> {
+            this.A.a($$0xx);
+            this.G();
+         }))).a(178).a();
+      $$1.a(fva.a(this.p, this.G, b));
+      this.F = this.a(178, 9 * 8, $$0x -> {
+         this.A.a($$0x);
+         this.G();
+      });
+      $$1.a(fva.a(this.p, this.F, d, $$0x -> $$0x.e(12)));
    }
 
    @Override
-   public wv b() {
-      return a;
+   protected void G() {
+      gkk $$0 = this.A.i();
+      if ($$0 != null) {
+         this.G.b($$0.b());
+      } else {
+         this.G.b(c);
+      }
+
+      super.G();
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.F.b($$0, $$1, $$2);
    }
 }

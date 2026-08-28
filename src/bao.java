@@ -1,13 +1,13 @@
-public enum bao {
-   a,
-   b,
-   c;
+import java.util.concurrent.TimeUnit;
 
-   public boolean a(boolean $$0) {
-      return switch (this) {
-         case a -> true;
-         case b -> false;
-         default -> $$0;
-      };
+public class bao {
+   public static final long a = TimeUnit.SECONDS.toNanos(1L);
+   public static final long b = TimeUnit.MILLISECONDS.toNanos(1L);
+   public static final long c = TimeUnit.SECONDS.toMillis(1L);
+   public static final long d = TimeUnit.HOURS.toSeconds(1L);
+   public static final int e = (int)TimeUnit.MINUTES.toSeconds(1L);
+
+   public static btj a(int $$0, int $$1) {
+      return btj.a($$0 * 20, $$1 * 20);
    }
 }

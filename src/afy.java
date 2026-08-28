@@ -1,33 +1,32 @@
-public class afy implements zc<abr> {
-   public static final yt<vr, afy> a = zc.a(afy::a, afy::new);
-   private final int b;
-   private final int c;
-   private final int d;
+import javax.annotation.Nullable;
 
-   public afy(int $$0, int $$1, int $$2) {
+public class afy implements zd<abs> {
+   public static final yu<vs, afy> a = zd.a(afy::a, afy::new);
+   private final int b;
+   @Nullable
+   private final tx c;
+
+   public afy(int $$0, @Nullable tx $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
-   private afy(vr $$0) {
+   private afy(vs $$0) {
       this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = $$0.l();
+      this.c = $$0.o();
    }
 
-   private void a(vr $$0) {
+   private void a(vs $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.c(this.d);
+      $$0.a((uu)this.c);
    }
 
    @Override
-   public ze<afy> a() {
-      return agk.bc;
+   public zf<afy> a() {
+      return agl.bb;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
@@ -35,11 +34,13 @@ public class afy implements zc<abr> {
       return this.b;
    }
 
-   public int e() {
+   @Nullable
+   public tx e() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
+   @Override
+   public boolean c() {
+      return true;
    }
 }

@@ -1,62 +1,60 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.nio.charset.StandardCharsets;
+import java.util.Optional;
+import java.util.UUID;
 
 public class aox {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("commands.setblock.failed"));
-
-   public static void a(CommandDispatcher<ex> $$0, et $$1) {
-      Predicate<dyq> $$2 = $$0x -> $$0x.c().u($$0x.d());
+   public static void a(CommandDispatcher<ei> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("setblock").requires($$0x -> $$0x.c(2)))
-            .then(
-               ey.a("pos", gu.a())
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("block", gr.a($$1))
-                                    .executes($$0x -> a((ex)$$0x.getSource(), gu.a($$0x, "pos"), gr.a($$0x, "block"), aox.a.a, null, false)))
-                                 .then(ey.a("destroy").executes($$0x -> a((ex)$$0x.getSource(), gu.a($$0x, "pos"), gr.a($$0x, "block"), aox.a.b, null, false))))
-                              .then(ey.a("keep").executes($$1x -> a((ex)$$1x.getSource(), gu.a($$1x, "pos"), gr.a($$1x, "block"), aox.a.a, $$2, false))))
-                           .then(ey.a("replace").executes($$0x -> a((ex)$$0x.getSource(), gu.a($$0x, "pos"), gr.a($$0x, "block"), aox.a.a, null, false))))
-                        .then(ey.a("strict").executes($$0x -> a((ex)$$0x.getSource(), gu.a($$0x, "pos"), gr.a($$0x, "block"), aox.a.a, null, true)))
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("serverpack").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ej.a("push")
+                     .then(
+                        ((RequiredArgumentBuilder)ej.a("url", StringArgumentType.string())
+                              .then(
+                                 ((RequiredArgumentBuilder)ej.a("uuid", fz.a())
+                                       .then(
+                                          ej.a("hash", StringArgumentType.word())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ei)$$0x.getSource(),
+                                                      StringArgumentType.getString($$0x, "url"),
+                                                      Optional.of(fz.a($$0x, "uuid")),
+                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
+                                                   )
+                                             )
+                                       ))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ei)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(fz.a($$0x, "uuid")), Optional.empty()
+                                          )
+                                    )
+                              ))
+                           .executes($$0x -> a((ei)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
+                     )
+               ))
+            .then(ej.a("pop").then(ej.a("uuid", fz.a()).executes($$0x -> a((ei)$$0x.getSource(), fz.a($$0x, "uuid")))))
       );
    }
 
-   private static int a(ex $$0, jj $$1, gp $$2, aox.a $$3, @Nullable Predicate<dyq> $$4, boolean $$5) throws CommandSyntaxException {
-      arn $$6 = $$0.e();
-      if ($$6.ak()) {
-         throw a.create();
-      } else if ($$4 != null && !$$4.test(new dyq($$6, $$1, true))) {
-         throw a.create();
-      } else {
-         boolean $$7;
-         if ($$3 == aox.a.b) {
-            $$6.b($$1, true);
-            $$7 = !$$2.a().l() || !$$6.a_($$1).l();
-         } else {
-            $$7 = true;
-         }
-
-         if ($$7 && !$$2.a($$6, $$1, 2 | ($$5 ? 304 : 256))) {
-            throw a.create();
-         } else {
-            if (!$$5) {
-               $$6.a($$1, $$2.a().b());
-            }
-
-            $$0.a(() -> wv.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
-            return 1;
-         }
-      }
+   private static void a(ei $$0, zd<?> $$1) {
+      $$0.l().ah().e().forEach($$1x -> $$1x.a($$1));
    }
 
-   public static enum a {
-      a,
-      b;
+   private static int a(ei $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
+      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
+      String $$5 = $$3.orElse("");
+      zq $$6 = new zq($$4, $$1, $$5, false, null);
+      a($$0, $$6);
+      return 0;
+   }
+
+   private static int a(ei $$0, UUID $$1) {
+      zp $$2 = new zp(Optional.of($$1));
+      a($$0, $$2);
+      return 0;
    }
 }

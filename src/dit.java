@@ -1,103 +1,78 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import com.mojang.serialization.Dynamic;
 
-public class dit {
-   private static final Logger c = LogUtils.getLogger();
-   public static final dit a = new dit(jw.a(), List.of());
-   public static final MapCodec<dit> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               egp.c.promotePartial(af.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
-               eok.d.promotePartial(af.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dit::new)
-   );
-   private final jw<egp<?>> d;
-   private final List<jw<eok>> e;
-   private final Supplier<List<ehd<?, ?>>> f;
-   private final Supplier<Set<eok>> g;
+public final class dit {
+   private final String a;
+   private final dim b;
+   private final boolean c;
+   private final btv d;
+   private final boolean e;
+   private final dil f;
+   private final djn g;
 
-   dit(jw<egp<?>> $$0, List<jw<eok>> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = Suppliers.memoize(
-         () -> $$1.stream().flatMap(jw::a).map(js::a).flatMap(eok::a).filter($$0xx -> $$0xx.b() == ehr.g).collect(ImmutableList.toImmutableList())
-      );
-      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(jw::a).map(js::a).collect(Collectors.toSet()));
+   public dit(String $$0, dim $$1, boolean $$2, btv $$3, boolean $$4, dil $$5, djn $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   public Iterable<js<egp<?>>> a() {
+   public static dit a(Dynamic<?> $$0, djn $$1) {
+      dim $$2 = dim.a($$0.get("GameType").asInt(0));
+      return new dit(
+         $$0.get("LevelName").asString(""),
+         $$2,
+         $$0.get("hardcore").asBoolean(false),
+         $$0.get("Difficulty").asNumber().map($$0x -> btv.a($$0x.byteValue())).result().orElse(btv.c),
+         $$0.get("allowCommands").asBoolean($$2 == dim.b),
+         new dil($$1.b(), $$0.get("GameRules")),
+         $$1
+      );
+   }
+
+   public String a() {
+      return this.a;
+   }
+
+   public dim b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public btv d() {
       return this.d;
    }
 
-   public List<ehd<?, ?>> b() {
-      return this.f.get();
-   }
-
-   public List<jw<eok>> c() {
+   public boolean e() {
       return this.e;
    }
 
-   public boolean a(eok $$0) {
-      return this.g.get().contains($$0);
+   public dil f() {
+      return this.f;
    }
 
-   public static class a extends dit.b {
-      private final jt<eok> a;
-      private final jt<egp<?>> b;
-
-      public a(jt<eok> $$0, jt<egp<?>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dit.a a(eeh.a $$0, alc<eok> $$1) {
-         this.a($$0.ordinal(), this.a.b($$1));
-         return this;
-      }
-
-      public dit.a a(alc<egp<?>> $$0) {
-         this.a(this.b.b($$0));
-         return this;
-      }
+   public djn g() {
+      return this.g;
    }
 
-   public static class b {
-      private final List<js<egp<?>>> a = new ArrayList<>();
-      private final List<List<js<eok>>> b = new ArrayList<>();
+   public dit a(dim $$0) {
+      return new dit(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   }
 
-      public dit.b a(eeh.a $$0, js<eok> $$1) {
-         return this.a($$0.ordinal(), $$1);
-      }
+   public dit a(btv $$0) {
+      return new dit(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   }
 
-      public dit.b a(int $$0, js<eok> $$1) {
-         this.a($$0);
-         this.b.get($$0).add($$1);
-         return this;
-      }
+   public dit a(djn $$0) {
+      return new dit(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   }
 
-      public dit.b a(js<egp<?>> $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      private void a(int $$0) {
-         while (this.b.size() <= $$0) {
-            this.b.add(Lists.newArrayList());
-         }
-      }
-
-      public dit a() {
-         return new dit(jw.a(this.a), this.b.stream().map(jw::a).collect(ImmutableList.toImmutableList()));
-      }
+   public dit h() {
+      return new dit(this.a, this.b, this.c, this.d, this.e, this.f.a(this.g.b()), this.g);
    }
 }

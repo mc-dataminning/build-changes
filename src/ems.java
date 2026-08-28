@@ -1,45 +1,20 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ems extends emq {
-   public static final MapCodec<ems> a = MapCodec.unit(() -> ems.b);
-   public static final ems b = new ems();
+public record ems(emy b, float c) {
+   public static final Codec<ems> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               emy.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, ems::new)
+   );
 
-   @Override
-   protected emr<?> a() {
-      return emr.a;
+   public emy a() {
+      return this.b;
    }
 
-   @Override
-   public void a(emq.a $$0) {
-      azs $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            jj $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dty.d);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            jj $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dty.f);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            jj $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dty.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            jj $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dty.c);
-            }
-         }
-      });
+   public float b() {
+      return this.c;
    }
 }

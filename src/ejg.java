@@ -1,96 +1,231 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class ejg extends ehr<eku> {
-   public ejg(Codec<eku> $$0) {
+public class ejg extends eit<ekq> {
+   public ejg(Codec<ekq> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eht<eku> $$0) {
-      dio $$1 = $$0.b();
-      eku $$2 = $$0.f();
-      azs $$3 = $$0.d();
-      jj $$4 = $$0.e();
-      Predicate<dym> $$5 = $$1x -> $$1x.a($$2.b);
-      int $$6 = $$2.j.a($$3) + 1;
-      int $$7 = $$2.j.a($$3) + 1;
-      Set<jj> $$8 = this.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      this.a($$0, $$1, $$2, $$3, $$8, $$6, $$7);
-      return !$$8.isEmpty();
+   public boolean a(eiv<ekq> $$0) {
+      iu $$1 = $$0.e();
+      djo $$2 = $$0.b();
+      $$1 = new iu($$1.u(), $$0.c().f(), $$1.w());
+      azt $$3 = $$0.d();
+      boolean $$4 = $$3.j() > 0.7;
+      dzo $$5 = $$0.f().b;
+      double $$6 = $$3.j() * 2.0 * Math.PI;
+      int $$7 = 11 - $$3.a(5);
+      int $$8 = 3 + $$3.a(3);
+      boolean $$9 = $$3.j() > 0.7;
+      int $$10 = 11;
+      int $$11 = $$9 ? $$3.a(6) + 6 : $$3.a(15) + 3;
+      if (!$$9 && $$3.j() > 0.9) {
+         $$11 += $$3.a(19) + 7;
+      }
+
+      int $$12 = Math.min($$11 + $$3.a(11), 18);
+      int $$13 = Math.min($$11 + $$3.a(7) - $$3.a(5), 11);
+      int $$14 = $$9 ? $$7 : 11;
+
+      for (int $$15 = -$$14; $$15 < $$14; $$15++) {
+         for (int $$16 = -$$14; $$16 < $$14; $$16++) {
+            for (int $$17 = 0; $$17 < $$11; $$17++) {
+               int $$18 = $$9 ? this.b($$17, $$11, $$13) : this.a($$3, $$17, $$11, $$13);
+               if ($$9 || $$15 < $$18) {
+                  this.a($$2, $$3, $$1, $$11, $$15, $$17, $$16, $$18, $$14, $$9, $$8, $$6, $$4, $$5);
+               }
+            }
+         }
+      }
+
+      this.a($$2, $$1, $$13, $$11, $$9, $$7);
+
+      for (int $$19 = -$$14; $$19 < $$14; $$19++) {
+         for (int $$20 = -$$14; $$20 < $$14; $$20++) {
+            for (int $$21 = -1; $$21 > -$$12; $$21--) {
+               int $$22 = $$9 ? azk.f((float)$$14 * (1.0F - (float)Math.pow((double)$$21, 2.0) / ((float)$$12 * 8.0F))) : $$14;
+               int $$23 = this.b($$3, -$$21, $$12, $$13);
+               if ($$19 < $$23) {
+                  this.a($$2, $$3, $$1, $$12, $$19, $$21, $$20, $$23, $$22, $$9, $$8, $$6, $$4, $$5);
+               }
+            }
+         }
+      }
+
+      boolean $$24 = $$9 ? $$3.j() > 0.1 : $$3.j() > 0.7;
+      if ($$24) {
+         this.a($$3, $$2, $$13, $$11, $$1, $$9, $$7, $$6, $$8);
+      }
+
+      return true;
    }
 
-   protected Set<jj> a(dio $$0, eku $$1, azs $$2, jj $$3, Predicate<dym> $$4, int $$5, int $$6) {
-      jj.a $$7 = $$3.k();
-      jj.a $$8 = $$7.k();
-      jo $$9 = $$1.e.a();
-      jo $$10 = $$9.g();
-      Set<jj> $$11 = new HashSet<>();
+   private void a(azt $$0, diq $$1, int $$2, int $$3, iu $$4, boolean $$5, int $$6, double $$7, int $$8) {
+      int $$9 = $$0.h() ? -1 : 1;
+      int $$10 = $$0.h() ? -1 : 1;
+      int $$11 = $$0.a(Math.max($$2 / 2 - 2, 1));
+      if ($$0.h()) {
+         $$11 = $$2 / 2 + 1 - $$0.a(Math.max($$2 - $$2 / 2 - 1, 1));
+      }
 
-      for (int $$12 = -$$5; $$12 <= $$5; $$12++) {
-         boolean $$13 = $$12 == -$$5 || $$12 == $$5;
+      int $$12 = $$0.a(Math.max($$2 / 2 - 2, 1));
+      if ($$0.h()) {
+         $$12 = $$2 / 2 + 1 - $$0.a(Math.max($$2 - $$2 / 2 - 1, 1));
+      }
 
-         for (int $$14 = -$$6; $$14 <= $$6; $$14++) {
-            boolean $$15 = $$14 == -$$6 || $$14 == $$6;
-            boolean $$16 = $$13 || $$15;
-            boolean $$17 = $$13 && $$15;
-            boolean $$18 = $$16 && !$$17;
-            if (!$$17 && (!$$18 || $$1.k != 0.0F && !($$2.i() > $$1.k))) {
-               $$7.a($$3, $$12, 0, $$14);
+      if ($$5) {
+         $$11 = $$12 = $$0.a(Math.max($$6 - 5, 1));
+      }
 
-               for (int $$19 = 0; $$0.a($$7, dyl.a::l) && $$19 < $$1.h; $$19++) {
-                  $$7.c($$9);
-               }
+      iu $$13 = new iu($$9 * $$11, 0, $$10 * $$12);
+      double $$14 = $$5 ? $$7 + (Math.PI / 2) : $$0.j() * 2.0 * Math.PI;
 
-               for (int var25 = 0; $$0.a($$7, $$0x -> !$$0x.l()) && var25 < $$1.h; var25++) {
-                  $$7.c($$10);
-               }
+      for (int $$15 = 0; $$15 < $$3 - 3; $$15++) {
+         int $$16 = this.a($$0, $$15, $$3, $$2);
+         this.a($$16, $$15, $$4, $$1, false, $$14, $$13, $$6, $$8);
+      }
 
-               $$8.a($$7, $$1.e.a());
-               dym $$20 = $$0.a_($$8);
-               if ($$0.u($$7) && $$20.c($$0, $$8, $$1.e.a().g())) {
-                  int $$21 = $$1.f.a($$2) + ($$1.g > 0.0F && $$2.i() < $$1.g ? 1 : 0);
-                  jj $$22 = $$8.j();
-                  boolean $$23 = this.a($$0, $$1, $$4, $$2, $$8, $$21);
-                  if ($$23) {
-                     $$11.add($$22);
+      for (int $$17 = -1; $$17 > -$$3 + $$0.a(5); $$17--) {
+         int $$18 = this.b($$0, -$$17, $$3, $$2);
+         this.a($$18, $$17, $$4, $$1, true, $$14, $$13, $$6, $$8);
+      }
+   }
+
+   private void a(int $$0, int $$1, iu $$2, diq $$3, boolean $$4, double $$5, iu $$6, int $$7, int $$8) {
+      int $$9 = $$0 + 1 + $$7 / 3;
+      int $$10 = Math.min($$0 - 3, 3) + $$8 / 2 - 1;
+
+      for (int $$11 = -$$9; $$11 < $$9; $$11++) {
+         for (int $$12 = -$$9; $$12 < $$9; $$12++) {
+            double $$13 = this.a($$11, $$12, $$6, $$9, $$10, $$5);
+            if ($$13 < 0.0) {
+               iu $$14 = $$2.b($$11, $$1, $$12);
+               dzo $$15 = $$3.a_($$14);
+               if (c($$15) || $$15.a(dlw.ec)) {
+                  if ($$4) {
+                     this.a($$3, $$14, dlw.J.m());
+                  } else {
+                     this.a($$3, $$14, dlw.a.m());
+                     this.a($$3, $$14);
                   }
                }
             }
          }
       }
-
-      return $$11;
    }
 
-   protected void a(eht<eku> $$0, dio $$1, eku $$2, azs $$3, Set<jj> $$4, int $$5, int $$6) {
-      for (jj $$7 : $$4) {
-         if ($$2.i > 0.0F && $$3.i() < $$2.i) {
-            this.a($$1, $$2, $$0.c(), $$3, $$7);
+   private void a(diq $$0, iu $$1) {
+      if ($$0.a_($$1.d()).a(dlw.ea)) {
+         this.a($$0, $$1.d(), dlw.a.m());
+      }
+   }
+
+   private void a(diq $$0, azt $$1, iu $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, boolean $$9, int $$10, double $$11, boolean $$12, dzo $$13) {
+      double $$14 = $$9 ? this.a($$4, $$6, iu.c, $$8, this.a($$5, $$3, $$10), $$11) : this.a($$4, $$6, iu.c, $$7, $$1);
+      if ($$14 < 0.0) {
+         iu $$15 = $$2.b($$4, $$5, $$6);
+         double $$16 = $$9 ? -0.5 : (double)(-6 - $$1.a(3));
+         if ($$14 > $$16 && $$1.j() > 0.9) {
+            return;
+         }
+
+         this.a($$15, $$0, $$1, $$3 - $$5, $$3, $$9, $$12, $$13);
+      }
+   }
+
+   private void a(iu $$0, diq $$1, azt $$2, int $$3, int $$4, boolean $$5, boolean $$6, dzo $$7) {
+      dzo $$8 = $$1.a_($$0);
+      if ($$8.l() || $$8.a(dlw.ec) || $$8.a(dlw.eb) || $$8.a(dlw.J)) {
+         boolean $$9 = !$$5 || $$2.j() > 0.05;
+         int $$10 = $$5 ? 3 : 2;
+         if ($$6 && !$$8.a(dlw.J) && (double)$$3 <= (double)$$2.a(Math.max(1, $$4 / $$10)) + (double)$$4 * 0.6 && $$9) {
+            this.a($$1, $$0, dlw.ec.m());
+         } else {
+            this.a($$1, $$0, $$7);
          }
       }
    }
 
-   protected boolean a(dio $$0, eku $$1, eak $$2, azs $$3, jj $$4) {
-      return $$1.d.a().a($$0, $$2, $$3, $$4.a($$1.e.a().g()));
+   private int a(int $$0, int $$1, int $$2) {
+      int $$3 = $$2;
+      if ($$0 > 0 && $$1 - $$0 <= 3) {
+         $$3 = $$2 - (4 - ($$1 - $$0));
+      }
+
+      return $$3;
    }
 
-   protected boolean a(dio $$0, eku $$1, Predicate<dym> $$2, azs $$3, jj.a $$4, int $$5) {
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         dym $$7 = $$1.c.a($$3, $$4);
-         dym $$8 = $$0.a_($$4);
-         if (!$$7.a($$8.b())) {
-            if (!$$2.test($$8)) {
-               return $$6 != 0;
+   private double a(int $$0, int $$1, iu $$2, int $$3, azt $$4) {
+      float $$5 = 10.0F * azk.a($$4.i(), 0.2F, 0.8F) / (float)$$3;
+      return (double)$$5 + Math.pow((double)($$0 - $$2.u()), 2.0) + Math.pow((double)($$1 - $$2.w()), 2.0) - Math.pow((double)$$3, 2.0);
+   }
+
+   private double a(int $$0, int $$1, iu $$2, int $$3, int $$4, double $$5) {
+      return Math.pow(((double)($$0 - $$2.u()) * Math.cos($$5) - (double)($$1 - $$2.w()) * Math.sin($$5)) / (double)$$3, 2.0)
+         + Math.pow(((double)($$0 - $$2.u()) * Math.sin($$5) + (double)($$1 - $$2.w()) * Math.cos($$5)) / (double)$$4, 2.0)
+         - 1.0;
+   }
+
+   private int a(azt $$0, int $$1, int $$2, int $$3) {
+      float $$4 = 3.5F - $$0.i();
+      float $$5 = (1.0F - (float)Math.pow((double)$$1, 2.0) / ((float)$$2 * $$4)) * (float)$$3;
+      if ($$2 > 15 + $$0.a(5)) {
+         int $$6 = $$1 < 3 + $$0.a(6) ? $$1 / 2 : $$1;
+         $$5 = (1.0F - (float)$$6 / ((float)$$2 * $$4 * 0.4F)) * (float)$$3;
+      }
+
+      return azk.f($$5 / 2.0F);
+   }
+
+   private int b(int $$0, int $$1, int $$2) {
+      float $$3 = 1.0F;
+      float $$4 = (1.0F - (float)Math.pow((double)$$0, 2.0) / ((float)$$1 * 1.0F)) * (float)$$2;
+      return azk.f($$4 / 2.0F);
+   }
+
+   private int b(azt $$0, int $$1, int $$2, int $$3) {
+      float $$4 = 1.0F + $$0.i() / 2.0F;
+      float $$5 = (1.0F - (float)$$1 / ((float)$$2 * $$4)) * (float)$$3;
+      return azk.f($$5 / 2.0F);
+   }
+
+   private static boolean c(dzo $$0) {
+      return $$0.a(dlw.ja) || $$0.a(dlw.ec) || $$0.a(dlw.ny);
+   }
+
+   private boolean a(dhv $$0, iu $$1) {
+      return $$0.a_($$1.e()).l();
+   }
+
+   private void a(diq $$0, iu $$1, int $$2, int $$3, boolean $$4, int $$5) {
+      int $$6 = $$4 ? $$5 : $$2 / 2;
+
+      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
+         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
+            for (int $$9 = 0; $$9 <= $$3; $$9++) {
+               iu $$10 = $$1.b($$7, $$9, $$8);
+               dzo $$11 = $$0.a_($$10);
+               if (c($$11) || $$11.a(dlw.ea)) {
+                  if (this.a((dhv)$$0, $$10)) {
+                     this.a($$0, $$10, dlw.a.m());
+                     this.a($$0, $$10.d(), dlw.a.m());
+                  } else if (c($$11)) {
+                     dzo[] $$12 = new dzo[]{$$0.a_($$10.h()), $$0.a_($$10.i()), $$0.a_($$10.f()), $$0.a_($$10.g())};
+                     int $$13 = 0;
+
+                     for (dzo $$14 : $$12) {
+                        if (!c($$14)) {
+                           $$13++;
+                        }
+                     }
+
+                     if ($$13 >= 3) {
+                        this.a($$0, $$10, dlw.a.m());
+                     }
+                  }
+               }
             }
-
-            $$0.a($$4, $$7, 2);
-            $$4.c($$1.e.a());
          }
       }
-
-      return true;
    }
 }

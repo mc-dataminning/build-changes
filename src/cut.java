@@ -1,88 +1,104 @@
-public class cut extends ctn {
-   private static final int q = 1;
-   private static final int r = 1;
-   public static final int m = 1;
-   public static final int n = 2;
-   public static final int o = 3;
-   public static final int p = 100;
-   private final btj s;
-   private final ctz t;
+public class cut extends cuk {
+   private final btr m;
+   private final int n;
 
-   public cut(int $$0) {
-      this($$0, new btx(1), new cvj(1));
+   private cut(cvt<?> $$0, int $$1, cqr $$2, int $$3) {
+      this($$0, $$1, $$2, new buf(9 * $$3), $$3);
    }
 
-   public cut(int $$0, btj $$1, ctz $$2) {
-      super(cuw.r, $$0);
-      a($$1, 1);
-      a($$2, 1);
-      this.s = $$1;
-      this.t = $$2;
-      this.a(new cvk($$1, 0, 0, 0) {
-         @Override
-         public void d() {
-            super.d();
-            cut.this.a(this.c);
-         }
-      });
-      this.a($$2);
+   public static cut a(int $$0, cqr $$1) {
+      return new cut(cvt.a, $$0, $$1, 1);
    }
 
-   @Override
-   public boolean a(cqi $$0, int $$1) {
-      if ($$1 >= 100) {
-         int $$2 = $$1 - 100;
-         this.b(0, $$2);
-         return true;
-      } else {
-         switch ($$1) {
-            case 1:
-               int $$4 = this.t.a(0);
-               this.b(0, $$4 - 1);
-               return true;
-            case 2:
-               int $$3 = this.t.a(0);
-               this.b(0, $$3 + 1);
-               return true;
-            case 3:
-               if (!$$0.gv()) {
-                  return false;
-               }
+   public static cut b(int $$0, cqr $$1) {
+      return new cut(cvt.b, $$0, $$1, 2);
+   }
 
-               cxy $$5 = this.s.b(0);
-               this.s.e();
-               if (!$$0.gi().f($$5)) {
-                  $$0.a($$5, false);
-               }
+   public static cut c(int $$0, cqr $$1) {
+      return new cut(cvt.c, $$0, $$1, 3);
+   }
 
-               return true;
-            default:
-               return false;
+   public static cut d(int $$0, cqr $$1) {
+      return new cut(cvt.d, $$0, $$1, 4);
+   }
+
+   public static cut e(int $$0, cqr $$1) {
+      return new cut(cvt.e, $$0, $$1, 5);
+   }
+
+   public static cut f(int $$0, cqr $$1) {
+      return new cut(cvt.f, $$0, $$1, 6);
+   }
+
+   public static cut a(int $$0, cqr $$1, btr $$2) {
+      return new cut(cvt.c, $$0, $$1, $$2, 3);
+   }
+
+   public static cut b(int $$0, cqr $$1, btr $$2) {
+      return new cut(cvt.f, $$0, $$1, $$2, 6);
+   }
+
+   public cut(cvt<?> $$0, int $$1, cqr $$2, btr $$3, int $$4) {
+      super($$0, $$1);
+      a($$3, $$4 * 9);
+      this.m = $$3;
+      this.n = $$4;
+      $$3.c_($$2.k);
+      int $$5 = 18;
+      this.d($$3, 8, 18);
+      int $$6 = 18 + this.n * 18 + 13;
+      this.c($$2, 8, $$6);
+   }
+
+   private void d(btr $$0, int $$1, int $$2) {
+      for (int $$3 = 0; $$3 < this.n; $$3++) {
+         for (int $$4 = 0; $$4 < 9; $$4++) {
+            this.a(new cwh($$0, $$4 + $$3 * 9, $$1 + $$4 * 18, $$2 + $$3 * 18));
          }
       }
    }
 
    @Override
-   public cxy b(cqi $$0, int $$1) {
-      return cxy.k;
+   public boolean b(cqs $$0) {
+      return this.m.a($$0);
    }
 
    @Override
-   public void b(int $$0, int $$1) {
-      super.b($$0, $$1);
-      this.d();
+   public cys b(cqs $$0, int $$1) {
+      cys $$2 = cys.k;
+      cwh $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cys $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 < this.n * 9) {
+            if (!this.a($$4, this.n * 9, this.k.size(), true)) {
+               return cys.k;
+            }
+         } else if (!this.a($$4, 0, this.n * 9, false)) {
+            return cys.k;
+         }
+
+         if ($$4.f()) {
+            $$3.e(cys.k);
+         } else {
+            $$3.d();
+         }
+      }
+
+      return $$2;
    }
 
    @Override
-   public boolean b(cqi $$0) {
-      return this.s.a($$0);
+   public void a(cqs $$0) {
+      super.a($$0);
+      this.m.c($$0);
    }
 
-   public cxy l() {
-      return this.s.a(0);
+   public btr l() {
+      return this.m;
    }
 
    public int m() {
-      return this.t.a(0);
+      return this.n;
    }
 }

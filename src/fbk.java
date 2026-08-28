@@ -1,26 +1,36 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record fbk(ald b) implements fbi {
-   public static final MapCodec<fbk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ald.a.fieldOf("source").forGetter(fbk::c)).apply($$0, fbk::new));
+public class fbk extends fbm {
+   public static final MapCodec<fbk> a = a(fbk::new);
 
-   @Override
-   public fbh a() {
-      return fbj.b;
+   fbk(List<fbw> $$0) {
+      super($$0, af.b($$0));
    }
 
    @Override
-   public ut a(exl $$0) {
-      return $$0.d().p().aK().a(this.b);
+   public fbx b() {
+      return fby.b;
    }
 
-   @Override
-   public Set<bat<?>> b() {
-      return Set.of();
+   public static fbk.a a(fbw.a... $$0) {
+      return new fbk.a($$0);
    }
 
-   public ald c() {
-      return this.b;
+   public static class a extends fbm.a {
+      public a(fbw.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public fbk.a or(fbw.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected fbw a(List<fbw> $$0) {
+         return new fbk($$0);
+      }
    }
 }

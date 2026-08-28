@@ -1,54 +1,109 @@
-import java.util.Set;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record bxe(fcu b, fcu c, float d, float e) {
-   public static final yt<vr, bxe> a = yt.a(fcu.b, bxe::a, fcu.b, bxe::b, yr.l, bxe::c, yr.l, bxe::d, bxe::new);
+public interface bxe {
+   String a_ = "AngerTime";
+   String b_ = "AngryAt";
 
-   public static bxe a(bvs $$0) {
-      return $$0.bR() ? new bxe($$0.N_().a(), $$0.ah(), $$0.N_().b(), $$0.N_().c()) : new bxe($$0.dt(), $$0.ah(), $$0.dL(), $$0.dN());
-   }
+   int a();
 
-   public static bxe a(evt $$0) {
-      return new bxe($$0.c(), $$0.d(), $$0.e(), $$0.f());
-   }
+   void a(int var1);
 
-   public static bxe a(bxe $$0, bxe $$1, Set<bxf> $$2) {
-      double $$3 = $$2.contains(bxf.a) ? $$0.b.d : 0.0;
-      double $$4 = $$2.contains(bxf.b) ? $$0.b.e : 0.0;
-      double $$5 = $$2.contains(bxf.c) ? $$0.b.f : 0.0;
-      float $$6 = $$2.contains(bxf.d) ? $$0.d : 0.0F;
-      float $$7 = $$2.contains(bxf.e) ? $$0.e : 0.0F;
-      fcu $$8 = new fcu($$3 + $$1.b.d, $$4 + $$1.b.e, $$5 + $$1.b.f);
-      float $$9 = $$6 + $$1.d;
-      float $$10 = azk.a($$7 + $$1.e, -90.0F, 90.0F);
-      fcu $$11 = $$0.c;
-      if ($$2.contains(bxf.i)) {
-         float $$12 = $$0.d - $$9;
-         float $$13 = $$0.e - $$10;
-         $$11 = $$11.a((float)Math.toRadians((double)$$13));
-         $$11 = $$11.b((float)Math.toRadians((double)$$12));
+   @Nullable
+   UUID b();
+
+   void a(@Nullable UUID var1);
+
+   void c();
+
+   default void a_(tx $$0) {
+      $$0.a("AngerTime", this.a());
+      if (this.b() != null) {
+         $$0.a("AngryAt", this.b());
       }
-
-      fcu $$14 = new fcu(a($$11.d, $$1.c.d, $$2, bxf.f), a($$11.e, $$1.c.e, $$2, bxf.g), a($$11.f, $$1.c.f, $$2, bxf.h));
-      return new bxe($$8, $$14, $$9, $$10);
    }
 
-   private static double a(double $$0, double $$1, Set<bxf> $$2, bxf $$3) {
-      return $$2.contains($$3) ? $$0 + $$1 : $$1;
+   default void a(dip $$0, tx $$1) {
+      this.a($$1.h("AngerTime"));
+      if ($$0 instanceof aro $$2) {
+         if (!$$1.b("AngryAt")) {
+            this.a(null);
+         } else {
+            UUID $$4 = $$1.a("AngryAt");
+            this.a($$4);
+            if ($$2.b($$4) instanceof bwz $$6) {
+               this.g($$6);
+            }
+         }
+      }
    }
 
-   public fcu a() {
-      return this.b;
+   default void a(aro $$0, boolean $$1) {
+      bwz $$2 = this.f();
+      UUID $$3 = this.b();
+      if (($$2 == null || $$2.eG()) && $$3 != null && $$0.b($$3) instanceof bxb) {
+         this.V_();
+      } else {
+         if ($$2 != null && !Objects.equals($$3, $$2.cG())) {
+            this.a($$2.cG());
+            this.c();
+         }
+
+         if (this.a() > 0 && ($$2 == null || $$2.aq() != bwj.bS || !$$1)) {
+            this.a(this.a() - 1);
+            if (this.a() == 0) {
+               this.V_();
+            }
+         }
+      }
    }
 
-   public fcu b() {
-      return this.c;
+   default boolean a(bwz $$0, aro $$1) {
+      if (!this.c($$0)) {
+         return false;
+      } else {
+         return $$0.aq() == bwj.bS && this.a_($$1) ? true : $$0.cG().equals(this.b());
+      }
    }
 
-   public float c() {
-      return this.d;
+   default boolean a_(aro $$0) {
+      return $$0.O().c(dil.P) && this.W_() && this.b() == null;
    }
 
-   public float d() {
-      return this.e;
+   default boolean W_() {
+      return this.a() > 0;
    }
+
+   default void a_(aro $$0, cqs $$1) {
+      if ($$0.O().c(dil.O)) {
+         if ($$1.cG().equals(this.b())) {
+            this.V_();
+         }
+      }
+   }
+
+   default void X_() {
+      this.V_();
+      this.c();
+   }
+
+   default void V_() {
+      this.a(null);
+      this.a(null);
+      this.g(null);
+      this.a(0);
+   }
+
+   @Nullable
+   bwz eq();
+
+   void a(@Nullable bwz var1);
+
+   void g(@Nullable bwz var1);
+
+   boolean c(bwz var1);
+
+   @Nullable
+   bwz f();
 }

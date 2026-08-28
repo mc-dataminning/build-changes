@@ -1,157 +1,121 @@
-import com.google.common.collect.Multimap;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Collection;
+import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class bxu {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<js<bxs>, bxt> b = new Object2ObjectOpenHashMap();
-   private final Set<bxt> c = new ObjectOpenHashSet();
-   private final Set<bxt> d = new ObjectOpenHashSet();
-   private final bxw e;
+   private static final Map<bwj<?>, bxu.a> a = Maps.newHashMap();
 
-   public bxu(bxw $$0) {
-      this.e = $$0;
-   }
-
-   private void a(bxt $$0) {
-      this.d.add($$0);
-      if ($$0.a().a().b()) {
-         this.c.add($$0);
+   private static <T extends bxb> void a(bwj<T> $$0, bxs $$1, efn.a $$2, bxu.b<T> $$3) {
+      bxu.a $$4 = a.put($$0, new bxu.a($$2, $$1, $$3));
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration for type " + mf.f.b($$0));
       }
    }
 
-   public Set<bxt> a() {
-      return this.c;
+   public static bxs a(bwj<?> $$0) {
+      bxu.a $$1 = a.get($$0);
+      return $$1 == null ? bxt.a : $$1.b;
    }
 
-   public Set<bxt> b() {
-      return this.d;
+   public static boolean a(bwj<?> $$0, dis $$1, iu $$2) {
+      return a($$0).isSpawnPositionOk($$1, $$2, $$0);
    }
 
-   public Collection<bxt> c() {
-      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
+   public static efn.a b(@Nullable bwj<?> $$0) {
+      bxu.a $$1 = a.get($$0);
+      return $$1 == null ? efn.a.f : $$1.a;
    }
 
-   @Nullable
-   public bxt a(js<bxs> $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> this.e.a(this::a, $$0x));
+   public static <T extends bwa> boolean a(bwj<T> $$0, djg $$1, bwi $$2, iu $$3, azt $$4) {
+      bxu.a $$5 = a.get($$0);
+      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
    }
 
-   public boolean b(js<bxs> $$0) {
-      return this.b.get($$0) != null || this.e.c($$0);
+   static {
+      a(bwj.h, bxt.b, efn.a.f, ckd::a);
+      a(bwj.A, bxt.b, efn.a.f, cjt::c);
+      a(bwj.H, bxt.b, efn.a.f, cin::b);
+      a(bwj.K, bxt.b, efn.a.f, cnh::a);
+      a(bwj.ai, bxt.b, efn.a.f, cnp::b);
+      a(bwj.aX, bxt.b, efn.a.f, cjt::c);
+      a(bwj.ba, bxt.b, efn.a.f, cjt::c);
+      a(bwj.br, bxt.b, efn.a.f, cin::b);
+      a(bwj.bA, bxt.b, efn.a.f, cjr::b);
+      a(bwj.e, bxt.d, efn.a.f, cka::c);
+      a(bwj.k, bxt.d, efn.a.f, cii::b);
+      a(bwj.o, bxt.d, efn.a.f, cnt::c);
+      a(bwj.q, bxt.d, efn.a.f, cnt::b);
+      a(bwj.r, bxt.d, efn.a.f, cnt::c);
+      a(bwj.v, bxt.d, efn.a.f, cnt::b);
+      a(bwj.z, bxt.d, efn.a.f, cio::b);
+      a(bwj.C, bxt.d, efn.a.f, cio::b);
+      a(bwj.E, bxt.d, efn.a.f, cnt::b);
+      a(bwj.I, bxt.d, efn.a.f, cio::b);
+      a(bwj.N, bxt.d, efn.a.f, cnt::b);
+      a(bwj.O, bxt.d, efn.a.f, cnk::b);
+      a(bwj.P, bxt.d, efn.a.f, bxb::a);
+      a(bwj.ab, bxt.d, efn.a.f, ckl::c);
+      a(bwj.ad, bxt.d, efn.a.f, cnn::b);
+      a(bwj.ae, bxt.d, efn.a.f, cnt::b);
+      a(bwj.ag, bxt.b, efn.a.f, bwq::a);
+      a(bwj.ah, bxt.d, efn.a.f, ckt::c);
+      a(bwj.al, bxt.d, efn.a.f, cio::b);
+      a(bwj.am, bxt.d, efn.a.f, cnq::a);
+      a(bwj.ap, bxt.d, efn.a.f, bxb::a);
+      a(bwj.ax, bxt.d, efn.a.f, cio::b);
+      a(bwj.az, bxt.d, efn.a.f, cns::b);
+      a(bwj.aE, bxt.d, efn.a.f, cjb::c);
+      a(bwj.aF, bxt.d, efn.a.f, cio::b);
+      a(bwj.aI, bxt.d, efn.a.e, cjc::c);
+      a(bwj.aO, bxt.d, efn.a.e, cje::c);
+      a(bwj.aQ, bxt.d, efn.a.f, cio::b);
+      a(bwj.aj, bxt.d, efn.a.f, cpb::c);
+      a(bwj.aR, bxt.d, efn.a.f, cph::b);
+      a(bwj.aT, bxt.d, efn.a.f, cnu::b);
+      a(bwj.aU, bxt.d, efn.a.f, cji::c);
+      a(bwj.aY, bxt.d, efn.a.f, cjk::c);
+      a(bwj.bb, bxt.d, efn.a.f, cio::b);
+      a(bwj.be, bxt.d, efn.a.f, coa::b);
+      a(bwj.bf, bxt.d, efn.a.f, cnt::b);
+      a(bwj.bg, bxt.d, efn.a.f, cld::c);
+      a(bwj.bh, bxt.d, efn.a.f, coc::c);
+      a(bwj.bl, bxt.d, efn.a.f, bxb::a);
+      a(bwj.bo, bxt.d, efn.a.f, cnt::b);
+      a(bwj.bs, bxt.d, efn.a.f, cof::a);
+      a(bwj.bt, bxt.c, efn.a.f, cog::c);
+      a(bwj.bB, bxt.d, efn.a.f, cjs::c);
+      a(bwj.bD, bxt.d, efn.a.f, bxb::a);
+      a(bwj.bI, bxt.d, efn.a.f, cnt::b);
+      a(bwj.bJ, bxt.d, efn.a.f, cnt::b);
+      a(bwj.bK, bxt.d, efn.a.f, cnt::b);
+      a(bwj.bM, bxt.d, efn.a.f, cju::c);
+      a(bwj.bN, bxt.d, efn.a.f, cnt::c);
+      a(bwj.D, bxt.d, efn.a.f, cnt::b);
+      a(bwj.bO, bxt.d, efn.a.f, cnt::b);
+      a(bwj.bP, bxt.d, efn.a.f, clh::c);
+      a(bwj.bR, bxt.d, efn.a.f, cop::b);
+      a(bwj.bQ, bxt.d, efn.a.f, cnt::b);
+      a(bwj.u, bxt.d, efn.a.f, cio::b);
+      a(bwj.M, bxt.b, efn.a.f, cnp::b);
+      a(bwj.S, bxt.a, efn.a.f, cnt::b);
+      a(bwj.aa, bxt.a, efn.a.f, ciz::c);
+      a(bwj.an, bxt.a, efn.a.f, cnt::b);
+      a(bwj.aN, bxt.a, efn.a.f, cio::b);
+      a(bwj.aP, bxt.a, efn.a.f, bxb::a);
+      a(bwj.aZ, bxt.d, efn.a.f, cnt::b);
+      a(bwj.bc, bxt.a, efn.a.f, bxb::a);
+      a(bwj.by, bxt.a, efn.a.f, cio::b);
+      a(bwj.bC, bxt.a, efn.a.f, cnt::b);
+      a(bwj.bE, bxt.a, efn.a.f, cnt::b);
+      a(bwj.bF, bxt.d, efn.a.f, bxb::a);
+      a(bwj.bG, bxt.a, efn.a.f, cnt::b);
    }
 
-   public boolean a(js<bxs> $$0, ald $$1) {
-      bxt $$2 = this.b.get($$0);
-      return $$2 != null ? $$2.a($$1) != null : this.e.b($$0, $$1);
+   static record a(efn.a a, bxs b, bxu.b<?> c) {
    }
 
-   public double c(js<bxs> $$0) {
-      bxt $$1 = this.b.get($$0);
-      return $$1 != null ? $$1.g() : this.e.a($$0);
-   }
-
-   public double d(js<bxs> $$0) {
-      bxt $$1 = this.b.get($$0);
-      return $$1 != null ? $$1.b() : this.e.b($$0);
-   }
-
-   public double b(js<bxs> $$0, ald $$1) {
-      bxt $$2 = this.b.get($$0);
-      return $$2 != null ? $$2.a($$1).c() : this.e.a($$0, $$1);
-   }
-
-   public void a(Multimap<js<bxs>, bxv> $$0) {
-      $$0.forEach(($$0x, $$1) -> {
-         bxt $$2 = this.a($$0x);
-         if ($$2 != null) {
-            $$2.c($$1.b());
-            $$2.b($$1);
-         }
-      });
-   }
-
-   public void b(Multimap<js<bxs>, bxv> $$0) {
-      $$0.asMap().forEach(($$0x, $$1) -> {
-         bxt $$2 = this.b.get($$0x);
-         if ($$2 != null) {
-            $$1.forEach($$1x -> $$2.c($$1x.b()));
-         }
-      });
-   }
-
-   public void a(bxu $$0) {
-      $$0.b.values().forEach($$0x -> {
-         bxt $$1 = this.a($$0x.a());
-         if ($$1 != null) {
-            $$1.a($$0x);
-         }
-      });
-   }
-
-   public void b(bxu $$0) {
-      $$0.b.values().forEach($$0x -> {
-         bxt $$1 = this.a($$0x.a());
-         if ($$1 != null) {
-            $$1.a($$0x.b());
-         }
-      });
-   }
-
-   public void c(bxu $$0) {
-      $$0.b.values().forEach($$0x -> {
-         bxt $$1 = this.a($$0x.a());
-         if ($$1 != null) {
-            $$1.a($$0x.d());
-         }
-      });
-   }
-
-   public boolean e(js<bxs> $$0) {
-      if (!this.e.c($$0)) {
-         return false;
-      } else {
-         bxt $$1 = this.b.get($$0);
-         if ($$1 != null) {
-            $$1.a(this.e.b($$0));
-         }
-
-         return true;
-      }
-   }
-
-   public uc d() {
-      uc $$0 = new uc();
-
-      for (bxt $$1 : this.b.values()) {
-         $$0.add($$1.h());
-      }
-
-      return $$0;
-   }
-
-   public void a(uc $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         tw $$2 = $$0.a($$1);
-         String $$3 = $$2.l("id");
-         ald $$4 = ald.c($$3);
-         if ($$4 != null) {
-            af.a(md.s.c($$4), $$1x -> {
-               bxt $$2x = this.a($$1x);
-               if ($$2x != null) {
-                  $$2x.a($$2);
-               }
-            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
-         } else {
-            a.warn("Ignoring malformed attribute '{}'", $$3);
-         }
-      }
+   @FunctionalInterface
+   public interface b<T extends bwa> {
+      boolean test(bwj<T> var1, djg var2, bwi var3, iu var4, azt var5);
    }
 }

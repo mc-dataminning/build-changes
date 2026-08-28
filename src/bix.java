@@ -1,44 +1,50 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.function.Function;
 
 public class bix extends DataFix {
-   public bix(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   final String a;
+   final Map<String, String> b;
+
+   public bix(Schema $$0, String $$1, Map<String, String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(biq.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(biq.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("POI reorganization", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(bix::a));
-      }
+      Type<?> $$0 = this.getInputSchema().getType(bit.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Map<Dynamic<T>, Dynamic<T>> $$1 = Maps.newHashMap();
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      $$0 = this.a($$0, "Enchantments");
+      return this.a($$0, "StoredEnchantments");
+   }
 
-      for (int $$2 = 0; $$2 < 16; $$2++) {
-         String $$3 = String.valueOf($$2);
-         Optional<Dynamic<T>> $$4 = $$0.get($$3).result();
-         if ($$4.isPresent()) {
-            Dynamic<T> $$5 = $$4.get();
-            Dynamic<T> $$6 = $$0.createMap(ImmutableMap.of($$0.createString("Records"), $$5));
-            $$1.put($$0.createInt($$2), $$6);
-            $$0 = $$0.remove($$3);
-         }
-      }
-
-      return $$0.set("Sections", $$0.createMap($$1));
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.update(
+         $$1,
+         $$0x -> (Dynamic)$$0x.asStreamOpt()
+               .map(
+                  $$0xx -> $$0xx.map(
+                        $$0xxx -> $$0xxx.update(
+                              "id",
+                              $$1x -> (Dynamic)$$1x.asString()
+                                    .map($$1xx -> $$0xxx.createString(this.b.getOrDefault(bko.a($$1xx), $$1xx)))
+                                    .mapOrElse(Function.identity(), $$1xx -> $$1x)
+                           )
+                     )
+               )
+               .map($$0x::createList)
+               .mapOrElse(Function.identity(), $$1x -> $$0x)
+      );
    }
 }

@@ -1,10 +1,9 @@
-public class cvi extends cvk {
-   public cvi(btj $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
+public class cvi extends cum {
+   public cvi(int $$0, cqr $$1) {
+      super(cvt.o, ddu.b, dds.e, cwa.b, $$0, $$1);
    }
 
-   @Override
-   public boolean a(cxy $$0) {
-      return $$0.h().e();
+   public cvi(int $$0, cqr $$1, btr $$2, cuw $$3) {
+      super(cvt.o, ddu.b, dds.e, cwa.b, $$0, $$1, $$2, $$3);
    }
 }

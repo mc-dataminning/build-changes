@@ -1,29 +1,35 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dto extends dom {
-   public static final MapCodec<dto> b = b(dto::new);
+public class dto extends dlg {
+   public static final MapCodec<dto> a = b(dto::new);
 
-   protected dto(dyl.d $$0) {
+   @Override
+   public MapCodec<dto> a() {
+      return a;
+   }
+
+   protected dto(dzn.d $$0) {
       super($$0);
    }
 
    @Override
-   protected MapCodec<? extends dto> a() {
-      return b;
+   public dwn a(iu $$0, dzo $$1) {
+      return new dyf($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dwn> dwo<T> a(dip $$0, dzo $$1, dwp<T> $$2) {
+      return a($$2, dwp.j, $$0.C ? dyf::a : dyf::b);
    }
 
    @Override
-   protected fdo c(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return fdl.a();
-   }
-
-   @Override
-   protected float c(dym $$0, dgv $$1, jj $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   protected boolean e_(dym $$0) {
-      return true;
+   protected void a(dzo $$0, aro $$1, iu $$2, cys $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         int $$5 = 15 + $$1.A.a(15) + $$1.A.a(15);
+         this.a($$1, $$2, $$5);
+      }
    }
 }

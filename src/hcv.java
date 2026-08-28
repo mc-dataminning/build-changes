@@ -1,10 +1,8 @@
-public class hcv extends hbk {
-   public float a;
-   public float b;
-   public final bvj c = new bvj();
-   public final bvj d = new bvj();
-   public final bvj e = new bvj();
-   public final bvj f = new bvj();
-   public final bvj g = new bvj();
-   public final bvj h = new bvj();
+import javax.annotation.Nullable;
+
+public class hcv extends hbp {
+   public ja a = ja.c;
+   @Nullable
+   public cmt b;
+   public int[] c = new int[0];
 }

@@ -1,13 +1,13 @@
 import java.util.function.Supplier;
 
 public class azo {
-   public static void a(dhp $$0, jj $$1, lt $$2, bsv $$3) {
-      for (jo $$4 : jo.values()) {
+   public static void a(dip $$0, iu $$1, lv $$2, btd $$3) {
+      for (ja $$4 : ja.values()) {
          a($$0, $$1, $$2, $$3, $$4, () -> a($$0.A), 0.55);
       }
    }
 
-   public static void a(dhp $$0, jj $$1, lt $$2, bsv $$3, jo $$4, Supplier<fcu> $$5, double $$6) {
+   public static void a(dip $$0, iu $$1, lv $$2, btd $$3, ja $$4, Supplier<fdw> $$5, double $$6) {
       int $$7 = $$3.a($$0.A);
 
       for (int $$8 = 0; $$8 < $$7; $$8++) {
@@ -15,15 +15,15 @@ public class azo {
       }
    }
 
-   private static fcu a(azs $$0) {
-      return new fcu(azk.a($$0, -0.5, 0.5), azk.a($$0, -0.5, 0.5), azk.a($$0, -0.5, 0.5));
+   private static fdw a(azt $$0) {
+      return new fdw(azk.a($$0, -0.5, 0.5), azk.a($$0, -0.5, 0.5), azk.a($$0, -0.5, 0.5));
    }
 
-   public static void a(jo.a $$0, dhp $$1, jj $$2, double $$3, lt $$4, btb $$5) {
-      fcu $$6 = fcu.b($$2);
-      boolean $$7 = $$0 == jo.a.a;
-      boolean $$8 = $$0 == jo.a.b;
-      boolean $$9 = $$0 == jo.a.c;
+   public static void a(ja.a $$0, dip $$1, iu $$2, double $$3, lv $$4, btj $$5) {
+      fdw $$6 = fdw.b($$2);
+      boolean $$7 = $$0 == ja.a.a;
+      boolean $$8 = $$0 == ja.a.b;
+      boolean $$9 = $$0 == ja.a.c;
       int $$10 = $$5.a($$1.A);
 
       for (int $$11 = 0; $$11 < $$10; $$11++) {
@@ -37,8 +37,8 @@ public class azo {
       }
    }
 
-   public static void a(dhp $$0, jj $$1, jo $$2, lt $$3, fcu $$4, double $$5) {
-      fcu $$6 = fcu.b($$1);
+   public static void a(dip $$0, iu $$1, ja $$2, lv $$3, fdw $$4, double $$5) {
+      fdw $$6 = fdw.b($$1);
       int $$7 = $$2.j();
       int $$8 = $$2.k();
       int $$9 = $$2.l();
@@ -51,22 +51,22 @@ public class azo {
       $$0.a($$3, $$10, $$11, $$12, $$13, $$14, $$15);
    }
 
-   public static void a(dhp $$0, jj $$1, azs $$2, lt $$3) {
+   public static void a(dip $$0, iu $$1, azt $$2, lv $$3) {
       double $$4 = (double)$$1.u() + $$2.j();
       double $$5 = (double)$$1.v() - 0.05;
       double $$6 = (double)$$1.w() + $$2.j();
       $$0.a($$3, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
-   public static void a(dhq $$0, jj $$1, int $$2, lt $$3) {
+   public static void a(diq $$0, iu $$1, int $$2, lv $$3) {
       double $$4 = 0.5;
-      dym $$5 = $$0.a_($$1);
-      double $$6 = $$5.l() ? 1.0 : $$5.f($$0, $$1).c(jo.a.b);
+      dzo $$5 = $$0.a_($$1);
+      double $$6 = $$5.l() ? 1.0 : $$5.f($$0, $$1).c(ja.a.b);
       a($$0, $$1, $$2, 0.5, $$6, true, $$3);
    }
 
-   public static void a(dhq $$0, jj $$1, int $$2, double $$3, double $$4, boolean $$5, lt $$6) {
-      azs $$7 = $$0.C_();
+   public static void a(diq $$0, iu $$1, int $$2, double $$3, double $$4, boolean $$5, lv $$6) {
+      azt $$7 = $$0.C_();
 
       for (int $$8 = 0; $$8 < $$2; $$8++) {
          double $$9 = $$7.k() * 0.02;
@@ -76,15 +76,15 @@ public class azo {
          double $$13 = (double)$$1.u() + $$12 + $$7.j() * $$3 * 2.0;
          double $$14 = (double)$$1.v() + $$7.j() * $$4;
          double $$15 = (double)$$1.w() + $$12 + $$7.j() * $$3 * 2.0;
-         if ($$5 || !$$0.a_(jj.a($$13, $$14, $$15).e()).l()) {
+         if ($$5 || !$$0.a_(iu.a($$13, $$14, $$15).e()).l()) {
             $$0.a($$6, $$13, $$14, $$15, $$9, $$10, $$11);
          }
       }
    }
 
-   public static void a(dhq $$0, jj $$1, int $$2) {
-      fcu $$3 = $$1.b().b(0.0, 0.5, 0.0);
-      ln $$4 = new ln(lv.be, $$0.a_($$1));
+   public static void a(diq $$0, iu $$1, int $$2) {
+      fdw $$3 = $$1.b().b(0.0, 0.5, 0.0);
+      lp $$4 = new lp(lx.be, $$0.a_($$1));
 
       for (int $$5 = 0; (float)$$5 < (float)$$2 / 3.0F; $$5++) {
          double $$6 = $$3.d + $$0.C_().k() / 2.0;

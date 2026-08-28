@@ -1,28 +1,21 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class eli<P extends elh> {
-   public static final eli<elc> a = a("blob_foliage_placer", elc.a);
-   public static final eli<eln> b = a("spruce_foliage_placer", eln.a);
-   public static final eli<ell> c = a("pine_foliage_placer", ell.a);
-   public static final eli<elb> d = a("acacia_foliage_placer", elb.a);
-   public static final eli<eld> e = a("bush_foliage_placer", eld.c);
-   public static final eli<elg> f = a("fancy_foliage_placer", elg.c);
-   public static final eli<elj> g = a("jungle_foliage_placer", elj.a);
-   public static final eli<elk> h = a("mega_pine_foliage_placer", elk.a);
-   public static final eli<elf> i = a("dark_oak_foliage_placer", elf.a);
-   public static final eli<elm> j = a("random_spread_foliage_placer", elm.a);
-   public static final eli<ele> k = a("cherry_foliage_placer", ele.a);
-   private final MapCodec<P> l;
+public class eli implements ekx {
+   public static final Codec<eli> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(epm.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), epm.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, eli::new)
+   );
+   public final je<epm> b;
+   public final je<epm> c;
 
-   private static <P extends elh> eli<P> a(String $$0, MapCodec<P> $$1) {
-      return kf.a(md.U, $$0, new eli<>($$1));
+   public eli(je<epm> $$0, je<epm> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private eli(MapCodec<P> $$0) {
-      this.l = $$0;
-   }
-
-   public MapCodec<P> a() {
-      return this.l;
+   @Override
+   public Stream<eif<?, ?>> e() {
+      return Stream.concat(this.b.a().a(), this.c.a().a());
    }
 }

@@ -1,32 +1,23 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class eju implements ejv {
-   public static final Codec<eju> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jj.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, eju::new)
-   );
-   private final Optional<jj> b;
-   private final boolean c;
-
-   private eju(Optional<jj> $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class eju extends eit<ell> {
+   public eju(Codec<ell> $$0) {
+      super($$0);
    }
 
-   public static eju a(jj $$0, boolean $$1) {
-      return new eju(Optional.of($$0), $$1);
-   }
+   @Override
+   public boolean a(eiv<ell> $$0) {
+      djo $$1 = $$0.b();
+      iu $$2 = $$0.e();
+      ell $$3 = $$0.f();
 
-   public static eju a() {
-      return new eju(Optional.empty(), false);
-   }
+      for (elf.a $$4 : $$3.b) {
+         if ($$4.b.a($$1.a_($$2), $$0.d())) {
+            $$1.a($$2, $$4.c, 2);
+            break;
+         }
+      }
 
-   public Optional<jj> b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
+      return true;
    }
 }

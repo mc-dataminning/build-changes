@@ -1,30 +1,31 @@
-public class gwn<T extends cnu> extends gvl<T, hbk, ggc> {
-   private static final ald a = ald.b("textures/entity/spider/spider.png");
+public class gwn extends gvj<crl, hcr> {
+   private static final ale a = ale.b("textures/entity/llama/spit.png");
+   private final gfx g;
 
-   public gwn(guf.a $$0) {
-      this($$0, ghc.dg);
+   public gwn(gvk.a $$0) {
+      super($$0);
+      this.g = new gfx($$0.a(gif.bE));
    }
 
-   public gwn(guf.a $$0, ghb $$1) {
-      super($$0, new ggc($$0.a($$1)), 0.8F);
-      this.a(new gyz<>(this));
+   public void a(hcr $$0, fiq $$1, gpd $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.15F, 0.0F);
+      $$1.a(a.d.rotationDegrees($$0.a - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.b));
+      this.g.a($$0);
+      fiu $$4 = $$2.getBuffer(this.g.a(a));
+      this.g.a($$1, $$4, $$3, hhp.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   protected float aR_() {
-      return 180.0F;
+   public hcr a() {
+      return new hcr();
    }
 
-   @Override
-   public ald b(hbk $$0) {
-      return a;
-   }
-
-   public hbk b() {
-      return new hbk();
-   }
-
-   public void a(T $$0, hbk $$1, float $$2) {
+   public void a(crl $$0, hcr $$1, float $$2) {
       super.a($$0, $$1, $$2);
+      $$1.b = $$0.k($$2);
+      $$1.a = $$0.l($$2);
    }
 }

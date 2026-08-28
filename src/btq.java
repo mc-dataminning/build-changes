@@ -1,75 +1,86 @@
-import javax.annotation.Nullable;
+public class btq implements btr {
+   private final btr b;
+   private final btr c;
 
-public sealed interface btq permits btq.d, btq.a, btq.c, btq.f {
-   btq.d a = new btq.d(btq.e.b, btq.b.b);
-   btq.d b = new btq.d(btq.e.c, btq.b.b);
-   btq.d c = new btq.d(btq.e.a, btq.b.b);
-   btq.a d = new btq.a();
-   btq.c e = new btq.c();
-   btq.f f = new btq.f();
-
-   default boolean a() {
-      return false;
+   public btq(btr $$0, btr $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static record a() implements btq {
+   @Override
+   public int b() {
+      return this.b.b() + this.c.b();
    }
 
-   public static record b(boolean c, @Nullable cxy d) {
-      static btq.b a = new btq.b(false, null);
-      static btq.b b = new btq.b(true, null);
-
-      public boolean a() {
-         return this.c;
-      }
-
-      @Nullable
-      public cxy b() {
-         return this.d;
-      }
+   @Override
+   public boolean c() {
+      return this.b.c() && this.c.c();
    }
 
-   public static record c() implements btq {
+   public boolean a(btr $$0) {
+      return this.b == $$0 || this.c == $$0;
    }
 
-   public static record d(btq.e g, btq.b h) implements btq {
-      @Override
-      public boolean a() {
-         return true;
-      }
+   @Override
+   public cys a(int $$0) {
+      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
+   }
 
-      public btq.d a(cxy $$0) {
-         return new btq.d(this.g, new btq.b(true, $$0));
-      }
+   @Override
+   public cys a(int $$0, int $$1) {
+      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
+   }
 
-      public btq.d b() {
-         return new btq.d(this.g, btq.b.a);
-      }
+   @Override
+   public cys b(int $$0) {
+      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
+   }
 
-      public boolean c() {
-         return this.h.c;
-      }
-
-      @Nullable
-      public cxy d() {
-         return this.h.d;
-      }
-
-      public btq.e e() {
-         return this.g;
-      }
-
-      public btq.b f() {
-         return this.h;
+   @Override
+   public void a(int $$0, cys $$1) {
+      if ($$0 >= this.b.b()) {
+         this.c.a($$0 - this.b.b(), $$1);
+      } else {
+         this.b.a($$0, $$1);
       }
    }
 
-   public static enum e {
-      a,
-      b,
-      c;
+   @Override
+   public int aj_() {
+      return this.b.aj_();
    }
 
-   public static record f() implements btq {
+   @Override
+   public void e() {
+      this.b.e();
+      this.c.e();
+   }
+
+   @Override
+   public boolean a(cqs $$0) {
+      return this.b.a($$0) && this.c.a($$0);
+   }
+
+   @Override
+   public void c_(cqs $$0) {
+      this.b.c_($$0);
+      this.c.c_($$0);
+   }
+
+   @Override
+   public void c(cqs $$0) {
+      this.b.c($$0);
+      this.c.c($$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cys $$1) {
+      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
+   }
+
+   @Override
+   public void a() {
+      this.b.a();
+      this.c.a();
    }
 }

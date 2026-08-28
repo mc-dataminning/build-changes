@@ -1,32 +1,114 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.annotations.VisibleForTesting;
+import javax.annotation.Nullable;
 
-public class cpg {
-   public static byj<bwr> a(int $$0, int $$1) {
-      return cbv.a(
-         (Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$2 -> $$2.group($$2.b(cft.ae), $$2.b(cft.M), $$2.a(cft.af), $$2.a(cft.ag))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     if (!$$7.fb().f()) {
-                        return false;
-                     } else {
-                        Optional<Integer> $$9 = $$2.a($$5);
-                        if ($$9.isEmpty()) {
-                           $$5.a(0);
-                        } else {
-                           int $$10 = $$9.get();
-                           if ($$10 > $$0) {
-                              $$3.b();
-                              $$5.b();
-                              $$6.a(true, (long)$$1);
-                           } else {
-                              $$5.a($$10 + 1);
-                           }
-                        }
+public abstract class cpg extends cnt {
+   protected static final akh<Boolean> a = akl.a(cpg.class, akj.k);
+   public static final int b = 300;
+   protected int c;
 
-                        return true;
-                     }
-                  }))
-      );
+   public cpg(bwj<? extends cpg> $$0, dip $$1) {
+      super($$0, $$1);
+      this.a_(true);
+      this.n();
+      this.a(ewm.n, 16.0F);
+      this.a(ewm.o, -1.0F);
    }
+
+   private void n() {
+      if (cht.a(this)) {
+         ((cgi)this.O()).b(true);
+      }
+   }
+
+   protected abstract boolean j();
+
+   public void w(boolean $$0) {
+      this.au().a(a, $$0);
+   }
+
+   protected boolean m() {
+      return this.au().a(a);
+   }
+
+   @Override
+   protected void a(akl.a $$0) {
+      super.a($$0);
+      $$0.a(a, false);
+   }
+
+   @Override
+   public void b(tx $$0) {
+      super.b($$0);
+      if (this.m()) {
+         $$0.a("IsImmuneToZombification", true);
+      }
+
+      $$0.a("TimeInOverworld", this.c);
+   }
+
+   @Override
+   public void a(tx $$0) {
+      super.a($$0);
+      this.w($$0.q("IsImmuneToZombification"));
+      this.c = $$0.h("TimeInOverworld");
+   }
+
+   @Override
+   protected void a(aro $$0) {
+      super.a($$0);
+      if (this.q()) {
+         this.c++;
+      } else {
+         this.c = 0;
+      }
+
+      if (this.c > 300) {
+         this.gr();
+         this.g($$0);
+      }
+   }
+
+   @VisibleForTesting
+   public void b(int $$0) {
+      this.c = $$0;
+   }
+
+   public boolean q() {
+      return !this.dV().B_().b() && !this.m() && !this.gf();
+   }
+
+   protected void g(aro $$0) {
+      this.a(bwj.bR, bvu.a(this, true, true), $$0x -> $$0x.a(new bve(bvg.i, 200, 0)));
+   }
+
+   public boolean t() {
+      return !this.n_();
+   }
+
+   public abstract cpj x();
+
+   @Nullable
+   @Override
+   public bwz f() {
+      return this.Q();
+   }
+
+   protected boolean gq() {
+      return this.fa().c(kj.A);
+   }
+
+   @Override
+   public void T() {
+      if (cpi.c(this)) {
+         super.T();
+      }
+   }
+
+   @Override
+   protected void ab() {
+      super.ab();
+      agk.a(this);
+   }
+
+   protected abstract void gr();
 }

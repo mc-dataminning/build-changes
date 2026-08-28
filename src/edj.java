@@ -1,43 +1,13 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class edj {
+   public static final ald<edl> a = a("overworld");
+   public static final ald<edl> b = a("the_nether");
+   public static final ald<edl> c = a("the_end");
+   public static final ald<edl> d = a("overworld_caves");
+   public static final ale e = ale.b("overworld");
+   public static final ale f = ale.b("the_nether");
+   public static final ale g = ale.b("the_end");
 
-public class edj<T extends edo> {
-   private final T a;
-   @Nullable
-   private kl b;
-
-   public edj(T $$0) {
-      this.a = $$0;
-   }
-
-   public void a(arn $$0) {
-      this.c($$0);
-   }
-
-   public T a() {
-      return this.a;
-   }
-
-   public void b(arn $$0) {
-      a($$0, this.b, $$0x -> $$0x.b(this.a));
-   }
-
-   public void c(arn $$0) {
-      this.a.a().a($$0).map(kl::a).ifPresent($$1 -> {
-         if (this.b == null || !this.b.equals($$1)) {
-            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
-            this.b = $$1;
-            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
-         }
-      });
-   }
-
-   private static void a(dhs $$0, @Nullable kl $$1, Consumer<edp> $$2) {
-      if ($$1 != null) {
-         eaj $$3 = $$0.a($$1.a(), $$1.c(), ebk.n, false);
-         if ($$3 != null) {
-            $$2.accept($$3.a($$1.b()));
-         }
-      }
+   private static ald<edl> a(String $$0) {
+      return ald.a(mg.aN, ale.b($$0));
    }
 }

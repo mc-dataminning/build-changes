@@ -1,29 +1,12 @@
-public class ahy implements zc<agm> {
-   public static final yt<vr, ahy> a = zc.a(ahy::a, ahy::new);
-   private final String b;
-
-   public ahy(String $$0) {
-      this.b = $$0;
-   }
-
-   private ahy(vr $$0) {
-      this.b = $$0.p();
-   }
-
-   private void a(vr $$0) {
-      $$0.a(this.b);
-   }
+public record ahy(der b) implements zd<agn> {
+   public static final yu<vs, ahy> a = yu.a(der.a, ahy::b, ahy::new);
 
    @Override
-   public ze<ahy> a() {
-      return agk.bY;
+   public zf<ahy> a() {
+      return agl.bX;
    }
 
-   public void a(agm $$0) {
+   public void a(agn $$0) {
       $$0.a(this);
-   }
-
-   public String b() {
-      return this.b;
    }
 }

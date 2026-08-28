@@ -1,88 +1,187 @@
+import java.util.List;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.math.Fraction;
 
-public class fzs extends fzl {
-   private static final wv v = wv.c("controls.keybinds.title");
+public class fzs implements fzu {
+   private static final ale a = ale.b("container/bundle/bundle_progressbar_border");
+   private static final ale b = ale.b("container/bundle/bundle_progressbar_fill");
+   private static final ale c = ale.b("container/bundle/bundle_progressbar_full");
+   private static final ale d = ale.b("container/bundle/slot_highlight_back");
+   private static final ale e = ale.b("container/bundle/slot_highlight_front");
+   private static final ale f = ale.b("container/bundle/slot_background");
+   private static final int g = 4;
+   private static final int h = 24;
+   private static final int i = 96;
+   private static final int j = 13;
+   private static final int k = 96;
+   private static final int l = 1;
+   private static final int m = 94;
+   private static final int n = 4;
+   private static final ww o = ww.c("item.minecraft.bundle.full");
+   private static final ww p = ww.c("item.minecraft.bundle.empty");
+   private static final ww q = ww.c("item.minecraft.bundle.empty.description");
+   private final dav r;
+
+   public fzs(dav $$0) {
+      this.r = $$0;
+   }
+
+   @Override
+   public int a(fra $$0) {
+      return this.r.g() ? c($$0) : this.b();
+   }
+
+   @Override
+   public int b(fra $$0) {
+      return 96;
+   }
+
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   private static int c(fra $$0) {
+      return d($$0) + 13 + 8;
+   }
+
+   private int b() {
+      return this.c() + 13 + 8;
+   }
+
+   private int c() {
+      return this.d() * 24;
+   }
+
+   private int a(int $$0) {
+      return ($$0 - 96) / 2;
+   }
+
+   private int d() {
+      return azk.e(this.e(), 4);
+   }
+
+   private int e() {
+      return Math.min(12, this.r.e());
+   }
+
+   @Override
+   public void a(fra $$0, int $$1, int $$2, int $$3, int $$4, frc $$5) {
+      if (this.r.g()) {
+         this.b($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         this.c($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   private void b(fra $$0, int $$1, int $$2, int $$3, int $$4, frc $$5) {
+      b($$1 + this.a($$3), $$2, $$0, $$5);
+      this.a($$1 + this.a($$3), $$2 + d($$0) + 4, $$0, $$5);
+   }
+
+   private void c(fra $$0, int $$1, int $$2, int $$3, int $$4, frc $$5) {
+      boolean $$6 = this.r.e() > 12;
+      List<cys> $$7 = this.b(this.r.a());
+      int $$8 = $$1 + this.a($$3) + 96;
+      int $$9 = $$2 + this.d() * 24;
+      int $$10 = 1;
+
+      for (int $$11 = 1; $$11 <= this.d(); $$11++) {
+         for (int $$12 = 1; $$12 <= 4; $$12++) {
+            int $$13 = $$8 - $$12 * 24;
+            int $$14 = $$9 - $$11 * 24;
+            if (a($$6, $$12, $$11)) {
+               a($$13, $$14, this.a($$7), $$0, $$5);
+            } else if (a($$7, $$10)) {
+               this.a($$10, $$13, $$14, $$7, $$10, $$0, $$5);
+               $$10++;
+            }
+         }
+      }
+
+      this.a($$0, $$5, $$1, $$2, $$3);
+      this.a($$1 + this.a($$3), $$2 + this.c() + 4, $$0, $$5);
+   }
+
+   private List<cys> b(int $$0) {
+      int $$1 = Math.min(this.r.e(), $$0);
+      return this.r.b().toList().subList(0, $$1);
+   }
+
+   private static boolean a(boolean $$0, int $$1, int $$2) {
+      return $$0 && $$1 * $$2 == 1;
+   }
+
+   private static boolean a(List<cys> $$0, int $$1) {
+      return $$0.size() >= $$1;
+   }
+
+   private int a(List<cys> $$0) {
+      return this.r.b().skip((long)$$0.size()).mapToInt(cys::M).sum();
+   }
+
+   private void a(int $$0, int $$1, int $$2, List<cys> $$3, int $$4, fra $$5, frc $$6) {
+      int $$7 = $$3.size() - $$0;
+      boolean $$8 = $$7 == this.r.h();
+      cys $$9 = $$3.get($$7);
+      if ($$8) {
+         $$6.a(gpn::H, d, $$1, $$2, 24, 24);
+      } else {
+         $$6.a(gpn::H, f, $$1, $$2, 24, 24);
+      }
+
+      $$6.a($$9, $$1 + 4, $$2 + 4, $$4);
+      $$6.a($$5, $$9, $$1 + 4, $$2 + 4);
+      if ($$8) {
+         $$6.a(gpn::F, e, $$1, $$2, 24, 24);
+      }
+   }
+
+   private static void a(int $$0, int $$1, int $$2, fra $$3, frc $$4) {
+      $$4.a($$3, "+" + $$2, $$0 + 12, $$1 + 10, 16777215);
+   }
+
+   private void a(fra $$0, frc $$1, int $$2, int $$3, int $$4) {
+      if (this.r.i()) {
+         cys $$5 = this.r.a(this.r.h());
+         ww $$6 = $$5.B();
+         int $$7 = $$0.a($$6.g());
+         int $$8 = $$2 + $$4 / 2 - 12;
+         $$1.a($$0, $$6, $$8 - $$7 / 2, $$3 - 15, $$5.a(kj.G));
+      }
+   }
+
+   private void a(int $$0, int $$1, fra $$2, frc $$3) {
+      $$3.a(gpn::H, this.g(), $$0 + 1, $$1, this.f(), 13);
+      $$3.a(gpn::H, a, $$0, $$1, 96, 13);
+      ww $$4 = this.h();
+      if ($$4 != null) {
+         $$3.a($$2, $$4, $$0 + 48, $$1 + 3, 16777215);
+      }
+   }
+
+   private static void b(int $$0, int $$1, fra $$2, frc $$3) {
+      $$3.a($$2, q, $$0, $$1, 96, 11184810);
+   }
+
+   private static int d(fra $$0) {
+      return $$0.c(q, 96).size() * 9;
+   }
+
+   private int f() {
+      return azk.a(azk.a(this.r.f(), 94), 0, 94);
+   }
+
+   private ale g() {
+      return this.r.f().compareTo(Fraction.ONE) >= 0 ? c : b;
+   }
+
    @Nullable
-   public fnb a;
-   public long u;
-   private fzr w;
-   private fqn x;
-
-   public fzs(fwf $$0, fnh $$1) {
-      super($$0, $$1, v);
-   }
-
-   @Override
-   protected void F() {
-      this.w = this.s.c(new fzr(this, this.m));
-   }
-
-   @Override
-   protected void m() {
-   }
-
-   @Override
-   protected void E() {
-      this.x = fqn.a(wv.c("controls.resetAll"), $$0x -> {
-         for (fnb $$1 : this.c.V) {
-            $$1.b($$1.i());
-         }
-
-         this.w.b();
-      }).a();
-      fuf $$0 = this.s.b(fuf.e().a(8));
-      $$0.a(this.x);
-      $$0.a(fqn.a(wu.d, $$0x -> this.aK_()).a());
-   }
-
-   @Override
-   protected void c() {
-      this.s.a();
-      this.w.a(this.n, this.s);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.a != null) {
-         this.a.b(fgj.b.c.a($$2));
-         this.a = null;
-         this.w.b();
-         return true;
+   private ww h() {
+      if (this.r.g()) {
+         return p;
       } else {
-         return super.a($$0, $$1, $$2);
+         return this.r.f().compareTo(Fraction.ONE) >= 0 ? o : null;
       }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.a != null) {
-         if ($$0 == 256) {
-            this.a.b(fgj.bv);
-         } else {
-            this.a.b(fgj.a($$0, $$1));
-         }
-
-         this.a = null;
-         this.u = af.c();
-         this.w.b();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(fpz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      boolean $$4 = false;
-
-      for (fnb $$5 : this.c.V) {
-         if (!$$5.l()) {
-            $$4 = true;
-            break;
-         }
-      }
-
-      this.x.j = $$4;
    }
 }

@@ -1,53 +1,44 @@
-public class aby implements zc<abr> {
-   public static final yt<wg, aby> a = zc.a(aby::a, aby::new);
-   private final jj b;
-   private final int c;
-   private final int d;
-   private final dku e;
+import java.util.function.BiFunction;
 
-   public aby(jj $$0, dku $$1, int $$2, int $$3) {
+public class aby implements zd<abs> {
+   public static final yu<wh, aby> a = yu.a(iu.b, aby::b, ys.a(mg.e), aby::e, ys.s, aby::f, aby::new);
+   private final iu b;
+   private final dwp<?> c;
+   private final tx d;
+
+   public static aby a(dwn $$0, BiFunction<dwn, js, tx> $$1) {
+      js $$2 = $$0.i().F_();
+      return new aby($$0.aw_(), $$0.p(), $$1.apply($$0, $$2));
+   }
+
+   public static aby a(dwn $$0) {
+      return a($$0, dwn::a);
+   }
+
+   private aby(iu $$0, dwp<?> $$1, tx $$2) {
       this.b = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   private aby(wg $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
-      this.d = $$0.readUnsignedByte();
-      this.e = yr.a(me.f).decode($$0);
-   }
-
-   private void a(wg $$0) {
-      $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
-      yr.a(me.f).encode($$0, this.e);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public ze<aby> a() {
-      return agk.i;
+   public zf<aby> a() {
+      return agl.h;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public jj b() {
+   public iu b() {
       return this.b;
    }
 
-   public int e() {
+   public dwp<?> e() {
       return this.c;
    }
 
-   public int f() {
+   public tx f() {
       return this.d;
-   }
-
-   public dku g() {
-      return this.e;
    }
 }

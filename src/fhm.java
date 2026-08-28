@@ -1,15 +1,36 @@
+import com.mojang.blaze3d.systems.RenderSystem;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+
 public class fhm {
-   public static final fht a = fht.a().a("Position", fhu.b).a();
-   public static final fht b = fht.a().a("Position", fhu.b).a("Color", fhu.c).a("UV0", fhu.d).a("UV2", fhu.g).a("Normal", fhu.h).a(1).a();
-   public static final fht c = fht.a().a("Position", fhu.b).a("Color", fhu.c).a("UV0", fhu.d).a("UV1", fhu.f).a("UV2", fhu.g).a("Normal", fhu.h).a(1).a();
-   public static final fht d = fht.a().a("Position", fhu.b).a("UV0", fhu.d).a("Color", fhu.c).a("UV2", fhu.g).a();
-   public static final fht e = fht.a().a("Position", fhu.b).a();
-   public static final fht f = fht.a().a("Position", fhu.b).a("Color", fhu.c).a();
-   public static final fht g = fht.a().a("Position", fhu.b).a("Color", fhu.c).a("Normal", fhu.h).a(1).a();
-   public static final fht h = fht.a().a("Position", fhu.b).a("Color", fhu.c).a("UV2", fhu.g).a();
-   public static final fht i = fht.a().a("Position", fhu.b).a("UV0", fhu.d).a();
-   public static final fht j = fht.a().a("Position", fhu.b).a("UV0", fhu.d).a("Color", fhu.c).a();
-   public static final fht k = fht.a().a("Position", fhu.b).a("Color", fhu.c).a("UV0", fhu.d).a("UV2", fhu.g).a();
-   public static final fht l = fht.a().a("Position", fhu.b).a("UV0", fhu.d).a("UV2", fhu.g).a("Color", fhu.c).a();
-   public static final fht m = fht.a().a("Position", fhu.b).a("UV0", fhu.d).a("Color", fhu.c).a("Normal", fhu.h).a(1).a();
+   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
+   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
+   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
+   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
+   private static final Vector3f e = new Vector3f(0.2F, -1.0F, 1.0F).normalize();
+   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
+
+   public static void a() {
+      RenderSystem.setupLevelDiffuseLighting(c, d);
+   }
+
+   public static void b() {
+      RenderSystem.setupLevelDiffuseLighting(a, b);
+   }
+
+   public static void c() {
+      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
+   }
+
+   public static void d() {
+      RenderSystem.setupGui3DDiffuseLighting(a, b);
+   }
+
+   public static void e() {
+      RenderSystem.setShaderLights(e, f);
+   }
+
+   public static void a(Quaternionf $$0) {
+      RenderSystem.setShaderLights($$0.transform(e, new Vector3f()), $$0.transform(f, new Vector3f()));
+   }
 }

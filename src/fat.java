@@ -1,65 +1,56 @@
-import com.mojang.serialization.DataResult;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 import java.util.Set;
+import org.slf4j.Logger;
 
-public record fat(js<dku> b, Optional<ef> c) implements fau {
+public class fat extends faa {
+   private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<fat> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(md.e.r().fieldOf("block").forGetter(fat::c), ef.a.optionalFieldOf("properties").forGetter(fat::d)).apply($$0, fat::new)
-      )
-      .validate(fat::a);
+      $$0 -> a($$0)
+            .and($$0.group(fct.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .apply($$0, fat::new)
+   );
+   private final fcs c;
+   private final boolean d;
 
-   private static DataResult<fat> a(fat $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().l()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   private fat(List<fbw> $$0, fcs $$1, boolean $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public fav b() {
-      return faw.i;
+   public fac<fat> b() {
+      return fad.n;
    }
 
    @Override
-   public Set<bat<?>> a() {
-      return Set.of(faf.g);
+   public Set<bav<?>> a() {
+      return this.c.a();
    }
 
-   public boolean a(exl $$0) {
-      dym $$1 = $$0.c(faf.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
-   }
-
-   public static fat.a a(dku $$0) {
-      return new fat.a($$0);
-   }
-
-   public js<dku> c() {
-      return this.b;
-   }
-
-   public Optional<ef> d() {
-      return this.c;
-   }
-
-   public static class a implements fau.a {
-      private final js<dku> a;
-      private Optional<ef> b = Optional.empty();
-
-      public a(dku $$0) {
-         this.a = $$0.p();
+   @Override
+   public cys a(cys $$0, eyn $$1) {
+      if ($$0.m()) {
+         int $$2 = $$0.p();
+         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - azk.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(azk.d($$4 * (float)$$2));
+      } else {
+         b.warn("Couldn't set damage of loot item {}", $$0);
       }
 
-      public fat.a a(ef.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
+      return $$0;
+   }
 
-      @Override
-      public fau build() {
-         return new fat(this.a, this.b);
-      }
+   public static faa.a<?> a(fcs $$0) {
+      return a($$1 -> new fat($$1, $$0, false));
+   }
+
+   public static faa.a<?> a(fcs $$0, boolean $$1) {
+      return a($$2 -> new fat($$2, $$0, $$1));
    }
 }

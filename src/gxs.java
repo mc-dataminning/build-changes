@@ -1,19 +1,30 @@
-public class gxs extends gyt<gzy, gdi> {
-   private static final ald a = ald.b("textures/entity/breeze/breeze_wind.png");
-   private final gdi b;
+public class gxs<T extends coe> extends gwq<T, hcp, ghf> {
+   private static final ale a = ale.b("textures/entity/spider/spider.png");
 
-   public gxs(guf.a $$0, gwc<gzy, gdi> $$1) {
-      super($$1);
-      this.b = new gdi($$0.a(ghc.L));
+   public gxs(gvk.a $$0) {
+      this($$0, gif.dg);
    }
 
-   public void a(fho $$0, gny $$1, int $$2, gzy $$3, float $$4, float $$5) {
-      fhs $$6 = $$1.getBuffer(goi.a(a, this.a($$3.u) % 1.0F, 0.0F));
-      this.b.a($$3);
-      gtk.a(this.b, this.b.d()).a($$0, $$6, $$2, hgi.d);
+   public gxs(gvk.a $$0, gie $$1) {
+      super($$0, new ghf($$0.a($$1)), 0.8F);
+      this.a(new hae<>(this));
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   @Override
+   protected float aR_() {
+      return 180.0F;
+   }
+
+   @Override
+   public ale b(hcp $$0) {
+      return a;
+   }
+
+   public hcp b() {
+      return new hcp();
+   }
+
+   public void a(T $$0, hcp $$1, float $$2) {
+      super.a($$0, $$1, $$2);
    }
 }

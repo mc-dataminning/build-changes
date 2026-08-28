@@ -1,132 +1,26 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.List;
 
-public class bey extends DataFix {
+public class bey extends bhp {
    public bey(Schema $$0) {
-      super($$0, false);
+      super($$0, false, "EntityShulkerRotationFix", bit.D, "minecraft:shulker");
    }
 
-   public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biq.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(biq.F.typeName(), bkj.a()));
-      OpticFinder<?> $$2 = $$0.findField("components");
-      return this.fixTypeEverywhereTyped("ItemStack bucket_entity_data variants to separate components", $$0, $$2x -> {
-         String $$3 = $$2x.getOptional($$1).<String>map(Pair::getSecond).orElse("");
-
-         return switch ($$3) {
-            case "minecraft:salmon_bucket" -> $$2x.updateTyped($$2, bey::c);
-            case "minecraft:axolotl_bucket" -> $$2x.updateTyped($$2, bey::b);
-            case "minecraft:tropical_fish_bucket" -> $$2x.updateTyped($$2, bey::a);
-            case "minecraft:painting" -> $$2x.updateTyped($$2, $$0xx -> af.a($$0xx, $$0xx.getType(), bey::a));
-            default -> $$2x;
-         };
-      });
-   }
-
-   private static String a(int $$0) {
-      return baz.a($$0 >> 16 & 0xFF);
-   }
-
-   private static String b(int $$0) {
-      return baz.a($$0 >> 24 & 0xFF);
-   }
-
-   private static String c(int $$0) {
-      return switch ($$0 & 65535) {
-         case 1 -> "flopper";
-         case 256 -> "sunstreak";
-         case 257 -> "stripey";
-         case 512 -> "snooper";
-         case 513 -> "glitter";
-         case 768 -> "dasher";
-         case 769 -> "blockfish";
-         case 1024 -> "brinely";
-         case 1025 -> "betty";
-         case 1280 -> "spotty";
-         case 1281 -> "clayfish";
-         default -> "kob";
-      };
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, Dynamic<T> $$1) {
-      Optional<Number> $$2 = $$1.get("BucketVariantTag").asNumber().result();
-      if ($$2.isEmpty()) {
-         return $$0;
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      List<Double> $$1 = $$0.get("Rotation").asList($$0x -> $$0x.asDouble(180.0));
+      if (!$$1.isEmpty()) {
+         $$1.set(0, $$1.get(0) - 180.0);
+         return $$0.set("Rotation", $$0.createList($$1.stream().map($$0::createDouble)));
       } else {
-         int $$3 = $$2.get().intValue();
-         String $$4 = c($$3);
-         String $$5 = a($$3);
-         String $$6 = b($$3);
-         return $$0.update("minecraft:bucket_entity_data", $$0x -> $$0x.remove("BucketVariantTag"))
-            .set("minecraft:tropical_fish/pattern", $$0.createString($$4))
-            .set("minecraft:tropical_fish/base_color", $$0.createString($$5))
-            .set("minecraft:tropical_fish/pattern_color", $$0.createString($$6));
-      }
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0, Dynamic<T> $$1) {
-      Optional<Number> $$2 = $$1.get("Variant").asNumber().result();
-      if ($$2.isEmpty()) {
-         return $$0;
-      } else {
-         String $$3 = switch ($$2.get().intValue()) {
-            case 1 -> "wild";
-            case 2 -> "gold";
-            case 3 -> "cyan";
-            case 4 -> "blue";
-            default -> "lucy";
-         };
-         return $$0.update("minecraft:bucket_entity_data", $$0x -> $$0x.remove("Variant")).set("minecraft:axolotl/variant", $$0.createString($$3));
-      }
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0, Dynamic<T> $$1) {
-      Optional<Dynamic<T>> $$2 = $$1.get("type").result();
-      return $$2.isEmpty() ? $$0 : $$0.update("minecraft:bucket_entity_data", $$0x -> $$0x.remove("type")).set("minecraft:salmon/size", $$2.get());
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("minecraft:entity_data").result();
-      if ($$1.isEmpty()) {
-         return $$0;
-      } else if ($$1.get().get("id").asString().result().filter($$0x -> $$0x.equals("minecraft:painting")).isEmpty()) {
-         return $$0;
-      } else {
-         Optional<Dynamic<T>> $$2 = $$1.get().get("variant").result();
-         Dynamic<T> $$3 = $$1.get().remove("variant");
-         if ($$3.remove("id").equals($$3.emptyMap())) {
-            $$0 = $$0.remove("minecraft:entity_data");
-         } else {
-            $$0 = $$0.set("minecraft:entity_data", $$3);
-         }
-
-         if ($$2.isPresent()) {
-            $$0 = $$0.set("minecraft:painting/variant", $$2.get());
-         }
-
          return $$0;
       }
    }
 
-   @FunctionalInterface
-   interface a extends Function<Typed<?>, Typed<?>> {
-      default Typed<?> apply(Typed<?> $$0) {
-         return $$0.update(DSL.remainderFinder(), this::fixRemainder);
-      }
-
-      default <T> Dynamic<T> fixRemainder(Dynamic<T> $$0) {
-         return $$0.get("minecraft:bucket_entity_data").result().map($$1 -> this.fixRemainder($$0, (Dynamic<T>)$$1)).orElse($$0);
-      }
-
-      <T> Dynamic<T> fixRemainder(Dynamic<T> var1, Dynamic<T> var2);
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

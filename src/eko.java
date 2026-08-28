@@ -1,16 +1,53 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eko implements ejv {
-   public static final Codec<eko> a = ays.c(eok.c).fieldOf("features").xmap(eko::new, $$0 -> $$0.b).codec();
-   public final jw<eok> b;
+public record eko(List<eko.a> b, ja c, egu d, boolean e) implements ekx {
+   public static final Codec<eko> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eko.a.a.listOf().fieldOf("layers").forGetter(eko::a),
+               ja.g.fieldOf("direction").forGetter(eko::b),
+               egu.b.fieldOf("allowed_placement").forGetter(eko::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(eko::d)
+            )
+            .apply($$0, eko::new)
+   );
 
-   public eko(jw<eok> $$0) {
-      this.b = $$0;
+   public static eko.a a(btd $$0, emy $$1) {
+      return new eko.a($$0, $$1);
    }
 
-   @Override
-   public Stream<ehd<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public static eko b(btd $$0, emy $$1) {
+      return new eko(List.of(a($$0, $$1)), ja.b, egu.c, false);
+   }
+
+   public List<eko.a> a() {
+      return this.b;
+   }
+
+   public ja b() {
+      return this.c;
+   }
+
+   public egu c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public static record a(btd b, emy c) {
+      public static final Codec<eko.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(btd.d.fieldOf("height").forGetter(eko.a::a), emy.a.fieldOf("provider").forGetter(eko.a::b)).apply($$0, eko.a::new)
+      );
+
+      public btd a() {
+         return this.b;
+      }
+
+      public emy b() {
+         return this.c;
+      }
    }
 }

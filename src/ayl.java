@@ -13,16 +13,16 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import org.apache.commons.lang3.mutable.MutableObject;
 
-public interface ayl<C, I extends ban<C>> extends ban<C> {
-   @bar
+public interface ayl<C, I extends bap<C>> extends bap<C> {
+   @bat
    String a();
 
    ayl<C, I> a(ayl.d<I> var1);
 
-   static <C, I extends ban<C>> Codec<ayl<C, I>> a(Codec<I> $$0) {
+   static <C, I extends bap<C>> Codec<ayl<C, I>> a(Codec<I> $$0) {
       MutableObject<Codec<ayl<C, I>>> $$1 = new MutableObject();
 
-      record a<C, I extends ban<C>>(float a, ayl<C, I> b, float c) {
+      record a<C, I extends bap<C>>(float a, ayl<C, I> b, float c) {
       }
 
       Codec<a<C, I>> $$2 = RecordCodecBuilder.create(
@@ -68,30 +68,30 @@ public interface ayl<C, I extends ban<C>> extends ban<C> {
       return (Codec<ayl<C, I>>)$$1.getValue();
    }
 
-   static <C, I extends ban<C>> ayl<C, I> a(float $$0) {
+   static <C, I extends bap<C>> ayl<C, I> a(float $$0) {
       return new ayl.c<>($$0);
    }
 
-   static <C, I extends ban<C>> ayl.b<C, I> a(I $$0) {
+   static <C, I extends bap<C>> ayl.b<C, I> a(I $$0) {
       return new ayl.b<>($$0);
    }
 
-   static <C, I extends ban<C>> ayl.b<C, I> a(I $$0, ban<Float> $$1) {
+   static <C, I extends bap<C>> ayl.b<C, I> a(I $$0, bap<Float> $$1) {
       return new ayl.b<>($$0, $$1);
    }
 
-   public static final class b<C, I extends ban<C>> {
+   public static final class b<C, I extends bap<C>> {
       private final I a;
-      private final ban<Float> b;
+      private final bap<Float> b;
       private final FloatList c = new FloatArrayList();
       private final List<ayl<C, I>> d = Lists.newArrayList();
       private final FloatList e = new FloatArrayList();
 
       protected b(I $$0) {
-         this($$0, ban.a);
+         this($$0, bap.a);
       }
 
-      protected b(I $$0, ban<Float> $$1) {
+      protected b(I $$0, bap<Float> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
@@ -128,8 +128,8 @@ public interface ayl<C, I extends ban<C>> extends ban<C> {
       }
    }
 
-   @bar
-   public static record c<C, I extends ban<C>>(float b) implements ayl<C, I> {
+   @bat
+   public static record c<C, I extends bap<C>>(float b) implements ayl<C, I> {
       @Override
       public float a(C $$0) {
          return this.b;
@@ -159,8 +159,8 @@ public interface ayl<C, I extends ban<C>> extends ban<C> {
       I visit(I var1);
    }
 
-   @bar
-   public static record e<C, I extends ban<C>>(I b, float[] c, List<ayl<C, I>> d, float[] e, float f, float g) implements ayl<C, I> {
+   @bat
+   public static record e<C, I extends bap<C>>(I b, float[] c, List<ayl<C, I>> d, float[] e, float f, float g) implements ayl<C, I> {
 
       public e(I b, float[] c, List<ayl<C, I>> d, float[] e, float f, float g) {
          a(c, d, e);
@@ -172,7 +172,7 @@ public interface ayl<C, I extends ban<C>> extends ban<C> {
          this.g = g;
       }
 
-      static <C, I extends ban<C>> ayl.e<C, I> a(I $$0, float[] $$1, List<ayl<C, I>> $$2, float[] $$3) {
+      static <C, I extends bap<C>> ayl.e<C, I> a(I $$0, float[] $$1, List<ayl<C, I>> $$2, float[] $$3) {
          a($$1, $$2, $$3);
          int $$4 = $$1.length - 1;
          float $$5 = Float.POSITIVE_INFINITY;
@@ -234,7 +234,7 @@ public interface ayl<C, I extends ban<C>> extends ban<C> {
          return $$5 == 0.0F ? $$2 : $$2 + $$5 * ($$0 - $$1[$$4]);
       }
 
-      private static <C, I extends ban<C>> void a(float[] $$0, List<ayl<C, I>> $$1, float[] $$2) {
+      private static <C, I extends bap<C>> void a(float[] $$0, List<ayl<C, I>> $$1, float[] $$2) {
          if ($$0.length != $$1.size() || $$0.length != $$2.length) {
             throw new IllegalArgumentException("All lengths must be equal, got: " + $$0.length + " " + $$1.size() + " " + $$2.length);
          } else if ($$0.length == 0) {
@@ -255,8 +255,8 @@ public interface ayl<C, I extends ban<C>> extends ban<C> {
             float $$4 = this.c[$$2];
             float $$5 = this.c[$$2 + 1];
             float $$6 = ($$1 - $$4) / ($$5 - $$4);
-            ban<C> $$7 = (ban<C>)this.d.get($$2);
-            ban<C> $$8 = (ban<C>)this.d.get($$2 + 1);
+            bap<C> $$7 = (bap<C>)this.d.get($$2);
+            bap<C> $$8 = (bap<C>)this.d.get($$2 + 1);
             float $$9 = this.e[$$2];
             float $$10 = this.e[$$2 + 1];
             float $$11 = $$7.a($$0);

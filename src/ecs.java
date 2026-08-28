@@ -1,15 +1,8 @@
-public interface ecs {
-   ecs a = new ecs() {
-      @Override
-      public void a() {
-      }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-      @Override
-      public void a(bvs.e $$0) {
-      }
-   };
-
-   void a();
-
-   void a(bvs.e var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ecs {
 }

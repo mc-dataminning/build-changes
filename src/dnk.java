@@ -1,81 +1,43 @@
-import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dnk extends dku {
-   public static final MapCodec<dnk> a = b(dnk::new);
-   public static final dzk<jo> b = dot.e;
-   public static final dzd c = dzc.k;
-   private static final fdo d = dku.b(16.0, 0.0, 13.0);
-   private static final fdo e = fdl.a(d, dku.b(8.0, 13.0, 16.0));
-   private static dyr f;
+public class dnk extends dlc {
+   public static final MapCodec<dnk> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dnj.a.forGetter($$0x -> $$0x.d), t()).apply($$0, dnk::new));
+   private final dlu d;
 
    @Override
    public MapCodec<dnk> a() {
-      return a;
+      return c;
    }
 
-   public dnk(dyl.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, jo.c).b(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected boolean g_(dym $$0) {
-      return true;
+   protected dnk(dlu $$0, dzn.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return $$0.c(c) ? e : d;
+   protected void a(dzo $$0, dip $$1, iu $$2, dzo $$3, boolean $$4) {
+      this.a($$0, $$1, $$1, $$1.A, $$2);
    }
 
    @Override
-   public dym a(dbn $$0) {
-      return this.m().b(b, $$0.g().g()).b(c, Boolean.valueOf(false));
-   }
-
-   @Override
-   protected boolean c_(dym $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dym $$0, dhp $$1, jj $$2) {
-      return $$0.c(c) ? 15 : 0;
-   }
-
-   @Override
-   protected dym a(dym $$0, drm $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dym a(dym $$0, dpv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b, c);
-   }
-
-   public static dyr b() {
-      if (f == null) {
-         f = dys.a()
-            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .a('?', dyq.a(dyv.a))
-            .a('^', dyq.a(dyv.a(dkw.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jo.d))))
-            .a('>', dyq.a(dyv.a(dkw.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jo.e))))
-            .a('v', dyq.a(dyv.a(dkw.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jo.c))))
-            .a('<', dyq.a(dyv.a(dkw.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jo.f))))
-            .b();
+   protected void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      if (!d($$0, $$1, $$2)) {
+         $$1.a($$2, this.d.m().b(b, Boolean.valueOf(false)), 2);
       }
-
-      return f;
    }
 
    @Override
-   protected boolean a(dym $$0, evi $$1) {
-      return false;
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      if ($$4 == ja.a && !$$0.a($$1, $$3)) {
+         return dlw.a.m();
+      } else {
+         this.a($$0, $$1, $$2, $$7, $$3);
+         if ($$0.c(b)) {
+            $$2.a($$3, evw.c, evw.c.a($$1));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 }

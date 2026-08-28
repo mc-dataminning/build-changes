@@ -1,72 +1,77 @@
-import java.util.EnumSet;
 import java.util.function.Predicate;
 
-public class cdf extends cdn {
-   private static final int a = 40;
-   private static final Predicate<dym> b = dyv.a(dkw.bA);
-   private final bwt c;
-   private final dhp d;
-   private int e;
+public class cdf extends cdm {
+   private static final int g = 240;
+   private final Predicate<btv> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public cdf(bwt $$0) {
-      this.c = $$0;
-      this.d = $$0.dV();
-      this.a(EnumSet.of(cdn.a.a, cdn.a.b, cdn.a.c));
+   public cdf(bxb $$0, Predicate<btv> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public cdf(bxb $$0, int $$1, Predicate<btv> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean b() {
-      if (this.c.dY().a(this.c.n_() ? 50 : 1000) != 0) {
+      if (!super.b()) {
          return false;
       } else {
-         jj $$0 = this.c.dv();
-         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.e()).a(dkw.i);
+         return !a(this.d).O().c(dil.c) ? false : this.a(this.d.dV().an()) && !this.h();
       }
    }
 
    @Override
    public void d() {
-      this.e = this.a(40);
-      this.d.a(this.c, (byte)10);
-      this.c.O().m();
-   }
-
-   @Override
-   public void e() {
-      this.e = 0;
+      super.d();
+      this.a = 0;
    }
 
    @Override
    public boolean c() {
-      return this.e > 0;
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dt(), 2.0) && this.a(this.d.dV().an());
    }
 
-   public int h() {
-      return this.e;
+   @Override
+   public void e() {
+      super.e();
+      this.d.dV().a(this.d.ar(), this.e, -1);
    }
 
    @Override
    public void a() {
-      this.e = Math.max(0, this.e - 1);
-      if (this.e == this.a(4)) {
-         jj $$0 = this.c.dv();
-         if (b.test(this.d.a_($$0))) {
-            if (a(this.d).O().c(dhl.c)) {
-               this.d.b($$0, false);
-            }
-
-            this.c.R();
-         } else {
-            jj $$1 = $$0.e();
-            if (this.d.a_($$1).a(dkw.i)) {
-               if (a(this.d).O().c(dhl.c)) {
-                  this.d.c(2001, $$1, dku.j(dkw.i.m()));
-                  this.d.a($$1, dkw.j.m(), 2);
-               }
-
-               this.c.R();
-            }
+      super.a();
+      if (this.d.dY().a(20) == 0) {
+         this.d.dV().c(1019, this.e, 0);
+         if (!this.d.aI) {
+            this.d.a(this.d.fz());
          }
       }
+
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dV().a(this.d.ar(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dV().an())) {
+         this.d.dV().a(this.e, false);
+         this.d.dV().c(1021, this.e, 0);
+         this.d.dV().c(2001, this.e, dlu.j(this.d.dV().a_(this.e)));
+      }
+   }
+
+   private boolean a(btv $$0) {
+      return this.h.test($$0);
    }
 }

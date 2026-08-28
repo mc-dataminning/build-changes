@@ -1,31 +1,84 @@
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.function.LongFunction;
 
-public class egm extends efi {
-   private final kg a;
-   private final eep b;
-   private final eez c;
-   private final efc.o d;
+public class egm extends efo {
+   private final azt d;
+   private int e;
 
-   public egm(eeo $$0, kg $$1, dhr $$2, eep $$3, eez $$4, efc.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public egm(azt $$0) {
+      super(0L);
+      this.d = $$0;
    }
 
-   @Deprecated
-   public Optional<dym> a(Function<jj, js<dis>> $$0, eaj $$1, jj $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public int l() {
+      return this.e;
    }
 
-   @Deprecated
-   public kg c() {
-      return this.a;
+   @Override
+   public azt d() {
+      return this.d.d();
    }
 
-   public eez d() {
-      return this.c;
+   @Override
+   public ega e() {
+      return this.d.e();
+   }
+
+   @Override
+   public int c(int $$0) {
+      this.e++;
+      return this.d instanceof efo $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+   }
+
+   @Override
+   public synchronized void b(long $$0) {
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public long a(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g() | 1L;
+      long $$4 = this.g() | 1L;
+      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+      return $$5;
+   }
+
+   public void b(long $$0, int $$1, int $$2) {
+      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
+      this.b($$3);
+   }
+
+   public void c(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g();
+      long $$4 = this.g();
+      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+   }
+
+   public void a(long $$0, int $$1, int $$2, int $$3) {
+      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
+      this.b($$4);
+   }
+
+   public static azt a(int $$0, int $$1, long $$2, long $$3) {
+      return azt.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
+   }
+
+   public static enum a {
+      a(efo::new),
+      b(ego::new);
+
+      private final LongFunction<azt> c;
+
+      private a(final LongFunction<azt> $$0) {
+         this.c = $$0;
+      }
+
+      public azt a(long $$0) {
+         return this.c.apply($$0);
+      }
    }
 }

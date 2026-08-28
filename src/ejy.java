@@ -1,40 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejy implements ejv {
-   public static final Codec<ejy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bsv.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bst.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bst.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bst.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bst.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, ejy::new)
-   );
-   public final int b;
-   public final bsv c;
-   public final bst d;
-   public final float e;
-   public final bst f;
-   public final bst g;
-   public final bst h;
-   public final int i;
-   public final float j;
+public class ejy extends eit<eks> {
+   public ejy(Codec<eks> $$0) {
+      super($$0);
+   }
 
-   public ejy(int $$0, bsv $$1, bst $$2, float $$3, bst $$4, bst $$5, bst $$6, int $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   @Override
+   public boolean a(eiv<eks> $$0) {
+      int $$1 = 0;
+      azt $$2 = $$0.d();
+      djo $$3 = $$0.b();
+      iu $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
+
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(efn.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         iu $$10 = new iu($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dzo $$11 = dlw.nx.m().b(dsw.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(dlw.J) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
+         }
+      }
+
+      return $$1 > 0;
    }
 }

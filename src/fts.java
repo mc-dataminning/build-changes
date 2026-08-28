@@ -1,17 +1,26 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
 
-public record fts(ald c) implements ftq {
-   public static final MapCodec<fts> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ald.a.fieldOf("id").forGetter(fts::c)).apply($$0, fts::new));
+public class fts implements ftt {
+   private final ww b;
+   protected final fvd a = new fvd();
 
-   @Override
-   public ftr a() {
-      return ftr.e;
+   public fts(ww $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public Either<ftq.b, ftq.c> b() {
-      return Either.right(new ftq.c(this.c));
+   public ww a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(Consumer<fro> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public void a(fvx $$0) {
+      this.a.a();
+      fvc.a(this.a, $$0, 0.5F, 0.16666667F);
    }
 }

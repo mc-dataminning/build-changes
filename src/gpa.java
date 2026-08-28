@@ -1,100 +1,136 @@
 import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Objects;
+import org.joml.Vector3f;
 
-public class gpa {
-   public static final ald a = ald.b("textures/misc/forcefield.png");
+public class gpa implements AutoCloseable {
+   public static final int a = 15728880;
+   public static final int b = 15728640;
+   public static final int c = 240;
+   private static final int d = 16;
+   private final fhb e;
+   private boolean f;
+   private float g;
+   private final got h;
+   private final fof i;
 
-   public void a(eae $$0, fcu $$1, double $$2, double $$3) {
-      double $$4 = $$0.e();
-      double $$5 = $$0.g();
-      double $$6 = $$0.f();
-      double $$7 = $$0.h();
-      if (!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2)) {
-         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
-         $$8 = Math.pow($$8, 4.0);
-         $$8 = azk.a($$8, 0.0, 1.0);
-         double $$9 = $$1.d;
-         double $$10 = $$1.f;
-         float $$11 = (float)$$3;
-         goi $$12 = goi.a(fnd.O());
-         $$12.a();
-         int $$13 = $$0.d().a();
-         float $$14 = (float)axu.b($$13) / 255.0F;
-         float $$15 = (float)axu.c($$13) / 255.0F;
-         float $$16 = (float)axu.d($$13) / 255.0F;
-         RenderSystem.setShaderColor($$14, $$15, $$16, (float)$$8);
-         float $$17 = (float)(af.c() % 3000L) / 3000.0F;
-         float $$18 = (float)(-azk.e($$1.e * 0.5));
-         float $$19 = $$18 + $$11;
-         fhj $$20 = fhq.b().a(fht.c.h, fhm.i);
-         double $$21 = Math.max((double)azk.a($$10 - $$2), $$6);
-         double $$22 = Math.min((double)azk.c($$10 + $$2), $$7);
-         float $$23 = (float)(azk.a($$21) & 1) * 0.5F;
-         if ($$9 > $$5 - $$2) {
-            float $$24 = $$23;
+   public gpa(got $$0, fof $$1) {
+      this.h = $$0;
+      this.i = $$1;
+      this.e = new fhb(16, 16, false);
+      this.e.a(9729);
+      this.e.a(1.0F, 1.0F, 1.0F, 1.0F);
+      this.e.f();
+   }
 
-            for (double $$25 = $$21; $$25 < $$22; $$24 += 0.5F) {
-               double $$26 = Math.min(1.0, $$22 - $$25);
-               float $$27 = (float)$$26 * 0.5F;
-               $$20.a((float)($$5 - $$9), -$$11, (float)($$25 - $$10)).a($$17 - $$24, $$17 + $$19);
-               $$20.a((float)($$5 - $$9), -$$11, (float)($$25 + $$26 - $$10)).a($$17 - ($$27 + $$24), $$17 + $$19);
-               $$20.a((float)($$5 - $$9), $$11, (float)($$25 + $$26 - $$10)).a($$17 - ($$27 + $$24), $$17 + $$18);
-               $$20.a((float)($$5 - $$9), $$11, (float)($$25 - $$10)).a($$17 - $$24, $$17 + $$18);
-               $$25++;
+   @Override
+   public void close() {
+      this.e.a();
+   }
+
+   public void a() {
+      this.g = this.g + (float)((Math.random() - Math.random()) * Math.random() * Math.random() * 0.1);
+      this.g *= 0.9F;
+      this.f = true;
+   }
+
+   public void b() {
+      RenderSystem.setShaderTexture(2, 0);
+   }
+
+   public void c() {
+      RenderSystem.setShaderTexture(2, this.e.g());
+   }
+
+   private float a(bwz $$0, float $$1, float $$2) {
+      float $$3 = 0.45F * $$1;
+      return Math.max(0.0F, azk.b(((float)$$0.af - $$2) * (float) Math.PI * 0.025F) * $$3);
+   }
+
+   public void a(float $$0) {
+      if (this.f) {
+         this.f = false;
+         bqj $$1 = bqi.a();
+         $$1.a("lightTex");
+         gjd $$2 = this.i.s;
+         if ($$2 != null) {
+            float $$3 = $$2.g(1.0F);
+            float $$4;
+            if ($$2.j() > 0) {
+               $$4 = 1.0F;
+            } else {
+               $$4 = $$3 * 0.95F + 0.05F;
             }
-         }
 
-         if ($$9 < $$4 + $$2) {
-            float $$28 = $$23;
-
-            for (double $$29 = $$21; $$29 < $$22; $$28 += 0.5F) {
-               double $$30 = Math.min(1.0, $$22 - $$29);
-               float $$31 = (float)$$30 * 0.5F;
-               $$20.a((float)($$4 - $$9), -$$11, (float)($$29 - $$10)).a($$17 + $$28, $$17 + $$19);
-               $$20.a((float)($$4 - $$9), -$$11, (float)($$29 + $$30 - $$10)).a($$17 + $$31 + $$28, $$17 + $$19);
-               $$20.a((float)($$4 - $$9), $$11, (float)($$29 + $$30 - $$10)).a($$17 + $$31 + $$28, $$17 + $$18);
-               $$20.a((float)($$4 - $$9), $$11, (float)($$29 - $$10)).a($$17 + $$28, $$17 + $$18);
-               $$29++;
+            float $$6 = this.i.n.ao().c().floatValue();
+            float $$7 = this.i.t.a(bvg.G, $$0) * $$6;
+            float $$8 = this.a(this.i.t, $$7, $$0) * $$6;
+            float $$9 = this.i.t.D();
+            float $$10;
+            if (this.i.t.b(bvg.p)) {
+               $$10 = got.a(this.i.t, $$0);
+            } else if ($$9 > 0.0F && this.i.t.b(bvg.C)) {
+               $$10 = $$9;
+            } else {
+               $$10 = 0.0F;
             }
+
+            Vector3f $$13 = new Vector3f($$3, $$3, 1.0F).lerp(new Vector3f(1.0F, 1.0F, 1.0F), 0.35F);
+            float $$14 = this.g + 1.5F;
+            float $$15 = $$2.B_().s();
+            boolean $$16 = $$2.c().d();
+            float $$17 = this.i.n.as().c().floatValue();
+            gom $$18 = Objects.requireNonNull(RenderSystem.setShader(gon.b), "Lightmap shader not loaded");
+            $$18.c("AmbientLightFactor").a($$15);
+            $$18.c("SkyFactor").a($$4);
+            $$18.c("BlockFactor").a($$14);
+            $$18.c("UseBrightLightmap").a($$16 ? 1 : 0);
+            $$18.c("SkyLightColor").a($$13);
+            $$18.c("NightVisionFactor").a($$10);
+            $$18.c("DarknessScale").a($$8);
+            $$18.c("DarkenWorldFactor").a(this.h.c($$0));
+            $$18.c("BrightnessFactor").a(Math.max(0.0F, $$17 - $$7));
+            this.e.a(true);
+            fil $$19 = RenderSystem.renderThreadTesselator().a(fiv.c.h, fio.a);
+            $$19.a(0.0F, 0.0F, 0.0F);
+            $$19.a(1.0F, 0.0F, 0.0F);
+            $$19.a(1.0F, 1.0F, 0.0F);
+            $$19.a(0.0F, 1.0F, 0.0F);
+            fim.a($$19.b());
+            this.e.e();
+            $$1.c();
          }
+      }
+   }
 
-         $$21 = Math.max((double)azk.a($$9 - $$2), $$4);
-         $$22 = Math.min((double)azk.c($$9 + $$2), $$5);
-         $$23 = (float)(azk.a($$21) & 1) * 0.5F;
-         if ($$10 > $$7 - $$2) {
-            float $$32 = $$23;
+   public static float a(edl $$0, int $$1) {
+      return a($$0.s(), $$1);
+   }
 
-            for (double $$33 = $$21; $$33 < $$22; $$32 += 0.5F) {
-               double $$34 = Math.min(1.0, $$22 - $$33);
-               float $$35 = (float)$$34 * 0.5F;
-               $$20.a((float)($$33 - $$9), -$$11, (float)($$7 - $$10)).a($$17 + $$32, $$17 + $$19);
-               $$20.a((float)($$33 + $$34 - $$9), -$$11, (float)($$7 - $$10)).a($$17 + $$35 + $$32, $$17 + $$19);
-               $$20.a((float)($$33 + $$34 - $$9), $$11, (float)($$7 - $$10)).a($$17 + $$35 + $$32, $$17 + $$18);
-               $$20.a((float)($$33 - $$9), $$11, (float)($$7 - $$10)).a($$17 + $$32, $$17 + $$18);
-               $$33++;
-            }
-         }
+   public static float a(float $$0, int $$1) {
+      float $$2 = (float)$$1 / 15.0F;
+      float $$3 = $$2 / (4.0F - 3.0F * $$2);
+      return azk.h($$0, $$3, 1.0F);
+   }
 
-         if ($$10 < $$6 + $$2) {
-            float $$36 = $$23;
+   public static int a(int $$0, int $$1) {
+      return $$0 << 4 | $$1 << 20;
+   }
 
-            for (double $$37 = $$21; $$37 < $$22; $$36 += 0.5F) {
-               double $$38 = Math.min(1.0, $$22 - $$37);
-               float $$39 = (float)$$38 * 0.5F;
-               $$20.a((float)($$37 - $$9), -$$11, (float)($$6 - $$10)).a($$17 - $$36, $$17 + $$19);
-               $$20.a((float)($$37 + $$38 - $$9), -$$11, (float)($$6 - $$10)).a($$17 - ($$39 + $$36), $$17 + $$19);
-               $$20.a((float)($$37 + $$38 - $$9), $$11, (float)($$6 - $$10)).a($$17 - ($$39 + $$36), $$17 + $$18);
-               $$20.a((float)($$37 - $$9), $$11, (float)($$6 - $$10)).a($$17 - $$36, $$17 + $$18);
-               $$37++;
-            }
-         }
+   public static int a(int $$0) {
+      return $$0 >>> 4 & 15;
+   }
 
-         fhn $$40 = $$20.a();
-         if ($$40 != null) {
-            fhk.a($$40);
-         }
+   public static int b(int $$0) {
+      return $$0 >>> 20 & 15;
+   }
 
-         $$12.b();
-         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+   public static int b(int $$0, int $$1) {
+      if ($$1 == 0) {
+         return $$0;
+      } else {
+         int $$2 = Math.max(b($$0), $$1);
+         int $$3 = Math.max(a($$0), $$1);
+         return a($$3, $$2);
       }
    }
 }

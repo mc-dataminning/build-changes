@@ -1,102 +1,209 @@
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.exceptions.AuthenticationException;
+import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
+import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
+import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
+import com.mojang.authlib.exceptions.InvalidCredentialsException;
+import com.mojang.authlib.exceptions.UserBannedException;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.logging.LogUtils;
+import java.math.BigInteger;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import net.minecraft.client.ClientBrandRetriever;
+import org.slf4j.Logger;
 
-public class gjc {
-   final int a;
-   private final List<gjc.a> b = new ArrayList<>();
+public class gjc implements aiz {
+   private static final Logger a = LogUtils.getLogger();
+   private final fof b;
+   @Nullable
+   private final gjs c;
+   @Nullable
+   private final fxi d;
+   private final Consumer<ww> e;
+   private final vp f;
+   private final boolean g;
+   @Nullable
+   private final Duration h;
+   @Nullable
+   private String i;
+   private final Map<ale, byte[]> j;
+   private final boolean k;
+   private final AtomicReference<gjc.a> l = new AtomicReference<>(gjc.a.a);
 
-   public gjc(int $$0) {
-      this.a = $$0;
+   public gjc(vp $$0, fof $$1, @Nullable gjs $$2, @Nullable fxi $$3, boolean $$4, @Nullable Duration $$5, Consumer<ww> $$6, @Nullable gjw $$7) {
+      this.f = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$6;
+      this.g = $$4;
+      this.h = $$5;
+      this.j = $$7 != null ? new HashMap<>($$7.a()) : new HashMap<>();
+      this.k = $$7 != null;
    }
 
-   public void a(giu $$0, IntCollection $$1, gjc.b $$2) {
-      IntSortedSet $$3 = new IntRBTreeSet($$1);
-
-      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
-         giw $$6 = $$0.b($$4);
-         if ($$6 instanceof gix.a) {
-            gix.a $$5 = (gix.a)$$6;
-            boolean $$6x = this.b($$5.g());
-            if ($$3.remove($$4)) {
-               this.a($$5.g());
-               $$2.accept($$4, $$5);
-            } else if ($$6x) {
-               $$2.accept($$4, $$5);
-            }
-         }
-      }
-   }
-
-   public void a(xl $$0) {
-      this.b.add(new gjc.a($$0));
-   }
-
-   public boolean b(xl $$0) {
-      boolean $$1 = false;
-      Iterator<gjc.a> $$2 = this.b.iterator();
-
-      while ($$2.hasNext()) {
-         gjc.a $$3 = $$2.next();
-         if ($$3.a($$0)) {
-            $$1 = true;
-            if ($$3.a()) {
-               $$2.remove();
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   public boolean a() {
-      return !this.b.isEmpty();
-   }
-
-   class a {
-      private final Set<xh> b;
-      private xl c;
-      private boolean d = true;
-      private int e;
-
-      a(final xl $$0) {
-         this.b = new ObjectOpenHashSet($$0.m().d().a());
-         this.c = $$0;
-      }
-
-      boolean a(xl $$0) {
-         if ($$0.equals(this.c)) {
-            return false;
+   private void a(gjc.a $$0) {
+      gjc.a $$1 = this.l.updateAndGet($$1x -> {
+         if (!$$0.f.contains($$1x)) {
+            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
          } else {
-            boolean $$1 = this.b.remove($$0.l());
-            if (this.d && this.c.g().equals($$0.g())) {
-               if (this.c.k().a($$0.k())) {
-                  $$1 = true;
-                  this.c = $$0;
-               } else {
-                  this.d = false;
-               }
-            }
-
-            if ($$1) {
-               this.e++;
-            }
-
-            return $$1;
+            return $$0;
          }
+      });
+      this.e.accept($$1.e);
+   }
+
+   @Override
+   public void a(ajb $$0) {
+      this.a(gjc.a.b);
+
+      Cipher $$4;
+      Cipher $$5;
+      String $$3;
+      ajk $$7;
+      try {
+         SecretKey $$1 = ayh.a();
+         PublicKey $$2 = $$0.e();
+         $$3 = new BigInteger(ayh.a($$0.b(), $$2, $$1)).toString(16);
+         $$4 = ayh.a(2, $$1);
+         $$5 = ayh.a(1, $$1);
+         byte[] $$6 = $$0.f();
+         $$7 = new ajk($$1, $$2, $$6);
+      } catch (Exception var9) {
+         throw new IllegalStateException("Protocol error", var9);
       }
 
-      boolean a() {
-         return this.e >= gjc.this.a || !this.d && this.b.isEmpty();
+      if ($$0.g()) {
+         af.i().execute(() -> {
+            ww $$4x = this.b($$3);
+            if ($$4x != null) {
+               if (this.c == null || !this.c.d()) {
+                  this.f.a($$4x);
+                  return;
+               }
+
+               a.warn($$4x.getString());
+            }
+
+            this.a($$7, $$4, $$5);
+         });
+      } else {
+         this.a($$7, $$4, $$5);
       }
    }
 
-   public interface b {
-      void accept(int var1, gix.a var2);
+   private void a(ajk $$0, Cipher $$1, Cipher $$2) {
+      this.a(gjc.a.c);
+      this.f.a($$0, wd.a(() -> this.f.a($$1, $$2)));
+   }
+
+   @Nullable
+   private ww b(String $$0) {
+      try {
+         this.d().joinServer(this.b.X().b(), this.b.X().d(), $$0);
+         return null;
+      } catch (AuthenticationUnavailableException var3) {
+         return ww.a("disconnect.loginFailedInfo", ww.c("disconnect.loginFailedInfo.serversUnavailable"));
+      } catch (InvalidCredentialsException var4) {
+         return ww.a("disconnect.loginFailedInfo", ww.c("disconnect.loginFailedInfo.invalidSession"));
+      } catch (InsufficientPrivilegesException var5) {
+         return ww.a("disconnect.loginFailedInfo", ww.c("disconnect.loginFailedInfo.insufficientPrivileges"));
+      } catch (ForcedUsernameChangeException | UserBannedException var6) {
+         return ww.a("disconnect.loginFailedInfo", ww.c("disconnect.loginFailedInfo.userBanned"));
+      } catch (AuthenticationException var7) {
+         return ww.a("disconnect.loginFailedInfo", var7.getMessage());
+      }
+   }
+
+   private MinecraftSessionService d() {
+      return this.b.am();
+   }
+
+   @Override
+   public void a(aje $$0) {
+      this.a(gjc.a.d);
+      GameProfile $$1 = $$0.b();
+      this.f
+         .a(
+            abh.d,
+            new gjb(this.b, this.f, new gji($$1, this.b.u().a(this.g, this.h, this.i), gjg.a().a(), cud.h, null, this.c, this.d, this.j, null, Map.of(), alw.a))
+         );
+      this.f.a(ajl.a);
+      this.f.a(abh.b);
+      this.f.a(new zy(new aae(ClientBrandRetriever.getClientModName())));
+      this.f.a(new zx(this.b.n.aA()));
+   }
+
+   @Override
+   public void a(vr $$0) {
+      ww $$1 = this.k ? wv.q : wv.r;
+      if (this.c != null && this.c.e()) {
+         this.b.a(new hoi(this.d, $$1, $$0.a()));
+      } else {
+         this.b.a(new fwp(this.d, $$1, $$0));
+      }
+   }
+
+   @Override
+   public boolean c() {
+      return this.f.i();
+   }
+
+   @Override
+   public void a(ajd $$0) {
+      this.f.a($$0.b());
+   }
+
+   @Override
+   public void a(ajc $$0) {
+      if (!this.f.e()) {
+         this.f.a($$0.b(), false);
+      }
+   }
+
+   @Override
+   public void a(aja $$0) {
+      this.e.accept(ww.c("connect.negotiating"));
+      this.f.a(new aji($$0.b(), null));
+   }
+
+   public void a(@Nullable String $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public void a(abn $$0) {
+      this.f.a(new abq($$0.b(), this.j.get($$0.b())));
+   }
+
+   @Override
+   public void a(o $$0, p $$1) {
+      $$1.a("Server type", () -> this.c != null ? this.c.f().toString() : "<unknown>");
+      $$1.a("Login phase", () -> this.l.get().toString());
+      $$1.a("Is Local", () -> String.valueOf(this.f.e()));
+   }
+
+   static enum a {
+      a(ww.c("connect.connecting"), Set.of()),
+      b(ww.c("connect.authorizing"), Set.of(a)),
+      c(ww.c("connect.encrypting"), Set.of(b)),
+      d(ww.c("connect.joining"), Set.of(c, a));
+
+      final ww e;
+      final Set<gjc.a> f;
+
+      private a(final ww $$0, final Set<gjc.a> $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
    }
 }

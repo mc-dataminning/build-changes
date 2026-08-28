@@ -1,20 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public record elq(elw b, float c) {
-   public static final Codec<elq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               elw.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, elq::new)
-   );
+public class elq implements ekx {
+   public static final Codec<elq> a = ays.c(epm.c).fieldOf("features").xmap(elq::new, $$0 -> $$0.b).codec();
+   public final ji<epm> b;
 
-   public elw a() {
-      return this.b;
+   public elq(ji<epm> $$0) {
+      this.b = $$0;
    }
 
-   public float b() {
-      return this.c;
+   @Override
+   public Stream<eif<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

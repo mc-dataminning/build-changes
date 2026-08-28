@@ -1,20 +1,14 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-class sm {
-   @Nullable
-   public final Long a;
-   public final Runnable b;
+public interface sm {
+   String a = "default";
+   ald<tk> b = a("default");
 
-   private sm(@Nullable Long $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private static ald<tk> a(String $$0) {
+      return ald.a(mg.be, ale.b($$0));
    }
 
-   static sm a(Runnable $$0) {
-      return new sm(null, $$0);
-   }
-
-   static sm a(long $$0, Runnable $$1) {
-      return new sm($$0, $$1);
+   static void a(qh<tk> $$0) {
+      $$0.a(b, new tk.a(List.of()));
    }
 }

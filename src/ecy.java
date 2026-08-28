@@ -1,38 +1,32 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.DataFixer;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import org.apache.commons.io.FileUtils;
 
-public interface ecy<B, T extends B> {
-   static <B, T extends B> ecy<B, T> a(final Class<T> $$0) {
-      return new ecy<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
+public class ecy extends ecv {
+   private final ecx a;
+   private final Path b;
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
+   public ecy(ede $$0, Path $$1, ede $$2, Path $$3, DataFixer $$4, boolean $$5) {
+      super($$0, $$1, $$4, $$5);
+      this.b = $$3;
+      this.a = new ecx($$2, $$3, $$5);
    }
 
-   static <B, T extends B> ecy<B, T> b(final Class<T> $$0) {
-      return new ecy<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
-         }
-
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
+   @Override
+   public CompletableFuture<Void> a(dhw $$0, Supplier<tx> $$1) {
+      this.e($$0);
+      return this.a.a($$0, $$1);
    }
 
-   @Nullable
-   T a(B var1);
-
-   Class<? extends B> a();
+   @Override
+   public void close() throws IOException {
+      super.close();
+      this.a.close();
+      if (this.b.toFile().exists()) {
+         FileUtils.deleteDirectory(this.b.toFile());
+      }
+   }
 }

@@ -1,56 +1,99 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public abstract class doj extends dku {
-   protected final jo a;
-   protected final boolean b;
-   protected final fdo d;
+public class doj extends dlg implements drr {
+   public static final MapCodec<doj> a = b(doj::new);
+   private static final feq b = dlu.b(16.0, 6.0, 12.0);
 
-   protected doj(dyl.d $$0, jo $$1, fdo $$2, boolean $$3) {
+   @Override
+   public MapCodec<doj> a() {
+      return a;
+   }
+
+   protected doj(dzn.d $$0) {
       super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
    }
 
    @Override
-   protected abstract MapCodec<? extends doj> a();
-
-   @Nullable
-   @Override
-   public dym a(dbn $$0) {
-      dym $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.b($$0.q().A) : this.b().m();
-   }
-
-   public dym b(azs $$0) {
-      return this.m();
+   public dwn a(iu $$0, dzo $$1) {
+      return new dyk($$0, $$1);
    }
 
    @Override
-   protected boolean a(dym $$0, dhs $$1, jj $$2) {
-      jj $$3 = $$2.a(this.a.g());
-      dym $$4 = $$1.a_($$3);
-      return !this.o($$4) ? false : $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dym $$0, arn $$1, jj $$2, azs $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected feq a(dzo $$0, dhv $$1, iu $$2, bwa $$3) {
+      return $$0.f($$1, $$2);
+   }
+
+   @Override
+   protected void a(dzo $$0, dip $$1, iu $$2, bwa $$3) {
+      if ($$3.n(false)) {
+         if (!$$1.C && $$1.aj() == dip.k && $$3 instanceof arp $$4 && !$$4.i) {
+            $$4.n();
+            return;
+         }
+
+         $$3.a(this, $$2);
       }
    }
 
-   protected boolean o(dym $$0) {
-      return true;
+   @Override
+   public ewv a(aro $$0, bwa $$1, iu $$2) {
+      ald<dip> $$3 = $$0.aj() == dip.k ? dip.i : dip.k;
+      aro $$4 = $$0.p().a($$3);
+      if ($$4 == null) {
+         return null;
+      } else {
+         boolean $$5 = $$3 == dip.k;
+         iu $$6 = $$5 ? aro.a : $$4.aa();
+         fdw $$7 = $$6.c();
+         float $$8;
+         Set<bxn> $$9;
+         if ($$5) {
+            eir.a($$4, iu.a((jo)$$7).e(), true);
+            $$8 = ja.e.p();
+            $$9 = bxn.a(bxn.l, Set.of(bxn.e));
+            if ($$1 instanceof arp) {
+               $$7 = $$7.a(0.0, 1.0, 0.0);
+            }
+         } else {
+            $$8 = 0.0F;
+            $$9 = bxn.a(bxn.l, bxn.k);
+            if ($$1 instanceof arp $$12) {
+               return $$12.a(false, ewv.a);
+            }
+
+            $$7 = $$1.a($$4, $$6).c();
+         }
+
+         return new ewv($$4, $$7, fdw.c, $$8, 0.0F, $$9, ewv.b.then(ewv.c));
+      }
    }
 
    @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return this.d;
+   public void a(dzo $$0, dip $$1, iu $$2, azt $$3) {
+      double $$4 = (double)$$2.u() + $$3.j();
+      double $$5 = (double)$$2.v() + 0.8;
+      double $$6 = (double)$$2.w() + $$3.j();
+      $$1.a(lx.ah, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
-   protected abstract dol c();
+   @Override
+   protected cys a(dis $$0, iu $$1, dzo $$2, boolean $$3) {
+      return cys.k;
+   }
 
-   protected abstract dku b();
+   @Override
+   protected boolean a(dzo $$0, evu $$1) {
+      return false;
+   }
+
+   @Override
+   protected dsf a_(dzo $$0) {
+      return dsf.a;
+   }
 }

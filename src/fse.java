@@ -1,40 +1,31 @@
-import java.util.Locale;
+import java.util.UUID;
 
-public class fse extends fsc {
-   private static final int f = 30;
-   private static final double g = 33.333333333333336;
+public class fse extends bto {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
 
-   public fse(fpx $$0, bop $$1) {
-      super($$0, $$1);
+   public fse(UUID $$0, ww $$1, float $$2, bto.a $$3, bto.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = af.c();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
    @Override
-   protected void d(fpz $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
-      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
-      $$0.a(goi.L(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
-      int $$4 = fnd.Q().n.h().c();
-      if ($$4 > 0 && $$4 <= 250) {
-         $$0.a(goi.L(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
-      }
+   public void a(float $$0) {
+      this.b = this.j();
+      this.h = $$0;
+      this.i = af.c();
    }
 
    @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
-   }
-
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
-   }
-
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   public float j() {
+      long $$0 = af.c() - this.i;
+      float $$1 = azk.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return azk.h($$1, this.b, this.h);
    }
 }

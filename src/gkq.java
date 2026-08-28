@@ -1,124 +1,77 @@
-public class gkq extends gmh {
-   private static final float a = 0.0025F;
-   private static final int b = 300;
-   private static final int F = 300;
-   private float G;
-   private final float H;
-   private final float I;
-   private final float J;
-   private boolean K;
-   private boolean L;
-   private double M;
-   private double N;
-   private double O;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
-   protected gkq(ghz $$0, double $$1, double $$2, double $$3, gmc $$4, float $$5, float $$6, boolean $$7, boolean $$8, float $$9, float $$10) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$4.a(this.r.a(12), 12));
-      this.G = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
-      this.H = this.r.i();
-      this.I = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
-      this.J = $$6;
-      this.K = $$7;
-      this.L = $$8;
-      this.t = 300;
-      this.u = $$5 * 1.2F * 0.0025F;
-      float $$11 = $$9 * (this.r.h() ? 0.05F : 0.075F);
-      this.D = $$11;
-      this.b($$11, $$11);
-      this.B = 1.0F;
-      this.k = (double)(-$$10);
-      this.M = Math.cos(Math.toRadians((double)(this.H * 60.0F))) * (double)this.J;
-      this.N = Math.sin(Math.toRadians((double)(this.H * 60.0F))) * (double)this.J;
-      this.O = Math.toRadians((double)(1000.0F + this.H * 3000.0F));
+public class gkq implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<gkq.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
+
+   public void a(iu $$0, dzo $$1, goa $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new gkq.a(this.b, $$1, $$2.dt()));
+   }
+
+   public boolean a(iu $$0, dzo $$1) {
+      gkq.a $$2 = (gkq.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
+      } else {
+         $$2.a($$1);
+         return true;
+      }
+   }
+
+   public void a(int $$0, gjd $$1) {
+      ObjectIterator<Entry<gkq.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
+
+      while ($$2.hasNext()) {
+         Entry<gkq.a> $$3 = (Entry<gkq.a>)$$2.next();
+         gkq.a $$4 = (gkq.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            iu $$5 = iu.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
+         }
+      }
+   }
+
+   public gkq a() {
+      this.b++;
+      this.c = true;
+      return this;
    }
 
    @Override
-   public gll b() {
-      return gll.b;
+   public void close() {
+      this.c = false;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      }
-
-      if (!this.o) {
-         float $$0 = (float)(300 - this.t);
-         float $$1 = Math.min($$0 / 300.0F, 1.0F);
-         double $$2 = 0.0;
-         double $$3 = 0.0;
-         if (this.L) {
-            $$2 += this.M * Math.pow((double)$$1, 1.25);
-            $$3 += this.N * Math.pow((double)$$1, 1.25);
-         }
-
-         if (this.K) {
-            $$2 += (double)$$1 * Math.cos((double)$$1 * this.O) * (double)this.J;
-            $$3 += (double)$$1 * Math.sin((double)$$1 * this.O) * (double)this.J;
-         }
-
-         this.j += $$2 * 0.0025F;
-         this.l += $$3 * 0.0025F;
-         this.k = this.k - (double)this.u;
-         this.G = this.G + this.I / 20.0F;
-         this.A = this.z;
-         this.z = this.z + this.G / 20.0F;
-         this.a(this.j, this.k, this.l);
-         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
-            this.k();
-         }
-
-         if (!this.o) {
-            this.j = this.j * (double)this.B;
-            this.k = this.k * (double)this.B;
-            this.l = this.l * (double)this.B;
-         }
-      }
+   public int b() {
+      return this.b;
    }
 
-   public static class a implements glk<lz> {
-      private final gmc a;
-
-      public a(gmc $$0) {
-         this.a = $$0;
-      }
-
-      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gkq($$1, $$2, $$3, $$4, this.a, 0.25F, 2.0F, false, true, 1.0F, 0.0F);
-      }
+   public boolean c() {
+      return this.c;
    }
 
-   public static class b implements glk<lz> {
-      private final gmc a;
+   static class a {
+      final fdw a;
+      int b;
+      dzo c;
 
-      public b(gmc $$0) {
-         this.a = $$0;
+      a(int $$0, dzo $$1, fdw $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
       }
 
-      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gkq($$1, $$2, $$3, $$4, this.a, 0.07F, 10.0F, true, false, 2.0F, 0.021F);
-      }
-   }
-
-   public static class c implements glk<lz> {
-      private final gmc a;
-
-      public c(gmc $$0) {
-         this.a = $$0;
+      gkq.a a(int $$0) {
+         this.b = $$0;
+         return this;
       }
 
-      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         glh $$8 = new gkq($$1, $$2, $$3, $$4, this.a, 0.07F, 10.0F, true, false, 2.0F, 0.021F);
-         jj $$9 = jj.a($$2, $$3, $$4).d();
-         dym $$10 = $$1.a_($$9);
-         int $$11 = fnd.Q().aw().a($$10, $$1, $$9, 0);
-         $$8.a(axu.j($$11), axu.k($$11), axu.l($$11));
-         return $$8;
+      void a(dzo $$0) {
+         this.c = $$0;
       }
    }
 }

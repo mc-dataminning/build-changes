@@ -1,4 +1,4 @@
-// 25w03a	2026-08-28T03:28:33.876434616	vanilla/Tags for minecraft:worldgen/biome
+// 25w04a	2026-08-28T03:30:57.174846144	vanilla/Tags for minecraft:worldgen/biome
 cfdcb319da5d14a39f3b32e5f0e83e496eee9e43 data/minecraft/tags/worldgen/biome/snow_golem_melts.json
 f813468c93191d40d0ec09e399b71a5f9c33ce5d data/minecraft/tags/worldgen/biome/has_structure/ocean_ruin_warm.json
 0f241c94b10e4b16b4304f66ad949bb089955b1e data/minecraft/tags/worldgen/biome/allows_tropical_fish_spawns_at_any_height.json
@@ -18,8 +18,8 @@ a053eff4bd26b67c251ccf59a66ab8a98bbe5f6b data/minecraft/tags/worldgen/biome/is_b
 eac36e45c24e9f2ff3c1f50ad2ea4fc921892916 data/minecraft/tags/worldgen/biome/has_structure/village_taiga.json
 92d2cbd84ddef8c77972b539dd8c7cffaa131aed data/minecraft/tags/worldgen/biome/reduce_water_ambient_spawns.json
 ff13fafcc6c847d2ce8a4262842bf1316dc580ea data/minecraft/tags/worldgen/biome/has_structure/shipwreck_beached.json
-a4f9d612ca290c91115ea42a33929c3a19d25442 data/minecraft/tags/worldgen/biome/is_overworld.json
 afd9da16b8e57511d3b12c69ccd4555d71ebb29f data/minecraft/tags/worldgen/biome/has_structure/ruined_portal_ocean.json
+a4f9d612ca290c91115ea42a33929c3a19d25442 data/minecraft/tags/worldgen/biome/is_overworld.json
 66e7b7e8a1eeff59655dd708585483f40385eab1 data/minecraft/tags/worldgen/biome/water_on_map_outlines.json
 378840c455ad2277df61b86384bba36f3ec8b253 data/minecraft/tags/worldgen/biome/without_wandering_trader_spawns.json
 65aef629239b5fa923be6767bb43c837ebb35e8a data/minecraft/tags/worldgen/biome/required_ocean_monument_surrounding.json

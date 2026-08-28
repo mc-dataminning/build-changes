@@ -1,5 +1,3 @@
-public class hca extends hbk {
-   public float a;
-   public float b;
-   public float c;
+public class hca extends hcp {
+   public boolean a;
 }

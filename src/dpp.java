@@ -1,7 +1,20 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dpp {
-   boolean a(@Nullable bwr var1, dgv var2, jj var3, dym var4, eus var5);
+public class dpp extends dsl {
+   public static final MapCodec<dpp> a = b(dpp::new);
 
-   boolean a(dhq var1, jj var2, dym var3, eut var4);
+   @Override
+   public MapCodec<dpp> a() {
+      return a;
+   }
+
+   public dpp(dzn.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(d, ja.a.b));
+   }
+
+   @Override
+   public void a(dip $$0, dzo $$1, iu $$2, bwa $$3, double $$4) {
+      $$3.a($$4, 0.2F, $$0.al().l());
+   }
 }

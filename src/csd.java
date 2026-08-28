@@ -1,59 +1,127 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class csd {
-   private final List<csa> a = Lists.newArrayList();
-   private int b;
+public abstract class csd extends cra implements crj {
+   public static final dij d = new dji(true, false, Optional.empty(), mf.e.a(axa.cD).map(Function.identity()));
+   public static final double e = 0.25;
 
-   public ImmutableList<csa> a() {
-      return ImmutableList.copyOf(this.a);
+   public csd(bwj<? extends csd> $$0, dip $$1) {
+      super($$0, $$1);
+      this.c = 0.0;
    }
 
-   public csd a(int $$0, float $$1) {
-      this.a.add(new csa($$0, $$1));
-      this.b();
-      return this;
+   public csd(bwj<? extends csd> $$0, dip $$1, bwa $$2, double $$3, double $$4, double $$5) {
+      super($$0, $$3, $$4, $$5, $$1);
+      this.c($$2);
+      this.c = 0.0;
    }
 
-   public csd a(Collection<csa> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   csd(bwj<? extends csd> $$0, double $$1, double $$2, double $$3, fdw $$4, dip $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.c = 0.0;
    }
 
-   private void b() {
-      Int2ObjectSortedMap<csa> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
+   @Override
+   protected fdr c(fdw $$0) {
+      float $$1 = this.aq().n().a() / 2.0F;
+      float $$2 = this.aq().n().b();
+      float $$3 = 0.15F;
+      return new fdr($$0.d - (double)$$1, $$0.e - 0.15F, $$0.f - (double)$$1, $$0.d + (double)$$1, $$0.e - 0.15F + (double)$$2, $$0.f + (double)$$1);
    }
 
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
+   @Override
+   public boolean i(bwa $$0) {
+      return $$0 instanceof csd ? false : super.i($$0);
+   }
+
+   @Override
+   protected boolean b(bwa $$0) {
+      if ($$0 instanceof csd) {
+         return false;
       } else {
-         csa $$1 = this.a.get(this.b);
-         csa $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
+         return $$0.aq() == bwj.R ? false : super.b($$0);
+      }
+   }
 
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            csa $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
+   @Override
+   protected void a(fdt $$0) {
+      super.a($$0);
+      if (this.dV() instanceof aro $$1) {
+         bwz $$4 = this.q() instanceof bwz $$3 ? $$3 : null;
+         bwa $$5 = $$0.a();
+         if ($$4 != null) {
+            $$4.B($$5);
          }
 
-         return $$5;
+         bup $$6 = this.dW().c(this, $$4);
+         if ($$5.a($$1, $$6, 1.0F) && $$5 instanceof bwz $$7) {
+            dfh.a($$1, (bwa)$$7, $$6);
+         }
+
+         this.a(this.dt());
+      }
+   }
+
+   @Override
+   public void j(double $$0, double $$1, double $$2) {
+   }
+
+   protected abstract void a(fdw var1);
+
+   @Override
+   protected void a(fds $$0) {
+      super.a($$0);
+      if (!this.dV().C) {
+         jz $$1 = $$0.c().q();
+         fdw $$2 = fdw.a($$1).d(0.25, 0.25, 0.25);
+         fdw $$3 = $$0.g().e($$2);
+         this.a($$3);
+         this.at();
+      }
+   }
+
+   @Override
+   protected void a(fdu $$0) {
+      super.a($$0);
+      if (!this.dV().C) {
+         this.at();
+      }
+   }
+
+   @Override
+   protected boolean g() {
+      return false;
+   }
+
+   @Override
+   public cys ae_() {
+      return cys.k;
+   }
+
+   @Override
+   protected float m() {
+      return 1.0F;
+   }
+
+   @Override
+   protected float n() {
+      return this.m();
+   }
+
+   @Nullable
+   @Override
+   protected lv j() {
+      return null;
+   }
+
+   @Override
+   public void h() {
+      if (!this.dV().C && this.dB() > this.dV().ao() + 30) {
+         this.a(this.dt());
+         this.at();
+      } else {
+         super.h();
       }
    }
 }

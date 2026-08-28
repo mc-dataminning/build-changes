@@ -1,45 +1,12 @@
-public class afq implements zc<abr> {
-   public static final yt<vr, afq> a = zc.a(afq::a, afq::new);
-   private final int b;
-   private final int c;
-   private final int d;
-
-   public afq(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   private afq(vr $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = $$0.readInt();
-   }
-
-   private void a(vr $$0) {
-      $$0.q(this.b);
-      $$0.q(this.c);
-      $$0.q(this.d);
-   }
+public record afq(ww b) implements zd<abs> {
+   public static final yu<wh, afq> a = yu.a(wy.d, afq::b, afq::new);
 
    @Override
-   public ze<afq> a() {
-      return agk.aU;
+   public zf<afq> a() {
+      return agl.aT;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

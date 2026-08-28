@@ -1,22 +1,18 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hep(boolean b) implements hes {
-   public static final MapCodec<hep> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(hep::b)).apply($$0, hep::new)
-   );
+public interface hep {
+   void a(hes var1, cys var2, heq var3, cyq var4, @Nullable gjd var5, @Nullable bwz var6, int var7);
 
-   @Override
-   public float a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3) {
-      float $$4 = (float)$$0.o();
-      float $$5 = (float)$$0.p();
-      return this.b ? azk.a($$4 / $$5, 0.0F, 1.0F) : azk.a($$4, 0.0F, $$5);
+   public static record a(hki a, gic b, hep c, @Nullable azu d) {
+      public hjz a(ale $$0) {
+         return this.a().a($$0, hka.a);
+      }
    }
 
-   @Override
-   public MapCodec<hep> a() {
-      return a;
+   public interface b extends hkr {
+      MapCodec<? extends hep.b> a();
+
+      hep a(hep.a var1);
    }
 }

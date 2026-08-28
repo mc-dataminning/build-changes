@@ -1,37 +1,36 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum fnf {
-   a(0, "options.narrator.off"),
-   b(1, "options.narrator.all"),
-   c(2, "options.narrator.chat"),
-   d(3, "options.narrator.system");
+public class fnf extends fnd {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ww c = ww.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
 
-   private static final IntFunction<fnf> e = aya.a(fnf::a, values(), aya.a.b);
-   private final int f;
-   private final wv g;
-
-   private fnf(final int $$0, final String $$1) {
+   public fnf(long $$0, String $$1, String $$2) {
       this.f = $$0;
-      this.g = wv.c($$1);
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public int a() {
-      return this.f;
+   @Override
+   public void run() {
+      fjg $$0 = fjg.a();
+
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (flc var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
+      }
    }
 
-   public wv b() {
-      return this.g;
-   }
-
-   public static fnf a(int $$0) {
-      return e.apply($$0);
-   }
-
-   public boolean c() {
-      return this == b || this == c;
-   }
-
-   public boolean d() {
-      return this == b || this == d;
+   @Override
+   public ww a() {
+      return c;
    }
 }

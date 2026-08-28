@@ -1,45 +1,36 @@
-import com.google.common.base.Splitter;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+public final class hho {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final ale d = ale.b("missingno");
 
-public class hho {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Splitter a = Splitter.on('/');
+   public static fhq a() {
+      return a(16, 16);
+   }
 
-   public static Path a(Path $$0, String $$1) {
-      Path $$2 = $$0.resolve("objects");
-      atw.a $$3 = atw.c();
-      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
+   public static fhq a(int $$0, int $$1) {
+      fhq $$2 = new fhq($$0, $$1, false);
+      int $$3 = -524040;
 
-      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
-         JsonObject $$6 = aza.a($$5);
-         JsonObject $$7 = aza.a($$6, "objects", null);
-         if ($$7 != null) {
-            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
-               JsonObject $$9 = (JsonObject)$$8.getValue();
-               String $$10 = $$8.getKey();
-               List<String> $$11 = a.splitToList($$10);
-               String $$12 = aza.i($$9, "hash");
-               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
-               $$3.a($$11, $$13);
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            if ($$4 < $$1 / 2 ^ $$5 < $$0 / 2) {
+               $$2.a($$5, $$4, -524040);
+            } else {
+               $$2.a($$5, $$4, -16777216);
             }
          }
-      } catch (JsonParseException var17) {
-         b.error("Unable to parse resource index file: {}", $$4);
-      } catch (IOException var18) {
-         b.error("Can't open the resource index file: {}", $$4);
       }
 
-      return $$3.a("index-" + $$1).getPath("/");
+      return $$2;
+   }
+
+   public static hht b() {
+      fhq $$0 = a(16, 16);
+      return new hht(d, new hjm(16, 16), $$0, avd.a);
+   }
+
+   public static ale c() {
+      return d;
    }
 }

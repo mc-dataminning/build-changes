@@ -1,29 +1,35 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class anb {
-   public static void a(CommandDispatcher<ex> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.b("Source is not a mob"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ww.b("Path not found"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ww.b("Target not reached"));
+
+   public static void a(CommandDispatcher<ei> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("defaultgamemode").requires($$0x -> $$0x.c(2)))
-            .then(ey.a("gamemode", fl.a()).executes($$0x -> a((ex)$$0x.getSource(), fl.a($$0x, "gamemode"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("debugpath").requires($$0x -> $$0x.c(2)))
+            .then(ej.a("to", gf.a()).executes($$0x -> a((ei)$$0x.getSource(), gf.a($$0x, "to"))))
       );
    }
 
-   private static int a(ex $$0, dhm $$1) {
-      int $$2 = 0;
-      MinecraftServer $$3 = $$0.l();
-      $$3.a($$1);
-      dhm $$4 = $$3.bd();
-      if ($$4 != null) {
-         for (aro $$5 : $$3.ag().t()) {
-            if ($$5.a($$4)) {
-               $$2++;
-            }
+   private static int a(ei $$0, iu $$1) throws CommandSyntaxException {
+      if (!($$0.f() instanceof bxb $$3)) {
+         throw a.create();
+      } else {
+         cgj $$4 = new cgi($$3, $$0.e());
+         ewj $$5 = $$4.a($$1, 0);
+         agk.a($$0.e(), $$3, $$5, $$4.p());
+         if ($$5 == null) {
+            throw b.create();
+         } else if (!$$5.j()) {
+            throw c.create();
+         } else {
+            $$0.a(() -> ww.b("Made path"), true);
+            return 1;
          }
       }
-
-      $$0.a(() -> wv.a("commands.defaultgamemode.success", $$1.d()), true);
-      return $$2;
    }
 }

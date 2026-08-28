@@ -1,62 +1,31 @@
-public class fks extends hne {
-   private final fwf a;
-   private final fks.a b;
-   private frg c = frg.a;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.util.List;
 
-   public fks(fka $$0, fwf $$1) {
-      super(fmu.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
+public class fks extends fkv {
+   public long a;
+   public List<fkr> b = Lists.newArrayList();
 
-   public fks(wv $$0, fwf $$1) {
-      super(fmu.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
+   public static fks a(String $$0) {
+      fks $$1 = new fks();
+      JsonParser $$2 = new JsonParser();
 
-   public fks(wv $$0, wv $$1, fwf $$2) {
-      super(fmu.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
-   }
+      try {
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = fmr.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               fkr $$8 = fkr.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
+            }
+         }
+      } catch (Exception var10) {
+      }
 
-   private static fks.a a(fka $$0) {
-      fig $$1 = $$0.a;
-      return a(wv.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
-
-   private static fks.a a(wv $$0) {
-      return a(wv.c("mco.errorMessage.generic"), $$0);
-   }
-
-   private static fks.a a(wv $$0, wv $$1) {
-      return new fks.a($$0, $$1);
-   }
-
-   @Override
-   public void aN_() {
-      this.c(fqn.a(wu.h, $$0 -> this.aK_()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
-      this.c = frg.a(this.p, this.b.b, this.n * 3 / 4);
-   }
-
-   @Override
-   public void aK_() {
-      this.m.a(this.a);
-   }
-
-   @Override
-   public wv i() {
-      return wv.i().b(this.b.a).f(": ").b(this.b.b);
-   }
-
-   @Override
-   public void a(fpz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
-      this.c.a($$0, this.n / 2, 100, 9, -2142128);
-   }
-
-   static record a(wv a, wv b) {
+      return $$1;
    }
 }

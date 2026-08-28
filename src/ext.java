@@ -1,20 +1,30 @@
-import java.util.Objects;
-import java.util.function.Consumer;
+public class ext {
+   private final int b;
+   private final String c;
+   public static String a = "main";
 
-@FunctionalInterface
-interface ext {
-   ext b = ($$0, $$1) -> false;
-   ext c = ($$0, $$1) -> true;
-
-   boolean expand(exl var1, Consumer<eya> var2);
-
-   default ext and(ext $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
+   public ext(int $$0) {
+      this($$0, a);
    }
 
-   default ext or(ext $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
+   public ext(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public boolean a() {
+      return !this.c.equals(a);
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public boolean a(ext $$0) {
+      return this.b().equals($$0.b());
    }
 }

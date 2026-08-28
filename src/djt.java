@@ -1,79 +1,103 @@
-import com.mojang.serialization.Codec;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public class djt extends djs implements dsb {
+public class djt {
+   private static final Logger c = LogUtils.getLogger();
+   public static final djt a = new djt(ji.a(), List.of());
    public static final MapCodec<djt> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("height").forGetter($$0x -> $$0x.e), Codec.FLOAT.fieldOf("width").forGetter($$0x -> $$0x.f), t())
+      $$0 -> $$0.group(
+               ehr.c.promotePartial(af.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               epm.d.promotePartial(af.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
             .apply($$0, djt::new)
    );
-   public static final dzd c = dzc.I;
-   public static final dzk<jo> d = dzc.R;
-   private final float e;
-   private final float f;
-   private final Map<jo, fdo> g;
+   private final ji<ehr<?>> d;
+   private final List<ji<epm>> e;
+   private final Supplier<List<eif<?, ?>>> f;
+   private final Supplier<Set<epm>> g;
 
-   @Override
-   public MapCodec<djt> a() {
-      return b;
+   djt(ji<ehr<?>> $$0, List<ji<epm>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(ji::a).map(je::a).flatMap(epm::a).filter($$0xx -> $$0xx.b() == eit.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(ji::a).map(je::a).collect(Collectors.toSet()));
    }
 
-   public djt(float $$0, float $$1, dyl.d $$2) {
-      super($$2);
-      this.l(this.m().b(c, Boolean.valueOf(false)).b(d, jo.b));
-      this.g = fdl.d(dku.c((double)$$1, (double)(16.0F - $$0), 16.0));
-      this.e = $$0;
-      this.f = $$1;
+   public Iterable<je<ehr<?>>> a() {
+      return this.d;
    }
 
-   @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return this.g.get($$0.c(d));
+   public List<eif<?, ?>> b() {
+      return this.f.get();
    }
 
-   @Override
-   protected boolean a(dym $$0, dhs $$1, jj $$2) {
-      jo $$3 = $$0.c(d);
-      jj $$4 = $$2.a($$3.g());
-      return $$1.a_($$4).c($$1, $$4, $$3);
+   public List<ji<epm>> c() {
+      return this.e;
    }
 
-   @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, euu.c, euu.c.a($$1));
+   public boolean a(epm $$0) {
+      return this.g.get().contains($$0);
+   }
+
+   public static class a extends djt.b {
+      private final jf<epm> a;
+      private final jf<ehr<?>> b;
+
+      public a(jf<epm> $$0, jf<ehr<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$4 == $$0.c(d).g() && !$$0.a($$1, $$3) ? dkw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public djt.a a(efj.a $$0, ald<epm> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
+
+      public djt.a a(ald<ehr<?>> $$0) {
+         this.a(this.b.b($$0));
+         return this;
+      }
    }
 
-   @Nullable
-   @Override
-   public dym a(dbn $$0) {
-      dhq $$1 = $$0.q();
-      jj $$2 = $$0.a();
-      return this.m().b(c, Boolean.valueOf($$1.b_($$2).a() == euu.c)).b(d, $$0.k());
-   }
+   public static class b {
+      private final List<je<ehr<?>>> a = new ArrayList<>();
+      private final List<List<je<epm>>> b = new ArrayList<>();
 
-   @Override
-   protected dym a(dym $$0, drm $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
-   }
+      public djt.b a(efj.a $$0, je<epm> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
 
-   @Override
-   protected dym a(dym $$0, dpv $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
+      public djt.b a(int $$0, je<epm> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
 
-   @Override
-   protected eut b_(dym $$0) {
-      return $$0.c(c) ? euu.c.a(false) : super.b_($$0);
-   }
+      public djt.b a(je<ehr<?>> $$0) {
+         this.a.add($$0);
+         return this;
+      }
 
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(c, d);
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
+         }
+      }
+
+      public djt a() {
+         return new djt(ji.a(this.a), this.b.stream().map(ji::a).collect(ImmutableList.toImmutableList()));
+      }
    }
 }

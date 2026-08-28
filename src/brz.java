@@ -1,8 +1,29 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class brz implements bsa {
+   public static final bsa a = new brz();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface brz {
+   @Override
+   public void a() {
+   }
+
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public bqj f() {
+      return bqf.a;
+   }
+
+   @Override
+   public void d() {
+   }
 }

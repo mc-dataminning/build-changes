@@ -1,90 +1,53 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public record fel<T>(T b, jj c, int d, feq e) {
-   private static final String f = "i";
-   private static final String g = "x";
-   private static final String h = "y";
-   private static final String i = "z";
-   private static final String j = "t";
-   private static final String k = "p";
-   public static final Strategy<fel<?>> a = new Strategy<fel<?>>() {
-      public int a(fel<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
-      }
+public class fel extends AbstractDoubleList implements fei {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
 
-      public boolean a(@Nullable fel<?> $$0, @Nullable fel<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+   protected fel(DoubleList $$0, DoubleList $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size() + this.b.size();
+   }
+
+   @Override
+   public boolean a(fei.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
+   }
+
+   private boolean b(fei.a $$0) {
+      int $$1 = this.a.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
          }
       }
-   };
 
-   public static <T> List<fel<T>> a(uc $$0, Function<String, Optional<T>> $$1, dgw $$2) {
-      List<fel<T>> $$3 = new ArrayList<>($$0.size());
-      long $$4 = $$2.a();
+      int $$3 = this.b.size() - 1;
 
-      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
-         tw $$6 = $$0.a($$5);
-         a($$6, $$1).ifPresent($$2x -> {
-            if (dgw.a($$2x.b()) == $$4) {
-               $$3.add($$2x);
-            }
-         });
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
+            return false;
+         }
       }
 
-      return $$3;
+      return true;
    }
 
-   public static <T> Optional<fel<T>> a(tw $$0, Function<String, Optional<T>> $$1) {
-      return $$1.apply($$0.l("i")).map($$1x -> {
-         jj $$2 = new jj($$0.h("x"), $$0.h("y"), $$0.h("z"));
-         return new fel<>((T)$$1x, $$2, $$0.h("t"), feq.a($$0.h("p")));
-      });
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
    }
 
-   private static tw a(String $$0, jj $$1, int $$2, feq $$3) {
-      tw $$4 = new tw();
-      $$4.a("i", $$0);
-      $$4.a("x", $$1.u());
-      $$4.a("y", $$1.v());
-      $$4.a("z", $$1.w());
-      $$4.a("t", $$2);
-      $$4.a("p", $$3.a());
-      return $$4;
-   }
-
-   public tw a(Function<T, String> $$0) {
-      return a($$0.apply(this.b), this.c, this.d, this.e);
-   }
-
-   public fem<T> a(long $$0, long $$1) {
-      return new fem<>(this.b, this.c, $$0 + (long)this.d, this.e, $$1);
-   }
-
-   public static <T> fel<T> a(T $$0, jj $$1) {
-      return new fel<>($$0, $$1, 0, feq.d);
-   }
-
-   public T a() {
-      return this.b;
-   }
-
-   public jj b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public feq d() {
-      return this.e;
+   @Override
+   public DoubleList a() {
+      return this;
    }
 }

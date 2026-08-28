@@ -24,7 +24,7 @@ public class ayq {
          }
 
          public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1, T $$2) {
-            return ((DataResult)ayq.this.a.getUnchecked(new ayq.a($$0, $$0, $$1))).map($$0xx -> $$0xx instanceof ut $$1x ? $$1x.d() : $$0xx);
+            return ((DataResult)ayq.this.a.getUnchecked(new ayq.a($$0, $$0, $$1))).map($$0xx -> $$0xx instanceof uu $$1x ? $$1x.d() : $$0xx);
          }
       };
    }

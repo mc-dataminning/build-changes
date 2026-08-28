@@ -1,21 +1,18 @@
-public record adw(int b, wv c) implements zc<abr> {
-   public static final yt<wg, adw> a = yt.a(yr.h, adw::b, wx.d, adw::e, adw::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public ze<adw> a() {
-      return agk.ae;
+public class adw implements zd<abs> {
+   public static final adw a = new adw();
+   public static final yu<ByteBuf, adw> b = yu.a(a);
+
+   private adw() {
    }
 
-   public void a(abr $$0) {
+   @Override
+   public zf<adw> a() {
+      return agl.ad;
+   }
+
+   public void a(abs $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public wv e() {
-      return this.c;
    }
 }

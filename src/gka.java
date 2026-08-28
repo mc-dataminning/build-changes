@@ -1,25 +1,31 @@
-public class gka extends gmh {
-   gka(ghz $$0, double $$1, double $$2, double $$3, dym $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a(fnd.Q().ap().a().a($$4));
-      this.u = 0.0F;
-      this.t = 80;
-      this.n = false;
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
-   @Override
-   public gll b() {
-      return gll.a;
-   }
+public interface gka {
+   Codec<gka> a = bai.a(gka.a::values).dispatch(gka::a, gka.a::a);
 
-   @Override
-   public float b(float $$0) {
-      return 0.5F;
-   }
+   gka.a a();
 
-   public static class a implements glk<ln> {
-      public glh a(ln $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gka($$1, $$2, $$3, $$4, $$0.b());
+   public static enum a implements bai {
+      a("player", () -> gkb.a.b),
+      b("system", () -> gkb.b.b);
+
+      private final String c;
+      private final Supplier<MapCodec<? extends gka>> d;
+
+      private a(final String $$0, final Supplier<MapCodec<? extends gka>> $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      private MapCodec<? extends gka> a() {
+         return this.d.get();
+      }
+
+      @Override
+      public String c() {
+         return this.c;
       }
    }
 }

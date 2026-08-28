@@ -1,56 +1,58 @@
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Locale;
+import java.util.UUID;
 import java.util.function.Function;
 
-public class apz implements apw {
-   static final SuggestionProvider<ex> b = ($$0, $$1) -> fc.a(a($$0).a(), $$1);
-   public static final Function<String, apx.c> a = $$0 -> new apx.c() {
+public class apz implements apx {
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ww.c("commands.data.entity.invalid"));
+   public static final Function<String, apy.c> a = $$0 -> new apy.c() {
          @Override
-         public apw a(CommandContext<ex> $$0x) {
-            return new apz(apz.a($$0), fy.a($$0, $$0));
+         public apx a(CommandContext<ei> $$0x) throws CommandSyntaxException {
+            return new apz(ev.a($$0, $$0));
          }
 
          @Override
-         public ArgumentBuilder<ex, ?> a(ArgumentBuilder<ex, ?> $$0x, Function<ArgumentBuilder<ex, ?>, ArgumentBuilder<ex, ?>> $$1) {
-            return $$0.then(ey.a("storage").then($$1.apply(ey.a($$0, fy.a()).suggests(apz.b))));
+         public ArgumentBuilder<ei, ?> a(ArgumentBuilder<ei, ?> $$0x, Function<ArgumentBuilder<ei, ?>, ArgumentBuilder<ei, ?>> $$1) {
+            return $$0.then(ej.a("entity").then($$1.apply(ej.a($$0, ev.a()))));
          }
       };
-   private final ewq c;
-   private final ald d;
+   private final bwa c;
 
-   static ewq a(CommandContext<ex> $$0) {
-      return ((ex)$$0.getSource()).l().aK();
-   }
-
-   apz(ewq $$0, ald $$1) {
+   public apz(bwa $$0) {
       this.c = $$0;
-      this.d = $$1;
    }
 
    @Override
-   public void a(tw $$0) {
-      this.c.a(this.d, $$0);
+   public void a(tx $$0) throws CommandSyntaxException {
+      if (this.c instanceof cqs) {
+         throw b.create();
+      } else {
+         UUID $$1 = this.c.cG();
+         this.c.g($$0);
+         this.c.a_($$1);
+      }
    }
 
    @Override
-   public tw a() {
-      return this.c.a(this.d);
+   public tx a() {
+      return cy.b(this.c);
    }
 
    @Override
-   public wv b() {
-      return wv.a("commands.data.storage.modified", wv.a(this.d));
+   public ww b() {
+      return ww.a("commands.data.entity.modified", this.c.m_());
    }
 
    @Override
-   public wv a(ut $$0) {
-      return wv.a("commands.data.storage.query", wv.a(this.d), ul.c($$0));
+   public ww a(uu $$0) {
+      return ww.a("commands.data.entity.query", this.c.m_(), um.c($$0));
    }
 
    @Override
-   public wv a(fp.g $$0, double $$1, int $$2) {
-      return wv.a("commands.data.storage.get", $$0.a(), wv.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   public ww a(fa.g $$0, double $$1, int $$2) {
+      return ww.a("commands.data.entity.get", $$0.a(), this.c.m_(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

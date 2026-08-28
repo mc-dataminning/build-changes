@@ -1,121 +1,106 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.ArrayList;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class gjb extends gje {
-   final IntSet g = new IntOpenHashSet();
+public class gjb extends gja implements aba, wk {
+   private static final Logger l = LogUtils.getLogger();
+   private final GameProfile m;
+   private cub n;
+   private final js.b o;
+   private final gjr p = new gjr();
+   @Nullable
+   private gjk q;
+   @Nullable
+   protected frr.b k;
 
-   gjb(UUID $$0, Instant $$1, UUID $$2) {
+   public gjb(fof $$0, vp $$1, gji $$2) {
       super($$0, $$1, $$2);
-   }
-
-   public void a(int $$0, AbuseReportLimits $$1) {
-      if (this.g.contains($$0)) {
-         this.g.remove($$0);
-      } else if (this.g.size() < $$1.maxReportedMessageCount()) {
-         this.g.add($$0);
-      }
-   }
-
-   public gjb a() {
-      gjb $$0 = new gjb(this.a, this.b, this.c);
-      $$0.g.addAll(this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      return $$0;
+      this.m = $$2.a();
+      this.o = $$2.c();
+      this.n = $$2.d();
+      this.k = $$2.i();
    }
 
    @Override
-   public fwf a(fwf $$0, gji $$1) {
-      return new gao($$0, $$1, this);
+   public boolean c() {
+      return this.b.i();
    }
 
-   public static class a extends gje.a<gjb> {
-      public a(gjb $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
+   @Override
+   protected void a(aag $$0) {
+      this.b($$0);
+   }
+
+   private void b(aag $$0) {
+      l.warn("Unknown custom packet payload: {}", $$0.a().a());
+   }
+
+   @Override
+   public void a(abc $$0) {
+      zg.a($$0, this, this.a);
+      this.p.a($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(zu $$0) {
+      zg.a($$0, this, this.a);
+      this.p.a($$0.b());
+   }
+
+   @Override
+   public void a(abf $$0) {
+      this.n = cud.e.a($$0.b());
+   }
+
+   @Override
+   public void a(abe $$0) {
+      zg.a($$0, this, this.a);
+      if (this.q == null) {
+         this.q = new gjk();
       }
 
-      public a(UUID $$0, AbuseReportLimits $$1) {
-         super(new gjb(UUID.randomUUID(), Instant.now(), $$0), $$1);
-      }
+      List<auh> $$1 = this.q.a($$0.b());
+      this.b(new abk($$1));
+   }
 
-      public IntSet a() {
-         return this.a.g;
-      }
+   @Override
+   public void a(abd $$0) {
+      this.k = null;
+   }
 
-      public void a(int $$0) {
-         this.a.a($$0, this.b);
-      }
-
-      public boolean b(int $$0) {
-         return this.a.g.contains($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.i() != null;
-      }
-
-      @Nullable
-      @Override
-      public gje.b c() {
-         if (this.a.g.isEmpty()) {
-            return gje.b.b;
-         } else if (this.a.g.size() > this.b.maxReportedMessageCount()) {
-            return gje.b.c;
-         } else if (this.a.e == null) {
-            return gje.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gje.b.d : super.c();
+   private <T> T a(Function<ave, T> $$0) {
+      if (this.q == null) {
+         return $$0.apply(ave.b);
+      } else {
+         Object var3;
+         try (auq $$1 = this.q.a()) {
+            var3 = $$0.apply($$1);
          }
-      }
 
-      @Override
-      public Either<gje.c, gje.b> a(gji $$0) {
-         gje.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportEvidence $$3 = this.b($$0);
-            ReportedEntity $$4 = new ReportedEntity(this.a.c);
-            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
-            return Either.left(new gje.c(this.a.a, gjh.a, $$5));
-         }
+         return (T)var3;
       }
+   }
 
-      private ReportEvidence b(gji $$0) {
-         List<ReportChatMessage> $$1 = new ArrayList<>();
-         gjc $$2 = new gjc(this.b.leadingContextMessageCount());
-         $$2.a($$0.b(), this.a.g, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-         return new ReportEvidence(Lists.reverse($$1));
-      }
+   @Override
+   public void a(abb $$0) {
+      zg.a($$0, this, this.a);
+      js.b $$1 = this.a($$0x -> this.p.a($$0x, this.o, this.b.e()));
+      this.b.a(agm.b.a(wh.a($$1)), new gje(this.a, this.b, new gji(this.m, this.e, $$1, this.n, this.d, this.c, this.f, this.h, this.k, this.i, this.j)));
+      this.b.a(abj.a);
+      this.b.a(agm.a.a(wh.a($$1)));
+   }
 
-      private ReportChatMessage a(gix.a $$0, boolean $$1) {
-         xq $$2 = $$0.g().k();
-         xo $$3 = $$0.g().m();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(xh::a).toList();
-         ByteBuffer $$5 = x.a($$0.g().l(), xh::a);
-         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
-      }
+   @Override
+   public void d() {
+      this.e();
+   }
 
-      public gjb.a d() {
-         return new gjb.a(this.a.a(), this.b);
-      }
+   @Override
+   public void a(vr $$0) {
+      super.a($$0);
+      this.a.z();
    }
 }

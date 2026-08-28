@@ -1,22 +1,20 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.annotations.VisibleForTesting;
 
-class ega implements efs {
-   public static final MapCodec<ega> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(efs.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, ega::new)
-   );
-   private final efs e;
-
-   public ega(efs $$0) {
-      this.e = $$0;
+public interface ega {
+   default azt a(iu $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
    }
 
-   public boolean a(dio $$0, jj $$1) {
-      return !this.e.test($$0, $$1);
+   default azt a(ale $$0) {
+      return this.a($$0.toString());
    }
 
-   @Override
-   public eft<?> a() {
-      return eft.k;
-   }
+   azt a(String var1);
+
+   azt a(long var1);
+
+   azt a(int var1, int var2, int var3);
+
+   @VisibleForTesting
+   void a(StringBuilder var1);
 }

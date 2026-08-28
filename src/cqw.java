@@ -1,274 +1,422 @@
-import it.unimi.dsi.fastutil.doubles.DoubleDoubleImmutablePair;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.objects.ObjectIterable;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Reference2IntMaps;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap.Entry;
+import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
-import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
-public class cqw extends crb implements cqy {
-   private static final akg<cxy> a = akk.a(cqw.class, aki.h);
-   private static final akg<OptionalInt> b = akk.a(cqw.class, aki.v);
-   private static final akg<Boolean> c = akk.a(cqw.class, aki.k);
-   private int d;
-   private int e;
-   @Nullable
-   private bwr f;
+public class cqw<T> {
+   public final Reference2IntOpenHashMap<T> a = new Reference2IntOpenHashMap();
 
-   public cqw(bwb<? extends cqw> $$0, dhp $$1) {
-      super($$0, $$1);
+   boolean b(T $$0, int $$1) {
+      return this.a.getInt($$0) >= $$1;
    }
 
-   public cqw(dhp $$0, double $$1, double $$2, double $$3, cxy $$4) {
-      super(bwb.Z, $$0);
-      this.d = 0;
-      this.a_($$1, $$2, $$3);
-      this.al.a(a, $$4.v());
-      int $$5 = 1;
-      dal $$6 = $$4.a(kx.ah);
-      if ($$6 != null) {
-         $$5 += $$6.a();
-      }
-
-      this.n(this.ae.a(0.0, 0.002297), 0.05, this.ae.a(0.0, 0.002297));
-      this.e = 10 * $$5 + this.ae.a(6) + this.ae.a(7);
-   }
-
-   public cqw(dhp $$0, @Nullable bvs $$1, double $$2, double $$3, double $$4, cxy $$5) {
-      this($$0, $$2, $$3, $$4, $$5);
-      this.c($$1);
-   }
-
-   public cqw(dhp $$0, cxy $$1, bwr $$2) {
-      this($$0, $$2, $$2.dA(), $$2.dC(), $$2.dG(), $$1);
-      this.al.a(b, OptionalInt.of($$2.ar()));
-      this.f = $$2;
-   }
-
-   public cqw(dhp $$0, cxy $$1, double $$2, double $$3, double $$4, boolean $$5) {
-      this($$0, $$2, $$3, $$4, $$1);
-      this.al.a(c, $$5);
-   }
-
-   public cqw(dhp $$0, cxy $$1, bvs $$2, double $$3, double $$4, double $$5, boolean $$6) {
-      this($$0, $$1, $$3, $$4, $$5, $$6);
-      this.c($$2);
-   }
-
-   @Override
-   protected void a(akk.a $$0) {
-      $$0.a(a, o());
-      $$0.a(b, OptionalInt.empty());
-      $$0.a(c, false);
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      return $$0 < 4096.0 && !this.m();
-   }
-
-   @Override
-   public boolean k(double $$0, double $$1, double $$2) {
-      return super.k($$0, $$1, $$2) && !this.m();
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      fcs $$6;
-      if (this.m()) {
-         if (this.f == null) {
-            this.al.a(b).ifPresent($$0x -> {
-               bvs $$1x = this.dV().a($$0x);
-               if ($$1x instanceof bwr) {
-                  this.f = (bwr)$$1x;
-               }
-            });
-         }
-
-         if (this.f != null) {
-            fcu $$4;
-            if (this.f.fI()) {
-               fcu $$0 = this.f.bT();
-               double $$1 = 1.5;
-               double $$2 = 0.1;
-               fcu $$3 = this.f.dy();
-               this.f.i($$3.b($$0.d * 0.1 + ($$0.d * 1.5 - $$3.d) * 0.5, $$0.e * 0.1 + ($$0.e * 1.5 - $$3.e) * 0.5, $$0.f * 0.1 + ($$0.f * 1.5 - $$3.f) * 0.5));
-               $$4 = this.f.a(cyc.vx);
-            } else {
-               $$4 = fcu.c;
-            }
-
-            this.a_(this.f.dA() + $$4.d, this.f.dC() + $$4.e, this.f.dG() + $$4.f);
-            this.i(this.f.dy());
-         }
-
-         $$6 = crd.a(this, this::b);
-      } else {
-         if (!this.g()) {
-            double $$7 = this.P ? 1.0 : 1.15;
-            this.i(this.dy().d($$7, 1.0, $$7).b(0.0, 0.04, 0.0));
-         }
-
-         fcu $$8 = this.dy();
-         $$6 = crd.a(this, this::b);
-         this.a(bwv.a, $$8);
-         this.aK();
-         this.i($$8);
-      }
-
-      if (!this.ad && this.bK() && $$6.d() != fcs.a.a) {
-         this.b($$6);
-         this.ar = true;
-      }
-
-      this.A();
-      if (this.d == 0 && !this.bb()) {
-         this.dV().a(null, this.dA(), this.dC(), this.dG(), awk.jp, awl.i, 3.0F, 1.0F);
-      }
-
-      this.d++;
-      if (this.dV().C && this.d % 2 < 2) {
-         this.dV().a(lv.D, this.dA(), this.dC(), this.dG(), this.ae.k() * 0.05, -this.dy().e * 0.5, this.ae.k() * 0.05);
-      }
-
-      if (this.d > this.e && this.dV() instanceof arn $$10) {
-         this.b($$10);
+   void c(T $$0, int $$1) {
+      int $$2 = this.a.addTo($$0, -$$1);
+      if ($$2 < $$1) {
+         throw new IllegalStateException("Took " + $$1 + " items, but only had " + $$2);
       }
    }
 
-   private void b(arn $$0) {
-      $$0.a(this, (byte)17);
-      this.a(edm.w, this.q());
-      this.e($$0);
-      this.at();
+   void d(T $$0, int $$1) {
+      this.a.addTo($$0, $$1);
    }
 
-   @Override
-   protected void a(fcr $$0) {
-      super.a($$0);
-      if (this.dV() instanceof arn $$1) {
-         this.b($$1);
-      }
+   public boolean a(List<? extends cqw.a<T>> $$0, int $$1, @Nullable cqw.b<T> $$2) {
+      return new cqw.c($$0).a($$1, $$2);
    }
 
-   @Override
-   protected void a(fcq $$0) {
-      jj $$1 = new jj($$0.b());
-      this.dV().a_($$1).a(this.dV(), $$1, this);
-      if (this.dV() instanceof arn $$2 && this.j()) {
-         this.b($$2);
-      }
-
-      super.a($$0);
+   public int b(List<? extends cqw.a<T>> $$0, int $$1, @Nullable cqw.b<T> $$2) {
+      return new cqw.c($$0).b($$1, $$2);
    }
 
-   private boolean j() {
-      return !this.n().isEmpty();
+   public void a() {
+      this.a.clear();
    }
 
-   private void e(arn $$0) {
-      float $$1 = 0.0F;
-      List<dak> $$2 = this.n();
-      if (!$$2.isEmpty()) {
-         $$1 = 5.0F + (float)($$2.size() * 2);
-      }
+   public void a(T $$0, int $$1) {
+      this.d($$0, $$1);
+   }
 
-      if ($$1 > 0.0F) {
-         if (this.f != null) {
-            this.f.a($$0, this.dW().a(this, this.q()), 5.0F + (float)($$2.size() * 2));
-         }
+   List<T> a(Iterable<? extends cqw.a<T>> $$0) {
+      List<T> $$1 = new ArrayList<>();
+      ObjectIterator var3 = Reference2IntMaps.fastIterable(this.a).iterator();
 
-         double $$3 = 5.0;
-         fcu $$4 = this.dt();
-
-         for (bwr $$6 : this.dV().a(bwr.class, this.cR().g(5.0))) {
-            if ($$6 != this.f && !(this.g($$6) > 25.0)) {
-               boolean $$7 = false;
-
-               for (int $$8 = 0; $$8 < 2; $$8++) {
-                  fcu $$9 = new fcu($$6.dA(), $$6.e(0.5 * (double)$$8), $$6.dG());
-                  fcs $$10 = this.dV().a(new dgy($$4, $$9, dgy.a.a, dgy.b.a, this));
-                  if ($$10.d() == fcs.a.a) {
-                     $$7 = true;
-                     break;
-                  }
-               }
-
-               if ($$7) {
-                  float $$11 = $$1 * (float)Math.sqrt((5.0 - (double)this.f($$6)) / 5.0);
-                  $$6.a($$0, this.dW().a(this, this.q()), $$11);
-               }
-            }
+      while (var3.hasNext()) {
+         Entry<T> $$2 = (Entry<T>)var3.next();
+         if ($$2.getIntValue() > 0 && a($$0, (T)$$2.getKey())) {
+            $$1.add((T)$$2.getKey());
          }
       }
+
+      return $$1;
    }
 
-   private boolean m() {
-      return this.al.a(b).isPresent();
-   }
-
-   @Override
-   public boolean g() {
-      return this.al.a(c);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 17 && this.dV().C) {
-         fcu $$1 = this.dy();
-         this.dV().a(this.dA(), this.dC(), this.dG(), $$1.d, $$1.e, $$1.f, this.n());
+   private static <T> boolean a(Iterable<? extends cqw.a<T>> $$0, T $$1) {
+      for (cqw.a<T> $$2 : $$0) {
+         if ($$2.acceptsItem($$1)) {
+            return true;
+         }
       }
 
-      super.b($$0);
-   }
-
-   @Override
-   public void b(tw $$0) {
-      super.b($$0);
-      $$0.a("Life", this.d);
-      $$0.a("LifeTime", this.e);
-      $$0.a("FireworksItem", this.f().a(this.dX()));
-      $$0.a("ShotAtAngle", this.al.a(c));
-   }
-
-   @Override
-   public void a(tw $$0) {
-      super.a($$0);
-      this.d = $$0.h("Life");
-      this.e = $$0.h("LifeTime");
-      if ($$0.b("FireworksItem", 10)) {
-         this.al.a(a, cxy.a(this.dX(), (ut)$$0.p("FireworksItem")).orElseGet(cqw::o));
-      } else {
-         this.al.a(a, o());
-      }
-
-      if ($$0.e("ShotAtAngle")) {
-         this.al.a(c, $$0.q("ShotAtAngle"));
-      }
-   }
-
-   private List<dak> n() {
-      cxy $$0 = this.al.a(a);
-      dal $$1 = $$0.a(kx.ah);
-      return $$1 != null ? $$1.b() : List.of();
-   }
-
-   @Override
-   public cxy f() {
-      return this.al.a(a);
-   }
-
-   @Override
-   public boolean cB() {
       return false;
    }
 
-   private static cxy o() {
-      return new cxy(cyc.vx);
+   @VisibleForTesting
+   public int a(List<? extends cqw.a<T>> $$0) {
+      int $$1 = Integer.MAX_VALUE;
+      ObjectIterable<Entry<T>> $$2 = Reference2IntMaps.fastIterable(this.a);
+
+      label31:
+      for (cqw.a<T> $$3 : $$0) {
+         int $$4 = 0;
+         ObjectIterator var7 = $$2.iterator();
+
+         while (var7.hasNext()) {
+            Entry<T> $$5 = (Entry<T>)var7.next();
+            int $$6 = $$5.getIntValue();
+            if ($$6 > $$4) {
+               if ($$3.acceptsItem((T)$$5.getKey())) {
+                  $$4 = $$6;
+               }
+
+               if ($$4 >= $$1) {
+                  continue label31;
+               }
+            }
+         }
+
+         $$1 = $$4;
+         if ($$4 == 0) {
+            break;
+         }
+      }
+
+      return $$1;
    }
 
-   @Override
-   public DoubleDoubleImmutablePair a_(bwr $$0, buh $$1) {
-      double $$2 = $$0.dt().d - this.dt().d;
-      double $$3 = $$0.dt().f - this.dt().f;
-      return DoubleDoubleImmutablePair.of($$2, $$3);
+   @FunctionalInterface
+   public interface a<T> {
+      boolean acceptsItem(T var1);
+   }
+
+   @FunctionalInterface
+   public interface b<T> {
+      void accept(T var1);
+   }
+
+   class c {
+      private final List<? extends cqw.a<T>> c;
+      private final int d;
+      private final List<T> e;
+      private final int f;
+      private final BitSet g;
+      private final IntList h = new IntArrayList();
+
+      public c(final List<? extends cqw.a<T>> $$0) {
+         this.c = $$0;
+         this.d = $$0.size();
+         this.e = cqw.this.a($$0);
+         this.f = this.e.size();
+         this.g = new BitSet(this.c() + this.e() + this.g() + this.i() + this.k());
+         this.a();
+      }
+
+      private void a() {
+         for (int $$0 = 0; $$0 < this.d; $$0++) {
+            cqw.a<T> $$1 = (cqw.a<T>)this.c.get($$0);
+
+            for (int $$2 = 0; $$2 < this.f; $$2++) {
+               if ($$1.acceptsItem(this.e.get($$2))) {
+                  this.a($$2, $$0);
+               }
+            }
+         }
+      }
+
+      public boolean a(int $$0, @Nullable cqw.b<T> $$1) {
+         if ($$0 <= 0) {
+            return true;
+         } else {
+            int $$2 = 0;
+
+            while (true) {
+               IntList $$3 = this.b($$0);
+               if ($$3 == null) {
+                  boolean $$11 = $$2 == this.d;
+                  boolean $$12 = $$11 && $$1 != null;
+                  this.m();
+                  this.l();
+
+                  for (int $$13 = 0; $$13 < this.d; $$13++) {
+                     for (int $$14 = 0; $$14 < this.f; $$14++) {
+                        if (this.d($$14, $$13)) {
+                           this.f($$14, $$13);
+                           cqw.this.d(this.e.get($$14), $$0);
+                           if ($$12) {
+                              $$1.accept(this.e.get($$14));
+                           }
+                           break;
+                        }
+                     }
+                  }
+
+                  assert this.g.get(this.j(), this.j() + this.k()).isEmpty();
+
+                  return $$11;
+               }
+
+               int $$4 = $$3.getInt(0);
+               cqw.this.c(this.e.get($$4), $$0);
+               int $$5 = $$3.size() - 1;
+               this.e($$3.getInt($$5));
+               $$2++;
+
+               for (int $$6 = 0; $$6 < $$3.size() - 1; $$6++) {
+                  if (a($$6)) {
+                     int $$7 = $$3.getInt($$6);
+                     int $$8 = $$3.getInt($$6 + 1);
+                     this.e($$7, $$8);
+                  } else {
+                     int $$9 = $$3.getInt($$6 + 1);
+                     int $$10 = $$3.getInt($$6);
+                     this.f($$9, $$10);
+                  }
+               }
+            }
+         }
+      }
+
+      private static boolean a(int $$0) {
+         return ($$0 & 1) == 0;
+      }
+
+      @Nullable
+      private IntList b(int $$0) {
+         this.m();
+
+         for (int $$1 = 0; $$1 < this.f; $$1++) {
+            if (cqw.this.b(this.e.get($$1), $$0)) {
+               IntList $$2 = this.c($$1);
+               if ($$2 != null) {
+                  return $$2;
+               }
+            }
+         }
+
+         return null;
+      }
+
+      @Nullable
+      private IntList c(int $$0) {
+         this.h.clear();
+         this.j($$0);
+         this.h.add($$0);
+
+         while (!this.h.isEmpty()) {
+            int $$1 = this.h.size();
+            if (a($$1 - 1)) {
+               int $$2 = this.h.getInt($$1 - 1);
+
+               for (int $$3 = 0; $$3 < this.d; $$3++) {
+                  if (!this.h($$3) && this.b($$2, $$3) && !this.d($$2, $$3)) {
+                     this.g($$3);
+                     this.h.add($$3);
+                     break;
+                  }
+               }
+            } else {
+               int $$4 = this.h.getInt($$1 - 1);
+               if (!this.d($$4)) {
+                  return this.h;
+               }
+
+               for (int $$5 = 0; $$5 < this.f; $$5++) {
+                  if (!this.k($$5) && this.d($$5, $$4)) {
+                     assert this.b($$5, $$4);
+
+                     this.j($$5);
+                     this.h.add($$5);
+                     break;
+                  }
+               }
+            }
+
+            int $$6 = this.h.size();
+            if ($$6 == $$1) {
+               this.h.removeInt($$6 - 1);
+            }
+         }
+
+         return null;
+      }
+
+      private int b() {
+         return 0;
+      }
+
+      private int c() {
+         return this.d;
+      }
+
+      private int d() {
+         return this.b() + this.c();
+      }
+
+      private int e() {
+         return this.f;
+      }
+
+      private int f() {
+         return this.d() + this.e();
+      }
+
+      private int g() {
+         return this.d;
+      }
+
+      private int h() {
+         return this.f() + this.g();
+      }
+
+      private int i() {
+         return this.d * this.f;
+      }
+
+      private int j() {
+         return this.h() + this.i();
+      }
+
+      private int k() {
+         return this.d * this.f;
+      }
+
+      private boolean d(int $$0) {
+         return this.g.get(this.f($$0));
+      }
+
+      private void e(int $$0) {
+         this.g.set(this.f($$0));
+      }
+
+      private int f(int $$0) {
+         assert $$0 >= 0 && $$0 < this.d;
+
+         return this.f() + $$0;
+      }
+
+      private void l() {
+         this.h(this.f(), this.g());
+      }
+
+      private void a(int $$0, int $$1) {
+         this.g.set(this.c($$0, $$1));
+      }
+
+      private boolean b(int $$0, int $$1) {
+         return this.g.get(this.c($$0, $$1));
+      }
+
+      private int c(int $$0, int $$1) {
+         assert $$0 >= 0 && $$0 < this.f;
+
+         assert $$1 >= 0 && $$1 < this.d;
+
+         return this.h() + $$0 * this.d + $$1;
+      }
+
+      private boolean d(int $$0, int $$1) {
+         return this.g.get(this.g($$0, $$1));
+      }
+
+      private void e(int $$0, int $$1) {
+         int $$2 = this.g($$0, $$1);
+
+         assert !this.g.get($$2);
+
+         this.g.set($$2);
+      }
+
+      private void f(int $$0, int $$1) {
+         int $$2 = this.g($$0, $$1);
+
+         assert this.g.get($$2);
+
+         this.g.clear($$2);
+      }
+
+      private int g(int $$0, int $$1) {
+         assert $$0 >= 0 && $$0 < this.f;
+
+         assert $$1 >= 0 && $$1 < this.d;
+
+         return this.j() + $$0 * this.d + $$1;
+      }
+
+      private void g(int $$0) {
+         this.g.set(this.i($$0));
+      }
+
+      private boolean h(int $$0) {
+         return this.g.get(this.i($$0));
+      }
+
+      private int i(int $$0) {
+         assert $$0 >= 0 && $$0 < this.d;
+
+         return this.b() + $$0;
+      }
+
+      private void j(int $$0) {
+         this.g.set(this.l($$0));
+      }
+
+      private boolean k(int $$0) {
+         return this.g.get(this.l($$0));
+      }
+
+      private int l(int $$0) {
+         assert $$0 >= 0 && $$0 < this.f;
+
+         return this.d() + $$0;
+      }
+
+      private void m() {
+         this.h(this.b(), this.c());
+         this.h(this.d(), this.e());
+      }
+
+      private void h(int $$0, int $$1) {
+         this.g.clear($$0, $$0 + $$1);
+      }
+
+      public int b(int $$0, @Nullable cqw.b<T> $$1) {
+         int $$2 = 0;
+         int $$3 = Math.min($$0, cqw.this.a(this.c)) + 1;
+
+         while (true) {
+            int $$4 = ($$2 + $$3) / 2;
+            if (this.a($$4, null)) {
+               if ($$3 - $$2 <= 1) {
+                  if ($$4 > 0) {
+                     this.a($$4, $$1);
+                  }
+
+                  return $$4;
+               }
+
+               $$2 = $$4;
+            } else {
+               $$3 = $$4;
+            }
+         }
+      }
    }
 }

@@ -1,124 +1,98 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
 
-public class dxx {
-   static final String a = "server_data";
-   static Codec<dxx> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               km.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
-               cxy.b.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
-               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dxx::new)
-   );
-   private static final int d = 128;
-   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private long f;
-   private final List<cxy> g = new ObjectArrayList();
-   private long h;
-   private int i;
-   boolean c;
+public class dxx extends dwn implements eeq.b<dxx.a> {
+   private final dxx.a a;
 
-   dxx(Set<UUID> $$0, long $$1, List<cxy> $$2, int $$3) {
-      this.e.addAll($$0);
-      this.f = $$1;
-      this.g.addAll($$2);
-      this.i = $$3;
+   public dxx(iu $$0, dzo $$1) {
+      super(dwp.L, $$0, $$1);
+      this.a = new dxx.a($$1, new eek($$0));
    }
 
-   dxx() {
+   public static void a(dip $$0, iu $$1, dzo $$2, dxx $$3) {
+      $$3.a.d().a($$0, $$1, $$0.C_(), true);
    }
 
-   void a(long $$0) {
-      this.h = $$0;
+   @Override
+   protected void a(tx $$0, jg.a $$1) {
+      super.a($$0, $$1);
+      this.a.b.a($$0);
    }
 
-   long a() {
-      return this.h;
+   @Override
+   protected void b(tx $$0, jg.a $$1) {
+      this.a.b.b($$0);
+      super.b($$0, $$1);
    }
 
-   Set<UUID> b() {
-      return this.e;
+   public dxx.a a() {
+      return this.a;
    }
 
-   boolean a(cqi $$0) {
-      return this.e.contains($$0.cG());
-   }
+   public static class a implements eeq {
+      public static final int a = 8;
+      final dsu b;
+      private final dzo c;
+      private final ees d;
 
-   @VisibleForTesting
-   public void b(cqi $$0) {
-      this.e.add($$0.cG());
-      if (this.e.size() > 128) {
-         Iterator<UUID> $$1 = this.e.iterator();
-         if ($$1.hasNext()) {
-            $$1.next();
-            $$1.remove();
+      public a(dzo $$0, ees $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = dsu.a();
+      }
+
+      @Override
+      public ees a() {
+         return this.d;
+      }
+
+      @Override
+      public int b() {
+         return 8;
+      }
+
+      @Override
+      public eeq.a c() {
+         return eeq.a.b;
+      }
+
+      @Override
+      public boolean a(aro $$0, je<eeo> $$1, eeo.a $$2, fdw $$3) {
+         if ($$1.a(eeo.p) && $$2.a() instanceof bwz $$4) {
+            if (!$$4.eK()) {
+               bup $$5 = $$4.eH();
+               int $$6 = $$4.a($$0, x.a($$5, bup::d));
+               if ($$4.en() && $$6 > 0) {
+                  this.b.a(iu.a((jo)$$3.a(ja.b, 0.5)), $$6);
+                  this.a($$0, $$4);
+               }
+
+               $$4.eJ();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, iu.a((jo)$$1x), this.c, $$0.C_()));
+            }
+
+            return true;
+         } else {
+            return false;
          }
       }
 
-      this.i();
-   }
-
-   long c() {
-      return this.f;
-   }
-
-   void b(long $$0) {
-      this.f = $$0;
-      this.i();
-   }
-
-   List<cxy> d() {
-      return this.g;
-   }
-
-   void e() {
-      this.i = 0;
-      this.i();
-   }
-
-   void a(List<cxy> $$0) {
-      this.g.clear();
-      this.g.addAll($$0);
-      this.i = this.g.size();
-      this.i();
-   }
-
-   cxy f() {
-      return this.g.isEmpty() ? cxy.k : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cxy.k);
-   }
-
-   cxy g() {
-      if (this.g.isEmpty()) {
-         return cxy.k;
-      } else {
-         this.i();
-         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cxy.k);
+      @VisibleForTesting
+      public dsu d() {
+         return this.b;
       }
-   }
 
-   void a(dxx $$0) {
-      this.f = $$0.c();
-      this.g.clear();
-      this.g.addAll($$0.g);
-      this.e.clear();
-      this.e.addAll($$0.e);
-   }
+      private void a(aro $$0, iu $$1, dzo $$2, azt $$3) {
+         $$0.a($$1, $$2.b(dsr.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(lx.K, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, awl.wK, awm.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      }
 
-   private void i() {
-      this.c = true;
-   }
-
-   public float h() {
-      return this.i == 1 ? 1.0F : 1.0F - azk.f((float)this.d().size(), 1.0F, (float)this.i);
+      private void a(dip $$0, bwz $$1) {
+         if ($$1.eq() instanceof arp $$3) {
+            bup $$4 = $$1.eH() == null ? $$0.al().a((cqs)$$3) : $$1.eH();
+            ap.Z.a($$3, $$1, $$4);
+         }
+      }
    }
 }

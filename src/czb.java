@@ -1,21 +1,43 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class czb extends czj {
-   public czb(dku $$0, dku $$1, cxu.a $$2) {
-      super($$0, $$1, jo.a, $$2);
-   }
+public class czb extends cyo {
+   private static final Logger a = LogUtils.getLogger();
 
-   public czb(cxu.a $$0, dku $$1, dku $$2, jo $$3) {
-      super($$1, $$2, $$3, $$0);
+   public czb(cyo.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(jj $$0, dhp $$1, @Nullable cqi $$2, cxy $$3, dym $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.C && !$$5 && $$2 != null && $$1.c_($$0) instanceof dwz $$6 && $$1.a_($$0).b() instanceof dsa $$7) {
-         $$7.a($$2, $$6, true);
-      }
+   public bty a(dip $$0, cqs $$1, btx $$2) {
+      cys $$3 = $$1.b($$2);
+      List<ald<ddj<?>>> $$4 = $$3.a(kj.ag, List.of());
+      $$3.a(1, $$1);
+      if ($$4.isEmpty()) {
+         return bty.d;
+      } else {
+         if (!$$0.C) {
+            ddq $$5 = $$0.p().aI();
+            List<ddo<?>> $$6 = new ArrayList<>($$4.size());
 
-      return $$5;
+            for (ald<ddj<?>> $$7 : $$4) {
+               Optional<ddo<?>> $$8 = $$5.b($$7);
+               if (!$$8.isPresent()) {
+                  a.error("Invalid recipe: {}", $$7);
+                  return bty.d;
+               }
+
+               $$6.add($$8.get());
+            }
+
+            $$1.a($$6);
+            $$1.b(awv.c.b(this));
+         }
+
+         return bty.a;
+      }
    }
 }

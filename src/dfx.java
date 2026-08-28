@@ -1,29 +1,31 @@
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 
-public record dfx(int a, Map<dfz, Integer> b, int c, js<awj> d, float e, float f, axp<cxu> g, alc<dga> h) {
-   public cxu.a a(cxu.a $$0, jw<bwb<?>> $$1) {
-      return $$0.b(dfz.e.a(this.a)).a(this.a(dfz.e)).a(this.g).a(kx.E, dgc.a(bwc.g).a(this.d).a(this.h).a($$1).a());
+public interface dfx {
+   Codec<dfx> c = mf.at.q().dispatch(dfx::a, Function.identity());
+
+   static MapCodec<? extends dfx> b(jr<MapCodec<? extends dfx>> $$0) {
+      jr.a($$0, "all_of", dfq.b.a);
+      jr.a($$0, "apply_mob_effect", dfr.a);
+      jr.a($$0, "attribute", dfv.a);
+      jr.a($$0, "change_item_damage", dfs.a);
+      jr.a($$0, "damage_entity", dft.a);
+      jr.a($$0, "explode", dfz.a);
+      jr.a($$0, "ignite", dga.a);
+      jr.a($$0, "play_sound", dgc.a);
+      jr.a($$0, "replace_block", dge.a);
+      jr.a($$0, "replace_disk", dgf.a);
+      jr.a($$0, "run_function", dgg.a);
+      jr.a($$0, "set_block_properties", dgh.a);
+      jr.a($$0, "spawn_particles", dgj.a);
+      return jr.a($$0, "summon_entity", dgk.a);
    }
 
-   public cxu.a a(cxu.a $$0, js<awj> $$1, boolean $$2, jw<bwb<?>> $$3) {
-      if ($$2) {
-         $$0 = $$0.b(dfz.e.a(this.a)).a(this.g);
-      }
+   void a(aro var1, int var2, dfe var3, bwa var4, fdw var5, boolean var6);
 
-      return $$0.a(this.a(dfz.e)).a(kx.E, dgc.a(bwc.g).a($$1).a(this.h).a($$3).c($$2).a());
+   default void a(dfe $$0, bwa $$1, fdw $$2, int $$3) {
    }
 
-   public dam a(dfz $$0) {
-      int $$1 = this.b.getOrDefault($$0, 0);
-      dam.a $$2 = dam.a();
-      bwd $$3 = bwd.a($$0.a());
-      ald $$4 = ald.b("armor." + $$0.b());
-      $$2.a(bxx.a, new bxv($$4, (double)$$1, bxv.a.a), $$3);
-      $$2.a(bxx.b, new bxv($$4, (double)this.e, bxv.a.a), $$3);
-      if (this.f > 0.0F) {
-         $$2.a(bxx.p, new bxv($$4, (double)this.f, bxv.a.a), $$3);
-      }
-
-      return $$2.a();
-   }
+   MapCodec<? extends dfx> a();
 }

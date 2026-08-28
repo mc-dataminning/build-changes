@@ -1,107 +1,69 @@
-import com.google.common.collect.Maps;
-import java.util.HashMap;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.ListIterator;
+import javax.annotation.Nullable;
 
-public class gsn implements gsa.a {
-   private final fnd a;
-   private final Map<alc<dhp>, Map<String, eoy>> b = Maps.newIdentityHashMap();
-   private final Map<alc<dhp>, Map<String, aau.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
+public class gsn {
+   private static final int a = 2;
+   private int b = 2;
+   private final List<gss.b.a> c = new ObjectArrayList();
 
-   public gsn(fnd $$0) {
-      this.a = $$0;
+   public synchronized void a(gss.b.a $$0) {
+      this.c.add($$0);
    }
 
-   @Override
-   public void a(fho $$0, gny $$1, double $$2, double $$3, double $$4) {
-      fml $$5 = this.a.j.k();
-      alc<dhp> $$6 = this.a.s.aj();
-      jj $$7 = jj.a($$5.b().d, 0.0, $$5.b().f);
-      fhs $$8 = $$1.getBuffer(goi.y());
-      if (this.b.containsKey($$6)) {
-         for (eoy $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.g(), 500.0)) {
-               gos.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.h() - $$2,
-                  (double)$$9.i() - $$3,
-                  (double)$$9.j() - $$4,
-                  (double)($$9.k() + 1) - $$2,
-                  (double)($$9.l() + 1) - $$3,
-                  (double)($$9.m() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
+   @Nullable
+   public synchronized gss.b.a a(fdw $$0) {
+      int $$1 = -1;
+      int $$2 = -1;
+      double $$3 = Double.MAX_VALUE;
+      double $$4 = Double.MAX_VALUE;
+      ListIterator<gss.b.a> $$5 = this.c.listIterator();
+
+      while ($$5.hasNext()) {
+         int $$6 = $$5.nextIndex();
+         gss.b.a $$7 = $$5.next();
+         if ($$7.a.get()) {
+            $$5.remove();
+         } else {
+            double $$8 = $$7.d().b($$0);
+            if (!$$7.c() && $$8 < $$3) {
+               $$3 = $$8;
+               $$1 = $$6;
+            }
+
+            if ($$7.c() && $$8 < $$4) {
+               $$4 = $$8;
+               $$2 = $$6;
             }
          }
       }
 
-      Map<String, aau.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (aau.a $$11 : $$10.values()) {
-            eoy $$12 = $$11.a();
-            if ($$7.a($$12.g(), 500.0)) {
-               if ($$11.b()) {
-                  gos.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
-               } else {
-                  gos.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
-               }
-            }
-         }
+      boolean $$9 = $$2 >= 0;
+      boolean $$10 = $$1 >= 0;
+      if (!$$9 || $$10 && (this.b <= 0 || !($$4 < $$3))) {
+         this.b = 2;
+         return this.a($$1);
+      } else {
+         this.b--;
+         return this.a($$2);
       }
    }
 
-   public void a(eoy $$0, List<aau.a> $$1, alc<dhp> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, aau.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
-
-      for (aau.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
-      }
+   public int a() {
+      return this.c.size();
    }
 
-   @Override
-   public void a() {
-      this.b.clear();
+   @Nullable
+   private gss.b.a a(int $$0) {
+      return $$0 >= 0 ? this.c.remove($$0) : null;
+   }
+
+   public synchronized void b() {
+      for (gss.b.a $$0 : this.c) {
+         $$0.a();
+      }
+
       this.c.clear();
    }
 }

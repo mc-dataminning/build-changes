@@ -1,70 +1,50 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class flz extends fmb {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wv c = wv.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final fwf f;
-   private final String g;
+public class flz extends hol {
+   private static final ww a = ww.c("mco.account.privacy.information");
+   private static final int b = 15;
+   private final fvi c = fvi.d();
+   private final fxi C;
+   @Nullable
+   private fsk D;
 
-   public flz(long $$0, int $$1, String $$2, fwf $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
+   public flz(fxi $$0) {
+      super(fnw.a);
+      this.C = $$0;
    }
 
    @Override
-   public void run() {
-      fie $$0 = fie.a();
-      int $$1 = 0;
+   public void aN_() {
+      this.c.a(15).c().b();
+      this.D = new fsk(a, this.p).b(true);
+      this.c.a(this.D);
+      fvi $$0 = this.c.a(fvi.e().a(8));
+      ww $$1 = ww.c("mco.account.privacy.info.button");
+      $$0.a(frq.a($$1, fwf.b(this, ayf.a)).a());
+      $$0.a(frq.a(wv.k, $$0x -> this.aK_()).a());
+      this.c.a($$1x -> {
+         fro var10000 = this.c($$1x);
+      });
+      this.c();
+   }
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
+   @Override
+   public void aK_() {
+      this.m.a(this.C);
+   }
 
-            fju $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new fkr(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (fkb var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (fka var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new fks(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
-         }
+   @Override
+   protected void c() {
+      if (this.D != null) {
+         this.D.d(this.n - 15);
       }
+
+      this.c.a();
+      fvc.a(this.c, this.J());
    }
 
    @Override
-   public wv a() {
-      return c;
+   public ww i() {
+      return a;
    }
 }

@@ -1,84 +1,38 @@
-import java.util.function.LongFunction;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class efk extends eem {
-   private final azs d;
-   private int e;
+public class efk {
+   public final emy a;
+   public final emy b;
+   public final emy c;
+   public final emy d;
+   public final emy e;
+   public final List<dzo> f;
+   public final axp<dlu> g;
+   public final axp<dlu> h;
+   public static final Codec<efk> i = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               emy.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
+               emy.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
+               emy.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
+               emy.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
+               emy.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
+               ays.b(dzo.a.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
+               axp.b(mg.i).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
+               axp.b(mg.i).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, efk::new)
+   );
 
-   public efk(azs $$0) {
-      super(0L);
-      this.d = $$0;
-   }
-
-   public int l() {
-      return this.e;
-   }
-
-   @Override
-   public azs d() {
-      return this.d.d();
-   }
-
-   @Override
-   public eey e() {
-      return this.d.e();
-   }
-
-   @Override
-   public int c(int $$0) {
-      this.e++;
-      return this.d instanceof eem $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
-   }
-
-   @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
-
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static azs a(int $$0, int $$1, long $$2, long $$3) {
-      return azs.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(eem::new),
-      b(efm::new);
-
-      private final LongFunction<azs> c;
-
-      private a(final LongFunction<azs> $$0) {
-         this.c = $$0;
-      }
-
-      public azs a(long $$0) {
-         return this.c.apply($$0);
-      }
+   public efk(emy $$0, emy $$1, emy $$2, emy $$3, emy $$4, List<dzo> $$5, axp<dlu> $$6, axp<dlu> $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 }

@@ -1,12 +1,20 @@
-public record afn(wv b) implements zc<abr> {
-   public static final yt<wg, afn> a = yt.a(wx.d, afn::b, afn::new);
+public record afn(int b) implements zd<abs> {
+   public static final yu<vs, afn> a = zd.a(afn::a, afn::new);
 
-   @Override
-   public ze<afn> a() {
-      return agk.aR;
+   private afn(vs $$0) {
+      this($$0.l());
    }
 
-   public void a(abr $$0) {
+   private void a(vs $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zf<afn> a() {
+      return agl.aQ;
+   }
+
+   public void a(abs $$0) {
       $$0.a(this);
    }
 }

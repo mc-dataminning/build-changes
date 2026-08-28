@@ -1,5 +1,43 @@
-public class gex extends ged<haq> {
-   public gex(ghd $$0) {
+public class gex extends gdo<hbl> {
+   public static final float e = 0.87F;
+   public static final float f = 0.92F;
+   private static final gip g = $$0 -> {
+      a($$0.a());
+      return $$0;
+   };
+   private final gig i = this.c.b("left_chest");
+   private final gig j = this.c.b("right_chest");
+
+   public gex(gig $$0) {
       super($$0);
+   }
+
+   public static gim a(float $$0) {
+      return gim.a(gdo.a(gik.a), 64, 64).a(g).a(gip.scaling($$0));
+   }
+
+   public static gim b(float $$0) {
+      return gim.a(gdo.c(gik.a), 64, 64).a(g).a(b).a(gip.scaling($$0));
+   }
+
+   public static gim a(float $$0, boolean $$1) {
+      return gfe.b($$1).a(g).a($$1 ? gdo.b : gip.a).a(gip.scaling($$0));
+   }
+
+   private static void a(giq $$0) {
+      giq $$1 = $$0.b("body");
+      gil $$2 = gil.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
+      $$1.a("left_chest", $$2, gii.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("right_chest", $$2, gii.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      giq $$3 = $$0.b("head_parts").b("head");
+      gil $$4 = gil.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
+      $$3.a("left_ear", $$4, gii.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
+      $$3.a("right_ear", $$4, gii.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
+   }
+
+   public void a(hbl $$0) {
+      super.a($$0);
+      this.i.k = $$0.a;
+      this.j.k = $$0.a;
    }
 }

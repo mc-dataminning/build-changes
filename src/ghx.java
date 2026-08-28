@@ -1,106 +1,50 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class ghx<S extends heg> extends gfr<S> implements ghp {
+   private final gig a = this.p.b("hat_rim");
 
-public class ghx extends ghw implements aaz, wj {
-   private static final Logger l = LogUtils.getLogger();
-   private final GameProfile m;
-   private cte n;
-   private final kg.b o;
-   private final gin p = new gin();
-   @Nullable
-   private gig q;
-   @Nullable
-   protected fqo.b k;
-
-   public ghx(fnd $$0, vo $$1, gie $$2) {
-      super($$0, $$1, $$2);
-      this.m = $$2.a();
-      this.o = $$2.c();
-      this.n = $$2.d();
-      this.k = $$2.i();
+   public ghx(gig $$0) {
+      super($$0);
    }
 
-   @Override
-   public boolean c() {
-      return this.b.i();
+   public static gim a() {
+      gio $$0 = gfr.a(gik.a, 0.0F);
+      giq $$1 = $$0.a();
+      giq $$2 = $$1.a("head", new gil().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -3.0F, -6.0F, 2.0F, 4.0F, 2.0F), gii.a);
+      giq $$3 = $$2.a("hat", gil.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new gik(0.5F)), gii.a);
+      $$3.a("hat_rim", gil.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), gii.b((float) (-Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("body", gil.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F).a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new gik(0.05F)), gii.a);
+      $$1.a("right_arm", gil.c().a(44, 22).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), gii.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", gil.c().a(44, 22).a().a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), gii.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", gil.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), gii.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", gil.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), gii.a(2.0F, 12.0F, 0.0F));
+      return gim.a($$0, 64, 64);
    }
 
-   @Override
-   protected void a(aaf $$0) {
-      this.b($$0);
+   public static gim a(gik $$0) {
+      gio $$1 = gfr.a($$0, 0.0F);
+      giq $$2 = $$1.a();
+      giq $$3 = $$2.a("head", gil.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gii.a);
+      $$2.a("body", gil.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.1F)), gii.a);
+      $$2.a("right_leg", gil.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), gii.a(-2.0F, 12.0F, 0.0F));
+      $$2.a("left_leg", gil.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.1F)), gii.a(2.0F, 12.0F, 0.0F));
+      $$3.b("hat").a("hat_rim", gil.c(), gii.a);
+      return gim.a($$1, 64, 32);
    }
 
-   private void b(aaf $$0) {
-      l.warn("Unknown custom packet payload: {}", $$0.a().a());
-   }
-
-   @Override
-   public void a(abb $$0) {
-      zf.a($$0, this, this.a);
-      this.p.a($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(zt $$0) {
-      zf.a($$0, this, this.a);
-      this.p.a($$0.b());
-   }
-
-   @Override
-   public void a(abe $$0) {
-      this.n = ctg.e.a($$0.b());
-   }
-
-   @Override
-   public void a(abd $$0) {
-      zf.a($$0, this, this.a);
-      if (this.q == null) {
-         this.q = new gig();
-      }
-
-      List<aug> $$1 = this.q.a($$0.b());
-      this.b(new abj($$1));
-   }
-
-   @Override
-   public void a(abc $$0) {
-      this.k = null;
-   }
-
-   private <T> T a(Function<avd, T> $$0) {
-      if (this.q == null) {
-         return $$0.apply(avd.b);
-      } else {
-         Object var3;
-         try (aup $$1 = this.q.a()) {
-            var3 = $$0.apply($$1);
-         }
-
-         return (T)var3;
-      }
-   }
-
-   @Override
-   public void a(aba $$0) {
-      zf.a($$0, this, this.a);
-      kg.b $$1 = this.a($$0x -> this.p.a($$0x, this.o, this.b.e()));
-      this.b.a(agl.b.a(wg.a($$1)), new gia(this.a, this.b, new gie(this.m, this.e, $$1, this.n, this.d, this.c, this.f, this.h, this.k, this.i, this.j)));
-      this.b.a(abi.a);
-      this.b.a(agl.a.a(wg.a($$1)));
-   }
-
-   @Override
-   public void d() {
-      this.e();
-   }
-
-   @Override
-   public void a(vq $$0) {
+   public void a(S $$0) {
       super.a($$0);
-      this.a.z();
+      float $$1 = $$0.H;
+      gdt.a(this.s, this.r, $$0.a, $$1, $$0.u);
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.o.k = $$0;
+      this.p.k = $$0;
+      this.a.k = $$0;
+   }
+
+   @Override
+   public void a(fiq $$0) {
+      this.a(bws.b, $$0);
    }
 }

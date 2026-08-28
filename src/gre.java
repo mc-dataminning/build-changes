@@ -1,46 +1,16 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.Streams;
+import java.util.function.Predicate;
 
-public class gre<T extends dxi> implements gqk<T> {
-   public static final ald a = ald.b("textures/environment/end_sky.png");
-   public static final ald b = ald.b("textures/entity/end_portal.png");
+public class gre implements grb {
+   public static final String a = "OR";
+   private final Iterable<? extends grb> d;
 
-   public gre(gql.a $$0) {
+   public gre(Iterable<? extends grb> $$0) {
+      this.d = $$0;
    }
 
-   public void a(T $$0, float $$1, fho $$2, gny $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
-   }
-
-   private void a(T $$0, Matrix4f $$1, fhs $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jo.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jo.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jo.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jo.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jo.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jo.b);
-   }
-
-   private void a(T $$0, Matrix4f $$1, fhs $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jo $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7);
-         $$2.a($$1, $$4, $$5, $$8);
-         $$2.a($$1, $$4, $$6, $$9);
-         $$2.a($$1, $$3, $$6, $$10);
-      }
-   }
-
-   protected float b() {
-      return 0.75F;
-   }
-
-   protected float c() {
-      return 0.375F;
-   }
-
-   protected goi d() {
-      return goi.t();
+   @Override
+   public Predicate<dzo> getPredicate(dzp<dlu, dzo> $$0) {
+      return af.b(Streams.stream(this.d).map($$1 -> $$1.getPredicate($$0)).toList());
    }
 }

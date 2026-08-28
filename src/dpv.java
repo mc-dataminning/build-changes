@@ -1,57 +1,51 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public enum dpv implements bag {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class dpv extends dpm {
+   public static final MapCodec<dpv> e = b(dpv::new);
 
-   public static final Codec<dpv> d = bag.a(dpv::values);
-   private final String e;
-   private final wv f;
-   private final h g;
-
-   private dpv(final String $$0, final h $$1) {
-      this.e = $$0;
-      this.f = wv.c("mirror." + $$0);
-      this.g = $$1;
+   @Override
+   public MapCodec<? extends dpv> a() {
+      return e;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         case c:
-            return ($$1 - $$3) % $$1;
-         default:
-            return $$0;
-      }
+   public dpv(dzn.d $$0) {
+      super($$0);
    }
 
-   public drm a(jo $$0) {
-      jo.a $$1 = $$0.o();
-      return (this != b || $$1 != jo.a.c) && (this != c || $$1 != jo.a.a) ? drm.a : drm.c;
-   }
-
-   public jo b(jo $$0) {
-      if (this == c && $$0.o() == jo.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == jo.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public wv b() {
-      return this.f;
+   public static dzo b() {
+      return dlw.J.m();
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public void a(dip $$0, cqs $$1, iu $$2, dzo $$3, @Nullable dwn $$4, cys $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!dfh.a($$5, axc.s)) {
+         if ($$0.B_().i()) {
+            $$0.a($$2, false);
+            return;
+         }
+
+         dzo $$6 = $$0.a_($$2.e());
+         if ($$6.d() || $$6.n()) {
+            $$0.b($$2, b());
+         }
+      }
+   }
+
+   @Override
+   protected void b(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      if ($$1.a(diy.b, $$2) > 11 - $$0.g()) {
+         this.d($$0, $$1, $$2);
+      }
+   }
+
+   protected void d(dzo $$0, dip $$1, iu $$2) {
+      if ($$1.B_().i()) {
+         $$1.a($$2, false);
+      } else {
+         $$1.b($$2, b());
+         $$1.b($$2, b().b(), null);
+      }
    }
 }

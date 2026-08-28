@@ -1,4 +1,4 @@
 @FunctionalInterface
 public interface ayx {
-   boolean accept(int var1, xs var2, int var3);
+   boolean accept(int var1, xt var2, int var3);
 }

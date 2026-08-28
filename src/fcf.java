@@ -1,26 +1,36 @@
-@FunctionalInterface
-public interface fcf<T> {
-   void handle(T var1, fch<T> var2, long var3);
+import com.google.common.collect.Sets;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-   public abstract static class a<T, C extends fcf<T>> {
-      private final ald a;
-      private final Class<?> b;
+public record fcf(fcs b, eym c) implements fbw {
+   public static final MapCodec<fcf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(fct.a.fieldOf("value").forGetter(fcf::c), eym.a.fieldOf("range").forGetter(fcf::d)).apply($$0, fcf::new)
+   );
 
-      public a(ald $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public fbx b() {
+      return fby.r;
+   }
 
-      public ald a() {
-         return this.a;
-      }
+   @Override
+   public Set<bav<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
 
-      public Class<?> b() {
-         return this.b;
-      }
+   public boolean a(eyn $$0) {
+      return this.c.b($$0, this.b.a($$0));
+   }
 
-      public abstract void a(tw var1, C var2);
+   public static fbw.a a(fcs $$0, eym $$1) {
+      return () -> new fcf($$0, $$1);
+   }
 
-      public abstract C b(tw var1);
+   public fcs c() {
+      return this.b;
+   }
+
+   public eym d() {
+      return this.c;
    }
 }

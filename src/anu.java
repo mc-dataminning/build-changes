@@ -1,28 +1,44 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class anu {
-   public static void a(CommandDispatcher<ex> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("commands.kick.owner.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ww.c("commands.kick.singleplayer.failed"));
+
+   public static void a(CommandDispatcher<ei> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("kill").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ex)$$0x.getSource(), ImmutableList.of(((ex)$$0x.getSource()).g()))))
-            .then(ey.a("targets", fk.b()).executes($$0x -> a((ex)$$0x.getSource(), fk.b($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("kick").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)ej.a("targets", ev.d())
+                     .executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), ww.c("multiplayer.disconnect.kicked"))))
+                  .then(ej.a("reason", ez.a()).executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), ez.a($$0x, "reason"))))
+            )
       );
    }
 
-   private static int a(ex $$0, Collection<? extends bvs> $$1) {
-      for (bvs $$2 : $$1) {
-         $$2.c($$0.e());
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> wv.a("commands.kill.success.single", $$1.iterator().next().m_()), true);
+   private static int a(ei $$0, Collection<arp> $$1, ww $$2) throws CommandSyntaxException {
+      if (!$$0.l().r()) {
+         throw b.create();
       } else {
-         $$0.a(() -> wv.a("commands.kill.success.multiple", $$1.size()), true);
-      }
+         int $$3 = 0;
 
-      return $$1.size();
+         for (arp $$4 : $$1) {
+            if (!$$0.l().a($$4.gh())) {
+               $$4.f.a($$2);
+               $$0.a(() -> ww.a("commands.kick.success", $$4.m_(), $$2), true);
+               $$3++;
+            }
+         }
+
+         if ($$3 == 0) {
+            throw a.create();
+         } else {
+            return $$3;
+         }
+      }
    }
 }

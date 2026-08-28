@@ -1,40 +1,35 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
+import java.util.Optional;
 
-public class cce extends byi<cpl> {
-   private static final int c = 25;
-   private static final int d = 20;
+public final class cce<F extends K1, Value> {
+   private final bxz<?> a;
+   private final cgb<Value> b;
+   private final App<F, Value> c;
 
-   public cce() {
-      super(ImmutableMap.of(cft.az, cfu.a, cft.p, cfu.b, cft.aG, cfu.c, cft.aE, cfu.c), cpm.b);
+   public cce(bxz<?> $$0, cgb<Value> $$1, App<F, Value> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   protected void a(arn $$0, cpl $$1, long $$2) {
-      bxr<cpl> $$3 = $$1.eb();
-      $$3.a(cft.aE, baq.a, 25L);
-      $$3.b(cft.n);
-      bwr $$4 = $$1.eb().c(cft.az).get();
-      byk.a($$1, $$4);
-      $$1.b(bxd.l);
-      $$1.a($$4, 20, false);
+   public App<F, Value> a() {
+      return this.c;
    }
 
-   protected boolean b(arn $$0, cpl $$1, long $$2) {
-      return true;
+   public void a(Value $$0) {
+      this.a.a(this.b, Optional.of($$0));
    }
 
-   protected void c(arn $$0, cpl $$1, long $$2) {
-      if (!$$1.eb().a(cft.aE) && !$$1.eb().a(cft.aG)) {
-         $$1.eb().a(cft.aG, baq.a, (long)(cpm.b - 25));
-         $$1.a(awk.CS, 3.0F, 1.0F);
-      }
+   public void a(Optional<Value> $$0) {
+      this.a.a(this.b, $$0);
    }
 
-   protected void d(arn $$0, cpl $$1, long $$2) {
-      if ($$1.c(bxd.l)) {
-         $$1.b(bxd.a);
-      }
+   public void a(Value $$0, long $$1) {
+      this.a.a(this.b, $$0, $$1);
+   }
 
-      $$1.eb().c(cft.az).ifPresent($$1::j);
-      $$1.eb().b(cft.az);
+   public void b() {
+      this.a.b(this.b);
    }
 }

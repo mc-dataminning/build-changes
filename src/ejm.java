@@ -1,53 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record ejm(List<ejm.a> b, jo c, efs d, boolean e) implements ejv {
-   public static final Codec<ejm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ejm.a.a.listOf().fieldOf("layers").forGetter(ejm::a),
-               jo.g.fieldOf("direction").forGetter(ejm::b),
-               efs.b.fieldOf("allowed_placement").forGetter(ejm::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(ejm::d)
-            )
-            .apply($$0, ejm::new)
-   );
-
-   public static ejm.a a(bsv $$0, elw $$1) {
-      return new ejm.a($$0, $$1);
+public class ejm extends eit<eld> {
+   public ejm(Codec<eld> $$0) {
+      super($$0);
    }
 
-   public static ejm b(bsv $$0, elw $$1) {
-      return new ejm(List.of(a($$0, $$1)), jo.b, efs.c, false);
-   }
+   @Override
+   public boolean a(eiv<eld> $$0) {
+      djo $$1 = $$0.b();
+      iu $$2 = $$0.e();
+      dzo $$3 = $$1.a_($$2.e());
+      eld $$4 = $$0.f();
+      azt $$5 = $$0.d();
+      if (!$$3.a(axa.aO)) {
+         return false;
+      } else {
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.G_() + 1 && $$6 + 1 <= $$1.ao()) {
+            int $$7 = 0;
 
-   public List<ejm.a> a() {
-      return this.b;
-   }
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               iu $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               dzo $$10 = $$4.b.a($$5, $$9);
+               if ($$1.v($$9) && $$9.v() > $$1.G_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
+            }
 
-   public jo b() {
-      return this.c;
-   }
-
-   public efs c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bsv b, elw c) {
-      public static final Codec<ejm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bsv.d.fieldOf("height").forGetter(ejm.a::a), elw.a.fieldOf("provider").forGetter(ejm.a::b)).apply($$0, ejm.a::new)
-      );
-
-      public bsv a() {
-         return this.b;
-      }
-
-      public elw b() {
-         return this.c;
+            return $$7 > 0;
+         } else {
+            return false;
+         }
       }
    }
 }

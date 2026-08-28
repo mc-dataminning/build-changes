@@ -1,49 +1,44 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
+import java.util.Optional;
 
-public record dge(js<dgf> c, js<dgh> d, boolean e) implements day {
-   public static final Codec<dge> a = RecordCodecBuilder.create(
+public record dge(jz d, Optional<egu> e, emy f, Optional<je<eeo>> g) implements dfw {
+   public static final MapCodec<dge> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               dgf.c.fieldOf("material").forGetter(dge::a),
-               dgh.c.fieldOf("pattern").forGetter(dge::b),
-               Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.e)
+               jz.g.optionalFieldOf("offset", jz.i).forGetter(dge::b),
+               egu.b.optionalFieldOf("predicate").forGetter(dge::c),
+               emy.a.fieldOf("block_state").forGetter(dge::d),
+               eeo.aj.optionalFieldOf("trigger_game_event").forGetter(dge::e)
             )
             .apply($$0, dge::new)
    );
-   public static final yt<wg, dge> b = yt.a(dgf.d, dge::a, dgh.d, dge::b, yr.b, $$0 -> $$0.e, dge::new);
-   private static final wv f = wv.c(af.a("item", ald.b("smithing_template.upgrade"))).a(n.h);
-
-   public dge(js<dgf> $$0, js<dgh> $$1) {
-      this($$0, $$1, true);
-   }
-
-   public boolean a(js<dgh> $$0, js<dgf> $$1) {
-      return $$0.equals(this.d) && $$1.equals(this.c);
-   }
 
    @Override
-   public void a(cxu.b $$0, Consumer<wv> $$1, czn $$2) {
-      if (this.e) {
-         $$1.accept(f);
-         $$1.accept(wu.a().b(this.d.a().a(this.c)));
-         $$1.accept(wu.a().b(this.c.a().d()));
+   public void a(aro $$0, int $$1, dfe $$2, bwa $$3, fdw $$4) {
+      iu $$5 = iu.a((jo)$$4).a(this.d);
+      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dY(), $$5))) {
+         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
       }
    }
 
-   public dge a(boolean $$0) {
-      return new dge(this.c, this.d, $$0);
+   @Override
+   public MapCodec<dge> a() {
+      return a;
    }
 
-   public js<dgf> a() {
-      return this.c;
-   }
-
-   public js<dgh> b() {
+   public jz b() {
       return this.d;
    }
 
-   public boolean c() {
+   public Optional<egu> c() {
       return this.e;
+   }
+
+   public emy d() {
+      return this.f;
+   }
+
+   public Optional<je<eeo>> e() {
+      return this.g;
    }
 }

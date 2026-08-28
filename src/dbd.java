@@ -1,36 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.stream.Stream;
 
-public record dbd(List<asf<String>> g) implements czy<String, dbd> {
-   public static final dbd a = new dbd(List.of());
-   public static final int b = 1024;
-   public static final int c = 100;
-   private static final Codec<asf<String>> h = asf.a(Codec.string(0, 1024));
-   public static final Codec<List<asf<String>>> d = h.sizeLimitedListOf(100);
-   public static final Codec<dbd> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(dbd::a)).apply($$0, dbd::new));
-   public static final yt<ByteBuf, dbd> f = asf.a(yr.b(1024)).a(yr.c(100)).a(dbd::new, dbd::a);
+public record dbd(List<dcg> d) {
+   public static final Codec<dbd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dcg.d.listOf().optionalFieldOf("death_effects", List.of()).forGetter(dbd::a)).apply($$0, dbd::new)
+   );
+   public static final yu<wh, dbd> b = yu.a(dcg.e.a(ys.a()), dbd::a, dbd::new);
+   public static final dbd c = new dbd(List.of(new dcf(), new dce(List.of(new bve(bvg.j, 900, 1), new bve(bvg.v, 100, 1), new bve(bvg.l, 800, 0)))));
 
-   public dbd(List<asf<String>> g) {
-      if (g.size() > 100) {
-         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
-      } else {
-         this.g = g;
+   public void a(cys $$0, bwz $$1) {
+      for (dcg $$2 : this.d) {
+         $$2.a($$1.dV(), $$0, $$1);
       }
    }
 
-   public Stream<String> a(boolean $$0) {
-      return this.g.stream().map($$1 -> $$1.a($$0));
-   }
-
-   public dbd b(List<asf<String>> $$0) {
-      return new dbd($$0);
-   }
-
-   @Override
-   public List<asf<String>> a() {
-      return this.g;
+   public List<dcg> a() {
+      return this.d;
    }
 }

@@ -1,359 +1,364 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.nio.IntBuffer;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.EnumMap;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
-import java.util.OptionalLong;
-import java.util.Set;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.lwjgl.openal.AL;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC;
-import org.lwjgl.openal.ALC10;
-import org.lwjgl.openal.ALC11;
-import org.lwjgl.openal.ALCCapabilities;
-import org.lwjgl.openal.ALCapabilities;
-import org.lwjgl.openal.ALUtil;
-import org.lwjgl.system.MemoryStack;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.slf4j.Logger;
 
 public class ffb {
-   static final Logger a = LogUtils.getLogger();
-   private static final int b = 0;
-   private static final int c = 30;
-   private long d;
-   private long e;
-   private boolean f;
+   public static final String a = "#";
+   private static final Logger b = LogUtils.getLogger();
+   private final Object2ObjectMap<String, fet> c = new Object2ObjectOpenHashMap(16, 0.5F);
+   private final Reference2ObjectMap<ffe, List<fet>> d = new Reference2ObjectOpenHashMap();
+   private final Map<String, fev> e = new Object2ObjectOpenHashMap(16, 0.5F);
+   private final Map<fes, fet> f = new EnumMap<>(fes.class);
+   private final Object2ObjectMap<String, few> g = new Object2ObjectOpenHashMap();
+   private final Object2ObjectMap<String, few> h = new Object2ObjectOpenHashMap();
+
    @Nullable
-   private String g;
-   private static final ffb.a h = new ffb.a() {
-      @Nullable
-      @Override
-      public ffa a() {
-         return null;
-      }
-
-      @Override
-      public boolean a(ffa $$0) {
-         return false;
-      }
-
-      @Override
-      public void b() {
-      }
-
-      @Override
-      public int c() {
-         return 0;
-      }
-
-      @Override
-      public int d() {
-         return 0;
-      }
-   };
-   private ffb.a i = h;
-   private ffb.a j = h;
-   private final ffc k = new ffc();
-
-   public ffb() {
-      this.g = a();
+   public fet a(@Nullable String $$0) {
+      return (fet)this.c.get($$0);
    }
 
-   public void a(@Nullable String $$0, boolean $$1) {
-      this.d = a($$0);
-      this.f = false;
-      ALCCapabilities $$2 = ALC.createCapabilities(this.d);
-      if (ffe.a(this.d, "Get capabilities")) {
-         throw new IllegalStateException("Failed to get OpenAL capabilities");
-      } else if (!$$2.OpenALC11) {
-         throw new IllegalStateException("OpenAL 1.1 not supported");
+   public fet a(String $$0, ffe $$1, ww $$2, ffe.a $$3, boolean $$4, @Nullable ym $$5) {
+      if (this.c.containsKey($$0)) {
+         throw new IllegalArgumentException("An objective with the name '" + $$0 + "' already exists!");
       } else {
-         MemoryStack $$3 = MemoryStack.stackPush();
+         fet $$6 = new fet(this, $$0, $$1, $$2, $$3, $$4, $$5);
+         ((List)this.d.computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$6);
+         this.c.put($$0, $$6);
+         this.a($$6);
+         return $$6;
+      }
+   }
 
-         try {
-            IntBuffer $$4 = this.a($$3, $$2.ALC_SOFT_HRTF && $$1);
-            this.e = ALC10.alcCreateContext(this.d, $$4);
-         } catch (Throwable var9) {
-            if ($$3 != null) {
-               try {
-                  $$3.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-            }
+   public final void a(ffe $$0, ffa $$1, Consumer<fez> $$2) {
+      ((List)this.d.getOrDefault($$0, Collections.emptyList())).forEach($$2x -> $$2.accept(this.a($$1, $$2x, true)));
+   }
 
-            throw var9;
+   private fev f(String $$0) {
+      return this.e.computeIfAbsent($$0, $$0x -> new fev());
+   }
+
+   public fez c(ffa $$0, fet $$1) {
+      return this.a($$0, $$1, false);
+   }
+
+   public fez a(final ffa $$0, final fet $$1, boolean $$2) {
+      final boolean $$3 = $$2 || !$$1.c().e();
+      fev $$4 = this.f($$0.cI());
+      final MutableBoolean $$5 = new MutableBoolean();
+      final fey $$6 = $$4.a($$1, $$1x -> $$5.setTrue());
+      return new fez() {
+         @Override
+         public int a() {
+            return $$6.a();
          }
 
-         if ($$3 != null) {
-            $$3.close();
-         }
-
-         if (ffe.a(this.d, "Create context")) {
-            throw new IllegalStateException("Unable to create OpenAL context");
-         } else {
-            ALC10.alcMakeContextCurrent(this.e);
-            int $$5 = this.i();
-            int $$6 = azk.a((int)azk.c((float)$$5), 2, 8);
-            int $$7 = azk.a($$5 - $$6, 8, 255);
-            this.i = new ffb.b($$7);
-            this.j = new ffb.b($$6);
-            ALCapabilities $$8 = AL.createCapabilities($$2);
-            ffe.a("Initialization");
-            if (!$$8.AL_EXT_source_distance_model) {
-               throw new IllegalStateException("AL_EXT_source_distance_model is not supported");
+         @Override
+         public void a(int $$0x) {
+            if (!$$3) {
+               throw new IllegalStateException("Cannot modify read-only score");
             } else {
-               AL10.alEnable(512);
-               if (!$$8.AL_EXT_LINEAR_DISTANCE) {
-                  throw new IllegalStateException("AL_EXT_LINEAR_DISTANCE is not supported");
-               } else {
-                  ffe.a("Enable per-source distance models");
-                  a.info("OpenAL initialized on device {}", this.b());
-                  this.f = ALC10.alcIsExtensionPresent(this.d, "ALC_EXT_disconnect");
+               boolean $$1 = $$5.isTrue();
+               if ($$1.e()) {
+                  ww $$2 = $$0.m_();
+                  if ($$2 != null && !$$2.equals($$6.d())) {
+                     $$6.a($$2);
+                     $$1 = true;
+                  }
+               }
+
+               if ($$0 != $$6.a()) {
+                  $$6.a($$0);
+                  $$1 = true;
+               }
+
+               if ($$1) {
+                  this.h();
                }
             }
          }
-      }
-   }
 
-   private IntBuffer a(MemoryStack $$0, boolean $$1) {
-      int $$2 = 5;
-      IntBuffer $$3 = $$0.callocInt(11);
-      int $$4 = ALC10.alcGetInteger(this.d, 6548);
-      if ($$4 > 0) {
-         $$3.put(6546).put($$1 ? 1 : 0);
-         $$3.put(6550).put(0);
-      }
-
-      $$3.put(6554).put(1);
-      return $$3.put(0).flip();
-   }
-
-   private int i() {
-      MemoryStack $$0 = MemoryStack.stackPush();
-
-      int var7;
-      label58: {
-         try {
-            int $$1 = ALC10.alcGetInteger(this.d, 4098);
-            if (ffe.a(this.d, "Get attributes size")) {
-               throw new IllegalStateException("Failed to get OpenAL attributes");
-            }
-
-            IntBuffer $$2 = $$0.mallocInt($$1);
-            ALC10.alcGetIntegerv(this.d, 4099, $$2);
-            if (ffe.a(this.d, "Get attributes")) {
-               throw new IllegalStateException("Failed to get OpenAL attributes");
-            }
-
-            int $$3 = 0;
-
-            while ($$3 < $$1) {
-               int $$4 = $$2.get($$3++);
-               if ($$4 == 0) {
-                  break;
-               }
-
-               int $$5 = $$2.get($$3++);
-               if ($$4 == 4112) {
-                  var7 = $$5;
-                  break label58;
-               }
-            }
-         } catch (Throwable var9) {
-            if ($$0 != null) {
-               try {
-                  $$0.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-            }
-
-            throw var9;
+         @Nullable
+         @Override
+         public ww g() {
+            return $$6.d();
          }
 
-         if ($$0 != null) {
-            $$0.close();
+         @Override
+         public void a(@Nullable ww $$0x) {
+            if ($$5.isTrue() || !Objects.equals($$0, $$6.d())) {
+               $$6.a($$0);
+               this.h();
+            }
          }
 
-         return 30;
-      }
+         @Override
+         public void a(@Nullable ym $$0x) {
+            $$6.b($$0);
+            this.h();
+         }
 
-      if ($$0 != null) {
-         $$0.close();
-      }
+         @Override
+         public boolean d() {
+            return $$6.b();
+         }
 
-      return var7;
+         @Override
+         public void e() {
+            this.a(false);
+         }
+
+         @Override
+         public void f() {
+            this.a(true);
+         }
+
+         private void a(boolean $$0x) {
+            $$6.a($$0);
+            if ($$5.isTrue()) {
+               this.h();
+            }
+
+            ffb.this.a($$0, $$1);
+         }
+
+         private void h() {
+            ffb.this.a($$0, $$1, $$6);
+            $$5.setFalse();
+         }
+      };
    }
 
    @Nullable
-   public static String a() {
-      if (!ALC10.alcIsExtensionPresent(0L, "ALC_ENUMERATE_ALL_EXT")) {
-         return null;
-      } else {
-         ALUtil.getStringList(0L, 4115);
-         return ALC10.alcGetString(0L, 4114);
+   public fex d(ffa $$0, fet $$1) {
+      fev $$2 = this.e.get($$0.cI());
+      return $$2 != null ? $$2.a($$1) : null;
+   }
+
+   public Collection<feu> i(fet $$0) {
+      List<feu> $$1 = new ArrayList<>();
+      this.e.forEach(($$2, $$3) -> {
+         fey $$4 = $$3.a($$0);
+         if ($$4 != null) {
+            $$1.add(new feu($$2, $$4.a(), $$4.d(), $$4.c()));
+         }
+      });
+      return $$1;
+   }
+
+   public Collection<fet> c() {
+      return this.c.values();
+   }
+
+   public Collection<String> d() {
+      return this.c.keySet();
+   }
+
+   public Collection<ffa> e() {
+      return this.e.keySet().stream().map(ffa::c).toList();
+   }
+
+   public void b(ffa $$0) {
+      fev $$1 = this.e.remove($$0.cI());
+      if ($$1 != null) {
+         this.a($$0);
       }
    }
 
-   public String b() {
-      String $$0 = ALC10.alcGetString(this.d, 4115);
-      if ($$0 == null) {
-         $$0 = ALC10.alcGetString(this.d, 4101);
+   public void e(ffa $$0, fet $$1) {
+      fev $$2 = this.e.get($$0.cI());
+      if ($$2 != null) {
+         boolean $$3 = $$2.b($$1);
+         if (!$$2.a()) {
+            fev $$4 = this.e.remove($$0.cI());
+            if ($$4 != null) {
+               this.a($$0);
+            }
+         } else if ($$3) {
+            this.b($$0, $$1);
+         }
       }
-
-      if ($$0 == null) {
-         $$0 = "Unknown";
-      }
-
-      return $$0;
    }
 
-   public synchronized boolean c() {
-      String $$0 = a();
-      if (Objects.equals(this.g, $$0)) {
-         return false;
+   public Object2IntMap<fet> c(ffa $$0) {
+      fev $$1 = this.e.get($$0.cI());
+      return $$1 != null ? $$1.b() : Object2IntMaps.emptyMap();
+   }
+
+   public void j(fet $$0) {
+      this.c.remove($$0.b());
+
+      for (fes $$1 : fes.values()) {
+         if (this.a($$1) == $$0) {
+            this.a($$1, null);
+         }
+      }
+
+      List<fet> $$2 = (List<fet>)this.d.get($$0.c());
+      if ($$2 != null) {
+         $$2.remove($$0);
+      }
+
+      for (fev $$3 : this.e.values()) {
+         $$3.b($$0);
+      }
+
+      this.c($$0);
+   }
+
+   public void a(fes $$0, @Nullable fet $$1) {
+      this.f.put($$0, $$1);
+   }
+
+   @Nullable
+   public fet a(fes $$0) {
+      return this.f.get($$0);
+   }
+
+   @Nullable
+   public few b(String $$0) {
+      return (few)this.g.get($$0);
+   }
+
+   public few c(String $$0) {
+      few $$1 = this.b($$0);
+      if ($$1 != null) {
+         b.warn("Requested creation of existing team '{}'", $$0);
+         return $$1;
       } else {
-         this.g = $$0;
+         $$1 = new few(this, $$0);
+         this.g.put($$0, $$1);
+         this.a($$1);
+         return $$1;
+      }
+   }
+
+   public void d(few $$0) {
+      this.g.remove($$0.b());
+
+      for (String $$1 : $$0.g()) {
+         this.h.remove($$1);
+      }
+
+      this.c($$0);
+   }
+
+   public boolean a(String $$0, few $$1) {
+      if (this.e($$0) != null) {
+         this.d($$0);
+      }
+
+      this.h.put($$0, $$1);
+      return $$1.g().add($$0);
+   }
+
+   public boolean d(String $$0) {
+      few $$1 = this.e($$0);
+      if ($$1 != null) {
+         this.b($$0, $$1);
          return true;
-      }
-   }
-
-   private static long a(@Nullable String $$0) {
-      OptionalLong $$1 = OptionalLong.empty();
-      if ($$0 != null) {
-         $$1 = b($$0);
-      }
-
-      if ($$1.isEmpty()) {
-         $$1 = b(a());
-      }
-
-      if ($$1.isEmpty()) {
-         $$1 = b(null);
-      }
-
-      if ($$1.isEmpty()) {
-         throw new IllegalStateException("Failed to open OpenAL device");
       } else {
-         return $$1.getAsLong();
+         return false;
       }
    }
 
-   private static OptionalLong b(@Nullable String $$0) {
-      long $$1 = ALC10.alcOpenDevice($$0);
-      return $$1 != 0L && !ffe.a($$1, "Open device") ? OptionalLong.of($$1) : OptionalLong.empty();
-   }
-
-   public void d() {
-      this.i.b();
-      this.j.b();
-      ALC10.alcDestroyContext(this.e);
-      if (this.d != 0L) {
-         ALC10.alcCloseDevice(this.d);
+   public void b(String $$0, few $$1) {
+      if (this.e($$0) != $$1) {
+         throw new IllegalStateException("Player is either on another team or not on any team. Cannot remove from team '" + $$1.b() + "'.");
+      } else {
+         this.h.remove($$0);
+         $$1.g().remove($$0);
       }
    }
 
-   public ffc e() {
-      return this.k;
+   public Collection<String> f() {
+      return this.g.keySet();
+   }
+
+   public Collection<few> g() {
+      return this.g.values();
    }
 
    @Nullable
-   public ffa a(ffb.c $$0) {
-      return ($$0 == ffb.c.b ? this.j : this.i).a();
+   public few e(String $$0) {
+      return (few)this.h.get($$0);
+   }
+
+   public void a(fet $$0) {
+   }
+
+   public void b(fet $$0) {
+   }
+
+   public void c(fet $$0) {
+   }
+
+   protected void a(ffa $$0, fet $$1, fey $$2) {
+   }
+
+   protected void a(ffa $$0, fet $$1) {
    }
 
    public void a(ffa $$0) {
-      if (!this.i.a($$0) && !this.j.a($$0)) {
-         throw new IllegalStateException("Tried to release unknown channel");
+   }
+
+   public void b(ffa $$0, fet $$1) {
+   }
+
+   public void a(few $$0) {
+   }
+
+   public void b(few $$0) {
+   }
+
+   public void c(few $$0) {
+   }
+
+   public void a(bwa $$0) {
+      if (!($$0 instanceof cqs) && !$$0.bK()) {
+         this.b($$0);
+         this.d($$0.cI());
       }
    }
 
-   public String f() {
-      return String.format(Locale.ROOT, "Sounds: %d/%d + %d/%d", this.i.d(), this.i.c(), this.j.d(), this.j.c());
+   protected ud a(jg.a $$0) {
+      ud $$1 = new ud();
+      this.e.forEach(($$2, $$3) -> $$3.c().forEach(($$3x, $$4) -> {
+            tx $$5 = $$4.a($$0);
+            $$5.a("Name", $$2);
+            $$5.a("Objective", $$3x.b());
+            $$1.add($$5);
+         }));
+      return $$1;
    }
 
-   public List<String> g() {
-      List<String> $$0 = ALUtil.getStringList(0L, 4115);
-      return $$0 == null ? Collections.emptyList() : $$0;
-   }
-
-   public boolean h() {
-      return this.f && ALC11.alcGetInteger(this.d, 787) == 0;
-   }
-
-   interface a {
-      @Nullable
-      ffa a();
-
-      boolean a(ffa var1);
-
-      void b();
-
-      int c();
-
-      int d();
-   }
-
-   static class b implements ffb.a {
-      private final int a;
-      private final Set<ffa> b = Sets.newIdentityHashSet();
-
-      public b(int $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public ffa a() {
-         if (this.b.size() >= this.a) {
-            if (ab.aU) {
-               ffb.a.warn("Maximum sound pool size {} reached", this.a);
-            }
-
-            return null;
+   protected void a(ud $$0, jg.a $$1) {
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         tx $$3 = $$0.a($$2);
+         fey $$4 = fey.a($$3, $$1);
+         String $$5 = $$3.l("Name");
+         String $$6 = $$3.l("Objective");
+         fet $$7 = this.a($$6);
+         if ($$7 == null) {
+            b.error("Unknown objective {} for name {}, ignoring", $$6, $$5);
          } else {
-            ffa $$0 = ffa.a();
-            if ($$0 != null) {
-               this.b.add($$0);
-            }
-
-            return $$0;
+            this.f($$5).a($$7, $$4);
          }
       }
-
-      @Override
-      public boolean a(ffa $$0) {
-         if (!this.b.remove($$0)) {
-            return false;
-         } else {
-            $$0.b();
-            return true;
-         }
-      }
-
-      @Override
-      public void b() {
-         this.b.forEach(ffa::b);
-         this.b.clear();
-      }
-
-      @Override
-      public int c() {
-         return this.a;
-      }
-
-      @Override
-      public int d() {
-         return this.b.size();
-      }
-   }
-
-   public static enum c {
-      a,
-      b;
    }
 }

@@ -1,50 +1,52 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dii extends dhj {
-   private final boolean a;
-   private final boolean b;
-   private final Optional<Float> c;
-   private final Optional<jw<dku>> d;
-
-   public dii(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<jw<dku>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public interface dii {
+   static bup a(dip $$0, @Nullable bwa $$1) {
+      return $$0.al().d($$1, a($$1));
    }
 
-   @Override
-   public Optional<Float> a(dhi $$0, dgv $$1, jj $$2, dym $$3, eut $$4) {
-      if (this.d.isPresent()) {
-         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
+   @Nullable
+   static bwz a(@Nullable bwa $$0) {
+      return switch ($$0) {
+         case null, default -> null;
+         case cmy $$1 -> $$1.f();
+         case bwz $$2 -> $$2;
+         case crm $$3 when $$3.q() instanceof bwz $$4 -> $$4;
+      };
+   }
+
+   aro a();
+
+   dii.a b();
+
+   @Nullable
+   bwz c();
+
+   @Nullable
+   bwa d();
+
+   float e();
+
+   fdw f();
+
+   boolean g();
+
+   boolean h();
+
+   public static enum a {
+      a(false),
+      b(true),
+      c(true),
+      d(false);
+
+      private final boolean e;
+
+      private a(final boolean $$0) {
+         this.e = $$0;
       }
-   }
 
-   @Override
-   public boolean a(dhi $$0, dgv $$1, jj $$2, dym $$3, float $$4) {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(dhi $$0, bvs $$1) {
-      return this.b;
-   }
-
-   @Override
-   public float a(bvs $$0) {
-      boolean var10000;
-      label17: {
-         if ($$0 instanceof cqi $$1 && $$1.gj().b) {
-            var10000 = true;
-            break label17;
-         }
-
-         var10000 = false;
+      public boolean a() {
+         return this.e;
       }
-
-      boolean $$2 = var10000;
-      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
    }
 }

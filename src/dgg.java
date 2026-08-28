@@ -1,47 +1,33 @@
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class dgg {
-   public static final alc<dgf> a = a("quartz");
-   public static final alc<dgf> b = a("iron");
-   public static final alc<dgf> c = a("netherite");
-   public static final alc<dgf> d = a("redstone");
-   public static final alc<dgf> e = a("copper");
-   public static final alc<dgf> f = a("gold");
-   public static final alc<dgf> g = a("emerald");
-   public static final alc<dgf> h = a("diamond");
-   public static final alc<dgf> i = a("lapis");
-   public static final alc<dgf> j = a("amethyst");
-   public static final alc<dgf> k = a("resin");
+public record dgg(ale d) implements dfw {
+   private static final Logger e = LogUtils.getLogger();
+   public static final MapCodec<dgg> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ale.a.fieldOf("function").forGetter(dgg::b)).apply($$0, dgg::new));
 
-   public static void a(qg<dgf> $$0) {
-      a($$0, a, cyc.pl, xs.a.a(14931140));
-      a($$0, b, cyc.po, xs.a.a(15527148), Map.of(dgb.d, "iron_darker"));
-      a($$0, c, cyc.pt, xs.a.a(6445145), Map.of(dgb.h, "netherite_darker"));
-      a($$0, d, cyc.mg, xs.a.a(9901575));
-      a($$0, e, cyc.pq, xs.a.a(11823181));
-      a($$0, f, cyc.ps, xs.a.a(14594349), Map.of(dgb.e, "gold_darker"));
-      a($$0, g, cyc.pj, xs.a.a(1155126));
-      a($$0, h, cyc.pi, xs.a.a(7269586), Map.of(dgb.f, "diamond_darker"));
-      a($$0, i, cyc.pk, xs.a.a(4288151));
-      a($$0, j, cyc.pm, xs.a.a(10116294));
-      a($$0, k, cyc.vB, xs.a.a(16545810));
+   @Override
+   public void a(aro $$0, int $$1, dfe $$2, bwa $$3, fdw $$4) {
+      MinecraftServer $$5 = $$0.p();
+      alt $$6 = $$5.aE();
+      Optional<hw<ei>> $$7 = $$6.a(this.d);
+      if ($$7.isPresent()) {
+         ei $$8 = $$5.aH().a(2).a().a($$3).a($$0).a($$4).a($$3.bU());
+         $$6.a($$7.get(), $$8);
+      } else {
+         e.error("Enchantment run_function effect failed for non-existent function {}", this.d);
+      }
    }
 
-   public static Optional<js.c<dgf>> a(ju.a $$0, cxy $$1) {
-      return $$0.e(me.bg).c().filter($$1x -> $$1.a(((dgf)$$1x.a()).b())).findFirst();
+   @Override
+   public MapCodec<dgg> a() {
+      return a;
    }
 
-   private static void a(qg<dgf> $$0, alc<dgf> $$1, cxu $$2, xs $$3) {
-      a($$0, $$1, $$2, $$3, Map.of());
-   }
-
-   private static void a(qg<dgf> $$0, alc<dgf> $$1, cxu $$2, xs $$3, Map<alc<dga>, String> $$4) {
-      dgf $$5 = dgf.a($$1.a().a(), $$2, wv.c(af.a("trim_material", $$1.a())).c($$3), $$4);
-      $$0.a($$1, $$5);
-   }
-
-   private static alc<dgf> a(String $$0) {
-      return alc.a(me.bg, ald.b($$0));
+   public ale b() {
+      return this.d;
    }
 }

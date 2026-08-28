@@ -1,53 +1,79 @@
-public class glt extends gmh {
-   protected final gmc a;
-   private float b;
-   private float F;
-   private float G;
-   private boolean H;
+import javax.annotation.Nullable;
 
-   protected glt(ghz $$0, double $$1, double $$2, double $$3, gmc $$4, float $$5) {
+public class glt extends gnl {
+   private final float a;
+   private final gng b;
+
+   glt(gjd $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gng $$7) {
       super($$0, $$1, $$2, $$3);
-      this.B = 0.91F;
-      this.u = $$5;
-      this.a = $$4;
-   }
-
-   public void b(int $$0) {
-      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
-      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
-      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
-      float $$4 = 1.0F;
-      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
-   }
-
-   public void c(int $$0) {
-      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
-      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
-      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
-      this.H = true;
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public gll b() {
-      return gll.c;
+   public gmp b() {
+      return gmp.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * azk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.a);
-      if (this.s > this.t / 2) {
-         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         if (this.H) {
-            this.v = this.v + (this.b - this.v) * 0.2F;
-            this.w = this.w + (this.F - this.w) * 0.2F;
-            this.x = this.x + (this.G - this.x) * 0.2F;
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
          }
+
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
       }
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+   public static class a implements gmo<lp> {
+      private final gng a;
+
+      public a(gng $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      public gml a(lp $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dzo $$8 = $$0.b();
+         if (!$$8.l() && $$8.o() == dsf.a) {
+            return null;
+         } else {
+            iu $$9 = iu.a($$2, $$3, $$4);
+            int $$10 = fof.Q().aw().a($$8, $$1, $$9);
+            if ($$8.b() instanceof dor) {
+               $$10 = ((dor)$$8.b()).b($$8, $$1, $$9);
+            }
+
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new glt($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
+      }
    }
 }

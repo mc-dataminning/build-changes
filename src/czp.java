@@ -1,41 +1,60 @@
-public class czp extends cxu implements cys {
-   public static float a = 1.5F;
+import javax.annotation.Nullable;
 
-   public czp(cxu.a $$0) {
-      super($$0);
+public class czp extends cxa {
+   public czp(dlu $$0, cyo.a $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public btq a(dhp $$0, cqi $$1, btp $$2) {
-      cxy $$3 = $$1.b($$2);
-      if ($$0 instanceof arn $$4) {
-         crb.a(($$2x, $$3x, $$4x) -> new crt($$1, $$0, $$1.dt().a(), $$1.bE().b(), $$1.dt().c()), $$4, $$3, $$1, 0.0F, a, 1.0F);
+   public dcl b(dcl $$0) {
+      iu $$1 = $$0.a();
+      dip $$2 = $$0.q();
+      dzo $$3 = $$2.a_($$1);
+      dlu $$4 = this.c();
+      if (!$$3.a($$4)) {
+         return dso.a($$2, $$1) == 7 ? null : $$0;
+      } else {
+         ja $$5;
+         if ($$0.h()) {
+            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         } else {
+            $$5 = $$0.k() == ja.b ? $$0.g() : ja.b;
+         }
+
+         int $$7 = 0;
+         iu.a $$8 = $$1.k().c($$5);
+
+         while ($$7 < 7) {
+            if (!$$2.C && !$$2.k($$8)) {
+               cqs $$9 = $$0.o();
+               int $$10 = $$2.ao();
+               if ($$9 instanceof arp && $$8.v() > $$10) {
+                  ((arp)$$9).b(ww.a("build.tooHigh", $$10).a(n.m), true);
+               }
+               break;
+            }
+
+            $$3 = $$2.a_($$8);
+            if (!$$3.a(this.c())) {
+               if ($$3.a($$0)) {
+                  return dcl.a($$0, $$8, $$5);
+               }
+               break;
+            }
+
+            $$8.c($$5);
+            if ($$5.o().d()) {
+               $$7++;
+            }
+         }
+
+         return null;
       }
-
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awk.Dp, awl.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
-      $$1.b(awu.c.b(this));
-      $$3.a(1, $$1);
-      return btq.a;
    }
 
    @Override
-   public crb a(dhp $$0, kc $$1, cxy $$2, jo $$3) {
-      azs $$4 = $$0.C_();
-      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
-      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
-      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
-      fcu $$8 = new fcu($$5, $$6, $$7);
-      crt $$9 = new crt($$0, $$1.a(), $$1.b(), $$1.c(), $$8);
-      $$9.i($$8);
-      return $$9;
-   }
-
-   @Override
-   public void a(crb $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public cys.a b() {
-      return cys.a.a().a(($$0, $$1) -> dna.a($$0, 1.0, fcu.c)).a(6.6666665F).b(1.0F).a(1051).a();
+   protected boolean b() {
+      return false;
    }
 }

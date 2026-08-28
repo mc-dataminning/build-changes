@@ -1,71 +1,85 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Deque;
+import java.util.Iterator;
 
-public class fhy {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private static CompletableFuture<fhy.a> b;
+public class fhy implements fhz, AutoCloseable {
+   private final int b;
+   private final Deque<fhy.a<?>> c = new ArrayDeque<>();
 
-   public static CompletableFuture<fhy.a> a() {
-      if (b == null || a(b)) {
-         b = b();
-      }
-
-      return b;
+   public fhy(int $$0) {
+      this.b = $$0;
    }
 
-   private static boolean a(CompletableFuture<fhy.a> $$0) {
-      fhy.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
-   }
+   public void a() {
+      Iterator<? extends fhy.a<?>> $$0 = this.c.iterator();
 
-   private static CompletableFuture<fhy.a> b() {
-      fnp $$0 = fnd.Q().X();
-      return $$0.g() != fnp.a.c ? CompletableFuture.completedFuture(new fhy.a(fhy.b.d)) : CompletableFuture.supplyAsync(() -> {
-         fie $$0x = fie.a();
-
-         try {
-            if ($$0x.g() != fie.a.a) {
-               return new fhy.a(fhy.b.b);
-            } else {
-               return !$$0x.f() ? new fhy.a(fhy.b.c) : new fhy.a(fhy.b.a);
-            }
-         } catch (fka var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new fhy.a(fhy.b.d) : new fhy.a(var2);
+      while ($$0.hasNext()) {
+         fhy.a<?> $$1 = (fhy.a<?>)$$0.next();
+         if ($$1.c-- == 0) {
+            $$1.close();
+            $$0.remove();
          }
-      }, af.i());
-   }
-
-   public static record a(fhy.b a, @Nullable fka b) {
-      public a(fhy.b $$0) {
-         this($$0, null);
-      }
-
-      public a(fka $$0) {
-         this(fhy.b.e, $$0);
-      }
-
-      @Nullable
-      public fwf a(fwf $$0) {
-         return (fwf)(switch (this.a) {
-            case a -> null;
-            case b -> new fkn($$0);
-            case c -> new fkx($$0);
-            case d -> new fks(wv.c("mco.error.invalid.session.title"), wv.c("mco.error.invalid.session.message"), $$0);
-            case e -> new fks(Objects.requireNonNull(this.b), $$0);
-         });
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   @Override
+   public <T> T a(fib<T> $$0) {
+      T $$1 = this.b($$0);
+      $$0.b($$1);
+      return $$1;
+   }
+
+   private <T> T b(fib<T> $$0) {
+      Iterator<? extends fhy.a<?>> $$1 = this.c.iterator();
+
+      while ($$1.hasNext()) {
+         fhy.a<?> $$2 = (fhy.a<?>)$$1.next();
+         if ($$0.a($$2.a)) {
+            $$1.remove();
+            return (T)$$2.b;
+         }
+      }
+
+      return $$0.f();
+   }
+
+   @Override
+   public <T> void a(fib<T> $$0, T $$1) {
+      this.c.addFirst(new fhy.a<>($$0, $$1, this.b));
+   }
+
+   public void b() {
+      this.c.forEach(fhy.a::close);
+      this.c.clear();
+   }
+
+   @Override
+   public void close() {
+      this.b();
+   }
+
+   @VisibleForTesting
+   protected Collection<fhy.a<?>> c() {
+      return this.c;
+   }
+
+   @VisibleForTesting
+   protected static final class a<T> implements AutoCloseable {
+      final fib<T> a;
+      final T b;
+      int c;
+
+      a(fib<T> $$0, T $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public void close() {
+         this.a.a(this.b);
+      }
    }
 }

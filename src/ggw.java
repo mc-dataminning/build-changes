@@ -1,38 +1,32 @@
-public class ggw extends gfy {
-   private final ghd a;
-   private final ghd b;
+public class ggw extends gfd<hdi> {
+   private static final String a = "main";
+   private final gig b;
 
-   public ggw(ghd $$0) {
+   public ggw(gig $$0) {
       super($$0);
-      this.a = $$0.b("head");
-      this.b = this.a.b("jaw");
+      this.b = $$0.b("main");
    }
 
-   public static ghj a() {
-      ghl $$0 = new ghl();
-      ghn $$1 = $$0.a();
-      float $$2 = -16.0F;
-      ghn $$3 = $$1.a(
-         "head",
-         ghi.c()
-            .a("upper_lip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
-            .a("upper_head", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
-            .a(true)
-            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
-            .a(false)
-            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
-            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
-         ghf.a(0.0F, -7.986666F, 0.0F).b(0.75F)
+   public static gim a() {
+      gio $$0 = new gio();
+      giq $$1 = $$0.a();
+      $$1.a(
+         "main",
+         gil.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
+            .a(0, 10)
+            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
+            .a(20, 0)
+            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
+         gii.a
       );
-      $$3.a("jaw", ghi.c().a(176, 65).a("jaw", -6.0F, 0.0F, -16.0F, 12.0F, 4.0F, 16.0F), ghf.a(0.0F, 4.0F, -8.0F));
-      return ghj.a($$0, 256, 256);
+      return gim.a($$0, 64, 32);
    }
 
-   @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.b.e = (float)(Math.sin((double)($$0 * (float) Math.PI * 0.2F)) + 1.0) * 0.2F;
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   public void a(hdi $$0) {
+      super.a($$0);
+      this.b.f = $$0.b * (float) (Math.PI / 180.0);
+      this.b.e = $$0.a * (float) (Math.PI / 180.0);
    }
 }

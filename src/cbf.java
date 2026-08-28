@@ -1,42 +1,50 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class cbf {
-   private static final int a = 60;
+   private static final int a = 200;
 
-   public static byj<bwz> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return cbv.a(
-         (Function<cbv.b<bwz>, ? extends App<cbv.c<bwz>, cby<bwz>>>)($$3 -> $$3.group($$3.c(cft.p), $$3.c(cft.n), $$3.a(cft.o))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if (!$$5x.b_($$6.dv()).a(axf.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     } else {
-                        jj $$8 = $$6.dv();
-                        jj.a $$9 = new jj.a();
-                        fcz $$10 = fcz.a($$6);
+   public static <E extends bxb> byr<E> a(cbf.b<E> $$0) {
+      return a(($$0x, $$1) -> false, $$0, true);
+   }
 
-                        for (jj $$11 : jj.a($$8, $$0, $$0, $$0)) {
-                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
-                              dym $$12 = $$5x.a_($$11);
-                              dym $$13 = $$5x.a_($$9.a($$11, jo.a));
-                              if (!$$12.a(dkw.J) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.c($$5x, $$9, jo.b)) {
-                                 jj $$14 = $$11.j();
-                                 $$5.a(new byl($$14));
-                                 $$4.a(new cfw(new byl($$14), $$1, 1));
-                                 break;
-                              }
-                           }
-                        }
+   public static <E extends bxb> byr<E> a(cbf.a $$0) {
+      return a($$0, ($$0x, $$1, $$2) -> {
+      }, true);
+   }
 
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     }
-                  }))
+   public static <E extends bxb> byr<E> a() {
+      return a(($$0, $$1) -> false, ($$0, $$1, $$2) -> {
+      }, true);
+   }
+
+   public static <E extends bxb> byr<E> a(cbf.a $$0, cbf.b<E> $$1, boolean $$2) {
+      return ccd.a(
+         (Function<ccd.b<E>, ? extends App<ccd.c<E>, ccg<E>>>)($$3 -> $$3.group($$3.b(cgb.p), $$3.a(cgb.F)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  bwz $$9 = $$3.b($$4);
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bK() && $$9.dV() == $$7.dV() && !$$0.test($$6, $$9)) {
+                     return true;
+                  } else {
+                     $$1.accept($$6, (E)$$7, $$9);
+                     $$4.b();
+                     return true;
+                  }
+               }))
       );
+   }
+
+   private static boolean a(bwz $$0, Optional<Long> $$1) {
+      return $$1.isPresent() && $$0.dV().ae() - $$1.get() > 200L;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      boolean test(aro var1, bwz var2);
+   }
+
+   @FunctionalInterface
+   public interface b<E> {
+      void accept(aro var1, E var2, bwz var3);
    }
 }

@@ -1,26 +1,44 @@
-import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dad {
-   public static final dab a = a().a();
-   public static final dab b = b().a();
-   public static final dab c = b().a(2.0F).a(awk.nb).a(new dbk(buy.s)).a();
-   public static final dab d = b().b(awk.sZ).a();
-   public static final dab e = a().a(0.8F).a();
-   public static final dab f = a().a(new dbg(new buw(buy.q, 600, 0), 0.3F)).a();
-   public static final dab g = a().a(new dbg(List.of(new buw(buy.j, 400, 1), new buw(buy.k, 6000, 0), new buw(buy.l, 6000, 0), new buw(buy.v, 2400, 3)))).a();
-   public static final dab h = a().a(new dbg(List.of(new buw(buy.j, 100, 1), new buw(buy.v, 2400, 0)))).a();
-   public static final dab i = a().a(new dbg(new buw(buy.s, 100, 0), 0.6F)).a();
-   public static final dab j = a().a(new dbg(List.of(new buw(buy.s, 1200, 1), new buw(buy.q, 300, 2), new buw(buy.i, 300, 0)))).a();
-   public static final dab k = a().a(new dbg(new buw(buy.q, 600, 0), 0.8F)).a();
-   public static final dab l = a().a(new dbg(new buw(buy.s, 100, 0))).a();
-   public static final dab m = b().a(dbh.a).a();
-   public static final dab n = a().a(new dbl()).a();
+public class dad extends cxa {
+   protected final dlu a;
+   private final ja b;
 
-   public static dab.a a() {
-      return dab.b().a(1.6F).a(cya.b).a(awk.kD).a(true);
+   public dad(dlu $$0, dlu $$1, ja $$2, cyo.a $$3) {
+      super($$0, $$3);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public static dab.a b() {
-      return dab.b().a(1.6F).a(cya.c).a(awk.kC).a(false);
+   protected boolean a(dis $$0, dzo $$1, iu $$2) {
+      return $$1.a($$0, $$2);
+   }
+
+   @Nullable
+   @Override
+   protected dzo c(dcl $$0) {
+      dzo $$1 = this.a.a($$0);
+      dzo $$2 = null;
+      dis $$3 = $$0.q();
+      iu $$4 = $$0.a();
+
+      for (ja $$5 : $$0.f()) {
+         if ($$5 != this.b.g()) {
+            dzo $$6 = $$5 == this.b ? this.c().a($$0) : $$1;
+            if ($$6 != null && this.a($$3, $$6, $$4)) {
+               $$2 = $$6;
+               break;
+            }
+         }
+      }
+
+      return $$2 != null && $$3.a($$2, $$4, feb.a()) ? $$2 : null;
+   }
+
+   @Override
+   public void a(Map<dlu, cyo> $$0, cyo $$1) {
+      super.a($$0, $$1);
+      $$0.put(this.a, $$1);
    }
 }

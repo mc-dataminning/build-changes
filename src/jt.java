@@ -1,31 +1,19 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
 
-public interface jt<T> {
-   Optional<js.c<T>> a(alc<T> var1);
-
-   default js.c<T> b(alc<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
+public class jt {
+   public static <E> Codec<ji<E>> a(ald<? extends jr<E>> $$0, Codec<E> $$1) {
+      return a($$0, $$1, false);
    }
 
-   Optional<jw.c<T>> a(axp<T> var1);
-
-   default jw.c<T> b(axp<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
+   public static <E> Codec<ji<E>> a(ald<? extends jr<E>> $$0, Codec<E> $$1, boolean $$2) {
+      return aky.a($$0, ala.a($$0, $$1), $$2);
    }
 
-   public interface a {
-      <T> Optional<? extends jt<T>> a(alc<? extends kf<? extends T>> var1);
+   public static <E> Codec<ji<E>> a(ald<? extends jr<E>> $$0) {
+      return a($$0, false);
+   }
 
-      default <T> jt<T> b(alc<? extends kf<? extends T>> $$0) {
-         return (jt<T>)this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
-      }
-
-      default <T> Optional<js.c<T>> c(alc<T> $$0) {
-         return this.a($$0.c()).flatMap($$1 -> $$1.a($$0));
-      }
-
-      default <T> js.c<T> d(alc<T> $$0) {
-         return this.a($$0.c()).flatMap($$1 -> $$1.a($$0)).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
-      }
+   public static <E> Codec<ji<E>> a(ald<? extends jr<E>> $$0, boolean $$1) {
+      return aky.a($$0, alb.a($$0), $$1);
    }
 }

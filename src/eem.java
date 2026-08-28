@@ -1,82 +1,70 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
 
-public class eem implements eea {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final een i = new een(this);
+public class eem implements ees {
+   public static final MapCodec<eem> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(jy.a.fieldOf("source_entity").forGetter(eem::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
+            .apply($$0, ($$0x, $$1) -> new eem(Either.right(Either.left($$0x)), $$1))
+   );
+   public static final yu<ByteBuf, eem> b = yu.a(ys.h, eem::c, ys.l, $$0 -> $$0.f, ($$0, $$1) -> new eem(Either.right(Either.right($$0)), $$1));
+   private Either<bwa, Either<UUID, Integer>> e;
+   private final float f;
 
-   public eem(long $$0) {
-      this.b($$0);
+   public eem(bwa $$0, float $$1) {
+      this(Either.left($$0), $$1);
+   }
+
+   private eem(Either<bwa, Either<UUID, Integer>> $$0, float $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public azs d() {
-      return new eem(this.g());
-   }
-
-   @Override
-   public eey e() {
-      return new eem.a(this.g());
-   }
-
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw baj.a("LegacyRandomSource", null);
-      } else {
-         this.i.a();
+   public Optional<fdw> a(dip $$0) {
+      if (this.e.left().isEmpty()) {
+         this.b($$0);
       }
+
+      return this.e.left().map($$0x -> $$0x.dt().b(0.0, (double)this.f, 0.0));
+   }
+
+   private void b(dip $$0) {
+      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((bwa)$$1.map($$1x -> $$0 instanceof aro $$2 ? $$2.b($$1x) : null, $$0::a))))
+         .ifPresent($$0x -> this.e = Either.left($$0x));
+   }
+
+   private UUID b() {
+      return (UUID)this.e.map(bwa::cG, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+            throw new RuntimeException("Unable to get entityId from uuid");
+         }));
+   }
+
+   private int c() {
+      return (Integer)this.e.map(bwa::ar, $$0 -> (Integer)$$0.map($$0x -> {
+            throw new IllegalStateException("Unable to get entityId from uuid");
+         }, Function.identity()));
    }
 
    @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw baj.a("LegacyRandomSource", null);
-      } else {
-         return (int)($$2 >> 48 - $$0);
-      }
+   public eet<eem> a() {
+      return eet.b;
    }
 
-   @Override
-   public double k() {
-      return this.i.b();
-   }
-
-   public static class a implements eey {
-      private final long a;
-
-      public a(long $$0) {
-         this.a = $$0;
+   public static class a implements eet<eem> {
+      @Override
+      public MapCodec<eem> a() {
+         return eem.a;
       }
 
       @Override
-      public azs a(int $$0, int $$1, int $$2) {
-         long $$3 = azk.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new eem($$4);
-      }
-
-      @Override
-      public azs a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new eem((long)$$1 ^ this.a);
-      }
-
-      @Override
-      public azs a(long $$0) {
-         return new eem($$0);
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      public yu<ByteBuf, eem> b() {
+         return eem.b;
       }
    }
 }

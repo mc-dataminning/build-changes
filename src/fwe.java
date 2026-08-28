@@ -1,132 +1,226 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.time.Instant;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.StringUtils;
 
-public class fwe extends fwf {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 25;
-   private static final wv c = wv.c("recover_world.title").a(n.r);
-   private static final wv d = wv.c("recover_world.bug_tracker");
-   private static final wv s = wv.c("recover_world.restore");
-   private static final wv u = wv.c("recover_world.no_fallback");
-   private static final wv v = wv.c("recover_world.done.title");
-   private static final wv w = wv.c("recover_world.done.success");
-   private static final wv x = wv.c("recover_world.done.failed");
-   private static final wv y = wv.c("recover_world.issue.none").a(n.k);
-   private static final wv z = wv.c("recover_world.issue.missing_file").a(n.m);
-   private final BooleanConsumer A;
-   private final fuf B = fuf.d().a(8);
-   private final wv C;
-   private final frh D;
-   private final frh E;
-   private final ewz.c F;
+public class fwe extends fxi {
+   public static final double a = 7.0;
+   private static final ww c = ww.c("chat_screen.usage");
+   private static final int d = 210;
+   private String s = "";
+   private int u = -1;
+   protected frz b;
+   private String v;
+   frt w;
 
-   public fwe(fnd $$0, BooleanConsumer $$1, ewz.c $$2) {
-      super(c);
-      this.A = $$1;
-      this.C = wv.a("recover_world.message", wv.b($$2.f()).a(n.h));
-      this.D = new frh(this.C, $$0.h);
-      this.F = $$2;
-      Exception $$3 = this.a($$2, false);
-      Exception $$4 = this.a($$2, true);
-      wv $$5 = wv.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
-      this.E = new frh($$5, $$0.h);
-      boolean $$6 = $$3 != null && $$4 == null;
-      this.B.c().b();
-      this.B.a(new fru(this.l, $$0.h));
-      this.B.a(this.D.b(true));
-      this.B.a(this.E);
-      fuf $$7 = fuf.e().a(5);
-      $$7.a(fqn.a(d, fvc.b(this, ayf.j)).b(120, 20).a());
-      $$7.a(fqn.a(s, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : fry.a(u)).a()).j = $$6;
-      this.B.a($$7);
-      this.B.a(fqn.a(wu.k, $$0x -> this.aK_()).b(120, 20).a());
-      this.B.a(this::c);
-   }
-
-   private void a(fnd $$0) {
-      Exception $$1 = this.a(this.F, false);
-      Exception $$2 = this.a(this.F, true);
-      if ($$1 != null && $$2 == null) {
-         $$0.d(new fvq(wv.c("recover_world.restoring")));
-         gbj.a(this.F);
-         if (this.F.n()) {
-            $$0.a(new fvd(this.A, v, w, wu.j, wu.k));
-         } else {
-            $$0.a(new fuy(() -> this.A.accept(false), v, x));
-         }
-      } else {
-         a.error(
-            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
-            $$1 != null ? $$1.getMessage() : "no issues",
-            $$2 != null ? $$2.getMessage() : "no issues"
-         );
-         $$0.a(new fuy(() -> this.A.accept(false), v, x));
-      }
-   }
-
-   private wv a(ewz.c $$0, boolean $$1, @Nullable Exception $$2) {
-      if ($$1 && $$2 instanceof FileNotFoundException) {
-         return wv.i();
-      } else {
-         xj $$3 = wv.i();
-         Instant $$4 = $$0.a($$1);
-         xj $$5 = $$4 != null ? wv.b(gbu.a.format($$4)) : wv.c("recover_world.state_entry.unknown");
-         $$3.b(wv.a("recover_world.state_entry", $$5.a(n.h)));
-         if ($$2 == null) {
-            $$3.b(y);
-         } else if ($$2 instanceof FileNotFoundException) {
-            $$3.b(z);
-         } else if ($$2 instanceof un) {
-            $$3.b(wv.b($$2.getCause().toString()).a(n.m));
-         } else {
-            $$3.b(wv.b($$2.toString()).a(n.m));
-         }
-
-         return $$3;
-      }
-   }
-
-   @Nullable
-   private Exception a(ewz.c $$0, boolean $$1) {
-      try {
-         if (!$$1) {
-            $$0.a($$0.h());
-         } else {
-            $$0.a($$0.i());
-         }
-
-         return null;
-      } catch (uh | un | IOException var4) {
-         return var4;
-      }
+   public fwe(String $$0) {
+      super(ww.c("chat_screen.title"));
+      this.v = $$0;
    }
 
    @Override
    protected void aN_() {
-      super.aN_();
-      this.c();
+      this.u = this.m.m.d().c().size();
+      this.b = new frz(this.m.i, 4, this.o - 12, this.n - 4, 12, ww.c("chat.editBox")) {
+         @Override
+         protected xk d() {
+            return super.d().b(fwe.this.w.e());
+         }
+      };
+      this.b.f(256);
+      this.b.d(false);
+      this.b.a(this.v);
+      this.b.b(this::b);
+      this.b.f(false);
+      this.d(this.b);
+      this.w = new frt(this.m, this, this.b, this.p, false, false, 1, 10, true, -805306368);
+      this.w.b(false);
+      this.w.d();
    }
 
    @Override
-   protected void c() {
-      this.E.d(this.n - 50);
-      this.D.d(this.n - 50);
-      this.B.a();
-      ftz.a(this.B, this.J());
+   protected void aB_() {
+      this.b(this.b);
    }
 
    @Override
-   public wv i() {
-      return wu.a(super.i(), this.C);
+   public void a(fof $$0, int $$1, int $$2) {
+      String $$3 = this.b.a();
+      this.b($$0, $$1, $$2);
+      this.c($$3);
+      this.w.d();
    }
 
    @Override
-   public void aK_() {
-      this.A.accept(false);
+   public void aE_() {
+      this.m.m.d().d();
+   }
+
+   private void b(String $$0) {
+      String $$1 = this.b.a();
+      this.w.a(!$$1.equals(this.v));
+      this.w.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.w.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 == 256) {
+         this.m.a(null);
+         return true;
+      } else if ($$0 == 257 || $$0 == 335) {
+         this.b(this.b.a(), true);
+         this.m.a(null);
+         return true;
+      } else if ($$0 == 265) {
+         this.a(-1);
+         return true;
+      } else if ($$0 == 264) {
+         this.a(1);
+         return true;
+      } else if ($$0 == 266) {
+         this.m.m.d().a(this.m.m.d().j() - 1);
+         return true;
+      } else if ($$0 == 267) {
+         this.m.m.d().a(-this.m.m.d().j() + 1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      $$3 = azk.a($$3, -1.0, 1.0);
+      if (this.w.a($$3)) {
+         return true;
+      } else {
+         if (!t()) {
+            $$3 *= 7.0;
+         }
+
+         this.m.m.d().a((int)$$3);
+         return true;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.w.a((double)((int)$$0), (double)((int)$$1), $$2)) {
+         return true;
+      } else {
+         if ($$2 == 0) {
+            frr $$3 = this.m.m.d();
+            if ($$3.a($$0, $$1)) {
+               return true;
+            }
+
+            xt $$4 = this.b($$0, $$1);
+            if ($$4 != null && this.a($$4)) {
+               this.v = this.b.a();
+               return true;
+            }
+         }
+
+         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected void a_(String $$0, boolean $$1) {
+      if ($$1) {
+         this.b.a($$0);
+      } else {
+         this.b.b($$0);
+      }
+   }
+
+   public void a(int $$0) {
+      int $$1 = this.u + $$0;
+      int $$2 = this.m.m.d().c().size();
+      $$1 = azk.a($$1, 0, $$2);
+      if ($$1 != this.u) {
+         if ($$1 == $$2) {
+            this.u = $$2;
+            this.b.a(this.s);
+         } else {
+            if (this.u == $$2) {
+               this.s = this.b.a();
+            }
+
+            this.b.a(this.m.m.d().c().get($$1));
+            this.w.a(false);
+            this.u = $$1;
+         }
+      }
+   }
+
+   @Override
+   public void a(frc $$0, int $$1, int $$2, float $$3) {
+      this.m.m.d().a($$0, this.m.m.e(), $$1, $$2, true);
+      $$0.a(2, this.o - 14, this.n - 2, this.o - 2, this.m.n.a(Integer.MIN_VALUE));
+      this.b.a($$0, $$1, $$2, $$3);
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 200.0F);
+      this.w.a($$0, $$1, $$2);
+      $$0.c().b();
+      fnz $$4 = this.m.m.d().c((double)$$1, (double)$$2);
+      if ($$4 != null && $$4.g() != null) {
+         $$0.b(this.p, this.p.c($$4.g(), 210), $$1, $$2);
+      } else {
+         xt $$5 = this.b((double)$$1, (double)$$2);
+         if ($$5 != null && $$5.j() != null) {
+            $$0.a(this.p, $$5, $$1, $$2);
+         }
+      }
+   }
+
+   @Override
+   public void b(frc $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   private void c(String $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   protected void a(fvn $$0) {
+      $$0.a(fvm.a, this.n());
+      $$0.a(fvm.d, c);
+      String $$1 = this.b.a();
+      if (!$$1.isEmpty()) {
+         $$0.a().a(fvm.a, ww.a("chat_screen.message", $$1));
+      }
+   }
+
+   @Nullable
+   private xt b(double $$0, double $$1) {
+      return this.m.m.d().b($$0, $$1);
+   }
+
+   public void b(String $$0, boolean $$1) {
+      $$0 = this.a($$0);
+      if (!$$0.isEmpty()) {
+         if ($$1) {
+            this.m.m.d().a($$0);
+         }
+
+         if ($$0.startsWith("/")) {
+            this.m.t.j.c($$0.substring(1));
+         } else {
+            this.m.t.j.b($$0);
+         }
+      }
+   }
+
+   public String a(String $$0) {
+      return baj.e(StringUtils.normalizeSpace($$0.trim()));
    }
 }

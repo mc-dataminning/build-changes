@@ -1,4 +1,60 @@
-@FunctionalInterface
-public interface hx<T> {
-   void execute(hy<T> var1, ia var2);
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
+
+class hx<T extends ek<T>> {
+   @Nullable
+   private List<hn<T>> a = new ArrayList<>();
+   @Nullable
+   private List<hz.a<T>> b;
+   private final List<String> c = new ArrayList<>();
+
+   public void a(hn<T> $$0) {
+      if (this.b != null) {
+         this.b.add(new hz.c<>($$0));
+      } else {
+         this.a.add($$0);
+      }
+   }
+
+   private int a(String $$0) {
+      int $$1 = this.c.indexOf($$0);
+      if ($$1 == -1) {
+         $$1 = this.c.size();
+         this.c.add($$0);
+      }
+
+      return $$1;
+   }
+
+   private IntList a(List<String> $$0) {
+      IntArrayList $$1 = new IntArrayList($$0.size());
+
+      for (String $$2 : $$0) {
+         $$1.add(this.a($$2));
+      }
+
+      return $$1;
+   }
+
+   public void a(String $$0, int $$1, T $$2) {
+      ib $$3 = ib.a($$0, $$1);
+      if (this.a != null) {
+         this.b = new ArrayList<>(this.a.size() + 1);
+
+         for (hn<T> $$4 : this.a) {
+            this.b.add(new hz.c<>($$4));
+         }
+
+         this.a = null;
+      }
+
+      this.b.add(new hz.b<>($$3, this.a($$3.b()), $$2));
+   }
+
+   public hw<T> a(ale $$0) {
+      return (hw<T>)(this.b != null ? new hz<>($$0, this.b, this.c) : new ia<>($$0, this.a));
+   }
 }

@@ -1,81 +1,101 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class byq<E extends bwt & cmw, T extends bwr> extends byi<E> {
-   private static final int c = 1200;
-   private int d;
-   private byq.a e = byq.a.a;
+public abstract class byq<E extends bwz> implements byr<E> {
+   public static final int a = 60;
+   protected final Map<cgb<?>, cgc> b;
+   private byq.a c = byq.a.a;
+   private long d;
+   private final int e;
+   private final int f;
 
-   public byq() {
-      super(ImmutableMap.of(cft.o, cfu.c, cft.p, cfu.a), 1200);
+   public byq(Map<cgb<?>, cgc> $$0) {
+      this($$0, 60);
    }
 
-   protected boolean a(arn $$0, E $$1) {
-      bwr $$2 = b($$1);
-      return $$1.b(cyc.wZ) && byk.b($$1, $$2) && byk.a($$1, $$2, 0);
+   public byq(Map<cgb<?>, cgc> $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   protected boolean a(arn $$0, E $$1, long $$2) {
-      return $$1.eb().a(cft.p) && this.a($$0, $$1);
+   public byq(Map<cgb<?>, cgc> $$0, int $$1, int $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.b = $$0;
    }
 
-   protected void b(arn $$0, E $$1, long $$2) {
-      bwr $$3 = b($$1);
-      this.b($$1, $$3);
-      this.a($$1, $$3);
+   @Override
+   public byq.a a() {
+      return this.c;
    }
 
-   protected void c(arn $$0, E $$1, long $$2) {
-      if ($$1.fy()) {
-         $$1.fE();
-      }
-
-      if ($$1.b(cyc.wZ)) {
-         $$1.b(false);
-         $$1.fA().b(kx.P, daa.a);
-      }
-   }
-
-   private void a(E $$0, bwr $$1) {
-      if (this.e == byq.a.a) {
-         $$0.c(crd.a($$0, cyc.wZ));
-         this.e = byq.a.b;
-         $$0.b(true);
-      } else if (this.e == byq.a.b) {
-         if (!$$0.fy()) {
-            this.e = byq.a.a;
-         }
-
-         int $$2 = $$0.fC();
-         cxy $$3 = $$0.fA();
-         if ($$2 >= cwq.b($$3, $$0)) {
-            $$0.fD();
-            this.e = byq.a.c;
-            this.d = 20 + $$0.dY().a(20);
-            $$0.b(false);
-         }
-      } else if (this.e == byq.a.c) {
-         this.d--;
-         if (this.d == 0) {
-            this.e = byq.a.d;
-         }
-      } else if (this.e == byq.a.d) {
-         $$0.a($$1, 1.0F);
-         this.e = byq.a.a;
+   @Override
+   public final boolean e(aro $$0, E $$1, long $$2) {
+      if (this.a($$1) && this.a($$0, $$1)) {
+         this.c = byq.a.b;
+         int $$3 = this.e + $$0.C_().a(this.f + 1 - this.e);
+         this.d = $$2 + (long)$$3;
+         this.d($$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
       }
    }
 
-   private void b(bwt $$0, bwr $$1) {
-      $$0.eb().a(cft.o, new byt($$1, true));
+   protected void d(aro $$0, E $$1, long $$2) {
    }
 
-   private static bwr b(bwr $$0) {
-      return $$0.eb().c(cft.p).get();
+   @Override
+   public final void f(aro $$0, E $$1, long $$2) {
+      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.g($$0, $$1, $$2);
+      }
    }
 
-   static enum a {
+   protected void c(aro $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void g(aro $$0, E $$1, long $$2) {
+      this.c = byq.a.a;
+      this.b($$0, $$1, $$2);
+   }
+
+   protected void b(aro $$0, E $$1, long $$2) {
+   }
+
+   protected boolean a(aro $$0, E $$1, long $$2) {
+      return false;
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 > this.d;
+   }
+
+   protected boolean a(aro $$0, E $$1) {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   protected boolean a(E $$0) {
+      for (Entry<cgb<?>, cgc> $$1 : this.b.entrySet()) {
+         cgb<?> $$2 = $$1.getKey();
+         cgc $$3 = $$1.getValue();
+         if (!$$0.eb().a($$2, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static enum a {
       a,
-      b,
-      c,
-      d;
+      b;
    }
 }

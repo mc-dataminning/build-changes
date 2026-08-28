@@ -1,36 +1,23 @@
-public final class hgh {
-   private static final int a = 16;
-   private static final int b = 16;
-   private static final String c = "missingno";
-   private static final ald d = ald.b("missingno");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   public static fgo a() {
-      return a(16, 16);
+public record hgh() implements hgp<ald<dip>> {
+   public static final Codec<ald<dip>> a = ald.a(mg.bm);
+   public static final hgp.a<hgh, ald<dip>> b = hgp.a.a(MapCodec.unit(new hgh()), a);
+
+   @Nullable
+   public ald<dip> a(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3, cyq $$4) {
+      return $$1 != null ? $$1.aj() : null;
    }
 
-   public static fgo a(int $$0, int $$1) {
-      fgo $$2 = new fgo($$0, $$1, false);
-      int $$3 = -524040;
-
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            if ($$4 < $$1 / 2 ^ $$5 < $$0 / 2) {
-               $$2.a($$5, $$4, -524040);
-            } else {
-               $$2.a($$5, $$4, -16777216);
-            }
-         }
-      }
-
-      return $$2;
+   @Override
+   public hgp.a<hgh, ald<dip>> a() {
+      return b;
    }
 
-   public static hgm b() {
-      fgo $$0 = a(16, 16);
-      return new hgm(d, new hig(16, 16), $$0, avc.a);
-   }
-
-   public static ald c() {
-      return d;
+   @Override
+   public Codec<ald<dip>> b() {
+      return a;
    }
 }

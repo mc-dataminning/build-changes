@@ -1,71 +1,97 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmg extends dnr {
-   public static final MapCodec<dmg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(md.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), t()).apply($$0, dmg::new)
-   );
-   private final dku b;
+public class dmg extends dlu {
+   public static final MapCodec<dmg> a = b(dmg::new);
+   public static final eao b = eae.az;
+   public static final int c = 15;
+   private static final feq d = dlu.b(14.0, 0.0, 16.0);
+   private static final feq e = dlu.b(14.0, 0.0, 15.0);
 
    @Override
    public MapCodec<dmg> a() {
       return a;
    }
 
-   public dmg(dku $$0, dyl.d $$1) {
-      super($$1);
-      this.b = $$0;
+   protected dmg(dzn.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   public void a(dhp $$0, jj $$1, dym $$2, dym $$3, cmm $$4) {
-      if (a($$0, $$1, $$3)) {
-         $$0.a($$1, this.b.m(), 3);
+   protected void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
    @Override
-   public dym a(dbn $$0) {
-      dgv $$1 = $$0.q();
-      jj $$2 = $$0.a();
-      dym $$3 = $$1.a_($$2);
-      return a($$1, $$2, $$3) ? this.b.m() : super.a($$0);
-   }
+   protected void b(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      iu $$4 = $$2.d();
+      if ($$1.v($$4)) {
+         int $$5 = 1;
 
-   private static boolean a(dgv $$0, jj $$1, dym $$2) {
-      return o($$2) || a($$0, $$1);
-   }
+         while ($$1.a_($$2.c($$5)).a(this)) {
+            $$5++;
+         }
 
-   private static boolean a(dgv $$0, jj $$1) {
-      boolean $$2 = false;
-      jj.a $$3 = $$1.k();
-
-      for (jo $$4 : jo.values()) {
-         dym $$5 = $$0.a_($$3);
-         if ($$4 != jo.a || o($$5)) {
-            $$3.a($$1, $$4);
-            $$5 = $$0.a_($$3);
-            if (o($$5) && !$$5.c($$0, $$1, $$4.g())) {
-               $$2 = true;
-               break;
+         if ($$5 < 3) {
+            int $$6 = $$0.c(b);
+            if ($$6 == 15) {
+               $$1.b($$4, this.m());
+               dzo $$7 = $$0.b(b, Integer.valueOf(0));
+               $$1.a($$2, $$7, 260);
+               $$1.a($$7, $$4, this, null, false);
+            } else {
+               $$1.a($$2, $$0.b(b, Integer.valueOf($$6 + 1)), 260);
             }
          }
       }
-
-      return $$2;
-   }
-
-   private static boolean o(dym $$0) {
-      return $$0.y().a(axf.a);
    }
 
    @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      return a($$1, $$3) ? this.b.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected feq b(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return e;
    }
 
    @Override
-   public int b(dym $$0, dgv $$1, jj $$2) {
-      return $$0.a($$1, $$2).ak;
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return d;
+   }
+
+   @Override
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      if (!$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(dzo $$0, dis $$1, iu $$2) {
+      for (ja $$3 : ja.c.a) {
+         dzo $$4 = $$1.a_($$2.a($$3));
+         if ($$4.e() || $$1.b_($$2.a($$3)).a(axf.b)) {
+            return false;
+         }
+      }
+
+      dzo $$5 = $$1.a_($$2.e());
+      return ($$5.a(dlw.ed) || $$5.a(axa.J)) && !$$1.a_($$2.d()).n();
+   }
+
+   @Override
+   protected void a(dzo $$0, dip $$1, iu $$2, bwa $$3) {
+      $$3.a($$1.al().k(), 1.0F);
+   }
+
+   @Override
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(dzo $$0, ewk $$1) {
+      return false;
    }
 }

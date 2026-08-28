@@ -1,89 +1,95 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public class cvm extends cuk {
+   private static final ale m = ale.b("container/slot/saddle");
+   private static final ale n = ale.b("container/slot/llama_armor");
+   private static final ale o = ale.b("container/slot/horse_armor");
+   private final btr p;
+   private final ckx q;
+   private static final int r = 0;
+   private static final int s = 1;
+   private static final int t = 2;
 
-public class cvm {
-   private static final List<cvl> b = af.a(new ArrayList<>(), $$0 -> {
-      a($$0, "contents", 0);
-      a($$0, "container.", 0, 54);
-      a($$0, "hotbar.", 0, 9);
-      a($$0, "inventory.", 9, 27);
-      a($$0, "enderchest.", 200, 27);
-      a($$0, "villager.", 300, 8);
-      a($$0, "horse.", 500, 15);
-      int $$1 = bwc.a.a(98);
-      int $$2 = bwc.b.a(98);
-      a($$0, "weapon", $$1);
-      a($$0, "weapon.mainhand", $$1);
-      a($$0, "weapon.offhand", $$2);
-      a($$0, "weapon.*", $$1, $$2);
-      $$1 = bwc.f.a(100);
-      $$2 = bwc.e.a(100);
-      int $$5 = bwc.d.a(100);
-      int $$6 = bwc.c.a(100);
-      int $$7 = bwc.g.a(105);
-      a($$0, "armor.head", $$1);
-      a($$0, "armor.chest", $$2);
-      a($$0, "armor.legs", $$5);
-      a($$0, "armor.feet", $$6);
-      a($$0, "armor.body", $$7);
-      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
-      a($$0, "saddle", bwc.h.a(106));
-      a($$0, "horse.chest", 499);
-      a($$0, "player.cursor", 499);
-      a($$0, "player.crafting.", 500, 4);
-   });
-   public static final Codec<cvl> a = bag.b(() -> b.toArray(new cvl[0]));
-   private static final Function<String, cvl> c = bag.a(b.toArray(new cvl[0]), $$0 -> $$0);
-
-   private static cvl a(String $$0, int $$1) {
-      return cvl.a($$0, IntLists.singleton($$1));
-   }
-
-   private static cvl a(String $$0, IntList $$1) {
-      return cvl.a($$0, IntLists.unmodifiable($$1));
-   }
-
-   private static cvl a(String $$0, int... $$1) {
-      return cvl.a($$0, IntList.of($$1));
-   }
-
-   private static void a(List<cvl> $$0, String $$1, int $$2) {
-      $$0.add(a($$1, $$2));
-   }
-
-   private static void a(List<cvl> $$0, String $$1, int $$2, int $$3) {
-      IntList $$4 = new IntArrayList($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         int $$6 = $$2 + $$5;
-         $$0.add(a($$1 + $$5, $$6));
-         $$4.add($$6);
+   public cvm(int $$0, cqr $$1, btr $$2, final ckx $$3, int $$4) {
+      super(null, $$0);
+      this.p = $$2;
+      this.q = $$3;
+      $$2.c_($$1.k);
+      btr $$5 = $$3.h(bwk.h);
+      this.a(new cuo($$5, $$3, bwk.h, 0, 8, 18, m));
+      ale $$6 = $$3 instanceof cla ? n : o;
+      btr $$7 = $$3.h(bwk.g);
+      this.a(new cuo($$7, $$3, bwk.g, 0, 8, 36, $$6) {
+         @Override
+         public boolean b() {
+            return $$3.e(bwk.g) && $$3.aq().a(axd.K);
+         }
+      });
+      if ($$4 > 0) {
+         for (int $$8 = 0; $$8 < 3; $$8++) {
+            for (int $$9 = 0; $$9 < $$4; $$9++) {
+               this.a(new cwh($$2, $$9 + $$8 * $$4, 80 + $$9 * 18, 18 + $$8 * 18));
+            }
+         }
       }
 
-      $$0.add(a($$1 + "*", $$4));
+      this.c($$1, 8, 84);
    }
 
-   private static void a(List<cvl> $$0, String $$1, int... $$2) {
-      $$0.add(a($$1, $$2));
+   @Override
+   public boolean b(cqs $$0) {
+      return !this.q.a(this.p) && this.p.a($$0) && this.q.bK() && $$0.b(this.q, 4.0);
    }
 
-   @Nullable
-   public static cvl a(String $$0) {
-      return c.apply($$0);
+   @Override
+   public cys b(cqs $$0, int $$1) {
+      cys $$2 = cys.k;
+      cwh $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cys $$4 = $$3.g();
+         $$2 = $$4.v();
+         int $$5 = 2 + this.p.b();
+         if ($$1 < $$5) {
+            if (!this.a($$4, $$5, this.k.size(), true)) {
+               return cys.k;
+            }
+         } else if (this.b(1).a($$4) && !this.b(1).h()) {
+            if (!this.a($$4, 1, 2, false)) {
+               return cys.k;
+            }
+         } else if (this.b(0).a($$4) && !this.b(0).h()) {
+            if (!this.a($$4, 0, 1, false)) {
+               return cys.k;
+            }
+         } else if (this.p.b() == 0 || !this.a($$4, 2, $$5, false)) {
+            int $$6 = $$5 + 27;
+            int $$8 = $$6 + 9;
+            if ($$1 >= $$6 && $$1 < $$8) {
+               if (!this.a($$4, $$5, $$6, false)) {
+                  return cys.k;
+               }
+            } else if ($$1 >= $$5 && $$1 < $$6) {
+               if (!this.a($$4, $$6, $$8, false)) {
+                  return cys.k;
+               }
+            } else if (!this.a($$4, $$6, $$6, false)) {
+               return cys.k;
+            }
+
+            return cys.k;
+         }
+
+         if ($$4.f()) {
+            $$3.e(cys.k);
+         } else {
+            $$3.d();
+         }
+      }
+
+      return $$2;
    }
 
-   public static Stream<String> a() {
-      return b.stream().map(bag::c);
-   }
-
-   public static Stream<String> b() {
-      return b.stream().filter($$0 -> $$0.b() == 1).map(bag::c);
+   @Override
+   public void a(cqs $$0) {
+      super.a($$0);
+      this.p.c($$0);
    }
 }

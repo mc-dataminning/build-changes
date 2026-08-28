@@ -1,56 +1,24 @@
 import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import java.util.Optional;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class cgq extends cgz<bwt> {
-   private static final int a = 40;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final Long2LongMap d = new Long2LongOpenHashMap();
-   private int e;
-   private long f;
-
-   public cgq() {
-      super(20);
-   }
-
+public class cgq extends cha<coq> {
    @Override
-   public Set<cft<?>> a() {
-      return ImmutableSet.of(cft.x);
+   public Set<cgb<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cgb.C)));
    }
 
-   protected void a(arn $$0, bwt $$1) {
-      if ($$1.n_()) {
-         this.e = 0;
-         this.f = $$0.ae() + (long)$$0.C_().a(20);
-         cht $$2 = $$0.A();
-         Predicate<jj> $$3 = $$0x -> {
-            long $$1x = $$0x.a();
-            if (this.d.containsKey($$1x)) {
-               return false;
-            } else if (++this.e >= 5) {
-               return false;
-            } else {
-               this.d.put($$1x, this.f + 40L);
-               return true;
-            }
-         };
-         Set<Pair<js<chw>, jj>> $$4 = $$2.b($$0x -> $$0x.a(chx.n), $$3, $$1.dv(), 48, cht.b.c).collect(Collectors.toSet());
-         evh $$5 = byb.a($$1, $$4);
-         if ($$5 != null && $$5.j()) {
-            jj $$6 = $$5.l();
-            Optional<js<chw>> $$7 = $$2.c($$6);
-            if ($$7.isPresent()) {
-               $$1.eb().a(cft.x, $$6);
-            }
-         } else if (this.e < 5) {
-            this.d.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.f);
-         }
-      }
+   protected void a(aro $$0, coq $$1) {
+      super.a($$0, $$1);
+      $$1.eb()
+         .c(cgb.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(bwh.e)
+         .filter($$2 -> chh.c($$0, $$1, $$2))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.eb().a(cgb.C, $$1x), () -> $$1.eb().b(cgb.C));
    }
 }

@@ -1,13 +1,22 @@
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 
-public class bfl extends bgp {
+public class bfl extends DataFix {
    public bfl(Schema $$0) {
-      super($$0, "Remove filtered text from books", $$0x -> $$0x.equals("minecraft:writable_book") || $$0x.equals("minecraft:written_book"));
+      super($$0, true);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return af.a($$0, $$0.getType(), $$0x -> $$0x.remove("filtered_title").remove("filtered_pages"));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bit.w);
+      OpticFinder<?> $$1 = $$0.findField("minecraft:equippable");
+      return this.fixTypeEverywhereTyped(
+         "equippable asset rename fix",
+         $$0,
+         $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.renameField("model", "asset_id")))
+      );
    }
 }

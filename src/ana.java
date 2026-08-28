@@ -1,35 +1,19 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class ana {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.b("Source is not a mob"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wv.b("Path not found"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wv.b("Target not reached"));
+   public static void a(CommandDispatcher<ei> $$0) {
+      LiteralArgumentBuilder<ei> $$1 = (LiteralArgumentBuilder<ei>)ej.a("debugmobspawning").requires($$0x -> $$0x.c(2));
 
-   public static void a(CommandDispatcher<ex> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("debugpath").requires($$0x -> $$0x.c(2)))
-            .then(ey.a("to", gu.a()).executes($$0x -> a((ex)$$0x.getSource(), gu.a($$0x, "to"))))
-      );
+      for (bxc $$2 : bxc.values()) {
+         $$1.then(ej.a($$2.a()).then(ej.a("at", gf.a()).executes($$1x -> a((ei)$$1x.getSource(), $$2, gf.a($$1x, "at")))));
+      }
+
+      $$0.register($$1);
    }
 
-   private static int a(ex $$0, jj $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof bwt $$3)) {
-         throw a.create();
-      } else {
-         cgb $$4 = new cga($$3, $$0.e());
-         evh $$5 = $$4.a($$1, 0);
-         agj.a($$0.e(), $$3, $$5, $$4.p());
-         if ($$5 == null) {
-            throw b.create();
-         } else if (!$$5.j()) {
-            throw c.create();
-         } else {
-            $$0.a(() -> wv.b("Made path"), true);
-            return 1;
-         }
-      }
+   private static int a(ei $$0, bxc $$1, iu $$2) {
+      dja.a($$1, $$0.e(), $$2);
+      return 1;
    }
 }

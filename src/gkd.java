@@ -1,49 +1,85 @@
-public class gkd extends gmh {
-   gkd(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+
+public interface gkd {
+   static gkd a(gkj $$0, UserApiService $$1) {
+      return new gkd.b($$0, $$1);
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k += 0.002;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(jj.a(this.g, this.h, this.i)).a(axf.a)) {
-            this.k();
-         }
+   CompletableFuture<Unit> a(UUID var1, gkl var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
+   }
+
+   public static class a extends xw {
+      public a(ww $$0, Throwable $$1) {
+         super($$0, $$1);
       }
    }
 
-   @Override
-   public gll b() {
-      return gll.b;
-   }
+   public static record b(gkj a, UserApiService b) implements gkd {
+      private static final ww c = ww.c("gui.abuseReport.send.service_unavailable");
+      private static final ww d = ww.c("gui.abuseReport.send.http_error");
+      private static final ww e = ww.c("gui.abuseReport.send.json_error");
 
-   public static class a implements glk<lz> {
-      private final gmc a;
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, gkl $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
 
-      public a(gmc $$0) {
-         this.a = $$0;
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               ww $$5 = this.a(var7);
+               throw new CompletionException(new gkd.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               ww $$7 = this.a(var8);
+               throw new CompletionException(new gkd.a($$7, var8));
+            }
+         }, af.i());
       }
 
-      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gkd $$8 = new gkd($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
+      }
+
+      private ww a(MinecraftClientHttpException $$0) {
+         return ww.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private ww a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new MatchException(null, null);
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public gkj c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
       }
    }
 }

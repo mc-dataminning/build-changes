@@ -1,48 +1,88 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.function.ToIntFunction;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.stream.IntStream;
+import org.slf4j.Logger;
+import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
 
-public class bsc {
-   private bsc() {
-   }
+public class bsc implements brv {
+   private static final Logger a = LogUtils.getLogger();
+   private final Set<brt> b = new ObjectOpenHashSet();
+   private final bsb c = new bsb();
 
-   public static <T> int a(List<T> $$0, ToIntFunction<T> $$1) {
-      long $$2 = 0L;
-
-      for (T $$3 : $$0) {
-         $$2 += (long)$$1.applyAsInt($$3);
-      }
-
-      if ($$2 > 2147483647L) {
-         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
-      } else {
-         return (int)$$2;
-      }
-   }
-
-   public static <T> Optional<T> a(azs $$0, List<T> $$1, int $$2, ToIntFunction<T> $$3) {
-      if ($$2 < 0) {
-         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
-      } else if ($$2 == 0) {
-         return Optional.empty();
-      } else {
-         int $$4 = $$0.a($$2);
-         return a($$1, $$4, $$3);
+   public bsc(LongSupplier $$0, boolean $$1) {
+      this.b.add(a($$0));
+      if ($$1) {
+         this.b.addAll(a());
       }
    }
 
-   public static <T> Optional<T> a(List<T> $$0, int $$1, ToIntFunction<T> $$2) {
-      for (T $$3 : $$0) {
-         $$1 -= $$2.applyAsInt($$3);
-         if ($$1 < 0) {
-            return Optional.of($$3);
+   public static Set<brt> a() {
+      Builder<brt> $$0 = ImmutableSet.builder();
+
+      try {
+         bsc.a $$1 = new bsc.a();
+         IntStream.range(0, $$1.a).mapToObj($$1x -> brt.a("cpu#" + $$1x, brs.h, () -> $$1.a($$1))).forEach($$0::add);
+      } catch (Throwable var2) {
+         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
+      }
+
+      $$0.add(brt.a("heap MiB", brs.e, () -> (double)ad.a(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())));
+      $$0.addAll(bru.a.a());
+      return $$0.build();
+   }
+
+   @Override
+   public Set<brt> a(Supplier<bqg> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
+   }
+
+   public static brt a(final LongSupplier $$0) {
+      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
+         public long read() {
+            return $$0.getAsLong();
          }
-      }
+      });
+      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
+         if ($$0x.isRunning()) {
+            $$0x.stop();
+         }
 
-      return Optional.empty();
+         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
+         $$0x.reset();
+         return (double)$$1x;
+      };
+      brt.d $$3 = new brt.d(2.0F);
+      return brt.a("ticktime", brs.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
    }
 
-   public static <T> Optional<T> a(azs $$0, List<T> $$1, ToIntFunction<T> $$2) {
-      return a($$0, $$1, a($$1, $$2), $$2);
+   static class a {
+      private final SystemInfo b = new SystemInfo();
+      private final CentralProcessor c = this.b.getHardware().getProcessor();
+      public final int a = this.c.getLogicalProcessorCount();
+      private long[][] d = this.c.getProcessorCpuLoadTicks();
+      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+      private long f;
+
+      public double a(int $$0) {
+         long $$1 = System.currentTimeMillis();
+         if (this.f == 0L || this.f + 501L < $$1) {
+            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+            this.d = this.c.getProcessorCpuLoadTicks();
+            this.f = $$1;
+         }
+
+         return this.e[$$0] * 100.0;
+      }
    }
 }

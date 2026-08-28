@@ -1,27 +1,13 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+import java.util.List;
 
-public class fyt implements fys {
-   public static final fys a = new fyt();
+public class fyt extends fxy<cvi> {
+   private static final ale G = ale.b("container/furnace/lit_progress");
+   private static final ale H = ale.b("container/furnace/burn_progress");
+   private static final ale I = ale.b("textures/gui/container/furnace.png");
+   private static final ww J = ww.c("gui.recipebook.toggleRecipes.smeltable");
+   private static final List<gbh.a> K = List.of(new gbh.a(gbn.b), new gbh.a(cyw.qG, ddl.e), new gbh.a(cyw.b, ddl.f), new gbh.a(cyw.rl, cyw.pj, ddl.g));
 
-   private fyt() {
-   }
-
-   @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
-      this.a($$0, $$1, $$6, $$4, $$5);
-      return $$6;
-   }
-
-   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
-      if ($$2.x + $$3 > $$0) {
-         $$2.x = Math.max($$2.x - 24 - $$3, 4);
-      }
-
-      int $$5 = $$4 + 3;
-      if ($$2.y + $$5 > $$1) {
-         $$2.y = $$1 - $$5;
-      }
+   public fyt(cvi $$0, cqr $$1, ww $$2) {
+      super($$0, $$1, $$2, J, I, G, H, K);
    }
 }

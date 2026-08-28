@@ -1,161 +1,142 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public record dfl(lt d, dfl.a e, dfl.a f, dfl.c g, dfl.c h, bst i) implements dey {
-   public static final MapCodec<dfl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               lv.bj.fieldOf("particle").forGetter(dfl::c),
-               dfl.a.a.fieldOf("horizontal_position").forGetter(dfl::d),
-               dfl.a.a.fieldOf("vertical_position").forGetter(dfl::e),
-               dfl.c.a.fieldOf("horizontal_velocity").forGetter(dfl::f),
-               dfl.c.a.fieldOf("vertical_velocity").forGetter(dfl::g),
-               bst.c.optionalFieldOf("speed", bsr.a).forGetter(dfl::h)
-            )
-            .apply($$0, dfl::new)
-   );
+public class dfl implements dbx {
+   public static final dfl a = new dfl(new Object2IntOpenHashMap());
+   private static final Codec<Integer> d = Codec.intRange(1, 255);
+   public static final Codec<dfl> b = Codec.unboundedMap(dff.c, d).xmap($$0 -> new dfl(new Object2IntOpenHashMap($$0)), $$0 -> $$0.e);
+   public static final yu<wh, dfl> c = yu.a(ys.a(Object2IntOpenHashMap::new, dff.d, ys.h), $$0 -> $$0.e, dfl::new);
+   final Object2IntOpenHashMap<je<dff>> e;
 
-   public static dfl.a a(float $$0) {
-      return new dfl.a(dfl.b.a, $$0, 1.0F);
+   dfl(Object2IntOpenHashMap<je<dff>> $$0) {
+      this.e = $$0;
+      ObjectIterator var2 = $$0.object2IntEntrySet().iterator();
+
+      while (var2.hasNext()) {
+         Entry<je<dff>> $$1 = (Entry<je<dff>>)var2.next();
+         int $$2 = $$1.getIntValue();
+         if ($$2 < 0 || $$2 > 255) {
+            throw new IllegalArgumentException("Enchantment " + $$1.getKey() + " has invalid level " + $$2);
+         }
+      }
    }
 
-   public static dfl.a b() {
-      return new dfl.a(dfl.b.b, 0.0F, 1.0F);
-   }
-
-   public static dfl.c b(float $$0) {
-      return new dfl.c($$0, bsr.a);
-   }
-
-   public static dfl.c a(bst $$0) {
-      return new dfl.c(0.0F, $$0);
+   public int a(je<dff> $$0) {
+      return this.e.getInt($$0);
    }
 
    @Override
-   public void a(arn $$0, int $$1, deg $$2, bvs $$3, fcu $$4) {
-      azs $$5 = $$3.dY();
-      fcu $$6 = $$3.ah();
-      float $$7 = $$3.dq();
-      float $$8 = $$3.dr();
-      $$0.a(
-         this.d,
-         this.e.a($$4.a(), $$4.a(), $$7, $$5),
-         this.f.a($$4.b(), $$4.b() + (double)($$8 / 2.0F), $$8, $$5),
-         this.e.a($$4.c(), $$4.c(), $$7, $$5),
-         0,
-         this.g.a($$6.a(), $$5),
-         this.h.a($$6.b(), $$5),
-         this.g.a($$6.c(), $$5),
-         (double)this.i.a($$5)
-      );
+   public void a(cyo.b $$0, Consumer<ww> $$1, dah $$2, ke $$3) {
+      jg.a $$4 = $$0.a();
+      ji<dff> $$5 = a($$4, mg.aP, axc.a);
+
+      for (je<dff> $$6 : $$5) {
+         int $$7 = this.e.getInt($$6);
+         if ($$7 > 0) {
+            $$1.accept(dff.a($$6, $$7));
+         }
+      }
+
+      ObjectIterator var10 = this.e.object2IntEntrySet().iterator();
+
+      while (var10.hasNext()) {
+         Entry<je<dff>> $$8 = (Entry<je<dff>>)var10.next();
+         je<dff> $$9 = (je<dff>)$$8.getKey();
+         if (!$$5.a($$9)) {
+            $$1.accept(dff.a((je<dff>)$$8.getKey(), $$8.getIntValue()));
+         }
+      }
+   }
+
+   private static <T> ji<T> a(@Nullable jg.a $$0, ald<jr<T>> $$1, axp<T> $$2) {
+      if ($$0 != null) {
+         Optional<ji.c<T>> $$3 = $$0.e($$1).a($$2);
+         if ($$3.isPresent()) {
+            return $$3.get();
+         }
+      }
+
+      return ji.a();
+   }
+
+   public Set<je<dff>> a() {
+      return Collections.unmodifiableSet(this.e.keySet());
+   }
+
+   public Set<Entry<je<dff>>> b() {
+      return Collections.unmodifiableSet(this.e.object2IntEntrySet());
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public boolean d() {
+      return this.e.isEmpty();
    }
 
    @Override
-   public MapCodec<dfl> a() {
-      return a;
-   }
-
-   public lt c() {
-      return this.d;
-   }
-
-   public dfl.a d() {
-      return this.e;
-   }
-
-   public dfl.a e() {
-      return this.f;
-   }
-
-   public dfl.c f() {
-      return this.g;
-   }
-
-   public dfl.c g() {
-      return this.h;
-   }
-
-   public bst h() {
-      return this.i;
-   }
-
-   public static record a(dfl.b b, float c, float d) {
-      public static final MapCodec<dfl.a> a = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     dfl.b.c.fieldOf("type").forGetter(dfl.a::a),
-                     Codec.FLOAT.optionalFieldOf("offset", 0.0F).forGetter(dfl.a::b),
-                     ays.o.optionalFieldOf("scale", 1.0F).forGetter(dfl.a::c)
-                  )
-                  .apply($$0, dfl.a::new)
-         )
-         .validate(
-            $$0 -> $$0.a() == dfl.b.a && $$0.c() != 1.0F
-                  ? DataResult.error(() -> "Cannot scale an entity position coordinate source")
-                  : DataResult.success($$0)
-         );
-
-      public double a(double $$0, double $$1, float $$2, azs $$3) {
-         return this.b.a($$0, $$1, $$2 * this.d, $$3) + (double)this.c;
-      }
-
-      public dfl.b a() {
-         return this.b;
-      }
-
-      public float b() {
-         return this.c;
-      }
-
-      public float c() {
-         return this.d;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof dfl $$1 ? this.e.equals($$1.e) : false;
       }
    }
 
-   public static enum b implements bag {
-      a("entity_position", ($$0, $$1, $$2, $$3) -> $$0),
-      b("in_bounding_box", ($$0, $$1, $$2, $$3) -> $$1 + ($$3.j() - 0.5) * (double)$$2);
-
-      public static final Codec<dfl.b> c = bag.a(dfl.b::values);
-      private final String d;
-      private final dfl.b.a e;
-
-      private b(final String $$0, final dfl.b.a $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      public double a(double $$0, double $$1, float $$2, azs $$3) {
-         return this.e.getCoordinate($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-
-      @FunctionalInterface
-      interface a {
-         double getCoordinate(double var1, double var3, float var5, azs var6);
-      }
+   @Override
+   public int hashCode() {
+      return this.e.hashCode();
    }
 
-   public static record c(float b, bst c) {
-      public static final MapCodec<dfl.c> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.FLOAT.optionalFieldOf("movement_scale", 0.0F).forGetter(dfl.c::a), bst.c.optionalFieldOf("base", bsr.a).forGetter(dfl.c::b))
-               .apply($$0, dfl.c::new)
-      );
+   @Override
+   public String toString() {
+      return "ItemEnchantments{enchantments=" + this.e + "}";
+   }
 
-      public double a(double $$0, azs $$1) {
-         return $$0 * (double)this.b + (double)this.c.a($$1);
+   public static class a {
+      private final Object2IntOpenHashMap<je<dff>> a = new Object2IntOpenHashMap();
+
+      public a(dfl $$0) {
+         this.a.putAll($$0.e);
       }
 
-      public float a() {
-         return this.b;
+      public void a(je<dff> $$0, int $$1) {
+         if ($$1 <= 0) {
+            this.a.removeInt($$0);
+         } else {
+            this.a.put($$0, Math.min($$1, 255));
+         }
       }
 
-      public bst b() {
-         return this.c;
+      public void b(je<dff> $$0, int $$1) {
+         if ($$1 > 0) {
+            this.a.merge($$0, Math.min($$1, 255), Integer::max);
+         }
+      }
+
+      public void a(Predicate<je<dff>> $$0) {
+         this.a.keySet().removeIf($$0);
+      }
+
+      public int a(je<dff> $$0) {
+         return this.a.getOrDefault($$0, 0);
+      }
+
+      public Set<je<dff>> a() {
+         return this.a.keySet();
+      }
+
+      public dfl b() {
+         return new dfl(this.a);
       }
    }
 }

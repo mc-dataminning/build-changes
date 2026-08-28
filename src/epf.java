@@ -1,29 +1,66 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class epf extends epg {
-   private final epf.a d;
-   private final int e;
+public class epf extends epp {
+   private final ja c;
+   private final egu d;
+   private final egu e;
    private final int f;
+   public static final MapCodec<epf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ja.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
+               egu.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
+               egu.b.optionalFieldOf("allowed_search_condition", egu.e()).forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, epf::new)
+   );
 
-   protected epf(epf.a $$0, int $$1, int $$2, epg.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private epf(ja $$0, egu $$1, egu $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public static epf a(ja $$0, egu $$1, egu $$2, int $$3) {
+      return new epf($$0, $$1, $$2, $$3);
+   }
+
+   public static epf a(ja $$0, egu $$1, int $$2) {
+      return a($$0, $$1, egu.e(), $$2);
    }
 
    @Override
-   public Optional<epg.b> a(epg.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, eel.a.a, $$1 -> this.a($$1, $$0));
+   public Stream<iu> a_(epn $$0, azt $$1, iu $$2) {
+      iu.a $$3 = $$2.k();
+      djo $$4 = $$0.d();
+      if (!this.e.test($$4, $$3)) {
+         return Stream.of();
+      } else {
+         for (int $$5 = 0; $$5 < this.f; $$5++) {
+            if (this.d.test($$4, $$3)) {
+               return Stream.of($$3);
+            }
+
+            $$3.c(this.c);
+            if ($$4.e($$3.v())) {
+               return Stream.of();
+            }
+
+            if (!this.e.test($$4, $$3)) {
+               break;
+            }
+         }
+
+         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
+      }
    }
 
-   private void a(epy $$0, epg.a $$1) {
-      dgw $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
-   }
-
-   @FunctionalInterface
-   protected interface a {
-      epk construct(efk var1, int var2, int var3);
+   @Override
+   public epq<?> b() {
+      return epq.j;
    }
 }

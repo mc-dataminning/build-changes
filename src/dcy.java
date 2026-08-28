@@ -1,61 +1,36 @@
-import java.util.List;
-import java.util.Optional;
-
-public record dcy<T extends dcl<?>>(ddx a, Optional<dcq<T>> b) {
-   public static <T extends dcl<?>> yt<wg, dcy<T>> a() {
-      return yt.a(ddx.b, dcy::b, $$0 -> new dcy<>($$0, Optional.empty()));
+public interface dcy extends ddj<dcx> {
+   @Override
+   default ddu<dcy> b() {
+      return ddu.a;
    }
 
-   public ddx b() {
-      return this.a;
+   @Override
+   ddt<? extends dcy> a();
+
+   dcw c();
+
+   default jn<cys> a(dcx $$0) {
+      return b($$0);
    }
 
-   public Optional<dcq<T>> c() {
-      return this.b;
+   static jn<cys> b(dcx $$0) {
+      jn<cys> $$1 = jn.a($$0.a(), cys.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cyo $$3 = $$0.a($$2).h();
+         $$1.set($$2, $$3.i());
+      }
+
+      return $$1;
    }
 
-   public static record a<T extends dcl<?>>(dch a, dcy<T> b) {
-
-      public static <T extends dcl<?>> yt<wg, dcy.a<T>> a() {
-         return yt.a(dch.a, dcy.a::b, dcy.a(), dcy.a::c, dcy.a::new);
-      }
-
-      public dch b() {
-         return this.a;
-      }
-
-      public dcy<T> c() {
-         return this.b;
-      }
-   }
-
-   public static record b<T extends dcl<?>>(List<dcy.a<T>> a) {
-      public static <T extends dcl<?>> dcy.b<T> a() {
-         return new dcy.b<>(List.of());
-      }
-
-      public static <T extends dcl<?>> yt<wg, dcy.b<T>> b() {
-         return yt.a(dcy.a.<T>a().a(yr.a()), dcy.b::e, dcy.b::new);
-      }
-
-      public boolean a(cxy $$0) {
-         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
-      }
-
-      public dcy.b<T> b(cxy $$0) {
-         return new dcy.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
-      }
-
-      public boolean c() {
-         return this.a.isEmpty();
-      }
-
-      public int d() {
-         return this.a.size();
-      }
-
-      public List<dcy.a<T>> e() {
-         return this.a;
-      }
+   @Override
+   default ddm h() {
+      return switch (this.c()) {
+         case a -> ddl.a;
+         case c -> ddl.c;
+         case b -> ddl.b;
+         case d -> ddl.d;
+      };
    }
 }

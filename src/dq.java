@@ -1,65 +1,180 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-public class dq extends dz<dq.a> {
-   @Override
-   public Codec<dq.a> a() {
-      return dq.a.a;
-   }
-
-   public void a(aro $$0, bvs $$1, buh $$2, float $$3, float $$4, boolean $$5) {
-      exl $$6 = bx.b($$0, $$1);
-      this.a($$0, $$6x -> $$6x.a($$0, $$6, $$2, $$3, $$4, $$5));
-   }
-
-   public static record a(Optional<bi> b, Optional<bl> c, Optional<bi> d) implements dz.a {
-      public static final Codec<dq.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bx.b.optionalFieldOf("player").forGetter(dq.a::a),
-                  bl.a.optionalFieldOf("damage").forGetter(dq.a::c),
-                  bx.b.optionalFieldOf("entity").forGetter(dq.a::d)
-               )
-               .apply($$0, dq.a::new)
+public record dq(List<dq.c> c) {
+   private static final Codec<List<dq.c>> d = Codec.unboundedMap(Codec.STRING, dq.e.c)
+      .xmap(
+         $$0 -> $$0.entrySet().stream().map($$0x -> new dq.c((String)$$0x.getKey(), (dq.e)$$0x.getValue())).toList(),
+         $$0 -> $$0.stream().collect(Collectors.toMap(dq.c::a, dq.c::b))
       );
+   public static final Codec<dq> a = d.xmap(dq::new, dq::a);
+   public static final yu<ByteBuf, dq> b = dq.c.a.a(ys.a()).a(dq::new, dq::a);
 
-      public static aq<dq.a> b() {
-         return ap.h.a(new dq.a(Optional.empty(), Optional.empty(), Optional.empty()));
+   public <S extends dzq<?, S>> boolean a(dzp<?, S> $$0, S $$1) {
+      for (dq.c $$2 : this.c) {
+         if (!$$2.a($$0, $$1)) {
+            return false;
+         }
       }
 
-      public static aq<dq.a> a(Optional<bl> $$0) {
-         return ap.h.a(new dq.a(Optional.empty(), $$0, Optional.empty()));
+      return true;
+   }
+
+   public boolean a(dzo $$0) {
+      return this.a($$0.b().l(), $$0);
+   }
+
+   public boolean a(evv $$0) {
+      return this.a($$0.a().f(), $$0);
+   }
+
+   public Optional<String> a(dzp<?, ?> $$0) {
+      for (dq.c $$1 : this.c) {
+         Optional<String> $$2 = $$1.a($$0);
+         if ($$2.isPresent()) {
+            return $$2;
+         }
       }
 
-      public static aq<dq.a> a(bl.a $$0) {
-         return ap.h.a(new dq.a(Optional.empty(), Optional.of($$0.b()), Optional.empty()));
+      return Optional.empty();
+   }
+
+   public List<dq.c> a() {
+      return this.c;
+   }
+
+   public static class a {
+      private final Builder<dq.c> a = ImmutableList.builder();
+
+      private a() {
       }
 
-      public static aq<dq.a> b(Optional<bx> $$0) {
-         return ap.h.a(new dq.a(Optional.empty(), Optional.empty(), bx.a($$0)));
+      public static dq.a a() {
+         return new dq.a();
       }
 
-      public static aq<dq.a> a(Optional<bl> $$0, Optional<bx> $$1) {
-         return ap.h.a(new dq.a(Optional.empty(), $$0, bx.a($$1)));
+      public dq.a a(ear<?> $$0, String $$1) {
+         this.a.add(new dq.c($$0.f(), new dq.b($$1)));
+         return this;
       }
 
-      public static aq<dq.a> a(bl.a $$0, Optional<bx> $$1) {
-         return ap.h.a(new dq.a(Optional.empty(), Optional.of($$0.b()), bx.a($$1)));
+      public dq.a a(ear<Integer> $$0, int $$1) {
+         return this.a($$0, Integer.toString($$1));
       }
 
-      public boolean a(aro $$0, exl $$1, buh $$2, float $$3, float $$4, boolean $$5) {
-         return this.c.isPresent() && !this.c.get().a($$0, $$2, $$3, $$4, $$5) ? false : !this.d.isPresent() || this.d.get().a($$1);
+      public dq.a a(ear<Boolean> $$0, boolean $$1) {
+         return this.a($$0, Boolean.toString($$1));
       }
+
+      public <T extends Comparable<T> & bai> dq.a a(ear<T> $$0, T $$1) {
+         return this.a($$0, $$1.c());
+      }
+
+      public Optional<dq> b() {
+         return Optional.of(new dq(this.a.build()));
+      }
+   }
+
+   static record b(String e) implements dq.e {
+      public static final Codec<dq.b> a = Codec.STRING.xmap(dq.b::new, dq.b::a);
+      public static final yu<ByteBuf, dq.b> b = ys.o.a(dq.b::new, dq.b::a);
 
       @Override
-      public void a(bj $$0) {
-         dz.a.super.a($$0);
-         $$0.a(this.d, ".entity");
+      public <T extends Comparable<T>> boolean a(dzq<?, ?> $$0, ear<T> $$1) {
+         T $$2 = $$0.c($$1);
+         Optional<T> $$3 = $$1.b(this.e);
+         return $$3.isPresent() && $$2.compareTo($$3.get()) == 0;
       }
 
-      @Override
-      public Optional<bi> a() {
+      public String a() {
+         return this.e;
+      }
+   }
+
+   static record c(String b, dq.e c) {
+      public static final yu<ByteBuf, dq.c> a = yu.a(ys.o, dq.c::a, dq.e.d, dq.c::b, dq.c::new);
+
+      public <S extends dzq<?, S>> boolean a(dzp<?, S> $$0, S $$1) {
+         ear<?> $$2 = $$0.a(this.b);
+         return $$2 != null && this.c.a($$1, $$2);
+      }
+
+      public Optional<String> a(dzp<?, ?> $$0) {
+         ear<?> $$1 = $$0.a(this.b);
+         return $$1 != null ? Optional.empty() : Optional.of(this.b);
+      }
+
+      public String a() {
          return this.b;
       }
+
+      public dq.e b() {
+         return this.c;
+      }
+   }
+
+   static record d(Optional<String> e, Optional<String> f) implements dq.e {
+      public static final Codec<dq.d> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.optionalFieldOf("min").forGetter(dq.d::a), Codec.STRING.optionalFieldOf("max").forGetter(dq.d::b)).apply($$0, dq.d::new)
+      );
+      public static final yu<ByteBuf, dq.d> b = yu.a(ys.a(ys.o), dq.d::a, ys.a(ys.o), dq.d::b, dq.d::new);
+
+      @Override
+      public <T extends Comparable<T>> boolean a(dzq<?, ?> $$0, ear<T> $$1) {
+         T $$2 = $$0.c($$1);
+         if (this.e.isPresent()) {
+            Optional<T> $$3 = $$1.b(this.e.get());
+            if ($$3.isEmpty() || $$2.compareTo($$3.get()) < 0) {
+               return false;
+            }
+         }
+
+         if (this.f.isPresent()) {
+            Optional<T> $$4 = $$1.b(this.f.get());
+            if ($$4.isEmpty() || $$2.compareTo($$4.get()) > 0) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+
+      public Optional<String> a() {
+         return this.e;
+      }
+
+      public Optional<String> b() {
+         return this.f;
+      }
+   }
+
+   interface e {
+      Codec<dq.e> c = Codec.either(dq.b.a, dq.d.a).xmap(Either::unwrap, $$0 -> {
+         if ($$0 instanceof dq.b $$1) {
+            return Either.left($$1);
+         } else if ($$0 instanceof dq.d $$2) {
+            return Either.right($$2);
+         } else {
+            throw new UnsupportedOperationException();
+         }
+      });
+      yu<ByteBuf, dq.e> d = ys.a(dq.b.b, dq.d.b).a(Either::unwrap, $$0 -> {
+         if ($$0 instanceof dq.b $$1) {
+            return Either.left($$1);
+         } else if ($$0 instanceof dq.d $$2) {
+            return Either.right($$2);
+         } else {
+            throw new UnsupportedOperationException();
+         }
+      });
+
+      <T extends Comparable<T>> boolean a(dzq<?, ?> var1, ear<T> var2);
    }
 }

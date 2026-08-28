@@ -1,16 +1,41 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class boa extends Schema {
+public class boa extends bko {
    public boa(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.registerSimple($$1, "ElderGuardian");
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         true,
+         bit.z,
+         () -> DSL.or(
+               DSL.or(DSL.constType(DSL.string()), DSL.list(bit.z.in($$0))),
+               DSL.optionalFields(
+                  "extra",
+                  DSL.list(bit.z.in($$0)),
+                  "separator",
+                  bit.z.in($$0),
+                  "hoverEvent",
+                  DSL.taggedChoice(
+                     "action",
+                     DSL.string(),
+                     Map.of(
+                        "show_text",
+                        DSL.optionalFields("contents", bit.z.in($$0)),
+                        "show_item",
+                        DSL.optionalFields("contents", DSL.or(bit.t.in($$0), bit.F.in($$0))),
+                        "show_entity",
+                        DSL.optionalFields("type", bit.B.in($$0), "name", bit.z.in($$0))
+                     )
+                  )
+               )
+            )
+      );
    }
 }

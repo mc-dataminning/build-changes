@@ -1,97 +1,182 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import java.util.Locale;
+import java.util.Objects;
 
-public class ud extends tv<ue> {
-   private static final int b = 24;
-   public static final uv<ud> a = new uv.b<ud>() {
-      public ud a(DataInput $$0, uf $$1) throws IOException {
-         return new ud(d($$0, $$1));
-      }
+public class ud extends tw<uu> {
+   private static final int b = 37;
+   public static final uw<ud> a = new uw.b<ud>() {
+      public ud a(DataInput $$0, ug $$1) throws IOException {
+         $$1.b();
 
-      @Override
-      public uq.b a(DataInput $$0, uq $$1, uf $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static long[] d(DataInput $$0, uf $$1) throws IOException {
-         $$1.b(24L);
-         int $$2 = $$0.readInt();
-         $$1.a(8L, (long)$$2);
-         long[] $$3 = new long[$$2];
-
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3[$$4] = $$0.readLong();
+         ud var3;
+         try {
+            var3 = d($$0, $$1);
+         } finally {
+            $$1.c();
          }
 
-         return $$3;
+         return var3;
+      }
+
+      private static ud d(DataInput $$0, ug $$1) throws IOException {
+         $$1.b(37L);
+         byte $$2 = $$0.readByte();
+         int $$3 = $$0.readInt();
+         if ($$2 == 0 && $$3 > 0) {
+            throw new uj("Missing type on ListTag");
+         } else {
+            $$1.a(4L, (long)$$3);
+            uw<?> $$4 = ux.a($$2);
+            List<uu> $$5 = Lists.newArrayListWithCapacity($$3);
+
+            for (int $$6 = 0; $$6 < $$3; $$6++) {
+               $$5.add($$4.c($$0, $$1));
+            }
+
+            return new ud($$5, $$2);
+         }
       }
 
       @Override
-      public void b(DataInput $$0, uf $$1) throws IOException {
-         $$0.skipBytes($$0.readInt() * 8);
+      public ur.b a(DataInput $$0, ur $$1, ug $$2) throws IOException {
+         $$2.b();
+
+         ur.b var4;
+         try {
+            var4 = c($$0, $$1, $$2);
+         } finally {
+            $$2.c();
+         }
+
+         return var4;
+      }
+
+      private static ur.b c(DataInput $$0, ur $$1, ug $$2) throws IOException {
+         $$2.b(37L);
+         uw<?> $$3 = ux.a($$0.readByte());
+         int $$4 = $$0.readInt();
+         switch ($$1.a($$3, $$4)) {
+            case c:
+               return ur.b.c;
+            case b:
+               $$3.a($$0, $$4, $$2);
+               return $$1.b();
+            default:
+               $$2.a(4L, (long)$$4);
+               int $$5 = 0;
+
+               while (true) {
+                  label41: {
+                     if ($$5 < $$4) {
+                        switch ($$1.b($$3, $$5)) {
+                           case d:
+                              return ur.b.c;
+                           case c:
+                              $$3.b($$0, $$2);
+                              break;
+                           case b:
+                              $$3.b($$0, $$2);
+                              break label41;
+                           default:
+                              switch ($$3.a($$0, $$1, $$2)) {
+                                 case c:
+                                    return ur.b.c;
+                                 case b:
+                                    break;
+                                 default:
+                                    break label41;
+                              }
+                        }
+                     }
+
+                     int $$6 = $$4 - 1 - $$5;
+                     if ($$6 > 0) {
+                        $$3.a($$0, $$6, $$2);
+                     }
+
+                     return $$1.b();
+                  }
+
+                  $$5++;
+               }
+         }
+      }
+
+      @Override
+      public void b(DataInput $$0, ug $$1) throws IOException {
+         $$1.b();
+
+         try {
+            uw<?> $$2 = ux.a($$0.readByte());
+            int $$3 = $$0.readInt();
+            $$2.a($$0, $$3, $$1);
+         } finally {
+            $$1.c();
+         }
       }
 
       @Override
       public String a() {
-         return "LONG[]";
+         return "LIST";
       }
 
       @Override
       public String b() {
-         return "TAG_Long_Array";
+         return "TAG_List";
       }
    };
-   private long[] c;
+   private final List<uu> c;
+   private byte w;
 
-   public ud(long[] $$0) {
+   ud(List<uu> $$0, byte $$1) {
       this.c = $$0;
+      this.w = $$1;
    }
 
-   public ud(LongSet $$0) {
-      this.c = $$0.toLongArray();
-   }
-
-   public ud(List<Long> $$0) {
-      this(a($$0));
-   }
-
-   private static long[] a(List<Long> $$0) {
-      long[] $$1 = new long[$$0.size()];
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         Long $$3 = $$0.get($$2);
-         $$1[$$2] = $$3 == null ? 0L : $$3;
-      }
-
-      return $$1;
+   public ud() {
+      this(Lists.newArrayList(), (byte)0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c.length);
+      if (this.c.isEmpty()) {
+         this.w = 0;
+      } else {
+         this.w = this.c.get(0).b();
+      }
 
-      for (long $$1 : this.c) {
-         $$0.writeLong($$1);
+      $$0.writeByte(this.w);
+      $$0.writeInt(this.c.size());
+
+      for (uu $$1 : this.c) {
+         $$1.a($$0);
       }
    }
 
    @Override
    public int a() {
-      return 24 + 8 * this.c.length;
+      int $$0 = 37;
+      $$0 += 4 * this.c.size();
+
+      for (uu $$1 : this.c) {
+         $$0 += $$1.a();
+      }
+
+      return $$0;
    }
 
    @Override
    public byte b() {
-      return 12;
+      return 9;
    }
 
    @Override
-   public uv<ud> c() {
+   public uw<ud> c() {
       return a;
    }
 
@@ -100,54 +185,151 @@ public class ud extends tv<ue> {
       return this.p_();
    }
 
-   public ud e() {
-      long[] $$0 = new long[this.c.length];
-      System.arraycopy(this.c, 0, $$0, 0, this.c.length);
-      return new ud($$0);
+   private void g() {
+      if (this.c.isEmpty()) {
+         this.w = 0;
+      }
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ud && Arrays.equals(this.c, ((ud)$$0).c);
+   public uu c(int $$0) {
+      uu $$1 = this.c.remove($$0);
+      this.g();
+      return $$1;
    }
 
    @Override
-   public int hashCode() {
-      return Arrays.hashCode(this.c);
+   public boolean isEmpty() {
+      return this.c.isEmpty();
    }
 
-   @Override
-   public void a(ux $$0) {
-      $$0.a(this);
+   public tx a(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         uu $$1 = this.c.get($$0);
+         if ($$1.b() == 10) {
+            return (tx)$$1;
+         }
+      }
+
+      return new tx();
    }
 
-   public long[] g() {
-      return this.c;
+   public ud b(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         uu $$1 = this.c.get($$0);
+         if ($$1.b() == 9) {
+            return (ud)$$1;
+         }
+      }
+
+      return new ud();
+   }
+
+   public short d(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         uu $$1 = this.c.get($$0);
+         if ($$1.b() == 2) {
+            return ((up)$$1).h();
+         }
+      }
+
+      return 0;
+   }
+
+   public int e(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         uu $$1 = this.c.get($$0);
+         if ($$1.b() == 3) {
+            return ((uc)$$1).g();
+         }
+      }
+
+      return 0;
+   }
+
+   public int[] f(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         uu $$1 = this.c.get($$0);
+         if ($$1.b() == 11) {
+            return ((ub)$$1).g();
+         }
+      }
+
+      return new int[0];
+   }
+
+   public long[] g(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         uu $$1 = this.c.get($$0);
+         if ($$1.b() == 12) {
+            return ((ue)$$1).g();
+         }
+      }
+
+      return new long[0];
+   }
+
+   public double h(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         uu $$1 = this.c.get($$0);
+         if ($$1.b() == 6) {
+            return ((ty)$$1).j();
+         }
+      }
+
+      return 0.0;
+   }
+
+   public float i(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         uu $$1 = this.c.get($$0);
+         if ($$1.b() == 5) {
+            return ((ua)$$1).k();
+         }
+      }
+
+      return 0.0F;
+   }
+
+   public String j(int $$0) {
+      if ($$0 >= 0 && $$0 < this.c.size()) {
+         uu $$1 = this.c.get($$0);
+         return $$1.b() == 8 ? $$1.p_() : $$1.toString();
+      } else {
+         return "";
+      }
    }
 
    @Override
    public int size() {
-      return this.c.length;
+      return this.c.size();
    }
 
-   public ue a(int $$0) {
-      return ue.a(this.c[$$0]);
-   }
-
-   public ue a(int $$0, ue $$1) {
-      long $$2 = this.c[$$0];
-      this.c[$$0] = $$1.f();
-      return ue.a($$2);
-   }
-
-   public void b(int $$0, ue $$1) {
-      this.c = ArrayUtils.add(this.c, $$0, $$1.f());
+   public uu k(int $$0) {
+      return this.c.get($$0);
    }
 
    @Override
-   public boolean a(int $$0, ut $$1) {
-      if ($$1 instanceof um) {
-         this.c[$$0] = ((um)$$1).f();
+   public uu d(int $$0, uu $$1) {
+      uu $$2 = this.k($$0);
+      if (!this.a($$0, $$1)) {
+         throw new UnsupportedOperationException(String.format(Locale.ROOT, "Trying to add tag of type %d to list of %d", $$1.b(), this.w));
+      } else {
+         return $$2;
+      }
+   }
+
+   @Override
+   public void c(int $$0, uu $$1) {
+      if (!this.b($$0, $$1)) {
+         throw new UnsupportedOperationException(String.format(Locale.ROOT, "Trying to add tag of type %d to list of %d", $$1.b(), this.w));
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, uu $$1) {
+      if (this.a($$1)) {
+         this.c.set($$0, $$1);
          return true;
       } else {
          return false;
@@ -155,33 +337,88 @@ public class ud extends tv<ue> {
    }
 
    @Override
-   public boolean b(int $$0, ut $$1) {
-      if ($$1 instanceof um) {
-         this.c = ArrayUtils.add(this.c, $$0, ((um)$$1).f());
+   public boolean b(int $$0, uu $$1) {
+      if (this.a($$1)) {
+         this.c.add($$0, $$1);
          return true;
       } else {
          return false;
       }
    }
 
-   public ue b(int $$0) {
-      long $$1 = this.c[$$0];
-      this.c = ArrayUtils.remove(this.c, $$0);
-      return ue.a($$1);
+   private boolean a(uu $$0) {
+      if ($$0.b() == 0) {
+         return false;
+      } else if (this.w == 0) {
+         this.w = $$0.b();
+         return true;
+      } else {
+         return this.w == $$0.b();
+      }
+   }
+
+   public ud e() {
+      Iterable<uu> $$0 = (Iterable<uu>)(ux.a(this.w).d() ? this.c : Iterables.transform(this.c, uu::d));
+      List<uu> $$1 = Lists.newArrayList($$0);
+      return new ud($$1, this.w);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof ud && Objects.equals(this.c, ((ud)$$0).c);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
+
+   @Override
+   public void a(uy $$0) {
+      $$0.a(this);
    }
 
    @Override
    public byte f() {
-      return 4;
+      return this.w;
    }
 
    @Override
    public void clear() {
-      this.c = new long[0];
+      this.c.clear();
+      this.w = 0;
    }
 
    @Override
-   public uq.b a(uq $$0) {
-      return $$0.a(this.c);
+   public ur.b a(ur $$0) {
+      switch ($$0.a(ux.a(this.w), this.c.size())) {
+         case c:
+            return ur.b.c;
+         case b:
+            return $$0.b();
+         default:
+            int $$1 = 0;
+
+            while ($$1 < this.c.size()) {
+               uu $$2 = this.c.get($$1);
+               switch ($$0.b($$2.c(), $$1)) {
+                  case d:
+                     return ur.b.c;
+                  case c:
+                     return $$0.b();
+                  default:
+                     switch ($$2.a($$0)) {
+                        case c:
+                           return ur.b.c;
+                        case b:
+                           return $$0.b();
+                     }
+                  case b:
+                     $$1++;
+               }
+            }
+
+            return $$0.b();
+      }
    }
 }

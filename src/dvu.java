@@ -1,23 +1,54 @@
-public class dvu {
-   private boolean a;
-   private float b;
-   private float c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public void a() {
-      this.c = this.b;
-      float $$0 = 0.1F;
-      if (!this.a && this.b > 0.0F) {
-         this.b = Math.max(this.b - 0.1F, 0.0F);
-      } else if (this.a && this.b < 1.0F) {
-         this.b = Math.min(this.b + 0.1F, 1.0F);
+public class dvu extends dli {
+   public static final MapCodec<dvu> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.e), ead.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.b), t())
+            .apply($$0, dvu::new)
+   );
+   public static final eao d = eae.aW;
+   private final int e;
+
+   @Override
+   public MapCodec<dvu> a() {
+      return c;
+   }
+
+   protected dvu(int $$0, ead $$1, dzn.d $$2) {
+      super($$2, $$1);
+      this.l(this.B.b().b(d, Integer.valueOf(0)));
+      this.e = $$0;
+   }
+
+   @Override
+   protected int b(dip $$0, iu $$1) {
+      int $$2 = Math.min(a($$0, a.a($$1), bwa.class), this.e);
+      if ($$2 > 0) {
+         float $$3 = (float)Math.min(this.e, $$2) / (float)this.e;
+         return azk.f($$3 * 15.0F);
+      } else {
+         return 0;
       }
    }
 
-   public float a(float $$0) {
-      return azk.h($$0, this.c, this.b);
+   @Override
+   protected int h(dzo $$0) {
+      return $$0.c(d);
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   @Override
+   protected dzo a(dzo $$0, int $$1) {
+      return $$0.b(d, Integer.valueOf($$1));
+   }
+
+   @Override
+   protected int b() {
+      return 10;
+   }
+
+   @Override
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(d);
    }
 }

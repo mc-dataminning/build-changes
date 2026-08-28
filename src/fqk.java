@@ -1,99 +1,43 @@
-public abstract class fqk extends fqg {
-   private static final fsa a = new fsa(ald.b("widget/text_field"), ald.b("widget/text_field_highlighted"));
-   private static final int c = 4;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.function.Function;
 
-   public fqk(int $$0, int $$1, int $$2, int $$3, wv $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+public class fqk<T> {
+   final String a;
+   final Function<T, JsonElement> b;
+
+   public fqk(String $$0, Function<T, JsonElement> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public fqk<T>.a a(T $$0) {
+      return new fqk.a($$0);
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      boolean $$3 = this.c($$0, $$1, $$2);
-      return super.a($$0, $$1, $$2) || $$3;
+   public String toString() {
+      return this.a;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      boolean $$3 = $$0 == 265;
-      boolean $$4 = $$0 == 264;
-      if ($$3 || $$4) {
-         double $$5 = this.g();
-         this.a(this.g() + (double)($$3 ? -1 : 1) * this.o());
-         if ($$5 != this.g()) {
-            return true;
-         }
+   public class a {
+      private final T b;
+
+      public a(final T $$1) {
+         this.b = $$1;
       }
 
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void b(fpz $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         this.c($$0);
-         $$0.c(this.F() + 1, this.G() + 1, this.F() + this.g - 1, this.G() + this.h - 1);
-         $$0.c().a();
-         $$0.c().a(0.0, -this.g(), 0.0);
-         this.c($$0, $$1, $$2, $$3);
-         $$0.c().b();
-         $$0.e();
-         this.b($$0);
+      public fqk<T> a() {
+         return fqk.this;
       }
-   }
 
-   protected void b(fpz $$0) {
-      this.a($$0);
-   }
+      public void a(JsonObject $$0) {
+         $$0.add(fqk.this.a, fqk.this.b.apply(this.b));
+      }
 
-   protected int a() {
-      return 4;
-   }
-
-   protected int b() {
-      return this.a() * 2;
-   }
-
-   @Override
-   public boolean a_(double $$0, double $$1) {
-      return this.j && this.k && $$0 >= (double)this.F() && $$1 >= (double)this.G() && $$0 < (double)(this.H() + 6) && $$1 < (double)this.I();
-   }
-
-   @Override
-   protected int l() {
-      return this.H();
-   }
-
-   @Override
-   protected int n() {
-      return this.c() + this.b();
-   }
-
-   protected void c(fpz $$0) {
-      this.a($$0, this.F(), this.G(), this.A(), this.y());
-   }
-
-   protected void a(fpz $$0, int $$1, int $$2, int $$3, int $$4) {
-      ald $$5 = a.a(this.E(), this.aI_());
-      $$0.a(goi::H, $$5, $$1, $$2, $$3, $$4);
-   }
-
-   protected boolean a(int $$0, int $$1) {
-      return (double)$$1 - this.g() >= (double)this.G() && (double)$$0 - this.g() <= (double)(this.G() + this.h);
-   }
-
-   protected abstract int c();
-
-   protected abstract void c(fpz var1, int var2, int var3, float var4);
-
-   protected int e() {
-      return this.F() + this.a();
-   }
-
-   protected int p() {
-      return this.G() + this.a();
-   }
-
-   @Override
-   public void a(hlv $$0) {
+      @Override
+      public String toString() {
+         return fqk.this.a + "=" + this.b;
+      }
    }
 }

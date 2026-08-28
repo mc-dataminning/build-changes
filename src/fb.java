@@ -1,27 +1,29 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import java.util.Arrays;
+import java.util.Collection;
 
-public class fb {
-   public static <T> T a(Codec<T> $$0, ju.a $$1, DynamicCommandExceptionType $$2, StringReader $$3) throws CommandSyntaxException {
-      int $$4 = $$3.getCursor();
-      ut $$5 = new uu($$3).d();
-      DataResult<T> $$6 = $$0.parse($$1.a(uk.a), $$5);
-      return (T)$$6.getOrThrow($$3x -> {
-         $$3.setCursor($$4);
-         return $$2.createWithContext($$3, $$3x);
-      });
+public class fb implements ArgumentType<uu> {
+   private static final Collection<String> a = Arrays.asList("0", "0b", "0l", "0.0", "\"foo\"", "{foo=bar}", "[0]");
+
+   private fb() {
    }
 
-   public static String a(StringReader $$0, m $$1) {
-      int $$2 = $$0.getCursor();
+   public static fb a() {
+      return new fb();
+   }
 
-      while ($$0.canRead() && $$1.test($$0.peek())) {
-         $$0.skip();
-      }
+   public static <S> uu a(CommandContext<S> $$0, String $$1) {
+      return (uu)$$0.getArgument($$1, uu.class);
+   }
 
-      return $$0.getString().substring($$2, $$0.getCursor());
+   public uu a(StringReader $$0) throws CommandSyntaxException {
+      return uv.b(ul.a, $$0);
+   }
+
+   public Collection<String> getExamples() {
+      return a;
    }
 }

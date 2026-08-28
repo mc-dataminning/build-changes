@@ -1,152 +1,63 @@
-public class ccq implements ccm {
-   public static final float a = 5.0E-4F;
-   public static final float b = 2.5000003E-7F;
-   protected static final int c = 90;
-   protected final bwt d;
-   protected double e;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected float i;
-   protected float j;
-   protected ccq.a k = ccq.a.a;
+import com.google.common.collect.ImmutableMap;
 
-   public ccq(bwt $$0) {
-      this.d = $$0;
+public class ccq extends byq<cpv> {
+   private static final int d = 15;
+   private static final int e = 20;
+   private static final double f = 0.5;
+   private static final double g = 2.5;
+   public static final int c = 40;
+   private static final int h = azk.c(34.0);
+   private static final int i = azk.f(60.0F);
+
+   public ccq() {
+      super(ImmutableMap.of(cgb.p, cgc.a, cgb.aK, cgc.b, cgb.aL, cgc.c, cgb.aM, cgc.c), i);
    }
 
-   public boolean b() {
-      return this.k == ccq.a.b;
+   protected boolean a(aro $$0, cpv $$1) {
+      return $$1.a($$1.eb().c(cgb.p).get(), 15.0, 20.0);
    }
 
-   public double c() {
-      return this.h;
-   }
-
-   public void a(double $$0, double $$1, double $$2, double $$3) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      if (this.k != ccq.a.d) {
-         this.k = ccq.a.b;
-      }
-   }
-
-   public void a(float $$0, float $$1) {
-      this.k = ccq.a.c;
-      this.i = $$0;
-      this.j = $$1;
-      this.h = 0.25;
-   }
-
-   public void a() {
-      if (this.k == ccq.a.c) {
-         float $$0 = (float)this.d.h(bxx.v);
-         float $$1 = (float)this.h * $$0;
-         float $$2 = this.i;
-         float $$3 = this.j;
-         float $$4 = azk.c($$2 * $$2 + $$3 * $$3);
-         if ($$4 < 1.0F) {
-            $$4 = 1.0F;
-         }
-
-         $$4 = $$1 / $$4;
-         $$2 *= $$4;
-         $$3 *= $$4;
-         float $$5 = azk.a(this.d.dL() * (float) (Math.PI / 180.0));
-         float $$6 = azk.b(this.d.dL() * (float) (Math.PI / 180.0));
-         float $$7 = $$2 * $$6 - $$3 * $$5;
-         float $$8 = $$3 * $$6 + $$2 * $$5;
-         if (!this.b($$7, $$8)) {
-            this.i = 1.0F;
-            this.j = 0.0F;
-         }
-
-         this.d.C($$1);
-         this.d.H(this.i);
-         this.d.J(this.j);
-         this.k = ccq.a.a;
-      } else if (this.k == ccq.a.b) {
-         this.k = ccq.a.a;
-         double $$9 = this.e - this.d.dA();
-         double $$10 = this.g - this.d.dG();
-         double $$11 = this.f - this.d.dC();
-         double $$12 = $$9 * $$9 + $$11 * $$11 + $$10 * $$10;
-         if ($$12 < 2.5000003E-7F) {
-            this.d.H(0.0F);
-            return;
-         }
-
-         float $$13 = (float)(azk.d($$10, $$9) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.w(this.b(this.d.dL(), $$13, 90.0F));
-         this.d.C((float)(this.h * this.d.h(bxx.v)));
-         jj $$14 = this.d.dv();
-         dym $$15 = this.d.dV().a_($$14);
-         fdo $$16 = $$15.g(this.d.dV(), $$14);
-         if ($$11 > (double)this.d.dP() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.dq())
-            || !$$16.c() && this.d.dC() < $$16.c(jo.a.b) + (double)$$14.v() && !$$15.a(awz.q) && !$$15.a(awz.U)) {
-            this.d.N().a();
-            this.k = ccq.a.d;
-         }
-      } else if (this.k == ccq.a.d) {
-         this.d.C((float)(this.h * this.d.h(bxx.v)));
-         if (this.d.aJ() || this.d.bm() && this.d.el()) {
-            this.k = ccq.a.a;
-         }
-      } else {
-         this.d.H(0.0F);
-      }
-   }
-
-   private boolean b(float $$0, float $$1) {
-      cgb $$2 = this.d.O();
-      if ($$2 != null) {
-         evg $$3 = $$2.n();
-         if ($$3 != null && $$3.a(this.d, jj.a(this.d.dA() + (double)$$0, (double)this.d.dB(), this.d.dG() + (double)$$1)) != evk.c) {
-            return false;
-         }
-      }
-
+   protected boolean a(aro $$0, cpv $$1, long $$2) {
       return true;
    }
 
-   protected float b(float $$0, float $$1, float $$2) {
-      float $$3 = azk.h($$1 - $$0);
-      if ($$3 > $$2) {
-         $$3 = $$2;
+   protected void b(aro $$0, cpv $$1, long $$2) {
+      $$1.eb().a(cgb.q, true, (long)i);
+      $$1.eb().a(cgb.aM, bas.a, (long)h);
+      $$0.a($$1, (byte)62);
+      $$1.a(awl.CV, 3.0F, 1.0F);
+   }
+
+   protected void c(aro $$0, cpv $$1, long $$2) {
+      $$1.eb().c(cgb.p).ifPresent($$1x -> $$1.J().a($$1x.dt()));
+      if (!$$1.eb().a(cgb.aM) && !$$1.eb().a(cgb.aL)) {
+         $$1.eb().a(cgb.aL, bas.a, (long)(i - h));
+         $$1.eb().c(cgb.p).filter($$1::b).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
+            fdw $$3 = $$1.dt().e($$1.ds().b(bwb.d, 0, $$1.dL()));
+            fdw $$4 = $$2x.bE().d($$3);
+            fdw $$5 = $$4.d();
+            int $$6 = azk.a($$4.g()) + 7;
+
+            for (int $$7 = 1; $$7 < $$6; $$7++) {
+               fdw $$8 = $$3.e($$5.c((double)$$7));
+               $$0.a(lx.B, $$8.d, $$8.e, $$8.f, 1, 0.0, 0.0, 0.0, 0.0);
+            }
+
+            $$1.a(awl.CU, 3.0F, 1.0F);
+            if ($$2x.a($$0, $$0.al().e($$1), 10.0F)) {
+               double $$9 = 0.5 * (1.0 - $$2x.h(byf.p));
+               double $$10 = 2.5 * (1.0 - $$2x.h(byf.p));
+               $$2x.j($$5.a() * $$10, $$5.b() * $$9, $$5.c() * $$10);
+            }
+         });
       }
-
-      if ($$3 < -$$2) {
-         $$3 = -$$2;
-      }
-
-      float $$4 = $$0 + $$3;
-      if ($$4 < 0.0F) {
-         $$4 += 360.0F;
-      } else if ($$4 > 360.0F) {
-         $$4 -= 360.0F;
-      }
-
-      return $$4;
    }
 
-   public double d() {
-      return this.e;
+   protected void d(aro $$0, cpv $$1, long $$2) {
+      a($$1, 40);
    }
 
-   public double e() {
-      return this.f;
-   }
-
-   public double f() {
-      return this.g;
-   }
-
-   protected static enum a {
-      a,
-      b,
-      c,
-      d;
+   public static void a(bwz $$0, int $$1) {
+      $$0.eb().a(cgb.aK, bas.a, (long)$$1);
    }
 }

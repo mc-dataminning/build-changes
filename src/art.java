@@ -1,75 +1,40 @@
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class art {
-   private final aru a;
-   private final int b;
-   private long c;
+public class art extends aqu {
+   private final LongSet c = new LongOpenHashSet();
+   private final int d;
+   private final String e;
 
-   @Nullable
-   public static art a(tw $$0) {
-      aru $$1 = md.aC.a(ald.c($$0.l("type")));
-      if ($$1 == null) {
-         return null;
-      } else {
-         int $$2 = $$0.h("level");
-         if ($$1.c()) {
-            long $$3 = $$0.i("ticks_left");
-            return new art($$1, $$2, $$3);
-         } else {
-            return new art($$1, $$2, 0L);
-         }
-      }
-   }
-
-   public void b(tw $$0) {
-      ald $$1 = md.aC.b(this.a);
-      if ($$1 == null) {
-         throw new IllegalStateException("Unrecognised ticket type: " + this.a);
-      } else {
-         $$0.a("type", $$1.toString());
-         $$0.a("level", this.b);
-         if (this.a.c()) {
-            $$0.a("ticks_left", this.c);
-         }
-      }
-   }
-
-   public art(aru $$0, int $$1) {
-      this($$0, $$1, $$0.d());
-   }
-
-   private art(aru $$0, int $$1, long $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public art(bst<Runnable> $$0, Executor $$1, int $$2) {
+      super($$0, $$1);
+      this.d = $$2;
+      this.e = $$0.v_();
    }
 
    @Override
-   public String toString() {
-      return this.a.c()
-         ? "Ticket[" + af.a(md.aC, this.a) + " " + this.b + "] with " + this.c + " ticks left ( out of" + this.a.d() + ")"
-         : "Ticket[" + af.a(md.aC, this.a) + " " + this.b + "] with no timeout";
+   protected void a(long $$0) {
+      this.c.remove($$0);
    }
 
-   public aru a() {
-      return this.a;
+   @Nullable
+   @Override
+   protected aqv.a c() {
+      return this.c.size() < this.d ? super.c() : null;
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   protected void a(aqv.a $$0) {
+      this.c.add($$0.a());
+      super.a($$0);
    }
 
-   public void c() {
-      this.c = this.a.d();
-   }
-
-   public void d() {
-      if (this.a.c()) {
-         this.c--;
-      }
-   }
-
-   public boolean e() {
-      return this.a.c() && this.c <= 0L;
+   @VisibleForTesting
+   public String d() {
+      return this.e + "=[" + this.c.longStream().mapToObj($$0 -> $$0 + ":" + new dhw($$0)).collect(Collectors.joining(",")) + "], s=" + this.b;
    }
 }

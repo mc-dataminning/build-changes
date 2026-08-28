@@ -1,36 +1,21 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public enum fgk {
+   a(35048, false, true),
+   b(35044, false, true),
+   c(35040, false, true),
+   d(35045, true, false),
+   e(35049, true, false),
+   f(35041, true, false),
+   g(35050, false, false),
+   h(35046, false, false),
+   i(35042, false, false);
 
-public class fgk {
-   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
-   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
-   private static final Vector3f e = new Vector3f(0.2F, -1.0F, 1.0F).normalize();
-   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
+   final int j;
+   final boolean k;
+   final boolean l;
 
-   public static void a() {
-      RenderSystem.setupLevelDiffuseLighting(c, d);
-   }
-
-   public static void b() {
-      RenderSystem.setupLevelDiffuseLighting(a, b);
-   }
-
-   public static void c() {
-      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
-   }
-
-   public static void d() {
-      RenderSystem.setupGui3DDiffuseLighting(a, b);
-   }
-
-   public static void e() {
-      RenderSystem.setShaderLights(e, f);
-   }
-
-   public static void a(Quaternionf $$0) {
-      RenderSystem.setShaderLights($$0.transform(e, new Vector3f()), $$0.transform(f, new Vector3f()));
+   private fgk(final int $$0, final boolean $$1, final boolean $$2) {
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$2;
    }
 }

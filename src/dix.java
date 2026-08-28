@@ -1,10 +1,25 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dix {
-   public static MapCodec<? extends diw> a(kf<MapCodec<? extends diw>> $$0) {
-      kf.a($$0, "fixed", djd.b);
-      kf.a($$0, "multi_noise", djf.c);
-      kf.a($$0, "checkerboard", dja.b);
-      return kf.a($$0, "the_end", djj.b);
+public interface dix {
+   boolean a(iu var1, dzo var2, int var3, int var4);
+
+   default boolean a(iu $$0, dzo $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
+   }
+
+   boolean a(iu var1, boolean var2);
+
+   default boolean b(iu $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
+   }
+
+   default boolean a(iu $$0, boolean $$1, @Nullable bwa $$2) {
+      return this.a($$0, $$1, $$2, 512);
+   }
+
+   boolean a(iu var1, boolean var2, @Nullable bwa var3, int var4);
+
+   default boolean b(bwa $$0) {
+      return false;
    }
 }

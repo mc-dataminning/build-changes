@@ -1,55 +1,88 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class doc extends dle implements dkx {
-   public static final MapCodec<doc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alc.a(me.aP).fieldOf("feature").forGetter($$0x -> $$0x.e), md.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
-            .apply($$0, doc::new)
-   );
-   private static final double b = 0.4;
-   private static final fdo c = dku.b(8.0, 0.0, 9.0);
-   private final dku d;
-   private final alc<ehd<?, ?>> e;
+public class doc {
+   public static <S extends dwn> doc.c<S> a(
+      dwp<S> $$0, Function<dzo, doc.a> $$1, Function<dzo, ja> $$2, ear<ja> $$3, dzo $$4, diq $$5, iu $$6, BiPredicate<diq, iu> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return doc.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return doc.b::b;
+      } else {
+         doc.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == doc.a.a;
+         boolean $$11 = $$9 == doc.a.b;
+         if ($$10) {
+            return new doc.c.b<>($$8);
+         } else {
+            iu $$12 = $$6.a($$2.apply($$4));
+            dzo $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               doc.a $$14 = $$1.apply($$13);
+               if ($$14 != doc.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return doc.b::b;
+                  }
 
-   @Override
-   public MapCodec<doc> a() {
-      return a;
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new doc.c.a<>($$16, $$17);
+                  }
+               }
+            }
+
+            return new doc.c.b<>($$8);
+         }
+      }
    }
 
-   protected doc(alc<ehd<?, ?>> $$0, dku $$1, dyl.d $$2) {
-      super($$2);
-      this.e = $$0;
-      this.d = $$1;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return c;
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
    }
 
-   @Override
-   protected boolean b(dym $$0, dgv $$1, jj $$2) {
-      return $$0.a(awz.aO) || $$0.a(dkw.fA) || $$0.a(dkw.ek) || super.b($$0, $$1, $$2);
-   }
+   public interface c<S> {
+      <T> T apply(doc.b<? super S, T> var1);
 
-   private Optional<? extends js<ehd<?, ?>>> a(dhs $$0) {
-      return $$0.F_().f(me.aP).a(this.e);
-   }
+      public static final class a<S> implements doc.c<S> {
+         private final S a;
+         private final S b;
 
-   @Override
-   public boolean a(dhs $$0, jj $$1, dym $$2) {
-      dym $$3 = $$0.a_($$1.e());
-      return $$3.a(this.d);
-   }
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
 
-   @Override
-   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
-      return (double)$$1.i() < 0.4;
-   }
+         @Override
+         public <T> T apply(doc.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
+      }
 
-   @Override
-   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
-      this.a($$0).ifPresent($$3x -> ((ehd)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2));
+      public static final class b<S> implements doc.c<S> {
+         private final S a;
+
+         public b(S $$0) {
+            this.a = $$0;
+         }
+
+         @Override
+         public <T> T apply(doc.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
+      }
    }
 }

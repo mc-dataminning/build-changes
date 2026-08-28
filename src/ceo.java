@@ -1,127 +1,90 @@
 import java.util.EnumSet;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class ceo<T extends cnj & cnn & cmw> extends cdn {
-   public static final btb a = bam.a(1, 2);
-   private final T b;
-   private ceo.a c = ceo.a.a;
-   private final double d;
-   private final float e;
-   private int f;
-   private int g;
-   private int h;
+public class ceo extends cdv {
+   public static final int b = 1;
+   protected final bxh c;
+   protected final double d;
+   protected double e;
+   protected double f;
+   protected double g;
+   protected boolean h;
+   private final Function<bxh, axp<bur>> a;
 
-   public ceo(T $$0, double $$1, float $$2) {
-      this.b = $$0;
+   public ceo(bxh $$0, double $$1) {
+      this($$0, $$1, axb.F);
+   }
+
+   public ceo(bxh $$0, double $$1, axp<bur> $$2) {
+      this($$0, $$1, $$1x -> $$2);
+   }
+
+   public ceo(bxh $$0, double $$1, Function<bxh, axp<bur>> $$2) {
+      this.c = $$0;
       this.d = $$1;
-      this.e = $$2 * $$2;
-      this.a(EnumSet.of(cdn.a.a, cdn.a.b));
+      this.a = $$2;
+      this.a(EnumSet.of(cdv.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.i() && this.h();
+      if (!this.h()) {
+         return false;
+      } else {
+         if (this.c.bY()) {
+            iu $$0 = this.a(this.c.dV(), this.c, 5);
+            if ($$0 != null) {
+               this.e = (double)$$0.u();
+               this.f = (double)$$0.v();
+               this.g = (double)$$0.w();
+               return true;
+            }
+         }
+
+         return this.i();
+      }
    }
 
-   private boolean h() {
-      return this.b.b(cyc.wZ);
+   protected boolean h() {
+      return this.c.eH() != null && this.c.eH().a(this.a.apply(this.c));
+   }
+
+   protected boolean i() {
+      fdw $$0 = chs.a(this.c, 5, 4);
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.e = $$0.d;
+         this.f = $$0.e;
+         this.g = $$0.f;
+         return true;
+      }
+   }
+
+   public boolean k() {
+      return this.h;
    }
 
    @Override
-   public boolean c() {
-      return this.i() && (this.b() || !this.b.O().k()) && this.h();
-   }
-
-   private boolean i() {
-      return this.b.f() != null && this.b.f().bK();
+   public void d() {
+      this.c.O().a(this.e, this.f, this.g, this.d);
+      this.h = true;
    }
 
    @Override
    public void e() {
-      super.e();
-      this.b.v(false);
-      this.b.h(null);
-      this.f = 0;
-      if (this.b.fy()) {
-         this.b.fE();
-         this.b.b(false);
-         this.b.fA().b(kx.P, daa.a);
-      }
+      this.h = false;
    }
 
    @Override
-   public boolean Q_() {
-      return true;
+   public boolean c() {
+      return !this.c.O().k();
    }
 
-   @Override
-   public void a() {
-      bwr $$0 = this.b.f();
-      if ($$0 != null) {
-         boolean $$1 = this.b.P().a($$0);
-         boolean $$2 = this.f > 0;
-         if ($$1 != $$2) {
-            this.f = 0;
-         }
-
-         if ($$1) {
-            this.f++;
-         } else {
-            this.f--;
-         }
-
-         double $$3 = this.b.g((bvs)$$0);
-         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
-         if ($$4) {
-            this.h--;
-            if (this.h <= 0) {
-               this.b.O().a($$0, this.k() ? this.d : this.d * 0.5);
-               this.h = a.a(this.b.dY());
-            }
-         } else {
-            this.h = 0;
-            this.b.O().m();
-         }
-
-         this.b.J().a($$0, 30.0F, 30.0F);
-         if (this.c == ceo.a.a) {
-            if (!$$4) {
-               this.b.c(crd.a(this.b, cyc.wZ));
-               this.c = ceo.a.b;
-               this.b.b(true);
-            }
-         } else if (this.c == ceo.a.b) {
-            if (!this.b.fy()) {
-               this.c = ceo.a.a;
-            }
-
-            int $$5 = this.b.fC();
-            cxy $$6 = this.b.fA();
-            if ($$5 >= cwq.b($$6, this.b)) {
-               this.b.fD();
-               this.c = ceo.a.c;
-               this.g = 20 + this.b.dY().a(20);
-               this.b.b(false);
-            }
-         } else if (this.c == ceo.a.c) {
-            this.g--;
-            if (this.g == 0) {
-               this.c = ceo.a.d;
-            }
-         } else if (this.c == ceo.a.d && $$1) {
-            this.b.a($$0, 1.0F);
-            this.c = ceo.a.a;
-         }
-      }
-   }
-
-   private boolean k() {
-      return this.c == ceo.a.a;
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Nullable
+   protected iu a(dhv $$0, bwa $$1, int $$2) {
+      iu $$3 = $$1.dv();
+      return !$$0.a_($$3).g($$0, $$3).c() ? null : iu.a($$1.dv(), $$2, 1, $$1x -> $$0.b_($$1x).a(axf.a)).orElse(null);
    }
 }

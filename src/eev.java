@@ -1,68 +1,70 @@
-public final class eev {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   private eev() {
+public record eev(je<eeo> b, float c, fdw d, @Nullable UUID e, @Nullable UUID f, @Nullable bwa g) {
+   public static final Codec<eev> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eeo.aj.fieldOf("game_event").forGetter(eev::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(eev::b),
+               fdw.a.fieldOf("pos").forGetter(eev::c),
+               jy.a.lenientOptionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               jy.a.lenientOptionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new eev($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
+   );
+
+   public eev(je<eeo> $$0, float $$1, fdw $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   protected static eep.c a(eee $$0, eee $$1, eee $$2, eey $$3) {
-      dym $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         eev.a $$8 = $$6 > 0.0 ? eev.a.a : eev.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = azk.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               azs $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = azk.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
-         }
-      };
+   public eev(je<eeo> $$0, float $$1, fdw $$2, @Nullable bwa $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cG(), a($$3), $$3);
    }
 
-   protected static enum a {
-      a(dkw.rE.m(), dkw.tM.m(), dkw.c.m(), 0, 50),
-      b(dkw.T.m(), dkw.tL.m(), dkw.rd.m(), -60, -8);
-
-      final dym e;
-      final dym f;
-      final dym g;
-      protected final int c;
-      protected final int d;
-
-      private a(final dym $$0, final dym $$1, final dym $$2, final int $$3, final int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
+   @Nullable
+   private static UUID a(@Nullable bwa $$0) {
+      if ($$0 instanceof crm $$1 && $$1.q() != null) {
+         return $$1.q().cG();
       }
+
+      return null;
+   }
+
+   public Optional<bwa> a(aro $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::b));
+   }
+
+   public Optional<bwa> b(aro $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof crm).map($$0x -> (crm)$$0x).map(crm::q).or(() -> Optional.ofNullable(this.f).map($$0::b));
+   }
+
+   public je<eeo> a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public fdw c() {
+      return this.d;
+   }
+
+   @Nullable
+   public UUID d() {
+      return this.e;
+   }
+
+   @Nullable
+   public UUID e() {
+      return this.f;
+   }
+
+   @Nullable
+   public bwa f() {
+      return this.g;
    }
 }

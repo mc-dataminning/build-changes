@@ -1,12 +1,20 @@
-import com.mojang.serialization.Codec;
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record him(Map<String, hib> d) {
-   public static final Codec<String> a = Codec.string(1, 16);
-   public static final Codec<him> b = Codec.unboundedMap(a, hib.a).xmap(him::new, him::a);
-   public static final atz<him> c = new atz<>("language", b);
+public record him(azv c) implements hie {
+   public static final MapCodec<him> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azv.a.fieldOf("pattern").forGetter(him::b)).apply($$0, him::new));
 
-   public Map<String, hib> a() {
-      return this.d;
+   @Override
+   public void a(avb $$0, hie.a $$1) {
+      $$1.a(this.c.c());
+   }
+
+   @Override
+   public MapCodec<him> a() {
+      return b;
+   }
+
+   public azv b() {
+      return this.c;
    }
 }

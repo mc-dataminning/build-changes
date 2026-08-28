@@ -1,126 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
-import java.util.function.Function;
 
 public class apo {
-   public static void a(CommandDispatcher<ex> $$0, et $$1) {
+   public static void a(CommandDispatcher<ei> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("title").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a(
-                                    "targets", fk.d()
-                                 )
-                                 .then(ey.a("clear").executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets")))))
-                              .then(ey.a("reset").executes($$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "targets")))))
-                           .then(
-                              ey.a("title")
-                                 .then(
-                                    ey.a("title", fg.a($$1))
-                                       .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), fg.a($$0x, "title"), "title", afp::new))
-                                 )
-                           ))
-                        .then(
-                           ey.a("subtitle")
-                              .then(
-                                 ey.a("title", fg.a($$1))
-                                    .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), fg.a($$0x, "title"), "subtitle", afn::new))
-                              )
-                        ))
-                     .then(
-                        ey.a("actionbar")
-                           .then(
-                              ey.a("title", fg.a($$1))
-                                 .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), fg.a($$0x, "title"), "actionbar", aeo::new))
-                           )
-                     ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("time").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ey.a("times")
-                        .then(
-                           ey.a("fadeIn", gn.a())
-                              .then(
-                                 ey.a("stay", gn.a())
-                                    .then(
-                                       ey.a("fadeOut", gn.a())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ex)$$0x.getSource(),
-                                                   fk.f($$0x, "targets"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
-                                                   IntegerArgumentType.getInteger($$0x, "stay"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
+                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("set")
+                                    .then(ej.a("day").executes($$0x -> a((ei)$$0x.getSource(), 1000))))
+                                 .then(ej.a("noon").executes($$0x -> a((ei)$$0x.getSource(), 6000))))
+                              .then(ej.a("night").executes($$0x -> a((ei)$$0x.getSource(), 13000))))
+                           .then(ej.a("midnight").executes($$0x -> a((ei)$$0x.getSource(), 18000))))
+                        .then(ej.a("time", fy.a()).executes($$0x -> a((ei)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
+                  ))
+               .then(ej.a("add").then(ej.a("time", fy.a()).executes($$0x -> b((ei)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+            .then(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("query")
+                        .then(ej.a("daytime").executes($$0x -> c((ei)$$0x.getSource(), a(((ei)$$0x.getSource()).e())))))
+                     .then(ej.a("gametime").executes($$0x -> c((ei)$$0x.getSource(), (int)(((ei)$$0x.getSource()).e().ae() % 2147483647L)))))
+                  .then(ej.a("day").executes($$0x -> c((ei)$$0x.getSource(), (int)(((ei)$$0x.getSource()).e().af() / 24000L % 2147483647L))))
             )
       );
    }
 
-   private static int a(ex $$0, Collection<aro> $$1) {
-      ach $$2 = new ach(false);
-
-      for (aro $$3 : $$1) {
-         $$3.f.b($$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> wv.a("commands.title.cleared.single", $$1.iterator().next().m_()), true);
-      } else {
-         $$0.a(() -> wv.a("commands.title.cleared.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static int a(aro $$0) {
+      return (int)($$0.af() % 24000L);
    }
 
-   private static int b(ex $$0, Collection<aro> $$1) {
-      ach $$2 = new ach(true);
-
-      for (aro $$3 : $$1) {
-         $$3.f.b($$2);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> wv.a("commands.title.reset.single", $$1.iterator().next().m_()), true);
-      } else {
-         $$0.a(() -> wv.a("commands.title.reset.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static int c(ei $$0, int $$1) {
+      $$0.a(() -> ww.a("commands.time.query", $$1), false);
+      return $$1;
    }
 
-   private static int a(ex $$0, Collection<aro> $$1, wv $$2, String $$3, Function<wv, zc<?>> $$4) throws CommandSyntaxException {
-      for (aro $$5 : $$1) {
-         $$5.f.b($$4.apply(wy.a($$0, $$2, $$5, 0)));
+   public static int a(ei $$0, int $$1) {
+      for (aro $$2 : $$0.l().L()) {
+         $$2.b((long)$$1);
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> wv.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().m_()), true);
-      } else {
-         $$0.a(() -> wv.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+      $$0.l().H();
+      $$0.a(() -> ww.a("commands.time.set", $$1), true);
+      return a($$0.e());
    }
 
-   private static int a(ex $$0, Collection<aro> $$1, int $$2, int $$3, int $$4) {
-      afq $$5 = new afq($$2, $$3, $$4);
-
-      for (aro $$6 : $$1) {
-         $$6.f.b($$5);
+   public static int b(ei $$0, int $$1) {
+      for (aro $$2 : $$0.l().L()) {
+         $$2.b($$2.af() + (long)$$1);
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> wv.a("commands.title.times.single", $$1.iterator().next().m_()), true);
-      } else {
-         $$0.a(() -> wv.a("commands.title.times.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+      $$0.l().H();
+      int $$3 = a($$0.e());
+      $$0.a(() -> ww.a("commands.time.set", $$3), true);
+      return $$3;
    }
 }

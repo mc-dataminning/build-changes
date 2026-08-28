@@ -1,22 +1,40 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dqc extends dsr {
-   public static final MapCodec<dqc> a = b(dqc::new);
+public class dqc extends dpk implements dqp {
+   public static final MapCodec<dqc> c = b(dqc::new);
 
    @Override
    public MapCodec<dqc> a() {
-      return a;
+      return c;
    }
 
-   public dqc(dyl.d $$0) {
-      super($$0);
+   protected dqc(dzn.d $$0) {
+      super($$0, ja.b, fen.b(), true);
    }
 
    @Override
-   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.a(10) == 0) {
-         $$1.a(lv.ac, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
-      }
+   protected dpl c() {
+      return (dpl)dlw.mE;
+   }
+
+   @Override
+   protected evv b_(dzo $$0) {
+      return evw.c.a(false);
+   }
+
+   @Override
+   protected boolean o(dzo $$0) {
+      return this.c().o($$0);
+   }
+
+   @Override
+   public boolean a(@Nullable bwz $$0, dhv $$1, iu $$2, dzo $$3, evu $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(diq $$0, iu $$1, dzo $$2, evv $$3) {
+      return false;
    }
 }

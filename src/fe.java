@@ -1,47 +1,95 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public record fe(List<fe.a> b) {
-   public static final fe a = new fe(List.of());
-   private static final int c = 8;
-   private static final int d = 16;
+public class fe implements ArgumentType<fe.a> {
+   private static final Collection<String> a = Arrays.asList("=", ">", "<");
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ww.c("arguments.operation.invalid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ww.c("arguments.operation.div0"));
 
-   public fe(vr $$0) {
-      this($$0.a(vr.a(ArrayList::new, 8), fe.a::new));
+   public static fe a() {
+      return new fe();
    }
 
-   public void a(vr $$0) {
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   public static fe.a a(CommandContext<ei> $$0, String $$1) {
+      return (fe.a)$$0.getArgument($$1, fe.a.class);
    }
 
-   public static fe a(xn<?> $$0, fe.b $$1) {
-      List<fe.a> $$2 = $$0.a().stream().map($$1x -> {
-         xh $$2x = $$1.sign($$1x.c());
-         return $$2x != null ? new fe.a($$1x.a(), $$2x) : null;
-      }).filter(Objects::nonNull).toList();
-      return new fe($$2);
-   }
+   public fe.a a(StringReader $$0) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw b.createWithContext($$0);
+      } else {
+         int $$1 = $$0.getCursor();
 
-   public List<fe.a> a() {
-      return this.b;
-   }
+         while ($$0.canRead() && $$0.peek() != ' ') {
+            $$0.skip();
+         }
 
-   public static record a(String a, xh b) {
-      public a(vr $$0) {
-         this($$0.d(16), xh.a($$0));
+         return a($$0.getString().substring($$1, $$0.getCursor()));
       }
+   }
 
-      public void a(vr $$0) {
-         $$0.a(this.a, 16);
-         xh.a($$0, this.b);
-      }
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return en.a(new String[]{"=", "+=", "-=", "*=", "/=", "%=", "<", ">", "><"}, $$1);
+   }
+
+   public Collection<String> getExamples() {
+      return a;
+   }
+
+   private static fe.a a(String $$0) throws CommandSyntaxException {
+      return (fe.a)($$0.equals("><") ? ($$0x, $$1) -> {
+         int $$2 = $$0x.a();
+         $$0x.a($$1.a());
+         $$1.a($$2);
+      } : b($$0));
+   }
+
+   private static fe.b b(String $$0) throws CommandSyntaxException {
+      return switch ($$0) {
+         case "=" -> ($$0x, $$1) -> $$1;
+         case "+=" -> Integer::sum;
+         case "-=" -> ($$0x, $$1) -> $$0x - $$1;
+         case "*=" -> ($$0x, $$1) -> $$0x * $$1;
+         case "/=" -> ($$0x, $$1) -> {
+         if ($$1 == 0) {
+            throw c.create();
+         } else {
+            return azk.a($$0x, $$1);
+         }
+      };
+         case "%=" -> ($$0x, $$1) -> {
+         if ($$1 == 0) {
+            throw c.create();
+         } else {
+            return azk.b($$0x, $$1);
+         }
+      };
+         case "<" -> Math::min;
+         case ">" -> Math::max;
+         default -> throw b.create();
+      };
    }
 
    @FunctionalInterface
-   public interface b {
-      @Nullable
-      xh sign(String var1);
+   public interface a {
+      void apply(fez var1, fez var2) throws CommandSyntaxException;
+   }
+
+   @FunctionalInterface
+   interface b extends fe.a {
+      int apply(int var1, int var2) throws CommandSyntaxException;
+
+      @Override
+      default void apply(fez $$0, fez $$1) throws CommandSyntaxException {
+         $$0.a(this.apply($$0.a(), $$1.a()));
+      }
    }
 }

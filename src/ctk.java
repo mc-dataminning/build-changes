@@ -1,62 +1,89 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public record ctk(int c, float d, boolean e) implements dac {
-   public static final Codec<ctk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ays.l.fieldOf("nutrition").forGetter(ctk::a),
-               Codec.FLOAT.fieldOf("saturation").forGetter(ctk::b),
-               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(ctk::c)
-            )
-            .apply($$0, ctk::new)
-   );
-   public static final yt<wg, ctk> b = yt.a(yr.h, ctk::a, yr.l, ctk::b, yr.b, ctk::c, ctk::new);
-
-   @Override
-   public void a(dhp $$0, bwr $$1, cxy $$2, dab $$3) {
-      azs $$4 = $$1.dY();
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), $$3.e().a(), awl.g, 1.0F, $$4.a(1.0F, 0.4F));
-      if ($$1 instanceof cqi $$5) {
-         $$5.gt().a(this);
-         $$0.a(null, $$5.dA(), $$5.dC(), $$5.dG(), awk.uT, awl.h, 0.5F, azk.b($$4, 0.9F, 1.0F));
-      }
+public class ctk {
+   public static int[][] a(ja $$0) {
+      ja $$1 = $$0.h();
+      ja $$2 = $$1.g();
+      ja $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   public int a() {
-      return this.c;
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   public float b() {
-      return this.d;
+   public static boolean a(dhz $$0, bwz $$1, fdr $$2) {
+      for (feq $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
+         }
+      }
+
+      return $$0.A_().a($$2);
    }
 
-   public boolean c() {
-      return this.e;
+   public static boolean a(dhz $$0, fdw $$1, bwz $$2, bxl $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
    }
 
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
+   public static feq a(dhv $$0, iu $$1) {
+      dzo $$2 = $$0.a_($$1);
+      return !$$2.a(axa.aS) && (!($$2.b() instanceof duq) || !$$2.c(duq.b)) ? $$2.g($$0, $$1) : fen.a();
+   }
 
-      public ctk.a a(int $$0) {
-         this.a = $$0;
-         return this;
+   public static double a(iu $$0, int $$1, Function<iu, feq> $$2) {
+      iu.a $$3 = $$0.k();
+      int $$4 = 0;
+
+      while ($$4 < $$1) {
+         feq $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(ja.a.b);
+         }
+
+         $$4++;
+         $$3.c(ja.b);
       }
 
-      public ctk.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
+      return Double.POSITIVE_INFINITY;
+   }
 
-      public ctk.a a() {
-         this.c = true;
-         return this;
-      }
+   @Nullable
+   public static fdw a(bwj<?> $$0, dhz $$1, iu $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
+      } else {
+         double $$4 = $$1.a(a((dhv)$$1, $$2), () -> a((dhv)$$1, $$2.e()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.e()))) {
+            return null;
+         } else {
+            fdw $$5 = fdw.a($$2, $$4);
+            fdr $$6 = $$0.n().a($$5);
 
-      public ctk b() {
-         float $$0 = cti.a(this.a, this.b);
-         return new ctk(this.a, $$0, this.c);
+            for (feq $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
+
+            if ($$0 != bwj.bS || !$$1.a_($$2).a(axa.cv) && !$$1.a_($$2.d()).a(axa.cv)) {
+               return !$$1.A_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
       }
    }
 }

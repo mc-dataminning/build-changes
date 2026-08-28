@@ -1,13 +1,33 @@
-public class fkb extends fka {
-   public static final int b = 5;
-   public final int c;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-   public fkb(int $$0, int $$1) {
-      super(fig.b.a($$1));
-      if ($$0 >= 0 && $$0 <= 120) {
-         this.c = $$0;
-      } else {
-         this.c = 5;
+public class fkb extends fkv {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fka> a = Lists.newArrayList();
+
+   public static fkb a(String $$0) {
+      fkb $$1 = new fkb();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("invites").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$1.a.add(fka.a($$4.next().getAsJsonObject()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
       }
+
+      return $$1;
    }
 }

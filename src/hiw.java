@@ -1,40 +1,9 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public abstract class hiw implements his {
-   protected final his a;
-
-   public hiw(his $$0) {
-      this.a = $$0;
+public class hiw extends hjd {
+   public hiw(hib $$0) {
+      super($$0, ale.b("textures/atlas/map_decorations.png"), hjx.h);
    }
 
-   @Override
-   public List<gpf> a(@Nullable dym $$0, @Nullable jo $$1, azs $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a() {
-      return this.a.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.c();
-   }
-
-   @Override
-   public hgs d() {
-      return this.a.d();
-   }
-
-   @Override
-   public gpp e() {
-      return this.a.e();
+   public hhz a(exj $$0) {
+      return this.a($$0.a());
    }
 }

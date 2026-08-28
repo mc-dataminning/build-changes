@@ -1,34 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class hfq implements hfw<dwt> {
-   private final gqt a;
+public class hfq implements hfz {
+   public static final MapCodec<hfq> a = hfr.a.xmap(hfq::new, $$0 -> $$0.b);
+   private final hfr b;
 
-   public hfq(gqt $$0) {
-      this.a = $$0;
+   public hfq(boolean $$0, hfr.a $$1) {
+      this(new hfr($$0, $$1));
    }
 
-   @Nullable
-   public dwt a(cxy $$0) {
-      return $$0.a(kx.am);
+   private hfq(hfr $$0) {
+      this.b = $$0;
    }
 
-   public void a(@Nullable dwt $$0, cxw $$1, fho $$2, gny $$3, int $$4, int $$5, boolean $$6) {
-      this.a.a($$2, $$3, $$4, $$5, Objects.requireNonNullElse($$0, dwt.a));
+   @Override
+   public float a(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3) {
+      return this.b.a($$0, $$1, $$2, $$3);
    }
 
-   public static record a() implements hfw.a {
-      public static final MapCodec<hfq.a> a = MapCodec.unit(new hfq.a());
-
-      @Override
-      public MapCodec<hfq.a> a() {
-         return a;
-      }
-
-      @Override
-      public hfw<?> a(ggz $$0) {
-         return new hfq(new gqt($$0));
-      }
+   @Override
+   public MapCodec<hfq> a() {
+      return a;
    }
 }

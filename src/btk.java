@@ -1,77 +1,47 @@
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class btk {
-   public static final String a = "Items";
+public class btk extends btd {
+   public static final MapCodec<btk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bsj.b(btd.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, btk::new)
+   );
+   private final bsj<btd> b;
+   private final int f;
+   private final int g;
 
-   public static cxy a(List<cxy> $$0, int $$1, int $$2) {
-      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).f() && $$2 > 0 ? $$0.get($$1).a($$2) : cxy.k;
-   }
+   public btk(bsj<btd> $$0) {
+      this.b = $$0;
+      int $$1 = Integer.MAX_VALUE;
+      int $$2 = Integer.MIN_VALUE;
 
-   public static cxy a(List<cxy> $$0, int $$1) {
-      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cxy.k) : cxy.k;
-   }
-
-   public static tw a(tw $$0, kb<cxy> $$1, ju.a $$2) {
-      return a($$0, $$1, true, $$2);
-   }
-
-   public static tw a(tw $$0, kb<cxy> $$1, boolean $$2, ju.a $$3) {
-      uc $$4 = new uc();
-
-      for (int $$5 = 0; $$5 < $$1.size(); $$5++) {
-         cxy $$6 = $$1.get($$5);
-         if (!$$6.f()) {
-            tw $$7 = new tw();
-            $$7.a("Slot", (byte)$$5);
-            $$4.add($$6.b($$3, $$7));
-         }
+      for (bsi<btd> $$3 : $$0.d()) {
+         int $$4 = $$3.a().a();
+         int $$5 = $$3.a().b();
+         $$1 = Math.min($$1, $$4);
+         $$2 = Math.max($$2, $$5);
       }
 
-      if (!$$4.isEmpty() || $$2) {
-         $$0.a("Items", $$4);
-      }
-
-      return $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static void b(tw $$0, kb<cxy> $$1, ju.a $$2) {
-      uc $$3 = $$0.c("Items", 10);
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         tw $$5 = $$3.a($$4);
-         int $$6 = $$5.f("Slot") & 255;
-         if ($$6 >= 0 && $$6 < $$1.size()) {
-            $$1.set($$6, cxy.a($$2, (ut)$$5).orElse(cxy.k));
-         }
-      }
+   @Override
+   public int a(azt $$0) {
+      return this.b.b($$0).a($$0);
    }
 
-   public static int a(btj $$0, Predicate<cxy> $$1, int $$2, boolean $$3) {
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cxy $$6 = $$0.a($$5);
-         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
-         if ($$7 > 0 && !$$3 && $$6.f()) {
-            $$0.a($$5, cxy.k);
-         }
-
-         $$4 += $$7;
-      }
-
-      return $$4;
+   @Override
+   public int a() {
+      return this.f;
    }
 
-   public static int a(cxy $$0, Predicate<cxy> $$1, int $$2, boolean $$3) {
-      if ($$0.f() || !$$1.test($$0)) {
-         return 0;
-      } else if ($$3) {
-         return $$0.M();
-      } else {
-         int $$4 = $$2 < 0 ? $$0.M() : Math.min($$2, $$0.M());
-         $$0.h($$4);
-         return $$4;
-      }
+   @Override
+   public int b() {
+      return this.g;
+   }
+
+   @Override
+   public bte<?> c() {
+      return bte.e;
    }
 }

@@ -1,37 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class bzr {
-   public static bzt<bwr> a(float $$0) {
-      return cbv.a((Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$1 -> $$1.group($$1.c(cft.n)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.h($$3.dv())) {
-                  return false;
-               } else {
-                  Optional<fcu> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new cfw($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
+public class bzr extends byq<bxb> {
+   public static final int c = 100;
+   private final btj d;
+   private final awk e;
+
+   public bzr(btj $$0, awk $$1) {
+      super(ImmutableMap.of(cgb.o, cgc.c, cgb.U, cgc.a), 100);
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Nullable
-   private static fcu a(arn $$0, bwr $$1) {
-      azs $$2 = $$1.dY();
-      jj $$3 = $$1.dv();
+   protected boolean a(aro $$0, bxb $$1, long $$2) {
+      return !$$1.aJ();
+   }
 
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         jj $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return fcu.c($$5);
-         }
+   protected void b(aro $$0, bxb $$1, long $$2) {
+      $$1.q(true);
+      $$1.b(bxl.g);
+   }
+
+   protected void c(aro $$0, bxb $$1, long $$2) {
+      if ($$1.aJ()) {
+         $$1.i($$1.dy().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, awm.g, 2.0F, 1.0F);
       }
 
-      return null;
-   }
-
-   public static boolean a(arn $$0, bwr $$1, jj $$2) {
-      return $$0.h($$2) && (double)$$0.a(eel.a.e, $$2).v() <= $$1.dC();
+      $$1.q(false);
+      $$1.b(bxl.a);
+      $$1.eb().b(cgb.U);
+      $$1.eb().a(cgb.T, this.d.a($$0.A));
    }
 }

@@ -1,3 +1,18 @@
+import javax.annotation.Nullable;
+
 public interface bub {
-   bua a(dym var1, dhq var2, jj var3);
+   ww al();
+
+   default boolean h_() {
+      return this.an() != null;
+   }
+
+   default ww m_() {
+      return this.al();
+   }
+
+   @Nullable
+   default ww an() {
+      return null;
+   }
 }

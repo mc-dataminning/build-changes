@@ -1,95 +1,60 @@
-public class eew implements dhc {
-   private int a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.apache.commons.lang3.tuple.Pair;
 
-   @Override
-   public int a(arn $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.O().c(dhl.L)) {
-         return 0;
+public class eew {
+   public static final Codec<eew> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eev.a.lenientOptionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
+               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
+            )
+            .apply($$0, eew::new)
+   );
+   private Optional<Pair<eev, Long>> b;
+
+   public eew(Optional<eev> $$0, long $$1) {
+      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
+   }
+
+   public eew() {
+      this.b = Optional.empty();
+   }
+
+   public void a(eev $$0, long $$1) {
+      if (this.b($$0, $$1)) {
+         this.b = Optional.of(Pair.of($$0, $$1));
+      }
+   }
+
+   private boolean b(eev $$0, long $$1) {
+      if (this.b.isEmpty()) {
+         return true;
       } else {
-         azs $$3 = $$0.A;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
+         Pair<eev, Long> $$2 = this.b.get();
+         long $$3 = (Long)$$2.getRight();
+         if ($$1 != $$3) {
+            return false;
          } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.af() / 24000L;
-            if ($$4 < 5L || !$$0.V()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
+            eev $$4 = (eev)$$2.getLeft();
+            if ($$0.b() < $$4.b()) {
+               return true;
             } else {
-               int $$5 = $$0.z().size();
-               if ($$5 < 1) {
-                  return 0;
-               } else {
-                  cqi $$6 = $$0.z().get($$3.a($$5));
-                  if ($$6.U_()) {
-                     return 0;
-                  } else if ($$0.a($$6.dv(), 2)) {
-                     return 0;
-                  } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     jj.a $$9 = $$6.dv().k().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        js<dis> $$11 = $$0.t($$9);
-                        if ($$11.a(awy.ag)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
-
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(eel.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
-
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
-
-                           return $$12;
-                        }
-                     }
-                  }
-               }
+               return $$0.b() > $$4.b() ? false : eex.a_($$0.a()) > eex.a_($$4.a());
             }
          }
       }
    }
 
-   private boolean a(arn $$0, jj $$1, azs $$2, boolean $$3) {
-      dym $$4 = $$0.a_($$1);
-      if (!dia.a($$0, $$1, $$4, $$4.y(), bwb.aT)) {
-         return false;
-      } else if (!cnk.b(bwb.aT, $$0, bwa.p, $$1, $$2)) {
-         return false;
+   public Optional<eev> a(long $$0) {
+      if (this.b.isEmpty()) {
+         return Optional.empty();
       } else {
-         cnk $$5 = bwb.aT.a($$0, bwa.p);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.w(true);
-               $$5.gv();
-            }
-
-            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), bwa.p, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
-         }
+         return this.b.get().getRight() < $$0 ? Optional.of((eev)this.b.get().getLeft()) : Optional.empty();
       }
+   }
+
+   public void a() {
+      this.b = Optional.empty();
    }
 }

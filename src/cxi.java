@@ -1,40 +1,59 @@
-public class cxi extends cxu {
-   public cxi(cxu.a $$0) {
+import java.util.Optional;
+
+public class cxi extends cyo {
+   private static final ww a = ww.c("item.minecraft.lodestone_compass");
+
+   public cxi(cyo.a $$0) {
       super($$0);
    }
 
    @Override
-   public btq a(dbp $$0) {
-      cqi $$1 = $$0.o();
-      dhp $$2 = $$0.q();
-      jj $$3 = $$0.a();
-      dym $$4 = $$2.a_($$3);
-      if (!dlj.i($$4) && !dlk.h($$4) && !dll.h($$4)) {
-         jj $$5 = $$3.a($$0.k());
-         if (dkh.a($$2, $$5, $$0.g())) {
-            $$2.a($$1, $$5, awk.jz, awl.e, 1.0F, $$2.C_().i() * 0.4F + 0.8F);
-            dym $$6 = dkh.a($$2, $$5);
-            $$2.a($$5, $$6, 11);
-            $$2.a($$1, edm.i, $$3);
-            cxy $$7 = $$0.n();
-            if ($$1 instanceof aro) {
-               ap.z.a((aro)$$1, $$5, $$7);
-               $$7.a(1, $$1, bwr.d($$0.p()));
+   public boolean c_(cys $$0) {
+      return $$0.c(kj.ah) || super.c_($$0);
+   }
+
+   @Override
+   public void a(cys $$0, dip $$1, bwa $$2, int $$3, boolean $$4) {
+      if ($$1 instanceof aro $$5) {
+         dbm $$6 = $$0.a(kj.ah);
+         if ($$6 != null) {
+            dbm $$7 = $$6.a($$5);
+            if ($$7 != $$6) {
+               $$0.b(kj.ah, $$7);
             }
-
-            return btq.a;
-         } else {
-            return btq.d;
          }
-      } else {
-         $$2.a($$1, $$3, awk.jz, awl.e, 1.0F, $$2.C_().i() * 0.4F + 0.8F);
-         $$2.a($$3, $$4.b(dzc.u, Boolean.valueOf(true)), 11);
-         $$2.a($$1, edm.c, $$3);
-         if ($$1 != null) {
-            $$0.n().a(1, $$1, bwr.d($$0.p()));
-         }
-
-         return btq.a;
       }
+   }
+
+   @Override
+   public bty a(dcn $$0) {
+      iu $$1 = $$0.a();
+      dip $$2 = $$0.q();
+      if (!$$2.a_($$1).a(dlw.pU)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, awl.oV, awm.h, 1.0F, 1.0F);
+         cqs $$3 = $$0.o();
+         cys $$4 = $$0.n();
+         boolean $$5 = !$$3.fU() && $$4.M() == 1;
+         dbm $$6 = new dbm(Optional.of(jd.a($$2.aj(), $$1)), true);
+         if ($$5) {
+            $$4.b(kj.ah, $$6);
+         } else {
+            cys $$7 = $$4.a(cyw.rD, 1);
+            $$4.a(1, $$3);
+            $$7.b(kj.ah, $$6);
+            if (!$$3.gi().f($$7)) {
+               $$3.a($$7, false);
+            }
+         }
+
+         return bty.a;
+      }
+   }
+
+   @Override
+   public ww a(cys $$0) {
+      return $$0.c(kj.ah) ? a : super.a($$0);
    }
 }

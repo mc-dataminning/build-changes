@@ -1,13 +1,24 @@
-import java.util.concurrent.TimeUnit;
-
 public class bam {
-   public static final long a = TimeUnit.SECONDS.toNanos(1L);
-   public static final long b = TimeUnit.MILLISECONDS.toNanos(1L);
-   public static final long c = TimeUnit.SECONDS.toMillis(1L);
-   public static final long d = TimeUnit.HOURS.toSeconds(1L);
-   public static final int e = (int)TimeUnit.MINUTES.toSeconds(1L);
+   private final int a;
+   private final int b;
+   private int c;
 
-   public static btb a(int $$0, int $$1) {
-      return btb.a($$0 * 20, $$1 * 20);
+   public bam(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public void a() {
+      this.c = this.c + this.a;
+   }
+
+   public void b() {
+      if (this.c > 0) {
+         this.c--;
+      }
+   }
+
+   public boolean c() {
+      return this.c < this.b;
    }
 }

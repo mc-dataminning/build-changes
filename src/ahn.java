@@ -1,37 +1,28 @@
-public class ahn implements zc<agm> {
-   public static final yt<vr, ahn> a = zc.a(ahn::a, ahn::new);
-   private final boolean b;
-   private final boolean c;
+public record ahn(fdw b, float c, float d, boolean e) implements zd<agn> {
+   public static final yu<vs, ahn> a = yu.a(fdw.b, ahn::b, ys.l, ahn::e, ys.l, ahn::f, ys.b, ahn::g, ahn::new);
 
-   public ahn(boolean $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private ahn(vr $$0) {
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
-   }
-
-   private void a(vr $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
-
-   public void a(agm $$0) {
-      $$0.a(this);
+   public static ahn a(bwa $$0) {
+      return $$0.bR() ? new ahn($$0.N_().a(), $$0.N_().b(), $$0.N_().c(), $$0.aJ()) : new ahn($$0.dt(), $$0.dL(), $$0.dN(), $$0.aJ());
    }
 
    @Override
-   public ze<ahn> a() {
-      return agk.bN;
+   public zf<ahn> a() {
+      return agl.bM;
    }
 
-   public boolean b() {
-      return this.b;
+   public void a(agn $$0) {
+      $$0.a(this);
    }
 
-   public boolean e() {
+   public float e() {
       return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

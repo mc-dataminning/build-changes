@@ -1,16 +1,27 @@
-public class gwr extends gvl<ckg, hbk, ggg> {
-   private static final ald a = ald.b("textures/entity/tadpole/tadpole.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gwr(guf.a $$0) {
-      super($$0, new ggg($$0.a(ghc.dt)), 0.14F);
+public class gwr extends gue<cjb, hcu, get> {
+   private static final Map<cjb.a, ale> a = af.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cjb.a.b, ale.b("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(cjb.a.a, ale.b("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public gwr(gvk.a $$0) {
+      super($$0, new get($$0.a(gif.bJ)), new get($$0.a(gif.bK)), 0.7F);
+      this.a(new gzt(this, $$0.d()));
    }
 
-   @Override
-   public ald b(hbk $$0) {
-      return a;
+   public ale a(hcu $$0) {
+      return a.get($$0.a);
    }
 
-   public hbk b() {
-      return new hbk();
+   public hcu b() {
+      return new hcu();
+   }
+
+   public void a(cjb $$0, hcu $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.t();
    }
 }

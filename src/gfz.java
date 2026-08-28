@@ -1,22 +1,71 @@
-public class gfz extends gea<hak> {
-   public gfz(ghd $$0) {
-      super($$0);
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import org.joml.Vector3f;
+
+public abstract class gfz {
+   private static final Vector3f a = new Vector3f();
+   protected final gig v;
+   protected final Function<ale, gpn> w;
+   private final List<gig> b;
+
+   public gfz(gig $$0, Function<ale, gpn> $$1) {
+      this.v = $$0;
+      this.w = $$1;
+      this.b = $$0.e().toList();
    }
 
-   public static ghj a() {
-      ghl $$0 = new ghl();
-      ghn $$1 = $$0.a();
-      $$1.a("cube", ghi.c().a(0, 0).a(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), ghf.a);
-      return ghj.a($$0, 64, 32);
+   public final gpn a(ale $$0) {
+      return this.w.apply($$0);
    }
 
-   public static ghj b() {
-      ghl $$0 = new ghl();
-      ghn $$1 = $$0.a();
-      $$1.a("cube", ghi.c().a(0, 16).a(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), ghf.a);
-      $$1.a("right_eye", ghi.c().a(32, 0).a(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), ghf.a);
-      $$1.a("left_eye", ghi.c().a(32, 4).a(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), ghf.a);
-      $$1.a("mouth", ghi.c().a(32, 8).a(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), ghf.a);
-      return ghj.a($$0, 64, 32);
+   public final void a(fiq $$0, fiu $$1, int $$2, int $$3, int $$4) {
+      this.e().a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public final void a(fiq $$0, fiu $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, -1);
+   }
+
+   public final gig e() {
+      return this.v;
+   }
+
+   public Optional<gig> a(String $$0) {
+      return $$0.equals("root") ? Optional.of(this.e()) : this.e().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
+   }
+
+   public final List<gig> f() {
+      return this.b;
+   }
+
+   public final void g() {
+      for (gig $$0 : this.b) {
+         $$0.c();
+      }
+   }
+
+   protected void a(bvr $$0, fou $$1, float $$2) {
+      this.a($$0, $$1, $$2, 1.0F);
+   }
+
+   protected void a(fou $$0, float $$1, float $$2, float $$3, float $$4) {
+      long $$5 = (long)($$1 * 50.0F * $$3);
+      float $$6 = Math.min($$2 * $$4, 1.0F);
+      fow.a(this, $$0, $$5, $$6, a);
+   }
+
+   protected void a(bvr $$0, fou $$1, float $$2, float $$3) {
+      $$0.a($$3x -> fow.a(this, $$1, (long)((float)$$3x.a($$2) * $$3), 1.0F, a));
+   }
+
+   protected void a(fou $$0) {
+      fow.a(this, $$0, 0L, 1.0F, a);
+   }
+
+   public static class a extends gfz {
+      public a(gig $$0, Function<ale, gpn> $$1) {
+         super($$0, $$1);
+      }
    }
 }

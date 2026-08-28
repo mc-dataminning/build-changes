@@ -1,25 +1,81 @@
-public class gob {
-   public static final ald a = ald.b("textures/gui/title/background/panorama_overlay.png");
-   private final fnd b;
-   private final gnk c;
-   private float d;
+import com.mojang.authlib.GameProfile;
 
-   public gob(gnk $$0) {
-      this.c = $$0;
-      this.b = fnd.Q();
+public class gob extends gnx {
+   private fdw h = fdw.c;
+   private int i;
+
+   public gob(gjd $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.ad = true;
    }
 
-   public void a(fpz $$0, int $$1, int $$2, float $$3, float $$4) {
-      float $$5 = this.b.av().b();
-      float $$6 = (float)((double)$$5 * this.b.n.t().c());
-      this.d = a(this.d + $$6 * 0.1F, 360.0F);
-      $$0.d();
-      this.c.a(this.b, 10.0F, -this.d, $$3);
-      $$0.d();
-      $$0.a(goi::H, a, 0, 0, 0.0F, 0.0F, $$1, $$2, 16, 128, 16, 128, axu.a($$3));
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cR().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
+      }
+
+      $$1 *= 64.0 * cK();
+      return $$0 < $$1 * $$1;
    }
 
-   private static float a(float $$0, float $$1) {
-      return $$0 > $$1 ? $$0 - $$1 : $$0;
+   @Override
+   public boolean b(bup $$0) {
+      return true;
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      this.r(false);
+   }
+
+   @Override
+   public void k_() {
+      if (this.bR()) {
+         this.N_().e();
+      }
+
+      if (this.bl > 0) {
+         this.a(this.bl, this.bk);
+         this.bl--;
+      }
+
+      if (this.i > 0) {
+         this.j(new fdw((this.h.d - this.dy().d) / (double)this.i, (this.h.e - this.dy().e) / (double)this.i, (this.h.f - this.dy().f) / (double)this.i));
+         this.i--;
+      }
+
+      this.bU = this.bV;
+      this.eY();
+      float $$1;
+      if (this.aJ() && !this.eG()) {
+         $$1 = (float)Math.min(0.1, this.dy().i());
+      } else {
+         $$1 = 0.0F;
+      }
+
+      this.bV = this.bV + ($$1 - this.bV) * 0.4F;
+
+      try (bqo $$2 = bqi.a().d("push")) {
+         this.o();
+      }
+   }
+
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.h = new fdw($$0, $$1, $$2);
+      this.i = this.aq().p() + 1;
+   }
+
+   @Override
+   protected void gb() {
+   }
+
+   @Override
+   public void a(abt $$0) {
+      super.a($$0);
+      this.by();
    }
 }

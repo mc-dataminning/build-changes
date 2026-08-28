@@ -1,24 +1,29 @@
 import com.mojang.serialization.MapCodec;
 
-public class dup extends dku {
-   public static final MapCodec<dup> a = b(dup::new);
+public class dup extends dpm {
+   public static final MapCodec<dup> b = b(dup::new);
 
-   @Override
-   public MapCodec<dup> a() {
-      return a;
-   }
-
-   public dup(dyl.d $$0) {
+   protected dup(dzn.d $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dym $$0, dhp $$1, jj $$2, bvs $$3) {
-      fcu $$4 = new fcu(0.25, 0.05F, 0.25);
-      if ($$3 instanceof bwr $$5 && $$5.b(buy.K)) {
-         $$4 = new fcu(0.5, 0.25, 0.5);
-      }
+   protected MapCodec<? extends dup> a() {
+      return b;
+   }
 
-      $$3.a($$0, $$4);
+   @Override
+   protected feq c(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return fen.a();
+   }
+
+   @Override
+   protected float c(dzo $$0, dhv $$1, iu $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected boolean e_(dzo $$0) {
+      return true;
    }
 }

@@ -1,109 +1,111 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class fvc extends fvd {
-   private static final wv d = wv.c("chat.copy");
-   private static final wv s = wv.c("chat.link.warning");
-   private final String u;
-   private final boolean v;
+public class fvc extends fuz {
+   private final List<fvc.a> c = new ArrayList<>();
+   private int d;
+   private int e;
+   private final fvh f = fvh.i().a(0.5F, 0.5F);
 
-   public fvc(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), wv.b($$1), $$1, $$2 ? wu.e : wu.g, $$2);
+   public fvc() {
+      this(0, 0, 0, 0);
    }
 
-   public fvc(BooleanConsumer $$0, wv $$1, String $$2, boolean $$3) {
-      this($$0, $$1, a($$3, $$2), $$2, $$3 ? wu.e : wu.g, $$3);
+   public fvc(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public fvc(BooleanConsumer $$0, wv $$1, URI $$2, boolean $$3) {
-      this($$0, $$1, $$2.toString(), $$3);
+   public fvc(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$2, $$3);
    }
 
-   public fvc(BooleanConsumer $$0, wv $$1, wv $$2, URI $$3, wv $$4, boolean $$5) {
-      this($$0, $$1, $$2, $$3.toString(), $$4, true);
+   public fvc a(int $$0, int $$1) {
+      return this.b($$0).a($$1);
    }
 
-   public fvc(BooleanConsumer $$0, wv $$1, wv $$2, String $$3, wv $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (wv)($$5 ? wv.c("chat.link.open") : wu.f);
-      this.b = $$4;
-      this.v = !$$5;
-      this.u = $$3;
+   public fvc a(int $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   protected static xj a(boolean $$0, String $$1) {
-      return c($$0).b(wu.v).b(wv.b($$1));
+   public fvc b(int $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   protected static xj c(boolean $$0) {
-      return wv.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+   public fvh b() {
+      return this.f.g();
    }
 
-   @Override
-   protected void a(int $$0) {
-      this.c(fqn.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
-      this.c(fqn.a(d, $$0x -> {
-         this.l();
-         this.c.accept(false);
-      }).a(this.n / 2 - 50, $$0, 100, 20).a());
-      this.c(fqn.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
-   }
-
-   public void l() {
-      this.m.p.a(this.u);
+   public fvh c() {
+      return this.f;
    }
 
    @Override
-   public void a(fpz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.v) {
-         $$0.a(this.p, s, this.n / 2, 110, 16764108);
+   public void a() {
+      super.a();
+      int $$0 = this.d;
+      int $$1 = this.e;
+
+      for (fvc.a $$2 : this.c) {
+         $$0 = Math.max($$0, $$2.b());
+         $$1 = Math.max($$1, $$2.a());
       }
+
+      for (fvc.a $$3 : this.c) {
+         $$3.a(this.F(), $$0);
+         $$3.b(this.G(), $$1);
+      }
+
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static void a(fwf $$0, String $$1, boolean $$2) {
-      fnd $$3 = fnd.Q();
-      $$3.a(new fvc($$3x -> {
-         if ($$3x) {
-            af.n().a($$1);
-         }
-
-         $$3.a($$0);
-      }, $$1, $$2));
+   public <T extends fvg> T a(T $$0) {
+      return this.a($$0, this.b());
    }
 
-   public static void a(fwf $$0, URI $$1, boolean $$2) {
-      fnd $$3 = fnd.Q();
-      $$3.a(new fvc($$3x -> {
-         if ($$3x) {
-            af.n().a($$1);
-         }
-
-         $$3.a($$0);
-      }, $$1.toString(), $$2));
+   public <T extends fvg> T a(T $$0, fvh $$1) {
+      this.c.add(new fvc.a($$0, $$1));
+      return $$0;
    }
 
-   public static void a(fwf $$0, URI $$1) {
-      a($$0, $$1, true);
+   public <T extends fvg> T a(T $$0, Consumer<fvh> $$1) {
+      return this.a($$0, af.a(this.b(), $$1));
    }
 
-   public static void a(fwf $$0, String $$1) {
-      a($$0, $$1, true);
+   @Override
+   public void b(Consumer<fvg> $$0) {
+      this.c.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   public static fqn.c b(fwf $$0, String $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
+   public static void a(fvg $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
    }
 
-   public static fqn.c b(fwf $$0, URI $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
+   public static void a(fvg $$0, fvx $$1) {
+      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
    }
 
-   public static fqn.c b(fwf $$0, String $$1) {
-      return b($$0, $$1, true);
+   public static void a(fvg $$0, fvx $$1, float $$2, float $$3) {
+      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
    }
 
-   public static fqn.c b(fwf $$0, URI $$1) {
-      return b($$0, $$1, true);
+   public static void a(fvg $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
+      a($$1, $$3, $$0.A(), $$0::j, $$5);
+      a($$2, $$4, $$0.y(), $$0::k, $$6);
+   }
+
+   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
+      int $$5 = (int)azk.h($$4, 0.0F, (float)($$1 - $$2));
+      $$3.accept($$0 + $$5);
+   }
+
+   static class a extends fuz.a {
+      protected a(fvg $$0, fvh $$1) {
+         super($$0, $$1);
+      }
    }
 }

@@ -1,71 +1,48 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import org.joml.Vector3f;
+public class gew extends gfd<hbk> {
+   public static final gip a = gip.scaling(0.5F);
+   private final gig b;
+   private final gig c;
+   private final gig d;
 
-public abstract class gew {
-   private static final Vector3f a = new Vector3f();
-   protected final ghd v;
-   protected final Function<ald, goi> w;
-   private final List<ghd> b;
-
-   public gew(ghd $$0, Function<ald, goi> $$1) {
-      this.v = $$0;
-      this.w = $$1;
-      this.b = $$0.e().toList();
+   public gew(gig $$0) {
+      super($$0);
+      this.b = $$0.b("body");
+      this.c = this.b.b("tail");
+      this.d = this.c.b("tail_fin");
    }
 
-   public final goi a(ald $$0) {
-      return this.w.apply($$0);
+   public static gim a() {
+      gio $$0 = new gio();
+      giq $$1 = $$0.a();
+      float $$2 = 18.0F;
+      float $$3 = -8.0F;
+      giq $$4 = $$1.a("body", gil.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), gii.a(0.0F, 22.0F, -5.0F));
+      $$4.a("back_fin", gil.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), gii.b((float) (Math.PI / 3), 0.0F, 0.0F));
+      $$4.a(
+         "left_fin",
+         gil.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         gii.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
+      );
+      $$4.a(
+         "right_fin",
+         gil.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         gii.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
+      );
+      giq $$5 = $$4.a("tail", gil.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), gii.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
+      $$5.a("tail_fin", gil.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), gii.a(0.0F, 0.0F, 9.0F));
+      giq $$6 = $$4.a("head", gil.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), gii.a(0.0F, -4.0F, -3.0F));
+      $$6.a("nose", gil.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), gii.a);
+      return gim.a($$0, 64, 64);
    }
 
-   public final void a(fho $$0, fhs $$1, int $$2, int $$3, int $$4) {
-      this.e().a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public final void a(fho $$0, fhs $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, -1);
-   }
-
-   public final ghd e() {
-      return this.v;
-   }
-
-   public Optional<ghd> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.e()) : this.e().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
-   }
-
-   public final List<ghd> f() {
-      return this.b;
-   }
-
-   public final void g() {
-      for (ghd $$0 : this.b) {
-         $$0.c();
-      }
-   }
-
-   protected void a(bvj $$0, fnr $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
-   }
-
-   protected void a(fnr $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      fnt.a(this, $$0, $$5, $$6, a);
-   }
-
-   protected void a(bvj $$0, fnr $$1, float $$2, float $$3) {
-      $$0.a($$3x -> fnt.a(this, $$1, (long)((float)$$3x.a($$2) * $$3), 1.0F, a));
-   }
-
-   protected void a(fnr $$0) {
-      fnt.a(this, $$0, 0L, 1.0F, a);
-   }
-
-   public static class a extends gew {
-      public a(ghd $$0, Function<ald, goi> $$1) {
-         super($$0, $$1);
+   public void a(hbk $$0) {
+      super.a($$0);
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      if ($$0.a) {
+         this.b.e = this.b.e + (-0.05F - 0.05F * azk.b($$0.u * 0.3F));
+         this.c.e = -0.1F * azk.b($$0.u * 0.3F);
+         this.d.e = -0.2F * azk.b($$0.u * 0.3F);
       }
    }
 }

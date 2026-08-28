@@ -1,41 +1,88 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-public class fvq extends fwf {
-   @Nullable
-   private fqy a;
+public class fvq {
+   int a;
+   final Map<fvq.a, fvq.b> b = Maps.newTreeMap(Comparator.<fvq.a, fvm>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
 
-   public fvq(wv $$0) {
-      super($$0);
+   public void a(Consumer<fvn> $$0) {
+      this.a++;
+      $$0.accept(new fvq.c(0));
    }
 
-   @Override
-   protected void aN_() {
-      this.a = this.c(new fqy(this.n, this.l, this.p, 12));
-      this.c();
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean b = true;
+
+         public void a(String $$0) {
+            if (!this.b) {
+               $$1.append(". ");
+            }
+
+            this.b = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   @Override
-   protected void c() {
-      if (this.a != null) {
-         this.a.b(this.n);
-         this.a.c(this.n / 2 - this.a.A() / 2, this.o / 2 - 9 / 2);
+   static class a {
+      final fvm a;
+      final int b;
+
+      a(fvm $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 
-   @Override
-   public boolean aC_() {
-      return false;
+   static class b {
+      fvp<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = fvp.a;
+         this.b = -1;
+      }
+
+      public fvq.b a(int $$0, fvp<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
    }
 
-   @Override
-   protected boolean aM_() {
-      return false;
-   }
+   class c implements fvn {
+      private final int b;
 
-   @Override
-   public void b(fpz $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, $$3);
-      this.r();
-      this.a($$0);
+      c(final int $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(fvm $$0, fvp<?> $$1) {
+         fvq.this.b.computeIfAbsent(new fvq.a($$0, this.b), $$0x -> new fvq.b()).a(fvq.this.a, $$1);
+      }
+
+      @Override
+      public fvn a() {
+         return fvq.this.new c(this.b + 1);
+      }
    }
 }

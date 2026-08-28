@@ -1,69 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public interface exj {
-   exi<dan> a = new exi<dan>() {
-      @Override
-      public kw<dan> a() {
-         return kx.an;
-      }
+public record exj(je<exk> b, byte c, byte d, byte e, Optional<ww> f) {
+   public static final yu<wh, exj> a = yu.a(exk.c, exj::c, ys.c, exj::d, ys.c, exj::e, ys.c, exj::f, wy.c, exj::g, exj::new);
 
-      public Stream<cxy> a(dan $$0) {
-         return $$0.b();
-      }
+   public exj(je<exk> b, byte c, byte d, byte e, Optional<ww> f) {
+      e = (byte)(e & 15);
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
+      this.f = f;
+   }
 
-      public dan c() {
-         return dan.a;
-      }
+   public ale a() {
+      return this.b.a().b();
+   }
 
-      public dan a(dan $$0, Stream<cxy> $$1) {
-         return dan.a($$1.toList());
-      }
-   };
-   exi<czz> b = new exi<czz>() {
-      @Override
-      public kw<czz> a() {
-         return kx.Q;
-      }
+   public boolean b() {
+      return this.b.a().c();
+   }
 
-      public czz c() {
-         return czz.a;
-      }
+   public je<exk> c() {
+      return this.b;
+   }
 
-      public Stream<cxy> a(czz $$0) {
-         return $$0.b();
-      }
+   public byte d() {
+      return this.c;
+   }
 
-      public czz a(czz $$0, Stream<cxy> $$1) {
-         czz.a $$2 = new czz.a($$0).a();
-         $$1.forEach($$2::a);
-         return $$2.d();
-      }
-   };
-   exi<daa> c = new exi<daa>() {
-      @Override
-      public kw<daa> a() {
-         return kx.P;
-      }
+   public byte e() {
+      return this.d;
+   }
 
-      public daa c() {
-         return daa.a;
-      }
+   public byte f() {
+      return this.e;
+   }
 
-      public Stream<cxy> a(daa $$0) {
-         return $$0.a().stream();
-      }
-
-      public daa a(daa $$0, Stream<cxy> $$1) {
-         return daa.a($$1.toList());
-      }
-   };
-   Map<kw<?>, exi<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(exi::a, $$0 -> (exi<?>)$$0));
-   Codec<exi<?>> e = md.ao.q().comapFlatMap($$0 -> {
-      exi<?> $$1 = d.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
-   }, exi::a);
+   public Optional<ww> g() {
+      return this.f;
+   }
 }

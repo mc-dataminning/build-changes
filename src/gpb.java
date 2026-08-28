@@ -1,61 +1,79 @@
-import java.util.Map;
-import java.util.Map.Entry;
+import org.joml.Matrix4f;
 
 public class gpb {
-   private Map<dym, his> a = Map.of();
-   private final hjg b;
+   private static final float a = -0.01F;
+   private static final float b = -0.001F;
+   private static final int c = 128;
+   private static final int d = 128;
+   private final hix e;
+   private final hiw f;
 
-   public gpb(hjg $$0) {
-      this.b = $$0;
+   public gpb(hiw $$0, hix $$1) {
+      this.f = $$0;
+      this.e = $$1;
    }
 
-   public hgs a(dym $$0) {
-      return this.b($$0).d();
-   }
+   public void a(hhi $$0, fiq $$1, gpd $$2, boolean $$3, int $$4) {
+      Matrix4f $$5 = $$1.c().a();
+      fiu $$6 = $$2.getBuffer(gpn.u($$0.a));
+      $$6.a($$5, 0.0F, 128.0F, -0.01F).a(-1).a(0.0F, 1.0F).c($$4);
+      $$6.a($$5, 128.0F, 128.0F, -0.01F).a(-1).a(1.0F, 1.0F).c($$4);
+      $$6.a($$5, 128.0F, 0.0F, -0.01F).a(-1).a(1.0F, 0.0F).c($$4);
+      $$6.a($$5, 0.0F, 0.0F, -0.01F).a(-1).a(0.0F, 0.0F).c($$4);
+      int $$7 = 0;
 
-   public his b(dym $$0) {
-      his $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
-      }
+      for (hhi.a $$8 : $$0.b) {
+         if (!$$3 || $$8.e) {
+            $$1.a();
+            $$1.a((float)$$8.b / 2.0F + 64.0F, (float)$$8.c / 2.0F + 64.0F, -0.02F);
+            $$1.a(a.f.rotationDegrees((float)($$8.d * 360) / 16.0F));
+            $$1.b(4.0F, 4.0F, 3.0F);
+            $$1.a(-0.125F, 0.125F, 0.0F);
+            Matrix4f $$9 = $$1.c().a();
+            hhz $$10 = $$8.a;
+            if ($$10 != null) {
+               fiu $$11 = $$2.getBuffer(gpn.u($$10.i()));
+               $$11.a($$9, -1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.g()).c($$4);
+               $$11.a($$9, 1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.g()).c($$4);
+               $$11.a($$9, 1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.h()).c($$4);
+               $$11.a($$9, -1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.h()).c($$4);
+               $$1.b();
+            }
 
-      return $$1;
-   }
+            if ($$8.f != null) {
+               fra $$12 = fof.Q().h;
+               float $$13 = (float)$$12.a($$8.f);
+               float $$14 = azk.a(25.0F / $$13, 0.0F, 6.0F / 9.0F);
+               $$1.a();
+               $$1.a((float)$$8.b / 2.0F + 64.0F - $$13 * $$14 / 2.0F, (float)$$8.c / 2.0F + 64.0F + 4.0F, -0.025F);
+               $$1.b($$14, $$14, 1.0F);
+               $$1.a(0.0F, 0.0F, -0.1F);
+               $$12.a($$8.f, 0.0F, 0.0F, -1, false, $$1.c().a(), $$2, fra.a.a, Integer.MIN_VALUE, $$4, false);
+               $$1.b();
+            }
 
-   public hjg a() {
-      return this.b;
-   }
-
-   public void a(Map<dym, his> $$0) {
-      this.a = $$0;
-   }
-
-   public static hjh c(dym $$0) {
-      return a(md.e.b($$0.b()), $$0);
-   }
-
-   public static hjh a(ald $$0, dym $$1) {
-      return new hjh($$0, b($$1.G()));
-   }
-
-   public static String b(Map<dzp<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<dzp<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
+            $$7++;
          }
-
-         dzp<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
       }
-
-      return $$1.toString();
    }
 
-   private static <T extends Comparable<T>> String a(dzp<T> $$0, Comparable<?> $$1) {
-      return $$0.b((T)$$1);
+   public void a(exn $$0, exp $$1, hhi $$2) {
+      $$2.a = this.e.b($$0, $$1);
+      $$2.b.clear();
+
+      for (exj $$3 : $$1.f()) {
+         $$2.b.add(this.a($$3));
+      }
+   }
+
+   private hhi.a a(exj $$0) {
+      hhi.a $$1 = new hhi.a();
+      $$1.a = this.f.a($$0);
+      $$1.b = $$0.d();
+      $$1.c = $$0.e();
+      $$1.d = $$0.f();
+      $$1.f = $$0.g().orElse(null);
+      $$1.e = $$0.b();
+      return $$1;
    }
 }

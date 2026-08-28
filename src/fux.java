@@ -1,107 +1,505 @@
-import com.mojang.text2speech.Narrator;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.bytes.ByteArrayList;
+import it.unimi.dsi.fastutil.bytes.ByteList;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.IntBuffer;
+import java.util.List;
+import java.util.function.Function;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
+import org.slf4j.Logger;
 
-public class fux extends fwf {
-   private static final wv a = wv.c("accessibility.onboarding.screen.title");
-   private static final wv b = wv.c("accessibility.onboarding.screen.narrator");
-   private static final int c = 4;
-   private static final int d = 16;
-   private final fre s;
-   private final fnh u;
-   private final boolean v;
-   private boolean w;
-   private float x;
-   private final Runnable y;
+public class fux implements fgp {
+   static final Logger b = LogUtils.getLogger();
+   private static final int c = 16;
+   private static final int d = 2;
+   private static final int e = 32;
+   private static final int f = 64;
+   private static final int g = 96;
+   private static final int h = 128;
+   private final fuf<fux.d> i;
+
+   fux(fuf<fux.d> $$0) {
+      this.i = $$0;
+   }
+
    @Nullable
-   private fqy z;
-   private final fub A = new fub(this, this.m(), 33);
-
-   public fux(fnh $$0, Runnable $$1) {
-      super(a);
-      this.u = $$0;
-      this.y = $$1;
-      this.s = new fre(true);
-      this.v = fnd.Q().aY().a();
+   @Override
+   public fgo a(int $$0) {
+      return this.i.a($$0);
    }
 
    @Override
-   public void aN_() {
-      fuf $$0 = this.A.c(fuf.d());
-      $$0.c().b().a(4);
-      this.z = $$0.a(new fqy(this.n, this.l, this.p), $$0x -> $$0x.a(8));
-      if (this.u.av().a(this.u) instanceof fqu $$1) {
-         this.q = $$1;
-         this.q.j = this.v;
-         $$0.a(this.q);
-      }
-
-      $$0.a(fqr.b(150, $$0x -> this.a(new fze(this, this.m.n)), false));
-      $$0.a(fqr.a(150, $$0x -> this.a(new fzh(this, this.m.n, this.m.ah())), false));
-      this.A.b(fqn.a(wu.j, $$0x -> this.aK_()).a());
-      this.A.a(this::c);
-      this.c();
+   public IntSet a() {
+      return this.i.b();
    }
 
-   @Override
-   protected void c() {
-      if (this.z != null) {
-         this.z.b(this.n);
-      }
+   @VisibleForTesting
+   static void a(IntBuffer $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 32 - $$2 - 1;
+      int $$5 = 32 - $$3 - 1;
 
-      this.A.a();
-   }
-
-   @Override
-   protected void aB_() {
-      if (this.v && this.q != null) {
-         this.b(this.q);
-      } else {
-         super.aB_();
-      }
-   }
-
-   private int m() {
-      return 90;
-   }
-
-   @Override
-   public void aK_() {
-      this.a(true, this.y);
-   }
-
-   private void a(fwf $$0) {
-      this.a(false, () -> this.m.a($$0));
-   }
-
-   private void a(boolean $$0, Runnable $$1) {
-      if ($$0) {
-         this.u.ax();
-      }
-
-      Narrator.getNarrator().clear();
-      $$1.run();
-   }
-
-   @Override
-   public void a(fpz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.E();
-      this.s.a($$0, this.n, 1.0F);
-   }
-
-   @Override
-   protected void a(fpz $$0, float $$1) {
-      f.a($$0, this.n, this.o, 1.0F, 0.0F);
-   }
-
-   private void E() {
-      if (!this.w && this.v) {
-         if (this.x < 40.0F) {
-            this.x++;
-         } else if (this.m.aC()) {
-            Narrator.getNarrator().say(b.getString(), true, 1.0F);
-            this.w = true;
+      for (int $$6 = $$4; $$6 >= $$5; $$6--) {
+         if ($$6 < 32 && $$6 >= 0) {
+            boolean $$7 = ($$1 >> $$6 & 1) != 0;
+            $$0.put($$7 ? -1 : 0);
+         } else {
+            $$0.put(0);
          }
+      }
+   }
+
+   static void a(IntBuffer $$0, fux.f $$1, int $$2, int $$3) {
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         int $$5 = $$1.a($$4);
+         a($$0, $$5, $$2, $$3);
+      }
+   }
+
+   @VisibleForTesting
+   static void a(InputStream $$0, fux.h $$1) throws IOException {
+      int $$2 = 0;
+      ByteList $$3 = new ByteArrayList(128);
+
+      while (true) {
+         boolean $$4 = a($$0, $$3, 58);
+         int $$5 = $$3.size();
+         if ($$5 == 0 && !$$4) {
+            return;
+         }
+
+         if (!$$4 || $$5 != 4 && $$5 != 5 && $$5 != 6) {
+            throw new IllegalArgumentException("Invalid entry at line " + $$2 + ": expected 4, 5 or 6 hex digits followed by a colon");
+         }
+
+         int $$6 = 0;
+
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            $$6 = $$6 << 4 | a($$2, $$3.getByte($$7));
+         }
+
+         $$3.clear();
+         a($$0, $$3, 10);
+         int $$8 = $$3.size();
+
+         fux.f $$9 = switch ($$8) {
+            case 32 -> fux.a.a($$2, $$3);
+            case 64 -> fux.i.a($$2, $$3);
+            case 96 -> fux.e.b($$2, $$3);
+            case 128 -> fux.e.a($$2, $$3);
+            default -> throw new IllegalArgumentException(
+            "Invalid entry at line " + $$2 + ": expected hex number describing (8,16,24,32) x 16 bitmap, followed by a new line"
+         );
+         };
+         $$1.accept($$6, $$9);
+         $$2++;
+         $$3.clear();
+      }
+   }
+
+   static int a(int $$0, ByteList $$1, int $$2) {
+      return a($$0, $$1.getByte($$2));
+   }
+
+   private static int a(int $$0, byte $$1) {
+      return switch ($$1) {
+         case 48 -> 0;
+         case 49 -> 1;
+         case 50 -> 2;
+         case 51 -> 3;
+         case 52 -> 4;
+         case 53 -> 5;
+         case 54 -> 6;
+         case 55 -> 7;
+         case 56 -> 8;
+         case 57 -> 9;
+         default -> throw new IllegalArgumentException("Invalid entry at line " + $$0 + ": expected hex digit, got " + (char)$$1);
+         case 65 -> 10;
+         case 66 -> 11;
+         case 67 -> 12;
+         case 68 -> 13;
+         case 69 -> 14;
+         case 70 -> 15;
+      };
+   }
+
+   private static boolean a(InputStream $$0, ByteList $$1, int $$2) throws IOException {
+      while (true) {
+         int $$3 = $$0.read();
+         if ($$3 == -1) {
+            return false;
+         }
+
+         if ($$3 == $$2) {
+            return true;
+         }
+
+         $$1.add((byte)$$3);
+      }
+   }
+
+   static record a(byte[] a) implements fux.f {
+      @Override
+      public int a(int $$0) {
+         return this.a[$$0] << 24;
+      }
+
+      static fux.f a(int $$0, ByteList $$1) {
+         byte[] $$2 = new byte[16];
+         int $$3 = 0;
+
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            int $$5 = fux.a($$0, $$1, $$3++);
+            int $$6 = fux.a($$0, $$1, $$3++);
+            byte $$7 = (byte)($$5 << 4 | $$6);
+            $$2[$$4] = $$7;
+         }
+
+         return new fux.a($$2);
+      }
+
+      @Override
+      public int a() {
+         return 8;
+      }
+
+      public byte[] b() {
+         return this.a;
+      }
+   }
+
+   public static class b implements fut {
+      public static final MapCodec<fux.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ale.a.fieldOf("hex_file").forGetter($$0x -> $$0x.c), fux.g.a.listOf().fieldOf("size_overrides").forGetter($$0x -> $$0x.d))
+               .apply($$0, fux.b::new)
+      );
+      private final ale c;
+      private final List<fux.g> d;
+
+      private b(ale $$0, List<fux.g> $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public fuu a() {
+         return fuu.d;
+      }
+
+      @Override
+      public Either<fut.b, fut.c> b() {
+         return Either.left(this::a);
+      }
+
+      private fgp a(avb $$0) throws IOException {
+         fux var3;
+         try (InputStream $$1 = $$0.open(this.c)) {
+            var3 = this.a($$1);
+         }
+
+         return var3;
+      }
+
+      private fux a(InputStream $$0) throws IOException {
+         fuf<fux.f> $$1 = new fuf<>(fux.f[]::new, fux.f[][]::new);
+         fux.h $$2 = $$1::a;
+
+         fux var17;
+         try (ZipInputStream $$3 = new ZipInputStream($$0)) {
+            ZipEntry $$4;
+            while (($$4 = $$3.getNextEntry()) != null) {
+               String $$5 = $$4.getName();
+               if ($$5.endsWith(".hex")) {
+                  fux.b.info("Found {}, loading", $$5);
+                  fux.a(new ayt($$3), $$2);
+               }
+            }
+
+            fuf<fux.d> $$6 = new fuf<>(fux.d[]::new, fux.d[][]::new);
+
+            for (fux.g $$7 : this.d) {
+               int $$8 = $$7.b;
+               int $$9 = $$7.c;
+               fux.c $$10 = $$7.d;
+
+               for (int $$11 = $$8; $$11 <= $$9; $$11++) {
+                  fux.f $$12 = $$1.b($$11);
+                  if ($$12 != null) {
+                     $$6.a($$11, new fux.d($$12, $$10.c, $$10.d));
+                  }
+               }
+            }
+
+            $$1.a(($$1x, $$2x) -> {
+               int $$3x = $$2x.d();
+               int $$4x = fux.c.a($$3x);
+               int $$5 = fux.c.b($$3x);
+               $$6.a($$1x, new fux.d($$2x, $$4x, $$5));
+            });
+            var17 = new fux($$6);
+         }
+
+         return var17;
+      }
+   }
+
+   public static record c(int c, int d) {
+      public static final MapCodec<fux.c> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("left").forGetter(fux.c::b), Codec.INT.fieldOf("right").forGetter(fux.c::c)).apply($$0, fux.c::new)
+      );
+      public static final Codec<fux.c> b = a.codec();
+
+      public int a() {
+         return a(this.c, this.d);
+      }
+
+      public static int a(int $$0, int $$1) {
+         return ($$0 & 0xFF) << 8 | $$1 & 0xFF;
+      }
+
+      public static int a(int $$0) {
+         return (byte)($$0 >> 8);
+      }
+
+      public static int b(int $$0) {
+         return (byte)$$0;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
+   }
+
+   static record d(fux.f a, int b, int c) implements fgo {
+
+      public int c() {
+         return this.c - this.b + 1;
+      }
+
+      @Override
+      public float getAdvance() {
+         return (float)(this.c() / 2 + 1);
+      }
+
+      @Override
+      public float b() {
+         return 0.5F;
+      }
+
+      @Override
+      public float a() {
+         return 0.5F;
+      }
+
+      @Override
+      public fum bake(Function<fgq, fum> $$0) {
+         return $$0.apply(new fgq() {
+            @Override
+            public float d() {
+               return 2.0F;
+            }
+
+            @Override
+            public int a() {
+               return d.this.c();
+            }
+
+            @Override
+            public int b() {
+               return 16;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               IntBuffer $$2 = MemoryUtil.memAllocInt(d.this.c() * 16);
+               fux.a($$2, d.this.a, d.this.b, d.this.c);
+               $$2.rewind();
+               GlStateManager.upload(0, $$0, $$1, d.this.c(), 16, fhq.a.a, $$2, MemoryUtil::memFree);
+            }
+
+            @Override
+            public boolean c() {
+               return true;
+            }
+         });
+      }
+
+      public fux.f d() {
+         return this.a;
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.c;
+      }
+   }
+
+   static record e(int[] a, int b) implements fux.f {
+      private static final int c = 24;
+
+      @Override
+      public int a(int $$0) {
+         return this.a[$$0];
+      }
+
+      static fux.f b(int $$0, ByteList $$1) {
+         int[] $$2 = new int[16];
+         int $$3 = 0;
+         int $$4 = 0;
+
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            int $$6 = fux.a($$0, $$1, $$4++);
+            int $$7 = fux.a($$0, $$1, $$4++);
+            int $$8 = fux.a($$0, $$1, $$4++);
+            int $$9 = fux.a($$0, $$1, $$4++);
+            int $$10 = fux.a($$0, $$1, $$4++);
+            int $$11 = fux.a($$0, $$1, $$4++);
+            int $$12 = $$6 << 20 | $$7 << 16 | $$8 << 12 | $$9 << 8 | $$10 << 4 | $$11;
+            $$2[$$5] = $$12 << 8;
+            $$3 |= $$12;
+         }
+
+         return new fux.e($$2, 24);
+      }
+
+      public static fux.f a(int $$0, ByteList $$1) {
+         int[] $$2 = new int[16];
+         int $$3 = 0;
+         int $$4 = 0;
+
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            int $$6 = fux.a($$0, $$1, $$4++);
+            int $$7 = fux.a($$0, $$1, $$4++);
+            int $$8 = fux.a($$0, $$1, $$4++);
+            int $$9 = fux.a($$0, $$1, $$4++);
+            int $$10 = fux.a($$0, $$1, $$4++);
+            int $$11 = fux.a($$0, $$1, $$4++);
+            int $$12 = fux.a($$0, $$1, $$4++);
+            int $$13 = fux.a($$0, $$1, $$4++);
+            int $$14 = $$6 << 28 | $$7 << 24 | $$8 << 20 | $$9 << 16 | $$10 << 12 | $$11 << 8 | $$12 << 4 | $$13;
+            $$2[$$5] = $$14;
+            $$3 |= $$14;
+         }
+
+         return new fux.e($$2, 32);
+      }
+
+      public int[] b() {
+         return this.a;
+      }
+
+      @Override
+      public int a() {
+         return this.b;
+      }
+   }
+
+   public interface f {
+      int a(int var1);
+
+      int a();
+
+      default int c() {
+         int $$0 = 0;
+
+         for (int $$1 = 0; $$1 < 16; $$1++) {
+            $$0 |= this.a($$1);
+         }
+
+         return $$0;
+      }
+
+      default int d() {
+         int $$0 = this.c();
+         int $$1 = this.a();
+         int $$2;
+         int $$3;
+         if ($$0 == 0) {
+            $$2 = 0;
+            $$3 = $$1;
+         } else {
+            $$2 = Integer.numberOfLeadingZeros($$0);
+            $$3 = 32 - Integer.numberOfTrailingZeros($$0) - 1;
+         }
+
+         return fux.c.a($$2, $$3);
+      }
+   }
+
+   static record g(int b, int c, fux.c d) {
+      private static final Codec<fux.g> e = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ays.B.fieldOf("from").forGetter(fux.g::a), ays.B.fieldOf("to").forGetter(fux.g::b), fux.c.a.forGetter(fux.g::c))
+               .apply($$0, fux.g::new)
+      );
+      public static final Codec<fux.g> a = e.validate(
+         $$0 -> $$0.b >= $$0.c ? DataResult.error(() -> "Invalid range: [" + $$0.b + ";" + $$0.c + "]") : DataResult.success($$0)
+      );
+
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public fux.c c() {
+         return this.d;
+      }
+   }
+
+   @FunctionalInterface
+   public interface h {
+      void accept(int var1, fux.f var2);
+   }
+
+   static record i(short[] a) implements fux.f {
+      @Override
+      public int a(int $$0) {
+         return this.a[$$0] << 16;
+      }
+
+      static fux.f a(int $$0, ByteList $$1) {
+         short[] $$2 = new short[16];
+         int $$3 = 0;
+
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            int $$5 = fux.a($$0, $$1, $$3++);
+            int $$6 = fux.a($$0, $$1, $$3++);
+            int $$7 = fux.a($$0, $$1, $$3++);
+            int $$8 = fux.a($$0, $$1, $$3++);
+            short $$9 = (short)($$5 << 12 | $$6 << 8 | $$7 << 4 | $$8);
+            $$2[$$4] = $$9;
+         }
+
+         return new fux.i($$2);
+      }
+
+      @Override
+      public int a() {
+         return 16;
+      }
+
+      public short[] b() {
+         return this.a;
       }
    }
 }

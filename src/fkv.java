@@ -1,20 +1,32 @@
-public class fkv extends fku {
-   private final fmb a;
+import com.google.gson.annotations.SerializedName;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
-   public fkv(fwf $$0, fmb $$1) {
-      super($$0, $$1);
-      this.a = $$1;
+public abstract class fkv {
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder("{");
+
+      for (Field $$1 : this.getClass().getFields()) {
+         if (!b($$1)) {
+            try {
+               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
+            } catch (IllegalAccessException var7) {
+            }
+         }
+      }
+
+      $$0.deleteCharAt($$0.length() - 1);
+      $$0.append('}');
+      return $$0.toString();
    }
 
-   @Override
-   public void e() {
-      super.e();
-      this.a.c();
+   private static String a(Field $$0) {
+      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
+      return $$1 != null ? $$1.value() : $$0.getName();
    }
 
-   @Override
-   protected void f() {
-      this.a.b();
-      super.f();
+   private static boolean b(Field $$0) {
+      return Modifier.isStatic($$0.getModifiers());
    }
 }

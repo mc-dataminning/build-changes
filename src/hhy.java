@@ -1,69 +1,145 @@
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class hhy extends tr {
-   private static final Logger b = LogUtils.getLogger();
-   private final Map<String, String> c;
-   private final boolean d;
+public class hhy extends hhk implements hhl, hic {
+   private static final Logger f = LogUtils.getLogger();
+   @Deprecated
+   public static final ale d = ale.b("textures/atlas/blocks.png");
+   @Deprecated
+   public static final ale e = ale.b("textures/atlas/particles.png");
+   private List<hht> g = List.of();
+   private List<hhz.a> h = List.of();
+   private Map<ale, hhz> i = Map.of();
+   @Nullable
+   private hhz j;
+   private final ale k;
+   private final int l;
+   private int m;
+   private int n;
+   private int o;
 
-   private hhy(Map<String, String> $$0, boolean $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public hhy(ale $$0) {
+      this.k = $$0;
+      this.l = RenderSystem.maxSupportedTextureSize();
    }
 
-   public static hhy a(ava $$0, List<String> $$1, boolean $$2) {
-      Map<String, String> $$3 = new HashMap<>();
+   public void a(hhu.a $$0) {
+      f.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.k});
+      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
+      this.m = $$0.b();
+      this.n = $$0.c();
+      this.o = $$0.d();
+      this.f();
+      this.a(false, this.o > 1);
+      this.i = Map.copyOf($$0.f());
+      this.j = this.i.get(hho.c());
+      if (this.j == null) {
+         throw new IllegalStateException("Atlas '" + this.k + "' (" + this.i.size() + " sprites) has no missing texture sprite");
+      } else {
+         List<hht> $$1 = new ArrayList<>();
+         List<hhz.a> $$2 = new ArrayList<>();
 
-      for (String $$4 : $$1) {
-         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
+         for (hhz $$3 : $$0.f().values()) {
+            $$1.add($$3.e());
 
-         for (String $$6 : $$0.a()) {
             try {
-               ald $$7 = ald.a($$6, $$5);
-               a($$4, $$0.a($$7), $$3);
-            } catch (Exception var10) {
-               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+               $$3.j();
+            } catch (Throwable var9) {
+               o $$5 = o.a(var9, "Stitching texture atlas");
+               p $$6 = $$5.a("Texture being stitched together");
+               $$6.a("Atlas path", this.k);
+               $$6.a("Sprite", $$3);
+               throw new z($$5);
+            }
+
+            hhz.a $$7 = $$3.f();
+            if ($$7 != null) {
+               $$2.add($$7);
             }
          }
-      }
 
-      tq.a().a($$3);
-      return new hhy(Map.copyOf($$3), $$2);
+         this.g = List.copyOf($$1);
+         this.h = List.copyOf($$2);
+      }
    }
 
-   private static void a(String $$0, List<auy> $$1, Map<String, String> $$2) {
-      for (auy $$3 : $$1) {
-         try (InputStream $$4 = $$3.d()) {
-            tr.a($$4, $$2::put);
-         } catch (IOException var10) {
-            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+   @Override
+   public void a(ale $$0, Path $$1) throws IOException {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.o, this.m, this.n);
+      a($$1, $$2, this.i);
+   }
+
+   private static void a(Path $$0, String $$1, Map<ale, hhz> $$2) {
+      Path $$3 = $$0.resolve($$1 + ".txt");
+
+      try (Writer $$4 = Files.newBufferedWriter($$3)) {
+         for (Entry<ale, hhz> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
+            hhz $$6 = $$5.getValue();
+            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
          }
+      } catch (IOException var10) {
+         f.warn("Failed to write file {}", $$3, var10);
       }
    }
 
    @Override
-   public String a(String $$0, String $$1) {
-      return this.c.getOrDefault($$0, $$1);
+   public void d() {
+      this.c();
+
+      for (hhz.a $$0 : this.h) {
+         $$0.a();
+      }
    }
 
    @Override
-   public boolean b(String $$0) {
-      return this.c.containsKey($$0);
+   public void e() {
+      this.d();
    }
 
-   @Override
-   public boolean b() {
-      return this.d;
+   public hhz a(ale $$0) {
+      hhz $$1 = this.i.getOrDefault($$0, this.j);
+      if ($$1 == null) {
+         throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
+      } else {
+         return $$1;
+      }
    }
 
-   @Override
-   public ayw a(xa $$0) {
-      return hhz.a($$0, this.d);
+   public void f() {
+      this.g.forEach(hht::close);
+      this.h.forEach(hhz.a::close);
+      this.g = List.of();
+      this.h = List.of();
+      this.i = Map.of();
+      this.j = null;
+   }
+
+   public ale g() {
+      return this.k;
+   }
+
+   public int h() {
+      return this.l;
+   }
+
+   int i() {
+      return this.m;
+   }
+
+   int j() {
+      return this.n;
    }
 }

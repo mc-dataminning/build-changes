@@ -1,52 +1,53 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.List;
+public class gsd implements grp<dya> {
+   private final gsd.a a;
 
-public class gsd implements gsa.a {
-   private static final int a = 160;
-   private final fnd b;
-   private final Int2ObjectMap<gsd.a> c = new Int2ObjectOpenHashMap();
-
-   @Override
-   public void a() {
-      this.c.clear();
+   public gsd(grq.a $$0) {
+      this($$0.f());
    }
 
-   public void a(int $$0, jj $$1, List<aal.a> $$2) {
-      this.c.put($$0, new gsd.a($$1, $$2));
+   public gsd(gic $$0) {
+      this.a = new gsd.a($$0.a(gif.cP));
    }
 
-   public void a(int $$0) {
-      this.c.remove($$0);
-   }
-
-   public gsd(fnd $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(fho $$0, gny $$1, double $$2, double $$3, double $$4) {
-      fml $$5 = this.b.j.k();
-      jj $$6 = jj.a($$5.b().d, 0.0, $$5.b().f);
-      ObjectIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         gsd.a $$7 = (gsd.a)var11.next();
-         jj $$8 = $$7.a;
-         if ($$6.a($$8, 160.0)) {
-            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
-               aal.a $$10 = $$7.b.get($$9);
-               double $$11 = (double)$$8.u() + 0.5;
-               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
-               double $$13 = (double)$$8.w() + 0.5;
-               int $$14 = $$10.b() ? -16711936 : -3355444;
-               gsa.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
-            }
-         }
+   public void a(dya $$0, float $$1, fiq $$2, gpd $$3, int $$4, int $$5) {
+      ja $$6 = $$0.m().a(dsz.c, ja.b);
+      cxq $$7 = $$0.s();
+      hkg $$8;
+      if ($$7 == null) {
+         $$8 = gpy.s;
+      } else {
+         $$8 = gpy.d($$7);
       }
+
+      float $$10 = $$0.a($$1);
+      this.a($$2, $$3, $$4, $$5, $$6, $$10, $$8);
    }
 
-   static record a(jj a, List<aal.a> b) {
+   public void a(fiq $$0, gpd $$1, int $$2, int $$3, ja $$4, float $$5, hkg $$6) {
+      $$0.a();
+      $$0.a(0.5F, 0.5F, 0.5F);
+      float $$7 = 0.9995F;
+      $$0.b(0.9995F, 0.9995F, 0.9995F);
+      $$0.a($$4.b());
+      $$0.b(1.0F, -1.0F, -1.0F);
+      $$0.a(0.0F, -1.0F, 0.0F);
+      this.a.a($$5);
+      fiu $$8 = $$6.a($$1, this.a::a);
+      this.a.a($$0, $$8, $$2, $$3);
+      $$0.b();
+   }
+
+   static class a extends gfz {
+      private final gig a;
+
+      public a(gig $$0) {
+         super($$0, gpn::g);
+         this.a = $$0.b("lid");
+      }
+
+      public void a(float $$0) {
+         this.a.a(0.0F, 24.0F - $$0 * 0.5F * 16.0F, 0.0F);
+         this.a.f = 270.0F * $$0 * (float) (Math.PI / 180.0);
+      }
    }
 }

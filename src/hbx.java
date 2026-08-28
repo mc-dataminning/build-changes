@@ -1,3 +1,3 @@
-public class hbx extends hbk {
-   public float a;
+public class hbx extends hbp {
+   public fdw a = fdw.c;
 }

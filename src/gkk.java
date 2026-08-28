@@ -1,24 +1,47 @@
-import org.joml.Vector3f;
+import java.util.List;
+import java.util.Locale;
 
-public class gkk extends gkl<lq> {
-   protected gkk(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lq $$7, gmc $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      Vector3f $$10 = $$7.b();
-      this.v = this.a($$10.x(), $$9);
-      this.w = this.a($$10.y(), $$9);
-      this.x = this.a($$10.z(), $$9);
+public enum gkk {
+   a("i_want_to_report_them"),
+   b("hate_speech"),
+   c("harassment_or_bullying"),
+   d("self_harm_or_suicide"),
+   e("imminent_harm"),
+   f("defamation_impersonation_false_information"),
+   g("alcohol_tobacco_drugs"),
+   h("child_sexual_exploitation_or_abuse"),
+   i("terrorism_or_violent_extremism"),
+   j("non_consensual_intimate_imagery"),
+   k("sexually_inappropriate");
+
+   private final String l;
+   private final ww m;
+   private final ww n;
+
+   private gkk(final String $$0) {
+      this.l = $$0.toUpperCase(Locale.ROOT);
+      String $$1 = "gui.abuseReport.reason." + $$0;
+      this.m = ww.c($$1);
+      this.n = ww.c($$1 + ".description");
    }
 
-   public static class a implements glk<lq> {
-      private final gmc a;
+   public String a() {
+      return this.l;
+   }
 
-      public a(gmc $$0) {
-         this.a = $$0;
-      }
+   public ww b() {
+      return this.m;
+   }
 
-      public glh a(lq $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gkk($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
-      }
+   public ww c() {
+      return this.n;
+   }
+
+   public static List<gkk> a(gkl $$0) {
+      return switch ($$0) {
+         case a -> List.of(k);
+         case b -> List.of(e, f);
+         default -> List.of();
+      };
    }
 }

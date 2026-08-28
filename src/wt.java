@@ -1,138 +1,95 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.File;
-import java.net.URI;
-import java.nio.file.Path;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.IntFunction;
 
-public interface wt {
-   Codec<wt> a = wt.a.h.dispatch("action", wt::a, $$0 -> $$0.k);
+public record wt(String c, List<wt.a> d, xt e) {
+   public static final Codec<wt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(wt::a),
+               wt.a.d.listOf().fieldOf("parameters").forGetter(wt::b),
+               xt.b.b.optionalFieldOf("style", xt.a).forGetter(wt::c)
+            )
+            .apply($$0, wt::new)
+   );
+   public static final yu<wh, wt> b = yu.a(ys.o, wt::a, wt.a.e.a(ys.a()), wt::b, xt.b.c, wt::c, wt::new);
 
-   wt.a a();
+   public static wt a(String $$0) {
+      return new wt($$0, List.of(wt.a.a, wt.a.c), xt.a);
+   }
 
-   public static enum a implements bag {
-      a("open_url", true, wt.e.b),
-      b("open_file", false, wt.d.b),
-      c("run_command", true, wt.f.b),
-      d("suggest_command", true, wt.g.b),
-      e("change_page", true, wt.b.b),
-      f("copy_to_clipboard", true, wt.c.b);
+   public static wt b(String $$0) {
+      xt $$1 = xt.a.a(n.h).b(true);
+      return new wt($$0, List.of(wt.a.a, wt.a.c), $$1);
+   }
 
-      public static final Codec<wt.a> g = bag.a(wt.a::values);
-      public static final Codec<wt.a> h = g.validate(wt.a::a);
-      private final boolean i;
-      private final String j;
-      final MapCodec<? extends wt> k;
+   public static wt c(String $$0) {
+      xt $$1 = xt.a.a(n.h).b(true);
+      return new wt($$0, List.of(wt.a.b, wt.a.c), $$1);
+   }
 
-      private a(final String $$0, final boolean $$1, final MapCodec<? extends wt> $$2) {
-         this.j = $$0;
-         this.i = $$1;
-         this.k = $$2;
+   public static wt d(String $$0) {
+      return new wt($$0, List.of(wt.a.b, wt.a.a, wt.a.c), xt.a);
+   }
+
+   public ww a(ww $$0, ws.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return ww.a(this.c, $$2).c(this.e);
+   }
+
+   private ww[] b(ww $$0, ws.a $$1) {
+      ww[] $$2 = new ww[this.d.size()];
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         wt.a $$4 = this.d.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
       }
 
-      public boolean a() {
-         return this.i;
+      return $$2;
+   }
+
+   public String a() {
+      return this.c;
+   }
+
+   public List<wt.a> b() {
+      return this.d;
+   }
+
+   public xt c() {
+      return this.e;
+   }
+
+   public static enum a implements bai {
+      a(0, "sender", ($$0, $$1) -> $$1.b()),
+      b(1, "target", ($$0, $$1) -> $$1.c().orElse(wv.a)),
+      c(2, "content", ($$0, $$1) -> $$0);
+
+      private static final IntFunction<wt.a> f = aya.a($$0 -> $$0.g, values(), aya.a.a);
+      public static final Codec<wt.a> d = bai.a(wt.a::values);
+      public static final yu<ByteBuf, wt.a> e = ys.a(f, $$0 -> $$0.g);
+      private final int g;
+      private final String h;
+      private final wt.a.a i;
+
+      private a(final int $$0, final String $$1, final wt.a.a $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+      }
+
+      public ww a(ww $$0, ws.a $$1) {
+         return this.i.select($$0, $$1);
       }
 
       @Override
       public String c() {
-         return this.j;
+         return this.h;
       }
 
-      public static DataResult<wt.a> a(wt.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Click event type not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
-      }
-   }
-
-   public static record b(int c) implements wt {
-      public static final MapCodec<wt.b> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.m.fieldOf("page").forGetter(wt.b::b)).apply($$0, wt.b::new));
-
-      @Override
-      public wt.a a() {
-         return wt.a.e;
-      }
-
-      public int b() {
-         return this.c;
-      }
-   }
-
-   public static record c(String c) implements wt {
-      public static final MapCodec<wt.c> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("value").forGetter(wt.c::b)).apply($$0, wt.c::new)
-      );
-
-      @Override
-      public wt.a a() {
-         return wt.a.f;
-      }
-
-      public String b() {
-         return this.c;
-      }
-   }
-
-   public static record d(String c) implements wt {
-      public static final MapCodec<wt.d> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("path").forGetter(wt.d::c)).apply($$0, wt.d::new)
-      );
-
-      public d(File $$0) {
-         this($$0.toString());
-      }
-
-      public d(Path $$0) {
-         this($$0.toFile());
-      }
-
-      public File b() {
-         return new File(this.c);
-      }
-
-      @Override
-      public wt.a a() {
-         return wt.a.b;
-      }
-   }
-
-   public static record e(URI c) implements wt {
-      public static final MapCodec<wt.e> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.D.fieldOf("url").forGetter(wt.e::b)).apply($$0, wt.e::new));
-
-      @Override
-      public wt.a a() {
-         return wt.a.a;
-      }
-
-      public URI b() {
-         return this.c;
-      }
-   }
-
-   public static record f(String c) implements wt {
-      public static final MapCodec<wt.f> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.E.fieldOf("command").forGetter(wt.f::b)).apply($$0, wt.f::new));
-
-      @Override
-      public wt.a a() {
-         return wt.a.c;
-      }
-
-      public String b() {
-         return this.c;
-      }
-   }
-
-   public static record g(String c) implements wt {
-      public static final MapCodec<wt.g> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.E.fieldOf("command").forGetter(wt.g::b)).apply($$0, wt.g::new));
-
-      @Override
-      public wt.a a() {
-         return wt.a.d;
-      }
-
-      public String b() {
-         return this.c;
+      public interface a {
+         ww select(ww var1, ws.a var2);
       }
    }
 }

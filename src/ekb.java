@@ -1,21 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekb extends ejn {
-   public static final Codec<ekb> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               elw.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               ays.m.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               ays.m.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ekb::new)
-   );
-   public final int d;
-   public final int e;
-
-   public ekb(elw $$0, int $$1, int $$2) {
+public class ekb extends eit<elq> {
+   public ekb(Codec<elq> $$0) {
       super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   }
+
+   @Override
+   public boolean a(eiv<elq> $$0) {
+      azt $$1 = $$0.d();
+      elq $$2 = $$0.f();
+      djo $$3 = $$0.b();
+      iu $$4 = $$0.e();
+      ebm $$5 = $$0.c();
+      int $$6 = $$1.a($$2.b.b());
+      epm $$7 = $$2.b.a($$6).a();
+      return $$7.a($$3, $$5, $$1, $$4);
    }
 }

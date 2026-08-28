@@ -1,99 +1,84 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Path;
+import java.util.function.BooleanSupplier;
+import java.util.zip.GZIPOutputStream;
+import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
+import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
 
-public class fjs extends fjt {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "http://";
-   private static final int c = 8080;
-   private static final Pattern d = Pattern.compile("^[a-zA-Z][-a-zA-Z0-9+.]+:");
-   private final boolean e;
-   @Nullable
-   private final String f;
-   private final URI g;
+public class fjs {
+   private static final long a = 5368709120L;
+   private static final String b = "world";
+   private final BooleanSupplier c;
+   private final Path d;
 
-   private fjs(boolean $$0, @Nullable String $$1, URI $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public static File a(Path $$0, BooleanSupplier $$1) throws IOException {
+      return new fjs($$0, $$1).a();
    }
 
-   @Nullable
-   public static fjs a(String $$0) {
+   private fjs(Path $$0, BooleanSupplier $$1) {
+      this.c = $$1;
+      this.d = $$0;
+   }
+
+   private File a() throws IOException {
+      TarArchiveOutputStream $$0 = null;
+
+      File var3;
       try {
-         JsonParser $$1 = new JsonParser();
-         JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-         String $$3 = flp.b("uploadEndpoint", $$2, null);
-         if ($$3 != null) {
-            int $$4 = flp.a("port", $$2, -1);
-            URI $$5 = a($$3, $$4);
-            if ($$5 != null) {
-               boolean $$6 = flp.a("worldClosed", $$2, false);
-               String $$7 = flp.b("token", $$2, null);
-               return new fjs($$6, $$7, $$5);
+         File $$1 = File.createTempFile("realms-upload-file", ".tar.gz");
+         $$0 = new TarArchiveOutputStream(new GZIPOutputStream(new FileOutputStream($$1)));
+         $$0.setLongFileMode(3);
+         this.a($$0, this.d, "world", true);
+         if (this.c.getAsBoolean()) {
+            throw new fjn();
+         }
+
+         $$0.finish();
+         this.a($$1.length());
+         var3 = $$1;
+      } finally {
+         if ($$0 != null) {
+            $$0.close();
+         }
+      }
+
+      return var3;
+   }
+
+   private void a(TarArchiveOutputStream $$0, Path $$1, String $$2, boolean $$3) throws IOException {
+      if (this.c.getAsBoolean()) {
+         throw new fjn();
+      } else {
+         this.a($$0.getBytesWritten());
+         File $$4 = $$1.toFile();
+         String $$5 = $$3 ? $$2 : $$2 + $$4.getName();
+         TarArchiveEntry $$6 = new TarArchiveEntry($$4, $$5);
+         $$0.putArchiveEntry($$6);
+         if ($$4.isFile()) {
+            try (InputStream $$7 = new FileInputStream($$4)) {
+               $$7.transferTo($$0);
+            }
+
+            $$0.closeArchiveEntry();
+         } else {
+            $$0.closeArchiveEntry();
+            File[] $$8 = $$4.listFiles();
+            if ($$8 != null) {
+               for (File $$9 : $$8) {
+                  this.a($$0, $$9.toPath(), $$5 + "/", false);
+               }
             }
          }
-      } catch (Exception var8) {
-         a.error("Could not parse UploadInfo: {}", var8.getMessage());
-      }
-
-      return null;
-   }
-
-   @Nullable
-   @VisibleForTesting
-   public static URI a(String $$0, int $$1) {
-      Matcher $$2 = d.matcher($$0);
-      String $$3 = a($$0, $$2);
-
-      try {
-         URI $$4 = new URI($$3);
-         int $$5 = a($$1, $$4.getPort());
-         return $$5 != $$4.getPort() ? new URI($$4.getScheme(), $$4.getUserInfo(), $$4.getHost(), $$5, $$4.getPath(), $$4.getQuery(), $$4.getFragment()) : $$4;
-      } catch (URISyntaxException var6) {
-         a.warn("Failed to parse URI {}", $$3, var6);
-         return null;
       }
    }
 
-   private static int a(int $$0, int $$1) {
-      if ($$0 != -1) {
-         return $$0;
-      } else {
-         return $$1 != -1 ? $$1 : 8080;
+   private void a(long $$0) {
+      if ($$0 > 5368709120L) {
+         throw new fjq(5368709120L);
       }
-   }
-
-   private static String a(String $$0, Matcher $$1) {
-      return $$1.find() ? $$0 : "http://" + $$0;
-   }
-
-   public static String b(@Nullable String $$0) {
-      JsonObject $$1 = new JsonObject();
-      if ($$0 != null) {
-         $$1.addProperty("token", $$0);
-      }
-
-      return $$1.toString();
-   }
-
-   @Nullable
-   public String a() {
-      return this.f;
-   }
-
-   public URI b() {
-      return this.g;
-   }
-
-   public boolean c() {
-      return this.e;
    }
 }

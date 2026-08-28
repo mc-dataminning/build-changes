@@ -1,2 +1,8 @@
-public record eww(exf a, efg.b b) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eww {
 }

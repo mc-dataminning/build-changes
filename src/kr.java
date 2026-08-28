@@ -1,17 +1,32 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface kr {
-   @Nullable
-   <T> T a(kw<? extends T> var1);
+public record kr(cv.d c, cv.d d) implements ks {
+   public static final Codec<kr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cv.d.d.optionalFieldOf("durability", cv.d.c).forGetter(kr::a), cv.d.d.optionalFieldOf("damage", cv.d.c).forGetter(kr::b))
+            .apply($$0, kr::new)
+   );
 
-   default <T> T a(kw<? extends T> $$0, T $$1) {
-      T $$2 = this.a($$0);
-      return $$2 != null ? $$2 : $$1;
+   @Override
+   public boolean a(ke $$0) {
+      Integer $$1 = $$0.a(kj.e);
+      if ($$1 == null) {
+         return false;
+      } else {
+         int $$2 = $$0.a(kj.d, 0);
+         return !this.c.d($$2 - $$1) ? false : this.d.d($$1);
+      }
    }
 
-   @Nullable
-   default <T> kz<T> b(kw<T> $$0) {
-      T $$1 = this.a($$0);
-      return $$1 != null ? new kz<>($$0, $$1) : null;
+   public static kr a(cv.d $$0) {
+      return new kr($$0, cv.d.c);
+   }
+
+   public cv.d a() {
+      return this.c;
+   }
+
+   public cv.d b() {
+      return this.d;
    }
 }

@@ -1,36 +1,26 @@
-public interface dca extends dcl<dbz> {
-   @Override
-   default dcw<dca> b() {
-      return dcw.a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record dca(int d, float e) {
+   public static final float a = 5.0F;
+   public static final Codec<dca> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ays.l.optionalFieldOf("item_damage_per_attack", 1).forGetter(dca::a),
+               ays.n.optionalFieldOf("disable_blocking_for_seconds", 0.0F).forGetter(dca::b)
+            )
+            .apply($$0, dca::new)
+   );
+   public static final yu<wh, dca> c = yu.a(ys.h, dca::a, ys.l, dca::b, dca::new);
+
+   public dca(int $$0) {
+      this($$0, 0.0F);
    }
 
-   @Override
-   dcv<? extends dca> a();
-
-   dby c();
-
-   default kb<cxy> a(dbz $$0) {
-      return b($$0);
+   public int a() {
+      return this.d;
    }
 
-   static kb<cxy> b(dbz $$0) {
-      kb<cxy> $$1 = kb.a($$0.a(), cxy.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cxu $$3 = $$0.a($$2).h();
-         $$1.set($$2, $$3.j());
-      }
-
-      return $$1;
-   }
-
-   @Override
-   default dco h() {
-      return switch (this.c()) {
-         case a -> dcn.a;
-         case c -> dcn.c;
-         case b -> dcn.b;
-         case d -> dcn.d;
-      };
+   public float b() {
+      return this.e;
    }
 }

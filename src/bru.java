@@ -1,88 +1,79 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import java.util.stream.IntStream;
-import org.slf4j.Logger;
-import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.WeakHashMap;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class bru implements brn {
-   private static final Logger a = LogUtils.getLogger();
-   private final Set<brl> b = new ObjectOpenHashSet();
-   private final brt c = new brt();
+public class bru {
+   public static final bru a = new bru();
+   private final WeakHashMap<brw, Void> b = new WeakHashMap<>();
 
-   public bru(LongSupplier $$0, boolean $$1) {
-      this.b.add(a($$0));
-      if ($$1) {
-         this.b.addAll(a());
+   private bru() {
+   }
+
+   public void a(brw $$0) {
+      this.b.put($$0, null);
+   }
+
+   public List<brt> a() {
+      Map<String, List<brt>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bw().stream()).collect(Collectors.groupingBy(brt::d));
+      return a($$0);
+   }
+
+   private static List<brt> a(Map<String, List<brt>> $$0) {
+      return $$0.entrySet().stream().map($$0x -> {
+         String $$1 = (String)$$0x.getKey();
+         List<brt> $$2 = (List<brt>)$$0x.getValue();
+         return (brt)($$2.size() > 1 ? new bru.a($$1, $$2) : $$2.get(0));
+      }).collect(Collectors.toList());
+   }
+
+   static class a extends brt {
+      private final List<brt> b;
+
+      a(String $$0, List<brt> $$1) {
+         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
+         this.b = $$1;
       }
-   }
 
-   public static Set<brl> a() {
-      Builder<brl> $$0 = ImmutableSet.builder();
-
-      try {
-         bru.a $$1 = new bru.a();
-         IntStream.range(0, $$1.a).mapToObj($$1x -> brl.a("cpu#" + $$1x, brk.h, () -> $$1.a($$1))).forEach($$0::add);
-      } catch (Throwable var2) {
-         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
+      private static brt.c a(List<brt> $$0) {
+         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
       }
 
-      $$0.add(brl.a("heap MiB", brk.e, () -> (double)ad.a(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())));
-      $$0.addAll(brm.a.a());
-      return $$0.build();
-   }
-
-   @Override
-   public Set<brl> a(Supplier<bpy> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
-   }
-
-   public static brl a(final LongSupplier $$0) {
-      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
-         public long read() {
-            return $$0.getAsLong();
+      private static void b(List<brt> $$0) {
+         for (brt $$1 : $$0) {
+            $$1.a();
          }
-      });
-      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
-         if ($$0x.isRunning()) {
-            $$0x.stop();
+      }
+
+      private static double c(List<brt> $$0) {
+         double $$1 = 0.0;
+
+         for (brt $$2 : $$0) {
+            $$1 += $$2.c().getAsDouble();
          }
 
-         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
-         $$0x.reset();
-         return (double)$$1x;
-      };
-      brl.d $$3 = new brl.d(2.0F);
-      return brl.a("ticktime", brk.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
-   }
+         return $$1 / (double)$$0.size();
+      }
 
-   static class a {
-      private final SystemInfo b = new SystemInfo();
-      private final CentralProcessor c = this.b.getHardware().getProcessor();
-      public final int a = this.c.getLogicalProcessorCount();
-      private long[][] d = this.c.getProcessorCpuLoadTicks();
-      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
-      private long f;
-
-      public double a(int $$0) {
-         long $$1 = System.currentTimeMillis();
-         if (this.f == 0L || this.f + 501L < $$1) {
-            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
-            this.d = this.c.getProcessorCpuLoadTicks();
-            this.f = $$1;
+      @Override
+      public boolean equals(@Nullable Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
+            return false;
+         } else if (!super.equals($$0)) {
+            return false;
+         } else {
+            bru.a $$1 = (bru.a)$$0;
+            return this.b.equals($$1.b);
          }
+      }
 
-         return this.e[$$0] * 100.0;
+      @Override
+      public int hashCode() {
+         return Objects.hash(super.hashCode(), this.b);
       }
    }
 }

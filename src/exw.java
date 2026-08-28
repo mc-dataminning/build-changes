@@ -1,25 +1,22 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.SignStyle;
+import java.time.temporal.ChronoField;
 
-public class exw extends eyd {
-   public static final MapCodec<exw> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, exw::new));
-
-   private exw(int $$0, int $$1, List<fau> $$2, List<eyz> $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public eyc a() {
-      return exz.b;
-   }
-
-   @Override
-   public void a(Consumer<cxy> $$0, exl $$1) {
-   }
-
-   public static eyd.a<?> b() {
-      return a(exw::new);
+public class exw {
+   public static DateTimeFormatter a() {
+      return new DateTimeFormatterBuilder()
+         .appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
+         .appendLiteral('-')
+         .appendValue(ChronoField.MONTH_OF_YEAR, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.DAY_OF_MONTH, 2)
+         .appendLiteral('_')
+         .appendValue(ChronoField.HOUR_OF_DAY, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
+         .toFormatter();
    }
 }

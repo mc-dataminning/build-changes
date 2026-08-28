@@ -1,15 +1,20 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record dep(jw<cxu> c) {
-   public static final Codec<dep> a = RecordCodecBuilder.create($$0 -> $$0.group(kh.a(me.K).fieldOf("items").forGetter(dep::a)).apply($$0, dep::new));
-   public static final yt<wg, dep> b = yt.a(yr.c(me.K), dep::a, dep::new);
+public interface dep {
+   Codec<dep> d = mf.ax.q().dispatch(dep::a, dep.a::a);
+   yu<wh, dep> e = ys.a(mg.ag).b(dep::a, dep.a::b);
 
-   public boolean a(cxy $$0) {
-      return $$0.a(this.c);
+   dev d();
+
+   dev e();
+
+   dep.a<? extends dep> a();
+
+   default boolean a(cub $$0) {
+      return this.d().a($$0) && this.e().a($$0);
    }
 
-   public jw<cxu> a() {
-      return this.c;
+   public static record a<T extends dep>(MapCodec<T> a, yu<wh, T> b) {
    }
 }

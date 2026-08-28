@@ -1,151 +1,256 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class dyb {
-   private static final Map<String, dyb> l = new Object2ObjectArrayMap();
-   public static final Codec<dyb> a = Codec.stringResolver($$0 -> $$0.m, l::get);
-   public static final dyb b = new dyb(
-      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(rm.g), Optional.of(rm.q), Optional.of(rm.F), Optional.of(rm.M)
-   );
-   public static final dyb c = new dyb(
-      "spruce", 0.5F, Optional.of(rm.t), Optional.of(rm.u), Optional.of(rm.n), Optional.empty(), Optional.empty(), Optional.empty()
-   );
-   public static final dyb d = new dyb(
-      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(rm.A), Optional.of(rm.B), Optional.empty(), Optional.empty()
-   );
-   public static final dyb e = new dyb("azalea", Optional.empty(), Optional.of(rm.z), Optional.empty());
-   public static final dyb f = new dyb("birch", Optional.empty(), Optional.of(rm.l), Optional.of(rm.J));
-   public static final dyb g = new dyb("jungle", Optional.of(rm.s), Optional.of(rm.r), Optional.empty());
-   public static final dyb h = new dyb("acacia", Optional.empty(), Optional.of(rm.m), Optional.empty());
-   public static final dyb i = new dyb("cherry", Optional.empty(), Optional.of(rm.C), Optional.of(rm.O));
-   public static final dyb j = new dyb("dark_oak", Optional.of(rm.h), Optional.empty(), Optional.empty());
-   public static final dyb k = new dyb("pale_oak", Optional.of(rm.j), Optional.empty(), Optional.empty());
-   private final String m;
-   private final float n;
-   private final Optional<alc<ehd<?, ?>>> o;
-   private final Optional<alc<ehd<?, ?>>> p;
-   private final Optional<alc<ehd<?, ?>>> q;
-   private final Optional<alc<ehd<?, ?>>> r;
-   private final Optional<alc<ehd<?, ?>>> s;
-   private final Optional<alc<ehd<?, ?>>> t;
-
-   public dyb(String $$0, Optional<alc<ehd<?, ?>>> $$1, Optional<alc<ehd<?, ?>>> $$2, Optional<alc<ehd<?, ?>>> $$3) {
-      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
-   }
-
-   public dyb(
-      String $$0,
-      float $$1,
-      Optional<alc<ehd<?, ?>>> $$2,
-      Optional<alc<ehd<?, ?>>> $$3,
-      Optional<alc<ehd<?, ?>>> $$4,
-      Optional<alc<ehd<?, ?>>> $$5,
-      Optional<alc<ehd<?, ?>>> $$6,
-      Optional<alc<ehd<?, ?>>> $$7
-   ) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.r = $$5;
-      this.s = $$6;
-      this.t = $$7;
-      l.put($$0, this);
-   }
-
+public class dyb extends dwn {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 90;
+   private static final int c = 10;
    @Nullable
-   private alc<ehd<?, ?>> a(azs $$0, boolean $$1) {
-      if ($$0.i() < this.n) {
-         if ($$1 && this.t.isPresent()) {
-            return this.t.get();
-         }
+   private UUID d;
+   private dyc e = this.f();
+   private dyc f = this.f();
+   private boolean g;
 
-         if (this.r.isPresent()) {
-            return this.r.get();
-         }
-      }
-
-      return $$1 && this.s.isPresent() ? this.s.get() : this.q.orElse(null);
+   public dyb(iu $$0, dzo $$1) {
+      this(dwp.h, $$0, $$1);
    }
 
-   @Nullable
-   private alc<ehd<?, ?>> a(azs $$0) {
-      return this.p.isPresent() && $$0.i() < this.n ? this.p.get() : this.o.orElse(null);
+   public dyb(dwp $$0, iu $$1, dzo $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public boolean a(arn $$0, eak $$1, jj $$2, dym $$3, azs $$4) {
-      alc<ehd<?, ?>> $$5 = this.a($$4);
-      if ($$5 != null) {
-         js<ehd<?, ?>> $$6 = $$0.F_().f(me.aP).a($$5).orElse(null);
-         if ($$6 != null) {
-            for (int $$7 = 0; $$7 >= -1; $$7--) {
-               for (int $$8 = 0; $$8 >= -1; $$8--) {
-                  if (a($$3, $$0, $$2, $$7, $$8)) {
-                     ehd<?, ?> $$9 = $$6.a();
-                     dym $$10 = dkw.a.m();
-                     $$0.a($$2.b($$7, 0, $$8), $$10, 260);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 260);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 260);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 260);
-                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
-                        return true;
-                     }
+   protected dyc f() {
+      return new dyc();
+   }
 
-                     $$0.a($$2.b($$7, 0, $$8), $$3, 260);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 260);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 260);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 260);
-                     return false;
-                  }
-               }
-            }
-         }
-      }
-
-      alc<ehd<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
-      if ($$11 == null) {
-         return false;
+   public boolean a(cqs $$0) {
+      if (this.m().b() instanceof dta $$1) {
+         fdw $$2 = $$1.o(this.m());
+         double $$3 = $$0.dA() - ((double)this.aw_().u() + $$2.d);
+         double $$4 = $$0.dG() - ((double)this.aw_().w() + $$2.f);
+         float $$5 = $$1.h(this.m());
+         float $$6 = (float)(azk.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
+         return azk.d($$5, $$6) <= 90.0F;
       } else {
-         js<ehd<?, ?>> $$12 = $$0.F_().f(me.aP).a($$11).orElse(null);
-         if ($$12 == null) {
-            return false;
+         return false;
+      }
+   }
+
+   public dyc a(boolean $$0) {
+      return $$0 ? this.e : this.f;
+   }
+
+   public dyc j() {
+      return this.e;
+   }
+
+   public dyc k() {
+      return this.f;
+   }
+
+   public int a() {
+      return 10;
+   }
+
+   public int c() {
+      return 90;
+   }
+
+   @Override
+   protected void b(tx $$0, jg.a $$1) {
+      super.b($$0, $$1);
+      DynamicOps<uu> $$2 = $$1.a(ul.a);
+      dyc.a.encodeStart($$2, this.e).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("front_text", $$1x));
+      dyc.a.encodeStart($$2, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("back_text", $$1x));
+      $$0.a("is_waxed", this.g);
+   }
+
+   @Override
+   protected void a(tx $$0, jg.a $$1) {
+      super.a($$0, $$1);
+      DynamicOps<uu> $$2 = $$1.a(ul.a);
+      if ($$0.e("front_text")) {
+         dyc.a.parse($$2, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
+      }
+
+      if ($$0.e("back_text")) {
+         dyc.a.parse($$2, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
+      }
+
+      this.g = $$0.q("is_waxed");
+   }
+
+   private dyc a(dyc $$0) {
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         ww $$2 = this.a($$0.a($$1, false));
+         ww $$3 = this.a($$0.a($$1, true));
+         $$0 = $$0.a($$1, $$2, $$3);
+      }
+
+      return $$0;
+   }
+
+   private ww a(ww $$0) {
+      if (this.n instanceof aro $$1) {
+         try {
+            return wz.a(a(null, $$1, this.o), $$0, null, 0);
+         } catch (CommandSyntaxException var4) {
+         }
+      }
+
+      return $$0;
+   }
+
+   public void a(cqs $$0, boolean $$1, List<ash> $$2) {
+      if (!this.u() && $$0.cG().equals(this.t()) && this.n != null) {
+         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
+         this.a(null);
+         this.n.a(this.aw_(), this.m(), this.m(), 3);
+      } else {
+         a.warn("Player {} just tried to change non-editable sign", $$0.al().getString());
+      }
+   }
+
+   public boolean a(UnaryOperator<dyc> $$0, boolean $$1) {
+      dyc $$2 = this.a($$1);
+      return this.a($$0.apply($$2), $$1);
+   }
+
+   private dyc a(cqs $$0, List<ash> $$1, dyc $$2) {
+      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+         ash $$4 = $$1.get($$3);
+         xt $$5 = $$2.a($$3, $$0.aa()).a();
+         if ($$0.aa()) {
+            $$2 = $$2.a($$3, ww.b($$4.b()).b($$5));
          } else {
-            ehd<?, ?> $$13 = $$12.a();
-            dym $$14 = $$0.b_($$2).g();
-            $$0.a($$2, $$14, 260);
-            if ($$13.a($$0, $$1, $$4, $$2)) {
-               if ($$0.a_($$2) == $$14) {
-                  $$0.a($$2, $$3, $$14, 2);
-               }
+            $$2 = $$2.a($$3, ww.b($$4.d()).b($$5), ww.b($$4.b()).b($$5));
+         }
+      }
 
-               return true;
-            } else {
-               $$0.a($$2, $$3, 260);
-               return false;
+      return $$2;
+   }
+
+   public boolean a(dyc $$0, boolean $$1) {
+      return $$1 ? this.c($$0) : this.b($$0);
+   }
+
+   private boolean b(dyc $$0) {
+      if ($$0 != this.f) {
+         this.f = $$0;
+         this.v();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean c(dyc $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.v();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean a(boolean $$0, cqs $$1) {
+      return this.u() && this.a($$0).b($$1);
+   }
+
+   public boolean a(cqs $$0, dip $$1, iu $$2, boolean $$3) {
+      boolean $$4 = false;
+
+      for (ww $$5 : this.a($$3).b($$0.aa())) {
+         xt $$6 = $$5.a();
+         wu $$7 = $$6.i();
+         if ($$7 instanceof wu.f) {
+            wu.f var12 = (wu.f)$$7;
+            wu.f var10000 = var12;
+
+            try {
+               var16 = var10000.b();
+            } catch (Throwable var15) {
+               throw new MatchException(var15.toString(), var15);
             }
-         }
-      }
-   }
 
-   private static boolean a(dym $$0, dgv $$1, jj $$2, int $$3, int $$4) {
-      dku $$5 = $$0.b();
-      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
-   }
-
-   private boolean a(dhq $$0, jj $$1) {
-      for (jj $$2 : jj.a.c($$1.e().d(2).f(2), $$1.d().e(2).g(2))) {
-         if ($$0.a_($$2).a(awz.V)) {
-            return true;
+            String var14 = var16;
+            $$0.cV().aG().a(a($$0, $$1, $$2), var14);
+            $$4 = true;
          }
       }
 
-      return false;
+      return $$4;
+   }
+
+   private static ei a(@Nullable cqs $$0, dip $$1, iu $$2) {
+      String $$3 = $$0 == null ? "Sign" : $$0.al().getString();
+      ww $$4 = (ww)($$0 == null ? ww.b("Sign") : $$0.m_());
+      return new ei(eh.a, fdw.b($$2), fdv.a, (aro)$$1, 2, $$3, $$4, $$1.p(), $$0);
+   }
+
+   public aby s() {
+      return aby.a(this);
+   }
+
+   @Override
+   public tx a(jg.a $$0) {
+      return this.e($$0);
+   }
+
+   public void a(@Nullable UUID $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   public UUID t() {
+      return this.d;
+   }
+
+   private void v() {
+      this.e();
+      this.n.a(this.aw_(), this.m(), this.m(), 3);
+   }
+
+   public boolean u() {
+      return this.g;
+   }
+
+   public boolean b(boolean $$0) {
+      if (this.g != $$0) {
+         this.g = $$0;
+         this.v();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(UUID $$0) {
+      cqs $$1 = this.n.a($$0);
+      return $$1 == null || !$$1.a(this.aw_(), 4.0);
+   }
+
+   public static void a(dip $$0, iu $$1, dzo $$2, dyb $$3) {
+      UUID $$4 = $$3.t();
+      if ($$4 != null) {
+         $$3.a($$3, $$0, $$4);
+      }
+   }
+
+   private void a(dyb $$0, dip $$1, UUID $$2) {
+      if ($$0.b($$2)) {
+         $$0.a(null);
+      }
+   }
+
+   public awk d() {
+      return awl.CZ;
    }
 }

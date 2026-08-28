@@ -1,119 +1,322 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
+import com.mojang.serialization.Dynamic;
+import javax.annotation.Nullable;
 
-public class cpb {
-   private static final int a = 600;
-   private static final int b = 20;
-   private static final double c = 0.0125;
-   private static final int d = 8;
-   private static final int e = 8;
-   private static final float f = 0.6F;
-   private static final int g = 2;
-   private static final int h = 100;
-   private static final int i = 5;
+public class cpb extends cio implements cnl, cpd {
+   private static final akh<Boolean> bJ = akl.a(cpb.class, akj.k);
+   private static final int bK = 40;
+   private static final float bL = 0.3F;
+   private static final int bM = 1;
+   private static final float bN = 0.6F;
+   private static final int bO = 6;
+   private static final float bP = 0.5F;
+   public static final int bF = 300;
+   private int bQ;
+   private int bR;
+   private boolean bS;
+   protected static final ImmutableList<? extends chi<? extends chh<? super cpb>>> bG = ImmutableList.of(chi.c, chi.d, chi.o, chi.n);
+   protected static final ImmutableList<? extends cgb<?>> bH = ImmutableList.of(
+      cgb.s,
+      cgb.g,
+      cgb.h,
+      cgb.k,
+      cgb.l,
+      cgb.o,
+      cgb.n,
+      cgb.F,
+      cgb.u,
+      cgb.p,
+      cgb.q,
+      cgb.ar,
+      new cgb[]{cgb.A, cgb.at, cgb.au, cgb.aq, cgb.L, cgb.ax, cgb.ay, cgb.aa}
+   );
 
-   protected static bxr<?> a(cpa $$0, bxr<cpa> $$1) {
-      b($$0, $$1);
-      c($$0, $$1);
-      d($$0, $$1);
-      $$1.a(ImmutableSet.of(crz.a));
-      $$1.b(crz.b);
-      $$1.f();
-      return $$1;
+   public cpb(bwj<? extends cpb> $$0, dip $$1) {
+      super($$0, $$1);
+      this.bx = 5;
    }
 
-   protected static void a(cpa $$0) {
-      jr $$1 = jr.a($$0.dV().aj(), $$0.dv());
-      $$0.eb().a(cft.b, $$1);
+   @VisibleForTesting
+   public void s(int $$0) {
+      this.bR = $$0;
    }
 
-   private static void b(cpa $$0, bxr<cpa> $$1) {
-      $$1.a(crz.a, 0, ImmutableList.of(new bzo(45, 90), new bzs(), bzg.a(), cay.a()));
+   @Override
+   public boolean w() {
+      return true;
    }
 
-   private static void c(cpa $$0, bxr<cpa> $$1) {
-      $$1.a(crz.b, 10, ImmutableList.of(cau.a(cpb::a), a(), b(), cak.a(bwb.bR, 4)));
+   public static bye.a t() {
+      return cnt.gt().a(byf.s, 40.0).a(byf.v, 0.3F).a(byf.p, 0.6F).a(byf.d, 1.0).a(byf.c, 6.0);
    }
 
-   private static void d(cpa $$0, bxr<cpa> $$1) {
-      $$1.a(crz.k, 10, ImmutableList.of(cax.a(($$1x, $$2) -> !a($$1x, (cow)$$0, $$2)), can.a(1.0F), bzp.a(20)), cft.p);
-   }
-
-   private static caf<cpa> a() {
-      return new caf<>(
-         ImmutableList.of(
-            Pair.of(cah.a(bwb.bR, 8.0F), 1),
-            Pair.of(cah.a(bwb.aR, 8.0F), 1),
-            Pair.of(cah.a(bwb.aS, 8.0F), 1),
-            Pair.of(cah.a(8.0F), 1),
-            Pair.of(new bys(30, 60), 1)
-         )
-      );
-   }
-
-   private static caf<cpa> b() {
-      return new caf<>(
-         ImmutableList.of(
-            Pair.of(caa.a(0.6F), 2),
-            Pair.of(bzf.a(bwb.aR, 8, cft.r, 0.6F, 2), 2),
-            Pair.of(bzf.a(bwb.aS, 8, cft.r, 0.6F, 2), 2),
-            Pair.of(cba.a(cft.b, 0.6F, 2, 100), 2),
-            Pair.of(caz.a(cft.b, 0.6F, 5), 2),
-            Pair.of(new bys(30, 60), 1)
-         )
-      );
-   }
-
-   protected static void b(cpa $$0) {
-      bxr<cpa> $$1 = $$0.eb();
-      crz $$2 = $$1.g().orElse(null);
-      $$1.a(ImmutableList.of(crz.k, crz.b));
-      crz $$3 = $$1.g().orElse(null);
-      if ($$2 != $$3) {
-         d($$0);
-      }
-
-      $$0.v($$1.a(cft.p));
-   }
-
-   private static boolean a(arn $$0, cow $$1, bwr $$2) {
-      return a($$0, $$1).filter($$1x -> $$1x == $$2).isPresent();
-   }
-
-   private static Optional<? extends bwr> a(arn $$0, cow $$1) {
-      Optional<bwr> $$2 = byk.a($$1, cft.ac);
-      if ($$2.isPresent() && cgz.d($$0, $$1, $$2.get())) {
-         return $$2;
+   @Override
+   public boolean c(aro $$0, bwa $$1) {
+      if ($$1 instanceof bwz $$2) {
+         this.bQ = 10;
+         this.dV().a(this, (byte)4);
+         this.b(awl.mO);
+         cpc.a(this, $$2);
+         return cpd.a($$0, this, $$2);
       } else {
-         Optional<? extends bwr> $$3 = $$1.eb().c(cft.l);
-         return $$3.isPresent() ? $$3 : $$1.eb().c(cft.N);
+         return false;
       }
    }
 
-   protected static void a(arn $$0, cpa $$1, bwr $$2) {
-      if (!($$2 instanceof cow)) {
-         coy.a($$0, $$1, $$2);
+   @Override
+   protected void d(bwz $$0) {
+      if (this.x()) {
+         cpd.a(this, $$0);
       }
    }
 
-   protected static void a(cpa $$0, bwr $$1) {
-      $$0.eb().b(cft.F);
-      $$0.eb().a(cft.ac, $$1.cG(), 600L);
-   }
-
-   protected static void c(cpa $$0) {
-      if ((double)$$0.dV().A.i() < 0.0125) {
-         d($$0);
+   @Override
+   public boolean a(aro $$0, bup $$1, float $$2) {
+      boolean $$3 = super.a($$0, $$1, $$2);
+      if ($$3 && $$1.d() instanceof bwz $$4) {
+         cpc.a($$0, this, $$4);
       }
+
+      return $$3;
    }
 
-   private static void d(cpa $$0) {
-      $$0.eb().g().ifPresent($$1 -> {
-         if ($$1 == crz.k) {
-            $$0.gu();
+   @Override
+   protected bxz.b<cpb> ec() {
+      return bxz.a(bH, bG);
+   }
+
+   @Override
+   protected bxz<?> a(Dynamic<?> $$0) {
+      return cpc.a(this.ec().a($$0));
+   }
+
+   @Override
+   public bxz<cpb> eb() {
+      return (bxz<cpb>)super.eb();
+   }
+
+   @Override
+   protected void a(aro $$0) {
+      bqj $$1 = bqi.a();
+      $$1.a("hoglinBrain");
+      this.eb().a($$0, this);
+      $$1.c();
+      cpc.a(this);
+      if (this.gq()) {
+         this.bR++;
+         if (this.bR > 300) {
+            this.b(awl.mP);
+            this.gs();
          }
-      });
+      } else {
+         this.bR = 0;
+      }
+   }
+
+   @Override
+   public void k_() {
+      if (this.bQ > 0) {
+         this.bQ--;
+      }
+
+      super.k_();
+   }
+
+   @Override
+   protected void j() {
+      if (this.n_()) {
+         this.bx = 3;
+         this.g(byf.c).a(0.5);
+      } else {
+         this.bx = 5;
+         this.g(byf.c).a(6.0);
+      }
+   }
+
+   public static boolean c(bwj<cpb> $$0, diq $$1, bwi $$2, iu $$3, azt $$4) {
+      return !$$1.a_($$3.e()).a(dlw.lm);
+   }
+
+   @Nullable
+   @Override
+   public bxr a(djg $$0, btw $$1, bwi $$2, @Nullable bxr $$3) {
+      if ($$0.C_().i() < 0.2F) {
+         this.a(true);
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean h(double $$0) {
+      return !this.fZ();
+   }
+
+   @Override
+   public float a(iu $$0, dis $$1) {
+      if (cpc.a(this, $$0)) {
+         return -1.0F;
+      } else {
+         return $$1.a_($$0.e()).a(dlw.oY) ? 10.0F : 0.0F;
+      }
+   }
+
+   @Override
+   public bty b(cqs $$0, btx $$1) {
+      bty $$2 = super.b($$0, $$1);
+      if ($$2.a()) {
+         this.fY();
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 4) {
+         this.bQ = 10;
+         this.b(awl.mO);
+      } else {
+         super.b($$0);
+      }
+   }
+
+   @Override
+   public int q() {
+      return this.bQ;
+   }
+
+   @Override
+   public boolean en() {
+      return true;
+   }
+
+   @Override
+   protected int e(aro $$0) {
+      return this.bx;
+   }
+
+   private void gs() {
+      this.a(bwj.bN, bvu.a(this, true, false), $$0 -> $$0.a(new bve(bvg.i, 200, 0)));
+   }
+
+   @Override
+   public boolean k(cys $$0) {
+      return $$0.a(axi.ap);
+   }
+
+   public boolean x() {
+      return !this.n_();
+   }
+
+   @Override
+   protected void a(akl.a $$0) {
+      super.a($$0);
+      $$0.a(bJ, false);
+   }
+
+   @Override
+   public void b(tx $$0) {
+      super.b($$0);
+      if (this.gt()) {
+         $$0.a("IsImmuneToZombification", true);
+      }
+
+      $$0.a("TimeInOverworld", this.bR);
+      if (this.bS) {
+         $$0.a("CannotBeHunted", true);
+      }
+   }
+
+   @Override
+   public void a(tx $$0) {
+      super.a($$0);
+      this.w($$0.q("IsImmuneToZombification"));
+      this.bR = $$0.h("TimeInOverworld");
+      this.x($$0.q("CannotBeHunted"));
+   }
+
+   public void w(boolean $$0) {
+      this.au().a(bJ, $$0);
+   }
+
+   private boolean gt() {
+      return this.au().a(bJ);
+   }
+
+   public boolean gq() {
+      return !this.dV().B_().b() && !this.gt() && !this.gf();
+   }
+
+   private void x(boolean $$0) {
+      this.bS = $$0;
+   }
+
+   public boolean gr() {
+      return this.x() && !this.bS;
+   }
+
+   @Nullable
+   @Override
+   public bvq a(aro $$0, bvq $$1) {
+      cpb $$2 = bwj.aj.a($$0, bwi.e);
+      if ($$2 != null) {
+         $$2.fY();
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public boolean gx() {
+      return !cpc.c(this) && super.gx();
+   }
+
+   @Override
+   public awm dm() {
+      return awm.f;
+   }
+
+   @Override
+   protected awk u() {
+      return this.dV().C ? null : cpc.b(this).orElse(null);
+   }
+
+   @Override
+   protected awk e(bup $$0) {
+      return awl.mR;
+   }
+
+   @Override
+   protected awk l_() {
+      return awl.mQ;
+   }
+
+   @Override
+   protected awk aV() {
+      return awl.nw;
+   }
+
+   @Override
+   protected awk aW() {
+      return awl.nv;
+   }
+
+   @Override
+   protected void b(iu $$0, dzo $$1) {
+      this.a(awl.mT, 0.15F, 1.0F);
+   }
+
+   @Override
+   protected void ab() {
+      super.ab();
+      agk.a(this);
+   }
+
+   @Nullable
+   @Override
+   public bwz f() {
+      return this.Q();
    }
 }

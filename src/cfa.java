@@ -1,26 +1,45 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cfa extends cek {
-   public static final float i = 0.001F;
-   protected final float j;
+public class cfa extends cdv {
+   private final bxv a;
 
-   public cfa(bwz $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public cfa(bxv $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cdv.a.c, cdv.a.a));
    }
 
-   public cfa(bwz $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected fcu h() {
-      if (this.b.bj()) {
-         fcu $$0 = chn.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
+   public boolean c() {
+      return this.a.gq();
+   }
+
+   @Override
+   public boolean b() {
+      boolean $$0 = this.a.gq();
+      if (!$$0 && !this.a.q()) {
+         return false;
+      } else if (this.a.bj()) {
+         return false;
+      } else if (!this.a.aJ()) {
+         return false;
       } else {
-         return this.b.dY().i() >= this.j ? chn.a(this.b, 10, 7) : super.h();
+         bwz $$1 = this.a.e();
+         if ($$1 == null) {
+            return true;
+         } else {
+            return this.a.g((bwa)$$1) < 144.0 && $$1.eq() != null ? false : $$0;
+         }
       }
+   }
+
+   @Override
+   public void d() {
+      this.a.O().m();
+      this.a.x(true);
+   }
+
+   @Override
+   public void e() {
+      this.a.x(false);
    }
 }

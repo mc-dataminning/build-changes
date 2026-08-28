@@ -2,43 +2,61 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 
-public class gg implements ArgumentType<Integer> {
-   private static final Collection<String> a = Arrays.asList("container.5", "weapon");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wv.b("slot.unknown", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wv.b("slot.only_single_allowed", $$0));
+public class gg implements ArgumentType<gh> {
+   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "~1 ~-2", "^ ^", "^-1 ^0");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("argument.pos2d.incomplete"));
 
    public static gg a() {
       return new gg();
    }
 
-   public static int a(CommandContext<ex> $$0, String $$1) {
-      return (Integer)$$0.getArgument($$1, Integer.class);
+   public static aqz a(CommandContext<ei> $$0, String $$1) {
+      iu $$2 = ((gh)$$0.getArgument($$1, gh.class)).c((ei)$$0.getSource());
+      return new aqz($$2.u(), $$2.w());
    }
 
-   public Integer a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = fb.a($$0, $$0x -> $$0x != ' ');
-      cvl $$2 = cvm.a($$1);
-      if ($$2 == null) {
-         throw b.createWithContext($$0, $$1);
-      } else if ($$2.b() != 1) {
-         throw c.createWithContext($$0, $$1);
+   public gh a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
       } else {
-         return $$2.a().getInt(0);
+         gn $$2 = gn.a($$0);
+         if ($$0.canRead() && $$0.peek() == ' ') {
+            $$0.skip();
+            gn $$3 = gn.a($$0);
+            return new go($$2, new gn(true, 0.0), $$3);
+         } else {
+            $$0.setCursor($$1);
+            throw a.createWithContext($$0);
+         }
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return fc.b(cvm.b(), $$1);
+      if (!($$0.getSource() instanceof en)) {
+         return Suggestions.empty();
+      } else {
+         String $$2 = $$1.getRemaining();
+         Collection<en.b> $$3;
+         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
+            $$3 = Collections.singleton(en.b.a);
+         } else {
+            $$3 = ((en)$$0.getSource()).A();
+         }
+
+         return en.b($$2, $$3, $$1, ej.a(this::a));
+      }
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 }

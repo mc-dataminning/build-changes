@@ -1,26 +1,8 @@
-import java.util.function.Consumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface fud {
-   void j(int var1);
-
-   void k(int var1);
-
-   int F();
-
-   int G();
-
-   int A();
-
-   int y();
-
-   default fuu J() {
-      return new fuu(this.F(), this.G(), this.A(), this.y());
-   }
-
-   default void c(int $$0, int $$1) {
-      this.j($$0);
-      this.k($$1);
-   }
-
-   void a(Consumer<fql> var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fud {
 }

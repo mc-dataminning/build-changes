@@ -1,196 +1,153 @@
-import com.google.common.collect.Maps;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.internal.Streams;
-import com.google.gson.stream.JsonReader;
-import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.File;
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
-import java.util.Map.Entry;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import org.slf4j.Logger;
 
-public class awq extends awv {
-   private static final Logger b = LogUtils.getLogger();
-   private final MinecraftServer c;
-   private final File d;
-   private final Set<awr<?>> e = Sets.newHashSet();
+public class awq extends awo {
+   public static final String b = "recipeBook";
+   private static final Logger e = LogUtils.getLogger();
+   private final awq.a f;
+   @VisibleForTesting
+   protected final Set<ald<ddj<?>>> c = Sets.newIdentityHashSet();
+   @VisibleForTesting
+   protected final Set<ald<ddj<?>>> d = Sets.newIdentityHashSet();
 
-   public awq(MinecraftServer $$0, File $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$1.isFile()) {
-         try {
-            this.a($$0.aC(), FileUtils.readFileToString($$1));
-         } catch (IOException var4) {
-            b.error("Couldn't read statistics file {}", $$1, var4);
-         } catch (JsonParseException var5) {
-            b.error("Couldn't parse statistics file {}", $$1, var5);
+   public awq(awq.a $$0) {
+      this.f = $$0;
+   }
+
+   public void a(ald<ddj<?>> $$0) {
+      this.c.add($$0);
+   }
+
+   public boolean b(ald<ddj<?>> $$0) {
+      return this.c.contains($$0);
+   }
+
+   public void c(ald<ddj<?>> $$0) {
+      this.c.remove($$0);
+      this.d.remove($$0);
+   }
+
+   public void d(ald<ddj<?>> $$0) {
+      this.d.remove($$0);
+   }
+
+   private void e(ald<ddj<?>> $$0) {
+      this.d.add($$0);
+   }
+
+   public int a(Collection<ddo<?>> $$0, arp $$1) {
+      List<aee.a> $$2 = new ArrayList<>();
+
+      for (ddo<?> $$3 : $$0) {
+         ald<ddj<?>> $$4 = $$3.a();
+         if (!this.c.contains($$4) && !$$3.b().al_()) {
+            this.a($$4);
+            this.e($$4);
+            this.f.displaysForRecipe($$4, $$2x -> $$2.add(new aee.a($$2x, $$3.b().i(), true)));
+            ap.g.a($$1, $$3);
          }
       }
-   }
 
-   public void a() {
-      try {
-         FileUtils.writeStringToFile(this.d, this.b());
-      } catch (IOException var2) {
-         b.error("Couldn't save stats", var2);
+      if (!$$2.isEmpty()) {
+         $$1.f.b(new aee($$2, false));
       }
+
+      return $$2.size();
    }
 
-   @Override
-   public void a(cqi $$0, awr<?> $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.e.add($$1);
+   public int b(Collection<ddo<?>> $$0, arp $$1) {
+      List<der> $$2 = Lists.newArrayList();
+
+      for (ddo<?> $$3 : $$0) {
+         ald<ddj<?>> $$4 = $$3.a();
+         if (this.c.contains($$4)) {
+            this.c($$4);
+            this.f.displaysForRecipe($$4, $$1x -> $$2.add($$1x.a()));
+         }
+      }
+
+      if (!$$2.isEmpty()) {
+         $$1.f.b(new aef($$2));
+      }
+
+      return $$2.size();
    }
 
-   private Set<awr<?>> d() {
-      Set<awr<?>> $$0 = Sets.newHashSet(this.e);
-      this.e.clear();
+   public tx b() {
+      tx $$0 = new tx();
+      this.a().b($$0);
+      ud $$1 = new ud();
+
+      for (ald<ddj<?>> $$2 : this.c) {
+         $$1.add(us.a($$2.a().toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      ud $$3 = new ud();
+
+      for (ald<ddj<?>> $$4 : this.d) {
+         $$3.add(us.a($$4.a().toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
       return $$0;
    }
 
-   public void a(DataFixer $$0, String $$1) {
-      try {
-         JsonReader $$2 = new JsonReader(new StringReader($$1));
-
-         label47: {
-            try {
-               $$2.setLenient(false);
-               JsonElement $$3 = Streams.parse($$2);
-               if (!$$3.isJsonNull()) {
-                  tw $$4 = a($$3.getAsJsonObject());
-                  $$4 = bax.g.a($$0, $$4, ul.b($$4, 1343));
-                  if (!$$4.b("stats", 10)) {
-                     break label47;
-                  }
-
-                  tw $$5 = $$4.p("stats");
-                  Iterator var7 = $$5.e().iterator();
-
-                  while (true) {
-                     if (!var7.hasNext()) {
-                        break label47;
-                     }
-
-                     String $$6 = (String)var7.next();
-                     if ($$5.b($$6, 10)) {
-                        af.a(
-                           md.v.b(ald.a($$6)),
-                           $$2x -> {
-                              tw $$3x = $$5.p($$6);
-
-                              for (String $$4x : $$3x.e()) {
-                                 if ($$3x.b($$4x, 99)) {
-                                    af.a(
-                                       this.a($$2x, $$4x),
-                                       $$2xx -> this.a.put($$2xx, $$3x.h($$4x)),
-                                       () -> b.warn("Invalid statistic in {}: Don't know what {} is", this.d, $$4x)
-                                    );
-                                 } else {
-                                    b.warn("Invalid statistic value in {}: Don't know what {} is for key {}", new Object[]{this.d, $$3x.c($$4x), $$4x});
-                                 }
-                              }
-                           },
-                           () -> b.warn("Invalid statistic type in {}: Don't know what {} is", this.d, $$6)
-                        );
-                     }
-                  }
-               }
-
-               b.error("Unable to parse Stat data from {}", this.d);
-            } catch (Throwable var10) {
-               try {
-                  $$2.close();
-               } catch (Throwable var9) {
-                  var10.addSuppressed(var9);
-               }
-
-               throw var10;
-            }
-
-            $$2.close();
-            return;
-         }
-
-         $$2.close();
-      } catch (IOException | JsonParseException var11) {
-         b.error("Unable to parse Stat data from {}", this.d, var11);
-      }
+   public void a(tx $$0, Predicate<ald<ddj<?>>> $$1) {
+      this.a(awp.a($$0));
+      ud $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      ud $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::e, $$1);
    }
 
-   private <T> Optional<awr<T>> a(awt<T> $$0, String $$1) {
-      return Optional.ofNullable(ald.c($$1)).flatMap($$0.b()::b).map($$0::b);
-   }
+   private void a(ud $$0, Consumer<ald<ddj<?>>> $$1, Predicate<ald<ddj<?>>> $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
 
-   private static tw a(JsonObject $$0) {
-      tw $$1 = new tw();
-
-      for (Entry<String, JsonElement> $$2 : $$0.entrySet()) {
-         JsonElement $$3 = $$2.getValue();
-         if ($$3.isJsonObject()) {
-            $$1.a($$2.getKey(), a($$3.getAsJsonObject()));
-         } else if ($$3.isJsonPrimitive()) {
-            JsonPrimitive $$4 = $$3.getAsJsonPrimitive();
-            if ($$4.isNumber()) {
-               $$1.a($$2.getKey(), $$4.getAsInt());
+         try {
+            ald<ddj<?>> $$5 = ald.a(mg.bs, ale.a($$4));
+            if (!$$2.test($$5)) {
+               e.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$5);
             }
+         } catch (aa var7) {
+            e.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
          }
       }
-
-      return $$1;
    }
 
-   protected String b() {
-      Map<awt<?>, JsonObject> $$0 = Maps.newHashMap();
-      ObjectIterator $$3 = this.a.object2IntEntrySet().iterator();
+   public void a(arp $$0) {
+      $$0.f.b(new aeg(this.a()));
+      List<aee.a> $$1 = new ArrayList<>(this.c.size());
 
-      while ($$3.hasNext()) {
-         it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<awr<?>> $$1 = (it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<awr<?>>)$$3.next();
-         awr<?> $$2 = (awr<?>)$$1.getKey();
-         $$0.computeIfAbsent($$2.a(), $$0x -> new JsonObject()).addProperty(b($$2).toString(), $$1.getIntValue());
+      for (ald<ddj<?>> $$2 : this.c) {
+         this.f.displaysForRecipe($$2, $$2x -> $$1.add(new aee.a($$2x, false, this.d.contains($$2))));
       }
 
-      JsonObject $$3x = new JsonObject();
-
-      for (Entry<awt<?>, JsonObject> $$4 : $$0.entrySet()) {
-         $$3x.add(md.v.b($$4.getKey()).toString(), (JsonElement)$$4.getValue());
-      }
-
-      JsonObject $$5 = new JsonObject();
-      $$5.add("stats", $$3x);
-      $$5.addProperty("DataVersion", ab.b().d().c());
-      return $$5.toString();
+      $$0.f.b(new aee($$1, true));
    }
 
-   private static <T> ald b(awr<T> $$0) {
-      return $$0.a().b().b($$0.b());
+   public void a(awq $$0) {
+      this.c.clear();
+      this.d.clear();
+      this.a.a($$0.a);
+      this.c.addAll($$0.c);
+      this.d.addAll($$0.d);
    }
 
-   public void c() {
-      this.e.addAll(this.a.keySet());
-   }
-
-   public void a(aro $$0) {
-      Object2IntMap<awr<?>> $$1 = new Object2IntOpenHashMap();
-
-      for (awr<?> $$2 : this.d()) {
-         $$1.put($$2, this.a($$2));
-      }
-
-      $$0.f.b(new abu($$1));
+   @FunctionalInterface
+   public interface a {
+      void displaysForRecipe(ald<ddj<?>> var1, Consumer<deq> var2);
    }
 }

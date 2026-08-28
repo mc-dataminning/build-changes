@@ -1,18 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public class ejq implements ejv {
-   public static final Codec<ejq> a = bsv.b(0, 256).fieldOf("count").xmap(ejq::new, ejq::a).codec();
-   private final bsv b;
-
-   public ejq(int $$0) {
-      this.b = bss.a($$0);
+public class ejq extends eit<eli> {
+   public ejq(Codec<eli> $$0) {
+      super($$0);
    }
 
-   public ejq(bsv $$0) {
-      this.b = $$0;
-   }
-
-   public bsv a() {
-      return this.b;
+   @Override
+   public boolean a(eiv<eli> $$0) {
+      azt $$1 = $$0.d();
+      eli $$2 = $$0.f();
+      djo $$3 = $$0.b();
+      ebm $$4 = $$0.c();
+      iu $$5 = $$0.e();
+      boolean $$6 = $$1.h();
+      return ($$6 ? $$2.b : $$2.c).a().a($$3, $$4, $$1, $$5);
    }
 }

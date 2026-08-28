@@ -1,46 +1,54 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class ejt implements ejv {
-   public static final Codec<ejt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
-               bsv.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
-               bsv.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
-               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
-               bsv.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
-               bst.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
-               bst.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
-            )
-            .apply($$0, ejt::new)
-   );
-   public final int b;
-   public final bsv c;
-   public final bsv d;
-   public final int e;
-   public final int f;
-   public final bsv g;
-   public final bst h;
-   public final bst i;
-   public final float j;
-   public final int k;
-   public final int l;
+public class ejt extends eit<elm> {
+   public ejt(Codec<elm> $$0) {
+      super($$0);
+   }
 
-   public ejt(int $$0, bsv $$1, bsv $$2, int $$3, int $$4, bsv $$5, bst $$6, bst $$7, float $$8, int $$9, int $$10) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
+   @Override
+   public boolean a(eiv<elm> $$0) {
+      elm $$1 = $$0.f();
+      djo $$2 = $$0.b();
+      azt $$3 = $$0.d();
+      dlu $$4 = $$1.b.b();
+      iu $$5 = a($$2, $$0.e().k().a(ja.a.b, $$2.G_() + 1, $$2.ao()), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
+
+         for (iu $$11 : iu.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
+            }
+
+            dzo $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
+         }
+
+         return $$10;
+      }
+   }
+
+   @Nullable
+   private static iu a(diq $$0, iu.a $$1, dlu $$2) {
+      while ($$1.v() > $$0.G_() + 1) {
+         dzo $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(ja.a);
+      }
+
+      return null;
    }
 }

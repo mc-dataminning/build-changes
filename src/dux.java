@@ -1,21 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dux extends dlm {
-   public static final MapCodec<dux> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwv.q.fieldOf("color").forGetter(dux::b), t()).apply($$0, dux::new));
-   private final cwv c;
+public class dux extends dpk {
+   public static final MapCodec<dux> c = b(dux::new);
+   private static final feq e = dlu.b(8.0, 0.0, 16.0);
 
    @Override
    public MapCodec<dux> a() {
-      return b;
+      return c;
    }
 
-   protected dux(cwv $$0, dyl.d $$1) {
-      super($$1);
-      this.c = $$0;
+   public dux(dzn.d $$0) {
+      super($$0, ja.b, e, false);
    }
 
-   public cwv b() {
-      return this.c;
+   @Override
+   protected dpl c() {
+      return (dpl)dlw.pd;
    }
 }

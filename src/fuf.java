@@ -1,111 +1,110 @@
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public class fuf implements fuc {
-   private final fua a;
-   private final fuf.a b;
-   private int c = 0;
+public class fuf<T> {
+   private static final int a = 8;
+   private static final int b = 256;
+   private static final int c = 255;
+   private static final int d = 4351;
+   private static final int e = 4352;
+   private final T[] f;
+   private final T[][] g;
+   private final IntFunction<T[]> h;
 
-   private fuf(fuf.a $$0) {
-      this(0, 0, $$0);
+   public fuf(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
+      this.f = (T[])((Object[])$$0.apply(256));
+      this.g = (T[][])((Object[][])$$1.apply(4352));
+      Arrays.fill(this.g, this.f);
+      this.h = $$0;
    }
 
-   public fuf(int $$0, int $$1, fuf.a $$2) {
-      this.a = new fua($$0, $$1);
-      this.b = $$2;
-   }
-
-   public fuf a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
-   }
-
-   public fue b() {
-      return this.a.b();
-   }
-
-   public fue c() {
-      return this.a.c();
-   }
-
-   public <T extends fud> T a(T $$0, fue $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
-   }
-
-   public <T extends fud> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fud> T a(T $$0, Consumer<fue> $$1) {
-      return this.b.a(this.a, $$0, this.c++, af.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<fud> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
    public void a() {
-      this.a.a();
+      Arrays.fill(this.g, this.f);
    }
 
-   @Override
-   public int A() {
-      return this.a.A();
+   @Nullable
+   public T a(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      return this.g[$$1][$$2];
    }
 
-   @Override
-   public int y() {
-      return this.a.y();
+   @Nullable
+   public T a(int $$0, T $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      if ($$4 == this.f) {
+         $$4 = (T[])((Object[])this.h.apply(256));
+         this.g[$$2] = $$4;
+         $$4[$$3] = $$1;
+         return null;
+      } else {
+         T $$5 = $$4[$$3];
+         $$4[$$3] = $$1;
+         return $$5;
+      }
    }
 
-   @Override
-   public void j(int $$0) {
-      this.a.j($$0);
+   public T a(int $$0, IntFunction<T> $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      T $$5 = $$4[$$3];
+      if ($$5 != null) {
+         return $$5;
+      } else {
+         if ($$4 == this.f) {
+            $$4 = (T[])((Object[])this.h.apply(256));
+            this.g[$$2] = $$4;
+         }
+
+         T $$6 = $$1.apply($$0);
+         $$4[$$3] = $$6;
+         return $$6;
+      }
    }
 
-   @Override
-   public void k(int $$0) {
-      this.a.k($$0);
+   @Nullable
+   public T b(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      T[] $$3 = this.g[$$1];
+      if ($$3 == this.f) {
+         return null;
+      } else {
+         T $$4 = $$3[$$2];
+         $$3[$$2] = null;
+         return $$4;
+      }
    }
 
-   @Override
-   public int F() {
-      return this.a.F();
-   }
-
-   @Override
-   public int G() {
-      return this.a.G();
-   }
-
-   public static fuf d() {
-      return new fuf(fuf.a.b);
-   }
-
-   public static fuf e() {
-      return new fuf(fuf.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(fua $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
+   public void a(fuf.a<T> $$0) {
+      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
+         T[] $$2 = this.g[$$1];
+         if ($$2 != this.f) {
+            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+               T $$4 = $$2[$$3];
+               if ($$4 != null) {
+                  int $$5 = $$1 << 8 | $$3;
+                  $$0.accept($$5, $$4);
+               }
+            }
          }
       }
+   }
 
-      public <T extends fud> T a(fua $$0, T $$1, int $$2, fue $$3) {
-         return (T)(switch (this) {
-            case a -> (fud)$$0.a($$1, 0, $$2, $$3);
-            case b -> (fud)$$0.a($$1, $$2, 0, $$3);
-         });
-      }
+   public IntSet b() {
+      IntOpenHashSet $$0 = new IntOpenHashSet();
+      this.a(($$1, $$2) -> $$0.add($$1));
+      return $$0;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      void accept(int var1, T var2);
    }
 }

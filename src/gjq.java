@@ -1,35 +1,26 @@
-import java.net.InetSocketAddress;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 public interface gjq {
-   String a();
+   gjq a = new gjq() {
+      @Override
+      public CompletableFuture<Optional<cqu>> a() {
+         return CompletableFuture.completedFuture(Optional.empty());
+      }
 
-   String b();
+      @Override
+      public boolean b() {
+         return false;
+      }
+   };
 
-   int c();
-
-   InetSocketAddress d();
-
-   static gjq a(final InetSocketAddress $$0) {
-      return new gjq() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
-         }
-
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
-
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
-
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
-      };
+   static gjq a(UserApiService $$0, fos $$1, Path $$2) {
+      return (gjq)($$1.g() == fos.a.c ? new giv($$0, $$1.b(), $$2) : a);
    }
+
+   CompletableFuture<Optional<cqu>> a();
+
+   boolean b();
 }

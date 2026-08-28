@@ -1,27 +1,7 @@
-public interface ux {
-   void a(ur var1);
+public class ux {
+   private static final uw<?>[] a = new uw[]{tz.a, tv.a, up.a, uc.a, uf.a, ua.b, ty.b, tu.a, us.a, ud.a, tx.b, ub.a, ue.a};
 
-   void a(tu var1);
-
-   void a(uo var1);
-
-   void a(ub var1);
-
-   void a(ue var1);
-
-   void a(tz var1);
-
-   void a(tx var1);
-
-   void a(tt var1);
-
-   void a(ua var1);
-
-   void a(ud var1);
-
-   void a(uc var1);
-
-   void a(tw var1);
-
-   void a(ty var1);
+   public static uw<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < a.length ? a[$$0] : uw.a($$0);
+   }
 }

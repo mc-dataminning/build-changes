@@ -1,41 +1,44 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+public class cgl extends cgj {
+   private boolean p;
 
-public class cgl extends cgz<bwr> {
-   private static final int a = 200;
-   private static final int b = 599;
-
-   public cgl() {
-      this(200);
-   }
-
-   public cgl(int $$0) {
-      super($$0);
+   public cgl(bxb $$0, dip $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(arn $$0, bwr $$1) {
-      a($$1);
+   protected ewl a(int $$0) {
+      this.p = this.a.aq() == bwj.H;
+      this.o = new ewp(this.p);
+      this.o.a(false);
+      return new ewl(this.o, $$0);
    }
 
    @Override
-   public Set<cft<?>> a() {
-      return ImmutableSet.of(cft.g);
+   protected boolean a() {
+      return this.p || this.a.bm();
    }
 
-   public static void a(bwr $$0) {
-      Optional<List<bwr>> $$1 = $$0.eb().c(cft.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.aq().equals(bwb.ap));
-         if ($$2) {
-            b($$0);
-         }
-      }
+   @Override
+   protected fdw b() {
+      return new fdw(this.a.dA(), this.a.e(0.5), this.a.dG());
    }
 
-   public static void b(bwr $$0) {
-      $$0.eb().a(cft.G, true, 599L);
+   @Override
+   protected double a(fdw $$0) {
+      return $$0.e;
+   }
+
+   @Override
+   protected boolean a(fdw $$0, fdw $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(iu $$0) {
+      return !this.b.a_($$0).s();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

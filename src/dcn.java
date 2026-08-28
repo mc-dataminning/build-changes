@@ -1,23 +1,71 @@
-public class dcn {
-   public static final dco a = a("crafting_building_blocks");
-   public static final dco b = a("crafting_redstone");
-   public static final dco c = a("crafting_equipment");
-   public static final dco d = a("crafting_misc");
-   public static final dco e = a("furnace_food");
-   public static final dco f = a("furnace_blocks");
-   public static final dco g = a("furnace_misc");
-   public static final dco h = a("blast_furnace_blocks");
-   public static final dco i = a("blast_furnace_misc");
-   public static final dco j = a("smoker_food");
-   public static final dco k = a("stonecutter");
-   public static final dco l = a("smithing");
-   public static final dco m = a("campfire");
+import javax.annotation.Nullable;
 
-   private static dco a(String $$0) {
-      return kf.a(md.aB, $$0, new dco());
+public class dcn {
+   @Nullable
+   private final cqs a;
+   private final btx b;
+   private final fds c;
+   private final dip d;
+   private final cys e;
+
+   public dcn(cqs $$0, btx $$1, fds $$2) {
+      this($$0.dV(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public static dco a(kf<dco> $$0) {
-      return m;
+   protected dcn(dip $$0, @Nullable cqs $$1, btx $$2, cys $$3, fds $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
+   }
+
+   protected final fds j() {
+      return this.c;
+   }
+
+   public iu a() {
+      return this.c.b();
+   }
+
+   public ja k() {
+      return this.c.c();
+   }
+
+   public fdw l() {
+      return this.c.g();
+   }
+
+   public boolean m() {
+      return this.c.e();
+   }
+
+   public cys n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cqs o() {
+      return this.a;
+   }
+
+   public btx p() {
+      return this.b;
+   }
+
+   public dip q() {
+      return this.d;
+   }
+
+   public ja g() {
+      return this.a == null ? ja.c : this.a.cO();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fX();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dL();
    }
 }

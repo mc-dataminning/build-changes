@@ -1,33 +1,32 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehp extends ehr<ekc> {
-   public ehp(Codec<ekc> $$0) {
-      super($$0);
+public class ehp extends ehm {
+   public static final Codec<ehp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ehm.d.forGetter($$0x -> $$0x),
+               btb.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               btb.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               btb.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, ehp::new)
+   );
+   public final btb b;
+   public final btb c;
+   final btb j;
+
+   public ehp(float $$0, eop $$1, btb $$2, egh $$3, ehn $$4, ji<dlu> $$5, btb $$6, btb $$7, btb $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(eht<ekc> $$0) {
-      a($$0.b(), $$0.e(), false);
-      return true;
+   public ehp(float $$0, eop $$1, btb $$2, egh $$3, ji<dlu> $$4, btb $$5, btb $$6, btb $$7) {
+      this($$0, $$1, $$2, $$3, ehn.a, $$4, $$5, $$6, $$7);
    }
 
-   public static void a(dig $$0, jj $$1, boolean $$2) {
-      jj.a $$3 = $$1.k();
-
-      for (int $$4 = -2; $$4 <= 2; $$4++) {
-         for (int $$5 = -2; $$5 <= 2; $$5++) {
-            for (int $$6 = -1; $$6 < 3; $$6++) {
-               jj $$7 = $$3.g($$1).e($$5, $$6, $$4);
-               dku $$8 = $$6 == -1 ? dkw.cv : dkw.a;
-               if (!$$0.a_($$7).a($$8)) {
-                  if ($$2) {
-                     $$0.a($$7, true, null);
-                  }
-
-                  $$0.a($$7, $$8.m(), 3);
-               }
-            }
-         }
-      }
+   public ehp(ehm $$0, btb $$1, btb $$2, btb $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

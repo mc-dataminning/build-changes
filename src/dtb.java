@@ -1,26 +1,42 @@
-public enum dtb {
-   a {
-      @Override
-      public boolean a(dym $$0, dgv $$1, jj $$2, jo $$3) {
-         return dku.a($$0.h($$1, $$2), $$3);
-      }
-   },
-   b {
-      private final fdo d = dku.b(2.0, 0.0, 10.0);
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-      @Override
-      public boolean a(dym $$0, dgv $$1, jj $$2, jo $$3) {
-         return !fdl.c($$0.h($$1, $$2).a($$3), this.d, fcy.c);
-      }
-   },
-   c {
-      private final fdo d = fdl.a(fdl.b(), dku.b(12.0, 0.0, 16.0), fcy.e);
+public interface dtb extends dmc, dqp {
+   @Override
+   default boolean a(@Nullable bwz $$0, dhv $$1, iu $$2, dzo $$3, evu $$4) {
+      return $$4 == evw.c;
+   }
 
-      @Override
-      public boolean a(dym $$0, dgv $$1, jj $$2, jo $$3) {
-         return !fdl.c($$0.h($$1, $$2).a($$3), this.d, fcy.c);
-      }
-   };
+   @Override
+   default boolean a(diq $$0, iu $$1, dzo $$2, evv $$3) {
+      if (!$$2.c(eae.I) && $$3.a() == evw.c) {
+         if (!$$0.w_()) {
+            $$0.a($$1, $$2.b(eae.I, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
 
-   public abstract boolean a(dym var1, dgv var2, jj var3, jo var4);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   default cys a(@Nullable bwz $$0, diq $$1, iu $$2, dzo $$3) {
+      if ($$3.c(eae.I)) {
+         $$1.a($$2, $$3.b(eae.I, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new cys(cyw.rk);
+      } else {
+         return cys.k;
+      }
+   }
+
+   @Override
+   default Optional<awk> ao_() {
+      return evw.c.j();
+   }
 }

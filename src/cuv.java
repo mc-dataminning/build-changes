@@ -1,7 +1,9 @@
-import javax.annotation.Nullable;
-
-@FunctionalInterface
-public interface cuv {
-   @Nullable
-   ctn createMenu(int var1, cqh var2, cqi var3);
+public enum cuv {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g;
 }

@@ -1,36 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class etb extends etf {
-   public static final MapCodec<etb> a = esx.b.listOf().fieldOf("rules").xmap(etb::new, $$0 -> $$0.b);
-   private final ImmutableList<esx> b;
+public class etb extends eqi {
+   public static final MapCodec<etb> d = a(etb::new);
 
-   public etb(List<? extends esx> $$0) {
-      this.b = ImmutableList.copyOf($$0);
+   public etb(eqi.c $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   public eti.d a(dhs $$0, jj $$1, jj $$2, eti.d $$3, eti.d $$4, ete $$5) {
-      azs $$6 = azs.a(azk.a($$4.a()));
-      dym $$7 = $$0.a_($$4.a());
-      UnmodifiableIterator var9 = this.b.iterator();
+   public Optional<eqi.b> a(eqi.a $$0) {
+      return Optional.of(new eqi.b($$0.h().l(), (Consumer<era>)($$1 -> a($$1, $$0))));
+   }
 
-      while (var9.hasNext()) {
-         esx $$8 = (esx)var9.next();
-         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
-            return new eti.d($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
+   private static void a(era $$0, eqi.a $$1) {
+      int $$2 = 0;
+
+      eta.m $$3;
+      do {
+         $$0.b();
+         $$1.f().c($$1.g() + (long)($$2++), $$1.h().h, $$1.h().i);
+         eta.a();
+         $$3 = new eta.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
+         $$0.a($$3);
+         $$3.a($$3, $$0, $$1.f());
+         List<eqm> $$4 = $$3.c;
+
+         while (!$$4.isEmpty()) {
+            int $$5 = $$1.f().a($$4.size());
+            eqm $$6 = $$4.remove($$5);
+            $$6.a($$3, $$0, $$1.f());
          }
-      }
 
-      return $$4;
+         $$0.a($$1.b().f(), $$1.b().g(), $$1.f(), 10);
+      } while ($$0.c() || $$3.b == null);
    }
 
    @Override
-   protected eth<?> a() {
-      return eth.i;
+   public eqr<?> e() {
+      return eqr.n;
    }
 }

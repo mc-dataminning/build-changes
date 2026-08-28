@@ -1,62 +1,103 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record dxw(alc<exq> d, double e, double f, cxy g, Optional<alc<exq>> h, dxn i, dxn.a j) {
-   static final String a = "config";
-   static dxw b = new dxw();
-   static Codec<dxw> c = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  alc.a(me.bn).lenientOptionalFieldOf("loot_table", b.b()).forGetter(dxw::b),
-                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(dxw::c),
-                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(dxw::d),
-                  cxy.a("key_item").forGetter(dxw::e),
-                  alc.a(me.bn).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(dxw::f)
-               )
-               .apply($$0, dxw::new)
-      )
-      .validate(dxw::h);
+public abstract class dxw extends dwg implements bue {
+   @Nullable
+   protected ald<eys> l;
+   protected long m = 0L;
 
-   private dxw() {
-      this(exh.R, 4.0, 4.5, new cxy(cyc.zH), Optional.empty(), dxn.b, dxn.a.a);
+   protected dxw(dwp<?> $$0, iu $$1, dzo $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public dxw(alc<exq> $$0, double $$1, double $$2, cxy $$3, Optional<alc<exq>> $$4) {
-      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
+   @Nullable
+   @Override
+   public ald<eys> as_() {
+      return this.l;
    }
 
-   public dxn a() {
-      return this.i;
+   @Override
+   public void a(@Nullable ald<eys> $$0) {
+      this.l = $$0;
    }
 
-   private DataResult<dxw> h() {
-      return this.e > this.f
-         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
-         : DataResult.success(this);
+   @Override
+   public long av_() {
+      return this.m;
    }
 
-   public alc<exq> b() {
-      return this.d;
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
    }
 
-   public double c() {
-      return this.e;
+   @Override
+   public boolean c() {
+      this.d_(null);
+      return super.c();
    }
 
-   public double d() {
-      return this.f;
+   @Override
+   public cys a(int $$0) {
+      this.d_(null);
+      return super.a($$0);
    }
 
-   public cxy e() {
-      return this.g;
+   @Override
+   public cys a(int $$0, int $$1) {
+      this.d_(null);
+      return super.a($$0, $$1);
    }
 
-   public Optional<alc<exq>> f() {
-      return this.h;
+   @Override
+   public cys b(int $$0) {
+      this.d_(null);
+      return super.b($$0);
    }
 
-   public dxn.a g() {
-      return this.j;
+   @Override
+   public void a(int $$0, cys $$1) {
+      this.d_(null);
+      super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean d(cqs $$0) {
+      return super.d($$0) && (this.l == null || !$$0.U_());
+   }
+
+   @Nullable
+   @Override
+   public cuk createMenu(int $$0, cqr $$1, cqs $$2) {
+      if (this.d($$2)) {
+         this.d_($$1.k);
+         return this.a($$0, $$1);
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   protected void a(ke $$0) {
+      super.a($$0);
+      dbt $$1 = $$0.a(kj.at);
+      if ($$1 != null) {
+         this.l = $$1.a();
+         this.m = $$1.b();
+      }
+   }
+
+   @Override
+   protected void a(kg.a $$0) {
+      super.a($$0);
+      if (this.l != null) {
+         $$0.a(kj.at, new dbt(this.l, this.m));
+      }
+   }
+
+   @Override
+   public void a(tx $$0) {
+      super.a($$0);
+      $$0.r("LootTable");
+      $$0.r("LootTableSeed");
    }
 }

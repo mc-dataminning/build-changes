@@ -1,165 +1,68 @@
-import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
+import java.util.List;
+import java.util.Locale;
 import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public record hmg<T>(String F, String G, Codec<T> H, hmg.a<T> I) {
-   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
-   public static final hmg<String> a = b("user_id", "userId");
-   public static final hmg<String> b = b("client_id", "clientId");
-   public static final hmg<UUID> c = e("minecraft_session_id", "deviceSessionId");
-   public static final hmg<String> d = b("game_version", "buildDisplayName");
-   public static final hmg<String> e = b("operating_system", "buildPlatform");
-   public static final hmg<String> f = b("platform", "platform");
-   public static final hmg<Boolean> g = a("client_modded", "clientModded");
-   public static final hmg<String> h = b("launcher_name", "launcherName");
-   public static final hmg<UUID> i = e("world_session_id", "worldSessionId");
-   public static final hmg<Boolean> j = a("server_modded", "serverModded");
-   public static final hmg<hmg.c> k = a("server_type", "serverType", hmg.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
-   public static final hmg<Boolean> l = a("opt_in", "isOptional");
-   public static final hmg<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", ays.q, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
-   public static final hmg<hmg.b> n = a("game_mode", "playerGameMode", hmg.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
-   public static final hmg<String> o = b("realms_map_content", "realmsMapContent");
-   public static final hmg<Integer> p = c("seconds_since_load", "secondsSinceLoad");
-   public static final hmg<Integer> q = c("ticks_since_load", "ticksSinceLoad");
-   public static final hmg<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
-   public static final hmg<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
-   public static final hmg<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
-   public static final hmg<Integer> u = c("number_of_samples", "numSamples");
-   public static final hmg<Integer> v = c("render_distance", "renderDistance");
-   public static final hmg<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
-   public static final hmg<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
-   public static final hmg<Boolean> y = a("new_world", "newWorld");
-   public static final hmg<hmk.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
-   public static final hmg<hmk.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
-   public static final hmg<hmk.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
-   public static final hmg<hmk.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
-   public static final hmg<String> D = b("advancement_id", "advancementId");
-   public static final hmg<Long> E = d("advancement_game_time", "advancementGameTime");
-
-   public static <T> hmg<T> a(String $$0, String $$1, Codec<T> $$2, hmg.a<T> $$3) {
-      return new hmg<>($$0, $$1, $$2, $$3);
+@FunctionalInterface
+public interface hmg<T> {
+   static <T> hmg<T> empty() {
+      return $$0 -> List.of();
    }
 
-   public static hmg<Boolean> a(String $$0, String $$1) {
-      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
+   static <T> hmg<T> plainText(List<T> $$0, Function<T, Stream<String>> $$1) {
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.ExitExprent.toJava(ExitExprent.java:86)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:261)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
+      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: invokeinterface java/util/List.isEmpty ()Z 1
+      // 06: ifeq 0d
+      // 09: invokestatic hmg.empty ()Lhmg;
+      // 0c: areturn
+      // 0d: new hmh
+      // 10: dup
+      // 11: invokespecial hmh.<init> ()V
+      // 14: astore 2
+      // 15: aload 0
+      // 16: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
+      // 1b: astore 3
+      // 1c: aload 3
+      // 1d: invokeinterface java/util/Iterator.hasNext ()Z 1
+      // 22: ifeq 48
+      // 25: aload 3
+      // 26: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
+      // 2b: astore 4
+      // 2d: aload 1
+      // 2e: aload 4
+      // 30: invokeinterface java/util/function/Function.apply (Ljava/lang/Object;)Ljava/lang/Object; 2
+      // 35: checkcast java/util/stream/Stream
+      // 38: aload 2
+      // 39: aload 4
+      // 3b: invokedynamic accept (Lhmh;Ljava/lang/Object;)Ljava/util/function/Consumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)V, hmg.a (Lhmh;Ljava/lang/Object;Ljava/lang/String;)V, (Ljava/lang/String;)V ]
+      // 40: invokeinterface java/util/stream/Stream.forEach (Ljava/util/function/Consumer;)V 2
+      // 45: goto 1c
+      // 48: aload 2
+      // 49: invokevirtual hmh.a ()V
+      // 4c: aload 2
+      // 4d: dup
+      // 4e: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+      // 51: pop
+      // 52: invokedynamic search (Lhmh;)Lhmg; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/String;)Ljava/util/List;, hmh.a (Ljava/lang/String;)Ljava/util/List;, (Ljava/lang/String;)Ljava/util/List; ]
+      // 57: areturn
    }
 
-   public static hmg<String> b(String $$0, String $$1) {
-      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static hmg<Integer> c(String $$0, String $$1) {
-      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static hmg<Long> d(String $$0, String $$1) {
-      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static hmg<UUID> e(String $$0, String $$1) {
-      return a($$0, $$1, km.d, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
-   }
-
-   public static hmg<hmk.a> f(String $$0, String $$1) {
-      return a($$0, $$1, hmk.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
-   }
-
-   public static hmg<LongList> g(String $$0, String $$1) {
-      return a(
-         $$0,
-         $$1,
-         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
-         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
-      );
-   }
-
-   public void a(hmh $$0, TelemetryPropertyContainer $$1) {
-      T $$2 = $$0.a(this);
-      if ($$2 != null) {
-         this.I.apply($$1, this.G, $$2);
-      } else {
-         $$1.addNullProperty(this.G);
-      }
-   }
-
-   public xj a() {
-      return wv.c("telemetry.property." + this.F + ".title");
-   }
-
-   @Override
-   public String toString() {
-      return "TelemetryProperty[" + this.F + "]";
-   }
-
-   public String b() {
-      return this.F;
-   }
-
-   public String c() {
-      return this.G;
-   }
-
-   public Codec<T> d() {
-      return this.H;
-   }
-
-   public hmg.a<T> e() {
-      return this.I;
-   }
-
-   public interface a<T> {
-      void apply(TelemetryPropertyContainer var1, String var2, T var3);
-   }
-
-   public static enum b implements bag {
-      a("survival", 0),
-      b("creative", 1),
-      c("adventure", 2),
-      d("spectator", 6),
-      e("hardcore", 99);
-
-      public static final Codec<hmg.b> f = bag.a(hmg.b::values);
-      private final String g;
-      private final int h;
-
-      private b(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
-      }
-
-      public int a() {
-         return this.h;
-      }
-
-      @Override
-      public String c() {
-         return this.g;
-      }
-   }
-
-   public static enum c implements bag {
-      a("realm"),
-      b("local"),
-      c("server");
-
-      public static final Codec<hmg.c> d = bag.a(hmg.c::values);
-      private final String e;
-
-      private c(final String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-   }
+   List<T> search(String var1);
 }

@@ -1,91 +1,63 @@
 import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.UnaryOperator;
 
-public enum ecl {
-   a {
-      @Override
-      public void a(arn $$0, ecm $$1, List<clf> $$2, int $$3, jj $$4) {
-         jj $$5 = new jj(0, 128, 0);
+public record ecl(ImmutableList<ecp> c) {
+   public static final ecl a = new ecl.a()
+      .a(ecm.c, $$0 -> $$0)
+      .a(ecm.d, $$0 -> $$0.a(eco::b))
+      .a(ecm.e, $$0 -> $$0.a(ecm.d, 8).a(eco::d))
+      .a(ecm.f, $$0 -> $$0.a(ecm.d, 8).a(eco::e))
+      .a(ecm.g, $$0 -> $$0.a(ecm.d, 8).a(ecm.f, 1).a(0).a(eco::f))
+      .a(ecm.h, $$0 -> $$0.a(ecm.d, 8).a(ecm.f, 1).a(0).a(eco::g))
+      .a(ecm.i, $$0 -> $$0.a(ecm.d, 8).a(0).a(eco::h))
+      .a(ecm.j, $$0 -> $$0.a(ecm.d, 8).a(ecm.i, 1).a(1).a(eco::i))
+      .a(ecm.k, $$0 -> $$0.a(eco::j))
+      .a(ecm.l, $$0 -> $$0.a(ecm.k, 1).a(eco::k))
+      .a(ecm.m, $$0 -> $$0.a(ecm.f, 1).a(eco::l))
+      .a(ecm.n, $$0 -> $$0.a(eco::m))
+      .a();
+   public static final ecl b = new ecl.a()
+      .a(ecm.c, $$0 -> $$0)
+      .a(ecm.d, $$0 -> $$0.a(eco::c))
+      .a(ecm.e, $$0 -> $$0)
+      .a(ecm.f, $$0 -> $$0)
+      .a(ecm.g, $$0 -> $$0)
+      .a(ecm.h, $$0 -> $$0)
+      .a(ecm.i, $$0 -> $$0)
+      .a(ecm.j, $$0 -> $$0)
+      .a(ecm.k, $$0 -> $$0.a(eco::j))
+      .a(ecm.l, $$0 -> $$0.a(ecm.k, 1).a(eco::k))
+      .a(ecm.m, $$0 -> $$0)
+      .a(ecm.n, $$0 -> $$0.a(eco::m))
+      .a();
 
-         for (clf $$6 : $$2) {
-            $$6.a($$5);
-         }
+   public ecp a(ecm $$0) {
+      return (ecp)this.c.get($$0.b());
+   }
 
-         $$1.a(b);
+   public ImmutableList<ecp> a() {
+      return this.c;
+   }
+
+   public static class a {
+      private final List<ecp> a = new ArrayList<>();
+
+      public ecl a() {
+         return new ecl(ImmutableList.copyOf(this.a));
       }
-   },
-   b {
-      @Override
-      public void a(arn $$0, ecm $$1, List<clf> $$2, int $$3, jj $$4) {
-         if ($$3 < 100) {
-            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
-               $$0.c(3001, new jj(0, 128, 0), 0);
-            }
+
+      public ecl.a a(ecm $$0, UnaryOperator<ecp.a> $$1) {
+         ecp.a $$2;
+         if (this.a.isEmpty()) {
+            $$2 = new ecp.a($$0);
          } else {
-            $$1.a(c);
+            $$2 = new ecp.a($$0, this.a.getLast());
          }
-      }
-   },
-   c {
-      @Override
-      public void a(arn $$0, ecm $$1, List<clf> $$2, int $$3, jj $$4) {
-         int $$5 = 40;
-         boolean $$6 = $$3 % 40 == 0;
-         boolean $$7 = $$3 % 40 == 39;
-         if ($$6 || $$7) {
-            List<ejb.a> $$8 = ejb.a($$0);
-            int $$9 = $$3 / 40;
-            if ($$9 < $$8.size()) {
-               ejb.a $$10 = $$8.get($$9);
-               if ($$6) {
-                  for (clf $$11 : $$2) {
-                     $$11.a(new jj($$10.a(), $$10.d() + 1, $$10.b()));
-                  }
-               } else {
-                  int $$12 = 10;
 
-                  for (jj $$13 : jj.c(new jj($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new jj($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
-                     $$0.a($$13, false);
-                  }
-
-                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, dhp.a.b);
-                  ekp $$14 = new ekp(true, ImmutableList.of($$10), new jj(0, 128, 0));
-                  ehr.K.a($$14, $$0, $$0.m().g(), azs.a(), new jj($$10.a(), 45, $$10.b()));
-               }
-            } else if ($$6) {
-               $$1.a(d);
-            }
-         }
+         this.a.add($$1.apply($$2).a());
+         return this;
       }
-   },
-   d {
-      @Override
-      public void a(arn $$0, ecm $$1, List<clf> $$2, int $$3, jj $$4) {
-         if ($$3 >= 100) {
-            $$1.a(e);
-            $$1.h();
-
-            for (clf $$5 : $$2) {
-               $$5.a(null);
-               $$0.a($$5, $$5.dA(), $$5.dC(), $$5.dG(), 6.0F, dhp.a.a);
-               $$5.at();
-            }
-         } else if ($$3 >= 80) {
-            $$0.c(3001, new jj(0, 128, 0), 0);
-         } else if ($$3 == 0) {
-            for (clf $$6 : $$2) {
-               $$6.a(new jj(0, 128, 0));
-            }
-         } else if ($$3 < 5) {
-            $$0.c(3001, new jj(0, 128, 0), 0);
-         }
-      }
-   },
-   e {
-      @Override
-      public void a(arn $$0, ecm $$1, List<clf> $$2, int $$3, jj $$4) {
-      }
-   };
-
-   public abstract void a(arn var1, ecm var2, List<clf> var3, int var4, jj var5);
+   }
 }

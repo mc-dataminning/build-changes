@@ -1,31 +1,47 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
+import java.util.Collection;
+import java.util.Collections;
 
 public class ann {
-   public static void a(CommandDispatcher<ex> $$0, et $$1) {
-      final LiteralArgumentBuilder<ex> $$2 = (LiteralArgumentBuilder<ex>)ey.a("gamerule").requires($$0x -> $$0x.c(2));
-      new dhl($$1.a()).a(new dhl.c() {
-         @Override
-         public <T extends dhl.g<T>> void a(dhl.e<T> $$0, dhl.f<T> $$1) {
-            LiteralArgumentBuilder<ex> $$2 = ey.a($$0.a());
-            $$2.then(((LiteralArgumentBuilder)$$2.executes($$1x -> ann.a((ex)$$1x.getSource(), $$0))).then($$1.a("value").executes($$1x -> ann.a($$1x, $$0))));
+   public static final int a = 2;
+
+   public static void a(CommandDispatcher<ei> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("gamemode").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)ej.a("gamemode", ew.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((ei)$$0x.getSource()).h()), ew.a($$0x, "gamemode"))))
+                  .then(ej.a("target", ev.d()).executes($$0x -> a($$0x, ev.f($$0x, "target"), ew.a($$0x, "gamemode"))))
+            )
+      );
+   }
+
+   private static void a(ei $$0, arp $$1, dim $$2) {
+      ww $$3 = ww.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> ww.a("commands.gamemode.success.self", $$3), true);
+      } else {
+         if ($$0.e().O().c(dil.p)) {
+            $$1.a(ww.a("gameMode.changed", $$3));
          }
-      });
-      $$0.register($$2);
+
+         $$0.a(() -> ww.a("commands.gamemode.success.other", $$1.m_(), $$3), true);
+      }
    }
 
-   static <T extends dhl.g<T>> int a(CommandContext<ex> $$0, dhl.e<T> $$1) {
-      ex $$2 = (ex)$$0.getSource();
-      T $$3 = $$2.l().aL().b($$1);
-      $$3.b($$0, "value");
-      $$2.a(() -> wv.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
-      return $$3.c();
-   }
+   private static int a(CommandContext<ei> $$0, Collection<arp> $$1, dim $$2) {
+      int $$3 = 0;
 
-   static <T extends dhl.g<T>> int a(ex $$0, dhl.e<T> $$1) {
-      T $$2 = $$0.l().aL().b($$1);
-      $$0.a(() -> wv.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
-      return $$2.c();
+      for (arp $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((ei)$$0.getSource(), $$4, $$2);
+            $$3++;
+         }
+      }
+
+      return $$3;
    }
 }

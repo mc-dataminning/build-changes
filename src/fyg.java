@@ -1,137 +1,48 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class fyg extends fxx<cur> {
+   private static final ale G = ale.b("container/brewing_stand/fuel_length");
+   private static final ale H = ale.b("container/brewing_stand/brew_progress");
+   private static final ale I = ale.b("container/brewing_stand/bubbles");
+   private static final ale J = ale.b("textures/gui/container/brewing_stand.png");
+   private static final int[] K = new int[]{29, 24, 20, 16, 11, 6, 0};
 
-public class fyg extends fxw<cvn> {
-   private static final ald G = ald.b("container/smithing/error");
-   private static final ald H = ald.b("container/slot/smithing_template_armor_trim");
-   private static final ald I = ald.b("container/slot/smithing_template_netherite_upgrade");
-   private static final wv J = wv.c("container.upgrade.missing_template_tooltip");
-   private static final wv K = wv.c("container.upgrade.error_tooltip");
-   private static final List<ald> L = List.of(H, I);
-   private static final int M = 44;
-   private static final int N = 15;
-   private static final int O = 28;
-   private static final int P = 21;
-   private static final int Q = 65;
-   private static final int R = 46;
-   private static final int S = 115;
-   private static final int T = 210;
-   private static final int U = 25;
-   private static final Vector3f V = new Vector3f();
-   private static final Quaternionf W = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
-   private static final int X = 25;
-   private static final int Y = 75;
-   private static final int Z = 141;
-   private final fxl aa = new fxl(0);
-   private final fxl ab = new fxl(1);
-   private final fxl ac = new fxl(2);
-   @Nullable
-   private cmc ad;
-
-   public fyg(cvn $$0, cqh $$1, wv $$2) {
-      super($$0, $$1, $$2, ald.b("textures/gui/container/smithing.png"));
-      this.v = 44;
-      this.w = 15;
+   public fyg(cur $$0, cqr $$1, ww $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void G() {
-      this.ad = new cmc(this.m.s, 0.0, 0.0, 0.0);
-      this.ad.b(true);
-      this.ad.a(true);
-      this.ad.aU = 210.0F;
-      this.ad.x(25.0F);
-      this.ad.aW = this.ad.dL();
-      this.ad.aX = this.ad.dL();
-      this.b(this.z.b(3).g());
+   protected void aN_() {
+      super.aN_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
    @Override
-   public void E() {
-      super.E();
-      Optional<czc> $$0 = this.H();
-      this.aa.a(L);
-      this.ab.a($$0.map(czc::d).orElse(List.of()));
-      this.ac.a($$0.map(czc::o).orElse(List.of()));
-   }
-
-   private Optional<czc> H() {
-      cxy $$0 = this.z.b(0).g();
-      return !$$0.f() && $$0.h() instanceof czc $$1 ? Optional.of($$1) : Optional.empty();
-   }
-
-   @Override
-   public void a(fpz $$0, int $$1, int $$2, float $$3) {
+   public void a(frc $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(fpz $$0, float $$1, int $$2, int $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.aa.a(this.z, $$0, $$1, this.C, this.D);
-      this.ab.a(this.z, $$0, $$1, this.C, this.D);
-      this.ac.a(this.z, $$0, $$1, this.C, this.D);
-      fxv.a($$0, (float)(this.C + 141), (float)(this.D + 75), 25.0F, V, W, null, this.ad);
-   }
-
-   @Override
-   public void a(ctn $$0, int $$1, cxy $$2) {
-      if ($$1 == 3) {
-         this.b($$2);
+   protected void a(frc $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gpn::H, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      int $$6 = this.z.l();
+      int $$7 = azk.a((18 * $$6 + 20 - 1) / 20, 0, 18);
+      if ($$7 > 0) {
+         $$0.a(gpn::H, G, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
       }
-   }
 
-   private void b(cxy $$0) {
-      if (this.ad != null) {
-         for (bwc $$1 : bwc.j) {
-            this.ad.a($$1, cxy.k);
+      int $$8 = this.z.m();
+      if ($$8 > 0) {
+         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
+         if ($$9 > 0) {
+            $$0.a(gpn::H, H, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
          }
 
-         if (!$$0.f()) {
-            dgc $$2 = $$0.a(kx.E);
-            bwc $$3 = $$2 != null ? $$2.b() : bwc.b;
-            this.ad.a($$3, $$0.v());
+         $$9 = K[$$8 / 2 % 7];
+         if ($$9 > 0) {
+            $$0.a(gpn::H, I, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
          }
       }
-   }
-
-   @Override
-   protected void c(fpz $$0, int $$1, int $$2) {
-      if (this.I()) {
-         $$0.a(goi::H, G, $$1 + 65, $$2 + 46, 28, 21);
-      }
-   }
-
-   private void d(fpz $$0, int $$1, int $$2) {
-      Optional<wv> $$3 = Optional.empty();
-      if (this.I() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
-         $$3 = Optional.of(K);
-      }
-
-      if (this.B != null) {
-         cxy $$4 = this.z.b(0).g();
-         cxy $$5 = this.B.g();
-         if ($$4.f()) {
-            if (this.B.d == 0) {
-               $$3 = Optional.of(J);
-            }
-         } else if ($$4.h() instanceof czc $$6 && $$5.f()) {
-            if (this.B.d == 1) {
-               $$3 = Optional.of($$6.b());
-            } else if (this.B.d == 2) {
-               $$3 = Optional.of($$6.c());
-            }
-         }
-      }
-
-      $$3.ifPresent($$3x -> $$0.b(this.p, this.p.c($$3x, 115), $$1, $$2));
-   }
-
-   private boolean I() {
-      return this.z.m();
    }
 }

@@ -1,18 +1,29 @@
-import java.util.Optional;
+public class aic implements zd<agn> {
+   public static final yu<vs, aic> a = zd.a(aic::a, aic::new);
+   private final int b;
 
-public record aic(Optional<js<buu>> b, Optional<js<buu>> c) implements zc<agm> {
-   public static final yt<wg, aic> a = yt.a(buu.b.a(yr::a), aic::b, buu.b.a(yr::a), aic::e, aic::new);
-
-   @Override
-   public ze<aic> a() {
-      return agk.cb;
+   public aic(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(agm $$0) {
+   private aic(vs $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vs $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zf<aic> a() {
+      return agl.ca;
+   }
+
+   public void a(agn $$0) {
       $$0.a(this);
    }
 
-   public Optional<js<buu>> e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

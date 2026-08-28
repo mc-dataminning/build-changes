@@ -1,21 +1,41 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class cbn {
-   private static final int a = 36;
+   private static final int a = 60;
 
-   public static byj<bwr> a() {
-      return cbv.a(
-         (Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$0 -> $$0.group($$0.a(cft.y), $$0.a(cft.z), $$0.a(cft.B))
-               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
-                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bwr>a($$2).filter($$1xx -> $$1xx.g((bvs)$$5) <= 36.0).isPresent();
-                     if (!$$7) {
-                        $$1.b();
-                        $$2.b();
-                        $$5.eb().a($$4.af(), $$4.ae());
+   public static byr<bxh> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return ccd.a(
+         (Function<ccd.b<bxh>, ? extends App<ccd.c<bxh>, ccg<bxh>>>)($$3 -> $$3.group($$3.c(cgb.p), $$3.c(cgb.n), $$3.a(cgb.o))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if (!$$5x.b_($$6.dv()).a(axf.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     } else {
+                        iu $$8 = $$6.dv();
+                        iu.a $$9 = new iu.a();
+                        feb $$10 = feb.a($$6);
+
+                        for (iu $$11 : iu.a($$8, $$0, $$0, $$0)) {
+                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
+                              dzo $$12 = $$5x.a_($$11);
+                              dzo $$13 = $$5x.a_($$9.a($$11, ja.a));
+                              if (!$$12.a(dlw.J) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.c($$5x, $$9, ja.b)) {
+                                 iu $$14 = $$11.j();
+                                 $$5.a(new byt($$14));
+                                 $$4.a(new cge(new byt($$14), $$1, 1));
+                                 break;
+                              }
+                           }
+                        }
+
+                        $$2.setValue($$7 + 60L);
+                        return true;
                      }
-
-                     return true;
                   }))
       );
    }

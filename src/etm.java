@@ -1,30 +1,20 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class etm implements etq {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<etm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alc.a(me.bn).fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, etm::new)
-   );
-   private final alc<exq> d;
+public class etm extends eue {
+   public static final MapCodec<etm> a = mf.e.q().fieldOf("block").xmap(etm::new, $$0 -> $$0.b);
+   private final dlu b;
 
-   public etm(alc<exq> $$0) {
-      this.d = $$0;
+   public etm(dlu $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public tw a(azs $$0, @Nullable tw $$1) {
-      tw $$2 = $$1 == null ? new tw() : $$1.i();
-      alc.a(me.bn).encodeStart(uk.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
+   public boolean a(dzo $$0, azt $$1) {
+      return $$0.a(this.b);
    }
 
    @Override
-   public etr<?> a() {
-      return etr.d;
+   protected euf<?> a() {
+      return euf.b;
    }
 }

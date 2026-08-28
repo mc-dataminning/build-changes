@@ -1,50 +1,46 @@
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fkx extends hne {
-   private static final wv a = wv.c("mco.account.privacy.information");
-   private static final int b = 15;
-   private final fuf c = fuf.d();
-   private final fwf C;
+public class fkx extends fkv {
+   private static final Logger j = LogUtils.getLogger();
+   public String a = "";
+   public String b = "";
+   public String c = "";
+   public String d = "";
+   public String e = "";
    @Nullable
-   private frh D;
+   public String f;
+   public String g = "";
+   public String h = "";
+   public fkx.a i = fkx.a.a;
 
-   public fkx(fwf $$0) {
-      super(fmu.a);
-      this.C = $$0;
-   }
+   public static fkx a(JsonObject $$0) {
+      fkx $$1 = new fkx();
 
-   @Override
-   public void aN_() {
-      this.c.a(15).c().b();
-      this.D = new frh(a, this.p).b(true);
-      this.c.a(this.D);
-      fuf $$0 = this.c.a(fuf.e().a(8));
-      wv $$1 = wv.c("mco.account.privacy.info.button");
-      $$0.a(fqn.a($$1, fvc.b(this, ayf.a)).a());
-      $$0.a(fqn.a(wu.k, $$0x -> this.aK_()).a());
-      this.c.a($$1x -> {
-         fql var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   public void aK_() {
-      this.m.a(this.C);
-   }
-
-   @Override
-   protected void c() {
-      if (this.D != null) {
-         this.D.d(this.n - 15);
+      try {
+         $$1.a = fmr.b("id", $$0, "");
+         $$1.b = fmr.b("name", $$0, "");
+         $$1.c = fmr.b("version", $$0, "");
+         $$1.d = fmr.b("author", $$0, "");
+         $$1.e = fmr.b("link", $$0, "");
+         $$1.f = fmr.b("image", $$0, null);
+         $$1.g = fmr.b("trailer", $$0, "");
+         $$1.h = fmr.b("recommendedPlayers", $$0, "");
+         $$1.i = fkx.a.valueOf(fmr.b("type", $$0, fkx.a.a.name()));
+      } catch (Exception var3) {
+         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
       }
 
-      this.c.a();
-      ftz.a(this.c, this.J());
+      return $$1;
    }
 
-   @Override
-   public wv i() {
-      return a;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

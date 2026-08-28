@@ -1,94 +1,59 @@
-public class agf implements zc<abr> {
-   public static final yt<wg, agf> a = zc.a(agf::a, agf::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final int f;
-   private final js<buu> g;
-   private final int h;
-   private final int i;
-   private final byte j;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-   public agf(int $$0, buw $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1.c();
-      this.h = $$1.e();
-      this.i = $$1.d();
-      byte $$3 = 0;
-      if ($$1.f()) {
-         $$3 = (byte)($$3 | 1);
+public class agf implements zd<abs> {
+   public static final yu<wh, agf> a = yu.a(ys.h, agf::b, agf.a.b.a(ys.a()), agf::e, agf::new);
+   private final int b;
+   private final List<agf.a> c;
+
+   public agf(int $$0, Collection<byb> $$1) {
+      this.b = $$0;
+      this.c = Lists.newArrayList();
+
+      for (byb $$2 : $$1) {
+         this.c.add(new agf.a($$2.a(), $$2.b(), $$2.c()));
       }
-
-      if ($$1.g()) {
-         $$3 = (byte)($$3 | 2);
-      }
-
-      if ($$1.h()) {
-         $$3 = (byte)($$3 | 4);
-      }
-
-      if ($$2) {
-         $$3 = (byte)($$3 | 8);
-      }
-
-      this.j = $$3;
    }
 
-   private agf(wg $$0) {
-      this.f = $$0.l();
-      this.g = buu.b.decode($$0);
-      this.h = $$0.l();
-      this.i = $$0.l();
-      this.j = $$0.readByte();
-   }
-
-   private void a(wg $$0) {
-      $$0.c(this.f);
-      buu.b.encode($$0, this.g);
-      $$0.c(this.h);
-      $$0.c(this.i);
-      $$0.l(this.j);
+   private agf(int $$0, List<agf.a> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public ze<agf> a() {
-      return agk.bh;
+   public zf<agf> a() {
+      return agl.bg;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.f;
+      return this.b;
    }
 
-   public js<buu> e() {
-      return this.g;
+   public List<agf.a> e() {
+      return this.c;
    }
 
-   public int f() {
-      return this.h;
-   }
+   public static record a(je<bya> c, double d, Collection<byd> e) {
+      public static final yu<ByteBuf, byd> a = yu.a(ale.b, byd::b, ys.m, byd::c, byd.a.e, byd::d, byd::new);
+      public static final yu<wh, agf.a> b = yu.a(bya.b, agf.a::a, ys.m, agf.a::b, a.a(ys.a(ArrayList::new)), agf.a::c, agf.a::new);
 
-   public int g() {
-      return this.i;
-   }
+      public je<bya> a() {
+         return this.c;
+      }
 
-   public boolean h() {
-      return (this.j & 2) != 0;
-   }
+      public double b() {
+         return this.d;
+      }
 
-   public boolean i() {
-      return (this.j & 1) != 0;
-   }
-
-   public boolean j() {
-      return (this.j & 4) != 0;
-   }
-
-   public boolean k() {
-      return (this.j & 8) != 0;
+      public Collection<byd> c() {
+         return this.e;
+      }
    }
 }

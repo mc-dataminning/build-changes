@@ -1,549 +1,138 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.DynamicLike;
-import java.util.List;
-
 public class eae {
-   public static final double b = 5.999997E7F;
-   public static final double c = 2.9999984E7;
-   private final List<eac> a = Lists.newArrayList();
-   private double e = 0.2;
-   private double f = 5.0;
-   private int g = 15;
-   private int h = 5;
-   private double i;
-   private double j;
-   int k = 29999984;
-   private eae.a l = new eae.d(5.999997E7F);
-   public static final eae.c d = new eae.c(0.0, 0.0, 0.2, 5.0, 5, 15, 5.999997E7F, 0L, 0.0);
-
-   public boolean a(jj $$0) {
-      return this.a((double)$$0.u(), (double)$$0.w());
-   }
-
-   public boolean a(fcu $$0) {
-      return this.a($$0.d, $$0.f);
-   }
-
-   public boolean a(dgw $$0) {
-      return this.a((double)$$0.d(), (double)$$0.e()) && this.a((double)$$0.f(), (double)$$0.g());
-   }
-
-   public boolean a(fcp $$0) {
-      return this.a($$0.a, $$0.c, $$0.d - 1.0E-5F, $$0.f - 1.0E-5F);
-   }
-
-   private boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.a($$0, $$1) && this.a($$2, $$3);
-   }
-
-   public boolean a(double $$0, double $$1) {
-      return this.a($$0, $$1, 0.0);
-   }
-
-   public boolean a(double $$0, double $$1, double $$2) {
-      return $$0 >= this.e() - $$2 && $$0 < this.g() + $$2 && $$1 >= this.f() - $$2 && $$1 < this.h() + $$2;
-   }
-
-   public jj b(jj $$0) {
-      return this.b((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-   }
-
-   public jj b(fcu $$0) {
-      return this.b($$0.a(), $$0.b(), $$0.c());
-   }
-
-   public jj b(double $$0, double $$1, double $$2) {
-      return jj.a((kc)this.c($$0, $$1, $$2));
-   }
-
-   public fcu c(fcu $$0) {
-      return this.c($$0.d, $$0.e, $$0.f);
-   }
-
-   public fcu c(double $$0, double $$1, double $$2) {
-      return new fcu(azk.a($$0, this.e(), this.g() - 1.0E-5F), $$1, azk.a($$2, this.f(), this.h() - 1.0E-5F));
-   }
-
-   public double a(bvs $$0) {
-      return this.b($$0.dA(), $$0.dG());
-   }
-
-   public fdo c() {
-      return this.l.m();
-   }
-
-   public double b(double $$0, double $$1) {
-      double $$2 = $$1 - this.f();
-      double $$3 = this.h() - $$1;
-      double $$4 = $$0 - this.e();
-      double $$5 = this.g() - $$0;
-      double $$6 = Math.min($$4, $$5);
-      $$6 = Math.min($$6, $$2);
-      return Math.min($$6, $$3);
-   }
-
-   public boolean a(bvs $$0, fcp $$1) {
-      double $$2 = Math.max(azk.a($$1.b(), $$1.d()), 1.0);
-      return this.a($$0) < $$2 * 2.0 && this.a($$0.dA(), $$0.dG(), $$2);
-   }
-
-   public ead d() {
-      return this.l.i();
-   }
-
-   public double e() {
-      return this.l.a();
-   }
-
-   public double f() {
-      return this.l.c();
-   }
-
-   public double g() {
-      return this.l.b();
-   }
-
-   public double h() {
-      return this.l.d();
-   }
-
-   public double a() {
-      return this.i;
-   }
-
-   public double b() {
-      return this.j;
-   }
-
-   public void c(double $$0, double $$1) {
-      this.i = $$0;
-      this.j = $$1;
-      this.l.k();
-
-      for (eac $$2 : this.l()) {
-         $$2.a(this, $$0, $$1);
-      }
-   }
-
-   public double i() {
-      return this.l.e();
-   }
-
-   public long j() {
-      return this.l.g();
-   }
-
-   public double k() {
-      return this.l.h();
-   }
-
-   public void a(double $$0) {
-      this.l = new eae.d($$0);
-
-      for (eac $$1 : this.l()) {
-         $$1.a(this, $$0);
-      }
-   }
-
-   public void a(double $$0, double $$1, long $$2) {
-      this.l = (eae.a)($$0 == $$1 ? new eae.d($$1) : new eae.b($$0, $$1, $$2));
-
-      for (eac $$3 : this.l()) {
-         $$3.a(this, $$0, $$1, $$2);
-      }
-   }
-
-   protected List<eac> l() {
-      return Lists.newArrayList(this.a);
-   }
-
-   public void a(eac $$0) {
-      this.a.add($$0);
-   }
-
-   public void b(eac $$0) {
-      this.a.remove($$0);
-   }
-
-   public void a(int $$0) {
-      this.k = $$0;
-      this.l.j();
-   }
-
-   public int m() {
-      return this.k;
-   }
-
-   public double n() {
-      return this.f;
-   }
-
-   public void b(double $$0) {
-      this.f = $$0;
-
-      for (eac $$1 : this.l()) {
-         $$1.c(this, $$0);
-      }
-   }
-
-   public double o() {
-      return this.e;
-   }
-
-   public void c(double $$0) {
-      this.e = $$0;
-
-      for (eac $$1 : this.l()) {
-         $$1.b(this, $$0);
-      }
-   }
-
-   public double p() {
-      return this.l.f();
-   }
-
-   public int q() {
-      return this.g;
-   }
-
-   public void b(int $$0) {
-      this.g = $$0;
-
-      for (eac $$1 : this.l()) {
-         $$1.a(this, $$0);
-      }
-   }
-
-   public int r() {
-      return this.h;
-   }
-
-   public void c(int $$0) {
-      this.h = $$0;
-
-      for (eac $$1 : this.l()) {
-         $$1.b(this, $$0);
-      }
-   }
-
-   public void s() {
-      this.l = this.l.l();
-   }
-
-   public eae.c t() {
-      return new eae.c(this);
-   }
-
-   public void a(eae.c $$0) {
-      this.c($$0.a(), $$0.b());
-      this.c($$0.c());
-      this.b($$0.d());
-      this.c($$0.e());
-      this.b($$0.f());
-      if ($$0.h() > 0L) {
-         this.a($$0.g(), $$0.i(), $$0.h());
-      } else {
-         this.a($$0.g());
-      }
-   }
-
-   interface a {
-      double a();
-
-      double b();
-
-      double c();
-
-      double d();
-
-      double e();
-
-      double f();
-
-      long g();
-
-      double h();
-
-      ead i();
-
-      void j();
-
-      void k();
-
-      eae.a l();
-
-      fdo m();
-   }
-
-   class b implements eae.a {
-      private final double b;
-      private final double c;
-      private final long d;
-      private final long e;
-      private final double f;
-
-      b(final double $$0, final double $$1, final long $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.f = (double)$$2;
-         this.e = af.c();
-         this.d = this.e + $$2;
-      }
-
-      @Override
-      public double a() {
-         return azk.a(eae.this.a() - this.e() / 2.0, (double)(-eae.this.k), (double)eae.this.k);
-      }
-
-      @Override
-      public double c() {
-         return azk.a(eae.this.b() - this.e() / 2.0, (double)(-eae.this.k), (double)eae.this.k);
-      }
-
-      @Override
-      public double b() {
-         return azk.a(eae.this.a() + this.e() / 2.0, (double)(-eae.this.k), (double)eae.this.k);
-      }
-
-      @Override
-      public double d() {
-         return azk.a(eae.this.b() + this.e() / 2.0, (double)(-eae.this.k), (double)eae.this.k);
-      }
-
-      @Override
-      public double e() {
-         double $$0 = (double)(af.c() - this.e) / this.f;
-         return $$0 < 1.0 ? azk.d($$0, this.b, this.c) : this.c;
-      }
-
-      @Override
-      public double f() {
-         return Math.abs(this.b - this.c) / (double)(this.d - this.e);
-      }
-
-      @Override
-      public long g() {
-         return this.d - af.c();
-      }
-
-      @Override
-      public double h() {
-         return this.c;
-      }
-
-      @Override
-      public ead i() {
-         return this.c < this.b ? ead.b : ead.a;
-      }
-
-      @Override
-      public void k() {
-      }
-
-      @Override
-      public void j() {
-      }
-
-      @Override
-      public eae.a l() {
-         return (eae.a)(this.g() <= 0L ? eae.this.new d(this.c) : this);
-      }
-
-      @Override
-      public fdo m() {
-         return fdl.a(
-            fdl.c,
-            fdl.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
-            fcy.e
-         );
-      }
-   }
-
-   public static class c {
-      private final double a;
-      private final double b;
-      private final double c;
-      private final double d;
-      private final int e;
-      private final int f;
-      private final double g;
-      private final long h;
-      private final double i;
-
-      c(double $$0, double $$1, double $$2, double $$3, int $$4, int $$5, double $$6, long $$7, double $$8) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
-      }
-
-      c(eae $$0) {
-         this.a = $$0.a();
-         this.b = $$0.b();
-         this.c = $$0.o();
-         this.d = $$0.n();
-         this.e = $$0.r();
-         this.f = $$0.q();
-         this.g = $$0.i();
-         this.h = $$0.j();
-         this.i = $$0.k();
-      }
-
-      public double a() {
-         return this.a;
-      }
-
-      public double b() {
-         return this.b;
-      }
-
-      public double c() {
-         return this.c;
-      }
-
-      public double d() {
-         return this.d;
-      }
-
-      public int e() {
-         return this.e;
-      }
-
-      public int f() {
-         return this.f;
-      }
-
-      public double g() {
-         return this.g;
-      }
-
-      public long h() {
-         return this.h;
-      }
-
-      public double i() {
-         return this.i;
-      }
-
-      public static eae.c a(DynamicLike<?> $$0, eae.c $$1) {
-         double $$2 = azk.a($$0.get("BorderCenterX").asDouble($$1.a), -2.9999984E7, 2.9999984E7);
-         double $$3 = azk.a($$0.get("BorderCenterZ").asDouble($$1.b), -2.9999984E7, 2.9999984E7);
-         double $$4 = $$0.get("BorderSize").asDouble($$1.g);
-         long $$5 = $$0.get("BorderSizeLerpTime").asLong($$1.h);
-         double $$6 = $$0.get("BorderSizeLerpTarget").asDouble($$1.i);
-         double $$7 = $$0.get("BorderSafeZone").asDouble($$1.d);
-         double $$8 = $$0.get("BorderDamagePerBlock").asDouble($$1.c);
-         int $$9 = $$0.get("BorderWarningBlocks").asInt($$1.e);
-         int $$10 = $$0.get("BorderWarningTime").asInt($$1.f);
-         return new eae.c($$2, $$3, $$8, $$7, $$9, $$10, $$4, $$5, $$6);
-      }
-
-      public void a(tw $$0) {
-         $$0.a("BorderCenterX", this.a);
-         $$0.a("BorderCenterZ", this.b);
-         $$0.a("BorderSize", this.g);
-         $$0.a("BorderSizeLerpTime", this.h);
-         $$0.a("BorderSafeZone", this.d);
-         $$0.a("BorderDamagePerBlock", this.c);
-         $$0.a("BorderSizeLerpTarget", this.i);
-         $$0.a("BorderWarningBlocks", (double)this.e);
-         $$0.a("BorderWarningTime", (double)this.f);
-      }
-   }
-
-   class d implements eae.a {
-      private final double b;
-      private double c;
-      private double d;
-      private double e;
-      private double f;
-      private fdo g;
-
-      public d(final double $$0) {
-         this.b = $$0;
-         this.n();
-      }
-
-      @Override
-      public double a() {
-         return this.c;
-      }
-
-      @Override
-      public double b() {
-         return this.e;
-      }
-
-      @Override
-      public double c() {
-         return this.d;
-      }
-
-      @Override
-      public double d() {
-         return this.f;
-      }
-
-      @Override
-      public double e() {
-         return this.b;
-      }
-
-      @Override
-      public ead i() {
-         return ead.c;
-      }
-
-      @Override
-      public double f() {
-         return 0.0;
-      }
-
-      @Override
-      public long g() {
-         return 0L;
-      }
-
-      @Override
-      public double h() {
-         return this.b;
-      }
-
-      private void n() {
-         this.c = azk.a(eae.this.a() - this.b / 2.0, (double)(-eae.this.k), (double)eae.this.k);
-         this.d = azk.a(eae.this.b() - this.b / 2.0, (double)(-eae.this.k), (double)eae.this.k);
-         this.e = azk.a(eae.this.a() + this.b / 2.0, (double)(-eae.this.k), (double)eae.this.k);
-         this.f = azk.a(eae.this.b() + this.b / 2.0, (double)(-eae.this.k), (double)eae.this.k);
-         this.g = fdl.a(
-            fdl.c,
-            fdl.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
-            fcy.e
-         );
-      }
-
-      @Override
-      public void j() {
-         this.n();
-      }
-
-      @Override
-      public void k() {
-         this.n();
-      }
-
-      @Override
-      public eae.a l() {
-         return this;
-      }
-
-      @Override
-      public fdo m() {
-         return this.g;
-      }
-   }
+   public static final eaf a = eaf.a("attached");
+   public static final eaf b = eaf.a("berries");
+   public static final eaf c = eaf.a("bloom");
+   public static final eaf d = eaf.a("bottom");
+   public static final eaf e = eaf.a("can_summon");
+   public static final eaf f = eaf.a("conditional");
+   public static final eaf g = eaf.a("disarmed");
+   public static final eaf h = eaf.a("drag");
+   public static final eaf i = eaf.a("enabled");
+   public static final eaf j = eaf.a("extended");
+   public static final eaf k = eaf.a("eye");
+   public static final eaf l = eaf.a("falling");
+   public static final eaf m = eaf.a("hanging");
+   public static final eaf n = eaf.a("has_bottle_0");
+   public static final eaf o = eaf.a("has_bottle_1");
+   public static final eaf p = eaf.a("has_bottle_2");
+   public static final eaf q = eaf.a("has_record");
+   public static final eaf r = eaf.a("has_book");
+   public static final eaf s = eaf.a("inverted");
+   public static final eaf t = eaf.a("in_wall");
+   public static final eaf u = eaf.a("lit");
+   public static final eaf v = eaf.a("locked");
+   public static final eaf w = eaf.a("natural");
+   public static final eaf x = eaf.a("occupied");
+   public static final eaf y = eaf.a("open");
+   public static final eaf z = eaf.a("persistent");
+   public static final eaf A = eaf.a("powered");
+   public static final eaf B = eaf.a("short");
+   public static final eaf C = eaf.a("shrieking");
+   public static final eaf D = eaf.a("signal_fire");
+   public static final eaf E = eaf.a("snowy");
+   public static final eaf F = eaf.a("tip");
+   public static final eaf G = eaf.a("triggered");
+   public static final eaf H = eaf.a("unstable");
+   public static final eaf I = eaf.a("waterlogged");
+   public static final eam<ja.a> J = eam.a("axis", ja.a.class, ja.a.a, ja.a.c);
+   public static final eam<ja.a> K = eam.a("axis", ja.a.class);
+   public static final eaf L = eaf.a("up");
+   public static final eaf M = eaf.a("down");
+   public static final eaf N = eaf.a("north");
+   public static final eaf O = eaf.a("east");
+   public static final eaf P = eaf.a("south");
+   public static final eaf Q = eaf.a("west");
+   public static final eam<ja> R = eam.a("facing", ja.class, ja.c, ja.f, ja.d, ja.e, ja.b, ja.a);
+   public static final eam<ja> S = eam.a("facing", ja.class, $$0 -> $$0 != ja.b);
+   public static final eam<ja> T = eam.a("facing", ja.class, ja.c.a);
+   public static final eao U = eao.a("flower_amount", 1, 4);
+   public static final eao V = eao.a("segment_amount", 1, 4);
+   public static final eam<jc> W = eam.a("orientation", jc.class);
+   public static final eam<dzz> X = eam.a("face", dzz.class);
+   public static final eam<eac> Y = eam.a("attachment", eac.class);
+   public static final eam<ebb> Z = eam.a("east", ebb.class);
+   public static final eam<ebb> aa = eam.a("north", ebb.class);
+   public static final eam<ebb> ab = eam.a("south", ebb.class);
+   public static final eam<ebb> ac = eam.a("west", ebb.class);
+   public static final eam<eat> ad = eam.a("east", eat.class);
+   public static final eam<eat> ae = eam.a("north", eat.class);
+   public static final eam<eat> af = eam.a("south", eat.class);
+   public static final eam<eat> ag = eam.a("west", eat.class);
+   public static final eam<eak> ah = eam.a("half", eak.class);
+   public static final eam<ean> ai = eam.a("half", ean.class);
+   public static final eam<eas> aj = eam.a("shape", eas.class);
+   public static final eam<eas> ak = eam.a("shape", eas.class, $$0 -> $$0 != eas.j && $$0 != eas.i && $$0 != eas.g && $$0 != eas.h);
+   public static final int al = 1;
+   public static final int am = 2;
+   public static final int an = 3;
+   public static final int ao = 4;
+   public static final int ap = 5;
+   public static final int aq = 7;
+   public static final int ar = 15;
+   public static final int as = 25;
+   public static final eao at = eao.a("age", 0, 1);
+   public static final eao au = eao.a("age", 0, 2);
+   public static final eao av = eao.a("age", 0, 3);
+   public static final eao aw = eao.a("age", 0, 4);
+   public static final eao ax = eao.a("age", 0, 5);
+   public static final eao ay = eao.a("age", 0, 7);
+   public static final eao az = eao.a("age", 0, 15);
+   public static final eao aA = eao.a("age", 0, 25);
+   public static final eao aB = eao.a("bites", 0, 6);
+   public static final eao aC = eao.a("candles", 1, 4);
+   public static final eao aD = eao.a("delay", 1, 4);
+   public static final int aE = 7;
+   public static final eao aF = eao.a("distance", 1, 7);
+   public static final eao aG = eao.a("eggs", 1, 4);
+   public static final eao aH = eao.a("hatch", 0, 2);
+   public static final eao aI = eao.a("layers", 1, 8);
+   public static final int aJ = 0;
+   public static final int aK = 1;
+   public static final int aL = 3;
+   public static final int aM = 8;
+   public static final eao aN = eao.a("level", 1, 3);
+   public static final eao aO = eao.a("level", 0, 8);
+   public static final eao aP = eao.a("level", 1, 8);
+   public static final eao aQ = eao.a("honey_level", 0, 5);
+   public static final int aR = 15;
+   public static final eao aS = eao.a("level", 0, 15);
+   public static final eao aT = eao.a("moisture", 0, 7);
+   public static final eao aU = eao.a("note", 0, 24);
+   public static final eao aV = eao.a("pickles", 1, 4);
+   public static final eao aW = eao.a("power", 0, 15);
+   public static final eao aX = eao.a("stage", 0, 1);
+   public static final int aY = 7;
+   public static final eao aZ = eao.a("distance", 0, 7);
+   public static final int ba = 0;
+   public static final int bb = 4;
+   public static final eao bc = eao.a("charges", 0, 4);
+   public static final eao bd = eao.a("rotation", 0, eau.a());
+   public static final eam<eab> be = eam.a("part", eab.class);
+   public static final eam<eag> bf = eam.a("type", eag.class);
+   public static final eam<eah> bg = eam.a("mode", eah.class);
+   public static final eam<eaj> bh = eam.a("hinge", eaj.class);
+   public static final eam<eap> bi = eam.a("instrument", eap.class);
+   public static final eam<eaq> bj = eam.a("type", eaq.class);
+   public static final eam<eaw> bk = eam.a("type", eaw.class);
+   public static final eam<eax> bl = eam.a("shape", eax.class);
+   public static final eam<eay> bm = eam.a("mode", eay.class);
+   public static final eam<eaa> bn = eam.a("leaves", eaa.class);
+   public static final eam<eba> bo = eam.a("tilt", eba.class);
+   public static final eam<ja> bp = eam.a("vertical_direction", ja.class, ja.b, ja.a);
+   public static final eam<eal> bq = eam.a("thickness", eal.class);
+   public static final eam<eav> br = eam.a("sculk_sensor_phase", eav.class);
+   public static final eaf bs = eaf.a("slot_0_occupied");
+   public static final eaf bt = eaf.a("slot_1_occupied");
+   public static final eaf bu = eaf.a("slot_2_occupied");
+   public static final eaf bv = eaf.a("slot_3_occupied");
+   public static final eaf bw = eaf.a("slot_4_occupied");
+   public static final eaf bx = eaf.a("slot_5_occupied");
+   public static final eao by = eao.a("dusted", 0, 3);
+   public static final eaf bz = eaf.a("cracked");
+   public static final eaf bA = eaf.a("crafting");
+   public static final eam<dyu> bB = eam.a("trial_spawner_state", dyu.class);
+   public static final eam<dzb> bC = eam.a("vault_state", dzb.class);
+   public static final eam<eai> bD = eam.a("creaking_heart_state", eai.class);
+   public static final eaf bE = eaf.a("ominous");
+   public static final eam<eaz> bF = eam.a("mode", eaz.class);
 }

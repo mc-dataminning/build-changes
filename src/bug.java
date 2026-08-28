@@ -1,19 +1,19 @@
-import com.mojang.serialization.Codec;
+public final class bug implements bua {
+   private final ww a;
+   private final cvs b;
 
-public enum bug implements bag {
-   a("never"),
-   b("when_caused_by_living_non_player"),
-   c("always");
-
-   public static final Codec<bug> d = bag.a(bug::values);
-   private final String e;
-
-   private bug(final String $$0) {
-      this.e = $$0;
+   public bug(cvs $$0, ww $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public ww m_() {
+      return this.a;
+   }
+
+   @Override
+   public cuk createMenu(int $$0, cqr $$1, cqs $$2) {
+      return this.b.createMenu($$0, $$1, $$2);
    }
 }

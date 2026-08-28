@@ -1,20 +1,12 @@
-public record afo(long b, long c, boolean d) implements zc<abr> {
-   public static final yt<vr, afo> a = yt.a(yr.j, afo::b, yr.j, afo::e, yr.b, afo::f, afo::new);
+public record afo(ww b) implements zd<abs> {
+   public static final yu<wh, afo> a = yu.a(wy.d, afo::b, afo::new);
 
    @Override
-   public ze<afo> a() {
-      return agk.aS;
+   public zf<afo> a() {
+      return agl.aR;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
-   }
-
-   public long e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

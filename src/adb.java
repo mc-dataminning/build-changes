@@ -1,85 +1,29 @@
-public class adb implements zc<abr> {
-   public static final yt<vr, adb> a = zc.a(adb::a, adb::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final double e;
-   private final long f;
-   private final int g;
-   private final int h;
-   private final int i;
+public record adb(int b, float c) implements zd<abs> {
+   public static final yu<vs, adb> a = zd.a(adb::a, adb::new);
 
-   private adb(vr $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readDouble();
-      this.f = $$0.m();
-      this.g = $$0.l();
-      this.h = $$0.l();
-      this.i = $$0.l();
+   public adb(bwz $$0) {
+      this($$0.ar(), $$0.eL());
    }
 
-   public adb(eae $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
-      this.d = $$0.i();
-      this.e = $$0.k();
-      this.f = $$0.j();
-      this.g = $$0.m();
-      this.h = $$0.r();
-      this.i = $$0.q();
+   private adb(vs $$0) {
+      this($$0.l(), $$0.readFloat());
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.b);
+   private void a(vs $$0) {
+      $$0.c(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.c(this.g);
-      $$0.c(this.h);
-      $$0.c(this.i);
    }
 
    @Override
-   public ze<adb> a() {
-      return agk.J;
+   public zf<adb> a() {
+      return agl.I;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
-   }
-
-   public double e() {
+   public float e() {
       return this.c;
-   }
-
-   public double f() {
-      return this.e;
-   }
-
-   public double g() {
-      return this.d;
-   }
-
-   public long h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.g;
-   }
-
-   public int j() {
-      return this.i;
-   }
-
-   public int k() {
-      return this.h;
    }
 }

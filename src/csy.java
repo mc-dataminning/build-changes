@@ -1,12 +1,19 @@
-import java.util.function.Supplier;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class csy extends csf {
-   public csy(bwb<? extends csy> $$0, dhp $$1, Supplier<cxu> $$2) {
-      super($$0, $$1, $$2);
+public record csy(List<csu.a<csx, csv>> c) {
+   public static final csy a = new csy(List.of());
+   public static final Codec<csy> b = csu.a.a(csv.b).listOf().xmap(csy::new, csy::a);
+
+   public static csy a(csv $$0, int $$1) {
+      return new csy(csu.a($$0, $$1));
    }
 
-   @Override
-   protected double b(bvv $$0) {
-      return (double)($$0.b() * 0.8888889F);
+   public static csy a(int $$0) {
+      return new csy(csu.a($$0));
+   }
+
+   public List<csu.a<csx, csv>> a() {
+      return this.c;
    }
 }

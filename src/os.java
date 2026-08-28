@@ -1,9 +1,46 @@
+import com.google.gson.JsonElement;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.JsonOps;
+import java.nio.file.Path;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class os {
-   private static final ki a = new ki().a(me.aT, dfu::a);
+public class os implements mm {
+   private final mo d;
+   private final CompletableFuture<jg.a> e;
 
-   public static CompletableFuture<ki.g> a(CompletableFuture<ju.a> $$0) {
-      return or.a($$0, a);
+   public os(mo $$0, CompletableFuture<jg.a> $$1) {
+      this.e = $$1;
+      this.d = $$0;
+   }
+
+   @Override
+   public CompletableFuture<?> a(mk $$0) {
+      return this.e.thenCompose($$1 -> {
+         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
+         return CompletableFuture.allOf(akz.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (akz.d<?>)$$3).stream()).toArray(CompletableFuture[]::new));
+      });
+   }
+
+   private <T> Optional<CompletableFuture<?>> a(mk $$0, jg.a $$1, DynamicOps<JsonElement> $$2, akz.d<T> $$3) {
+      ald<? extends jr<T>> $$4 = $$3.a();
+      return $$1.a($$4).map($$4x -> {
+         mo.a $$5 = this.d.a($$4);
+         return CompletableFuture.allOf($$4x.c().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));
+      });
+   }
+
+   private static <E> CompletableFuture<?> a(Path $$0, mk $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
+      return (CompletableFuture<?>)$$3.encodeStart($$2, $$4)
+         .mapOrElse(
+            $$2x -> mm.a($$1, $$2x, $$0),
+            $$1x -> CompletableFuture.failedFuture(new IllegalStateException("Couldn't generate file '" + $$0 + "': " + $$1x.message()))
+         );
+   }
+
+   @Override
+   public final String a() {
+      return "Registries";
    }
 }

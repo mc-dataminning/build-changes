@@ -1,34 +1,15 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class byp extends byi<ckd> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
-
-   public byp() {
-      super(ImmutableMap.of(cft.n, cfu.b), 100);
-   }
-
-   protected boolean a(arn $$0, ckd $$1) {
-      return $$1.aw() == bxd.a;
-   }
-
-   protected boolean a(arn $$0, ckd $$1, long $$2) {
-      return this.e < 60;
-   }
-
-   protected void b(arn $$0, ckd $$1, long $$2) {
-      if (!$$1.bm()) {
-         $$1.b(bxd.i);
-         this.e = 0;
-      }
-   }
-
-   protected void c(arn $$0, ckd $$1, long $$2) {
-      $$1.b(bxd.a);
-   }
-
-   protected void d(arn $$0, ckd $$1, long $$2) {
-      this.e++;
+public class byp {
+   public static byr<bwz> a(cgb<?> $$0, int $$1) {
+      return ccd.a(
+         (Function<ccd.b<bwz>, ? extends App<ccd.c<bwz>, ccg<bwz>>>)($$2 -> $$2.group($$2.a(cgb.p), $$2.c(cgb.ay), $$2.b($$0))
+               .apply($$2, $$2.a(() -> "[BecomePassive if " + $$0 + " present]", ($$1xx, $$2x, $$3) -> ($$3x, $$4, $$5) -> {
+                     $$2x.a(true, (long)$$1);
+                     $$1xx.b();
+                     return true;
+                  })))
+      );
    }
 }

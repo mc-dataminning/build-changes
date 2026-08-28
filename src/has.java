@@ -1,3 +1,6 @@
-public class has extends hak {
-   public fcu a = fcu.c;
+public class has extends hau {
+   public boolean a;
+   public boolean b;
+   public float c;
+   public float d;
 }

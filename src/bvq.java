@@ -1,45 +1,195 @@
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
+import com.google.common.annotations.VisibleForTesting;
+import javax.annotation.Nullable;
 
-public record bvq(Map<bwc, Float> f) {
-   public static final float a = 0.085F;
-   public static final float b = 1.0F;
-   public static final int c = 2;
-   public static final bvq d = new bvq(af.a(bwc.class, $$0 -> 0.085F));
-   public static final Codec<bvq> e = Codec.unboundedMap(bwc.l, ays.n).xmap(bvq::b, bvq::a).xmap(bvq::new, bvq::a);
+public abstract class bvq extends bxh {
+   private static final akh<Boolean> bF = akl.a(bvq.class, akj.k);
+   public static final int a = -24000;
+   private static final int bG = 40;
+   protected int b;
+   protected int c;
+   protected int d;
 
-   private static Map<bwc, Float> a(Map<bwc, Float> $$0) {
-      Map<bwc, Float> $$1 = new HashMap<>($$0);
-      $$1.values().removeIf($$0x -> $$0x == 0.085F);
-      return $$1;
+   protected bvq(bwj<? extends bvq> $$0, dip $$1) {
+      super($$0, $$1);
    }
 
-   private static Map<bwc, Float> b(Map<bwc, Float> $$0) {
-      return af.a(bwc.class, $$1 -> $$0.getOrDefault($$1, 0.085F));
+   @Override
+   public bxr a(djg $$0, btw $$1, bwi $$2, @Nullable bxr $$3) {
+      if ($$3 == null) {
+         $$3 = new bvq.a(true);
+      }
+
+      bvq.a $$4 = (bvq.a)$$3;
+      if ($$4.c() && $$4.a() > 0 && $$0.C_().i() <= $$4.d()) {
+         this.c_(-24000);
+      }
+
+      $$4.b();
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   public bvq a(bwc $$0) {
-      return this.a($$0, 2.0F);
+   @Nullable
+   public abstract bvq a(aro var1, bvq var2);
+
+   @Override
+   protected void a(akl.a $$0) {
+      super.a($$0);
+      $$0.a(bF, false);
    }
 
-   public bvq a(bwc $$0, float $$1) {
-      if ($$1 < 0.0F) {
-         throw new IllegalArgumentException("Tried to set invalid equipment chance " + $$1 + " for " + $$0);
+   public boolean S_() {
+      return false;
+   }
+
+   public int g() {
+      if (this.dV().C) {
+         return this.al.a(bF) ? -1 : 1;
       } else {
-         return this.b($$0) == $$1 ? this : new bvq(af.a(bwc.class, $$2 -> $$2 == $$0 ? $$1 : this.b($$2)));
+         return this.b;
       }
    }
 
-   public float b(bwc $$0) {
-      return this.f.getOrDefault($$0, 0.085F);
+   public void a(int $$0, boolean $$1) {
+      int $$2 = this.g();
+      $$2 += $$0 * 20;
+      if ($$2 > 0) {
+         $$2 = 0;
+      }
+
+      int $$4 = $$2 - $$2;
+      this.c_($$2);
+      if ($$1) {
+         this.c += $$4;
+         if (this.d == 0) {
+            this.d = 40;
+         }
+      }
+
+      if (this.g() == 0) {
+         this.c_(this.c);
+      }
    }
 
-   public boolean c(bwc $$0) {
-      return this.b($$0) > 1.0F;
+   public void b_(int $$0) {
+      this.a($$0, false);
    }
 
-   public Map<bwc, Float> a() {
-      return this.f;
+   public void c_(int $$0) {
+      int $$1 = this.g();
+      this.b = $$0;
+      if ($$1 < 0 && $$0 >= 0 || $$1 >= 0 && $$0 < 0) {
+         this.al.a(bF, $$0 < 0);
+         this.j();
+      }
+   }
+
+   @Override
+   public void b(tx $$0) {
+      super.b($$0);
+      $$0.a("Age", this.g());
+      $$0.a("ForcedAge", this.c);
+   }
+
+   @Override
+   public void a(tx $$0) {
+      super.a($$0);
+      this.c_($$0.h("Age"));
+      this.c = $$0.h("ForcedAge");
+   }
+
+   @Override
+   public void a(akh<?> $$0) {
+      if (bF.equals($$0)) {
+         this.i_();
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   public void k_() {
+      super.k_();
+      if (this.dV().C) {
+         if (this.d > 0) {
+            if (this.d % 4 == 0) {
+               this.dV().a(lx.Q, this.d(1.0), this.dD() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+            }
+
+            this.d--;
+         }
+      } else if (this.bK()) {
+         int $$0 = this.g();
+         if ($$0 < 0) {
+            this.c_(++$$0);
+         } else if ($$0 > 0) {
+            this.c_(--$$0);
+         }
+      }
+   }
+
+   @Override
+   protected void j() {
+      if (!this.n_() && this.bZ() && this.dk() instanceof ctc $$0 && !$$0.b((bwa)this)) {
+         this.bP();
+      }
+   }
+
+   @Override
+   public boolean n_() {
+      return this.g() < 0;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.c_($$0 ? -24000 : 0);
+   }
+
+   public static int d_(int $$0) {
+      return (int)((float)($$0 / 20) * 0.1F);
+   }
+
+   @VisibleForTesting
+   public int Y_() {
+      return this.c;
+   }
+
+   @VisibleForTesting
+   public int Z_() {
+      return this.d;
+   }
+
+   public static class a implements bxr {
+      private int a;
+      private final boolean b;
+      private final float c;
+
+      public a(boolean $$0, float $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public a(boolean $$0) {
+         this($$0, 0.05F);
+      }
+
+      public a(float $$0) {
+         this(true, $$0);
+      }
+
+      public int a() {
+         return this.a;
+      }
+
+      public void b() {
+         this.a++;
+      }
+
+      public boolean c() {
+         return this.b;
+      }
+
+      public float d() {
+         return this.c;
+      }
    }
 }

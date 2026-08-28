@@ -1,51 +1,29 @@
-public enum gnm {
-   a(new gnm.b(gnm.a.f, gnm.a.e, gnm.a.a), new gnm.b(gnm.a.f, gnm.a.e, gnm.a.d), new gnm.b(gnm.a.c, gnm.a.e, gnm.a.d), new gnm.b(gnm.a.c, gnm.a.e, gnm.a.a)),
-   b(new gnm.b(gnm.a.f, gnm.a.b, gnm.a.d), new gnm.b(gnm.a.f, gnm.a.b, gnm.a.a), new gnm.b(gnm.a.c, gnm.a.b, gnm.a.a), new gnm.b(gnm.a.c, gnm.a.b, gnm.a.d)),
-   c(new gnm.b(gnm.a.c, gnm.a.b, gnm.a.d), new gnm.b(gnm.a.c, gnm.a.e, gnm.a.d), new gnm.b(gnm.a.f, gnm.a.e, gnm.a.d), new gnm.b(gnm.a.f, gnm.a.b, gnm.a.d)),
-   d(new gnm.b(gnm.a.f, gnm.a.b, gnm.a.a), new gnm.b(gnm.a.f, gnm.a.e, gnm.a.a), new gnm.b(gnm.a.c, gnm.a.e, gnm.a.a), new gnm.b(gnm.a.c, gnm.a.b, gnm.a.a)),
-   e(new gnm.b(gnm.a.f, gnm.a.b, gnm.a.d), new gnm.b(gnm.a.f, gnm.a.e, gnm.a.d), new gnm.b(gnm.a.f, gnm.a.e, gnm.a.a), new gnm.b(gnm.a.f, gnm.a.b, gnm.a.a)),
-   f(new gnm.b(gnm.a.c, gnm.a.b, gnm.a.a), new gnm.b(gnm.a.c, gnm.a.e, gnm.a.a), new gnm.b(gnm.a.c, gnm.a.e, gnm.a.d), new gnm.b(gnm.a.c, gnm.a.b, gnm.a.d));
-
-   private static final gnm[] g = af.a(new gnm[6], $$0 -> {
-      $$0[gnm.a.e] = a;
-      $$0[gnm.a.b] = b;
-      $$0[gnm.a.d] = c;
-      $$0[gnm.a.a] = d;
-      $$0[gnm.a.f] = e;
-      $$0[gnm.a.c] = f;
-   });
-   private final gnm.b[] h;
-
-   public static gnm a(jo $$0) {
-      return g[$$0.d()];
+public class gnm extends gmx {
+   gnm(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gng $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 1.25F);
+      this.B = 0.6F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.b($$7);
+      if (this.r.a(4) == 0) {
+         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      } else {
+         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      }
    }
 
-   private gnm(final gnm.b... $$0) {
-      this.h = $$0;
-   }
+   public static class a implements gmo<mb> {
+      private final gng a;
 
-   public gnm.b a(int $$0) {
-      return this.h[$$0];
-   }
-
-   public static final class a {
-      public static final int a = jo.d.d();
-      public static final int b = jo.b.d();
-      public static final int c = jo.f.d();
-      public static final int d = jo.c.d();
-      public static final int e = jo.a.d();
-      public static final int f = jo.e.d();
-   }
-
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
+      public a(gng $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      }
+
+      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnm($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

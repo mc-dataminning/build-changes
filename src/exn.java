@@ -1,41 +1,41 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import io.netty.buffer.ByteBuf;
+import java.util.function.Consumer;
 
-public record exn<T>(alc<kf<T>> d, Codec<T> e, exn.a<T> f) {
-   public static final exn<fau> a = new exn<>(me.bp, fau.e, e());
-   public static final exn<eyz> b = new exn<>(me.bo, ezb.c, e());
-   public static final exn<exq> c = new exn<>(me.bn, exq.d, f());
+public record exn(int c) implements dbx {
+   public static final Codec<exn> a = Codec.INT.xmap(exn::new, exn::b);
+   public static final yu<ByteBuf, exn> b = ys.h.a(exn::new, exn::b);
+   private static final ww d = ww.c("filled_map.locked").a(n.h);
 
-   public void a(exr $$0, alc<T> $$1, T $$2) {
-      this.f.run($$0, $$1, $$2);
+   public String a() {
+      return "map_" + this.c;
    }
 
-   public static Stream<exn<?>> a() {
-      return Stream.of(a, b, c);
+   @Override
+   public void a(cyo.b $$0, Consumer<ww> $$1, dah $$2, ke $$3) {
+      exp $$4 = $$0.a(this);
+      if ($$4 == null) {
+         $$1.accept(ww.c("filled_map.unknown").a(n.h));
+      } else {
+         dbp $$5 = $$3.a(kj.O);
+         if ($$3.a(kj.g) == null && $$5 == null) {
+            $$1.accept(ww.a("filled_map.id", this.c).a(n.h));
+         }
+
+         if ($$4.h || $$5 == dbp.a) {
+            $$1.accept(d);
+         }
+
+         if ($$2.a()) {
+            int $$6 = $$5 == dbp.b ? 1 : 0;
+            int $$7 = Math.min($$4.f + $$6, 4);
+            $$1.accept(ww.a("filled_map.scale", 1 << $$7).a(n.h));
+            $$1.accept(ww.a("filled_map.level", $$7, 4).a(n.h));
+         }
+      }
    }
 
-   private static <T extends exm> exn.a<T> e() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
-   }
-
-   private static exn.a<exq> f() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
-   }
-
-   public alc<kf<T>> b() {
-      return this.d;
-   }
-
-   public Codec<T> c() {
-      return this.e;
-   }
-
-   public exn.a<T> d() {
-      return this.f;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      void run(exr var1, alc<T> var2, T var3);
+   public int b() {
+      return this.c;
    }
 }

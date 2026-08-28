@@ -1,4 +1,8 @@
-import java.util.Map;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record gis(Map<ald, byte[]> a) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gis {
 }

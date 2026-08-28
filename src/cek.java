@@ -1,87 +1,55 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cek extends cdn {
-   public static final int a = 120;
-   protected final bwz b;
-   protected double c;
-   protected double d;
-   protected double e;
-   protected final double f;
-   protected int g;
-   protected boolean h;
-   private final boolean i;
+public class cek extends cdv {
+   private final bxh a;
+   @Nullable
+   private bwz b;
+   private double c;
+   private double d;
+   private double e;
+   private final double f;
+   private final float g;
 
-   public cek(bwz $$0, double $$1) {
-      this($$0, $$1, 120);
-   }
-
-   public cek(bwz $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, true);
-   }
-
-   public cek(bwz $$0, double $$1, int $$2, boolean $$3) {
-      this.b = $$0;
+   public cek(bxh $$0, double $$1, float $$2) {
+      this.a = $$0;
       this.f = $$1;
       this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(cdn.a.a));
+      this.a(EnumSet.of(cdv.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.b.cX()) {
+      this.b = this.a.f();
+      if (this.b == null) {
+         return false;
+      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
          return false;
       } else {
-         if (!this.h) {
-            if (this.i && this.b.ev() >= 100) {
-               return false;
-            }
-
-            if (this.b.dY().a(b(this.g)) != 0) {
-               return false;
-            }
-         }
-
-         fcu $$0 = this.h();
+         fdw $$0 = chs.a(this.a, 16, 7, this.b.dt(), (float) (Math.PI / 2));
          if ($$0 == null) {
             return false;
          } else {
             this.c = $$0.d;
             this.d = $$0.e;
             this.e = $$0.f;
-            this.h = false;
             return true;
          }
       }
    }
 
-   @Nullable
-   protected fcu h() {
-      return chk.a(this.b, 10, 7);
-   }
-
    @Override
    public boolean c() {
-      return !this.b.O().k() && !this.b.cX();
-   }
-
-   @Override
-   public void d() {
-      this.b.O().a(this.c, this.d, this.e, this.f);
+      return !this.a.O().k() && this.b.bK() && this.b.g(this.a) < (double)(this.g * this.g);
    }
 
    @Override
    public void e() {
-      this.b.O().m();
-      super.e();
+      this.b = null;
    }
 
-   public void i() {
-      this.h = true;
-   }
-
-   public void c(int $$0) {
-      this.g = $$0;
+   @Override
+   public void d() {
+      this.a.O().a(this.c, this.d, this.e, this.f);
    }
 }

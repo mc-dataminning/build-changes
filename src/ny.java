@@ -1,42 +1,23 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.serialization.JsonOps;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
+import java.util.function.BiConsumer;
 
-public class ny implements mk {
-   private final mm d;
-   private final Map<String, Supplier<JsonElement>> e = new HashMap<>();
-
-   public ny(mm $$0) {
-      this.d = $$0;
-   }
-
-   public <T> ny a(atz<T> $$0, T $$1) {
-      this.e.put($$0.a(), () -> ((JsonElement)$$0.b().encodeStart(JsonOps.INSTANCE, $$1).getOrThrow(IllegalArgumentException::new)).getAsJsonObject());
-      return this;
-   }
-
+public record ny(jg.a a) implements nk {
    @Override
-   public CompletableFuture<?> a(mi $$0) {
-      JsonObject $$1 = new JsonObject();
-      this.e.forEach(($$1x, $$2) -> $$1.add($$1x, $$2.get()));
-      return mk.a($$0, $$1, this.d.a().resolve("pack.mcmeta"));
-   }
-
-   @Override
-   public final String a() {
-      return "Pack Metadata";
-   }
-
-   public static ny a(mm $$0, wv $$1) {
-      return new ny($$0).a(aua.b, new aua($$1, t.a.a(ato.b), Optional.empty()));
-   }
-
-   public static ny a(mm $$0, wv $$1, cte $$2) {
-      return a($$0, $$1).a(ati.a, new ati($$2));
+   public void generate(BiConsumer<ald<eys>, eys.a> $$0) {
+      $$0.accept(eyj.aQ, eys.b().a(eyr.a().a(fcp.a(2.0F)).a(eza.a(cyw.dJ).a(fas.a(fcp.a(1.0F)))).a(eza.a(cyw.dK).a(fas.a(fcp.a(1.0F))))));
+      nm.a.forEach(($$1, $$2) -> $$0.accept(eyj.aW.get($$1), eys.b().a(eyr.a().a(fcw.a(1.0F, 3.0F)).a(eza.a($$2)))));
+      $$0.accept(eyj.aV, eys.b().a(ni.a(eyj.aW)));
+      $$0.accept(
+         eyj.aR,
+         eys.b()
+            .a(
+               eyr.a()
+                  .a(
+                     eyu.a(ezg.a(eyj.aS).a(fbz.a(eyn.b.a, bx.a.a().a(kd.a(kj.aE, cjb.a.a)))), ezg.a(eyj.aT).a(fbz.a(eyn.b.a, bx.a.a().a(kd.a(kj.aE, cjb.a.b)))))
+                  )
+            )
+      );
+      $$0.accept(eyj.aS, eys.b().a(eyr.a().a(fcp.a(5.0F)).a(eza.a(cyw.dK))));
+      $$0.accept(eyj.aT, eys.b().a(eyr.a().a(fcp.a(5.0F)).a(eza.a(cyw.dJ))));
+      $$0.accept(eyj.aU, eys.b().a(eyr.a().a(fcp.a(1.0F)).a(eza.a(cyw.fC))));
    }
 }

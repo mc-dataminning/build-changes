@@ -1,39 +1,31 @@
-public class cyb {
-   public static btq a(dhp $$0, cqi $$1, btp $$2) {
-      $$1.c($$2);
-      return btq.c;
+public class cyb extends cyo {
+   public cyb(cyo.a $$0) {
+      super($$0);
    }
 
-   public static cxy a(cxy $$0, cqi $$1, cxy $$2, boolean $$3) {
-      boolean $$4 = $$1.fU();
-      if ($$3 && $$4) {
-         if (!$$1.gi().i($$2)) {
-            $$1.gi().f($$2);
+   @Override
+   public bty a(dip $$0, cqs $$1, btx $$2) {
+      cys $$3 = $$1.b($$2);
+      if ($$1.cj != null) {
+         if (!$$0.C) {
+            int $$4 = $$1.cj.a($$3);
+            $$3.a($$4, $$1, bwz.d($$2));
          }
 
-         return $$0;
+         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awl.jw, awm.g, 1.0F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
+         $$1.a(eeo.C);
       } else {
-         $$0.a(1, $$1);
-         if ($$0.f()) {
-            return $$2;
-         } else {
-            if (!$$1.gi().f($$2)) {
-               $$1.a($$2, false);
-            }
-
-            return $$0;
+         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awl.jy, awm.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
+         if ($$0 instanceof aro $$5) {
+            int $$6 = (int)(dfh.b($$5, $$3, $$1) * 20.0F);
+            int $$7 = dfh.a($$5, $$3, $$1);
+            crm.a(new cri($$1, $$0, $$7, $$6), $$5, $$3);
          }
-      }
-   }
 
-   public static cxy a(cxy $$0, cqi $$1, cxy $$2) {
-      return a($$0, $$1, $$2, true);
-   }
-
-   public static void a(cmn $$0, Iterable<cxy> $$1) {
-      dhp $$2 = $$0.dV();
-      if (!$$2.C) {
-         $$1.forEach($$2x -> $$2.b(new cmn($$2, $$0.dA(), $$0.dC(), $$0.dG(), $$2x)));
+         $$1.b(awv.c.b(this));
+         $$1.a(eeo.D);
       }
+
+      return bty.a;
    }
 }

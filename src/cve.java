@@ -1,30 +1,58 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+public abstract class cve {
+   private int a;
 
-public interface cve {
-   void a(@Nullable dcq<?> var1);
-
-   @Nullable
-   dcq<?> d();
-
-   default void a(cqi $$0, List<cxy> $$1) {
-      dcq<?> $$2 = this.d();
-      if ($$2 != null) {
-         $$0.a($$2, $$1);
-         if (!$$2.b().al_()) {
-            $$0.a(Collections.singleton($$2));
-            this.a(null);
+   public static cve a(final cuw $$0, final int $$1) {
+      return new cve() {
+         @Override
+         public int b() {
+            return $$0.a($$1);
          }
-      }
+
+         @Override
+         public void a(int $$0x) {
+            $$0.a($$1, $$0);
+         }
+      };
    }
 
-   default boolean a(aro $$0, dcq<?> $$1) {
-      if (!$$1.b().al_() && $$0.y().O().c(dhl.x) && !$$0.J().b($$1.a())) {
-         return false;
-      } else {
-         this.a($$1);
-         return true;
-      }
+   public static cve a(final int[] $$0, final int $$1) {
+      return new cve() {
+         @Override
+         public int b() {
+            return $$0[$$1];
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0[$$1] = $$0;
+         }
+      };
+   }
+
+   public static cve a() {
+      return new cve() {
+         private int a;
+
+         @Override
+         public int b() {
+            return this.a;
+         }
+
+         @Override
+         public void a(int $$0) {
+            this.a = $$0;
+         }
+      };
+   }
+
+   public abstract int b();
+
+   public abstract void a(int var1);
+
+   public boolean c() {
+      int $$0 = this.b();
+      boolean $$1 = $$0 != this.a;
+      this.a = $$0;
+      return $$1;
    }
 }

@@ -1,70 +1,37 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Queues;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Deque;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
-public final class azv<T> extends AbstractIterator<T> {
-   private static final int a = Integer.MIN_VALUE;
-   @Nullable
-   private Deque<T> b = null;
-   private int c = Integer.MIN_VALUE;
-   private final Int2ObjectMap<Deque<T>> d = new Int2ObjectOpenHashMap();
+public class azv {
+   public static final Codec<azv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ays.p.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), ays.p.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
+            .apply($$0, azv::new)
+   );
+   private final Optional<Pattern> b;
+   private final Predicate<String> c;
+   private final Optional<Pattern> d;
+   private final Predicate<String> e;
+   private final Predicate<ale> f;
 
-   public void a(T $$0, int $$1) {
-      if ($$1 == this.c && this.b != null) {
-         this.b.addLast($$0);
-      } else {
-         Deque<T> $$2 = (Deque<T>)this.d.computeIfAbsent($$1, $$0x -> Queues.newArrayDeque());
-         $$2.addLast($$0);
-         if ($$1 >= this.c) {
-            this.b = $$2;
-            this.c = $$1;
-         }
-      }
+   private azv(Optional<Pattern> $$0, Optional<Pattern> $$1) {
+      this.b = $$0;
+      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.d = $$1;
+      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
+      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
    }
 
-   @Nullable
-   protected T computeNext() {
-      if (this.b == null) {
-         return (T)this.endOfData();
-      } else {
-         T $$0 = this.b.removeFirst();
-         if ($$0 == null) {
-            return (T)this.endOfData();
-         } else {
-            if (this.b.isEmpty()) {
-               this.a();
-            }
-
-            return $$0;
-         }
-      }
+   public Predicate<String> a() {
+      return this.c;
    }
 
-   private void a() {
-      int $$0 = Integer.MIN_VALUE;
-      Deque<T> $$1 = null;
-      ObjectIterator var3 = Int2ObjectMaps.fastIterable(this.d).iterator();
+   public Predicate<String> b() {
+      return this.e;
+   }
 
-      while (var3.hasNext()) {
-         Entry<Deque<T>> $$2 = (Entry<Deque<T>>)var3.next();
-         Deque<T> $$3 = (Deque<T>)$$2.getValue();
-         int $$4 = $$2.getIntKey();
-         if ($$4 > $$0 && !$$3.isEmpty()) {
-            $$0 = $$4;
-            $$1 = $$3;
-            if ($$4 == this.c - 1) {
-               break;
-            }
-         }
-      }
-
-      this.c = $$0;
-      this.b = $$1;
+   public Predicate<ale> c() {
+      return this.f;
    }
 }

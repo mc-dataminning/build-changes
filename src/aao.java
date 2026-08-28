@@ -1,31 +1,26 @@
-public record aao(int c, evh d, float e) implements aaf {
-   public static final yt<vr, aao> a = aaf.a(aao::a, aao::new);
-   public static final aaf.b<aao> b = aaf.a("debug/path");
+public record aao(long c, iu d) implements aag {
+   public static final yu<vs, aao> a = aag.a(aao::a, aao::new);
+   public static final aag.b<aao> b = aag.a("debug/neighbors_update");
 
-   private aao(vr $$0) {
-      this($$0.readInt(), evh.b($$0), $$0.readFloat());
+   private aao(vs $$0) {
+      this($$0.m(), $$0.e());
    }
 
-   private void a(vr $$0) {
-      $$0.q(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
+   private void a(vs $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public aaf.b<aao> a() {
+   public aag.b<aao> a() {
       return b;
    }
 
-   public int b() {
+   public long b() {
       return this.c;
    }
 
-   public evh c() {
+   public iu c() {
       return this.d;
-   }
-
-   public float d() {
-      return this.e;
    }
 }

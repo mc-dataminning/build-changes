@@ -1,90 +1,144 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import org.joml.Matrix4f;
 
 public class gpj {
-   public float[] a;
-   public final int b;
+   private final String a;
+   private final gom b;
+   private final ale c;
+   private final List<gpi.h> d;
+   private final List<gpj.a> e = new ArrayList<>();
 
-   public gpj(@Nullable float[] $$0, int $$1) {
+   public gpj(String $$0, gom $$1, ale $$2, List<gpi.h> $$3) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public float a(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
+   public void a(gpj.a $$0) {
+      this.e.add($$0);
+   }
+
+   public void a(fgu $$0, Map<ale, fic<fha>> $$1, Matrix4f $$2) {
+      fgv $$3 = $$0.a(this.a);
+
+      for (gpj.a $$4 : this.e) {
+         $$4.a($$3, $$1);
+      }
+
+      fic<fha> $$5 = $$1.computeIfPresent(this.c, ($$1x, $$2x) -> $$3.b($$2x));
+      if ($$5 == null) {
+         throw new IllegalStateException("Missing handle for target " + this.c);
       } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
-      }
-   }
+         $$3.a(() -> {
+            fha $$3x = $$5.get();
+            RenderSystem.viewport(0, 0, $$3x.c, $$3x.d);
 
-   public float b(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
-      }
-   }
-
-   private int d(int $$0) {
-      return ($$0 + this.b / 90) % 4;
-   }
-
-   public int c(int $$0) {
-      return ($$0 + 4 - this.b / 90) % 4;
-   }
-
-   public void a(float[] $$0) {
-      if (this.a == null) {
-         this.a = $$0;
-      }
-   }
-
-   protected static class a implements JsonDeserializer<gpj> {
-      private static final int a = 0;
-
-      public gpj a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         float[] $$4 = this.b($$3);
-         int $$5 = this.a($$3);
-         return new gpj($$4, $$5);
-      }
-
-      protected int a(JsonObject $$0) {
-         int $$1 = aza.a($$0, "rotation", 0);
-         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
-            return $$1;
-         } else {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
-         }
-      }
-
-      @Nullable
-      private float[] b(JsonObject $$0) {
-         if (!$$0.has("uv")) {
-            return null;
-         } else {
-            JsonArray $$1 = aza.v($$0, "uv");
-            if ($$1.size() != 4) {
-               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
-            } else {
-               float[] $$2 = new float[4];
-
-               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-                  $$2[$$3] = aza.e($$1.get($$3), "uv[" + $$3 + "]");
-               }
-
-               return $$2;
+            for (gpj.a $$4x : this.e) {
+               $$4x.a(this.b, $$1);
             }
+
+            this.b.c("OutSize").a((float)$$3x.c, (float)$$3x.d);
+
+            for (gpi.h $$5x : this.d) {
+               fih $$6 = this.b.a($$5x.a());
+               if ($$6 != null) {
+                  $$6.a($$5x.b(), $$5x.b().size());
+               }
+            }
+
+            $$3x.a(false);
+            RenderSystem.depthFunc(519);
+            RenderSystem.setShader(this.b);
+            RenderSystem.backupProjectionMatrix();
+            RenderSystem.setProjectionMatrix($$2, ffz.b);
+            fil $$7 = fis.b().a(fiv.c.h, fio.e);
+            $$7.a(0.0F, 0.0F, 500.0F);
+            $$7.a((float)$$3x.c, 0.0F, 500.0F);
+            $$7.a((float)$$3x.c, (float)$$3x.d, 500.0F);
+            $$7.a(0.0F, (float)$$3x.d, 500.0F);
+            fim.a($$7.b());
+            RenderSystem.depthFunc(515);
+            RenderSystem.restoreProjectionMatrix();
+            $$3x.e();
+
+            for (gpj.a $$8 : this.e) {
+               $$8.a($$1);
+            }
+
+            this.b();
+         });
+      }
+   }
+
+   private void b() {
+      for (gpi.h $$0 : this.d) {
+         String $$1 = $$0.a();
+         fih $$2 = this.b.a($$1);
+         gpw.b $$3 = this.b.b($$1);
+         if ($$2 != null && $$3 != null && !$$0.b().equals($$3.d())) {
+            $$2.a($$3);
          }
+      }
+   }
+
+   public gom a() {
+      return this.b;
+   }
+
+   public interface a {
+      void a(fgv var1, Map<ale, fic<fha>> var2);
+
+      void a(gom var1, Map<ale, fic<fha>> var2);
+
+      default void a(Map<ale, fic<fha>> $$0) {
+      }
+   }
+
+   public static record b(String a, ale b, boolean c, boolean d) implements gpj.a {
+      private fic<fha> b(Map<ale, fic<fha>> $$0) {
+         fic<fha> $$1 = $$0.get(this.b);
+         if ($$1 == null) {
+            throw new IllegalStateException("Missing handle for target " + this.b);
+         } else {
+            return $$1;
+         }
+      }
+
+      @Override
+      public void a(fgv $$0, Map<ale, fic<fha>> $$1) {
+         $$0.a(this.b($$1));
+      }
+
+      @Override
+      public void a(gom $$0, Map<ale, fic<fha>> $$1) {
+         fic<fha> $$2 = this.b($$1);
+         fha $$3 = $$2.get();
+         $$3.a(this.d ? 9729 : 9728);
+         $$0.a(this.a + "Sampler", this.c ? $$3.h() : $$3.g());
+         $$0.c(this.a + "Size").a((float)$$3.c, (float)$$3.d);
+      }
+
+      @Override
+      public void a(Map<ale, fic<fha>> $$0) {
+         if (this.d) {
+            this.b($$0).get().a(9728);
+         }
+      }
+   }
+
+   public static record c(String a, hhk b, int c, int d) implements gpj.a {
+      @Override
+      public void a(fgv $$0, Map<ale, fic<fha>> $$1) {
+      }
+
+      @Override
+      public void a(gom $$0, Map<ale, fic<fha>> $$1) {
+         $$0.a(this.a + "Sampler", this.b.a());
+         $$0.c(this.a + "Size").a((float)this.c, (float)this.d);
       }
    }
 }

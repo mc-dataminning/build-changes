@@ -1,146 +1,82 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
+import java.util.Map;
+import java.util.function.Function;
 
-public class dpi extends dku implements dsb {
-   public static final MapCodec<dpi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ays.m.fieldOf("leaf_particle_chance").forGetter($$0x -> $$0x.g), lv.bj.fieldOf("leaf_particle").forGetter($$0x -> $$0x.f), t())
-            .apply($$0, dpi::new)
-   );
-   public static final int b = 7;
-   public static final dzm c = dzc.aF;
-   public static final dzd d = dzc.z;
-   public static final dzd e = dzc.I;
-   protected final lt f;
-   protected final int g;
-   private static final int h = 1;
+public class dpi extends dop {
+   public static final MapCodec<dpi> a = b(dpi::new);
+   private static final ww b = ww.c("container.grindstone_title");
+   private final Function<dzo, feq> d;
 
    @Override
-   public MapCodec<? extends dpi> a() {
+   public MapCodec<dpi> a() {
       return a;
    }
 
-   public dpi(int $$0, lt $$1, dyl.d $$2) {
-      super($$2);
-      this.g = $$0;
-      this.f = $$1;
-      this.l(this.B.b().b(c, Integer.valueOf(7)).b(d, Boolean.valueOf(false)).b(e, Boolean.valueOf(false)));
+   protected dpi(dzn.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(e, ja.c).b(c, dzz.b));
+      this.d = this.b();
+   }
+
+   private Function<dzo, feq> b() {
+      feq $$0 = fen.a(dlu.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0), dlu.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0));
+      feq $$1 = fen.a($$0, h.z);
+      feq $$2 = fen.a(dlu.a(8.0, 2.0, 14.0, 0.0, 12.0), $$0, $$1);
+      Map<dzz, Map<ja, feq>> $$3 = fen.e($$2);
+      return this.a($$1x -> $$3.get($$1x.c(c)).get($$1x.c(e)));
+   }
+
+   private feq o(dzo $$0) {
+      return this.d.apply($$0);
    }
 
    @Override
-   protected fdo b_(dym $$0, dgv $$1, jj $$2) {
-      return fdl.a();
+   protected feq b(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return this.o($$0);
    }
 
    @Override
-   protected boolean f(dym $$0) {
-      return $$0.c(c) == 7 && !$$0.c(d);
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return this.o($$0);
    }
 
    @Override
-   protected void b(dym $$0, arn $$1, jj $$2, azs $$3) {
-      if (this.o($$0)) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   protected boolean o(dym $$0) {
-      return !$$0.c(d) && $$0.c(c) == 7;
+   protected boolean a(dzo $$0, dis $$1, iu $$2) {
+      return true;
    }
 
    @Override
-   protected void a(dym $$0, arn $$1, jj $$2, azs $$3) {
-      $$1.a($$2, a($$0, $$1, $$2), 3);
-   }
-
-   @Override
-   protected int i_(dym $$0) {
-      return 1;
-   }
-
-   @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      if ($$0.c(e)) {
-         $$2.a($$3, euu.c, euu.c.a($$1));
+   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awv.aD);
       }
 
-      int $$8 = r($$6) + 1;
-      if ($$8 != 1 || $$0.c(c) != $$8) {
-         $$2.a($$3, this, 1);
-      }
-
-      return $$0;
-   }
-
-   private static dym a(dym $$0, dhq $$1, jj $$2) {
-      int $$3 = 7;
-      jj.a $$4 = new jj.a();
-
-      for (jo $$5 : jo.values()) {
-         $$4.a($$2, $$5);
-         $$3 = Math.min($$3, r($$1.a_($$4)) + 1);
-         if ($$3 == 1) {
-            break;
-         }
-      }
-
-      return $$0.b(c, Integer.valueOf($$3));
-   }
-
-   private static int r(dym $$0) {
-      return q($$0).orElse(7);
-   }
-
-   public static OptionalInt q(dym $$0) {
-      if ($$0.a(awz.u)) {
-         return OptionalInt.of(0);
-      } else {
-         return $$0.b(c) ? OptionalInt.of($$0.c(c)) : OptionalInt.empty();
-      }
+      return bty.a;
    }
 
    @Override
-   protected eut b_(dym $$0) {
-      return $$0.c(e) ? euu.c.a(false) : super.b_($$0);
+   protected bua b(dzo $$0, dip $$1, iu $$2) {
+      return new bug(($$2x, $$3, $$4) -> new cvk($$2x, $$3, cux.a($$1, $$2)), b);
    }
 
    @Override
-   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      jj $$4 = $$2.e();
-      dym $$5 = $$1.a_($$4);
-      a($$1, $$2, $$3, $$5, $$4);
-      this.b($$1, $$2, $$3, $$5, $$4);
-   }
-
-   private static void a(dhp $$0, jj $$1, azs $$2, dym $$3, jj $$4) {
-      if ($$0.r($$1.d())) {
-         if ($$2.a(15) == 1) {
-            if (!$$3.t() || !$$3.c($$0, $$4, jo.b)) {
-               azo.a($$0, $$1, $$2, lv.l);
-            }
-         }
-      }
-   }
-
-   private void b(dhp $$0, jj $$1, azs $$2, dym $$3, jj $$4) {
-      if ($$2.a(this.g) == 0) {
-         if (!a($$3.g($$0, $$4), jo.b)) {
-            azo.a($$0, $$1, $$2, this.f);
-         }
-      }
+   protected dzo a(dzo $$0, dsm $$1) {
+      return $$0.b(e, $$1.a($$0.c(e)));
    }
 
    @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(c, d, e);
+   protected dzo a(dzo $$0, dqv $$1) {
+      return $$0.a($$1.a($$0.c(e)));
    }
 
    @Override
-   public dym a(dbn $$0) {
-      eut $$1 = $$0.q().b_($$0.a());
-      dym $$2 = this.m().b(d, Boolean.valueOf(true)).b(e, Boolean.valueOf($$1.a() == euu.c));
-      return a($$2, $$0.q(), $$0.a());
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(e, c);
+   }
+
+   @Override
+   protected boolean a(dzo $$0, ewk $$1) {
+      return false;
    }
 }

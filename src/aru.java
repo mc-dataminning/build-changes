@@ -1,45 +1,75 @@
-public record aru(long j, boolean k, aru.a l) {
-   public static final int a = 0;
-   public static final aru b = a("start", 0L, false, aru.a.c);
-   public static final aru c = a("dragon", 0L, false, aru.a.c);
-   public static final aru d = a("player_loading", 0L, false, aru.a.a);
-   public static final aru e = a("player_simulation", 0L, false, aru.a.b);
-   public static final aru f = a("forced", 0L, true, aru.a.c);
-   public static final aru g = a("portal", 300L, true, aru.a.c);
-   public static final aru h = a("ender_pearl", 40L, false, aru.a.c);
-   public static final aru i = a("unknown", 1L, false, aru.a.a);
+import javax.annotation.Nullable;
 
-   private static aru a(String $$0, long $$1, boolean $$2, aru.a $$3) {
-      return kf.a(md.aC, $$0, new aru($$1, $$2, $$3));
+public class aru {
+   private final arv a;
+   private final int b;
+   private long c;
+
+   @Nullable
+   public static aru a(tx $$0) {
+      arv $$1 = mf.aA.a(ale.c($$0.l("type")));
+      if ($$1 == null) {
+         return null;
+      } else {
+         int $$2 = $$0.h("level");
+         if ($$1.c()) {
+            long $$3 = $$0.i("ticks_left");
+            return new aru($$1, $$2, $$3);
+         } else {
+            return new aru($$1, $$2, 0L);
+         }
+      }
    }
 
-   public boolean a() {
-      return this.l == aru.a.a || this.l == aru.a.c;
+   public void b(tx $$0) {
+      ale $$1 = mf.aA.b(this.a);
+      if ($$1 == null) {
+         throw new IllegalStateException("Unrecognised ticket type: " + this.a);
+      } else {
+         $$0.a("type", $$1.toString());
+         $$0.a("level", this.b);
+         if (this.a.c()) {
+            $$0.a("ticks_left", this.c);
+         }
+      }
    }
 
-   public boolean b() {
-      return this.l == aru.a.b || this.l == aru.a.c;
+   public aru(arv $$0, int $$1) {
+      this($$0, $$1, $$0.d());
    }
 
-   public boolean c() {
-      return this.j != 0L;
+   private aru(arv $$0, int $$1, long $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public long d() {
-      return this.j;
+   @Override
+   public String toString() {
+      return this.a.c()
+         ? "Ticket[" + af.a(mf.aA, this.a) + " " + this.b + "] with " + this.c + " ticks left ( out of" + this.a.d() + ")"
+         : "Ticket[" + af.a(mf.aA, this.a) + " " + this.b + "] with no timeout";
+   }
+
+   public arv a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public void c() {
+      this.c = this.a.d();
+   }
+
+   public void d() {
+      if (this.a.c()) {
+         this.c--;
+      }
    }
 
    public boolean e() {
-      return this.k;
-   }
-
-   public aru.a f() {
-      return this.l;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+      return this.a.c() && this.c <= 0L;
    }
 }

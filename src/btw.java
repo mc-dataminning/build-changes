@@ -1,81 +1,59 @@
-import javax.annotation.Nullable;
+import javax.annotation.concurrent.Immutable;
 
-public interface btw extends btj {
-   String b = "LootTable";
-   String c = "LootTableSeed";
+@Immutable
+public class btw {
+   private static final float a = -72000.0F;
+   private static final float b = 1440000.0F;
+   private static final float c = 3600000.0F;
+   private final btv d;
+   private final float e;
 
-   @Nullable
-   alc<exq> as_();
-
-   void a(@Nullable alc<exq> var1);
-
-   default void a(alc<exq> $$0, long $$1) {
-      this.a($$0);
-      this.a($$1);
+   public btw(btv $$0, long $$1, long $$2, float $$3) {
+      this.d = $$0;
+      this.e = this.a($$0, $$1, $$2, $$3);
    }
 
-   long av_();
-
-   void a(long var1);
-
-   jj aw_();
-
-   @Nullable
-   dhp i();
-
-   static void a(dgv $$0, azs $$1, jj $$2, alc<exq> $$3) {
-      if ($$0.c_($$2) instanceof btw $$5) {
-         $$5.a($$3, $$1.g());
-      }
+   public btv a() {
+      return this.d;
    }
 
-   default boolean b_(tw $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.a(alc.a(me.bn, ald.a($$0.l("LootTable"))));
-         if ($$0.b("LootTableSeed", 4)) {
-            this.a($$0.i("LootTableSeed"));
-         } else {
-            this.a(0L);
-         }
+   public float b() {
+      return this.e;
+   }
 
-         return true;
+   public boolean c() {
+      return this.e >= (float)btv.d.ordinal();
+   }
+
+   public boolean a(float $$0) {
+      return this.e > $$0;
+   }
+
+   public float d() {
+      if (this.e < 2.0F) {
+         return 0.0F;
       } else {
-         return false;
+         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
       }
    }
 
-   default boolean c_(tw $$0) {
-      alc<exq> $$1 = this.as_();
-      if ($$1 == null) {
-         return false;
+   private float a(btv $$0, long $$1, long $$2, float $$3) {
+      if ($$0 == btv.a) {
+         return 0.0F;
       } else {
-         $$0.a("LootTable", $$1.a().toString());
-         long $$2 = this.av_();
-         if ($$2 != 0L) {
-            $$0.a("LootTableSeed", $$2);
+         boolean $$4 = $$0 == btv.d;
+         float $$5 = 0.75F;
+         float $$6 = azk.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+         $$5 += $$6;
+         float $$7 = 0.0F;
+         $$7 += azk.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
+         $$7 += azk.a($$3 * 0.25F, 0.0F, $$6);
+         if ($$0 == btv.b) {
+            $$7 *= 0.5F;
          }
 
-         return true;
-      }
-   }
-
-   default void d_(@Nullable cqi $$0) {
-      dhp $$1 = this.i();
-      jj $$2 = this.aw_();
-      alc<exq> $$3 = this.as_();
-      if ($$3 != null && $$1 != null && $$1.p() != null) {
-         exq $$4 = $$1.p().bc().b($$3);
-         if ($$0 instanceof aro) {
-            ap.Q.a((aro)$$0, $$3);
-         }
-
-         this.a(null);
-         exo.a $$5 = new exo.a((arn)$$1).a(faf.f, fcu.b($$2));
-         if ($$0 != null) {
-            $$5.a($$0.eg()).a(faf.a, $$0);
-         }
-
-         $$4.a(this, $$5.a(fae.c), this.av_());
+         $$5 += $$7;
+         return (float)$$0.a() * $$5;
       }
    }
 }

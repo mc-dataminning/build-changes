@@ -1,18 +1,29 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class byn {
-   public static <E extends bwr, T> byj<E> a(Predicate<E> $$0, cft<? extends T> $$1, cft<T> $$2, btb $$3) {
-      return cbv.a(
-         (Function<cbv.b<E>, ? extends App<cbv.c<E>, cby<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
-                  if (!$$0.test((E)$$6)) {
-                     return false;
-                  } else {
-                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.A));
-                     return true;
-                  }
-               }))
+   public static cab<bvq> a(btj $$0, float $$1) {
+      return a($$0, $$1x -> $$1);
+   }
+
+   public static cab<bvq> a(btj $$0, Function<bwz, Float> $$1) {
+      return ccd.a(
+         (Function<ccd.b<bvq>, ? extends App<ccd.c<bvq>, ccg<bvq>>>)($$2 -> $$2.group($$2.b(cgb.L), $$2.a(cgb.o), $$2.c(cgb.n))
+               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     if (!$$7.n_()) {
+                        return false;
+                     } else {
+                        bvq $$9 = $$2.b($$3);
+                        if ($$7.a($$9, (double)($$0.b() + 1)) && !$$7.a($$9, (double)$$0.a())) {
+                           cge $$10 = new cge(new bzb($$9, false), $$1.apply($$7), $$0.a() - 1);
+                           $$4.a(new bzb($$9, true));
+                           $$5.a($$10);
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
       );
    }
 }

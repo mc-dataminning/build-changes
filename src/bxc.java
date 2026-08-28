@@ -1,65 +1,57 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class bxc {
-   private final dqr a;
-   private jj b;
-   private int c;
-   private boolean d;
+public enum bxc implements bai {
+   a("monster", 70, false, false, 128),
+   b("creature", 10, true, true, 128),
+   c("ambient", 15, true, false, 128),
+   d("axolotls", 5, true, false, 128),
+   e("underground_water_creature", 5, true, false, 128),
+   f("water_creature", 5, true, false, 128),
+   g("water_ambient", 20, true, false, 64),
+   h("misc", -1, true, true, 128);
 
-   public bxc(dqr $$0, jj $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = true;
+   public static final Codec<bxc> i = bai.a(bxc::values);
+   private final int j;
+   private final boolean k;
+   private final boolean l;
+   private final String m;
+   private final int n = 32;
+   private final int o;
+
+   private bxc(final String $$0, final int $$1, final boolean $$2, final boolean $$3, final int $$4) {
+      this.m = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.o = $$4;
    }
 
-   public boolean a(arn $$0, bvs $$1, boolean $$2) {
-      if (!this.d) {
-         this.f();
-         return false;
-      } else {
-         this.d = false;
-         return $$2 && this.c++ >= this.a.a($$0, $$1);
-      }
+   public String a() {
+      return this.m;
    }
 
-   @Nullable
-   public evt a(arn $$0, bvs $$1) {
-      return this.a.a($$0, $$1, this.b);
+   @Override
+   public String c() {
+      return this.m;
    }
 
-   public dqr.a a() {
-      return this.a.b();
+   public int b() {
+      return this.j;
    }
 
-   private void f() {
-      this.c = Math.max(this.c - 4, 0);
-   }
-
-   public boolean b() {
-      return this.c <= 0;
-   }
-
-   public jj c() {
-      return this.b;
-   }
-
-   public void a(jj $$0) {
-      this.b = $$0;
-   }
-
-   public int d() {
-      return this.c;
+   public boolean d() {
+      return this.k;
    }
 
    public boolean e() {
-      return this.d;
+      return this.l;
    }
 
-   public void a(boolean $$0) {
-      this.d = $$0;
+   public int f() {
+      return this.o;
    }
 
-   public boolean a(dqr $$0) {
-      return this.a == $$0;
+   public int g() {
+      return 32;
    }
 }

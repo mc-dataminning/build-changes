@@ -1,145 +1,113 @@
-import java.util.Arrays;
+import com.google.common.annotations.VisibleForTesting;
 
-public class evd {
-   private evf[] a = new evf[128];
-   private int b;
+public final class evd extends evm<eve.a, eve> {
+   private final iu.a g = new iu.a();
 
-   public evf a(evf $$0) {
-      if ($$0.d >= 0) {
-         throw new IllegalStateException("OW KNOWS!");
-      } else {
-         if (this.b == this.a.length) {
-            evf[] $$1 = new evf[this.b << 1];
-            System.arraycopy(this.a, 0, $$1, 0, this.b);
-            this.a = $$1;
-         }
-
-         this.a[this.b] = $$0;
-         $$0.d = this.b;
-         this.a(this.b++);
-         return $$0;
-      }
+   public evd(eby $$0) {
+      this($$0, new eve($$0));
    }
 
-   public void a() {
-      this.b = 0;
+   @VisibleForTesting
+   public evd(eby $$0, eve $$1) {
+      super($$0, $$1);
    }
 
-   public evf b() {
-      return this.a[0];
-   }
-
-   public evf c() {
-      evf $$0 = this.a[0];
-      this.a[0] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > 0) {
-         this.b(0);
-      }
-
-      $$0.d = -1;
-      return $$0;
-   }
-
-   public void b(evf $$0) {
-      this.a[$$0.d] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > $$0.d) {
-         if (this.a[$$0.d].g < $$0.g) {
-            this.a($$0.d);
+   @Override
+   protected void a(long $$0) {
+      long $$1 = jx.e($$0);
+      if (this.f.b($$1)) {
+         dzo $$2 = this.c(this.g.f($$0));
+         int $$3 = this.a($$0, $$2);
+         int $$4 = this.f.e($$0);
+         if ($$3 < $$4) {
+            this.f.a($$0, 0);
+            this.b($$0, evm.a.a($$4));
          } else {
-            this.b($$0.d);
+            this.b($$0, c);
+         }
+
+         if ($$3 > 0) {
+            this.c($$0, evm.a.a($$3, a($$2)));
          }
       }
-
-      $$0.d = -1;
    }
 
-   public void a(evf $$0, float $$1) {
-      float $$2 = $$0.g;
-      $$0.g = $$1;
-      if ($$1 < $$2) {
-         this.a($$0.d);
-      } else {
-         this.b($$0.d);
-      }
-   }
+   @Override
+   protected void a(long $$0, long $$1, int $$2) {
+      dzo $$3 = null;
 
-   public int d() {
-      return this.b;
-   }
+      for (ja $$4 : d) {
+         if (evm.a.a($$1, $$4)) {
+            long $$5 = iu.a($$0, $$4);
+            if (this.f.b(jx.e($$5))) {
+               int $$6 = this.f.e($$5);
+               int $$7 = $$2 - 1;
+               if ($$7 > $$6) {
+                  this.g.f($$5);
+                  dzo $$8 = this.c(this.g);
+                  int $$9 = $$2 - this.b($$8);
+                  if ($$9 > $$6) {
+                     if ($$3 == null) {
+                        $$3 = evm.a.b($$1) ? dlw.a.m() : this.c(this.g.f($$0));
+                     }
 
-   private void a(int $$0) {
-      evf $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while ($$0 > 0) {
-         int $$3 = $$0 - 1 >> 1;
-         evf $$4 = this.a[$$3];
-         if (!($$2 < $$4.g)) {
-            break;
-         }
-
-         this.a[$$0] = $$4;
-         $$4.d = $$0;
-         $$0 = $$3;
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   private void b(int $$0) {
-      evf $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while (true) {
-         int $$3 = 1 + ($$0 << 1);
-         int $$4 = $$3 + 1;
-         if ($$3 >= this.b) {
-            break;
-         }
-
-         evf $$5 = this.a[$$3];
-         float $$6 = $$5.g;
-         evf $$7;
-         float $$8;
-         if ($$4 >= this.b) {
-            $$7 = null;
-            $$8 = Float.POSITIVE_INFINITY;
-         } else {
-            $$7 = this.a[$$4];
-            $$8 = $$7.g;
-         }
-
-         if ($$6 < $$8) {
-            if (!($$6 < $$2)) {
-               break;
+                     if (!this.a($$3, $$8, $$4)) {
+                        this.f.a($$5, $$9);
+                        if ($$9 > 1) {
+                           this.c($$5, evm.a.a($$9, a($$8), $$4.g()));
+                        }
+                     }
+                  }
+               }
             }
-
-            this.a[$$0] = $$5;
-            $$5.d = $$0;
-            $$0 = $$3;
-         } else {
-            if (!($$8 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$7;
-            $$7.d = $$0;
-            $$0 = $$4;
          }
       }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
    }
 
-   public boolean e() {
-      return this.b == 0;
+   @Override
+   protected void a(long $$0, long $$1) {
+      int $$2 = evm.a.a($$1);
+
+      for (ja $$3 : d) {
+         if (evm.a.a($$1, $$3)) {
+            long $$4 = iu.a($$0, $$3);
+            if (this.f.b(jx.e($$4))) {
+               int $$5 = this.f.e($$4);
+               if ($$5 != 0) {
+                  if ($$5 <= $$2 - 1) {
+                     dzo $$6 = this.c(this.g.f($$4));
+                     int $$7 = this.a($$4, $$6);
+                     this.f.a($$4, 0);
+                     if ($$7 < $$5) {
+                        this.b($$4, evm.a.a($$5, $$3.g()));
+                     }
+
+                     if ($$7 > 0) {
+                        this.c($$4, evm.a.a($$7, a($$6)));
+                     }
+                  } else {
+                     this.c($$4, evm.a.b($$5, false, $$3.g()));
+                  }
+               }
+            }
+         }
+      }
    }
 
-   public evf[] f() {
-      return Arrays.copyOf(this.a, this.b);
+   private int a(long $$0, dzo $$1) {
+      int $$2 = $$1.k();
+      return $$2 > 0 && this.f.j(jx.e($$0)) ? $$2 : 0;
+   }
+
+   @Override
+   public void b(dhw $$0) {
+      this.a($$0, true);
+      ebx $$1 = this.e.c($$0.h, $$0.i);
+      if ($$1 != null) {
+         $$1.a(($$0x, $$1x) -> {
+            int $$2 = $$1x.k();
+            this.c($$0x.a(), evm.a.a($$2, a($$1x)));
+         });
+      }
    }
 }

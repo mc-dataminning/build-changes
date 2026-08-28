@@ -1,38 +1,35 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public interface bxl {
-   bxk a = ($$0, $$1, $$2) -> true;
-   bxk b = ($$0, $$1, $$2) -> {
-      if ($$2 != null && $$0.A_().a($$1)) {
-         jj $$3 = $$1.d();
-         return $$0.b_($$1).a(axf.a) && !$$0.a_($$3).d($$0, $$3);
-      } else {
-         return false;
-      }
-   };
-   bxk c = ($$0, $$1, $$2) -> $$2 != null && $$0.A_().a($$1) ? $$0.b_($$1).a(axf.b) : false;
-   bxk d = new bxk() {
-      @Override
-      public boolean isSpawnPositionOk(dhs $$0, jj $$1, @Nullable bwb<?> $$2) {
-         if ($$2 != null && $$0.A_().a($$1)) {
-            jj $$3 = $$1.d();
-            jj $$4 = $$1.e();
-            dym $$5 = $$0.a_($$4);
-            return !$$5.a($$0, $$4, $$2) ? false : this.a($$0, $$1, $$2) && this.a($$0, $$3, $$2);
-         } else {
-            return false;
-         }
-      }
+public enum bxl {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4),
+   f(5),
+   g(6),
+   h(7),
+   i(8),
+   j(9),
+   k(10),
+   l(11),
+   m(12),
+   n(13),
+   o(14),
+   p(15),
+   q(16),
+   r(17);
 
-      private boolean a(dhs $$0, jj $$1, bwb<?> $$2) {
-         dym $$3 = $$0.a_($$1);
-         return dia.a($$0, $$1, $$3, $$3.y(), $$2);
-      }
+   public static final IntFunction<bxl> s = aya.a(bxl::a, values(), aya.a.a);
+   public static final yu<ByteBuf, bxl> t = ys.a(s, bxl::a);
+   private final int u;
 
-      @Override
-      public jj a(dhs $$0, jj $$1) {
-         jj $$2 = $$1.e();
-         return $$0.a_($$2).a(evi.a) ? $$2 : $$1;
-      }
-   };
+   private bxl(final int $$0) {
+      this.u = $$0;
+   }
+
+   public int a() {
+      return this.u;
+   }
 }

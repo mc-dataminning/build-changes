@@ -1,60 +1,61 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dmi extends dku {
+public class dmi extends dss {
    public static final MapCodec<dmi> a = b(dmi::new);
-   public static final dzd b = dzc.A;
-   public static final dzd c = dzc.u;
+   public static final eam<ja> b = eae.T;
 
    @Override
-   protected MapCodec<? extends dmi> a() {
+   public MapCodec<dmi> a() {
       return a;
    }
 
-   public dmi(dyl.d $$0) {
+   public dmi(dzn.d $$0) {
       super($$0);
-      this.l(this.m().b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)));
+      this.l(this.m().b(b, ja.c));
+   }
+
+   @Nullable
+   @Override
+   public dwn a(iu $$0, dzo $$1) {
+      return new dwt($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dwn> dwo<T> a(dip $$0, dzo $$1, dwp<T> $$2) {
+      return !$$0.C ? a($$2, dwp.K, ($$0x, $$1x, $$2x, $$3) -> eex.c.a($$0x, $$3.x(), $$3.gq())) : null;
+   }
+
+   @Nullable
+   @Override
+   public dzo a(dcl $$0) {
+      return super.a($$0).b(b, $$0.g());
    }
 
    @Override
-   protected void a(dym $$0, dhp $$1, jj $$2, dym $$3, boolean $$4) {
-      if ($$3.b() != $$0.b() && $$1 instanceof arn $$5) {
-         this.a($$0, $$5, $$2);
-      }
+   public int a(dzo $$0, dhv $$1, iu $$2, ja $$3) {
+      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
    }
 
    @Override
-   protected void a(dym $$0, dhp $$1, jj $$2, dku $$3, @Nullable ewb $$4, boolean $$5) {
-      if ($$1 instanceof arn $$6) {
-         this.a($$0, $$6, $$2);
-      }
-   }
-
-   public void a(dym $$0, arn $$1, jj $$2) {
-      boolean $$3 = $$1.C($$2);
-      if ($$3 != $$0.c(b)) {
-         dym $$4 = $$0;
-         if (!$$0.c(b)) {
-            $$4 = $$0.a(c);
-            $$1.a(null, $$2, $$4.c(c) ? awk.fI : awk.fJ, awl.e);
-         }
-
-         $$1.a($$2, $$4.b(b, Boolean.valueOf($$3)), 3);
-      }
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      super.a($$0);
+      $$0.a(b);
    }
 
    @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(c, b);
+   public dzo a(dzo $$0, dsm $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected boolean c_(dym $$0) {
-      return true;
+   public dzo a(dzo $$0, dqv $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected int a(dym $$0, dhp $$1, jj $$2) {
-      return $$1.a_($$2).c(c) ? 15 : 0;
+   public int c() {
+      return 10;
    }
 }

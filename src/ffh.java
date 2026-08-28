@@ -1,15 +1,45 @@
-public enum ffh {
-   a(34962),
-   b(34963),
-   c(35051),
-   d(36662),
-   e(36663),
-   f(35052),
-   g(35345);
+public class ffh {
+   private static final ffr<Object> a = new ffr<Object>() {
+      @Override
+      public void a(ffo<Object> $$0) {
+      }
 
-   final int h;
+      @Override
+      public boolean a(iu $$0, Object $$1) {
+         return false;
+      }
 
-   private ffh(final int $$0) {
-      this.h = $$0;
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+   private static final ffk<Object> b = new ffk<Object>() {
+      @Override
+      public void a(ffo<Object> $$0) {
+      }
+
+      @Override
+      public boolean a(iu $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public boolean b(iu $$0, Object $$1) {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+   };
+
+   public static <T> ffr<T> a() {
+      return (ffr<T>)a;
+   }
+
+   public static <T> ffk<T> b() {
+      return (ffk<T>)b;
    }
 }

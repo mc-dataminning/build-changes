@@ -1,51 +1,107 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class apr {
-   public static void a(CommandDispatcher<ex> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("commands.trigger.failed.unprimed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ww.c("commands.trigger.failed.invalid"));
+
+   public static void a(CommandDispatcher<ei> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
-               .then(ey.a("clear").executes($$0x -> a((ex)$$0x.getSource(), ImmutableList.of(((ex)$$0x.getSource()).h())))))
+         (LiteralArgumentBuilder)ej.a("trigger")
             .then(
-               ey.a("set")
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("objective", fc.a())
+                        .suggests(($$0x, $$1) -> a((ei)$$0x.getSource(), $$1))
+                        .executes($$0x -> a((ei)$$0x.getSource(), ((ei)$$0x.getSource()).h(), fc.a($$0x, "objective"))))
+                     .then(
+                        ej.a("add")
+                           .then(
+                              ej.a("value", IntegerArgumentType.integer())
+                                 .executes(
+                                    $$0x -> a(
+                                          (ei)$$0x.getSource(),
+                                          ((ei)$$0x.getSource()).h(),
+                                          fc.a($$0x, "objective"),
+                                          IntegerArgumentType.getInteger($$0x, "value")
+                                       )
+                                 )
+                           )
+                     ))
                   .then(
-                     ey.a("warning_level", IntegerArgumentType.integer(0, 4))
-                        .executes(
-                           $$0x -> a((ex)$$0x.getSource(), ImmutableList.of(((ex)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
+                     ej.a("set")
+                        .then(
+                           ej.a("value", IntegerArgumentType.integer())
+                              .executes(
+                                 $$0x -> b(
+                                       (ei)$$0x.getSource(), ((ei)$$0x.getSource()).h(), fc.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
+                                    )
+                              )
                         )
                   )
             )
       );
    }
 
-   private static int a(ex $$0, Collection<? extends cqi> $$1, int $$2) {
-      for (cqi $$3 : $$1) {
-         $$3.ac().ifPresent($$1x -> $$1x.a($$2));
+   public static CompletableFuture<Suggestions> a(ei $$0, SuggestionsBuilder $$1) {
+      ffa $$2 = $$0.f();
+      List<String> $$3 = Lists.newArrayList();
+      if ($$2 != null) {
+         ffb $$4 = $$0.l().aJ();
+
+         for (fet $$5 : $$4.c()) {
+            if ($$5.c() == ffe.c) {
+               fex $$6 = $$4.d($$2, $$5);
+               if ($$6 != null && !$$6.b()) {
+                  $$3.add($$5.b());
+               }
+            }
+         }
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> wv.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().m_()), true);
-      } else {
-         $$0.a(() -> wv.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+      return en.b($$3, $$1);
    }
 
-   private static int a(ex $$0, Collection<? extends cqi> $$1) {
-      for (cqi $$2 : $$1) {
-         $$2.ac().ifPresent(cpn::b);
-      }
+   private static int a(ei $$0, arp $$1, fet $$2, int $$3) throws CommandSyntaxException {
+      fez $$4 = a($$0.l().aJ(), $$1, $$2);
+      int $$5 = $$4.b($$3);
+      $$0.a(() -> ww.a("commands.trigger.add.success", $$2.g(), $$3), true);
+      return $$5;
+   }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> wv.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().m_()), true);
+   private static int b(ei $$0, arp $$1, fet $$2, int $$3) throws CommandSyntaxException {
+      fez $$4 = a($$0.l().aJ(), $$1, $$2);
+      $$4.a($$3);
+      $$0.a(() -> ww.a("commands.trigger.set.success", $$2.g(), $$3), true);
+      return $$3;
+   }
+
+   private static int a(ei $$0, arp $$1, fet $$2) throws CommandSyntaxException {
+      fez $$3 = a($$0.l().aJ(), $$1, $$2);
+      int $$4 = $$3.b(1);
+      $$0.a(() -> ww.a("commands.trigger.simple.success", $$2.g()), true);
+      return $$4;
+   }
+
+   private static fez a(ffb $$0, ffa $$1, fet $$2) throws CommandSyntaxException {
+      if ($$2.c() != ffe.c) {
+         throw b.create();
       } else {
-         $$0.a(() -> wv.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
+         fex $$3 = $$0.d($$1, $$2);
+         if ($$3 != null && !$$3.b()) {
+            fez $$4 = $$0.c($$1, $$2);
+            $$4.f();
+            return $$4;
+         } else {
+            throw a.create();
+         }
       }
-
-      return $$1.size();
    }
 }

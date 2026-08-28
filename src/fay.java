@@ -1,28 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class fay implements fau {
-   private static final fay b = new fay();
-   public static final MapCodec<fay> a = MapCodec.unit(b);
+public class fay extends faa {
+   public static final MapCodec<fay> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(dam.a.fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, fay::new));
+   private final je<dam> b;
 
-   private fay() {
+   private fay(List<fbw> $$0, je<dam> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public fav b() {
-      return faw.g;
+   public fac<fay> b() {
+      return fad.F;
    }
 
    @Override
-   public Set<bat<?>> a() {
-      return Set.of(faf.b);
+   public cys a(cys $$0, eyn $$1) {
+      $$0.a(kj.R, dao.a, this.b, dao::b);
+      return $$0;
    }
 
-   public boolean a(exl $$0) {
-      return $$0.a(faf.b);
-   }
-
-   public static fau.a c() {
-      return () -> b;
+   public static faa.a<?> a(je<dam> $$0) {
+      return a($$1 -> new fay($$1, $$0));
    }
 }

@@ -1,25 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public interface eoo<P extends eon> {
-   eoo<enz> a = a("block_predicate_filter", enz.a);
-   eoo<eoq> b = a("rarity_filter", eoq.a);
-   eoo<eos> c = a("surface_relative_threshold_filter", eos.a);
-   eoo<eot> d = a("surface_water_depth_filter", eot.a);
-   eoo<eny> e = a("biome", eny.a);
-   eoo<eoc> f = a("count", eoc.a);
-   eoo<eoi> g = a("noise_based_count", eoi.a);
-   eoo<eoj> h = a("noise_threshold_count", eoj.a);
-   eoo<eob> i = a("count_on_every_layer", eob.a);
-   eoo<eod> j = a("environment_scan", eod.a);
-   eoo<eog> k = a("heightmap", eog.a);
-   eoo<eof> l = a("height_range", eof.a);
-   eoo<eoh> m = a("in_square", eoh.a);
-   eoo<eop> n = a("random_offset", eop.a);
-   eoo<eoe> o = a("fixed_placement", eoe.a);
+public class eoo extends eop {
+   public static final eoo a = new eoo(egh.a(0));
+   public static final MapCodec<eoo> b = egh.a.fieldOf("value").xmap(eoo::new, eoo::b);
+   private final egh d;
 
-   MapCodec<P> codec();
+   public static eoo a(egh $$0) {
+      return new eoo($$0);
+   }
 
-   private static <P extends eon> eoo<P> a(String $$0, MapCodec<P> $$1) {
-      return kf.a(md.S, $$0, () -> $$1);
+   private eoo(egh $$0) {
+      this.d = $$0;
+   }
+
+   public egh b() {
+      return this.d;
+   }
+
+   @Override
+   public int a(azt $$0, egk $$1) {
+      return this.d.a($$1);
+   }
+
+   @Override
+   public eoq<?> a() {
+      return eoq.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

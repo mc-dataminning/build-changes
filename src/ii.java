@@ -1,32 +1,52 @@
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.ArgumentType;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class ii<T extends ez<T>> implements ic<T> {
-   private final String a;
-   private final ht b;
-   private final CommandContext<T> c;
+public class ii<A extends ArgumentType<?>> implements ie<A, ii<A>.a> {
+   private final ii<A>.a a;
 
-   public ii(String $$0, ht $$1, CommandContext<T> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private ii(Function<ee, A> $$0) {
+      this.a = new ii.a($$0);
    }
 
-   public void a(T $$0, hy<T> $$1, ia $$2) {
-      $$1.c().a(() -> "execute " + this.a);
+   public static <T extends ArgumentType<?>> ii<T> a(Supplier<T> $$0) {
+      return new ii<>($$1 -> $$0.get());
+   }
 
-      try {
-         $$1.e();
-         int $$3 = ContextChain.runExecutable(this.c, $$0, ez.b_(), this.b.a());
-         ib $$4 = $$1.b();
-         if ($$4 != null) {
-            $$4.a($$2.c(), this.a, $$3);
-         }
-      } catch (CommandSyntaxException var9) {
-         $$0.a(var9, this.b.a(), $$1.b());
-      } finally {
-         $$1.c().c();
+   public static <T extends ArgumentType<?>> ii<T> a(Function<ee, T> $$0) {
+      return new ii<>($$0);
+   }
+
+   public void a(ii<A>.a $$0, vs $$1) {
+   }
+
+   public void a(ii<A>.a $$0, JsonObject $$1) {
+   }
+
+   public ii<A>.a a(vs $$0) {
+      return this.a;
+   }
+
+   public ii<A>.a b(A $$0) {
+      return this.a;
+   }
+
+   public final class a implements ie.a<A> {
+      private final Function<ee, A> b;
+
+      public a(final Function<ee, A> $$1) {
+         this.b = $$1;
+      }
+
+      @Override
+      public A b(ee $$0) {
+         return this.b.apply($$0);
+      }
+
+      @Override
+      public ie<A, ?> a() {
+         return ii.this;
       }
    }
 }

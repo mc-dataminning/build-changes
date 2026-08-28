@@ -1,87 +1,115 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public record cpx(wv q, Predicate<js<chw>> r, Predicate<js<chw>> s, ImmutableSet<cxu> t, ImmutableSet<dku> u, @Nullable awj v) {
-   public static final Predicate<js<chw>> a = $$0 -> $$0.a(axk.a);
-   public static final alc<cpx> b = a("none");
-   public static final alc<cpx> c = a("armorer");
-   public static final alc<cpx> d = a("butcher");
-   public static final alc<cpx> e = a("cartographer");
-   public static final alc<cpx> f = a("cleric");
-   public static final alc<cpx> g = a("farmer");
-   public static final alc<cpx> h = a("fisherman");
-   public static final alc<cpx> i = a("fletcher");
-   public static final alc<cpx> j = a("leatherworker");
-   public static final alc<cpx> k = a("librarian");
-   public static final alc<cpx> l = a("mason");
-   public static final alc<cpx> m = a("nitwit");
-   public static final alc<cpx> n = a("shepherd");
-   public static final alc<cpx> o = a("toolsmith");
-   public static final alc<cpx> p = a("weaponsmith");
+public class cpx {
+   public static final Codec<cpx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ays.l.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
+               ays.l.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
+               ays.l.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, cpx::new)
+   );
+   public static final int b = 4;
+   private static final double c = 16.0;
+   private static final int d = 48;
+   private static final int e = 12000;
+   private static final int f = 200;
+   private int g;
+   private int h;
+   private int i;
 
-   private static alc<cpx> a(String $$0) {
-      return alc.a(me.av, ald.b($$0));
+   public cpx(int $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
    }
 
-   private static cpx a(kf<cpx> $$0, alc<cpx> $$1, alc<chw> $$2, @Nullable awj $$3) {
-      return a($$0, $$1, $$1x -> $$1x.a($$2), $$1x -> $$1x.a($$2), $$3);
+   public void a() {
+      if (this.g >= 12000) {
+         this.f();
+         this.g = 0;
+      } else {
+         this.g++;
+      }
+
+      if (this.i > 0) {
+         this.i--;
+      }
    }
 
-   private static cpx a(kf<cpx> $$0, alc<cpx> $$1, Predicate<js<chw>> $$2, Predicate<js<chw>> $$3, @Nullable awj $$4) {
-      return a($$0, $$1, $$2, $$3, ImmutableSet.of(), ImmutableSet.of(), $$4);
+   public void b() {
+      this.g = 0;
+      this.h = 0;
+      this.i = 0;
    }
 
-   private static cpx a(kf<cpx> $$0, alc<cpx> $$1, alc<chw> $$2, ImmutableSet<cxu> $$3, ImmutableSet<dku> $$4, @Nullable awj $$5) {
-      return a($$0, $$1, $$1x -> $$1x.a($$2), $$1x -> $$1x.a($$2), $$3, $$4, $$5);
+   public static OptionalInt a(aro $$0, iu $$1, arp $$2) {
+      if (a($$0, $$1)) {
+         return OptionalInt.empty();
+      } else {
+         List<arp> $$3 = b($$0, $$1);
+         if (!$$3.contains($$2)) {
+            $$3.add($$2);
+         }
+
+         if ($$3.stream().anyMatch($$0x -> $$0x.ac().map(cpx::d).orElse(false))) {
+            return OptionalInt.empty();
+         } else {
+            Optional<cpx> $$4 = $$3.stream().flatMap($$0x -> $$0x.ac().stream()).max(Comparator.comparingInt(cpx::c));
+            if ($$4.isPresent()) {
+               cpx $$5 = $$4.get();
+               $$5.e();
+               $$3.forEach($$1x -> $$1x.ac().ifPresent($$1xx -> $$1xx.a($$5)));
+               return OptionalInt.of($$5.h);
+            } else {
+               return OptionalInt.empty();
+            }
+         }
+      }
    }
 
-   private static cpx a(
-      kf<cpx> $$0, alc<cpx> $$1, Predicate<js<chw>> $$2, Predicate<js<chw>> $$3, ImmutableSet<cxu> $$4, ImmutableSet<dku> $$5, @Nullable awj $$6
-   ) {
-      return kf.a($$0, $$1, new cpx(wv.c("entity." + $$1.a().b() + ".villager." + $$1.a().a()), $$2, $$3, $$4, $$5, $$6));
+   private boolean d() {
+      return this.i > 0;
    }
 
-   public static cpx a(kf<cpx> $$0) {
-      a($$0, b, chw.a, a, null);
-      a($$0, c, chx.a, awk.BX);
-      a($$0, d, chx.b, awk.BY);
-      a($$0, e, chx.c, awk.BZ);
-      a($$0, f, chx.d, awk.Ca);
-      a($$0, g, chx.e, ImmutableSet.of(cyc.qf, cyc.qe, cyc.wp, cyc.sz), ImmutableSet.of(dkw.cK), awk.Cb);
-      a($$0, h, chx.f, awk.Cc);
-      a($$0, i, chx.g, awk.Cd);
-      a($$0, j, chx.h, awk.Ce);
-      a($$0, k, chx.i, awk.Cf);
-      a($$0, l, chx.j, awk.Cg);
-      a($$0, m, chw.a, chw.a, null);
-      a($$0, n, chx.k, awk.Ch);
-      a($$0, o, chx.l, awk.Ci);
-      return a($$0, p, chx.m, awk.Cj);
+   private static boolean a(aro $$0, iu $$1) {
+      fdr $$2 = fdr.a(fdw.b($$1), 48.0, 48.0, 48.0);
+      return !$$0.a(cpv.class, $$2).isEmpty();
    }
 
-   public wv a() {
-      return this.q;
+   private static List<arp> b(aro $$0, iu $$1) {
+      fdw $$2 = fdw.b($$1);
+      return $$0.a($$1x -> !$$1x.U_() && $$1x.dt().a((jo)$$2, 16.0) && $$1x.bK());
    }
 
-   public Predicate<js<chw>> b() {
-      return this.r;
+   private void e() {
+      if (!this.d()) {
+         this.g = 0;
+         this.i = 200;
+         this.a(this.c() + 1);
+      }
    }
 
-   public Predicate<js<chw>> c() {
-      return this.s;
+   private void f() {
+      this.a(this.c() - 1);
    }
 
-   public ImmutableSet<cxu> d() {
-      return this.t;
+   public void a(int $$0) {
+      this.h = azk.a($$0, 0, 4);
    }
 
-   public ImmutableSet<dku> e() {
-      return this.u;
+   public int c() {
+      return this.h;
    }
 
-   @Nullable
-   public awj f() {
-      return this.v;
+   private void a(cpx $$0) {
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.g = $$0.g;
    }
 }

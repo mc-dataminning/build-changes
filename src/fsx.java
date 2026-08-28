@@ -1,49 +1,56 @@
-import javax.annotation.Nullable;
+public class fsx extends frm {
+   private float a = 0.5F;
 
-public interface fsx {
-   Object b = new Object();
-   int c = 160;
-   int d = 32;
-
-   fsx.a a();
-
-   void a(fsy var1, long var2);
-
-   @Nullable
-   default awj b() {
-      return null;
+   public fsx(ww $$0, fra $$1) {
+      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
    }
 
-   void a(fpz var1, fpx var2, long var3);
-
-   default Object g() {
-      return b;
+   public fsx(int $$0, int $$1, ww $$2, fra $$3) {
+      this(0, 0, $$0, $$1, $$2, $$3);
    }
 
-   default int c() {
-      return 160;
+   public fsx(int $$0, int $$1, int $$2, int $$3, ww $$4, fra $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.j = false;
    }
 
-   default int d() {
-      return 32;
+   public fsx b(int $$0) {
+      super.a($$0);
+      return this;
    }
 
-   default int h() {
-      return azk.e(this.d(), 32);
+   private fsx b(float $$0) {
+      this.a = $$0;
+      return this;
    }
 
-   public static enum a {
-      a(awk.Bw),
-      b(awk.Bx);
+   public fsx c() {
+      return this.b(0.0F);
+   }
 
-      private final awj c;
+   public fsx e() {
+      return this.b(0.5F);
+   }
 
-      private a(final awj $$0) {
-         this.c = $$0;
-      }
+   public fsx g() {
+      return this.b(1.0F);
+   }
 
-      public void a(hlv $$0) {
-         $$0.a(hkk.a(this.c, 1.0F, 1.0F));
-      }
+   @Override
+   public void b(frc $$0, int $$1, int $$2, float $$3) {
+      ww $$4 = this.B();
+      fra $$5 = this.a();
+      int $$6 = this.A();
+      int $$7 = $$5.a($$4);
+      int $$8 = this.F() + Math.round(this.a * (float)($$6 - $$7));
+      int $$9 = this.G() + (this.y() - 9) / 2;
+      ayw $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
+      $$0.b($$5, $$10, $$8, $$9, this.b());
+   }
+
+   private ayw a(ww $$0, int $$1) {
+      fra $$2 = this.a();
+      xb $$3 = $$2.a($$0, $$1 - $$2.a(wv.u));
+      return ts.a().a(xb.a($$3, wv.u));
    }
 }

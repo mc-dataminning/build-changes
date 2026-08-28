@@ -1,49 +1,84 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dse extends dom {
-   public static final MapCodec<dse> a = b(dse::new);
+public class dse extends dsd {
+   public static final MapCodec<dse> f = b(dse::new);
+   public static final eam<ja> g = dpt.e;
+   public static final eaf h = dsd.b;
 
    @Override
    public MapCodec<dse> a() {
-      return a;
+      return f;
    }
 
-   public dse(dyl.d $$0) {
+   protected dse(dzn.d $$0) {
       super($$0);
+      this.l(this.B.b().b(g, ja.c).b(h, Boolean.valueOf(true)));
    }
 
    @Override
-   public void a(dhp $$0, dym $$1, jj $$2, bvs $$3, double $$4) {
-      if (!$$3.cf()) {
-         $$3.a($$4, 0.0F, $$0.al().l());
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return dvg.o($$0);
+   }
+
+   @Override
+   protected boolean a(dzo $$0, dis $$1, iu $$2) {
+      return dvg.b($$1, $$2, $$0.c(g));
+   }
+
+   @Override
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      return $$4.g() == $$0.c(g) && !$$0.a($$1, $$3) ? dlw.a.m() : $$0;
+   }
+
+   @Nullable
+   @Override
+   public dzo a(dcl $$0) {
+      dzo $$1 = dlw.cx.a($$0);
+      return $$1 == null ? null : this.m().b(g, $$1.c(g));
+   }
+
+   @Override
+   public void a(dzo $$0, dip $$1, iu $$2, azt $$3) {
+      if ($$0.c(h)) {
+         ja $$4 = $$0.c(g).g();
+         double $$5 = 0.27;
+         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
+         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
+         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
+         $$1.a(ls.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   public void a(dgv $$0, bvs $$1) {
-      if ($$1.cf()) {
-         super.a($$0, $$1);
-      } else {
-         this.a($$1);
-      }
-   }
-
-   private void a(bvs $$0) {
-      fcu $$1 = $$0.dy();
-      if ($$1.e < 0.0) {
-         double $$2 = $$0 instanceof bwr ? 1.0 : 0.8;
-         $$0.n($$1.d, -$$1.e * $$2, $$1.f);
-      }
+   protected boolean a(dip $$0, iu $$1, dzo $$2) {
+      ja $$3 = $$2.c(g).g();
+      return $$0.b($$1.a($$3), $$3);
    }
 
    @Override
-   public void a(dhp $$0, jj $$1, dym $$2, bvs $$3) {
-      double $$4 = Math.abs($$3.dy().e);
-      if ($$4 < 0.1 && !$$3.ce()) {
-         double $$5 = 0.4 + $$4 * 0.2;
-         $$3.i($$3.dy().d($$5, 1.0, $$5));
-      }
+   protected int a(dzo $$0, dhv $$1, iu $$2, ja $$3) {
+      return $$0.c(h) && $$0.c(g) != $$3 ? 15 : 0;
+   }
 
-      super.a($$0, $$1, $$2, $$3);
+   @Override
+   protected dzo a(dzo $$0, dsm $$1) {
+      return $$0.b(g, $$1.a($$0.c(g)));
+   }
+
+   @Override
+   protected dzo a(dzo $$0, dqv $$1) {
+      return $$0.a($$1.a($$0.c(g)));
+   }
+
+   @Override
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(g, h);
+   }
+
+   @Nullable
+   @Override
+   protected exd a(dip $$0, dzo $$1) {
+      return ewz.a($$0, $$1.c(g).g(), ja.b);
    }
 }

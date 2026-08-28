@@ -1,23 +1,38 @@
-public class gmv extends gmu {
-   private final fnh c;
+public class gmv extends gnl {
+   private final gng a;
 
-   public gmv(fnh $$0) {
-      this.c = $$0;
+   gmv(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gng $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.0F);
+      this.n = false;
+      this.b($$7);
    }
 
-   private static float a(boolean $$0, boolean $$1) {
-      if ($$0 == $$1) {
-         return 0.0F;
-      } else {
-         return $$0 ? 1.0F : -1.0F;
-      }
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gmp b() {
+      return gmp.c;
    }
 
    @Override
    public void a() {
-      this.a = new cqg(this.c.v.e(), this.c.x.e(), this.c.w.e(), this.c.y.e(), this.c.z.e(), this.c.A.e(), this.c.B.e());
-      float $$0 = a(this.a.a(), this.a.b());
-      float $$1 = a(this.a.c(), this.a.d());
-      this.b = new fct($$1, $$0).a();
+      super.a();
+      this.b(this.a);
+   }
+
+   public static record a(gng a) implements gmo<mb> {
+      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gmv $$8 = new gmv($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.a($$1.A.a(4) + 6);
+         return $$8;
+      }
    }
 }

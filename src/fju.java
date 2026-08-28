@@ -1,27 +1,20 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public interface fju {
+   fjk b();
 
-public class fju extends fjt {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
+   void d();
 
-   public static fju a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-      fju $$3 = new fju();
+   static fju f() {
+      return new fju() {
+         private final fjk a = new fjk();
 
-      try {
-         $$3.a = flp.b("downloadLink", $$2, "");
-         $$3.b = flp.b("resourcePackUrl", $$2, "");
-         $$3.c = flp.b("resourcePackHash", $$2, "");
-      } catch (Exception var5) {
-         d.error("Could not parse WorldDownload: {}", var5.getMessage());
-      }
+         @Override
+         public fjk b() {
+            return this.a;
+         }
 
-      return $$3;
+         @Override
+         public void d() {
+         }
+      };
    }
 }

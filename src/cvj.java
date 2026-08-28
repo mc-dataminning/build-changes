@@ -1,22 +1,45 @@
-public class cvj implements ctz {
-   private final int[] a;
+public class cvj extends cwh {
+   private final cqs a;
+   private int b;
 
-   public cvj(int $$0) {
-      this.a = new int[$$0];
+   public cvj(cqs $$0, btr $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
    @Override
-   public int a(int $$0) {
-      return this.a[$$0];
+   public boolean a(cys $$0) {
+      return false;
    }
 
    @Override
-   public void a(int $$0, int $$1) {
-      this.a[$$0] = $$1;
+   public cys a(int $$0) {
+      if (this.h()) {
+         this.b = this.b + Math.min($$0, this.g().M());
+      }
+
+      return super.a($$0);
    }
 
    @Override
-   public int a() {
-      return this.a.length;
+   public void a(cqs $$0, cys $$1) {
+      this.b_($$1);
+      super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(cys $$0, int $$1) {
+      this.b += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b_(cys $$0) {
+      $$0.a(this.a.dV(), this.a, this.b);
+      if (this.a instanceof arp $$1 && this.c instanceof dwa $$2) {
+         $$2.a($$1);
+      }
+
+      this.b = 0;
    }
 }

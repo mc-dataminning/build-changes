@@ -1,26 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
+import javax.annotation.Nullable;
 
-public record cy(Optional<jw<dgf>> c, Optional<jw<dgh>> d) implements ea<dge> {
-   public static final Codec<cy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(kh.a(me.bg).optionalFieldOf("material").forGetter(cy::b), kh.a(me.bh).optionalFieldOf("pattern").forGetter(cy::c)).apply($$0, cy::new)
-   );
+public record cy(tx c) {
+   public static final Codec<cy> a = uv.j.xmap(cy::new, cy::a);
+   public static final yu<ByteBuf, cy> b = ys.r.a(cy::new, cy::a);
 
-   @Override
-   public kw<dge> a() {
-      return kx.W;
+   public boolean a(ke $$0) {
+      dba $$1 = $$0.a(kj.b, dba.a);
+      return $$1.b(this.c);
    }
 
-   public boolean a(cxy $$0, dge $$1) {
-      return this.c.isPresent() && !this.c.get().a($$1.a()) ? false : !this.d.isPresent() || this.d.get().a($$1.b());
+   public boolean a(bwa $$0) {
+      return this.a(b($$0));
    }
 
-   public Optional<jw<dgf>> b() {
+   public boolean a(@Nullable uu $$0) {
+      return $$0 != null && um.a(this.c, $$0, true);
+   }
+
+   public static tx b(bwa $$0) {
+      tx $$1 = $$0.f(new tx());
+      if ($$0 instanceof cqs $$2) {
+         cys $$3 = $$2.gi().f();
+         if (!$$3.f()) {
+            $$1.a("SelectedItem", $$3.a($$0.dX()));
+         }
+      }
+
+      return $$1;
+   }
+
+   public tx a() {
       return this.c;
-   }
-
-   public Optional<jw<dgh>> c() {
-      return this.d;
    }
 }

@@ -1,220 +1,103 @@
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWMonitorCallback;
+import org.slf4j.Logger;
 
-public class fhr implements AutoCloseable {
-   private final ffi a;
-   private final ffj b;
-   @Nullable
-   private ffj c = null;
-   private int d;
-   @Nullable
-   private fht e;
-   @Nullable
-   private RenderSystem.a f;
-   private fht.b g;
-   private int h;
-   private fht.c i;
+public class fhr {
+   private static final Logger a = LogUtils.getLogger();
+   private final Long2ObjectMap<fho> b = new Long2ObjectOpenHashMap();
+   private final fhp c;
 
-   public fhr(ffi $$0) {
-      this.a = $$0;
+   public fhr(fhp $$0) {
+      this.c = $$0;
+      GLFW.glfwSetMonitorCallback(this::a);
+      PointerBuffer $$1 = GLFW.glfwGetMonitors();
+      if ($$1 != null) {
+         for (int $$2 = 0; $$2 < $$1.limit(); $$2++) {
+            long $$3 = $$1.get($$2);
+            this.b.put($$3, $$0.createMonitor($$3));
+         }
+      }
+   }
+
+   private void a(long $$0, int $$1) {
       RenderSystem.assertOnRenderThread();
-      this.b = new ffj(ffh.a, $$0, 0);
-      this.d = GlStateManager._glGenVertexArrays();
-   }
-
-   public static fhr a(fht.c $$0, fht $$1, Consumer<fhs> $$2) {
-      fhj $$3 = fhq.b().a($$0, $$1);
-      $$2.accept($$3);
-      fhr $$4 = new fhr(ffi.b);
-      $$4.a();
-      $$4.a($$3.b());
-      b();
-      return $$4;
-   }
-
-   public void a(fhn $$0) {
-      fhn var2 = $$0;
-
-      label40: {
-         try {
-            if (this.e()) {
-               break label40;
-            }
-
-            RenderSystem.assertOnRenderThread();
-            fhn.a $$1 = $$0.c();
-            this.e = this.a($$1, $$0.a());
-            this.f = this.b($$1, $$0.b());
-            this.h = $$1.c();
-            this.g = $$1.e();
-            this.i = $$1.d();
-         } catch (Throwable var6) {
-            if ($$0 != null) {
-               try {
-                  var2.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
-               }
-            }
-
-            throw var6;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return;
+      if ($$1 == 262145) {
+         this.b.put($$0, this.c.createMonitor($$0));
+         a.debug("Monitor {} connected. Current monitors: {}", $$0, this.b);
+      } else if ($$1 == 262146) {
+         this.b.remove($$0);
+         a.debug("Monitor {} disconnected. Current monitors: {}", $$0, this.b);
       }
-
-      if ($$0 != null) {
-         $$0.close();
-      }
-   }
-
-   public void a(fhl.a $$0) {
-      fhl.a var2 = $$0;
-
-      label46: {
-         try {
-            if (this.e()) {
-               break label46;
-            }
-
-            RenderSystem.assertOnRenderThread();
-            if (this.c != null) {
-               this.c.close();
-            }
-
-            this.c = new ffj(ffh.b, this.a, $$0.a());
-            this.f = null;
-         } catch (Throwable var6) {
-            if ($$0 != null) {
-               try {
-                  var2.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
-               }
-            }
-
-            throw var6;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return;
-      }
-
-      if ($$0 != null) {
-         $$0.close();
-      }
-   }
-
-   private fht a(fhn.a $$0, @Nullable ByteBuffer $$1) {
-      boolean $$2 = false;
-      if (!$$0.a().equals(this.e)) {
-         if (this.e != null) {
-            this.e.h();
-         }
-
-         this.b.b();
-         $$0.a().g();
-         $$2 = true;
-      }
-
-      if ($$1 != null) {
-         if (!$$2) {
-            this.b.b();
-         }
-
-         this.b.a($$1.remaining());
-         this.b.a($$1, 0);
-      }
-
-      return $$0.a();
    }
 
    @Nullable
-   private RenderSystem.a b(fhn.a $$0, @Nullable ByteBuffer $$1) {
-      if ($$1 != null) {
-         if (this.c != null) {
-            this.c.close();
-         }
+   public fho a(long $$0) {
+      return (fho)this.b.get($$0);
+   }
 
-         this.c = new ffj(ffh.b, this.a, $$1);
-         return null;
+   @Nullable
+   public fho a(fht $$0) {
+      long $$1 = GLFW.glfwGetWindowMonitor($$0.h());
+      if ($$1 != 0L) {
+         return this.a($$1);
       } else {
-         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.d());
-         if ($$2 != this.f || !$$2.a($$0.c())) {
-            $$2.b($$0.c());
+         int $$2 = $$0.q();
+         int $$3 = $$2 + $$0.m();
+         int $$4 = $$0.r();
+         int $$5 = $$4 + $$0.n();
+         int $$6 = -1;
+         fho $$7 = null;
+         long $$8 = GLFW.glfwGetPrimaryMonitor();
+         a.debug("Selecting monitor - primary: {}, current monitors: {}", $$8, this.b);
+         ObjectIterator var12 = this.b.values().iterator();
+
+         while (var12.hasNext()) {
+            fho $$9 = (fho)var12.next();
+            int $$10 = $$9.c();
+            int $$11 = $$10 + $$9.b().a();
+            int $$12 = $$9.d();
+            int $$13 = $$12 + $$9.b().b();
+            int $$14 = a($$2, $$10, $$11);
+            int $$15 = a($$3, $$10, $$11);
+            int $$16 = a($$4, $$12, $$13);
+            int $$17 = a($$5, $$12, $$13);
+            int $$18 = Math.max(0, $$15 - $$14);
+            int $$19 = Math.max(0, $$17 - $$16);
+            int $$20 = $$18 * $$19;
+            if ($$20 > $$6) {
+               $$7 = $$9;
+               $$6 = $$20;
+            } else if ($$20 == $$6 && $$8 == $$9.f()) {
+               a.debug("Primary monitor {} is preferred to monitor {}", $$9, $$7);
+               $$7 = $$9;
+            }
          }
 
-         return $$2;
+         a.debug("Selected monitor: {}", $$7);
+         return $$7;
+      }
+   }
+
+   public static int a(int $$0, int $$1, int $$2) {
+      if ($$0 < $$1) {
+         return $$1;
+      } else {
+         return $$0 > $$2 ? $$2 : $$0;
       }
    }
 
    public void a() {
-      fhk.b();
-      GlStateManager._glBindVertexArray(this.d);
-   }
-
-   public static void b() {
-      fhk.b();
-      GlStateManager._glBindVertexArray(0);
-   }
-
-   public void c() {
-      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
-   }
-
-   private fht.b f() {
-      RenderSystem.a $$0 = this.f;
-      return $$0 != null ? $$0.a() : this.g;
-   }
-
-   public void a(Matrix4f $$0, Matrix4f $$1, @Nullable gni $$2) {
-      if ($$2 != null) {
-         RenderSystem.assertOnRenderThread();
-         $$2.a(this.i, $$0, $$1, fnd.Q().aO());
-         $$2.b();
-         this.c();
-         $$2.a();
+      RenderSystem.assertOnRenderThread();
+      GLFWMonitorCallback $$0 = GLFW.glfwSetMonitorCallback(null);
+      if ($$0 != null) {
+         $$0.free();
       }
-   }
-
-   public void a(goi $$0) {
-      $$0.a();
-      this.a();
-      this.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      b();
-      $$0.b();
-   }
-
-   @Override
-   public void close() {
-      this.b.close();
-      if (this.c != null) {
-         this.c.close();
-         this.c = null;
-      }
-
-      if (this.d >= 0) {
-         RenderSystem.glDeleteVertexArrays(this.d);
-         this.d = -1;
-      }
-   }
-
-   public fht d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.d == -1;
    }
 }

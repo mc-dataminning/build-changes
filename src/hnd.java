@@ -1,22 +1,58 @@
-public class hnd implements frq {
-   private final wv a;
-   private final int b;
-   private final int c;
-   private final int d;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public hnd(wv $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public class hnd implements hne<hlt> {
+   private final List<hne<hlt>> a = Lists.newArrayList();
+   @Nullable
+   private final ww b;
+
+   public hnd(ale $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : ww.c($$1);
    }
 
    @Override
-   public void a(fpz $$0, int $$1, int $$2, float $$3) {
-      $$0.a(fnd.Q().h, this.a, this.b, this.c, this.d);
+   public int e() {
+      int $$0 = 0;
+
+      for (hne<hlt> $$1 : this.a) {
+         $$0 += $$1.e();
+      }
+
+      return $$0;
    }
 
-   public wv a() {
-      return this.a;
+   public hlt a(azt $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
+
+         for (hne<hlt> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
+            }
+         }
+
+         return hnc.b;
+      } else {
+         return hnc.b;
+      }
+   }
+
+   public void a(hne<hlt> $$0) {
+      this.a.add($$0);
+   }
+
+   @Nullable
+   public ww a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(hmz $$0) {
+      for (hne<hlt> $$1 : this.a) {
+         $$1.a($$0);
+      }
    }
 }

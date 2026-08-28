@@ -1,31 +1,98 @@
-import io.netty.buffer.ByteBuf;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record aug(String c, String d, String e) {
-   public static final yt<ByteBuf, aug> a = yt.a(yr.o, aug::b, yr.o, aug::c, yr.o, aug::d, aug::new);
-   public static final String b = "minecraft";
+public class aug implements aun {
+   static final Logger a = LogUtils.getLogger();
+   private static final ato b = new ato(false, aui.b.a, false);
+   private final Path c;
+   private final atp d;
+   private final aum e;
+   private final fdm f;
 
-   public static aug a(String $$0) {
-      return new aug("minecraft", $$0, ab.b().b());
+   public aug(Path $$0, atp $$1, aum $$2, fdm $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public boolean a() {
-      return this.c.equals("minecraft");
+   private static String a(Path $$0) {
+      return $$0.getFileName().toString();
    }
 
    @Override
-   public String toString() {
-      return this.c + ":" + this.d + ":" + this.e;
+   public void loadPacks(Consumer<aui> $$0) {
+      try {
+         v.c(this.c);
+         a(this.c, this.f, ($$1, $$2) -> {
+            atm $$3 = this.b($$1);
+            aui $$4 = aui.a($$3, $$2, this.d, b);
+            if ($$4 != null) {
+               $$0.accept($$4);
+            }
+         });
+      } catch (IOException var3) {
+         a.warn("Failed to list packs in {}", this.c, var3);
+      }
    }
 
-   public String b() {
-      return this.c;
+   private atm b(Path $$0) {
+      String $$1 = a($$0);
+      return new atm("file/" + $$1, ww.b($$1), this.e, Optional.empty());
    }
 
-   public String c() {
-      return this.d;
+   public static void a(Path $$0, fdm $$1, BiConsumer<Path, aui.c> $$2) throws IOException {
+      aug.a $$3 = new aug.a($$1);
+
+      try (DirectoryStream<Path> $$4 = Files.newDirectoryStream($$0)) {
+         for (Path $$5 : $$4) {
+            try {
+               List<fdn> $$6 = new ArrayList<>();
+               aui.c $$7 = $$3.a($$5, $$6);
+               if (!$$6.isEmpty()) {
+                  a.warn("Ignoring potential pack entry: {}", fdl.a($$5, $$6));
+               } else if ($$7 != null) {
+                  $$2.accept($$5, $$7);
+               } else {
+                  a.info("Found non-pack entry '{}', ignoring", $$5);
+               }
+            } catch (IOException var10) {
+               a.warn("Failed to read properties of '{}', ignoring", $$5, var10);
+            }
+         }
+      }
    }
 
-   public String d() {
-      return this.e;
+   static class a extends auk<aui.c> {
+      protected a(fdm $$0) {
+         super($$0);
+      }
+
+      @Nullable
+      protected aui.c a(Path $$0) {
+         FileSystem $$1 = $$0.getFileSystem();
+         if ($$1 != FileSystems.getDefault() && !($$1 instanceof atx)) {
+            aug.a.info("Can't open pack archive at {}", $$0);
+            return null;
+         } else {
+            return new atk.a($$0);
+         }
+      }
+
+      protected aui.c b(Path $$0) {
+         return new atq.a($$0);
+      }
    }
 }

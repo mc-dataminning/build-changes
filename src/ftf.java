@@ -1,185 +1,93 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.function.IntFunction;
-import org.slf4j.Logger;
+public abstract class ftf {
+   protected static final int a = 14737632;
+   protected static final int b = 60;
+   protected static final int c = 1;
+   protected final fra d;
+   protected final box e;
 
-public class ftf implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final azs b = azs.a();
-   private static final float c = 32.0F;
-   private final hgu d;
-   private final ald e;
-   private ftj f;
-   private ftj g;
-   private List<ffn.a> h = List.of();
-   private List<ffn> i = List.of();
-   private final ftc<ftj> j = new ftc<>(ftj[]::new, ftj[][]::new);
-   private final ftc<ftf.a> k = new ftc<>(ftf.a[]::new, ftf.a[][]::new);
-   private final Int2ObjectMap<IntList> l = new Int2ObjectOpenHashMap();
-   private final List<ftg> m = Lists.newArrayList();
-   private final IntFunction<ftf.a> n = this::b;
-   private final IntFunction<ftj> o = this::c;
-
-   public ftf(hgu $$0, ald $$1) {
+   protected ftf(fra $$0, box $$1) {
       this.d = $$0;
       this.e = $$1;
    }
 
-   public void a(List<ffn.a> $$0, Set<fte> $$1) {
-      this.h = $$0;
-      this.a($$1);
+   public int a(int $$0) {
+      return Math.min(this.e.c() + 2, $$0);
    }
 
-   public void a(Set<fte> $$0) {
-      this.i = List.of();
-      this.c();
-      this.i = this.b(this.h, $$0);
+   public int a() {
+      return 60 + 9;
    }
 
-   private void c() {
-      this.d();
-      this.j.a();
-      this.k.a();
-      this.l.clear();
-      this.f = ftl.b.bake(this::a);
-      this.g = ftl.a.bake(this::a);
-   }
+   public void a(frc $$0, int $$1, int $$2) {
+      int $$3 = $$0.b();
+      $$0.a(gpn.L(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
+      long $$4 = 0L;
+      long $$5 = 2147483647L;
+      long $$6 = -2147483648L;
+      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
+      int $$8 = this.e.d() - $$7;
 
-   private List<ffn> b(List<ffn.a> $$0, Set<fte> $$1) {
-      IntSet $$2 = new IntOpenHashSet();
-      List<ffn> $$3 = new ArrayList<>();
-
-      for (ffn.a $$4 : $$0) {
-         if ($$4.b().a($$1)) {
-            $$3.add($$4.a());
-            $$2.addAll($$4.a().a());
-         }
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         int $$10 = $$1 + $$9 + 1;
+         int $$11 = $$7 + $$9;
+         long $$12 = this.b($$11);
+         $$5 = Math.min($$5, $$12);
+         $$6 = Math.max($$6, $$12);
+         $$4 += $$12;
+         this.a($$0, $$3, $$10, $$11);
       }
 
-      Set<ffn> $$5 = Sets.newHashSet();
-      $$2.forEach($$2x -> {
-         for (ffn $$3x : $$3) {
-            ffm $$4x = $$3x.a($$2x);
-            if ($$4x != null) {
-               $$5.add($$3x);
-               if ($$4x != ftl.b) {
-                  ((IntList)this.l.computeIfAbsent(azk.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
-               }
-               break;
-            }
-         }
-      });
-      return $$3.stream().filter($$5::contains).toList();
-   }
-
-   @Override
-   public void close() {
-      this.d();
-   }
-
-   private void d() {
-      for (ftg $$0 : this.m) {
-         $$0.close();
+      $$0.a(gpn.L(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
+      $$0.a(gpn.L(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
+      $$0.b(gpn.L(), $$1, $$3 - 60, $$3, -1);
+      $$0.b(gpn.L(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
+      if ($$8 > 0) {
+         String $$13 = this.a((double)$$5) + " min";
+         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
+         String $$15 = this.a((double)$$6) + " max";
+         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
+         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
+         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
       }
 
-      this.m.clear();
+      this.d($$0, $$1, $$2, $$3);
    }
 
-   private static boolean b(ffm $$0) {
-      float $$1 = $$0.a(false);
-      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
-         float $$2 = $$0.a(true);
-         return $$2 < 0.0F || $$2 > 32.0F;
-      } else {
-         return true;
-      }
+   protected void a(frc $$0, int $$1, int $$2, int $$3) {
+      this.b($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2, $$3);
    }
 
-   private ftf.a b(int $$0) {
-      ffm $$1 = null;
-
-      for (ffn $$2 : this.i) {
-         ffm $$3 = $$2.a($$0);
-         if ($$3 != null) {
-            if ($$1 == null) {
-               $$1 = $$3;
-            }
-
-            if (!b($$3)) {
-               return new ftf.a($$1, $$3);
-            }
-         }
-      }
-
-      return $$1 != null ? new ftf.a($$1, ftl.b) : ftf.a.c;
+   protected void b(frc $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.e.a($$3);
+      int $$5 = this.b((double)$$4);
+      int $$6 = this.a($$4);
+      $$0.a(gpn.L(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
    }
 
-   public ffm a(int $$0, boolean $$1) {
-      return this.k.a($$0, this.n).a($$1);
+   protected void c(frc $$0, int $$1, int $$2, int $$3) {
    }
 
-   private ftj c(int $$0) {
-      for (ffn $$1 : this.i) {
-         ffm $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2.bake(this::a);
-         }
-      }
-
-      a.warn("Couldn't find glyph for character {} (\\u{})", Character.toString($$0), String.format("%04x", $$0));
-      return this.f;
+   protected long b(int $$0) {
+      return this.e.a($$0);
    }
 
-   public ftj a(int $$0) {
-      return this.j.a($$0, this.o);
+   protected void d(frc $$0, int $$1, int $$2, int $$3) {
    }
 
-   private ftj a(ffo $$0) {
-      for (ftg $$1 : this.m) {
-         ftj $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
-
-      ald $$3 = this.e.g("/" + this.m.size());
-      boolean $$4 = $$0.c();
-      fth $$5 = $$4 ? fth.b($$3) : fth.a($$3);
-      ftg $$6 = new ftg($$5, $$4);
-      this.m.add($$6);
-      this.d.a($$3, $$6);
-      ftj $$7 = $$6.a($$0);
-      return $$7 == null ? this.f : $$7;
+   protected void a(frc $$0, String $$1, int $$2, int $$3) {
+      $$0.a(gpn.L(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
+      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
    }
 
-   public ftj a(ffm $$0) {
-      IntList $$1 = (IntList)this.l.get(azk.f($$0.a(false)));
-      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(b.a($$1.size()))) : this.f;
-   }
+   protected abstract String a(double var1);
 
-   public ald a() {
-      return this.e;
-   }
+   protected abstract int b(double var1);
 
-   public ftj b() {
-      return this.g;
-   }
+   protected abstract int a(long var1);
 
-   static record a(ffm a, ffm b) {
-      static final ftf.a c = new ftf.a(ftl.b, ftl.b);
-
-      ffm a(boolean $$0) {
-         return $$0 ? this.b : this.a;
-      }
+   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
+      $$0 = azk.a($$0, $$1, $$5);
+      return $$0 < $$3 ? axu.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : axu.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

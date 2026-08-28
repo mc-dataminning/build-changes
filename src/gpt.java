@@ -1,83 +1,103 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public record gpt(ald a, j b, boolean c, int d) implements hji {
-   @Override
-   public j a() {
-      return this.b;
+public record gpt(Map<String, String> c, Set<String> d) {
+   public static final gpt a = new gpt(Map.of(), Set.of());
+   public static final Codec<gpt> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(gpt::d),
+               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(gpt::e)
+            )
+            .apply($$0, gpt::new)
+   );
+
+   public static gpt.a a() {
+      return new gpt.a();
    }
 
-   @Override
-   public boolean b() {
+   public gpt a(gpt $$0) {
+      if (this.c()) {
+         return $$0;
+      } else if ($$0.c()) {
+         return this;
+      } else {
+         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
+         $$1.putAll(this.c);
+         $$1.putAll($$0.c);
+         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
+         $$2.addAll(this.d);
+         $$2.addAll($$0.d);
+         return new gpt($$1.buildKeepingLast(), $$2.build());
+      }
+   }
+
+   public String b() {
+      StringBuilder $$0 = new StringBuilder();
+
+      for (Entry<String, String> $$1 : this.c.entrySet()) {
+         String $$2 = $$1.getKey();
+         String $$3 = $$1.getValue();
+         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
+      }
+
+      for (String $$4 : this.d) {
+         $$0.append("#define ").append($$4).append('\n');
+      }
+
+      return $$0.toString();
+   }
+
+   public boolean c() {
+      return this.c.isEmpty() && this.d.isEmpty();
+   }
+
+   public Map<String, String> d() {
       return this.c;
    }
 
-   public ald c() {
-      return this.a;
-   }
-
-   public j d() {
-      return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
-   }
-
-   public int f() {
+   public Set<String> e() {
       return this.d;
    }
 
-   public static class a implements JsonDeserializer<gpt> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
+   public static class a {
+      private final Builder<String, String> a = ImmutableMap.builder();
+      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
 
-      public gpt a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         ald $$4 = this.b($$3);
-         hit $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new gpt($$4, $$5.a(), $$6, $$7);
+      a() {
       }
 
-      private boolean d(JsonObject $$0) {
-         return aza.a($$0, "uvlock", false);
-      }
-
-      protected hit a(JsonObject $$0) {
-         int $$1 = aza.a($$0, "x", 0);
-         int $$2 = aza.a($$0, "y", 0);
-         hit $$3 = hit.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+      public gpt.a a(String $$0, String $$1) {
+         if ($$1.isBlank()) {
+            throw new IllegalArgumentException("Cannot define empty string");
          } else {
-            return $$3;
+            this.a.put($$0, b($$1));
+            return this;
          }
       }
 
-      protected ald b(JsonObject $$0) {
-         return ald.a(aza.i($$0, "model"));
+      private static String b(String $$0) {
+         return $$0.replaceAll("\n", "\\\\\n");
       }
 
-      protected int c(JsonObject $$0) {
-         int $$1 = aza.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
-         } else {
-            return $$1;
-         }
+      public gpt.a a(String $$0, float $$1) {
+         this.a.put($$0, String.valueOf($$1));
+         return this;
+      }
+
+      public gpt.a a(String $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      public gpt a() {
+         return new gpt(this.a.build(), this.b.build());
       }
    }
 }

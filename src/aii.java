@@ -1,182 +1,85 @@
-public class aii implements zc<agm> {
-   public static final yt<vr, aii> a = zc.a(aii::a, aii::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final jj f;
-   private final dxe.a g;
-   private final dzw h;
-   private final String i;
-   private final jj j;
-   private final kn k;
-   private final dpv l;
-   private final drm m;
-   private final String n;
-   private final boolean o;
-   private final boolean p;
-   private final boolean q;
-   private final boolean r;
-   private final float s;
-   private final long t;
+public class aii implements zd<agn> {
+   public static final yu<vs, aii> a = zd.a(aii::a, aii::new);
+   private final iu b;
+   private final ale c;
+   private final ale d;
+   private final ale e;
+   private final String f;
+   private final dxr.a g;
+   private final int h;
+   private final int i;
 
-   public aii(
-      jj $$0,
-      dxe.a $$1,
-      dzw $$2,
-      String $$3,
-      jj $$4,
-      kn $$5,
-      dpv $$6,
-      drm $$7,
-      String $$8,
-      boolean $$9,
-      boolean $$10,
-      boolean $$11,
-      boolean $$12,
-      float $$13,
-      long $$14
-   ) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.m = $$7;
-      this.n = $$8;
-      this.o = $$9;
-      this.p = $$10;
-      this.q = $$11;
-      this.r = $$12;
-      this.s = $$13;
-      this.t = $$14;
+   public aii(iu $$0, ale $$1, ale $$2, ale $$3, String $$4, dxr.a $$5, int $$6, int $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   private aii(vr $$0) {
-      this.f = $$0.e();
-      this.g = $$0.b(dxe.a.class);
-      this.h = $$0.b(dzw.class);
-      this.i = $$0.p();
-      int $$1 = 48;
-      this.j = new jj(azk.a($$0.readByte(), -48, 48), azk.a($$0.readByte(), -48, 48), azk.a($$0.readByte(), -48, 48));
-      int $$2 = 48;
-      this.k = new kn(azk.a($$0.readByte(), 0, 48), azk.a($$0.readByte(), 0, 48), azk.a($$0.readByte(), 0, 48));
-      this.l = $$0.b(dpv.class);
-      this.m = $$0.b(drm.class);
-      this.n = $$0.d(128);
-      this.s = azk.a($$0.readFloat(), 0.0F, 1.0F);
-      this.t = $$0.m();
-      int $$3 = $$0.readByte();
-      this.o = ($$3 & 1) != 0;
-      this.p = ($$3 & 8) != 0;
-      this.q = ($$3 & 2) != 0;
-      this.r = ($$3 & 4) != 0;
+   private aii(vs $$0) {
+      this.b = $$0.e();
+      this.c = $$0.q();
+      this.d = $$0.q();
+      this.e = $$0.q();
+      this.f = $$0.p();
+      this.g = dxr.a.c.a($$0.p(), dxr.a.b);
+      this.h = $$0.l();
+      this.i = $$0.l();
    }
 
-   private void a(vr $$0) {
+   private void a(vs $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
       $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.l(this.j.u());
-      $$0.l(this.j.v());
-      $$0.l(this.j.w());
-      $$0.l(this.k.u());
-      $$0.l(this.k.v());
-      $$0.l(this.k.w());
-      $$0.a(this.l);
-      $$0.a(this.m);
-      $$0.a(this.n);
-      $$0.a(this.s);
-      $$0.a(this.t);
-      int $$1 = 0;
-      if (this.o) {
-         $$1 |= 1;
-      }
-
-      if (this.q) {
-         $$1 |= 2;
-      }
-
-      if (this.r) {
-         $$1 |= 4;
-      }
-
-      if (this.p) {
-         $$1 |= 8;
-      }
-
-      $$0.l($$1);
+      $$0.a(this.g.c());
+      $$0.c(this.h);
+      $$0.c(this.i);
    }
 
    @Override
-   public ze<aii> a() {
-      return agk.ch;
+   public zf<aii> a() {
+      return agl.cg;
    }
 
-   public void a(agm $$0) {
+   public void a(agn $$0) {
       $$0.a(this);
    }
 
-   public jj b() {
+   public iu b() {
+      return this.b;
+   }
+
+   public ale e() {
+      return this.c;
+   }
+
+   public ale f() {
+      return this.d;
+   }
+
+   public ale g() {
+      return this.e;
+   }
+
+   public String h() {
       return this.f;
    }
 
-   public dxe.a e() {
+   public dxr.a i() {
       return this.g;
    }
 
-   public dzw f() {
+   public int j() {
       return this.h;
    }
 
-   public String g() {
+   public int k() {
       return this.i;
-   }
-
-   public jj h() {
-      return this.j;
-   }
-
-   public kn i() {
-      return this.k;
-   }
-
-   public dpv j() {
-      return this.l;
-   }
-
-   public drm k() {
-      return this.m;
-   }
-
-   public String l() {
-      return this.n;
-   }
-
-   public boolean m() {
-      return this.o;
-   }
-
-   public boolean n() {
-      return this.p;
-   }
-
-   public boolean o() {
-      return this.q;
-   }
-
-   public boolean p() {
-      return this.r;
-   }
-
-   public float q() {
-      return this.s;
-   }
-
-   public long r() {
-      return this.t;
    }
 }

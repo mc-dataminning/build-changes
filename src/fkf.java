@@ -1,40 +1,24 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fkf implements Iterable<fjf> {
-   private final fnd a;
-   private final Set<fjf> b = new HashSet<>();
-   private List<fjf> c = List.of();
+public class fkf extends fkv {
+   private static final Logger b = LogUtils.getLogger();
+   @Nullable
+   public String a;
 
-   public fkf(fnd $$0) {
-      this.a = $$0;
-   }
+   public static fkf a(String $$0) {
+      fkf $$1 = new fkf();
 
-   public void a(List<fjf> $$0) {
-      List<fjf> $$1 = new ArrayList<>($$0);
-      $$1.sort(new fjf.b(this.a.X().c()));
-      boolean $$2 = $$1.removeAll(this.b);
-      if (!$$2) {
-         this.b.clear();
+      try {
+         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
+         $$1.a = fmr.b("newsLink", $$2, null);
+      } catch (Exception var3) {
+         b.error("Could not parse RealmsNews: {}", var3.getMessage());
       }
 
-      this.c = $$1;
-   }
-
-   public void a(fjf $$0) {
-      this.c.remove($$0);
-      this.b.add($$0);
-   }
-
-   @Override
-   public Iterator<fjf> iterator() {
-      return this.c.iterator();
-   }
-
-   public boolean a() {
-      return this.c.isEmpty();
+      return $$1;
    }
 }

@@ -1,59 +1,127 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.function.BiPredicate;
 
-public class egu extends ehr<ekf> {
-   private static final dym a = dkw.nB.m().b(djy.b, Integer.valueOf(1)).b(djy.c, dyy.a).b(djy.d, Integer.valueOf(0));
-   private static final dym b = a.b(djy.c, dyy.c).b(djy.d, Integer.valueOf(1));
-   private static final dym c = a.b(djy.c, dyy.c);
-   private static final dym d = a.b(djy.c, dyy.b);
+public interface egu extends BiPredicate<djo, iu> {
+   Codec<egu> b = mf.M.q().dispatch(egu::a, egv::codec);
+   egu c = a(dlw.a);
+   egu d = a(dlw.a, dlw.J);
 
-   public egu(Codec<ekf> $$0) {
-      super($$0);
+   egv<?> a();
+
+   static egu a(List<egu> $$0) {
+      return new egs($$0);
    }
 
-   @Override
-   public boolean a(eht<ekf> $$0) {
-      int $$1 = 0;
-      jj $$2 = $$0.e();
-      dio $$3 = $$0.b();
-      azs $$4 = $$0.d();
-      ekf $$5 = $$0.f();
-      jj.a $$6 = $$2.k();
-      jj.a $$7 = $$2.k();
-      if ($$3.u($$6)) {
-         if (dkw.nB.m().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   static egu a(egu... $$0) {
+      return a(List.of($$0));
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(eel.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, dkw.l.m(), 2);
-                        }
-                     }
-                  }
-               }
-            }
+   static egu a(egu $$0, egu $$1) {
+      return a(List.of($$0, $$1));
+   }
 
-            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(jo.b, 1);
-            }
+   static egu b(List<egu> $$0) {
+      return new egt($$0);
+   }
 
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(jo.a, 1), c, 2);
-               $$3.a($$6.c(jo.a, 1), d, 2);
-            }
-         }
+   static egu b(egu... $$0) {
+      return b(List.of($$0));
+   }
 
-         $$1++;
-      }
+   static egu b(egu $$0, egu $$1) {
+      return b(List.of($$0, $$1));
+   }
 
-      return $$1 > 0;
+   static egu a(jz $$0, List<dlu> $$1) {
+      return new eha($$0, ji.a(dlu::p, $$1));
+   }
+
+   static egu c(List<dlu> $$0) {
+      return a(jz.i, $$0);
+   }
+
+   static egu a(jz $$0, dlu... $$1) {
+      return a($$0, List.of($$1));
+   }
+
+   static egu a(dlu... $$0) {
+      return a(jz.i, $$0);
+   }
+
+   static egu a(jz $$0, axp<dlu> $$1) {
+      return new egz($$0, $$1);
+   }
+
+   static egu a(axp<dlu> $$0) {
+      return a(jz.i, $$0);
+   }
+
+   static egu b(jz $$0, List<evu> $$1) {
+      return new ehb($$0, ji.a(evu::k, $$1));
+   }
+
+   static egu a(jz $$0, evu... $$1) {
+      return b($$0, List.of($$1));
+   }
+
+   static egu a(evu... $$0) {
+      return a(jz.i, $$0);
+   }
+
+   static egu a(egu $$0) {
+      return new ehc($$0);
+   }
+
+   static egu a(jz $$0) {
+      return new ehd($$0);
+   }
+
+   static egu b() {
+      return a(jz.i);
+   }
+
+   static egu a(dzo $$0, jz $$1) {
+      return new ehi($$1, $$0);
+   }
+
+   static egu a(jz $$0, ja $$1) {
+      return new egx($$0, $$1);
+   }
+
+   static egu a(ja $$0) {
+      return a(jz.i, $$0);
+   }
+
+   static egu b(jz $$0) {
+      return new ehe($$0);
+   }
+
+   static egu c() {
+      return b(jz.i);
+   }
+
+   static egu d() {
+      return c(jz.i);
+   }
+
+   static egu c(jz $$0) {
+      return a($$0, evw.a);
+   }
+
+   static egu d(jz $$0) {
+      return new egy($$0);
+   }
+
+   static egu e() {
+      return ehg.a;
+   }
+
+   static egu e(jz $$0) {
+      return new ehh($$0);
+   }
+
+   static egu f() {
+      return e(jz.i);
    }
 }

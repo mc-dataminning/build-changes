@@ -1,12 +1,39 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import java.util.Set;
+import java.util.function.ToIntFunction;
 
-public record bvm(bvn a, boolean b, boolean c, @Nullable fdu d) {
-   public static bvm a(bwt $$0, boolean $$1, boolean $$2) {
-      return new bvm(bvn.a, $$1, $$2, $$0.cr());
+class bvm extends bvc {
+   private final ToIntFunction<azt> c;
+
+   protected bvm(bvd $$0, int $$1, ToIntFunction<azt> $$2) {
+      super($$0, $$1, lx.Y);
+      this.c = $$2;
    }
 
-   @FunctionalInterface
-   public interface a<T extends bwt> {
-      void finalizeConversion(T var1);
+   @Override
+   public void a(aro $$0, bwz $$1, int $$2, bwa.e $$3) {
+      if ($$3 == bwa.e.a && ($$1 instanceof cqs || $$0.O().c(dil.c))) {
+         this.a($$0, $$1.dY(), $$1.dv());
+      }
+   }
+
+   private void a(aro $$0, azt $$1, iu $$2) {
+      Set<iu> $$3 = Sets.newHashSet();
+      int $$4 = this.c.applyAsInt($$1);
+
+      for (iu $$5 : iu.a($$1, 15, $$2, 1)) {
+         iu $$6 = $$5.e();
+         if (!$$3.contains($$5) && $$0.a_($$5).v() && $$0.a_($$6).c($$0, $$6, ja.b)) {
+            $$3.add($$5.j());
+            if ($$3.size() >= $$4) {
+               break;
+            }
+         }
+      }
+
+      for (iu $$7 : $$3) {
+         $$0.a($$7, dlw.bz.m(), 3);
+         $$0.c(3018, $$7, 0);
+      }
    }
 }

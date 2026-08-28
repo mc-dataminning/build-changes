@@ -6,7 +6,7 @@ public class ayk {
    private ayk() {
    }
 
-   public static fcu a(fcu $$0, ayk.a $$1) {
+   public static fdw a(fdw $$0, ayk.a $$1) {
       int $$2 = azk.a($$0.a());
       int $$3 = azk.a($$0.b());
       int $$4 = azk.a($$0.c());
@@ -14,7 +14,7 @@ public class ayk {
       double $$6 = $$0.b() - (double)$$3;
       double $$7 = $$0.c() - (double)$$4;
       double $$8 = 0.0;
-      fcu $$9 = fcu.c;
+      fdw $$9 = fdw.c;
 
       for (int $$10 = 0; $$10 < 6; $$10++) {
          double $$11 = azk.d($$5, c[$$10 + 1], c[$$10]);
@@ -39,6 +39,6 @@ public class ayk {
 
    @FunctionalInterface
    public interface a {
-      fcu fetch(int var1, int var2, int var3);
+      fdw fetch(int var1, int var2, int var3);
    }
 }

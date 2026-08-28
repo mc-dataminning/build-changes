@@ -1,5 +1,7 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -8,9 +10,24 @@ public class bkr extends Schema {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("TippedArrow");
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(false, bit.L, () -> DSL.constType(bko.a()));
+      $$0.registerType(
+         false,
+         bit.b,
+         () -> DSL.optionalFields(
+               new Pair[]{
+                  Pair.of("RootVehicle", DSL.optionalFields("Entity", bit.C.in($$0))),
+                  Pair.of("ender_pearls", DSL.list(bit.C.in($$0))),
+                  Pair.of("Inventory", DSL.list(bit.t.in($$0))),
+                  Pair.of("EnderItems", DSL.list(bit.t.in($$0))),
+                  Pair.of("ShoulderEntityLeft", bit.C.in($$0)),
+                  Pair.of("ShoulderEntityRight", bit.C.in($$0)),
+                  Pair.of("recipeBook", DSL.optionalFields("recipes", DSL.list(bit.L.in($$0)), "toBeDisplayed", DSL.list(bit.L.in($$0))))
+               }
+            )
+      );
+      $$0.registerType(false, bit.d, () -> DSL.compoundList(DSL.list(bit.t.in($$0))));
    }
 }

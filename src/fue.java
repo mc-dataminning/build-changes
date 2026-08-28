@@ -1,143 +1,16 @@
-public interface fue {
-   fue a(int var1);
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import javax.annotation.Nullable;
 
-   fue a(int var1, int var2);
-
-   fue a(int var1, int var2, int var3, int var4);
-
-   fue b(int var1);
-
-   fue c(int var1);
-
-   fue d(int var1);
-
-   fue e(int var1);
-
-   fue f(int var1);
-
-   fue g(int var1);
-
-   fue a(float var1, float var2);
-
-   fue a(float var1);
-
-   fue b(float var1);
-
-   default fue a() {
-      return this.a(0.0F);
+public class fue implements fgp {
+   @Nullable
+   @Override
+   public fgo a(int $$0) {
+      return fuo.b;
    }
 
-   default fue b() {
-      return this.a(0.5F);
-   }
-
-   default fue c() {
-      return this.a(1.0F);
-   }
-
-   default fue d() {
-      return this.b(0.0F);
-   }
-
-   default fue e() {
-      return this.b(0.5F);
-   }
-
-   default fue f() {
-      return this.b(1.0F);
-   }
-
-   fue g();
-
-   fue.a h();
-
-   static fue i() {
-      return new fue.a();
-   }
-
-   public static class a implements fue {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
-
-      public a() {
-      }
-
-      public a(fue.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
-      }
-
-      public fue.a h(int $$0) {
-         return this.b($$0, $$0);
-      }
-
-      public fue.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
-      }
-
-      public fue.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
-      }
-
-      public fue.a i(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fue.a j(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public fue.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fue.a l(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fue.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
-
-      public fue.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
-
-      public fue.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public fue.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fue.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fue.a j() {
-         return new fue.a(this);
-      }
-
-      @Override
-      public fue.a h() {
-         return this;
-      }
+   @Override
+   public IntSet a() {
+      return IntSets.EMPTY_SET;
    }
 }

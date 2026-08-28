@@ -1,25 +1,40 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record deu(deo d) implements dey {
-   public static final MapCodec<deu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(deo.b.fieldOf("amount").forGetter($$0x -> $$0x.d)).apply($$0, deu::new));
+public record deu(List<dev> f, dev g, dev h) implements dep {
+   public static final MapCodec<deu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dev.a.listOf().fieldOf("ingredients").forGetter(deu::b),
+               dev.a.fieldOf("result").forGetter(deu::d),
+               dev.a.fieldOf("crafting_station").forGetter(deu::e)
+            )
+            .apply($$0, deu::new)
+   );
+   public static final yu<wh, deu> b = yu.a(dev.b.a(ys.a()), deu::b, dev.b, deu::d, dev.b, deu::e, deu::new);
+   public static final dep.a<deu> c = new dep.a<>(a, b);
 
    @Override
-   public void a(arn $$0, int $$1, deg $$2, bvs $$3, fcu $$4) {
-      cxy $$5 = $$2.a();
-      if ($$5.c(kx.d) && $$5.c(kx.e)) {
-         aro $$7 = $$2.c() instanceof aro $$6 ? $$6 : null;
-         int $$8 = (int)this.d.a($$1);
-         $$5.a($$8, $$0, $$7, $$2.d());
-      }
+   public dep.a<deu> a() {
+      return c;
    }
 
    @Override
-   public MapCodec<deu> a() {
-      return a;
+   public boolean a(cub $$0) {
+      return this.f.stream().allMatch($$1 -> $$1.a($$0)) && dep.super.a($$0);
    }
 
-   public deo b() {
-      return this.d;
+   public List<dev> b() {
+      return this.f;
+   }
+
+   @Override
+   public dev d() {
+      return this.g;
+   }
+
+   @Override
+   public dev e() {
+      return this.h;
    }
 }

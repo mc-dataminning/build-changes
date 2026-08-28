@@ -1,2 +1,8 @@
-public class dco implements dcd {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dco {
 }

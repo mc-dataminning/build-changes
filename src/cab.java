@@ -1,15 +1,37 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public abstract class cab<E extends bwz> implements byr<E>, ccg<E> {
+   private byq.a a;
 
-public class cab {
-   public static byj<bwr> a() {
-      return cbv.a((Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$0 -> $$0.group($$0.b(cft.E)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               crv $$3 = $$0xx.d($$1.dv());
-               if ($$3 == null) {
-                  $$1.eb().a(crz.j);
-               }
+   public cab() {
+      this.a = byq.a.a;
+   }
 
-               return true;
-            })));
+   @Override
+   public final byq.a a() {
+      return this.a;
+   }
+
+   @Override
+   public final boolean e(aro $$0, E $$1, long $$2) {
+      if (this.trigger($$0, $$1, $$2)) {
+         this.a = byq.a.b;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public final void f(aro $$0, E $$1, long $$2) {
+      this.g($$0, $$1, $$2);
+   }
+
+   @Override
+   public final void g(aro $$0, E $$1, long $$2) {
+      this.a = byq.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

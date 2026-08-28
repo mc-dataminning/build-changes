@@ -1,19 +1,5 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import java.util.stream.Stream;
-
-public class se {
-   private static final Set<js.c<sp>> a = Sets.newHashSet();
-
-   public static Stream<js.c<sp>> a() {
-      return a.stream();
-   }
-
-   public static void a(js.c<sp> $$0) {
-      a.add($$0);
-   }
-
-   public static void b() {
-      a.clear();
+class se extends Throwable {
+   public se(int $$0, int $$1, sp $$2) {
+      super("Not enough successes: " + $$1 + " out of " + $$0 + " attempts. Required successes: " + $$2.A() + ". max attempts: " + $$2.z() + ".", $$2.n());
    }
 }

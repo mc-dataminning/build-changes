@@ -1,13 +1,65 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cel extends cek {
-   public cel(bwz $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2);
+public class cel extends cdv {
+   private final bxb a;
+   private bwz b;
+   private int c;
+
+   public cel(bxb $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cdv.a.a, cdv.a.b));
    }
 
-   @Nullable
    @Override
-   protected fcu h() {
-      return byk.a(this.b, 10, 7);
+   public boolean b() {
+      bwz $$0 = this.a.f();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0;
+         return true;
+      }
+   }
+
+   @Override
+   public boolean c() {
+      if (!this.b.bK()) {
+         return false;
+      } else {
+         return this.a.g((bwa)this.b) > 225.0 ? false : !this.a.O().k() || this.b();
+      }
+   }
+
+   @Override
+   public void e() {
+      this.b = null;
+      this.a.O().m();
+   }
+
+   @Override
+   public boolean Q_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.a.J().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dq() * 2.0F * this.a.dq() * 2.0F);
+      double $$1 = this.a.i(this.b.dA(), this.b.dC(), this.b.dG());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.O().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.c(a(this.a), this.b);
+         }
+      }
    }
 }

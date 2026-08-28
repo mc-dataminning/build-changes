@@ -1,112 +1,19 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public class etw {
-   private static final double a = 1.0181268882175227;
-   private static final double b = 0.3333333333333333;
-   private final double c;
-   private final etx d;
-   private final etx e;
-   private final double f;
-   private final etw.a g;
+public class etw extends etx {
+   public static final MapCodec<etw> a = MapCodec.unit(() -> etw.b);
+   public static final etw b = new etw();
 
-   @Deprecated
-   public static etw a(azs $$0, etw.a $$1) {
-      return new etw($$0, $$1, false);
+   private etw() {
    }
 
-   public static etw a(azs $$0, int $$1, double... $$2) {
-      return b($$0, new etw.a($$1, new DoubleArrayList($$2)));
+   @Override
+   public boolean a(iu $$0, iu $$1, iu $$2, azt $$3) {
+      return true;
    }
 
-   public static etw b(azs $$0, etw.a $$1) {
-      return new etw($$0, $$1, true);
-   }
-
-   private etw(azs $$0, etw.a $$1, boolean $$2) {
-      int $$3 = $$1.c;
-      DoubleList $$4 = $$1.d;
-      this.g = $$1;
-      if ($$2) {
-         this.d = etx.b($$0, $$3, $$4);
-         this.e = etx.b($$0, $$3, $$4);
-      } else {
-         this.d = etx.a($$0, $$3, $$4);
-         this.e = etx.a($$0, $$3, $$4);
-      }
-
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = Integer.MIN_VALUE;
-      DoubleListIterator $$7 = $$4.iterator();
-
-      while ($$7.hasNext()) {
-         int $$8 = $$7.nextIndex();
-         double $$9 = $$7.nextDouble();
-         if ($$9 != 0.0) {
-            $$5 = Math.min($$5, $$8);
-            $$6 = Math.max($$6, $$8);
-         }
-      }
-
-      this.c = 0.16666666666666666 / a($$6 - $$5);
-      this.f = (this.d.a() + this.e.a()) * this.c;
-   }
-
-   public double a() {
-      return this.f;
-   }
-
-   private static double a(int $$0) {
-      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
-   }
-
-   public double a(double $$0, double $$1, double $$2) {
-      double $$3 = $$0 * 1.0181268882175227;
-      double $$4 = $$1 * 1.0181268882175227;
-      double $$5 = $$2 * 1.0181268882175227;
-      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
-   }
-
-   public etw.a b() {
-      return this.g;
-   }
-
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("NormalNoise {");
-      $$0.append("first: ");
-      this.d.a($$0);
-      $$0.append(", second: ");
-      this.e.a($$0);
-      $$0.append("}");
-   }
-
-   public static record a(int c, DoubleList d) {
-      public static final Codec<etw.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(etw.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(etw.a::b))
-               .apply($$0, etw.a::new)
-      );
-      public static final Codec<js<etw.a>> b = akz.a(me.aW, a);
-
-      public a(int $$0, List<Double> $$1) {
-         this($$0, new DoubleArrayList($$1));
-      }
-
-      public a(int $$0, double $$1, double... $$2) {
-         this($$0, af.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
-      }
-
-      public int a() {
-         return this.c;
-      }
-
-      public DoubleList b() {
-         return this.d;
-      }
+   @Override
+   protected ety<?> a() {
+      return ety.a;
    }
 }

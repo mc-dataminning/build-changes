@@ -1,112 +1,128 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eqq {
-   private static final int c = Integer.MIN_VALUE;
-   private static final MutableObject<Codec<js<eqq>>> d = new MutableObject();
-   public static final Codec<eqq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.lazyInitialized(d::getValue).fieldOf("fallback").forGetter(eqq::a),
-               Codec.mapPair(eqo.f.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eqq::new)
-   );
-   public static final Codec<js<eqq>> b = af.a(akz.a(me.bc, a), d::setValue);
-   private final List<Pair<eqo, Integer>> e;
-   private final ObjectArrayList<eqo> f;
-   private final js<eqq> g;
-   private int h = Integer.MIN_VALUE;
+public final class eqq {
+   public static final String a = "INVALID";
+   public static final eqq b = new eqq(null, new dhw(0, 0), 0, new eqx(List.of()));
+   private static final Logger c = LogUtils.getLogger();
+   private final eqi d;
+   private final eqx e;
+   private final dhw f;
+   private int g;
+   @Nullable
+   private volatile eqa h;
 
-   public eqq(js<eqq> $$0, List<Pair<eqo, Integer>> $$1) {
-      this.e = $$1;
-      this.f = new ObjectArrayList();
+   public eqq(eqi $$0, dhw $$1, int $$2, eqx $$3) {
+      this.d = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.e = $$3;
+   }
 
-      for (Pair<eqo, Integer> $$2 : $$1) {
-         eqo $$3 = (eqo)$$2.getFirst();
+   @Nullable
+   public static eqq a(eqy $$0, tx $$1, long $$2) {
+      String $$3 = $$1.l("id");
+      if ("INVALID".equals($$3)) {
+         return b;
+      } else {
+         jr<eqi> $$4 = $$0.b().f(mg.bc);
+         eqi $$5 = $$4.a(ale.a($$3));
+         if ($$5 == null) {
+            c.error("Unknown stucture id: {}", $$3);
+            return null;
+         } else {
+            dhw $$6 = new dhw($$1.h("ChunkX"), $$1.h("ChunkZ"));
+            int $$7 = $$1.h("references");
+            ud $$8 = $$1.c("Children", 10);
 
-         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
-            this.f.add($$3);
+            try {
+               eqx $$9 = eqx.a($$8, $$0);
+               if ($$5 instanceof est) {
+                  $$9 = est.a($$6, $$2, $$9);
+               }
+
+               return new eqq($$5, $$6, $$7, $$9);
+            } catch (Exception var11) {
+               c.error("Failed Start with id {}", $$3, var11);
+               return null;
+            }
          }
       }
-
-      this.g = $$0;
    }
 
-   public eqq(js<eqq> $$0, List<Pair<Function<eqq.a, ? extends eqo>, Integer>> $$1, eqq.a $$2) {
-      this.e = Lists.newArrayList();
-      this.f = new ObjectArrayList();
+   public eqa a() {
+      eqa $$0 = this.h;
+      if ($$0 == null) {
+         $$0 = this.d.a(this.e.b());
+         this.h = $$0;
+      }
 
-      for (Pair<Function<eqq.a, ? extends eqo>, Integer> $$3 : $$1) {
-         eqo $$4 = (eqo)((Function)$$3.getFirst()).apply($$2);
-         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
+      return $$0;
+   }
 
-         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
-            this.f.add($$4);
+   public void a(djo $$0, djl $$1, ebm $$2, azt $$3, eqa $$4, dhw $$5) {
+      List<eqm> $$6 = this.e.c();
+      if (!$$6.isEmpty()) {
+         eqa $$7 = $$6.get(0).f;
+         iu $$8 = $$7.g();
+         iu $$9 = new iu($$8.u(), $$7.i(), $$8.w());
+
+         for (eqm $$10 : $$6) {
+            if ($$10.f().a($$4)) {
+               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
+            }
          }
-      }
 
-      this.g = $$0;
+         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
+      }
    }
 
-   public int a(etj $$0) {
-      if (this.h == Integer.MIN_VALUE) {
-         this.h = this.f.stream().filter($$0x -> $$0x != eqh.b).mapToInt($$1 -> $$1.a($$0, jj.c, drm.a).e()).max().orElse(0);
+   public tx a(eqy $$0, dhw $$1) {
+      tx $$2 = new tx();
+      if (this.b()) {
+         $$2.a("id", $$0.b().f(mg.bc).b(this.d).toString());
+         $$2.a("ChunkX", $$1.h);
+         $$2.a("ChunkZ", $$1.i);
+         $$2.a("references", this.g);
+         $$2.a("Children", this.e.a($$0));
+         return $$2;
+      } else {
+         $$2.a("id", "INVALID");
+         return $$2;
       }
-
-      return this.h;
    }
 
-   public js<eqq> a() {
+   public boolean b() {
+      return !this.e.a();
+   }
+
+   public dhw c() {
+      return this.f;
+   }
+
+   public boolean d() {
+      return this.g < this.g();
+   }
+
+   public void e() {
+      this.g++;
+   }
+
+   public int f() {
       return this.g;
    }
 
-   public eqo a(azs $$0) {
-      return (eqo)(this.f.isEmpty() ? eqh.b : (eqo)this.f.get($$0.a(this.f.size())));
+   protected int g() {
+      return 1;
    }
 
-   public List<eqo> b(azs $$0) {
-      return af.a(this.f, $$0);
+   public eqi h() {
+      return this.d;
    }
 
-   public int b() {
-      return this.f.size();
-   }
-
-   public static enum a implements bag {
-      a("terrain_matching", ImmutableList.of(new eso(eel.a.a, -1))),
-      b("rigid", ImmutableList.of());
-
-      public static final bag.a<eqq.a> c = bag.a(eqq.a::values);
-      private final String d;
-      private final ImmutableList<etf> e;
-
-      private a(final String $$0, final ImmutableList<etf> $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      public static eqq.a a(String $$0) {
-         return c.a($$0);
-      }
-
-      public ImmutableList<etf> b() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public List<eqm> i() {
+      return this.e.c();
    }
 }

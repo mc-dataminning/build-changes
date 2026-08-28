@@ -1,74 +1,285 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class hmk {
-   public static final hmk a = new hmk(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<hmg<hmk.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+public class hmk extends MinecraftServer {
+   private static final Logger l = LogUtils.getLogger();
+   private static final int m = 2;
+   private final fof n;
+   private boolean o = true;
+   private int p = -1;
+   @Nullable
+   private dim q;
+   @Nullable
+   private hmn r;
+   @Nullable
+   private UUID s;
+   private int t = 0;
 
-   protected hmk(Ticker $$0) {
-      this.c = $$0;
+   public hmk(Thread $$0, fof $$1, eyb.c $$2, aul $$3, amd $$4, alz $$5, arz $$6) {
+      super($$0, $$2, $$3, $$4, $$1.Z(), $$1.au(), $$5, $$6);
+      this.b($$1.Y());
+      this.c($$1.K());
+      this.a(new hmj(this, this.bb(), this.g));
+      this.n = $$1;
    }
 
-   public synchronized void a(hmg<hmk.a> $$0) {
-      this.a($$0, (Function<hmg<hmk.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   @Override
+   public boolean e() {
+      l.info("Starting integrated minecraft server version {}", ab.b().c());
+      this.d(true);
+      this.f(true);
+      this.g(true);
+      this.V();
+      this.q_();
+      GameProfile $$0 = this.T();
+      String $$1 = this.aZ().e();
+      this.d($$0 != null ? $$0.getName() + " - " + $$1 : $$1);
+      return true;
    }
 
-   public synchronized void a(hmg<hmk.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<hmg<hmk.a>, Stopwatch>)($$1x -> $$1));
+   @Override
+   public boolean E() {
+      return this.o;
    }
 
-   private synchronized void a(hmg<hmk.a> $$0, Function<hmg<hmk.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
+   @Override
+   public void a(BooleanSupplier $$0) {
+      boolean $$1 = this.o;
+      this.o = fof.Q().ai();
+      bqj $$2 = bqi.a();
+      if (!$$1 && this.o) {
+         $$2.a("autoSave");
+         l.info("Saving and pausing game...");
+         this.b(false, false, false);
+         $$2.c();
+      }
 
-   public synchronized void b(hmg<hmk.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
+      boolean $$3 = fof.Q().L() != null;
+      if ($$3 && this.o) {
+         this.b();
       } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
+         if ($$1 && !this.o) {
+            this.H();
+         }
+
+         super.a($$0);
+         int $$4 = Math.max(2, this.n.n.e().c());
+         if ($$4 != this.ag().p()) {
+            l.info("Changing view distance to {}, from {}", $$4, this.ag().p());
+            this.ag().a($$4);
+         }
+
+         int $$5 = Math.max(2, this.n.n.f().c());
+         if ($$5 != this.t) {
+            l.info("Changing simulation distance to {}, from {}", $$5, this.t);
+            this.ag().b($$5);
+            this.t = $$5;
          }
       }
    }
 
-   public void a(hmd $$0) {
-      $$0.send(hme.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((hmg<hmk.a>)$$1, new hmk.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), hme.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(hmg.B, new hmk.a((int)$$1)));
-            this.d.clear();
+   protected bot a() {
+      return this.n.aQ().l();
+   }
+
+   @Override
+   public boolean g() {
+      return true;
+   }
+
+   private void b() {
+      for (arp $$0 : this.ag().t()) {
+         $$0.a(awv.l);
+      }
+   }
+
+   @Override
+   public boolean m() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   @Override
+   public Path D() {
+      return this.n.q.toPath();
+   }
+
+   @Override
+   public boolean n() {
+      return false;
+   }
+
+   @Override
+   public int o() {
+      return 0;
+   }
+
+   @Override
+   public boolean p() {
+      return false;
+   }
+
+   @Override
+   public void a(o $$0) {
+      this.n.b($$0);
+   }
+
+   @Override
+   public ad a(ad $$0) {
+      $$0.a("Type", "Integrated Server (map_client.txt)");
+      $$0.a("Is Modded", () -> this.Q().b());
+      $$0.a("Launched Version", this.n::i);
+      return $$0;
+   }
+
+   @Override
+   public azj Q() {
+      return fof.e().a(super.Q());
+   }
+
+   @Override
+   public boolean a(@Nullable dim $$0, boolean $$1, int $$2) {
+      try {
+         this.n.aU();
+         this.n.L().w();
+         this.ah().a(null, $$2);
+         l.info("Started serving on {}", $$2);
+         this.p = $$2;
+         this.r = new hmn(this.ae(), $$2 + "");
+         this.r.start();
+         this.q = $$0;
+         this.ag().b($$1);
+         int $$3 = this.c(this.n.t.gh());
+         this.n.t.a($$3);
+
+         for (arp $$4 : this.ag().t()) {
+            this.aG().a($$4);
+         }
+
+         return true;
+      } catch (IOException var7) {
+         return false;
+      }
+   }
+
+   @Override
+   public void v() {
+      super.v();
+      if (this.r != null) {
+         this.r.interrupt();
+         this.r = null;
+      }
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.h(() -> {
+         for (arp $$1 : Lists.newArrayList(this.ag().t())) {
+            if (!$$1.cG().equals(this.s)) {
+               this.ag().c($$1);
+            }
          }
       });
-   }
-
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
-   }
-
-   public static record a(int b) {
-      public static final Codec<hmk.a> a = Codec.INT.xmap(hmk.a::new, $$0 -> $$0.b);
-
-      public int a() {
-         return this.b;
+      super.a($$0);
+      if (this.r != null) {
+         this.r.interrupt();
+         this.r = null;
       }
+   }
+
+   @Override
+   public boolean r() {
+      return this.p > -1;
+   }
+
+   @Override
+   public int S() {
+      return this.p;
+   }
+
+   @Override
+   public void a(dim $$0) {
+      super.a($$0);
+      this.q = null;
+   }
+
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   @Override
+   public int k() {
+      return 2;
+   }
+
+   @Override
+   public int l() {
+      return 2;
+   }
+
+   public void a(UUID $$0) {
+      this.s = $$0;
+   }
+
+   @Override
+   public boolean a(GameProfile $$0) {
+      return this.T() != null && $$0.getName().equalsIgnoreCase(this.T().getName());
+   }
+
+   @Override
+   public int b(int $$0) {
+      return (int)(this.n.n.g().c() * (double)$$0);
+   }
+
+   @Override
+   public boolean aX() {
+      return this.n.n.ad;
+   }
+
+   @Nullable
+   @Override
+   public dim bd() {
+      return this.r() && !this.r_() ? (dim)MoreObjects.firstNonNull(this.q, this.j.k()) : null;
+   }
+
+   @Override
+   public boolean b(boolean $$0, boolean $$1, boolean $$2) {
+      boolean $$3 = super.b($$0, $$1, $$2);
+      this.d();
+      return $$3;
+   }
+
+   private void d() {
+      if (this.f.b()) {
+         this.n.execute(() -> ftz.a(this.n));
+      }
+   }
+
+   @Override
+   public void a(Throwable $$0, ede $$1, dhw $$2) {
+      super.a($$0, $$1, $$2);
+      this.d();
+      this.n.execute(() -> ftz.a(this.n, $$2));
+   }
+
+   @Override
+   public void b(Throwable $$0, ede $$1, dhw $$2) {
+      super.b($$0, $$1, $$2);
+      this.d();
+      this.n.execute(() -> ftz.b(this.n, $$2));
    }
 }

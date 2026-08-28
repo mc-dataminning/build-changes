@@ -1,94 +1,86 @@
-import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
-import java.util.function.IntFunction;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public enum bwc implements bag {
-   a(bwc.a.a, 0, 0, "mainhand"),
-   b(bwc.a.a, 1, 5, "offhand"),
-   c(bwc.a.b, 0, 1, 1, "feet"),
-   d(bwc.a.b, 1, 1, 2, "legs"),
-   e(bwc.a.b, 2, 1, 3, "chest"),
-   f(bwc.a.b, 3, 1, 4, "head"),
-   g(bwc.a.c, 0, 1, 6, "body"),
-   h(bwc.a.d, 0, 1, 7, "saddle");
+public class bwc {
+   private final Map<bwb, List<fdw>> a;
 
-   public static final int i = 0;
-   public static final List<bwc> j = List.of(values());
-   public static final IntFunction<bwc> k = aya.a($$0 -> $$0.q, values(), aya.a.a);
-   public static final bag.a<bwc> l = bag.a(bwc::values);
-   public static final yt<ByteBuf, bwc> m = yr.a(k, $$0 -> $$0.q);
-   private final bwc.a n;
-   private final int o;
-   private final int p;
-   private final int q;
-   private final String r;
-
-   private bwc(final bwc.a $$0, final int $$1, final int $$2, final int $$3, final String $$4) {
-      this.n = $$0;
-      this.o = $$1;
-      this.p = $$2;
-      this.q = $$3;
-      this.r = $$4;
+   bwc(Map<bwb, List<fdw>> $$0) {
+      this.a = $$0;
    }
 
-   private bwc(final bwc.a $$0, final int $$1, final int $$2, final String $$3) {
-      this($$0, $$1, 0, $$2, $$3);
+   public static bwc a(float $$0, float $$1) {
+      return a().a($$0, $$1);
    }
 
-   public bwc.a a() {
-      return this.n;
+   public static bwc.a a() {
+      return new bwc.a();
    }
 
-   public int b() {
-      return this.o;
+   public bwc a(float $$0, float $$1, float $$2) {
+      return new bwc(af.a(bwb.class, $$3 -> {
+         List<fdw> $$4 = new ArrayList<>();
+
+         for (fdw $$5 : this.a.get($$3)) {
+            $$4.add($$5.d((double)$$0, (double)$$1, (double)$$2));
+         }
+
+         return $$4;
+      }));
    }
 
-   public int a(int $$0) {
-      return $$0 + this.o;
+   @Nullable
+   public fdw a(bwb $$0, int $$1, float $$2) {
+      List<fdw> $$3 = this.a.get($$0);
+      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
    }
 
-   public cxy a(cxy $$0) {
-      return this.p > 0 ? $$0.a(this.p) : $$0;
-   }
-
-   public int d() {
-      return this.q;
-   }
-
-   public int b(int $$0) {
-      return this.q + $$0;
-   }
-
-   public String e() {
-      return this.r;
-   }
-
-   public boolean f() {
-      return this.n == bwc.a.b || this.n == bwc.a.c;
-   }
-
-   @Override
-   public String c() {
-      return this.r;
-   }
-
-   public boolean g() {
-      return this.n != bwc.a.d;
-   }
-
-   public static bwc a(String $$0) {
-      bwc $$1 = l.a($$0);
-      if ($$1 != null) {
-         return $$1;
+   public fdw b(bwb $$0, int $$1, float $$2) {
+      fdw $$3 = this.a($$0, $$1, $$2);
+      if ($$3 == null) {
+         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
       } else {
-         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+         return $$3;
       }
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   public fdw c(bwb $$0, int $$1, float $$2) {
+      List<fdw> $$3 = this.a.get($$0);
+      if ($$3.isEmpty()) {
+         throw new IllegalStateException("Had no attachment points of type: " + $$0);
+      } else {
+         fdw $$4 = $$3.get(azk.a($$1, 0, $$3.size() - 1));
+         return a($$4, $$2);
+      }
+   }
+
+   private static fdw a(fdw $$0, float $$1) {
+      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
+   }
+
+   public static class a {
+      private final Map<bwb, List<fdw>> a = new EnumMap<>(bwb.class);
+
+      a() {
+      }
+
+      public bwc.a a(bwb $$0, float $$1, float $$2, float $$3) {
+         return this.a($$0, new fdw((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      public bwc.a a(bwb $$0, fdw $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
+         return this;
+      }
+
+      public bwc a(float $$0, float $$1) {
+         Map<bwb, List<fdw>> $$2 = af.a(bwb.class, $$2x -> {
+            List<fdw> $$3 = this.a.get($$2x);
+            return $$3 == null ? $$2x.a($$0, $$1) : List.copyOf($$3);
+         });
+         return new bwc($$2);
+      }
    }
 }

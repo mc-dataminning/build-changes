@@ -1,16 +1,21 @@
-public enum dyx implements bag {
-   a("floor"),
-   b("wall"),
-   c("ceiling");
+public class dyx {
+   public static final float a = 10.0F;
+   private float b;
+   private float c;
 
-   private final String d;
-
-   private dyx(final String $$0) {
-      this.d = $$0;
+   dyx() {
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public float a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   void c() {
+      this.c = this.b;
+      this.b = azk.h(this.b + 10.0F);
    }
 }

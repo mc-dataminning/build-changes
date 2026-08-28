@@ -1,66 +1,19 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class fmc extends fmb {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wv c = wv.c("mco.configure.world.opening");
-   private final fjf d;
-   private final fwf e;
-   private final boolean f;
-   private final fnd g;
+public class fmc {
+   private static final int a = 8226750;
+   private static final ww b = ww.c("mco.info").b(8226750);
+   private static final ww c = ww.c("mco.warning").b(-65536);
 
-   public fmc(fjf $$0, fwf $$1, boolean $$2, fnd $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public static fss a(fxi $$0, ww $$1, Consumer<fss> $$2) {
+      return new fss.a($$0, b).a($$1).a(wv.j, $$2).a(wv.e, fss::aK_).a();
    }
 
-   @Override
-   public void run() {
-      fie $$0 = fie.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.f(this.d.a);
-            if ($$2) {
-               this.g.execute(() -> {
-                  if (this.e instanceof fko) {
-                     ((fko)this.e).f();
-                  }
-
-                  this.d.e = fjf.c.b;
-                  if (this.f) {
-                     fhz.a(this.d, this.e);
-                  } else {
-                     this.g.a(this.e);
-                  }
-               });
-               break;
-            }
-         } catch (fkb var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to open server", var5);
-            this.a(var5);
-         }
-      }
+   public static fss b(fxi $$0, ww $$1, Consumer<fss> $$2) {
+      return new fss.a($$0, c).a($$1).a(wv.j, $$2).a(wv.e, fss::aK_).a();
    }
 
-   @Override
-   public wv a() {
-      return c;
+   public static fss c(fxi $$0, ww $$1, Consumer<fss> $$2) {
+      return new fss.a($$0, c).a($$1).a(wv.h, $$2).a();
    }
 }

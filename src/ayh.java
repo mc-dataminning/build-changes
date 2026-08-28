@@ -198,7 +198,7 @@ public class ayh {
    public static record b(long b, byte[] c) {
       public static final ayh.b a = new ayh.b(0L, ByteArrays.EMPTY_ARRAY);
 
-      public b(vr $$0) {
+      public b(vs $$0) {
          this($$0.readLong(), $$0.b());
       }
 
@@ -206,7 +206,7 @@ public class ayh {
          return this.c.length > 0;
       }
 
-      public static void a(vr $$0, ayh.b $$1) {
+      public static void a(vs $$0, ayh.b $$1) {
          $$0.b($$1.b);
          $$0.a($$1.c);
       }

@@ -1,38 +1,28 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Set;
 
-public class chk {
-   @Nullable
-   public static fcu a(bwz $$0, int $$1, int $$2) {
-      boolean $$3 = chl.a($$0, $$1);
-      return cho.a($$0, () -> {
-         jj $$4 = cho.a($$0.dY(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+public class chk extends chh<bwz> {
+   @Override
+   public Set<cgb<?>> a() {
+      return ImmutableSet.of(cgb.i);
    }
 
-   @Nullable
-   public static fcu a(bwz $$0, int $$1, int $$2, fcu $$3, double $$4) {
-      fcu $$5 = $$3.a($$0.dA(), $$0.dC(), $$0.dG());
-      boolean $$6 = chl.a($$0, $$1);
-      return cho.a($$0, () -> {
-         jj $$6x = cho.a($$0.dY(), $$1, $$2, 0, $$5.d, $$5.f, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
+   @Override
+   protected void a(aro $$0, bwz $$1) {
+      $$1.eb().a(cgb.i, this.a($$1));
    }
 
-   @Nullable
-   public static fcu a(bwz $$0, int $$1, int $$2, fcu $$3) {
-      fcu $$4 = $$0.dt().d($$3);
-      boolean $$5 = chl.a($$0, $$1);
-      return cho.a($$0, () -> {
-         jj $$5x = cho.a($$0.dY(), $$1, $$2, 0, $$4.d, $$4.f, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
+   private List<bwz> a(bwz $$0) {
+      return ImmutableList.copyOf(this.c($$0).b(this::b));
    }
 
-   @Nullable
-   private static jj a(bwz $$0, int $$1, boolean $$2, jj $$3) {
-      jj $$4 = cho.a($$0, $$1, $$0.dY(), $$3);
-      return !chl.a($$4, $$0) && !chl.a($$2, $$0, $$4) && !chl.a($$0.O(), $$4) && !chl.b($$0, $$4) ? $$4 : null;
+   private boolean b(bwz $$0) {
+      return $$0.aq() == bwj.bD && $$0.n_();
+   }
+
+   private cgd c(bwz $$0) {
+      return $$0.eb().c(cgb.h).orElse(cgd.a());
    }
 }

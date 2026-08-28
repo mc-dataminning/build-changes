@@ -1,14 +1,25 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 
-public class bef extends bhm {
-   public bef(Schema $$0) {
-      super($$0, false, "EntityGoatMissingStateFix", biq.D, "minecraft:goat");
+public class bef extends DataFix {
+   private TypeReference a;
+
+   public bef(Schema $$0, TypeReference $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("HasLeftHorn", $$0x.createBoolean(true)).set("HasRightHorn", $$0x.createBoolean(true)));
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("EntityFallDistanceFloatToDoubleFixFor" + this.a.typeName(), this.getOutputSchema().getType(this.a), bef::a);
+   }
+
+   private static Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(), $$0x -> $$0x.renameAndFixField("FallDistance", "fall_distance", $$0xx -> $$0xx.createDouble((double)$$0xx.asFloat(0.0F)))
+      );
    }
 }

@@ -1,59 +1,54 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class hmf implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bos d;
-   @Nullable
-   private CompletableFuture<Optional<hmb>> e;
-
-   private hmf(bos $$0) {
-      this.d = $$0;
-   }
-
-   public static CompletableFuture<Optional<hmf>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            bos $$1 = bos.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new hmf($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
+public interface hmf<T> {
+   static <T> hmf<T> a() {
+      return new hmf<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
          }
-      }, af.h());
+
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
+         }
+      };
    }
 
-   public CompletableFuture<Optional<hmc>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               bos.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new hmb($$1, af.h()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
+   static <T> hmf<T> a(List<T> $$0, Function<T, Stream<ale>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
+      } else {
+         final hmh<T> $$2 = new hmh<>();
+         final hmh<T> $$3 = new hmh<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
+
+         $$2.a();
+         $$3.a();
+         return new hmf<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
             }
-         }, af.h());
-      }
 
-      return this.e.thenApply($$0 -> $$0.map(hmb::a));
-   }
-
-   @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(hmb::close));
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
       }
    }
+
+   List<T> a(String var1);
+
+   List<T> b(String var1);
 }

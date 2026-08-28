@@ -1,44 +1,57 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public record epm(List<epm.a> c, eqd d) {
+public record epm(je<eif<?, ?>> e, List<epp> f) {
    public static final Codec<epm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(epm.a.a.listOf().fieldOf("structures").forGetter(epm::a), eqd.b.fieldOf("placement").forGetter(epm::b)).apply($$0, epm::new)
+      $$0 -> $$0.group(eif.b.fieldOf("feature").forGetter($$0x -> $$0x.e), epp.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, epm::new)
    );
-   public static final Codec<js<epm>> b = akz.a(me.bb, a);
+   public static final Codec<je<epm>> b = ala.a(mg.aZ, a);
+   public static final Codec<ji<epm>> c = jt.a(mg.aZ, a);
+   public static final Codec<List<ji<epm>>> d = jt.a(mg.aZ, a, true).listOf();
 
-   public epm(js<epg> $$0, eqd $$1) {
-      this(List.of(new epm.a($$0, 1)), $$1);
+   public boolean a(djo $$0, ebm $$1, azt $$2, iu $$3) {
+      return this.a(new epn($$0, $$1, Optional.empty()), $$2, $$3);
    }
 
-   public static epm.a a(js<epg> $$0, int $$1) {
-      return new epm.a($$0, $$1);
+   public boolean b(djo $$0, ebm $$1, azt $$2, iu $$3) {
+      return this.a(new epn($$0, $$1, Optional.of(this)), $$2, $$3);
    }
 
-   public static epm.a a(js<epg> $$0) {
-      return new epm.a($$0, 1);
-   }
+   private boolean a(epn $$0, azt $$1, iu $$2) {
+      Stream<iu> $$3 = Stream.of($$2);
 
-   public List<epm.a> a() {
-      return this.c;
-   }
-
-   public eqd b() {
-      return this.d;
-   }
-
-   public static record a(js<epg> b, int c) {
-      public static final Codec<epm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(epg.b.fieldOf("structure").forGetter(epm.a::a), ays.m.fieldOf("weight").forGetter(epm.a::b)).apply($$0, epm.a::new)
-      );
-
-      public js<epg> a() {
-         return this.b;
+      for (epp $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
       }
 
-      public int b() {
-         return this.c;
-      }
+      eif<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
+         }
+      });
+      return $$6.isTrue();
+   }
+
+   public Stream<eif<?, ?>> a() {
+      return this.e.a().a();
+   }
+
+   @Override
+   public String toString() {
+      return "Placed " + this.e;
+   }
+
+   public je<eif<?, ?>> b() {
+      return this.e;
+   }
+
+   public List<epp> c() {
+      return this.f;
    }
 }

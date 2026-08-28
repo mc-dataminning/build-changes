@@ -1,67 +1,69 @@
-import java.util.List;
-
 public class ru {
-   public static final alc<eok> a = rw.a("delta");
-   public static final alc<eok> b = rw.a("small_basalt_columns");
-   public static final alc<eok> c = rw.a("large_basalt_columns");
-   public static final alc<eok> d = rw.a("basalt_blobs");
-   public static final alc<eok> e = rw.a("blackstone_blobs");
-   public static final alc<eok> f = rw.a("glowstone_extra");
-   public static final alc<eok> g = rw.a("glowstone");
-   public static final alc<eok> h = rw.a("crimson_forest_vegetation");
-   public static final alc<eok> i = rw.a("warped_forest_vegetation");
-   public static final alc<eok> j = rw.a("nether_sprouts");
-   public static final alc<eok> k = rw.a("twisting_vines");
-   public static final alc<eok> l = rw.a("weeping_vines");
-   public static final alc<eok> m = rw.a("patch_crimson_roots");
-   public static final alc<eok> n = rw.a("basalt_pillar");
-   public static final alc<eok> o = rw.a("spring_delta");
-   public static final alc<eok> p = rw.a("spring_closed");
-   public static final alc<eok> q = rw.a("spring_closed_double");
-   public static final alc<eok> r = rw.a("spring_open");
-   public static final alc<eok> s = rw.a("patch_soul_fire");
-   public static final alc<eok> t = rw.a("patch_fire");
+   public static final ald<epm> a = rx.a("ice_spike");
+   public static final ald<epm> b = rx.a("ice_patch");
+   public static final ald<epm> c = rx.a("forest_rock");
+   public static final ald<epm> d = rx.a("iceberg_packed");
+   public static final ald<epm> e = rx.a("iceberg_blue");
+   public static final ald<epm> f = rx.a("blue_ice");
+   public static final ald<epm> g = rx.a("lake_lava_underground");
+   public static final ald<epm> h = rx.a("lake_lava_surface");
+   public static final ald<epm> i = rx.a("disk_clay");
+   public static final ald<epm> j = rx.a("disk_gravel");
+   public static final ald<epm> k = rx.a("disk_sand");
+   public static final ald<epm> l = rx.a("disk_grass");
+   public static final ald<epm> m = rx.a("freeze_top_layer");
+   public static final ald<epm> n = rx.a("void_start_platform");
+   public static final ald<epm> o = rx.a("desert_well");
+   public static final ald<epm> p = rx.a("spring_lava");
+   public static final ald<epm> q = rx.a("spring_lava_frozen");
+   public static final ald<epm> r = rx.a("spring_water");
 
-   public static void a(qg<eok> $$0) {
-      jt<ehd<?, ?>> $$1 = $$0.a(me.aP);
-      js<ehd<?, ?>> $$2 = $$1.b(rj.a);
-      js<ehd<?, ?>> $$3 = $$1.b(rj.b);
-      js<ehd<?, ?>> $$4 = $$1.b(rj.c);
-      js<ehd<?, ?>> $$5 = $$1.b(rj.d);
-      js<ehd<?, ?>> $$6 = $$1.b(rj.e);
-      js<ehd<?, ?>> $$7 = $$1.b(rj.f);
-      js<ehd<?, ?>> $$8 = $$1.b(rj.g);
-      js<ehd<?, ?>> $$9 = $$1.b(rj.i);
-      js<ehd<?, ?>> $$10 = $$1.b(rj.k);
-      js<ehd<?, ?>> $$11 = $$1.b(rj.m);
-      js<ehd<?, ?>> $$12 = $$1.b(rj.o);
-      js<ehd<?, ?>> $$13 = $$1.b(rj.p);
-      js<ehd<?, ?>> $$14 = $$1.b(rj.q);
-      js<ehd<?, ?>> $$15 = $$1.b(rj.r);
-      js<ehd<?, ?>> $$16 = $$1.b(rj.s);
-      js<ehd<?, ?>> $$17 = $$1.b(rj.t);
-      js<ehd<?, ?>> $$18 = $$1.b(rj.v);
-      js<ehd<?, ?>> $$19 = $$1.b(rj.u);
-      rw.a($$0, a, $$2, eob.a(40), eny.a());
-      rw.a($$0, b, $$3, eob.a(4), eny.a());
-      rw.a($$0, c, $$4, eob.a(2), eny.a());
-      rw.a($$0, d, $$5, eoc.a(75), eoh.a(), rw.f, eny.a());
-      rw.a($$0, e, $$6, eoc.a(25), eoh.a(), rw.f, eny.a());
-      rw.a($$0, f, $$7, eoc.a(bsn.a(0, 9)), eoh.a(), rw.i, eny.a());
-      rw.a($$0, g, $$7, eoc.a(10), eoh.a(), rw.f, eny.a());
-      rw.a($$0, h, $$8, eob.a(6), eny.a());
-      rw.a($$0, i, $$9, eob.a(5), eny.a());
-      rw.a($$0, j, $$10, eob.a(4), eny.a());
-      rw.a($$0, k, $$11, eoc.a(10), eoh.a(), rw.f, eny.a());
-      rw.a($$0, l, $$12, eoc.a(10), eoh.a(), rw.f, eny.a());
-      rw.a($$0, m, $$13, rw.f, eny.a());
-      rw.a($$0, n, $$14, eoc.a(10), eoh.a(), rw.f, eny.a());
-      rw.a($$0, o, $$15, eoc.a(16), eoh.a(), rw.i, eny.a());
-      rw.a($$0, p, $$16, eoc.a(16), eoh.a(), rw.g, eny.a());
-      rw.a($$0, q, $$16, eoc.a(32), eoh.a(), rw.g, eny.a());
-      rw.a($$0, r, $$17, eoc.a(8), eoh.a(), rw.i, eny.a());
-      List<eon> $$20 = List.of(eoc.a(btb.a(0, 5)), eoh.a(), rw.i, eny.a());
-      rw.a($$0, s, $$18, $$20);
-      rw.a($$0, t, $$19, $$20);
+   public static void a(qh<epm> $$0) {
+      jf<eif<?, ?>> $$1 = $$0.a(mg.aK);
+      je<eif<?, ?>> $$2 = $$1.b(rj.a);
+      je<eif<?, ?>> $$3 = $$1.b(rj.b);
+      je<eif<?, ?>> $$4 = $$1.b(rj.c);
+      je<eif<?, ?>> $$5 = $$1.b(rj.d);
+      je<eif<?, ?>> $$6 = $$1.b(rj.e);
+      je<eif<?, ?>> $$7 = $$1.b(rj.f);
+      je<eif<?, ?>> $$8 = $$1.b(rj.g);
+      je<eif<?, ?>> $$9 = $$1.b(rj.h);
+      je<eif<?, ?>> $$10 = $$1.b(rj.i);
+      je<eif<?, ?>> $$11 = $$1.b(rj.j);
+      je<eif<?, ?>> $$12 = $$1.b(rj.l);
+      je<eif<?, ?>> $$13 = $$1.b(rj.k);
+      je<eif<?, ?>> $$14 = $$1.b(rj.n);
+      je<eif<?, ?>> $$15 = $$1.b(rj.o);
+      je<eif<?, ?>> $$16 = $$1.b(rj.p);
+      je<eif<?, ?>> $$17 = $$1.b(rj.q);
+      je<eif<?, ?>> $$18 = $$1.b(rj.r);
+      rx.a($$0, a, $$2, epe.a(3), epj.a(), rx.a, epa.a());
+      rx.a($$0, b, $$3, epe.a(2), epj.a(), rx.a, epr.a(bta.a(-1)), epb.a(egu.a(dlw.ec)), epa.a());
+      rx.a($$0, c, $$4, epe.a(2), epj.a(), rx.a, epa.a());
+      rx.a($$0, e, $$6, eps.a(200), epj.a(), epa.a());
+      rx.a($$0, d, $$5, eps.a(16), epj.a(), epa.a());
+      rx.a($$0, f, $$7, epe.a(btj.a(0, 19)), epj.a(), eph.a(egh.a(30), egh.a(61)), epa.a());
+      rx.a(
+         $$0,
+         g,
+         $$8,
+         eps.a(9),
+         epj.a(),
+         eph.a(eos.a(egh.a(0), egh.b())),
+         epf.a(ja.a, egu.a(egu.a(egu.c), egu.d(new iu(0, -5, 0))), 32),
+         epu.a(efn.a.c, Integer.MIN_VALUE, -5),
+         epa.a()
+      );
+      rx.a($$0, h, $$8, eps.a(200), epj.a(), rx.d, epa.a());
+      rx.a($$0, i, $$9, epj.a(), rx.c, epb.a(egu.a(evw.c)), epa.a());
+      rx.a($$0, j, $$10, epj.a(), rx.c, epb.a(egu.a(evw.c)), epa.a());
+      rx.a($$0, k, $$11, epe.a(3), epj.a(), rx.c, epb.a(egu.a(evw.c)), epa.a());
+      rx.a($$0, l, $$12, epe.a(1), epj.a(), rx.c, epr.a(bta.a(-1)), epb.a(egu.a(dlw.to)), epa.a());
+      rx.a($$0, m, $$13, epa.a());
+      rx.a($$0, n, $$14, epa.a());
+      rx.a($$0, o, $$15, eps.a(1000), epj.a(), rx.a, epa.a());
+      rx.a($$0, p, $$16, epe.a(20), epj.a(), eph.a(eot.a(egh.a(), egh.c(8), 8)), epa.a());
+      rx.a($$0, q, $$17, epe.a(20), epj.a(), eph.a(eot.a(egh.a(), egh.c(8), 8)), epa.a());
+      rx.a($$0, r, $$18, epe.a(25), epj.a(), eph.a(egh.a(), egh.a(192)), epa.a());
    }
 }

@@ -1,23 +1,21 @@
-import java.util.List;
-import java.util.UUID;
+public record adx(int b, ww c) implements zd<abs> {
+   public static final yu<wh, adx> a = yu.a(ys.h, adx::b, wy.d, adx::e, adx::new);
 
-public record adx(List<UUID> b) implements zc<abr> {
-   public static final yt<vr, adx> a = zc.a(adx::a, adx::new);
-
-   private adx(vr $$0) {
-      this($$0.a(km.g));
+   @Override
+   public zf<adx> a() {
+      return agl.ae;
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.b, km.g);
+   public void a(abs $$0) {
+      $$0.a(this);
    }
 
    @Override
-   public ze<adx> a() {
-      return agk.af;
+   public boolean c() {
+      return true;
    }
 
-   public void a(abr $$0) {
-      $$0.a(this);
+   public ww e() {
+      return this.c;
    }
 }

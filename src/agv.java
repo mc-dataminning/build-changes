@@ -1,20 +1,44 @@
-public record agv(xm.a b) implements zc<agm> {
-   public static final yt<vr, agv> a = zc.a(agv::a, agv::new);
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   private agv(vr $$0) {
-      this(xm.a.a($$0));
+public record agv(String b, Instant c, long d, @Nullable xi e, xd.b f) implements zd<agn> {
+   public static final yu<vs, agv> a = zd.a(agv::a, agv::new);
+
+   private agv(vs $$0) {
+      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xi::a), new xd.b($$0));
    }
 
-   private void a(vr $$0) {
-      xm.a.a($$0, this.b);
+   private void a(vs $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      $$0.a(this.e, xi::a);
+      this.f.a($$0);
    }
 
    @Override
-   public ze<agv> a() {
-      return agk.bs;
+   public zf<agv> a() {
+      return agl.br;
    }
 
-   public void a(agm $$0) {
+   public void a(agn $$0) {
       $$0.a(this);
+   }
+
+   public Instant e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
+   }
+
+   @Nullable
+   public xi g() {
+      return this.e;
+   }
+
+   public xd.b h() {
+      return this.f;
    }
 }

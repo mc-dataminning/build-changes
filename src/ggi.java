@@ -1,26 +1,21 @@
-public class ggi extends gea<hcq> {
-   private final ghd a;
-
-   public ggi(ghd $$0) {
+public class ggi extends gfr<hdb> {
+   public ggi(gig $$0) {
       super($$0);
-      this.a = $$0.b("tail");
    }
 
-   public static ghj a(ghh $$0) {
-      ghl $$1 = new ghl();
-      ghn $$2 = $$1.a();
-      int $$3 = 22;
-      $$2.a("body", ghi.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), ghf.a(0.0F, 22.0F, 0.0F));
-      $$2.a("tail", ghi.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), ghf.a(0.0F, 22.0F, 3.0F));
-      $$2.a("right_fin", ghi.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), ghf.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", ghi.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), ghf.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", ghi.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), ghf.a(0.0F, 20.5F, -3.0F));
-      return ghj.a($$1, 32, 32);
-   }
-
-   public void a(hcq $$0) {
-      super.a($$0);
-      float $$1 = $$0.ak ? 1.0F : 1.5F;
-      this.a.f = -$$1 * 0.45F * azk.a(0.6F * $$0.u);
+   public static gim a() {
+      gio $$0 = gfr.a(gik.a, 0.0F);
+      giq $$1 = $$0.a();
+      giq $$2 = $$1.a("head");
+      $$2.a("hat");
+      $$1.a("body");
+      $$1.a("left_arm");
+      $$1.a("right_arm");
+      $$1.a("left_leg");
+      $$1.a("right_leg");
+      gil $$3 = gil.c().a(24, 0).a(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, new gik(1.0F));
+      $$2.a("left_ear", $$3, gii.a(-6.0F, -6.0F, 0.0F));
+      $$2.a("right_ear", $$3, gii.a(6.0F, -6.0F, 0.0F));
+      return gim.a($$0, 64, 64);
    }
 }

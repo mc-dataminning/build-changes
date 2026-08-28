@@ -1,10 +1,12 @@
-public class gzw extends hak {
-   public float a;
-   public int b;
-   public float c;
-   public float d;
-   public float e;
-   public boolean f;
-   public float g;
-   public float h;
+public class gzw extends gzk<hcy, ggd> {
+   private static final gpn a = gpn.q(ale.b("textures/entity/phantom_eyes.png"));
+
+   public gzw(gxh<hcy, ggd> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public gpn a() {
+      return a;
+   }
 }

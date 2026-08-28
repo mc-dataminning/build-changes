@@ -1,100 +1,132 @@
-public class fxh extends fwu<cud> {
-   private static final ald G = ald.b("container/crafter/disabled_slot");
-   private static final ald H = ald.b("container/crafter/powered_redstone");
-   private static final ald I = ald.b("container/crafter/unpowered_redstone");
-   private static final ald J = ald.b("textures/gui/container/crafter.png");
-   private static final wv K = wv.c("gui.togglable_slot");
-   private final cqi L;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.Instant;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public fxh(cud $$0, cqh $$1, wv $$2) {
-      super($$0, $$1, $$2);
-      this.L = $$1.k;
+public class fxh extends fxi {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 25;
+   private static final ww c = ww.c("recover_world.title").a(n.r);
+   private static final ww d = ww.c("recover_world.bug_tracker");
+   private static final ww s = ww.c("recover_world.restore");
+   private static final ww u = ww.c("recover_world.no_fallback");
+   private static final ww v = ww.c("recover_world.done.title");
+   private static final ww w = ww.c("recover_world.done.success");
+   private static final ww x = ww.c("recover_world.done.failed");
+   private static final ww y = ww.c("recover_world.issue.none").a(n.k);
+   private static final ww z = ww.c("recover_world.issue.missing_file").a(n.m);
+   private final BooleanConsumer A;
+   private final fvi B = fvi.d().a(8);
+   private final ww C;
+   private final fsk D;
+   private final fsk E;
+   private final eyb.c F;
+
+   public fxh(fof $$0, BooleanConsumer $$1, eyb.c $$2) {
+      super(c);
+      this.A = $$1;
+      this.C = ww.a("recover_world.message", ww.b($$2.f()).a(n.h));
+      this.D = new fsk(this.C, $$0.h);
+      this.F = $$2;
+      Exception $$3 = this.a($$2, false);
+      Exception $$4 = this.a($$2, true);
+      ww $$5 = ww.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
+      this.E = new fsk($$5, $$0.h);
+      boolean $$6 = $$3 != null && $$4 == null;
+      this.B.c().b();
+      this.B.a(new fsx(this.l, $$0.h));
+      this.B.a(this.D.b(true));
+      this.B.a(this.E);
+      fvi $$7 = fvi.e().a(5);
+      $$7.a(frq.a(d, fwf.b(this, ayf.j)).b(120, 20).a());
+      $$7.a(frq.a(s, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : ftb.a(u)).a()).j = $$6;
+      this.B.a($$7);
+      this.B.a(frq.a(wv.k, $$0x -> this.aK_()).b(120, 20).a());
+      this.B.a(this::c);
+   }
+
+   private void a(fof $$0) {
+      Exception $$1 = this.a(this.F, false);
+      Exception $$2 = this.a(this.F, true);
+      if ($$1 != null && $$2 == null) {
+         $$0.d(new fwt(ww.c("recover_world.restoring")));
+         gcm.a(this.F);
+         if (this.F.n()) {
+            $$0.a(new fwg(this.A, v, w, wv.j, wv.k));
+         } else {
+            $$0.a(new fwb(() -> this.A.accept(false), v, x));
+         }
+      } else {
+         a.error(
+            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
+            $$1 != null ? $$1.getMessage() : "no issues",
+            $$2 != null ? $$2.getMessage() : "no issues"
+         );
+         $$0.a(new fwb(() -> this.A.accept(false), v, x));
+      }
+   }
+
+   private ww a(eyb.c $$0, boolean $$1, @Nullable Exception $$2) {
+      if ($$1 && $$2 instanceof FileNotFoundException) {
+         return ww.i();
+      } else {
+         xk $$3 = ww.i();
+         Instant $$4 = $$0.a($$1);
+         xk $$5 = $$4 != null ? ww.b(gcx.a.format($$4)) : ww.c("recover_world.state_entry.unknown");
+         $$3.b(ww.a("recover_world.state_entry", $$5.a(n.h)));
+         if ($$2 == null) {
+            $$3.b(y);
+         } else if ($$2 instanceof FileNotFoundException) {
+            $$3.b(z);
+         } else if ($$2 instanceof uo) {
+            $$3.b(ww.b($$2.getCause().toString()).a(n.m));
+         } else {
+            $$3.b(ww.b($$2.toString()).a(n.m));
+         }
+
+         return $$3;
+      }
+   }
+
+   @Nullable
+   private Exception a(eyb.c $$0, boolean $$1) {
+      try {
+         if (!$$1) {
+            $$0.a($$0.h());
+         } else {
+            $$0.a($$0.i());
+         }
+
+         return null;
+      } catch (ui | uo | IOException var4) {
+         return var4;
+      }
    }
 
    @Override
    protected void aN_() {
       super.aN_();
-      this.v = (this.s - this.p.a(this.l)) / 2;
+      this.c();
    }
 
    @Override
-   protected void a(cvk $$0, int $$1, int $$2, cty $$3) {
-      if ($$0 instanceof cue && !$$0.h() && !this.L.U_()) {
-         switch ($$3) {
-            case a:
-               if (this.z.e($$1)) {
-                  this.a($$1);
-               } else if (this.z.g().f()) {
-                  this.b($$1);
-               }
-               break;
-            case c:
-               cxy $$4 = this.L.gi().a($$2);
-               if (this.z.e($$1) && !$$4.f()) {
-                  this.a($$1);
-               }
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(int $$0) {
-      this.a($$0, true);
-   }
-
-   private void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   private void a(int $$0, boolean $$1) {
-      this.z.a($$0, $$1);
-      super.a($$0, this.z.l, $$1);
-      float $$2 = $$1 ? 1.0F : 0.75F;
-      this.L.a(awk.Bp.a(), 0.4F, $$2);
+   protected void c() {
+      this.E.d(this.n - 50);
+      this.D.d(this.n - 50);
+      this.B.a();
+      fvc.a(this.B, this.J());
    }
 
    @Override
-   public void a(fpz $$0, cvk $$1) {
-      if ($$1 instanceof cue $$2 && this.z.e($$1.d)) {
-         this.a($$0, $$2);
-         return;
-      }
-
-      super.a($$0, $$1);
-   }
-
-   private void a(fpz $$0, cue $$1) {
-      $$0.a(goi::H, G, $$1.e - 1, $$1.f - 1, 18, 18);
+   public ww i() {
+      return wv.a(super.i(), this.C);
    }
 
    @Override
-   public void a(fpz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d($$0);
-      this.a($$0, $$1, $$2);
-      if (this.B instanceof cue && !this.z.e(this.B.d) && this.z.g().f() && !this.B.h() && !this.L.U_()) {
-         $$0.a(this.p, K, $$1, $$2);
-      }
-   }
-
-   private void d(fpz $$0) {
-      int $$1 = this.n / 2 + 9;
-      int $$2 = this.o / 2 - 48;
-      ald $$3;
-      if (this.z.l()) {
-         $$3 = H;
-      } else {
-         $$3 = I;
-      }
-
-      $$0.a(goi::H, $$3, $$1, $$2, 16, 16);
-   }
-
-   @Override
-   protected void a(fpz $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(goi::H, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+   public void aK_() {
+      this.A.accept(false);
    }
 }

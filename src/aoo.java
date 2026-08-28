@@ -1,52 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class aoo {
-   public static void a(CommandDispatcher<ex> $$0) {
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ww.b("commands.ride.not_riding", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> ww.b("commands.ride.already_riding", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> ww.b("commands.ride.mount.failure.generic", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(ww.c("commands.ride.mount.failure.cant_ride_players"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(ww.c("commands.ride.mount.failure.loop"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(ww.c("commands.ride.mount.failure.wrong_dimension"));
+
+   public static void a(CommandDispatcher<ei> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("rotate").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("ride").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)ey.a("target", fk.a())
-                     .then(ey.a("rotation", gy.a()).executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), gy.a($$0x, "rotation")))))
-                  .then(
-                     ((LiteralArgumentBuilder)ey.a("facing")
-                           .then(
-                              ey.a("entity")
-                                 .then(
-                                    ((RequiredArgumentBuilder)ey.a("facingEntity", fk.a())
-                                          .executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), new anx.a(fk.a($$0x, "facingEntity"), fj.a.a))))
-                                       .then(
-                                          ey.a("facingAnchor", fj.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ex)$$0x.getSource(),
-                                                      fk.a($$0x, "target"),
-                                                      new anx.a(fk.a($$0x, "facingEntity"), fj.a($$0x, "facingAnchor"))
-                                                   )
-                                             )
-                                       )
-                                 )
-                           ))
-                        .then(
-                           ey.a("facingLocation", hb.a())
-                              .executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), new anx.b(hb.a($$0x, "facingLocation"))))
-                        )
-                  )
+               ((RequiredArgumentBuilder)ej.a("target", ev.a())
+                     .then(ej.a("mount").then(ej.a("vehicle", ev.a()).executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), ev.a($$0x, "vehicle"))))))
+                  .then(ej.a("dismount").executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"))))
             )
       );
    }
 
-   private static int a(ex $$0, bvs $$1, gw $$2) {
-      fct $$3 = $$2.b($$0);
-      $$1.a($$3.j, $$3.i);
-      $$0.a(() -> wv.a("commands.rotate.success", $$1.m_()), true);
-      return 1;
+   private static int a(ei $$0, bwa $$1, bwa $$2) throws CommandSyntaxException {
+      bwa $$3 = $$1.dk();
+      if ($$3 != null) {
+         throw b.create($$1.m_(), $$3.m_());
+      } else if ($$2.aq() == bwj.bS) {
+         throw d.create();
+      } else if ($$1.da().anyMatch($$1x -> $$1x == $$2)) {
+         throw e.create();
+      } else if ($$1.dV() != $$2.dV()) {
+         throw f.create();
+      } else if (!$$1.a($$2, true)) {
+         throw c.create($$1.m_(), $$2.m_());
+      } else {
+         $$0.a(() -> ww.a("commands.ride.mount.success", $$1.m_(), $$2.m_()), true);
+         return 1;
+      }
    }
 
-   private static int a(ex $$0, bvs $$1, anx $$2) {
-      $$2.perform($$0, $$1);
-      $$0.a(() -> wv.a("commands.rotate.success", $$1.m_()), true);
-      return 1;
+   private static int a(ei $$0, bwa $$1) throws CommandSyntaxException {
+      bwa $$2 = $$1.dk();
+      if ($$2 == null) {
+         throw a.create($$1.m_());
+      } else {
+         $$1.bP();
+         $$0.a(() -> ww.a("commands.ride.dismount.success", $$1.m_(), $$2.m_()), true);
+         return 1;
+      }
    }
 }

@@ -1,31 +1,60 @@
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtm extends dkk {
-   protected static final MapCodec<lz> a = md.i
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof lz $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
-      .fieldOf("particle_options");
-   public static final MapCodec<dtm> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), t()).apply($$0, dtm::new));
-   protected final lz c;
+public class dtm extends dlu {
+   public static final MapCodec<dtm> a = b(dtm::new);
+   private static final feq b = dlu.b(16.0, 0.0, 14.0);
+   private static final int c = 20;
 
    @Override
-   public MapCodec<? extends dtm> a() {
+   public MapCodec<dtm> a() {
+      return a;
+   }
+
+   public dtm(dzn.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected feq b(dzo $$0, dhv $$1, iu $$2, feb $$3) {
       return b;
    }
 
-   protected dtm(lz $$0, dyl.d $$1) {
-      super($$1);
-      this.c = $$0;
+   @Override
+   protected feq b_(dzo $$0, dhv $$1, iu $$2) {
+      return fen.b();
    }
 
    @Override
-   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
-      double $$4 = (double)$$2.u() + 0.5;
-      double $$5 = (double)$$2.v() + 0.7;
-      double $$6 = (double)$$2.w() + 0.5;
-      $$1.a(lv.ah, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      $$1.a(this.c, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected feq c(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return fen.b();
+   }
+
+   @Override
+   protected void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      dmb.b($$1, $$2.d(), $$0);
+   }
+
+   @Override
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      if ($$4 == ja.b && $$6.a(dlw.J)) {
+         $$2.a($$3, this, 20);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void a(dzo $$0, dip $$1, iu $$2, dzo $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
+   }
+
+   @Override
+   protected boolean a(dzo $$0, ewk $$1) {
+      return false;
+   }
+
+   @Override
+   protected float c(dzo $$0, dhv $$1, iu $$2) {
+      return 0.2F;
    }
 }

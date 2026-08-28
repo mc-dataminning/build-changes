@@ -1,42 +1,89 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+public interface vf extends ur {
+   vf a = new vf() {
+   };
 
-public class vf extends vb {
-   private final Deque<vd> a = new ArrayDeque<>();
-
-   public vf(vc... $$0) {
-      vd $$1 = vd.a();
-
-      for (vc $$2 : $$0) {
-         $$1.a($$2);
-      }
-
-      this.a.push($$1);
+   @Override
+   default ur.b a() {
+      return ur.b.a;
    }
 
    @Override
-   public uq.a a(uv<?> $$0, String $$1) {
-      vd $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return uq.a.b;
-      } else {
-         if ($$0 == tw.b) {
-            vd $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
-         }
-
-         return super.a($$0, $$1);
-      }
+   default ur.b a(String $$0) {
+      return ur.b.a;
    }
 
    @Override
-   public uq.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
+   default ur.b a(byte $$0) {
+      return ur.b.a;
+   }
 
-      return super.b();
+   @Override
+   default ur.b a(short $$0) {
+      return ur.b.a;
+   }
+
+   @Override
+   default ur.b a(int $$0) {
+      return ur.b.a;
+   }
+
+   @Override
+   default ur.b a(long $$0) {
+      return ur.b.a;
+   }
+
+   @Override
+   default ur.b a(float $$0) {
+      return ur.b.a;
+   }
+
+   @Override
+   default ur.b a(double $$0) {
+      return ur.b.a;
+   }
+
+   @Override
+   default ur.b a(byte[] $$0) {
+      return ur.b.a;
+   }
+
+   @Override
+   default ur.b a(int[] $$0) {
+      return ur.b.a;
+   }
+
+   @Override
+   default ur.b a(long[] $$0) {
+      return ur.b.a;
+   }
+
+   @Override
+   default ur.b a(uw<?> $$0, int $$1) {
+      return ur.b.a;
+   }
+
+   @Override
+   default ur.a b(uw<?> $$0, int $$1) {
+      return ur.a.b;
+   }
+
+   @Override
+   default ur.a a(uw<?> $$0) {
+      return ur.a.b;
+   }
+
+   @Override
+   default ur.a a(uw<?> $$0, String $$1) {
+      return ur.a.b;
+   }
+
+   @Override
+   default ur.b b() {
+      return ur.b.a;
+   }
+
+   @Override
+   default ur.b b(uw<?> $$0) {
+      return ur.b.a;
    }
 }

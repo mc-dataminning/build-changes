@@ -1,58 +1,62 @@
-public abstract class cuh {
-   private int a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public static cuh a(final ctz $$0, final int $$1) {
-      return new cuh() {
-         @Override
-         public int b() {
-            return $$0.a($$1);
-         }
+public record cuh(int c, float d, boolean e) implements day {
+   public static final Codec<cuh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ays.l.fieldOf("nutrition").forGetter(cuh::a),
+               Codec.FLOAT.fieldOf("saturation").forGetter(cuh::b),
+               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(cuh::c)
+            )
+            .apply($$0, cuh::new)
+   );
+   public static final yu<wh, cuh> b = yu.a(ys.h, cuh::a, ys.l, cuh::b, ys.b, cuh::c, cuh::new);
 
-         @Override
-         public void a(int $$0x) {
-            $$0.a($$1, $$0);
-         }
-      };
+   @Override
+   public void a(dip $$0, bwz $$1, cys $$2, dax $$3) {
+      azt $$4 = $$1.dY();
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), $$3.e().a(), awm.g, 1.0F, $$4.a(1.0F, 0.4F));
+      if ($$1 instanceof cqs $$5) {
+         $$5.gt().a(this);
+         $$0.a(null, $$5.dA(), $$5.dC(), $$5.dG(), awl.uT, awm.h, 0.5F, azk.b($$4, 0.9F, 1.0F));
+      }
    }
 
-   public static cuh a(final int[] $$0, final int $$1) {
-      return new cuh() {
-         @Override
-         public int b() {
-            return $$0[$$1];
-         }
-
-         @Override
-         public void a(int $$0x) {
-            $$0[$$1] = $$0;
-         }
-      };
+   public int a() {
+      return this.c;
    }
 
-   public static cuh a() {
-      return new cuh() {
-         private int a;
-
-         @Override
-         public int b() {
-            return this.a;
-         }
-
-         @Override
-         public void a(int $$0) {
-            this.a = $$0;
-         }
-      };
+   public float b() {
+      return this.d;
    }
-
-   public abstract int b();
-
-   public abstract void a(int var1);
 
    public boolean c() {
-      int $$0 = this.b();
-      boolean $$1 = $$0 != this.a;
-      this.a = $$0;
-      return $$1;
+      return this.e;
+   }
+
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+
+      public cuh.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public cuh.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public cuh.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public cuh b() {
+         float $$0 = cuf.a(this.a, this.b);
+         return new cuh(this.a, $$0, this.c);
+      }
    }
 }

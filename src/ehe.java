@@ -1,57 +1,21 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
+@Deprecated
 public class ehe extends ehf {
-   public ehe(Codec<ekc> $$0) {
+   public static final MapCodec<ehe> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehe::new));
+
+   public ehe(jz $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dhq $$0, azs $$1, jj $$2, dym $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
-         return false;
-      } else {
-         jo $$4 = jo.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<jo> $$6 = af.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+   protected boolean a(dzo $$0) {
+      return $$0.e();
+   }
 
-         for (jo $$8 : $$6.subList(0, $$5)) {
-            jj.a $$9 = $$2.k();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            jo $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(jo.b);
-               jo[] $$13 = new jo[]{$$8, jo.b};
-               $$11 = af.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
-
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
-
-            $$9.c($$11.g());
-            $$9.c(jo.b);
-
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
-
-               if ($$1.i() < 0.25F) {
-                  $$9.c(jo.b);
-               }
-            }
-         }
-
-         return true;
-      }
+   @Override
+   public egv<?> a() {
+      return egv.e;
    }
 }

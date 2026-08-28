@@ -1,19 +1,78 @@
-public interface dgs extends dgv {
-   float a(jo var1, boolean var2);
+public interface dgs {
+   ald<dgn> a = dgt.a("trades/desert_armorer_boots_4");
+   ald<dgn> b = dgt.a("trades/desert_armorer_leggings_4");
+   ald<dgn> c = dgt.a("trades/desert_armorer_chestplate_4");
+   ald<dgn> d = dgt.a("trades/desert_armorer_helmet_4");
+   ald<dgn> e = dgt.a("trades/desert_armorer_leggings_5");
+   ald<dgn> f = dgt.a("trades/desert_armorer_chestplate_5");
+   ald<dgn> g = dgt.a("trades/plains_armorer_boots_4");
+   ald<dgn> h = dgt.a("trades/plains_armorer_leggings_4");
+   ald<dgn> i = dgt.a("trades/plains_armorer_chestplate_4");
+   ald<dgn> j = dgt.a("trades/plains_armorer_helmet_4");
+   ald<dgn> k = dgt.a("trades/plains_armorer_boots_5");
+   ald<dgn> l = dgt.a("trades/plains_armorer_leggings_5");
+   ald<dgn> m = dgt.a("trades/savanna_armorer_boots_4");
+   ald<dgn> n = dgt.a("trades/savanna_armorer_leggings_4");
+   ald<dgn> o = dgt.a("trades/savanna_armorer_chestplate_4");
+   ald<dgn> p = dgt.a("trades/savanna_armorer_helmet_4");
+   ald<dgn> q = dgt.a("trades/savanna_armorer_chestplate_5");
+   ald<dgn> r = dgt.a("trades/savanna_armorer_helmet_5");
+   ald<dgn> s = dgt.a("trades/snow_armorer_boots_4");
+   ald<dgn> t = dgt.a("trades/snow_armorer_helmet_4");
+   ald<dgn> u = dgt.a("trades/snow_armorer_boots_5");
+   ald<dgn> v = dgt.a("trades/snow_armorer_helmet_5");
+   ald<dgn> w = dgt.a("trades/jungle_armorer_boots_4");
+   ald<dgn> x = dgt.a("trades/jungle_armorer_leggings_4");
+   ald<dgn> y = dgt.a("trades/jungle_armorer_chestplate_4");
+   ald<dgn> z = dgt.a("trades/jungle_armorer_helmet_4");
+   ald<dgn> A = dgt.a("trades/jungle_armorer_boots_5");
+   ald<dgn> B = dgt.a("trades/jungle_armorer_helmet_5");
+   ald<dgn> C = dgt.a("trades/swamp_armorer_boots_4");
+   ald<dgn> D = dgt.a("trades/swamp_armorer_leggings_4");
+   ald<dgn> E = dgt.a("trades/swamp_armorer_chestplate_4");
+   ald<dgn> F = dgt.a("trades/swamp_armorer_helmet_4");
+   ald<dgn> G = dgt.a("trades/swamp_armorer_boots_5");
+   ald<dgn> H = dgt.a("trades/swamp_armorer_helmet_5");
+   ald<dgn> I = dgt.a("trades/taiga_armorer_leggings_5");
+   ald<dgn> J = dgt.a("trades/taiga_armorer_chestplate_5");
 
-   eui x_();
-
-   int a(jj var1, dha var2);
-
-   default int a(dhy $$0, jj $$1) {
-      return this.x_().a($$0).b($$1);
-   }
-
-   default int b(jj $$0, int $$1) {
-      return this.x_().a($$0, $$1);
-   }
-
-   default boolean h(jj $$0) {
-      return this.a(dhy.a, $$0) >= 15;
+   static void a(qh<dgn> $$0) {
+      jf<dff> $$1 = $$0.a(mg.aP);
+      $$0.a(a, new dgr($$1.b(dfk.h), bta.a(1)));
+      $$0.a(b, new dgr($$1.b(dfk.h), bta.a(1)));
+      $$0.a(c, new dgr($$1.b(dfk.h), bta.a(1)));
+      $$0.a(d, new dgr($$1.b(dfk.h), bta.a(1)));
+      $$0.a(e, new dgr($$1.b(dfk.h), bta.a(1)));
+      $$0.a(f, new dgr($$1.b(dfk.h), bta.a(1)));
+      $$0.a(g, new dgr($$1.b(dfk.a), bta.a(1)));
+      $$0.a(h, new dgr($$1.b(dfk.a), bta.a(1)));
+      $$0.a(i, new dgr($$1.b(dfk.a), bta.a(1)));
+      $$0.a(j, new dgr($$1.b(dfk.a), bta.a(1)));
+      $$0.a(k, new dgr($$1.b(dfk.a), bta.a(1)));
+      $$0.a(l, new dgr($$1.b(dfk.a), bta.a(1)));
+      $$0.a(m, new dgr($$1.b(dfk.k), bta.a(1)));
+      $$0.a(n, new dgr($$1.b(dfk.k), bta.a(1)));
+      $$0.a(o, new dgr($$1.b(dfk.k), bta.a(1)));
+      $$0.a(p, new dgr($$1.b(dfk.k), bta.a(1)));
+      $$0.a(q, new dgr($$1.b(dfk.k), bta.a(1)));
+      $$0.a(r, new dgr($$1.b(dfk.k), bta.a(1)));
+      $$0.a(s, new dgr($$1.b(dfk.j), bta.a(1)));
+      $$0.a(t, new dgr($$1.b(dfk.g), bta.a(1)));
+      $$0.a(u, new dgr($$1.b(dfk.j), bta.a(1)));
+      $$0.a(v, new dgr($$1.b(dfk.g), bta.a(1)));
+      $$0.a(w, new dgr($$1.b(dfk.w), bta.a(1)));
+      $$0.a(x, new dgr($$1.b(dfk.w), bta.a(1)));
+      $$0.a(y, new dgr($$1.b(dfk.w), bta.a(1)));
+      $$0.a(z, new dgr($$1.b(dfk.w), bta.a(1)));
+      $$0.a(A, new dgr($$1.b(dfk.c), bta.a(1)));
+      $$0.a(B, new dgr($$1.b(dfk.e), bta.a(1)));
+      $$0.a(C, new dgr($$1.b(dfk.O), bta.a(1)));
+      $$0.a(D, new dgr($$1.b(dfk.O), bta.a(1)));
+      $$0.a(E, new dgr($$1.b(dfk.O), bta.a(1)));
+      $$0.a(F, new dgr($$1.b(dfk.O), bta.a(1)));
+      $$0.a(G, new dgr($$1.b(dfk.i), bta.a(1)));
+      $$0.a(H, new dgr($$1.b(dfk.f), bta.a(1)));
+      $$0.a(I, new dgr($$1.b(dfk.d), bta.a(1)));
+      $$0.a(J, new dgr($$1.b(dfk.d), bta.a(1)));
    }
 }

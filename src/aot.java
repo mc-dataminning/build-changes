@@ -1,100 +1,15 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
-import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
 
 public class aot {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("commands.schedule.same_tick"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wv.b("commands.schedule.cleared.failure", $$0));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wv.b("commands.schedule.macro"));
-   private static final SuggestionProvider<ex> d = ($$0, $$1) -> fc.b(((ex)$$0.getSource()).l().aZ().I().s().a(), $$1);
-
-   public static void a(CommandDispatcher<ex> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("schedule").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ey.a("function")
-                     .then(
-                        ey.a("function", hg.a())
-                           .suggests(anl.b)
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("time", gn.a())
-                                       .executes($$0x -> a((ex)$$0x.getSource(), hg.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
-                                    .then(
-                                       ey.a("append")
-                                          .executes(
-                                             $$0x -> a((ex)$$0x.getSource(), hg.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
-                                          )
-                                    ))
-                                 .then(
-                                    ey.a("replace")
-                                       .executes($$0x -> a((ex)$$0x.getSource(), hg.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
-                                 )
-                           )
-                     )
-               ))
-            .then(
-               ey.a("clear")
-                  .then(
-                     ey.a("function", StringArgumentType.greedyString())
-                        .suggests(d)
-                        .executes($$0x -> a((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
-                  )
-            )
-      );
-   }
-
-   private static int a(ex $$0, Pair<ald, Either<im<ex>, Collection<im<ex>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
-      if ($$2 == 0) {
-         throw a.create();
-      } else {
-         long $$4 = $$0.e().ae() + (long)$$2;
-         ald $$5 = (ald)$$1.getFirst();
-         fch<MinecraftServer> $$6 = $$0.l().aZ().I().s();
-         Optional<im<ex>> $$7 = ((Either)$$1.getSecond()).left();
-         if ($$7.isPresent()) {
-            if ($$7.get() instanceof ip) {
-               throw c.create();
-            }
-
-            String $$8 = $$5.toString();
-            if ($$3) {
-               $$6.a($$8);
-            }
-
-            $$6.a($$8, $$4, new fcd($$5));
-            $$0.a(() -> wv.a("commands.schedule.created.function", wv.a($$5), $$2, $$4), true);
-         } else {
-            String $$9 = "#" + $$5;
-            if ($$3) {
-               $$6.a($$9);
-            }
-
-            $$6.a($$9, $$4, new fce($$5));
-            $$0.a(() -> wv.a("commands.schedule.created.tag", wv.a($$5), $$2, $$4), true);
-         }
-
-         return Math.floorMod($$4, Integer.MAX_VALUE);
-      }
-   }
-
-   private static int a(ex $$0, String $$1) throws CommandSyntaxException {
-      int $$2 = $$0.l().aZ().I().s().a($$1);
-      if ($$2 == 0) {
-         throw b.create($$1);
-      } else {
-         $$0.a(() -> wv.a("commands.schedule.cleared.success", $$2, $$1), true);
-         return $$2;
-      }
+   public static void a(CommandDispatcher<ei> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("say").requires($$0x -> $$0x.c(2))).then(ej.a("message", ez.a()).executes($$0x -> {
+         ez.a($$0x, "message", $$1 -> {
+            ei $$2 = (ei)$$0x.getSource();
+            avo $$3 = $$2.l().ag();
+            $$3.a($$1, $$2, ws.a(ws.f, $$2));
+         });
+         return 1;
+      })));
    }
 }

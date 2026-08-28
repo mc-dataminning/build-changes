@@ -1,111 +1,154 @@
 import javax.annotation.Nullable;
 
-public abstract class frs extends fqn {
-   protected final ald a;
-   protected final int b;
-   protected final int c;
+public class frs extends frg {
+   private static final ale a = ale.b("widget/checkbox_selected_highlighted");
+   private static final ale b = ale.b("widget/checkbox_selected");
+   private static final ale c = ale.b("widget/checkbox_highlighted");
+   private static final ale d = ale.b("widget/checkbox");
+   private static final int f = 14737632;
+   private static final int m = 4;
+   private static final int n = 8;
+   private boolean o;
+   private final frs.b p;
+   private final fsk q;
 
-   frs(int $$0, int $$1, wv $$2, int $$3, int $$4, ald $$5, fqn.c $$6, @Nullable fqn.b $$7) {
-      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
-      this.b = $$3;
-      this.c = $$4;
-      this.a = $$5;
+   frs(int $$0, int $$1, int $$2, ww $$3, fra $$4, boolean $$5, frs.b $$6) {
+      super($$0, $$1, 0, 0, $$3);
+      this.g = this.a($$2, $$3, $$4);
+      this.q = new fsk($$3, $$4).d(this.g).c(14737632);
+      this.h = this.b($$4);
+      this.o = $$5;
+      this.p = $$6;
    }
 
-   public static frs.a a(wv $$0, fqn.c $$1, boolean $$2) {
-      return new frs.a($$0, $$1, $$2);
+   private int a(int $$0, ww $$1, fra $$2) {
+      return Math.min(b($$1, $$2), $$0);
    }
 
-   public static class a {
-      private final wv b;
-      private final fqn.c c;
-      private final boolean d;
-      private int e = 150;
-      private int f = 20;
-      @Nullable
-      private ald g;
-      private int h;
-      private int i;
-      @Nullable
-      fqn.b a;
+   private int b(fra $$0) {
+      return Math.max(a($$0), this.q.y());
+   }
 
-      public a(wv $$0, fqn.c $$1, boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
+   static int b(ww $$0, fra $$1) {
+      return a($$1) + 4 + $$1.a($$0);
+   }
 
-      public frs.a a(int $$0) {
-         this.e = $$0;
-         return this;
-      }
+   public static frs.a a(ww $$0, fra $$1) {
+      return new frs.a($$0, $$1);
+   }
 
-      public frs.a a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
+   public static int a(fra $$0) {
+      return 9 + 8;
+   }
 
-      public frs.a a(ald $$0, int $$1, int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
+   @Override
+   public void b() {
+      this.o = !this.o;
+      this.p.onValueChange(this, this.o);
+   }
 
-      public frs.a a(fqn.b $$0) {
-         this.a = $$0;
-         return this;
-      }
+   public boolean a() {
+      return this.o;
+   }
 
-      public frs a() {
-         if (this.g == null) {
-            throw new IllegalStateException("Sprite not set");
+   @Override
+   public void a(fvn $$0) {
+      $$0.a(fvm.a, this.d());
+      if (this.j) {
+         if (this.aI_()) {
+            $$0.a(fvm.d, ww.c("narration.checkbox.usage.focused"));
          } else {
-            return (frs)(this.d
-               ? new frs.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
-               : new frs.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
+            $$0.a(fvm.d, ww.c("narration.checkbox.usage.hovered"));
          }
       }
    }
 
-   public static class b extends frs {
-      protected b(int $$0, int $$1, wv $$2, int $$3, int $$4, ald $$5, fqn.c $$6, @Nullable fqn.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   @Override
+   public void b(frc $$0, int $$1, int $$2, float $$3) {
+      fof $$4 = fof.Q();
+      fra $$5 = $$4.h;
+      ale $$6;
+      if (this.o) {
+         $$6 = this.aI_() ? a : b;
+      } else {
+         $$6 = this.aI_() ? c : d;
       }
 
-      @Override
-      public void b(fpz $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.F() + this.A() / 2 - this.b / 2;
-         int $$5 = this.G() + this.y() / 2 - this.c / 2;
-         $$0.a(goi::H, this.a, $$4, $$5, this.b, this.c);
+      int $$8 = a($$5);
+      $$0.a(gpn::H, $$6, this.F(), this.G(), $$8, $$8, axu.a(this.l));
+      int $$9 = this.F() + $$8 + 4;
+      int $$10 = this.G() + $$8 / 2 - this.q.y() / 2;
+      this.q.c($$9, $$10);
+      this.q.b($$0, $$1, $$2, $$3);
+   }
+
+   public static class a {
+      private final ww a;
+      private final fra b;
+      private int c;
+      private int d = 0;
+      private int e = 0;
+      private frs.b f = frs.b.a;
+      private boolean g = false;
+      @Nullable
+      private foi<Boolean> h = null;
+      @Nullable
+      private ftb i = null;
+
+      a(ww $$0, fra $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = frs.b($$0, $$1);
       }
 
-      @Override
-      public void a(fpz $$0, fpx $$1, int $$2) {
+      public frs.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
+      }
+
+      public frs.a a(frs.b $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public frs.a a(boolean $$0) {
+         this.g = $$0;
+         this.h = null;
+         return this;
+      }
+
+      public frs.a a(foi<Boolean> $$0) {
+         this.h = $$0;
+         this.g = $$0.c();
+         return this;
+      }
+
+      public frs.a a(ftb $$0) {
+         this.i = $$0;
+         return this;
+      }
+
+      public frs.a a(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public frs a() {
+         frs.b $$0 = this.h == null ? this.f : ($$0x, $$1x) -> {
+            this.h.a($$1x);
+            this.f.onValueChange($$0x, $$1x);
+         };
+         frs $$1 = new frs(this.d, this.e, this.c, this.a, this.b, this.g, $$0);
+         $$1.a(this.i);
+         return $$1;
       }
    }
 
-   public static class c extends frs {
-      protected c(int $$0, int $$1, wv $$2, int $$3, int $$4, ald $$5, fqn.c $$6, @Nullable fqn.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   public interface b {
+      frs.b a = ($$0, $$1) -> {
+      };
 
-      @Override
-      public void b(fpz $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.F() + this.A() - this.b - 2;
-         int $$5 = this.G() + this.y() / 2 - this.c / 2;
-         $$0.a(goi::H, this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fpz $$0, fpx $$1, int $$2) {
-         int $$3 = this.F() + 2;
-         int $$4 = this.F() + this.A() - this.b - 4;
-         int $$5 = this.F() + this.A() / 2;
-         a($$0, $$1, this.B(), $$5, $$3, this.G(), $$4, this.G() + this.y(), $$2);
-      }
+      void onValueChange(frs var1, boolean var2);
    }
 }

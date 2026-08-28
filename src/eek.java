@@ -1,26 +1,36 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public class eek {
-   private static final Codec<Double> f = Codec.doubleRange(0.01, 50.0);
-   public static final Codec<eek> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               f.fieldOf("filling").orElse(1.7).forGetter($$0x -> $$0x.b),
-               f.fieldOf("inner_layer").orElse(2.2).forGetter($$0x -> $$0x.c),
-               f.fieldOf("middle_layer").orElse(3.2).forGetter($$0x -> $$0x.d),
-               f.fieldOf("outer_layer").orElse(4.2).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eek::new)
-   );
-   public final double b;
-   public final double c;
-   public final double d;
-   public final double e;
+public class eek implements ees {
+   public static final MapCodec<eek> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(iu.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, eek::new));
+   public static final yu<ByteBuf, eek> b = yu.a(iu.b, $$0 -> $$0.e, eek::new);
+   private final iu e;
 
-   public eek(double $$0, double $$1, double $$2, double $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public eek(iu $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public Optional<fdw> a(dip $$0) {
+      return Optional.of(fdw.b(this.e));
+   }
+
+   @Override
+   public eet<eek> a() {
+      return eet.a;
+   }
+
+   public static class a implements eet<eek> {
+      @Override
+      public MapCodec<eek> a() {
+         return eek.a;
+      }
+
+      @Override
+      public yu<ByteBuf, eek> b() {
+         return eek.b;
+      }
    }
 }

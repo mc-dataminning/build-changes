@@ -1,33 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import java.util.function.Function;
 
 public class cbm {
-   private static final int a = 10;
-   private static final int b = 7;
-
-   public static bzt<bwz> a(float $$0) {
-      return a($$0, 10, 7);
+   public static <E extends bwz> cab<E> a(List<Pair<? extends ccg<? super E>, Integer>> $$0) {
+      return a($$0, bze.a.b, bze.b.a);
    }
 
-   public static bzt<bwz> a(float $$0, int $$1, int $$2) {
-      return cbv.a((Function<cbv.b<bwz>, ? extends App<cbv.c<bwz>, cby<bwz>>>)($$3 -> $$3.group($$3.c(cft.n)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               jj $$7 = $$5.dv();
-               fcu $$8;
-               if ($$4.c($$7)) {
-                  $$8 = chn.a($$5, $$1, $$2);
-               } else {
-                  kl $$9 = kl.a($$7);
-                  kl $$10 = byk.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = chk.a($$5, $$1, $$2, fcu.c($$10.k()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = chn.a($$5, $$1, $$2);
-                  }
-               }
+   public static <E extends bwz> cab<E> a(List<Pair<? extends ccg<? super E>, Integer>> $$0, bze.a $$1, bze.b $$2) {
+      caz<ccg<? super E>> $$3 = new caz<>();
+      $$0.forEach($$1x -> $$3.a((ccg<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
+      return ccd.a((Function<ccd.b<E>, ? extends App<ccd.c<E>, ccg<E>>>)($$3x -> $$3x.a((ccg<E>)(($$3xx, $$4, $$5) -> {
+            if ($$1 == bze.a.b) {
+               $$3.a();
+            }
 
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cfw($$1xxxx, $$0, 0)));
-               return true;
-            })));
+            for (ccg<? super E> $$6 : $$3) {
+               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bze.b.a) {
+                  break;
+               }
+            }
+
+            return true;
+         }))));
    }
 }

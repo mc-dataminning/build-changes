@@ -1,39 +1,100 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+public class csb extends cra {
+   private static final akh<Boolean> d = akl.a(csb.class, akj.k);
 
-public class csb {
-   public static final int a = 2000;
-   public static final int b = 7000;
-   public static final csb c = a("empty").a(0, crz.b).a();
-   public static final csb d = a("simple").a(5000, crz.c).a(11000, crz.e).a();
-   public static final csb e = a("villager_baby").a(10, crz.b).a(3000, crz.d).a(6000, crz.b).a(10000, crz.d).a(12000, crz.e).a();
-   public static final csb f = a("villager_default").a(10, crz.b).a(2000, crz.c).a(9000, crz.f).a(11000, crz.b).a(12000, crz.e).a();
-   private final Map<crz, csd> g = Maps.newHashMap();
-
-   protected static csc a(String $$0) {
-      csb $$1 = kf.a(md.B, $$0, new csb());
-      return new csc($$1);
+   public csb(bwj<? extends csb> $$0, dip $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(crz $$0) {
-      if (!this.g.containsKey($$0)) {
-         this.g.put($$0, new csd());
+   public csb(dip $$0, bwz $$1, fdw $$2) {
+      super(bwj.bL, $$1, $$2, $$0);
+   }
+
+   @Override
+   protected float m() {
+      return this.o() ? 0.73F : super.m();
+   }
+
+   @Override
+   public boolean bY() {
+      return false;
+   }
+
+   @Override
+   public float a(dii $$0, dhv $$1, iu $$2, dzo $$3, evv $$4, float $$5) {
+      return this.o() && cmk.c($$3) ? Math.min(0.8F, $$5) : $$5;
+   }
+
+   @Override
+   protected void a(fdt $$0) {
+      super.a($$0);
+      if (this.dV() instanceof aro $$1) {
+         bwa var8 = $$0.a();
+         boolean $$7;
+         if (this.q() instanceof bwz $$5) {
+            bup $$6 = this.dW().a(this, $$5);
+            $$7 = var8.a($$1, $$6, 8.0F);
+            if ($$7) {
+               if (var8.bK()) {
+                  dfh.a($$1, var8, $$6);
+               } else {
+                  $$5.c(5.0F);
+               }
+            }
+         } else {
+            $$7 = var8.a($$1, this.dW().q(), 5.0F);
+         }
+
+         if ($$7 && var8 instanceof bwz $$9) {
+            int $$10 = 0;
+            if (this.dV().an() == btv.c) {
+               $$10 = 10;
+            } else if (this.dV().an() == btv.d) {
+               $$10 = 40;
+            }
+
+            if ($$10 > 0) {
+               $$9.b(new bve(bvg.t, 20 * $$10, 1), this.z());
+            }
+         }
       }
    }
 
-   protected csd b(crz $$0) {
-      return this.g.get($$0);
+   @Override
+   protected void a(fdu $$0) {
+      super.a($$0);
+      if (!this.dV().C) {
+         this.dV().a(this, this.dA(), this.dC(), this.dG(), 1.0F, false, dip.a.c);
+         this.at();
+      }
    }
 
-   protected List<csd> c(crz $$0) {
-      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   @Override
+   protected void a(akl.a $$0) {
+      $$0.a(d, false);
    }
 
-   public crz a(int $$0) {
-      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(crz.b);
+   public boolean o() {
+      return this.al.a(d);
+   }
+
+   public void a(boolean $$0) {
+      this.al.a(d, $$0);
+   }
+
+   @Override
+   protected boolean g() {
+      return false;
+   }
+
+   @Override
+   public void b(tx $$0) {
+      super.b($$0);
+      $$0.a("dangerous", this.o());
+   }
+
+   @Override
+   public void a(tx $$0) {
+      super.a($$0);
+      this.a($$0.q("dangerous"));
    }
 }

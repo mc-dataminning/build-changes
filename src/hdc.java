@@ -1,3 +1,3 @@
-public class hdc extends hbb {
-   public boolean a;
+public class hdc extends hcp {
+   public float a;
 }

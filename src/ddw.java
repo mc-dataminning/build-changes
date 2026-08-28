@@ -1,40 +1,61 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 
-public record ddw(List<ddx> f, ddx g, ddx h) implements ddr {
-   public static final MapCodec<ddw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ddx.a.listOf().fieldOf("ingredients").forGetter(ddw::b),
-               ddx.a.fieldOf("result").forGetter(ddw::d),
-               ddx.a.fieldOf("crafting_station").forGetter(ddw::e)
-            )
-            .apply($$0, ddw::new)
-   );
-   public static final yt<wg, ddw> b = yt.a(ddx.b.a(yr.a()), ddw::b, ddx.b, ddw::d, ddx.b, ddw::e, ddw::new);
-   public static final ddr.a<ddw> c = new ddr.a<>(a, b);
-
-   @Override
-   public ddr.a<ddw> a() {
-      return c;
+public record ddw<T extends ddj<?>>(dev a, Optional<ddo<T>> b) {
+   public static <T extends ddj<?>> yu<wh, ddw<T>> a() {
+      return yu.a(dev.b, ddw::b, $$0 -> new ddw<>($$0, Optional.empty()));
    }
 
-   @Override
-   public boolean a(cte $$0) {
-      return this.f.stream().allMatch($$1 -> $$1.a($$0)) && ddr.super.a($$0);
+   public dev b() {
+      return this.a;
    }
 
-   public List<ddx> b() {
-      return this.f;
+   public Optional<ddo<T>> c() {
+      return this.b;
    }
 
-   @Override
-   public ddx d() {
-      return this.g;
+   public static record a<T extends ddj<?>>(ddf a, ddw<T> b) {
+
+      public static <T extends ddj<?>> yu<wh, ddw.a<T>> a() {
+         return yu.a(ddf.a, ddw.a::b, ddw.a(), ddw.a::c, ddw.a::new);
+      }
+
+      public ddf b() {
+         return this.a;
+      }
+
+      public ddw<T> c() {
+         return this.b;
+      }
    }
 
-   @Override
-   public ddx e() {
-      return this.h;
+   public static record b<T extends ddj<?>>(List<ddw.a<T>> a) {
+      public static <T extends ddj<?>> ddw.b<T> a() {
+         return new ddw.b<>(List.of());
+      }
+
+      public static <T extends ddj<?>> yu<wh, ddw.b<T>> b() {
+         return yu.a(ddw.a.<T>a().a(ys.a()), ddw.b::e, ddw.b::new);
+      }
+
+      public boolean a(cys $$0) {
+         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
+      }
+
+      public ddw.b<T> b(cys $$0) {
+         return new ddw.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
+      }
+
+      public boolean c() {
+         return this.a.isEmpty();
+      }
+
+      public int d() {
+         return this.a.size();
+      }
+
+      public List<ddw.a<T>> e() {
+         return this.a;
+      }
    }
 }

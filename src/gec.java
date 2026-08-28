@@ -1,44 +1,22 @@
-public class gec extends gea<ham> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String c = "lower_jaw";
-   private final ghd d;
-   private final ghd e;
-   private final ghd f;
+public class gec extends gfz {
+   public static final int a = 20;
+   public static final int b = 40;
+   public static final String c = "flag";
+   private static final String d = "pole";
+   private static final String e = "bar";
 
-   public gec(ghd $$0) {
-      super($$0);
-      this.d = $$0.b("base");
-      this.e = this.d.b("upper_jaw");
-      this.f = this.d.b("lower_jaw");
+   public gec(gig $$0) {
+      super($$0, gpn::d);
    }
 
-   public static ghj a() {
-      ghl $$0 = new ghl();
-      ghn $$1 = $$0.a();
-      ghn $$2 = $$1.a("base", ghi.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), ghf.a(-5.0F, 24.0F, -5.0F));
-      ghi $$3 = ghi.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$2.a("upper_jaw", $$3, ghf.a(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
-      $$2.a("lower_jaw", $$3, ghf.a(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
-      return ghj.a($$0, 64, 32);
-   }
-
-   public void a(ham $$0) {
-      super.a($$0);
-      float $$1 = $$0.b;
-      float $$2 = Math.min($$1 * 2.0F, 1.0F);
-      $$2 = 1.0F - $$2 * $$2 * $$2;
-      this.e.g = (float) Math.PI - $$2 * 0.35F * (float) Math.PI;
-      this.f.g = (float) Math.PI + $$2 * 0.35F * (float) Math.PI;
-      this.d.c = this.d.c - ($$1 + azk.a($$1 * 2.7F)) * 7.2F;
-      float $$3 = 1.0F;
-      if ($$1 > 0.9F) {
-         $$3 *= (1.0F - $$1) / 0.1F;
+   public static gim a(boolean $$0) {
+      gio $$1 = new gio();
+      giq $$2 = $$1.a();
+      if ($$0) {
+         $$2.a("pole", gil.c().a(44, 0).a(-1.0F, -42.0F, -1.0F, 2.0F, 42.0F, 2.0F), gii.a);
       }
 
-      this.v.c = 24.0F - 20.0F * $$3;
-      this.v.h = $$3;
-      this.v.i = $$3;
-      this.v.j = $$3;
+      $$2.a("bar", gil.c().a(0, 42).a(-10.0F, $$0 ? -44.0F : -20.5F, $$0 ? -1.0F : 9.5F, 20.0F, 2.0F, 2.0F), gii.a);
+      return gim.a($$1, 64, 64);
    }
 }

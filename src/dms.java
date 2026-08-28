@@ -1,31 +1,72 @@
 import com.mojang.serialization.MapCodec;
 
-public class dms extends dku {
-   public static final MapCodec<dms> a = b(dms::new);
+public class dms extends dpl implements dmr {
+   public static final MapCodec<dms> c = b(dms::new);
+   private static final float g = 0.11F;
 
    @Override
    public MapCodec<dms> a() {
-      return a;
+      return c;
    }
 
-   public dms(dyl.d $$0) {
-      super($$0);
+   public dms(dzn.d $$0) {
+      super($$0, ja.a, s_, false, 0.1);
+      this.l(this.B.b().b(e, Integer.valueOf(0)).b(t_, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
-      if ($$3.a(5) == 0) {
-         jo $$4 = jo.b($$3);
-         if ($$4 != jo.b) {
-            jj $$5 = $$2.a($$4);
-            dym $$6 = $$1.a_($$5);
-            if (!$$0.t() || !$$6.c($$1, $$5, $$4.g())) {
-               double $$7 = $$4.j() == 0 ? $$3.j() : 0.5 + (double)$$4.j() * 0.6;
-               double $$8 = $$4.k() == 0 ? $$3.j() : 0.5 + (double)$$4.k() * 0.6;
-               double $$9 = $$4.l() == 0 ? $$3.j() : 0.5 + (double)$$4.l() * 0.6;
-               $$1.a(lv.aH, (double)$$2.u() + $$7, (double)$$2.v() + $$8, (double)$$2.w() + $$9, 0.0, 0.0, 0.0);
-            }
-         }
-      }
+   protected int a(azt $$0) {
+      return 1;
+   }
+
+   @Override
+   protected boolean h(dzo $$0) {
+      return $$0.l();
+   }
+
+   @Override
+   protected dlu b() {
+      return dlw.ta;
+   }
+
+   @Override
+   protected dzo a(dzo $$0, dzo $$1) {
+      return $$1.b(t_, $$0.c(t_));
+   }
+
+   @Override
+   protected dzo a(dzo $$0, azt $$1) {
+      return super.a($$0, $$1).b(t_, Boolean.valueOf($$1.i() < 0.11F));
+   }
+
+   @Override
+   protected cys a(dis $$0, iu $$1, dzo $$2, boolean $$3) {
+      return new cys(cyw.xA);
+   }
+
+   @Override
+   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
+      return dmr.a($$3, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      super.a($$0);
+      $$0.a(t_);
+   }
+
+   @Override
+   public boolean a(dis $$0, iu $$1, dzo $$2) {
+      return !$$2.c(t_);
+   }
+
+   @Override
+   public boolean a(dip $$0, azt $$1, iu $$2, dzo $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aro $$0, azt $$1, iu $$2, dzo $$3) {
+      $$0.a($$2, $$3.b(t_, Boolean.valueOf(true)), 2);
    }
 }

@@ -1,16 +1,42 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class fbj {
-   private static final Codec<fbi> d = md.H.q().dispatch(fbi::a, fbh::a);
-   public static final Codec<fbi> a = Codec.lazyInitialized(
-      () -> Codec.either(fbg.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof fbg $$1 ? Either.left($$1) : Either.right($$0))
-   );
-   public static final fbh b = a("storage", fbk.a);
-   public static final fbh c = a("context", fbg.b);
+public class fbj extends fbm {
+   public static final MapCodec<fbj> a = a(fbj::new);
+   public static final Codec<fbj> b = b(fbj::new);
 
-   private static fbh a(String $$0, MapCodec<? extends fbi> $$1) {
-      return kf.a(md.H, ald.b($$0), new fbh($$1));
+   fbj(List<fbw> $$0) {
+      super($$0, af.a($$0));
+   }
+
+   public static fbj a(List<fbw> $$0) {
+      return new fbj(List.copyOf($$0));
+   }
+
+   @Override
+   public fbx b() {
+      return fby.c;
+   }
+
+   public static fbj.a a(fbw.a... $$0) {
+      return new fbj.a($$0);
+   }
+
+   public static class a extends fbm.a {
+      public a(fbw.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public fbj.a and(fbw.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected fbw a(List<fbw> $$0) {
+         return new fbj($$0);
+      }
    }
 }

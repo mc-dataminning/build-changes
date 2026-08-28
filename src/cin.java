@@ -1,78 +1,56 @@
-import javax.annotation.Nullable;
-
-public class cin extends cig {
-   private static final bvv bE = bwb.C.n().a(0.5F).b(0.665F);
-
-   public cin(bwb<? extends cin> $$0, dhp $$1) {
+public abstract class cin extends bvq {
+   protected cin(bwj<? extends cin> $$0, dip $$1) {
       super($$0, $$1);
+      this.a(ewm.j, 0.0F);
    }
 
    @Override
-   protected void D() {
-      this.bB.a(0, new cdh(this));
-      this.bB.a(1, new ceg(this, 2.0));
-      this.bB.a(2, new ccz(this, 1.0));
-      this.bB.a(3, new cev(this, 1.25, $$0 -> $$0.a(axi.ad), false));
-      this.bB.a(4, new cdm(this, 1.25));
-      this.bB.a(5, new cfa(this, 1.0));
-      this.bB.a(6, new cdv(this, cqi.class, 6.0F));
-      this.bB.a(7, new cei(this));
+   public boolean a(dis $$0) {
+      return $$0.f(this);
    }
 
    @Override
-   public boolean k(cxy $$0) {
-      return $$0.a(axi.ad);
-   }
-
-   public static bxw.a q() {
-      return cig.gv().a(bxx.s, 10.0).a(bxx.v, 0.2F);
+   public int S() {
+      return 120;
    }
 
    @Override
-   protected awj u() {
-      return awk.gd;
+   public int e(aro $$0) {
+      return 1 + this.ae.a(3);
    }
 
-   @Override
-   protected awj e(buh $$0) {
-      return awk.gf;
-   }
-
-   @Override
-   protected awj l_() {
-      return awk.ge;
-   }
-
-   @Override
-   protected void b(jj $$0, dym $$1) {
-      this.a(awk.gh, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float fd() {
-      return 0.4F;
-   }
-
-   @Override
-   public btq b(cqi $$0, btp $$1) {
-      cxy $$2 = $$0.b($$1);
-      if ($$2.a(cyc.rj) && !this.n_()) {
-         $$0.a(awk.gg, 1.0F, 1.0F);
-         cxy $$3 = cyb.a($$2, $$0, cyc.rp.n());
-         $$0.a($$1, $$3);
-         return btq.a;
+   protected void r(int $$0) {
+      if (this.bK() && !this.bj()) {
+         this.j($$0 - 1);
+         if (this.ct() == -20) {
+            this.j(0);
+            this.a(this.dW().i(), 2.0F);
+         }
       } else {
-         return super.b($$0, $$1);
+         this.j(300);
       }
    }
 
-   @Nullable
-   public cin b(arn $$0, bvi $$1) {
-      return bwb.C.a($$0, bwa.e);
+   @Override
+   public void az() {
+      int $$0 = this.ct();
+      super.az();
+      this.r($$0);
    }
 
    @Override
-   public bvv e(bxd $$0) {
-      return this.n_() ? bE : super.e($$0);
+   public boolean cJ() {
+      return false;
+   }
+
+   @Override
+   public boolean w() {
+      return false;
+   }
+
+   public static boolean b(bwj<? extends cin> $$0, diq $$1, bwi $$2, iu $$3, azt $$4) {
+      int $$5 = $$1.P();
+      int $$6 = $$5 - 13;
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(axf.a) && $$1.a_($$3.d()).a(dlw.J);
    }
 }

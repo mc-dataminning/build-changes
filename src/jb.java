@@ -1,57 +1,38 @@
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.google.common.collect.Sets;
+import java.util.Arrays;
+import java.util.Set;
 
-public class jb implements iu<IntegerArgumentType, jb.a> {
-   public void a(jb.a $$0, vr $$1) {
-      boolean $$2 = $$0.b != Integer.MIN_VALUE;
-      boolean $$3 = $$0.c != Integer.MAX_VALUE;
-      $$1.l(iw.a($$2, $$3));
-      if ($$2) {
-         $$1.q($$0.b);
-      }
+public enum jb {
+   a(ja.c),
+   b(ja.c, ja.f),
+   c(ja.f),
+   d(ja.d, ja.f),
+   e(ja.d),
+   f(ja.d, ja.e),
+   g(ja.e),
+   h(ja.c, ja.e);
 
-      if ($$3) {
-         $$1.q($$0.c);
-      }
-   }
+   private final Set<ja> i;
+   private final jz j;
 
-   public jb.a a(vr $$0) {
-      byte $$1 = $$0.readByte();
-      int $$2 = iw.a($$1) ? $$0.readInt() : Integer.MIN_VALUE;
-      int $$3 = iw.b($$1) ? $$0.readInt() : Integer.MAX_VALUE;
-      return new jb.a($$2, $$3);
-   }
+   private jb(final ja... $$0) {
+      this.i = Sets.immutableEnumSet(Arrays.asList($$0));
+      this.j = new jz(0, 0, 0);
 
-   public void a(jb.a $$0, JsonObject $$1) {
-      if ($$0.b != Integer.MIN_VALUE) {
-         $$1.addProperty("min", $$0.b);
-      }
-
-      if ($$0.c != Integer.MAX_VALUE) {
-         $$1.addProperty("max", $$0.c);
+      for (ja $$1 : $$0) {
+         this.j.u(this.j.u() + $$1.j()).t(this.j.v() + $$1.k()).s(this.j.w() + $$1.l());
       }
    }
 
-   public jb.a a(IntegerArgumentType $$0) {
-      return new jb.a($$0.getMinimum(), $$0.getMaximum());
+   public Set<ja> a() {
+      return this.i;
    }
 
-   public final class a implements iu.a<IntegerArgumentType> {
-      final int b;
-      final int c;
+   public int b() {
+      return this.j.u();
+   }
 
-      a(final int $$1, final int $$2) {
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public IntegerArgumentType a(et $$0) {
-         return IntegerArgumentType.integer(this.b, this.c);
-      }
-
-      @Override
-      public iu<IntegerArgumentType, ?> a() {
-         return jb.this;
-      }
+   public int c() {
+      return this.j.w();
    }
 }

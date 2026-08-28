@@ -1,42 +1,29 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
+import java.util.Optional;
 
-public class eqh extends eqo {
-   public static final MapCodec<eqh> a = MapCodec.unit(() -> eqh.b);
-   public static final eqh b = new eqh();
+public abstract class eqh extends eqi {
+   private final eqh.a d;
+   private final int e;
+   private final int f;
 
-   private eqh() {
-      super(eqq.a.a);
+   protected eqh(eqh.a $$0, int $$1, int $$2, eqi.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public kn a(etj $$0, drm $$1) {
-      return kn.i;
+   public Optional<eqi.b> a(eqi.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, efn.a.a, $$1 -> this.a($$1, $$0));
    }
 
-   @Override
-   public List<eti.a> a(etj $$0, jj $$1, drm $$2, azs $$3) {
-      return Collections.emptyList();
+   private void a(era $$0, eqi.a $$1) {
+      dhw $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
    }
 
-   @Override
-   public eoy a(etj $$0, jj $$1, drm $$2) {
-      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
-   }
-
-   @Override
-   public boolean a(etj $$0, dio $$1, dil $$2, eak $$3, jj $$4, jj $$5, drm $$6, eoy $$7, azs $$8, ess $$9, boolean $$10) {
-      return true;
-   }
-
-   @Override
-   public eqp<?> a() {
-      return eqp.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Empty";
+   @FunctionalInterface
+   protected interface a {
+      eqm construct(egm var1, int var2, int var3);
    }
 }

@@ -1,66 +1,29 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class eod extends eon {
-   private final jo c;
-   private final efs d;
-   private final efs e;
-   private final int f;
-   public static final MapCodec<eod> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               jo.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
-               efs.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
-               efs.b.optionalFieldOf("allowed_search_condition", efs.e()).forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eod::new)
-   );
+public class eod extends eoe {
+   public static final MapCodec<eod> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eod::new));
 
-   private eod(jo $$0, efs $$1, efs $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
-   public static eod a(jo $$0, efs $$1, efs $$2, int $$3) {
-      return new eod($$0, $$1, $$2, $$3);
-   }
-
-   public static eod a(jo $$0, efs $$1, int $$2) {
-      return a($$0, $$1, efs.e(), $$2);
+   public eod(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public Stream<jj> a_(eol $$0, azs $$1, jj $$2) {
-      jj.a $$3 = $$2.k();
-      dio $$4 = $$0.d();
-      if (!this.e.test($$4, $$3)) {
-         return Stream.of();
-      } else {
-         for (int $$5 = 0; $$5 < this.f; $$5++) {
-            if (this.d.test($$4, $$3)) {
-               return Stream.of($$3);
-            }
+   protected eof<?> a() {
+      return eof.a;
+   }
 
-            $$3.c(this.c);
-            if ($$4.e($$3.v())) {
-               return Stream.of();
-            }
+   @Override
+   public List<emj.a> a(div $$0, BiConsumer<iu, dzo> $$1, azt $$2, int $$3, iu $$4, elt $$5) {
+      a($$0, $$1, $$2, $$4.e(), $$5);
 
-            if (!this.e.test($$4, $$3)) {
-               break;
-            }
-         }
-
-         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
       }
-   }
 
-   @Override
-   public eoo<?> b() {
-      return eoo.j;
+      return ImmutableList.of(new emj.a($$4.b($$3), 0, false));
    }
 }

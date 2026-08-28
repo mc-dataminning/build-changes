@@ -1,56 +1,32 @@
-public class guj extends gue<bwg, hao> {
-   private static final ald a = ald.b("textures/entity/experience_orb.png");
-   private static final goi g = goi.i(a);
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-   public guj(guf.a $$0) {
-      super($$0);
-      this.e = 0.15F;
-      this.f = 0.75F;
+public class guj extends gue<ckd, hax, gdz> {
+   private static final Map<ckd.e, ale> a = af.a(Maps.newHashMap(), $$0 -> {
+      for (ckd.e $$1 : ckd.e.values()) {
+         $$0.put($$1, ale.b(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+      }
+   });
+
+   public guj(gvk.a $$0) {
+      super($$0, new gdz($$0.a(gif.m)), new gdz($$0.a(gif.n)), 0.5F);
    }
 
-   protected int a(bwg $$0, jj $$1) {
-      return azk.a(super.a($$0, $$1) + 7, 0, 15);
+   public ale a(hax $$0) {
+      return a.get($$0.a);
    }
 
-   public void a(hao $$0, fho $$1, gny $$2, int $$3) {
-      $$1.a();
-      int $$4 = $$0.a;
-      float $$5 = (float)($$4 % 4 * 16 + 0) / 64.0F;
-      float $$6 = (float)($$4 % 4 * 16 + 16) / 64.0F;
-      float $$7 = (float)($$4 / 4 * 16 + 0) / 64.0F;
-      float $$8 = (float)($$4 / 4 * 16 + 16) / 64.0F;
-      float $$9 = 1.0F;
-      float $$10 = 0.5F;
-      float $$11 = 0.25F;
-      float $$12 = 255.0F;
-      float $$13 = $$0.u / 2.0F;
-      int $$14 = (int)((azk.a($$13 + 0.0F) + 1.0F) * 0.5F * 255.0F);
-      int $$15 = 255;
-      int $$16 = (int)((azk.a($$13 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
-      $$1.a(0.0F, 0.1F, 0.0F);
-      $$1.a(this.d.b());
-      float $$17 = 0.3F;
-      $$1.b(0.3F, 0.3F, 0.3F);
-      fhs $$18 = $$2.getBuffer(g);
-      fho.a $$19 = $$1.c();
-      a($$18, $$19, -0.5F, -0.25F, $$14, 255, $$16, $$5, $$8, $$3);
-      a($$18, $$19, 0.5F, -0.25F, $$14, 255, $$16, $$6, $$8, $$3);
-      a($$18, $$19, 0.5F, 0.75F, $$14, 255, $$16, $$6, $$7, $$3);
-      a($$18, $$19, -0.5F, 0.75F, $$14, 255, $$16, $$5, $$7, $$3);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public hax a() {
+      return new hax();
    }
 
-   private static void a(fhs $$0, fho.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
-      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).b(hgi.d).c($$9).b($$1, 0.0F, 1.0F, 0.0F);
-   }
-
-   public hao a() {
-      return new hao();
-   }
-
-   public void a(bwg $$0, hao $$1, float $$2) {
+   public void a(ckd $$0, hax $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.g();
+      $$1.a = $$0.t();
+      $$1.b = $$0.bM.a($$2);
+      $$1.d = $$0.bN.a($$2);
+      $$1.e = $$0.bO.a($$2);
+      $$1.c = $$0.bP.a($$2);
    }
 }

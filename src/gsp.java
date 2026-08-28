@@ -1,37 +1,66 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class gsp implements gsa.a {
-   private static final int a = 60;
-   private final Set<kl> b = Sets.newHashSet();
+public class gsp implements dhs {
+   public static final int a = 1;
+   public static final int b = 3;
+   private final int e;
+   private final int f;
+   protected final gso[] c;
+   protected final dip d;
 
-   gsp() {
+   gsp(dip $$0, int $$1, int $$2, gso[] $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.c = $$3;
    }
 
    @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   public void a(kl $$0) {
-      this.b.add($$0);
-   }
-
-   public void b(kl $$0) {
-      this.b.remove($$0);
+   public dzo a_(iu $$0) {
+      return this.a(jx.a($$0.u()), jx.a($$0.w())).b($$0);
    }
 
    @Override
-   public void a(fho $$0, gny $$1, double $$2, double $$3, double $$4) {
-      jj $$5 = jj.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.k(), 60.0)) {
-            a($$0, $$1, $$3x);
-         }
-      });
+   public evv b_(iu $$0) {
+      return this.a(jx.a($$0.u()), jx.a($$0.w())).b($$0).y();
    }
 
-   private static void a(fho $$0, gny $$1, kl $$2) {
-      gsa.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
+   @Override
+   public float a(ja $$0, boolean $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   @Override
+   public evk x_() {
+      return this.d.x_();
+   }
+
+   @Nullable
+   @Override
+   public dwn c_(iu $$0) {
+      return this.a(jx.a($$0.u()), jx.a($$0.w())).a($$0);
+   }
+
+   private gso a(int $$0, int $$1) {
+      return this.c[a(this.e, this.f, $$0, $$1)];
+   }
+
+   @Override
+   public int a(iu $$0, dia $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   @Override
+   public int G_() {
+      return this.d.G_();
+   }
+
+   @Override
+   public int H_() {
+      return this.d.H_();
+   }
+
+   public static int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$2 - $$0 + ($$3 - $$1) * 3;
    }
 }

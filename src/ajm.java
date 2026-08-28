@@ -1,5 +1,3 @@
 public interface ajm {
-   ald a();
-
-   void a(vr var1);
+   void a(vs var1);
 }

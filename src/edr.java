@@ -1,14 +1,24 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public interface edr<T extends edq> {
-   edr<edi> a = a("block", new edi.a());
-   edr<edk> b = a("entity", new edk.a());
+public class edr<T> {
+   private final dhw a;
+   private final List<T> b;
 
-   MapCodec<T> a();
+   public edr(dhw $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   yt<? super wg, T> b();
+   public dhw a() {
+      return this.a;
+   }
 
-   static <S extends edr<T>, T extends edq> S a(String $$0, S $$1) {
-      return kf.a(md.t, $$0, $$1);
+   public Stream<T> b() {
+      return this.b.stream();
+   }
+
+   public boolean c() {
+      return this.b.isEmpty();
    }
 }

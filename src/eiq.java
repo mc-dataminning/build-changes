@@ -1,24 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class eiq extends ehr<ekh> {
-   public eiq(Codec<ekh> $$0) {
+public class eiq extends eit<ele> {
+   public eiq(Codec<ele> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eht<ekh> $$0) {
-      ekh $$1 = $$0.f();
-      azs $$2 = $$0.d();
-      dio $$3 = $$0.b();
-      eak $$4 = $$0.c();
-      jj $$5 = $$0.e();
+   public boolean a(eiv<ele> $$0) {
+      djo $$1 = $$0.b();
+      azt $$2 = $$0.d();
+      iu $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-      for (ejl $$6 : $$1.b) {
-         if ($$2.i() < $$6.c) {
-            return $$6.a($$3, $$4, $$2, $$5);
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = azk.d(-$$4); $$6 <= azk.f($$4); $$6++) {
+            for (int $$7 = azk.d(-$$4); $$7 <= azk.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), dlw.fU.m());
+               }
+            }
          }
+
+         $$4 -= (float)$$2.a(2) + 0.5F;
       }
 
-      return $$1.c.a().a($$3, $$4, $$2, $$5);
+      return true;
    }
 }

@@ -1,21 +1,19 @@
-class buo extends buu {
-   protected buo(buv $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum buo implements bai {
+   a("never"),
+   b("when_caused_by_living_non_player"),
+   c("always");
+
+   public static final Codec<buo> d = bai.a(buo::values);
+   private final String e;
+
+   private buo(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(arn $$0, bwr $$1, int $$2) {
-      return $$1.fv() > 0.0F;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public void a(bwr $$0, int $$1) {
-      super.a($$0, $$1);
-      $$0.F(Math.max($$0.fv(), (float)(4 * (1 + $$1))));
+   public String c() {
+      return this.e;
    }
 }

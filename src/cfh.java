@@ -1,18 +1,16 @@
 import javax.annotation.Nullable;
 
-public class cfh<T extends bwr> extends cfg<T> {
-   private boolean i = true;
-
-   public cfh(crw $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable chg.a $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+public class cfh extends cfi {
+   public cfh(bxh $$0, double $$1) {
+      super($$0, $$1);
    }
 
-   public void a(boolean $$0) {
-      this.i = $$0;
-   }
-
+   @Nullable
    @Override
-   public boolean b() {
-      return this.i && super.b();
+   protected fdw h() {
+      fdw $$0 = this.b.h(0.0F);
+      int $$1 = 8;
+      fdw $$2 = chu.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : chq.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
    }
 }

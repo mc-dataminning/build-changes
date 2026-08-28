@@ -1,17 +1,24 @@
 public class gik {
-   private final gia a;
-   private final bol b;
+   public static final gik a = new gik(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-   public gik(gia $$0, bol $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gik(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a() {
-      this.a.b(new ajw(af.c()));
+   public gik(float $$0) {
+      this($$0, $$0, $$0);
    }
 
-   public void a(ajt $$0) {
-      this.b.a(af.c() - $$0.b());
+   public gik a(float $$0) {
+      return new gik(this.b + $$0, this.c + $$0, this.d + $$0);
+   }
+
+   public gik a(float $$0, float $$1, float $$2) {
+      return new gik(this.b + $$0, this.c + $$1, this.d + $$2);
    }
 }

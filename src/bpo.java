@@ -1,24 +1,31 @@
-import com.mojang.brigadier.StringReader;
+import java.util.Optional;
 
-public class bpo extends bpf<StringReader> {
-   private final StringReader a;
+public interface bpo<S, T> {
+   Optional<T> a(bpn<S> var1);
 
-   public bpo(bpc<StringReader> $$0, bpd<StringReader> $$1, StringReader $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+   static <S, T> bpo<S, T> a(bpr<S> $$0, bpo.a<S, T> $$1) {
+      return new bpo.c<>($$1, $$0);
    }
 
-   public StringReader d() {
-      return this.a;
+   static <S, T> bpo<S, T> a(bpr<S> $$0, bpo.b<T> $$1) {
+      return new bpo.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
    }
 
-   @Override
-   public int c() {
-      return this.a.getCursor();
+   @FunctionalInterface
+   public interface a<S, T> {
+      Optional<T> run(bpn<S> var1, bpp var2);
    }
 
-   @Override
-   public void a(int $$0) {
-      this.a.setCursor($$0);
+   @FunctionalInterface
+   public interface b<T> {
+      T run(bpp var1);
+   }
+
+   public static record c<S, T>(bpo.a<S, T> a, bpr<S> b) implements bpo<S, T> {
+      @Override
+      public Optional<T> a(bpn<S> $$0) {
+         bpp $$1 = new bpp();
+         return this.b.a($$0, $$1, bpj.a) ? this.a.run($$0, $$1) : Optional.empty();
+      }
    }
 }

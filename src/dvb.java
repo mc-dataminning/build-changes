@@ -1,76 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Map;
 
-public record dvb(List<dvb.b> d) {
-   static final Logger e = LogUtils.getLogger();
-   public static final dvb a = new dvb(List.of());
-   public static final Codec<dvb> b = dvb.b.a.listOf().xmap(dvb::new, dvb::b);
-   public static final yt<wg, dvb> c = dvb.b.b.a(yr.a()).a(dvb::new, dvb::b);
+public class dvb extends dkl {
+   public static final MapCodec<dvb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cxq.q.fieldOf("color").forGetter(dkl::b), t()).apply($$0, dvb::new));
+   public static final eam<ja> b = dpt.e;
+   private static final Map<ja, feq> c = fen.c(dlu.a(16.0, 0.0, 12.5, 14.0, 16.0));
 
-   public dvb a() {
-      return new dvb(List.copyOf(this.d.subList(0, this.d.size() - 1)));
+   @Override
+   public MapCodec<dvb> a() {
+      return a;
    }
 
-   public List<dvb.b> b() {
-      return this.d;
+   public dvb(cxq $$0, dzn.d $$1) {
+      super($$0, $$1);
+      this.l(this.B.b().b(b, ja.c));
    }
 
-   public static class a {
-      private final Builder<dvb.b> a = ImmutableList.builder();
+   @Override
+   protected boolean a(dzo $$0, dis $$1, iu $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
 
-      @Deprecated
-      public dvb.a a(jt<dva> $$0, alc<dva> $$1, cwv $$2) {
-         Optional<js.c<dva>> $$3 = $$0.a($$1);
-         if ($$3.isEmpty()) {
-            dvb.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
-            return this;
-         } else {
-            return this.a($$3.get(), $$2);
+   @Override
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      return $$4 == $$0.c(b).g() && !$$0.a($$1, $$3) ? dlw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return c.get($$0.c(b));
+   }
+
+   @Override
+   public dzo a(dcl $$0) {
+      dzo $$1 = this.m();
+      dis $$2 = $$0.q();
+      iu $$3 = $$0.a();
+      ja[] $$4 = $$0.f();
+
+      for (ja $$5 : $$4) {
+         if ($$5.o().d()) {
+            ja $$6 = $$5.g();
+            $$1 = $$1.b(b, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
          }
       }
 
-      public dvb.a a(js<dva> $$0, cwv $$1) {
-         return this.a(new dvb.b($$0, $$1));
-      }
-
-      public dvb.a a(dvb.b $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public dvb.a a(dvb $$0) {
-         this.a.addAll($$0.d);
-         return this;
-      }
-
-      public dvb a() {
-         return new dvb(this.a.build());
-      }
+      return null;
    }
 
-   public static record b(js<dva> c, cwv d) {
-      public static final Codec<dvb.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dva.c.fieldOf("pattern").forGetter(dvb.b::b), cwv.q.fieldOf("color").forGetter(dvb.b::c)).apply($$0, dvb.b::new)
-      );
-      public static final yt<wg, dvb.b> b = yt.a(dva.d, dvb.b::b, cwv.r, dvb.b::c, dvb.b::new);
+   @Override
+   protected dzo a(dzo $$0, dsm $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
 
-      public xj a() {
-         String $$0 = this.c.a().b();
-         return wv.c($$0 + "." + this.d.b());
-      }
+   @Override
+   protected dzo a(dzo $$0, dqv $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
 
-      public js<dva> b() {
-         return this.c;
-      }
-
-      public cwv c() {
-         return this.d;
-      }
+   @Override
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(b);
    }
 }

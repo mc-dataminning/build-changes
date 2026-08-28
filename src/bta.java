@@ -1,56 +1,45 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bta extends bst {
-   public static final MapCodec<bta> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
-               .apply($$0, bta::new)
-      )
-      .validate(
-         $$0 -> $$0.d <= $$0.b
-               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
-               : DataResult.success($$0)
-      );
-   private final float b;
-   private final float d;
+public class bta extends btd {
+   public static final bta a = new bta(0);
+   public static final MapCodec<bta> b = Codec.INT.fieldOf("value").xmap(bta::a, bta::d);
+   private final int f;
 
-   private bta(float $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public static bta a(int $$0) {
+      return $$0 == 0 ? a : new bta($$0);
    }
 
-   public static bta b(float $$0, float $$1) {
-      if ($$1 <= $$0) {
-         throw new IllegalArgumentException("Max must exceed min");
-      } else {
-         return new bta($$0, $$1);
-      }
+   private bta(int $$0) {
+      this.f = $$0;
+   }
+
+   public int d() {
+      return this.f;
    }
 
    @Override
-   public float a(azs $$0) {
-      return azk.b($$0, this.b, this.d);
+   public int a(azt $$0) {
+      return this.f;
    }
 
    @Override
-   public float a() {
-      return this.b;
+   public int a() {
+      return this.f;
    }
 
    @Override
-   public float b() {
-      return this.d;
+   public int b() {
+      return this.f;
    }
 
    @Override
-   public bsu<?> c() {
-      return bsu.b;
+   public bte<?> c() {
+      return bte.a;
    }
 
    @Override
    public String toString() {
-      return "[" + this.b + "-" + this.d + "]";
+      return Integer.toString(this.f);
    }
 }

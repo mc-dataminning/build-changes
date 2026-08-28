@@ -1,31 +1,25 @@
-import java.util.Map;
+public record zt(String b, int c) implements zd<zj> {
+   public static final yu<vs, zt> a = zd.a(zt::a, zt::new);
 
-public class zt implements zc<zi> {
-   public static final yt<vr, zt> a = zc.a(zt::a, zt::new);
-   private final Map<alc<? extends kf<?>>, axr.a> b;
-
-   public zt(Map<alc<? extends kf<?>>, axr.a> $$0) {
-      this.b = $$0;
+   private zt(vs $$0) {
+      this($$0.p(), $$0.l());
    }
 
-   private zt(vr $$0) {
-      this.b = $$0.a(vr::r, axr.a::b);
-   }
-
-   private void a(vr $$0) {
-      $$0.a(this.b, vr::b, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(vs $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public ze<zt> a() {
-      return zu.k;
+   public zf<zt> a() {
+      return zv.j;
    }
 
-   public void a(zi $$0) {
+   public void a(zj $$0) {
       $$0.a(this);
    }
 
-   public Map<alc<? extends kf<?>>, axr.a> b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

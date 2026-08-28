@@ -1,37 +1,49 @@
-import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class dzs {
-   private static final azu a = new azu(4);
-   private static final int b = a.a();
-   private static final int c = 0;
-   private static final int d = 4;
-   private static final int e = 8;
-   private static final int f = 12;
+   private final dis a;
+   private final iu b;
+   private final boolean c;
+   @Nullable
+   private dzo d;
+   @Nullable
+   private dwn e;
+   private boolean f;
 
-   public static int a() {
-      return b;
+   public dzs(dis $$0, iu $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1.j();
+      this.c = $$2;
    }
 
-   public static int a(jo $$0) {
-      return a.a($$0);
+   public dzo a() {
+      if (this.d == null && (this.c || this.a.C(this.b))) {
+         this.d = this.a.a_(this.b);
+      }
+
+      return this.d;
    }
 
-   public static int a(float $$0) {
-      return a.b($$0);
+   @Nullable
+   public dwn b() {
+      if (this.e == null && !this.f) {
+         this.e = this.a.c_(this.b);
+         this.f = true;
+      }
+
+      return this.e;
    }
 
-   public static Optional<jo> a(int $$0) {
-      jo $$1 = switch ($$0) {
-         case 0 -> jo.c;
-         case 4 -> jo.f;
-         case 8 -> jo.d;
-         case 12 -> jo.e;
-         default -> null;
-      };
-      return Optional.ofNullable($$1);
+   public dis c() {
+      return this.a;
    }
 
-   public static float b(int $$0) {
-      return a.b($$0);
+   public iu d() {
+      return this.b;
+   }
+
+   public static Predicate<dzs> a(Predicate<dzo> $$0) {
+      return $$1 -> $$1 != null && $$0.test($$1.a());
    }
 }

@@ -1,60 +1,21 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+
 public class fct {
-   public static final fct a = new fct(0.0F, 0.0F);
-   public static final fct b = new fct(1.0F, 1.0F);
-   public static final fct c = new fct(1.0F, 0.0F);
-   public static final fct d = new fct(-1.0F, 0.0F);
-   public static final fct e = new fct(0.0F, 1.0F);
-   public static final fct f = new fct(0.0F, -1.0F);
-   public static final fct g = new fct(Float.MAX_VALUE, Float.MAX_VALUE);
-   public static final fct h = new fct(Float.MIN_VALUE, Float.MIN_VALUE);
-   public final float i;
-   public final float j;
+   private static final Codec<fcs> h = mf.G.q().dispatch(fcs::b, fcr::a);
+   public static final Codec<fcs> a = Codec.lazyInitialized(() -> {
+      Codec<fcs> $$0 = Codec.withAlternative(h, fcw.a.codec());
+      return Codec.either(fcp.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof fcp $$1 ? Either.left($$1) : Either.right($$0x));
+   });
+   public static final fcr b = a("constant", fcp.a);
+   public static final fcr c = a("uniform", fcw.a);
+   public static final fcr d = a("binomial", fco.a);
+   public static final fcr e = a("score", fcu.a);
+   public static final fcr f = a("storage", fcv.a);
+   public static final fcr g = a("enchantment_level", fcq.a);
 
-   public fct(float $$0, float $$1) {
-      this.i = $$0;
-      this.j = $$1;
-   }
-
-   public fct a(float $$0) {
-      return new fct(this.i * $$0, this.j * $$0);
-   }
-
-   public float a(fct $$0) {
-      return this.i * $$0.i + this.j * $$0.j;
-   }
-
-   public fct b(fct $$0) {
-      return new fct(this.i + $$0.i, this.j + $$0.j);
-   }
-
-   public fct b(float $$0) {
-      return new fct(this.i + $$0, this.j + $$0);
-   }
-
-   public boolean c(fct $$0) {
-      return this.i == $$0.i && this.j == $$0.j;
-   }
-
-   public fct a() {
-      float $$0 = azk.c(this.i * this.i + this.j * this.j);
-      return $$0 < 1.0E-4F ? a : new fct(this.i / $$0, this.j / $$0);
-   }
-
-   public float b() {
-      return azk.c(this.i * this.i + this.j * this.j);
-   }
-
-   public float c() {
-      return this.i * this.i + this.j * this.j;
-   }
-
-   public float d(fct $$0) {
-      float $$1 = $$0.i - this.i;
-      float $$2 = $$0.j - this.j;
-      return $$1 * $$1 + $$2 * $$2;
-   }
-
-   public fct d() {
-      return new fct(-this.i, -this.j);
+   private static fcr a(String $$0, MapCodec<? extends fcs> $$1) {
+      return jr.a(mf.G, ale.b($$0), new fcr($$1));
    }
 }

@@ -1,17 +1,37 @@
-import java.util.List;
-import java.util.Map;
-import org.joml.Vector3f;
+import javax.annotation.Nullable;
 
-public class hja {
-   private static final String c = "missing";
-   private static final String d = "missingno";
-   public static final ald a = ald.b("builtin/missing");
-   public static final hjh b = new hjh(a, "missing");
+public record hja(ale a, @Nullable String b, @Nullable ale c, @Nullable ale d, hja.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   public static hjn a() {
-      gpj $$0 = new gpj(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0);
-      Map<jo, gph> $$1 = af.a(jo.class, $$1x -> new gph($$1x, -1, "missingno", $$0));
-      gpg $$2 = new gpg(new Vector3f(0.0F, 0.0F, 0.0F), new Vector3f(16.0F, 16.0F, 16.0F), $$1);
-      return new gpk(null, List.of($$2), new gpr.a.a().a("particle", "missingno").a("missingno", new hiz(hgr.d, hgh.c())).a(), null, null, gpp.a);
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      public static hja.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
+
+      public String a() {
+         return this.c;
+      }
    }
 }

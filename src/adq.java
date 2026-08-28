@@ -1,37 +1,33 @@
-public class adq implements zc<abr> {
-   public static final yt<vr, adq> a = zc.a(adq::a, adq::new);
-   private final jj b;
-   private final boolean c;
+public class adq implements zd<abs> {
+   public static final yu<wh, adq> a = yu.a(ys.w, adq::b, ys.a(mg.V), adq::e, wy.d, adq::f, adq::new);
+   private final int b;
+   private final cvt<?> c;
+   private final ww d;
 
-   public adq(jj $$0, boolean $$1) {
+   public adq(int $$0, cvt<?> $$1, ww $$2) {
       this.b = $$0;
       this.c = $$1;
-   }
-
-   private adq(vr $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
-   }
-
-   private void a(vr $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+      this.d = $$2;
    }
 
    @Override
-   public ze<adq> a() {
-      return agk.Y;
+   public zf<adq> a() {
+      return agl.X;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public jj b() {
+   public int b() {
       return this.b;
    }
 
-   public boolean e() {
+   public cvt<?> e() {
       return this.c;
+   }
+
+   public ww f() {
+      return this.d;
    }
 }

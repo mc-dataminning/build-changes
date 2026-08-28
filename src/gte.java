@@ -1,32 +1,29 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
 
-public class gte extends gsz<cjv, gzs, gcw> {
-   private static final Map<cjv.e, ald> a = af.a(Maps.newHashMap(), $$0 -> {
-      for (cjv.e $$1 : cjv.e.values()) {
-         $$0.put($$1, ald.b(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+public class gte implements gtf.a {
+   private final fof a;
+   private double b = Double.MIN_VALUE;
+   private List<feq> c = Collections.emptyList();
+
+   public gte(fof $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void a(fiq $$0, gpd $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)af.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bwa $$6 = this.a.j.k().g();
+         this.c = ImmutableList.copyOf($$6.dV().d($$6, $$6.cR().g(6.0)));
       }
-   });
 
-   public gte(guf.a $$0) {
-      super($$0, new gcw($$0.a(ghc.m)), new gcw($$0.a(ghc.n)), 0.5F);
-   }
+      fiu $$7 = $$1.getBuffer(gpn.y());
 
-   public ald a(gzs $$0) {
-      return a.get($$0.a);
-   }
-
-   public gzs a() {
-      return new gzs();
-   }
-
-   public void a(cjv $$0, gzs $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b = $$0.bL.a($$2);
-      $$1.d = $$0.bM.a($$2);
-      $$1.e = $$0.bN.a($$2);
-      $$1.c = $$0.bO.a($$2);
+      for (feq $$8 : this.c) {
+         gtf.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      }
    }
 }

@@ -1,21 +1,36 @@
-public class gxo extends guw<coe, hdc, ggv> {
-   private static final ald a = ald.b("textures/entity/piglin/zombified_piglin.png");
+public class gxo extends gwq<coc, hdl, ghc> {
+   public static final ale a = ale.b("textures/entity/slime/slime.png");
 
-   public gxo(guf.a $$0, ghb $$1, ghb $$2, ghb $$3, ghb $$4, ghb $$5, ghb $$6) {
-      super($$0, new ggv($$0.a($$1)), new ggv($$0.a($$2)), 0.5F, gvv.a);
-      this.a(new gyi<>(this, new gen($$0.a($$3)), new gen($$0.a($$4)), new gen($$0.a($$5)), new gen($$0.a($$5)), $$0.h()));
+   public gxo(gvk.a $$0) {
+      super($$0, new ghc($$0.a(gif.da)), 0.25F);
+      this.a(new hac(this, $$0.f()));
    }
 
-   public ald a(hdc $$0) {
+   protected float a(hdl $$0) {
+      return (float)$$0.b * 0.25F;
+   }
+
+   protected void a(hdl $$0, fiq $$1) {
+      float $$2 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$3 = (float)$$0.b;
+      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
+   }
+
+   public ale b(hdl $$0) {
       return a;
    }
 
-   public hdc b() {
-      return new hdc();
+   public hdl b() {
+      return new hdl();
    }
 
-   public void a(coe $$0, hdc $$1, float $$2) {
+   public void a(coc $$0, hdl $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gh();
+      $$1.a = azk.h($$2, $$0.bF, $$0.bE);
+      $$1.b = $$0.go();
    }
 }

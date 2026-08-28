@@ -1,22 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface eh {
+   eh a = new eh() {
+      @Override
+      public void a(ww $$0) {
+      }
 
-public record eh<T>(axp<T> a, boolean b) {
-   public static <T> Codec<eh<T>> a(alc<? extends kf<T>> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(axp.a($$0).fieldOf("id").forGetter(eh::a), Codec.BOOL.fieldOf("expected").forGetter(eh::b)).apply($$1, eh::new)
-      );
-   }
+      @Override
+      public boolean t_() {
+         return false;
+      }
 
-   public static <T> eh<T> a(axp<T> $$0) {
-      return new eh<>($$0, true);
-   }
+      @Override
+      public boolean u_() {
+         return false;
+      }
 
-   public static <T> eh<T> b(axp<T> $$0) {
-      return new eh<>($$0, false);
-   }
+      @Override
+      public boolean c() {
+         return false;
+      }
+   };
 
-   public boolean a(js<T> $$0) {
-      return $$0.a(this.a) == this.b;
+   void a(ww var1);
+
+   boolean t_();
+
+   boolean u_();
+
+   boolean c();
+
+   default boolean o_() {
+      return false;
    }
 }

@@ -1,22 +1,26 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.function.BooleanSupplier;
 
-public record foq(int b) implements fon {
-   public static final MapCodec<foq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.i.fieldOf("default").forGetter(foq::b)).apply($$0, foq::new));
+public class foq extends fod {
+   private final BooleanSupplier h;
 
-   public foq() {
-      this(-13083194);
+   public foq(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
+      super($$0, fhl.b.a, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   public int a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2) {
-      czu $$3 = $$0.a(kx.R);
-      return $$3 != null ? axu.f($$3.a(this.b)) : axu.f(this.b);
+   public void a(boolean $$0) {
+      if (this.h.getAsBoolean()) {
+         if ($$0) {
+            super.a(!this.e());
+         }
+      } else {
+         super.a($$0);
+      }
    }
 
    @Override
-   public MapCodec<foq> a() {
-      return a;
+   protected void n() {
+      super.a(false);
    }
 }

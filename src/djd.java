@@ -1,57 +1,41 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class djd extends diw implements diu.a {
-   public static final MapCodec<djd> b = dis.c.fieldOf("biome").xmap(djd::new, $$0 -> $$0.c).stable();
-   private final js<dis> c;
+public class djd {
+   private final List<djd.a> a = Lists.newArrayList();
 
-   public djd(js<dis> $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   protected Stream<js<dis>> b() {
-      return Stream.of(this.c);
-   }
-
-   @Override
-   protected MapCodec<? extends diw> a() {
-      return b;
-   }
-
-   @Override
-   public js<dis> getNoiseBiome(int $$0, int $$1, int $$2, djb.f $$3) {
-      return this.c;
-   }
-
-   @Override
-   public js<dis> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.c;
-   }
-
-   @Nullable
-   @Override
-   public Pair<jj, js<dis>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<js<dis>> $$5, azs $$6, boolean $$7, djb.f $$8) {
-      if ($$5.test(this.c)) {
-         return $$7 ? Pair.of(new jj($$0, $$1, $$2), this.c) : Pair.of(new jj($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
-      } else {
-         return null;
+   public void a(iu $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new djd.a($$0, $$1));
       }
    }
 
-   @Nullable
-   @Override
-   public Pair<jj, js<dis>> a(jj $$0, int $$1, int $$2, int $$3, Predicate<js<dis>> $$4, djb.f $$5, dhs $$6) {
-      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   public double b(iu $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
+      } else {
+         double $$2 = 0.0;
+
+         for (djd.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
+         }
+
+         return $$2 * $$1;
+      }
    }
 
-   @Override
-   public Set<js<dis>> a(int $$0, int $$1, int $$2, int $$3, djb.f $$4) {
-      return Sets.newHashSet(Set.of(this.c));
+   static class a {
+      private final iu a;
+      private final double b;
+
+      public a(iu $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public double a(iu $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+      }
    }
 }

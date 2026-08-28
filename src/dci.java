@@ -1,66 +1,33 @@
-public class dci extends dcb {
-   public dci(dby $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public boolean a(dbz $$0, dhp $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
+public record dci(ji<bvc> c) implements dcg {
+   public static final MapCodec<dci> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jt.a(mg.W).fieldOf("effects").forGetter(dci::b)).apply($$0, dci::new));
+   public static final yu<wh, dci> b = yu.a(ys.c(mg.W), dci::b, dci::new);
 
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cxy $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.c(kx.M)) {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               } else {
-                  if (!$$5.a(cyc.vm)) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
-   }
-
-   public cxy a(dbz $$0, ju.a $$1) {
-      int $$2 = 0;
-      cxy $$3 = cxy.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxy $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.c(kx.M)) {
-               if (!$$3.f()) {
-                  return cxy.k;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cyc.vm)) {
-                  return cxy.k;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : cxy.k;
+   public dci(je<bvc> $$0) {
+      this(ji.a($$0));
    }
 
    @Override
-   public dcv<dci> a() {
-      return dcv.e;
+   public dcg.a<dci> a() {
+      return dcg.a.b;
+   }
+
+   @Override
+   public boolean a(dip $$0, cys $$1, bwz $$2) {
+      boolean $$3 = false;
+
+      for (je<bvc> $$4 : this.c) {
+         if ($$2.e($$4)) {
+            $$3 = true;
+         }
+      }
+
+      return $$3;
+   }
+
+   public ji<bvc> b() {
+      return this.c;
    }
 }

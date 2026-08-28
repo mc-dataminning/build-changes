@@ -1,42 +1,58 @@
-import javax.annotation.Nullable;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public class hmv implements hmy {
-   private static final int a = 600;
-   private static final wv b = wv.c("tutorial.open_inventory.title");
-   private static final wv c = wv.a("tutorial.open_inventory.description", hmx.a("inventory"));
-   private final hmx d;
-   @Nullable
-   private fsz e;
-   private int f;
+public class hmv implements hmp {
+   private final hmv.a a;
+   private hmp b;
+   private final BufferedInputStream c;
 
-   public hmv(hmx $$0) {
-      this.d = $$0;
+   public hmv(hmv.a $$0, InputStream $$1) throws IOException {
+      this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new hmv.b(this.c));
    }
 
    @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hmz.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            fnd $$0 = this.d.e();
-            this.e = new fsz($$0.h, fsz.a.d, b, c, false);
-            $$0.aA().a(this.e);
-         }
+   public AudioFormat a() {
+      return this.b.a();
+   }
+
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new hmv.b(this.c));
+         $$1 = this.b.a($$0);
       }
+
+      return $$1;
    }
 
    @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.e();
-         this.e = null;
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      hmp create(InputStream var1) throws IOException;
+   }
+
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
       }
-   }
 
-   @Override
-   public void c() {
-      this.d.a(hmz.e);
+      @Override
+      public void close() {
+      }
    }
 }

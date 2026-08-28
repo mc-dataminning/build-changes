@@ -1,64 +1,128 @@
-import com.google.common.collect.MapMaker;
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 
-public class alc<T> {
-   private static final ConcurrentMap<alc.a, alc<?>> a = new MapMaker().weakValues().makeMap();
-   private final ald b;
-   private final ald c;
+public class alc<T> extends akv<T> {
+   private final alc.c b;
 
-   public static <T> Codec<alc<T>> a(alc<? extends kf<T>> $$0) {
-      return ald.a.xmap($$1 -> a($$0, $$1), alc::a);
+   public static <T> alc<T> a(DynamicOps<T> $$0, jg.a $$1) {
+      return a($$0, new alc.a($$1));
    }
 
-   public static <T> yt<ByteBuf, alc<T>> b(alc<? extends kf<T>> $$0) {
-      return ald.b.a($$1 -> a($$0, $$1), alc::a);
+   public static <T> alc<T> a(DynamicOps<T> $$0, alc.c $$1) {
+      return new alc<>($$0, $$1);
    }
 
-   public static <T> alc<T> a(alc<? extends kf<T>> $$0, ald $$1) {
-      return a($$0.c, $$1);
+   public static <T> Dynamic<T> a(Dynamic<T> $$0, jg.a $$1) {
+      return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
    }
 
-   public static <T> alc<kf<T>> a(ald $$0) {
-      return a(me.a, $$0);
+   private alc(DynamicOps<T> $$0, alc.c $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   private static <T> alc<T> a(ald $$0, ald $$1) {
-      return (alc<T>)a.computeIfAbsent(new alc.a($$0, $$1), $$0x -> new alc($$0x.a, $$0x.b));
+   public <U> alc<U> a(DynamicOps<U> $$0) {
+      return (alc<U>)($$0 == this.a ? this : new alc((DynamicOps<T>)$$0, this.b));
    }
 
-   private alc(ald $$0, ald $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public <E> Optional<jh<E>> a(ald<? extends jr<? extends E>> $$0) {
+      return this.b.a($$0).map(alc.b::a);
+   }
+
+   public <E> Optional<jf<E>> b(ald<? extends jr<? extends E>> $$0) {
+      return this.b.a($$0).map(alc.b::b);
    }
 
    @Override
-   public String toString() {
-      return "ResourceKey[" + this.b + " / " + this.c + "]";
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         alc<?> $$1 = (alc<?>)$$0;
+         return this.a.equals($$1.a) && this.b.equals($$1.b);
+      } else {
+         return false;
+      }
    }
 
-   public boolean c(alc<? extends kf<?>> $$0) {
-      return this.b.equals($$0.a());
+   @Override
+   public int hashCode() {
+      return this.a.hashCode() * 31 + this.b.hashCode();
    }
 
-   public <E> Optional<alc<E>> d(alc<? extends kf<E>> $$0) {
-      return this.c($$0) ? Optional.of((alc<E>)this) : Optional.empty();
+   public static <E, O> RecordCodecBuilder<O, jf<E>> c(ald<? extends jr<? extends E>> $$0) {
+      return ays.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof alc<?> $$2
+                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
    }
 
-   public ald a() {
-      return this.c;
+   public static <E, O> RecordCodecBuilder<O, je.c<E>> d(ald<E> $$0) {
+      ald<? extends jr<E>> $$1 = ald.a($$0.b());
+      return ays.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof alc<?> $$3
+                  ? $$3.b
+                     .a($$1)
+                     .flatMap($$1xx -> $$1xx.b().a($$0))
+                     .<DataResult<E>>map(DataResult::success)
+                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
    }
 
-   public ald b() {
-      return this.b;
+   static final class a implements alc.c {
+      private final jg.a a;
+      private final Map<ald<? extends jr<?>>, Optional<? extends alc.b<?>>> b = new ConcurrentHashMap<>();
+
+      public a(jg.a $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public <E> Optional<alc.b<E>> a(ald<? extends jr<? extends E>> $$0) {
+         return (Optional<alc.b<E>>)this.b.computeIfAbsent($$0, this::b);
+      }
+
+      private Optional<alc.b<Object>> b(ald<? extends jr<?>> $$0) {
+         return this.a.a($$0).map(alc.b::a);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            if ($$0 instanceof alc.a $$1 && this.a.equals($$1.a)) {
+               return true;
+            }
+
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return this.a.hashCode();
+      }
    }
 
-   public alc<kf<T>> c() {
-      return a(this.b);
+   public static record b<T>(jh<T> a, jf<T> b, Lifecycle c) {
+      public static <T> alc.b<T> a(jg.b<T> $$0) {
+         return new alc.b<>($$0, $$0, $$0.h());
+      }
    }
 
-   static record a(ald a, ald b) {
+   public interface c {
+      <T> Optional<alc.b<T>> a(ald<? extends jr<? extends T>> var1);
    }
 }

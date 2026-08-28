@@ -1,79 +1,88 @@
 import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class doh extends dsr implements dkx {
+public class doh extends dlg {
    public static final MapCodec<doh> a = b(doh::new);
+   public static final List<iu> b = iu.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(iu::j).toList();
+   private static final feq c = dlu.b(16.0, 0.0, 12.0);
 
    @Override
    public MapCodec<doh> a() {
       return a;
    }
 
-   public doh(dyl.d $$0) {
+   protected doh(dzn.d $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(dhs $$0, jj $$1, dym $$2) {
-      return $$0.a_($$1.d()).l();
+   public static boolean a(dip $$0, iu $$1, iu $$2) {
+      return $$0.a_($$1.a((jz)$$2)).a(axa.cA) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(axa.cB);
    }
 
    @Override
-   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
+   protected boolean g_(dzo $$0) {
       return true;
    }
 
    @Override
-   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
-      jj $$4 = $$2.d();
-      dym $$5 = dkw.bA.m();
-      Optional<js.c<eok>> $$6 = $$0.F_().f(me.aY).a(ry.o);
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return c;
+   }
 
-      label51:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         jj $$8 = $$4;
+   @Override
+   public void a(dzo $$0, dip $$1, iu $$2, azt $$3) {
+      super.a($$0, $$1, $$2, $$3);
 
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.e()).a(this) || $$0.a_($$8).m($$0, $$8)) {
-               continue label51;
-            }
-         }
-
-         dym $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            dkx $$11 = (dkx)$$5.b();
-            if ($$11.a($$0, $$8, $$10)) {
-               $$11.a($$0, $$1, $$8, $$10);
-            }
-         }
-
-         if ($$10.l()) {
-            js<eok> $$14;
-            if ($$1.a(8) == 0) {
-               List<ehd<?, ?>> $$12 = $$0.t($$8).a().d().b();
-               if ($$12.isEmpty()) {
-                  continue;
-               }
-
-               int $$13 = $$1.a($$12.size());
-               $$14 = ((eki)$$12.get($$13).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
-
-               $$14 = $$6.get();
-            }
-
-            $$14.a().a($$0, $$0.m().g(), $$1, $$8);
+      for (iu $$4 : b) {
+         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
+            $$1.a(
+               lx.s,
+               (double)$$2.u() + 0.5,
+               (double)$$2.v() + 2.0,
+               (double)$$2.w() + 0.5,
+               (double)((float)$$4.u() + $$3.i()) - 0.5,
+               (double)((float)$$4.v() - $$3.i() - 1.0F),
+               (double)((float)$$4.w() + $$3.i()) - 0.5
+            );
          }
       }
    }
 
    @Override
-   public dkx.a am_() {
-      return dkx.a.a;
+   public dwn a(iu $$0, dzo $$1) {
+      return new dxk($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dwn> dwo<T> a(dip $$0, dzo $$1, dwp<T> $$2) {
+      return $$0.C ? a($$2, dwp.n, dxk::a) : null;
+   }
+
+   @Override
+   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.b($$1, $$2));
+      }
+
+      return bty.a;
+   }
+
+   @Nullable
+   @Override
+   protected bua b(dzo $$0, dip $$1, iu $$2) {
+      dwn $$3 = $$1.c_($$2);
+      if ($$3 instanceof dxk) {
+         ww $$4 = ((bub)$$3).m_();
+         return new bug(($$2x, $$3x, $$4x) -> new cvg($$2x, $$3x, cux.a($$1, $$2)), $$4);
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   protected boolean a(dzo $$0, ewk $$1) {
+      return false;
    }
 }

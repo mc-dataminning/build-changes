@@ -1,55 +1,296 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public record gph(@Nullable jo b, int c, String d, gpj e) {
-   public static final int a = -1;
+public class gph {
+   public static final ale a = ale.b("main");
+   private final List<gpj> b;
+   private final Map<ale, gpi.d> c;
+   private final Set<ale> d;
 
-   @Nullable
-   public jo a() {
-      return this.b;
+   private gph(List<gpj> $$0, Map<ale, gpi.d> $$1, Set<ale> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public int b() {
-      return this.c;
+   public static gph a(gpi $$0, hib $$1, gpu $$2, Set<ale> $$3) throws gpu.b {
+      Stream<ale> $$4 = $$0.b().stream().flatMap(gpi.e::b);
+      Set<ale> $$5 = $$4.filter($$1x -> !$$0.a().containsKey($$1x)).collect(Collectors.toSet());
+      Set<ale> $$6 = Sets.difference($$5, $$3);
+      if (!$$6.isEmpty()) {
+         throw new gpu.b("Referenced external targets are not available in this context: " + $$6);
+      } else {
+         Builder<gpj> $$7 = ImmutableList.builder();
+
+         for (gpi.e $$8 : $$0.b()) {
+            $$7.add(a($$1, $$2, $$8));
+         }
+
+         return new gph($$7.build(), $$0.a(), $$5);
+      }
    }
 
-   public String c() {
-      return this.d;
-   }
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   private static gpj a(hib $$0, gpu $$1, gpi.e $$2) throws gpu.b {
+      gom $$3 = $$1.b($$2.a());
 
-   public gpj d() {
-      return this.e;
-   }
-
-   protected static class a implements JsonDeserializer<gph> {
-      private static final int a = -1;
-
-      public gph a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         jo $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         gpj $$7 = (gpj)$$2.deserialize($$3, gpj.class);
-         return new gph($$4, $$5, $$6, $$7);
+      for (gpi.h $$4 : $$2.f()) {
+         String $$5 = $$4.a();
+         if ($$3.a($$5) == null) {
+            throw new gpu.b("Uniform '" + $$5 + "' does not exist for " + $$2.c());
+         }
       }
 
-      protected int a(JsonObject $$0) {
-         return aza.a($$0, "tintindex", -1);
+      String $$6 = $$2.c().toString();
+      gpj $$7 = new gpj($$6, $$3, $$2.e(), $$2.f());
+
+      for (gpi.c $$8 : $$2.d()) {
+         Objects.requireNonNull($$8);
+         Throwable var44;
+         switch ($$8) {
+            case gpi.g var10:
+               gpi.g var52 = var10;
+
+               try {
+                  var53 = var52.a();
+               } catch (Throwable var30) {
+                  var44 = var30;
+                  boolean var65 = false;
+                  break;
+               }
+
+               String var35 = var53;
+               gpi.g var54 = var10;
+
+               try {
+                  var55 = var54.c();
+               } catch (Throwable var29) {
+                  var44 = var29;
+                  boolean var66 = false;
+                  break;
+               }
+
+               ale var36 = var55;
+               gpi.g var56 = var10;
+
+               try {
+                  var57 = var56.d();
+               } catch (Throwable var28) {
+                  var44 = var28;
+                  boolean var67 = false;
+                  break;
+               }
+
+               int var37 = var57;
+               gpi.g var58 = var10;
+
+               try {
+                  var59 = var58.e();
+               } catch (Throwable var27) {
+                  var44 = var27;
+                  boolean var68 = false;
+                  break;
+               }
+
+               int var38 = var59;
+               gpi.g var60 = var10;
+
+               try {
+                  var61 = var60.f();
+               } catch (Throwable var26) {
+                  var44 = var26;
+                  boolean var69 = false;
+                  break;
+               }
+
+               boolean var39 = var61;
+               hhk $$14x = $$0.b(var36.a((UnaryOperator<String>)($$0x -> "textures/effect/" + $$0x + ".png")));
+               $$14x.a(var39, false);
+               $$7.a(new gpj.c(var35, $$14x, var37, var38));
+               continue;
+            case gpi.f $$14:
+               gpi.f var10000 = $$14;
+
+               try {
+                  var45 = var10000.a();
+               } catch (Throwable var25) {
+                  var44 = var25;
+                  boolean var10001 = false;
+                  break;
+               }
+
+               String var21 = var45;
+               gpi.f var46 = $$14;
+
+               try {
+                  var47 = var46.c();
+               } catch (Throwable var24) {
+                  var44 = var24;
+                  boolean var62 = false;
+                  break;
+               }
+
+               ale var41 = var47;
+               gpi.f var48 = $$14;
+
+               try {
+                  var49 = var48.d();
+               } catch (Throwable var23) {
+                  var44 = var23;
+                  boolean var63 = false;
+                  break;
+               }
+
+               boolean var42 = var49;
+               gpi.f var50 = $$14;
+
+               try {
+                  var51 = var50.e();
+               } catch (Throwable var22) {
+                  var44 = var22;
+                  boolean var64 = false;
+                  break;
+               }
+
+               boolean var43 = var51;
+               $$7.a(new gpj.b(var21, var41, var42, var43));
+               continue;
+            default:
+               throw new MatchException(null, null);
+         }
+
+         Throwable var34 = var44;
+         throw new MatchException(var34.toString(), var34);
       }
 
-      private String b(JsonObject $$0) {
-         return aza.i($$0, "texture");
+      return $$7;
+   }
+
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   public void a(fgu $$0, int $$1, int $$2, gph.a $$3) {
+      Matrix4f $$4 = new Matrix4f().setOrtho(0.0F, (float)$$1, 0.0F, (float)$$2, 0.1F, 1000.0F);
+      Map<ale, fic<fha>> $$5 = new HashMap<>(this.c.size() + this.d.size());
+
+      for (ale $$6 : this.d) {
+         $$5.put($$6, $$3.b($$6));
       }
+
+      for (Entry<ale, gpi.d> $$7 : this.c.entrySet()) {
+         ale $$8 = $$7.getKey();
+         gpi.d var35;
+         Objects.requireNonNull(var35);
+         Object var11 = var35;
+
+         var35 = $$7.getValue();
+         fia $$11 = switch (var11) {
+            case gpi.a var13 -> {
+               gpi.a var29 = var13;
+
+               int var26;
+               label56: {
+                  label76: {
+                     try {
+                        var31 = var29.a();
+                     } catch (Throwable var18) {
+                        var30 = var18;
+                        boolean var10001 = false;
+                        break label76;
+                     }
+
+                     var26 = var31;
+                     gpi.a var32 = var13;
+
+                     try {
+                        var33 = var32.b();
+                        break label56;
+                     } catch (Throwable var17) {
+                        var30 = var17;
+                        boolean var34 = false;
+                     }
+                  }
+
+                  Throwable var20 = var30;
+                  throw new MatchException(var20.toString(), var20);
+               }
+
+               int var27 = var33;
+               yield new fia(var26, var27, true, 0);
+            }
+            case gpi.b var16 -> new fia($$1, $$2, true, 0);
+            default -> throw new MatchException(null, null);
+         };
+         $$5.put($$8, $$0.a($$8.toString(), $$11));
+      }
+
+      for (gpj $$12 : this.b) {
+         $$12.a($$0, $$5, $$4);
+      }
+
+      for (ale $$13 : this.d) {
+         $$3.a($$13, $$5.get($$13));
+      }
+   }
+
+   @Deprecated
+   public void a(fha $$0, fhz $$1) {
+      fgu $$2 = new fgu();
+      gph.a $$3 = gph.a.b(a, $$2.a("main", $$0));
+      this.a($$2, $$0.c, $$0.d, $$3);
+      $$2.a($$1);
+   }
+
+   public void a(String $$0, float $$1) {
+      for (gpj $$2 : this.b) {
+         $$2.a().c($$0).a($$1);
+      }
+   }
+
+   public interface a {
+      static gph.a b(final ale $$0, final fic<fha> $$1) {
+         return new gph.a() {
+            private fic<fha> c = $$1;
+
+            @Override
+            public void a(ale $$0x, fic<fha> $$1x) {
+               if ($$0.equals($$0)) {
+                  this.c = $$1;
+               } else {
+                  throw new IllegalArgumentException("No target with id " + $$0);
+               }
+            }
+
+            @Nullable
+            @Override
+            public fic<fha> a(ale $$0x) {
+               return $$0.equals($$0) ? this.c : null;
+            }
+         };
+      }
+
+      void a(ale var1, fic<fha> var2);
 
       @Nullable
-      private jo c(JsonObject $$0) {
-         String $$1 = aza.a($$0, "cullface", "");
-         return jo.a($$1);
+      fic<fha> a(ale var1);
+
+      default fic<fha> b(ale $$0) {
+         fic<fha> $$1 = this.a($$0);
+         if ($$1 == null) {
+            throw new IllegalArgumentException("Missing target with id " + $$0);
+         } else {
+            return $$1;
+         }
       }
    }
 }

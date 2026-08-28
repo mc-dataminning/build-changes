@@ -1,25 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class din {
+   private static int[] a = new int[65536];
 
-public record din(dhd d, cte e) {
-   public static final String a = "enabled_features";
-   public static final Codec<din> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dhd.b.lenientOptionalFieldOf("DataPacks", dhd.a).forGetter(din::a), ctg.f.lenientOptionalFieldOf("enabled_features", ctg.h).forGetter(din::b)
-            )
-            .apply($$0, din::new)
-   );
-   public static final din c = new din(dhd.a, ctg.h);
-
-   public din a(cte $$0) {
-      return new din(this.d, this.e.c($$0));
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   public dhd a() {
-      return this.d;
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? -65281 : a[$$4];
    }
 
-   public cte b() {
-      return this.e;
+   public static int a() {
+      return a(0.5, 1.0);
    }
 }

@@ -1,96 +1,67 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public class fir {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 20;
-   private final fie c = fie.a();
-   private final Path d;
-   private final fjl e;
-   private final fnp f;
-   private final long g;
-   private final int h;
-   private final fis i;
-   private volatile boolean j;
-   @Nullable
-   private fic k;
+public class fir implements fiu {
+   private final fiu a;
+   private final Matrix4f b;
+   private final Matrix3f c;
+   private final float d;
+   private final Vector3f e = new Vector3f();
+   private final Vector3f f = new Vector3f();
+   private float g;
+   private float h;
+   private float i;
 
-   public fir(Path $$0, fjl $$1, fnp $$2, long $$3, int $$4, fis $$5) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
+   public fir(fiu $$0, fiq.a $$1, float $$2) {
+      this.a = $$0;
+      this.b = new Matrix4f($$1.a()).invert();
+      this.c = new Matrix3f($$1.b()).invert();
+      this.d = $$2;
    }
 
-   public CompletableFuture<?> a() {
-      return CompletableFuture.runAsync(() -> {
-         File $$0 = null;
-
-         try {
-            fjs $$1 = this.c();
-            $$0 = fiq.a(this.d, () -> this.j);
-            this.i.d();
-            fic $$2 = new fic($$0, this.g, this.h, $$1, this.f, ab.b().c(), this.e.i, this.i.b());
-            this.k = $$2;
-            flj $$3 = $$2.a();
-            String $$4 = $$3.a();
-            if ($$4 != null) {
-               throw new fin($$4);
-            }
-
-            flv.b(this.g);
-            this.c.a(this.g, this.h, this.e);
-         } catch (IOException var11) {
-            throw new fin(var11.getMessage());
-         } catch (fka var12) {
-            throw new fin(var12.a.b());
-         } catch (CancellationException | InterruptedException var13) {
-            throw new fil();
-         } finally {
-            if ($$0 != null) {
-               b.debug("Deleting file {}", $$0.getAbsolutePath());
-               $$0.delete();
-            }
-         }
-      }, af.h());
+   @Override
+   public fiu a(float $$0, float $$1, float $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.a.a($$0, $$1, $$2);
+      return this;
    }
 
-   public void b() {
-      this.j = true;
-      if (this.k != null) {
-         this.k.b();
-         this.k = null;
-      }
+   @Override
+   public fiu a(int $$0, int $$1, int $$2, int $$3) {
+      this.a.a(-1);
+      return this;
    }
 
-   private fjs c() throws fka, InterruptedException {
-      for (int $$0 = 0; $$0 < 20; $$0++) {
-         try {
-            fjs $$1 = this.c.i(this.g);
-            if (this.j) {
-               throw new fil();
-            }
+   @Override
+   public fiu a(float $$0, float $$1) {
+      return this;
+   }
 
-            if ($$1 != null) {
-               if (!$$1.c()) {
-                  throw new fip();
-               }
+   @Override
+   public fiu a(int $$0, int $$1) {
+      this.a.a($$0, $$1);
+      return this;
+   }
 
-               return $$1;
-            }
-         } catch (fkb var3) {
-            Thread.sleep((long)var3.c * 1000L);
-         }
-      }
+   @Override
+   public fiu b(int $$0, int $$1) {
+      this.a.b($$0, $$1);
+      return this;
+   }
 
-      throw new fip();
+   @Override
+   public fiu b(float $$0, float $$1, float $$2) {
+      this.a.b($$0, $$1, $$2);
+      Vector3f $$3 = this.c.transform($$0, $$1, $$2, this.f);
+      ja $$4 = ja.a($$3.x(), $$3.y(), $$3.z());
+      Vector3f $$5 = this.b.transformPosition(this.g, this.h, this.i, this.e);
+      $$5.rotateY((float) Math.PI);
+      $$5.rotateX((float) (-Math.PI / 2));
+      $$5.rotate($$4.b());
+      this.a.a(-$$5.x() * this.d, -$$5.y() * this.d);
+      return this;
    }
 }

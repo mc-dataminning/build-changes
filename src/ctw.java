@@ -1,104 +1,109 @@
-public class ctw extends ctn {
-   private final btj m;
-   private final int n;
+public abstract class ctw extends bwa {
+   protected static final akh<Integer> e = akl.a(ctw.class, akj.b);
+   protected static final akh<Integer> f = akl.a(ctw.class, akj.b);
+   protected static final akh<Float> g = akl.a(ctw.class, akj.d);
 
-   private ctw(cuw<?> $$0, int $$1, cqh $$2, int $$3) {
-      this($$0, $$1, $$2, new btx(9 * $$3), $$3);
-   }
-
-   public static ctw a(int $$0, cqh $$1) {
-      return new ctw(cuw.a, $$0, $$1, 1);
-   }
-
-   public static ctw b(int $$0, cqh $$1) {
-      return new ctw(cuw.b, $$0, $$1, 2);
-   }
-
-   public static ctw c(int $$0, cqh $$1) {
-      return new ctw(cuw.c, $$0, $$1, 3);
-   }
-
-   public static ctw d(int $$0, cqh $$1) {
-      return new ctw(cuw.d, $$0, $$1, 4);
-   }
-
-   public static ctw e(int $$0, cqh $$1) {
-      return new ctw(cuw.e, $$0, $$1, 5);
-   }
-
-   public static ctw f(int $$0, cqh $$1) {
-      return new ctw(cuw.f, $$0, $$1, 6);
-   }
-
-   public static ctw a(int $$0, cqh $$1, btj $$2) {
-      return new ctw(cuw.c, $$0, $$1, $$2, 3);
-   }
-
-   public static ctw b(int $$0, cqh $$1, btj $$2) {
-      return new ctw(cuw.f, $$0, $$1, $$2, 6);
-   }
-
-   public ctw(cuw<?> $$0, int $$1, cqh $$2, btj $$3, int $$4) {
+   public ctw(bwj<?> $$0, dip $$1) {
       super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.m = $$3;
-      this.n = $$4;
-      $$3.c_($$2.k);
-      int $$5 = 18;
-      this.d($$3, 8, 18);
-      int $$6 = 18 + this.n * 18 + 13;
-      this.c($$2, 8, $$6);
-   }
-
-   private void d(btj $$0, int $$1, int $$2) {
-      for (int $$3 = 0; $$3 < this.n; $$3++) {
-         for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new cvk($$0, $$4 + $$3 * 9, $$1 + $$4 * 18, $$2 + $$3 * 18));
-         }
-      }
    }
 
    @Override
-   public boolean b(cqi $$0) {
-      return this.m.a($$0);
+   public boolean b(bup $$0) {
+      return true;
    }
 
    @Override
-   public cxy b(cqi $$0, int $$1) {
-      cxy $$2 = cxy.k;
-      cvk $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cxy $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < this.n * 9) {
-            if (!this.a($$4, this.n * 9, this.k.size(), true)) {
-               return cxy.k;
+   public boolean a(aro $$0, bup $$1, float $$2) {
+      if (this.dQ()) {
+         return true;
+      } else if (this.d($$1)) {
+         return false;
+      } else {
+         boolean var10000;
+         label32: {
+            this.l(-this.J());
+            this.d(10);
+            this.bC();
+            this.b(this.H() + $$2 * 10.0F);
+            this.a(eeo.o, $$1.d());
+            if ($$1.d() instanceof cqs $$3 && $$3.gj().d) {
+               var10000 = true;
+               break label32;
             }
-         } else if (!this.a($$4, 0, this.n * 9, false)) {
-            return cxy.k;
+
+            var10000 = false;
          }
 
-         if ($$4.f()) {
-            $$3.e(cxy.k);
+         boolean $$4 = var10000;
+         if (($$4 || !(this.H() > 40.0F)) && !this.e($$1)) {
+            if ($$4) {
+               this.at();
+            }
          } else {
-            $$3.d();
+            this.a($$0, $$1);
          }
-      }
 
-      return $$2;
+         return true;
+      }
+   }
+
+   boolean e(bup $$0) {
+      return false;
    }
 
    @Override
-   public void a(cqi $$0) {
-      super.a($$0);
-      this.m.c($$0);
+   public boolean a(dii $$0) {
+      return $$0.c() instanceof bxb && !$$0.a().O().c(dil.c);
    }
 
-   public btj l() {
-      return this.m;
+   public void a(aro $$0, cyo $$1) {
+      this.c($$0);
+      if ($$0.O().c(dil.i)) {
+         cys $$2 = new cys($$1);
+         $$2.b(kj.g, this.an());
+         this.a($$0, $$2);
+      }
    }
 
-   public int m() {
-      return this.n;
+   @Override
+   protected void a(akl.a $$0) {
+      $$0.a(e, 0);
+      $$0.a(f, 1);
+      $$0.a(g, 0.0F);
    }
+
+   public void d(int $$0) {
+      this.al.a(e, $$0);
+   }
+
+   public void l(int $$0) {
+      this.al.a(f, $$0);
+   }
+
+   public void b(float $$0) {
+      this.al.a(g, $$0);
+   }
+
+   public float H() {
+      return this.al.a(g);
+   }
+
+   public int I() {
+      return this.al.a(e);
+   }
+
+   public int J() {
+      return this.al.a(f);
+   }
+
+   protected void a(aro $$0, bup $$1) {
+      this.a($$0, this.o());
+   }
+
+   @Override
+   public int bX() {
+      return 10;
+   }
+
+   protected abstract cyo o();
 }

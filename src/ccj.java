@@ -1,19 +1,31 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class ccj {
-   private static final bsv a = btb.a(100, 200);
+public class ccj<E extends cpv> extends byq<E> {
+   public ccj(int $$0) {
+      super(ImmutableMap.of(cgb.p, cgc.b, cgb.n, cgc.b), $$0);
+   }
 
-   public static byj<bwr> a() {
-      return cbv.a(
-         (Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$0 -> $$0.group($$0.a(cft.aC), $$0.a(cft.n), $$0.c(cft.aH), $$0.b(cft.C), $$0.c(cft.aA))
-               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     $$0x.a(baq.a);
-                     $$2.a(baq.a, (long)a.a($$3x.C_()));
-                     $$1.b();
-                     $$4x.b(bxd.m);
-                     return true;
-                  }))
-      );
+   protected boolean a(aro $$0, E $$1, long $$2) {
+      return $$1.dR() == null;
+   }
+
+   protected boolean a(aro $$0, E $$1) {
+      return $$1.aJ() || $$1.bj() || $$1.bw();
+   }
+
+   protected void b(aro $$0, E $$1, long $$2) {
+      if ($$1.aJ()) {
+         $$1.b(bxl.o);
+         $$1.a(awl.CJ, 5.0F, 1.0F);
+      } else {
+         $$1.a(awl.CE, 5.0F, 1.0F);
+         this.c($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(aro $$0, E $$1, long $$2) {
+      if ($$1.dR() == null) {
+         $$1.a(bwa.e.b);
+      }
    }
 }

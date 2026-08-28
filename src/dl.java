@@ -1,105 +1,56 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
 
-public record dl(Map<js<buu>, dl.b> b) {
-   public static final Codec<dl> a = Codec.unboundedMap(buu.a, dl.b.a).xmap(dl::new, dl::a);
-
-   public boolean a(bvs $$0) {
-      if ($$0 instanceof bwr $$1 && this.a($$1.eD())) {
-         return true;
-      }
-
-      return false;
+public class dl extends dj<dl.a> {
+   @Override
+   public Codec<dl.a> a() {
+      return dl.a.a;
    }
 
-   public boolean a(bwr $$0) {
-      return this.a($$0.eD());
+   public void a(arp $$0, dzo $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public boolean a(Map<js<buu>, buw> $$0) {
-      for (Entry<js<buu>, dl.b> $$1 : this.b.entrySet()) {
-         buw $$2 = $$0.get($$1.getKey());
-         if (!$$1.getValue().a($$2)) {
-            return false;
-         }
+   public static record a(Optional<bi> b, Optional<je<dlu>> c, Optional<dq> d) implements dj.a {
+      public static final Codec<dl.a> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     bx.b.optionalFieldOf("player").forGetter(dl.a::a),
+                     mf.e.r().optionalFieldOf("block").forGetter(dl.a::b),
+                     dq.a.optionalFieldOf("state").forGetter(dl.a::c)
+                  )
+                  .apply($$0, dl.a::new)
+         )
+         .validate(dl.a::a);
+
+      private static DataResult<dl.a> a(dl.a $$0) {
+         return $$0.c
+            .<DataResult<dl.a>>flatMap(
+               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((dlu)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
+            )
+            .orElseGet(() -> DataResult.success($$0));
       }
 
-      return true;
-   }
-
-   public Map<js<buu>, dl.b> a() {
-      return this.b;
-   }
-
-   public static class a {
-      private final Builder<js<buu>, dl.b> a = ImmutableMap.builder();
-
-      public static dl.a a() {
-         return new dl.a();
+      public static aq<dl.a> a(dlu $$0) {
+         return ap.K.a(new dl.a(Optional.empty(), Optional.of($$0.p()), Optional.empty()));
       }
 
-      public dl.a a(js<buu> $$0) {
-         this.a.put($$0, new dl.b());
-         return this;
+      public boolean a(dzo $$0) {
+         return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 
-      public dl.a a(js<buu> $$0, dl.b $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      public Optional<dl> b() {
-         return Optional.of(new dl(this.a.build()));
-      }
-   }
-
-   public static record b(dk.d b, dk.d c, Optional<Boolean> d, Optional<Boolean> e) {
-      public static final Codec<dl.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  dk.d.d.optionalFieldOf("amplifier", dk.d.c).forGetter(dl.b::a),
-                  dk.d.d.optionalFieldOf("duration", dk.d.c).forGetter(dl.b::b),
-                  Codec.BOOL.optionalFieldOf("ambient").forGetter(dl.b::c),
-                  Codec.BOOL.optionalFieldOf("visible").forGetter(dl.b::d)
-               )
-               .apply($$0, dl.b::new)
-      );
-
-      public b() {
-         this(dk.d.c, dk.d.c, Optional.empty(), Optional.empty());
-      }
-
-      public boolean a(@Nullable buw $$0) {
-         if ($$0 == null) {
-            return false;
-         } else if (!this.b.d($$0.e())) {
-            return false;
-         } else if (!this.c.d($$0.d())) {
-            return false;
-         } else {
-            return this.d.isPresent() && this.d.get() != $$0.f() ? false : !this.e.isPresent() || this.e.get() == $$0.g();
-         }
-      }
-
-      public dk.d a() {
+      @Override
+      public Optional<bi> a() {
          return this.b;
       }
 
-      public dk.d b() {
+      public Optional<je<dlu>> b() {
          return this.c;
       }
 
-      public Optional<Boolean> c() {
+      public Optional<dq> c() {
          return this.d;
-      }
-
-      public Optional<Boolean> d() {
-         return this.e;
       }
    }
 }

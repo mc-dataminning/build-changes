@@ -1,72 +1,29 @@
-@FunctionalInterface
-public interface guf<T extends bvs> {
-   gue<T, ?> create(guf.a var1);
+public class guf extends gwq<cjx, has, gds> {
+   private static final ale a = ale.b("textures/entity/allay/allay.png");
 
-   public static class a {
-      private final gud a;
-      private final hdl b;
-      private final gnx c;
-      private final gpc d;
-      private final ava e;
-      private final ggz f;
-      private final hix g;
-      private final fpx h;
-      private final gye i;
+   public guf(gvk.a $$0) {
+      super($$0, new gds($$0.a(gif.c)), 0.4F);
+      this.a(new gzq<>(this));
+   }
 
-      public a(gud $$0, hdl $$1, gnx $$2, gpc $$3, ava $$4, ggz $$5, hix $$6, fpx $$7) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = new gye($$6, this.i().c(got.g));
-      }
+   public ale a(has $$0) {
+      return a;
+   }
 
-      public gud a() {
-         return this.a;
-      }
+   public has a() {
+      return new has();
+   }
 
-      public hdl b() {
-         return this.b;
-      }
+   public void a(cjx $$0, has $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      hau.a($$0, $$1, this.h);
+      $$1.a = $$0.q();
+      $$1.b = $$0.t();
+      $$1.c = $$0.K($$2);
+      $$1.d = $$0.J($$2);
+   }
 
-      public gnx c() {
-         return this.c;
-      }
-
-      public gpc d() {
-         return this.d;
-      }
-
-      public ava e() {
-         return this.e;
-      }
-
-      public ggz f() {
-         return this.f;
-      }
-
-      public hix g() {
-         return this.g;
-      }
-
-      public gye h() {
-         return this.i;
-      }
-
-      public hjg i() {
-         return this.d.a().a();
-      }
-
-      public ghd a(ghb $$0) {
-         return this.f.a($$0);
-      }
-
-      public fpx j() {
-         return this.h;
-      }
+   protected int a(cjx $$0, iu $$1) {
+      return 15;
    }
 }

@@ -1,36 +1,26 @@
 import javax.annotation.Nullable;
 
-public class cfi<T extends bwr> extends cfg<T> {
-   private static final int i = 200;
-   private int j = 0;
+public class cfi extends ces {
+   public static final float i = 0.001F;
+   protected final float j;
 
-   public cfi(crw $$0, Class<T> $$1, boolean $$2, @Nullable chg.a $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
+   public cfi(bxh $$0, double $$1) {
+      this($$0, $$1, 0.001F);
    }
 
-   public int i() {
-      return this.j;
+   public cfi(bxh $$0, double $$1, float $$2) {
+      super($$0, $$1);
+      this.j = $$2;
    }
 
-   public void k() {
-      this.j--;
-   }
-
+   @Nullable
    @Override
-   public boolean b() {
-      if (this.j > 0 || !this.e.dY().h()) {
-         return false;
-      } else if (!((crw)this.e).gE()) {
-         return false;
+   protected fdw h() {
+      if (this.b.bj()) {
+         fdw $$0 = chv.a(this.b, 15, 7);
+         return $$0 == null ? super.h() : $$0;
       } else {
-         this.h();
-         return this.c != null;
+         return this.b.dY().i() >= this.j ? chv.a(this.b, 10, 7) : super.h();
       }
-   }
-
-   @Override
-   public void d() {
-      this.j = b(200);
-      super.d();
    }
 }

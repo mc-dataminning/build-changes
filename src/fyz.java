@@ -1,86 +1,51 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public abstract class fyz<T extends cvo> extends fxx<T> implements cuy {
+   private final ale G;
 
-public class fyz extends fwf {
-   private static final int a = 310;
-   private static final int b = 25;
-   private static final wv c = wv.c("menu.server_links.title");
-   private final fwf d;
-   @Nullable
-   private fyz.a s;
-   final fub u = new fub(this);
-   final alv v;
+   public fyz(T $$0, cqr $$1, ww $$2, ale $$3) {
+      super($$0, $$1, $$2);
+      this.G = $$3;
+   }
 
-   public fyz(fwf $$0, alv $$1) {
-      super(c);
-      this.d = $$0;
-      this.v = $$1;
+   @Override
+   protected void G() {
    }
 
    @Override
    protected void aN_() {
-      this.u.a(this.l, this.p);
-      this.s = this.u.c(new fyz.a(this.m, this.n, this));
-      this.u.b(fqn.a(wu.k, $$0 -> this.aK_()).a(200).a());
-      this.u.a($$1 -> {
-         fql var10000 = this.c($$1);
-      });
-      this.c();
+      super.aN_();
+      this.G();
+      this.z.a(this);
    }
 
    @Override
-   protected void c() {
-      this.u.a();
-      if (this.s != null) {
-         this.s.a(this.n, this.u);
-      }
+   public void aE_() {
+      super.aE_();
+      this.z.b(this);
    }
 
    @Override
-   public void aK_() {
-      this.m.a(this.d);
+   public void a(frc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   static class a extends fqt<fyz.b> {
-      public a(fnd $$0, int $$1, fyz $$2) {
-         super($$0, $$1, $$2.u.d(), $$2.u.c(), 25);
-         $$2.v.c().forEach($$1x -> this.b(new fyz.b($$2, $$1x)));
-      }
-
-      @Override
-      public int a() {
-         return 310;
-      }
-
-      @Override
-      public void a(int $$0, fub $$1) {
-         super.a($$0, $$1);
-         int $$2 = $$0 / 2 - 155;
-         this.aD_().forEach($$1x -> $$1x.a.j($$2));
-      }
+   protected void d(frc $$0, int $$1, int $$2, float $$3) {
    }
 
-   static class b extends fqt.a<fyz.b> {
-      final fql a;
+   @Override
+   protected void a(frc $$0, float $$1, int $$2, int $$3) {
+      $$0.a(gpn::H, this.G, this.C, this.D, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      this.c($$0, this.C, this.D);
+   }
 
-      b(fwf $$0, alv.a $$1) {
-         this.a = fqn.a($$1.a(), fvc.b($$0, $$1.c(), false)).a(310).a();
-      }
+   protected abstract void c(frc var1, int var2, int var3);
 
-      @Override
-      public void a(fpz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a.k($$2);
-         this.a.a($$0, $$6, $$7, $$9);
-      }
+   @Override
+   public void a(cuk $$0, int $$1, int $$2) {
+   }
 
-      @Override
-      public List<? extends fsk> aD_() {
-         return List.of(this.a);
-      }
-
-      @Override
-      public List<? extends fui> b() {
-         return List.of(this.a);
-      }
+   @Override
+   public void a(cuk $$0, int $$1, cys $$2) {
    }
 }

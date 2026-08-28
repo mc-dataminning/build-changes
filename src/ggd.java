@@ -1,38 +1,47 @@
-public class ggd extends gea<hbw> {
-   private static final int a = 2;
-   private final ghd[] b = new ghd[2];
+public class ggd extends gfd<hcy> {
+   private static final String a = "tail_base";
+   private static final String b = "tail_tip";
+   private final gig c;
+   private final gig d;
+   private final gig e;
+   private final gig f;
+   private final gig g;
+   private final gig i;
 
-   public ggd(ghd $$0) {
+   public ggd(gig $$0) {
       super($$0);
-
-      for (int $$1 = 0; $$1 < 2; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
-      }
+      gig $$1 = $$0.b("body");
+      this.g = $$1.b("tail_base");
+      this.i = this.g.b("tail_tip");
+      this.c = $$1.b("left_wing_base");
+      this.d = this.c.b("left_wing_tip");
+      this.e = $$1.b("right_wing_base");
+      this.f = this.e.b("right_wing_tip");
    }
 
-   private static String a(int $$0) {
-      return "box" + $$0;
+   public static gim a() {
+      gio $$0 = new gio();
+      giq $$1 = $$0.a();
+      giq $$2 = $$1.a("body", gil.c().a(0, 8).a(-3.0F, -2.0F, -8.0F, 5.0F, 3.0F, 9.0F), gii.b(-0.1F, 0.0F, 0.0F));
+      giq $$3 = $$2.a("tail_base", gil.c().a(3, 20).a(-2.0F, 0.0F, 0.0F, 3.0F, 2.0F, 6.0F), gii.a(0.0F, -2.0F, 1.0F));
+      $$3.a("tail_tip", gil.c().a(4, 29).a(-1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 6.0F), gii.a(0.0F, 0.5F, 6.0F));
+      giq $$4 = $$2.a("left_wing_base", gil.c().a(23, 12).a(0.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), gii.a(2.0F, -2.0F, -8.0F, 0.0F, 0.0F, 0.1F));
+      $$4.a("left_wing_tip", gil.c().a(16, 24).a(0.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), gii.a(6.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1F));
+      giq $$5 = $$2.a("right_wing_base", gil.c().a(23, 12).a().a(-6.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), gii.a(-3.0F, -2.0F, -8.0F, 0.0F, 0.0F, -0.1F));
+      $$5.a("right_wing_tip", gil.c().a(16, 24).a().a(-13.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), gii.a(-6.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.1F));
+      $$2.a("head", gil.c().a(0, 0).a(-4.0F, -2.0F, -5.0F, 7.0F, 3.0F, 5.0F), gii.a(0.0F, 1.0F, -7.0F, 0.2F, 0.0F, 0.0F));
+      return gim.a($$0, 64, 64);
    }
 
-   public static ghj a() {
-      ghl $$0 = new ghl();
-      ghn $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 2; $$2++) {
-         float $$3 = -3.2F + 9.6F * (float)($$2 + 1);
-         float $$4 = 0.75F * (float)($$2 + 1);
-         $$1.a(a($$2), ghi.c().a(0, 0).a(-8.0F, -16.0F + $$3, -8.0F, 16.0F, 32.0F, 16.0F), ghf.a.a($$4));
-      }
-
-      return ghj.a($$0, 64, 64);
-   }
-
-   public void a(hbw $$0) {
+   public void a(hcy $$0) {
       super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         float $$2 = $$0.u * (float)(-(45 + ($$1 + 1) * 5));
-         this.b[$$1].f = azk.h($$2) * (float) (Math.PI / 180.0);
-      }
+      float $$1 = $$0.a * 7.448451F * (float) (Math.PI / 180.0);
+      float $$2 = 16.0F;
+      this.c.g = azk.b($$1) * 16.0F * (float) (Math.PI / 180.0);
+      this.d.g = azk.b($$1) * 16.0F * (float) (Math.PI / 180.0);
+      this.e.g = -this.c.g;
+      this.f.g = -this.d.g;
+      this.g.e = -(5.0F + azk.b($$1 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
+      this.i.e = -(5.0F + azk.b($$1 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
    }
 }

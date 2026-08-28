@@ -1,29 +1,24 @@
-public class ado implements zc<abr> {
-   public static final yt<vr, ado> a = zc.a(ado::a, ado::new);
-   private final btp b;
+public record ado(fdw b, float c, float d) implements zd<abs> {
+   public static final yu<vs, ado> a = yu.a(fdw.b, ado::b, ys.l, ado::e, ys.l, ado::f, ado::new);
 
-   public ado(btp $$0) {
-      this.b = $$0;
-   }
-
-   private ado(vr $$0) {
-      this.b = $$0.b(btp.class);
-   }
-
-   private void a(vr $$0) {
-      $$0.a(this.b);
+   public static ado a(bwa $$0) {
+      return new ado($$0.dt(), $$0.dL(), $$0.dN());
    }
 
    @Override
-   public ze<ado> a() {
-      return agk.W;
+   public zf<ado> a() {
+      return agl.V;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public btp b() {
-      return this.b;
+   public float e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
    }
 }

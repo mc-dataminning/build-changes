@@ -1,41 +1,64 @@
-import java.util.List;
+public class fwv extends fwe {
+   private frq c;
 
-public abstract class fwv<T extends ctp> extends fww<T> {
-   private final ald G;
-   private final ald H;
-   private final ald I;
-
-   public fwv(T $$0, cqh $$1, wv $$2, wv $$3, ald $$4, ald $$5, ald $$6, List<gae.a> $$7) {
-      super($$0, new gab($$0, $$3, $$7), $$1, $$2);
-      this.G = $$4;
-      this.H = $$5;
-      this.I = $$6;
+   public fwv() {
+      super("");
    }
 
    @Override
-   public void aN_() {
+   protected void aN_() {
       super.aN_();
-      this.v = (this.s - this.p.a(this.l)) / 2;
+      this.c = frq.a(ww.c("multiplayer.stopSleeping"), $$0 -> this.E()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
+      this.c(this.c);
    }
 
    @Override
-   protected fut G() {
-      return new fut(this.C + 20, this.o / 2 - 49);
+   public void a(frc $$0, int $$1, int $$2, float $$3) {
+      if (!this.m.J().a(this.m.T())) {
+         this.c.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
-   protected void a(fpz $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
-      int $$5 = this.D;
-      $$0.a(goi::H, this.G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      if (this.z.o()) {
-         int $$6 = 14;
-         int $$7 = azk.f(this.z.n() * 13.0F) + 1;
-         $$0.a(goi::H, this.H, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
+   public void aK_() {
+      this.E();
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.E();
       }
 
-      int $$8 = 24;
-      int $$9 = azk.f(this.z.m() * 24.0F);
-      $$0.a(goi::H, this.I, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
+      if (!this.m.J().a(this.m.T())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.b(this.b.a(), true);
+         this.b.a("");
+         this.m.m.d().d();
+         return true;
+      }
+   }
+
+   private void E() {
+      gje $$0 = this.m.t.j;
+      $$0.b(new ahu(this.m.t, ahu.a.c));
+   }
+
+   public void m() {
+      if (this.b.a().isEmpty()) {
+         this.m.a(null);
+      } else {
+         this.m.a(new fwe(this.b.a()));
+      }
    }
 }

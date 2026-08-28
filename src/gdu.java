@@ -1,43 +1,73 @@
-public class gdu extends gcl<hag> {
-   public static final float e = 0.87F;
-   public static final float f = 0.92F;
-   private static final ghm g = $$0 -> {
-      a($$0.a());
-      return $$0;
-   };
-   private final ghd i = this.c.b("left_chest");
-   private final ghd j = this.c.b("right_chest");
+public class gdu extends gfd<hat> {
+   public static final gip a = gip.scaling(0.6F);
+   private static final float b = 25.0F;
+   private static final float c = 22.5F;
+   private static final float d = 16.5F;
+   private static final float e = 2.5F;
+   private static final String f = "head_cube";
+   private static final String g = "right_ear_cube";
+   private static final String i = "left_ear_cube";
+   private final gig j;
+   private final gig k;
+   private final gig l;
+   private final gig m;
+   private final gig n;
+   private final gig o;
 
-   public gdu(ghd $$0) {
+   public gdu(gig $$0) {
       super($$0);
+      this.j = $$0.b("body");
+      this.k = $$0.b("right_hind_leg");
+      this.l = $$0.b("left_hind_leg");
+      this.n = this.j.b("head");
+      this.o = this.j.b("tail");
+      this.m = $$0.b("cube");
    }
 
-   public static ghj a(float $$0) {
-      return ghj.a(gcl.a(ghh.a), 64, 64).a(g).a(ghm.scaling($$0));
+   public static gim a() {
+      gio $$0 = new gio();
+      giq $$1 = $$0.a();
+      giq $$2 = $$1.a(
+         "body",
+         gil.c().a(0, 20).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new gik(0.3F)).a(0, 40).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new gik(0.0F)),
+         gii.a(0.0F, 21.0F, 4.0F)
+      );
+      $$2.a("tail", gil.c().a(44, 53).a(-0.5F, -0.0865F, 0.0933F, 1.0F, 6.0F, 1.0F, new gik(0.0F)), gii.a(0.0F, -3.0F, 1.0F, 0.5061F, 0.0F, 0.0F));
+      giq $$3 = $$2.a("head", gil.c(), gii.a(0.0F, -2.0F, -11.0F));
+      $$3.a("head_cube", gil.c().a(43, 15).a(-1.5F, -1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new gik(0.0F)), gii.a(0.0F, 0.0F, 0.0F, -0.3927F, 0.0F, 0.0F));
+      giq $$4 = $$3.a("right_ear", gil.c(), gii.a(-1.0F, -1.0F, 0.0F));
+      $$4.a("right_ear_cube", gil.c().a(43, 10).a(-2.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new gik(0.0F)), gii.a(-0.5F, 0.0F, -0.6F, 0.1886F, -0.3864F, -0.0718F));
+      giq $$5 = $$3.a("left_ear", gil.c(), gii.a(1.0F, -2.0F, 0.0F));
+      $$5.a("left_ear_cube", gil.c().a(47, 10).a(0.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new gik(0.0F)), gii.a(0.5F, 1.0F, -0.6F, 0.1886F, 0.3864F, 0.0718F));
+      $$1.a("right_hind_leg", gil.c().a(51, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new gik(0.0F)), gii.a(-2.0F, 21.0F, 4.0F));
+      $$1.a("left_hind_leg", gil.c().a(42, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new gik(0.0F)), gii.a(2.0F, 21.0F, 4.0F));
+      $$1.a("right_front_leg", gil.c().a(51, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new gik(0.0F)), gii.a(-2.0F, 21.0F, -4.0F));
+      $$1.a("left_front_leg", gil.c().a(42, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new gik(0.0F)), gii.a(2.0F, 21.0F, -4.0F));
+      $$1.a("cube", gil.c().a(0, 0).a(-5.0F, -10.0F, -6.0F, 10.0F, 10.0F, 10.0F, new gik(0.0F)), gii.a(0.0F, 24.0F, 0.0F));
+      return gim.a($$0, 64, 64);
    }
 
-   public static ghj b(float $$0) {
-      return ghj.a(gcl.c(ghh.a), 64, 64).a(g).a(b).a(ghm.scaling($$0));
-   }
-
-   public static ghj a(float $$0, boolean $$1) {
-      return geb.b($$1).a(g).a($$1 ? gcl.b : ghm.a).a(ghm.scaling($$0));
-   }
-
-   private static void a(ghn $$0) {
-      ghn $$1 = $$0.b("body");
-      ghi $$2 = ghi.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
-      $$1.a("left_chest", $$2, ghf.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("right_chest", $$2, ghf.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      ghn $$3 = $$0.b("head_parts").b("head");
-      ghi $$4 = ghi.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
-      $$3.a("left_ear", $$4, ghf.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
-      $$3.a("right_ear", $$4, ghf.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
-   }
-
-   public void a(hag $$0) {
+   public void a(hat $$0) {
       super.a($$0);
-      this.i.k = $$0.a;
-      this.j.k = $$0.a;
+      if ($$0.a) {
+         this.j.l = true;
+         this.l.k = false;
+         this.k.k = false;
+         this.o.k = false;
+         this.m.k = true;
+      } else {
+         this.j.l = false;
+         this.l.k = true;
+         this.k.k = true;
+         this.o.k = true;
+         this.m.k = false;
+         this.n.e = azk.a($$0.ab, -22.5F, 25.0F) * (float) (Math.PI / 180.0);
+         this.n.f = azk.a($$0.aa, -32.5F, 32.5F) * (float) (Math.PI / 180.0);
+      }
+
+      this.a(fox.b, $$0.ad, $$0.ae, 16.5F, 2.5F);
+      this.a($$0.b, fox.d, $$0.u, 1.0F);
+      this.a($$0.c, fox.a, $$0.u, 1.0F);
+      this.a($$0.d, fox.c, $$0.u, 1.0F);
    }
 }

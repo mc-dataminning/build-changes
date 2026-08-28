@@ -89,7 +89,7 @@ public class af {
    public static final int a = 8;
    private static final Set<String> o = Set.of("http", "https");
    public static final long b = 1000000L;
-   public static bal.a c = System::nanoTime;
+   public static ban.a c = System::nanoTime;
    public static final Ticker d = new Ticker() {
       public long read() {
          return af.c.getAsLong();
@@ -112,11 +112,11 @@ public class af {
       return Collectors.toCollection(Lists::newArrayList);
    }
 
-   public static <T extends Comparable<T>> String a(dzp<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(ear<T> $$0, Object $$1) {
       return $$0.b((T)$$1);
    }
 
-   public static String a(String $$0, @Nullable ald $$1) {
+   public static String a(String $$0, @Nullable ale $$1) {
       return $$1 == null ? $$0 + ".unregistered_sadface" : $$0 + "." + $$1.b() + "." + $$1.a().replace('/', '.');
    }
 
@@ -234,7 +234,7 @@ public class af {
       }
 
       if ($$1 instanceof z $$2) {
-         alf.a($$2.a().a(y.a));
+         alg.a($$2.a().a(y.a));
          System.exit(-1);
       }
 
@@ -251,7 +251,7 @@ public class af {
       Type<?> $$2 = null;
 
       try {
-         $$2 = bay.a().getSchema(DataFixUtils.makeKey(ab.b().d().c())).getChoiceType($$0, $$1);
+         $$2 = bba.a().getSchema(DataFixUtils.makeKey(ab.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          g.error("No data fixer registered for {}", $$1);
          if (ab.aU) {
@@ -314,8 +314,8 @@ public class af {
       }
    }
 
-   public static <T> String a(kf<T> $$0, T $$1) {
-      ald $$2 = $$0.b($$1);
+   public static <T> String a(jr<T> $$0, T $$1) {
+      ale $$2 = $$0.b($$1);
       return $$2 == null ? "[unregistered]" : $$2.toString();
    }
 
@@ -673,19 +673,19 @@ public class af {
       }
    }
 
-   public static <T> T a(T[] $$0, azs $$1) {
+   public static <T> T a(T[] $$0, azt $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static int a(int[] $$0, azs $$1) {
+   public static int a(int[] $$0, azt $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static <T> T a(List<T> $$0, azs $$1) {
+   public static <T> T a(List<T> $$0, azt $$1) {
       return $$0.get($$1.a($$0.size()));
    }
 
-   public static <T> Optional<T> b(List<T> $$0, azs $$1) {
+   public static <T> Optional<T> b(List<T> $$0, azt $$1) {
       return $$0.isEmpty() ? Optional.empty() : Optional.of(a($$0, $$1));
    }
 
@@ -880,8 +880,8 @@ public class af {
       return $$0.toLowerCase(Locale.ROOT).chars().mapToObj($$1x -> $$1.test((char)$$1x) ? Character.toString((char)$$1x) : "_").collect(Collectors.joining());
    }
 
-   public static <K, V> baa<K, V> a(Function<K, V> $$0) {
-      return new baa<>($$0);
+   public static <K, V> bac<K, V> a(Function<K, V> $$0) {
+      return new bac<>($$0);
    }
 
    public static <T, R> Function<T, R> b(final Function<T, R> $$0) {
@@ -916,13 +916,13 @@ public class af {
       };
    }
 
-   public static <T> List<T> a(Stream<T> $$0, azs $$1) {
+   public static <T> List<T> a(Stream<T> $$0, azt $$1) {
       ObjectArrayList<T> $$2 = $$0.collect(ObjectArrayList.toList());
       c($$2, $$1);
       return $$2;
    }
 
-   public static IntArrayList a(IntStream $$0, azs $$1) {
+   public static IntArrayList a(IntStream $$0, azt $$1) {
       IntArrayList $$2 = IntArrayList.wrap($$0.toArray());
       int $$3 = $$2.size();
 
@@ -934,19 +934,19 @@ public class af {
       return $$2;
    }
 
-   public static <T> List<T> b(T[] $$0, azs $$1) {
+   public static <T> List<T> b(T[] $$0, azt $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> List<T> a(ObjectArrayList<T> $$0, azs $$1) {
+   public static <T> List<T> a(ObjectArrayList<T> $$0, azt $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> void c(List<T> $$0, azs $$1) {
+   public static <T> void c(List<T> $$0, azt $$1) {
       int $$2 = $$0.size();
 
       for (int $$3 = $$2; $$3 > 1; $$3--) {

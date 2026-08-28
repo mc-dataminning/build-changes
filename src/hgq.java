@@ -1,15 +1,24 @@
-import java.util.Collection;
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hgq extends RuntimeException {
-   private final Collection<hgp.a> a;
+public record hgq() implements hgp<ald<dhf>> {
+   public static final Codec<ald<dhf>> a = ald.a(mg.bi);
+   public static final hgp.a<hgq, ald<dhf>> b = hgp.a.a(MapCodec.unit(new hgq()), a);
 
-   public hgq(hgp.a $$0, Collection<hgp.a> $$1) {
-      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
-      this.a = $$1;
+   @Nullable
+   public ald<dhf> a(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3, cyq $$4) {
+      dhd $$5 = $$0.a(kj.W);
+      return $$5 == null ? null : $$5.a().e().orElse(null);
    }
 
-   public Collection<hgp.a> a() {
-      return this.a;
+   @Override
+   public hgp.a<hgq, ald<dhf>> a() {
+      return b;
+   }
+
+   @Override
+   public Codec<ald<dhf>> b() {
+      return a;
    }
 }

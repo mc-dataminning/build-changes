@@ -1,46 +1,25 @@
-public class gxj extends gue<crp, hcy> {
-   private static final ald a = ald.b("textures/entity/wither/wither_invulnerable.png");
-   private static final ald g = ald.b("textures/entity/wither/wither.png");
-   private final gfx h;
+public class gxj extends gue<cjm, hdh, ggu> {
+   private static final ale a = ale.b("textures/entity/sheep/sheep.png");
 
-   public gxj(guf.a $$0) {
-      super($$0);
-      this.h = new gfx($$0.a(ghc.dS));
+   public gxj(gvk.a $$0) {
+      super($$0, new ggu($$0.a(gif.cJ)), new ggu($$0.a(gif.cK)), 0.7F);
+      this.a(new gzz(this, $$0.f()));
    }
 
-   public static ghj a() {
-      ghl $$0 = new ghl();
-      ghn $$1 = $$0.a();
-      $$1.a("head", ghi.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), ghf.a);
-      return ghj.a($$0, 64, 64);
+   public ale a(hdh $$0) {
+      return a;
    }
 
-   protected int a(crp $$0, jj $$1) {
-      return 15;
+   public hdh b() {
+      return new hdh();
    }
 
-   public void a(hcy $$0, fho $$1, gny $$2, int $$3) {
-      $$1.a();
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      fhs $$4 = $$2.getBuffer(this.h.a(this.a($$0)));
-      this.h.a(0.0F, $$0.c, $$0.b);
-      this.h.a($$1, $$4, $$3, hgi.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private ald a(hcy $$0) {
-      return $$0.a ? a : g;
-   }
-
-   public hcy b() {
-      return new hcy();
-   }
-
-   public void a(crp $$0, hcy $$1, float $$2) {
+   public void a(cjm $$0, hdh $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.o();
-      $$1.c = $$0.l($$2);
-      $$1.b = $$0.k($$2);
+      $$1.b = $$0.K($$2);
+      $$1.a = $$0.J($$2);
+      $$1.c = $$0.x();
+      $$1.d = $$0.t();
+      $$1.e = $$0.ar();
    }
 }

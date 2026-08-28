@@ -1,99 +1,148 @@
-import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
 
 public interface bqj {
-   bqj f = (bqj)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bqi.a() : new bqj.a());
+   String b = "root";
 
-   boolean a(bqh var1);
+   void a();
 
-   Path b();
+   void b();
 
-   boolean c();
+   void a(String var1);
 
-   boolean d();
+   void a(Supplier<String> var1);
 
-   void a(float var1);
+   void c();
 
-   void a(vp var1, ze<?> var2, SocketAddress var3, int var4);
+   void b(String var1);
 
-   void b(vp var1, ze<?> var2, SocketAddress var3, int var4);
+   void b(Supplier<String> var1);
 
-   void a(ecc var1, dgw var2, ecb var3, int var4);
+   default void e(String $$0) {
+   }
 
-   void b(ecc var1, dgw var2, ecb var3, int var4);
+   default void a(long $$0) {
+   }
 
-   @Nullable
-   bqm e();
+   default void a(int $$0) {
+   }
 
-   @Nullable
-   bqm a(dgw var1, alc<dhp> var2, String var3);
+   default bqo d(String $$0) {
+      this.a($$0);
+      return new bqo(this);
+   }
 
-   @Nullable
-   bqm a(dgw var1, alc<dhp> var2, js<epg> var3);
+   default bqo c(Supplier<String> $$0) {
+      this.a($$0);
+      return new bqo(this);
+   }
+
+   void a(brs var1);
+
+   default void f(String $$0) {
+      this.a($$0, 1);
+   }
+
+   void a(String var1, int var2);
+
+   default void d(Supplier<String> $$0) {
+      this.a($$0, 1);
+   }
+
+   void a(Supplier<String> var1, int var2);
+
+   static bqj a(bqj $$0, bqj $$1) {
+      if ($$0 == bqf.a) {
+         return $$1;
+      } else {
+         return (bqj)($$1 == bqf.a ? $$0 : new bqj.a($$0, $$1));
+      }
+   }
 
    public static class a implements bqj {
-      private static final Logger b = LogUtils.getLogger();
-      static final bqm a = $$0 -> {
-      };
+      private final bqj a;
+      private final bqj c;
 
-      @Override
-      public boolean a(bqh $$0) {
-         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
+      public a(bqj $$0, bqj $$1) {
+         this.a = $$0;
+         this.c = $$1;
       }
 
       @Override
-      public Path b() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
+      public void a() {
+         this.a.a();
+         this.c.a();
       }
 
       @Override
-      public boolean c() {
-         return false;
+      public void b() {
+         this.a.b();
+         this.c.b();
       }
 
       @Override
-      public boolean d() {
-         return false;
+      public void a(String $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
       }
 
       @Override
-      public void a(vp $$0, ze<?> $$1, SocketAddress $$2, int $$3) {
+      public void a(Supplier<String> $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
       }
 
       @Override
-      public void b(vp $$0, ze<?> $$1, SocketAddress $$2, int $$3) {
+      public void a(brs $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
       }
 
       @Override
-      public void a(ecc $$0, dgw $$1, ecb $$2, int $$3) {
+      public void c() {
+         this.a.c();
+         this.c.c();
       }
 
       @Override
-      public void b(ecc $$0, dgw $$1, ecb $$2, int $$3) {
+      public void b(String $$0) {
+         this.a.b($$0);
+         this.c.b($$0);
       }
 
       @Override
-      public void a(float $$0) {
+      public void b(Supplier<String> $$0) {
+         this.a.b($$0);
+         this.c.b($$0);
       }
 
       @Override
-      public bqm e() {
-         return a;
-      }
-
-      @Nullable
-      @Override
-      public bqm a(dgw $$0, alc<dhp> $$1, String $$2) {
-         return null;
+      public void a(String $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.c.a($$0, $$1);
       }
 
       @Override
-      public bqm a(dgw $$0, alc<dhp> $$1, js<epg> $$2) {
-         return a;
+      public void a(Supplier<String> $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.c.a($$0, $$1);
+      }
+
+      @Override
+      public void e(String $$0) {
+         this.a.e($$0);
+         this.c.e($$0);
+      }
+
+      @Override
+      public void a(long $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
+      }
+
+      @Override
+      public void a(int $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
       }
    }
 }

@@ -1,27 +1,44 @@
-public class gtp extends gvl<cim, hbk, gdo> {
-   private static final ald a = ald.b("textures/entity/fish/cod.png");
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-   public gtp(guf.a $$0) {
-      super($$0, new gdo($$0.a(ghc.ab)), 0.3F);
+public class gtp implements gtf.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final fof c;
+   private Collection<iu> d = Lists.newArrayList();
+
+   public gtp(fof $$0) {
+      this.c = $$0;
+   }
+
+   public void a(Collection<iu> $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public ald b(hbk $$0) {
-      return a;
-   }
+   public void a(fiq $$0, gpd $$1, double $$2, double $$3, double $$4) {
+      iu $$5 = this.b().c();
 
-   public hbk a() {
-      return new hbk();
-   }
-
-   @Override
-   protected void a(hbk $$0, fho $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * azk.a(0.6F * $$0.u);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.ak) {
-         $$1.a(0.1F, 0.1F, -0.1F);
-         $$1.a(a.f.rotationDegrees(90.0F));
+      for (iu $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
+         }
       }
+   }
+
+   private static void a(fiq $$0, gpd $$1, iu $$2) {
+      gtf.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
+
+   private static void a(fiq $$0, gpd $$1, String $$2, iu $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      gtf.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private fnn b() {
+      return this.c.j.k();
    }
 }

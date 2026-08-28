@@ -1,28 +1,26 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record hie(int c, Optional<Integer> d) {
-   public static final Codec<hie> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ays.l.fieldOf("index").forGetter(hie::a), ays.m.optionalFieldOf("time").forGetter(hie::b)).apply($$0, hie::new)
-   );
-   public static final Codec<hie> b = Codec.either(ays.l, a)
-      .xmap($$0 -> (hie)$$0.map(hie::new, $$0x -> $$0x), $$0 -> $$0.d.isPresent() ? Either.right($$0) : Either.left($$0.c));
+public interface hie {
+   akx a = new akx("textures", ".png");
 
-   public hie(int $$0) {
-      this($$0, Optional.empty());
+   void a(avb var1, hie.a var2);
+
+   MapCodec<? extends hie> a();
+
+   public interface a {
+      default void a(ale $$0, auz $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
+      }
+
+      void a(ale var1, hie.b var2);
+
+      void a(Predicate<ale> var1);
    }
 
-   public int a(int $$0) {
-      return this.d.orElse($$0);
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public Optional<Integer> b() {
-      return this.d;
+   public interface b extends Function<hid, hht> {
+      default void a() {
+      }
    }
 }

@@ -1,62 +1,38 @@
-public class bws extends bvs {
-   private static final String a = "data";
-   private tw b = new tw();
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-   public bws(bwb<?> $$0, dhp $$1) {
-      super($$0, $$1);
-      this.ad = true;
+public enum bws implements azn, bai {
+   a(0, "left", "options.mainHand.left"),
+   b(1, "right", "options.mainHand.right");
+
+   public static final Codec<bws> c = bai.a(bws::values);
+   public static final IntFunction<bws> d = aya.a(bws::b, values(), aya.a.a);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private bws(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
+   public bws e() {
+      return this == a ? b : a;
    }
 
    @Override
-   public void h() {
+   public int b() {
+      return this.e;
    }
 
    @Override
-   protected void a(akk.a $$0) {
+   public String a() {
+      return this.g;
    }
 
    @Override
-   protected void a(tw $$0) {
-      this.b = $$0.p("data");
-   }
-
-   @Override
-   protected void b(tw $$0) {
-      $$0.a("data", this.b.i());
-   }
-
-   @Override
-   public zc<abr> a(arl $$0) {
-      throw new IllegalStateException("Markers should never be sent");
-   }
-
-   @Override
-   protected boolean r(bvs $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean bQ() {
-      return false;
-   }
-
-   @Override
-   protected void p(bvs $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
-
-   @Override
-   public euy j_() {
-      return euy.d;
-   }
-
-   @Override
-   public boolean g_() {
-      return true;
-   }
-
-   @Override
-   public final boolean a(arn $$0, buh $$1, float $$2) {
-      return false;
+   public String c() {
+      return this.f;
    }
 }

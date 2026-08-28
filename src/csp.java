@@ -1,91 +1,59 @@
-public abstract class csp {
-   protected final csh a;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
 
-   protected csp(csh $$0) {
-      this.a = $$0;
+public class csp {
+   private final List<csm> a = Lists.newArrayList();
+   private int b;
+
+   public ImmutableList<csm> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   public bwm a() {
-      return null;
+   public csp a(int $$0, float $$1) {
+      this.a.add(new csm($$0, $$1));
+      this.b();
+      return this;
    }
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.b($$0, $$1, $$2);
+   public csp a(Collection<csm> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
    }
 
-   public abstract void b();
-
-   public dhp c() {
-      return this.a.dV();
+   private void b() {
+      Int2ObjectSortedMap<csm> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
    }
 
-   public abstract void a(arn var1);
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
+      } else {
+         csm $$1 = this.a.get(this.b);
+         csm $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
 
-   public abstract double a(jj var1, dzq var2, double var3);
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            csm $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
 
-   public abstract boolean d();
+            this.b = $$6;
+            $$5 = $$7.b();
+         }
 
-   public fcu e() {
-      return this.a.dy();
+         return $$5;
+      }
    }
-
-   public void a(fcu $$0) {
-      this.a.i($$0);
-   }
-
-   public void b(double $$0, double $$1, double $$2) {
-      this.a.n($$0, $$1, $$2);
-   }
-
-   public fcu f() {
-      return this.a.dt();
-   }
-
-   public double g() {
-      return this.a.dA();
-   }
-
-   public double h() {
-      return this.a.dC();
-   }
-
-   public double i() {
-      return this.a.dG();
-   }
-
-   public void b(fcu $$0) {
-      this.a.b($$0);
-   }
-
-   public void c(double $$0, double $$1, double $$2) {
-      this.a.a_($$0, $$1, $$2);
-   }
-
-   public float j() {
-      return this.a.dN();
-   }
-
-   public void a(float $$0) {
-      this.a.x($$0);
-   }
-
-   public float k() {
-      return this.a.dL();
-   }
-
-   public void b(float $$0) {
-      this.a.w($$0);
-   }
-
-   public jo l() {
-      return this.a.cO();
-   }
-
-   public fcu c(fcu $$0) {
-      return $$0;
-   }
-
-   public abstract double b(arn var1);
-
-   public abstract double m();
 }

@@ -1,24 +1,17 @@
-public class gxu extends gyt<haj, gdy<haj>> {
-   private final gpc a;
+public class gxu extends guc<cof, hdk> {
+   private static final ale a = ale.b("textures/entity/skeleton/stray.png");
+   private static final ale j = ale.b("textures/entity/skeleton/stray_overlay.png");
 
-   public gxu(gwc<haj, gdy<haj>> $$0, gpc $$1) {
-      super($$0);
-      this.a = $$1;
+   public gxu(gvk.a $$0) {
+      super($$0, gif.dl, gif.dm, gif.dn);
+      this.a(new hab<>(this, $$0.f(), gif.do, j));
    }
 
-   public void a(fho $$0, gny $$1, int $$2, haj $$3, float $$4, float $$5) {
-      dym $$6 = $$3.b;
-      if ($$6 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$7 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$6, $$0, $$1, $$2, hgi.d);
-         $$0.b();
-      }
+   public ale b(hdk $$0) {
+      return a;
+   }
+
+   public hdk b() {
+      return new hdk();
    }
 }

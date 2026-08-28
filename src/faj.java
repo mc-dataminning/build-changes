@@ -1,47 +1,30 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public record faj(js<deh> b, List<Float> c) implements fau {
+public class faj extends faa {
    public static final MapCodec<faj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(deh.c.fieldOf("enchantment").forGetter(faj::c), ays.b(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(faj::d)).apply($$0, faj::new)
+      $$0 -> a($$0).and(kh.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, faj::new)
    );
+   private final kh b;
 
-   @Override
-   public fav b() {
-      return faw.k;
+   private faj(List<fbw> $$0, kh $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<bat<?>> a() {
-      return Set.of(faf.i);
+   public fac<faj> b() {
+      return fad.k;
    }
 
-   public boolean a(exl $$0) {
-      cxy $$1 = $$0.c(faf.i);
-      int $$2 = $$1 != null ? dej.a(this.b, $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   @Override
+   public cys a(cys $$0, eyn $$1) {
+      $$0.a(this.b);
+      return $$0;
    }
 
-   public static fau.a a(js<deh> $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
-      }
-
-      return () -> new faj($$0, $$2);
-   }
-
-   public js<deh> c() {
-      return this.b;
-   }
-
-   public List<Float> d() {
-      return this.c;
+   public static <T> faa.a<?> a(ki<T> $$0, T $$1) {
+      return a($$2 -> new faj($$2, kh.a().a($$0, $$1).a()));
    }
 }

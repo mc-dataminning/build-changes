@@ -1,363 +1,110 @@
 import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.Message;
+import com.mojang.authlib.GameProfile;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandExceptionType;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Objects;
-import java.util.Set;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.BinaryOperator;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public class ex implements ez<ex>, fc {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("permissions.requires.player"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wv.c("permissions.requires.entity"));
-   private final ew d;
-   private final fcu e;
-   private final arn f;
-   private final int g;
-   private final String h;
-   private final wv i;
-   private final MinecraftServer j;
-   private final boolean k;
-   @Nullable
-   private final bvs l;
-   private final eu m;
-   private final fj.a n;
-   private final fct o;
-   private final ev p;
-   private final bai q;
+public class ex implements ArgumentType<ex.a> {
+   private static final Collection<String> b = Arrays.asList("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("argument.player.unknown"));
 
-   public ex(ew $$0, fcu $$1, fct $$2, arn $$3, int $$4, String $$5, wv $$6, MinecraftServer $$7, @Nullable bvs $$8) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, eu.a, fj.a.a, ev.a, bai.immediate($$7));
+   public static Collection<GameProfile> a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      return ((ex.a)$$0.getArgument($$1, ex.a.class)).getNames((ei)$$0.getSource());
    }
 
-   protected ex(
-      ew $$0,
-      fcu $$1,
-      fct $$2,
-      arn $$3,
-      int $$4,
-      String $$5,
-      wv $$6,
-      MinecraftServer $$7,
-      @Nullable bvs $$8,
-      boolean $$9,
-      eu $$10,
-      fj.a $$11,
-      ev $$12,
-      bai $$13
-   ) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.k = $$9;
-      this.l = $$8;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.m = $$10;
-      this.n = $$11;
-      this.o = $$2;
-      this.p = $$12;
-      this.q = $$13;
+   public static ex a() {
+      return new ex();
    }
 
-   public ex a(ew $$0) {
-      return this.d == $$0 ? this : new ex($$0, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
+   public <S> ex.a a(StringReader $$0, S $$1) throws CommandSyntaxException {
+      return a($$0, gz.a($$1));
    }
 
-   public ex a(bvs $$0) {
-      return this.l == $$0
-         ? this
-         : new ex(this.d, this.e, this.o, this.f, this.g, $$0.al().getString(), $$0.m_(), this.j, $$0, this.k, this.m, this.n, this.p, this.q);
+   public ex.a a(StringReader $$0) throws CommandSyntaxException {
+      return a($$0, true);
    }
 
-   public ex a(fcu $$0) {
-      return this.e.equals($$0) ? this : new ex(this.d, $$0, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
-   }
-
-   public ex a(fct $$0) {
-      return this.o.c($$0) ? this : new ex(this.d, this.e, $$0, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
-   }
-
-   public ex a(eu $$0) {
-      return Objects.equals(this.m, $$0)
-         ? this
-         : new ex(this.d, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, $$0, this.n, this.p, this.q);
-   }
-
-   public ex a(eu $$0, BinaryOperator<eu> $$1) {
-      eu $$2 = $$1.apply(this.m, $$0);
-      return this.a($$2);
-   }
-
-   public ex a() {
-      return !this.k && !this.d.o_()
-         ? new ex(this.d, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, true, this.m, this.n, this.p, this.q)
-         : this;
-   }
-
-   public ex a(int $$0) {
-      return $$0 == this.g ? this : new ex(this.d, this.e, this.o, this.f, $$0, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
-   }
-
-   public ex b(int $$0) {
-      return $$0 <= this.g ? this : new ex(this.d, this.e, this.o, this.f, $$0, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
-   }
-
-   public ex a(fj.a $$0) {
-      return $$0 == this.n ? this : new ex(this.d, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, $$0, this.p, this.q);
-   }
-
-   public ex a(arn $$0) {
-      if ($$0 == this.f) {
-         return this;
-      } else {
-         double $$1 = ecj.a(this.f.B_(), $$0.B_());
-         fcu $$2 = new fcu(this.e.d * $$1, this.e.e, this.e.f * $$1);
-         return new ex(this.d, $$2, this.o, $$0, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
-      }
-   }
-
-   public ex a(bvs $$0, fj.a $$1) {
-      return this.b($$1.a($$0));
-   }
-
-   public ex b(fcu $$0) {
-      fcu $$1 = this.n.a(this);
-      double $$2 = $$0.d - $$1.d;
-      double $$3 = $$0.e - $$1.e;
-      double $$4 = $$0.f - $$1.f;
-      double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
-      float $$6 = azk.h((float)(-(azk.d($$3, $$5) * 180.0F / (float)Math.PI)));
-      float $$7 = azk.h((float)(azk.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new fct($$6, $$7));
-   }
-
-   public ex a(ev $$0, bai $$1) {
-      return $$0 == this.p && $$1 == this.q
-         ? this
-         : new ex(this.d, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, $$0, $$1);
-   }
-
-   public wv b() {
-      return this.i;
-   }
-
-   public String c() {
-      return this.h;
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      return this.g >= $$0;
-   }
-
-   public fcu d() {
-      return this.e;
-   }
-
-   public arn e() {
-      return this.f;
-   }
-
-   @Nullable
-   public bvs f() {
-      return this.l;
-   }
-
-   public bvs g() throws CommandSyntaxException {
-      if (this.l == null) {
-         throw b.create();
-      } else {
-         return this.l;
-      }
-   }
-
-   public aro h() throws CommandSyntaxException {
-      bvs var2 = this.l;
-      if (var2 instanceof aro) {
-         return (aro)var2;
-      } else {
-         throw a.create();
-      }
-   }
-
-   @Nullable
-   public aro i() {
-      return this.l instanceof aro $$0 ? $$0 : null;
-   }
-
-   public boolean j() {
-      return this.l instanceof aro;
-   }
-
-   public fct k() {
-      return this.o;
-   }
-
-   public MinecraftServer l() {
-      return this.j;
-   }
-
-   public fj.a m() {
-      return this.n;
-   }
-
-   public ev n() {
-      return this.p;
-   }
-
-   public bai o() {
-      return this.q;
-   }
-
-   public boolean a(aro $$0) {
-      aro $$1 = this.i();
-      return $$0 == $$1 ? false : $$1 != null && $$1.aa() || $$0.aa();
-   }
-
-   public void a(xk $$0, boolean $$1, wr.a $$2) {
-      if (!this.k) {
-         aro $$3 = this.i();
-         if ($$3 != null) {
-            $$3.a($$0, $$1, $$2);
+   private static ex.a a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '@') {
+         gz $$2 = new gz($$0, $$1);
+         gy $$3 = $$2.t();
+         if ($$3.b()) {
+            throw ev.c.createWithContext($$0);
          } else {
-            this.d.a($$2.a($$0.a()));
+            return new ex.b($$3);
          }
+      } else {
+         int $$4 = $$0.getCursor();
+
+         while ($$0.canRead() && $$0.peek() != ' ') {
+            $$0.skip();
+         }
+
+         String $$5 = $$0.getString().substring($$4, $$0.getCursor());
+         return $$1x -> {
+            Optional<GameProfile> $$2 = $$1x.l().at().a($$5);
+            return Collections.singleton($$2.orElseThrow(a::create));
+         };
       }
    }
 
-   public void a(wv $$0) {
-      if (!this.k) {
-         aro $$1 = this.i();
-         if ($$1 != null) {
-            $$1.a($$0);
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      if ($$0.getSource() instanceof en $$2) {
+         StringReader $$3 = new StringReader($$1.getInput());
+         $$3.setCursor($$1.getStart());
+         gz $$4 = new gz($$3, gz.a($$2));
+
+         try {
+            $$4.t();
+         } catch (CommandSyntaxException var7) {
+         }
+
+         return $$4.a($$1, $$1x -> en.b($$2.q(), $$1x));
+      } else {
+         return Suggestions.empty();
+      }
+   }
+
+   public Collection<String> getExamples() {
+      return b;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      Collection<GameProfile> getNames(ei var1) throws CommandSyntaxException;
+   }
+
+   public static class b implements ex.a {
+      private final gy a;
+
+      public b(gy $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public Collection<GameProfile> getNames(ei $$0) throws CommandSyntaxException {
+         List<arp> $$1 = this.a.d($$0);
+         if ($$1.isEmpty()) {
+            throw ev.e.create();
          } else {
-            this.d.a($$0);
-         }
-      }
-   }
+            List<GameProfile> $$2 = Lists.newArrayList();
 
-   public void a(Supplier<wv> $$0, boolean $$1) {
-      boolean $$2 = this.d.t_() && !this.k;
-      boolean $$3 = $$1 && this.d.c() && !this.k;
-      if ($$2 || $$3) {
-         wv $$4 = $$0.get();
-         if ($$2) {
-            this.d.a($$4);
-         }
-
-         if ($$3) {
-            this.c($$4);
-         }
-      }
-   }
-
-   private void c(wv $$0) {
-      wv $$1 = wv.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.j.aL().c(dhl.p)) {
-         for (aro $$2 : this.j.ag().t()) {
-            if ($$2.z() != this.d && this.j.ag().f($$2.gh())) {
-               $$2.a($$1);
+            for (arp $$3 : $$1) {
+               $$2.add($$3.gh());
             }
+
+            return $$2;
          }
       }
-
-      if (this.d != this.j && this.j.aL().c(dhl.m)) {
-         this.j.a($$1);
-      }
-   }
-
-   public void b(wv $$0) {
-      if (this.d.u_() && !this.k) {
-         this.d.a(wv.i().b($$0).a(n.m));
-      }
-   }
-
-   @Override
-   public eu p() {
-      return this.m;
-   }
-
-   @Override
-   public Collection<String> q() {
-      return Lists.newArrayList(this.j.P());
-   }
-
-   @Override
-   public Collection<String> r() {
-      return this.j.aJ().f();
-   }
-
-   @Override
-   public Stream<ald> s() {
-      return md.b.s().map(awj::a);
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
-      return Suggestions.empty();
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(alc<? extends kf<?>> $$0, fc.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      if ($$0 == me.br) {
-         return fc.a(this.j.aI().e().stream().map($$0x -> $$0x.a().a()), $$2);
-      } else if ($$0 == me.bq) {
-         Collection<ai> $$4 = this.j.aD().b();
-         return fc.a($$4.stream().map(ai::a), $$2);
-      } else {
-         return this.u().a($$0).map($$2x -> {
-            this.a($$2x, $$1, $$2);
-            return $$2.buildFuture();
-         }).orElseGet(Suggestions::empty);
-      }
-   }
-
-   @Override
-   public Set<alc<dhp>> t() {
-      return this.j.K();
-   }
-
-   @Override
-   public kg u() {
-      return this.j.ba();
-   }
-
-   @Override
-   public cte v() {
-      return this.f.K();
-   }
-
-   @Override
-   public CommandDispatcher<ex> w() {
-      return this.l().aE().a();
-   }
-
-   @Override
-   public void a(CommandExceptionType $$0, Message $$1, boolean $$2, @Nullable ib $$3) {
-      if ($$3 != null) {
-         $$3.a($$1.getString());
-      }
-
-      if (!$$2) {
-         this.b(wy.a($$1));
-      }
-   }
-
-   @Override
-   public boolean x() {
-      return this.k;
    }
 }

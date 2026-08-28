@@ -1,23 +1,88 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bmo extends bkj {
+public class bmo extends bko {
    public bmo(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register(
-         $$1,
-         "minecraft:allay",
-         () -> DSL.optionalFields(
-               "Inventory", DSL.list(biq.t.in($$0)), "listener", DSL.optionalFields("event", DSL.optionalFields("game_event", biq.G.in($$0)))
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         bit.c,
+         () -> DSL.fields(
+               "Level",
+               DSL.optionalFields(
+                  "Entities",
+                  DSL.list(bit.C.in($$0)),
+                  "TileEntities",
+                  DSL.list(DSL.or(bit.s.in($$0), DSL.remainder())),
+                  "TileTicks",
+                  DSL.list(DSL.fields("i", bit.E.in($$0))),
+                  "Sections",
+                  DSL.list(
+                     DSL.optionalFields(
+                        "biomes",
+                        DSL.optionalFields("palette", DSL.list(bit.M.in($$0))),
+                        "block_states",
+                        DSL.optionalFields("palette", DSL.list(bit.u.in($$0)))
+                     )
+                  ),
+                  "Structures",
+                  DSL.optionalFields("Starts", DSL.compoundList(bit.I.in($$0)))
+               )
             )
       );
-      return $$1;
+      $$0.registerType(false, bit.N, () -> DSL.constType(a()));
+      $$0.registerType(
+         false,
+         bit.O,
+         () -> DSL.fields(
+               "dimensions",
+               DSL.compoundList(
+                  DSL.constType(a()),
+                  DSL.fields(
+                     "generator",
+                     DSL.taggedChoiceLazy(
+                        "type",
+                        DSL.string(),
+                        ImmutableMap.of(
+                           "minecraft:debug",
+                           DSL::remainder,
+                           "minecraft:flat",
+                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
+                                 "settings", DSL.optionalFields("biome", bit.M.in($$0), "layers", DSL.list(DSL.optionalFields("block", bit.E.in($$0))))
+                              ),
+                           "minecraft:noise",
+                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
+                                 "biome_source",
+                                 DSL.taggedChoiceLazy(
+                                    "type",
+                                    DSL.string(),
+                                    ImmutableMap.of(
+                                       "minecraft:fixed",
+                                       (Supplier<TypeTemplate>)() -> DSL.fields("biome", bit.M.in($$0)),
+                                       "minecraft:multi_noise",
+                                       (Supplier<TypeTemplate>)() -> DSL.or(DSL.fields("preset", bit.N.in($$0)), DSL.list(DSL.fields("biome", bit.M.in($$0)))),
+                                       "minecraft:checkerboard",
+                                       (Supplier<TypeTemplate>)() -> DSL.fields("biomes", DSL.list(bit.M.in($$0))),
+                                       "minecraft:the_end",
+                                       DSL::remainder
+                                    )
+                                 ),
+                                 "settings",
+                                 DSL.or(DSL.constType(DSL.string()), DSL.optionalFields("default_block", bit.E.in($$0), "default_fluid", bit.E.in($$0)))
+                              )
+                        )
+                     )
+                  )
+               )
+            )
+      );
    }
 }

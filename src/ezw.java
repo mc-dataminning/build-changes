@@ -1,28 +1,65 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import org.slf4j.Logger;
 
-public class ezw extends eyy {
-   public static final MapCodec<ezw> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(czs.a.fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, ezw::new));
-   private final js<czs> b;
+public class ezw extends faa {
+   private static final Logger b = LogUtils.getLogger();
+   public static final MapCodec<ezw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(ald.a(mg.bp).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, ezw::new)
+   );
+   private final ald<fab> c;
 
-   private ezw(List<fau> $$0, js<czs> $$1) {
+   private ezw(List<fbw> $$0, ald<fab> $$1) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
    }
 
    @Override
-   public eza<ezw> b() {
-      return ezb.F;
+   public fac<ezw> b() {
+      return fad.H;
    }
 
    @Override
-   public cxy a(cxy $$0, exl $$1) {
-      $$0.a(kx.R, czu.a, this.b, czu::b);
-      return $$0;
+   public void a(eyt $$0) {
+      if (!$$0.b()) {
+         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
+      } else if ($$0.a(this.c)) {
+         $$0.b("Function " + this.c.a() + " is recursively called");
+      } else {
+         super.a($$0);
+         $$0.a()
+            .c(this.c)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
+      }
    }
 
-   public static eyy.a<?> a(js<czs> $$0) {
+   @Override
+   protected cys a(cys $$0, eyn $$1) {
+      fab $$2 = $$1.a().c(this.c).map(je::a).orElse(null);
+      if ($$2 == null) {
+         b.warn("Unknown function: {}", this.c.a());
+         return $$0;
+      } else {
+         eyn.c<?> $$3 = eyn.a($$2);
+         if ($$1.b($$3)) {
+            cys var5;
+            try {
+               var5 = $$2.apply($$0, $$1);
+            } finally {
+               $$1.c($$3);
+            }
+
+            return var5;
+         } else {
+            b.warn("Detected infinite loop in loot tables");
+            return $$0;
+         }
+      }
+   }
+
+   public static faa.a<?> a(ald<fab> $$0) {
       return a($$1 -> new ezw($$1, $$0));
    }
 }

@@ -1,37 +1,17 @@
-public class gkl<T extends lw> extends gmh {
-   private final gmc a;
+import java.util.Locale;
 
-   protected gkl(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, gmc $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.a = $$8;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.D = this.D * 0.75F * $$7.d();
-      int $$9 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * $$7.d(), 1.0F);
-      this.b($$8);
+public enum gkl {
+   a("chat"),
+   b("skin"),
+   c("username");
+
+   private final String d;
+
+   private gkl(final String $$0) {
+      this.d = $$0.toUpperCase(Locale.ROOT);
    }
 
-   protected float a(float $$0, float $$1) {
-      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
-   }
-
-   @Override
-   public gll b() {
-      return gll.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * azk.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   public String a() {
+      return this.d;
    }
 }

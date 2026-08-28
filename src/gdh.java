@@ -1,50 +1,110 @@
-public class gdh extends gew {
-   private static final String a = "left_pages";
-   private static final String b = "right_pages";
-   private static final String c = "flip_page1";
-   private static final String d = "flip_page2";
-   private final ghd e;
-   private final ghd f;
-   private final ghd g;
-   private final ghd h;
-   private final ghd i;
-   private final ghd j;
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-   public gdh(ghd $$0) {
-      super($$0, goi::d);
-      this.e = $$0.b("left_lid");
-      this.f = $$0.b("right_lid");
-      this.g = $$0.b("left_pages");
-      this.h = $$0.b("right_pages");
-      this.i = $$0.b("flip_page1");
-      this.j = $$0.b("flip_page2");
+public class gdh implements gdc, gdd {
+   private static final ale a = ale.b("spectator/teleport_to_team");
+   private static final ww b = ww.c("spectatorMenu.team_teleport");
+   private static final ww c = ww.c("spectatorMenu.team_teleport.prompt");
+   private final List<gdd> d;
+
+   public gdh() {
+      fof $$0 = fof.Q();
+      this.d = a($$0, $$0.s.R());
    }
 
-   public static ghj a() {
-      ghl $$0 = new ghl();
-      ghn $$1 = $$0.a();
-      $$1.a("left_lid", ghi.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), ghf.a(0.0F, 0.0F, -1.0F));
-      $$1.a("right_lid", ghi.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), ghf.a(0.0F, 0.0F, 1.0F));
-      $$1.a("seam", ghi.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), ghf.b(0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left_pages", ghi.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), ghf.a);
-      $$1.a("right_pages", ghi.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), ghf.a);
-      ghi $$2 = ghi.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
-      $$1.a("flip_page1", $$2, ghf.a);
-      $$1.a("flip_page2", $$2, ghf.a);
-      return ghj.a($$0, 64, 32);
+   private static List<gdd> a(fof $$0, ffb $$1) {
+      return $$1.g().stream().flatMap($$1x -> gdh.a.a($$0, $$1x).stream()).toList();
    }
 
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-      float $$4 = (azk.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
-      this.e.f = (float) Math.PI + $$4;
-      this.f.f = -$$4;
-      this.g.f = $$4;
-      this.h.f = -$$4;
-      this.i.f = $$4 - $$4 * 2.0F * $$1;
-      this.j.f = $$4 - $$4 * 2.0F * $$2;
-      this.g.b = azk.a($$4);
-      this.h.b = azk.a($$4);
-      this.i.b = azk.a($$4);
-      this.j.b = azk.a($$4);
+   @Override
+   public List<gdd> a() {
+      return this.d;
+   }
+
+   @Override
+   public ww b() {
+      return c;
+   }
+
+   @Override
+   public void a(gdb $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public ww aO_() {
+      return b;
+   }
+
+   @Override
+   public void a(frc $$0, float $$1, float $$2) {
+      $$0.a(gpn::H, a, 0, 0, 16, 16, axu.a($$2, $$1, $$1, $$1));
+   }
+
+   @Override
+   public boolean aP_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements gdd {
+      private final few a;
+      private final Supplier<hja> b;
+      private final List<gjp> c;
+
+      private a(few $$0, List<gjp> $$1, Supplier<hja> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+      }
+
+      public static Optional<gdd> a(fof $$0, few $$1) {
+         List<gjp> $$2 = new ArrayList<>();
+
+         for (String $$3 : $$1.g()) {
+            gjp $$4 = $$0.L().a($$3);
+            if ($$4 != null && $$4.e() != dim.d) {
+               $$2.add($$4);
+            }
+         }
+
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(azt.a().a($$2.size())).a();
+            Supplier<hja> $$6 = $$0.an().a($$5);
+            return Optional.of(new gdh.a($$1, $$2, $$6));
+         }
+      }
+
+      @Override
+      public void a(gdb $$0) {
+         $$0.a(new gdg(this.c));
+      }
+
+      @Override
+      public ww aO_() {
+         return this.a.c();
+      }
+
+      @Override
+      public void a(frc $$0, float $$1, float $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, axu.a($$2, $$4 * $$1, $$5 * $$1, $$6 * $$1));
+         }
+
+         fsp.a($$0, this.b.get(), 2, 2, 12, axu.a($$2, $$1, $$1, $$1));
+      }
+
+      @Override
+      public boolean aP_() {
+         return true;
+      }
    }
 }

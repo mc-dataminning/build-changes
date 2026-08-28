@@ -4,13 +4,14 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bnn extends bkj {
+public class bnn extends bko {
    public bnn(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, biq.t, () -> DSL.optionalFields("id", biq.F.in($$0), "components", biq.w.in($$0)));
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:trader_llama", $$1x -> DSL.optionalFields("Items", DSL.list(bit.t.in($$0)), "SaddleItem", bit.t.in($$0)));
+      return $$1;
    }
 }

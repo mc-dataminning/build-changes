@@ -2,15 +2,15 @@ import com.mojang.serialization.Codec;
 
 public class ch implements as<ch.a> {
    @Override
-   public void a(all $$0, as.a<ch.a> $$1) {
+   public void a(alm $$0, as.a<ch.a> $$1) {
    }
 
    @Override
-   public void b(all $$0, as.a<ch.a> $$1) {
+   public void b(alm $$0, as.a<ch.a> $$1) {
    }
 
    @Override
-   public void a(all $$0) {
+   public void a(alm $$0) {
    }
 
    @Override

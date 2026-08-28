@@ -1,34 +1,29 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class cah {
-   public static byj<bwr> a(bwu $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.aq().f()), $$1);
+public class cah extends byq<bxb> {
+   private final btd c;
+   private final float d;
+   private final float e;
+   private final float f;
+
+   public cah(btd $$0, float $$1, float $$2, float $$3) {
+      super(ImmutableMap.of(cgb.o, cgc.b, cgb.R, cgc.b));
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+      } else {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3 - $$2;
+      }
    }
 
-   public static bzt<bwr> a(bwb<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.aq()), $$1);
-   }
-
-   public static bzt<bwr> a(float $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static bzt<bwr> a(Predicate<bwr> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return cbv.a(
-         (Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$2x -> $$2x.group($$2x.c(cft.o), $$2x.b(cft.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<bwr> $$8 = $$2x.<cfv>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bvs)$$6) <= (double)$$2 && !$$6.y($$2xxxx)));
-                     if ($$8.isEmpty()) {
-                        return false;
-                     } else {
-                        $$3.a(new byt($$8.get(), true));
-                        return true;
-                     }
-                  }))
-      );
+   protected void a(aro $$0, bxb $$1, long $$2) {
+      azt $$3 = $$1.dY();
+      float $$4 = azk.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
+      float $$5 = azk.h($$1.dL() + 2.0F * $$3.i() * this.d - this.d);
+      fdw $$6 = fdw.a($$4, $$5);
+      $$1.eb().a(cgb.o, new byt($$1.bE().e($$6)));
+      $$1.eb().a(cgb.R, this.c.a($$3));
    }
 }

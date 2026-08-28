@@ -1,53 +1,60 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record fbm(fbq b, fbq c) implements fbq {
-   public static final MapCodec<fbm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fbr.a.fieldOf("n").forGetter(fbm::c), fbr.a.fieldOf("p").forGetter(fbm::d)).apply($$0, fbm::new)
-   );
+public abstract class fbm implements fbw {
+   protected final List<fbw> c;
+   private final Predicate<eyn> a;
 
-   @Override
-   public fbp b() {
-      return fbr.d;
+   protected fbm(List<fbw> $$0, Predicate<eyn> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends fbm> MapCodec<T> a(Function<List<fbw>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(fbw.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends fbm> Codec<T> b(Function<List<fbw>, T> $$0) {
+      return fbw.e.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(eyn $$0) {
+      return this.a.test($$0);
    }
 
    @Override
-   public int a(exl $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      azs $$3 = $$0.b();
-      int $$4 = 0;
+   public void a(eyt $$0) {
+      fbw.super.a($$0);
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+      }
+   }
+
+   public abstract static class a implements fbw.a {
+      private final Builder<fbw> a = ImmutableList.builder();
+
+      protected a(fbw.a... $$0) {
+         for (fbw.a $$1 : $$0) {
+            this.a.add($$1.build());
          }
       }
 
-      return $$4;
-   }
+      public void a(fbw.a $$0) {
+         this.a.add($$0.build());
+      }
 
-   @Override
-   public float b(exl $$0) {
-      return (float)this.a($$0);
-   }
+      @Override
+      public fbw build() {
+         return this.a(this.a.build());
+      }
 
-   public static fbm a(int $$0, float $$1) {
-      return new fbm(fbn.a((float)$$0), fbn.a($$1));
-   }
-
-   @Override
-   public Set<bat<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public fbq c() {
-      return this.b;
-   }
-
-   public fbq d() {
-      return this.c;
+      protected abstract fbw a(List<fbw> var1);
    }
 }

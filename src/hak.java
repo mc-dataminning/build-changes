@@ -1,43 +1,20 @@
-import javax.annotation.Nullable;
+public class hak extends gzc<heb, ght> {
+   public hak(gxh<heb, ght> $$0) {
+      super($$0);
+   }
 
-public class hak {
-   public double r;
-   public double s;
-   public double t;
-   public float u;
-   public float v;
-   public float w;
-   public float x;
-   public double y;
-   public boolean z;
-   public boolean A;
-   public boolean B;
-   @Nullable
-   public fcu C;
-   @Nullable
-   public wv D;
-   @Nullable
-   public fcu E;
-   @Nullable
-   public hak.a F;
-
-   public static class a {
-      public fcu a;
-      public fcu b;
-      public fcu c;
-      public int d;
-      public int e;
-      public int f;
-      public int g;
-
-      public a() {
-         this.a = fcu.c;
-         this.b = fcu.c;
-         this.c = fcu.c;
-         this.d = 0;
-         this.e = 0;
-         this.f = 15;
-         this.g = 15;
+   protected void a(heb $$0, fiq $$1) {
+      if ($$0.c) {
+         this.d().e().a($$1);
+         this.d().b().a($$1);
+         this.d().c().a($$1);
+         $$1.a(0.0625F, 0.25F, 0.0F);
+         $$1.a(a.f.rotationDegrees(180.0F));
+         $$1.a(a.b.rotationDegrees(140.0F));
+         $$1.a(a.f.rotationDegrees(10.0F));
+         $$1.a(a.b.rotationDegrees(180.0F));
+      } else {
+         super.a($$0, $$1);
       }
    }
 }

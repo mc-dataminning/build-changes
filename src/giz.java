@@ -1,85 +1,279 @@
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.atomic.AtomicReferenceArray;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface giz {
-   static giz a(gjf $$0, UserApiService $$1) {
-      return new giz.b($$0, $$1);
+public class giz extends ebp {
+   static final Logger a = LogUtils.getLogger();
+   private final ebv b;
+   private final evk c;
+   volatile giz.a d;
+   final gjd e;
+
+   public giz(gjd $$0, int $$1) {
+      this.e = $$0;
+      this.b = new ebr($$0, new dhw(0, 0), $$0.F_().f(mg.aG).b(djz.b));
+      this.c = new evk(this, true, $$0.B_().g());
+      this.d = new giz.a(b($$1));
    }
 
-   CompletableFuture<Unit> a(UUID var1, gjh var2, AbuseReport var3);
-
-   boolean a();
-
-   default AbuseReportLimits b() {
-      return AbuseReportLimits.DEFAULTS;
+   @Override
+   public evk q() {
+      return this.c;
    }
 
-   public static class a extends xv {
-      public a(wv $$0, Throwable $$1) {
-         super($$0, $$1);
+   private static boolean a(@Nullable ebv $$0, int $$1, int $$2) {
+      if ($$0 == null) {
+         return false;
+      } else {
+         dhw $$3 = $$0.f();
+         return $$3.h == $$1 && $$3.i == $$2;
       }
    }
 
-   public static record b(gjf a, UserApiService b) implements giz {
-      private static final wv c = wv.c("gui.abuseReport.send.service_unavailable");
-      private static final wv d = wv.c("gui.abuseReport.send.http_error");
-      private static final wv e = wv.c("gui.abuseReport.send.json_error");
+   public void a(dhw $$0) {
+      if (this.d.b($$0.h, $$0.i)) {
+         int $$1 = this.d.a($$0.h, $$0.i);
+         ebv $$2 = this.d.a($$1);
+         if (a($$2, $$0.h, $$0.i)) {
+            this.d.b($$1, $$2);
+         }
+      }
+   }
 
-      @Override
-      public CompletableFuture<Unit> a(UUID $$0, gjh $$1, AbuseReport $$2) {
-         return CompletableFuture.supplyAsync(() -> {
-            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+   @Nullable
+   public ebv b(int $$0, int $$1, ecm $$2, boolean $$3) {
+      if (this.d.b($$0, $$1)) {
+         ebv $$4 = this.d.a(this.d.a($$0, $$1));
+         if (a($$4, $$0, $$1)) {
+            return $$4;
+         }
+      }
 
-            try {
-               this.b.reportAbuse($$3);
-               return Unit.INSTANCE;
-            } catch (MinecraftClientHttpException var7) {
-               wv $$5 = this.a(var7);
-               throw new CompletionException(new giz.a($$5, var7));
-            } catch (MinecraftClientException var8) {
-               wv $$7 = this.a(var8);
-               throw new CompletionException(new giz.a($$7, var8));
+      return $$3 ? this.b : null;
+   }
+
+   @Override
+   public dhv r() {
+      return this.e;
+   }
+
+   public void a(int $$0, int $$1, vs $$2) {
+      if (!this.d.b($$0, $$1)) {
+         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
+      } else {
+         int $$3 = this.d.a($$0, $$1);
+         ebv $$4 = this.d.b.get($$3);
+         if (!a($$4, $$0, $$1)) {
+            a.warn("Ignoring chunk since it's not present: {}, {}", $$0, $$1);
+         } else {
+            $$4.a($$2);
+         }
+      }
+   }
+
+   @Nullable
+   public ebv a(int $$0, int $$1, vs $$2, tx $$3, Consumer<add.b> $$4) {
+      if (!this.d.b($$0, $$1)) {
+         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
+         return null;
+      } else {
+         int $$5 = this.d.a($$0, $$1);
+         ebv $$6 = this.d.b.get($$5);
+         dhw $$7 = new dhw($$0, $$1);
+         if (!a($$6, $$0, $$1)) {
+            $$6 = new ebv(this.e, $$7);
+            $$6.a($$2, $$3, $$4);
+            this.d.a($$5, $$6);
+         } else {
+            $$6.a($$2, $$3, $$4);
+            this.d.c($$6);
+         }
+
+         this.e.a($$7);
+         return $$6;
+      }
+   }
+
+   @Override
+   public void a(BooleanSupplier $$0, boolean $$1) {
+   }
+
+   public void d(int $$0, int $$1) {
+      this.d.f = $$0;
+      this.d.g = $$1;
+   }
+
+   public void a(int $$0) {
+      int $$1 = this.d.d;
+      int $$2 = b($$0);
+      if ($$1 != $$2) {
+         giz.a $$3 = new giz.a($$2);
+         $$3.f = this.d.f;
+         $$3.g = this.d.g;
+
+         for (int $$4 = 0; $$4 < this.d.b.length(); $$4++) {
+            ebv $$5 = this.d.b.get($$4);
+            if ($$5 != null) {
+               dhw $$6 = $$5.f();
+               if ($$3.b($$6.h, $$6.i)) {
+                  $$3.a($$3.a($$6.h, $$6.i), $$5);
+               }
             }
-         }, af.i());
+         }
+
+         this.d = $$3;
+      }
+   }
+
+   private static int b(int $$0) {
+      return Math.max(2, $$0) + 3;
+   }
+
+   @Override
+   public String e() {
+      return this.d.b.length() + ", " + this.j();
+   }
+
+   @Override
+   public int j() {
+      return this.d.h;
+   }
+
+   @Override
+   public void a(diy $$0, jx $$1) {
+      fof.Q().f.b($$1.a(), $$1.b(), $$1.c());
+   }
+
+   public LongOpenHashSet a() {
+      return this.d.c;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      this.d.a($$0, $$1, $$2, $$3);
+   }
+
+   final class a {
+      final AtomicReferenceArray<ebv> b;
+      final LongOpenHashSet c = new LongOpenHashSet();
+      final int d;
+      private final int e;
+      volatile int f;
+      volatile int g;
+      int h;
+
+      a(final int $$0) {
+         this.d = $$0;
+         this.e = $$0 * 2 + 1;
+         this.b = new AtomicReferenceArray<>(this.e * this.e);
       }
 
-      @Override
-      public boolean a() {
-         return this.b.canSendReports();
+      int a(int $$0, int $$1) {
+         return Math.floorMod($$1, this.e) * this.e + Math.floorMod($$0, this.e);
       }
 
-      private wv a(MinecraftClientHttpException $$0) {
-         return wv.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      void a(int $$0, @Nullable ebv $$1) {
+         ebv $$2 = this.b.getAndSet($$0, $$1);
+         if ($$2 != null) {
+            this.h--;
+            this.a($$2);
+            giz.this.e.a($$2);
+         }
+
+         if ($$1 != null) {
+            this.h++;
+            this.b($$1);
+         }
       }
 
-      private wv a(MinecraftClientException $$0) {
-         return switch ($$0.getType()) {
-            case SERVICE_UNAVAILABLE -> c;
-            case HTTP_ERROR -> d;
-            case JSON_ERROR -> e;
-            default -> throw new MatchException(null, null);
-         };
+      void b(int $$0, ebv $$1) {
+         if (this.b.compareAndSet($$0, $$1, null)) {
+            this.h--;
+            this.a($$1);
+         }
+
+         giz.this.e.a($$1);
       }
 
-      @Override
-      public AbuseReportLimits b() {
-         return this.b.getAbuseReportLimits();
+      public void a(int $$0, int $$1, int $$2, boolean $$3) {
+         if (this.b($$0, $$2)) {
+            long $$4 = jx.b($$0, $$1, $$2);
+            if ($$3) {
+               this.c.add($$4);
+            } else if (this.c.remove($$4)) {
+               giz.this.e.b($$4);
+            }
+         }
       }
 
-      public gjf c() {
-         return this.a;
+      private void a(ebv $$0) {
+         ebw[] $$1 = $$0.d();
+
+         for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+            dhw $$3 = $$0.f();
+            this.c.remove(jx.b($$3.h, $$0.h($$2), $$3.i));
+         }
       }
 
-      public UserApiService d() {
-         return this.b;
+      private void b(ebv $$0) {
+         ebw[] $$1 = $$0.d();
+
+         for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+            ebw $$3 = $$1[$$2];
+            if ($$3.c()) {
+               dhw $$4 = $$0.f();
+               this.c.add(jx.b($$4.h, $$0.h($$2), $$4.i));
+            }
+         }
+      }
+
+      void c(ebv $$0) {
+         dhw $$1 = $$0.f();
+         ebw[] $$2 = $$0.d();
+
+         for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+            ebw $$4 = $$2[$$3];
+            long $$5 = jx.b($$1.h, $$0.h($$3), $$1.i);
+            if ($$4.c()) {
+               this.c.add($$5);
+            } else if (this.c.remove($$5)) {
+               giz.this.e.b($$5);
+            }
+         }
+      }
+
+      boolean b(int $$0, int $$1) {
+         return Math.abs($$0 - this.f) <= this.d && Math.abs($$1 - this.g) <= this.d;
+      }
+
+      @Nullable
+      protected ebv a(int $$0) {
+         return this.b.get($$0);
+      }
+
+      private void a(String $$0) {
+         try (FileOutputStream $$1 = new FileOutputStream($$0)) {
+            int $$2 = giz.this.d.d;
+
+            for (int $$3 = this.g - $$2; $$3 <= this.g + $$2; $$3++) {
+               for (int $$4 = this.f - $$2; $$4 <= this.f + $$2; $$4++) {
+                  ebv $$5 = giz.this.d.b.get(giz.this.d.a($$4, $$3));
+                  if ($$5 != null) {
+                     dhw $$6 = $$5.f();
+                     $$1.write(($$6.h + "\t" + $$6.i + "\t" + $$5.E() + "\n").getBytes(StandardCharsets.UTF_8));
+                  }
+               }
+            }
+         } catch (IOException var10) {
+            giz.a.error("Failed to dump chunks to file {}", $$0, var10);
+         }
       }
    }
 }

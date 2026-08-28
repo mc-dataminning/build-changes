@@ -1,35 +1,49 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class hha {
-   private static final BiMap<ald, hgz> i = HashBiMap.create();
-   public static final hgz a = a("single", hhf.b);
-   public static final hgz b = a("directory", hhc.b);
-   public static final hgz c = a("filter", hhg.b);
-   public static final hgz d = a("unstitch", hhh.b);
-   public static final hgz e = a("paletted_permutations", hhe.b);
-   public static Codec<hgz> f = ald.a.flatXmap($$0 -> {
-      hgz $$1 = (hgz)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      ald $$1 = (ald)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<hgx> g = f.dispatch(hgx::a, hgz::a);
-   public static Codec<List<hgx>> h = g.listOf().fieldOf("sources").codec();
+public class hha implements hhd<kg> {
+   private final ggv a;
 
-   private static hgz a(String $$0, MapCodec<? extends hgx> $$1) {
-      hgz $$2 = new hgz($$1);
-      ald $$3 = ald.b($$0);
-      hgz $$4 = (hgz)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
+   public hha(ggv $$0) {
+      this.a = $$0;
+   }
+
+   @Nullable
+   public kg a(cys $$0) {
+      return $$0.e();
+   }
+
+   public void a(@Nullable kg $$0, cyq $$1, fiq $$2, gpd $$3, int $$4, int $$5, boolean $$6) {
+      dwd $$7 = $$0 != null ? $$0.a(kj.am, dwd.a) : dwd.a;
+      cxq $$8 = $$0 != null ? $$0.a(kj.an) : null;
+      boolean $$9 = !$$7.b().isEmpty() || $$8 != null;
+      $$2.a();
+      $$2.b(1.0F, -1.0F, -1.0F);
+      hkg $$10 = $$9 ? hkj.g : hkj.h;
+      fiu $$11 = $$10.c().a(gwi.a($$3, this.a.a($$10.a()), $$1 == cyq.g, $$6));
+      this.a.c().a($$2, $$11, $$4, $$5);
+      if ($$9) {
+         grk.a($$2, $$3, $$4, $$5, this.a.b(), $$10, false, Objects.requireNonNullElse($$8, cxq.a), $$7, $$6, false);
       } else {
-         return $$2;
+         this.a.b().a($$2, $$11, $$4, $$5);
+      }
+
+      $$2.b();
+   }
+
+   public static record a() implements hhd.a {
+      public static final hha.a a = new hha.a();
+      public static final MapCodec<hha.a> b = MapCodec.unit(a);
+
+      @Override
+      public MapCodec<hha.a> a() {
+         return b;
+      }
+
+      @Override
+      public hhd<?> a(gic $$0) {
+         return new hha(new ggv($$0.a(gif.cN)));
       }
    }
 }

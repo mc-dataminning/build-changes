@@ -1,15 +1,18 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hfd() implements hfi<cxw> {
-   public static final hfi.a<hfd, cxw> a = hfi.a.a(MapCodec.unit(new hfd()), cxw.j);
+public record hfd(int b) implements hfc {
+   public static final MapCodec<hfd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.l.optionalFieldOf("index", 0).forGetter(hfd::b)).apply($$0, hfd::new));
 
-   public cxw a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3, cxw $$4) {
-      return $$4;
+   @Override
+   public boolean get(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3, cyq $$4) {
+      dbb $$5 = $$0.a(kj.p);
+      return $$5 != null ? $$5.b(this.b) == Boolean.TRUE : false;
    }
 
    @Override
-   public hfi.a<hfd, cxw> a() {
+   public MapCodec<hfd> a() {
       return a;
    }
 }

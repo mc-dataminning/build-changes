@@ -1,5 +1,5 @@
-public class hcj extends hbk {
+public class hcj extends hcp {
    public float a;
-   public float b;
-   public float c;
+   public int b;
+   public bvw.a c = bvw.a.a;
 }

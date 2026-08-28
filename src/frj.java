@@ -1,71 +1,97 @@
-import javax.annotation.Nullable;
+public abstract class frj extends fro {
+   public static final int b = 6;
+   private double a;
+   private static final ale c = ale.b("widget/scroller");
+   private static final ale d = ale.b("widget/scroller_background");
+   private boolean e;
 
-public abstract class frj<E extends frj.a<E>> extends fqh<E> {
-   private static final wv a = wv.c("narration.selection.usage");
-
-   public frj(fnd $$0, int $$1, int $$2, int $$3, int $$4) {
+   public frj(int $$0, int $$1, int $$2, int $$3, ww $$4) {
       super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public frj(fnd $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
    @Override
-   public fpw a(fuq $$0) {
-      if (this.t() == 0) {
-         return null;
-      } else if (this.aI_() && $$0 instanceof fuq.a $$1) {
-         E $$2 = this.a($$1.b());
-         if ($$2 != null) {
-            return fpw.a(this, fpw.a($$2));
-         } else {
-            this.a(null);
-            return null;
-         }
-      } else if (!this.aI_()) {
-         E $$3 = this.p();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : fpw.a(this, fpw.a($$3));
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (!this.k) {
+         return false;
       } else {
-         return null;
-      }
-   }
-
-   @Override
-   public void a(fuk $$0) {
-      E $$1 = this.x();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.p();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
-
-      if (this.aI_()) {
-         $$0.a(fuj.d, a);
-      }
-   }
-
-   public abstract static class a<E extends frj.a<E>> extends fqh.a<E> implements ful {
-      public abstract wv a();
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
+         this.a(this.g() - $$3 * this.o());
          return true;
       }
+   }
 
-      @Override
-      public void b(fuk $$0) {
-         $$0.a(fuj.a, this.a());
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.e) {
+         if ($$1 < (double)this.G()) {
+            this.a(0.0);
+         } else if ($$1 > (double)this.I()) {
+            this.a((double)this.i());
+         } else {
+            double $$5 = (double)Math.max(1, this.i());
+            int $$6 = this.k();
+            double $$7 = Math.max(1.0, $$5 / (double)(this.h - $$6));
+            this.a(this.g() + $$4 * $$7);
+         }
+
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
+
+   @Override
+   public void b(double $$0, double $$1) {
+      this.e = false;
+   }
+
+   public double g() {
+      return this.a;
+   }
+
+   public void a(double $$0) {
+      this.a = azk.a($$0, 0.0, (double)this.i());
+   }
+
+   public boolean c(double $$0, double $$1, int $$2) {
+      this.e = this.j() && this.g($$2) && $$0 >= (double)this.l() && $$0 <= (double)(this.l() + 6) && $$1 >= (double)this.G() && $$1 < (double)this.I();
+      return this.e;
+   }
+
+   public void h() {
+      this.a(this.a);
+   }
+
+   public int i() {
+      return Math.max(0, this.n() - this.h);
+   }
+
+   protected boolean j() {
+      return this.i() > 0;
+   }
+
+   protected int k() {
+      return azk.a((int)((float)(this.h * this.h) / (float)this.n()), 32, this.h - 8);
+   }
+
+   protected int l() {
+      return this.H() - 6;
+   }
+
+   protected int m() {
+      return Math.max(this.G(), (int)this.a * (this.h - this.k()) / this.i() + this.G());
+   }
+
+   protected void a(frc $$0) {
+      if (this.j()) {
+         int $$1 = this.l();
+         int $$2 = this.k();
+         int $$3 = this.m();
+         $$0.a(gpn::H, d, $$1, this.G(), 6, this.y());
+         $$0.a(gpn::H, c, $$1, $$3, 6, $$2);
+      }
+   }
+
+   protected abstract int n();
+
+   protected abstract double o();
 }

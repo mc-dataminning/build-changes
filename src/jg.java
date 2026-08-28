@@ -1,80 +1,122 @@
-public enum jg {
-   a {
-      @Override
-      public int a(int $$0, int $$1, int $$2, jo.a $$3) {
-         return $$3.a($$0, $$1, $$2);
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public interface jg<T> extends jf<T> {
+   Stream<je.c<T>> c();
+
+   default Stream<ald<T>> c_() {
+      return this.c().map(je.c::h);
+   }
+
+   Stream<ji.c<T>> e();
+
+   default Stream<axp<T>> f() {
+      return this.e().map(ji.c::h);
+   }
+
+   public interface a extends jf.a {
+      Stream<ald<? extends jr<?>>> b();
+
+      default Stream<jg.b<?>> c() {
+         return this.b().map(this::e);
       }
 
       @Override
-      public double a(double $$0, double $$1, double $$2, jo.a $$3) {
-         return $$3.a($$0, $$1, $$2);
+      <T> Optional<? extends jg.b<T>> a(ald<? extends jr<? extends T>> var1);
+
+      default <T> jg.b<T> e(ald<? extends jr<? extends T>> $$0) {
+         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
       }
 
-      @Override
-      public jo.a a(jo.a $$0) {
-         return $$0;
+      default <V> alc<V> a(DynamicOps<V> $$0) {
+         return alc.a((DynamicOps<T>)$$0, this);
       }
 
-      @Override
-      public jg a() {
-         return this;
-      }
-   },
-   b {
-      @Override
-      public int a(int $$0, int $$1, int $$2, jo.a $$3) {
-         return $$3.a($$2, $$0, $$1);
-      }
+      static jg.a a(Stream<jg.b<?>> $$0) {
+         final Map<ald<? extends jr<?>>, jg.b<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(jg.b::g, $$0x -> $$0x));
+         return new jg.a() {
+            @Override
+            public Stream<ald<? extends jr<?>>> b() {
+               return $$1.keySet().stream();
+            }
 
-      @Override
-      public double a(double $$0, double $$1, double $$2, jo.a $$3) {
-         return $$3.a($$2, $$0, $$1);
-      }
-
-      @Override
-      public jo.a a(jo.a $$0) {
-         return d[Math.floorMod($$0.ordinal() + 1, 3)];
+            @Override
+            public <T> Optional<jg.b<T>> a(ald<? extends jr<? extends T>> $$0) {
+               return Optional.ofNullable((jg.b<T>)$$1.get($$0));
+            }
+         };
       }
 
-      @Override
-      public jg a() {
-         return c;
+      default Lifecycle d() {
+         return this.c().map(jg.b::h).reduce(Lifecycle.stable(), Lifecycle::add);
       }
-   },
-   c {
-      @Override
-      public int a(int $$0, int $$1, int $$2, jo.a $$3) {
-         return $$3.a($$1, $$2, $$0);
-      }
+   }
 
-      @Override
-      public double a(double $$0, double $$1, double $$2, jo.a $$3) {
-         return $$3.a($$1, $$2, $$0);
+   public interface b<T> extends jg<T>, jh<T> {
+      ald<? extends jr<? extends T>> g();
+
+      Lifecycle h();
+
+      default jg.b<T> a(cub $$0) {
+         return cty.bU.contains(this.g()) ? this.a($$1 -> ((cty)$$1).a($$0)) : this;
       }
 
-      @Override
-      public jo.a a(jo.a $$0) {
-         return d[Math.floorMod($$0.ordinal() - 1, 3)];
+      default jg.b<T> a(final Predicate<T> $$0) {
+         return new jg.b.a<T>() {
+            @Override
+            public jg.b<T> a() {
+               return b.this;
+            }
+
+            @Override
+            public Optional<je.c<T>> a(ald<T> $$0x) {
+               return this.a().a($$0).filter($$1 -> $$0.test($$1.a()));
+            }
+
+            @Override
+            public Stream<je.c<T>> c() {
+               return this.a().c().filter($$1 -> $$0.test($$1.a()));
+            }
+         };
       }
 
-      @Override
-      public jg a() {
-         return b;
+      public interface a<T> extends jg.b<T> {
+         jg.b<T> a();
+
+         @Override
+         default ald<? extends jr<? extends T>> g() {
+            return this.a().g();
+         }
+
+         @Override
+         default Lifecycle h() {
+            return this.a().h();
+         }
+
+         @Override
+         default Optional<je.c<T>> a(ald<T> $$0) {
+            return this.a().a($$0);
+         }
+
+         @Override
+         default Stream<je.c<T>> c() {
+            return this.a().c();
+         }
+
+         @Override
+         default Optional<ji.c<T>> a(axp<T> $$0) {
+            return this.a().a($$0);
+         }
+
+         @Override
+         default Stream<ji.c<T>> e() {
+            return this.a().e();
+         }
       }
-   };
-
-   public static final jo.a[] d = jo.a.values();
-   public static final jg[] e = values();
-
-   public abstract int a(int var1, int var2, int var3, jo.a var4);
-
-   public abstract double a(double var1, double var3, double var5, jo.a var7);
-
-   public abstract jo.a a(jo.a var1);
-
-   public abstract jg a();
-
-   public static jg a(jo.a $$0, jo.a $$1) {
-      return e[Math.floorMod($$1.ordinal() - $$0.ordinal(), 3)];
    }
 }

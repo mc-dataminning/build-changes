@@ -1,63 +1,31 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class cq implements ea<den> {
-   private final List<bs> a;
+public record cq(cv.d b) {
+   public static final Codec<cq> a = RecordCodecBuilder.create($$0 -> $$0.group(cv.d.d.optionalFieldOf("light", cv.d.c).forGetter(cq::a)).apply($$0, cq::new));
 
-   protected cq(List<bs> $$0) {
-      this.a = $$0;
+   public boolean a(aro $$0, iu $$1) {
+      return !$$0.p($$1) ? false : this.b.d($$0.B($$1));
    }
 
-   public static <T extends cq> Codec<T> a(Function<List<bs>, T> $$0) {
-      return bs.a.listOf().xmap($$0, cq::b);
+   public cv.d a() {
+      return this.b;
    }
 
-   protected List<bs> b() {
-      return this.a;
-   }
+   public static class a {
+      private cv.d a = cv.d.c;
 
-   public boolean a(cxy $$0, den $$1) {
-      for (bs $$2 : this.a) {
-         if (!$$2.a($$1)) {
-            return false;
-         }
+      public static cq.a a() {
+         return new cq.a();
       }
 
-      return true;
-   }
-
-   public static cq.a a(List<bs> $$0) {
-      return new cq.a($$0);
-   }
-
-   public static cq.b b(List<bs> $$0) {
-      return new cq.b($$0);
-   }
-
-   public static class a extends cq {
-      public static final Codec<cq.a> a = a(cq.a::new);
-
-      protected a(List<bs> $$0) {
-         super($$0);
+      public cq.a a(cv.d $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      @Override
-      public kw<den> a() {
-         return kx.l;
-      }
-   }
-
-   public static class b extends cq {
-      public static final Codec<cq.b> a = a(cq.b::new);
-
-      protected b(List<bs> $$0) {
-         super($$0);
-      }
-
-      @Override
-      public kw<den> a() {
-         return kx.J;
+      public cq b() {
+         return new cq(this.a);
       }
    }
 }

@@ -1,107 +1,143 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
 import javax.annotation.Nullable;
 
-public class dsd extends dku implements dsb {
+public class dsd extends dlk {
    public static final MapCodec<dsd> a = b(dsd::new);
-   public static final dzk<dzu> b = dzc.bk;
-   public static final dzd c = dzc.I;
-   private static final fdo d = dku.b(16.0, 0.0, 8.0);
-   private static final fdo e = dku.b(16.0, 8.0, 16.0);
+   public static final eaf b = eae.u;
+   private static final Map<dhv, List<dsd.a>> f = new WeakHashMap<>();
+   public static final int c = 60;
+   public static final int d = 8;
+   public static final int e = 160;
+   private static final int g = 2;
 
    @Override
    public MapCodec<? extends dsd> a() {
       return a;
    }
 
-   public dsd(dyl.d $$0) {
+   protected dsd(dzn.d $$0) {
       super($$0);
-      this.l(this.m().b(b, dzu.b).b(c, Boolean.valueOf(false)));
+      this.l(this.B.b().b(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected boolean g_(dym $$0) {
-      return $$0.c(b) != dzu.c;
+   protected void a(dzo $$0, dip $$1, iu $$2, dzo $$3, boolean $$4) {
+      this.b($$1, $$2, $$0);
+   }
+
+   private void b(dip $$0, iu $$1, dzo $$2) {
+      exd $$3 = this.a($$0, $$2);
+
+      for (ja $$4 : ja.values()) {
+         $$0.a($$1.a($$4), this, ewz.a($$3, $$4));
+      }
    }
 
    @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b, c);
+   protected void a(dzo $$0, aro $$1, iu $$2, boolean $$3) {
+      if (!$$3) {
+         this.b($$1, $$2, $$0);
+      }
    }
 
    @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return switch ((dzu)$$0.c(b)) {
-         case a -> e;
-         case b -> d;
-         case c -> fdl.b();
-      };
+   protected int a(dzo $$0, dhv $$1, iu $$2, ja $$3) {
+      return $$0.c(b) && ja.b != $$3 ? 15 : 0;
+   }
+
+   protected boolean a(dip $$0, iu $$1, dzo $$2) {
+      return $$0.b($$1.e(), ja.a);
+   }
+
+   @Override
+   protected void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      boolean $$4 = this.a($$1, $$2, $$0);
+      List<dsd.a> $$5 = f.get($$1);
+
+      while ($$5 != null && !$$5.isEmpty() && $$1.ae() - $$5.get(0).b > 60L) {
+         $$5.remove(0);
+      }
+
+      if ($$0.c(b)) {
+         if ($$4) {
+            $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
+            if (a($$1, $$2, true)) {
+               $$1.c(1502, $$2, 0);
+               $$1.a($$2, $$1.a_($$2).b(), 160);
+            }
+         }
+      } else if (!$$4 && !a($$1, $$2, false)) {
+         $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 3);
+      }
+   }
+
+   @Override
+   protected void a(dzo $$0, dip $$1, iu $$2, dlu $$3, @Nullable exd $$4, boolean $$5) {
+      if ($$0.c(b) == this.a($$1, $$2, $$0) && !$$1.U().b($$2, this)) {
+         $$1.a($$2, this, 2);
+      }
+   }
+
+   @Override
+   protected int b(dzo $$0, dhv $$1, iu $$2, ja $$3) {
+      return $$3 == ja.a ? $$0.a($$1, $$2, $$3) : 0;
+   }
+
+   @Override
+   protected boolean f_(dzo $$0) {
+      return true;
+   }
+
+   @Override
+   public void a(dzo $$0, dip $$1, iu $$2, azt $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$5 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         $$1.a(ls.b, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(b);
+   }
+
+   private static boolean a(dip $$0, iu $$1, boolean $$2) {
+      List<dsd.a> $$3 = f.computeIfAbsent($$0, $$0x -> Lists.newArrayList());
+      if ($$2) {
+         $$3.add(new dsd.a($$1.j(), $$0.ae()));
+      }
+
+      int $$4 = 0;
+
+      for (dsd.a $$5 : $$3) {
+         if ($$5.a.equals($$1)) {
+            if (++$$4 >= 8) {
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 
    @Nullable
-   @Override
-   public dym a(dbn $$0) {
-      jj $$1 = $$0.a();
-      dym $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.b(b, dzu.c).b(c, Boolean.valueOf(false));
-      } else {
-         eut $$3 = $$0.q().b_($$1);
-         dym $$4 = this.m().b(b, dzu.b).b(c, Boolean.valueOf($$3.a() == euu.c));
-         jo $$5 = $$0.k();
-         return $$5 != jo.a && ($$5 == jo.b || !($$0.l().e - (double)$$1.v() > 0.5)) ? $$4 : $$4.b(b, dzu.a);
-      }
+   protected exd a(dip $$0, dzo $$1) {
+      return ewz.a($$0, null, ja.b);
    }
 
-   @Override
-   protected boolean a(dym $$0, dbn $$1) {
-      cxy $$2 = $$1.n();
-      dzu $$3 = $$0.c(b);
-      if ($$3 == dzu.c || !$$2.a(this.i())) {
-         return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().e - (double)$$1.a().v() > 0.5;
-         jo $$5 = $$1.k();
-         return $$3 == dzu.b ? $$5 == jo.b || $$4 && $$5.o().d() : $$5 == jo.a || !$$4 && $$5.o().d();
-      } else {
-         return true;
-      }
-   }
+   public static class a {
+      final iu a;
+      final long b;
 
-   @Override
-   protected eut b_(dym $$0) {
-      return $$0.c(c) ? euu.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   public boolean a(dhq $$0, jj $$1, dym $$2, eut $$3) {
-      return $$2.c(b) != dzu.c ? dsb.super.a($$0, $$1, $$2, $$3) : false;
-   }
-
-   @Override
-   public boolean a(@Nullable bwr $$0, dgv $$1, jj $$2, dym $$3, eus $$4) {
-      return $$3.c(b) != dzu.c ? dsb.super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, euu.c, euu.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(dym $$0, evi $$1) {
-      switch ($$1) {
-         case a:
-            return false;
-         case b:
-            return $$0.y().a(axf.a);
-         case c:
-            return false;
-         default:
-            return false;
+      public a(iu $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

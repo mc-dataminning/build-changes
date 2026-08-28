@@ -1,82 +1,21 @@
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dvz {
-   private static final int a = 5;
-   private int b;
-   private double c;
+public class dvz extends dmm {
+   public static final MapCodec<dvz> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cxq.q.fieldOf("color").forGetter(dvz::b), t()).apply($$0, dvz::new));
+   private final cxq c;
 
-   protected abstract void a(dhp var1, jj var2, dym var3);
-
-   protected abstract void b(dhp var1, jj var2, dym var3);
-
-   protected abstract void a(dhp var1, jj var2, dym var3, int var4, int var5);
-
-   protected abstract boolean a(cqi var1);
-
-   public void a(cqi $$0, dhp $$1, jj $$2, dym $$3) {
-      int $$4 = this.b++;
-      if ($$4 == 0) {
-         this.a($$1, $$2, $$3);
-         $$1.a($$0, edm.k, $$2);
-         d($$1, $$2, $$3);
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
-      this.c = Math.max($$0.gK(), this.c);
+   @Override
+   public MapCodec<dvz> a() {
+      return b;
    }
 
-   public void b(cqi $$0, dhp $$1, jj $$2, dym $$3) {
-      int $$4 = this.b--;
-      if (this.b == 0) {
-         this.b($$1, $$2, $$3);
-         $$1.a($$0, edm.j, $$2);
-         this.c = 0.0;
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
+   protected dvz(cxq $$0, dzn.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
-   private List<cqi> a(dhp $$0, jj $$1) {
-      double $$2 = this.c + 4.0;
-      fcp $$3 = new fcp($$1).g($$2);
-      return $$0.a(ecy.a(cqi.class), $$3, this::a);
-   }
-
-   public void c(dhp $$0, jj $$1, dym $$2) {
-      List<cqi> $$3 = this.a($$0, $$1);
-      this.c = 0.0;
-
-      for (cqi $$4 : $$3) {
-         this.c = Math.max($$4.gK(), this.c);
-      }
-
-      int $$5 = $$3.size();
-      int $$6 = this.b;
-      if ($$6 != $$5) {
-         boolean $$7 = $$5 != 0;
-         boolean $$8 = $$6 != 0;
-         if ($$7 && !$$8) {
-            this.a($$0, $$1, $$2);
-            $$0.a(null, edm.k, $$1);
-         } else if (!$$7) {
-            this.b($$0, $$1, $$2);
-            $$0.a(null, edm.j, $$1);
-         }
-
-         this.b = $$5;
-      }
-
-      this.a($$0, $$1, $$2, $$6, $$5);
-      if ($$5 > 0) {
-         d($$0, $$1, $$2);
-      }
-   }
-
-   public int a() {
-      return this.b;
-   }
-
-   private static void d(dhp $$0, jj $$1, dym $$2) {
-      $$0.a($$1, $$2.b(), 5);
+   public cxq b() {
+      return this.c;
    }
 }

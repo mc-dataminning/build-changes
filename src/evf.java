@@ -1,143 +1,166 @@
-import javax.annotation.Nullable;
-
 public class evf {
-   public final int a;
-   public final int b;
-   public final int c;
-   private final int m;
-   public int d = -1;
-   public float e;
-   public float f;
-   public float g;
-   @Nullable
-   public evf h;
-   public boolean i;
-   public float j;
-   public float k;
-   public evk l = evk.a;
+   private static final int b = 16;
+   public static final int a = Integer.MIN_VALUE;
+   private final int c;
+   private final axy d;
+   private final iu.a e = new iu.a();
+   private final iu.a f = new iu.a();
 
-   public evf(int $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.m = b($$0, $$1, $$2);
+   public evf(dir $$0) {
+      this.c = $$0.G_() - 1;
+      int $$1 = $$0.ao() + 1;
+      int $$2 = azk.e($$1 - this.c + 1);
+      this.d = new bab($$2, 256);
    }
 
-   public evf a(int $$0, int $$1, int $$2) {
-      evf $$3 = new evf($$0, $$1, $$2);
-      $$3.d = this.d;
-      $$3.e = this.e;
-      $$3.f = this.f;
-      $$3.g = this.g;
-      $$3.h = this.h;
-      $$3.i = this.i;
-      $$3.j = this.j;
-      $$3.k = this.k;
-      $$3.l = this.l;
-      return $$3;
+   public void a(ebl $$0) {
+      int $$1 = $$0.a();
+      if ($$1 == -1) {
+         this.a(this.c);
+      } else {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            for (int $$3 = 0; $$3 < 16; $$3++) {
+               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
+               this.b(c($$3, $$2), $$4);
+            }
+         }
+      }
    }
 
-   public static int b(int $$0, int $$1, int $$2) {
-      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
+   private int a(ebl $$0, int $$1, int $$2, int $$3) {
+      int $$4 = jx.c($$0.h($$1) + 1);
+      iu.a $$5 = this.e.d($$2, $$4, $$3);
+      iu.a $$6 = this.f.a($$5, ja.a);
+      dzo $$7 = dlw.a.m();
+
+      for (int $$8 = $$1; $$8 >= 0; $$8--) {
+         ebw $$9 = $$0.b($$8);
+         if ($$9.c()) {
+            $$7 = dlw.a.m();
+            int $$10 = $$0.h($$8);
+            $$5.q(jx.c($$10));
+            $$6.q($$5.v() - 1);
+         } else {
+            for (int $$11 = 15; $$11 >= 0; $$11--) {
+               dzo $$12 = $$9.a($$2, $$11, $$3);
+               if (a($$7, $$12)) {
+                  return $$5.v();
+               }
+
+               $$7 = $$12;
+               $$5.g($$6);
+               $$6.c(ja.a);
+            }
+         }
+      }
+
+      return this.c;
    }
 
-   public float a(evf $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return azk.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   public boolean a(dhv $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 + 1;
+      int $$5 = c($$1, $$3);
+      int $$6 = this.b($$5);
+      if ($$4 < $$6) {
+         return false;
+      } else {
+         iu $$7 = this.e.d($$1, $$2 + 1, $$3);
+         dzo $$8 = $$0.a_($$7);
+         iu $$9 = this.f.d($$1, $$2, $$3);
+         dzo $$10 = $$0.a_($$9);
+         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return true;
+         } else {
+            iu $$11 = this.e.d($$1, $$2 - 1, $$3);
+            dzo $$12 = $$0.a_($$11);
+            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
+         }
+      }
    }
 
-   public float b(evf $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.c - this.c);
-      return azk.c($$1 * $$1 + $$2 * $$2);
+   private boolean a(dhv $$0, int $$1, int $$2, iu $$3, dzo $$4, iu $$5, dzo $$6) {
+      int $$7 = $$3.v();
+      if (a($$4, $$6)) {
+         if ($$7 > $$2) {
+            this.b($$1, $$7);
+            return true;
+         }
+      } else if ($$7 == $$2) {
+         this.b($$1, this.a($$0, $$5, $$6));
+         return true;
+      }
+
+      return false;
    }
 
-   public float a(jj $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return azk.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   private int a(dhv $$0, iu $$1, dzo $$2) {
+      iu.a $$3 = this.e.g($$1);
+      iu.a $$4 = this.f.a($$1, ja.a);
+      dzo $$5 = $$2;
+
+      while ($$4.v() >= this.c) {
+         dzo $$6 = $$0.a_($$4);
+         if (a($$5, $$6)) {
+            return $$3.v();
+         }
+
+         $$5 = $$6;
+         $$3.g($$4);
+         $$4.c(ja.a);
+      }
+
+      return this.c;
    }
 
-   public float c(evf $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   private static boolean a(dzo $$0, dzo $$1) {
+      if ($$1.g() != 0) {
+         return true;
+      } else {
+         feq $$2 = evm.a($$0, ja.a);
+         feq $$3 = evm.a($$1, ja.b);
+         return fen.b($$2, $$3);
+      }
    }
 
-   public float b(jj $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   public int a(int $$0, int $$1) {
+      int $$2 = this.b(c($$0, $$1));
+      return this.c($$2);
    }
 
-   public float d(evf $$0) {
-      float $$1 = (float)Math.abs($$0.a - this.a);
-      float $$2 = (float)Math.abs($$0.b - this.b);
-      float $$3 = (float)Math.abs($$0.c - this.c);
-      return $$1 + $$2 + $$3;
+   public int a() {
+      int $$0 = Integer.MIN_VALUE;
+
+      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
+         int $$2 = this.d.a($$1);
+         if ($$2 > $$0) {
+            $$0 = $$2;
+         }
+      }
+
+      return this.c($$0 + this.c);
    }
 
-   public float c(jj $$0) {
-      float $$1 = (float)Math.abs($$0.u() - this.a);
-      float $$2 = (float)Math.abs($$0.v() - this.b);
-      float $$3 = (float)Math.abs($$0.w() - this.c);
-      return $$1 + $$2 + $$3;
+   private void a(int $$0) {
+      int $$1 = $$0 - this.c;
+
+      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
+         this.d.b($$2, $$1);
+      }
    }
 
-   public jj a() {
-      return new jj(this.a, this.b, this.c);
+   private void b(int $$0, int $$1) {
+      this.d.b($$0, $$1 - this.c);
    }
 
-   public fcu b() {
-      return new fcu((double)this.a, (double)this.b, (double)this.c);
+   private int b(int $$0) {
+      return this.d.a($$0) + this.c;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof evf $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+   private int c(int $$0) {
+      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
    }
 
-   @Override
-   public int hashCode() {
-      return this.m;
-   }
-
-   public boolean c() {
-      return this.d >= 0;
-   }
-
-   @Override
-   public String toString() {
-      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
-   }
-
-   public void a(vr $$0) {
-      $$0.q(this.a);
-      $$0.q(this.b);
-      $$0.q(this.c);
-      $$0.a(this.j);
-      $$0.a(this.k);
-      $$0.a(this.i);
-      $$0.a(this.l);
-      $$0.a(this.g);
-   }
-
-   public static evf b(vr $$0) {
-      evf $$1 = new evf($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
-   }
-
-   protected static void a(vr $$0, evf $$1) {
-      $$1.j = $$0.readFloat();
-      $$1.k = $$0.readFloat();
-      $$1.i = $$0.readBoolean();
-      $$1.l = $$0.b(evk.class);
-      $$1.g = $$0.readFloat();
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
    }
 }

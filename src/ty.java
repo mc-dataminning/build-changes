@@ -2,36 +2,37 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class ty implements ut {
-   private static final int c = 8;
-   public static final uv<ty> a = new uv<ty>() {
-      public ty a(DataInput $$0, uf $$1) {
-         $$1.b(8L);
-         return ty.b;
+public class ty extends un {
+   private static final int c = 16;
+   public static final ty a = new ty(0.0);
+   public static final uw<ty> b = new uw.a<ty>() {
+      public ty a(DataInput $$0, ug $$1) throws IOException {
+         return ty.a(d($$0, $$1));
       }
 
       @Override
-      public uq.b a(DataInput $$0, uq $$1, uf $$2) {
-         $$2.b(8L);
-         return $$1.a();
+      public ur.b a(DataInput $$0, ur $$1, ug $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static double d(DataInput $$0, ug $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readDouble();
       }
 
       @Override
-      public void a(DataInput $$0, int $$1, uf $$2) {
-      }
-
-      @Override
-      public void b(DataInput $$0, uf $$1) {
+      public int c() {
+         return 8;
       }
 
       @Override
       public String a() {
-         return "END";
+         return "DOUBLE";
       }
 
       @Override
       public String b() {
-         return "TAG_End";
+         return "TAG_Double";
       }
 
       @Override
@@ -39,33 +40,34 @@ public class ty implements ut {
          return true;
       }
    };
-   public static final ty b = new ty();
+   private final double w;
 
-   private ty() {
+   private ty(double $$0) {
+      this.w = $$0;
+   }
+
+   public static ty a(double $$0) {
+      return $$0 == 0.0 ? a : new ty($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
+      $$0.writeDouble(this.w);
    }
 
    @Override
    public int a() {
-      return 8;
+      return 16;
    }
 
    @Override
    public byte b() {
-      return 0;
+      return 6;
    }
 
    @Override
-   public uv<ty> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      return this.p_();
+   public uw<ty> c() {
+      return b;
    }
 
    public ty e() {
@@ -73,12 +75,58 @@ public class ty implements ut {
    }
 
    @Override
-   public void a(ux $$0) {
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof ty && this.w == ((ty)$$0).w;
+   }
+
+   @Override
+   public int hashCode() {
+      long $$0 = Double.doubleToLongBits(this.w);
+      return (int)($$0 ^ $$0 >>> 32);
+   }
+
+   @Override
+   public void a(uy $$0) {
       $$0.a(this);
    }
 
    @Override
-   public uq.b a(uq $$0) {
-      return $$0.a();
+   public long f() {
+      return (long)Math.floor(this.w);
+   }
+
+   @Override
+   public int g() {
+      return azk.a(this.w);
+   }
+
+   @Override
+   public short h() {
+      return (short)(azk.a(this.w) & 65535);
+   }
+
+   @Override
+   public byte i() {
+      return (byte)(azk.a(this.w) & 0xFF);
+   }
+
+   @Override
+   public double j() {
+      return this.w;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.w;
+   }
+
+   @Override
+   public Number l() {
+      return this.w;
+   }
+
+   @Override
+   public ur.b a(ur $$0) {
+      return $$0.a(this.w);
    }
 }

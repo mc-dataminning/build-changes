@@ -1,45 +1,109 @@
 import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class go implements ArgumentType<UUID> {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("argument.uuid.invalid"));
-   private static final Collection<String> b = Arrays.asList("dd12be42-52a9-4a91-a8a1-11c01849e498");
-   private static final Pattern c = Pattern.compile("^([-A-Fa-f0-9]+)");
+public class go implements gh {
+   private final gn a;
+   private final gn b;
+   private final gn c;
 
-   public static UUID a(CommandContext<ex> $$0, String $$1) {
-      return (UUID)$$0.getArgument($$1, UUID.class);
+   public go(gn $$0, gn $$1, gn $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static go a() {
-      return new go();
+   @Override
+   public fdw a(ei $$0) {
+      fdw $$1 = $$0.d();
+      return new fdw(this.a.a($$1.d), this.b.a($$1.e), this.c.a($$1.f));
    }
 
-   public UUID a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.getRemaining();
-      Matcher $$2 = c.matcher($$1);
-      if ($$2.find()) {
-         String $$3 = $$2.group(1);
+   @Override
+   public fdv b(ei $$0) {
+      fdv $$1 = $$0.k();
+      return new fdv((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   }
 
-         try {
-            UUID $$4 = UUID.fromString($$3);
-            $$0.setCursor($$0.getCursor() + $$3.length());
-            return $$4;
-         } catch (IllegalArgumentException var6) {
-         }
+   @Override
+   public boolean a() {
+      return this.a.a();
+   }
+
+   @Override
+   public boolean b() {
+      return this.b.a();
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.a();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof go $$1)) {
+         return false;
+      } else if (!this.a.equals($$1.a)) {
+         return false;
+      } else {
+         return !this.b.equals($$1.b) ? false : this.c.equals($$1.c);
       }
-
-      throw a.createWithContext($$0);
    }
 
-   public Collection<String> getExamples() {
-      return b;
+   public static go a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      gn $$2 = gn.a($$0);
+      if ($$0.canRead() && $$0.peek() == ' ') {
+         $$0.skip();
+         gn $$3 = gn.a($$0);
+         if ($$0.canRead() && $$0.peek() == ' ') {
+            $$0.skip();
+            gn $$4 = gn.a($$0);
+            return new go($$2, $$3, $$4);
+         } else {
+            $$0.setCursor($$1);
+            throw gm.a.createWithContext($$0);
+         }
+      } else {
+         $$0.setCursor($$1);
+         throw gm.a.createWithContext($$0);
+      }
+   }
+
+   public static go a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
+      int $$2 = $$0.getCursor();
+      gn $$3 = gn.a($$0, $$1);
+      if ($$0.canRead() && $$0.peek() == ' ') {
+         $$0.skip();
+         gn $$4 = gn.a($$0, false);
+         if ($$0.canRead() && $$0.peek() == ' ') {
+            $$0.skip();
+            gn $$5 = gn.a($$0, $$1);
+            return new go($$3, $$4, $$5);
+         } else {
+            $$0.setCursor($$2);
+            throw gm.a.createWithContext($$0);
+         }
+      } else {
+         $$0.setCursor($$2);
+         throw gm.a.createWithContext($$0);
+      }
+   }
+
+   public static go a(double $$0, double $$1, double $$2) {
+      return new go(new gn(false, $$0), new gn(false, $$1), new gn(false, $$2));
+   }
+
+   public static go a(fdv $$0) {
+      return new go(new gn(false, (double)$$0.i), new gn(false, (double)$$0.j), new gn(true, 0.0));
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

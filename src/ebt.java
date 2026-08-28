@@ -1,114 +1,111 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.MapCodec;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class ebt implements AutoCloseable {
-   public static final int d = 1493;
-   private final ebv a;
-   protected final DataFixer e;
-   @Nullable
-   private volatile epb b;
+public class ebt<T> implements ecb<T> {
+   private final jj<T> a;
+   private final ayg<T> b;
+   private final ecc<T> c;
+   private final int d;
 
-   public ebt(ecc $$0, Path $$1, DataFixer $$2, boolean $$3) {
-      this.e = $$2;
-      this.a = new ebv($$0, $$1, $$3);
+   public ebt(jj<T> $$0, int $$1, ecc<T> $$2, List<T> $$3) {
+      this($$0, $$1, $$2);
+      $$3.forEach(this.b::d);
    }
 
-   public boolean b(dgw $$0, int $$1) {
-      return this.a.a($$0, $$1);
+   public ebt(jj<T> $$0, int $$1, ecc<T> $$2) {
+      this($$0, $$1, $$2, ayg.c(1 << $$1));
    }
 
-   public tw a(alc<dhp> $$0, Supplier<ewt> $$1, tw $$2, Optional<alc<MapCodec<? extends eak>>> $$3) {
-      int $$4 = a($$2);
-      if ($$4 == ab.b().d().c()) {
-         return $$2;
-      } else {
-         try {
-            if ($$4 < 1493) {
-               $$2 = bax.c.a(this.e, $$2, $$4, 1493);
-               if ($$2.p("Level").q("hasLegacyStructureData")) {
-                  epb $$5 = this.a($$0, $$1);
-                  $$2 = $$5.a($$2);
-               }
-            }
-
-            a($$2, $$0, $$3);
-            $$2 = bax.c.a(this.e, $$2, Math.max(1493, $$4));
-            b($$2);
-            ul.e($$2);
-            return $$2;
-         } catch (Exception var9) {
-            o $$7 = o.a(var9, "Updated chunk");
-            p $$8 = $$7.a("Updated chunk details");
-            $$8.a("Data version", $$4);
-            throw new z($$7);
-         }
-      }
+   private ebt(jj<T> $$0, int $$1, ecc<T> $$2, ayg<T> $$3) {
+      this.a = $$0;
+      this.d = $$1;
+      this.c = $$2;
+      this.b = $$3;
    }
 
-   private epb a(alc<dhp> $$0, Supplier<ewt> $$1) {
-      epb $$2 = this.b;
-      if ($$2 == null) {
-         synchronized (this) {
-            $$2 = this.b;
-            if ($$2 == null) {
-               this.b = $$2 = epb.a($$0, $$1.get());
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   public static void a(tw $$0, alc<dhp> $$1, Optional<alc<MapCodec<? extends eak>>> $$2) {
-      tw $$3 = new tw();
-      $$3.a("dimension", $$1.a().toString());
-      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
-      $$0.a("__context", $$3);
-   }
-
-   private static void b(tw $$0) {
-      $$0.r("__context");
-   }
-
-   public static int a(tw $$0) {
-      return ul.b($$0, -1);
-   }
-
-   public CompletableFuture<Optional<tw>> d(dgw $$0) {
-      return this.a.a($$0);
-   }
-
-   public CompletableFuture<Void> a(dgw $$0, Supplier<tw> $$1) {
-      this.e($$0);
-      return this.a.a($$0, $$1);
-   }
-
-   protected void e(dgw $$0) {
-      if (this.b != null) {
-         this.b.a($$0.a());
-      }
-   }
-
-   public void o() {
-      this.a.a(true).join();
+   public static <A> ecb<A> a(int $$0, jj<A> $$1, ecc<A> $$2, List<A> $$3) {
+      return new ebt<>($$1, $$0, $$2, $$3);
    }
 
    @Override
-   public void close() throws IOException {
-      this.a.close();
+   public int a(T $$0) {
+      int $$1 = this.b.a($$0);
+      if ($$1 == -1) {
+         $$1 = this.b.d($$0);
+         if ($$1 >= 1 << this.d) {
+            $$1 = this.c.onResize(this.d + 1, $$0);
+         }
+      }
+
+      return $$1;
    }
 
-   public ebs p() {
-      return this.a;
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         if ($$0.test(this.b.a($$1))) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   protected ecc q() {
-      return this.a.a();
+   @Override
+   public T a(int $$0) {
+      T $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         throw new eca($$0);
+      } else {
+         return $$1;
+      }
+   }
+
+   @Override
+   public void a(vs $$0) {
+      this.b.a();
+      int $$1 = $$0.l();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.b.d(this.a.b($$0.l()));
+      }
+   }
+
+   @Override
+   public void b(vs $$0) {
+      int $$1 = this.b();
+      $$0.c($$1);
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0.c(this.a.a(this.b.a($$2)));
+      }
+   }
+
+   @Override
+   public int a() {
+      int $$0 = wn.a(this.b());
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += wn.a(this.a.a(this.b.a($$1)));
+      }
+
+      return $$0;
+   }
+
+   public List<T> c() {
+      ArrayList<T> $$0 = new ArrayList<>();
+      this.b.iterator().forEachRemaining($$0::add);
+      return $$0;
+   }
+
+   @Override
+   public int b() {
+      return this.b.d();
+   }
+
+   @Override
+   public ecb<T> a(ecc<T> $$0) {
+      return new ebt<>(this.a, this.d, $$0, this.b.b());
    }
 }

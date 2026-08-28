@@ -1,17 +1,9 @@
-public interface alu extends alt {
-   aqe a();
+public interface alu {
+   String ae();
 
-   String b();
+   String M();
 
-   int d();
+   int N();
 
-   String h();
-
-   String[] P();
-
-   String j();
-
-   String s();
-
-   String a(String var1);
+   int O();
 }

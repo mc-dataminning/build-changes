@@ -1,6 +1,19 @@
 public class ajf {
-   public static final wd.a<ajg, vr> a = zh.a(vp.d, $$0 -> $$0.a(aje.g, aji.a).a(aje.h, ajj.a).a(aje.f, ajh.a).a(aje.i, ajk.b).a(abn.b, abp.a));
-   public static final wd<ajg> b = a.a(vr::new);
-   public static final wd.a<aiy, vr> c = zh.b(vp.d, $$0 -> $$0.a(aje.e, ajc.a).a(aje.c, aja.a).a(aje.b, ajd.a).a(aje.d, ajb.a).a(aje.a, aiz.a).a(abn.a, abm.a));
-   public static final wd<aiy> d = c.a(vr::new);
+   public static final zf<aja> a = a("custom_query");
+   public static final zf<aje> b = a("login_finished");
+   public static final zf<ajb> c = a("hello");
+   public static final zf<ajc> d = a("login_compression");
+   public static final zf<ajd> e = a("login_disconnect");
+   public static final zf<aji> f = b("custom_query_answer");
+   public static final zf<ajj> g = b("hello");
+   public static final zf<ajk> h = b("key");
+   public static final zf<ajl> i = b("login_acknowledged");
+
+   private static <T extends zd<aiz>> zf<T> a(String $$0) {
+      return new zf<>(ze.b, ale.b($$0));
+   }
+
+   private static <T extends zd<ajh>> zf<T> b(String $$0) {
+      return new zf<>(ze.a, ale.b($$0));
+   }
 }

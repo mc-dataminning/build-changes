@@ -1,29 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
+public class grz implements grp<dxk> {
+   public static final hkg a = new hkg(hhy.d, ale.b("entity/enchanting_table_book"));
+   private final gek b;
 
-public class grz implements gsa.a {
-   private final fnd a;
-   private double b = Double.MIN_VALUE;
-   private List<fdo> c = Collections.emptyList();
-
-   public grz(fnd $$0) {
-      this.a = $$0;
+   public grz(grq.a $$0) {
+      this.b = new gek($$0.a(gif.J));
    }
 
-   @Override
-   public void a(fho $$0, gny $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)af.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bvs $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dV().d($$6, $$6.cR().g(6.0)));
+   public void a(dxk $$0, float $$1, fiq $$2, gpd $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + azk.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
+
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
       }
 
-      fhs $$7 = $$1.getBuffer(goi.y());
-
-      for (fdo $$8 : this.c) {
-         gsa.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
       }
+
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = azk.h($$1, $$0.c, $$0.b);
+      float $$10 = azk.i($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = azk.i($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = azk.h($$1, $$0.g, $$0.f);
+      this.b.a($$6, azk.a($$10, 0.0F, 1.0F), azk.a($$11, 0.0F, 1.0F), $$12);
+      fiu $$13 = a.a($$3, gpn::d);
+      this.b.a($$2, $$13, $$4, $$5);
+      $$2.b();
    }
 }

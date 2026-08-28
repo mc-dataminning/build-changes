@@ -1,86 +1,56 @@
-public class bti implements btj {
-   private final btj b;
-   private final btj c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public bti(btj $$0, btj $$1) {
+public class bti extends btb {
+   public static final MapCodec<bti> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
+               .apply($$0, bti::new)
+      )
+      .validate(
+         $$0 -> $$0.d <= $$0.b
+               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
+               : DataResult.success($$0)
+      );
+   private final float b;
+   private final float d;
+
+   private bti(float $$0, float $$1) {
       this.b = $$0;
-      this.c = $$1;
+      this.d = $$1;
    }
 
-   @Override
-   public int b() {
-      return this.b.b() + this.c.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.b.c() && this.c.c();
-   }
-
-   public boolean a(btj $$0) {
-      return this.b == $$0 || this.c == $$0;
-   }
-
-   @Override
-   public cxy a(int $$0) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
-   }
-
-   @Override
-   public cxy a(int $$0, int $$1) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
-   }
-
-   @Override
-   public cxy b(int $$0) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cxy $$1) {
-      if ($$0 >= this.b.b()) {
-         this.c.a($$0 - this.b.b(), $$1);
+   public static bti b(float $$0, float $$1) {
+      if ($$1 <= $$0) {
+         throw new IllegalArgumentException("Max must exceed min");
       } else {
-         this.b.a($$0, $$1);
+         return new bti($$0, $$1);
       }
    }
 
    @Override
-   public int aj_() {
-      return this.b.aj_();
+   public float a(azt $$0) {
+      return azk.b($$0, this.b, this.d);
    }
 
    @Override
-   public void e() {
-      this.b.e();
-      this.c.e();
+   public float a() {
+      return this.b;
    }
 
    @Override
-   public boolean a(cqi $$0) {
-      return this.b.a($$0) && this.c.a($$0);
+   public float b() {
+      return this.d;
    }
 
    @Override
-   public void c_(cqi $$0) {
-      this.b.c_($$0);
-      this.c.c_($$0);
+   public btc<?> c() {
+      return btc.b;
    }
 
    @Override
-   public void c(cqi $$0) {
-      this.b.c($$0);
-      this.c.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cxy $$1) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.b.a();
-      this.c.a();
+   public String toString() {
+      return "[" + this.b + "-" + this.d + "]";
    }
 }

@@ -1,35 +1,66 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JavaOps;
-import java.util.HashMap;
-import java.util.Map;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class jk<T> {
-   private final Codec<T> a;
+public class jk<T> implements jj<T> {
+   private int b;
+   private final Reference2IntMap<T> c;
+   private final List<T> d;
 
-   jk(Codec<T> $$0) {
-      this.a = $$0;
+   public jk() {
+      this(512);
    }
 
-   public T a(T $$0, ju.a $$1, ju.a $$2) {
-      DynamicOps<Object> $$3 = $$1.a(JavaOps.INSTANCE);
-      DynamicOps<Object> $$4 = $$2.a(JavaOps.INSTANCE);
-      Object $$5 = this.a.encodeStart($$3, $$0).getOrThrow($$0x -> new IllegalStateException("Failed to encode: " + $$0x));
-      return (T)this.a.parse($$4, $$5).getOrThrow($$0x -> new IllegalStateException("Failed to decode: " + $$0x));
+   public jk(int $$0) {
+      this.d = Lists.newArrayListWithExpectedSize($$0);
+      this.c = new Reference2IntOpenHashMap($$0);
+      this.c.defaultReturnValue(-1);
    }
 
-   public static class a {
-      private final Map<alc<? extends kf<?>>, jk<?>> a = new HashMap<>();
+   public void a(T $$0, int $$1) {
+      this.c.put($$0, $$1);
 
-      public <T> jk.a a(alc<? extends kf<? extends T>> $$0, Codec<T> $$1) {
-         this.a.put($$0, new jk($$1));
-         return this;
+      while (this.d.size() <= $$1) {
+         this.d.add(null);
       }
 
-      @Nullable
-      public <T> jk<T> a(alc<? extends kf<? extends T>> $$0) {
-         return (jk<T>)this.a.get($$0);
+      this.d.set($$1, $$0);
+      if (this.b <= $$1) {
+         this.b = $$1 + 1;
       }
+   }
+
+   public void b(T $$0) {
+      this.a($$0, this.b);
+   }
+
+   @Override
+   public int a(T $$0) {
+      return this.c.getInt($$0);
+   }
+
+   @Nullable
+   @Override
+   public final T a(int $$0) {
+      return $$0 >= 0 && $$0 < this.d.size() ? this.d.get($$0) : null;
+   }
+
+   @Override
+   public Iterator<T> iterator() {
+      return Iterators.filter(this.d.iterator(), Objects::nonNull);
+   }
+
+   public boolean c(int $$0) {
+      return this.a($$0) != null;
+   }
+
+   @Override
+   public int d() {
+      return this.c.size();
    }
 }

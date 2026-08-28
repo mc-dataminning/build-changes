@@ -1,20 +1,16 @@
-public enum dzo implements bag {
-   a("normal"),
-   b("sticky");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 
-   private final String c;
+public class dzo extends dzn.a {
+   public static final Codec<dzo> a = a(mf.e.q(), dlu::m).stable();
 
-   private dzo(final String $$0) {
-      this.c = $$0;
+   public dzo(dlu $$0, Reference2ObjectArrayMap<ear<?>, Comparable<?>> $$1, MapCodec<dzo> $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public String toString() {
-      return this.c;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
+   protected dzo B() {
+      return this;
    }
 }

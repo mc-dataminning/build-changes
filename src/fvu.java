@@ -1,9 +1,29 @@
-public class fvu {
-   private static final String[] a = new String[]{"O o o", "o O o", "o o O", "o O o"};
-   private static final long b = 300L;
+public enum fvu {
+   a,
+   b;
 
-   public static String a(long $$0) {
-      int $$1 = (int)($$0 / 300L % (long)a.length);
-      return a[$$1];
+   public fvu a() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+      };
+   }
+
+   public fvv b() {
+      return switch (this) {
+         case a -> fvv.d;
+         case b -> fvv.b;
+      };
+   }
+
+   public fvv c() {
+      return switch (this) {
+         case a -> fvv.c;
+         case b -> fvv.a;
+      };
+   }
+
+   public fvv a(boolean $$0) {
+      return $$0 ? this.b() : this.c();
    }
 }

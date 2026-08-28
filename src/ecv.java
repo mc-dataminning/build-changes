@@ -1,72 +1,114 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.MapCodec;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class ecv<T extends ecr> {
-   private static final Logger a = LogUtils.getLogger();
-   private final ayb<T> b;
-   private edg c;
+public class ecv implements AutoCloseable {
+   public static final int d = 1493;
+   private final ecx a;
+   protected final DataFixer e;
+   @Nullable
+   private volatile eqd b;
 
-   public ecv(Class<T> $$0, edg $$1) {
-      this.c = $$1;
-      this.b = new ayb<>($$0);
+   public ecv(ede $$0, Path $$1, DataFixer $$2, boolean $$3) {
+      this.e = $$2;
+      this.a = new ecx($$0, $$1, $$3);
    }
 
-   public void a(T $$0) {
-      this.b.add($$0);
+   public boolean b(dhw $$0, int $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   public boolean b(T $$0) {
-      return this.b.remove($$0);
-   }
+   public tx a(ald<dip> $$0, Supplier<exv> $$1, tx $$2, Optional<ald<MapCodec<? extends ebm>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 == ab.b().d().c()) {
+         return $$2;
+      } else {
+         try {
+            if ($$4 < 1493) {
+               $$2 = baz.c.a(this.e, $$2, $$4, 1493);
+               if ($$2.p("Level").q("hasLegacyStructureData")) {
+                  eqd $$5 = this.a($$0, $$1);
+                  $$2 = $$5.a($$2);
+               }
+            }
 
-   public axv.a a(fcp $$0, axv<T> $$1) {
-      for (T $$2 : this.b) {
-         if ($$2.cR().c($$0) && $$1.accept($$2).a()) {
-            return axv.a.b;
+            a($$2, $$0, $$3);
+            $$2 = baz.c.a(this.e, $$2, Math.max(1493, $$4));
+            b($$2);
+            um.e($$2);
+            return $$2;
+         } catch (Exception var9) {
+            o $$7 = o.a(var9, "Updated chunk");
+            p $$8 = $$7.a("Updated chunk details");
+            $$8.a("Data version", $$4);
+            throw new z($$7);
          }
       }
-
-      return axv.a.a;
    }
 
-   public <U extends T> axv.a a(ecy<T, U> $$0, fcp $$1, axv<? super U> $$2) {
-      Collection<? extends T> $$3 = this.b.a($$0.a());
-      if ($$3.isEmpty()) {
-         return axv.a.a;
-      } else {
-         for (T $$4 : $$3) {
-            U $$5 = (U)$$0.a($$4);
-            if ($$5 != null && $$4.cR().c($$1) && $$2.accept($$5).a()) {
-               return axv.a.b;
+   private eqd a(ald<dip> $$0, Supplier<exv> $$1) {
+      eqd $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = eqd.a($$0, $$1.get());
             }
          }
+      }
 
-         return axv.a.a;
+      return $$2;
+   }
+
+   public static void a(tx $$0, ald<dip> $$1, Optional<ald<MapCodec<? extends ebm>>> $$2) {
+      tx $$3 = new tx();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
+   }
+
+   private static void b(tx $$0) {
+      $$0.r("__context");
+   }
+
+   public static int a(tx $$0) {
+      return um.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<tx>> d(dhw $$0) {
+      return this.a.a($$0);
+   }
+
+   public CompletableFuture<Void> a(dhw $$0, Supplier<tx> $$1) {
+      this.e($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   protected void e(dhw $$0) {
+      if (this.b != null) {
+         this.b.a($$0.a());
       }
    }
 
-   public boolean a() {
-      return this.b.isEmpty();
+   public void o() {
+      this.a.a(true).join();
    }
 
-   public Stream<T> b() {
-      return this.b.stream();
+   @Override
+   public void close() throws IOException {
+      this.a.close();
    }
 
-   public edg c() {
-      return this.c;
+   public ecu p() {
+      return this.a;
    }
 
-   public edg a(edg $$0) {
-      edg $$1 = this.c;
-      this.c = $$0;
-      return $$1;
-   }
-
-   @bar
-   public int d() {
-      return this.b.size();
+   protected ede q() {
+      return this.a.a();
    }
 }

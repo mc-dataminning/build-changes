@@ -1,31 +1,38 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public interface dbi {
-   Codec<dbi> d = md.ay.q().dispatch(dbi::a, dbi.a::a);
-   yt<wg, dbi> e = yr.a(me.aE).b(dbi::a, dbi.a::b);
+public record dbi(cxt<cyl> c) implements dbx {
+   public static final Codec<dbi> a = cxt.a(mg.aS, cyl.c).xmap(dbi::new, dbi::a);
+   public static final yu<wh, dbi> b = cxt.a(mg.aS, cyl.d).a(dbi::new, dbi::a);
 
-   dbi.a<? extends dbi> a();
+   public dbi(je<cyl> $$0) {
+      this(new cxt<>($$0));
+   }
 
-   boolean a(dhp var1, cxy var2, bwr var3);
+   @Deprecated
+   public dbi(ald<cyl> $$0) {
+      this(new cxt<>($$0));
+   }
 
-   public static record a<T extends dbi>(MapCodec<T> f, yt<wg, T> g) {
-      public static final dbi.a<dbg> a = a("apply_effects", dbg.a, dbg.b);
-      public static final dbi.a<dbk> b = a("remove_effects", dbk.a, dbk.b);
-      public static final dbi.a<dbh> c = a("clear_all_effects", dbh.b, dbh.c);
-      public static final dbi.a<dbl> d = a("teleport_randomly", dbl.a, dbl.b);
-      public static final dbi.a<dbj> e = a("play_sound", dbj.a, dbj.b);
-
-      private static <T extends dbi> dbi.a<T> a(String $$0, MapCodec<T> $$1, yt<wg, T> $$2) {
-         return kf.a(md.ay, $$0, new dbi.a<>($$1, $$2));
+   @Override
+   public void a(cyo.b $$0, Consumer<ww> $$1, dah $$2, ke $$3) {
+      jg.a $$4 = $$0.a();
+      if ($$4 != null) {
+         Optional<je<cyl>> $$5 = this.a($$4);
+         if ($$5.isPresent()) {
+            xk $$6 = $$5.get().a().d().f();
+            wz.a($$6, xt.a.a(n.h));
+            $$1.accept($$6);
+         }
       }
+   }
 
-      public MapCodec<T> a() {
-         return this.f;
-      }
+   public Optional<je<cyl>> a(jg.a $$0) {
+      return this.c.a($$0);
+   }
 
-      public yt<wg, T> b() {
-         return this.g;
-      }
+   public cxt<cyl> a() {
+      return this.c;
    }
 }

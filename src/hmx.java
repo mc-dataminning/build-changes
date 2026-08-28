@@ -1,98 +1,107 @@
 import javax.annotation.Nullable;
 
 public class hmx {
-   private final fnd a;
+   private static final int a = 100;
+   private final azt b = azt.a();
+   private final fof c;
    @Nullable
-   private hmy b;
+   private hlw d;
+   private float e = 1.0F;
+   private int f = 100;
 
-   public hmx(fnd $$0, fnh $$1) {
-      this.a = $$0;
-   }
-
-   public void a(gmu $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(@Nullable ghz $$0, @Nullable fcs $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(ghz $$0, jj $$1, dym $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
+   public hmx(fof $$0) {
+      this.c = $$0;
    }
 
    public void a() {
-      if (this.b != null) {
-         this.b.c();
+      hmw $$0 = this.c.al();
+      float $$1 = $$0.b();
+      if (this.d != null && this.e != $$1) {
+         boolean $$2 = this.a($$1);
+         if (!$$2) {
+            return;
+         }
+      }
+
+      awi $$3 = $$0.a();
+      if ($$3 == null) {
+         this.f = Math.max(this.f, 100);
+      } else {
+         if (this.d != null) {
+            if ($$0.a(this.d)) {
+               this.c.ak().b(this.d);
+               this.f = azk.a(this.b, 0, $$3.b() / 2);
+            }
+
+            if (!this.c.ak().c(this.d)) {
+               this.d = null;
+               this.f = Math.min(this.f, azk.a(this.b, $$3.b(), $$3.c()));
+            }
+         }
+
+         this.f = Math.min(this.f, $$3.c());
+         if (this.d == null && this.f-- <= 0) {
+            this.a($$0);
+         }
       }
    }
 
-   public void a(cxy $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
+   public void a(hmw $$0) {
+      this.d = hlr.a($$0.a().a().a());
+      if (this.d.b() != hnc.b) {
+         this.c.ak().a(this.d);
+         this.c.ak().a(this.d, $$0.b());
+      }
+
+      this.f = Integer.MAX_VALUE;
+      this.e = $$0.b();
+   }
+
+   public void a(awi $$0) {
+      if (this.b($$0)) {
+         this.b();
       }
    }
 
    public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
-      }
-   }
-
-   public void c() {
-      if (this.b != null) {
-         this.b();
+      if (this.d != null) {
+         this.c.ak().b(this.d);
+         this.d = null;
       }
 
-      this.b = this.a.n.r.a(this);
+      this.f += 100;
    }
 
-   public void d() {
-      if (this.b != null) {
-         if (this.a.s != null) {
-            this.b.a();
+   private boolean a(float $$0) {
+      if (this.d == null) {
+         return false;
+      } else if (this.e == $$0) {
+         return true;
+      } else {
+         if (this.e < $$0) {
+            this.e = this.e + azk.a(this.e, 5.0E-4F, 0.005F);
+            if (this.e > $$0) {
+               this.e = $$0;
+            }
          } else {
-            this.b();
+            this.e = 0.03F * $$0 + 0.97F * this.e;
+            if (Math.abs(this.e - $$0) < 1.0E-4F || this.e < $$0) {
+               this.e = $$0;
+            }
          }
-      } else if (this.a.s != null) {
-         this.c();
+
+         this.e = azk.a(this.e, 0.0F, 1.0F);
+         if (this.e <= 1.0E-4F) {
+            this.b();
+            return false;
+         } else {
+            this.c.ak().a(this.d, this.e);
+            return true;
+         }
       }
    }
 
-   public void a(hmz $$0) {
-      this.a.n.r = $$0;
-      this.a.n.az();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
-      }
-   }
-
-   public fnd e() {
-      return this.a;
-   }
-
-   public boolean f() {
-      return this.a.r == null ? false : this.a.r.i() == dhm.a;
-   }
-
-   public static wv a(String $$0) {
-      return wv.d("key." + $$0).a(n.r);
-   }
-
-   public void a(cxy $$0, cxy $$1, ctx $$2) {
+   public boolean b(awi $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

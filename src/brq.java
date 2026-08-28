@@ -1,141 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.Collection;
-import java.util.HashSet;
+import java.time.Duration;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import java.util.function.LongSupplier;
 import javax.annotation.Nullable;
 
-public class brq implements brs {
-   public static final int a = 10;
-   @Nullable
-   private static Consumer<Path> b = null;
-   private final Map<brl, List<brx>> c = new Object2ObjectOpenHashMap();
-   private final bpu d;
-   private final Executor e;
-   private final brw f;
-   private final Consumer<bpz> g;
-   private final Consumer<Path> h;
-   private final brn i;
-   private final LongSupplier j;
-   private final long k;
-   private int l;
-   private bpy m;
-   private volatile boolean n;
-   private Set<brl> o = ImmutableSet.of();
-
-   private brq(brn $$0, LongSupplier $$1, Executor $$2, brw $$3, Consumer<bpz> $$4, Consumer<Path> $$5) {
-      this.i = $$0;
-      this.j = $$1;
-      this.d = new bpu($$1, () -> this.l, () -> false);
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = b == null ? $$5 : $$5.andThen(b);
-      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
-      this.m = new bpt(this.j, () -> this.l, () -> true);
-      this.d.c();
-   }
-
-   public static brq a(brn $$0, LongSupplier $$1, Executor $$2, brw $$3, Consumer<bpz> $$4, Consumer<Path> $$5) {
-      return new brq($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public synchronized void a() {
-      if (this.e()) {
-         this.n = true;
+public record brq<T extends brp>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
+   public static <T extends brp> brq<T> a(List<T> $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("No values");
+      } else {
+         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(brp::a)).toList();
+         Duration $$2 = $$1.stream().map(brp::a).reduce(Duration::plus).orElse(Duration.ZERO);
+         T $$3 = (T)$$1.get(0);
+         T $$4 = (T)$$1.get($$1.size() - 1);
+         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
+         int $$6 = $$1.size();
+         Map<Integer, Double> $$7 = bqs.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
+         return new brq<>($$3, $$4, $$5, $$6, $$7, $$2);
       }
-   }
-
-   @Override
-   public synchronized void b() {
-      if (this.e()) {
-         this.m = bpx.a;
-         this.g.accept(bpv.a);
-         this.a(this.o);
-      }
-   }
-
-   @Override
-   public void c() {
-      this.g();
-      this.o = this.i.a(() -> this.m);
-
-      for (brl $$0 : this.o) {
-         $$0.a();
-      }
-
-      this.l++;
-   }
-
-   @Override
-   public void d() {
-      this.g();
-      if (this.l != 0) {
-         for (brl $$0 : this.o) {
-            $$0.a(this.l);
-            if ($$0.g()) {
-               brx $$1 = new brx(Instant.now(), this.l, this.m.d());
-               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-            }
-         }
-
-         if (!this.n && this.j.getAsLong() <= this.k) {
-            this.m = new bpt(this.j, () -> this.l, () -> true);
-         } else {
-            this.n = false;
-            bpz $$2 = this.d.e();
-            this.m = bpx.a;
-            this.g.accept($$2);
-            this.a($$2);
-         }
-      }
-   }
-
-   @Override
-   public boolean e() {
-      return this.d.a();
-   }
-
-   @Override
-   public bqb f() {
-      return bqb.a(this.d.d(), this.m);
-   }
-
-   private void g() {
-      if (!this.e()) {
-         throw new IllegalStateException("Not started!");
-      }
-   }
-
-   private void a(bpz $$0) {
-      HashSet<brl> $$1 = new HashSet<>(this.o);
-      this.e.execute(() -> {
-         Path $$2 = this.f.a($$1, this.c, $$0);
-         this.a($$1);
-         this.h.accept($$2);
-      });
-   }
-
-   private void a(Collection<brl> $$0) {
-      for (brl $$1 : $$0) {
-         $$1.b();
-      }
-
-      this.c.clear();
-      this.d.b();
-   }
-
-   public static void a(Consumer<Path> $$0) {
-      b = $$0;
    }
 }

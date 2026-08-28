@@ -1,17 +1,20 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record enh(js<cxu> c, enj d) {
-   public static final Codec<enh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cxu.e.fieldOf("display").forGetter($$0x -> $$0x.c), enj.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, enh::new)
-   );
-   public static final Codec<js<enh>> b = akz.a(me.aU, a);
+public class enh extends emy {
+   public static final MapCodec<enh> b = dzo.a.fieldOf("state").xmap(enh::new, $$0 -> $$0.c);
+   private final dzo c;
 
-   public js<cxu> a() {
-      return this.c;
+   protected enh(dzo $$0) {
+      this.c = $$0;
    }
 
-   public enj b() {
-      return this.d;
+   @Override
+   protected emz<?> a() {
+      return emz.a;
+   }
+
+   @Override
+   public dzo a(azt $$0, iu $$1) {
+      return this.c;
    }
 }

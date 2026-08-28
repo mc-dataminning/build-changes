@@ -1,53 +1,41 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Arrays;
 
-public interface fdy {
-   String cm = "*";
-   fdy cn = new fdy() {
-      @Override
-      public String cI() {
-         return "*";
-      }
-   };
+public class fdy extends feq {
+   private final DoubleList b;
+   private final DoubleList c;
+   private final DoubleList d;
 
-   String cI();
-
-   @Nullable
-   default wv m_() {
-      return null;
+   protected fdy(fef $$0, double[] $$1, double[] $$2, double[] $$3) {
+      this(
+         $$0,
+         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
+      );
    }
 
-   default wv hc() {
-      wv $$0 = this.m_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xb.e(wv.b(this.cI())))) : wv.b(this.cI());
-   }
-
-   static fdy c(final String $$0) {
-      if ($$0.equals("*")) {
-         return cn;
+   fdy(fef $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
+      super($$0);
+      int $$4 = $$0.b() + 1;
+      int $$5 = $$0.c() + 1;
+      int $$6 = $$0.d() + 1;
+      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       } else {
-         final wv $$1 = wv.b($$0);
-         return new fdy() {
-            @Override
-            public String cI() {
-               return $$0;
-            }
-
-            @Override
-            public wv hc() {
-               return $$1;
-            }
-         };
+         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
       }
    }
 
-   static fdy a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new fdy() {
-         @Override
-         public String cI() {
-            return $$1;
-         }
+   @Override
+   public DoubleList a(ja.a $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+         case c -> this.d;
       };
    }
 }

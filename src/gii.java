@@ -1,41 +1,67 @@
-public class gii {
-   private final gmw a;
-   private final ghz b;
-   private final gnu c;
-   private gii.a d = gii.a.a;
+public record gii(float b, float c, float d, float e, float f, float g, float h, float i, float j) {
+   public static final gii a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 
-   public gii(gmw $$0, ghz $$1, gnu $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static gii a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   public void a() {
-      switch (this.d) {
-         case b:
-            jj $$0 = this.a.dv();
-            boolean $$1 = this.b.e($$0.v());
-            if ($$1 || this.c.a($$0) || this.a.U_() || !this.a.bK()) {
-               this.d = gii.a.c;
-            }
-         case a:
-         case c:
-      }
+   public static gii b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
    }
 
-   public boolean b() {
-      return this.d == gii.a.c;
+   public static gii a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new gii($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F, 1.0F);
    }
 
-   public void c() {
-      if (this.d == gii.a.a) {
-         this.d = gii.a.b;
-      }
+   public gii c(float $$0, float $$1, float $$2) {
+      return new gii(this.b + $$0, this.c + $$1, this.d + $$2, this.e, this.f, this.g, this.h, this.i, this.j);
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public gii a(float $$0) {
+      return new gii(this.b, this.c, this.d, this.e, this.f, this.g, $$0, $$0, $$0);
+   }
+
+   public gii b(float $$0) {
+      return $$0 == 1.0F ? this : this.d($$0, $$0, $$0);
+   }
+
+   public gii d(float $$0, float $$1, float $$2) {
+      return new gii(this.b * $$0, this.c * $$1, this.d * $$2, this.e, this.f, this.g, this.h * $$0, this.i * $$1, this.j * $$2);
+   }
+
+   public float a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
+
+   public float h() {
+      return this.i;
+   }
+
+   public float i() {
+      return this.j;
    }
 }

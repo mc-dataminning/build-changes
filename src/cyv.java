@@ -1,60 +1,39 @@
-import javax.annotation.Nullable;
-
-public class cyv extends cwf {
-   public cyv(dku $$0, cxu.a $$1) {
-      super($$0, $$1);
+public class cyv {
+   public static bty a(dip $$0, cqs $$1, btx $$2) {
+      $$1.c($$2);
+      return bty.c;
    }
 
-   @Nullable
-   @Override
-   public dbn b(dbn $$0) {
-      jj $$1 = $$0.a();
-      dhp $$2 = $$0.q();
-      dym $$3 = $$2.a_($$1);
-      dku $$4 = this.d();
-      if (!$$3.a($$4)) {
-         return dro.a($$2, $$1) == 7 ? null : $$0;
+   public static cys a(cys $$0, cqs $$1, cys $$2, boolean $$3) {
+      boolean $$4 = $$1.fU();
+      if ($$3 && $$4) {
+         if (!$$1.gi().i($$2)) {
+            $$1.gi().f($$2);
+         }
+
+         return $$0;
       } else {
-         jo $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         $$0.a(1, $$1);
+         if ($$0.f()) {
+            return $$2;
          } else {
-            $$5 = $$0.k() == jo.b ? $$0.g() : jo.b;
+            if (!$$1.gi().f($$2)) {
+               $$1.a($$2, false);
+            }
+
+            return $$0;
          }
-
-         int $$7 = 0;
-         jj.a $$8 = $$1.k().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.C && !$$2.k($$8)) {
-               cqi $$9 = $$0.o();
-               int $$10 = $$2.ao();
-               if ($$9 instanceof aro && $$8.v() > $$10) {
-                  ((aro)$$9).b(wv.a("build.tooHigh", $$10).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.d())) {
-               if ($$3.a($$0)) {
-                  return dbn.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
       }
    }
 
-   @Override
-   protected boolean c() {
-      return false;
+   public static cys a(cys $$0, cqs $$1, cys $$2) {
+      return a($$0, $$1, $$2, true);
+   }
+
+   public static void a(cmx $$0, Iterable<cys> $$1) {
+      dip $$2 = $$0.dV();
+      if (!$$2.C) {
+         $$1.forEach($$2x -> $$2.b(new cmx($$2, $$0.dA(), $$0.dC(), $$0.dG(), $$2x)));
+      }
    }
 }

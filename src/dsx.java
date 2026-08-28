@@ -1,70 +1,77 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dsx extends dku {
+public class dsx extends dme implements dlx, dqp {
    public static final MapCodec<dsx> a = b(dsx::new);
-   private static final wv c = wv.c("container.stonecutter");
-   public static final dzk<jo> b = dot.e;
-   private static final fdo d = dku.b(16.0, 0.0, 9.0);
+   private static final feq b = dlu.b(12.0, 0.0, 12.0);
 
    @Override
    public MapCodec<dsx> a() {
       return a;
    }
 
-   public dsx(dyl.d $$0) {
+   protected dsx(dzn.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, jo.c));
    }
 
    @Override
-   public dym a(dbn $$0) {
-      return this.m().b(b, $$0.g().g());
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return b;
    }
 
    @Override
-   protected btq a(dym $$0, dhp $$1, jj $$2, cqi $$3, fcq $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(awu.ay);
-      }
-
-      return btq.a;
+   protected boolean b(dzo $$0, dhv $$1, iu $$2) {
+      return $$0.c($$1, $$2, ja.b) && !$$0.a(dlw.ll);
    }
 
    @Nullable
    @Override
-   protected bts b(dym $$0, dhp $$1, jj $$2) {
-      return new bty(($$2x, $$3, $$4) -> new cvq($$2x, $$3, cua.a($$1, $$2)), c);
+   public dzo a(dcl $$0) {
+      evv $$1 = $$0.q().b_($$0.a());
+      return $$1.a(axf.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return d;
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      dzo $$8 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if (!$$8.l()) {
+         $$2.a($$3, evw.c, evw.c.a($$1));
+      }
+
+      return $$8;
    }
 
    @Override
-   protected boolean g_(dym $$0) {
+   public boolean a(dis $$0, iu $$1, dzo $$2) {
+      return $$0.a_($$1.d()).a(dlw.J);
+   }
+
+   @Override
+   public boolean a(dip $$0, azt $$1, iu $$2, dzo $$3) {
       return true;
    }
 
    @Override
-   protected dym a(dym $$0, drm $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected evv b_(dzo $$0) {
+      return evw.c.a(false);
    }
 
    @Override
-   protected dym a(dym $$0, dpv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public void a(aro $$0, azt $$1, iu $$2, dzo $$3) {
+      dzo $$4 = dlw.bE.m();
+      dzo $$5 = $$4.b(dug.d, eak.a);
+      iu $$6 = $$2.d();
+      $$0.a($$2, $$4, 2);
+      $$0.a($$6, $$5, 2);
    }
 
    @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b);
+   public boolean a(@Nullable bwz $$0, dhv $$1, iu $$2, dzo $$3, evu $$4) {
+      return false;
    }
 
    @Override
-   protected boolean a(dym $$0, evi $$1) {
+   public boolean a(diq $$0, iu $$1, dzo $$2, evv $$3) {
       return false;
    }
 }

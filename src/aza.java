@@ -101,16 +101,16 @@ public class aza {
       return $$0.has($$1) ? a($$0.get($$1), $$1) : $$2;
    }
 
-   public static js<cxu> b(JsonElement $$0, String $$1) {
+   public static je<cyo> b(JsonElement $$0, String $$1) {
       if ($$0.isJsonPrimitive()) {
          String $$2 = $$0.getAsString();
-         return md.g.c(ald.a($$2)).orElseThrow(() -> new JsonSyntaxException("Expected " + $$1 + " to be an item, was unknown string '" + $$2 + "'"));
+         return mf.g.c(ale.a($$2)).orElseThrow(() -> new JsonSyntaxException("Expected " + $$1 + " to be an item, was unknown string '" + $$2 + "'"));
       } else {
          throw new JsonSyntaxException("Expected " + $$1 + " to be an item, was " + d($$0));
       }
    }
 
-   public static js<cxu> j(JsonObject $$0, String $$1) {
+   public static je<cyo> j(JsonObject $$0, String $$1) {
       if ($$0.has($$1)) {
          return b($$0.get($$1), $$1);
       } else {
@@ -120,7 +120,7 @@ public class aza {
 
    @Nullable
    @Contract("_,_,!null->!null;_,_,null->_")
-   public static js<cxu> a(JsonObject $$0, String $$1, @Nullable js<cxu> $$2) {
+   public static je<cyo> a(JsonObject $$0, String $$1, @Nullable je<cyo> $$2) {
       return $$0.has($$1) ? b($$0.get($$1), $$1) : $$2;
    }
 

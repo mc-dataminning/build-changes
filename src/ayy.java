@@ -6,7 +6,7 @@ import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 import org.slf4j.Logger;
 
-public class ayy implements bai, AutoCloseable {
+public class ayy implements bak, AutoCloseable {
    private static final Logger b = LogUtils.getLogger();
    private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
    private final Executor d;

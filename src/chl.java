@@ -1,33 +1,36 @@
-public class chl {
-   public static boolean a(bwt $$0) {
-      return $$0.O() instanceof cga;
+import com.google.common.collect.ImmutableMap;
+
+public class chl extends chb {
+   private static final ImmutableMap<bwj<?>, Float> a = ImmutableMap.builder()
+      .put(bwj.K, 8.0F)
+      .put(bwj.S, 12.0F)
+      .put(bwj.am, 8.0F)
+      .put(bwj.an, 12.0F)
+      .put(bwj.aT, 15.0F)
+      .put(bwj.aZ, 12.0F)
+      .put(bwj.bC, 8.0F)
+      .put(bwj.bE, 10.0F)
+      .put(bwj.bN, 10.0F)
+      .put(bwj.bO, 8.0F)
+      .put(bwj.bQ, 8.0F)
+      .build();
+
+   @Override
+   protected boolean a(aro $$0, bwz $$1, bwz $$2) {
+      return this.b($$2) && this.a($$1, $$2);
    }
 
-   public static boolean a(bwz $$0, int $$1) {
-      return $$0.ge() && $$0.gb().a($$0.dt(), (double)($$0.gc() + (float)$$1) + 1.0);
+   private boolean a(bwz $$0, bwz $$1) {
+      float $$2 = (Float)a.get($$1.aq());
+      return $$1.g($$0) <= (double)($$2 * $$2);
    }
 
-   public static boolean a(jj $$0, bwz $$1) {
-      return $$1.dV().e($$0.v());
+   @Override
+   protected cgb<bwz> b() {
+      return cgb.B;
    }
 
-   public static boolean a(boolean $$0, bwz $$1, jj $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(cgb $$0, jj $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(bwz $$0, jj $$1) {
-      return $$0.dV().b_($$1).a(axf.a);
-   }
-
-   public static boolean b(bwz $$0, jj $$1) {
-      return $$0.a(evp.b($$0, $$1)) != 0.0F;
-   }
-
-   public static boolean c(bwz $$0, jj $$1) {
-      return $$0.dV().a_($$1).e();
+   private boolean b(bwz $$0) {
+      return a.containsKey($$0.aq());
    }
 }

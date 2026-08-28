@@ -1,10 +1,15 @@
-import java.io.Closeable;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+public class hli extends hlj {
+   public hli(cip $$0) {
+      super($$0, awl.bR, awm.g);
+   }
 
-public interface hli extends Closeable {
-   AudioFormat a();
+   @Override
+   protected hlf o() {
+      return new hlh(this.n);
+   }
 
-   ByteBuffer a(int var1) throws IOException;
+   @Override
+   protected boolean p() {
+      return this.n.W_();
+   }
 }

@@ -1,52 +1,25 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+public class czx extends cyo implements czm {
+   public static float a = 1.5F;
 
-public record czx(Map<String, String> d) {
-   public static final czx a = new czx(Map.of());
-   public static final Codec<czx> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(czx::new, czx::b);
-   private static final yt<ByteBuf, Map<String, String>> e = yr.a(Object2ObjectOpenHashMap::new, yr.o, yr.o);
-   public static final yt<ByteBuf, czx> c = e.a(czx::new, czx::b);
-
-   public <T extends Comparable<T>> czx a(dzp<T> $$0, T $$1) {
-      return new czx(af.a(this.d, $$0.f(), $$0.b($$1)));
+   public czx(cyo.a $$0) {
+      super($$0);
    }
 
-   public <T extends Comparable<T>> czx a(dzp<T> $$0, dym $$1) {
-      return this.a($$0, $$1.c($$0));
-   }
-
-   @Nullable
-   public <T extends Comparable<T>> T a(dzp<T> $$0) {
-      String $$1 = this.d.get($$0.f());
-      return $$1 == null ? null : $$0.b($$1).orElse(null);
-   }
-
-   public dym a(dym $$0) {
-      dyn<dku, dym> $$1 = $$0.b().l();
-
-      for (Entry<String, String> $$2 : this.d.entrySet()) {
-         dzp<?> $$3 = $$1.a($$2.getKey());
-         if ($$3 != null) {
-            $$0 = a($$0, $$3, $$2.getValue());
-         }
+   @Override
+   public bty a(dip $$0, cqs $$1, btx $$2) {
+      cys $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awl.zy, awm.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof aro $$4) {
+         crm.a(crr::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
       }
 
-      return $$0;
+      $$1.b(awv.c.b(this));
+      $$3.a(1, $$1);
+      return bty.a;
    }
 
-   private static <T extends Comparable<T>> dym a(dym $$0, dzp<T> $$1, String $$2) {
-      return $$1.b($$2).map($$2x -> $$0.b($$1, $$2x)).orElse($$0);
-   }
-
-   public boolean a() {
-      return this.d.isEmpty();
-   }
-
-   public Map<String, String> b() {
-      return this.d;
+   @Override
+   public crm a(dip $$0, jo $$1, cys $$2, ja $$3) {
+      return new crr($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

@@ -1,7 +1,21 @@
-import java.util.function.BiConsumer;
+public enum eav implements bai {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
-public interface eav extends dgv {
-   void a(BiConsumer<jj, dym> var1);
+   private final String d;
 
-   eud D();
+   private eav(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

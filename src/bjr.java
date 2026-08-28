@@ -1,42 +1,42 @@
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
-public class bjr extends bhn {
+public class bjr extends DataFix {
    public bjr(Schema $$0) {
-      super($$0, true, "Trial Spawner config tag fixer", biq.s, "minecraft:trial_spawner");
+      super($$0, false);
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      List<String> $$1 = List.of(
-         "spawn_range",
-         "total_mobs",
-         "simultaneous_mobs",
-         "total_mobs_added_per_player",
-         "simultaneous_mobs_added_per_player",
-         "ticks_between_spawn",
-         "spawn_potentials",
-         "loot_tables_to_eject",
-         "items_to_drop_when_ominous"
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, Either<?, Pair<?, Pair<?, Pair<?, Dynamic<?>>>>>>> $$0 = this.getInputSchema().getType(bit.z);
+      return this.fixTypeEverywhere(
+         "TextComponentStringyFlagsFix",
+         $$0,
+         $$0x -> $$0xx -> $$0xx.mapSecond(
+                  $$0xxx -> $$0xxx.mapRight(
+                        $$0xxxx -> $$0xxxx.mapSecond(
+                              $$0xxxxx -> $$0xxxxx.mapSecond(
+                                    $$0xxxxxx -> $$0xxxxxx.mapSecond(
+                                          $$0xxxxxxx -> $$0xxxxxxx.update("bold", bjr::a)
+                                                .update("italic", bjr::a)
+                                                .update("underlined", bjr::a)
+                                                .update("strikethrough", bjr::a)
+                                                .update("obfuscated", bjr::a)
+                                       )
+                                 )
+                           )
+                     )
+               )
       );
-      Map<Dynamic<T>, Dynamic<T>> $$2 = new HashMap<>($$1.size());
-
-      for (String $$3 : $$1) {
-         Optional<Dynamic<T>> $$4 = $$0.get($$3).get().result();
-         if ($$4.isPresent()) {
-            $$2.put($$0.createString($$3), $$4.get());
-            $$0 = $$0.remove($$3);
-         }
-      }
-
-      return $$2.isEmpty() ? $$0 : $$0.set("normal_config", $$0.createMap($$2));
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return b($$0);
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      return $$1.isPresent() ? $$0.createBoolean(Boolean.parseBoolean($$1.get())) : $$0;
    }
 }

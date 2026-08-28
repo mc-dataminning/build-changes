@@ -1,8 +1,20 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dlc {
-   cxy a(@Nullable bwr var1, dhq var2, jj var3, dym var4);
+public class dlc extends dle {
+   public static final MapCodec<dlc> a = b(dlc::new);
+   private static final feq c = dlu.b(12.0, 0.0, 4.0);
 
-   Optional<awj> ao_();
+   @Override
+   public MapCodec<? extends dlc> a() {
+      return a;
+   }
+
+   protected dlc(dzn.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return c;
+   }
 }

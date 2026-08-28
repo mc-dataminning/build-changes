@@ -1,44 +1,37 @@
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public record hgt(fgo a, @Nullable hip b) implements Closeable {
-   public static hgt a(ava $$0, ald $$1) throws IOException {
-      auy $$2 = $$0.getResourceOrThrow($$1);
+public class hgt implements hhd<dwd> {
+   private final grk a;
+   private final cxq b;
 
-      fgo $$4;
-      try (InputStream $$3 = $$2.d()) {
-         $$4 = fgo.a($$3);
-      }
-
-      hip $$6 = $$2.f().a(hip.d).orElse(null);
-      return new hgt($$4, $$6);
-   }
-
-   public static hgt a() {
-      return new hgt(hgh.a(), null);
-   }
-
-   public boolean b() {
-      return this.b != null ? this.b.a() : false;
-   }
-
-   public boolean c() {
-      return this.b != null ? this.b.b() : false;
-   }
-
-   @Override
-   public void close() {
-      this.a.close();
-   }
-
-   public fgo d() {
-      return this.a;
+   public hgt(cxq $$0, grk $$1) {
+      this.a = $$1;
+      this.b = $$0;
    }
 
    @Nullable
-   public hip e() {
-      return this.b;
+   public dwd a(cys $$0) {
+      return $$0.a(kj.am);
+   }
+
+   public void a(@Nullable dwd $$0, cyq $$1, fiq $$2, gpd $$3, int $$4, int $$5, boolean $$6) {
+      this.a.a($$2, $$3, $$4, $$5, this.b, Objects.requireNonNullElse($$0, dwd.a));
+   }
+
+   public static record a(cxq b) implements hhd.a {
+      public static final MapCodec<hgt.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cxq.q.fieldOf("color").forGetter(hgt.a::b)).apply($$0, hgt.a::new));
+
+      @Override
+      public MapCodec<hgt.a> a() {
+         return a;
+      }
+
+      @Override
+      public hhd<?> a(gic $$0) {
+         return new hgt(this.b, new grk($$0));
+      }
    }
 }

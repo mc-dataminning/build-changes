@@ -1,80 +1,77 @@
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dcp {
-   private final dcp.a[] a;
-   private WeakReference<dcs> b = new WeakReference<>(null);
+public abstract class dcp extends deb {
+   private final dcv c;
+   private final float d;
+   private final int e;
 
-   public dcp(int $$0) {
-      this.a = new dcp.a[$$0];
+   public dcp(String $$0, dcv $$1, ddf $$2, cys $$3, float $$4, int $$5) {
+      super($$0, $$2, $$3);
+      this.c = $$1;
+      this.d = $$4;
+      this.e = $$5;
    }
 
-   public Optional<dcq<dca>> a(arn $$0, dbz $$1) {
-      if ($$1.b()) {
-         return Optional.empty();
-      } else {
-         this.a($$0);
+   @Override
+   public abstract ddt<? extends dcp> a();
 
-         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
-            dcp.a $$3 = this.a[$$2];
-            if ($$3 != null && $$3.a($$1)) {
-               this.a($$2);
-               return Optional.ofNullable($$3.d());
-            }
-         }
+   @Override
+   public abstract ddu<? extends dcp> b();
 
-         return this.a($$1, $$0);
+   public float c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public dcv e() {
+      return this.c;
+   }
+
+   protected abstract cyo f();
+
+   @Override
+   public List<dep> g() {
+      return List.of(new deo(this.k().c(), dev.a.c, new dev.f(this.l()), new dev.d(this.f()), this.e, this.d));
+   }
+
+   @FunctionalInterface
+   public interface a<T extends dcp> {
+      T create(String var1, dcv var2, ddf var3, cys var4, float var5, int var6);
+   }
+
+   public static class b<T extends dcp> implements ddt<T> {
+      private final MapCodec<T> w;
+      private final yu<wh, T> x;
+
+      public b(dcp.a<T> $$0, int $$1) {
+         this.w = RecordCodecBuilder.mapCodec(
+            $$2 -> $$2.group(
+                     Codec.STRING.optionalFieldOf("group", "").forGetter(deb::j),
+                     dcv.d.fieldOf("category").orElse(dcv.c).forGetter(dcp::e),
+                     ddf.d.fieldOf("ingredient").forGetter(deb::k),
+                     cys.e.fieldOf("result").forGetter(deb::l),
+                     Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(dcp::c),
+                     Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter(dcp::d)
+                  )
+                  .apply($$2, $$0::create)
+         );
+         this.x = yu.a(ys.o, deb::j, dcv.e, dcp::e, ddf.a, deb::k, cys.i, deb::l, ys.l, dcp::c, ys.g, dcp::d, $$0::create);
       }
-   }
 
-   private void a(arn $$0) {
-      dcs $$1 = $$0.t();
-      if ($$1 != this.b.get()) {
-         this.b = new WeakReference<>($$1);
-         Arrays.fill(this.a, null);
-      }
-   }
-
-   private Optional<dcq<dca>> a(dbz $$0, arn $$1) {
-      Optional<dcq<dca>> $$2 = $$1.t().a(dcw.a, $$0, $$1);
-      this.a($$0, $$2.orElse(null));
-      return $$2;
-   }
-
-   private void a(int $$0) {
-      if ($$0 > 0) {
-         dcp.a $$1 = this.a[$$0];
-         System.arraycopy(this.a, 0, this.a, 1, $$0);
-         this.a[0] = $$1;
-      }
-   }
-
-   private void a(dbz $$0, @Nullable dcq<dca> $$1) {
-      kb<cxy> $$2 = kb.a($$0.a(), cxy.k);
-
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         $$2.set($$3, $$0.a($$3).c(1));
+      @Override
+      public MapCodec<T> a() {
+         return this.w;
       }
 
-      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
-      this.a[0] = new dcp.a($$2, $$0.f(), $$0.g(), $$1);
-   }
-
-   static record a(kb<cxy> a, int b, int c, @Nullable dcq<dca> d) {
-      public boolean a(dbz $$0) {
-         if (this.b == $$0.f() && this.c == $$0.g()) {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (!cxy.c(this.a.get($$1), $$0.a($$1))) {
-                  return false;
-               }
-            }
-
-            return true;
-         } else {
-            return false;
-         }
+      @Override
+      public yu<wh, T> b() {
+         return this.x;
       }
    }
 }

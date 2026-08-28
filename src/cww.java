@@ -1,46 +1,18 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cww extends cxu implements cza {
-   private static final Map<cwv, cww> a = Maps.newEnumMap(cwv.class);
-   private final cwv b;
+public class cww extends cyo implements czm {
+   public cww(cyo.a $$0) {
+      super($$0);
+   }
 
-   public cww(cwv $$0, cxu.a $$1) {
-      super($$1);
-      this.b = $$0;
-      a.put($$0, this);
+   public cqz a(dip $$0, cys $$1, bwz $$2, @Nullable cys $$3) {
+      return new crc($$0, $$2, $$1.c(1), $$3);
    }
 
    @Override
-   public btq a(cxy $$0, cqi $$1, bwr $$2, btp $$3) {
-      if ($$2 instanceof cje $$4 && $$4.bK() && !$$4.x() && $$4.t() != this.b) {
-         $$4.dV().a($$1, $$4, awk.ih, awl.h, 1.0F, 1.0F);
-         if (!$$1.dV().C) {
-            $$4.b(this.b);
-            $$0.h(1);
-         }
-
-         return btq.a;
-      }
-
-      return btq.e;
-   }
-
-   public cwv b() {
-      return this.b;
-   }
-
-   public static cww a(cwv $$0) {
-      return a.get($$0);
-   }
-
-   @Override
-   public boolean a(dhp $$0, dwz $$1, boolean $$2, cqi $$3) {
-      if ($$1.a($$0x -> $$0x.a(this.b()), $$2)) {
-         $$0.a(null, $$1.aw_(), awk.ih, awl.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+   public crm a(dip $$0, jo $$1, cys $$2, ja $$3) {
+      crc $$4 = new crc($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.b = cqz.a.b;
+      return $$4;
    }
 }

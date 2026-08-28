@@ -1,22 +1,54 @@
-public class fqz extends fqn {
-   protected final fsa a;
+import javax.annotation.Nullable;
 
-   public fqz(int $$0, int $$1, int $$2, int $$3, fsa $$4, fqn.c $$5) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, wu.a);
+public interface fqz {
+   static fqz a(ftn $$0) {
+      return new fqz.a($$0);
    }
 
-   public fqz(int $$0, int $$1, int $$2, int $$3, fsa $$4, fqn.c $$5, wv $$6) {
-      super($$0, $$1, $$2, $$3, $$6, $$5, q);
-      this.a = $$4;
+   @Nullable
+   static fqz a(ftm $$0, @Nullable fqz $$1) {
+      return $$1 == null ? null : new fqz.b($$0, $$1);
    }
 
-   public fqz(int $$0, int $$1, fsa $$2, fqn.c $$3, wv $$4) {
-      this(0, 0, $$0, $$1, $$2, $$3, $$4);
+   static fqz a(ftn $$0, ftm... $$1) {
+      fqz $$2 = a($$0);
+
+      for (ftm $$3 : $$1) {
+         $$2 = a($$3, $$2);
+      }
+
+      return $$2;
    }
 
-   @Override
-   public void b(fpz $$0, int $$1, int $$2, float $$3) {
-      ald $$4 = this.a.a(this.E(), this.D());
-      $$0.a(goi::H, $$4, this.F(), this.G(), this.g, this.h);
+   ftn a();
+
+   void a(boolean var1);
+
+   public static record a(ftn a) implements fqz {
+      @Override
+      public void a(boolean $$0) {
+         this.a.a($$0);
+      }
+   }
+
+   public static record b(ftm a, fqz b) implements fqz {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
+         } else {
+            this.a.a(this.b.a());
+         }
+
+         this.b.a($$0);
+      }
+
+      public ftm b() {
+         return this.a;
+      }
+
+      public fqz c() {
+         return this.b;
+      }
    }
 }

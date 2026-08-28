@@ -1,23 +1,16 @@
-import io.netty.buffer.ByteBuf;
-
-public class aba implements zc<aaz> {
-   public static final aba a = new aba();
-   public static final yt<ByteBuf, aba> b = yt.a(a);
-
-   private aba() {
-   }
-
+public interface aba extends zj {
    @Override
-   public ze<aba> a() {
-      return abf.a;
+   default vq b() {
+      return vq.e;
    }
 
-   public void a(aaz $$0) {
-      $$0.a(this);
-   }
+   void a(abb var1);
 
-   @Override
-   public boolean d() {
-      return true;
-   }
+   void a(abc var1);
+
+   void a(abf var1);
+
+   void a(abe var1);
+
+   void a(abd var1);
 }

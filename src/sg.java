@@ -1,19 +1,39 @@
-public class sg extends RuntimeException {
-   protected final wv a;
-   protected final int b;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
 
-   public sg(wv $$0, int $$1) {
-      super($$0.getString());
-      this.a = $$0;
-      this.b = $$1;
-   }
+public class sg extends sq {
+   public static final MapCodec<sg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(mf.aE.r().fieldOf("function").forGetter(sg::q), tj.a.forGetter(sq::n)).apply($$0, sg::new)
+   );
+   private final je<Consumer<so>> c;
 
-   public wv a() {
-      return wv.a("test.error.tick", this.a, this.b);
+   public sg(je<Consumer<so>> $$0, tj<je<tk>> $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   public String getMessage() {
-      return this.a().getString();
+   public void a(so $$0) {
+      this.c.a().accept($$0);
+   }
+
+   private je<Consumer<so>> q() {
+      return this.c;
+   }
+
+   @Override
+   public MapCodec<sg> a() {
+      return a;
+   }
+
+   @Override
+   protected xk b() {
+      return ww.c("test_instance.type.function");
+   }
+
+   @Override
+   public ww c() {
+      return this.o().b(this.a("test_instance.description.function", this.c.g())).b(this.p());
    }
 }

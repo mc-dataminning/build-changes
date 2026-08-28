@@ -1,5 +1,5 @@
-import java.util.UUID;
-
-public interface ede<IdentifiedType extends edf> {
-   IdentifiedType c(UUID var1);
+public record ede(String a, ald<dip> b, String c) {
+   public ede a(String $$0) {
+      return new ede(this.a, this.b, this.c + $$0);
+   }
 }

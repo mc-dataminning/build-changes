@@ -1,32 +1,32 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.LongStream;
 
-public class egn extends egk {
-   public static final Codec<egn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               egk.d.forGetter($$0x -> $$0x),
-               bst.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
-               bst.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
-               bst.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, egn::new)
-   );
-   public final bst b;
-   public final bst c;
-   final bst j;
+public class egn {
+   private long b;
+   private long c;
+   public static final Codec<egn> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> af.a($$0, 2).map($$0x -> new egn($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
 
-   public egn(float $$0, enn $$1, bst $$2, eff $$3, egl $$4, jw<dku> $$5, bst $$6, bst $$7, bst $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
-      this.j = $$8;
+   public egn(egc.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
-   public egn(float $$0, enn $$1, bst $$2, eff $$3, jw<dku> $$4, bst $$5, bst $$6, bst $$7) {
-      this($$0, $$1, $$2, $$3, egl.a, $$4, $$5, $$6, $$7);
+   public egn(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
+      }
    }
 
-   public egn(egk $$0, bst $$1, bst $$2, bst $$3) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

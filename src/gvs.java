@@ -1,38 +1,43 @@
-public class gvs extends gvl<ciw, hbs, gez> {
-   private static final ald a = ald.b("textures/entity/parrot/parrot_red_blue.png");
-   private static final ald j = ald.b("textures/entity/parrot/parrot_blue.png");
-   private static final ald k = ald.b("textures/entity/parrot/parrot_green.png");
-   private static final ald l = ald.b("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final ald m = ald.b("textures/entity/parrot/parrot_grey.png");
+public class gvs extends gue<ciz, hby, gfh> {
+   private static final ale a = ale.b("textures/entity/fox/fox.png");
+   private static final ale j = ale.b("textures/entity/fox/fox_sleep.png");
+   private static final ale k = ale.b("textures/entity/fox/snow_fox.png");
+   private static final ale l = ale.b("textures/entity/fox/snow_fox_sleep.png");
 
-   public gvs(guf.a $$0) {
-      super($$0, new gez($$0.a(ghc.bX)), 0.3F);
+   public gvs(gvk.a $$0) {
+      super($$0, new gfh($$0.a(gif.aT)), new gfh($$0.a(gif.aU)), 0.4F);
+      this.a(new gzl(this));
    }
 
-   public ald a(hbs $$0) {
-      return a($$0.a);
+   protected void a(hby $$0, fiq $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$0.g || $$0.f) {
+         $$1.a(a.b.rotationDegrees(-$$0.ab));
+      }
    }
 
-   public hbs b() {
-      return new hbs();
+   public ale a(hby $$0) {
+      if ($$0.h == ciz.v.a) {
+         return $$0.d ? j : a;
+      } else {
+         return $$0.d ? l : k;
+      }
    }
 
-   public void a(ciw $$0, hbs $$1, float $$2) {
+   public hby b() {
+      return new hby();
+   }
+
+   public void a(ciz $$0, hby $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gE();
-      float $$3 = azk.h($$2, $$0.bL, $$0.bI);
-      float $$4 = azk.h($$2, $$0.bK, $$0.bJ);
-      $$1.b = (azk.a($$3) + 1.0F) * $$4;
-      $$1.c = gez.a($$0);
-   }
-
-   public static ald a(ciw.b $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> j;
-         case c -> k;
-         case d -> l;
-         case e -> m;
-      };
+      hce.a($$0, $$1, this.h);
+      $$1.a = $$0.J($$2);
+      $$1.c = $$0.ci();
+      $$1.b = $$0.K($$2);
+      $$1.d = $$0.fQ();
+      $$1.e = $$0.x();
+      $$1.f = $$0.gq();
+      $$1.g = $$0.gr();
+      $$1.h = $$0.t();
    }
 }

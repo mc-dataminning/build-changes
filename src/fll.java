@@ -1,167 +1,120 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fll {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final bal d;
+public class fll extends hol {
+   private static final ww a = ww.c("mco.selectServer.popup");
+   private static final ww b = ww.c("mco.selectServer.close");
+   private static final ale c = ale.b("popup/background");
+   private static final ale C = ale.b("icon/trial_available");
+   private static final ftd D = new ftd(ale.b("widget/cross_button"), ale.b("widget/cross_button_highlighted"));
+   private static final int E = 236;
+   private static final int F = 34;
+   private static final int G = 6;
+   private static final int H = 195;
+   private static final int I = 152;
+   private static final int J = 4;
+   private static final int K = 10;
+   private static final int L = 320;
+   private static final int M = 172;
+   private static final int N = 100;
+   private static final int O = 99;
+   private static final int P = 100;
+   private static List<ale> Q = List.of();
+   private final fxi R;
+   private final boolean S;
+   @Nullable
+   private frq T;
+   private int U;
+   private int V;
 
-   public fll(Executor $$0, TimeUnit $$1, bal $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public fll(fxi $$0, boolean $$1) {
+      super(a);
+      this.R = $$0;
+      this.S = $$1;
    }
 
-   public <T> fll.e<T> a(String $$0, Callable<T> $$1, Duration $$2, flm $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
-      } else {
-         return new fll.e<>($$0, $$1, $$4, $$3);
-      }
+   public static void a(avb $$0) {
+      Collection<ale> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
+      Q = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
    }
 
-   public fll.c a() {
-      return new fll.c();
+   @Override
+   protected void aN_() {
+      this.R.a(this.m, this.n, this.o);
+      if (this.S) {
+         this.T = this.c(frq.a(ww.c("mco.selectServer.trial"), fwf.b(this, ayf.q)).a(this.G() - 10 - 99, this.H() - 10 - 4 - 40, 99, 20).a());
+      }
+
+      this.c(frq.a(ww.c("mco.selectServer.buy"), fwf.b(this, ayf.r)).a(this.G() - 10 - 99, this.H() - 10 - 20, 99, 20).a());
+      fsc $$0 = this.c(new fsc(this.E() + 4, this.F() + 4, 14, 14, D, $$0x -> this.aK_(), b));
+      $$0.a(ftb.a(b));
+      int $$1 = 142 - (this.S ? 40 : 20);
+      fsa $$2 = new fsa(this.G() - 10 - 100, this.F() + 10, 100, $$1, a, this.p);
+      if ($$2.q()) {
+         $$2.h(94);
+      }
+
+      this.c($$2);
    }
 
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final fll.e<T> a;
-      private final Consumer<T> b;
-      private long c = -1L;
-
-      b(final fll.e<T> $$0, final Consumer<T> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      void a(long $$0) {
-         this.a.a($$0);
-         this.a();
-      }
-
-      void a() {
-         fll.d<T> $$0 = this.a.g;
-         if ($$0 != null && this.c < $$0.b) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void b() {
-         fll.d<T> $$0 = this.a.g;
-         if ($$0 != null) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void c() {
-         this.a.a();
-         this.c = -1L;
-      }
-   }
-
-   public class c {
-      private final List<fll.b<?>> b = new ArrayList<>();
-
-      public <T> void a(fll.e<T> $$0, Consumer<T> $$1) {
-         fll.b<T> $$2 = fll.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
-      }
-
-      public void a() {
-         for (fll.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (fll.b<?> $$0 : this.b) {
-            $$0.a(fll.this.d.get(fll.this.c));
-         }
-      }
-
-      public void c() {
-         for (fll.b<?> $$0 : this.b) {
-            $$0.c();
-         }
+   @Override
+   public void e() {
+      super.e();
+      if (++this.V > 100) {
+         this.V = 0;
+         this.U = (this.U + 1) % Q.size();
       }
    }
 
-   static record d<T>(T a, long b) {
+   @Override
+   public void a(frc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.T != null) {
+         a($$0, this.T);
+      }
    }
 
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final flm e;
-      @Nullable
-      private CompletableFuture<fll.a<T>> f;
-      @Nullable
-      fll.d<T> g;
-      private long h = -1L;
+   public static void a(frc $$0, frq $$1) {
+      int $$2 = 8;
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 110.0F);
+      $$0.a(gpn::H, C, $$1.F() + $$1.A() - 8 - 4, $$1.G() + $$1.y() / 2 - 4, 8, 8);
+      $$0.c().b();
+   }
 
-      e(final String $$1, final Callable<T> $$2, final long $$3, final flm $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
+   @Override
+   public void b(frc $$0, int $$1, int $$2, float $$3) {
+      this.R.a($$0, -1, -1, $$3);
+      $$0.d();
+      RenderSystem.clear(256);
+      this.A();
+      this.b($$0);
+      $$0.a(gpn::H, c, this.E(), this.F(), 320, 172);
+      if (!Q.isEmpty()) {
+         $$0.a(gpn::H, Q.get(this.U), this.E() + 10, this.F() + 10, 0.0F, 0.0F, 195, 152, 195, 152);
       }
+   }
 
-      void a(long $$0) {
-         if (this.f != null) {
-            fll.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
-            }
+   private int E() {
+      return (this.n - 320) / 2;
+   }
 
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new fll.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               fll.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
-         }
+   private int F() {
+      return (this.o - 172) / 2;
+   }
 
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = fll.this.d.get(fll.this.c);
-                  return new fll.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = fll.this.d.get(fll.this.c);
-                  return new fll.a<>(Either.right(var4x), $$3);
-               }
-            }, fll.this.b);
-         }
-      }
+   private int G() {
+      return this.E() + 320;
+   }
 
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
-      }
+   private int H() {
+      return this.F() + 172;
+   }
+
+   @Override
+   public void aK_() {
+      this.m.a(this.R);
    }
 }

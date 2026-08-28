@@ -1,246 +1,102 @@
-import com.mojang.datafixers.util.Either;
-import java.util.Collection;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface js<T> {
-   T a();
+public interface js extends jg.a {
+   Logger a = LogUtils.getLogger();
+   js.b b = new js.c(Map.of()).e();
 
-   boolean b();
+   @Override
+   <E> Optional<jr<E>> a(ald<? extends jr<? extends E>> var1);
 
-   boolean a(ald var1);
-
-   boolean a(alc<T> var1);
-
-   boolean a(Predicate<alc<T>> var1);
-
-   boolean a(axp<T> var1);
-
-   @Deprecated
-   boolean a(js<T> var1);
-
-   Stream<axp<T>> c();
-
-   Either<alc<T>, T> d();
-
-   Optional<alc<T>> e();
-
-   js.b f();
-
-   boolean a(jv<T> var1);
-
-   default String g() {
-      return this.e().map($$0 -> $$0.a().toString()).orElse("[unregistered]");
+   default <E> jr<E> f(ald<? extends jr<? extends E>> $$0) {
+      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
    }
 
-   static <T> js<T> a(T $$0) {
-      return new js.a<>($$0);
+   Stream<js.d<?>> a();
+
+   @Override
+   default Stream<ald<? extends jr<?>>> b() {
+      return this.a().map($$0 -> $$0.a);
    }
 
-   public static record a<T>(T a) implements js<T> {
-      @Override
-      public boolean b() {
-         return true;
+   static js.b a(final jr<? extends jr<?>> $$0) {
+      return new js.b() {
+         @Override
+         public <T> Optional<jr<T>> a(ald<? extends jr<? extends T>> $$0x) {
+            jr<jr<T>> $$1 = (jr<jr<T>>)$$0;
+            return $$1.f((ald<jr<T>>)$$0);
+         }
+
+         @Override
+         public Stream<js.d<?>> a() {
+            return $$0.k().stream().map(js.d::a);
+         }
+
+         @Override
+         public js.b e() {
+            return this;
+         }
+      };
+   }
+
+   default js.b e() {
+      class a extends js.c implements js.b {
+         protected a(final Stream<js.d<?>> $$1) {
+            super($$1);
+         }
+      }
+
+      return new a(this.a().map(js.d::c));
+   }
+
+   public interface b extends js {
+   }
+
+   public static class c implements js {
+      private final Map<? extends ald<? extends jr<?>>, ? extends jr<?>> c;
+
+      public c(List<? extends jr<?>> $$0) {
+         this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(jr::g, $$0x -> $$0x));
+      }
+
+      public c(Map<? extends ald<? extends jr<?>>, ? extends jr<?>> $$0) {
+         this.c = Map.copyOf($$0);
+      }
+
+      public c(Stream<js.d<?>> $$0) {
+         this.c = $$0.collect(ImmutableMap.toImmutableMap(js.d::a, js.d::b));
       }
 
       @Override
-      public boolean a(ald $$0) {
-         return false;
+      public <E> Optional<jr<E>> a(ald<? extends jr<? extends E>> $$0) {
+         return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
       }
 
       @Override
-      public boolean a(alc<T> $$0) {
-         return false;
-      }
-
-      @Override
-      public boolean a(axp<T> $$0) {
-         return false;
-      }
-
-      @Override
-      public boolean a(js<T> $$0) {
-         return this.a.equals($$0.a());
-      }
-
-      @Override
-      public boolean a(Predicate<alc<T>> $$0) {
-         return false;
-      }
-
-      @Override
-      public Either<alc<T>, T> d() {
-         return Either.right(this.a);
-      }
-
-      @Override
-      public Optional<alc<T>> e() {
-         return Optional.empty();
-      }
-
-      @Override
-      public js.b f() {
-         return js.b.b;
-      }
-
-      @Override
-      public String toString() {
-         return "Direct{" + this.a + "}";
-      }
-
-      @Override
-      public boolean a(jv<T> $$0) {
-         return true;
-      }
-
-      @Override
-      public Stream<axp<T>> c() {
-         return Stream.of();
+      public Stream<js.d<?>> a() {
+         return this.c.entrySet().stream().map(js.d::a);
       }
    }
 
-   public static enum b {
-      a,
-      b;
-   }
+   public static record d<T>(ald<? extends jr<T>> a, jr<T> b) {
 
-   public static class c<T> implements js<T> {
-      private final jv<T> a;
-      @Nullable
-      private Set<axp<T>> b;
-      private final js.c.a c;
-      @Nullable
-      private alc<T> d;
-      @Nullable
-      private T e;
-
-      protected c(js.c.a $$0, jv<T> $$1, @Nullable alc<T> $$2, @Nullable T $$3) {
-         this.a = $$1;
-         this.c = $$0;
-         this.d = $$2;
-         this.e = $$3;
+      private static <T, R extends jr<? extends T>> js.d<T> a(Entry<? extends ald<? extends jr<?>>, R> $$0) {
+         return a((ald<? extends jr<?>>)$$0.getKey(), $$0.getValue());
       }
 
-      public static <T> js.c<T> a(jv<T> $$0, alc<T> $$1) {
-         return new js.c<>(js.c.a.a, $$0, $$1, null);
+      private static <T> js.d<T> a(ald<? extends jr<?>> $$0, jr<?> $$1) {
+         return new js.d<>((ald<? extends jr<T>>)$$0, (jr<T>)$$1);
       }
 
-      @Deprecated
-      public static <T> js.c<T> a(jv<T> $$0, @Nullable T $$1) {
-         return new js.c<>(js.c.a.b, $$0, null, $$1);
-      }
-
-      public alc<T> h() {
-         if (this.d == null) {
-            throw new IllegalStateException("Trying to access unbound value '" + this.e + "' from registry " + this.a);
-         } else {
-            return this.d;
-         }
-      }
-
-      @Override
-      public T a() {
-         if (this.e == null) {
-            throw new IllegalStateException("Trying to access unbound value '" + this.d + "' from registry " + this.a);
-         } else {
-            return this.e;
-         }
-      }
-
-      @Override
-      public boolean a(ald $$0) {
-         return this.h().a().equals($$0);
-      }
-
-      @Override
-      public boolean a(alc<T> $$0) {
-         return this.h() == $$0;
-      }
-
-      private Set<axp<T>> i() {
-         if (this.b == null) {
-            throw new IllegalStateException("Tags not bound");
-         } else {
-            return this.b;
-         }
-      }
-
-      @Override
-      public boolean a(axp<T> $$0) {
-         return this.i().contains($$0);
-      }
-
-      @Override
-      public boolean a(js<T> $$0) {
-         return $$0.a(this.h());
-      }
-
-      @Override
-      public boolean a(Predicate<alc<T>> $$0) {
-         return $$0.test(this.h());
-      }
-
-      @Override
-      public boolean a(jv<T> $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public Either<alc<T>, T> d() {
-         return Either.left(this.h());
-      }
-
-      @Override
-      public Optional<alc<T>> e() {
-         return Optional.of(this.h());
-      }
-
-      @Override
-      public js.b f() {
-         return js.b.a;
-      }
-
-      @Override
-      public boolean b() {
-         return this.d != null && this.e != null;
-      }
-
-      void b(alc<T> $$0) {
-         if (this.d != null && $$0 != this.d) {
-            throw new IllegalStateException("Can't change holder key: existing=" + this.d + ", new=" + $$0);
-         } else {
-            this.d = $$0;
-         }
-      }
-
-      protected void b(T $$0) {
-         if (this.c == js.c.a.b && this.e != $$0) {
-            throw new IllegalStateException("Can't change holder " + this.d + " value: existing=" + this.e + ", new=" + $$0);
-         } else {
-            this.e = $$0;
-         }
-      }
-
-      void a(Collection<axp<T>> $$0) {
-         this.b = Set.copyOf($$0);
-      }
-
-      @Override
-      public Stream<axp<T>> c() {
-         return this.i().stream();
-      }
-
-      @Override
-      public String toString() {
-         return "Reference{" + this.d + "=" + this.e + "}";
-      }
-
-      protected static enum a {
-         a,
-         b;
+      private js.d<T> c() {
+         return new js.d<>(this.a, this.b.n());
       }
    }
 }

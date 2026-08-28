@@ -1,52 +1,26 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class btb extends bsv {
-   public static final MapCodec<btb> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
-               .apply($$0, btb::new)
-      )
-      .validate(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0)
-      );
-   private final int b;
-   private final int f;
+public abstract class btb implements btg {
+   private static final Codec<Either<Float, btb>> a = Codec.either(Codec.FLOAT, mf.J.q().dispatch(btb::c, btc::codec));
+   public static final Codec<btb> c = a.xmap(
+      $$0 -> (btb)$$0.map(bsz::a, $$0x -> $$0x), $$0 -> $$0.c() == btc.a ? Either.left(((bsz)$$0).d()) : Either.right($$0)
+   );
 
-   private btb(int $$0, int $$1) {
-      this.b = $$0;
-      this.f = $$1;
+   public static Codec<btb> a(float $$0, float $$1) {
+      return c.validate($$2 -> {
+         if ($$2.a() < $$0) {
+            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+         } else {
+            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+         }
+      });
    }
 
-   public static btb a(int $$0, int $$1) {
-      return new btb($$0, $$1);
-   }
+   public abstract float a();
 
-   @Override
-   public int a(azs $$0) {
-      return azk.b($$0, this.b, this.f);
-   }
+   public abstract float b();
 
-   @Override
-   public int a() {
-      return this.b;
-   }
-
-   @Override
-   public int b() {
-      return this.f;
-   }
-
-   @Override
-   public bsw<?> c() {
-      return bsw.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
-   }
+   public abstract btc<?> c();
 }

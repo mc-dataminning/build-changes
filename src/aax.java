@@ -1,8 +1,46 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record aax(iu c, float d, float e, float f, float g, float h) implements aag {
+   public static final yu<vs, aax> a = aag.a(aax::a, aax::new);
+   public static final aag.b<aax> b = aag.a("debug/worldgen_attempt");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aax {
+   private aax(vs $$0) {
+      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+   }
+
+   private void a(vs $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+   }
+
+   @Override
+   public aag.b<aax> a() {
+      return b;
+   }
+
+   public iu b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
 }

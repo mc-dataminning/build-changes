@@ -1,56 +1,58 @@
-import com.google.common.collect.Maps;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-
-public class hlr {
-   private final avd a;
-   private final Map<ald, CompletableFuture<fff>> b = Maps.newHashMap();
-
-   public hlr(avd $$0) {
-      this.a = $$0;
+public class hlr extends hle {
+   public hlr(awk $$0, awm $$1, float $$2, float $$3, azt $$4, iu $$5) {
+      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
    }
 
-   public CompletableFuture<fff> a(ald $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
-            try {
-               fff var5;
-               try (
-                  InputStream $$1 = this.a.open($$0x);
-                  hll $$2 = new hln($$1);
-               ) {
-                  ByteBuffer $$3 = $$2.b();
-                  var5 = new fff($$3, $$2.a());
-               }
-
-               return var5;
-            } catch (IOException var10) {
-               throw new CompletionException(var10);
-            }
-         }, af.j()));
+   public static hlr a(awk $$0, float $$1) {
+      return a($$0, $$1, 0.25F);
    }
 
-   public CompletableFuture<hli> a(ald $$0, boolean $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            InputStream $$2 = this.a.open($$0);
-            return (hli)($$1 ? new hlo(hln::new, $$2) : new hln($$2));
-         } catch (IOException var4) {
-            throw new CompletionException(var4);
-         }
-      }, af.j());
+   public static hlr a(je<awk> $$0, float $$1) {
+      return a($$0.a(), $$1);
    }
 
-   public void a() {
-      this.b.values().forEach($$0 -> $$0.thenAccept(fff::b));
-      this.b.clear();
+   public static hlr a(awk $$0, float $$1, float $$2) {
+      return new hlr($$0.a(), awm.a, $$2, $$1, hlw.t(), false, 0, hlw.a.a, 0.0, 0.0, 0.0, true);
    }
 
-   public CompletableFuture<?> a(Collection<hkm> $$0) {
-      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
+   public static hlr a(awk $$0) {
+      return new hlr($$0.a(), awm.b, 1.0F, 1.0F, hlw.t(), false, 0, hlw.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static hlr a(awk $$0, fdw $$1) {
+      return new hlr($$0, awm.c, 4.0F, 1.0F, hlw.t(), false, 0, hlw.a.b, $$1.d, $$1.e, $$1.f);
+   }
+
+   public static hlr b(awk $$0, float $$1, float $$2) {
+      return new hlr($$0.a(), awm.i, $$2, $$1, hlw.t(), false, 0, hlw.a.a, 0.0, 0.0, 0.0, true);
+   }
+
+   public static hlr b(awk $$0) {
+      return b($$0, 1.0F, 1.0F);
+   }
+
+   public static hlr a(awk $$0, azt $$1, double $$2, double $$3, double $$4) {
+      return new hlr($$0, awm.i, 1.0F, 1.0F, $$1, false, 0, hlw.a.b, $$2, $$3, $$4);
+   }
+
+   public hlr(awk $$0, awm $$1, float $$2, float $$3, azt $$4, double $$5, double $$6, double $$7) {
+      this($$0, $$1, $$2, $$3, $$4, false, 0, hlw.a.b, $$5, $$6, $$7);
+   }
+
+   private hlr(awk $$0, awm $$1, float $$2, float $$3, azt $$4, boolean $$5, int $$6, hlw.a $$7, double $$8, double $$9, double $$10) {
+      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
+   }
+
+   public hlr(ale $$0, awm $$1, float $$2, float $$3, azt $$4, boolean $$5, int $$6, hlw.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
+      super($$0, $$1, $$4);
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$8;
+      this.g = $$9;
+      this.h = $$10;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
+      this.l = $$11;
    }
 }

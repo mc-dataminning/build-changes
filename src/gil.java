@@ -1,120 +1,83 @@
-import com.google.common.base.Suppliers;
-import com.mojang.authlib.GameProfile;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
 
 public class gil {
-   private final GameProfile a;
-   private final Supplier<hhu> b;
-   private dhm c = dhm.e;
+   private static final Set<ja> a = EnumSet.allOf(ja.class);
+   private final List<gij> b = Lists.newArrayList();
+   private int c;
    private int d;
-   @Nullable
-   private wv e;
-   private boolean f = true;
-   @Nullable
-   private xm g;
-   private xr h;
-   private int i;
+   private boolean e;
 
-   public gil(GameProfile $$0, boolean $$1) {
-      this.a = $$0;
-      this.h = c($$1);
-      Supplier<Supplier<hhu>> $$2 = Suppliers.memoize(() -> a($$0));
-      this.b = () -> $$2.get().get();
-   }
-
-   private static Supplier<hhu> a(GameProfile $$0) {
-      fnd $$1 = fnd.Q();
-      hhv $$2 = $$1.an();
-      CompletableFuture<Optional<hhu>> $$3 = $$2.c($$0);
-      boolean $$4 = !$$1.b($$0.getId());
-      hhu $$5 = hhl.a($$0);
-      return () -> {
-         hhu $$3x = $$3.getNow(Optional.empty()).orElse($$5);
-         return $$4 && !$$3x.f() ? $$5 : $$3x;
-      };
-   }
-
-   public GameProfile a() {
-      return this.a;
-   }
-
-   @Nullable
-   public xm b() {
-      return this.g;
-   }
-
-   public xr c() {
-      return this.h;
-   }
-
-   public boolean d() {
-      return this.g != null;
-   }
-
-   protected void a(xm $$0) {
-      this.g = $$0;
-      this.h = $$0.a(cql.b);
-   }
-
-   protected void a(boolean $$0) {
-      this.g = null;
-      this.h = c($$0);
-   }
-
-   private static xr c(boolean $$0) {
-      return $$0 ? xr.c : xr.b;
-   }
-
-   public dhm e() {
-      return this.c;
-   }
-
-   protected void a(dhm $$0) {
+   public gil a(int $$0, int $$1) {
       this.c = $$0;
+      this.d = $$1;
+      return this;
    }
 
-   public int f() {
-      return this.d;
+   public gil a() {
+      return this.a(true);
    }
 
-   protected void a(int $$0) {
-      this.d = $$0;
-   }
-
-   public hhu g() {
-      return this.b.get();
-   }
-
-   @Nullable
-   public fdu h() {
-      return fnd.Q().s.R().e(this.a().getName());
-   }
-
-   public void a(@Nullable wv $$0) {
+   public gil a(boolean $$0) {
       this.e = $$0;
+      return this;
    }
 
-   @Nullable
-   public wv i() {
-      return this.e;
+   public gil a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, gik $$7, int $$8, int $$9) {
+      this.a($$8, $$9);
+      this.b.add(new gij($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public void b(boolean $$0) {
-      this.f = $$0;
+   public gil a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      this.a($$7, $$8);
+      this.b.add(new gij($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, gik.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public boolean j() {
-      return this.f;
+   public gil a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.add(new gij(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gik.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public void b(int $$0) {
-      this.i = $$0;
+   public gil a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<ja> $$6) {
+      this.b.add(new gij(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gik.a, this.e, 1.0F, 1.0F, $$6));
+      return this;
    }
 
-   public int k() {
-      return this.i;
+   public gil a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.b.add(new gij($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, gik.a, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public gil a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, gik $$7) {
+      this.b.add(new gij($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public gil a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
+      this.b.add(new gij(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gik.a, $$6, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public gil a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, gik $$6, float $$7, float $$8) {
+      this.b.add(new gij(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
+      return this;
+   }
+
+   public gil a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, gik $$6) {
+      this.b.add(new gij(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public List<gij> b() {
+      return ImmutableList.copyOf(this.b);
+   }
+
+   public static gil c() {
+      return new gil();
    }
 }

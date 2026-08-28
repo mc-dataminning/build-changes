@@ -1,73 +1,70 @@
-public class ddc extends dcb {
-   public ddc(dby $$0) {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ddc extends dcz {
+   private static final ddf c = ddf.a(cyw.rz);
+   private static final ddf d = ddf.a(cyw.qd);
+   private static final ddf e = ddf.a(cyw.vy);
+
+   public ddc(dcw $$0) {
       super($$0);
    }
 
-   public boolean a(dbz $$0, dhp $$1) {
-      if ($$0.e() != 2) {
+   public boolean a(dcx $$0, dip $$1) {
+      if ($$0.e() < 2) {
          return false;
       } else {
          boolean $$2 = false;
-         boolean $$3 = false;
+         int $$3 = 0;
 
          for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cxy $$5 = $$0.a($$4);
+            cys $$5 = $$0.a($$4);
             if (!$$5.f()) {
-               if ($$5.h() instanceof cwc) {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               } else {
-                  if (!$$5.a(cyc.ww)) {
-                     return false;
-                  }
-
+               if (c.a($$5)) {
                   if ($$2) {
                      return false;
                   }
 
-                  dvb $$6 = $$5.a(kx.ak, dvb.a);
-                  if (!$$6.b().isEmpty()) {
+                  $$2 = true;
+               } else if (d.a($$5)) {
+                  if (++$$3 > 3) {
                      return false;
                   }
-
-                  $$2 = true;
+               } else if (!e.a($$5)) {
+                  return false;
                }
             }
          }
 
-         return $$2 && $$3;
+         return $$2 && $$3 >= 1;
       }
    }
 
-   public cxy a(dbz $$0, ju.a $$1) {
-      cxy $$2 = cxy.k;
-      cxy $$3 = cxy.k;
+   public cys a(dcx $$0, jg.a $$1) {
+      List<dbg> $$2 = new ArrayList<>();
+      int $$3 = 0;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxy $$5 = $$0.a($$4);
+         cys $$5 = $$0.a($$4);
          if (!$$5.f()) {
-            if ($$5.h() instanceof cwc) {
-               $$2 = $$5;
-            } else if ($$5.a(cyc.ww)) {
-               $$3 = $$5.v();
+            if (d.a($$5)) {
+               $$3++;
+            } else if (e.a($$5)) {
+               dbg $$6 = $$5.a(kj.ai);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
             }
          }
       }
 
-      if ($$3.f()) {
-         return $$3;
-      } else {
-         $$3.b(kx.ak, $$2.a(kx.ak));
-         $$3.b(kx.al, ((cwc)$$2.h()).b());
-         return $$3;
-      }
+      cys $$7 = new cys(cyw.vx, 3);
+      $$7.b(kj.aj, new dbh($$3, $$2));
+      return $$7;
    }
 
    @Override
-   public dcv<ddc> a() {
-      return dcv.l;
+   public ddt<ddc> a() {
+      return ddt.g;
    }
 }

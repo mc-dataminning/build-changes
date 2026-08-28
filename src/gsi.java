@@ -1,38 +1,41 @@
-import org.apache.commons.lang3.mutable.MutableInt;
+public class gsi extends gsj<dyj> {
+   private static final ale c = ale.b("textures/entity/end_gateway_beam.png");
 
-public class gsi {
-   private final fnd a;
-
-   public gsi(fnd $$0) {
-      this.a = $$0;
+   public gsi(grq.a $$0) {
+      super($$0);
    }
 
-   public void a(fho $$0, grr $$1, gny $$2, double $$3, double $$4, double $$5) {
-      gnz $$6 = this.a.f.x().c();
-      MutableInt $$7 = new MutableInt(0);
-      $$6.a(($$6x, $$7x, $$8, $$9) -> this.a($$6x, $$0, $$2, $$3, $$4, $$5, $$8, $$7x, $$7, $$9), $$1, 32);
-   }
-
-   private void a(gnz.d $$0, fho $$1, gny $$2, double $$3, double $$4, double $$5, int $$6, boolean $$7, MutableInt $$8, boolean $$9) {
-      fcp $$10 = $$0.b();
-      double $$11 = $$10.b();
-      long $$12 = Math.round($$11 / 16.0);
-      if ($$12 == 1L) {
-         $$8.add(1);
-         double $$13 = $$10.f().d;
-         double $$14 = $$10.f().e;
-         double $$15 = $$10.f().f;
-         int $$16 = $$9 ? -16711936 : -1;
-         gsa.a($$1, $$2, String.valueOf($$8.getValue()), $$13, $$14, $$15, $$16, 0.3F);
+   public void a(dyj $$0, float $$1, fiq $$2, gpd $$3, int $$4, int $$5) {
+      if ($$0.a() || $$0.c()) {
+         float $$6 = $$0.a() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.a() ? (double)$$0.i().ao() : 50.0;
+         $$6 = azk.a($$6 * (float) Math.PI);
+         int $$8 = azk.a((double)$$6 * $$7);
+         int $$9 = $$0.a() ? cxq.c.d() : cxq.k.d();
+         long $$10 = $$0.i().ae();
+         grl.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
       }
 
-      fhs $$17 = $$2.getBuffer(goi.y());
-      long $$18 = $$12 + 5L;
-      gos.a($$1, $$17, $$10.h(0.1 * (double)$$6).d(-$$3, -$$4, -$$5), a($$18, 0.3F), a($$18, 0.8F), a($$18, 0.5F), $$7 ? 0.4F : 1.0F);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private static float a(long $$0, float $$1) {
-      float $$2 = 0.1F;
-      return azk.i($$1 * (float)$$0) * 0.9F + 0.1F;
+   @Override
+   protected float b() {
+      return 1.0F;
+   }
+
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
+
+   @Override
+   protected gpn d() {
+      return gpn.u();
+   }
+
+   @Override
+   public int aQ_() {
+      return 256;
    }
 }

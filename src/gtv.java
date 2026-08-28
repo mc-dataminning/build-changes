@@ -1,43 +1,44 @@
-public class gtv<T extends ckm> extends gsv<T, hag, gdu> {
-   private final ald a;
+public class gtv implements gtf.a {
+   private final fof a;
 
-   public gtv(guf.a $$0, gtv.a $$1) {
-      super($$0, new gdu($$0.a($$1.d)), new gdu($$0.a($$1.e)));
-      this.a = $$1.c;
-      this.a(new gyv<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new geb($$0.a($$1.g)), new geb($$0.a($$1.h))));
+   public gtv(fof $$0) {
+      this.a = $$0;
    }
 
-   public ald a(hag $$0) {
-      return this.a;
-   }
+   @Override
+   public void a(fiq $$0, gpd $$1, double $$2, double $$3, double $$4) {
+      iu $$5 = this.a.t.dv();
+      dis $$6 = this.a.t.dV();
 
-   public hag a() {
-      return new hag();
-   }
+      for (iu $$7 : iu.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         evv $$8 = $$6.b_($$7);
+         if ($$8.a(axf.a)) {
+            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
+            gtf.a(
+               $$0,
+               $$1,
+               new fdr(
+                     (double)((float)$$7.u() + 0.01F),
+                     (double)((float)$$7.v() + 0.01F),
+                     (double)((float)$$7.w() + 0.01F),
+                     (double)((float)$$7.u() + 0.99F),
+                     $$9,
+                     (double)((float)$$7.w() + 0.99F)
+                  )
+                  .d(-$$2, -$$3, -$$4),
+               0.0F,
+               1.0F,
+               0.0F,
+               0.15F
+            );
+         }
+      }
 
-   public void a(T $$0, hag $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-   }
-
-   public static enum a {
-      a(ald.b("textures/entity/horse/donkey.png"), ghc.av, ghc.aw, hiy.d.k, ghc.ax, ghc.ay),
-      b(ald.b("textures/entity/horse/mule.png"), ghc.bL, ghc.bM, hiy.d.l, ghc.bN, ghc.bO);
-
-      final ald c;
-      final ghb d;
-      final ghb e;
-      final hiy.d f;
-      final ghb g;
-      final ghb h;
-
-      private a(final ald $$0, final ghb $$1, final ghb $$2, final hiy.d $$3, final ghb $$4, final ghb $$5) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-         this.h = $$5;
+      for (iu $$10 : iu.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         evv $$11 = $$6.b_($$10);
+         if ($$11.a(axf.a)) {
+            gtf.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+         }
       }
    }
 }

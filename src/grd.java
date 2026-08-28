@@ -1,41 +1,95 @@
-public class grd extends gre<dxh> {
-   private static final ald c = ald.b("textures/entity/end_gateway_beam.png");
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSyntaxException;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public grd(gql.a $$0) {
-      super($$0);
+public class grd implements gqx {
+   private final List<grd.d> a;
+
+   grd(List<grd.d> $$0) {
+      this.a = $$0;
    }
 
-   public void a(dxh $$0, float $$1, fho $$2, gny $$3, int $$4, int $$5) {
-      if ($$0.a() || $$0.c()) {
-         float $$6 = $$0.a() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.a() ? (double)$$0.i().ao() : 50.0;
-         $$6 = azk.a($$6 * (float) Math.PI);
-         int $$8 = azk.a((double)$$6 * $$7);
-         int $$9 = $$0.a() ? cwv.c.d() : cwv.k.d();
-         long $$10 = $$0.i().ae();
-         gqg.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+   @Override
+   public Object a(dzo $$0) {
+      IntList $$1 = new IntArrayList();
+
+      for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
+         if (this.a.get($$2).a.test($$0)) {
+            $$1.add($$2);
+         }
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      record a(grd a, IntList b) {
+         a(IntList b) {
+            this.b = b;
+         }
+      }
+
+      return new a($$1);
    }
 
    @Override
-   protected float b() {
-      return 1.0F;
+   public void a(hkr.a $$0) {
+      this.a.forEach($$1 -> $$1.b.a($$0));
    }
 
    @Override
-   protected float c() {
-      return 0.0F;
+   public hjz a(hki $$0) {
+      List<hkq.a> $$1 = new ArrayList<>(this.a.size());
+
+      for (grd.d $$2 : this.a) {
+         hjz $$3 = $$2.b.a($$0);
+         $$1.add(new hkq.a($$2.a, $$3));
+      }
+
+      return new hkq($$1);
    }
 
-   @Override
-   protected goi d() {
-      return goi.u();
+   public static record b(List<grf> a) {
+      public grd a(dzp<dlu, dzo> $$0) {
+         List<grd.d> $$1 = this.a.stream().map($$1x -> new grd.d($$1x.a($$0), $$1x.a())).toList();
+         return new grd($$1);
+      }
+
+      public Set<gqv> a() {
+         return this.a.stream().map(grf::a).collect(Collectors.toSet());
+      }
+
+      public List<grf> b() {
+         return this.a;
+      }
    }
 
-   @Override
-   public int aQ_() {
-      return 256;
+   public static class c implements JsonDeserializer<grd.b> {
+      public grd.b a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new grd.b(this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<grf> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<grf> $$2 = new ArrayList<>();
+         if ($$1.isEmpty()) {
+            throw new JsonSyntaxException("Empty selector array");
+         } else {
+            for (JsonElement $$3 : $$1) {
+               $$2.add((grf)$$0.deserialize($$3, grf.class));
+            }
+
+            return $$2;
+         }
+      }
+   }
+
+   static record d(Predicate<dzo> a, gqv b) {
    }
 }

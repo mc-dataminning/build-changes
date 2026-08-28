@@ -1,8 +1,12 @@
-import io.netty.buffer.ByteBuf;
-
 public class ake {
-   public static final wd.a<akb, ByteBuf> a = zh.a(vp.c, $$0 -> $$0.a(akd.b, akc.b).a(aju.b, ajw.a));
-   public static final wd<akb> b = a.a($$0 -> $$0);
-   public static final wd.a<ajy, vr> c = zh.b(vp.c, $$0 -> $$0.a(akd.a, ajz.a).a(aju.a, ajt.a));
-   public static final wd<ajy> d = c.a(vr::new);
+   public static final zf<aka> a = a("status_response");
+   public static final zf<akd> b = b("status_request");
+
+   private static <T extends zd<ajz>> zf<T> a(String $$0) {
+      return new zf<>(ze.b, ale.b($$0));
+   }
+
+   private static <T extends zd<akc>> zf<T> b(String $$0) {
+      return new zf<>(ze.a, ale.b($$0));
+   }
 }

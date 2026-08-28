@@ -1,22 +1,16 @@
-import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+public class fjp extends fjo {
+   private final ww a;
 
-public class fjp extends fjt {
-   @Nullable
-   public String a;
-   public long b;
-   public long c;
+   public fjp(ww $$0) {
+      this.a = $$0;
+   }
 
-   public static fjp a(JsonObject $$0) {
-      fjp $$1 = new fjp();
+   public fjp(String $$0) {
+      this(ww.b($$0));
+   }
 
-      try {
-         $$1.a = flp.b("profileUuid", $$0, null);
-         $$1.b = flp.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = flp.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
-      }
-
-      return $$1;
+   @Override
+   public ww a() {
+      return ww.a("mco.upload.failed", this.a);
    }
 }

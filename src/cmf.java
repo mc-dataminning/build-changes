@@ -1,103 +1,80 @@
-import java.util.Objects;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.Validate;
+import javax.annotation.Nullable;
 
-public abstract class cmf extends cmd {
-   protected static final Predicate<bvs> b = $$0 -> $$0 instanceof cmf;
-   protected jo c = jo.d;
+public class cmf extends cls {
+   private boolean b;
+   @Nullable
+   private ewj c;
+   @Nullable
+   private fdw d;
 
-   protected cmf(bwb<? extends cmf> $$0, dhp $$1) {
-      super($$0, $$1);
-   }
-
-   protected cmf(bwb<? extends cmf> $$0, dhp $$1, jj $$2) {
-      this($$0, $$1);
-      this.a = $$2;
-   }
-
-   protected void a(jo $$0) {
-      Objects.requireNonNull($$0);
-      Validate.isTrue($$0.o().d());
-      this.c = $$0;
-      this.w((float)(this.c.e() * 90));
-      this.N = this.dL();
-      this.f();
+   public cmf(clq $$0) {
+      super($$0);
    }
 
    @Override
-   protected final void f() {
-      if (this.c != null) {
-         fcp $$0 = this.a(this.a, this.c);
-         fcu $$1 = $$0.f();
-         this.o($$1.d, $$1.e, $$1.f);
-         this.a($$0);
-      }
-   }
-
-   protected abstract fcp a(jj var1, jo var2);
-
-   @Override
-   public boolean g() {
-      if (!this.dV().g(this)) {
-         return false;
+   public void a(aro $$0) {
+      if (!this.b && this.c != null) {
+         iu $$1 = $$0.a(efn.a.f, eis.a(this.a.j()));
+         if (!$$1.a(this.a.dt(), 10.0)) {
+            this.a.t().a(cmg.a);
+         }
       } else {
-         boolean $$0 = jj.b(this.u()).allMatch($$0x -> {
-            dym $$1 = this.dV().a_($$0x);
-            return $$1.e() || dmx.n($$1);
-         });
-         return !$$0 ? false : this.dV().a(this, this.cR(), b).isEmpty();
+         this.b = false;
+         this.i();
       }
    }
 
-   protected fcp u() {
-      return this.cR().a(this.c.m().mul(-0.5F)).h(1.0E-7);
+   @Override
+   public void c() {
+      this.b = true;
+      this.c = null;
+      this.d = null;
    }
 
-   @Override
-   public jo cO() {
-      return this.c;
+   private void i() {
+      int $$0 = this.a.n();
+      fdw $$1 = this.a.J(1.0F);
+      int $$2 = this.a.q(-$$1.d * 40.0, 105.0, -$$1.f * 40.0);
+      if (this.a.x() != null && this.a.x().e() > 0) {
+         $$2 %= 12;
+         if ($$2 < 0) {
+            $$2 += 12;
+         }
+      } else {
+         $$2 -= 12;
+         $$2 &= 7;
+         $$2 += 12;
+      }
+
+      this.c = this.a.a($$0, $$2, null);
+      this.j();
    }
 
-   @Override
-   public abstract void v();
+   private void j() {
+      if (this.c != null) {
+         this.c.a();
+         if (!this.c.c()) {
+            jz $$0 = this.c.g();
+            this.c.a();
 
-   @Override
-   public cmn a(arn $$0, cxy $$1, float $$2) {
-      cmn $$3 = new cmn(
-         this.dV(), this.dA() + (double)((float)this.c.j() * 0.15F), this.dC() + (double)$$2, this.dG() + (double)((float)this.c.l() * 0.15F), $$1
-      );
-      $$3.j();
-      this.dV().b($$3);
-      return $$3;
-   }
+            double $$1;
+            do {
+               $$1 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
+            } while ($$1 < (double)$$0.v());
 
-   @Override
-   public float a(drm $$0) {
-      if (this.c.o() != jo.a.b) {
-         switch ($$0) {
-            case c:
-               this.c = this.c.g();
-               break;
-            case d:
-               this.c = this.c.i();
-               break;
-            case b:
-               this.c = this.c.h();
+            this.d = new fdw((double)$$0.u(), $$1, (double)$$0.w());
          }
       }
+   }
 
-      float $$1 = azk.h(this.dL());
-
-      return switch ($$0) {
-         case c -> $$1 + 180.0F;
-         case d -> $$1 + 90.0F;
-         case b -> $$1 + 270.0F;
-         default -> $$1;
-      };
+   @Nullable
+   @Override
+   public fdw f() {
+      return this.d;
    }
 
    @Override
-   public float a(dpv $$0) {
-      return this.a($$0.a(this.c));
+   public cmg<cmf> h() {
+      return cmg.e;
    }
 }

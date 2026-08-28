@@ -1,87 +1,65 @@
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public abstract class hlj extends hlf {
+   private static final float o = 0.0F;
+   private static final float p = 1.2F;
+   private static final float q = 0.0F;
+   protected final cip n;
+   private boolean r;
 
-public class hlj {
-   private final Set<hlj.a> a = Sets.newIdentityHashSet();
-   final ffb b;
-   final Executor c;
-
-   public hlj(ffb $$0, Executor $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public hlj(cip $$0, awk $$1, awm $$2) {
+      super($$1, $$2, hlw.t());
+      this.n = $$0;
+      this.f = (double)((float)$$0.dA());
+      this.g = (double)((float)$$0.dC());
+      this.h = (double)((float)$$0.dG());
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
-   public CompletableFuture<hlj.a> a(ffb.c $$0) {
-      CompletableFuture<hlj.a> $$1 = new CompletableFuture<>();
-      this.c.execute(() -> {
-         ffa $$2 = this.b.a($$0);
-         if ($$2 != null) {
-            hlj.a $$3 = new hlj.a($$2);
-            this.a.add($$3);
-            $$1.complete($$3);
+   @Override
+   public void q() {
+      boolean $$0 = this.p();
+      if ($$0 && !this.m()) {
+         fof.Q().ak().a((hlx)this.o());
+         this.r = true;
+      }
+
+      if (!this.n.dQ() && !this.r) {
+         this.f = (double)((float)this.n.dA());
+         this.g = (double)((float)this.n.dC());
+         this.h = (double)((float)this.n.dG());
+         float $$1 = (float)this.n.dy().i();
+         if ($$1 >= 0.01F) {
+            this.e = azk.h(azk.a($$1, this.u(), this.v()), this.u(), this.v());
+            this.d = azk.h(azk.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
          } else {
-            $$1.complete(null);
+            this.e = 0.0F;
+            this.d = 0.0F;
          }
-      });
-      return $$1;
-   }
-
-   public void a(Consumer<Stream<ffa>> $$0) {
-      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
-   }
-
-   public void a() {
-      this.c.execute(() -> {
-         Iterator<hlj.a> $$0 = this.a.iterator();
-
-         while ($$0.hasNext()) {
-            hlj.a $$1 = $$0.next();
-            $$1.b.j();
-            if ($$1.b.h()) {
-               $$1.b();
-               $$0.remove();
-            }
-         }
-      });
-   }
-
-   public void b() {
-      this.a.forEach(hlj.a::b);
-      this.a.clear();
-   }
-
-   public class a {
-      @Nullable
-      ffa b;
-      private boolean c;
-
-      public boolean a() {
-         return this.c;
-      }
-
-      public a(final ffa $$1) {
-         this.b = $$1;
-      }
-
-      public void a(Consumer<ffa> $$0) {
-         hlj.this.c.execute(() -> {
-            if (this.b != null) {
-               $$0.accept(this.b);
-            }
-         });
-      }
-
-      public void b() {
-         this.c = true;
-         hlj.this.b.a(this.b);
-         this.b = null;
+      } else {
+         this.n();
       }
    }
+
+   private float u() {
+      return this.n.n_() ? 1.1F : 0.7F;
+   }
+
+   private float v() {
+      return this.n.n_() ? 1.5F : 1.1F;
+   }
+
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public boolean s() {
+      return !this.n.bb();
+   }
+
+   protected abstract hlf o();
+
+   protected abstract boolean p();
 }

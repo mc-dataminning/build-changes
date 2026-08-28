@@ -1,37 +1,39 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-
 public class btu {
-   public static final Codec<btu> a = RecordCodecBuilder.create($$0 -> $$0.group(efm.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, btu::new));
-   private final efm b;
-
-   public btu(efm $$0) {
-      this.b = $$0;
+   public static void a(dip $$0, iu $$1, btr $$2) {
+      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
    }
 
-   public btu(long $$0, ald $$1) {
-      this(a($$0, Optional.of($$1)));
+   public static void a(dip $$0, bwa $$1, btr $$2) {
+      a($$0, $$1.dA(), $$1.dC(), $$1.dG(), $$2);
    }
 
-   public btu(long $$0, Optional<ald> $$1) {
-      this(a($$0, $$1));
-   }
-
-   private static efm a(long $$0, Optional<ald> $$1) {
-      efa.a $$2 = efa.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
+   private static void a(dip $$0, double $$1, double $$2, double $$3, btr $$4) {
+      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
+         a($$0, $$1, $$2, $$3, $$4.a($$5));
       }
-
-      return new efm($$2.a());
    }
 
-   public static efa.a a(ald $$0) {
-      return efa.a($$0.toString());
+   public static void a(dip $$0, iu $$1, jn<cys> $$2) {
+      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
    }
 
-   public azs a() {
-      return this.b;
+   public static void a(dip $$0, double $$1, double $$2, double $$3, cys $$4) {
+      double $$5 = (double)bwj.aq.l();
+      double $$6 = 1.0 - $$5;
+      double $$7 = $$5 / 2.0;
+      double $$8 = Math.floor($$1) + $$0.A.j() * $$6 + $$7;
+      double $$9 = Math.floor($$2) + $$0.A.j() * $$6;
+      double $$10 = Math.floor($$3) + $$0.A.j() * $$6 + $$7;
+
+      while (!$$4.f()) {
+         cmx $$11 = new cmx($$0, $$8, $$9, $$10, $$4.a($$0.A.a(21) + 10));
+         float $$12 = 0.05F;
+         $$11.n($$0.A.a(0.0, 0.11485000171139836), $$0.A.a(0.2, 0.11485000171139836), $$0.A.a(0.0, 0.11485000171139836));
+         $$0.b($$11);
+      }
+   }
+
+   public static void a(dzo $$0, dip $$1, iu $$2) {
+      $$1.b($$2, $$0.b());
    }
 }

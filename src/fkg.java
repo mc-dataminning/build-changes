@@ -1,162 +1,179 @@
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fkg extends fqn {
-   private static final ald u = ald.b("widget/slot_frame");
-   private static final ald v = ald.b("icon/checkmark");
-   public static final ald a = ald.b("textures/gui/realms/empty_frame.png");
-   public static final ald b = ald.b("textures/gui/title/background/panorama_0.png");
-   public static final ald c = ald.b("textures/gui/title/background/panorama_2.png");
-   public static final ald d = ald.b("textures/gui/title/background/panorama_3.png");
-   private static final wv w = wv.c("mco.configure.world.slot.tooltip.active");
-   private static final wv x = wv.c("mco.configure.world.slot.tooltip.minigame");
-   private static final wv y = wv.c("mco.configure.world.slot.tooltip");
-   static final wv z = wv.c("mco.worldSlot.minigame");
-   private static final int A = 64;
-   private static final String B = "...";
-   private final int C;
-   @Nullable
-   private fkg.b D;
+public class fkg {
+   static final Logger a = LogUtils.getLogger();
+   private static final String b = "notificationUuid";
+   private static final String c = "dismissable";
+   private static final String d = "seen";
+   private static final String e = "type";
+   private static final String f = "visitUrl";
+   private static final String g = "infoPopup";
+   static final ww h = ww.c("mco.notification.visitUrl.buttonText.default");
+   final UUID i;
+   final boolean j;
+   final boolean k;
+   final String l;
 
-   public fkg(int $$0, int $$1, int $$2, int $$3, int $$4, fqn.c $$5) {
-      super($$0, $$1, $$2, $$3, wu.a, $$5, q);
-      this.C = $$4;
+   fkg(UUID $$0, boolean $$1, boolean $$2, String $$3) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
    }
 
-   @Nullable
-   public fkg.b a() {
-      return this.D;
+   public boolean a() {
+      return this.k;
    }
 
-   public void a(fjf $$0) {
-      this.D = new fkg.b($$0, this.C);
-      this.a(this.D, $$0.q);
+   public boolean b() {
+      return this.j;
    }
 
-   private void a(fkg.b $$0, @Nullable String $$1) {
-      wv $$2 = switch ($$0.c) {
-         case b -> $$0.b ? x : y;
-         case c -> w;
-         default -> null;
-      };
-      if ($$2 != null) {
-         this.a(fry.a($$2));
+   public UUID c() {
+      return this.i;
+   }
+
+   public static List<fkg> a(String $$0) {
+      List<fkg> $$1 = new ArrayList<>();
+
+      try {
+         for (JsonElement $$3 : JsonParser.parseString($$0).getAsJsonObject().get("notifications").getAsJsonArray()) {
+            $$1.add(a($$3.getAsJsonObject()));
+         }
+      } catch (Exception var5) {
+         a.error("Could not parse list of RealmsNotifications", var5);
       }
 
-      xj $$3 = wv.b($$0.f);
-      if ($$0.b && $$1 != null) {
-         $$3 = $$3.b(wu.v).f($$1);
-      }
-
-      this.b($$3);
+      return $$1;
    }
 
-   static fkg.a a(fjf $$0, boolean $$1, boolean $$2) {
-      if ($$1 && !$$0.j && $$0.e != fjf.c.c) {
-         return fkg.a.c;
+   private static fkg a(JsonObject $$0) {
+      UUID $$1 = fmr.a("notificationUuid", $$0, null);
+      if ($$1 == null) {
+         throw new IllegalStateException("Missing required property notificationUuid");
       } else {
-         return $$1 || $$2 && $$0.j ? fkg.a.a : fkg.a.b;
+         boolean $$2 = fmr.a("dismissable", $$0, true);
+         boolean $$3 = fmr.a("seen", $$0, false);
+         String $$4 = fmr.a("type", $$0);
+         fkg $$5 = new fkg($$1, $$2, $$3, $$4);
+
+         return (fkg)(switch ($$4) {
+            case "visitUrl" -> fkg.c.a($$5, $$0);
+            case "infoPopup" -> fkg.a.a($$5, $$0);
+            default -> $$5;
+         });
       }
    }
 
-   @Override
-   public void b(fpz $$0, int $$1, int $$2, float $$3) {
-      if (this.D != null) {
-         int $$4 = this.F();
-         int $$5 = this.G();
-         boolean $$6 = this.D();
-         ald $$7;
-         if (this.D.b) {
-            $$7 = fls.a(String.valueOf(this.D.i), this.D.j);
-         } else if (this.D.a) {
-            $$7 = a;
-         } else if (this.D.j != null && this.D.i != -1L) {
-            $$7 = fls.a(String.valueOf(this.D.i), this.D.j);
-         } else if (this.C == 1) {
-            $$7 = b;
-         } else if (this.C == 2) {
-            $$7 = c;
-         } else if (this.C == 3) {
-            $$7 = d;
-         } else {
-            $$7 = a;
-         }
-
-         int $$14 = -1;
-         if (this.D.e) {
-            $$14 = axu.a(1.0F, 0.56F, 0.56F, 0.56F);
-         }
-
-         $$0.a(goi::H, $$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, $$14);
-         if ($$6 && this.D.c != fkg.a.a) {
-            $$0.a(goi::H, u, $$4, $$5, 80, 80);
-         } else if (this.D.e) {
-            $$0.a(goi::H, u, $$4, $$5, 80, 80, axu.a(1.0F, 0.8F, 0.8F, 0.8F));
-         } else {
-            $$0.a(goi::H, u, $$4, $$5, 80, 80, axu.a(1.0F, 0.56F, 0.56F, 0.56F));
-         }
-
-         if (this.D.e) {
-            $$0.a(goi::H, v, $$4 + 67, $$5 + 4, 9, 8);
-         }
-
-         if (this.D.d) {
-            $$0.a(goi::H, fhz.a, $$4 + 3, $$5 + 4, 9, 8);
-         }
-
-         fpx $$15 = fnd.Q().h;
-         String $$16 = this.D.f;
-         if ($$15.b($$16) > 64) {
-            $$16 = $$15.a($$16, 64 - $$15.b("...")) + "...";
-         }
-
-         $$0.a($$15, $$16, $$4 + 40, $$5 + 66, -1);
-         $$0.a($$15, fhz.a(this.D.g, this.D.h.a()), $$4 + 40, $$5 + 80 + 2, -1);
-      }
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-   }
-
-   public static class b {
-      final boolean e;
-      final String f;
-      final String g;
-      final fjf.a h;
-      final long i;
+   public static class a extends fkg {
+      private static final String a = "title";
+      private static final String b = "message";
+      private static final String c = "image";
+      private static final String d = "urlButton";
+      private final fkm e;
+      private final fkm f;
+      private final ale g;
       @Nullable
-      final String j;
-      public final boolean a;
-      public final boolean b;
-      public final fkg.a c;
-      public final boolean d;
+      private final fkg.b h;
 
-      public b(fjf $$0, int $$1) {
-         this.b = $$1 == 4;
-         if (this.b) {
-            this.e = $$0.i();
-            this.f = fkg.z.getString();
-            this.i = (long)$$0.r;
-            this.j = $$0.s;
-            this.a = $$0.r == -1;
-            this.g = "";
-            this.h = fjf.a.a;
-            this.d = false;
+      private a(fkg $$0, fkm $$1, fkm $$2, ale $$3, @Nullable fkg.b $$4) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.e = $$1;
+         this.f = $$2;
+         this.g = $$3;
+         this.h = $$4;
+      }
+
+      public static fkg.a a(fkg $$0, JsonObject $$1) {
+         fkm $$2 = fmr.a("title", $$1, fkm::a);
+         fkm $$3 = fmr.a("message", $$1, fkm::a);
+         ale $$4 = ale.a(fmr.a("image", $$1));
+         fkg.b $$5 = fmr.b("urlButton", $$1, fkg.b::a);
+         return new fkg.a($$0, $$2, $$3, $$4, $$5);
+      }
+
+      @Nullable
+      public fss a(fxi $$0, Consumer<UUID> $$1) {
+         ww $$2 = this.e.a();
+         if ($$2 == null) {
+            fkg.a.warn("Realms info popup had title with no available translation: {}", this.e);
+            return null;
          } else {
-            fjl $$2 = $$0.i.get($$1);
-            this.e = $$0.p == $$1 && !$$0.i();
-            this.f = $$2.a($$1);
-            this.i = $$2.k;
-            this.j = $$2.l;
-            this.a = $$2.m;
-            this.g = $$2.i;
-            this.h = $$2.j;
-            this.d = $$2.h;
-         }
+            fss.a $$3 = new fss.a($$0, $$2).a(this.g).a(this.f.a(wv.a));
+            if (this.h != null) {
+               $$3.a(this.h.b.a(fkg.h), $$2x -> {
+                  fof $$3x = fof.Q();
+                  $$3x.a(new fwf($$3xx -> {
+                     if ($$3xx) {
+                        af.n().a(this.h.a);
+                        $$3x.a($$0);
+                     } else {
+                        $$3x.a($$2x);
+                     }
+                  }, this.h.a, true));
+                  $$1.accept(this.c());
+               });
+            }
 
-         this.c = fkg.a($$0, this.e, this.b);
+            $$3.a(wv.h, $$1x -> {
+               $$1x.aK_();
+               $$1.accept(this.c());
+            });
+            $$3.a(() -> $$1.accept(this.c()));
+            return $$3.a();
+         }
+      }
+   }
+
+   static record b(String a, fkm b) {
+      private static final String c = "url";
+      private static final String d = "urlText";
+
+      public static fkg.b a(JsonObject $$0) {
+         String $$1 = fmr.a("url", $$0);
+         fkm $$2 = fmr.a("urlText", $$0, fkm::a);
+         return new fkg.b($$1, $$2);
+      }
+   }
+
+   public static class c extends fkg {
+      private static final String a = "url";
+      private static final String b = "buttonText";
+      private static final String c = "message";
+      private final String d;
+      private final fkm e;
+      private final fkm f;
+
+      private c(fkg $$0, String $$1, fkm $$2, fkm $$3) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
+
+      public static fkg.c a(fkg $$0, JsonObject $$1) {
+         String $$2 = fmr.a("url", $$1);
+         fkm $$3 = fmr.a("buttonText", $$1, fkm::a);
+         fkm $$4 = fmr.a("message", $$1, fkm::a);
+         return new fkg.c($$0, $$2, $$3, $$4);
+      }
+
+      public ww d() {
+         return this.f.a(ww.c("mco.notification.visitUrl.message.default"));
+      }
+
+      public frq a(fxi $$0) {
+         ww $$1 = this.e.a(fkg.h);
+         return frq.a($$1, fwf.b($$0, this.d)).a();
       }
    }
 }

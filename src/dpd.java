@@ -1,96 +1,57 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dpd extends dku implements dsb {
-   public static final MapCodec<dpd> a = b(dpd::new);
-   public static final dzk<jo> b = dot.e;
-   public static final dzd c = dzc.I;
-   public static final Map<jo, fdo> d = fdl.c(dku.c(16.0, 13.0, 16.0));
+public class dpd extends dkp {
+   public static final MapCodec<dpd> c = b(dpd::new);
 
    @Override
    public MapCodec<dpd> a() {
-      return a;
+      return c;
    }
 
-   protected dpd(dyl.d $$0) {
+   protected dpd(dzn.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, jo.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return d.get($$0.c(b));
-   }
-
-   private boolean a(dgv $$0, jj $$1, jo $$2) {
-      dym $$3 = $$0.a_($$1);
-      return $$3.c($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(dym $$0, dhs $$1, jj $$2) {
-      jo $$3 = $$0.c(b);
-      return this.a($$1, $$2.a($$3.g()), $$3);
-   }
-
-   @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      if ($$4.g() == $$0.c(b) && !$$0.a($$1, $$3)) {
-         return dkw.a.m();
-      } else {
-         if ($$0.c(c)) {
-            $$2.a($$3, euu.c, euu.c.a($$1));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   public dwn a(iu $$0, dzo $$1) {
+      return new dxn($$0, $$1);
    }
 
    @Nullable
    @Override
-   public dym a(dbn $$0) {
-      if (!$$0.c()) {
-         dym $$1 = $$0.q().a_($$0.a().a($$0.k().g()));
-         if ($$1.a(this) && $$1.c(b) == $$0.k()) {
-            return null;
-         }
+   public <T extends dwn> dwo<T> a(dip $$0, dzo $$1, dwp<T> $$2) {
+      return a($$0, $$2, dwp.a);
+   }
+
+   @Override
+   protected void a(dip $$0, iu $$1, cqs $$2) {
+      dwn $$3 = $$0.c_($$1);
+      if ($$3 instanceof dxn) {
+         $$2.a((bua)$$3);
+         $$2.a(awv.am);
       }
+   }
 
-      dym $$2 = this.m();
-      dhs $$3 = $$0.q();
-      jj $$4 = $$0.a();
-      eut $$5 = $$0.q().b_($$0.a());
-
-      for (jo $$6 : $$0.f()) {
-         if ($$6.o().d()) {
-            $$2 = $$2.b(b, $$6.g());
-            if ($$2.a($$3, $$4)) {
-               return $$2.b(c, Boolean.valueOf($$5.a() == euu.c));
-            }
+   @Override
+   public void a(dzo $$0, dip $$1, iu $$2, azt $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awl.ky, awm.e, 1.0F, 1.0F, false);
          }
+
+         ja $$7 = $$0.c(a);
+         ja.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ja.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == ja.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(lx.ah, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(lx.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
-
-      return null;
-   }
-
-   @Override
-   protected dym a(dym $$0, drm $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dym a(dym $$0, dpv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected eut b_(dym $$0) {
-      return $$0.c(c) ? euu.c.a(false) : super.b_($$0);
    }
 }

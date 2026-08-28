@@ -1,201 +1,166 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import java.util.function.LongPredicate;
 
-public class evh {
-   private final List<evf> a;
-   @Nullable
-   private evh.a b;
-   private int c;
-   private final jj d;
-   private final float e;
-   private final boolean f;
+public abstract class evh {
+   public static final long e = Long.MAX_VALUE;
+   private static final int a = 255;
+   protected final int f;
+   private final evl b;
+   private final Long2ByteMap c;
+   private volatile boolean d;
 
-   public evh(List<evf> $$0, jj $$1, boolean $$2) {
-      this.a = $$0;
-      this.d = $$1;
-      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
-      this.f = $$2;
-   }
-
-   public void a() {
-      this.c++;
-   }
-
-   public boolean b() {
-      return this.c <= 0;
-   }
-
-   public boolean c() {
-      return this.c >= this.a.size();
-   }
-
-   @Nullable
-   public evf d() {
-      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
-   }
-
-   public evf a(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public void b(int $$0) {
-      if (this.a.size() > $$0) {
-         this.a.subList($$0, this.a.size()).clear();
+   protected evh(int $$0, int $$1, final int $$2) {
+      if ($$0 >= 254) {
+         throw new IllegalArgumentException("Level count must be < 254.");
+      } else {
+         this.f = $$0;
+         this.b = new evl($$0, $$1);
+         this.c = new Long2ByteOpenHashMap($$2, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$2) {
+                  super.rehash($$0);
+               }
+            }
+         };
+         this.c.defaultReturnValue((byte)-1);
       }
    }
 
-   public void a(int $$0, evf $$1) {
-      this.a.set($$0, $$1);
+   protected void d(long $$0) {
+      int $$1 = this.c.remove($$0) & 255;
+      if ($$1 != 255) {
+         int $$2 = this.c($$0);
+         int $$3 = this.a($$2, $$1);
+         this.b.a($$0, $$3, this.f);
+         this.d = !this.b.b();
+      }
    }
 
-   public int e() {
-      return this.a.size();
+   public void a(LongPredicate $$0) {
+      LongList $$1 = new LongArrayList();
+      this.c.keySet().forEach($$2 -> {
+         if ($$0.test($$2)) {
+            $$1.add($$2);
+         }
+      });
+      $$1.forEach(this::d);
    }
 
-   public int f() {
-      return this.c;
+   private int a(int $$0, int $$1) {
+      return Math.min(Math.min($$0, $$1), this.f - 1);
    }
 
-   public void c(int $$0) {
-      this.c = $$0;
+   protected void e(long $$0) {
+      this.a($$0, $$0, this.f - 1, false);
    }
 
-   public fcu a(bvs $$0, int $$1) {
-      evf $$2 = this.a.get($$1);
-      double $$3 = (double)$$2.a + (double)((int)($$0.dq() + 1.0F)) * 0.5;
-      double $$4 = (double)$$2.b;
-      double $$5 = (double)$$2.c + (double)((int)($$0.dq() + 1.0F)) * 0.5;
-      return new fcu($$3, $$4, $$5);
+   protected void a(long $$0, long $$1, int $$2, boolean $$3) {
+      this.a($$0, $$1, $$2, this.c($$1), this.c.get($$1) & 255, $$3);
+      this.d = !this.b.b();
    }
 
-   public jj d(int $$0) {
-      return this.a.get($$0).a();
-   }
-
-   public fcu a(bvs $$0) {
-      return this.a($$0, this.c);
-   }
-
-   public jj g() {
-      return this.a.get(this.c).a();
-   }
-
-   public evf h() {
-      return this.a.get(this.c);
-   }
-
-   @Nullable
-   public evf i() {
-      return this.c > 0 ? this.a.get(this.c - 1) : null;
-   }
-
-   public boolean a(@Nullable evh $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0.a.size() != this.a.size()) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-            evf $$2 = this.a.get($$1);
-            evf $$3 = $$0.a.get($$1);
-            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
-               return false;
-            }
+   private void a(long $$0, long $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if (!this.a($$1)) {
+         $$2 = azk.a($$2, 0, this.f - 1);
+         $$3 = azk.a($$3, 0, this.f - 1);
+         boolean $$6 = $$4 == 255;
+         if ($$6) {
+            $$4 = $$3;
          }
 
-         return true;
+         int $$7;
+         if ($$5) {
+            $$7 = Math.min($$4, $$2);
+         } else {
+            $$7 = azk.a(this.a($$1, $$0, $$2), 0, this.f - 1);
+         }
+
+         int $$9 = this.a($$3, $$4);
+         if ($$3 != $$7) {
+            int $$10 = this.a($$3, $$7);
+            if ($$9 != $$10 && !$$6) {
+               this.b.a($$1, $$9, $$10);
+            }
+
+            this.b.a($$1, $$10);
+            this.c.put($$1, (byte)$$7);
+         } else if (!$$6) {
+            this.b.a($$1, $$9, this.f);
+            this.c.remove($$1);
+         }
       }
    }
 
-   public boolean j() {
-      return this.f;
-   }
+   protected final void b(long $$0, long $$1, int $$2, boolean $$3) {
+      int $$4 = this.c.get($$1) & 255;
+      int $$5 = azk.a(this.b($$0, $$1, $$2), 0, this.f - 1);
+      if ($$3) {
+         this.a($$0, $$1, $$5, this.c($$1), $$4, $$3);
+      } else {
+         boolean $$6 = $$4 == 255;
+         int $$7;
+         if ($$6) {
+            $$7 = azk.a(this.c($$1), 0, this.f - 1);
+         } else {
+            $$7 = $$4;
+         }
 
-   @bar
-   void a(evf[] $$0, evf[] $$1, Set<evo> $$2) {
-      this.b = new evh.a($$0, $$1, $$2);
-   }
-
-   @Nullable
-   public evh.a k() {
-      return this.b;
-   }
-
-   public void a(vr $$0) {
-      if (this.b != null && !this.b.c.isEmpty()) {
-         $$0.a(this.f);
-         $$0.q(this.c);
-         $$0.a(this.d);
-         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
-         this.b.a($$0);
+         if ($$5 == $$7) {
+            this.a($$0, $$1, this.f - 1, $$6 ? $$7 : this.c($$1), $$4, $$3);
+         }
       }
    }
 
-   public static evh b(vr $$0) {
-      boolean $$1 = $$0.readBoolean();
-      int $$2 = $$0.readInt();
-      jj $$3 = $$0.e();
-      List<evf> $$4 = $$0.a(evf::b);
-      evh.a $$5 = evh.a.b($$0);
-      evh $$6 = new evh($$4, $$3, $$1);
-      $$6.b = $$5;
-      $$6.c = $$2;
-      return $$6;
-   }
-
-   @Override
-   public String toString() {
-      return "Path(length=" + this.a.size() + ")";
-   }
-
-   public jj l() {
+   protected final boolean b() {
       return this.d;
    }
 
-   public float m() {
-      return this.e;
-   }
+   protected final int b(int $$0) {
+      if (this.b.b()) {
+         return $$0;
+      } else {
+         while (!this.b.b() && $$0 > 0) {
+            $$0--;
+            long $$1 = this.b.a();
+            int $$2 = azk.a(this.c($$1), 0, this.f - 1);
+            int $$3 = this.c.remove($$1) & 255;
+            if ($$3 < $$2) {
+               this.a($$1, $$3);
+               this.a($$1, $$3, true);
+            } else if ($$3 > $$2) {
+               this.a($$1, this.f - 1);
+               if ($$3 != this.f - 1) {
+                  this.b.a($$1, this.a(this.f - 1, $$3));
+                  this.c.put($$1, (byte)$$3);
+               }
 
-   static evf[] c(vr $$0) {
-      evf[] $$1 = new evf[$$0.l()];
+               this.a($$1, $$2, false);
+            }
+         }
 
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$1[$$2] = evf.b($$0);
-      }
-
-      return $$1;
-   }
-
-   static void a(vr $$0, evf[] $$1) {
-      $$0.c($$1.length);
-
-      for (evf $$2 : $$1) {
-         $$2.a($$0);
-      }
-   }
-
-   public evh n() {
-      evh $$0 = new evh(this.a, this.d, this.f);
-      $$0.b = this.b;
-      $$0.c = this.c;
-      return $$0;
-   }
-
-   public static record a(evf[] a, evf[] b, Set<evo> c) {
-
-      public void a(vr $$0) {
-         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
-         evh.a($$0, this.a);
-         evh.a($$0, this.b);
-      }
-
-      public static evh.a b(vr $$0) {
-         HashSet<evo> $$1 = $$0.a(HashSet::new, evo::c);
-         evf[] $$2 = evh.c($$0);
-         evf[] $$3 = evh.c($$0);
-         return new evh.a($$2, $$3, $$1);
+         this.d = !this.b.b();
+         return $$0;
       }
    }
+
+   public int c() {
+      return this.c.size();
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 == Long.MAX_VALUE;
+   }
+
+   protected abstract int a(long var1, long var3, int var5);
+
+   protected abstract void a(long var1, int var3, boolean var4);
+
+   protected abstract int c(long var1);
+
+   protected abstract void a(long var1, int var3);
+
+   protected abstract int b(long var1, long var3, int var5);
 }

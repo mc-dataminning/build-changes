@@ -1,76 +1,50 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import org.apache.commons.lang3.mutable.Mutable;
-import org.apache.commons.lang3.mutable.MutableObject;
 
-public class emo extends emq {
+public class emo extends emj {
    public static final MapCodec<emo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter($$0x -> $$0x.d)
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  btd.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
             )
             .apply($$0, emo::new)
    );
-   private final float b;
-   private final float c;
-   private final float d;
+   private final btd b;
+   private final int c;
 
-   @Override
-   protected emr<?> a() {
-      return emr.c;
-   }
-
-   public emo(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public emo(btd $$0, btd $$1, btd $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
    @Override
-   public void a(emq.a $$0) {
-      azs $$1 = $$0.b();
-      dio $$2 = (dio)$$0.a();
-      List<jj> $$3 = af.a($$0.c(), $$1);
-      if (!$$3.isEmpty()) {
-         Mutable<jj> $$4 = new MutableObject($$3.getFirst());
-         $$3.forEach($$1x -> {
-            if ($$1x.v() < ((jj)$$4.getValue()).v()) {
-               $$4.setValue($$1x);
-            }
-         });
-         jj $$5 = (jj)$$4.getValue();
-         if ($$1.i() < this.d) {
-            $$2.F_().a(me.aP).flatMap($$0x -> $$0x.a(rn.J)).ifPresent($$3x -> ((ehd)$$3x.a()).a($$2, $$2.a().m().g(), $$1, $$5.d()));
-         }
+   protected emk<?> a() {
+      return emk.j;
+   }
 
-         $$0.c().forEach($$2x -> {
-            if ($$1.i() < this.c) {
-               jj $$3x = $$2x.e();
-               if ($$0.a($$3x)) {
-                  a($$3x, $$0);
-               }
-            }
-         });
-         $$0.d().forEach($$2x -> {
-            if ($$1.i() < this.b) {
-               jj $$3x = $$2x.e();
-               if ($$0.a($$3x)) {
-                  a($$3x, $$0);
-               }
-            }
-         });
+   @Override
+   protected void a(div $$0, emj.b $$1, azt $$2, elt $$3, int $$4, emj.a $$5, int $$6, int $$7, int $$8) {
+      iu $$9 = $$5.a();
+      iu.a $$10 = $$9.k();
+
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
       }
    }
 
-   private static void a(jj $$0, emq.a $$1) {
-      while ($$1.a($$0.e()) && !((double)$$1.b().i() < 0.5)) {
-         $$1.a($$0, dkw.uc.m().b(don.b, Boolean.valueOf(false)));
-         $$0 = $$0.e();
-      }
+   @Override
+   public int a(azt $$0, int $$1, elt $$2) {
+      return this.b.a($$0);
+   }
 
-      $$1.a($$0, dkw.uc.m().b(don.b, Boolean.valueOf(true)));
+   @Override
+   protected boolean a(azt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

@@ -1,55 +1,62 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Set;
 
-public class bka extends DataFix {
-   private static final Set<String> a = ImmutableSet.of(
-      "minecraft:andesite_wall",
-      "minecraft:brick_wall",
-      "minecraft:cobblestone_wall",
-      "minecraft:diorite_wall",
-      "minecraft:end_stone_brick_wall",
-      "minecraft:granite_wall",
-      new String[]{
-         "minecraft:mossy_cobblestone_wall",
-         "minecraft:mossy_stone_brick_wall",
-         "minecraft:nether_brick_wall",
-         "minecraft:prismarine_wall",
-         "minecraft:red_nether_brick_wall",
-         "minecraft:red_sandstone_wall",
-         "minecraft:sandstone_wall",
-         "minecraft:stone_brick_wall"
+public class bka extends bhp {
+   public bka(Schema $$0, String $$1) {
+      super($$0, false, "Villager profession data fix (" + $$1 + ")", bit.D, $$1);
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      Dynamic<?> $$1 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      return $$0.set(
+         DSL.remainderFinder(),
+         $$1.remove("Profession")
+            .remove("Career")
+            .remove("CareerLevel")
+            .set(
+               "VillagerData",
+               $$1.createMap(
+                  ImmutableMap.of(
+                     $$1.createString("type"),
+                     $$1.createString("minecraft:plains"),
+                     $$1.createString("profession"),
+                     $$1.createString(a($$1.get("Profession").asInt(0), $$1.get("Career").asInt(0))),
+                     $$1.createString("level"),
+                     (Dynamic)DataFixUtils.orElse($$1.get("CareerLevel").result(), $$1.createInt(1))
+                  )
+               )
+            )
+      );
+   }
+
+   private static String a(int $$0, int $$1) {
+      if ($$0 == 0) {
+         if ($$1 == 2) {
+            return "minecraft:fisherman";
+         } else if ($$1 == 3) {
+            return "minecraft:shepherd";
+         } else {
+            return $$1 == 4 ? "minecraft:fletcher" : "minecraft:farmer";
+         }
+      } else if ($$0 == 1) {
+         return $$1 == 2 ? "minecraft:cartographer" : "minecraft:librarian";
+      } else if ($$0 == 2) {
+         return "minecraft:cleric";
+      } else if ($$0 == 3) {
+         if ($$1 == 2) {
+            return "minecraft:weaponsmith";
+         } else {
+            return $$1 == 3 ? "minecraft:toolsmith" : "minecraft:armorer";
+         }
+      } else if ($$0 == 4) {
+         return $$1 == 2 ? "minecraft:leatherworker" : "minecraft:butcher";
+      } else {
+         return $$0 == 5 ? "minecraft:nitwit" : "minecraft:none";
       }
-   );
-
-   public bka(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
-
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("WallPropertyFix", this.getInputSchema().getType(biq.u), $$0 -> $$0.update(DSL.remainderFinder(), bka::a));
-   }
-
-   private static String a(String $$0) {
-      return "true".equals($$0) ? "low" : "none";
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1) {
-      return $$0.update($$1, $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().result().map(bka::a).map($$0x::createString), $$0x));
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Name").asString().result().filter(a::contains).isPresent();
-      return !$$1 ? $$0 : $$0.update("Properties", $$0x -> {
-         Dynamic<?> $$1x = a($$0x, "east");
-         $$1x = a((Dynamic<T>)$$1x, "west");
-         $$1x = a((Dynamic<T>)$$1x, "north");
-         return a((Dynamic<T>)$$1x, "south");
-      });
    }
 }

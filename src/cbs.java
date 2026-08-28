@@ -1,80 +1,104 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
 
-public class cbs extends cbt {
-   private static final List<cxu> c = ImmutableList.of(cyc.qe, cyc.wp);
+public class cbs extends byq<cqe> {
+   private static final int c = 80;
+   private long d;
+   private long e;
+   private int f;
+   private Optional<iu> g = Optional.empty();
 
-   @Override
-   protected void a(arn $$0, cpu $$1) {
-      Optional<jr> $$2 = $$1.eb().c(cft.c);
-      if (!$$2.isEmpty()) {
-         jr $$3 = $$2.get();
-         dym $$4 = $$0.a_($$3.b());
-         if ($$4.a(dkw.pG)) {
-            this.c($$0, $$1);
-            this.a($$0, $$1, $$3, $$4);
+   public cbs() {
+      super(ImmutableMap.of(cgb.o, cgc.b, cgb.n, cgc.b));
+   }
+
+   protected boolean a(aro $$0, cqe $$1) {
+      if ($$1.af % 10 == 0 && (this.e == 0L || this.e + 160L <= (long)$$1.af)) {
+         if ($$1.n().a_(cyw.sz) <= 0) {
+            return false;
+         } else {
+            this.g = this.b($$0, $$1);
+            return this.g.isPresent();
          }
+      } else {
+         return false;
       }
    }
 
-   private void a(arn $$0, cpu $$1, jr $$2, dym $$3) {
-      jj $$4 = $$2.b();
-      if ($$3.c(dmf.e) == 8) {
-         $$3 = dmf.a($$1, $$3, (dhp)$$0, $$4);
-      }
+   protected boolean a(aro $$0, cqe $$1, long $$2) {
+      return this.f < 80 && this.g.isPresent();
+   }
 
-      int $$5 = 20;
-      int $$6 = 10;
-      int[] $$7 = new int[c.size()];
-      btx $$8 = $$1.n();
-      int $$9 = $$8.b();
-      dym $$10 = $$3;
+   private Optional<iu> b(aro $$0, cqe $$1) {
+      iu.a $$2 = new iu.a();
+      Optional<iu> $$3 = Optional.empty();
+      int $$4 = 0;
 
-      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
-         cxy $$12 = $$8.a($$11);
-         int $$13 = c.indexOf($$12.h());
-         if ($$13 != -1) {
-            int $$14 = $$12.M();
-            int $$15 = $$7[$$13] + $$14;
-            $$7[$$13] = $$15;
-            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
-            if ($$16 > 0) {
-               $$5 -= $$16;
-
-               for (int $$17 = 0; $$17 < $$16; $$17++) {
-                  $$10 = dmf.a($$1, $$10, $$0, $$12, $$4);
-                  if ($$10.c(dmf.e) == 7) {
-                     this.a($$0, $$3, $$4, $$10);
-                     return;
+      for (int $$5 = -1; $$5 <= 1; $$5++) {
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            for (int $$7 = -1; $$7 <= 1; $$7++) {
+               $$2.a($$1.dv(), $$5, $$6, $$7);
+               if (this.a($$2, $$0)) {
+                  if ($$0.A.a(++$$4) == 0) {
+                     $$3 = Optional.of($$2.j());
                   }
                }
             }
          }
       }
 
-      this.a($$0, $$3, $$4, $$10);
+      return $$3;
    }
 
-   private void a(arn $$0, dym $$1, jj $$2, dym $$3) {
-      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
+   private boolean a(iu $$0, aro $$1) {
+      dzo $$2 = $$1.a_($$0);
+      dlu $$3 = $$2.b();
+      return $$3 instanceof dnq && !((dnq)$$3).i($$2);
    }
 
-   private void c(arn $$0, cpu $$1) {
-      btx $$2 = $$1.n();
-      if ($$2.a_(cyc.qg) <= 36) {
-         int $$3 = $$2.a_(cyc.qf);
-         int $$4 = 3;
-         int $$5 = 3;
-         int $$6 = Math.min(3, $$3 / 3);
-         if ($$6 != 0) {
-            int $$7 = $$6 * 3;
-            $$2.a(cyc.qf, $$7);
-            cxy $$8 = $$2.b(new cxy(cyc.qg, $$6));
-            if (!$$8.f()) {
-               $$1.a($$0, $$8, 0.5F);
+   protected void b(aro $$0, cqe $$1, long $$2) {
+      this.a($$1);
+      $$1.a(bwk.a, new cys(cyw.sz));
+      this.d = $$2;
+      this.f = 0;
+   }
+
+   private void a(cqe $$0) {
+      this.g.ifPresent($$1 -> {
+         byt $$2 = new byt($$1);
+         $$0.eb().a(cgb.o, $$2);
+         $$0.eb().a(cgb.n, new cge($$2, 0.5F, 1));
+      });
+   }
+
+   protected void c(aro $$0, cqe $$1, long $$2) {
+      $$1.a(bwk.a, cys.k);
+      this.e = (long)$$1.af;
+   }
+
+   protected void d(aro $$0, cqe $$1, long $$2) {
+      iu $$3 = this.g.get();
+      if ($$2 >= this.d && $$3.a($$1.dt(), 1.0)) {
+         cys $$4 = cys.k;
+         buf $$5 = $$1.n();
+         int $$6 = $$5.b();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            cys $$8 = $$5.a($$7);
+            if ($$8.a(cyw.sz)) {
+               $$4 = $$8;
+               break;
             }
          }
+
+         if (!$$4.f() && cxc.a($$4, $$0, $$3)) {
+            $$0.c(1505, $$3, 15);
+            this.g = this.b($$0, $$1);
+            this.a($$1);
+            this.d = $$2 + 40L;
+         }
+
+         this.f++;
       }
    }
 }

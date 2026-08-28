@@ -1,36 +1,33 @@
-import java.util.function.BooleanSupplier;
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
+import com.mojang.brigadier.ImmutableStringReader;
+import com.mojang.brigadier.StringReader;
+import java.util.Optional;
 
-public class bpu {
-   private final LongSupplier a;
-   private final IntSupplier b;
-   private final BooleanSupplier c;
-   private bpy d = bpx.a;
+public abstract class bpu<C, V> implements bpo<StringReader, V>, bpv {
+   private final bpi<ale> b;
+   protected final C a;
 
-   public bpu(LongSupplier $$0, IntSupplier $$1, BooleanSupplier $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   protected bpu(bpi<ale> $$0, C $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   public boolean a() {
-      return this.d != bpx.a;
+   @Override
+   public Optional<V> a(bpn<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+      int $$1 = $$0.c();
+      Optional<ale> $$2 = $$0.b(this.b);
+      if ($$2.isPresent()) {
+         try {
+            return Optional.of(this.a((ImmutableStringReader)$$0.b(), $$2.get()));
+         } catch (Exception var5) {
+            $$0.a().a($$1, this, var5);
+            return Optional.empty();
+         }
+      } else {
+         $$0.a().a($$1, this, ale.c.createWithContext((ImmutableStringReader)$$0.b()));
+         return Optional.empty();
+      }
    }
 
-   public void b() {
-      this.d = bpx.a;
-   }
-
-   public void c() {
-      this.d = new bpt(this.a, this.b, this.c);
-   }
-
-   public bqb d() {
-      return this.d;
-   }
-
-   public bpz e() {
-      return this.d.d();
-   }
+   protected abstract V a(ImmutableStringReader var1, ale var2) throws Exception;
 }

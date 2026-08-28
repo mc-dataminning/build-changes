@@ -1,97 +1,160 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dra extends dku {
-   public static final MapCodec<dra> a = b(dra::new);
-   public static final dzd b = drd.b;
+public class dra {
+   public static final dra.e[] a = new dra.e[]{dra.e.a, dra.e.b, dra.e.c};
+   private final dra.b b;
 
-   @Override
-   public MapCodec<dra> a() {
-      return a;
+   public dra(dqy $$0) {
+      this(new dra.a($$0));
    }
 
-   public dra(dyl.d $$0) {
-      super($$0);
-      this.l(this.m().b(b, Boolean.valueOf(false)));
+   public dra(dra.b $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected void a_(dym $$0, dhp $$1, jj $$2, cqi $$3) {
-      e($$0, $$1, $$2);
-      super.a_($$0, $$1, $$2, $$3);
+   public boolean a(dzo $$0, dhv $$1, iu $$2, ja $$3) {
+      return ja.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
    }
 
-   @Override
-   public void a(dhp $$0, jj $$1, dym $$2, bvs $$3) {
-      if (!$$3.ce()) {
-         e($$2, $$0, $$1);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   public Optional<dra.c> a(dzo $$0, diq $$1, iu $$2, azt $$3) {
+      return ja.a($$3)
+         .stream()
+         .filter($$1x -> this.b.b($$0, $$1x))
+         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
+         .filter(Optional::isPresent)
+         .findFirst()
+         .orElse(Optional.empty());
    }
 
-   @Override
-   protected btq a(cxy $$0, dym $$1, dhp $$2, jj $$3, cqi $$4, btp $$5, fcq $$6) {
-      if ($$2.C) {
-         a($$2, $$3);
+   public long a(dzo $$0, diq $$1, iu $$2, boolean $$3) {
+      return ja.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
+   }
+
+   public Optional<dra.c> a(dzo $$0, diq $$1, iu $$2, ja $$3, azt $$4, boolean $$5) {
+      return ja.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
+   }
+
+   private long a(dzo $$0, diq $$1, iu $$2, ja $$3, boolean $$4) {
+      return ja.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
+   }
+
+   @VisibleForTesting
+   public Optional<dra.c> a(dzo $$0, diq $$1, iu $$2, ja $$3, ja $$4, boolean $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
+   }
+
+   public Optional<dra.c> a(dzo $$0, dhv $$1, iu $$2, ja $$3, ja $$4, dra.d $$5) {
+      if ($$4.o() == $$3.o()) {
+         return Optional.empty();
+      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
+         for (dra.e $$6 : this.b.a()) {
+            dra.c $$7 = $$6.a($$2, $$4, $$3);
+            if ($$5.test($$1, $$2, $$7)) {
+               return Optional.of($$7);
+            }
+         }
+
+         return Optional.empty();
       } else {
-         e($$1, $$2, $$3);
-      }
-
-      return (btq)($$0.h() instanceof cwf && new dbn($$4, $$5, $$0, $$6).b() ? btq.e : btq.a);
-   }
-
-   private static void e(dym $$0, dhp $$1, jj $$2) {
-      a($$1, $$2);
-      if (!$$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 3);
+         return Optional.empty();
       }
    }
 
-   @Override
-   protected boolean f(dym $$0) {
-      return $$0.c(b);
+   public Optional<dra.c> a(diq $$0, dra.c $$1, boolean $$2) {
+      dzo $$3 = $$0.a_($$1.a());
+      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
    }
 
-   @Override
-   protected void b(dym $$0, arn $$1, jj $$2, azs $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
+   public static class a implements dra.b {
+      protected dqy a;
+
+      public a(dqy $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public dzo a(dzo $$0, dhv $$1, iu $$2, ja $$3) {
+         return this.a.c($$0, $$1, $$2, $$3);
+      }
+
+      protected boolean a(dhv $$0, iu $$1, iu $$2, ja $$3, dzo $$4) {
+         return $$4.l() || $$4.a(this.a) || $$4.a(dlw.J) && $$4.y().b();
+      }
+
+      @Override
+      public boolean a(dhv $$0, iu $$1, dra.c $$2) {
+         dzo $$3 = $$0.a_($$2.a());
+         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
       }
    }
 
-   @Override
-   protected void a(dym $$0, arn $$1, jj $$2, cxy $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, btb.a(1, 5));
+   public interface b {
+      @Nullable
+      dzo a(dzo var1, dhv var2, iu var3, ja var4);
+
+      boolean a(dhv var1, iu var2, dra.c var3);
+
+      default dra.e[] a() {
+         return dra.a;
       }
-   }
 
-   @Override
-   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
-      if ($$0.c(b)) {
-         a($$1, $$2);
+      default boolean a(dzo $$0, ja $$1) {
+         return dqy.a($$0, $$1);
       }
-   }
 
-   private static void a(dhp $$0, jj $$1) {
-      double $$2 = 0.5625;
-      azs $$3 = $$0.A;
+      default boolean a(dzo $$0) {
+         return false;
+      }
 
-      for (jo $$4 : jo.values()) {
-         jj $$5 = $$1.a($$4);
-         if (!$$0.a_($$5).s()) {
-            jo.a $$6 = $$4.o();
-            double $$7 = $$6 == jo.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
-            double $$8 = $$6 == jo.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
-            double $$9 = $$6 == jo.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
-            $$0.a(lq.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
+      default boolean b(dzo $$0, ja $$1) {
+         return this.a($$0) || this.a($$0, $$1);
+      }
+
+      default boolean a(diq $$0, dra.c $$1, dzo $$2, boolean $$3) {
+         dzo $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
+         if ($$4 != null) {
+            if ($$3) {
+               $$0.z($$1.a()).e($$1.a());
+            }
+
+            return $$0.a($$1.a(), $$4, 2);
+         } else {
+            return false;
          }
       }
    }
 
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b);
+   public static record c(iu a, ja b) {
+   }
+
+   @FunctionalInterface
+   public interface d {
+      boolean test(dhv var1, iu var2, dra.c var3);
+   }
+
+   public static enum e {
+      a {
+         @Override
+         public dra.c a(iu $$0, ja $$1, ja $$2) {
+            return new dra.c($$0, $$1);
+         }
+      },
+      b {
+         @Override
+         public dra.c a(iu $$0, ja $$1, ja $$2) {
+            return new dra.c($$0.a($$1), $$2);
+         }
+      },
+      c {
+         @Override
+         public dra.c a(iu $$0, ja $$1, ja $$2) {
+            return new dra.c($$0.a($$1).a($$2), $$1.g());
+         }
+      };
+
+      public abstract dra.c a(iu var1, ja var2, ja var3);
    }
 }

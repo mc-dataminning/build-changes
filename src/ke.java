@@ -1,14 +1,17 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record ke(Optional<aug> b, Lifecycle c) {
-   public static final ke a = new ke(Optional.empty(), Lifecycle.stable());
+public interface ke {
+   @Nullable
+   <T> T a(ki<? extends T> var1);
 
-   public Optional<aug> a() {
-      return this.b;
+   default <T> T a(ki<? extends T> $$0, T $$1) {
+      T $$2 = this.a($$0);
+      return $$2 != null ? $$2 : $$1;
    }
 
-   public Lifecycle b() {
-      return this.c;
+   @Nullable
+   default <T> kl<T> b(ki<T> $$0) {
+      T $$1 = this.a($$0);
+      return $$1 != null ? new kl<>($$0, $$1) : null;
    }
 }

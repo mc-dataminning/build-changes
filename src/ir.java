@@ -1,71 +1,80 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.List;
-
-public record ir(List<String> a, List<String> b) {
-   public static ir a(String $$0, int $$1) {
-      Builder<String> $$2 = ImmutableList.builder();
-      Builder<String> $$3 = ImmutableList.builder();
-      int $$4 = $$0.length();
-      int $$5 = 0;
-      int $$6 = $$0.indexOf(36);
-
-      while ($$6 != -1) {
-         if ($$6 != $$4 - 1 && $$0.charAt($$6 + 1) == '(') {
-            $$2.add($$0.substring($$5, $$6));
-            int $$7 = $$0.indexOf(41, $$6 + 1);
-            if ($$7 == -1) {
-               throw new IllegalArgumentException("Unterminated macro variable in macro '" + $$0 + "' on line " + $$1);
-            }
-
-            String $$8 = $$0.substring($$6 + 2, $$7);
-            if (!a($$8)) {
-               throw new IllegalArgumentException("Invalid macro variable name '" + $$8 + "' on line " + $$1);
-            }
-
-            $$3.add($$8);
-            $$5 = $$7 + 1;
-            $$6 = $$0.indexOf(36, $$5);
-         } else {
-            $$6 = $$0.indexOf(36, $$6 + 1);
-         }
+public enum ir {
+   a {
+      @Override
+      public int a(int $$0, int $$1, int $$2, ja.a $$3) {
+         return $$3.a($$0, $$1, $$2);
       }
 
-      if ($$5 == 0) {
-         throw new IllegalArgumentException("Macro without variables on line " + $$1);
-      } else {
-         if ($$5 != $$4) {
-            $$2.add($$0.substring($$5));
-         }
-
-         return new ir($$2.build(), $$3.build());
-      }
-   }
-
-   private static boolean a(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         char $$2 = $$0.charAt($$1);
-         if (!Character.isLetterOrDigit($$2) && $$2 != '_') {
-            return false;
-         }
+      @Override
+      public double a(double $$0, double $$1, double $$2, ja.a $$3) {
+         return $$3.a($$0, $$1, $$2);
       }
 
-      return true;
-   }
-
-   public String a(List<String> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (int $$2 = 0; $$2 < this.b.size(); $$2++) {
-         $$1.append(this.a.get($$2)).append($$0.get($$2));
-         im.a($$1);
+      @Override
+      public ja.a a(ja.a $$0) {
+         return $$0;
       }
 
-      if (this.a.size() > this.b.size()) {
-         $$1.append(this.a.get(this.a.size() - 1));
+      @Override
+      public ir a() {
+         return this;
+      }
+   },
+   b {
+      @Override
+      public int a(int $$0, int $$1, int $$2, ja.a $$3) {
+         return $$3.a($$2, $$0, $$1);
       }
 
-      im.a($$1);
-      return $$1.toString();
+      @Override
+      public double a(double $$0, double $$1, double $$2, ja.a $$3) {
+         return $$3.a($$2, $$0, $$1);
+      }
+
+      @Override
+      public ja.a a(ja.a $$0) {
+         return d[Math.floorMod($$0.ordinal() + 1, 3)];
+      }
+
+      @Override
+      public ir a() {
+         return c;
+      }
+   },
+   c {
+      @Override
+      public int a(int $$0, int $$1, int $$2, ja.a $$3) {
+         return $$3.a($$1, $$2, $$0);
+      }
+
+      @Override
+      public double a(double $$0, double $$1, double $$2, ja.a $$3) {
+         return $$3.a($$1, $$2, $$0);
+      }
+
+      @Override
+      public ja.a a(ja.a $$0) {
+         return d[Math.floorMod($$0.ordinal() - 1, 3)];
+      }
+
+      @Override
+      public ir a() {
+         return b;
+      }
+   };
+
+   public static final ja.a[] d = ja.a.values();
+   public static final ir[] e = values();
+
+   public abstract int a(int var1, int var2, int var3, ja.a var4);
+
+   public abstract double a(double var1, double var3, double var5, ja.a var7);
+
+   public abstract ja.a a(ja.a var1);
+
+   public abstract ir a();
+
+   public static ir a(ja.a $$0, ja.a $$1) {
+      return e[Math.floorMod($$1.ordinal() - $$0.ordinal(), 3)];
    }
 }

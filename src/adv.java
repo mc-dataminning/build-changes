@@ -1,18 +1,29 @@
-import io.netty.buffer.ByteBuf;
+public class adv implements zd<abs> {
+   public static final yu<vs, adv> a = zd.a(adv::a, adv::new);
+   private final int b;
 
-public class adv implements zc<abr> {
-   public static final adv a = new adv();
-   public static final yt<ByteBuf, adv> b = yt.a(a);
+   public adv(bum $$0) {
+      this($$0.b());
+   }
 
-   private adv() {
+   public adv(int $$0) {
+      this.b = $$0;
+   }
+
+   private adv(vs $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vs $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public ze<adv> a() {
-      return agk.ad;
+   public zf<adv> a() {
+      return agl.ac;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 }

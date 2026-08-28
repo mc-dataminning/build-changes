@@ -1,41 +1,42 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class fcw extends fdo {
-   private final DoubleList b;
-   private final DoubleList c;
-   private final DoubleList d;
+public record fcw(fcs b, fcs c) implements fcs {
+   public static final MapCodec<fcw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(fct.a.fieldOf("min").forGetter(fcw::c), fct.a.fieldOf("max").forGetter(fcw::d)).apply($$0, fcw::new)
+   );
 
-   protected fcw(fdd $$0, double[] $$1, double[] $$2, double[] $$3) {
-      this(
-         $$0,
-         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
-      );
+   @Override
+   public fcr b() {
+      return fct.c;
    }
 
-   fcw(fdd $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
-      super($$0);
-      int $$4 = $$0.b() + 1;
-      int $$5 = $$0.c() + 1;
-      int $$6 = $$0.d() + 1;
-      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      } else {
-         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
-      }
+   public static fcw a(float $$0, float $$1) {
+      return new fcw(fcp.a($$0), fcp.a($$1));
    }
 
    @Override
-   public DoubleList a(jo.a $$0) {
-      return switch ($$0) {
-         case a -> this.b;
-         case b -> this.c;
-         case c -> this.d;
-      };
+   public int a(eyn $$0) {
+      return azk.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   }
+
+   @Override
+   public float b(eyn $$0) {
+      return azk.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
+
+   @Override
+   public Set<bav<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public fcs c() {
+      return this.b;
+   }
+
+   public fcs d() {
+      return this.c;
    }
 }

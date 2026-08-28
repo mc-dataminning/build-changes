@@ -1,4 +1,3 @@
-public enum btp {
-   a,
-   b;
+public interface btp {
+   void a();
 }

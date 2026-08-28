@@ -1,59 +1,73 @@
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class cyi extends cxu {
-   public cyi(cxu.a $$0) {
-      super($$0);
+public class cyi extends cyo {
+   protected static final Map<dlu, Pair<Predicate<dcn>, Consumer<dcn>>> a = Maps.newHashMap(
+      ImmutableMap.of(
+         dlw.i,
+         Pair.of(cyi::b, a(dlw.cK.m())),
+         dlw.lg,
+         Pair.of(cyi::b, a(dlw.cK.m())),
+         dlw.j,
+         Pair.of(cyi::b, a(dlw.cK.m())),
+         dlw.k,
+         Pair.of(cyi::b, a(dlw.j.m())),
+         dlw.tn,
+         Pair.of((Predicate<dcn>)$$0 -> true, a(dlw.j.m(), cyw.ec))
+      )
+   );
+
+   public cyi(dag $$0, float $$1, float $$2, cyo.a $$3) {
+      super($$3.c($$0, $$1, $$2));
    }
 
    @Override
-   public btq a(dbp $$0) {
-      dhp $$1 = $$0.q();
-      jj $$2 = $$0.a();
-      dym $$3 = $$1.a_($$2);
-      if ($$3.a(awz.U)) {
-         cqi $$4 = $$0.o();
-         if (!$$1.C && $$4 != null) {
-            return a($$4, $$1, $$2);
-         }
-      }
-
-      return btq.e;
-   }
-
-   public static btq a(cqi $$0, dhp $$1, jj $$2) {
-      cmh $$3 = null;
-      List<bwp> $$4 = a($$1, $$2, $$1x -> $$1x.C() == $$0);
-
-      for (bwp $$5 : $$4) {
-         if ($$3 == null) {
-            $$3 = cmh.a($$1, $$2);
-            $$3.m();
-         }
-
-         $$5.b($$3, true);
-      }
-
-      if (!$$4.isEmpty()) {
-         $$1.a(edm.b, $$2, edm.a.a($$0));
-         return btq.b;
+   public bty a(dcn $$0) {
+      dip $$1 = $$0.q();
+      iu $$2 = $$0.a();
+      Pair<Predicate<dcn>, Consumer<dcn>> $$3 = a.get($$1.a_($$2).b());
+      if ($$3 == null) {
+         return bty.e;
       } else {
-         return btq.e;
+         Predicate<dcn> $$4 = (Predicate<dcn>)$$3.getFirst();
+         Consumer<dcn> $$5 = (Consumer<dcn>)$$3.getSecond();
+         if ($$4.test($$0)) {
+            cqs $$6 = $$0.o();
+            $$1.a($$6, $$2, awl.mL, awm.e, 1.0F, 1.0F);
+            if (!$$1.C) {
+               $$5.accept($$0);
+               if ($$6 != null) {
+                  $$0.n().a(1, $$6, bwz.d($$0.p()));
+               }
+            }
+
+            return bty.a;
+         } else {
+            return bty.e;
+         }
       }
    }
 
-   public static List<bwp> a(dhp $$0, jj $$1, Predicate<bwp> $$2) {
-      double $$3 = 7.0;
-      int $$4 = $$1.u();
-      int $$5 = $$1.v();
-      int $$6 = $$1.w();
-      fcp $$7 = new fcp((double)$$4 - 7.0, (double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$4 + 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0);
-      return $$0.a(bvs.class, $$7, $$1x -> {
-         if ($$1x instanceof bwp $$2x && $$2.test($$2x)) {
-            return true;
-         }
+   public static Consumer<dcn> a(dzo $$0) {
+      return $$1 -> {
+         $$1.q().a($$1.a(), $$0, 11);
+         $$1.q().a(eeo.c, $$1.a(), eeo.a.a($$1.o(), $$0));
+      };
+   }
 
-         return false;
-      }).stream().map(bwp.class::cast).toList();
+   public static Consumer<dcn> a(dzo $$0, dio $$1) {
+      return $$2 -> {
+         $$2.q().a($$2.a(), $$0, 11);
+         $$2.q().a(eeo.c, $$2.a(), eeo.a.a($$2.o(), $$0));
+         dlu.a($$2.q(), $$2.a(), $$2.k(), new cys($$1));
+      };
+   }
+
+   public static boolean b(dcn $$0) {
+      return $$0.k() != ja.a && $$0.q().a_($$0.a().d()).l();
    }
 }

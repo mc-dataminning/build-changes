@@ -1,34 +1,33 @@
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.mojang.serialization.Codec;
 
-public record fnr(float a, boolean b, Map<String, List<fnq>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<fnq>> b = Maps.newHashMap();
-      private boolean c;
+public enum fnr implements azn, bai {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
 
-      public static fnr.a a(float $$0) {
-         return new fnr.a($$0);
-      }
+   public static final Codec<fnr> d = bai.a(fnr::values);
+   private final int e;
+   private final String f;
+   private final String g;
 
-      private a(float $$0) {
-         this.a = $$0;
-      }
+   private fnr(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
 
-      public fnr.a a() {
-         this.c = true;
-         return this;
-      }
+   @Override
+   public String c() {
+      return this.f;
+   }
 
-      public fnr.a a(String $$0, fnq $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> new ArrayList<>()).add($$1);
-         return this;
-      }
+   @Override
+   public int b() {
+      return this.e;
+   }
 
-      public fnr b() {
-         return new fnr(this.a, this.c, this.b);
-      }
+   @Override
+   public String a() {
+      return this.g;
    }
 }

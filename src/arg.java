@@ -1,35 +1,30 @@
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.Set;
+import java.util.function.IntFunction;
 
-public final class arg {
-   private final Object2BooleanMap<aro> a = new Object2BooleanOpenHashMap();
+public enum arg implements azn {
+   a(0, "options.particles.all"),
+   b(1, "options.particles.decreased"),
+   c(2, "options.particles.minimal");
 
-   public Set<aro> a() {
-      return this.a.keySet();
+   private static final IntFunction<arg> d = aya.a(arg::b, values(), aya.a.b);
+   private final int e;
+   private final String f;
+
+   private arg(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public void a(aro $$0, boolean $$1) {
-      this.a.put($$0, $$1);
+   @Override
+   public String a() {
+      return this.f;
    }
 
-   public void a(aro $$0) {
-      this.a.removeBoolean($$0);
+   @Override
+   public int b() {
+      return this.e;
    }
 
-   public void b(aro $$0) {
-      this.a.replace($$0, true);
-   }
-
-   public void c(aro $$0) {
-      this.a.replace($$0, false);
-   }
-
-   public boolean d(aro $$0) {
-      return this.a.getOrDefault($$0, true);
-   }
-
-   public boolean e(aro $$0) {
-      return this.a.getBoolean($$0);
+   public static arg a(int $$0) {
+      return d.apply($$0);
    }
 }

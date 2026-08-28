@@ -1,13 +1,10 @@
-import java.util.concurrent.CompletableFuture;
+public enum arc {
+   a,
+   b,
+   c,
+   d;
 
-public interface arc {
-   ard d(long var1);
-
-   void a(ard var1);
-
-   CompletableFuture<eaj> a(ard var1, ebn var2, bae<ard> var3);
-
-   aqo a(ebk var1, dgw var2);
-
-   void g();
+   public boolean a(arc $$0) {
+      return this.ordinal() >= $$0.ordinal();
+   }
 }

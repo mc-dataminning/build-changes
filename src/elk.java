@@ -1,49 +1,30 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class elk extends elh {
-   public static final MapCodec<elk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(bsv.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, elk::new)
+public record elk(int b, int c, int d, je<epm> e) implements ekx {
+   public static final Codec<elk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ays.m.fieldOf("tries").orElse(128).forGetter(elk::a),
+               ays.l.fieldOf("xz_spread").orElse(7).forGetter(elk::b),
+               ays.l.fieldOf("y_spread").orElse(3).forGetter(elk::c),
+               epm.b.fieldOf("feature").forGetter(elk::d)
+            )
+            .apply($$0, elk::new)
    );
-   private final bsv b;
 
-   public elk(bsv $$0, bsv $$1, bsv $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected eli<?> a() {
-      return eli.h;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected void a(dhv $$0, elh.b $$1, azs $$2, ekr $$3, int $$4, elh.a $$5, int $$6, int $$7, int $$8) {
-      jj $$9 = $$5.a();
-      int $$10 = 0;
-
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + azk.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
-         } else {
-            $$14 = $$13;
-         }
-
-         this.a($$0, $$1, $$2, $$3, new jj($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
-      }
+   public int c() {
+      return this.d;
    }
 
-   @Override
-   public int a(azs $$0, int $$1, ekr $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(azs $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   public je<epm> d() {
+      return this.e;
    }
 }

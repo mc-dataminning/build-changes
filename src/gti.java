@@ -1,31 +1,52 @@
-import java.util.function.UnaryOperator;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.List;
 
-public class gti extends gst {
-   private final gew a;
-   private final ald g;
-   private final gea<gzw> h;
+public class gti implements gtf.a {
+   private static final int a = 160;
+   private final fof b;
+   private final Int2ObjectMap<gti.a> c = new Int2ObjectOpenHashMap();
 
-   public gti(guf.a $$0, ghb $$1) {
-      super($$0);
-      this.g = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
-      this.a = new gew.a($$0.a(ghc.E), $$0x -> goi.i());
-      this.h = new gdf($$0.a($$1));
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public void a(int $$0, iu $$1, List<aam.a> $$2) {
+      this.c.put($$0, new gti.a($$1, $$2));
+   }
+
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public gti(fof $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected gea<gzw> a() {
-      return this.h;
-   }
+   public void a(fiq $$0, gpd $$1, double $$2, double $$3, double $$4) {
+      fnn $$5 = this.b.j.k();
+      iu $$6 = iu.a($$5.b().d, 0.0, $$5.b().f);
+      ObjectIterator var11 = this.c.values().iterator();
 
-   @Override
-   protected goi b() {
-      return this.h.a(this.g);
-   }
-
-   @Override
-   protected void b(gzw $$0, fho $$1, gny $$2, int $$3) {
-      if (!$$0.f) {
-         this.a.a($$1, $$2.getBuffer(this.a.a(this.g)), $$3, hgi.d);
+      while (var11.hasNext()) {
+         gti.a $$7 = (gti.a)var11.next();
+         iu $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               aam.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               gtf.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+            }
+         }
       }
+   }
+
+   static record a(iu a, List<aam.a> b) {
    }
 }

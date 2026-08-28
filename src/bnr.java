@@ -1,40 +1,45 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.SequencedMap;
 import java.util.function.Supplier;
 
-public class bnr extends bkj {
+public class bnr extends bko {
    public bnr(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("minecraft:boat");
-      $$1.remove("minecraft:chest_boat");
-      this.registerSimple($$1, "minecraft:oak_boat");
-      this.registerSimple($$1, "minecraft:spruce_boat");
-      this.registerSimple($$1, "minecraft:birch_boat");
-      this.registerSimple($$1, "minecraft:jungle_boat");
-      this.registerSimple($$1, "minecraft:acacia_boat");
-      this.registerSimple($$1, "minecraft:cherry_boat");
-      this.registerSimple($$1, "minecraft:dark_oak_boat");
-      this.registerSimple($$1, "minecraft:mangrove_boat");
-      this.registerSimple($$1, "minecraft:bamboo_raft");
-      this.a($$1, "minecraft:oak_chest_boat");
-      this.a($$1, "minecraft:spruce_chest_boat");
-      this.a($$1, "minecraft:birch_chest_boat");
-      this.a($$1, "minecraft:jungle_chest_boat");
-      this.a($$1, "minecraft:acacia_chest_boat");
-      this.a($$1, "minecraft:cherry_chest_boat");
-      this.a($$1, "minecraft:dark_oak_chest_boat");
-      this.a($$1, "minecraft:mangrove_chest_boat");
-      this.a($$1, "minecraft:bamboo_chest_raft");
+   public static SequencedMap<String, Supplier<TypeTemplate>> a(Schema $$0) {
+      SequencedMap<String, Supplier<TypeTemplate>> $$1 = new LinkedHashMap<>();
+      $$1.put("minecraft:bees", () -> DSL.list(DSL.optionalFields("entity_data", bit.C.in($$0))));
+      $$1.put("minecraft:block_entity_data", () -> bit.s.in($$0));
+      $$1.put("minecraft:bundle_contents", () -> DSL.list(bit.t.in($$0)));
+      $$1.put(
+         "minecraft:can_break", () -> DSL.optionalFields("predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(bit.E.in($$0), DSL.list(bit.E.in($$0))))))
+      );
+      $$1.put(
+         "minecraft:can_place_on",
+         () -> DSL.optionalFields("predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(bit.E.in($$0), DSL.list(bit.E.in($$0))))))
+      );
+      $$1.put("minecraft:charged_projectiles", () -> DSL.list(bit.t.in($$0)));
+      $$1.put("minecraft:container", () -> DSL.list(DSL.optionalFields("item", bit.t.in($$0))));
+      $$1.put("minecraft:entity_data", () -> bit.C.in($$0));
+      $$1.put("minecraft:pot_decorations", () -> DSL.list(bit.F.in($$0)));
+      $$1.put("minecraft:food", () -> DSL.optionalFields("using_converts_to", bit.t.in($$0)));
+      $$1.put("minecraft:custom_name", () -> bit.z.in($$0));
+      $$1.put("minecraft:item_name", () -> bit.z.in($$0));
+      $$1.put("minecraft:lore", () -> DSL.list(bit.z.in($$0)));
+      $$1.put(
+         "minecraft:written_book_content",
+         () -> DSL.optionalFields("pages", DSL.list(DSL.or(DSL.optionalFields("raw", bit.z.in($$0), "filtered", bit.z.in($$0)), bit.z.in($$0))))
+      );
       return $$1;
    }
 
-   private void a(Map<String, Supplier<TypeTemplate>> $$0, String $$1) {
-      this.register($$0, $$1, $$0x -> DSL.optionalFields("Items", DSL.list(biq.t.in(this))));
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(true, bit.w, () -> DSL.optionalFieldsLazy(a($$0)));
    }
 }

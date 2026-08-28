@@ -1,26 +1,17 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
 
-public class bew extends bhm {
+public class bew extends bhp {
    public bew(Schema $$0) {
-      super($$0, false, "EntityShulkerRotationFix", biq.D, "minecraft:shulker");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      List<Double> $$1 = $$0.get("Rotation").asList($$0x -> $$0x.asDouble(180.0));
-      if (!$$1.isEmpty()) {
-         $$1.set(0, $$1.get(0) - 180.0);
-         return $$0.set("Rotation", $$0.createList($$1.stream().map($$0::createDouble)));
-      } else {
-         return $$0;
-      }
+      super($$0, false, "EntitySalmonSizeFix", bit.D, "minecraft:salmon");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         String $$1 = $$0x.get("type").asString("medium");
+         return $$1.equals("large") ? $$0x : $$0x.set("type", $$0x.createString("medium"));
+      });
    }
 }

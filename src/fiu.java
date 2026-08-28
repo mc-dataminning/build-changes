@@ -1,50 +1,139 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.lwjgl.system.MemoryStack;
 
-public class fiu extends fjt {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public Date b;
-   public long c;
-   private boolean g;
-   public Map<String, String> d = Maps.newHashMap();
-   public Map<String, String> e = Maps.newHashMap();
+public interface fiu {
+   fiu a(float var1, float var2, float var3);
 
-   public static fiu a(JsonElement $$0) {
-      JsonObject $$1 = $$0.getAsJsonObject();
-      fiu $$2 = new fiu();
+   fiu a(int var1, int var2, int var3, int var4);
+
+   fiu a(float var1, float var2);
+
+   fiu a(int var1, int var2);
+
+   fiu b(int var1, int var2);
+
+   fiu b(float var1, float var2, float var3);
+
+   default void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      this.a($$0, $$1, $$2);
+      this.a($$3);
+      this.a($$4, $$5);
+      this.b($$6);
+      this.c($$7);
+      this.b($$8, $$9, $$10);
+   }
+
+   default fiu a(float $$0, float $$1, float $$2, float $$3) {
+      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
+   }
+
+   default fiu a(int $$0) {
+      return this.a(axu.b($$0), axu.c($$0), axu.d($$0), axu.a($$0));
+   }
+
+   default fiu d(int $$0) {
+      return this.a(axu.c($$0, -1));
+   }
+
+   default fiu c(int $$0) {
+      return this.b($$0 & 65535, $$0 >> 16 & 65535);
+   }
+
+   default fiu b(int $$0) {
+      return this.a($$0 & 65535, $$0 >> 16 & 65535);
+   }
+
+   default void a(fiq.a $$0, gqk $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
+      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
+   }
+
+   default void a(fiq.a $$0, gqk $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
+      int[] $$10 = $$1.b();
+      jz $$11 = $$1.e().q();
+      Matrix4f $$12 = $$0.a();
+      Vector3f $$13 = $$0.a((float)$$11.u(), (float)$$11.v(), (float)$$11.w(), new Vector3f());
+      int $$14 = 8;
+      int $$15 = $$10.length / 8;
+      int $$16 = (int)($$6 * 255.0F);
+      int $$17 = $$1.g();
+      MemoryStack $$18 = MemoryStack.stackPush();
 
       try {
-         $$2.a = flp.b("backupId", $$1, "");
-         $$2.b = flp.b("lastModifiedDate", $$1);
-         $$2.c = flp.a("size", $$1, 0L);
-         if ($$1.has("metadata")) {
-            JsonObject $$3 = $$1.getAsJsonObject("metadata");
+         ByteBuffer $$19 = $$18.malloc(fio.b.b());
+         IntBuffer $$20 = $$19.asIntBuffer();
 
-            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
-               if (!$$5.getValue().isJsonNull()) {
-                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
-               }
+         for (int $$21 = 0; $$21 < $$15; $$21++) {
+            $$20.clear();
+            $$20.put($$10, $$21 * 8, 8);
+            float $$22 = $$19.getFloat(0);
+            float $$23 = $$19.getFloat(4);
+            float $$24 = $$19.getFloat(8);
+            float $$28;
+            float $$29;
+            float $$30;
+            if ($$9) {
+               float $$25 = (float)($$19.get(12) & 255);
+               float $$26 = (float)($$19.get(13) & 255);
+               float $$27 = (float)($$19.get(14) & 255);
+               $$28 = $$25 * $$2[$$21] * $$3;
+               $$29 = $$26 * $$2[$$21] * $$4;
+               $$30 = $$27 * $$2[$$21] * $$5;
+            } else {
+               $$28 = $$2[$$21] * $$3 * 255.0F;
+               $$29 = $$2[$$21] * $$4 * 255.0F;
+               $$30 = $$2[$$21] * $$5 * 255.0F;
+            }
+
+            int $$34 = axu.a($$16, (int)$$28, (int)$$29, (int)$$30);
+            int $$35 = gpa.b($$7[$$21], $$17);
+            float $$36 = $$19.getFloat(16);
+            float $$37 = $$19.getFloat(20);
+            Vector3f $$38 = $$12.transformPosition($$22, $$23, $$24, new Vector3f());
+            this.a($$38.x(), $$38.y(), $$38.z(), $$34, $$36, $$37, $$8, $$35, $$13.x(), $$13.y(), $$13.z());
+         }
+      } catch (Throwable var35) {
+         if ($$18 != null) {
+            try {
+               $$18.close();
+            } catch (Throwable var34) {
+               var35.addSuppressed(var34);
             }
          }
-      } catch (Exception var7) {
-         f.error("Could not parse Backup: {}", var7.getMessage());
+
+         throw var35;
       }
 
-      return $$2;
+      if ($$18 != null) {
+         $$18.close();
+      }
    }
 
-   public boolean a() {
-      return this.g;
+   default fiu a(Vector3f $$0) {
+      return this.a($$0.x(), $$0.y(), $$0.z());
    }
 
-   public void a(boolean $$0) {
-      this.g = $$0;
+   default fiu a(fiq.a $$0, Vector3f $$1) {
+      return this.a($$0, $$1.x(), $$1.y(), $$1.z());
+   }
+
+   default fiu a(fiq.a $$0, float $$1, float $$2, float $$3) {
+      return this.a($$0.a(), $$1, $$2, $$3);
+   }
+
+   default fiu a(Matrix4f $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
+      return this.a($$4.x(), $$4.y(), $$4.z());
+   }
+
+   default fiu b(fiq.a $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
+      return this.b($$4.x(), $$4.y(), $$4.z());
+   }
+
+   default fiu b(fiq.a $$0, Vector3f $$1) {
+      return this.b($$0, $$1.x(), $$1.y(), $$1.z());
    }
 }

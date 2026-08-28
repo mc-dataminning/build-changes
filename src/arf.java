@@ -1,30 +1,45 @@
-import java.util.function.IntFunction;
+class arf extends aqw {
+   private static final int a = aqr.b + 1;
+   private final arb b;
+   private final djm c;
 
-public enum arf implements azn {
-   a(0, "options.particles.all"),
-   b(1, "options.particles.decreased"),
-   c(2, "options.particles.minimal");
-
-   private static final IntFunction<arf> d = aya.a(arf::b, values(), aya.a.b);
-   private final int e;
-   private final String f;
-
-   private arf(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public arf(arb $$0, djm $$1) {
+      super(a + 1, 16, 256);
+      this.b = $$0;
+      this.c = $$1;
+      $$1.a(this::b);
    }
 
    @Override
-   public String a() {
-      return this.f;
+   protected int b(long $$0) {
+      return this.c.a($$0, false);
    }
 
    @Override
-   public int b() {
-      return this.e;
+   protected int c(long $$0) {
+      if (!this.b.a($$0)) {
+         aqq $$1 = this.b.b($$0);
+         if ($$1 != null) {
+            return $$1.j();
+         }
+      }
+
+      return a;
    }
 
-   public static arf a(int $$0) {
-      return d.apply($$0);
+   @Override
+   protected void a(long $$0, int $$1) {
+      aqq $$2 = this.b.b($$0);
+      int $$3 = $$2 == null ? a : $$2.j();
+      if ($$3 != $$1) {
+         $$2 = this.b.a($$0, $$1, $$2, $$3);
+         if ($$2 != null) {
+            this.b.b.add($$2);
+         }
+      }
+   }
+
+   public int a(int $$0) {
+      return this.b($$0);
    }
 }

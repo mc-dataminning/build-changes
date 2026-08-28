@@ -1,107 +1,146 @@
-public class glz extends gmh {
-   private static final azs a = azs.a();
-   private final gmc b;
-   private float F = 1.0F;
+public class glz extends gnl {
+   static final azt a = azt.a();
+   private final gng b;
 
-   glz(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gmc $$7) {
-      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
+   glz(gjd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gng $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       this.B = 0.96F;
-      this.u = -0.1F;
       this.C = true;
       this.b = $$7;
-      this.k *= 0.2F;
-      if ($$4 == 0.0 && $$6 == 0.0) {
-         this.j *= 0.1F;
-         this.l *= 0.1F;
-      }
-
       this.D *= 0.75F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
       this.n = false;
       this.b($$7);
-      if (this.g()) {
-         this.e(0.0F);
-      }
    }
 
    @Override
-   public gll b() {
-      return gll.c;
+   public gmp b() {
+      return gmp.c;
+   }
+
+   @Override
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = azk.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
+
+      return $$3 | $$4 << 16;
    }
 
    @Override
    public void a() {
       super.a();
       this.b(this.b);
-      if (this.g()) {
-         this.y = 0.0F;
-      } else {
-         this.y = azk.h(0.05F, this.y, this.F);
-      }
    }
 
-   @Override
-   protected void e(float $$0) {
-      super.e($$0);
-      this.F = $$0;
-   }
+   public static class a implements gmo<mb> {
+      private final double a = 0.25;
+      private final gng b;
 
-   private boolean g() {
-      fnd $$0 = fnd.Q();
-      gmw $$1 = $$0.t;
-      return $$1 != null && $$1.bE().c(this.g, this.h, this.i) <= 9.0 && $$0.n.aE().a() && $$1.gG();
-   }
-
-   public static class a implements glk<lz> {
-      private final gmc a;
-
-      public a(gmc $$0) {
-         this.a = $$0;
+      public a(gng $$0) {
+         this.b = $$0;
       }
 
-      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new glz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class b implements glk<lo> {
-      private final gmc a;
-
-      public b(gmc $$0) {
-         this.a = $$0;
-      }
-
-      public glh a(lo $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         glh $$8 = new glz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a($$0.b(), $$0.c(), $$0.d());
-         $$8.e($$0.e());
+      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         glz $$8 = new glz($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
+         int $$9 = 2;
+         int $$10 = 4;
+         $$8.a($$1.A.a(2) + 2);
          return $$8;
       }
    }
 
-   public static class c implements glk<lz> {
-      private final gmc a;
+   public static class b implements gmo<mb> {
+      private final gng a;
 
-      public c(gmc $$0) {
+      public b(gng $$0) {
          this.a = $$0;
       }
 
-      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new glz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         glz $$8 = new glz($$1, $$2, $$3, $$4, 0.5 - glz.a.j(), $$6, 0.5 - glz.a.j(), this.a);
+         if ($$1.A.h()) {
+            $$8.a(0.6F, 1.0F, 0.8F);
+         } else {
+            $$8.a(0.08F, 0.4F, 0.4F);
+         }
+
+         $$8.k *= 0.2F;
+         if ($$5 == 0.0 && $$7 == 0.0) {
+            $$8.j *= 0.1F;
+            $$8.l *= 0.1F;
+         }
+
+         $$8.a((int)(8.0 / ($$1.A.j() * 0.8 + 0.2)));
+         return $$8;
       }
    }
 
-   public static class d implements glk<lz> {
-      private final gmc a;
+   public static class c implements gmo<mb> {
+      private final double a = 0.01;
+      private final gng b;
 
-      public d(gmc $$0) {
-         this.a = $$0;
+      public c(gng $$0) {
+         this.b = $$0;
       }
 
-      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         glz $$8 = new glz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         float $$9 = $$1.A.i() * 0.5F + 0.35F;
-         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
+      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         glz $$8 = new glz($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         if ($$1.A.h()) {
+            $$8.a(0.29F, 0.58F, 0.51F);
+         } else {
+            $$8.a(0.43F, 0.77F, 0.62F);
+         }
+
+         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.A.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class d implements gmo<mb> {
+      private final double a = 0.01;
+      private final gng b;
+
+      public d(gng $$0) {
+         this.b = $$0;
+      }
+
+      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         glz $$8 = new glz($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(1.0F, 0.9F, 1.0F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.A.a(30) + 10);
+         return $$8;
+      }
+   }
+
+   public static class e implements gmo<mb> {
+      private final double a = 0.01;
+      private final gng b;
+
+      public e(gng $$0) {
+         this.b = $$0;
+      }
+
+      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         glz $$8 = new glz($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
+         $$8.a(0.91F, 0.55F, 0.08F);
+         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
+         int $$9 = 10;
+         int $$10 = 40;
+         $$8.a($$1.A.a(30) + 10);
          return $$8;
       }
    }

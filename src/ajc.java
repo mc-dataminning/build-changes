@@ -1,29 +1,29 @@
-public class ajc implements zc<aiy> {
-   public static final yt<vr, ajc> a = zc.a(ajc::a, ajc::new);
-   private final wv b;
+public class ajc implements zd<aiz> {
+   public static final yu<vs, ajc> a = zd.a(ajc::a, ajc::new);
+   private final int b;
 
-   public ajc(wv $$0) {
+   public ajc(int $$0) {
       this.b = $$0;
    }
 
-   private ajc(vr $$0) {
-      this.b = wv.a.b($$0.d(262144), kg.b);
+   private ajc(vs $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vr $$0) {
-      $$0.a(wv.a.a(this.b, kg.b));
+   private void a(vs $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public ze<ajc> a() {
-      return aje.e;
+   public zf<ajc> a() {
+      return ajf.d;
    }
 
-   public void a(aiy $$0) {
+   public void a(aiz $$0) {
       $$0.a(this);
    }
 
-   public wv b() {
+   public int b() {
       return this.b;
    }
 }

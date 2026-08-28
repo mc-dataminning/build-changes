@@ -1,21 +1,387 @@
+import com.google.common.collect.Maps;
 import java.util.Map;
 
 public class gov {
-   public static final gov a = new gov(Map.of());
-   private final Map<dku, hfw<?>> b;
+   private static final Map<dlu, gpn> a = af.a(Maps.newHashMap(), $$0 -> {
+      gpn $$1 = gpn.s();
+      $$0.put(dlw.gd, $$1);
+      gpn $$2 = gpn.d();
+      $$0.put(dlw.i, $$2);
+      $$0.put(dlw.fk, $$2);
+      $$0.put(dlw.fm, $$2);
+      $$0.put(dlw.gc, $$2);
+      $$0.put(dlw.hz, $$2);
+      $$0.put(dlw.fl, $$2);
+      $$0.put(dlw.aN, $$2);
+      $$0.put(dlw.aK, $$2);
+      $$0.put(dlw.aL, $$2);
+      $$0.put(dlw.aO, $$2);
+      $$0.put(dlw.aP, $$2);
+      $$0.put(dlw.aM, $$2);
+      $$0.put(dlw.aQ, $$2);
+      $$0.put(dlw.aR, $$2);
+      $$0.put(dlw.aT, $$2);
+      $$0.put(dlw.aU, $$2);
+      $$0.put(dlw.ag, $$2);
+      $$0.put(dlw.aS, $$2);
+      gpn $$3 = gpn.e();
+      $$0.put(dlw.z, $$3);
+      $$0.put(dlw.A, $$3);
+      $$0.put(dlw.B, $$3);
+      $$0.put(dlw.C, $$3);
+      $$0.put(dlw.D, $$3);
+      $$0.put(dlw.E, $$3);
+      $$0.put(dlw.F, $$3);
+      $$0.put(dlw.G, $$3);
+      $$0.put(dlw.aX, $$3);
+      $$0.put(dlw.bg, $$3);
+      $$0.put(dlw.bh, $$3);
+      $$0.put(dlw.bi, $$3);
+      $$0.put(dlw.bj, $$3);
+      $$0.put(dlw.bk, $$3);
+      $$0.put(dlw.bl, $$3);
+      $$0.put(dlw.bm, $$3);
+      $$0.put(dlw.bn, $$3);
+      $$0.put(dlw.bo, $$3);
+      $$0.put(dlw.bp, $$3);
+      $$0.put(dlw.bq, $$3);
+      $$0.put(dlw.br, $$3);
+      $$0.put(dlw.bs, $$3);
+      $$0.put(dlw.bt, $$3);
+      $$0.put(dlw.bu, $$3);
+      $$0.put(dlw.bv, $$3);
+      $$0.put(dlw.bw, $$3);
+      $$0.put(dlw.bx, $$3);
+      $$0.put(dlw.bz, $$3);
+      $$0.put(dlw.bA, $$3);
+      $$0.put(dlw.bB, $$3);
+      $$0.put(dlw.bC, $$3);
+      $$0.put(dlw.bD, $$3);
+      $$0.put(dlw.bE, $$3);
+      $$0.put(dlw.bY, $$3);
+      $$0.put(dlw.ud, $$3);
+      $$0.put(dlw.ue, $$3);
+      $$0.put(dlw.ca, $$3);
+      $$0.put(dlw.cb, $$3);
+      $$0.put(dlw.cc, $$3);
+      $$0.put(dlw.cd, $$3);
+      $$0.put(dlw.ce, $$3);
+      $$0.put(dlw.cf, $$3);
+      $$0.put(dlw.cg, $$3);
+      $$0.put(dlw.ch, $$3);
+      $$0.put(dlw.ci, $$3);
+      $$0.put(dlw.cj, $$3);
+      $$0.put(dlw.ck, $$3);
+      $$0.put(dlw.cl, $$3);
+      $$0.put(dlw.cm, $$3);
+      $$0.put(dlw.cn, $$3);
+      $$0.put(dlw.cw, $$3);
+      $$0.put(dlw.cx, $$3);
+      $$0.put(dlw.en, $$3);
+      $$0.put(dlw.eo, $$3);
+      $$0.put(dlw.cy, $$3);
+      $$0.put(dlw.cz, $$3);
+      $$0.put(dlw.cA, $$3);
+      $$0.put(dlw.tX, $$3);
+      $$0.put(dlw.tY, $$3);
+      $$0.put(dlw.cE, $$3);
+      $$0.put(dlw.cJ, $$3);
+      $$0.put(dlw.cW, $$3);
+      $$0.put(dlw.cX, $$3);
+      $$0.put(dlw.cY, $$3);
+      $$0.put(dlw.dK, $$3);
+      $$0.put(dlw.dX, $$3);
+      $$0.put(dlw.dY, $$3);
+      $$0.put(dlw.ed, $$3);
+      $$0.put(dlw.ef, $$3);
+      $$0.put(dlw.eu, $$3);
+      $$0.put(dlw.eL, $$3);
+      $$0.put(dlw.eM, $$3);
+      $$0.put(dlw.eN, $$3);
+      $$0.put(dlw.eO, $$3);
+      $$0.put(dlw.eP, $$3);
+      $$0.put(dlw.eQ, $$3);
+      $$0.put(dlw.eR, $$3);
+      $$0.put(dlw.eS, $$3);
+      $$0.put(dlw.po, $$3);
+      $$0.put(dlw.pp, $$3);
+      $$0.put(dlw.eT, $$3);
+      $$0.put(dlw.eU, $$3);
+      $$0.put(dlw.sy, $$3);
+      $$0.put(dlw.sz, $$3);
+      $$0.put(dlw.sB, $$3);
+      $$0.put(dlw.sA, $$3);
+      $$0.put(dlw.sC, $$3);
+      $$0.put(dlw.sD, $$3);
+      $$0.put(dlw.sF, $$3);
+      $$0.put(dlw.sE, $$3);
+      $$0.put(dlw.fp, $$3);
+      $$0.put(dlw.fq, $$3);
+      $$0.put(dlw.fr, $$3);
+      $$0.put(dlw.fs, $$3);
+      $$0.put(dlw.ft, $$3);
+      $$0.put(dlw.ub, $$3);
+      $$0.put(dlw.uc, $$3);
+      $$0.put(dlw.fu, $$3);
+      $$0.put(dlw.fv, $$3);
+      $$0.put(dlw.fB, $$3);
+      $$0.put(dlw.fL, $$3);
+      $$0.put(dlw.fN, $$3);
+      $$0.put(dlw.fX, $$3);
+      $$0.put(dlw.gj, $$3);
+      $$0.put(dlw.gm, $$3);
+      $$0.put(dlw.go, $$3);
+      $$0.put(dlw.gp, $$3);
+      $$0.put(dlw.gq, $$3);
+      $$0.put(dlw.gr, $$3);
+      $$0.put(dlw.gs, $$3);
+      $$0.put(dlw.gt, $$3);
+      $$0.put(dlw.gu, $$3);
+      $$0.put(dlw.gv, $$3);
+      $$0.put(dlw.gw, $$3);
+      $$0.put(dlw.gx, $$3);
+      $$0.put(dlw.gy, $$3);
+      $$0.put(dlw.gz, $$3);
+      $$0.put(dlw.uf, $$3);
+      $$0.put(dlw.ug, $$3);
+      $$0.put(dlw.gA, $$3);
+      $$0.put(dlw.gB, $$3);
+      $$0.put(dlw.gC, $$3);
+      $$0.put(dlw.gD, $$3);
+      $$0.put(dlw.gE, $$3);
+      $$0.put(dlw.gF, $$3);
+      $$0.put(dlw.gG, $$3);
+      $$0.put(dlw.gH, $$3);
+      $$0.put(dlw.gI, $$3);
+      $$0.put(dlw.gJ, $$3);
+      $$0.put(dlw.gK, $$3);
+      $$0.put(dlw.gL, $$3);
+      $$0.put(dlw.gM, $$3);
+      $$0.put(dlw.gN, $$3);
+      $$0.put(dlw.gO, $$3);
+      $$0.put(dlw.tO, $$3);
+      $$0.put(dlw.tP, $$3);
+      $$0.put(dlw.gn, $$3);
+      $$0.put(dlw.gP, $$3);
+      $$0.put(dlw.gQ, $$3);
+      $$0.put(dlw.hv, $$3);
+      $$0.put(dlw.hE, $$3);
+      $$0.put(dlw.iw, $$3);
+      $$0.put(dlw.jb, $$3);
+      $$0.put(dlw.jc, $$3);
+      $$0.put(dlw.jd, $$3);
+      $$0.put(dlw.je, $$3);
+      $$0.put(dlw.jf, $$3);
+      $$0.put(dlw.jg, $$3);
+      $$0.put(dlw.kM, $$3);
+      $$0.put(dlw.kN, $$3);
+      $$0.put(dlw.kO, $$3);
+      $$0.put(dlw.kP, $$3);
+      $$0.put(dlw.kQ, $$3);
+      $$0.put(dlw.kR, $$3);
+      $$0.put(dlw.kS, $$3);
+      $$0.put(dlw.kT, $$3);
+      $$0.put(dlw.kU, $$3);
+      $$0.put(dlw.sq, $$3);
+      $$0.put(dlw.sr, $$3);
+      $$0.put(dlw.st, $$3);
+      $$0.put(dlw.ss, $$3);
+      $$0.put(dlw.su, $$3);
+      $$0.put(dlw.sv, $$3);
+      $$0.put(dlw.sx, $$3);
+      $$0.put(dlw.sw, $$3);
+      $$0.put(dlw.kV, $$3);
+      $$0.put(dlw.kW, $$3);
+      $$0.put(dlw.kX, $$3);
+      $$0.put(dlw.bZ, $$3);
+      $$0.put(dlw.lc, $$3);
+      $$0.put(dlw.le, $$3);
+      $$0.put(dlw.ld, $$3);
+      $$0.put(dlw.lf, $$3);
+      $$0.put(dlw.mE, $$3);
+      $$0.put(dlw.mF, $$3);
+      $$0.put(dlw.mH, $$3);
+      $$0.put(dlw.mT, $$3);
+      $$0.put(dlw.mU, $$3);
+      $$0.put(dlw.mV, $$3);
+      $$0.put(dlw.mW, $$3);
+      $$0.put(dlw.mX, $$3);
+      $$0.put(dlw.mY, $$3);
+      $$0.put(dlw.mZ, $$3);
+      $$0.put(dlw.na, $$3);
+      $$0.put(dlw.nb, $$3);
+      $$0.put(dlw.nc, $$3);
+      $$0.put(dlw.nd, $$3);
+      $$0.put(dlw.ne, $$3);
+      $$0.put(dlw.nf, $$3);
+      $$0.put(dlw.ng, $$3);
+      $$0.put(dlw.nh, $$3);
+      $$0.put(dlw.ni, $$3);
+      $$0.put(dlw.nj, $$3);
+      $$0.put(dlw.nk, $$3);
+      $$0.put(dlw.nl, $$3);
+      $$0.put(dlw.nm, $$3);
+      $$0.put(dlw.nn, $$3);
+      $$0.put(dlw.no, $$3);
+      $$0.put(dlw.np, $$3);
+      $$0.put(dlw.nq, $$3);
+      $$0.put(dlw.nr, $$3);
+      $$0.put(dlw.ns, $$3);
+      $$0.put(dlw.nt, $$3);
+      $$0.put(dlw.nu, $$3);
+      $$0.put(dlw.nv, $$3);
+      $$0.put(dlw.nw, $$3);
+      $$0.put(dlw.nx, $$3);
+      $$0.put(dlw.nz, $$3);
+      $$0.put(dlw.nA, $$3);
+      $$0.put(dlw.nB, $$3);
+      $$0.put(dlw.nC, $$3);
+      $$0.put(dlw.ou, $$3);
+      $$0.put(dlw.oE, $$3);
+      $$0.put(dlw.oG, $$3);
+      $$0.put(dlw.oH, $$3);
+      $$0.put(dlw.oI, $$3);
+      $$0.put(dlw.oJ, $$3);
+      $$0.put(dlw.oK, $$3);
+      $$0.put(dlw.pb, $$3);
+      $$0.put(dlw.pc, $$3);
+      $$0.put(dlw.pd, $$3);
+      $$0.put(dlw.pe, $$3);
+      $$0.put(dlw.oT, $$3);
+      $$0.put(dlw.oZ, $$3);
+      $$0.put(dlw.oQ, $$3);
+      $$0.put(dlw.pf, $$3);
+      $$0.put(dlw.oS, $$3);
+      $$0.put(dlw.pQ, $$3);
+      $$0.put(dlw.pR, $$3);
+      $$0.put(dlw.pS, $$3);
+      $$0.put(dlw.pT, $$3);
+      $$0.put(dlw.pw, $$3);
+      $$0.put(dlw.px, $$3);
+      $$0.put(dlw.sX, $$3);
+      $$0.put(dlw.rc, $$3);
+      $$0.put(dlw.rb, $$3);
+      $$0.put(dlw.ra, $$3);
+      $$0.put(dlw.qZ, $$3);
+      $$0.put(dlw.sW, $$3);
+      $$0.put(dlw.sZ, $$3);
+      $$0.put(dlw.ta, $$3);
+      $$0.put(dlw.tb, $$3);
+      $$0.put(dlw.td, $$3);
+      $$0.put(dlw.tc, $$3);
+      $$0.put(dlw.tf, $$3);
+      $$0.put(dlw.tg, $$3);
+      $$0.put(dlw.th, $$3);
+      $$0.put(dlw.tj, $$3);
+      $$0.put(dlw.tk, $$3);
+      $$0.put(dlw.tl, $$3);
+      $$0.put(dlw.tm, $$3);
+      $$0.put(dlw.ru, $$3);
+      $$0.put(dlw.rv, $$3);
+      $$0.put(dlw.rx, $$3);
+      $$0.put(dlw.rz, $$3);
+      $$0.put(dlw.H, $$3);
+      $$0.put(dlw.tT, $$3);
+      $$0.put(dlw.sG, $$3);
+      $$0.put(dlw.sH, $$3);
+      $$0.put(dlw.sI, $$3);
+      $$0.put(dlw.sJ, $$3);
+      $$0.put(dlw.sK, $$3);
+      $$0.put(dlw.sL, $$3);
+      $$0.put(dlw.sM, $$3);
+      $$0.put(dlw.sN, $$3);
+      gpn $$4 = gpn.f();
+      $$0.put(dlw.eb, $$4);
+      $$0.put(dlw.eq, $$4);
+      $$0.put(dlw.ev, $$4);
+      $$0.put(dlw.ew, $$4);
+      $$0.put(dlw.ex, $$4);
+      $$0.put(dlw.ey, $$4);
+      $$0.put(dlw.ez, $$4);
+      $$0.put(dlw.eA, $$4);
+      $$0.put(dlw.eB, $$4);
+      $$0.put(dlw.eC, $$4);
+      $$0.put(dlw.eD, $$4);
+      $$0.put(dlw.eE, $$4);
+      $$0.put(dlw.eF, $$4);
+      $$0.put(dlw.eG, $$4);
+      $$0.put(dlw.eH, $$4);
+      $$0.put(dlw.eI, $$4);
+      $$0.put(dlw.eJ, $$4);
+      $$0.put(dlw.eK, $$4);
+      $$0.put(dlw.hW, $$4);
+      $$0.put(dlw.hX, $$4);
+      $$0.put(dlw.hY, $$4);
+      $$0.put(dlw.hZ, $$4);
+      $$0.put(dlw.ia, $$4);
+      $$0.put(dlw.ib, $$4);
+      $$0.put(dlw.ic, $$4);
+      $$0.put(dlw.id, $$4);
+      $$0.put(dlw.ie, $$4);
+      $$0.put(dlw.if, $$4);
+      $$0.put(dlw.ig, $$4);
+      $$0.put(dlw.ih, $$4);
+      $$0.put(dlw.ii, $$4);
+      $$0.put(dlw.ij, $$4);
+      $$0.put(dlw.ik, $$4);
+      $$0.put(dlw.il, $$4);
+      $$0.put(dlw.it, $$4);
+      $$0.put(dlw.pK, $$4);
+      $$0.put(dlw.lk, $$4);
+      $$0.put(dlw.nF, $$4);
+      $$0.put(dlw.rs, $$4);
+   });
+   private static final Map<evu, gpn> b = af.a(Maps.newHashMap(), $$0 -> {
+      gpn $$1 = gpn.f();
+      $$0.put(evw.b, $$1);
+      $$0.put(evw.c, $$1);
+   });
+   private static boolean c;
 
-   public gov(Map<dku, hfw<?>> $$0) {
-      this.b = $$0;
-   }
-
-   public static gov a(ggz $$0) {
-      return new gov(hfx.a($$0));
-   }
-
-   public void a(dku $$0, cxw $$1, fho $$2, gny $$3, int $$4, int $$5) {
-      hfw<?> $$6 = this.b.get($$0);
-      if ($$6 != null) {
-         $$6.a(null, $$1, $$2, $$3, $$4, $$5, false);
+   public static gpn a(dzo $$0) {
+      dlu $$1 = $$0.b();
+      if ($$1 instanceof dqi) {
+         return c ? gpn.d() : gpn.c();
+      } else {
+         gpn $$2 = a.get($$1);
+         return $$2 != null ? $$2 : gpn.c();
       }
+   }
+
+   public static gpn b(dzo $$0) {
+      dlu $$1 = $$0.b();
+      if ($$1 instanceof dqi) {
+         return c ? gpn.d() : gpn.c();
+      } else {
+         gpn $$2 = a.get($$1);
+         if ($$2 != null) {
+            return $$2 == gpn.f() ? gpn.g() : $$2;
+         } else {
+            return gpn.c();
+         }
+      }
+   }
+
+   public static gpn c(dzo $$0) {
+      gpn $$1 = a($$0);
+      return $$1 == gpn.f() ? gpy.j() : gpy.i();
+   }
+
+   public static gpn a(cys $$0) {
+      if ($$0.h() instanceof cxa $$2) {
+         dlu $$3 = $$2.c();
+         return c($$3.m());
+      } else {
+         return gpy.j();
+      }
+   }
+
+   public static gpn a(evv $$0) {
+      gpn $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : gpn.c();
+   }
+
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

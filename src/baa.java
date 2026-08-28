@@ -1,24 +1,27 @@
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.security.PrivateKey;
+import java.security.Signature;
+import org.slf4j.Logger;
 
-public class baa<K, V> {
-   private final Function<K, V> a;
-   @Nullable
-   private K b = (K)null;
-   @Nullable
-   private V c;
+public interface baa {
+   Logger a = LogUtils.getLogger();
 
-   public baa(Function<K, V> $$0) {
-      this.a = $$0;
+   byte[] sign(azy var1);
+
+   default byte[] a(byte[] $$0) {
+      return this.sign($$1 -> $$1.update($$0));
    }
 
-   public V a(K $$0) {
-      if (this.c == null || !Objects.equals(this.b, $$0)) {
-         this.c = this.a.apply($$0);
-         this.b = $$0;
-      }
-
-      return this.c;
+   static baa a(PrivateKey $$0, String $$1) {
+      return $$2 -> {
+         try {
+            Signature $$3 = Signature.getInstance($$1);
+            $$3.initSign($$0);
+            $$2.update($$3::update);
+            return $$3.sign();
+         } catch (Exception var4) {
+            throw new IllegalStateException("Failed to sign message", var4);
+         }
+      };
    }
 }

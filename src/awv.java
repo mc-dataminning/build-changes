@@ -1,28 +1,98 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-
 public class awv {
-   protected final Object2IntMap<awr<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+   public static final awu<dlu> a = a("mined", mf.e);
+   public static final awu<cyo> b = a("crafted", mf.g);
+   public static final awu<cyo> c = a("used", mf.g);
+   public static final awu<cyo> d = a("broken", mf.g);
+   public static final awu<cyo> e = a("picked_up", mf.g);
+   public static final awu<cyo> f = a("dropped", mf.g);
+   public static final awu<bwj<?>> g = a("killed", mf.f);
+   public static final awu<bwj<?>> h = a("killed_by", mf.f);
+   public static final awu<ale> i = a("custom", mf.k);
+   public static final ale j = a("leave_game", awt.b);
+   public static final ale k = a("play_time", awt.e);
+   public static final ale l = a("total_world_time", awt.e);
+   public static final ale m = a("time_since_death", awt.e);
+   public static final ale n = a("time_since_rest", awt.e);
+   public static final ale o = a("sneak_time", awt.e);
+   public static final ale p = a("walk_one_cm", awt.d);
+   public static final ale q = a("crouch_one_cm", awt.d);
+   public static final ale r = a("sprint_one_cm", awt.d);
+   public static final ale s = a("walk_on_water_one_cm", awt.d);
+   public static final ale t = a("fall_one_cm", awt.d);
+   public static final ale u = a("climb_one_cm", awt.d);
+   public static final ale v = a("fly_one_cm", awt.d);
+   public static final ale w = a("walk_under_water_one_cm", awt.d);
+   public static final ale x = a("minecart_one_cm", awt.d);
+   public static final ale y = a("boat_one_cm", awt.d);
+   public static final ale z = a("pig_one_cm", awt.d);
+   public static final ale A = a("horse_one_cm", awt.d);
+   public static final ale B = a("aviate_one_cm", awt.d);
+   public static final ale C = a("swim_one_cm", awt.d);
+   public static final ale D = a("strider_one_cm", awt.d);
+   public static final ale E = a("jump", awt.b);
+   public static final ale F = a("drop", awt.b);
+   public static final ale G = a("damage_dealt", awt.c);
+   public static final ale H = a("damage_dealt_absorbed", awt.c);
+   public static final ale I = a("damage_dealt_resisted", awt.c);
+   public static final ale J = a("damage_taken", awt.c);
+   public static final ale K = a("damage_blocked_by_shield", awt.c);
+   public static final ale L = a("damage_absorbed", awt.c);
+   public static final ale M = a("damage_resisted", awt.c);
+   public static final ale N = a("deaths", awt.b);
+   public static final ale O = a("mob_kills", awt.b);
+   public static final ale P = a("animals_bred", awt.b);
+   public static final ale Q = a("player_kills", awt.b);
+   public static final ale R = a("fish_caught", awt.b);
+   public static final ale S = a("talked_to_villager", awt.b);
+   public static final ale T = a("traded_with_villager", awt.b);
+   public static final ale U = a("eat_cake_slice", awt.b);
+   public static final ale V = a("fill_cauldron", awt.b);
+   public static final ale W = a("use_cauldron", awt.b);
+   public static final ale X = a("clean_armor", awt.b);
+   public static final ale Y = a("clean_banner", awt.b);
+   public static final ale Z = a("clean_shulker_box", awt.b);
+   public static final ale aa = a("interact_with_brewingstand", awt.b);
+   public static final ale ab = a("interact_with_beacon", awt.b);
+   public static final ale ac = a("inspect_dropper", awt.b);
+   public static final ale ad = a("inspect_hopper", awt.b);
+   public static final ale ae = a("inspect_dispenser", awt.b);
+   public static final ale af = a("play_noteblock", awt.b);
+   public static final ale ag = a("tune_noteblock", awt.b);
+   public static final ale ah = a("pot_flower", awt.b);
+   public static final ale ai = a("trigger_trapped_chest", awt.b);
+   public static final ale aj = a("open_enderchest", awt.b);
+   public static final ale ak = a("enchant_item", awt.b);
+   public static final ale al = a("play_record", awt.b);
+   public static final ale am = a("interact_with_furnace", awt.b);
+   public static final ale an = a("interact_with_crafting_table", awt.b);
+   public static final ale ao = a("open_chest", awt.b);
+   public static final ale ap = a("sleep_in_bed", awt.b);
+   public static final ale aq = a("open_shulker_box", awt.b);
+   public static final ale ar = a("open_barrel", awt.b);
+   public static final ale as = a("interact_with_blast_furnace", awt.b);
+   public static final ale at = a("interact_with_smoker", awt.b);
+   public static final ale au = a("interact_with_lectern", awt.b);
+   public static final ale av = a("interact_with_campfire", awt.b);
+   public static final ale aw = a("interact_with_cartography_table", awt.b);
+   public static final ale ax = a("interact_with_loom", awt.b);
+   public static final ale ay = a("interact_with_stonecutter", awt.b);
+   public static final ale az = a("bell_ring", awt.b);
+   public static final ale aA = a("raid_trigger", awt.b);
+   public static final ale aB = a("raid_win", awt.b);
+   public static final ale aC = a("interact_with_anvil", awt.b);
+   public static final ale aD = a("interact_with_grindstone", awt.b);
+   public static final ale aE = a("target_hit", awt.b);
+   public static final ale aF = a("interact_with_smithing_table", awt.b);
 
-   public awv() {
-      this.a.defaultReturnValue(0);
+   private static ale a(String $$0, awt $$1) {
+      ale $$2 = ale.b($$0);
+      jr.a(mf.k, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
    }
 
-   public void b(cqi $$0, awr<?> $$1, int $$2) {
-      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
-      this.a($$0, $$1, $$3);
-   }
-
-   public void a(cqi $$0, awr<?> $$1, int $$2) {
-      this.a.put($$1, $$2);
-   }
-
-   public <T> int a(awt<T> $$0, T $$1) {
-      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
-   }
-
-   public int a(awr<?> $$0) {
-      return this.a.getInt($$0);
+   private static <T> awu<T> a(String $$0, jr<T> $$1) {
+      ww $$2 = ww.c("stat_type.minecraft." + $$0);
+      return jr.a(mf.v, $$0, new awu<>($$1, $$2));
    }
 }

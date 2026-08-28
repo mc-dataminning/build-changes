@@ -1,57 +1,32 @@
+import io.netty.buffer.ByteBuf;
 import java.util.List;
 
-public record aau(alc<dhp> c, eoy d, List<aau.a> e) implements aaf {
-   public static final yt<vr, aau> a = aaf.a(aau::a, aau::new);
-   public static final aaf.b<aau> b = aaf.a("debug/structures");
-
-   private aau(vr $$0) {
-      this($$0.a(me.bl), b($$0), $$0.a(aau.a::new));
-   }
-
-   private void a(vr $$0) {
-      $$0.b(this.c);
-      a($$0, this.d);
-      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
-   }
+public record aau(long c, List<aau.a> d) implements aag {
+   public static final aag.b<aau> a = aag.a("debug/redstone_update_order");
+   public static final yu<vs, aau> b = yu.a(ys.k, aau::b, aau.a.a.a(ys.a()), aau::c, aau::new);
 
    @Override
-   public aaf.b<aau> a() {
-      return b;
+   public aag.b<aau> a() {
+      return a;
    }
 
-   static eoy b(vr $$0) {
-      return new eoy($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
-   }
-
-   static void a(vr $$0, eoy $$1) {
-      $$0.q($$1.h());
-      $$0.q($$1.i());
-      $$0.q($$1.j());
-      $$0.q($$1.k());
-      $$0.q($$1.l());
-      $$0.q($$1.m());
-   }
-
-   public alc<dhp> b() {
+   public long b() {
       return this.c;
    }
 
-   public eoy c() {
+   public List<aau.a> c() {
       return this.d;
    }
 
-   public List<aau.a> d() {
-      return this.e;
-   }
+   public static record a(iu b, exd c) {
+      public static final yu<ByteBuf, aau.a> a = yu.a(iu.b, aau.a::a, exd.a, aau.a::b, aau.a::new);
 
-   public static record a(eoy a, boolean b) {
-      public a(vr $$0) {
-         this(aau.b($$0), $$0.readBoolean());
+      public iu a() {
+         return this.b;
       }
 
-      public void a(vr $$0) {
-         aau.a($$0, this.a);
-         $$0.a(this.b);
+      public exd b() {
+         return this.c;
       }
    }
 }

@@ -1,13 +1,21 @@
-public interface brs {
-   void a();
+public enum brs {
+   a("pathfinding"),
+   b("event-loops"),
+   c("consecutive-executors"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-   void b();
+   private final String j;
 
-   void c();
+   private brs(final String $$0) {
+      this.j = $$0;
+   }
 
-   boolean e();
-
-   bqb f();
-
-   void d();
+   public String a() {
+      return this.j;
+   }
 }

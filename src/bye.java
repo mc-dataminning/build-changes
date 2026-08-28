@@ -1,38 +1,95 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class bye {
-   public static byj<cpu> a() {
-      return cbv.a(
-         (Function<cbv.b<cpu>, ? extends App<cbv.c<cpu>, cby<cpu>>>)($$0 -> $$0.group($$0.b(cft.d), $$0.a(cft.c))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        jr $$6 = $$0.b($$1);
-                        if (!$$6.b().a($$4.dt(), 2.0) && !$$4.gA()) {
-                           return false;
-                        } else {
-                           $$1.b();
-                           $$2.a($$6);
-                           $$3.a($$4, (byte)14);
-                           if (!$$4.gy().b().a(cpx.b)) {
-                              return true;
-                           } else {
-                              MinecraftServer $$7 = $$3.p();
-                              Optional.ofNullable($$7.a($$6.a()))
-                                 .flatMap($$1xx -> $$1xx.A().c($$6.b()))
-                                 .flatMap($$0xxx -> md.x.c().filter($$1xx -> ((cpx)$$1xx.a()).b().test($$0xxx)).findFirst())
-                                 .ifPresent($$2xx -> {
-                                    $$4.a($$4.gy().b($$2xx));
-                                    $$4.g($$3);
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+   private final Map<je<bya>, byb> a;
+
+   bye(Map<je<bya>, byb> $$0) {
+      this.a = $$0;
+   }
+
+   private byb d(je<bya> $$0) {
+      byb $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
+      } else {
+         return $$1;
+      }
+   }
+
+   public double a(je<bya> $$0) {
+      return this.d($$0).g();
+   }
+
+   public double b(je<bya> $$0) {
+      return this.d($$0).b();
+   }
+
+   public double a(je<bya> $$0, ale $$1) {
+      byd $$2 = this.d($$0).a($$1);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
+      } else {
+         return $$2.c();
+      }
+   }
+
+   @Nullable
+   public byb a(Consumer<byb> $$0, je<bya> $$1) {
+      byb $$2 = this.a.get($$1);
+      if ($$2 == null) {
+         return null;
+      } else {
+         byb $$3 = new byb($$1, $$0);
+         $$3.a($$2);
+         return $$3;
+      }
+   }
+
+   public static bye.a a() {
+      return new bye.a();
+   }
+
+   public boolean c(je<bya> $$0) {
+      return this.a.containsKey($$0);
+   }
+
+   public boolean b(je<bya> $$0, ale $$1) {
+      byb $$2 = this.a.get($$0);
+      return $$2 != null && $$2.a($$1) != null;
+   }
+
+   public static class a {
+      private final Builder<je<bya>, byb> a = ImmutableMap.builder();
+      private boolean b;
+
+      private byb b(je<bya> $$0) {
+         byb $$1 = new byb($$0, $$1x -> {
+            if (this.b) {
+               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
+            }
+         });
+         this.a.put($$0, $$1);
+         return $$1;
+      }
+
+      public bye.a a(je<bya> $$0) {
+         this.b($$0);
+         return this;
+      }
+
+      public bye.a a(je<bya> $$0, double $$1) {
+         byb $$2 = this.b($$0);
+         $$2.a($$1);
+         return this;
+      }
+
+      public bye a() {
+         this.b = true;
+         return new bye(this.a.buildKeepingLast());
+      }
    }
 }

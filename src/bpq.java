@@ -1,22 +1,9 @@
-import com.mojang.brigadier.StringReader;
-import java.util.Optional;
+import java.util.stream.Stream;
 
-public class bpq implements bpg<StringReader, ut> {
-   public static final bpg<StringReader, ut> a = new bpq();
+public interface bpq<S> {
+   Stream<String> possibleValues(bpn<S> var1);
 
-   private bpq() {
-   }
-
-   @Override
-   public Optional<ut> a(bpf<StringReader> $$0) {
-      $$0.b().skipWhitespace();
-      int $$1 = $$0.c();
-
-      try {
-         return Optional.of(new uu($$0.b()).d());
-      } catch (Exception var4) {
-         $$0.a().a($$1, var4);
-         return Optional.empty();
-      }
+   static <S> bpq<S> b() {
+      return $$0 -> Stream.empty();
    }
 }

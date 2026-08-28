@@ -2,49 +2,38 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dt extends dz<dt.a> {
+public class dt extends dj<dt.a> {
    @Override
    public Codec<dt.a> a() {
       return dt.a.a;
    }
 
-   public void a(aro $$0) {
-      this.a($$0, $$0x -> true);
+   public void a(arp $$0, cio $$1) {
+      eyn $$2 = bx.b($$0, $$1);
+      this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   public static record a(Optional<bi> b) implements dz.a {
-      public static final Codec<dt.a> a = RecordCodecBuilder.create($$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(dt.a::a)).apply($$0, dt.a::new));
+   public static record a(Optional<bi> b, Optional<bi> c) implements dj.a {
+      public static final Codec<dt.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(dt.a::a), bx.b.optionalFieldOf("entity").forGetter(dt.a::c)).apply($$0, dt.a::new)
+      );
 
-      public static aq<dt.a> a(di.a $$0) {
-         return ap.q.a(new dt.a(Optional.of(bx.a(bx.a.a().a($$0)))));
+      public static aq<dt.a> b() {
+         return ap.y.a(new dt.a(Optional.empty(), Optional.empty()));
       }
 
       public static aq<dt.a> a(bx.a $$0) {
-         return ap.q.a(new dt.a(Optional.of(bx.a($$0.b()))));
+         return ap.y.a(new dt.a(Optional.empty(), Optional.of(bx.a($$0))));
       }
 
-      public static aq<dt.a> a(Optional<bx> $$0) {
-         return ap.q.a(new dt.a(bx.a($$0)));
+      public boolean a(eyn $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
 
-      public static aq<dt.a> b() {
-         return ap.r.a(new dt.a(Optional.empty()));
-      }
-
-      public static aq<dt.a> c() {
-         return ap.I.a(new dt.a(Optional.empty()));
-      }
-
-      public static aq<dt.a> d() {
-         return ap.ab.a(new dt.a(Optional.empty()));
-      }
-
-      public static aq<dt.a> e() {
-         return ap.x.a(new dt.a(Optional.empty()));
-      }
-
-      public static aq<dt.a> a(jt<dku> $$0, jt<cxu> $$1, dku $$2, cxu $$3) {
-         return a(bx.a.a().a(bu.a.a().d(cv.a.a().a($$1, $$3))).b(di.a.a().a(ay.a.a().a($$0, $$2))));
+      @Override
+      public void a(bj $$0) {
+         dj.a.super.a($$0);
+         $$0.a(this.c, ".entity");
       }
 
       @Override

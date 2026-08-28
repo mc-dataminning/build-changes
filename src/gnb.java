@@ -1,36 +1,20 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-
-public class gnb implements brn {
-   private final gnu a;
-   private final Set<brl> b = new ObjectOpenHashSet();
-   private final brt c = new brt();
-
-   public gnb(LongSupplier $$0, gnu $$1) {
-      this.a = $$1;
-      this.b.add(bru.a($$0));
-      this.a();
+public class gnb extends gmd {
+   protected gnb(gjd $$0, double $$1, double $$2, double $$3, double $$4, gng $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.t = 16;
+      this.D = 1.5F;
+      this.b($$5);
    }
 
-   private void a() {
-      this.b.addAll(bru.a());
-      this.b.add(brl.a("totalChunks", brk.f, this.a, gnu::h));
-      this.b.add(brl.a("renderedChunks", brk.f, this.a, gnu::j));
-      this.b.add(brl.a("lastViewDistance", brk.f, this.a, gnu::i));
-      grn $$0 = this.a.g();
-      this.b.add(brl.a("toUpload", brk.g, $$0, grn::c));
-      this.b.add(brl.a("freeBufferCount", brk.g, $$0, grn::d));
-      this.b.add(brl.a("toBatchCount", brk.g, $$0, grn::b));
-      if (fhh.a().isPresent()) {
-         this.b.add(brl.a("gpuUtilization", brk.i, fnd.Q(), fnd::v));
+   public static class a implements gmo<mb> {
+      private final gng a;
+
+      public a(gng $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public Set<brl> a(Supplier<bpy> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+      public gml a(mb $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnb($$1, $$2, $$3, $$4, $$5, this.a);
+      }
    }
 }

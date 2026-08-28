@@ -1,36 +1,5 @@
-public class asu implements akb {
-   private static final wv b = wv.c("multiplayer.status.request_handled");
-   private final aka c;
-   private final vo d;
-   private boolean e;
+public interface asu {
+   arp o();
 
-   public asu(aka $$0, vo $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public void a(vq $$0) {
-   }
-
-   @Override
-   public boolean c() {
-      return this.d.i();
-   }
-
-   @Override
-   public void a(akc $$0) {
-      if (this.e) {
-         this.d.a(b);
-      } else {
-         this.e = true;
-         this.d.a(new ajz(this.c));
-      }
-   }
-
-   @Override
-   public void a(ajw $$0) {
-      this.d.a(new ajt($$0.b()));
-      this.d.a(b);
-   }
+   void b(zd<?> var1);
 }

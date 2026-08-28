@@ -1,90 +1,69 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBTimerQuery;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL32C;
-
 public class fhh {
-   private int a;
+   private static final int a = 60;
+   private static final int b = 10;
+   private static final int c = 30;
+   private static final int d = 10;
+   private static final long e = 60000L;
+   private static final long f = 600000L;
+   private final foj g;
+   private final fof h;
+   private int i;
+   private long j;
 
-   public static Optional<fhh> a() {
-      return fhh.b.a;
+   public fhh(foj $$0, fof $$1) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$0.h().c();
    }
 
-   public void b() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a != 0) {
-         throw new IllegalStateException("Current profile not ended");
+   public int a() {
+      return switch (this.b()) {
+         case a -> this.i;
+         case b -> 10;
+         case c -> 10;
+         case d -> Math.min(this.i, 30);
+         case e -> 60;
+      };
+   }
+
+   public fhh.a b() {
+      fob $$0 = this.g.i().c();
+      if (this.h.aO().j()) {
+         return fhh.a.b;
       } else {
-         this.a = GL32C.glGenQueries();
-         GL32C.glBeginQuery(35007, this.a);
+         if ($$0 == fob.b) {
+            long $$1 = af.c() - this.j;
+            if ($$1 > 600000L) {
+               return fhh.a.c;
+            }
+
+            if ($$1 > 60000L) {
+               return fhh.a.d;
+            }
+         }
+
+         return this.h.s != null || this.h.z == null && this.h.aM() == null ? fhh.a.a : fhh.a.e;
       }
    }
 
-   public fhh.a c() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a == 0) {
-         throw new IllegalStateException("endProfile called before beginProfile");
-      } else {
-         GL32C.glEndQuery(35007);
-         fhh.a $$0 = new fhh.a(this.a);
-         this.a = 0;
-         return $$0;
-      }
+   public boolean c() {
+      fhh.a $$0 = this.b();
+      return $$0 == fhh.a.b || $$0 == fhh.a.c;
    }
 
-   public static class a {
-      private static final long a = 0L;
-      private static final long b = -1L;
-      private final int c;
-      private long d;
-
-      a(int $$0) {
-         this.c = $$0;
-      }
-
-      public void a() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = -1L;
-            GL32C.glDeleteQueries(this.c);
-         }
-      }
-
-      public boolean b() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d != 0L) {
-            return true;
-         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public long c() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-         }
-
-         return this.d;
-      }
+   public void a(int $$0) {
+      this.i = $$0;
    }
 
-   static class b {
-      static final Optional<fhh> a = Optional.ofNullable(a());
+   public void d() {
+      this.j = af.c();
+   }
 
-      private b() {
-      }
-
-      @Nullable
-      private static fhh a() {
-         return !GL.getCapabilities().GL_ARB_timer_query ? null : new fhh();
-      }
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

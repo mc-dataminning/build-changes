@@ -1,46 +1,37 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class fek<T> implements fen<T>, fep<T> {
-   private final List<fel<T>> a = Lists.newArrayList();
-   private final Set<fel<?>> b = new ObjectOpenCustomHashSet(fel.a);
+public class fek extends feg {
+   @Nullable
+   private iu b;
+   @Nullable
+   private iu c;
 
-   @Override
-   public void a(fem<T> $$0) {
-      fel<T> $$1 = new fel<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
+   protected fek(cte $$0, boolean $$1) {
+      super($$0, $$1);
+      this.a($$0);
    }
 
-   private void a(fel<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
+   private void a(cte $$0) {
+      iu $$1 = $$0.j();
+      dzo $$2 = $$0.dV().a_($$1);
+      boolean $$3 = dlj.h($$2);
+      if ($$3) {
+         this.b = $$1.e();
+         eas $$4 = $$2.c(((dlj)$$2.b()).c());
+         if ($$4.b()) {
+            this.c = switch ($$4) {
+               case c -> $$1.i();
+               case d -> $$1.h();
+               case e -> $$1.f();
+               case f -> $$1.g();
+               default -> null;
+            };
+         }
       }
    }
 
    @Override
-   public boolean a(jj $$0, T $$1) {
-      return this.b.contains(fel.a($$1, $$0));
-   }
-
-   @Override
-   public int a() {
-      return this.a.size();
-   }
-
-   @Override
-   public List<fel<T>> a(long $$0) {
-      return this.a;
-   }
-
-   public List<fel<T>> b() {
-      return List.copyOf(this.a);
-   }
-
-   public static <T> fek<T> a(List<fel<T>> $$0) {
-      fek<T> $$1 = new fek<>();
-      $$0.forEach($$1::a);
-      return $$1;
+   public feq a(dzo $$0, dhz $$1, iu $$2) {
+      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : fen.a();
    }
 }

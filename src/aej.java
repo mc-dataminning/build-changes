@@ -1,36 +1,28 @@
-public record aej(agh e, byte f) implements zc<abr> {
-   public static final yt<wg, aej> a = zc.a(aej::a, aej::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import javax.annotation.Nullable;
 
-   private aej(wg $$0) {
-      this(new agh($$0), $$0.readByte());
+public record aej(String b, @Nullable String c) implements zd<abs> {
+   public static final yu<vs, aej> a = zd.a(aej::a, aej::new);
+
+   private aej(vs $$0) {
+      this($$0.p(), $$0.c(vs::p));
    }
 
-   private void a(wg $$0) {
-      this.e.a($$0);
-      $$0.l(this.f);
+   private void a(vs $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, vs::a);
    }
 
    @Override
-   public ze<aej> a() {
-      return agk.ap;
+   public zf<aej> a() {
+      return agl.cp;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
-   }
-
-   public agh b() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
+   @Nullable
+   public String e() {
+      return this.c;
    }
 }

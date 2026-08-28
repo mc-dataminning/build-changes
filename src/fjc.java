@@ -1,13 +1,43 @@
-import com.google.gson.annotations.SerializedName;
+import java.util.Locale;
 
-public class fjc extends fjt implements fjn {
-   @SerializedName("name")
-   public String a;
-   @SerializedName("description")
-   public String b;
+public enum fjc {
+   a,
+   b,
+   c,
+   d;
 
-   public fjc(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private static final int e = 1024;
+
+   public static fjc a(long $$0) {
+      if ($$0 < 1024L) {
+         return a;
+      } else {
+         try {
+            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
+            return valueOf($$2 + "B");
+         } catch (Exception var4) {
+            return d;
+         }
+      }
+   }
+
+   public static double a(long $$0, fjc $$1) {
+      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
+   }
+
+   public static String b(long $$0) {
+      int $$1 = 1024;
+      if ($$0 < 1024L) {
+         return $$0 + " B";
+      } else {
+         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
+         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
+      }
+   }
+
+   public static String b(long $$0, fjc $$1) {
+      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
    }
 }

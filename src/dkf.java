@@ -1,76 +1,84 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public class dkf extends dkc {
-   public static final MapCodec<dkf> c = b(dkf::new);
-   public static final dzk<jo> d = dot.e;
-   private static final Map<jo, fdo> e = fdl.c(dku.b(16.0, 8.0, 5.0, 16.0));
+public class dkf extends djw {
+   private static final MapCodec<je<djs>> d = djs.c.fieldOf("biome");
+   public static final MapCodec<dkb.c<je<djs>>> b = dkb.c.a(d).fieldOf("biomes");
+   private static final MapCodec<je<dkg>> e = dkg.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
+   public static final MapCodec<dkf> c = Codec.mapEither(b, e).xmap(dkf::new, $$0 -> $$0.f);
+   private final Either<dkb.c<je<djs>>, je<dkg>> f;
+
+   private dkf(Either<dkb.c<je<djs>>, je<dkg>> $$0) {
+      this.f = $$0;
+   }
+
+   public static dkf a(dkb.c<je<djs>> $$0) {
+      return new dkf(Either.left($$0));
+   }
+
+   public static dkf a(je<dkg> $$0) {
+      return new dkf(Either.right($$0));
+   }
+
+   private dkb.c<je<djs>> d() {
+      return (dkb.c<je<djs>>)this.f.map($$0 -> $$0, $$0 -> ((dkg)$$0.a()).a());
+   }
 
    @Override
-   public MapCodec<? extends dkf> a() {
+   protected Stream<je<djs>> b() {
+      return this.d().a().stream().map(Pair::getSecond);
+   }
+
+   @Override
+   protected MapCodec<? extends djw> a() {
       return c;
    }
 
-   protected dkf(dyl.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(d, jo.c).b(b, Boolean.valueOf(true)));
+   public boolean a(ald<dkg> $$0) {
+      Optional<je<dkg>> $$1 = this.f.right();
+      return $$1.isPresent() && $$1.get().a($$0);
    }
 
    @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return e.get($$0.c(d));
+   public je<djs> getNoiseBiome(int $$0, int $$1, int $$2, dkb.f $$3) {
+      return this.a($$3.a($$0, $$1, $$2));
+   }
+
+   @bat
+   public je<djs> a(dkb.h $$0) {
+      return this.d().a($$0);
    }
 
    @Override
-   protected dym a(dym $$0, drm $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected dym a(dym $$0, dpv $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(d, b);
-   }
-
-   @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, euu.c, euu.c.a($$1));
-      }
-
-      return $$4.g() == $$0.c(d) && !$$0.a($$1, $$3) ? dkw.a.m() : $$0;
-   }
-
-   @Override
-   protected boolean a(dym $$0, dhs $$1, jj $$2) {
-      jo $$3 = $$0.c(d);
-      jj $$4 = $$2.a($$3.g());
-      dym $$5 = $$1.a_($$4);
-      return $$5.c($$1, $$4, $$3);
-   }
-
-   @Nullable
-   @Override
-   public dym a(dbn $$0) {
-      dym $$1 = super.a($$0);
-      dhs $$2 = $$0.q();
-      jj $$3 = $$0.a();
-      jo[] $$4 = $$0.f();
-
-      for (jo $$5 : $$4) {
-         if ($$5.o().d()) {
-            $$1 = $$1.b(d, $$5.g());
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
-         }
-      }
-
-      return null;
+   public void a(List<String> $$0, iu $$1, dkb.f $$2) {
+      int $$3 = jp.a($$1.u());
+      int $$4 = jp.a($$1.v());
+      int $$5 = jp.a($$1.w());
+      dkb.h $$6 = $$2.a($$3, $$4, $$5);
+      float $$7 = dkb.a($$6.d());
+      float $$8 = dkb.a($$6.e());
+      float $$9 = dkb.a($$6.b());
+      float $$10 = dkb.a($$6.c());
+      float $$11 = dkb.a($$6.g());
+      double $$12 = (double)efu.a($$11);
+      dki $$13 = new dki();
+      $$0.add(
+         "Biome builder PV: "
+            + dki.a($$12)
+            + " C: "
+            + $$13.b((double)$$7)
+            + " E: "
+            + $$13.c((double)$$8)
+            + " T: "
+            + $$13.d((double)$$9)
+            + " H: "
+            + $$13.e((double)$$10)
+      );
    }
 }

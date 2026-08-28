@@ -1,151 +1,221 @@
-import com.mojang.datafixers.Products.P5;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public abstract class eqd {
-   public static final Codec<eqd> b = md.P.q().dispatch(eqd::e, eqe::codec);
-   private static final int a = 10387320;
-   private final kn c;
-   private final eqd.c d;
-   private final float e;
-   private final int f;
-   private final Optional<eqd.a> g;
+public class eqd {
+   private static final Map<String, String> a = af.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("Village", "Village");
+      $$0.put("Mineshaft", "Mineshaft");
+      $$0.put("Mansion", "Mansion");
+      $$0.put("Igloo", "Temple");
+      $$0.put("Desert_Pyramid", "Temple");
+      $$0.put("Jungle_Pyramid", "Temple");
+      $$0.put("Swamp_Hut", "Temple");
+      $$0.put("Stronghold", "Stronghold");
+      $$0.put("Monument", "Monument");
+      $$0.put("Fortress", "Fortress");
+      $$0.put("EndCity", "EndCity");
+   });
+   private static final Map<String, String> b = af.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("Iglu", "Igloo");
+      $$0.put("TeDP", "Desert_Pyramid");
+      $$0.put("TeJP", "Jungle_Pyramid");
+      $$0.put("TeSH", "Swamp_Hut");
+   });
+   private static final Set<String> c = Set.of(
+      "pillager_outpost",
+      "mineshaft",
+      "mansion",
+      "jungle_pyramid",
+      "desert_pyramid",
+      "igloo",
+      "ruined_portal",
+      "shipwreck",
+      "swamp_hut",
+      "stronghold",
+      "monument",
+      "ocean_ruin",
+      "fortress",
+      "endcity",
+      "buried_treasure",
+      "village",
+      "nether_fossil",
+      "bastion_remnant"
+   );
+   private final boolean d;
+   private final Map<String, Long2ObjectMap<tx>> e = Maps.newHashMap();
+   private final Map<String, eql> f = Maps.newHashMap();
+   private final List<String> g;
+   private final List<String> h;
 
-   protected static <S extends eqd> P5<Mu<S>, kn, eqd.c, Float, Integer, Optional<eqd.a>> a(Instance<S> $$0) {
-      return $$0.group(
-         kn.v(16).optionalFieldOf("locate_offset", kn.i).forGetter(eqd::f),
-         eqd.c.e.optionalFieldOf("frequency_reduction_method", eqd.c.a).forGetter(eqd::g),
-         Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(eqd::h),
-         ays.l.fieldOf("salt").forGetter(eqd::i),
-         eqd.a.a.optionalFieldOf("exclusion_zone").forGetter(eqd::j)
-      );
-   }
+   public eqd(@Nullable exv $$0, List<String> $$1, List<String> $$2) {
+      this.g = $$1;
+      this.h = $$2;
+      this.a($$0);
+      boolean $$3 = false;
 
-   protected eqd(kn $$0, eqd.c $$1, float $$2, int $$3, Optional<eqd.a> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   protected kn f() {
-      return this.c;
-   }
-
-   protected eqd.c g() {
-      return this.d;
-   }
-
-   protected float h() {
-      return this.e;
-   }
-
-   protected int i() {
-      return this.f;
-   }
-
-   protected Optional<eqd.a> j() {
-      return this.g;
-   }
-
-   public boolean b(eal $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2) && this.a($$1, $$2, $$0.d()) && this.c($$0, $$1, $$2);
-   }
-
-   public boolean a(int $$0, int $$1, long $$2) {
-      return !(this.e < 1.0F) || this.d.a($$2, this.f, $$0, $$1, this.e);
-   }
-
-   public boolean c(eal $$0, int $$1, int $$2) {
-      return !this.g.isPresent() || !this.g.get().a($$0, $$1, $$2);
-   }
-
-   protected abstract boolean a(eal var1, int var2, int var3);
-
-   public jj a(dgw $$0) {
-      return new jj($$0.d(), 0, $$0.e()).a(this.f());
-   }
-
-   public abstract eqe<?> e();
-
-   private static boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      efk $$5 = new efk(new eem(0L));
-      $$5.a($$0, $$1, $$2, $$3);
-      return $$5.i() < $$4;
-   }
-
-   private static boolean b(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      efk $$5 = new efk(new eem(0L));
-      $$5.c($$0, $$2, $$3);
-      return $$5.j() < (double)$$4;
-   }
-
-   private static boolean c(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      efk $$5 = new efk(new eem(0L));
-      $$5.a($$0, $$2, $$3, 10387320);
-      return $$5.i() < $$4;
-   }
-
-   private static boolean d(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      int $$5 = $$2 >> 4;
-      int $$6 = $$3 >> 4;
-      efk $$7 = new efk(new eem(0L));
-      $$7.b((long)($$5 ^ $$6 << 4) ^ $$0);
-      $$7.f();
-      return $$7.a((int)(1.0F / $$4)) == 0;
-   }
-
-   @Deprecated
-   public static record a(js<epm> b, int c) {
-      public static final Codec<eqd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(akz.a(me.bb, epm.a, false).fieldOf("other_set").forGetter(eqd.a::a), Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(eqd.a::b))
-               .apply($$0, eqd.a::new)
-      );
-
-      boolean a(eal $$0, int $$1, int $$2) {
-         return $$0.a(this.b, $$1, $$2, this.c);
+      for (String $$4 : this.h) {
+         $$3 |= this.e.get($$4) != null;
       }
 
-      public js<epm> a() {
-         return this.b;
-      }
+      this.d = $$3;
+   }
 
-      public int b() {
-         return this.c;
+   public void a(long $$0) {
+      for (String $$1 : this.g) {
+         eql $$2 = this.f.get($$1);
+         if ($$2 != null && $$2.c($$0)) {
+            $$2.d($$0);
+         }
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      boolean shouldGenerate(long var1, int var3, int var4, int var5, float var6);
+   public tx a(tx $$0) {
+      tx $$1 = $$0.p("Level");
+      dhw $$2 = new dhw($$1.h("xPos"), $$1.h("zPos"));
+      if (this.a($$2.h, $$2.i)) {
+         $$0 = this.a($$0, $$2);
+      }
+
+      tx $$3 = $$1.p("Structures");
+      tx $$4 = $$3.p("References");
+
+      for (String $$5 : this.h) {
+         boolean $$6 = c.contains($$5.toLowerCase(Locale.ROOT));
+         if (!$$4.b($$5, 12) && $$6) {
+            int $$7 = 8;
+            LongList $$8 = new LongArrayList();
+
+            for (int $$9 = $$2.h - 8; $$9 <= $$2.h + 8; $$9++) {
+               for (int $$10 = $$2.i - 8; $$10 <= $$2.i + 8; $$10++) {
+                  if (this.a($$9, $$10, $$5)) {
+                     $$8.add(dhw.c($$9, $$10));
+                  }
+               }
+            }
+
+            $$4.c($$5, $$8);
+         }
+      }
+
+      $$3.a("References", $$4);
+      $$1.a("Structures", $$3);
+      $$0.a("Level", $$1);
+      return $$0;
    }
 
-   public static enum c implements bag {
-      a("default", eqd::a),
-      b("legacy_type_1", eqd::d),
-      c("legacy_type_2", eqd::c),
-      d("legacy_type_3", eqd::b);
+   private boolean a(int $$0, int $$1, String $$2) {
+      return !this.d ? false : this.e.get($$2) != null && this.f.get(a.get($$2)).b(dhw.c($$0, $$1));
+   }
 
-      public static final Codec<eqd.c> e = bag.a(eqd.c::values);
-      private final String f;
-      private final eqd.b g;
+   private boolean a(int $$0, int $$1) {
+      if (!this.d) {
+         return false;
+      } else {
+         for (String $$2 : this.h) {
+            if (this.e.get($$2) != null && this.f.get(a.get($$2)).c(dhw.c($$0, $$1))) {
+               return true;
+            }
+         }
 
-      private c(final String $$0, final eqd.b $$1) {
-         this.f = $$0;
-         this.g = $$1;
+         return false;
+      }
+   }
+
+   private tx a(tx $$0, dhw $$1) {
+      tx $$2 = $$0.p("Level");
+      tx $$3 = $$2.p("Structures");
+      tx $$4 = $$3.p("Starts");
+
+      for (String $$5 : this.h) {
+         Long2ObjectMap<tx> $$6 = this.e.get($$5);
+         if ($$6 != null) {
+            long $$7 = $$1.a();
+            if (this.f.get(a.get($$5)).c($$7)) {
+               tx $$8 = (tx)$$6.get($$7);
+               if ($$8 != null) {
+                  $$4.a($$5, $$8);
+               }
+            }
+         }
       }
 
-      public boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
-         return this.g.shouldGenerate($$0, $$1, $$2, $$3, $$4);
-      }
+      $$3.a("Starts", $$4);
+      $$2.a("Structures", $$3);
+      $$0.a("Level", $$2);
+      return $$0;
+   }
 
-      @Override
-      public String c() {
-         return this.f;
+   private void a(@Nullable exv $$0) {
+      if ($$0 != null) {
+         for (String $$1 : this.g) {
+            tx $$2 = new tx();
+
+            try {
+               $$2 = $$0.a($$1, baz.o, 1493).p("data").p("Features");
+               if ($$2.g()) {
+                  continue;
+               }
+            } catch (IOException var13) {
+            }
+
+            for (String $$3 : $$2.e()) {
+               tx $$4 = $$2.p($$3);
+               long $$5 = dhw.c($$4.h("ChunkX"), $$4.h("ChunkZ"));
+               ud $$6 = $$4.c("Children", 10);
+               if (!$$6.isEmpty()) {
+                  String $$7 = $$6.a(0).l("id");
+                  String $$8 = b.get($$7);
+                  if ($$8 != null) {
+                     $$4.a("id", $$8);
+                  }
+               }
+
+               String $$9 = $$4.l("id");
+               this.e.computeIfAbsent($$9, $$0x -> new Long2ObjectOpenHashMap()).put($$5, $$4);
+            }
+
+            String $$10 = $$1 + "_index";
+            eql $$11 = $$0.a(eql.a(), $$10);
+            if ($$11.b().isEmpty()) {
+               eql $$12 = new eql();
+               this.f.put($$1, $$12);
+
+               for (String $$13 : $$2.e()) {
+                  tx $$14 = $$2.p($$13);
+                  $$12.a(dhw.c($$14.h("ChunkX"), $$14.h("ChunkZ")));
+               }
+            } else {
+               this.f.put($$1, $$11);
+            }
+         }
+      }
+   }
+
+   public static eqd a(ald<dip> $$0, @Nullable exv $$1) {
+      if ($$0 == dip.i) {
+         return new eqd(
+            $$1,
+            ImmutableList.of("Monument", "Stronghold", "Village", "Mineshaft", "Temple", "Mansion"),
+            ImmutableList.of("Village", "Mineshaft", "Mansion", "Igloo", "Desert_Pyramid", "Jungle_Pyramid", "Swamp_Hut", "Stronghold", "Monument")
+         );
+      } else if ($$0 == dip.j) {
+         List<String> $$2 = ImmutableList.of("Fortress");
+         return new eqd($$1, $$2, $$2);
+      } else if ($$0 == dip.k) {
+         List<String> $$3 = ImmutableList.of("EndCity");
+         return new eqd($$1, $$3, $$3);
+      } else {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown dimension type : %s", $$0));
       }
    }
 }

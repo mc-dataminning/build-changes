@@ -1,33 +1,7 @@
-import com.mojang.serialization.Codec;
+import java.util.UUID;
 
-public class eeh {
-   public static enum a implements bag {
-      a("raw_generation"),
-      b("lakes"),
-      c("local_modifications"),
-      d("underground_structures"),
-      e("surface_structures"),
-      f("strongholds"),
-      g("underground_ores"),
-      h("underground_decoration"),
-      i("fluid_springs"),
-      j("vegetal_decoration"),
-      k("top_layer_modification");
+public interface eeh {
+   UUID cG();
 
-      public static final Codec<eeh.a> l = bag.a(eeh.a::values);
-      private final String m;
-
-      private a(final String $$0) {
-         this.m = $$0;
-      }
-
-      public String a() {
-         return this.m;
-      }
-
-      @Override
-      public String c() {
-         return this.m;
-      }
-   }
+   boolean dQ();
 }

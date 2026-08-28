@@ -1,49 +1,40 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class fhk {
-   @Nullable
-   private static fhr a;
+public enum fhk {
+   a("icons"),
+   b("icons", "snapshot");
 
-   public static void a() {
-      if (a != null) {
-         b();
-         fhr.b();
-      }
+   private final String[] c;
+
+   private fhk(final String... $$0) {
+      this.c = $$0;
    }
 
-   public static void b() {
-      a = null;
+   public List<aus<InputStream>> a(atn $$0) throws IOException {
+      return List.of(
+         this.a($$0, "icon_16x16.png"),
+         this.a($$0, "icon_32x32.png"),
+         this.a($$0, "icon_48x48.png"),
+         this.a($$0, "icon_128x128.png"),
+         this.a($$0, "icon_256x256.png")
+      );
    }
 
-   public static void a(fhn $$0) {
-      RenderSystem.assertOnRenderThread();
-      fhr $$1 = c($$0);
-      $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+   public aus<InputStream> b(atn $$0) throws IOException {
+      return this.a($$0, "minecraft.icns");
    }
 
-   public static void b(fhn $$0) {
-      RenderSystem.assertOnRenderThread();
-      fhr $$1 = c($$0);
-      $$1.c();
-   }
-
-   private static fhr c(fhn $$0) {
-      fhr $$1 = a($$0.c().a());
-      $$1.a($$0);
-      return $$1;
-   }
-
-   private static fhr a(fht $$0) {
-      fhr $$1 = $$0.i();
-      a($$1);
-      return $$1;
-   }
-
-   private static void a(fhr $$0) {
-      if ($$0 != a) {
-         $$0.a();
-         a = $$0;
+   private aus<InputStream> a(atn $$0, String $$1) throws IOException {
+      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
+      aus<InputStream> $$3 = $$0.a($$2);
+      if ($$3 == null) {
+         throw new FileNotFoundException(String.join("/", $$2));
+      } else {
+         return $$3;
       }
    }
 }

@@ -1,69 +1,131 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class clp extends cli {
+public class clp extends bwa {
+   private static final akh<Optional<iu>> b = akl.a(clp.class, akj.p);
+   private static final akh<Boolean> c = akl.a(clp.class, akj.k);
+   public int a;
+
+   public clp(bwj<? extends clp> $$0, dip $$1) {
+      super($$0, $$1);
+      this.I = true;
+      this.a = this.ae.a(100000);
+   }
+
+   public clp(dip $$0, double $$1, double $$2, double $$3) {
+      this(bwj.R, $$0);
+      this.a_($$1, $$2, $$3);
+   }
+
+   @Override
+   protected bwa.d bg() {
+      return bwa.d.a;
+   }
+
+   @Override
+   protected void a(akl.a $$0) {
+      $$0.a(b, Optional.empty());
+      $$0.a(c, true);
+   }
+
+   @Override
+   public void h() {
+      this.a++;
+      this.aK();
+      this.bW();
+      if (this.dV() instanceof aro) {
+         iu $$0 = this.dv();
+         if (((aro)this.dV()).F() != null && this.dV().a_($$0).l()) {
+            this.dV().b($$0, dlh.a(this.dV(), $$0));
+         }
+      }
+   }
+
+   @Override
+   protected void b(tx $$0) {
+      if (this.f() != null) {
+         $$0.a("beam_target", um.a(this.f()));
+      }
+
+      $$0.a("ShowBottom", this.g());
+   }
+
+   @Override
+   protected void a(tx $$0) {
+      um.a($$0, "beam_target").ifPresent(this::a);
+      if ($$0.b("ShowBottom", 1)) {
+         this.a($$0.q("ShowBottom"));
+      }
+   }
+
+   @Override
+   public boolean bG() {
+      return true;
+   }
+
+   @Override
+   public final boolean b(bup $$0) {
+      return this.d($$0) ? false : !($$0.d() instanceof clq);
+   }
+
+   @Override
+   public final boolean a(aro $$0, bup $$1, float $$2) {
+      if (this.d($$1)) {
+         return false;
+      } else if ($$1.d() instanceof clq) {
+         return false;
+      } else {
+         if (!this.dQ()) {
+            this.a(bwa.e.a);
+            if (!$$1.a(axb.l)) {
+               bup $$3 = $$1.d() != null ? this.dW().d(this, $$1.d()) : null;
+               $$0.a(this, $$3, null, this.dA(), this.dC(), this.dG(), 6.0F, false, dip.a.b);
+            }
+
+            this.a($$0, $$1);
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   public void c(aro $$0) {
+      this.a($$0, this.dW().p());
+      super.c($$0);
+   }
+
+   private void a(aro $$0, bup $$1) {
+      edo $$2 = $$0.F();
+      if ($$2 != null) {
+         $$2.a(this, $$1);
+      }
+   }
+
+   public void a(@Nullable iu $$0) {
+      this.au().a(b, Optional.ofNullable($$0));
+   }
+
    @Nullable
-   private fcu b;
+   public iu f() {
+      return this.au().a(b).orElse(null);
+   }
 
-   public clp(clg $$0) {
-      super($$0);
+   public void a(boolean $$0) {
+      this.au().a(c, $$0);
+   }
+
+   public boolean g() {
+      return this.au().a(c);
    }
 
    @Override
-   public void b() {
-      fcu $$0 = this.a.K(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.c.dA();
-      double $$2 = this.a.c.e(0.5);
-      double $$3 = this.a.c.dG();
-
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         azs $$5 = this.a.dY();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         fcu $$9 = this.a.dy();
-         this.a.dV().a(lv.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
-         $$0.b((float) (Math.PI / 16));
-      }
+   public boolean a(double $$0) {
+      return super.a($$0) || this.f() != null;
    }
 
    @Override
-   public void a(arn $$0) {
-      if (this.b == null) {
-         this.b = fcu.c($$0.a(eel.a.f, ehq.a(this.a.j())));
-      }
-
-      if (this.b.c(this.a.dA(), this.a.dC(), this.a.dG()) < 1.0) {
-         this.a.t().b(clw.f).i();
-         this.a.t().a(clw.g);
-      }
-   }
-
-   @Override
-   public float e() {
-      return 1.5F;
-   }
-
-   @Override
-   public float g() {
-      float $$0 = (float)this.a.dy().i() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
-   }
-
-   @Override
-   public void c() {
-      this.b = null;
-   }
-
-   @Nullable
-   @Override
-   public fcu f() {
-      return this.b;
-   }
-
-   @Override
-   public clw<clp> h() {
-      return clw.d;
+   public cys dI() {
+      return new cys(cyw.wj);
    }
 }

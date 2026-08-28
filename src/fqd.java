@@ -1,40 +1,115 @@
-public abstract class fqd extends fql {
-   protected static final int e = 2;
-   private static final fsa a = new fsa(ald.b("widget/button"), ald.b("widget/button_disabled"), ald.b("widget/button_highlighted"));
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-   public fqd(int $$0, int $$1, int $$2, int $$3, wv $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+public interface fqd extends Supplier<JsonElement> {
+   void a(dzp<?, ?> var1);
+
+   static fqd.c a() {
+      return new fqd.c();
    }
 
-   public abstract void b();
-
-   @Override
-   protected void b(fpz $$0, int $$1, int $$2, float $$3) {
-      fnd $$4 = fnd.Q();
-      $$0.a(goi::H, a.a(this.j, this.D()), this.F(), this.G(), this.A(), this.y(), axu.a(this.l));
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, $$5 | azk.f(this.l * 255.0F) << 24);
+   static fqd a(fqd... $$0) {
+      return new fqd.a(fqd.b.a, Arrays.asList($$0));
    }
 
-   public void a(fpz $$0, fpx $$1, int $$2) {
-      this.a($$0, $$1, 2, $$2);
+   static fqd b(fqd... $$0) {
+      return new fqd.a(fqd.b.b, Arrays.asList($$0));
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      this.b();
+   public static class a implements fqd {
+      private final fqd.b a;
+      private final List<fqd> b;
+
+      a(fqd.b $$0, List<fqd> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(dzp<?, ?> $$0) {
+         this.b.forEach($$1 -> $$1.a($$0));
+      }
+
+      public JsonElement b() {
+         JsonArray $$0 = new JsonArray();
+         this.b.stream().map(Supplier::get).forEach($$0::add);
+         JsonObject $$1 = new JsonObject();
+         $$1.add(this.a.c, $$0);
+         return $$1;
+      }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.j || !this.k) {
-         return false;
-      } else if (fup.a($$0)) {
-         this.a(fnd.Q().ak());
-         this.b();
-         return true;
-      } else {
-         return false;
+   public static enum b {
+      a("AND"),
+      b("OR");
+
+      final String c;
+
+      private b(final String $$0) {
+         this.c = $$0;
+      }
+   }
+
+   public static class c implements fqd {
+      private final Map<ear<?>, String> a = Maps.newHashMap();
+
+      private static <T extends Comparable<T>> String a(ear<T> $$0, Stream<T> $$1) {
+         return $$1.<CharSequence>map($$0::b).collect(Collectors.joining("|"));
+      }
+
+      private static <T extends Comparable<T>> String c(ear<T> $$0, T $$1, T[] $$2) {
+         return a($$0, Stream.concat(Stream.of($$1), Stream.of($$2)));
+      }
+
+      private <T extends Comparable<T>> void a(ear<T> $$0, String $$1) {
+         String $$2 = this.a.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Tried to replace " + $$0 + " value from " + $$2 + " to " + $$1);
+         }
+      }
+
+      public final <T extends Comparable<T>> fqd.c a(ear<T> $$0, T $$1) {
+         this.a($$0, $$0.b($$1));
+         return this;
+      }
+
+      @SafeVarargs
+      public final <T extends Comparable<T>> fqd.c a(ear<T> $$0, T $$1, T... $$2) {
+         this.a($$0, c($$0, $$1, $$2));
+         return this;
+      }
+
+      public final <T extends Comparable<T>> fqd.c b(ear<T> $$0, T $$1) {
+         this.a($$0, "!" + $$0.b($$1));
+         return this;
+      }
+
+      @SafeVarargs
+      public final <T extends Comparable<T>> fqd.c b(ear<T> $$0, T $$1, T... $$2) {
+         this.a($$0, "!" + c($$0, $$1, $$2));
+         return this;
+      }
+
+      public JsonElement b() {
+         JsonObject $$0 = new JsonObject();
+         this.a.forEach(($$1, $$2) -> $$0.addProperty($$1.f(), $$2));
+         return $$0;
+      }
+
+      @Override
+      public void a(dzp<?, ?> $$0) {
+         List<ear<?>> $$1 = this.a.keySet().stream().filter($$1x -> $$0.a($$1x.f()) != $$1x).collect(Collectors.toList());
+         if (!$$1.isEmpty()) {
+            throw new IllegalStateException("Properties " + $$1 + " are missing from " + $$0);
+         }
       }
    }
 }

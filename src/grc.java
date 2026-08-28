@@ -1,27 +1,59 @@
-public class grc implements gqk<dxg> {
-   private final gqg<dxg> a;
-   private final gqn<dxg> b;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-   public grc(gql.a $$0) {
-      this.a = new gqg<>($$0);
-      this.b = new gqn<>($$0);
-   }
+public class grc implements grb {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
 
-   public void a(dxg $$0, float $$1, fho $$2, gny $$3, int $$4, int $$5) {
-      this.a.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public boolean a(dxg $$0) {
-      return this.a.a($$0) || this.b.a($$0);
+   public grc(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public int aQ_() {
-      return Math.max(this.a.aQ_(), this.b.aQ_());
+   public Predicate<dzo> getPredicate(dzp<dlu, dzo> $$0) {
+      ear<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
+      } else {
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
+         }
+
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+         } else {
+            Predicate<dzo> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               $$5 = af.b($$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).toList());
+            }
+
+            return $$3 ? $$5.negate() : $$5;
+         }
+      }
    }
 
-   public boolean a(dxg $$0, fcu $$1) {
-      return this.a.a($$0, $$1) || this.b.a($$0, $$1);
+   private Predicate<dzo> a(dzp<dlu, dzo> $$0, ear<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
+      }
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

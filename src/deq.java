@@ -1,36 +1,35 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 
-public record deq<T>(del a, del b, T c, Optional<fau> d) {
-   public static <S> Codec<deq<S>> a(Codec<S> $$0, bau $$1) {
-      return RecordCodecBuilder.create(
-         $$2 -> $$2.group(
-                  del.d.fieldOf("enchanted").forGetter(deq::a),
-                  del.d.fieldOf("affected").forGetter(deq::b),
-                  $$0.fieldOf("effect").forGetter(deq::c),
-                  dee.a($$1).optionalFieldOf("requirements").forGetter(deq::d)
-               )
-               .apply($$2, deq::new)
-      );
+public record deq(der b, dep c, OptionalInt d, ddm e, Optional<List<ddf>> f) {
+   public static final yu<wh, deq> a = yu.a(der.a, deq::a, dep.e, deq::b, ys.i, deq::c, ys.a(mg.af), deq::d, ddf.a.a(ys.a()).a(ys::a), deq::e, deq::new);
+
+   public List<cys> a(bax $$0) {
+      return this.c.d().a($$0);
    }
 
-   public static <S> Codec<deq<S>> b(Codec<S> $$0, bau $$1) {
-      return RecordCodecBuilder.create(
-         $$2 -> $$2.group(
-                  del.d
-                     .validate($$0xx -> $$0xx != del.b ? DataResult.success($$0xx) : DataResult.error(() -> "enchanted must be attacker or victim"))
-                     .fieldOf("enchanted")
-                     .forGetter(deq::a),
-                  $$0.fieldOf("effect").forGetter(deq::c),
-                  dee.a($$1).optionalFieldOf("requirements").forGetter(deq::d)
-               )
-               .apply($$2, ($$0xx, $$1xx, $$2x) -> new deq<>($$0xx, del.c, $$1xx, $$2x))
-      );
+   public boolean a(cqx $$0) {
+      return this.f.isEmpty() ? false : $$0.a(this.f.get(), null);
    }
 
-   public boolean a(exl $$0) {
-      return this.d.isEmpty() ? true : this.d.get().test($$0);
+   public der a() {
+      return this.b;
+   }
+
+   public dep b() {
+      return this.c;
+   }
+
+   public OptionalInt c() {
+      return this.d;
+   }
+
+   public ddm d() {
+      return this.e;
+   }
+
+   public Optional<List<ddf>> e() {
+      return this.f;
    }
 }

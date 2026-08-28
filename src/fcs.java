@@ -1,26 +1,9 @@
-public abstract class fcs {
-   protected final fcu a;
+public interface fcs extends eyo {
+   float b(eyn var1);
 
-   protected fcs(fcu $$0) {
-      this.a = $$0;
+   default int a(eyn $$0) {
+      return Math.round(this.b($$0));
    }
 
-   public double a(bvs $$0) {
-      double $$1 = this.a.d - $$0.dA();
-      double $$2 = this.a.e - $$0.dC();
-      double $$3 = this.a.f - $$0.dG();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public abstract fcs.a d();
-
-   public fcu g() {
-      return this.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-   }
+   fcr b();
 }

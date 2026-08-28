@@ -1,25 +1,32 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 
-public class oy implements ox.a {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ato.b.a() + "/minecraft/structure/";
+public class oy {
+   public static void a(String[] $$0) throws IOException {
+      ab.a(t.a);
+      alg.a();
 
-   @Override
-   public tw apply(String $$0, tw $$1) {
-      return $$0.startsWith(b) ? a($$0, $$1) : $$1;
+      for (String $$1 : $$0) {
+         a($$1);
+      }
    }
 
-   public static tw a(String $$0, tw $$1) {
-      eti $$2 = new eti();
-      int $$3 = ul.b($$1, 500);
-      int $$4 = 4292;
-      if ($$3 < 4292) {
-         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 4292, $$0});
+   private static void a(String $$0) throws IOException {
+      try (Stream<Path> $$1 = Files.walk(Paths.get($$0))) {
+         $$1.filter($$0x -> $$0x.toString().endsWith(".snbt")).forEach($$0x -> {
+            try {
+               String $$1x = Files.readString($$0x);
+               tx $$2 = um.a($$1x);
+               tx $$3 = pa.a($$0x.toString(), $$2);
+               ox.a(mk.a, $$0x, um.a($$3));
+            } catch (IOException | CommandSyntaxException var4) {
+               throw new RuntimeException(var4);
+            }
+         });
       }
-
-      tw $$5 = bax.f.a(bay.a(), $$1, $$3);
-      $$2.a(md.e, $$5);
-      return $$2.a(new tw());
    }
 }

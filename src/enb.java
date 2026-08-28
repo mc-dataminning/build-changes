@@ -1,29 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class enb extends enc {
-   public static final MapCodec<enb> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, enb::new));
+public abstract class enb extends emy {
+   protected final long c;
+   protected final euy.a d;
+   protected final float e;
+   protected final euy f;
 
-   public enb(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   protected static <P extends enb> P3<Mu<P>, Long, euy.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         euy.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         ays.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   @Override
-   protected end<?> a() {
-      return end.a;
+   protected enb(long $$0, euy.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = euy.b(new egm(new efo($$0)), $$1);
    }
 
-   @Override
-   public List<elh.a> a(dhv $$0, BiConsumer<jj, dym> $$1, azs $$2, int $$3, jj $$4, ekr $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
-
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
-      }
-
-      return ImmutableList.of(new elh.a($$4.b($$3), 0, false));
+   protected double a(iu $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

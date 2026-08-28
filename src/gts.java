@@ -1,38 +1,107 @@
-public class gts extends gvl<cmv, had, gds> {
-   private static final ald a = ald.b("textures/entity/creeper/creeper.png");
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-   public gts(guf.a $$0) {
-      super($$0, new gds($$0.a(ghc.am)), 0.5F);
-      this.a(new gxw(this, $$0.f()));
+public class gts implements gtf.a {
+   private final fof a;
+   private final Map<ald<dip>, Map<String, eqa>> b = Maps.newIdentityHashMap();
+   private final Map<ald<dip>, Map<String, aav.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
+
+   public gts(fof $$0) {
+      this.a = $$0;
    }
 
-   protected void a(had $$0, fho $$1) {
-      float $$2 = $$0.a;
-      float $$3 = 1.0F + azk.a($$2 * 100.0F) * $$2 * 0.01F;
-      $$2 = azk.a($$2, 0.0F, 1.0F);
-      $$2 *= $$2;
-      $$2 *= $$2;
-      float $$4 = (1.0F + $$2 * 0.4F) * $$3;
-      float $$5 = (1.0F + $$2 * 0.1F) / $$3;
-      $$1.b($$4, $$5, $$4);
+   @Override
+   public void a(fiq $$0, gpd $$1, double $$2, double $$3, double $$4) {
+      fnn $$5 = this.a.j.k();
+      ald<dip> $$6 = this.a.s.aj();
+      iu $$7 = iu.a($$5.b().d, 0.0, $$5.b().f);
+      fiu $$8 = $$1.getBuffer(gpn.y());
+      if (this.b.containsKey($$6)) {
+         for (eqa $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.g(), 500.0)) {
+               gpx.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.h() - $$2,
+                  (double)$$9.i() - $$3,
+                  (double)$$9.j() - $$4,
+                  (double)($$9.k() + 1) - $$2,
+                  (double)($$9.l() + 1) - $$3,
+                  (double)($$9.m() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
+            }
+         }
+      }
+
+      Map<String, aav.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (aav.a $$11 : $$10.values()) {
+            eqa $$12 = $$11.a();
+            if ($$7.a($$12.g(), 500.0)) {
+               if ($$11.b()) {
+                  gpx.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  gpx.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
+            }
+         }
+      }
    }
 
-   protected float a(had $$0) {
-      float $$1 = $$0.a;
-      return (int)($$1 * 10.0F) % 2 == 0 ? 0.0F : azk.a($$1, 0.5F, 1.0F);
+   public void a(eqa $$0, List<aav.a> $$1, ald<dip> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, aav.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+
+      for (aav.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
+      }
    }
 
-   public ald b(had $$0) {
-      return a;
-   }
-
-   public had a() {
-      return new had();
-   }
-
-   public void a(cmv $$0, had $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.K($$2);
-      $$1.b = $$0.m();
+   @Override
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 }

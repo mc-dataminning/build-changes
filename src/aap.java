@@ -1,31 +1,31 @@
-public record aap(jj c, String d, int e) implements aaf {
-   public static final yt<vr, aap> a = aaf.a(aap::a, aap::new);
-   public static final aaf.b<aap> b = aaf.a("debug/poi_added");
+public record aap(int c, ewj d, float e) implements aag {
+   public static final yu<vs, aap> a = aag.a(aap::a, aap::new);
+   public static final aag.b<aap> b = aag.a("debug/path");
 
-   private aap(vr $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
+   private aap(vs $$0) {
+      this($$0.readInt(), ewj.b($$0), $$0.readFloat());
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.q(this.e);
+   private void a(vs $$0) {
+      $$0.q(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public aaf.b<aap> a() {
+   public aag.b<aap> a() {
       return b;
    }
 
-   public jj b() {
+   public int b() {
       return this.c;
    }
 
-   public String c() {
+   public ewj c() {
       return this.d;
    }
 
-   public int d() {
+   public float d() {
       return this.e;
    }
 }

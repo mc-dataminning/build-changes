@@ -1,54 +1,84 @@
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.HexFormat;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JavaOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
-public record azp(int a, int b) {
-   private static final HexFormat c = HexFormat.of().withUpperCase().withPrefix("0x");
-   private static final long d = -8552249625308161526L;
-   private static final int e = 1229472850;
-   private static final int f = 13;
+public class azp implements jf.a {
+   final jg.a a;
+   final azp.a b = new azp.a();
+   final Map<ald<Object>, je.c<Object>> c = new HashMap<>();
+   final Map<axp<Object>, ji.c<Object>> d = new HashMap<>();
 
-   public static azp a(InputStream $$0) throws IOException {
-      DataInputStream $$1 = new DataInputStream($$0);
-      long $$2 = $$1.readLong();
-      if ($$2 != -8552249625308161526L) {
-         throw new IOException("Bad PNG Signature: " + c.toHexDigits($$2));
-      } else {
-         int $$3 = $$1.readInt();
-         if ($$3 != 13) {
-            throw new IOException("Bad length for IHDR chunk: " + $$3);
-         } else {
-            int $$4 = $$1.readInt();
-            if ($$4 != 1229472850) {
-               throw new IOException("Bad type for IHDR chunk: " + c.toHexDigits($$4));
-            } else {
-               int $$5 = $$1.readInt();
-               int $$6 = $$1.readInt();
-               return new azp($$5, $$6);
-            }
+   public azp(jg.a $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public <T> Optional<? extends jf<T>> a(ald<? extends jr<? extends T>> $$0) {
+      return Optional.of(this.b.a());
+   }
+
+   public <V> alc<V> a(DynamicOps<V> $$0) {
+      return alc.a($$0, new alc.c() {
+         @Override
+         public <T> Optional<alc.b<T>> a(ald<? extends jr<? extends T>> $$0) {
+            return azp.this.a.a($$0).map(alc.b::a).or(() -> Optional.of(new alc.b<>(azp.this.b.b(), azp.this.b.a(), Lifecycle.experimental())));
          }
+      });
+   }
+
+   public azu a() {
+      return new azu() {
+         @Override
+         public <T> DataResult<T> a(Codec<T> $$0, T $$1, jg.a $$2) {
+            return $$0.encodeStart(azp.this.a(JavaOps.INSTANCE), $$1).flatMap($$2x -> $$0.parse($$2.a(JavaOps.INSTANCE), $$2x));
+         }
+      };
+   }
+
+   public boolean b() {
+      return !this.c.isEmpty() || !this.d.isEmpty();
+   }
+
+   class a implements jf<Object>, jh<Object> {
+      @Override
+      public Optional<je.c<Object>> a(ald<Object> $$0) {
+         return Optional.of(this.c($$0));
       }
-   }
 
-   public static azp a(byte[] $$0) throws IOException {
-      return a(new ByteArrayInputStream($$0));
-   }
+      @Override
+      public je.c<Object> b(ald<Object> $$0) {
+         return this.c($$0);
+      }
 
-   public static void a(ByteBuffer $$0) throws IOException {
-      ByteOrder $$1 = $$0.order();
-      $$0.order(ByteOrder.BIG_ENDIAN);
-      if ($$0.getLong(0) != -8552249625308161526L) {
-         throw new IOException("Bad PNG Signature");
-      } else if ($$0.getInt(8) != 13) {
-         throw new IOException("Bad length for IHDR chunk!");
-      } else if ($$0.getInt(12) != 1229472850) {
-         throw new IOException("Bad type for IHDR chunk!");
-      } else {
-         $$0.order($$1);
+      private je.c<Object> c(ald<Object> $$0) {
+         return azp.this.c.computeIfAbsent($$0, $$0x -> je.c.a(this, $$0x));
+      }
+
+      @Override
+      public Optional<ji.c<Object>> a(axp<Object> $$0) {
+         return Optional.of(this.c($$0));
+      }
+
+      @Override
+      public ji.c<Object> b(axp<Object> $$0) {
+         return this.c($$0);
+      }
+
+      private ji.c<Object> c(axp<Object> $$0) {
+         return azp.this.d.computeIfAbsent($$0, $$0x -> ji.a(this, $$0x));
+      }
+
+      public <T> jf<T> a() {
+         return this;
+      }
+
+      public <T> jh<T> b() {
+         return this;
       }
    }
 }

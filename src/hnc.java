@@ -1,95 +1,277 @@
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.mojang.logging.LogUtils;
-import java.net.InetSocketAddress;
-import java.util.Objects;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class hnc {
-   static final Logger a = LogUtils.getLogger();
-   final fwf b;
-   volatile boolean c;
-   @Nullable
-   vo d;
+public class hnc extends avg<hnc.a> {
+   public static final ale a = ale.b("empty");
+   public static final hlt b = new hlt(a, bsz.a(1.0F), bsz.a(1.0F), 1, hlt.a.a, false, false, 16);
+   public static final ale c = ale.b("intentionally_empty");
+   public static final hnd d = new hnd(c, null);
+   public static final hlt e = new hlt(c, bsz.a(1.0F), bsz.a(1.0F), 1, hlt.a.a, false, false, 16);
+   static final Logger f = LogUtils.getLogger();
+   private static final String g = "sounds.json";
+   private static final Gson h = new GsonBuilder().registerTypeHierarchyAdapter(ww.class, new ww.b(js.b)).registerTypeAdapter(hlu.class, new hlv()).create();
+   private static final TypeToken<Map<String, hlu>> i = new TypeToken<Map<String, hlu>>() {
+   };
+   private final Map<ale, hnd> j = Maps.newHashMap();
+   private final hmz k;
+   private final Map<ale, auz> l = new HashMap<>();
 
-   public hnc(fwf $$0) {
-      this.b = $$0;
+   public hnc(foj $$0) {
+      this.k = new hmz(this, $$0, ave.fromMap(this.l));
    }
 
-   public void a(final fjf $$0, gjr $$1) {
-      final fnd $$2 = fnd.Q();
-      $$2.aU();
-      $$2.aY().c(wv.c("mco.connect.success"));
-      final String $$3 = $$1.a();
-      final int $$4 = $$1.b();
-      (new Thread("Realms-connect-task") {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
+   protected hnc.a a(avb $$0, bqj $$1) {
+      hnc.a $$2 = new hnc.a();
 
-            try {
-               $$0 = new InetSocketAddress($$3, $$4);
-               if (hnc.this.c) {
-                  return;
+      try (bqo $$3 = $$1.d("list")) {
+         $$2.a($$0);
+      }
+
+      for (String $$4 : $$0.a()) {
+         try (bqo $$5 = $$1.d($$4)) {
+            for (auz $$7 : $$0.a(ale.a($$4, "sounds.json"))) {
+               $$1.a($$7.b());
+
+               try (Reader $$8 = $$7.e()) {
+                  $$1.a("parse");
+                  Map<String, hlu> $$9 = aza.a(h, $$8, i);
+                  $$1.b("register");
+
+                  for (Entry<String, hlu> $$10 : $$9.entrySet()) {
+                     $$2.a(ale.a($$4, $$10.getKey()), $$10.getValue());
+                  }
+
+                  $$1.c();
+               } catch (RuntimeException var19) {
+                  f.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", $$7.b(), var19});
                }
 
-               hnc.this.d = vo.a($$0, $$2.n.aD(), $$2.aQ().n());
-               if (hnc.this.c) {
-                  return;
-               }
+               $$1.c();
+            }
+         } catch (IOException var21) {
+         }
+      }
 
-               ghy $$1 = new ghy(hnc.this.d, $$2, $$0.e($$3), hnc.this.b, false, null, $$0xx -> {
-               }, null);
-               if ($$0.i()) {
-                  $$1.a($$0.q);
-               }
+      return $$2;
+   }
 
-               if (hnc.this.c) {
-                  return;
-               }
-
-               hnc.this.d.a($$3, $$4, $$1);
-               if (hnc.this.c) {
-                  return;
-               }
-
-               hnc.this.d.a(new aji($$2.X().c(), $$2.X().b()));
-               $$2.a(gjf.a($$0));
-               $$2.bc().a(gne.c.c, String.valueOf($$0.a), Objects.requireNonNullElse($$0.c, "unknown"));
-               $$2.af().a(hnc.this.d, hjv.c.b);
-            } catch (Exception var5) {
-               $$2.af().i();
-               if (hnc.this.c) {
-                  return;
-               }
-
-               hnc.a.error("Couldn't connect to world", var5);
-               String $$3 = var5.toString();
-               if ($$0 != null) {
-                  String $$4 = $$0 + ":" + $$4;
-                  $$3 = $$3.replaceAll($$4, "");
-               }
-
-               hnb $$5 = new hnb(hnc.this.b, wu.r, wv.a("disconnect.genericReason", $$3));
-               $$2.execute(() -> $$2.a($$5));
+   protected void a(hnc.a $$0, avb $$1, bqj $$2) {
+      $$0.a(this.j, this.l, this.k);
+      if (ab.aU) {
+         for (ale $$3 : this.j.keySet()) {
+            hnd $$4 = this.j.get($$3);
+            if (!wz.b($$4.a()) && mf.b.d($$3)) {
+               f.error("Missing subtitle {} for sound event: {}", $$4.a(), $$3);
             }
          }
-      }).start();
+      }
+
+      if (f.isDebugEnabled()) {
+         for (ale $$5 : this.j.keySet()) {
+            if (!mf.b.d($$5)) {
+               f.debug("Not having sound event for: {}", $$5);
+            }
+         }
+      }
+
+      this.k.a();
    }
 
-   public void a() {
-      this.c = true;
-      if (this.d != null && this.d.i()) {
-         this.d.a(wv.c("disconnect.genericReason"));
-         this.d.n();
+   public List<String> a() {
+      return this.k.h();
+   }
+
+   public fgf b() {
+      return this.k.i();
+   }
+
+   static boolean a(hlt $$0, ale $$1, ave $$2) {
+      ale $$3 = $$0.b();
+      if ($$2.getResource($$3).isEmpty()) {
+         f.warn("File {} does not exist, cannot add it to event {}", $$3, $$1);
+         return false;
+      } else {
+         return true;
       }
    }
 
-   public void b() {
-      if (this.d != null) {
-         if (this.d.i()) {
-            this.d.b();
-         } else {
-            this.d.n();
+   @Nullable
+   public hnd a(ale $$0) {
+      return this.j.get($$0);
+   }
+
+   public Collection<ale> d() {
+      return this.j.keySet();
+   }
+
+   public void a(hlx $$0) {
+      this.k.a($$0);
+   }
+
+   public void a(hlw $$0) {
+      this.k.c($$0);
+   }
+
+   public void a(hlw $$0, int $$1) {
+      this.k.a($$0, $$1);
+   }
+
+   public void a(fnn $$0) {
+      this.k.a($$0);
+   }
+
+   public void e() {
+      this.k.e();
+   }
+
+   public void f() {
+      this.k.d();
+   }
+
+   public void g() {
+      this.k.b();
+   }
+
+   public void h() {
+      this.k.c();
+   }
+
+   public void a(boolean $$0) {
+      this.k.a($$0);
+   }
+
+   public void i() {
+      this.k.f();
+   }
+
+   public void a(awm $$0, float $$1) {
+      if ($$0 == awm.a && $$1 <= 0.0F) {
+         this.f();
+      }
+
+      this.k.a($$0, $$1);
+   }
+
+   public void b(hlw $$0) {
+      this.k.a($$0);
+   }
+
+   public void a(hlw $$0, float $$1) {
+      this.k.a($$0, $$1);
+   }
+
+   public boolean c(hlw $$0) {
+      return this.k.b($$0);
+   }
+
+   public void a(hnb $$0) {
+      this.k.a($$0);
+   }
+
+   public void b(hnb $$0) {
+      this.k.b($$0);
+   }
+
+   public void a(@Nullable ale $$0, @Nullable awm $$1) {
+      this.k.a($$0, $$1);
+   }
+
+   public String j() {
+      return this.k.g();
+   }
+
+   public void k() {
+      this.k.a();
+   }
+
+   protected static class a {
+      final Map<ale, hnd> a = Maps.newHashMap();
+      private Map<ale, auz> b = Map.of();
+
+      void a(avb $$0) {
+         this.b = hlt.a.a($$0);
+      }
+
+      void a(ale $$0, hlu $$1) {
+         hnd $$2 = this.a.get($$0);
+         boolean $$3 = $$2 == null;
+         if ($$3 || $$1.b()) {
+            if (!$$3) {
+               hnc.f.debug("Replaced sound event location {}", $$0);
+            }
+
+            $$2 = new hnd($$0, $$1.c());
+            this.a.put($$0, $$2);
+         }
+
+         ave $$4 = ave.fromMap(this.b);
+
+         for (final hlt $$5 : $$1.a()) {
+            final ale $$6 = $$5.a();
+            hne<hlt> $$8;
+            switch ($$5.f()) {
+               case a:
+                  if (!hnc.a($$5, $$0, $$4)) {
+                     continue;
+                  }
+
+                  $$8 = $$5;
+                  break;
+               case b:
+                  $$8 = new hne<hlt>() {
+                     @Override
+                     public int e() {
+                        hnd $$0 = a.this.a.get($$6);
+                        return $$0 == null ? 0 : $$0.e();
+                     }
+
+                     public hlt a(azt $$0) {
+                        hnd $$1 = a.this.a.get($$6);
+                        if ($$1 == null) {
+                           return hnc.b;
+                        } else {
+                           hlt $$2 = $$1.a($$0);
+                           return new hlt($$2.a(), new btf($$2.c(), $$5.c()), new btf($$2.d(), $$5.d()), $$5.e(), hlt.a.a, $$2.g() || $$5.g(), $$2.h(), $$2.i());
+                        }
+                     }
+
+                     @Override
+                     public void a(hmz $$0) {
+                        hnd $$1 = a.this.a.get($$6);
+                        if ($$1 != null) {
+                           $$1.a($$0);
+                        }
+                     }
+                  };
+                  break;
+               default:
+                  throw new IllegalStateException("Unknown SoundEventRegistration type: " + $$5.f());
+            }
+
+            $$2.a($$8);
+         }
+      }
+
+      public void a(Map<ale, hnd> $$0, Map<ale, auz> $$1, hmz $$2) {
+         $$0.clear();
+         $$1.clear();
+         $$1.putAll(this.b);
+
+         for (Entry<ale, hnd> $$3 : this.a.entrySet()) {
+            $$0.put($$3.getKey(), $$3.getValue());
+            $$3.getValue().a($$2);
          }
       }
    }

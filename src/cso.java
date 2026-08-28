@@ -1,75 +1,45 @@
-public class cso extends csh {
-   private float b;
-   private float c;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 
-   public cso(bwb<?> $$0, dhp $$1) {
-      super($$0, $$1);
+public class cso {
+   private final csn a;
+   private final List<cso.a> b = Lists.newArrayList();
+
+   public cso(csn $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public btq a(cqi $$0, btp $$1) {
-      if (!$$0.fX() && !this.ca() && (this.dV().C || $$0.n(this))) {
-         this.c = this.b;
-         if (!this.dV().C) {
-            return (btq)($$0.n(this) ? btq.c : btq.e);
-         } else {
-            return btq.a;
-         }
-      } else {
-         return btq.e;
+   public cso a(int $$0, csl $$1) {
+      this.b.add(new cso.a($$0, $$1));
+      return this;
+   }
+
+   public csn a() {
+      this.b.stream().map(cso.a::b).collect(Collectors.toSet()).forEach(this.a::a);
+      this.b.forEach($$0 -> {
+         csl $$1 = $$0.b();
+         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
+         this.a.b($$1).a($$0.a(), 1.0F);
+      });
+      return this.a;
+   }
+
+   static class a {
+      private final int a;
+      private final csl b;
+
+      public a(int $$0, csl $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-   }
 
-   @Override
-   protected cxu o() {
-      return cyc.oq;
-   }
-
-   @Override
-   public cxy dI() {
-      return new cxy(cyc.oq);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3) {
-         if (this.ca()) {
-            this.bO();
-         }
-
-         if (this.I() == 0) {
-            this.l(-this.J());
-            this.d(10);
-            this.b(50.0F);
-            this.bC();
-         }
+      public int a() {
+         return this.a;
       }
-   }
 
-   @Override
-   public boolean z() {
-      return true;
-   }
-
-   @Override
-   public void h() {
-      double $$0 = (double)this.dL();
-      fcu $$1 = this.dt();
-      super.h();
-      double $$2 = ((double)this.dL() - $$0) % 360.0;
-      if (this.dV().C && $$1.f(this.dt()) > 0.01) {
-         this.b += (float)$$2;
-         this.b %= 360.0F;
-      }
-   }
-
-   @Override
-   protected void a(bvs $$0, bvs.b $$1) {
-      super.a($$0, $$1);
-      if (this.dV().C && $$0 instanceof cqi $$2 && $$2.gP() && b(this.dV())) {
-         float $$3 = (float)azk.e(0.5, (double)this.c, (double)this.b);
-         $$2.w($$2.dL() - ($$3 - this.c));
-         this.c = $$3;
+      public csl b() {
+         return this.b;
       }
    }
 }

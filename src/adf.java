@@ -1,109 +1,53 @@
-public class adf implements zc<abr> {
-   public static final yt<wg, adf> a = zc.a(adf::a, adf::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final int i;
-   private final boolean j;
-   private final boolean k;
-   private final lt l;
+public class adf implements zd<abs> {
+   public static final yu<vs, adf> a = zd.a(adf::a, adf::new);
+   private final int b;
+   private final iu c;
+   private final int d;
+   private final boolean e;
 
-   public <T extends lt> adf(T $$0, boolean $$1, boolean $$2, double $$3, double $$4, double $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
-      this.l = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = $$6;
-      this.f = $$7;
-      this.g = $$8;
-      this.h = $$9;
-      this.i = $$10;
+   public adf(int $$0, iu $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1.j();
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private adf(wg $$0) {
-      this.j = $$0.readBoolean();
-      this.k = $$0.readBoolean();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readFloat();
-      this.h = $$0.readFloat();
-      this.i = $$0.readInt();
-      this.l = lv.bk.decode($$0);
+   private adf(vs $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.e();
+      this.d = $$0.readInt();
+      this.e = $$0.readBoolean();
    }
 
-   private void a(wg $$0) {
-      $$0.a(this.j);
-      $$0.a(this.k);
-      $$0.a(this.b);
+   private void a(vs $$0) {
+      $$0.q(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
+      $$0.q(this.d);
       $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.q(this.i);
-      lv.bk.encode($$0, this.l);
    }
 
    @Override
-   public ze<adf> a() {
-      return agk.M;
+   public zf<adf> a() {
+      return agl.L;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
    public boolean b() {
-      return this.j;
-   }
-
-   public boolean e() {
-      return this.k;
-   }
-
-   public double f() {
-      return this.b;
-   }
-
-   public double g() {
-      return this.c;
-   }
-
-   public double h() {
-      return this.d;
-   }
-
-   public float i() {
       return this.e;
    }
 
-   public float j() {
-      return this.f;
+   public int e() {
+      return this.b;
    }
 
-   public float k() {
-      return this.g;
+   public int f() {
+      return this.d;
    }
 
-   public float l() {
-      return this.h;
-   }
-
-   public int m() {
-      return this.i;
-   }
-
-   public lt n() {
-      return this.l;
+   public iu g() {
+      return this.c;
    }
 }

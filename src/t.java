@@ -15,7 +15,7 @@ public class t implements ag {
    private final String c;
    private final String d;
    private final boolean e;
-   private final ewr f;
+   private final ext f;
    private final int g;
    private final int h;
    private final int i;
@@ -23,12 +23,12 @@ public class t implements ag {
 
    private t() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "25w03a";
+      this.d = "25w04a";
       this.e = false;
-      this.f = new ewr(4304, "main");
+      this.f = new ext(4308, "main");
       this.g = ab.c();
-      this.h = 48;
-      this.i = 63;
+      this.h = 49;
+      this.i = 64;
       this.j = new Date();
    }
 
@@ -36,7 +36,7 @@ public class t implements ag {
       this.c = aza.i($$0, "id");
       this.d = aza.i($$0, "name");
       this.e = aza.k($$0, "stable");
-      this.f = new ewr(aza.o($$0, "world_version"), aza.a($$0, "series_id", ewr.a));
+      this.f = new ext(aza.o($$0, "world_version"), aza.a($$0, "series_id", ext.a));
       this.g = aza.o($$0, "protocol_version");
       JsonObject $$1 = aza.u($$0, "pack_version");
       this.h = aza.o($$1, "resource");
@@ -75,7 +75,7 @@ public class t implements ag {
    }
 
    @Override
-   public ewr d() {
+   public ext d() {
       return this.f;
    }
 
@@ -85,8 +85,8 @@ public class t implements ag {
    }
 
    @Override
-   public int a(ato $$0) {
-      return $$0 == ato.b ? this.i : this.h;
+   public int a(atp $$0) {
+      return $$0 == atp.b ? this.i : this.h;
    }
 
    @Override

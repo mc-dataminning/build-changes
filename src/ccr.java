@@ -1,32 +1,19 @@
-public class ccr extends ccp {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public ccr(bwt $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
-   }
+public class ccr {
+   private static final btd a = btj.a(100, 200);
 
-   @Override
-   public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.aW = this.a(this.a.aW, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.x(this.a(this.a.dN(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.O().k()) {
-            this.a.x(this.a(this.a.dN(), 0.0F, 5.0F));
-         }
-
-         this.a.aW = this.a(this.a.aW, this.a.aU, this.b);
-      }
-
-      float $$0 = azk.h(this.a.aW - this.a.aU);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aU -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aU += 4.0F;
-      }
+   public static byr<bwz> a() {
+      return ccd.a(
+         (Function<ccd.b<bwz>, ? extends App<ccd.c<bwz>, ccg<bwz>>>)($$0 -> $$0.group($$0.a(cgb.aC), $$0.a(cgb.n), $$0.c(cgb.aH), $$0.b(cgb.C), $$0.c(cgb.aA))
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     $$0x.a(bas.a);
+                     $$2.a(bas.a, (long)a.a($$3x.C_()));
+                     $$1.b();
+                     $$4x.b(bxl.m);
+                     return true;
+                  }))
+      );
    }
 }

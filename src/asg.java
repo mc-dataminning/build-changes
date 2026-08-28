@@ -1,35 +1,47 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.function.Function;
 
-public record asg(String b, wz c) {
-   public static final asg a = a("");
-
-   public static asg a(String $$0) {
-      return new asg($$0, wz.c);
+public record asg<T>(T a, Optional<T> b) {
+   public static <T> Codec<asg<T>> a(Codec<T> $$0) {
+      Codec<asg<T>> $$1 = RecordCodecBuilder.create(
+         $$1x -> $$1x.group($$0.fieldOf("raw").forGetter(asg::a), $$0.optionalFieldOf("filtered").forGetter(asg::b)).apply($$1x, asg::new)
+      );
+      Codec<asg<T>> $$2 = $$0.xmap(asg::a, asg::a);
+      return Codec.withAlternative($$1, $$2);
    }
 
-   public static asg b(String $$0) {
-      return new asg($$0, wz.b);
+   public static <B extends ByteBuf, T> yu<B, asg<T>> a(yu<B, T> $$0) {
+      return yu.a($$0, asg::a, $$0.a(ys::a), asg::b, asg::new);
    }
 
-   @Nullable
-   public String a() {
-      return this.c.a(this.b);
+   public static <T> asg<T> a(T $$0) {
+      return new asg<>($$0, Optional.empty());
    }
 
-   public String b() {
-      return Objects.requireNonNullElse(this.a(), "");
+   public static asg<String> a(ash $$0) {
+      return new asg<>($$0.d(), $$0.c() ? Optional.of($$0.b()) : Optional.empty());
    }
 
-   public boolean c() {
-      return !this.c.a();
+   public T a(boolean $$0) {
+      return $$0 ? this.b.orElse(this.a) : this.a;
    }
 
-   public String d() {
-      return this.b;
+   public <U> asg<U> a(Function<T, U> $$0) {
+      return new asg<>($$0.apply(this.a), this.b.map($$0));
    }
 
-   public wz e() {
-      return this.c;
+   public <U> Optional<asg<U>> b(Function<T, Optional<U>> $$0) {
+      Optional<U> $$1 = $$0.apply(this.a);
+      if ($$1.isEmpty()) {
+         return Optional.empty();
+      } else if (this.b.isPresent()) {
+         Optional<U> $$2 = $$0.apply(this.b.get());
+         return $$2.isEmpty() ? Optional.empty() : Optional.of(new asg<>($$1.get(), $$2));
+      } else {
+         return Optional.of(new asg<>($$1.get(), Optional.empty()));
+      }
    }
 }

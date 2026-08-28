@@ -1,53 +1,36 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.stream.Stream;
 
-public abstract class dcb implements dca {
-   private final dby c;
+public record dcb(List<asg<String>> g) implements dau<String, dcb> {
+   public static final dcb a = new dcb(List.of());
+   public static final int b = 1024;
+   public static final int c = 100;
+   private static final Codec<asg<String>> h = asg.a(Codec.string(0, 1024));
+   public static final Codec<List<asg<String>>> d = h.sizeLimitedListOf(100);
+   public static final Codec<dcb> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(dcb::a)).apply($$0, dcb::new));
+   public static final yu<ByteBuf, dcb> f = asg.a(ys.b(1024)).a(ys.c(100)).a(dcb::new, dcb::a);
 
-   public dcb(dby $$0) {
-      this.c = $$0;
+   public dcb(List<asg<String>> g) {
+      if (g.size() > 100) {
+         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
+      } else {
+         this.g = g;
+      }
+   }
+
+   public Stream<String> a(boolean $$0) {
+      return this.g.stream().map($$1 -> $$1.a($$0));
+   }
+
+   public dcb b(List<asg<String>> $$0) {
+      return new dcb($$0);
    }
 
    @Override
-   public boolean al_() {
-      return true;
-   }
-
-   @Override
-   public dby c() {
-      return this.c;
-   }
-
-   @Override
-   public dck ak_() {
-      return dck.b;
-   }
-
-   @Override
-   public abstract dcv<? extends dcb> a();
-
-   public static class a<T extends dca> implements dcv<T> {
-      private final MapCodec<T> w;
-      private final yt<wg, T> x;
-
-      public a(dcb.a.a<T> $$0) {
-         this.w = RecordCodecBuilder.mapCodec($$1 -> $$1.group(dby.e.fieldOf("category").orElse(dby.d).forGetter(dca::c)).apply($$1, $$0::create));
-         this.x = yt.a(dby.g, dca::c, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
-
-      @Override
-      public yt<wg, T> b() {
-         return this.x;
-      }
-
-      @FunctionalInterface
-      public interface a<T extends dca> {
-         T create(dby var1);
-      }
+   public List<asg<String>> a() {
+      return this.g;
    }
 }

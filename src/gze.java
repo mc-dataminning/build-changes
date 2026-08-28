@@ -1,44 +1,18 @@
-import javax.annotation.Nullable;
+public class gze extends gzy<hdb, ggj> {
+   private final gfr<hdb> a;
 
-public class gze<S extends hbb, M extends gea<S>> extends gyt<S, M> {
-   private final gdw a;
-   private final gdw b;
-   private final gye c;
-
-   public gze(gwc<S, M> $$0, ggz $$1, gye $$2) {
+   public gze(gxh<hdb, ggj> $$0, gic $$1) {
       super($$0);
-      this.a = new gdw($$1.a(ghc.aL));
-      this.b = new gdw($$1.a(ghc.aM));
-      this.c = $$2;
+      this.a = new ggi($$1.a(gif.cq));
    }
 
-   public void a(fho $$0, gny $$1, int $$2, S $$3, float $$4, float $$5) {
-      cxy $$6 = $$3.W;
-      dgc $$7 = $$6.a(kx.E);
-      if ($$7 != null && !$$7.d().isEmpty()) {
-         ald $$8 = a($$3);
-         gdw $$9 = $$3.aj ? this.b : this.a;
-         $$0.a();
-         $$0.a(0.0F, 0.0F, 0.125F);
-         $$9.a($$3);
-         this.c.a(hiy.d.c, $$7.d().get(), $$9, $$6, $$0, $$1, $$2, $$8);
-         $$0.b();
+   public void a(fiq $$0, gpd $$1, int $$2, hdb $$3, float $$4, float $$5) {
+      if ("deadmau5".equals($$3.aH) && !$$3.z) {
+         fiu $$6 = $$1.getBuffer(gpn.d($$3.a.a()));
+         int $$7 = gwl.a($$3, 0.0F);
+         this.d().a(this.a);
+         this.a.a($$3);
+         this.a.a($$0, $$6, $$2, $$7);
       }
-   }
-
-   @Nullable
-   private static ald a(hbb $$0) {
-      if ($$0 instanceof hbw $$1) {
-         hhu $$2 = $$1.a;
-         if ($$2.d() != null) {
-            return $$2.d();
-         }
-
-         if ($$2.c() != null && $$1.ay) {
-            return $$2.c();
-         }
-      }
-
-      return null;
    }
 }

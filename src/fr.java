@@ -9,46 +9,33 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class fr implements ArgumentType<String> {
-   private static final Collection<String> a = Arrays.asList("foo", "*", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wv.b("arguments.objective.notFound", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wv.b("arguments.objective.readonly", $$0));
+public class fr implements ArgumentType<Integer> {
+   private static final Collection<String> a = Arrays.asList("container.5", "weapon");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ww.b("slot.unknown", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ww.b("slot.only_single_allowed", $$0));
 
    public static fr a() {
       return new fr();
    }
 
-   public static fdr a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      String $$2 = (String)$$0.getArgument($$1, String.class);
-      fdz $$3 = ((ex)$$0.getSource()).l().aJ();
-      fdr $$4 = $$3.a($$2);
-      if ($$4 == null) {
-         throw b.create($$2);
-      } else {
-         return $$4;
-      }
+   public static int a(CommandContext<ei> $$0, String $$1) {
+      return (Integer)$$0.getArgument($$1, Integer.class);
    }
 
-   public static fdr b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      fdr $$2 = a($$0, $$1);
-      if ($$2.c().e()) {
-         throw c.create($$2.b());
+   public Integer a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = em.a($$0, $$0x -> $$0x != ' ');
+      cwi $$2 = cwj.a($$1);
+      if ($$2 == null) {
+         throw b.createWithContext($$0, $$1);
+      } else if ($$2.b() != 1) {
+         throw c.createWithContext($$0, $$1);
       } else {
-         return $$2;
+         return $$2.a().getInt(0);
       }
-   }
-
-   public String a(StringReader $$0) throws CommandSyntaxException {
-      return $$0.readUnquotedString();
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      S $$2 = (S)$$0.getSource();
-      if ($$2 instanceof ex $$3) {
-         return fc.b($$3.l().aJ().d(), $$1);
-      } else {
-         return $$2 instanceof fc $$4 ? $$4.a($$0) : Suggestions.empty();
-      }
+      return en.b(cwj.b(), $$1);
    }
 
    public Collection<String> getExamples() {

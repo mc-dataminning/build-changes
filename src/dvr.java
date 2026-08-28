@@ -1,34 +1,24 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class dvr extends dww {
-   public dvr(jj $$0, dym $$1) {
-      super(dvn.K, $$0, $$1);
+public class dvr extends dlu {
+   public static final MapCodec<dvr> a = b(dvr::new);
+
+   @Override
+   public MapCodec<dvr> a() {
+      return a;
+   }
+
+   public dvr(dzn.d $$0) {
+      super($$0);
    }
 
    @Override
-   public edv.d a() {
-      return new dvr.a(this.aw_());
-   }
-
-   protected class a extends dww.a {
-      public a(final jj $$1) {
-         super($$1);
+   protected void a(dzo $$0, dip $$1, iu $$2, bwa $$3) {
+      fdw $$4 = new fdw(0.25, 0.05F, 0.25);
+      if ($$3 instanceof bwz $$5 && $$5.b(bvg.K)) {
+         $$4 = new fdw(0.5, 0.25, 0.5);
       }
 
-      @Override
-      public int a() {
-         return 16;
-      }
-
-      @Override
-      public boolean a(arn $$0, jj $$1, js<edm> $$2, @Nullable edm.a $$3) {
-         int $$4 = this.a($$0, this.c, dvr.this.m());
-         return $$4 != 0 && edv.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
-      }
-
-      private int a(dhp $$0, jj $$1, dym $$2) {
-         jo $$3 = $$2.c(dli.b).g();
-         return $$0.c($$1.a($$3), $$3);
-      }
+      $$3.a($$0, $$4);
    }
 }

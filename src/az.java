@@ -3,20 +3,20 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class az extends dz<az.a> {
+public class az extends dj<az.a> {
    @Override
    public Codec<az.a> a() {
       return az.a.a;
    }
 
-   public void a(aro $$0, cig $$1, cig $$2, @Nullable bvi $$3) {
-      exl $$4 = bx.b($$0, $$1);
-      exl $$5 = bx.b($$0, $$2);
-      exl $$6 = $$3 != null ? bx.b($$0, $$3) : null;
+   public void a(arp $$0, cio $$1, cio $$2, @Nullable bvq $$3) {
+      eyn $$4 = bx.b($$0, $$1);
+      eyn $$5 = bx.b($$0, $$2);
+      eyn $$6 = $$3 != null ? bx.b($$0, $$3) : null;
       this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
-   public static record a(Optional<bi> b, Optional<bi> c, Optional<bi> d, Optional<bi> e) implements dz.a {
+   public static record a(Optional<bi> b, Optional<bi> c, Optional<bi> d, Optional<bi> e) implements dj.a {
       public static final Codec<az.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bx.b.optionalFieldOf("player").forGetter(az.a::a),
@@ -39,17 +39,17 @@ public class az extends dz<az.a> {
          return ap.p.a(new az.a(Optional.empty(), bx.a($$0), bx.a($$1), bx.a($$2)));
       }
 
-      public boolean a(exl $$0, exl $$1, @Nullable exl $$2) {
+      public boolean a(eyn $$0, eyn $$1, @Nullable eyn $$2) {
          return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
       }
 
-      private static boolean a(Optional<bi> $$0, exl $$1) {
+      private static boolean a(Optional<bi> $$0, eyn $$1) {
          return $$0.isEmpty() || $$0.get().a($$1);
       }
 
       @Override
       public void a(bj $$0) {
-         dz.a.super.a($$0);
+         dj.a.super.a($$0);
          $$0.a(this.c, ".parent");
          $$0.a(this.d, ".partner");
          $$0.a(this.e, ".child");

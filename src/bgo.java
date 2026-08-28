@@ -1,94 +1,82 @@
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import java.util.Optional;
 
 public class bgo extends DataFix {
-   private final String a;
-   private static final Map<String, String> b = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-      $$0.put("minecraft:bat", "minecraft:bat_spawn_egg");
-      $$0.put("minecraft:blaze", "minecraft:blaze_spawn_egg");
-      $$0.put("minecraft:cave_spider", "minecraft:cave_spider_spawn_egg");
-      $$0.put("minecraft:chicken", "minecraft:chicken_spawn_egg");
-      $$0.put("minecraft:cow", "minecraft:cow_spawn_egg");
-      $$0.put("minecraft:creeper", "minecraft:creeper_spawn_egg");
-      $$0.put("minecraft:donkey", "minecraft:donkey_spawn_egg");
-      $$0.put("minecraft:elder_guardian", "minecraft:elder_guardian_spawn_egg");
-      $$0.put("minecraft:ender_dragon", "minecraft:ender_dragon_spawn_egg");
-      $$0.put("minecraft:enderman", "minecraft:enderman_spawn_egg");
-      $$0.put("minecraft:endermite", "minecraft:endermite_spawn_egg");
-      $$0.put("minecraft:evocation_illager", "minecraft:evocation_illager_spawn_egg");
-      $$0.put("minecraft:ghast", "minecraft:ghast_spawn_egg");
-      $$0.put("minecraft:guardian", "minecraft:guardian_spawn_egg");
-      $$0.put("minecraft:horse", "minecraft:horse_spawn_egg");
-      $$0.put("minecraft:husk", "minecraft:husk_spawn_egg");
-      $$0.put("minecraft:iron_golem", "minecraft:iron_golem_spawn_egg");
-      $$0.put("minecraft:llama", "minecraft:llama_spawn_egg");
-      $$0.put("minecraft:magma_cube", "minecraft:magma_cube_spawn_egg");
-      $$0.put("minecraft:mooshroom", "minecraft:mooshroom_spawn_egg");
-      $$0.put("minecraft:mule", "minecraft:mule_spawn_egg");
-      $$0.put("minecraft:ocelot", "minecraft:ocelot_spawn_egg");
-      $$0.put("minecraft:pufferfish", "minecraft:pufferfish_spawn_egg");
-      $$0.put("minecraft:parrot", "minecraft:parrot_spawn_egg");
-      $$0.put("minecraft:pig", "minecraft:pig_spawn_egg");
-      $$0.put("minecraft:polar_bear", "minecraft:polar_bear_spawn_egg");
-      $$0.put("minecraft:rabbit", "minecraft:rabbit_spawn_egg");
-      $$0.put("minecraft:sheep", "minecraft:sheep_spawn_egg");
-      $$0.put("minecraft:shulker", "minecraft:shulker_spawn_egg");
-      $$0.put("minecraft:silverfish", "minecraft:silverfish_spawn_egg");
-      $$0.put("minecraft:skeleton", "minecraft:skeleton_spawn_egg");
-      $$0.put("minecraft:skeleton_horse", "minecraft:skeleton_horse_spawn_egg");
-      $$0.put("minecraft:slime", "minecraft:slime_spawn_egg");
-      $$0.put("minecraft:snow_golem", "minecraft:snow_golem_spawn_egg");
-      $$0.put("minecraft:spider", "minecraft:spider_spawn_egg");
-      $$0.put("minecraft:squid", "minecraft:squid_spawn_egg");
-      $$0.put("minecraft:stray", "minecraft:stray_spawn_egg");
-      $$0.put("minecraft:turtle", "minecraft:turtle_spawn_egg");
-      $$0.put("minecraft:vex", "minecraft:vex_spawn_egg");
-      $$0.put("minecraft:villager", "minecraft:villager_spawn_egg");
-      $$0.put("minecraft:vindication_illager", "minecraft:vindication_illager_spawn_egg");
-      $$0.put("minecraft:witch", "minecraft:witch_spawn_egg");
-      $$0.put("minecraft:wither", "minecraft:wither_spawn_egg");
-      $$0.put("minecraft:wither_skeleton", "minecraft:wither_skeleton_spawn_egg");
-      $$0.put("minecraft:wolf", "minecraft:wolf_spawn_egg");
-      $$0.put("minecraft:zombie", "minecraft:zombie_spawn_egg");
-      $$0.put("minecraft:zombie_horse", "minecraft:zombie_horse_spawn_egg");
-      $$0.put("minecraft:zombie_pigman", "minecraft:zombie_pigman_spawn_egg");
-      $$0.put("minecraft:zombie_villager", "minecraft:zombie_villager_spawn_egg");
+   private static final Int2ObjectMap<String> a = (Int2ObjectMap<String>)DataFixUtils.make(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(0, "minecraft:protection");
+      $$0.put(1, "minecraft:fire_protection");
+      $$0.put(2, "minecraft:feather_falling");
+      $$0.put(3, "minecraft:blast_protection");
+      $$0.put(4, "minecraft:projectile_protection");
+      $$0.put(5, "minecraft:respiration");
+      $$0.put(6, "minecraft:aqua_affinity");
+      $$0.put(7, "minecraft:thorns");
+      $$0.put(8, "minecraft:depth_strider");
+      $$0.put(9, "minecraft:frost_walker");
+      $$0.put(10, "minecraft:binding_curse");
+      $$0.put(16, "minecraft:sharpness");
+      $$0.put(17, "minecraft:smite");
+      $$0.put(18, "minecraft:bane_of_arthropods");
+      $$0.put(19, "minecraft:knockback");
+      $$0.put(20, "minecraft:fire_aspect");
+      $$0.put(21, "minecraft:looting");
+      $$0.put(22, "minecraft:sweeping");
+      $$0.put(32, "minecraft:efficiency");
+      $$0.put(33, "minecraft:silk_touch");
+      $$0.put(34, "minecraft:unbreaking");
+      $$0.put(35, "minecraft:fortune");
+      $$0.put(48, "minecraft:power");
+      $$0.put(49, "minecraft:punch");
+      $$0.put(50, "minecraft:flame");
+      $$0.put(51, "minecraft:infinity");
+      $$0.put(61, "minecraft:luck_of_the_sea");
+      $$0.put(62, "minecraft:lure");
+      $$0.put(65, "minecraft:loyalty");
+      $$0.put(66, "minecraft:impaling");
+      $$0.put(67, "minecraft:riptide");
+      $$0.put(68, "minecraft:channeling");
+      $$0.put(70, "minecraft:mending");
+      $$0.put(71, "minecraft:vanishing_curse");
    });
 
-   public bgo(Schema $$0, boolean $$1, String $$2) {
+   public bgo(Schema $$0, boolean $$1) {
       super($$0, $$1);
-      this.a = $$2;
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biq.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(biq.F.typeName(), bkj.a()));
-      OpticFinder<String> $$2 = DSL.fieldFinder("id", bkj.a());
-      OpticFinder<?> $$3 = $$0.findField("tag");
-      OpticFinder<?> $$4 = $$3.type().findField("EntityTag");
-      return this.fixTypeEverywhereTyped("ItemInstanceSpawnEggFix" + this.getOutputSchema().getVersionKey(), $$0, $$4x -> {
-         Optional<Pair<String, String>> $$5 = $$4x.getOptional($$1);
-         if ($$5.isPresent() && Objects.equals($$5.get().getSecond(), this.a)) {
-            Typed<?> $$6 = $$4x.getOrCreateTyped($$3);
-            Typed<?> $$7 = $$6.getOrCreateTyped($$4);
-            Optional<String> $$8 = $$7.getOptional($$2);
-            if ($$8.isPresent()) {
-               return $$4x.set($$1, Pair.of(biq.F.typeName(), b.getOrDefault($$8.get(), "minecraft:pig_spawn_egg")));
-            }
-         }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bit.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped("ItemStackEnchantmentFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
+   }
 
-         return $$4x;
-      });
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get("ench")
+         .asStreamOpt()
+         .map($$0x -> $$0x.map($$0xx -> $$0xx.set("id", $$0xx.createString((String)a.getOrDefault($$0xx.get("id").asInt(0), "null")))))
+         .map($$0::createList)
+         .result();
+      if ($$1.isPresent()) {
+         $$0 = $$0.remove("ench").set("Enchantments", $$1.get());
+      }
+
+      return $$0.update(
+         "StoredEnchantments",
+         $$0x -> (Dynamic)DataFixUtils.orElse(
+               $$0x.asStreamOpt()
+                  .map($$0xx -> $$0xx.map($$0xxx -> $$0xxx.set("id", $$0xxx.createString((String)a.getOrDefault($$0xxx.get("id").asInt(0), "null")))))
+                  .map($$0x::createList)
+                  .result(),
+               $$0x
+            )
+      );
    }
 }

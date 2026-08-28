@@ -1,20 +1,8 @@
-public record ajz(aka b) implements zc<ajy> {
-   public static final yt<vr, ajz> a = zc.a(ajz::a, ajz::new);
-
-   private ajz(vr $$0) {
-      this($$0.a(aka.a));
-   }
-
-   private void a(vr $$0) {
-      $$0.a(aka.a, this.b);
-   }
-
+public interface ajz extends ajt, vm {
    @Override
-   public ze<ajz> a() {
-      return akd.a;
+   default vq b() {
+      return vq.c;
    }
 
-   public void a(ajy $$0) {
-      $$0.a(this);
-   }
+   void a(aka var1);
 }

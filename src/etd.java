@@ -1,16 +1,24 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public interface etd<P extends etc> {
-   etd<esf> a = a("always_true", esf.a);
-   etd<esk> b = a("block_match", esk.a);
-   etd<esm> c = a("blockstate_match", esm.a);
-   etd<etk> d = a("tag_match", etk.a);
-   etd<esz> e = a("random_block_match", esz.a);
-   etd<eta> f = a("random_blockstate_match", eta.a);
+public class etd extends eqi {
+   public static final MapCodec<etd> d = a(etd::new);
 
-   MapCodec<P> codec();
+   public etd(eqi.c $$0) {
+      super($$0);
+   }
 
-   static <P extends etc> etd<P> a(String $$0, MapCodec<P> $$1) {
-      return kf.a(md.m, $$0, () -> $$1);
+   @Override
+   public Optional<eqi.b> a(eqi.a $$0) {
+      return a($$0, efn.a.a, $$1 -> a($$1, $$0));
+   }
+
+   private static void a(era $$0, eqi.a $$1) {
+      $$0.a(new etc($$1.f(), $$1.h().d(), $$1.h().e()));
+   }
+
+   @Override
+   public eqr<?> e() {
+      return eqr.o;
    }
 }

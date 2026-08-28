@@ -1,3 +1,8 @@
-public interface dhc {
-   int a(arn var1, boolean var2, boolean var3);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dhc {
 }

@@ -1,8 +1,14 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum foc {
+   a,
+   b,
+   c,
+   d;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface foc {
+   public boolean a() {
+      return this == b;
+   }
+
+   public boolean b() {
+      return this == c || this == d;
+   }
 }

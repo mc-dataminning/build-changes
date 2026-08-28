@@ -1,111 +1,262 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public abstract class gcl<T extends hal> extends gea<T> {
-   private static final float e = 2.1816616F;
-   private static final float f = (float) (Math.PI / 3);
-   private static final float g = (float) (Math.PI / 4);
-   private static final float i = (float) (Math.PI / 6);
-   private static final float j = (float) (Math.PI / 12);
-   protected static final String a = "head_parts";
-   protected static final ghm b = new gcx(true, 16.2F, 1.36F, 2.7272F, 2.0F, 20.0F, Set.of("head_parts"));
-   protected final ghd c;
-   protected final ghd d;
-   private final ghd k;
-   private final ghd l;
-   private final ghd m;
-   private final ghd n;
-   private final ghd o;
+public class gcl extends fxi {
+   private static final ww a = ww.c("editGamerule.title");
+   private static final int b = 8;
+   final fve c = new fve(this);
+   private final Consumer<Optional<dil>> d;
+   private final Set<gcl.f> s = Sets.newHashSet();
+   private final dil u;
+   @Nullable
+   private gcl.g v;
+   @Nullable
+   private frq w;
 
-   public gcl(ghd $$0) {
-      super($$0);
-      this.c = $$0.b("body");
-      this.d = $$0.b("head_parts");
-      this.k = $$0.b("right_hind_leg");
-      this.l = $$0.b("left_hind_leg");
-      this.m = $$0.b("right_front_leg");
-      this.n = $$0.b("left_front_leg");
-      this.o = this.c.b("tail");
+   public gcl(dil $$0, Consumer<Optional<dil>> $$1) {
+      super(a);
+      this.u = $$0;
+      this.d = $$1;
    }
 
-   public static ghl a(ghh $$0) {
-      ghl $$1 = new ghl();
-      ghn $$2 = $$1.a();
-      ghn $$3 = $$2.a("body", ghi.c().a(0, 32).a(-5.0F, -8.0F, -17.0F, 10.0F, 10.0F, 22.0F, new ghh(0.05F)), ghf.a(0.0F, 11.0F, 5.0F));
-      ghn $$4 = $$2.a("head_parts", ghi.c().a(0, 35).a(-2.05F, -6.0F, -2.0F, 4.0F, 12.0F, 7.0F), ghf.a(0.0F, 4.0F, -12.0F, (float) (Math.PI / 6), 0.0F, 0.0F));
-      ghn $$5 = $$4.a("head", ghi.c().a(0, 13).a(-3.0F, -11.0F, -2.0F, 6.0F, 5.0F, 7.0F, $$0), ghf.a);
-      $$4.a("mane", ghi.c().a(56, 36).a(-1.0F, -11.0F, 5.01F, 2.0F, 16.0F, 2.0F, $$0), ghf.a);
-      $$4.a("upper_mouth", ghi.c().a(0, 25).a(-2.0F, -11.0F, -7.0F, 4.0F, 5.0F, 5.0F, $$0), ghf.a);
-      $$2.a("left_hind_leg", ghi.c().a(48, 21).a().a(-3.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$0), ghf.a(4.0F, 14.0F, 7.0F));
-      $$2.a("right_hind_leg", ghi.c().a(48, 21).a(-1.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$0), ghf.a(-4.0F, 14.0F, 7.0F));
-      $$2.a("left_front_leg", ghi.c().a(48, 21).a().a(-3.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$0), ghf.a(4.0F, 14.0F, -10.0F));
-      $$2.a("right_front_leg", ghi.c().a(48, 21).a(-1.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$0), ghf.a(-4.0F, 14.0F, -10.0F));
-      $$3.a("tail", ghi.c().a(42, 36).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 4.0F, $$0), ghf.a(0.0F, -5.0F, 2.0F, (float) (Math.PI / 6), 0.0F, 0.0F));
-      $$5.a("left_ear", ghi.c().a(19, 16).a(0.55F, -13.0F, 4.0F, 2.0F, 3.0F, 1.0F, new ghh(-0.001F)), ghf.a);
-      $$5.a("right_ear", ghi.c().a(19, 16).a(-2.55F, -13.0F, 4.0F, 2.0F, 3.0F, 1.0F, new ghh(-0.001F)), ghf.a);
-      return $$1;
+   @Override
+   protected void aN_() {
+      this.c.a(a, this.p);
+      this.v = this.c.c(new gcl.g(this.u));
+      fvi $$0 = this.c.b(fvi.e().a(8));
+      this.w = $$0.a(frq.a(wv.d, $$0x -> this.d.accept(Optional.of(this.u))).a());
+      $$0.a(frq.a(wv.e, $$0x -> this.aK_()).a());
+      this.c.a($$1 -> {
+         fro var10000 = this.c($$1);
+      });
+      this.c();
    }
 
-   public static ghl b(ghh $$0) {
-      return b.apply(c($$0));
+   @Override
+   protected void c() {
+      this.c.a();
+      if (this.v != null) {
+         this.v.a(this.n, this.c);
+      }
    }
 
-   protected static ghl c(ghh $$0) {
-      ghl $$1 = a($$0);
-      ghn $$2 = $$1.a();
-      ghh $$3 = $$0.a(0.0F, 5.5F, 0.0F);
-      $$2.a("left_hind_leg", ghi.c().a(48, 21).a().a(-3.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$3), ghf.a(4.0F, 14.0F, 7.0F));
-      $$2.a("right_hind_leg", ghi.c().a(48, 21).a(-1.0F, -1.01F, -1.0F, 4.0F, 11.0F, 4.0F, $$3), ghf.a(-4.0F, 14.0F, 7.0F));
-      $$2.a("left_front_leg", ghi.c().a(48, 21).a().a(-3.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$3), ghf.a(4.0F, 14.0F, -10.0F));
-      $$2.a("right_front_leg", ghi.c().a(48, 21).a(-1.0F, -1.01F, -1.9F, 4.0F, 11.0F, 4.0F, $$3), ghf.a(-4.0F, 14.0F, -10.0F));
-      return $$1;
+   @Override
+   public void aK_() {
+      this.d.accept(Optional.empty());
    }
 
-   public void a(T $$0) {
-      super.a($$0);
-      float $$1 = azk.a($$0.aa, -20.0F, 20.0F);
-      float $$2 = $$0.ab * (float) (Math.PI / 180.0);
-      float $$3 = $$0.ae;
-      float $$4 = $$0.ad;
-      if ($$3 > 0.2F) {
-         $$2 += azk.b($$4 * 0.8F) * 0.15F * $$3;
+   private void m() {
+      if (this.w != null) {
+         this.w.j = this.s.isEmpty();
+      }
+   }
+
+   void a(gcl.f $$0) {
+      this.s.add($$0);
+      this.m();
+   }
+
+   void b(gcl.f $$0) {
+      this.s.remove($$0);
+      this.m();
+   }
+
+   public class a extends gcl.d {
+      private final frx<Boolean> c;
+
+      public a(final ww $$1, final List<ayw> $$2, final String $$3, final dil.a $$4) {
+         super($$2, $$1);
+         this.c = frx.b($$4.a()).a().a($$1x -> $$1x.c().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
+         this.a.add(this.c);
       }
 
-      float $$5 = $$0.e;
-      float $$6 = $$0.f;
-      float $$7 = 1.0F - $$6;
-      float $$8 = $$0.g;
-      boolean $$9 = $$0.d;
-      this.d.e = (float) (Math.PI / 6) + $$2;
-      this.d.f = $$1 * (float) (Math.PI / 180.0);
-      float $$10 = $$0.ak ? 0.2F : 1.0F;
-      float $$11 = azk.b($$10 * $$4 * 0.6662F + (float) Math.PI);
-      float $$12 = $$11 * 0.8F * $$3;
-      float $$13 = (1.0F - Math.max($$6, $$5)) * ((float) (Math.PI / 6) + $$2 + $$8 * azk.a($$0.u) * 0.05F);
-      this.d.e = $$6 * ((float) (Math.PI / 12) + $$2) + $$5 * (2.1816616F + azk.a($$0.u) * 0.05F) + $$13;
-      this.d.f = $$6 * $$1 * (float) (Math.PI / 180.0) + (1.0F - Math.max($$6, $$5)) * this.d.f;
-      float $$14 = $$0.ag;
-      this.d.c = this.d.c + azk.h($$5, azk.h($$6, 0.0F, -8.0F * $$14), 7.0F * $$14);
-      this.d.d = azk.h($$6, this.d.d, -4.0F * $$14);
-      this.c.e = $$6 * (float) (-Math.PI / 4) + $$7 * this.c.e;
-      float $$15 = (float) (Math.PI / 12) * $$6;
-      float $$16 = azk.b($$0.u * 0.6F + (float) Math.PI);
-      this.n.c -= 12.0F * $$14 * $$6;
-      this.n.d += 4.0F * $$14 * $$6;
-      this.m.c = this.n.c;
-      this.m.d = this.n.d;
-      float $$17 = ((float) (-Math.PI / 3) + $$16) * $$6 + $$12 * $$7;
-      float $$18 = ((float) (-Math.PI / 3) - $$16) * $$6 - $$12 * $$7;
-      this.l.e = $$15 - $$11 * 0.5F * $$3 * $$7;
-      this.k.e = $$15 + $$11 * 0.5F * $$3 * $$7;
-      this.n.e = $$17;
-      this.m.e = $$18;
-      this.o.e = (float) (Math.PI / 6) + $$3 * 0.75F;
-      this.o.c += $$3 * $$14;
-      this.o.d += $$3 * 2.0F * $$14;
-      if ($$9) {
-         this.o.f = azk.b($$0.u * 0.7F);
-      } else {
-         this.o.f = 0.0F;
+      @Override
+      public void a(frc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.c.j($$3 + $$4 - 45);
+         this.c.k($$2);
+         this.c.a($$0, $$6, $$7, $$9);
+      }
+   }
+
+   public class b extends gcl.f {
+      final ww b;
+
+      public b(final ww $$1) {
+         super(null);
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(frc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(gcl.this.m.h, this.b, $$3 + $$4 / 2, $$2 + 5, -1);
+      }
+
+      @Override
+      public List<? extends ftn> aD_() {
+         return ImmutableList.of();
+      }
+
+      @Override
+      public List<? extends fvl> b() {
+         return ImmutableList.of(new fvl() {
+            @Override
+            public fvl.a w() {
+               return fvl.a.b;
+            }
+
+            @Override
+            public void b(fvn $$0) {
+               $$0.a(fvm.a, b.this.b);
+            }
+         });
+      }
+   }
+
+   @FunctionalInterface
+   interface c<T extends dil.g<T>> {
+      gcl.f create(ww var1, List<ayw> var2, String var3, T var4);
+   }
+
+   public abstract class d extends gcl.f {
+      private final List<ayw> c;
+      protected final List<fro> a = Lists.newArrayList();
+
+      public d(@Nullable final List<ayw> $$1, final ww $$2) {
+         super($$1);
+         this.c = gcl.this.m.h.c($$2, 175);
+      }
+
+      @Override
+      public List<? extends ftn> aD_() {
+         return this.a;
+      }
+
+      @Override
+      public List<? extends fvl> b() {
+         return this.a;
+      }
+
+      protected void a(frc $$0, int $$1, int $$2) {
+         if (this.c.size() == 1) {
+            $$0.b(gcl.this.m.h, this.c.get(0), $$2, $$1 + 5, -1);
+         } else if (this.c.size() >= 2) {
+            $$0.b(gcl.this.m.h, this.c.get(0), $$2, $$1, -1);
+            $$0.b(gcl.this.m.h, this.c.get(1), $$2, $$1 + 10, -1);
+         }
+      }
+   }
+
+   public class e extends gcl.d {
+      private final frz d;
+
+      public e(final ww $$1, final List<ayw> $$2, final String $$3, final dil.d $$4) {
+         super($$2, $$1);
+         this.d = new frz(gcl.this.m.h, 10, 5, 44, 20, $$1.f().f("\n").f($$3).f("\n"));
+         this.d.a(Integer.toString($$4.a()));
+         this.d.b($$1x -> {
+            if ($$4.b($$1x)) {
+               this.d.m(14737632);
+               gcl.this.b(this);
+            } else {
+               this.d.m(-65536);
+               gcl.this.a(this);
+            }
+         });
+         this.a.add(this.d);
+      }
+
+      @Override
+      public void a(frc $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.d.j($$3 + $$4 - 45);
+         this.d.k($$2);
+         this.d.a($$0, $$6, $$7, $$9);
+      }
+   }
+
+   public abstract static class f extends frw.a<gcl.f> {
+      @Nullable
+      final List<ayw> a;
+
+      public f(@Nullable List<ayw> $$0) {
+         this.a = $$0;
+      }
+   }
+
+   public class g extends frw<gcl.f> {
+      private static final int m = 24;
+
+      public g(final dil $$1) {
+         super(fof.Q(), gcl.this.n, gcl.this.c.d(), gcl.this.c.c(), 24);
+         final Map<dil.b, Map<dil.e<?>, gcl.f>> $$2 = Maps.newHashMap();
+         $$1.a(new dil.c() {
+            @Override
+            public void b(dil.e<dil.a> $$0, dil.f<dil.a> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> gcl.this.new a($$0x, $$1xxx, $$2xx, $$3));
+            }
+
+            @Override
+            public void c(dil.e<dil.d> $$0, dil.f<dil.d> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> gcl.this.new e($$0x, $$1xxx, $$2xx, $$3));
+            }
+
+            private <T extends dil.g<T>> void a(dil.e<T> $$0, gcl.c<T> $$1x) {
+               ww $$2 = ww.c($$0.b());
+               ww $$3 = ww.b($$0.a()).a(n.o);
+               T $$4 = $$1.b($$0);
+               String $$5 = $$4.b();
+               ww $$6 = ww.a("editGamerule.default", ww.b($$5)).a(n.h);
+               String $$7 = $$0.b() + ".description";
+               List<ayw> $$10;
+               String $$11;
+               if (hjg.a($$7)) {
+                  Builder<ayw> $$8 = ImmutableList.builder().add($$3.g());
+                  ww $$9 = ww.c($$7);
+                  gcl.this.p.c($$9, 150).forEach($$8::add);
+                  $$10 = $$8.add($$6.g()).build();
+                  $$11 = $$9.getString() + "\n" + $$6.getString();
+               } else {
+                  $$10 = ImmutableList.of($$3.g(), $$6.g());
+                  $$11 = $$6.getString();
+               }
+
+               $$2.computeIfAbsent($$0.c(), $$0x -> Maps.newHashMap()).put($$0, $$1.create($$2, $$10, $$11, $$4));
+            }
+         });
+         $$2.entrySet()
+            .stream()
+            .sorted(Entry.comparingByKey())
+            .forEach(
+               $$0x -> {
+                  this.b(gcl.this.new b(ww.c(((dil.b)$$0x.getKey()).a()).a(n.r, n.o)));
+                  ((Map)$$0x.getValue())
+                     .entrySet()
+                     .stream()
+                     .sorted(Entry.comparingByKey(Comparator.comparing(dil.e::a)))
+                     .forEach($$0xx -> this.b((gcl.f)$$0xx.getValue()));
+               }
+            );
+      }
+
+      @Override
+      public void b(frc $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         gcl.f $$4 = this.x();
+         if ($$4 != null && $$4.a != null) {
+            gcl.this.b($$4.a);
+         }
       }
    }
 }

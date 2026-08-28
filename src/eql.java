@@ -1,30 +1,57 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class eql extends eqn {
-   public static final MapCodec<eql> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, eql::new));
+public class eql extends exh {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   protected eql(Either<ald, eti> $$0, js<etg> $$1, eqq.a $$2, Optional<ess> $$3) {
-      super($$0, $$1, $$2, $$3);
+   public static exh.a<eql> a() {
+      return new exh.a<>(eql::new, eql::b, baz.o);
+   }
+
+   private eql(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public eql() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public static eql b(tx $$0, jg.a $$1) {
+      return new eql(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
    }
 
    @Override
-   protected ete a(drm $$0, eoy $$1, ess $$2, boolean $$3) {
-      ete $$4 = super.a($$0, $$1, $$2, $$3);
-      $$4.b(esj.b);
-      $$4.a(esj.d);
-      return $$4;
+   public tx a(tx $$0, jg.a $$1) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
    }
 
-   @Override
-   public eqp<?> a() {
-      return eqp.e;
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
+      this.g();
    }
 
-   @Override
-   public String toString() {
-      return "LegacySingle[" + this.c + "]";
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      if (this.d.remove($$0)) {
+         this.g();
+      }
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

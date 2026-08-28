@@ -1,99 +1,63 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class hkm implements hlx<hkm> {
-   public static final akw a = new akw("sounds", ".ogg");
-   private final ald b;
-   private final bsy c;
-   private final bsy d;
-   private final int e;
-   private final hkm.a f;
-   private final boolean g;
-   private final boolean h;
-   private final int i;
+public class hkm {
+   static final int a = -1;
+   private static final int b = 0;
 
-   public hkm(ald $$0, bsy $$1, bsy $$2, int $$3, hkm.a $$4, boolean $$5, boolean $$6, int $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
+   public static Object2IntMap<dzo> a(fpi $$0, hkb.c $$1) {
+      Map<dlu, List<ear<?>>> $$2 = new HashMap<>();
+      Map<hkm.a, Set<dzo>> $$3 = new HashMap<>();
+      $$1.c().forEach(($$3x, $$4x) -> {
+         List<ear<?>> $$5x = $$2.computeIfAbsent($$4x.a().b(), $$1xx -> List.copyOf($$0.a($$1xx)));
+         hkm.a $$6x = hkm.a.a($$4x.a(), $$4x.b(), $$5x);
+         $$3.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$4x.a());
+      });
+      int $$4 = 1;
+      Object2IntMap<dzo> $$5 = new Object2IntOpenHashMap();
+      $$5.defaultReturnValue(-1);
 
-   public ald a() {
-      return this.b;
-   }
+      for (Set<dzo> $$6 : $$3.values()) {
+         Iterator<dzo> $$7 = $$6.iterator();
 
-   public ald b() {
-      return a.a(this.b);
-   }
-
-   public bsy c() {
-      return this.c;
-   }
-
-   public bsy d() {
-      return this.d;
-   }
-
-   @Override
-   public int e() {
-      return this.e;
-   }
-
-   public hkm a(azs $$0) {
-      return this;
-   }
-
-   @Override
-   public void a(hls $$0) {
-      if (this.h) {
-         $$0.a(this);
-      }
-   }
-
-   public hkm.a f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return this.h;
-   }
-
-   public int i() {
-      return this.i;
-   }
-
-   @Override
-   public String toString() {
-      return "Sound[" + this.b + "]";
-   }
-
-   public static enum a {
-      a("file"),
-      b("event");
-
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      @Nullable
-      public static hkm.a a(String $$0) {
-         for (hkm.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
+         while ($$7.hasNext()) {
+            dzo $$8 = $$7.next();
+            if ($$8.o() != dsf.b) {
+               $$7.remove();
+               $$5.put($$8, 0);
             }
          }
 
-         return null;
+         if ($$6.size() > 1) {
+            int $$9 = $$4++;
+            $$6.forEach($$2x -> $$5.put($$2x, $$9));
+         }
+      }
+
+      return $$5;
+   }
+
+   static record a(Object a, List<Object> b) {
+      public static hkm.a a(dzo $$0, gqx $$1, List<ear<?>> $$2) {
+         List<Object> $$3 = a($$0, $$2);
+         Object $$4 = $$1.a($$0);
+         return new hkm.a($$4, $$3);
+      }
+
+      private static List<Object> a(dzo $$0, List<ear<?>> $$1) {
+         Object[] $$2 = new Object[$$1.size()];
+
+         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+            $$2[$$3] = $$0.c($$1.get($$3));
+         }
+
+         return List.of($$2);
       }
    }
 }

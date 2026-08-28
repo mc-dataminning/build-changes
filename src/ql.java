@@ -1,42 +1,72 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-
 public class ql {
-   public static final alc<eqq> a = qn.a("pillager_outpost/base_plates");
+   @Deprecated
+   public static final euy.a a = new euy.a(-3, 1.0, 1.0, 1.0, 0.0);
 
-   public static void a(qg<eqq> $$0) {
-      jt<etg> $$1 = $$0.a(me.ba);
-      js<etg> $$2 = $$1.b(qo.q);
-      jt<eqq> $$3 = $$0.a(me.bc);
-      js<eqq> $$4 = $$3.b(qn.a);
-      $$0.a(a, new eqq($$4, ImmutableList.of(Pair.of(eqo.a("pillager_outpost/base_plate"), 1)), eqq.a.b));
-      qn.a(
-         $$0,
-         "pillager_outpost/towers",
-         new eqq(
-            $$4,
-            ImmutableList.of(Pair.of(eqo.b(ImmutableList.of(eqo.a("pillager_outpost/watchtower"), eqo.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
-            eqq.a.b
-         )
-      );
-      qn.a($$0, "pillager_outpost/feature_plates", new eqq($$4, ImmutableList.of(Pair.of(eqo.a("pillager_outpost/feature_plate"), 1)), eqq.a.a));
-      qn.a(
-         $$0,
-         "pillager_outpost/features",
-         new eqq(
-            $$4,
-            ImmutableList.of(
-               Pair.of(eqo.a("pillager_outpost/feature_cage1"), 1),
-               Pair.of(eqo.a("pillager_outpost/feature_cage2"), 1),
-               Pair.of(eqo.a("pillager_outpost/feature_cage_with_allays"), 1),
-               Pair.of(eqo.a("pillager_outpost/feature_logs"), 1),
-               Pair.of(eqo.a("pillager_outpost/feature_tent1"), 1),
-               Pair.of(eqo.a("pillager_outpost/feature_tent2"), 1),
-               Pair.of(eqo.a("pillager_outpost/feature_targets"), 1),
-               Pair.of(eqo.h(), 6)
-            ),
-            eqq.a.b
-         )
-      );
+   public static void a(qh<euy.a> $$0) {
+      a($$0, 0, efw.a, efw.b, efw.c, efw.d);
+      a($$0, -2, efw.e, efw.f, efw.g, efw.h);
+      a($$0, efw.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
+      $$0.a(efw.j, a);
+      a($$0, efw.k, -3, 1.0);
+      a($$0, efw.l, -7, 1.0);
+      a($$0, efw.m, -1, 1.0);
+      a($$0, efw.n, -5, 1.0);
+      a($$0, efw.o, -7, 1.0, 1.0);
+      a($$0, efw.p, -8, 1.0);
+      a($$0, efw.q, -8, 1.0);
+      a($$0, efw.r, -7, 1.0);
+      a($$0, efw.s, -8, 1.0);
+      a($$0, efw.t, -11, 1.0);
+      a($$0, efw.u, -11, 1.0);
+      a($$0, efw.v, -7, 1.0);
+      a($$0, efw.w, -7, 1.0);
+      a($$0, efw.x, -11, 1.0);
+      a($$0, efw.y, -8, 1.0);
+      a($$0, efw.z, -5, 1.0);
+      a($$0, efw.A, -8, 1.0);
+      a($$0, efw.B, -7, 0.4, 0.5, 1.0);
+      a($$0, efw.C, -8, 1.0);
+      a($$0, efw.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
+      a($$0, efw.E, -8, 1.0);
+      a($$0, efw.F, -7, 1.0);
+      a($$0, efw.G, -7, 1.0);
+      a($$0, efw.H, -5, 1.0);
+      a($$0, efw.I, -8, 1.0);
+      a($$0, efw.J, -8, 1.0);
+      a($$0, efw.K, -7, 1.0);
+      a($$0, efw.L, -7, 1.0);
+      a($$0, efw.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, efw.N, -6, 1.0, 1.0, 1.0);
+      a($$0, efw.O, -6, 1.0, 1.0, 0.0, 1.0);
+      a($$0, efw.P, -8, 1.0);
+      a($$0, efw.Q, -2, 1.0, 1.0, 1.0, 1.0);
+      a($$0, efw.R, -8, 1.0);
+      a($$0, efw.S, -6, 1.0, 1.0, 1.0);
+      a($$0, efw.T, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, efw.U, -3, 1.0);
+      a($$0, efw.V, -6, 1.0, 1.0, 1.0);
+      a($$0, efw.W, -2, 1.0);
+      a($$0, efw.X, -9, 1.0, 1.0, 1.0, 1.0);
+      a($$0, efw.Y, -8, 1.0, 1.0, 1.0, 1.0);
+      a($$0, efw.Z, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, efw.aa, -7, 1.0, 1.0, 1.0, 1.0);
+      a($$0, efw.ab, -4, 1.0, 1.0, 1.0, 1.0);
+      a($$0, efw.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, efw.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, efw.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, efw.af, -3, 1.0, 0.0, 0.0, 0.35);
+      a($$0, efw.ag, -3, 1.0, 0.0, 0.0, 0.9);
+      a($$0, efw.ah, -4, 1.0);
+   }
+
+   private static void a(qh<euy.a> $$0, int $$1, ald<euy.a> $$2, ald<euy.a> $$3, ald<euy.a> $$4, ald<euy.a> $$5) {
+      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
+      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
+   }
+
+   private static void a(qh<euy.a> $$0, ald<euy.a> $$1, int $$2, double $$3, double... $$4) {
+      $$0.a($$1, new euy.a($$2, $$3, $$4));
    }
 }

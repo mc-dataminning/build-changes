@@ -1,39 +1,16 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.RedirectModifier;
 import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
 
-public class hh implements ArgumentType<hi> {
-   private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "stick{foo=bar}");
-   private final hj b;
+public interface hh<T> {
+   void a(T var1, List<T> var2, ContextChain<T> var3, he var4, hk<T> var5);
 
-   public hh(et $$0) {
-      this.b = new hj($$0);
-   }
-
-   public static hh a(et $$0) {
-      return new hh($$0);
-   }
-
-   public hi a(StringReader $$0) throws CommandSyntaxException {
-      hj.a $$1 = this.b.a($$0);
-      return new hi($$1.a(), $$1.b());
-   }
-
-   public static <S> hi a(CommandContext<S> $$0, String $$1) {
-      return (hi)$$0.getArgument($$1, hi.class);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return this.b.a($$1);
-   }
-
-   public Collection<String> getExamples() {
-      return a;
+   public interface a<T> extends RedirectModifier<T>, hh<T> {
+      default Collection<T> apply(CommandContext<T> $$0) throws CommandSyntaxException {
+         throw new UnsupportedOperationException("This function should not run");
+      }
    }
 }

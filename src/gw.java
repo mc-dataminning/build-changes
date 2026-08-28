@@ -1,15 +1,8 @@
-public interface gw {
-   fcu a(ex var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   fct b(ex var1);
-
-   default jj c(ex $$0) {
-      return jj.a((kc)this.a($$0));
-   }
-
-   boolean a();
-
-   boolean b();
-
-   boolean c();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gw {
 }

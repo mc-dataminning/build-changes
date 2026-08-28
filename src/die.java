@@ -1,25 +1,46 @@
-public interface die {
-   <T> fem<T> a(jj var1, T var2, int var3, feq var4);
+import javax.annotation.Nullable;
 
-   <T> fem<T> a(jj var1, T var2, int var3);
+public enum die implements dhs {
+   a;
 
-   fei<dku> U();
-
-   default void a(jj $$0, dku $$1, int $$2, feq $$3) {
-      this.U().a(this.a($$0, $$1, $$2, $$3));
+   @Override
+   public float a(ja $$0, boolean $$1) {
+      return 1.0F;
    }
 
-   default void a(jj $$0, dku $$1, int $$2) {
-      this.U().a(this.a($$0, $$1, $$2));
+   @Override
+   public evk x_() {
+      return evk.c;
    }
 
-   fei<eus> T();
-
-   default void a(jj $$0, eus $$1, int $$2, feq $$3) {
-      this.T().a(this.a($$0, $$1, $$2, $$3));
+   @Override
+   public int a(iu $$0, dia $$1) {
+      return -1;
    }
 
-   default void a(jj $$0, eus $$1, int $$2) {
-      this.T().a(this.a($$0, $$1, $$2));
+   @Nullable
+   @Override
+   public dwn c_(iu $$0) {
+      return null;
+   }
+
+   @Override
+   public dzo a_(iu $$0) {
+      return dlw.a.m();
+   }
+
+   @Override
+   public evv b_(iu $$0) {
+      return evw.a.g();
+   }
+
+   @Override
+   public int H_() {
+      return 0;
+   }
+
+   @Override
+   public int G_() {
+      return 0;
    }
 }

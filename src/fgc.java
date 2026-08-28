@@ -1,48 +1,166 @@
-import com.google.common.base.Charsets;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
 import java.nio.ByteBuffer;
-import org.lwjgl.BufferUtils;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.glfw.GLFWErrorCallbackI;
-import org.lwjgl.system.MemoryUtil;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
+import org.slf4j.Logger;
 
 public class fgc {
-   public static final int a = 65545;
-   private final ByteBuffer b = BufferUtils.createByteBuffer(8192);
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 4;
+   public static final int a = 1;
+   private final int d;
+   private final AtomicBoolean e = new AtomicBoolean(true);
+   private int f = 16384;
+   @Nullable
+   private hmp g;
 
-   public String a(long $$0, GLFWErrorCallbackI $$1) {
-      GLFWErrorCallback $$2 = GLFW.glfwSetErrorCallback($$1);
-      String $$3 = GLFW.glfwGetClipboardString($$0);
-      $$3 = $$3 != null ? baf.a($$3) : "";
-      GLFWErrorCallback $$4 = GLFW.glfwSetErrorCallback($$2);
-      if ($$4 != null) {
-         $$4.free();
+   @Nullable
+   static fgc a() {
+      int[] $$0 = new int[1];
+      AL10.alGenSources($$0);
+      return fgg.a("Allocate new source") ? null : new fgc($$0[0]);
+   }
+
+   private fgc(int $$0) {
+      this.d = $$0;
+   }
+
+   public void b() {
+      if (this.e.compareAndSet(true, false)) {
+         AL10.alSourceStop(this.d);
+         fgg.a("Stop");
+         if (this.g != null) {
+            try {
+               this.g.close();
+            } catch (IOException var2) {
+               b.error("Failed to close audio stream", var2);
+            }
+
+            this.l();
+            this.g = null;
+         }
+
+         AL10.alDeleteSources(new int[]{this.d});
+         fgg.a("Cleanup");
       }
-
-      return $$3;
    }
 
-   private static void a(long $$0, ByteBuffer $$1, byte[] $$2) {
-      $$1.clear();
-      $$1.put($$2);
-      $$1.put((byte)0);
-      $$1.flip();
-      GLFW.glfwSetClipboardString($$0, $$1);
+   public void c() {
+      AL10.alSourcePlay(this.d);
    }
 
-   public void a(long $$0, String $$1) {
-      byte[] $$2 = $$1.getBytes(Charsets.UTF_8);
-      int $$3 = $$2.length + 1;
-      if ($$3 < this.b.capacity()) {
-         a($$0, this.b, $$2);
-      } else {
-         ByteBuffer $$4 = MemoryUtil.memAlloc($$3);
+   private int k() {
+      return !this.e.get() ? 4116 : AL10.alGetSourcei(this.d, 4112);
+   }
 
+   public void d() {
+      if (this.k() == 4114) {
+         AL10.alSourcePause(this.d);
+      }
+   }
+
+   public void e() {
+      if (this.k() == 4115) {
+         AL10.alSourcePlay(this.d);
+      }
+   }
+
+   public void f() {
+      if (this.e.get()) {
+         AL10.alSourceStop(this.d);
+         fgg.a("Stop");
+      }
+   }
+
+   public boolean g() {
+      return this.k() == 4114;
+   }
+
+   public boolean h() {
+      return this.k() == 4116;
+   }
+
+   public void a(fdw $$0) {
+      AL10.alSourcefv(this.d, 4100, new float[]{(float)$$0.d, (float)$$0.e, (float)$$0.f});
+   }
+
+   public void a(float $$0) {
+      AL10.alSourcef(this.d, 4099, $$0);
+   }
+
+   public void a(boolean $$0) {
+      AL10.alSourcei(this.d, 4103, $$0 ? 1 : 0);
+   }
+
+   public void b(float $$0) {
+      AL10.alSourcef(this.d, 4106, $$0);
+   }
+
+   public void i() {
+      AL10.alSourcei(this.d, 53248, 0);
+   }
+
+   public void c(float $$0) {
+      AL10.alSourcei(this.d, 53248, 53251);
+      AL10.alSourcef(this.d, 4131, $$0);
+      AL10.alSourcef(this.d, 4129, 1.0F);
+      AL10.alSourcef(this.d, 4128, 0.0F);
+   }
+
+   public void b(boolean $$0) {
+      AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
+   }
+
+   public void a(fgh $$0) {
+      $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
+   }
+
+   public void a(hmp $$0) {
+      this.g = $$0;
+      AudioFormat $$1 = $$0.a();
+      this.f = a($$1, 1);
+      this.a(4);
+   }
+
+   private static int a(AudioFormat $$0, int $$1) {
+      return (int)((float)($$1 * $$0.getSampleSizeInBits()) / 8.0F * (float)$$0.getChannels() * $$0.getSampleRate());
+   }
+
+   private void a(int $$0) {
+      if (this.g != null) {
          try {
-            a($$0, $$4, $$2);
-         } finally {
-            MemoryUtil.memFree($$4);
+            for (int $$1 = 0; $$1 < $$0; $$1++) {
+               ByteBuffer $$2 = this.g.a(this.f);
+               if ($$2 != null) {
+                  new fgh($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
+               }
+            }
+         } catch (IOException var4) {
+            b.error("Failed to read from audio stream", var4);
          }
       }
+   }
+
+   public void j() {
+      if (this.g != null) {
+         int $$0 = this.l();
+         this.a($$0);
+      }
+   }
+
+   private int l() {
+      int $$0 = AL10.alGetSourcei(this.d, 4118);
+      if ($$0 > 0) {
+         int[] $$1 = new int[$$0];
+         AL10.alSourceUnqueueBuffers(this.d, $$1);
+         fgg.a("Unqueue buffers");
+         AL10.alDeleteBuffers($$1);
+         fgg.a("Remove processed buffers");
+      }
+
+      return $$0;
    }
 }

@@ -1,43 +1,34 @@
-import java.util.Locale;
-
-public enum fia {
-   a,
-   b,
-   c,
-   d;
-
-   private static final int e = 1024;
-
-   public static fia a(long $$0) {
-      if ($$0 < 1024L) {
-         return a;
-      } else {
-         try {
-            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
-            return valueOf($$2 + "B");
-         } catch (Exception var4) {
-            return d;
-         }
-      }
+public record fia(int a, int b, boolean c, int d) implements fib<fha> {
+   public fha a() {
+      return new fhb(this.a, this.b, this.c);
    }
 
-   public static double a(long $$0, fia $$1) {
-      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
+   public void a(fha $$0) {
+      $$0.b(axu.j(this.d), axu.k(this.d), axu.l(this.d), axu.i(this.d));
    }
 
-   public static String b(long $$0) {
-      int $$1 = 1024;
-      if ($$0 < 1024L) {
-         return $$0 + " B";
-      } else {
-         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
-         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
-      }
+   public void b(fha $$0) {
+      $$0.a();
    }
 
-   public static String b(long $$0, fia $$1) {
-      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
+   @Override
+   public boolean a(fib<?> $$0) {
+      return !($$0 instanceof fia $$1) ? false : this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+   }
+
+   public int b() {
+      return this.a;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public int e() {
+      return this.d;
    }
 }

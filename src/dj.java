@@ -1,37 +1,71 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class dj extends dz<dj.a> {
+public abstract class dj<T extends dj.a> implements as<T> {
+   private final Map<alm, Set<as.a<T>>> a = Maps.newIdentityHashMap();
+
    @Override
-   public Codec<dj.a> a() {
-      return dj.a.a;
+   public final void a(alm $$0, as.a<T> $$1) {
+      this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
    }
 
-   public void a(aro $$0, alc<exq> $$1) {
-      this.a($$0, $$1x -> $$1x.b($$1));
+   @Override
+   public final void b(alm $$0, as.a<T> $$1) {
+      Set<as.a<T>> $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         $$2.remove($$1);
+         if ($$2.isEmpty()) {
+            this.a.remove($$0);
+         }
+      }
    }
 
-   public static record a(Optional<bi> b, alc<exq> c) implements dz.a {
-      public static final Codec<dj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(dj.a::a), alc.a(me.bn).fieldOf("loot_table").forGetter(dj.a::b)).apply($$0, dj.a::new)
-      );
+   @Override
+   public final void a(alm $$0) {
+      this.a.remove($$0);
+   }
 
-      public static aq<dj.a> a(alc<exq> $$0) {
-         return ap.Q.a(new dj.a(Optional.empty(), $$0));
+   protected void a(arp $$0, Predicate<T> $$1) {
+      alm $$2 = $$0.S();
+      Set<as.a<T>> $$3 = this.a.get($$2);
+      if ($$3 != null && !$$3.isEmpty()) {
+         eyn $$4 = bx.b($$0, $$0);
+         List<as.a<T>> $$5 = null;
+
+         for (as.a<T> $$6 : $$3) {
+            T $$7 = $$6.a();
+            if ($$1.test($$7)) {
+               Optional<bi> $$8 = $$7.a();
+               if ($$8.isEmpty() || $$8.get().a($$4)) {
+                  if ($$5 == null) {
+                     $$5 = Lists.newArrayList();
+                  }
+
+                  $$5.add($$6);
+               }
+            }
+         }
+
+         if ($$5 != null) {
+            for (as.a<T> $$9 : $$5) {
+               $$9.a($$2);
+            }
+         }
       }
+   }
 
-      public boolean b(alc<exq> $$0) {
-         return this.c == $$0;
-      }
-
+   public interface a extends at {
       @Override
-      public Optional<bi> a() {
-         return this.b;
+      default void a(bj $$0) {
+         $$0.a(this.a(), ".player");
       }
 
-      public alc<exq> b() {
-         return this.c;
-      }
+      Optional<bi> a();
    }
 }

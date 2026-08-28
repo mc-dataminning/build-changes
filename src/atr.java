@@ -1,157 +1,144 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class atr {
-   private static final Logger b = LogUtils.getLogger();
-   public static Consumer<atr> a = $$0 -> {
-   };
-   private static final Map<ato, Path> c = af.a(() -> {
-      synchronized (atq.class) {
-         Builder<ato, Path> $$0 = ImmutableMap.builder();
+public class atr implements atn {
+   private static final Logger c = LogUtils.getLogger();
+   private final atm d;
+   private final atf e;
+   private final Set<String> f;
+   private final List<Path> g;
+   private final Map<atp, List<Path>> h;
 
-         for (ato $$1 : ato.values()) {
-            String $$2 = "/" + $$1.a() + "/.mcassetsroot";
-            URL $$3 = atq.class.getResource($$2);
-            if ($$3 == null) {
-               b.error("File {} does not exist in classpath", $$2);
+   atr(atm $$0, atf $$1, Set<String> $$2, List<Path> $$3, Map<atp, List<Path>> $$4) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+   }
+
+   @Nullable
+   @Override
+   public aus<InputStream> a(String... $$0) {
+      v.a($$0);
+      List<String> $$1 = List.of($$0);
+
+      for (Path $$2 : this.g) {
+         Path $$3 = v.a($$2, $$1);
+         if (Files.exists($$3) && atq.a($$3)) {
+            return aus.create($$3);
+         }
+      }
+
+      return null;
+   }
+
+   public void a(atp $$0, ale $$1, Consumer<Path> $$2) {
+      v.d($$1.a()).ifSuccess($$3 -> {
+         String $$4 = $$1.b();
+
+         for (Path $$5 : this.h.get($$0)) {
+            Path $$6 = $$5.resolve($$4);
+            $$2.accept(v.a($$6, $$3));
+         }
+      }).ifError($$1x -> c.error("Invalid path {}: {}", $$1, $$1x.message()));
+   }
+
+   @Override
+   public void a(atp $$0, String $$1, String $$2, atn.a $$3) {
+      v.d($$2).ifSuccess($$3x -> {
+         List<Path> $$4 = this.h.get($$0);
+         int $$5 = $$4.size();
+         if ($$5 == 1) {
+            a($$3, $$1, $$4.get(0), $$3x);
+         } else if ($$5 > 1) {
+            Map<ale, aus<InputStream>> $$6 = new HashMap<>();
+
+            for (int $$7 = 0; $$7 < $$5 - 1; $$7++) {
+               a($$6::putIfAbsent, $$1, $$4.get($$7), $$3x);
+            }
+
+            Path $$8 = $$4.get($$5 - 1);
+            if ($$6.isEmpty()) {
+               a($$3, $$1, $$8, $$3x);
             } else {
-               try {
-                  URI $$4 = $$3.toURI();
-                  String $$5 = $$4.getScheme();
-                  if (!"jar".equals($$5) && !"file".equals($$5)) {
-                     b.warn("Assets URL '{}' uses unexpected schema", $$4);
-                  }
+               a($$6::putIfAbsent, $$1, $$8, $$3x);
+               $$6.forEach($$3);
+            }
+         }
+      }).ifError($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
+   }
 
-                  Path $$6 = ayu.a($$4);
-                  $$0.put($$1, $$6.getParent());
-               } catch (Exception var12) {
-                  b.error("Couldn't resolve path to vanilla assets", var12);
-               }
+   private static void a(atn.a $$0, String $$1, Path $$2, List<String> $$3) {
+      Path $$4 = $$2.resolve($$1);
+      atq.a($$1, $$4, $$3, $$0);
+   }
+
+   @Nullable
+   @Override
+   public aus<InputStream> a(atp $$0, ale $$1) {
+      return (aus<InputStream>)v.d($$1.a()).mapOrElse($$2 -> {
+         String $$3 = $$1.b();
+
+         for (Path $$4 : this.h.get($$0)) {
+            Path $$5 = v.a($$4.resolve($$3), $$2);
+            if (Files.exists($$5) && atq.a($$5)) {
+               return aus.create($$5);
             }
          }
 
-         return $$0.build();
-      }
-   });
-   private final Set<Path> d = new LinkedHashSet<>();
-   private final Map<ato, Set<Path>> e = new EnumMap<>(ato.class);
-   private ate f = ate.a();
-   private final Set<String> g = new HashSet<>();
-
-   private boolean b(Path $$0) {
-      if (!Files.exists($$0)) {
-         return false;
-      } else if (!Files.isDirectory($$0)) {
-         throw new IllegalArgumentException("Path " + $$0.toAbsolutePath() + " is not directory");
-      } else {
-         return true;
-      }
-   }
-
-   private void c(Path $$0) {
-      if (this.b($$0)) {
-         this.d.add($$0);
-      }
-   }
-
-   private void b(ato $$0, Path $$1) {
-      if (this.b($$1)) {
-         this.e.computeIfAbsent($$0, $$0x -> new LinkedHashSet<>()).add($$1);
-      }
-   }
-
-   public atr a() {
-      c.forEach(($$0, $$1) -> {
-         this.c($$1.getParent());
-         this.b($$0, $$1);
+         return null;
+      }, $$1x -> {
+         c.error("Invalid path {}: {}", $$1, $$1x.message());
+         return null;
       });
-      return this;
    }
 
-   public atr a(ato $$0, Class<?> $$1) {
-      Enumeration<URL> $$2 = null;
+   @Override
+   public Set<String> a(atp $$0) {
+      return this.f;
+   }
 
-      try {
-         $$2 = $$1.getClassLoader().getResources($$0.a() + "/");
-      } catch (IOException var8) {
-      }
-
-      while ($$2 != null && $$2.hasMoreElements()) {
-         URL $$3 = $$2.nextElement();
-
-         try {
-            URI $$4 = $$3.toURI();
-            if ("file".equals($$4.getScheme())) {
-               Path $$5 = Paths.get($$4);
-               this.c($$5.getParent());
-               this.b($$0, $$5);
+   @Nullable
+   @Override
+   public <T> T a(aua<T> $$0) {
+      aus<InputStream> $$1 = this.a("pack.mcmeta");
+      if ($$1 != null) {
+         try (InputStream $$2 = $$1.get()) {
+            T $$3 = ate.a($$0, $$2);
+            if ($$3 != null) {
+               return $$3;
             }
-         } catch (Exception var7) {
-            b.error("Failed to extract path from {}", $$3, var7);
+
+            return this.e.a($$0);
+         } catch (IOException var8) {
          }
       }
 
-      return this;
+      return this.e.a($$0);
    }
 
-   public atr b() {
-      a.accept(this);
-      return this;
+   @Override
+   public atm a() {
+      return this.d;
    }
 
-   public atr a(Path $$0) {
-      this.c($$0);
-
-      for (ato $$1 : ato.values()) {
-         this.b($$1, $$0.resolve($$1.a()));
-      }
-
-      return this;
+   @Override
+   public void close() {
    }
 
-   public atr a(ato $$0, Path $$1) {
-      this.c($$1);
-      this.b($$0, $$1);
-      return this;
-   }
-
-   public atr a(ate $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public atr a(String... $$0) {
-      this.g.addAll(Arrays.asList($$0));
-      return this;
-   }
-
-   public atq a(atl $$0) {
-      return new atq($$0, this.f, Set.copyOf(this.g), a(this.d), af.a(ato.class, $$0x -> a(this.e.getOrDefault($$0x, Set.of()))));
-   }
-
-   private static List<Path> a(Collection<Path> $$0) {
-      List<Path> $$1 = new ArrayList<>($$0);
-      Collections.reverse($$1);
-      return List.copyOf($$1);
+   public ave d() {
+      return $$0 -> Optional.ofNullable(this.a(atp.a, $$0)).map($$0x -> new auz(this, $$0x));
    }
 }

@@ -6,28 +6,26 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class aob {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("commands.pardon.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("commands.op.failed"));
 
-   public static void a(CommandDispatcher<ex> $$0) {
+   public static void a(CommandDispatcher<ei> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("pardon").requires($$0x -> $$0x.c(3)))
-            .then(
-               ey.a("targets", fm.a())
-                  .suggests(($$0x, $$1) -> fc.a(((ex)$$0x.getSource()).l().ag().f().a(), $$1))
-                  .executes($$0x -> a((ex)$$0x.getSource(), fm.a($$0x, "targets")))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("op").requires($$0x -> $$0x.c(3))).then(ej.a("targets", ex.a()).suggests(($$0x, $$1) -> {
+            avo $$2 = ((ei)$$0x.getSource()).l().ag();
+            return en.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.gh())).map($$0xx -> $$0xx.gh().getName()), $$1);
+         }).executes($$0x -> a((ei)$$0x.getSource(), ex.a($$0x, "targets"))))
       );
    }
 
-   private static int a(ex $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avt $$2 = $$0.l().ag().f();
+   private static int a(ei $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      avo $$2 = $$0.l().ag();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            $$2.c($$4);
+         if (!$$2.f($$4)) {
+            $$2.a($$4);
             $$3++;
-            $$0.a(() -> wv.a("commands.pardon.success", wv.b($$4.getName())), true);
+            $$0.a(() -> ww.a("commands.op.success", $$4.getName()), true);
          }
       }
 

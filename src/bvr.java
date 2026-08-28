@@ -1,60 +1,53 @@
-public class bvr {
-   private static final float a = (float) (Math.PI / 12);
-   private static final float b = (float) (-Math.PI / 12);
-   private float c;
-   private float d;
-   private float e;
-   private float f;
-   private float g;
-   private float h;
-   private final bwr i;
+import java.util.function.Consumer;
 
-   public bvr(bwr $$0) {
-      this.i = $$0;
+public class bvr {
+   private static final int a = Integer.MIN_VALUE;
+   private int b = Integer.MIN_VALUE;
+
+   public void a(int $$0) {
+      this.b = $$0;
+   }
+
+   public void b(int $$0) {
+      if (!this.b()) {
+         this.a($$0);
+      }
+   }
+
+   public void a(boolean $$0, int $$1) {
+      if ($$0) {
+         this.b($$1);
+      } else {
+         this.a();
+      }
    }
 
    public void a() {
-      this.f = this.c;
-      this.g = this.d;
-      this.h = this.e;
-      float $$3;
-      float $$4;
-      float $$5;
-      if (this.i.fI()) {
-         float $$0 = 1.0F;
-         fcu $$1 = this.i.dy();
-         if ($$1.e < 0.0) {
-            fcu $$2 = $$1.d();
-            $$0 = 1.0F - (float)Math.pow(-$$2.e, 1.5);
-         }
+      this.b = Integer.MIN_VALUE;
+   }
 
-         $$3 = azk.h($$0, (float) (Math.PI / 12), (float) (Math.PI / 9));
-         $$4 = azk.h($$0, (float) (-Math.PI / 12), (float) (-Math.PI / 2));
-         $$5 = 0.0F;
-      } else if (this.i.ci()) {
-         $$3 = (float) (Math.PI * 2.0 / 9.0);
-         $$4 = (float) (-Math.PI / 4);
-         $$5 = 0.08726646F;
-      } else {
-         $$3 = (float) (Math.PI / 12);
-         $$4 = (float) (-Math.PI / 12);
-         $$5 = 0.0F;
+   public void a(Consumer<bvr> $$0) {
+      if (this.b()) {
+         $$0.accept(this);
       }
-
-      this.c = this.c + ($$3 - this.c) * 0.3F;
-      this.d = this.d + ($$5 - this.d) * 0.3F;
-      this.e = this.e + ($$4 - this.e) * 0.3F;
    }
 
-   public float a(float $$0) {
-      return azk.h($$0, this.f, this.c);
+   public void a(int $$0, float $$1) {
+      if (this.b()) {
+         this.b -= (int)((float)$$0 * $$1);
+      }
    }
 
-   public float b(float $$0) {
-      return azk.h($$0, this.g, this.d);
+   public long a(float $$0) {
+      float $$1 = $$0 - (float)this.b;
+      return (long)($$1 * 50.0F);
    }
 
-   public float c(float $$0) {
-      return azk.h($$0, this.h, this.e);
+   public boolean b() {
+      return this.b != Integer.MIN_VALUE;
+   }
+
+   public void a(bvr $$0) {
+      this.b = $$0.b;
    }
 }

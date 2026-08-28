@@ -1,32 +1,96 @@
-import java.util.Objects;
-import org.joml.Matrix4f;
+public class fyr {
+   private static final ale a = ale.b("alt");
+   private static final xt b = xt.a.a(a);
+   private static final fyr c = new fyr();
+   private final azt d = azt.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-public interface fyr {
-   static fyr a(ayw $$0) {
-      return new fyq($$0);
+   private fyr() {
    }
 
-   static fyr a(cvu $$0) {
-      Objects.requireNonNull($$0);
-
-      return (fyr)(switch ($$0) {
-         case cvt $$1 -> new fyp($$1.a());
-         case fyo.a $$2 -> new fyo($$2);
-         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
-      });
+   public static fyr a() {
+      return c;
    }
 
-   int a(fpx var1);
+   public xb a(fra $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
 
-   int b(fpx var1);
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
 
-   default boolean a() {
-      return false;
+         $$2.append(af.a(this.e, this.d));
+      }
+
+      return $$0.b().a(ww.b($$2.toString()).c(b), $$1, xt.a);
    }
 
-   default void a(fpx $$0, int $$1, int $$2, Matrix4f $$3, gny.a $$4) {
-   }
-
-   default void a(fpx $$0, int $$1, int $$2, int $$3, int $$4, fpz $$5) {
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

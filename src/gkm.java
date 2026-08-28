@@ -1,30 +1,73 @@
-public class gkm extends gjz {
-   private static final int a = 12235202;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   protected gkm(ghz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gmc $$8) {
-      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
-      float $$9 = (float)Math.random() * 0.2F;
-      this.v = (float)axu.b(12235202) / 255.0F - $$9;
-      this.w = (float)axu.c(12235202) / 255.0F - $$9;
-      this.x = (float)axu.d(12235202) / 255.0F - $$9;
+public final class gkm {
+   private static final int a = 1024;
+   private final gkd b;
+   private final gkj c;
+   private final gjy d;
+   @Nullable
+   private gki e;
+
+   public gkm(gkd $$0, gkj $$1, gjy $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public void a() {
-      this.u = 0.88F * this.u;
-      this.B = 0.92F * this.B;
-      super.a();
+   public static gkm a(gkj $$0, UserApiService $$1) {
+      gjy $$2 = new gjy(1024);
+      gkd $$3 = gkd.a($$0, $$1);
+      return new gkm($$3, $$0, $$2);
    }
 
-   public static class a implements glk<lz> {
-      private final gmc a;
-
-      public a(gmc $$0) {
-         this.a = $$0;
+   public void a(fof $$0, fxi $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         gki $$4 = this.e.b();
+         $$0.a(
+            new fwg(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               ww.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               ww.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               ww.c("gui.abuseReport.draft.edit"),
+               ww.c("gui.abuseReport.draft.discard")
+            )
+         );
+      } else {
+         $$2.run();
       }
+   }
 
-      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gkm($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
-      }
+   public gkd a() {
+      return this.b;
+   }
+
+   public gjy b() {
+      return this.d;
+   }
+
+   public boolean a(gkj $$0) {
+      return Objects.equals(this.c, $$0);
+   }
+
+   public void a(@Nullable gki $$0) {
+      this.e = $$0;
+   }
+
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

@@ -1,113 +1,120 @@
-public class fnv {
-   public static final fnr a = fnr.a.a(0.5F)
-      .a()
-      .a("head", new fnq(fnq.d.b, new fns(0.0F, fnt.b(180.0F, 0.0F, 0.0F), fnq.b.a)))
-      .a("head", new fnq(fnq.d.a, new fns(0.0F, fnt.a(0.0F, 0.5F, 0.0F), fnq.b.a)))
-      .a("body", new fnq(fnq.d.b, new fns(0.0F, fnt.b(180.0F, 0.0F, 0.0F), fnq.b.a)))
-      .a("body", new fnq(fnq.d.a, new fns(0.0F, fnt.a(0.0F, 0.5F, 0.0F), fnq.b.a)))
-      .a("feet", new fnq(fnq.d.b, new fns(0.0F, fnt.b(0.0F, 0.0F, 0.0F), fnq.b.a)))
-      .a("right_wing", new fnq(fnq.d.b, new fns(0.0F, fnt.b(0.0F, -10.0F, 0.0F), fnq.b.a)))
-      .a("right_wing", new fnq(fnq.d.a, new fns(0.0F, fnt.a(0.0F, 0.0F, 1.0F), fnq.b.a)))
-      .a("right_wing_tip", new fnq(fnq.d.b, new fns(0.0F, fnt.b(0.0F, -120.0F, 0.0F), fnq.b.a)))
-      .a("left_wing", new fnq(fnq.d.b, new fns(0.0F, fnt.b(0.0F, 10.0F, 0.0F), fnq.b.a)))
-      .a("left_wing", new fnq(fnq.d.a, new fns(0.0F, fnt.a(0.0F, 0.0F, 1.0F), fnq.b.a)))
-      .a("left_wing_tip", new fnq(fnq.d.b, new fns(0.0F, fnt.b(0.0F, 120.0F, 0.0F), fnq.b.a)))
-      .b();
-   public static final fnr b = fnr.a.a(0.5F)
-      .a()
-      .a(
-         "head",
-         new fnq(
-            fnq.d.b,
-            new fns(0.0F, fnt.b(0.0F, 0.0F, 0.0F), fnq.b.a),
-            new fns(0.125F, fnt.b(20.0F, 0.0F, 0.0F), fnq.b.a),
-            new fns(0.5F, fnt.b(0.0F, 0.0F, 0.0F), fnq.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fnq(
-            fnq.d.a,
-            new fns(0.0F, fnt.a(0.0F, 0.0F, 0.0F), fnq.b.a),
-            new fns(0.125F, fnt.a(0.0F, 2.0F, 0.0F), fnq.b.a),
-            new fns(0.25F, fnt.a(0.0F, 1.0F, 0.0F), fnq.b.a),
-            new fns(0.375F, fnt.a(0.0F, 0.0F, 0.0F), fnq.b.a),
-            new fns(0.4583F, fnt.a(0.0F, -1.0F, 0.0F), fnq.b.a),
-            new fns(0.5F, fnt.a(0.0F, 0.0F, 0.0F), fnq.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fnq(
-            fnq.d.b,
-            new fns(0.0F, fnt.b(40.0F, 0.0F, 0.0F), fnq.b.a),
-            new fns(0.25F, fnt.b(52.5F, 0.0F, 0.0F), fnq.b.a),
-            new fns(0.5F, fnt.b(40.0F, 0.0F, 0.0F), fnq.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fnq(
-            fnq.d.a,
-            new fns(0.0F, fnt.a(0.0F, 0.0F, 0.0F), fnq.b.a),
-            new fns(0.125F, fnt.a(0.0F, 2.0F, 0.0F), fnq.b.a),
-            new fns(0.25F, fnt.a(0.0F, 1.0F, 0.0F), fnq.b.a),
-            new fns(0.375F, fnt.a(0.0F, 0.0F, 0.0F), fnq.b.a),
-            new fns(0.4583F, fnt.a(0.0F, -1.0F, 0.0F), fnq.b.a),
-            new fns(0.5F, fnt.a(0.0F, 0.0F, 0.0F), fnq.b.a)
-         )
-      )
-      .a(
-         "feet",
-         new fnq(
-            fnq.d.b,
-            new fns(0.0F, fnt.b(10.0F, 0.0F, 0.0F), fnq.b.a),
-            new fns(0.125F, fnt.b(-21.25F, 0.0F, 0.0F), fnq.b.a),
-            new fns(0.25F, fnt.b(-12.5F, 0.0F, 0.0F), fnq.b.a),
-            new fns(0.5F, fnt.b(10.0F, 0.0F, 0.0F), fnq.b.a)
-         )
-      )
-      .a(
-         "right_wing",
-         new fnq(
-            fnq.d.b,
-            new fns(0.0F, fnt.b(0.0F, 85.0F, 0.0F), fnq.b.a),
-            new fns(0.125F, fnt.b(0.0F, -55.0F, 0.0F), fnq.b.a),
-            new fns(0.25F, fnt.b(0.0F, 50.0F, 0.0F), fnq.b.a),
-            new fns(0.375F, fnt.b(0.0F, 70.0F, 0.0F), fnq.b.a),
-            new fns(0.5F, fnt.b(0.0F, 85.0F, 0.0F), fnq.b.a)
-         )
-      )
-      .a(
-         "right_wing_tip",
-         new fnq(
-            fnq.d.b,
-            new fns(0.0F, fnt.b(0.0F, 10.5F, 0.0F), fnq.b.a),
-            new fns(0.0417F, fnt.b(0.0F, 65.5F, 0.0F), fnq.b.a),
-            new fns(0.2083F, fnt.b(0.0F, -135.0F, 0.0F), fnq.b.a),
-            new fns(0.5F, fnt.b(0.0F, 10.5F, 0.0F), fnq.b.a)
-         )
-      )
-      .a(
-         "left_wing",
-         new fnq(
-            fnq.d.b,
-            new fns(0.0F, fnt.b(0.0F, -85.0F, 0.0F), fnq.b.a),
-            new fns(0.125F, fnt.b(0.0F, 55.0F, 0.0F), fnq.b.a),
-            new fns(0.25F, fnt.b(0.0F, -50.0F, 0.0F), fnq.b.a),
-            new fns(0.375F, fnt.b(0.0F, -70.0F, 0.0F), fnq.b.a),
-            new fns(0.5F, fnt.b(0.0F, -85.0F, 0.0F), fnq.b.a)
-         )
-      )
-      .a(
-         "left_wing_tip",
-         new fnq(
-            fnq.d.b,
-            new fns(0.0F, fnt.b(0.0F, -10.5F, 0.0F), fnq.b.a),
-            new fns(0.0417F, fnt.b(0.0F, -65.5F, 0.0F), fnq.b.a),
-            new fns(0.2083F, fnt.b(0.0F, 135.0F, 0.0F), fnq.b.a),
-            new fns(0.5F, fnt.b(0.0F, -10.5F, 0.0F), fnq.b.a)
-         )
-      )
-      .b();
+import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
+
+public interface fnv {
+   fnv a = new fnv.a(0.0F);
+   fnv b = new fnv.a(1.0F);
+
+   float a();
+
+   float a(boolean var1);
+
+   float b();
+
+   public static class a implements fnv {
+      private final float c;
+
+      a(float $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         return this.c;
+      }
+
+      @Override
+      public float b() {
+         return this.c;
+      }
+   }
+
+   public static class b implements fnv {
+      private float c;
+      private float d;
+      private float e;
+      private float f;
+      private long g;
+      private long h;
+      private final float i;
+      private final FloatUnaryOperator j;
+      private boolean k;
+      private boolean l;
+
+      public b(float $$0, long $$1, FloatUnaryOperator $$2) {
+         this.i = 1000.0F / $$0;
+         this.h = this.g = $$1;
+         this.j = $$2;
+      }
+
+      public int a(long $$0, boolean $$1) {
+         this.b($$0);
+         return $$1 ? this.a($$0) : 0;
+      }
+
+      private int a(long $$0) {
+         this.c = (float)($$0 - this.g) / this.j.apply(this.i);
+         this.g = $$0;
+         this.d = this.d + this.c;
+         int $$1 = (int)this.d;
+         this.d -= (float)$$1;
+         return $$1;
+      }
+
+      private void b(long $$0) {
+         this.e = (float)($$0 - this.h) / this.i;
+         this.h = $$0;
+      }
+
+      public void b(boolean $$0) {
+         if ($$0) {
+            this.c();
+         } else {
+            this.d();
+         }
+      }
+
+      private void c() {
+         if (!this.k) {
+            this.f = this.d;
+         }
+
+         this.k = true;
+      }
+
+      private void d() {
+         if (this.k) {
+            this.d = this.f;
+         }
+
+         this.k = false;
+      }
+
+      public void c(boolean $$0) {
+         this.l = $$0;
+      }
+
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         if (!$$0 && this.l) {
+            return 1.0F;
+         } else {
+            return this.k ? this.f : this.d;
+         }
+      }
+
+      @Override
+      public float b() {
+         return this.e > 7.0F ? 0.5F : this.e;
+      }
+   }
 }

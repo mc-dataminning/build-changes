@@ -1,39 +1,29 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Arrays;
+import java.util.Collection;
 
-public class es {
-   public static final Codec<es> a = ald.a.xmap(es::new, es::a);
-   private final ald b;
-   private boolean c;
-   private Optional<im<ex>> d = Optional.empty();
+public class es implements ArgumentType<tx> {
+   private static final Collection<String> a = Arrays.asList("{}", "{foo=bar}");
 
-   public es(ald $$0) {
-      this.b = $$0;
+   private es() {
    }
 
-   public Optional<im<ex>> a(als $$0) {
-      if (!this.c) {
-         this.d = $$0.a(this.b);
-         this.c = true;
-      }
-
-      return this.d;
+   public static es a() {
+      return new es();
    }
 
-   public ald a() {
-      return this.b;
+   public static <S> tx a(CommandContext<S> $$0, String $$1) {
+      return (tx)$$0.getArgument($$1, tx.class);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
-      } else {
-         if ($$0 instanceof es $$1 && this.a().equals($$1.a())) {
-            return true;
-         }
+   public tx a(StringReader $$0) throws CommandSyntaxException {
+      return uv.a($$0);
+   }
 
-         return false;
-      }
+   public Collection<String> getExamples() {
+      return a;
    }
 }

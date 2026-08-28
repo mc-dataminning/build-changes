@@ -1,34 +1,44 @@
-public interface ew {
-   ew a = new ew() {
-      @Override
-      public void a(wv $$0) {
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class ew implements ArgumentType<dim> {
+   private static final Collection<String> a = Stream.of(dim.a, dim.b).map(dim::b).collect(Collectors.toList());
+   private static final dim[] b = dim.values();
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ww.b("argument.gamemode.invalid", $$0));
+
+   public dim a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      dim $$2 = dim.a($$1, null);
+      if ($$2 == null) {
+         throw c.createWithContext($$0, $$1);
+      } else {
+         return $$2;
       }
+   }
 
-      @Override
-      public boolean t_() {
-         return false;
-      }
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return $$0.getSource() instanceof en ? en.b(Arrays.stream(b).map(dim::b), $$1) : Suggestions.empty();
+   }
 
-      @Override
-      public boolean u_() {
-         return false;
-      }
+   public Collection<String> getExamples() {
+      return a;
+   }
 
-      @Override
-      public boolean c() {
-         return false;
-      }
-   };
+   public static ew a() {
+      return new ew();
+   }
 
-   void a(wv var1);
-
-   boolean t_();
-
-   boolean u_();
-
-   boolean c();
-
-   default boolean o_() {
-      return false;
+   public static dim a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      return (dim)$$0.getArgument($$1, dim.class);
    }
 }

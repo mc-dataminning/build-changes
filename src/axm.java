@@ -17,19 +17,19 @@ public class axm {
       return this;
    }
 
-   public axm a(ald $$0) {
+   public axm a(ale $$0) {
       return this.a(axn.a($$0));
    }
 
-   public axm b(ald $$0) {
+   public axm b(ale $$0) {
       return this.a(axn.b($$0));
    }
 
-   public axm c(ald $$0) {
+   public axm c(ale $$0) {
       return this.a(axn.c($$0));
    }
 
-   public axm d(ald $$0) {
+   public axm d(ale $$0) {
       return this.a(axn.d($$0));
    }
 }

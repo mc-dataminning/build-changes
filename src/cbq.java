@@ -1,40 +1,34 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class cbq extends byi<cpu> {
-   public cbq() {
-      super(ImmutableMap.of());
-   }
+public class cbq {
+   public static byr<bwz> a(dlu $$0) {
+      return ccd.a(
+         (Function<ccd.b<bwz>, ? extends App<ccd.c<bwz>, ccg<bwz>>>)($$1 -> $$1.group($$1.c(cgb.p), $$1.b(cgb.n), $$1.b(cgb.Z))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.bj() && $$3x.aJ()) {
+                        iu $$5 = $$3x.dv().e();
 
-   protected boolean a(arn $$0, cpu $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
+                        for (ja $$6 : ja.c.a) {
+                           iu $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).g($$2x, $$7).a(ja.b).c() && $$2x.b_($$7).b(evw.c)) {
+                              iu $$8 = $$7.d();
+                              if ($$2x.a_($$8).l()) {
+                                 dzo $$9 = $$0.m();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(eeo.i, $$8, eeo.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, awl.kp, awm.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
+                              }
+                           }
+                        }
 
-   protected void b(arn $$0, cpu $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bxr<?> $$3 = $$1.eb();
-         if (!$$3.c(crz.g)) {
-            $$3.b(cft.u);
-            $$3.b(cft.n);
-            $$3.b(cft.o);
-            $$3.b(cft.s);
-            $$3.b(cft.r);
-         }
-
-         $$3.a(crz.g);
-      }
-   }
-
-   protected void c(arn $$0, cpu $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bwr $$0) {
-      return $$0.eb().a(cft.B);
-   }
-
-   public static boolean c(bwr $$0) {
-      return $$0.eb().a(cft.y);
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

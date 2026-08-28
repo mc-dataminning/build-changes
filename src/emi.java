@@ -1,63 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emi extends emq {
-   public static final MapCodec<emi> a = elw.a.fieldOf("provider").xmap(emi::new, $$0 -> $$0.b);
-   private final elw b;
+public class emi extends eme {
+   public static final MapCodec<emi> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, emi::new));
 
-   public emi(elw $$0) {
-      this.b = $$0;
+   public emi(btd $$0, btd $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected emr<?> a() {
-      return emr.g;
+   protected emk<?> a() {
+      return emk.f;
    }
 
    @Override
-   public void a(emq.a $$0) {
-      List<jj> $$1 = ejd.a($$0);
-      if (!$$1.isEmpty()) {
-         int $$2 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$2).forEach($$1x -> {
-            this.a($$0, $$1x.h().f());
-            this.a($$0, $$1x.g(2).f());
-            this.a($$0, $$1x.h().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3 = $$0.b().a(64);
-               int $$4 = $$3 % 8;
-               int $$5 = $$3 / 8;
-               if ($$4 == 0 || $$4 == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4, 0, -3 + $$5));
-               }
-            }
-         });
+   protected void a(div $$0, emj.b $$1, azt $$2, elt $$3, int $$4, emj.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
    }
 
-   private void a(emq.a $$0, jj $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(emq.a $$0, jj $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         jj $$3 = $$1.b($$2);
-         if (ehr.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   @Override
+   protected boolean a(azt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return azk.l((float)$$1 + 0.5F) + azk.l((float)$$3 + 0.5F) > (float)($$4 * $$4);
    }
 }

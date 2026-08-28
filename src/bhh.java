@@ -1,16 +1,21 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bhh extends DataFix {
+public class bhh extends bdo {
    public bhh(Schema $$0) {
-      super($$0, true);
+      super($$0, "LodestoneCompassComponentFix", "minecraft:lodestone_target", "minecraft:lodestone_tracker");
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.writeFixAndRead(
-         "Map id fix", this.getInputSchema().getType(biq.j), this.getOutputSchema().getType(biq.j), $$0 -> $$0.createMap(Map.of($$0.createString("data"), $$0))
-      );
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("pos").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("dimension").result();
+      $$0 = $$0.remove("pos").remove("dimension");
+      if ($$1.isPresent() && $$2.isPresent()) {
+         $$0 = $$0.set("target", $$0.emptyMap().set("pos", $$1.get()).set("dimension", $$2.get()));
+      }
+
+      return $$0;
    }
 }

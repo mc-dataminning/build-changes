@@ -1,40 +1,59 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class flj {
+public abstract class flj {
    public final int a;
-   @Nullable
-   public final String b;
+   public final int b;
+   public final int c;
+   public final int d;
 
-   flj(int $$0, String $$1) {
+   public flj(int $$0, int $$1, int $$2, int $$3) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Nullable
-   public String a() {
-      if (this.a >= 200 && this.a < 300) {
-         return null;
-      } else {
-         return this.a == 400 && this.b != null ? this.b : String.valueOf(this.a);
+   public void a(frc $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
+   }
+
+   protected abstract void a(frc var1, int var2, int var3, boolean var4);
+
+   public int a() {
+      return this.c + this.a;
+   }
+
+   public int b() {
+      return this.d + this.b;
+   }
+
+   public abstract void a(int var1);
+
+   public static void a(frc $$0, List<flj> $$1, frk<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (flj $$7 : $$1) {
+         if ($$2.a() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
+         }
       }
    }
 
-   public static class a {
-      private int a = -1;
-      private String b;
+   public static void a(frk<?> $$0, fsm.a<?> $$1, List<flj> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.aD_().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.a($$6);
+         int $$7 = $$0.u();
+         int $$8 = $$0.d($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
 
-      public flj.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public flj.a a(@Nullable String $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public flj a() {
-         return new flj(this.a, this.b);
+         for (flj $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
+            }
+         }
       }
    }
 }

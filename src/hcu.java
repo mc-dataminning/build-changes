@@ -1,13 +1,7 @@
-import javax.annotation.Nullable;
+public class hcu extends hcp {
+   public cjb.a a;
 
-public class hcu extends haz implements hct {
-   public boolean a;
-   @Nullable
-   public cpv b;
-
-   @Nullable
-   @Override
-   public cpv a() {
-      return this.b;
+   public hcu() {
+      this.a = cjb.a.a;
    }
 }

@@ -1,24 +1,37 @@
-import java.util.List;
-import java.util.function.Predicate;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public interface eaz<T> {
-   int a(T var1);
+public enum eaz implements bai {
+   a(0, "start"),
+   b(1, "log"),
+   c(2, "fail"),
+   d(3, "accept");
 
-   boolean a(Predicate<T> var1);
+   private static final IntFunction<eaz> g = aya.a($$0 -> $$0.h, values(), aya.a.a);
+   public static final bai.a<eaz> e = bai.a(eaz::values);
+   public static final yu<ByteBuf, eaz> f = ys.a(g, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final ww j;
+   private final ww k;
 
-   T a(int var1);
+   private eaz(final int $$0, final String $$1) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = ww.c("test_block.mode." + $$1);
+      this.k = ww.c("test_block.mode_info." + $$1);
+   }
 
-   void a(vr var1);
+   @Override
+   public String c() {
+      return this.i;
+   }
 
-   void b(vr var1);
+   public ww a() {
+      return this.j;
+   }
 
-   int a();
-
-   int b();
-
-   eaz<T> a(eba<T> var1);
-
-   public interface a {
-      <A> eaz<A> create(int var1, jx<A> var2, eba<A> var3, List<A> var4);
+   public ww b() {
+      return this.k;
    }
 }

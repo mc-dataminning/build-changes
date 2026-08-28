@@ -1,36 +1,36 @@
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public record fbd(fbq b, exk c) implements fau {
+public class fbd extends faa {
    public static final MapCodec<fbd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fbr.a.fieldOf("value").forGetter(fbd::c), exk.a.fieldOf("range").forGetter(fbd::d)).apply($$0, fbd::new)
+      $$0 -> a($$0).and(Codec.unboundedMap(ki.a, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.b)).apply($$0, fbd::new)
    );
+   private final Map<ki<?>, Boolean> b;
 
-   @Override
-   public fav b() {
-      return faw.r;
+   private fbd(List<fbw> $$0, Map<ki<?>, Boolean> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<bat<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   protected cys a(cys $$0, eyn $$1) {
+      $$0.a(kj.q, dbw.c, $$0x -> {
+         for (Entry<ki<?>, Boolean> $$1x : this.b.entrySet()) {
+            boolean $$2 = $$1x.getValue();
+            $$0x = $$0x.a($$1x.getKey(), !$$2);
+         }
+
+         return $$0x;
+      });
+      return $$0;
    }
 
-   public boolean a(exl $$0) {
-      return this.c.b($$0, this.b.a($$0));
-   }
-
-   public static fau.a a(fbq $$0, exk $$1) {
-      return () -> new fbd($$0, $$1);
-   }
-
-   public fbq c() {
-      return this.b;
-   }
-
-   public exk d() {
-      return this.c;
+   @Override
+   public fac<fbd> b() {
+      return fad.P;
    }
 }

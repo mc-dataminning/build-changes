@@ -1,30 +1,29 @@
-public record ahe(int b, int c, boolean d) implements zc<agm> {
-   public static final yt<vr, ahe> a = zc.a(ahe::a, ahe::new);
+public class ahe implements zd<agn> {
+   public static final yu<vs, ahe> a = zd.a(ahe::a, ahe::new);
+   private final int b;
 
-   private ahe(vr $$0) {
-      this($$0.l(), $$0.x(), $$0.readBoolean());
+   public ahe(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.b);
-      $$0.f(this.c);
-      $$0.a(this.d);
+   private ahe(vs $$0) {
+      this.b = $$0.x();
+   }
+
+   private void a(vs $$0) {
+      $$0.f(this.b);
    }
 
    @Override
-   public ze<ahe> a() {
-      return agk.bB;
+   public zf<ahe> a() {
+      return agl.bA;
    }
 
-   public void a(agm $$0) {
+   public void a(agn $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 }

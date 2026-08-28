@@ -1,24 +1,37 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record cu(jw<czs> c) implements ea<czu> {
-   public static final Codec<cu> a = kh.a(me.ad).xmap(cu::new, cu::b);
-
+public class cu extends dj<cu.a> {
    @Override
-   public kw<czu> a() {
-      return kx.R;
+   public Codec<cu.a> a() {
+      return cu.a.a;
    }
 
-   public boolean a(cxy $$0, czu $$1) {
-      Optional<js<czs>> $$2 = $$1.e();
-      return !$$2.isEmpty() && this.c.a($$2.get());
+   public void a(arp $$0, ald<eys> $$1) {
+      this.a($$0, $$1x -> $$1x.b($$1));
    }
 
-   public static cw a(jw<czs> $$0) {
-      return new cu($$0);
-   }
+   public static record a(Optional<bi> b, ald<eys> c) implements dj.a {
+      public static final Codec<cu.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(cu.a::a), ald.a(mg.bo).fieldOf("loot_table").forGetter(cu.a::b)).apply($$0, cu.a::new)
+      );
 
-   public jw<czs> b() {
-      return this.c;
+      public static aq<cu.a> a(ald<eys> $$0) {
+         return ap.Q.a(new cu.a(Optional.empty(), $$0));
+      }
+
+      public boolean b(ald<eys> $$0) {
+         return this.c == $$0;
+      }
+
+      @Override
+      public Optional<bi> a() {
+         return this.b;
+      }
+
+      public ald<eys> b() {
+         return this.c;
+      }
    }
 }

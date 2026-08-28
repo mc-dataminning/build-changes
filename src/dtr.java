@@ -1,44 +1,46 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class dtr extends dkg {
-   public static final MapCodec<dtr> a = b(dtr::new);
-   public static final dzk<dxs> b = dzc.bB;
-   public static final dzd c = dzc.bE;
-
-   @Override
-   public MapCodec<dtr> a() {
-      return a;
-   }
-
-   public dtr(dyl.d $$0) {
+public abstract class dtr extends dtk {
+   protected dtr(dzn.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, dxs.a).b(c, Boolean.valueOf(false)));
+   }
+
+   private static boolean b(dzo $$0, dis $$1, iu $$2) {
+      iu $$3 = $$2.d();
+      dzo $$4 = $$1.a_($$3);
+      if ($$4.a(dlw.ea) && $$4.c(dtj.c) == 1) {
+         return true;
+      } else if ($$4.y().e() == 8) {
+         return false;
+      } else {
+         int $$5 = evm.a($$0, $$4, ja.b, $$4.g());
+         return $$5 < 15;
+      }
    }
 
    @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b, c);
-   }
+   protected abstract MapCodec<? extends dtr> a();
 
-   @Nullable
-   @Override
-   public dvl a(jj $$0, dym $$1) {
-      return new dxl($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dvl> dvm<T> a(dhp $$0, dym $$1, dvn<T> $$2) {
-      return $$0 instanceof arn $$3
-         ? a($$2, dvn.R, ($$1x, $$2x, $$3x, $$4) -> $$4.c().a($$3, $$2x, $$3x.d(dzc.bE).orElse(false)))
-         : a($$2, dvn.R, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x, $$2x.d(dzc.bE).orElse(false)));
+   private static boolean c(dzo $$0, dis $$1, iu $$2) {
+      iu $$3 = $$2.d();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(axf.a);
    }
 
    @Override
-   public void a(cxy $$0, cxu.b $$1, List<wv> $$2, czn $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      dik.a($$0, $$2, "spawn_data");
+   protected void b(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dlw.j.m());
+      } else {
+         if ($$1.B($$2.d()) >= 9) {
+            dzo $$4 = this.m();
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               iu $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(dlw.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.b(c, Boolean.valueOf(o($$1.a_($$6.d())))));
+               }
+            }
+         }
+      }
    }
 }

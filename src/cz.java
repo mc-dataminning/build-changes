@@ -1,58 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cz extends dz<cz.a> {
+public class cz extends dj<cz.a> {
    @Override
    public Codec<cz.a> a() {
       return cz.a.a;
    }
 
-   public void a(aro $$0, jj $$1, cxy $$2) {
-      arn $$3 = $$0.y();
-      dym $$4 = $$3.a_($$1);
-      exo $$5 = new exo.a($$3).a(faf.f, $$1.b()).a(faf.a, $$0).a(faf.g, $$4).a(faf.i, $$2).a(fae.o);
-      exl $$6 = new exl.a($$5).a(Optional.empty());
-      this.a($$0, $$1x -> $$1x.a($$6));
+   public void a(arp $$0, cys $$1, @Nullable bwa $$2) {
+      eyn $$3 = bx.b($$0, $$2);
+      this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
-   public static record a(Optional<bi> b, Optional<bi> c) implements dz.a {
+   public static record a(Optional<bi> b, Optional<cl> c, Optional<bi> d) implements dj.a {
       public static final Codec<cz.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(cz.a::a), bi.a.optionalFieldOf("location").forGetter(cz.a::b)).apply($$0, cz.a::new)
+         $$0 -> $$0.group(
+                  bx.b.optionalFieldOf("player").forGetter(cz.a::a),
+                  cl.a.optionalFieldOf("item").forGetter(cz.a::b),
+                  bx.b.optionalFieldOf("entity").forGetter(cz.a::c)
+               )
+               .apply($$0, cz.a::new)
       );
 
-      public static aq<cz.a> a(dku $$0) {
-         bi $$1 = bi.a(fat.a($$0).build());
-         return ap.z.a(new cz.a(Optional.empty(), Optional.of($$1)));
+      public static aq<cz.a> a(bi $$0, Optional<cl> $$1, Optional<bi> $$2) {
+         return ap.R.a(new cz.a(Optional.of($$0), $$1, $$2));
       }
 
-      public static aq<cz.a> a(fau.a... $$0) {
-         bi $$1 = bi.a(Arrays.stream($$0).map(fau.a::build).toArray(fau[]::new));
-         return ap.z.a(new cz.a(Optional.empty(), Optional.of($$1)));
+      public static aq<cz.a> a(Optional<bi> $$0, Optional<cl> $$1, Optional<bi> $$2) {
+         return ap.S.a(new cz.a($$0, $$1, $$2));
       }
 
-      private static cz.a c(di.a $$0, cv.a $$1) {
-         bi $$2 = bi.a(fas.a($$0).build(), fbb.a($$1).build());
-         return new cz.a(Optional.empty(), Optional.of($$2));
-      }
-
-      public static aq<cz.a> a(di.a $$0, cv.a $$1) {
-         return ap.N.a(c($$0, $$1));
-      }
-
-      public static aq<cz.a> b(di.a $$0, cv.a $$1) {
-         return ap.aa.a(c($$0, $$1));
-      }
-
-      public boolean a(exl $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
+      public boolean a(arp $$0, cys $$1, eyn $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
       }
 
       @Override
       public void a(bj $$0) {
-         dz.a.super.a($$0);
-         this.c.ifPresent($$1 -> $$0.a($$1, fae.o, ".location"));
+         dj.a.super.a($$0);
+         $$0.a(this.d, ".entity");
       }
 
       @Override
@@ -60,8 +47,12 @@ public class cz extends dz<cz.a> {
          return this.b;
       }
 
-      public Optional<bi> b() {
+      public Optional<cl> b() {
          return this.c;
+      }
+
+      public Optional<bi> c() {
+         return this.d;
       }
    }
 }

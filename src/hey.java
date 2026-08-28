@@ -1,20 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hey() implements hfi<cwq.a> {
-   public static final hfi.a<hey, cwq.a> a = hfi.a.a(MapCodec.unit(new hey()), cwq.a.d);
+public record hey() implements hfc {
+   public static final MapCodec<hey> a = MapCodec.unit(new hey());
 
-   public cwq.a a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3, cxw $$4) {
-      daa $$5 = $$0.a(kx.P);
-      if ($$5 == null || $$5.b()) {
-         return cwq.a.a;
-      } else {
-         return $$5.a(cyc.vx) ? cwq.a.c : cwq.a.b;
-      }
+   @Override
+   public boolean get(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3, cyq $$4) {
+      return $$0.r();
    }
 
    @Override
-   public hfi.a<hey, cwq.a> a() {
+   public MapCodec<hey> a() {
       return a;
    }
 }

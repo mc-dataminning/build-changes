@@ -1,53 +1,18 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
-import io.netty.util.ReferenceCounted;
-
-public record vt(ByteBuf a) implements ReferenceCounted {
-   public vt(final ByteBuf a) {
-      this.a = ByteBufUtil.ensureAccessible(a);
-   }
-
-   public static Object a(Object $$0) {
-      return $$0 instanceof ByteBuf $$1 ? new vt($$1) : $$0;
-   }
-
-   public static Object b(Object $$0) {
-      return $$0 instanceof vt $$1 ? ByteBufUtil.ensureAccessible($$1.a) : $$0;
-   }
-
-   public int refCnt() {
-      return this.a.refCnt();
-   }
-
-   public vt a() {
-      this.a.retain();
-      return this;
-   }
-
-   public vt a(int $$0) {
-      this.a.retain($$0);
-      return this;
-   }
-
-   public vt b() {
-      this.a.touch();
-      return this;
-   }
-
-   public vt c(Object $$0) {
-      this.a.touch($$0);
-      return this;
-   }
-
-   public boolean release() {
-      return this.a.release();
-   }
-
-   public boolean release(int $$0) {
-      return this.a.release($$0);
-   }
-
-   public ByteBuf c() {
-      return this.a;
-   }
+public class vt {
+   public static final String a = "decompress";
+   public static final String b = "compress";
+   public static final String c = "decoder";
+   public static final String d = "encoder";
+   public static final String e = "inbound_config";
+   public static final String f = "outbound_config";
+   public static final String g = "splitter";
+   public static final String h = "prepender";
+   public static final String i = "decrypt";
+   public static final String j = "encrypt";
+   public static final String k = "unbundler";
+   public static final String l = "bundler";
+   public static final String m = "packet_handler";
+   public static final String n = "timeout";
+   public static final String o = "legacy_query";
+   public static final String p = "latency";
 }

@@ -1,51 +1,79 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
+import java.util.function.ToIntFunction;
 
-public abstract class dqm extends dku {
-   public static final dzd b = dzc.N;
-   public static final dzd c = dzc.O;
-   public static final dzd d = dzc.P;
-   public static final dzd e = dzc.Q;
-   public static final dzd f = dzc.L;
-   public static final dzd g = dzc.M;
-   public static final Map<jo, dzd> h = ImmutableMap.copyOf(Maps.newEnumMap(Map.of(jo.c, b, jo.f, c, jo.d, d, jo.e, e, jo.b, f, jo.a, g)));
-   private final Function<dym, fdo> a;
+public class dqm extends dlu implements dtb {
+   public static final MapCodec<dqm> a = b(dqm::new);
+   public static final int b = 15;
+   public static final eao c = eae.aS;
+   public static final eaf d = eae.I;
+   public static final ToIntFunction<dzo> e = $$0 -> $$0.c(c);
 
-   protected dqm(float $$0, dyl.d $$1) {
-      super($$1);
-      this.a = this.a($$0);
+   @Override
+   public MapCodec<dqm> a() {
+      return a;
+   }
+
+   public dqm(dzn.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(c, Integer.valueOf(15)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dqm> a();
-
-   private Function<dym, fdo> a(float $$0) {
-      fdo $$1 = dku.a((double)$$0);
-      Map<jo, fdo> $$2 = fdl.d(dku.c((double)$$0, 0.0, 8.0));
-      return this.a($$2x -> {
-         fdo $$3 = $$1;
-
-         for (Entry<jo, dzd> $$4 : h.entrySet()) {
-            if ($$2x.c($$4.getValue())) {
-               $$3 = fdl.a($$2.get($$4.getKey()), $$3);
-            }
-         }
-
-         return $$3;
-      });
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(c, d);
    }
 
    @Override
-   protected boolean e_(dym $$0) {
-      return false;
+   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
+      if (!$$1.C && $$3.gF()) {
+         $$1.a($$2, $$0.a(c), 2);
+         return bty.b;
+      } else {
+         return bty.c;
+      }
    }
 
    @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return this.a.apply($$0);
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return $$3.a(cyw.ib) ? fen.b() : fen.a();
+   }
+
+   @Override
+   protected boolean e_(dzo $$0) {
+      return $$0.y().c();
+   }
+
+   @Override
+   protected dsf a_(dzo $$0) {
+      return dsf.a;
+   }
+
+   @Override
+   protected float c(dzo $$0, dhv $$1, iu $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, evw.c, evw.c.a($$1));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected evv b_(dzo $$0) {
+      return $$0.c(d) ? evw.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected cys a(dis $$0, iu $$1, dzo $$2, boolean $$3) {
+      return a(super.a($$0, $$1, $$2, $$3), $$2.c(c));
+   }
+
+   public static cys a(cys $$0, int $$1) {
+      $$0.b(kj.aq, das.a.a(c, $$1));
+      return $$0;
    }
 }

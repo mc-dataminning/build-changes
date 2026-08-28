@@ -1,90 +1,45 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.Map;
 
-public class bvy<StoredEntityType extends edf> {
-   private Either<UUID, StoredEntityType> a;
+public record bvy(Map<bwk, Float> f) {
+   public static final float a = 0.085F;
+   public static final float b = 1.0F;
+   public static final int c = 2;
+   public static final bvy d = new bvy(af.a(bwk.class, $$0 -> 0.085F));
+   public static final Codec<bvy> e = Codec.unboundedMap(bwk.l, ays.n).xmap(bvy::b, bvy::a).xmap(bvy::new, bvy::a);
 
-   public static <Type extends edf> Codec<bvy<Type>> a() {
-      return km.a.xmap(bvy::new, bvy::c);
+   private static Map<bwk, Float> a(Map<bwk, Float> $$0) {
+      Map<bwk, Float> $$1 = new HashMap<>($$0);
+      $$1.values().removeIf($$0x -> $$0x == 0.085F);
+      return $$1;
    }
 
-   public static <Type extends edf> yt<ByteBuf, bvy<Type>> b() {
-      return km.g.a(bvy::new, bvy::c);
+   private static Map<bwk, Float> b(Map<bwk, Float> $$0) {
+      return af.a(bwk.class, $$1 -> $$0.getOrDefault($$1, 0.085F));
    }
 
-   public bvy(StoredEntityType $$0) {
-      this.a = Either.right($$0);
+   public bvy a(bwk $$0) {
+      return this.a($$0, 2.0F);
    }
 
-   public bvy(UUID $$0) {
-      this.a = Either.left($$0);
-   }
-
-   public UUID c() {
-      return (UUID)this.a.map($$0 -> $$0, edf::cG);
-   }
-
-   @Nullable
-   public StoredEntityType a(ede<? super StoredEntityType> $$0, Class<StoredEntityType> $$1) {
-      Optional<StoredEntityType> $$2 = this.a.right();
-      if ($$2.isPresent()) {
-         StoredEntityType $$3 = $$2.get();
-         if (!$$3.dQ()) {
-            return $$3;
-         }
-
-         this.a = Either.left($$3.cG());
-      }
-
-      Optional<UUID> $$4 = this.a.left();
-      if ($$4.isPresent()) {
-         StoredEntityType $$5 = this.a($$0.c($$4.get()), $$1);
-         if ($$5 != null && !$$5.dQ()) {
-            this.a = Either.right($$5);
-            return $$5;
-         }
-      }
-
-      return null;
-   }
-
-   @Nullable
-   private StoredEntityType a(@Nullable edf $$0, Class<StoredEntityType> $$1) {
-      return $$0 != null && $$1.isAssignableFrom($$0.getClass()) ? $$1.cast($$0) : null;
-   }
-
-   public boolean a(StoredEntityType $$0) {
-      return this.c().equals($$0.cG());
-   }
-
-   public void a(tw $$0, String $$1) {
-      $$0.a($$1, this.c());
-   }
-
-   @Nullable
-   public static <StoredEntityType extends edf> StoredEntityType a(
-      @Nullable bvy<StoredEntityType> $$0, ede<? super StoredEntityType> $$1, Class<StoredEntityType> $$2
-   ) {
-      return $$0 != null ? $$0.a($$1, $$2) : null;
-   }
-
-   @Nullable
-   public static <StoredEntityType extends edf> bvy<StoredEntityType> b(tw $$0, String $$1) {
-      return $$0.b($$1) ? new bvy<>($$0.a($$1)) : null;
-   }
-
-   @Nullable
-   public static <StoredEntityType extends edf> bvy<StoredEntityType> a(tw $$0, String $$1, dhp $$2) {
-      if ($$0.b($$1)) {
-         return b($$0, $$1);
+   public bvy a(bwk $$0, float $$1) {
+      if ($$1 < 0.0F) {
+         throw new IllegalArgumentException("Tried to set invalid equipment chance " + $$1 + " for " + $$0);
       } else {
-         String $$3 = $$0.l($$1);
-         UUID $$4 = avm.a($$2.p(), $$3);
-         return $$4 != null ? new bvy<>($$4) : null;
+         return this.b($$0) == $$1 ? this : new bvy(af.a(bwk.class, $$2 -> $$2 == $$0 ? $$1 : this.b($$2)));
       }
+   }
+
+   public float b(bwk $$0) {
+      return this.f.getOrDefault($$0, 0.085F);
+   }
+
+   public boolean c(bwk $$0) {
+      return this.b($$0) > 1.0F;
+   }
+
+   public Map<bwk, Float> a() {
+      return this.f;
    }
 }

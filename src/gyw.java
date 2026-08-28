@@ -1,14 +1,13 @@
-public class gyw<S extends hcf, M extends gea<S>> extends gyt<S, M> {
-   private final gfw<S> a;
-   private final ald b;
+public class gyw extends gzy<hbd, gel> {
+   private static final gpn a = gpn.r(ale.b("textures/entity/breeze/breeze_eyes.png"));
 
-   public gyw(gwc<S, M> $$0, ggz $$1, ghb $$2, ald $$3) {
+   public gyw(gxh<hbd, gel> $$0) {
       super($$0);
-      this.b = $$3;
-      this.a = new gfw<>($$1.a($$2));
    }
 
-   public void a(fho $$0, gny $$1, int $$2, S $$3, float $$4, float $$5) {
-      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
+   public void a(fiq $$0, gpd $$1, int $$2, hbd $$3, float $$4, float $$5) {
+      fiu $$6 = $$1.getBuffer(a);
+      gel $$7 = this.d();
+      gup.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hhp.d);
    }
 }

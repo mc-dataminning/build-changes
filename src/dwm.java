@@ -1,23 +1,20 @@
-public class dwm extends dwz {
-   private static final int a = 60;
-   private static final int b = 9;
-
-   public dwm(jj $$0, dym $$1) {
-      super(dvn.i, $$0, $$1);
+public class dwm extends dwa {
+   public dwm(iu $$0, dzo $$1) {
+      super(dwp.D, $$0, $$1, ddu.c);
    }
 
    @Override
-   public int a() {
-      return 9;
+   protected ww j() {
+      return ww.c("container.blast_furnace");
    }
 
    @Override
-   public int c() {
-      return 60;
+   protected int a(dxm $$0, cys $$1) {
+      return super.a($$0, $$1) / 2;
    }
 
    @Override
-   public awj d() {
-      return awk.CY;
+   protected cuk a(int $$0, cqr $$1) {
+      return new cuq($$0, $$1, this, this.m);
    }
 }

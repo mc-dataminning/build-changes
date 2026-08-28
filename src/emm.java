@@ -1,43 +1,49 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emm extends emq {
-   public static final MapCodec<emm> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(emm::new, $$0 -> $$0.b);
-   private final float b;
+public class emm extends emj {
+   public static final MapCodec<emm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(btd.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, emm::new)
+   );
+   private final btd b;
 
-   public emm(float $$0) {
-      this.b = $$0;
+   public emm(btd $$0, btd $$1, btd $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected emr<?> a() {
-      return emr.d;
+   protected emk<?> a() {
+      return emk.h;
    }
 
    @Override
-   public void a(emq.a $$0) {
-      azs $$1 = $$0.b();
-      List<jj> $$2 = $$0.c();
-      if (!$$2.isEmpty()) {
-         if (!($$1.i() >= this.b)) {
-            List<jj> $$3 = new ArrayList<>($$2);
-            af.c($$3, $$1);
-            Optional<jj> $$4 = $$3.stream().filter($$1x -> {
-               for (jo $$2x : jo.values()) {
-                  if (!$$0.a($$1x.a($$2x), $$0xx -> $$0xx.a(awz.u))) {
-                     return false;
-                  }
-               }
+   protected void a(div $$0, emj.b $$1, azt $$2, elt $$3, int $$4, emj.a $$5, int $$6, int $$7, int $$8) {
+      iu $$9 = $$5.a();
+      int $$10 = 0;
 
-               return true;
-            }).findFirst();
-            if (!$$4.isEmpty()) {
-               $$0.a($$4.get(), dkw.cB.m().b(dmp.c, dzg.b).b(dmp.d, Boolean.valueOf(true)));
-            }
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + azk.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
          }
+
+         this.a($$0, $$1, $$2, $$3, new iu($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
       }
+   }
+
+   @Override
+   public int a(azt $$0, int $$1, elt $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

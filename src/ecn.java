@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.concurrent.CompletableFuture;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ecn {
+@FunctionalInterface
+public interface ecn {
+   CompletableFuture<ebl> doWork(ecr var1, ecp var2, bag<are> var3, ebl var4);
 }

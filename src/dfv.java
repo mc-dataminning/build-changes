@@ -1,24 +1,60 @@
-public interface dfv {
-   alc<dfp> a = a("mob_spawn_equipment");
-   alc<dfp> b = a("pillager_spawn_crossbow");
-   alc<dfp> c = a("raid/pillager_post_wave_3");
-   alc<dfp> d = a("raid/pillager_post_wave_5");
-   alc<dfp> e = a("raid/vindicator");
-   alc<dfp> f = a("raid/vindicator_post_wave_5");
-   alc<dfp> g = a("enderman_loot_drop");
+import com.google.common.collect.HashMultimap;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(qg<dfp> $$0) {
-      jt<deh> $$1 = $$0.a(me.aS);
-      $$0.a(a, new dfs($$1.b(axc.l), 5, 17));
-      $$0.a(b, new dft($$1.b(dem.K), bss.a(1)));
-      $$0.a(c, new dft($$1.b(dem.J), bss.a(1)));
-      $$0.a(d, new dft($$1.b(dem.J), bss.a(2)));
-      $$0.a(e, new dft($$1.b(dem.n), bss.a(1)));
-      $$0.a(f, new dft($$1.b(dem.n), bss.a(2)));
-      $$0.a(g, new dft($$1.b(dem.v), bss.a(1)));
+public record dfv(ale b, je<bya> d, dfm e, byd.a f) implements dfx {
+   public static final MapCodec<dfv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ale.a.fieldOf("id").forGetter(dfv::b),
+               bya.a.fieldOf("attribute").forGetter(dfv::c),
+               dfm.b.fieldOf("amount").forGetter(dfv::d),
+               byd.a.f.fieldOf("operation").forGetter(dfv::e)
+            )
+            .apply($$0, dfv::new)
+   );
+
+   private ale a(bai $$0) {
+      return this.b.g("/" + $$0.c());
    }
 
-   static alc<dfp> a(String $$0) {
-      return alc.a(me.aT, ald.b($$0));
+   public byd a(int $$0, bai $$1) {
+      return new byd(this.a($$1), (double)this.d().a($$0), this.e());
+   }
+
+   @Override
+   public void a(aro $$0, int $$1, dfe $$2, bwa $$3, fdw $$4, boolean $$5) {
+      if ($$5 && $$3 instanceof bwz $$6) {
+         $$6.eZ().a(this.a($$1, $$2.b()));
+      }
+   }
+
+   @Override
+   public void a(dfe $$0, bwa $$1, fdw $$2, int $$3) {
+      if ($$1 instanceof bwz $$4) {
+         $$4.eZ().b(this.a($$3, $$0.b()));
+      }
+   }
+
+   private HashMultimap<je<bya>, byd> a(int $$0, bwk $$1) {
+      HashMultimap<je<bya>, byd> $$2 = HashMultimap.create();
+      $$2.put(this.d, this.a($$0, (bai)$$1));
+      return $$2;
+   }
+
+   @Override
+   public MapCodec<dfv> a() {
+      return a;
+   }
+
+   public je<bya> c() {
+      return this.d;
+   }
+
+   public dfm d() {
+      return this.e;
+   }
+
+   public byd.a e() {
+      return this.f;
    }
 }

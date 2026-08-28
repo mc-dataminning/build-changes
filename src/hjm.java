@@ -1,5 +1,2 @@
-public interface hjm {
-   hgs a(hiz var1);
-
-   hgs a(String var1);
+public record hjm(int a, int b) {
 }

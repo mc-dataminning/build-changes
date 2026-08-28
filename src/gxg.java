@@ -1,25 +1,26 @@
-public class gxg extends gvl<cnz, hcw, ggq> {
-   private static final ald a = ald.b("textures/entity/witch.png");
+public class gxg extends gwq<cny, hdf, ggr> {
+   private static final ale a = ale.b("textures/entity/illager/ravager.png");
 
-   public gxg(guf.a $$0) {
-      super($$0, new ggq($$0.a(ghc.dL)), 0.5F);
-      this.a(new gzf(this));
+   public gxg(gvk.a $$0) {
+      super($$0, new ggr($$0.a(gif.cF)), 1.1F);
    }
 
-   public ald a(hcw $$0) {
+   public ale a(hdf $$0) {
       return a;
    }
 
-   public hcw b() {
-      return new hcw();
+   public hdf b() {
+      return new hdf();
    }
 
-   public void a(cnz $$0, hcw $$1, float $$2) {
+   public void a(cny $$0, hdf $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      haz.a($$0, $$1, this.h);
-      $$1.a = $$0.ar();
-      cxy $$3 = $$0.fa();
-      $$1.b = !$$3.f();
-      $$1.c = $$3.a(cyc.tm);
+      $$1.a = (float)$$0.q() > 0.0F ? (float)$$0.q() - $$2 : 0.0F;
+      $$1.b = (float)$$0.m() > 0.0F ? (float)$$0.m() - $$2 : 0.0F;
+      if ($$0.gx() > 0) {
+         $$1.c = ((float)(20 - $$0.gx()) + $$2) / 20.0F;
+      } else {
+         $$1.c = 0.0F;
+      }
    }
 }

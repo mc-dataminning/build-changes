@@ -1,7 +1,9 @@
-public interface ctz {
-   int a(int var1);
+public class ctz {
+   final cuc a;
+   final long b;
 
-   void a(int var1, int var2);
-
-   int a();
+   ctz(cuc $$0, int $$1) {
+      this.a = $$0;
+      this.b = 1L << $$1;
+   }
 }

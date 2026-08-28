@@ -1,75 +1,48 @@
-public class crk extends cri {
-   private static final bvv a = bvv.c(0.0F, 0.0F);
+public class crk extends crg {
+   private int d = 1;
 
-   public crk(bwb<? extends crk> $$0, dhp $$1) {
+   public crk(bwj<? extends crk> $$0, dip $$1) {
       super($$0, $$1);
    }
 
-   public crk(dhp $$0, bwr $$1, cxy $$2) {
-      super(bwb.L, $$1, $$0, $$2);
-   }
-
-   public crk(dhp $$0, double $$1, double $$2, double $$3, cxy $$4) {
-      super(bwb.L, $$1, $$2, $$3, $$0, $$4);
+   public crk(dip $$0, bwz $$1, fdw $$2, int $$3) {
+      super(bwj.Y, $$1, $$2, $$0);
+      this.d = $$3;
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dV()
-               .a(
-                  new lr(lv.U, this.f()),
-                  this.dA(),
-                  this.dC(),
-                  this.dG(),
-                  ((double)this.ae.i() - 0.5) * 0.08,
-                  ((double)this.ae.i() - 0.5) * 0.08,
-                  ((double)this.ae.i() - 0.5) * 0.08
-               );
-         }
-      }
-   }
-
-   @Override
-   protected void a(fcr $$0) {
+   protected void a(fdu $$0) {
       super.a($$0);
-      $$0.a().a(this.dW().b(this, this.q()), 0.0F);
-   }
-
-   @Override
-   protected void a(fcs $$0) {
-      super.a($$0);
-      if (!this.dV().C) {
-         if (this.ae.a(8) == 0) {
-            int $$1 = 1;
-            if (this.ae.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               cil $$3 = bwb.z.a(this.dV(), bwa.k);
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.dA(), this.dC(), this.dG(), this.dL(), 0.0F);
-                  if (!$$3.a(a)) {
-                     break;
-                  }
-
-                  this.dV().b($$3);
-               }
-            }
-         }
-
-         this.dV().a(this, (byte)3);
+      if (this.dV() instanceof aro $$1) {
+         boolean $$2 = $$1.O().c(dil.c);
+         this.dV().a(this, this.dA(), this.dC(), this.dG(), (float)this.d, $$2, dip.a.c);
          this.at();
       }
    }
 
    @Override
-   protected cxu g() {
-      return cyc.rC;
+   protected void a(fdt $$0) {
+      super.a($$0);
+      if (this.dV() instanceof aro $$1) {
+         bwa var6 = $$0.a();
+         bwa $$4 = this.q();
+         bup $$5 = this.dW().a((crg)this, $$4);
+         var6.a($$1, $$5, 6.0F);
+         dfh.a($$1, var6, $$5);
+      }
+   }
+
+   @Override
+   public void b(tx $$0) {
+      super.b($$0);
+      $$0.a("ExplosionPower", (byte)this.d);
+   }
+
+   @Override
+   public void a(tx $$0) {
+      super.a($$0);
+      if ($$0.b("ExplosionPower", 99)) {
+         this.d = $$0.f("ExplosionPower");
+      }
    }
 }

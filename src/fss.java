@@ -1,210 +1,153 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fss extends fsi implements frq, fui {
-   private static final int a = -1;
-   private static final int b = 400;
-   private static final int c = 24;
-   private static final int d = 14;
-   private static final wv e = wv.c("narration.tab_navigation.usage");
-   private final fuf f = fuf.e();
-   private int g;
-   private final fsr h;
-   private final ImmutableList<fsq> i;
-   private final ImmutableList<frw> j;
-
-   fss(int $$0, fsr $$1, Iterable<fsq> $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = ImmutableList.copyOf($$2);
-      this.f.c().b();
-      Builder<frw> $$3 = ImmutableList.builder();
-
-      for (fsq $$4 : $$2) {
-         $$3.add(this.f.a(new frw($$1, $$4, 0, 24)));
-      }
-
-      this.j = $$3.build();
-   }
-
-   public static fss.a a(fsr $$0, int $$1) {
-      return new fss.a($$0, $$1);
-   }
-
-   public void a(int $$0) {
-      this.g = $$0;
-   }
-
-   @Override
-   public boolean a_(double $$0, double $$1) {
-      return $$0 >= (double)this.f.F() && $$1 >= (double)this.f.G() && $$0 < (double)(this.f.F() + this.f.A()) && $$1 < (double)(this.f.G() + this.f.y());
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if (this.aH_() != null) {
-         this.aH_().a($$0);
-      }
-   }
-
-   @Override
-   public void a(@Nullable fsk $$0) {
-      super.a($$0);
-      if ($$0 instanceof frw $$1) {
-         this.h.a($$1.a(), true);
-      }
-   }
-
+public class fss extends fxi {
+   private static final ale a = ale.b("popup/background");
+   private static final int b = 12;
+   private static final int c = 18;
+   private static final int d = 6;
+   private static final int s = 130;
+   private static final int u = 64;
+   private static final int v = 250;
+   private final fxi w;
    @Nullable
+   private final ale x;
+   private final ww y;
+   private final List<fss.b> z;
+   @Nullable
+   private final Runnable A;
+   private final int B;
+   private final fvi C = fvi.d();
+
+   fss(fxi $$0, int $$1, @Nullable ale $$2, ww $$3, ww $$4, List<fss.b> $$5, @Nullable Runnable $$6) {
+      super($$3);
+      this.w = $$0;
+      this.x = $$2;
+      this.y = $$4;
+      this.z = $$5;
+      this.A = $$6;
+      this.B = $$1 - 36;
+   }
+
    @Override
-   public fpw a(fuq $$0) {
-      if (!this.aI_()) {
-         frw $$1 = this.g();
-         if ($$1 != null) {
-            return fpw.a(this, fpw.a($$1));
-         }
+   public void aF_() {
+      super.aF_();
+      this.w.o();
+   }
+
+   @Override
+   protected void aN_() {
+      this.w.b(this.m, this.n, this.o);
+      this.C.a(12).c().b();
+      this.C.a(new fsk(this.l.f().a(n.r), this.p).d(this.B).b(true));
+      if (this.x != null) {
+         this.C.a(fsd.a(130, 64, this.x, 130, 64));
       }
 
-      return $$0 instanceof fuq.c ? null : super.a($$0);
-   }
-
-   @Override
-   public List<? extends fsk> aD_() {
-      return this.j;
-   }
-
-   @Override
-   public fui.a w() {
-      return this.j.stream().map(fql::w).max(Comparator.naturalOrder()).orElse(fui.a.a);
-   }
-
-   @Override
-   public void b(fuk $$0) {
-      Optional<frw> $$1 = this.j.stream().filter(fql::C).findFirst().or(() -> Optional.ofNullable(this.g()));
-      $$1.ifPresent($$1x -> {
-         this.a($$0.a(), $$1x);
-         $$1x.b($$0);
+      this.C.a(new fsk(this.y, this.p).d(this.B).b(true));
+      this.C.a(this.m());
+      this.C.a($$1 -> {
+         fro var10000 = this.c($$1);
       });
-      if (this.aI_()) {
-         $$0.a(fuj.d, e);
-      }
+      this.c();
    }
 
-   protected void a(fuk $$0, frw $$1) {
-      if (this.i.size() > 1) {
-         int $$2 = this.j.indexOf($$1);
-         if ($$2 != -1) {
-            $$0.a(fuj.b, wv.a("narrator.position.tab", $$2 + 1, this.i.size()));
-         }
+   private fvi m() {
+      int $$0 = 6 * (this.z.size() - 1);
+      int $$1 = Math.min((this.B - $$0) / this.z.size(), 150);
+      fvi $$2 = fvi.e();
+      $$2.a(6);
+
+      for (fss.b $$3 : this.z) {
+         $$2.a(frq.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
       }
+
+      return $$2;
    }
 
    @Override
-   public void a(fpz $$0, int $$1, int $$2, float $$3) {
-      $$0.a(goi::H, fwf.h, 0, this.f.G() + this.f.y() - 2, 0.0F, 0.0F, ((frw)this.j.get(0)).F(), 2, 32, 2);
-      int $$4 = ((frw)this.j.get(this.j.size() - 1)).H();
-      $$0.a(goi::H, fwf.h, $$4, this.f.G() + this.f.y() - 2, 0.0F, 0.0F, this.g, 2, 32, 2);
-      UnmodifiableIterator var6 = this.j.iterator();
-
-      while (var6.hasNext()) {
-         frw $$5 = (frw)var6.next();
-         $$5.a($$0, $$1, $$2, $$3);
-      }
+   protected void c() {
+      this.w.a(this.m, this.n, this.o);
+      this.C.a();
+      fvc.a(this.C, this.J());
    }
 
    @Override
-   public fuu J() {
-      return this.f.J();
+   public void b(frc $$0, int $$1, int $$2, float $$3) {
+      this.w.a($$0, -1, -1, $$3);
+      $$0.d();
+      RenderSystem.clear(256);
+      this.b($$0);
+      $$0.a(gpn::H, a, this.C.F() - 18, this.C.G() - 18, this.C.A() + 36, this.C.y() + 36);
    }
 
-   public void b() {
-      int $$0 = Math.min(400, this.g) - 28;
-      int $$1 = azk.d($$0 / this.i.size(), 2);
-      UnmodifiableIterator var3 = this.j.iterator();
+   @Override
+   public ww i() {
+      return wv.a(this.l, this.y);
+   }
 
-      while (var3.hasNext()) {
-         frw $$2 = (frw)var3.next();
-         $$2.h($$1);
+   @Override
+   public void aK_() {
+      if (this.A != null) {
+         this.A.run();
       }
 
-      this.f.a();
-      this.f.j(azk.d((this.g - $$0) / 2, 2));
-      this.f.k(0);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      if (this.aI_()) {
-         this.a((fsk)this.j.get($$0));
-      } else {
-         this.h.a((fsq)this.i.get($$0), $$1);
-      }
-   }
-
-   public boolean b(int $$0) {
-      if (fwf.s()) {
-         int $$1 = this.c($$0);
-         if ($$1 != -1) {
-            this.a(azk.a($$1, 0, this.i.size() - 1), true);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private int c(int $$0) {
-      if ($$0 >= 49 && $$0 <= 57) {
-         return $$0 - 49;
-      } else {
-         if ($$0 == 258) {
-            int $$1 = this.c();
-            if ($$1 != -1) {
-               int $$2 = fwf.t() ? $$1 - 1 : $$1 + 1;
-               return Math.floorMod($$2, this.i.size());
-            }
-         }
-
-         return -1;
-      }
-   }
-
-   private int c() {
-      fsq $$0 = this.h.a();
-      int $$1 = this.i.indexOf($$0);
-      return $$1 != -1 ? $$1 : -1;
-   }
-
-   @Nullable
-   private frw g() {
-      int $$0 = this.c();
-      return $$0 != -1 ? (frw)this.j.get($$0) : null;
+      this.m.a(this.w);
    }
 
    public static class a {
-      private final int a;
-      private final fsr b;
-      private final List<fsq> c = new ArrayList<>();
+      private final fxi a;
+      private final ww b;
+      private ww c = wv.a;
+      private int d = 250;
+      @Nullable
+      private ale e;
+      private final List<fss.b> f = new ArrayList<>();
+      @Nullable
+      private Runnable g = null;
 
-      a(fsr $$0, int $$1) {
-         this.b = $$0;
-         this.a = $$1;
+      public a(fxi $$0, ww $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public fss.a a(fsq... $$0) {
-         Collections.addAll(this.c, $$0);
+      public fss.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fss.a a(ale $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fss.a a(ww $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fss.a a(ww $$0, Consumer<fss> $$1) {
+         this.f.add(new fss.b($$0, $$1));
+         return this;
+      }
+
+      public fss.a a(Runnable $$0) {
+         this.g = $$0;
          return this;
       }
 
       public fss a() {
-         return new fss(this.a, this.b, this.c);
+         if (this.f.isEmpty()) {
+            throw new IllegalStateException("Popup must have at least one button");
+         } else {
+            return new fss(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
+         }
       }
+   }
+
+   static record b(ww a, Consumer<fss> b) {
    }
 }

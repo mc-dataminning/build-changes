@@ -1,40 +1,75 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
 
-public class bbc extends DataFix {
-   public bbc(Schema $$0) {
-      super($$0, false);
+public class bbc {
+   private static final String a = a("");
+
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
+      String $$2 = a($$1);
+      return new Dynamic($$0, $$0.createString($$2));
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(biq.D), this::a);
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      return new Dynamic($$0, $$0.createString(a));
    }
 
-   private Typed<?> a(Typed<?> $$0) {
-      $$0 = this.a($$0, "minecraft:arrow", bbc::a);
-      $$0 = this.a($$0, "minecraft:spectral_arrow", bbc::a);
-      return this.a($$0, "minecraft:trident", bbc::a);
+   public static String a(String $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("text", $$0);
+      return aza.e($$1);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      if ($$0.get("pickup").result().isPresent()) {
-         return $$0;
+   public static String b(String $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("translate", $$0);
+      return aza.e($$1);
+   }
+
+   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
+      String $$2 = b($$1);
+      return new Dynamic($$0, $$0.createString($$2));
+   }
+
+   public static String c(String $$0) {
+      if (!$$0.isEmpty() && !$$0.equals("null")) {
+         char $$1 = $$0.charAt(0);
+         char $$2 = $$0.charAt($$0.length() - 1);
+         if ($$1 == '"' && $$2 == '"' || $$1 == '{' && $$2 == '}' || $$1 == '[' && $$2 == ']') {
+            try {
+               JsonElement $$3 = JsonParser.parseString($$0);
+               if ($$3.isJsonPrimitive()) {
+                  return a($$3.getAsString());
+               }
+
+               return aza.e($$3);
+            } catch (JsonParseException var4) {
+            }
+         }
+
+         return a($$0);
       } else {
-         boolean $$1 = $$0.get("player").asBoolean(true);
-         return $$0.set("pickup", $$0.createByte((byte)($$1 ? 1 : 0))).remove("player");
+         return a;
       }
    }
 
-   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(biq.D, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(biq.D, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+   public static Optional<String> d(String $$0) {
+      try {
+         JsonElement $$1 = JsonParser.parseString($$0);
+         if ($$1.isJsonObject()) {
+            JsonObject $$2 = $$1.getAsJsonObject();
+            JsonElement $$3 = $$2.get("translate");
+            if ($$3 != null && $$3.isJsonPrimitive()) {
+               return Optional.of($$3.getAsString());
+            }
+         }
+      } catch (JsonParseException var4) {
+      }
+
+      return Optional.empty();
    }
 }

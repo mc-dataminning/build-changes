@@ -1,85 +1,72 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.kinds.App;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
 
-public class bzu {
-   private static final int a = 20;
-   private static final int b = 8;
-   private static final float c = 0.6F;
-   private static final float d = 0.6F;
-   private static final int e = 5;
-   private static final int f = 10;
+public final class bzu {
+   public static Optional<fdw> a(bxb $$0, fdw $$1, float $$2, int $$3, boolean $$4) {
+      fdw $$5 = $$0.dt();
+      fdw $$6 = new fdw($$1.d - $$5.d, 0.0, $$1.f - $$5.f).d().c(0.5);
+      fdw $$7 = $$1.d($$6);
+      fdw $$8 = $$7.d($$5);
+      float $$9 = (float)$$3 * (float) Math.PI / 180.0F;
+      double $$10 = Math.atan2($$8.f, $$8.d);
+      double $$11 = $$8.a(0.0, $$8.e, 0.0).h();
+      double $$12 = Math.sqrt($$11);
+      double $$13 = $$8.e;
+      double $$14 = $$0.be();
+      double $$15 = Math.sin((double)(2.0F * $$9));
+      double $$16 = Math.pow(Math.cos((double)$$9), 2.0);
+      double $$17 = Math.sin((double)$$9);
+      double $$18 = Math.cos((double)$$9);
+      double $$19 = Math.sin($$10);
+      double $$20 = Math.cos($$10);
+      double $$21 = $$11 * $$14 / ($$12 * $$15 - 2.0 * $$13 * $$16);
+      if ($$21 < 0.0) {
+         return Optional.empty();
+      } else {
+         double $$22 = Math.sqrt($$21);
+         if ($$22 > (double)$$2) {
+            return Optional.empty();
+         } else {
+            double $$23 = $$22 * $$18;
+            double $$24 = $$22 * $$17;
+            if ($$4) {
+               int $$25 = azk.c($$12 / $$23) * 2;
+               double $$26 = 0.0;
+               fdw $$27 = null;
+               bwd $$28 = $$0.a(bxl.g);
 
-   public static byj<bwz> a() {
-      return cbv.a(
-         (Function<cbv.b<bwz>, ? extends App<cbv.c<bwz>, cby<bwz>>>)($$0 -> $$0.group($$0.b(cft.i), $$0.c(cft.n), $$0.a(cft.o), $$0.a(cft.r))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$5.C_().a(10) != 0) {
-                        return false;
-                     } else {
-                        List<bwr> $$8 = $$0.b($$1);
-                        Optional<bwr> $$9 = $$8.stream().filter($$1xx -> a((bwr)$$6, $$1xx)).findAny();
-                        if (!$$9.isPresent()) {
-                           Optional<bwr> $$12 = a($$8);
-                           if ($$12.isPresent()) {
-                              a($$4, $$3, $$2, $$12.get());
-                              return true;
-                           } else {
-                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
-                              return true;
-                           }
-                        } else {
-                           for (int $$10 = 0; $$10 < 10; $$10++) {
-                              fcu $$11 = chn.a($$6, 20, 8);
-                              if ($$11 != null && $$5.c(jj.a((kc)$$11))) {
-                                 $$2.a(new cfw($$11, 0.6F, 0));
-                                 break;
-                              }
-                           }
+               for (int $$29 = 0; $$29 < $$25 - 1; $$29++) {
+                  $$26 += $$12 / (double)$$25;
+                  double $$30 = $$17 / $$18 * $$26 - Math.pow($$26, 2.0) * $$14 / (2.0 * $$21 * Math.pow($$18, 2.0));
+                  double $$31 = $$26 * $$20;
+                  double $$32 = $$26 * $$19;
+                  fdw $$33 = new fdw($$5.d + $$31, $$5.e + $$30, $$5.f + $$32);
+                  if ($$27 != null && !a($$0, $$28, $$27, $$33)) {
+                     return Optional.empty();
+                  }
 
-                           return true;
-                        }
-                     }
-                  }))
-      );
+                  $$27 = $$33;
+               }
+            }
+
+            return Optional.of(new fdw($$23 * $$20, $$24, $$23 * $$19).c(0.95F));
+         }
+      }
    }
 
-   private static void a(cbw<?, bwr> $$0, cbw<?, bzw> $$1, cbw<?, cfw> $$2, bwr $$3) {
-      $$0.a($$3);
-      $$1.a(new byt($$3, true));
-      $$2.a(new cfw(new byt($$3, false), 0.6F, 1));
-   }
+   private static boolean a(bxb $$0, bwd $$1, fdw $$2, fdw $$3) {
+      fdw $$4 = $$3.d($$2);
+      double $$5 = (double)Math.min($$1.a(), $$1.b());
+      int $$6 = azk.c($$4.g() / $$5);
+      fdw $$7 = $$4.d();
+      fdw $$8 = $$2;
 
-   private static Optional<bwr> a(List<bwr> $$0) {
-      Map<bwr, Integer> $$1 = b($$0);
-      return $$1.entrySet()
-         .stream()
-         .sorted(Comparator.comparingInt(Entry::getValue))
-         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
-         .map(Entry::getKey)
-         .findFirst();
-   }
+      for (int $$9 = 0; $$9 < $$6; $$9++) {
+         $$8 = $$9 == $$6 - 1 ? $$3 : $$8.e($$7.c($$5 * 0.9F));
+         if (!$$0.dV().a($$0, $$1.a($$8))) {
+            return false;
+         }
+      }
 
-   private static Map<bwr, Integer> b(List<bwr> $$0) {
-      Map<bwr, Integer> $$1 = Maps.newHashMap();
-      $$0.stream().filter(bzu::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
-      return $$1;
-   }
-
-   private static bwr a(bwr $$0) {
-      return $$0.eb().c(cft.r).get();
-   }
-
-   private static boolean b(bwr $$0) {
-      return $$0.eb().c(cft.r).isPresent();
-   }
-
-   private static boolean a(bwr $$0, bwr $$1) {
-      return $$1.eb().c(cft.r).filter($$1x -> $$1x == $$0).isPresent();
+      return true;
    }
 }

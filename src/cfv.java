@@ -1,60 +1,127 @@
-import com.google.common.collect.Iterables;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class cfv {
-   private static final cfv a = new cfv();
-   private final List<bwr> b;
-   private final Predicate<bwr> c;
+public abstract class cfv extends cdv {
+   private static final int a = 0;
+   private static final int b = 1;
+   private static final int c = 2;
+   protected final bxb e;
+   protected final boolean f;
+   private final boolean d;
+   private int i;
+   private int j;
+   private int k;
+   @Nullable
+   protected bwz g;
+   protected int h = 60;
 
-   private cfv() {
-      this.b = List.of();
-      this.c = $$0 -> false;
+   public cfv(bxb $$0, boolean $$1) {
+      this($$0, $$1, false);
    }
 
-   public cfv(arn $$0, bwr $$1, List<bwr> $$2) {
-      this.b = $$2;
-      Object2BooleanOpenHashMap<bwr> $$3 = new Object2BooleanOpenHashMap($$2.size());
-      Predicate<bwr> $$4 = $$2x -> cgz.b($$0, $$1, $$2x);
-      this.c = $$2x -> $$3.computeIfAbsent($$2x, $$4);
+   public cfv(bxb $$0, boolean $$1, boolean $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.d = $$2;
    }
 
-   public static cfv a() {
-      return a;
-   }
-
-   public Optional<bwr> a(Predicate<bwr> $$0) {
-      for (bwr $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return Optional.of($$1);
-         }
+   @Override
+   public boolean c() {
+      bwz $$0 = this.e.f();
+      if ($$0 == null) {
+         $$0 = this.g;
       }
 
-      return Optional.empty();
-   }
+      if ($$0 == null) {
+         return false;
+      } else if (!this.e.c($$0)) {
+         return false;
+      } else {
+         ffd $$1 = this.e.cr();
+         ffd $$2 = $$0.cr();
+         if ($$1 != null && $$2 == $$1) {
+            return false;
+         } else {
+            double $$3 = this.l();
+            if (this.e.g((bwa)$$0) > $$3 * $$3) {
+               return false;
+            } else {
+               if (this.f) {
+                  if (this.e.P().a($$0)) {
+                     this.k = 0;
+                  } else if (++this.k > b(this.h)) {
+                     return false;
+                  }
+               }
 
-   public Iterable<bwr> b(Predicate<bwr> $$0) {
-      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public Stream<bwr> c(Predicate<bwr> $$0) {
-      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public boolean a(bwr $$0) {
-      return this.b.contains($$0) && this.c.test($$0);
-   }
-
-   public boolean d(Predicate<bwr> $$0) {
-      for (bwr $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return true;
+               this.e.g($$0);
+               return true;
+            }
          }
       }
+   }
 
-      return false;
+   protected double l() {
+      return this.e.h(byf.m);
+   }
+
+   @Override
+   public void d() {
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
+   }
+
+   @Override
+   public void e() {
+      this.e.g(null);
+      this.g = null;
+   }
+
+   protected boolean a(@Nullable bwz $$0, cho $$1) {
+      if ($$0 == null) {
+         return false;
+      } else if (!$$1.a(a(this.e), this.e, $$0)) {
+         return false;
+      } else if (!this.e.a($$0.dv())) {
+         return false;
+      } else {
+         if (this.d) {
+            if (--this.j <= 0) {
+               this.i = 0;
+            }
+
+            if (this.i == 0) {
+               this.i = this.a($$0) ? 1 : 2;
+            }
+
+            if (this.i == 2) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(bwz $$0) {
+      this.j = b(10 + this.e.dY().a(5));
+      ewj $$1 = this.e.O().a($$0, 0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         ewh $$2 = $$1.d();
+         if ($$2 == null) {
+            return false;
+         } else {
+            int $$3 = $$2.a - $$0.dz();
+            int $$4 = $$2.c - $$0.dF();
+            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
+         }
+      }
+   }
+
+   public cfv c(int $$0) {
+      this.h = $$0;
+      return this;
    }
 }

@@ -1,16 +1,17 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.io.IOException;
 
-public interface his {
-   List<gpf> a(@Nullable dym var1, @Nullable jo var2, azs var3);
+public class his extends avg<int[]> {
+   private static final ale a = ale.b("textures/colormap/foliage.png");
 
-   boolean a();
+   protected int[] a(avb $$0, bqj $$1) {
+      try {
+         return hiv.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
+      }
+   }
 
-   boolean b();
-
-   boolean c();
-
-   hgs d();
-
-   gpp e();
+   protected void a(int[] $$0, avb $$1, bqj $$2) {
+      dik.a($$0);
+   }
 }

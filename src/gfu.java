@@ -1,51 +1,45 @@
-public class gfu extends gea<hce> {
-   public static final String a = "lid";
-   private static final String b = "base";
-   private final ghd c;
-   private final ghd d;
+import java.util.Arrays;
 
-   public gfu(ghd $$0) {
-      super($$0, goi::h);
-      this.c = $$0.b("lid");
-      this.d = $$0.b("head");
+public class gfu extends gfd<hdl> {
+   private static final int a = 8;
+   private final gig[] b = new gig[8];
+
+   public gfu(gig $$0) {
+      super($$0);
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   private static ghl c() {
-      ghl $$0 = new ghl();
-      ghn $$1 = $$0.a();
-      $$1.a("lid", ghi.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), ghf.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", ghi.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), ghf.a(0.0F, 24.0F, 0.0F));
-      return $$0;
+   private static String a(int $$0) {
+      return "cube" + $$0;
    }
 
-   public static ghj a() {
-      ghl $$0 = c();
-      $$0.a().a("head", ghi.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), ghf.a(0.0F, 12.0F, 0.0F));
-      return ghj.a($$0, 64, 64);
+   public static gim a() {
+      gio $$0 = new gio();
+      giq $$1 = $$0.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         int $$3 = 0;
+         int $$4 = 0;
+         if ($$2 > 0 && $$2 < 4) {
+            $$4 += 9 * $$2;
+         } else if ($$2 > 3) {
+            $$3 = 32;
+            $$4 += 9 * $$2 - 36;
+         }
+
+         $$1.a(a($$2), gil.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), gii.a);
+      }
+
+      $$1.a("inside_cube", gil.c().a(24, 40).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), gii.a);
+      return gim.a($$0, 64, 64);
    }
 
-   public static ghj b() {
-      ghl $$0 = c();
-      return ghj.a($$0, 64, 64);
-   }
-
-   public void a(hce $$0) {
+   public void a(hdl $$0) {
       super.a($$0);
-      float $$1 = (0.5F + $$0.c) * (float) Math.PI;
-      float $$2 = -1.0F + azk.a($$1);
-      float $$3 = 0.0F;
-      if ($$1 > (float) Math.PI) {
-         $$3 = azk.a($$0.u * 0.1F) * 0.7F;
-      }
+      float $$1 = Math.max(0.0F, $$0.a);
 
-      this.c.a(0.0F, 16.0F + azk.a($$1) * 8.0F + $$3, 0.0F);
-      if ($$0.c > 0.3F) {
-         this.c.f = $$2 * $$2 * $$2 * $$2 * (float) Math.PI * 0.125F;
-      } else {
-         this.c.f = 0.0F;
+      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
+         this.b[$$2].c = (float)(-(4 - $$2)) * $$1 * 1.7F;
       }
-
-      this.d.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.d.f = ($$0.d - 180.0F - $$0.e) * (float) (Math.PI / 180.0);
    }
 }

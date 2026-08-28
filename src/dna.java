@@ -1,143 +1,96 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import java.util.IdentityHashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dna extends dkg {
-   private static final Logger e = LogUtils.getLogger();
+public class dna extends drm {
    public static final MapCodec<dna> a = b(dna::new);
-   public static final dzk<jo> b = dmy.a;
-   public static final dzd c = dzc.G;
-   private static final ld f = new ld();
-   public static final Map<cxu, le> d = new IdentityHashMap<>();
-   private static final int g = 4;
 
    @Override
-   public MapCodec<? extends dna> a() {
+   public MapCodec<dna> a() {
       return a;
    }
 
-   public static void a(dho $$0, le $$1) {
-      d.put($$0.i(), $$1);
-   }
-
-   public static void a(dho $$0) {
-      d.put($$0.i(), new li($$0.i()));
-   }
-
-   protected dna(dyl.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, jo.c).b(c, Boolean.valueOf(false)));
+   protected dna(dzn.d $$0) {
+      super(10.0F, $$0);
+      this.l(
+         this.B
+            .b()
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+            .b(f, Boolean.valueOf(false))
+            .b(g, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected btq a(dym $$0, dhp $$1, jj $$2, cqi $$3, fcq $$4) {
-      if (!$$1.C && $$1.c_($$2) instanceof dwg $$5) {
-         $$3.a($$5);
-         $$3.a($$5 instanceof dwh ? awu.ac : awu.ae);
-      }
-
-      return btq.a;
+   public dzo a(dcl $$0) {
+      return a($$0.q(), $$0.a(), this.m());
    }
 
-   protected void a(arn $$0, dym $$1, jj $$2) {
-      dwg $$3 = $$0.a($$2, dvn.f).orElse(null);
-      if ($$3 == null) {
-         e.warn("Ignoring dispensing attempt for Dispenser without matching block entity at {}", $$2);
+   public static dzo a(dhv $$0, iu $$1, dzo $$2) {
+      dzo $$3 = $$0.a_($$1.e());
+      dzo $$4 = $$0.a_($$1.d());
+      dzo $$5 = $$0.a_($$1.f());
+      dzo $$6 = $$0.a_($$1.i());
+      dzo $$7 = $$0.a_($$1.g());
+      dzo $$8 = $$0.a_($$1.h());
+      dlu $$9 = $$2.b();
+      return $$2.c(g, Boolean.valueOf($$3.a($$9) || $$3.a(dlw.kX) || $$3.a(dlw.fU)))
+         .c(f, Boolean.valueOf($$4.a($$9) || $$4.a(dlw.kX)))
+         .c(b, Boolean.valueOf($$5.a($$9) || $$5.a(dlw.kX)))
+         .c(c, Boolean.valueOf($$6.a($$9) || $$6.a(dlw.kX)))
+         .c(d, Boolean.valueOf($$7.a($$9) || $$7.a(dlw.kX)))
+         .c(e, Boolean.valueOf($$8.a($$9) || $$8.a(dlw.kX)));
+   }
+
+   @Override
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      if (!$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       } else {
-         lb $$4 = new lb($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.A);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-            $$0.a(edm.a, $$2, edm.a.a($$3.m()));
-         } else {
-            cxy $$6 = $$3.a($$5);
-            le $$7 = this.a($$0, $$6);
-            if ($$7 != le.b) {
-               $$3.a($$5, $$7.dispense($$4, $$6));
+         boolean $$8 = $$6.a(this) || $$6.a(dlw.kX) || $$4 == ja.a && $$6.a(dlw.fU);
+         return $$0.b(h.get($$4), Boolean.valueOf($$8));
+      }
+   }
+
+   @Override
+   protected void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   protected boolean a(dzo $$0, dis $$1, iu $$2) {
+      dzo $$3 = $$1.a_($$2.e());
+      boolean $$4 = !$$1.a_($$2.d()).l() && !$$3.l();
+
+      for (ja $$5 : ja.c.a) {
+         iu $$6 = $$2.a($$5);
+         dzo $$7 = $$1.a_($$6);
+         if ($$7.a(this)) {
+            if ($$4) {
+               return false;
+            }
+
+            dzo $$8 = $$1.a_($$6.e());
+            if ($$8.a(this) || $$8.a(dlw.fU)) {
+               return true;
             }
          }
       }
-   }
 
-   protected le a(dhp $$0, cxy $$1) {
-      if (!$$1.a($$0.K())) {
-         return f;
-      } else {
-         le $$2 = d.get($$1.h());
-         return $$2 != null ? $$2 : a($$1);
-      }
-   }
-
-   private static le a(cxy $$0) {
-      return (le)($$0.c(kx.E) ? lf.c : f);
+      return $$3.a(this) || $$3.a(dlw.fU);
    }
 
    @Override
-   protected void a(dym $$0, dhp $$1, jj $$2, dku $$3, @Nullable ewb $$4, boolean $$5) {
-      boolean $$6 = $$1.C($$2) || $$1.C($$2.d());
-      boolean $$7 = $$0.c(c);
-      if ($$6 && !$$7) {
-         $$1.a($$2, this, 4);
-         $$1.a($$2, $$0.b(c, Boolean.valueOf(true)), 2);
-      } else if (!$$6 && $$7) {
-         $$1.a($$2, $$0.b(c, Boolean.valueOf(false)), 2);
-      }
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(b, c, d, e, f, g);
    }
 
    @Override
-   protected void a(dym $$0, arn $$1, jj $$2, azs $$3) {
-      this.a($$1, $$0, $$2);
-   }
-
-   @Override
-   public dvl a(jj $$0, dym $$1) {
-      return new dwg($$0, $$1);
-   }
-
-   @Override
-   public dym a(dbn $$0) {
-      return this.m().b(b, $$0.d().g());
-   }
-
-   @Override
-   protected void a(dym $$0, arn $$1, jj $$2, boolean $$3) {
-      btm.a($$0, $$1, $$2);
-   }
-
-   public static kc a(lb $$0) {
-      return a($$0, 0.7, fcu.c);
-   }
-
-   public static kc a(lb $$0, double $$1, fcu $$2) {
-      jo $$3 = $$0.d().c(b);
-      return $$0.a().b($$1 * (double)$$3.j() + $$2.a(), $$1 * (double)$$3.k() + $$2.b(), $$1 * (double)$$3.l() + $$2.c());
-   }
-
-   @Override
-   protected boolean c_(dym $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dym $$0, dhp $$1, jj $$2) {
-      return ctn.a($$1.c_($$2));
-   }
-
-   @Override
-   protected dym a(dym $$0, drm $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dym a(dym $$0, dpv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b, c);
+   protected boolean a(dzo $$0, ewk $$1) {
+      return false;
    }
 }

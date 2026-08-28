@@ -1,56 +1,65 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import org.slf4j.Logger;
 
-public class ezr extends eyy {
-   private static final Logger b = LogUtils.getLogger();
+public class ezr extends faa {
    public static final MapCodec<ezr> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(fbr.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .and($$0.group(fct.a.fieldOf("levels").forGetter($$0x -> $$0x.b), jt.a(mg.aP).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
             .apply($$0, ezr::new)
    );
-   private final fbq c;
-   private final boolean d;
+   private final fcs b;
+   private final Optional<ji<dff>> c;
 
-   private ezr(List<fau> $$0, fbq $$1, boolean $$2) {
+   ezr(List<fbw> $$0, fcs $$1, Optional<ji<dff>> $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public eza<ezr> b() {
-      return ezb.n;
+   public fac<ezr> b() {
+      return fad.g;
    }
 
    @Override
-   public Set<bat<?>> a() {
-      return this.c.a();
+   public Set<bav<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public cxy a(cxy $$0, exl $$1) {
-      if ($$0.m()) {
-         int $$2 = $$0.p();
-         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - azk.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(azk.d($$4 * (float)$$2));
-      } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
+   public cys a(cys $$0, eyn $$1) {
+      azt $$2 = $$1.b();
+      js $$3 = $$1.d().F_();
+      return dfh.a($$2, $$0, this.b.a($$1), $$3, this.c);
+   }
+
+   public static ezr.a a(jg.a $$0, fcs $$1) {
+      return new ezr.a($$1).a($$0.e(mg.aP).b(axc.n));
+   }
+
+   public static class a extends faa.a<ezr.a> {
+      private final fcs a;
+      private Optional<ji<dff>> b = Optional.empty();
+
+      public a(fcs $$0) {
+         this.a = $$0;
       }
 
-      return $$0;
-   }
+      protected ezr.a a() {
+         return this;
+      }
 
-   public static eyy.a<?> a(fbq $$0) {
-      return a($$1 -> new ezr($$1, $$0, false));
-   }
+      public ezr.a a(ji<dff> $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
 
-   public static eyy.a<?> a(fbq $$0, boolean $$1) {
-      return a($$2 -> new ezr($$2, $$0, $$1));
+      @Override
+      public fab b() {
+         return new ezr(this.g(), this.a, this.b);
+      }
    }
 }

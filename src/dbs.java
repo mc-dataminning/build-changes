@@ -1,69 +1,53 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.PropertyMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public class dbs extends dcb {
-   public dbs(dby $$0) {
-      super($$0);
+public record dbs(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
+   private static final Codec<dbs> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ays.y.optionalFieldOf("name").forGetter(dbs::c),
+               jy.a.optionalFieldOf("id").forGetter(dbs::d),
+               ays.x.optionalFieldOf("properties", new PropertyMap()).forGetter(dbs::e)
+            )
+            .apply($$0, dbs::new)
+   );
+   public static final Codec<dbs> a = Codec.withAlternative(g, ays.y, $$0 -> new dbs(Optional.of($$0), Optional.empty(), new PropertyMap()));
+   public static final yu<ByteBuf, dbs> b = yu.a(ys.b(16).a(ys::a), dbs::c, jy.g.a(ys::a), dbs::d, ys.x, dbs::e, dbs::new);
+
+   public dbs(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   public boolean a(dbz $$0, dhp $$1) {
-      if ($$0.e() < 2) {
-         return false;
+   public dbs(GameProfile $$0) {
+      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
+   }
+
+   public CompletableFuture<dbs> a() {
+      if (this.b()) {
+         return CompletableFuture.completedFuture(this);
       } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cxy $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.a(axi.bO)) {
-                  if ($$2) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               } else {
-                  if (!($$5.h() instanceof cww)) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
+         return this.d.isPresent() ? dyd.a(this.d.get()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(this.d.get(), this.c.orElse("")));
+            return new dbs($$1);
+         }) : dyd.a(this.c.orElseThrow()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(af.e, this.c.get()));
+            return new dbs($$1);
+         });
       }
    }
 
-   public cxy a(dbz $$0, ju.a $$1) {
-      List<cww> $$2 = new ArrayList<>();
-      cxy $$3 = cxy.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxy $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(axi.bO)) {
-               if (!$$3.f()) {
-                  return cxy.k;
-               }
-
-               $$3 = $$5.v();
-            } else {
-               if (!($$5.h() instanceof cww $$6)) {
-                  return cxy.k;
-               }
-
-               $$2.add($$6);
-            }
-         }
-      }
-
-      return !$$3.f() && !$$2.isEmpty() ? daj.a($$3, $$2) : cxy.k;
+   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      GameProfile $$3 = new GameProfile($$1.orElse(af.e), $$0.orElse(""));
+      $$3.getProperties().putAll($$2);
+      return $$3;
    }
 
-   @Override
-   public dcv<dbs> a() {
-      return dcv.c;
+   public boolean b() {
+      return !this.e.isEmpty() ? true : this.d.isPresent() == this.c.isPresent();
    }
 }

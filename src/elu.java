@@ -1,18 +1,23 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class elu<P extends elt> {
-   public static final elu<els> a = a("mangrove_root_placer", els.c);
-   private final MapCodec<P> b;
+public record elu(int b, int c, int d) implements ekx {
+   public static final Codec<elu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ays.m.fieldOf("spread_width").forGetter(elu::a), ays.m.fieldOf("spread_height").forGetter(elu::b), ays.m.fieldOf("max_height").forGetter(elu::c)
+            )
+            .apply($$0, elu::new)
+   );
 
-   private static <P extends elt> elu<P> a(String $$0, MapCodec<P> $$1) {
-      return kf.a(md.W, $$0, new elu<>($$1));
-   }
-
-   private elu(MapCodec<P> $$0) {
-      this.b = $$0;
-   }
-
-   public MapCodec<P> a() {
+   public int a() {
       return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

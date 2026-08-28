@@ -1,121 +1,173 @@
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
-public class cvn extends cur {
-   public static final int m = 0;
-   public static final int n = 1;
-   public static final int o = 2;
-   public static final int p = 3;
-   public static final int u = 8;
-   public static final int v = 26;
-   public static final int w = 44;
-   private static final int y = 98;
-   public static final int x = 48;
-   private final dhp z;
-   private final dcu A;
-   private final dcu B;
-   private final dcu C;
-   private final cuh D = cuh.a();
+public class cvn extends cul {
+   public static final int o = 0;
+   public static final int p = 0;
+   private static final int H = 2;
+   private static final int I = 2;
+   public static final int q = 1;
+   public static final int r = 4;
+   public static final int s = 5;
+   public static final int t = 5;
+   public static final int u = 4;
+   public static final int v = 9;
+   public static final int w = 9;
+   public static final int x = 36;
+   public static final int y = 36;
+   public static final int z = 45;
+   public static final int A = 45;
+   public static final ale B = ale.b("container/slot/helmet");
+   public static final ale C = ale.b("container/slot/chestplate");
+   public static final ale D = ale.b("container/slot/leggings");
+   public static final ale E = ale.b("container/slot/boots");
+   public static final ale F = ale.b("container/slot/shield");
+   private static final Map<bwk, ale> J = Map.of(bwk.c, E, bwk.d, D, bwk.e, C, bwk.f, B);
+   private static final bwk[] K = new bwk[]{bwk.f, bwk.e, bwk.d, bwk.c};
+   public final boolean G;
+   private final cqs L;
 
-   public cvn(int $$0, cqh $$1) {
-      this($$0, $$1, cua.a);
-   }
+   public cvn(cqr $$0, boolean $$1, final cqs $$2) {
+      super(null, 0, 2, 2);
+      this.G = $$1;
+      this.L = $$2;
+      this.a($$2, 154, 28);
+      this.d(98, 18);
 
-   public cvn(int $$0, cqh $$1, cua $$2) {
-      this($$0, $$1, $$2, $$1.k.dV());
-   }
-
-   private cvn(int $$0, cqh $$1, cua $$2, dhp $$3) {
-      super(cuw.v, $$0, $$1, $$2, a($$3.Q()));
-      this.z = $$3;
-      this.A = $$3.Q().a(dcu.b);
-      this.B = $$3.Q().a(dcu.c);
-      this.C = $$3.Q().a(dcu.d);
-      this.a(this.D).a(0);
-   }
-
-   private static cus a(dcm $$0) {
-      dcu $$1 = $$0.a(dcu.b);
-      dcu $$2 = $$0.a(dcu.c);
-      dcu $$3 = $$0.a(dcu.d);
-      return cus.a().a(0, 8, 48, $$2::a).a(1, 26, 48, $$1::a).a(2, 44, 48, $$3::a).a(3, 98, 48).a();
-   }
-
-   @Override
-   protected boolean a(dym $$0) {
-      return $$0.a(dkw.oD);
-   }
-
-   @Override
-   protected void a(cqi $$0, cxy $$1) {
-      $$1.a($$0.dV(), $$0, $$1.M());
-      this.t.a($$0, this.o());
-      this.e(0);
-      this.e(1);
-      this.e(2);
-      this.q.a(($$0x, $$1x) -> $$0x.c(1044, $$1x, 0));
-   }
-
-   private List<cxy> o() {
-      return List.of(this.s.a(0), this.s.a(1), this.s.a(2));
-   }
-
-   private ddh p() {
-      return new ddh(this.s.a(0), this.s.a(1), this.s.a(2));
-   }
-
-   private void e(int $$0) {
-      cxy $$1 = this.s.a($$0);
-      if (!$$1.f()) {
-         $$1.h(1);
-         this.s.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(btj $$0) {
-      super.a($$0);
-      if (this.z instanceof arn) {
-         boolean $$1 = this.b(0).h() && this.b(1).h() && this.b(2).h() && !this.b(this.n()).h();
-         this.D.a($$1 ? 1 : 0);
-      }
-   }
-
-   @Override
-   public void l() {
-      ddh $$0 = this.p();
-      Optional<dcq<ddg>> $$2;
-      if (this.z instanceof arn $$1) {
-         $$2 = $$1.t().a(dcw.g, $$0, $$1);
-      } else {
-         $$2 = Optional.empty();
+      for (int $$3 = 0; $$3 < 4; $$3++) {
+         bwk $$4 = K[$$3];
+         ale $$5 = J.get($$4);
+         this.a(new cuo($$0, $$2, $$4, 39 - $$3, 8, 8 + $$3 * 18, $$5));
       }
 
-      $$2.ifPresentOrElse($$1x -> {
-         cxy $$2x = ((ddg)$$1x.b()).a($$0, this.z.F_());
-         this.t.a($$1x);
-         this.t.a(0, $$2x);
-      }, () -> {
-         this.t.a(null);
-         this.t.a(0, cxy.k);
+      this.c($$0, 8, 84);
+      this.a(new cwh($$0, 40, 77, 62) {
+         @Override
+         public void a(cys $$0, cys $$1) {
+            $$2.a(bwk.b, $$1, $$0);
+            super.a($$0, $$1);
+         }
+
+         @Override
+         public ale c() {
+            return cvn.F;
+         }
       });
    }
 
-   @Override
-   public boolean a(cxy $$0, cvk $$1) {
-      return $$1.c != this.t && super.a($$0, $$1);
+   public static boolean e(int $$0) {
+      return $$0 >= 36 && $$0 < 45 || $$0 == 45;
    }
 
    @Override
-   public boolean c(cxy $$0) {
-      if (this.B.a($$0) && !this.b(0).h()) {
-         return true;
-      } else {
-         return this.A.a($$0) && !this.b(1).h() ? true : this.C.a($$0) && !this.b(2).h();
+   public void a(btr $$0) {
+      if (this.L.dV() instanceof aro $$1) {
+         cvd.a(this, $$1, this.L, this.m, this.n, null);
       }
    }
 
-   public boolean m() {
-      return this.D.b() > 0;
+   @Override
+   public void a(cqs $$0) {
+      super.a($$0);
+      this.n.a();
+      if (!$$0.dV().C) {
+         this.a($$0, this.m);
+      }
+   }
+
+   @Override
+   public boolean b(cqs $$0) {
+      return true;
+   }
+
+   @Override
+   public cys b(cqs $$0, int $$1) {
+      cys $$2 = cys.k;
+      cwh $$3 = this.k.get($$1);
+      if ($$3.h()) {
+         cys $$4 = $$3.g();
+         $$2 = $$4.v();
+         bwk $$5 = $$0.g($$2);
+         if ($$1 == 0) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cys.k;
+            }
+
+            $$3.b($$4, $$2);
+         } else if ($$1 >= 1 && $$1 < 5) {
+            if (!this.a($$4, 9, 45, false)) {
+               return cys.k;
+            }
+         } else if ($$1 >= 5 && $$1 < 9) {
+            if (!this.a($$4, 9, 45, false)) {
+               return cys.k;
+            }
+         } else if ($$5.a() == bwk.a.b && !this.k.get(8 - $$5.b()).h()) {
+            int $$6 = 8 - $$5.b();
+            if (!this.a($$4, $$6, $$6 + 1, false)) {
+               return cys.k;
+            }
+         } else if ($$5 == bwk.b && !this.k.get(45).h()) {
+            if (!this.a($$4, 45, 46, false)) {
+               return cys.k;
+            }
+         } else if ($$1 >= 9 && $$1 < 36) {
+            if (!this.a($$4, 36, 45, false)) {
+               return cys.k;
+            }
+         } else if ($$1 >= 36 && $$1 < 45) {
+            if (!this.a($$4, 9, 36, false)) {
+               return cys.k;
+            }
+         } else if (!this.a($$4, 9, 45, false)) {
+            return cys.k;
+         }
+
+         if ($$4.f()) {
+            $$3.a(cys.k, $$2);
+         } else {
+            $$3.d();
+         }
+
+         if ($$4.M() == $$2.M()) {
+            return cys.k;
+         }
+
+         $$3.a($$0, $$4);
+         if ($$1 == 0) {
+            $$0.a($$4, false);
+         }
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public boolean a(cys $$0, cwh $$1) {
+      return $$1.c != this.n && super.a($$0, $$1);
+   }
+
+   @Override
+   public cwh m() {
+      return this.k.get(0);
+   }
+
+   @Override
+   public List<cwh> n() {
+      return this.k.subList(1, 5);
+   }
+
+   public cvc r() {
+      return this.m;
+   }
+
+   @Override
+   public cwa ai_() {
+      return cwa.a;
+   }
+
+   @Override
+   protected cqs q() {
+      return this.L;
    }
 }

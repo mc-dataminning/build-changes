@@ -1,24 +1,16 @@
 import com.mojang.serialization.MapCodec;
 
-public class eoq extends eom {
-   public static final MapCodec<eoq> a = ays.m.fieldOf("chance").xmap(eoq::new, $$0 -> $$0.c);
-   private final int c;
+public interface eoq<P extends eop> {
+   eoq<eoo> a = a("constant", eoo.b);
+   eoq<eos> b = a("uniform", eos.a);
+   eoq<eon> c = a("biased_to_bottom", eon.a);
+   eoq<eot> d = a("very_biased_to_bottom", eot.a);
+   eoq<eor> e = a("trapezoid", eor.a);
+   eoq<eou> f = a("weighted_list", eou.a);
 
-   private eoq(int $$0) {
-      this.c = $$0;
-   }
+   MapCodec<P> codec();
 
-   public static eoq a(int $$0) {
-      return new eoq($$0);
-   }
-
-   @Override
-   protected boolean a(eol $$0, azs $$1, jj $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
-   }
-
-   @Override
-   public eoo<?> b() {
-      return eoo.b;
+   private static <P extends eop> eoq<P> a(String $$0, MapCodec<P> $$1) {
+      return jr.a(mf.L, $$0, () -> $$1);
    }
 }

@@ -1,15 +1,33 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface eqp<P extends eqo> {
-   eqp<eqn> a = a("single_pool_element", eqn.b);
-   eqp<eqm> b = a("list_pool_element", eqm.a);
-   eqp<eqi> c = a("feature_pool_element", eqi.a);
-   eqp<eqh> d = a("empty_pool_element", eqh.a);
-   eqp<eql> e = a("legacy_single_pool_element", eql.a);
+public record eqp(eqp.a b, bsj<dke.c> c) {
+   public static final Codec<eqp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eqp.a.c.fieldOf("bounding_box").forGetter(eqp::a), bsj.a(dke.c.a).fieldOf("spawns").forGetter(eqp::b)).apply($$0, eqp::new)
+   );
 
-   MapCodec<P> codec();
+   public eqp.a a() {
+      return this.b;
+   }
 
-   static <P extends eqo> eqp<P> a(String $$0, MapCodec<P> $$1) {
-      return kf.a(md.ag, $$0, () -> $$1);
+   public bsj<dke.c> b() {
+      return this.c;
+   }
+
+   public static enum a implements bai {
+      a("piece"),
+      b("full");
+
+      public static final Codec<eqp.a> c = bai.a(eqp.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

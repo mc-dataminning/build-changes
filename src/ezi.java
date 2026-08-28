@@ -1,75 +1,61 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
+import java.util.function.Consumer;
 
-public class ezi extends eyy {
+public class ezi extends ezf {
    public static final MapCodec<ezi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(exj.e.fieldOf("component").forGetter($$0x -> $$0x.b), exz.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
+      $$0 -> $$0.group(axp.a(mg.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
             .apply($$0, ezi::new)
    );
-   private final exi<?> b;
-   private final List<eyb> c;
+   private final axp<cyo> j;
+   private final boolean k;
 
-   ezi(List<fau> $$0, exi<?> $$1, List<eyb> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+   private ezi(axp<cyo> $$0, boolean $$1, int $$2, int $$3, List<fbw> $$4, List<fab> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public eza<ezi> b() {
-      return ezb.t;
+   public eze a() {
+      return ezb.f;
    }
 
    @Override
-   public cxy a(cxy $$0, exl $$1) {
-      if ($$0.f()) {
-         return $$0;
+   public void a(Consumer<cys> $$0, eyn $$1) {
+      mf.g.c(this.j).forEach($$1x -> $$0.accept(new cys($$1x)));
+   }
+
+   private boolean a(eyn $$0, Consumer<ezc> $$1) {
+      if (!this.a($$0)) {
+         return false;
       } else {
-         Builder<cxy> $$2 = Stream.builder();
-         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(exq.a($$1.d(), $$2::add), $$1)));
-         this.b.a($$0, $$2.build());
-         return $$0;
+         for (final je<cyo> $$2 : mf.g.c(this.j)) {
+            $$1.accept(new ezf.c() {
+               @Override
+               public void a(Consumer<cys> $$0, eyn $$1) {
+                  $$0.accept(new cys($$2));
+               }
+            });
+         }
+
+         return true;
       }
    }
 
    @Override
-   public void a(exr $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
-      }
+   public boolean expand(eyn $$0, Consumer<ezc> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
    }
 
-   public static ezi.a a(exi<?> $$0) {
-      return new ezi.a($$0);
+   public static ezf.a<?> a(axp<cyo> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ezi($$0, false, $$1, $$2, $$3, $$4));
    }
 
-   public static class a extends eyy.a<ezi.a> {
-      private final com.google.common.collect.ImmutableList.Builder<eyb> a = ImmutableList.builder();
-      private final exi<?> b;
-
-      public a(exi<?> $$0) {
-         this.b = $$0;
-      }
-
-      protected ezi.a a() {
-         return this;
-      }
-
-      public ezi.a a(eyb.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public eyz b() {
-         return new ezi(this.g(), this.b, this.a.build());
-      }
+   public static ezf.a<?> b(axp<cyo> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ezi($$0, true, $$1, $$2, $$3, $$4));
    }
 }

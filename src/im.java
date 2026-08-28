@@ -1,95 +1,57 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.ContextChain;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 
-public interface im<T> {
-   ald a();
-
-   io<T> a(@Nullable tw var1, CommandDispatcher<T> var2) throws fa;
-
-   private static boolean b(CharSequence $$0) {
-      int $$1 = $$0.length();
-      return $$1 > 0 && $$0.charAt($$1 - 1) == '\\';
-   }
-
-   static <T extends ez<T>> im<T> a(ald $$0, CommandDispatcher<T> $$1, T $$2, List<String> $$3) {
-      in<T> $$4 = new in<>();
-
-      for (int $$5 = 0; $$5 < $$3.size(); $$5++) {
-         int $$6 = $$5 + 1;
-         String $$7 = $$3.get($$5).trim();
-         String $$10;
-         if (b($$7)) {
-            StringBuilder $$8 = new StringBuilder($$7);
-
-            do {
-               if (++$$5 == $$3.size()) {
-                  throw new IllegalArgumentException("Line continuation at end of file");
-               }
-
-               $$8.deleteCharAt($$8.length() - 1);
-               String $$9 = $$3.get($$5).trim();
-               $$8.append($$9);
-               a($$8);
-            } while (b($$8));
-
-            $$10 = $$8.toString();
-         } else {
-            $$10 = $$7;
-         }
-
-         a($$10);
-         StringReader $$12 = new StringReader($$10);
-         if ($$12.canRead() && $$12.peek() != '#') {
-            if ($$12.peek() == '/') {
-               $$12.skip();
-               if ($$12.peek() == '/') {
-                  throw new IllegalArgumentException(
-                     "Unknown or invalid command '" + $$10 + "' on line " + $$6 + " (if you intended to make a comment, use '#' not '//')"
-                  );
-               }
-
-               String $$13 = $$12.readUnquotedString();
-               throw new IllegalArgumentException(
-                  "Unknown or invalid command '" + $$10 + "' on line " + $$6 + " (did you mean '" + $$13 + "'? Do not use a preceding forwards slash.)"
-               );
-            }
-
-            if ($$12.peek() == '$') {
-               $$4.a($$10.substring(1), $$6, $$2);
-            } else {
-               try {
-                  $$4.a(a($$1, $$2, $$12));
-               } catch (CommandSyntaxException var11) {
-                  throw new IllegalArgumentException("Whilst parsing command on line " + $$6 + ": " + var11.getMessage());
-               }
-            }
-         }
+public class im implements ie<IntegerArgumentType, im.a> {
+   public void a(im.a $$0, vs $$1) {
+      boolean $$2 = $$0.b != Integer.MIN_VALUE;
+      boolean $$3 = $$0.c != Integer.MAX_VALUE;
+      $$1.l(ih.a($$2, $$3));
+      if ($$2) {
+         $$1.q($$0.b);
       }
 
-      return $$4.a($$0);
-   }
-
-   static void a(CharSequence $$0) {
-      if ($$0.length() > 2000000) {
-         CharSequence $$1 = $$0.subSequence(0, Math.min(512, 2000000));
-         throw new IllegalStateException("Command too long: " + $$0.length() + " characters, contents: " + $$1 + "...");
+      if ($$3) {
+         $$1.q($$0.c);
       }
    }
 
-   static <T extends ez<T>> ic<T> a(CommandDispatcher<T> $$0, T $$1, StringReader $$2) throws CommandSyntaxException {
-      ParseResults<T> $$3 = $$0.parse($$2, $$1);
-      ey.a($$3);
-      Optional<ContextChain<T>> $$4 = ContextChain.tryFlatten($$3.getContext().build($$2.getString()));
-      if ($$4.isEmpty()) {
-         throw CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$3.getReader());
-      } else {
-         return new ie.c<>($$2.getString(), $$4.get());
+   public im.a a(vs $$0) {
+      byte $$1 = $$0.readByte();
+      int $$2 = ih.a($$1) ? $$0.readInt() : Integer.MIN_VALUE;
+      int $$3 = ih.b($$1) ? $$0.readInt() : Integer.MAX_VALUE;
+      return new im.a($$2, $$3);
+   }
+
+   public void a(im.a $$0, JsonObject $$1) {
+      if ($$0.b != Integer.MIN_VALUE) {
+         $$1.addProperty("min", $$0.b);
+      }
+
+      if ($$0.c != Integer.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
+      }
+   }
+
+   public im.a a(IntegerArgumentType $$0) {
+      return new im.a($$0.getMinimum(), $$0.getMaximum());
+   }
+
+   public final class a implements ie.a<IntegerArgumentType> {
+      final int b;
+      final int c;
+
+      a(final int $$1, final int $$2) {
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public IntegerArgumentType a(ee $$0) {
+         return IntegerArgumentType.integer(this.b, this.c);
+      }
+
+      @Override
+      public ie<IntegerArgumentType, ?> a() {
+         return im.this;
       }
    }
 }

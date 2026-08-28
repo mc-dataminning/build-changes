@@ -1,31 +1,36 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.function.Supplier;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public interface giw {
-   Codec<giw> a = bag.a(giw.a::values).dispatch(giw::a, giw.a::a);
+public class giw<C extends giw.a<C>, D> {
+   private final Function<C, D> a;
+   @Nullable
+   private C b;
+   @Nullable
+   private D c;
 
-   giw.a a();
+   public giw(Function<C, D> $$0) {
+      this.a = $$0;
+   }
 
-   public static enum a implements bag {
-      a("player", () -> gix.a.b),
-      b("system", () -> gix.b.b);
-
-      private final String c;
-      private final Supplier<MapCodec<? extends giw>> d;
-
-      private a(final String $$0, final Supplier<MapCodec<? extends giw>> $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      private MapCodec<? extends giw> a() {
-         return this.d.get();
-      }
-
-      @Override
-      public String c() {
+   public D a(C $$0) {
+      if ($$0 == this.b && this.c != null) {
          return this.c;
+      } else {
+         D $$1 = this.a.apply($$0);
+         this.c = $$1;
+         this.b = $$0;
+         $$0.registerForCleaning(this);
+         return $$1;
       }
+   }
+
+   public void a() {
+      this.c = null;
+      this.b = null;
+   }
+
+   @FunctionalInterface
+   public interface a<C extends giw.a<C>> {
+      void registerForCleaning(giw<C, ?> var1);
    }
 }

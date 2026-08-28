@@ -1,15 +1,30 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public class byh extends bya {
+   private final double c;
+   private final double d;
 
-public class byh {
-   public static byj<bwr> a(cft<?> $$0, int $$1) {
-      return cbv.a(
-         (Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$2 -> $$2.group($$2.a(cft.p), $$2.c(cft.ay), $$2.b($$0))
-               .apply($$2, $$2.a(() -> "[BecomePassive if " + $$0 + " present]", ($$1xx, $$2x, $$3) -> ($$3x, $$4, $$5) -> {
-                     $$2x.a(true, (long)$$1);
-                     $$1xx.b();
-                     return true;
-                  })))
-      );
+   public byh(String $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1);
+      this.c = $$2;
+      this.d = $$3;
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
+      } else if ($$1 < $$2) {
+         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
+      } else if ($$1 > $$3) {
+         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
+      }
+   }
+
+   public double d() {
+      return this.c;
+   }
+
+   public double e() {
+      return this.d;
+   }
+
+   @Override
+   public double a(double $$0) {
+      return Double.isNaN($$0) ? this.c : azk.a($$0, this.c, this.d);
    }
 }

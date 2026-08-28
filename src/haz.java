@@ -1,7 +1,7 @@
-public class haz extends hbk {
-   public final hdn i = new hdn();
-
-   public static void a(bwr $$0, haz $$1, hdl $$2) {
-      $$2.a($$1.i, $$0.fa(), cxw.h, false, $$0);
-   }
+public class haz extends hcp {
+   public float a;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

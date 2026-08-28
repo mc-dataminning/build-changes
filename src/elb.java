@@ -1,34 +1,16 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class elb extends elh {
-   public static final MapCodec<elb> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, elb::new));
+public class elb implements ekx {
+   public static final Codec<elb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, edl.c).fieldOf("height").forGetter($$0x -> $$0x.b), dzo.a.fieldOf("state").forGetter($$0x -> $$0x.c))
+            .apply($$0, elb::new)
+   );
+   public final int b;
+   public final dzo c;
 
-   public elb(bsv $$0, bsv $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected eli<?> a() {
-      return eli.d;
-   }
-
-   @Override
-   protected void a(dhv $$0, elh.b $$1, azs $$2, ekr $$3, int $$4, elh.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      jj $$10 = $$5.a().b($$8);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
-   }
-
-   @Override
-   public int a(azs $$0, int $$1, ekr $$2) {
-      return 0;
-   }
-
-   @Override
-   protected boolean a(azs $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public elb(int $$0, dzo $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 }

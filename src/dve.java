@@ -1,147 +1,82 @@
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public abstract class dve extends dvl implements btj, bts, btt {
-   private btr d = btr.a;
-   @Nullable
-   private wv e;
+public class dve extends dta {
+   public static final MapCodec<dve> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ebc.a.fieldOf("wood_type").forGetter(dta::d), t()).apply($$0, dve::new));
+   public static final eam<ja> b = dpt.e;
+   private static final Map<ja, feq> c = fen.c(dlu.a(16.0, 4.5, 12.5, 14.0, 16.0));
 
-   protected dve(dvn<?> $$0, jj $$1, dym $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   public MapCodec<dve> a() {
+      return a;
+   }
+
+   public dve(ebc $$0, dzn.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.l(this.B.b().b(b, ja.c).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(tw $$0, ju.a $$1) {
-      super.a($$0, $$1);
-      this.d = btr.b($$0, $$1);
-      if ($$0.e("CustomName")) {
-         this.e = a($$0.c("CustomName"), $$1);
-      }
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return c.get($$0.c(b));
    }
 
    @Override
-   protected void b(tw $$0, ju.a $$1) {
-      super.b($$0, $$1);
-      this.d.a($$0, $$1);
-      if (this.e != null) {
-         $$0.a("CustomName", (ut)wx.a.encodeStart($$1.a(uk.a), this.e).getOrThrow());
-      }
-   }
-
-   @Override
-   public wv al() {
-      return this.e != null ? this.e : this.j();
-   }
-
-   @Override
-   public wv m_() {
-      return this.al();
+   protected boolean a(dzo $$0, dis $$1, iu $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
    }
 
    @Nullable
    @Override
-   public wv an() {
-      return this.e;
-   }
+   public dzo a(dcl $$0) {
+      dzo $$1 = this.m();
+      evv $$2 = $$0.q().b_($$0.a());
+      dis $$3 = $$0.q();
+      iu $$4 = $$0.a();
+      ja[] $$5 = $$0.f();
 
-   protected abstract wv j();
-
-   public boolean d(cqi $$0) {
-      return a($$0, this.d, this.m_());
-   }
-
-   public static boolean a(cqi $$0, btr $$1, wv $$2) {
-      if (!$$0.U_() && !$$1.a($$0.fa())) {
-         $$0.a(wv.a("container.isLocked", $$2), true);
-         $$0.a(awk.eR, awl.e, 1.0F, 1.0F);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   protected abstract kb<cxy> f();
-
-   protected abstract void a(kb<cxy> var1);
-
-   @Override
-   public boolean c() {
-      for (cxy $$0 : this.f()) {
-         if (!$$0.f()) {
-            return false;
+      for (ja $$6 : $$5) {
+         if ($$6.o().d()) {
+            ja $$7 = $$6.g();
+            $$1 = $$1.b(b, $$7);
+            if ($$1.a($$3, $$4)) {
+               return $$1.b(d, Boolean.valueOf($$2.a() == evw.c));
+            }
          }
       }
 
-      return true;
+      return null;
    }
 
    @Override
-   public cxy a(int $$0) {
-      return this.f().get($$0);
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      return $$4.g() == $$0.c(b) && !$$0.a($$1, $$3) ? dlw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public cxy a(int $$0, int $$1) {
-      cxy $$2 = btk.a(this.f(), $$0, $$1);
-      if (!$$2.f()) {
-         this.e();
-      }
-
-      return $$2;
+   public float h(dzo $$0) {
+      return $$0.c(b).p();
    }
 
    @Override
-   public cxy b(int $$0) {
-      return btk.a(this.f(), $$0);
+   public fdw o(dzo $$0) {
+      return c.get($$0.c(b)).a().f();
    }
 
    @Override
-   public void a(int $$0, cxy $$1) {
-      this.f().set($$0, $$1);
-      $$1.f(this.e_($$1));
-      this.e();
+   protected dzo a(dzo $$0, dsm $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public boolean a(cqi $$0) {
-      return btj.a(this, $$0);
+   protected dzo a(dzo $$0, dqv $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   public void a() {
-      this.f().clear();
-   }
-
-   @Nullable
-   @Override
-   public ctn createMenu(int $$0, cqh $$1, cqi $$2) {
-      return this.d($$2) ? this.a($$0, $$1) : null;
-   }
-
-   protected abstract ctn a(int var1, cqh var2);
-
-   @Override
-   protected void a(kr $$0) {
-      super.a($$0);
-      this.e = $$0.a(kx.g);
-      this.d = $$0.a(kx.aq, btr.a);
-      $$0.a(kx.an, dan.a).a(this.f());
-   }
-
-   @Override
-   protected void a(kt.a $$0) {
-      super.a($$0);
-      $$0.a(kx.g, this.e);
-      if (!this.d.equals(btr.a)) {
-         $$0.a(kx.aq, this.d);
-      }
-
-      $$0.a(kx.an, dan.a(this.f()));
-   }
-
-   @Override
-   public void a(tw $$0) {
-      $$0.r("CustomName");
-      $$0.r("lock");
-      $$0.r("Items");
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(b, d);
    }
 }

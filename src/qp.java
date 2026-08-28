@@ -1,271 +1,500 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
 public class qp {
-   public static final alc<eqq> a = qn.a("village/savanna/town_centers");
-   private static final alc<eqq> b = qn.a("village/savanna/terminators");
-   private static final alc<eqq> c = qn.a("village/savanna/zombie/terminators");
+   private static final ald<eui> N = a("empty");
+   public static final ald<eui> a = a("zombie_plains");
+   public static final ald<eui> b = a("zombie_savanna");
+   public static final ald<eui> c = a("zombie_snowy");
+   public static final ald<eui> d = a("zombie_taiga");
+   public static final ald<eui> e = a("zombie_desert");
+   public static final ald<eui> f = a("mossify_10_percent");
+   public static final ald<eui> g = a("mossify_20_percent");
+   public static final ald<eui> h = a("mossify_70_percent");
+   public static final ald<eui> i = a("street_plains");
+   public static final ald<eui> j = a("street_savanna");
+   public static final ald<eui> k = a("street_snowy_or_taiga");
+   public static final ald<eui> l = a("farm_plains");
+   public static final ald<eui> m = a("farm_savanna");
+   public static final ald<eui> n = a("farm_snowy");
+   public static final ald<eui> o = a("farm_taiga");
+   public static final ald<eui> p = a("farm_desert");
+   public static final ald<eui> q = a("outpost_rot");
+   public static final ald<eui> r = a("bottom_rampart");
+   public static final ald<eui> s = a("treasure_rooms");
+   public static final ald<eui> t = a("housing");
+   public static final ald<eui> u = a("side_wall_degradation");
+   public static final ald<eui> v = a("stable_degradation");
+   public static final ald<eui> w = a("bastion_generic_degradation");
+   public static final ald<eui> x = a("rampart_degradation");
+   public static final ald<eui> y = a("entrance_replacement");
+   public static final ald<eui> z = a("bridge");
+   public static final ald<eui> A = a("roof");
+   public static final ald<eui> B = a("high_wall");
+   public static final ald<eui> C = a("high_rampart");
+   public static final ald<eui> D = a("fossil_rot");
+   public static final ald<eui> E = a("fossil_coal");
+   public static final ald<eui> F = a("fossil_diamonds");
+   public static final ald<eui> G = a("ancient_city_start_degradation");
+   public static final ald<eui> H = a("ancient_city_generic_degradation");
+   public static final ald<eui> I = a("ancient_city_walls_degradation");
+   public static final ald<eui> J = a("trail_ruins_houses_archaeology");
+   public static final ald<eui> K = a("trail_ruins_roads_archaeology");
+   public static final ald<eui> L = a("trail_ruins_tower_top_archaeology");
+   public static final ald<eui> M = a("trial_chambers_copper_bulb_degradation");
 
-   public static void a(qg<eqq> $$0) {
-      jt<eok> $$1 = $$0.a(me.aY);
-      js<eok> $$2 = $$1.b(rz.g);
-      js<eok> $$3 = $$1.b(rz.a);
-      js<eok> $$4 = $$1.b(rz.b);
-      jt<etg> $$5 = $$0.a(me.ba);
-      js<etg> $$6 = $$5.b(qo.b);
-      js<etg> $$7 = $$5.b(qo.j);
-      js<etg> $$8 = $$5.b(qo.m);
-      jt<eqq> $$9 = $$0.a(me.bc);
-      js<eqq> $$10 = $$9.b(qn.a);
-      js<eqq> $$11 = $$9.b(b);
-      js<eqq> $$12 = $$9.b(c);
-      $$0.a(
+   private static ald<eui> a(String $$0) {
+      return ald.a(mg.ba, ale.b($$0));
+   }
+
+   private static void a(qh<eui> $$0, ald<eui> $$1, List<euh> $$2) {
+      $$0.a($$1, new eui($$2));
+   }
+
+   public static void a(qh<eui> $$0) {
+      jf<dlu> $$1 = $$0.a(mg.i);
+      etz $$2 = new etz(new eub(dlw.pV, 0.01F), eth.b, dlw.qg.m());
+      etz $$3 = new etz(new eub(dlw.qg, 0.5F), eth.b, dlw.pV.m());
+      a($$0, N, ImmutableList.of());
+      a(
+         $$0,
          a,
-         new eqq(
-            $$10,
-            ImmutableList.of(
-               Pair.of(eqo.a("village/savanna/town_centers/savanna_meeting_point_1"), 100),
-               Pair.of(eqo.a("village/savanna/town_centers/savanna_meeting_point_2"), 50),
-               Pair.of(eqo.a("village/savanna/town_centers/savanna_meeting_point_3"), 150),
-               Pair.of(eqo.a("village/savanna/town_centers/savanna_meeting_point_4"), 150),
-               Pair.of(eqo.a("village/savanna/zombie/town_centers/savanna_meeting_point_1", $$6), 2),
-               Pair.of(eqo.a("village/savanna/zombie/town_centers/savanna_meeting_point_2", $$6), 1),
-               Pair.of(eqo.a("village/savanna/zombie/town_centers/savanna_meeting_point_3", $$6), 3),
-               Pair.of(eqo.a("village/savanna/zombie/town_centers/savanna_meeting_point_4", $$6), 3)
-            ),
-            eqq.a.b
+         ImmutableList.of(
+            new eud(
+               ImmutableList.of(
+                  new etz(new eub(dlw.m, 0.8F), eth.b, dlw.cu.m()),
+                  new etz(new eum(axa.q), eth.b, dlw.a.m()),
+                  new etz(new etm(dlw.cw), eth.b, dlw.a.m()),
+                  new etz(new etm(dlw.cx), eth.b, dlw.a.m()),
+                  new etz(new eub(dlw.m, 0.07F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.cu, 0.07F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.hG, 0.07F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.X, 0.05F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.n, 0.1F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.cC, 0.1F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.aq, 0.02F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.fm, 0.5F), eth.b, dlw.bz.m()),
+                  new etz[]{
+                     new etz(
+                        new eto(dlw.fm.m().b(dpy.a, Boolean.valueOf(true)).b(dpy.c, Boolean.valueOf(true))),
+                        eth.b,
+                        dlw.ii.m().b(dpy.a, Boolean.valueOf(true)).b(dpy.c, Boolean.valueOf(true))
+                     ),
+                     new etz(
+                        new eto(dlw.fm.m().b(dpy.b, Boolean.valueOf(true)).b(dpy.d, Boolean.valueOf(true))),
+                        eth.b,
+                        dlw.ii.m().b(dpy.b, Boolean.valueOf(true)).b(dpy.d, Boolean.valueOf(true))
+                     ),
+                     new etz(new eub(dlw.cJ, 0.3F), eth.b, dlw.gP.m()),
+                     new etz(new eub(dlw.cJ, 0.2F), eth.b, dlw.gQ.m()),
+                     new etz(new eub(dlw.cJ, 0.1F), eth.b, dlw.lf.m())
+                  }
+               )
+            )
          )
       );
-      qn.a(
+      a(
          $$0,
-         "village/savanna/streets",
-         new eqq(
-            $$11,
-            ImmutableList.of(
-               Pair.of(eqo.a("village/savanna/streets/corner_01", $$7), 2),
-               Pair.of(eqo.a("village/savanna/streets/corner_03", $$7), 2),
-               Pair.of(eqo.a("village/savanna/streets/straight_02", $$7), 4),
-               Pair.of(eqo.a("village/savanna/streets/straight_04", $$7), 7),
-               Pair.of(eqo.a("village/savanna/streets/straight_05", $$7), 3),
-               Pair.of(eqo.a("village/savanna/streets/straight_06", $$7), 4),
-               Pair.of(eqo.a("village/savanna/streets/straight_08", $$7), 4),
-               Pair.of(eqo.a("village/savanna/streets/straight_09", $$7), 4),
-               Pair.of(eqo.a("village/savanna/streets/straight_10", $$7), 4),
-               Pair.of(eqo.a("village/savanna/streets/straight_11", $$7), 4),
-               Pair.of(eqo.a("village/savanna/streets/crossroad_02", $$7), 1),
-               Pair.of(eqo.a("village/savanna/streets/crossroad_03", $$7), 2),
-               new Pair[]{
-                  Pair.of(eqo.a("village/savanna/streets/crossroad_04", $$7), 2),
-                  Pair.of(eqo.a("village/savanna/streets/crossroad_05", $$7), 2),
-                  Pair.of(eqo.a("village/savanna/streets/crossroad_06", $$7), 2),
-                  Pair.of(eqo.a("village/savanna/streets/crossroad_07", $$7), 2),
-                  Pair.of(eqo.a("village/savanna/streets/split_01", $$7), 2),
-                  Pair.of(eqo.a("village/savanna/streets/split_02", $$7), 2),
-                  Pair.of(eqo.a("village/savanna/streets/turn_01", $$7), 3)
-               }
-            ),
-            eqq.a.a
-         )
-      );
-      qn.a(
-         $$0,
-         "village/savanna/zombie/streets",
-         new eqq(
-            $$12,
-            ImmutableList.of(
-               Pair.of(eqo.a("village/savanna/zombie/streets/corner_01", $$7), 2),
-               Pair.of(eqo.a("village/savanna/zombie/streets/corner_03", $$7), 2),
-               Pair.of(eqo.a("village/savanna/zombie/streets/straight_02", $$7), 4),
-               Pair.of(eqo.a("village/savanna/zombie/streets/straight_04", $$7), 7),
-               Pair.of(eqo.a("village/savanna/zombie/streets/straight_05", $$7), 3),
-               Pair.of(eqo.a("village/savanna/zombie/streets/straight_06", $$7), 4),
-               Pair.of(eqo.a("village/savanna/zombie/streets/straight_08", $$7), 4),
-               Pair.of(eqo.a("village/savanna/zombie/streets/straight_09", $$7), 4),
-               Pair.of(eqo.a("village/savanna/zombie/streets/straight_10", $$7), 4),
-               Pair.of(eqo.a("village/savanna/zombie/streets/straight_11", $$7), 4),
-               Pair.of(eqo.a("village/savanna/zombie/streets/crossroad_02", $$7), 1),
-               Pair.of(eqo.a("village/savanna/zombie/streets/crossroad_03", $$7), 2),
-               new Pair[]{
-                  Pair.of(eqo.a("village/savanna/zombie/streets/crossroad_04", $$7), 2),
-                  Pair.of(eqo.a("village/savanna/zombie/streets/crossroad_05", $$7), 2),
-                  Pair.of(eqo.a("village/savanna/zombie/streets/crossroad_06", $$7), 2),
-                  Pair.of(eqo.a("village/savanna/zombie/streets/crossroad_07", $$7), 2),
-                  Pair.of(eqo.a("village/savanna/zombie/streets/split_01", $$7), 2),
-                  Pair.of(eqo.a("village/savanna/zombie/streets/split_02", $$7), 2),
-                  Pair.of(eqo.a("village/savanna/zombie/streets/turn_01", $$7), 3)
-               }
-            ),
-            eqq.a.a
-         )
-      );
-      qn.a(
-         $$0,
-         "village/savanna/houses",
-         new eqq(
-            $$11,
-            ImmutableList.of(
-               Pair.of(eqo.a("village/savanna/houses/savanna_small_house_1"), 2),
-               Pair.of(eqo.a("village/savanna/houses/savanna_small_house_2"), 2),
-               Pair.of(eqo.a("village/savanna/houses/savanna_small_house_3"), 2),
-               Pair.of(eqo.a("village/savanna/houses/savanna_small_house_4"), 2),
-               Pair.of(eqo.a("village/savanna/houses/savanna_small_house_5"), 2),
-               Pair.of(eqo.a("village/savanna/houses/savanna_small_house_6"), 2),
-               Pair.of(eqo.a("village/savanna/houses/savanna_small_house_7"), 2),
-               Pair.of(eqo.a("village/savanna/houses/savanna_small_house_8"), 2),
-               Pair.of(eqo.a("village/savanna/houses/savanna_medium_house_1"), 2),
-               Pair.of(eqo.a("village/savanna/houses/savanna_medium_house_2"), 2),
-               Pair.of(eqo.a("village/savanna/houses/savanna_butchers_shop_1"), 2),
-               Pair.of(eqo.a("village/savanna/houses/savanna_butchers_shop_2"), 2),
-               new Pair[]{
-                  Pair.of(eqo.a("village/savanna/houses/savanna_tool_smith_1"), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_fletcher_house_1"), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_shepherd_1"), 7),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_armorer_1"), 1),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_fisher_cottage_1"), 3),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_tannery_1"), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_cartographer_1"), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_library_1"), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_mason_1"), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_weaponsmith_1"), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_weaponsmith_2"), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_temple_1"), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_temple_2"), 3),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_large_farm_1", $$8), 4),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_large_farm_2", $$8), 6),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_small_farm", $$8), 4),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_animal_pen_1"), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_animal_pen_2"), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_animal_pen_3"), 2),
-                  Pair.of(eqo.h(), 5)
-               }
-            ),
-            eqq.a.b
-         )
-      );
-      qn.a(
-         $$0,
-         "village/savanna/zombie/houses",
-         new eqq(
-            $$12,
-            ImmutableList.of(
-               Pair.of(eqo.a("village/savanna/zombie/houses/savanna_small_house_1", $$6), 2),
-               Pair.of(eqo.a("village/savanna/zombie/houses/savanna_small_house_2", $$6), 2),
-               Pair.of(eqo.a("village/savanna/zombie/houses/savanna_small_house_3", $$6), 2),
-               Pair.of(eqo.a("village/savanna/zombie/houses/savanna_small_house_4", $$6), 2),
-               Pair.of(eqo.a("village/savanna/zombie/houses/savanna_small_house_5", $$6), 2),
-               Pair.of(eqo.a("village/savanna/zombie/houses/savanna_small_house_6", $$6), 2),
-               Pair.of(eqo.a("village/savanna/zombie/houses/savanna_small_house_7", $$6), 2),
-               Pair.of(eqo.a("village/savanna/zombie/houses/savanna_small_house_8", $$6), 2),
-               Pair.of(eqo.a("village/savanna/zombie/houses/savanna_medium_house_1", $$6), 2),
-               Pair.of(eqo.a("village/savanna/zombie/houses/savanna_medium_house_2", $$6), 2),
-               Pair.of(eqo.a("village/savanna/houses/savanna_butchers_shop_1", $$6), 2),
-               Pair.of(eqo.a("village/savanna/houses/savanna_butchers_shop_2", $$6), 2),
-               new Pair[]{
-                  Pair.of(eqo.a("village/savanna/houses/savanna_tool_smith_1", $$6), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_fletcher_house_1", $$6), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_shepherd_1", $$6), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_armorer_1", $$6), 1),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_fisher_cottage_1", $$6), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_tannery_1", $$6), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_cartographer_1", $$6), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_library_1", $$6), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_mason_1", $$6), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_weaponsmith_1", $$6), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_weaponsmith_2", $$6), 2),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_temple_1", $$6), 1),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_temple_2", $$6), 3),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_large_farm_1", $$6), 4),
-                  Pair.of(eqo.a("village/savanna/zombie/houses/savanna_large_farm_2", $$6), 4),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_small_farm", $$6), 4),
-                  Pair.of(eqo.a("village/savanna/houses/savanna_animal_pen_1", $$6), 2),
-                  Pair.of(eqo.a("village/savanna/zombie/houses/savanna_animal_pen_2", $$6), 2),
-                  Pair.of(eqo.a("village/savanna/zombie/houses/savanna_animal_pen_3", $$6), 2),
-                  Pair.of(eqo.h(), 5)
-               }
-            ),
-            eqq.a.b
-         )
-      );
-      $$0.a(
          b,
-         new eqq(
-            $$10,
-            ImmutableList.of(
-               Pair.of(eqo.a("village/plains/terminators/terminator_01", $$7), 1),
-               Pair.of(eqo.a("village/plains/terminators/terminator_02", $$7), 1),
-               Pair.of(eqo.a("village/plains/terminators/terminator_03", $$7), 1),
-               Pair.of(eqo.a("village/plains/terminators/terminator_04", $$7), 1),
-               Pair.of(eqo.a("village/savanna/terminators/terminator_05", $$7), 1)
-            ),
-            eqq.a.a
+         ImmutableList.of(
+            new eud(
+               ImmutableList.of(
+                  new etz(new eum(axa.q), eth.b, dlw.a.m()),
+                  new etz(new etm(dlw.cw), eth.b, dlw.a.m()),
+                  new etz(new etm(dlw.cx), eth.b, dlw.a.m()),
+                  new etz(new eub(dlw.r, 0.2F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.im, 0.2F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.ab, 0.05F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.ax, 0.05F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.hH, 0.05F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.hK, 0.05F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.hU, 0.05F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.fm, 0.5F), eth.b, dlw.bz.m()),
+                  new etz(
+                     new eto(dlw.fm.m().b(dpy.a, Boolean.valueOf(true)).b(dpy.c, Boolean.valueOf(true))),
+                     eth.b,
+                     dlw.ii.m().b(dpy.a, Boolean.valueOf(true)).b(dpy.c, Boolean.valueOf(true))
+                  ),
+                  new etz[]{
+                     new etz(
+                        new eto(dlw.fm.m().b(dpy.b, Boolean.valueOf(true)).b(dpy.d, Boolean.valueOf(true))),
+                        eth.b,
+                        dlw.ii.m().b(dpy.b, Boolean.valueOf(true)).b(dpy.d, Boolean.valueOf(true))
+                     ),
+                     new etz(new eub(dlw.cJ, 0.1F), eth.b, dlw.fs.m())
+                  }
+               )
+            )
          )
       );
-      $$0.a(
+      a(
+         $$0,
          c,
-         new eqq(
-            $$10,
-            ImmutableList.of(
-               Pair.of(eqo.a("village/plains/terminators/terminator_01", $$7), 1),
-               Pair.of(eqo.a("village/plains/terminators/terminator_02", $$7), 1),
-               Pair.of(eqo.a("village/plains/terminators/terminator_03", $$7), 1),
-               Pair.of(eqo.a("village/plains/terminators/terminator_04", $$7), 1),
-               Pair.of(eqo.a("village/savanna/zombie/terminators/terminator_05", $$7), 1)
-            ),
-            eqq.a.a
+         ImmutableList.of(
+            new eud(
+               ImmutableList.of(
+                  new etz(new eum(axa.q), eth.b, dlw.a.m()),
+                  new etz(new etm(dlw.cw), eth.b, dlw.a.m()),
+                  new etz(new etm(dlw.cx), eth.b, dlw.a.m()),
+                  new etz(new etm(dlw.oG), eth.b, dlw.a.m()),
+                  new etz(new eub(dlw.o, 0.2F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.jS, 0.4F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.aj, 0.05F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.aC, 0.05F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.fm, 0.5F), eth.b, dlw.bz.m()),
+                  new etz(
+                     new eto(dlw.fm.m().b(dpy.a, Boolean.valueOf(true)).b(dpy.c, Boolean.valueOf(true))),
+                     eth.b,
+                     dlw.ii.m().b(dpy.a, Boolean.valueOf(true)).b(dpy.c, Boolean.valueOf(true))
+                  ),
+                  new etz(
+                     new eto(dlw.fm.m().b(dpy.b, Boolean.valueOf(true)).b(dpy.d, Boolean.valueOf(true))),
+                     eth.b,
+                     dlw.ii.m().b(dpy.b, Boolean.valueOf(true)).b(dpy.d, Boolean.valueOf(true))
+                  ),
+                  new etz(new eub(dlw.cJ, 0.1F), eth.b, dlw.gP.m()),
+                  new etz[]{new etz(new eub(dlw.cJ, 0.8F), eth.b, dlw.gQ.m())}
+               )
+            )
          )
       );
-      qn.a($$0, "village/savanna/trees", new eqq($$10, ImmutableList.of(Pair.of(eqo.a($$2), 1)), eqq.a.b));
-      qn.a(
+      a(
          $$0,
-         "village/savanna/decor",
-         new eqq(
-            $$10,
-            ImmutableList.of(
-               Pair.of(eqo.a("village/savanna/savanna_lamp_post_01"), 4),
-               Pair.of(eqo.a($$2), 4),
-               Pair.of(eqo.a($$3), 4),
-               Pair.of(eqo.a($$4), 1),
-               Pair.of(eqo.h(), 4)
-            ),
-            eqq.a.b
+         d,
+         ImmutableList.of(
+            new eud(
+               ImmutableList.of(
+                  new etz(new eub(dlw.m, 0.8F), eth.b, dlw.cu.m()),
+                  new etz(new eum(axa.q), eth.b, dlw.a.m()),
+                  new etz(new etm(dlw.cw), eth.b, dlw.a.m()),
+                  new etz(new etm(dlw.cx), eth.b, dlw.a.m()),
+                  new etz(new etm(dlw.oI), eth.b, dlw.oI.m().b(dmj.b, Boolean.valueOf(false))),
+                  new etz(new eub(dlw.m, 0.08F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.Y, 0.08F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.fm, 0.5F), eth.b, dlw.bz.m()),
+                  new etz(
+                     new eto(dlw.fm.m().b(dpy.a, Boolean.valueOf(true)).b(dpy.c, Boolean.valueOf(true))),
+                     eth.b,
+                     dlw.ii.m().b(dpy.a, Boolean.valueOf(true)).b(dpy.c, Boolean.valueOf(true))
+                  ),
+                  new etz(
+                     new eto(dlw.fm.m().b(dpy.b, Boolean.valueOf(true)).b(dpy.d, Boolean.valueOf(true))),
+                     eth.b,
+                     dlw.ii.m().b(dpy.b, Boolean.valueOf(true)).b(dpy.d, Boolean.valueOf(true))
+                  ),
+                  new etz(new eub(dlw.cJ, 0.3F), eth.b, dlw.fr.m()),
+                  new etz(new eub(dlw.cJ, 0.2F), eth.b, dlw.gQ.m()),
+                  new etz[0]
+               )
+            )
          )
       );
-      qn.a(
+      a(
          $$0,
-         "village/savanna/zombie/decor",
-         new eqq(
-            $$10,
-            ImmutableList.of(
-               Pair.of(eqo.a("village/savanna/savanna_lamp_post_01", $$6), 4),
-               Pair.of(eqo.a($$2), 4),
-               Pair.of(eqo.a($$3), 4),
-               Pair.of(eqo.a($$4), 1),
-               Pair.of(eqo.h(), 4)
-            ),
-            eqq.a.b
+         e,
+         ImmutableList.of(
+            new eud(
+               ImmutableList.of(
+                  new etz(new eum(axa.q), eth.b, dlw.a.m()),
+                  new etz(new etm(dlw.cw), eth.b, dlw.a.m()),
+                  new etz(new etm(dlw.cx), eth.b, dlw.a.m()),
+                  new etz(new eub(dlw.kr, 0.08F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.be, 0.1F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.iY, 0.08F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.nN, 0.08F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.oa, 0.08F), eth.b, dlw.bz.m()),
+                  new etz(new eub(dlw.cJ, 0.2F), eth.b, dlw.lf.m()),
+                  new etz(new eub(dlw.cJ, 0.1F), eth.b, dlw.fs.m())
+               )
+            )
          )
       );
-      qn.a(
+      a($$0, f, ImmutableList.of(new eud(ImmutableList.of(new etz(new eub(dlw.m, 0.1F), eth.b, dlw.cu.m())))));
+      a($$0, g, ImmutableList.of(new eud(ImmutableList.of(new etz(new eub(dlw.m, 0.2F), eth.b, dlw.cu.m())))));
+      a($$0, h, ImmutableList.of(new eud(ImmutableList.of(new etz(new eub(dlw.m, 0.7F), eth.b, dlw.cu.m())))));
+      a(
          $$0,
-         "village/savanna/villagers",
-         new eqq(
-            $$10,
-            ImmutableList.of(
-               Pair.of(eqo.a("village/savanna/villagers/nitwit"), 1),
-               Pair.of(eqo.a("village/savanna/villagers/baby"), 1),
-               Pair.of(eqo.a("village/savanna/villagers/unemployed"), 10)
-            ),
-            eqq.a.b
+         i,
+         ImmutableList.of(
+            new eud(
+               ImmutableList.of(
+                  new etz(new etm(dlw.lg), new etm(dlw.J), dlw.n.m()),
+                  new etz(new eub(dlw.lg, 0.1F), eth.b, dlw.i.m()),
+                  new etz(new etm(dlw.i), new etm(dlw.J), dlw.J.m()),
+                  new etz(new etm(dlw.j), new etm(dlw.J), dlw.J.m())
+               )
+            )
          )
       );
-      qn.a(
+      a(
          $$0,
-         "village/savanna/zombie/villagers",
-         new eqq(
-            $$10,
-            ImmutableList.of(Pair.of(eqo.a("village/savanna/zombie/villagers/nitwit"), 1), Pair.of(eqo.a("village/savanna/zombie/villagers/unemployed"), 10)),
-            eqq.a.b
+         j,
+         ImmutableList.of(
+            new eud(
+               ImmutableList.of(
+                  new etz(new etm(dlw.lg), new etm(dlw.J), dlw.r.m()),
+                  new etz(new eub(dlw.lg, 0.2F), eth.b, dlw.i.m()),
+                  new etz(new etm(dlw.i), new etm(dlw.J), dlw.J.m()),
+                  new etz(new etm(dlw.j), new etm(dlw.J), dlw.J.m())
+               )
+            )
          )
       );
+      a(
+         $$0,
+         k,
+         ImmutableList.of(
+            new eud(
+               ImmutableList.of(
+                  new etz(new etm(dlw.lg), new etm(dlw.J), dlw.o.m()),
+                  new etz(new etm(dlw.lg), new etm(dlw.eb), dlw.o.m()),
+                  new etz(new eub(dlw.lg, 0.2F), eth.b, dlw.i.m()),
+                  new etz(new etm(dlw.i), new etm(dlw.J), dlw.J.m()),
+                  new etz(new etm(dlw.j), new etm(dlw.J), dlw.J.m())
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         l,
+         ImmutableList.of(
+            new eud(
+               ImmutableList.of(
+                  new etz(new eub(dlw.cJ, 0.3F), eth.b, dlw.gP.m()),
+                  new etz(new eub(dlw.cJ, 0.2F), eth.b, dlw.gQ.m()),
+                  new etz(new eub(dlw.cJ, 0.1F), eth.b, dlw.lf.m())
+               )
+            )
+         )
+      );
+      a($$0, m, ImmutableList.of(new eud(ImmutableList.of(new etz(new eub(dlw.cJ, 0.1F), eth.b, dlw.fs.m())))));
+      a(
+         $$0,
+         n,
+         ImmutableList.of(new eud(ImmutableList.of(new etz(new eub(dlw.cJ, 0.1F), eth.b, dlw.gP.m()), new etz(new eub(dlw.cJ, 0.8F), eth.b, dlw.gQ.m()))))
+      );
+      a(
+         $$0,
+         o,
+         ImmutableList.of(new eud(ImmutableList.of(new etz(new eub(dlw.cJ, 0.3F), eth.b, dlw.fr.m()), new etz(new eub(dlw.cJ, 0.2F), eth.b, dlw.gQ.m()))))
+      );
+      a(
+         $$0,
+         p,
+         ImmutableList.of(new eud(ImmutableList.of(new etz(new eub(dlw.cJ, 0.2F), eth.b, dlw.lf.m()), new etz(new eub(dlw.cJ, 0.1F), eth.b, dlw.fs.m()))))
+      );
+      a($$0, q, ImmutableList.of(new etn(0.05F)));
+      a(
+         $$0,
+         r,
+         ImmutableList.of(
+            new eud(ImmutableList.of(new etz(new eub(dlw.ll, 0.75F), eth.b, dlw.qb.m()), new etz(new eub(dlw.qb, 0.15F), eth.b, dlw.qa.m()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         s,
+         ImmutableList.of(
+            new eud(ImmutableList.of(new etz(new eub(dlw.qa, 0.35F), eth.b, dlw.qb.m()), new etz(new eub(dlw.qc, 0.1F), eth.b, dlw.qb.m()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         t,
+         ImmutableList.of(
+            new eud(ImmutableList.of(new etz(new eub(dlw.qa, 0.3F), eth.b, dlw.qb.m()), new etz(new eub(dlw.pV, 1.0E-4F), eth.b, dlw.a.m()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         u,
+         ImmutableList.of(
+            new eud(ImmutableList.of(new etz(new eub(dlw.qc, 0.5F), eth.b, dlw.a.m()), new etz(new eub(dlw.co, 0.1F), eth.b, dlw.qb.m()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         v,
+         ImmutableList.of(
+            new eud(ImmutableList.of(new etz(new eub(dlw.qa, 0.1F), eth.b, dlw.qb.m()), new etz(new eub(dlw.pV, 1.0E-4F), eth.b, dlw.a.m()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         w,
+         ImmutableList.of(
+            new eud(
+               ImmutableList.of(
+                  new etz(new eub(dlw.qa, 0.3F), eth.b, dlw.qb.m()),
+                  new etz(new eub(dlw.pV, 1.0E-4F), eth.b, dlw.a.m()),
+                  new etz(new eub(dlw.co, 0.3F), eth.b, dlw.qb.m()),
+                  $$3,
+                  $$2
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         x,
+         ImmutableList.of(
+            new eud(
+               ImmutableList.of(
+                  new etz(new eub(dlw.qa, 0.4F), eth.b, dlw.qb.m()),
+                  new etz(new eub(dlw.pV, 0.01F), eth.b, dlw.qb.m()),
+                  new etz(new eub(dlw.qa, 1.0E-4F), eth.b, dlw.a.m()),
+                  new etz(new eub(dlw.pV, 1.0E-4F), eth.b, dlw.a.m()),
+                  new etz(new eub(dlw.co, 0.3F), eth.b, dlw.qb.m()),
+                  $$3,
+                  $$2
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         y,
+         ImmutableList.of(
+            new eud(ImmutableList.of(new etz(new eub(dlw.qc, 0.5F), eth.b, dlw.a.m()), new etz(new eub(dlw.co, 0.6F), eth.b, dlw.qb.m()), $$3, $$2))
+         )
+      );
+      a(
+         $$0,
+         z,
+         ImmutableList.of(new eud(ImmutableList.of(new etz(new eub(dlw.qa, 0.3F), eth.b, dlw.qb.m()), new etz(new eub(dlw.pV, 1.0E-4F), eth.b, dlw.a.m()))))
+      );
+      a(
+         $$0,
+         A,
+         ImmutableList.of(
+            new eud(
+               ImmutableList.of(
+                  new etz(new eub(dlw.qa, 0.3F), eth.b, dlw.qb.m()),
+                  new etz(new eub(dlw.qa, 0.15F), eth.b, dlw.a.m()),
+                  new etz(new eub(dlw.qa, 0.3F), eth.b, dlw.pV.m())
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         B,
+         ImmutableList.of(
+            new eud(
+               ImmutableList.of(
+                  new etz(new eub(dlw.qa, 0.01F), eth.b, dlw.a.m()),
+                  new etz(new eub(dlw.qa, 0.5F), eth.b, dlw.qb.m()),
+                  new etz(new eub(dlw.qa, 0.3F), eth.b, dlw.pV.m()),
+                  $$3
+               )
+            )
+         )
+      );
+      a(
+         $$0,
+         C,
+         ImmutableList.of(
+            new eud(
+               ImmutableList.of(new etz(new eub(dlw.co, 0.3F), eth.b, dlw.qb.m()), new etz(eth.b, eth.b, new eti(0.0F, 0.05F, 0, 100, ja.a.b), dlw.a.m()), $$3)
+            )
+         )
+      );
+      a($$0, D, ImmutableList.of(new etn(0.9F), new eua(axa.bR)));
+      a($$0, E, ImmutableList.of(new etn(0.1F), new eua(axa.bR)));
+      a($$0, F, ImmutableList.of(new etn(0.1F), new eud(ImmutableList.of(new etz(new etm(dlw.U), eth.b, dlw.cG.m()))), new eua(axa.bR)));
+      a(
+         $$0,
+         G,
+         ImmutableList.of(
+            new eud(
+               ImmutableList.of(
+                  new etz(new eub(dlw.tC, 0.3F), eth.b, dlw.tH.m()),
+                  new etz(new eub(dlw.ty, 0.3F), eth.b, dlw.tI.m()),
+                  new etz(new eub(dlw.oH, 0.05F), eth.b, dlw.a.m())
+               )
+            ),
+            new eua(axa.bR)
+         )
+      );
+      a(
+         $$0,
+         H,
+         ImmutableList.of(
+            new etn($$1.b(axa.bX), 0.95F),
+            new eud(
+               ImmutableList.of(
+                  new etz(new eub(dlw.tC, 0.3F), eth.b, dlw.tH.m()),
+                  new etz(new eub(dlw.ty, 0.3F), eth.b, dlw.tI.m()),
+                  new etz(new eub(dlw.oH, 0.05F), eth.b, dlw.a.m())
+               )
+            ),
+            new eua(axa.bR)
+         )
+      );
+      a(
+         $$0,
+         I,
+         ImmutableList.of(
+            new etn($$1.b(axa.bX), 0.95F),
+            new eud(
+               ImmutableList.of(
+                  new etz(new eub(dlw.tC, 0.3F), eth.b, dlw.tH.m()),
+                  new etz(new eub(dlw.ty, 0.3F), eth.b, dlw.tI.m()),
+                  new etz(new eub(dlw.tA, 0.3F), eth.b, dlw.a.m()),
+                  new etz(new eub(dlw.oH, 0.05F), eth.b, dlw.a.m())
+               )
+            ),
+            new eua(axa.bR)
+         )
+      );
+      a(
+         $$0,
+         J,
+         List.of(
+            new eud(
+               List.of(
+                  new etz(new eub(dlw.O, 0.2F), eth.b, dlw.j.m()),
+                  new etz(new eub(dlw.O, 0.1F), eth.b, dlw.k.m()),
+                  new etz(new eub(dlw.fa, 0.1F), eth.b, dlw.eZ.m())
+               )
+            ),
+            a(eyj.aZ, 6),
+            a(eyj.ba, 3)
+         )
+      );
+      a(
+         $$0,
+         K,
+         List.of(
+            new eud(
+               List.of(
+                  new etz(new eub(dlw.O, 0.2F), eth.b, dlw.j.m()),
+                  new etz(new eub(dlw.O, 0.1F), eth.b, dlw.k.m()),
+                  new etz(new eub(dlw.fa, 0.1F), eth.b, dlw.eZ.m())
+               )
+            ),
+            a(eyj.aZ, 2)
+         )
+      );
+      a($$0, L, List.of(a(eyj.aZ, 2)));
+      a(
+         $$0,
+         M,
+         List.of(
+            new eud(
+               List.of(
+                  new etz(new eub(dlw.sS, 0.1F), eth.b, dlw.sV.m().b(dni.c, Boolean.valueOf(true))),
+                  new etz(new eub(dlw.sS, 0.33333334F), eth.b, dlw.sU.m().b(dni.c, Boolean.valueOf(true))),
+                  new etz(new eub(dlw.sS, 0.5F), eth.b, dlw.sT.m().b(dni.c, Boolean.valueOf(true)))
+               )
+            ),
+            new eua(axa.bR)
+         )
+      );
+   }
+
+   private static etp a(ald<eys> $$0, int $$1) {
+      return new etp(new eud(List.of(new etz(new eum(axa.cy), eth.b, etw.b, dlw.P.m(), new euo($$0)))), bta.a($$1));
    }
 }

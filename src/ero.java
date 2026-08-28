@@ -1,53 +1,81 @@
-public class ero {
-   private static final ald[] a = new ald[]{
-      ald.b("nether_fossils/fossil_1"),
-      ald.b("nether_fossils/fossil_2"),
-      ald.b("nether_fossils/fossil_3"),
-      ald.b("nether_fossils/fossil_4"),
-      ald.b("nether_fossils/fossil_5"),
-      ald.b("nether_fossils/fossil_6"),
-      ald.b("nether_fossils/fossil_7"),
-      ald.b("nether_fossils/fossil_8"),
-      ald.b("nether_fossils/fossil_9"),
-      ald.b("nether_fossils/fossil_10"),
-      ald.b("nether_fossils/fossil_11"),
-      ald.b("nether_fossils/fossil_12"),
-      ald.b("nether_fossils/fossil_13"),
-      ald.b("nether_fossils/fossil_14")
-   };
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-   public static void a(etj $$0, epl $$1, azs $$2, jj $$3) {
-      drm $$4 = drm.a($$2);
-      $$1.a(new ero.a($$0, af.a(a, $$2), $$3, $$4));
+public class ero extends erq {
+   public static final MapCodec<ero> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(erq.f.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), e()).apply($$0, ero::new)
+   );
+   private final List<erq> b;
+
+   public ero(List<erq> $$0, ers.a $$1) {
+      super($$1);
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Elements are empty");
+      } else {
+         this.b = $$0;
+         this.b($$1);
+      }
    }
 
-   public static class a extends epq {
-      public a(etj $$0, ald $$1, jj $$2, drm $$3) {
-         super(epx.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+   @Override
+   public jz a(eul $$0, dsm $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (erq $$5 : this.b) {
+         jz $$6 = $$5.a($$0, $$1);
+         $$2 = Math.max($$2, $$6.u());
+         $$3 = Math.max($$3, $$6.v());
+         $$4 = Math.max($$4, $$6.w());
       }
 
-      public a(etj $$0, tw $$1) {
-         super(epx.ac, $$1, $$0, $$1x -> a(drm.valueOf($$1.l("Rot"))));
+      return new jz($$2, $$3, $$4);
+   }
+
+   @Override
+   public List<euk.a> a(eul $$0, iu $$1, dsm $$2, azt $$3) {
+      return this.b.get(0).a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public eqa a(eul $$0, iu $$1, dsm $$2) {
+      Stream<eqa> $$3 = this.b.stream().filter($$0x -> $$0x != erj.b).map($$3x -> $$3x.a($$0, $$1, $$2));
+      return eqa.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
+   }
+
+   @Override
+   public boolean a(eul $$0, djo $$1, djl $$2, ebm $$3, iu $$4, iu $$5, dsm $$6, eqa $$7, azt $$8, etu $$9, boolean $$10) {
+      for (erq $$11 : this.b) {
+         if (!$$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return false;
+         }
       }
 
-      private static ete a(drm $$0) {
-         return new ete().a($$0).a(dpv.a).a(esj.d);
-      }
+      return true;
+   }
 
-      @Override
-      protected void a(epw $$0, tw $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
+   @Override
+   public err<?> a() {
+      return err.b;
+   }
 
-      @Override
-      protected void a(String $$0, jj $$1, dig $$2, azs $$3, eoy $$4) {
-      }
+   @Override
+   public erq a(ers.a $$0) {
+      super.a($$0);
+      this.b($$0);
+      return this;
+   }
 
-      @Override
-      public void a(dio $$0, dil $$1, eak $$2, azs $$3, eoy $$4, dgw $$5, jj $$6) {
-         $$4.b(this.b.b(this.c, this.d));
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
+   @Override
+   public String toString() {
+      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
+   }
+
+   private void b(ers.a $$0) {
+      this.b.forEach($$1 -> $$1.a($$0));
    }
 }

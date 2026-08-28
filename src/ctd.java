@@ -1,107 +1,177 @@
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class ctd {
-   private static final Logger a = LogUtils.getLogger();
-   private final ctf b;
-   private final Map<ald, ctc> c;
-   private final cte d;
+public abstract class ctd extends ctc implements bwr, ctj {
+   private static final int h = 27;
+   private jn<cys> i = jn.a(27, cys.k);
+   @Nullable
+   private ald<eys> j;
+   private long k;
 
-   ctd(ctf $$0, cte $$1, Map<ald, ctc> $$2) {
-      this.b = $$0;
-      this.c = $$2;
-      this.d = $$1;
+   public ctd(bwj<? extends ctd> $$0, dip $$1, Supplier<cyo> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public boolean a(cte $$0) {
-      return $$0.a(this.d);
+   @Override
+   protected float m() {
+      return 0.15F;
    }
 
-   public cte a() {
-      return this.d;
+   @Override
+   protected int n() {
+      return 1;
    }
 
-   public cte a(Iterable<ald> $$0) {
-      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
+   @Override
+   protected void b(tx $$0) {
+      super.b($$0);
+      this.a($$0, this.dX());
    }
 
-   public cte a(ctc... $$0) {
-      return cte.a(this.b, Arrays.asList($$0));
+   @Override
+   protected void a(tx $$0) {
+      super.a($$0);
+      this.b($$0, this.dX());
    }
 
-   public cte a(Iterable<ald> $$0, Consumer<ald> $$1) {
-      Set<ctc> $$2 = Sets.newIdentityHashSet();
+   @Override
+   public void a(aro $$0, bup $$1) {
+      this.a($$0, this.o());
+      this.a($$1, $$0, this);
+   }
 
-      for (ald $$3 : $$0) {
-         ctc $$4 = this.c.get($$3);
-         if ($$4 == null) {
-            $$1.accept($$3);
-         } else {
-            $$2.add($$4);
+   @Override
+   public void a(bwa.e $$0) {
+      if (!this.dV().C && $$0.a()) {
+         btu.a(this.dV(), this, this);
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   public bty a(cqs $$0, btx $$1) {
+      if (!$$0.fX()) {
+         bty $$2 = super.a($$0, $$1);
+         if ($$2 != bty.e) {
+            return $$2;
          }
       }
 
-      return cte.a(this.b, $$2);
-   }
-
-   public Set<ald> b(cte $$0) {
-      Set<ald> $$1 = new HashSet<>();
-      this.c.forEach(($$2, $$3) -> {
-         if ($$0.b($$3)) {
-            $$1.add($$2);
+      if (this.r($$0) && !$$0.fX()) {
+         return bty.e;
+      } else {
+         bty $$3 = this.b_($$0);
+         if ($$3.a() && $$0.dV() instanceof aro $$4) {
+            this.a(eeo.k, $$0);
+            cpi.a($$4, $$0, true);
          }
-      });
-      return $$1;
+
+         return $$3;
+      }
    }
 
-   public Codec<cte> b() {
-      return ald.a.listOf().comapFlatMap($$0 -> {
-         Set<ald> $$1 = new HashSet<>();
-         cte $$2 = this.a($$0, $$1::add);
-         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
-      }, $$0 -> List.copyOf(this.b($$0)));
+   @Override
+   public void b(cqs $$0) {
+      $$0.a(this);
+      if ($$0.dV() instanceof aro $$1) {
+         this.a(eeo.k, $$0);
+         cpi.a($$1, $$0, true);
+      }
    }
 
-   public static class a {
-      private final ctf a;
-      private int b;
-      private final Map<ald, ctc> c = new LinkedHashMap<>();
+   @Override
+   public void a() {
+      this.af_();
+   }
 
-      public a(String $$0) {
-         this.a = new ctf($$0);
-      }
+   @Override
+   public int b() {
+      return 27;
+   }
 
-      public ctc a(String $$0) {
-         return this.a(ald.b($$0));
-      }
+   @Override
+   public cys a(int $$0) {
+      return this.g_($$0);
+   }
 
-      public ctc a(ald $$0) {
-         if (this.b >= 64) {
-            throw new IllegalStateException("Too many feature flags");
-         } else {
-            ctc $$1 = new ctc(this.a, this.b++);
-            ctc $$2 = this.c.put($$0, $$1);
-            if ($$2 != null) {
-               throw new IllegalStateException("Duplicate feature flag " + $$0);
-            } else {
-               return $$1;
-            }
-         }
-      }
+   @Override
+   public cys a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
 
-      public ctd a() {
-         cte $$0 = cte.a(this.a, this.c.values());
-         return new ctd(this.a, $$0, Map.copyOf(this.c));
+   @Override
+   public cys b(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public void a(int $$0, cys $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public bxq a_(int $$0) {
+      return this.h_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cqs $$0) {
+      return this.g($$0);
+   }
+
+   @Nullable
+   @Override
+   public cuk createMenu(int $$0, cqr $$1, cqs $$2) {
+      if (this.j != null && $$2.U_()) {
+         return null;
+      } else {
+         this.e($$1.k);
+         return cut.a($$0, $$1, this);
       }
+   }
+
+   public void e(@Nullable cqs $$0) {
+      this.f($$0);
+   }
+
+   @Nullable
+   @Override
+   public ald<eys> q() {
+      return this.j;
+   }
+
+   @Override
+   public void a(@Nullable ald<eys> $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   public long s() {
+      return this.k;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.k = $$0;
+   }
+
+   @Override
+   public jn<cys> t() {
+      return this.i;
+   }
+
+   @Override
+   public void u() {
+      this.i = jn.a(this.b(), cys.k);
+   }
+
+   @Override
+   public void c(cqs $$0) {
+      this.dV().a(eeo.j, this.dt(), eeo.a.a($$0));
    }
 }

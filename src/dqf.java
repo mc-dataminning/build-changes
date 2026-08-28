@@ -1,19 +1,36 @@
-public class dqf {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(dym $$0) {
-      return $$0.l();
+public class dqf extends dkn {
+   public static final MapCodec<dqf> c = b(dqf::new);
+
+   @Override
+   public MapCodec<dqf> a() {
+      return c;
    }
 
-   public static int a(azs $$0) {
-      double $$1 = 1.0;
+   public dqf(dzn.d $$0) {
+      super($$0, kb.e);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
+   @Override
+   protected double b(dzo $$0) {
+      return 0.9375;
+   }
+
+   @Override
+   public boolean d(dzo $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dzo $$0, dip $$1, iu $$2, bwa $$3) {
+      if (this.a($$0, $$2, $$3)) {
+         $$3.aE();
       }
+   }
 
-      return $$2;
+   @Override
+   protected int a(dzo $$0, dip $$1, iu $$2) {
+      return 3;
    }
 }

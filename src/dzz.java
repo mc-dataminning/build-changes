@@ -1,17 +1,12 @@
-public enum dzz implements bag {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum dzz implements bai {
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
    private final String d;
 
    private dzz(final String $$0) {
       this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
    }
 
    @Override

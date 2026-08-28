@@ -1,17 +1,29 @@
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface fam<T extends fam<T>> {
-   T b(fau.a var1);
+public class fam extends faa {
+   public static final MapCodec<fam> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(uv.j.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, fam::new));
+   private final tx b;
 
-   default <E> T a_(Iterable<E> $$0, Function<E, fau.a> $$1) {
-      T $$2 = this.d();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   private fam(List<fbw> $$0, tx $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   T d();
+   @Override
+   public fac<fam> b() {
+      return fad.j;
+   }
+
+   @Override
+   public cys a(cys $$0, eyn $$1) {
+      dba.a(kj.b, $$0, $$0x -> $$0x.a(this.b));
+      return $$0;
+   }
+
+   @Deprecated
+   public static faa.a<?> a(tx $$0) {
+      return a($$1 -> new fam($$1, $$0));
+   }
 }

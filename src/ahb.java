@@ -1,16 +1,23 @@
-public record ahb(int b, int c) implements zc<agm> {
-   public static final yt<vr, ahb> a = yt.a(yr.w, ahb::b, yr.h, ahb::e, ahb::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public ze<ahb> a() {
-      return agk.by;
+public class ahb implements zd<agn> {
+   public static final ahb a = new ahb();
+   public static final yu<ByteBuf, ahb> b = yu.a(a);
+
+   private ahb() {
    }
 
-   public void a(agm $$0) {
+   @Override
+   public zf<ahb> a() {
+      return agl.bx;
+   }
+
+   public void a(agn $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

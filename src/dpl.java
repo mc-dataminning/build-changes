@@ -1,118 +1,106 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class dpl extends dnp {
-   public static final MapCodec<dpl> a = b(dpl::new);
-   public static final dzd b = dzc.A;
-   private final Function<dym, fdo> d;
+public abstract class dpl extends dpj implements dlx {
+   public static final eao e = eae.aA;
+   public static final int f = 25;
+   private final double c;
 
-   @Override
-   public MapCodec<dpl> a() {
-      return a;
-   }
-
-   protected dpl(dyl.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(e, jo.c).b(b, Boolean.valueOf(false)).b(c, dyx.b));
-      this.d = this.b();
-   }
-
-   private Function<dym, fdo> b() {
-      Map<dyx, Map<jo, fdo>> $$0 = fdl.e(dku.b(6.0, 8.0, 10.0, 16.0));
-      return this.a($$1 -> $$0.get($$1.c(c)).get($$1.c(e)), new dzp[]{b});
+   protected dpl(dzn.d $$0, ja $$1, feq $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.l(this.B.b().b(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return this.d.apply($$0);
+   protected abstract MapCodec<? extends dpl> a();
+
+   @Override
+   public dzo b(azt $$0) {
+      return this.m().b(e, Integer.valueOf($$0.a(25)));
    }
 
    @Override
-   protected btq a(dym $$0, dhp $$1, jj $$2, cqi $$3, fcq $$4) {
-      if ($$1.C) {
-         dym $$5 = $$0.a(b);
-         if ($$5.c(b)) {
-            a($$5, $$1, $$2, 1.0F);
+   protected boolean f(dzo $$0) {
+      return $$0.c(e) < 25;
+   }
+
+   @Override
+   protected void b(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         iu $$4 = $$2.a(this.a);
+         if (this.h($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.A));
          }
+      }
+   }
+
+   protected dzo a(dzo $$0, azt $$1) {
+      return $$0.a(e);
+   }
+
+   public dzo p(dzo $$0) {
+      return $$0.b(e, Integer.valueOf(25));
+   }
+
+   public boolean q(dzo $$0) {
+      return $$0.c(e) == 25;
+   }
+
+   protected dzo a(dzo $$0, dzo $$1) {
+      return $$1;
+   }
+
+   @Override
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      if ($$4 == this.a.g() && !$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      if ($$4 != this.a || !$$6.a(this) && !$$6.a(this.b())) {
+         if (this.b) {
+            $$2.a($$3, evw.c, evw.c.a($$1));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       } else {
-         this.b($$0, $$1, $$2, null);
-      }
-
-      return btq.a;
-   }
-
-   @Override
-   protected void a(dym $$0, arn $$1, jj $$2, dhi $$3, BiConsumer<cxy, jj> $$4) {
-      if ($$3.g()) {
-         this.b($$0, $$1, $$2, null);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public void b(dym $$0, dhp $$1, jj $$2, @Nullable cqi $$3) {
-      $$0 = $$0.a(b);
-      $$1.a($$2, $$0, 3);
-      this.e($$0, $$1, $$2);
-      a($$3, $$1, $$2, $$0);
-      $$1.a($$3, $$0.c(b) ? edm.a : edm.e, $$2);
-   }
-
-   protected static void a(@Nullable cqi $$0, dhq $$1, jj $$2, dym $$3) {
-      float $$4 = $$3.c(b) ? 0.6F : 0.5F;
-      $$1.a($$0, $$2, awk.oC, awl.e, 0.3F, $$4);
-   }
-
-   private static void a(dym $$0, dhq $$1, jj $$2, float $$3) {
-      jo $$4 = $$0.c(e).g();
-      jo $$5 = n($$0).g();
-      double $$6 = (double)$$2.u() + 0.5 + 0.1 * (double)$$4.j() + 0.2 * (double)$$5.j();
-      double $$7 = (double)$$2.v() + 0.5 + 0.1 * (double)$$4.k() + 0.2 * (double)$$5.k();
-      double $$8 = (double)$$2.w() + 0.5 + 0.1 * (double)$$4.l() + 0.2 * (double)$$5.l();
-      $$1.a(new lq(16711680, $$3), $$6, $$7, $$8, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
-      if ($$0.c(b) && $$3.i() < 0.25F) {
-         a($$0, $$1, $$2, 0.5F);
+         return this.a($$0, this.b().m());
       }
    }
 
    @Override
-   protected void a(dym $$0, arn $$1, jj $$2, boolean $$3) {
-      if (!$$3 && $$0.c(b)) {
-         this.e($$0, $$1, $$2);
-      }
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(e);
    }
 
    @Override
-   protected int a(dym $$0, dgv $$1, jj $$2, jo $$3) {
-      return $$0.c(b) ? 15 : 0;
+   public boolean a(dis $$0, iu $$1, dzo $$2) {
+      return this.h($$0.a_($$1.a(this.a)));
    }
 
    @Override
-   protected int b(dym $$0, dgv $$1, jj $$2, jo $$3) {
-      return $$0.c(b) && n($$0) == $$3 ? 15 : 0;
-   }
-
-   @Override
-   protected boolean f_(dym $$0) {
+   public boolean a(dip $$0, azt $$1, iu $$2, dzo $$3) {
       return true;
    }
 
-   private void e(dym $$0, dhp $$1, jj $$2) {
-      jo $$3 = n($$0).g();
-      ewb $$4 = evx.a($$1, $$3, $$3.o().d() ? jo.b : $$0.c(e));
-      $$1.a($$2, this, $$4);
-      $$1.a($$2.a($$3), this, $$4);
+   @Override
+   public void a(aro $$0, azt $$1, iu $$2, dzo $$3) {
+      iu $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.h($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.b(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
+      }
    }
 
+   protected abstract int a(azt var1);
+
+   protected abstract boolean h(dzo var1);
+
    @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(c, e, b);
+   protected dpl c() {
+      return this;
    }
 }

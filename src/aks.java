@@ -1,8 +1,12 @@
 public class aks {
-   public static final alc<cxu> a = a("pumpkin_seeds");
-   public static final alc<cxu> b = a("melon_seeds");
+   public static final ald<dlu> a = a("pumpkin");
+   public static final ald<dlu> b = a("pumpkin_stem");
+   public static final ald<dlu> c = a("attached_pumpkin_stem");
+   public static final ald<dlu> d = a("melon");
+   public static final ald<dlu> e = a("melon_stem");
+   public static final ald<dlu> f = a("attached_melon_stem");
 
-   private static alc<cxu> a(String $$0) {
-      return alc.a(me.K, ald.b($$0));
+   private static ald<dlu> a(String $$0) {
+      return ald.a(mg.i, ale.b($$0));
    }
 }

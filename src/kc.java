@@ -1,7 +1,8 @@
-public interface kc {
-   double a();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   double b();
-
-   double c();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface kc {
 }

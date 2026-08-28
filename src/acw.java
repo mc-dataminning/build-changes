@@ -1,26 +1,24 @@
-import java.util.Optional;
+public record acw(int b, bxm c, boolean d) implements zd<abs> {
+   public static final yu<vs, acw> a = yu.a(ys.h, acw::b, bxm.a, acw::e, ys.b, acw::f, acw::new);
 
-public record acw(fcu b, Optional<fcu> c, lt d, js<awj> e) implements zc<abr> {
-   public static final yt<wg, acw> a = yt.a(fcu.b, acw::b, fcu.b.a(yr::a), acw::e, lv.bk, acw::f, awj.d, acw::g, acw::new);
-
-   @Override
-   public ze<acw> a() {
-      return agk.E;
+   public static acw a(bwa $$0) {
+      return new acw($$0.ar(), new bxm($$0.du(), $$0.dy(), $$0.dL(), $$0.dN()), $$0.aJ());
    }
 
-   public void a(abr $$0) {
+   @Override
+   public zf<acw> a() {
+      return agl.D;
+   }
+
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public Optional<fcu> e() {
+   public bxm e() {
       return this.c;
    }
 
-   public lt f() {
+   public boolean f() {
       return this.d;
-   }
-
-   public js<awj> g() {
-      return this.e;
    }
 }

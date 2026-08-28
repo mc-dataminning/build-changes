@@ -1,35 +1,45 @@
-public record aam(aam.a c) implements aaf {
-   public static final yt<vr, aam> a = aaf.a(aam::a, aam::new);
-   public static final aaf.b<aam> b = aaf.a("debug/hive");
+import java.util.List;
 
-   private aam(vr $$0) {
-      this(new aam.a($$0));
+public record aam(int c, iu d, List<aam.a> e) implements aag {
+   public static final yu<vs, aam> a = aag.a(aam::a, aam::new);
+   public static final aag.b<aam> b = aag.a("debug/goal_selector");
+
+   private aam(vs $$0) {
+      this($$0.readInt(), $$0.e(), $$0.a(aam.a::new));
    }
 
-   private void a(vr $$0) {
-      this.c.a($$0);
+   private void a(vs $$0) {
+      $$0.q(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public aaf.b<aam> a() {
+   public aag.b<aam> a() {
       return b;
    }
 
-   public aam.a b() {
+   public int b() {
       return this.c;
    }
 
-   public static record a(jj a, String b, int c, int d, boolean e) {
-      public a(vr $$0) {
-         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+   public iu c() {
+      return this.d;
+   }
+
+   public List<aam.a> d() {
+      return this.e;
+   }
+
+   public static record a(int a, boolean b, String c) {
+      public a(vs $$0) {
+         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
       }
 
-      public void a(vr $$0) {
-         $$0.a(this.a);
+      public void a(vs $$0) {
+         $$0.q(this.a);
          $$0.a(this.b);
-         $$0.q(this.c);
-         $$0.q(this.d);
-         $$0.a(this.e);
+         $$0.a(this.c);
       }
    }
 }

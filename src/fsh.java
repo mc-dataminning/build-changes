@@ -1,58 +1,35 @@
-import java.util.Locale;
-import java.util.function.Supplier;
+public class fsh {
+   public static final ale a = ale.b("textures/gui/title/minecraft.png");
+   public static final ale b = ale.b("textures/gui/title/minceraft.png");
+   public static final ale c = ale.b("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)azt.a().i() < 1.0E-4;
+   private final boolean o;
 
-public class fsh extends fsc {
-   private static final int f = -6745839;
-   private static final int g = -4548257;
-   private static final int h = -10547572;
-   private final Supplier<Float> i;
-
-   public fsh(fpx $$0, bop $$1, Supplier<Float> $$2) {
-      super($$0, $$1);
-      this.i = $$2;
+   public fsh(boolean $$0) {
+      this.o = $$0;
    }
 
-   @Override
-   protected void d(fpz $$0, int $$1, int $$2, int $$3) {
-      float $$4 = (float)bam.c / this.i.get();
-      this.a($$0, String.format(Locale.ROOT, "%.1f TPS", $$4), $$1 + 1, $$3 - 60 + 1);
+   public void a(frc $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   @Override
-   protected void c(fpz $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3, boq.b.ordinal());
-      int $$5 = this.b((double)$$4);
-      $$0.a(goi.L(), $$2, $$1 - $$5, $$2 + 1, $$1, -6745839);
-      long $$6 = this.e.a($$3, boq.c.ordinal());
-      int $$7 = this.b((double)$$6);
-      $$0.a(goi.L(), $$2, $$1 - $$5 - $$7, $$2 + 1, $$1 - $$5, -4548257);
-      long $$8 = this.e.a($$3) - this.e.a($$3, boq.d.ordinal()) - $$4 - $$6;
-      int $$9 = this.b((double)$$8);
-      $$0.a(goi.L(), $$2, $$1 - $$9 - $$7 - $$5, $$2 + 1, $$1 - $$7 - $$5, -10547572);
-   }
-
-   @Override
-   protected long b(int $$0) {
-      return this.e.a($$0) - this.e.a($$0, boq.d.ordinal());
-   }
-
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
-   }
-
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / (double)this.i.get().floatValue());
-   }
-
-   @Override
-   protected int a(long $$0) {
-      float $$1 = this.i.get();
-      return this.a(c((double)$$0), (double)$$1, -16711936, (double)$$1 * 1.125, -256, (double)$$1 * 1.25, -65536);
-   }
-
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   public void a(frc $$0, int $$1, float $$2, int $$3) {
+      int $$4 = $$1 / 2 - 128;
+      float $$5 = this.o ? 1.0F : $$2;
+      int $$6 = axu.a($$5);
+      $$0.a(gpn::H, this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64, $$6);
+      int $$7 = $$1 / 2 - 64;
+      int $$8 = $$3 + 44 - 7;
+      $$0.a(gpn::H, c, $$7, $$8, 0.0F, 0.0F, 128, 14, 128, 16, $$6);
    }
 }

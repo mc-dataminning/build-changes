@@ -1,549 +1,207 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.RecordBuilder.AbstractStringBuilder;
-import it.unimi.dsi.fastutil.bytes.ByteArrayList;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
+import java.io.BufferedOutputStream;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UTFDataFormatException;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 import javax.annotation.Nullable;
 
-public class uk implements DynamicOps<ut> {
-   public static final uk a = new uk();
-   private static final String b = "";
+public class uk {
+   private static final OpenOption[] a = new OpenOption[]{
+      StandardOpenOption.SYNC, StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING
+   };
 
-   protected uk() {
+   public static tx a(Path $$0, ug $$1) throws IOException {
+      tx var4;
+      try (
+         InputStream $$2 = Files.newInputStream($$0);
+         InputStream $$3 = new ayt($$2);
+      ) {
+         var4 = a($$3, $$1);
+      }
+
+      return var4;
    }
 
-   public ut a() {
-      return ty.b;
+   private static DataInputStream a(InputStream $$0) throws IOException {
+      return new DataInputStream(new ayt(new GZIPInputStream($$0)));
    }
 
-   public <U> U a(DynamicOps<U> $$0, ut $$1) {
-      return (U)(switch ($$1.b()) {
-         case 0 -> (Object)$$0.empty();
-         case 1 -> (Object)$$0.createByte(((um)$$1).i());
-         case 2 -> (Object)$$0.createShort(((um)$$1).h());
-         case 3 -> (Object)$$0.createInt(((um)$$1).g());
-         case 4 -> (Object)$$0.createLong(((um)$$1).f());
-         case 5 -> (Object)$$0.createFloat(((um)$$1).k());
-         case 6 -> (Object)$$0.createDouble(((um)$$1).j());
-         case 7 -> (Object)$$0.createByteList(ByteBuffer.wrap(((tt)$$1).e()));
-         case 8 -> (Object)$$0.createString($$1.p_());
-         case 9 -> (Object)this.convertList($$0, $$1);
-         case 10 -> (Object)this.convertMap($$0, $$1);
-         case 11 -> (Object)$$0.createIntList(Arrays.stream(((ua)$$1).g()));
-         case 12 -> (Object)$$0.createLongList(Arrays.stream(((ud)$$1).g()));
-         default -> throw new IllegalStateException("Unknown tag type: " + $$1);
-      });
+   private static DataOutputStream a(OutputStream $$0) throws IOException {
+      return new DataOutputStream(new BufferedOutputStream(new GZIPOutputStream($$0)));
    }
 
-   public DataResult<Number> a(ut $$0) {
-      return $$0 instanceof um $$1 ? DataResult.success($$1.l()) : DataResult.error(() -> "Not a number");
+   public static tx a(InputStream $$0, ug $$1) throws IOException {
+      tx var3;
+      try (DataInputStream $$2 = a($$0)) {
+         var3 = a((DataInput)$$2, $$1);
+      }
+
+      return var3;
    }
 
-   public ut a(Number $$0) {
-      return tx.a($$0.doubleValue());
+   public static void a(Path $$0, ur $$1, ug $$2) throws IOException {
+      try (
+         InputStream $$3 = Files.newInputStream($$0);
+         InputStream $$4 = new ayt($$3);
+      ) {
+         a($$4, $$1, $$2);
+      }
    }
 
-   public ut a(byte $$0) {
-      return tu.a($$0);
+   public static void a(InputStream $$0, ur $$1, ug $$2) throws IOException {
+      try (DataInputStream $$3 = a($$0)) {
+         a((DataInput)$$3, $$1, $$2);
+      }
    }
 
-   public ut a(short $$0) {
-      return uo.a($$0);
+   public static void a(tx $$0, Path $$1) throws IOException {
+      try (
+         OutputStream $$2 = Files.newOutputStream($$1, a);
+         OutputStream $$3 = new BufferedOutputStream($$2);
+      ) {
+         a($$0, $$3);
+      }
    }
 
-   public ut a(int $$0) {
-      return ub.a($$0);
+   public static void a(tx $$0, OutputStream $$1) throws IOException {
+      try (DataOutputStream $$2 = a($$1)) {
+         a($$0, (DataOutput)$$2);
+      }
    }
 
-   public ut a(long $$0) {
-      return ue.a($$0);
+   public static void b(tx $$0, Path $$1) throws IOException {
+      try (
+         OutputStream $$2 = Files.newOutputStream($$1, a);
+         OutputStream $$3 = new BufferedOutputStream($$2);
+         DataOutputStream $$4 = new DataOutputStream($$3);
+      ) {
+         a($$0, (DataOutput)$$4);
+      }
    }
 
-   public ut a(float $$0) {
-      return tz.a($$0);
-   }
-
-   public ut a(double $$0) {
-      return tx.a($$0);
-   }
-
-   public ut a(boolean $$0) {
-      return tu.a($$0);
-   }
-
-   public DataResult<String> b(ut $$0) {
-      return $$0 instanceof ur $$1 ? DataResult.success($$1.p_()) : DataResult.error(() -> "Not a string");
-   }
-
-   public ut a(String $$0) {
-      return ur.a($$0);
-   }
-
-   public DataResult<ut> a(ut $$0, ut $$1) {
-      return k($$0).map($$1x -> DataResult.success($$1x.a($$1).a())).orElseGet(() -> DataResult.error(() -> "mergeToList called with not a list: " + $$0, $$0));
-   }
-
-   public DataResult<ut> a(ut $$0, List<ut> $$1) {
-      return k($$0).map($$1x -> DataResult.success($$1x.a($$1).a())).orElseGet(() -> DataResult.error(() -> "mergeToList called with not a list: " + $$0, $$0));
-   }
-
-   public DataResult<ut> a(ut $$0, ut $$1, ut $$2) {
-      if (!($$0 instanceof tw) && !($$0 instanceof ty)) {
-         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
-      } else if (!($$1 instanceof ur)) {
-         return DataResult.error(() -> "key is not a string: " + $$1, $$0);
+   @Nullable
+   public static tx a(Path $$0) throws IOException {
+      if (!Files.exists($$0)) {
+         return null;
       } else {
-         tw $$4 = $$0 instanceof tw $$3 ? $$3.h() : new tw();
-         $$4.a($$1.p_(), $$2);
-         return DataResult.success($$4);
+         tx var3;
+         try (
+            InputStream $$1 = Files.newInputStream($$0);
+            DataInputStream $$2 = new DataInputStream($$1);
+         ) {
+            var3 = a((DataInput)$$2, ug.a());
+         }
+
+         return var3;
       }
    }
 
-   public DataResult<ut> a(ut $$0, MapLike<ut> $$1) {
-      if (!($$0 instanceof tw) && !($$0 instanceof ty)) {
-         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
+   public static tx a(DataInput $$0) throws IOException {
+      return a($$0, ug.a());
+   }
+
+   public static tx a(DataInput $$0, ug $$1) throws IOException {
+      uu $$2 = c($$0, $$1);
+      if ($$2 instanceof tx) {
+         return (tx)$$2;
       } else {
-         tw $$3 = $$0 instanceof tw $$2 ? $$2.h() : new tw();
-         List<ut> $$4 = new ArrayList<>();
-         $$1.entries().forEach($$2x -> {
-            ut $$3x = (ut)$$2x.getFirst();
-            if (!($$3x instanceof ur)) {
-               $$4.add($$3x);
-            } else {
-               $$3.a($$3x.p_(), (ut)$$2x.getSecond());
-            }
-         });
-         return !$$4.isEmpty() ? DataResult.error(() -> "some keys are not strings: " + $$4, $$3) : DataResult.success($$3);
+         throw new IOException("Root tag must be a named compound tag");
       }
    }
 
-   public DataResult<ut> a(ut $$0, Map<ut, ut> $$1) {
-      if (!($$0 instanceof tw) && !($$0 instanceof ty)) {
-         return DataResult.error(() -> "mergeToMap called with not a map: " + $$0, $$0);
+   public static void a(tx $$0, DataOutput $$1) throws IOException {
+      c($$0, $$1);
+   }
+
+   public static void a(DataInput $$0, ur $$1, ug $$2) throws IOException {
+      uw<?> $$3 = ux.a($$0.readByte());
+      if ($$3 == tz.a) {
+         if ($$1.b(tz.a) == ur.b.a) {
+            $$1.a();
+         }
       } else {
-         tw $$3 = $$0 instanceof tw $$2 ? $$2.h() : new tw();
-         List<ut> $$4 = new ArrayList<>();
-
-         for (Entry<ut, ut> $$5 : $$1.entrySet()) {
-            ut $$6 = $$5.getKey();
-            if ($$6 instanceof ur) {
-               $$3.a($$6.p_(), $$5.getValue());
-            } else {
-               $$4.add($$6);
-            }
+         switch ($$1.b($$3)) {
+            case c:
+            default:
+               break;
+            case b:
+               us.a($$0);
+               $$3.b($$0, $$2);
+               break;
+            case a:
+               us.a($$0);
+               $$3.a($$0, $$1, $$2);
          }
+      }
+   }
 
-         return !$$4.isEmpty() ? DataResult.error(() -> "some keys are not strings: " + $$4, $$3) : DataResult.success($$3);
+   public static uu b(DataInput $$0, ug $$1) throws IOException {
+      byte $$2 = $$0.readByte();
+      return (uu)($$2 == 0 ? tz.b : a($$0, $$1, $$2));
+   }
+
+   public static void a(uu $$0, DataOutput $$1) throws IOException {
+      $$1.writeByte($$0.b());
+      if ($$0.b() != 0) {
+         $$0.a($$1);
       }
    }
 
-   public DataResult<Stream<Pair<ut, ut>>> c(ut $$0) {
-      return $$0 instanceof tw $$1
-         ? DataResult.success($$1.j().stream().map($$0x -> Pair.of(this.a((String)$$0x.getKey()), (ut)$$0x.getValue())))
-         : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public DataResult<Consumer<BiConsumer<ut, ut>>> d(ut $$0) {
-      return $$0 instanceof tw $$1 ? DataResult.success((Consumer<BiConsumer>)$$1x -> {
-         for (Entry<String, ut> $$2 : $$1.j()) {
-            $$1x.accept(this.a($$2.getKey()), $$2.getValue());
-         }
-      }) : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public DataResult<MapLike<ut>> e(ut $$0) {
-      return $$0 instanceof tw $$1 ? DataResult.success(new MapLike<ut>() {
-         @Nullable
-         public ut a(ut $$0) {
-            return $$1.c($$0.p_());
-         }
-
-         @Nullable
-         public ut a(String $$0) {
-            return $$1.c($$0);
-         }
-
-         public Stream<Pair<ut, ut>> entries() {
-            return $$1.j().stream().map($$0 -> Pair.of(uk.this.a($$0.getKey()), $$0.getValue()));
-         }
-
-         @Override
-         public String toString() {
-            return "MapLike[" + $$1 + "]";
-         }
-      }) : DataResult.error(() -> "Not a map: " + $$0);
-   }
-
-   public ut a(Stream<Pair<ut, ut>> $$0) {
-      tw $$1 = new tw();
-      $$0.forEach($$1x -> $$1.a(((ut)$$1x.getFirst()).p_(), (ut)$$1x.getSecond()));
-      return $$1;
-   }
-
-   private static ut a(tw $$0) {
-      if ($$0.f() == 1) {
-         ut $$1 = $$0.c("");
-         if ($$1 != null) {
-            return $$1;
-         }
+   public static void b(uu $$0, DataOutput $$1) throws IOException {
+      $$1.writeByte($$0.b());
+      if ($$0.b() != 0) {
+         $$1.writeUTF("");
+         $$0.a($$1);
       }
-
-      return $$0;
    }
 
-   public DataResult<Stream<ut>> f(ut $$0) {
-      if ($$0 instanceof uc $$1) {
-         return $$1.f() == 10 ? DataResult.success($$1.stream().map($$0x -> a((tw)$$0x))) : DataResult.success($$1.stream());
+   public static void c(uu $$0, DataOutput $$1) throws IOException {
+      b($$0, new uk.a($$1));
+   }
+
+   private static uu c(DataInput $$0, ug $$1) throws IOException {
+      byte $$2 = $$0.readByte();
+      if ($$2 == 0) {
+         return tz.b;
       } else {
-         return $$0 instanceof tv<?> $$2 ? DataResult.success($$2.stream().map($$0x -> $$0x)) : DataResult.error(() -> "Not a list");
+         us.a($$0);
+         return a($$0, $$1, $$2);
       }
    }
 
-   public DataResult<Consumer<Consumer<ut>>> g(ut $$0) {
-      if ($$0 instanceof uc $$1) {
-         return $$1.f() == 10 ? DataResult.success((Consumer<Consumer>)$$1x -> {
-            for (ut $$2x : $$1) {
-               $$1x.accept(a((tw)$$2x));
-            }
-         }) : DataResult.success($$1::forEach);
-      } else {
-         return $$0 instanceof tv<?> $$2 ? DataResult.success($$2::forEach) : DataResult.error(() -> "Not a list: " + $$0);
+   private static uu a(DataInput $$0, ug $$1, byte $$2) {
+      try {
+         return ux.a($$2).c($$0, $$1);
+      } catch (IOException var6) {
+         o $$4 = o.a(var6, "Loading NBT data");
+         p $$5 = $$4.a("NBT Tag");
+         $$5.a("Tag type", $$2);
+         throw new uo($$4);
       }
    }
 
-   public DataResult<ByteBuffer> h(ut $$0) {
-      return $$0 instanceof tt $$1 ? DataResult.success(ByteBuffer.wrap($$1.e())) : super.getByteBuffer($$0);
-   }
-
-   public ut a(ByteBuffer $$0) {
-      ByteBuffer $$1 = $$0.duplicate().clear();
-      byte[] $$2 = new byte[$$0.capacity()];
-      $$1.get(0, $$2, 0, $$2.length);
-      return new tt($$2);
-   }
-
-   public DataResult<IntStream> i(ut $$0) {
-      return $$0 instanceof ua $$1 ? DataResult.success(Arrays.stream($$1.g())) : super.getIntStream($$0);
-   }
-
-   public ut a(IntStream $$0) {
-      return new ua($$0.toArray());
-   }
-
-   public DataResult<LongStream> j(ut $$0) {
-      return $$0 instanceof ud $$1 ? DataResult.success(Arrays.stream($$1.g())) : super.getLongStream($$0);
-   }
-
-   public ut a(LongStream $$0) {
-      return new ud($$0.toArray());
-   }
-
-   public ut b(Stream<ut> $$0) {
-      return uk.d.a.a($$0).a();
-   }
-
-   public ut a(ut $$0, String $$1) {
-      if ($$0 instanceof tw $$2) {
-         tw $$3 = $$2.h();
-         $$3.r($$1);
-         return $$3;
-      } else {
-         return $$0;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "NBT";
-   }
-
-   public RecordBuilder<ut> mapBuilder() {
-      return new uk.h();
-   }
-
-   private static Optional<uk.f> k(ut $$0) {
-      if ($$0 instanceof ty) {
-         return Optional.of(uk.d.a);
-      } else {
-         if ($$0 instanceof tv<?> $$1) {
-            if ($$1.isEmpty()) {
-               return Optional.of(uk.d.a);
-            }
-
-            if ($$1 instanceof uc $$2) {
-               return switch ($$2.f()) {
-                  case 0 -> Optional.of(uk.d.a);
-                  case 10 -> Optional.of(new uk.b($$2));
-                  default -> Optional.of(new uk.c($$2));
-               };
-            }
-
-            if ($$1 instanceof tt $$3) {
-               return Optional.of(new uk.a($$3.e()));
-            }
-
-            if ($$1 instanceof ua $$4) {
-               return Optional.of(new uk.e($$4.g()));
-            }
-
-            if ($$1 instanceof ud $$5) {
-               return Optional.of(new uk.g($$5.g()));
-            }
-         }
-
-         return Optional.empty();
-      }
-   }
-
-   static class a implements uk.f {
-      private final ByteArrayList a = new ByteArrayList();
-
-      public a(byte $$0) {
-         this.a.add($$0);
-      }
-
-      public a(byte[] $$0) {
-         this.a.addElements(0, $$0);
+   public static class a extends ayn {
+      public a(DataOutput $$0) {
+         super($$0);
       }
 
       @Override
-      public uk.f a(ut $$0) {
-         if ($$0 instanceof tu $$1) {
-            this.a.add($$1.i());
-            return this;
-         } else {
-            return new uk.b(this.a).a($$0);
-         }
-      }
-
-      @Override
-      public ut a() {
-         return new tt(this.a.toByteArray());
-      }
-   }
-
-   static class b implements uk.f {
-      private final uc a = new uc();
-
-      public b() {
-      }
-
-      public b(Collection<ut> $$0) {
-         this.a.addAll($$0);
-      }
-
-      public b(IntArrayList $$0) {
-         $$0.forEach($$0x -> this.a.add(c(ub.a($$0x))));
-      }
-
-      public b(ByteArrayList $$0) {
-         $$0.forEach($$0x -> this.a.add(c(tu.a($$0x))));
-      }
-
-      public b(LongArrayList $$0) {
-         $$0.forEach($$0x -> this.a.add(c(ue.a($$0x))));
-      }
-
-      private static boolean a(tw $$0) {
-         return $$0.f() == 1 && $$0.e("");
-      }
-
-      private static ut b(ut $$0) {
-         if ($$0 instanceof tw $$1 && !a($$1)) {
-            return $$1;
-         }
-
-         return c($$0);
-      }
-
-      private static tw c(ut $$0) {
-         tw $$1 = new tw();
-         $$1.a("", $$0);
-         return $$1;
-      }
-
-      @Override
-      public uk.f a(ut $$0) {
-         this.a.add(b($$0));
-         return this;
-      }
-
-      @Override
-      public ut a() {
-         return this.a;
-      }
-   }
-
-   static class c implements uk.f {
-      private final uc a = new uc();
-
-      c(ut $$0) {
-         this.a.add($$0);
-      }
-
-      c(uc $$0) {
-         this.a.addAll($$0);
-      }
-
-      @Override
-      public uk.f a(ut $$0) {
-         if ($$0.b() != this.a.f()) {
-            return new uk.b().a(this.a).a($$0);
-         } else {
-            this.a.add($$0);
-            return this;
-         }
-      }
-
-      @Override
-      public ut a() {
-         return this.a;
-      }
-   }
-
-   static class d implements uk.f {
-      public static final uk.d a = new uk.d();
-
-      private d() {
-      }
-
-      @Override
-      public uk.f a(ut $$0) {
-         if ($$0 instanceof tw $$1) {
-            return new uk.b().a($$1);
-         } else if ($$0 instanceof tu $$2) {
-            return new uk.a($$2.i());
-         } else if ($$0 instanceof ub $$3) {
-            return new uk.e($$3.g());
-         } else {
-            return (uk.f)($$0 instanceof ue $$4 ? new uk.g($$4.f()) : new uk.c($$0));
-         }
-      }
-
-      @Override
-      public ut a() {
-         return new uc();
-      }
-   }
-
-   static class e implements uk.f {
-      private final IntArrayList a = new IntArrayList();
-
-      public e(int $$0) {
-         this.a.add($$0);
-      }
-
-      public e(int[] $$0) {
-         this.a.addElements(0, $$0);
-      }
-
-      @Override
-      public uk.f a(ut $$0) {
-         if ($$0 instanceof ub $$1) {
-            this.a.add($$1.g());
-            return this;
-         } else {
-            return new uk.b(this.a).a($$0);
-         }
-      }
-
-      @Override
-      public ut a() {
-         return new ua(this.a.toIntArray());
-      }
-   }
-
-   interface f {
-      uk.f a(ut var1);
-
-      default uk.f a(Iterable<ut> $$0) {
-         uk.f $$1 = this;
-
-         for (ut $$2 : $$0) {
-            $$1 = $$1.a($$2);
-         }
-
-         return $$1;
-      }
-
-      default uk.f a(Stream<ut> $$0) {
-         return this.a($$0::iterator);
-      }
-
-      ut a();
-   }
-
-   static class g implements uk.f {
-      private final LongArrayList a = new LongArrayList();
-
-      public g(long $$0) {
-         this.a.add($$0);
-      }
-
-      public g(long[] $$0) {
-         this.a.addElements(0, $$0);
-      }
-
-      @Override
-      public uk.f a(ut $$0) {
-         if ($$0 instanceof ue $$1) {
-            this.a.add($$1.f());
-            return this;
-         } else {
-            return new uk.b(this.a).a($$0);
-         }
-      }
-
-      @Override
-      public ut a() {
-         return new ud(this.a.toLongArray());
-      }
-   }
-
-   class h extends AbstractStringBuilder<ut, tw> {
-      protected h() {
-         super(uk.this);
-      }
-
-      protected tw a() {
-         return new tw();
-      }
-
-      protected tw a(String $$0, ut $$1, tw $$2) {
-         $$2.a($$0, $$1);
-         return $$2;
-      }
-
-      protected DataResult<ut> a(tw $$0, ut $$1) {
-         if ($$1 == null || $$1 == ty.b) {
-            return DataResult.success($$0);
-         } else if (!($$1 instanceof tw $$2)) {
-            return DataResult.error(() -> "mergeToMap called with not a map: " + $$1, $$1);
-         } else {
-            tw $$3 = $$2.h();
-
-            for (Entry<String, ut> $$4 : $$0.j()) {
-               $$3.a($$4.getKey(), $$4.getValue());
-            }
-
-            return DataResult.success($$3);
+      public void writeUTF(String $$0) throws IOException {
+         try {
+            super.writeUTF($$0);
+         } catch (UTFDataFormatException var3) {
+            af.a("Failed to write NBT String", var3);
+            super.writeUTF("");
          }
       }
    }

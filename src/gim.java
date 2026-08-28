@@ -1,26 +1,21 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+public class gim {
+   private final gio a;
+   private final gin b;
 
-public interface gim {
-   gim a = new gim() {
-      @Override
-      public CompletableFuture<Optional<cqk>> a() {
-         return CompletableFuture.completedFuture(Optional.empty());
-      }
-
-      @Override
-      public boolean b() {
-         return false;
-      }
-   };
-
-   static gim a(UserApiService $$0, fnp $$1, Path $$2) {
-      return (gim)($$1.g() == fnp.a.c ? new ghs($$0, $$1.b(), $$2) : a);
+   private gim(gio $$0, gin $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   CompletableFuture<Optional<cqk>> a();
+   public gim a(gip $$0) {
+      return new gim($$0.apply(this.a), this.b);
+   }
 
-   boolean b();
+   public gig a() {
+      return this.a.a().a(this.b.a, this.b.b);
+   }
+
+   public static gim a(gio $$0, int $$1, int $$2) {
+      return new gim($$0, new gin($$1, $$2));
+   }
 }

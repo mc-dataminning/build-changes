@@ -1,207 +1,139 @@
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.function.Predicate;
 import org.slf4j.Logger;
 
-public class dwx extends dvl implements edo.b<edv.b>, edv {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 10;
-   private static final int c = 20;
-   private static final int d = 5;
-   private static final int h = 6;
-   private static final int i = 40;
-   private static final int j = 90;
-   private static final Int2ObjectMap<awj> k = af.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, awk.CP);
-      $$0.put(2, awk.CQ);
-      $$0.put(3, awk.CR);
-      $$0.put(4, awk.CO);
-   });
-   private int l;
-   private final edv.d m = new dwx.a();
-   private edv.a q = new edv.a();
-   private final edv.b r = new edv.b(this);
+public class dwx extends dwn implements btr {
+   public static final int b = 6;
+   private static final Logger c = LogUtils.getLogger();
+   private final jn<cys> d = jn.a(6, cys.k);
+   private int e = -1;
 
-   public dwx(jj $$0, dym $$1) {
-      super(dvn.M, $$0, $$1);
+   public dwx(iu $$0, dzo $$1) {
+      super(dwp.N, $$0, $$1);
    }
 
-   @Override
-   public edv.a x() {
-      return this.q;
-   }
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.e = $$0;
+         dzo $$1 = this.m();
 
-   @Override
-   public edv.d gq() {
-      return this.m;
-   }
+         for (int $$2 = 0; $$2 < dmy.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).f();
+            eaf $$4 = dmy.c.get($$2);
+            $$1 = $$1.b($$4, Boolean.valueOf($$3));
+         }
 
-   @Override
-   protected void a(tw $$0, ju.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("warning_level", 99)) {
-         this.l = $$0.h("warning_level");
-      }
-
-      alb<ut> $$2 = $$1.a(uk.a);
-      if ($$0.b("listener", 10)) {
-         edv.a.a
-            .parse($$2, $$0.p("listener"))
-            .resultOrPartial($$0x -> a.error("Failed to parse vibration listener for Sculk Shrieker: '{}'", $$0x))
-            .ifPresent($$0x -> this.q = $$0x);
-      }
-   }
-
-   @Override
-   protected void b(tw $$0, ju.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("warning_level", this.l);
-      alb<ut> $$2 = $$1.a(uk.a);
-      edv.a.a
-         .encodeStart($$2, this.q)
-         .resultOrPartial($$0x -> a.error("Failed to encode vibration listener for Sculk Shrieker: '{}'", $$0x))
-         .ifPresent($$1x -> $$0.a("listener", $$1x));
-   }
-
-   @Nullable
-   public static aro a(@Nullable bvs $$0) {
-      if ($$0 instanceof aro) {
-         return (aro)$$0;
+         Objects.requireNonNull(this.n).a(this.o, $$1, 3);
+         this.n.a(eeo.c, this.o, eeo.a.a($$1));
       } else {
-         if ($$0 != null) {
-            bwr $$6 = $$0.cW();
-            if ($$6 instanceof aro) {
-               return (aro)$$6;
-            }
-         }
-
-         if ($$0 instanceof crb $$3) {
-            bvs var3 = $$3.q();
-            if (var3 instanceof aro) {
-               return (aro)var3;
-            }
-         }
-
-         if ($$0 instanceof cmn $$5) {
-            bvs var9 = $$5.q();
-            if (var9 instanceof aro) {
-               return (aro)var9;
-            }
-         }
-
-         return null;
+         c.error("Expected slot 0-5, got {}", $$0);
       }
-   }
-
-   public void a(arn $$0, @Nullable aro $$1) {
-      if ($$1 != null) {
-         dym $$2 = this.m();
-         if (!$$2.c(drt.b)) {
-            this.l = 0;
-            if (!this.b($$0) || this.b($$0, $$1)) {
-               this.a($$0, (bvs)$$1);
-            }
-         }
-      }
-   }
-
-   private boolean b(arn $$0, aro $$1) {
-      OptionalInt $$2 = cpn.a($$0, this.aw_(), $$1);
-      $$2.ifPresent($$0x -> this.l = $$0x);
-      return $$2.isPresent();
-   }
-
-   private void a(arn $$0, @Nullable bvs $$1) {
-      jj $$2 = this.aw_();
-      dym $$3 = this.m();
-      $$0.a($$2, $$3.b(drt.b, Boolean.valueOf(true)), 2);
-      $$0.a($$2, $$3.b(), 90);
-      $$0.c(3007, $$2, 0);
-      $$0.a(edm.N, $$2, edm.a.a($$1));
-   }
-
-   private boolean b(arn $$0) {
-      return this.m().c(drt.d) && $$0.an() != btn.a && $$0.O().c(dhl.N);
    }
 
    @Override
-   public void a(jj $$0, dym $$1) {
-      if ($$1.c(drt.b) && this.n instanceof arn $$2) {
-         this.a($$2);
+   protected void a(tx $$0, jg.a $$1) {
+      super.a($$0, $$1);
+      this.d.clear();
+      bts.b($$0, this.d, $$1);
+      this.e = $$0.h("last_interacted_slot");
+   }
+
+   @Override
+   protected void b(tx $$0, jg.a $$1) {
+      super.b($$0, $$1);
+      bts.a($$0, this.d, true, $$1);
+      $$0.a("last_interacted_slot", this.e);
+   }
+
+   public int f() {
+      return (int)this.d.stream().filter(Predicate.not(cys::f)).count();
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
+   public boolean c() {
+      return this.d.stream().allMatch(cys::f);
+   }
+
+   @Override
+   public cys a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   @Override
+   public cys a(int $$0, int $$1) {
+      cys $$2 = Objects.requireNonNullElse(this.d.get($$0), cys.k);
+      this.d.set($$0, cys.k);
+      if (!$$2.f()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public cys b(int $$0) {
+      return this.a($$0, 1);
+   }
+
+   @Override
+   public void a(int $$0, cys $$1) {
+      if ($$1.a(axi.aZ)) {
+         this.d.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.f()) {
+         this.a($$0, 1);
       }
    }
 
-   public void a(arn $$0) {
-      if (this.b($$0) && this.l > 0) {
-         if (!this.c($$0)) {
-            this.b((dhp)$$0);
-         }
-
-         cpl.a($$0, fcu.b(this.aw_()), null, 40);
-      }
+   @Override
+   public boolean a(btr $$0, int $$1, cys $$2) {
+      return $$0.a_($$2x -> $$2x.f() ? true : cys.c($$2, $$2x) && $$2x.M() + $$2.M() <= $$0.e_($$2x));
    }
 
-   private void b(dhp $$0) {
-      awj $$1 = (awj)k.get(this.l);
-      if ($$1 != null) {
-         jj $$2 = this.aw_();
-         int $$3 = $$2.u() + azk.b($$0.A, -10, 10);
-         int $$4 = $$2.v() + azk.b($$0.A, -10, 10);
-         int $$5 = $$2.w() + azk.b($$0.A, -10, 10);
-         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, awl.f, 5.0F, 1.0F);
-      }
+   @Override
+   public int aj_() {
+      return 1;
    }
 
-   private boolean c(arn $$0) {
-      return this.l < 4 ? false : bad.a(bwb.bF, bwa.k, $$0, this.aw_(), 20, 5, 6, bad.a.b, false).isPresent();
+   @Override
+   public boolean a(cqs $$0) {
+      return btr.a(this, $$0);
    }
 
-   public edv.b a() {
-      return this.r;
+   @Override
+   public boolean b(int $$0, cys $$1) {
+      return $$1.a(axi.aZ) && this.a($$0).f() && $$1.M() == this.aj_();
    }
 
-   class a implements edv.d {
-      private static final int b = 8;
-      private final edq c = new edi(dwx.this.o);
+   public int j() {
+      return this.e;
+   }
 
-      public a() {
-      }
+   @Override
+   protected void a(ke $$0) {
+      super.a($$0);
+      $$0.a(kj.ap, dbk.a).a(this.d);
+   }
 
-      @Override
-      public int a() {
-         return 8;
-      }
+   @Override
+   protected void a(kg.a $$0) {
+      super.a($$0);
+      $$0.a(kj.ap, dbk.a(this.d));
+   }
 
-      @Override
-      public edq b() {
-         return this.c;
-      }
-
-      @Override
-      public axp<edm> c() {
-         return axg.c;
-      }
-
-      @Override
-      public boolean a(arn $$0, jj $$1, js<edm> $$2, edm.a $$3) {
-         return !dwx.this.m().c(drt.b) && dwx.a($$3.a()) != null;
-      }
-
-      @Override
-      public void a(arn $$0, jj $$1, js<edm> $$2, @Nullable bvs $$3, @Nullable bvs $$4, float $$5) {
-         dwx.this.a($$0, dwx.a($$4 != null ? $$4 : $$3));
-      }
-
-      @Override
-      public void e() {
-         dwx.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
-      }
+   @Override
+   public void a(tx $$0) {
+      $$0.r("Items");
    }
 }

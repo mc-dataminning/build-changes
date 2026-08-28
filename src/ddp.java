@@ -1,19 +1,15 @@
-import java.util.List;
+public interface ddp {
+   cys a(int var1);
 
-public interface ddp<T> {
-   public interface a<T> extends ddp<T> {
-      T a(T var1, List<T> var2);
-   }
+   int a();
 
-   public interface b<T> extends ddp<T> {
-      default T a(js<cxu> $$0) {
-         return this.a(new cxy($$0));
+   default boolean b() {
+      for (int $$0 = 0; $$0 < this.a(); $$0++) {
+         if (!this.a($$0).f()) {
+            return false;
+         }
       }
 
-      default T a(cxu $$0) {
-         return this.a(new cxy($$0));
-      }
-
-      T a(cxy var1);
+      return true;
    }
 }

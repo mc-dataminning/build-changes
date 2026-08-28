@@ -1,54 +1,40 @@
-import java.util.List;
-import java.util.function.Function;
+public class gym extends gwq<cmk, hec, ghu> {
+   private static final ale a = ale.b("textures/entity/wither/wither_invulnerable.png");
+   private static final ale j = ale.b("textures/entity/wither/wither.png");
 
-public class gym<S extends hbk, M extends gea<S>> extends gyt<S, M> {
-   private final ald a;
-   private final gym.a<S> b;
-   private final gym.b<S, M> c;
-   private final Function<ald, goi> d;
-   private final boolean e;
-
-   public gym(gwc<S, M> $$0, ald $$1, gym.a<S> $$2, gym.b<S, M> $$3, Function<ald, goi> $$4, boolean $$5) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5;
+   public gym(gvk.a $$0) {
+      super($$0, new ghu($$0.a(gif.dM)), 1.0F);
+      this.a(new hal(this, $$0.f()));
    }
 
-   public void a(fho $$0, gny $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (!$$3.z || this.e) {
-         if (this.a($$3)) {
-            fhs $$6 = $$1.getBuffer(this.d.apply(this.a));
-            float $$7 = this.b.apply($$3, $$3.u);
-            int $$8 = axu.a(azk.d($$7 * 255.0F), 255, 255, 255);
-            this.d().a($$0, $$6, $$2, gvg.a($$3, 0.0F), $$8);
-            this.a();
-         }
+   protected int a(cmk $$0, iu $$1) {
+      return 15;
+   }
+
+   public ale a(hec $$0) {
+      int $$1 = azk.d($$0.c);
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : j;
+   }
+
+   public hec b() {
+      return new hec();
+   }
+
+   protected void a(hec $$0, fiq $$1) {
+      float $$2 = 2.0F;
+      if ($$0.c > 0.0F) {
+         $$2 -= $$0.c / 220.0F * 0.5F;
       }
+
+      $$1.b($$2, $$2, $$2);
    }
 
-   private boolean a(S $$0) {
-      List<ghd> $$1 = this.c.getPartsToDraw(this.d(), $$0);
-      if ($$1.isEmpty()) {
-         return false;
-      } else {
-         this.d().f().forEach($$0x -> $$0x.l = true);
-         $$1.forEach($$0x -> $$0x.l = false);
-         return true;
-      }
-   }
-
-   private void a() {
-      this.d().f().forEach($$0 -> $$0.l = false);
-   }
-
-   public interface a<S extends hbk> {
-      float apply(S var1, float var2);
-   }
-
-   public interface b<S extends hbk, M extends gea<S>> {
-      List<ghd> getPartsToDraw(M var1, S var2);
+   public void a(cmk $$0, hec $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      int $$3 = $$0.t();
+      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
+      System.arraycopy($$0.q(), 0, $$1.a, 0, $$1.a.length);
+      System.arraycopy($$0.n(), 0, $$1.b, 0, $$1.b.length);
+      $$1.d = $$0.x();
    }
 }

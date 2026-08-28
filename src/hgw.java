@@ -1,50 +1,32 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
 
-@FunctionalInterface
-public interface hgw {
-   Logger a = LogUtils.getLogger();
+public class hgw implements hgz {
+   private final gig a;
 
-   static hgw create(Collection<atz<?>> $$0) {
-      return ($$1, $$2) -> {
-         avc $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
-         }
-
-         fgo $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = fgo.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
-
-         Optional<hif> $$11 = $$3.a(hif.b);
-         hig $$12;
-         if ($$11.isPresent()) {
-            $$12 = $$11.get().a($$7.a(), $$7.b());
-            if (!azk.c($$7.a(), $$12.a()) || !azk.c($$7.b(), $$12.b())) {
-               a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-               $$7.close();
-               return null;
-            }
-         } else {
-            $$12 = new hig($$7.a(), $$7.b());
-         }
-
-         return new hgm($$1, $$12, $$7, $$3);
-      };
+   public hgw(gig $$0) {
+      this.a = $$0;
    }
 
-   @Nullable
-   hgm loadSprite(ald var1, auy var2);
+   @Override
+   public void a(cyq $$0, fiq $$1, gpd $$2, int $$3, int $$4, boolean $$5) {
+      fiu $$6 = grx.b.a($$2, gpn::d);
+      $$1.a();
+      $$1.a(0.5F, 0.5F, 0.5F);
+      this.a.a($$1, $$6, $$3, $$4);
+      $$1.b();
+   }
+
+   public static record a() implements hhd.a {
+      public static final MapCodec<hgw.a> a = MapCodec.unit(new hgw.a());
+
+      @Override
+      public MapCodec<hgw.a> a() {
+         return a;
+      }
+
+      @Override
+      public hhd<?> a(gic $$0) {
+         return new hgw($$0.a(gif.ah));
+      }
+   }
 }

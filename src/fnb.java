@@ -1,172 +1,70 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fnb implements Comparable<fnb> {
-   private static final Map<String, fnb> h = Maps.newHashMap();
-   private static final Map<fgj.a, fnb> i = Maps.newHashMap();
-   private static final Set<String> j = Sets.newHashSet();
-   public static final String a = "key.categories.movement";
-   public static final String b = "key.categories.misc";
-   public static final String c = "key.categories.multiplayer";
-   public static final String d = "key.categories.gameplay";
-   public static final String e = "key.categories.inventory";
-   public static final String f = "key.categories.ui";
-   public static final String g = "key.categories.creative";
-   private static final Map<String, Integer> k = af.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("key.categories.movement", 1);
-      $$0.put("key.categories.gameplay", 2);
-      $$0.put("key.categories.inventory", 3);
-      $$0.put("key.categories.creative", 4);
-      $$0.put("key.categories.multiplayer", 5);
-      $$0.put("key.categories.ui", 6);
-      $$0.put("key.categories.misc", 7);
-   });
-   private final String l;
-   private final fgj.a m;
-   private final String n;
-   private fgj.a o;
-   private boolean p;
-   private int q;
+public class fnb extends fnd {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ww c = ww.c("mco.download.preparing");
+   private final long d;
+   private final int e;
+   private final fxi f;
+   private final String g;
 
-   public static void a(fgj.a $$0) {
-      fnb $$1 = i.get($$0);
-      if ($$1 != null) {
-         $$1.q++;
-      }
+   public fnb(long $$0, int $$1, String $$2, fxi $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$2;
    }
 
-   public static void a(fgj.a $$0, boolean $$1) {
-      fnb $$2 = i.get($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
-   }
+   @Override
+   public void run() {
+      fjg $$0 = fjg.a();
+      int $$1 = 0;
 
-   public static void a() {
-      for (fnb $$0 : h.values()) {
-         if ($$0.o.a() == fgj.b.a && $$0.o.b() != fgj.bv.b()) {
-            $$0.a(fgj.a(fnd.Q().aO().h(), $$0.o.b()));
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            fkw $$2 = $$0.b(this.d, this.e);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(new flt(this.f, $$2, this.g, $$0x -> {
+            }));
+            return;
+         } catch (fld var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (flc var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var5);
+            a(new flu(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var6);
+            this.a(var6);
+            return;
          }
       }
    }
 
-   public static void b() {
-      for (fnb $$0 : h.values()) {
-         $$0.n();
-      }
-   }
-
-   public static void c() {
-      for (fnb $$0 : h.values()) {
-         if ($$0 instanceof fno $$1) {
-            $$1.n();
-         }
-      }
-   }
-
-   public static void d() {
-      i.clear();
-
-      for (fnb $$0 : h.values()) {
-         i.put($$0.o, $$0);
-      }
-   }
-
-   public fnb(String $$0, int $$1, String $$2) {
-      this($$0, fgj.b.a, $$1, $$2);
-   }
-
-   public fnb(String $$0, fgj.b $$1, int $$2, String $$3) {
-      this.l = $$0;
-      this.o = $$1.a($$2);
-      this.m = this.o;
-      this.n = $$3;
-      h.put($$0, this);
-      i.put(this.o, this);
-      j.add($$3);
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public String f() {
-      return this.n;
-   }
-
-   public boolean g() {
-      if (this.q == 0) {
-         return false;
-      } else {
-         this.q--;
-         return true;
-      }
-   }
-
-   private void n() {
-      this.q = 0;
-      this.a(false);
-   }
-
-   public String h() {
-      return this.l;
-   }
-
-   public fgj.a i() {
-      return this.m;
-   }
-
-   public void b(fgj.a $$0) {
-      this.o = $$0;
-   }
-
-   public int a(fnb $$0) {
-      return this.n.equals($$0.n) ? hia.a(this.l).compareTo(hia.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
-   }
-
-   public static Supplier<wv> a(String $$0) {
-      fnb $$1 = h.get($$0);
-      return $$1 == null ? () -> wv.c($$0) : $$1::k;
-   }
-
-   public boolean b(fnb $$0) {
-      return this.o.equals($$0.o);
-   }
-
-   public boolean j() {
-      return this.o.equals(fgj.bv);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 == fgj.bv.b() ? this.o.a() == fgj.b.b && this.o.b() == $$1 : this.o.a() == fgj.b.a && this.o.b() == $$0;
-   }
-
-   public boolean a(int $$0) {
-      return this.o.a() == fgj.b.c && this.o.b() == $$0;
-   }
-
-   public wv k() {
-      return this.o.d();
-   }
-
-   public boolean l() {
-      return this.o.equals(this.m);
-   }
-
-   public String m() {
-      return this.o.c();
-   }
-
-   public void a(boolean $$0) {
-      this.p = $$0;
-   }
-
-   @Nullable
-   public static fnb b(String $$0) {
-      return h.get($$0);
+   @Override
+   public ww a() {
+      return c;
    }
 }

@@ -1,132 +1,132 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.jtracy.MemoryPool;
-import com.mojang.jtracy.TracyClient;
-import java.nio.ByteBuffer;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class ffj implements AutoCloseable {
-   private static final MemoryPool c = TracyClient.createMemoryPool("GPU Buffers");
-   private final ffh d;
-   private final ffi e;
-   private boolean f;
-   private boolean g = false;
-   public final int a;
-   public int b;
+public class ffj<T> implements ffp<T>, ffr<T> {
+   private final Queue<ffo<T>> a = new PriorityQueue<>(ffo.a);
+   @Nullable
+   private List<ffn<T>> b;
+   private final Set<ffo<?>> c = new ObjectOpenCustomHashSet(ffo.c);
+   @Nullable
+   private BiConsumer<ffj<T>, ffo<T>> d;
 
-   public ffj(ffh $$0, ffi $$1, int $$2) {
+   public ffj() {
+   }
+
+   public ffj(List<ffn<T>> $$0) {
+      this.b = $$0;
+
+      for (ffn<T> $$1 : $$0) {
+         this.c.add(ffo.a($$1.a(), $$1.b()));
+      }
+   }
+
+   public void a(@Nullable BiConsumer<ffj<T>, ffo<T>> $$0) {
       this.d = $$0;
-      this.b = $$2;
-      this.e = $$1;
-      this.a = GlStateManager._glGenBuffers();
-   }
-
-   public ffj(ffh $$0, ffi $$1, ByteBuffer $$2) {
-      this($$0, $$1, $$2.remaining());
-      this.a($$2, 0);
-   }
-
-   public void a(int $$0) {
-      if (this.f) {
-         throw new IllegalStateException("Buffer already closed");
-      } else {
-         if (this.g) {
-            c.free((long)this.a);
-         }
-
-         this.b = $$0;
-         if (this.e.l) {
-            this.g = false;
-         } else {
-            this.b();
-            GlStateManager._glBufferData(this.d.h, (long)$$0, this.e.j);
-            c.malloc((long)this.a, $$0);
-            this.g = true;
-         }
-      }
-   }
-
-   public void a(ByteBuffer $$0, int $$1) {
-      if (this.f) {
-         throw new IllegalStateException("Buffer already closed");
-      } else if (!this.e.l) {
-         throw new IllegalStateException("Buffer is not writable");
-      } else {
-         int $$2 = $$0.remaining();
-         if ($$2 + $$1 > this.b) {
-            throw new IllegalArgumentException(
-               "Cannot write more data than this buffer can hold (attempting to write " + $$2 + " bytes at offset " + $$1 + " to " + this.b + " size buffer)"
-            );
-         } else {
-            this.b();
-            if (this.g) {
-               GlStateManager._glBufferSubData(this.d.h, $$1, $$0);
-            } else if ($$1 == 0 && $$2 == this.b) {
-               GlStateManager._glBufferData(this.d.h, $$0, this.e.j);
-               c.malloc((long)this.a, this.b);
-               this.g = true;
-            } else {
-               GlStateManager._glBufferData(this.d.h, (long)this.b, this.e.j);
-               GlStateManager._glBufferSubData(this.d.h, $$1, $$0);
-               c.malloc((long)this.a, this.b);
-               this.g = true;
-            }
-         }
-      }
    }
 
    @Nullable
-   public ffj.a a() {
-      return this.a(0, this.b);
+   public ffo<T> b() {
+      return this.a.peek();
    }
 
    @Nullable
-   public ffj.a a(int $$0, int $$1) {
-      if (this.f) {
-         throw new IllegalStateException("Buffer already closed");
-      } else if (!this.e.k) {
-         throw new IllegalStateException("Buffer is not readable");
-      } else if ($$0 + $$1 > this.b) {
-         throw new IllegalArgumentException(
-            "Cannot read more data than this buffer can hold (attempting to read " + $$1 + " bytes at offset " + $$0 + " from " + this.b + " size buffer)"
-         );
-      } else {
-         this.b();
-         ByteBuffer $$2 = GlStateManager._glMapBufferRange(this.d.h, $$0, $$1, 1);
-         return $$2 == null ? null : new ffj.a(this.d.h, $$2);
+   public ffo<T> c() {
+      ffo<T> $$0 = this.a.poll();
+      if ($$0 != null) {
+         this.c.remove($$0);
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public void a(ffo<T> $$0) {
+      if (this.c.add($$0)) {
+         this.b($$0);
+      }
+   }
+
+   private void b(ffo<T> $$0) {
+      this.a.add($$0);
+      if (this.d != null) {
+         this.d.accept(this, $$0);
       }
    }
 
    @Override
-   public void close() {
-      if (!this.f) {
-         this.f = true;
-         GlStateManager._glDeleteBuffers(this.a);
-         if (this.g) {
-            c.free((long)this.a);
+   public boolean a(iu $$0, T $$1) {
+      return this.c.contains(ffo.a($$1, $$0));
+   }
+
+   public void a(Predicate<ffo<T>> $$0) {
+      Iterator<ffo<T>> $$1 = this.a.iterator();
+
+      while ($$1.hasNext()) {
+         ffo<T> $$2 = $$1.next();
+         if ($$0.test($$2)) {
+            $$1.remove();
+            this.c.remove($$2);
          }
       }
    }
 
-   public void b() {
-      GlStateManager._glBindBuffer(this.d.h, this.a);
+   public Stream<ffo<T>> d() {
+      return this.a.stream();
    }
 
-   public static class a implements AutoCloseable {
-      private final int a;
-      private final ByteBuffer b;
+   @Override
+   public int a() {
+      return this.a.size() + (this.b != null ? this.b.size() : 0);
+   }
 
-      protected a(int $$0, ByteBuffer $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public List<ffn<T>> a(long $$0) {
+      List<ffn<T>> $$1 = new ArrayList<>(this.a.size());
+      if (this.b != null) {
+         $$1.addAll(this.b);
       }
 
-      public ByteBuffer a() {
-         return this.b;
+      for (ffo<T> $$2 : this.a) {
+         $$1.add($$2.a($$0));
       }
 
-      @Override
-      public void close() {
-         GlStateManager._glUnmapBuffer(this.a);
+      return $$1;
+   }
+
+   public ud a(long $$0, Function<T, String> $$1) {
+      ud $$2 = new ud();
+
+      for (ffn<T> $$4 : this.a($$0)) {
+         $$2.add($$4.a($$1));
       }
+
+      return $$2;
+   }
+
+   public void b(long $$0) {
+      if (this.b != null) {
+         int $$1 = -this.b.size();
+
+         for (ffn<T> $$2 : this.b) {
+            this.b($$2.a($$0, (long)($$1++)));
+         }
+      }
+
+      this.b = null;
+   }
+
+   public static <T> ffj<T> a(ud $$0, Function<String, Optional<T>> $$1, dhw $$2) {
+      return new ffj<>(ffn.a($$0, $$1, $$2));
    }
 }

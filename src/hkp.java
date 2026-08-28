@@ -1,47 +1,9 @@
-import javax.annotation.Nullable;
-
 public interface hkp {
-   ald a();
+   default j a() {
+      return j.a();
+   }
 
-   @Nullable
-   hlw a(hlv var1);
-
-   hkm b();
-
-   awl c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   hkp.a k();
-
-   default boolean r() {
+   default boolean b() {
       return false;
-   }
-
-   default boolean s() {
-      return true;
-   }
-
-   static azs t() {
-      return azs.a();
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

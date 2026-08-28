@@ -1,21 +1,26 @@
-public class fzq extends fzl {
-   private static final wv a = wv.c("controls.title");
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   private static fng<?>[] a(fnh $$0) {
-      return new fng[]{$$0.af(), $$0.ag(), $$0.J(), $$0.L()};
-   }
+public class fzq implements fzv {
+   private final fvx a;
 
-   public fzq(fwf $$0, fnh $$1) {
-      super($$0, $$1, a);
+   public fzq(fvx $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void m() {
-      this.d
-         .a(
-            fqn.a(wv.c("options.mouse_settings"), $$0 -> this.m.a(new fzi(this, this.c))).a(),
-            fqn.a(wv.c("controls.keybinds"), $$0 -> this.m.a(new fzs(this, this.c))).a()
-         );
-      this.d.a(a(this.c));
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.d() + 3;
+      $$6.y = this.a.c() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.b() - $$5 - 3 - 1;
+      }
+
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
+      }
+
+      return $$6;
    }
 }

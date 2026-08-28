@@ -1,44 +1,45 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class ant {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("commands.kick.owner.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wv.c("commands.kick.singleplayer.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("commands.jfr.start.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ww.b("commands.jfr.dump.failed", $$0));
 
-   public static void a(CommandDispatcher<ex> $$0) {
+   private ant() {
+   }
+
+   public static void a(CommandDispatcher<ei> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("kick").requires($$0x -> $$0x.c(3)))
-            .then(
-               ((RequiredArgumentBuilder)ey.a("targets", fk.d())
-                     .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), wv.c("multiplayer.disconnect.kicked"))))
-                  .then(ey.a("reason", fo.a()).executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), fo.a($$0x, "reason"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("jfr").requires($$0x -> $$0x.c(4)))
+               .then(ej.a("start").executes($$0x -> a((ei)$$0x.getSource()))))
+            .then(ej.a("stop").executes($$0x -> b((ei)$$0x.getSource())))
       );
    }
 
-   private static int a(ex $$0, Collection<aro> $$1, wv $$2) throws CommandSyntaxException {
-      if (!$$0.l().r()) {
-         throw b.create();
+   private static int a(ei $$0) throws CommandSyntaxException {
+      bqp $$1 = bqp.a($$0.l());
+      if (!bqr.f.a($$1)) {
+         throw a.create();
       } else {
-         int $$3 = 0;
+         $$0.a(() -> ww.c("commands.jfr.started"), false);
+         return 1;
+      }
+   }
 
-         for (aro $$4 : $$1) {
-            if (!$$0.l().a($$4.gh())) {
-               $$4.f.a($$2);
-               $$0.a(() -> wv.a("commands.kick.success", $$4.m_(), $$2), true);
-               $$3++;
-            }
-         }
-
-         if ($$3 == 0) {
-            throw a.create();
-         } else {
-            return $$3;
-         }
+   private static int b(ei $$0) throws CommandSyntaxException {
+      try {
+         Path $$1 = Paths.get(".").relativize(bqr.f.b().normalize());
+         Path $$2 = $$0.l().r() && !ab.aU ? $$1 : $$1.toAbsolutePath();
+         ww $$3 = ww.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new wu.c($$2.toString())).a(new xc.e(ww.c("chat.copy.click"))));
+         $$0.a(() -> ww.a("commands.jfr.stopped", $$3), false);
+         return 1;
+      } catch (Throwable var4) {
+         throw b.create(var4.getMessage());
       }
    }
 }

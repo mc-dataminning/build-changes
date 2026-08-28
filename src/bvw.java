@@ -1,43 +1,38 @@
-import com.mojang.serialization.Codec;
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.Objects;
-
 public class bvw {
-   public static final Codec<bvw> a = Codec.unboundedMap(bwc.l, cxy.b).xmap($$0 -> {
-      EnumMap<bwc, cxy> $$1 = new EnumMap<>(bwc.class);
-      $$1.putAll($$0);
-      return new bvw($$1);
-   }, $$0 -> {
-      Map<bwc, cxy> $$1 = new EnumMap<>($$0.b);
-      $$1.values().removeIf(cxy::f);
-      return $$1;
-   });
-   private final EnumMap<bwc, cxy> b;
+   public static final bvw a = new bvw(0.75F, 0.5F, 0.25F);
+   public static final bvw b = new bvw(0.95F, 0.69F, 0.32F);
+   private final float c;
+   private final float d;
+   private final float e;
 
-   private bvw(EnumMap<bwc, cxy> $$0) {
-      this.b = $$0;
+   private bvw(float $$0, float $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public bvw() {
-      this(new EnumMap<>(bwc.class));
-   }
-
-   public cxy a(bwc $$0, cxy $$1) {
-      return Objects.requireNonNullElse(this.b.put($$0, $$1), cxy.k);
-   }
-
-   public cxy a(bwc $$0) {
-      return this.b.getOrDefault($$0, cxy.k);
-   }
-
-   public boolean a() {
-      for (cxy $$0 : this.b.values()) {
-         if (!$$0.f()) {
-            return false;
-         }
+   public bvw.a a(float $$0) {
+      if ($$0 < this.e) {
+         return bvw.a.d;
+      } else if ($$0 < this.d) {
+         return bvw.a.c;
+      } else {
+         return $$0 < this.c ? bvw.a.b : bvw.a.a;
       }
+   }
 
-      return true;
+   public bvw.a a(cys $$0) {
+      return !$$0.m() ? bvw.a.a : this.a($$0.o(), $$0.p());
+   }
+
+   public bvw.a a(int $$0, int $$1) {
+      return this.a((float)($$1 - $$0) / (float)$$1);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

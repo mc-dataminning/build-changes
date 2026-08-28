@@ -1,61 +1,97 @@
-import com.mojang.datafixers.Products.P3;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.BiConsumer;
 
-public abstract class elt {
-   public static final Codec<elt> d = md.W.q().dispatch(elt::a, elu::a);
-   protected final bsv e;
-   protected final elw f;
-   protected final Optional<elq> g;
+public class elt implements ekx {
+   public static final Codec<elt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               emy.a.fieldOf("trunk_provider").forGetter($$0x -> $$0x.b),
+               eoe.c.fieldOf("trunk_placer").forGetter($$0x -> $$0x.d),
+               emy.a.fieldOf("foliage_provider").forGetter($$0x -> $$0x.e),
+               emj.d.fieldOf("foliage_placer").forGetter($$0x -> $$0x.f),
+               emv.d.optionalFieldOf("root_placer").forGetter($$0x -> $$0x.g),
+               emy.a.fieldOf("dirt_provider").forGetter($$0x -> $$0x.c),
+               ely.a.fieldOf("minimum_size").forGetter($$0x -> $$0x.h),
+               ens.h.listOf().fieldOf("decorators").forGetter($$0x -> $$0x.i),
+               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter($$0x -> $$0x.j),
+               Codec.BOOL.fieldOf("force_dirt").orElse(false).forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, elt::new)
+   );
+   public final emy b;
+   public final emy c;
+   public final eoe d;
+   public final emy e;
+   public final emj f;
+   public final Optional<emv> g;
+   public final ely h;
+   public final List<ens> i;
+   public final boolean j;
+   public final boolean k;
 
-   protected static <P extends elt> P3<Mu<P>, bsv, elw, Optional<elq>> a(Instance<P> $$0) {
-      return $$0.group(
-         bsv.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         elw.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         elq.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   protected elt(emy $$0, eoe $$1, emy $$2, emj $$3, Optional<emv> $$4, emy $$5, ely $$6, List<ens> $$7, boolean $$8, boolean $$9) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.c = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 
-   public elt(bsv $$0, elw $$1, Optional<elq> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
+   public static class a {
+      public final emy a;
+      private final eoe c;
+      public final emy b;
+      private final emj d;
+      private final Optional<emv> e;
+      private emy f;
+      private final ely g;
+      private List<ens> h = ImmutableList.of();
+      private boolean i;
+      private boolean j;
 
-   protected abstract elu<?> a();
-
-   public abstract boolean a(dhv var1, BiConsumer<jj, dym> var2, azs var3, jj var4, jj var5, ekr var6);
-
-   protected boolean a(dhv $$0, jj $$1) {
-      return ejd.d($$0, $$1);
-   }
-
-   protected void a(dhv $$0, BiConsumer<jj, dym> $$1, azs $$2, jj $$3, ekr $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            elq $$5 = this.g.get();
-            jj $$6 = $$3.d();
-            if ($$2.i() < $$5.b() && $$0.a($$6, dyl.a::l)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
-            }
-         }
+      public a(emy $$0, eoe $$1, emy $$2, emj $$3, Optional<emv> $$4, ely $$5) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+         this.f = emy.a(dlw.j);
+         this.d = $$3;
+         this.e = $$4;
+         this.g = $$5;
       }
-   }
 
-   protected dym a(dhv $$0, jj $$1, dym $$2) {
-      if ($$2.b(dzc.I)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(axf.a));
-         return $$2.b(dzc.I, Boolean.valueOf($$3));
-      } else {
-         return $$2;
+      public a(emy $$0, eoe $$1, emy $$2, emj $$3, ely $$4) {
+         this($$0, $$1, $$2, $$3, Optional.empty(), $$4);
       }
-   }
 
-   public jj a(jj $$0, azs $$1) {
-      return $$0.b(this.e.a($$1));
+      public elt.a a(emy $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public elt.a a(List<ens> $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public elt.a a() {
+         this.i = true;
+         return this;
+      }
+
+      public elt.a b() {
+         this.j = true;
+         return this;
+      }
+
+      public elt c() {
+         return new elt(this.a, this.c, this.b, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
+      }
    }
 }

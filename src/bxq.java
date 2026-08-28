@@ -1,43 +1,82 @@
-public class bxq {
-   private float a;
-   private float b;
-   private float c;
-   private float d = 1.0F;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-   public void a(float $$0) {
-      this.b = $$0;
+public interface bxq {
+   bxq a = new bxq() {
+      @Override
+      public cys a() {
+         return cys.k;
+      }
+
+      @Override
+      public boolean a(cys $$0) {
+         return false;
+      }
+   };
+
+   static bxq a(final Supplier<cys> $$0, final Consumer<cys> $$1) {
+      return new bxq() {
+         @Override
+         public cys a() {
+            return $$0.get();
+         }
+
+         @Override
+         public boolean a(cys $$0x) {
+            $$1.accept($$0);
+            return true;
+         }
+      };
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      this.a = this.b;
-      this.b = this.b + ($$0 - this.b) * $$1;
-      this.c = this.c + this.b;
-      this.d = $$2;
+   static bxq a(final btr $$0, final int $$1, final Predicate<cys> $$2) {
+      return new bxq() {
+         @Override
+         public cys a() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public boolean a(cys $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
    }
 
-   public void a() {
-      this.a = 0.0F;
-      this.b = 0.0F;
-      this.c = 0.0F;
+   static bxq a(btr $$0, int $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   public float b() {
-      return this.b;
+   static bxq a(final bwz $$0, final bwk $$1, final Predicate<cys> $$2) {
+      return new bxq() {
+         @Override
+         public cys a() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public boolean a(cys $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
    }
 
-   public float b(float $$0) {
-      return Math.min(azk.h($$0, this.a, this.b), 1.0F);
+   static bxq a(bwz $$0, bwk $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   public float c() {
-      return this.c * this.d;
-   }
+   cys a();
 
-   public float c(float $$0) {
-      return (this.c - this.b * (1.0F - $$0)) * this.d;
-   }
-
-   public boolean d() {
-      return this.b > 1.0E-5F;
-   }
+   boolean a(cys var1);
 }

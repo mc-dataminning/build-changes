@@ -1,10 +1,6 @@
-public class hat extends haz {
-   public float a;
-   public float b;
-   public boolean c;
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public ciq.v h = ciq.v.a;
+public class hat extends hcp {
+   public boolean a;
+   public final bvr b = new bvr();
+   public final bvr c = new bvr();
+   public final bvr d = new bvr();
 }

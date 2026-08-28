@@ -1,6 +1,3 @@
-import javax.annotation.Nullable;
-
 public interface bxo {
-   @Nullable
-   bwr f();
+   void a(chy var1, bwa var2);
 }

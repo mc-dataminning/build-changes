@@ -1,60 +1,48 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emn extends emq {
-   public static final MapCodec<emn> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(emn::new, $$0 -> $$0.b);
-   private final float b;
+public class emn extends emj {
+   public static final MapCodec<emn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(btd.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, emn::new)
+   );
+   private final btd b;
+
+   public emn(btd $$0, btd $$1, btd $$2) {
+      super($$0, $$1);
+      this.b = $$2;
+   }
 
    @Override
-   protected emr<?> a() {
-      return emr.b;
-   }
-
-   public emn(float $$0) {
-      this.b = $$0;
+   protected emk<?> a() {
+      return emk.c;
    }
 
    @Override
-   public void a(emq.a $$0) {
-      azs $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            jj $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               a($$3, dty.d, $$0);
-            }
+   protected void a(div $$0, emj.b $$1, azt $$2, elt $$3, int $$4, emj.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
          }
-
-         if ($$1.i() < this.b) {
-            jj $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               a($$4, dty.f, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            jj $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               a($$5, dty.e, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            jj $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               a($$6, dty.c, $$0);
-            }
-         }
-      });
-   }
-
-   private static void a(jj $$0, dzd $$1, emq.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
-
-      for (jj var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.e();
       }
+   }
+
+   @Override
+   public int a(azt $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   }
+
+   @Override
+   public int a(azt $$0, int $$1, elt $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azt $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

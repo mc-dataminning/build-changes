@@ -1,281 +1,56 @@
-import it.unimi.dsi.fastutil.longs.LongConsumer;
-import java.util.Spliterators.AbstractSpliterator;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.Map.Entry;
 
-public class kl extends kn {
-   public static final int a = 4;
-   public static final int b = 16;
-   public static final int c = 15;
-   public static final int d = 8;
-   public static final int e = 15;
-   private static final int f = 22;
-   private static final int j = 20;
-   private static final int k = 22;
-   private static final long l = 4194303L;
-   private static final long m = 1048575L;
-   private static final long n = 4194303L;
-   private static final int o = 0;
-   private static final int p = 20;
-   private static final int q = 42;
-   private static final int r = 8;
-   private static final int s = 0;
-   private static final int t = 4;
-
-   kl(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public static kl a(int $$0, int $$1, int $$2) {
-      return new kl($$0, $$1, $$2);
-   }
-
-   public static kl a(jj $$0) {
-      return new kl(a($$0.u()), a($$0.v()), a($$0.w()));
-   }
-
-   public static kl a(dgw $$0, int $$1) {
-      return new kl($$0.h, $$1, $$0.i);
-   }
-
-   public static kl a(ecr $$0) {
-      return a($$0.dv());
-   }
-
-   public static kl a(kc $$0) {
-      return new kl(b($$0.a()), b($$0.b()), b($$0.c()));
-   }
-
-   public static kl a(long $$0) {
-      return new kl(b($$0), c($$0), d($$0));
-   }
-
-   public static kl a(eaj $$0) {
-      return a($$0.f(), $$0.aq());
-   }
-
-   public static long a(long $$0, jo $$1) {
-      return a($$0, $$1.j(), $$1.k(), $$1.l());
-   }
-
-   public static long a(long $$0, int $$1, int $$2, int $$3) {
-      return b(b($$0) + $$1, c($$0) + $$2, d($$0) + $$3);
-   }
-
-   public static int a(double $$0) {
-      return a(azk.a($$0));
-   }
-
-   public static int a(int $$0) {
-      return $$0 >> 4;
-   }
-
-   public static int b(double $$0) {
-      return azk.a($$0) >> 4;
-   }
-
-   public static int b(int $$0) {
-      return $$0 & 15;
-   }
-
-   public static short b(jj $$0) {
-      int $$1 = b($$0.u());
-      int $$2 = b($$0.v());
-      int $$3 = b($$0.w());
-      return (short)($$1 << 8 | $$3 << 4 | $$2 << 0);
-   }
-
-   public static int a(short $$0) {
-      return $$0 >>> 8 & 15;
-   }
-
-   public static int b(short $$0) {
-      return $$0 >>> 0 & 15;
-   }
-
-   public static int c(short $$0) {
-      return $$0 >>> 4 & 15;
-   }
-
-   public int d(short $$0) {
-      return this.d() + a($$0);
-   }
-
-   public int e(short $$0) {
-      return this.e() + b($$0);
-   }
-
-   public int f(short $$0) {
-      return this.f() + c($$0);
-   }
-
-   public jj g(short $$0) {
-      return new jj(this.d($$0), this.e($$0), this.f($$0));
-   }
-
-   public static int c(int $$0) {
-      return $$0 << 4;
-   }
-
-   public static int a(int $$0, int $$1) {
-      return c($$0) + $$1;
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 << 0 >> 42);
-   }
-
-   public static int c(long $$0) {
-      return (int)($$0 << 44 >> 44);
-   }
-
-   public static int d(long $$0) {
-      return (int)($$0 << 22 >> 42);
-   }
-
-   public int a() {
-      return this.u();
-   }
-
-   public int b() {
-      return this.v();
-   }
-
-   public int c() {
-      return this.w();
-   }
-
-   public int d() {
-      return c(this.a());
-   }
-
-   public int e() {
-      return c(this.b());
-   }
-
-   public int f() {
-      return c(this.c());
-   }
-
-   public int g() {
-      return a(this.a(), 15);
-   }
-
-   public int h() {
-      return a(this.b(), 15);
-   }
-
-   public int i() {
-      return a(this.c(), 15);
-   }
-
-   public static long e(long $$0) {
-      return b(a(jj.a($$0)), a(jj.b($$0)), a(jj.c($$0)));
-   }
-
-   public static long b(int $$0, int $$1) {
-      return f(b($$0, 0, $$1));
-   }
-
-   public static long f(long $$0) {
-      return $$0 & -1048576L;
-   }
-
-   public static long g(long $$0) {
-      return dgw.c(b($$0), d($$0));
-   }
-
-   public jj j() {
-      return new jj(c(this.a()), c(this.b()), c(this.c()));
-   }
-
-   public jj k() {
-      int $$0 = 8;
-      return this.j().b(8, 8, 8);
-   }
-
-   public dgw r() {
-      return new dgw(this.a(), this.c());
-   }
-
-   public static long c(jj $$0) {
-      return b(a($$0.u()), a($$0.v()), a($$0.w()));
-   }
-
-   public static long b(int $$0, int $$1, int $$2) {
-      long $$3 = 0L;
-      $$3 |= ((long)$$0 & 4194303L) << 42;
-      $$3 |= ((long)$$1 & 1048575L) << 0;
-      return $$3 | ((long)$$2 & 4194303L) << 20;
-   }
-
-   public long s() {
-      return b(this.a(), this.b(), this.c());
-   }
-
-   public kl d(int $$0, int $$1, int $$2) {
-      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new kl(this.a() + $$0, this.b() + $$1, this.c() + $$2);
-   }
-
-   public Stream<jj> t() {
-      return jj.a(this.d(), this.e(), this.f(), this.g(), this.h(), this.i());
-   }
-
-   public static Stream<kl> a(kl $$0, int $$1) {
-      int $$2 = $$0.a();
-      int $$3 = $$0.b();
-      int $$4 = $$0.c();
-      return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
-   }
-
-   public static Stream<kl> a(dgw $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$0.h;
-      int $$5 = $$0.i;
-      return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3, $$5 + $$1);
-   }
-
-   public static Stream<kl> a(final int $$0, final int $$1, final int $$2, final int $$3, final int $$4, final int $$5) {
-      return StreamSupport.stream(new AbstractSpliterator<kl>((long)(($$3 - $$0 + 1) * ($$4 - $$1 + 1) * ($$5 - $$2 + 1)), 64) {
-         final jl a = new jl($$0, $$1, $$2, $$3, $$4, $$5);
-
-         @Override
-         public boolean tryAdvance(Consumer<? super kl> $$0x) {
-            if (this.a.a()) {
-               $$0.accept(new kl(this.a.b(), this.a.c(), this.a.d()));
-               return true;
-            } else {
-               return false;
-            }
-         }
-      }, false);
-   }
-
-   public static void a(jj $$0, LongConsumer $$1) {
-      a($$0.u(), $$0.v(), $$0.w(), $$1);
-   }
-
-   public static void a(long $$0, LongConsumer $$1) {
-      a(jj.a($$0), jj.b($$0), jj.c($$0), $$1);
-   }
-
-   public static void a(int $$0, int $$1, int $$2, LongConsumer $$3) {
-      int $$4 = a($$0 - 1);
-      int $$5 = a($$0 + 1);
-      int $$6 = a($$1 - 1);
-      int $$7 = a($$1 + 1);
-      int $$8 = a($$2 - 1);
-      int $$9 = a($$2 + 1);
-      if ($$4 == $$5 && $$6 == $$7 && $$8 == $$9) {
-         $$3.accept(b($$4, $$6, $$8));
-      } else {
-         for (int $$10 = $$4; $$10 <= $$5; $$10++) {
-            for (int $$11 = $$6; $$11 <= $$7; $$11++) {
-               for (int $$12 = $$8; $$12 <= $$9; $$12++) {
-                  $$3.accept(b($$10, $$11, $$12));
-               }
-            }
-         }
+public record kl<T>(ki<T> b, T c) {
+   public static final yu<wh, kl<?>> a = new yu<wh, kl<?>>() {
+      public kl<?> a(wh $$0) {
+         ki<?> $$1 = ki.b.decode($$0);
+         return a($$0, (ki<T>)$$1);
       }
+
+      private static <T> kl<T> a(wh $$0, ki<T> $$1) {
+         return new kl<>($$1, $$1.e().decode($$0));
+      }
+
+      public void a(wh $$0, kl<?> $$1) {
+         b($$0, (kl<T>)$$1);
+      }
+
+      private static <T> void b(wh $$0, kl<T> $$1) {
+         ki.b.encode($$0, $$1.a());
+         $$1.a().e().encode($$0, $$1.b());
+      }
+   };
+
+   static kl<?> a(Entry<ki<?>, Object> $$0) {
+      return a($$0.getKey(), $$0.getValue());
+   }
+
+   public static <T> kl<T> a(ki<T> $$0, Object $$1) {
+      return new kl<>($$0, (T)$$1);
+   }
+
+   public void a(kk $$0) {
+      $$0.b(this.b, this.c);
+   }
+
+   public <D> DataResult<D> a(DynamicOps<D> $$0) {
+      Codec<T> $$1 = this.b.b();
+      return $$1 == null ? DataResult.error(() -> "Component of type " + this.b + " is not encodable") : $$1.encodeStart($$0, this.c);
+   }
+
+   @Override
+   public String toString() {
+      return this.b + "=>" + this.c;
+   }
+
+   public ki<T> a() {
+      return this.b;
+   }
+
+   public T b() {
+      return this.c;
    }
 }

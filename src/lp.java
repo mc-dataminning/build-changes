@@ -1,36 +1,30 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.joml.Vector3f;
 
-public class lp extends lw {
-   public static final int a = 3790560;
-   public static final lp b = new lp(3790560, 16711680, 1.0F);
-   public static final MapCodec<lp> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ays.i.fieldOf("from_color").forGetter($$0x -> $$0x.h), ays.i.fieldOf("to_color").forGetter($$0x -> $$0x.i), g.fieldOf("scale").forGetter(lw::d)
-            )
-            .apply($$0, lp::new)
-   );
-   public static final yt<wg, lp> d = yt.a(yr.g, $$0 -> $$0.h, yr.g, $$0 -> $$0.i, yr.l, lw::d, lp::new);
-   private final int h;
-   private final int i;
+public class lp implements lv {
+   private static final Codec<dzo> a = Codec.withAlternative(dzo.a, mf.e.q(), dlu::m);
+   private final lw<lp> b;
+   private final dzo c;
 
-   public lp(int $$0, int $$1, float $$2) {
-      super($$2);
-      this.h = $$0;
-      this.i = $$1;
+   public static MapCodec<lp> a(lw<lp> $$0) {
+      return a.xmap($$1 -> new lp($$0, $$1), $$0x -> $$0x.c).fieldOf("block_state");
    }
 
-   public Vector3f b() {
-      return axu.h(this.h);
+   public static yu<? super wh, lp> b(lw<lp> $$0) {
+      return ys.a(dlu.k).a($$1 -> new lp($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public Vector3f c() {
-      return axu.h(this.i);
+   public lp(lw<lp> $$0, dzo $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public lu<lp> a() {
-      return lv.o;
+   public lw<lp> a() {
+      return this.b;
+   }
+
+   public dzo b() {
+      return this.c;
    }
 }

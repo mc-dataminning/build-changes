@@ -1,112 +1,24 @@
-import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import java.net.SocketAddress;
-import java.util.Locale;
-import org.slf4j.Logger;
+import java.nio.charset.StandardCharsets;
 
-public class asi extends ChannelInboundHandlerAdapter {
-   private static final Logger a = LogUtils.getLogger();
-   private final alt b;
+public class asi {
+   public static final int a = 250;
+   public static final String b = "MC|PingHost";
+   public static final int c = 254;
+   public static final int d = 1;
+   public static final int e = 255;
+   public static final int f = 127;
 
-   public asi(alt $$0) {
-      this.b = $$0;
+   public static void a(ByteBuf $$0, String $$1) {
+      $$0.writeShort($$1.length());
+      $$0.writeCharSequence($$1, StandardCharsets.UTF_16BE);
    }
 
-   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-      ByteBuf $$2 = (ByteBuf)$$1;
-      $$2.markReaderIndex();
-      boolean $$3 = true;
-
-      try {
-         try {
-            if ($$2.readUnsignedByte() != 254) {
-               return;
-            }
-
-            SocketAddress $$4 = $$0.channel().remoteAddress();
-            int $$5 = $$2.readableBytes();
-            if ($$5 == 0) {
-               a.debug("Ping: (<1.3.x) from {}", $$4);
-               String $$6 = a(this.b);
-               a($$0, a($$0.alloc(), $$6));
-            } else {
-               if ($$2.readUnsignedByte() != 1) {
-                  return;
-               }
-
-               if ($$2.isReadable()) {
-                  if (!a($$2)) {
-                     return;
-                  }
-
-                  a.debug("Ping: (1.6) from {}", $$4);
-               } else {
-                  a.debug("Ping: (1.4-1.5.x) from {}", $$4);
-               }
-
-               String $$7 = b(this.b);
-               a($$0, a($$0.alloc(), $$7));
-            }
-
-            $$2.release();
-            $$3 = false;
-         } catch (RuntimeException var11) {
-         }
-      } finally {
-         if ($$3) {
-            $$2.resetReaderIndex();
-            $$0.channel().pipeline().remove(this);
-            $$0.fireChannelRead($$1);
-         }
-      }
-   }
-
-   private static boolean a(ByteBuf $$0) {
-      short $$1 = $$0.readUnsignedByte();
-      if ($$1 != 250) {
-         return false;
-      } else {
-         String $$2 = ash.a($$0);
-         if (!"MC|PingHost".equals($$2)) {
-            return false;
-         } else {
-            int $$3 = $$0.readUnsignedShort();
-            if ($$0.readableBytes() != $$3) {
-               return false;
-            } else {
-               short $$4 = $$0.readUnsignedByte();
-               if ($$4 < 73) {
-                  return false;
-               } else {
-                  String $$5 = ash.a($$0);
-                  int $$6 = $$0.readInt();
-                  return $$6 <= 65535;
-               }
-            }
-         }
-      }
-   }
-
-   private static String a(alt $$0) {
-      return String.format(Locale.ROOT, "%s§%d§%d", $$0.ae(), $$0.N(), $$0.O());
-   }
-
-   private static String b(alt $$0) {
-      return String.format(Locale.ROOT, "§1\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d", 127, $$0.M(), $$0.ae(), $$0.N(), $$0.O());
-   }
-
-   private static void a(ChannelHandlerContext $$0, ByteBuf $$1) {
-      $$0.pipeline().firstContext().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE);
-   }
-
-   private static ByteBuf a(ByteBufAllocator $$0, String $$1) {
-      ByteBuf $$2 = $$0.buffer();
-      $$2.writeByte(255);
-      ash.a($$2, $$1);
-      return $$2;
+   public static String a(ByteBuf $$0) {
+      int $$1 = $$0.readShort();
+      int $$2 = $$1 * 2;
+      String $$3 = $$0.toString($$0.readerIndex(), $$2, StandardCharsets.UTF_16BE);
+      $$0.skipBytes($$2);
+      return $$3;
    }
 }

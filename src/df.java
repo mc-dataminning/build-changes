@@ -1,31 +1,80 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
 
-public record df(dk.d b) {
-   public static final Codec<df> a = RecordCodecBuilder.create($$0 -> $$0.group(dk.d.d.optionalFieldOf("light", dk.d.c).forGetter(df::a)).apply($$0, df::new));
-
-   public boolean a(arn $$0, jj $$1) {
-      return !$$0.p($$1) ? false : this.b.d($$0.A($$1));
+public class df extends dj<df.a> {
+   @Override
+   public Codec<df.a> a() {
+      return df.a.a;
    }
 
-   public dk.d a() {
-      return this.b;
+   public void a(arp $$0, ald<ddj<?>> $$1, List<cys> $$2) {
+      this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public static class a {
-      private dk.d a = dk.d.c;
+   public static record a(Optional<bi> b, ald<ddj<?>> c, List<cl> d) implements dj.a {
+      public static final Codec<df.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bx.b.optionalFieldOf("player").forGetter(df.a::a),
+                  ald.a(mg.bs).fieldOf("recipe_id").forGetter(df.a::b),
+                  cl.a.listOf().optionalFieldOf("ingredients", List.of()).forGetter(df.a::c)
+               )
+               .apply($$0, df.a::new)
+      );
 
-      public static df.a a() {
-         return new df.a();
+      public static aq<df.a> a(ald<ddj<?>> $$0, List<cl.a> $$1) {
+         return ap.ac.a(new df.a(Optional.empty(), $$0, $$1.stream().map(cl.a::b).toList()));
       }
 
-      public df.a a(dk.d $$0) {
-         this.a = $$0;
-         return this;
+      public static aq<df.a> a(ald<ddj<?>> $$0) {
+         return ap.ac.a(new df.a(Optional.empty(), $$0, List.of()));
       }
 
-      public df b() {
-         return new df(this.a);
+      public static aq<df.a> b(ald<ddj<?>> $$0) {
+         return ap.ad.a(new df.a(Optional.empty(), $$0, List.of()));
+      }
+
+      boolean b(ald<ddj<?>> $$0, List<cys> $$1) {
+         if ($$0 != this.c) {
+            return false;
+         } else {
+            List<cys> $$2 = new ArrayList<>($$1);
+
+            for (cl $$3 : this.d) {
+               boolean $$4 = false;
+               Iterator<cys> $$5 = $$2.iterator();
+
+               while ($$5.hasNext()) {
+                  if ($$3.a($$5.next())) {
+                     $$5.remove();
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      }
+
+      @Override
+      public Optional<bi> a() {
+         return this.b;
+      }
+
+      public ald<ddj<?>> b() {
+         return this.c;
+      }
+
+      public List<cl> c() {
+         return this.d;
       }
    }
 }

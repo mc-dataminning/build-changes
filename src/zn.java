@@ -1,29 +1,29 @@
-public class zn implements zc<zi> {
-   public static final yt<vr, zn> a = zc.a(zn::a, zn::new);
-   private final int b;
+public class zn implements zd<zj> {
+   public static final yu<vs, zn> a = zd.a(zn::a, zn::new);
+   private final long b;
 
-   public zn(int $$0) {
+   public zn(long $$0) {
       this.b = $$0;
    }
 
-   private zn(vr $$0) {
-      this.b = $$0.readInt();
+   private zn(vs $$0) {
+      this.b = $$0.readLong();
    }
 
-   private void a(vr $$0) {
-      $$0.q(this.b);
+   private void a(vs $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public ze<zn> a() {
-      return zu.e;
+   public zf<zn> a() {
+      return zv.d;
    }
 
-   public void a(zi $$0) {
+   public void a(zj $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public long b() {
       return this.b;
    }
 }

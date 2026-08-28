@@ -1,75 +1,100 @@
-public class gqf implements gqk<duz> {
-   private static final int a = 16;
-   private static final float b = 0.6666667F;
-   private final gcz c;
-   private final gcz d;
-   private final gcy e;
-   private final gcy f;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   public gqf(gql.a $$0) {
-      this($$0.f());
-   }
+public class gqf {
+   public static final ale a = ale.b("textures/misc/forcefield.png");
 
-   public gqf(ggz $$0) {
-      this.c = new gcz($$0.a(ghc.q));
-      this.d = new gcz($$0.a(ghc.s));
-      this.e = new gcy($$0.a(ghc.r));
-      this.f = new gcy($$0.a(ghc.t));
-   }
+   public void a(ebg $$0, fdw $$1, double $$2, double $$3) {
+      double $$4 = $$0.e();
+      double $$5 = $$0.g();
+      double $$6 = $$0.f();
+      double $$7 = $$0.h();
+      if (!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2)) {
+         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
+         $$8 = Math.pow($$8, 4.0);
+         $$8 = azk.a($$8, 0.0, 1.0);
+         double $$9 = $$1.d;
+         double $$10 = $$1.f;
+         float $$11 = (float)$$3;
+         gpn $$12 = gpn.a(fof.O());
+         $$12.a();
+         int $$13 = $$0.d().a();
+         float $$14 = (float)axu.b($$13) / 255.0F;
+         float $$15 = (float)axu.c($$13) / 255.0F;
+         float $$16 = (float)axu.d($$13) / 255.0F;
+         RenderSystem.setShaderColor($$14, $$15, $$16, (float)$$8);
+         float $$17 = (float)(af.c() % 3000L) / 3000.0F;
+         float $$18 = (float)(-azk.e($$1.e * 0.5));
+         float $$19 = $$18 + $$11;
+         fil $$20 = fis.b().a(fiv.c.h, fio.i);
+         double $$21 = Math.max((double)azk.a($$10 - $$2), $$6);
+         double $$22 = Math.min((double)azk.c($$10 + $$2), $$7);
+         float $$23 = (float)(azk.a($$21) & 1) * 0.5F;
+         if ($$9 > $$5 - $$2) {
+            float $$24 = $$23;
 
-   public void a(duz $$0, float $$1, fho $$2, gny $$3, int $$4, int $$5) {
-      dym $$6 = $$0.m();
-      gcz $$8;
-      gcy $$9;
-      float $$7;
-      if ($$6.b() instanceof djz) {
-         $$7 = -dzs.b($$6.c(djz.b));
-         $$8 = this.c;
-         $$9 = this.e;
-      } else {
-         $$7 = -$$6.c(dtz.b).p();
-         $$8 = this.d;
-         $$9 = this.f;
+            for (double $$25 = $$21; $$25 < $$22; $$24 += 0.5F) {
+               double $$26 = Math.min(1.0, $$22 - $$25);
+               float $$27 = (float)$$26 * 0.5F;
+               $$20.a((float)($$5 - $$9), -$$11, (float)($$25 - $$10)).a($$17 - $$24, $$17 + $$19);
+               $$20.a((float)($$5 - $$9), -$$11, (float)($$25 + $$26 - $$10)).a($$17 - ($$27 + $$24), $$17 + $$19);
+               $$20.a((float)($$5 - $$9), $$11, (float)($$25 + $$26 - $$10)).a($$17 - ($$27 + $$24), $$17 + $$18);
+               $$20.a((float)($$5 - $$9), $$11, (float)($$25 - $$10)).a($$17 - $$24, $$17 + $$18);
+               $$25++;
+            }
+         }
+
+         if ($$9 < $$4 + $$2) {
+            float $$28 = $$23;
+
+            for (double $$29 = $$21; $$29 < $$22; $$28 += 0.5F) {
+               double $$30 = Math.min(1.0, $$22 - $$29);
+               float $$31 = (float)$$30 * 0.5F;
+               $$20.a((float)($$4 - $$9), -$$11, (float)($$29 - $$10)).a($$17 + $$28, $$17 + $$19);
+               $$20.a((float)($$4 - $$9), -$$11, (float)($$29 + $$30 - $$10)).a($$17 + $$31 + $$28, $$17 + $$19);
+               $$20.a((float)($$4 - $$9), $$11, (float)($$29 + $$30 - $$10)).a($$17 + $$31 + $$28, $$17 + $$18);
+               $$20.a((float)($$4 - $$9), $$11, (float)($$29 - $$10)).a($$17 + $$28, $$17 + $$18);
+               $$29++;
+            }
+         }
+
+         $$21 = Math.max((double)azk.a($$9 - $$2), $$4);
+         $$22 = Math.min((double)azk.c($$9 + $$2), $$5);
+         $$23 = (float)(azk.a($$21) & 1) * 0.5F;
+         if ($$10 > $$7 - $$2) {
+            float $$32 = $$23;
+
+            for (double $$33 = $$21; $$33 < $$22; $$32 += 0.5F) {
+               double $$34 = Math.min(1.0, $$22 - $$33);
+               float $$35 = (float)$$34 * 0.5F;
+               $$20.a((float)($$33 - $$9), -$$11, (float)($$7 - $$10)).a($$17 + $$32, $$17 + $$19);
+               $$20.a((float)($$33 + $$34 - $$9), -$$11, (float)($$7 - $$10)).a($$17 + $$35 + $$32, $$17 + $$19);
+               $$20.a((float)($$33 + $$34 - $$9), $$11, (float)($$7 - $$10)).a($$17 + $$35 + $$32, $$17 + $$18);
+               $$20.a((float)($$33 - $$9), $$11, (float)($$7 - $$10)).a($$17 + $$32, $$17 + $$18);
+               $$33++;
+            }
+         }
+
+         if ($$10 < $$6 + $$2) {
+            float $$36 = $$23;
+
+            for (double $$37 = $$21; $$37 < $$22; $$36 += 0.5F) {
+               double $$38 = Math.min(1.0, $$22 - $$37);
+               float $$39 = (float)$$38 * 0.5F;
+               $$20.a((float)($$37 - $$9), -$$11, (float)($$6 - $$10)).a($$17 - $$36, $$17 + $$19);
+               $$20.a((float)($$37 + $$38 - $$9), -$$11, (float)($$6 - $$10)).a($$17 - ($$39 + $$36), $$17 + $$19);
+               $$20.a((float)($$37 + $$38 - $$9), $$11, (float)($$6 - $$10)).a($$17 - ($$39 + $$36), $$17 + $$18);
+               $$20.a((float)($$37 - $$9), $$11, (float)($$6 - $$10)).a($$17 - $$36, $$17 + $$18);
+               $$37++;
+            }
+         }
+
+         fip $$40 = $$20.a();
+         if ($$40 != null) {
+            fim.a($$40);
+         }
+
+         $$12.b();
+         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
       }
-
-      long $$13 = $$0.i().ae();
-      jj $$14 = $$0.aw_();
-      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$13, 100L) + $$1) / 100.0F;
-      a($$2, $$3, $$4, $$5, $$7, $$8, $$9, $$15, $$0.f(), $$0.b());
-   }
-
-   public void a(fho $$0, gny $$1, int $$2, int $$3, cwv $$4, dvb $$5) {
-      a($$0, $$1, $$2, $$3, 0.0F, this.c, this.e, 0.0F, $$4, $$5);
-   }
-
-   private static void a(fho $$0, gny $$1, int $$2, int $$3, float $$4, gcz $$5, gcy $$6, float $$7, cwv $$8, dvb $$9) {
-      $$0.a();
-      $$0.a(0.5F, 0.0F, 0.5F);
-      $$0.a(a.d.rotationDegrees($$4));
-      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
-      $$5.a($$0, hjc.f.a($$1, goi::d), $$2, $$3);
-      $$6.a($$7);
-      a($$0, $$1, $$2, $$3, $$6.e(), hjc.f, true, $$8, $$9);
-      $$0.b();
-   }
-
-   public static void a(fho $$0, gny $$1, int $$2, int $$3, ghd $$4, hiz $$5, boolean $$6, cwv $$7, dvb $$8) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, true);
-   }
-
-   public static void a(fho $$0, gny $$1, int $$2, int $$3, ghd $$4, hiz $$5, boolean $$6, cwv $$7, dvb $$8, boolean $$9, boolean $$10) {
-      $$4.a($$0, $$5.a($$1, goi::d, $$10, $$9), $$2, $$3);
-      a($$0, $$1, $$2, $$3, $$4, $$6 ? got.m : got.n, $$7);
-
-      for (int $$11 = 0; $$11 < 16 && $$11 < $$8.b().size(); $$11++) {
-         dvb.b $$12 = $$8.b().get($$11);
-         hiz $$13 = $$6 ? got.a($$12.b()) : got.b($$12.b());
-         a($$0, $$1, $$2, $$3, $$4, $$13, $$12.c());
-      }
-   }
-
-   private static void a(fho $$0, gny $$1, int $$2, int $$3, ghd $$4, hiz $$5, cwv $$6) {
-      int $$7 = $$6.d();
-      $$4.a($$0, $$5.a($$1, goi::n), $$2, $$3, $$7);
    }
 }

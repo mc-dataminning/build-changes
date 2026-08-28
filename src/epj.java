@@ -1,57 +1,23 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public class epj extends ewf {
-   private static final String a = "Remaining";
-   private static final String b = "All";
-   private final LongSet c;
-   private final LongSet d;
+public class epj extends epp {
+   private static final epj c = new epj();
+   public static final MapCodec<epj> a = MapCodec.unit(() -> c);
 
-   public static ewf.a<epj> a() {
-      return new ewf.a<>(epj::new, epj::b, bax.o);
-   }
-
-   private epj(LongSet $$0, LongSet $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public epj() {
-      this(new LongOpenHashSet(), new LongOpenHashSet());
-   }
-
-   public static epj b(tw $$0, ju.a $$1) {
-      return new epj(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   public static epj a() {
+      return c;
    }
 
    @Override
-   public tw a(tw $$0, ju.a $$1) {
-      $$0.a("All", this.c.toLongArray());
-      $$0.a("Remaining", this.d.toLongArray());
-      return $$0;
+   public Stream<iu> a_(epn $$0, azt $$1, iu $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new iu($$3, $$2.v(), $$4));
    }
 
-   public void a(long $$0) {
-      this.c.add($$0);
-      this.d.add($$0);
-      this.g();
-   }
-
-   public boolean b(long $$0) {
-      return this.c.contains($$0);
-   }
-
-   public boolean c(long $$0) {
-      return this.d.contains($$0);
-   }
-
-   public void d(long $$0) {
-      if (this.d.remove($$0)) {
-         this.g();
-      }
-   }
-
-   public LongSet b() {
-      return this.c;
+   @Override
+   public epq<?> b() {
+      return epq.m;
    }
 }

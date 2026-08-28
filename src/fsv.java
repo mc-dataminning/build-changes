@@ -1,72 +1,111 @@
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class fsv implements fsx {
-   private static final ald a = ald.b("toast/recipe");
-   private static final long e = 5000L;
-   private static final wv f = wv.c("recipe.toast.title");
-   private static final wv g = wv.c("recipe.toast.description");
-   private final List<fsv.a> h = new ArrayList<>();
-   private long i;
-   private boolean j;
-   private fsx.a k = fsx.a.b;
-   private int l;
+public abstract class fsv extends frq {
+   protected final ale a;
+   protected final int b;
+   protected final int c;
 
-   private fsv() {
+   fsv(int $$0, int $$1, ww $$2, int $$3, int $$4, ale $$5, frq.c $$6, @Nullable frq.b $$7) {
+      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
+      this.b = $$3;
+      this.c = $$4;
+      this.a = $$5;
    }
 
-   @Override
-   public fsx.a a() {
-      return this.k;
+   public static fsv.a a(ww $$0, frq.c $$1, boolean $$2) {
+      return new fsv.a($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(fsy $$0, long $$1) {
-      if (this.j) {
-         this.i = $$1;
-         this.j = false;
+   public static class a {
+      private final ww b;
+      private final frq.c c;
+      private final boolean d;
+      private int e = 150;
+      private int f = 20;
+      @Nullable
+      private ale g;
+      private int h;
+      private int i;
+      @Nullable
+      frq.b a;
+
+      public a(ww $$0, frq.c $$1, boolean $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
       }
 
-      if (this.h.isEmpty()) {
-         this.k = fsx.a.b;
-      } else {
-         this.k = (double)($$1 - this.i) >= 5000.0 * $$0.d() ? fsx.a.b : fsx.a.a;
+      public fsv.a a(int $$0) {
+         this.e = $$0;
+         return this;
       }
 
-      this.l = (int)((double)$$1 / Math.max(1.0, 5000.0 * $$0.d() / (double)this.h.size()) % (double)this.h.size());
-   }
-
-   @Override
-   public void a(fpz $$0, fpx $$1, long $$2) {
-      $$0.a(goi::H, a, 0, 0, this.c(), this.d());
-      $$0.a($$1, f, 30, 7, -11534256, false);
-      $$0.a($$1, g, 30, 18, -16777216, false);
-      fsv.a $$3 = this.h.get(this.l);
-      $$0.c().a();
-      $$0.c().b(0.6F, 0.6F, 1.0F);
-      $$0.b($$3.a(), 3, 3);
-      $$0.c().b();
-      $$0.b($$3.b(), 8, 8);
-   }
-
-   private void a(cxy $$0, cxy $$1) {
-      this.h.add(new fsv.a($$0, $$1));
-      this.j = true;
-   }
-
-   public static void a(fsy $$0, ddr $$1) {
-      fsv $$2 = $$0.a(fsv.class, b);
-      if ($$2 == null) {
-         $$2 = new fsv();
-         $$0.a($$2);
+      public fsv.a a(int $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
       }
 
-      bav $$3 = ddy.a($$0.c().s);
-      cxy $$4 = $$1.e().b($$3);
-      cxy $$5 = $$1.d().b($$3);
-      $$2.a($$4, $$5);
+      public fsv.a a(ale $$0, int $$1, int $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      public fsv.a a(frq.b $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public fsv a() {
+         if (this.g == null) {
+            throw new IllegalStateException("Sprite not set");
+         } else {
+            return (fsv)(this.d
+               ? new fsv.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
+               : new fsv.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
+         }
+      }
    }
 
-   static record a(cxy a, cxy b) {
+   public static class b extends fsv {
+      protected b(int $$0, int $$1, ww $$2, int $$3, int $$4, ale $$5, frq.c $$6, @Nullable frq.b $$7) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      @Override
+      public void b(frc $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.F() + this.A() / 2 - this.b / 2;
+         int $$5 = this.G() + this.y() / 2 - this.c / 2;
+         $$0.a(gpn::H, this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(frc $$0, fra $$1, int $$2) {
+      }
+   }
+
+   public static class c extends fsv {
+      protected c(int $$0, int $$1, ww $$2, int $$3, int $$4, ale $$5, frq.c $$6, @Nullable frq.b $$7) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      @Override
+      public void b(frc $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.F() + this.A() - this.b - 2;
+         int $$5 = this.G() + this.y() / 2 - this.c / 2;
+         $$0.a(gpn::H, this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(frc $$0, fra $$1, int $$2) {
+         int $$3 = this.F() + 2;
+         int $$4 = this.F() + this.A() - this.b - 4;
+         int $$5 = this.F() + this.A() / 2;
+         a($$0, $$1, this.B(), $$5, $$3, this.G(), $$4, this.G() + this.y(), $$2);
+      }
    }
 }

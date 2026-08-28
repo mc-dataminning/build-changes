@@ -1,700 +1,727 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector2ic;
+import java.util.Locale;
+import java.util.function.BiConsumer;
 
 public class fpz {
-   public static final float a = 10000.0F;
-   public static final float b = -10000.0F;
-   private static final int c = 2;
-   private final fnd d;
-   private final fho e;
-   private final gny.a f;
-   private final fpz.a g = new fpz.a();
-   private final fqa h;
-   private final hdn i = new hdn();
+   private static final fpq f = fqn.a(-1);
+   public static final ale a = a("helmet");
+   public static final ale b = a("chestplate");
+   public static final ale c = a("leggings");
+   public static final ale d = a("boots");
+   public static final List<fpz.a> e = List.of(
+      new fpz.a(dhe.d, dhg.a),
+      new fpz.a(dhe.e, dhg.b),
+      new fpz.a(dhe.f, dhg.c),
+      new fpz.a(dhe.g, dhg.d),
+      new fpz.a(dhe.h, dhg.e),
+      new fpz.a(dhe.i, dhg.f),
+      new fpz.a(dhe.j, dhg.g),
+      new fpz.a(dhe.k, dhg.h),
+      new fpz.a(dhe.l, dhg.i),
+      new fpz.a(dhe.m, dhg.j),
+      new fpz.a(dhe.n, dhg.k)
+   );
+   private final fqa g;
+   private final BiConsumer<ale, fqo> h;
 
-   private fpz(fnd $$0, fho $$1, gny.a $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.h = $$0.aJ();
+   public static ale a(String $$0) {
+      return ale.b("trims/items/" + $$0 + "_trim");
    }
 
-   public fpz(fnd $$0, gny.a $$1) {
-      this($$0, new fho(), $$1);
+   public fpz(fqa $$0, BiConsumer<ale, fqo> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public int a() {
-      return this.d.aO().o();
+   private void a(cyo $$0) {
+      this.g.a($$0, fqn.a(fqp.a($$0)));
    }
 
-   public int b() {
-      return this.d.aO().p();
+   private ale a(cyo $$0, fqq $$1) {
+      return $$1.a(fqp.a($$0), fqs.b($$0), this.h);
    }
 
-   public fho c() {
-      return this.e;
+   private void b(cyo $$0, fqq $$1) {
+      this.g.a($$0, fqn.a(this.a($$0, $$1)));
    }
 
-   public void d() {
-      this.f.b();
+   private ale a(cyo $$0, String $$1, fqq $$2) {
+      return $$2.a(fqp.a($$0, $$1), fqs.k(fqs.a($$0, $$1)), this.h);
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.a(goi.K(), $$0, $$1, $$2, $$3);
+   private ale a(cyo $$0, cyo $$1, fqq $$2) {
+      return $$2.a(fqp.a($$0), fqs.b($$1), this.h);
    }
 
-   public void a(goi $$0, int $$1, int $$2, int $$3, int $$4) {
-      if ($$2 < $$1) {
-         int $$5 = $$1;
-         $$1 = $$2;
-         $$2 = $$5;
+   private void b(cyo $$0, cyo $$1, fqq $$2) {
+      this.g.a($$0, fqn.a(this.a($$0, $$1, $$2)));
+   }
+
+   private void a(cyo $$0, fpq $$1) {
+      this.a($$0, "_overlay", $$1);
+   }
+
+   private void a(cyo $$0, String $$1, fpq $$2) {
+      ale $$3 = this.a($$0, fqs.c($$0), fqs.a($$0, $$1));
+      this.g.a($$0, fqn.a($$3, f, $$2));
+   }
+
+   private List<heu.a> b(cyo $$0) {
+      List<heu.a> $$1 = new ArrayList<>();
+      hep.b $$2 = fqn.a(this.a($$0, "_16", fqr.bI));
+      $$1.add(fqn.a($$2, 0.0F));
+
+      for (int $$3 = 1; $$3 < 32; $$3++) {
+         int $$4 = azk.b($$3 - 16, 32);
+         hep.b $$5 = fqn.a(this.a($$0, String.format(Locale.ROOT, "_%02d", $$4), fqr.bI));
+         $$1.add(fqn.a($$5, (float)$$3 - 0.5F));
       }
 
-      this.a($$0, $$1, $$3, $$2 + 1, $$3 + 1, $$4);
+      $$1.add(fqn.a($$2, 31.5F));
+      return $$1;
    }
 
-   public void b(int $$0, int $$1, int $$2, int $$3) {
-      this.b(goi.K(), $$0, $$1, $$2, $$3);
-   }
-
-   public void b(goi $$0, int $$1, int $$2, int $$3, int $$4) {
-      if ($$3 < $$2) {
-         int $$5 = $$2;
-         $$2 = $$3;
-         $$3 = $$5;
-      }
-
-      this.a($$0, $$1, $$2 + 1, $$1 + 1, $$3, $$4);
-   }
-
-   public void c(int $$0, int $$1, int $$2, int $$3) {
-      fuu $$4 = new fuu($$0, $$1, $$2 - $$0, $$3 - $$1).a(this.e.c().a());
-      this.a(this.g.a($$4));
-   }
-
-   public void e() {
-      this.a(this.g.a());
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return this.g.a($$0, $$1);
-   }
-
-   private void a(@Nullable fuu $$0) {
-      this.d();
-      if ($$0 != null) {
-         fgr $$1 = fnd.Q().aO();
-         int $$2 = $$1.l();
-         double $$3 = $$1.s();
-         double $$4 = (double)$$0.d() * $$3;
-         double $$5 = (double)$$2 - (double)$$0.c() * $$3;
-         double $$6 = (double)$$0.g() * $$3;
-         double $$7 = (double)$$0.h() * $$3;
-         RenderSystem.enableScissor((int)$$4, (int)$$5, Math.max(0, (int)$$6), Math.max(0, (int)$$7));
-      } else {
-         RenderSystem.disableScissor();
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.a($$0, $$1, $$2, $$3, 0, $$4);
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a(goi.K(), $$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(goi $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4, 0, $$5);
-   }
-
-   public void a(goi $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      Matrix4f $$7 = this.e.c().a();
-      if ($$1 < $$3) {
-         int $$8 = $$1;
-         $$1 = $$3;
-         $$3 = $$8;
-      }
-
-      if ($$2 < $$4) {
-         int $$9 = $$2;
-         $$2 = $$4;
-         $$4 = $$9;
-      }
-
-      fhs $$10 = this.f.getBuffer($$0);
-      $$10.a($$7, (float)$$1, (float)$$2, (float)$$5).a($$6);
-      $$10.a($$7, (float)$$1, (float)$$4, (float)$$5).a($$6);
-      $$10.a($$7, (float)$$3, (float)$$4, (float)$$5).a($$6);
-      $$10.a($$7, (float)$$3, (float)$$2, (float)$$5).a($$6);
-   }
-
-   public void b(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a($$0, $$1, $$2, $$3, 0, $$4, $$5);
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      this.a(goi.K(), $$0, $$1, $$2, $$3, $$5, $$6, $$4);
-   }
-
-   public void a(goi $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      fhs $$8 = this.f.getBuffer($$0);
-      this.a($$8, $$1, $$2, $$3, $$4, $$7, $$5, $$6);
-   }
-
-   private void a(fhs $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      Matrix4f $$8 = this.e.c().a();
-      $$0.a($$8, (float)$$1, (float)$$2, (float)$$5).a($$6);
-      $$0.a($$8, (float)$$1, (float)$$4, (float)$$5).a($$7);
-      $$0.a($$8, (float)$$3, (float)$$4, (float)$$5).a($$7);
-      $$0.a($$8, (float)$$3, (float)$$2, (float)$$5).a($$6);
-   }
-
-   public void b(goi $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Matrix4f $$6 = this.e.c().a();
-      fhs $$7 = this.f.getBuffer($$0);
-      $$7.a($$6, (float)$$1, (float)$$2, (float)$$5);
-      $$7.a($$6, (float)$$1, (float)$$4, (float)$$5);
-      $$7.a($$6, (float)$$3, (float)$$4, (float)$$5);
-      $$7.a($$6, (float)$$3, (float)$$2, (float)$$5);
-   }
-
-   public void a(fpx $$0, String $$1, int $$2, int $$3, int $$4) {
-      this.b($$0, $$1, $$2 - $$0.b($$1) / 2, $$3, $$4);
-   }
-
-   public void a(fpx $$0, wv $$1, int $$2, int $$3, int $$4) {
-      ayw $$5 = $$1.g();
-      this.b($$0, $$5, $$2 - $$0.a($$5) / 2, $$3, $$4);
-   }
-
-   public void a(fpx $$0, ayw $$1, int $$2, int $$3, int $$4) {
-      this.b($$0, $$1, $$2 - $$0.a($$1) / 2, $$3, $$4);
-   }
-
-   public int b(fpx $$0, @Nullable String $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, true);
-   }
-
-   public int a(fpx $$0, @Nullable String $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == null ? 0 : $$0.a($$1, (float)$$2, (float)$$3, $$4, $$5, this.e.c().a(), this.f, fpx.a.a, 0, 15728880);
-   }
-
-   public int b(fpx $$0, ayw $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, true);
-   }
-
-   public int a(fpx $$0, ayw $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$0.a($$1, (float)$$2, (float)$$3, $$4, $$5, this.e.c().a(), this.f, fpx.a.a, 0, 15728880);
-   }
-
-   public int b(fpx $$0, wv $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, true);
-   }
-
-   public int a(fpx $$0, wv $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return this.a($$0, $$1.g(), $$2, $$3, $$4, $$5);
-   }
-
-   public void a(fpx $$0, xa $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, true);
-   }
-
-   public void a(fpx $$0, xa $$1, int $$2, int $$3, int $$4, int $$5, boolean $$6) {
-      for (ayw $$7 : $$0.c($$1, $$4)) {
-         this.a($$0, $$7, $$2, $$3, $$5, $$6);
-         $$3 += 9;
-      }
-   }
-
-   public int a(fpx $$0, wv $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = this.d.n.b(0.0F);
-      if ($$6 != 0) {
-         int $$7 = 2;
-         this.a($$2 - 2, $$3 - 2, $$2 + $$4 + 2, $$3 + 9 + 2, axu.a($$6, $$5));
-      }
-
-      return this.a($$0, $$1, $$2, $$3, $$5, true);
-   }
-
-   public void b(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.a($$0, $$1, $$0 + $$2, $$1 + 1, $$4);
-      this.a($$0, $$1 + $$3 - 1, $$0 + $$2, $$1 + $$3, $$4);
-      this.a($$0, $$1 + 1, $$0 + 1, $$1 + $$3 - 1, $$4);
-      this.a($$0 + $$2 - 1, $$1 + 1, $$0 + $$2, $$1 + $$3 - 1, $$4);
-   }
-
-   public void a(Function<ald, goi> $$0, ald $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, -1);
-   }
-
-   public void a(Function<ald, goi> $$0, ald $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      hgs $$7 = this.h.a($$1);
-      hik $$8 = this.h.a($$7);
-      if ($$8 instanceof hik.b) {
-         this.a($$0, $$7, $$2, $$3, $$4, $$5, $$6);
-      } else if ($$8 instanceof hik.c $$9) {
-         this.a($$0, $$7, $$2, $$3, $$4, $$5, 0, 0, $$9.b(), $$9.c(), $$9.b(), $$9.c(), $$6);
-      } else if ($$8 instanceof hik.a $$10) {
-         this.a($$0, $$7, $$10, $$2, $$3, $$4, $$5, $$6);
-      }
-   }
-
-   public void a(Function<ald, goi> $$0, ald $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9) {
-      hgs $$10 = this.h.a($$1);
-      hik $$11 = this.h.a($$10);
-      if ($$11 instanceof hik.b) {
-         this.a($$0, $$10, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, -1);
-      } else {
-         this.c($$6, $$7, $$6 + $$8, $$7 + $$9);
-         this.a($$0, $$1, $$6 - $$4, $$7 - $$5, $$2, $$3, -1);
-         this.e();
-      }
-   }
-
-   public void a(Function<ald, goi> $$0, hgs $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, -1);
-   }
-
-   public void a(Function<ald, goi> $$0, hgs $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      if ($$4 != 0 && $$5 != 0) {
-         this.a($$0, $$1.i(), $$2, $$2 + $$4, $$3, $$3 + $$5, $$1.c(), $$1.d(), $$1.g(), $$1.h(), $$6);
-      }
-   }
-
-   private void a(Function<ald, goi> $$0, hgs $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10) {
-      if ($$8 != 0 && $$9 != 0) {
-         this.a(
+   private void c(cyo $$0) {
+      List<heu.a> $$1 = this.b($$0);
+      this.g
+         .a(
             $$0,
-            $$1.i(),
-            $$6,
-            $$6 + $$8,
-            $$7,
-            $$7 + $$9,
-            $$1.a((float)$$4 / (float)$$2),
-            $$1.a((float)($$4 + $$8) / (float)$$2),
-            $$1.c((float)$$5 / (float)$$3),
-            $$1.c((float)($$5 + $$9) / (float)$$3),
-            $$10
+            fqn.a(
+               fqn.a(kj.ah),
+               fqn.a(new hfq(true, hfr.a.b), 32.0F, $$1),
+               fqn.a(fqn.a(new hfq(true, hfr.a.c), 32.0F, $$1), fqn.a(new hfq(true, hfr.a.a), 32.0F, $$1))
+            )
          );
-      }
    }
 
-   private void a(Function<ald, goi> $$0, hgs $$1, hik.a $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      hik.a.a $$8 = $$2.d();
-      int $$9 = Math.min($$8.a(), $$5 / 2);
-      int $$10 = Math.min($$8.c(), $$5 / 2);
-      int $$11 = Math.min($$8.b(), $$6 / 2);
-      int $$12 = Math.min($$8.d(), $$6 / 2);
-      if ($$5 == $$2.b() && $$6 == $$2.c()) {
-         this.a($$0, $$1, $$2.b(), $$2.c(), 0, 0, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$6 == $$2.c()) {
-         this.a($$0, $$1, $$2.b(), $$2.c(), 0, 0, $$3, $$4, $$9, $$6, $$7);
-         this.a($$0, $$2, $$1, $$3 + $$9, $$4, $$5 - $$10 - $$9, $$6, $$9, 0, $$2.b() - $$10 - $$9, $$2.c(), $$2.b(), $$2.c(), $$7);
-         this.a($$0, $$1, $$2.b(), $$2.c(), $$2.b() - $$10, 0, $$3 + $$5 - $$10, $$4, $$10, $$6, $$7);
-      } else if ($$5 == $$2.b()) {
-         this.a($$0, $$1, $$2.b(), $$2.c(), 0, 0, $$3, $$4, $$5, $$11, $$7);
-         this.a($$0, $$2, $$1, $$3, $$4 + $$11, $$5, $$6 - $$12 - $$11, 0, $$11, $$2.b(), $$2.c() - $$12 - $$11, $$2.b(), $$2.c(), $$7);
-         this.a($$0, $$1, $$2.b(), $$2.c(), 0, $$2.c() - $$12, $$3, $$4 + $$6 - $$12, $$5, $$12, $$7);
+   private void d(cyo $$0) {
+      this.g.a($$0, fqn.a(new hfq(true, hfr.a.d), 32.0F, this.b($$0)));
+   }
+
+   private void e(cyo $$0) {
+      List<heu.a> $$1 = new ArrayList<>();
+      hep.b $$2 = fqn.a(this.a($$0, "_00", fqr.bI));
+      $$1.add(fqn.a($$2, 0.0F));
+
+      for (int $$3 = 1; $$3 < 64; $$3++) {
+         hep.b $$4 = fqn.a(this.a($$0, String.format(Locale.ROOT, "_%02d", $$3), fqr.bI));
+         $$1.add(fqn.a($$4, (float)$$3 - 0.5F));
+      }
+
+      $$1.add(fqn.a($$2, 63.5F));
+      this.g.a($$0, fqn.a(fqn.a(new hga(true, hga.a.b), 64.0F, $$1), fqn.a(new hga(true, hga.a.a), 64.0F, $$1)));
+   }
+
+   private ale a(cyo $$0, ale $$1, ale $$2) {
+      return fqr.bM.a($$0, fqs.c($$1, $$2), this.h);
+   }
+
+   private ale a(ale $$0, ale $$1, ale $$2) {
+      return fqr.bM.a($$0, fqs.c($$1, $$2), this.h);
+   }
+
+   private void a(ale $$0, ale $$1, ale $$2, ale $$3) {
+      fqr.bN.a($$0, fqs.a($$1, $$2, $$3), this.h);
+   }
+
+   private void a(cyo $$0, ald<dgz> $$1, ale $$2, boolean $$3) {
+      ale $$4 = fqp.a($$0);
+      ale $$5 = fqs.c($$0);
+      ale $$6 = fqs.a($$0, "_overlay");
+      List<hev.b<ald<dhf>>> $$7 = new ArrayList<>(e.size());
+
+      for (fpz.a $$8 : e) {
+         ale $$9 = $$4.g("_" + $$8.a().a().a() + "_trim");
+         ale $$10 = $$2.g("_" + $$8.a().a($$1).a());
+         hep.b $$11;
+         if ($$3) {
+            this.a($$9, $$5, $$6, $$10);
+            $$11 = fqn.a($$9, new fpn(-6265536));
+         } else {
+            this.a($$9, $$5, $$10);
+            $$11 = fqn.a($$9);
+         }
+
+         $$7.add(fqn.a($$8.b, $$11));
+      }
+
+      hep.b $$13;
+      if ($$3) {
+         fqr.bM.a($$4, fqs.c($$5, $$6), this.h);
+         $$13 = fqn.a($$4, new fpn(-6265536));
       } else {
-         this.a($$0, $$1, $$2.b(), $$2.c(), 0, 0, $$3, $$4, $$9, $$11, $$7);
-         this.a($$0, $$2, $$1, $$3 + $$9, $$4, $$5 - $$10 - $$9, $$11, $$9, 0, $$2.b() - $$10 - $$9, $$11, $$2.b(), $$2.c(), $$7);
-         this.a($$0, $$1, $$2.b(), $$2.c(), $$2.b() - $$10, 0, $$3 + $$5 - $$10, $$4, $$10, $$11, $$7);
-         this.a($$0, $$1, $$2.b(), $$2.c(), 0, $$2.c() - $$12, $$3, $$4 + $$6 - $$12, $$9, $$12, $$7);
-         this.a($$0, $$2, $$1, $$3 + $$9, $$4 + $$6 - $$12, $$5 - $$10 - $$9, $$12, $$9, $$2.c() - $$12, $$2.b() - $$10 - $$9, $$12, $$2.b(), $$2.c(), $$7);
-         this.a($$0, $$1, $$2.b(), $$2.c(), $$2.b() - $$10, $$2.c() - $$12, $$3 + $$5 - $$10, $$4 + $$6 - $$12, $$10, $$12, $$7);
-         this.a($$0, $$2, $$1, $$3, $$4 + $$11, $$9, $$6 - $$12 - $$11, 0, $$11, $$9, $$2.c() - $$12 - $$11, $$2.b(), $$2.c(), $$7);
-         this.a(
-            $$0,
-            $$2,
-            $$1,
-            $$3 + $$9,
-            $$4 + $$11,
-            $$5 - $$10 - $$9,
-            $$6 - $$12 - $$11,
-            $$9,
-            $$11,
-            $$2.b() - $$10 - $$9,
-            $$2.c() - $$12 - $$11,
-            $$2.b(),
-            $$2.c(),
-            $$7
-         );
-         this.a($$0, $$2, $$1, $$3 + $$5 - $$10, $$4 + $$11, $$10, $$6 - $$12 - $$11, $$2.b() - $$10, $$11, $$10, $$2.c() - $$12 - $$11, $$2.b(), $$2.c(), $$7);
-      }
-   }
-
-   private void a(
-      Function<ald, goi> $$0, hik.a $$1, hgs $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, int $$11, int $$12, int $$13
-   ) {
-      if ($$5 > 0 && $$6 > 0) {
-         if ($$1.e()) {
-            this.a(
-               $$0,
-               $$2.i(),
-               $$3,
-               $$3 + $$5,
-               $$4,
-               $$4 + $$6,
-               $$2.a((float)$$7 / (float)$$11),
-               $$2.a((float)($$7 + $$9) / (float)$$11),
-               $$2.c((float)$$8 / (float)$$12),
-               $$2.c((float)($$8 + $$10) / (float)$$12),
-               $$13
-            );
-         } else {
-            this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
-         }
-      }
-   }
-
-   private void a(Function<ald, goi> $$0, hgs $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, int $$11, int $$12) {
-      if ($$4 > 0 && $$5 > 0) {
-         if ($$8 > 0 && $$9 > 0) {
-            for (int $$13 = 0; $$13 < $$4; $$13 += $$8) {
-               int $$14 = Math.min($$8, $$4 - $$13);
-
-               for (int $$15 = 0; $$15 < $$5; $$15 += $$9) {
-                  int $$16 = Math.min($$9, $$5 - $$15);
-                  this.a($$0, $$1, $$10, $$11, $$6, $$7, $$2 + $$13, $$3 + $$15, $$14, $$16, $$12);
-               }
-            }
-         } else {
-            throw new IllegalArgumentException("Tiled sprite texture size must be positive, got " + $$8 + "x" + $$9);
-         }
-      }
-   }
-
-   public void a(Function<ald, goi> $$0, ald $$1, int $$2, int $$3, float $$4, float $$5, int $$6, int $$7, int $$8, int $$9, int $$10) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$6, $$7, $$8, $$9, $$10);
-   }
-
-   public void a(Function<ald, goi> $$0, ald $$1, int $$2, int $$3, float $$4, float $$5, int $$6, int $$7, int $$8, int $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$6, $$7, $$8, $$9);
-   }
-
-   public void a(Function<ald, goi> $$0, ald $$1, int $$2, int $$3, float $$4, float $$5, int $$6, int $$7, int $$8, int $$9, int $$10, int $$11) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, -1);
-   }
-
-   public void a(Function<ald, goi> $$0, ald $$1, int $$2, int $$3, float $$4, float $$5, int $$6, int $$7, int $$8, int $$9, int $$10, int $$11, int $$12) {
-      this.a(
-         $$0,
-         $$1,
-         $$2,
-         $$2 + $$6,
-         $$3,
-         $$3 + $$7,
-         ($$4 + 0.0F) / (float)$$10,
-         ($$4 + (float)$$8) / (float)$$10,
-         ($$5 + 0.0F) / (float)$$11,
-         ($$5 + (float)$$9) / (float)$$11,
-         $$12
-      );
-   }
-
-   private void a(Function<ald, goi> $$0, ald $$1, int $$2, int $$3, int $$4, int $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
-      goi $$11 = $$0.apply($$1);
-      Matrix4f $$12 = this.e.c().a();
-      fhs $$13 = this.f.getBuffer($$11);
-      $$13.a($$12, (float)$$2, (float)$$4, 0.0F).a($$6, $$8).a($$10);
-      $$13.a($$12, (float)$$2, (float)$$5, 0.0F).a($$6, $$9).a($$10);
-      $$13.a($$12, (float)$$3, (float)$$5, 0.0F).a($$7, $$9).a($$10);
-      $$13.a($$12, (float)$$3, (float)$$4, 0.0F).a($$7, $$8).a($$10);
-   }
-
-   public void a(cxy $$0, int $$1, int $$2) {
-      this.a(this.d.t, this.d.s, $$0, $$1, $$2, 0);
-   }
-
-   public void a(cxy $$0, int $$1, int $$2, int $$3) {
-      this.a(this.d.t, this.d.s, $$0, $$1, $$2, $$3);
-   }
-
-   public void a(cxy $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.a(this.d.t, this.d.s, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   public void b(cxy $$0, int $$1, int $$2) {
-      this.b($$0, $$1, $$2, 0);
-   }
-
-   public void b(cxy $$0, int $$1, int $$2, int $$3) {
-      this.a(null, this.d.s, $$0, $$1, $$2, $$3);
-   }
-
-   public void a(bwr $$0, cxy $$1, int $$2, int $$3, int $$4) {
-      this.a($$0, $$0.dV(), $$1, $$2, $$3, $$4);
-   }
-
-   private void a(@Nullable bwr $$0, @Nullable dhp $$1, cxy $$2, int $$3, int $$4, int $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, 0);
-   }
-
-   private void a(@Nullable bwr $$0, @Nullable dhp $$1, cxy $$2, int $$3, int $$4, int $$5, int $$6) {
-      if (!$$2.f()) {
-         this.d.bf().a(this.i, $$2, cxw.g, false, $$1, $$0, $$5);
-         this.e.a();
-         this.e.a((float)($$3 + 8), (float)($$4 + 8), (float)(150 + (this.i.d() ? $$6 : 0)));
-
-         try {
-            this.e.b(16.0F, -16.0F, 16.0F);
-            boolean $$7 = !this.i.e();
-            if ($$7) {
-               this.d();
-               fgk.c();
-            }
-
-            this.i.a(this.e, this.f, 15728880, hgi.d);
-            this.d();
-            if ($$7) {
-               fgk.d();
-            }
-         } catch (Throwable var11) {
-            o $$9 = o.a(var11, "Rendering item");
-            p $$10 = $$9.a("Item being rendered");
-            $$10.a("Item Type", () -> String.valueOf($$2.h()));
-            $$10.a("Item Components", () -> String.valueOf($$2.a()));
-            $$10.a("Item Foil", () -> String.valueOf($$2.C()));
-            throw new z($$9);
-         }
-
-         this.e.b();
-      }
-   }
-
-   public void a(fpx $$0, cxy $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, null);
-   }
-
-   public void a(fpx $$0, cxy $$1, int $$2, int $$3, @Nullable String $$4) {
-      if (!$$1.f()) {
-         this.e.a();
-         this.c($$1, $$2, $$3);
-         this.b($$0, $$1, $$2, $$3, $$4);
-         this.d($$1, $$2, $$3);
-         this.e.b();
-      }
-   }
-
-   public void b(fpx $$0, cxy $$1, int $$2, int $$3) {
-      this.a($$0, fwf.a(this.d, $$1), $$1.b(), $$2, $$3, $$1.a(kx.H));
-   }
-
-   public void a(fpx $$0, List<wv> $$1, Optional<cvu> $$2, int $$3, int $$4) {
-      this.a($$0, $$1, $$2, $$3, $$4, null);
-   }
-
-   public void a(fpx $$0, List<wv> $$1, Optional<cvu> $$2, int $$3, int $$4, @Nullable ald $$5) {
-      List<fyr> $$6 = $$1.stream().map(wv::g).map(fyr::a).collect(af.b());
-      $$2.ifPresent($$1x -> $$6.add($$6.isEmpty() ? 0 : 1, fyr.a($$1x)));
-      this.a($$0, $$6, $$3, $$4, fyt.a, $$5);
-   }
-
-   public void a(fpx $$0, wv $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, null);
-   }
-
-   public void a(fpx $$0, wv $$1, int $$2, int $$3, @Nullable ald $$4) {
-      this.b($$0, List.of($$1.g()), $$2, $$3, $$4);
-   }
-
-   public void a(fpx $$0, List<wv> $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, null);
-   }
-
-   public void a(fpx $$0, List<wv> $$1, int $$2, int $$3, @Nullable ald $$4) {
-      this.a($$0, $$1.stream().map(wv::g).map(fyr::a).toList(), $$2, $$3, fyt.a, $$4);
-   }
-
-   public void b(fpx $$0, List<? extends ayw> $$1, int $$2, int $$3) {
-      this.b($$0, $$1, $$2, $$3, null);
-   }
-
-   public void b(fpx $$0, List<? extends ayw> $$1, int $$2, int $$3, @Nullable ald $$4) {
-      this.a($$0, $$1.stream().map(fyr::a).collect(Collectors.toList()), $$2, $$3, fyt.a, $$4);
-   }
-
-   public void a(fpx $$0, List<ayw> $$1, fys $$2, int $$3, int $$4) {
-      this.a($$0, $$1.stream().map(fyr::a).collect(Collectors.toList()), $$3, $$4, $$2, null);
-   }
-
-   private void a(fpx $$0, List<fyr> $$1, int $$2, int $$3, fys $$4, @Nullable ald $$5) {
-      if (!$$1.isEmpty()) {
-         int $$6 = 0;
-         int $$7 = $$1.size() == 1 ? -2 : 0;
-
-         for (fyr $$8 : $$1) {
-            int $$9 = $$8.b($$0);
-            if ($$9 > $$6) {
-               $$6 = $$9;
-            }
-
-            $$7 += $$8.a($$0);
-         }
-
-         int $$10 = $$6;
-         int $$11 = $$7;
-         Vector2ic $$12 = $$4.a(this.a(), this.b(), $$2, $$3, $$6, $$7);
-         int $$13 = $$12.x();
-         int $$14 = $$12.y();
-         this.e.a();
-         int $$15 = 400;
-         fyv.a(this, $$13, $$14, $$6, $$7, 400, $$5);
-         this.e.a(0.0F, 0.0F, 400.0F);
-         int $$16 = $$14;
-
-         for (int $$17 = 0; $$17 < $$1.size(); $$17++) {
-            fyr $$18 = $$1.get($$17);
-            $$18.a($$0, $$13, $$16, this.e.c().a(), this.f);
-            $$16 += $$18.a($$0) + ($$17 == 0 ? 2 : 0);
-         }
-
-         $$16 = $$14;
-
-         for (int $$19 = 0; $$19 < $$1.size(); $$19++) {
-            fyr $$20 = $$1.get($$19);
-            $$20.a($$0, $$13, $$16, $$10, $$11, this);
-            $$16 += $$20.a($$0) + ($$19 == 0 ? 2 : 0);
-         }
-
-         this.e.b();
-      }
-   }
-
-   private void c(cxy $$0, int $$1, int $$2) {
-      if ($$0.s()) {
-         int $$3 = $$1 + 2;
-         int $$4 = $$2 + 13;
-         this.a(goi.K(), $$3, $$4, $$3 + 13, $$4 + 2, 200, -16777216);
-         this.a(goi.K(), $$3, $$4, $$3 + $$0.t(), $$4 + 1, 200, axu.f($$0.u()));
-      }
-   }
-
-   private void b(fpx $$0, cxy $$1, int $$2, int $$3, @Nullable String $$4) {
-      if ($$1.M() != 1 || $$4 != null) {
-         String $$5 = $$4 == null ? String.valueOf($$1.M()) : $$4;
-         this.e.a();
-         this.e.a(0.0F, 0.0F, 200.0F);
-         this.a($$0, $$5, $$2 + 19 - 2 - $$0.b($$5), $$3 + 6 + 3, -1, true);
-         this.e.b();
-      }
-   }
-
-   private void d(cxy $$0, int $$1, int $$2) {
-      gmw $$3 = this.d.t;
-      float $$4 = $$3 == null ? 0.0F : $$3.gE().a($$0, this.d.av().a(true));
-      if ($$4 > 0.0F) {
-         int $$5 = $$2 + azk.d(16.0F * (1.0F - $$4));
-         int $$6 = $$5 + azk.f(16.0F * $$4);
-         this.a(goi.K(), $$1, $$5, $$1 + 16, $$6, 200, Integer.MAX_VALUE);
-      }
-   }
-
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
-   public void a(fpx $$0, @Nullable xs $$1, int $$2, int $$3) {
-      if ($$1 != null && $$1.j() != null) {
-         xb var10000 = $$1.j();
-         Objects.requireNonNull(var10000);
-         Object var5 = var10000;
-         Throwable var21;
-         switch (var5) {
-            case xb.d var7:
-               xb.d var25 = var7;
-
-               try {
-                  var26 = var25.b();
-               } catch (Throwable var16) {
-                  var21 = var16;
-                  boolean var28 = false;
-                  break;
-               }
-
-               cxy var18 = var26;
-               this.b($$0, var18, $$2, $$3);
-               return;
-            case xb.c var9:
-               xb.c var23 = var9;
-
-               try {
-                  var24 = var23.b();
-               } catch (Throwable var15) {
-                  var21 = var15;
-                  boolean var27 = false;
-                  break;
-               }
-
-               xb.b var19 = var24;
-               if (this.d.n.m) {
-                  this.a($$0, var19.a(), $$2, $$3);
-               }
-
-               return;
-            case xb.e var11:
-               xb.e var20 = var11;
-
-               try {
-                  var22 = var20.b();
-               } catch (Throwable var14) {
-                  var21 = var14;
-                  boolean var10001 = false;
-                  break;
-               }
-
-               wv var13 = var22;
-               this.b($$0, $$0.c(var13, Math.max(this.a() / 2, 200)), $$2, $$3);
-               return;
-            default:
-               return;
-         }
-
-         Throwable var17 = var21;
-         throw new MatchException(var17.toString(), var17);
-      }
-   }
-
-   public void a(Consumer<gny> $$0) {
-      $$0.accept(this.f);
-      this.f.b();
-   }
-
-   static class a {
-      private final Deque<fuu> a = new ArrayDeque<>();
-
-      public fuu a(fuu $$0) {
-         fuu $$1 = this.a.peekLast();
-         if ($$1 != null) {
-            fuu $$2 = Objects.requireNonNullElse($$0.b($$1), fuu.a());
-            this.a.addLast($$2);
-            return $$2;
-         } else {
-            this.a.addLast($$0);
-            return $$0;
-         }
+         fqr.bI.a($$4, fqs.k($$5), this.h);
+         $$13 = fqn.a($$4);
       }
 
-      @Nullable
-      public fuu a() {
-         if (this.a.isEmpty()) {
-            throw new IllegalStateException("Scissor stack underflow");
-         } else {
-            this.a.removeLast();
-            return this.a.peekLast();
-         }
-      }
+      this.g.a($$0, fqn.a(new hgq(), $$13, $$7));
+   }
 
-      public boolean a(int $$0, int $$1) {
-         return this.a.isEmpty() ? true : this.a.peek().a($$0, $$1);
-      }
+   private void f(cyo $$0) {
+      hep.b $$1 = fqn.a(this.a($$0, fqr.bI));
+      ale $$2 = this.a($$0, fqr.bS, "_open_back");
+      ale $$3 = this.a($$0, fqr.bR, "_open_front");
+      hep.b $$4 = fqn.a(fqn.a($$2), new hek.a(), fqn.a($$3));
+      hep.b $$5 = fqn.a(new hez(), $$4, $$1);
+      this.g.a($$0, fqn.a(new hgk(), $$1, fqn.a(cyq.g, $$5)));
+   }
+
+   private ale a(cyo $$0, fqq $$1, String $$2) {
+      ale $$3 = fqs.a($$0, $$2);
+      return $$1.a($$0, fqs.k($$3), this.h);
+   }
+
+   private void g(cyo $$0) {
+      hep.b $$1 = fqn.a(fqp.a($$0));
+      hep.b $$2 = fqn.a(this.a($$0, "_pulling_0", fqr.bT));
+      hep.b $$3 = fqn.a(this.a($$0, "_pulling_1", fqr.bT));
+      hep.b $$4 = fqn.a(this.a($$0, "_pulling_2", fqr.bT));
+      this.g.a($$0, fqn.a(fqn.a(), fqn.a(new hgc(false), 0.05F, $$2, fqn.a($$3, 0.65F), fqn.a($$4, 0.9F)), $$1));
+   }
+
+   private void h(cyo $$0) {
+      hep.b $$1 = fqn.a(fqp.a($$0));
+      hep.b $$2 = fqn.a(this.a($$0, "_pulling_0", fqr.bU));
+      hep.b $$3 = fqn.a(this.a($$0, "_pulling_1", fqr.bU));
+      hep.b $$4 = fqn.a(this.a($$0, "_pulling_2", fqr.bU));
+      hep.b $$5 = fqn.a(this.a($$0, "_arrow", fqr.bU));
+      hep.b $$6 = fqn.a(this.a($$0, "_firework", fqr.bU));
+      this.g
+         .a($$0, fqn.a(new hgf(), fqn.a(fqn.a(), fqn.a(new hfu(), $$2, fqn.a($$3, 0.58F), fqn.a($$4, 1.0F)), $$1), fqn.a(cxl.a.b, $$5), fqn.a(cxl.a.c, $$6)));
+   }
+
+   private void a(cyo $$0, hfc $$1, hep.b $$2, hep.b $$3) {
+      this.g.a($$0, fqn.a($$1, $$2, $$3));
+   }
+
+   private void i(cyo $$0) {
+      hep.b $$1 = fqn.a(this.a($$0, fqr.bI));
+      hep.b $$2 = fqn.a(this.a($$0, "_broken", fqr.bI));
+      this.a($$0, new hey(), $$2, $$1);
+   }
+
+   private void j(cyo $$0) {
+      hep.b $$1 = fqn.a(fqp.a($$0));
+      hep.b $$2 = fqn.a(fqp.a($$0, "_brushing_0"));
+      hep.b $$3 = fqn.a(fqp.a($$0, "_brushing_1"));
+      hep.b $$4 = fqn.a(fqp.a($$0, "_brushing_2"));
+      this.g.a($$0, fqn.a(new hgb(10.0F), 0.1F, $$1, fqn.a($$2, 0.25F), fqn.a($$3, 0.5F), fqn.a($$4, 0.75F)));
+   }
+
+   private void k(cyo $$0) {
+      hep.b $$1 = fqn.a(this.a($$0, fqr.bL));
+      hep.b $$2 = fqn.a(this.a($$0, "_cast", fqr.bL));
+      this.a($$0, new hfg(), $$2, $$1);
+   }
+
+   private void l(cyo $$0) {
+      hep.b $$1 = fqn.a(fqp.a($$0));
+      hep.b $$2 = fqn.a(fqp.b("tooting_goat_horn"));
+      this.a($$0, fqn.a(), $$2, $$1);
+   }
+
+   private void m(cyo $$0) {
+      hep.b $$1 = fqn.a(fqp.a($$0), new hha.a());
+      hep.b $$2 = fqn.a(fqp.a($$0, "_blocking"), new hha.a());
+      this.a($$0, fqn.a(), $$2, $$1);
+   }
+
+   private static hep.b a(hep.b $$0, hep.b $$1) {
+      return fqn.a(new hgk(), $$1, fqn.a(List.of(cyq.g, cyq.h, cyq.i), $$0));
+   }
+
+   private void n(cyo $$0) {
+      hep.b $$1 = fqn.a(this.a($$0, fqr.bI));
+      hep.b $$2 = fqn.a(fqp.a($$0, "_in_hand"));
+      this.g.a($$0, a($$1, $$2));
+   }
+
+   private void o(cyo $$0) {
+      hep.b $$1 = fqn.a(this.a($$0, fqr.bI));
+      hep.b $$2 = fqn.a(fqp.a($$0, "_in_hand"), new hhg.a());
+      hep.b $$3 = fqn.a(fqp.a($$0, "_throwing"), new hhg.a());
+      hep.b $$4 = fqn.a(fqn.a(), $$3, $$2);
+      this.g.a($$0, a($$1, $$4));
+   }
+
+   private void a(cyo $$0, ale $$1) {
+      this.g.a($$0, fqn.a($$1, new fpt()));
+   }
+
+   private void p(cyo $$0) {
+      ale $$1 = this.a($$0, fqp.b("potion_overlay"), fqp.a($$0));
+      this.a($$0, $$1);
+   }
+
+   private void q(cyo $$0) {
+      ale $$1 = this.a($$0, fqp.a($$0, "_head"), fqp.a($$0, "_base"));
+      this.a($$0, $$1);
+   }
+
+   private void a(cyo $$0, int $$1) {
+      ale $$2 = this.a($$0, fqr.bI);
+      this.g.a($$0, fqn.a($$2, new fpn($$1)));
+   }
+
+   private void a(cyo $$0, int $$1, int $$2) {
+      ale $$3 = fqp.b("template_spawn_egg");
+      this.g.a($$0, fqn.a($$3, fqn.a($$1), fqn.a($$2)));
+   }
+
+   private void r(cyo $$0) {
+      ale $$1 = fqs.c($$0);
+      ale $$2 = fqs.a($$0, "_overlay");
+      ale $$3 = fqr.bI.a($$0, fqs.k($$1), this.h);
+      ale $$4 = fqp.a($$0, "_dyed");
+      fqr.bM.a($$4, fqs.c($$1, $$2), this.h);
+      this.g.a($$0, fqn.a(fqn.a(kj.K), fqn.a($$4, f, new fpn(0)), fqn.a($$3)));
+   }
+
+   public void a() {
+      this.b(cyw.oH, fqr.bI);
+      this.b(cyw.oJ, fqr.bI);
+      this.b(cyw.oI, fqr.bI);
+      this.b(cyw.oK, fqr.bI);
+      this.b(cyw.pm, fqr.bI);
+      this.b(cyw.pd, fqr.bI);
+      this.b(cyw.oZ, fqr.bI);
+      this.b(cyw.vJ, fqr.bI);
+      this.b(cyw.pf, fqr.bI);
+      this.b(cyw.vk, fqr.bI);
+      this.b(cyw.ef, fqr.bK);
+      this.b(cyw.tb, fqr.bI);
+      this.b(cyw.wo, fqr.bI);
+      this.b(cyw.wq, fqr.bI);
+      this.b(cyw.oD, fqr.bI);
+      this.b(cyw.oE, fqr.bI);
+      this.b(cyw.sy, fqr.bI);
+      this.b(cyw.tp, fqr.bI);
+      this.b(cyw.th, fqr.bK);
+      this.b(cyw.su, fqr.bI);
+      this.b(cyw.sz, fqr.bI);
+      this.b(cyw.xl, fqr.bI);
+      this.b(cyw.rA, fqr.bI);
+      this.b(cyw.pc, fqr.bI);
+      this.b(cyw.qg, fqr.bI);
+      this.b(cyw.rw, fqr.bI);
+      this.b(cyw.vd, fqr.bK);
+      this.b(cyw.sv, fqr.bI);
+      this.b(cyw.rj, fqr.bI);
+      this.b(cyw.ov, fqr.bL);
+      this.b(cyw.ow, fqr.bL);
+      this.b(cyw.ph, fqr.bI);
+      this.b(cyw.or, fqr.bI);
+      this.b(cyw.td, fqr.bI);
+      this.b(cyw.wk, fqr.bI);
+      this.b(cyw.rx, fqr.bI);
+      this.e(cyw.rX);
+      this.b(cyw.pg, fqr.bI);
+      this.b(cyw.rs, fqr.bI);
+      this.b(cyw.vQ, fqr.bI);
+      this.c(cyw.rD);
+      this.d(cyw.rE);
+      this.b(cyw.tc, fqr.bI);
+      this.b(cyw.te, fqr.bI);
+      this.b(cyw.se, fqr.bI);
+      this.b(cyw.vS, fqr.bI);
+      this.b(cyw.qH, fqr.bI);
+      this.b(cyw.vF, fqr.bI);
+      this.b(cyw.sf, fqr.bI);
+      this.b(cyw.sT, fqr.bI);
+      this.b(cyw.pp, fqr.bI);
+      this.b(cyw.pq, fqr.bI);
+      this.b(cyw.xd, fqr.bI);
+      this.b(cyw.ss, fqr.bI);
+      this.b(cyw.oL, fqr.bI);
+      this.b(cyw.oM, fqr.bI);
+      this.b(cyw.pi, fqr.bI);
+      this.b(cyw.pS, fqr.bK);
+      this.b(cyw.pT, fqr.bK);
+      this.b(cyw.vM, fqr.bI);
+      this.b(cyw.pR, fqr.bK);
+      this.b(cyw.pQ, fqr.bK);
+      this.b(cyw.pP, fqr.bK);
+      this.b(cyw.wr, fqr.bI);
+      this.b(cyw.sY, fqr.bI);
+      this.b(cyw.rC, fqr.bI);
+      this.b(cyw.pj, fqr.bI);
+      this.b(cyw.vz, fqr.bI);
+      this.b(cyw.tt, fqr.bI);
+      this.b(cyw.tg, fqr.bI);
+      this.b(cyw.wj, fqr.bI);
+      this.b(cyw.uY, fqr.bI);
+      this.b(cyw.to, fqr.bI);
+      this.b(cyw.xk, fqr.bI);
+      this.b(cyw.vx, fqr.bI);
+      this.b(cyw.uZ, fqr.bI);
+      this.b(cyw.qF, fqr.bI);
+      this.b(cyw.pb, fqr.bI);
+      this.b(cyw.xi, fqr.bI);
+      this.b(cyw.xc, fqr.bI);
+      this.b(cyw.os, fqr.bI);
+      this.b(cyw.ti, fqr.bI);
+      this.b(cyw.tl, fqr.bI);
+      this.b(cyw.tu, fqr.bI);
+      this.b(cyw.xg, fqr.bI);
+      this.b(cyw.xA, fqr.bI);
+      this.b(cyw.rZ, fqr.bI);
+      this.b(cyw.sh, fqr.bI);
+      this.b(cyw.vg, fqr.bI);
+      this.b(cyw.pr, fqr.bI);
+      this.b(cyw.qJ, fqr.bI);
+      this.b(cyw.pI, fqr.bK);
+      this.b(cyw.vn, fqr.bI);
+      this.b(cyw.pJ, fqr.bK);
+      this.b(cyw.vL, fqr.bI);
+      this.b(cyw.pH, fqr.bK);
+      this.b(cyw.pG, fqr.bK);
+      this.b(cyw.pF, fqr.bK);
+      this.b(cyw.ps, fqr.bI);
+      this.b(cyw.tj, fqr.bI);
+      this.b(cyw.sq, fqr.bI);
+      this.b(cyw.sw, fqr.bI);
+      this.b(cyw.qd, fqr.bI);
+      this.b(cyw.xj, fqr.bI);
+      this.b(cyw.wY, fqr.bI);
+      this.b(cyw.xE, fqr.bI);
+      this.b(cyw.xH, fqr.bI);
+      this.b(cyw.ou, fqr.bI);
+      this.b(cyw.sg, fqr.bI);
+      this.b(cyw.pn, fqr.bI);
+      this.b(cyw.pN, fqr.bK);
+      this.b(cyw.pO, fqr.bK);
+      this.b(cyw.vK, fqr.bI);
+      this.b(cyw.po, fqr.bI);
+      this.b(cyw.wz, fqr.bI);
+      this.b(cyw.pM, fqr.bK);
+      this.b(cyw.pL, fqr.bK);
+      this.b(cyw.pK, fqr.bK);
+      this.b(cyw.vf, fqr.bI);
+      this.b(cyw.oF, fqr.bI);
+      this.b(cyw.oG, fqr.bI);
+      this.b(cyw.wA, fqr.bI);
+      this.b(cyw.pk, fqr.bI);
+      this.b(cyw.rl, fqr.bI);
+      this.b(cyw.ro, fqr.bI);
+      this.b(cyw.sm, fqr.bI);
+      this.b(cyw.sr, fqr.bI);
+      this.b(cyw.so, fqr.bI);
+      this.b(cyw.sl, fqr.bI);
+      this.b(cyw.tq, fqr.bI);
+      this.b(cyw.oP, fqr.bI);
+      this.b(cyw.oQ, fqr.bI);
+      this.b(cyw.oR, fqr.bI);
+      this.b(cyw.oS, fqr.bI);
+      this.b(cyw.vm, fqr.bI);
+      this.b(cyw.sX, fqr.bI);
+      this.b(cyw.rp, fqr.bI);
+      this.b(cyw.oq, fqr.bI);
+      this.b(cyw.xf, fqr.bI);
+      this.b(cyw.qa, fqr.bI);
+      this.b(cyw.wV, fqr.bI);
+      this.b(cyw.wO, fqr.bJ);
+      this.b(cyw.wC, fqr.bJ);
+      this.b(cyw.wE, fqr.bJ);
+      this.b(cyw.wD, fqr.bJ);
+      this.b(cyw.wF, fqr.bJ);
+      this.b(cyw.wG, fqr.bJ);
+      this.b(cyw.wH, fqr.bJ);
+      this.b(cyw.wI, fqr.bJ);
+      this.b(cyw.wJ, fqr.bJ);
+      this.b(cyw.wK, fqr.bJ);
+      this.b(cyw.wT, fqr.bJ);
+      this.b(cyw.wU, fqr.bJ);
+      this.b(cyw.wL, fqr.bJ);
+      this.b(cyw.wM, fqr.bJ);
+      this.b(cyw.wP, fqr.bJ);
+      this.b(cyw.wN, fqr.bJ);
+      this.b(cyw.wQ, fqr.bJ);
+      this.b(cyw.wR, fqr.bJ);
+      this.b(cyw.wS, fqr.bJ);
+      this.b(cyw.vR, fqr.bI);
+      this.b(cyw.vP, fqr.bI);
+      this.b(cyw.wX, fqr.bI);
+      this.b(cyw.pX, fqr.bK);
+      this.b(cyw.pY, fqr.bK);
+      this.b(cyw.pt, fqr.bI);
+      this.b(cyw.pW, fqr.bK);
+      this.b(cyw.pu, fqr.bI);
+      this.b(cyw.pV, fqr.bK);
+      this.b(cyw.pU, fqr.bK);
+      this.b(cyw.vA, fqr.bI);
+      this.b(cyw.vB, fqr.bI);
+      this.b(cyw.vv, fqr.bI);
+      this.b(cyw.oz, fqr.bI);
+      this.b(cyw.oA, fqr.bI);
+      this.b(cyw.sk, fqr.bI);
+      this.b(cyw.qI, fqr.bI);
+      this.b(cyw.oN, fqr.bI);
+      this.b(cyw.oO, fqr.bI);
+      this.b(cyw.rz, fqr.bI);
+      this.b(cyw.ox, fqr.bI);
+      this.b(cyw.xh, fqr.bI);
+      this.b(cyw.sp, fqr.bI);
+      this.b(cyw.vl, fqr.bI);
+      this.b(cyw.wl, fqr.bI);
+      this.b(cyw.qG, fqr.bI);
+      this.b(cyw.rm, fqr.bI);
+      this.b(cyw.vD, fqr.bI);
+      this.b(cyw.vC, fqr.bI);
+      this.b(cyw.sd, fqr.bI);
+      this.b(cyw.rq, fqr.bI);
+      this.b(cyw.vw, fqr.bI);
+      this.b(cyw.st, fqr.bI);
+      this.b(cyw.pl, fqr.bI);
+      this.b(cyw.vE, fqr.bI);
+      this.b(cyw.vH, fqr.bI);
+      this.b(cyw.vI, fqr.bI);
+      this.b(cyw.vG, fqr.bI);
+      this.b(cyw.sx, fqr.bI);
+      this.b(cyw.tf, fqr.bI);
+      this.b(cyw.op, fqr.bI);
+      this.b(cyw.sb, fqr.bI);
+      this.b(cyw.rr, fqr.bI);
+      this.b(cyw.oY, fqr.bI);
+      this.b(cyw.sW, fqr.bI);
+      this.b(cyw.wy, fqr.bI);
+      this.b(cyw.xe, fqr.bI);
+      this.b(cyw.rB, fqr.bI);
+      this.b(cyw.rn, fqr.bI);
+      this.b(cyw.yy, fqr.bI);
+      this.b(cyw.wt, fqr.bI);
+      this.b(cyw.tn, fqr.bI);
+      this.b(cyw.oB, fqr.bI);
+      this.b(cyw.oC, fqr.bI);
+      this.b(cyw.pZ, fqr.bK);
+      this.b(cyw.pD, fqr.bK);
+      this.b(cyw.pE, fqr.bK);
+      this.b(cyw.pC, fqr.bK);
+      this.b(cyw.pB, fqr.bK);
+      this.b(cyw.pA, fqr.bK);
+      this.b(cyw.sB, fqr.bI);
+      this.b(cyw.xa, fqr.bI);
+      this.b(cyw.ot, fqr.bI);
+      this.b(cyw.wx, fqr.bI);
+      this.b(cyw.sc, fqr.bI);
+      this.b(cyw.rt, fqr.bI);
+      this.b(cyw.ru, fqr.bI);
+      this.b(cyw.rv, fqr.bI);
+      this.b(cyw.rk, fqr.bI);
+      this.b(cyw.qf, fqr.bI);
+      this.b(cyw.sj, fqr.bI);
+      this.b(cyw.va, fqr.bI);
+      this.b(cyw.ve, fqr.cc);
+      this.b(cyw.py, fqr.bK);
+      this.b(cyw.pz, fqr.bK);
+      this.b(cyw.px, fqr.bK);
+      this.b(cyw.pw, fqr.bK);
+      this.b(cyw.pv, fqr.bK);
+      this.b(cyw.vb, fqr.bI);
+      this.b(cyw.vc, fqr.bI);
+      this.b(cyw.sn, fqr.bI);
+      this.b(cyw.yA, fqr.bI);
+      this.b(cyw.yB, fqr.bI);
+      this.b(cyw.yC, fqr.bI);
+      this.b(cyw.yD, fqr.bI);
+      this.b(cyw.yE, fqr.bI);
+      this.b(cyw.yF, fqr.bI);
+      this.b(cyw.yG, fqr.bI);
+      this.b(cyw.yH, fqr.bI);
+      this.b(cyw.yI, fqr.bI);
+      this.b(cyw.yJ, fqr.bI);
+      this.b(cyw.yK, fqr.bI);
+      this.b(cyw.yL, fqr.bI);
+      this.b(cyw.yM, fqr.bI);
+      this.b(cyw.yN, fqr.bI);
+      this.b(cyw.yO, fqr.bI);
+      this.b(cyw.yP, fqr.bI);
+      this.b(cyw.yQ, fqr.bI);
+      this.b(cyw.yR, fqr.bI);
+      this.b(cyw.yS, fqr.bI);
+      this.b(cyw.wB, cyw.pZ, fqr.bK);
+      this.b(cyw.qK, cyw.qJ, fqr.bI);
+      this.a(cyw.oX, dha.g, a, false);
+      this.a(cyw.qh, dha.b, a, true);
+      this.a(cyw.qi, dha.b, b, true);
+      this.a(cyw.qj, dha.b, c, true);
+      this.a(cyw.qk, dha.b, d, true);
+      this.a(cyw.ql, dha.c, a, false);
+      this.a(cyw.qm, dha.c, b, false);
+      this.a(cyw.qn, dha.c, c, false);
+      this.a(cyw.qo, dha.c, d, false);
+      this.a(cyw.qp, dha.d, a, false);
+      this.a(cyw.qq, dha.d, b, false);
+      this.a(cyw.qr, dha.d, c, false);
+      this.a(cyw.qs, dha.d, d, false);
+      this.a(cyw.qt, dha.f, a, false);
+      this.a(cyw.qu, dha.f, b, false);
+      this.a(cyw.qv, dha.f, c, false);
+      this.a(cyw.qw, dha.f, d, false);
+      this.a(cyw.qx, dha.e, a, false);
+      this.a(cyw.qy, dha.e, b, false);
+      this.a(cyw.qz, dha.e, c, false);
+      this.a(cyw.qA, dha.e, d, false);
+      this.a(cyw.qB, dha.h, a, false);
+      this.a(cyw.qC, dha.h, b, false);
+      this.a(cyw.qD, dha.h, c, false);
+      this.a(cyw.qE, dha.h, d, false);
+      this.a(cyw.vN, -6265536);
+      this.b(cyw.yT, fqr.bI);
+      this.b(cyw.yU, fqr.bI);
+      this.b(cyw.yV, fqr.bI);
+      this.b(cyw.yW, fqr.bI);
+      this.b(cyw.yX, fqr.bI);
+      this.b(cyw.yY, fqr.bI);
+      this.b(cyw.yZ, fqr.bI);
+      this.b(cyw.za, fqr.bI);
+      this.b(cyw.zb, fqr.bI);
+      this.b(cyw.zc, fqr.bI);
+      this.b(cyw.zd, fqr.bI);
+      this.b(cyw.ze, fqr.bI);
+      this.b(cyw.zf, fqr.bI);
+      this.b(cyw.zg, fqr.bI);
+      this.b(cyw.zh, fqr.bI);
+      this.b(cyw.zi, fqr.bI);
+      this.b(cyw.zj, fqr.bI);
+      this.b(cyw.zk, fqr.bI);
+      this.b(cyw.zl, fqr.bI);
+      this.b(cyw.zm, fqr.bI);
+      this.b(cyw.zn, fqr.bI);
+      this.b(cyw.zo, fqr.bI);
+      this.b(cyw.zp, fqr.bI);
+      this.b(cyw.zH, fqr.bI);
+      this.b(cyw.zI, fqr.bI);
+      this.b(cyw.zK, fqr.bI);
+      this.a(cyw.vy, new fpo());
+      this.a(cyw.sV, "_markings", new fps());
+      this.f(cyw.rF);
+      this.f(cyw.rV);
+      this.f(cyw.rG);
+      this.f(cyw.rN);
+      this.f(cyw.rO);
+      this.f(cyw.rJ);
+      this.f(cyw.rR);
+      this.f(cyw.rP);
+      this.f(cyw.rK);
+      this.f(cyw.rU);
+      this.f(cyw.rQ);
+      this.f(cyw.rI);
+      this.f(cyw.rM);
+      this.f(cyw.rT);
+      this.f(cyw.rL);
+      this.f(cyw.rS);
+      this.f(cyw.rH);
+      this.n(cyw.rY);
+      this.o(cyw.wW);
+      this.r(cyw.pa);
+      this.g(cyw.pe);
+      this.h(cyw.wZ);
+      this.i(cyw.oy);
+      this.j(cyw.yz);
+      this.k(cyw.rW);
+      this.l(cyw.xm);
+      this.m(cyw.ww);
+      this.q(cyw.wu);
+      this.p(cyw.tm);
+      this.p(cyw.ws);
+      this.p(cyw.wv);
+      this.a(cyw.tv, 11366765, 8538184);
+      this.a(cyw.tw, 56063, 44543);
+      this.a(cyw.tx, 16499171, 10890612);
+      this.a(cyw.ty, 4996656, 986895);
+      this.a(cyw.tz, 15582019, 4400155);
+      this.a(cyw.tA, 16167425, 16775294);
+      this.a(cyw.tB, 9084018, 3231003);
+      this.a(cyw.tC, 11506911, 9529055);
+      this.a(cyw.tD, 15714446, 9794134);
+      this.a(cyw.tE, 16565097, 13341495);
+      this.a(cyw.tF, 803406, 11013646);
+      this.a(cyw.tG, 10592673, 16711680);
+      this.a(cyw.tH, 12691306, 15058059);
+      this.a(cyw.tI, 4470310, 10592673);
+      this.a(cyw.tJ, 894731, 0);
+      this.a(cyw.tK, 2243405, 16382457);
+      this.a(cyw.tL, 5457209, 8811878);
+      this.a(cyw.tM, 9433559, 7969893);
+      this.a(cyw.tN, 13552826, 7632531);
+      this.a(cyw.tO, 1842204, 14711290);
+      this.a(cyw.tP, 1447446, 0);
+      this.a(cyw.tQ, 1447446, 7237230);
+      this.a(cyw.tR, 9804699, 1973274);
+      this.a(cyw.tS, 14005919, 13396256);
+      this.a(cyw.tT, 13661252, 16762748);
+      this.a(cyw.tU, 16382457, 12369084);
+      this.a(cyw.tV, 611926, 8778172);
+      this.a(cyw.tW, 10851452, 5589310);
+      this.a(cyw.tX, 5931634, 15826224);
+      this.a(cyw.tY, 13004373, 6251620);
+      this.a(cyw.tZ, 12623485, 15656192);
+      this.a(cyw.ua, 7958625, 15125652);
+      this.a(cyw.ub, 14405058, 7643954);
+      this.a(cyw.uc, 12623485, 10051392);
+      this.a(cyw.ud, 3407872, 16579584);
+      this.a(cyw.ue, 10489616, 12040119);
+      this.a(cyw.uf, 1769984, 5321501);
+      this.a(cyw.ug, 15720061, 5653556);
+      this.a(cyw.uh, 15198183, 1776418);
+      this.a(cyw.ui, 894731, 16711680);
+      this.a(cyw.uj, 4411786, 8978176);
+      this.a(cyw.uk, 15771042, 14377823);
+      this.a(cyw.ul, 10051392, 16380836);
+      this.a(cyw.um, 5843472, 16380836);
+      this.a(cyw.un, 5451574, 9804699);
+      this.a(cyw.uo, 15658718, 14014157);
+      this.a(cyw.up, 16167425, 3654642);
+      this.a(cyw.uq, 10051392, 7555121);
+      this.a(cyw.ur, 7697520, 5984329);
+      this.a(cyw.us, 10489616, 951412);
+      this.a(cyw.ut, 15198183, 16758197);
+      this.a(cyw.uu, 9725844, 5060690);
+      this.a(cyw.uv, 7237230, 3158064);
+      this.a(cyw.uw, 12698049, 4802889);
+      this.a(cyw.ux, 6842447, 15066584);
+      this.a(cyw.uy, 5349438, 8306542);
+      this.a(cyw.uz, 8855049, 2468720);
+      this.a(cyw.uA, 14283506, 8496292);
+      this.a(cyw.uB, 3419431, 11013646);
+      this.a(cyw.uC, 2243405, 7375001);
+      this.a(cyw.uD, 6387319, 14543594);
+      this.a(cyw.uE, 10236982, 5065037);
+      this.a(cyw.uF, 7164733, 1444352);
+      this.a(cyw.uG, 15377456, 4547222);
+      this.a(cyw.uH, 15690005, 16775663);
+      this.a(cyw.uI, 15198183, 44975);
+      this.a(cyw.uJ, 8032420, 15265265);
+      this.a(cyw.uK, 5651507, 12422002);
+      this.a(cyw.uL, 9804699, 2580065);
+      this.a(cyw.uM, 4547222, 15377456);
+      this.a(cyw.uN, 1001033, 3790560);
+      this.a(cyw.uO, 3407872, 5349438);
+      this.a(cyw.uP, 1315860, 5075616);
+      this.a(cyw.uQ, 1315860, 4672845);
+      this.a(cyw.uR, 14144467, 13545366);
+      this.a(cyw.uS, 13004373, 15132390);
+      this.a(cyw.uT, 6250335, 16545810);
+      this.a(cyw.uU, 44975, 7969893);
+      this.a(cyw.uV, 3232308, 9945732);
+      this.a(cyw.uW, 5651507, 7969893);
+      this.a(cyw.uX, 15373203, 5009705);
+      this.a(cyw.a);
+      this.a(cyw.ys);
+      this.a(cyw.yp);
+      this.a(cyw.yq);
+      this.a(cyw.yr);
+      this.a(cyw.ee);
+      this.a(cyw.ed);
+      this.a(cyw.ec);
+      this.a(cyw.yt);
+      this.a(cyw.sA);
+      this.a(cyw.sa);
+      this.a(cyw.qc);
+      this.a(cyw.vO);
+   }
+
+   public static record a(dhe a, ald<dhf> b) {
    }
 }

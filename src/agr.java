@@ -1,20 +1,29 @@
-public record agr(int b) implements zc<agm> {
-   public static final yt<vr, agr> a = zc.a(agr::a, agr::new);
+public class agr implements zd<agn> {
+   public static final yu<vs, agr> a = zd.a(agr::a, agr::new);
+   private final btv b;
 
-   private agr(vr $$0) {
-      this($$0.l());
+   public agr(btv $$0) {
+      this.b = $$0;
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.b);
+   private agr(vs $$0) {
+      this.b = btv.a($$0.readUnsignedByte());
+   }
+
+   private void a(vs $$0) {
+      $$0.l(this.b.a());
    }
 
    @Override
-   public ze<agr> a() {
-      return agk.bo;
+   public zf<agr> a() {
+      return agl.bn;
    }
 
-   public void a(agm $$0) {
+   public void a(agn $$0) {
       $$0.a(this);
+   }
+
+   public btv b() {
+      return this.b;
    }
 }

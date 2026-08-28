@@ -1,5 +1,5 @@
-public record gco<T extends gew>(T a, T b) {
-   public T a(boolean $$0) {
-      return $$0 ? this.b : this.a;
-   }
+import java.util.Set;
+import javax.annotation.Nullable;
+
+public record gco(gcv.a a, Set<dil.e<dil.a>> b, @Nullable ald<eoj> c) {
 }

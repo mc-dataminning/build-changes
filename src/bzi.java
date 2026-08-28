@@ -1,33 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bzi {
-   public static bzt<bwr> a(int $$0, float $$1, int $$2) {
-      return cbv.a(
-         (Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$3 -> $$3.group(
-                  $$3.c(cft.n), $$3.a(cft.b), $$3.a(cft.D), $$3.a(cft.u), $$3.a(cft.o), $$3.a(cft.s), $$3.a(cft.r)
-               )
-               .apply(
-                  $$3,
-                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
-                        $$11.A()
-                           .d($$0xxxx -> $$0xxxx.a(chx.n), $$0xxxx -> true, $$12.dv(), $$2 + 1, cht.b.c)
-                           .filter($$2xxxx -> $$2xxxx.a($$12.dt(), (double)$$2))
-                           .or(() -> $$11.A().a($$0xxxxx -> $$0xxxxx.a(chx.n), $$0xxxxx -> true, cht.b.c, $$12.dv(), $$0, $$12.dY()))
-                           .or(() -> $$3.<jr>a($$5).map(jr::b))
-                           .ifPresent($$10xx -> {
-                              $$7.b();
-                              $$8.b();
-                              $$9.b();
-                              $$10.b();
-                              $$6.a(jr.a($$11.aj(), $$10xx));
-                              if (!$$10xx.a($$12.dt(), (double)$$2)) {
-                                 $$4.a(new cfw($$10xx, $$1, $$2));
-                              }
-                           });
-                        return true;
-                     }
-               ))
-      );
+public class bzi extends byq<cqe> {
+   private static final int d = 1200;
+   final float c;
+
+   public bzi(float $$0) {
+      super(ImmutableMap.of(cgb.d, cgc.a), 1200);
+      this.c = $$0;
+   }
+
+   protected boolean a(aro $$0, cqe $$1) {
+      return $$1.eb().g().map($$0x -> $$0x == csl.b || $$0x == csl.c || $$0x == csl.d).orElse(true);
+   }
+
+   protected boolean a(aro $$0, cqe $$1, long $$2) {
+      return $$1.eb().a(cgb.d);
+   }
+
+   protected void b(aro $$0, cqe $$1, long $$2) {
+      bys.a($$1, $$1.eb().c(cgb.d).get().b(), this.c, 1);
+   }
+
+   protected void c(aro $$0, cqe $$1, long $$2) {
+      Optional<jd> $$3 = $$1.eb().c(cgb.d);
+      $$3.ifPresent($$1x -> {
+         iu $$2x = $$1x.b();
+         aro $$3x = $$0.p().a($$1x.a());
+         if ($$3x != null) {
+            cib $$4 = $$3x.A();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            agk.c($$0, $$2x);
+         }
+      });
+      $$1.eb().b(cgb.d);
    }
 }

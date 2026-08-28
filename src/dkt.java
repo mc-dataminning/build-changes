@@ -1,56 +1,79 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dkt extends djp {
-   public static final MapCodec<dkt> c = b(dkt::new);
+public class dkt extends dks implements dtb {
+   public static final MapCodec<dkt> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("height").forGetter($$0x -> $$0x.e), Codec.FLOAT.fieldOf("width").forGetter($$0x -> $$0x.f), t())
+            .apply($$0, dkt::new)
+   );
+   public static final eaf c = eae.I;
+   public static final eam<ja> d = eae.R;
+   private final float e;
+   private final float f;
+   private final Map<ja, feq> g;
 
    @Override
    public MapCodec<dkt> a() {
-      return c;
+      return b;
    }
 
-   protected dkt(dyl.d $$0) {
-      super($$0);
+   public dkt(float $$0, float $$1, dzn.d $$2) {
+      super($$2);
+      this.l(this.m().b(c, Boolean.valueOf(false)).b(d, ja.b));
+      this.g = fen.d(dlu.c((double)$$1, (double)(16.0F - $$0), 16.0));
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public dvl a(jj $$0, dym $$1) {
-      return new dvk($$0, $$1);
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return this.g.get($$0.c(d));
+   }
+
+   @Override
+   protected boolean a(dzo $$0, dis $$1, iu $$2) {
+      ja $$3 = $$0.c(d);
+      iu $$4 = $$2.a($$3.g());
+      return $$1.a_($$4).c($$1, $$4, $$3);
+   }
+
+   @Override
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      if ($$0.c(c)) {
+         $$2.a($$3, evw.c, evw.c.a($$1));
+      }
+
+      return $$4 == $$0.c(d).g() && !$$0.a($$1, $$3) ? dlw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Nullable
    @Override
-   public <T extends dvl> dvm<T> a(dhp $$0, dym $$1, dvn<T> $$2) {
-      return a($$0, $$2, dvn.D);
+   public dzo a(dcl $$0) {
+      diq $$1 = $$0.q();
+      iu $$2 = $$0.a();
+      return this.m().b(c, Boolean.valueOf($$1.b_($$2).a() == evw.c)).b(d, $$0.k());
    }
 
    @Override
-   protected void a(dhp $$0, jj $$1, cqi $$2) {
-      dvl $$3 = $$0.c_($$1);
-      if ($$3 instanceof dvk) {
-         $$2.a((bts)$$3);
-         $$2.a(awu.as);
-      }
+   protected dzo a(dzo $$0, dsm $$1) {
+      return $$0.b(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awk.cA, awl.e, 1.0F, 1.0F, false);
-         }
+   protected dzo a(dzo $$0, dqv $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
 
-         jo $$7 = $$0.c(a);
-         jo.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == jo.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 9.0 / 16.0;
-         double $$13 = $$8 == jo.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(lv.ah, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+   @Override
+   protected evv b_(dzo $$0) {
+      return $$0.c(c) ? evw.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(c, d);
    }
 }

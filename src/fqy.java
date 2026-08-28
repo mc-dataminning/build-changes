@@ -1,50 +1,60 @@
-public class fqy extends frh {
-   private static final int a = 4;
-   private final boolean b;
-   private final int c;
+import org.joml.Vector2i;
 
-   public fqy(int $$0, wv $$1, fpx $$2) {
-      this($$0, $$1, $$2, 4);
-   }
+public class fqy implements fre {
+   private final fof a;
+   private final foo b;
 
-   public fqy(int $$0, wv $$1, fpx $$2, int $$3) {
-      this($$0, $$1, $$2, true, $$3);
-   }
-
-   public fqy(int $$0, wv $$1, fpx $$2, boolean $$3, int $$4) {
-      super($$1, $$2);
-      this.d($$0);
-      this.b(true);
-      this.j = true;
-      this.b = $$3;
-      this.c = $$4;
-   }
-
-   public void b(int $$0) {
-      this.d($$0 - this.c * 4);
+   public fqy(fof $$0) {
+      this.a = $$0;
+      this.b = new foo();
    }
 
    @Override
-   protected void a(fuk $$0) {
-      $$0.a(fuj.a, this.B());
+   public boolean a(cwh $$0) {
+      return $$0.g().a(axi.bQ);
    }
 
    @Override
-   public void b(fpz $$0, int $$1, int $$2, float $$3) {
-      if (this.aI_() || this.b) {
-         int $$4 = this.F() - this.c;
-         int $$5 = this.G() - this.c;
-         int $$6 = this.A() + this.c * 2;
-         int $$7 = this.y() + this.c * 2;
-         int $$8 = this.b ? (this.aI_() ? -1 : -6250336) : -1;
-         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
-         $$0.b($$4, $$5, $$6, $$7, $$8);
+   public boolean a(double $$0, double $$1, int $$2, cys $$3) {
+      int $$4 = cxh.j($$3);
+      if ($$4 == 0) {
+         return false;
+      } else {
+         Vector2i $$5 = this.b.a($$0, $$1);
+         int $$6 = $$5.y == 0 ? -$$5.x : $$5.y;
+         if ($$6 != 0) {
+            int $$7 = cxh.h($$3);
+            int $$8 = foo.a((double)$$6, $$7, $$4);
+            if ($$7 != $$8) {
+               this.a($$3, $$2, $$8);
+            }
+         }
+
+         return true;
       }
-
-      super.b($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(hlv $$0) {
+   public void b(cwh $$0) {
+      this.a($$0.g(), $$0.d);
+   }
+
+   @Override
+   public void a(cwh $$0, cuv $$1) {
+      if ($$1 == cuv.b || $$1 == cuv.c) {
+         this.a($$0.g(), $$0.d);
+      }
+   }
+
+   private void a(cys $$0, int $$1, int $$2) {
+      if (this.a.L() != null && $$2 < cxh.j($$0)) {
+         gje $$3 = this.a.L();
+         cxh.a($$0, $$2);
+         $$3.b(new aib($$1, $$2));
+      }
+   }
+
+   public void a(cys $$0, int $$1) {
+      this.a($$0, $$1, -1);
    }
 }

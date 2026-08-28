@@ -1,42 +1,25 @@
-public class gle extends glh {
-   private final gew a;
-   private final goi b = goi.j(gty.a);
-
-   gle(ghz $$0, double $$1, double $$2, double $$3) {
+public class gle extends gnl {
+   gle(gjd $$0, double $$1, double $$2, double $$3, dzo $$4) {
       super($$0, $$1, $$2, $$3);
-      this.a = new gej(fnd.Q().aS().a(ghc.aK));
+      this.a(fof.Q().ap().a().a($$4));
       this.u = 0.0F;
-      this.t = 30;
+      this.t = 80;
+      this.n = false;
    }
 
    @Override
-   public gll b() {
-      return gll.d;
+   public gmp b() {
+      return gmp.a;
    }
 
    @Override
-   public void a(fho $$0, gny $$1, fml $$2, float $$3) {
-      float $$4 = ((float)this.s + $$3) / (float)this.t;
-      float $$5 = 0.05F + 0.5F * azk.a($$4 * (float) Math.PI);
-      int $$6 = axu.a($$5, 1.0F, 1.0F, 1.0F);
-      $$0.a();
-      $$0.a($$2.f());
-      $$0.a(a.b.rotationDegrees(60.0F - 150.0F * $$4));
-      float $$7 = 0.42553192F;
-      $$0.b(0.42553192F, -0.42553192F, -0.42553192F);
-      $$0.a(0.0F, -0.56F, 3.5F);
-      fhs $$8 = $$1.getBuffer(this.b);
-      this.a.a($$0, $$8, 15728880, hgi.d, $$6);
-      $$0.b();
+   public float b(float $$0) {
+      return 0.5F;
    }
 
-   @Override
-   public void a(fhs $$0, fml $$1, float $$2) {
-   }
-
-   public static class a implements glk<lz> {
-      public glh a(lz $$0, ghz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gle($$1, $$2, $$3, $$4);
+   public static class a implements gmo<lp> {
+      public gml a(lp $$0, gjd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gle($$1, $$2, $$3, $$4, $$0.b());
       }
    }
 }

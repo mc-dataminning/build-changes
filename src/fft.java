@@ -1,13 +1,29 @@
-public interface fft {
-   <T> fha<T> a(String var1, fgz<T> var2);
+import java.util.function.Function;
 
-   <T> void a(fha<T> var1);
+public class fft<T> implements ffk<T> {
+   private final Function<iu, ffr<T>> a;
 
-   <T> fha<T> b(fha<T> var1);
+   public fft(Function<iu, ffr<T>> $$0) {
+      this.a = $$0;
+   }
 
-   void a(fft var1);
+   @Override
+   public boolean a(iu $$0, T $$1) {
+      return this.a.apply($$0).a($$0, $$1);
+   }
 
-   void a();
+   @Override
+   public void a(ffo<T> $$0) {
+      this.a.apply($$0.b()).a($$0);
+   }
 
-   void a(Runnable var1);
+   @Override
+   public boolean b(iu $$0, T $$1) {
+      return false;
+   }
+
+   @Override
+   public int a() {
+      return 0;
+   }
 }

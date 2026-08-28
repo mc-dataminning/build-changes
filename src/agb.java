@@ -1,29 +1,18 @@
-public record agb(float b, boolean c) implements zc<abr> {
-   public static final yt<vr, agb> a = zc.a(agb::a, agb::new);
+import java.util.Optional;
 
-   private agb(vr $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
-   }
-
-   public static agb a(btz $$0) {
-      return new agb($$0.f(), $$0.l());
-   }
-
-   private void a(vr $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
+public record agb(ww b, Optional<jz> c) implements zd<abs> {
+   public static final yu<wh, agb> a = yu.a(wy.b, agb::b, ys.a(jz.h), agb::e, agb::new);
 
    @Override
-   public ze<agb> a() {
-      return agk.cq;
+   public zf<agb> a() {
+      return agl.be;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public Optional<jz> e() {
       return this.c;
    }
 }

@@ -1,20 +1,30 @@
-public interface fcy {
-   fcy a = ($$0, $$1) -> false;
-   fcy b = ($$0, $$1) -> !$$0 && !$$1;
-   fcy c = ($$0, $$1) -> $$1 && !$$0;
-   fcy d = ($$0, $$1) -> !$$0;
-   fcy e = ($$0, $$1) -> $$0 && !$$1;
-   fcy f = ($$0, $$1) -> !$$1;
-   fcy g = ($$0, $$1) -> $$0 != $$1;
-   fcy h = ($$0, $$1) -> !$$0 || !$$1;
-   fcy i = ($$0, $$1) -> $$0 && $$1;
-   fcy j = ($$0, $$1) -> $$0 == $$1;
-   fcy k = ($$0, $$1) -> $$1;
-   fcy l = ($$0, $$1) -> !$$0 || $$1;
-   fcy m = ($$0, $$1) -> $$0;
-   fcy n = ($$0, $$1) -> $$0 || !$$1;
-   fcy o = ($$0, $$1) -> $$0 || $$1;
-   fcy p = ($$0, $$1) -> true;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   boolean apply(boolean var1, boolean var2);
+public record fcy(eyn.b c) implements fdb {
+   public static final MapCodec<fcy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(eyn.b.e.fieldOf("target").forGetter(fcy::c)).apply($$0, fcy::new));
+   public static final Codec<fcy> b = eyn.b.e.xmap(fcy::new, fcy::c);
+
+   public static fdb a(eyn.b $$0) {
+      return new fcy($$0);
+   }
+
+   @Override
+   public fda a() {
+      return fdc.c;
+   }
+
+   @Nullable
+   @Override
+   public ffa a(eyn $$0) {
+      return $$0.c(this.c.a());
+   }
+
+   @Override
+   public Set<bav<?>> b() {
+      return Set.of(this.c.a());
+   }
 }

@@ -1,95 +1,43 @@
+import com.google.gson.JsonPrimitive;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
-public class ft implements ArgumentType<ft.a> {
-   private static final Collection<String> a = Arrays.asList("=", ">", "<");
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wv.c("arguments.operation.invalid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wv.c("arguments.operation.div0"));
+public class ft<T extends Enum<T> & bai> implements ArgumentType<T> {
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ww.b("argument.enum.invalid", $$0));
+   private final Codec<T> b;
+   private final Supplier<T[]> c;
 
-   public static ft a() {
-      return new ft();
+   protected ft(Codec<T> $$0, Supplier<T[]> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static ft.a a(CommandContext<ex> $$0, String $$1) {
-      return (ft.a)$$0.getArgument($$1, ft.a.class);
-   }
-
-   public ft.a a(StringReader $$0) throws CommandSyntaxException {
-      if (!$$0.canRead()) {
-         throw b.createWithContext($$0);
-      } else {
-         int $$1 = $$0.getCursor();
-
-         while ($$0.canRead() && $$0.peek() != ' ') {
-            $$0.skip();
-         }
-
-         return a($$0.getString().substring($$1, $$0.getCursor()));
-      }
+   public T a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      return (T)this.b.parse(JsonOps.INSTANCE, new JsonPrimitive($$1)).result().orElseThrow(() -> a.createWithContext($$0, $$1));
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return fc.a(new String[]{"=", "+=", "-=", "*=", "/=", "%=", "<", ">", "><"}, $$1);
+      return en.b(Arrays.<Enum>stream((Enum[])this.c.get()).map($$0x -> ((bai)$$0x).c()).map(this::a).collect(Collectors.toList()), $$1);
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return Arrays.<Enum>stream((Enum[])this.c.get()).map($$0 -> ((bai)$$0).c()).map(this::a).limit(2L).collect(Collectors.toList());
    }
 
-   private static ft.a a(String $$0) throws CommandSyntaxException {
-      return (ft.a)($$0.equals("><") ? ($$0x, $$1) -> {
-         int $$2 = $$0x.a();
-         $$0x.a($$1.a());
-         $$1.a($$2);
-      } : b($$0));
-   }
-
-   private static ft.b b(String $$0) throws CommandSyntaxException {
-      return switch ($$0) {
-         case "=" -> ($$0x, $$1) -> $$1;
-         case "+=" -> Integer::sum;
-         case "-=" -> ($$0x, $$1) -> $$0x - $$1;
-         case "*=" -> ($$0x, $$1) -> $$0x * $$1;
-         case "/=" -> ($$0x, $$1) -> {
-         if ($$1 == 0) {
-            throw c.create();
-         } else {
-            return azk.a($$0x, $$1);
-         }
-      };
-         case "%=" -> ($$0x, $$1) -> {
-         if ($$1 == 0) {
-            throw c.create();
-         } else {
-            return azk.b($$0x, $$1);
-         }
-      };
-         case "<" -> Math::min;
-         case ">" -> Math::max;
-         default -> throw b.create();
-      };
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void apply(fdx var1, fdx var2) throws CommandSyntaxException;
-   }
-
-   @FunctionalInterface
-   interface b extends ft.a {
-      int apply(int var1, int var2) throws CommandSyntaxException;
-
-      @Override
-      default void apply(fdx $$0, fdx $$1) throws CommandSyntaxException {
-         $$0.a(this.apply($$0.a(), $$1.a()));
-      }
+   protected String a(String $$0) {
+      return $$0;
    }
 }

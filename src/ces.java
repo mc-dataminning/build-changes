@@ -1,45 +1,87 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class ces extends cdn {
-   private final bxn a;
+public class ces extends cdv {
+   public static final int a = 120;
+   protected final bxh b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
 
-   public ces(bxn $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(cdn.a.c, cdn.a.a));
+   public ces(bxh $$0, double $$1) {
+      this($$0, $$1, 120);
    }
 
-   @Override
-   public boolean c() {
-      return this.a.gq();
+   public ces(bxh $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public ces(bxh $$0, double $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(cdv.a.a));
    }
 
    @Override
    public boolean b() {
-      boolean $$0 = this.a.gq();
-      if (!$$0 && !this.a.q()) {
-         return false;
-      } else if (this.a.bj()) {
-         return false;
-      } else if (!this.a.aJ()) {
+      if (this.b.cX()) {
          return false;
       } else {
-         bwr $$1 = this.a.e();
-         if ($$1 == null) {
-            return true;
+         if (!this.h) {
+            if (this.i && this.b.ev() >= 100) {
+               return false;
+            }
+
+            if (this.b.dY().a(b(this.g)) != 0) {
+               return false;
+            }
+         }
+
+         fdw $$0 = this.h();
+         if ($$0 == null) {
+            return false;
          } else {
-            return this.a.g((bvs)$$1) < 144.0 && $$1.eq() != null ? false : $$0;
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            this.h = false;
+            return true;
          }
       }
    }
 
+   @Nullable
+   protected fdw h() {
+      return chs.a(this.b, 10, 7);
+   }
+
+   @Override
+   public boolean c() {
+      return !this.b.O().k() && !this.b.cX();
+   }
+
    @Override
    public void d() {
-      this.a.O().m();
-      this.a.x(true);
+      this.b.O().a(this.c, this.d, this.e, this.f);
    }
 
    @Override
    public void e() {
-      this.a.x(false);
+      this.b.O().m();
+      super.e();
+   }
+
+   public void i() {
+      this.h = true;
+   }
+
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

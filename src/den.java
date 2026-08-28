@@ -1,160 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class den implements day {
-   public static final den a = new den(new Object2IntOpenHashMap(), true);
-   private static final Codec<Integer> d = Codec.intRange(1, 255);
-   private static final Codec<Object2IntOpenHashMap<js<deh>>> e = Codec.unboundedMap(deh.c, d).xmap(Object2IntOpenHashMap::new, Function.identity());
-   private static final Codec<den> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(e.fieldOf("levels").forGetter($$0x -> $$0x.g), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.h))
-            .apply($$0, den::new)
-   );
-   public static final Codec<den> b = Codec.withAlternative(f, e, $$0 -> new den($$0, true));
-   public static final yt<wg, den> c = yt.a(yr.a(Object2IntOpenHashMap::new, deh.d, yr.h), $$0 -> $$0.g, yr.b, $$0 -> $$0.h, den::new);
-   final Object2IntOpenHashMap<js<deh>> g;
-   final boolean h;
-
-   den(Object2IntOpenHashMap<js<deh>> $$0, boolean $$1) {
-      this.g = $$0;
-      this.h = $$1;
-      ObjectIterator var3 = $$0.object2IntEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<js<deh>> $$2 = (Entry<js<deh>>)var3.next();
-         int $$3 = $$2.getIntValue();
-         if ($$3 < 0 || $$3 > 255) {
-            throw new IllegalArgumentException("Enchantment " + $$2.getKey() + " has invalid level " + $$3);
-         }
-      }
+public interface den<T> {
+   public interface a<T> extends den<T> {
+      T a(T var1, List<T> var2);
    }
 
-   public int a(js<deh> $$0) {
-      return this.g.getInt($$0);
-   }
-
-   @Override
-   public void a(cxu.b $$0, Consumer<wv> $$1, czn $$2) {
-      if (this.h) {
-         ju.a $$3 = $$0.a();
-         jw<deh> $$4 = a($$3, me.aS, axc.a);
-
-         for (js<deh> $$5 : $$4) {
-            int $$6 = this.g.getInt($$5);
-            if ($$6 > 0) {
-               $$1.accept(deh.a($$5, $$6));
-            }
-         }
-
-         ObjectIterator var9 = this.g.object2IntEntrySet().iterator();
-
-         while (var9.hasNext()) {
-            Entry<js<deh>> $$7 = (Entry<js<deh>>)var9.next();
-            js<deh> $$8 = (js<deh>)$$7.getKey();
-            if (!$$4.a($$8)) {
-               $$1.accept(deh.a((js<deh>)$$7.getKey(), $$7.getIntValue()));
-            }
-         }
-      }
-   }
-
-   private static <T> jw<T> a(@Nullable ju.a $$0, alc<kf<T>> $$1, axp<T> $$2) {
-      if ($$0 != null) {
-         Optional<jw.c<T>> $$3 = $$0.e($$1).a($$2);
-         if ($$3.isPresent()) {
-            return $$3.get();
-         }
+   public interface b<T> extends den<T> {
+      default T a(je<cyo> $$0) {
+         return this.a(new cys($$0));
       }
 
-      return jw.a();
-   }
-
-   public den a(boolean $$0) {
-      return new den(this.g, $$0);
-   }
-
-   public Set<js<deh>> a() {
-      return Collections.unmodifiableSet(this.g.keySet());
-   }
-
-   public Set<Entry<js<deh>>> b() {
-      return Collections.unmodifiableSet(this.g.object2IntEntrySet());
-   }
-
-   public int c() {
-      return this.g.size();
-   }
-
-   public boolean d() {
-      return this.g.isEmpty();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof den $$1) ? false : this.h == $$1.h && this.g.equals($$1.g);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.g.hashCode();
-      return 31 * $$0 + (this.h ? 1 : 0);
-   }
-
-   @Override
-   public String toString() {
-      return "ItemEnchantments{enchantments=" + this.g + ", showInTooltip=" + this.h + "}";
-   }
-
-   public static class a {
-      private final Object2IntOpenHashMap<js<deh>> a = new Object2IntOpenHashMap();
-      private final boolean b;
-
-      public a(den $$0) {
-         this.a.putAll($$0.g);
-         this.b = $$0.h;
+      default T a(cyo $$0) {
+         return this.a(new cys($$0));
       }
 
-      public void a(js<deh> $$0, int $$1) {
-         if ($$1 <= 0) {
-            this.a.removeInt($$0);
-         } else {
-            this.a.put($$0, Math.min($$1, 255));
-         }
-      }
-
-      public void b(js<deh> $$0, int $$1) {
-         if ($$1 > 0) {
-            this.a.merge($$0, Math.min($$1, 255), Integer::max);
-         }
-      }
-
-      public void a(Predicate<js<deh>> $$0) {
-         this.a.keySet().removeIf($$0);
-      }
-
-      public int a(js<deh> $$0) {
-         return this.a.getOrDefault($$0, 0);
-      }
-
-      public Set<js<deh>> a() {
-         return this.a.keySet();
-      }
-
-      public den b() {
-         return new den(this.a, this.b);
-      }
+      T a(cys var1);
    }
 }

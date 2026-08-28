@@ -1,29 +1,18 @@
-public class aid implements zc<agm> {
-   public static final yt<vr, aid> a = zc.a(aid::a, aid::new);
-   private final int b;
+import java.util.Optional;
 
-   public aid(int $$0) {
-      this.b = $$0;
-   }
-
-   private aid(vr $$0) {
-      this.b = $$0.readShort();
-   }
-
-   private void a(vr $$0) {
-      $$0.m(this.b);
-   }
+public record aid(Optional<je<bvc>> b, Optional<je<bvc>> c) implements zd<agn> {
+   public static final yu<wh, aid> a = yu.a(bvc.b.a(ys::a), aid::b, bvc.b.a(ys::a), aid::e, aid::new);
 
    @Override
-   public ze<aid> a() {
-      return agk.cc;
+   public zf<aid> a() {
+      return agl.cb;
    }
 
-   public void a(agm $$0) {
+   public void a(agn $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public Optional<je<bvc>> e() {
+      return this.c;
    }
 }

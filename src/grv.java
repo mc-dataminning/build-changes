@@ -1,66 +1,30 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import org.joml.Matrix4f;
+public class grv implements grp<dwu> {
+   private static final float a = 0.375F;
+   private final gwi b;
 
-public class grv {
-   private static final int a = axu.a(255, 255, 100, 255);
-   private static final int b = axu.a(255, 100, 255, 255);
-   private static final int c = axu.a(255, 0, 255, 0);
-   private static final int d = axu.a(255, 255, 165, 0);
-   private static final int e = axu.a(255, 255, 0, 0);
-   private static final int f = 20;
-   private static final float g = (float) (Math.PI / 10);
-   private final fnd h;
-   private final Map<Integer, aae.a> i = new HashMap<>();
-
-   public grv(fnd $$0) {
-      this.h = $$0;
+   public grv(grq.a $$0) {
+      this.b = $$0.e();
    }
 
-   public void a(fho $$0, gny $$1, double $$2, double $$3, double $$4) {
-      gmw $$5 = this.h.t;
-      $$5.dV().a(bwb.r, $$5.cR().g(100.0), $$0x -> true).forEach($$6 -> {
-         Optional<aae.a> $$7 = Optional.ofNullable(this.i.get($$6.ar()));
-         $$7.map(aae.a::d).map($$1xx -> $$5.dV().a($$1xx)).map($$0xx -> $$0xx.p(this.h.av().a(true))).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dt(), $$6x, b);
-            fcu $$7x = $$6x.b(0.0, 0.01F, 0.0);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(goi.a(2.0)), $$7x, 4.0F, c);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(goi.a(2.0)), $$7x, 8.0F, d);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(goi.a(2.0)), $$7x, 24.0F, e);
-         });
-         $$7.map(aae.a::e).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dt(), $$6x.b(), a);
-            gsa.a($$0, $$1, fcp.a(fcu.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
-         });
-      });
-   }
+   public void a(dwu $$0, float $$1, fiq $$2, gpd $$3, int $$4, int $$5) {
+      ja $$6 = $$0.m().c(dmj.e);
+      jn<cys> $$7 = $$0.c();
+      int $$8 = (int)$$0.aw_().a();
 
-   private static void a(fho $$0, gny $$1, double $$2, double $$3, double $$4, fcu $$5, fcu $$6, int $$7) {
-      fhs $$8 = $$1.getBuffer(goi.a(2.0));
-      $$8.a($$0.c(), (float)($$5.d - $$2), (float)($$5.e - $$3), (float)($$5.f - $$4)).a($$7);
-      $$8.a($$0.c(), (float)($$6.d - $$2), (float)($$6.e - $$3), (float)($$6.f - $$4)).a($$7);
-   }
-
-   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, fhs $$4, fcu $$5, float $$6, int $$7) {
-      for (int $$8 = 0; $$8 < 20; $$8++) {
-         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         cys $$10 = $$7.get($$9);
+         if ($$10 != cys.k) {
+            $$2.a();
+            $$2.a(0.5F, 0.44921875F, 0.5F);
+            ja $$11 = ja.b(($$9 + $$6.e()) % 4);
+            float $$12 = -$$11.p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(a.b.rotationDegrees(90.0F));
+            $$2.a(-0.3125F, -0.3125F, 0.0F);
+            $$2.b(0.375F, 0.375F, 0.375F);
+            this.b.a($$10, cyq.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
+            $$2.b();
+         }
       }
-
-      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, fhs $$5, fcu $$6, float $$7, int $$8) {
-      float $$9 = (float)$$0 * (float) (Math.PI / 10);
-      fcu $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
-      $$5.a($$1, (float)($$10.d - $$2), (float)($$10.e - $$3), (float)($$10.f - $$4)).a($$8);
-   }
-
-   public void a() {
-      this.i.clear();
-   }
-
-   public void a(aae.a $$0) {
-      this.i.put($$0.c(), $$0);
    }
 }

@@ -1,25 +1,35 @@
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public interface ks extends kr {
-   kt a();
+public interface ks {
+   Codec<Map<ks.b<?>, ks>> b = Codec.dispatchedMap(mf.ao.q(), ks.b::a);
 
-   @Nullable
-   @Override
-   default <T> T a(kw<? extends T> $$0) {
-      return this.a().a($$0);
+   static MapCodec<ks.a<?>> a(String $$0) {
+      return mf.ao.q().dispatchMap($$0, ks.a::a, ks.b::b);
    }
 
-   default <T> Stream<T> a(Class<? extends T> $$0) {
-      return this.a().c().map(kz::b).filter($$1 -> $$0.isAssignableFrom($$1.getClass())).map($$0x -> (T)$$0x);
+   boolean a(ke var1);
+
+   public static record a<T extends ks>(ks.b<T> a, T b) {
    }
 
-   @Override
-   default <T> T a(kw<? extends T> $$0, T $$1) {
-      return this.a().a($$0, $$1);
-   }
+   public static final class b<T extends ks> {
+      private final Codec<T> a;
+      private final MapCodec<ks.a<T>> b;
 
-   default boolean c(kw<?> $$0) {
-      return this.a().c($$0);
+      public b(Codec<T> $$0) {
+         this.a = $$0;
+         this.b = RecordCodecBuilder.mapCodec($$1 -> $$1.group($$0.fieldOf("value").forGetter(ks.a::b)).apply($$1, $$0xx -> new ks.a<>(this, (T)$$0xx)));
+      }
+
+      public Codec<T> a() {
+         return this.a;
+      }
+
+      public MapCodec<ks.a<T>> b() {
+         return this.b;
+      }
    }
 }

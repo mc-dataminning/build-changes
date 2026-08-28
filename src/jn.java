@@ -1,18 +1,77 @@
+import com.google.common.collect.Lists;
+import java.util.AbstractList;
+import java.util.Arrays;
+import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public interface jn<T> extends kf<T> {
+public class jn<E> extends AbstractList<E> {
+   private final List<E> a;
+   @Nullable
+   private final E b;
+
+   public static <E> jn<E> a() {
+      return new jn<>(Lists.newArrayList(), null);
+   }
+
+   public static <E> jn<E> a(int $$0) {
+      return new jn<>(Lists.newArrayListWithCapacity($$0), null);
+   }
+
+   public static <E> jn<E> a(int $$0, E $$1) {
+      Validate.notNull($$1);
+      Object[] $$2 = new Object[$$0];
+      Arrays.fill($$2, $$1);
+      return new jn<>(Arrays.asList((E[])$$2), $$1);
+   }
+
+   @SafeVarargs
+   public static <E> jn<E> a(E $$0, E... $$1) {
+      return new jn<>(Arrays.asList($$1), $$0);
+   }
+
+   protected jn(List<E> $$0, @Nullable E $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
    @Nonnull
    @Override
-   ald b(T var1);
+   public E get(int $$0) {
+      return this.a.get($$0);
+   }
 
-   @Nonnull
    @Override
-   T a(@Nullable ald var1);
+   public E set(int $$0, E $$1) {
+      Validate.notNull($$1);
+      return this.a.set($$0, $$1);
+   }
 
-   @Nonnull
    @Override
-   T a(int var1);
+   public void add(int $$0, E $$1) {
+      Validate.notNull($$1);
+      this.a.add($$0, $$1);
+   }
 
-   ald b();
+   @Override
+   public E remove(int $$0) {
+      return this.a.remove($$0);
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public void clear() {
+      if (this.b == null) {
+         super.clear();
+      } else {
+         for (int $$0 = 0; $$0 < this.size(); $$0++) {
+            this.set($$0, this.b);
+         }
+      }
+   }
 }

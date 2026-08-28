@@ -1,42 +1,29 @@
-import java.util.UUID;
+public class aaa implements zd<zw> {
+   public static final yu<vs, aaa> a = zd.a(aaa::a, aaa::new);
+   private final int b;
 
-public record aaa(UUID b, aaa.a c) implements zc<zv> {
-   public static final yt<vr, aaa> a = zc.a(aaa::a, aaa::new);
-
-   private aaa(vr $$0) {
-      this($$0.n(), $$0.b(aaa.a.class));
+   public aaa(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private aaa(vs $$0) {
+      this.b = $$0.readInt();
+   }
+
+   private void a(vs $$0) {
+      $$0.q(this.b);
    }
 
    @Override
-   public ze<aaa> a() {
-      return zu.p;
+   public zf<aaa> a() {
+      return zv.o;
    }
 
-   public void a(zv $$0) {
+   public void a(zw $$0) {
       $$0.a(this);
    }
 
-   public aaa.a e() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      public boolean a() {
-         return this != d && this != e;
-      }
+   public int b() {
+      return this.b;
    }
 }

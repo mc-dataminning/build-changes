@@ -1,7 +1,5 @@
-public interface hlx<T> {
-   int e();
+public interface hlx extends hlw {
+   boolean m();
 
-   T b(azs var1);
-
-   void a(hls var1);
+   void q();
 }

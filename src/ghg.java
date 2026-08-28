@@ -1,61 +1,38 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class ghg extends gfd<hdb> {
+   private static final int a = 2;
+   private final gig[] b = new gig[2];
 
-public final class ghg {
-   @Nullable
-   private final String a;
-   private final Vector3f b;
-   private final Vector3f c;
-   private final ghh d;
-   private final boolean e;
-   private final gho f;
-   private final gho g;
-   private final Set<jo> h;
+   public ghg(gig $$0) {
+      super($$0);
 
-   protected ghg(
-      @Nullable String $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      ghh $$9,
-      boolean $$10,
-      float $$11,
-      float $$12,
-      Set<jo> $$13
-   ) {
-      this.a = $$0;
-      this.f = new gho($$1, $$2);
-      this.b = new Vector3f($$3, $$4, $$5);
-      this.c = new Vector3f($$6, $$7, $$8);
-      this.d = $$9;
-      this.e = $$10;
-      this.g = new gho($$11, $$12);
-      this.h = $$13;
+      for (int $$1 = 0; $$1 < 2; $$1++) {
+         this.b[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public ghd.a a(int $$0, int $$1) {
-      return new ghd.a(
-         (int)this.f.a(),
-         (int)this.f.b(),
-         this.b.x(),
-         this.b.y(),
-         this.b.z(),
-         this.c.x(),
-         this.c.y(),
-         this.c.z(),
-         this.d.b,
-         this.d.c,
-         this.d.d,
-         this.e,
-         (float)$$0 * this.g.a(),
-         (float)$$1 * this.g.b(),
-         this.h
-      );
+   private static String a(int $$0) {
+      return "box" + $$0;
+   }
+
+   public static gim a() {
+      gio $$0 = new gio();
+      giq $$1 = $$0.a();
+
+      for (int $$2 = 0; $$2 < 2; $$2++) {
+         float $$3 = -3.2F + 9.6F * (float)($$2 + 1);
+         float $$4 = 0.75F * (float)($$2 + 1);
+         $$1.a(a($$2), gil.c().a(0, 0).a(-8.0F, -16.0F + $$3, -8.0F, 16.0F, 32.0F, 16.0F), gii.a.a($$4));
+      }
+
+      return gim.a($$0, 64, 64);
+   }
+
+   public void a(hdb $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         float $$2 = $$0.u * (float)(-(45 + ($$1 + 1) * 5));
+         this.b[$$1].f = azk.h($$2) * (float) (Math.PI / 180.0);
+      }
    }
 }

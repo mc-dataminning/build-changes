@@ -1,39 +1,27 @@
-import com.google.common.collect.Lists;
-import java.util.Iterator;
-import java.util.List;
-import org.joml.Vector3f;
+public class gsl implements grp<dyw> {
+   private final heq a;
+   private final azt b = azt.a();
+   private final hck c = new hck();
 
-public class gsl implements gsa.a {
-   public static final int a = 200;
-   private final fnd b;
-   private final List<aat> c = Lists.newArrayList();
-
-   gsl(fnd $$0) {
-      this.b = $$0;
+   public gsl(grq.a $$0) {
+      this.a = $$0.d();
    }
 
-   public void a(aat $$0) {
-      this.c.add($$0);
-   }
-
-   @Override
-   public void a(fho $$0, gny $$1, double $$2, double $$3, double $$4) {
-      fhs $$5 = $$1.getBuffer(goi.y());
-      long $$6 = this.b.s.ae();
-      Iterator<aat> $$7 = this.c.iterator();
-
-      while ($$7.hasNext()) {
-         aat $$8 = $$7.next();
-         long $$9 = $$6 - $$8.b();
-         if ($$9 > 200L) {
-            $$7.remove();
-         } else {
-            for (aat.a $$10 : $$8.c()) {
-               Vector3f $$11 = $$10.a().c().a($$2, $$3 - 0.1, $$4).k();
-               ewb $$12 = $$10.b();
-               gos.a($$0, $$5, $$11, $$12.b().r().c(0.5), -16776961);
-               gos.a($$0, $$5, $$11, $$12.c().r().c(0.4), -65536);
-               gos.a($$0, $$5, $$11, $$12.d().r().c(0.3), -256);
+   public void a(dyw $$0, float $$1, fiq $$2, gpd $$3, int $$4, int $$5) {
+      if (dyw.a.a($$0.c())) {
+         dip $$6 = $$0.i();
+         if ($$6 != null) {
+            cys $$7 = $$0.c().a();
+            if (!$$7.f()) {
+               this.a.a(this.c.a, $$7, cyq.h, false, $$6, null, 0);
+               this.c.b = hck.a($$7.M());
+               this.c.c = hck.a($$7);
+               dyx $$8 = $$0.d();
+               $$2.a();
+               $$2.a(0.5F, 0.4F, 0.5F);
+               $$2.a(a.d.rotationDegrees(azk.i($$1, $$8.b(), $$8.a())));
+               gwg.a($$2, $$3, $$4, this.c, this.b);
+               $$2.b();
             }
          }
       }

@@ -13,157 +13,157 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
-public class azm implements DynamicOps<baq> {
+public class azm implements DynamicOps<bas> {
    public static final azm a = new azm();
 
    private azm() {
    }
 
-   public <U> U a(DynamicOps<U> $$0, baq $$1) {
+   public <U> U a(DynamicOps<U> $$0, bas $$1) {
       return (U)$$0.empty();
    }
 
-   public baq a() {
-      return baq.a;
+   public bas a() {
+      return bas.a;
    }
 
-   public baq b() {
-      return baq.a;
+   public bas b() {
+      return bas.a;
    }
 
-   public baq c() {
-      return baq.a;
+   public bas c() {
+      return bas.a;
    }
 
-   public baq a(Number $$0) {
-      return baq.a;
+   public bas a(Number $$0) {
+      return bas.a;
    }
 
-   public baq a(byte $$0) {
-      return baq.a;
+   public bas a(byte $$0) {
+      return bas.a;
    }
 
-   public baq a(short $$0) {
-      return baq.a;
+   public bas a(short $$0) {
+      return bas.a;
    }
 
-   public baq a(int $$0) {
-      return baq.a;
+   public bas a(int $$0) {
+      return bas.a;
    }
 
-   public baq a(long $$0) {
-      return baq.a;
+   public bas a(long $$0) {
+      return bas.a;
    }
 
-   public baq a(float $$0) {
-      return baq.a;
+   public bas a(float $$0) {
+      return bas.a;
    }
 
-   public baq a(double $$0) {
-      return baq.a;
+   public bas a(double $$0) {
+      return bas.a;
    }
 
-   public baq a(boolean $$0) {
-      return baq.a;
+   public bas a(boolean $$0) {
+      return bas.a;
    }
 
-   public baq a(String $$0) {
-      return baq.a;
+   public bas a(String $$0) {
+      return bas.a;
    }
 
-   public DataResult<Number> a(baq $$0) {
+   public DataResult<Number> a(bas $$0) {
       return DataResult.error(() -> "Not a number");
    }
 
-   public DataResult<Boolean> b(baq $$0) {
+   public DataResult<Boolean> b(bas $$0) {
       return DataResult.error(() -> "Not a boolean");
    }
 
-   public DataResult<String> c(baq $$0) {
+   public DataResult<String> c(bas $$0) {
       return DataResult.error(() -> "Not a string");
    }
 
-   public DataResult<baq> a(baq $$0, baq $$1) {
-      return DataResult.success(baq.a);
+   public DataResult<bas> a(bas $$0, bas $$1) {
+      return DataResult.success(bas.a);
    }
 
-   public DataResult<baq> a(baq $$0, List<baq> $$1) {
-      return DataResult.success(baq.a);
+   public DataResult<bas> a(bas $$0, List<bas> $$1) {
+      return DataResult.success(bas.a);
    }
 
-   public DataResult<baq> a(baq $$0, baq $$1, baq $$2) {
-      return DataResult.success(baq.a);
+   public DataResult<bas> a(bas $$0, bas $$1, bas $$2) {
+      return DataResult.success(bas.a);
    }
 
-   public DataResult<baq> a(baq $$0, Map<baq, baq> $$1) {
-      return DataResult.success(baq.a);
+   public DataResult<bas> a(bas $$0, Map<bas, bas> $$1) {
+      return DataResult.success(bas.a);
    }
 
-   public DataResult<baq> a(baq $$0, MapLike<baq> $$1) {
-      return DataResult.success(baq.a);
+   public DataResult<bas> a(bas $$0, MapLike<bas> $$1) {
+      return DataResult.success(bas.a);
    }
 
-   public DataResult<Stream<Pair<baq, baq>>> d(baq $$0) {
+   public DataResult<Stream<Pair<bas, bas>>> d(bas $$0) {
       return DataResult.error(() -> "Not a map");
    }
 
-   public DataResult<Consumer<BiConsumer<baq, baq>>> e(baq $$0) {
+   public DataResult<Consumer<BiConsumer<bas, bas>>> e(bas $$0) {
       return DataResult.error(() -> "Not a map");
    }
 
-   public DataResult<MapLike<baq>> f(baq $$0) {
+   public DataResult<MapLike<bas>> f(bas $$0) {
       return DataResult.error(() -> "Not a map");
    }
 
-   public DataResult<Stream<baq>> g(baq $$0) {
+   public DataResult<Stream<bas>> g(bas $$0) {
       return DataResult.error(() -> "Not a list");
    }
 
-   public DataResult<Consumer<Consumer<baq>>> h(baq $$0) {
+   public DataResult<Consumer<Consumer<bas>>> h(bas $$0) {
       return DataResult.error(() -> "Not a list");
    }
 
-   public DataResult<ByteBuffer> i(baq $$0) {
+   public DataResult<ByteBuffer> i(bas $$0) {
       return DataResult.error(() -> "Not a byte list");
    }
 
-   public DataResult<IntStream> j(baq $$0) {
+   public DataResult<IntStream> j(bas $$0) {
       return DataResult.error(() -> "Not an int list");
    }
 
-   public DataResult<LongStream> k(baq $$0) {
+   public DataResult<LongStream> k(bas $$0) {
       return DataResult.error(() -> "Not a long list");
    }
 
-   public baq a(Stream<Pair<baq, baq>> $$0) {
-      return baq.a;
+   public bas a(Stream<Pair<bas, bas>> $$0) {
+      return bas.a;
    }
 
-   public baq a(Map<baq, baq> $$0) {
-      return baq.a;
+   public bas a(Map<bas, bas> $$0) {
+      return bas.a;
    }
 
-   public baq b(Stream<baq> $$0) {
-      return baq.a;
+   public bas b(Stream<bas> $$0) {
+      return bas.a;
    }
 
-   public baq a(ByteBuffer $$0) {
-      return baq.a;
+   public bas a(ByteBuffer $$0) {
+      return bas.a;
    }
 
-   public baq a(IntStream $$0) {
-      return baq.a;
+   public bas a(IntStream $$0) {
+      return bas.a;
    }
 
-   public baq a(LongStream $$0) {
-      return baq.a;
+   public bas a(LongStream $$0) {
+      return bas.a;
    }
 
-   public baq a(baq $$0, String $$1) {
+   public bas a(bas $$0, String $$1) {
       return $$0;
    }
 
-   public RecordBuilder<baq> mapBuilder() {
+   public RecordBuilder<bas> mapBuilder() {
       return new azm.a(this);
    }
 
@@ -172,20 +172,20 @@ public class azm implements DynamicOps<baq> {
       return "Null";
    }
 
-   static final class a extends AbstractUniversalBuilder<baq, baq> {
-      public a(DynamicOps<baq> $$0) {
+   static final class a extends AbstractUniversalBuilder<bas, bas> {
+      public a(DynamicOps<bas> $$0) {
          super($$0);
       }
 
-      protected baq a() {
-         return baq.a;
+      protected bas a() {
+         return bas.a;
       }
 
-      protected baq a(baq $$0, baq $$1, baq $$2) {
+      protected bas a(bas $$0, bas $$1, bas $$2) {
          return $$2;
       }
 
-      protected DataResult<baq> a(baq $$0, baq $$1) {
+      protected DataResult<bas> a(bas $$0, bas $$1) {
          return DataResult.success($$1);
       }
    }

@@ -1,198 +1,124 @@
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public abstract class gan<B extends gje.a<?>> extends fwf {
-   private static final wv C = wv.c("gui.abuseReport.report_sent_msg");
-   private static final wv D = wv.c("gui.abuseReport.sending.title").a(n.r);
-   private static final wv E = wv.c("gui.abuseReport.sent.title").a(n.r);
-   private static final wv F = wv.c("gui.abuseReport.error.title").a(n.r);
-   private static final wv G = wv.c("gui.abuseReport.send.generic_error");
-   protected static final wv a = wv.c("gui.abuseReport.send");
-   protected static final wv b = wv.c("gui.abuseReport.observed_what");
-   protected static final wv c = wv.c("gui.abuseReport.select_reason");
-   private static final wv H = wv.c("gui.abuseReport.describe");
-   protected static final wv d = wv.c("gui.abuseReport.more_comments");
-   private static final wv I = wv.c("gui.abuseReport.comments");
-   private static final wv J = wv.c("gui.abuseReport.attestation");
-   protected static final int s = 120;
-   protected static final int u = 20;
-   protected static final int v = 280;
-   protected static final int w = 8;
-   private static final Logger K = LogUtils.getLogger();
-   protected final fwf x;
-   protected final gji y;
-   protected final fuf z = fuf.d().a(8);
-   protected B A;
-   private fqp L;
-   protected fqn B;
+public class gan extends fxi {
+   private static final ww a = ww.c("options.title");
+   private static final ww b = ww.c("options.skinCustomisation");
+   private static final ww c = ww.c("options.sounds");
+   private static final ww d = ww.c("options.video");
+   private static final ww s = ww.c("options.controls");
+   private static final ww u = ww.c("options.language");
+   private static final ww v = ww.c("options.chat");
+   private static final ww w = ww.c("options.resourcepack");
+   private static final ww x = ww.c("options.accessibility");
+   private static final ww y = ww.c("options.telemetry");
+   private static final ftb z = ftb.a(ww.c("options.telemetry.disabled"));
+   private static final ww A = ww.c("options.credits_and_attribution");
+   private static final int B = 2;
+   private final fve C = new fve(this, 61, 33);
+   private final fxi D;
+   private final foj E;
+   @Nullable
+   private frx<btv> F;
+   @Nullable
+   private fsg G;
 
-   protected gan(wv $$0, fwf $$1, gji $$2, B $$3) {
-      super($$0);
-      this.x = $$1;
-      this.y = $$2;
-      this.A = $$3;
-   }
-
-   protected frf a(int $$0, int $$1, Consumer<String> $$2) {
-      AbuseReportLimits $$3 = this.y.a().b();
-      frf $$4 = new frf(this.p, 0, 0, $$0, $$1, H, I);
-      $$4.a(this.A.g());
-      $$4.a($$3.maxOpinionCommentsLength());
-      $$4.b($$2);
-      return $$4;
+   public gan(fxi $$0, foj $$1) {
+      super(a);
+      this.D = $$0;
+      this.E = $$1;
    }
 
    @Override
    protected void aN_() {
-      this.z.c().b();
-      this.m();
-      this.E();
-      this.F();
-      this.G();
-      this.z.a($$1 -> {
-         fql var10000 = this.c($$1);
+      fvi $$0 = this.C.a(fvi.d().a(8));
+      $$0.a(new fsx(a, this.p), fvh::b);
+      fvi $$1 = $$0.a(fvi.e()).a(8);
+      $$1.a(this.E.ak().a(this.m.n));
+      $$1.a(this.m());
+      fvd $$2 = new fvd();
+      $$2.c().f(4).e(4).b();
+      fvd.b $$3 = $$2.d(2);
+      $$3.a(this.a(b, () -> new gap(this, this.E)));
+      $$3.a(this.a(c, () -> new gaq(this, this.E)));
+      $$3.a(this.a(d, () -> new gas(this, this.m, this.E)));
+      $$3.a(this.a(s, () -> new gat(this, this.E)));
+      $$3.a(this.a(u, () -> new gak(this, this.E, this.m.ah())));
+      $$3.a(this.a(v, () -> new gai(this, this.E)));
+      $$3.a(this.a(w, () -> new gba(this.m.ad(), this::a, this.m.ag(), ww.c("resourcePack.title"))));
+      $$3.a(this.a(x, () -> new gah(this, this.E)));
+      frq $$4 = $$3.a(this.a(y, () -> new gcf(this, this.E)));
+      if (!this.m.E()) {
+         $$4.j = false;
+         $$4.a(z);
+      }
+
+      $$3.a(this.a(A, () -> new fwk(this)));
+      this.C.c($$2);
+      this.C.b(frq.a(wv.d, $$0x -> this.aK_()).a(200).a());
+      this.C.a($$1x -> {
+         fro var10000 = this.c($$1x);
       });
       this.c();
    }
 
-   protected void m() {
-      this.z.a(new fru(this.l, this.p));
-   }
-
-   protected abstract void E();
-
-   protected void F() {
-      this.L = this.z.a(fqp.a(J, this.p).a(this.A.h()).a(280).a(($$0x, $$1) -> {
-         this.A.a($$1);
-         this.G();
-      }).a());
-      fuf $$0 = this.z.a(fuf.e().a(8));
-      $$0.a(fqn.a(wu.k, $$0x -> this.aK_()).a(120).a());
-      this.B = $$0.a(fqn.a(a, $$0x -> this.H()).a(120).a());
-   }
-
-   protected void G() {
-      gje.b $$0 = this.A.c();
-      this.B.j = $$0 == null && this.L.a();
-      this.B.a(x.a($$0, gje.b::a));
-   }
-
    @Override
    protected void c() {
-      this.z.a();
-      ftz.a(this.z, this.J());
-   }
-
-   protected void H() {
-      this.A.a(this.y).ifLeft($$0 -> {
-         CompletableFuture<?> $$1 = this.y.a().a($$0.a(), $$0.b(), $$0.c());
-         this.m.a(fvr.a(D, wu.e, () -> {
-            this.m.a(this);
-            $$1.cancel(true);
-         }));
-         $$1.handleAsync(($$0x, $$1x) -> {
-            if ($$1x == null) {
-               this.I();
-            } else {
-               if ($$1x instanceof CancellationException) {
-                  return null;
-               }
-
-               this.a($$1x);
-            }
-
-            return null;
-         }, this.m);
-      }).ifRight($$0 -> this.a($$0.b()));
-   }
-
-   private void I() {
-      this.M();
-      this.m.a(fvr.a(E, C, wu.d, () -> this.m.a(null)));
-   }
-
-   private void a(Throwable $$0) {
-      K.error("Encountered error while sending abuse report", $$0);
-      wv $$2;
-      if ($$0.getCause() instanceof xv $$1) {
-         $$2 = $$1.a();
-      } else {
-         $$2 = G;
-      }
-
-      this.a($$2);
-   }
-
-   private void a(wv $$0) {
-      wv $$1 = $$0.f().a(n.m);
-      this.m.a(fvr.a(F, $$1, wu.k, () -> this.m.a(this)));
-   }
-
-   void L() {
-      if (this.A.b()) {
-         this.y.a(this.A.e().b());
-      }
-   }
-
-   void M() {
-      this.y.a(null);
+      this.C.a();
    }
 
    @Override
    public void aK_() {
-      if (this.A.b()) {
-         this.m.a(new gan.a());
+      this.m.a(this.D);
+   }
+
+   private void a(aul $$0) {
+      this.E.a($$0);
+      this.m.a(this);
+   }
+
+   private fvg m() {
+      if (this.m.s != null && this.m.U()) {
+         this.F = a(0, 0, "options.difficulty", this.m);
+         if (!this.m.s.k().l()) {
+            this.G = new fsg(0, 0, $$0x -> this.m.a(new fwg(this::c, ww.c("difficulty.lock.title"), ww.a("difficulty.lock.question", this.m.s.k().q().b()))));
+            this.F.h(this.F.A() - this.G.A());
+            this.G.b(this.m.s.k().r());
+            this.G.j = !this.G.a();
+            this.F.j = !this.G.a();
+            fvb $$0 = new fvb(150, 0, fvb.b.a);
+            $$0.a(this.F);
+            $$0.a(this.G);
+            return $$0;
+         } else {
+            this.F.j = false;
+            return this.F;
+         }
       } else {
-         this.m.a(this.x);
+         return frq.a(ww.c("options.online"), $$0x -> this.m.a(new gam(this, this.E))).a(this.n / 2 + 5, this.o / 6 - 12 + 24, 150, 20).a();
+      }
+   }
+
+   public static frx<btv> a(int $$0, int $$1, String $$2, fof $$3) {
+      return frx.a(btv::b).a(btv.values()).a($$3.s.an()).a($$0, $$1, 150, 20, ww.c($$2), ($$1x, $$2x) -> $$3.L().b(new agr($$2x)));
+   }
+
+   private void c(boolean $$0) {
+      this.m.a(this);
+      if ($$0 && this.m.s != null && this.G != null && this.F != null) {
+         this.m.L().b(new ahl(true));
+         this.G.b(true);
+         this.G.j = false;
+         this.F.j = false;
       }
    }
 
    @Override
    public void aE_() {
-      this.L();
-      super.aE_();
+      this.E.az();
    }
 
-   class a extends fzc {
-      private static final wv c = wv.c("gui.abuseReport.discard.title").a(n.r);
-      private static final wv d = wv.c("gui.abuseReport.discard.content");
-      private static final wv s = wv.c("gui.abuseReport.discard.return");
-      private static final wv u = wv.c("gui.abuseReport.discard.draft");
-      private static final wv v = wv.c("gui.abuseReport.discard.discard");
-
-      protected a() {
-         super(c, d, d);
-      }
-
-      @Override
-      protected fuc m() {
-         fuf $$0 = fuf.d().a(8);
-         $$0.c().b();
-         fuf $$1 = $$0.a(fuf.e().a(8));
-         $$1.a(fqn.a(s, $$0x -> this.aK_()).a());
-         $$1.a(fqn.a(u, $$0x -> {
-            gan.this.L();
-            this.m.a(gan.this.x);
-         }).a());
-         $$0.a(fqn.a(v, $$0x -> {
-            gan.this.M();
-            this.m.a(gan.this.x);
-         }).a());
-         return $$0;
-      }
-
-      @Override
-      public void aK_() {
-         this.m.a(gan.this);
-      }
-
-      @Override
-      public boolean aC_() {
-         return false;
-      }
+   private frq a(ww $$0, Supplier<fxi> $$1) {
+      return frq.a($$0, $$1x -> this.m.a($$1.get())).a();
    }
 }

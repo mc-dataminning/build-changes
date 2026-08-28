@@ -1,16 +1,17 @@
-public abstract class cvc extends ctn {
-   public cvc(cuw<?> $$0, int $$1) {
-      super($$0, $$1);
+import java.util.List;
+
+public interface cvc extends btr, cwm {
+   int au_();
+
+   int g();
+
+   List<cys> h();
+
+   default dcx ax_() {
+      return this.ay_().a();
    }
 
-   public abstract cvc.a a(boolean var1, boolean var2, dcq<?> var3, arn var4, cqh var5);
-
-   public abstract void a(cqn var1);
-
-   public abstract cvd ai_();
-
-   public static enum a {
-      a,
-      b;
+   default dcx.a ay_() {
+      return dcx.b(this.au_(), this.g(), this.h());
    }
 }

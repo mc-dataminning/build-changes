@@ -1,26 +1,22 @@
-public abstract class fqj extends fql {
-   private final fpx a;
-   private int b = 16777215;
+import com.google.gson.JsonPrimitive;
 
-   public fqj(int $$0, int $$1, int $$2, int $$3, wv $$4, fpx $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
-   }
+public class fqj {
+   public static final fqk<fqj.a> a = new fqk<>("x", $$0 -> new JsonPrimitive($$0.e));
+   public static final fqk<fqj.a> b = new fqk<>("y", $$0 -> new JsonPrimitive($$0.e));
+   public static final fqk<ale> c = new fqk<>("model", $$0 -> new JsonPrimitive($$0.toString()));
+   public static final fqk<Boolean> d = new fqk<>("uvlock", JsonPrimitive::new);
+   public static final fqk<Integer> e = new fqk<>("weight", JsonPrimitive::new);
 
-   @Override
-   protected void a(fuk $$0) {
-   }
+   public static enum a {
+      a(0),
+      b(90),
+      c(180),
+      d(270);
 
-   public fqj a(int $$0) {
-      this.b = $$0;
-      return this;
-   }
+      final int e;
 
-   protected final fpx a() {
-      return this.a;
-   }
-
-   protected final int b() {
-      return this.b;
+      private a(final int $$0) {
+         this.e = $$0;
+      }
    }
 }

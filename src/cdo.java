@@ -1,126 +1,70 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cdo {
-   private static final cfb a = new cfb(Integer.MAX_VALUE, new cdn() {
-      @Override
-      public boolean b() {
+public class cdo extends cdv {
+   protected final bxh a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final dip f;
+
+   public cdo(bxh $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.f = $$0.dV();
+      this.a(EnumSet.of(cdv.a.a));
+   }
+
+   @Override
+   public boolean b() {
+      if (this.a.f() != null) {
          return false;
-      }
-   }) {
-      @Override
-      public boolean h() {
+      } else if (!this.f.V()) {
          return false;
-      }
-   };
-   private final Map<cdn.a, cfb> b = new EnumMap<>(cdn.a.class);
-   private final Set<cfb> c = new ObjectLinkedOpenHashSet();
-   private final EnumSet<cdn.a> d = EnumSet.noneOf(cdn.a.class);
-
-   public void a(int $$0, cdn $$1) {
-      this.c.add(new cfb($$0, $$1));
-   }
-
-   @VisibleForTesting
-   public void a(Predicate<cdn> $$0) {
-      this.c.removeIf($$1 -> $$0.test($$1.k()));
-   }
-
-   public void a(cdn $$0) {
-      for (cfb $$1 : this.c) {
-         if ($$1.k() == $$0 && $$1.h()) {
-            $$1.e();
-         }
-      }
-
-      this.c.removeIf($$1x -> $$1x.k() == $$0);
-   }
-
-   private static boolean a(cfb $$0, EnumSet<cdn.a> $$1) {
-      for (cdn.a $$2 : $$0.j()) {
-         if ($$1.contains($$2)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean a(cfb $$0, Map<cdn.a, cfb> $$1) {
-      for (cdn.a $$2 : $$0.j()) {
-         if (!$$1.getOrDefault($$2, a).a($$0)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public void a() {
-      bqb $$0 = bqa.a();
-      $$0.a("goalCleanup");
-
-      for (cfb $$1 : this.c) {
-         if ($$1.h() && (a($$1, this.d) || !$$1.c())) {
-            $$1.e();
-         }
-      }
-
-      this.b.entrySet().removeIf($$0x -> !((cfb)$$0x.getValue()).h());
-      $$0.c();
-      $$0.a("goalUpdate");
-
-      for (cfb $$2 : this.c) {
-         if (!$$2.h() && !a($$2, this.d) && a($$2, this.b) && $$2.b()) {
-            for (cdn.a $$3 : $$2.j()) {
-               cfb $$4 = this.b.getOrDefault($$3, a);
-               $$4.e();
-               this.b.put($$3, $$2);
-            }
-
-            $$2.d();
-         }
-      }
-
-      $$0.c();
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
-      bqb $$1 = bqa.a();
-      $$1.a("goalTick");
-
-      for (cfb $$2 : this.c) {
-         if ($$2.h() && ($$0 || $$2.Q_())) {
-            $$2.a();
-         }
-      }
-
-      $$1.c();
-   }
-
-   public Set<cfb> b() {
-      return this.c;
-   }
-
-   public void a(cdn.a $$0) {
-      this.d.add($$0);
-   }
-
-   public void b(cdn.a $$0) {
-      this.d.remove($$0);
-   }
-
-   public void a(cdn.a $$0, boolean $$1) {
-      if ($$1) {
-         this.b($$0);
+      } else if (!this.a.bY()) {
+         return false;
+      } else if (!this.f.h(this.a.dv())) {
+         return false;
       } else {
-         this.a($$0);
+         return !this.a.a(bwk.f).f() ? false : this.h();
       }
+   }
+
+   protected boolean h() {
+      fdw $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.d;
+         this.c = $$0.e;
+         this.d = $$0.f;
+         return true;
+      }
+   }
+
+   @Override
+   public boolean c() {
+      return !this.a.O().k();
+   }
+
+   @Override
+   public void d() {
+      this.a.O().a(this.b, this.c, this.d, this.e);
+   }
+
+   @Nullable
+   protected fdw i() {
+      azt $$0 = this.a.dY();
+      iu $$1 = this.a.dv();
+
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         iu $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
+            return fdw.c($$3);
+         }
+      }
+
+      return null;
    }
 }

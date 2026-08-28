@@ -1,24 +1,8 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dmc extends dnr {
-   public static final MapCodec<dmc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayd.a.fieldOf("falling_dust_color").forGetter($$0x -> $$0x.b), t()).apply($$0, dmc::new)
-   );
-   private final ayd b;
+public interface dmc {
+   cys a(@Nullable bwz var1, diq var2, iu var3, dzo var4);
 
-   @Override
-   public MapCodec<dmc> a() {
-      return a;
-   }
-
-   public dmc(ayd $$0, dyl.d $$1) {
-      super($$1);
-      this.b = $$0;
-   }
-
-   @Override
-   public int b(dym $$0, dgv $$1, jj $$2) {
-      return this.b.a();
-   }
+   Optional<awk> ao_();
 }

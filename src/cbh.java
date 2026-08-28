@@ -1,53 +1,29 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 import org.apache.commons.lang3.mutable.MutableLong;
 
 public class cbh {
-   public static byj<bwz> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return cbv.a(
-         (Function<cbv.b<bwz>, ? extends App<cbv.c<bwz>, cby<bwz>>>)($$3 -> $$3.group($$3.c(cft.p), $$3.c(cft.n), $$3.a(cft.o))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if ($$5x.b_($$6.dv()).a(axf.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 20L + 2L);
-                        return true;
-                     } else {
-                        jj $$8 = null;
-                        jj $$9 = null;
-                        jj $$10 = $$6.dv();
+   private static final int a = 180;
+   private static final int b = 8;
+   private static final int c = 6;
 
-                        for (jj $$12 : jj.a($$10, $$0, $$0, $$0)) {
-                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
-                              dym $$13 = $$6.dV().a_($$12.d());
-                              dym $$14 = $$6.dV().a_($$12);
-                              if ($$14.a(dkw.J)) {
-                                 if ($$13.l()) {
-                                    $$8 = $$12.j();
-                                    break;
-                                 }
-
-                                 if ($$9 == null && !$$12.a($$6.dt(), 1.5)) {
-                                    $$9 = $$12.j();
-                                 }
-                              }
-                           }
-                        }
-
-                        if ($$8 == null) {
-                           $$8 = $$9;
-                        }
-
-                        if ($$8 != null) {
-                           $$5.a(new byl($$8));
-                           $$4.a(new cfw(new byl($$8), $$1, 0));
-                        }
-
-                        $$2.setValue($$7 + 40L);
-                        return true;
-                     }
-                  }))
+   public static cab<bxh> a(cgb<jd> $$0, float $$1, int $$2) {
+      MutableLong $$3 = new MutableLong(0L);
+      return ccd.a(
+         (Function<ccd.b<bxh>, ? extends App<ccd.c<bxh>, ccg<bxh>>>)($$4 -> $$4.group($$4.a(cgb.n), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                  jd $$9 = $$4.b($$5);
+                  if ($$6.aj() != $$9.a() || !$$9.b().a($$7.dt(), (double)$$2)) {
+                     return false;
+                  } else if ($$8 <= $$3.getValue()) {
+                     return true;
+                  } else {
+                     Optional<fdw> $$10 = Optional.ofNullable(chv.a($$7, 8, 6));
+                     $$4x.a($$10.map($$1xxxx -> new cge($$1xxxx, $$1, 1)));
+                     $$3.setValue($$8 + 180L);
+                     return true;
+                  }
+               }))
       );
    }
 }

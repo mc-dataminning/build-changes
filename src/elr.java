@@ -1,40 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record elr(jw<dku> b, jw<dku> c, elw d, int e, int f, float g) {
+public class elr implements ekx {
    public static final Codec<elr> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               kh.a(me.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               kh.a(me.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               elw.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               ekd.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               iu.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, elr::new)
    );
+   private final boolean b;
+   private final List<ekd.a> c;
+   @Nullable
+   private final iu d;
 
-   public jw<dku> a() {
+   public elr(boolean $$0, List<ekd.a> $$1, @Nullable iu $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
+   }
+
+   private elr(boolean $$0, List<ekd.a> $$1, Optional<iu> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
+   }
+
+   public boolean a() {
       return this.b;
    }
 
-   public jw<dku> b() {
+   public List<ekd.a> b() {
       return this.c;
    }
 
-   public elw c() {
+   @Nullable
+   public iu c() {
       return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
    }
 }

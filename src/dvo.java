@@ -1,20 +1,33 @@
-public interface dvo {
-   dvo.a b();
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   dvo.b c();
+public class dvo extends dtd implements dvj {
+   public static final MapCodec<dvo> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dvj.a.e.fieldOf("weathering_state").forGetter(dmw::c), t()).apply($$0, dvo::new)
+   );
+   private final dvj.a e;
 
-   public static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public MapCodec<dvo> a() {
+      return d;
    }
 
-   public static record b(jj a, kn b) {
-      public static dvo.b a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-         int $$6 = Math.min($$0, $$3);
-         int $$7 = Math.min($$1, $$4);
-         int $$8 = Math.min($$2, $$5);
-         return new dvo.b(new jj($$6, $$7, $$8), new kn(Math.max($$0, $$3) - $$6, Math.max($$1, $$4) - $$7, Math.max($$2, $$5) - $$8));
-      }
+   public dvo(dvj.a $$0, dzn.d $$1) {
+      super($$1);
+      this.e = $$0;
+   }
+
+   @Override
+   protected void b(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean f(dzo $$0) {
+      return dvj.c($$0.b()).isPresent();
+   }
+
+   public dvj.a q() {
+      return this.e;
    }
 }

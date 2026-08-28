@@ -1,11 +1,20 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface ko<T> extends kf<T> {
-   js.c<T> a(alc<T> var1, T var2, ke var3);
+public record ko(Optional<bf<cys, cl>> c) implements dk<dav> {
+   public static final Codec<ko> a = RecordCodecBuilder.create($$0 -> $$0.group(bf.a(cl.a).optionalFieldOf("items").forGetter(ko::b)).apply($$0, ko::new));
 
-   void a(axp<T> var1, List<js<T>> var2);
+   @Override
+   public ki<dav> a() {
+      return kj.Q;
+   }
 
-   boolean m();
+   public boolean a(dav $$0) {
+      return !this.c.isPresent() || this.c.get().a($$0.c());
+   }
 
-   jt<T> p();
+   public Optional<bf<cys, cl>> b() {
+      return this.c;
+   }
 }

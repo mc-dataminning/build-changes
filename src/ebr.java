@@ -1,16 +1,74 @@
-public interface ebr {
-   void a(Throwable var1, ecc var2, dgw var3);
+import javax.annotation.Nullable;
 
-   void b(Throwable var1, ecc var2, dgw var3);
+public class ebr extends ebv {
+   private final je<djs> n;
 
-   static z a(dgw $$0, dgw $$1) {
-      o $$2 = o.a(new IllegalStateException("Retrieved chunk position " + $$0 + " does not match requested " + $$1), "Chunk found in invalid location");
-      p $$3 = $$2.a("Misplaced Chunk");
-      $$3.a("Stored Position", $$0::toString);
-      return new z($$2);
+   public ebr(dip $$0, dhw $$1, je<djs> $$2) {
+      super($$0, $$1);
+      this.n = $$2;
    }
 
-   default void a(dgw $$0, dgw $$1, ecc $$2) {
-      this.a(a($$0, $$1), $$2, $$1);
+   @Override
+   public dzo a_(iu $$0) {
+      return dlw.nD.m();
+   }
+
+   @Nullable
+   @Override
+   public dzo a(iu $$0, dzo $$1, int $$2) {
+      return null;
+   }
+
+   @Override
+   public evv b_(iu $$0) {
+      return evw.a.g();
+   }
+
+   @Override
+   public int i(iu $$0) {
+      return 0;
+   }
+
+   @Nullable
+   @Override
+   public dwn a(iu $$0, ebv.b $$1) {
+      return null;
+   }
+
+   @Override
+   public void b(dwn $$0) {
+   }
+
+   @Override
+   public void a(dwn $$0) {
+   }
+
+   @Override
+   public void d(iu $$0) {
+   }
+
+   @Override
+   public boolean E() {
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public boolean c(int $$0) {
+      return true;
+   }
+
+   @Override
+   public arc F() {
+      return arc.b;
+   }
+
+   @Override
+   public je<djs> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n;
    }
 }

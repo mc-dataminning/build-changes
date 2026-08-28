@@ -1,72 +1,130 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class dke extends dku implements dsb {
-   public static final dzd b = dzc.I;
-   private static final fdo a = dku.b(12.0, 0.0, 4.0);
+public class dke {
+   private static final Logger d = LogUtils.getLogger();
+   private static final float e = 0.1F;
+   public static final bsj<dke.c> a = bsj.a();
+   public static final dke b = new dke.a().a();
+   public static final MapCodec<dke> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
+               Codec.simpleMap(bxc.i, bsj.a(dke.c.a).promotePartial(af.a("Spawn data: ", d::error)), bai.a(bxc.values()))
+                  .fieldOf("spawners")
+                  .forGetter($$0x -> $$0x.g),
+               Codec.simpleMap(mf.f.q(), dke.b.a, mf.f).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, dke::new)
+   );
+   private final float f;
+   private final Map<bxc, bsj<dke.c>> g;
+   private final Map<bwj<?>, dke.b> h;
 
-   protected dke(dyl.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, Boolean.valueOf(true)));
+   dke(float $$0, Map<bxc, bsj<dke.c>> $$1, Map<bwj<?>, dke.b> $$2) {
+      this.f = $$0;
+      this.g = ImmutableMap.copyOf($$1);
+      this.h = ImmutableMap.copyOf($$2);
    }
 
-   @Override
-   protected abstract MapCodec<? extends dke> a();
-
-   protected void a(dym $$0, dgv $$1, die $$2, azs $$3, jj $$4) {
-      if (!d($$0, $$1, $$4)) {
-         $$2.a($$4, this, 60 + $$3.a(40));
-      }
-   }
-
-   protected static boolean d(dym $$0, dgv $$1, jj $$2) {
-      if ($$0.c(b)) {
-         return true;
-      } else {
-         for (jo $$3 : jo.values()) {
-            if ($$1.b_($$2.a($$3)).a(axf.a)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
+   public bsj<dke.c> a(bxc $$0) {
+      return this.g.getOrDefault($$0, a);
    }
 
    @Nullable
-   @Override
-   public dym a(dbn $$0) {
-      eut $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.a(axf.a) && $$1.e() == 8));
+   public dke.b a(bwj<?> $$0) {
+      return this.h.get($$0);
    }
 
-   @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return a;
+   public float a() {
+      return this.f;
    }
 
-   @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, euu.c, euu.c.a($$1));
+   public static class a {
+      private final Map<bxc, bsj.a<dke.c>> a = af.a(bxc.class, $$0 -> bsj.b());
+      private final Map<bwj<?>, dke.b> b = Maps.newLinkedHashMap();
+      private float c = 0.1F;
+
+      public dke.a a(bxc $$0, int $$1, dke.c $$2) {
+         this.a.get($$0).a($$2, $$1);
+         return this;
       }
 
-      return $$4 == jo.a && !this.a($$0, $$1, $$3) ? dkw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public dke.a a(bwj<?> $$0, double $$1, double $$2) {
+         this.b.put($$0, new dke.b($$2, $$1));
+         return this;
+      }
+
+      public dke.a a(float $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public dke a() {
+         return new dke(
+            this.c,
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ((bsj.a)$$0.getValue()).a())),
+            ImmutableMap.copyOf(this.b)
+         );
+      }
    }
 
-   @Override
-   protected boolean a(dym $$0, dhs $$1, jj $$2) {
-      jj $$3 = $$2.e();
-      return $$1.a_($$3).c($$1, $$3, jo.b);
+   public static record b(double b, double c) {
+      public static final Codec<dke.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
+               .apply($$0, dke.b::new)
+      );
+
+      public double a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
+      }
    }
 
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b);
-   }
+   public static record c(bwj<?> b, int c, int d) {
+      public static final MapCodec<dke.c> a = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     mf.f.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                     ays.m.fieldOf("minCount").forGetter($$0x -> $$0x.c),
+                     ays.m.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+                  )
+                  .apply($$0, dke.c::new)
+         )
+         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
 
-   @Override
-   protected eut b_(dym $$0) {
-      return $$0.c(b) ? euu.c.a(false) : super.b_($$0);
+      public c(bwj<?> b, int c, int d) {
+         b = b.f() == bxc.h ? bwj.aQ : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
+      }
+
+      @Override
+      public String toString() {
+         return bwj.a(this.b) + "*(" + this.c + "-" + this.d + ")";
+      }
+
+      public bwj<?> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
    }
 }

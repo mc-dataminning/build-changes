@@ -1,34 +1,7 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+public interface hne<T> {
+   int e();
 
-public abstract class hne extends fwf {
-   protected static final int d = 17;
-   protected static final int s = 7;
-   protected static final long u = 5368709120L;
-   protected static final int v = 5000268;
-   protected static final int w = 7105644;
-   protected static final int x = 8388479;
-   protected static final int y = 3368635;
-   protected static final int z = 7107012;
-   protected static final int A = 32;
-   protected static final int B = 8;
-   private final List<hnd> a = Lists.newArrayList();
+   T b(azt var1);
 
-   public hne(wv $$0) {
-      super($$0);
-   }
-
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
-   }
-
-   protected hnd a(hnd $$0) {
-      this.a.add($$0);
-      return this.a($$0);
-   }
-
-   public wv m() {
-      return wu.a(this.a.stream().map(hnd::a).collect(Collectors.toList()));
-   }
+   void a(hmz var1);
 }

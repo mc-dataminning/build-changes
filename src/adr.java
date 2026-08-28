@@ -1,16 +1,37 @@
-public record adr(int b, ddr c) implements zc<abr> {
-   public static final yt<wg, adr> a = yt.a(yr.w, adr::b, ddr.e, adr::e, adr::new);
+public class adr implements zd<abs> {
+   public static final yu<vs, adr> a = zd.a(adr::a, adr::new);
+   private final iu b;
+   private final boolean c;
 
-   @Override
-   public ze<adr> a() {
-      return agk.Z;
+   public adr(iu $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(abr $$0) {
+   private adr(vs $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(vs $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public zf<adr> a() {
+      return agl.Y;
+   }
+
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public ddr e() {
+   public iu b() {
+      return this.b;
+   }
+
+   public boolean e() {
       return this.c;
    }
 }

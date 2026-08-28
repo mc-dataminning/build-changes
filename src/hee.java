@@ -1,20 +1,26 @@
-import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hee() implements hdw {
-   public static final MapCodec<hee> a = MapCodec.unit(new hee());
+public class hee extends hcp {
+   private static final ale j = ale.b("textures/entity/wolf/wolf.png");
+   public boolean a;
+   public boolean b;
+   public float c = (float) (Math.PI / 5);
+   public float d;
+   public float e;
+   public float f = 1.0F;
+   public ale g = j;
+   @Nullable
+   public cxq h;
+   public cys i = cys.k;
 
-   @Override
-   public boolean a(cxy $$0, @Nullable ghz $$1, @Nullable bwr $$2, int $$3, cxw $$4) {
-      if ($$2 instanceof gmw $$5 && $$5.gi().f() == $$0) {
-         return true;
+   public float a(float $$0) {
+      float $$1 = (this.e + $$0) / 1.8F;
+      if ($$1 < 0.0F) {
+         $$1 = 0.0F;
+      } else if ($$1 > 1.0F) {
+         $$1 = 1.0F;
       }
 
-      return false;
-   }
-
-   @Override
-   public MapCodec<hee> a() {
-      return a;
+      return azk.a($$1 * (float) Math.PI) * azk.a($$1 * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
    }
 }

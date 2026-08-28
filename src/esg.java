@@ -1,49 +1,31 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class esg extends esv {
-   public static final MapCodec<esg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
-               jo.a.e.fieldOf("axis").orElse(jo.a.b).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, esg::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
-   private final jo.a g;
+public class esg extends eqi {
+   public static final MapCodec<esg> d = a(esg::new);
 
-   public esg(float $$0, float $$1, int $$2, int $$3, jo.a $$4) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-      }
+   public esg(eqi.c $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(jj $$0, jj $$1, jj $$2, azs $$3) {
-      jo $$4 = jo.a(jo.b.a, this.g);
-      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
-      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
-      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
-      int $$8 = (int)($$5 + $$6 + $$7);
-      float $$9 = $$3.i();
-      return $$9 <= azk.b(this.b, this.d, azk.f((float)$$8, (float)this.e, (float)this.f));
+   public Optional<eqi.b> a(eqi.a $$0) {
+      dsm $$1 = dsm.a($$0.f());
+      iu $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new eqi.b($$2, (Consumer<era>)($$3 -> this.a($$3, $$2, $$1, $$0))));
+   }
+
+   private void a(era $$0, iu $$1, dsm $$2, eqi.a $$3) {
+      List<eqm> $$4 = Lists.newArrayList();
+      esf.a($$3.e(), $$1, $$2, $$4, $$3.f());
+      $$4.forEach($$0::a);
    }
 
    @Override
-   protected esw<?> a() {
-      return esw.c;
+   public eqr<?> e() {
+      return eqr.c;
    }
 }

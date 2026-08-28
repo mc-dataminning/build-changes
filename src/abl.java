@@ -1,3 +1,8 @@
-public interface abl extends vl {
-   void a(abm var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface abl {
 }

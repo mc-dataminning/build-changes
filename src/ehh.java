@@ -1,44 +1,19 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehh extends ehf {
-   public ehh(Codec<ekc> $$0) {
-      super($$0);
-   }
+record ehh(jz e) implements egu {
+   public static MapCodec<ehh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jz.g.optionalFieldOf("offset", jz.i).forGetter(ehh::g)).apply($$0, ehh::new));
 
    @Override
-   protected boolean a(dhq $$0, azs $$1, jj $$2, dym $$3) {
-      jj.a $$4 = $$2.k();
-      int $$5 = $$1.a(3) + 1;
+   public egv<?> a() {
+      return egv.m;
+   }
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
-         }
+   public boolean a(djo $$0, iu $$1) {
+      return $$0.a(null, fen.b().a($$1));
+   }
 
-         $$4.c(jo.b);
-      }
-
-      jj $$7 = $$4.j();
-      int $$8 = $$1.a(3) + 2;
-      List<jo> $$9 = jo.c.a.c($$1);
-
-      for (jo $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
-
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(jo.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
-            }
-         }
-      }
-
-      return true;
+   public jz g() {
+      return this.e;
    }
 }

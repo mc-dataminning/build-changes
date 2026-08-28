@@ -1,262 +1,635 @@
+import com.mojang.datafixers.util.Pair;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Consumer;
 
-public class mt implements mo {
+public class mt implements mq {
+   private static final int b = 384;
+   private static final int c = 320;
+   private static final int d = -64;
+   private static final int e = 5;
+   protected static final List<bwj<?>> a = Arrays.asList(
+      bwj.o,
+      bwj.q,
+      bwj.r,
+      bwj.v,
+      bwj.D,
+      bwj.E,
+      bwj.K,
+      bwj.M,
+      bwj.P,
+      bwj.N,
+      bwj.O,
+      bwj.S,
+      bwj.ad,
+      bwj.ai,
+      bwj.aj,
+      bwj.am,
+      bwj.az,
+      bwj.aP,
+      bwj.aR,
+      bwj.aS,
+      bwj.aT,
+      bwj.aZ,
+      bwj.bc,
+      bwj.be,
+      bwj.bf,
+      bwj.bh,
+      bwj.bo,
+      bwj.bs,
+      bwj.bC,
+      bwj.bE,
+      bwj.bI,
+      bwj.bK,
+      bwj.bJ,
+      bwj.bN,
+      bwj.bQ,
+      bwj.bO,
+      bwj.bR
+   );
+
+   private static aq<cs.a> a(cv.d $$0, Optional<bx> $$1) {
+      return cs.a.a(Optional.of(bx.a.a().a(bo.c(cv.c.c(30.0))).a(cr.a($$0)).b()), $$1);
+   }
+
+   private static aq<dy.a> a(bx.a $$0, cl.a $$1) {
+      return dy.a.a(bx.a.a().a(dc.d.a().a($$0).b()), $$1);
+   }
+
    @Override
-   public void a(ju.a $$0, Consumer<ai> $$1) {
-      jt<bwb<?>> $$2 = $$0.e(me.z);
-      jt<cxu> $$3 = $$0.e(me.K);
-      jt<dku> $$4 = $$0.e(me.f);
+   public void a(jg.a $$0, Consumer<ai> $$1) {
+      jf<bwj<?>> $$2 = $$0.e(mg.B);
+      jf<cyo> $$3 = $$0.e(mg.K);
+      jf<dlu> $$4 = $$0.e(mg.i);
       ai $$5 = ah.a.a()
          .a(
-            dkw.ln,
-            wv.c("advancements.nether.root.title"),
-            wv.c("advancements.nether.root.description"),
-            ald.b("textures/gui/advancements/backgrounds/nether.png"),
+            cyw.vm,
+            ww.c("advancements.adventure.root.title"),
+            ww.c("advancements.adventure.root.description"),
+            ale.b("gui/advancements/backgrounds/adventure"),
             ao.a,
             false,
             false,
             false
          )
-         .a("entered_nether", bb.a.a(dhp.j))
-         .a($$1, "nether/root");
+         .a(al.a.b)
+         .a("killed_something", co.a.b())
+         .a("killed_by_something", co.a.d())
+         .a($$1, "adventure/root");
       ai $$6 = ah.a.a()
          .a($$5)
-         .a(cyc.uZ, wv.c("advancements.nether.return_to_sender.title"), wv.c("advancements.nether.return_to_sender.description"), null, ao.b, true, true, false)
-         .a(am.a.a(50))
-         .a("killed_ghast", dd.a.a(bx.a.a().a($$2, bwb.ad), bm.a.a().a(eh.a(axb.j)).a(bx.a.a().a($$2, bwb.Y))))
-         .a($$1, "nether/return_to_sender");
+         .a(dlw.bu, ww.c("advancements.adventure.sleep_in_bed.title"), ww.c("advancements.adventure.sleep_in_bed.description"), null, ao.a, true, true, false)
+         .a("slept_in_bed", dd.a.b())
+         .a($$1, "adventure/sleep_in_bed");
+      a($$0, $$1, $$6, dkg.a.b);
       ai $$7 = ah.a.a()
          .a($$5)
-         .a(dkw.fI, wv.c("advancements.nether.find_fortress.title"), wv.c("advancements.nether.find_fortress.description"), null, ao.a, true, true, false)
-         .a("fortress", dt.a.a(di.a.b($$0.e(me.aZ).b(epa.o))))
-         .a($$1, "nether/find_fortress");
+         .a(cyw.pj, ww.c("advancements.adventure.trade.title"), ww.c("advancements.adventure.trade.description"), null, ao.a, true, true, false)
+         .a("traded", dv.a.b())
+         .a($$1, "adventure/trade");
       ah.a.a()
-         .a($$5)
-         .a(cyc.vm, wv.c("advancements.nether.fast_travel.title"), wv.c("advancements.nether.fast_travel.description"), null, ao.b, true, true, false)
-         .a(am.a.a(100))
-         .a("travelled", bp.a.a(bo.a(dk.c.b(7000.0))))
-         .a($$1, "nether/fast_travel");
-      ah.a.a()
-         .a($$6)
-         .a(cyc.ti, wv.c("advancements.nether.uneasy_alliance.title"), wv.c("advancements.nether.uneasy_alliance.description"), null, ao.b, true, true, false)
-         .a(am.a.a(100))
-         .a("killed_ghast", dd.a.a(bx.a.a().a($$2, bwb.ad).a(di.a.a(dhp.i))))
-         .a($$1, "nether/uneasy_alliance");
-      ai $$8 = ah.a.a()
          .a($$7)
-         .a(dkw.hd, wv.c("advancements.nether.get_wither_skull.title"), wv.c("advancements.nether.get_wither_skull.description"), null, ao.a, true, true, false)
-         .a("wither_skull", cj.a.a(dkw.hd))
-         .a($$1, "nether/get_wither_skull");
+         .a(
+            cyw.pj,
+            ww.c("advancements.adventure.trade_at_world_height.title"),
+            ww.c("advancements.adventure.trade_at_world_height.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
+         .a("trade_at_world_height", dv.a.a(bx.a.a().a(ct.a.a(cv.c.b(319.0)))))
+         .a($$1, "adventure/trade_at_world_height");
+      ai $$8 = a($$5, $$1, $$2, a);
       ai $$9 = ah.a.a()
          .a($$8)
-         .a(cyc.vv, wv.c("advancements.nether.summon_wither.title"), wv.c("advancements.nether.summon_wither.description"), null, ao.a, true, true, false)
-         .a("summoned", eg.a.a(bx.a.a().a($$2, bwb.bI)))
-         .a($$1, "nether/summon_wither");
+         .a(cyw.pe, ww.c("advancements.adventure.shoot_arrow.title"), ww.c("advancements.adventure.shoot_arrow.description"), null, ao.a, true, true, false)
+         .a("shot_arrow", da.a.a(bl.a.a().a(bm.a.a().a(ds.a(axb.j)).a(bx.a.a().a($$2, axd.f)))))
+         .a($$1, "adventure/shoot_arrow");
       ai $$10 = ah.a.a()
-         .a($$7)
-         .a(cyc.th, wv.c("advancements.nether.obtain_blaze_rod.title"), wv.c("advancements.nether.obtain_blaze_rod.description"), null, ao.a, true, true, false)
-         .a("blaze_rod", cj.a.a(cyc.th))
-         .a($$1, "nether/obtain_blaze_rod");
-      ai $$11 = ah.a.a()
-         .a($$9)
-         .a(dkw.gj, wv.c("advancements.nether.create_beacon.title"), wv.c("advancements.nether.create_beacon.description"), null, ao.a, true, true, false)
-         .a("beacon", bg.a.a(dk.d.b(1)))
-         .a($$1, "nether/create_beacon");
+         .a($$8)
+         .a(cyw.wW, ww.c("advancements.adventure.throw_trident.title"), ww.c("advancements.adventure.throw_trident.description"), null, ao.a, true, true, false)
+         .a("shot_trident", da.a.a(bl.a.a().a(bm.a.a().a(ds.a(axb.j)).a(bx.a.a().a($$2, bwj.bz)))))
+         .a($$1, "adventure/throw_trident");
       ah.a.a()
-         .a($$11)
+         .a($$10)
          .a(
-            dkw.gj,
-            wv.c("advancements.nether.create_full_beacon.title"),
-            wv.c("advancements.nether.create_full_beacon.description"),
+            cyw.wW,
+            ww.c("advancements.adventure.very_very_frightening.title"),
+            ww.c("advancements.adventure.very_very_frightening.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
+         .a("struck_villager", bc.a.a(bx.a.a().a($$2, bwj.bD)))
+         .a($$1, "adventure/very_very_frightening");
+      ah.a.a()
+         .a($$7)
+         .a(
+            dlw.er,
+            ww.c("advancements.adventure.summon_iron_golem.title"),
+            ww.c("advancements.adventure.summon_iron_golem.description"),
             null,
             ao.c,
             true,
             true,
             false
          )
-         .a("beacon", bg.a.a(dk.d.a(4)))
-         .a($$1, "nether/create_full_beacon");
-      ai $$12 = ah.a.a()
-         .a($$10)
-         .a(cyc.tm, wv.c("advancements.nether.brew_potion.title"), wv.c("advancements.nether.brew_potion.description"), null, ao.a, true, true, false)
-         .a("potion", ba.a.b())
-         .a($$1, "nether/brew_potion");
-      ai $$13 = ah.a.a()
-         .a($$12)
-         .a(cyc.rp, wv.c("advancements.nether.all_potions.title"), wv.c("advancements.nether.all_potions.description"), null, ao.b, true, true, false)
-         .a(am.a.a(100))
+         .a("summoned_golem", dr.a.a(bx.a.a().a($$2, bwj.ap)))
+         .a($$1, "adventure/summon_iron_golem");
+      ah.a.a()
+         .a($$9)
+         .a(cyw.pf, ww.c("advancements.adventure.sniper_duel.title"), ww.c("advancements.adventure.sniper_duel.description"), null, ao.b, true, true, false)
+         .a(am.a.a(50))
+         .a("killed_skeleton", co.a.a(bx.a.a().a($$2, bwj.bf).a(bo.a(cv.c.b(50.0))), bm.a.a().a(ds.a(axb.j))))
+         .a($$1, "adventure/sniper_duel");
+      ah.a.a()
+         .a($$8)
          .a(
-            "all_effects",
-            bq.a.a(
-               dl.a.a()
-                  .a(buy.a)
-                  .a(buy.b)
-                  .a(buy.e)
-                  .a(buy.h)
-                  .a(buy.j)
-                  .a(buy.l)
-                  .a(buy.m)
-                  .a(buy.n)
-                  .a(buy.p)
-                  .a(buy.r)
-                  .a(buy.s)
-                  .a(buy.B)
-                  .a(buy.k)
-                  .a(buy.L)
-                  .a(buy.M)
-                  .a(buy.J)
-                  .a(buy.K)
-            )
+            cyw.wx,
+            ww.c("advancements.adventure.totem_of_undying.title"),
+            ww.c("advancements.adventure.totem_of_undying.description"),
+            null,
+            ao.c,
+            true,
+            true,
+            false
          )
-         .a($$1, "nether/all_potions");
+         .a("used_totem", dx.a.a($$3, cyw.wx))
+         .a($$1, "adventure/totem_of_undying");
+      ai $$11 = ah.a.a()
+         .a($$5)
+         .a(cyw.wZ, ww.c("advancements.adventure.ol_betsy.title"), ww.c("advancements.adventure.ol_betsy.description"), null, ao.a, true, true, false)
+         .a("shot_crossbow", di.a.a($$3, cyw.wZ))
+         .a($$1, "adventure/ol_betsy");
+      ah.a.a()
+         .a($$11)
+         .a(
+            cyw.wZ,
+            ww.c("advancements.adventure.whos_the_pillager_now.title"),
+            ww.c("advancements.adventure.whos_the_pillager_now.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
+         .a("kill_pillager", cn.a.a($$3, bx.a.a().a($$2, bwj.aT)))
+         .a($$1, "adventure/whos_the_pillager_now");
+      ah.a.a()
+         .a($$11)
+         .a(
+            cyw.wZ,
+            ww.c("advancements.adventure.two_birds_one_arrow.title"),
+            ww.c("advancements.adventure.two_birds_one_arrow.description"),
+            null,
+            ao.b,
+            true,
+            true,
+            false
+         )
+         .a(am.a.a(65))
+         .a("two_birds", cn.a.a($$3, bx.a.a().a($$2, bwj.aP), bx.a.a().a($$2, bwj.aP)))
+         .a($$1, "adventure/two_birds_one_arrow");
+      ah.a.a()
+         .a($$11)
+         .a(cyw.wZ, ww.c("advancements.adventure.arbalistic.title"), ww.c("advancements.adventure.arbalistic.description"), null, ao.b, true, true, true)
+         .a(am.a.a(85))
+         .a("arbalistic", cn.a.a($$3, cv.d.a(5)))
+         .a($$1, "adventure/arbalistic");
+      jg.b<dwc> $$12 = $$0.e(mg.aF);
+      ai $$13 = ah.a.a()
+         .a($$5)
+         .a(
+            csh.a($$12),
+            ww.c("advancements.adventure.voluntary_exile.title"),
+            ww.c("advancements.adventure.voluntary_exile.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            true
+         )
+         .a("voluntary_exile", co.a.a(bx.a.a().a($$2, axd.c).a(bu.a($$3, $$12))))
+         .a($$1, "adventure/voluntary_exile");
       ah.a.a()
          .a($$13)
-         .a(cyc.rj, wv.c("advancements.nether.all_effects.title"), wv.c("advancements.nether.all_effects.description"), null, ao.b, true, true, true)
-         .a(am.a.a(1000))
          .a(
-            "all_effects",
-            bq.a.a(
-               dl.a.a()
-                  .a(buy.a)
-                  .a(buy.b)
-                  .a(buy.e)
-                  .a(buy.h)
-                  .a(buy.j)
-                  .a(buy.l)
-                  .a(buy.m)
-                  .a(buy.n)
-                  .a(buy.p)
-                  .a(buy.r)
-                  .a(buy.s)
-                  .a(buy.t)
-                  .a(buy.c)
-                  .a(buy.d)
-                  .a(buy.y)
-                  .a(buy.x)
-                  .a(buy.v)
-                  .a(buy.q)
-                  .a(buy.i)
-                  .a(buy.k)
-                  .a(buy.B)
-                  .a(buy.C)
-                  .a(buy.D)
-                  .a(buy.o)
-                  .a(buy.E)
-                  .a(buy.F)
-                  .a(buy.G)
-                  .a(buy.L)
-                  .a(buy.M)
-                  .a(buy.J)
-                  .a(buy.K)
-                  .a(buy.H)
-                  .a(buy.I)
-            )
+            csh.a($$12),
+            ww.c("advancements.adventure.hero_of_the_village.title"),
+            ww.c("advancements.adventure.hero_of_the_village.description"),
+            null,
+            ao.b,
+            true,
+            true,
+            true
          )
-         .a($$1, "nether/all_effects");
+         .a(am.a.a(100))
+         .a("hero_of_the_village", dd.a.c())
+         .a($$1, "adventure/hero_of_the_village");
+      ah.a.a()
+         .a($$5)
+         .a(
+            dlw.pK.h(),
+            ww.c("advancements.adventure.honey_block_slide.title"),
+            ww.c("advancements.adventure.honey_block_slide.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
+         .a("honey_block_slide", dl.a.a(dlw.pK))
+         .a($$1, "adventure/honey_block_slide");
+      ah.a.a()
+         .a($$9)
+         .a(dlw.pH.h(), ww.c("advancements.adventure.bullseye.title"), ww.c("advancements.adventure.bullseye.description"), null, ao.b, true, true, false)
+         .a(am.a.a(50))
+         .a("bullseye", du.a.a(cv.d.a(15), Optional.of(bx.a(bx.a.a().a(bo.a(cv.c.b(30.0)))))))
+         .a($$1, "adventure/bullseye");
+      ah.a.a()
+         .a($$6)
+         .a(
+            cyw.qk,
+            ww.c("advancements.adventure.walk_on_powder_snow_with_leather_boots.title"),
+            ww.c("advancements.adventure.walk_on_powder_snow_with_leather_boots.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
+         .a("walk_on_powder_snow_with_leather_boots", dd.a.a($$4, $$3, dlw.rt, cyw.qk))
+         .a($$1, "adventure/walk_on_powder_snow_with_leather_boots");
+      ah.a.a()
+         .a($$5)
+         .a(
+            cyw.mw,
+            ww.c("advancements.adventure.lightning_rod_with_villager_no_fire.title"),
+            ww.c("advancements.adventure.lightning_rod_with_villager_no_fire.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
+         .a("lightning_rod_with_villager_no_fire", a(cv.d.a(0), Optional.of(bx.a.a().a($$2, bwj.bD).b())))
+         .a($$1, "adventure/lightning_rod_with_villager_no_fire");
       ai $$14 = ah.a.a()
          .a($$5)
          .a(
-            cyc.aE,
-            wv.c("advancements.nether.obtain_ancient_debris.title"),
-            wv.c("advancements.nether.obtain_ancient_debris.description"),
+            cyw.rY,
+            ww.c("advancements.adventure.spyglass_at_parrot.title"),
+            ww.c("advancements.adventure.spyglass_at_parrot.description"),
             null,
             ao.a,
             true,
             true,
             false
          )
-         .a("ancient_debris", cj.a.a(cyc.aE))
-         .a($$1, "nether/obtain_ancient_debris");
-      ah.a.a()
-         .a($$14)
-         .a(cyc.qC, wv.c("advancements.nether.netherite_armor.title"), wv.c("advancements.nether.netherite_armor.description"), null, ao.b, true, true, false)
-         .a(am.a.a(100))
-         .a("netherite_armor", cj.a.a(cyc.qB, cyc.qC, cyc.qD, cyc.qE))
-         .a($$1, "nether/netherite_armor");
-      ah.a.a()
-         .a($$14)
-         .a(cyc.xJ, wv.c("advancements.nether.use_lodestone.title"), wv.c("advancements.nether.use_lodestone.description"), null, ao.a, true, true, false)
-         .a("use_lodestone", cz.a.a(di.a.a().a(ay.a.a().a($$4, dkw.pU)), cv.a.a().a($$3, cyc.rD)))
-         .a($$1, "nether/use_lodestone");
+         .a("spyglass_at_parrot", a(bx.a.a().a($$2, bwj.aO), cl.a.a().a($$3, cyw.rY)))
+         .a($$1, "adventure/spyglass_at_parrot");
       ai $$15 = ah.a.a()
-         .a($$5)
+         .a($$14)
          .a(
-            cyc.xK,
-            wv.c("advancements.nether.obtain_crying_obsidian.title"),
-            wv.c("advancements.nether.obtain_crying_obsidian.description"),
+            cyw.rY,
+            ww.c("advancements.adventure.spyglass_at_ghast.title"),
+            ww.c("advancements.adventure.spyglass_at_ghast.description"),
             null,
             ao.a,
             true,
             true,
             false
          )
-         .a("crying_obsidian", cj.a.a(cyc.xK))
-         .a($$1, "nether/obtain_crying_obsidian");
+         .a("spyglass_at_ghast", a(bx.a.a().a($$2, bwj.ad), cl.a.a().a($$3, cyw.rY)))
+         .a($$1, "adventure/spyglass_at_ghast");
+      ah.a.a()
+         .a($$6)
+         .a(
+            cyw.fo,
+            ww.c("advancements.adventure.play_jukebox_in_meadows.title"),
+            ww.c("advancements.adventure.play_jukebox_in_meadows.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
+         .a("play_jukebox_in_meadows", cm.a.a(ct.a.a().a(ji.a($$0.e(mg.aG).b(djz.E))).a(ay.a.a().a($$4, dlw.eg)), cl.a.a().a(kt.n, kx.b())))
+         .a($$1, "adventure/play_jukebox_in_meadows");
       ah.a.a()
          .a($$15)
          .a(
-            cyc.xX,
-            wv.c("advancements.nether.charge_respawn_anchor.title"),
-            wv.c("advancements.nether.charge_respawn_anchor.description"),
+            cyw.rY,
+            ww.c("advancements.adventure.spyglass_at_dragon.title"),
+            ww.c("advancements.adventure.spyglass_at_dragon.description"),
             null,
             ao.a,
             true,
             true,
             false
          )
-         .a("charge_respawn_anchor", cz.a.a(di.a.a().a(ay.a.a().a($$4, dkw.pP).a(ef.a.a().a(drh.d, 4))), cv.a.a().a($$3, dkw.ep)))
-         .a($$1, "nether/charge_respawn_anchor");
-      ai $$16 = ah.a.a()
+         .a("spyglass_at_dragon", a(bx.a.a().a($$2, bwj.P), cl.a.a().a($$3, cyw.rY)))
+         .a($$1, "adventure/spyglass_at_dragon");
+      ah.a.a()
          .a($$5)
-         .a(cyc.ow, wv.c("advancements.nether.ride_strider.title"), wv.c("advancements.nether.ride_strider.description"), null, ao.a, true, true, false)
-         .a("used_warped_fungus_on_a_stick", cp.a.a(Optional.of(bx.a(bx.a.a().a(bx.a.a().a($$2, bwb.bs)))), Optional.of(cv.a.a().a($$3, cyc.ow).b()), dk.d.c))
-         .a($$1, "nether/ride_strider");
+         .a(
+            cyw.rk,
+            ww.c("advancements.adventure.fall_from_world_height.title"),
+            ww.c("advancements.adventure.fall_from_world_height.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
+         .a("fall_from_world_height", bp.a.a(bx.a.a().a(ct.a.a(cv.c.c(-59.0))), bo.b(cv.c.b(379.0)), ct.a.a(cv.c.b(319.0))))
+         .a($$1, "adventure/fall_from_world_height");
+      ah.a.a()
+         .a($$8)
+         .a(
+            dlw.ry,
+            ww.c("advancements.adventure.kill_mob_near_sculk_catalyst.title"),
+            ww.c("advancements.adventure.kill_mob_near_sculk_catalyst.description"),
+            null,
+            ao.b,
+            true,
+            true,
+            false
+         )
+         .a("kill_mob_near_sculk_catalyst", co.a.c())
+         .a($$1, "adventure/kill_mob_near_sculk_catalyst");
+      ah.a.a()
+         .a($$5)
+         .a(
+            dlw.ru,
+            ww.c("advancements.adventure.avoid_vibration.title"),
+            ww.c("advancements.adventure.avoid_vibration.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
+         .a("avoid_vibration", dd.a.d())
+         .a($$1, "adventure/avoid_vibration");
+      ai $$16 = a($$3, ah.a.a())
+         .a($$5)
+         .a(cyw.yz, ww.c("advancements.adventure.salvage_sherd.title"), ww.c("advancements.adventure.salvage_sherd.description"), null, ao.a, true, true, false)
+         .a($$1, "adventure/salvage_sherd");
       ah.a.a()
          .a($$16)
          .a(
-            cyc.ow,
-            wv.c("advancements.nether.ride_strider_in_overworld_lava.title"),
-            wv.c("advancements.nether.ride_strider_in_overworld_lava.description"),
+            dxf.a(new dxv(Optional.empty(), Optional.of(cyw.ze), Optional.empty(), Optional.of(cyw.za))),
+            ww.c("advancements.adventure.craft_decorated_pot_using_only_sherds.title"),
+            ww.c("advancements.adventure.craft_decorated_pot_using_only_sherds.description"),
             null,
             ao.a,
             true,
             true,
             false
          )
-         .a("ride_entity_distance", bp.a.a(bx.a.a().a(di.a.a(dhp.i)).a(bx.a.a().a($$2, bwb.bs)), bo.a(dk.c.b(50.0))))
-         .a($$1, "nether/ride_strider_in_overworld_lava");
-      mr.a(ah.a.a(), $$0, djg.a.a.a().toList())
-         .a($$16)
-         .a(cyc.qE, wv.c("advancements.nether.explore_nether.title"), wv.c("advancements.nether.explore_nether.description"), null, ao.b, true, true, false)
-         .a(am.a.a(500))
-         .a($$1, "nether/explore_nether");
-      ai $$17 = ah.a.a()
+         .a(
+            "pot_crafted_using_only_sherds",
+            df.a.a(
+               ald.a(mg.bs, ale.b("decorated_pot")),
+               List.of(cl.a.a().a($$3, axi.bE), cl.a.a().a($$3, axi.bE), cl.a.a().a($$3, axi.bE), cl.a.a().a($$3, axi.bE))
+            )
+         )
+         .a($$1, "adventure/craft_decorated_pot_using_only_sherds");
+      ai $$17 = b(ah.a.a())
          .a($$5)
-         .a(cyc.xT, wv.c("advancements.nether.find_bastion.title"), wv.c("advancements.nether.find_bastion.description"), null, ao.a, true, true, false)
-         .a("bastion", dt.a.a(di.a.b($$0.e(me.aZ).b(epa.s))))
-         .a($$1, "nether/find_bastion");
-      ah.a.a()
+         .a(
+            new cys(cyw.yC),
+            ww.c("advancements.adventure.trim_with_any_armor_pattern.title"),
+            ww.c("advancements.adventure.trim_with_any_armor_pattern.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
+         .a($$1, "adventure/trim_with_any_armor_pattern");
+      a(ah.a.a())
          .a($$17)
-         .a(dkw.cD, wv.c("advancements.nether.loot_bastion.title"), wv.c("advancements.nether.loot_bastion.description"), null, ao.a, true, true, false)
-         .a(al.a.b)
-         .a("loot_bastion_other", dj.a.a(exh.L))
-         .a("loot_bastion_treasure", dj.a.a(exh.K))
-         .a("loot_bastion_hoglin_stable", dj.a.a(exh.N))
-         .a("loot_bastion_bridge", dj.a.a(exh.M))
-         .a($$1, "nether/loot_bastion");
-      bi $$18 = bi.a(
-         fax.a(exl.b.a, bx.a.a().a(bu.a.a().a(cv.a.a().a($$3, axi.V)))).invert().build(),
-         fax.a(exl.b.a, bx.a.a().a(bu.a.a().b(cv.a.a().a($$3, axi.V)))).invert().build(),
-         fax.a(exl.b.a, bx.a.a().a(bu.a.a().c(cv.a.a().a($$3, axi.V)))).invert().build(),
-         fax.a(exl.b.a, bx.a.a().a(bu.a.a().d(cv.a.a().a($$3, axi.V)))).invert().build()
-      );
+         .a(
+            new cys(cyw.yO),
+            ww.c("advancements.adventure.trim_with_all_exclusive_armor_patterns.title"),
+            ww.c("advancements.adventure.trim_with_all_exclusive_armor_patterns.description"),
+            null,
+            ao.b,
+            true,
+            true,
+            false
+         )
+         .a(am.a.a(150))
+         .a($$1, "adventure/trim_with_all_exclusive_armor_patterns");
       ah.a.a()
          .a($$5)
+         .a(
+            cyw.eQ,
+            ww.c("advancements.adventure.read_power_from_chiseled_bookshelf.title"),
+            ww.c("advancements.adventure.read_power_from_chiseled_bookshelf.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
          .a(al.a.b)
-         .a(cyc.ps, wv.c("advancements.nether.distract_piglin.title"), wv.c("advancements.nether.distract_piglin.description"), null, ao.a, true, true, false)
-         .a("distract_piglin", dp.a.a($$18, Optional.of(cv.a.a().a($$3, axi.T).b()), Optional.of(bx.a(bx.a.a().a($$2, bwb.aR).a(bv.a.a().g(false))))))
-         .a("distract_piglin_directly", dr.a.a(Optional.of($$18), cv.a.a().a($$3, coy.c), Optional.of(bx.a(bx.a.a().a($$2, bwb.aR).a(bv.a.a().g(false))))))
-         .a($$1, "nether/distract_piglin");
+         .a("chiseled_bookshelf", a($$4, dlw.ct))
+         .a("comparator", b($$4, dlw.ct))
+         .a($$1, "adventure/read_power_of_chiseled_bookshelf");
+      ah.a.a()
+         .a($$5)
+         .a(
+            cyw.oZ,
+            ww.c("advancements.adventure.brush_armadillo.title"),
+            ww.c("advancements.adventure.brush_armadillo.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
+         .a("brush_armadillo", db.a.a(cl.a.a().a($$3, cyw.yz), Optional.of(bx.a(bx.a.a().a($$2, bwj.e)))))
+         .a($$1, "adventure/brush_armadillo");
+      ai $$18 = ah.a.a()
+         .a($$5)
+         .a(
+            dlw.rl,
+            ww.c("advancements.adventure.minecraft_trials_edition.title"),
+            ww.c("advancements.adventure.minecraft_trials_edition.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
+         .a("minecraft_trials_edition", dd.a.a(ct.a.b($$0.e(mg.bc).b(eqc.H))))
+         .a($$1, "adventure/minecraft_trials_edition");
+      ah.a.a()
+         .a($$18)
+         .a(cyw.zy, ww.c("advancements.adventure.lighten_up.title"), ww.c("advancements.adventure.lighten_up.description"), null, ao.a, true, true, false)
+         .a("lighten_up", cm.a.a(ct.a.a().a(ay.a.a().a($$4, dlw.sR, dlw.sQ, dlw.sP, dlw.sV, dlw.sU, dlw.sT).a(dq.a.a().a(dni.c, true))), cl.a.a().a($$3, mu.c)))
+         .a($$1, "adventure/lighten_up");
+      ai $$19 = ah.a.a()
+         .a($$18)
+         .a(
+            cyw.zH,
+            ww.c("advancements.adventure.under_lock_and_key.title"),
+            ww.c("advancements.adventure.under_lock_and_key.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
+         .a("under_lock_and_key", cm.a.a(ct.a.a().a(ay.a.a().a($$4, dlw.tY).a(dq.a.a().a(duz.d, false))), cl.a.a().a($$3, cyw.zH)))
+         .a($$1, "adventure/under_lock_and_key");
+      ah.a.a()
+         .a($$19)
+         .a(cyw.zI, ww.c("advancements.adventure.revaulting.title"), ww.c("advancements.adventure.revaulting.description"), null, ao.c, true, true, false)
+         .a("revaulting", cm.a.a(ct.a.a().a(ay.a.a().a($$4, dlw.tY).a(dq.a.a().a(duz.d, true))), cl.a.a().a($$3, cyw.zI)))
+         .a($$1, "adventure/revaulting");
+      ah.a.a()
+         .a($$18)
+         .a(cyw.va, ww.c("advancements.adventure.blowback.title"), ww.c("advancements.adventure.blowback.description"), null, ao.b, true, true, false)
+         .a(am.a.a(40))
+         .a("blowback", co.a.a(bx.a.a().a($$2, bwj.r), bm.a.a().a(ds.a(axb.j)).a(bx.a.a().a($$2, bwj.s))))
+         .a($$1, "adventure/blowback");
+      ah.a.a()
+         .a($$5)
+         .a(
+            cyw.sU,
+            ww.c("advancements.adventure.crafters_crafting_crafters.title"),
+            ww.c("advancements.adventure.crafters_crafting_crafters.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
+         .a("crafter_crafted_crafter", df.a.b(ald.a(mg.bs, ale.b("crafter"))))
+         .a($$1, "adventure/crafters_crafting_crafters");
+      ah.a.a()
+         .a($$18)
+         .a(
+            cyw.va,
+            ww.c("advancements.adventure.who_needs_rockets.title"),
+            ww.c("advancements.adventure.who_needs_rockets.description"),
+            null,
+            ao.a,
+            true,
+            true,
+            false
+         )
+         .a("who_needs_rockets", cb.a.a(bo.b(cv.c.b(7.0)), bx.a.a().a($$2, bwj.bH)))
+         .a($$1, "adventure/who_needs_rockets");
+      ah.a.a()
+         .a($$18)
+         .a(cyw.ve, ww.c("advancements.adventure.overoverkill.title"), ww.c("advancements.adventure.overoverkill.description"), null, ao.b, true, true, false)
+         .a(am.a.a(50))
+         .a("overoverkill", da.a.a(bl.a.a().a(cv.c.b(100.0)).a(bm.a.a().a(ds.a(axb.H)).a(bx.a.a().a($$2, bwj.bS).a(bu.a.a().f(cl.a.a().a($$3, cyw.ve)))))))
+         .a($$1, "adventure/overoverkill");
+   }
+
+   public static ai a(ai $$0, Consumer<ai> $$1, jf<bwj<?>> $$2, List<bwj<?>> $$3) {
+      ai $$4 = a(ah.a.a(), $$2, $$3)
+         .a($$0)
+         .a(cyw.pK, ww.c("advancements.adventure.kill_a_mob.title"), ww.c("advancements.adventure.kill_a_mob.description"), null, ao.a, true, true, false)
+         .a(al.a.b)
+         .a($$1, "adventure/kill_a_mob");
+      a(ah.a.a(), $$2, $$3)
+         .a($$4)
+         .a(cyw.pP, ww.c("advancements.adventure.kill_all_mobs.title"), ww.c("advancements.adventure.kill_all_mobs.description"), null, ao.b, true, true, false)
+         .a(am.a.a(100))
+         .a($$1, "adventure/kill_all_mobs");
+      return $$4;
+   }
+
+   private static aq<cm.a> a(jf<dlu> $$0, dlu $$1) {
+      fbw.a[] $$2 = dne.e.a().stream().map($$1x -> {
+         dq.a $$2x = dq.a.a().a(dne.e, $$1x);
+         ay.a $$3 = ay.a.a().a($$0, dlw.hv).a($$2x);
+         return fbu.a(ct.a.a().a($$3), new iu($$1x.g().q()));
+      }).toArray(fbw.a[]::new);
+      return cm.a.a(fbv.a($$1), fbk.a($$2));
+   }
+
+   private static aq<cm.a> b(jf<dlu> $$0, dlu $$1) {
+      fbw.a[] $$2 = dne.e.a().stream().map($$2x -> {
+         dq.a $$3 = dq.a.a().a(dne.e, $$2x);
+         fbv.a $$4 = new fbv.a(dlw.hv).a($$3);
+         fbw.a $$5 = fbu.a(ct.a.a().a(ay.a.a().a($$0, $$1)), new iu($$2x.q()));
+         return fbj.a($$4, $$5);
+      }).toArray(fbw.a[]::new);
+      return cm.a.a(fbk.a($$2));
+   }
+
+   private static ah.a a(ah.a $$0) {
+      $$0.a(al.a.a);
+      Set<cyo> $$1 = Set.of(cyw.yL, cyw.yJ, cyw.yK, cyw.yF, cyw.yO, cyw.yH, cyw.yI, cyw.yM);
+      oq.b().filter($$1x -> $$1.contains($$1x.a())).forEach($$1x -> $$0.a("armor_trimmed_" + $$1x.c().a(), df.a.a($$1x.c())));
+      return $$0;
+   }
+
+   private static ah.a b(ah.a $$0) {
+      $$0.a(al.a.b);
+      oq.b().map(oq.b::c).forEach($$1 -> $$0.a("armor_trimmed_" + $$1.a(), df.a.a((ald<ddj<?>>)$$1)));
+      return $$0;
+   }
+
+   private static ah.a a(jf<cyo> $$0, ah.a $$1) {
+      List<Pair<String, aq<cu.a>>> $$2 = List.of(
+         Pair.of("desert_pyramid", cu.a.a(eyj.aY)),
+         Pair.of("desert_well", cu.a.a(eyj.aX)),
+         Pair.of("ocean_ruin_cold", cu.a.a(eyj.bc)),
+         Pair.of("ocean_ruin_warm", cu.a.a(eyj.bb)),
+         Pair.of("trail_ruins_rare", cu.a.a(eyj.ba)),
+         Pair.of("trail_ruins_common", cu.a.a(eyj.aZ))
+      );
+      $$2.forEach($$1x -> $$1.a((String)$$1x.getFirst(), (aq<?>)$$1x.getSecond()));
+      String $$3 = "has_sherd";
+      $$1.a("has_sherd", cj.a.a(cl.a.a().a($$0, axi.bE)));
+      $$1.a(new al(List.of($$2.stream().<String>map(Pair::getFirst).toList(), List.of("has_sherd"))));
+      return $$1;
+   }
+
+   protected static void a(jg.a $$0, Consumer<ai> $$1, ai $$2, dkg.a $$3) {
+      a(ah.a.a(), $$0, $$3.a().toList())
+         .a($$2)
+         .a(
+            cyw.qw,
+            ww.c("advancements.adventure.adventuring_time.title"),
+            ww.c("advancements.adventure.adventuring_time.description"),
+            null,
+            ao.b,
+            true,
+            true,
+            false
+         )
+         .a(am.a.a(500))
+         .a($$1, "adventure/adventuring_time");
+   }
+
+   private static ah.a a(ah.a $$0, jf<bwj<?>> $$1, List<bwj<?>> $$2) {
+      $$2.forEach($$2x -> $$0.a(mf.f.b($$2x).toString(), co.a.a(bx.a.a().a($$1, $$2x))));
+      return $$0;
+   }
+
+   protected static ah.a a(ah.a $$0, jg.a $$1, List<ald<djs>> $$2) {
+      jf<djs> $$3 = $$1.e(mg.aG);
+
+      for (ald<djs> $$4 : $$2) {
+         $$0.a($$4.a().toString(), dd.a.a(ct.a.a($$3.b($$4))));
+      }
+
+      return $$0;
    }
 }

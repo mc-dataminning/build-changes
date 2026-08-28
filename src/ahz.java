@@ -1,60 +1,29 @@
-import javax.annotation.Nullable;
+public class ahz implements zd<agn> {
+   public static final yu<vs, ahz> a = zd.a(ahz::a, ahz::new);
+   private final String b;
 
-public class ahz implements zc<agm> {
-   public static final yt<vr, ahz> a = zc.a(ahz::a, ahz::new);
-   private final ahz.a b;
-   @Nullable
-   private final ald c;
-
-   public ahz(ahz.a $$0, @Nullable ald $$1) {
+   public ahz(String $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   public static ahz a(ai $$0) {
-      return new ahz(ahz.a.a, $$0.a());
+   private ahz(vs $$0) {
+      this.b = $$0.p();
    }
 
-   public static ahz b() {
-      return new ahz(ahz.a.b, null);
-   }
-
-   private ahz(vr $$0) {
-      this.b = $$0.b(ahz.a.class);
-      if (this.b == ahz.a.a) {
-         this.c = $$0.q();
-      } else {
-         this.c = null;
-      }
-   }
-
-   private void a(vr $$0) {
+   private void a(vs $$0) {
       $$0.a(this.b);
-      if (this.b == ahz.a.a) {
-         $$0.a(this.c);
-      }
    }
 
    @Override
-   public ze<ahz> a() {
-      return agk.bZ;
+   public zf<ahz> a() {
+      return agl.bY;
    }
 
-   public void a(agm $$0) {
+   public void a(agn $$0) {
       $$0.a(this);
    }
 
-   public ahz.a e() {
+   public String b() {
       return this.b;
-   }
-
-   @Nullable
-   public ald f() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

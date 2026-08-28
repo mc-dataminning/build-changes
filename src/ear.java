@@ -1,111 +1,112 @@
-import java.util.ArrayList;
+import com.google.common.base.MoreObjects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Optional;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class ear<T> implements eaz<T> {
-   private final jx<T> a;
-   private final ayg<T> b;
-   private final eba<T> c;
-   private final int d;
+public abstract class ear<T extends Comparable<T>> {
+   private final Class<T> a;
+   private final String b;
+   @Nullable
+   private Integer c;
+   private final Codec<T> d = Codec.STRING
+      .comapFlatMap(
+         $$0x -> this.b($$0x)
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
+         this::b
+      );
+   private final Codec<ear.a<T>> e = this.d.xmap(this::c, ear.a::b);
 
-   public ear(jx<T> $$0, int $$1, eba<T> $$2, List<T> $$3) {
-      this($$0, $$1, $$2);
-      $$3.forEach(this.b::d);
+   protected ear(String $$0, Class<T> $$1) {
+      this.a = $$1;
+      this.b = $$0;
    }
 
-   public ear(jx<T> $$0, int $$1, eba<T> $$2) {
-      this($$0, $$1, $$2, ayg.c(1 << $$1));
+   public ear.a<T> c(T $$0) {
+      return new ear.a<>(this, $$0);
    }
 
-   private ear(jx<T> $$0, int $$1, eba<T> $$2, ayg<T> $$3) {
-      this.a = $$0;
-      this.d = $$1;
-      this.c = $$2;
-      this.b = $$3;
+   public ear.a<T> a(dzq<?, ?> $$0) {
+      return new ear.a<>(this, $$0.c(this));
    }
 
-   public static <A> eaz<A> a(int $$0, jx<A> $$1, eba<A> $$2, List<A> $$3) {
-      return new ear<>($$1, $$0, $$2, $$3);
+   public Stream<ear.a<T>> c() {
+      return this.a().stream().map(this::c);
+   }
+
+   public Codec<T> d() {
+      return this.d;
+   }
+
+   public Codec<ear.a<T>> e() {
+      return this.e;
+   }
+
+   public String f() {
+      return this.b;
+   }
+
+   public Class<T> g() {
+      return this.a;
+   }
+
+   public abstract List<T> a();
+
+   public abstract String b(T var1);
+
+   public abstract Optional<T> b(String var1);
+
+   public abstract int a(T var1);
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
    }
 
    @Override
-   public int a(T $$0) {
-      int $$1 = this.b.a($$0);
-      if ($$1 == -1) {
-         $$1 = this.b.d($$0);
-         if ($$1 >= 1 << this.d) {
-            $$1 = this.c.onResize(this.d + 1, $$0);
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         if ($$0.test(this.b.a($$1))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public T a(int $$0) {
-      T $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         throw new eay($$0);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         return $$1;
+         return !($$0 instanceof ear<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
       }
    }
 
    @Override
-   public void a(vr $$0) {
-      this.b.a();
-      int $$1 = $$0.l();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         this.b.d(this.a.b($$0.l()));
-      }
-   }
-
-   @Override
-   public void b(vr $$0) {
-      int $$1 = this.b();
-      $$0.c($$1);
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         $$0.c(this.a.a(this.b.a($$2)));
-      }
-   }
-
-   @Override
-   public int a() {
-      int $$0 = wm.a(this.b());
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += wm.a(this.a.a(this.b.a($$1)));
+   public final int hashCode() {
+      if (this.c == null) {
+         this.c = this.b();
       }
 
-      return $$0;
+      return this.c;
    }
 
-   public List<T> c() {
-      ArrayList<T> $$0 = new ArrayList<>();
-      this.b.iterator().forEachRemaining($$0::add);
-      return $$0;
-   }
-
-   @Override
    public int b() {
-      return this.b.d();
+      return 31 * this.a.hashCode() + this.b.hashCode();
    }
 
-   @Override
-   public eaz<T> a(eba<T> $$0) {
-      return new ear<>(this.a, this.d, $$0, this.b.b());
+   public <U, S extends dzq<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
+      DataResult<T> $$3 = this.d.parse($$0, $$2);
+      return $$3.map($$1x -> $$1.b(this, $$1x)).setPartial($$1);
+   }
+
+   public static record a<T extends Comparable<T>>(ear<T> a, T b) {
+      public a(ear<T> a, T b) {
+         if (!a.a().contains(b)) {
+            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
+         } else {
+            this.a = a;
+            this.b = b;
+         }
+      }
+
+      @Override
+      public String toString() {
+         return this.a.f() + "=" + this.a.b(this.b);
+      }
    }
 }

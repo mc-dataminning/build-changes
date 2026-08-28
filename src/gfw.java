@@ -1,47 +1,91 @@
-public class gfw<S extends hcf> extends geo<S> {
-   public gfw(ghd $$0) {
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
+
+public class gfw extends gfd<hcq> {
+   public static final gip a = gfw::a;
+   private final gig b;
+   private final gig c;
+   private final gig d;
+   private final gig e;
+   private final gig f;
+   private final gig g;
+   private final gig i;
+
+   public gfw(gig $$0) {
       super($$0);
+      this.b = $$0.b("head");
+      this.g = $$0.b("right_chest");
+      this.i = $$0.b("left_chest");
+      this.c = $$0.b("right_hind_leg");
+      this.d = $$0.b("left_hind_leg");
+      this.e = $$0.b("right_front_leg");
+      this.f = $$0.b("left_front_leg");
    }
 
-   public static ghj c() {
-      ghl $$0 = geo.a(ghh.a, 0.0F);
-      ghn $$1 = $$0.a();
-      a($$1);
-      return ghj.a($$0, 64, 32);
+   public static gim a(gik $$0) {
+      gio $$1 = new gio();
+      giq $$2 = $$1.a();
+      $$2.a(
+         "head",
+         gil.c()
+            .a(0, 0)
+            .a(-2.0F, -14.0F, -10.0F, 4.0F, 4.0F, 9.0F, $$0)
+            .a(0, 14)
+            .a("neck", -4.0F, -16.0F, -6.0F, 8.0F, 18.0F, 6.0F, $$0)
+            .a(17, 0)
+            .a("ear", -4.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0)
+            .a(17, 0)
+            .a("ear", 1.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0),
+         gii.a(0.0F, 7.0F, -6.0F)
+      );
+      $$2.a("body", gil.c().a(29, 0).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F, $$0), gii.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$2.a("right_chest", gil.c().a(45, 28).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), gii.a(-8.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$2.a("left_chest", gil.c().a(45, 41).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), gii.a(5.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      int $$3 = 4;
+      int $$4 = 14;
+      gil $$5 = gil.c().a(29, 29).a(-2.0F, 0.0F, -2.0F, 4.0F, 14.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$5, gii.a(-3.5F, 10.0F, 6.0F));
+      $$2.a("left_hind_leg", $$5, gii.a(3.5F, 10.0F, 6.0F));
+      $$2.a("right_front_leg", $$5, gii.a(-3.5F, 10.0F, -5.0F));
+      $$2.a("left_front_leg", $$5, gii.a(3.5F, 10.0F, -5.0F));
+      return gim.a($$1, 128, 64);
    }
 
-   protected static void a(ghn $$0) {
-      $$0.a("right_arm", ghi.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), ghf.a(-5.0F, 2.0F, 0.0F));
-      $$0.a("left_arm", ghi.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), ghf.a(5.0F, 2.0F, 0.0F));
-      $$0.a("right_leg", ghi.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), ghf.a(-2.0F, 12.0F, 0.0F));
-      $$0.a("left_leg", ghi.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), ghf.a(2.0F, 12.0F, 0.0F));
-   }
+   private static gio a(gio $$0) {
+      float $$1 = 2.0F;
+      float $$2 = 0.7F;
+      float $$3 = 1.1F;
+      UnaryOperator<gii> $$4 = $$0x -> $$0x.c(0.0F, 21.0F, 3.52F).d(0.71428573F, 0.64935064F, 0.7936508F);
+      UnaryOperator<gii> $$5 = $$0x -> $$0x.c(0.0F, 33.0F, 0.0F).d(0.625F, 0.45454544F, 0.45454544F);
+      UnaryOperator<gii> $$6 = $$0x -> $$0x.c(0.0F, 33.0F, 0.0F).d(0.45454544F, 0.41322312F, 0.45454544F);
+      gio $$7 = new gio();
 
-   public void a(S $$0) {
-      super.a($$0);
-      if ($$0.b && !$$0.d) {
-         float $$1 = $$0.H;
-         float $$2 = azk.a($$1 * (float) Math.PI);
-         float $$3 = azk.a((1.0F - (1.0F - $$1) * (1.0F - $$1)) * (float) Math.PI);
-         this.r.g = 0.0F;
-         this.s.g = 0.0F;
-         this.r.f = -(0.1F - $$2 * 0.6F);
-         this.s.f = 0.1F - $$2 * 0.6F;
-         this.r.e = (float) (-Math.PI / 2);
-         this.s.e = (float) (-Math.PI / 2);
-         this.r.e -= $$2 * 1.2F - $$3 * 0.4F;
-         this.s.e -= $$2 * 1.2F - $$3 * 0.4F;
-         gcq.a(this.r, this.s, $$0.u);
+      for (Entry<String, giq> $$8 : $$0.a().a()) {
+         String $$9 = $$8.getKey();
+         giq $$10 = $$8.getValue();
+
+         UnaryOperator<gii> $$11 = switch ($$9) {
+            case "head" -> $$4;
+            case "body" -> $$5;
+            default -> $$6;
+         };
+         $$7.a().a($$9, $$10.a($$11));
       }
+
+      return $$7;
    }
 
-   @Override
-   public void a(bwk $$0, fho $$1) {
-      this.e().a($$1);
-      float $$2 = $$0 == bwk.b ? 1.0F : -1.0F;
-      ghd $$3 = this.a($$0);
-      $$3.b += $$2;
-      $$3.a($$1);
-      $$3.b -= $$2;
+   public void a(hcq $$0) {
+      super.a($$0);
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      float $$1 = $$0.ae;
+      float $$2 = $$0.ad;
+      this.c.e = azk.b($$2 * 0.6662F) * 1.4F * $$1;
+      this.d.e = azk.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.e.e = azk.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.f.e = azk.b($$2 * 0.6662F) * 1.4F * $$1;
+      this.g.k = $$0.b;
+      this.i.k = $$0.b;
    }
 }

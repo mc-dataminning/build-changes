@@ -132,7 +132,7 @@ public class ays {
       .comapFlatMap($$0 -> DataResult.success(StringEscapeUtils.unescapeJava($$0)), StringEscapeUtils::escapeJava);
    public static final Codec<ays.d> t = Codec.STRING
       .comapFlatMap(
-         $$0 -> $$0.startsWith("#") ? ald.d($$0.substring(1)).map($$0x -> new ays.d($$0x, true)) : ald.d($$0).map($$0x -> new ays.d($$0x, false)), ays.d::c
+         $$0 -> $$0.startsWith("#") ? ale.d($$0.substring(1)).map($$0x -> new ays.d($$0x, true)) : ale.d($$0).map($$0x -> new ays.d($$0x, false)), ays.d::c
       );
    public static final Function<Optional<Long>, OptionalLong> u = $$0 -> $$0.map(OptionalLong::of).orElseGet(OptionalLong::empty);
    public static final Function<OptionalLong, Optional<Long>> v = $$0 -> $$0.isPresent() ? Optional.of($$0.getAsLong()) : Optional.empty();
@@ -159,9 +159,9 @@ public class ays {
       return $$1;
    }, $$0 -> Either.right($$0.values().stream().toList()));
    public static final Codec<String> y = Codec.string(0, 16)
-      .validate($$0 -> bah.f($$0) ? DataResult.success($$0) : DataResult.error(() -> "Player name contained disallowed characters: '" + $$0 + "'"));
+      .validate($$0 -> baj.f($$0) ? DataResult.success($$0) : DataResult.error(() -> "Player name contained disallowed characters: '" + $$0 + "'"));
    private static final MapCodec<GameProfile> G = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(km.e.fieldOf("id").forGetter(GameProfile::getId), y.fieldOf("name").forGetter(GameProfile::getName)).apply($$0, GameProfile::new)
+      $$0 -> $$0.group(jy.e.fieldOf("id").forGetter(GameProfile::getId), y.fieldOf("name").forGetter(GameProfile::getName)).apply($$0, GameProfile::new)
    );
    public static final Codec<GameProfile> z = RecordCodecBuilder.create(
       $$0 -> $$0.group(G.forGetter(Function.identity()), x.lenientOptionalFieldOf("properties", new PropertyMap()).forGetter(GameProfile::getProperties))
@@ -177,7 +177,7 @@ public class ays {
       return $$1.length != 1 ? DataResult.error(() -> "Expected one codepoint, got: " + $$0) : DataResult.success($$1[0]);
    }, Character::toString);
    public static final Codec<String> C = Codec.STRING
-      .validate($$0 -> !ald.i($$0) ? DataResult.error(() -> "Invalid string to use as a resource path element: " + $$0) : DataResult.success($$0));
+      .validate($$0 -> !ale.i($$0) ? DataResult.error(() -> "Invalid string to use as a resource path element: " + $$0) : DataResult.success($$0));
    public static final Codec<URI> D = Codec.STRING.comapFlatMap($$0 -> {
       try {
          return DataResult.success(af.a($$0));
@@ -188,7 +188,7 @@ public class ays {
    public static final Codec<String> E = Codec.STRING.validate($$0 -> {
       for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
          char $$2 = $$0.charAt($$1);
-         if (!bah.a($$2)) {
+         if (!baj.a($$2)) {
             return DataResult.error(() -> "Disallowed chat character: '" + $$2 + "'");
          }
       }
@@ -355,7 +355,7 @@ public class ays {
       return $$0.validate($$0x -> $$0x.isEmpty() ? DataResult.error(() -> "List must have contents") : DataResult.success($$0x));
    }
 
-   public static <T> Codec<jw<T>> c(Codec<jw<T>> $$0) {
+   public static <T> Codec<ji<T>> c(Codec<ji<T>> $$0) {
       return $$0.validate(
          $$0x -> $$0x.d().right().filter(List::isEmpty).isPresent() ? DataResult.error(() -> "List must have contents") : DataResult.success($$0x)
       );
@@ -560,7 +560,7 @@ public class ays {
       }
    }
 
-   public static record d(ald a, boolean b) {
+   public static record d(ale a, boolean b) {
       @Override
       public String toString() {
          return this.c();

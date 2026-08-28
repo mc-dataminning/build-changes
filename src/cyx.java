@@ -1,43 +1,47 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import java.util.function.Consumer;
 
-public class cyx extends cxu {
-   public cyx(cxu.a $$0) {
-      super($$0);
-   }
-
-   public static dax b() {
-      jt<dku> $$0 = md.a(md.e);
-      return new dax(
-         List.of(dax.a.a(jw.a(dkw.bz.p()), 15.0F), dax.a.b($$0.b(awz.Q), 15.0F), dax.a.b($$0.b(awz.a), 5.0F), dax.a.b(jw.a(dkw.ft.p(), dkw.fu.p()), 2.0F)),
-         1.0F,
-         1,
-         true
-      );
-   }
+public record cyx(cxt<cyy> c) implements dbx {
+   public static final Codec<cyx> a = cxt.a(mg.aT, cyy.c).xmap(cyx::new, cyx::a);
+   public static final yu<wh, cyx> b = yu.a(cxt.a(mg.aT, cyy.d), cyx::a, cyx::new);
 
    @Override
-   public btq a(dbp $$0) {
-      dhp $$1 = $$0.q();
-      jj $$2 = $$0.a();
-      dym $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dol $$5 && !$$5.q($$3)) {
-         cqi $$6 = $$0.o();
-         cxy $$7 = $$0.n();
-         if ($$6 instanceof aro) {
-            ap.N.a((aro)$$6, $$2, $$7);
-         }
-
-         $$1.a($$6, $$2, awk.lN, awl.e, 1.0F, 1.0F);
-         dym $$8 = $$5.p($$3);
-         $$1.b($$2, $$8);
-         $$1.a(edm.c, $$2, edm.a.a($$0.o(), $$8));
-         if ($$6 != null) {
-            $$7.a(1, $$6, bwr.d($$0.p()));
-         }
-
-         return btq.a;
+   public void a(cyo.b $$0, Consumer<ww> $$1, dah $$2, ke $$3) {
+      jg.a $$4 = $$0.a();
+      if ($$4 != null) {
+         this.c.a($$4).ifPresent($$1x -> {
+            xk $$2x = ((cyy)$$1x.a()).c().f();
+            wz.a($$2x, xt.a.a(n.h));
+            $$1.accept($$2x);
+         });
       }
+   }
 
-      return super.a($$0);
+   public static bty a(dip $$0, iu $$1, cys $$2, cqs $$3) {
+      cyx $$4 = $$2.a(kj.ae);
+      if ($$4 == null) {
+         return bty.f;
+      } else {
+         dzo $$5 = $$0.a_($$1);
+         if ($$5.a(dlw.eg) && !$$5.c(dqa.b)) {
+            if (!$$0.C) {
+               cys $$6 = $$2.b(1, $$3);
+               if ($$0.c_($$1) instanceof dxs $$7) {
+                  $$7.b($$6);
+                  $$0.a(eeo.c, $$1, eeo.a.a($$3, $$5));
+               }
+
+               $$3.a(awv.al);
+            }
+
+            return bty.a;
+         } else {
+            return bty.f;
+         }
+      }
+   }
+
+   public cxt<cyy> a() {
+      return this.c;
    }
 }

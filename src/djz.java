@@ -1,61 +1,71 @@
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+public abstract class djz {
+   public static final ald<djs> a = a("the_void");
+   public static final ald<djs> b = a("plains");
+   public static final ald<djs> c = a("sunflower_plains");
+   public static final ald<djs> d = a("snowy_plains");
+   public static final ald<djs> e = a("ice_spikes");
+   public static final ald<djs> f = a("desert");
+   public static final ald<djs> g = a("swamp");
+   public static final ald<djs> h = a("mangrove_swamp");
+   public static final ald<djs> i = a("forest");
+   public static final ald<djs> j = a("flower_forest");
+   public static final ald<djs> k = a("birch_forest");
+   public static final ald<djs> l = a("dark_forest");
+   public static final ald<djs> m = a("pale_garden");
+   public static final ald<djs> n = a("old_growth_birch_forest");
+   public static final ald<djs> o = a("old_growth_pine_taiga");
+   public static final ald<djs> p = a("old_growth_spruce_taiga");
+   public static final ald<djs> q = a("taiga");
+   public static final ald<djs> r = a("snowy_taiga");
+   public static final ald<djs> s = a("savanna");
+   public static final ald<djs> t = a("savanna_plateau");
+   public static final ald<djs> u = a("windswept_hills");
+   public static final ald<djs> v = a("windswept_gravelly_hills");
+   public static final ald<djs> w = a("windswept_forest");
+   public static final ald<djs> x = a("windswept_savanna");
+   public static final ald<djs> y = a("jungle");
+   public static final ald<djs> z = a("sparse_jungle");
+   public static final ald<djs> A = a("bamboo_jungle");
+   public static final ald<djs> B = a("badlands");
+   public static final ald<djs> C = a("eroded_badlands");
+   public static final ald<djs> D = a("wooded_badlands");
+   public static final ald<djs> E = a("meadow");
+   public static final ald<djs> F = a("cherry_grove");
+   public static final ald<djs> G = a("grove");
+   public static final ald<djs> H = a("snowy_slopes");
+   public static final ald<djs> I = a("frozen_peaks");
+   public static final ald<djs> J = a("jagged_peaks");
+   public static final ald<djs> K = a("stony_peaks");
+   public static final ald<djs> L = a("river");
+   public static final ald<djs> M = a("frozen_river");
+   public static final ald<djs> N = a("beach");
+   public static final ald<djs> O = a("snowy_beach");
+   public static final ald<djs> P = a("stony_shore");
+   public static final ald<djs> Q = a("warm_ocean");
+   public static final ald<djs> R = a("lukewarm_ocean");
+   public static final ald<djs> S = a("deep_lukewarm_ocean");
+   public static final ald<djs> T = a("ocean");
+   public static final ald<djs> U = a("deep_ocean");
+   public static final ald<djs> V = a("cold_ocean");
+   public static final ald<djs> W = a("deep_cold_ocean");
+   public static final ald<djs> X = a("frozen_ocean");
+   public static final ald<djs> Y = a("deep_frozen_ocean");
+   public static final ald<djs> Z = a("mushroom_fields");
+   public static final ald<djs> aa = a("dripstone_caves");
+   public static final ald<djs> ab = a("lush_caves");
+   public static final ald<djs> ac = a("deep_dark");
+   public static final ald<djs> ad = a("nether_wastes");
+   public static final ald<djs> ae = a("warped_forest");
+   public static final ald<djs> af = a("crimson_forest");
+   public static final ald<djs> ag = a("soul_sand_valley");
+   public static final ald<djs> ah = a("basalt_deltas");
+   public static final ald<djs> ai = a("the_end");
+   public static final ald<djs> aj = a("end_highlands");
+   public static final ald<djs> ak = a("end_midlands");
+   public static final ald<djs> al = a("small_end_islands");
+   public static final ald<djs> am = a("end_barrens");
 
-public class djz extends djl {
-   public static final MapCodec<djz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwv.q.fieldOf("color").forGetter(djl::b), t()).apply($$0, djz::new));
-   public static final dzm b = dzc.bd;
-   private static final Map<cwv, dku> c = Maps.newHashMap();
-   private static final fdo d = dku.b(8.0, 0.0, 16.0);
-
-   @Override
-   public MapCodec<djz> a() {
-      return a;
-   }
-
-   public djz(cwv $$0, dyl.d $$1) {
-      super($$0, $$1);
-      this.l(this.B.b().b(b, Integer.valueOf(0)));
-      c.put($$0, this);
-   }
-
-   @Override
-   protected boolean a(dym $$0, dhs $$1, jj $$2) {
-      return $$1.a_($$2.e()).e();
-   }
-
-   @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return d;
-   }
-
-   @Override
-   public dym a(dbn $$0) {
-      return this.m().b(b, Integer.valueOf(dzs.a($$0.i() + 180.0F)));
-   }
-
-   @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      return $$4 == jo.a && !$$0.a($$1, $$3) ? dkw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected dym a(dym $$0, drm $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected dym a(dym $$0, dpv $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b);
-   }
-
-   public static dku a(cwv $$0) {
-      return c.getOrDefault($$0, dkw.jh);
+   private static ald<djs> a(String $$0) {
+      return ald.a(mg.aG, ale.b($$0));
    }
 }

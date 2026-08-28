@@ -1,39 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dnl extends dri {
-   public static final MapCodec<dnl> b = b(dnl::new);
+public class dnl extends dle {
+   public static final MapCodec<dnl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dnj.a.forGetter($$0x -> $$0x.c), t()).apply($$0, dnl::new));
+   private final dlu c;
+   private static final feq d = dlu.b(12.0, 0.0, 15.0);
 
    @Override
    public MapCodec<dnl> a() {
-      return b;
+      return a;
    }
 
-   protected dnl(dyl.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(a, jo.b));
-   }
-
-   @Override
-   public dym a(dbn $$0) {
-      jo $$1 = $$0.k();
-      dym $$2 = $$0.q().a_($$0.a().a($$1.g()));
-      return $$2.a(this) && $$2.c(a) == $$1 ? this.m().b(a, $$1.g()) : this.m().b(a, $$1);
+   protected dnl(dlu $$0, dzn.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   public void a(dym $$0, dhp $$1, jj $$2, azs $$3) {
-      jo $$4 = $$0.c(a);
-      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
-      if ($$3.a(5) == 0) {
-         $$1.a(lv.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
+   protected void a(dzo $$0, dip $$1, iu $$2, dzo $$3, boolean $$4) {
+      this.a($$0, $$1, $$1, $$1.A, $$2);
+   }
+
+   @Override
+   protected void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      if (!d($$0, $$1, $$2)) {
+         $$1.a($$2, this.c.m().b(b, Boolean.valueOf(false)), 2);
       }
    }
 
    @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(a);
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      if ($$4 == ja.a && !$$0.a($$1, $$3)) {
+         return dlw.a.m();
+      } else {
+         this.a($$0, $$1, $$2, $$7, $$3);
+         if ($$0.c(b)) {
+            $$2.a($$3, evw.c, evw.c.a($$1));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   @Override
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return d;
    }
 }

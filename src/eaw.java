@@ -1,11 +1,21 @@
-import javax.annotation.Nullable;
+public enum eaw implements bai {
+   a("top"),
+   b("bottom"),
+   c("double");
 
-public interface eaw {
-   @Nullable
-   eav c(int var1, int var2);
+   private final String d;
 
-   default void a(dhy $$0, kl $$1) {
+   private eaw(final String $$0) {
+      this.d = $$0;
    }
 
-   dgv r();
+   @Override
+   public String toString() {
+      return this.d;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

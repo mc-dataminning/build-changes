@@ -1,84 +1,133 @@
-public class ggc extends gea<hbk> {
-   private static final String a = "body0";
-   private static final String b = "body1";
-   private static final String c = "right_middle_front_leg";
-   private static final String d = "left_middle_front_leg";
-   private static final String e = "right_middle_hind_leg";
-   private static final String f = "left_middle_hind_leg";
-   private final ghd g;
-   private final ghd i;
-   private final ghd j;
-   private final ghd k;
-   private final ghd l;
-   private final ghd m;
-   private final ghd n;
-   private final ghd o;
-   private final ghd p;
+public class ggc extends gfd<hcx> {
+   private static final String a = "feather";
+   private final gig b;
+   private final gig c;
+   private final gig d;
+   private final gig e;
+   private final gig f;
+   private final gig g;
+   private final gig i;
 
-   public ggc(ghd $$0) {
+   public ggc(gig $$0) {
       super($$0);
-      this.g = $$0.b("head");
-      this.i = $$0.b("right_hind_leg");
-      this.j = $$0.b("left_hind_leg");
-      this.k = $$0.b("right_middle_hind_leg");
-      this.l = $$0.b("left_middle_hind_leg");
-      this.m = $$0.b("right_middle_front_leg");
-      this.n = $$0.b("left_middle_front_leg");
-      this.o = $$0.b("right_front_leg");
-      this.p = $$0.b("left_front_leg");
+      this.b = $$0.b("body");
+      this.c = $$0.b("tail");
+      this.d = $$0.b("left_wing");
+      this.e = $$0.b("right_wing");
+      this.f = $$0.b("head");
+      this.g = $$0.b("left_leg");
+      this.i = $$0.b("right_leg");
    }
 
-   public static ghj a() {
-      ghl $$0 = new ghl();
-      ghn $$1 = $$0.a();
-      int $$2 = 15;
-      $$1.a("head", ghi.c().a(32, 4).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F), ghf.a(0.0F, 15.0F, -3.0F));
-      $$1.a("body0", ghi.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), ghf.a(0.0F, 15.0F, 0.0F));
-      $$1.a("body1", ghi.c().a(0, 12).a(-5.0F, -4.0F, -6.0F, 10.0F, 8.0F, 12.0F), ghf.a(0.0F, 15.0F, 9.0F));
-      ghi $$3 = ghi.c().a(18, 0).a(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
-      ghi $$4 = ghi.c().a(18, 0).a().a(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
-      float $$5 = (float) (Math.PI / 4);
-      float $$6 = (float) (Math.PI / 8);
-      $$1.a("right_hind_leg", $$3, ghf.a(-4.0F, 15.0F, 2.0F, 0.0F, (float) (Math.PI / 4), (float) (-Math.PI / 4)));
-      $$1.a("left_hind_leg", $$4, ghf.a(4.0F, 15.0F, 2.0F, 0.0F, (float) (-Math.PI / 4), (float) (Math.PI / 4)));
-      $$1.a("right_middle_hind_leg", $$3, ghf.a(-4.0F, 15.0F, 1.0F, 0.0F, (float) (Math.PI / 8), -0.58119464F));
-      $$1.a("left_middle_hind_leg", $$4, ghf.a(4.0F, 15.0F, 1.0F, 0.0F, (float) (-Math.PI / 8), 0.58119464F));
-      $$1.a("right_middle_front_leg", $$3, ghf.a(-4.0F, 15.0F, 0.0F, 0.0F, (float) (-Math.PI / 8), -0.58119464F));
-      $$1.a("left_middle_front_leg", $$4, ghf.a(4.0F, 15.0F, 0.0F, 0.0F, (float) (Math.PI / 8), 0.58119464F));
-      $$1.a("right_front_leg", $$3, ghf.a(-4.0F, 15.0F, -1.0F, 0.0F, (float) (-Math.PI / 4), (float) (-Math.PI / 4)));
-      $$1.a("left_front_leg", $$4, ghf.a(4.0F, 15.0F, -1.0F, 0.0F, (float) (Math.PI / 4), (float) (Math.PI / 4)));
-      return ghj.a($$0, 64, 32);
+   public static gim a() {
+      gio $$0 = new gio();
+      giq $$1 = $$0.a();
+      $$1.a("body", gil.c().a(2, 8).a(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), gii.a(0.0F, 16.5F, -3.0F, 0.4937F, 0.0F, 0.0F));
+      $$1.a("tail", gil.c().a(22, 1).a(-1.5F, -1.0F, -1.0F, 3.0F, 4.0F, 1.0F), gii.a(0.0F, 21.07F, 1.16F, 1.015F, 0.0F, 0.0F));
+      $$1.a("left_wing", gil.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), gii.a(1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
+      $$1.a("right_wing", gil.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), gii.a(-1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
+      giq $$2 = $$1.a("head", gil.c().a(2, 2).a(-1.0F, -1.5F, -1.0F, 2.0F, 3.0F, 2.0F), gii.a(0.0F, 15.69F, -2.76F));
+      $$2.a("head2", gil.c().a(10, 0).a(-1.0F, -0.5F, -2.0F, 2.0F, 1.0F, 4.0F), gii.a(0.0F, -2.0F, -1.0F));
+      $$2.a("beak1", gil.c().a(11, 7).a(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F), gii.a(0.0F, -0.5F, -1.5F));
+      $$2.a("beak2", gil.c().a(16, 7).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F), gii.a(0.0F, -1.75F, -2.45F));
+      $$2.a("feather", gil.c().a(2, 18).a(0.0F, -4.0F, -2.0F, 0.0F, 5.0F, 4.0F), gii.a(0.0F, -2.15F, 0.15F, -0.2214F, 0.0F, 0.0F));
+      gil $$3 = gil.c().a(14, 18).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F);
+      $$1.a("left_leg", $$3, gii.a(1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
+      $$1.a("right_leg", $$3, gii.a(-1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
+      return gim.a($$0, 32, 32);
    }
 
-   public void a(hbk $$0) {
+   public void a(hcx $$0) {
       super.a($$0);
-      this.g.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.g.e = $$0.ab * (float) (Math.PI / 180.0);
-      float $$1 = $$0.ad * 0.6662F;
-      float $$2 = $$0.ae;
-      float $$3 = -(azk.b($$1 * 2.0F + 0.0F) * 0.4F) * $$2;
-      float $$4 = -(azk.b($$1 * 2.0F + (float) Math.PI) * 0.4F) * $$2;
-      float $$5 = -(azk.b($$1 * 2.0F + (float) (Math.PI / 2)) * 0.4F) * $$2;
-      float $$6 = -(azk.b($$1 * 2.0F + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
-      float $$7 = Math.abs(azk.a($$1 + 0.0F) * 0.4F) * $$2;
-      float $$8 = Math.abs(azk.a($$1 + (float) Math.PI) * 0.4F) * $$2;
-      float $$9 = Math.abs(azk.a($$1 + (float) (Math.PI / 2)) * 0.4F) * $$2;
-      float $$10 = Math.abs(azk.a($$1 + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
-      this.i.f += $$3;
-      this.j.f -= $$3;
-      this.k.f += $$4;
-      this.l.f -= $$4;
-      this.m.f += $$5;
-      this.n.f -= $$5;
-      this.o.f += $$6;
-      this.p.f -= $$6;
-      this.i.g += $$7;
-      this.j.g -= $$7;
-      this.k.g += $$8;
-      this.l.g -= $$8;
-      this.m.g += $$9;
-      this.n.g -= $$9;
-      this.o.g += $$10;
-      this.p.g -= $$10;
+      this.a($$0.c);
+      this.f.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.f.f = $$0.aa * (float) (Math.PI / 180.0);
+      switch ($$0.c) {
+         case b:
+            this.g.e = this.g.e + azk.b($$0.ad * 0.6662F) * 1.4F * $$0.ae;
+            this.i.e = this.i.e + azk.b($$0.ad * 0.6662F + (float) Math.PI) * 1.4F * $$0.ae;
+         case a:
+         case e:
+         default:
+            float $$3 = $$0.b * 0.3F;
+            this.f.c += $$3;
+            this.c.e = this.c.e + azk.b($$0.ad * 0.6662F) * 0.3F * $$0.ae;
+            this.c.c += $$3;
+            this.b.c += $$3;
+            this.d.g = -0.0873F - $$0.b;
+            this.d.c += $$3;
+            this.e.g = 0.0873F + $$0.b;
+            this.e.c += $$3;
+            this.g.c += $$3;
+            this.i.c += $$3;
+         case c:
+            break;
+         case d:
+            float $$1 = azk.b($$0.u);
+            float $$2 = azk.a($$0.u);
+            this.f.b += $$1;
+            this.f.c += $$2;
+            this.f.e = 0.0F;
+            this.f.f = 0.0F;
+            this.f.g = azk.a($$0.u) * 0.4F;
+            this.b.b += $$1;
+            this.b.c += $$2;
+            this.d.g = -0.0873F - $$0.b;
+            this.d.b += $$1;
+            this.d.c += $$2;
+            this.e.g = 0.0873F + $$0.b;
+            this.e.b += $$1;
+            this.e.c += $$2;
+            this.c.b += $$1;
+            this.c.c += $$2;
+      }
+   }
+
+   private void a(ggc.a $$0) {
+      switch ($$0) {
+         case a:
+            this.g.e += (float) (Math.PI * 2.0 / 9.0);
+            this.i.e += (float) (Math.PI * 2.0 / 9.0);
+         case b:
+         case e:
+         default:
+            break;
+         case c:
+            float $$1 = 1.9F;
+            this.f.c++;
+            this.c.e += (float) (Math.PI / 6);
+            this.c.c++;
+            this.b.c++;
+            this.d.g = -0.0873F;
+            this.d.c++;
+            this.e.g = 0.0873F;
+            this.e.c++;
+            this.g.c++;
+            this.i.c++;
+            this.g.e++;
+            this.i.e++;
+            break;
+         case d:
+            this.g.g = (float) (-Math.PI / 9);
+            this.i.g = (float) (Math.PI / 9);
+      }
+   }
+
+   public static ggc.a a(cje $$0) {
+      if ($$0.gD()) {
+         return ggc.a.d;
+      } else if ($$0.x()) {
+         return ggc.a.c;
+      } else {
+         return $$0.gF() ? ggc.a.a : ggc.a.b;
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

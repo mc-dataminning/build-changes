@@ -1,192 +1,116 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
 
-public class cpk {
-   @VisibleForTesting
-   protected static final int a = 2;
-   @VisibleForTesting
-   protected static final int b = 150;
-   private static final int f = 1;
-   private int g = azk.b(azs.a(), 0, 2);
-   int h;
-   private static final Codec<Pair<UUID, Integer>> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(km.a.fieldOf("uuid").forGetter(Pair::getFirst), ays.l.fieldOf("anger").forGetter(Pair::getSecond)).apply($$0, Pair::of)
+public class cpk extends cpg {
+   private static final int bG = 50;
+   private static final float bH = 0.35F;
+   private static final int bI = 7;
+   private static final double bJ = 12.0;
+   protected static final ImmutableList<chi<? extends chh<? super cpk>>> d = ImmutableList.of(chi.c, chi.d, chi.b, chi.f, chi.m);
+   protected static final ImmutableList<cgb<?>> bF = ImmutableList.of(
+      cgb.o, cgb.w, cgb.g, cgb.h, cgb.k, cgb.l, cgb.ap, cgb.ao, cgb.y, cgb.z, cgb.n, cgb.F, new cgb[]{cgb.p, cgb.q, cgb.r, cgb.u, cgb.ac, cgb.N, cgb.b}
    );
-   private final Predicate<bvs> j;
-   @VisibleForTesting
-   protected final ArrayList<bvs> c;
-   private final cpk.a k;
-   @VisibleForTesting
-   protected final Object2IntMap<bvs> d;
-   @VisibleForTesting
-   protected final Object2IntMap<UUID> e;
 
-   public static Codec<cpk> a(Predicate<bvs> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(i.listOf().fieldOf("suspects").orElse(Collections.emptyList()).forGetter(cpk::b)).apply($$1, $$1x -> new cpk($$0, $$1x))
-      );
+   public cpk(bwj<? extends cpk> $$0, dip $$1) {
+      super($$0, $$1);
+      this.bx = 20;
    }
 
-   public cpk(Predicate<bvs> $$0, List<Pair<UUID, Integer>> $$1) {
-      this.j = $$0;
-      this.c = new ArrayList<>();
-      this.k = new cpk.a(this);
-      this.d = new Object2IntOpenHashMap();
-      this.e = new Object2IntOpenHashMap($$1.size());
-      $$1.forEach($$0x -> this.e.put((UUID)$$0x.getFirst(), (Integer)$$0x.getSecond()));
-   }
-
-   private List<Pair<UUID, Integer>> b() {
-      return Streams.concat(
-            new Stream[]{
-               this.c.stream().map($$0 -> Pair.of($$0.cG(), this.d.getInt($$0))),
-               this.e.object2IntEntrySet().stream().map($$0 -> Pair.of((UUID)$$0.getKey(), $$0.getIntValue()))
-            }
-         )
-         .collect(Collectors.toList());
-   }
-
-   public void a(arn $$0, Predicate<bvs> $$1) {
-      this.g--;
-      if (this.g <= 0) {
-         this.a($$0);
-         this.g = 2;
-      }
-
-      ObjectIterator<Entry<UUID>> $$2 = this.e.object2IntEntrySet().iterator();
-
-      while ($$2.hasNext()) {
-         Entry<UUID> $$3 = (Entry<UUID>)$$2.next();
-         int $$4 = $$3.getIntValue();
-         if ($$4 <= 1) {
-            $$2.remove();
-         } else {
-            $$3.setValue($$4 - 1);
-         }
-      }
-
-      ObjectIterator<Entry<bvs>> $$5 = this.d.object2IntEntrySet().iterator();
-
-      while ($$5.hasNext()) {
-         Entry<bvs> $$6 = (Entry<bvs>)$$5.next();
-         int $$7 = $$6.getIntValue();
-         bvs $$8 = (bvs)$$6.getKey();
-         bvs.e $$9 = $$8.dR();
-         if ($$7 > 1 && $$1.test($$8) && $$9 == null) {
-            $$6.setValue($$7 - 1);
-         } else {
-            this.c.remove($$8);
-            $$5.remove();
-            if ($$7 > 1 && $$9 != null) {
-               switch ($$9) {
-                  case e:
-                  case c:
-                  case d:
-                     this.e.put($$8.cG(), $$7 - 1);
-               }
-            }
-         }
-      }
-
-      this.c();
-   }
-
-   private void c() {
-      this.h = 0;
-      this.c.sort(this.k);
-      if (this.c.size() == 1) {
-         this.h = this.d.getInt(this.c.get(0));
-      }
-   }
-
-   private void a(arn $$0) {
-      ObjectIterator<Entry<UUID>> $$1 = this.e.object2IntEntrySet().iterator();
-
-      while ($$1.hasNext()) {
-         Entry<UUID> $$2 = (Entry<UUID>)$$1.next();
-         int $$3 = $$2.getIntValue();
-         bvs $$4 = $$0.b((UUID)$$2.getKey());
-         if ($$4 != null) {
-            this.d.put($$4, $$3);
-            this.c.add($$4);
-            $$1.remove();
-         }
-      }
-   }
-
-   public int a(bvs $$0, int $$1) {
-      boolean $$2 = !this.d.containsKey($$0);
-      int $$3 = this.d.computeInt($$0, ($$1x, $$2x) -> Math.min(150, ($$2x == null ? 0 : $$2x) + $$1));
-      if ($$2) {
-         int $$4 = this.e.removeInt($$0.cG());
-         $$3 += $$4;
-         this.d.put($$0, $$3);
-         this.c.add($$0);
-      }
-
-      this.c();
-      return $$3;
-   }
-
-   public void a(bvs $$0) {
-      this.d.removeInt($$0);
-      this.c.remove($$0);
-      this.c();
+   public static bye.a n() {
+      return cnt.gt().a(byf.s, 50.0).a(byf.v, 0.35F).a(byf.c, 7.0).a(byf.m, 12.0);
    }
 
    @Nullable
-   private bvs d() {
-      return this.c.stream().filter(this.j).findFirst().orElse(null);
+   @Override
+   public bxr a(djg $$0, btw $$1, bwi $$2, @Nullable bxr $$3) {
+      cpl.a(this);
+      this.a($$0.C_(), $$1);
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   public int b(@Nullable bvs $$0) {
-      return $$0 == null ? this.h : this.d.getInt($$0);
+   @Override
+   protected void a(azt $$0, btw $$1) {
+      this.a(bwk.a, new cys(cyw.pI));
    }
 
-   public Optional<bwr> a() {
-      return Optional.ofNullable(this.d()).filter($$0 -> $$0 instanceof bwr).map($$0 -> (bwr)$$0);
+   @Override
+   protected bxz.b<cpk> ec() {
+      return bxz.a(bF, d);
    }
 
-   @VisibleForTesting
-   protected static record a(cpk a) implements Comparator<bvs> {
-      public int a(bvs $$0, bvs $$1) {
-         if ($$0.equals($$1)) {
-            return 0;
-         } else {
-            int $$2 = this.a.d.getOrDefault($$0, 0);
-            int $$3 = this.a.d.getOrDefault($$1, 0);
-            this.a.h = Math.max(this.a.h, Math.max($$2, $$3));
-            boolean $$4 = cpj.a($$2).d();
-            boolean $$5 = cpj.a($$3).d();
-            if ($$4 != $$5) {
-               return $$4 ? -1 : 1;
-            } else {
-               boolean $$6 = $$0 instanceof cqi;
-               boolean $$7 = $$1 instanceof cqi;
-               if ($$6 != $$7) {
-                  return $$6 ? -1 : 1;
-               } else {
-                  return Integer.compare($$3, $$2);
-               }
-            }
-         }
+   @Override
+   protected bxz<?> a(Dynamic<?> $$0) {
+      return cpl.a(this, this.ec().a($$0));
+   }
+
+   @Override
+   public bxz<cpk> eb() {
+      return (bxz<cpk>)super.eb();
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   @Override
+   public boolean c(aro $$0, cys $$1) {
+      return $$1.a(cyw.pI) ? super.c($$0, $$1) : false;
+   }
+
+   @Override
+   protected void a(aro $$0) {
+      bqj $$1 = bqi.a();
+      $$1.a("piglinBruteBrain");
+      this.eb().a($$0, this);
+      $$1.c();
+      cpl.b(this);
+      cpl.c(this);
+      super.a($$0);
+   }
+
+   @Override
+   public cpj x() {
+      return this.gh() && this.gq() ? cpj.a : cpj.f;
+   }
+
+   @Override
+   public boolean a(aro $$0, bup $$1, float $$2) {
+      boolean $$3 = super.a($$0, $$1, $$2);
+      if ($$3 && $$1.d() instanceof bwz $$4) {
+         cpl.a($$0, this, $$4);
       }
+
+      return $$3;
+   }
+
+   @Override
+   protected awk u() {
+      return awl.uz;
+   }
+
+   @Override
+   protected awk e(bup $$0) {
+      return awl.uC;
+   }
+
+   @Override
+   protected awk l_() {
+      return awl.uB;
+   }
+
+   @Override
+   protected void b(iu $$0, dzo $$1) {
+      this.a(awl.uD, 0.15F, 1.0F);
+   }
+
+   protected void gu() {
+      this.b(awl.uA);
+   }
+
+   @Override
+   protected void gr() {
+      this.b(awl.uE);
    }
 }

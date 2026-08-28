@@ -1,9 +1,15 @@
+import java.util.function.Consumer;
+
 public interface sr {
-   void a(so var1);
+   ald<sq> a = a("always_pass");
 
-   void a(so var1, st var2);
+   static void a(qh<sq> $$0) {
+      jf<Consumer<so>> $$1 = $$0.a(mg.ay);
+      jf<tk> $$2 = $$0.a(mg.be);
+      $$0.a(a, new sg($$1.b(sd.a), new tj<>($$2.b(sm.b), ale.b("empty"), 1, 1, false)));
+   }
 
-   void b(so var1, st var2);
-
-   void a(so var1, so var2, st var3);
+   private static ald<sq> a(String $$0) {
+      return ald.a(mg.bf, ale.b($$0));
+   }
 }

@@ -1,34 +1,18 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class ehg extends ehf {
-   public ehg(Codec<ekc> $$0) {
-      super($$0);
+class ehg implements egu {
+   public static ehg a = new ehg();
+   public static final MapCodec<ehg> e = MapCodec.unit(() -> a);
+
+   private ehg() {
+   }
+
+   public boolean a(djo $$0, iu $$1) {
+      return true;
    }
 
    @Override
-   protected boolean a(dhq $$0, azs $$1, jj $$2, dym $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      jj.a $$8 = $$2.k();
-
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(jo.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
-               }
-            }
-         }
-      }
-
-      return true;
+   public egv<?> a() {
+      return egv.l;
    }
 }

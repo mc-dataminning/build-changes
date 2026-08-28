@@ -1,5 +1,5 @@
-public class haw extends hbk {
-   public boolean a = true;
-   public boolean b = true;
+public class haw extends hbp {
+   public float a;
+   public float b;
    public float c;
 }

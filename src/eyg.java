@@ -1,61 +1,69 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class eyg extends eyd {
-   public static final MapCodec<eyg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(axp.a(me.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, eyg::new)
-   );
-   private final axp<cxu> j;
-   private final boolean k;
+public interface eyg extends eyi {
+   @Override
+   String e();
 
-   private eyg(axp<cxu> $$0, boolean $$1, int $$2, int $$3, List<fau> $$4, List<eyz> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
-   }
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
 
    @Override
-   public eyc a() {
-      return exz.f;
+   default void a(p $$0, dir $$1) {
+      eyi.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
 
-   @Override
-   public void a(Consumer<cxy> $$0, exl $$1) {
-      md.g.c(this.j).forEach($$1x -> $$0.accept(new cxy($$1x)));
-   }
+   int f();
 
-   private boolean a(exl $$0, Consumer<eya> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final js<cxu> $$2 : md.g.c(this.j)) {
-            $$1.accept(new eyd.c() {
-               @Override
-               public void a(Consumer<cxy> $$0, exl $$1) {
-                  $$0.accept(new cxy($$2));
-               }
-            });
-         }
+   void a(int var1);
 
-         return true;
-      }
-   }
+   int t();
 
-   @Override
-   public boolean expand(exl $$0, Consumer<eya> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
-   }
+   void d(int var1);
 
-   public static eyd.a<?> a(axp<cxu> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eyg($$0, false, $$1, $$2, $$3, $$4));
-   }
+   int u();
 
-   public static eyd.a<?> b(axp<cxu> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eyg($$0, true, $$1, $$2, $$3, $$4));
-   }
+   void e(int var1);
+
+   @Nullable
+   UUID v();
+
+   void a(UUID var1);
+
+   dim k();
+
+   void a(ebg.c var1);
+
+   ebg.c p();
+
+   boolean n();
+
+   void c(boolean var1);
+
+   boolean m();
+
+   void a(dim var1);
+
+   fdj<MinecraftServer> s();
+
+   void a(long var1);
+
+   void b(long var1);
+
+   dil o();
 }

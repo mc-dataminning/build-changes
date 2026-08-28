@@ -1,15 +1,19 @@
-public class but extends buu {
-   public but(buv $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum but implements bai {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<but> d = bai.a(but::values);
+   private final String e;
+
+   private but(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a() {
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 1;
+   public String c() {
+      return this.e;
    }
 }

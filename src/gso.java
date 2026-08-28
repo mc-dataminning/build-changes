@@ -1,62 +1,71 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.DoubleSupplier;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class gso implements gsa.a {
-   private final fnd a;
-   private double b = Double.MIN_VALUE;
-   private List<bvs> c = Collections.emptyList();
+class gso {
+   private final Map<iu, dwn> a;
+   @Nullable
+   private final List<ecd<dzo>> b;
+   private final boolean c;
+   private final ebv d;
 
-   public gso(fnd $$0) {
-      this.a = $$0;
-   }
+   gso(ebv $$0) {
+      this.d = $$0;
+      this.c = $$0.H().ak();
+      this.a = ImmutableMap.copyOf($$0.I());
+      if ($$0 instanceof ebr) {
+         this.b = null;
+      } else {
+         ebw[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
 
-   @Override
-   public void a(fho $$0, gny $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)af.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bvs $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dV().a_($$6, $$6.cR().g(16.0)));
-      }
-
-      cqi $$7 = this.a.t;
-      if ($$7 != null && $$7.ax.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
-
-      for (bvs $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+         for (ebw $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
          }
       }
    }
 
-   private void a(fho $$0, gny $$1, double $$2, double $$3, double $$4, bvs $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.ax.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         jj $$12 = $$5.aR();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         jj $$13 = $$5.aP();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
+   @Nullable
+   public dwn a(iu $$0) {
+      return this.a.get($$0);
+   }
+
+   public dzo b(iu $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         dzo $$4 = null;
+         if ($$2 == 60) {
+            $$4 = dlw.iu.m();
          }
-      });
-   }
 
-   private double a(bvs $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.ar() + 0.132453657).hashCode() % 1000) / 1000.0;
-   }
+         if ($$2 == 70) {
+            $$4 = efe.a($$1, $$3);
+         }
 
-   private void a(jj $$0, fho $$1, double $$2, double $$3, double $$4, gny $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      gos.a($$1, $$5.getBuffer(goi.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      gsa.a($$1, $$5.getBuffer(goi.y()), this.a.s.a_($$0).b(this.a.s, $$0, fcz.a()).a($$0), -$$2, -$$3, -$$4, $$7, $$8, $$9, 1.0F, false);
+         return $$4 == null ? dlw.a.m() : $$4;
+      } else if (this.b == null) {
+         return dlw.a.m();
+      } else {
+         try {
+            int $$5 = this.d.f($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               ecd<dzo> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               }
+            }
+
+            return dlw.a.m();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
+            throw new z($$8);
+         }
+      }
    }
 }

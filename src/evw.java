@@ -1,35 +1,24 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.google.common.collect.UnmodifiableIterator;
 
-public class evw extends ewd {
-   public evw(drb $$0) {
-      super($$0);
+public class evw {
+   public static final evu a = a("empty", new evs());
+   public static final evt b = a("flowing_water", new ewb.a());
+   public static final evt c = a("water", new ewb.b());
+   public static final evt d = a("flowing_lava", new evy.a());
+   public static final evt e = a("lava", new evy.b());
+
+   private static <T extends evu> T a(String $$0, T $$1) {
+      return jr.a(mf.c, $$0, $$1);
    }
 
-   @Override
-   public void a(dhp $$0, jj $$1, dym $$2, @Nullable ewb $$3, boolean $$4) {
-      int $$5 = this.c($$0, $$1);
-      if ($$2.c(drb.f) != $$5) {
-         if ($$0.a_($$1) == $$2) {
-            $$0.a($$1, $$2.b(drb.f, Integer.valueOf($$5)), 2);
-         }
+   static {
+      for (evu $$0 : mf.c) {
+         UnmodifiableIterator var2 = $$0.f().a().iterator();
 
-         Set<jj> $$6 = Sets.newHashSet();
-         $$6.add($$1);
-
-         for (jo $$7 : jo.values()) {
-            $$6.add($$1.a($$7));
-         }
-
-         for (jj $$8 : $$6) {
-            $$0.a($$8, this.a);
+         while (var2.hasNext()) {
+            evv $$1 = (evv)var2.next();
+            evu.c.b($$1);
          }
       }
-   }
-
-   private int c(dhp $$0, jj $$1) {
-      int $$2 = this.a($$0, $$1);
-      return $$2 == 15 ? $$2 : Math.max($$2, this.b($$0, $$1));
    }
 }

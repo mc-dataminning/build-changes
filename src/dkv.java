@@ -1,256 +1,77 @@
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
 
-public class dkv {
-   public static final MapCodec<dku> a = md.ae.q().dispatchMap(dku::a, Function.identity());
+public class dkv extends dme {
+   public static final MapCodec<dkv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ald.a(mg.i).fieldOf("fruit").forGetter($$0x -> $$0x.d),
+               ald.a(mg.i).fieldOf("stem").forGetter($$0x -> $$0x.e),
+               ald.a(mg.K).fieldOf("seed").forGetter($$0x -> $$0x.f),
+               t()
+            )
+            .apply($$0, dkv::new)
+   );
+   public static final eam<ja> b = dpt.e;
+   private static final Map<ja, feq> c = fen.c(dlu.a(4.0, 0.0, 10.0, 0.0, 10.0));
+   private final ald<dlu> d;
+   private final ald<dlu> e;
+   private final ald<cyo> f;
 
-   public static MapCodec<? extends dku> a(kf<MapCodec<? extends dku>> $$0) {
-      kf.a($$0, "block", dku.j);
-      kf.a($$0, "air", djr.a);
-      kf.a($$0, "amethyst", djs.a);
-      kf.a($$0, "amethyst_cluster", djt.b);
-      kf.a($$0, "anvil", dju.a);
-      kf.a($$0, "attached_stem", djv.a);
-      kf.a($$0, "azalea", djw.a);
-      kf.a($$0, "bamboo_sapling", djx.a);
-      kf.a($$0, "bamboo_stalk", djy.a);
-      kf.a($$0, "banner", djz.a);
-      kf.a($$0, "barrel", dka.a);
-      kf.a($$0, "barrier", dkb.a);
-      kf.a($$0, "base_coral_fan", dkc.a);
-      kf.a($$0, "base_coral_plant", dkd.a);
-      kf.a($$0, "base_coral_wall_fan", dkf.c);
-      kf.a($$0, "beacon", dkm.a);
-      kf.a($$0, "bed", dkn.a);
-      kf.a($$0, "beehive", dko.a);
-      kf.a($$0, "beetroot", dkp.a);
-      kf.a($$0, "bell", dkq.a);
-      kf.a($$0, "big_dripleaf", dkr.a);
-      kf.a($$0, "big_dripleaf_stem", dks.a);
-      kf.a($$0, "blast_furnace", dkt.c);
-      kf.a($$0, "brewing_stand", dkz.a);
-      kf.a($$0, "brushable", dla.a);
-      kf.a($$0, "bubble_column", dlb.a);
-      kf.a($$0, "budding_amethyst", dld.b);
-      kf.a($$0, "button", dlf.a);
-      kf.a($$0, "cactus", dlg.a);
-      kf.a($$0, "cake", dlh.a);
-      kf.a($$0, "calibrated_sculk_sensor", dli.a);
-      kf.a($$0, "campfire", dlj.a);
-      kf.a($$0, "candle_cake", dll.c);
-      kf.a($$0, "candle", dlk.c);
-      kf.a($$0, "carpet", dlm.a);
-      kf.a($$0, "carrot", dln.a);
-      kf.a($$0, "cartography_table", dlo.a);
-      kf.a($$0, "cauldron", dlq.c);
-      kf.a($$0, "cave_vines", dls.c);
-      kf.a($$0, "cave_vines_plant", dlt.c);
-      kf.a($$0, "ceiling_hanging_sign", dlu.a);
-      kf.a($$0, "chain", dlv.a);
-      kf.a($$0, "chest", dlx.b);
-      kf.a($$0, "chiseled_book_shelf", dly.a);
-      kf.a($$0, "chorus_flower", dlz.a);
-      kf.a($$0, "chorus_plant", dma.a);
-      kf.a($$0, "cocoa", dmb.a);
-      kf.a($$0, "colored_falling", dmc.a);
-      kf.a($$0, "command", dmd.a);
-      kf.a($$0, "comparator", dme.a);
-      kf.a($$0, "composter", dmf.a);
-      kf.a($$0, "concrete_powder", dmg.a);
-      kf.a($$0, "conduit", dmh.a);
-      kf.a($$0, "copper_bulb_block", dmi.a);
-      kf.a($$0, "coral", dmj.b);
-      kf.a($$0, "coral_fan", dmk.c);
-      kf.a($$0, "coral_plant", dml.a);
-      kf.a($$0, "coral_wall_fan", dmm.e);
-      kf.a($$0, "crafter", dmn.a);
-      kf.a($$0, "crafting_table", dmo.a);
-      kf.a($$0, "crop", dmq.d);
-      kf.a($$0, "crying_obsidian", dms.a);
-      kf.a($$0, "daylight_detector", dmt.a);
-      kf.a($$0, "dead_bush", dmu.a);
-      kf.a($$0, "decorated_pot", dmv.a);
-      kf.a($$0, "detector_rail", dmw.b);
-      kf.a($$0, "dirt_path", dmz.a);
-      kf.a($$0, "dispenser", dna.a);
-      kf.a($$0, "door", dnb.a);
-      kf.a($$0, "double_plant", dnd.a);
-      kf.a($$0, "dragon_egg", dne.a);
-      kf.a($$0, "drop_experience", dnf.a);
-      kf.a($$0, "dropper", dng.e);
-      kf.a($$0, "enchantment_table", dnh.a);
-      kf.a($$0, "ender_chest", dnm.b);
-      kf.a($$0, "end_gateway", dni.a);
-      kf.a($$0, "end_portal", dnj.a);
-      kf.a($$0, "end_portal_frame", dnk.a);
-      kf.a($$0, "end_rod", dnl.b);
-      kf.a($$0, "eyeblossom", dno.a);
-      kf.a($$0, "farm", dns.a);
-      kf.a($$0, "bonemealable_feature_placer", dky.a);
-      kf.a($$0, "fence", dnt.g);
-      kf.a($$0, "fence_gate", dnu.a);
-      kf.a($$0, "fire", dnv.b);
-      kf.a($$0, "fletching_table", dnw.b);
-      kf.a($$0, "flower", dny.c);
-      kf.a($$0, "flower_pot", dnz.a);
-      kf.a($$0, "frogspawn", doa.a);
-      kf.a($$0, "frosted_ice", dob.a);
-      kf.a($$0, "fungus", doc.a);
-      kf.a($$0, "furnace", dod.c);
-      kf.a($$0, "glazed_terracotta", dof.a);
-      kf.a($$0, "glow_lichen", dog.a);
-      kf.a($$0, "grass", doh.a);
-      kf.a($$0, "grindstone", doi.a);
-      kf.a($$0, "half_transparent", dom.d);
-      kf.a($$0, "hanging_moss", don.a);
-      kf.a($$0, "hanging_roots", doo.a);
-      kf.a($$0, "hay", dop.a);
-      kf.a($$0, "heavy_core", doq.a);
-      kf.a($$0, "honey", dor.a);
-      kf.a($$0, "hopper", dos.a);
-      kf.a($$0, "huge_mushroom", dou.a);
-      kf.a($$0, "ice", dov.e);
-      kf.a($$0, "infested", dow.a);
-      kf.a($$0, "infested_rotated_pillar", dox.b);
-      kf.a($$0, "iron_bars", doy.g);
-      kf.a($$0, "jack_o_lantern", dlp.a);
-      kf.a($$0, "jigsaw", doz.a);
-      kf.a($$0, "jukebox", dpa.a);
-      kf.a($$0, "kelp", dpb.c);
-      kf.a($$0, "kelp_plant", dpc.c);
-      kf.a($$0, "ladder", dpd.a);
-      kf.a($$0, "lantern", dpe.a);
-      kf.a($$0, "lava_cauldron", dpf.c);
-      kf.a($$0, "layered_cauldron", dpg.c);
-      kf.a($$0, "leaf_litter", dph.a);
-      kf.a($$0, "leaves", dpi.a);
-      kf.a($$0, "lectern", dpj.a);
-      kf.a($$0, "lever", dpl.a);
-      kf.a($$0, "light", dpm.a);
-      kf.a($$0, "lightning_rod", dpn.b);
-      kf.a($$0, "liquid", dpo.a);
-      kf.a($$0, "loom", dpq.a);
-      kf.a($$0, "magma", dpr.a);
-      kf.a($$0, "mangrove_leaves", dps.h);
-      kf.a($$0, "mangrove_propagule", dpt.a);
-      kf.a($$0, "mangrove_roots", dpu.a);
-      kf.a($$0, "mossy_carpet", dpw.a);
-      kf.a($$0, "moving_piston", dye.a);
-      kf.a($$0, "mud", dpx.a);
-      kf.a($$0, "multiface", dpy.b);
-      kf.a($$0, "mushroom", dqb.a);
-      kf.a($$0, "mycelium", dqc.a);
-      kf.a($$0, "nether_portal", dqd.a);
-      kf.a($$0, "netherrack", dqh.a);
-      kf.a($$0, "nether_sprouts", dqe.a);
-      kf.a($$0, "nether_wart", dqg.a);
-      kf.a($$0, "note", dqi.a);
-      kf.a($$0, "nylium", dqj.a);
-      kf.a($$0, "observer", dqk.b);
-      kf.a($$0, "piglinwallskull", dql.b);
-      kf.a($$0, "flower_bed", dnx.a);
-      kf.a($$0, "piston_base", dyf.b);
-      kf.a($$0, "piston_head", dyg.b);
-      kf.a($$0, "pitcher_crop", dqn.c);
-      kf.a($$0, "player_head", dqo.b);
-      kf.a($$0, "player_wall_head", dqp.b);
-      kf.a($$0, "pointed_dripstone", dqq.a);
-      kf.a($$0, "potato", dqs.a);
-      kf.a($$0, "powder_snow", dqt.a);
-      kf.a($$0, "powered", dqu.a);
-      kf.a($$0, "powered_rail", dqv.b);
-      kf.a($$0, "pressure_plate", dqw.c);
-      kf.a($$0, "pumpkin", dqx.a);
-      kf.a($$0, "rail", dqy.b);
-      kf.a($$0, "redstone_lamp", drc.a);
-      kf.a($$0, "redstone_ore", dra.a);
-      kf.a($$0, "redstone_torch", drd.a);
-      kf.a($$0, "redstone_wall_torch", dre.f);
-      kf.a($$0, "redstone_wire", drb.a);
-      kf.a($$0, "repeater", drg.a);
-      kf.a($$0, "respawn_anchor", drh.a);
-      kf.a($$0, "rooted_dirt", drj.a);
-      kf.a($$0, "roots", drk.a);
-      kf.a($$0, "rotated_pillar", drl.c);
-      kf.a($$0, "sapling", drn.e);
-      kf.a($$0, "scaffolding", dro.a);
-      kf.a($$0, "sculk_catalyst", drr.a);
-      kf.a($$0, "sculk", drq.b);
-      kf.a($$0, "sculk_sensor", drs.c);
-      kf.a($$0, "sculk_shrieker", drt.a);
-      kf.a($$0, "sculk_vein", drv.e);
-      kf.a($$0, "seagrass", drx.a);
-      kf.a($$0, "sea_pickle", drw.a);
-      kf.a($$0, "shulker_box", drz.a);
-      kf.a($$0, "skull", dsc.c);
-      kf.a($$0, "slab", dsd.a);
-      kf.a($$0, "slime", dse.a);
-      kf.a($$0, "small_dripleaf", dsf.c);
-      kf.a($$0, "smithing_table", dsg.b);
-      kf.a($$0, "smoker", dsh.c);
-      kf.a($$0, "sniffer_egg", dsi.a);
-      kf.a($$0, "snow_layer", dsj.a);
-      kf.a($$0, "snowy_dirt", dsk.b);
-      kf.a($$0, "soul_fire", dsl.b);
-      kf.a($$0, "soul_sand", dsm.a);
-      kf.a($$0, "spawner", dso.a);
-      kf.a($$0, "creaking_heart", dmp.a);
-      kf.a($$0, "sponge", dsp.a);
-      kf.a($$0, "spore_blossom", dsq.a);
-      kf.a($$0, "stained_glass_pane", dst.h);
-      kf.a($$0, "stained_glass", dss.a);
-      kf.a($$0, "stair", dsu.a);
-      kf.a($$0, "standing_sign", dsv.a);
-      kf.a($$0, "stem", dsw.a);
-      kf.a($$0, "stonecutter", dsx.a);
-      kf.a($$0, "structure", dsy.a);
-      kf.a($$0, "structure_void", dsz.a);
-      kf.a($$0, "sugar_cane", dta.a);
-      kf.a($$0, "sweet_berry_bush", dtd.a);
-      kf.a($$0, "tall_flower", dte.c);
-      kf.a($$0, "tall_grass", dtf.a);
-      kf.a($$0, "tall_seagrass", dtg.c);
-      kf.a($$0, "target", dth.a);
-      kf.a($$0, "test", dti.a);
-      kf.a($$0, "test_instance", dtj.a);
-      kf.a($$0, "tinted_glass", dtk.a);
-      kf.a($$0, "tnt", dtl.a);
-      kf.a($$0, "torchflower_crop", dtn.a);
-      kf.a($$0, "torch", dtm.b);
-      kf.a($$0, "transparent", dto.b);
-      kf.a($$0, "trapdoor", dtp.a);
-      kf.a($$0, "trapped_chest", dtq.g);
-      kf.a($$0, "trial_spawner", dtr.a);
-      kf.a($$0, "trip_wire_hook", dtt.a);
-      kf.a($$0, "tripwire", dts.a);
-      kf.a($$0, "turtle_egg", dtu.a);
-      kf.a($$0, "twisting_vines_plant", dtw.c);
-      kf.a($$0, "twisting_vines", dtv.c);
-      kf.a($$0, "vault", dtx.a);
-      kf.a($$0, "vine", dty.a);
-      kf.a($$0, "wall_banner", dtz.a);
-      kf.a($$0, "wall_hanging_sign", dub.a);
-      kf.a($$0, "wall_sign", duc.a);
-      kf.a($$0, "wall_skull", dud.c);
-      kf.a($$0, "wall_torch", due.d);
-      kf.a($$0, "wall", dua.a);
-      kf.a($$0, "waterlily", duf.a);
-      kf.a($$0, "waterlogged_transparent", dug.a);
-      kf.a($$0, "weathering_copper_bulb", dui.d);
-      kf.a($$0, "weathering_copper_door", duj.g);
-      kf.a($$0, "weathering_copper_full", duk.d);
-      kf.a($$0, "weathering_copper_grate", dul.e);
-      kf.a($$0, "weathering_copper_slab", dum.d);
-      kf.a($$0, "weathering_copper_stair", dun.g);
-      kf.a($$0, "weathering_copper_trap_door", duo.g);
-      kf.a($$0, "web", dup.a);
-      kf.a($$0, "weeping_vines_plant", dur.c);
-      kf.a($$0, "weeping_vines", duq.c);
-      kf.a($$0, "weighted_pressure_plate", dus.c);
-      kf.a($$0, "wet_sponge", dut.a);
-      kf.a($$0, "wither_rose", duu.a);
-      kf.a($$0, "wither_skull", duv.b);
-      kf.a($$0, "wither_wall_skull", duw.b);
-      return kf.a($$0, "wool_carpet", dux.b);
+   @Override
+   public MapCodec<dkv> a() {
+      return a;
+   }
+
+   protected dkv(ald<dlu> $$0, ald<dlu> $$1, ald<cyo> $$2, dzn.d $$3) {
+      super($$3);
+      this.l(this.B.b().b(b, ja.c));
+      this.e = $$0;
+      this.d = $$1;
+      this.f = $$2;
+   }
+
+   @Override
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return c.get($$0.c(b));
+   }
+
+   @Override
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      if (!$$6.a(this.d) && $$4 == $$0.c(b)) {
+         Optional<dlu> $$8 = $$1.F_().f(mg.i).f(this.e);
+         if ($$8.isPresent()) {
+            return $$8.get().m().c(dtw.c, Integer.valueOf(7));
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean b(dzo $$0, dhv $$1, iu $$2) {
+      return $$0.a(dlw.cK);
+   }
+
+   @Override
+   protected cys a(dis $$0, iu $$1, dzo $$2, boolean $$3) {
+      return new cys((dio)DataFixUtils.orElse($$0.F_().f(mg.K).f(this.f), this));
+   }
+
+   @Override
+   protected dzo a(dzo $$0, dsm $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dzo a(dzo $$0, dqv $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(b);
    }
 }

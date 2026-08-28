@@ -1,51 +1,12 @@
-import java.util.function.Supplier;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public class bqg implements AutoCloseable {
-   public static final bqg a = new bqg(null);
+public interface bqg extends bqj {
+   bqh d();
+
    @Nullable
-   private final bqb b;
+   bqb.a c(String var1);
 
-   bqg(@Nullable bqb $$0) {
-      this.b = $$0;
-   }
-
-   public bqg a(String $$0) {
-      if (this.b != null) {
-         this.b.e($$0);
-      }
-
-      return this;
-   }
-
-   public bqg a(Supplier<String> $$0) {
-      if (this.b != null) {
-         this.b.e($$0.get());
-      }
-
-      return this;
-   }
-
-   public bqg a(long $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
-   }
-
-   public bqg a(int $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
-   }
-
-   @Override
-   public void close() {
-      if (this.b != null) {
-         this.b.c();
-      }
-   }
+   Set<Pair<String, brs>> e();
 }

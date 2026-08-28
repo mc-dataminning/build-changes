@@ -1,47 +1,27 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class chb extends cgz<bwz> {
-   private static final chg a = chg.b().d();
-   private final Predicate<cxy> b;
+public abstract class chb extends chh<bwz> {
+   protected abstract boolean a(aro var1, bwz var2, bwz var3);
 
-   public chb(Predicate<cxy> $$0) {
-      this.b = $$0;
-   }
+   protected abstract cgb<bwz> b();
 
-   protected void a(arn $$0, bwz $$1) {
-      bxr<?> $$2 = $$1.eb();
-      chg $$3 = a.c().a((double)((float)$$1.h(bxx.E)));
-      List<cqi> $$4 = $$0.z()
-         .stream()
-         .filter(bvz.f)
-         .filter($$3x -> $$3.a($$0, $$1, $$3x))
-         .filter(this::a)
-         .filter($$1x -> !$$1.y($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      if (!$$4.isEmpty()) {
-         cqi $$5 = $$4.get(0);
-         $$2.a(cft.P, $$5);
-      } else {
-         $$2.b(cft.P);
-      }
-   }
-
-   private boolean a(cqi $$0) {
-      return this.a($$0.fa()) || this.a($$0.fb());
-   }
-
-   private boolean a(cxy $$0) {
-      return this.b.test($$0);
+   @Override
+   public Set<cgb<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
    @Override
-   public Set<cft<?>> a() {
-      return ImmutableSet.of(cft.P);
+   protected void a(aro $$0, bwz $$1) {
+      $$1.eb().a(this.b(), this.c($$0, $$1));
+   }
+
+   private Optional<bwz> c(aro $$0, bwz $$1) {
+      return this.a($$1).flatMap($$2 -> $$2.a($$2x -> this.a($$0, $$1, $$2x)));
+   }
+
+   protected Optional<cgd> a(bwz $$0) {
+      return $$0.eb().c(cgb.h);
    }
 }

@@ -1,40 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dpc extends dok implements dpp {
-   public static final MapCodec<dpc> c = b(dpc::new);
+public class dpc extends dme implements dlx {
+   public static final MapCodec<dpc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ald.a(mg.aK).fieldOf("feature").forGetter($$0x -> $$0x.e), mf.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
+            .apply($$0, dpc::new)
+   );
+   private static final double b = 0.4;
+   private static final feq c = dlu.b(8.0, 0.0, 9.0);
+   private final dlu d;
+   private final ald<eif<?, ?>> e;
 
    @Override
    public MapCodec<dpc> a() {
+      return a;
+   }
+
+   protected dpc(ald<eif<?, ?>> $$0, dlu $$1, dzn.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
+   }
+
+   @Override
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
       return c;
    }
 
-   protected dpc(dyl.d $$0) {
-      super($$0, jo.b, fdl.b(), true);
+   @Override
+   protected boolean b(dzo $$0, dhv $$1, iu $$2) {
+      return $$0.a(axa.aO) || $$0.a(dlw.fA) || $$0.a(dlw.ek) || super.b($$0, $$1, $$2);
+   }
+
+   private Optional<? extends je<eif<?, ?>>> a(dis $$0) {
+      return $$0.F_().f(mg.aK).a(this.e);
    }
 
    @Override
-   protected dol c() {
-      return (dol)dkw.mE;
+   public boolean a(dis $$0, iu $$1, dzo $$2) {
+      dzo $$3 = $$0.a_($$1.e());
+      return $$3.a(this.d);
    }
 
    @Override
-   protected eut b_(dym $$0) {
-      return euu.c.a(false);
+   public boolean a(dip $$0, azt $$1, iu $$2, dzo $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   protected boolean o(dym $$0) {
-      return this.c().o($$0);
-   }
-
-   @Override
-   public boolean a(@Nullable bwr $$0, dgv $$1, jj $$2, dym $$3, eus $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dhq $$0, jj $$1, dym $$2, eut $$3) {
-      return false;
+   public void a(aro $$0, azt $$1, iu $$2, dzo $$3) {
+      this.a($$0).ifPresent($$3x -> ((eif)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2));
    }
 }

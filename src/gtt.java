@@ -1,227 +1,62 @@
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
 import java.util.List;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
+import java.util.function.DoubleSupplier;
 
-public abstract class gtt<T extends bvp, S, ST extends hae> extends gue<T, ST> {
-   private final gud a;
+public class gtt implements gtf.a {
+   private final fof a;
+   private double b = Double.MIN_VALUE;
+   private List<bwa> c = Collections.emptyList();
 
-   protected gtt(guf.a $$0) {
-      super($$0);
-      this.a = $$0.a();
+   public gtt(fof $$0) {
+      this.a = $$0;
    }
 
-   protected fcp a(T $$0) {
-      return $$0.f();
-   }
-
-   protected boolean b(T $$0) {
-      return $$0.g();
-   }
-
-   private static int c(bvp $$0) {
-      bvp.j $$1 = $$0.j();
-      return $$1 != null ? $$1.c() : -1;
-   }
-
-   protected int a(T $$0, jj $$1) {
-      int $$2 = c($$0);
-      return $$2 != -1 ? gnw.b($$2) : super.b($$0, $$1);
-   }
-
-   protected int b(T $$0, jj $$1) {
-      int $$2 = c($$0);
-      return $$2 != -1 ? gnw.a($$2) : super.a($$0, $$1);
-   }
-
-   protected float a(ST $$0) {
-      bvp.j $$1 = $$0.b;
-      return $$1 == null ? 0.0F : $$1.d().get($$0.c);
-   }
-
-   protected float b(ST $$0) {
-      bvp.j $$1 = $$0.b;
-      return $$1 == null ? 0.0F : $$1.e().get($$0.c);
-   }
-
-   public void a(ST $$0, fho $$1, gny $$2, int $$3) {
-      bvp.j $$4 = $$0.b;
-      if ($$4 != null && $$0.a()) {
-         float $$5 = $$0.c;
-         super.a($$0, $$1, $$2, $$3);
-         $$1.a();
-         $$1.a(this.a($$4, $$0, new Quaternionf()));
-         j $$6 = $$4.a().get($$5);
-         $$1.a($$6.c());
-         this.a($$0, $$1, $$2, $$3, $$5);
-         $$1.b();
-      }
-   }
-
-   private Quaternionf a(bvp.j $$0, ST $$1, Quaternionf $$2) {
-      fml $$3 = this.a.b;
-
-      return switch ($$0.b()) {
-         case a -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * $$1.d, (float) (Math.PI / 180.0) * $$1.e, 0.0F);
-         case c -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * $$1.d, (float) (Math.PI / 180.0) * b($$3), 0.0F);
-         case b -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * a($$3), (float) (Math.PI / 180.0) * $$1.e, 0.0F);
-         case d -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * a($$3), (float) (Math.PI / 180.0) * b($$3), 0.0F);
-      };
-   }
-
-   private static float a(fml $$0) {
-      return $$0.e() - 180.0F;
-   }
-
-   private static float b(fml $$0) {
-      return -$$0.d();
-   }
-
-   private static <T extends bvp> float a(T $$0, float $$1) {
-      return $$0.l($$1);
-   }
-
-   private static <T extends bvp> float b(T $$0, float $$1) {
-      return $$0.k($$1);
-   }
-
-   protected abstract void a(ST var1, fho var2, gny var3, int var4, float var5);
-
-   public void a(T $$0, ST $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.j();
-      $$1.c = $$0.a($$2);
-      $$1.d = a($$0, $$2);
-      $$1.e = b($$0, $$2);
-   }
-
-   public static class a extends gtt<bvp.b, bvp.b.a, gzv> {
-      private final gpc a;
-
-      protected a(guf.a $$0) {
-         super($$0);
-         this.a = $$0.d();
+   @Override
+   public void a(fiq $$0, gpd $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)af.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bwa $$6 = this.a.j.k().g();
+         this.c = ImmutableList.copyOf($$6.dV().a_($$6, $$6.cR().g(16.0)));
       }
 
-      public gzv a() {
-         return new gzv();
+      cqs $$7 = this.a.t;
+      if ($$7 != null && $$7.ax.isPresent()) {
+         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
       }
 
-      public void a(bvp.b $$0, gzv $$1, float $$2) {
-         super.a($$0, $$1, $$2);
-         $$1.a = $$0.m();
-      }
-
-      public void a(gzv $$0, fho $$1, gny $$2, int $$3, float $$4) {
-         this.a.a($$0.a.a(), $$1, $$2, $$3, hgi.d);
-      }
-   }
-
-   public static class b extends gtt<bvp.g, bvp.g.a, hbg> {
-      private final hdl a;
-
-      protected b(guf.a $$0) {
-         super($$0);
-         this.a = $$0.b();
-      }
-
-      public hbg a() {
-         return new hbg();
-      }
-
-      public void a(bvp.g $$0, hbg $$1, float $$2) {
-         super.a($$0, $$1, $$2);
-         bvp.g.a $$3 = $$0.m();
-         if ($$3 != null) {
-            this.a.a($$1.a, $$3.a(), $$3.b(), $$0);
-         } else {
-            $$1.a.b();
-         }
-      }
-
-      public void a(hbg $$0, fho $$1, gny $$2, int $$3, float $$4) {
-         if (!$$0.a.c()) {
-            $$1.a(a.d.rotation((float) Math.PI));
-            $$0.a.a($$1, $$2, $$3, hgi.d);
+      for (bwa $$8 : this.c) {
+         if ($$8 != $$7) {
+            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
          }
       }
    }
 
-   public static class c extends gtt<bvp.k, bvp.k.e, hcl> {
-      private final fpx a;
-
-      protected c(guf.a $$0) {
-         super($$0);
-         this.a = $$0.j();
-      }
-
-      public hcl a() {
-         return new hcl();
-      }
-
-      public void a(bvp.k $$0, hcl $$1, float $$2) {
-         super.a($$0, $$1, $$2);
-         $$1.a = $$0.m();
-         $$1.f = $$0.a(this::a);
-      }
-
-      private bvp.k.b a(wv $$0, int $$1) {
-         List<ayw> $$2 = this.a.c($$0, $$1);
-         List<bvp.k.c> $$3 = new ArrayList<>($$2.size());
-         int $$4 = 0;
-
-         for (ayw $$5 : $$2) {
-            int $$6 = this.a.a($$5);
-            $$4 = Math.max($$4, $$6);
-            $$3.add(new bvp.k.c($$5, $$6));
+   private void a(fiq $$0, gpd $$1, double $$2, double $$3, double $$4, bwa $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
+      $$5.ax.ifPresent($$10 -> {
+         double $$11 = $$6.getAsDouble();
+         iu $$12 = $$5.aR();
+         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
+         iu $$13 = $$5.aP();
+         if (!$$13.equals($$12)) {
+            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
          }
+      });
+   }
 
-         return new bvp.k.b($$3, $$4);
-      }
+   private double a(bwa $$0) {
+      return 0.02 * (double)(String.valueOf((double)$$0.ar() + 0.132453657).hashCode() % 1000) / 1000.0;
+   }
 
-      public void a(hcl $$0, fho $$1, gny $$2, int $$3, float $$4) {
-         bvp.k.e $$5 = $$0.a;
-         byte $$6 = $$5.e();
-         boolean $$7 = ($$6 & 2) != 0;
-         boolean $$8 = ($$6 & 4) != 0;
-         boolean $$9 = ($$6 & 1) != 0;
-         bvp.k.a $$10 = bvp.k.a($$6);
-         byte $$11 = (byte)$$5.c().get($$4);
-         int $$13;
-         if ($$8) {
-            float $$12 = fnd.Q().n.a(0.25F);
-            $$13 = (int)($$12 * 255.0F) << 24;
-         } else {
-            $$13 = $$5.d().get($$4);
-         }
-
-         float $$15 = 0.0F;
-         Matrix4f $$16 = $$1.c().a();
-         $$16.rotate((float) Math.PI, 0.0F, 1.0F, 0.0F);
-         $$16.scale(-0.025F, -0.025F, -0.025F);
-         bvp.k.b $$17 = $$0.f;
-         int $$18 = 1;
-         int $$19 = 9 + 1;
-         int $$20 = $$17.b();
-         int $$21 = $$17.a().size() * $$19 - 1;
-         $$16.translate(1.0F - (float)$$20 / 2.0F, (float)(-$$21), 0.0F);
-         if ($$13 != 0) {
-            fhs $$22 = $$2.getBuffer($$7 ? goi.o() : goi.n());
-            $$22.a($$16, -1.0F, -1.0F, 0.0F).a($$13).c($$3);
-            $$22.a($$16, -1.0F, (float)$$21, 0.0F).a($$13).c($$3);
-            $$22.a($$16, (float)$$20, (float)$$21, 0.0F).a($$13).c($$3);
-            $$22.a($$16, (float)$$20, -1.0F, 0.0F).a($$13).c($$3);
-         }
-
-         for (bvp.k.c $$23 : $$17.a()) {
-            float $$24 = switch ($$10) {
-               case b -> 0.0F;
-               case c -> (float)($$20 - $$23.b());
-               case a -> (float)$$20 / 2.0F - (float)$$23.b() / 2.0F;
-            };
-            this.a.a($$23.a(), $$24, $$15, $$11 << 24 | 16777215, $$9, $$16, $$2, $$7 ? fpx.a.b : fpx.a.c, 0, $$3);
-            $$15 += (float)$$19;
-         }
-      }
+   private void a(iu $$0, fiq $$1, double $$2, double $$3, double $$4, gpd $$5, double $$6, float $$7, float $$8, float $$9) {
+      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
+      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
+      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
+      double $$13 = $$10 + 1.0 + 4.0 * $$6;
+      double $$14 = $$11 + 1.0 + 4.0 * $$6;
+      double $$15 = $$12 + 1.0 + 4.0 * $$6;
+      gpx.a($$1, $$5.getBuffer(gpn.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
+      gtf.a($$1, $$5.getBuffer(gpn.y()), this.a.s.a_($$0).b(this.a.s, $$0, feb.a()).a($$0), -$$2, -$$3, -$$4, $$7, $$8, $$9, 1.0F, false);
    }
 }

@@ -1,51 +1,75 @@
-public interface cyg {
-   alc<cye> a = a("13");
-   alc<cye> b = a("cat");
-   alc<cye> c = a("blocks");
-   alc<cye> d = a("chirp");
-   alc<cye> e = a("far");
-   alc<cye> f = a("mall");
-   alc<cye> g = a("mellohi");
-   alc<cye> h = a("stal");
-   alc<cye> i = a("strad");
-   alc<cye> j = a("ward");
-   alc<cye> k = a("11");
-   alc<cye> l = a("wait");
-   alc<cye> m = a("pigstep");
-   alc<cye> n = a("otherside");
-   alc<cye> o = a("5");
-   alc<cye> p = a("relic");
-   alc<cye> q = a("precipice");
-   alc<cye> r = a("creator");
-   alc<cye> s = a("creator_music_box");
+import java.util.Optional;
+import java.util.function.Consumer;
 
-   private static alc<cye> a(String $$0) {
-      return alc.a(me.L, ald.b($$0));
+public class cyg extends cyo {
+   private static final ww a = ww.c("painting.random").a(n.h);
+   private final bwj<? extends cmp> b;
+
+   public cyg(bwj<? extends cmp> $$0, cyo.a $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
-   private static void a(qg<cye> $$0, alc<cye> $$1, js.c<awj> $$2, int $$3, int $$4) {
-      $$0.a($$1, new cye($$2, wv.c(af.a("jukebox_song", $$1.a())), (float)$$3, $$4));
+   @Override
+   public bty a(dcn $$0) {
+      iu $$1 = $$0.a();
+      ja $$2 = $$0.k();
+      iu $$3 = $$1.a($$2);
+      cqs $$4 = $$0.o();
+      cys $$5 = $$0.n();
+      if ($$4 != null && !this.a($$4, $$2, $$5, $$3)) {
+         return bty.d;
+      } else {
+         dip $$6 = $$0.q();
+         cmp $$8;
+         if (this.b == bwj.aK) {
+            Optional<cms> $$7 = cms.a($$6, $$3, $$2);
+            if ($$7.isEmpty()) {
+               return bty.c;
+            }
+
+            $$8 = $$7.get();
+         } else if (this.b == bwj.as) {
+            $$8 = new cmq($$6, $$3, $$2);
+         } else {
+            if (this.b != bwj.af) {
+               return bty.a;
+            }
+
+            $$8 = new cmo($$6, $$3, $$2);
+         }
+
+         bwj.<cmp>a($$6, $$5, $$4).accept($$8);
+         if ($$8.g()) {
+            if (!$$6.C) {
+               $$8.v();
+               $$6.a($$4, eeo.t, $$8.dt());
+               $$6.b($$8);
+            }
+
+            $$5.h(1);
+            return bty.a;
+         } else {
+            return bty.c;
+         }
+      }
    }
 
-   static void a(qg<cye> $$0) {
-      a($$0, a, awk.qq, 178, 1);
-      a($$0, b, awk.qs, 185, 2);
-      a($$0, c, awk.qr, 345, 3);
-      a($$0, d, awk.qt, 185, 4);
-      a($$0, e, awk.qu, 174, 5);
-      a($$0, f, awk.qv, 197, 6);
-      a($$0, g, awk.qw, 96, 7);
-      a($$0, h, awk.qy, 150, 8);
-      a($$0, i, awk.qz, 188, 9);
-      a($$0, j, awk.qB, 251, 10);
-      a($$0, k, awk.qp, 71, 11);
-      a($$0, l, awk.qA, 238, 12);
-      a($$0, m, awk.qx, 149, 13);
-      a($$0, n, awk.qC, 195, 14);
-      a($$0, o, awk.qo, 178, 15);
-      a($$0, p, awk.qD, 218, 14);
-      a($$0, q, awk.qG, 299, 13);
-      a($$0, r, awk.qE, 176, 12);
-      a($$0, s, awk.qF, 73, 11);
+   protected boolean a(cqs $$0, ja $$1, cys $$2, iu $$3) {
+      return !$$1.o().b() && $$0.a($$3, $$1, $$2);
+   }
+
+   @Override
+   public void a(cys $$0, cyo.b $$1, dbw $$2, Consumer<ww> $$3, dah $$4) {
+      if (this.b == bwj.aK && $$2.a(kj.aJ)) {
+         je<cmt> $$5 = $$0.a(kj.aJ);
+         if ($$5 != null) {
+            $$5.a().e().ifPresent($$3);
+            $$5.a().f().ifPresent($$3);
+            $$3.accept(ww.a("painting.dimensions", $$5.a().b(), $$5.a().c()));
+         } else if ($$4.b()) {
+            $$3.accept(a);
+         }
+      }
    }
 }

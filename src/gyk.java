@@ -1,24 +1,26 @@
-public class gyk extends gyt<hbe, geq> {
-   private final gpc a;
+public class gyk extends gvj<csd, hbp> {
+   private static final ale a = ale.b("textures/entity/projectiles/wind_charge.png");
+   private final ghs g;
 
-   public gyk(gwc<hbe, geq> $$0, gpc $$1) {
+   public gyk(gvk.a $$0) {
       super($$0);
-      this.a = $$1;
+      this.g = new ghs($$0.a(gif.dK));
    }
 
-   public void a(fho $$0, gny $$1, int $$2, hbe $$3, float $$4, float $$5) {
-      if ($$3.b != 0) {
-         $$0.a();
-         ghd $$6 = this.d().b();
-         $$6.a($$0);
-         $$0.a(-1.1875F, 1.0625F, -0.9375F);
-         $$0.a(0.5F, 0.5F, 0.5F);
-         float $$7 = 0.5F;
-         $$0.b(0.5F, 0.5F, 0.5F);
-         $$0.a(a.b.rotationDegrees(-90.0F));
-         $$0.a(-0.5F, -0.5F, -0.5F);
-         this.a.a(dkw.ca.m(), $$0, $$1, $$2, hgi.d);
-         $$0.b();
-      }
+   @Override
+   public void a(hbp $$0, fiq $$1, gpd $$2, int $$3) {
+      fiu $$4 = $$2.getBuffer(gpn.a(a, this.a($$0.u) % 1.0F, 0.0F));
+      this.g.a($$0);
+      this.g.a($$1, $$4, $$3, hhp.d);
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
+   }
+
+   @Override
+   public hbp d() {
+      return new hbp();
    }
 }

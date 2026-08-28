@@ -1,42 +1,51 @@
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record fbu(fbq b, fbq c) implements fbq {
+public record fbu(Optional<ct> b, iu c) implements fbw {
+   private static final MapCodec<iu> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(jz::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(jz::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(jz::w)
+            )
+            .apply($$0, iu::new)
+   );
    public static final MapCodec<fbu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fbr.a.fieldOf("min").forGetter(fbu::c), fbr.a.fieldOf("max").forGetter(fbu::d)).apply($$0, fbu::new)
+      $$0 -> $$0.group(ct.a.optionalFieldOf("predicate").forGetter(fbu::c), g.forGetter(fbu::d)).apply($$0, fbu::new)
    );
 
    @Override
-   public fbp b() {
-      return fbr.c;
+   public fbx b() {
+      return fby.n;
    }
 
-   public static fbu a(float $$0, float $$1) {
-      return new fbu(fbn.a($$0), fbn.a($$1));
-   }
-
-   @Override
-   public int a(exl $$0) {
-      return azk.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   public boolean a(eyn $$0) {
+      fdw $$1 = $$0.c(fbh.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
    @Override
-   public float b(exl $$0) {
-      return azk.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   public Set<bav<?>> a() {
+      return Set.of(fbh.f);
    }
 
-   @Override
-   public Set<bat<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public static fbw.a a(ct.a $$0) {
+      return () -> new fbu(Optional.of($$0.b()), iu.c);
    }
 
-   public fbq c() {
+   public static fbw.a a(ct.a $$0, iu $$1) {
+      return () -> new fbu(Optional.of($$0.b()), $$1);
+   }
+
+   public Optional<ct> c() {
       return this.b;
    }
 
-   public fbq d() {
+   public iu d() {
       return this.c;
    }
 }

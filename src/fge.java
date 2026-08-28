@@ -1,11 +1,32 @@
-import java.util.OptionalInt;
+import org.lwjgl.openal.AL10;
 
-public record fge(int a, int b, OptionalInt c, OptionalInt d, boolean e) {
-   public fge a(int $$0, int $$1) {
-      return new fge($$0, $$1, this.c, this.d, this.e);
+public class fge {
+   private float a = 1.0F;
+   private fgf b = fgf.a;
+
+   public void a(fgf $$0) {
+      this.b = $$0;
+      fdw $$1 = $$0.b();
+      fdw $$2 = $$0.c();
+      fdw $$3 = $$0.d();
+      AL10.alListener3f(4100, (float)$$1.d, (float)$$1.e, (float)$$1.f);
+      AL10.alListenerfv(4111, new float[]{(float)$$2.d, (float)$$2.e, (float)$$2.f, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
    }
 
-   public fge a(boolean $$0) {
-      return new fge(this.a, this.b, this.c, this.d, $$0);
+   public void a(float $$0) {
+      AL10.alListenerf(4106, $$0);
+      this.a = $$0;
+   }
+
+   public float a() {
+      return this.a;
+   }
+
+   public void b() {
+      this.a(fgf.a);
+   }
+
+   public fgf c() {
+      return this.b;
    }
 }

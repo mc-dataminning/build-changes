@@ -1,49 +1,75 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public record hif(Optional<List<hie>> c, Optional<Integer> d, Optional<Integer> e, int f, boolean g) {
-   public static final Codec<hif> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               hie.b.listOf().optionalFieldOf("frames").forGetter(hif::a),
-               ays.m.optionalFieldOf("width").forGetter(hif::b),
-               ays.m.optionalFieldOf("height").forGetter(hif::c),
-               ays.m.optionalFieldOf("frametime", 1).forGetter(hif::d),
-               Codec.BOOL.optionalFieldOf("interpolate", false).forGetter(hif::e)
-            )
-            .apply($$0, hif::new)
-   );
-   public static final atz<hif> b = new atz<>("animation", a);
+public class hif {
+   private static final Logger a = LogUtils.getLogger();
+   private static final akx b = new akx("atlases", ".json");
+   private final List<hie> c;
 
-   public hig a(int $$0, int $$1) {
-      if (this.d.isPresent()) {
-         return this.e.isPresent() ? new hig(this.d.get(), this.e.get()) : new hig(this.d.get(), $$1);
-      } else if (this.e.isPresent()) {
-         return new hig($$0, this.e.get());
-      } else {
-         int $$2 = Math.min($$0, $$1);
-         return new hig($$2, $$2);
+   private hif(List<hie> $$0) {
+      this.c = $$0;
+   }
+
+   public List<Function<hid, hht>> a(avb $$0) {
+      final Map<ale, hie.b> $$1 = new HashMap<>();
+      hie.a $$2 = new hie.a() {
+         @Override
+         public void a(ale $$0, hie.b $$1x) {
+            hie.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
+            }
+         }
+
+         @Override
+         public void a(Predicate<ale> $$0) {
+            Iterator<Entry<ale, hie.b>> $$1 = $$1.entrySet().iterator();
+
+            while ($$1.hasNext()) {
+               Entry<ale, hie.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
+            }
+         }
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<hid, hht>> $$3 = ImmutableList.builder();
+      $$3.add((Function<hid, hht>)$$0x -> hho.b());
+      $$3.addAll($$1.values());
+      return $$3.build();
+   }
+
+   public static hif a(avb $$0, ale $$1) {
+      ale $$2 = b.a($$1);
+      List<hie> $$3 = new ArrayList<>();
+
+      for (auz $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends hie>)hig.b.parse($$6).getOrThrow());
+         } catch (Exception var11) {
+            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+         }
       }
-   }
 
-   public Optional<List<hie>> a() {
-      return this.c;
-   }
-
-   public Optional<Integer> b() {
-      return this.d;
-   }
-
-   public Optional<Integer> c() {
-      return this.e;
-   }
-
-   public int d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
+      return new hif($$3);
    }
 }

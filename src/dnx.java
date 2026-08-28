@@ -1,84 +1,176 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dnx extends dle implements dkx, dry {
-   public static final MapCodec<dnx> a = b(dnx::new);
-   public static final dzk<jo> b = dzc.T;
-   public static final dzm c = dzc.U;
-   private final Function<dym, fdo> g;
+public abstract class dnx extends dpt {
+   public static final eaf c = eae.A;
+   private static final feq a = dlu.b(16.0, 0.0, 2.0);
+
+   protected dnx(dzn.d $$0) {
+      super($$0);
+   }
 
    @Override
-   public MapCodec<dnx> a() {
+   protected abstract MapCodec<? extends dnx> a();
+
+   @Override
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
       return a;
    }
 
-   protected dnx(dyl.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, jo.c).b(c, Integer.valueOf(1)));
-      this.g = this.q();
+   @Override
+   protected boolean a(dzo $$0, dis $$1, iu $$2) {
+      iu $$3 = $$2.e();
+      return this.a($$1, $$3, $$1.a_($$3));
    }
 
-   private Function<dym, fdo> q() {
-      return this.a(this.a(b, c));
+   protected boolean a(dis $$0, iu $$1, dzo $$2) {
+      return $$2.a($$0, $$1, ja.b, dub.c);
    }
 
    @Override
-   public dym a(dym $$0, drm $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dym a(dym $$0, dpv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   public boolean a(dym $$0, dbn $$1) {
-      return this.a($$0, $$1, c) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return this.g.apply($$0);
-   }
-
-   @Override
-   public double b() {
-      return 3.0;
-   }
-
-   @Override
-   public dzm c() {
-      return c;
-   }
-
-   @Override
-   public dym a(dbn $$0) {
-      return this.a($$0, this, c, b);
-   }
-
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public boolean a(dhs $$0, jj $$1, dym $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
-      int $$4 = $$3.c(c);
-      if ($$4 < 4) {
-         $$0.a($$2, $$3.b(c, Integer.valueOf($$4 + 1)), 2);
-      } else {
-         a($$0, $$2, new cxy(this));
+   protected void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      if (!this.b((dis)$$1, $$2, $$0)) {
+         boolean $$4 = $$0.c(c);
+         boolean $$5 = this.a((dip)$$1, $$2, $$0);
+         if ($$4 && !$$5) {
+            $$1.a($$2, $$0.b(c, Boolean.valueOf(false)), 2);
+         } else if (!$$4) {
+            $$1.a($$2, $$0.b(c, Boolean.valueOf(true)), 2);
+            if (!$$5) {
+               $$1.a($$2, this, this.h($$0), ffs.b);
+            }
+         }
       }
    }
+
+   @Override
+   protected int b(dzo $$0, dhv $$1, iu $$2, ja $$3) {
+      return $$0.a($$1, $$2, $$3);
+   }
+
+   @Override
+   protected int a(dzo $$0, dhv $$1, iu $$2, ja $$3) {
+      if (!$$0.c(c)) {
+         return 0;
+      } else {
+         return $$0.c(e) == $$3 ? this.a($$1, $$2, $$0) : 0;
+      }
+   }
+
+   @Override
+   protected void a(dzo $$0, dip $$1, iu $$2, dlu $$3, @Nullable exd $$4, boolean $$5) {
+      if ($$0.a((dis)$$1, $$2)) {
+         this.c($$1, $$2, $$0);
+      } else {
+         dwn $$6 = $$0.x() ? $$1.c_($$2) : null;
+         a($$0, $$1, $$2, $$6);
+         $$1.a($$2, false);
+
+         for (ja $$7 : ja.values()) {
+            $$1.a($$2.a($$7), this);
+         }
+      }
+   }
+
+   protected void c(dip $$0, iu $$1, dzo $$2) {
+      if (!this.b((dis)$$0, $$1, $$2)) {
+         boolean $$3 = $$2.c(c);
+         boolean $$4 = this.a($$0, $$1, $$2);
+         if ($$3 != $$4 && !$$0.U().b($$1, this)) {
+            ffs $$5 = ffs.c;
+            if (this.b((dhv)$$0, $$1, $$2)) {
+               $$5 = ffs.a;
+            } else if ($$3) {
+               $$5 = ffs.b;
+            }
+
+            $$0.a($$1, this, this.h($$2), $$5);
+         }
+      }
+   }
+
+   public boolean b(dis $$0, iu $$1, dzo $$2) {
+      return false;
+   }
+
+   protected boolean a(dip $$0, iu $$1, dzo $$2) {
+      return this.b($$0, $$1, $$2) > 0;
+   }
+
+   protected int b(dip $$0, iu $$1, dzo $$2) {
+      ja $$3 = $$2.c(e);
+      iu $$4 = $$1.a($$3);
+      int $$5 = $$0.c($$4, $$3);
+      if ($$5 >= 15) {
+         return $$5;
+      } else {
+         dzo $$6 = $$0.a_($$4);
+         return Math.max($$5, $$6.a(dlw.cE) ? $$6.c(dsb.f) : 0);
+      }
+   }
+
+   protected int a(djh $$0, iu $$1, dzo $$2) {
+      ja $$3 = $$2.c(e);
+      ja $$4 = $$3.h();
+      ja $$5 = $$3.i();
+      boolean $$6 = this.b();
+      return Math.max($$0.a($$1.a($$4), $$4, $$6), $$0.a($$1.a($$5), $$5, $$6));
+   }
+
+   @Override
+   protected boolean f_(dzo $$0) {
+      return true;
+   }
+
+   @Override
+   public dzo a(dcl $$0) {
+      return this.m().b(e, $$0.g().g());
+   }
+
+   @Override
+   public void a(dip $$0, iu $$1, dzo $$2, bwz $$3, cys $$4) {
+      if (this.a($$0, $$1, $$2)) {
+         $$0.a($$1, this, 1);
+      }
+   }
+
+   @Override
+   protected void a(dzo $$0, dip $$1, iu $$2, dzo $$3, boolean $$4) {
+      this.d($$1, $$2, $$0);
+   }
+
+   @Override
+   protected void a(dzo $$0, aro $$1, iu $$2, boolean $$3) {
+      if (!$$3) {
+         this.d($$1, $$2, $$0);
+      }
+   }
+
+   protected void d(dip $$0, iu $$1, dzo $$2) {
+      ja $$3 = $$2.c(e);
+      iu $$4 = $$1.a($$3.g());
+      exd $$5 = ewz.a($$0, $$3.g(), ja.b);
+      $$0.b($$4, this, $$5);
+      $$0.a($$4, this, $$3, $$5);
+   }
+
+   protected boolean b() {
+      return false;
+   }
+
+   protected int a(dhv $$0, iu $$1, dzo $$2) {
+      return 15;
+   }
+
+   public static boolean n(dzo $$0) {
+      return $$0.b() instanceof dnx;
+   }
+
+   public boolean b(dhv $$0, iu $$1, dzo $$2) {
+      ja $$3 = $$2.c(e).g();
+      dzo $$4 = $$0.a_($$1.a($$3));
+      return n($$4) && $$4.c(e) != $$3;
+   }
+
+   protected abstract int h(dzo var1);
 }

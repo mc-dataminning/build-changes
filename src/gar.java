@@ -1,41 +1,72 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.List;
 
-public class gar extends gan<gjd.a> {
-   private static final wv C = wv.c("gui.abuseReport.name.title");
-   private static final wv D = wv.c("gui.abuseReport.name.comment_box_label");
-   @Nullable
-   private frf E;
+public class gar extends fxi {
+   private static final int a = 20;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final ww d;
+   private final List<ww> s;
+   private final ImmutableList<gar.a> u;
+   private fsj v = fsj.a;
+   private int w;
+   private int x;
 
-   private gar(fwf $$0, gji $$1, gjd.a $$2) {
-      super(C, $$0, $$1, $$2);
-   }
-
-   public gar(fwf $$0, gji $$1, UUID $$2, String $$3) {
-      this($$0, $$1, new gjd.a($$2, $$3, $$1.a().b()));
-   }
-
-   public gar(fwf $$0, gji $$1, gjd $$2) {
-      this($$0, $$1, new gjd.a($$2, $$1.a().b()));
-   }
-
-   @Override
-   protected void E() {
-      wv $$0 = wv.b(this.A.e().a()).a(n.o);
-      this.z.a(new fru(wv.a("gui.abuseReport.name.reporting", $$0), this.p), $$0x -> $$0x.b().a(0, 8));
-      this.E = this.a(280, 9 * 8, $$0x -> {
-         this.A.a($$0x);
-         this.G();
-      });
-      this.z.a(ftx.a(this.p, this.E, D, $$0x -> $$0x.e(12)));
+   protected gar(ww $$0, List<ww> $$1, ImmutableList<gar.a> $$2) {
+      super($$0);
+      this.s = $$1;
+      this.d = wv.a($$0, wz.a($$1, wv.a));
+      this.u = $$2;
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if (super.b($$0, $$1, $$2)) {
-         return true;
-      } else {
-         return this.E != null ? this.E.b($$0, $$1, $$2) : false;
+   public ww i() {
+      return this.d;
+   }
+
+   @Override
+   public void aN_() {
+      UnmodifiableIterator $$1 = this.u.iterator();
+
+      while ($$1.hasNext()) {
+         gar.a $$0 = (gar.a)$$1.next();
+         this.x = Math.max(this.x, 20 + this.p.a($$0.a) + 20);
+      }
+
+      int $$1x = 5 + this.x + 5;
+      int $$2 = $$1x * this.u.size();
+      this.v = fsj.a(this.p, $$2, this.s.toArray(new ww[0]));
+      int $$3 = this.v.a() * 9;
+      this.w = (int)((double)this.o / 2.0 - (double)$$3 / 2.0);
+      int $$4 = this.w + $$3 + 9 * 2;
+      int $$5 = (int)((double)this.n / 2.0 - (double)$$2 / 2.0);
+
+      for (UnmodifiableIterator var6 = this.u.iterator(); var6.hasNext(); $$5 += $$1x) {
+         gar.a $$6 = (gar.a)var6.next();
+         this.c(frq.a($$6.a, $$6.b).a($$5, $$4, this.x, 20).a());
+      }
+   }
+
+   @Override
+   public void a(frc $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.w - 9 * 2, -1);
+      this.v.a($$0, this.n / 2, this.w);
+   }
+
+   @Override
+   public boolean aC_() {
+      return false;
+   }
+
+   public static final class a {
+      final ww a;
+      final frq.c b;
+
+      public a(ww $$0, frq.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

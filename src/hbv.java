@@ -1,6 +1,8 @@
-public class hbv extends hbb {
-   public boolean a;
-   public boolean b;
-   public float c;
-   public coz d = coz.f;
+public class hbv extends hcp {
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public float g;
+   public float h;
+   public float i;
 }

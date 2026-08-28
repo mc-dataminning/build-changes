@@ -1,9 +1,18 @@
-public class ddu {
-   public static ddr.a<?> a(kf<ddr.a<?>> $$0) {
-      kf.a($$0, "crafting_shapeless", ddw.c);
-      kf.a($$0, "crafting_shaped", ddv.c);
-      kf.a($$0, "furnace", ddq.c);
-      kf.a($$0, "stonecutter", deb.c);
-      return kf.a($$0, "smithing", dea.c);
+public interface ddu<T extends ddj<?>> {
+   ddu<dcy> a = a("crafting");
+   ddu<ded> b = a("smelting");
+   ddu<dcs> c = a("blasting");
+   ddu<dei> d = a("smoking");
+   ddu<dcu> e = a("campfire_cooking");
+   ddu<dej> f = a("stonecutting");
+   ddu<dee> g = a("smithing");
+
+   static <T extends ddj<?>> ddu<T> a(final String $$0) {
+      return jr.a(mf.q, ale.b($$0), new ddu<T>() {
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      });
    }
 }

@@ -1,28 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import java.util.Optional;
 
-public class bzb {
-   private static jj a(bwt $$0, jj $$1) {
-      azs $$2 = $$0.dV().A;
-      return $$1.b(a($$2), 0, a($$2));
+public class bzb implements cae {
+   private final bwa a;
+   private final boolean b;
+
+   public bzb(bwa $$0, boolean $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private static int a(azs $$0) {
-      return $$0.a(3) - 1;
+   @Override
+   public fdw a() {
+      return this.b ? this.a.dt().b(0.0, (double)this.a.cS(), 0.0) : this.a.dt();
    }
 
-   public static <E extends bwt> bzt<E> a(cft<jj> $$0, int $$1, float $$2) {
-      return cbv.a(
-         (Function<cbv.b<E>, ? extends App<cbv.c<E>, cby<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(cft.p), $$3.c(cft.n), $$3.a(cft.o))
-               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
-                     jj $$7 = $$3.b($$3x);
-                     boolean $$8 = $$7.a($$5x.dv(), (double)$$1);
-                     if (!$$8) {
-                        byk.a($$5x, a($$5x, $$7), $$2, $$1);
-                     }
+   @Override
+   public iu b() {
+      return this.a.dv();
+   }
 
-                     return true;
-                  }))
-      );
+   @Override
+   public boolean a(bwz $$0) {
+      if (this.a instanceof bwz $$1) {
+         if (!$$1.bK()) {
+            return false;
+         } else {
+            Optional<cgd> $$3 = $$0.eb().c(cgb.h);
+            return $$3.isPresent() && $$3.get().a($$1);
+         }
+      } else {
+         return true;
+      }
+   }
+
+   public bwa c() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "EntityTracker for " + this.a;
    }
 }

@@ -1,77 +1,102 @@
-import java.util.function.Predicate;
+import java.util.Optional;
 
-public class ccx extends cde {
-   private static final int g = 240;
-   private final Predicate<btn> h;
-   protected int a;
-   protected int b = -1;
-   protected int c = -1;
+public class ccx implements ccu {
+   protected final bxb a;
+   protected float b;
+   protected float c;
+   protected int d;
+   protected double e;
+   protected double f;
+   protected double g;
 
-   public ccx(bwt $$0, Predicate<btn> $$1) {
-      super($$0);
-      this.h = $$1;
+   public ccx(bxb $$0) {
+      this.a = $$0;
    }
 
-   public ccx(bwt $$0, int $$1, Predicate<btn> $$2) {
-      this($$0, $$2);
-      this.c = $$1;
+   public void a(fdw $$0) {
+      this.a($$0.d, $$0.e, $$0.f);
    }
 
-   protected int f() {
-      return Math.max(240, this.c);
+   public void a(bwa $$0) {
+      this.a($$0.dA(), b($$0), $$0.dG());
    }
 
-   @Override
-   public boolean b() {
-      if (!super.b()) {
-         return false;
-      } else {
-         return !a(this.d).O().c(dhl.c) ? false : this.a(this.d.dV().an()) && !this.h();
-      }
+   public void a(bwa $$0, float $$1, float $$2) {
+      this.a($$0.dA(), b($$0), $$0.dG(), $$1, $$2);
    }
 
-   @Override
-   public void d() {
-      super.d();
-      this.a = 0;
+   public void a(double $$0, double $$1, double $$2) {
+      this.a($$0, $$1, $$2, (float)this.a.ag(), (float)this.a.ac());
    }
 
-   @Override
-   public boolean c() {
-      return this.a <= this.f() && !this.h() && this.e.a(this.d.dt(), 2.0) && this.a(this.d.dV().an());
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = 2;
    }
 
-   @Override
-   public void e() {
-      super.e();
-      this.d.dV().a(this.d.ar(), this.e, -1);
-   }
-
-   @Override
    public void a() {
-      super.a();
-      if (this.d.dY().a(20) == 0) {
-         this.d.dV().c(1019, this.e, 0);
-         if (!this.d.aH) {
-            this.d.a(this.d.fz());
-         }
+      if (this.c()) {
+         this.a.x(0.0F);
       }
 
-      this.a++;
-      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
-      if ($$0 != this.b) {
-         this.d.dV().a(this.d.ar(), this.e, $$0);
-         this.b = $$0;
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0 -> this.a.aX = this.a(this.a.aX, $$0, this.b));
+         this.h().ifPresent($$0 -> this.a.x(this.a(this.a.dN(), $$0, this.c)));
+      } else {
+         this.a.aX = this.a(this.a.aX, this.a.aV, 10.0F);
       }
 
-      if (this.a == this.f() && this.a(this.d.dV().an())) {
-         this.d.dV().a(this.e, false);
-         this.d.dV().c(1021, this.e, 0);
-         this.d.dV().c(2001, this.e, dku.j(this.d.dV().a_(this.e)));
+      this.b();
+   }
+
+   protected void b() {
+      if (!this.a.O().k()) {
+         this.a.aX = azk.c(this.a.aX, this.a.aV, (float)this.a.ad());
       }
    }
 
-   private boolean a(btn $$0) {
-      return this.h.test($$0);
+   protected boolean c() {
+      return true;
+   }
+
+   public boolean d() {
+      return this.d > 0;
+   }
+
+   public double e() {
+      return this.e;
+   }
+
+   public double f() {
+      return this.f;
+   }
+
+   public double g() {
+      return this.g;
+   }
+
+   protected Optional<Float> h() {
+      double $$0 = this.e - this.a.dA();
+      double $$1 = this.f - this.a.dE();
+      double $$2 = this.g - this.a.dG();
+      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(azk.d($$1, $$3) * 180.0F / (float)Math.PI)));
+   }
+
+   protected Optional<Float> i() {
+      double $$0 = this.e - this.a.dA();
+      double $$1 = this.g - this.a.dG();
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
+         ? Optional.empty()
+         : Optional.of((float)(azk.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
+   }
+
+   private static double b(bwa $$0) {
+      return $$0 instanceof bwz ? $$0.dE() : ($$0.cR().b + $$0.cR().e) / 2.0;
    }
 }

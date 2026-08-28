@@ -1,53 +1,72 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-public class enl extends enn {
+public class enl extends ens {
    public static final MapCodec<enl> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               eff.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               eff.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
+               emy.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
+               ays.b(ja.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
             )
             .apply($$0, enl::new)
    );
-   private static final Logger b = LogUtils.getLogger();
-   private final eff d;
-   private final eff e;
-   private final int f;
+   protected final float b;
+   protected final int c;
+   protected final int d;
+   protected final emy e;
+   protected final int f;
+   protected final List<ja> g;
 
-   private enl(eff $$0, eff $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static enl a(eff $$0, eff $$1, int $$2) {
-      return new enl($$0, $$1, $$2);
+   public enl(float $$0, int $$1, int $$2, emy $$3, int $$4, List<ja> $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
    @Override
-   public int a(azs $$0, efi $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
-         return $$0.a($$4 + this.f) + $$2;
+   public void a(ens.a $$0) {
+      Set<iu> $$1 = new HashSet<>();
+      azt $$2 = $$0.b();
+
+      for (iu $$3 : af.a($$0.d(), $$2)) {
+         ja $$4 = af.a(this.g, $$2);
+         iu $$5 = $$3.a($$4);
+         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
+            iu $$6 = $$5.b(-this.c, -this.d, -this.c);
+            iu $$7 = $$5.b(this.c, this.d, this.c);
+
+            for (iu $$8 : iu.c($$6, $$7)) {
+               $$1.add($$8.j());
+            }
+
+            $$0.a($$5, this.e.a($$2, $$5));
+         }
       }
    }
 
-   @Override
-   public eno<?> a() {
-      return eno.c;
+   private boolean a(ens.a $$0, iu $$1, ja $$2) {
+      for (int $$3 = 1; $$3 <= this.f; $$3++) {
+         iu $$4 = $$1.a($$2, $$3);
+         if (!$$0.a($$4)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+   protected ent<?> a() {
+      return ent.h;
    }
 }

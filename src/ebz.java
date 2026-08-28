@@ -1,399 +1,114 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.logging.LogUtils;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.nio.file.StandardOpenOption;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.Validate;
 
-public class ebz implements AutoCloseable {
-   private static final Logger c = LogUtils.getLogger();
-   private static final int d = 4096;
-   @VisibleForTesting
-   protected static final int a = 1024;
-   private static final int e = 5;
-   private static final int f = 0;
-   private static final ByteBuffer g = ByteBuffer.allocateDirect(1);
-   private static final String h = ".mcc";
-   private static final int i = 128;
-   private static final int j = 256;
-   private static final int k = 0;
-   final ecc l;
-   private final Path m;
-   private final FileChannel n;
-   private final Path o;
-   final ecb p;
-   private final ByteBuffer q = ByteBuffer.allocateDirect(8192);
-   private final IntBuffer r;
-   private final IntBuffer s;
-   @VisibleForTesting
-   protected final eby b = new eby();
+public class ebz<T> implements ecb<T> {
+   private final jj<T> a;
+   private final T[] b;
+   private final ecc<T> c;
+   private final int d;
+   private int e;
 
-   public ebz(ecc $$0, Path $$1, Path $$2, boolean $$3) throws IOException {
-      this($$0, $$1, $$2, ecb.a(), $$3);
-   }
+   private ebz(jj<T> $$0, int $$1, ecc<T> $$2, List<T> $$3) {
+      this.a = $$0;
+      this.b = (T[])(new Object[1 << $$1]);
+      this.d = $$1;
+      this.c = $$2;
+      Validate.isTrue($$3.size() <= this.b.length, "Can't initialize LinearPalette of size %d with %d entries", new Object[]{this.b.length, $$3.size()});
 
-   public ebz(ecc $$0, Path $$1, Path $$2, ecb $$3, boolean $$4) throws IOException {
-      this.l = $$0;
-      this.m = $$1;
-      this.p = $$3;
-      if (!Files.isDirectory($$2)) {
-         throw new IllegalArgumentException("Expected directory, got " + $$2.toAbsolutePath());
-      } else {
-         this.o = $$2;
-         this.r = this.q.asIntBuffer();
-         this.r.limit(1024);
-         this.q.position(4096);
-         this.s = this.q.asIntBuffer();
-         if ($$4) {
-            this.n = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.DSYNC);
-         } else {
-            this.n = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.READ, StandardOpenOption.WRITE);
-         }
-
-         this.b.a(0, 2);
-         this.q.position(0);
-         int $$5 = this.n.read(this.q, 0L);
-         if ($$5 != -1) {
-            if ($$5 != 8192) {
-               c.warn("Region file {} has truncated header: {}", $$1, $$5);
-            }
-
-            long $$6 = Files.size($$1);
-
-            for (int $$7 = 0; $$7 < 1024; $$7++) {
-               int $$8 = this.r.get($$7);
-               if ($$8 != 0) {
-                  int $$9 = b($$8);
-                  int $$10 = a($$8);
-                  if ($$9 < 2) {
-                     c.warn("Region file {} has invalid sector at index: {}; sector {} overlaps with header", new Object[]{$$1, $$7, $$9});
-                     this.r.put($$7, 0);
-                  } else if ($$10 == 0) {
-                     c.warn("Region file {} has an invalid sector at index: {}; size has to be > 0", $$1, $$7);
-                     this.r.put($$7, 0);
-                  } else if ((long)$$9 * 4096L > $$6) {
-                     c.warn("Region file {} has an invalid sector at index: {}; sector {} is out of bounds", new Object[]{$$1, $$7, $$9});
-                     this.r.put($$7, 0);
-                  } else {
-                     this.b.a($$9, $$10);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   public Path a() {
-      return this.m;
-   }
-
-   private Path f(dgw $$0) {
-      String $$1 = "c." + $$0.h + "." + $$0.i + ".mcc";
-      return this.o.resolve($$1);
-   }
-
-   @Nullable
-   public synchronized DataInputStream a(dgw $$0) throws IOException {
-      int $$1 = this.g($$0);
-      if ($$1 == 0) {
-         return null;
-      } else {
-         int $$2 = b($$1);
-         int $$3 = a($$1);
-         int $$4 = $$3 * 4096;
-         ByteBuffer $$5 = ByteBuffer.allocate($$4);
-         this.n.read($$5, (long)($$2 * 4096));
-         $$5.flip();
-         if ($$5.remaining() < 5) {
-            c.error("Chunk {} header is truncated: expected {} but read {}", new Object[]{$$0, $$4, $$5.remaining()});
-            return null;
-         } else {
-            int $$6 = $$5.getInt();
-            byte $$7 = $$5.get();
-            if ($$6 == 0) {
-               c.warn("Chunk {} is allocated, but stream is missing", $$0);
-               return null;
-            } else {
-               int $$8 = $$6 - 1;
-               if (a($$7)) {
-                  if ($$8 != 0) {
-                     c.warn("Chunk has both internal and external streams");
-                  }
-
-                  return this.a($$0, b($$7));
-               } else if ($$8 > $$5.remaining()) {
-                  c.error("Chunk {} stream is truncated: expected {} but read {}", new Object[]{$$0, $$8, $$5.remaining()});
-                  return null;
-               } else if ($$8 < 0) {
-                  c.error("Declared size {} of chunk {} is negative", $$6, $$0);
-                  return null;
-               } else {
-                  bqj.f.a(this.l, $$0, this.p, $$8);
-                  return this.a($$0, $$7, a($$5, $$8));
-               }
-            }
-         }
-      }
-   }
-
-   private static int c() {
-      return (int)(af.e() / 1000L);
-   }
-
-   private static boolean a(byte $$0) {
-      return ($$0 & 128) != 0;
-   }
-
-   private static byte b(byte $$0) {
-      return (byte)($$0 & -129);
-   }
-
-   @Nullable
-   private DataInputStream a(dgw $$0, byte $$1, InputStream $$2) throws IOException {
-      ecb $$3 = ecb.a($$1);
-      if ($$3 == ecb.e) {
-         String $$4 = new DataInputStream($$2).readUTF();
-         ald $$5 = ald.c($$4);
-         if ($$5 != null) {
-            c.error("Unrecognized custom compression {}", $$5);
-            return null;
-         } else {
-            c.error("Invalid custom compression id {}", $$4);
-            return null;
-         }
-      } else if ($$3 == null) {
-         c.error("Chunk {} has invalid chunk stream version {}", $$0, $$1);
-         return null;
-      } else {
-         return new DataInputStream($$3.a($$2));
-      }
-   }
-
-   @Nullable
-   private DataInputStream a(dgw $$0, byte $$1) throws IOException {
-      Path $$2 = this.f($$0);
-      if (!Files.isRegularFile($$2)) {
-         c.error("External chunk path {} is not file", $$2);
-         return null;
-      } else {
-         return this.a($$0, $$1, Files.newInputStream($$2));
-      }
-   }
-
-   private static ByteArrayInputStream a(ByteBuffer $$0, int $$1) {
-      return new ByteArrayInputStream($$0.array(), $$0.position(), $$1);
-   }
-
-   private int a(int $$0, int $$1) {
-      return $$0 << 8 | $$1;
-   }
-
-   private static int a(int $$0) {
-      return $$0 & 0xFF;
-   }
-
-   private static int b(int $$0) {
-      return $$0 >> 8 & 16777215;
-   }
-
-   private static int c(int $$0) {
-      return ($$0 + 4096 - 1) / 4096;
-   }
-
-   public boolean b(dgw $$0) {
-      int $$1 = this.g($$0);
-      if ($$1 == 0) {
-         return false;
-      } else {
-         int $$2 = b($$1);
-         int $$3 = a($$1);
-         ByteBuffer $$4 = ByteBuffer.allocate(5);
-
-         try {
-            this.n.read($$4, (long)($$2 * 4096));
-            $$4.flip();
-            if ($$4.remaining() != 5) {
-               return false;
-            } else {
-               int $$5 = $$4.getInt();
-               byte $$6 = $$4.get();
-               if (a($$6)) {
-                  if (!ecb.b(b($$6))) {
-                     return false;
-                  }
-
-                  if (!Files.isRegularFile(this.f($$0))) {
-                     return false;
-                  }
-               } else {
-                  if (!ecb.b($$6)) {
-                     return false;
-                  }
-
-                  if ($$5 == 0) {
-                     return false;
-                  }
-
-                  int $$7 = $$5 - 1;
-                  if ($$7 < 0 || $$7 > 4096 * $$3) {
-                     return false;
-                  }
-               }
-
-               return true;
-            }
-         } catch (IOException var9) {
-            return false;
-         }
-      }
-   }
-
-   public DataOutputStream c(dgw $$0) throws IOException {
-      return new DataOutputStream(this.p.a(new ebz.a($$0)));
-   }
-
-   public void b() throws IOException {
-      this.n.force(true);
-   }
-
-   public void d(dgw $$0) throws IOException {
-      int $$1 = h($$0);
-      int $$2 = this.r.get($$1);
-      if ($$2 != 0) {
-         this.r.put($$1, 0);
-         this.s.put($$1, c());
-         this.e();
-         Files.deleteIfExists(this.f($$0));
-         this.b.b(b($$2), a($$2));
-      }
-   }
-
-   protected synchronized void a(dgw $$0, ByteBuffer $$1) throws IOException {
-      int $$2 = h($$0);
-      int $$3 = this.r.get($$2);
-      int $$4 = b($$3);
-      int $$5 = a($$3);
-      int $$6 = $$1.remaining();
-      int $$7 = c($$6);
-      int $$9;
-      ebz.b $$10;
-      if ($$7 >= 256) {
-         Path $$8 = this.f($$0);
-         c.warn("Saving oversized chunk {} ({} bytes} to external file {}", new Object[]{$$0, $$6, $$8});
-         $$7 = 1;
-         $$9 = this.b.a($$7);
-         $$10 = this.a($$8, $$1);
-         ByteBuffer $$11 = this.d();
-         this.n.write($$11, (long)($$9 * 4096));
-      } else {
-         $$9 = this.b.a($$7);
-         $$10 = () -> Files.deleteIfExists(this.f($$0));
-         this.n.write($$1, (long)($$9 * 4096));
+      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+         this.b[$$4] = $$3.get($$4);
       }
 
-      this.r.put($$2, this.a($$9, $$7));
-      this.s.put($$2, c());
-      this.e();
-      $$10.run();
-      if ($$4 != 0) {
-         this.b.b($$4, $$5);
-      }
+      this.e = $$3.size();
    }
 
-   private ByteBuffer d() {
-      ByteBuffer $$0 = ByteBuffer.allocate(5);
-      $$0.putInt(1);
-      $$0.put((byte)(this.p.b() | 128));
-      $$0.flip();
-      return $$0;
+   private ebz(jj<T> $$0, T[] $$1, ecc<T> $$2, int $$3, int $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   private ebz.b a(Path $$0, ByteBuffer $$1) throws IOException {
-      Path $$2 = Files.createTempFile(this.o, "tmp", null);
-
-      try (FileChannel $$3 = FileChannel.open($$2, StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
-         $$1.position(5);
-         $$3.write($$1);
-      }
-
-      return () -> Files.move($$2, $$0, StandardCopyOption.REPLACE_EXISTING);
-   }
-
-   private void e() throws IOException {
-      this.q.position(0);
-      this.n.write(this.q, 0L);
-   }
-
-   private int g(dgw $$0) {
-      return this.r.get(h($$0));
-   }
-
-   public boolean e(dgw $$0) {
-      return this.g($$0) != 0;
-   }
-
-   private static int h(dgw $$0) {
-      return $$0.j() + $$0.k() * 32;
+   public static <A> ecb<A> a(int $$0, jj<A> $$1, ecc<A> $$2, List<A> $$3) {
+      return new ebz<>($$1, $$0, $$2, $$3);
    }
 
    @Override
-   public void close() throws IOException {
-      try {
-         this.f();
-      } finally {
-         try {
-            this.n.force(true);
-         } finally {
-            this.n.close();
+   public int a(T $$0) {
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         if (this.b[$$1] == $$0) {
+            return $$1;
          }
       }
-   }
 
-   private void f() throws IOException {
-      int $$0 = (int)this.n.size();
-      int $$1 = c($$0) * 4096;
-      if ($$0 != $$1) {
-         ByteBuffer $$2 = g.duplicate();
-         $$2.position(0);
-         this.n.write($$2, (long)($$1 - 1));
+      int $$2 = this.e;
+      if ($$2 < this.b.length) {
+         this.b[$$2] = $$0;
+         this.e++;
+         return $$2;
+      } else {
+         return this.c.onResize(this.d + 1, $$0);
       }
    }
 
-   class a extends ByteArrayOutputStream {
-      private final dgw b;
-
-      public a(final dgw $$0) {
-         super(8096);
-         super.write(0);
-         super.write(0);
-         super.write(0);
-         super.write(0);
-         super.write(ebz.this.p.b());
-         this.b = $$0;
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         if ($$0.test(this.b[$$1])) {
+            return true;
+         }
       }
 
-      @Override
-      public void close() throws IOException {
-         ByteBuffer $$0 = ByteBuffer.wrap(this.buf, 0, this.count);
-         int $$1 = this.count - 5 + 1;
-         bqj.f.b(ebz.this.l, this.b, ebz.this.p, $$1);
-         $$0.putInt(0, $$1);
-         ebz.this.a(this.b, $$0);
+      return false;
+   }
+
+   @Override
+   public T a(int $$0) {
+      if ($$0 >= 0 && $$0 < this.e) {
+         return this.b[$$0];
+      } else {
+         throw new eca($$0);
       }
    }
 
-   interface b {
-      void run() throws IOException;
+   @Override
+   public void a(vs $$0) {
+      this.e = $$0.l();
+
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         this.b[$$1] = this.a.b($$0.l());
+      }
+   }
+
+   @Override
+   public void b(vs $$0) {
+      $$0.c(this.e);
+
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         $$0.c(this.a.a(this.b[$$1]));
+      }
+   }
+
+   @Override
+   public int a() {
+      int $$0 = wn.a(this.b());
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += wn.a(this.a.a(this.b[$$1]));
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public ecb<T> a(ecc<T> $$0) {
+      return new ebz<>(this.a, (T[])((Object[])this.b.clone()), $$0, this.d, this.e);
    }
 }

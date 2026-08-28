@@ -1,51 +1,37 @@
-import java.time.Duration;
-import java.time.Instant;
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
 import javax.annotation.Nullable;
 
-public abstract class hmj {
-   private static final int a = 60000;
-   private static final int b = 10;
-   private int c;
-   private boolean d = false;
+public class hmj extends avo {
    @Nullable
-   private Instant e;
+   private tx h;
 
-   public void a() {
-      this.d = true;
-      this.e = Instant.now();
-      this.c = 0;
+   public hmj(hmk $$0, jl<aln> $$1, eye $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
    }
 
-   public void a(hmd $$0) {
-      if (this.b()) {
-         this.f();
-         this.c++;
-         this.e = Instant.now();
+   @Override
+   protected void b(arp $$0) {
+      if (this.b().a($$0.gh())) {
+         this.h = $$0.f(new tx());
       }
 
-      if (this.c()) {
-         this.b($$0);
-         this.c = 0;
-      }
+      super.b($$0);
    }
 
-   public boolean b() {
-      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
+   @Override
+   public ww a(SocketAddress $$0, GameProfile $$1) {
+      return (ww)(this.b().a($$1) && this.a($$1.getName()) != null ? ww.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
    }
 
-   public boolean c() {
-      return this.c >= 10;
+   public hmk b() {
+      return (hmk)super.c();
    }
 
-   public void d() {
-      this.d = false;
+   @Nullable
+   @Override
+   public tx r() {
+      return this.h;
    }
-
-   protected int e() {
-      return this.c;
-   }
-
-   public abstract void f();
-
-   public abstract void b(hmd var1);
 }

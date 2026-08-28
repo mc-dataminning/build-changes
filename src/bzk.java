@@ -1,48 +1,27 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bzk<E extends bwt> extends bzl<E> {
-   private final axp<dku> m;
-   private final float n;
-   private final List<bzl.a> o = new ArrayList<>();
-   private boolean p;
-
-   public bzk(btb $$0, int $$1, int $$2, float $$3, Function<E, awj> $$4, axp<dku> $$5, float $$6, BiPredicate<E, jj> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
+public class bzk {
+   public static byr<bwz> a(float $$0, boolean $$1, int $$2) {
+      return a($$0x -> true, $$0, $$1, $$2);
    }
 
-   @Override
-   protected void a(arn $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.dY().i() < this.n;
-   }
-
-   @Override
-   protected Optional<bzl.a> a(arn $$0) {
-      if (!this.p) {
-         return super.a($$0);
-      } else {
-         jj.a $$1 = new jj.a();
-
-         while (!this.h.isEmpty()) {
-            Optional<bzl.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               bzl.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.a(), jo.a)).a(this.m)) {
-                  return $$2;
+   public static <E extends bwz> byr<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
+      return ccd.a((Function<ccd.b<E>, ? extends App<ccd.c<E>, ccg<E>>>)($$4 -> {
+         ccd<E, ? extends cce<? extends K1, cge>> $$5 = $$2 ? $$4.a(cgb.n) : $$4.c(cgb.n);
+         return $$4.group($$4.a(cgb.o), $$5, $$4.b(cgb.M), $$4.a(cgb.aQ)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
+               cmx $$11 = $$4.b($$6);
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dV().A_().a($$11.dv()) && $$9.fM()) {
+                  cge $$12 = new cge(new bzb($$11, false), $$1, 0);
+                  $$4x.a(new bzb($$11, true));
+                  $$5x.a($$12);
+                  return true;
+               } else {
+                  return false;
                }
-
-               this.o.add($$3);
-            }
-         }
-
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
-      }
+            });
+      }));
    }
 }

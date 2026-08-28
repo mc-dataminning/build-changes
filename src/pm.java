@@ -1,60 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class pm extends pp<cmj> {
-   public pm(mm $$0, CompletableFuture<ju.a> $$1) {
-      super($$0, me.X, $$1);
+public abstract class pm extends pl<cyo> {
+   private final CompletableFuture<pq.c<dlu>> d;
+   private final Map<axp<dlu>, axp<cyo>> g = new HashMap<>();
+
+   public pm(mo $$0, CompletableFuture<jg.a> $$1, CompletableFuture<pq.c<dlu>> $$2) {
+      super($$0, mg.K, $$1, $$0x -> $$0x.e().h());
+      this.d = $$2;
+   }
+
+   public pm(mo $$0, CompletableFuture<jg.a> $$1, CompletableFuture<pq.c<cyo>> $$2, CompletableFuture<pq.c<dlu>> $$3) {
+      super($$0, mg.K, $$1, $$2, $$0x -> $$0x.e().h());
+      this.d = $$3;
+   }
+
+   protected void a(axp<dlu> $$0, axp<cyo> $$1) {
+      this.g.put($$0, $$1);
    }
 
    @Override
-   protected void a(ju.a $$0) {
-      this.b(axj.a)
-         .a(
-            cmk.a,
-            cmk.b,
-            cmk.c,
-            cmk.d,
-            cmk.e,
-            cmk.f,
-            cmk.g,
-            cmk.h,
-            cmk.i,
-            cmk.j,
-            cmk.k,
-            cmk.l,
-            cmk.m,
-            cmk.n,
-            cmk.o,
-            cmk.p,
-            cmk.q,
-            cmk.r,
-            cmk.s,
-            cmk.t,
-            cmk.u,
-            cmk.v,
-            cmk.w,
-            cmk.x,
-            cmk.y,
-            cmk.z,
-            cmk.E,
-            cmk.F,
-            cmk.G,
-            cmk.H,
-            cmk.I,
-            cmk.J,
-            cmk.K,
-            cmk.L,
-            cmk.M,
-            cmk.N,
-            cmk.O,
-            cmk.P,
-            cmk.Q,
-            cmk.R,
-            cmk.S,
-            cmk.T,
-            cmk.U,
-            cmk.V,
-            cmk.W,
-            cmk.X
-         );
+   protected CompletableFuture<jg.a> b() {
+      return super.b().thenCombine(this.d, ($$0, $$1) -> {
+         this.g.forEach(($$1x, $$2) -> {
+            axm $$3 = this.c((axp<cyo>)$$2);
+            Optional<axm> $$4 = $$1.apply($$1x);
+            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
+         });
+         return (jg.a)$$0;
+      });
    }
 }

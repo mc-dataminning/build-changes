@@ -1,37 +1,30 @@
-public class ahh implements zc<agm> {
-   public static final yt<vr, ahh> a = zc.a(ahh::a, ahh::new);
-   private final int b;
-   private final int c;
+import java.util.List;
+import java.util.Optional;
 
-   public ahh(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public record ahh(int b, List<String> c, Optional<String> d) implements zd<agn> {
+   public static final yu<vs, ahh> a = yu.a(ys.h, ahh::b, ys.b(1024).a(ys.c(100)), ahh::e, ys.b(32).a(ys::a), ahh::f, ahh::new);
 
-   private ahh(vr $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(vr $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   public ahh(int b, List<String> c, Optional<String> d) {
+      c = List.copyOf(c);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
    @Override
-   public ze<ahh> a() {
-      return agk.bE;
+   public zf<ahh> a() {
+      return agl.bD;
    }
 
-   public void a(agm $$0) {
+   public void a(agn $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public List<String> e() {
+      return this.c;
    }
 
-   public int e() {
-      return this.c;
+   public Optional<String> f() {
+      return this.d;
    }
 }

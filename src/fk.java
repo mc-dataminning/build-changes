@@ -1,184 +1,108 @@
-import com.google.common.collect.Iterables;
-import com.google.gson.JsonObject;
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JavaOps;
 import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class fk implements ArgumentType<hn> {
-   private static final Collection<String> g = Arrays.asList("Player", "0123", "@e", "@e[type=foo]", "dd12be42-52a9-4a91-a8a1-11c01849e498");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wv.c("argument.entity.toomany"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wv.c("argument.player.toomany"));
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wv.c("argument.player.entities"));
-   public static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wv.c("argument.entity.notfound.entity"));
-   public static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wv.c("argument.entity.notfound.player"));
-   public static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wv.c("argument.entity.selector.not_allowed"));
-   final boolean h;
-   final boolean i;
+public class fk<T> implements ArgumentType<je<T>> {
+   private static final Collection<String> b = List.of("foo", "foo:bar", "012", "{}", "true");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> ww.b("argument.resource_or_id.failed_to_parse", $$0));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ww.c("argument.resource_or_id.invalid"));
+   private final jg.a d;
+   private final boolean e;
+   private final Codec<je<T>> f;
 
-   protected fk(boolean $$0, boolean $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   protected fk(ee $$0, ald<jr<T>> $$1, Codec<je<T>> $$2) {
+      this.d = $$0;
+      this.e = $$0.a($$1).isPresent();
+      this.f = $$2;
    }
 
-   public static fk a() {
-      return new fk(true, false);
+   public static fk.c a(ee $$0) {
+      return new fk.c($$0);
    }
 
-   public static bvs a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return ((hn)$$0.getArgument($$1, hn.class)).a((ex)$$0.getSource());
+   public static je<eys> a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      return d($$0, $$1);
    }
 
-   public static fk b() {
-      return new fk(false, false);
+   public static fk.a b(ee $$0) {
+      return new fk.a($$0);
    }
 
-   public static Collection<? extends bvs> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      Collection<? extends bvs> $$2 = c($$0, $$1);
-      if ($$2.isEmpty()) {
-         throw d.create();
+   public static je<fab> b(CommandContext<ei> $$0, String $$1) {
+      return d($$0, $$1);
+   }
+
+   public static fk.b c(ee $$0) {
+      return new fk.b($$0);
+   }
+
+   public static je<fbw> c(CommandContext<ei> $$0, String $$1) {
+      return d($$0, $$1);
+   }
+
+   private static <T> je<T> d(CommandContext<ei> $$0, String $$1) {
+      return (je<T>)$$0.getArgument($$1, je.class);
+   }
+
+   @Nullable
+   public je<T> a(StringReader $$0) throws CommandSyntaxException {
+      alc<?> $$1 = this.d.a(JavaOps.INSTANCE);
+      Dynamic<?> $$2 = a((DynamicOps<T>)$$1, $$0);
+      return !this.e ? null : (je)this.f.parse($$2).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
+   }
+
+   @VisibleForTesting
+   static <T> Dynamic<T> a(DynamicOps<T> $$0, StringReader $$1) throws CommandSyntaxException {
+      int $$2 = $$1.getCursor();
+      T $$3 = uv.b($$0, $$1);
+      if (b($$1)) {
+         return new Dynamic($$0, $$3);
       } else {
-         return $$2;
-      }
-   }
-
-   public static Collection<? extends bvs> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return ((hn)$$0.getArgument($$1, hn.class)).b((ex)$$0.getSource());
-   }
-
-   public static Collection<aro> d(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return ((hn)$$0.getArgument($$1, hn.class)).d((ex)$$0.getSource());
-   }
-
-   public static fk c() {
-      return new fk(true, true);
-   }
-
-   public static aro e(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      return ((hn)$$0.getArgument($$1, hn.class)).c((ex)$$0.getSource());
-   }
-
-   public static fk d() {
-      return new fk(false, true);
-   }
-
-   public static Collection<aro> f(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
-      List<aro> $$2 = ((hn)$$0.getArgument($$1, hn.class)).d((ex)$$0.getSource());
-      if ($$2.isEmpty()) {
-         throw e.create();
-      } else {
-         return $$2;
-      }
-   }
-
-   public hn a(StringReader $$0) throws CommandSyntaxException {
-      return this.a($$0, true);
-   }
-
-   public <S> hn a(StringReader $$0, S $$1) throws CommandSyntaxException {
-      return this.a($$0, ho.a($$1));
-   }
-
-   private hn a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      int $$2 = 0;
-      ho $$3 = new ho($$0, $$1);
-      hn $$4 = $$3.t();
-      if ($$4.a() > 1 && this.h) {
-         if (this.i) {
-            $$0.setCursor(0);
-            throw b.createWithContext($$0);
+         $$1.setCursor($$2);
+         ale $$4 = ale.a($$1);
+         if (b($$1)) {
+            return new Dynamic($$0, $$0.createString($$4.toString()));
          } else {
-            $$0.setCursor(0);
-            throw a.createWithContext($$0);
+            $$1.setCursor($$2);
+            throw c.createWithContext($$1);
          }
-      } else if ($$4.b() && this.i && !$$4.c()) {
-         $$0.setCursor(0);
-         throw c.createWithContext($$0);
-      } else {
-         return $$4;
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      if ($$0.getSource() instanceof fc $$2) {
-         StringReader $$3 = new StringReader($$1.getInput());
-         $$3.setCursor($$1.getStart());
-         ho $$4 = new ho($$3, ho.a($$2));
-
-         try {
-            $$4.t();
-         } catch (CommandSyntaxException var7) {
-         }
-
-         return $$4.a($$1, $$1x -> {
-            Collection<String> $$2x = $$2.q();
-            Iterable<String> $$3x = (Iterable<String>)(this.i ? $$2x : Iterables.concat($$2x, $$2.z()));
-            fc.b($$3x, $$1x);
-         });
-      } else {
-         return Suggestions.empty();
-      }
+   private static boolean b(StringReader $$0) {
+      return !$$0.canRead() || $$0.peek() == ' ';
    }
 
    public Collection<String> getExamples() {
-      return g;
+      return b;
    }
 
-   public static class a implements iu<fk, fk.a.a> {
-      private static final byte a = 1;
-      private static final byte b = 2;
-
-      public void a(fk.a.a $$0, vr $$1) {
-         int $$2 = 0;
-         if ($$0.b) {
-            $$2 |= 1;
-         }
-
-         if ($$0.c) {
-            $$2 |= 2;
-         }
-
-         $$1.l($$2);
+   public static class a extends fk<fab> {
+      protected a(ee $$0) {
+         super($$0, mg.bp, fad.d);
       }
+   }
 
-      public fk.a.a a(vr $$0) {
-         byte $$1 = $$0.readByte();
-         return new fk.a.a(($$1 & 1) != 0, ($$1 & 2) != 0);
+   public static class b extends fk<fbw> {
+      protected b(ee $$0) {
+         super($$0, mg.bq, fbw.f);
       }
+   }
 
-      public void a(fk.a.a $$0, JsonObject $$1) {
-         $$1.addProperty("amount", $$0.b ? "single" : "multiple");
-         $$1.addProperty("type", $$0.c ? "players" : "entities");
-      }
-
-      public fk.a.a a(fk $$0) {
-         return new fk.a.a($$0.h, $$0.i);
-      }
-
-      public final class a implements iu.a<fk> {
-         final boolean b;
-         final boolean c;
-
-         a(final boolean $$1, final boolean $$2) {
-            this.b = $$1;
-            this.c = $$2;
-         }
-
-         public fk a(et $$0) {
-            return new fk(this.b, this.c);
-         }
-
-         @Override
-         public iu<fk, ?> a() {
-            return a.this;
-         }
+   public static class c extends fk<eys> {
+      protected c(ee $$0) {
+         super($$0, mg.bo, eys.e);
       }
    }
 }

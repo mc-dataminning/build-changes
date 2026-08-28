@@ -1,23 +1,18 @@
-public enum dzw implements bag {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String e;
-   private final wv f;
+public class dzw implements Predicate<dzo> {
+   private final dlu a;
 
-   private dzw(final String $$0) {
-      this.e = $$0;
-      this.f = wv.c("structure_block.mode_info." + $$0);
+   public dzw(dlu $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public static dzw a(dlu $$0) {
+      return new dzw($$0);
    }
 
-   public wv a() {
-      return this.f;
+   public boolean a(@Nullable dzo $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

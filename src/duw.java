@@ -1,20 +1,30 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class duw extends dud {
-   public static final MapCodec<duw> b = b(duw::new);
+public class duw extends dpl {
+   public static final MapCodec<duw> c = b(duw::new);
+   private static final feq g = dlu.b(8.0, 0.0, 15.0);
 
    @Override
    public MapCodec<duw> a() {
-      return b;
+      return c;
    }
 
-   protected duw(dyl.d $$0) {
-      super(dsc.b.d, $$0);
+   public duw(dzn.d $$0) {
+      super($$0, ja.b, g, false, 0.1);
    }
 
    @Override
-   public void a(dhp $$0, jj $$1, dym $$2, @Nullable bwr $$3, cxy $$4) {
-      duv.a($$0, $$1);
+   protected int a(azt $$0) {
+      return drf.a($$0);
+   }
+
+   @Override
+   protected dlu b() {
+      return dlw.pe;
+   }
+
+   @Override
+   protected boolean h(dzo $$0) {
+      return drf.a($$0);
    }
 }

@@ -1,66 +1,57 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Predicate;
 
-public record db(Optional<bf<asf<wv>, db.a>> c, Optional<String> d, Optional<String> e, dk.d f, Optional<Boolean> g) implements ea<dbe> {
-   public static final Codec<db> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               bf.a(db.a.a).optionalFieldOf("pages").forGetter(db::b),
-               Codec.STRING.optionalFieldOf("author").forGetter(db::c),
-               Codec.STRING.optionalFieldOf("title").forGetter(db::d),
-               dk.d.d.optionalFieldOf("generation", dk.d.c).forGetter(db::e),
-               Codec.BOOL.optionalFieldOf("resolved").forGetter(db::f)
-            )
-            .apply($$0, db::new)
-   );
-
+public class db extends dj<db.a> {
    @Override
-   public kw<dbe> a() {
-      return kx.V;
+   public Codec<db.a> a() {
+      return db.a.a;
    }
 
-   public boolean a(cxy $$0, dbe $$1) {
-      if (this.d.isPresent() && !this.d.get().equals($$1.e())) {
-         return false;
-      } else if (this.e.isPresent() && !this.e.get().equals($$1.d().a())) {
-         return false;
-      } else if (!this.f.d($$1.f())) {
-         return false;
-      } else {
-         return this.g.isPresent() && this.g.get() != $$1.g() ? false : !this.c.isPresent() || this.c.get().a($$1.a());
-      }
+   public void a(arp $$0, cys $$1, bwa $$2) {
+      eyn $$3 = bx.b($$0, $$2);
+      this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
-   public Optional<bf<asf<wv>, db.a>> b() {
-      return this.c;
-   }
+   public static record a(Optional<bi> b, Optional<cl> c, Optional<bi> d) implements dj.a {
+      public static final Codec<db.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bx.b.optionalFieldOf("player").forGetter(db.a::a),
+                  cl.a.optionalFieldOf("item").forGetter(db.a::b),
+                  bx.b.optionalFieldOf("entity").forGetter(db.a::c)
+               )
+               .apply($$0, db.a::new)
+      );
 
-   public Optional<String> c() {
-      return this.d;
-   }
-
-   public Optional<String> d() {
-      return this.e;
-   }
-
-   public dk.d e() {
-      return this.f;
-   }
-
-   public Optional<Boolean> f() {
-      return this.g;
-   }
-
-   public static record a(wv b) implements Predicate<asf<wv>> {
-      public static final Codec<db.a> a = wx.a.xmap(db.a::new, db.a::a);
-
-      public boolean a(asf<wv> $$0) {
-         return $$0.a().equals(this.b);
+      public static aq<db.a> a(Optional<bi> $$0, cl.a $$1, Optional<bi> $$2) {
+         return ap.T.a(new db.a($$0, Optional.of($$1.b()), $$2));
       }
 
-      public wv a() {
+      public static aq<db.a> a(cl.a $$0, Optional<bi> $$1) {
+         return a(Optional.empty(), $$0, $$1);
+      }
+
+      public boolean a(cys $$0, eyn $$1) {
+         return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
+      }
+
+      @Override
+      public void a(bj $$0) {
+         dj.a.super.a($$0);
+         $$0.a(this.d, ".entity");
+      }
+
+      @Override
+      public Optional<bi> a() {
          return this.b;
+      }
+
+      public Optional<cl> b() {
+         return this.c;
+      }
+
+      public Optional<bi> c() {
+         return this.d;
       }
    }
 }

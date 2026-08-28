@@ -2,31 +2,36 @@ import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
 import java.util.function.IntFunction;
 
-public enum cyu implements bag {
-   a(0, "common", n.p),
-   b(1, "uncommon", n.o),
-   c(2, "rare", n.l),
-   d(3, "epic", n.n);
+public enum cyu implements bai {
+   a(0, "none"),
+   b(1, "eat"),
+   c(2, "drink"),
+   d(3, "block"),
+   e(4, "bow"),
+   f(5, "spear"),
+   g(6, "crossbow"),
+   h(7, "spyglass"),
+   i(8, "toot_horn"),
+   j(9, "brush"),
+   k(10, "bundle");
 
-   public static final Codec<cyu> e = bag.b(cyu::values);
-   public static final IntFunction<cyu> f = aya.a($$0 -> $$0.h, values(), aya.a.a);
-   public static final yt<ByteBuf, cyu> g = yr.a(f, $$0 -> $$0.h);
-   private final int h;
-   private final String i;
-   private final n j;
+   private static final IntFunction<cyu> n = aya.a(cyu::a, values(), aya.a.a);
+   public static final Codec<cyu> l = bai.a(cyu::values);
+   public static final yu<ByteBuf, cyu> m = ys.a(n, cyu::a);
+   private final int o;
+   private final String p;
 
-   private cyu(final int $$0, final String $$1, final n $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
+   private cyu(final int $$0, final String $$1) {
+      this.o = $$0;
+      this.p = $$1;
    }
 
-   public n a() {
-      return this.j;
+   public int a() {
+      return this.o;
    }
 
    @Override
    public String c() {
-      return this.i;
+      return this.p;
    }
 }

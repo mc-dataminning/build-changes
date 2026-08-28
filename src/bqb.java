@@ -1,148 +1,196 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import it.unimi.dsi.fastutil.objects.Object2LongMaps;
+import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.time.Duration;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.BooleanSupplier;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
+import org.slf4j.Logger;
 
-public interface bqb {
-   String b = "root";
+public class bqb implements bqg {
+   private static final long a = Duration.ofMillis(100L).toNanos();
+   private static final Logger c = LogUtils.getLogger();
+   private final List<String> d = Lists.newArrayList();
+   private final LongList e = new LongArrayList();
+   private final Map<String, bqb.a> f = Maps.newHashMap();
+   private final IntSupplier g;
+   private final LongSupplier h;
+   private final long i;
+   private final int j;
+   private String k = "";
+   private boolean l;
+   @Nullable
+   private bqb.a m;
+   private final BooleanSupplier n;
+   private final Set<Pair<String, brs>> o = new ObjectArraySet();
 
-   void a();
-
-   void b();
-
-   void a(String var1);
-
-   void a(Supplier<String> var1);
-
-   void c();
-
-   void b(String var1);
-
-   void b(Supplier<String> var1);
-
-   default void e(String $$0) {
+   public bqb(LongSupplier $$0, IntSupplier $$1, BooleanSupplier $$2) {
+      this.i = $$0.getAsLong();
+      this.h = $$0;
+      this.j = $$1.getAsInt();
+      this.g = $$1;
+      this.n = $$2;
    }
 
-   default void a(long $$0) {
-   }
-
-   default void a(int $$0) {
-   }
-
-   default bqg d(String $$0) {
-      this.a($$0);
-      return new bqg(this);
-   }
-
-   default bqg c(Supplier<String> $$0) {
-      this.a($$0);
-      return new bqg(this);
-   }
-
-   void a(brk var1);
-
-   default void f(String $$0) {
-      this.a($$0, 1);
-   }
-
-   void a(String var1, int var2);
-
-   default void d(Supplier<String> $$0) {
-      this.a($$0, 1);
-   }
-
-   void a(Supplier<String> var1, int var2);
-
-   static bqb a(bqb $$0, bqb $$1) {
-      if ($$0 == bpx.a) {
-         return $$1;
+   @Override
+   public void a() {
+      if (this.l) {
+         c.error("Profiler tick already started - missing endTick()?");
       } else {
-         return (bqb)($$1 == bpx.a ? $$0 : new bqb.a($$0, $$1));
+         this.l = true;
+         this.k = "";
+         this.d.clear();
+         this.a("root");
       }
    }
 
-   public static class a implements bqb {
-      private final bqb a;
-      private final bqb c;
+   @Override
+   public void b() {
+      if (!this.l) {
+         c.error("Profiler tick already ended - missing startTick()?");
+      } else {
+         this.c();
+         this.l = false;
+         if (!this.k.isEmpty()) {
+            c.error("Profiler tick ended before path was fully popped (remainder: '{}'). Mismatched push/pop?", LogUtils.defer(() -> bqh.b(this.k)));
+         }
+      }
+   }
 
-      public a(bqb $$0, bqb $$1) {
-         this.a = $$0;
-         this.c = $$1;
+   @Override
+   public void a(String $$0) {
+      if (!this.l) {
+         c.error("Cannot push '{}' to profiler if profiler tick hasn't started - missing startTick()?", $$0);
+      } else {
+         if (!this.k.isEmpty()) {
+            this.k = this.k + "\u001e";
+         }
+
+         this.k = this.k + $$0;
+         this.d.add(this.k);
+         this.e.add(af.d());
+         this.m = null;
+      }
+   }
+
+   @Override
+   public void a(Supplier<String> $$0) {
+      this.a($$0.get());
+   }
+
+   @Override
+   public void a(brs $$0) {
+      this.o.add(Pair.of(this.k, $$0));
+   }
+
+   @Override
+   public void c() {
+      if (!this.l) {
+         c.error("Cannot pop from profiler if profiler tick hasn't started - missing startTick()?");
+      } else if (this.e.isEmpty()) {
+         c.error("Tried to pop one too many times! Mismatched push() and pop()?");
+      } else {
+         long $$0 = af.d();
+         long $$1 = this.e.removeLong(this.e.size() - 1);
+         this.d.remove(this.d.size() - 1);
+         long $$2 = $$0 - $$1;
+         bqb.a $$3 = this.f();
+         $$3.c += $$2;
+         $$3.d++;
+         $$3.a = Math.max($$3.a, $$2);
+         $$3.b = Math.min($$3.b, $$2);
+         if ($$2 > a && !this.n.getAsBoolean()) {
+            c.warn("Something's taking too long! '{}' took aprox {} ms", LogUtils.defer(() -> bqh.b(this.k)), LogUtils.defer(() -> (double)$$2 / 1000000.0));
+         }
+
+         this.k = this.d.isEmpty() ? "" : this.d.get(this.d.size() - 1);
+         this.m = null;
+      }
+   }
+
+   @Override
+   public void b(String $$0) {
+      this.c();
+      this.a($$0);
+   }
+
+   @Override
+   public void b(Supplier<String> $$0) {
+      this.c();
+      this.a($$0);
+   }
+
+   private bqb.a f() {
+      if (this.m == null) {
+         this.m = this.f.computeIfAbsent(this.k, $$0 -> new bqb.a());
+      }
+
+      return this.m;
+   }
+
+   @Override
+   public void a(String $$0, int $$1) {
+      this.f().e.addTo($$0, (long)$$1);
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+      this.f().e.addTo($$0.get(), (long)$$1);
+   }
+
+   @Override
+   public bqh d() {
+      return new bqe(this.f, this.i, this.j, this.h.getAsLong(), this.g.getAsInt());
+   }
+
+   @Nullable
+   @Override
+   public bqb.a c(String $$0) {
+      return this.f.get($$0);
+   }
+
+   @Override
+   public Set<Pair<String, brs>> e() {
+      return this.o;
+   }
+
+   public static class a implements bqk {
+      long a = Long.MIN_VALUE;
+      long b = Long.MAX_VALUE;
+      long c;
+      long d;
+      final Object2LongOpenHashMap<String> e = new Object2LongOpenHashMap();
+
+      @Override
+      public long a() {
+         return this.c;
       }
 
       @Override
-      public void a() {
-         this.a.a();
-         this.c.a();
+      public long b() {
+         return this.a;
       }
 
       @Override
-      public void b() {
-         this.a.b();
-         this.c.b();
+      public long c() {
+         return this.d;
       }
 
       @Override
-      public void a(String $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void a(Supplier<String> $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void a(brk $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void c() {
-         this.a.c();
-         this.c.c();
-      }
-
-      @Override
-      public void b(String $$0) {
-         this.a.b($$0);
-         this.c.b($$0);
-      }
-
-      @Override
-      public void b(Supplier<String> $$0) {
-         this.a.b($$0);
-         this.c.b($$0);
-      }
-
-      @Override
-      public void a(String $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.c.a($$0, $$1);
-      }
-
-      @Override
-      public void a(Supplier<String> $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.c.a($$0, $$1);
-      }
-
-      @Override
-      public void e(String $$0) {
-         this.a.e($$0);
-         this.c.e($$0);
-      }
-
-      @Override
-      public void a(long $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.a.a($$0);
-         this.c.a($$0);
+      public Object2LongMap<String> d() {
+         return Object2LongMaps.unmodifiable(this.e);
       }
    }
 }

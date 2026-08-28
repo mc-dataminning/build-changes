@@ -1,82 +1,65 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.channels.Channels;
-import java.nio.channels.FileChannel;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+public class bot extends bor implements box {
+   public static final int c = 240;
+   private final long[][] d;
+   private int e;
+   private int f;
 
-public class bot<T> implements Closeable {
-   private static final Gson a = new Gson();
-   private final Codec<T> b;
-   final FileChannel c;
-   private final AtomicInteger d = new AtomicInteger(1);
-
-   public bot(Codec<T> $$0, FileChannel $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public bot(int $$0) {
+      this($$0, new long[$$0]);
    }
 
-   public static <T> bot<T> a(Codec<T> $$0, Path $$1) throws IOException {
-      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
-      return new bot<>($$0, $$2);
+   public bot(int $$0, long[] $$1) {
+      super($$0, $$1);
+      this.d = new long[240][$$0];
    }
 
-   public void a(T $$0) throws IOException {
-      JsonElement $$1 = (JsonElement)this.b.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IOException::new);
-      this.c.position(this.c.size());
-      Writer $$2 = Channels.newWriter(this.c, StandardCharsets.UTF_8);
-      a.toJson($$1, a.newJsonWriter($$2));
-      $$2.write(10);
-      $$2.flush();
-   }
-
-   public bou<T> a() throws IOException {
-      if (this.d.get() <= 0) {
-         throw new IOException("Event log has already been closed");
+   @Override
+   protected void a() {
+      int $$0 = this.b(this.e + this.f);
+      System.arraycopy(this.b, 0, this.d[$$0], 0, this.b.length);
+      if (this.f < 240) {
+         this.f++;
       } else {
-         this.d.incrementAndGet();
-         final bou<T> $$0 = bou.a(this.b, Channels.newReader(this.c, StandardCharsets.UTF_8));
-         return new bou<T>() {
-            private volatile long c;
-
-            @Nullable
-            @Override
-            public T a() throws IOException {
-               Object var1;
-               try {
-                  bot.this.c.position(this.c);
-                  var1 = $$0.a();
-               } finally {
-                  this.c = bot.this.c.position();
-               }
-
-               return (T)var1;
-            }
-
-            @Override
-            public void close() throws IOException {
-               bot.this.b();
-            }
-         };
+         this.e = this.b(this.e + 1);
       }
    }
 
    @Override
-   public void close() throws IOException {
-      this.b();
+   public int c() {
+      return this.d.length;
    }
 
-   void b() throws IOException {
-      if (this.d.decrementAndGet() <= 0) {
-         this.c.close();
+   @Override
+   public int d() {
+      return this.f;
+   }
+
+   @Override
+   public long a(int $$0) {
+      return this.a($$0, 0);
+   }
+
+   @Override
+   public long a(int $$0, int $$1) {
+      if ($$0 >= 0 && $$0 < this.f) {
+         long[] $$2 = this.d[this.b(this.e + $$0)];
+         if ($$1 >= 0 && $$1 < $$2.length) {
+            return $$2[$$1];
+         } else {
+            throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + $$2.length);
+         }
+      } else {
+         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.f);
       }
+   }
+
+   private int b(int $$0) {
+      return $$0 % 240;
+   }
+
+   @Override
+   public void e() {
+      this.e = 0;
+      this.f = 0;
    }
 }

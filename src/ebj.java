@@ -1,63 +1,59 @@
-import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.UnaryOperator;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
 
-public record ebj(ImmutableList<ebn> c) {
-   public static final ebj a = new ebj.a()
-      .a(ebk.c, $$0 -> $$0)
-      .a(ebk.d, $$0 -> $$0.a(ebm::b))
-      .a(ebk.e, $$0 -> $$0.a(ebk.d, 8).a(ebm::d))
-      .a(ebk.f, $$0 -> $$0.a(ebk.d, 8).a(ebm::e))
-      .a(ebk.g, $$0 -> $$0.a(ebk.d, 8).a(ebk.f, 1).a(0).a(ebm::f))
-      .a(ebk.h, $$0 -> $$0.a(ebk.d, 8).a(ebk.f, 1).a(0).a(ebm::g))
-      .a(ebk.i, $$0 -> $$0.a(ebk.d, 8).a(0).a(ebm::h))
-      .a(ebk.j, $$0 -> $$0.a(ebk.d, 8).a(ebk.i, 1).a(1).a(ebm::i))
-      .a(ebk.k, $$0 -> $$0.a(ebm::j))
-      .a(ebk.l, $$0 -> $$0.a(ebk.k, 1).a(ebm::k))
-      .a(ebk.m, $$0 -> $$0.a(ebk.f, 1).a(ebm::l))
-      .a(ebk.n, $$0 -> $$0.a(ebm::m))
-      .a();
-   public static final ebj b = new ebj.a()
-      .a(ebk.c, $$0 -> $$0)
-      .a(ebk.d, $$0 -> $$0.a(ebm::c))
-      .a(ebk.e, $$0 -> $$0)
-      .a(ebk.f, $$0 -> $$0)
-      .a(ebk.g, $$0 -> $$0)
-      .a(ebk.h, $$0 -> $$0)
-      .a(ebk.i, $$0 -> $$0)
-      .a(ebk.j, $$0 -> $$0)
-      .a(ebk.k, $$0 -> $$0.a(ebm::j))
-      .a(ebk.l, $$0 -> $$0.a(ebk.k, 1).a(ebm::k))
-      .a(ebk.m, $$0 -> $$0)
-      .a(ebk.n, $$0 -> $$0.a(ebm::m))
-      .a();
+public class ebj implements AutoCloseable {
+   private final diq a;
+   private final Long2ObjectMap<ebw> b = new Long2ObjectOpenHashMap();
+   @Nullable
+   private ebw c;
+   private long d;
 
-   public ebn a(ebk $$0) {
-      return (ebn)this.c.get($$0.b());
+   public ebj(diq $$0) {
+      this.a = $$0;
    }
 
-   public ImmutableList<ebn> a() {
-      return this.c;
-   }
-
-   public static class a {
-      private final List<ebn> a = new ArrayList<>();
-
-      public ebj a() {
-         return new ebj(ImmutableList.copyOf(this.a));
-      }
-
-      public ebj.a a(ebk $$0, UnaryOperator<ebn.a> $$1) {
-         ebn.a $$2;
-         if (this.a.isEmpty()) {
-            $$2 = new ebn.a($$0);
-         } else {
-            $$2 = new ebn.a($$0, this.a.getLast());
+   @Nullable
+   public ebw a(iu $$0) {
+      int $$1 = this.a.f($$0.v());
+      if ($$1 >= 0 && $$1 < this.a.ap()) {
+         long $$2 = jx.c($$0);
+         if (this.c == null || this.d != $$2) {
+            this.c = (ebw)this.b.computeIfAbsent($$2, $$2x -> {
+               ebl $$3 = this.a.a(jx.a($$0.u()), jx.a($$0.w()));
+               ebw $$4 = $$3.b($$1);
+               $$4.a();
+               return $$4;
+            });
+            this.d = $$2;
          }
 
-         this.a.add($$1.apply($$2).a());
-         return this;
+         return this.c;
+      } else {
+         return null;
+      }
+   }
+
+   public dzo b(iu $$0) {
+      ebw $$1 = this.a($$0);
+      if ($$1 == null) {
+         return dlw.a.m();
+      } else {
+         int $$2 = jx.b($$0.u());
+         int $$3 = jx.b($$0.v());
+         int $$4 = jx.b($$0.w());
+         return $$1.a($$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public void close() {
+      ObjectIterator var1 = this.b.values().iterator();
+
+      while (var1.hasNext()) {
+         ebw $$0 = (ebw)var1.next();
+         $$0.b();
       }
    }
 }

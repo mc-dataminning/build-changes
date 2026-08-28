@@ -1,30 +1,41 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dlm extends dku {
+public class dlm extends dlg implements dll {
    public static final MapCodec<dlm> a = b(dlm::new);
-   private static final fdo b = dku.b(16.0, 0.0, 1.0);
 
    @Override
-   public MapCodec<? extends dlm> a() {
+   public MapCodec<dlm> a() {
       return a;
    }
 
-   public dlm(dyl.d $$0) {
+   public dlm(dzn.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return b;
+   public cxq b() {
+      return cxq.a;
    }
 
    @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      return !$$0.a($$1, $$3) ? dkw.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public dwn a(iu $$0, dzo $$1) {
+      return new dwi($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dwn> dwo<T> a(dip $$0, dzo $$1, dwp<T> $$2) {
+      return a($$2, dwp.p, dwi::a);
    }
 
    @Override
-   protected boolean a(dym $$0, dhs $$1, jj $$2) {
-      return !$$1.u($$2.e());
+   protected bty a(dzo $$0, dip $$1, iu $$2, cqs $$3, fds $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dwi $$5) {
+         $$3.a($$5);
+         $$3.a(awv.ab);
+      }
+
+      return bty.a;
    }
 }

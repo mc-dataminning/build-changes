@@ -1,93 +1,38 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
-public class eyk extends eyy {
-   public static final MapCodec<eyk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  md.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dzp::f).toList())
-               )
-            )
-            .apply($$0, eyk::new)
-   );
-   private final js<dku> b;
-   private final Set<dzp<?>> c;
+public interface eyk<T> {
+   ki<T> a();
 
-   eyk(List<fau> $$0, js<dku> $$1, Set<dzp<?>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   T b();
+
+   T a(T var1, Stream<cys> var2);
+
+   Stream<cys> a(T var1);
+
+   default void a(cys $$0, T $$1, Stream<cys> $$2) {
+      T $$3 = $$0.a(this.a(), $$1);
+      T $$4 = this.a($$3, $$2);
+      $$0.b(this.a(), $$4);
    }
 
-   private eyk(List<fau> $$0, js<dku> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   default void a(cys $$0, Stream<cys> $$1) {
+      this.a($$0, this.b(), $$1);
    }
 
-   @Override
-   public eza<eyk> b() {
-      return ezb.D;
-   }
-
-   @Override
-   public Set<bat<?>> a() {
-      return Set.of(faf.g);
-   }
-
-   @Override
-   protected cxy a(cxy $$0, exl $$1) {
-      dym $$2 = $$1.c(faf.g);
+   default void a(cys $$0, UnaryOperator<cys> $$1) {
+      T $$2 = $$0.a(this.a());
       if ($$2 != null) {
-         $$0.a(kx.ao, czx.a, $$1x -> {
-            for (dzp<?> $$2x : this.c) {
-               if ($$2.b($$2x)) {
-                  $$1x = $$1x.a($$2x, $$2);
-               }
+         UnaryOperator<cys> $$3 = $$1x -> {
+            if ($$1x.f()) {
+               return $$1x;
+            } else {
+               cys $$2x = $$1.apply($$1x);
+               $$2x.f($$2x.k());
+               return $$2x;
             }
-
-            return $$1x;
-         });
-      }
-
-      return $$0;
-   }
-
-   public static eyk.a a(dku $$0) {
-      return new eyk.a($$0);
-   }
-
-   public static class a extends eyy.a<eyk.a> {
-      private final js<dku> a;
-      private final Builder<dzp<?>> b = ImmutableSet.builder();
-
-      a(dku $$0) {
-         this.a = $$0.p();
-      }
-
-      public eyk.a a(dzp<?> $$0) {
-         if (!this.a.a().l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      protected eyk.a a() {
-         return this;
-      }
-
-      @Override
-      public eyz b() {
-         return new eyk(this.g(), this.a, this.b.build());
+         };
+         this.a($$0, this.a($$2).map($$3));
       }
    }
 }

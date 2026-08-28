@@ -1,81 +1,85 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class cdl extends cdz {
+   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
+   private final cix b;
+   private final int c;
+   private boolean d;
 
-public class cdl extends cdn {
-   private final bxn a;
-   @Nullable
-   private bwr b;
-   private final double c;
-   private final cgb d;
-   private int e;
-   private final float f;
-   private final float g;
-   private float h;
-
-   public cdl(bxn $$0, double $$1, float $$2, float $$3) {
-      this.a = $$0;
-      this.c = $$1;
-      this.d = $$0.O();
-      this.g = $$2;
-      this.f = $$3;
-      this.a(EnumSet.of(cdn.a.a, cdn.a.b));
-      if (!($$0.O() instanceof cga) && !($$0.O() instanceof cfz)) {
-         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
-      }
+   public cdl(cix $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
    }
 
    @Override
    public boolean b() {
-      bwr $$0 = this.a.e();
-      if ($$0 == null) {
-         return false;
-      } else if (this.a.gt()) {
-         return false;
-      } else if (this.a.g((bvs)$$0) < (double)(this.g * this.g)) {
+      if (this.b.dY().a(this.c) != 0) {
          return false;
       } else {
-         this.b = $$0;
+         ja $$0 = this.b.cP();
+         int $$1 = $$0.j();
+         int $$2 = $$0.l();
+         iu $$3 = this.b.dv();
+
+         for (int $$4 : a) {
+            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
+               return false;
+            }
+         }
+
          return true;
       }
    }
 
+   private boolean a(iu $$0, int $$1, int $$2, int $$3) {
+      iu $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
+      return this.b.dV().b_($$4).a(axf.a) && !this.b.dV().a_($$4).d();
+   }
+
+   private boolean b(iu $$0, int $$1, int $$2, int $$3) {
+      return this.b.dV().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).l() && this.b.dV().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).l();
+   }
+
    @Override
    public boolean c() {
-      if (this.d.k()) {
-         return false;
-      } else {
-         return this.a.gt() ? false : !(this.a.g((bvs)this.b) <= (double)(this.f * this.f));
-      }
+      double $$0 = this.b.dy().e;
+      return (!($$0 * $$0 < 0.03F) || this.b.dN() == 0.0F || !(Math.abs(this.b.dN()) < 10.0F) || !this.b.bj()) && !this.b.aJ();
+   }
+
+   @Override
+   public boolean P_() {
+      return false;
    }
 
    @Override
    public void d() {
-      this.e = 0;
-      this.h = this.a.a(evk.j);
-      this.a.a(evk.j, 0.0F);
+      ja $$0 = this.b.cP();
+      this.b.i(this.b.dy().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
+      this.b.O().m();
    }
 
    @Override
    public void e() {
-      this.b = null;
-      this.d.m();
-      this.a.a(evk.j, this.h);
+      this.b.x(0.0F);
    }
 
    @Override
    public void a() {
-      boolean $$0 = this.a.gs();
+      boolean $$0 = this.d;
       if (!$$0) {
-         this.a.J().a(this.b, 10.0F, (float)this.a.ac());
+         evv $$1 = this.b.dV().b_(this.b.dv());
+         this.d = $$1.a(axf.a);
       }
 
-      if (--this.e <= 0) {
-         this.e = this.a(10);
-         if ($$0) {
-            this.a.gr();
-         } else {
-            this.d.a(this.b, this.c);
-         }
+      if (this.d && !$$0) {
+         this.b.a(awl.hw, 1.0F, 1.0F);
+      }
+
+      fdw $$2 = this.b.dy();
+      if ($$2.e * $$2.e < 0.03F && this.b.dN() != 0.0F) {
+         this.b.x(azk.i(0.2F, this.b.dN(), 0.0F));
+      } else if ($$2.g() > 1.0E-5F) {
+         double $$3 = $$2.i();
+         double $$4 = Math.atan2(-$$2.e, $$3) * 180.0F / (float)Math.PI;
+         this.b.x((float)$$4);
       }
    }
 }

@@ -1,89 +1,39 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class csn {
-   public static int[][] a(jo $$0) {
-      jo $$1 = $$0.h();
-      jo $$2 = $$1.g();
-      jo $$3 = $$0.g();
-      return new int[][]{
-         {$$1.j(), $$1.l()},
-         {$$2.j(), $$2.l()},
-         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
-         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
-         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
-         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
-         {$$3.j(), $$3.l()},
-         {$$0.j(), $$0.l()}
-      };
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final csn c = a("empty").a(0, csl.b).a();
+   public static final csn d = a("simple").a(5000, csl.c).a(11000, csl.e).a();
+   public static final csn e = a("villager_baby").a(10, csl.b).a(3000, csl.d).a(6000, csl.b).a(10000, csl.d).a(12000, csl.e).a();
+   public static final csn f = a("villager_default").a(10, csl.b).a(2000, csl.c).a(9000, csl.f).a(11000, csl.b).a(12000, csl.e).a();
+   private final Map<csl, csp> g = Maps.newHashMap();
+
+   protected static cso a(String $$0) {
+      csn $$1 = jr.a(mf.B, $$0, new csn());
+      return new cso($$1);
    }
 
-   public static boolean a(double $$0) {
-      return !Double.isInfinite($$0) && $$0 < 1.0;
-   }
-
-   public static boolean a(dgz $$0, bwr $$1, fcp $$2) {
-      for (fdo $$4 : $$0.e($$1, $$2)) {
-         if (!$$4.c()) {
-            return false;
-         }
+   protected void a(csl $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new csp());
       }
-
-      return $$0.A_().a($$2);
    }
 
-   public static boolean a(dgz $$0, fcu $$1, bwr $$2, bxd $$3) {
-      return a($$0, $$2, $$2.f($$3).c($$1));
+   protected csp b(csl $$0) {
+      return this.g.get($$0);
    }
 
-   public static fdo a(dgv $$0, jj $$1) {
-      dym $$2 = $$0.a_($$1);
-      return !$$2.a(awz.aS) && (!($$2.b() instanceof dtp) || !$$2.c(dtp.b)) ? $$2.g($$0, $$1) : fdl.a();
+   protected List<csp> c(csl $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
    }
 
-   public static double a(jj $$0, int $$1, Function<jj, fdo> $$2) {
-      jj.a $$3 = $$0.k();
-      int $$4 = 0;
-
-      while ($$4 < $$1) {
-         fdo $$5 = $$2.apply($$3);
-         if (!$$5.c()) {
-            return (double)($$0.v() + $$4) + $$5.b(jo.a.b);
-         }
-
-         $$4++;
-         $$3.c(jo.b);
-      }
-
-      return Double.POSITIVE_INFINITY;
-   }
-
-   @Nullable
-   public static fcu a(bwb<?> $$0, dgz $$1, jj $$2, boolean $$3) {
-      if ($$3 && $$0.a($$1.a_($$2))) {
-         return null;
-      } else {
-         double $$4 = $$1.a(a((dgv)$$1, $$2), () -> a((dgv)$$1, $$2.e()));
-         if (!a($$4)) {
-            return null;
-         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.e()))) {
-            return null;
-         } else {
-            fcu $$5 = fcu.a($$2, $$4);
-            fcp $$6 = $$0.n().a($$5);
-
-            for (fdo $$8 : $$1.e(null, $$6)) {
-               if (!$$8.c()) {
-                  return null;
-               }
-            }
-
-            if ($$0 != bwb.bR || !$$1.a_($$2).a(awz.cv) && !$$1.a_($$2.d()).a(awz.cv)) {
-               return !$$1.A_().a($$6) ? null : $$5;
-            } else {
-               return null;
-            }
-         }
-      }
+   public csl a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(csl.b);
    }
 }

@@ -2,30 +2,110 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class qc {
-   public static final alc<eqq> a = qn.a("bastion/starts");
-
-   public static void a(qg<eqq> $$0) {
-      jt<etg> $$1 = $$0.a(me.ba);
-      js<etg> $$2 = $$1.b(qo.w);
-      jt<eqq> $$3 = $$0.a(me.bc);
-      js<eqq> $$4 = $$3.b(qn.a);
-      $$0.a(
-         a,
-         new eqq(
+   public static void a(qh<ers> $$0) {
+      jf<eui> $$1 = $$0.a(mg.ba);
+      je<eui> $$2 = $$1.b(qp.t);
+      jf<ers> $$3 = $$0.a(mg.bd);
+      je<ers> $$4 = $$3.b(qo.a);
+      qo.a(
+         $$0,
+         "bastion/units/center_pieces",
+         new ers(
             $$4,
             ImmutableList.of(
-               Pair.of(eqo.b("bastion/units/air_base", $$2), 1),
-               Pair.of(eqo.b("bastion/hoglin_stable/air_base", $$2), 1),
-               Pair.of(eqo.b("bastion/treasure/big_air_full", $$2), 1),
-               Pair.of(eqo.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
+               Pair.of(erq.b("bastion/units/center_pieces/center_0", $$2), 1),
+               Pair.of(erq.b("bastion/units/center_pieces/center_1", $$2), 1),
+               Pair.of(erq.b("bastion/units/center_pieces/center_2", $$2), 1)
             ),
-            eqq.a.b
+            ers.a.b
          )
       );
-      qb.a($$0);
-      qa.a($$0);
-      qe.a($$0);
-      pz.a($$0);
-      qd.a($$0);
+      qo.a(
+         $$0,
+         "bastion/units/pathways",
+         new ers(
+            $$4,
+            ImmutableList.of(Pair.of(erq.b("bastion/units/pathways/pathway_0", $$2), 1), Pair.of(erq.b("bastion/units/pathways/pathway_wall_0", $$2), 1)),
+            ers.a.b
+         )
+      );
+      qo.a(
+         $$0,
+         "bastion/units/walls/wall_bases",
+         new ers(
+            $$4,
+            ImmutableList.of(Pair.of(erq.b("bastion/units/walls/wall_base", $$2), 1), Pair.of(erq.b("bastion/units/walls/connected_wall", $$2), 1)),
+            ers.a.b
+         )
+      );
+      qo.a(
+         $$0,
+         "bastion/units/stages/stage_0",
+         new ers(
+            $$4,
+            ImmutableList.of(
+               Pair.of(erq.b("bastion/units/stages/stage_0_0", $$2), 1),
+               Pair.of(erq.b("bastion/units/stages/stage_0_1", $$2), 1),
+               Pair.of(erq.b("bastion/units/stages/stage_0_2", $$2), 1),
+               Pair.of(erq.b("bastion/units/stages/stage_0_3", $$2), 1)
+            ),
+            ers.a.b
+         )
+      );
+      qo.a(
+         $$0,
+         "bastion/units/stages/stage_1",
+         new ers(
+            $$4,
+            ImmutableList.of(
+               Pair.of(erq.b("bastion/units/stages/stage_1_0", $$2), 1),
+               Pair.of(erq.b("bastion/units/stages/stage_1_1", $$2), 1),
+               Pair.of(erq.b("bastion/units/stages/stage_1_2", $$2), 1),
+               Pair.of(erq.b("bastion/units/stages/stage_1_3", $$2), 1)
+            ),
+            ers.a.b
+         )
+      );
+      qo.a($$0, "bastion/units/stages/rot/stage_1", new ers($$4, ImmutableList.of(Pair.of(erq.b("bastion/units/stages/rot/stage_1_0", $$2), 1)), ers.a.b));
+      qo.a(
+         $$0,
+         "bastion/units/stages/stage_2",
+         new ers(
+            $$4, ImmutableList.of(Pair.of(erq.b("bastion/units/stages/stage_2_0", $$2), 1), Pair.of(erq.b("bastion/units/stages/stage_2_1", $$2), 1)), ers.a.b
+         )
+      );
+      qo.a(
+         $$0,
+         "bastion/units/stages/stage_3",
+         new ers(
+            $$4,
+            ImmutableList.of(
+               Pair.of(erq.b("bastion/units/stages/stage_3_0", $$2), 1),
+               Pair.of(erq.b("bastion/units/stages/stage_3_1", $$2), 1),
+               Pair.of(erq.b("bastion/units/stages/stage_3_2", $$2), 1),
+               Pair.of(erq.b("bastion/units/stages/stage_3_3", $$2), 1)
+            ),
+            ers.a.b
+         )
+      );
+      qo.a($$0, "bastion/units/fillers/stage_0", new ers($$4, ImmutableList.of(Pair.of(erq.b("bastion/units/fillers/stage_0", $$2), 1)), ers.a.b));
+      qo.a($$0, "bastion/units/edges", new ers($$4, ImmutableList.of(Pair.of(erq.b("bastion/units/edges/edge_0", $$2), 1)), ers.a.b));
+      qo.a($$0, "bastion/units/wall_units", new ers($$4, ImmutableList.of(Pair.of(erq.b("bastion/units/wall_units/unit_0", $$2), 1)), ers.a.b));
+      qo.a($$0, "bastion/units/edge_wall_units", new ers($$4, ImmutableList.of(Pair.of(erq.b("bastion/units/wall_units/edge_0_large", $$2), 1)), ers.a.b));
+      qo.a(
+         $$0,
+         "bastion/units/ramparts",
+         new ers(
+            $$4,
+            ImmutableList.of(
+               Pair.of(erq.b("bastion/units/ramparts/ramparts_0", $$2), 1),
+               Pair.of(erq.b("bastion/units/ramparts/ramparts_1", $$2), 1),
+               Pair.of(erq.b("bastion/units/ramparts/ramparts_2", $$2), 1)
+            ),
+            ers.a.b
+         )
+      );
+      qo.a($$0, "bastion/units/large_ramparts", new ers($$4, ImmutableList.of(Pair.of(erq.b("bastion/units/ramparts/ramparts_0", $$2), 1)), ers.a.b));
+      qo.a($$0, "bastion/units/rampart_plates", new ers($$4, ImmutableList.of(Pair.of(erq.b("bastion/units/rampart_plates/plate_0", $$2), 1)), ers.a.b));
    }
 }

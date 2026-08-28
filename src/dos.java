@@ -1,132 +1,113 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class dos extends dkg {
+public class dos extends dlu {
    public static final MapCodec<dos> a = b(dos::new);
-   public static final dzk<jo> b = dzc.S;
-   public static final dzd c = dzc.i;
-   private final Function<dym, fdo> d;
-   private final Map<jo, fdo> e;
+   public static final eao b = eae.aT;
+   private static final feq d = dlu.b(16.0, 0.0, 15.0);
+   public static final int c = 7;
 
    @Override
    public MapCodec<dos> a() {
       return a;
    }
 
-   public dos(dyl.d $$0) {
+   protected dos(dzn.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, jo.a).b(c, Boolean.valueOf(true)));
-      fdo $$1 = dku.b(12.0, 11.0, 16.0);
-      this.d = this.b($$1);
-      this.e = ImmutableMap.builderWithExpectedSize(5).putAll(fdl.c(fdl.a($$1, dku.a(4.0, 8.0, 10.0, 0.0, 4.0)))).put(jo.a, $$1).build();
-   }
-
-   private Function<dym, fdo> b(fdo $$0) {
-      fdo $$1 = fdl.a(dku.b(16.0, 10.0, 16.0), dku.b(8.0, 4.0, 10.0));
-      fdo $$2 = fdl.a($$1, $$0, fcy.e);
-      Map<jo, fdo> $$3 = fdl.d(dku.a(4.0, 4.0, 8.0, 0.0, 8.0), new fcu(8.0, 6.0, 8.0).c(0.0625));
-      return this.a($$2x -> fdl.a($$2, fdl.a($$3.get($$2x.c(b)), fdl.b(), fcy.i)), new dzp[]{c});
+      this.l(this.B.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return this.d.apply($$0);
-   }
-
-   @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2) {
-      return this.e.get($$0.c(b));
-   }
-
-   @Override
-   public dym a(dbn $$0) {
-      jo $$1 = $$0.k().g();
-      return this.m().b(b, $$1.o() == jo.a.b ? jo.a : $$1).b(c, Boolean.valueOf(true));
-   }
-
-   @Override
-   public dvl a(jj $$0, dym $$1) {
-      return new dwo($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dvl> dvm<T> a(dhp $$0, dym $$1, dvn<T> $$2) {
-      return $$0.C ? null : a($$2, dvn.s, dwo::a);
-   }
-
-   @Override
-   protected void a(dym $$0, dhp $$1, jj $$2, dym $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2, $$0);
-      }
-   }
-
-   @Override
-   protected btq a(dym $$0, dhp $$1, jj $$2, cqi $$3, fcq $$4) {
-      if (!$$1.C && $$1.c_($$2) instanceof dwo $$5) {
-         $$3.a($$5);
-         $$3.a(awu.ad);
+   protected dzo a(dzo $$0, dis $$1, dje $$2, iu $$3, ja $$4, iu $$5, dzo $$6, azt $$7) {
+      if ($$4 == ja.b && !$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
       }
 
-      return btq.a;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(dym $$0, dhp $$1, jj $$2, dku $$3, @Nullable ewb $$4, boolean $$5) {
-      this.a($$1, $$2, $$0);
-   }
-
-   private void a(dhp $$0, jj $$1, dym $$2) {
-      boolean $$3 = !$$0.C($$1);
-      if ($$3 != $$2.c(c)) {
-         $$0.a($$1, $$2.b(c, Boolean.valueOf($$3)), 2);
-      }
+   protected boolean a(dzo $$0, dis $$1, iu $$2) {
+      dzo $$3 = $$1.a_($$2.d());
+      return !$$3.e() || $$3.b() instanceof dou || $$3.b() instanceof dzg;
    }
 
    @Override
-   protected void a(dym $$0, arn $$1, jj $$2, boolean $$3) {
-      btm.a($$0, $$1, $$2);
+   public dzo a(dcl $$0) {
+      return !this.m().a((dis)$$0.q(), $$0.a()) ? dlw.j.m() : super.a($$0);
    }
 
    @Override
-   protected boolean c_(dym $$0) {
+   protected boolean g_(dzo $$0) {
       return true;
    }
 
    @Override
-   protected int a(dym $$0, dhp $$1, jj $$2) {
-      return ctn.a($$1.c_($$2));
+   protected feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return d;
    }
 
    @Override
-   protected dym a(dym $$0, drm $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dym a(dym $$0, dpv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected void a(dym $$0, dhp $$1, jj $$2, bvs $$3) {
-      dvl $$4 = $$1.c_($$2);
-      if ($$4 instanceof dwo) {
-         dwo.a($$1, $$2, $$0, $$3, (dwo)$$4);
+   protected void a(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      if (!$$0.a($$1, $$2)) {
+         a(null, $$0, $$1, $$2);
       }
    }
 
    @Override
-   protected boolean a(dym $$0, evi $$1) {
+   protected void b(dzo $$0, aro $$1, iu $$2, azt $$3) {
+      int $$4 = $$0.c(b);
+      if (!a((dis)$$1, $$2) && !$$1.r($$2.d())) {
+         if ($$4 > 0) {
+            $$1.a($$2, $$0.b(b, Integer.valueOf($$4 - 1)), 2);
+         } else if (!a((dhv)$$1, $$2)) {
+            a(null, $$0, $$1, $$2);
+         }
+      } else if ($$4 < 7) {
+         $$1.a($$2, $$0.b(b, Integer.valueOf(7)), 2);
+      }
+   }
+
+   @Override
+   public void a(dip $$0, dzo $$1, iu $$2, bwa $$3, double $$4) {
+      if ($$0 instanceof aro $$5
+         && (double)$$0.A.i() < $$4 - 0.5
+         && $$3 instanceof bwz
+         && ($$3 instanceof cqs || $$5.O().c(dil.c))
+         && $$3.dq() * $$3.dq() * $$3.dr() > 0.512F) {
+         a($$3, $$1, $$0, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static void a(@Nullable bwa $$0, dzo $$1, dip $$2, iu $$3) {
+      dzo $$4 = a($$1, dlw.j.m(), $$2, $$3);
+      $$2.b($$3, $$4);
+      $$2.a(eeo.c, $$3, eeo.a.a($$0, $$4));
+   }
+
+   private static boolean a(dhv $$0, iu $$1) {
+      return $$0.a_($$1.d()).a(axa.cC);
+   }
+
+   private static boolean a(dis $$0, iu $$1) {
+      for (iu $$2 : iu.c($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
+         if ($$0.b_($$2).a(axf.a)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(dzo $$0, ewk $$1) {
       return false;
    }
 }

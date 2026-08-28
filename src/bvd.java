@@ -1,14 +1,15 @@
-class bvd extends but {
-   protected bvd(buv $$0, int $$1) {
-      super($$0, $$1);
+public enum bvd {
+   a(n.j),
+   b(n.m),
+   c(n.j);
+
+   private final n d;
+
+   private bvd(final n $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public boolean a(arn $$0, bwr $$1, int $$2) {
-      if ($$1 instanceof cqi $$3) {
-         $$3.gt().a($$2 + 1, 1.0F);
-      }
-
-      return true;
+   public n a() {
+      return this.d;
    }
 }

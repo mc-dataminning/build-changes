@@ -1,12 +1,20 @@
-public class aju {
-   public static final ze<ajt> a = a("pong_response");
-   public static final ze<ajw> b = b("ping_request");
+public record aju(long b) implements zd<ajt> {
+   public static final yu<vs, aju> a = zd.a(aju::a, aju::new);
 
-   private static <T extends zc<ajs>> ze<T> a(String $$0) {
-      return new ze<>(zd.b, ald.b($$0));
+   private aju(vs $$0) {
+      this($$0.readLong());
    }
 
-   private static <T extends zc<ajv>> ze<T> b(String $$0) {
-      return new ze<>(zd.a, ald.b($$0));
+   private void a(vs $$0) {
+      $$0.b(this.b);
+   }
+
+   @Override
+   public zf<aju> a() {
+      return ajv.a;
+   }
+
+   public void a(ajt $$0) {
+      $$0.a(this);
    }
 }

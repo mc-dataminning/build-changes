@@ -1,127 +1,102 @@
+import java.util.EnumSet;
+import java.util.Iterator;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class cfn extends cdn {
-   private static final int a = 0;
-   private static final int b = 1;
-   private static final int c = 2;
-   protected final bwt e;
-   protected final boolean f;
-   private final boolean d;
-   private int i;
-   private int j;
-   private int k;
+public class cfn extends cfv {
+   private static final cho a = cho.a().d().e();
+   private static final int b = 10;
+   private boolean c;
+   private int d;
+   private final Class<?>[] i;
    @Nullable
-   protected bwr g;
-   protected int h = 60;
+   private Class<?>[] j;
 
-   public cfn(bwt $$0, boolean $$1) {
-      this($$0, $$1, false);
-   }
-
-   public cfn(bwt $$0, boolean $$1, boolean $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.d = $$2;
+   public cfn(bxh $$0, Class<?>... $$1) {
+      super($$0, true);
+      this.i = $$1;
+      this.a(EnumSet.of(cdv.a.d));
    }
 
    @Override
-   public boolean c() {
-      bwr $$0 = this.e.f();
-      if ($$0 == null) {
-         $$0 = this.g;
-      }
-
-      if ($$0 == null) {
-         return false;
-      } else if (!this.e.c($$0)) {
-         return false;
-      } else {
-         feb $$1 = this.e.cr();
-         feb $$2 = $$0.cr();
-         if ($$1 != null && $$2 == $$1) {
+   public boolean b() {
+      int $$0 = this.e.es();
+      bwz $$1 = this.e.eq();
+      if ($$0 != this.d && $$1 != null) {
+         if ($$1.aq() == bwj.bS && a(this.e).O().c(dil.P)) {
             return false;
          } else {
-            double $$3 = this.l();
-            if (this.e.g($$0) > $$3 * $$3) {
-               return false;
-            } else {
-               if (this.f) {
-                  if (this.e.P().a($$0)) {
-                     this.k = 0;
-                  } else if (++this.k > b(this.h)) {
-                     return false;
-                  }
+            for (Class<?> $$2 : this.i) {
+               if ($$2.isAssignableFrom($$1.getClass())) {
+                  return false;
                }
-
-               this.e.h($$0);
-               return true;
             }
+
+            return this.a($$1, a);
          }
+      } else {
+         return false;
       }
    }
 
-   protected double l() {
-      return this.e.h(bxx.m);
+   public cfn a(Class<?>... $$0) {
+      this.c = true;
+      this.j = $$0;
+      return this;
    }
 
    @Override
    public void d() {
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
+      this.e.g(this.e.eq());
+      this.g = this.e.f();
+      this.d = this.e.es();
+      this.h = 300;
+      if (this.c) {
+         this.h();
+      }
+
+      super.d();
    }
 
-   @Override
-   public void e() {
-      this.e.h(null);
-      this.g = null;
-   }
+   protected void h() {
+      double $$0 = this.l();
+      fdr $$1 = fdr.a(this.e.dt()).c($$0, 10.0, $$0);
+      List<? extends bxb> $$2 = this.e.dV().a((Class<? extends bxb>)this.e.getClass(), $$1, bwh.f);
+      Iterator var5 = $$2.iterator();
 
-   protected boolean a(@Nullable bwr $$0, chg $$1) {
-      if ($$0 == null) {
-         return false;
-      } else if (!$$1.a(a(this.e), this.e, $$0)) {
-         return false;
-      } else if (!this.e.a($$0.dv())) {
-         return false;
-      } else {
-         if (this.d) {
-            if (--this.j <= 0) {
-               this.i = 0;
+      while (true) {
+         bxb $$3;
+         while (true) {
+            if (!var5.hasNext()) {
+               return;
             }
 
-            if (this.i == 0) {
-               this.i = this.a($$0) ? 1 : 2;
-            }
+            $$3 = (bxb)var5.next();
+            if (this.e != $$3 && $$3.f() == null && (!(this.e instanceof bxv) || ((bxv)this.e).e() == ((bxv)$$3).e()) && !$$3.s(this.e.eq())) {
+               if (this.j == null) {
+                  break;
+               }
 
-            if (this.i == 2) {
-               return false;
+               boolean $$4 = false;
+
+               for (Class<?> $$5 : this.j) {
+                  if ($$3.getClass() == $$5) {
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  break;
+               }
             }
          }
 
-         return true;
+         this.a($$3, this.e.eq());
       }
    }
 
-   private boolean a(bwr $$0) {
-      this.j = b(10 + this.e.dY().a(5));
-      evh $$1 = this.e.O().a($$0, 0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         evf $$2 = $$1.d();
-         if ($$2 == null) {
-            return false;
-         } else {
-            int $$3 = $$2.a - $$0.dz();
-            int $$4 = $$2.c - $$0.dF();
-            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
-         }
-      }
-   }
-
-   public cfn c(int $$0) {
-      this.h = $$0;
-      return this;
+   protected void a(bxb $$0, bwz $$1) {
+      $$0.g($$1);
    }
 }

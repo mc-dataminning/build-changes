@@ -1,54 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bzv {
-   public static byj<cpu> a() {
-      return cbv.a(
-         (Function<cbv.b<cpu>, ? extends App<cbv.c<cpu>, cby<cpu>>>)($$0 -> $$0.group($$0.b(cft.c), $$0.b(cft.g))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        jr $$6 = $$0.b($$1);
-                        $$3.A()
-                           .c($$6.b())
-                           .ifPresent(
-                              $$4x -> $$0.<List<bwr>>b($$2)
-                                    .stream()
-                                    .filter($$1xxx -> $$1xxx instanceof cpu && $$1xxx != $$4)
-                                    .map($$0xxxx -> (cpu)$$0xxxx)
-                                    .filter(bwr::bK)
-                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
-                                    .reduce($$4, bzv::a)
-                           );
-                        return true;
-                     }
-               ))
-      );
+public class bzv extends byq<cqe> {
+   private final float c;
+
+   public bzv(float $$0) {
+      super(ImmutableMap.of(cgb.n, cgc.c, cgb.o, cgc.c), Integer.MAX_VALUE);
+      this.c = $$0;
    }
 
-   private static cpu a(cpu $$0, cpu $$1) {
-      cpu $$2;
-      cpu $$3;
-      if ($$0.t() > $$1.t()) {
-         $$2 = $$0;
-         $$3 = $$1;
-      } else {
-         $$2 = $$1;
-         $$3 = $$0;
-      }
-
-      $$3.eb().b(cft.c);
-      return $$2;
+   protected boolean a(aro $$0, cqe $$1) {
+      cqs $$2 = $$1.x();
+      return $$1.bK() && $$2 != null && !$$1.bj() && !$$1.T && $$1.g($$2) <= 16.0 && $$2.bQ != null;
    }
 
-   private static boolean a(jr $$0, js<chw> $$1, cpu $$2) {
-      Optional<jr> $$3 = $$2.eb().c(cft.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gy().b());
+   protected boolean a(aro $$0, cqe $$1, long $$2) {
+      return this.a($$0, $$1);
    }
 
-   private static boolean a(js<chw> $$0, js<cpx> $$1) {
-      return $$1.a().b().test($$0);
+   protected void b(aro $$0, cqe $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(aro $$0, cqe $$1, long $$2) {
+      bxz<?> $$3 = $$1.eb();
+      $$3.b(cgb.n);
+      $$3.b(cgb.o);
+   }
+
+   protected void d(aro $$0, cqe $$1, long $$2) {
+      this.a($$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   private void a(cqe $$0) {
+      bxz<?> $$1 = $$0.eb();
+      $$1.a(cgb.n, new cge(new bzb($$0.x(), false), this.c, 2));
+      $$1.a(cgb.o, new bzb($$0.x(), true));
    }
 }

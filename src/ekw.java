@@ -1,29 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.OptionalInt;
 
-public abstract class ekw {
-   public static final Codec<ekw> a = md.Y.q().dispatch(ekw::b, ekx::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public class ekw implements ekx {
+   public static final Codec<ekw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(iu.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, ekw::new)
+   );
+   private final Optional<iu> b;
+   private final boolean c;
 
-   protected static <S extends ekw> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+   private ekw(Optional<iu> $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public ekw(OptionalInt $$0) {
-      this.c = $$0;
+   public static ekw a(iu $$0, boolean $$1) {
+      return new ekw(Optional.of($$0), $$1);
    }
 
-   protected abstract ekx<?> b();
+   public static ekw a() {
+      return new ekw(Optional.empty(), false);
+   }
 
-   public abstract int a(int var1, int var2);
+   public Optional<iu> b() {
+      return this.b;
+   }
 
-   public OptionalInt c() {
+   public boolean c() {
       return this.c;
    }
 }

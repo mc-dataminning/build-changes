@@ -1,95 +1,149 @@
-import java.util.List;
+import java.util.Set;
 
-public class gfg extends geo<hbw> {
-   private static final String f = "left_sleeve";
-   private static final String g = "right_sleeve";
-   private static final String x = "left_pants";
-   private static final String y = "right_pants";
-   private final List<ghd> z;
-   public final ghd a;
-   public final ghd b;
-   public final ghd c;
-   public final ghd d;
-   public final ghd e;
-   private final boolean A;
+public class gfg<T extends hbv> extends gfd<T> {
+   public static final gip b = new gea(true, 10.0F, 4.0F, Set.of("head"));
+   private static final float a = 0.0F;
+   private static final float o = 16.0F;
+   private static final float p = -9.0F;
+   protected static final float c = 18.0F;
+   protected static final float d = 5.0F;
+   protected static final float e = 14.1F;
+   private static final float q = -5.0F;
+   private static final String r = "tail1";
+   private static final String s = "tail2";
+   protected final gig f;
+   protected final gig g;
+   protected final gig i;
+   protected final gig j;
+   protected final gig k;
+   protected final gig l;
+   protected final gig m;
+   protected final gig n;
 
-   public gfg(ghd $$0, boolean $$1) {
-      super($$0, goi::j);
-      this.A = $$1;
-      this.a = this.s.b("left_sleeve");
-      this.b = this.r.b("right_sleeve");
-      this.c = this.u.b("left_pants");
-      this.d = this.t.b("right_pants");
-      this.e = this.q.b("jacket");
-      this.z = List.of(this.o, this.q, this.s, this.r, this.u, this.t);
+   public gfg(gig $$0) {
+      super($$0);
+      this.m = $$0.b("head");
+      this.n = $$0.b("body");
+      this.k = $$0.b("tail1");
+      this.l = $$0.b("tail2");
+      this.f = $$0.b("left_hind_leg");
+      this.g = $$0.b("right_hind_leg");
+      this.i = $$0.b("left_front_leg");
+      this.j = $$0.b("right_front_leg");
    }
 
-   public static ghl a(ghh $$0, boolean $$1) {
-      ghl $$2 = geo.a($$0, 0.0F);
-      ghn $$3 = $$2.a();
-      float $$4 = 0.25F;
-      if ($$1) {
-         ghn $$5 = $$3.a("left_arm", ghi.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), ghf.a(5.0F, 2.0F, 0.0F));
-         ghn $$6 = $$3.a("right_arm", ghi.c().a(40, 16).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0), ghf.a(-5.0F, 2.0F, 0.0F));
-         $$5.a("left_sleeve", ghi.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), ghf.a);
-         $$6.a("right_sleeve", ghi.c().a(40, 32).a(-2.0F, -2.0F, -2.0F, 3.0F, 12.0F, 4.0F, $$0.a(0.25F)), ghf.a);
-      } else {
-         ghn $$7 = $$3.a("left_arm", ghi.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), ghf.a(5.0F, 2.0F, 0.0F));
-         ghn $$8 = $$3.b("right_arm");
-         $$7.a("left_sleeve", ghi.c().a(48, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), ghf.a);
-         $$8.a("right_sleeve", ghi.c().a(40, 32).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), ghf.a);
-      }
-
-      ghn $$9 = $$3.a("left_leg", ghi.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), ghf.a(1.9F, 12.0F, 0.0F));
-      ghn $$10 = $$3.b("right_leg");
-      $$9.a("left_pants", ghi.c().a(0, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), ghf.a);
-      $$10.a("right_pants", ghi.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(0.25F)), ghf.a);
-      ghn $$11 = $$3.b("body");
-      $$11.a("jacket", ghi.c().a(16, 32).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0.a(0.25F)), ghf.a);
-      return $$2;
+   public static gio a(gik $$0) {
+      gio $$1 = new gio();
+      giq $$2 = $$1.a();
+      gik $$3 = new gik(-0.02F);
+      $$2.a(
+         "head",
+         gil.c()
+            .a("main", -2.5F, -2.0F, -3.0F, 5.0F, 4.0F, 5.0F, $$0)
+            .a("nose", -1.5F, -0.001F, -4.0F, 3, 2, 2, $$0, 0, 24)
+            .a("ear1", -2.0F, -3.0F, 0.0F, 1, 1, 2, $$0, 0, 10)
+            .a("ear2", 1.0F, -3.0F, 0.0F, 1, 1, 2, $$0, 6, 10),
+         gii.a(0.0F, 15.0F, -9.0F)
+      );
+      $$2.a("body", gil.c().a(20, 0).a(-2.0F, 3.0F, -8.0F, 4.0F, 16.0F, 6.0F, $$0), gii.a(0.0F, 12.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$2.a("tail1", gil.c().a(0, 15).a(-0.5F, 0.0F, 0.0F, 1.0F, 8.0F, 1.0F, $$0), gii.a(0.0F, 15.0F, 8.0F, 0.9F, 0.0F, 0.0F));
+      $$2.a("tail2", gil.c().a(4, 15).a(-0.5F, 0.0F, 0.0F, 1.0F, 8.0F, 1.0F, $$3), gii.a(0.0F, 20.0F, 14.0F));
+      gil $$4 = gil.c().a(8, 13).a(-1.0F, 0.0F, 1.0F, 2.0F, 6.0F, 2.0F, $$0);
+      $$2.a("left_hind_leg", $$4, gii.a(1.1F, 18.0F, 5.0F));
+      $$2.a("right_hind_leg", $$4, gii.a(-1.1F, 18.0F, 5.0F));
+      gil $$5 = gil.c().a(40, 0).a(-1.0F, 0.0F, 0.0F, 2.0F, 10.0F, 2.0F, $$0);
+      $$2.a("left_front_leg", $$5, gii.a(1.2F, 14.1F, -5.0F));
+      $$2.a("right_front_leg", $$5, gii.a(-1.2F, 14.1F, -5.0F));
+      return $$1;
    }
 
-   public void a(hbw $$0) {
-      boolean $$1 = !$$0.m;
-      this.q.k = $$1;
-      this.r.k = $$1;
-      this.s.k = $$1;
-      this.t.k = $$1;
-      this.u.k = $$1;
-      this.p.k = $$0.n;
-      this.e.k = $$0.o;
-      this.c.k = $$0.p;
-      this.d.k = $$0.q;
-      this.a.k = $$0.aw;
-      this.b.k = $$0.ax;
+   public void a(T $$0) {
       super.a($$0);
-   }
-
-   @Override
-   public void c_(boolean $$0) {
-      super.c_($$0);
-      this.a.k = $$0;
-      this.b.k = $$0;
-      this.c.k = $$0;
-      this.d.k = $$0;
-      this.e.k = $$0;
-   }
-
-   @Override
-   public void a(bwk $$0, fho $$1) {
-      this.e().a($$1);
-      ghd $$2 = this.a($$0);
-      if (this.A) {
-         float $$3 = 0.5F * (float)($$0 == bwk.b ? 1 : -1);
-         $$2.b += $$3;
-         $$2.a($$1);
-         $$2.b -= $$3;
-      } else {
-         $$2.a($$1);
+      float $$1 = $$0.ag;
+      if ($$0.d) {
+         this.n.c += 1.0F * $$1;
+         this.m.c += 2.0F * $$1;
+         this.k.c += 1.0F * $$1;
+         this.l.c += -4.0F * $$1;
+         this.l.d += 2.0F * $$1;
+         this.k.e = (float) (Math.PI / 2);
+         this.l.e = (float) (Math.PI / 2);
+      } else if ($$0.e) {
+         this.l.c = this.k.c;
+         this.l.d += 2.0F * $$1;
+         this.k.e = (float) (Math.PI / 2);
+         this.l.e = (float) (Math.PI / 2);
       }
-   }
 
-   public ghd a(azs $$0) {
-      return af.a(this.z, $$0);
+      this.m.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.m.f = $$0.aa * (float) (Math.PI / 180.0);
+      if (!$$0.f) {
+         this.n.e = (float) (Math.PI / 2);
+         float $$2 = $$0.ae;
+         float $$3 = $$0.ad;
+         if ($$0.e) {
+            this.f.e = azk.b($$3 * 0.6662F) * $$2;
+            this.g.e = azk.b($$3 * 0.6662F + 0.3F) * $$2;
+            this.i.e = azk.b($$3 * 0.6662F + (float) Math.PI + 0.3F) * $$2;
+            this.j.e = azk.b($$3 * 0.6662F + (float) Math.PI) * $$2;
+            this.l.e = 1.7278761F + (float) (Math.PI / 10) * azk.b($$3) * $$2;
+         } else {
+            this.f.e = azk.b($$3 * 0.6662F) * $$2;
+            this.g.e = azk.b($$3 * 0.6662F + (float) Math.PI) * $$2;
+            this.i.e = azk.b($$3 * 0.6662F + (float) Math.PI) * $$2;
+            this.j.e = azk.b($$3 * 0.6662F) * $$2;
+            if (!$$0.d) {
+               this.l.e = 1.7278761F + (float) (Math.PI / 4) * azk.b($$3) * $$2;
+            } else {
+               this.l.e = 1.7278761F + 0.47123894F * azk.b($$3) * $$2;
+            }
+         }
+      }
+
+      if ($$0.f) {
+         this.n.e = (float) (Math.PI / 4);
+         this.n.c += -4.0F * $$1;
+         this.n.d += 5.0F * $$1;
+         this.m.c += -3.3F * $$1;
+         this.m.d += 1.0F * $$1;
+         this.k.c += 8.0F * $$1;
+         this.k.d += -2.0F * $$1;
+         this.l.c += 2.0F * $$1;
+         this.l.d += -0.8F * $$1;
+         this.k.e = 1.7278761F;
+         this.l.e = 2.670354F;
+         this.i.e = (float) (-Math.PI / 20);
+         this.i.c += 2.0F * $$1;
+         this.i.d -= 2.0F * $$1;
+         this.j.e = (float) (-Math.PI / 20);
+         this.j.c += 2.0F * $$1;
+         this.j.d -= 2.0F * $$1;
+         this.f.e = (float) (-Math.PI / 2);
+         this.f.c += 3.0F * $$1;
+         this.f.d -= 4.0F * $$1;
+         this.g.e = (float) (-Math.PI / 2);
+         this.g.c += 3.0F * $$1;
+         this.g.d -= 4.0F * $$1;
+      }
+
+      if ($$0.g > 0.0F) {
+         this.m.g = azk.i($$0.g, this.m.g, -1.2707963F);
+         this.m.f = azk.i($$0.g, this.m.f, 1.2707963F);
+         this.i.e = -1.2707963F;
+         this.j.e = -0.47079635F;
+         this.j.g = -0.2F;
+         this.j.b += $$1;
+         this.f.e = -0.4F;
+         this.g.e = 0.5F;
+         this.g.g = -0.5F;
+         this.g.b += 0.8F * $$1;
+         this.g.c += 2.0F * $$1;
+         this.k.e = azk.i($$0.h, this.k.e, 0.8F);
+         this.l.e = azk.i($$0.h, this.l.e, -0.4F);
+      }
+
+      if ($$0.i > 0.0F) {
+         this.m.e = azk.i($$0.i, this.m.e, -0.58177644F);
+      }
    }
 }

@@ -1,91 +1,113 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.IntConsumer;
-import java.util.function.IntSupplier;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class aqt implements aqp.a, AutoCloseable {
-   public static final int a = 4;
-   private static final Logger c = LogUtils.getLogger();
-   private final aqu d;
-   private final bsl<Runnable> e;
-   private final bsi f;
-   protected boolean b;
-
-   public aqt(bsl<Runnable> $$0, Executor $$1) {
-      this.d = new aqu($$0.v_() + "_queue");
-      this.e = $$0;
-      this.f = new bsi(4, $$1, "dispatcher");
-      this.b = true;
+public interface aqt<T> {
+   static <T> aqt<T> a(T $$0) {
+      return new aqt.b<>($$0);
    }
 
-   public boolean a() {
-      return this.f.c() || this.d.b();
+   static <T> aqt<T> a(String $$0) {
+      return a(() -> $$0);
    }
 
-   @Override
-   public void onLevelChange(dgw $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
-      this.f.a_(new bsk.c(0, () -> {
-         int $$4 = $$1.getAsInt();
-         this.d.a($$4, $$0, $$2);
-         $$3.accept($$2);
-      }));
+   static <T> aqt<T> a(Supplier<String> $$0) {
+      return new aqt.a<>($$0);
    }
 
-   public void a(long $$0, Runnable $$1, boolean $$2) {
-      this.f.a_(new bsk.c(1, () -> {
-         this.d.a($$0, $$2);
-         this.a($$0);
-         if (this.b) {
-            this.b = false;
-            this.b();
-         }
+   boolean a();
 
-         $$1.run();
-      }));
-   }
+   @Nullable
+   T b(@Nullable T var1);
 
-   public void a(Runnable $$0, long $$1, IntSupplier $$2) {
-      this.f.a_(new bsk.c(2, () -> {
-         int $$3 = $$2.getAsInt();
-         this.d.a($$0, $$1, $$3);
-         if (this.b) {
-            this.b = false;
-            this.b();
-         }
-      }));
-   }
-
-   protected void b() {
-      this.f.a_(new bsk.c(3, () -> {
-         aqu.a $$0 = this.c();
-         if ($$0 == null) {
-            this.b = true;
-         } else {
-            this.a($$0);
-         }
-      }));
-   }
-
-   protected void a(aqu.a $$0) {
-      CompletableFuture.allOf($$0.b().stream().map($$0x -> this.e.a($$1 -> {
-            $$0x.run();
-            $$1.complete(baq.a);
-         })).toArray(CompletableFuture[]::new)).thenAccept($$0x -> this.b());
-   }
-
-   protected void a(long $$0) {
+   @Nullable
+   static <R> R a(aqt<? extends R> $$0, @Nullable R $$1) {
+      R $$2 = (R)$$0.b(null);
+      return $$2 != null ? $$2 : $$1;
    }
 
    @Nullable
-   protected aqu.a c() {
-      return this.d.a();
+   String b();
+
+   aqt<T> a(Consumer<T> var1);
+
+   <R> aqt<R> a(Function<T, R> var1);
+
+   <E extends Throwable> T b(Supplier<E> var1) throws E;
+
+   public static record a<T>(Supplier<String> a) implements aqt<T> {
+      @Override
+      public boolean a() {
+         return false;
+      }
+
+      @Nullable
+      @Override
+      public T b(@Nullable T $$0) {
+         return $$0;
+      }
+
+      @Override
+      public String b() {
+         return this.a.get();
+      }
+
+      @Override
+      public aqt<T> a(Consumer<T> $$0) {
+         return this;
+      }
+
+      @Override
+      public <R> aqt<R> a(Function<T, R> $$0) {
+         return new aqt.a(this.a);
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         throw $$0.get();
+      }
+
+      public Supplier<String> c() {
+         return this.a;
+      }
    }
 
-   @Override
-   public void close() {
-      this.e.close();
+   public static record b<T>(T a) implements aqt<T> {
+      @Override
+      public boolean a() {
+         return true;
+      }
+
+      @Override
+      public T b(@Nullable T $$0) {
+         return this.a;
+      }
+
+      @Nullable
+      @Override
+      public String b() {
+         return null;
+      }
+
+      @Override
+      public aqt<T> a(Consumer<T> $$0) {
+         $$0.accept(this.a);
+         return this;
+      }
+
+      @Override
+      public <R> aqt<R> a(Function<T, R> $$0) {
+         return new aqt.b<>($$0.apply(this.a));
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         return this.a;
+      }
+
+      public T c() {
+         return this.a;
+      }
    }
 }

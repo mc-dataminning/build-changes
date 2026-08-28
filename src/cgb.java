@@ -1,394 +1,139 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public abstract class cgb {
-   private static final int p = 20;
-   private static final int q = 100;
-   private static final float r = 0.25F;
-   protected final bwt a;
-   protected final dhp b;
-   @Nullable
-   protected evh c;
-   protected double d;
-   protected int e;
-   protected int f;
-   protected fcu g = fcu.c;
-   protected kn h = kn.i;
-   protected long i;
-   protected long j;
-   protected double k;
-   protected float l = 0.5F;
-   protected boolean m;
-   protected long n;
-   protected evg o;
-   @Nullable
-   private jj s;
-   private int t;
-   private float u = 1.0F;
-   private final evj v;
-   private boolean w;
-   private float x = 16.0F;
+public class cgb<U> {
+   public static final cgb<Void> a = a("dummy");
+   public static final cgb<jd> b = a("home", jd.b);
+   public static final cgb<jd> c = a("job_site", jd.b);
+   public static final cgb<jd> d = a("potential_job_site", jd.b);
+   public static final cgb<jd> e = a("meeting_point", jd.b);
+   public static final cgb<List<jd>> f = a("secondary_job_site");
+   public static final cgb<List<bwz>> g = a("mobs");
+   public static final cgb<cgd> h = a("visible_mobs");
+   public static final cgb<List<bwz>> i = a("visible_villager_babies");
+   public static final cgb<List<cqs>> j = a("nearest_players");
+   public static final cgb<cqs> k = a("nearest_visible_player");
+   public static final cgb<cqs> l = a("nearest_visible_targetable_player");
+   public static final cgb<List<cqs>> m = a("nearest_visible_targetable_players");
+   public static final cgb<cge> n = a("walk_target");
+   public static final cgb<cae> o = a("look_target");
+   public static final cgb<bwz> p = a("attack_target");
+   public static final cgb<Boolean> q = a("attack_cooling_down");
+   public static final cgb<bwz> r = a("interaction_target");
+   public static final cgb<bvq> s = a("breed_target");
+   public static final cgb<bwa> t = a("ride_target");
+   public static final cgb<ewj> u = a("path");
+   public static final cgb<List<jd>> v = a("interactable_doors");
+   public static final cgb<Set<jd>> w = a("doors_to_close");
+   public static final cgb<iu> x = a("nearest_bed");
+   public static final cgb<bup> y = a("hurt_by");
+   public static final cgb<bwz> z = a("hurt_by_entity");
+   public static final cgb<bwz> A = a("avoid_target");
+   public static final cgb<bwz> B = a("nearest_hostile");
+   public static final cgb<bwz> C = a("nearest_attackable");
+   public static final cgb<jd> D = a("hiding_place");
+   public static final cgb<Long> E = a("heard_bell_time");
+   public static final cgb<Long> F = a("cant_reach_walk_target_since");
+   public static final cgb<Boolean> G = a("golem_detected_recently", Codec.BOOL);
+   public static final cgb<Boolean> H = a("danger_detected_recently", Codec.BOOL);
+   public static final cgb<Long> I = a("last_slept", Codec.LONG);
+   public static final cgb<Long> J = a("last_woken", Codec.LONG);
+   public static final cgb<Long> K = a("last_worked_at_poi", Codec.LONG);
+   public static final cgb<bvq> L = a("nearest_visible_adult");
+   public static final cgb<cmx> M = a("nearest_visible_wanted_item");
+   public static final cgb<bxb> N = a("nearest_visible_nemesis");
+   public static final cgb<Integer> O = a("play_dead_ticks", Codec.INT);
+   public static final cgb<cqs> P = a("tempting_player");
+   public static final cgb<Integer> Q = a("temptation_cooldown_ticks", Codec.INT);
+   public static final cgb<Integer> R = a("gaze_cooldown_ticks", Codec.INT);
+   public static final cgb<Boolean> S = a("is_tempted", Codec.BOOL);
+   public static final cgb<Integer> T = a("long_jump_cooling_down", Codec.INT);
+   public static final cgb<Boolean> U = a("long_jump_mid_jump");
+   public static final cgb<Boolean> V = a("has_hunting_cooldown", Codec.BOOL);
+   public static final cgb<Integer> W = a("ram_cooldown_ticks", Codec.INT);
+   public static final cgb<fdw> X = a("ram_target");
+   public static final cgb<bas> Y = a("is_in_water", bas.b);
+   public static final cgb<bas> Z = a("is_pregnant", bas.b);
+   public static final cgb<Boolean> aa = a("is_panicking", Codec.BOOL);
+   public static final cgb<List<UUID>> ab = a("unreachable_tongue_targets");
+   public static final cgb<UUID> ac = a("angry_at", jy.a);
+   public static final cgb<Boolean> ad = a("universal_anger", Codec.BOOL);
+   public static final cgb<Boolean> ae = a("admiring_item", Codec.BOOL);
+   public static final cgb<Integer> af = a("time_trying_to_reach_admire_item");
+   public static final cgb<Boolean> ag = a("disable_walk_to_admire_item");
+   public static final cgb<Boolean> ah = a("admiring_disabled", Codec.BOOL);
+   public static final cgb<Boolean> ai = a("hunted_recently", Codec.BOOL);
+   public static final cgb<iu> aj = a("celebrate_location");
+   public static final cgb<Boolean> ak = a("dancing");
+   public static final cgb<cpb> al = a("nearest_visible_huntable_hoglin");
+   public static final cgb<cpb> am = a("nearest_visible_baby_hoglin");
+   public static final cgb<cqs> an = a("nearest_targetable_player_not_wearing_gold");
+   public static final cgb<List<cpg>> ao = a("nearby_adult_piglins");
+   public static final cgb<List<cpg>> ap = a("nearest_visible_adult_piglins");
+   public static final cgb<List<cpb>> aq = a("nearest_visible_adult_hoglins");
+   public static final cgb<cpg> ar = a("nearest_visible_adult_piglin");
+   public static final cgb<bwz> as = a("nearest_visible_zombified");
+   public static final cgb<Integer> at = a("visible_adult_piglin_count");
+   public static final cgb<Integer> au = a("visible_adult_hoglin_count");
+   public static final cgb<cqs> av = a("nearest_player_holding_wanted_item");
+   public static final cgb<Boolean> aw = a("ate_recently");
+   public static final cgb<iu> ax = a("nearest_repellent");
+   public static final cgb<Boolean> ay = a("pacified");
+   public static final cgb<bwz> az = a("roar_target");
+   public static final cgb<iu> aA = a("disturbance_location");
+   public static final cgb<bas> aB = a("recent_projectile", bas.b);
+   public static final cgb<bas> aC = a("is_sniffing", bas.b);
+   public static final cgb<bas> aD = a("is_emerging", bas.b);
+   public static final cgb<bas> aE = a("roar_sound_delay", bas.b);
+   public static final cgb<bas> aF = a("dig_cooldown", bas.b);
+   public static final cgb<bas> aG = a("roar_sound_cooldown", bas.b);
+   public static final cgb<bas> aH = a("sniff_cooldown", bas.b);
+   public static final cgb<bas> aI = a("touch_cooldown", bas.b);
+   public static final cgb<bas> aJ = a("vibration_cooldown", bas.b);
+   public static final cgb<bas> aK = a("sonic_boom_cooldown", bas.b);
+   public static final cgb<bas> aL = a("sonic_boom_sound_cooldown", bas.b);
+   public static final cgb<bas> aM = a("sonic_boom_sound_delay", bas.b);
+   public static final cgb<UUID> aN = a("liked_player", jy.a);
+   public static final cgb<jd> aO = a("liked_noteblock", jd.b);
+   public static final cgb<Integer> aP = a("liked_noteblock_cooldown_ticks", Codec.INT);
+   public static final cgb<Integer> aQ = a("item_pickup_cooldown_ticks", Codec.INT);
+   public static final cgb<List<jd>> aR = a("sniffer_explored_positions", Codec.list(jd.b));
+   public static final cgb<iu> aS = a("sniffer_sniffing_target");
+   public static final cgb<Boolean> aT = a("sniffer_digging");
+   public static final cgb<Boolean> aU = a("sniffer_happy");
+   public static final cgb<bas> aV = a("breeze_jump_cooldown", bas.b);
+   public static final cgb<bas> aW = a("breeze_shoot", bas.b);
+   public static final cgb<bas> aX = a("breeze_shoot_charging", bas.b);
+   public static final cgb<bas> aY = a("breeze_shoot_recover", bas.b);
+   public static final cgb<bas> aZ = a("breeze_shoot_cooldown", bas.b);
+   public static final cgb<bas> ba = a("breeze_jump_inhaling", bas.b);
+   public static final cgb<iu> bb = a("breeze_jump_target", iu.a);
+   public static final cgb<bas> bc = a("breeze_leaving_water", bas.b);
+   private final Optional<Codec<cga<U>>> bd;
 
-   public cgb(bwt $$0, dhp $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.v = this.a(azk.a($$0.i(bxx.m) * 16.0));
+   @VisibleForTesting
+   public cgb(Optional<Codec<U>> $$0) {
+      this.bd = $$0.map(cga::a);
    }
 
-   public void e() {
-      int $$0 = azk.d(this.r() * 16.0F);
-      this.v.a($$0);
+   @Override
+   public String toString() {
+      return mf.z.b(this).toString();
    }
 
-   public void a(float $$0) {
-      this.x = $$0;
-      this.e();
+   public Optional<Codec<cga<U>>> a() {
+      return this.bd;
    }
 
-   private float r() {
-      return Math.max((float)this.a.h(bxx.m), this.x);
+   private static <U> cgb<U> a(String $$0, Codec<U> $$1) {
+      return jr.a(mf.z, ale.b($$0), new cgb<>(Optional.of($$1)));
    }
 
-   public void f() {
-      this.u = 1.0F;
-   }
-
-   public void b(float $$0) {
-      this.u = $$0;
-   }
-
-   @Nullable
-   public jj g() {
-      return this.s;
-   }
-
-   protected abstract evj a(int var1);
-
-   public void a(double $$0) {
-      this.d = $$0;
-   }
-
-   public void h() {
-      if (this.b.ae() - this.n > 20L) {
-         if (this.s != null) {
-            this.c = null;
-            this.c = this.a(this.s, this.t);
-            this.n = this.b.ae();
-            this.m = false;
-         }
-      } else {
-         this.m = true;
-      }
-   }
-
-   @Nullable
-   public final evh a(double $$0, double $$1, double $$2, int $$3) {
-      return this.a(jj.a($$0, $$1, $$2), $$3);
-   }
-
-   @Nullable
-   public evh a(Stream<jj> $$0, int $$1) {
-      return this.a($$0.collect(Collectors.toSet()), 8, false, $$1);
-   }
-
-   @Nullable
-   public evh a(Set<jj> $$0, int $$1) {
-      return this.a($$0, 8, false, $$1);
-   }
-
-   @Nullable
-   public evh a(jj $$0, int $$1) {
-      return this.a(ImmutableSet.of($$0), 8, false, $$1);
-   }
-
-   @Nullable
-   public evh a(jj $$0, int $$1, int $$2) {
-      return this.a(ImmutableSet.of($$0), 8, false, $$1, (float)$$2);
-   }
-
-   @Nullable
-   public evh a(bvs $$0, int $$1) {
-      return this.a(ImmutableSet.of($$0.dv()), 16, true, $$1);
-   }
-
-   @Nullable
-   protected evh a(Set<jj> $$0, int $$1, boolean $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, this.r());
-   }
-
-   @Nullable
-   protected evh a(Set<jj> $$0, int $$1, boolean $$2, int $$3, float $$4) {
-      if ($$0.isEmpty()) {
-         return null;
-      } else if (this.a.dC() < (double)this.b.G_()) {
-         return null;
-      } else if (!this.a()) {
-         return null;
-      } else if (this.c != null && !this.c.c() && $$0.contains(this.s)) {
-         return this.c;
-      } else {
-         bqb $$5 = bqa.a();
-         $$5.a("pathfind");
-         jj $$6 = $$2 ? this.a.dv().d() : this.a.dv();
-         int $$7 = (int)($$4 + (float)$$1);
-         dic $$8 = new dic(this.b, $$6.b(-$$7, -$$7, -$$7), $$6.b($$7, $$7, $$7));
-         evh $$9 = this.v.a($$8, this.a, $$0, $$4, $$3, this.u);
-         $$5.c();
-         if ($$9 != null && $$9.l() != null) {
-            this.s = $$9.l();
-            this.t = $$3;
-            this.t();
-         }
-
-         return $$9;
-      }
-   }
-
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.a(this.a($$0, $$1, $$2, 1), $$3);
-   }
-
-   public boolean a(double $$0, double $$1, double $$2, int $$3, double $$4) {
-      return this.a(this.a($$0, $$1, $$2, $$3), $$4);
-   }
-
-   public boolean a(bvs $$0, double $$1) {
-      evh $$2 = this.a($$0, 1);
-      return $$2 != null && this.a($$2, $$1);
-   }
-
-   public boolean a(@Nullable evh $$0, double $$1) {
-      if ($$0 == null) {
-         this.c = null;
-         return false;
-      } else {
-         if (!$$0.a(this.c)) {
-            this.c = $$0;
-         }
-
-         if (this.k()) {
-            return false;
-         } else {
-            this.d();
-            if (this.c.e() <= 0) {
-               return false;
-            } else {
-               this.d = $$1;
-               fcu $$2 = this.b();
-               this.f = this.e;
-               this.g = $$2;
-               return true;
-            }
-         }
-      }
-   }
-
-   @Nullable
-   public evh i() {
-      return this.c;
-   }
-
-   public void c() {
-      this.e++;
-      if (this.m) {
-         this.h();
-      }
-
-      if (!this.k()) {
-         if (this.a()) {
-            this.j();
-         } else if (this.c != null && !this.c.c()) {
-            fcu $$0 = this.b();
-            fcu $$1 = this.c.a(this.a);
-            if ($$0.e > $$1.e && !this.a.aJ() && azk.a($$0.d) == azk.a($$1.d) && azk.a($$0.f) == azk.a($$1.f)) {
-               this.c.a();
-            }
-         }
-
-         agj.a(this.b, this.a, this.c, this.l);
-         if (!this.k()) {
-            fcu $$2 = this.c.a(this.a);
-            this.a.L().a($$2.d, this.a($$2), $$2.f, this.d);
-         }
-      }
-   }
-
-   protected double a(fcu $$0) {
-      jj $$1 = jj.a((kc)$$0);
-      return this.b.a_($$1.e()).l() ? $$0.e : evp.a(this.b, $$1);
-   }
-
-   protected void j() {
-      fcu $$0 = this.b();
-      this.l = this.a.dq() > 0.75F ? this.a.dq() / 2.0F : 0.75F - this.a.dq() / 2.0F;
-      kn $$1 = this.c.g();
-      double $$2 = Math.abs(this.a.dA() - ((double)$$1.u() + 0.5));
-      double $$3 = Math.abs(this.a.dC() - (double)$$1.v());
-      double $$4 = Math.abs(this.a.dG() - ((double)$$1.w() + 0.5));
-      boolean $$5 = $$2 < (double)this.l && $$4 < (double)this.l && $$3 < 1.0;
-      if ($$5 || this.b(this.c.h().l) && this.c($$0)) {
-         this.c.a();
-      }
-
-      this.b($$0);
-   }
-
-   private boolean c(fcu $$0) {
-      if (this.c.f() + 1 >= this.c.e()) {
-         return false;
-      } else {
-         fcu $$1 = fcu.c(this.c.g());
-         if (!$$0.a((kc)$$1, 2.0)) {
-            return false;
-         } else if (this.a($$0, this.c.a(this.a))) {
-            return true;
-         } else {
-            fcu $$2 = fcu.c(this.c.d(this.c.f() + 1));
-            fcu $$3 = $$1.d($$0);
-            fcu $$4 = $$2.d($$0);
-            double $$5 = $$3.h();
-            double $$6 = $$4.h();
-            boolean $$7 = $$6 < $$5;
-            boolean $$8 = $$5 < 0.5;
-            if (!$$7 && !$$8) {
-               return false;
-            } else {
-               fcu $$9 = $$3.d();
-               fcu $$10 = $$4.d();
-               return $$10.b($$9) < 0.0;
-            }
-         }
-      }
-   }
-
-   protected void b(fcu $$0) {
-      if (this.e - this.f > 100) {
-         float $$1 = this.a.fn() >= 1.0F ? this.a.fn() : this.a.fn() * this.a.fn();
-         float $$2 = $$1 * 100.0F * 0.25F;
-         if ($$0.g(this.g) < (double)($$2 * $$2)) {
-            this.w = true;
-            this.m();
-         } else {
-            this.w = false;
-         }
-
-         this.f = this.e;
-         this.g = $$0;
-      }
-
-      if (this.c != null && !this.c.c()) {
-         kn $$3 = this.c.g();
-         long $$4 = this.b.ae();
-         if ($$3.equals(this.h)) {
-            this.i = this.i + ($$4 - this.j);
-         } else {
-            this.h = $$3;
-            double $$5 = $$0.f(fcu.c(this.h));
-            this.k = this.a.fn() > 0.0F ? $$5 / (double)this.a.fn() * 20.0 : 0.0;
-         }
-
-         if (this.k > 0.0 && (double)this.i > this.k * 3.0) {
-            this.s();
-         }
-
-         this.j = $$4;
-      }
-   }
-
-   private void s() {
-      this.t();
-      this.m();
-   }
-
-   private void t() {
-      this.h = kn.i;
-      this.i = 0L;
-      this.k = 0.0;
-      this.w = false;
-   }
-
-   public boolean k() {
-      return this.c == null || this.c.c();
-   }
-
-   public boolean l() {
-      return !this.k();
-   }
-
-   public void m() {
-      this.c = null;
-   }
-
-   protected abstract fcu b();
-
-   protected abstract boolean a();
-
-   protected void d() {
-      if (this.c != null) {
-         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
-            evf $$1 = this.c.a($$0);
-            evf $$2 = $$0 + 1 < this.c.e() ? this.c.a($$0 + 1) : null;
-            dym $$3 = this.b.a_(new jj($$1.a, $$1.b, $$1.c));
-            if ($$3.a(awz.bn)) {
-               this.c.a($$0, $$1.a($$1.a, $$1.b + 1, $$1.c));
-               if ($$2 != null && $$1.b >= $$2.b) {
-                  this.c.a($$0 + 1, $$1.a($$2.a, $$1.b + 1, $$2.c));
-               }
-            }
-         }
-      }
-   }
-
-   protected boolean a(fcu $$0, fcu $$1) {
-      return false;
-   }
-
-   public boolean b(evk $$0) {
-      return $$0 != evk.n && $$0 != evk.p && $$0 != evk.d;
-   }
-
-   protected static boolean a(bwt $$0, fcu $$1, fcu $$2, boolean $$3) {
-      fcu $$4 = new fcu($$2.d, $$2.e + (double)$$0.dr() * 0.5, $$2.f);
-      return $$0.dV().a(new dgy($$1, $$4, dgy.a.a, $$3 ? dgy.b.c : dgy.b.a, $$0)).d() == fcs.a.a;
-   }
-
-   public boolean a(jj $$0) {
-      jj $$1 = $$0.e();
-      return this.b.a_($$1).s();
-   }
-
-   public evg n() {
-      return this.o;
-   }
-
-   public void a(boolean $$0) {
-      this.o.c($$0);
-   }
-
-   public boolean o() {
-      return this.o.f();
-   }
-
-   public boolean b(jj $$0) {
-      if (this.m) {
-         return false;
-      } else if (this.c != null && !this.c.c() && this.c.e() != 0) {
-         evf $$1 = this.c.d();
-         fcu $$2 = new fcu(((double)$$1.a + this.a.dA()) / 2.0, ((double)$$1.b + this.a.dC()) / 2.0, ((double)$$1.c + this.a.dG()) / 2.0);
-         return $$0.a($$2, (double)(this.c.e() - this.c.f()));
-      } else {
-         return false;
-      }
-   }
-
-   public float p() {
-      return this.l;
-   }
-
-   public boolean q() {
-      return this.w;
+   private static <U> cgb<U> a(String $$0) {
+      return jr.a(mf.z, ale.b($$0), new cgb<>(Optional.empty()));
    }
 }

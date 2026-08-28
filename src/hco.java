@@ -1,3 +1,3 @@
-public class hco extends gzr {
-   public boolean d;
+public class hco extends hbp {
+   public long a;
 }

@@ -1,30 +1,19 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
 
-public abstract class elz extends elw {
-   protected final long c;
-   protected final etw.a d;
-   protected final float e;
-   protected final etw f;
+public class elz<P extends ely> {
+   public static final elz<emb> a = a("two_layers_feature_size", emb.d);
+   public static final elz<ema> b = a("three_layers_feature_size", ema.d);
+   private final MapCodec<P> c;
 
-   protected static <P extends elz> P3<Mu<P>, Long, etw.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         etw.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         ays.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   private static <P extends ely> elz<P> a(String $$0, MapCodec<P> $$1) {
+      return jr.a(mf.Y, $$0, new elz<>($$1));
    }
 
-   protected elz(long $$0, etw.a $$1, float $$2) {
+   private elz(MapCodec<P> $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = etw.b(new efk(new eem($$0)), $$1);
    }
 
-   protected double a(jj $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   public MapCodec<P> a() {
+      return this.c;
    }
 }

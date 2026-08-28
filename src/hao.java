@@ -1,3 +1,8 @@
-public class hao extends hak {
-   public int a;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hao {
 }

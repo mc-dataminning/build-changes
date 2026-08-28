@@ -1,36 +1,36 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 
-public record far(fau b) implements fau {
-   public static final MapCodec<far> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fau.e.fieldOf("term").forGetter(far::c)).apply($$0, far::new));
+public class far extends faa {
+   public static final MapCodec<far> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(axp.b(mg.aS).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, far::new)
+   );
+   private final axp<cyl> b;
 
-   @Override
-   public fav b() {
-      return faw.a;
-   }
-
-   public boolean a(exl $$0) {
-      return !this.b.test($$0);
-   }
-
-   @Override
-   public Set<bat<?>> a() {
-      return this.b.a();
+   private far(List<fbw> $$0, axp<cyl> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public void a(exr $$0) {
-      fau.super.a($$0);
-      this.b.a($$0);
+   public fac<far> b() {
+      return fad.G;
    }
 
-   public static fau.a a(fau.a $$0) {
-      far $$1 = new far($$0.build());
-      return () -> $$1;
+   @Override
+   public cys a(cys $$0, eyn $$1) {
+      jr<cyl> $$2 = $$1.d().F_().f(mg.aS);
+      Optional<je<cyl>> $$3 = $$2.a(this.b, $$1.b());
+      if ($$3.isPresent()) {
+         $$0.b(kj.ab, new dbi($$3.get()));
+      }
+
+      return $$0;
    }
 
-   public fau c() {
-      return this.b;
+   public static faa.a<?> a(axp<cyl> $$0) {
+      return a($$1 -> new far($$1, $$0));
    }
 }

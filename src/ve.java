@@ -1,89 +1,36 @@
-public interface ve extends uq {
-   ve a = new ve() {
-   };
+import java.util.HashMap;
+import java.util.Map;
 
-   @Override
-   default uq.b a() {
-      return uq.b.a;
+public record ve(int a, Map<String, uw<?>> b, Map<String, ve> c) {
+   private ve(int $$0) {
+      this($$0, new HashMap<>(), new HashMap<>());
    }
 
-   @Override
-   default uq.b a(String $$0) {
-      return uq.b.a;
+   public static ve a() {
+      return new ve(1);
    }
 
-   @Override
-   default uq.b a(byte $$0) {
-      return uq.b.a;
+   public void a(vd $$0) {
+      if (this.a <= $$0.a().size()) {
+         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new ve(this.a + 1)).a($$0);
+      } else {
+         this.b.put($$0.c(), $$0.b());
+      }
    }
 
-   @Override
-   default uq.b a(short $$0) {
-      return uq.b.a;
+   public boolean a(uw<?> $$0, String $$1) {
+      return $$0.equals(this.c().get($$1));
    }
 
-   @Override
-   default uq.b a(int $$0) {
-      return uq.b.a;
+   public int b() {
+      return this.a;
    }
 
-   @Override
-   default uq.b a(long $$0) {
-      return uq.b.a;
+   public Map<String, uw<?>> c() {
+      return this.b;
    }
 
-   @Override
-   default uq.b a(float $$0) {
-      return uq.b.a;
-   }
-
-   @Override
-   default uq.b a(double $$0) {
-      return uq.b.a;
-   }
-
-   @Override
-   default uq.b a(byte[] $$0) {
-      return uq.b.a;
-   }
-
-   @Override
-   default uq.b a(int[] $$0) {
-      return uq.b.a;
-   }
-
-   @Override
-   default uq.b a(long[] $$0) {
-      return uq.b.a;
-   }
-
-   @Override
-   default uq.b a(uv<?> $$0, int $$1) {
-      return uq.b.a;
-   }
-
-   @Override
-   default uq.a b(uv<?> $$0, int $$1) {
-      return uq.a.b;
-   }
-
-   @Override
-   default uq.a a(uv<?> $$0) {
-      return uq.a.b;
-   }
-
-   @Override
-   default uq.a a(uv<?> $$0, String $$1) {
-      return uq.a.b;
-   }
-
-   @Override
-   default uq.b b() {
-      return uq.b.a;
-   }
-
-   @Override
-   default uq.b b(uv<?> $$0) {
-      return uq.b.a;
+   public Map<String, ve> d() {
+      return this.c;
    }
 }

@@ -1,30 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class eiw extends ehr<ejq> {
-   public eiw(Codec<ejq> $$0) {
+public class eiw extends eit<elb> {
+   public eiw(Codec<elb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eht<ejq> $$0) {
-      int $$1 = 0;
-      azs $$2 = $$0.d();
-      dio $$3 = $$0.b();
-      jj $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+   public boolean a(eiv<elb> $$0) {
+      iu $$1 = $$0.e();
+      elb $$2 = $$0.f();
+      djo $$3 = $$0.b();
+      iu.a $$4 = new iu.a();
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(eel.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         jj $$10 = new jj($$4.u() + $$7, $$9, $$4.w() + $$8);
-         dym $$11 = dkw.nx.m().b(drw.c, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(dkw.J) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$1.u() + $$5;
+            int $$8 = $$1.w() + $$6;
+            int $$9 = $$3.G_() + $$2.b;
+            $$4.d($$7, $$9, $$8);
+            if ($$3.a_($$4).l()) {
+               $$3.a($$4, $$2.c, 2);
+            }
          }
       }
 
-      return $$1 > 0;
+      return true;
    }
 }

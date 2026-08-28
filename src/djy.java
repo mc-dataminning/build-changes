@@ -1,194 +1,274 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
-public class djy extends dku implements dkx {
-   public static final MapCodec<djy> a = b(djy::new);
-   private static final fdo C = dku.b(6.0, 0.0, 16.0);
-   private static final fdo Q = dku.b(10.0, 0.0, 16.0);
-   private static final fdo R = dku.b(3.0, 0.0, 16.0);
-   public static final dzm b = dzc.at;
-   public static final dzk<dyy> c = dzc.bn;
-   public static final dzm d = dzc.aX;
-   public static final int e = 16;
-   public static final int f = 0;
-   public static final int g = 1;
-   public static final int h = 0;
-   public static final int i = 1;
+public class djy {
+   public static final Codec<djy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
+               djy.b.d.optionalFieldOf("grass_color_modifier", djy.b.a).forGetter($$0x -> $$0x.h),
+               djr.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
+               awk.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
+               djq.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
+               djp.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
+               bsj.a(awi.a).optionalFieldOf("music").forGetter($$0x -> $$0x.m),
+               Codec.FLOAT.fieldOf("music_volume").orElse(1.0F).forGetter($$0x -> $$0x.n)
+            )
+            .apply($$0, djy::new)
+   );
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final Optional<Integer> f;
+   private final Optional<Integer> g;
+   private final djy.b h;
+   private final Optional<djr> i;
+   private final Optional<je<awk>> j;
+   private final Optional<djq> k;
+   private final Optional<djp> l;
+   private final Optional<bsj<awi>> m;
+   private final float n;
 
-   @Override
-   public MapCodec<djy> a() {
-      return a;
+   djy(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      Optional<Integer> $$4,
+      Optional<Integer> $$5,
+      djy.b $$6,
+      Optional<djr> $$7,
+      Optional<je<awk>> $$8,
+      Optional<djq> $$9,
+      Optional<djp> $$10,
+      Optional<bsj<awi>> $$11,
+      float $$12
+   ) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.m = $$11;
+      this.n = $$12;
    }
 
-   public djy(dyl.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, Integer.valueOf(0)).b(c, dyy.a).b(d, Integer.valueOf(0)));
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b, c, d);
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected boolean e_(dym $$0) {
-      return true;
+   public int c() {
+      return this.d;
    }
 
-   @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      fdo $$4 = $$0.c(c) == dyy.c ? Q : C;
-      return $$4.a($$0.a($$2));
+   public int d() {
+      return this.e;
    }
 
-   @Override
-   protected boolean a(dym $$0, evi $$1) {
-      return false;
+   public Optional<Integer> e() {
+      return this.f;
    }
 
-   @Override
-   protected fdo b(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return R.a($$0.a($$2));
+   public Optional<Integer> f() {
+      return this.g;
    }
 
-   @Override
-   protected boolean a_(dym $$0, dgv $$1, jj $$2) {
-      return false;
+   public djy.b g() {
+      return this.h;
    }
 
-   @Nullable
-   @Override
-   public dym a(dbn $$0) {
-      eut $$1 = $$0.q().b_($$0.a());
-      if (!$$1.c()) {
-         return null;
-      } else {
-         dym $$2 = $$0.q().a_($$0.a().e());
-         if ($$2.a(awz.ax)) {
-            if ($$2.a(dkw.nA)) {
-               return this.m().b(b, Integer.valueOf(0));
-            } else if ($$2.a(dkw.nB)) {
-               int $$3 = $$2.c(b) > 0 ? 1 : 0;
-               return this.m().b(b, Integer.valueOf($$3));
-            } else {
-               dym $$4 = $$0.q().a_($$0.a().d());
-               return $$4.a(dkw.nB) ? this.m().b(b, $$4.c(b)) : dkw.nA.m();
-            }
+   public Optional<djr> h() {
+      return this.i;
+   }
+
+   public Optional<je<awk>> i() {
+      return this.j;
+   }
+
+   public Optional<djq> j() {
+      return this.k;
+   }
+
+   public Optional<djp> k() {
+      return this.l;
+   }
+
+   public Optional<bsj<awi>> l() {
+      return this.m;
+   }
+
+   public float m() {
+      return this.n;
+   }
+
+   public static class a {
+      private OptionalInt a = OptionalInt.empty();
+      private OptionalInt b = OptionalInt.empty();
+      private OptionalInt c = OptionalInt.empty();
+      private OptionalInt d = OptionalInt.empty();
+      private Optional<Integer> e = Optional.empty();
+      private Optional<Integer> f = Optional.empty();
+      private djy.b g = djy.b.a;
+      private Optional<djr> h = Optional.empty();
+      private Optional<je<awk>> i = Optional.empty();
+      private Optional<djq> j = Optional.empty();
+      private Optional<djp> k = Optional.empty();
+      private Optional<bsj<awi>> l = Optional.empty();
+      private float m = 1.0F;
+
+      public djy.a a(int $$0) {
+         this.a = OptionalInt.of($$0);
+         return this;
+      }
+
+      public djy.a b(int $$0) {
+         this.b = OptionalInt.of($$0);
+         return this;
+      }
+
+      public djy.a c(int $$0) {
+         this.c = OptionalInt.of($$0);
+         return this;
+      }
+
+      public djy.a d(int $$0) {
+         this.d = OptionalInt.of($$0);
+         return this;
+      }
+
+      public djy.a e(int $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public djy.a f(int $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public djy.a a(djy.b $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public djy.a a(djr $$0) {
+         this.h = Optional.of($$0);
+         return this;
+      }
+
+      public djy.a a(je<awk> $$0) {
+         this.i = Optional.of($$0);
+         return this;
+      }
+
+      public djy.a a(djq $$0) {
+         this.j = Optional.of($$0);
+         return this;
+      }
+
+      public djy.a a(djp $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
+      public djy.a a(@Nullable awi $$0) {
+         if ($$0 == null) {
+            this.l = Optional.empty();
+            return this;
          } else {
-            return null;
-         }
-      }
-   }
-
-   @Override
-   protected void a(dym $$0, arn $$1, jj $$2, azs $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   protected boolean f(dym $$0) {
-      return $$0.c(d) == 0;
-   }
-
-   @Override
-   protected void b(dym $$0, arn $$1, jj $$2, azs $$3) {
-      if ($$0.c(d) == 0) {
-         if ($$3.a(3) == 0 && $$1.u($$2.d()) && $$1.b($$2.d(), 0) >= 9) {
-            int $$4 = this.b($$1, $$2) + 1;
-            if ($$4 < 16) {
-               this.a($$0, $$1, $$2, $$3, $$4);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected boolean a(dym $$0, dhs $$1, jj $$2) {
-      return $$1.a_($$2.e()).a(awz.ax);
-   }
-
-   @Override
-   protected dym a(dym $$0, dhs $$1, die $$2, jj $$3, jo $$4, jj $$5, dym $$6, azs $$7) {
-      if (!$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      return $$4 == jo.b && $$6.a(dkw.nB) && $$6.c(b) > $$0.c(b) ? $$0.a(b) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   public boolean a(dhs $$0, jj $$1, dym $$2) {
-      int $$3 = this.a($$0, $$1);
-      int $$4 = this.b($$0, $$1);
-      return $$3 + $$4 + 1 < 16 && $$0.a_($$1.b($$3)).c(d) != 1;
-   }
-
-   @Override
-   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
-      int $$4 = this.a($$0, $$2);
-      int $$5 = this.b($$0, $$2);
-      int $$6 = $$4 + $$5 + 1;
-      int $$7 = 1 + $$1.a(2);
-
-      for (int $$8 = 0; $$8 < $$7; $$8++) {
-         jj $$9 = $$2.b($$4);
-         dym $$10 = $$0.a_($$9);
-         if ($$6 >= 16 || $$10.c(d) == 1 || !$$0.u($$9.d())) {
-            return;
-         }
-
-         this.a($$10, $$0, $$9, $$1, $$6);
-         $$4++;
-         $$6++;
-      }
-   }
-
-   protected void a(dym $$0, dhp $$1, jj $$2, azs $$3, int $$4) {
-      dym $$5 = $$1.a_($$2.e());
-      jj $$6 = $$2.c(2);
-      dym $$7 = $$1.a_($$6);
-      dyy $$8 = dyy.a;
-      if ($$4 >= 1) {
-         if (!$$5.a(dkw.nB) || $$5.c(c) == dyy.a) {
-            $$8 = dyy.b;
-         } else if ($$5.a(dkw.nB) && $$5.c(c) != dyy.a) {
-            $$8 = dyy.c;
-            if ($$7.a(dkw.nB)) {
-               $$1.a($$2.e(), $$5.b(c, dyy.b), 3);
-               $$1.a($$6, $$7.b(c, dyy.a), 3);
-            }
+            this.l = Optional.of(bsj.a($$0));
+            return this;
          }
       }
 
-      int $$9 = $$0.c(b) != 1 && !$$7.a(dkw.nB) ? 0 : 1;
-      int $$10 = ($$4 < 11 || !($$3.i() < 0.25F)) && $$4 != 15 ? 0 : 1;
-      $$1.a($$2.d(), this.m().b(b, Integer.valueOf($$9)).b(c, $$8).b(d, Integer.valueOf($$10)), 3);
-   }
-
-   protected int a(dgv $$0, jj $$1) {
-      int $$2 = 0;
-
-      while ($$2 < 16 && $$0.a_($$1.b($$2 + 1)).a(dkw.nB)) {
-         $$2++;
+      public djy.a a() {
+         return this.a(bsj.a()).a(0.0F);
       }
 
-      return $$2;
-   }
-
-   protected int b(dgv $$0, jj $$1) {
-      int $$2 = 0;
-
-      while ($$2 < 16 && $$0.a_($$1.c($$2 + 1)).a(dkw.nB)) {
-         $$2++;
+      public djy.a a(bsj<awi> $$0) {
+         this.l = Optional.of($$0);
+         return this;
       }
 
-      return $$2;
+      public djy.a a(float $$0) {
+         this.m = $$0;
+         return this;
+      }
+
+      public djy b() {
+         return new djy(
+            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
+            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
+            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
+            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
+            this.e,
+            this.f,
+            this.g,
+            this.h,
+            this.i,
+            this.j,
+            this.k,
+            this.l,
+            this.m
+         );
+      }
+   }
+
+   public static enum b implements bai {
+      a("none") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return $$2;
+         }
+      },
+      b("dark_forest") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return ($$2 & 16711422) + 2634762 >> 1;
+         }
+      },
+      c("swamp") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            double $$3 = djs.e.a($$0 * 0.0225, $$1 * 0.0225, false);
+            return $$3 < -0.1 ? 5011004 : 6975545;
+         }
+      };
+
+      private final String e;
+      public static final Codec<djy.b> d = bai.a(djy.b::values);
+
+      public abstract int a(double var1, double var3, int var5);
+
+      b(final String $$0) {
+         this.e = $$0;
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

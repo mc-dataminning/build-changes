@@ -1,49 +1,32 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.ResultConsumer;
+import com.mojang.brigadier.exceptions.CommandExceptionType;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import javax.annotation.Nullable;
 
-public class ek extends dz<ek.a> {
-   @Override
-   public Codec<ek.a> a() {
-      return ek.a.a;
+public interface ek<T extends ek<T>> {
+   boolean c(int var1);
+
+   T b(ef var1);
+
+   ef p();
+
+   default T a_() {
+      return this.b(ef.a);
    }
 
-   public void a(aro $$0, cpp $$1, cxy $$2) {
-      exl $$3 = bx.b($$0, $$1);
-      this.a($$0, $$2x -> $$2x.a($$3, $$2));
+   CommandDispatcher<T> w();
+
+   void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable hm var4);
+
+   boolean x();
+
+   default void a(CommandSyntaxException $$0, boolean $$1, @Nullable hm $$2) {
+      this.a($$0.getType(), $$0.getRawMessage(), $$1, $$2);
    }
 
-   public static record a(Optional<bi> b, Optional<bi> c, Optional<cv> d) implements dz.a {
-      public static final Codec<ek.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bx.b.optionalFieldOf("player").forGetter(ek.a::a),
-                  bx.b.optionalFieldOf("villager").forGetter(ek.a::c),
-                  cv.a.optionalFieldOf("item").forGetter(ek.a::d)
-               )
-               .apply($$0, ek.a::new)
-      );
-
-      public static aq<ek.a> b() {
-         return ap.t.a(new ek.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static aq<ek.a> a(bx.a $$0) {
-         return ap.t.a(new ek.a(Optional.of(bx.a($$0)), Optional.empty(), Optional.empty()));
-      }
-
-      public boolean a(exl $$0, cxy $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
-      }
-
-      @Override
-      public void a(bj $$0) {
-         dz.a.super.a($$0);
-         $$0.a(this.c, ".villager");
-      }
-
-      @Override
-      public Optional<bi> a() {
-         return this.b;
-      }
+   static <T extends ek<T>> ResultConsumer<T> b_() {
+      return ($$0, $$1, $$2) -> ((ek)$$0.getSource()).p().onResult($$1, $$2);
    }
 }

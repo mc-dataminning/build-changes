@@ -1,103 +1,101 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.google.common.hash.Hashing;
 
-public class dju extends dnr {
-   public static final MapCodec<dju> a = b(dju::new);
-   public static final dzk<jo> b = dot.e;
-   private static final Map<jo.a, fdo> c = fdl.a(
-      fdl.a(dku.b(12.0, 0.0, 4.0), dku.a(8.0, 10.0, 4.0, 5.0), dku.a(4.0, 8.0, 5.0, 10.0), dku.a(10.0, 16.0, 10.0, 16.0))
-   );
-   private static final wv d = wv.c("container.repair");
-   private static final float e = 2.0F;
-   private static final int f = 40;
+public class dju {
+   public static final int a = jp.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final dju.a e;
+   private final long f;
 
-   @Override
-   public MapCodec<dju> a() {
-      return a;
+   public dju(dju.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public dju(dyl.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, jo.c));
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
    }
 
-   @Override
-   public dym a(dbn $$0) {
-      return this.m().b(b, $$0.g().h());
+   public dju a(dju.a $$0) {
+      return new dju($$0, this.f);
    }
 
-   @Override
-   protected btq a(dym $$0, dhp $$1, jj $$2, cqi $$3, fcq $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(awu.aC);
+   public je<djs> a(iu $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
+
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
+         }
       }
 
-      return btq.a;
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
    }
 
-   @Nullable
-   @Override
-   protected bts b(dym $$0, dhp $$1, jj $$2) {
-      return new bty(($$2x, $$3, $$4) -> new ctq($$2x, $$3, cua.a($$1, $$2)), d);
+   public je<djs> a(double $$0, double $$1, double $$2) {
+      int $$3 = jp.a(azk.a($$0));
+      int $$4 = jp.a(azk.a($$1));
+      int $$5 = jp.a(azk.a($$2));
+      return this.a($$3, $$4, $$5);
    }
 
-   @Override
-   protected fdo a(dym $$0, dgv $$1, jj $$2, fcz $$3) {
-      return c.get($$0.c(b).o());
+   public je<djs> b(iu $$0) {
+      int $$1 = jp.a($$0.u());
+      int $$2 = jp.a($$0.v());
+      int $$3 = jp.a($$0.w());
+      return this.a($$1, $$2, $$3);
    }
 
-   @Override
-   protected void a(cmm $$0) {
-      $$0.b(2.0F, 40);
+   public je<djs> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(dhp $$0, jj $$1, dym $$2, dym $$3, cmm $$4) {
-      if (!$$4.bb()) {
-         $$0.c(1031, $$1, 0);
-      }
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = azf.a($$0, (long)$$1);
+      $$7 = azf.a($$7, (long)$$2);
+      $$7 = azf.a($$7, (long)$$3);
+      $$7 = azf.a($$7, (long)$$1);
+      $$7 = azf.a($$7, (long)$$2);
+      $$7 = azf.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = azf.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = azf.a($$7, $$0);
+      double $$10 = b($$7);
+      return azk.k($$6 + $$10) + azk.k($$5 + $$9) + azk.k($$4 + $$8);
    }
 
-   @Override
-   public void a(dhp $$0, jj $$1, cmm $$2) {
-      if (!$$2.bb()) {
-         $$0.c(1029, $$1, 0);
-      }
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
    }
 
-   @Override
-   public buh a(bvs $$0) {
-      return $$0.dW().b($$0);
-   }
-
-   @Nullable
-   public static dym e(dym $$0) {
-      if ($$0.a(dkw.hp)) {
-         return dkw.hq.m().b(b, $$0.c(b));
-      } else {
-         return $$0.a(dkw.hq) ? dkw.hr.m().b(b, $$0.c(b)) : null;
-      }
-   }
-
-   @Override
-   protected dym a(dym $$0, drm $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dym $$0, evi $$1) {
-      return false;
-   }
-
-   @Override
-   public int b(dym $$0, dgv $$1, jj $$2) {
-      return $$0.a($$1, $$2).ak;
+   public interface a {
+      je<djs> getNoiseBiome(int var1, int var2, int var3);
    }
 }

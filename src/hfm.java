@@ -1,37 +1,18 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class hfm implements hfw<dvb> {
-   private final gqf a;
-   private final cwv b;
+public record hfm() implements hfc {
+   public static final MapCodec<hfm> a = MapCodec.unit(new hfm());
 
-   public hfm(cwv $$0, gqf $$1) {
-      this.a = $$1;
-      this.b = $$0;
+   @Override
+   public boolean get(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3, cyq $$4) {
+      fof $$5 = fof.Q();
+      bwa $$6 = $$5.ao();
+      return $$6 != null ? $$2 == $$6 : $$2 == $$5.t;
    }
 
-   @Nullable
-   public dvb a(cxy $$0) {
-      return $$0.a(kx.ak);
-   }
-
-   public void a(@Nullable dvb $$0, cxw $$1, fho $$2, gny $$3, int $$4, int $$5, boolean $$6) {
-      this.a.a($$2, $$3, $$4, $$5, this.b, Objects.requireNonNullElse($$0, dvb.a));
-   }
-
-   public static record a(cwv b) implements hfw.a {
-      public static final MapCodec<hfm.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwv.q.fieldOf("color").forGetter(hfm.a::b)).apply($$0, hfm.a::new));
-
-      @Override
-      public MapCodec<hfm.a> a() {
-         return a;
-      }
-
-      @Override
-      public hfw<?> a(ggz $$0) {
-         return new hfm(this.b, new gqf($$0));
-      }
+   @Override
+   public MapCodec<hfm> a() {
+      return a;
    }
 }

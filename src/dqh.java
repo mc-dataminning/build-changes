@@ -1,68 +1,53 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 
-public class dqh extends dku implements dkx {
+public class dqh extends dme implements dsy {
    public static final MapCodec<dqh> a = b(dqh::new);
+   public static final eam<ja> b = eae.T;
+   private final Function<dzo, feq> c;
+
+   public dqh(dzn.d $$0) {
+      super($$0);
+      this.l(this.B.b().b(b, ja.c).b(this.c(), Integer.valueOf(1)));
+      this.c = this.q();
+   }
+
+   private Function<dzo, feq> q() {
+      return this.a(this.a(b, this.c()));
+   }
 
    @Override
-   public MapCodec<dqh> a() {
+   protected MapCodec<dqh> a() {
       return a;
    }
 
-   public dqh(dyl.d $$0) {
-      super($$0);
+   @Override
+   public dzo a(dzo $$0, dsm $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public boolean a(dhs $$0, jj $$1, dym $$2) {
-      if (!$$0.a_($$1.d()).f()) {
-         return false;
-      } else {
-         for (jj $$3 : jj.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(awz.aO)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
+   public dzo a(dzo $$0, dqv $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
-      return true;
+   public boolean a(dzo $$0, dcl $$1) {
+      return this.a($$0, $$1, this.c()) ? true : super.a($$0, $$1);
    }
 
    @Override
-   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (jj $$6 : jj.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         dym $$7 = $$0.a_($$6);
-         if ($$7.a(dkw.oP)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(dkw.oY)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
-      }
-
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? dkw.oP.m() : dkw.oY.m(), 3);
-      } else if ($$5) {
-         $$0.a($$2, dkw.oP.m(), 3);
-      } else if ($$4) {
-         $$0.a($$2, dkw.oY.m(), 3);
-      }
+   public feq a(dzo $$0, dhv $$1, iu $$2, feb $$3) {
+      return this.c.apply($$0);
    }
 
    @Override
-   public dkx.a am_() {
-      return dkx.a.a;
+   public dzo a(dcl $$0) {
+      return this.a($$0, this, this.c(), b);
+   }
+
+   @Override
+   protected void a(dzp.a<dlu, dzo> $$0) {
+      $$0.a(b, this.c());
    }
 }

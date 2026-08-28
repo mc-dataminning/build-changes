@@ -2,29 +2,37 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
-public class gj implements ArgumentType<xs> {
-   private static final Collection<String> b = List.of("{bold: true}", "{color: 'red'}", "{}");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wv.b("argument.style.invalid", $$0));
-   private final ju.a c;
+public class gj implements ArgumentType<gh> {
+   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "~-5 ~5");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("argument.rotation.incomplete"));
 
-   private gj(ju.a $$0) {
-      this.c = $$0;
+   public static gj a() {
+      return new gj();
    }
 
-   public static xs a(CommandContext<ex> $$0, String $$1) {
-      return (xs)$$0.getArgument($$1, xs.class);
+   public static gh a(CommandContext<ei> $$0, String $$1) {
+      return (gh)$$0.getArgument($$1, gh.class);
    }
 
-   public static gj a(et $$0) {
-      return new gj($$0);
-   }
-
-   public xs a(StringReader $$0) throws CommandSyntaxException {
-      return fb.a(xs.b.b, this.c, a, $$0);
+   public gh a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         gn $$2 = gn.a($$0, false);
+         if ($$0.canRead() && $$0.peek() == ' ') {
+            $$0.skip();
+            gn $$3 = gn.a($$0, false);
+            return new go($$3, $$2, new gn(true, 0.0));
+         } else {
+            $$0.setCursor($$1);
+            throw a.createWithContext($$0);
+         }
+      }
    }
 
    public Collection<String> getExamples() {

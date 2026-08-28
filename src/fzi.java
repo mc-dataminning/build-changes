@@ -1,23 +1,48 @@
-import java.util.Arrays;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class fzi extends fzl {
-   private static final wv a = wv.c("options.mouse_settings.title");
+public class fzi extends fya {
+   public static final float c = 62.500004F;
+   public static final float d = 0.9765628F;
+   private static final Vector3f s = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
+   @Nullable
+   private gfz u;
 
-   private static fng<?>[] a(fnh $$0) {
-      return new fng[]{$$0.d(), $$0.U(), $$0.H(), $$0.V(), $$0.ac()};
-   }
-
-   public fzi(fwf $$0, fnh $$1) {
-      super($$0, $$1, a);
+   public fzi(dyb $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void m() {
-      if (fgj.a()) {
-         this.d.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.I())).toArray(fng[]::new));
-      } else {
-         this.d.a(a(this.c));
+   protected void aN_() {
+      super.aN_();
+      boolean $$0 = this.a.m().b() instanceof dtv;
+      this.u = gse.a(this.m.aS(), this.b, $$0);
+   }
+
+   @Override
+   protected void a(frc $$0, dzo $$1) {
+      super.a($$0, $$1);
+      boolean $$2 = $$1.b() instanceof dtv;
+      if (!$$2) {
+         $$0.c().a(0.0F, 35.0F, 0.0F);
       }
+   }
+
+   @Override
+   protected void c(frc $$0) {
+      if (this.u != null) {
+         $$0.c().a(0.0F, 31.0F, 0.0F);
+         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
+         $$0.a($$1 -> {
+            hkg $$2 = gpy.a(this.b);
+            fiu $$3 = $$2.a($$1, this.u::a);
+            this.u.a($$0.c(), $$3, 15728880, hhp.d);
+         });
+      }
+   }
+
+   @Override
+   protected Vector3f m() {
+      return s;
    }
 }

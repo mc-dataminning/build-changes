@@ -1,40 +1,58 @@
 import com.mojang.serialization.Codec;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class eix extends ehr<ekf> {
-   public eix(Codec<ekf> $$0) {
+public class eix extends eit<eiy> {
+   public eix(Codec<eiy> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eht<ekf> $$0) {
-      boolean $$1 = false;
-      azs $$2 = $$0.d();
-      dio $$3 = $$0.b();
-      jj $$4 = $$0.e();
-      ekf $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(eel.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      jj $$9 = new jj($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(dkw.J)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         dym $$11 = $$10 ? dkw.bE.m() : dkw.bD.m();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               dym $$12 = $$11.b(dtg.d, dzi.a);
-               jj $$13 = $$9.d();
-               if ($$3.a_($$13).a(dkw.J)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
-            }
+   public boolean a(eiv<eiy> $$0) {
+      azt $$1 = $$0.d();
+      djo $$2 = $$0.b();
+      iu $$3 = $$0.e();
+      dsm $$4 = dsm.a($$1);
+      eiy $$5 = $$0.f();
+      int $$6 = $$1.a($$5.b.size());
+      eul $$7 = $$2.a().p().aY();
+      euk $$8 = $$7.a($$5.b.get($$6));
+      euk $$9 = $$7.a($$5.c.get($$6));
+      dhw $$10 = new dhw($$3);
+      eqa $$11 = new eqa($$10.d() - 16, $$2.G_(), $$10.e() - 16, $$10.f() + 16, $$2.ao(), $$10.g() + 16);
+      eug $$12 = new eug().a($$4).a($$11).a($$1);
+      jz $$13 = $$8.a($$4);
+      iu $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
+      int $$15 = $$3.v();
 
-            $$1 = true;
+      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
+         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
+            $$15 = Math.min($$15, $$2.a(efn.a.c, $$14.u() + $$16, $$14.w() + $$17));
          }
       }
 
-      return $$1;
+      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.G_() + 10);
+      iu $$19 = $$8.a($$14.h($$18), dqv.a, $$4);
+      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
+         return false;
+      } else {
+         $$12.b();
+         $$5.d.a().a().forEach($$12::a);
+         $$8.a($$2, $$19, $$19, $$12, $$1, 260);
+         $$12.b();
+         $$5.e.a().a().forEach($$12::a);
+         $$9.a($$2, $$19, $$19, $$12, $$1, 260);
+         return true;
+      }
+   }
+
+   private static int a(djo $$0, eqa $$1) {
+      MutableInt $$2 = new MutableInt(0);
+      $$1.a($$2x -> {
+         dzo $$3 = $$0.a_($$2x);
+         if ($$3.l() || $$3.a(dlw.K) || $$3.a(dlw.J)) {
+            $$2.add(1);
+         }
+      });
+      return $$2.getValue();
    }
 }

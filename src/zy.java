@@ -1,29 +1,16 @@
-public class zy implements zc<zv> {
-   public static final yt<vr, zy> a = zc.a(zy::a, zy::new);
-   private final long b;
+import com.google.common.collect.Lists;
 
-   public zy(long $$0) {
-      this.b = $$0;
-   }
-
-   private zy(vr $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(vr $$0) {
-      $$0.b(this.b);
-   }
+public record zy(aag b) implements zd<zw> {
+   private static final int c = 32767;
+   public static final yu<vs, zy> a = aag.<vs>a($$0 -> aah.a($$0, 32767), af.a(Lists.newArrayList(new aag.c[]{new aag.c<>(aae.b, aae.a)}), $$0 -> {
+   })).a(zy::new, zy::b);
 
    @Override
-   public ze<zy> a() {
-      return zu.n;
+   public zf<zy> a() {
+      return zv.m;
    }
 
-   public void a(zv $$0) {
+   public void a(zw $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

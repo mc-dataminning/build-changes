@@ -1,411 +1,549 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrays;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
-import java.util.EnumSet;
-import java.util.IdentityHashMap;
+import com.mojang.serialization.DynamicLike;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import org.slf4j.Logger;
 
 public class ebg {
-   private static final Logger b = LogUtils.getLogger();
-   public static final ebg a = new ebg(dhf.a);
-   private static final String c = "Indices";
-   private static final jp[] d = jp.values();
-   private final EnumSet<jp> e = EnumSet.noneOf(jp.class);
-   private final List<fel<dku>> f = Lists.newArrayList();
-   private final List<fel<eus>> g = Lists.newArrayList();
-   private final int[][] h;
-   static final Map<dku, ebg.a> i = new IdentityHashMap<>();
-   static final Set<ebg.a> j = Sets.newHashSet();
+   public static final double b = 5.999997E7F;
+   public static final double c = 2.9999984E7;
+   private final List<ebe> a = Lists.newArrayList();
+   private double e = 0.2;
+   private double f = 5.0;
+   private int g = 15;
+   private int h = 5;
+   private double i;
+   private double j;
+   int k = 29999984;
+   private ebg.a l = new ebg.d(5.999997E7F);
+   public static final ebg.c d = new ebg.c(0.0, 0.0, 0.2, 5.0, 5, 15, 5.999997E7F, 0L, 0.0);
 
-   private ebg(dhr $$0) {
-      this.h = new int[$$0.ap()][];
+   public boolean a(iu $$0) {
+      return this.a((double)$$0.u(), (double)$$0.w());
    }
 
-   public ebg(tw $$0, dhr $$1) {
-      this($$1);
-      if ($$0.b("Indices", 10)) {
-         tw $$2 = $$0.p("Indices");
-
-         for (int $$3 = 0; $$3 < this.h.length; $$3++) {
-            String $$4 = String.valueOf($$3);
-            if ($$2.b($$4, 11)) {
-               this.h[$$3] = $$2.n($$4);
-            }
-         }
-      }
-
-      int $$5 = $$0.h("Sides");
-
-      for (jp $$6 : jp.values()) {
-         if (($$5 & 1 << $$6.ordinal()) != 0) {
-            this.e.add($$6);
-         }
-      }
-
-      a($$0, "neighbor_block_ticks", $$0x -> md.e.b(ald.c($$0x)).or(() -> Optional.of(dkw.a)), this.f);
-      a($$0, "neighbor_fluid_ticks", $$0x -> md.c.b(ald.c($$0x)).or(() -> Optional.of(euu.a)), this.g);
+   public boolean a(fdw $$0) {
+      return this.a($$0.d, $$0.f);
    }
 
-   private ebg(ebg $$0) {
-      this.e.addAll($$0.e);
-      this.f.addAll($$0.f);
-      this.g.addAll($$0.g);
-      this.h = new int[$$0.h.length][];
-
-      for (int $$1 = 0; $$1 < $$0.h.length; $$1++) {
-         int[] $$2 = $$0.h[$$1];
-         this.h[$$1] = $$2 != null ? IntArrays.copy($$2) : null;
-      }
+   public boolean a(dhw $$0) {
+      return this.a((double)$$0.d(), (double)$$0.e()) && this.a((double)$$0.f(), (double)$$0.g());
    }
 
-   private static <T> void a(tw $$0, String $$1, Function<String, Optional<T>> $$2, List<fel<T>> $$3) {
-      if ($$0.b($$1, 9)) {
-         for (ut $$5 : $$0.c($$1, 10)) {
-            fel.a((tw)$$5, $$2).ifPresent($$3::add);
-         }
-      }
+   public boolean a(fdr $$0) {
+      return this.a($$0.a, $$0.c, $$0.d - 1.0E-5F, $$0.f - 1.0E-5F);
    }
 
-   public void a(eat $$0) {
-      this.b($$0);
-
-      for (jp $$1 : d) {
-         a($$0, $$1);
-      }
-
-      dhp $$2 = $$0.H();
-      this.f.forEach($$1x -> {
-         dku $$2x = $$1x.a() == dkw.a ? $$2.a_($$1x.b()).b() : (dku)$$1x.a();
-         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
-      });
-      this.g.forEach($$1x -> {
-         eus $$2x = $$1x.a() == euu.a ? $$2.b_($$1x.b()).a() : (eus)$$1x.a();
-         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
-      });
-      j.forEach($$1x -> $$1x.a($$2));
+   private boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.a($$0, $$1) && this.a($$2, $$3);
    }
 
-   private static void a(eat $$0, jp $$1) {
-      dhp $$2 = $$0.H();
-      if ($$0.t().e.remove($$1)) {
-         Set<jo> $$3 = $$1.a();
-         int $$4 = 0;
-         int $$5 = 15;
-         boolean $$6 = $$3.contains(jo.f);
-         boolean $$7 = $$3.contains(jo.e);
-         boolean $$8 = $$3.contains(jo.d);
-         boolean $$9 = $$3.contains(jo.c);
-         boolean $$10 = $$3.size() == 1;
-         dgw $$11 = $$0.f();
-         int $$12 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 1);
-         int $$13 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 14);
-         int $$14 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 1);
-         int $$15 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 14);
-         jo[] $$16 = jo.values();
-         jj.a $$17 = new jj.a();
-
-         for (jj $$18 : jj.b($$12, $$2.G_(), $$14, $$13, $$2.ao(), $$15)) {
-            dym $$19 = $$2.a_($$18);
-            dym $$20 = $$19;
-
-            for (jo $$21 : $$16) {
-               $$17.a($$18, $$21);
-               $$20 = a($$20, $$21, $$2, $$18, $$17);
-            }
-
-            dku.a($$19, $$20, $$2, $$18, 18);
-         }
-      }
+   public boolean a(double $$0, double $$1) {
+      return this.a($$0, $$1, 0.0);
    }
 
-   private static dym a(dym $$0, jo $$1, dhq $$2, jj $$3, jj $$4) {
-      return i.getOrDefault($$0.b(), ebg.b.b).a($$0, $$1, $$2.a_($$4), $$2, $$3, $$4);
+   public boolean a(double $$0, double $$1, double $$2) {
+      return $$0 >= this.e() - $$2 && $$0 < this.g() + $$2 && $$1 >= this.f() - $$2 && $$1 < this.h() + $$2;
    }
 
-   private void b(eat $$0) {
-      jj.a $$1 = new jj.a();
-      jj.a $$2 = new jj.a();
-      dgw $$3 = $$0.f();
-      dhq $$4 = $$0.H();
+   public iu b(iu $$0) {
+      return this.b((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
+   }
 
-      for (int $$5 = 0; $$5 < this.h.length; $$5++) {
-         eau $$6 = $$0.b($$5);
-         int[] $$7 = this.h[$$5];
-         this.h[$$5] = null;
-         if ($$7 != null && $$7.length > 0) {
-            jo[] $$8 = jo.values();
-            ebb<dym> $$9 = $$6.h();
-            int $$10 = $$0.h($$5);
-            int $$11 = kl.c($$10);
+   public iu b(fdw $$0) {
+      return this.b($$0.a(), $$0.b(), $$0.c());
+   }
 
-            for (int $$12 : $$7) {
-               int $$13 = $$12 & 15;
-               int $$14 = $$12 >> 8 & 15;
-               int $$15 = $$12 >> 4 & 15;
-               $$1.d($$3.d() + $$13, $$11 + $$14, $$3.e() + $$15);
-               dym $$16 = $$9.a($$12);
-               dym $$17 = $$16;
+   public iu b(double $$0, double $$1, double $$2) {
+      return iu.a((jo)this.c($$0, $$1, $$2));
+   }
 
-               for (jo $$18 : $$8) {
-                  $$2.a($$1, $$18);
-                  if (kl.a($$1.u()) == $$3.h && kl.a($$1.w()) == $$3.i) {
-                     $$17 = a($$17, $$18, $$4, $$1, $$2);
-                  }
-               }
+   public fdw c(fdw $$0) {
+      return this.c($$0.d, $$0.e, $$0.f);
+   }
 
-               dku.a($$16, $$17, $$4, $$1, 18);
-            }
-         }
-      }
+   public fdw c(double $$0, double $$1, double $$2) {
+      return new fdw(azk.a($$0, this.e(), this.g() - 1.0E-5F), $$1, azk.a($$2, this.f(), this.h() - 1.0E-5F));
+   }
 
-      for (int $$19 = 0; $$19 < this.h.length; $$19++) {
-         if (this.h[$$19] != null) {
-            b.warn("Discarding update data for section {} for chunk ({} {})", new Object[]{$$4.h($$19), $$3.h, $$3.i});
-         }
+   public double a(bwa $$0) {
+      return this.b($$0.dA(), $$0.dG());
+   }
 
-         this.h[$$19] = null;
+   public feq c() {
+      return this.l.m();
+   }
+
+   public double b(double $$0, double $$1) {
+      double $$2 = $$1 - this.f();
+      double $$3 = this.h() - $$1;
+      double $$4 = $$0 - this.e();
+      double $$5 = this.g() - $$0;
+      double $$6 = Math.min($$4, $$5);
+      $$6 = Math.min($$6, $$2);
+      return Math.min($$6, $$3);
+   }
+
+   public boolean a(bwa $$0, fdr $$1) {
+      double $$2 = Math.max(azk.a($$1.b(), $$1.d()), 1.0);
+      return this.a($$0) < $$2 * 2.0 && this.a($$0.dA(), $$0.dG(), $$2);
+   }
+
+   public ebf d() {
+      return this.l.i();
+   }
+
+   public double e() {
+      return this.l.a();
+   }
+
+   public double f() {
+      return this.l.c();
+   }
+
+   public double g() {
+      return this.l.b();
+   }
+
+   public double h() {
+      return this.l.d();
+   }
+
+   public double a() {
+      return this.i;
+   }
+
+   public double b() {
+      return this.j;
+   }
+
+   public void c(double $$0, double $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.l.k();
+
+      for (ebe $$2 : this.l()) {
+         $$2.a(this, $$0, $$1);
       }
    }
 
-   public boolean a() {
-      for (int[] $$0 : this.h) {
-         if ($$0 != null) {
-            return false;
-         }
-      }
-
-      return this.e.isEmpty();
+   public double i() {
+      return this.l.e();
    }
 
-   public tw b() {
-      tw $$0 = new tw();
-      tw $$1 = new tw();
-
-      for (int $$2 = 0; $$2 < this.h.length; $$2++) {
-         String $$3 = String.valueOf($$2);
-         if (this.h[$$2] != null && this.h[$$2].length != 0) {
-            $$1.a($$3, this.h[$$2]);
-         }
-      }
-
-      if (!$$1.g()) {
-         $$0.a("Indices", $$1);
-      }
-
-      int $$4 = 0;
-
-      for (jp $$5 : this.e) {
-         $$4 |= 1 << $$5.ordinal();
-      }
-
-      $$0.a("Sides", (byte)$$4);
-      if (!this.f.isEmpty()) {
-         uc $$6 = new uc();
-         this.f.forEach($$1x -> $$6.add($$1x.a($$0xx -> md.e.b($$0xx).toString())));
-         $$0.a("neighbor_block_ticks", $$6);
-      }
-
-      if (!this.g.isEmpty()) {
-         uc $$7 = new uc();
-         this.g.forEach($$1x -> $$7.add($$1x.a($$0xx -> md.c.b($$0xx).toString())));
-         $$0.a("neighbor_fluid_ticks", $$7);
-      }
-
-      return $$0;
+   public long j() {
+      return this.l.g();
    }
 
-   public ebg c() {
-      return this == a ? a : new ebg(this);
+   public double k() {
+      return this.l.h();
    }
 
-   public interface a {
-      dym a(dym var1, jo var2, dym var3, dhq var4, jj var5, jj var6);
+   public void a(double $$0) {
+      this.l = new ebg.d($$0);
 
-      default void a(dhq $$0) {
+      for (ebe $$1 : this.l()) {
+         $$1.a(this, $$0);
       }
    }
 
-   static enum b implements ebg.a {
-      a(
-         dkw.lq,
-         dkw.eq,
-         dkw.mo,
-         dkw.mp,
-         dkw.mq,
-         dkw.mr,
-         dkw.ms,
-         dkw.mt,
-         dkw.mu,
-         dkw.mv,
-         dkw.mw,
-         dkw.mx,
-         dkw.my,
-         dkw.mz,
-         dkw.mA,
-         dkw.mB,
-         dkw.mC,
-         dkw.mD,
-         dkw.hp,
-         dkw.hq,
-         dkw.hr,
-         dkw.fV,
-         dkw.O,
-         dkw.L,
-         dkw.N,
-         dkw.cM,
-         dkw.cN,
-         dkw.cO,
-         dkw.cP,
-         dkw.cQ,
-         dkw.cR,
-         dkw.cS,
-         dkw.cT,
-         dkw.da,
-         dkw.db,
-         dkw.dc,
-         dkw.dd,
-         dkw.df,
-         dkw.dg,
-         dkw.dh,
-         dkw.dk,
-         dkw.dl,
-         dkw.dm,
-         dkw.dn,
-         dkw.dp,
-         dkw.dq,
-         dkw.dr,
-         dkw.dw,
-         dkw.dx,
-         dkw.dy,
-         dkw.dz,
-         dkw.dB,
-         dkw.dC,
-         dkw.dD
-      ) {
-         @Override
-         public dym a(dym $$0, jo $$1, dym $$2, dhq $$3, jj $$4, jj $$5) {
-            return $$0;
-         }
-      },
-      b {
-         @Override
-         public dym a(dym $$0, jo $$1, dym $$2, dhq $$3, jj $$4, jj $$5) {
-            return $$0.a($$3, $$3, $$4, $$1, $$5, $$3.a_($$5), $$3.C_());
-         }
-      },
-      c(dkw.cD, dkw.hs) {
-         @Override
-         public dym a(dym $$0, jo $$1, dym $$2, dhq $$3, jj $$4, jj $$5) {
-            if ($$2.a($$0.b()) && $$1.o().d() && $$0.c(dlx.d) == dze.a && $$2.c(dlx.d) == dze.a) {
-               jo $$6 = $$0.c(dlx.c);
-               if ($$1.o() != $$6.o() && $$6 == $$2.c(dlx.c)) {
-                  dze $$7 = $$1 == $$6.h() ? dze.b : dze.c;
-                  $$3.a($$5, $$2.b(dlx.d, $$7.a()), 18);
-                  if ($$6 == jo.c || $$6 == jo.f) {
-                     dvl $$8 = $$3.c_($$4);
-                     dvl $$9 = $$3.c_($$5);
-                     if ($$8 instanceof dvt && $$9 instanceof dvt) {
-                        dvt.a((dvt)$$8, (dvt)$$9);
-                     }
-                  }
+   public void a(double $$0, double $$1, long $$2) {
+      this.l = (ebg.a)($$0 == $$1 ? new ebg.d($$1) : new ebg.b($$0, $$1, $$2));
 
-                  return $$0.b(dlx.d, $$7);
-               }
-            }
+      for (ebe $$3 : this.l()) {
+         $$3.a(this, $$0, $$1, $$2);
+      }
+   }
 
-            return $$0;
-         }
-      },
-      d(true, dkw.aO, dkw.aP, dkw.aM, dkw.aR, dkw.aQ, dkw.aN, dkw.aK, dkw.aL) {
-         private final ThreadLocal<List<ObjectSet<jj>>> g = ThreadLocal.withInitial(() -> Lists.newArrayListWithCapacity(7));
+   protected List<ebe> l() {
+      return Lists.newArrayList(this.a);
+   }
 
-         @Override
-         public dym a(dym $$0, jo $$1, dym $$2, dhq $$3, jj $$4, jj $$5) {
-            dym $$6 = $$0.a($$3, $$3, $$4, $$1, $$5, $$3.a_($$5), $$3.C_());
-            if ($$0 != $$6) {
-               int $$7 = $$6.c(dzc.aF);
-               List<ObjectSet<jj>> $$8 = this.g.get();
-               if ($$8.isEmpty()) {
-                  for (int $$9 = 0; $$9 < 7; $$9++) {
-                     $$8.add(new ObjectOpenHashSet());
-                  }
-               }
+   public void a(ebe $$0) {
+      this.a.add($$0);
+   }
 
-               $$8.get($$7).add($$4.j());
-            }
+   public void b(ebe $$0) {
+      this.a.remove($$0);
+   }
 
-            return $$0;
-         }
+   public void a(int $$0) {
+      this.k = $$0;
+      this.l.j();
+   }
 
-         @Override
-         public void a(dhq $$0) {
-            jj.a $$1 = new jj.a();
-            List<ObjectSet<jj>> $$2 = this.g.get();
+   public int m() {
+      return this.k;
+   }
 
-            for (int $$3 = 2; $$3 < $$2.size(); $$3++) {
-               int $$4 = $$3 - 1;
-               ObjectSet<jj> $$5 = $$2.get($$4);
-               ObjectSet<jj> $$6 = $$2.get($$3);
-               ObjectIterator var8 = $$5.iterator();
+   public double n() {
+      return this.f;
+   }
 
-               while (var8.hasNext()) {
-                  jj $$7 = (jj)var8.next();
-                  dym $$8 = $$0.a_($$7);
-                  if ($$8.c(dzc.aF) >= $$4) {
-                     $$0.a($$7, $$8.b(dzc.aF, Integer.valueOf($$4)), 18);
-                     if ($$3 != 7) {
-                        for (jo $$9 : f) {
-                           $$1.a($$7, $$9);
-                           dym $$10 = $$0.a_($$1);
-                           if ($$10.b(dzc.aF) && $$8.c(dzc.aF) > $$3) {
-                              $$6.add($$1.j());
-                           }
-                        }
-                     }
-                  }
-               }
-            }
+   public void b(double $$0) {
+      this.f = $$0;
 
-            $$2.clear();
-         }
-      },
-      e(dkw.fs, dkw.fr) {
-         @Override
-         public dym a(dym $$0, jo $$1, dym $$2, dhq $$3, jj $$4, jj $$5) {
-            if ($$0.c(dsw.c) == 7) {
-               dku $$6 = $$0.a(dkw.fr) ? dkw.fn : dkw.fo;
-               if ($$2.a($$6)) {
-                  return ($$0.a(dkw.fr) ? dkw.fp : dkw.fq).m().b(dot.e, $$1);
-               }
-            }
+      for (ebe $$1 : this.l()) {
+         $$1.c(this, $$0);
+      }
+   }
 
-            return $$0;
-         }
-      };
+   public double o() {
+      return this.e;
+   }
 
-      public static final jo[] f = jo.values();
+   public void c(double $$0) {
+      this.e = $$0;
 
-      b(final dku... $$0) {
-         this(false, $$0);
+      for (ebe $$1 : this.l()) {
+         $$1.b(this, $$0);
+      }
+   }
+
+   public double p() {
+      return this.l.f();
+   }
+
+   public int q() {
+      return this.g;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+
+      for (ebe $$1 : this.l()) {
+         $$1.a(this, $$0);
+      }
+   }
+
+   public int r() {
+      return this.h;
+   }
+
+   public void c(int $$0) {
+      this.h = $$0;
+
+      for (ebe $$1 : this.l()) {
+         $$1.b(this, $$0);
+      }
+   }
+
+   public void s() {
+      this.l = this.l.l();
+   }
+
+   public ebg.c t() {
+      return new ebg.c(this);
+   }
+
+   public void a(ebg.c $$0) {
+      this.c($$0.a(), $$0.b());
+      this.c($$0.c());
+      this.b($$0.d());
+      this.c($$0.e());
+      this.b($$0.f());
+      if ($$0.h() > 0L) {
+         this.a($$0.g(), $$0.i(), $$0.h());
+      } else {
+         this.a($$0.g());
+      }
+   }
+
+   interface a {
+      double a();
+
+      double b();
+
+      double c();
+
+      double d();
+
+      double e();
+
+      double f();
+
+      long g();
+
+      double h();
+
+      ebf i();
+
+      void j();
+
+      void k();
+
+      ebg.a l();
+
+      feq m();
+   }
+
+   class b implements ebg.a {
+      private final double b;
+      private final double c;
+      private final long d;
+      private final long e;
+      private final double f;
+
+      b(final double $$0, final double $$1, final long $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.f = (double)$$2;
+         this.e = af.c();
+         this.d = this.e + $$2;
       }
 
-      b(final boolean $$0, final dku... $$1) {
-         for (dku $$2 : $$1) {
-            ebg.i.put($$2, this);
-         }
+      @Override
+      public double a() {
+         return azk.a(ebg.this.a() - this.e() / 2.0, (double)(-ebg.this.k), (double)ebg.this.k);
+      }
 
-         if ($$0) {
-            ebg.j.add(this);
-         }
+      @Override
+      public double c() {
+         return azk.a(ebg.this.b() - this.e() / 2.0, (double)(-ebg.this.k), (double)ebg.this.k);
+      }
+
+      @Override
+      public double b() {
+         return azk.a(ebg.this.a() + this.e() / 2.0, (double)(-ebg.this.k), (double)ebg.this.k);
+      }
+
+      @Override
+      public double d() {
+         return azk.a(ebg.this.b() + this.e() / 2.0, (double)(-ebg.this.k), (double)ebg.this.k);
+      }
+
+      @Override
+      public double e() {
+         double $$0 = (double)(af.c() - this.e) / this.f;
+         return $$0 < 1.0 ? azk.d($$0, this.b, this.c) : this.c;
+      }
+
+      @Override
+      public double f() {
+         return Math.abs(this.b - this.c) / (double)(this.d - this.e);
+      }
+
+      @Override
+      public long g() {
+         return this.d - af.c();
+      }
+
+      @Override
+      public double h() {
+         return this.c;
+      }
+
+      @Override
+      public ebf i() {
+         return this.c < this.b ? ebf.b : ebf.a;
+      }
+
+      @Override
+      public void k() {
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public ebg.a l() {
+         return (ebg.a)(this.g() <= 0L ? ebg.this.new d(this.c) : this);
+      }
+
+      @Override
+      public feq m() {
+         return fen.a(
+            fen.c,
+            fen.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            fea.e
+         );
+      }
+   }
+
+   public static class c {
+      private final double a;
+      private final double b;
+      private final double c;
+      private final double d;
+      private final int e;
+      private final int f;
+      private final double g;
+      private final long h;
+      private final double i;
+
+      c(double $$0, double $$1, double $$2, double $$3, int $$4, int $$5, double $$6, long $$7, double $$8) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
+      }
+
+      c(ebg $$0) {
+         this.a = $$0.a();
+         this.b = $$0.b();
+         this.c = $$0.o();
+         this.d = $$0.n();
+         this.e = $$0.r();
+         this.f = $$0.q();
+         this.g = $$0.i();
+         this.h = $$0.j();
+         this.i = $$0.k();
+      }
+
+      public double a() {
+         return this.a;
+      }
+
+      public double b() {
+         return this.b;
+      }
+
+      public double c() {
+         return this.c;
+      }
+
+      public double d() {
+         return this.d;
+      }
+
+      public int e() {
+         return this.e;
+      }
+
+      public int f() {
+         return this.f;
+      }
+
+      public double g() {
+         return this.g;
+      }
+
+      public long h() {
+         return this.h;
+      }
+
+      public double i() {
+         return this.i;
+      }
+
+      public static ebg.c a(DynamicLike<?> $$0, ebg.c $$1) {
+         double $$2 = azk.a($$0.get("BorderCenterX").asDouble($$1.a), -2.9999984E7, 2.9999984E7);
+         double $$3 = azk.a($$0.get("BorderCenterZ").asDouble($$1.b), -2.9999984E7, 2.9999984E7);
+         double $$4 = $$0.get("BorderSize").asDouble($$1.g);
+         long $$5 = $$0.get("BorderSizeLerpTime").asLong($$1.h);
+         double $$6 = $$0.get("BorderSizeLerpTarget").asDouble($$1.i);
+         double $$7 = $$0.get("BorderSafeZone").asDouble($$1.d);
+         double $$8 = $$0.get("BorderDamagePerBlock").asDouble($$1.c);
+         int $$9 = $$0.get("BorderWarningBlocks").asInt($$1.e);
+         int $$10 = $$0.get("BorderWarningTime").asInt($$1.f);
+         return new ebg.c($$2, $$3, $$8, $$7, $$9, $$10, $$4, $$5, $$6);
+      }
+
+      public void a(tx $$0) {
+         $$0.a("BorderCenterX", this.a);
+         $$0.a("BorderCenterZ", this.b);
+         $$0.a("BorderSize", this.g);
+         $$0.a("BorderSizeLerpTime", this.h);
+         $$0.a("BorderSafeZone", this.d);
+         $$0.a("BorderDamagePerBlock", this.c);
+         $$0.a("BorderSizeLerpTarget", this.i);
+         $$0.a("BorderWarningBlocks", (double)this.e);
+         $$0.a("BorderWarningTime", (double)this.f);
+      }
+   }
+
+   class d implements ebg.a {
+      private final double b;
+      private double c;
+      private double d;
+      private double e;
+      private double f;
+      private feq g;
+
+      public d(final double $$0) {
+         this.b = $$0;
+         this.n();
+      }
+
+      @Override
+      public double a() {
+         return this.c;
+      }
+
+      @Override
+      public double b() {
+         return this.e;
+      }
+
+      @Override
+      public double c() {
+         return this.d;
+      }
+
+      @Override
+      public double d() {
+         return this.f;
+      }
+
+      @Override
+      public double e() {
+         return this.b;
+      }
+
+      @Override
+      public ebf i() {
+         return ebf.c;
+      }
+
+      @Override
+      public double f() {
+         return 0.0;
+      }
+
+      @Override
+      public long g() {
+         return 0L;
+      }
+
+      @Override
+      public double h() {
+         return this.b;
+      }
+
+      private void n() {
+         this.c = azk.a(ebg.this.a() - this.b / 2.0, (double)(-ebg.this.k), (double)ebg.this.k);
+         this.d = azk.a(ebg.this.b() - this.b / 2.0, (double)(-ebg.this.k), (double)ebg.this.k);
+         this.e = azk.a(ebg.this.a() + this.b / 2.0, (double)(-ebg.this.k), (double)ebg.this.k);
+         this.f = azk.a(ebg.this.b() + this.b / 2.0, (double)(-ebg.this.k), (double)ebg.this.k);
+         this.g = fen.a(
+            fen.c,
+            fen.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            fea.e
+         );
+      }
+
+      @Override
+      public void j() {
+         this.n();
+      }
+
+      @Override
+      public void k() {
+         this.n();
+      }
+
+      @Override
+      public ebg.a l() {
+         return this;
+      }
+
+      @Override
+      public feq m() {
+         return this.g;
       }
    }
 }

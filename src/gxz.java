@@ -1,18 +1,21 @@
-public class gxz extends gyt<hbw, gfg> {
-   private final geo<hbw> a;
+public class gxz extends gui<crc, hdt> {
+   public static final ale a = ale.b("textures/entity/projectiles/arrow.png");
+   public static final ale g = ale.b("textures/entity/projectiles/tipped_arrow.png");
 
-   public gxz(gwc<hbw, gfg> $$0, ggz $$1) {
+   public gxz(gvk.a $$0) {
       super($$0);
-      this.a = new gff($$1.a(ghc.cq));
    }
 
-   public void a(fho $$0, gny $$1, int $$2, hbw $$3, float $$4, float $$5) {
-      if ("deadmau5".equals($$3.aH) && !$$3.z) {
-         fhs $$6 = $$1.getBuffer(goi.d($$3.a.a()));
-         int $$7 = gvg.a($$3, 0.0F);
-         this.d().a(this.a);
-         this.a.a($$3);
-         this.a.a($$0, $$6, $$2, $$7);
-      }
+   protected ale a(hdt $$0) {
+      return $$0.d ? g : a;
+   }
+
+   public hdt a() {
+      return new hdt();
+   }
+
+   public void a(crc $$0, hdt $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.d = $$0.y() > 0;
    }
 }

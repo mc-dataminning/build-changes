@@ -1,54 +1,40 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class fae {
-   private static final BiMap<ald, bau> y = HashBiMap.create();
-   public static final Codec<bau> a = ald.a
-      .comapFlatMap(
-         $$0 -> Optional.ofNullable((bau)y.get($$0))
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
-         y.inverse()::get
-      );
-   public static final bau b = a("empty", $$0 -> {
-   });
-   public static final bau c = a("chest", $$0 -> $$0.a(faf.f).b(faf.a));
-   public static final bau d = a("command", $$0 -> $$0.a(faf.f).b(faf.a));
-   public static final bau e = a("selector", $$0 -> $$0.a(faf.f).a(faf.a));
-   public static final bau f = a("fishing", $$0 -> $$0.a(faf.f).a(faf.i).b(faf.a));
-   public static final bau g = a("entity", $$0 -> $$0.a(faf.a).a(faf.f).a(faf.c).b(faf.d).b(faf.e).b(faf.b));
-   public static final bau h = a("equipment", $$0 -> $$0.a(faf.f).a(faf.a));
-   public static final bau i = a("archaeology", $$0 -> $$0.a(faf.f).a(faf.a).a(faf.i));
-   public static final bau j = a("gift", $$0 -> $$0.a(faf.f).a(faf.a));
-   public static final bau k = a("barter", $$0 -> $$0.a(faf.a));
-   public static final bau l = a("vault", $$0 -> $$0.a(faf.f).b(faf.a).b(faf.i));
-   public static final bau m = a("advancement_reward", $$0 -> $$0.a(faf.a).a(faf.f));
-   public static final bau n = a("advancement_entity", $$0 -> $$0.a(faf.a).a(faf.f));
-   public static final bau o = a("advancement_location", $$0 -> $$0.a(faf.a).a(faf.f).a(faf.i).a(faf.g));
-   public static final bau p = a("block_use", $$0 -> $$0.a(faf.a).a(faf.f).a(faf.g));
-   public static final bau q = a("generic", $$0 -> $$0.a(faf.a).a(faf.b).a(faf.c).a(faf.d).a(faf.e).a(faf.f).a(faf.g).a(faf.h).a(faf.i).a(faf.j));
-   public static final bau r = a("block", $$0 -> $$0.a(faf.g).a(faf.f).a(faf.i).b(faf.a).b(faf.h).b(faf.j));
-   public static final bau s = a("shearing", $$0 -> $$0.a(faf.f).a(faf.a).a(faf.i));
-   public static final bau t = a("enchanted_damage", $$0 -> $$0.a(faf.a).a(faf.k).a(faf.f).a(faf.c).b(faf.e).b(faf.d));
-   public static final bau u = a("enchanted_item", $$0 -> $$0.a(faf.i).a(faf.k));
-   public static final bau v = a("enchanted_location", $$0 -> $$0.a(faf.a).a(faf.k).a(faf.f).a(faf.l));
-   public static final bau w = a("enchanted_entity", $$0 -> $$0.a(faf.a).a(faf.k).a(faf.f));
-   public static final bau x = a("hit_block", $$0 -> $$0.a(faf.a).a(faf.k).a(faf.f).a(faf.g));
+public class fae extends faa {
+   public static final MapCodec<fae> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(eyl.e.fieldOf("component").forGetter($$0x -> $$0x.b), fad.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, fae::new)
+   );
+   private final eyk<?> b;
+   private final fab c;
 
-   private static bau a(String $$0, Consumer<bau.a> $$1) {
-      bau.a $$2 = new bau.a();
-      $$1.accept($$2);
-      bau $$3 = $$2.a();
-      ald $$4 = ald.b($$0);
-      bau $$5 = (bau)y.put($$4, $$3);
-      if ($$5 != null) {
-         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
+   private fae(List<fbw> $$0, eyk<?> $$1, fab $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   @Override
+   public fac<fae> b() {
+      return fad.u;
+   }
+
+   @Override
+   public cys a(cys $$0, eyn $$1) {
+      if ($$0.f()) {
+         return $$0;
       } else {
-         return $$3;
+         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
+         return $$0;
       }
+   }
+
+   @Override
+   public void a(eyt $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
    }
 }

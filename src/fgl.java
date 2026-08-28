@@ -1,53 +1,132 @@
-import ca.weblite.objc.Client;
-import ca.weblite.objc.NSObject;
-import com.sun.jna.Pointer;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Base64;
-import java.util.Locale;
-import java.util.Optional;
-import org.lwjgl.glfw.GLFWNativeCocoa;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.jtracy.MemoryPool;
+import com.mojang.jtracy.TracyClient;
+import java.nio.ByteBuffer;
+import javax.annotation.Nullable;
 
-public class fgl {
-   public static final boolean a = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("mac");
-   private static final int b = 8;
-   private static final int c = 16384;
+public class fgl implements AutoCloseable {
+   private static final MemoryPool c = TracyClient.createMemoryPool("GPU Buffers");
+   private final fgj d;
+   private final fgk e;
+   private boolean f;
+   private boolean g = false;
+   public final int a;
+   public int b;
 
-   public static void a(long $$0) {
-      c($$0).filter(fgl::a).ifPresent(fgl::c);
+   public fgl(fgj $$0, fgk $$1, int $$2) {
+      this.d = $$0;
+      this.b = $$2;
+      this.e = $$1;
+      this.a = GlStateManager._glGenBuffers();
    }
 
-   public static void b(long $$0) {
-      c($$0).ifPresent($$0x -> {
-         long $$1 = b($$0x);
-         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
-      });
+   public fgl(fgj $$0, fgk $$1, ByteBuffer $$2) {
+      this($$0, $$1, $$2.remaining());
+      this.a($$2, 0);
    }
 
-   private static Optional<NSObject> c(long $$0) {
-      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
-      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
+   public void a(int $$0) {
+      if (this.f) {
+         throw new IllegalStateException("Buffer already closed");
+      } else {
+         if (this.g) {
+            c.free((long)this.a);
+         }
+
+         this.b = $$0;
+         if (this.e.l) {
+            this.g = false;
+         } else {
+            this.b();
+            GlStateManager._glBufferData(this.d.h, (long)$$0, this.e.j);
+            c.malloc((long)this.a, $$0);
+            this.g = true;
+         }
+      }
    }
 
-   private static boolean a(NSObject $$0) {
-      return (b($$0) & 16384L) != 0L;
+   public void a(ByteBuffer $$0, int $$1) {
+      if (this.f) {
+         throw new IllegalStateException("Buffer already closed");
+      } else if (!this.e.l) {
+         throw new IllegalStateException("Buffer is not writable");
+      } else {
+         int $$2 = $$0.remaining();
+         if ($$2 + $$1 > this.b) {
+            throw new IllegalArgumentException(
+               "Cannot write more data than this buffer can hold (attempting to write " + $$2 + " bytes at offset " + $$1 + " to " + this.b + " size buffer)"
+            );
+         } else {
+            this.b();
+            if (this.g) {
+               GlStateManager._glBufferSubData(this.d.h, $$1, $$0);
+            } else if ($$1 == 0 && $$2 == this.b) {
+               GlStateManager._glBufferData(this.d.h, $$0, this.e.j);
+               c.malloc((long)this.a, this.b);
+               this.g = true;
+            } else {
+               GlStateManager._glBufferData(this.d.h, (long)this.b, this.e.j);
+               GlStateManager._glBufferSubData(this.d.h, $$1, $$0);
+               c.malloc((long)this.a, this.b);
+               this.g = true;
+            }
+         }
+      }
    }
 
-   private static long b(NSObject $$0) {
-      return (Long)$$0.sendRaw("styleMask", new Object[0]);
+   @Nullable
+   public fgl.a a() {
+      return this.a(0, this.b);
    }
 
-   private static void c(NSObject $$0) {
-      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
+   @Nullable
+   public fgl.a a(int $$0, int $$1) {
+      if (this.f) {
+         throw new IllegalStateException("Buffer already closed");
+      } else if (!this.e.k) {
+         throw new IllegalStateException("Buffer is not readable");
+      } else if ($$0 + $$1 > this.b) {
+         throw new IllegalArgumentException(
+            "Cannot read more data than this buffer can hold (attempting to read " + $$1 + " bytes at offset " + $$0 + " from " + this.b + " size buffer)"
+         );
+      } else {
+         this.b();
+         ByteBuffer $$2 = GlStateManager._glMapBufferRange(this.d.h, $$0, $$1, 1);
+         return $$2 == null ? null : new fgl.a(this.d.h, $$2);
+      }
    }
 
-   public static void a(aur<InputStream> $$0) throws IOException {
-      try (InputStream $$1 = $$0.get()) {
-         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
-         Client $$3 = Client.getInstance();
-         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
-         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
-         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
+   @Override
+   public void close() {
+      if (!this.f) {
+         this.f = true;
+         GlStateManager._glDeleteBuffers(this.a);
+         if (this.g) {
+            c.free((long)this.a);
+         }
+      }
+   }
+
+   public void b() {
+      GlStateManager._glBindBuffer(this.d.h, this.a);
+   }
+
+   public static class a implements AutoCloseable {
+      private final int a;
+      private final ByteBuffer b;
+
+      protected a(int $$0, ByteBuffer $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public ByteBuffer a() {
+         return this.b;
+      }
+
+      @Override
+      public void close() {
+         GlStateManager._glUnmapBuffer(this.a);
       }
    }
 }

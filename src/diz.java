@@ -1,71 +1,50 @@
-public abstract class diz {
-   public static final alc<dis> a = a("the_void");
-   public static final alc<dis> b = a("plains");
-   public static final alc<dis> c = a("sunflower_plains");
-   public static final alc<dis> d = a("snowy_plains");
-   public static final alc<dis> e = a("ice_spikes");
-   public static final alc<dis> f = a("desert");
-   public static final alc<dis> g = a("swamp");
-   public static final alc<dis> h = a("mangrove_swamp");
-   public static final alc<dis> i = a("forest");
-   public static final alc<dis> j = a("flower_forest");
-   public static final alc<dis> k = a("birch_forest");
-   public static final alc<dis> l = a("dark_forest");
-   public static final alc<dis> m = a("pale_garden");
-   public static final alc<dis> n = a("old_growth_birch_forest");
-   public static final alc<dis> o = a("old_growth_pine_taiga");
-   public static final alc<dis> p = a("old_growth_spruce_taiga");
-   public static final alc<dis> q = a("taiga");
-   public static final alc<dis> r = a("snowy_taiga");
-   public static final alc<dis> s = a("savanna");
-   public static final alc<dis> t = a("savanna_plateau");
-   public static final alc<dis> u = a("windswept_hills");
-   public static final alc<dis> v = a("windswept_gravelly_hills");
-   public static final alc<dis> w = a("windswept_forest");
-   public static final alc<dis> x = a("windswept_savanna");
-   public static final alc<dis> y = a("jungle");
-   public static final alc<dis> z = a("sparse_jungle");
-   public static final alc<dis> A = a("bamboo_jungle");
-   public static final alc<dis> B = a("badlands");
-   public static final alc<dis> C = a("eroded_badlands");
-   public static final alc<dis> D = a("wooded_badlands");
-   public static final alc<dis> E = a("meadow");
-   public static final alc<dis> F = a("cherry_grove");
-   public static final alc<dis> G = a("grove");
-   public static final alc<dis> H = a("snowy_slopes");
-   public static final alc<dis> I = a("frozen_peaks");
-   public static final alc<dis> J = a("jagged_peaks");
-   public static final alc<dis> K = a("stony_peaks");
-   public static final alc<dis> L = a("river");
-   public static final alc<dis> M = a("frozen_river");
-   public static final alc<dis> N = a("beach");
-   public static final alc<dis> O = a("snowy_beach");
-   public static final alc<dis> P = a("stony_shore");
-   public static final alc<dis> Q = a("warm_ocean");
-   public static final alc<dis> R = a("lukewarm_ocean");
-   public static final alc<dis> S = a("deep_lukewarm_ocean");
-   public static final alc<dis> T = a("ocean");
-   public static final alc<dis> U = a("deep_ocean");
-   public static final alc<dis> V = a("cold_ocean");
-   public static final alc<dis> W = a("deep_cold_ocean");
-   public static final alc<dis> X = a("frozen_ocean");
-   public static final alc<dis> Y = a("deep_frozen_ocean");
-   public static final alc<dis> Z = a("mushroom_fields");
-   public static final alc<dis> aa = a("dripstone_caves");
-   public static final alc<dis> ab = a("lush_caves");
-   public static final alc<dis> ac = a("deep_dark");
-   public static final alc<dis> ad = a("nether_wastes");
-   public static final alc<dis> ae = a("warped_forest");
-   public static final alc<dis> af = a("crimson_forest");
-   public static final alc<dis> ag = a("soul_sand_valley");
-   public static final alc<dis> ah = a("basalt_deltas");
-   public static final alc<dis> ai = a("the_end");
-   public static final alc<dis> aj = a("end_highlands");
-   public static final alc<dis> ak = a("end_midlands");
-   public static final alc<dis> al = a("small_end_islands");
-   public static final alc<dis> am = a("end_barrens");
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Map;
 
-   private static alc<dis> a(String $$0) {
-      return alc.a(me.aM, ald.b($$0));
+public class diz {
+   private final Long2ObjectMap<List<arp>> a = new Long2ObjectOpenHashMap();
+   private final Map<arp, diz.a> b = Maps.newHashMap();
+   private final aqs c;
+
+   public diz(aqs $$0) {
+      this.c = $$0;
+   }
+
+   private List<arp> a(dhw $$0) {
+      return (List<arp>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.c($$0));
+   }
+
+   public void a(dhw $$0, bxc $$1) {
+      for (arp $$2 : this.a($$0)) {
+         this.b.computeIfAbsent($$2, $$0x -> new diz.a()).a($$1);
+      }
+   }
+
+   public boolean a(bxc $$0, dhw $$1) {
+      for (arp $$2 : this.a($$1)) {
+         diz.a $$3 = this.b.get($$2);
+         if ($$3 == null || $$3.b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   static class a {
+      private final Object2IntMap<bxc> a = new Object2IntOpenHashMap(bxc.values().length);
+
+      public void a(bxc $$0) {
+         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
+      }
+
+      public boolean b(bxc $$0) {
+         return this.a.getOrDefault($$0, 0) < $$0.b();
+      }
    }
 }

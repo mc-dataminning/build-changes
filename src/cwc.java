@@ -1,29 +1,68 @@
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+import javax.annotation.Nullable;
 
-public class cwc extends czj {
-   public cwc(dku $$0, dku $$1, cxu.a $$2) {
-      super($$0, $$1, jo.a, $$2);
-      Validate.isInstanceOf(djl.class, $$0);
-      Validate.isInstanceOf(djl.class, $$1);
-   }
+public class cwc implements btr, cwb {
+   private final jn<cys> b = jn.a(1, cys.k);
+   @Nullable
+   private ddo<?> c;
 
-   public static void a(cxy $$0, List<wv> $$1) {
-      dvb $$2 = $$0.a(kx.ak);
-      if ($$2 != null) {
-         for (int $$3 = 0; $$3 < Math.min($$2.b().size(), 6); $$3++) {
-            dvb.b $$4 = $$2.b().get($$3);
-            $$1.add($$4.a().a(n.h));
-         }
-      }
-   }
-
-   public cwv b() {
-      return ((djl)this.d()).b();
+   @Override
+   public int b() {
+      return 1;
    }
 
    @Override
-   public void a(cxy $$0, cxu.b $$1, List<wv> $$2, czn $$3) {
-      a($$0, $$2);
+   public boolean c() {
+      for (cys $$0 : this.b) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public cys a(int $$0) {
+      return this.b.get(0);
+   }
+
+   @Override
+   public cys a(int $$0, int $$1) {
+      return bts.a(this.b, 0);
+   }
+
+   @Override
+   public cys b(int $$0) {
+      return bts.a(this.b, 0);
+   }
+
+   @Override
+   public void a(int $$0, cys $$1) {
+      this.b.set(0, $$1);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cqs $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public void a(@Nullable ddo<?> $$0) {
+      this.c = $$0;
+   }
+
+   @Nullable
+   @Override
+   public ddo<?> d() {
+      return this.c;
    }
 }

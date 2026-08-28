@@ -1,141 +1,68 @@
-import java.util.Arrays;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntImmutableList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
-public class eao {
-   public static final int a = 16;
-   public static final int b = 128;
-   public static final int c = 2048;
-   private static final int e = 4;
-   @Nullable
-   protected byte[] d;
-   private int f;
+public final class eao extends ear<Integer> {
+   private final IntImmutableList a;
+   private final int b;
+   private final int c;
 
-   public eao() {
-      this(0);
-   }
-
-   public eao(int $$0) {
-      this.f = $$0;
-   }
-
-   public eao(byte[] $$0) {
-      this.d = $$0;
-      this.f = 0;
-      if ($$0.length != 2048) {
-         throw (IllegalArgumentException)af.b(new IllegalArgumentException("DataLayer should be 2048 bytes not: " + $$0.length));
-      }
-   }
-
-   public int a(int $$0, int $$1, int $$2) {
-      return this.d(b($$0, $$1, $$2));
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.a(b($$0, $$1, $$2), $$3);
-   }
-
-   private static int b(int $$0, int $$1, int $$2) {
-      return $$1 << 8 | $$2 << 4 | $$0;
-   }
-
-   private int d(int $$0) {
-      if (this.d == null) {
-         return this.f;
+   private eao(String $$0, int $$1, int $$2) {
+      super($$0, Integer.class);
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
+      } else if ($$2 <= $$1) {
+         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
       } else {
-         int $$1 = f($$0);
-         int $$2 = e($$0);
-         return this.d[$$1] >> 4 * $$2 & 15;
+         this.b = $$1;
+         this.c = $$2;
+         this.a = IntImmutableList.toList(IntStream.range($$1, $$2 + 1));
       }
-   }
-
-   private void a(int $$0, int $$1) {
-      byte[] $$2 = this.a();
-      int $$3 = f($$0);
-      int $$4 = e($$0);
-      int $$5 = ~(15 << 4 * $$4);
-      int $$6 = ($$1 & 15) << 4 * $$4;
-      $$2[$$3] = (byte)($$2[$$3] & $$5 | $$6);
-   }
-
-   private static int e(int $$0) {
-      return $$0 & 1;
-   }
-
-   private static int f(int $$0) {
-      return $$0 >> 1;
-   }
-
-   public void a(int $$0) {
-      this.f = $$0;
-      this.d = null;
-   }
-
-   private static byte g(int $$0) {
-      byte $$1 = (byte)$$0;
-
-      for (int $$2 = 4; $$2 < 8; $$2 += 4) {
-         $$1 = (byte)($$1 | $$0 << $$2);
-      }
-
-      return $$1;
-   }
-
-   public byte[] a() {
-      if (this.d == null) {
-         this.d = new byte[2048];
-         if (this.f != 0) {
-            Arrays.fill(this.d, g(this.f));
-         }
-      }
-
-      return this.d;
-   }
-
-   public eao b() {
-      return this.d == null ? new eao(this.f) : new eao((byte[])this.d.clone());
    }
 
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
+   public List<Integer> a() {
+      return this.a;
+   }
 
-      for (int $$1 = 0; $$1 < 4096; $$1++) {
-         $$0.append(Integer.toHexString(this.d($$1)));
-         if (($$1 & 15) == 15) {
-            $$0.append("\n");
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof eao $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
          }
 
-         if (($$1 & 0xFF) == 255) {
-            $$0.append("\n");
-         }
+         return false;
       }
+   }
 
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
+   }
+
+   public static eao a(String $$0, int $$1, int $$2) {
+      return new eao($$0, $$1, $$2);
+   }
+
+   @Override
+   public Optional<Integer> b(String $$0) {
+      try {
+         int $$1 = Integer.parseInt($$0);
+         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
+      } catch (NumberFormatException var3) {
+         return Optional.empty();
+      }
+   }
+
+   public String a(Integer $$0) {
       return $$0.toString();
    }
 
-   @bar
-   public String b(int $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (int $$2 = 0; $$2 < 256; $$2++) {
-         $$1.append(Integer.toHexString(this.d($$2)));
-         if (($$2 & 15) == 15) {
-            $$1.append("\n");
-         }
-      }
-
-      return $$1.toString();
-   }
-
-   public boolean c() {
-      return this.d == null;
-   }
-
-   public boolean c(int $$0) {
-      return this.d == null && this.f == $$0;
-   }
-
-   public boolean d() {
-      return this.d == null && this.f == 0;
+   public int b(Integer $$0) {
+      return $$0 <= this.c ? $$0 - this.b : -1;
    }
 }

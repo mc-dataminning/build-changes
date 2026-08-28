@@ -1,21 +1,40 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+public class egd implements efc {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final efp i = new efp(this);
 
-public abstract class egd implements efs {
-   protected final kn f;
-
-   protected static <P extends egd> P1<Mu<P>, kn> a(Instance<P> $$0) {
-      return $$0.group(kn.v(16).optionalFieldOf("offset", kn.i).forGetter($$0x -> $$0x.f));
+   public egd(long $$0) {
+      this.b($$0);
    }
 
-   protected egd(kn $$0) {
-      this.f = $$0;
+   @Override
+   public azt d() {
+      return new egd(this.g());
    }
 
-   public final boolean a(dio $$0, jj $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public ega e() {
+      return new efo.a(this.g());
    }
 
-   protected abstract boolean a(dym var1);
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
+   }
 }

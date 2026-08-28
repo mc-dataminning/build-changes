@@ -1,21 +1,43 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import org.slf4j.Logger;
 
-public class bjy extends bhm {
-   private static final String a = "CanPickUpLoot";
+public class bjy extends DataFix {
+   private static final Logger a = LogUtils.getLogger();
 
    public bjy(Schema $$0) {
-      super($$0, true, "Villager CanPickUpLoot default value", biq.D, "Villager");
+      super($$0, true);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bjy::a);
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, String>> $$0 = this.getInputSchema().getType(bit.z);
+      Type<?> $$1 = this.getOutputSchema().getType(bit.z);
+      return this.a($$0, $$1);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("CanPickUpLoot", $$0.createBoolean(true));
+   private <T> TypeRewriteRule a(Type<Pair<String, String>> $$0, Type<T> $$1) {
+      return this.fixTypeEverywhere("UnflattenTextComponentFix", $$0, $$1, $$1x -> $$2 -> af.a($$1, a($$1x, (String)$$2.getSecond()), true).getValue());
+   }
+
+   private static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
+      try {
+         JsonElement $$2 = JsonParser.parseString($$1);
+         if (!$$2.isJsonNull()) {
+            return new Dynamic($$0, JsonOps.INSTANCE.convertTo($$0, $$2));
+         }
+      } catch (Exception var3) {
+         a.error("Failed to unflatten text component json: {}", $$1, var3);
+      }
+
+      return new Dynamic($$0, $$0.createString($$1));
    }
 }

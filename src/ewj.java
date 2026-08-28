@@ -1,52 +1,201 @@
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
+
 public class ewj {
-   private static final int J = 12741452;
-   public static final js<ewi> a = a("player", "player", false, true);
-   public static final js<ewi> b = a("frame", "frame", true, true);
-   public static final js<ewi> c = a("red_marker", "red_marker", false, true);
-   public static final js<ewi> d = a("blue_marker", "blue_marker", false, true);
-   public static final js<ewi> e = a("target_x", "target_x", true, false);
-   public static final js<ewi> f = a("target_point", "target_point", true, false);
-   public static final js<ewi> g = a("player_off_map", "player_off_map", false, true);
-   public static final js<ewi> h = a("player_off_limits", "player_off_limits", false, true);
-   public static final js<ewi> i = a("mansion", "woodland_mansion", true, 5393476, false, true);
-   public static final js<ewi> j = a("monument", "ocean_monument", true, 3830373, false, true);
-   public static final js<ewi> k = a("banner_white", "white_banner", true, true);
-   public static final js<ewi> l = a("banner_orange", "orange_banner", true, true);
-   public static final js<ewi> m = a("banner_magenta", "magenta_banner", true, true);
-   public static final js<ewi> n = a("banner_light_blue", "light_blue_banner", true, true);
-   public static final js<ewi> o = a("banner_yellow", "yellow_banner", true, true);
-   public static final js<ewi> p = a("banner_lime", "lime_banner", true, true);
-   public static final js<ewi> q = a("banner_pink", "pink_banner", true, true);
-   public static final js<ewi> r = a("banner_gray", "gray_banner", true, true);
-   public static final js<ewi> s = a("banner_light_gray", "light_gray_banner", true, true);
-   public static final js<ewi> t = a("banner_cyan", "cyan_banner", true, true);
-   public static final js<ewi> u = a("banner_purple", "purple_banner", true, true);
-   public static final js<ewi> v = a("banner_blue", "blue_banner", true, true);
-   public static final js<ewi> w = a("banner_brown", "brown_banner", true, true);
-   public static final js<ewi> x = a("banner_green", "green_banner", true, true);
-   public static final js<ewi> y = a("banner_red", "red_banner", true, true);
-   public static final js<ewi> z = a("banner_black", "black_banner", true, true);
-   public static final js<ewi> A = a("red_x", "red_x", true, false);
-   public static final js<ewi> B = a("village_desert", "desert_village", true, eux.w.ak, false, true);
-   public static final js<ewi> C = a("village_plains", "plains_village", true, eux.w.ak, false, true);
-   public static final js<ewi> D = a("village_savanna", "savanna_village", true, eux.w.ak, false, true);
-   public static final js<ewi> E = a("village_snowy", "snowy_village", true, eux.w.ak, false, true);
-   public static final js<ewi> F = a("village_taiga", "taiga_village", true, eux.w.ak, false, true);
-   public static final js<ewi> G = a("jungle_temple", "jungle_temple", true, eux.w.ak, false, true);
-   public static final js<ewi> H = a("swamp_hut", "swamp_hut", true, eux.w.ak, false, true);
-   public static final js<ewi> I = a("trial_chambers", "trial_chambers", true, 12741452, false, true);
+   private final List<ewh> a;
+   @Nullable
+   private ewj.a b;
+   private int c;
+   private final iu d;
+   private final float e;
+   private final boolean f;
 
-   public static js<ewi> a(kf<ewi> $$0) {
-      return a;
+   public ewj(List<ewh> $$0, iu $$1, boolean $$2) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
+      this.f = $$2;
    }
 
-   private static js<ewi> a(String $$0, String $$1, boolean $$2, boolean $$3) {
-      return a($$0, $$1, $$2, -1, $$3, false);
+   public void a() {
+      this.c++;
    }
 
-   private static js<ewi> a(String $$0, String $$1, boolean $$2, int $$3, boolean $$4, boolean $$5) {
-      alc<ewi> $$6 = alc.a(me.aC, ald.b($$0));
-      ewi $$7 = new ewi(ald.b($$1), $$2, $$3, $$5, $$4);
-      return kf.b(md.ar, $$6, $$7);
+   public boolean b() {
+      return this.c <= 0;
+   }
+
+   public boolean c() {
+      return this.c >= this.a.size();
+   }
+
+   @Nullable
+   public ewh d() {
+      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
+   }
+
+   public ewh a(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public void b(int $$0) {
+      if (this.a.size() > $$0) {
+         this.a.subList($$0, this.a.size()).clear();
+      }
+   }
+
+   public void a(int $$0, ewh $$1) {
+      this.a.set($$0, $$1);
+   }
+
+   public int e() {
+      return this.a.size();
+   }
+
+   public int f() {
+      return this.c;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public fdw a(bwa $$0, int $$1) {
+      ewh $$2 = this.a.get($$1);
+      double $$3 = (double)$$2.a + (double)((int)($$0.dq() + 1.0F)) * 0.5;
+      double $$4 = (double)$$2.b;
+      double $$5 = (double)$$2.c + (double)((int)($$0.dq() + 1.0F)) * 0.5;
+      return new fdw($$3, $$4, $$5);
+   }
+
+   public iu d(int $$0) {
+      return this.a.get($$0).a();
+   }
+
+   public fdw a(bwa $$0) {
+      return this.a($$0, this.c);
+   }
+
+   public iu g() {
+      return this.a.get(this.c).a();
+   }
+
+   public ewh h() {
+      return this.a.get(this.c);
+   }
+
+   @Nullable
+   public ewh i() {
+      return this.c > 0 ? this.a.get(this.c - 1) : null;
+   }
+
+   public boolean a(@Nullable ewj $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if ($$0.a.size() != this.a.size()) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+            ewh $$2 = this.a.get($$1);
+            ewh $$3 = $$0.a.get($$1);
+            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   @bat
+   void a(ewh[] $$0, ewh[] $$1, Set<ewq> $$2) {
+      this.b = new ewj.a($$0, $$1, $$2);
+   }
+
+   @Nullable
+   public ewj.a k() {
+      return this.b;
+   }
+
+   public void a(vs $$0) {
+      if (this.b != null && !this.b.c.isEmpty()) {
+         $$0.a(this.f);
+         $$0.q(this.c);
+         $$0.a(this.d);
+         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+         this.b.a($$0);
+      }
+   }
+
+   public static ewj b(vs $$0) {
+      boolean $$1 = $$0.readBoolean();
+      int $$2 = $$0.readInt();
+      iu $$3 = $$0.e();
+      List<ewh> $$4 = $$0.a(ewh::b);
+      ewj.a $$5 = ewj.a.b($$0);
+      ewj $$6 = new ewj($$4, $$3, $$1);
+      $$6.b = $$5;
+      $$6.c = $$2;
+      return $$6;
+   }
+
+   @Override
+   public String toString() {
+      return "Path(length=" + this.a.size() + ")";
+   }
+
+   public iu l() {
+      return this.d;
+   }
+
+   public float m() {
+      return this.e;
+   }
+
+   static ewh[] c(vs $$0) {
+      ewh[] $$1 = new ewh[$$0.l()];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = ewh.b($$0);
+      }
+
+      return $$1;
+   }
+
+   static void a(vs $$0, ewh[] $$1) {
+      $$0.c($$1.length);
+
+      for (ewh $$2 : $$1) {
+         $$2.a($$0);
+      }
+   }
+
+   public ewj n() {
+      ewj $$0 = new ewj(this.a, this.d, this.f);
+      $$0.b = this.b;
+      $$0.c = this.c;
+      return $$0;
+   }
+
+   public static record a(ewh[] a, ewh[] b, Set<ewq> c) {
+
+      public void a(vs $$0) {
+         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+         ewj.a($$0, this.a);
+         ewj.a($$0, this.b);
+      }
+
+      public static ewj.a b(vs $$0) {
+         HashSet<ewq> $$1 = $$0.a(HashSet::new, ewq::c);
+         ewh[] $$2 = ewj.c($$0);
+         ewh[] $$3 = ewj.c($$0);
+         return new ewj.a($$2, $$3, $$1);
+      }
    }
 }

@@ -1,34 +1,23 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class cbi {
-   public static byj<bwr> a(dku $$0) {
-      return cbv.a(
-         (Function<cbv.b<bwr>, ? extends App<cbv.c<bwr>, cby<bwr>>>)($$1 -> $$1.group($$1.c(cft.p), $$1.b(cft.n), $$1.b(cft.Z))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.bj() && $$3x.aJ()) {
-                        jj $$5 = $$3x.dv().e();
-
-                        for (jo $$6 : jo.c.a) {
-                           jj $$7 = $$5.a($$6);
-                           if ($$2x.a_($$7).g($$2x, $$7).a(jo.b).c() && $$2x.b_($$7).b(euu.c)) {
-                              jj $$8 = $$7.d();
-                              if ($$2x.a_($$8).l()) {
-                                 dym $$9 = $$0.m();
-                                 $$2x.a($$8, $$9, 3);
-                                 $$2x.a(edm.i, $$8, edm.a.a($$3x, $$9));
-                                 $$2x.a(null, $$3x, awk.kp, awl.e, 1.0F, 1.0F);
-                                 $$3.b();
-                                 return true;
-                              }
-                           }
-                        }
-
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
+   public static byr<bxh> a(cgb<jd> $$0, float $$1, int $$2, int $$3) {
+      MutableLong $$4 = new MutableLong(0L);
+      return ccd.a(
+         (Function<ccd.b<bxh>, ? extends App<ccd.c<bxh>, ccg<bxh>>>)($$5 -> $$5.group($$5.a(cgb.n), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  jd $$10 = $$5.b($$6);
+                  if ($$7.aj() != $$10.a() || !$$10.b().a($$8.dt(), (double)$$3)) {
+                     return false;
+                  } else if ($$9 <= $$4.getValue()) {
+                     return true;
+                  } else {
+                     $$5x.a(new cge($$10.b(), $$1, $$2));
+                     $$4.setValue($$9 + 80L);
+                     return true;
+                  }
+               }))
       );
    }
 }

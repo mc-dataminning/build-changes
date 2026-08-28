@@ -1,60 +1,86 @@
-public class cxe extends cxu implements cys {
-   public cxe(cxu.a $$0) {
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
+public class cxe extends czn {
+   public static final int a = 20;
+   public static final int b = 15;
+
+   public cxe(cyo.a $$0) {
       super($$0);
    }
 
    @Override
-   public btq a(dbp $$0) {
-      dhp $$1 = $$0.q();
-      jj $$2 = $$0.a();
-      dym $$3 = $$1.a_($$2);
-      boolean $$4 = false;
-      if (!dlj.i($$3) && !dlk.h($$3) && !dll.h($$3)) {
-         $$2 = $$2.a($$0.k());
-         if (dkh.a($$1, $$2, $$0.g())) {
-            this.a($$1, $$2);
-            $$1.b($$2, dkh.a($$1, $$2));
-            $$1.a($$0.o(), edm.i, $$2);
-            $$4 = true;
+   public boolean a(cys $$0, dip $$1, bwz $$2, int $$3) {
+      if (!($$2 instanceof cqs $$4)) {
+         return false;
+      } else {
+         cys $$5 = $$4.e($$0);
+         if ($$5.f()) {
+            return false;
+         } else {
+            int $$6 = this.a($$0, $$2) - $$3;
+            float $$7 = a($$6);
+            if ((double)$$7 < 0.1) {
+               return false;
+            } else {
+               List<cys> $$8 = a($$0, $$5, $$4);
+               if ($$1 instanceof aro $$9 && !$$8.isEmpty()) {
+                  this.a($$9, $$4, $$4.fz(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
+               }
+
+               $$1.a(null, $$4.dA(), $$4.dC(), $$4.dG(), awl.aG, awm.h, 1.0F, 1.0F / ($$1.C_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
+               $$4.b(awv.c.b(this));
+               return true;
+            }
          }
-      } else {
-         this.a($$1, $$2);
-         $$1.b($$2, $$3.b(dzc.u, Boolean.valueOf(true)));
-         $$1.a($$0.o(), edm.c, $$2);
-         $$4 = true;
-      }
-
-      if ($$4) {
-         $$0.n().h(1);
-         return btq.a;
-      } else {
-         return btq.d;
       }
    }
 
-   private void a(dhp $$0, jj $$1) {
-      azs $$2 = $$0.C_();
-      $$0.a(null, $$1, awk.jk, awl.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
+   @Override
+   protected void a(bwz $$0, crm $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bwz $$6) {
+      $$1.a($$0, $$0.dN(), $$0.dL() + $$5, 0.0F, $$3, $$4);
+   }
+
+   public static float a(int $$0) {
+      float $$1 = (float)$$0 / 20.0F;
+      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
+      if ($$1 > 1.0F) {
+         $$1 = 1.0F;
+      }
+
+      return $$1;
    }
 
    @Override
-   public crb a(dhp $$0, kc $$1, cxy $$2, jo $$3) {
-      azs $$4 = $$0.C_();
-      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
-      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
-      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
-      fcu $$8 = new fcu($$5, $$6, $$7);
-      crf $$9 = new crf($$0, $$1.a(), $$1.b(), $$1.c(), $$8.d());
-      $$9.a($$2);
-      return $$9;
+   public int a(cys $$0, bwz $$1) {
+      return 72000;
    }
 
    @Override
-   public void a(crb $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
+   public cyu b(cys $$0) {
+      return cyu.e;
    }
 
    @Override
-   public cys.a b() {
-      return cys.a.a().a(($$0, $$1) -> dna.a($$0, 1.0, fcu.c)).a(6.6666665F).b(1.0F).a(1018).a();
+   public bty a(dip $$0, cqs $$1, btx $$2) {
+      cys $$3 = $$1.b($$2);
+      boolean $$4 = !$$1.e($$3).f();
+      if (!$$1.fU() && !$$4) {
+         return bty.d;
+      } else {
+         $$1.c($$2);
+         return bty.c;
+      }
+   }
+
+   @Override
+   public Predicate<cys> a() {
+      return c;
+   }
+
+   @Override
+   public int b() {
+      return 15;
    }
 }

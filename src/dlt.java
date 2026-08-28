@@ -1,6 +1,7 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dlt extends dok implements dlr {
+public class dlt extends dkp {
    public static final MapCodec<dlt> c = b(dlt::new);
 
    @Override
@@ -8,48 +9,48 @@ public class dlt extends dok implements dlr {
       return c;
    }
 
-   public dlt(dyl.d $$0) {
-      super($$0, jo.a, s_, false);
-      this.l(this.B.b().b(t_, Boolean.valueOf(false)));
+   protected dlt(dzn.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected dol c() {
-      return (dol)dkw.sZ;
+   public dwn a(iu $$0, dzo $$1) {
+      return new dwm($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dwn> dwo<T> a(dip $$0, dzo $$1, dwp<T> $$2) {
+      return a($$0, $$2, dwp.D);
    }
 
    @Override
-   protected dym a(dym $$0, dym $$1) {
-      return $$1.b(t_, $$0.c(t_));
+   protected void a(dip $$0, iu $$1, cqs $$2) {
+      dwn $$3 = $$0.c_($$1);
+      if ($$3 instanceof dwm) {
+         $$2.a((bua)$$3);
+         $$2.a(awv.as);
+      }
    }
 
    @Override
-   protected cxy a(dhs $$0, jj $$1, dym $$2, boolean $$3) {
-      return new cxy(cyc.xA);
-   }
+   public void a(dzo $$0, dip $$1, iu $$2, azt $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awl.cA, awm.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   protected btq a(dym $$0, dhp $$1, jj $$2, cqi $$3, fcq $$4) {
-      return dlr.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(dyn.a<dku, dym> $$0) {
-      $$0.a(t_);
-   }
-
-   @Override
-   public boolean a(dhs $$0, jj $$1, dym $$2) {
-      return !$$2.c(t_);
-   }
-
-   @Override
-   public boolean a(dhp $$0, azs $$1, jj $$2, dym $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arn $$0, azs $$1, jj $$2, dym $$3) {
-      $$0.a($$2, $$3.b(t_, Boolean.valueOf(true)), 2);
+         ja $$7 = $$0.c(a);
+         ja.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ja.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 9.0 / 16.0;
+         double $$13 = $$8 == ja.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(lx.ah, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

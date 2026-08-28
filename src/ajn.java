@@ -1,7 +1,5 @@
-public record ajn() implements ajl {
-   public static final ajn a = new ajn();
+public interface ajn {
+   ale a();
 
-   @Override
-   public void a(vr $$0) {
-   }
+   void a(vs var1);
 }

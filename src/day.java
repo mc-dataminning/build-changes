@@ -1,5 +1,3 @@
-import java.util.function.Consumer;
-
 public interface day {
-   void a(cxu.b var1, Consumer<wv> var2, czn var3);
+   void a(dip var1, bwz var2, cys var3, dax var4);
 }

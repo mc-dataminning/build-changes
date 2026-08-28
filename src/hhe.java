@@ -1,152 +1,177 @@
-import com.google.common.base.Suppliers;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.IntUnaryOperator;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class hhe implements hgx {
-   static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<hhe> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.list(ald.a).fieldOf("textures").forGetter($$0x -> $$0x.d),
-               ald.a.fieldOf("palette_key").forGetter($$0x -> $$0x.f),
-               Codec.unboundedMap(Codec.STRING, ald.a).fieldOf("permutations").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, hhe::new)
-   );
-   private final List<ald> d;
-   private final Map<String, ald> e;
-   private final ald f;
+public class hhe {
+   private static final ays.b<ale, MapCodec<? extends hhd.a>> b = new ays.b<>();
+   public static final Codec<hhd.a> a = b.a(ale.a).dispatch(hhd.a::a, $$0 -> $$0);
+   private static final Map<dlu, hhd.a> c = ImmutableMap.builder()
+      .put(dlw.hb, new hhc.a(dtc.b.c))
+      .put(dlw.hf, new hhc.a(dtc.b.f))
+      .put(dlw.hj, new hhc.a(dtc.b.g))
+      .put(dlw.hl, new hhc.a(dtc.b.i))
+      .put(dlw.hn, new hhc.a(dtc.b.h))
+      .put(dlw.hh, new hhc.a(dtc.b.e))
+      .put(dlw.hd, new hhc.a(dtc.b.d))
+      .put(dlw.hc, new hhc.a(dtc.b.c))
+      .put(dlw.hg, new hhc.a(dtc.b.f))
+      .put(dlw.hk, new hhc.a(dtc.b.g))
+      .put(dlw.hm, new hhc.a(dtc.b.i))
+      .put(dlw.ho, new hhc.a(dtc.b.h))
+      .put(dlw.hi, new hhc.a(dtc.b.e))
+      .put(dlw.he, new hhc.a(dtc.b.d))
+      .put(dlw.jh, new hgt.a(cxq.a))
+      .put(dlw.ji, new hgt.a(cxq.b))
+      .put(dlw.jj, new hgt.a(cxq.c))
+      .put(dlw.jk, new hgt.a(cxq.d))
+      .put(dlw.jl, new hgt.a(cxq.e))
+      .put(dlw.jm, new hgt.a(cxq.f))
+      .put(dlw.jn, new hgt.a(cxq.g))
+      .put(dlw.jo, new hgt.a(cxq.h))
+      .put(dlw.jp, new hgt.a(cxq.i))
+      .put(dlw.jq, new hgt.a(cxq.j))
+      .put(dlw.jr, new hgt.a(cxq.k))
+      .put(dlw.js, new hgt.a(cxq.l))
+      .put(dlw.jt, new hgt.a(cxq.m))
+      .put(dlw.ju, new hgt.a(cxq.n))
+      .put(dlw.jv, new hgt.a(cxq.o))
+      .put(dlw.jw, new hgt.a(cxq.p))
+      .put(dlw.jx, new hgt.a(cxq.a))
+      .put(dlw.jy, new hgt.a(cxq.b))
+      .put(dlw.jz, new hgt.a(cxq.c))
+      .put(dlw.jA, new hgt.a(cxq.d))
+      .put(dlw.jB, new hgt.a(cxq.e))
+      .put(dlw.jC, new hgt.a(cxq.f))
+      .put(dlw.jD, new hgt.a(cxq.g))
+      .put(dlw.jE, new hgt.a(cxq.h))
+      .put(dlw.jF, new hgt.a(cxq.i))
+      .put(dlw.jG, new hgt.a(cxq.j))
+      .put(dlw.jH, new hgt.a(cxq.k))
+      .put(dlw.jI, new hgt.a(cxq.l))
+      .put(dlw.jJ, new hgt.a(cxq.m))
+      .put(dlw.jK, new hgt.a(cxq.n))
+      .put(dlw.jL, new hgt.a(cxq.o))
+      .put(dlw.jM, new hgt.a(cxq.p))
+      .put(dlw.bg, new hgu.a(cxq.a))
+      .put(dlw.bh, new hgu.a(cxq.b))
+      .put(dlw.bi, new hgu.a(cxq.c))
+      .put(dlw.bj, new hgu.a(cxq.d))
+      .put(dlw.bk, new hgu.a(cxq.e))
+      .put(dlw.bl, new hgu.a(cxq.f))
+      .put(dlw.bm, new hgu.a(cxq.g))
+      .put(dlw.bn, new hgu.a(cxq.h))
+      .put(dlw.bo, new hgu.a(cxq.i))
+      .put(dlw.bp, new hgu.a(cxq.j))
+      .put(dlw.bq, new hgu.a(cxq.k))
+      .put(dlw.br, new hgu.a(cxq.l))
+      .put(dlw.bs, new hgu.a(cxq.m))
+      .put(dlw.bt, new hgu.a(cxq.n))
+      .put(dlw.bu, new hgu.a(cxq.o))
+      .put(dlw.bv, new hgu.a(cxq.p))
+      .put(dlw.lr, new hhb.a())
+      .put(dlw.ls, new hhb.a(cxq.a))
+      .put(dlw.lt, new hhb.a(cxq.b))
+      .put(dlw.lu, new hhb.a(cxq.c))
+      .put(dlw.lv, new hhb.a(cxq.d))
+      .put(dlw.lw, new hhb.a(cxq.e))
+      .put(dlw.lx, new hhb.a(cxq.f))
+      .put(dlw.ly, new hhb.a(cxq.g))
+      .put(dlw.lz, new hhb.a(cxq.h))
+      .put(dlw.lA, new hhb.a(cxq.i))
+      .put(dlw.lB, new hhb.a(cxq.j))
+      .put(dlw.lC, new hhb.a(cxq.k))
+      .put(dlw.lD, new hhb.a(cxq.l))
+      .put(dlw.lE, new hhb.a(cxq.m))
+      .put(dlw.lF, new hhb.a(cxq.n))
+      .put(dlw.lG, new hhb.a(cxq.o))
+      .put(dlw.lH, new hhb.a(cxq.p))
+      .put(dlw.cM, new hhf.a(ebc.b))
+      .put(dlw.cN, new hhf.a(ebc.c))
+      .put(dlw.cO, new hhf.a(ebc.d))
+      .put(dlw.cP, new hhf.a(ebc.e))
+      .put(dlw.cQ, new hhf.a(ebc.f))
+      .put(dlw.cR, new hhf.a(ebc.g))
+      .put(dlw.cS, new hhf.a(ebc.h))
+      .put(dlw.cT, new hhf.a(ebc.i))
+      .put(dlw.cU, new hhf.a(ebc.l))
+      .put(dlw.cV, new hhf.a(ebc.m))
+      .put(dlw.py, new hhf.a(ebc.j))
+      .put(dlw.pz, new hhf.a(ebc.k))
+      .put(dlw.da, new hhf.a(ebc.b))
+      .put(dlw.db, new hhf.a(ebc.c))
+      .put(dlw.dc, new hhf.a(ebc.d))
+      .put(dlw.dd, new hhf.a(ebc.e))
+      .put(dlw.de, new hhf.a(ebc.f))
+      .put(dlw.df, new hhf.a(ebc.g))
+      .put(dlw.dg, new hhf.a(ebc.h))
+      .put(dlw.dh, new hhf.a(ebc.i))
+      .put(dlw.di, new hhf.a(ebc.l))
+      .put(dlw.dj, new hhf.a(ebc.m))
+      .put(dlw.pA, new hhf.a(ebc.j))
+      .put(dlw.pB, new hhf.a(ebc.k))
+      .put(dlw.dk, new hgy.a(ebc.b))
+      .put(dlw.dl, new hgy.a(ebc.c))
+      .put(dlw.dm, new hgy.a(ebc.d))
+      .put(dlw.dn, new hgy.a(ebc.e))
+      .put(dlw.do, new hgy.a(ebc.f))
+      .put(dlw.dp, new hgy.a(ebc.g))
+      .put(dlw.dq, new hgy.a(ebc.h))
+      .put(dlw.dr, new hgy.a(ebc.i))
+      .put(dlw.du, new hgy.a(ebc.l))
+      .put(dlw.dv, new hgy.a(ebc.m))
+      .put(dlw.ds, new hgy.a(ebc.j))
+      .put(dlw.dt, new hgy.a(ebc.k))
+      .put(dlw.dw, new hgy.a(ebc.b))
+      .put(dlw.dx, new hgy.a(ebc.c))
+      .put(dlw.dy, new hgy.a(ebc.d))
+      .put(dlw.dz, new hgy.a(ebc.e))
+      .put(dlw.dA, new hgy.a(ebc.f))
+      .put(dlw.dB, new hgy.a(ebc.g))
+      .put(dlw.dC, new hgy.a(ebc.h))
+      .put(dlw.dD, new hgy.a(ebc.i))
+      .put(dlw.dE, new hgy.a(ebc.l))
+      .put(dlw.dH, new hgy.a(ebc.m))
+      .put(dlw.dF, new hgy.a(ebc.j))
+      .put(dlw.dG, new hgy.a(ebc.k))
+      .put(dlw.nz, new hgw.a())
+      .put(dlw.cD, new hgv.a(hgv.b))
+      .put(dlw.hs, new hgv.a(hgv.c))
+      .put(dlw.gb, new hgv.a(hgv.d))
+      .put(dlw.tV, new hgx.a())
+      .build();
+   private static final hgv.a d = new hgv.a(hgv.a);
 
-   private hhe(List<ald> $$0, ald $$1, Map<String, ald> $$2) {
-      this.d = $$0;
-      this.e = $$2;
-      this.f = $$1;
+   public static void a() {
+      b.a(ale.b("bed"), hgu.a.a);
+      b.a(ale.b("banner"), hgt.a.a);
+      b.a(ale.b("conduit"), hgw.a.a);
+      b.a(ale.b("chest"), hgv.a.a);
+      b.a(ale.b("head"), hhc.a.a);
+      b.a(ale.b("shulker_box"), hhb.a.a);
+      b.a(ale.b("shield"), hha.a.b);
+      b.a(ale.b("trident"), hhg.a.a);
+      b.a(ale.b("decorated_pot"), hgx.a.a);
+      b.a(ale.b("standing_sign"), hhf.a.a);
+      b.a(ale.b("hanging_sign"), hgy.a.a);
    }
 
-   @Override
-   public void a(ava $$0, hgx.a $$1) {
-      Supplier<int[]> $$2 = Suppliers.memoize(() -> a($$0, this.f));
-      Map<String, Supplier<IntUnaryOperator>> $$3 = new HashMap<>();
-      this.e.forEach(($$3x, $$4x) -> $$3.put($$3x, Suppliers.memoize(() -> a($$2.get(), a($$0, $$4x)))));
+   public static Map<dlu, hhd<?>> a(gic $$0) {
+      Map<dlu, hhd.a> $$1 = new HashMap<>(c);
+      if (grw.b()) {
+         $$1.put(dlw.cD, d);
+         $$1.put(dlw.hs, d);
+      }
 
-      for (ald $$4 : this.d) {
-         ald $$5 = a.a($$4);
-         Optional<auy> $$6 = $$0.getResource($$5);
-         if ($$6.isEmpty()) {
-            c.warn("Unable to find texture {}", $$5);
-         } else {
-            hhd $$7 = new hhd($$5, $$6.get(), $$3.size());
-
-            for (Entry<String, Supplier<IntUnaryOperator>> $$8 : $$3.entrySet()) {
-               ald $$9 = $$4.g("_" + $$8.getKey());
-               $$1.a($$9, new hhe.a($$7, $$8.getValue(), $$9));
-            }
+      Builder<dlu, hhd<?>> $$2 = ImmutableMap.builder();
+      $$1.forEach(($$2x, $$3) -> {
+         hhd<?> $$4 = $$3.a($$0);
+         if ($$4 != null) {
+            $$2.put($$2x, $$4);
          }
-      }
-   }
-
-   private static IntUnaryOperator a(int[] $$0, int[] $$1) {
-      if ($$1.length != $$0.length) {
-         c.warn("Palette mapping has different sizes: {} and {}", $$0.length, $$1.length);
-         throw new IllegalArgumentException();
-      } else {
-         Int2IntMap $$2 = new Int2IntOpenHashMap($$1.length);
-
-         for (int $$3 = 0; $$3 < $$0.length; $$3++) {
-            int $$4 = $$0[$$3];
-            if (axu.a($$4) != 0) {
-               $$2.put(axu.g($$4), $$1[$$3]);
-            }
-         }
-
-         return $$1x -> {
-            int $$2x = axu.a($$1x);
-            if ($$2x == 0) {
-               return $$1x;
-            } else {
-               int $$3x = axu.g($$1x);
-               int $$4x = $$2.getOrDefault($$3x, axu.f($$3x));
-               int $$5 = axu.a($$4x);
-               return axu.c($$2x * $$5 / 255, $$4x);
-            }
-         };
-      }
-   }
-
-   private static int[] a(ava $$0, ald $$1) {
-      Optional<auy> $$2 = $$0.getResource(a.a($$1));
-      if ($$2.isEmpty()) {
-         c.error("Failed to load palette image {}", $$1);
-         throw new IllegalArgumentException();
-      } else {
-         try {
-            int[] var5;
-            try (
-               InputStream $$3 = $$2.get().d();
-               fgo $$4 = fgo.a($$3);
-            ) {
-               var5 = $$4.e();
-            }
-
-            return var5;
-         } catch (Exception var11) {
-            c.error("Couldn't load texture {}", $$1, var11);
-            throw new IllegalArgumentException();
-         }
-      }
-   }
-
-   @Override
-   public hgz a() {
-      return hha.e;
-   }
-
-   static record a(hhd a, Supplier<IntUnaryOperator> b, ald c) implements hgx.b {
-      @Nullable
-      public hgm a(hgw $$0) {
-         Object var3;
-         try {
-            fgo $$1 = this.a.a().a(this.b.get());
-            return new hgm(this.c, new hig($$1.a(), $$1.b()), $$1, avc.a);
-         } catch (IllegalArgumentException | IOException var7) {
-            hhe.c.error("unable to apply palette to {}", this.c, var7);
-            var3 = null;
-         } finally {
-            this.a.b();
-         }
-
-         return (hgm)var3;
-      }
-
-      @Override
-      public void a() {
-         this.a.b();
-      }
-
-      public hhd b() {
-         return this.a;
-      }
-
-      public Supplier<IntUnaryOperator> c() {
-         return this.b;
-      }
-
-      public ald d() {
-         return this.c;
-      }
+      });
+      return $$2.build();
    }
 }

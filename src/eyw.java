@@ -1,35 +1,45 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class eyw extends eyy {
-   public static final MapCodec<eyw> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(exk.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, eyw::new));
-   private final exk b;
+public abstract class eyw extends ezd {
+   protected final List<ezd> d;
+   private final eyv a;
 
-   private eyw(List<fau> $$0, exk $$1) {
-      super($$0);
-      this.b = $$1;
+   protected eyw(List<ezd> $$0, List<fbw> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
    @Override
-   public eza<eyw> b() {
-      return ezb.w;
+   public void a(eyt $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
    }
+
+   protected abstract eyv a(List<? extends eyv> var1);
 
    @Override
-   public Set<bat<?>> a() {
-      return this.b.a();
+   public final boolean expand(eyn $$0, Consumer<ezc> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   @Override
-   public cxy a(cxy $$0, exl $$1) {
-      int $$2 = this.b.a($$1, $$0.M());
-      $$0.e($$2);
-      return $$0;
+   public static <T extends eyw> MapCodec<T> a(eyw.a<T> $$0) {
+      return RecordCodecBuilder.mapCodec(
+         $$1 -> $$1.group(ezb.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
    }
 
-   public static eyy.a<?> a(exk $$0) {
-      return a($$1 -> new eyw($$1, $$0));
+   @FunctionalInterface
+   public interface a<T extends eyw> {
+      T create(List<ezd> var1, List<fbw> var2);
    }
 }

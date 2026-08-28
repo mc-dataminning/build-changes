@@ -1,51 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 import java.util.Set;
 
-public record fas(Optional<di> b, jj c) implements fau {
-   private static final MapCodec<jj> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(kn::u),
-               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(kn::v),
-               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(kn::w)
-            )
-            .apply($$0, jj::new)
-   );
+public class fas extends faa {
    public static final MapCodec<fas> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(di.a.optionalFieldOf("predicate").forGetter(fas::c), g.forGetter(fas::d)).apply($$0, fas::new)
+      $$0 -> a($$0)
+            .and($$0.group(fct.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, fas::new)
    );
+   private final fcs b;
+   private final boolean c;
 
-   @Override
-   public fav b() {
-      return faw.n;
-   }
-
-   public boolean a(exl $$0) {
-      fcu $$1 = $$0.c(faf.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   private fas(List<fbw> $$0, fcs $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public Set<bat<?>> a() {
-      return Set.of(faf.f);
+   public fac<fas> b() {
+      return fad.e;
    }
 
-   public static fau.a a(di.a $$0) {
-      return () -> new fas(Optional.of($$0.b()), jj.c);
+   @Override
+   public Set<bav<?>> a() {
+      return this.b.a();
    }
 
-   public static fau.a a(di.a $$0, jj $$1) {
-      return () -> new fas(Optional.of($$0.b()), $$1);
+   @Override
+   public cys a(cys $$0, eyn $$1) {
+      int $$2 = this.c ? $$0.M() : 0;
+      $$0.e($$2 + this.b.a($$1));
+      return $$0;
    }
 
-   public Optional<di> c() {
-      return this.b;
+   public static faa.a<?> a(fcs $$0) {
+      return a($$1 -> new fas($$1, $$0, false));
    }
 
-   public jj d() {
-      return this.c;
+   public static faa.a<?> a(fcs $$0, boolean $$1) {
+      return a($$2 -> new fas($$2, $$0, $$1));
    }
 }

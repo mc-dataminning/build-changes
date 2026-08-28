@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cvs {
+@FunctionalInterface
+public interface cvs {
+   @Nullable
+   cuk createMenu(int var1, cqr var2, cqs var3);
 }

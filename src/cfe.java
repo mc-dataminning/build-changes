@@ -1,51 +1,40 @@
 import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class cfe extends cfn {
-   private final cis a;
-   @Nullable
-   private bwr b;
-   private final chg c = chg.a().a(64.0);
+public class cfe extends cdv {
+   private final cpz a;
 
-   public cfe(cis $$0) {
-      super($$0, false, true);
+   public cfe(cpz $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(cdn.a.d));
+      this.a(EnumSet.of(cdv.a.c, cdv.a.a));
    }
 
    @Override
    public boolean b() {
-      fcp $$0 = this.a.cR().c(10.0, 8.0, 10.0);
-      arn $$1 = a(this.a);
-      List<? extends bwr> $$2 = $$1.a(cpu.class, this.c, this.a, $$0);
-      List<cqi> $$3 = $$1.a(this.c, this.a, $$0);
-
-      for (bwr $$4 : $$2) {
-         cpu $$5 = (cpu)$$4;
-
-         for (cqi $$6 : $$3) {
-            int $$7 = $$5.f($$6);
-            if ($$7 <= -100) {
-               this.b = $$6;
-            }
-         }
-      }
-
-      if (this.b == null) {
+      if (!this.a.bK()) {
+         return false;
+      } else if (this.a.bj()) {
+         return false;
+      } else if (!this.a.aJ()) {
+         return false;
+      } else if (this.a.T) {
          return false;
       } else {
-         if (this.b instanceof cqi $$8 && ($$8.U_() || $$8.b())) {
+         cqs $$0 = this.a.x();
+         if ($$0 == null) {
             return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.bQ != null;
          }
-
-         return true;
       }
    }
 
    @Override
    public void d() {
-      this.a.h(this.b);
-      super.d();
+      this.a.O().m();
+   }
+
+   @Override
+   public void e() {
+      this.a.a(null);
    }
 }

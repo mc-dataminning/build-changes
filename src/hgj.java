@@ -1,36 +1,27 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.PrimitiveCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public abstract class hgj extends hgd {
-   private final ald d;
+public record hgj(int c) implements hgp<String> {
+   public static final PrimitiveCodec<String> a = Codec.STRING;
+   public static final hgp.a<hgj, String> b = hgp.a.a(
+      RecordCodecBuilder.mapCodec($$0 -> $$0.group(ays.l.optionalFieldOf("index", 0).forGetter(hgj::c)).apply($$0, hgj::new)), a
+   );
 
-   public hgj(ald $$0) {
-      this.d = $$0;
+   @Nullable
+   public String a(cys $$0, @Nullable gjd $$1, @Nullable bwz $$2, int $$3, cyq $$4) {
+      dbb $$5 = $$0.a(kj.p);
+      return $$5 != null ? $$5.c(this.c) : null;
    }
 
-   public ald d() {
-      return this.d;
+   @Override
+   public hgp.a<hgj, String> a() {
+      return b;
    }
 
-   public void a(hgt $$0) {
-      boolean $$1 = $$0.c();
-      boolean $$2 = $$0.b();
-      this.c = $$2;
-      fgo $$3 = $$0.d();
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> this.a($$3, $$2, $$1));
-      } else {
-         this.a($$3, $$2, $$1);
-      }
+   @Override
+   public Codec<String> b() {
+      return a;
    }
-
-   private void a(fgo $$0, boolean $$1, boolean $$2) {
-      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
-      this.a($$1, false);
-      this.a($$2);
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), true);
-   }
-
-   public abstract hgt a(ava var1) throws IOException;
 }

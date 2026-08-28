@@ -1,42 +1,53 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
-public class cgx extends cgz<cpu> {
-   private static final int a = 40;
+public class cgx<T extends bwz> extends chh<T> {
+   private final BiPredicate<T, bwz> a;
+   private final Predicate<T> b;
+   private final cgb<Boolean> c;
+   private final int d;
 
-   public cgx() {
-      super(40);
+   public cgx(int $$0, BiPredicate<T, bwz> $$1, Predicate<T> $$2, cgb<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
    }
 
-   protected void a(arn $$0, cpu $$1) {
-      alc<dhp> $$2 = $$0.aj();
-      jj $$3 = $$1.dv();
-      List<jr> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               jj $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gy().b().a().e().contains($$0.a_($$9).b())) {
-                  $$4.add(jr.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bxr<?> $$10 = $$1.eb();
-      if (!$$4.isEmpty()) {
-         $$10.a(cft.f, $$4);
+   @Override
+   protected void a(aro $$0, T $$1) {
+      if (!this.b.test($$1)) {
+         this.c($$1);
       } else {
-         $$10.b(cft.f);
+         this.a($$1);
       }
    }
 
    @Override
-   public Set<cft<?>> a() {
-      return ImmutableSet.of(cft.f);
+   public Set<cgb<?>> a() {
+      return Set.of(cgb.g);
+   }
+
+   @Override
+   public void a(T $$0) {
+      Optional<List<bwz>> $$1 = $$0.eb().c(cgb.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public void b(T $$0) {
+      $$0.eb().a(this.c, true, (long)this.d);
+   }
+
+   public void c(T $$0) {
+      $$0.eb().b(this.c);
    }
 }

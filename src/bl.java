@@ -2,11 +2,11 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record bl(dk.c b, dk.c c, Optional<bx> d, Optional<Boolean> e, Optional<bm> f) {
+public record bl(cv.c b, cv.c c, Optional<bx> d, Optional<Boolean> e, Optional<bm> f) {
    public static final Codec<bl> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dk.c.d.optionalFieldOf("dealt", dk.c.c).forGetter(bl::a),
-               dk.c.d.optionalFieldOf("taken", dk.c.c).forGetter(bl::b),
+               cv.c.d.optionalFieldOf("dealt", cv.c.c).forGetter(bl::a),
+               cv.c.d.optionalFieldOf("taken", cv.c.c).forGetter(bl::b),
                bx.a.optionalFieldOf("source_entity").forGetter(bl::c),
                Codec.BOOL.optionalFieldOf("blocked").forGetter(bl::d),
                bm.a.optionalFieldOf("type").forGetter(bl::e)
@@ -14,7 +14,7 @@ public record bl(dk.c b, dk.c c, Optional<bx> d, Optional<Boolean> e, Optional<b
             .apply($$0, bl::new)
    );
 
-   public boolean a(aro $$0, buh $$1, float $$2, float $$3, boolean $$4) {
+   public boolean a(arp $$0, bup $$1, float $$2, float $$3, boolean $$4) {
       if (!this.b.d((double)$$2)) {
          return false;
       } else if (!this.c.d((double)$$3)) {
@@ -26,11 +26,11 @@ public record bl(dk.c b, dk.c c, Optional<bx> d, Optional<Boolean> e, Optional<b
       }
    }
 
-   public dk.c a() {
+   public cv.c a() {
       return this.b;
    }
 
-   public dk.c b() {
+   public cv.c b() {
       return this.c;
    }
 
@@ -47,8 +47,8 @@ public record bl(dk.c b, dk.c c, Optional<bx> d, Optional<Boolean> e, Optional<b
    }
 
    public static class a {
-      private dk.c a = dk.c.c;
-      private dk.c b = dk.c.c;
+      private cv.c a = cv.c.c;
+      private cv.c b = cv.c.c;
       private Optional<bx> c = Optional.empty();
       private Optional<Boolean> d = Optional.empty();
       private Optional<bm> e = Optional.empty();
@@ -57,12 +57,12 @@ public record bl(dk.c b, dk.c c, Optional<bx> d, Optional<Boolean> e, Optional<b
          return new bl.a();
       }
 
-      public bl.a a(dk.c $$0) {
+      public bl.a a(cv.c $$0) {
          this.a = $$0;
          return this;
       }
 
-      public bl.a b(dk.c $$0) {
+      public bl.a b(cv.c $$0) {
          this.b = $$0;
          return this;
       }

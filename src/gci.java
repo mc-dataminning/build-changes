@@ -1,9 +1,7 @@
-public class gci extends RuntimeException {
-   public gci(String $$0) {
-      super($$0);
-   }
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-   public gci(String $$0, Throwable $$1) {
-      super($$0, $$1);
-   }
+@FunctionalInterface
+public interface gci {
+   boolean create(gcj var1, jl<aln> var2, eyf var3, @Nullable Path var4);
 }

@@ -1,19 +1,12 @@
-public class sz {
-   private static to a = new tb();
+import java.util.Map;
+import java.util.function.Consumer;
 
-   public static void a(to $$0) {
-      a = $$0;
+public record sz(Map<ale, tj<ald<tk>>> a, ald<Consumer<so>> b, Consumer<so> c) {
+   public sz(Map<ale, tj<ald<tk>>> $$0, ale $$1, Consumer<so> $$2) {
+      this($$0, ald.a(mg.ay, $$1), $$2);
    }
 
-   public static void a(so $$0) {
-      a.a($$0);
-   }
-
-   public static void b(so $$0) {
-      a.b($$0);
-   }
-
-   public static void a() {
-      a.a();
+   public sz(ale $$0, tj<ald<tk>> $$1, Consumer<so> $$2) {
+      this(Map.of($$0, $$1), $$0, $$2);
    }
 }

@@ -1,33 +1,23 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dul extends dug implements duh {
-   public static final MapCodec<dul> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(duh.a.e.fieldOf("weathering_state").forGetter(dul::q), t()).apply($$0, dul::new)
+public class dul extends dqi {
+   public static final MapCodec<dul> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ays.a(0.0F, 1.0F).fieldOf("leaf_particle_chance").forGetter($$0x -> $$0x.e), t()).apply($$0, dul::new)
    );
-   private final duh.a f;
 
-   @Override
-   protected MapCodec<dul> a() {
-      return e;
-   }
-
-   protected dul(duh.a $$0, dyl.d $$1) {
-      super($$1);
-      this.f = $$0;
+   public dul(float $$0, dzn.d $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void b(dym $$0, arn $$1, jj $$2, azs $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected void a(dip $$0, iu $$1, azt $$2) {
+      lq $$3 = lq.a(lx.J, $$0.s($$1));
+      azo.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean f(dym $$0) {
-      return duh.c($$0.b()).isPresent();
-   }
-
-   public duh.a q() {
-      return this.f;
+   public MapCodec<? extends dul> a() {
+      return g;
    }
 }

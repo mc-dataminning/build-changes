@@ -1,41 +1,34 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JavaOps;
 
-public class em extends dz<em.a> {
-   @Override
-   public Codec<em.a> a() {
-      return em.a.a;
+public class em {
+   public static <T> T a(Codec<T> $$0, jg.a $$1, DynamicCommandExceptionType $$2, StringReader $$3) throws CommandSyntaxException {
+      return a(JavaOps.INSTANCE, $$0, $$1, $$2, $$3);
    }
 
-   public void a(aro $$0, cxy $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public static <T, O> T a(DynamicOps<O> $$0, Codec<T> $$1, jg.a $$2, DynamicCommandExceptionType $$3, StringReader $$4) throws CommandSyntaxException {
+      int $$5 = $$4.getCursor();
+      alc<O> $$6 = $$2.a($$0);
+      O $$7 = uv.b($$6, $$4);
+      DataResult<T> $$8 = $$1.parse($$6, $$7);
+      return (T)$$8.getOrThrow($$3x -> {
+         $$4.setCursor($$5);
+         return $$3.createWithContext($$4, $$3x);
+      });
    }
 
-   public static record a(Optional<bi> b, Optional<cv> c) implements dz.a {
-      public static final Codec<em.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(em.a::a), cv.a.optionalFieldOf("item").forGetter(em.a::b)).apply($$0, em.a::new)
-      );
+   public static String a(StringReader $$0, m $$1) {
+      int $$2 = $$0.getCursor();
 
-      public static aq<em.a> a(cv $$0) {
-         return ap.C.a(new em.a(Optional.empty(), Optional.of($$0)));
+      while ($$0.canRead() && $$1.test($$0.peek())) {
+         $$0.skip();
       }
 
-      public static aq<em.a> a(jt<cxu> $$0, dho $$1) {
-         return ap.C.a(new em.a(Optional.empty(), Optional.of(cv.a.a().a($$0, $$1).b())));
-      }
-
-      public boolean a(cxy $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
-      }
-
-      @Override
-      public Optional<bi> a() {
-         return this.b;
-      }
-
-      public Optional<cv> b() {
-         return this.c;
-      }
+      return $$0.getString().substring($$2, $$0.getCursor());
    }
 }

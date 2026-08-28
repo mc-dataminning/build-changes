@@ -1,22 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.UUID;
 
-public class cgs<T extends bwr> extends cgz<T> {
+public class cgs extends chb {
+   public static final float a = 10.0F;
+
    @Override
-   protected void a(arn $$0, T $$1) {
-      double $$2 = $$1.h(bxx.m);
-      fcp $$3 = $$1.cR().c($$2, $$2, $$2);
-      List<bwr> $$4 = $$0.a(bwr.class, $$3, $$1x -> $$1x != $$1 && $$1x.bK());
-      $$4.sort(Comparator.comparingDouble($$1::g));
-      bxr<?> $$5 = $$1.eb();
-      $$5.a(cft.g, $$4);
-      $$5.a(cft.h, new cfv($$0, $$1, $$4));
+   protected boolean a(aro $$0, bwz $$1, bwz $$2) {
+      return !$$1.eb().a(cgb.V) && chh.c($$0, $$1, $$2) && ckl.i($$2) && !this.a($$1, $$2) ? $$2.a($$1, 10.0) : false;
+   }
+
+   private boolean a(bwz $$0, bwz $$1) {
+      List<UUID> $$2 = $$0.eb().c(cgb.ab).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cG());
    }
 
    @Override
-   public Set<cft<?>> a() {
-      return ImmutableSet.of(cft.g, cft.h);
+   protected cgb<bwz> b() {
+      return cgb.C;
    }
 }

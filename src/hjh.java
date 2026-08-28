@@ -1,30 +1,17 @@
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record hjh(ald a, String b) {
-   public hjh(ald a, String b) {
-      b = a(b);
-      this.a = a;
-      this.b = b;
-   }
+public record hjh(String b, String c, boolean d) {
+   public static final Codec<hjh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ays.A.fieldOf("region").forGetter(hjh::b),
+               ays.A.fieldOf("name").forGetter(hjh::c),
+               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(hjh::d)
+            )
+            .apply($$0, hjh::new)
+   );
 
-   private static String a(String $$0) {
-      return $$0.toLowerCase(Locale.ROOT);
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return this.a + "#" + this.b;
-   }
-
-   public ald b() {
-      return this.a;
-   }
-
-   public String c() {
-      return this.b;
+   public ww a() {
+      return ww.b(this.c + " (" + this.b + ")");
    }
 }

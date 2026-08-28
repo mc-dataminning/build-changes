@@ -1,5 +1,4 @@
-public class hcr extends hbk {
-   public boolean a;
-   public boolean b;
-   public boolean c;
+public class hcr extends hbp {
+   public float a;
+   public float b;
 }

@@ -1,20 +1,99 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cfj<T extends bwr> extends cfg<T> {
-   private final bxn i;
+public class cfj extends cdv {
+   private final cdv a;
+   private final int b;
+   private boolean c;
 
-   public cfj(bxn $$0, Class<T> $$1, boolean $$2, @Nullable chg.a $$3) {
-      super($$0, $$1, 10, $$2, false, $$3);
-      this.i = $$0;
+   public cfj(int $$0, cdv $$1) {
+      this.b = $$0;
+      this.a = $$1;
+   }
+
+   public boolean a(cfj $$0) {
+      return this.P_() && $$0.i() < this.i();
    }
 
    @Override
    public boolean b() {
-      return !this.i.q() && super.b();
+      return this.a.b();
    }
 
    @Override
    public boolean c() {
-      return this.d != null ? this.d.a(a(this.e), this.e, this.c) : super.c();
+      return this.a.c();
+   }
+
+   @Override
+   public boolean P_() {
+      return this.a.P_();
+   }
+
+   @Override
+   public void d() {
+      if (!this.c) {
+         this.c = true;
+         this.a.d();
+      }
+   }
+
+   @Override
+   public void e() {
+      if (this.c) {
+         this.c = false;
+         this.a.e();
+      }
+   }
+
+   @Override
+   public boolean Q_() {
+      return this.a.Q_();
+   }
+
+   @Override
+   protected int a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void a() {
+      this.a.a();
+   }
+
+   @Override
+   public void a(EnumSet<cdv.a> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public EnumSet<cdv.a> j() {
+      return this.a.j();
+   }
+
+   public boolean h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.b;
+   }
+
+   public cdv k() {
+      return this.a;
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((cfj)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

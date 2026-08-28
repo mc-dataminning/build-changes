@@ -1,125 +1,69 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Consumer;
-
-public interface aqw {
-   aqw a = new aqw() {
-      @Override
-      public boolean a(int $$0, int $$1, boolean $$2) {
-         return false;
-      }
-
-      @Override
-      public void a(Consumer<dgw> $$0) {
-      }
-   };
-
-   static aqw a(dgw $$0, int $$1) {
-      return new aqw.a($$0, $$1);
+public abstract class aqw extends evh {
+   protected aqw(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   static void a(aqw $$0, aqw $$1, Consumer<dgw> $$2, Consumer<dgw> $$3) {
-      if (!$$0.equals($$1)) {
-         if ($$0 instanceof aqw.a $$4 && $$1 instanceof aqw.a $$5 && $$4.a($$5)) {
-            int $$6 = Math.min($$4.c(), $$5.c());
-            int $$7 = Math.min($$4.d(), $$5.d());
-            int $$8 = Math.max($$4.e(), $$5.e());
-            int $$9 = Math.max($$4.f(), $$5.f());
+   @Override
+   protected boolean a(long $$0) {
+      return $$0 == dhw.c;
+   }
 
-            for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-               for (int $$11 = $$7; $$11 <= $$9; $$11++) {
-                  boolean $$12 = $$4.a($$10, $$11);
-                  boolean $$13 = $$5.a($$10, $$11);
-                  if ($$12 != $$13) {
-                     if ($$13) {
-                        $$2.accept(new dgw($$10, $$11));
-                     } else {
-                        $$3.accept(new dgw($$10, $$11));
-                     }
-                  }
+   @Override
+   protected void a(long $$0, int $$1, boolean $$2) {
+      if (!$$2 || $$1 < this.f - 2) {
+         dhw $$3 = new dhw($$0);
+         int $$4 = $$3.h;
+         int $$5 = $$3.i;
+
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            for (int $$7 = -1; $$7 <= 1; $$7++) {
+               long $$8 = dhw.c($$4 + $$6, $$5 + $$7);
+               if ($$8 != $$0) {
+                  this.b($$0, $$8, $$1, $$2);
                }
             }
-
-            return;
          }
-
-         $$0.a($$3);
-         $$1.a($$2);
       }
    }
 
-   default boolean a(dgw $$0) {
-      return this.a($$0.h, $$0.i);
-   }
+   @Override
+   protected int a(long $$0, long $$1, int $$2) {
+      int $$3 = $$2;
+      dhw $$4 = new dhw($$0);
+      int $$5 = $$4.h;
+      int $$6 = $$4.i;
 
-   default boolean a(int $$0, int $$1) {
-      return this.a($$0, $$1, true);
-   }
+      for (int $$7 = -1; $$7 <= 1; $$7++) {
+         for (int $$8 = -1; $$8 <= 1; $$8++) {
+            long $$9 = dhw.c($$5 + $$7, $$6 + $$8);
+            if ($$9 == $$0) {
+               $$9 = dhw.c;
+            }
 
-   boolean a(int var1, int var2, boolean var3);
+            if ($$9 != $$1) {
+               int $$10 = this.b($$9, $$0, this.c($$9));
+               if ($$3 > $$10) {
+                  $$3 = $$10;
+               }
 
-   void a(Consumer<dgw> var1);
-
-   default boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
-   }
-
-   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      return a($$0, $$1, $$2, $$3, $$4, false);
-   }
-
-   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6 = $$5 ? 2 : 1;
-      long $$7 = (long)Math.max(0, Math.abs($$3 - $$0) - $$6);
-      long $$8 = (long)Math.max(0, Math.abs($$4 - $$1) - $$6);
-      long $$9 = $$7 * $$7 + $$8 * $$8;
-      int $$10 = $$2 * $$2;
-      return $$9 < (long)$$10;
-   }
-
-   public static record a(dgw b, int c) implements aqw {
-      int c() {
-         return this.b.h - this.c - 1;
-      }
-
-      int d() {
-         return this.b.i - this.c - 1;
-      }
-
-      int e() {
-         return this.b.h + this.c + 1;
-      }
-
-      int f() {
-         return this.b.i + this.c + 1;
-      }
-
-      @VisibleForTesting
-      protected boolean a(aqw.a $$0) {
-         return this.c() <= $$0.e() && this.e() >= $$0.c() && this.d() <= $$0.f() && this.f() >= $$0.d();
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, boolean $$2) {
-         return aqw.a(this.b.h, this.b.i, this.c, $$0, $$1, $$2);
-      }
-
-      @Override
-      public void a(Consumer<dgw> $$0) {
-         for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
-            for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
-               if (this.a($$1, $$2)) {
-                  $$0.accept(new dgw($$1, $$2));
+               if ($$3 == 0) {
+                  return $$3;
                }
             }
          }
       }
 
-      public dgw a() {
-         return this.b;
-      }
+      return $$3;
+   }
 
-      public int b() {
-         return this.c;
-      }
+   @Override
+   protected int b(long $$0, long $$1, int $$2) {
+      return $$0 == dhw.c ? this.b($$1) : $$2 + 1;
+   }
+
+   protected abstract int b(long var1);
+
+   public void b(long $$0, int $$1, boolean $$2) {
+      this.a(dhw.c, $$0, $$1, $$2);
    }
 }

@@ -1,55 +1,50 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
+public class fsb extends fsk {
+   private static final int a = 4;
+   private final boolean b;
+   private final int c;
 
-public class fsb {
-   @Nullable
-   private fry a;
-   private Duration b = Duration.ZERO;
-   private long c;
-   private boolean d;
-
-   public void a(Duration $$0) {
-      this.b = $$0;
+   public fsb(int $$0, ww $$1, fra $$2) {
+      this($$0, $$1, $$2, 4);
    }
 
-   public void a(@Nullable fry $$0) {
-      this.a = $$0;
+   public fsb(int $$0, ww $$1, fra $$2, int $$3) {
+      this($$0, $$1, $$2, true, $$3);
    }
 
-   @Nullable
-   public fry a() {
-      return this.a;
+   public fsb(int $$0, ww $$1, fra $$2, boolean $$3, int $$4) {
+      super($$1, $$2);
+      this.d($$0);
+      this.b(true);
+      this.j = true;
+      this.b = $$3;
+      this.c = $$4;
    }
 
-   public void a(boolean $$0, boolean $$1, fuu $$2) {
-      if (this.a == null) {
-         this.d = false;
-      } else {
-         boolean $$3 = $$0 || $$1 && fnd.Q().aX().b();
-         if ($$3 != this.d) {
-            if ($$3) {
-               this.c = af.c();
-            }
+   public void b(int $$0) {
+      this.d($$0 - this.c * 4);
+   }
 
-            this.d = $$3;
-         }
+   @Override
+   protected void a(fvn $$0) {
+      $$0.a(fvm.a, this.B());
+   }
 
-         if ($$3 && af.c() - this.c > this.b.toMillis()) {
-            fwf $$4 = fnd.Q().z;
-            if ($$4 != null) {
-               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
-            }
-         }
+   @Override
+   public void b(frc $$0, int $$1, int $$2, float $$3) {
+      if (this.aI_() || this.b) {
+         int $$4 = this.F() - this.c;
+         int $$5 = this.G() - this.c;
+         int $$6 = this.A() + this.c * 2;
+         int $$7 = this.y() + this.c * 2;
+         int $$8 = this.b ? (this.aI_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
       }
+
+      super.b($$0, $$1, $$2, $$3);
    }
 
-   private fys a(fuu $$0, boolean $$1, boolean $$2) {
-      return (fys)(!$$1 && $$2 && fnd.Q().aX().b() ? new fyn($$0) : new fyu($$0));
-   }
-
-   public void a(fuk $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
+   @Override
+   public void a(hnc $$0) {
    }
 }

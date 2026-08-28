@@ -1,36 +1,98 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class chd extends cgt {
-   private static final ImmutableMap<bwb<?>, Float> a = ImmutableMap.builder()
-      .put(bwb.K, 8.0F)
-      .put(bwb.S, 12.0F)
-      .put(bwb.am, 8.0F)
-      .put(bwb.an, 12.0F)
-      .put(bwb.aT, 15.0F)
-      .put(bwb.aY, 12.0F)
-      .put(bwb.bB, 8.0F)
-      .put(bwb.bD, 10.0F)
-      .put(bwb.bM, 10.0F)
-      .put(bwb.bN, 8.0F)
-      .put(bwb.bP, 8.0F)
-      .build();
-
+public class chd extends chh<bwz> {
    @Override
-   protected boolean a(arn $$0, bwr $$1, bwr $$2) {
-      return this.b($$2) && this.a($$1, $$2);
-   }
-
-   private boolean a(bwr $$0, bwr $$1) {
-      float $$2 = (Float)a.get($$1.aq());
-      return $$1.g((bvs)$$0) <= (double)($$2 * $$2);
+   public Set<cgb<?>> a() {
+      return ImmutableSet.of(cgb.h, cgb.g, cgb.N, cgb.an, cgb.av, cgb.al, new cgb[]{cgb.am, cgb.ap, cgb.ao, cgb.at, cgb.au, cgb.ax});
    }
 
    @Override
-   protected cft<bwr> b() {
-      return cft.B;
+   protected void a(aro $$0, bwz $$1) {
+      bxz<?> $$2 = $$1.eb();
+      $$2.a(cgb.ax, c($$0, $$1));
+      Optional<bxb> $$3 = Optional.empty();
+      Optional<cpb> $$4 = Optional.empty();
+      Optional<cpb> $$5 = Optional.empty();
+      Optional<cph> $$6 = Optional.empty();
+      Optional<bwz> $$7 = Optional.empty();
+      Optional<cqs> $$8 = Optional.empty();
+      Optional<cqs> $$9 = Optional.empty();
+      int $$10 = 0;
+      List<cpg> $$11 = Lists.newArrayList();
+      List<cpg> $$12 = Lists.newArrayList();
+      cgd $$13 = $$2.c(cgb.h).orElse(cgd.a());
+
+      for (bwz $$14 : $$13.b($$0x -> true)) {
+         if ($$14 instanceof cpb) {
+            cpb $$15 = (cpb)$$14;
+            if ($$15.n_() && $$5.isEmpty()) {
+               $$5 = Optional.of($$15);
+            } else if ($$15.x()) {
+               $$10++;
+               if ($$4.isEmpty() && $$15.gr()) {
+                  $$4 = Optional.of($$15);
+               }
+            }
+         } else if ($$14 instanceof cpk $$16) {
+            $$11.add($$16);
+         } else if ($$14 instanceof cph) {
+            cph $$17 = (cph)$$14;
+            if ($$17.n_() && $$6.isEmpty()) {
+               $$6 = Optional.of($$17);
+            } else if ($$17.t()) {
+               $$11.add($$17);
+            }
+         } else if ($$14 instanceof cqs) {
+            cqs $$18 = (cqs)$$14;
+            if ($$8.isEmpty() && !cpi.a($$18) && $$1.c($$14)) {
+               $$8 = Optional.of($$18);
+            }
+
+            if ($$9.isEmpty() && !$$18.U_() && cpi.b($$18)) {
+               $$9 = Optional.of($$18);
+            }
+         } else if (!$$3.isEmpty() || !($$14 instanceof cok) && !($$14 instanceof cmk)) {
+            if ($$7.isEmpty() && cpi.a($$14.aq())) {
+               $$7 = Optional.of($$14);
+            }
+         } else {
+            $$3 = Optional.of((bxb)$$14);
+         }
+      }
+
+      for (bwz $$20 : $$2.c(cgb.g).orElse(ImmutableList.of())) {
+         if ($$20 instanceof cpg) {
+            cpg $$21 = (cpg)$$20;
+            if ($$21.t()) {
+               $$12.add($$21);
+            }
+         }
+      }
+
+      $$2.a(cgb.N, $$3);
+      $$2.a(cgb.al, $$4);
+      $$2.a(cgb.am, $$5);
+      $$2.a(cgb.as, $$7);
+      $$2.a(cgb.an, $$8);
+      $$2.a(cgb.av, $$9);
+      $$2.a(cgb.ao, $$12);
+      $$2.a(cgb.ap, $$11);
+      $$2.a(cgb.at, $$11.size());
+      $$2.a(cgb.au, $$10);
    }
 
-   private boolean b(bwr $$0) {
-      return a.containsKey($$0.aq());
+   private static Optional<iu> c(aro $$0, bwz $$1) {
+      return iu.a($$1.dv(), 8, 4, $$1x -> a($$0, $$1x));
+   }
+
+   private static boolean a(aro $$0, iu $$1) {
+      dzo $$2 = $$0.a_($$1);
+      boolean $$3 = $$2.a(axa.X);
+      return $$3 && $$2.a(dlw.oJ) ? dmj.h($$2) : $$3;
    }
 }

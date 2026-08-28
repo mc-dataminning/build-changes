@@ -1,47 +1,80 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.logging.LogUtils;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import java.util.Collections;
 
 public class aol {
-   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ww.c("commands.recipe.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ww.c("commands.recipe.take.failed"));
 
-   public static void a(Collection<String> $$0, ex $$1) {
-      $$1.l().a($$0).exceptionally($$1x -> {
-         a.warn("Failed to execute reload", $$1x);
-         $$1.b(wv.c("commands.reload.failure"));
-         return null;
-      });
+   public static void a(CommandDispatcher<ei> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("recipe").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ej.a("give")
+                     .then(
+                        ((RequiredArgumentBuilder)ej.a("targets", ev.d())
+                              .then(
+                                 ej.a("recipe", fi.a(mg.bs))
+                                    .executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), Collections.singleton(fi.d($$0x, "recipe"))))
+                              ))
+                           .then(ej.a("*").executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), ((ei)$$0x.getSource()).l().aI().e())))
+                     )
+               ))
+            .then(
+               ej.a("take")
+                  .then(
+                     ((RequiredArgumentBuilder)ej.a("targets", ev.d())
+                           .then(
+                              ej.a("recipe", fi.a(mg.bs))
+                                 .executes($$0x -> b((ei)$$0x.getSource(), ev.f($$0x, "targets"), Collections.singleton(fi.d($$0x, "recipe"))))
+                           ))
+                        .then(ej.a("*").executes($$0x -> b((ei)$$0x.getSource(), ev.f($$0x, "targets"), ((ei)$$0x.getSource()).l().aI().e())))
+                  )
+            )
+      );
    }
 
-   private static Collection<String> a(auk $$0, exf $$1, Collection<String> $$2) {
-      $$0.a();
-      Collection<String> $$3 = Lists.newArrayList($$2);
-      Collection<String> $$4 = $$1.D().a().b();
+   private static int a(ei $$0, Collection<arp> $$1, Collection<ddo<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
 
-      for (String $$5 : $$0.c()) {
-         if (!$$4.contains($$5) && !$$3.contains($$5)) {
-            $$3.add($$5);
-         }
+      for (arp $$4 : $$1) {
+         $$3 += $$4.a($$2);
       }
 
-      return $$3;
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> ww.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().m_()), true);
+         } else {
+            $$0.a(() -> ww.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
+      }
    }
 
-   public static void a(CommandDispatcher<ex> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         ex $$1 = (ex)$$0x.getSource();
-         MinecraftServer $$2 = $$1.l();
-         auk $$3 = $$2.aF();
-         exf $$4 = $$2.aZ();
-         Collection<String> $$5 = $$3.e();
-         Collection<String> $$6 = a($$3, $$4, $$5);
-         $$1.a(() -> wv.c("commands.reload.success"), true);
-         a($$6, $$1);
-         return 0;
-      }));
+   private static int b(ei $$0, Collection<arp> $$1, Collection<ddo<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (arp $$4 : $$1) {
+         $$3 += $$4.b($$2);
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> ww.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().m_()), true);
+         } else {
+            $$0.a(() -> ww.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
+      }
    }
 }

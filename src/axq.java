@@ -30,15 +30,15 @@ public class axq<T> {
       this.c = $$1;
    }
 
-   public Map<ald, List<axq.b>> a(ava $$0) {
-      Map<ald, List<axq.b>> $$1 = new HashMap<>();
-      akw $$2 = akw.a(this.c);
+   public Map<ale, List<axq.b>> a(avb $$0) {
+      Map<ale, List<axq.b>> $$1 = new HashMap<>();
+      akx $$2 = akx.a(this.c);
 
-      for (Entry<ald, List<auy>> $$3 : $$2.b($$0).entrySet()) {
-         ald $$4 = $$3.getKey();
-         ald $$5 = $$2.b($$4);
+      for (Entry<ale, List<auz>> $$3 : $$2.b($$0).entrySet()) {
+         ale $$4 = $$3.getKey();
+         ale $$5 = $$2.b($$4);
 
-         for (auy $$6 : $$3.getValue()) {
+         for (auz $$6 : $$3.getValue()) {
             try (Reader $$7 = $$6.e()) {
                JsonElement $$8 = JsonParser.parseReader($$7);
                List<axq.b> $$9 = $$1.computeIfAbsent($$5, $$0x -> new ArrayList<>());
@@ -71,22 +71,22 @@ public class axq<T> {
       return $$3.isEmpty() ? Either.right(List.copyOf($$2)) : Either.left($$3);
    }
 
-   public Map<ald, List<T>> a(Map<ald, List<axq.b>> $$0) {
-      final Map<ald, List<T>> $$1 = new HashMap<>();
+   public Map<ale, List<T>> a(Map<ale, List<axq.b>> $$0) {
+      final Map<ale, List<T>> $$1 = new HashMap<>();
       axn.a<T> $$2 = new axn.a<T>() {
          @Nullable
          @Override
-         public T a(ald $$0, boolean $$1x) {
+         public T a(ale $$0, boolean $$1x) {
             return (T)axq.this.b.get($$0, $$1).orElse(null);
          }
 
          @Nullable
          @Override
-         public Collection<T> a(ald $$0) {
+         public Collection<T> a(ale $$0) {
             return $$1.get($$0);
          }
       };
-      ayo<ald, axq.d> $$3 = new ayo<>();
+      ayo<ale, axq.d> $$3 = new ayo<>();
       $$0.forEach(($$1x, $$2x) -> $$3.a($$1x, new axq.d($$2x)));
       $$3.a(
          ($$2x, $$3x) -> this.a($$2, $$3x.a)
@@ -102,43 +102,43 @@ public class axq<T> {
       return $$1;
    }
 
-   public static <T> void a(axr.a $$0, ko<T> $$1) {
+   public static <T> void a(axr.a $$0, ka<T> $$1) {
       $$0.a($$1).b.forEach($$1::a);
    }
 
-   public static List<kf.a<?>> a(ava $$0, kg $$1) {
+   public static List<jr.a<?>> a(avb $$0, js $$1) {
       return $$1.a().map($$1x -> a($$0, $$1x.b())).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
    }
 
-   public static <T> void a(ava $$0, ko<T> $$1) {
-      alc<? extends kf<T>> $$2 = $$1.g();
-      axq<js<T>> $$3 = new axq<>(axq.a.a($$1), me.d($$2));
+   public static <T> void a(avb $$0, ka<T> $$1) {
+      ald<? extends jr<T>> $$2 = $$1.g();
+      axq<je<T>> $$3 = new axq<>(axq.a.a($$1), mg.d($$2));
       $$3.a($$3.a($$0)).forEach(($$2x, $$3x) -> $$1.a(axp.a($$2, $$2x), $$3x));
    }
 
-   private static <T> Map<axp<T>, List<js<T>>> a(alc<? extends kf<T>> $$0, Map<ald, List<js<T>>> $$1) {
-      return $$1.entrySet().stream().collect(Collectors.toUnmodifiableMap($$1x -> axp.a($$0, (ald)$$1x.getKey()), Entry::getValue));
+   private static <T> Map<axp<T>, List<je<T>>> a(ald<? extends jr<T>> $$0, Map<ale, List<je<T>>> $$1) {
+      return $$1.entrySet().stream().collect(Collectors.toUnmodifiableMap($$1x -> axp.a($$0, (ale)$$1x.getKey()), Entry::getValue));
    }
 
-   private static <T> Optional<kf.a<T>> a(ava $$0, kf<T> $$1) {
-      alc<? extends kf<T>> $$2 = $$1.g();
-      axq<js<T>> $$3 = new axq<>((axq.a<js<T>>)axq.a.a($$1), me.d($$2));
+   private static <T> Optional<jr.a<T>> a(avb $$0, jr<T> $$1) {
+      ald<? extends jr<T>> $$2 = $$1.g();
+      axq<je<T>> $$3 = new axq<>((axq.a<je<T>>)axq.a.a($$1), mg.d($$2));
       axq.c<T> $$4 = new axq.c<>($$2, a($$1.g(), $$3.a($$3.a($$0))));
       return $$4.b().isEmpty() ? Optional.empty() : Optional.of($$1.a($$4));
    }
 
-   public static List<ju.b<?>> a(kg.b $$0, List<kf.a<?>> $$1) {
-      List<ju.b<?>> $$2 = new ArrayList<>();
+   public static List<jg.b<?>> a(js.b $$0, List<jr.a<?>> $$1) {
+      List<jg.b<?>> $$2 = new ArrayList<>();
       $$0.a().forEach($$2x -> {
-         kf.a<?> $$3 = a($$1, $$2x.a());
-         $$2.add((ju.b<?>)($$3 != null ? $$3.c() : $$2x.b()));
+         jr.a<?> $$3 = a($$1, $$2x.a());
+         $$2.add((jg.b<?>)($$3 != null ? $$3.c() : $$2x.b()));
       });
       return $$2;
    }
 
    @Nullable
-   private static kf.a<?> a(List<kf.a<?>> $$0, alc<? extends kf<?>> $$1) {
-      for (kf.a<?> $$2 : $$0) {
+   private static jr.a<?> a(List<jr.a<?>> $$0, ald<? extends jr<?>> $$1) {
+      for (jr.a<?> $$2 : $$0) {
          if ($$2.a() == $$1) {
             return $$2;
          }
@@ -148,15 +148,15 @@ public class axq<T> {
    }
 
    public interface a<T> {
-      Optional<? extends T> get(ald var1, boolean var2);
+      Optional<? extends T> get(ale var1, boolean var2);
 
-      static <T> axq.a<? extends js<T>> a(kf<T> $$0) {
+      static <T> axq.a<? extends je<T>> a(jr<T> $$0) {
          return ($$1, $$2) -> $$0.c($$1);
       }
 
-      static <T> axq.a<js<T>> a(ko<T> $$0) {
-         jt<T> $$1 = $$0.p();
-         return ($$2, $$3) -> ((jt<T>)($$3 ? $$1 : $$0)).a(alc.a($$0.g(), $$2));
+      static <T> axq.a<je<T>> a(ka<T> $$0) {
+         jf<T> $$1 = $$0.p();
+         return ($$2, $$3) -> ((jf<T>)($$3 ? $$1 : $$0)).a(ald.a($$0.g(), $$2));
       }
    }
 
@@ -168,18 +168,18 @@ public class axq<T> {
       }
    }
 
-   public static record c<T>(alc<? extends kf<T>> a, Map<axp<T>, List<js<T>>> b) {
+   public static record c<T>(ald<? extends jr<T>> a, Map<axp<T>, List<je<T>>> b) {
    }
 
-   static record d(List<axq.b> a) implements ayo.a<ald> {
+   static record d(List<axq.b> a) implements ayo.a<ale> {
 
       @Override
-      public void a(Consumer<ald> $$0) {
+      public void a(Consumer<ale> $$0) {
          this.a.forEach($$1 -> $$1.a.a($$0));
       }
 
       @Override
-      public void b(Consumer<ald> $$0) {
+      public void b(Consumer<ale> $$0) {
          this.a.forEach($$1 -> $$1.a.b($$0));
       }
    }

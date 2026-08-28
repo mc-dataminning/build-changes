@@ -1,90 +1,48 @@
-public class ghe {
-   public static final String a = "left_fin";
-   public static final String b = "right_fin";
-   public static final String c = "top_fin";
-   public static final String d = "bottom_fin";
-   public static final String e = "tail_fin";
-   public static final String f = "left_blue_fin";
-   public static final String g = "right_blue_fin";
-   public static final String h = "left_arm";
-   public static final String i = "right_arm";
-   public static final String j = "left_wing";
-   public static final String k = "right_wing";
-   public static final String l = "left_wing_base";
-   public static final String m = "right_wing_base";
-   public static final String n = "left_wing_tip";
-   public static final String o = "right_wing_tip";
-   public static final String p = "left_ear";
-   public static final String q = "right_ear";
-   public static final String r = "left_leg";
-   public static final String s = "right_leg";
-   public static final String t = "left_hind_leg";
-   public static final String u = "right_hind_leg";
-   public static final String v = "left_mid_leg";
-   public static final String w = "right_mid_leg";
-   public static final String x = "left_front_leg";
-   public static final String y = "right_front_leg";
-   public static final String z = "left_hind_foot";
-   public static final String A = "right_hind_foot";
-   public static final String B = "left_front_foot";
-   public static final String C = "right_front_foot";
-   public static final String D = "feet";
-   public static final String E = "left_hind_leg_tip";
-   public static final String F = "right_hind_leg_tip";
-   public static final String G = "left_front_leg_tip";
-   public static final String H = "right_front_leg_tip";
-   public static final String I = "left_lid";
-   public static final String J = "right_lid";
-   public static final String K = "left_chest";
-   public static final String L = "right_chest";
-   public static final String M = "left_horn";
-   public static final String N = "right_horn";
-   public static final String O = "left_eye";
-   public static final String P = "right_eye";
-   public static final String Q = "jaw";
-   public static final String R = "nose";
-   public static final String S = "arms";
-   public static final String T = "tail";
-   public static final String U = "cube";
-   public static final String V = "beak";
-   public static final String W = "back_fin";
-   public static final String X = "mane";
-   public static final String Y = "neck";
-   public static final String Z = "mouth";
-   public static final String aa = "upper_mouth";
-   public static final String ab = "head";
-   public static final String ac = "hat";
-   public static final String ad = "body";
-   public static final String ae = "upper_body";
-   public static final String af = "hat_rim";
-   public static final String ag = "jacket";
-   public static final String ah = "top_gills";
-   public static final String ai = "left_gills";
-   public static final String aj = "right_gills";
-   public static final String ak = "root";
-   public static final String al = "croaking_body";
-   public static final String am = "tongue";
-   public static final String an = "tongue_r1";
-   public static final String ao = "left_hand";
-   public static final String ap = "right_hand";
-   public static final String aq = "left_foot";
-   public static final String ar = "right_foot";
-   public static final String as = "eyes";
-   public static final String at = "right_tendril";
-   public static final String au = "left_tendril";
-   public static final String av = "right_ribcage";
-   public static final String aw = "left_ribcage";
-   public static final String ax = "wind_body";
-   public static final String ay = "wind_top";
-   public static final String az = "wind_mid";
-   public static final String aA = "wind_bottom";
-   public static final String aB = "rods";
-   public static final String aC = "mushrooms";
-   public static final String aD = "bone";
-   public static final String aE = "left_paddle";
-   public static final String aF = "right_paddle";
-   public static final String aG = "bottom";
-   public static final String aH = "chest_bottom";
-   public static final String aI = "chest_lid";
-   public static final String aJ = "chest_lock";
+public class ghe extends gfd<hcp> {
+   private static final String a = "upper_body";
+   private final gig b;
+   private final gig c;
+   private final gig d;
+   private final gig e;
+
+   public ghe(gig $$0) {
+      super($$0);
+      this.c = $$0.b("head");
+      this.d = $$0.b("left_arm");
+      this.e = $$0.b("right_arm");
+      this.b = $$0.b("upper_body");
+   }
+
+   public static gim a() {
+      gio $$0 = new gio();
+      giq $$1 = $$0.a();
+      float $$2 = 4.0F;
+      gik $$3 = new gik(-0.5F);
+      $$1.a("head", gil.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), gii.a(0.0F, 4.0F, 0.0F));
+      gil $$4 = gil.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, gii.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, gii.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", gil.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), gii.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", gil.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), gii.a(0.0F, 24.0F, 0.0F));
+      return gim.a($$0, 64, 64);
+   }
+
+   public void a(hcp $$0) {
+      super.a($$0);
+      this.c.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.c.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0) * 0.25F;
+      float $$1 = azk.a(this.b.f);
+      float $$2 = azk.b(this.b.f);
+      this.d.f = this.b.f;
+      this.e.f = this.b.f + (float) Math.PI;
+      this.d.b = $$2 * 5.0F;
+      this.d.d = -$$1 * 5.0F;
+      this.e.b = -$$2 * 5.0F;
+      this.e.d = $$1 * 5.0F;
+   }
+
+   public gig b() {
+      return this.c;
+   }
 }

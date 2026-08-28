@@ -1,29 +1,29 @@
-public class aes implements zc<abr> {
-   public static final yt<vr, aes> a = zc.a(aes::a, aes::new);
-   private final int b;
+public class aes implements zd<abs> {
+   public static final yu<vs, aes> a = zd.a(aes::a, aes::new);
+   private final double b;
 
-   public aes(eae $$0) {
-      this.b = $$0.q();
+   public aes(ebg $$0) {
+      this.b = $$0.k();
    }
 
-   private aes(vr $$0) {
-      this.b = $$0.l();
+   private aes(vs $$0) {
+      this.b = $$0.readDouble();
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.b);
+   private void a(vs $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public ze<aes> a() {
-      return agk.ay;
+   public zf<aes> a() {
+      return agl.ax;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 }

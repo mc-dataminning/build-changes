@@ -1,47 +1,42 @@
-public class cej extends cdn {
-   private final ckn a;
-   private int b;
+import java.util.EnumSet;
 
-   public cej(ckn $$0) {
+public class cej extends cdv {
+   private final bxh a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+
+   public cej(bxh $$0, double $$1) {
       this.a = $$0;
-      this.a($$0);
+      this.e = $$1;
+      this.a(EnumSet.of(cdv.a.a));
    }
 
    @Override
-   public void d() {
-      this.a.gV();
-      this.h();
-   }
-
-   private void h() {
-      awj $$0 = this.a.gU();
-      if ($$0 != null) {
-         this.a.a($$0);
+   public boolean b() {
+      if (this.a.ga()) {
+         return false;
+      } else {
+         fdw $$0 = chs.a(this.a, 16, 7, fdw.c(this.a.gb()), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.d;
+            this.c = $$0.e;
+            this.d = $$0.f;
+            return true;
+         }
       }
    }
 
    @Override
    public boolean c() {
-      return false;
+      return !this.a.O().k();
    }
 
    @Override
-   public boolean b() {
-      this.b++;
-      if (this.b > 0 && this.a.dY().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.ff() && this.a.dY().a(10) == 0;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(ckn $$0) {
-      this.b = -$$0.gZ();
-   }
-
-   @Override
-   public boolean Q_() {
-      return true;
+   public void d() {
+      this.a.O().a(this.b, this.c, this.d, this.e);
    }
 }

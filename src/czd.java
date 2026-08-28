@@ -1,25 +1,21 @@
-public class czd extends cxu implements cys {
-   public static float a = 1.5F;
-
-   public czd(cxu.a $$0) {
+public class czd extends dae {
+   public czd(cyo.a $$0) {
       super($$0);
    }
 
    @Override
-   public btq a(dhp $$0, cqi $$1, btp $$2) {
-      cxy $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awk.zy, awl.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof arn $$4) {
-         crb.a(crg::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
-      }
-
-      $$1.b(awu.c.b(this));
-      $$3.a(1, $$1);
-      return btq.a;
+   public bty a(dip $$0, cqs $$1, btx $$2) {
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awl.oF, awm.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 
    @Override
-   public crb a(dhp $$0, kc $$1, cxy $$2, jo $$3) {
-      return new crg($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   protected crb a(aro $$0, bwz $$1, cys $$2) {
+      return new cry($$0, $$1, $$2);
+   }
+
+   @Override
+   protected crb a(dip $$0, jo $$1, cys $$2) {
+      return new cry($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

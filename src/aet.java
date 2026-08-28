@@ -1,25 +1,25 @@
-public class aet implements zc<abr> {
-   public static final yt<vr, aet> a = zc.a(aet::a, aet::new);
+public class aet implements zd<abs> {
+   public static final yu<vs, aet> a = zd.a(aet::a, aet::new);
    private final int b;
 
-   public aet(eae $$0) {
-      this.b = $$0.r();
+   public aet(ebg $$0) {
+      this.b = $$0.q();
    }
 
-   private aet(vr $$0) {
+   private aet(vs $$0) {
       this.b = $$0.l();
    }
 
-   private void a(vr $$0) {
+   private void a(vs $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public ze<aet> a() {
-      return agk.az;
+   public zf<aet> a() {
+      return agl.ay;
    }
 
-   public void a(abr $$0) {
+   public void a(abs $$0) {
       $$0.a(this);
    }
 

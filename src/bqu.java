@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bqu {
+@FunctionalInterface
+public interface bqu {
+   void finish(boolean var1);
 }

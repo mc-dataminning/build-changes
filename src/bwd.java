@@ -1,70 +1,43 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
-
-public enum bwd implements bag, Iterable<bwc> {
-   a(0, "any", $$0 -> true),
-   b(1, "mainhand", bwc.a),
-   c(2, "offhand", bwc.b),
-   d(3, "hand", $$0 -> $$0.a() == bwc.a.a),
-   e(4, "feet", bwc.c),
-   f(5, "legs", bwc.d),
-   g(6, "chest", bwc.e),
-   h(7, "head", bwc.f),
-   i(8, "armor", bwc::f),
-   j(9, "body", bwc.g),
-   k(10, "saddle", bwc.h);
-
-   public static final IntFunction<bwd> l = aya.a($$0 -> $$0.o, values(), aya.a.a);
-   public static final Codec<bwd> m = bag.a(bwd::values);
-   public static final yt<ByteBuf, bwd> n = yr.a(l, $$0 -> $$0.o);
-   private final int o;
-   private final String p;
-   private final Predicate<bwc> q;
-   private final List<bwc> r;
-
-   private bwd(final int $$0, final String $$1, final Predicate<bwc> $$2) {
-      this.o = $$0;
-      this.p = $$1;
-      this.q = $$2;
-      this.r = bwc.j.stream().filter($$2).toList();
+public record bwd(float a, float b, float c, bwc d, boolean e) {
+   private bwd(float $$0, float $$1, boolean $$2) {
+      this($$0, $$1, c($$1), bwc.a($$0, $$1), $$2);
    }
 
-   private bwd(final int $$0, final String $$1, final bwc $$2) {
-      this($$0, $$1, $$1x -> $$1x == $$2);
+   private static float c(float $$0) {
+      return $$0 * 0.85F;
    }
 
-   public static bwd a(bwc $$0) {
-      return switch ($$0) {
-         case a -> b;
-         case b -> c;
-         case c -> e;
-         case d -> f;
-         case e -> g;
-         case f -> h;
-         case g -> j;
-         case h -> k;
-      };
+   public fdr a(fdw $$0) {
+      return this.a($$0.d, $$0.e, $$0.f);
    }
 
-   @Override
-   public String c() {
-      return this.p;
+   public fdr a(double $$0, double $$1, double $$2) {
+      float $$3 = this.a / 2.0F;
+      float $$4 = this.b;
+      return new fdr($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
    }
 
-   public boolean b(bwc $$0) {
-      return this.q.test($$0);
+   public bwd a(float $$0) {
+      return this.a($$0, $$0);
    }
 
-   public List<bwc> a() {
-      return this.r;
+   public bwd a(float $$0, float $$1) {
+      return !this.e && ($$0 != 1.0F || $$1 != 1.0F) ? new bwd(this.a * $$0, this.b * $$1, this.c * $$1, this.d.a($$0, $$1, $$0), false) : this;
    }
 
-   @Override
-   public Iterator<bwc> iterator() {
-      return this.r.iterator();
+   public static bwd b(float $$0, float $$1) {
+      return new bwd($$0, $$1, false);
+   }
+
+   public static bwd c(float $$0, float $$1) {
+      return new bwd($$0, $$1, true);
+   }
+
+   public bwd b(float $$0) {
+      return new bwd(this.a, this.b, $$0, this.d, this.e);
+   }
+
+   public bwd a(bwc.a $$0) {
+      return new bwd(this.a, this.b, this.c, $$0.a(this.a, this.b), this.e);
    }
 }

@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum eab implements bai {
+   a("head"),
+   b("foot");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eab {
+   private final String c;
+
+   private eab(final String $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
 }

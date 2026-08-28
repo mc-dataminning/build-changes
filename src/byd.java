@@ -1,79 +1,78 @@
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult.Error;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class byd<E extends bwz> extends byi<E> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private final float g;
-   private final Function<bwz, axp<buj>> h;
+public record byd(ale d, double e, byd.a f) {
+   private static final Logger g = LogUtils.getLogger();
+   public static final MapCodec<byd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ale.a.fieldOf("id").forGetter(byd::b), Codec.DOUBLE.fieldOf("amount").forGetter(byd::c), byd.a.f.fieldOf("operation").forGetter(byd::d))
+            .apply($$0, byd::new)
+   );
+   public static final Codec<byd> b = a.codec();
+   public static final yu<ByteBuf, byd> c = yu.a(ale.b, byd::b, ys.m, byd::c, byd.a.e, byd::d, byd::new);
 
-   public byd(float $$0) {
-      this($$0, $$0x -> axb.F);
-   }
-
-   public byd(float $$0, Function<bwz, axp<buj>> $$1) {
-      super(Map.of(cft.aa, cfu.c, cft.y, cfu.c), 100, 120);
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   protected boolean a(arn $$0, E $$1) {
-      return $$1.eb().c(cft.y).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.eb().a(cft.aa);
-   }
-
-   protected boolean a(arn $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(arn $$0, E $$1, long $$2) {
-      $$1.eb().a(cft.aa, true);
-      $$1.eb().b(cft.n);
-   }
-
-   protected void c(arn $$0, E $$1, long $$2) {
-      bxr<?> $$3 = $$1.eb();
-      $$3.b(cft.aa);
-   }
-
-   protected void d(arn $$0, E $$1, long $$2) {
-      if ($$1.O().k()) {
-         fcu $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.eb().a(cft.n, new cfw($$3, this.g, 0));
-         }
-      }
+   public tx a() {
+      DataResult<uu> $$0 = b.encode(this, ul.a, new tx());
+      return (tx)$$0.getOrThrow();
    }
 
    @Nullable
-   private fcu a(E $$0, arn $$1) {
-      if ($$0.bY()) {
-         Optional<fcu> $$2 = this.a((dgv)$$1, $$0).map(fcu::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
+   public static byd a(tx $$0) {
+      DataResult<byd> $$1 = b.parse(ul.a, $$0);
+      if ($$1.isSuccess()) {
+         return (byd)$$1.getOrThrow();
+      } else {
+         g.warn("Unable to create attribute: {}", ((Error)$$1.error().get()).message());
+         return null;
       }
-
-      return chn.a($$0, 5, 4);
    }
 
-   private Optional<jj> a(dgv $$0, bvs $$1) {
-      jj $$2 = $$1.dv();
-      if (!$$0.a_($$2).g($$0, $$2).c()) {
-         return Optional.empty();
-      } else {
-         Predicate<jj> $$3;
-         if (azk.f($$1.dq()) == 2) {
-            $$3 = $$1x -> jj.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(axf.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(axf.a);
-         }
+   public boolean a(ale $$0) {
+      return $$0.equals(this.d);
+   }
 
-         return jj.a($$2, 5, 1, $$3);
+   public ale b() {
+      return this.d;
+   }
+
+   public double c() {
+      return this.e;
+   }
+
+   public byd.a d() {
+      return this.f;
+   }
+
+   public static enum a implements bai {
+      a("add_value", 0),
+      b("add_multiplied_base", 1),
+      c("add_multiplied_total", 2);
+
+      public static final IntFunction<byd.a> d = aya.a(byd.a::a, values(), aya.a.a);
+      public static final yu<ByteBuf, byd.a> e = ys.a(d, byd.a::a);
+      public static final Codec<byd.a> f = bai.a(byd.a::values);
+      private final String g;
+      private final int h;
+
+      private a(final String $$0, final int $$1) {
+         this.g = $$0;
+         this.h = $$1;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      @Override
+      public String c() {
+         return this.g;
       }
    }
 }

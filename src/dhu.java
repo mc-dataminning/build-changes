@@ -1,2 +1,2 @@
-public interface dhu extends dhv, dhx {
+public record dhu(iu a, dlu b, int c, int d) {
 }

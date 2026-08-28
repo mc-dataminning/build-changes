@@ -2,26 +2,26 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class cc extends dz<cc.a> {
+public class cc extends dj<cc.a> {
    @Override
    public Codec<cc.a> a() {
       return cc.a.a;
    }
 
-   public void a(aro $$0, cxy $$1) {
+   public void a(arp $$0, cys $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bi> b, Optional<cv> c) implements dz.a {
+   public static record a(Optional<bi> b, Optional<cl> c) implements dj.a {
       public static final Codec<cc.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(cc.a::a), cv.a.optionalFieldOf("item").forGetter(cc.a::b)).apply($$0, cc.a::new)
+         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(cc.a::a), cl.a.optionalFieldOf("item").forGetter(cc.a::b)).apply($$0, cc.a::new)
       );
 
-      public static aq<cc.a> a(cv.a $$0) {
+      public static aq<cc.a> a(cl.a $$0) {
          return ap.k.a(new cc.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(cxy $$0) {
+      public boolean a(cys $$0) {
          return !this.c.isPresent() || this.c.get().a($$0);
       }
 
@@ -30,7 +30,7 @@ public class cc extends dz<cc.a> {
          return this.b;
       }
 
-      public Optional<cv> b() {
+      public Optional<cl> b() {
          return this.c;
       }
    }

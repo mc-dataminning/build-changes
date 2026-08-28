@@ -1,82 +1,72 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class ddi implements ddg {
-   final Optional<dch> c;
-   final Optional<dch> d;
-   final Optional<dch> e;
-   final ddo f;
-   @Nullable
-   private dck g;
+public class ddi {
+   public static final int a = -1;
+   public static final ddi b = new ddi(List.of(), IntList.of());
+   private final List<ddf> c;
+   private final IntList d;
 
-   public ddi(Optional<dch> $$0, Optional<dch> $$1, Optional<dch> $$2, ddo $$3) {
+   private ddi(List<ddf> $$0, IntList $$1) {
       this.c = $$0;
       this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
    }
 
-   public cxy a(ddh $$0, ju.a $$1) {
-      return this.f.a($$0.d());
+   public static ddi a(ddf $$0) {
+      return $$0.b() ? b : new ddi(List.of($$0), IntList.of(0));
    }
 
-   @Override
-   public Optional<dch> c() {
-      return this.c;
+   public static ddi a(List<Optional<ddf>> $$0) {
+      int $$1 = $$0.size();
+      List<ddf> $$2 = new ArrayList<>($$1);
+      IntList $$3 = new IntArrayList($$1);
+      int $$4 = 0;
+
+      for (Optional<ddf> $$5 : $$0) {
+         if ($$5.isPresent()) {
+            ddf $$6 = $$5.get();
+            if ($$6.b()) {
+               return b;
+            }
+
+            $$2.add($$6);
+            $$3.add($$4++);
+         } else {
+            $$3.add(-1);
+         }
+      }
+
+      return new ddi($$2, $$3);
    }
 
-   @Override
-   public Optional<dch> f() {
+   public static ddi b(List<ddf> $$0) {
+      int $$1 = $$0.size();
+      IntList $$2 = new IntArrayList($$1);
+
+      for (int $$3 = 0; $$3 < $$1; $$3++) {
+         ddf $$4 = $$0.get($$3);
+         if ($$4.b()) {
+            return b;
+         }
+
+         $$2.add($$3);
+      }
+
+      return new ddi($$0, $$2);
+   }
+
+   public IntList a() {
       return this.d;
    }
 
-   @Override
-   public Optional<dch> k() {
-      return this.e;
+   public List<ddf> b() {
+      return this.c;
    }
 
-   @Override
-   public dcv<ddi> a() {
-      return dcv.t;
-   }
-
-   @Override
-   public dck ak_() {
-      if (this.g == null) {
-         this.g = dck.a(List.of(this.c, this.d, this.e));
-      }
-
-      return this.g;
-   }
-
-   @Override
-   public List<ddr> g() {
-      return List.of(new dea(dch.a(this.c), dch.a(this.d), dch.a(this.e), this.f.a(), new ddx.d(cyc.xu)));
-   }
-
-   public static class a implements dcv<ddi> {
-      private static final MapCodec<ddi> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  dch.d.optionalFieldOf("template").forGetter($$0x -> $$0x.c),
-                  dch.d.optionalFieldOf("base").forGetter($$0x -> $$0x.d),
-                  dch.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.e),
-                  ddo.a.fieldOf("result").forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, ddi::new)
-      );
-      public static final yt<wg, ddi> w = yt.a(dch.b, $$0 -> $$0.c, dch.b, $$0 -> $$0.d, dch.b, $$0 -> $$0.e, ddo.b, $$0 -> $$0.f, ddi::new);
-
-      @Override
-      public MapCodec<ddi> a() {
-         return x;
-      }
-
-      @Override
-      public yt<wg, ddi> b() {
-         return w;
-      }
+   public boolean c() {
+      return this.d.isEmpty();
    }
 }

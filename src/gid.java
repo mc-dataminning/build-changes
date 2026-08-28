@@ -1,157 +1,376 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public class gid implements fc {
-   private final gia a;
-   private final fnd b;
-   private int d = -1;
-   @Nullable
-   private CompletableFuture<Suggestions> e;
-   private final Set<String> f = new HashSet<>();
+public class gid {
+   private static final gik a = new gik(0.008F);
+   private static final gik b = new gik(1.0F);
+   private static final gik c = new gik(0.5F);
 
-   public gid(gia $$0, fnd $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   public static Map<gie, gim> a() {
+      Builder<gie, gim> $$0 = ImmutableMap.builder();
+      gim $$1 = gim.a(gfr.a(gik.a, 0.0F), 64, 64);
+      gim $$2 = gim.a(gfq.a(b), 64, 32);
+      gim $$3 = gim.a(gfq.a(new gik(1.02F)), 64, 32);
+      gim $$4 = gim.a(gfq.a(c), 64, 32);
+      gim $$5 = gfy.a();
+      gim $$6 = gha.c();
+      gim $$7 = gim.a(gdo.a(gik.a), 64, 64);
+      gim $$8 = gim.a(gdo.b(gik.a), 64, 64);
+      gim $$9 = gfe.a(false);
+      gim $$10 = gfe.a(true);
+      gip $$11 = gip.scaling(0.9375F);
+      gim $$12 = gfs.a().a($$11);
+      gim $$13 = gdz.a();
+      gim $$14 = gee.a();
+      gim $$15 = get.a();
+      gim $$16 = $$15.a(get.a);
+      gim $$17 = gez.a();
+      gim $$18 = gim.a(gfg.a(gik.a), 64, 32);
+      gim $$19 = $$18.a(gfg.b);
+      gim $$20 = gim.a(gfg.a(new gik(0.01F)), 64, 32);
+      gim $$21 = gim.a(ggg.a(gik.a), 64, 64);
+      gim $$22 = gim.a(ggf.a(), 64, 64);
+      gim $$23 = gha.b();
+      gim $$24 = gfw.a(gik.a);
+      gim $$25 = gfw.a(new gik(0.5F));
+      gim $$26 = ghi.a();
+      gim $$27 = gfo.a();
+      gim $$28 = gfo.b();
+      gim $$29 = ggz.c();
+      gim $$30 = gim.a(ghq.a(), 64, 64).a($$11);
+      gim $$31 = ghf.a();
+      gim $$32 = gdu.a();
+      gim $$33 = gem.a();
+      gim $$34 = gen.c();
+      gim $$35 = geq.a();
+      gim $$36 = gfl.a();
+      gim $$37 = ggb.a();
+      gim $$38 = gge.b(gik.a);
+      gim $$39 = ges.a(gik.a);
+      gim $$40 = gge.b(new gik(0.5F));
+      gim $$41 = ggu.a();
+      gim $$42 = ggt.a();
+      gim $$43 = ghd.a();
+      gim $$44 = ghn.a();
+      gim $$45 = gim.a(ghv.a(gik.a), 64, 32);
+      gim $$46 = gim.a(ghv.a(new gik(0.2F)), 64, 32);
+      gim $$47 = ghx.a();
+      gim $$48 = gdx.a();
+      gim $$49 = gdw.a(c);
+      gim $$50 = gdw.a(b);
+      gim $$51 = gey.a(gik.a);
+      gim $$52 = gey.a(new gik(0.25F));
+      gim $$53 = ghh.a();
+      gim $$54 = gew.a();
+      gim $$55 = ggs.a();
+      $$0.put(gif.c, gds.a());
+      $$0.put(gif.d, $$32);
+      $$0.put(gif.e, $$32.a(gdu.a));
+      $$0.put(gif.f, $$48);
+      $$0.put(gif.g, $$49);
+      $$0.put(gif.h, $$50);
+      $$0.put(gif.i, $$48.a(gfr.i));
+      $$0.put(gif.j, $$49.a(gfr.i));
+      $$0.put(gif.k, $$50.a(gfr.i));
+      $$0.put(gif.l, gdy.a());
+      $$0.put(gif.m, $$13);
+      $$0.put(gif.n, $$13.a(gdz.b));
+      $$0.put(gif.q, gec.a(true));
+      $$0.put(gif.s, gec.a(false));
+      $$0.put(gif.r, geb.a(true));
+      $$0.put(gif.t, geb.a(false));
+      $$0.put(gif.u, ged.a());
+      $$0.put(gif.v, grm.c());
+      $$0.put(gif.w, grm.b());
+      $$0.put(gif.x, $$14);
+      $$0.put(gif.y, $$14.a(gee.a));
+      $$0.put(gif.z, gef.a());
+      $$0.put(gif.A, geg.a());
+      $$0.put(gif.D, geh.a());
+      $$0.put(gif.E, gei.c());
+      $$0.put(gif.F, gej.a());
+      $$0.put(gif.G, $$4);
+      $$0.put(gif.H, $$2);
+      $$0.put(gif.I, gim.a(gfr.a(new gik(0.2F), 0.0F), 64, 32));
+      $$0.put(gif.J, gek.a());
+      $$0.put(gif.K, gel.a(32, 32));
+      $$0.put(gif.L, gel.a(128, 128));
+      $$0.put(gif.Q, $$18.a(geo.a));
+      $$0.put(gif.R, $$19.a(geo.a));
+      $$0.put(gif.T, $$20.a(geo.a));
+      $$0.put(gif.S, $$20.a(gfg.b).a(geo.a));
+      $$0.put(gif.M, $$33);
+      $$0.put(gif.N, $$33.a(gem.a));
+      $$0.put(gif.O, $$34);
+      $$0.put(gif.P, $$34.a(gem.a));
+      $$0.put(gif.U, $$31.a(gip.scaling(0.7F)));
+      $$0.put(gif.X, gep.a());
+      $$0.put(gif.Y, $$5);
+      $$0.put(gif.Z, $$35);
+      $$0.put(gif.aa, $$35.a(geq.b));
+      $$0.put(gif.ab, ger.a());
+      $$0.put(gif.ac, $$39);
+      $$0.put(gif.ad, $$39.a(gge.a));
+      $$0.put(gif.ae, $$5);
+      $$0.put(gif.ag, grx.b());
+      $$0.put(gif.ai, grx.c());
+      $$0.put(gif.ah, grx.d());
+      $$0.put(gif.af, grx.e());
+      $$0.put(gif.aj, $$15);
+      $$0.put(gif.ak, $$16);
+      $$0.put(gif.al, geu.a());
+      $$0.put(gif.am, gev.a(gik.a));
+      $$0.put(gif.an, gev.a(new gik(2.0F)));
+      $$0.put(gif.ao, $$6);
+      $$0.put(gif.ar, gry.b());
+      $$0.put(gif.as, gry.c());
+      $$0.put(gif.at, $$54);
+      $$0.put(gif.au, $$54.a(gew.a));
+      $$0.put(gif.av, gex.a(0.87F));
+      $$0.put(gif.aw, gex.b(0.87F));
+      $$0.put(gif.ax, gex.a(0.87F, false));
+      $$0.put(gif.ay, gex.a(0.87F, true));
+      $$0.put(gif.az, gep.c());
+      $$0.put(gif.aA, gep.b());
+      $$0.put(gif.aB, ghz.a());
+      $$0.put(gif.aC, $$51);
+      $$0.put(gif.aH, $$4);
+      $$0.put(gif.aI, $$4);
+      $$0.put(gif.aJ, $$52);
+      $$0.put(gif.aD, $$51.a(gfr.i));
+      $$0.put(gif.aE, $$4.a(gfr.i));
+      $$0.put(gif.aF, $$4.a(gfr.i));
+      $$0.put(gif.aG, $$52.a(gfr.i));
+      $$0.put(gif.aK, gfm.b());
+      $$0.put(gif.aL, $$17);
+      $$0.put(gif.aM, $$17.a(gez.a));
+      $$0.put(gif.aN, gfb.a());
+      $$0.put(gif.aO, gfc.a());
+      $$0.put(gif.aP, gia.a());
+      $$0.put(gif.aQ, gfa.a());
+      $$0.put(gif.aR, $$12);
+      $$0.put(gif.aS, gff.a());
+      $$0.put(gif.aT, gfh.a());
+      $$0.put(gif.aU, gfh.a().a(gfh.a));
+      $$0.put(gif.aV, gfi.a());
+      $$0.put(gif.aW, $$5);
+      $$0.put(gif.aX, gfj.a());
+      gip $$56 = gip.scaling(6.0F);
+      $$0.put(gif.aY, $$1.a($$56));
+      $$0.put(gif.aZ, $$4.a($$56));
+      $$0.put(gif.ba, $$2.a($$56));
+      $$0.put(gif.bb, $$53);
+      $$0.put(gif.bc, $$53.a(ghh.a));
+      $$0.put(gif.bd, $$36);
+      $$0.put(gif.be, $$36.a(gfl.a));
+      $$0.put(gif.bf, gfm.a());
+      $$0.put(gif.bg, $$27);
+      $$0.put(gif.bh, $$28);
+      $$0.put(gif.bi, $$5);
+      gip $$57 = gip.scaling(1.1F);
+      $$0.put(gif.bj, $$7.a($$57));
+      $$0.put(gif.bm, $$8.a($$57));
+      $$0.put(gif.bk, gim.a(gdo.a(new gik(0.1F)), 64, 64).a($$57));
+      $$0.put(gif.bn, gim.a(gdo.b(new gik(0.1F)), 64, 64).a($$57));
+      $$0.put(gif.bl, $$9.a($$57));
+      $$0.put(gif.bo, $$10.a($$57));
+      gip $$58 = gip.scaling(1.0625F);
+      $$0.put(gif.bp, $$1.a($$58));
+      $$0.put(gif.bt, $$4.a($$58));
+      $$0.put(gif.bu, $$2.a($$58));
+      $$0.put(gif.bq, $$1.a(gfr.i).a($$58));
+      $$0.put(gif.br, $$4.a(gfr.i).a($$58));
+      $$0.put(gif.bs, $$2.a(gfr.i).a($$58));
+      $$0.put(gif.bv, $$12);
+      $$0.put(gif.bw, gft.a());
+      $$0.put(gif.bz, gfv.a());
+      $$0.put(gif.bA, $$24);
+      $$0.put(gif.bB, $$24.a(gfw.a));
+      $$0.put(gif.bD, $$25);
+      $$0.put(gif.bC, $$25.a(gfw.a));
+      $$0.put(gif.bE, gfx.a());
+      $$0.put(gif.bF, gfu.a());
+      $$0.put(gif.bI, $$5);
+      $$0.put(gif.bJ, $$15);
+      $$0.put(gif.bK, $$16);
+      $$0.put(gif.bL, gex.a(0.92F));
+      $$0.put(gif.bM, gex.b(0.92F));
+      $$0.put(gif.bN, gex.a(0.92F, false));
+      $$0.put(gif.bO, gex.a(0.92F, true));
+      $$0.put(gif.bR, $$18);
+      $$0.put(gif.bS, $$19);
+      $$0.put(gif.bV, $$37);
+      $$0.put(gif.bW, $$37.a(ggb.a));
+      $$0.put(gif.bX, ggc.a());
+      $$0.put(gif.bY, ggd.a());
+      $$0.put(gif.bZ, $$38);
+      $$0.put(gif.ck, $$38.a(gge.a));
+      $$0.put(gif.cm, $$40);
+      $$0.put(gif.cl, $$40.a(gge.a));
+      $$0.put(gif.ca, $$21);
+      $$0.put(gif.ci, $$4);
+      $$0.put(gif.cj, $$3);
+      $$0.put(gif.ce, $$21);
+      $$0.put(gif.cf, $$4);
+      $$0.put(gif.cg, $$3);
+      $$0.put(gif.cb, $$21.a(gfr.i));
+      $$0.put(gif.cc, $$4.a(gfr.i));
+      $$0.put(gif.cd, $$3.a(gfr.i));
+      $$0.put(gif.ch, $$22);
+      $$0.put(gif.cn, $$12);
+      $$0.put(gif.co, gim.a(ggj.a(gik.a, false), 64, 64));
+      $$0.put(gif.cq, ggi.a());
+      $$0.put(gif.cp, ggh.a());
+      $$0.put(gif.cr, $$23);
+      $$0.put(gif.cs, $$4);
+      $$0.put(gif.ct, $$2);
+      $$0.put(gif.cu, gim.a(ggj.a(gik.a, true), 64, 64));
+      $$0.put(gif.cv, $$4);
+      $$0.put(gif.cw, $$2);
+      $$0.put(gif.cx, ghg.a());
+      $$0.put(gif.cy, ggk.a(false));
+      $$0.put(gif.cz, ggk.a(true));
+      $$0.put(gif.cA, ggl.a());
+      $$0.put(gif.cB, ggm.a());
+      $$0.put(gif.cC, ggn.a());
+      $$0.put(gif.cD, ggp.a(false));
+      $$0.put(gif.cE, ggp.a(true));
+      $$0.put(gif.cF, ggr.a());
+      $$0.put(gif.cG, $$55);
+      $$0.put(gif.cI, $$55.a(ggs.a));
+      $$0.put(gif.cH, $$55.a(ggs.b));
+      $$0.put(gif.cJ, $$41);
+      $$0.put(gif.cK, $$41.a(ggu.a));
+      $$0.put(gif.cM, $$42);
+      $$0.put(gif.cL, $$42.a(ggu.a));
+      $$0.put(gif.cN, ggv.a());
+      $$0.put(gif.cO, ggx.a());
+      $$0.put(gif.cP, ggx.b());
+      $$0.put(gif.cQ, ggw.a());
+      $$0.put(gif.cR, ggy.a());
+      $$0.put(gif.cS, $$29);
+      $$0.put(gif.cX, $$4);
+      $$0.put(gif.cY, $$2);
+      $$0.put(gif.cT, $$7);
+      $$0.put(gif.cU, $$8);
+      $$0.put(gif.cV, $$9);
+      $$0.put(gif.cW, $$10);
+      $$0.put(gif.cZ, $$6);
+      $$0.put(gif.da, ghc.b());
+      $$0.put(gif.db, ghc.a());
+      $$0.put(gif.dc, $$43);
+      $$0.put(gif.dd, $$43.a(ghd.a));
+      $$0.put(gif.de, ghe.a());
+      $$0.put(gif.df, $$5);
+      $$0.put(gif.dg, $$31);
+      $$0.put(gif.dj, $$53);
+      $$0.put(gif.dk, $$53.a(ghh.a));
+      $$0.put(gif.dl, $$29);
+      $$0.put(gif.dm, $$4);
+      $$0.put(gif.dn, $$2);
+      $$0.put(gif.do, gim.a(gfr.a(new gik(0.25F), 0.0F), 64, 32));
+      $$0.put(gif.dp, $$26);
+      $$0.put(gif.dq, $$26);
+      $$0.put(gif.dr, $$26.a(ghi.a));
+      $$0.put(gif.ds, $$26.a(ghi.a));
+      $$0.put(gif.dt, ghj.a());
+      $$0.put(gif.du, $$5);
+      $$0.put(gif.dv, $$24);
+      $$0.put(gif.dw, $$24.a(gfw.a));
+      $$0.put(gif.dx, ghk.a());
+      $$0.put(gif.dy, ghm.a(gik.a));
+      $$0.put(gif.dz, ghm.a(a));
+      $$0.put(gif.dA, ghl.a(gik.a));
+      $$0.put(gif.dB, ghl.a(a));
+      $$0.put(gif.dC, $$44);
+      $$0.put(gif.dD, $$44.a(ghn.a));
+      $$0.put(gif.dE, gho.a());
+      $$0.put(gif.dF, $$30);
+      $$0.put(gif.dG, $$30.a(ghq.a));
+      $$0.put(gif.dH, $$12);
+      $$0.put(gif.dJ, ghr.a());
+      $$0.put(gif.dI, $$30);
+      $$0.put(gif.dK, ghs.a());
+      $$0.put(gif.dL, ght.a().a($$11));
+      $$0.put(gif.dM, ghu.a(gik.a));
+      $$0.put(gif.dN, ghu.a(c));
+      $$0.put(gif.dS, gyo.a());
+      gip $$59 = gip.scaling(1.2F);
+      $$0.put(gif.dO, $$29.a($$59));
+      $$0.put(gif.dP, $$4.a($$59));
+      $$0.put(gif.dQ, $$2.a($$59));
+      $$0.put(gif.dR, $$6);
+      $$0.put(gif.dT, $$45);
+      $$0.put(gif.dU, $$46);
+      $$0.put(gif.dV, $$45.a(ghv.a));
+      $$0.put(gif.dW, $$46.a(ghv.a));
+      $$0.put(gif.dX, $$27);
+      $$0.put(gif.dY, $$28);
+      $$0.put(gif.dZ, $$1);
+      $$0.put(gif.ei, $$4);
+      $$0.put(gif.ej, $$2);
+      $$0.put(gif.ea, $$1.a(gfr.i));
+      $$0.put(gif.eb, $$4.a(gfr.i));
+      $$0.put(gif.ec, $$2.a(gfr.i));
+      $$0.put(gif.ed, $$23);
+      $$0.put(gif.ee, $$7);
+      $$0.put(gif.ef, $$8);
+      $$0.put(gif.eg, $$9);
+      $$0.put(gif.eh, $$10);
+      $$0.put(gif.ek, $$47);
+      $$0.put(gif.eo, ghx.a(c));
+      $$0.put(gif.ep, ghx.a(b));
+      $$0.put(gif.el, $$47.a(gfr.i));
+      $$0.put(gif.em, ghx.a(c).a(gfr.i));
+      $$0.put(gif.en, ghx.a(b).a(gfr.i));
+      $$0.put(gif.eq, $$21);
+      $$0.put(gif.eu, $$4);
+      $$0.put(gif.ev, $$3);
+      $$0.put(gif.er, $$21.a(gfr.i));
+      $$0.put(gif.es, $$4.a(gfr.i));
+      $$0.put(gif.et, $$3.a(gfr.i));
+      $$0.put(gif.p, ggq.a());
+      $$0.put(gif.o, ggq.b());
+      gim $$60 = gei.a();
+      gim $$61 = gei.b();
+      $$0.put(gif.bP, $$60);
+      $$0.put(gif.bQ, $$61);
+      $$0.put(gif.dh, $$60);
+      $$0.put(gif.di, $$61);
+      $$0.put(gif.B, $$60);
+      $$0.put(gif.C, $$61);
+      $$0.put(gif.bx, $$60);
+      $$0.put(gif.by, $$61);
+      $$0.put(gif.a, $$60);
+      $$0.put(gif.b, $$61);
+      $$0.put(gif.V, $$60);
+      $$0.put(gif.W, $$61);
+      $$0.put(gif.ap, $$60);
+      $$0.put(gif.aq, $$61);
+      $$0.put(gif.bT, $$60);
+      $$0.put(gif.bU, $$61);
+      $$0.put(gif.bG, $$60);
+      $$0.put(gif.bH, $$61);
+      gim $$62 = gse.a(true);
+      gim $$63 = gse.a(false);
+      ebc.a().forEach($$3x -> {
+         $$0.put(gif.a($$3x), $$62);
+         $$0.put(gif.b($$3x), $$63);
 
-   @Override
-   public Collection<String> q() {
-      List<String> $$0 = Lists.newArrayList();
-
-      for (gil $$1 : this.a.m()) {
-         $$0.add($$1.a().getName());
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public Collection<String> y() {
-      if (this.f.isEmpty()) {
-         return this.q();
+         for (gsa.a $$4x : gsa.a.values()) {
+            gim $$5x = gsa.a($$4x);
+            $$0.put(gif.a($$3x, $$4x), $$5x);
+         }
+      });
+      ImmutableMap<gie, gim> $$64 = $$0.build();
+      List<gie> $$65 = gif.a().filter($$1x -> !$$64.containsKey($$1x)).collect(Collectors.toList());
+      if (!$$65.isEmpty()) {
+         throw new IllegalStateException("Missing layer definitions: " + $$65);
       } else {
-         Set<String> $$0 = new HashSet<>(this.q());
-         $$0.addAll(this.f);
-         return $$0;
-      }
-   }
-
-   @Override
-   public Collection<String> z() {
-      return (Collection<String>)(this.b.w != null && this.b.w.d() == fcs.a.c ? Collections.singleton(((fcr)this.b.w).a().cH()) : Collections.emptyList());
-   }
-
-   @Override
-   public Collection<String> r() {
-      return this.a.z().f();
-   }
-
-   @Override
-   public Stream<ald> s() {
-      return this.b.ak().d().stream();
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      gmw $$1 = this.b.t;
-      return $$1 != null ? $$1.s($$0) : $$0 == 0;
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(alc<? extends kf<?>> $$0, fc.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      return this.u().a($$0).map($$2x -> {
-         this.a($$2x, $$1, $$2);
-         return $$2.buildFuture();
-      }).orElseGet(() -> this.a($$3));
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
-      if (this.e != null) {
-         this.e.cancel(false);
-      }
-
-      this.e = new CompletableFuture<>();
-      int $$1 = ++this.d;
-      this.a.b(new agz($$1, $$0.getInput()));
-      return this.e;
-   }
-
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%.2f", $$0);
-   }
-
-   private static String a(int $$0) {
-      return Integer.toString($$0);
-   }
-
-   @Override
-   public Collection<fc.b> A() {
-      fcs $$0 = this.b.w;
-      if ($$0 != null && $$0.d() == fcs.a.b) {
-         jj $$1 = ((fcq)$$0).b();
-         return Collections.singleton(new fc.b(a($$1.u()), a($$1.v()), a($$1.w())));
-      } else {
-         return fc.super.A();
-      }
-   }
-
-   @Override
-   public Collection<fc.b> B() {
-      fcs $$0 = this.b.w;
-      if ($$0 != null && $$0.d() == fcs.a.b) {
-         fcu $$1 = $$0.g();
-         return Collections.singleton(new fc.b(a($$1.d), a($$1.e), a($$1.f)));
-      } else {
-         return fc.super.B();
-      }
-   }
-
-   @Override
-   public Set<alc<dhp>> t() {
-      return this.a.u();
-   }
-
-   @Override
-   public kg u() {
-      return this.a.v();
-   }
-
-   @Override
-   public cte v() {
-      return this.a.y();
-   }
-
-   public void a(int $$0, Suggestions $$1) {
-      if ($$0 == this.d) {
-         this.e.complete($$1);
-         this.e = null;
-         this.d = -1;
-      }
-   }
-
-   public void a(acp.a $$0, List<String> $$1) {
-      switch ($$0) {
-         case a:
-            this.f.addAll($$1);
-            break;
-         case b:
-            $$1.forEach(this.f::remove);
-            break;
-         case c:
-            this.f.clear();
-            this.f.addAll($$1);
+         return $$64;
       }
    }
 }

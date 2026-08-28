@@ -1,116 +1,72 @@
 import java.util.List;
 
 public class rx {
-   public static final alc<eok> a = rw.a("crimson_fungi");
-   public static final alc<eok> b = rw.a("warped_fungi");
-   public static final alc<eok> c = rw.a("oak_checked");
-   public static final alc<eok> d = rw.a("dark_oak_checked");
-   public static final alc<eok> e = rw.a("pale_oak_checked");
-   public static final alc<eok> f = rw.a("pale_oak_creaking_checked");
-   public static final alc<eok> g = rw.a("birch_checked");
-   public static final alc<eok> h = rw.a("acacia_checked");
-   public static final alc<eok> i = rw.a("spruce_checked");
-   public static final alc<eok> j = rw.a("mangrove_checked");
-   public static final alc<eok> k = rw.a("cherry_checked");
-   public static final alc<eok> l = rw.a("pine_on_snow");
-   public static final alc<eok> m = rw.a("spruce_on_snow");
-   public static final alc<eok> n = rw.a("pine_checked");
-   public static final alc<eok> o = rw.a("jungle_tree");
-   public static final alc<eok> p = rw.a("fancy_oak_checked");
-   public static final alc<eok> q = rw.a("mega_jungle_tree_checked");
-   public static final alc<eok> r = rw.a("mega_spruce_checked");
-   public static final alc<eok> s = rw.a("mega_pine_checked");
-   public static final alc<eok> t = rw.a("tall_mangrove_checked");
-   public static final alc<eok> u = rw.a("jungle_bush");
-   public static final alc<eok> v = rw.a("super_birch_bees_0002");
-   public static final alc<eok> w = rw.a("super_birch_bees");
-   public static final alc<eok> x = rw.a("oak_bees_0002_leaf_litter");
-   public static final alc<eok> y = rw.a("oak_bees_002");
-   public static final alc<eok> z = rw.a("birch_bees_0002");
-   public static final alc<eok> A = rw.a("birch_bees_0002_leaf_litter");
-   public static final alc<eok> B = rw.a("birch_bees_002");
-   public static final alc<eok> C = rw.a("fancy_oak_bees_0002_leaf_litter");
-   public static final alc<eok> D = rw.a("fancy_oak_bees_002");
-   public static final alc<eok> E = rw.a("fancy_oak_bees");
-   public static final alc<eok> F = rw.a("cherry_bees_005");
-   public static final alc<eok> G = rw.a("oak_leaf_litter");
-   public static final alc<eok> H = rw.a("dark_oak_leaf_litter");
-   public static final alc<eok> I = rw.a("birch_leaf_litter");
-   public static final alc<eok> J = rw.a("fancy_oak_leaf_litter");
+   public static final epp a = epi.a(efn.a.e);
+   public static final epp b = epi.a(efn.a.f);
+   public static final epp c = epi.a(efn.a.c);
+   public static final epp d = epi.a(efn.a.a);
+   public static final epp e = epi.a(efn.a.d);
+   public static final epp f = eph.a(egh.a(), egh.b());
+   public static final epp g = eph.a(egh.b(10), egh.c(10));
+   public static final epp h = eph.a(egh.b(8), egh.c(8));
+   public static final epp i = eph.a(egh.b(4), egh.c(4));
+   public static final epp j = eph.a(egh.a(), egh.a(256));
 
-   public static void a(qg<eok> $$0) {
-      jt<ehd<?, ?>> $$1 = $$0.a(me.aP);
-      js<ehd<?, ?>> $$2 = $$1.b(rm.a);
-      js<ehd<?, ?>> $$3 = $$1.b(rm.c);
-      js<ehd<?, ?>> $$4 = $$1.b(rm.g);
-      js<ehd<?, ?>> $$5 = $$1.b(rm.h);
-      js<ehd<?, ?>> $$6 = $$1.b(rm.i);
-      js<ehd<?, ?>> $$7 = $$1.b(rm.k);
-      js<ehd<?, ?>> $$8 = $$1.b(rm.l);
-      js<ehd<?, ?>> $$9 = $$1.b(rm.m);
-      js<ehd<?, ?>> $$10 = $$1.b(rm.n);
-      js<ehd<?, ?>> $$11 = $$1.b(rm.A);
-      js<ehd<?, ?>> $$12 = $$1.b(rm.C);
-      js<ehd<?, ?>> $$13 = $$1.b(rm.o);
-      js<ehd<?, ?>> $$14 = $$1.b(rm.p);
-      js<ehd<?, ?>> $$15 = $$1.b(rm.q);
-      js<ehd<?, ?>> $$16 = $$1.b(rm.s);
-      js<ehd<?, ?>> $$17 = $$1.b(rm.t);
-      js<ehd<?, ?>> $$18 = $$1.b(rm.u);
-      js<ehd<?, ?>> $$19 = $$1.b(rm.B);
-      js<ehd<?, ?>> $$20 = $$1.b(rm.y);
-      js<ehd<?, ?>> $$21 = $$1.b(rm.v);
-      js<ehd<?, ?>> $$22 = $$1.b(rm.w);
-      js<ehd<?, ?>> $$23 = $$1.b(rm.D);
-      js<ehd<?, ?>> $$24 = $$1.b(rm.E);
-      js<ehd<?, ?>> $$25 = $$1.b(rm.G);
-      js<ehd<?, ?>> $$26 = $$1.b(rm.H);
-      js<ehd<?, ?>> $$27 = $$1.b(rm.I);
-      js<ehd<?, ?>> $$28 = $$1.b(rm.K);
-      js<ehd<?, ?>> $$29 = $$1.b(rm.L);
-      js<ehd<?, ?>> $$30 = $$1.b(rm.N);
-      js<ehd<?, ?>> $$31 = $$1.b(rm.O);
-      js<ehd<?, ?>> $$32 = $$1.b(rm.P);
-      js<ehd<?, ?>> $$33 = $$1.b(rm.Q);
-      js<ehd<?, ?>> $$34 = $$1.b(rm.R);
-      js<ehd<?, ?>> $$35 = $$1.b(rm.S);
-      rw.a($$0, a, $$2, eob.a(8), eny.a());
-      rw.a($$0, b, $$3, eob.a(8), eny.a());
-      rw.a($$0, c, $$4, rw.a(dkw.z));
-      rw.a($$0, d, $$5, rw.a(dkw.F));
-      rw.a($$0, e, $$6, rw.a(dkw.G));
-      rw.a($$0, f, $$7, rw.a(dkw.G));
-      rw.a($$0, g, $$8, rw.a(dkw.B));
-      rw.a($$0, h, $$9, rw.a(dkw.D));
-      rw.a($$0, i, $$10, rw.a(dkw.A));
-      rw.a($$0, j, $$11, rw.a(dkw.H));
-      rw.a($$0, k, $$12, rw.a(dkw.E));
-      efs $$36 = efs.a(jo.a.q(), dkw.ec, dkw.rt);
-      List<eon> $$37 = List.of(eod.a(jo.b, efs.a(efs.a(dkw.rt)), 8), enz.a($$36));
-      rw.a($$0, l, $$13, $$37);
-      rw.a($$0, m, $$10, $$37);
-      rw.a($$0, n, $$13, rw.a(dkw.A));
-      rw.a($$0, o, $$14, rw.a(dkw.C));
-      rw.a($$0, p, $$15, rw.a(dkw.z));
-      rw.a($$0, q, $$16, rw.a(dkw.C));
-      rw.a($$0, r, $$17, rw.a(dkw.A));
-      rw.a($$0, s, $$18, rw.a(dkw.A));
-      rw.a($$0, t, $$19, rw.a(dkw.H));
-      rw.a($$0, u, $$20, rw.a(dkw.z));
-      rw.a($$0, v, $$21, rw.a(dkw.B));
-      rw.a($$0, w, $$22, rw.a(dkw.B));
-      rw.a($$0, x, $$23, rw.a(dkw.z));
-      rw.a($$0, y, $$24, rw.a(dkw.z));
-      rw.a($$0, z, $$25, rw.a(dkw.B));
-      rw.a($$0, A, $$26, rw.a(dkw.B));
-      rw.a($$0, B, $$27, rw.a(dkw.B));
-      rw.a($$0, C, $$28, rw.a(dkw.z));
-      rw.a($$0, D, $$29, rw.a(dkw.z));
-      rw.a($$0, E, $$30, rw.a(dkw.z));
-      rw.a($$0, F, $$31, rw.a(dkw.E));
-      rw.a($$0, G, $$32, rw.a(dkw.z));
-      rw.a($$0, H, $$33, rw.a(dkw.F));
-      rw.a($$0, I, $$34, rw.a(dkw.B));
-      rw.a($$0, J, $$35, rw.a(dkw.z));
+   public static void a(qh<epm> $$0) {
+      rr.a($$0);
+      rs.a($$0);
+      rt.a($$0);
+      ru.a($$0);
+      rv.a($$0);
+      rw.a($$0);
+      ry.a($$0);
+      rz.a($$0);
+      sa.a($$0);
+   }
+
+   public static ald<epm> a(String $$0) {
+      return ald.a(mg.aZ, ale.b($$0));
+   }
+
+   public static void a(qh<epm> $$0, ald<epm> $$1, je<eif<?, ?>> $$2, List<epp> $$3) {
+      $$0.a($$1, new epm($$2, List.copyOf($$3)));
+   }
+
+   public static void a(qh<epm> $$0, ald<epm> $$1, je<eif<?, ?>> $$2, epp... $$3) {
+      a($$0, $$1, $$2, List.of($$3));
+   }
+
+   public static epp a(int $$0, float $$1, int $$2) {
+      float $$3 = 1.0F / $$1;
+      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
+         throw new IllegalStateException("Chance data cannot be represented as list weight");
+      } else {
+         bsj<btd> $$4 = bsj.<btd>b().a(bta.a($$0), (int)$$3 - 1).a(bta.a($$0 + $$2), 1).a();
+         return epe.a(new btk($$4));
+      }
+   }
+
+   public static epo a() {
+      return epb.a(egu.c);
+   }
+
+   public static epb a(dlu $$0) {
+      return epb.a(egu.a($$0.m(), iu.c));
+   }
+
+   public static je<epm> a(je<eif<?, ?>> $$0, epp... $$1) {
+      return je.a(new epm($$0, List.of($$1)));
+   }
+
+   public static <FC extends ekx, F extends eit<FC>> je<epm> a(F $$0, FC $$1, epp... $$2) {
+      return a(je.a(new eif($$0, $$1)), $$2);
+   }
+
+   public static <FC extends ekx, F extends eit<FC>> je<epm> a(F $$0, FC $$1) {
+      return a($$0, $$1, egu.c);
+   }
+
+   public static <FC extends ekx, F extends eit<FC>> je<epm> a(F $$0, FC $$1, egu $$2) {
+      return a($$0, $$1, epb.a($$2));
    }
 }

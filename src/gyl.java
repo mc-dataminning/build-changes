@@ -1,23 +1,25 @@
-public class gyl<S extends gzp, M extends gea<S> & gcs> extends gyt<S, M> {
-   public gyl(gwc<S, M> $$0) {
-      super($$0);
+public class gyl extends gwq<coj, heb, ght> {
+   private static final ale a = ale.b("textures/entity/witch.png");
+
+   public gyl(gvk.a $$0) {
+      super($$0, new ght($$0.a(gif.dL)), 0.5F);
+      this.a(new hak(this));
    }
 
-   public void a(fho $$0, gny $$1, int $$2, S $$3, float $$4, float $$5) {
-      this.a($$3, $$3.g, bwk.b, $$0, $$1, $$2);
-      this.a($$3, $$3.i, bwk.a, $$0, $$1, $$2);
+   public ale a(heb $$0) {
+      return a;
    }
 
-   protected void a(S $$0, hdn $$1, bwk $$2, fho $$3, gny $$4, int $$5) {
-      if (!$$1.c()) {
-         $$3.a();
-         this.d().a($$2, $$3);
-         $$3.a(a.b.rotationDegrees(-90.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         boolean $$6 = $$2 == bwk.a;
-         $$3.a((float)($$6 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         $$1.a($$3, $$4, $$5, hgi.d);
-         $$3.b();
-      }
+   public heb b() {
+      return new heb();
+   }
+
+   public void a(coj $$0, heb $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      hce.a($$0, $$1, this.h);
+      $$1.a = $$0.ar();
+      cys $$3 = $$0.fa();
+      $$1.b = !$$3.f();
+      $$1.c = $$3.a(cyw.tm);
    }
 }
