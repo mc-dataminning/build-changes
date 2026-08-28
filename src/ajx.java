@@ -1,10 +1,10 @@
 import java.util.Iterator;
 
 public interface ajx<T> {
-   default void a(int $$0, int $$1, int $$2, cyi<?> $$3, Iterator<T> $$4, int $$5) {
+   default void a(int $$0, int $$1, int $$2, cyk<?> $$3, Iterator<T> $$4, int $$5) {
       int $$6 = $$0;
       int $$7 = $$1;
-      if ($$3.b() instanceof cyo $$9) {
+      if ($$3.b() instanceof cyq $$9) {
          $$6 = $$9.j();
          $$7 = $$9.k();
       }
@@ -17,7 +17,7 @@ public interface ajx<T> {
          }
 
          boolean $$12 = (float)$$7 < (float)$$1 / 2.0F;
-         int $$13 = aye.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
+         int $$13 = ayg.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
          if ($$12 && $$13 > $$11) {
             $$10 += $$0;
             $$11++;
@@ -29,7 +29,7 @@ public interface ajx<T> {
             }
 
             $$12 = (float)$$6 < (float)$$0 / 2.0F;
-            $$13 = aye.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
+            $$13 = ayg.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
             int $$15 = $$6;
             boolean $$16 = $$14 < $$6;
             if ($$12) {

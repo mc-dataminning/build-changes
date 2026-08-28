@@ -1,116 +1,62 @@
-public enum dru implements ayz {
-   a("inactive", dru.a.a) {
-      @Override
-      protected void a(aqk $$0, ja $$1, drr $$2, drt $$3, boolean $$4) {
-         $$3.a(cua.l);
-         $$0.c(3016, $$1, $$4 ? 1 : 0);
-      }
-   },
-   b("active", dru.a.b) {
-      @Override
-      protected void a(aqk $$0, ja $$1, drr $$2, drt $$3, boolean $$4) {
-         if (!$$3.b()) {
-            drp.b.a($$0, this, $$2, $$3, $$1);
-         }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-         $$0.c(3015, $$1, $$4 ? 1 : 0);
-      }
-   },
-   c("unlocking", dru.a.b) {
-      @Override
-      protected void a(aqk $$0, ja $$1, drr $$2, drt $$3, boolean $$4) {
-         $$0.a(null, $$1, avf.AI, avg.e);
-      }
-   },
-   d("ejecting", dru.a.b) {
-      @Override
-      protected void a(aqk $$0, ja $$1, drr $$2, drt $$3, boolean $$4) {
-         $$0.a(null, $$1, avf.AK, avg.e);
-      }
+public record dru(akj<eqz> d, double e, double f, cuc g, Optional<akj<eqz>> h, drm i, drm.a j) {
+   static final String a = "config";
+   static dru b = new dru();
+   static Codec<dru> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  akj.a(lr.bb).lenientOptionalFieldOf("loot_table", b.b()).forGetter(dru::b),
+                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(dru::c),
+                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(dru::d),
+                  cuc.a("key_item").forGetter(dru::e),
+                  akj.a(lr.bb).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(dru::f)
+               )
+               .apply($$0, dru::new)
+      )
+      .validate(dru::h);
 
-      @Override
-      protected void a(aqk $$0, ja $$1, drr $$2, drt $$3) {
-         $$0.a(null, $$1, avf.AD, avg.e);
-      }
-   };
-
-   private static final int e = 20;
-   private static final int f = 20;
-   private static final int g = 20;
-   private static final int h = 20;
-   private final String i;
-   private final dru.a j;
-
-   dru(final String $$0, final dru.a $$1) {
-      this.i = $$0;
-      this.j = $$1;
+   private dru() {
+      this(eqq.S, 4.0, 4.5, new cuc(cuf.yC), Optional.empty(), drm.b, drm.a.a);
    }
 
-   @Override
-   public String c() {
+   public dru(akj<eqz> $$0, double $$1, double $$2, cuc $$3, Optional<akj<eqz>> $$4) {
+      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
+   }
+
+   public drm a() {
       return this.i;
    }
 
-   public int a() {
-      return this.j.c;
+   private DataResult<dru> h() {
+      return this.e > this.f
+         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
+         : DataResult.success(this);
    }
 
-   public dru a(aqk $$0, ja $$1, drr $$2, drs $$3, drt $$4) {
-      return switch (this) {
-         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
-         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
-         case c -> {
-            $$3.b($$0.Z() + 20L);
-            yield d;
-         }
-         case d -> {
-            if ($$3.d().isEmpty()) {
-               $$3.e();
-               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
-            } else {
-               float $$5 = $$3.h();
-               this.a($$0, $$1, $$3.g(), $$5);
-               $$4.a($$3.f());
-               boolean $$6 = $$3.d().isEmpty();
-               int $$7 = $$6 ? 20 : 20;
-               $$3.b($$0.Z() + (long)$$7);
-               yield d;
-            }
-         }
-      };
+   public akj<eqz> b() {
+      return this.d;
    }
 
-   private static dru a(aqk $$0, ja $$1, drr $$2, drs $$3, drt $$4, double $$5) {
-      $$4.a($$0, $$1, $$3, $$2, $$5);
-      $$3.b($$0.Z() + 20L);
-      return $$4.c() ? b : a;
+   public double c() {
+      return this.e;
    }
 
-   public void a(aqk $$0, ja $$1, dru $$2, drr $$3, drt $$4, boolean $$5) {
-      this.a($$0, $$1, $$3, $$4);
-      $$2.a($$0, $$1, $$3, $$4, $$5);
+   public double d() {
+      return this.f;
    }
 
-   protected void a(aqk $$0, ja $$1, drr $$2, drt $$3, boolean $$4) {
+   public cuc e() {
+      return this.g;
    }
 
-   protected void a(aqk $$0, ja $$1, drr $$2, drt $$3) {
+   public Optional<akj<eqz>> f() {
+      return this.h;
    }
 
-   private void a(aqk $$0, ja $$1, cua $$2, float $$3) {
-      kt.a($$0, $$2, 2, jf.b, evz.c($$1).a(jf.b, 1.2));
-      $$0.c(3017, $$1, 0);
-      $$0.a(null, $$1, avf.AF, avg.e, 1.0F, 0.8F + 0.4F * $$3);
-   }
-
-   static enum a {
-      a(6),
-      b(12);
-
-      final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
-      }
+   public drm.a g() {
+      return this.j;
    }
 }

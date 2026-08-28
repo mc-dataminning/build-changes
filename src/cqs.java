@@ -1,41 +1,57 @@
-public abstract class cqs<I extends cyj, R extends cyg<I>> extends cpe {
-   public cqs(cqm<?> $$0, int $$1) {
-      super($$0, $$1);
+public class cqs extends crd {
+   private final cqq a;
+   private final cmk b;
+   private int g;
+   private final dbc h;
+
+   public cqs(cmk $$0, dbc $$1, cqq $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.h = $$1;
+      this.a = $$2;
    }
-
-   public void a(boolean $$0, cyi<?> $$1, aql $$2) {
-      cyi<R> $$3 = (cyi<R>)$$1;
-      this.aj_();
-
-      try {
-         new ajy<>(this).a($$2, $$3, $$0);
-      } finally {
-         this.b((cyi<R>)$$1);
-      }
-   }
-
-   protected void aj_() {
-   }
-
-   protected void b(cyi<R> $$0) {
-   }
-
-   public abstract void a(cml var1);
 
    @Override
-   public abstract void l();
+   public boolean a(cuc $$0) {
+      return false;
+   }
 
-   public abstract boolean a(cyi<R> var1);
+   @Override
+   public cuc a(int $$0) {
+      if (this.h()) {
+         this.g = this.g + Math.min($$0, this.g().H());
+      }
 
-   public abstract int m();
+      return super.a($$0);
+   }
 
-   public abstract int n();
+   @Override
+   protected void a(cuc $$0, int $$1) {
+      this.g += $$1;
+      this.b_($$0);
+   }
 
-   public abstract int o();
+   @Override
+   protected void b_(cuc $$0) {
+      $$0.a(this.b.dQ(), this.b, this.g);
+      this.g = 0;
+   }
 
-   public abstract int p();
+   @Override
+   public void a(cmk $$0, cuc $$1) {
+      this.b_($$1);
+      dbd $$2 = this.a.g();
+      if ($$2 != null) {
+         cuc $$3 = this.a.a(0);
+         cuc $$4 = this.a.a(1);
+         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
+            this.h.a($$2);
+            $$0.a(avr.T);
+            this.a.a(0, $$3);
+            this.a.a(1, $$4);
+         }
 
-   public abstract cqt t();
-
-   public abstract boolean e(int var1);
+         this.h.t(this.h.u() + $$2.q());
+      }
+   }
 }

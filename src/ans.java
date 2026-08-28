@@ -1,29 +1,28 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.server.MinecraftServer;
 
 public class ans {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.save.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.save.alreadyOff"));
 
    public static void a(CommandDispatcher<eq> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("save-all").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((eq)$$0x.getSource(), false)))
-            .then(er.a("flush").executes($$0x -> a((eq)$$0x.getSource(), true)))
-      );
-   }
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("save-off").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         eq $$1 = (eq)$$0x.getSource();
+         boolean $$2 = false;
 
-   private static int a(eq $$0, boolean $$1) throws CommandSyntaxException {
-      $$0.a(() -> wu.c("commands.save.saving"), false);
-      MinecraftServer $$2 = $$0.l();
-      boolean $$3 = $$2.b(true, $$1, true);
-      if (!$$3) {
-         throw a.create();
-      } else {
-         $$0.a(() -> wu.c("commands.save.success"), true);
-         return 1;
-      }
+         for (aqm $$3 : $$1.l().L()) {
+            if ($$3 != null && !$$3.e) {
+               $$3.e = true;
+               $$2 = true;
+            }
+         }
+
+         if (!$$2) {
+            throw a.create();
+         } else {
+            $$1.a(() -> wu.c("commands.save.disabled"), true);
+            return 1;
+         }
+      }));
    }
 }

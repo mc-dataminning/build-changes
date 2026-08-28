@@ -1,24 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dos extends dff {
-   public static final MapCodec<dos> a = b(dos::new);
+public class dos extends dnb implements dom {
+   public static final MapCodec<dos> I = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dom.a.e.fieldOf("weathering_state").forGetter(dgi::c), dsk.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, dos::new)
+   );
+   private final dom.a J;
 
    @Override
    public MapCodec<dos> a() {
-      return a;
+      return I;
    }
 
-   public dos(dsg.d $$0) {
-      super($$0);
+   public dos(dom.a $$0, dsk $$1, dsj.d $$2) {
+      super($$1, $$2);
+      this.J = $$0;
    }
 
    @Override
-   protected void a(dsh $$0, dcd $$1, ja $$2, bsd $$3) {
-      evz $$4 = new evz(0.25, 0.05F, 0.25);
-      if ($$3 instanceof bsy $$5 && $$5.b(brn.K)) {
-         $$4 = new evz(0.5, 0.25, 0.5);
-      }
+   protected void b(dsk $$0, aqm $$1, ja $$2, ayo $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
 
-      $$3.a($$0, $$4);
+   @Override
+   protected boolean d_(dsk $$0) {
+      return dom.c($$0.b()).isPresent();
+   }
+
+   public dom.a m() {
+      return this.J;
    }
 }

@@ -1,38 +1,33 @@
-import com.google.common.collect.ImmutableList;
+public class fwm<T extends bsg> extends fux<T> {
+   private final fxo a;
 
-public class fwm<T extends cgl> extends ftd<T> {
-   private final fxi a;
-   private final fxi b;
-
-   public fwm(fxi $$0) {
-      super(true, 8.0F, 3.35F);
+   public fwm(fxo $$0) {
       this.a = $$0;
-      this.b = $$0.b("tail");
    }
 
-   public static fxo c() {
-      fxq $$0 = new fxq();
-      fxr $$1 = $$0.a();
-      float $$2 = 0.0F;
-      float $$3 = 22.0F;
-      float $$4 = -3.0F;
-      $$1.a("body", fxn.c().a(0, 0).a(-1.5F, -1.0F, 0.0F, 3.0F, 2.0F, 3.0F), fxk.a(0.0F, 22.0F, -3.0F));
-      $$1.a("tail", fxn.c().a(0, 0).a(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 7.0F), fxk.a(0.0F, 22.0F, 0.0F));
-      return fxo.a($$0, 16, 16);
+   public static fxu b() {
+      fxw $$0 = new fxw();
+      fxx $$1 = $$0.a();
+      $$1.a("cube", fxt.c().a(0, 0).a(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), fxq.a);
+      return fxu.a($$0, 64, 32);
+   }
+
+   public static fxu c() {
+      fxw $$0 = new fxw();
+      fxx $$1 = $$0.a();
+      $$1.a("cube", fxt.c().a(0, 16).a(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), fxq.a);
+      $$1.a("right_eye", fxt.c().a(32, 0).a(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), fxq.a);
+      $$1.a("left_eye", fxt.c().a(32, 4).a(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), fxq.a);
+      $$1.a("mouth", fxt.c().a(32, 8).a(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), fxq.a);
+      return fxu.a($$0, 64, 32);
    }
 
    @Override
-   protected Iterable<fxi> a() {
-      return ImmutableList.of(this.a);
-   }
-
-   @Override
-   protected Iterable<fxi> b() {
-      return ImmutableList.of(this.b);
-   }
-
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$0.be() ? 1.0F : 1.5F;
-      this.b.f = -$$6 * 0.25F * aye.a(0.3F * $$3);
+   }
+
+   @Override
+   public fxo a() {
+      return this.a;
    }
 }

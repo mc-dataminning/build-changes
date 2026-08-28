@@ -1,24 +1,33 @@
-public class gmb extends gkm<clu, fwt<clu>> {
-   private static final akk a = new akk("textures/entity/villager/villager.png");
+public class gmb extends gkr<cos> {
+   private final gex f;
 
-   public gmb(gjg.a $$0) {
-      super($$0, new fwt<>($$0.a(fxh.bP)), 0.5F);
-      this.a(new gmx<>(this, $$0.f(), $$0.d()));
-      this.a(new god<>(this, $$0.e(), "villager"));
-      this.a(new gmw<>(this, $$0.d()));
+   public gmb(gjm.a $$0) {
+      super($$0, fxn.bG);
+      this.f = $$0.c();
    }
 
-   public akk a(clu $$0) {
-      return a;
+   protected void a(cos $$0, float $$1, dsk $$2, fam $$3, ged $$4, int $$5) {
+      int $$6 = $$0.C();
+      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
+         $$7 = ayg.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
+      }
+
+      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
    }
 
-   protected void a(clu $$0, fag $$1, float $$2) {
-      float $$3 = 0.9375F * $$0.ea();
-      $$1.b($$3, $$3, $$3);
-   }
+   public static void a(gex $$0, dsk $$1, fam $$2, ged $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = gpf.a(gpf.a(1.0F), 10);
+      } else {
+         $$6 = gpf.d;
+      }
 
-   protected float b(clu $$0) {
-      float $$1 = super.b($$0);
-      return $$0.p_() ? $$1 * 0.5F : $$1;
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 }

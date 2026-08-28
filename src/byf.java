@@ -1,35 +1,48 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
 
-public final class byf<F extends K1, Value> {
-   private final bua<?> a;
-   private final ccc<Value> b;
-   private final App<F, Value> c;
+public class byf extends buu<clx> {
+   private static final int c = 300;
+   private static final double d = 1.73;
+   private long e;
 
-   public byf(bua<?> $$0, ccc<Value> $$1, App<F, Value> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public byf() {
+      super(ImmutableMap.of(ccf.c, ccg.a, ccf.n, ccg.c));
    }
 
-   public App<F, Value> a() {
-      return this.c;
+   protected boolean b(aqm $$0, clx $$1) {
+      if ($$0.Z() - this.e < 300L) {
+         return false;
+      } else if ($$0.z.a(2) != 0) {
+         return false;
+      } else {
+         this.e = $$0.Z();
+         ji $$2 = $$1.dU().c(ccf.c).get();
+         return $$2.a() == $$0.af() && $$2.b().a($$1.do(), 1.73);
+      }
    }
 
-   public void a(Value $$0) {
-      this.a.a(this.b, Optional.of($$0));
+   protected void a(aqm $$0, clx $$1, long $$2) {
+      bud<clx> $$3 = $$1.dU();
+      $$3.a(ccf.J, $$2);
+      $$3.c(ccf.c).ifPresent($$1x -> $$3.a(ccf.n, new bux($$1x.b())));
+      $$1.gD();
+      this.a($$0, $$1);
+      if ($$1.gC()) {
+         $$1.gB();
+      }
    }
 
-   public void a(Optional<Value> $$0) {
-      this.a.a(this.b, $$0);
+   protected void a(aqm $$0, clx $$1) {
    }
 
-   public void a(Value $$0, long $$1) {
-      this.a.a(this.b, $$0, $$1);
-   }
-
-   public void b() {
-      this.a.b(this.b);
+   protected boolean b(aqm $$0, clx $$1, long $$2) {
+      Optional<ji> $$3 = $$1.dU().c(ccf.c);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         ji $$4 = $$3.get();
+         return $$4.a() == $$0.af() && $$4.b().a($$1.do(), 1.73);
+      }
    }
 }

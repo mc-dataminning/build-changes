@@ -1,33 +1,31 @@
-public enum atd {
-   a("old"),
-   b("new"),
-   c("compatible");
+import io.netty.buffer.ByteBuf;
 
-   private final wu d;
-   private final wu e;
+public record atd(String c, String d, String e) {
+   public static final ys<ByteBuf, atd> a = ys.a(yq.l, atd::b, yq.l, atd::c, yq.l, atd::d, atd::new);
+   public static final String b = "minecraft";
 
-   private atd(final String $$0) {
-      this.d = wu.c("pack.incompatible." + $$0).a(n.h);
-      this.e = wu.c("pack.incompatible.confirm." + $$0);
+   public static atd a(String $$0) {
+      return new atd("minecraft", $$0, aa.b().b());
    }
 
    public boolean a() {
-      return this == c;
+      return this.c.equals("minecraft");
    }
 
-   public static atd a(axw<Integer> $$0, int $$1) {
-      if ($$0.b() < $$1) {
-         return a;
-      } else {
-         return $$1 < $$0.a() ? b : c;
-      }
+   @Override
+   public String toString() {
+      return this.c + ":" + this.d + ":" + this.e;
    }
 
-   public wu b() {
+   public String b() {
+      return this.c;
+   }
+
+   public String c() {
       return this.d;
    }
 
-   public wu c() {
+   public String d() {
       return this.e;
    }
 }

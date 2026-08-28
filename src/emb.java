@@ -1,14 +1,20 @@
 import com.mojang.serialization.MapCodec;
 
-public class emb extends emn {
-   public static final MapCodec<emb> a = MapCodec.unit(() -> emb.b);
-   public static final emb b = new emb();
+public class emb extends emq {
+   public static final MapCodec<emb> a = dsk.b.fieldOf("block_state").xmap(emb::new, $$0 -> $$0.b);
+   private final dsk b;
 
-   private emb() {
+   public emb(dsk $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected emp<?> a() {
-      return emp.j;
+   public boolean a(dsk $$0, ayo $$1) {
+      return $$0 == this.b;
+   }
+
+   @Override
+   protected emr<?> a() {
+      return emr.c;
    }
 }

@@ -110,7 +110,7 @@ public class aln {
    }
 
    private Optional<aln.a> b(Scanner $$0) {
-      akj<dcd> $$1 = (akj<dcd>)alw.a.get($$0.next());
+      akj<dcf> $$1 = (akj<dcf>)alw.a.get($$0.next());
       if ($$1 == null) {
          return Optional.empty();
       } else {
@@ -119,23 +119,23 @@ public class aln {
          float $$4 = $$0.nextFloat();
          float $$5 = $$0.nextFloat();
          float $$6 = $$0.nextFloat();
-         return Optional.of(new aln.a($$1, new evz((double)$$2, (double)$$3, (double)$$4), new evy($$6, $$5)));
+         return Optional.of(new aln.a($$1, new ewf((double)$$2, (double)$$3, (double)$$4), new ewe($$6, $$5)));
       }
    }
 
    private void b(String $$0) {
       this.e.execute(() -> {
-         List<aql> $$1 = this.e.ah().t();
+         List<aqn> $$1 = this.e.ai().t();
          if (!$$1.isEmpty()) {
-            aql $$2 = $$1.get(0);
-            aqk $$3 = this.e.I();
-            eq $$4 = new eq($$2, evz.a($$3.V()), evy.a, $$3, 4, "", wt.a, this.e, $$2);
-            er $$5 = this.e.aH();
+            aqn $$2 = $$1.get(0);
+            aqm $$3 = this.e.J();
+            eq $$4 = new eq($$2, ewf.a($$3.V()), ewe.a, $$3, 4, "", wt.a, this.e, $$2);
+            er $$5 = this.e.aI();
             $$5.a($$4, $$0);
          }
       });
    }
 
-   static record a(akj<dcd> a, evz b, evy c) {
+   static record a(akj<dcf> a, ewf b, ewe c) {
    }
 }

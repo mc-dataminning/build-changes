@@ -46,13 +46,13 @@ public class all {
       }
    }
 
-   public void a(aql $$0) {
+   public void a(aqn $$0) {
       for (alk $$1 : this.a.values()) {
          $$1.c($$0);
       }
    }
 
-   public void b(aql $$0) {
+   public void b(aqn $$0) {
       for (alk $$1 : this.a.values()) {
          $$1.d($$0);
       }

@@ -1,39 +1,50 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class fid extends fim {
+   private static final int a = 4;
+   private final boolean b;
+   private final int c;
 
-public class fid {
-   public static final akk a = new akk("textures/gui/title/minecraft.png");
-   public static final akk b = new akk("textures/gui/title/minceraft.png");
-   public static final akk c = new akk("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)aym.a().i() < 1.0E-4;
-   private final boolean o;
-
-   public fid(boolean $$0) {
-      this.o = $$0;
+   public fid(int $$0, wu $$1, fhd $$2) {
+      this($$0, $$1, $$2, 4);
    }
 
-   public void a(fgz $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
+   public fid(int $$0, wu $$1, fhd $$2, int $$3) {
+      this($$0, $$1, $$2, true, $$3);
    }
 
-   public void a(fgz $$0, int $$1, float $$2, int $$3) {
-      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
-      RenderSystem.enableBlend();
-      int $$4 = $$1 / 2 - 128;
-      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
-      int $$5 = $$1 / 2 - 64;
-      int $$6 = $$3 + 44 - 7;
-      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
+   public fid(int $$0, wu $$1, fhd $$2, boolean $$3, int $$4) {
+      super($$1, $$2);
+      this.d($$0);
+      this.b(true);
+      this.j = true;
+      this.b = $$3;
+      this.c = $$4;
+   }
+
+   public void b(int $$0) {
+      this.d($$0 - this.c * 4);
+   }
+
+   @Override
+   protected void a(flo $$0) {
+      $$0.a(fln.a, this.z());
+   }
+
+   @Override
+   public void b(fhf $$0, int $$1, int $$2, float $$3) {
+      if (this.aK_() || this.b) {
+         int $$4 = this.D() - this.c;
+         int $$5 = this.E() - this.c;
+         int $$6 = this.y() + this.c * 2;
+         int $$7 = this.w() + this.c * 2;
+         int $$8 = this.b ? (this.aK_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
+      }
+
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(guh $$0) {
    }
 }

@@ -1,74 +1,62 @@
-import org.joml.FrustumIntersection;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+import javax.annotation.Nullable;
 
-public class ghb {
-   public static final int a = 4;
-   private final FrustumIntersection b = new FrustumIntersection();
-   private final Matrix4f c = new Matrix4f();
-   private Vector4f d;
-   private double e;
-   private double f;
-   private double g;
+public class ghb implements dbi {
+   private final int c;
+   private final int d;
+   protected final gha[][] a;
+   protected final dcf b;
 
-   public ghb(Matrix4f $$0, Matrix4f $$1) {
-      this.a($$0, $$1);
+   ghb(dcf $$0, int $$1, int $$2, gha[][] $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.a = $$3;
    }
 
-   public ghb(ghb $$0) {
-      this.b.set($$0.c);
-      this.c.set($$0.c);
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.d = $$0.d;
+   @Override
+   public dsk a_(ja $$0) {
+      int $$1 = kc.a($$0.u()) - this.c;
+      int $$2 = kc.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0);
    }
 
-   public ghb a(int $$0) {
-      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
-      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
-      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
-      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
-      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
-
-      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
-         this.b
-               .intersectAab(
-                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
-               )
-            != -2;
-         this.g = this.g - (double)(this.d.z() * 4.0F)
-      ) {
-         this.e = this.e - (double)(this.d.x() * 4.0F);
-         this.f = this.f - (double)(this.d.y() * 4.0F);
-      }
-
-      return this;
+   @Override
+   public eoh b_(ja $$0) {
+      int $$1 = kc.a($$0.u()) - this.c;
+      int $$2 = kc.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0).u();
    }
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   public float a(jf $$0, boolean $$1) {
+      return this.b.a($$0, $$1);
    }
 
-   private void a(Matrix4f $$0, Matrix4f $$1) {
-      $$1.mul($$0, this.c);
-      this.b.set(this.c);
-      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
+   @Override
+   public enw y_() {
+      return this.b.y_();
    }
 
-   public boolean a(evu $$0) {
-      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   @Nullable
+   @Override
+   public dpp c_(ja $$0) {
+      int $$1 = kc.a($$0.u()) - this.c;
+      int $$2 = kc.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].a($$0);
    }
 
-   private boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      float $$6 = (float)($$0 - this.e);
-      float $$7 = (float)($$1 - this.f);
-      float $$8 = (float)($$2 - this.g);
-      float $$9 = (float)($$3 - this.e);
-      float $$10 = (float)($$4 - this.f);
-      float $$11 = (float)($$5 - this.g);
-      return this.b.testAab($$6, $$7, $$8, $$9, $$10, $$11);
+   @Override
+   public int a(ja $$0, dbq $$1) {
+      return this.b.a($$0, $$1);
+   }
+
+   @Override
+   public int I_() {
+      return this.b.I_();
+   }
+
+   @Override
+   public int J_() {
+      return this.b.J_();
    }
 }

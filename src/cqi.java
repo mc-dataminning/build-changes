@@ -1,73 +1,123 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public class cqi extends cph {
+   private final bpz k;
+   private final bpz l;
+   private final cgv m;
+   private static final int n = 1;
+   private static final int o = 2;
 
-public class cqi {
-   private final List<cqi.b> a;
-   private final cqi.b b;
+   public cqi(int $$0, cmj $$1, bpz $$2, final cgv $$3) {
+      super(null, $$0);
+      this.k = $$2;
+      this.l = $$3.gX();
+      this.m = $$3;
+      int $$4 = 3;
+      $$2.d_($$1.l);
+      int $$5 = -18;
+      this.a(new crd($$2, 0, 8, 18) {
+         @Override
+         public boolean a(cuc $$0) {
+            return $$0.a(cuf.nL) && !this.h() && $$3.f();
+         }
 
-   cqi(List<cqi.b> $$0, cqi.b $$1) {
-      if (!$$0.isEmpty() && !$$1.equals(cqi.b.e)) {
-         this.a = $$0;
-         this.b = $$1;
-      } else {
-         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+         @Override
+         public boolean d() {
+            return $$3.f();
+         }
+      });
+      this.a(new cpk(this.l, $$3, bsn.g, 0, 8, 36, null) {
+         @Override
+         public boolean a(cuc $$0) {
+            return $$3.l($$0);
+         }
+
+         @Override
+         public boolean d() {
+            return $$3.fP();
+         }
+      });
+      if (this.a($$3)) {
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            for (int $$7 = 0; $$7 < ((cgu)$$3).gw(); $$7++) {
+               this.a(new crd($$2, 1 + $$7 + $$6 * ((cgu)$$3).gw(), 80 + $$7 * 18, 18 + $$6 * 18));
+            }
+         }
+      }
+
+      for (int $$8 = 0; $$8 < 3; $$8++) {
+         for (int $$9 = 0; $$9 < 9; $$9++) {
+            this.a(new crd($$1, $$9 + $$8 * 9 + 9, 8 + $$9 * 18, 102 + $$8 * 18 + -18));
+         }
+      }
+
+      for (int $$10 = 0; $$10 < 9; $$10++) {
+         this.a(new crd($$1, $$10, 8 + $$10 * 18, 142));
       }
    }
 
-   public static cqi.a a() {
-      return new cqi.a();
+   @Override
+   public boolean b(cmk $$0) {
+      return !this.m.b(this.k) && this.k.a($$0) && this.l.a($$0) && this.m.bE() && $$0.b(this.m, 4.0);
    }
 
-   public boolean a(int $$0) {
-      return this.a.size() >= $$0;
-   }
-
-   public cqi.b b(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public cqi.b b() {
-      return this.b;
-   }
-
-   public List<cqi.b> c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.a.size();
-   }
-
-   public int e() {
-      return this.d();
-   }
-
-   public List<Integer> f() {
-      return this.a.stream().map(cqi.b::a).collect(Collectors.toList());
-   }
-
-   public static class a {
-      private final List<cqi.b> a = new ArrayList<>();
-      private cqi.b b = cqi.b.e;
-
-      public cqi.a a(int $$0, int $$1, int $$2, Predicate<cua> $$3) {
-         this.a.add(new cqi.b($$0, $$1, $$2, $$3));
-         return this;
+   private boolean a(cgv $$0) {
+      if ($$0 instanceof cgu $$1 && $$1.u()) {
+         return true;
       }
 
-      public cqi.a a(int $$0, int $$1, int $$2) {
-         this.b = new cqi.b($$0, $$1, $$2, $$0x -> false);
-         return this;
-      }
-
-      public cqi a() {
-         return new cqi(this.a, this.b);
-      }
+      return false;
    }
 
-   public static record b(int a, int b, int c, Predicate<cua> d) {
-      static final cqi.b e = new cqi.b(0, 0, 0, $$0 -> true);
+   @Override
+   public cuc b(cmk $$0, int $$1) {
+      cuc $$2 = cuc.l;
+      crd $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cuc $$4 = $$3.g();
+         $$2 = $$4.s();
+         int $$5 = this.k.b() + 1;
+         if ($$1 < $$5) {
+            if (!this.a($$4, $$5, this.i.size(), true)) {
+               return cuc.l;
+            }
+         } else if (this.b(1).a($$4) && !this.b(1).h()) {
+            if (!this.a($$4, 1, 2, false)) {
+               return cuc.l;
+            }
+         } else if (this.b(0).a($$4)) {
+            if (!this.a($$4, 0, 1, false)) {
+               return cuc.l;
+            }
+         } else if ($$5 <= 1 || !this.a($$4, 2, $$5, false)) {
+            int $$7 = $$5 + 27;
+            int $$9 = $$7 + 9;
+            if ($$1 >= $$7 && $$1 < $$9) {
+               if (!this.a($$4, $$5, $$7, false)) {
+                  return cuc.l;
+               }
+            } else if ($$1 >= $$5 && $$1 < $$7) {
+               if (!this.a($$4, $$7, $$9, false)) {
+                  return cuc.l;
+               }
+            } else if (!this.a($$4, $$7, $$7, false)) {
+               return cuc.l;
+            }
+
+            return cuc.l;
+         }
+
+         if ($$4.e()) {
+            $$3.e(cuc.l);
+         } else {
+            $$3.c();
+         }
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(cmk $$0) {
+      super.a($$0);
+      this.k.c($$0);
    }
 }

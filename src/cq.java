@@ -4,7 +4,7 @@ import java.util.Map;
 public interface cq {
    Codec<Map<cq.a<?>, cq>> b = Codec.dispatchedMap(lq.as.r(), cq.a::a);
 
-   boolean a(cua var1);
+   boolean a(cuc var1);
 
    public static record a<T extends cq>(Codec<T> a) {
    }

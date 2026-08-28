@@ -1,57 +1,63 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Locale;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+import org.joml.Quaternionf;
 
-public class grq extends akk {
-   @VisibleForTesting
-   static final char g = '#';
-   private final String h;
+public enum grq implements grx {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
 
-   private grq(String $$0, String $$1, String $$2, @Nullable akk.a $$3) {
-      super($$0, $$1, $$3);
-      this.h = $$2;
+   private static final int q = 360;
+   private static final Map<Integer, grq> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (grq)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
+
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
    }
 
-   public grq(String $$0, String $$1, String $$2) {
-      super($$0, $$1);
-      this.h = j($$2);
-   }
+   private grq(final int $$0, final int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
 
-   public grq(akk $$0, String $$1) {
-      this($$0.b(), $$0.a(), j($$1), null);
-   }
-
-   public static grq c(String $$0, String $$1) {
-      return new grq("minecraft", $$0, $$1);
-   }
-
-   private static String j(String $$0) {
-      return $$0.toLowerCase(Locale.ROOT);
-   }
-
-   public String f() {
-      return this.h;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 instanceof grq && super.equals($$0)) {
-         grq $$1 = (grq)$$0;
-         return this.h.equals($$1.h);
-      } else {
-         return false;
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
       }
+
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
+      }
+
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
    }
 
    @Override
-   public int hashCode() {
-      return 31 * super.hashCode() + this.h.hashCode();
+   public j b() {
+      return this.s;
    }
 
-   @Override
-   public String toString() {
-      return super.toString() + "#" + this.h;
+   public static grq a(int $$0, int $$1) {
+      return r.get(b(ayg.b($$0, 360), ayg.b($$1, 360)));
+   }
+
+   public h a() {
+      return this.t;
    }
 }

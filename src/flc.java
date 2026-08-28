@@ -1,143 +1,163 @@
-public interface flc {
-   flc a(int var1);
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Consumer;
 
-   flc a(int var1, int var2);
+public class flc extends fla {
+   private final flc.b c;
+   private final List<flc.a> d = new ArrayList<>();
+   private final fli e = fli.i();
 
-   flc a(int var1, int var2, int var3, int var4);
-
-   flc b(int var1);
-
-   flc c(int var1);
-
-   flc d(int var1);
-
-   flc e(int var1);
-
-   flc f(int var1);
-
-   flc g(int var1);
-
-   flc a(float var1, float var2);
-
-   flc a(float var1);
-
-   flc b(float var1);
-
-   default flc a() {
-      return this.a(0.0F);
+   public flc(int $$0, int $$1, flc.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
    }
 
-   default flc b() {
-      return this.a(0.5F);
+   public flc(int $$0, int $$1, int $$2, int $$3, flc.b $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
    }
 
-   default flc c() {
-      return this.a(1.0F);
+   @Override
+   public void a() {
+      super.a();
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
+
+         for (flc.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
+         }
+
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<flc.a> $$5 = this.d.iterator();
+         flc.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
+
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               flc.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
+            }
+         }
+
+         int $$9 = this.c.d(this);
+
+         for (flc.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
+         }
+
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
+      }
    }
 
-   default flc d() {
-      return this.b(0.0F);
+   @Override
+   public void b(Consumer<flh> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   default flc e() {
-      return this.b(0.5F);
+   public fli b() {
+      return this.e.g();
    }
 
-   default flc f() {
-      return this.b(1.0F);
+   public fli c() {
+      return this.e;
    }
 
-   flc g();
-
-   flc.a h();
-
-   static flc i() {
-      return new flc.a();
+   public <T extends flh> T a(T $$0) {
+      return this.a($$0, this.b());
    }
 
-   public static class a implements flc {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
+   public <T extends flh> T a(T $$0, fli $$1) {
+      this.d.add(new flc.a($$0, $$1));
+      return $$0;
+   }
 
-      public a() {
+   public <T extends flh> T a(T $$0, Consumer<fli> $$1) {
+      return this.a($$0, ac.a(this.b(), $$1));
+   }
+
+   static class a extends fla.a {
+      protected a(flh $$0, fli $$1) {
+         super($$0, $$1);
+      }
+   }
+
+   public static enum b {
+      a,
+      b;
+
+      int a(flh $$0) {
+         return switch (this) {
+            case a -> $$0.y();
+            case b -> $$0.w();
+         };
       }
 
-      public a(flc.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
+      int a(flc.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
       }
 
-      public flc.a h(int $$0) {
-         return this.b($$0, $$0);
+      int b(flh $$0) {
+         return switch (this) {
+            case a -> $$0.w();
+            case b -> $$0.y();
+         };
       }
 
-      public flc.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
+      int b(flc.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
       }
 
-      public flc.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
+      void a(flc.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
+         }
       }
 
-      public flc.a i(int $$0) {
-         this.a = $$0;
-         return this;
+      void a(flc.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
       }
 
-      public flc.a j(int $$0) {
-         this.b = $$0;
-         return this;
+      int c(flh $$0) {
+         return switch (this) {
+            case a -> $$0.D();
+            case b -> $$0.E();
+         };
       }
 
-      public flc.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public flc.a l(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public flc.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
-
-      public flc.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
-
-      public flc.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public flc.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public flc.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public flc.a j() {
-         return new flc.a(this);
-      }
-
-      @Override
-      public flc.a h() {
-         return this;
+      int d(flh $$0) {
+         return switch (this) {
+            case a -> $$0.E();
+            case b -> $$0.D();
+         };
       }
    }
 }

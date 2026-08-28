@@ -1,62 +1,78 @@
-public enum dti implements ayz {
-   a("harp", avf.rY, dti.a.a),
-   b("basedrum", avf.rS, dti.a.a),
-   c("snare", avf.sb, dti.a.a),
-   d("hat", avf.rZ, dti.a.a),
-   e("bass", avf.rT, dti.a.a),
-   f("flute", avf.rW, dti.a.a),
-   g("bell", avf.rU, dti.a.a),
-   h("guitar", avf.rX, dti.a.a),
-   i("chime", avf.rV, dti.a.a),
-   j("xylophone", avf.sc, dti.a.a),
-   k("iron_xylophone", avf.sd, dti.a.a),
-   l("cow_bell", avf.se, dti.a.a),
-   m("didgeridoo", avf.sf, dti.a.a),
-   n("bit", avf.sg, dti.a.a),
-   o("banjo", avf.sh, dti.a.a),
-   p("pling", avf.sa, dti.a.a),
-   q("zombie", avf.si, dti.a.b),
-   r("skeleton", avf.sj, dti.a.b),
-   s("creeper", avf.sk, dti.a.b),
-   t("dragon", avf.sl, dti.a.b),
-   u("wither_skeleton", avf.sm, dti.a.b),
-   v("piglin", avf.sn, dti.a.b),
-   w("custom_head", avf.Ar, dti.a.c);
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   private final String x;
-   private final jj<ave> y;
-   private final dti.a z;
+public class dti<T extends Enum<T> & azc> extends dtn<T> {
+   private final ImmutableSet<T> a;
+   private final Map<String, T> b = Maps.newHashMap();
 
-   private dti(final String $$0, final jj<ave> $$1, final dti.a $$2) {
-      this.x = $$0;
-      this.y = $$1;
-      this.z = $$2;
+   protected dti(String $$0, Class<T> $$1, Collection<T> $$2) {
+      super($$0, $$1);
+      this.a = ImmutableSet.copyOf($$2);
+
+      for (T $$3 : $$2) {
+         String $$4 = $$3.c();
+         if (this.b.containsKey($$4)) {
+            throw new IllegalArgumentException("Multiple values have the same name '" + $$4 + "'");
+         }
+
+         this.b.put($$4, $$3);
+      }
    }
 
    @Override
-   public String c() {
-      return this.x;
+   public Collection<T> a() {
+      return this.a;
    }
 
-   public jj<ave> a() {
-      return this.y;
+   @Override
+   public Optional<T> b(String $$0) {
+      return Optional.ofNullable(this.b.get($$0));
    }
 
-   public boolean b() {
-      return this.z == dti.a.a;
+   public String a(T $$0) {
+      return $$0.c();
    }
 
-   public boolean d() {
-      return this.z == dti.a.c;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dti<?> $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a) && this.b.equals($$1.b);
+         }
+
+         return false;
+      }
    }
 
-   public boolean e() {
-      return this.z != dti.a.a;
+   @Override
+   public int b() {
+      int $$0 = super.b();
+      $$0 = 31 * $$0 + this.a.hashCode();
+      return 31 * $$0 + this.b.hashCode();
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public static <T extends Enum<T> & azc> dti<T> a(String $$0, Class<T> $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   public static <T extends Enum<T> & azc> dti<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
+      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
+   }
+
+   public static <T extends Enum<T> & azc> dti<T> a(String $$0, Class<T> $$1, T... $$2) {
+      return a($$0, $$1, Lists.newArrayList($$2));
+   }
+
+   public static <T extends Enum<T> & azc> dti<T> a(String $$0, Class<T> $$1, Collection<T> $$2) {
+      return new dti<>($$0, $$1, $$2);
    }
 }

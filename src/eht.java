@@ -1,38 +1,28 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eht extends eib {
-   public static final MapCodec<eht> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eht::new)
-   );
-   private final double c;
-   private final int d;
-   private final int e;
+public class eht extends eih {
+   public static final MapCodec<eht> a = bpl.b(0, 256).fieldOf("count").xmap(eht::new, $$0 -> $$0.c);
+   private final bpl c;
 
-   private eht(double $$0, int $$1, int $$2) {
+   private eht(bpl $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public static eht a(double $$0, int $$1, int $$2) {
-      return new eht($$0, $$1, $$2);
+   public static eht a(bpl $$0) {
+      return new eht($$0);
    }
 
-   @Override
-   protected int a(aym $$0, ja $$1) {
-      double $$2 = ddd.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
+   public static eht a(int $$0) {
+      return a(bpi.a($$0));
    }
 
    @Override
-   public ehy<?> b() {
-      return ehy.h;
+   protected int a(ayo $$0, ja $$1) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public eie<?> b() {
+      return eie.f;
    }
 }

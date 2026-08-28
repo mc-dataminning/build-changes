@@ -1,17 +1,16 @@
-public enum dsv implements ayz {
+public enum dsv implements azc {
    a("floor"),
-   b("ceiling"),
-   c("single_wall"),
-   d("double_wall");
+   b("wall"),
+   c("ceiling");
 
-   private final String e;
+   private final String d;
 
    private dsv(final String $$0) {
-      this.e = $$0;
+      this.d = $$0;
    }
 
    @Override
    public String c() {
-      return this.e;
+      return this.d;
    }
 }

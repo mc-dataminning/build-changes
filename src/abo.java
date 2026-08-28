@@ -6,7 +6,7 @@ public class abo implements zb<abn> {
    private static final double c = 3.9;
    private final int d;
    private final UUID e;
-   private final bsj<?> f;
+   private final bsm<?> f;
    private final double g;
    private final double h;
    private final double i;
@@ -18,32 +18,32 @@ public class abo implements zb<abn> {
    private final byte o;
    private final int p;
 
-   public abo(bsd $$0) {
+   public abo(bsg $$0) {
       this($$0, 0);
    }
 
-   public abo(bsd $$0, int $$1) {
-      this($$0.al(), $$0.cz(), $$0.du(), $$0.dw(), $$0.dA(), $$0.dH(), $$0.dF(), $$0.ak(), $$1, $$0.ds(), (double)$$0.cs());
+   public abo(bsg $$0, int $$1) {
+      this($$0.am(), $$0.cA(), $$0.dv(), $$0.dx(), $$0.dB(), $$0.dI(), $$0.dG(), $$0.al(), $$1, $$0.dt(), (double)$$0.ct());
    }
 
-   public abo(bsd $$0, int $$1, ja $$2) {
-      this($$0.al(), $$0.cz(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dH(), $$0.dF(), $$0.ak(), $$1, $$0.ds(), (double)$$0.cs());
+   public abo(bsg $$0, int $$1, ja $$2) {
+      this($$0.am(), $$0.cA(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dI(), $$0.dG(), $$0.al(), $$1, $$0.dt(), (double)$$0.ct());
    }
 
-   public abo(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bsj<?> $$7, int $$8, evz $$9, double $$10) {
+   public abo(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bsm<?> $$7, int $$8, ewf $$9, double $$10) {
       this.d = $$0;
       this.e = $$1;
       this.g = $$2;
       this.h = $$3;
       this.i = $$4;
-      this.m = (byte)aye.d($$5 * 256.0F / 360.0F);
-      this.n = (byte)aye.d($$6 * 256.0F / 360.0F);
-      this.o = (byte)aye.a($$10 * 256.0 / 360.0);
+      this.m = (byte)ayg.d($$5 * 256.0F / 360.0F);
+      this.n = (byte)ayg.d($$6 * 256.0F / 360.0F);
+      this.o = (byte)ayg.a($$10 * 256.0 / 360.0);
       this.f = $$7;
       this.p = $$8;
-      this.j = (int)(aye.a($$9.c, -3.9, 3.9) * 8000.0);
-      this.k = (int)(aye.a($$9.d, -3.9, 3.9) * 8000.0);
-      this.l = (int)(aye.a($$9.e, -3.9, 3.9) * 8000.0);
+      this.j = (int)(ayg.a($$9.c, -3.9, 3.9) * 8000.0);
+      this.k = (int)(ayg.a($$9.d, -3.9, 3.9) * 8000.0);
+      this.l = (int)(ayg.a($$9.e, -3.9, 3.9) * 8000.0);
    }
 
    private abo(wf $$0) {
@@ -95,7 +95,7 @@ public class abo implements zb<abn> {
       return this.e;
    }
 
-   public bsj<?> f() {
+   public bsm<?> f() {
       return this.f;
    }
 

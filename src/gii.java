@@ -1,18 +1,16 @@
-public class gii extends gkm<cep, ftm<cep>> {
-   private static final akk a = new akk("textures/entity/bee/bee_angry.png");
-   private static final akk i = new akk("textures/entity/bee/bee_angry_nectar.png");
-   private static final akk j = new akk("textures/entity/bee/bee.png");
-   private static final akk k = new akk("textures/entity/bee/bee_nectar.png");
+public class gii extends gks<cfx, ftk> {
+   private static final akk a = new akk("textures/entity/allay/allay.png");
 
-   public gii(gjg.a $$0) {
-      super($$0, new ftm<>($$0.a(fxh.k)), 0.4F);
+   public gii(gjm.a $$0) {
+      super($$0, new ftk($$0.a(fxn.a)), 0.4F);
+      this.a(new gnr<>(this, $$0.d()));
    }
 
-   public akk a(cep $$0) {
-      if ($$0.Z_()) {
-         return $$0.gx() ? i : a;
-      } else {
-         return $$0.gx() ? k : j;
-      }
+   public akk a(cfx $$0) {
+      return a;
+   }
+
+   protected int a(cfx $$0, ja $$1) {
+      return 15;
    }
 }

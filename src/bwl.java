@@ -1,17 +1,29 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bwl {
-   public static bus<clu> a() {
-      return bye.a((Function<bye.b<clu>, ? extends App<bye.c<clu>, byh<clu>>>)($$0 -> $$0.group($$0.c(ccc.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               clv $$3 = $$1.gy();
-               if ($$3.b() != clx.b && $$3.b() != clx.m && $$1.u() == 0 && $$3.c() <= 1) {
-                  $$1.a($$1.gy().a(clx.b));
-                  $$1.c($$0xx);
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+public class bwl extends buu<btd> {
+   private final bpl c;
+   private final float d;
+   private final float e;
+   private final float f;
+
+   public bwl(bpl $$0, float $$1, float $$2, float $$3) {
+      super(ImmutableMap.of(ccf.n, ccg.b, ccf.Q, ccg.b));
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+      } else {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3 - $$2;
+      }
+   }
+
+   protected void a(aqm $$0, btd $$1, long $$2) {
+      ayo $$3 = $$1.dT();
+      float $$4 = ayg.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
+      float $$5 = ayg.g($$1.dG() + 2.0F * $$3.i() * this.d - this.d);
+      ewf $$6 = ewf.a($$4, $$5);
+      $$1.dU().a(ccf.n, new bux($$1.by().e($$6)));
+      $$1.dU().a(ccf.Q, this.c.a($$3));
    }
 }

@@ -1,70 +1,76 @@
 import java.util.EnumSet;
 
-public abstract class caj extends bzw {
-   private static final int g = 1200;
-   private static final int h = 1200;
-   private static final int i = 200;
-   protected final bth a;
-   public final double b;
-   protected int c;
-   protected int d;
-   private int j;
-   protected ja e = ja.c;
-   private boolean k;
-   private final int l;
-   private final int m;
-   protected int f;
+public class caj extends bzz {
+   protected final btk a;
+   private final double b;
+   private final boolean c;
+   private eov d;
+   private double e;
+   private double f;
+   private double g;
+   private int h;
+   private int i;
+   private final int j = 20;
+   private long k;
+   private static final long l = 20L;
 
-   public caj(bth $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, 1);
-   }
-
-   public caj(bth $$0, double $$1, int $$2, int $$3) {
+   public caj(btk $$0, double $$1, boolean $$2) {
       this.a = $$0;
       this.b = $$1;
-      this.l = $$2;
-      this.f = 0;
-      this.m = $$3;
-      this.a(EnumSet.of(bzw.a.a, bzw.a.c));
+      this.c = $$2;
+      this.a(EnumSet.of(bzz.a.a, bzz.a.b));
    }
 
    @Override
    public boolean a() {
-      if (this.c > 0) {
-         this.c--;
+      long $$0 = this.a.dQ().Z();
+      if ($$0 - this.k < 20L) {
          return false;
       } else {
-         this.c = this.a(this.a);
-         return this.n();
+         this.k = $$0;
+         btb $$1 = this.a.p();
+         if ($$1 == null) {
+            return false;
+         } else if (!$$1.bE()) {
+            return false;
+         } else {
+            this.d = this.a.K().a($$1, 0);
+            return this.d != null ? true : this.a.i($$1);
+         }
       }
-   }
-
-   protected int a(bth $$0) {
-      return b(200 + $$0.dS().a(200));
    }
 
    @Override
    public boolean b() {
-      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dP(), this.e);
+      btb $$0 = this.a.p();
+      if ($$0 == null) {
+         return false;
+      } else if (!$$0.bE()) {
+         return false;
+      } else if (!this.c) {
+         return !this.a.K().l();
+      } else {
+         return !this.a.a($$0.dq()) ? false : !($$0 instanceof cmk) || !$$0.N_() && !((cmk)$$0).f();
+      }
    }
 
    @Override
    public void c() {
-      this.h();
-      this.d = 0;
-      this.j = this.a.dS().a(this.a.dS().a(1200) + 1200) + 1200;
+      this.a.K().a(this.d, this.b);
+      this.a.v(true);
+      this.h = 0;
+      this.i = 0;
    }
 
-   protected void h() {
-      this.a.K().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, this.b);
-   }
+   @Override
+   public void d() {
+      btb $$0 = this.a.p();
+      if (!bsl.e.test($$0)) {
+         this.a.h(null);
+      }
 
-   public double i() {
-      return 1.0;
-   }
-
-   protected ja k() {
-      return this.e.c();
+      this.a.v(false);
+      this.a.K().n();
    }
 
    @Override
@@ -74,49 +80,61 @@ public abstract class caj extends bzw {
 
    @Override
    public void e() {
-      ja $$0 = this.k();
-      if (!$$0.a(this.a.dn(), this.i())) {
-         this.k = false;
-         this.d++;
-         if (this.l()) {
-            this.a.K().a((double)$$0.u() + 0.5, (double)$$0.v(), (double)$$0.w() + 0.5, this.b);
-         }
-      } else {
-         this.k = true;
-         this.d--;
-      }
-   }
-
-   public boolean l() {
-      return this.d % 40 == 0;
-   }
-
-   protected boolean m() {
-      return this.k;
-   }
-
-   protected boolean n() {
-      int $$0 = this.l;
-      int $$1 = this.m;
-      ja $$2 = this.a.dp();
-      ja.a $$3 = new ja.a();
-
-      for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
-               for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
-                  $$3.a($$2, $$6, $$4 - 1, $$7);
-                  if (this.a.a($$3) && this.a(this.a.dP(), $$3)) {
-                     this.e = $$3;
-                     return true;
-                  }
-               }
+      btb $$0 = this.a.p();
+      if ($$0 != null) {
+         this.a.G().a($$0, 30.0F, 30.0F);
+         this.h = Math.max(this.h - 1, 0);
+         if ((this.c || this.a.M().a($$0))
+            && this.h <= 0
+            && (this.e == 0.0 && this.f == 0.0 && this.g == 0.0 || $$0.i(this.e, this.f, this.g) >= 1.0 || this.a.dT().i() < 0.05F)) {
+            this.e = $$0.dv();
+            this.f = $$0.dx();
+            this.g = $$0.dB();
+            this.h = 4 + this.a.dT().a(7);
+            double $$1 = this.a.g((bsg)$$0);
+            if ($$1 > 1024.0) {
+               this.h += 10;
+            } else if ($$1 > 256.0) {
+               this.h += 5;
             }
-         }
-      }
 
-      return false;
+            if (!this.a.K().a($$0, this.b)) {
+               this.h += 15;
+            }
+
+            this.h = this.a(this.h);
+         }
+
+         this.i = Math.max(this.i - 1, 0);
+         this.a($$0);
+      }
    }
 
-   protected abstract boolean a(dcg var1, ja var2);
+   protected void a(btb $$0) {
+      if (this.b($$0)) {
+         this.h();
+         this.a.a(bqf.a);
+         this.a.D($$0);
+      }
+   }
+
+   protected void h() {
+      this.i = this.a(20);
+   }
+
+   protected boolean i() {
+      return this.i <= 0;
+   }
+
+   protected boolean b(btb $$0) {
+      return this.i() && this.a.i($$0) && this.a.M().a($$0);
+   }
+
+   protected int k() {
+      return this.i;
+   }
+
+   protected int l() {
+      return this.a(20);
+   }
 }

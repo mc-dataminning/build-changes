@@ -1,5 +1,4 @@
 import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Locale;
@@ -10,26 +9,24 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import org.slf4j.Logger;
 
 public abstract class pv<T> implements lx {
-   private static final Logger d = LogUtils.getLogger();
    protected final lz.a e;
-   private final CompletableFuture<jl.a> g;
-   private final CompletableFuture<Void> h = new CompletableFuture<>();
-   private final CompletableFuture<pv.c<T>> i;
+   private final CompletableFuture<jl.a> d;
+   private final CompletableFuture<Void> g = new CompletableFuture<>();
+   private final CompletableFuture<pv.c<T>> h;
    protected final akj<? extends jw<T>> f;
-   private final Map<akk, awh> j = Maps.newLinkedHashMap();
+   private final Map<akk, awj> i = Maps.newLinkedHashMap();
 
    protected pv(lz $$0, akj<? extends jw<T>> $$1, CompletableFuture<jl.a> $$2) {
       this($$0, $$1, $$2, CompletableFuture.completedFuture(pv.c.empty()));
    }
 
    protected pv(lz $$0, akj<? extends jw<T>> $$1, CompletableFuture<jl.a> $$2, CompletableFuture<pv.c<T>> $$3) {
-      this.e = $$0.a(lz.b.a, awm.a($$1));
+      this.e = $$0.a(lz.b.a, awo.a($$1));
       this.f = $$1;
-      this.i = $$3;
-      this.g = $$2;
+      this.h = $$3;
+      this.d = $$2;
    }
 
    @Override
@@ -46,25 +43,25 @@ public abstract class pv<T> implements lx {
 
       return this.b()
          .thenApply($$0x -> {
-            this.h.complete(null);
+            this.g.complete(null);
             return $$0x;
          })
-         .thenCombineAsync(this.i, ($$0x, $$1) -> new a<>($$0x, (pv.c<T>)$$1), ac.g())
+         .thenCombineAsync(this.h, ($$0x, $$1) -> new a<>($$0x, (pv.c<T>)$$1), ac.g())
          .thenCompose(
             $$1 -> {
                jl.b<T> $$2 = $$1.a.b(this.f);
                Predicate<akk> $$3 = $$1x -> $$2.a(akj.a(this.f, $$1x)).isPresent();
-               Predicate<akk> $$4 = $$1x -> this.j.containsKey($$1x) || $$1.b.contains(awk.a(this.f, $$1x));
+               Predicate<akk> $$4 = $$1x -> this.i.containsKey($$1x) || $$1.b.contains(awm.a(this.f, $$1x));
                return CompletableFuture.allOf(
-                  this.j
+                  this.i
                      .entrySet()
                      .stream()
                      .map(
                         $$4x -> {
                            akk $$5 = (akk)$$4x.getKey();
-                           awh $$6 = (awh)$$4x.getValue();
-                           List<awi> $$7 = $$6.b();
-                           List<awi> $$8 = $$7.stream().filter($$2xx -> !$$2xx.a($$3, $$4)).toList();
+                           awj $$6 = (awj)$$4x.getValue();
+                           List<awk> $$7 = $$6.b();
+                           List<awk> $$8 = $$7.stream().filter($$2xx -> !$$2xx.a($$3, $$4)).toList();
                            if (!$$8.isEmpty()) {
                               throw new IllegalArgumentException(
                                  String.format(
@@ -76,7 +73,7 @@ public abstract class pv<T> implements lx {
                               );
                            } else {
                               Path $$9 = this.e.a($$5);
-                              return lx.a($$0, $$1.a, awj.a, new awj($$7, false), $$9);
+                              return lx.a($$0, $$1.a, awl.a, new awl($$7, false), $$9);
                            }
                         }
                      )
@@ -86,31 +83,31 @@ public abstract class pv<T> implements lx {
          );
    }
 
-   protected pv.b<T> b(awk<T> $$0) {
-      awh $$1 = this.c($$0);
+   protected pv.b<T> b(awm<T> $$0) {
+      awj $$1 = this.c($$0);
       return new pv.b<>($$1);
    }
 
-   protected awh c(awk<T> $$0) {
-      return this.j.computeIfAbsent($$0.b(), $$0x -> awh.a());
+   protected awj c(awm<T> $$0) {
+      return this.i.computeIfAbsent($$0.b(), $$0x -> awj.a());
    }
 
    public CompletableFuture<pv.c<T>> c() {
-      return this.h.thenApply($$0 -> $$0x -> Optional.ofNullable(this.j.get($$0x.b())));
+      return this.g.thenApply($$0 -> $$0x -> Optional.ofNullable(this.i.get($$0x.b())));
    }
 
    protected CompletableFuture<jl.a> b() {
-      return this.g.thenApply($$0 -> {
-         this.j.clear();
+      return this.d.thenApply($$0 -> {
+         this.i.clear();
          this.a($$0);
          return (jl.a)$$0;
       });
    }
 
    protected static class b<T> {
-      private final awh a;
+      private final awj a;
 
-      protected b(awh $$0) {
+      protected b(awj $$0) {
          this.a = $$0;
       }
 
@@ -141,7 +138,7 @@ public abstract class pv<T> implements lx {
          return this;
       }
 
-      public pv.b<T> b(awk<T> $$0) {
+      public pv.b<T> b(awm<T> $$0) {
          this.a.c($$0.b());
          return this;
       }
@@ -153,12 +150,12 @@ public abstract class pv<T> implements lx {
    }
 
    @FunctionalInterface
-   public interface c<T> extends Function<awk<T>, Optional<awh>> {
+   public interface c<T> extends Function<awm<T>, Optional<awj>> {
       static <T> pv.c<T> empty() {
          return $$0 -> Optional.empty();
       }
 
-      default boolean contains(awk<T> $$0) {
+      default boolean contains(awm<T> $$0) {
          return this.apply($$0).isPresent();
       }
    }

@@ -1,97 +1,69 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Keyable;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public interface ayz {
-   int W = 16;
+public class ayz {
+   public static <T extends btd> Optional<T> a(bsm<T> $$0, btf $$1, aqm $$2, ja $$3, int $$4, int $$5, int $$6, ayz.a $$7) {
+      ja.a $$8 = $$3.j();
 
-   String c();
-
-   static <E extends Enum<E> & ayz> ayz.a<E> a(Supplier<E[]> $$0) {
-      return a($$0, $$0x -> $$0x);
-   }
-
-   static <E extends Enum<E> & ayz> ayz.a<E> a(Supplier<E[]> $$0, Function<String, String> $$1) {
-      E[] $$2 = (E[])$$0.get();
-      Function<String, E> $$3 = a($$2, $$1);
-      return new ayz.a<>($$2, $$3);
-   }
-
-   static <T extends ayz> Codec<T> b(Supplier<T[]> $$0) {
-      T[] $$1 = (T[])$$0.get();
-      Function<String, T> $$2 = a($$1, $$0x -> $$0x);
-      ToIntFunction<T> $$3 = ac.g(Arrays.asList($$1));
-      return new ayz.b<>($$1, $$2, $$3);
-   }
-
-   static <T extends ayz> Function<String, T> a(T[] $$0, Function<String, String> $$1) {
-      if ($$0.length > 16) {
-         Map<String, T> $$2 = Arrays.<ayz>stream($$0).collect(Collectors.toMap($$1x -> $$1.apply($$1x.c()), $$0x -> (T)$$0x));
-         return $$1x -> $$1x == null ? null : $$2.get($$1x);
-      } else {
-         return $$2x -> {
-            for (T $$3 : $$0) {
-               if ($$1.apply($$3.c()).equals($$2x)) {
-                  return $$3;
+      for (int $$9 = 0; $$9 < $$4; $$9++) {
+         int $$10 = ayg.b($$2.z, -$$5, $$5);
+         int $$11 = ayg.b($$2.z, -$$5, $$5);
+         $$8.a($$3, $$10, $$6, $$11);
+         if ($$2.C_().a($$8) && a($$2, $$6, $$8, $$7)) {
+            T $$12 = (T)$$0.b($$2, null, $$8, $$1, false, false);
+            if ($$12 != null) {
+               if ($$12.a($$2, $$1) && $$12.a($$2)) {
+                  $$2.a_($$12);
+                  return Optional.of($$12);
                }
+
+               $$12.ap();
             }
-
-            return null;
-         };
-      }
-   }
-
-   static Keyable a(final ayz[] $$0) {
-      return new Keyable() {
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return Arrays.stream($$0).map(ayz::c).map($$0::createString);
          }
-      };
+      }
+
+      return Optional.empty();
    }
 
-   @Deprecated
-   public static class a<E extends Enum<E> & ayz> extends ayz.b<E> {
-      private final Function<String, E> a;
+   private static boolean a(aqm $$0, int $$1, ja.a $$2, ayz.a $$3) {
+      ja.a $$4 = new ja.a().g($$2);
+      dsk $$5 = $$0.a_($$4);
 
-      public a(E[] $$0, Function<String, E> $$1) {
-         super($$0, $$1, $$0x -> ((Enum)$$0x).ordinal());
-         this.a = $$1;
+      for (int $$6 = $$1; $$6 >= -$$1; $$6--) {
+         $$2.c(jf.a);
+         $$4.a($$2, jf.b);
+         dsk $$7 = $$0.a_($$2);
+         if ($$3.canSpawnOn($$0, $$2, $$7, $$4, $$5)) {
+            $$2.c(jf.b);
+            return true;
+         }
+
+         $$5 = $$7;
       }
 
-      @Nullable
-      public E a(@Nullable String $$0) {
-         return this.a.apply($$0);
-      }
-
-      public E a(@Nullable String $$0, E $$1) {
-         return Objects.requireNonNullElse(this.a($$0), $$1);
-      }
+      return false;
    }
 
-   public static class b<S extends ayz> implements Codec<S> {
-      private final Codec<S> a;
+   public interface a {
+      @Deprecated
+      ayz.a a = ($$0, $$1, $$2, $$3, $$4) -> !$$2.a(dfj.bs)
+               && !$$2.a(dfj.dQ)
+               && !$$2.a(dfj.eY)
+               && !($$2.b() instanceof dna)
+               && !($$2.b() instanceof dmz)
+               && !($$2.b() instanceof djr)
+               && !$$2.a(dfj.mX)
+               && !$$2.a(dfj.dO)
+               && !$$2.a(dfj.ck)
+               && !$$2.a(dfj.ec)
+               && !$$2.a(dfj.fO)
+               && !$$2.a(dfj.ii)
+               && !$$2.a(dfj.kI)
+               && !$$2.a(dfj.qO)
+               && !$$2.a(dfj.aQ)
+            ? ($$4.i() || $$4.k()) && ($$2.e() || $$2.a(dfj.qP))
+            : false;
+      ayz.a b = ($$0, $$1, $$2, $$3, $$4) -> $$4.k($$0, $$3).c() && dfh.a($$2.k($$0, $$1), jf.b);
 
-      public b(S[] $$0, Function<String, S> $$1, ToIntFunction<S> $$2) {
-         this.a = axm.a(Codec.stringResolver(ayz::c, $$1), axm.a($$2, $$1x -> $$1x >= 0 && $$1x < $$0.length ? $$0[$$1x] : null, -1));
-      }
-
-      public <T> DataResult<Pair<S, T>> decode(DynamicOps<T> $$0, T $$1) {
-         return this.a.decode($$0, $$1);
-      }
-
-      public <T> DataResult<T> a(S $$0, DynamicOps<T> $$1, T $$2) {
-         return this.a.encode($$0, $$1, $$2);
-      }
+      boolean canSpawnOn(aqm var1, ja var2, dsk var3, ja var4, dsk var5);
    }
 }

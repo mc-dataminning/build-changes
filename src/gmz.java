@@ -1,25 +1,24 @@
-public class gmz extends gns<cew, fud<cew>> {
-   private final gdt a;
+public class gmz extends gny<cjg, fum<cjg>> {
+   private final gex a;
 
-   public gmz(glc<cew, fud<cew>> $$0, gdt $$1) {
+   public gmz(gli<cjg, fum<cjg>> $$0, gex $$1) {
       super($$0);
       this.a = $$1;
    }
 
-   public void a(fag $$0, gdx $$1, int $$2, cew $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fq() == bss.b;
-      $$0.a();
-      float $$11 = 1.0F;
-      float $$12 = -1.0F;
-      float $$13 = aye.e($$3.dH()) / 60.0F;
-      if ($$3.dH() < 0.0F) {
-         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
-      } else {
-         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
+   public void a(fam $$0, ged $$1, int $$2, cjg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      dsk $$10 = $$3.go();
+      if ($$10 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$11 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$10, $$0, $$1, $$2, gpf.d);
+         $$0.b();
       }
-
-      cua $$14 = $$10 ? $$3.eT() : $$3.eU();
-      this.a.a($$3, $$14, ctx.h, false, $$0, $$1, $$2);
-      $$0.b();
    }
 }

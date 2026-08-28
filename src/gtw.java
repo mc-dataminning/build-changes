@@ -1,62 +1,87 @@
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 public class gtw {
-   private static final int a = 100;
-   private final aym b = aym.a();
-   private final ffn c;
-   @Nullable
-   private gsw d;
-   private int e = 100;
+   private final Set<gtw.a> a = Sets.newIdentityHashSet();
+   final eyi b;
+   final Executor c;
 
-   public gtw(ffn $$0) {
-      this.c = $$0;
+   public gtw(eyi $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public CompletableFuture<gtw.a> a(eyi.c $$0) {
+      CompletableFuture<gtw.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         eyh $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            gtw.a $$3 = new gtw.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
+         } else {
+            $$1.complete(null);
+         }
+      });
+      return $$1;
+   }
+
+   public void a(Consumer<Stream<eyh>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
    }
 
    public void a() {
-      avc $$0 = this.c.ak();
-      if (this.d != null) {
-         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
-            this.c.aj().b(this.d);
-            this.e = aye.a(this.b, 0, $$0.b() / 2);
+      this.c.execute(() -> {
+         Iterator<gtw.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            gtw.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
+            }
          }
-
-         if (!this.c.aj().c(this.d)) {
-            this.d = null;
-            this.e = Math.min(this.e, aye.a(this.b, $$0.b(), $$0.c()));
-         }
-      }
-
-      this.e = Math.min(this.e, $$0.c());
-      if (this.d == null && this.e-- <= 0) {
-         this.a($$0);
-      }
-   }
-
-   public void a(avc $$0) {
-      this.d = gsr.a($$0.a().a());
-      if (this.d.b() != gub.a) {
-         this.c.aj().a(this.d);
-      }
-
-      this.e = Integer.MAX_VALUE;
-   }
-
-   public void b(avc $$0) {
-      if (this.c($$0)) {
-         this.b();
-      }
+      });
    }
 
    public void b() {
-      if (this.d != null) {
-         this.c.aj().b(this.d);
-         this.d = null;
-      }
-
-      this.e += 100;
+      this.a.forEach(gtw.a::b);
+      this.a.clear();
    }
 
-   public boolean c(avc $$0) {
-      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
+   public class a {
+      @Nullable
+      eyh b;
+      private boolean c;
+
+      public boolean a() {
+         return this.c;
+      }
+
+      public a(final eyh $$1) {
+         this.b = $$1;
+      }
+
+      public void a(Consumer<eyh> $$0) {
+         gtw.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
+            }
+         });
+      }
+
+      public void b() {
+         this.c = true;
+         gtw.this.b.a(this.b);
+         this.b = null;
+      }
    }
 }

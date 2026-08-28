@@ -1,13 +1,18 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record czx(czq d) implements czz {
-   public static final MapCodec<czx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(czq.b.fieldOf("amount").forGetter($$0x -> $$0x.d)).apply($$0, czx::new));
+public record czx(czs d, czs e, jj<brb> f) implements dab {
+   public static final MapCodec<czx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               czs.b.fieldOf("min_damage").forGetter(czx::b), czs.b.fieldOf("max_damage").forGetter(czx::c), brb.b.fieldOf("damage_type").forGetter(czx::d)
+            )
+            .apply($$0, czx::new)
+   );
 
    @Override
-   public void a(aqk $$0, int $$1, czi $$2, bsd $$3, evz $$4) {
-      aql $$6 = $$2.c() instanceof aql $$5 ? $$5 : null;
-      $$2.a().a((int)this.d.a($$1), $$0, $$6, $$2::d);
+   public void a(aqm $$0, int $$1, czk $$2, bsg $$3, ewf $$4) {
+      float $$5 = ayg.b($$3.dT(), this.d.a($$1), this.e.a($$1));
+      $$3.a(new bqz(this.f, $$2.c()), $$5);
    }
 
    @Override
@@ -15,7 +20,15 @@ public record czx(czq d) implements czz {
       return a;
    }
 
-   public czq b() {
+   public czs b() {
       return this.d;
+   }
+
+   public czs c() {
+      return this.e;
+   }
+
+   public jj<brb> d() {
+      return this.f;
    }
 }

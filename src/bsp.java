@@ -1,46 +1,43 @@
-public abstract class bsp extends bta {
-   protected bsp(bsj<? extends bsp> $$0, dcd $$1) {
-      super($$0, $$1);
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+
+public record bsp(akj<eqz> c, Map<bsn, Float> d) {
+   public static final Codec<Map<bsn, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(bsn.h, Codec.FLOAT))
+      .xmap($$0 -> (Map)$$0.map(bsp::a, Function.identity()), $$0 -> {
+         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
+         boolean $$2 = $$0.keySet().containsAll(Arrays.asList(bsn.values()));
+         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
+      });
+   public static final Codec<bsp> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akj.a(lr.bb).fieldOf("loot_table").forGetter(bsp::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bsp::b))
+            .apply($$0, bsp::new)
+   );
+
+   private static Map<bsn, Float> a(float $$0) {
+      return a(List.of(bsn.values()), $$0);
    }
 
-   @Override
-   protected void a(double $$0, boolean $$1, dsh $$2, ja $$3) {
-   }
+   private static Map<bsn, Float> a(List<bsn> $$0, float $$1) {
+      Map<bsn, Float> $$2 = Maps.newHashMap();
 
-   @Override
-   public void a(evz $$0) {
-      if (this.da()) {
-         if (this.be()) {
-            this.a(0.02F, $$0);
-            this.a(btd.a, this.ds());
-            this.h(this.ds().a(0.8F));
-         } else if (this.bs()) {
-            this.a(0.02F, $$0);
-            this.a(btd.a, this.ds());
-            this.h(this.ds().a(0.5));
-         } else {
-            float $$1 = 0.91F;
-            if (this.aE()) {
-               $$1 = this.dP().a_(this.aK()).b().h() * 0.91F;
-            }
-
-            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-            $$1 = 0.91F;
-            if (this.aE()) {
-               $$1 = this.dP().a_(this.aK()).b().h() * 0.91F;
-            }
-
-            this.a(this.aE() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(btd.a, this.ds());
-            this.h(this.ds().a((double)$$1));
-         }
+      for (bsn $$3 : $$0) {
+         $$2.put($$3, $$1);
       }
 
-      this.r(false);
+      return $$2;
    }
 
-   @Override
-   public boolean q_() {
-      return false;
+   public akj<eqz> a() {
+      return this.c;
+   }
+
+   public Map<bsn, Float> b() {
+      return this.d;
    }
 }

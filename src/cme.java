@@ -1,55 +1,138 @@
-public class cme {
-   public boolean a;
-   public boolean b;
-   public boolean c;
-   public boolean d;
-   public boolean e = true;
-   private float f = 0.05F;
-   private float g = 0.1F;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public void a(tx $$0) {
-      tx $$1 = new tx();
-      $$1.a("invulnerable", this.a);
-      $$1.a("flying", this.b);
-      $$1.a("mayfly", this.c);
-      $$1.a("instabuild", this.d);
-      $$1.a("mayBuild", this.e);
-      $$1.a("flySpeed", this.f);
-      $$1.a("walkSpeed", this.g);
-      $$0.a("abilities", $$1);
+public class cme implements dbs {
+   private static final int b = 1200;
+   public static final int a = 24000;
+   private static final int c = 25;
+   private static final int d = 75;
+   private static final int e = 25;
+   private static final int f = 10;
+   private static final int g = 10;
+   private final ayo h = ayo.a();
+   private final eqn i;
+   private int j;
+   private int k;
+   private int l;
+
+   public cme(eqn $$0) {
+      this.i = $$0;
+      this.j = 1200;
+      this.k = $$0.t();
+      this.l = $$0.u();
+      if (this.k == 0 && this.l == 0) {
+         this.k = 24000;
+         $$0.d(this.k);
+         this.l = 25;
+         $$0.e(this.l);
+      }
    }
 
-   public void b(tx $$0) {
-      if ($$0.b("abilities", 10)) {
-         tx $$1 = $$0.p("abilities");
-         this.a = $$1.q("invulnerable");
-         this.b = $$1.q("flying");
-         this.c = $$1.q("mayfly");
-         this.d = $$1.q("instabuild");
-         if ($$1.b("flySpeed", 99)) {
-            this.f = $$1.j("flySpeed");
-            this.g = $$1.j("walkSpeed");
-         }
-
-         if ($$1.b("mayBuild", 1)) {
-            this.e = $$1.q("mayBuild");
+   @Override
+   public int a(aqm $$0, boolean $$1, boolean $$2) {
+      if (!$$0.ab().b(dcb.L)) {
+         return 0;
+      } else if (--this.j > 0) {
+         return 0;
+      } else {
+         this.j = 1200;
+         this.k -= 1200;
+         this.i.d(this.k);
+         if (this.k > 0) {
+            return 0;
+         } else {
+            this.k = 24000;
+            if (!$$0.ab().b(dcb.e)) {
+               return 0;
+            } else {
+               int $$3 = this.l;
+               this.l = ayg.a(this.l + 25, 25, 75);
+               this.i.e(this.l);
+               if (this.h.a(100) > $$3) {
+                  return 0;
+               } else if (this.a($$0)) {
+                  this.l = 25;
+                  return 1;
+               } else {
+                  return 0;
+               }
+            }
          }
       }
    }
 
-   public float a() {
-      return this.f;
+   private boolean a(aqm $$0) {
+      cmk $$1 = $$0.j();
+      if ($$1 == null) {
+         return true;
+      } else if (this.h.a(10) != 0) {
+         return false;
+      } else {
+         ja $$2 = $$1.dq();
+         int $$3 = 48;
+         cef $$4 = $$0.y();
+         Optional<ja> $$5 = $$4.d($$0x -> $$0x.a(cej.o), $$0x -> true, $$2, 48, cef.b.c);
+         ja $$6 = $$5.orElse($$2);
+         ja $$7 = this.a($$0, $$6, 48);
+         if ($$7 != null && this.a($$0, $$7)) {
+            if ($$0.t($$7).a(avv.ah)) {
+               return false;
+            }
+
+            cmd $$8 = bsm.bl.a($$0, $$7, btf.h);
+            if ($$8 != null) {
+               for (int $$9 = 0; $$9 < 2; $$9++) {
+                  this.a($$0, $$8, 4);
+               }
+
+               this.i.a($$8.cA());
+               $$8.u(48000);
+               $$8.h($$6);
+               $$8.a($$6, 16);
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
-   public void a(float $$0) {
-      this.f = $$0;
+   private void a(aqm $$0, cmd $$1, int $$2) {
+      ja $$3 = this.a($$0, $$1.dq(), $$2);
+      if ($$3 != null) {
+         chd $$4 = bsm.be.a($$0, $$3, btf.h);
+         if ($$4 != null) {
+            $$4.b($$1, true);
+         }
+      }
    }
 
-   public float b() {
-      return this.g;
+   @Nullable
+   private ja a(dci $$0, ja $$1, int $$2) {
+      ja $$3 = null;
+      btv $$4 = btx.a(bsm.bl);
+
+      for (int $$5 = 0; $$5 < 10; $$5++) {
+         int $$6 = $$1.u() + this.h.a($$2 * 2) - $$2;
+         int $$7 = $$1.w() + this.h.a($$2 * 2) - $$2;
+         int $$8 = $$0.a(dyf.a.b, $$6, $$7);
+         ja $$9 = new ja($$6, $$8, $$7);
+         if ($$4.isSpawnPositionOk($$0, $$9, bsm.bl)) {
+            $$3 = $$9;
+            break;
+         }
+      }
+
+      return $$3;
    }
 
-   public void b(float $$0) {
-      this.g = $$0;
+   private boolean a(dbl $$0, ja $$1) {
+      for (ja $$2 : ja.c($$1, $$1.b(1, 2, 1))) {
+         if (!$$0.a_($$2).k($$0, $$2).c()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 }

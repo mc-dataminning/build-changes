@@ -1,21 +1,24 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dzr implements dzg {
-   protected final ke f;
+public class dzr extends dzx {
+   final awm<dfh> a;
+   public static final MapCodec<dzr> e = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(awm.a(lr.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dzr::new)
+   );
 
-   protected static <P extends dzr> P1<Mu<P>, ke> a(Instance<P> $$0) {
-      return $$0.group(ke.v(16).optionalFieldOf("offset", ke.g).forGetter($$0x -> $$0x.f));
+   protected dzr(ke $$0, awm<dfh> $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   protected dzr(ke $$0) {
-      this.f = $$0;
+   @Override
+   protected boolean a(dsk $$0) {
+      return $$0.a(this.a);
    }
 
-   public final boolean a(dcz $$0, ja $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public dzn<?> a() {
+      return dzn.b;
    }
-
-   protected abstract boolean a(dsh var1);
 }

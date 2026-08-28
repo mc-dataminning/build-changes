@@ -1,30 +1,37 @@
-import com.google.common.collect.ImmutableList.Builder;
+public class ftv extends fwj<cja> {
+   private final fxo a;
 
-public class ftv extends fvu {
-   private static final String a = "chest_bottom";
-   private static final String b = "chest_lid";
-   private static final String f = "chest_lock";
-
-   public ftv(fxi $$0) {
+   public ftv(fxo $$0) {
       super($$0);
+      this.a = $$0.b("head").b("mushrooms");
    }
 
-   @Override
-   protected Builder<fxi> a(fxi $$0) {
-      Builder<fxi> $$1 = super.a($$0);
-      $$1.add($$0.b("chest_bottom"));
-      $$1.add($$0.b("chest_lid"));
-      $$1.add($$0.b("chest_lock"));
-      return $$1;
+   public static fxu c() {
+      fxw $$0 = fvb.a(fxs.a, 0.0F);
+      fxx $$1 = $$0.a();
+      fwj.a($$1);
+      fxx $$2 = $$1.a("head").a("mushrooms", fxt.c(), fxq.a);
+      $$2.a("red_mushroom_1", fxt.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fxq.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("red_mushroom_2", fxt.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fxq.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F));
+      $$2.a("brown_mushroom_1", fxt.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fxq.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a(
+         "brown_mushroom_2", fxt.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), fxq.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
+      );
+      $$2.a(
+         "brown_mushroom_3",
+         fxt.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
+         fxq.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
+      );
+      $$2.a(
+         "brown_mushroom_4",
+         fxt.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
+         fxq.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
+      );
+      return fxu.a($$0, 64, 32);
    }
 
-   public static fxo a() {
-      fxq $$0 = new fxq();
-      fxr $$1 = $$0.a();
-      fvu.a($$1);
-      $$1.a("chest_bottom", fxn.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), fxk.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lid", fxn.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), fxk.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lock", fxn.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), fxk.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      return fxo.a($$0, 128, 128);
+   public void a(cja $$0, float $$1, float $$2, float $$3) {
+      this.a.k = !$$0.gs();
+      super.a($$0, $$1, $$2, $$3);
    }
 }

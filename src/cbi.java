@@ -1,16 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cbi extends cbj {
-   public cbi(bth $$0, double $$1) {
-      super($$0, $$1);
+public class cbi extends bzz {
+   private final cls a;
+
+   public cbi(cls $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bzz.a.c, bzz.a.a));
    }
 
-   @Nullable
    @Override
-   protected evz h() {
-      evz $$0 = this.b.g(0.0F);
-      int $$1 = 8;
-      evz $$2 = cdv.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : cdr.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   public boolean a() {
+      if (!this.a.bE()) {
+         return false;
+      } else if (this.a.bf()) {
+         return false;
+      } else if (!this.a.aF()) {
+         return false;
+      } else if (this.a.U) {
+         return false;
+      } else {
+         cmk $$0 = this.a.go();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.cd != null;
+         }
+      }
+   }
+
+   @Override
+   public void c() {
+      this.a.K().n();
+   }
+
+   @Override
+   public void d() {
+      this.a.f(null);
    }
 }

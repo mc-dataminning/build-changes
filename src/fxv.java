@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fxv {
+   final int a;
+   final int b;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fxv {
+   public fxv(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 }

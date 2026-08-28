@@ -1,40 +1,19 @@
-public class cvk extends ctv {
-   public static final int a = 1200;
-   public static final float b = 0.1F;
+import javax.annotation.Nullable;
 
-   public cvk(ctv.a $$0) {
+public class cvk extends crw {
+   public cvk(ctx.a $$0) {
       super($$0);
    }
 
    @Override
-   public int a(cua $$0, bsy $$1) {
-      return 1200;
+   public cmq a(dcf $$0, cuc $$1, btb $$2, @Nullable cuc $$3) {
+      return new cni($$0, $$2, $$1.c(1), $$3);
    }
 
    @Override
-   public cvv b(cua $$0) {
-      return cvv.h;
-   }
-
-   @Override
-   public bqe<cua> a(dcd $$0, cmh $$1, bqc $$2) {
-      $$1.a(avf.yX, 1.0F, 1.0F);
-      $$1.b(avp.c.b(this));
-      return cuc.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public cua a(cua $$0, dcd $$1, bsy $$2) {
-      this.a($$2);
-      return $$0;
-   }
-
-   @Override
-   public void a(cua $$0, dcd $$1, bsy $$2, int $$3) {
-      this.a($$2);
-   }
-
-   private void a(bsy $$0) {
-      $$0.a(avf.yY, 1.0F, 1.0F);
+   public cnc a(dcf $$0, jt $$1, cuc $$2, jf $$3) {
+      cni $$4 = new cni($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.d = cmq.a.b;
+      return $$4;
    }
 }

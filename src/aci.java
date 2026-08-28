@@ -4,13 +4,13 @@ public class aci implements zb<abn> {
    public static final ys<wf, aci> a = zb.a(aci::a, aci::new);
    private final int b;
    private final int c;
-   private final List<cua> d;
-   private final cua e;
+   private final List<cuc> d;
+   private final cuc e;
 
-   public aci(int $$0, int $$1, js<cua> $$2, cua $$3) {
+   public aci(int $$0, int $$1, js<cuc> $$2, cuc $$3) {
       this.b = $$0;
       this.c = $$1;
-      this.d = js.a($$2.size(), cua.l);
+      this.d = js.a($$2.size(), cuc.l);
 
       for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
          this.d.set($$4, $$2.get($$4).s());
@@ -22,15 +22,15 @@ public class aci implements zb<abn> {
    private aci(wf $$0) {
       this.b = $$0.readUnsignedByte();
       this.c = $$0.l();
-      this.d = cua.j.decode($$0);
-      this.e = cua.h.decode($$0);
+      this.d = cuc.j.decode($$0);
+      this.e = cuc.h.decode($$0);
    }
 
    private void a(wf $$0) {
       $$0.k(this.b);
       $$0.c(this.c);
-      cua.j.encode($$0, this.d);
-      cua.h.encode($$0, this.e);
+      cuc.j.encode($$0, this.d);
+      cuc.h.encode($$0, this.e);
    }
 
    @Override
@@ -46,11 +46,11 @@ public class aci implements zb<abn> {
       return this.b;
    }
 
-   public List<cua> e() {
+   public List<cuc> e() {
       return this.d;
    }
 
-   public cua f() {
+   public cuc f() {
       return this.e;
    }
 

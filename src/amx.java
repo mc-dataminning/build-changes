@@ -20,14 +20,14 @@ public class amx {
       );
    }
 
-   private static int a(eq $$0, Collection<aql> $$1, wu $$2) throws CommandSyntaxException {
+   private static int a(eq $$0, Collection<aqn> $$1, wu $$2) throws CommandSyntaxException {
       if (!$$0.l().r()) {
          throw b.create();
       } else {
          int $$3 = 0;
 
-         for (aql $$4 : $$1) {
-            if (!$$0.l().a($$4.fX())) {
+         for (aqn $$4 : $$1) {
+            if (!$$0.l().a($$4.fY())) {
                $$4.c.b($$2);
                $$0.a(() -> wu.a("commands.kick.success", $$4.O_(), $$2), true);
                $$3++;

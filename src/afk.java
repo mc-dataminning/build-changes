@@ -7,9 +7,9 @@ public class afk implements zb<abn> {
    @Nullable
    private final akk d;
    @Nullable
-   private final avg e;
+   private final avi e;
 
-   public afk(@Nullable akk $$0, @Nullable avg $$1) {
+   public afk(@Nullable akk $$0, @Nullable avi $$1) {
       this.d = $$0;
       this.e = $$1;
    }
@@ -17,7 +17,7 @@ public class afk implements zb<abn> {
    private afk(vr $$0) {
       int $$1 = $$0.readByte();
       if (($$1 & 1) > 0) {
-         this.e = $$0.b(avg.class);
+         this.e = $$0.b(avi.class);
       } else {
          this.e = null;
       }
@@ -62,7 +62,7 @@ public class afk implements zb<abn> {
    }
 
    @Nullable
-   public avg e() {
+   public avi e() {
       return this.e;
    }
 }

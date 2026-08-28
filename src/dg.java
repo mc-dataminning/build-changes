@@ -33,11 +33,11 @@ public record dg(de.c b, de.c c, de.c d, de.c e, de.c f, de.c g, de.c h) {
 
    public boolean a(double $$0, double $$1, double $$2, double $$3) {
       if (this.b.d($$0) && this.c.d($$1) && this.d.d($$2)) {
-         double $$4 = aye.f($$0, $$1, $$2);
+         double $$4 = ayg.f($$0, $$1, $$2);
          if (!this.e.e($$4)) {
             return false;
          } else {
-            double $$5 = aye.e($$0, $$2);
+            double $$5 = ayg.e($$0, $$2);
             if (!this.f.e($$5)) {
                return false;
             } else {

@@ -1,65 +1,24 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import java.util.Optional;
 
-public class elq extends emn {
-   public static final MapCodec<elq> a = MapCodec.unit(() -> elq.b);
-   public static final elq b = new elq();
-   private final Map<dff, dff> c = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dfh.m, dfh.pr);
-      $$0.put(dfh.cn, dfh.pr);
-      $$0.put(dfh.b, dfh.pv);
-      $$0.put(dfh.eH, dfh.pw);
-      $$0.put(dfh.eI, dfh.pw);
-      $$0.put(dfh.cQ, dfh.ps);
-      $$0.put(dfh.ni, dfh.ps);
-      $$0.put(dfh.nk, dfh.pD);
-      $$0.put(dfh.fj, dfh.pA);
-      $$0.put(dfh.ng, dfh.pA);
-      $$0.put(dfh.jI, dfh.pu);
-      $$0.put(dfh.nw, dfh.pu);
-      $$0.put(dfh.jE, dfh.pE);
-      $$0.put(dfh.jD, dfh.pE);
-      $$0.put(dfh.jK, dfh.pz);
-      $$0.put(dfh.nu, dfh.pz);
-      $$0.put(dfh.nK, dfh.pB);
-      $$0.put(dfh.nI, dfh.pB);
-      $$0.put(dfh.fP, dfh.pt);
-      $$0.put(dfh.fQ, dfh.pt);
-      $$0.put(dfh.eK, dfh.py);
-      $$0.put(dfh.eJ, dfh.px);
-      $$0.put(dfh.eW, dfh.eX);
-   });
+public class elq extends eiw {
+   public static final MapCodec<elq> d = a(elq::new);
 
-   private elq() {
+   public elq(eiw.c $$0) {
+      super($$0);
    }
 
    @Override
-   public emq.c a(dcg $$0, ja $$1, ja $$2, emq.c $$3, emq.c $$4, emm $$5) {
-      dff $$6 = this.c.get($$4.b().b());
-      if ($$6 == null) {
-         return $$4;
-      } else {
-         dsh $$7 = $$4.b();
-         dsh $$8 = $$6.o();
-         if ($$7.b(dmz.b)) {
-            $$8 = $$8.a(dmz.b, $$7.c(dmz.b));
-         }
+   public Optional<eiw.b> a(eiw.a $$0) {
+      return a($$0, dyf.a.a, $$1 -> a($$1, $$0));
+   }
 
-         if ($$7.b(dmz.c)) {
-            $$8 = $$8.a(dmz.c, $$7.c(dmz.c));
-         }
-
-         if ($$7.b(dmi.b)) {
-            $$8 = $$8.a(dmi.b, $$7.c(dmi.b));
-         }
-
-         return new emq.c($$4.a(), $$8, $$4.c());
-      }
+   private static void a(ejo $$0, eiw.a $$1) {
+      $$0.a(new elp($$1.f(), $$1.h().d(), $$1.h().e()));
    }
 
    @Override
-   protected emp<?> a() {
-      return emp.l;
+   public ejf<?> e() {
+      return ejf.o;
    }
 }

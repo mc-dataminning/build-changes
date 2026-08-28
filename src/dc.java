@@ -4,9 +4,9 @@ import java.util.Optional;
 
 public record dc(
    Optional<dc.b> b,
-   Optional<jn<ddd>> c,
-   Optional<jn<eiq>> d,
-   Optional<akj<dcd>> e,
+   Optional<jn<ddf>> c,
+   Optional<jn<eiw>> d,
+   Optional<akj<dcf>> e,
    Optional<Boolean> f,
    Optional<cz> g,
    Optional<av> h,
@@ -28,7 +28,7 @@ public record dc(
             .apply($$0, dc::new)
    );
 
-   public boolean a(aqk $$0, double $$1, double $$2, double $$3) {
+   public boolean a(aqm $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
       } else if (this.e.isPresent() && this.e.get() != $$0.af()) {
@@ -38,7 +38,7 @@ public record dc(
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dft.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dfv.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else if (this.h.isPresent() && !this.h.get().a($$0, $$4)) {
@@ -62,15 +62,15 @@ public record dc(
       return this.b;
    }
 
-   public Optional<jn<ddd>> b() {
+   public Optional<jn<ddf>> b() {
       return this.c;
    }
 
-   public Optional<jn<eiq>> c() {
+   public Optional<jn<eiw>> c() {
       return this.d;
    }
 
-   public Optional<akj<dcd>> d() {
+   public Optional<akj<dcf>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record dc(
       private de.c a;
       private de.c b;
       private de.c c;
-      private Optional<jn<ddd>> d;
-      private Optional<jn<eiq>> e;
-      private Optional<akj<dcd>> f;
+      private Optional<jn<ddf>> d;
+      private Optional<jn<eiw>> e;
+      private Optional<akj<dcf>> f;
       private Optional<Boolean> g;
       private Optional<cz> h;
       private Optional<av> i;
@@ -125,15 +125,15 @@ public record dc(
          return new dc.a();
       }
 
-      public static dc.a a(jj<ddd> $$0) {
+      public static dc.a a(jj<ddf> $$0) {
          return a().a(jn.a($$0));
       }
 
-      public static dc.a a(akj<dcd> $$0) {
+      public static dc.a a(akj<dcf> $$0) {
          return a().b($$0);
       }
 
-      public static dc.a b(jj<eiq> $$0) {
+      public static dc.a b(jj<eiw> $$0) {
          return a().b(jn.a($$0));
       }
 
@@ -156,17 +156,17 @@ public record dc(
          return this;
       }
 
-      public dc.a a(jn<ddd> $$0) {
+      public dc.a a(jn<ddf> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public dc.a b(jn<eiq> $$0) {
+      public dc.a b(jn<eiw> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public dc.a b(akj<dcd> $$0) {
+      public dc.a b(akj<dcf> $$0) {
          this.f = Optional.of($$0);
          return this;
       }

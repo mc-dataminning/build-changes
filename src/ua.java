@@ -96,17 +96,17 @@ public class ua extends un {
 
    @Override
    public int g() {
-      return aye.d(this.w);
+      return ayg.d(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(aye.d(this.w) & 65535);
+      return (short)(ayg.d(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(aye.d(this.w) & 0xFF);
+      return (byte)(ayg.d(this.w) & 0xFF);
    }
 
    @Override

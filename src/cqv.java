@@ -1,68 +1,41 @@
-import javax.annotation.Nullable;
-
-public class cqv implements bpw, cqu {
-   private final js<cua> b = js.a(1, cua.l);
-   @Nullable
-   private cyi<?> c;
-
-   @Override
-   public int b() {
-      return 1;
+public abstract class cqv<I extends cyl, R extends cyi<I>> extends cph {
+   public cqv(cqp<?> $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   public boolean c() {
-      for (cua $$0 : this.b) {
-         if (!$$0.e()) {
-            return false;
-         }
+   public void a(boolean $$0, cyk<?> $$1, aqn $$2) {
+      cyk<R> $$3 = (cyk<R>)$$1;
+      this.aj_();
+
+      try {
+         new ajy<>(this).a($$2, $$3, $$0);
+      } finally {
+         this.b((cyk<R>)$$1);
       }
-
-      return true;
    }
 
-   @Override
-   public cua a(int $$0) {
-      return this.b.get(0);
+   protected void aj_() {
    }
 
-   @Override
-   public cua a(int $$0, int $$1) {
-      return bpx.a(this.b, 0);
+   protected void b(cyk<R> $$0) {
    }
+
+   public abstract void a(cmo var1);
 
    @Override
-   public cua b(int $$0) {
-      return bpx.a(this.b, 0);
-   }
+   public abstract void l();
 
-   @Override
-   public void a(int $$0, cua $$1) {
-      this.b.set(0, $$1);
-   }
+   public abstract boolean a(cyk<R> var1);
 
-   @Override
-   public void e() {
-   }
+   public abstract int m();
 
-   @Override
-   public boolean a(cmh $$0) {
-      return true;
-   }
+   public abstract int n();
 
-   @Override
-   public void a() {
-      this.b.clear();
-   }
+   public abstract int o();
 
-   @Override
-   public void a(@Nullable cyi<?> $$0) {
-      this.c = $$0;
-   }
+   public abstract int p();
 
-   @Nullable
-   @Override
-   public cyi<?> d() {
-      return this.c;
-   }
+   public abstract cqw t();
+
+   public abstract boolean e(int var1);
 }

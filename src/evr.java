@@ -1,103 +1,49 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.nio.file.FileSystem;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class evr implements PathMatcher {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "#";
-   private final List<evr.a> c;
-   private final Map<String, PathMatcher> d = new ConcurrentHashMap<>();
+public class evr<C> {
+   private static final Logger b = LogUtils.getLogger();
+   public static final evr<MinecraftServer> a = new evr<MinecraftServer>().a(new evo.a()).a(new evp.a());
+   private final Map<akk, evq.a<C, ?>> c = Maps.newHashMap();
+   private final Map<Class<?>, evq.a<C, ?>> d = Maps.newHashMap();
 
-   public evr(List<evr.a> $$0) {
-      this.c = $$0;
+   public evr<C> a(evq.a<C, ?> $$0) {
+      this.c.put($$0.a(), $$0);
+      this.d.put($$0.b(), $$0);
+      return this;
    }
 
-   public PathMatcher a(FileSystem $$0) {
-      return this.d.computeIfAbsent($$0.provider().getScheme(), $$1 -> {
-         List<PathMatcher> $$2;
+   private <T extends evq<C>> evq.a<C, T> a(Class<?> $$0) {
+      return (evq.a<C, T>)this.d.get($$0);
+   }
+
+   public <T extends evq<C>> tx a(T $$0) {
+      evq.a<C, T> $$1 = this.a($$0.getClass());
+      tx $$2 = new tx();
+      $$1.a($$2, $$0);
+      $$2.a("Type", $$1.a().toString());
+      return $$2;
+   }
+
+   @Nullable
+   public evq<C> a(tx $$0) {
+      akk $$1 = akk.a($$0.l("Type"));
+      evq.a<C, ?> $$2 = this.c.get($$1);
+      if ($$2 == null) {
+         b.error("Failed to deserialize timer callback: {}", $$0);
+         return null;
+      } else {
          try {
-            $$2 = this.c.stream().map($$1x -> $$1x.a($$0)).toList();
+            return $$2.b($$0);
          } catch (Exception var5) {
-            a.error("Failed to compile file pattern list", var5);
-            return $$0xx -> false;
-         }
-         return switch ($$2.size()) {
-            case 0 -> $$0xx -> false;
-            case 1 -> (PathMatcher)$$2.get(0);
-            default -> $$1x -> {
-            for (PathMatcher $$2 : $$2) {
-               if ($$2.matches($$1x)) {
-                  return true;
-               }
-            }
-
-            return false;
-         };
-         };
-      });
-   }
-
-   @Override
-   public boolean matches(Path $$0) {
-      return this.a($$0.getFileSystem()).matches($$0);
-   }
-
-   public static evr a(BufferedReader $$0) {
-      return new evr($$0.lines().flatMap($$0x -> evr.a.a($$0x).stream()).toList());
-   }
-
-   public static record a(evr.b a, String b) {
-      public PathMatcher a(FileSystem $$0) {
-         return this.a().compile($$0, this.b);
-      }
-
-      static Optional<evr.a> a(String $$0) {
-         if ($$0.isBlank() || $$0.startsWith("#")) {
-            return Optional.empty();
-         } else if (!$$0.startsWith("[")) {
-            return Optional.of(new evr.a(evr.b.b, $$0));
-         } else {
-            int $$1 = $$0.indexOf(93, 1);
-            if ($$1 == -1) {
-               throw new IllegalArgumentException("Unterminated type in line '" + $$0 + "'");
-            } else {
-               String $$2 = $$0.substring(1, $$1);
-               String $$3 = $$0.substring($$1 + 1);
-
-               return switch ($$2) {
-                  case "glob", "regex" -> Optional.of(new evr.a(evr.b.a, $$2 + ":" + $$3));
-                  case "prefix" -> Optional.of(new evr.a(evr.b.b, $$3));
-                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + $$0 + "'");
-               };
-            }
+            b.error("Failed to deserialize timer callback: {}", $$0, var5);
+            return null;
          }
       }
-
-      static evr.a b(String $$0) {
-         return new evr.a(evr.b.a, "glob:" + $$0);
-      }
-
-      static evr.a c(String $$0) {
-         return new evr.a(evr.b.a, "regex:" + $$0);
-      }
-
-      static evr.a d(String $$0) {
-         return new evr.a(evr.b.b, $$0);
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      evr.b a = FileSystem::getPathMatcher;
-      evr.b b = ($$0, $$1) -> $$1x -> $$1x.toString().startsWith($$1);
-
-      PathMatcher compile(FileSystem var1, String var2);
    }
 }

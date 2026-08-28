@@ -1,70 +1,18 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class fel extends fen {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wu c = wu.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final fnd f;
-   private final String g;
+public class fel {
+   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
 
-   public fel(long $$0, int $$1, String $$2, fnd $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
+   public static String a(long $$0) {
+      return (String)a.get($$0);
    }
 
-   @Override
-   public void run() {
-      faw $$0 = faw.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            fcd $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new fda(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (fck var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (fcj var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new fdb(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
-         }
-      }
+   public static void b(long $$0) {
+      a.remove($$0);
    }
 
-   @Override
-   public wu a() {
-      return c;
+   public static void a(long $$0, String $$1) {
+      a.put($$0, $$1);
    }
 }

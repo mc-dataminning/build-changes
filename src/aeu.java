@@ -5,16 +5,16 @@ public class aeu implements zb<abn> {
    private final int d;
    private final int e;
 
-   public aeu(bsd $$0) {
-      this($$0.al(), $$0.ds());
+   public aeu(bsg $$0) {
+      this($$0.am(), $$0.dt());
    }
 
-   public aeu(int $$0, evz $$1) {
+   public aeu(int $$0, ewf $$1) {
       this.b = $$0;
       double $$2 = 3.9;
-      double $$3 = aye.a($$1.c, -3.9, 3.9);
-      double $$4 = aye.a($$1.d, -3.9, 3.9);
-      double $$5 = aye.a($$1.e, -3.9, 3.9);
+      double $$3 = ayg.a($$1.c, -3.9, 3.9);
+      double $$4 = ayg.a($$1.d, -3.9, 3.9);
+      double $$5 = ayg.a($$1.e, -3.9, 3.9);
       this.c = (int)($$3 * 8000.0);
       this.d = (int)($$4 * 8000.0);
       this.e = (int)($$5 * 8000.0);
@@ -47,15 +47,15 @@ public class aeu implements zb<abn> {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
+   public double e() {
+      return (double)this.c / 8000.0;
    }
 
-   public int f() {
-      return this.d;
+   public double f() {
+      return (double)this.d / 8000.0;
    }
 
-   public int g() {
-      return this.e;
+   public double g() {
+      return (double)this.e / 8000.0;
    }
 }

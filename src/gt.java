@@ -28,7 +28,7 @@ public class gt implements ArgumentType<go> {
       return new gt($$0);
    }
 
-   public static evz a(CommandContext<eq> $$0, String $$1) {
+   public static ewf a(CommandContext<eq> $$0, String $$1) {
       return ((go)$$0.getArgument($$1, go.class)).a((eq)$$0.getSource());
    }
 

@@ -1,30 +1,9 @@
-public class bqs {
-   public static final float a = 20.0F;
-   public static final float b = 25.0F;
-   public static final float c = 2.0F;
-   public static final float d = 0.2F;
-   private static final int e = 4;
+import javax.annotation.Nullable;
 
-   public static float a(bsy $$0, float $$1, bqw $$2, float $$3, float $$4) {
-      float $$10;
-      label12: {
-         float $$5 = 2.0F + $$4 / 4.0F;
-         float $$6 = aye.a($$3 - $$1 / $$5, $$3 * 0.2F, 20.0F);
-         float $$7 = $$6 / 25.0F;
-         if ($$2.c() instanceof bsy $$8 && $$8.dP() instanceof aqk $$9) {
-            $$10 = aye.a(czl.c($$9, $$8.eT(), $$0, $$2, $$7), 0.0F, 1.0F);
-            break label12;
-         }
+public interface bqs extends bpz {
+   int[] a(jf var1);
 
-         $$10 = $$7;
-      }
+   boolean a(int var1, cuc var2, @Nullable jf var3);
 
-      float $$12 = 1.0F - $$10;
-      return $$1 * $$12;
-   }
-
-   public static float a(float $$0, float $$1) {
-      float $$2 = aye.a($$1, 0.0F, 20.0F);
-      return $$0 * (1.0F - $$2 / 25.0F);
-   }
+   boolean b(int var1, cuc var2, jf var3);
 }

@@ -1,23 +1,54 @@
-public class gtl {
-   private final String a;
-   private final String b;
-   private long c;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-   public gtl(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = ac.c();
+public interface gtl<T> {
+   static <T> gtl<T> a() {
+      return new gtl<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
+         }
+
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
+         }
+      };
    }
 
-   public String a() {
-      return this.a;
+   static <T> gtl<T> a(List<T> $$0, Function<T, Stream<akk>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
+      } else {
+         final gtn<T> $$2 = new gtn<>();
+         final gtn<T> $$3 = new gtn<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
+
+         $$2.a();
+         $$3.a();
+         return new gtl<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
+            }
+
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
+      }
    }
 
-   public String b() {
-      return this.b;
-   }
+   List<T> a(String var1);
 
-   public void c() {
-      this.c = ac.c();
-   }
+   List<T> b(String var1);
 }

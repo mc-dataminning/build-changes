@@ -1,20 +1,12 @@
-import java.util.UUID;
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public interface gsa {
-   void a(UUID var1, gsa.b var2);
+   Collection<akk> f();
 
-   void a(UUID var1, gsa.a var2);
+   void a(Function<akk, gsa> var1);
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
-
-   public static enum b {
-      a,
-      b;
-   }
+   @Nullable
+   grp a(grt var1, Function<grs, gpo> var2, grx var3, akk var4);
 }

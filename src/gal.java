@@ -1,83 +1,72 @@
-public class gal extends gcl {
-   gal(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.7F;
-      this.u = 0.5F;
+public class gal extends gcr {
+   private final float a;
+   private final float b;
+
+   gal(fyj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cuc $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
       this.j *= 0.1F;
       this.k *= 0.1F;
       this.l *= 0.1F;
-      this.j += $$4 * 0.4;
-      this.k += $$5 * 0.4;
-      this.l += $$6 * 0.4;
-      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.D *= 0.75F;
-      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
-      this.n = false;
-      this.a();
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * aye.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public gbv b() {
+      return gbv.a;
+   }
+
+   protected gal(fyj $$0, double $$1, double $$2, double $$3, cuc $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a(fft.Q().ar().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.w *= 0.96F;
-      this.x *= 0.9F;
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
    }
 
    @Override
-   public gbp b() {
-      return gbp.b;
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
    }
 
-   public static class a implements gbo<ln> {
-      private final gcg a;
-
-      public a(gcg $$0) {
-         this.a = $$0;
-      }
-
-      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gal $$8 = new gal($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
-         $$8.a(20);
-         $$8.a(this.a);
-         return $$8;
-      }
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
    }
 
-   public static class b implements gbo<ln> {
-      private final gcg a;
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
 
-      public b(gcg $$0) {
-         this.a = $$0;
-      }
-
-      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gal $$8 = new gal($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.v *= 0.3F;
-         $$8.w *= 0.8F;
-         $$8.a(this.a);
-         return $$8;
+   public static class a implements gbu<ln> {
+      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gal($$1, $$2, $$3, $$4, new cuc(cuf.cM));
       }
    }
 
-   public static class c implements gbo<ln> {
-      private final gcg a;
-
-      public c(gcg $$0) {
-         this.a = $$0;
+   public static class b implements gbu<lf> {
+      public gbr a(lf $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gal($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
       }
+   }
 
-      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gal $$8 = new gal($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+   public static class c implements gbu<ln> {
+      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gal($$1, $$2, $$3, $$4, new cuc(cuf.qQ));
+      }
+   }
+
+   public static class d implements gbu<ln> {
+      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gal($$1, $$2, $$3, $$4, new cuc(cuf.qC));
       }
    }
 }

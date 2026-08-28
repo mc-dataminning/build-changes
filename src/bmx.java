@@ -1,91 +1,47 @@
 import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
-import java.nio.file.Path;
+import java.io.File;
+import java.util.function.LongSupplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public interface bmx {
-   bmx f = (bmx)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bmw.a() : new bmx.a());
+public class bmx {
+   private static final Logger a = LogUtils.getLogger();
+   private final LongSupplier b;
+   private final long c;
+   private int d;
+   private final File e;
+   private bms f = bmr.a;
 
-   boolean a(bmv var1);
+   public bmx(LongSupplier $$0, String $$1, long $$2) {
+      this.b = $$0;
+      this.e = new File("debug", $$1);
+      this.c = $$2;
+   }
 
-   Path b();
+   public bmu a() {
+      this.f = new bmn(this.b, () -> this.d, false);
+      this.d++;
+      return this.f;
+   }
 
-   boolean c();
-
-   boolean d();
-
-   void a(float var1);
-
-   void a(vq var1, zd<?> var2, SocketAddress var3, int var4);
-
-   void b(vq var1, zd<?> var2, SocketAddress var3, int var4);
-
-   void a(dvt var1, dbk var2, dvs var3, int var4);
-
-   void b(dvt var1, dbk var2, dvs var3, int var4);
+   public void b() {
+      if (this.f != bmr.a) {
+         bmt $$0 = this.f.d();
+         this.f = bmr.a;
+         if ($$0.g() >= this.c) {
+            File $$1 = new File(this.e, "tick-results-" + ac.f() + ".txt");
+            $$0.a($$1.toPath());
+            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
+         }
+      }
+   }
 
    @Nullable
-   bna e();
+   public static bmx a(String $$0) {
+      return null;
+   }
 
-   @Nullable
-   bna a(dbk var1, akj<dcd> var2, String var3);
-
-   public static class a implements bmx {
-      private static final Logger b = LogUtils.getLogger();
-      static final bna a = () -> {
-      };
-
-      @Override
-      public boolean a(bmv $$0) {
-         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
-      }
-
-      @Override
-      public Path b() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
-      }
-
-      @Override
-      public boolean c() {
-         return false;
-      }
-
-      @Override
-      public boolean d() {
-         return false;
-      }
-
-      @Override
-      public void a(vq $$0, zd<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void b(vq $$0, zd<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void a(dvt $$0, dbk $$1, dvs $$2, int $$3) {
-      }
-
-      @Override
-      public void b(dvt $$0, dbk $$1, dvs $$2, int $$3) {
-      }
-
-      @Override
-      public void a(float $$0) {
-      }
-
-      @Override
-      public bna e() {
-         return a;
-      }
-
-      @Nullable
-      @Override
-      public bna a(dbk $$0, akj<dcd> $$1, String $$2) {
-         return null;
-      }
+   public static bmu a(bmu $$0, @Nullable bmx $$1) {
+      return $$1 != null ? bmu.a($$1.a(), $$0) : $$0;
    }
 }

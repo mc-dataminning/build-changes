@@ -1,66 +1,49 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+public class gsv extends gsl {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final cof s;
+   private float t = 0.0F;
 
-public class gsv implements JsonDeserializer<gsu> {
-   private static final bpg a = bpe.a(1.0F);
-
-   public gsu a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = axu.m($$0, "entry");
-      boolean $$4 = axu.a($$3, "replace", false);
-      String $$5 = axu.a($$3, "subtitle", null);
-      List<gst> $$6 = this.a($$3);
-      return new gsu($$6, $$4, $$5);
+   public gsv(cof $$0) {
+      super(avh.oN, avi.g, gtc.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.dv());
+      this.g = (double)((float)$$0.dx());
+      this.h = (double)((float)$$0.dB());
    }
 
-   private List<gst> a(JsonObject $$0) {
-      List<gst> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = axu.v($$0, "sounds");
+   @Override
+   public boolean s() {
+      return !this.s.aX();
+   }
 
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (axu.a($$4)) {
-               String $$5 = axu.a($$4, "sound");
-               $$1.add(new gst($$5, a, a, 1, gst.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(axu.m($$4, "sound")));
-            }
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.s.dL()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.s.dv());
+         this.g = (double)((float)this.s.dx());
+         this.h = (double)((float)this.s.dB());
+         float $$0 = (float)this.s.dt().h();
+         if ($$0 >= 0.01F && this.s.dQ().s().i()) {
+            this.t = ayg.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = ayg.i(ayg.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         } else {
+            this.t = 0.0F;
+            this.d = 0.0F;
          }
       }
-
-      return $$1;
-   }
-
-   private gst b(JsonObject $$0) {
-      String $$1 = axu.i($$0, "name");
-      gst.a $$2 = this.a($$0, gst.a.a);
-      float $$3 = axu.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = axu.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = axu.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = axu.a($$0, "preload", false);
-      boolean $$7 = axu.a($$0, "stream", false);
-      int $$8 = axu.a($$0, "attenuation_distance", 16);
-      return new gst($$1, bpe.a($$3), bpe.a($$4), $$5, $$2, $$7, $$6, $$8);
-   }
-
-   private gst.a a(JsonObject $$0, gst.a $$1) {
-      gst.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = gst.a.a(axu.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
-      }
-
-      return $$2;
    }
 }

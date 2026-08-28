@@ -1,19 +1,13 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+public abstract class gig<T extends cgv, M extends fuz<T>> extends gks<T, M> {
+   private final float a;
 
-public class gig extends gkm<cga, ftk<cga>> {
-   private static final Map<cga.d, akk> a = ac.a(Maps.newHashMap(), $$0 -> {
-      for (cga.d $$1 : cga.d.values()) {
-         $$0.put($$1, new akk(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
-      }
-   });
-
-   public gig(gjg.a $$0) {
-      super($$0, new ftk<>($$0.a(fxh.f)), 0.5F);
+   public gig(gjm.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   public akk a(cga $$0) {
-      return a.get($$0.gn());
+   protected void a(T $$0, fam $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

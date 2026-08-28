@@ -1,41 +1,34 @@
-public class bvb implements bus<bsy> {
-   private final int a;
-   private final int b;
-   private bur.a c = bur.a.a;
-   private long d;
+import com.google.common.collect.ImmutableMap;
 
-   public bvb(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class bvb extends buu<cgl> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
+
+   public bvb() {
+      super(ImmutableMap.of(ccf.m, ccg.b), 100);
    }
 
-   @Override
-   public bur.a a() {
-      return this.c;
+   protected boolean a(aqm $$0, cgl $$1) {
+      return $$1.as() == btn.a;
    }
 
-   @Override
-   public final boolean e(aqk $$0, bsy $$1, long $$2) {
-      this.c = bur.a.b;
-      int $$3 = this.a + $$0.E_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
+   protected boolean a(aqm $$0, cgl $$1, long $$2) {
+      return this.e < 60;
    }
 
-   @Override
-   public final void f(aqk $$0, bsy $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
+   protected void b(aqm $$0, cgl $$1, long $$2) {
+      if (!$$1.bj()) {
+         $$1.b(btn.i);
+         this.e = 0;
       }
    }
 
-   @Override
-   public final void g(aqk $$0, bsy $$1, long $$2) {
-      this.c = bur.a.a;
+   protected void c(aqm $$0, cgl $$1, long $$2) {
+      $$1.b(btn.a);
    }
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void d(aqm $$0, cgl $$1, long $$2) {
+      this.e++;
    }
 }

@@ -1,42 +1,31 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eae extends eac {
-   public eae(Codec<eab> $$0) {
+public class eae extends edy {
+   public static final MapCodec<eae> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               ehd.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               bpj.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               dyz.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               eaf.b.optionalFieldOf("debug_settings", eaf.a).forGetter($$0x -> $$0x.h),
+               jy.a(lr.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, eae::new)
+   );
+   public final ehd e;
+   public final bpj f;
+   public final dyz g;
+   public final eaf h;
+   public final jn<dfh> i;
+
+   public eae(float $$0, ehd $$1, bpj $$2, dyz $$3, eaf $$4, jn<dfh> $$5) {
       super($$0);
-      this.h = ImmutableSet.of(eoc.e, eoc.c);
-   }
-
-   @Override
-   protected int a() {
-      return 10;
-   }
-
-   @Override
-   protected float a(aym $$0) {
-      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
-   }
-
-   @Override
-   protected double b() {
-      return 5.0;
-   }
-
-   protected boolean a(eaa $$0, eab $$1, dud $$2, Function<ja, jj<ddd>> $$3, duc $$4, ja.a $$5, ja.a $$6, dxl $$7, MutableBoolean $$8) {
-      if (this.a($$1, $$2.a_($$5))) {
-         dsh $$9;
-         if ($$5.v() <= $$0.a() + 31) {
-            $$9 = g.g();
-         } else {
-            $$9 = e;
-         }
-
-         $$2.a($$5, $$9, false);
-         return true;
-      } else {
-         return false;
-      }
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

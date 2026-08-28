@@ -1,25 +1,22 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkk extends dfo {
+public class dkk extends dmy {
    public static final MapCodec<dkk> a = b(dkk::new);
-   protected static final ews b = dff.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
 
    @Override
    public MapCodec<dkk> a() {
       return a;
    }
 
-   public dkk(dsg.d $$0) {
+   public dkk(dsj.d $$0) {
       super($$0);
    }
 
    @Override
-   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean b(dsh $$0, dbj $$1, ja $$2) {
-      return $$0.a(avu.aL) || $$0.a(dfh.dX) || super.b($$0, $$1, $$2);
+   public void a(dsk $$0, dcf $$1, ja $$2, ayo $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         $$1.a(lj.Z, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
+      }
    }
 }

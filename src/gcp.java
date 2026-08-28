@@ -1,49 +1,27 @@
-import java.util.Optional;
-import org.joml.Quaternionf;
-
-public class gcp extends gcl {
-   private final dxe a;
-   private float b;
-   private float F;
-   private float G;
-   private float H;
-
-   gcp(fyd $$0, double $$1, double $$2, double $$3, dxe $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.3F;
-      this.a = $$4;
-      this.t = $$5;
-      Optional<evz> $$6 = $$4.a($$0);
-      if ($$6.isPresent()) {
-         evz $$7 = $$6.get();
-         double $$8 = $$1 - $$7.a();
-         double $$9 = $$2 - $$7.b();
-         double $$10 = $$3 - $$7.c();
-         this.F = this.b = (float)aye.d($$8, $$10);
-         this.H = this.G = (float)aye.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
-      }
+public class gcp extends gcr {
+   gcp(fyj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      float $$7 = this.r.i() * 0.1F + 0.2F;
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
+      this.j *= 0.02F;
+      this.k *= 0.02F;
+      this.l *= 0.02F;
+      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public void a(fak $$0, fey $$1, float $$2) {
-      float $$3 = aye.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
-      float $$4 = aye.i($$2, this.F, this.b);
-      float $$5 = aye.i($$2, this.H, this.G) + (float) (Math.PI / 2);
-      Quaternionf $$6 = new Quaternionf();
-      $$6.rotationY($$4).rotateX(-$$5).rotateY($$3);
-      this.a($$0, $$1, $$6, $$2);
-      $$6.rotationY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3);
-      this.a($$0, $$1, $$6, $$2);
+   public gbv b() {
+      return gbv.b;
    }
 
    @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public gbp b() {
-      return gbp.c;
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
    @Override
@@ -51,41 +29,89 @@ public class gcp extends gcl {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
+      if (this.t-- <= 0) {
          this.k();
       } else {
-         Optional<evz> $$0 = this.a.a(this.c);
-         if ($$0.isEmpty()) {
-            this.k();
-         } else {
-            int $$1 = this.t - this.s;
-            double $$2 = 1.0 / (double)$$1;
-            evz $$3 = $$0.get();
-            this.g = aye.d($$2, this.g, $$3.a());
-            this.h = aye.d($$2, this.h, $$3.b());
-            this.i = aye.d($$2, this.i, $$3.c());
-            double $$4 = this.g - $$3.a();
-            double $$5 = this.h - $$3.b();
-            double $$6 = this.i - $$3.c();
-            this.F = this.b;
-            this.b = (float)aye.d($$4, $$6);
-            this.H = this.G;
-            this.G = (float)aye.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
-         }
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.99;
+         this.k *= 0.99;
+         this.l *= 0.99;
       }
    }
 
-   public static class a implements gbo<lo> {
-      private final gcg a;
+   public static class a implements gbu<ln> {
+      private final gcm a;
 
-      public a(gcg $$0) {
+      public a(gcm $$0) {
          this.a = $$0;
       }
 
-      public gbl a(lo $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcp $$8 = new gcp($$1, $$2, $$3, $$4, $$0.b(), $$0.c());
+      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcp $$8 = new gcp($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
-         $$8.e(1.0F);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         $$8.a(3 + $$1.E_().a(5));
+         return $$8;
+      }
+   }
+
+   public static class b implements gbu<ln> {
+      private final gcm a;
+
+      public b(gcm $$0) {
+         this.a = $$0;
+      }
+
+      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcp $$8 = new gcp($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(0.3F, 0.5F, 1.0F);
+         $$8.a(this.a);
+         $$8.e(1.0F - $$1.z.i() * 0.7F);
+         $$8.a($$8.j() / 2);
+         return $$8;
+      }
+   }
+
+   public static class c implements gbu<ln> {
+      private final gcm a;
+
+      public c(gcm $$0) {
+         this.a = $$0;
+      }
+
+      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcp $$8 = new gcp($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class d implements gbu<ln> {
+      private final gcm a;
+
+      public d(gcm $$0) {
+         this.a = $$0;
+      }
+
+      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcp $$8 = new gcp($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class e implements gbu<ln> {
+      private final gcm a;
+
+      public e(gcm $$0) {
+         this.a = $$0;
+      }
+
+      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcp $$8 = new gcp($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
          return $$8;
       }
    }

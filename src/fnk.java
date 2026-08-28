@@ -1,133 +1,96 @@
-enum fnk {
-   a(
-      new fnk.a(
-         new akk("advancements/tab_above_left_selected"), new akk("advancements/tab_above_middle_selected"), new akk("advancements/tab_above_right_selected")
-      ),
-      new fnk.a(new akk("advancements/tab_above_left"), new akk("advancements/tab_above_middle"), new akk("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new fnk.a(
-         new akk("advancements/tab_below_left_selected"), new akk("advancements/tab_below_middle_selected"), new akk("advancements/tab_below_right_selected")
-      ),
-      new fnk.a(new akk("advancements/tab_below_left"), new akk("advancements/tab_below_middle"), new akk("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new fnk.a(
-         new akk("advancements/tab_left_top_selected"), new akk("advancements/tab_left_middle_selected"), new akk("advancements/tab_left_bottom_selected")
-      ),
-      new fnk.a(new akk("advancements/tab_left_top"), new akk("advancements/tab_left_middle"), new akk("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new fnk.a(
-         new akk("advancements/tab_right_top_selected"), new akk("advancements/tab_right_middle_selected"), new akk("advancements/tab_right_bottom_selected")
-      ),
-      new fnk.a(new akk("advancements/tab_right_top"), new akk("advancements/tab_right_middle"), new akk("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import javax.annotation.Nullable;
 
-   private final fnk.a e;
-   private final fnk.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class fnk extends fnj {
+   private static final int a = 1024;
+   private static final int b = 65535;
+   private static final wu c = wu.c("selectWorld.allowCommands.new");
+   private static final wu q = wu.c("selectWorld.gameMode");
+   private static final wu r = wu.c("lanServer.otherPlayers");
+   private static final wu s = wu.c("lanServer.port");
+   private static final wu u = wu.a("lanServer.port.unavailable.new", 1024, 65535);
+   private static final wu v = wu.a("lanServer.port.invalid.new", 1024, 65535);
+   private static final int w = 16733525;
+   private final fnj x;
+   private dcc y = dcc.a;
+   private boolean z;
+   private int A = axx.a();
+   @Nullable
+   private fib B;
 
-   private fnk(final fnk.a $$0, final fnk.a $$1, final int $$2, final int $$3, final int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public fnk(fnj $$0) {
+      super(wu.c("lanServer.title"));
+      this.x = $$0;
    }
 
-   public int a() {
-      return this.i;
+   @Override
+   protected void aP_() {
+      gtq $$0 = this.l.V();
+      this.y = $$0.u_();
+      this.z = $$0.bc().m();
+      this.c(fhz.a(dcc::e).a(dcc.a, dcc.d, dcc.b, dcc.c).a(this.y).a(this.m / 2 - 155, 100, 150, 20, q, ($$0x, $$1x) -> this.y = $$1x));
+      this.c(fhz.b(this.z).a(this.m / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.z = $$1x));
+      fhs $$1 = fhs.a(wu.c("lanServer.start"), $$1x -> {
+         this.l.a(null);
+         wu $$2;
+         if ($$0.a(this.y, this.z, this.A)) {
+            $$2 = ank.a(this.A);
+         } else {
+            $$2 = wu.c("commands.publish.failed");
+         }
+
+         this.l.l.d().a($$2);
+         this.l.d();
+      }).a(this.m / 2 - 155, this.n - 28, 150, 20).a();
+      this.B = new fib(this.o, this.m / 2 - 75, 160, 150, 20, wu.c("lanServer.port"));
+      this.B.b($$1x -> {
+         wu $$2 = this.a($$1x);
+         this.B.c(wu.b(this.A + "").a(n.i));
+         if ($$2 == null) {
+            this.B.g(14737632);
+            this.B.a(null);
+            $$1.j = true;
+         } else {
+            this.B.g(16733525);
+            this.B.a(fjd.a($$2));
+            $$1.j = false;
+         }
+      });
+      this.B.c(wu.b(this.A + "").a(n.i));
+      this.c(this.B);
+      this.c($$1);
+      this.c(fhs.a(wt.e, $$0x -> this.d()).a(this.m / 2 + 5, this.n - 28, 150, 20).a());
    }
 
-   public void a(fgz $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      fnk.a $$5 = $$3 ? this.e : this.f;
-      akk $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
+   @Override
+   public void d() {
+      this.l.a(this.x);
+   }
+
+   @Nullable
+   private wu a(String $$0) {
+      if ($$0.isBlank()) {
+         this.A = axx.a();
+         return null;
       } else {
-         $$6 = $$5.b();
-      }
-
-      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
-   }
-
-   public void a(fgz $$0, int $$1, int $$2, int $$3, cua $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
-      }
-
-      $$0.b($$4, $$5, $$6);
-   }
-
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+         try {
+            this.A = Integer.parseInt($$0);
+            if (this.A < 1024 || this.A > 65535) {
+               return v;
+            } else {
+               return !axx.a(this.A) ? u : null;
+            }
+         } catch (NumberFormatException var3) {
+            this.A = axx.a();
+            return v;
+         }
       }
    }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
-      }
-   }
-
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
-   }
-
-   static record a(akk a, akk b, akk c) {
+   @Override
+   public void a(fhf $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, 50, 16777215);
+      $$0.a(this.o, r, this.m / 2, 82, 16777215);
+      $$0.a(this.o, s, this.m / 2, 142, 16777215);
    }
 }

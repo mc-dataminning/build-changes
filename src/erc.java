@@ -1,18 +1,20 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.Objects;
+import java.util.function.Consumer;
 
-public class erc {
-   public static final Codec<ere> a = lq.D.r().dispatch(ere::a, erf::a);
-   public static final erf b = a("empty", eqz.a);
-   public static final erf c = a("item", erb.a);
-   public static final erf d = a("loot_table", erh.a);
-   public static final erf e = a("dynamic", eqy.a);
-   public static final erf f = a("tag", erj.a);
-   public static final erf g = a("alternatives", eqv.a);
-   public static final erf h = a("sequence", eri.a);
-   public static final erf i = a("group", era.a);
+@FunctionalInterface
+interface erc {
+   erc b = ($$0, $$1) -> false;
+   erc c = ($$0, $$1) -> true;
 
-   private static erf a(String $$0, MapCodec<? extends ere> $$1) {
-      return jw.a(lq.D, new akk($$0), new erf($$1));
+   boolean expand(equ var1, Consumer<erj> var2);
+
+   default erc and(erc $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
+   }
+
+   default erc or(erc $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
    }
 }

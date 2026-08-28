@@ -1,23 +1,15 @@
-public class gkb extends gkm<cfa, fux<cfa>> {
-   private static final akk a = new akk("textures/entity/iron_golem/iron_golem.png");
+public class gkb extends gks<cku, fuy<cku>> {
+   private static final akk a = new akk("textures/entity/hoglin/hoglin.png");
 
-   public gkb(gjg.a $$0) {
-      super($$0, new fux<>($$0.a(fxh.av)), 0.7F);
-      this.a(new gnj(this));
-      this.a(new gnk(this, $$0.c()));
+   public gkb(gjm.a $$0) {
+      super($$0, new fuy<>($$0.a(fxn.an)), 0.7F);
    }
 
-   public akk a(cfa $$0) {
+   public akk a(cku $$0) {
       return a;
    }
 
-   protected void a(cfa $$0, fag $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!((double)$$0.aU.a() < 0.01)) {
-         float $$6 = 13.0F;
-         float $$7 = $$0.aU.c($$4) + 6.0F;
-         float $$8 = (Math.abs($$7 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$8));
-      }
+   protected boolean b(cku $$0) {
+      return super.a($$0) || $$0.y();
    }
 }

@@ -1,119 +1,343 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.io.FilterInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class atn implements atk {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<String, atl> c;
-   private final List<asg> d;
+public class atn implements atw {
+   static final Logger c = LogUtils.getLogger();
+   protected final List<atn.d> a = Lists.newArrayList();
+   private final ask d;
+   private final String e;
 
-   public atn(asi $$0, List<asg> $$1) {
-      this.d = List.copyOf($$1);
-      Map<String, atl> $$2 = new HashMap<>();
-      List<String> $$3 = $$1.stream().flatMap($$1x -> $$1x.a($$0).stream()).distinct().toList();
-
-      for (asg $$4 : $$1) {
-         att $$5 = this.a($$4);
-         Set<String> $$6 = $$4.a($$0);
-         Predicate<akk> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
-
-         for (String $$8 : $$3) {
-            boolean $$9 = $$6.contains($$8);
-            boolean $$10 = $$5 != null && $$5.a($$8);
-            if ($$9 || $$10) {
-               atl $$11 = $$2.get($$8);
-               if ($$11 == null) {
-                  $$11 = new atl($$0, $$8);
-                  $$2.put($$8, $$11);
-               }
-
-               if ($$9 && $$10) {
-                  $$11.a($$4, $$7);
-               } else if ($$9) {
-                  $$11.a($$4);
-               } else {
-                  $$11.a($$4.b(), $$7);
-               }
-            }
-         }
-      }
-
-      this.c = $$2;
+   public atn(ask $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Nullable
-   private att a(asg $$0) {
-      try {
-         return $$0.a(att.a);
-      } catch (IOException var3) {
-         a.error("Failed to get filter section from pack {}", $$0.b());
-         return null;
-      }
+   public void a(asi $$0) {
+      this.a($$0.b(), $$0, null);
+   }
+
+   public void a(asi $$0, Predicate<akk> $$1) {
+      this.a($$0.b(), $$0, $$1);
+   }
+
+   public void a(String $$0, Predicate<akk> $$1) {
+      this.a($$0, null, $$1);
+   }
+
+   private void a(String $$0, @Nullable asi $$1, @Nullable Predicate<akk> $$2) {
+      this.a.add(new atn.d($$0, $$1, $$2));
    }
 
    @Override
    public Set<String> a() {
-      return this.c.keySet();
+      return ImmutableSet.of(this.e);
    }
 
    @Override
-   public Optional<ats> getResource(akk $$0) {
-      atu $$1 = this.c.get($$0.b());
-      return $$1 != null ? $$1.getResource($$0) : Optional.empty();
-   }
+   public Optional<atu> getResource(akk $$0) {
+      for (int $$1 = this.a.size() - 1; $$1 >= 0; $$1--) {
+         atn.d $$2 = this.a.get($$1);
+         asi $$3 = $$2.b;
+         if ($$3 != null) {
+            ato<InputStream> $$4 = $$3.a(this.d, $$0);
+            if ($$4 != null) {
+               ato<aty> $$5 = this.a($$0, $$1);
+               return Optional.of(a($$3, $$0, $$4, $$5));
+            }
+         }
 
-   @Override
-   public List<ats> a(akk $$0) {
-      atu $$1 = this.c.get($$0.b());
-      return $$1 != null ? $$1.a($$0) : List.of();
-   }
-
-   @Override
-   public Map<akk, ats> b(String $$0, Predicate<akk> $$1) {
-      a($$0);
-      Map<akk, ats> $$2 = new TreeMap<>();
-
-      for (atl $$3 : this.c.values()) {
-         $$2.putAll($$3.b($$0, $$1));
+         if ($$2.a($$0)) {
+            c.warn("Resource {} not found, but was filtered by pack {}", $$0, $$2.a);
+            return Optional.empty();
+         }
       }
 
-      return $$2;
+      return Optional.empty();
+   }
+
+   private static atu a(asi $$0, akk $$1, ato<InputStream> $$2, ato<aty> $$3) {
+      return new atu($$0, a($$1, $$0, $$2), $$3);
+   }
+
+   private static ato<InputStream> a(akk $$0, asi $$1, ato<InputStream> $$2) {
+      return c.isDebugEnabled() ? () -> new atn.c($$2.get(), $$0, $$1.b()) : $$2;
    }
 
    @Override
-   public Map<akk, List<ats>> c(String $$0, Predicate<akk> $$1) {
-      a($$0);
-      Map<akk, List<ats>> $$2 = new TreeMap<>();
+   public List<atu> a(akk $$0) {
+      akk $$1 = d($$0);
+      List<atu> $$2 = new ArrayList<>();
+      boolean $$3 = false;
+      String $$4 = null;
 
-      for (atl $$3 : this.c.values()) {
-         $$2.putAll($$3.c($$0, $$1));
+      for (int $$5 = this.a.size() - 1; $$5 >= 0; $$5--) {
+         atn.d $$6 = this.a.get($$5);
+         asi $$7 = $$6.b;
+         if ($$7 != null) {
+            ato<InputStream> $$8 = $$7.a(this.d, $$0);
+            if ($$8 != null) {
+               ato<aty> $$9;
+               if ($$3) {
+                  $$9 = aty.b;
+               } else {
+                  $$9 = () -> {
+                     ato<InputStream> $$2x = $$7.a(this.d, $$1);
+                     return $$2x != null ? b($$2x) : aty.a;
+                  };
+               }
+
+               $$2.add(new atu($$7, $$8, $$9));
+            }
+         }
+
+         if ($$6.a($$0)) {
+            $$4 = $$6.a;
+            break;
+         }
+
+         if ($$6.a($$1)) {
+            $$3 = true;
+         }
       }
 
-      return $$2;
+      if ($$2.isEmpty() && $$4 != null) {
+         c.warn("Resource {} not found, but was filtered by pack {}", $$0, $$4);
+      }
+
+      return Lists.reverse($$2);
    }
 
-   private static void a(String $$0) {
-      if ($$0.endsWith("/")) {
-         throw new IllegalArgumentException("Trailing slash in path " + $$0);
+   private static boolean b(akk $$0) {
+      return $$0.a().endsWith(".mcmeta");
+   }
+
+   private static akk c(akk $$0) {
+      String $$1 = $$0.a().substring(0, $$0.a().length() - ".mcmeta".length());
+      return $$0.c($$1);
+   }
+
+   static akk d(akk $$0) {
+      return $$0.c($$0.a() + ".mcmeta");
+   }
+
+   @Override
+   public Map<akk, atu> b(String $$0, Predicate<akk> $$1) {
+      record a(asi a, ato<InputStream> b, int c) {
+      }
+
+      Map<akk, a> $$2 = new HashMap<>();
+      Map<akk, a> $$3 = new HashMap<>();
+      int $$4 = this.a.size();
+
+      for (int $$5 = 0; $$5 < $$4; $$5++) {
+         atn.d $$6 = this.a.get($$5);
+         $$6.a($$2.keySet());
+         $$6.a($$3.keySet());
+         asi $$7 = $$6.b;
+         if ($$7 != null) {
+            int $$8 = $$5;
+            $$7.a(this.d, this.e, $$0, ($$5x, $$6x) -> {
+               if (b($$5x)) {
+                  if ($$1.test(c($$5x))) {
+                     $$3.put($$5x, new a($$7, $$6x, $$8));
+                  }
+               } else if ($$1.test($$5x)) {
+                  $$2.put($$5x, new a($$7, $$6x, $$8));
+               }
+            });
+         }
+      }
+
+      Map<akk, atu> $$9 = Maps.newTreeMap();
+      $$2.forEach(($$2x, $$3x) -> {
+         akk $$4x = d($$2x);
+         a $$5x = $$3.get($$4x);
+         ato<aty> $$6x;
+         if ($$5x != null && $$5x.c >= $$3x.c) {
+            $$6x = a($$5x.b);
+         } else {
+            $$6x = aty.b;
+         }
+
+         $$9.put($$2x, a($$3x.a, $$2x, $$3x.b, $$6x));
+      });
+      return $$9;
+   }
+
+   private ato<aty> a(akk $$0, int $$1) {
+      return () -> {
+         akk $$2 = d($$0);
+
+         for (int $$3 = this.a.size() - 1; $$3 >= $$1; $$3--) {
+            atn.d $$4 = this.a.get($$3);
+            asi $$5 = $$4.b;
+            if ($$5 != null) {
+               ato<InputStream> $$6 = $$5.a(this.d, $$2);
+               if ($$6 != null) {
+                  return b($$6);
+               }
+            }
+
+            if ($$4.a($$2)) {
+               break;
+            }
+         }
+
+         return aty.a;
+      };
+   }
+
+   private static ato<aty> a(ato<InputStream> $$0) {
+      return () -> b($$0);
+   }
+
+   private static aty b(ato<InputStream> $$0) throws IOException {
+      aty var2;
+      try (InputStream $$1 = $$0.get()) {
+         var2 = aty.a($$1);
+      }
+
+      return var2;
+   }
+
+   private static void a(atn.d $$0, Map<akk, atn.b> $$1) {
+      for (atn.b $$2 : $$1.values()) {
+         if ($$0.a($$2.a)) {
+            $$2.c.clear();
+         } else if ($$0.a($$2.b())) {
+            $$2.d.clear();
+         }
+      }
+   }
+
+   private void a(atn.d $$0, String $$1, Predicate<akk> $$2, Map<akk, atn.b> $$3) {
+      asi $$4 = $$0.b;
+      if ($$4 != null) {
+         $$4.a(this.d, this.e, $$1, ($$3x, $$4x) -> {
+            if (b($$3x)) {
+               akk $$5 = c($$3x);
+               if (!$$2.test($$5)) {
+                  return;
+               }
+
+               $$3.computeIfAbsent($$5, atn.b::new).d.put($$4, $$4x);
+            } else {
+               if (!$$2.test($$3x)) {
+                  return;
+               }
+
+               $$3.computeIfAbsent($$3x, atn.b::new).c.add(new atn.e($$4, $$4x));
+            }
+         });
       }
    }
 
    @Override
-   public Stream<asg> b() {
-      return this.d.stream();
+   public Map<akk, List<atu>> c(String $$0, Predicate<akk> $$1) {
+      Map<akk, atn.b> $$2 = Maps.newHashMap();
+
+      for (atn.d $$3 : this.a) {
+         a($$3, $$2);
+         this.a($$3, $$0, $$1, $$2);
+      }
+
+      TreeMap<akk, List<atu>> $$4 = Maps.newTreeMap();
+
+      for (atn.b $$5 : $$2.values()) {
+         if (!$$5.c.isEmpty()) {
+            List<atu> $$6 = new ArrayList<>();
+
+            for (atn.e $$7 : $$5.c) {
+               asi $$8 = $$7.a;
+               ato<InputStream> $$9 = $$5.d.get($$8);
+               ato<aty> $$10 = $$9 != null ? a($$9) : aty.b;
+               $$6.add(a($$8, $$5.a, $$7.b, $$10));
+            }
+
+            $$4.put($$5.a, $$6);
+         }
+      }
+
+      return $$4;
    }
 
    @Override
-   public void close() {
-      this.d.forEach(asg::close);
+   public Stream<asi> b() {
+      return this.a.stream().map($$0 -> $$0.b).filter(Objects::nonNull);
+   }
+
+   static record b(akk a, akk b, List<atn.e> c, Map<asi, ato<InputStream>> d) {
+
+      b(akk $$0) {
+         this($$0, atn.d($$0), new ArrayList<>(), new Object2ObjectArrayMap());
+      }
+   }
+
+   static class c extends FilterInputStream {
+      private final Supplier<String> a;
+      private boolean b;
+
+      public c(InputStream $$0, akk $$1, String $$2) {
+         super($$0);
+         Exception $$3 = new Exception("Stacktrace");
+         this.a = () -> {
+            StringWriter $$3x = new StringWriter();
+            $$3.printStackTrace(new PrintWriter($$3x));
+            return "Leaked resource: '" + $$1 + "' loaded from pack: '" + $$2 + "'\n" + $$3x;
+         };
+      }
+
+      @Override
+      public void close() throws IOException {
+         super.close();
+         this.b = true;
+      }
+
+      @Override
+      protected void finalize() throws Throwable {
+         if (!this.b) {
+            atn.c.warn("{}", this.a.get());
+         }
+
+         super.finalize();
+      }
+   }
+
+   static record d(String a, @Nullable asi b, @Nullable Predicate<akk> c) {
+
+      public void a(Collection<akk> $$0) {
+         if (this.c != null) {
+            $$0.removeIf(this.c);
+         }
+      }
+
+      public boolean a(akk $$0) {
+         return this.c != null && this.c.test($$0);
+      }
+   }
+
+   static record e(asi a, ato<InputStream> b) {
    }
 }

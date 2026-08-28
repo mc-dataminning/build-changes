@@ -1,17 +1,35 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
 
-public record awj(List<awi> b, boolean c) {
-   public static final Codec<awj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awi.a.listOf().fieldOf("values").forGetter(awj::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(awj::b)).apply($$0, awj::new)
-   );
+public class awj {
+   private final List<awk> a = new ArrayList<>();
 
-   public List<awi> a() {
-      return this.b;
+   public static awj a() {
+      return new awj();
    }
 
-   public boolean b() {
-      return this.c;
+   public List<awk> b() {
+      return List.copyOf(this.a);
+   }
+
+   public awj a(awk $$0) {
+      this.a.add($$0);
+      return this;
+   }
+
+   public awj a(akk $$0) {
+      return this.a(awk.a($$0));
+   }
+
+   public awj b(akk $$0) {
+      return this.a(awk.b($$0));
+   }
+
+   public awj c(akk $$0) {
+      return this.a(awk.c($$0));
+   }
+
+   public awj d(akk $$0) {
+      return this.a(awk.d($$0));
    }
 }

@@ -31,22 +31,22 @@ public class alx {
       );
    }
 
-   private static int a(eq $$0, Collection<aql> $$1, Predicate<cua> $$2) throws CommandSyntaxException {
+   private static int a(eq $$0, Collection<aqn> $$1, Predicate<cuc> $$2) throws CommandSyntaxException {
       return a($$0, $$1, $$2, -1);
    }
 
-   private static int a(eq $$0, Collection<aql> $$1, Predicate<cua> $$2, int $$3) throws CommandSyntaxException {
+   private static int a(eq $$0, Collection<aqn> $$1, Predicate<cuc> $$2, int $$3) throws CommandSyntaxException {
       int $$4 = 0;
 
-      for (aql $$5 : $$1) {
-         $$4 += $$5.fY().a($$2, $$3, $$5.cc.r());
+      for (aqn $$5 : $$1) {
+         $$4 += $$5.fZ().a($$2, $$3, $$5.cc.r());
          $$5.cd.d();
-         $$5.cc.a($$5.fY());
+         $$5.cc.a($$5.fZ());
       }
 
       if ($$4 == 0) {
          if ($$1.size() == 1) {
-            throw a.create($$1.iterator().next().af());
+            throw a.create($$1.iterator().next().ag());
          } else {
             throw b.create($$1.size());
          }

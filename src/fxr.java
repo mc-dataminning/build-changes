@@ -1,44 +1,61 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class fxr {
-   private final List<fxl> a;
-   private final fxk b;
-   private final Map<String, fxr> c = Maps.newHashMap();
+public final class fxr {
+   @Nullable
+   private final String a;
+   private final Vector3f b;
+   private final Vector3f c;
+   private final fxs d;
+   private final boolean e;
+   private final fxy f;
+   private final fxy g;
+   private final Set<jf> h;
 
-   fxr(List<fxl> $$0, fxk $$1) {
+   protected fxr(
+      @Nullable String $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      fxs $$9,
+      boolean $$10,
+      float $$11,
+      float $$12,
+      Set<jf> $$13
+   ) {
       this.a = $$0;
-      this.b = $$1;
+      this.f = new fxy($$1, $$2);
+      this.b = new Vector3f($$3, $$4, $$5);
+      this.c = new Vector3f($$6, $$7, $$8);
+      this.d = $$9;
+      this.e = $$10;
+      this.g = new fxy($$11, $$12);
+      this.h = $$13;
    }
 
-   public fxr a(String $$0, fxn $$1, fxk $$2) {
-      fxr $$3 = new fxr($$1.b(), $$2);
-      fxr $$4 = this.c.put($$0, $$3);
-      if ($$4 != null) {
-         $$3.c.putAll($$4.c);
-      }
-
-      return $$3;
-   }
-
-   public fxi a(int $$0, int $$1) {
-      Object2ObjectArrayMap<String, fxi> $$2 = this.c
-         .entrySet()
-         .stream()
-         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((fxr)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
-      List<fxi.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
-      fxi $$4 = new fxi($$3, $$2);
-      $$4.a(this.b);
-      $$4.b(this.b);
-      return $$4;
-   }
-
-   public fxr a(String $$0) {
-      return this.c.get($$0);
+   public fxo.a a(int $$0, int $$1) {
+      return new fxo.a(
+         (int)this.f.a(),
+         (int)this.f.b(),
+         this.b.x(),
+         this.b.y(),
+         this.b.z(),
+         this.c.x(),
+         this.c.y(),
+         this.c.z(),
+         this.d.b,
+         this.d.c,
+         this.d.d,
+         this.e,
+         (float)$$0 * this.g.a(),
+         (float)$$1 * this.g.b(),
+         this.h
+      );
    }
 }

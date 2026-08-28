@@ -1,39 +1,29 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnt extends dgi {
-   public static final MapCodec<dnt> n = b(dnt::new);
+public class dnt extends dix {
+   public static final MapCodec<dnt> b = b(dnt::new);
 
-   @Override
-   public MapCodec<dnt> a() {
-      return n;
-   }
-
-   public dnt(dsg.d $$0) {
-      super($$0, () -> dpp.c);
+   protected dnt(dsj.d $$0) {
+      super($$0);
    }
 
    @Override
-   public dpn a(ja $$0, dsh $$1) {
-      return new drg($$0, $$1);
+   protected MapCodec<? extends dnt> a() {
+      return b;
    }
 
    @Override
-   protected avm<akk> c() {
-      return avp.i.b(avp.ai);
+   protected ewy c(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return ewv.a();
    }
 
    @Override
-   protected boolean e_(dsh $$0) {
+   protected float d(dsk $$0, dbl $$1, ja $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected boolean a_(dsk $$0, dbl $$1, ja $$2) {
       return true;
-   }
-
-   @Override
-   protected int a(dsh $$0, dbj $$1, ja $$2, jf $$3) {
-      return aye.a(dpu.a($$1, $$2), 0, 15);
-   }
-
-   @Override
-   protected int b(dsh $$0, dbj $$1, ja $$2, jf $$3) {
-      return $$3 == jf.b ? $$0.b($$1, $$2, $$3) : 0;
    }
 }

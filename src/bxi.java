@@ -1,29 +1,28 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.function.Predicate;
 
 public class bxi {
-   private static final int a = 180;
-   private static final int b = 8;
-   private static final int c = 6;
-
-   public static bwc<bth> a(ccc<ji> $$0, float $$1, int $$2) {
-      MutableLong $$3 = new MutableLong(0L);
-      return bye.a(
-         (Function<bye.b<bth>, ? extends App<bye.c<bth>, byh<bth>>>)($$4 -> $$4.group($$4.a(ccc.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                  ji $$9 = $$4.b($$5);
-                  if ($$6.af() != $$9.a() || !$$9.b().a($$7.dn(), (double)$$2)) {
-                     return false;
-                  } else if ($$8 <= $$3.getValue()) {
-                     return true;
-                  } else {
-                     Optional<evz> $$10 = Optional.ofNullable(cdw.a($$7, 8, 6));
-                     $$4x.a($$10.map($$1xxxx -> new ccf($$1xxxx, $$1, 1)));
-                     $$3.setValue($$8 + 180L);
-                     return true;
-                  }
-               }))
+   public static buv<btb> a(Function<btb, Optional<bwi>> $$0, Predicate<btb> $$1, int $$2, int $$3, float $$4) {
+      return byh.a(
+         (Function<byh.b<btb>, ? extends App<byh.c<btb>, byk<btb>>>)($$5 -> $$5.group($$5.a(ccf.n), $$5.a(ccf.m))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<bwi> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        bwi $$11 = $$10.get();
+                        if ($$8.do().a((jt)$$11.a(), (double)$$3)) {
+                           return false;
+                        } else {
+                           bwi $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new cci($$12, $$4, $$2));
+                           return true;
+                        }
+                     } else {
+                        return false;
+                     }
+                  }))
       );
    }
 }

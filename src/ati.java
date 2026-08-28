@@ -1,56 +1,33 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.nio.file.Path;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.UnaryOperator;
 
-public class ati extends asz {
-   private static final asv c = new asv(wu.c("dataPack.vanilla.description"), aa.b().a(asi.b), Optional.empty());
-   private static final asc d = new asc(cox.g);
-   private static final ary e = ary.a(asv.b, c, asc.a, d);
-   private static final asf f = new asf("vanilla", wu.c("dataPack.vanilla.name"), atg.c, Optional.of(b));
-   private static final ash g = new ash(false, atc.b.b, false);
-   private static final ash h = new ash(false, atc.b.a, false);
-   private static final akk i = new akk("minecraft", "datapacks");
+public interface ati {
+   UnaryOperator<wu> a = UnaryOperator.identity();
+   ati b = a(a, true);
+   ati c = a(a("pack.source.builtin"), true);
+   ati d = a(a("pack.source.feature"), false);
+   ati e = a(a("pack.source.world"), true);
+   ati f = a(a("pack.source.server"), true);
 
-   public ati(evp $$0) {
-      super(asi.b, b(), i, $$0);
+   wu a(wu var1);
+
+   boolean a();
+
+   static ati a(final UnaryOperator<wu> $$0, final boolean $$1) {
+      return new ati() {
+         @Override
+         public wu a(wu $$0x) {
+            return $$0.apply($$0);
+         }
+
+         @Override
+         public boolean a() {
+            return $$1;
+         }
+      };
    }
 
-   private static asf a(String $$0, wu $$1) {
-      return new asf($$0, $$1, atg.d, Optional.of(atb.a($$0)));
-   }
-
-   @VisibleForTesting
-   public static ask b() {
-      return new asl().a(e).a("minecraft").b().a().a(f);
-   }
-
-   @Override
-   protected wu a(String $$0) {
-      return wu.b($$0);
-   }
-
-   @Nullable
-   @Override
-   protected atc a(asg $$0) {
-      return atc.a(f, b($$0), asi.b, g);
-   }
-
-   @Nullable
-   @Override
-   protected atc a(String $$0, atc.c $$1, wu $$2) {
-      return atc.a(a($$0, $$2), $$1, asi.b, h);
-   }
-
-   public static atf a(Path $$0, evp $$1) {
-      return new atf(new ati($$1), new ata($$0, asi.b, atg.e, $$1));
-   }
-
-   public static atf c() {
-      return new atf(new ati(new evp($$0 -> true)));
-   }
-
-   public static atf a(eqc.c $$0) {
-      return a($$0.a(eqa.j), $$0.d().e());
+   private static UnaryOperator<wu> a(String $$0) {
+      wu $$1 = wu.c($$0);
+      return $$1x -> wu.a("pack.nameAndSource", $$1x, $$1).a(n.h);
    }
 }

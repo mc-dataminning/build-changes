@@ -1,117 +1,18 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class gbp extends gbr {
+   protected gbp(fyj $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
 
-public interface gbp {
-   gbp a = new gbp() {
-      @Override
-      public void a(fab $$0, gpj $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gph.e);
-         $$0.a(fal.b.h, fae.l);
-      }
+   protected gbp(fyj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-      @Override
-      public void a(fai $$0) {
-         $$0.c();
-      }
+   @Override
+   public final void a(faq $$0, ffe $$1, float $$2) {
+   }
 
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   gbp b = new gbp() {
-      @Override
-      public void a(fab $$0, gpj $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(gdq::t);
-         RenderSystem.setShaderTexture(0, gph.f);
-         $$0.a(fal.b.h, fae.l);
-      }
-
-      @Override
-      public void a(fai $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
-      }
-   };
-   gbp c = new gbp() {
-      @Override
-      public void a(fab $$0, gpj $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gph.f);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         $$0.a(fal.b.h, fae.l);
-      }
-
-      @Override
-      public void a(fai $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
-      }
-   };
-   gbp d = new gbp() {
-      @Override
-      public void a(fab $$0, gpj $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gph.f);
-         $$0.a(fal.b.h, fae.l);
-      }
-
-      @Override
-      public void a(fai $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_LIT";
-      }
-   };
-   gbp e = new gbp() {
-      @Override
-      public void a(fab $$0, gpj $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-      }
-
-      @Override
-      public void a(fai $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   gbp f = new gbp() {
-      @Override
-      public void a(fab $$0, gpj $$1) {
-      }
-
-      @Override
-      public void a(fai $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
-
-   void a(fab var1, gpj var2);
-
-   void a(fai var1);
+   @Override
+   public gbv b() {
+      return gbv.f;
+   }
 }

@@ -1,37 +1,105 @@
-public class fwp<T extends bsd> extends fua<T> {
-   private final fxi a;
-   private final fxi b;
+public class fwp<T extends bsg> extends fux<T> {
+   private static final String a = "body0";
+   private static final String b = "body1";
+   private static final String f = "right_middle_front_leg";
+   private static final String g = "left_middle_front_leg";
+   private static final String h = "right_middle_hind_leg";
+   private static final String i = "left_middle_hind_leg";
+   private final fxo j;
+   private final fxo k;
+   private final fxo l;
+   private final fxo m;
+   private final fxo n;
+   private final fxo o;
+   private final fxo p;
+   private final fxo q;
+   private final fxo r;
+   private final fxo s;
 
-   public fwp(fxi $$0) {
-      this.a = $$0;
-      this.b = $$0.b("tail");
+   public fwp(fxo $$0) {
+      this.j = $$0;
+      this.k = $$0.b("head");
+      this.l = $$0.b("right_hind_leg");
+      this.m = $$0.b("left_hind_leg");
+      this.n = $$0.b("right_middle_hind_leg");
+      this.o = $$0.b("left_middle_hind_leg");
+      this.p = $$0.b("right_middle_front_leg");
+      this.q = $$0.b("left_middle_front_leg");
+      this.r = $$0.b("right_front_leg");
+      this.s = $$0.b("left_front_leg");
    }
 
-   public static fxo a(fxm $$0) {
-      fxq $$1 = new fxq();
-      fxr $$2 = $$1.a();
-      int $$3 = 19;
-      $$2.a("body", fxn.c().a(0, 20).a(-1.0F, -3.0F, -3.0F, 2.0F, 6.0F, 6.0F, $$0), fxk.a(0.0F, 19.0F, 0.0F));
-      $$2.a("tail", fxn.c().a(21, 16).a(0.0F, -3.0F, 0.0F, 0.0F, 6.0F, 5.0F, $$0), fxk.a(0.0F, 19.0F, 3.0F));
-      $$2.a("right_fin", fxn.c().a(2, 16).a(-2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fxk.a(-1.0F, 20.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", fxn.c().a(2, 12).a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fxk.a(1.0F, 20.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", fxn.c().a(20, 11).a(0.0F, -4.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fxk.a(0.0F, 16.0F, -3.0F));
-      $$2.a("bottom_fin", fxn.c().a(20, 21).a(0.0F, 0.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fxk.a(0.0F, 22.0F, -3.0F));
-      return fxo.a($$1, 32, 32);
+   public static fxu b() {
+      fxw $$0 = new fxw();
+      fxx $$1 = $$0.a();
+      int $$2 = 15;
+      $$1.a("head", fxt.c().a(32, 4).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F), fxq.a(0.0F, 15.0F, -3.0F));
+      $$1.a("body0", fxt.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fxq.a(0.0F, 15.0F, 0.0F));
+      $$1.a("body1", fxt.c().a(0, 12).a(-5.0F, -4.0F, -6.0F, 10.0F, 8.0F, 12.0F), fxq.a(0.0F, 15.0F, 9.0F));
+      fxt $$3 = fxt.c().a(18, 0).a(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
+      fxt $$4 = fxt.c().a(18, 0).a().a(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
+      $$1.a("right_hind_leg", $$3, fxq.a(-4.0F, 15.0F, 2.0F));
+      $$1.a("left_hind_leg", $$4, fxq.a(4.0F, 15.0F, 2.0F));
+      $$1.a("right_middle_hind_leg", $$3, fxq.a(-4.0F, 15.0F, 1.0F));
+      $$1.a("left_middle_hind_leg", $$4, fxq.a(4.0F, 15.0F, 1.0F));
+      $$1.a("right_middle_front_leg", $$3, fxq.a(-4.0F, 15.0F, 0.0F));
+      $$1.a("left_middle_front_leg", $$4, fxq.a(4.0F, 15.0F, 0.0F));
+      $$1.a("right_front_leg", $$3, fxq.a(-4.0F, 15.0F, -1.0F));
+      $$1.a("left_front_leg", $$4, fxq.a(4.0F, 15.0F, -1.0F));
+      return fxu.a($$0, 64, 32);
    }
 
    @Override
-   public fxi a() {
-      return this.a;
+   public fxo a() {
+      return this.j;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      if (!$$0.be()) {
-         $$6 = 1.5F;
-      }
-
-      this.b.f = -$$6 * 0.45F * aye.a(0.6F * $$3);
+      this.k.f = $$4 * (float) (Math.PI / 180.0);
+      this.k.e = $$5 * (float) (Math.PI / 180.0);
+      float $$6 = (float) (Math.PI / 4);
+      this.l.g = (float) (-Math.PI / 4);
+      this.m.g = (float) (Math.PI / 4);
+      this.n.g = -0.58119464F;
+      this.o.g = 0.58119464F;
+      this.p.g = -0.58119464F;
+      this.q.g = 0.58119464F;
+      this.r.g = (float) (-Math.PI / 4);
+      this.s.g = (float) (Math.PI / 4);
+      float $$7 = -0.0F;
+      float $$8 = (float) (Math.PI / 8);
+      this.l.f = (float) (Math.PI / 4);
+      this.m.f = (float) (-Math.PI / 4);
+      this.n.f = (float) (Math.PI / 8);
+      this.o.f = (float) (-Math.PI / 8);
+      this.p.f = (float) (-Math.PI / 8);
+      this.q.f = (float) (Math.PI / 8);
+      this.r.f = (float) (-Math.PI / 4);
+      this.s.f = (float) (Math.PI / 4);
+      float $$9 = -(ayg.b($$1 * 0.6662F * 2.0F + 0.0F) * 0.4F) * $$2;
+      float $$10 = -(ayg.b($$1 * 0.6662F * 2.0F + (float) Math.PI) * 0.4F) * $$2;
+      float $$11 = -(ayg.b($$1 * 0.6662F * 2.0F + (float) (Math.PI / 2)) * 0.4F) * $$2;
+      float $$12 = -(ayg.b($$1 * 0.6662F * 2.0F + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
+      float $$13 = Math.abs(ayg.a($$1 * 0.6662F + 0.0F) * 0.4F) * $$2;
+      float $$14 = Math.abs(ayg.a($$1 * 0.6662F + (float) Math.PI) * 0.4F) * $$2;
+      float $$15 = Math.abs(ayg.a($$1 * 0.6662F + (float) (Math.PI / 2)) * 0.4F) * $$2;
+      float $$16 = Math.abs(ayg.a($$1 * 0.6662F + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
+      this.l.f += $$9;
+      this.m.f += -$$9;
+      this.n.f += $$10;
+      this.o.f += -$$10;
+      this.p.f += $$11;
+      this.q.f += -$$11;
+      this.r.f += $$12;
+      this.s.f += -$$12;
+      this.l.g += $$13;
+      this.m.g += -$$13;
+      this.n.g += $$14;
+      this.o.g += -$$14;
+      this.p.g += $$15;
+      this.q.g += -$$15;
+      this.r.g += $$16;
+      this.s.g += -$$16;
    }
 }

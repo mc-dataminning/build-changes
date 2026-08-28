@@ -1,21 +1,70 @@
-public class gap extends gaq<le> {
-   protected gap(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, le $$7, gcg $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.v = this.a($$7.b().x(), $$9);
-      this.w = this.a($$7.b().y(), $$9);
-      this.x = this.a($$7.b().z(), $$9);
+public class gap extends gcr {
+   gap(fyj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.d(3.0F);
+      this.b(0.25F, 0.25F);
+      if ($$7) {
+         this.t = this.r.a(50) + 280;
+      } else {
+         this.t = this.r.a(50) + 80;
+      }
+
+      this.u = 3.0E-6F;
+      this.j = $$4;
+      this.k = $$5 + (double)(this.r.i() / 500.0F);
+      this.l = $$6;
    }
 
-   public static class a implements gbo<le> {
-      private final gcg a;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ < this.t && !(this.y <= 0.0F)) {
+         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         if (this.s >= this.t - 60 && this.y > 0.01F) {
+            this.y -= 0.015F;
+         }
+      } else {
+         this.k();
+      }
+   }
 
-      public a(gcg $$0) {
+   @Override
+   public gbv b() {
+      return gbv.c;
+   }
+
+   public static class a implements gbu<ln> {
+      private final gcm a;
+
+      public a(gcm $$0) {
          this.a = $$0;
       }
 
-      public gbl a(le $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gap($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gap $$8 = new gap($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+         $$8.e(0.9F);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements gbu<ln> {
+      private final gcm a;
+
+      public b(gcm $$0) {
+         this.a = $$0;
+      }
+
+      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gap $$8 = new gap($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
+         $$8.e(0.95F);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

@@ -1,24 +1,112 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
+import java.util.List;
 
-public class enk extends enp<enk.a> {
-   protected enk(duq $$0) {
-      super(dcm.b, $$0, new enk.a(new Long2ObjectOpenHashMap()));
+public class enk {
+   private static final double a = 1.0181268882175227;
+   private static final double b = 0.3333333333333333;
+   private final double c;
+   private final enl d;
+   private final enl e;
+   private final double f;
+   private final enk.a g;
+
+   @Deprecated
+   public static enk a(ayo $$0, enk.a $$1) {
+      return new enk($$0, $$1, false);
    }
 
-   @Override
-   protected int a(long $$0) {
-      long $$1 = kc.e($$0);
-      dui $$2 = this.a($$1, false);
-      return $$2 == null ? 0 : $$2.a(kc.b(ja.a($$0)), kc.b(ja.b($$0)), kc.b(ja.c($$0)));
+   public static enk a(ayo $$0, int $$1, double... $$2) {
+      return b($$0, new enk.a($$1, new DoubleArrayList($$2)));
    }
 
-   protected static final class a extends enm<enk.a> {
-      public a(Long2ObjectOpenHashMap<dui> $$0) {
-         super($$0);
+   public static enk b(ayo $$0, enk.a $$1) {
+      return new enk($$0, $$1, true);
+   }
+
+   private enk(ayo $$0, enk.a $$1, boolean $$2) {
+      int $$3 = $$1.c;
+      DoubleList $$4 = $$1.d;
+      this.g = $$1;
+      if ($$2) {
+         this.d = enl.b($$0, $$3, $$4);
+         this.e = enl.b($$0, $$3, $$4);
+      } else {
+         this.d = enl.a($$0, $$3, $$4);
+         this.e = enl.a($$0, $$3, $$4);
       }
 
-      public enk.a a() {
-         return new enk.a(this.a.clone());
+      int $$5 = Integer.MAX_VALUE;
+      int $$6 = Integer.MIN_VALUE;
+      DoubleListIterator $$7 = $$4.iterator();
+
+      while ($$7.hasNext()) {
+         int $$8 = $$7.nextIndex();
+         double $$9 = $$7.nextDouble();
+         if ($$9 != 0.0) {
+            $$5 = Math.min($$5, $$8);
+            $$6 = Math.max($$6, $$8);
+         }
+      }
+
+      this.c = 0.16666666666666666 / a($$6 - $$5);
+      this.f = (this.d.a() + this.e.a()) * this.c;
+   }
+
+   public double a() {
+      return this.f;
+   }
+
+   private static double a(int $$0) {
+      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
+   }
+
+   public double a(double $$0, double $$1, double $$2) {
+      double $$3 = $$0 * 1.0181268882175227;
+      double $$4 = $$1 * 1.0181268882175227;
+      double $$5 = $$2 * 1.0181268882175227;
+      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
+   }
+
+   public enk.a b() {
+      return this.g;
+   }
+
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("NormalNoise {");
+      $$0.append("first: ");
+      this.d.a($$0);
+      $$0.append(", second: ");
+      this.e.a($$0);
+      $$0.append("}");
+   }
+
+   public static record a(int c, DoubleList d) {
+      public static final Codec<enk.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(enk.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(enk.a::b))
+               .apply($$0, enk.a::new)
+      );
+      public static final Codec<jj<enk.a>> b = akg.a(lr.aO, a);
+
+      public a(int $$0, List<Double> $$1) {
+         this($$0, new DoubleArrayList($$1));
+      }
+
+      public a(int $$0, double $$1, double... $$2) {
+         this($$0, ac.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
+      }
+
+      public int a() {
+         return this.c;
+      }
+
+      public DoubleList b() {
+         return this.d;
       }
    }
 }

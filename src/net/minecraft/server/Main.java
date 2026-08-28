@@ -63,16 +63,16 @@ public class Main {
 
          o.h();
          if ($$18.has($$15)) {
-            bmx.f.a(bmv.b);
+            bna.f.a(bmy.b);
          }
 
          akm.a();
          akm.c();
          ac.m();
          Path $$20 = Paths.get("server.properties");
-         api $$21 = new api($$20);
+         aph $$21 = new aph($$20);
          $$21.b();
-         dvs.a($$21.a().N);
+         dvy.a($$21.a().N);
          Path $$22 = Paths.get("eula.txt");
          akq $$23 = new akq($$22);
          if ($$18.has($$3)) {
@@ -88,16 +88,16 @@ public class Main {
          File $$24 = new File((String)$$18.valueOf($$11));
          ale $$25 = ale.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$24);
          String $$26 = (String)Optional.ofNullable((String)$$18.valueOf($$12)).orElse($$21.a().m);
-         eqc $$27 = eqc.b($$24.toPath());
-         eqc.c $$28 = $$27.d($$26);
+         eqi $$27 = eqi.b($$24.toPath());
+         eqi.c $$28 = $$27.d($$26);
          Dynamic<?> $$29;
          if ($$28.m()) {
-            eqd $$30;
+            eqj $$30;
             try {
                $$29 = $$28.h();
                $$30 = $$28.a($$29);
             } catch (ui | uo | IOException var41) {
-               eqc.b $$32 = $$28.e();
+               eqi.b $$32 = $$28.e();
                a.warn("Failed to load world data from {}", $$32.b(), var41);
                a.info("Attempting to use fallback");
 
@@ -132,35 +132,35 @@ public class Main {
             a.warn("Safe mode active, only vanilla datapack will be loaded");
          }
 
-         atf $$41 = ati.a($$28);
+         ath $$41 = atk.a($$28);
 
          alh $$43;
          try {
             alg.c $$42 = a($$21.a(), $$39, $$40, $$41);
             $$43 = ac.<alh>c($$6x -> alg.a($$42, $$5xx -> {
-                  jw<dwa> $$6xx = $$5xx.d().d(lr.ba);
+                  jw<dwg> $$6xx = $$5xx.d().d(lr.ba);
                   if ($$39 != null) {
-                     epz $$7x = eqc.a($$39, $$5xx.b(), $$6xx, $$5xx.c());
+                     eqf $$7x = eqi.a($$39, $$5xx.b(), $$6xx, $$5xx.c());
                      return new alg.b<>($$7x.a(), $$7x.b().b());
                   } else {
                      a.info("No existing world data, creating new world");
-                     dch $$8x;
-                     dyx $$9x;
-                     dyu $$10x;
+                     dcj $$8x;
+                     dzd $$9x;
+                     dza $$10x;
                      if ($$18.has($$4)) {
                         $$8x = MinecraftServer.d;
-                        $$9x = dyx.b;
-                        $$10x = eig.a($$5xx.c());
+                        $$9x = dzd.b;
+                        $$10x = eim.a($$5xx.c());
                      } else {
-                        aph $$11x = $$21.a();
-                        $$8x = new dch($$11x.m, $$11x.l, $$11x.u, $$11x.k, false, new dbz(), $$5xx.b());
+                        apg $$11x = $$21.a();
+                        $$8x = new dcj($$11x.m, $$11x.l, $$11x.u, $$11x.k, false, new dcb(), $$5xx.b());
                         $$9x = $$18.has($$5) ? $$11x.Z.a(true) : $$11x.Z;
                         $$10x = $$11x.a($$5xx.c());
                      }
 
-                     dyu.b $$15x = $$10x.a($$6xx);
+                     dza.b $$15x = $$10x.a($$6xx);
                      Lifecycle $$16x = $$15x.a().add($$5xx.c().e());
-                     return new alg.b<>(new eqg($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
+                     return new alg.b<>(new eqm($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
                   }
                }, alh::new, ac.g(), $$6x)).get();
          } catch (Exception var39) {
@@ -171,19 +171,19 @@ public class Main {
          jx.b $$46 = $$43.c().a();
          boolean $$47 = $$18.has($$8);
          if ($$18.has($$6) || $$47) {
-            a($$28, azm.a(), $$18.has($$7), () -> true, $$46, $$47);
+            a($$28, azp.a(), $$18.has($$7), () -> true, $$46, $$47);
          }
 
-         eqi $$48 = $$43.d();
+         eqo $$48 = $$43.d();
          $$28.a($$46, $$48);
-         final apg $$49 = MinecraftServer.a((Function<Thread, apg>)($$11x -> {
-            apg $$12x = new apg($$11x, $$28, $$41, $$43, $$21, azm.a(), $$25, aqv::b);
+         final apf $$49 = MinecraftServer.a((Function<Thread, apf>)($$11x -> {
+            apf $$12x = new apf($$11x, $$28, $$41, $$43, $$21, azp.a(), $$25, aqx::b);
             $$12x.a((Integer)$$18.valueOf($$13));
             $$12x.c($$18.has($$4));
             $$12x.b((String)$$18.valueOf($$14));
             boolean $$13x = !$$18.has($$2) && !$$18.valuesOf($$17).contains("nogui");
             if ($$13x && !GraphicsEnvironment.isHeadless()) {
-               $$12x.bs();
+               $$12x.bt();
             }
 
             return $$12x;
@@ -210,25 +210,25 @@ public class Main {
       }
    }
 
-   private static alg.c a(aph $$0, @Nullable Dynamic<?> $$1, boolean $$2, atf $$3) {
+   private static alg.c a(apg $$0, @Nullable Dynamic<?> $$1, boolean $$2, ath $$3) {
       boolean $$5;
-      dcy $$6;
+      dda $$6;
       if ($$1 != null) {
-         dcy $$4 = eqc.a($$1);
+         dda $$4 = eqi.a($$1);
          $$5 = false;
          $$6 = $$4;
       } else {
          $$5 = true;
-         $$6 = new dcy($$0.U, cox.g);
+         $$6 = new dda($$0.U, cpa.g);
       }
 
       alg.d $$9 = new alg.d($$3, $$6, $$2, $$5);
       return new alg.c($$9, er.a.b, $$0.B);
    }
 
-   private static void a(eqc.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, jx $$4, boolean $$5) {
+   private static void a(eqi.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, jx $$4, boolean $$5) {
       a.info("Forcing world upgrade!");
-      bpr $$6 = new bpr($$0, $$1, $$4, $$2, $$5);
+      bpu $$6 = new bpu($$0, $$1, $$4, $$2, $$5);
       wu $$7 = null;
 
       while (!$$6.b()) {
@@ -241,7 +241,7 @@ public class Main {
          int $$9 = $$6.e();
          if ($$9 > 0) {
             int $$10 = $$6.f() + $$6.g();
-            a.info("{}% completed ({} / {} chunks)...", new Object[]{aye.d((float)$$10 / (float)$$9 * 100.0F), $$10, $$9});
+            a.info("{}% completed ({} / {} chunks)...", new Object[]{ayg.d((float)$$10 / (float)$$9 * 100.0F), $$10, $$9});
          }
 
          if (!$$3.getAsBoolean()) {

@@ -1,20 +1,12 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record daf(jj<ave> d, bpg e, bpg f) implements czz {
-   public static final MapCodec<daf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ave.b.fieldOf("sound").forGetter(daf::b),
-               bpg.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(daf::c),
-               bpg.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(daf::d)
-            )
-            .apply($$0, daf::new)
-   );
+public record daf(czs d) implements dab {
+   public static final MapCodec<daf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(czs.b.fieldOf("duration").forGetter($$0x -> $$0x.d)).apply($$0, daf::new));
 
    @Override
-   public void a(aqk $$0, int $$1, czi $$2, bsd $$3, evz $$4) {
-      aym $$5 = $$3.dS();
-      $$3.a(this.d.a(), this.e.a($$5), this.f.a($$5));
+   public void a(aqm $$0, int $$1, czk $$2, bsg $$3, ewf $$4) {
+      $$3.d(this.d.a($$1));
    }
 
    @Override
@@ -22,15 +14,7 @@ public record daf(jj<ave> d, bpg e, bpg f) implements czz {
       return a;
    }
 
-   public jj<ave> b() {
+   public czs b() {
       return this.d;
-   }
-
-   public bpg c() {
-      return this.e;
-   }
-
-   public bpg d() {
-      return this.f;
    }
 }

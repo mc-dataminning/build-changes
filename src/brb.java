@@ -1,46 +1,52 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record brb(String i) {
-   public static final brb a = new brb("generic");
-   public static final brb b = new brb("ladder");
-   public static final brb c = new brb("vines");
-   public static final brb d = new brb("weeping_vines");
-   public static final brb e = new brb("twisting_vines");
-   public static final brb f = new brb("scaffolding");
-   public static final brb g = new brb("other_climbable");
-   public static final brb h = new brb("water");
+public record brb(String c, bqy d, float e, bqx f, brd g) {
+   public static final Codec<brb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(brb::a),
+               bqy.d.fieldOf("scaling").forGetter(brb::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(brb::c),
+               bqx.g.optionalFieldOf("effects", bqx.a).forGetter(brb::d),
+               brd.d.optionalFieldOf("death_message_type", brd.a).forGetter(brb::e)
+            )
+            .apply($$0, brb::new)
+   );
+   public static final Codec<jj<brb>> b = akh.a(lr.s);
 
-   public static brb a(dsh $$0) {
-      if ($$0.a(dfh.cO) || $$0.a(avu.P)) {
-         return b;
-      } else if ($$0.a(dfh.ff)) {
-         return c;
-      } else if ($$0.a(dfh.oz) || $$0.a(dfh.oA)) {
-         return d;
-      } else if ($$0.a(dfh.oB) || $$0.a(dfh.oC)) {
-         return e;
-      } else {
-         return $$0.a(dfh.nS) ? f : g;
-      }
+   public brb(String $$0, bqy $$1, float $$2) {
+      this($$0, $$1, $$2, bqx.a, brd.a);
    }
 
-   @Nullable
-   public static brb a(bsy $$0) {
-      Optional<ja> $$1 = $$0.eI();
-      if ($$1.isPresent()) {
-         dsh $$2 = $$0.dP().a_($$1.get());
-         return a($$2);
-      } else {
-         return $$0.be() ? h : null;
-      }
+   public brb(String $$0, bqy $$1, float $$2, bqx $$3) {
+      this($$0, $$1, $$2, $$3, brd.a);
+   }
+
+   public brb(String $$0, float $$1, bqx $$2) {
+      this($$0, bqy.b, $$1, $$2);
+   }
+
+   public brb(String $$0, float $$1) {
+      this($$0, bqy.b, $$1);
    }
 
    public String a() {
-      return "death.fell.accident." + this.i;
+      return this.c;
    }
 
-   public String b() {
-      return this.i;
+   public bqy b() {
+      return this.d;
+   }
+
+   public float c() {
+      return this.e;
+   }
+
+   public bqx d() {
+      return this.f;
+   }
+
+   public brd e() {
+      return this.g;
    }
 }

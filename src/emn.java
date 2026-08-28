@@ -1,15 +1,26 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class emn {
-   @Nullable
-   public emq.c a(dcg $$0, ja $$1, ja $$2, emq.c $$3, emq.c $$4, emm $$5) {
-      return $$4;
+public class emn extends emq {
+   public static final MapCodec<emn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lq.e.r().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, emn::new)
+   );
+   private final dfh b;
+   private final float d;
+
+   public emn(dfh $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
-   protected abstract emp<?> a();
+   @Override
+   public boolean a(dsk $$0, ayo $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
+   }
 
-   public List<emq.c> a(dcs $$0, ja $$1, ja $$2, List<emq.c> $$3, List<emq.c> $$4, emm $$5) {
-      return $$4;
+   @Override
+   protected emr<?> a() {
+      return emr.e;
    }
 }

@@ -1,38 +1,58 @@
-public class bsb {
-   public static final bsb a = new bsb(0.75F, 0.5F, 0.25F);
-   public static final bsb b = new bsb(0.95F, 0.69F, 0.32F);
-   private final float c;
-   private final float d;
-   private final float e;
+import java.util.function.Consumer;
 
-   private bsb(float $$0, float $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+public class bsb {
+   private static final long a = Long.MAX_VALUE;
+   private long b = Long.MAX_VALUE;
+   private long c;
+
+   public void a(int $$0) {
+      this.b = (long)$$0 * 1000L / 20L;
+      this.c = 0L;
    }
 
-   public bsb.a a(float $$0) {
-      if ($$0 < this.e) {
-         return bsb.a.d;
-      } else if ($$0 < this.d) {
-         return bsb.a.c;
-      } else {
-         return $$0 < this.c ? bsb.a.b : bsb.a.a;
+   public void b(int $$0) {
+      if (!this.c()) {
+         this.a($$0);
       }
    }
 
-   public bsb.a a(cua $$0) {
-      return !$$0.l() ? bsb.a.a : this.a($$0.n(), $$0.o());
+   public void a(boolean $$0, int $$1) {
+      if ($$0) {
+         this.b($$1);
+      } else {
+         this.a();
+      }
    }
 
-   public bsb.a a(int $$0, int $$1) {
-      return this.a((float)($$1 - $$0) / (float)$$1);
+   public void a() {
+      this.b = Long.MAX_VALUE;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   public void a(Consumer<bsb> $$0) {
+      if (this.c()) {
+         $$0.accept(this);
+      }
+   }
+
+   public void a(float $$0, float $$1) {
+      if (this.c()) {
+         long $$2 = ayg.b((double)($$0 * 1000.0F / 20.0F));
+         this.c = this.c + (long)((float)($$2 - this.b) * $$1);
+         this.b = $$2;
+      }
+   }
+
+   public void a(int $$0, float $$1) {
+      if (this.c()) {
+         this.c += (long)((float)($$0 * 1000) * $$1) / 20L;
+      }
+   }
+
+   public long b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      return this.b != Long.MAX_VALUE;
    }
 }

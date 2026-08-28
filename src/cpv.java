@@ -1,13 +1,9 @@
-import java.util.List;
+public interface cpv {
+   void a(cph var1, js<cuc> var2, cuc var3, int[] var4);
 
-public interface cpv extends bpw, crf {
-   int f();
+   void a(cph var1, int var2, cuc var3);
 
-   int g();
+   void a(cph var1, cuc var2);
 
-   List<cua> h();
-
-   default cxw aA_() {
-      return cxw.a(this.f(), this.g(), this.h());
-   }
+   void a(cph var1, int var2, int var3);
 }

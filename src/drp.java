@@ -1,296 +1,253 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class drp extends dpn {
-   private static final Logger a = LogUtils.getLogger();
-   private final drs b = new drs();
-   private final drt c = new drt();
-   private final drq d = new drq();
-   private drr e = drr.b;
-
-   public drp(ja $$0, dsh $$1) {
-      super(dpp.R, $$0, $$1);
-   }
-
+public class drp {
+   public static final String a = "spawn_data";
+   private static final String m = "next_mob_spawns_at";
+   private static final int n = 20;
+   private static final int o = 18000;
+   public static MapCodec<drp> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kd.b.lenientOptionalFieldOf("registered_players", Sets.newHashSet()).forGetter($$0x -> $$0x.c),
+               kd.b.lenientOptionalFieldOf("current_mobs", Sets.newHashSet()).forGetter($$0x -> $$0x.d),
+               Codec.LONG.lenientOptionalFieldOf("cooldown_ends_at", 0L).forGetter($$0x -> $$0x.e),
+               Codec.LONG.lenientOptionalFieldOf("next_mob_spawns_at", 0L).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("total_mobs_spawned", 0).forGetter($$0x -> $$0x.g),
+               dcx.b.lenientOptionalFieldOf("spawn_data").forGetter($$0x -> $$0x.h),
+               akj.a(lr.bb).lenientOptionalFieldOf("ejecting_loot_table").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, drp::new)
+   );
+   protected final Set<UUID> c = new HashSet<>();
+   protected final Set<UUID> d = new HashSet<>();
+   protected long e;
+   protected long f;
+   protected int g;
+   protected Optional<dcx> h;
+   protected Optional<akj<eqz>> i;
    @Nullable
-   @Override
-   public zb<abn> av_() {
-      return abu.a(this);
-   }
-
-   @Override
-   public tx a(jl.a $$0) {
-      return ac.a(new tx(), $$1 -> $$1.a("shared_data", a(drt.b, this.c, $$0)));
-   }
-
-   @Override
-   protected void b(tx $$0, jl.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("config", a(drr.c, this.e, $$1));
-      $$0.a("shared_data", a(drt.b, this.c, $$1));
-      $$0.a("server_data", a(drs.b, this.b, $$1));
-   }
-
-   private static <T> uu a(Codec<T> $$0, T $$1, jl.a $$2) {
-      return (uu)$$0.encodeStart($$2.a(ul.a), $$1).getOrThrow();
-   }
-
-   @Override
-   protected void a(tx $$0, jl.a $$1) {
-      super.a($$0, $$1);
-      DynamicOps<uu> $$2 = $$1.a(ul.a);
-      if ($$0.e("server_data")) {
-         drs.b.parse($$2, $$0.c("server_data")).resultOrPartial(a::error).ifPresent(this.b::a);
-      }
-
-      if ($$0.e("config")) {
-         drr.c.parse($$2, $$0.c("config")).resultOrPartial(a::error).ifPresent($$0x -> this.e = $$0x);
-      }
-
-      if ($$0.e("shared_data")) {
-         drt.b.parse($$2, $$0.c("shared_data")).resultOrPartial(a::error).ifPresent(this.c::a);
-      }
-   }
-
+   protected bsg j;
    @Nullable
-   public drs b() {
-      return this.n != null && !this.n.B ? this.b : null;
+   private boq<cuc> p;
+   protected double k;
+   protected double l;
+
+   public drp() {
+      this(Collections.emptySet(), Collections.emptySet(), 0L, 0L, 0, Optional.empty(), Optional.empty());
    }
 
-   public drt c() {
-      return this.c;
+   public drp(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<dcx> $$5, Optional<akj<eqz>> $$6) {
+      this.c.addAll($$0);
+      this.d.addAll($$1);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
-   public drq d() {
-      return this.d;
+   public void a() {
+      this.c.clear();
+      this.g = 0;
+      this.f = 0L;
+      this.e = 0L;
+      this.d.clear();
    }
 
-   public drr f() {
-      return this.e;
+   public boolean a(drn $$0, ayo $$1) {
+      boolean $$2 = this.b($$0, $$1).a().b("id", 8);
+      return $$2 || !$$0.b().h().d();
    }
 
-   @VisibleForTesting
-   public void a(drr $$0) {
-      this.e = $$0;
+   public boolean a(dro $$0, int $$1) {
+      return this.g >= $$0.a($$1);
    }
 
-   public static final class a {
-      private static final int a = 20;
-      private static final float b = 0.5F;
-      private static final float c = 0.02F;
-      private static final int d = 20;
-      private static final int e = 20;
+   public boolean b() {
+      return this.d.isEmpty();
+   }
 
-      public static void a(dcd $$0, ja $$1, dsh $$2, drq $$3, drt $$4) {
-         $$3.c();
-         if ($$0.Z() % 20L == 0L) {
-            a($$0, $$1, $$2, $$4);
-         }
+   public boolean a(aqm $$0, dro $$1, int $$2) {
+      return $$0.Z() >= this.f && this.d.size() < $$1.b($$2);
+   }
 
-         a($$0, $$1, $$4, $$2.c(doa.d) ? lj.L : lj.aJ);
-         a($$0, $$1, $$4);
+   public int a(ja $$0) {
+      if (this.c.isEmpty()) {
+         ac.a("Trial Spawner at " + $$0 + " has no detected players");
       }
 
-      public static void a(dcd $$0, ja $$1, dsh $$2, drt $$3, lh $$4) {
-         a($$0, $$1, $$2, $$3);
-         aym $$5 = $$0.z;
+      return Math.max(0, this.c.size() - 1);
+   }
 
-         for (int $$6 = 0; $$6 < 20; $$6++) {
-            evz $$7 = b($$1, $$5);
-            $$0.a(lj.ae, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
-            $$0.a($$4, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
-         }
-      }
-
-      public static void a(dcd $$0, ja $$1, lh $$2) {
-         aym $$3 = $$0.z;
-
-         for (int $$4 = 0; $$4 < 20; $$4++) {
-            evz $$5 = a($$1, $$3);
-            evz $$6 = new evz($$3.k() * 0.02, $$3.k() * 0.02, $$3.k() * 0.02);
-            $$0.a($$2, $$5.a(), $$5.b(), $$5.c(), $$6.a(), $$6.b(), $$6.c());
-         }
-      }
-
-      private static void a(dcd $$0, ja $$1, drt $$2, lh $$3) {
-         aym $$4 = $$0.E_();
-         if ($$4.i() <= 0.5F) {
-            evz $$5 = b($$1, $$4);
-            $$0.a(lj.ae, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
-            if (a($$2)) {
-               $$0.a($$3, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
-            }
-         }
-      }
-
-      private static void a(dcd $$0, evz $$1, cmh $$2) {
-         aym $$3 = $$0.z;
-         evz $$4 = $$1.a($$2.dn().b(0.0, (double)($$2.dk() / 2.0F), 0.0));
-         int $$5 = aye.a($$3, 2, 5);
-
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            evz $$7 = $$4.a($$3, 1.0F);
-            $$0.a(lj.ba, $$1.a(), $$1.b(), $$1.c(), $$7.a(), $$7.b(), $$7.c());
-         }
-      }
-
-      private static void a(dcd $$0, ja $$1, dsh $$2, drt $$3) {
-         Set<UUID> $$4 = $$3.d();
-         if (!$$4.isEmpty()) {
-            evz $$5 = a($$1, $$2.c(doa.c));
+   public void a(aqm $$0, ja $$1, drn $$2) {
+      boolean $$3 = ($$1.a() + $$0.Z()) % 20L != 0L;
+      if (!$$3) {
+         if (!$$2.i().equals(drq.f) || !$$2.e()) {
+            List<UUID> $$4 = $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), true);
+            cmk $$5 = null;
 
             for (UUID $$6 : $$4) {
-               cmh $$7 = $$0.b($$6);
-               if ($$7 != null && a($$1, $$3, $$7)) {
-                  a($$0, $$5, $$7);
+               cmk $$7 = $$0.b($$6);
+               if ($$7 != null) {
+                  if ($$7.b(brq.E)) {
+                     this.a($$7, $$7.c(brq.E));
+                     $$5 = $$7;
+                  } else if ($$7.b(brq.H)) {
+                     $$5 = $$7;
+                  }
+               }
+            }
+
+            boolean $$8 = !$$2.e() && $$5 != null;
+            if (!$$2.i().equals(drq.f) || $$8) {
+               if ($$8) {
+                  $$0.c(3020, ja.a($$5.by()), 0);
+                  $$2.a($$0, $$1);
+               }
+
+               boolean $$9 = $$2.f().c.isEmpty();
+               List<UUID> $$10 = $$9 ? $$4 : $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), false);
+               if (this.c.addAll($$10)) {
+                  this.f = Math.max($$0.Z() + 40L, this.f);
+                  if (!$$8) {
+                     int $$11 = $$2.e() ? 3019 : 3013;
+                     $$0.c($$11, $$1, this.c.size());
+                  }
                }
             }
          }
-      }
-
-      private static boolean a(ja $$0, drt $$1, cmh $$2) {
-         return $$2.dp().j($$0) <= aye.k($$1.e());
-      }
-
-      private static void a(dcd $$0, ja $$1, drt $$2) {
-         if (a($$2)) {
-            aym $$3 = $$0.E_();
-            if ($$3.i() <= 0.02F) {
-               $$0.a($$1, avf.AB, avg.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
-            }
-         }
-      }
-
-      public static boolean a(drt $$0) {
-         return $$0.b();
-      }
-
-      private static evz a(ja $$0, aym $$1) {
-         return evz.a($$0).b(aye.a($$1, 0.4, 0.6), aye.a($$1, 0.4, 0.6), aye.a($$1, 0.4, 0.6));
-      }
-
-      private static evz b(ja $$0, aym $$1) {
-         return evz.a($$0).b(aye.a($$1, 0.1, 0.9), aye.a($$1, 0.25, 0.75), aye.a($$1, 0.1, 0.9));
-      }
-
-      private static evz a(ja $$0, jf $$1) {
-         return evz.c($$0).b((double)$$1.j() * 0.5, 1.75, (double)$$1.l() * 0.5);
       }
    }
 
-   public static final class b {
-      private static final int a = 14;
-      private static final int b = 20;
-      private static final int c = 15;
-
-      public static void a(aqk $$0, ja $$1, dsh $$2, drr $$3, drs $$4, drt $$5) {
-         dru $$6 = $$2.c(doa.b);
-         if (a($$0.Z(), $$6)) {
-            a($$0, $$6, $$3, $$5, $$1);
+   public void a(drn $$0, aqm $$1) {
+      this.d.stream().map($$1::a).forEach($$1x -> {
+         if ($$1x != null) {
+            $$1.c(3012, $$1x.dq(), drn.a.a.a());
+            $$1x.a(bsg.c.b);
          }
+      });
+      if (!$$0.d().h().d()) {
+         this.h = Optional.empty();
+      }
 
-         dsh $$7 = $$2;
-         if ($$0.Z() >= $$4.c()) {
-            $$7 = $$2.a(doa.b, $$6.a($$0, $$1, $$3, $$4, $$5));
-            if (!$$2.equals($$7)) {
-               a($$0, $$1, $$2, $$7, $$3, $$5);
+      this.g = 0;
+      this.d.clear();
+      this.f = $$1.Z() + (long)$$0.d().g();
+      $$0.j();
+      this.e = $$1.Z() + $$0.d().a();
+   }
+
+   private void a(cmk $$0, bro $$1) {
+      int $$2 = $$1.e() + 1;
+      int $$3 = 18000 * $$2;
+      $$0.e(brq.E);
+      $$0.b(new bro(brq.H, $$3, 0));
+   }
+
+   public boolean a(aqm $$0, float $$1, int $$2) {
+      long $$3 = this.e - (long)$$2;
+      return (float)$$0.Z() >= (float)$$3 + $$1;
+   }
+
+   public boolean b(aqm $$0, float $$1, int $$2) {
+      long $$3 = this.e - (long)$$2;
+      return (float)($$0.Z() - $$3) % $$1 == 0.0F;
+   }
+
+   public boolean a(aqm $$0) {
+      return $$0.Z() >= this.e;
+   }
+
+   public void a(drn $$0, ayo $$1, bsm<?> $$2) {
+      this.b($$0, $$1).a().a("id", lq.f.b($$2).toString());
+   }
+
+   protected dcx b(drn $$0, ayo $$1) {
+      if (this.h.isPresent()) {
+         return this.h.get();
+      } else {
+         boq<dcx> $$2 = $$0.b().h();
+         Optional<dcx> $$3 = $$2.d() ? this.h : $$2.b($$1).map(bos.b::b);
+         this.h = Optional.of($$3.orElseGet(dcx::new));
+         $$0.j();
+         return this.h.get();
+      }
+   }
+
+   @Nullable
+   public bsg a(drn $$0, dcf $$1, drq $$2) {
+      if (!$$2.d()) {
+         return null;
+      } else {
+         if (this.j == null) {
+            tx $$3 = this.b($$0, $$1.E_()).a();
+            if ($$3.b("id", 8)) {
+               this.j = bsm.a($$3, $$1, Function.identity());
             }
          }
 
-         if ($$4.c || $$5.c) {
-            drp.a($$0, $$1, $$2);
-            if ($$5.c) {
-               $$0.a($$1, $$2, $$7, 2);
-            }
+         return this.j;
+      }
+   }
 
-            $$4.c = false;
-            $$5.c = false;
-         }
+   public tx a(drq $$0) {
+      tx $$1 = new tx();
+      if ($$0 == drq.c) {
+         $$1.a("next_mob_spawns_at", this.f);
       }
 
-      public static void a(aqk $$0, ja $$1, dsh $$2, drr $$3, drs $$4, drt $$5, cmh $$6, cua $$7) {
-         dru $$8 = $$2.c(doa.b);
-         if (a($$3, $$8)) {
-            if (!a($$3, $$7)) {
-               a($$0, $$4, $$1);
-            } else if ($$4.a($$6)) {
-               a($$0, $$4, $$1);
-            } else {
-               List<cua> $$9 = a($$0, $$3, $$1, $$6);
-               if (!$$9.isEmpty()) {
-                  $$6.b(avp.c.b($$7.g()));
-                  if (!$$6.f()) {
-                     $$7.h($$3.e().H());
-                  }
+      this.h
+         .ifPresent($$1x -> $$1.a("spawn_data", (uu)dcx.b.encodeStart(ul.a, $$1x).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData"))));
+      return $$1;
+   }
 
-                  a($$0, $$2, $$1, $$3, $$4, $$5, $$9);
-                  $$4.b($$6);
-                  $$5.a($$0, $$1, $$4, $$3, $$3.d());
-               }
-            }
-         }
-      }
+   public double c() {
+      return this.k;
+   }
 
-      static void a(aqk $$0, ja $$1, dsh $$2, dsh $$3, drr $$4, drt $$5) {
-         dru $$6 = $$2.c(doa.b);
-         dru $$7 = $$3.c(doa.b);
-         $$0.a($$1, $$3, 3);
-         $$6.a($$0, $$1, $$7, $$4, $$5, $$3.c(doa.d));
-      }
+   public double d() {
+      return this.l;
+   }
 
-      static void a(aqk $$0, dru $$1, drr $$2, drt $$3, ja $$4) {
-         if (!a($$2, $$1)) {
-            $$3.a(cua.l);
+   boq<cuc> a(aqm $$0, dro $$1, ja $$2) {
+      if (this.p != null) {
+         return this.p;
+      } else {
+         eqz $$3 = $$0.o().bf().b($$1.j());
+         eqx $$4 = new eqx.a($$0).a(etp.b);
+         long $$5 = a($$0, $$2);
+         ObjectArrayList<cuc> $$6 = $$3.a($$4, $$5);
+         if ($$6.isEmpty()) {
+            return boq.b();
          } else {
-            cua $$5 = a($$0, $$4, $$2.f().orElse($$2.b()));
-            $$3.a($$5);
+            boq.a<cuc> $$7 = new boq.a<>();
+            ObjectListIterator var10 = $$6.iterator();
+
+            while (var10.hasNext()) {
+               cuc $$8 = (cuc)var10.next();
+               $$7.a($$8.c(1), $$8.H());
+            }
+
+            this.p = $$7.a();
+            return this.p;
          }
       }
+   }
 
-      private static cua a(aqk $$0, ja $$1, akj<eqt> $$2) {
-         eqt $$3 = $$0.o().be().b($$2);
-         eqr $$4 = new eqr.a($$0).a(etk.f, evz.b($$1)).a(etj.l);
-         List<cua> $$5 = $$3.a($$4);
-         return $$5.isEmpty() ? cua.l : ac.a($$5, $$0.E_());
-      }
-
-      private static void a(aqk $$0, dsh $$1, ja $$2, drr $$3, drs $$4, drt $$5, List<cua> $$6) {
-         $$4.a($$6);
-         $$5.a($$4.f());
-         $$4.b($$0.Z() + 14L);
-         a($$0, $$2, $$1, $$1.a(doa.b, dru.c), $$3, $$5);
-      }
-
-      private static List<cua> a(aqk $$0, drr $$1, ja $$2, cmh $$3) {
-         eqt $$4 = $$0.o().be().b($$1.b());
-         eqr $$5 = new eqr.a($$0).a(etk.f, evz.b($$2)).a($$3.gu()).a(etk.a, $$3).a(etj.l);
-         return $$4.a($$5);
-      }
-
-      private static boolean a(drr $$0, dru $$1) {
-         return $$0.b() != eqk.a && !$$0.e().e() && $$1 != dru.a;
-      }
-
-      private static boolean a(drr $$0, cua $$1) {
-         return cua.c($$1, $$0.e()) && $$1.H() >= $$0.e().H();
-      }
-
-      private static boolean a(long $$0, dru $$1) {
-         return $$0 % 20L == 0L && $$1 == dru.b;
-      }
-
-      private static void a(aqk $$0, drs $$1, ja $$2) {
-         if ($$0.Z() >= $$1.a() + 15L) {
-            $$0.a(null, $$2, avf.AJ, avg.e);
-            $$1.a($$0.Z());
-         }
-      }
+   private static long a(aqm $$0, ja $$1) {
+      ja $$2 = new ja(ayg.d((float)$$1.u() / 30.0F), ayg.d((float)$$1.v() / 20.0F), ayg.d((float)$$1.w() / 30.0F));
+      return $$0.C() + $$2.a();
    }
 }

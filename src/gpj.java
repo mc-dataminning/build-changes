@@ -1,208 +1,138 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Iterator;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
-import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 
-public class gpj implements ato, gpk, AutoCloseable {
+public class gpj {
+   public static final Set<asv<?>> a = Set.of(gqz.a);
    private static final Logger b = LogUtils.getLogger();
-   public static final akk a = new akk("");
-   private final Map<akk, got> c = Maps.newHashMap();
-   private final Set<gpk> d = Sets.newHashSet();
-   private final Map<String, Integer> e = Maps.newHashMap();
-   private final atu f;
+   private final akk c;
+   private final int d;
+   private final int e;
+   private final int f;
 
-   public gpj(atu $$0) {
-      this.f = $$0;
+   public gpj(akk $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public void a(akk $$0) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.d($$0));
+   public static gpj a(gpn $$0) {
+      return new gpj($$0.g(), $$0.h(), $$0.i(), $$0.j());
+   }
+
+   public gpj.a a(List<gpi> $$0, int $$1, Executor $$2) {
+      int $$3 = this.d;
+      gpl<gpi> $$4 = new gpl<>($$3, $$3, $$1);
+      int $$5 = Integer.MAX_VALUE;
+      int $$6 = 1 << $$1;
+
+      for (gpi $$7 : $$0) {
+         $$5 = Math.min($$5, Math.min($$7.a(), $$7.b()));
+         int $$8 = Math.min(Integer.lowestOneBit($$7.a()), Integer.lowestOneBit($$7.b()));
+         if ($$8 < $$6) {
+            b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$7.c(), $$7.a(), $$7.b(), ayg.f($$6), ayg.f($$8)});
+            $$6 = $$8;
+         }
+
+         $$4.a($$7);
+      }
+
+      int $$9 = Math.min($$5, $$6);
+      int $$10 = ayg.f($$9);
+      int $$11;
+      if ($$10 < $$1) {
+         b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$10, $$9});
+         $$11 = $$10;
       } else {
-         this.d($$0);
-      }
-   }
-
-   private void d(akk $$0) {
-      got $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         $$1 = new gpb($$0);
-         this.a($$0, $$1);
+         $$11 = $$1;
       }
 
-      $$1.c();
-   }
-
-   public void a(akk $$0, got $$1) {
-      $$1 = this.d($$0, $$1);
-      got $$2 = this.c.put($$0, $$1);
-      if ($$2 != $$1) {
-         if ($$2 != null && $$2 != goy.c()) {
-            this.c($$0, $$2);
-         }
-
-         if ($$1 instanceof gpk) {
-            this.d.add((gpk)$$1);
-         }
-      }
-   }
-
-   private void c(akk $$0, got $$1) {
-      if ($$1 != goy.c()) {
-         this.d.remove($$1);
-
-         try {
-            $$1.close();
-         } catch (Exception var4) {
-            b.warn("Failed to close texture {}", $$0, var4);
-         }
-      }
-
-      $$1.b();
-   }
-
-   private got d(akk $$0, got $$1) {
       try {
-         $$1.a(this.f);
-         return $$1;
-      } catch (IOException var6) {
-         if ($$0 != a) {
-            b.warn("Failed to load texture: {}", $$0, var6);
-         }
-
-         return goy.c();
-      } catch (Throwable var7) {
-         o $$4 = o.a(var7, "Registering texture");
-         p $$5 = $$4.a("Resource location being registered");
-         $$5.a("Resource location", $$0);
-         $$5.a("Texture object class", () -> $$1.getClass().getName());
-         throw new y($$4);
-      }
-   }
-
-   public got b(akk $$0) {
-      got $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         $$1 = new gpb($$0);
-         this.a($$0, $$1);
+         $$4.c();
+      } catch (gpm var16) {
+         o $$14 = o.a(var16, "Stitching");
+         p $$15 = $$14.a("Stitcher");
+         $$15.a(
+            "Sprites", var16.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
+         );
+         $$15.a("Max Texture Size", $$3);
+         throw new y($$14);
       }
 
-      return $$1;
-   }
-
-   public got b(akk $$0, got $$1) {
-      return this.c.getOrDefault($$0, $$1);
-   }
-
-   public akk a(String $$0, gov $$1) {
-      Integer $$2 = this.e.get($$0);
-      if ($$2 == null) {
-         $$2 = 1;
+      int $$16 = Math.max($$4.a(), this.e);
+      int $$17 = Math.max($$4.b(), this.f);
+      Map<akk, gpo> $$18 = this.a($$4, $$16, $$17);
+      gpo $$19 = $$18.get(gpe.b());
+      CompletableFuture<Void> $$20;
+      if ($$11 > 0) {
+         $$20 = CompletableFuture.runAsync(() -> $$18.values().forEach($$1xx -> $$1xx.e().a($$11)), $$2);
       } else {
-         $$2 = $$2 + 1;
+         $$20 = CompletableFuture.completedFuture(null);
       }
 
-      this.e.put($$0, $$2);
-      akk $$3 = new akk(String.format(Locale.ROOT, "dynamic/%s_%d", $$0, $$2));
-      this.a($$3, $$1);
+      return new gpj.a($$16, $$17, $$11, $$19, $$18, $$20);
+   }
+
+   public static CompletableFuture<List<gpi>> a(gpr $$0, List<Function<gpr, gpi>> $$1, Executor $$2) {
+      List<CompletableFuture<gpi>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (gpi)$$2x.apply($$0), $$2)).toList();
+      return ac.d($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
+   }
+
+   public CompletableFuture<gpj.a> a(atw $$0, akk $$1, int $$2, Executor $$3) {
+      return this.a($$0, $$1, $$2, $$3, a);
+   }
+
+   public CompletableFuture<gpj.a> a(atw $$0, akk $$1, int $$2, Executor $$3, Collection<asv<?>> $$4) {
+      gpr $$5 = gpr.create($$4);
+      return CompletableFuture.<List<Function<gpr, gpi>>>supplyAsync(() -> gpt.a($$0, $$1).a($$0), $$3)
+         .thenCompose($$2x -> a($$5, $$2x, $$3))
+         .thenApply($$2x -> this.a($$2x, $$2, $$3));
+   }
+
+   private Map<akk, gpo> a(gpl<gpi> $$0, int $$1, int $$2) {
+      Map<akk, gpo> $$3 = new HashMap<>();
+      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new gpo(this.c, $$3x, $$1, $$2, $$4, $$5)));
       return $$3;
    }
 
-   public CompletableFuture<Void> a(akk $$0, Executor $$1) {
-      if (!this.c.containsKey($$0)) {
-         gpa $$2 = new gpa(this.f, $$0, $$1);
-         this.c.put($$0, $$2);
-         return $$2.d().thenRunAsync(() -> this.a($$0, (got)$$2), gpj::a);
-      } else {
-         return CompletableFuture.completedFuture(null);
-      }
-   }
-
-   private static void a(Runnable $$0) {
-      ffn.Q().execute(() -> RenderSystem.recordRenderCall($$0::run));
-   }
-
-   @Override
-   public void e() {
-      for (gpk $$0 : this.d) {
-         $$0.e();
-      }
-   }
-
-   public void c(akk $$0) {
-      got $$1 = this.c.remove($$0);
-      if ($$1 != null) {
-         this.c($$0, $$1);
-      }
-   }
-
-   @Override
-   public void close() {
-      this.c.forEach(this::c);
-      this.c.clear();
-      this.d.clear();
-      this.e.clear();
-   }
-
-   @Override
-   public CompletableFuture<Void> a(ato.a $$0, atu $$1, bmr $$2, bmr $$3, Executor $$4, Executor $$5) {
-      CompletableFuture<Void> $$6 = new CompletableFuture<>();
-      fnf.a(this, $$4).thenCompose($$0::a).thenAcceptAsync($$3x -> {
-         goy.c();
-         fcs.a(this.f);
-         Iterator<Entry<akk, got>> $$4x = this.c.entrySet().iterator();
-
-         while ($$4x.hasNext()) {
-            Entry<akk, got> $$5x = $$4x.next();
-            akk $$6x = $$5x.getKey();
-            got $$7 = $$5x.getValue();
-            if ($$7 == goy.c() && !$$6x.equals(goy.b())) {
-               $$4x.remove();
-            } else {
-               $$7.a(this, $$1, $$6x, $$5);
-            }
-         }
-
-         ffn.Q().i(() -> $$6.complete(null));
-      }, $$0x -> RenderSystem.recordRenderCall($$0x::run));
-      return $$6;
-   }
-
-   public void a(Path $$0) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b($$0));
-      } else {
-         this.b($$0);
-      }
-   }
-
-   private void b(Path $$0) {
-      try {
-         Files.createDirectories($$0);
-      } catch (IOException var3) {
-         b.error("Failed to create directory {}", $$0, var3);
-         return;
+   public static record a(int a, int b, int c, gpo d, Map<akk, gpo> e, CompletableFuture<Void> f) {
+      public CompletableFuture<gpj.a> a() {
+         return this.f.thenApply($$0 -> this);
       }
 
-      this.c.forEach(($$1, $$2) -> {
-         if ($$2 instanceof gou $$3) {
-            try {
-               $$3.a($$1, $$0);
-            } catch (IOException var5) {
-               b.error("Failed to dump texture {}", $$1, var5);
-            }
-         }
-      });
+      public int b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public gpo e() {
+         return this.d;
+      }
+
+      public Map<akk, gpo> f() {
+         return this.e;
+      }
+
+      public CompletableFuture<Void> g() {
+         return this.f;
+      }
    }
 }

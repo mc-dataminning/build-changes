@@ -1,75 +1,117 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class clq implements dbq {
-   private static final int a = 1200;
-   private int b;
+public class clq {
+   public static final Codec<clq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axo.k.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
+               axo.k.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
+               axo.k.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, clq::new)
+   );
+   public static final int b = 4;
+   private static final double c = 16.0;
+   private static final int d = 48;
+   private static final int e = 12000;
+   private static final int f = 200;
+   private int g;
+   private int h;
+   private int i;
 
-   @Override
-   public int a(aqk $$0, boolean $$1, boolean $$2) {
-      if ($$2 && $$0.ab().b(dbz.e)) {
-         this.b--;
-         if (this.b > 0) {
-            return 0;
+   public clq(int $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+   }
+
+   public void a() {
+      if (this.g >= 12000) {
+         this.f();
+         this.g = 0;
+      } else {
+         this.g++;
+      }
+
+      if (this.i > 0) {
+         this.i--;
+      }
+   }
+
+   public void b() {
+      this.g = 0;
+      this.h = 0;
+      this.i = 0;
+   }
+
+   public static OptionalInt a(aqm $$0, ja $$1, aqn $$2) {
+      if (a($$0, $$1)) {
+         return OptionalInt.empty();
+      } else {
+         List<aqn> $$3 = b($$0, $$1);
+         if (!$$3.contains($$2)) {
+            $$3.add($$2);
+         }
+
+         if ($$3.stream().anyMatch($$0x -> $$0x.aa().map(clq::d).orElse(false))) {
+            return OptionalInt.empty();
          } else {
-            this.b = 1200;
-            cmh $$3 = $$0.j();
-            if ($$3 == null) {
-               return 0;
+            Optional<clq> $$4 = $$3.stream().flatMap($$0x -> $$0x.aa().stream()).max(Comparator.comparingInt(clq::c));
+            if ($$4.isPresent()) {
+               clq $$5 = $$4.get();
+               $$5.e();
+               $$3.forEach($$1x -> $$1x.aa().ifPresent($$1xx -> $$1xx.a($$5)));
+               return OptionalInt.of($$5.h);
             } else {
-               aym $$4 = $$0.z;
-               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               ja $$7 = $$3.dp().b($$5, 0, $$6);
-               int $$8 = 10;
-               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
-                  return 0;
-               } else {
-                  if (btu.a(bsj.p, $$0, $$7)) {
-                     if ($$0.a($$7, 2)) {
-                        return this.a($$0, $$7);
-                     }
-
-                     if ($$0.a().a($$7, awg.n).b()) {
-                        return this.b($$0, $$7);
-                     }
-                  }
-
-                  return 0;
-               }
+               return OptionalInt.empty();
             }
          }
-      } else {
-         return 0;
       }
    }
 
-   private int a(aqk $$0, ja $$1) {
-      int $$2 = 48;
-      if ($$0.y().a($$0x -> $$0x.a(ceg.n), $$1, 48, cec.b.b) > 4L) {
-         List<cer> $$3 = $$0.a(cer.class, new evu($$1).c(48.0, 8.0, 48.0));
-         if ($$3.size() < 5) {
-            return this.a($$1, $$0);
-         }
-      }
-
-      return 0;
+   private boolean d() {
+      return this.i > 0;
    }
 
-   private int b(aqk $$0, ja $$1) {
-      int $$2 = 16;
-      List<cer> $$3 = $$0.a(cer.class, new evu($$1).c(16.0, 8.0, 16.0));
-      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
+   private static boolean a(aqm $$0, ja $$1) {
+      ewa $$2 = ewa.a(ewf.b($$1), 48.0, 48.0, 48.0);
+      return !$$0.a(clo.class, $$2).isEmpty();
    }
 
-   private int a(ja $$0, aqk $$1) {
-      cer $$2 = bsj.p.a((dcd)$$1);
-      if ($$2 == null) {
-         return 0;
-      } else {
-         $$2.a($$1, $$1.d_($$0), btc.a, null);
-         $$2.a($$0, 0.0F, 0.0F);
-         $$1.a_($$2);
-         return 1;
+   private static List<aqn> b(aqm $$0, ja $$1) {
+      ewf $$2 = ewf.b($$1);
+      Predicate<aqn> $$3 = $$1x -> $$1x.do().a((jt)$$2, 16.0);
+      return $$0.a($$3.and(btb::bE).and(bsl.f));
+   }
+
+   private void e() {
+      if (!this.d()) {
+         this.g = 0;
+         this.i = 200;
+         this.a(this.c() + 1);
       }
+   }
+
+   private void f() {
+      this.a(this.c() - 1);
+   }
+
+   public void a(int $$0) {
+      this.h = ayg.a($$0, 0, 4);
+   }
+
+   public int c() {
+      return this.h;
+   }
+
+   private void a(clq $$0) {
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.g = $$0.g;
    }
 }

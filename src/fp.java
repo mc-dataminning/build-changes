@@ -41,24 +41,24 @@ public class fp<T> implements ArgumentType<jj.c<T>> {
       }
    }
 
-   public static jj.c<bub> a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static jj.c<bue> a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lr.c);
    }
 
-   public static jj.c<ear<?, ?>> b(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static jj.c<eax<?, ?>> b(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lr.aH);
    }
 
-   public static jj.c<eiq> c(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static jj.c<eiw> c(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lr.aQ);
    }
 
-   public static jj.c<bsj<?>> d(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static jj.c<bsm<?>> d(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lr.z);
    }
 
-   public static jj.c<bsj<?>> e(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
-      jj.c<bsj<?>> $$2 = a($$0, $$1, lr.z);
+   public static jj.c<bsm<?>> e(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+      jj.c<bsm<?>> $$2 = a($$0, $$1, lr.z);
       if (!$$2.a().c()) {
          throw d.create($$2.h().a().toString());
       } else {
@@ -66,11 +66,11 @@ public class fp<T> implements ArgumentType<jj.c<T>> {
       }
    }
 
-   public static jj.c<brj> f(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static jj.c<brm> f(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lr.V);
    }
 
-   public static jj.c<czj> g(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static jj.c<czl> g(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lr.aK);
    }
 

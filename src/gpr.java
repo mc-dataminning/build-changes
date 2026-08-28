@@ -1,30 +1,44 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gpr implements gpm {
-   public static final MapCodec<gpr> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gpr::new)
-   );
-   private final String c;
-   private final String d;
+@FunctionalInterface
+public interface gpr {
+   Logger a = LogUtils.getLogger();
 
-   public gpr(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   static gpr create(Collection<asv<?>> $$0) {
+      return ($$1, $$2) -> {
+         aty $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
+         }
+
+         ezn $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = ezn.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         gqz $$11 = $$3.a(gqz.a).orElse(gqz.e);
+         grb $$12 = $$11.a($$7.a(), $$7.b());
+         if (ayg.c($$7.a(), $$12.a()) && ayg.c($$7.b(), $$12.b())) {
+            return new gpi($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
+         }
+      };
    }
 
-   @Override
-   public void a(atu $$0, gpm.a $$1) {
-      akd $$2 = new akd("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         akk $$4 = $$2.b($$2x).d(this.d);
-         $$1.a($$4, $$3);
-      });
-   }
-
-   @Override
-   public gpo a() {
-      return gpp.b;
-   }
+   @Nullable
+   gpi loadSprite(akk var1, atu var2);
 }

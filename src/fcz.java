@@ -1,79 +1,125 @@
-public class fcz extends gvm {
-   private static final wu a = wu.c("mco.selectServer.create");
-   private static final wu b = wu.c("mco.configure.world.name");
-   private static final wu c = wu.c("mco.configure.world.description");
-   private static final int A = 10;
-   private static final int B = 210;
-   private final far C;
-   private final fkz D = new fkz(this);
-   private fhv E;
-   private fhv F;
-   private final Runnable G;
+import java.util.Locale;
 
-   public fcz(far $$0, fbn $$1) {
-      super(a);
-      this.C = $$0;
-      this.G = () -> this.a($$1);
-   }
+public class fcz extends gvs {
+   private static final wu a = wu.c("mco.backup.info.title");
+   private static final wu b = wu.c("mco.backup.unknown");
+   private final fnj c;
+   final fbi A;
+   final flf B = new flf(this);
+   private fcz.a C;
 
-   public fcz(far $$0, long $$1) {
+   public fcz(fnj $$0, fbi $$1) {
       super(a);
-      this.C = $$0;
-      this.G = () -> this.a($$1);
+      this.c = $$0;
+      this.A = $$1;
    }
 
    @Override
-   public void aO_() {
-      this.D.a(this.k, this.o);
-      fld $$0 = this.D.c(fld.d()).a(10);
-      fhm $$1 = fhm.a(wt.j, $$0x -> this.G.run()).a();
-      $$1.j = false;
-      this.E = new fhv(this.o, 210, 20, b);
-      this.E.b($$1x -> $$1.j = !aza.h($$1x));
-      this.F = new fhv(this.o, 210, 20, c);
-      $$0.a(fkv.a(this.o, this.E, b));
-      $$0.a(fkv.a(this.o, this.F, c));
-      fld $$2 = this.D.b(fld.e().a(10));
-      $$2.a($$1);
-      $$2.a(fhm.a(wt.k, $$0x -> this.d()).a());
-      this.D.a($$1x -> {
-         fhk var10000 = this.c($$1x);
-      });
+   public void aP_() {
+      this.B.a(a, this.o);
+      this.C = this.B.c(new fcz.a(this.l));
+      this.B.b(fhs.a(wt.k, $$0 -> this.d()).a());
       this.c();
-   }
-
-   @Override
-   protected void aD_() {
-      this.b(this.E);
+      this.B.a($$1 -> {
+         fhq var10000 = this.c($$1);
+      });
    }
 
    @Override
    protected void c() {
-      this.D.a();
-   }
-
-   private void a(fbn $$0) {
-      fep $$1 = new fep($$0.a, this.E.a(), this.F.a());
-      fdl $$2 = fdl.a(this, $$0, $$1, () -> this.l.execute(() -> {
-            far.g();
-            this.l.a(this.C);
-         }));
-      this.l.a($$2);
-   }
-
-   private void a(long $$0) {
-      fnd $$1 = new fdk($$1x -> {
-         if ($$1x == null) {
-            this.l.a(this);
-         } else {
-            this.l.a(new fdd(this, new fek(this.C, $$0, $$1x, this.E.a(), this.F.a())));
-         }
-      }, a);
-      this.l.a($$1);
+      this.C.b(this.m, this.B.d());
+      this.B.a();
    }
 
    @Override
    public void d() {
-      this.l.a(this.C);
+      this.l.a(this.c);
+   }
+
+   wu a(String $$0, String $$1) {
+      String $$2 = $$0.toLowerCase(Locale.ROOT);
+      if ($$2.contains("game") && $$2.contains("mode")) {
+         return this.b($$1);
+      } else {
+         return (wu)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : wu.b($$1));
+      }
+   }
+
+   private wu a(String $$0) {
+      try {
+         return fdv.a.get(Integer.parseInt($$0)).b();
+      } catch (Exception var3) {
+         return b;
+      }
+   }
+
+   private wu b(String $$0) {
+      try {
+         return fdv.b.get(Integer.parseInt($$0)).e();
+      } catch (Exception var3) {
+         return b;
+      }
+   }
+
+   class a extends fio<fcz.b> {
+      public a(final fft $$0) {
+         super($$0, fcz.this.m, fcz.this.B.d(), fcz.this.B.c(), 36);
+         if (fcz.this.A.e != null) {
+            fcz.this.A.e.forEach(($$0x, $$1) -> this.b(fcz.this.new b($$0x, $$1)));
+         }
+      }
+   }
+
+   class b extends fio.a<fcz.b> {
+      private static final wu b = wu.c("mco.backup.entry.templateName");
+      private static final wu c = wu.c("mco.backup.entry.gameDifficulty");
+      private static final wu d = wu.c("mco.backup.entry.name");
+      private static final wu e = wu.c("mco.backup.entry.gameServerVersion");
+      private static final wu f = wu.c("mco.backup.entry.uploaded");
+      private static final wu g = wu.c("mco.backup.entry.enabledPack");
+      private static final wu h = wu.c("mco.backup.entry.description");
+      private static final wu i = wu.c("mco.backup.entry.gameMode");
+      private static final wu j = wu.c("mco.backup.entry.seed");
+      private static final wu k = wu.c("mco.backup.entry.worldType");
+      private static final wu l = wu.c("mco.backup.entry.undefined");
+      private final String m;
+      private final String n;
+
+      public b(final String $$0, final String $$1) {
+         this.m = $$0;
+         this.n = $$1;
+      }
+
+      @Override
+      public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(fcz.this.o, this.a(this.m), $$3, $$2, -6250336);
+         $$0.b(fcz.this.o, fcz.this.a(this.m, this.n), $$3, $$2 + 12, -1);
+      }
+
+      private wu a(String $$0) {
+         return switch ($$0) {
+            case "template_name" -> b;
+            case "game_difficulty" -> c;
+            case "name" -> d;
+            case "game_server_version" -> e;
+            case "uploaded" -> f;
+            case "enabled_packs" -> g;
+            case "description" -> h;
+            case "game_mode" -> i;
+            case "seed" -> j;
+            case "world_type" -> k;
+            default -> l;
+         };
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return true;
+      }
+
+      @Override
+      public wu a() {
+         return wu.a("narrator.select", this.m + " " + this.n);
+      }
    }
 }

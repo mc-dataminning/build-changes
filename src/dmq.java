@@ -1,33 +1,124 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dmq extends des {
-   public static final MapCodec<dmq> c = b(dmq::new);
+public class dmq extends dfh {
+   public static final MapCodec<dmq> a = b(dmq::new);
+   public static final int b = 8;
+   public static final dtk c = dta.aF;
+   protected static final ewy[] d = new ewy[]{
+      ewv.a(),
+      dfh.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dfh.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dfh.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dfh.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dfh.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      dfh.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      dfh.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      dfh.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+   };
+   public static final int e = 5;
 
    @Override
    public MapCodec<dmq> a() {
-      return c;
+      return a;
    }
 
-   public dmq(dsg.d $$0) {
-      super($$0, 2.0F);
-   }
-
-   @Override
-   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
-      return this.a($$0, $$3, $$4) ? this.o() : dfh.a.o();
+   protected dmq(dsj.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(1)));
    }
 
    @Override
-   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
-      return m($$1.a_($$2.d()));
-   }
-
-   public static boolean m(dsh $$0) {
-      return $$0.a(avu.aT);
+   protected boolean a(dsk $$0, eow $$1) {
+      switch ($$1) {
+         case a:
+            return $$0.c(c) < 5;
+         case b:
+            return false;
+         case c:
+            return false;
+         default:
+            return false;
+      }
    }
 
    @Override
-   protected boolean f(dsh $$0) {
+   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected ewy b(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return d[$$0.c(c) - 1];
+   }
+
+   @Override
+   protected ewy b_(dsk $$0, dbl $$1, ja $$2) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected ewy c(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected boolean f_(dsk $$0) {
       return true;
+   }
+
+   @Override
+   protected float d(dsk $$0, dbl $$1, ja $$2) {
+      return $$0.c(c) == 8 ? 0.2F : 1.0F;
+   }
+
+   @Override
+   protected boolean a(dsk $$0, dci $$1, ja $$2) {
+      dsk $$3 = $$1.a_($$2.d());
+      if ($$3.a(avw.co)) {
+         return false;
+      } else {
+         return $$3.a(avw.cp) ? true : dfh.a($$3.k($$1, $$2.d()), jf.b) || $$3.a(this) && $$3.c(c) == 8;
+      }
+   }
+
+   @Override
+   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
+      return !$$0.a($$3, $$4) ? dfj.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void b(dsk $$0, aqm $$1, ja $$2, ayo $$3) {
+      if ($$1.a(dco.b, $$2) > 11) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   @Override
+   protected boolean a(dsk $$0, cxm $$1) {
+      int $$2 = $$0.c(c);
+      if (!$$1.n().a(this.r()) || $$2 >= 8) {
+         return $$2 == 1;
+      } else {
+         return $$1.c() ? $$1.k() == jf.b : true;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dsk a(cxm $$0) {
+      dsk $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         int $$2 = $$1.c(c);
+         return $$1.a(c, Integer.valueOf(Math.min(8, $$2 + 1)));
+      } else {
+         return super.a($$0);
+      }
+   }
+
+   @Override
+   protected void a(dsl.a<dfh, dsk> $$0) {
+      $$0.a(c);
    }
 }

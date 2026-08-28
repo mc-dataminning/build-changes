@@ -3,26 +3,20 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bww {
-   private static final int a = 1;
-
-   public static bus<bta> a(float $$0) {
-      return a($$1 -> $$0);
-   }
-
-   public static bus<bta> a(Function<bsy, Float> $$0) {
-      return bye.a(
-         (Function<bye.b<bta>, ? extends App<bye.c<bta>, byh<bta>>>)($$1 -> $$1.group($$1.a(ccc.m), $$1.a(ccc.n), $$1.b(ccc.o), $$1.a(ccc.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bsy $$9 = $$1.b($$4);
-                     Optional<cce> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && but.a($$7, $$9, 1)) {
-                        $$2.b();
+   public static buv<btb> a(bsm<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return byh.a(
+         (Function<byh.b<btb>, ? extends App<byh.c<btb>, byk<btb>>>)($$2x -> $$2x.group($$2x.a(ccf.n), $$2x.c(ccf.q), $$2x.b(ccf.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<btb> $$9 = $$2x.<cch>b($$5).a($$3xx -> $$3xx.g((bsg)$$7) <= (double)$$2 && $$0.equals($$3xx.al()));
+                     if ($$9.isEmpty()) {
+                        return false;
                      } else {
-                        $$3.a(new bvc($$9, true));
-                        $$2.a(new ccf(new bvc($$9, false), $$0.apply($$7), 0));
+                        btb $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new bvf($$10, true));
+                        return true;
                      }
-
-                     return true;
                   }))
       );
    }

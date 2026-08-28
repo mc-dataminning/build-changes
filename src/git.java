@@ -1,11 +1,11 @@
-public class git extends gkm<cev, fub<cev>> {
-   private static final akk a = new akk("textures/entity/cow/cow.png");
+public class git extends gks<cgi, fty<cgi>> {
+   private static final akk a = new akk("textures/entity/camel/camel.png");
 
-   public git(gjg.a $$0) {
-      super($$0, new fub<>($$0.a(fxh.G)), 0.7F);
+   public git(gjm.a $$0, fxm $$1) {
+      super($$0, new fty<>($$0.a($$1)), 0.7F);
    }
 
-   public akk a(cev $$0) {
+   public akk a(cgi $$0) {
       return a;
    }
 }

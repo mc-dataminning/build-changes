@@ -11,7 +11,7 @@ public class adn implements zb<abn> {
    private final float j;
    private final float k;
 
-   public adn(cme $$0) {
+   public adn(cmh $$0) {
       this.f = $$0.a;
       this.g = $$0.b;
       this.h = $$0.c;

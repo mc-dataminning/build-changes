@@ -1,48 +1,46 @@
-public abstract class gns<T extends bsd, M extends fui<T>> {
-   private final glc<T, M> a;
+public class gns extends gny<cgy, fvh<cgy>> {
+   private static final akk[] a = new akk[]{
+      new akk("textures/entity/llama/decor/white.png"),
+      new akk("textures/entity/llama/decor/orange.png"),
+      new akk("textures/entity/llama/decor/magenta.png"),
+      new akk("textures/entity/llama/decor/light_blue.png"),
+      new akk("textures/entity/llama/decor/yellow.png"),
+      new akk("textures/entity/llama/decor/lime.png"),
+      new akk("textures/entity/llama/decor/pink.png"),
+      new akk("textures/entity/llama/decor/gray.png"),
+      new akk("textures/entity/llama/decor/light_gray.png"),
+      new akk("textures/entity/llama/decor/cyan.png"),
+      new akk("textures/entity/llama/decor/purple.png"),
+      new akk("textures/entity/llama/decor/blue.png"),
+      new akk("textures/entity/llama/decor/brown.png"),
+      new akk("textures/entity/llama/decor/green.png"),
+      new akk("textures/entity/llama/decor/red.png"),
+      new akk("textures/entity/llama/decor/black.png")
+   };
+   private static final akk b = new akk("textures/entity/llama/decor/trader_llama.png");
+   private final fvh<cgy> c;
 
-   public gns(glc<T, M> $$0) {
-      this.a = $$0;
+   public gns(gli<cgy, fvh<cgy>> $$0, fxk $$1) {
+      super($$0);
+      this.c = new fvh<>($$1.a(fxn.ay));
    }
 
-   protected static <T extends bsy> void a(
-      fui<T> $$0,
-      fui<T> $$1,
-      akk $$2,
-      fag $$3,
-      gdx $$4,
-      int $$5,
-      T $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      if (!$$6.ch()) {
-         $$0.a($$1);
-         $$1.a($$6, $$7, $$8, $$12);
-         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
-         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
+   public void a(fam $$0, ged $$1, int $$2, cgy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      csv $$10 = $$3.gB();
+      akk $$11;
+      if ($$10 != null) {
+         $$11 = a[$$10.a()];
+      } else {
+         if (!$$3.gx()) {
+            return;
+         }
+
+         $$11 = b;
       }
-   }
 
-   protected static <T extends bsy> void a(fui<T> $$0, akk $$1, fag $$2, gdx $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
-      fak $$9 = $$3.getBuffer(gef.e($$1));
-      $$0.a($$2, $$9, $$4, gkh.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
+      this.c().a(this.c);
+      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
+      faq $$14 = $$1.getBuffer(gel.e($$11));
+      this.c.a($$0, $$14, $$2, gpf.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
-
-   public M c() {
-      return this.a.a();
-   }
-
-   protected akk a(T $$0) {
-      return this.a.a($$0);
-   }
-
-   public abstract void a(fag var1, gdx var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

@@ -1,328 +1,231 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dma {
-   public static final int a = 24;
-   public static final int b = 1000;
-   public static final float c = 0.5F;
-   private static final int e = 32;
-   public static final int d = 11;
-   final boolean f;
-   private final awk<dff> g;
-   private final int h;
-   private final int i;
-   private final int j;
-   private final int k;
-   private List<dma.a> l = new ArrayList<>();
-   private static final Logger m = LogUtils.getLogger();
+public class dma extends det implements dmi {
+   public static final MapCodec<dma> c = b(dma::new);
+   public static final int d = 30;
+   public static final int e = 10;
+   public static final dti<dtr> f = dta.bo;
+   public static final dtk g = dta.aT;
+   public static final dtb h = dta.C;
+   protected static final ewy i = dfh.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   private static final float[] a = ac.a(new float[16], $$0 -> {
+      int[] $$1 = new int[]{0, 0, 2, 4, 6, 7, 9, 10, 12, 14, 15, 18, 19, 21, 22, 24};
 
-   public dma(boolean $$0, awk<dff> $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$5;
+      for (int $$2 = 0; $$2 < 16; $$2++) {
+         $$0[$$2] = dkq.b($$1[$$2]);
+      }
+   });
+
+   @Override
+   public MapCodec<? extends dma> a() {
+      return c;
    }
 
-   public static dma a() {
-      return new dma(false, avu.bS, 10, 4, 10, 5);
+   public dma(dsj.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(f, dtr.a).a(g, Integer.valueOf(0)).a(h, Boolean.valueOf(false)));
    }
 
-   public static dma b() {
-      return new dma(true, avu.bT, 50, 1, 5, 10);
+   @Nullable
+   @Override
+   public dsk a(cxm $$0) {
+      ja $$1 = $$0.a();
+      eoh $$2 = $$0.q().b_($$1);
+      return this.o().a(h, Boolean.valueOf($$2.a() == eoi.c));
    }
 
-   public awk<dff> c() {
-      return this.g;
+   @Override
+   protected eoh b_(dsk $$0) {
+      return $$0.c(h) ? eoi.c.a(false) : super.b_($$0);
    }
 
-   public int d() {
-      return this.h;
+   @Override
+   protected void a(dsk $$0, aqm $$1, ja $$2, ayo $$3) {
+      if (m($$0) != dtr.b) {
+         if (m($$0) == dtr.c) {
+            $$1.a($$2, $$0.a(f, dtr.a), 3);
+            if (!$$0.c(h)) {
+               $$1.a(null, $$2, avh.wh, avi.e, 1.0F, $$1.z.i() * 0.2F + 0.8F);
+            }
+         }
+      } else {
+         a($$1, $$2, $$0);
+      }
    }
 
-   public int e() {
-      return this.i;
+   @Override
+   public void a(dcf $$0, ja $$1, dsk $$2, bsg $$3) {
+      if (!$$0.x_() && n($$2) && $$3.al() != bsm.bm && $$0.c_($$1) instanceof dqx $$5 && $$0 instanceof aqm $$6 && $$5.gr().a($$6, $$1, dxg.P, dxg.a.a($$2))) {
+         $$5.f().b($$6, dxg.P, dxg.a.a($$3), $$3.do());
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public int f() {
-      return this.j;
+   @Override
+   protected void b(dsk $$0, dcf $$1, ja $$2, dsk $$3, boolean $$4) {
+      if (!$$1.x_() && !$$0.a($$3.b())) {
+         if ($$0.c(g) > 0 && !$$1.P().a($$2, this)) {
+            $$1.a($$2, $$0.a(g, Integer.valueOf(0)), 18);
+         }
+      }
    }
 
-   public int g() {
-      return this.k;
+   @Override
+   protected void a(dsk $$0, dcf $$1, ja $$2, dsk $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (m($$0) == dtr.b) {
+            b($$1, $$2, $$0);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
-   public boolean h() {
-      return this.f;
+   @Override
+   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
+      if ($$0.c(h)) {
+         $$3.a($$4, eoi.c, eoi.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private static void b(dcf $$0, ja $$1, dsk $$2) {
+      dfh $$3 = $$2.b();
+      $$0.a($$1, $$3);
+      $$0.a($$1.d(), $$3);
+   }
+
+   @Nullable
+   @Override
+   public dpp a(ja $$0, dsk $$1) {
+      return new dqx($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dpp> dpq<T> a(dcf $$0, dsk $$1, dpr<T> $$2) {
+      return !$$0.B ? a($$2, dpr.I, ($$0x, $$1x, $$2x, $$3) -> dxp.c.a($$0x, $$3.gq(), $$3.gr())) : null;
+   }
+
+   @Override
+   protected dln a_(dsk $$0) {
+      return dln.c;
+   }
+
+   @Override
+   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return i;
+   }
+
+   @Override
+   protected boolean e_(dsk $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dsk $$0, dbl $$1, ja $$2, jf $$3) {
+      return $$0.c(g);
+   }
+
+   @Override
+   public int b(dsk $$0, dbl $$1, ja $$2, jf $$3) {
+      return $$3 == jf.b ? $$0.b($$1, $$2, $$3) : 0;
+   }
+
+   public static dtr m(dsk $$0) {
+      return $$0.c(f);
+   }
+
+   public static boolean n(dsk $$0) {
+      return m($$0) == dtr.a;
+   }
+
+   public static void a(dcf $$0, ja $$1, dsk $$2) {
+      $$0.a($$1, $$2.a(f, dtr.c).a(g, Integer.valueOf(0)), 3);
+      $$0.a($$1, $$2.b(), 10);
+      b($$0, $$1, $$2);
    }
 
    @VisibleForTesting
-   public List<dma.a> i() {
-      return this.l;
+   public int c() {
+      return 30;
    }
 
-   public void j() {
-      this.l.clear();
+   public void a(@Nullable bsg $$0, dcf $$1, ja $$2, dsk $$3, int $$4, int $$5) {
+      $$1.a($$2, $$3.a(f, dtr.b).a(g, Integer.valueOf($$4)), 3);
+      $$1.a($$2, $$3.b(), this.c());
+      b($$1, $$2, $$3);
+      a($$0, $$1, $$2, $$5);
+      $$1.a($$0, dxg.L, $$2);
+      if (!$$3.c(h)) {
+         $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, avh.wg, avi.e, 1.0F, $$1.z.i() * 0.2F + 0.8F);
+      }
    }
 
-   public void a(tx $$0) {
-      if ($$0.b("cursors", 9)) {
-         this.l.clear();
-         List<dma.a> $$1 = (List<dma.a>)dma.a.b.listOf().parse(new Dynamic(ul.a, $$0.c("cursors", 10))).resultOrPartial(m::error).orElseGet(ArrayList::new);
-         int $$2 = Math.min($$1.size(), 32);
-
-         for (int $$3 = 0; $$3 < $$2; $$3++) {
-            this.a($$1.get($$3));
+   public static void a(@Nullable bsg $$0, dcf $$1, ja $$2, int $$3) {
+      for (jf $$4 : jf.values()) {
+         ja $$5 = $$2.a($$4);
+         dsk $$6 = $$1.a_($$5);
+         if ($$6.a(avw.bV)) {
+            $$1.a(dxp.b($$3), $$5, dxg.a.a($$0, $$6));
+            float $$7 = a[$$3];
+            $$1.a(null, $$5, avh.I, avi.e, 1.0F, $$7);
          }
       }
    }
 
-   public void b(tx $$0) {
-      dma.a.b.listOf().encodeStart(ul.a, this.l).resultOrPartial(m::error).ifPresent($$1 -> $$0.a("cursors", $$1));
-   }
-
-   public void a(ja $$0, int $$1) {
-      while ($$1 > 0) {
-         int $$2 = Math.min($$1, 1000);
-         this.a(new dma.a($$0, $$2));
-         $$1 -= $$2;
-      }
-   }
-
-   private void a(dma.a $$0) {
-      if (this.l.size() < 32) {
-         this.l.add($$0);
+   @Override
+   public void a(dsk $$0, dcf $$1, ja $$2, ayo $$3) {
+      if (m($$0) == dtr.b) {
+         jf $$4 = jf.b($$3);
+         if ($$4 != jf.b && $$4 != jf.a) {
+            double $$5 = (double)$$2.u() + 0.5 + ($$4.j() == 0 ? 0.5 - $$3.j() : (double)$$4.j() * 0.6);
+            double $$6 = (double)$$2.v() + 0.25;
+            double $$7 = (double)$$2.w() + 0.5 + ($$4.l() == 0 ? 0.5 - $$3.j() : (double)$$4.l() * 0.6);
+            double $$8 = (double)$$3.i() * 0.04;
+            $$1.a(ld.b, $$5, $$6, $$7, 0.0, $$8, 0.0);
+         }
       }
    }
 
-   public void a(dce $$0, ja $$1, aym $$2, boolean $$3) {
-      if (!this.l.isEmpty()) {
-         List<dma.a> $$4 = new ArrayList<>();
-         Map<ja, dma.a> $$5 = new HashMap<>();
-         Object2IntMap<ja> $$6 = new Object2IntOpenHashMap();
+   @Override
+   protected void a(dsl.a<dfh, dsk> $$0) {
+      $$0.a(f, g, h);
+   }
 
-         for (dma.a $$7 : this.l) {
-            $$7.a($$0, $$1, $$2, this, $$3);
-            if ($$7.e <= 0) {
-               $$0.c(3006, $$7.a(), 0);
-            } else {
-               ja $$8 = $$7.a();
-               $$6.computeInt($$8, ($$1x, $$2x) -> ($$2x == null ? 0 : $$2x) + $$7.e);
-               dma.a $$9 = $$5.get($$8);
-               if ($$9 == null) {
-                  $$5.put($$8, $$7);
-                  $$4.add($$7);
-               } else if (!this.h() && $$7.e + $$9.e <= 1000) {
-                  $$9.a($$7);
-               } else {
-                  $$4.add($$7);
-                  if ($$7.e < $$9.e) {
-                     $$5.put($$8, $$7);
-                  }
-               }
-            }
-         }
+   @Override
+   protected boolean c_(dsk $$0) {
+      return true;
+   }
 
-         ObjectIterator var16 = $$6.object2IntEntrySet().iterator();
-
-         while (var16.hasNext()) {
-            Entry<ja> $$10 = (Entry<ja>)var16.next();
-            ja $$11 = (ja)$$10.getKey();
-            int $$12 = $$10.getIntValue();
-            dma.a $$13 = $$5.get($$11);
-            Collection<jf> $$14 = $$13 == null ? null : $$13.d();
-            if ($$12 > 0 && $$14 != null) {
-               int $$15 = (int)(Math.log1p((double)$$12) / 2.3F) + 1;
-               int $$16 = ($$15 << 6) + dkf.a($$14);
-               $$0.c(3006, $$11, $$16);
-            }
-         }
-
-         this.l = $$4;
+   @Override
+   protected int a(dsk $$0, dcf $$1, ja $$2) {
+      if ($$1.c_($$2) instanceof dqx $$4) {
+         return m($$0) == dtr.b ? $$4.d() : 0;
+      } else {
+         return 0;
       }
    }
 
-   public static class a {
-      private static final ObjectArrayList<ke> c = ac.a(
-         new ObjectArrayList(18),
-         $$0 -> ja.d(new ja(-1, -1, -1), new ja(1, 1, 1))
-               .filter($$0x -> ($$0x.u() == 0 || $$0x.v() == 0 || $$0x.w() == 0) && !$$0x.equals(ja.c))
-               .map(ja::i)
-               .forEach($$0::add)
-      );
-      public static final int a = 1;
-      private ja d;
-      int e;
-      private int f;
-      private int g;
-      @Nullable
-      private Set<jf> h;
-      private static final Codec<Set<jf>> i = jf.g.listOf().xmap($$0 -> Sets.newEnumSet($$0, jf.class), Lists::newArrayList);
-      public static final Codec<dma.a> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ja.a.fieldOf("pos").forGetter(dma.a::a),
-                  Codec.intRange(0, 1000).fieldOf("charge").orElse(0).forGetter(dma.a::b),
-                  Codec.intRange(0, 1).fieldOf("decay_delay").orElse(1).forGetter(dma.a::c),
-                  Codec.intRange(0, Integer.MAX_VALUE).fieldOf("update_delay").orElse(0).forGetter($$0x -> $$0x.f),
-                  i.lenientOptionalFieldOf("facings").forGetter($$0x -> Optional.ofNullable($$0x.d()))
-               )
-               .apply($$0, dma.a::new)
-      );
+   @Override
+   protected boolean a(dsk $$0, eow $$1) {
+      return false;
+   }
 
-      private a(ja $$0, int $$1, int $$2, int $$3, Optional<Set<jf>> $$4) {
-         this.d = $$0;
-         this.e = $$1;
-         this.g = $$2;
-         this.f = $$3;
-         this.h = $$4.orElse(null);
-      }
+   @Override
+   protected boolean f_(dsk $$0) {
+      return true;
+   }
 
-      public a(ja $$0, int $$1) {
-         this($$0, $$1, 1, 0, Optional.empty());
-      }
-
-      public ja a() {
-         return this.d;
-      }
-
-      public int b() {
-         return this.e;
-      }
-
-      public int c() {
-         return this.g;
-      }
-
-      @Nullable
-      public Set<jf> d() {
-         return this.h;
-      }
-
-      private boolean a(dce $$0, ja $$1, boolean $$2) {
-         if (this.e <= 0) {
-            return false;
-         } else if ($$2) {
-            return true;
-         } else {
-            return $$0 instanceof aqk $$3 ? $$3.n($$1) : false;
-         }
-      }
-
-      public void a(dce $$0, ja $$1, aym $$2, dma $$3, boolean $$4) {
-         if (this.a($$0, $$1, $$3.f)) {
-            if (this.f > 0) {
-               this.f--;
-            } else {
-               dsh $$5 = $$0.a_(this.d);
-               dlv $$6 = a($$5);
-               if ($$4 && $$6.a($$0, this.d, $$5, this.h, $$3.h())) {
-                  if ($$6.d()) {
-                     $$5 = $$0.a_(this.d);
-                     $$6 = a($$5);
-                  }
-
-                  $$0.a(null, this.d, avf.vT, avg.e, 1.0F, 1.0F);
-               }
-
-               this.e = $$6.a(this, $$0, $$1, $$2, $$3, $$4);
-               if (this.e <= 0) {
-                  $$6.a($$0, $$5, this.d, $$2);
-               } else {
-                  ja $$7 = a($$0, this.d, $$2);
-                  if ($$7 != null) {
-                     $$6.a($$0, $$5, this.d, $$2);
-                     this.d = $$7.i();
-                     if ($$3.h() && !this.d.a(new ke($$1.u(), this.d.v(), $$1.w()), 15.0)) {
-                        this.e = 0;
-                        return;
-                     }
-
-                     $$5 = $$0.a_($$7);
-                  }
-
-                  if ($$5.b() instanceof dlv) {
-                     this.h = dkf.m($$5);
-                  }
-
-                  this.g = $$6.i_(this.g);
-                  this.f = $$6.b();
-               }
-            }
-         }
-      }
-
-      void a(dma.a $$0) {
-         this.e = this.e + $$0.e;
-         $$0.e = 0;
-         this.f = Math.min(this.f, $$0.f);
-      }
-
-      private static dlv a(dsh $$0) {
-         return $$0.b() instanceof dlv $$1 ? $$1 : dlv.s_;
-      }
-
-      private static List<ke> a(aym $$0) {
-         return ac.a(c, $$0);
-      }
-
-      @Nullable
-      private static ja a(dce $$0, ja $$1, aym $$2) {
-         ja.a $$3 = $$1.j();
-         ja.a $$4 = $$1.j();
-
-         for (ke $$5 : a($$2)) {
-            $$4.a($$1, $$5);
-            dsh $$6 = $$0.a_($$4);
-            if ($$6.b() instanceof dlv && a($$0, $$1, $$4)) {
-               $$3.g($$4);
-               if (dmb.a($$0, $$6, $$4)) {
-                  break;
-               }
-            }
-         }
-
-         return $$3.equals($$1) ? null : $$3;
-      }
-
-      private static boolean a(dce $$0, ja $$1, ja $$2) {
-         if ($$1.k($$2) == 1) {
-            return true;
-         } else {
-            ja $$3 = $$2.b($$1);
-            jf $$4 = jf.a(jf.a.a, $$3.u() < 0 ? jf.b.b : jf.b.a);
-            jf $$5 = jf.a(jf.a.b, $$3.v() < 0 ? jf.b.b : jf.b.a);
-            jf $$6 = jf.a(jf.a.c, $$3.w() < 0 ? jf.b.b : jf.b.a);
-            if ($$3.u() == 0) {
-               return a($$0, $$1, $$5) || a($$0, $$1, $$6);
-            } else {
-               return $$3.v() == 0 ? a($$0, $$1, $$4) || a($$0, $$1, $$6) : a($$0, $$1, $$4) || a($$0, $$1, $$5);
-            }
-         }
-      }
-
-      private static boolean a(dce $$0, ja $$1, jf $$2) {
-         ja $$3 = $$1.a($$2);
-         return !$$0.a_($$3).d($$0, $$3, $$2.g());
+   @Override
+   protected void a(dsk $$0, aqm $$1, ja $$2, cuc $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, bpi.a(5));
       }
    }
 }

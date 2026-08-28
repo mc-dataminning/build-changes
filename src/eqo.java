@@ -1,142 +1,94 @@
-import com.google.common.collect.Sets;
-import java.util.Optional;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
 import java.util.Set;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public class eqo {
-   private final eqr a;
-   private final aym b;
-   private final jk.a c;
-   private final Set<eqo.c<?>> d = Sets.newLinkedHashSet();
+public interface eqo {
+   int d = 19133;
+   int e = 19132;
 
-   eqo(eqr $$0, aym $$1, jk.a $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   dda D();
+
+   void a(dda var1);
+
+   boolean F();
+
+   Set<String> G();
+
+   Set<String> H();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.G()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.x();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
+      });
    }
 
-   public boolean a(eth<?> $$0) {
-      return this.a.a($$0);
-   }
-
-   public <T> T b(eth<T> $$0) {
-      return this.a.b($$0);
-   }
-
-   public void a(akk $$0, Consumer<cua> $$1) {
-      this.a.a($$0, $$1);
+   default String f(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
+      }
    }
 
    @Nullable
-   public <T> T c(eth<T> $$0) {
-      return this.a.d($$0);
-   }
+   tx E();
 
-   public boolean a(eqo.c<?> $$0) {
-      return this.d.contains($$0);
-   }
+   void a(@Nullable tx var1);
 
-   public boolean b(eqo.c<?> $$0) {
-      return this.d.add($$0);
-   }
+   eqn I();
 
-   public void c(eqo.c<?> $$0) {
-      this.d.remove($$0);
-   }
+   dcj J();
 
-   public jk.a a() {
-      return this.c;
-   }
+   tx a(jx var1, @Nullable tx var2);
 
-   public aym b() {
-      return this.b;
-   }
+   boolean l();
 
-   public float c() {
-      return this.a.b();
-   }
+   int x();
 
-   public aqk d() {
-      return this.a.a();
-   }
+   String e();
 
-   public static eqo.c<eqt> a(eqt $$0) {
-      return new eqo.c<>(eqq.c, $$0);
-   }
+   dcc k();
 
-   public static eqo.c<etz> a(etz $$0) {
-      return new eqo.c<>(eqq.a, $$0);
-   }
+   void a(dcc var1);
 
-   public static eqo.c<esc> a(esc $$0) {
-      return new eqo.c<>(eqq.b, $$0);
-   }
+   boolean m();
 
-   public static class a {
-      private final eqr a;
-      @Nullable
-      private aym b;
+   bqd q();
 
-      public a(eqr $$0) {
-         this.a = $$0;
-      }
+   void a(bqd var1);
 
-      public eqo.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = aym.a($$0);
-         }
+   boolean r();
 
-         return this;
-      }
+   void d(boolean var1);
 
-      public aqk a() {
-         return this.a.a();
-      }
+   dcb o();
 
-      public eqo a(Optional<akk> $$0) {
-         aqk $$1 = this.a();
-         MinecraftServer $$2 = $$1.o();
-         aym $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
-         return new eqo(this.a, $$3, $$2.be().b());
-      }
-   }
+   @Nullable
+   tx w();
 
-   public static enum b implements ayz {
-      a("this", etk.a),
-      b("attacker", etk.d),
-      c("direct_attacker", etk.e),
-      d("attacking_player", etk.b);
+   dwi.a C();
 
-      public static final ayz.a<eqo.b> e = ayz.a(eqo.b::values);
-      private final String f;
-      private final eth<? extends bsd> g;
+   void a(dwi.a var1);
 
-      private b(final String $$0, final eth<? extends bsd> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
+   dzd y();
 
-      public eth<? extends bsd> a() {
-         return this.g;
-      }
+   boolean z();
 
-      public static eqo.b a(String $$0) {
-         eqo.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
-         }
-      }
+   boolean A();
 
-      @Override
-      public String c() {
-         return this.f;
-      }
-   }
+   Lifecycle B();
 
-   public static record c<T>(eqq<T> a, T b) {
+   default coy K() {
+      return this.D().b();
    }
 }

@@ -1,91 +1,101 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.time.Duration;
-import java.time.Instant;
-import org.apache.commons.lang3.StringUtils;
+import javax.annotation.Nullable;
 
-public class fly {
-   private static final wu b = wu.c("gui.banned.title.temporary").a(n.r);
-   private static final wu c = wu.c("gui.banned.title.permanent").a(n.r);
-   public static final wu a = wu.c("gui.banned.name.title").a(n.r);
-   private static final wu d = wu.c("gui.banned.skin.title").a(n.r);
-   private static final wu e = wu.a("gui.banned.skin.description", wu.b("https://aka.ms/mcjavamoderation"));
+public record fly(flx a, int b, int c) {
+   private static final fly d = new fly(0, 0, 0, 0);
 
-   public static fma a(BooleanConsumer $$0, BanDetails $$1) {
-      return new fma($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", wt.m, true);
+   public fly(int $$0, int $$1, int $$2, int $$3) {
+      this(new flx($$0, $$1), $$2, $$3);
    }
 
-   public static fma a(Runnable $$0) {
-      String $$1 = "https://aka.ms/mcjavamoderation";
-      return new fma($$1x -> {
-         if ($$1x) {
-            ac.k().a("https://aka.ms/mcjavamoderation");
-         }
-
-         $$0.run();
-      }, d, e, "https://aka.ms/mcjavamoderation", wt.m, true);
+   public static fly a() {
+      return d;
    }
 
-   public static fma a(String $$0, Runnable $$1) {
-      String $$2 = "https://aka.ms/mcjavamoderation";
-      return new fma($$1x -> {
-         if ($$1x) {
-            ac.k().a("https://aka.ms/mcjavamoderation");
-         }
-
-         $$1.run();
-      }, a, wu.a("gui.banned.name.description", wu.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", wt.m, true);
+   public static fly a(flv $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fly($$1, $$2, $$3, $$4);
+         case b -> new fly($$2, $$1, $$4, $$3);
+      };
    }
 
-   private static wu a(BanDetails $$0) {
-      return f($$0) ? b : c;
+   public fly a(flw $$0) {
+      return new fly(this.a.a($$0), this.b, this.c);
    }
 
-   private static wu b(BanDetails $$0) {
-      return wu.a("gui.banned.description", c($$0), d($$0), wu.b("https://aka.ms/mcjavamoderation"));
+   public int a(flv $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
    }
 
-   private static wu c(BanDetails $$0) {
-      String $$1 = $$0.reason();
-      String $$2 = $$0.reasonMessage();
-      if (StringUtils.isNumeric($$1)) {
-         int $$3 = Integer.parseInt($$1);
-         fze $$4 = fze.a($$3);
-         wu $$5;
-         if ($$4 != null) {
-            $$5 = wx.a($$4.a().f(), xr.a.a(true));
-         } else if ($$2 != null) {
-            $$5 = wu.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
-         } else {
-            $$5 = wu.a("gui.banned.description.reason_id", $$3).a(n.r);
-         }
-
-         return wu.a("gui.banned.description.reason", $$5);
-      } else {
-         return wu.c("gui.banned.description.unknownreason");
-      }
+   public int b(flw $$0) {
+      flv $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
    }
 
-   private static wu d(BanDetails $$0) {
-      if (f($$0)) {
-         wu $$1 = e($$0);
-         return wu.a("gui.banned.description.temporary", wu.a("gui.banned.description.temporary.duration", $$1).a(n.r));
-      } else {
-         return wu.c("gui.banned.description.permanent").a(n.r);
-      }
+   public fly c(flw $$0) {
+      int $$1 = this.b($$0);
+      flv $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
    }
 
-   private static wu e(BanDetails $$0) {
-      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
-      long $$2 = $$1.toHours();
-      if ($$2 > 72L) {
-         return wt.a($$1.toDays());
-      } else {
-         return $$2 < 1L ? wt.c($$1.toMinutes()) : wt.b($$1.toHours());
-      }
+   public boolean a(fly $$0) {
+      return this.a($$0, flv.a) && this.a($$0, flv.b);
    }
 
-   private static boolean f(BanDetails $$0) {
-      return $$0.expires() != null;
+   public boolean a(fly $$0, flv $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(flv $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
+   @Nullable
+   public fly b(fly $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fly($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   }
+
+   public int b() {
+      return this.a.b();
+   }
+
+   public int c() {
+      return this.a.b() + this.c;
+   }
+
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   }
+
+   public flx f() {
+      return this.a;
+   }
+
+   public int g() {
+      return this.b;
+   }
+
+   public int h() {
+      return this.c;
    }
 }

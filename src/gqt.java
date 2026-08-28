@@ -1,58 +1,31 @@
 import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
 import java.util.List;
 
 public class gqt {
-   public static final gqu a = new gqu();
-   public static final String b = "animation";
-   public static final int c = 1;
-   public static final int d = -1;
-   public static final gqt e = new gqt(Lists.newArrayList(), -1, -1, 1, false) {
-      @Override
-      public gqv a(int $$0, int $$1) {
-         return new gqv($$0, $$1);
+   public static axs a(wz $$0, boolean $$1) {
+      xs $$2 = xs.a($$0, UCharacter::getMirror, gqt::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<axs> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
+
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
       }
-   };
-   private final List<gqs> f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final boolean j;
 
-   public gqt(List<gqs> $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
+      return axs.composite($$4);
    }
 
-   public gqv a(int $$0, int $$1) {
-      if (this.g != -1) {
-         return this.h != -1 ? new gqv(this.g, this.h) : new gqv(this.g, $$1);
-      } else if (this.h != -1) {
-         return new gqv($$0, this.h);
-      } else {
-         int $$2 = Math.min($$0, $$1);
-         return new gqv($$2, $$2);
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
       }
-   }
-
-   public int a() {
-      return this.i;
-   }
-
-   public boolean b() {
-      return this.j;
-   }
-
-   public void a(gqt.a $$0) {
-      for (gqs $$1 : this.f) {
-         $$0.accept($$1.a(), $$1.a(this.i));
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void accept(int var1, int var2);
    }
 }

@@ -1,31 +1,24 @@
-public class gla extends gkm<cfi, fvt<cfi>> {
-   private static final akk a = new akk("textures/entity/rabbit/brown.png");
-   private static final akk i = new akk("textures/entity/rabbit/white.png");
-   private static final akk j = new akk("textures/entity/rabbit/black.png");
-   private static final akk k = new akk("textures/entity/rabbit/gold.png");
-   private static final akk l = new akk("textures/entity/rabbit/salt.png");
-   private static final akk m = new akk("textures/entity/rabbit/white_splotched.png");
-   private static final akk n = new akk("textures/entity/rabbit/toast.png");
-   private static final akk o = new akk("textures/entity/rabbit/caerbannog.png");
+public class gla extends gks<cjs, fvp<cjs>> {
+   private static final akk a = new akk("textures/entity/phantom.png");
 
-   public gla(gjg.a $$0) {
-      super($$0, new fvt<>($$0.a(fxh.be)), 0.3F);
+   public gla(gjm.a $$0) {
+      super($$0, new fvp<>($$0.a(fxn.aH)), 0.75F);
+      this.a(new gnw<>(this));
    }
 
-   public akk a(cfi $$0) {
-      String $$1 = n.a($$0.af().getString());
-      if ("Toast".equals($$1)) {
-         return n;
-      } else {
-         return switch ($$0.gn()) {
-            case a -> a;
-            case b -> i;
-            case c -> j;
-            case e -> k;
-            case f -> l;
-            case d -> m;
-            case g -> o;
-         };
-      }
+   public akk a(cjs $$0) {
+      return a;
+   }
+
+   protected void a(cjs $$0, fam $$1, float $$2) {
+      int $$3 = $$0.s();
+      float $$4 = 1.0F + 0.15F * (float)$$3;
+      $$1.b($$4, $$4, $$4);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(cjs $$0, fam $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$1.a(a.b.rotationDegrees($$0.dI()));
    }
 }

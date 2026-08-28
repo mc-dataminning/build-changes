@@ -1,48 +1,74 @@
+import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record eto(jj<czj> b, List<Float> c) implements etz {
-   public static final MapCodec<eto> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(czj.b.fieldOf("enchantment").forGetter(eto::c), axm.a(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(eto::d)).apply($$0, eto::new)
-   );
+public class eto {
+   private final Set<etn<?>> a;
+   private final Set<etn<?>> b;
 
-   @Override
-   public eua b() {
-      return eub.k;
+   eto(Set<etn<?>> $$0, Set<etn<?>> $$1) {
+      this.a = ImmutableSet.copyOf($$0);
+      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
    }
 
-   @Override
-   public Set<eth<?>> a() {
-      return ImmutableSet.of(etk.i);
+   public boolean a(etn<?> $$0) {
+      return this.b.contains($$0);
    }
 
-   public boolean a(eqo $$0) {
-      cua $$1 = $$0.c(etk.i);
-      int $$2 = $$1 != null ? czl.a(this.b, $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   public Set<etn<?>> a() {
+      return this.a;
    }
 
-   public static etz.a a(jj<czj> $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
-      }
-
-      return () -> new eto($$0, $$2);
-   }
-
-   public jj<czj> c() {
+   public Set<etn<?>> b() {
       return this.b;
    }
 
-   public List<Float> d() {
-      return this.c;
+   @Override
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   }
+
+   public void a(era $$0, eqv $$1) {
+      this.a($$0.b(), $$1);
+   }
+
+   public void a(aym $$0, eqv $$1) {
+      Set<etn<?>> $$2 = $$1.a();
+      Set<etn<?>> $$3 = Sets.difference($$2, this.b);
+      if (!$$3.isEmpty()) {
+         $$0.b("Parameters " + $$3 + " are not provided in this context");
+      }
+   }
+
+   public static eto.a c() {
+      return new eto.a();
+   }
+
+   public static class a {
+      private final Set<etn<?>> a = Sets.newIdentityHashSet();
+      private final Set<etn<?>> b = Sets.newIdentityHashSet();
+
+      public eto.a a(etn<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
+         }
+      }
+
+      public eto.a b(etn<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
+
+      public eto a() {
+         return new eto(this.a, this.b);
+      }
    }
 }

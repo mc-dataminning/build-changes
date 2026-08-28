@@ -1,35 +1,40 @@
 import com.google.common.collect.ImmutableMap;
 
-public class byq<E extends cll> extends bur<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
+public class byq extends buu<clo> {
+   private static final int c = 25;
+   private static final int d = 20;
 
-   public byq(int $$0) {
-      super(ImmutableMap.of(ccc.aB, ccd.a, ccc.o, ccd.b, ccc.m, ccd.b, ccc.n, ccd.c, ccc.B, ccd.c, ccc.az, ccd.c, ccc.aG, ccd.c), $$0);
+   public byq() {
+      super(ImmutableMap.of(ccf.ay, ccg.a, ccf.o, ccg.b, ccf.aF, ccg.c, ccf.aD, ccg.c), clp.b);
    }
 
-   protected boolean a(aqk $$0, E $$1, long $$2) {
+   protected void a(aqm $$0, clo $$1, long $$2) {
+      bud<clo> $$3 = $$1.dU();
+      $$3.a(ccf.aD, azk.a, 25L);
+      $$3.b(ccf.m);
+      btb $$4 = $$1.dU().c(ccf.ay).get();
+      buw.a($$1, $$4);
+      $$1.b(btn.l);
+      $$1.a($$4, 20, false);
+   }
+
+   protected boolean b(aqm $$0, clo $$1, long $$2) {
       return true;
    }
 
-   protected void b(aqk $$0, E $$1, long $$2) {
-      $$1.a(avf.BU, 5.0F, 1.0F);
+   protected void c(aqm $$0, clo $$1, long $$2) {
+      if (!$$1.dU().a(ccf.aD) && !$$1.dU().a(ccf.aF)) {
+         $$1.dU().a(ccf.aF, azk.a, (long)(clp.b - 25));
+         $$1.a(avh.BT, 3.0F, 1.0F);
+      }
    }
 
-   protected void c(aqk $$0, E $$1, long $$2) {
-      if ($$1.c(btk.m)) {
-         $$1.b(btk.a);
+   protected void d(aqm $$0, clo $$1, long $$2) {
+      if ($$1.c(btn.l)) {
+         $$1.b(btn.a);
       }
 
-      $$1.dT().b(ccc.aB);
-      $$1.dT().c(ccc.B).filter($$1::b).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.d($$1x);
-         }
-
-         if (!$$1.dT().a(ccc.az)) {
-            clm.a($$1, $$1x.dp());
-         }
-      });
+      $$1.dU().c(ccf.ay).ifPresent($$1::j);
+      $$1.dU().b(ccf.ay);
    }
 }

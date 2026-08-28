@@ -1,23 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dda {
-   public static final Codec<dda> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ave.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dda::new)
+public record dda(dbt d, coy e) {
+   public static final String a = "enabled_features";
+   public static final Codec<dda> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dbt.b.lenientOptionalFieldOf("DataPacks", dbt.a).forGetter(dda::a), cpa.e.lenientOptionalFieldOf("enabled_features", cpa.g).forGetter(dda::b)
+            )
+            .apply($$0, dda::new)
    );
-   private final jj<ave> b;
-   private final double c;
+   public static final dda c = new dda(dbt.a, cpa.g);
 
-   public dda(jj<ave> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public dda a(coy $$0) {
+      return new dda(this.d, this.e.c($$0));
    }
 
-   public jj<ave> a() {
-      return this.b;
+   public dbt a() {
+      return this.d;
    }
 
-   public double b() {
-      return this.c;
+   public coy b() {
+      return this.e;
    }
 }

@@ -1,109 +1,192 @@
-import java.util.function.Supplier;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.RecordBuilder.AbstractUniversalBuilder;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public class ayi {
-   public static void a(dcd $$0, ja $$1, lh $$2, bpi $$3) {
-      for (jf $$4 : jf.values()) {
-         a($$0, $$1, $$2, $$3, $$4, () -> a($$0.z), 0.55);
+public class ayi implements DynamicOps<azk> {
+   public static final ayi a = new ayi();
+
+   private ayi() {
+   }
+
+   public <U> U a(DynamicOps<U> $$0, azk $$1) {
+      return (U)$$0.empty();
+   }
+
+   public azk a() {
+      return azk.a;
+   }
+
+   public azk b() {
+      return azk.a;
+   }
+
+   public azk c() {
+      return azk.a;
+   }
+
+   public azk a(Number $$0) {
+      return azk.a;
+   }
+
+   public azk a(byte $$0) {
+      return azk.a;
+   }
+
+   public azk a(short $$0) {
+      return azk.a;
+   }
+
+   public azk a(int $$0) {
+      return azk.a;
+   }
+
+   public azk a(long $$0) {
+      return azk.a;
+   }
+
+   public azk a(float $$0) {
+      return azk.a;
+   }
+
+   public azk a(double $$0) {
+      return azk.a;
+   }
+
+   public azk a(boolean $$0) {
+      return azk.a;
+   }
+
+   public azk a(String $$0) {
+      return azk.a;
+   }
+
+   public DataResult<Number> a(azk $$0) {
+      return DataResult.error(() -> "Not a number");
+   }
+
+   public DataResult<Boolean> b(azk $$0) {
+      return DataResult.error(() -> "Not a boolean");
+   }
+
+   public DataResult<String> c(azk $$0) {
+      return DataResult.error(() -> "Not a string");
+   }
+
+   public DataResult<azk> a(azk $$0, azk $$1) {
+      return DataResult.success(azk.a);
+   }
+
+   public DataResult<azk> a(azk $$0, List<azk> $$1) {
+      return DataResult.success(azk.a);
+   }
+
+   public DataResult<azk> a(azk $$0, azk $$1, azk $$2) {
+      return DataResult.success(azk.a);
+   }
+
+   public DataResult<azk> a(azk $$0, Map<azk, azk> $$1) {
+      return DataResult.success(azk.a);
+   }
+
+   public DataResult<azk> a(azk $$0, MapLike<azk> $$1) {
+      return DataResult.success(azk.a);
+   }
+
+   public DataResult<Stream<Pair<azk, azk>>> d(azk $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Consumer<BiConsumer<azk, azk>>> e(azk $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<MapLike<azk>> f(azk $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Stream<azk>> g(azk $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<Consumer<Consumer<azk>>> h(azk $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<ByteBuffer> i(azk $$0) {
+      return DataResult.error(() -> "Not a byte list");
+   }
+
+   public DataResult<IntStream> j(azk $$0) {
+      return DataResult.error(() -> "Not an int list");
+   }
+
+   public DataResult<LongStream> k(azk $$0) {
+      return DataResult.error(() -> "Not a long list");
+   }
+
+   public azk a(Stream<Pair<azk, azk>> $$0) {
+      return azk.a;
+   }
+
+   public azk a(Map<azk, azk> $$0) {
+      return azk.a;
+   }
+
+   public azk b(Stream<azk> $$0) {
+      return azk.a;
+   }
+
+   public azk a(ByteBuffer $$0) {
+      return azk.a;
+   }
+
+   public azk a(IntStream $$0) {
+      return azk.a;
+   }
+
+   public azk a(LongStream $$0) {
+      return azk.a;
+   }
+
+   public azk a(azk $$0, String $$1) {
+      return $$0;
+   }
+
+   public RecordBuilder<azk> mapBuilder() {
+      return new ayi.a(this);
+   }
+
+   @Override
+   public String toString() {
+      return "Null";
+   }
+
+   static final class a extends AbstractUniversalBuilder<azk, azk> {
+      public a(DynamicOps<azk> $$0) {
+         super($$0);
       }
-   }
 
-   public static void a(dcd $$0, ja $$1, lh $$2, bpi $$3, jf $$4, Supplier<evz> $$5, double $$6) {
-      int $$7 = $$3.a($$0.z);
-
-      for (int $$8 = 0; $$8 < $$7; $$8++) {
-         a($$0, $$1, $$4, $$2, $$5.get(), $$6);
-      }
-   }
-
-   private static evz a(aym $$0) {
-      return new evz(aye.a($$0, -0.5, 0.5), aye.a($$0, -0.5, 0.5), aye.a($$0, -0.5, 0.5));
-   }
-
-   public static void a(jf.a $$0, dcd $$1, ja $$2, double $$3, lh $$4, bpo $$5) {
-      evz $$6 = evz.b($$2);
-      boolean $$7 = $$0 == jf.a.a;
-      boolean $$8 = $$0 == jf.a.b;
-      boolean $$9 = $$0 == jf.a.c;
-      int $$10 = $$5.a($$1.z);
-
-      for (int $$11 = 0; $$11 < $$10; $$11++) {
-         double $$12 = $$6.c + aye.a($$1.z, -1.0, 1.0) * ($$7 ? 0.5 : $$3);
-         double $$13 = $$6.d + aye.a($$1.z, -1.0, 1.0) * ($$8 ? 0.5 : $$3);
-         double $$14 = $$6.e + aye.a($$1.z, -1.0, 1.0) * ($$9 ? 0.5 : $$3);
-         double $$15 = $$7 ? aye.a($$1.z, -1.0, 1.0) : 0.0;
-         double $$16 = $$8 ? aye.a($$1.z, -1.0, 1.0) : 0.0;
-         double $$17 = $$9 ? aye.a($$1.z, -1.0, 1.0) : 0.0;
-         $$1.a($$4, $$12, $$13, $$14, $$15, $$16, $$17);
-      }
-   }
-
-   public static void a(dcd $$0, ja $$1, jf $$2, lh $$3, evz $$4, double $$5) {
-      evz $$6 = evz.b($$1);
-      int $$7 = $$2.j();
-      int $$8 = $$2.k();
-      int $$9 = $$2.l();
-      double $$10 = $$6.c + ($$7 == 0 ? aye.a($$0.z, -0.5, 0.5) : (double)$$7 * $$5);
-      double $$11 = $$6.d + ($$8 == 0 ? aye.a($$0.z, -0.5, 0.5) : (double)$$8 * $$5);
-      double $$12 = $$6.e + ($$9 == 0 ? aye.a($$0.z, -0.5, 0.5) : (double)$$9 * $$5);
-      double $$13 = $$7 == 0 ? $$4.a() : 0.0;
-      double $$14 = $$8 == 0 ? $$4.b() : 0.0;
-      double $$15 = $$9 == 0 ? $$4.c() : 0.0;
-      $$0.a($$3, $$10, $$11, $$12, $$13, $$14, $$15);
-   }
-
-   public static void a(dcd $$0, ja $$1, aym $$2, lh $$3) {
-      double $$4 = (double)$$1.u() + $$2.j();
-      double $$5 = (double)$$1.v() - 0.05;
-      double $$6 = (double)$$1.w() + $$2.j();
-      $$0.a($$3, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(dce $$0, ja $$1, int $$2, lh $$3) {
-      double $$4 = 0.5;
-      dsh $$5 = $$0.a_($$1);
-      double $$6 = $$5.i() ? 1.0 : $$5.j($$0, $$1).c(jf.a.b);
-      a($$0, $$1, $$2, 0.5, $$6, true, $$3);
-   }
-
-   public static void a(dce $$0, ja $$1, int $$2, double $$3, double $$4, boolean $$5, lh $$6) {
-      aym $$7 = $$0.E_();
-
-      for (int $$8 = 0; $$8 < $$2; $$8++) {
-         double $$9 = $$7.k() * 0.02;
-         double $$10 = $$7.k() * 0.02;
-         double $$11 = $$7.k() * 0.02;
-         double $$12 = 0.5 - $$3;
-         double $$13 = (double)$$1.u() + $$12 + $$7.j() * $$3 * 2.0;
-         double $$14 = (double)$$1.v() + $$7.j() * $$4;
-         double $$15 = (double)$$1.w() + $$12 + $$7.j() * $$3 * 2.0;
-         if ($$5 || !$$0.a_(ja.a($$13, $$14, $$15).d()).i()) {
-            $$0.a($$6, $$13, $$14, $$15, $$9, $$10, $$11);
-         }
-      }
-   }
-
-   public static void a(dce $$0, ja $$1, int $$2) {
-      evz $$3 = $$1.b().b(0.0, 0.5, 0.0);
-      lb $$4 = new lb(lj.bb, $$0.a_($$1));
-
-      for (int $$5 = 0; (float)$$5 < (float)$$2 / 3.0F; $$5++) {
-         double $$6 = $$3.c + $$0.E_().k() / 2.0;
-         double $$7 = $$3.d;
-         double $$8 = $$3.e + $$0.E_().k() / 2.0;
-         double $$9 = $$0.E_().k() * 0.2F;
-         double $$10 = $$0.E_().k() * 0.2F;
-         double $$11 = $$0.E_().k() * 0.2F;
-         $$0.a($$4, $$6, $$7, $$8, $$9, $$10, $$11);
+      protected azk a() {
+         return azk.a;
       }
 
-      for (int $$12 = 0; (float)$$12 < (float)$$2 / 1.5F; $$12++) {
-         double $$13 = $$3.c + 3.5 * Math.cos((double)$$12) + $$0.E_().k() / 2.0;
-         double $$14 = $$3.d;
-         double $$15 = $$3.e + 3.5 * Math.sin((double)$$12) + $$0.E_().k() / 2.0;
-         double $$16 = $$0.E_().k() * 0.05F;
-         double $$17 = $$0.E_().k() * 0.05F;
-         double $$18 = $$0.E_().k() * 0.05F;
-         $$0.a($$4, $$13, $$14, $$15, $$16, $$17, $$18);
+      protected azk a(azk $$0, azk $$1, azk $$2) {
+         return $$2;
+      }
+
+      protected DataResult<azk> a(azk $$0, azk $$1) {
+         return DataResult.success($$1);
       }
    }
 }

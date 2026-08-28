@@ -14,12 +14,12 @@ public class cw extends ds<cw.a> {
       return cw.a.a;
    }
 
-   public void a(aql $$0, Collection<bsd> $$1) {
-      List<eqo> $$2 = Lists.newArrayList();
-      Set<bsj<?>> $$3 = Sets.newHashSet();
+   public void a(aqn $$0, Collection<bsg> $$1) {
+      List<equ> $$2 = Lists.newArrayList();
+      Set<bsm<?>> $$3 = Sets.newHashSet();
 
-      for (bsd $$4 : $$1) {
-         $$3.add($$4.ak());
+      for (bsg $$4 : $$1) {
+         $$3.add($$4.al());
          $$2.add(bu.b($$0, $$4));
       }
 
@@ -44,16 +44,16 @@ public class cw extends ds<cw.a> {
          return am.H.a(new cw.a(Optional.empty(), List.of(), $$0));
       }
 
-      public boolean a(Collection<eqo> $$0, int $$1) {
+      public boolean a(Collection<equ> $$0, int $$1) {
          if (!this.c.isEmpty()) {
-            List<eqo> $$2 = Lists.newArrayList($$0);
+            List<equ> $$2 = Lists.newArrayList($$0);
 
             for (bf $$3 : this.c) {
                boolean $$4 = false;
-               Iterator<eqo> $$5 = $$2.iterator();
+               Iterator<equ> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
-                  eqo $$6 = $$5.next();
+                  equ $$6 = $$5.next();
                   if ($$3.a($$6)) {
                      $$5.remove();
                      $$4 = true;

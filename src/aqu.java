@@ -1,3 +1,8 @@
-public interface aqu {
-   aqt create(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aqu {
 }

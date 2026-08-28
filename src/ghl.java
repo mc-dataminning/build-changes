@@ -1,61 +1,66 @@
-import com.google.common.collect.Maps;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+import org.joml.Matrix4f;
 
-public class ghl implements ghj.a {
-   private static final float a = 0.02F;
-   private final Map<ja, ghl.a> b = Maps.newHashMap();
+public class ghl {
+   private static final int a = axq.b.a(255, 255, 100, 255);
+   private static final int b = axq.b.a(255, 100, 255, 255);
+   private static final int c = axq.b.a(255, 0, 255, 0);
+   private static final int d = axq.b.a(255, 255, 165, 0);
+   private static final int e = axq.b.a(255, 255, 0, 0);
+   private static final int f = 20;
+   private static final float g = (float) (Math.PI / 10);
+   private final fft h;
+   private final Map<Integer, aab.a> i = new HashMap<>();
 
-   public void a(ja $$0, int $$1, String $$2, int $$3) {
-      this.b.put($$0, new ghl.a($$1, $$2, ac.c() + (long)$$3));
+   public ghl(fft $$0) {
+      this.h = $$0;
    }
 
-   @Override
+   public void a(fam $$0, ged $$1, double $$2, double $$3, double $$4) {
+      gdf $$5 = this.h.s;
+      $$5.dQ().a(bsm.m, $$5.cL().g(100.0), $$0x -> true).forEach($$6 -> {
+         Optional<aab.a> $$7 = Optional.ofNullable(this.i.get($$6.am()));
+         $$7.map(aab.a::d).map($$1xx -> $$5.dQ().a($$1xx)).map($$0xx -> $$0xx.m(this.h.at())).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.do(), $$6x, b);
+            ewf $$7x = $$6x.b(0.0, 0.01F, 0.0);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gel.a(2.0)), $$7x, 4.0F, c);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gel.a(2.0)), $$7x, 8.0F, d);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gel.a(2.0)), $$7x, 20.0F, e);
+         });
+         $$7.map(aab.a::e).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.do(), $$6x.b(), a);
+            ghp.a($$0, $$1, ewa.a(ewf.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
+         });
+      });
+   }
+
+   private static void a(fam $$0, ged $$1, double $$2, double $$3, double $$4, ewf $$5, ewf $$6, int $$7) {
+      faq $$8 = $$1.getBuffer(gel.a(2.0));
+      $$8.a($$0.c(), (float)($$5.c - $$2), (float)($$5.d - $$3), (float)($$5.e - $$4)).a($$7).e();
+      $$8.a($$0.c(), (float)($$6.c - $$2), (float)($$6.d - $$3), (float)($$6.e - $$4)).a($$7).e();
+   }
+
+   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, faq $$4, ewf $$5, float $$6, int $$7) {
+      for (int $$8 = 0; $$8 < 20; $$8++) {
+         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, faq $$5, ewf $$6, float $$7, int $$8) {
+      float $$9 = (float)$$0 * (float) (Math.PI / 10);
+      ewf $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
+      $$5.a($$1, (float)($$10.c - $$2), (float)($$10.d - $$3), (float)($$10.e - $$4)).a($$8).e();
+   }
+
    public void a() {
-      this.b.clear();
+      this.i.clear();
    }
 
-   @Override
-   public void a(fag $$0, gdx $$1, double $$2, double $$3, double $$4) {
-      long $$5 = ac.c();
-      this.b.entrySet().removeIf($$1x -> $$5 > ((ghl.a)$$1x.getValue()).c);
-      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
-   }
-
-   private void a(fag $$0, gdx $$1, ja $$2, ghl.a $$3) {
-      ghj.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
-      if (!$$3.b.isEmpty()) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v() + 1.2;
-         double $$6 = (double)$$2.w() + 0.5;
-         ghj.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
-      }
-   }
-
-   static class a {
-      public int a;
-      public String b;
-      public long c;
-
-      public a(int $$0, String $$1, long $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public float a() {
-         return (float)(this.a >> 16 & 0xFF) / 255.0F;
-      }
-
-      public float b() {
-         return (float)(this.a >> 8 & 0xFF) / 255.0F;
-      }
-
-      public float c() {
-         return (float)(this.a & 0xFF) / 255.0F;
-      }
-
-      public float d() {
-         return (float)(this.a >> 24 & 0xFF) / 255.0F;
-      }
+   public void a(aab.a $$0) {
+      this.i.put($$0.c(), $$0);
    }
 }

@@ -1,24 +1,20 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class feo extends fen {
+public class feo extends fet {
    private static final Logger b = LogUtils.getLogger();
-   private static final wu c = wu.c("mco.configure.world.opening");
-   private final fbn d;
-   private final fnd e;
-   private final boolean f;
-   private final ffn g;
+   private static final wu c = wu.c("mco.configure.world.closing");
+   private final fbt d;
+   private final fdd e;
 
-   public feo(fbn $$0, fnd $$1, boolean $$2, ffn $$3) {
+   public feo(fbt $$0, fdd $$1) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
    }
 
    @Override
    public void run() {
-      faw $$0 = faw.a();
+      fbc $$0 = fbc.a();
 
       for (int $$1 = 0; $$1 < 25; $$1++) {
          if (this.d()) {
@@ -26,23 +22,14 @@ public class feo extends fen {
          }
 
          try {
-            boolean $$2 = $$0.f(this.d.a);
+            boolean $$2 = $$0.g(this.d.a);
             if ($$2) {
-               this.g.execute(() -> {
-                  if (this.e instanceof fcx) {
-                     ((fcx)this.e).f();
-                  }
-
-                  this.d.e = fbn.c.b;
-                  if (this.f) {
-                     far.a(this.d, this.e);
-                  } else {
-                     this.g.a(this.e);
-                  }
-               });
+               this.e.f();
+               this.d.e = fbt.c.a;
+               a(this.e);
                break;
             }
-         } catch (fck var4) {
+         } catch (fcq var4) {
             if (this.d()) {
                return;
             }
@@ -53,7 +40,7 @@ public class feo extends fen {
                return;
             }
 
-            b.error("Failed to open server", var5);
+            b.error("Failed to close server", var5);
             this.a(var5);
          }
       }

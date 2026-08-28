@@ -1,20 +1,19 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record dad(czq d) implements czz {
-   public static final MapCodec<dad> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(czq.b.fieldOf("duration").forGetter($$0x -> $$0x.d)).apply($$0, dad::new));
+public interface dad {
+   Codec<dad> b = lq.ay.r().dispatch(dad::a, Function.identity());
 
-   @Override
-   public void a(aqk $$0, int $$1, czi $$2, bsd $$3, evz $$4) {
-      $$3.d(this.d.a($$1));
+   static MapCodec<? extends dad> a(jw<MapCodec<? extends dad>> $$0) {
+      jw.a($$0, "add", czu.a);
+      jw.a($$0, "all_of", czv.c.a);
+      jw.a($$0, "multiply", dag.a);
+      jw.a($$0, "remove_binomial", dai.a);
+      return jw.a($$0, "set", dan.a);
    }
 
-   @Override
-   public MapCodec<dad> a() {
-      return a;
-   }
+   float a(int var1, ayo var2, float var3);
 
-   public czq b() {
-      return this.d;
-   }
+   MapCodec<? extends dad> a();
 }

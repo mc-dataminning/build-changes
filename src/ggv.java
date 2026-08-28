@@ -1,62 +1,41 @@
-import javax.annotation.Nullable;
+public class ggv extends ggw<drg> {
+   private static final akk c = new akk("textures/entity/end_gateway_beam.png");
 
-public class ggv implements dbg {
-   private final int c;
-   private final int d;
-   protected final ggu[][] a;
-   protected final dcd b;
+   public ggv(gge.a $$0) {
+      super($$0);
+   }
 
-   ggv(dcd $$0, int $$1, int $$2, ggu[][] $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.a = $$3;
+   public void a(drg $$0, float $$1, fam $$2, ged $$3, int $$4, int $$5) {
+      if ($$0.b() || $$0.c()) {
+         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.b() ? (double)$$0.i().am() : 50.0;
+         $$6 = ayg.a($$6 * (float) Math.PI);
+         int $$8 = ayg.a((double)$$6 * $$7);
+         float[] $$9 = $$0.b() ? csv.c.d() : csv.k.d();
+         long $$10 = $$0.i().Z();
+         gfz.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dsh a_(ja $$0) {
-      int $$1 = kc.a($$0.u()) - this.c;
-      int $$2 = kc.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].b($$0);
+   protected float b() {
+      return 1.0F;
    }
 
    @Override
-   public eob b_(ja $$0) {
-      int $$1 = kc.a($$0.u()) - this.c;
-      int $$2 = kc.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].b($$0).u();
+   protected float c() {
+      return 0.0F;
    }
 
    @Override
-   public float a(jf $$0, boolean $$1) {
-      return this.b.a($$0, $$1);
+   protected gel d() {
+      return gel.v();
    }
 
    @Override
-   public enq y_() {
-      return this.b.y_();
-   }
-
-   @Nullable
-   @Override
-   public dpn c_(ja $$0) {
-      int $$1 = kc.a($$0.u()) - this.c;
-      int $$2 = kc.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].a($$0);
-   }
-
-   @Override
-   public int a(ja $$0, dbo $$1) {
-      return this.b.a($$0, $$1);
-   }
-
-   @Override
-   public int I_() {
-      return this.b.I_();
-   }
-
-   @Override
-   public int J_() {
-      return this.b.J_();
+   public int aT_() {
+      return 256;
    }
 }

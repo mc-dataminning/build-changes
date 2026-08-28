@@ -1,22 +1,14 @@
-import java.util.ArrayList;
-import java.util.List;
+public class fqg extends fql {
+   private static ffw<?>[] a(ffx $$0) {
+      return new ffw[]{$$0.P(), $$0.Q()};
+   }
 
-public class fqg extends fqf {
-   private static final wu a = wu.c("options.skinCustomisation.title");
-
-   public fqg(fnd $$0, ffr $$1) {
-      super($$0, $$1, a);
+   public fqg(fnj $$0, ffx $$1) {
+      super($$0, $$1, wu.c("options.font.title"));
    }
 
    @Override
    protected void m() {
-      List<fhk> $$0 = new ArrayList<>();
-
-      for (cmi $$1 : cmi.values()) {
-         $$0.add(fht.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
-      }
-
-      $$0.add(this.c.v().a(this.c));
-      this.q.a($$0);
+      this.q.a(a(this.c));
    }
 }

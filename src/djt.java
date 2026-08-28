@@ -1,82 +1,84 @@
-import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
-
-public class djt extends dff implements dmg {
-   public static final MapCodec<djt> a = b(djt::new);
-   public static final int b = 15;
-   public static final dth c = dsx.aP;
-   public static final dsy d = dsx.C;
-   public static final ToIntFunction<dsh> e = $$0 -> $$0.c(c);
-
-   @Override
-   public MapCodec<djt> a() {
-      return a;
-   }
-
-   public djt(dsg.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
-      $$0.a(c, d);
-   }
-
-   @Override
-   protected bqd a(dsh $$0, dcd $$1, ja $$2, cmh $$3, evv $$4) {
-      if (!$$1.B && $$3.gv()) {
-         $$1.a($$2, $$0.a(c), 2);
-         return bqd.a;
-      } else {
-         return bqd.c;
-      }
-   }
-
-   @Override
-   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
-      return $$3.a(cud.hC) ? ewp.b() : ewp.a();
-   }
-
-   @Override
-   protected boolean a_(dsh $$0, dbj $$1, ja $$2) {
-      return $$0.u().c();
-   }
-
-   @Override
-   protected dll a_(dsh $$0) {
-      return dll.a;
-   }
-
-   @Override
-   protected float d(dsh $$0, dbj $$1, ja $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, eoc.c, eoc.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected eob b_(dsh $$0) {
-      return $$0.c(d) ? eoc.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   public cua a(dcg $$0, ja $$1, dsh $$2) {
-      return a(super.a($$0, $$1, $$2), $$2.c(c));
-   }
-
-   public static cua a(cua $$0, int $$1) {
-      if ($$1 != 15) {
-         $$0.b(kn.ab, cwk.a.a(c, $$1));
-      }
-
-      return $$0;
-   }
+public class djt {
+   public static final int a = 1000;
+   public static final int b = 1001;
+   public static final int c = 1002;
+   public static final int d = 1004;
+   public static final int e = 1009;
+   public static final int f = 1010;
+   public static final int g = 1011;
+   public static final int h = 1015;
+   public static final int i = 1016;
+   public static final int j = 1017;
+   public static final int k = 1018;
+   public static final int l = 1019;
+   public static final int m = 1020;
+   public static final int n = 1021;
+   public static final int o = 1022;
+   public static final int p = 1023;
+   public static final int q = 1024;
+   public static final int r = 1025;
+   public static final int s = 1026;
+   public static final int t = 1027;
+   public static final int u = 1028;
+   public static final int v = 1029;
+   public static final int w = 1030;
+   public static final int x = 1031;
+   public static final int y = 1032;
+   public static final int z = 1033;
+   public static final int A = 1034;
+   public static final int B = 1035;
+   public static final int C = 1038;
+   public static final int D = 1039;
+   public static final int E = 1040;
+   public static final int F = 1041;
+   public static final int G = 1042;
+   public static final int H = 1043;
+   public static final int I = 1044;
+   public static final int J = 1045;
+   public static final int K = 1046;
+   public static final int L = 1047;
+   public static final int M = 1048;
+   public static final int N = 1049;
+   public static final int O = 1050;
+   public static final int P = 1051;
+   public static final int Q = 1500;
+   public static final int R = 1501;
+   public static final int S = 1502;
+   public static final int T = 1503;
+   public static final int U = 1504;
+   public static final int V = 1505;
+   public static final int W = 2000;
+   public static final int X = 2001;
+   public static final int Y = 2002;
+   public static final int Z = 2003;
+   public static final int aa = 2004;
+   public static final int ab = 2006;
+   public static final int ac = 2007;
+   public static final int ad = 2008;
+   public static final int ae = 2009;
+   public static final int af = 2010;
+   public static final int ag = 2011;
+   public static final int ah = 2012;
+   public static final int ai = 2013;
+   public static final int aj = 3000;
+   public static final int ak = 3001;
+   public static final int al = 3002;
+   public static final int am = 3003;
+   public static final int an = 3004;
+   public static final int ao = 3005;
+   public static final int ap = 3006;
+   public static final int aq = 3007;
+   public static final int ar = 3008;
+   public static final int as = 3009;
+   public static final int at = 3011;
+   public static final int au = 3012;
+   public static final int av = 3013;
+   public static final int aw = 3014;
+   public static final int ax = 3015;
+   public static final int ay = 3016;
+   public static final int az = 3017;
+   public static final int aA = 3018;
+   public static final int aB = 3019;
+   public static final int aC = 3020;
+   public static final int aD = 3021;
 }

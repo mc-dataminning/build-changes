@@ -1,17 +1,18 @@
-public interface flg extends fiw, flj {
-   flg.a u();
+import java.util.function.Consumer;
 
-   default boolean C() {
-      return true;
+public interface flg extends flh {
+   void b(Consumer<flh> var1);
+
+   @Override
+   default void a(Consumer<fhq> $$0) {
+      this.b($$1 -> $$1.a($$0));
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
-
-      public boolean a() {
-         return this == c;
-      }
+   default void a() {
+      this.b($$0 -> {
+         if ($$0 instanceof flg $$1) {
+            $$1.a();
+         }
+      });
    }
 }

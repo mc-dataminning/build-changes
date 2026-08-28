@@ -38,8 +38,8 @@ public class fh implements fx<fh.a> {
 
    private static void a(Consumer<xk> $$0, eq $$1, xk $$2) {
       MinecraftServer $$3 = $$1.l();
-      CompletableFuture<arc> $$4 = a($$1, $$2);
-      wu $$5 = $$3.bm().decorate($$1.i(), $$2.d());
+      CompletableFuture<are> $$4 = a($$1, $$2);
+      wu $$5 = $$3.bn().decorate($$1.i(), $$2.d());
       $$1.o().append($$4, $$3x -> {
          xk $$4x = $$2.a($$5).a($$3x.e());
          $$0.accept($$4x);
@@ -47,14 +47,14 @@ public class fh implements fx<fh.a> {
    }
 
    private static void b(Consumer<xk> $$0, eq $$1, xk $$2) {
-      wp $$3 = $$1.l().bm();
+      wp $$3 = $$1.l().bn();
       wu $$4 = $$3.decorate($$1.i(), $$2.d());
       $$0.accept($$2.a($$4));
    }
 
-   private static CompletableFuture<arc> a(eq $$0, xk $$1) {
-      aql $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cz()) ? $$2.X().a($$1.c()) : CompletableFuture.completedFuture(arc.a($$1.c()));
+   private static CompletableFuture<are> a(eq $$0, xk $$1) {
+      aqn $$2 = $$0.i();
+      return $$2 != null && $$1.a($$2.cA()) ? $$2.X().a($$1.c()) : CompletableFuture.completedFuture(are.a($$1.c()));
    }
 
    public fh.a a(StringReader $$0) throws CommandSyntaxException {

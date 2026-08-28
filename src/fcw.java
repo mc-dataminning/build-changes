@@ -1,38 +1,59 @@
-public class fcw extends gvm {
-   private static final wu a = wu.c("mco.client.incompatible.title").b(-65536);
-   private static final wu b = wu.b(aa.b().c()).b(-65536);
-   private static final wu c = wu.a("mco.client.unsupported.snapshot.version", b);
-   private static final wu A = wu.a("mco.client.outdated.stable.version", b);
-   private final fnd B;
-   private final fkz C = new fkz(this);
+import java.util.List;
 
-   public fcw(fnd $$0) {
-      super(a);
-      this.B = $$0;
+public abstract class fcw {
+   public final int a;
+   public final int b;
+   public final int c;
+   public final int d;
+
+   public fcw(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public void aO_() {
-      this.C.a(a, this.o);
-      this.C.c(new fig(this.E(), this.o).b(true));
-      this.C.b(fhm.a(wt.k, $$0 -> this.d()).a(200).a());
-      this.C.a($$1 -> {
-         fhk var10000 = this.c($$1);
-      });
-      this.c();
+   public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
    }
 
-   @Override
-   protected void c() {
-      this.C.a();
+   protected abstract void a(fhf var1, int var2, int var3, boolean var4);
+
+   public int a() {
+      return this.c + this.a;
    }
 
-   @Override
-   public void d() {
-      this.l.a(this.B);
+   public int b() {
+      return this.d + this.b;
    }
 
-   private wu E() {
-      return aa.b().g() ? A : c;
+   public abstract void a(int var1);
+
+   public static void a(fhf $$0, List<fcw> $$1, gvr<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (fcw $$7 : $$1) {
+         if ($$2.b() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
+         }
+      }
+   }
+
+   public static void a(gvr<?> $$0, fio.a<?> $$1, List<fcw> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.aG_().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.b($$6);
+         int $$7 = $$0.s();
+         int $$8 = $$0.g($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
+
+         for (fcw $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
+            }
+         }
+      }
    }
 }

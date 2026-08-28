@@ -35,7 +35,7 @@ public interface jw<T> extends Keyable, jo<T> {
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.d() + ": " + $$0x)),
             $$0x -> $$0x.h().a()
          );
-      return axm.a($$0, (Function<jj.c<T>, Lifecycle>)($$0x -> this.c($$0x.h()).map(jv::b).orElse(Lifecycle.experimental())));
+      return axo.a($$0, (Function<jj.c<T>, Lifecycle>)($$0x -> this.c($$0x.h()).map(jv::b).orElse(Lifecycle.experimental())));
    }
 
    private DataResult<jj.c<T>> a(jj<T> $$0) {
@@ -89,7 +89,7 @@ public interface jw<T> extends Keyable, jo<T> {
 
    Set<akj<T>> g();
 
-   Optional<jj.c<T>> a(aym var1);
+   Optional<jj.c<T>> a(ayo var1);
 
    default Stream<T> t() {
       return StreamSupport.stream(this.spliterator(), false);
@@ -138,25 +138,25 @@ public interface jw<T> extends Keyable, jo<T> {
 
    Stream<jj.c<T>> i();
 
-   Optional<jn.c<T>> b(awk<T> var1);
+   Optional<jn.c<T>> b(awm<T> var1);
 
-   default Iterable<jj<T>> c(awk<T> $$0) {
+   default Iterable<jj<T>> c(awm<T> $$0) {
       return (Iterable<jj<T>>)DataFixUtils.orElse(this.b($$0), List.of());
    }
 
-   default Optional<jj<T>> a(awk<T> $$0, aym $$1) {
+   default Optional<jj<T>> a(awm<T> $$0, ayo $$1) {
       return this.b($$0).flatMap($$1x -> $$1x.a($$1));
    }
 
-   jn.c<T> a(awk<T> var1);
+   jn.c<T> a(awm<T> var1);
 
-   Stream<Pair<awk<T>, jn.c<T>>> j();
+   Stream<Pair<awm<T>, jn.c<T>>> j();
 
-   Stream<awk<T>> k();
+   Stream<awm<T>> k();
 
    void n();
 
-   void a(Map<awk<T>, List<jj<T>>> var1);
+   void a(Map<awm<T>, List<jj<T>>> var1);
 
    default jo<jj<T>> u() {
       return new jo<jj<T>>() {
@@ -193,12 +193,12 @@ public interface jw<T> extends Keyable, jo<T> {
          }
 
          @Override
-         public Optional<jn.c<T>> a(awk<T> $$0) {
+         public Optional<jn.c<T>> a(awm<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public jn.c<T> b(awk<T> $$0) {
+         public jn.c<T> b(awm<T> $$0) {
             return jw.this.a($$0);
          }
       };

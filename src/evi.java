@@ -1,29 +1,32 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class evi implements evk<MinecraftServer> {
-   final akk a;
+public record evi(String b) implements evk {
+   public static final MapCodec<evi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(evi::c)).apply($$0, evi::new));
 
-   public evi(akk $$0) {
-      this.a = $$0;
+   public static evk a(String $$0) {
+      return new evi($$0);
    }
 
-   public void a(MinecraftServer $$0, evm<MinecraftServer> $$1, long $$2) {
-      akz $$3 = $$0.aF();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   @Override
+   public evj a() {
+      return evl.b;
    }
 
-   public static class a extends evk.a<MinecraftServer, evi> {
-      public a() {
-         super(new akk("function"), evi.class);
-      }
+   @Override
+   public exi a(equ $$0) {
+      return exi.c(this.b);
+   }
 
-      public void a(tx $$0, evi $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   @Override
+   public Set<etn<?>> b() {
+      return ImmutableSet.of();
+   }
 
-      public evi a(tx $$0) {
-         akk $$1 = new akk($$0.l("Name"));
-         return new evi($$1);
-      }
+   public String c() {
+      return this.b;
    }
 }

@@ -1,149 +1,144 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class ebk extends ebe<edj> {
-   private static final jf[] a = jf.values();
+public abstract class ebk<FC extends edo> {
+   public static final ebk<edv> e = a("no_op", new ece(edv.a));
+   public static final ebk<eek> f = a("tree", new ecw(eek.a));
+   public static final ebk<eeb> g = a("flower", new eci(eeb.a));
+   public static final ebk<eeb> h = a("no_bonemeal_flower", new eci(eeb.a));
+   public static final ebk<eeb> i = a("random_patch", new eci(eeb.a));
+   public static final ebk<edg> j = a("block_pile", new eat(edg.a));
+   public static final ebk<eej> k = a("spring_feature", new ecv(eej.a));
+   public static final ebk<edv> l = a("chorus_plant", new eaw(edv.a));
+   public static final ebk<eec> m = a("replace_single_block", new ecl(eec.a));
+   public static final ebk<edv> n = a("void_start_platform", new edb(edv.a));
+   public static final ebk<edv> o = a("desert_well", new ebd(edv.a));
+   public static final ebk<ebp> p = a("fossil", new ebo(ebp.a));
+   public static final ebk<edq> q = a("huge_red_mushroom", new ebv(edq.a));
+   public static final ebk<edq> r = a("huge_brown_mushroom", new ebs(edq.a));
+   public static final ebk<edv> s = a("ice_spike", new ebw(edv.a));
+   public static final ebk<edv> t = a("glowstone_blob", new ebr(edv.a));
+   public static final ebk<edv> u = a("freeze_top_layer", new ect(edv.a));
+   public static final ebk<edv> v = a("vines", new eda(edv.a));
+   public static final ebk<edf> w = a("block_column", new eas(edf.a));
+   public static final ebk<een> x = a("vegetation_patch", new ecz(een.a));
+   public static final ebk<een> y = a("waterlogged_vegetation_patch", new edc(een.a));
+   public static final ebk<eee> z = a("root_system", new ecm(eee.a));
+   public static final ebk<edt> A = a("multiface_growth", new ecc(edt.a));
+   public static final ebk<eem> B = a("underwater_magma", new ecy(eem.a));
+   public static final ebk<edv> C = a("monster_room", new ecb(edv.a));
+   public static final ebk<edv> D = a("blue_ice", new eau(edv.a));
+   public static final ebk<edh> E = a("iceberg", new ebx(edh.a));
+   public static final ebk<edh> F = a("forest_rock", new ear(edh.a));
+   public static final ebk<edl> G = a("disk", new ebe(edl.a));
+   public static final ebk<ebz.a> H = a("lake", new ebz(ebz.a.a));
+   public static final ebk<edw> I = a("ore", new ecf(edw.a));
+   public static final ebk<eei> J = a("end_spike", new ecu(eei.a));
+   public static final ebk<edv> K = a("end_island", new ebi(edv.a));
+   public static final ebk<edn> L = a("end_gateway", new ebh(edn.a));
+   public static final ecq M = a("seagrass", new ecq(edy.k));
+   public static final ebk<edv> N = a("kelp", new eby(edv.a));
+   public static final ebk<edv> O = a("coral_tree", new ebb(edv.a));
+   public static final ebk<edv> P = a("coral_mushroom", new eba(edv.a));
+   public static final ebk<edv> Q = a("coral_claw", new eay(edv.a));
+   public static final ebk<edj> R = a("sea_pickle", new ecp(edj.a));
+   public static final ebk<eeg> S = a("simple_block", new ecr(eeg.a));
+   public static final ebk<edy> T = a("bamboo", new eao(edy.k));
+   public static final ebk<ebt> U = a("huge_fungus", new ebu(ebt.a));
+   public static final ebk<edu> V = a("nether_forest_vegetation", new ecd(edu.c));
+   public static final ebk<edv> W = a("weeping_vines", new edd(edv.a));
+   public static final ebk<eel> X = a("twisting_vines", new ecx(eel.a));
+   public static final ebk<edi> Y = a("basalt_columns", new eap(edi.a));
+   public static final ebk<edk> Z = a("delta_feature", new ebc(edk.a));
+   public static final ebk<eed> aa = a("netherrack_replace_blobs", new eck(eed.a));
+   public static final ebk<eds> ab = a("fill_layer", new ebn(eds.a));
+   public static final eav ac = a("bonus_chest", new eav(edv.a));
+   public static final ebk<edv> ad = a("basalt_pillar", new eaq(edv.a));
+   public static final ebk<edw> ae = a("scattered_ore", new ecn(edw.a));
+   public static final ebk<eea> af = a("random_selector", new ecj(eea.a));
+   public static final ebk<eeh> ag = a("simple_random_selector", new ecs(eeh.a));
+   public static final ebk<edz> ah = a("random_boolean_selector", new ech(edz.a));
+   public static final ebk<edp> ai = a("geode", new ebq(edp.b));
+   public static final ebk<edm> aj = a("dripstone_cluster", new ebf(edm.a));
+   public static final ebk<edr> ak = a("large_dripstone", new eca(edr.a));
+   public static final ebk<edx> al = a("pointed_dripstone", new ecg(edx.a));
+   public static final ebk<eef> am = a("sculk_patch", new eco(eef.a));
+   private final MapCodec<eax<FC, ebk<FC>>> a;
 
-   public ebk(Codec<edj> $$0) {
-      super($$0);
+   private static <C extends edo, F extends ebk<C>> F a(String $$0, F $$1) {
+      return jw.a(lq.O, $$0, $$1);
    }
 
-   @Override
-   public boolean a(ebg<edj> $$0) {
-      edj $$1 = $$0.f();
-      aym $$2 = $$0.d();
-      ja $$3 = $$0.e();
-      dcz $$4 = $$0.b();
-      int $$5 = $$1.l;
-      int $$6 = $$1.n;
-      List<Pair<ja, Integer>> $$7 = Lists.newLinkedList();
-      int $$8 = $$1.j.a($$2);
-      dyy $$9 = new dyy(new dya($$4.C()));
-      ene $$10 = ene.a($$9, -4, 1.0);
-      List<ja> $$11 = Lists.newLinkedList();
-      double $$12 = (double)$$8 / (double)$$1.i.b();
-      dxy $$13 = $$1.d;
-      dxw $$14 = $$1.c;
-      dxx $$15 = $$1.e;
-      double $$16 = 1.0 / Math.sqrt($$13.b);
-      double $$17 = 1.0 / Math.sqrt($$13.c + $$12);
-      double $$18 = 1.0 / Math.sqrt($$13.d + $$12);
-      double $$19 = 1.0 / Math.sqrt($$13.e + $$12);
-      double $$20 = 1.0 / Math.sqrt($$15.c + $$2.j() / 2.0 + ($$8 > 3 ? $$12 : 0.0));
-      boolean $$21 = (double)$$2.i() < $$15.b;
-      int $$22 = 0;
+   public ebk(Codec<FC> $$0) {
+      this.a = $$0.fieldOf("config").xmap($$0x -> new eax<>(this, $$0x), eax::c);
+   }
 
-      for (int $$23 = 0; $$23 < $$8; $$23++) {
-         int $$24 = $$1.i.a($$2);
-         int $$25 = $$1.i.a($$2);
-         int $$26 = $$1.i.a($$2);
-         ja $$27 = $$3.b($$24, $$25, $$26);
-         dsh $$28 = $$4.a_($$27);
-         if ($$28.i() || $$28.a(avu.bQ)) {
-            if (++$$22 > $$1.p) {
-               return false;
-            }
-         }
+   public MapCodec<eax<FC, ebk<FC>>> a() {
+      return this.a;
+   }
 
-         $$7.add(Pair.of($$27, $$1.k.a($$2)));
+   protected void a(dcn $$0, ja $$1, dsk $$2) {
+      $$0.a($$1, $$2, 3);
+   }
+
+   public static Predicate<dsk> a(awm<dfh> $$0) {
+      return $$1 -> !$$1.a($$0);
+   }
+
+   protected void a(ddb $$0, ja $$1, dsk $$2, Predicate<dsk> $$3) {
+      if ($$3.test($$0.a_($$1))) {
+         $$0.a($$1, $$2, 2);
       }
+   }
 
-      if ($$21) {
-         int $$29 = $$2.a(4);
-         int $$30 = $$8 * 2 + 1;
-         if ($$29 == 0) {
-            $$11.add($$3.b($$30, 7, 0));
-            $$11.add($$3.b($$30, 5, 0));
-            $$11.add($$3.b($$30, 1, 0));
-         } else if ($$29 == 1) {
-            $$11.add($$3.b(0, 7, $$30));
-            $$11.add($$3.b(0, 5, $$30));
-            $$11.add($$3.b(0, 1, $$30));
-         } else if ($$29 == 2) {
-            $$11.add($$3.b($$30, 7, $$30));
-            $$11.add($$3.b($$30, 5, $$30));
-            $$11.add($$3.b($$30, 1, $$30));
-         } else {
-            $$11.add($$3.b(0, 7, 0));
-            $$11.add($$3.b(0, 5, 0));
-            $$11.add($$3.b(0, 1, 0));
+   public abstract boolean a(ebm<FC> var1);
+
+   public boolean a(FC $$0, ddb $$1, duh $$2, ayo $$3, ja $$4) {
+      return $$1.f_($$4) ? this.a(new ebm<>(Optional.empty(), $$1, $$2, $$3, $$4, $$0)) : false;
+   }
+
+   protected static boolean a(dsk $$0) {
+      return $$0.a(avw.be);
+   }
+
+   public static boolean b(dsk $$0) {
+      return $$0.a(avw.af);
+   }
+
+   public static boolean a(dcl $$0, ja $$1) {
+      return $$0.a($$1, ebk::b);
+   }
+
+   public static boolean a(Function<ja, dsk> $$0, ja $$1, Predicate<dsk> $$2) {
+      ja.a $$3 = new ja.a();
+
+      for (jf $$4 : jf.values()) {
+         $$3.a($$1, $$4);
+         if ($$2.test($$0.apply($$3))) {
+            return true;
          }
       }
 
-      List<ja> $$31 = Lists.newArrayList();
-      Predicate<dsh> $$32 = a($$1.c.g);
+      return false;
+   }
 
-      for (ja $$33 : ja.c($$3.b($$5, $$5, $$5), $$3.b($$6, $$6, $$6))) {
-         double $$34 = $$10.a((double)$$33.u(), (double)$$33.v(), (double)$$33.w()) * $$1.o;
-         double $$35 = 0.0;
-         double $$36 = 0.0;
+   public static boolean a(Function<ja, dsk> $$0, ja $$1) {
+      return a($$0, $$1, dsj.a::i);
+   }
 
-         for (Pair<ja, Integer> $$37 : $$7) {
-            $$35 += aye.f($$33.j((ke)$$37.getFirst()) + (double)((Integer)$$37.getSecond()).intValue()) + $$34;
+   protected void a(ddb $$0, ja $$1) {
+      ja.a $$2 = $$1.j();
+
+      for (int $$3 = 0; $$3 < 2; $$3++) {
+         $$2.c(jf.b);
+         if ($$0.a_($$2).i()) {
+            return;
          }
 
-         for (ja $$38 : $$11) {
-            $$36 += aye.f($$33.j($$38) + (double)$$15.d) + $$34;
-         }
-
-         if (!($$35 < $$19)) {
-            if ($$21 && $$36 >= $$20 && $$35 < $$16) {
-               this.a($$4, $$33, dfh.a.o(), $$32);
-
-               for (jf $$39 : a) {
-                  ja $$40 = $$33.a($$39);
-                  eob $$41 = $$4.b_($$40);
-                  if (!$$41.c()) {
-                     $$4.a($$40, $$41.a(), 0);
-                  }
-               }
-            } else if ($$35 >= $$16) {
-               this.a($$4, $$33, $$14.a.a($$2, $$33), $$32);
-            } else if ($$35 >= $$17) {
-               boolean $$42 = (double)$$2.i() < $$1.g;
-               if ($$42) {
-                  this.a($$4, $$33, $$14.c.a($$2, $$33), $$32);
-               } else {
-                  this.a($$4, $$33, $$14.b.a($$2, $$33), $$32);
-               }
-
-               if ((!$$1.h || $$42) && (double)$$2.i() < $$1.f) {
-                  $$31.add($$33.i());
-               }
-            } else if ($$35 >= $$18) {
-               this.a($$4, $$33, $$14.d.a($$2, $$33), $$32);
-            } else if ($$35 >= $$19) {
-               this.a($$4, $$33, $$14.e.a($$2, $$33), $$32);
-            }
-         }
+         $$0.y($$2).e($$2);
       }
-
-      List<dsh> $$43 = $$14.f;
-
-      for (ja $$44 : $$31) {
-         dsh $$45 = ac.a($$43, $$2);
-
-         for (jf $$46 : a) {
-            if ($$45.b(dsx.P)) {
-               $$45 = $$45.a(dsx.P, $$46);
-            }
-
-            ja $$47 = $$44.a($$46);
-            dsh $$48 = $$4.a_($$47);
-            if ($$45.b(dsx.C)) {
-               $$45 = $$45.a(dsx.C, Boolean.valueOf($$48.u().b()));
-            }
-
-            if (dfn.g($$48)) {
-               this.a($$4, $$47, $$45, $$32);
-               break;
-            }
-         }
-      }
-
-      return true;
    }
 }

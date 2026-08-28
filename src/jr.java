@@ -34,7 +34,7 @@ public class jr<T> implements kf<T> {
    private final Map<T, jj.c<T>> h = new IdentityHashMap<>();
    private final Map<akj<T>, jv> i = new IdentityHashMap<>();
    private Lifecycle j;
-   private volatile Map<awk<T>, jn.c<T>> k = new IdentityHashMap<>();
+   private volatile Map<awm<T>, jn.c<T>> k = new IdentityHashMap<>();
    private boolean l;
    @Nullable
    private Map<T, jj.c<T>> m;
@@ -60,7 +60,7 @@ public class jr<T> implements kf<T> {
       }
 
       @Override
-      public Optional<jn.c<T>> a(awk<T> $$0) {
+      public Optional<jn.c<T>> a(awm<T> $$0) {
          return jr.this.b($$0);
       }
 
@@ -260,12 +260,12 @@ public class jr<T> implements kf<T> {
    }
 
    @Override
-   public Stream<Pair<awk<T>, jn.c<T>>> j() {
+   public Stream<Pair<awm<T>, jn.c<T>>> j() {
       return this.k.entrySet().stream().map($$0 -> Pair.of($$0.getKey(), $$0.getValue()));
    }
 
    @Override
-   public jn.c<T> a(awk<T> $$0) {
+   public jn.c<T> a(awm<T> $$0) {
       jn.c<T> $$1 = this.k.get($$0);
       if ($$1 != null) {
          return $$1;
@@ -276,7 +276,7 @@ public class jr<T> implements kf<T> {
                return $$1;
             } else {
                $$1 = this.d($$0);
-               Map<awk<T>, jn.c<T>> $$2 = new IdentityHashMap<>(this.k);
+               Map<awm<T>, jn.c<T>> $$2 = new IdentityHashMap<>(this.k);
                $$2.put($$0, $$1);
                this.k = $$2;
                return $$1;
@@ -285,12 +285,12 @@ public class jr<T> implements kf<T> {
       }
    }
 
-   private jn.c<T> d(awk<T> $$0) {
+   private jn.c<T> d(awm<T> $$0) {
       return new jn.c<>(this.p(), $$0);
    }
 
    @Override
-   public Stream<awk<T>> k() {
+   public Stream<awm<T>> k() {
       return this.k.keySet().stream();
    }
 
@@ -300,7 +300,7 @@ public class jr<T> implements kf<T> {
    }
 
    @Override
-   public Optional<jj.c<T>> a(aym $$0) {
+   public Optional<jj.c<T>> a(ayo $$0) {
       return ac.b(this.d, $$0);
    }
 
@@ -349,13 +349,13 @@ public class jr<T> implements kf<T> {
    }
 
    @Override
-   public Optional<jn.c<T>> b(awk<T> $$0) {
+   public Optional<jn.c<T>> b(awm<T> $$0) {
       return Optional.ofNullable(this.k.get($$0));
    }
 
    @Override
-   public void a(Map<awk<T>, List<jj<T>>> $$0) {
-      Map<jj.c<T>, List<awk<T>>> $$1 = new IdentityHashMap<>();
+   public void a(Map<awm<T>, List<jj<T>>> $$0) {
+      Map<jj.c<T>, List<awm<T>>> $$1 = new IdentityHashMap<>();
       this.g.values().forEach($$1x -> $$1.put($$1x, new ArrayList<>()));
       $$0.forEach(($$1x, $$2x) -> {
          for (jj<T> $$3x : $$2x) {
@@ -370,7 +370,7 @@ public class jr<T> implements kf<T> {
             $$1.get($$4).add($$1x);
          }
       });
-      Set<awk<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
+      Set<awm<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
       if (!$$2.isEmpty()) {
          b.warn(
             "Not all defined tags for registry {} are present in data pack: {}",
@@ -380,7 +380,7 @@ public class jr<T> implements kf<T> {
       }
 
       synchronized (this.o) {
-         Map<awk<T>, jn.c<T>> $$3 = new IdentityHashMap<>(this.k);
+         Map<awm<T>, jn.c<T>> $$3 = new IdentityHashMap<>(this.k);
          $$0.forEach(($$1x, $$2x) -> $$3.computeIfAbsent($$1x, this::d).b($$2x));
          $$1.forEach(jj.c::a);
          this.k = $$3;
@@ -408,12 +408,12 @@ public class jr<T> implements kf<T> {
          }
 
          @Override
-         public Optional<jn.c<T>> a(awk<T> $$0) {
+         public Optional<jn.c<T>> a(awm<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public jn.c<T> b(awk<T> $$0) {
+         public jn.c<T> b(awm<T> $$0) {
             return jr.this.a($$0);
          }
       };

@@ -1,50 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dex extends der implements dew {
-   public static final MapCodec<dex> a = b(dex::new);
+public abstract class dex extends dfh {
+   protected static final int a = 2;
+   protected static final ewy b = dfh.a(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<dex> a() {
-      return a;
-   }
-
-   public dex(dsg.d $$0) {
+   protected dex(dsj.d $$0) {
       super($$0);
    }
 
    @Override
-   public cst b() {
-      return cst.a;
+   protected abstract MapCodec<? extends dex> a();
+
+   @Override
+   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return b;
    }
 
    @Override
-   public dpn a(ja $$0, dsh $$1) {
-      return new dpi($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dpn> dpo<T> a(dcd $$0, dsh $$1, dpp<T> $$2) {
-      return a($$2, dpp.o, dpi::a);
+   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
+      return $$1 == jf.a && !this.a($$0, $$3, $$4) ? dfj.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected bqd a(dsh $$0, dcd $$1, ja $$2, cmh $$3, evv $$4) {
-      if ($$1.B) {
-         return bqd.a;
-      } else {
-         if ($$1.c_($$2) instanceof dpi $$5) {
-            $$3.a($$5);
-            $$3.a(avp.ab);
-         }
-
-         return bqd.c;
-      }
-   }
-
-   @Override
-   protected dll a_(dsh $$0) {
-      return dll.c;
+   protected boolean a(dsk $$0, dci $$1, ja $$2) {
+      return a($$1, $$2.d(), jf.b);
    }
 }

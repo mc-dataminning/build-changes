@@ -1,9 +1,9 @@
-public record kr(aqk a, ja b, dsh c, dqf d) {
-   public evz a() {
+public record kr(aqm a, ja b, dsk c, dqi d) {
+   public ewf a() {
       return this.b.b();
    }
 
-   public aqk b() {
+   public aqm b() {
       return this.a;
    }
 
@@ -11,11 +11,11 @@ public record kr(aqk a, ja b, dsh c, dqf d) {
       return this.b;
    }
 
-   public dsh d() {
+   public dsk d() {
       return this.c;
    }
 
-   public dqf e() {
+   public dqi e() {
       return this.d;
    }
 }

@@ -17,7 +17,7 @@ public class alq {
       ($$0, $$1) -> wu.a("commands.advancement.criterionNotFound", $$0, $$1)
    );
    private static final SuggestionProvider<eq> c = ($$0, $$1) -> {
-      Collection<af> $$2 = ((eq)$$0.getSource()).l().aE().b();
+      Collection<af> $$2 = ((eq)$$0.getSource()).l().aF().b();
       return ev.a($$2.stream().map(af::a), $$1);
    };
 
@@ -87,7 +87,7 @@ public class alq {
                                     )
                               ))
                            .then(
-                              er.a("everything").executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), alq.a.a, ((eq)$$0x.getSource()).l().aE().b()))
+                              er.a("everything").executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), alq.a.a, ((eq)$$0x.getSource()).l().aF().b()))
                            )
                      )
                ))
@@ -148,16 +148,16 @@ public class alq {
                                        .executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), alq.a.b, a($$0x, fr.a($$0x, "advancement"), alq.b.b)))
                                  )
                            ))
-                        .then(er.a("everything").executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), alq.a.b, ((eq)$$0x.getSource()).l().aE().b())))
+                        .then(er.a("everything").executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), alq.a.b, ((eq)$$0x.getSource()).l().aF().b())))
                   )
             )
       );
    }
 
-   private static int a(eq $$0, Collection<aql> $$1, alq.a $$2, Collection<af> $$3) throws CommandSyntaxException {
+   private static int a(eq $$0, Collection<aqn> $$1, alq.a $$2, Collection<af> $$3) throws CommandSyntaxException {
       int $$4 = 0;
 
-      for (aql $$5 : $$1) {
+      for (aqn $$5 : $$1) {
          $$4 += $$2.a($$5, $$3);
       }
 
@@ -190,13 +190,13 @@ public class alq {
       }
    }
 
-   private static int a(eq $$0, Collection<aql> $$1, alq.a $$2, af $$3, String $$4) throws CommandSyntaxException {
+   private static int a(eq $$0, Collection<aqn> $$1, alq.a $$2, af $$3, String $$4) throws CommandSyntaxException {
       int $$5 = 0;
       ae $$6 = $$3.b();
       if (!$$6.e().containsKey($$4)) {
          throw b.create(ae.a($$3), $$4);
       } else {
-         for (aql $$7 : $$1) {
+         for (aqn $$7 : $$1) {
             if ($$2.a($$7, $$3, $$4)) {
                $$5++;
             }
@@ -221,7 +221,7 @@ public class alq {
    }
 
    private static List<af> a(CommandContext<eq> $$0, af $$1, alq.b $$2) {
-      ak $$3 = ((eq)$$0.getSource()).l().aE().a();
+      ak $$3 = ((eq)$$0.getSource()).l().aF().a();
       ag $$4 = $$3.a($$1);
       if ($$4 == null) {
          return List.of($$1);
@@ -252,7 +252,7 @@ public class alq {
    static enum a {
       a("grant") {
          @Override
-         protected boolean a(aql $$0, af $$1) {
+         protected boolean a(aqn $$0, af $$1) {
             ah $$2 = $$0.Q().b($$1);
             if ($$2.a()) {
                return false;
@@ -266,13 +266,13 @@ public class alq {
          }
 
          @Override
-         protected boolean a(aql $$0, af $$1, String $$2) {
+         protected boolean a(aqn $$0, af $$1, String $$2) {
             return $$0.Q().a($$1, $$2);
          }
       },
       b("revoke") {
          @Override
-         protected boolean a(aql $$0, af $$1) {
+         protected boolean a(aqn $$0, af $$1) {
             ah $$2 = $$0.Q().b($$1);
             if (!$$2.b()) {
                return false;
@@ -286,7 +286,7 @@ public class alq {
          }
 
          @Override
-         protected boolean a(aql $$0, af $$1, String $$2) {
+         protected boolean a(aqn $$0, af $$1, String $$2) {
             return $$0.Q().b($$1, $$2);
          }
       };
@@ -297,7 +297,7 @@ public class alq {
          this.c = "commands.advancement." + $$0;
       }
 
-      public int a(aql $$0, Iterable<af> $$1) {
+      public int a(aqn $$0, Iterable<af> $$1) {
          int $$2 = 0;
 
          for (af $$3 : $$1) {
@@ -309,9 +309,9 @@ public class alq {
          return $$2;
       }
 
-      protected abstract boolean a(aql var1, af var2);
+      protected abstract boolean a(aqn var1, af var2);
 
-      protected abstract boolean a(aql var1, af var2, String var3);
+      protected abstract boolean a(aqn var1, af var2, String var3);
 
       protected String a() {
          return this.c;

@@ -1,7 +1,10 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dib extends dff implements dia {
-   public dib(dsg.d $$0) {
+public abstract class dib extends djd {
+   public static final dti<dsv> K = dta.U;
+
+   protected dib(dsj.d $$0) {
       super($$0);
    }
 
@@ -9,46 +12,47 @@ public abstract class dib extends dff implements dia {
    protected abstract MapCodec<? extends dib> a();
 
    @Override
-   protected void b(dsh $$0, dcd $$1, ja $$2, dsh $$3, boolean $$4) {
-      $$1.a($$2, this, this.b());
+   protected boolean a(dsk $$0, dci $$1, ja $$2) {
+      return b($$1, $$2, m($$0).g());
    }
 
+   public static boolean b(dci $$0, ja $$1, jf $$2) {
+      ja $$3 = $$1.a($$2);
+      return $$0.a_($$3).d($$0, $$3, $$2.g());
+   }
+
+   @Nullable
    @Override
-   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
-      $$3.a($$4, this, this.b());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   public dsk a(cxm $$0) {
+      for (jf $$1 : $$0.f()) {
+         dsk $$2;
+         if ($$1.o() == jf.a.b) {
+            $$2 = this.o().a(K, $$1 == jf.b ? dsv.c : dsv.a).a(aE, $$0.g());
+         } else {
+            $$2 = this.o().a(K, dsv.b).a(aE, $$1.g());
+         }
 
-   @Override
-   protected void a(dsh $$0, aqk $$1, ja $$2, aym $$3) {
-      if (m($$1.a_($$2.d())) && $$2.v() >= $$1.I_()) {
-         ciq $$4 = ciq.a($$1, $$2, $$0);
-         this.a($$4);
-      }
-   }
-
-   protected void a(ciq $$0) {
-   }
-
-   protected int b() {
-      return 2;
-   }
-
-   public static boolean m(dsh $$0) {
-      return $$0.i() || $$0.a(avu.aK) || $$0.k() || $$0.r();
-   }
-
-   @Override
-   public void a(dsh $$0, dcd $$1, ja $$2, aym $$3) {
-      if ($$3.a(16) == 0) {
-         ja $$4 = $$2.d();
-         if (m($$1.a_($$4))) {
-            ayi.a($$1, $$2, $$3, new lb(lj.C, $$0));
+         if ($$2.a((dci)$$0.q(), $$0.a())) {
+            return $$2;
          }
       }
+
+      return null;
    }
 
-   public int b(dsh $$0, dbj $$1, ja $$2) {
-      return -16777216;
+   @Override
+   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
+      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? dfj.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected static jf m(dsk $$0) {
+      switch ((dsv)$$0.c(K)) {
+         case c:
+            return jf.a;
+         case a:
+            return jf.b;
+         default:
+            return $$0.c(aE);
+      }
    }
 }

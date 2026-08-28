@@ -1,29 +1,25 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dnj extends dhn implements dfi {
-   public static final MapCodec<dnj> c = b(dnj::new);
+public interface dnj {
+   cxf b();
 
-   @Override
-   public MapCodec<dnj> a() {
-      return c;
+   static List<dnj> c() {
+      return lq.g.t().map(dnj::a).filter(Objects::nonNull).collect(Collectors.toList());
    }
 
-   public dnj(dsg.d $$0) {
-      super($$0);
-   }
+   @Nullable
+   static dnj a(dce $$0) {
+      if ($$0.r() instanceof csb $$1) {
+         dfh var6 = $$1.d();
+         if (var6 instanceof dnj) {
+            return (dnj)var6;
+         }
+      }
 
-   @Override
-   public boolean b(dcg $$0, ja $$1, dsh $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dcd $$0, aym $$1, ja $$2, dsh $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqk $$0, aym $$1, ja $$2, dsh $$3) {
-      a($$0, $$2, new cua(this));
+      ctx $$2 = $$0.r();
+      return $$2 instanceof dnj ? (dnj)$$2 : null;
    }
 }

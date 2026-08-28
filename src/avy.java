@@ -1,40 +1,38 @@
 public interface avy {
-   awk<bsj<?>> a = a("skeletons");
-   awk<bsj<?>> b = a("zombies");
-   awk<bsj<?>> c = a("raiders");
-   awk<bsj<?>> d = a("undead");
-   awk<bsj<?>> e = a("beehive_inhabitors");
-   awk<bsj<?>> f = a("arrows");
-   awk<bsj<?>> g = a("impact_projectiles");
-   awk<bsj<?>> h = a("powder_snow_walkable_mobs");
-   awk<bsj<?>> i = a("axolotl_always_hostiles");
-   awk<bsj<?>> j = a("axolotl_hunt_targets");
-   awk<bsj<?>> k = a("freeze_immune_entity_types");
-   awk<bsj<?>> l = a("freeze_hurts_extra_types");
-   awk<bsj<?>> m = a("can_breathe_under_water");
-   awk<bsj<?>> n = a("frog_food");
-   awk<bsj<?>> o = a("fall_damage_immune");
-   awk<bsj<?>> p = a("dismounts_underwater");
-   awk<bsj<?>> q = a("non_controlling_rider");
-   awk<bsj<?>> r = a("deflects_projectiles");
-   awk<bsj<?>> s = a("can_turn_in_boats");
-   awk<bsj<?>> t = a("illager");
-   awk<bsj<?>> u = a("aquatic");
-   awk<bsj<?>> v = a("arthropod");
-   awk<bsj<?>> w = a("ignores_poison_and_regen");
-   awk<bsj<?>> x = a("inverted_healing_and_harm");
-   awk<bsj<?>> y = a("wither_friends");
-   awk<bsj<?>> z = a("illager_friends");
-   awk<bsj<?>> A = a("not_scary_for_pufferfish");
-   awk<bsj<?>> B = a("sensitive_to_impaling");
-   awk<bsj<?>> C = a("sensitive_to_bane_of_arthropods");
-   awk<bsj<?>> D = a("sensitive_to_smite");
-   awk<bsj<?>> E = a("no_anger_from_wind_charge");
-   awk<bsj<?>> F = a("immune_to_oozing");
-   awk<bsj<?>> G = a("immune_to_infested");
-   awk<bsj<?>> H = a("redirectable_projectile");
+   awm<brb> a = a("damages_helmet");
+   awm<brb> b = a("breeze_immune_to");
+   awm<brb> c = a("bypasses_armor");
+   awm<brb> d = a("bypasses_shield");
+   awm<brb> e = a("bypasses_invulnerability");
+   awm<brb> f = a("bypasses_cooldown");
+   awm<brb> g = a("bypasses_effects");
+   awm<brb> h = a("bypasses_resistance");
+   awm<brb> i = a("bypasses_enchantments");
+   awm<brb> j = a("is_fire");
+   awm<brb> k = a("is_projectile");
+   awm<brb> l = a("witch_resistant_to");
+   awm<brb> m = a("is_explosion");
+   awm<brb> n = a("is_fall");
+   awm<brb> o = a("is_drowning");
+   awm<brb> p = a("is_freezing");
+   awm<brb> q = a("is_lightning");
+   awm<brb> r = a("no_anger");
+   awm<brb> s = a("no_impact");
+   awm<brb> t = a("always_most_significant_fall");
+   awm<brb> u = a("wither_immune_to");
+   awm<brb> v = a("ignites_armor_stands");
+   awm<brb> w = a("burns_armor_stands");
+   awm<brb> x = a("avoids_guardian_thorns");
+   awm<brb> y = a("always_triggers_silverfish");
+   awm<brb> z = a("always_hurts_ender_dragons");
+   awm<brb> A = a("no_knockback");
+   awm<brb> B = a("always_kills_armor_stands");
+   awm<brb> C = a("can_break_armor_stand");
+   awm<brb> D = a("bypasses_wolf_armor");
+   awm<brb> E = a("is_player_attack");
+   awm<brb> F = a("burn_from_stepping");
 
-   private static awk<bsj<?>> a(String $$0) {
-      return awk.a(lr.z, new akk($$0));
+   private static awm<brb> a(String $$0) {
+      return awm.a(lr.s, new akk($$0));
    }
 }

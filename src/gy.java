@@ -60,11 +60,11 @@ public class gy implements ArgumentType<gy.a> {
    }
 
    static ic<eq> a(CommandContext<eq> $$0, akk $$1) throws CommandSyntaxException {
-      return ((eq)$$0.getSource()).l().aF().a($$1).orElseThrow(() -> c.create($$1.toString()));
+      return ((eq)$$0.getSource()).l().aG().a($$1).orElseThrow(() -> c.create($$1.toString()));
    }
 
    static Collection<ic<eq>> b(CommandContext<eq> $$0, akk $$1) throws CommandSyntaxException {
-      Collection<ic<eq>> $$2 = ((eq)$$0.getSource()).l().aF().b($$1);
+      Collection<ic<eq>> $$2 = ((eq)$$0.getSource()).l().aG().b($$1);
       if ($$2 == null) {
          throw b.create($$1.toString());
       } else {

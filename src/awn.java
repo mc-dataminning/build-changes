@@ -1,77 +1,130 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class awn {
-   public static Map<akj<? extends jw<?>>, awn.a> a(jq<akt> $$0) {
-      return ka.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> ((awn.a)$$0x.getSecond()).a() > 0)
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+public class awn<T> {
+   private static final Logger a = LogUtils.getLogger();
+   final Function<akk, Optional<? extends T>> b;
+   private final String c;
+
+   public awn(Function<akk, Optional<? extends T>> $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static <T> awn.a a(jw<T> $$0) {
-      Map<akk, IntList> $$1 = new HashMap<>();
-      $$0.j().forEach($$2 -> {
-         jn<T> $$3 = (jn<T>)$$2.getSecond();
-         IntList $$4 = new IntArrayList($$3.b());
+   public Map<akk, List<awn.a>> a(atw $$0) {
+      Map<akk, List<awn.a>> $$1 = Maps.newHashMap();
+      akd $$2 = akd.a(this.c);
 
-         for (jj<T> $$5 : $$3) {
-            if ($$5.f() != jj.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
+      for (Entry<akk, List<atu>> $$3 : $$2.b($$0).entrySet()) {
+         akk $$4 = $$3.getKey();
+         akk $$5 = $$2.b($$4);
+
+         for (atu $$6 : $$3.getValue()) {
+            try (Reader $$7 = $$6.e()) {
+               JsonElement $$8 = JsonParser.parseReader($$7);
+               List<awn.a> $$9 = $$1.computeIfAbsent($$5, $$0x -> new ArrayList<>());
+               awl $$10 = (awl)awl.a.parse(new Dynamic(JsonOps.INSTANCE, $$8)).getOrThrow();
+               if ($$10.b()) {
+                  $$9.clear();
+               }
+
+               String $$11 = $$6.b();
+               $$10.a().forEach($$2x -> $$9.add(new awn.a($$2x, $$11)));
+            } catch (Exception var17) {
+               a.error("Couldn't read tag list {} from {} in data pack {}", new Object[]{$$5, $$4, $$6.b(), var17});
             }
-
-            $$4.add($$0.a($$5.a()));
-         }
-
-         $$1.put(((awk)$$2.getFirst()).b(), $$4);
-      });
-      return new awn.a($$1);
-   }
-
-   static <T> void a(akj<? extends jw<T>> $$0, jw<T> $$1, awn.a $$2, awn.b<T> $$3) {
-      $$2.a.forEach(($$3x, $$4) -> {
-         awk<T> $$5 = awk.a($$0, $$3x);
-         List<jj<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.accept($$5, $$6);
-      });
-   }
-
-   public static final class a {
-      final Map<akk, IntList> a;
-
-      a(Map<akk, IntList> $$0) {
-         this.a = $$0;
-      }
-
-      public void a(vr $$0) {
-         $$0.a(this.a, vr::a, vr::a);
-      }
-
-      public static awn.a b(vr $$0) {
-         return new awn.a($$0.a(vr::q, vr::a));
-      }
-
-      public int a() {
-         return this.a.size();
-      }
-
-      public <T> void a(jw<T> $$0) {
-         if (this.a() != 0) {
-            Map<awk<T>, List<jj<T>>> $$1 = new HashMap<>(this.a());
-            awn.a($$0.d(), $$0, this, $$1::put);
-            $$0.a($$1);
          }
       }
+
+      return $$1;
    }
 
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(awk<T> var1, List<jj<T>> var2);
+   private Either<Collection<awn.a>, Collection<T>> a(awk.a<T> $$0, List<awn.a> $$1) {
+      Builder<T> $$2 = ImmutableSet.builder();
+      List<awn.a> $$3 = new ArrayList<>();
+
+      for (awn.a $$4 : $$1) {
+         if (!$$4.a().a($$0, $$2::add)) {
+            $$3.add($$4);
+         }
+      }
+
+      return $$3.isEmpty() ? Either.right($$2.build()) : Either.left($$3);
+   }
+
+   public Map<akk, Collection<T>> a(Map<akk, List<awn.a>> $$0) {
+      final Map<akk, Collection<T>> $$1 = Maps.newHashMap();
+      awk.a<T> $$2 = new awk.a<T>() {
+         @Nullable
+         @Override
+         public T a(akk $$0) {
+            return (T)awn.this.b.apply($$0).orElse(null);
+         }
+
+         @Nullable
+         @Override
+         public Collection<T> b(akk $$0) {
+            return $$1.get($$0);
+         }
+      };
+      axk<akk, awn.b> $$3 = new axk<>();
+      $$0.forEach(($$1x, $$2x) -> $$3.a($$1x, new awn.b($$2x)));
+      $$3.a(
+         ($$2x, $$3x) -> this.a($$2, $$3x.a)
+               .ifLeft(
+                  $$1xx -> a.error(
+                        "Couldn't load tag {} as it is missing following references: {}",
+                        $$2x,
+                        $$1xx.stream().map(Objects::toString).collect(Collectors.joining(", "))
+                     )
+               )
+               .ifRight($$2xx -> $$1.put($$2x, $$2xx))
+      );
+      return $$1;
+   }
+
+   public Map<akk, Collection<T>> b(atw $$0) {
+      return this.a(this.a($$0));
+   }
+
+   public static record a(awk a, String b) {
+
+      @Override
+      public String toString() {
+         return this.a + " (from " + this.b + ")";
+      }
+   }
+
+   static record b(List<awn.a> a) implements axk.a<akk> {
+
+      @Override
+      public void a(Consumer<akk> $$0) {
+         this.a.forEach($$1 -> $$1.a.a($$0));
+      }
+
+      @Override
+      public void b(Consumer<akk> $$0) {
+         this.a.forEach($$1 -> $$1.a.b($$0));
+      }
    }
 }

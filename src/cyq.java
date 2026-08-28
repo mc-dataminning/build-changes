@@ -1,112 +1,121 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cyq implements cxx {
-   final String a;
-   final cxv b;
-   final cua c;
-   final js<cyd> d;
+public class cyq implements cxz {
+   final cyr a;
+   final cuc b;
+   final String c;
+   final cxx d;
+   final boolean e;
 
-   public cyq(String $$0, cxv $$1, cua $$2, js<cyd> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public cyq(String $$0, cxx $$1, cyr $$2, cuc $$3, boolean $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
+      this.e = $$4;
+   }
+
+   public cyq(String $$0, cxx $$1, cyr $$2, cuc $$3) {
+      this($$0, $$1, $$2, $$3, true);
    }
 
    @Override
-   public cyl<?> ap_() {
-      return cyl.b;
+   public cyn<?> ap_() {
+      return cyn.a;
    }
 
    @Override
    public String c() {
-      return this.a;
-   }
-
-   @Override
-   public cxv d() {
-      return this.b;
-   }
-
-   @Override
-   public cua a(jl.a $$0) {
       return this.c;
    }
 
    @Override
-   public js<cyd> a() {
+   public cxx d() {
       return this.d;
    }
 
-   public boolean a(cxw $$0, dcd $$1) {
-      if ($$0.e() != this.d.size()) {
-         return false;
-      } else {
-         return $$0.a() == 1 && this.d.size() == 1 ? this.d.getFirst().a($$0.a(0)) : $$0.c().a(this, null);
-      }
+   @Override
+   public cuc a(jl.a $$0) {
+      return this.b;
    }
 
-   public cua a(cxw $$0, jl.a $$1) {
-      return this.c.s();
+   @Override
+   public js<cyf> a() {
+      return this.a.c();
+   }
+
+   @Override
+   public boolean h() {
+      return this.e;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= this.d.size();
+      return $$0 >= this.a.a() && $$1 >= this.a.b();
    }
 
-   public static class a implements cyl<cyq> {
-      private static final MapCodec<cyq> y = RecordCodecBuilder.mapCodec(
+   public boolean a(cxy $$0, dcf $$1) {
+      return this.a.a($$0);
+   }
+
+   public cuc a(cxy $$0, jl.a $$1) {
+      return this.a($$1).s();
+   }
+
+   public int j() {
+      return this.a.a();
+   }
+
+   public int k() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean i() {
+      js<cyf> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
+   }
+
+   public static class a implements cyn<cyq> {
+      public static final MapCodec<cyq> x = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.a),
-                  cxv.e.fieldOf("category").orElse(cxv.d).forGetter($$0x -> $$0x.b),
-                  cua.d.fieldOf("result").forGetter($$0x -> $$0x.c),
-                  cyd.d.listOf().fieldOf("ingredients").flatXmap($$0x -> {
-                     cyd[] $$1 = $$0x.stream().filter($$0xx -> !$$0xx.c()).toArray(cyd[]::new);
-                     if ($$1.length == 0) {
-                        return DataResult.error(() -> "No ingredients for shapeless recipe");
-                     } else {
-                        return $$1.length > 9 ? DataResult.error(() -> "Too many ingredients for shapeless recipe") : DataResult.success(js.a(cyd.a, $$1));
-                     }
-                  }, DataResult::success).forGetter($$0x -> $$0x.d)
+                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
+                  cxx.e.fieldOf("category").orElse(cxx.d).forGetter($$0x -> $$0x.d),
+                  cyr.a.forGetter($$0x -> $$0x.a),
+                  cuc.d.fieldOf("result").forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.e)
                )
                .apply($$0, cyq::new)
       );
-      public static final ys<wf, cyq> x = ys.a(cyq.a::a, cyq.a::a);
+      public static final ys<wf, cyq> y = ys.a(cyq.a::a, cyq.a::a);
 
       @Override
       public MapCodec<cyq> a() {
-         return y;
+         return x;
       }
 
       @Override
       public ys<wf, cyq> b() {
-         return x;
+         return y;
       }
 
       private static cyq a(wf $$0) {
          String $$1 = $$0.p();
-         cxv $$2 = $$0.b(cxv.class);
-         int $$3 = $$0.l();
-         js<cyd> $$4 = js.a($$3, cyd.a);
-         $$4.replaceAll($$1x -> cyd.b.decode($$0));
-         cua $$5 = cua.i.decode($$0);
-         return new cyq($$1, $$2, $$5, $$4);
+         cxx $$2 = $$0.b(cxx.class);
+         cyr $$3 = cyr.b.decode($$0);
+         cuc $$4 = cuc.i.decode($$0);
+         boolean $$5 = $$0.readBoolean();
+         return new cyq($$1, $$2, $$3, $$4, $$5);
       }
 
       private static void a(wf $$0, cyq $$1) {
-         $$0.a($$1.a);
-         $$0.a($$1.b);
-         $$0.c($$1.d.size());
-
-         for (cyd $$2 : $$1.d) {
-            cyd.b.encode($$0, $$2);
-         }
-
-         cua.i.encode($$0, $$1.c);
+         $$0.a($$1.c);
+         $$0.a($$1.d);
+         cyr.b.encode($$0, $$1.a);
+         cuc.i.encode($$0, $$1.b);
+         $$0.a($$1.e);
       }
    }
 }

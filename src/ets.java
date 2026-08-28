@@ -1,33 +1,42 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record ets(Optional<bj> b) implements etz {
-   public static final MapCodec<ets> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bj.a.optionalFieldOf("predicate").forGetter(ets::c)).apply($$0, ets::new));
+public class ets extends etv {
+   public static final MapCodec<ets> a = a(ets::new);
+   public static final Codec<ets> b = b(ets::new);
 
-   @Override
-   public eua b() {
-      return eub.m;
+   ets(List<euf> $$0) {
+      super($$0, ac.a($$0));
+   }
+
+   public static ets a(List<euf> $$0) {
+      return new ets(List.copyOf($$0));
    }
 
    @Override
-   public Set<eth<?>> a() {
-      return ImmutableSet.of(etk.f, etk.c);
+   public eug b() {
+      return euh.c;
    }
 
-   public boolean a(eqo $$0) {
-      bqw $$1 = $$0.c(etk.c);
-      evz $$2 = $$0.c(etk.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   public static ets.a a(euf.a... $$0) {
+      return new ets.a($$0);
    }
 
-   public static etz.a a(bj.a $$0) {
-      return () -> new ets(Optional.of($$0.b()));
-   }
+   public static class a extends etv.a {
+      public a(euf.a... $$0) {
+         super($$0);
+      }
 
-   public Optional<bj> c() {
-      return this.b;
+      @Override
+      public ets.a and(euf.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected euf a(List<euf> $$0) {
+         return new ets($$0);
+      }
    }
 }

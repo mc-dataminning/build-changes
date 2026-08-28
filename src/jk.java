@@ -7,9 +7,9 @@ public interface jk<T> {
       return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
    }
 
-   Optional<jn.c<T>> a(awk<T> var1);
+   Optional<jn.c<T>> a(awm<T> var1);
 
-   default jn.c<T> b(awk<T> $$0) {
+   default jn.c<T> b(awm<T> $$0) {
       return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
    }
 

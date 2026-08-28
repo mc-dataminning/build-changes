@@ -1,55 +1,180 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
+import com.mojang.logging.LogUtils;
 import java.util.List;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class ate<T> {
-   private final evp a;
+public class ate {
+   private static final Logger a = LogUtils.getLogger();
+   private final ash b;
+   private final ate.c c;
+   private final ate.a d;
+   private final asj e;
 
-   protected ate(evp $$0) {
-      this.a = $$0;
+   @Nullable
+   public static ate a(ash $$0, ate.c $$1, ask $$2, asj $$3) {
+      int $$4 = aa.b().a($$2);
+      ate.a $$5 = a($$0, $$1, $$4);
+      return $$5 != null ? new ate($$0, $$1, $$5, $$3) : null;
+   }
+
+   public ate(ash $$0, ate.c $$1, ate.a $$2, asj $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
    @Nullable
-   public T a(Path $$0, List<evq> $$1) throws IOException {
-      Path $$2 = $$0;
-
-      BasicFileAttributes $$3;
+   public static ate.a a(ash $$0, ate.c $$1, int $$2) {
       try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
+         ate.a var11;
+         try (asi $$3 = $$1.a($$0)) {
+            asx $$4 = $$3.a(asx.b);
+            if ($$4 == null) {
+               a.warn("Missing metadata in pack {}", $$0.a());
+               return null;
+            }
+
+            ase $$5 = $$3.a(ase.a);
+            coy $$6 = $$5 != null ? $$5.a() : coy.a();
+            axy<Integer> $$7 = a($$0.a(), $$4);
+            atf $$8 = atf.a($$7, $$2);
+            asg $$9 = $$3.a(asg.a);
+            List<String> $$10 = $$9 != null ? $$9.a($$2) : List.of();
+            var11 = new ate.a($$4.a(), $$8, $$6, $$10);
+         }
+
+         return var11;
+      } catch (Exception var14) {
+         a.warn("Failed to read pack {} metadata", $$0.a(), var14);
          return null;
       }
+   }
 
-      if ($$3.isSymbolicLink()) {
-         this.a.a($$0, $$1);
-         if (!$$1.isEmpty()) {
-            return null;
-         }
-
-         $$2 = Files.readSymbolicLink($$0);
-         $$3 = Files.readAttributes($$2, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      }
-
-      if ($$3.isDirectory()) {
-         this.a.b($$2, $$1);
-         if (!$$1.isEmpty()) {
-            return null;
-         } else {
-            return !Files.isRegularFile($$2.resolve("pack.mcmeta")) ? null : this.c($$2);
-         }
+   private static axy<Integer> a(String $$0, asx $$1) {
+      int $$2 = $$1.b();
+      if ($$1.c().isEmpty()) {
+         return new axy<>($$2);
       } else {
-         return $$3.isRegularFile() && $$2.getFileName().toString().endsWith(".zip") ? this.d($$2) : null;
+         axy<Integer> $$3 = $$1.c().get();
+         if (!$$3.a($$2)) {
+            a.warn("Pack {} declared support for versions {} but declared main format is {}, defaulting to {}", new Object[]{$$0, $$3, $$2, $$2});
+            return new axy<>($$2);
+         } else {
+            return $$3;
+         }
       }
    }
 
-   @Nullable
-   protected abstract T d(Path var1) throws IOException;
+   public ash a() {
+      return this.b;
+   }
 
-   @Nullable
-   protected abstract T c(Path var1) throws IOException;
+   public wu b() {
+      return this.b.b();
+   }
+
+   public wu c() {
+      return this.d.a();
+   }
+
+   public wu a(boolean $$0) {
+      return this.b.a($$0, this.d.a);
+   }
+
+   public atf d() {
+      return this.d.b();
+   }
+
+   public coy e() {
+      return this.d.c();
+   }
+
+   public asi f() {
+      return this.c.a(this.b, this.d);
+   }
+
+   public String g() {
+      return this.b.a();
+   }
+
+   public asj h() {
+      return this.e;
+   }
+
+   public boolean i() {
+      return this.e.a();
+   }
+
+   public boolean j() {
+      return this.e.c();
+   }
+
+   public ate.b k() {
+      return this.e.b();
+   }
+
+   public ati l() {
+      return this.b.c();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof ate $$1) ? false : this.b.equals($$1.b);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   public static record a(wu a, atf b, coy c, List<String> d) {
+   }
+
+   public static enum b {
+      a,
+      b;
+
+      public <T> int a(List<T> $$0, T $$1, Function<T, asj> $$2, boolean $$3) {
+         ate.b $$4 = $$3 ? this.a() : this;
+         if ($$4 == b) {
+            int $$5;
+            for ($$5 = 0; $$5 < $$0.size(); $$5++) {
+               asj $$6 = $$2.apply($$0.get($$5));
+               if (!$$6.c() || $$6.b() != this) {
+                  break;
+               }
+            }
+
+            $$0.add($$5, $$1);
+            return $$5;
+         } else {
+            int $$7;
+            for ($$7 = $$0.size() - 1; $$7 >= 0; $$7--) {
+               asj $$8 = $$2.apply($$0.get($$7));
+               if (!$$8.c() || $$8.b() != this) {
+                  break;
+               }
+            }
+
+            $$0.add($$7 + 1, $$1);
+            return $$7 + 1;
+         }
+      }
+
+      public ate.b a() {
+         return this == a ? b : a;
+      }
+   }
+
+   public interface c {
+      asi a(ash var1);
+
+      asi a(ash var1, ate.a var2);
+   }
 }

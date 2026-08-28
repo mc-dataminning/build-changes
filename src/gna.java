@@ -1,13 +1,16 @@
-public class gna<T extends cjb> extends gns<T, fue<T>> {
-   private static final akk a = new akk("textures/entity/zombie/drowned_outer_layer.png");
-   private final fue<T> b;
+public class gna extends gny<ceu, ftz<ceu>> {
+   private static final akk a = new akk("textures/entity/cat/cat_collar.png");
+   private final ftz<ceu> b;
 
-   public gna(glc<T, fue<T>> $$0, fxe $$1) {
+   public gna(gli<ceu, ftz<ceu>> $$0, fxk $$1) {
       super($$0);
-      this.b = new fue<>($$1.a(fxh.U));
+      this.b = new ftz<>($$1.a(fxn.u));
    }
 
-   public void a(fag $$0, gdx $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   public void a(fam $$0, ged $$1, int $$2, ceu $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.s()) {
+         float[] $$10 = $$3.gx().d();
+         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
+      }
    }
 }

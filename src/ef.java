@@ -8,7 +8,7 @@ public class ef extends ds<ef.a> {
       return ef.a.a;
    }
 
-   public void a(aql $$0, cua $$1) {
+   public void a(aqn $$0, cuc $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,11 +21,11 @@ public class ef extends ds<ef.a> {
          return am.C.a(new ef.a(Optional.empty(), Optional.of($$0)));
       }
 
-      public static an<ef.a> a(dcc $$0) {
+      public static an<ef.a> a(dce $$0) {
          return am.C.a(new ef.a(Optional.empty(), Optional.of(cp.a.a().a($$0).b())));
       }
 
-      public boolean a(cua $$0) {
+      public boolean a(cuc $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

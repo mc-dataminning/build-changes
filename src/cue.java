@@ -1,46 +1,39 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
-
-public class cue extends ctv {
-   private static final Logger a = LogUtils.getLogger();
-
-   public cue(ctv.a $$0) {
-      super($$0);
+public class cue {
+   public static bqh<cuc> a(dcf $$0, cmk $$1, bqf $$2) {
+      $$1.c($$2);
+      return bqh.b($$1.b($$2));
    }
 
-   @Override
-   public bqe<cua> a(dcd $$0, cmh $$1, bqc $$2) {
-      cua $$3 = $$1.b($$2);
-      if (!$$1.fL()) {
-         $$1.a($$2, cua.l);
-      }
-
-      List<akk> $$4 = $$3.a(kn.R, List.of());
-      if ($$4.isEmpty()) {
-         return bqe.d($$3);
-      } else {
-         if (!$$0.B) {
-            cyk $$5 = $$0.o().aJ();
-            List<cyi<?>> $$6 = new ArrayList<>($$4.size());
-
-            for (akk $$7 : $$4) {
-               Optional<cyi<?>> $$8 = $$5.a($$7);
-               if (!$$8.isPresent()) {
-                  a.error("Invalid recipe: {}", $$7);
-                  return bqe.d($$3);
-               }
-
-               $$6.add($$8.get());
-            }
-
-            $$1.a($$6);
-            $$1.b(avp.c.b(this));
+   public static cuc a(cuc $$0, cmk $$1, cuc $$2, boolean $$3) {
+      boolean $$4 = $$1.fM();
+      if ($$3 && $$4) {
+         if (!$$1.fZ().i($$2)) {
+            $$1.fZ().f($$2);
          }
 
-         return bqe.a($$3, $$0.x_());
+         return $$0;
+      } else {
+         $$0.a(1, $$1);
+         if ($$0.e()) {
+            return $$2;
+         } else {
+            if (!$$1.fZ().f($$2)) {
+               $$1.a($$2, false);
+            }
+
+            return $$0;
+         }
+      }
+   }
+
+   public static cuc a(cuc $$0, cmk $$1, cuc $$2) {
+      return a($$0, $$1, $$2, true);
+   }
+
+   public static void a(ciu $$0, Iterable<cuc> $$1) {
+      dcf $$2 = $$0.dQ();
+      if (!$$2.B) {
+         $$1.forEach($$2x -> $$2.b(new ciu($$2, $$0.dv(), $$0.dx(), $$0.dB(), $$2x)));
       }
    }
 }

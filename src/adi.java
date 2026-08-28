@@ -6,12 +6,12 @@ public class adi implements zb<abn> {
    private final float e;
    private final float f;
 
-   public adi(bsd $$0) {
-      this.b = $$0.du();
-      this.c = $$0.dw();
-      this.d = $$0.dA();
-      this.e = $$0.dF();
-      this.f = $$0.dH();
+   public adi(bsg $$0) {
+      this.b = $$0.dv();
+      this.c = $$0.dx();
+      this.d = $$0.dB();
+      this.e = $$0.dG();
+      this.f = $$0.dI();
    }
 
    private adi(vr $$0) {

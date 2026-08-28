@@ -1,39 +1,28 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.util.Collection;
-import java.util.Collections;
 
 public class aoc {
    public static void a(CommandDispatcher<eq> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("spawnpoint").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((eq)$$0x.getSource(), Collections.singleton(((eq)$$0x.getSource()).h()), ja.a(((eq)$$0x.getSource()).d()), 0.0F)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("setworldspawn").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((eq)$$0x.getSource(), ja.a(((eq)$$0x.getSource()).d()), 0.0F)))
             .then(
-               ((RequiredArgumentBuilder)er.a("targets", fd.d())
-                     .executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), ja.a(((eq)$$0x.getSource()).d()), 0.0F)))
-                  .then(
-                     ((RequiredArgumentBuilder)er.a("pos", gm.a()).executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), gm.c($$0x, "pos"), 0.0F)))
-                        .then(er.a("angle", ew.a()).executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), gm.c($$0x, "pos"), ew.a($$0x, "angle"))))
-                  )
+               ((RequiredArgumentBuilder)er.a("pos", gm.a()).executes($$0x -> a((eq)$$0x.getSource(), gm.c($$0x, "pos"), 0.0F)))
+                  .then(er.a("angle", ew.a()).executes($$0x -> a((eq)$$0x.getSource(), gm.c($$0x, "pos"), ew.a($$0x, "angle"))))
             )
       );
    }
 
-   private static int a(eq $$0, Collection<aql> $$1, ja $$2, float $$3) {
-      akj<dcd> $$4 = $$0.e().af();
-
-      for (aql $$5 : $$1) {
-         $$5.a($$4, $$2, $$3, true, false);
-      }
-
-      String $$6 = $$4.a().toString();
-      if ($$1.size() == 1) {
-         $$0.a(() -> wu.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().O_()), true);
+   private static int a(eq $$0, ja $$1, float $$2) {
+      aqm $$3 = $$0.e();
+      if ($$3.af() != dcf.h) {
+         $$0.b(wu.c("commands.setworldspawn.failure.not_overworld"));
+         return 0;
       } else {
-         $$0.a(() -> wu.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
+         $$3.a($$1, $$2);
+         $$0.a(() -> wu.a("commands.setworldspawn.success", $$1.u(), $$1.v(), $$1.w(), $$2), true);
+         return 1;
       }
-
-      return $$1.size();
    }
 }

@@ -10,48 +10,48 @@ import javax.annotation.Nullable;
 
 public class hf {
    public static final int a = Integer.MAX_VALUE;
-   public static final BiConsumer<evz, List<? extends bsd>> b = ($$0, $$1) -> {
+   public static final BiConsumer<ewf, List<? extends bsg>> b = ($$0, $$1) -> {
    };
-   private static final dwo<bsd, ?> c = new dwo<bsd, bsd>() {
-      public bsd a(bsd $$0) {
+   private static final dwu<bsg, ?> c = new dwu<bsg, bsg>() {
+      public bsg a(bsg $$0) {
          return $$0;
       }
 
       @Override
-      public Class<? extends bsd> a() {
-         return bsd.class;
+      public Class<? extends bsg> a() {
+         return bsg.class;
       }
    };
    private final int d;
    private final boolean e;
    private final boolean f;
-   private final Predicate<bsd> g;
+   private final Predicate<bsg> g;
    private final de.c h;
-   private final Function<evz, evz> i;
+   private final Function<ewf, ewf> i;
    @Nullable
-   private final evu j;
-   private final BiConsumer<evz, List<? extends bsd>> k;
+   private final ewa j;
+   private final BiConsumer<ewf, List<? extends bsg>> k;
    private final boolean l;
    @Nullable
    private final String m;
    @Nullable
    private final UUID n;
-   private final dwo<bsd, ?> o;
+   private final dwu<bsg, ?> o;
    private final boolean p;
 
    public hf(
       int $$0,
       boolean $$1,
       boolean $$2,
-      Predicate<bsd> $$3,
+      Predicate<bsg> $$3,
       de.c $$4,
-      Function<evz, evz> $$5,
-      @Nullable evu $$6,
-      BiConsumer<evz, List<? extends bsd>> $$7,
+      Function<ewf, ewf> $$5,
+      @Nullable ewa $$6,
+      BiConsumer<ewf, List<? extends bsg>> $$7,
       boolean $$8,
       @Nullable String $$9,
       @Nullable UUID $$10,
-      @Nullable bsj<?> $$11,
+      @Nullable bsm<?> $$11,
       boolean $$12
    ) {
       this.d = $$0;
@@ -65,7 +65,7 @@ public class hf {
       this.l = $$8;
       this.m = $$9;
       this.n = $$10;
-      this.o = (dwo<bsd, ?>)($$11 == null ? c : $$11);
+      this.o = (dwu<bsg, ?>)($$11 == null ? c : $$11);
       this.p = $$12;
    }
 
@@ -95,9 +95,9 @@ public class hf {
       }
    }
 
-   public bsd a(eq $$0) throws CommandSyntaxException {
+   public bsg a(eq $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<? extends bsd> $$1 = this.b($$0);
+      List<? extends bsg> $$1 = this.b($$0);
       if ($$1.isEmpty()) {
          throw fd.d.create();
       } else if ($$1.size() > 1) {
@@ -107,37 +107,37 @@ public class hf {
       }
    }
 
-   public List<? extends bsd> b(eq $$0) throws CommandSyntaxException {
-      return this.f($$0).stream().filter($$1 -> $$1.ak().a($$0.w())).toList();
+   public List<? extends bsg> b(eq $$0) throws CommandSyntaxException {
+      return this.f($$0).stream().filter($$1 -> $$1.al().a($$0.w())).toList();
    }
 
-   private List<? extends bsd> f(eq $$0) throws CommandSyntaxException {
+   private List<? extends bsg> f(eq $$0) throws CommandSyntaxException {
       this.e($$0);
       if (!this.e) {
          return this.d($$0);
       } else if (this.m != null) {
-         aql $$1 = $$0.l().ah().a(this.m);
-         return (List<? extends bsd>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new aql[]{$$1}));
+         aqn $$1 = $$0.l().ai().a(this.m);
+         return (List<? extends bsg>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new aqn[]{$$1}));
       } else if (this.n != null) {
-         for (aqk $$2 : $$0.l().K()) {
-            bsd $$3 = $$2.a(this.n);
+         for (aqm $$2 : $$0.l().L()) {
+            bsg $$3 = $$2.a(this.n);
             if ($$3 != null) {
-               return Lists.newArrayList(new bsd[]{$$3});
+               return Lists.newArrayList(new bsg[]{$$3});
             }
          }
 
          return Collections.emptyList();
       } else {
-         evz $$4 = this.i.apply($$0.d());
-         Predicate<bsd> $$5 = this.a($$4);
+         ewf $$4 = this.i.apply($$0.d());
+         Predicate<bsg> $$5 = this.a($$4);
          if (this.l) {
-            return (List<? extends bsd>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new bsd[]{$$0.f()}) : Collections.emptyList());
+            return (List<? extends bsg>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new bsg[]{$$0.f()}) : Collections.emptyList());
          } else {
-            List<bsd> $$6 = Lists.newArrayList();
+            List<bsg> $$6 = Lists.newArrayList();
             if (this.d()) {
                this.a($$6, $$0.e(), $$4, $$5);
             } else {
-               for (aqk $$7 : $$0.l().K()) {
+               for (aqm $$7 : $$0.l().L()) {
                   this.a($$6, $$7, $$4, $$5);
                }
             }
@@ -147,7 +147,7 @@ public class hf {
       }
    }
 
-   private void a(List<bsd> $$0, aqk $$1, evz $$2, Predicate<bsd> $$3) {
+   private void a(List<bsg> $$0, aqm $$1, ewf $$2, Predicate<bsg> $$3) {
       int $$4 = this.f();
       if ($$0.size() < $$4) {
          if (this.j != null) {
@@ -162,9 +162,9 @@ public class hf {
       return this.k == b ? this.d : Integer.MAX_VALUE;
    }
 
-   public aql c(eq $$0) throws CommandSyntaxException {
+   public aqn c(eq $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<aql> $$1 = this.d($$0);
+      List<aqn> $$1 = this.d($$0);
       if ($$1.size() != 1) {
          throw fd.e.create();
       } else {
@@ -172,32 +172,32 @@ public class hf {
       }
    }
 
-   public List<aql> d(eq $$0) throws CommandSyntaxException {
+   public List<aqn> d(eq $$0) throws CommandSyntaxException {
       this.e($$0);
       if (this.m != null) {
-         aql $$1 = $$0.l().ah().a(this.m);
-         return (List<aql>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new aql[]{$$1}));
+         aqn $$1 = $$0.l().ai().a(this.m);
+         return (List<aqn>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new aqn[]{$$1}));
       } else if (this.n != null) {
-         aql $$2 = $$0.l().ah().a(this.n);
-         return (List<aql>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new aql[]{$$2}));
+         aqn $$2 = $$0.l().ai().a(this.n);
+         return (List<aqn>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new aqn[]{$$2}));
       } else {
-         evz $$3 = this.i.apply($$0.d());
-         Predicate<bsd> $$4 = this.a($$3);
+         ewf $$3 = this.i.apply($$0.d());
+         Predicate<bsg> $$4 = this.a($$3);
          if (this.l) {
-            if ($$0.f() instanceof aql $$5 && $$4.test($$5)) {
-               return Lists.newArrayList(new aql[]{$$5});
+            if ($$0.f() instanceof aqn $$5 && $$4.test($$5)) {
+               return Lists.newArrayList(new aqn[]{$$5});
             }
 
             return Collections.emptyList();
          } else {
             int $$6 = this.f();
-            List<aql> $$7;
+            List<aqn> $$7;
             if (this.d()) {
                $$7 = $$0.e().a($$4, $$6);
             } else {
                $$7 = Lists.newArrayList();
 
-               for (aql $$9 : $$0.l().ah().t()) {
+               for (aqn $$9 : $$0.l().ai().t()) {
                   if ($$4.test($$9)) {
                      $$7.add($$9);
                      if ($$7.size() >= $$6) {
@@ -212,11 +212,11 @@ public class hf {
       }
    }
 
-   private Predicate<bsd> a(evz $$0) {
-      Predicate<bsd> $$1 = this.g;
+   private Predicate<bsg> a(ewf $$0) {
+      Predicate<bsg> $$1 = this.g;
       if (this.j != null) {
-         evu $$2 = this.j.c($$0);
-         $$1 = $$1.and($$1x -> $$2.c($$1x.cK()));
+         ewa $$2 = this.j.c($$0);
+         $$1 = $$1.and($$1x -> $$2.c($$1x.cL()));
       }
 
       if (!this.h.c()) {
@@ -226,7 +226,7 @@ public class hf {
       return $$1;
    }
 
-   private <T extends bsd> List<T> a(evz $$0, List<T> $$1) {
+   private <T extends bsg> List<T> a(ewf $$0, List<T> $$1) {
       if ($$1.size() > 1) {
          this.k.accept($$0, $$1);
       }
@@ -234,7 +234,7 @@ public class hf {
       return $$1.subList(0, Math.min(this.d, $$1.size()));
    }
 
-   public static wu a(List<? extends bsd> $$0) {
-      return wx.b($$0, bsd::O_);
+   public static wu a(List<? extends bsg> $$0) {
+      return wx.b($$0, bsg::O_);
    }
 }

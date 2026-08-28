@@ -1,68 +1,33 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-public class bmo implements bmp {
-   public static final bmo a = new bmo();
+public class bmo {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bms c = bmr.a;
 
-   private bmo() {
+   public bmo(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void a() {
+   public boolean a() {
+      return this.c != bmr.a;
    }
 
-   @Override
    public void b() {
+      this.c = bmr.a;
    }
 
-   @Override
-   public void a(String $$0) {
-   }
-
-   @Override
-   public void a(Supplier<String> $$0) {
-   }
-
-   @Override
-   public void a(bnx $$0) {
-   }
-
-   @Override
    public void c() {
+      this.c = new bmn(this.a, this.b, true);
    }
 
-   @Override
-   public void b(String $$0) {
+   public bmu d() {
+      return this.c;
    }
 
-   @Override
-   public void b(Supplier<String> $$0) {
-   }
-
-   @Override
-   public void a(String $$0, int $$1) {
-   }
-
-   @Override
-   public void a(Supplier<String> $$0, int $$1) {
-   }
-
-   @Override
-   public bmq d() {
-      return bmm.a;
-   }
-
-   @Nullable
-   @Override
-   public bmk.a c(String $$0) {
-      return null;
-   }
-
-   @Override
-   public Set<Pair<String, bnx>> e() {
-      return ImmutableSet.of();
+   public bmt e() {
+      return this.c.d();
    }
 }

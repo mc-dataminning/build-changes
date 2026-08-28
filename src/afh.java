@@ -1,24 +1,24 @@
 public class afh implements zb<abn> {
    public static final ys<wf, afh> a = zb.a(afh::a, afh::new);
-   private final jj<ave> b;
-   private final avg c;
+   private final jj<avg> b;
+   private final avi c;
    private final int d;
    private final float e;
    private final float f;
    private final long g;
 
-   public afh(jj<ave> $$0, avg $$1, bsd $$2, float $$3, float $$4, long $$5) {
+   public afh(jj<avg> $$0, avi $$1, bsg $$2, float $$3, float $$4, long $$5) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.al();
+      this.d = $$2.am();
       this.e = $$3;
       this.f = $$4;
       this.g = $$5;
    }
 
    private afh(wf $$0) {
-      this.b = ave.d.decode($$0);
-      this.c = $$0.b(avg.class);
+      this.b = avg.d.decode($$0);
+      this.c = $$0.b(avi.class);
       this.d = $$0.l();
       this.e = $$0.readFloat();
       this.f = $$0.readFloat();
@@ -26,7 +26,7 @@ public class afh implements zb<abn> {
    }
 
    private void a(wf $$0) {
-      ave.d.encode($$0, this.b);
+      avg.d.encode($$0, this.b);
       $$0.a(this.c);
       $$0.c(this.d);
       $$0.a(this.e);
@@ -43,11 +43,11 @@ public class afh implements zb<abn> {
       $$0.a(this);
    }
 
-   public jj<ave> b() {
+   public jj<avg> b() {
       return this.b;
    }
 
-   public avg e() {
+   public avi e() {
       return this.c;
    }
 

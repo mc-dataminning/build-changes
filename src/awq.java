@@ -1,22 +1,11 @@
-import java.util.function.Consumer;
+public class awq {
+   public static final awm<eil> a = a("normal");
+   public static final awm<eil> b = a("extended");
 
-@FunctionalInterface
-public interface awq<T> {
-   awq.a accept(T var1);
-
-   static <T> awq<T> forConsumer(Consumer<T> $$0) {
-      return $$1 -> {
-         $$0.accept($$1);
-         return awq.a.a;
-      };
+   private awq() {
    }
 
-   public static enum a {
-      a,
-      b;
-
-      public boolean a() {
-         return this == b;
-      }
+   private static awm<eil> a(String $$0) {
+      return awm.a(lr.aX, new akk($$0));
    }
 }

@@ -1,39 +1,31 @@
-public class gkz extends gkm<cfh, fui<cfh>> {
-   private static final akk a = new akk("textures/entity/fish/pufferfish.png");
-   private int i = 3;
-   private final fui<cfh> j;
-   private final fui<cfh> k;
-   private final fui<cfh> l = this.a();
+public class gkz extends gks<cfh, fvo> {
+   private static final akk a = new akk("textures/entity/parrot/parrot_red_blue.png");
+   private static final akk i = new akk("textures/entity/parrot/parrot_blue.png");
+   private static final akk j = new akk("textures/entity/parrot/parrot_green.png");
+   private static final akk k = new akk("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final akk l = new akk("textures/entity/parrot/parrot_grey.png");
 
-   public gkz(gjg.a $$0) {
-      super($$0, new fvp<>($$0.a(fxh.bb)), 0.2F);
-      this.k = new fvq<>($$0.a(fxh.bc));
-      this.j = new fvr<>($$0.a(fxh.bd));
+   public gkz(gjm.a $$0) {
+      super($$0, new fvo($$0.a(fxn.aG)), 0.3F);
    }
 
    public akk a(cfh $$0) {
-      return a;
+      return a($$0.gw());
    }
 
-   public void a(cfh $$0, float $$1, float $$2, fag $$3, gdx $$4, int $$5) {
-      int $$6 = $$0.gp();
-      if ($$6 != this.i) {
-         if ($$6 == 0) {
-            this.f = this.j;
-         } else if ($$6 == 1) {
-            this.f = this.k;
-         } else {
-            this.f = this.l;
-         }
-      }
-
-      this.i = $$6;
-      this.d = 0.1F + 0.1F * (float)$$6;
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public static akk a(cfh.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+         case e -> l;
+      };
    }
 
-   protected void a(cfh $$0, fag $$1, float $$2, float $$3, float $$4, float $$5) {
-      $$1.a(0.0F, aye.b($$2 * 0.05F) * 0.08F, 0.0F);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public float a(cfh $$0, float $$1) {
+      float $$2 = ayg.i($$1, $$0.cg, $$0.cd);
+      float $$3 = ayg.i($$1, $$0.cf, $$0.ce);
+      return (ayg.a($$2) + 1.0F) * $$3;
    }
 }

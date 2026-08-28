@@ -1,30 +1,48 @@
-import javax.annotation.Nullable;
+public class cna extends cmw {
+   private int e = 1;
 
-@FunctionalInterface
-public interface cna {
-   cna a = ($$0, $$1, $$2) -> {
-   };
-   cna b = ($$0, $$1, $$2) -> {
-      float $$3 = 170.0F + $$2.i() * 20.0F;
-      $$0.h($$0.ds().a(-0.5));
-      $$0.s($$0.dF() + $$3);
-      $$0.O += $$3;
-      $$0.U = true;
-   };
-   cna c = ($$0, $$1, $$2) -> {
-      if ($$1 != null) {
-         evz $$3 = $$1.bL().d();
-         $$0.h($$3);
-         $$0.U = true;
-      }
-   };
-   cna d = ($$0, $$1, $$2) -> {
-      if ($$1 != null) {
-         evz $$3 = $$1.ds().d();
-         $$0.h($$3);
-         $$0.U = true;
-      }
-   };
+   public cna(bsm<? extends cna> $$0, dcf $$1) {
+      super($$0, $$1);
+   }
 
-   void deflect(cmz var1, @Nullable bsd var2, aym var3);
+   public cna(dcf $$0, btb $$1, ewf $$2, int $$3) {
+      super(bsm.ak, $$1, $$2, $$0);
+      this.e = $$3;
+   }
+
+   @Override
+   protected void a(ewd $$0) {
+      super.a($$0);
+      if (!this.dQ().B) {
+         boolean $$1 = this.dQ().ab().b(dcb.c);
+         this.dQ().a(this, this.dv(), this.dx(), this.dB(), (float)this.e, $$1, dcf.a.c);
+         this.ap();
+      }
+   }
+
+   @Override
+   protected void a(ewc $$0) {
+      super.a($$0);
+      if (this.dQ() instanceof aqm $$1) {
+         bsg var6 = $$0.a();
+         bsg $$4 = this.s();
+         bqz $$5 = this.dR().a((cmw)this, $$4);
+         var6.a($$5, 6.0F);
+         czn.a($$1, var6, $$5);
+      }
+   }
+
+   @Override
+   public void b(tx $$0) {
+      super.b($$0);
+      $$0.a("ExplosionPower", (byte)this.e);
+   }
+
+   @Override
+   public void a(tx $$0) {
+      super.a($$0);
+      if ($$0.b("ExplosionPower", 99)) {
+         this.e = $$0.f("ExplosionPower");
+      }
+   }
 }

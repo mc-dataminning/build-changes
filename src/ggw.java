@@ -1,76 +1,46 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class ggw {
-   private final Long2ObjectMap<ggw.a> a = new Long2ObjectOpenHashMap();
+public class ggw<T extends drh> implements ggd<T> {
+   public static final akk a = new akk("textures/environment/end_sky.png");
+   public static final akk b = new akk("textures/entity/end_portal.png");
 
-   @Nullable
-   public ggv a(dcd $$0, ja $$1, ja $$2, int $$3) {
-      int $$4 = kc.a($$1.u() - $$3);
-      int $$5 = kc.a($$1.w() - $$3);
-      int $$6 = kc.a($$2.u() + $$3);
-      int $$7 = kc.a($$2.w() + $$3);
-      ggw.a[][] $$8 = new ggw.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
+   public ggw(gge.a $$0) {
+   }
 
-      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
-         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
-            $$8[$$9 - $$4][$$10 - $$5] = (ggw.a)this.a.computeIfAbsent(dbk.c($$9, $$10), $$1x -> new ggw.a($$0.d(dbk.a($$1x), dbk.b($$1x))));
-         }
-      }
+   public void a(T $$0, float $$1, fam $$2, ged $$3, int $$4, int $$5) {
+      Matrix4f $$6 = $$2.c().a();
+      this.a($$0, $$6, $$3.getBuffer(this.d()));
+   }
 
-      if (a($$1, $$2, $$4, $$5, $$8)) {
-         return null;
-      } else {
-         ggu[][] $$11 = new ggu[$$6 - $$4 + 1][$$7 - $$5 + 1];
+   private void a(T $$0, Matrix4f $$1, faq $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jf.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jf.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jf.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jf.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jf.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jf.b);
+   }
 
-         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
-            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
-               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
-            }
-         }
-
-         return new ggv($$0, $$4, $$5, $$11);
+   private void a(T $$0, Matrix4f $$1, faq $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jf $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7).e();
+         $$2.a($$1, $$4, $$5, $$8).e();
+         $$2.a($$1, $$4, $$6, $$9).e();
+         $$2.a($$1, $$3, $$6, $$10).e();
       }
    }
 
-   private static boolean a(ja $$0, ja $$1, int $$2, int $$3, ggw.a[][] $$4) {
-      int $$5 = kc.a($$0.u());
-      int $$6 = kc.a($$0.w());
-      int $$7 = kc.a($$1.u());
-      int $$8 = kc.a($$1.w());
-
-      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
-         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-            dun $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
-            if (!$$11.a($$0.v(), $$1.v())) {
-               return false;
-            }
-         }
-      }
-
-      return true;
+   protected float b() {
+      return 0.75F;
    }
 
-   static final class a {
-      private final dun a;
-      @Nullable
-      private ggu b;
+   protected float c() {
+      return 0.375F;
+   }
 
-      a(dun $$0) {
-         this.a = $$0;
-      }
-
-      public dun a() {
-         return this.a;
-      }
-
-      public ggu b() {
-         if (this.b == null) {
-            this.b = new ggu(this.a);
-         }
-
-         return this.b;
-      }
+   protected gel d() {
+      return gel.u();
    }
 }

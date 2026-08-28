@@ -11,7 +11,7 @@ public record xb(List<xg> d) {
    public static xb b = new xb(List.of());
    public static final int c = 20;
 
-   public void a(ayq.a $$0) throws SignatureException {
+   public void a(ays.a $$0) throws SignatureException {
       $$0.update(Ints.toByteArray(this.d.size()));
 
       for (xg $$1 : this.d) {

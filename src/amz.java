@@ -12,16 +12,16 @@ public class amz {
    }
 
    private static int a(eq $$0) {
-      return a($$0, cmh::O_);
+      return a($$0, cmk::O_);
    }
 
    private static int b(eq $$0) {
-      return a($$0, $$0x -> wu.a("commands.list.nameAndId", $$0x.af(), wu.a($$0x.fX().getId())));
+      return a($$0, $$0x -> wu.a("commands.list.nameAndId", $$0x.ag(), wu.a($$0x.fY().getId())));
    }
 
-   private static int a(eq $$0, Function<aql, wu> $$1) {
-      auh $$2 = $$0.l().ah();
-      List<aql> $$3 = $$2.t();
+   private static int a(eq $$0, Function<aqn, wu> $$1) {
+      auj $$2 = $$0.l().ai();
+      List<aqn> $$3 = $$2.t();
       wu $$4 = wx.b($$3, $$1);
       $$0.a(() -> wu.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
       return $$3.size();

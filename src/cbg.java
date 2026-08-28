@@ -1,30 +1,48 @@
-public class cbg extends bzw {
-   private final bth a;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public cbg(bth $$0) {
+public class cbg extends bzz {
+   private final cjc a;
+   @Nullable
+   private btb b;
+
+   public cbg(cjc $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(bzz.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.aE() && !this.a.dP().b_(this.a.dp()).a(awa.a);
+      btb $$0 = this.a.p();
+      return this.a.u() > 0 || $$0 != null && this.a.g((bsg)$$0) < 9.0;
    }
 
    @Override
    public void c() {
-      ja $$0 = null;
+      this.a.K().n();
+      this.b = this.a.p();
+   }
 
-      for (ja $$2 : ja.b(
-         aye.a(this.a.du() - 2.0), aye.a(this.a.dw() - 2.0), aye.a(this.a.dA() - 2.0), aye.a(this.a.du() + 2.0), this.a.dv(), aye.a(this.a.dA() + 2.0)
-      )) {
-         if (this.a.dP().b_($$2).a(awa.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
+   @Override
+   public void d() {
+      this.b = null;
+   }
 
-      if ($$0 != null) {
-         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.g((bsg)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.M().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
       }
    }
 }

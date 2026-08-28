@@ -8,7 +8,7 @@ public class xi implements wu {
    private final wv c;
    private final List<wu> d;
    private xr e;
-   private axq f = axq.a;
+   private axs f = axs.a;
    @Nullable
    private ts g;
 
@@ -43,7 +43,7 @@ public class xi implements wu {
    }
 
    public xi f(String $$0) {
-      return this.b(wu.b($$0));
+      return $$0.isEmpty() ? this : this.b(wu.b($$0));
    }
 
    public xi b(wu $$0) {
@@ -77,7 +77,7 @@ public class xi implements wu {
    }
 
    @Override
-   public axq g() {
+   public axs g() {
       ts $$0 = ts.a();
       if (this.g != $$0) {
          this.f = $$0.a(this);

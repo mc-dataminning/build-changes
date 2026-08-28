@@ -1,167 +1,59 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class frt extends fnj {
+   private static final wu a = wu.c("gui.abuseReport.title");
+   private static final wu b = wu.c("gui.abuseReport.message");
+   private static final wu c = wu.c("gui.abuseReport.type.chat");
+   private static final wu q = wu.c("gui.abuseReport.type.skin");
+   private static final wu r = wu.c("gui.abuseReport.type.name");
+   private static final int s = 6;
+   private final fnj u;
+   private final fzs v;
+   private final frx w;
+   private final flj x = flj.d().a(6);
 
-public class frt extends fhs<frr> {
-   private final fru a;
-   private final List<frr> m = Lists.newArrayList();
-   @Nullable
-   private String n;
-
-   public frt(fru $$0, ffn $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$1, $$2, $$3, $$4, $$5);
-      this.a = $$0;
+   public frt(fnj $$0, fzs $$1, frx $$2) {
+      super(a);
+      this.u = $$0;
+      this.v = $$1;
+      this.w = $$2;
    }
 
    @Override
-   protected void b(fgz $$0) {
+   public wu i() {
+      return wt.a(super.i(), b);
    }
 
    @Override
-   protected void a(fgz $$0) {
+   protected void aP_() {
+      this.x.c().b();
+      this.x.a(new fiz(this.k, this.o), this.x.b().e(6));
+      this.x.a(new fim(b, this.o).b(true), this.x.b().e(6));
+      fhs $$0 = this.x.a(fhs.a(c, $$0x -> this.l.a(new frp(this.u, this.v, this.w.d()))).a());
+      if (!this.w.k()) {
+         $$0.j = false;
+         $$0.a(fjd.a(wu.c("gui.socialInteractions.tooltip.report.not_reportable")));
+      } else if (!this.w.j()) {
+         $$0.j = false;
+         $$0.a(fjd.a(wu.a("gui.socialInteractions.tooltip.report.no_messages", this.w.c())));
+      }
+
+      this.x.a(fhs.a(q, $$0x -> this.l.a(new frv(this.u, this.v, this.w.d(), this.w.h()))).a());
+      this.x.a(fhs.a(r, $$0x -> this.l.a(new frs(this.u, this.v, this.w.d(), this.w.c()))).a());
+      this.x.a(flk.b(20));
+      this.x.a(fhs.a(wt.e, $$0x -> this.d()).a());
+      this.x.a($$1 -> {
+         fhq var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
-   protected void c(fgz $$0) {
-      $$0.c(this.D(), this.E() + 4, this.F(), this.G());
+   protected void c() {
+      this.x.a();
+      fld.a(this.x, this.H());
    }
 
-   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
-      Map<UUID, frr> $$3 = new HashMap<>();
-      this.a($$0, $$3);
-      this.a($$3, $$2);
-      this.a($$3.values(), $$1);
-   }
-
-   private void a(Collection<UUID> $$0, Map<UUID, frr> $$1) {
-      fye $$2 = this.c.s.cB;
-
-      for (UUID $$3 : $$0) {
-         fyo $$4 = $$2.a($$3);
-         if ($$4 != null) {
-            boolean $$5 = $$4.d();
-            $$1.put($$3, new frr(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
-         }
-      }
-   }
-
-   private void a(Map<UUID, frr> $$0, boolean $$1) {
-      for (GameProfile $$3 : a(this.c.aZ().b())) {
-         frr $$4;
-         if ($$1) {
-            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
-               frr $$2 = new frr(this.c, this.a, $$3.getId(), $$3.getName(), this.c.am().a($$3), true);
-               $$2.c(true);
-               return $$2;
-            });
-         } else {
-            $$4 = $$0.get($$3.getId());
-            if ($$4 == null) {
-               continue;
-            }
-         }
-
-         $$4.d(true);
-      }
-   }
-
-   private static Collection<GameProfile> a(fyy $$0) {
-      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
-
-      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
-         fza $$3 = $$0.b($$2);
-         if ($$3 instanceof fzb.a) {
-            fzb.a $$4 = (fzb.a)$$3;
-            if ($$4.g().i()) {
-               $$1.add($$4.f());
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private void J() {
-      this.m.sort(Comparator.<frr, Integer>comparing($$0 -> {
-         if (this.c.b($$0.d())) {
-            return 0;
-         } else if (this.c.aZ().a($$0.d())) {
-            return 1;
-         } else if ($$0.d().version() == 2) {
-            return 4;
-         } else {
-            return $$0.j() ? 2 : 3;
-         }
-      }).thenComparing($$0 -> {
-         if (!$$0.c().isBlank()) {
-            int $$1 = $$0.c().codePointAt(0);
-            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
-               return 0;
-            }
-         }
-
-         return 1;
-      }).thenComparing(frr::c, String::compareToIgnoreCase));
-   }
-
-   private void a(Collection<frr> $$0, double $$1) {
-      this.m.clear();
-      this.m.addAll($$0);
-      this.J();
-      this.K();
-      this.a(this.m);
-      this.b($$1);
-   }
-
-   private void K() {
-      if (this.n != null) {
-         this.m.removeIf($$0 -> !$$0.c().toLowerCase(Locale.ROOT).contains(this.n));
-         this.a(this.m);
-      }
-   }
-
-   public void a(String $$0) {
-      this.n = $$0;
-   }
-
-   public boolean c() {
-      return this.m.isEmpty();
-   }
-
-   public void a(fyo $$0, fru.a $$1) {
-      UUID $$2 = $$0.a().getId();
-
-      for (frr $$3 : this.m) {
-         if ($$3.d().equals($$2)) {
-            $$3.c(false);
-            return;
-         }
-      }
-
-      if (($$1 == fru.a.a || this.c.aM().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
-         boolean $$4 = $$0.d();
-         frr $$5 = new frr(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
-         this.b((frr)$$5);
-         this.m.add($$5);
-      }
-   }
-
-   public void a(UUID $$0) {
-      for (frr $$1 : this.m) {
-         if ($$1.d().equals($$0)) {
-            $$1.c(true);
-            return;
-         }
-      }
+   @Override
+   public void d() {
+      this.l.a(this.u);
    }
 }

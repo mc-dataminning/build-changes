@@ -1,21 +1,22 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class byo {
-   public static <E extends cll> bus<E> a(Function<E, Optional<? extends bsy>> $$0) {
-      return bye.a(
-         (Function<bye.b<E>, ? extends App<bye.c<E>, byh<E>>>)($$1 -> $$1.group($$1.c(ccc.ay), $$1.c(ccc.o), $$1.a(ccc.E))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
-                     Optional<? extends bsy> $$6 = $$0.apply((E)$$4);
-                     if ($$6.filter($$4::b).isEmpty()) {
-                        return false;
-                     } else {
-                        $$1x.a($$6.get());
-                        $$3.b();
-                        return true;
-                     }
-                  }))
-      );
+public class byo<E extends clo> extends buu<E> {
+   public byo(int $$0) {
+      super(ImmutableMap.of(ccf.aC, ccg.a, ccf.m, ccg.b, ccf.n, ccg.c), $$0);
+   }
+
+   protected boolean a(aqm $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(aqm $$0, E $$1, long $$2) {
+      $$1.b(btn.n);
+      $$1.a(avh.BL, 5.0F, 1.0F);
+   }
+
+   protected void c(aqm $$0, E $$1, long $$2) {
+      if ($$1.c(btn.n)) {
+         $$1.b(btn.a);
+      }
    }
 }

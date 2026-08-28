@@ -1,45 +1,72 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class dwr<T extends dwh> implements dwq<T> {
-   private final dwj<T> a;
-   private final dwm<T> b;
+public class dwr<T extends dwn> {
+   private static final Logger a = LogUtils.getLogger();
+   private final awx<T> b;
+   private dxa c;
 
-   public dwr(dwj<T> $$0, dwm<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public dwr(Class<T> $$0, dxa $$1) {
+      this.c = $$1;
+      this.b = new awx<>($$0);
    }
 
-   @Nullable
-   @Override
-   public T a(int $$0) {
-      return this.a.a($$0);
+   public void a(T $$0) {
+      this.b.add($$0);
    }
 
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
+   public boolean b(T $$0) {
+      return this.b.remove($$0);
    }
 
-   @Override
-   public Iterable<T> a() {
-      return this.a.a();
+   public aws.a a(ewa $$0, aws<T> $$1) {
+      for (T $$2 : this.b) {
+         if ($$2.cL().c($$0) && $$1.accept($$2).a()) {
+            return aws.a.b;
+         }
+      }
+
+      return aws.a.a;
    }
 
-   @Override
-   public <U extends T> void a(dwo<T, U> $$0, awq<U> $$1) {
-      this.a.a($$0, $$1);
+   public <U extends T> aws.a a(dwu<T, U> $$0, ewa $$1, aws<? super U> $$2) {
+      Collection<? extends T> $$3 = this.b.a($$0.a());
+      if ($$3.isEmpty()) {
+         return aws.a.a;
+      } else {
+         for (T $$4 : $$3) {
+            U $$5 = (U)$$0.a($$4);
+            if ($$5 != null && $$4.cL().c($$1) && $$2.accept($$5).a()) {
+               return aws.a.b;
+            }
+         }
+
+         return aws.a.a;
+      }
    }
 
-   @Override
-   public void a(evu $$0, Consumer<T> $$1) {
-      this.b.b($$0, awq.forConsumer($$1));
+   public boolean a() {
+      return this.b.isEmpty();
    }
 
-   @Override
-   public <U extends T> void a(dwo<T, U> $$0, evu $$1, awq<U> $$2) {
-      this.b.a($$0, $$1, $$2);
+   public Stream<T> b() {
+      return this.b.stream();
+   }
+
+   public dxa c() {
+      return this.c;
+   }
+
+   public dxa a(dxa $$0) {
+      dxa $$1 = this.c;
+      this.c = $$0;
+      return $$1;
+   }
+
+   @azl
+   public int d() {
+      return this.b.size();
    }
 }

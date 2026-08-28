@@ -1,61 +1,27 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
 
-public record euh(Optional<Long> b, eqn c) implements etz {
-   public static final MapCodec<euh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(euh::c), eqn.a.fieldOf("value").forGetter(euh::d)).apply($$0, euh::new)
-   );
+public class euh {
+   public static final eug a = a("inverted", euc.a);
+   public static final eug b = a("any_of", ett.a);
+   public static final eug c = a("all_of", ets.a);
+   public static final eug d = a("random_chance", euk.a);
+   public static final eug e = a("random_chance_with_enchanted_bonus", eul.a);
+   public static final eug f = a("entity_properties", eui.a);
+   public static final eug g = a("killed_by_player", euj.a);
+   public static final eug h = a("entity_scores", eua.a);
+   public static final eug i = a("block_state_property", eue.a);
+   public static final eug j = a("match_tool", eum.a);
+   public static final eug k = a("table_bonus", etu.a);
+   public static final eug l = a("survives_explosion", eub.a);
+   public static final eug m = a("damage_source_properties", ety.a);
+   public static final eug n = a("location_check", eud.a);
+   public static final eug o = a("weather_check", eup.a);
+   public static final eug p = a("reference", etw.a);
+   public static final eug q = a("time_check", eun.a);
+   public static final eug r = a("value_check", euo.a);
+   public static final eug s = a("enchantment_active_check", etz.a);
 
-   @Override
-   public eua b() {
-      return eub.q;
-   }
-
-   @Override
-   public Set<eth<?>> a() {
-      return this.c.a();
-   }
-
-   public boolean a(eqo $$0) {
-      aqk $$1 = $$0.d();
-      long $$2 = $$1.aa();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
-   }
-
-   public static euh.a a(eqn $$0) {
-      return new euh.a($$0);
-   }
-
-   public Optional<Long> c() {
-      return this.b;
-   }
-
-   public eqn d() {
-      return this.c;
-   }
-
-   public static class a implements etz.a {
-      private Optional<Long> a = Optional.empty();
-      private final eqn b;
-
-      public a(eqn $$0) {
-         this.b = $$0;
-      }
-
-      public euh.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public euh a() {
-         return new euh(this.a, this.b);
-      }
+   private static eug a(String $$0, MapCodec<? extends euf> $$1) {
+      return jw.a(lq.F, new akk($$0), new eug($$1));
    }
 }

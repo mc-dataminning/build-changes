@@ -1,66 +1,11 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public interface fac {
+   int a();
 
-public class fac {
-   @Nullable
-   private static faj a;
+   void b();
 
-   public static void a() {
-      if (a != null) {
-         b();
-         faj.b();
-      }
-   }
+   faa c();
 
-   public static void b() {
-      a = null;
-   }
+   faa d();
 
-   public static void a(fab.b $$0) {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> c($$0));
-      } else {
-         c($$0);
-      }
-   }
-
-   private static void c(fab.b $$0) {
-      faj $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      }
-   }
-
-   public static void b(fab.b $$0) {
-      faj $$1 = d($$0);
-      if ($$1 != null) {
-         $$1.c();
-      }
-   }
-
-   @Nullable
-   private static faj d(fab.b $$0) {
-      RenderSystem.assertOnRenderThread();
-      if ($$0.d()) {
-         $$0.e();
-         return null;
-      } else {
-         faj $$1 = a($$0.c().g());
-         $$1.a($$0);
-         return $$1;
-      }
-   }
-
-   private static faj a(fal $$0) {
-      faj $$1 = $$0.g();
-      a($$1);
-      return $$1;
-   }
-
-   private static void a(faj $$0) {
-      if ($$0 != a) {
-         $$0.a();
-         a = $$0;
-      }
-   }
+   void e();
 }

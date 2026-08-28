@@ -8,7 +8,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 public class ajr {
-   private static final axa<ajq<?>> F = axa.c(16);
+   private static final axc<ajq<?>> F = axc.c(16);
    public static final ajq<Byte> a = ajq.a(yq.c);
    public static final ajq<Integer> b = ajq.a(yq.g);
    public static final ajq<Long> c = ajq.a(yq.h);
@@ -16,32 +16,32 @@ public class ajr {
    public static final ajq<String> e = ajq.a(yq.l);
    public static final ajq<wu> f = ajq.a(ww.d);
    public static final ajq<Optional<wu>> g = ajq.a(ww.e);
-   public static final ajq<cua> h = new ajq<cua>() {
+   public static final ajq<cuc> h = new ajq<cuc>() {
       @Override
-      public ys<? super wf, cua> codec() {
-         return cua.h;
+      public ys<? super wf, cuc> codec() {
+         return cuc.h;
       }
 
-      public cua a(cua $$0) {
+      public cuc a(cuc $$0) {
          return $$0.s();
       }
    };
-   public static final ajq<dsh> i = ajq.a(yq.a(dff.q));
-   private static final ys<ByteBuf, Optional<dsh>> G = new ys<ByteBuf, Optional<dsh>>() {
-      public void a(ByteBuf $$0, Optional<dsh> $$1) {
+   public static final ajq<dsk> i = ajq.a(yq.a(dfh.q));
+   private static final ys<ByteBuf, Optional<dsk>> G = new ys<ByteBuf, Optional<dsk>>() {
+      public void a(ByteBuf $$0, Optional<dsk> $$1) {
          if ($$1.isPresent()) {
-            wl.a($$0, dff.i($$1.get()));
+            wl.a($$0, dfh.i($$1.get()));
          } else {
             wl.a($$0, 0);
          }
       }
 
-      public Optional<dsh> a(ByteBuf $$0) {
+      public Optional<dsk> a(ByteBuf $$0) {
          int $$1 = wl.a($$0);
-         return $$1 == 0 ? Optional.empty() : Optional.of(dff.a($$1));
+         return $$1 == 0 ? Optional.empty() : Optional.of(dfh.a($$1));
       }
    };
-   public static final ajq<Optional<dsh>> j = ajq.a(G);
+   public static final ajq<Optional<dsk>> j = ajq.a(G);
    public static final ajq<Boolean> k = ajq.a(yq.b);
    public static final ajq<lh> l = ajq.a(lj.bg);
    public static final ajq<List<lh>> m = ajq.a(lj.bg.a(yq.a()));
@@ -61,7 +61,7 @@ public class ajr {
          return $$0.i();
       }
    };
-   public static final ajq<clv> u = ajq.a(clv.d);
+   public static final ajq<cly> u = ajq.a(cly.d);
    private static final ys<ByteBuf, OptionalInt> H = new ys<ByteBuf, OptionalInt>() {
       public OptionalInt a(ByteBuf $$0) {
          int $$1 = wl.a($$0);
@@ -73,13 +73,13 @@ public class ajr {
       }
    };
    public static final ajq<OptionalInt> v = ajq.a(H);
-   public static final ajq<btk> w = ajq.a(btk.t);
-   public static final ajq<jj<ces>> x = ajq.a(yq.b(lr.l));
-   public static final ajq<jj<cfs>> y = ajq.a(yq.b(lr.m));
-   public static final ajq<jj<cez>> z = ajq.a(yq.b(lr.F));
-   public static final ajq<jj<cin>> A = ajq.a(yq.b(lr.W));
-   public static final ajq<cfx.a> B = ajq.a(cfx.a.e);
-   public static final ajq<chf.a> C = ajq.a(chf.a.i);
+   public static final ajq<btn> w = ajq.a(btn.t);
+   public static final ajq<jj<cev>> x = ajq.a(yq.b(lr.l));
+   public static final ajq<jj<cfv>> y = ajq.a(yq.b(lr.m));
+   public static final ajq<jj<cfc>> z = ajq.a(yq.b(lr.F));
+   public static final ajq<jj<ciq>> A = ajq.a(yq.b(lr.W));
+   public static final ajq<cga.a> B = ajq.a(cga.a.e);
+   public static final ajq<chi.a> C = ajq.a(chi.a.i);
    public static final ajq<Vector3f> D = ajq.a(yq.r);
    public static final ajq<Quaternionf> E = ajq.a(yq.s);
 

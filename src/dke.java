@@ -1,40 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class dke extends dff {
-   public static final MapCodec<dke> a = b(dke::new);
-   protected static final ews b = dff.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+public enum dke implements azc {
+   a("none", h.a),
+   b("left_right", h.B),
+   c("front_back", h.z);
 
-   @Override
-   public MapCodec<dke> a() {
-      return a;
+   public static final Codec<dke> d = azc.a(dke::values);
+   private final String e;
+   private final wu f;
+   private final h g;
+
+   private dke(final String $$0, final h $$1) {
+      this.e = $$0;
+      this.f = wu.c("mirror." + $$0);
+      this.g = $$1;
    }
 
-   public dke(dsg.d $$0) {
-      super($$0);
+   public int a(int $$0, int $$1) {
+      int $$2 = $$1 / 2;
+      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
+      switch (this) {
+         case b:
+            return ($$2 - $$3 + $$1) % $$1;
+         case c:
+            return ($$1 - $$3) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public dlu a(jf $$0) {
+      jf.a $$1 = $$0.o();
+      return (this != b || $$1 != jf.a.c) && (this != c || $$1 != jf.a.a) ? dlu.a : dlu.c;
+   }
+
+   public jf b(jf $$0) {
+      if (this == c && $$0.o() == jf.a.a) {
+         return $$0.g();
+      } else {
+         return this == b && $$0.o() == jf.a.c ? $$0.g() : $$0;
+      }
+   }
+
+   public h a() {
+      return this.g;
+   }
+
+   public wu b() {
+      return this.f;
    }
 
    @Override
-   protected ews b(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
-      return b;
-   }
-
-   @Override
-   protected ews b_(dsh $$0, dbj $$1, ja $$2) {
-      return ewp.b();
-   }
-
-   @Override
-   protected ews c(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
-      return ewp.b();
-   }
-
-   @Override
-   protected boolean a(dsh $$0, eoq $$1) {
-      return false;
-   }
-
-   @Override
-   protected float d(dsh $$0, dbj $$1, ja $$2) {
-      return 0.2F;
+   public String c() {
+      return this.e;
    }
 }

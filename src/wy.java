@@ -6,13 +6,13 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.StringUtils;
 
 public class wy {
-   public static final Codec<wy> a = ayz.a(wy.a::values).dispatch(wy::c, wy.a::a);
+   public static final Codec<wy> a = azc.a(wy.a::values).dispatch(wy::c, wy.a::a);
    public static final wy b = new wy(new BitSet(0), wy.a.b);
    public static final wy c = new wy(new BitSet(0), wy.a.a);
    public static final xr d = xr.a.a(n.i).a(new xa(xa.a.a, wu.c("chat.filtered")));
    static final MapCodec<wy> e = MapCodec.unit(c);
    static final MapCodec<wy> f = MapCodec.unit(b);
-   static final MapCodec<wy> g = axm.u.xmap(wy::new, wy::d).fieldOf("value");
+   static final MapCodec<wy> g = axo.u.xmap(wy::new, wy::d).fieldOf("value");
    private static final char h = '#';
    private final BitSet i;
    private final wy.a j;
@@ -135,7 +135,7 @@ public class wy {
       return 31 * $$0 + this.j.hashCode();
    }
 
-   static enum a implements ayz {
+   static enum a implements azc {
       a("pass_through", () -> wy.e),
       b("fully_filtered", () -> wy.f),
       c("partially_filtered", () -> wy.g);

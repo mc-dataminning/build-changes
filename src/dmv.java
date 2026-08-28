@@ -1,53 +1,47 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dmv extends dff {
+public class dmv extends det {
    public static final MapCodec<dmv> a = b(dmv::new);
-   private static final ews b = dff.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
 
    @Override
    public MapCodec<dmv> a() {
       return a;
    }
 
-   public dmv(dsg.d $$0) {
+   protected dmv(dsj.d $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
-      return dff.a($$1, $$2.c(), jf.a) && !$$1.z($$2);
+   public dpp a(ja $$0, dsk $$1) {
+      return new dre($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dpp> dpq<T> a(dcf $$0, dsk $$1, dpr<T> $$2) {
+      return a($$2, dpr.j, $$0.B ? dre::a : dre::b);
    }
 
    @Override
-   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
-      return $$1 == jf.b && !this.a($$0, $$3, $$4) ? dfh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dsh $$0, dcd $$1, ja $$2, aym $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(lj.az, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      ja.a $$10 = new ja.a();
-
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + aye.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + aye.a($$3, -10, 10));
-         dsh $$12 = $$1.a_($$10);
-         if (!$$12.r($$1, $$10)) {
-            $$1.a(lj.aD, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
-         }
+   protected void a(dsk $$0, aqm $$1, ja $$2, cuc $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
+         this.a($$1, $$2, $$5);
       }
    }
 
    @Override
-   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
-      return b;
+   protected dln a_(dsk $$0) {
+      return dln.c;
+   }
+
+   @Override
+   public void a(cuc $$0, ctx.b $$1, List<wu> $$2, cvv $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      dcy.a($$0, $$2, "SpawnData");
    }
 }

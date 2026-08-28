@@ -1,173 +1,262 @@
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.BooleanSupplier;
+import java.util.Set;
+import java.util.Map.Entry;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-class fsh {
-   private static final int a = 44;
-   private final List<fsh.c> b;
+public class fsh extends fnj {
+   private static final wu a = wu.c("editGamerule.title");
+   private static final int b = 8;
+   final flf c = new flf(this);
+   private final Consumer<Optional<dcb>> q;
+   private final Set<fsh.f> r = Sets.newHashSet();
+   private final dcb s;
+   @Nullable
+   private fsh.g u;
+   @Nullable
+   private fhs v;
 
-   fsh(List<fsh.c> $$0) {
-      this.b = $$0;
+   public fsh(dcb $$0, Consumer<Optional<dcb>> $$1) {
+      super(a);
+      this.s = $$0;
+      this.q = $$1;
    }
 
-   public void a() {
-      this.b.forEach(fsh.c::a);
+   @Override
+   protected void aP_() {
+      this.c.a(a, this.o);
+      this.u = this.c.c(new fsh.g(this.s));
+      flj $$0 = this.c.b(flj.e().a(8));
+      this.v = $$0.a(fhs.a(wt.d, $$0x -> this.q.accept(Optional.of(this.s))).a());
+      $$0.a(fhs.a(wt.e, $$0x -> this.d()).a());
+      this.c.a($$1 -> {
+         fhq var10000 = this.c($$1);
+      });
+      this.c();
    }
 
-   public static fsh.a a(int $$0) {
-      return new fsh.a($$0);
-   }
-
-   public static class a {
-      final int a;
-      private final List<fsh.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<fsh.b> f = Optional.empty();
-
-      public a(int $$0) {
-         this.a = $$0;
-      }
-
-      void a() {
-         this.e++;
-      }
-
-      public fsh.d a(wu $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         fsh.d $$3 = new fsh.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
-      }
-
-      public fsh.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fsh.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fsh a(Consumer<flb> $$0) {
-         fky $$1 = new fky().b(this.d);
-         $$1.a(fle.a(this.a - 44), 0, 0);
-         $$1.a(fle.a(44), 0, 1);
-         List<fsh.c> $$2 = new ArrayList<>();
-         this.e = 0;
-
-         for (fsh.d $$3 : this.b) {
-            $$2.add($$3.a(this, $$1, 0));
-         }
-
-         $$1.a();
-         $$0.accept($$1);
-         fsh $$4 = new fsh($$2);
-         $$4.a();
-         return $$4;
-      }
-
-      public fsh.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new fsh.b($$0, $$1));
-         return this;
+   @Override
+   protected void c() {
+      this.c.a();
+      if (this.u != null) {
+         this.u.a(this.m, this.c);
       }
    }
 
-   static record b(int a, boolean b) {
+   @Override
+   public void d() {
+      this.q.accept(Optional.empty());
    }
 
-   static record c(fht<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.j = this.c.getAsBoolean();
-         }
+   private void m() {
+      if (this.v != null) {
+         this.v.j = this.r.isEmpty();
+      }
+   }
+
+   void a(fsh.f $$0) {
+      this.r.add($$0);
+      this.m();
+   }
+
+   void b(fsh.f $$0) {
+      this.r.remove($$0);
+      this.m();
+   }
+
+   public class a extends fsh.d {
+      private final fhz<Boolean> c;
+
+      public a(final wu $$1, final List<axs> $$2, final String $$3, final dcb.a $$4) {
+         super($$2, $$1);
+         this.c = fhz.b($$4.a()).a().a($$1x -> $$1x.c().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
+         this.a.add(this.c);
       }
 
-      public fht<Boolean> b() {
+      @Override
+      public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.c.m($$3 + $$4 - 45);
+         this.c.n($$2);
+         this.c.a($$0, $$6, $$7, $$9);
+      }
+   }
+
+   public class b extends fsh.f {
+      final wu b;
+
+      public b(final wu $$1) {
+         super(null);
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(fsh.this.l.h, this.b, $$3 + $$4 / 2, $$2 + 5, -1);
+      }
+
+      @Override
+      public List<? extends fjo> aG_() {
+         return ImmutableList.of();
+      }
+
+      @Override
+      public List<? extends flm> b() {
+         return ImmutableList.of(new flm() {
+            @Override
+            public flm.a u() {
+               return flm.a.b;
+            }
+
+            @Override
+            public void b(flo $$0) {
+               $$0.a(fln.a, b.this.b);
+            }
+         });
+      }
+   }
+
+   @FunctionalInterface
+   interface c<T extends dcb.g<T>> {
+      fsh.f create(wu var1, List<axs> var2, String var3, T var4);
+   }
+
+   public abstract class d extends fsh.f {
+      private final List<axs> c;
+      protected final List<fhq> a = Lists.newArrayList();
+
+      public d(@Nullable final List<axs> $$1, final wu $$2) {
+         super($$1);
+         this.c = fsh.this.l.h.c($$2, 175);
+      }
+
+      @Override
+      public List<? extends fjo> aG_() {
          return this.a;
       }
 
-      public BooleanSupplier c() {
-         return this.b;
+      @Override
+      public List<? extends flm> b() {
+         return this.a;
       }
 
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
+      protected void a(fhf $$0, int $$1, int $$2) {
+         if (this.c.size() == 1) {
+            $$0.a(fsh.this.l.h, this.c.get(0), $$2, $$1 + 5, -1, false);
+         } else if (this.c.size() >= 2) {
+            $$0.a(fsh.this.l.h, this.c.get(0), $$2, $$1, -1, false);
+            $$0.a(fsh.this.l.h, this.c.get(1), $$2, $$1 + 10, -1, false);
+         }
       }
    }
 
-   public static class d {
-      private final wu a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private wu d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
+   public class e extends fsh.d {
+      private final fib d;
 
-      d(wu $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
+      public e(final wu $$1, final List<axs> $$2, final String $$3, final dcb.d $$4) {
+         super($$2, $$1);
+         this.d = new fib(fsh.this.l.h, 10, 5, 44, 20, $$1.f().f("\n").f($$3).f("\n"));
+         this.d.a(Integer.toString($$4.a()));
+         this.d.b($$1x -> {
+            if ($$4.b($$1x)) {
+               this.d.g(14737632);
+               fsh.this.b(this);
+            } else {
+               this.d.g(-65536);
+               fsh.this.a(this);
+            }
+         });
+         this.a.add(this.d);
+      }
+
+      @Override
+      public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.d.m($$3 + $$4 - 45);
+         this.d.n($$2);
+         this.d.a($$0, $$6, $$7, $$9);
+      }
+   }
+
+   public abstract static class f extends fhy.a<fsh.f> {
+      @Nullable
+      final List<axs> a;
+
+      public f(@Nullable List<axs> $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
+      }
+   }
+
+   public class g extends fhy<fsh.f> {
+      private static final int m = 24;
+
+      public g(final dcb $$1) {
+         super(fft.Q(), fsh.this.m, fsh.this.c.d(), fsh.this.c.c(), 24);
+         final Map<dcb.b, Map<dcb.e<?>, fsh.f>> $$2 = Maps.newHashMap();
+         dcb.a(new dcb.c() {
+            @Override
+            public void b(dcb.e<dcb.a> $$0, dcb.f<dcb.a> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fsh.this.new a($$0x, $$1xxx, $$2xx, $$3));
+            }
+
+            @Override
+            public void c(dcb.e<dcb.d> $$0, dcb.f<dcb.d> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fsh.this.new e($$0x, $$1xxx, $$2xx, $$3));
+            }
+
+            private <T extends dcb.g<T>> void a(dcb.e<T> $$0, fsh.c<T> $$1x) {
+               wu $$2 = wu.c($$0.b());
+               wu $$3 = wu.b($$0.a()).a(n.o);
+               T $$4 = $$1.a($$0);
+               String $$5 = $$4.b();
+               wu $$6 = wu.a("editGamerule.default", wu.b($$5)).a(n.h);
+               String $$7 = $$0.b() + ".description";
+               List<axs> $$10;
+               String $$11;
+               if (gqu.a($$7)) {
+                  Builder<axs> $$8 = ImmutableList.builder().add($$3.g());
+                  wu $$9 = wu.c($$7);
+                  fsh.this.o.c($$9, 150).forEach($$8::add);
+                  $$10 = $$8.add($$6.g()).build();
+                  $$11 = $$9.getString() + "\n" + $$6.getString();
+               } else {
+                  $$10 = ImmutableList.of($$3.g(), $$6.g());
+                  $$11 = $$6.getString();
+               }
+
+               $$2.computeIfAbsent($$0.c(), $$0x -> Maps.newHashMap()).put($$0, $$1.create($$2, $$10, $$11, $$4));
+            }
+         });
+         $$2.entrySet()
+            .stream()
+            .sorted(Entry.comparingByKey())
+            .forEach(
+               $$0x -> {
+                  this.b(fsh.this.new b(wu.c(((dcb.b)$$0x.getKey()).a()).a(n.r, n.o)));
+                  ((Map)$$0x.getValue())
+                     .entrySet()
+                     .stream()
+                     .sorted(Entry.comparingByKey(Comparator.comparing(dcb.e::a)))
+                     .forEach($$0xx -> this.b((fsh.f)$$0xx.getValue()));
+               }
+            );
       }
 
-      public fsh.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fsh.d a(wu $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      fsh.c a(fsh.a $$0, fky $$1, int $$2) {
-         $$0.a();
-         fit $$3 = new fit(this.a, ffn.Q().h).c();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<fsh.b> $$4 = $$0.f;
-         fht.a<Boolean> $$5 = fht.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            fix $$7 = fix.a(this.d);
-            $$5.a($$1x -> $$7);
+      @Override
+      public void b(fhf $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         fsh.f $$4 = this.v();
+         if ($$4 != null && $$4.a != null) {
+            fsh.this.b($$4.a);
          }
-
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> wt.a(this.a, $$0x.c(), this.d));
-         } else {
-            $$5.a($$0x -> wt.a(this.a, $$0x.c()));
-         }
-
-         fht<Boolean> $$8 = $$5.a(0, 0, this.f, 20, wu.i(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.j = this.e.getAsBoolean();
-         }
-
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               wu $$4x = this.d.f().a(n.h);
-               fgx $$5x = ffn.Q().h;
-               fig $$6x = new fig($$4x, $$5x);
-               $$6x.d($$0.a - $$0.c - this.f);
-               $$6x.e($$3x.a());
-               $$0.a();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.w() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
-         }
-
-         return new fsh.c($$8, this.b, this.e);
       }
    }
 }

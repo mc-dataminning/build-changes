@@ -1,156 +1,119 @@
 import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
+import java.io.Closeable;
 import java.io.IOException;
-import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.io.InputStream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gph extends got implements gou, gpk {
-   private static final Logger g = LogUtils.getLogger();
-   @Deprecated
-   public static final akk e = cqg.x;
-   @Deprecated
-   public static final akk f = new akk("textures/atlas/particles.png");
-   private List<gpc> h = List.of();
-   private List<gpi.a> i = List.of();
-   private Map<akk, gpi> j = Map.of();
-   @Nullable
-   private gpi k;
-   private final akk l;
-   private final int m;
-   private int n;
-   private int o;
-   private int p;
+public class gph extends goz {
+   static final Logger f = LogUtils.getLogger();
+   protected final akk e;
 
    public gph(akk $$0) {
-      this.l = $$0;
-      this.m = RenderSystem.maxSupportedTextureSize();
+      this.e = $$0;
    }
 
    @Override
-   public void a(atu $$0) {
+   public void a(atw $$0) throws IOException {
+      gph.a $$1 = this.b($$0);
+      $$1.c();
+      grl $$2 = $$1.a();
+      boolean $$3;
+      boolean $$4;
+      if ($$2 != null) {
+         $$3 = $$2.a();
+         $$4 = $$2.b();
+      } else {
+         $$3 = false;
+         $$4 = false;
+      }
+
+      ezn $$7 = $$1.b();
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> this.a($$7, $$3, $$4));
+      } else {
+         this.a($$7, $$3, $$4);
+      }
    }
 
-   public void a(gpd.a $$0) {
-      g.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.l});
-      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
-      this.n = $$0.b();
-      this.o = $$0.c();
-      this.p = $$0.d();
-      this.f();
-      this.j = Map.copyOf($$0.f());
-      this.k = this.j.get(goy.b());
-      if (this.k == null) {
-         throw new IllegalStateException("Atlas '" + this.l + "' (" + this.j.size() + " sprites) has no missing texture sprite");
-      } else {
-         List<gpc> $$1 = new ArrayList<>();
-         List<gpi.a> $$2 = new ArrayList<>();
+   private void a(ezn $$0, boolean $$1, boolean $$2) {
+      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
+   }
 
-         for (gpi $$3 : $$0.f().values()) {
-            $$1.add($$3.e());
+   protected gph.a b(atw $$0) {
+      return gph.a.a($$0, this.e);
+   }
+
+   protected static class a implements Closeable {
+      @Nullable
+      private final grl a;
+      @Nullable
+      private final ezn b;
+      @Nullable
+      private final IOException c;
+
+      public a(IOException $$0) {
+         this.c = $$0;
+         this.a = null;
+         this.b = null;
+      }
+
+      public a(@Nullable grl $$0, ezn $$1) {
+         this.c = null;
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public static gph.a a(atw $$0, akk $$1) {
+         try {
+            atu $$2 = $$0.getResourceOrThrow($$1);
+
+            ezn $$4;
+            try (InputStream $$3 = $$2.d()) {
+               $$4 = ezn.a($$3);
+            }
+
+            grl $$6 = null;
 
             try {
-               $$3.j();
-            } catch (Throwable var9) {
-               o $$5 = o.a(var9, "Stitching texture atlas");
-               p $$6 = $$5.a("Texture being stitched together");
-               $$6.a("Atlas path", this.l);
-               $$6.a("Sprite", $$3);
-               throw new y($$5);
+               $$6 = $$2.f().a(grl.a).orElse(null);
+            } catch (RuntimeException var8) {
+               gph.f.warn("Failed reading metadata of: {}", $$1, var8);
             }
 
-            gpi.a $$7 = $$3.f();
-            if ($$7 != null) {
-               $$2.add($$7);
-            }
+            return new gph.a($$6, $$4);
+         } catch (IOException var10) {
+            return new gph.a(var10);
          }
-
-         this.h = List.copyOf($$1);
-         this.i = List.copyOf($$2);
       }
-   }
 
-   @Override
-   public void a(akk $$0, Path $$1) throws IOException {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.p, this.n, this.o);
-      a($$1, $$2, this.j);
-   }
+      @Nullable
+      public grl a() {
+         return this.a;
+      }
 
-   private static void a(Path $$0, String $$1, Map<akk, gpi> $$2) {
-      Path $$3 = $$0.resolve($$1 + ".txt");
-
-      try (Writer $$4 = Files.newBufferedWriter($$3)) {
-         for (Entry<akk, gpi> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
-            gpi $$6 = $$5.getValue();
-            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
+      public ezn b() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         } else {
+            return this.b;
          }
-      } catch (IOException var10) {
-         g.warn("Failed to write file {}", $$3, var10);
       }
-   }
 
-   @Override
-   public void d() {
-      this.c();
-
-      for (gpi.a $$0 : this.i) {
-         $$0.a();
+      @Override
+      public void close() {
+         if (this.b != null) {
+            this.b.close();
+         }
       }
-   }
 
-   @Override
-   public void e() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(this::d);
-      } else {
-         this.d();
+      public void c() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         }
       }
-   }
-
-   public gpi a(akk $$0) {
-      gpi $$1 = this.j.getOrDefault($$0, this.k);
-      if ($$1 == null) {
-         throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
-      } else {
-         return $$1;
-      }
-   }
-
-   public void f() {
-      this.h.forEach(gpc::close);
-      this.i.forEach(gpi.a::close);
-      this.h = List.of();
-      this.i = List.of();
-      this.j = Map.of();
-      this.k = null;
-   }
-
-   public akk g() {
-      return this.l;
-   }
-
-   public int h() {
-      return this.m;
-   }
-
-   int i() {
-      return this.n;
-   }
-
-   int j() {
-      return this.o;
-   }
-
-   public void b(gpd.a $$0) {
-      this.a(false, $$0.d() > 0);
    }
 }

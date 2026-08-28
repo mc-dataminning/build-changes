@@ -1,163 +1,103 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.Validate;
 
-public class cim extends cij implements bty<jj<cin>> {
-   private static final ajp<jj<cin>> h = ajt.a(cim.class, ajr.A);
-   public static final MapCodec<jj<cin>> e = cin.b.fieldOf("variant");
-   public static final Codec<jj<cin>> f = e.codec();
-   public static final float g = 0.0625F;
+public abstract class cim extends cik {
+   protected static final Predicate<bsg> c = $$0 -> $$0 instanceof cim;
+   protected jf d;
 
-   public cim(bsj<? extends cim> $$0, dcd $$1) {
+   protected cim(bsm<? extends cim> $$0, dcf $$1) {
       super($$0, $$1);
+      this.d = jf.d;
    }
 
-   @Override
-   protected void a(ajt.a $$0) {
-      $$0.a(h, this.dR().d(lr.W).a().orElseThrow());
-   }
-
-   @Override
-   public void a(ajp<?> $$0) {
-      if (h.equals($$0)) {
-         this.p();
-      }
-   }
-
-   public void b(jj<cin> $$0) {
-      this.ao.a(h, $$0);
-   }
-
-   public jj<cin> v() {
-      return this.ao.a(h);
-   }
-
-   public static Optional<cim> a(dcd $$0, ja $$1, jf $$2) {
-      cim $$3 = new cim($$0, $$1);
-      List<jj<cin>> $$4 = new ArrayList<>();
-      $$0.H_().d(lr.W).c(awe.a).forEach($$4::add);
-      if ($$4.isEmpty()) {
-         return Optional.empty();
-      } else {
-         $$3.a($$2);
-         $$4.removeIf($$1x -> {
-            $$3.b($$1x);
-            return !$$3.s();
-         });
-         if ($$4.isEmpty()) {
-            return Optional.empty();
-         } else {
-            int $$5 = $$4.stream().mapToInt(cim::c).max().orElse(0);
-            $$4.removeIf($$1x -> c($$1x) < $$5);
-            Optional<jj<cin>> $$6 = ac.b($$4, $$3.ah);
-            if ($$6.isEmpty()) {
-               return Optional.empty();
-            } else {
-               $$3.b($$6.get());
-               $$3.a($$2);
-               return Optional.of($$3);
-            }
-         }
-      }
-   }
-
-   private static int c(jj<cin> $$0) {
-      return $$0.a().a();
-   }
-
-   private cim(dcd $$0, ja $$1) {
-      super(bsj.av, $$0, $$1);
-   }
-
-   public cim(dcd $$0, ja $$1, jf $$2, jj<cin> $$3) {
+   protected cim(bsm<? extends cim> $$0, dcf $$1, ja $$2) {
       this($$0, $$1);
-      this.b($$3);
-      this.a($$2);
+      this.b = $$2;
+   }
+
+   protected void a(jf $$0) {
+      Objects.requireNonNull($$0);
+      Validate.isTrue($$0.o().d());
+      this.d = $$0;
+      this.s((float)(this.d.e() * 90));
+      this.O = this.dG();
+      this.p();
    }
 
    @Override
-   public void b(tx $$0) {
-      f.encodeStart(this.dR().a(ul.a), this.v()).ifSuccess($$1 -> $$0.a((tx)$$1));
-      $$0.a("facing", (byte)this.d.e());
-      super.b($$0);
-   }
-
-   @Override
-   public void a(tx $$0) {
-      f.parse(this.dR().a(ul.a), $$0).ifSuccess(this::b);
-      this.d = jf.b($$0.f("facing"));
-      super.a($$0);
-      this.a(this.d);
-   }
-
-   @Override
-   protected evu a(ja $$0, jf $$1) {
-      float $$2 = 0.46875F;
-      evz $$3 = evz.b($$0).a($$1, -0.46875);
-      cin $$4 = this.v().a();
-      double $$5 = this.b($$4.b());
-      double $$6 = this.b($$4.c());
-      jf $$7 = $$1.i();
-      evz $$8 = $$3.a($$7, $$5).a(jf.b, $$6);
-      jf.a $$9 = $$1.o();
-      double $$10 = $$9 == jf.a.a ? 0.0625 : (double)$$4.b();
-      double $$11 = (double)$$4.c();
-      double $$12 = $$9 == jf.a.c ? 0.0625 : (double)$$4.b();
-      return evu.a($$8, $$10, $$11, $$12);
-   }
-
-   private double b(int $$0) {
-      return $$0 % 2 == 0 ? 0.5 : 0.0;
-   }
-
-   @Override
-   public void b(@Nullable bsd $$0) {
-      if (this.dP().ab().b(dbz.i)) {
-         this.a(avf.ss, 1.0F, 1.0F);
-         if ($$0 instanceof cmh $$1 && $$1.fL()) {
-            return;
-         }
-
-         this.a(cud.pZ);
+   protected final void p() {
+      if (this.d != null) {
+         ewa $$0 = this.a(this.b, this.d);
+         ewf $$1 = $$0.f();
+         this.p($$1.c, $$1.d, $$1.e);
+         this.a($$0);
       }
    }
 
+   protected abstract ewa a(ja var1, jf var2);
+
    @Override
-   public void C() {
-      this.a(avf.st, 1.0F, 1.0F);
+   public boolean s() {
+      if (!this.dQ().g(this)) {
+         return false;
+      } else {
+         boolean $$0 = ja.a(this.B()).allMatch($$0x -> {
+            dsk $$1 = this.dQ().a_($$0x);
+            return $$1.e() || dhj.m($$1);
+         });
+         return !$$0 ? false : this.dQ().a(this, this.cL(), c).isEmpty();
+      }
+   }
+
+   protected ewa B() {
+      return this.cL().a(this.d.m().mul(-0.5F)).h(1.0E-7);
    }
 
    @Override
-   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      this.a_($$0, $$1, $$2);
+   public jf cI() {
+      return this.d;
+   }
+
+   public abstract void C();
+
+   @Override
+   public ciu a(cuc $$0, float $$1) {
+      ciu $$2 = new ciu(
+         this.dQ(), this.dv() + (double)((float)this.d.j() * 0.15F), this.dx() + (double)$$1, this.dB() + (double)((float)this.d.l() * 0.15F), $$0
+      );
+      $$2.v();
+      this.dQ().b($$2);
+      return $$2;
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.a_($$0, $$1, $$2);
+   public float a(dlu $$0) {
+      if (this.d.o() != jf.a.b) {
+         switch ($$0) {
+            case c:
+               this.d = this.d.g();
+               break;
+            case d:
+               this.d = this.d.i();
+               break;
+            case b:
+               this.d = this.d.h();
+         }
+      }
+
+      float $$1 = ayg.g(this.dG());
+
+      return switch ($$0) {
+         case c -> $$1 + 180.0F;
+         case d -> $$1 + 90.0F;
+         case b -> $$1 + 270.0F;
+         default -> $$1;
+      };
    }
 
    @Override
-   public evz do() {
-      return evz.a(this.b);
-   }
-
-   @Override
-   public zb<abn> dl() {
-      return new abo(this, this.d.d(), this.u());
-   }
-
-   @Override
-   public void a(abo $$0) {
-      super.a($$0);
-      this.a(jf.a($$0.p()));
-   }
-
-   @Override
-   public cua dC() {
-      return new cua(cud.pZ);
+   public float a(dke $$0) {
+      return this.a($$0.a(this.d));
    }
 }

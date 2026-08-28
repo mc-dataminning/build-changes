@@ -22,7 +22,7 @@ public class alv {
    private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wu.c("commands.bossbar.set.max.unchanged"));
    private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(wu.c("commands.bossbar.set.visibility.unchanged.hidden"));
    private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(wu.c("commands.bossbar.set.visibility.unchanged.visible"));
-   public static final SuggestionProvider<eq> a = ($$0, $$1) -> ev.a(((eq)$$0.getSource()).l().aN().a(), $$1);
+   public static final SuggestionProvider<eq> a = ($$0, $$1) -> ev.a(((eq)$$0.getSource()).l().aO().a(), $$1);
 
    public static void a(CommandDispatcher<eq> $$0, em $$1) {
       $$0.register(
@@ -54,21 +54,21 @@ public class alv {
                                              ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a(
                                                                      "color"
                                                                   )
-                                                                  .then(er.a("pink").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpt.a.a))))
-                                                               .then(er.a("blue").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpt.a.b))))
-                                                            .then(er.a("red").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpt.a.c))))
-                                                         .then(er.a("green").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpt.a.d))))
-                                                      .then(er.a("yellow").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpt.a.e))))
-                                                   .then(er.a("purple").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpt.a.f))))
-                                                .then(er.a("white").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpt.a.g)))
+                                                                  .then(er.a("pink").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.a.a))))
+                                                               .then(er.a("blue").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.a.b))))
+                                                            .then(er.a("red").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.a.c))))
+                                                         .then(er.a("green").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.a.d))))
+                                                      .then(er.a("yellow").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.a.e))))
+                                                   .then(er.a("purple").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.a.f))))
+                                                .then(er.a("white").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.a.g)))
                                           ))
                                        .then(
                                           ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("style")
-                                                         .then(er.a("progress").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpt.b.a))))
-                                                      .then(er.a("notched_6").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpt.b.b))))
-                                                   .then(er.a("notched_10").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpt.b.c))))
-                                                .then(er.a("notched_12").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpt.b.d))))
-                                             .then(er.a("notched_20").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpt.b.e)))
+                                                         .then(er.a("progress").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.b.a))))
+                                                      .then(er.a("notched_6").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.b.b))))
+                                                   .then(er.a("notched_10").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.b.c))))
+                                                .then(er.a("notched_12").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.b.d))))
+                                             .then(er.a("notched_20").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.b.e)))
                                        ))
                                     .then(
                                        er.a("value")
@@ -135,7 +135,7 @@ public class alv {
       if ($$1.g().isEmpty()) {
          $$0.a(() -> wu.a("commands.bossbar.get.players.none", $$1.e()), true);
       } else {
-         $$0.a(() -> wu.a("commands.bossbar.get.players.some", $$1.e(), $$1.g().size(), wx.b($$1.g(), cmh::O_)), true);
+         $$0.a(() -> wu.a("commands.bossbar.get.players.some", $$1.e(), $$1.g().size(), wx.b($$1.g(), cmk::O_)), true);
       }
 
       return $$1.g().size();
@@ -180,7 +180,7 @@ public class alv {
       }
    }
 
-   private static int a(eq $$0, alk $$1, bpt.a $$2) throws CommandSyntaxException {
+   private static int a(eq $$0, alk $$1, bpw.a $$2) throws CommandSyntaxException {
       if ($$1.k().equals($$2)) {
          throw f.create();
       } else {
@@ -190,7 +190,7 @@ public class alv {
       }
    }
 
-   private static int a(eq $$0, alk $$1, bpt.b $$2) throws CommandSyntaxException {
+   private static int a(eq $$0, alk $$1, bpw.b $$2) throws CommandSyntaxException {
       if ($$1.l().equals($$2)) {
          throw g.create();
       } else {
@@ -211,7 +211,7 @@ public class alv {
       }
    }
 
-   private static int a(eq $$0, alk $$1, Collection<aql> $$2) throws CommandSyntaxException {
+   private static int a(eq $$0, alk $$1, Collection<aqn> $$2) throws CommandSyntaxException {
       boolean $$3 = $$1.a($$2);
       if (!$$3) {
          throw d.create();
@@ -219,7 +219,7 @@ public class alv {
          if ($$1.g().isEmpty()) {
             $$0.a(() -> wu.a("commands.bossbar.set.players.success.none", $$1.e()), true);
          } else {
-            $$0.a(() -> wu.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), wx.b($$2, cmh::O_)), true);
+            $$0.a(() -> wu.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), wx.b($$2, cmk::O_)), true);
          }
 
          return $$1.g().size();
@@ -227,7 +227,7 @@ public class alv {
    }
 
    private static int a(eq $$0) {
-      Collection<alk> $$1 = $$0.l().aN().b();
+      Collection<alk> $$1 = $$0.l().aO().b();
       if ($$1.isEmpty()) {
          $$0.a(() -> wu.c("commands.bossbar.list.bars.none"), false);
       } else {
@@ -238,7 +238,7 @@ public class alv {
    }
 
    private static int a(eq $$0, akk $$1, wu $$2) throws CommandSyntaxException {
-      all $$3 = $$0.l().aN();
+      all $$3 = $$0.l().aO();
       if ($$3.a($$1) != null) {
          throw b.create($$1.toString());
       } else {
@@ -249,7 +249,7 @@ public class alv {
    }
 
    private static int e(eq $$0, alk $$1) {
-      all $$2 = $$0.l().aN();
+      all $$2 = $$0.l().aO();
       $$1.b();
       $$2.a($$1);
       $$0.a(() -> wu.a("commands.bossbar.remove.success", $$1.e()), true);
@@ -258,7 +258,7 @@ public class alv {
 
    public static alk a(CommandContext<eq> $$0) throws CommandSyntaxException {
       akk $$1 = fr.c($$0, "id");
-      alk $$2 = ((eq)$$0.getSource()).l().aN().a($$1);
+      alk $$2 = ((eq)$$0.getSource()).l().aO().a($$1);
       if ($$2 == null) {
          throw c.create($$1.toString());
       } else {

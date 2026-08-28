@@ -10,14 +10,14 @@ public class pe implements pd.a {
    }
 
    public static tx a(String $$0, tx $$1) {
-      emq $$2 = new emq();
+      emw $$2 = new emw();
       int $$3 = um.b($$1, 500);
       int $$4 = 3937;
       if ($$3 < 3937) {
          a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3937, $$0});
       }
 
-      tx $$5 = azl.f.a(azm.a(), $$1, $$3);
+      tx $$5 = azo.f.a(azp.a(), $$1, $$3);
       $$2.a(lq.e.q(), $$5);
       return $$2.a(new tx());
    }

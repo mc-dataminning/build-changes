@@ -1,13 +1,21 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 
-interface ewl {
-   DoubleList a();
+public class ewl extends AbstractDoubleList {
+   private final int a;
 
-   boolean a(ewl.a var1);
+   ewl(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
+      }
+   }
 
-   int size();
+   public double getDouble(int $$0) {
+      return (double)$$0 / (double)this.a;
+   }
 
-   public interface a {
-      boolean merge(int var1, int var2, int var3);
+   public int size() {
+      return this.a + 1;
    }
 }

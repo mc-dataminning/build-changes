@@ -1,38 +1,93 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JavaOps;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class etc extends esb {
-   public static final Codec<wu> a = ww.a.validate($$0 -> cxi.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
-   public static final MapCodec<etc> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(cxi.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), esa.a.forGetter($$0x -> $$0x.d))).apply($$0, etc::new)
+public class etc extends esh {
+   public static final MapCodec<etc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  ww.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
+                  esg.a(256).forGetter($$0x -> $$0x.c),
+                  equ.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, etc::new)
    );
-   private final List<arb<wu>> c;
-   private final esa d;
+   private final List<wu> b;
+   private final esg c;
+   private final Optional<equ.b> d;
 
-   protected etc(List<etz> $$0, List<arb<wu>> $$1, esa $$2) {
+   public etc(List<euf> $$0, List<wu> $$1, esg $$2, Optional<equ.b> $$3) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = List.copyOf($$1);
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   protected cua a(cua $$0, eqo $$1) {
-      $$0.a(kn.J, cxi.a, this::a);
+   public esj<etc> b() {
+      return esk.A;
+   }
+
+   @Override
+   public Set<etn<?>> a() {
+      return this.d.<Set<etn<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
+   }
+
+   @Override
+   public cuc a(cuc $$0, equ $$1) {
+      $$0.a(kn.i, cwy.a, $$1x -> new cwy(this.a($$1x, $$1)));
       return $$0;
    }
 
-   @VisibleForTesting
-   public cxi a(cxi $$0) {
-      List<arb<wu>> $$1 = this.d.a($$0.a(), this.c);
-      return $$0.b($$1);
+   private List<wu> a(@Nullable cwy $$0, equ $$1) {
+      if ($$0 == null && this.b.isEmpty()) {
+         return List.of();
+      } else {
+         UnaryOperator<wu> $$2 = etd.a($$1, this.d.orElse(null));
+         List<wu> $$3 = this.b.stream().map($$2).toList();
+         return this.c.a($$0.a(), $$3, 256);
+      }
    }
 
-   @Override
-   public esd<etc> b() {
-      return ese.N;
+   public static etc.a c() {
+      return new etc.a();
+   }
+
+   public static class a extends esh.a<etc.a> {
+      private Optional<equ.b> a = Optional.empty();
+      private final Builder<wu> b = ImmutableList.builder();
+      private esg c = esg.a.b;
+
+      public etc.a a(esg $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public etc.a a(equ.b $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public etc.a a(wu $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      protected etc.a a() {
+         return this;
+      }
+
+      @Override
+      public esi b() {
+         return new etc(this.g(), this.b.build(), this.c, this.a);
+      }
    }
 }

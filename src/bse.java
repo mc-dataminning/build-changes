@@ -1,27 +1,38 @@
-import java.util.List;
+public class bse {
+   public static final bse a = new bse(0.75F, 0.5F, 0.25F);
+   public static final bse b = new bse(0.95F, 0.69F, 0.32F);
+   private final float c;
+   private final float d;
+   private final float e;
 
-public enum bse {
-   a(bse.a.c),
-   b(bse.a.b),
-   c(bse.a.c),
-   d(bse.a.d);
-
-   private final bse.a e;
-
-   private bse(final bse.a $$0) {
-      this.e = $$0;
+   private bse(float $$0, float $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public List<evz> a(float $$0, float $$1) {
-      return this.e.create($$0, $$1);
+   public bse.a a(float $$0) {
+      if ($$0 < this.e) {
+         return bse.a.d;
+      } else if ($$0 < this.d) {
+         return bse.a.c;
+      } else {
+         return $$0 < this.c ? bse.a.b : bse.a.a;
+      }
    }
 
-   public interface a {
-      List<evz> a = List.of(evz.b);
-      bse.a b = ($$0, $$1) -> a;
-      bse.a c = ($$0, $$1) -> List.of(new evz(0.0, (double)$$1, 0.0));
-      bse.a d = ($$0, $$1) -> List.of(new evz(0.0, (double)$$1 / 2.0, 0.0));
+   public bse.a a(cuc $$0) {
+      return !$$0.l() ? bse.a.a : this.a($$0.n(), $$0.o());
+   }
 
-      List<evz> create(float var1, float var2);
+   public bse.a a(int $$0, int $$1) {
+      return this.a((float)($$1 - $$0) / (float)$$1);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

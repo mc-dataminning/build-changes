@@ -1,84 +1,111 @@
-public abstract class coq extends bsd {
-   protected static final ajp<Integer> f = ajt.a(coq.class, ajr.b);
-   protected static final ajp<Integer> g = ajt.a(coq.class, ajr.b);
-   protected static final ajp<Float> h = ajt.a(coq.class, ajr.d);
+public class coq extends cog implements dqo {
+   private boolean c = true;
 
-   public coq(bsj<?> $$0, dcd $$1) {
+   public coq(bsm<? extends coq> $$0, dcf $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   public boolean a(bqw $$0, float $$1) {
-      if (this.dP().B || this.dK()) {
-         return true;
-      } else if (this.b($$0)) {
-         return false;
-      } else {
-         this.m(-this.P());
-         this.d(10);
-         this.bv();
-         this.b(this.N() + $$1 * 10.0F);
-         this.a(dxa.o, $$0.d());
-         boolean $$2 = $$0.d() instanceof cmh && ((cmh)$$0.d()).fZ().d;
-         if (($$2 || !(this.N() > 40.0F)) && !this.d($$0)) {
-            if ($$2) {
-               this.ao();
-            }
-         } else {
-            this.a($$0);
-         }
+   public coq(dcf $$0, double $$1, double $$2, double $$3) {
+      super(bsm.aa, $$1, $$2, $$3, $$0);
+   }
 
-         return true;
+   @Override
+   public cof.a v() {
+      return cof.a.f;
+   }
+
+   @Override
+   public dsk x() {
+      return dfj.hc.o();
+   }
+
+   @Override
+   public int z() {
+      return 1;
+   }
+
+   @Override
+   public int b() {
+      return 5;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      boolean $$4 = !$$3;
+      if ($$4 != this.G()) {
+         this.b($$4);
       }
    }
 
-   boolean d(bqw $$0) {
+   public boolean G() {
+      return this.c;
+   }
+
+   public void b(boolean $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public double H() {
+      return this.dv();
+   }
+
+   @Override
+   public double I() {
+      return this.dx() + 0.5;
+   }
+
+   @Override
+   public double J() {
+      return this.dB();
+   }
+
+   @Override
+   public boolean K() {
       return false;
    }
 
-   public void b(ctv $$0) {
-      this.an();
-      if (this.dP().ab().b(dbz.i)) {
-         cua $$1 = new cua($$0);
-         $$1.b(kn.g, this.ah());
-         this.b($$1);
+   @Override
+   public void l() {
+      super.l();
+      if (!this.dQ().B && this.bE() && this.G() && this.M()) {
+         this.e();
+      }
+   }
+
+   public boolean M() {
+      if (dqp.a(this.dQ(), this)) {
+         return true;
+      } else {
+         for (ciu $$1 : this.dQ().a(ciu.class, this.cL().c(0.25, 0.0, 0.25), bsl.a)) {
+            if (dqp.a(this, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
       }
    }
 
    @Override
-   protected void a(ajt.a $$0) {
-      $$0.a(f, 0);
-      $$0.a(g, 1);
-      $$0.a(h, 0.0F);
+   protected ctx ag_() {
+      return cuf.nQ;
    }
 
-   public void d(int $$0) {
-      this.ao.a(f, $$0);
+   @Override
+   protected void b(tx $$0) {
+      super.b($$0);
+      $$0.a("Enabled", this.c);
    }
 
-   public void m(int $$0) {
-      this.ao.a(g, $$0);
+   @Override
+   protected void a(tx $$0) {
+      super.a($$0);
+      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
    }
 
-   public void b(float $$0) {
-      this.ao.a(h, $$0);
+   @Override
+   public cph a(int $$0, cmj $$1) {
+      return new cqh($$0, $$1, this);
    }
-
-   public float N() {
-      return this.ao.a(h);
-   }
-
-   public int O() {
-      return this.ao.a(f);
-   }
-
-   public int P() {
-      return this.ao.a(g);
-   }
-
-   protected void a(bqw $$0) {
-      this.b(this.ag_());
-   }
-
-   abstract ctv ag_();
 }

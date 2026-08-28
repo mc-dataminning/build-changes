@@ -1,15 +1,15 @@
-public class cse extends ctv {
-   public cse(ctv.a $$0) {
+public class cse extends ctx {
+   public cse(ctx.a $$0) {
       super($$0);
    }
 
    @Override
-   public cua a(cua $$0, dcd $$1, bsy $$2) {
-      cua $$3 = super.a($$0, $$1, $$2);
-      if ($$2 instanceof cmh $$4 && $$4.fL()) {
-         return $$3;
-      }
+   public boolean a(cuc $$0) {
+      return $$0.H() == 1;
+   }
 
-      return new cua(cud.pq);
+   @Override
+   public int g() {
+      return 1;
    }
 }

@@ -1,105 +1,26 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum dls implements ayz {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class dls extends dfq {
+   public static final MapCodec<dls> a = b(dls::new);
+   protected static final float b = 6.0F;
+   protected static final ewy c = dfh.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
-   public static final Codec<dls> e = ayz.a(dls::values);
-   private final String f;
-   private final h g;
-
-   private dls(final String $$0, final h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<dls> a() {
+      return a;
    }
 
-   public dls a(dls $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public jf a(jf $$0) {
-      if ($$0.o() == jf.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static dls a(aym $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<dls> b(aym $$0) {
-      return ac.b(values(), $$0);
+   protected dls(dsj.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return c;
+   }
+
+   @Override
+   protected boolean b(dsk $$0, dbl $$1, ja $$2) {
+      return $$0.a(avw.aL) || $$0.a(dfj.dX) || super.b($$0, $$1, $$2);
    }
 }

@@ -2,14 +2,14 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class op {
-   private final cyd a;
-   private final cyd b;
-   private final cyd c;
+   private final cyf a;
+   private final cyf b;
+   private final cyf c;
    private final oi d;
-   private final ctv e;
+   private final ctx e;
    private final Map<String, an<?>> f = new LinkedHashMap<>();
 
-   public op(cyd $$0, cyd $$1, cyd $$2, oi $$3, ctv $$4) {
+   public op(cyf $$0, cyf $$1, cyf $$2, oi $$3, ctx $$4) {
       this.d = $$3;
       this.a = $$0;
       this.b = $$1;
@@ -17,7 +17,7 @@ public class op {
       this.e = $$4;
    }
 
-   public static op a(cyd $$0, cyd $$1, cyd $$2, oi $$3, ctv $$4) {
+   public static op a(cyf $$0, cyf $$1, cyf $$2, oi $$3, ctx $$4) {
       return new op($$0, $$1, $$2, $$3, $$4);
    }
 
@@ -34,7 +34,7 @@ public class op {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", dq.a($$1)).a(aj.a.a($$1)).a(ai.a.b);
       this.f.forEach($$2::a);
-      cza $$3 = new cza(this.a, this.b, this.c, new cua(this.e));
+      czc $$3 = new czc(this.a, this.b, this.c, new cuc(this.e));
       $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.d.a() + "/")));
    }
 

@@ -1,72 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class ejl extends ejn {
-   public static final MapCodec<ejl> a = RecordCodecBuilder.mapCodec(
-         $$0 -> a($$0)
-               .and(
-                  $$0.group(
-                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(ejl::a),
-                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(ejl::b),
-                     ejm.c.optionalFieldOf("spread_type", ejm.a).forGetter(ejl::c)
-                  )
-               )
-               .apply($$0, ejl::new)
-      )
-      .validate(ejl::a);
-   private final int c;
-   private final int d;
-   private final ejm e;
+public record ejl(List<eja> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final akk c = new akk("jigsaw");
+   private static final Map<akk, akk> d = ImmutableMap.builder()
+      .put(new akk("nvi"), c)
+      .put(new akk("pcp"), c)
+      .put(new akk("bastionremnant"), c)
+      .put(new akk("runtime"), c)
+      .build();
 
-   private static DataResult<ejl> a(ejl $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   public ejl(final List<eja> a) {
+      this.a = List.copyOf(a);
    }
 
-   public ejl(ke $$0, ejn.c $$1, float $$2, int $$3, Optional<ejn.a> $$4, int $$5, int $$6, ejm $$7) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
+   public boolean a() {
+      return this.a.isEmpty();
    }
 
-   public ejl(int $$0, int $$1, ejm $$2, int $$3) {
-      this(ke.g, ejn.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   public boolean a(ja $$0) {
+      for (eja $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public int a() {
-      return this.c;
+   public uu a(ejm $$0) {
+      ud $$1 = new ud();
+
+      for (eja $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   public int b() {
-      return this.d;
+   public static ejl a(ud $$0, ejm $$1) {
+      List<eja> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         tx $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         akk $$6 = new akk($$5);
+         akk $$7 = d.getOrDefault($$6, $$6);
+         ejn $$8 = lq.Q.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               eja $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
+         }
+      }
+
+      return new ejl($$2);
    }
 
-   public ejm c() {
-      return this.e;
+   public eio b() {
+      return eja.a(this.a.stream());
    }
 
-   public dbk a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      dyy $$5 = new dyy(new dya(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new dbk($$3 * this.c + $$7, $$4 * this.c + $$8);
-   }
-
-   @Override
-   protected boolean a(duf $$0, int $$1, int $$2) {
-      dbk $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.e == $$1 && $$3.f == $$2;
-   }
-
-   @Override
-   public ejo<?> e() {
-      return ejo.a;
+   public List<eja> c() {
+      return this.a;
    }
 }

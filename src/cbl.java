@@ -1,32 +1,16 @@
-public class cbl extends cag {
-   private final ckg b;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cbl(ckg $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class cbl extends cbm {
+   public cbl(btk $$0, double $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public void c() {
-      super.c();
-      this.c = 0;
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.b.v(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
-      }
+   protected ewf h() {
+      ewf $$0 = this.b.g(0.0F);
+      int $$1 = 8;
+      ewf $$2 = cdy.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : cdu.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
    }
 }

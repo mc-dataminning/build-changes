@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 
 public class yf implements wv {
    public static final Object[] a = new Object[0];
-   private static final Codec<Object> d = axm.b.validate(yf::b);
+   private static final Codec<Object> d = axo.b.validate(yf::b);
    private static final Codec<Object> e = Codec.either(d, ww.a)
       .xmap(
          $$0 -> $$0.map($$0x -> $$0x, $$0x -> Objects.requireNonNullElse($$0x.d(), $$0x)), $$0 -> $$0 instanceof wu $$1 ? Either.right($$1) : Either.left($$0)
@@ -180,7 +180,7 @@ public class yf implements wv {
    }
 
    @Override
-   public xi a(@Nullable eq $$0, @Nullable bsd $$1, int $$2) throws CommandSyntaxException {
+   public xi a(@Nullable eq $$0, @Nullable bsg $$1, int $$2) throws CommandSyntaxException {
       Object[] $$3 = new Object[this.j.length];
 
       for (int $$4 = 0; $$4 < $$3.length; $$4++) {

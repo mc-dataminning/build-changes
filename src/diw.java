@@ -1,65 +1,106 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class diw extends dff implements dmg {
-   public static final MapCodec<diw> a = b(diw::new);
-   private static final dsy c = dsx.C;
-   protected static final ews b = dff.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
+public abstract class diw extends diu implements dfk {
+   public static final dtk e = dta.ax;
+   public static final int f = 25;
+   private final double c;
 
-   @Override
-   public MapCodec<diw> a() {
-      return a;
-   }
-
-   protected diw(dsg.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
+   protected diw(dsj.d $$0, jf $$1, ewy $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.k(this.E.b().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
-      $$0.a(c);
+   protected abstract MapCodec<? extends diw> a();
+
+   @Override
+   public dsk a(dcg $$0) {
+      return this.o().a(e, Integer.valueOf($$0.E_().a(25)));
    }
 
    @Override
-   protected eob b_(dsh $$0) {
-      return $$0.c(c) ? eoc.c.a(false) : super.b_($$0);
+   protected boolean d_(dsk $$0) {
+      return $$0.c(e) < 25;
    }
 
-   @Nullable
    @Override
-   public dsh a(cxk $$0) {
-      dsh $$1 = super.a($$0);
-      if ($$1 != null) {
-         eob $$2 = $$0.q().b_($$0.a());
-         return $$1.a(c, Boolean.valueOf($$2.a() == eoc.c));
-      } else {
-         return null;
+   protected void b(dsk $$0, aqm $$1, ja $$2, ayo $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         ja $$4 = $$2.a(this.a);
+         if (this.g($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.z));
+         }
       }
    }
 
-   @Override
-   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
-      ja $$3 = $$2.c();
-      dsh $$4 = $$1.a_($$3);
-      return $$4.d($$1, $$3, jf.a);
+   protected dsk a(dsk $$0, ayo $$1) {
+      return $$0.a(e);
+   }
+
+   public dsk n(dsk $$0) {
+      return $$0.a(e, Integer.valueOf(25));
+   }
+
+   public boolean o(dsk $$0) {
+      return $$0.c(e) == 25;
+   }
+
+   protected dsk a(dsk $$0, dsk $$1) {
+      return $$1;
    }
 
    @Override
-   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
-      return b;
-   }
+   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
 
-   @Override
-   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
-      if ($$1 == jf.b && !this.a($$0, $$3, $$4)) {
-         return dfh.a.o();
-      } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, eoc.c, eoc.c.a($$3));
+      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
+         if (this.b) {
+            $$3.a($$4, eoi.c, eoi.c.a($$3));
          }
 
          return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return this.a($$0, this.b().o());
       }
+   }
+
+   @Override
+   protected void a(dsl.a<dfh, dsk> $$0) {
+      $$0.a(e);
+   }
+
+   @Override
+   public boolean b(dci $$0, ja $$1, dsk $$2) {
+      return this.g($$0.a_($$1.a(this.a)));
+   }
+
+   @Override
+   public boolean a(dcf $$0, ayo $$1, ja $$2, dsk $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqm $$0, ayo $$1, ja $$2, dsk $$3) {
+      ja $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
+      }
+   }
+
+   protected abstract int a(ayo var1);
+
+   protected abstract boolean g(dsk var1);
+
+   @Override
+   protected diw c() {
+      return this;
    }
 }

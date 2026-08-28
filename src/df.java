@@ -7,24 +7,24 @@ import java.util.Optional;
 import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public record df(Map<jj<brj>, df.b> b) {
+public record df(Map<jj<brm>, df.b> b) {
    public static final Codec<df> a = Codec.unboundedMap(lq.d.s(), df.b.a).xmap(df::new, df::a);
 
-   public boolean a(bsd $$0) {
-      if ($$0 instanceof bsy $$1 && this.a($$1.eu())) {
+   public boolean a(bsg $$0) {
+      if ($$0 instanceof btb $$1 && this.a($$1.ev())) {
          return true;
       }
 
       return false;
    }
 
-   public boolean a(bsy $$0) {
-      return this.a($$0.eu());
+   public boolean a(btb $$0) {
+      return this.a($$0.ev());
    }
 
-   public boolean a(Map<jj<brj>, brl> $$0) {
-      for (Entry<jj<brj>, df.b> $$1 : this.b.entrySet()) {
-         brl $$2 = $$0.get($$1.getKey());
+   public boolean a(Map<jj<brm>, bro> $$0) {
+      for (Entry<jj<brm>, df.b> $$1 : this.b.entrySet()) {
+         bro $$2 = $$0.get($$1.getKey());
          if (!$$1.getValue().a($$2)) {
             return false;
          }
@@ -33,23 +33,23 @@ public record df(Map<jj<brj>, df.b> b) {
       return true;
    }
 
-   public Map<jj<brj>, df.b> a() {
+   public Map<jj<brm>, df.b> a() {
       return this.b;
    }
 
    public static class a {
-      private final Builder<jj<brj>, df.b> a = ImmutableMap.builder();
+      private final Builder<jj<brm>, df.b> a = ImmutableMap.builder();
 
       public static df.a a() {
          return new df.a();
       }
 
-      public df.a a(jj<brj> $$0) {
+      public df.a a(jj<brm> $$0) {
          this.a.put($$0, new df.b());
          return this;
       }
 
-      public df.a a(jj<brj> $$0, df.b $$1) {
+      public df.a a(jj<brm> $$0, df.b $$1) {
          this.a.put($$0, $$1);
          return this;
       }
@@ -74,7 +74,7 @@ public record df(Map<jj<brj>, df.b> b) {
          this(de.d.c, de.d.c, Optional.empty(), Optional.empty());
       }
 
-      public boolean a(@Nullable brl $$0) {
+      public boolean a(@Nullable bro $$0) {
          if ($$0 == null) {
             return false;
          } else if (!this.b.d($$0.e())) {

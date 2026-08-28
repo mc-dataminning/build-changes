@@ -1,17 +1,7 @@
-public abstract class gsf extends gse implements gsx {
-   private boolean n;
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
 
-   protected gsf(ave $$0, avg $$1, aym $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean m() {
-      return this.n;
-   }
-
-   protected final void n() {
-      this.n = true;
-      this.i = false;
-   }
+public interface gsf {
+   void a(Map<UUID, asd.c> var1, Consumer<asd.b> var2);
 }

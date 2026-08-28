@@ -64,7 +64,7 @@ public interface wu extends Message, wz {
       return new xi(this.b(), new ArrayList<>(this.c()), this.a());
    }
 
-   axq g();
+   axs g();
 
    @Override
    default <T> Optional<T> a(wz.b<T> $$0, xr $$1) {
@@ -198,7 +198,7 @@ public interface wu extends Message, wz {
       return b($$0.toString());
    }
 
-   static wu a(dbk $$0) {
+   static wu a(dbm $$0) {
       return b($$0.toString());
    }
 

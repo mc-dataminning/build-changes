@@ -1,6 +1,6 @@
 import java.util.List;
 
-public record aaq(akj<dcd> c, eii d, List<aaq.a> e) implements aac {
+public record aaq(akj<dcf> c, eio d, List<aaq.a> e) implements aac {
    public static final ys<vr, aaq> a = aac.a(aaq::a, aaq::new);
    public static final aac.b<aaq> b = aac.a("debug/structures");
 
@@ -19,11 +19,11 @@ public record aaq(akj<dcd> c, eii d, List<aaq.a> e) implements aac {
       return b;
    }
 
-   static eii b(vr $$0) {
-      return new eii($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   static eio b(vr $$0) {
+      return new eio($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   static void a(vr $$0, eii $$1) {
+   static void a(vr $$0, eio $$1) {
       $$0.p($$1.h());
       $$0.p($$1.i());
       $$0.p($$1.j());
@@ -32,11 +32,11 @@ public record aaq(akj<dcd> c, eii d, List<aaq.a> e) implements aac {
       $$0.p($$1.m());
    }
 
-   public akj<dcd> b() {
+   public akj<dcf> b() {
       return this.c;
    }
 
-   public eii c() {
+   public eio c() {
       return this.d;
    }
 
@@ -44,7 +44,7 @@ public record aaq(akj<dcd> c, eii d, List<aaq.a> e) implements aac {
       return this.e;
    }
 
-   public static record a(eii a, boolean b) {
+   public static record a(eio a, boolean b) {
       public a(vr $$0) {
          this(aaq.b($$0), $$0.readBoolean());
       }

@@ -1,43 +1,45 @@
+import java.util.UUID;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class dwx<T extends dxc> {
-   private final T a;
-   @Nullable
-   private kc b;
+public class dwx<T extends dwn> implements dww<T> {
+   private final dwp<T> a;
+   private final dws<T> b;
 
-   public dwx(T $$0) {
+   public dwx(dwp<T> $$0, dws<T> $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(aqk $$0) {
-      this.c($$0);
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
    }
 
-   public T a() {
-      return this.a;
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
    }
 
-   public void b(aqk $$0) {
-      a($$0, this.b, $$0x -> $$0x.b(this.a));
+   @Override
+   public Iterable<T> a() {
+      return this.a.a();
    }
 
-   public void c(aqk $$0) {
-      this.a.a().a($$0).map(kc::a).ifPresent($$1 -> {
-         if (this.b == null || !this.b.equals($$1)) {
-            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
-            this.b = $$1;
-            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
-         }
-      });
+   @Override
+   public <U extends T> void a(dwu<T, U> $$0, aws<U> $$1) {
+      this.a.a($$0, $$1);
    }
 
-   private static void a(dcg $$0, @Nullable kc $$1, Consumer<dxd> $$2) {
-      if ($$1 != null) {
-         dud $$3 = $$0.a($$1.a(), $$1.c(), dvc.n, false);
-         if ($$3 != null) {
-            $$2.accept($$3.a($$1.b()));
-         }
-      }
+   @Override
+   public void a(ewa $$0, Consumer<T> $$1) {
+      this.b.b($$0, aws.forConsumer($$1));
+   }
+
+   @Override
+   public <U extends T> void a(dwu<T, U> $$0, ewa $$1, aws<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

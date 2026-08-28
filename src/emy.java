@@ -1,11 +1,20 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface emy {
-   Codec<emy> c = lq.n.r().dispatch(emy::a, emz::codec);
+public class emy extends emq {
+   public static final MapCodec<emy> a = awm.a(lr.f).fieldOf("tag").xmap(emy::new, $$0 -> $$0.b);
+   private final awm<dfh> b;
 
-   @Nullable
-   tx a(aym var1, @Nullable tx var2);
+   public emy(awm<dfh> $$0) {
+      this.b = $$0;
+   }
 
-   emz<?> a();
+   @Override
+   public boolean a(dsk $$0, ayo $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected emr<?> a() {
+      return emr.d;
+   }
 }

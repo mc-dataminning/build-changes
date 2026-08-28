@@ -1,119 +1,77 @@
 import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.io.Closeable;
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gpb extends got {
-   static final Logger f = LogUtils.getLogger();
-   protected final akk e;
+public class gpb extends goz implements gpa {
+   private static final Logger e = LogUtils.getLogger();
+   @Nullable
+   private ezn f;
 
-   public gpb(akk $$0) {
-      this.e = $$0;
+   public gpb(ezn $$0) {
+      this.f = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+            this.d();
+         });
+      } else {
+         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+         this.d();
+      }
+   }
+
+   public gpb(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnGameThreadOrInit();
+      this.f = new ezn($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
    }
 
    @Override
-   public void a(atu $$0) throws IOException {
-      gpb.a $$1 = this.b($$0);
-      $$1.c();
-      grf $$2 = $$1.a();
-      boolean $$3;
-      boolean $$4;
-      if ($$2 != null) {
-         $$3 = $$2.a();
-         $$4 = $$2.b();
+   public void a(atw $$0) {
+   }
+
+   @Override
+   public void d() {
+      if (this.f != null) {
+         this.c();
+         this.f.a(0, 0, 0, false);
       } else {
-         $$3 = false;
-         $$4 = false;
-      }
-
-      ezh $$7 = $$1.b();
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> this.a($$7, $$3, $$4));
-      } else {
-         this.a($$7, $$3, $$4);
+         e.warn("Trying to upload disposed texture {}", this.a());
       }
    }
 
-   private void a(ezh $$0, boolean $$1, boolean $$2) {
-      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
+   @Nullable
+   public ezn e() {
+      return this.f;
    }
 
-   protected gpb.a b(atu $$0) {
-      return gpb.a.a($$0, this.e);
+   public void a(ezn $$0) {
+      if (this.f != null) {
+         this.f.close();
+      }
+
+      this.f = $$0;
    }
 
-   protected static class a implements Closeable {
-      @Nullable
-      private final grf a;
-      @Nullable
-      private final ezh b;
-      @Nullable
-      private final IOException c;
-
-      public a(IOException $$0) {
-         this.c = $$0;
-         this.a = null;
-         this.b = null;
+   @Override
+   public void close() {
+      if (this.f != null) {
+         this.f.close();
+         this.b();
+         this.f = null;
       }
+   }
 
-      public a(@Nullable grf $$0, ezh $$1) {
-         this.c = null;
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public static gpb.a a(atu $$0, akk $$1) {
-         try {
-            ats $$2 = $$0.getResourceOrThrow($$1);
-
-            ezh $$4;
-            try (InputStream $$3 = $$2.d()) {
-               $$4 = ezh.a($$3);
-            }
-
-            grf $$6 = null;
-
-            try {
-               $$6 = $$2.f().a(grf.a).orElse(null);
-            } catch (RuntimeException var8) {
-               gpb.f.warn("Failed reading metadata of: {}", $$1, var8);
-            }
-
-            return new gpb.a($$6, $$4);
-         } catch (IOException var10) {
-            return new gpb.a(var10);
-         }
-      }
-
-      @Nullable
-      public grf a() {
-         return this.a;
-      }
-
-      public ezh b() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         } else {
-            return this.b;
-         }
-      }
-
-      @Override
-      public void close() {
-         if (this.b != null) {
-            this.b.close();
-         }
-      }
-
-      public void c() throws IOException {
-         if (this.c != null) {
-            throw this.c;
-         }
+   @Override
+   public void a(akk $$0, Path $$1) throws IOException {
+      if (this.f != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.f.a($$3);
       }
    }
 }

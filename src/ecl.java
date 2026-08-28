@@ -1,30 +1,23 @@
 import com.mojang.serialization.Codec;
 
-public class ecl extends ebe<eea> {
-   public ecl(Codec<eea> $$0) {
+public class ecl extends ebk<eec> {
+   public ecl(Codec<eec> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebg<eea> $$0) {
-      eea $$1 = $$0.f();
-      dcz $$2 = $$0.b();
-      ja $$3 = $$0.e();
-      dsh $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof dhn) {
-            if (!$$2.u($$3.c())) {
-               return false;
-            }
+   public boolean a(ebm<eec> $$0) {
+      ddb $$1 = $$0.b();
+      ja $$2 = $$0.e();
+      eec $$3 = $$0.f();
 
-            dhn.a($$2, $$4, $$3, 2);
-         } else {
-            $$2.a($$3, $$4, 2);
+      for (edw.a $$4 : $$3.b) {
+         if ($$4.b.a($$1.a_($$2), $$0.d())) {
+            $$1.a($$2, $$4.c, 2);
+            break;
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return true;
    }
 }

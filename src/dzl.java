@@ -1,24 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dzl extends dzr {
-   final awk<dff> a;
-   public static final MapCodec<dzl> e = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(awk.a(lr.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dzl::new)
-   );
+class dzl extends dzo {
+   public static final MapCodec<dzl> a = a(dzl::new);
 
-   protected dzl(ke $$0, awk<dff> $$1) {
+   public dzl(List<dzm> $$0) {
       super($$0);
-      this.a = $$1;
+   }
+
+   public boolean a(ddb $$0, ja $$1) {
+      for (dzm $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   protected boolean a(dsh $$0) {
-      return $$0.a(this.a);
-   }
-
-   @Override
-   public dzh<?> a() {
-      return dzh.b;
+   public dzn<?> a() {
+      return dzn.i;
    }
 }

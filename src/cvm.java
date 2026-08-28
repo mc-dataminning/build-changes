@@ -1,37 +1,40 @@
-import java.util.ArrayList;
-import java.util.List;
+public class cvm extends ctx {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public class cvm extends ctv {
-   public static final int a = 160;
-
-   public cvm(ctv.a $$0) {
+   public cvm(ctx.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(cua $$0, ctv.b $$1, List<wu> $$2, cvt $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.b()) {
-         List<brl> $$4 = new ArrayList<>();
-         cxd $$5 = $$0.a(kn.H, cxd.a);
-
-         for (cxd.a $$6 : $$5.a()) {
-            $$4.add($$6.a());
-         }
-
-         cwb.a($$4, $$2::add, 1.0F, $$1.b());
-      }
+   public int a(cuc $$0, btb $$1) {
+      return 1200;
    }
 
    @Override
-   public cua a(cua $$0, dcd $$1, bsy $$2) {
-      cxd $$3 = $$0.a(kn.H, cxd.a);
+   public cvx b(cuc $$0) {
+      return cvx.h;
+   }
 
-      for (cxd.a $$4 : $$3.a()) {
-         $$2.b($$4.a());
-      }
+   @Override
+   public bqh<cuc> a(dcf $$0, cmk $$1, bqf $$2) {
+      $$1.a(avh.yX, 1.0F, 1.0F);
+      $$1.b(avr.c.b(this));
+      return cue.a($$0, $$1, $$2);
+   }
 
-      super.a($$0, $$1, $$2);
-      return $$2.fL() ? $$0 : new cua(cud.pq);
+   @Override
+   public cuc a(cuc $$0, dcf $$1, btb $$2) {
+      this.a($$2);
+      return $$0;
+   }
+
+   @Override
+   public void a(cuc $$0, dcf $$1, btb $$2, int $$3) {
+      this.a($$2);
+   }
+
+   private void a(btb $$0) {
+      $$0.a(avh.yY, 1.0F, 1.0F);
    }
 }

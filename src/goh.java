@@ -1,62 +1,34 @@
-import java.util.Map;
-
-public class goh extends gns<cfr, fwz<cfr>> {
-   private final fwz<cfr> a;
-   private static final Map<bsb.a, akk> b = Map.of(
-      bsb.a.b,
-      new akk("textures/entity/wolf/wolf_armor_crackiness_low.png"),
-      bsb.a.c,
-      new akk("textures/entity/wolf/wolf_armor_crackiness_medium.png"),
-      bsb.a.d,
-      new akk("textures/entity/wolf/wolf_armor_crackiness_high.png")
-   );
-
-   public goh(glc<cfr, fwz<cfr>> $$0, fxe $$1) {
+public abstract class goh<T extends btb, M extends fvt<T>> extends gny<T, M> {
+   public goh(gkn<T, M> $$0) {
       super($$0);
-      this.a = new fwz<>($$1.a(fxh.cd));
    }
 
-   public void a(fag $$0, gdx $$1, int $$2, cfr $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gz()) {
-         cua $$10 = $$3.fN();
-         if ($$10.g() instanceof cro $$11 && $$11.d() == cro.a.b) {
-            this.c().a(this.a);
-            this.a.a($$3, $$4, $$5, $$6);
-            this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-            fak $$13 = $$1.getBuffer(gef.e($$11.b()));
-            this.a.a($$0, $$13, $$2, goz.d, 1.0F, 1.0F, 1.0F, 1.0F);
-            this.a($$0, $$1, $$2, $$10, $$11);
-            this.a($$0, $$1, $$2, $$10);
-            return;
+   protected abstract int a(T var1);
+
+   protected abstract void a(fam var1, ged var2, int var3, bsg var4, float var5, float var6, float var7, float var8);
+
+   public void a(fam $$0, ged $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      int $$10 = this.a($$3);
+      ayo $$11 = ayo.a((long)$$3.am());
+      if ($$10 > 0) {
+         for (int $$12 = 0; $$12 < $$10; $$12++) {
+            $$0.a();
+            fxo $$13 = this.c().a($$11);
+            fxo.a $$14 = $$13.a($$11);
+            $$13.a($$0);
+            float $$15 = $$11.i();
+            float $$16 = $$11.i();
+            float $$17 = $$11.i();
+            float $$18 = ayg.i($$15, $$14.a, $$14.d) / 16.0F;
+            float $$19 = ayg.i($$16, $$14.b, $$14.e) / 16.0F;
+            float $$20 = ayg.i($$17, $$14.c, $$14.f) / 16.0F;
+            $$0.a($$18, $$19, $$20);
+            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
+            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
+            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
+            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
+            $$0.b();
          }
-      }
-   }
-
-   private void a(fag $$0, gdx $$1, int $$2, cua $$3, cro $$4) {
-      if ($$3.a(awd.by)) {
-         int $$5 = cwr.a($$3, 0);
-         if (axo.b.a($$5) == 0) {
-            return;
-         }
-
-         akk $$6 = $$4.c();
-         if ($$6 == null) {
-            return;
-         }
-
-         float $$7 = (float)axo.b.b($$5) / 255.0F;
-         float $$8 = (float)axo.b.c($$5) / 255.0F;
-         float $$9 = (float)axo.b.d($$5) / 255.0F;
-         this.a.a($$0, $$1.getBuffer(gef.e($$6)), $$2, goz.d, $$7, $$8, $$9, 1.0F);
-      }
-   }
-
-   private void a(fag $$0, gdx $$1, int $$2, cua $$3) {
-      bsb.a $$4 = bsb.b.a($$3);
-      if ($$4 != bsb.a.a) {
-         akk $$5 = b.get($$4);
-         fak $$6 = $$1.getBuffer(gef.i($$5));
-         this.a.a($$0, $$6, $$2, goz.d, 1.0F, 1.0F, 1.0F, 1.0F);
       }
    }
 }

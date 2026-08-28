@@ -1,32 +1,31 @@
-public class gsy implements gsg {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final gcz e;
-   private final gub f;
-   private int g = 0;
+public class gsy extends gsl {
+   private static final float n = 1.0F;
+   private static final float o = 1.0F;
+   private final chi p;
 
-   public gsy(gcz $$0, gub $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public gsy(chi $$0) {
+      super(avh.yu, avi.g, gtc.t());
+      this.p = $$0;
+      this.k = gtc.a.b;
+      this.i = false;
+      this.j = 0;
    }
 
    @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bj()) {
-         float $$0 = this.e.dP().z.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((gsw)(new gsz.a(this.e, avf.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((gsw)(new gsz.a(this.e, avf.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((gsw)(new gsz.a(this.e, avf.A)));
-         }
+   public boolean s() {
+      return !this.p.aX();
+   }
+
+   @Override
+   public void q() {
+      if (!this.p.dL() && this.p.p() == null && this.p.gu()) {
+         this.f = (double)((float)this.p.dv());
+         this.g = (double)((float)this.p.dx());
+         this.h = (double)((float)this.p.dB());
+         this.d = 1.0F;
+         this.e = 1.0F;
+      } else {
+         this.n();
       }
    }
 }

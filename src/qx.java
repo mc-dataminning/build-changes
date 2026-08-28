@@ -2,47 +2,47 @@ import java.util.List;
 import java.util.Optional;
 
 public interface qx {
-   static void a(qm<eiw> $$0) {
-      jk<eiq> $$1 = $$0.a(lr.aQ);
-      jk<ddd> $$2 = $$0.a(lr.aE);
-      jj.c<eiw> $$3 = $$0.a(
-         eij.a,
-         new eiw(
-            List.of(eiw.a($$1.b(eik.t)), eiw.a($$1.b(eik.u)), eiw.a($$1.b(eik.v)), eiw.a($$1.b(eik.w)), eiw.a($$1.b(eik.x))), new ejl(34, 8, ejm.a, 10387312)
+   static void a(qm<ejc> $$0) {
+      jk<eiw> $$1 = $$0.a(lr.aQ);
+      jk<ddf> $$2 = $$0.a(lr.aE);
+      jj.c<ejc> $$3 = $$0.a(
+         eip.a,
+         new ejc(
+            List.of(ejc.a($$1.b(eiq.t)), ejc.a($$1.b(eiq.u)), ejc.a($$1.b(eiq.v)), ejc.a($$1.b(eiq.w)), ejc.a($$1.b(eiq.x))), new ejr(34, 8, ejs.a, 10387312)
          )
       );
-      $$0.a(eij.b, new eiw($$1.b(eik.f), new ejl(32, 8, ejm.a, 14357617)));
-      $$0.a(eij.c, new eiw($$1.b(eik.g), new ejl(32, 8, ejm.a, 14357618)));
-      $$0.a(eij.d, new eiw($$1.b(eik.e), new ejl(32, 8, ejm.a, 14357619)));
-      $$0.a(eij.e, new eiw($$1.b(eik.j), new ejl(32, 8, ejm.a, 14357620)));
-      $$0.a(eij.f, new eiw($$1.b(eik.a), new ejl(ke.g, ejn.c.b, 0.2F, 165745296, Optional.of(new ejn.a($$3, 10)), 32, 8, ejm.a)));
-      $$0.a(eij.q, new eiw($$1.b(eik.F), new ejl(24, 8, ejm.a, 20083232)));
-      $$0.a(eij.g, new eiw($$1.b(eik.l), new ejl(32, 5, ejm.b, 10387313)));
-      $$0.a(eij.h, new eiw($$1.b(eik.d), new ejl(80, 20, ejm.b, 10387319)));
-      $$0.a(eij.i, new eiw($$1.b(eik.r), new ejl(new ke(9, 0, 9), ejn.c.c, 0.01F, 0, Optional.empty(), 1, 0, ejm.a)));
-      $$0.a(eij.j, new eiw(List.of(eiw.a($$1.b(eik.b)), eiw.a($$1.b(eik.c))), new ejl(ke.g, ejn.c.d, 0.004F, 0, Optional.empty(), 1, 0, ejm.a)));
+      $$0.a(eip.b, new ejc($$1.b(eiq.f), new ejr(32, 8, ejs.a, 14357617)));
+      $$0.a(eip.c, new ejc($$1.b(eiq.g), new ejr(32, 8, ejs.a, 14357618)));
+      $$0.a(eip.d, new ejc($$1.b(eiq.e), new ejr(32, 8, ejs.a, 14357619)));
+      $$0.a(eip.e, new ejc($$1.b(eiq.j), new ejr(32, 8, ejs.a, 14357620)));
+      $$0.a(eip.f, new ejc($$1.b(eiq.a), new ejr(ke.g, ejt.c.b, 0.2F, 165745296, Optional.of(new ejt.a($$3, 10)), 32, 8, ejs.a)));
+      $$0.a(eip.q, new ejc($$1.b(eiq.F), new ejr(24, 8, ejs.a, 20083232)));
+      $$0.a(eip.g, new ejc($$1.b(eiq.l), new ejr(32, 5, ejs.b, 10387313)));
+      $$0.a(eip.h, new ejc($$1.b(eiq.d), new ejr(80, 20, ejs.b, 10387319)));
+      $$0.a(eip.i, new ejc($$1.b(eiq.r), new ejr(new ke(9, 0, 9), ejt.c.c, 0.01F, 0, Optional.empty(), 1, 0, ejs.a)));
+      $$0.a(eip.j, new ejc(List.of(ejc.a($$1.b(eiq.b)), ejc.a($$1.b(eiq.c))), new ejr(ke.g, ejt.c.d, 0.004F, 0, Optional.empty(), 1, 0, ejs.a)));
       $$0.a(
-         eij.k,
-         new eiw(
+         eip.k,
+         new ejc(
             List.of(
-               eiw.a($$1.b(eik.y)),
-               eiw.a($$1.b(eik.z)),
-               eiw.a($$1.b(eik.A)),
-               eiw.a($$1.b(eik.B)),
-               eiw.a($$1.b(eik.C)),
-               eiw.a($$1.b(eik.D)),
-               eiw.a($$1.b(eik.E))
+               ejc.a($$1.b(eiq.y)),
+               ejc.a($$1.b(eiq.z)),
+               ejc.a($$1.b(eiq.A)),
+               ejc.a($$1.b(eiq.B)),
+               ejc.a($$1.b(eiq.C)),
+               ejc.a($$1.b(eiq.D)),
+               ejc.a($$1.b(eiq.E))
             ),
-            new ejl(40, 15, ejm.a, 34222645)
+            new ejr(40, 15, ejs.a, 34222645)
          )
       );
-      $$0.a(eij.l, new eiw(List.of(eiw.a($$1.b(eik.h)), eiw.a($$1.b(eik.i))), new ejl(24, 4, ejm.a, 165745295)));
-      $$0.a(eij.m, new eiw(List.of(eiw.a($$1.b(eik.m)), eiw.a($$1.b(eik.n))), new ejl(20, 8, ejm.a, 14357621)));
-      $$0.a(eij.n, new eiw(List.of(eiw.a($$1.b(eik.o), 2), eiw.a($$1.b(eik.s), 3)), new ejl(27, 4, ejm.a, 30084232)));
-      $$0.a(eij.o, new eiw($$1.b(eik.p), new ejl(2, 1, ejm.a, 14357921)));
-      $$0.a(eij.p, new eiw($$1.b(eik.q), new ejl(20, 11, ejm.b, 10387313)));
-      $$0.a(eij.r, new eiw($$1.b(eik.k), new ejk(32, 3, 128, $$2.b(avt.o))));
-      $$0.a(eij.s, new eiw($$1.b(eik.G), new ejl(34, 8, ejm.a, 83469867)));
-      $$0.a(eij.t, new eiw($$1.b(eik.H), new ejl(34, 12, ejm.a, 94251327)));
+      $$0.a(eip.l, new ejc(List.of(ejc.a($$1.b(eiq.h)), ejc.a($$1.b(eiq.i))), new ejr(24, 4, ejs.a, 165745295)));
+      $$0.a(eip.m, new ejc(List.of(ejc.a($$1.b(eiq.m)), ejc.a($$1.b(eiq.n))), new ejr(20, 8, ejs.a, 14357621)));
+      $$0.a(eip.n, new ejc(List.of(ejc.a($$1.b(eiq.o), 2), ejc.a($$1.b(eiq.s), 3)), new ejr(27, 4, ejs.a, 30084232)));
+      $$0.a(eip.o, new ejc($$1.b(eiq.p), new ejr(2, 1, ejs.a, 14357921)));
+      $$0.a(eip.p, new ejc($$1.b(eiq.q), new ejr(20, 11, ejs.b, 10387313)));
+      $$0.a(eip.r, new ejc($$1.b(eiq.k), new ejq(32, 3, 128, $$2.b(avv.o))));
+      $$0.a(eip.s, new ejc($$1.b(eiq.G), new ejr(34, 8, ejs.a, 83469867)));
+      $$0.a(eip.t, new ejc($$1.b(eiq.H), new ejr(34, 12, ejs.a, 94251327)));
    }
 }

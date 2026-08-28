@@ -1,15 +1,15 @@
 import java.util.Optional;
 
-public record acn(int b, jj<bqy> c, int d, int e, Optional<evz> f) implements zb<abn> {
+public record acn(int b, jj<brb> c, int d, int e, Optional<ewf> f) implements zb<abn> {
    public static final ys<wf, acn> a = zb.a(acn::a, acn::new);
-   private static final ys<wf, jj<bqy>> g = yq.b(lr.s);
+   private static final ys<wf, jj<brb>> g = yq.b(lr.s);
 
-   public acn(bsd $$0, bqw $$1) {
-      this($$0.al(), $$1.k(), $$1.d() != null ? $$1.d().al() : -1, $$1.c() != null ? $$1.c().al() : -1, Optional.ofNullable($$1.i()));
+   public acn(bsg $$0, bqz $$1) {
+      this($$0.am(), $$1.k(), $$1.d() != null ? $$1.d().am() : -1, $$1.c() != null ? $$1.c().am() : -1, Optional.ofNullable($$1.i()));
    }
 
    private acn(wf $$0) {
-      this($$0.l(), g.decode($$0), a((vr)$$0), a((vr)$$0), $$0.b($$0x -> new evz($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
+      this($$0.l(), g.decode($$0), a((vr)$$0), a((vr)$$0), $$0.b($$0x -> new ewf($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
    }
 
    private static void a(vr $$0, int $$1) {
@@ -41,17 +41,17 @@ public record acn(int b, jj<bqy> c, int d, int e, Optional<evz> f) implements zb
       $$0.a(this);
    }
 
-   public bqw a(dcd $$0) {
+   public bqz a(dcf $$0) {
       if (this.f.isPresent()) {
-         return new bqw(this.c, this.f.get());
+         return new bqz(this.c, this.f.get());
       } else {
-         bsd $$1 = $$0.a(this.d);
-         bsd $$2 = $$0.a(this.e);
-         return new bqw(this.c, $$2, $$1);
+         bsg $$1 = $$0.a(this.d);
+         bsg $$2 = $$0.a(this.e);
+         return new bqz(this.c, $$2, $$1);
       }
    }
 
-   public jj<bqy> e() {
+   public jj<brb> e() {
       return this.c;
    }
 
@@ -63,7 +63,7 @@ public record acn(int b, jj<bqy> c, int d, int e, Optional<evz> f) implements zb
       return this.e;
    }
 
-   public Optional<evz> h() {
+   public Optional<ewf> h() {
       return this.f;
    }
 }

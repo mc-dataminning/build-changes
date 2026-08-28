@@ -1,110 +1,67 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
+import java.util.Comparator;
+import java.util.Objects;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
 
-public class grs implements grj {
-   private final List<Pair<Predicate<dsh>, grj>> g;
-   protected final boolean a;
-   protected final boolean b;
-   protected final boolean c;
-   protected final gpi d;
-   protected final gfg e;
-   protected final gfe f;
-   private final Map<dsh, BitSet> h = new Reference2ObjectOpenHashMap();
+public class grs {
+   public static final Comparator<grs> a = Comparator.<grs, akk>comparing(grs::a).thenComparing(grs::b);
+   private final akk b;
+   private final akk c;
+   @Nullable
+   private gel d;
 
-   public grs(List<Pair<Predicate<dsh>, grj>> $$0) {
-      this.g = $$0;
-      grj $$1 = (grj)$$0.iterator().next().getRight();
-      this.a = $$1.a();
-      this.b = $$1.b();
-      this.c = $$1.c();
-      this.d = $$1.e();
-      this.e = $$1.f();
-      this.f = $$1.g();
+   public grs(akk $$0, akk $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public List<geu> a(@Nullable dsh $$0, @Nullable jf $$1, aym $$2) {
-      if ($$0 == null) {
-         return Collections.emptyList();
-      } else {
-         BitSet $$3 = this.h.get($$0);
-         if ($$3 == null) {
-            $$3 = new BitSet();
-
-            for (int $$4 = 0; $$4 < this.g.size(); $$4++) {
-               Pair<Predicate<dsh>, grj> $$5 = this.g.get($$4);
-               if (((Predicate)$$5.getLeft()).test($$0)) {
-                  $$3.set($$4);
-               }
-            }
-
-            this.h.put($$0, $$3);
-         }
-
-         List<geu> $$6 = Lists.newArrayList();
-         long $$7 = $$2.g();
-
-         for (int $$8 = 0; $$8 < $$3.length(); $$8++) {
-            if ($$3.get($$8)) {
-               $$6.addAll(((grj)this.g.get($$8).getRight()).a($$0, $$1, aym.a($$7)));
-            }
-         }
-
-         return $$6;
-      }
-   }
-
-   @Override
-   public boolean a() {
-      return this.a;
-   }
-
-   @Override
-   public boolean b() {
+   public akk a() {
       return this.b;
    }
 
-   @Override
-   public boolean c() {
+   public akk b() {
       return this.c;
    }
 
-   @Override
-   public boolean d() {
-      return false;
+   public gpo c() {
+      return fft.Q().a(this.a()).apply(this.b());
    }
 
-   @Override
-   public gpi e() {
+   public gel a(Function<akk, gel> $$0) {
+      if (this.d == null) {
+         this.d = $$0.apply(this.b);
+      }
+
       return this.d;
    }
 
-   @Override
-   public gfg f() {
-      return this.e;
+   public faq a(ged $$0, Function<akk, gel> $$1) {
+      return this.c().a($$0.getBuffer(this.a($$1)));
+   }
+
+   public faq a(ged $$0, Function<akk, gel> $$1, boolean $$2) {
+      return this.c().a(gkk.c($$0, this.a($$1), true, $$2));
    }
 
    @Override
-   public gfe g() {
-      return this.f;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         grs $$1 = (grs)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
+      } else {
+         return false;
+      }
    }
 
-   public static class a {
-      private final List<Pair<Predicate<dsh>, grj>> a = Lists.newArrayList();
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c);
+   }
 
-      public void a(Predicate<dsh> $$0, grj $$1) {
-         this.a.add(Pair.of($$0, $$1));
-      }
-
-      public grj a() {
-         return new grs(this.a);
-      }
+   @Override
+   public String toString() {
+      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
    }
 }

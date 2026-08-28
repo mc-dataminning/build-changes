@@ -31,11 +31,11 @@ public abstract class ds<T extends ds.a> implements ap<T> {
       this.a.remove($$0);
    }
 
-   protected void a(aql $$0, Predicate<T> $$1) {
+   protected void a(aqn $$0, Predicate<T> $$1) {
       aks $$2 = $$0.Q();
       Set<ap.a<T>> $$3 = this.a.get($$2);
       if ($$3 != null && !$$3.isEmpty()) {
-         eqo $$4 = bu.b($$0, $$0);
+         equ $$4 = bu.b($$0, $$0);
          List<ap.a<T>> $$5 = null;
 
          for (ap.a<T> $$6 : $$3) {

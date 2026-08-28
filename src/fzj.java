@@ -1,67 +1,85 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
-import javax.annotation.Nullable;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public record fzj(String a, @Nullable fzj.a b) {
-   public static fzj a() {
-      return a(null);
+public interface fzj {
+   static fzj a(fzp $$0, UserApiService $$1) {
+      return new fzj.b($$0, $$1);
    }
 
-   public static fzj a(String $$0) {
-      return a(new fzj.a.b($$0));
+   CompletableFuture<Unit> a(UUID var1, fzr var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   public static fzj a(fbn $$0) {
-      return a(new fzj.a.a($$0));
+   public static class a extends xu {
+      public a(wu $$0, Throwable $$1) {
+         super($$0, $$1);
+      }
    }
 
-   public static fzj a(@Nullable fzj.a $$0) {
-      return new fzj(g(), $$0);
-   }
+   public static record b(fzp a, UserApiService b) implements fzj {
+      private static final wu c = wu.c("gui.abuseReport.send.service_unavailable");
+      private static final wu d = wu.c("gui.abuseReport.send.http_error");
+      private static final wu e = wu.c("gui.abuseReport.send.json_error");
 
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, fzr $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
 
-   @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof fzj.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
-   }
-
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof fzj.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
-   }
-
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("24w18a");
-      if (ffn.e().a()) {
-         $$0.append(" (modded)");
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               wu $$5 = this.a(var7);
+               throw new CompletionException(new fzj.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               wu $$7 = this.a(var8);
+               throw new CompletionException(new fzj.a($$7, var8));
+            }
+         }, ac.h());
       }
 
-      return $$0.toString();
-   }
-
-   public String e() {
-      return this.a;
-   }
-
-   @Nullable
-   public fzj.a f() {
-      return this.b;
-   }
-
-   public interface a {
-      public static record a(long a, int b) implements fzj.a {
-         public a(fbn $$0) {
-            this($$0.a, $$0.n);
-         }
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
       }
 
-      public static record b(String a) implements fzj.a {
+      private wu a(MinecraftClientHttpException $$0) {
+         return wu.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private wu a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new MatchException(null, null);
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public fzp c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
       }
    }
 }

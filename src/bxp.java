@@ -1,46 +1,95 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class bxp {
-   public static bus<bth> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return bye.a(
-         (Function<bye.b<bth>, ? extends App<bye.c<bth>, byh<bth>>>)($$3 -> $$3.group($$3.c(ccc.o), $$3.c(ccc.m), $$3.a(ccc.n))
-               .apply(
-                  $$3,
-                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                        if ($$5x.b_($$6.dp()).a(awa.a)) {
-                           return false;
-                        } else if ($$7 < $$2.getValue()) {
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        } else {
-                           ewe $$8 = ewe.a($$6);
-                           ja $$9 = $$6.dp();
-                           ja.a $$10 = new ja.a();
+public class bxp extends buu<clx> {
+   private Set<ctx> c = ImmutableSet.of();
 
-                           label45:
-                           for (ja $$11 : ja.a($$9, $$0, $$0, $$0)) {
-                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
-                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
-                                 && !$$5x.a_($$10.a($$11, jf.a)).b($$5x, $$11, $$8).c()) {
-                                 for (jf $$12 : jf.c.a) {
-                                    $$10.a($$11, $$12);
-                                    if ($$5x.a_($$10).i() && $$5x.a_($$10.c(jf.a)).a(dfh.G)) {
-                                       $$5.a(new buu($$11));
-                                       $$4.a(new ccf(new buu($$11), $$1, 0));
-                                       break label45;
-                                    }
-                                 }
-                              }
-                           }
+   public bxp() {
+      super(ImmutableMap.of(ccf.q, ccg.a, ccf.h, ccg.a));
+   }
 
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        }
-                     }
-               ))
-      );
+   protected boolean a(aqm $$0, clx $$1) {
+      return buw.a($$1.dU(), ccf.q, bsm.bj);
+   }
+
+   protected boolean a(aqm $$0, clx $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(aqm $$0, clx $$1, long $$2) {
+      clx $$3 = (clx)$$1.dU().c(ccf.q).get();
+      buw.a($$1, $$3, 0.5F, 2);
+      this.c = a($$1, $$3);
+   }
+
+   protected void c(aqm $$0, clx $$1, long $$2) {
+      clx $$3 = (clx)$$1.dU().c(ccf.q).get();
+      if (!($$1.g($$3) > 5.0)) {
+         buw.a($$1, $$3, 0.5F, 2);
+         $$1.a($$0, $$3, $$2);
+         if ($$1.gG() && ($$1.gz().b() == cma.g || $$3.gH())) {
+            a($$1, clx.cd.keySet(), $$3);
+         }
+
+         if ($$3.gz().b() == cma.g && $$1.y().a_(cuf.pw) > cuf.pw.q() / 2) {
+            a($$1, ImmutableSet.of(cuf.pw), $$3);
+         }
+
+         if (!this.c.isEmpty() && $$1.y().a(this.c)) {
+            a($$1, this.c, $$3);
+         }
+      }
+   }
+
+   protected void d(aqm $$0, clx $$1, long $$2) {
+      $$1.dU().b(ccf.q);
+   }
+
+   private static Set<ctx> a(clx $$0, clx $$1) {
+      ImmutableSet<ctx> $$2 = $$1.gz().b().d();
+      ImmutableSet<ctx> $$3 = $$0.gz().b().d();
+      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
+   }
+
+   private static void a(clx $$0, Set<ctx> $$1, btb $$2) {
+      bqp $$3 = $$0.y();
+      cuc $$4 = cuc.l;
+      int $$5 = 0;
+
+      while ($$5 < $$3.b()) {
+         cuc $$6;
+         ctx $$7;
+         int $$8;
+         label28: {
+            $$6 = $$3.a($$5);
+            if (!$$6.e()) {
+               $$7 = $$6.g();
+               if ($$1.contains($$7)) {
+                  if ($$6.H() > $$6.j() / 2) {
+                     $$8 = $$6.H() / 2;
+                     break label28;
+                  }
+
+                  if ($$6.H() > 24) {
+                     $$8 = $$6.H() - 24;
+                     break label28;
+                  }
+               }
+            }
+
+            $$5++;
+            continue;
+         }
+
+         $$6.h($$8);
+         $$4 = new cuc($$7, $$8);
+         break;
+      }
+
+      if (!$$4.e()) {
+         buw.a($$0, $$4, $$2.do());
+      }
    }
 }

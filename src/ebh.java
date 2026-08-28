@@ -1,26 +1,39 @@
 import com.mojang.serialization.Codec;
 
-public class ebh extends ebe<edm> {
-   public ebh(Codec<edm> $$0) {
+public class ebh extends ebk<edn> {
+   public ebh(Codec<edn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebg<edm> $$0) {
+   public boolean a(ebm<edn> $$0) {
       ja $$1 = $$0.e();
-      edm $$2 = $$0.f();
-      dcz $$3 = $$0.b();
-      ja.a $$4 = new ja.a();
+      ddb $$2 = $$0.b();
+      edn $$3 = $$0.f();
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.I_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).i()) {
-               $$3.a($$4, $$2.c, 2);
-            }
+      for (ja $$4 : ja.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            ja $$9 = $$4.i();
+            this.a($$2, $$9, dfj.kF.o());
+            $$3.b().ifPresent($$3x -> {
+               dpp $$4x = $$2.c_($$9);
+               if ($$4x instanceof drg $$5x) {
+                  $$5x.a($$3x, $$3.c());
+                  $$4x.e();
+               }
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, dfj.a.o());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, dfj.F.o());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, dfj.F.o());
+         } else {
+            this.a($$2, $$4, dfj.a.o());
          }
       }
 

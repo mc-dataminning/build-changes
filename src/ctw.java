@@ -1,65 +1,27 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+public interface ctw {
+   int a = 256;
+   int b = 140;
+   akj<ctu> c = a("ponder_goat_horn");
+   akj<ctu> d = a("sing_goat_horn");
+   akj<ctu> e = a("seek_goat_horn");
+   akj<ctu> f = a("feel_goat_horn");
+   akj<ctu> g = a("admire_goat_horn");
+   akj<ctu> h = a("call_goat_horn");
+   akj<ctu> i = a("yearn_goat_horn");
+   akj<ctu> j = a("dream_goat_horn");
 
-public class ctw {
-   private final Map<ctv, ctw.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(ctv $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   private static akj<ctu> a(String $$0) {
+      return akj.a(lr.I, new akk($$0));
    }
 
-   public float a(ctv $$0, float $$1) {
-      ctw.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return aye.a($$4 / $$3, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<ctv, ctw.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<ctv, ctw.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
-            }
-         }
-      }
-   }
-
-   public void a(ctv $$0, int $$1) {
-      this.a.put($$0, new ctw.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void b(ctv $$0) {
-      this.a.remove($$0);
-      this.c($$0);
-   }
-
-   protected void b(ctv $$0, int $$1) {
-   }
-
-   protected void c(ctv $$0) {
-   }
-
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   static ctu a(jw<ctu> $$0) {
+      jw.a($$0, c, new ctu((jj<avg>)avh.mF.get(0), 140, 256.0F));
+      jw.a($$0, d, new ctu((jj<avg>)avh.mF.get(1), 140, 256.0F));
+      jw.a($$0, e, new ctu((jj<avg>)avh.mF.get(2), 140, 256.0F));
+      jw.a($$0, f, new ctu((jj<avg>)avh.mF.get(3), 140, 256.0F));
+      jw.a($$0, g, new ctu((jj<avg>)avh.mF.get(4), 140, 256.0F));
+      jw.a($$0, h, new ctu((jj<avg>)avh.mF.get(5), 140, 256.0F));
+      jw.a($$0, i, new ctu((jj<avg>)avh.mF.get(6), 140, 256.0F));
+      return jw.a($$0, j, new ctu((jj<avg>)avh.mF.get(7), 140, 256.0F));
    }
 }

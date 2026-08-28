@@ -1,20 +1,14 @@
-public class grf {
-   public static final grg a = new grg();
-   public static final boolean b = false;
-   public static final boolean c = false;
-   private final boolean d;
-   private final boolean e;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public grf(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+public record grf(grg d) {
+   public static final grf a = new grf(grg.b);
+   public static final Codec<grf> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(grg.a.optionalFieldOf("scaling", grg.b).forGetter(grf::a)).apply($$0, grf::new)
+   );
+   public static final asw<grf> c = asw.a("gui", b);
 
-   public boolean a() {
+   public grg a() {
       return this.d;
-   }
-
-   public boolean b() {
-      return this.e;
    }
 }

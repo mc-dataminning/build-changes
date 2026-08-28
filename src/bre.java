@@ -1,27 +1,46 @@
-class bre extends brj {
-   protected bre(brk $$0, int $$1) {
-      super($$0, $$1);
-   }
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
+public record bre(String i) {
+   public static final bre a = new bre("generic");
+   public static final bre b = new bre("ladder");
+   public static final bre c = new bre("vines");
+   public static final bre d = new bre("weeping_vines");
+   public static final bre e = new bre("twisting_vines");
+   public static final bre f = new bre("scaffolding");
+   public static final bre g = new bre("other_climbable");
+   public static final bre h = new bre("water");
 
-   @Override
-   public boolean a(bsy $$0, int $$1) {
-      if ($$0 instanceof aql $$2 && !$$2.N_()) {
-         aqk $$3 = $$2.z();
-         if ($$3.al() != bqa.a && $$3.c($$2.dp())) {
-            cns $$4 = $$3.d($$2.dp());
-            if ($$4 == null || $$4.m() < $$4.l()) {
-               $$2.b(new brl(brn.I, 600, $$1));
-               $$2.c($$2.dp());
-               return false;
-            }
-         }
+   public static bre a(dsk $$0) {
+      if ($$0.a(dfj.cO) || $$0.a(avw.P)) {
+         return b;
+      } else if ($$0.a(dfj.ff)) {
+         return c;
+      } else if ($$0.a(dfj.oz) || $$0.a(dfj.oA)) {
+         return d;
+      } else if ($$0.a(dfj.oB) || $$0.a(dfj.oC)) {
+         return e;
+      } else {
+         return $$0.a(dfj.nS) ? f : g;
       }
+   }
 
-      return true;
+   @Nullable
+   public static bre a(btb $$0) {
+      Optional<ja> $$1 = $$0.eJ();
+      if ($$1.isPresent()) {
+         dsk $$2 = $$0.dQ().a_($$1.get());
+         return a($$2);
+      } else {
+         return $$0.bf() ? h : null;
+      }
+   }
+
+   public String a() {
+      return "death.fell.accident." + this.i;
+   }
+
+   public String b() {
+      return this.i;
    }
 }

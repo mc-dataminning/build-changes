@@ -1,27 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bvz {
-   private static final int a = 1;
+public class bvz extends buu<clx> {
+   private final float c;
 
-   public static bus<bsy> a(float $$0) {
-      return bye.a(
-         (Function<bye.b<bsy>, ? extends App<bye.c<bsy>, byh<bsy>>>)($$1 -> $$1.group($$1.a(ccc.n), $$1.c(ccc.m), $$1.b(ccc.s))
-               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bR()) {
-                        return false;
-                     } else {
-                        bsd $$8 = $$1.b($$4);
-                        if ($$8.a($$6, 1.0)) {
-                           $$6.n($$8);
-                        } else {
-                           $$2.a(new bvc($$8, true));
-                           $$3.a(new ccf(new bvc($$8, false), $$0, 1));
-                        }
+   public bvz(float $$0) {
+      super(ImmutableMap.of(ccf.m, ccg.c, ccf.n, ccg.c), Integer.MAX_VALUE);
+      this.c = $$0;
+   }
 
-                        return true;
-                     }
-                  }))
-      );
+   protected boolean a(aqm $$0, clx $$1) {
+      cmk $$2 = $$1.go();
+      return $$1.bE() && $$2 != null && !$$1.bf() && !$$1.U && $$1.g($$2) <= 16.0 && $$2.cd != null;
+   }
+
+   protected boolean a(aqm $$0, clx $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(aqm $$0, clx $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(aqm $$0, clx $$1, long $$2) {
+      bud<?> $$3 = $$1.dU();
+      $$3.b(ccf.m);
+      $$3.b(ccf.n);
+   }
+
+   protected void d(aqm $$0, clx $$1, long $$2) {
+      this.a($$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   private void a(clx $$0) {
+      bud<?> $$1 = $$0.dU();
+      $$1.a(ccf.m, new cci(new bvf($$0.go(), false), this.c, 2));
+      $$1.a(ccf.n, new bvf($$0.go(), true));
    }
 }

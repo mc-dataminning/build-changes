@@ -18,22 +18,22 @@ public record bs(
             .apply($$0, bs::new)
    );
 
-   public boolean a(bsd $$0) {
-      if (this.b.isPresent() && $$0.aE() != this.b.get()) {
+   public boolean a(bsg $$0) {
+      if (this.b.isPresent() && $$0.aF() != this.b.get()) {
          return false;
-      } else if (this.c.isPresent() && $$0.bQ() != this.c.get()) {
+      } else if (this.c.isPresent() && $$0.bR() != this.c.get()) {
          return false;
-      } else if (this.d.isPresent() && $$0.ca() != this.d.get()) {
+      } else if (this.d.isPresent() && $$0.cb() != this.d.get()) {
          return false;
-      } else if (this.e.isPresent() && $$0.cb() != this.e.get()) {
+      } else if (this.e.isPresent() && $$0.cc() != this.e.get()) {
          return false;
-      } else if (this.f.isPresent() && $$0.cc() != this.f.get()) {
+      } else if (this.f.isPresent() && $$0.cd() != this.f.get()) {
          return false;
       } else {
          if (this.g.isPresent()) {
             boolean var10000;
             label53: {
-               if ($$0 instanceof bsy $$1 && ($$1.fA() || $$1 instanceof cmh $$2 && $$2.fZ().b)) {
+               if ($$0 instanceof btb $$1 && ($$1.fB() || $$1 instanceof cmk $$2 && $$2.ga().b)) {
                   var10000 = true;
                   break label53;
                }
@@ -47,7 +47,7 @@ public record bs(
             }
          }
 
-         if (this.h.isPresent() && $$0 instanceof bsy $$4 && $$4.p_() != this.h.get()) {
+         if (this.h.isPresent() && $$0 instanceof btb $$4 && $$4.p_() != this.h.get()) {
             return false;
          }
 

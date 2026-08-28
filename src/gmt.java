@@ -1,24 +1,17 @@
-public class gmt extends gns<cjd, fug<cjd>> {
-   private final ger a;
+public class gmt extends gkd<ckk, fxh<ckk>> {
+   private static final akk a = new akk("textures/entity/zombie_villager/zombie_villager.png");
 
-   public gmt(glc<cjd, fug<cjd>> $$0, ger $$1) {
-      super($$0);
-      this.a = $$1;
+   public gmt(gjm.a $$0) {
+      super($$0, new fxh<>($$0.a(fxn.ck)), 0.5F);
+      this.a(new gno<>(this, new fxh($$0.a(fxn.cl)), new fxh($$0.a(fxn.cm)), $$0.g()));
+      this.a(new goj<>(this, $$0.e(), "zombie_villager"));
    }
 
-   public void a(fag $$0, gdx $$1, int $$2, cjd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      dsh $$10 = $$3.gn();
-      if ($$10 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$11 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$10, $$0, $$1, $$2, goz.d);
-         $$0.b();
-      }
+   public akk a(ckk $$0) {
+      return a;
+   }
+
+   protected boolean b(ckk $$0) {
+      return super.a($$0) || $$0.gy();
    }
 }

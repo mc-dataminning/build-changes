@@ -1,13 +1,15 @@
-public interface btj extends bti {
-   void b(int var1);
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   boolean a();
+public interface btj {
+   @Nullable
+   UUID W_();
 
-   void c(int var1);
+   dbw e();
 
-   void b();
-
-   default int c() {
-      return 0;
+   @Nullable
+   default btb P_() {
+      UUID $$0 = this.W_();
+      return $$0 == null ? null : this.e().b($$0);
    }
 }

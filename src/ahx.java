@@ -1,17 +1,17 @@
 public class ahx implements zb<agb> {
    public static final ys<vr, ahx> a = zb.a(ahx::a, ahx::new);
-   private final evv b;
-   private final bqc c;
+   private final ewb b;
+   private final bqf c;
    private final int d;
 
-   public ahx(bqc $$0, evv $$1, int $$2) {
+   public ahx(bqf $$0, ewb $$1, int $$2) {
       this.c = $$0;
       this.b = $$1;
       this.d = $$2;
    }
 
    private ahx(vr $$0) {
-      this.c = $$0.b(bqc.class);
+      this.c = $$0.b(bqf.class);
       this.b = $$0.v();
       this.d = $$0.l();
    }
@@ -31,11 +31,11 @@ public class ahx implements zb<agb> {
       $$0.a(this);
    }
 
-   public bqc b() {
+   public bqf b() {
       return this.c;
    }
 
-   public evv e() {
+   public ewb e() {
       return this.b;
    }
 

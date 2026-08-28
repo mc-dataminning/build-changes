@@ -21,11 +21,11 @@ public class gm implements ArgumentType<go> {
    }
 
    public static ja a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
-      aqk $$2 = ((eq)$$0.getSource()).e();
+      aqm $$2 = ((eq)$$0.getSource()).e();
       return a($$0, $$2, $$1);
    }
 
-   public static ja a(CommandContext<eq> $$0, aqk $$1, String $$2) throws CommandSyntaxException {
+   public static ja a(CommandContext<eq> $$0, aqm $$1, String $$2) throws CommandSyntaxException {
       ja $$3 = b($$0, $$2);
       if (!$$1.B($$3)) {
          throw a.create();
@@ -42,7 +42,7 @@ public class gm implements ArgumentType<go> {
 
    public static ja c(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       ja $$2 = b($$0, $$1);
-      if (!dcd.l($$2)) {
+      if (!dcf.l($$2)) {
          throw c.create();
       } else {
          return $$2;

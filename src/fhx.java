@@ -1,50 +1,25 @@
-public class fhx extends fig {
-   private static final int a = 4;
-   private final boolean b;
-   private final int c;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public fhx(int $$0, wu $$1, fgx $$2) {
-      this($$0, $$1, $$2, 4);
+public class fhx {
+   private static final axs a = axs.codepoint(32, xr.a);
+
+   private static String a(String $$0) {
+      return fft.Q().m.K().c() ? $$0 : n.a($$0);
    }
 
-   public fhx(int $$0, wu $$1, fgx $$2, int $$3) {
-      this($$0, $$1, $$2, true, $$3);
-   }
-
-   public fhx(int $$0, wu $$1, fgx $$2, boolean $$3, int $$4) {
-      super($$1, $$2);
-      this.d($$0);
-      this.b(true);
-      this.j = true;
-      this.b = $$3;
-      this.c = $$4;
-   }
-
-   public void b(int $$0) {
-      this.d($$0 - this.c * 4);
-   }
-
-   @Override
-   protected void a(fli $$0) {
-      $$0.a(flh.a, this.z());
-   }
-
-   @Override
-   public void b(fgz $$0, int $$1, int $$2, float $$3) {
-      if (this.aJ_() || this.b) {
-         int $$4 = this.D() - this.c;
-         int $$5 = this.E() - this.c;
-         int $$6 = this.y() + this.c * 2;
-         int $$7 = this.w() + this.c * 2;
-         int $$8 = this.b ? (this.aJ_() ? -1 : -6250336) : -1;
-         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
-         $$0.b($$4, $$5, $$6, $$7, $$8);
-      }
-
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(gub $$0) {
+   public static List<axs> a(wz $$0, int $$1, fhd $$2) {
+      ffj $$3 = new ffj();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(wz.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, xr.a);
+      List<axs> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, xr.a, ($$1x, $$2x) -> {
+         axs $$3x = ts.a().a($$1x);
+         $$4.add($$2x ? axs.composite(a, $$3x) : $$3x);
+      });
+      return (List<axs>)($$4.isEmpty() ? Lists.newArrayList(new axs[]{axs.a}) : $$4);
    }
 }

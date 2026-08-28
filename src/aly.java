@@ -16,7 +16,7 @@ public class aly {
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.clone.overlap"));
    private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("commands.clone.toobig", $$0, $$1));
    private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wu.c("commands.clone.failed"));
-   public static final Predicate<dsl> a = $$0 -> !$$0.a().i();
+   public static final Predicate<dso> a = $$0 -> !$$0.a().i();
 
    public static void a(CommandDispatcher<eq> $$0, em $$1) {
       $$0.register(
@@ -26,7 +26,7 @@ public class aly {
       );
    }
 
-   private static ArgumentBuilder<eq, ?> a(em $$0, aly.c<CommandContext<eq>, aqk> $$1) {
+   private static ArgumentBuilder<eq, ?> a(em $$0, aly.c<CommandContext<eq>, aqm> $$1) {
       return er.a("begin", gm.a())
          .then(
             ((RequiredArgumentBuilder)er.a("end", gm.a()).then(a($$0, $$1, $$0x -> ((eq)$$0x.getSource()).e())))
@@ -34,12 +34,12 @@ public class aly {
          );
    }
 
-   private static aly.d a(CommandContext<eq> $$0, aqk $$1, String $$2) throws CommandSyntaxException {
+   private static aly.d a(CommandContext<eq> $$0, aqm $$1, String $$2) throws CommandSyntaxException {
       ja $$3 = gm.a($$0, $$1, $$2);
       return new aly.d($$1, $$3);
    }
 
-   private static ArgumentBuilder<eq, ?> a(em $$0, aly.c<CommandContext<eq>, aqk> $$1, aly.c<CommandContext<eq>, aqk> $$2) {
+   private static ArgumentBuilder<eq, ?> a(em $$0, aly.c<CommandContext<eq>, aqm> $$1, aly.c<CommandContext<eq>, aqm> $$2) {
       aly.c<CommandContext<eq>, aly.d> $$3 = $$1x -> a($$1x, $$1.apply($$1x), "begin");
       aly.c<CommandContext<eq>, aly.d> $$4 = $$1x -> a($$1x, $$1.apply($$1x), "end");
       aly.c<CommandContext<eq>, aly.d> $$5 = $$1x -> a($$1x, $$2.apply($$1x), "destination");
@@ -82,7 +82,7 @@ public class aly {
       aly.c<CommandContext<eq>, aly.d> $$0,
       aly.c<CommandContext<eq>, aly.d> $$1,
       aly.c<CommandContext<eq>, aly.d> $$2,
-      aly.c<CommandContext<eq>, Predicate<dsl>> $$3,
+      aly.c<CommandContext<eq>, Predicate<dso>> $$3,
       ArgumentBuilder<eq, ?> $$4
    ) {
       return $$4.then(er.a("force").executes($$4x -> a((eq)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), aly.e.a)))
@@ -90,20 +90,20 @@ public class aly {
          .then(er.a("normal").executes($$4x -> a((eq)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), aly.e.c)));
    }
 
-   private static int a(eq $$0, aly.d $$1, aly.d $$2, aly.d $$3, Predicate<dsl> $$4, aly.e $$5) throws CommandSyntaxException {
+   private static int a(eq $$0, aly.d $$1, aly.d $$2, aly.d $$3, Predicate<dso> $$4, aly.e $$5) throws CommandSyntaxException {
       ja $$6 = $$1.b();
       ja $$7 = $$2.b();
-      eii $$8 = eii.a($$6, $$7);
+      eio $$8 = eio.a($$6, $$7);
       ja $$9 = $$3.b();
       ja $$10 = $$9.a($$8.c());
-      eii $$11 = eii.a($$9, $$10);
-      aqk $$12 = $$1.a();
-      aqk $$13 = $$3.a();
+      eio $$11 = eio.a($$9, $$10);
+      aqm $$12 = $$1.a();
+      aqm $$13 = $$3.a();
       if (!$$5.a() && $$12 == $$13 && $$11.a($$8)) {
          throw b.create();
       } else {
          int $$14 = $$8.d() * $$8.e() * $$8.f();
-         int $$15 = $$0.e().ab().c(dbz.z);
+         int $$15 = $$0.e().ab().c(dcb.z);
          if ($$14 > $$15) {
             throw c.create($$15, $$14);
          } else if ($$12.a($$6, $$7) && $$13.a($$9, $$10)) {
@@ -118,10 +118,10 @@ public class aly {
                   for (int $$23 = $$8.h(); $$23 <= $$8.k(); $$23++) {
                      ja $$24 = new ja($$23, $$22, $$21);
                      ja $$25 = $$24.a((ke)$$20);
-                     dsl $$26 = new dsl($$12, $$24, false);
-                     dsh $$27 = $$26.a();
+                     dso $$26 = new dso($$12, $$24, false);
+                     dsk $$27 = $$26.a();
                      if ($$4.test($$26)) {
-                        dpn $$28 = $$12.c_($$24);
+                        dpp $$28 = $$12.c_($$24);
                         if ($$28 != null) {
                            aly.a $$29 = new aly.a($$28.e($$0.v()), $$28.t());
                            $$17.add(new aly.b($$25, $$27, $$29));
@@ -140,13 +140,13 @@ public class aly {
 
             if ($$5 == aly.e.b) {
                for (ja $$30 : $$19) {
-                  dpn $$31 = $$12.c_($$30);
-                  bpu.a_($$31);
-                  $$12.a($$30, dfh.hW.o(), 2);
+                  dpp $$31 = $$12.c_($$30);
+                  bpx.a_($$31);
+                  $$12.a($$30, dfj.hW.o(), 2);
                }
 
                for (ja $$32 : $$19) {
-                  $$12.a($$32, dfh.a.o(), 3);
+                  $$12.a($$32, dfj.a.o(), 3);
                }
             }
 
@@ -157,9 +157,9 @@ public class aly {
             List<aly.b> $$34 = Lists.reverse($$33);
 
             for (aly.b $$35 : $$34) {
-               dpn $$36 = $$13.c_($$35.a);
-               bpu.a_($$36);
-               $$13.a($$35.a, dfh.hW.o(), 2);
+               dpp $$36 = $$13.c_($$35.a);
+               bpx.a_($$36);
+               $$13.a($$35.a, dfj.hW.o(), 2);
             }
 
             int $$37 = 0;
@@ -171,7 +171,7 @@ public class aly {
             }
 
             for (aly.b $$39 : $$17) {
-               dpn $$40 = $$13.c_($$39.a);
+               dpp $$40 = $$13.c_($$39.a);
                if ($$39.c != null && $$40 != null) {
                   $$40.d($$39.c.a, $$13.H_());
                   $$40.a($$39.c.b);
@@ -202,7 +202,7 @@ public class aly {
    static record a(tx a, kj b) {
    }
 
-   static record b(ja a, dsh b, @Nullable aly.a c) {
+   static record b(ja a, dsk b, @Nullable aly.a c) {
    }
 
    @FunctionalInterface
@@ -210,7 +210,7 @@ public class aly {
       R apply(T var1) throws CommandSyntaxException;
    }
 
-   static record d(aqk a, ja b) {
+   static record d(aqm a, ja b) {
    }
 
    static enum e {

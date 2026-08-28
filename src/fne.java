@@ -1,96 +1,121 @@
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fne extends fnd {
-   private static final int a = 1024;
-   private static final int b = 65535;
-   private static final wu c = wu.c("selectWorld.allowCommands.new");
-   private static final wu q = wu.c("selectWorld.gameMode");
-   private static final wu r = wu.c("lanServer.otherPlayers");
-   private static final wu s = wu.c("lanServer.port");
-   private static final wu u = wu.a("lanServer.port.unavailable.new", 1024, 65535);
-   private static final wu v = wu.a("lanServer.port.invalid.new", 1024, 65535);
-   private static final int w = 16733525;
-   private final fnd x;
-   private dca y = dca.a;
-   private boolean z;
-   private int A = axv.a();
+public class fne extends fnj {
+   private static final akk a = new akk("icon/draft_report");
+   private static final int b = 2;
+   private static final int c = 50;
+   private static final int q = 4;
+   private static final int r = 204;
+   private static final int s = 98;
+   private static final wu u = wu.c("menu.returnToGame");
+   private static final wu v = wu.c("gui.advancements");
+   private static final wu w = wu.c("gui.stats");
+   private static final wu x = wu.c("menu.sendFeedback");
+   private static final wu y = wu.c("menu.reportBugs");
+   private static final wu z = wu.c("menu.options");
+   private static final wu A = wu.c("menu.shareToLan");
+   private static final wu B = wu.c("menu.playerReporting");
+   private static final wu C = wu.c("menu.returnToMenu");
+   private static final wu D = wu.c("menu.savingLevel");
+   private static final wu E = wu.c("menu.game");
+   private static final wu F = wu.c("menu.paused");
+   private final boolean G;
    @Nullable
-   private fhv B;
+   private fhs H;
 
-   public fne(fnd $$0) {
-      super(wu.c("lanServer.title"));
-      this.x = $$0;
+   public fne(boolean $$0) {
+      super($$0 ? E : F);
+      this.G = $$0;
+   }
+
+   public boolean m() {
+      return this.G;
    }
 
    @Override
-   protected void aO_() {
-      gtk $$0 = this.l.V();
-      this.y = $$0.u_();
-      this.z = $$0.bb().m();
-      this.c(fht.a(dca::e).a(dca.a, dca.d, dca.b, dca.c).a(this.y).a(this.m / 2 - 155, 100, 150, 20, q, ($$0x, $$1x) -> this.y = $$1x));
-      this.c(fht.b(this.z).a(this.m / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.z = $$1x));
-      fhm $$1 = fhm.a(wu.c("lanServer.start"), $$1x -> {
+   protected void aP_() {
+      if (this.G) {
+         this.E();
+      }
+
+      this.c(new fiz(0, this.G ? 40 : 10, this.m, 9, this.k, this.o));
+   }
+
+   private void E() {
+      fle $$0 = new fle();
+      $$0.c().a(4, 4, 4, 0);
+      fle.b $$1 = $$0.d(2);
+      $$1.a(fhs.a(u, $$0x -> {
          this.l.a(null);
-         wu $$2;
-         if ($$0.a(this.y, this.z, this.A)) {
-            $$2 = ank.a(this.A);
-         } else {
-            $$2 = wu.c("commands.publish.failed");
-         }
-
-         this.l.l.d().a($$2);
-         this.l.d();
-      }).a(this.m / 2 - 155, this.n - 28, 150, 20).a();
-      this.B = new fhv(this.o, this.m / 2 - 75, 160, 150, 20, wu.c("lanServer.port"));
-      this.B.b($$1x -> {
-         wu $$2 = this.a($$1x);
-         this.B.c(wu.b(this.A + "").a(n.i));
-         if ($$2 == null) {
-            this.B.g(14737632);
-            this.B.a(null);
-            $$1.j = true;
-         } else {
-            this.B.g(16733525);
-            this.B.a(fix.a($$2));
-            $$1.j = false;
-         }
-      });
-      this.B.c(wu.b(this.A + "").a(n.i));
-      this.c(this.B);
-      this.c($$1);
-      this.c(fhm.a(wt.e, $$0x -> this.d()).a(this.m / 2 + 5, this.n - 28, 150, 20).a());
-   }
-
-   @Override
-   public void d() {
-      this.l.a(this.x);
-   }
-
-   @Nullable
-   private wu a(String $$0) {
-      if ($$0.isBlank()) {
-         this.A = axv.a();
-         return null;
+         this.l.n.i();
+      }).a(204).a(), 2, $$0.b().c(50));
+      $$1.a(this.a(v, () -> new fnt(this.l.s.cB.p(), this)));
+      $$1.a(this.a(w, () -> new fnn(this, this.l.s.j())));
+      $$1.a(this.a(x, aa.b().g() ? "https://aka.ms/javafeedback?ref=game" : "https://aka.ms/snapshotfeedback?ref=game"));
+      $$1.a(this.a(y, "https://aka.ms/snapshotbugs?ref=game")).j = !aa.b().d().a();
+      $$1.a(this.a(z, () -> new fqk(this, this.l.m)));
+      if (this.l.U() && !this.l.V().r()) {
+         $$1.a(this.a(A, () -> new fnk(this)));
       } else {
-         try {
-            this.A = Integer.parseInt($$0);
-            if (this.A < 1024 || this.A > 65535) {
-               return v;
-            } else {
-               return !axv.a(this.A) ? u : null;
-            }
-         } catch (NumberFormatException var3) {
-            this.A = axv.a();
-            return v;
-         }
+         $$1.a(this.a(B, () -> new fsa(this)));
+      }
+
+      wu $$2 = this.l.T() ? C : wt.p;
+      this.H = $$1.a(fhs.a($$2, $$0x -> {
+         $$0x.j = false;
+         this.l.aZ().a(this.l, this, this::F, true);
+      }).a(204).a(), 2);
+      $$0.a();
+      fld.a($$0, 0, 0, this.m, this.n, 0.5F, 0.25F);
+      $$0.a(this::c);
+   }
+
+   private void F() {
+      boolean $$0 = this.l.T();
+      fyx $$1 = this.l.S();
+      this.l.r.Y();
+      if ($$0) {
+         this.l.b(new fmu(D));
+      } else {
+         this.l.y();
+      }
+
+      fnl $$2 = new fnl();
+      if ($$0) {
+         this.l.a($$2);
+      } else if ($$1 != null && $$1.e()) {
+         this.l.a(new fax($$2));
+      } else {
+         this.l.a(new fpy($$2));
       }
    }
 
    @Override
-   public void a(fgz $$0, int $$1, int $$2, float $$3) {
+   public void e() {
+      super.e();
+   }
+
+   @Override
+   public void a(fhf $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 50, 16777215);
-      $$0.a(this.o, r, this.m / 2, 82, 16777215);
-      $$0.a(this.o, s, this.m / 2, 142, 16777215);
+      if (this.G && this.l != null && this.l.aZ().c() && this.H != null) {
+         $$0.a(a, this.H.D() + this.H.y() - 17, this.H.E() + 3, 15, 15);
+      }
+   }
+
+   @Override
+   public void b(fhf $$0, int $$1, int $$2, float $$3) {
+      if (this.G) {
+         super.b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private fhs a(wu $$0, Supplier<fnj> $$1) {
+      return fhs.a($$0, $$1x -> this.l.a($$1.get())).a(98).a();
+   }
+
+   private fhs a(wu $$0, String $$1) {
+      return fhs.a($$0, fmg.b(this, $$1)).a(98).a();
    }
 }

@@ -1,31 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
-import java.util.List;
 import java.util.function.Function;
 
 public class bvn {
-   public static bus<bth> a(float $$0) {
-      return bye.a(
-         (Function<bye.b<bth>, ? extends App<bye.c<bth>, byh<bth>>>)($$1 -> $$1.group($$1.c(ccc.m))
-               .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.h($$3.dp())) {
-                           return false;
-                        } else {
-                           ja $$5 = $$3.dp();
-                           List<ja> $$6 = ja.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(ja::i).collect(ac.b());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.h($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new ccf($$2x, $$0, 0)));
-                           return true;
-                        }
+   private static ja a(btd $$0, ja $$1) {
+      ayo $$2 = $$0.dQ().z;
+      return $$1.b(a($$2), 0, a($$2));
+   }
+
+   private static int a(ayo $$0) {
+      return $$0.a(3) - 1;
+   }
+
+   public static <E extends btd> bwf<E> a(ccf<ja> $$0, int $$1, float $$2) {
+      return byh.a(
+         (Function<byh.b<E>, ? extends App<byh.c<E>, byk<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(ccf.o), $$3.c(ccf.m), $$3.a(ccf.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     ja $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dq(), (double)$$1);
+                     if (!$$8) {
+                        buw.a($$5x, a($$5x, $$7), $$2, $$1);
                      }
-               ))
+
+                     return true;
+                  }))
       );
    }
 }

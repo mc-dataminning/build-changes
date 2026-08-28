@@ -1,22 +1,19 @@
-public interface cyy extends cyg<cyz> {
+public record cyy(cuc a) implements cyl {
    @Override
-   default cym<?> e() {
-      return cym.g;
+   public cuc a(int $$0) {
+      if ($$0 != 0) {
+         throw new IllegalArgumentException("No item for index " + $$0);
+      } else {
+         return this.a;
+      }
    }
 
    @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public int a() {
+      return 1;
    }
 
-   @Override
-   default cua g() {
-      return new cua(dfh.ob);
+   public cuc c() {
+      return this.a;
    }
-
-   boolean a(cua var1);
-
-   boolean b(cua var1);
-
-   boolean c(cua var1);
 }

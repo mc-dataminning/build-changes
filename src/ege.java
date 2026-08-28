@@ -1,69 +1,37 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class ege extends egm {
-   public static final MapCodec<ege> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  axm.l.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bpi.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, ege::new)
-   );
-   private final int b;
-   private final bpi h;
+public class ege extends egg {
+   public static final MapCodec<ege> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ege::new, $$0 -> $$0.b);
+   private final float b;
 
-   public ege(int $$0, int $$1, int $$2, int $$3, bpi $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
+   public ege(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected egn<?> a() {
-      return egn.g;
+   protected egh<?> a() {
+      return egh.c;
    }
 
    @Override
-   public List<eeu.a> a(dcj $$0, BiConsumer<ja, dsh> $$1, aym $$2, int $$3, ja $$4, eee $$5) {
-      jf $$6 = jf.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      ja.a $$8 = $$4.j();
-      ja $$9 = $$8.d();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<eeu.a> $$10 = Lists.newArrayList();
-
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
-         }
-
-         if (ecq.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new eeu.a($$8.i(), 0, false));
-         }
-
-         $$8.c(jf.b);
+   public void a(egg.a $$0) {
+      ayo $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<ja> $$2 = $$0.c();
+         int $$3 = $$2.get(0).v();
+         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+            for (jf $$3x : jf.c.a) {
+               if ($$1.i() <= 0.25F) {
+                  jf $$4 = $$3x.g();
+                  ja $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                  if ($$0.a($$5)) {
+                     $$0.a($$5, dfj.fC.o().a(dgo.c, Integer.valueOf($$1.a(3))).a(dgo.aE, $$3x));
+                  }
+               }
+            }
+         });
       }
-
-      int $$12 = this.h.a($$2);
-
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (ecq.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new eeu.a($$8.i(), 0, false));
-         $$8.c($$6);
-      }
-
-      return $$10;
    }
 }

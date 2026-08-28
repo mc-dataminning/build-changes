@@ -60,7 +60,7 @@ public class jd<T> extends jr<T> implements je<T> {
    }
 
    @Override
-   public Optional<jj.c<T>> a(aym $$0) {
+   public Optional<jj.c<T>> a(ayo $$0) {
       return super.a($$0).or(() -> Optional.of(this.c));
    }
 

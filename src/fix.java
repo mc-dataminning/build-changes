@@ -1,47 +1,111 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class fix implements flj {
-   private static final int a = 170;
-   private final wu b;
-   @Nullable
-   private List<axq> c;
-   @Nullable
-   private ts d;
-   @Nullable
-   private final wu e;
+public abstract class fix extends fhs {
+   protected final akk a;
+   protected final int b;
+   protected final int c;
 
-   private fix(wu $$0, @Nullable wu $$1) {
-      this.b = $$0;
-      this.e = $$1;
+   fix(int $$0, int $$1, wu $$2, int $$3, int $$4, akk $$5, fhs.c $$6, @Nullable fhs.b $$7) {
+      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
+      this.b = $$3;
+      this.c = $$4;
+      this.a = $$5;
    }
 
-   public static fix a(wu $$0, @Nullable wu $$1) {
-      return new fix($$0, $$1);
+   public static fix.a a(wu $$0, fhs.c $$1, boolean $$2) {
+      return new fix.a($$0, $$1, $$2);
    }
 
-   public static fix a(wu $$0) {
-      return new fix($$0, $$0);
-   }
+   public static class a {
+      private final wu b;
+      private final fhs.c c;
+      private final boolean d;
+      private int e = 150;
+      private int f = 20;
+      @Nullable
+      private akk g;
+      private int h;
+      private int i;
+      @Nullable
+      fhs.b a;
 
-   @Override
-   public void b(fli $$0) {
-      if (this.e != null) {
-         $$0.a(flh.c, this.e);
+      public a(wu $$0, fhs.c $$1, boolean $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public fix.a a(int $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fix.a a(int $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public fix.a a(akk $$0, int $$1, int $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      public fix.a a(fhs.b $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public fix a() {
+         if (this.g == null) {
+            throw new IllegalStateException("Sprite not set");
+         } else {
+            return (fix)(this.d
+               ? new fix.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
+               : new fix.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
+         }
       }
    }
 
-   public List<axq> a(ffn $$0) {
-      ts $$1 = ts.a();
-      if (this.c == null || $$1 != this.d) {
-         this.c = a($$0, this.b);
-         this.d = $$1;
+   public static class b extends fix {
+      protected b(int $$0, int $$1, wu $$2, int $$3, int $$4, akk $$5, fhs.c $$6, @Nullable fhs.b $$7) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
 
-      return this.c;
+      @Override
+      public void b(fhf $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.D() + this.y() / 2 - this.b / 2;
+         int $$5 = this.E() + this.w() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(fhf $$0, fhd $$1, int $$2) {
+      }
    }
 
-   public static List<axq> a(ffn $$0, wu $$1) {
-      return $$0.h.c($$1, 170);
+   public static class c extends fix {
+      protected c(int $$0, int $$1, wu $$2, int $$3, int $$4, akk $$5, fhs.c $$6, @Nullable fhs.b $$7) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      @Override
+      public void b(fhf $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.D() + this.y() - this.b - 2;
+         int $$5 = this.E() + this.w() / 2 - this.c / 2;
+         $$0.a(this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(fhf $$0, fhd $$1, int $$2) {
+         int $$3 = this.D() + 2;
+         int $$4 = this.D() + this.y() - this.b - 4;
+         int $$5 = this.D() + this.y() / 2;
+         a($$0, $$1, this.z(), $$5, $$3, this.E(), $$4, this.E() + this.w(), $$2);
+      }
    }
 }

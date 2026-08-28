@@ -1,117 +1,60 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
 
-public class egf extends egm {
-   private static final Codec<bpo> b = bpo.a
-      .codec()
-      .validate(
-         $$0 -> $$0.b() - $$0.a() < 1
-               ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
-               : DataResult.success($$0)
-      );
-   public static final MapCodec<egf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  bpi.b(1, 3).fieldOf("branch_count").forGetter($$0x -> $$0x.h),
-                  bpi.b(2, 16).fieldOf("branch_horizontal_length").forGetter($$0x -> $$0x.i),
-                  bpi.a(-16, 0, b).fieldOf("branch_start_offset_from_top").forGetter($$0x -> $$0x.j),
-                  bpi.b(-16, 16).fieldOf("branch_end_offset_from_top").forGetter($$0x -> $$0x.l)
-               )
-            )
-            .apply($$0, egf::new)
-   );
-   private final bpi h;
-   private final bpi i;
-   private final bpo j;
-   private final bpo k;
-   private final bpi l;
+public class egf extends egg {
+   public static final MapCodec<egf> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(egf::new, $$0 -> $$0.b);
+   private final float b;
 
-   public egf(int $$0, int $$1, int $$2, bpi $$3, bpi $$4, bpo $$5, bpi $$6) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = bpo.a($$5.a(), $$5.b() - 1);
-      this.l = $$6;
+   @Override
+   protected egh<?> a() {
+      return egh.b;
+   }
+
+   public egf(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected egn<?> a() {
-      return egn.i;
-   }
-
-   @Override
-   public List<eeu.a> a(dcj $$0, BiConsumer<ja, dsh> $$1, aym $$2, int $$3, ja $$4, eee $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      int $$6 = Math.max(0, $$3 - 1 + this.j.a($$2));
-      int $$7 = Math.max(0, $$3 - 1 + this.k.a($$2));
-      if ($$7 >= $$6) {
-         $$7++;
-      }
-
-      int $$8 = this.h.a($$2);
-      boolean $$9 = $$8 == 3;
-      boolean $$10 = $$8 >= 2;
-      int $$11;
-      if ($$9) {
-         $$11 = $$3;
-      } else if ($$10) {
-         $$11 = Math.max($$6, $$7) + 1;
-      } else {
-         $$11 = $$6 + 1;
-      }
-
-      for (int $$14 = 0; $$14 < $$11; $$14++) {
-         this.b($$0, $$1, $$2, $$4.b($$14), $$5);
-      }
-
-      List<eeu.a> $$15 = new ArrayList<>();
-      if ($$9) {
-         $$15.add(new eeu.a($$4.b($$11), 0, false));
-      }
-
-      ja.a $$16 = new ja.a();
-      jf $$17 = jf.c.a.a($$2);
-      Function<dsh, dsh> $$18 = $$1x -> $$1x.b(dlr.i, $$17.o());
-      $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17, $$6, $$6 < $$11 - 1, $$16));
-      if ($$10) {
-         $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17.g(), $$7, $$7 < $$11 - 1, $$16));
-      }
-
-      return $$15;
-   }
-
-   private eeu.a a(dcj $$0, BiConsumer<ja, dsh> $$1, aym $$2, int $$3, ja $$4, eee $$5, Function<dsh, dsh> $$6, jf $$7, int $$8, boolean $$9, ja.a $$10) {
-      $$10.g($$4).c(jf.b, $$8);
-      int $$11 = $$3 - 1 + this.l.a($$2);
-      boolean $$12 = $$9 || $$11 < $$8;
-      int $$13 = this.i.a($$2) + ($$12 ? 1 : 0);
-      ja $$14 = $$4.a($$7, $$13).b($$11);
-      int $$15 = $$12 ? 2 : 1;
-
-      for (int $$16 = 0; $$16 < $$15; $$16++) {
-         this.a($$0, $$1, $$2, $$10.c($$7), $$5, $$6);
-      }
-
-      jf $$17 = $$14.v() > $$10.v() ? jf.b : jf.a;
-
-      while (true) {
-         int $$18 = $$10.k($$14);
-         if ($$18 == 0) {
-            return new eeu.a($$14.c(), 0, false);
+   public void a(egg.a $$0) {
+      ayo $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            ja $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               a($$3, dod.d, $$0);
+            }
          }
 
-         float $$19 = (float)Math.abs($$14.v() - $$10.v()) / (float)$$18;
-         boolean $$20 = $$2.i() < $$19;
-         $$10.c($$20 ? $$17 : $$7);
-         this.a($$0, $$1, $$2, $$10, $$5, $$20 ? Function.identity() : $$6);
+         if ($$1.i() < this.b) {
+            ja $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               a($$4, dod.f, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            ja $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               a($$5, dod.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            ja $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               a($$6, dod.c, $$0);
+            }
+         }
+      });
+   }
+
+   private static void a(ja $$0, dtb $$1, egg.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
+
+      for (ja var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.d();
       }
    }
 }

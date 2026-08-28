@@ -1,55 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class dgd extends dit implements dfi, dgb {
-   public static final MapCodec<dgd> c = b(dgd::new);
+public interface dgd {
+   ewy q_ = dfh.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   dtb r_ = dta.D;
 
-   @Override
-   public MapCodec<dgd> a() {
-      return c;
+   static bqg a(@Nullable bsg $$0, dsk $$1, dcf $$2, ja $$3) {
+      if ($$1.c(r_)) {
+         dfh.a($$2, $$3, new cuc(cuf.wv, 1));
+         float $$4 = ayg.b($$2.z, 0.8F, 1.2F);
+         $$2.a(null, $$3, avh.ee, avi.e, 1.0F, $$4);
+         dsk $$5 = $$1.a(r_, Boolean.valueOf(false));
+         $$2.a($$3, $$5, 2);
+         $$2.a(dxg.c, $$3, dxg.a.a($$0, $$5));
+         return bqg.a($$2.B);
+      } else {
+         return bqg.e;
+      }
    }
 
-   public dgd(dsg.d $$0) {
-      super($$0, jf.a, q_, false);
-      this.k(this.E.b().a(r_, Boolean.valueOf(false)));
+   static boolean h_(dsk $$0) {
+      return $$0.b(r_) && $$0.c(r_);
    }
 
-   @Override
-   protected diu c() {
-      return (diu)dfh.sv;
-   }
-
-   @Override
-   protected dsh a(dsh $$0, dsh $$1) {
-      return $$1.a(r_, $$0.c(r_));
-   }
-
-   @Override
-   public cua a(dcg $$0, ja $$1, dsh $$2) {
-      return new cua(cud.wv);
-   }
-
-   @Override
-   protected bqd a(dsh $$0, dcd $$1, ja $$2, cmh $$3, evv $$4) {
-      return dgb.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
-      $$0.a(r_);
-   }
-
-   @Override
-   public boolean b(dcg $$0, ja $$1, dsh $$2) {
-      return !$$2.c(r_);
-   }
-
-   @Override
-   public boolean a(dcd $$0, aym $$1, ja $$2, dsh $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqk $$0, aym $$1, ja $$2, dsh $$3) {
-      $$0.a($$2, $$3.a(r_, Boolean.valueOf(true)), 2);
+   static ToIntFunction<dsk> h_(int $$0) {
+      return $$1 -> $$1.c(dta.D) ? $$0 : 0;
    }
 }

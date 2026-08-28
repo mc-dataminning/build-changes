@@ -1,9 +1,7 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.meta.TypeQualifierDefault;
+public interface exy<T> {
+   void a(exw<T> var1);
 
-@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.CLASS)
-public @interface exy {
+   boolean a(ja var1, T var2);
+
+   int a();
 }

@@ -1,109 +1,67 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.function.Function;
+import java.util.Locale;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class eqn {
-   private static final Codec<eqn> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               euw.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
-               euw.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
-            )
-            .apply($$0, eqn::new)
-   );
-   public static final Codec<eqn> a = Codec.either(Codec.INT, b).xmap($$0 -> (eqn)$$0.map(eqn::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
+public interface eqn extends eqp {
+   @Override
+   String e();
+
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
+
+   @Override
+   default void a(p $$0, dch $$1) {
+      eqp.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   }
+
+   int f();
+
+   void a(int var1);
+
+   int t();
+
+   void d(int var1);
+
+   int u();
+
+   void e(int var1);
+
    @Nullable
-   private final euv c;
-   @Nullable
-   private final euv d;
-   private final eqn.b e;
-   private final eqn.a f;
+   UUID v();
 
-   public Set<eth<?>> a() {
-      Builder<eth<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
-      }
+   void a(UUID var1);
 
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
+   dcc k();
 
-      return $$0.build();
-   }
+   void a(dub.c var1);
 
-   private eqn(Optional<euv> $$0, Optional<euv> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
-   }
+   dub.c p();
 
-   private eqn(@Nullable euv $$0, @Nullable euv $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
-         }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
-      } else {
-         this.e = ($$2, $$3) -> aye.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
-      }
-   }
+   boolean n();
 
-   public static eqn a(int $$0) {
-      eus $$1 = eus.a((float)$$0);
-      return new eqn(Optional.of($$1), Optional.of($$1));
-   }
+   void c(boolean var1);
 
-   public static eqn a(int $$0, int $$1) {
-      return new eqn(Optional.of(eus.a((float)$$0)), Optional.of(eus.a((float)$$1)));
-   }
+   boolean m();
 
-   public static eqn b(int $$0) {
-      return new eqn(Optional.of(eus.a((float)$$0)), Optional.empty());
-   }
+   void a(dcc var1);
 
-   public static eqn c(int $$0) {
-      return new eqn(Optional.empty(), Optional.of(eus.a((float)$$0)));
-   }
+   evs<MinecraftServer> s();
 
-   public int a(eqo $$0, int $$1) {
-      return this.e.apply($$0, $$1);
-   }
+   void a(long var1);
 
-   public boolean b(eqo $$0, int $$1) {
-      return this.f.test($$0, $$1);
-   }
-
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof eus $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
-   }
-
-   @FunctionalInterface
-   interface a {
-      boolean test(eqo var1, int var2);
-   }
-
-   @FunctionalInterface
-   interface b {
-      int apply(eqo var1, int var2);
-   }
+   void b(long var1);
 }

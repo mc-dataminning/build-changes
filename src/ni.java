@@ -14,7 +14,7 @@ public class ni implements lx {
       this.d = $$0;
    }
 
-   public <T> ni a(asu<T> $$0, T $$1) {
+   public <T> ni a(asw<T> $$0, T $$1) {
       this.e.put($$0.a(), () -> $$0.a($$1));
       return this;
    }
@@ -32,10 +32,10 @@ public class ni implements lx {
    }
 
    public static ni a(lz $$0, wu $$1) {
-      return new ni($$0).a(asv.b, new asv($$1, t.a.a(asi.b), Optional.empty()));
+      return new ni($$0).a(asx.b, new asx($$1, t.a.a(ask.b), Optional.empty()));
    }
 
-   public static ni a(lz $$0, wu $$1, cov $$2) {
-      return a($$0, $$1).a(asc.a, new asc($$2));
+   public static ni a(lz $$0, wu $$1, coy $$2) {
+      return a($$0, $$1).a(ase.a, new ase($$2));
    }
 }

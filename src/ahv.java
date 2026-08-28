@@ -1,13 +1,13 @@
 public class ahv implements zb<agb> {
    public static final ys<vr, ahv> a = zb.a(ahv::a, ahv::new);
-   private final bqc b;
+   private final bqf b;
 
-   public ahv(bqc $$0) {
+   public ahv(bqf $$0) {
       this.b = $$0;
    }
 
    private ahv(vr $$0) {
-      this.b = $$0.b(bqc.class);
+      this.b = $$0.b(bqf.class);
    }
 
    private void a(vr $$0) {
@@ -23,7 +23,7 @@ public class ahv implements zb<agb> {
       $$0.a(this);
    }
 
-   public bqc b() {
+   public bqf b() {
       return this.b;
    }
 }

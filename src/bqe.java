@@ -1,37 +1,59 @@
-public class bqe<T> {
-   private final bqd a;
-   private final T b;
+import javax.annotation.concurrent.Immutable;
 
-   public bqe(bqd $$0, T $$1) {
-      this.a = $$0;
-      this.b = $$1;
+@Immutable
+public class bqe {
+   private static final float a = -72000.0F;
+   private static final float b = 1440000.0F;
+   private static final float c = 3600000.0F;
+   private final bqd d;
+   private final float e;
+
+   public bqe(bqd $$0, long $$1, long $$2, float $$3) {
+      this.d = $$0;
+      this.e = this.a($$0, $$1, $$2, $$3);
    }
 
    public bqd a() {
-      return this.a;
+      return this.d;
    }
 
-   public T b() {
-      return this.b;
+   public float b() {
+      return this.e;
    }
 
-   public static <T> bqe<T> a(T $$0) {
-      return new bqe<>(bqd.a, $$0);
+   public boolean c() {
+      return this.e >= (float)bqd.d.ordinal();
    }
 
-   public static <T> bqe<T> b(T $$0) {
-      return new bqe<>(bqd.c, $$0);
+   public boolean a(float $$0) {
+      return this.e > $$0;
    }
 
-   public static <T> bqe<T> c(T $$0) {
-      return new bqe<>(bqd.e, $$0);
+   public float d() {
+      if (this.e < 2.0F) {
+         return 0.0F;
+      } else {
+         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
+      }
    }
 
-   public static <T> bqe<T> d(T $$0) {
-      return new bqe<>(bqd.f, $$0);
-   }
+   private float a(bqd $$0, long $$1, long $$2, float $$3) {
+      if ($$0 == bqd.a) {
+         return 0.0F;
+      } else {
+         boolean $$4 = $$0 == bqd.d;
+         float $$5 = 0.75F;
+         float $$6 = ayg.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+         $$5 += $$6;
+         float $$7 = 0.0F;
+         $$7 += ayg.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
+         $$7 += ayg.a($$3 * 0.25F, 0.0F, $$6);
+         if ($$0 == bqd.b) {
+            $$7 *= 0.5F;
+         }
 
-   public static <T> bqe<T> a(T $$0, boolean $$1) {
-      return $$1 ? a($$0) : b($$0);
+         $$5 += $$7;
+         return (float)$$0.a() * $$5;
+      }
    }
 }

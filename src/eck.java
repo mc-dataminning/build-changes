@@ -1,40 +1,54 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class eck extends ebe<eds> {
-   public eck(Codec<eds> $$0) {
+public class eck extends ebk<eed> {
+   public eck(Codec<eed> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebg<eds> $$0) {
-      boolean $$1 = false;
-      aym $$2 = $$0.d();
-      dcz $$3 = $$0.b();
-      ja $$4 = $$0.e();
-      eds $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(dxz.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      ja $$9 = new ja($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(dfh.G)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         dsh $$11 = $$10 ? dfh.bx.o() : dfh.bw.o();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               dsh $$12 = $$11.a(dnl.d, dtd.a);
-               ja $$13 = $$9.c();
-               if ($$3.a_($$13).a(dfh.G)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
+   public boolean a(ebm<eed> $$0) {
+      eed $$1 = $$0.f();
+      ddb $$2 = $$0.b();
+      ayo $$3 = $$0.d();
+      dfh $$4 = $$1.b.b();
+      ja $$5 = a($$2, $$0.e().j().a(jf.a.b, $$2.I_() + 1, $$2.am() - 1), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
+
+         for (ja $$11 : ja.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
             }
 
-            $$1 = true;
+            dsk $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
          }
+
+         return $$10;
+      }
+   }
+
+   @Nullable
+   private static ja a(dcg $$0, ja.a $$1, dfh $$2) {
+      while ($$1.v() > $$0.I_() + 1) {
+         dsk $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(jf.a);
       }
 
-      return $$1;
+      return null;
    }
 }

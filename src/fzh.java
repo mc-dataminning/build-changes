@@ -1,65 +1,119 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class fzh extends fzi {
-   private final String f;
-
-   fzh(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+public interface fzh extends fzg {
+   static fzh.a a(GameProfile $$0, xk $$1, fzf $$2) {
+      return new fzh.a($$0, $$1, $$2);
    }
 
-   public String a() {
-      return this.f;
+   static fzh.b a(wu $$0, Instant $$1) {
+      return new fzh.b($$0, $$1);
    }
 
-   public fzh c() {
-      fzh $$0 = new fzh(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      return $$0;
+   wu b();
+
+   default wu c() {
+      return this.b();
    }
 
-   @Override
-   public fnd a(fnd $$0, fzm $$1) {
-      return new frm($$0, $$1, this);
-   }
+   boolean a(UUID var1);
 
-   public static class a extends fzi.a<fzh> {
-      public a(fzh $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new fzh(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
+   public static record a(GameProfile c, xk d, fzf e) implements fzh {
+      public static final MapCodec<fzh.a> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  axo.x.fieldOf("profile").forGetter(fzh.a::f), xk.a.forGetter(fzh.a::g), fzf.d.optionalFieldOf("trust_level", fzf.a).forGetter(fzh.a::h)
+               )
+               .apply($$0, fzh.a::new)
+      );
+      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
 
       @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
-      }
-
-      @Nullable
-      @Override
-      public fzi.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fzi.b.d : null;
-      }
-
-      @Override
-      public Either<fzi.c, fzi.b> a(fzm $$0) {
-         fzi.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
+      public wu b() {
+         if (!this.d.o().a()) {
+            wu $$0 = this.d.o().b(this.d.c());
+            return (wu)($$0 != null ? $$0 : wu.i());
          } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new fzi.c(this.a.a, fzl.c, $$3));
+            return this.d.d();
          }
+      }
+
+      @Override
+      public wu c() {
+         wu $$0 = this.b();
+         wu $$1 = this.i();
+         return wu.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      }
+
+      public wu d() {
+         wu $$0 = this.i();
+         return wu.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      }
+
+      private wu i() {
+         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
+         return wu.b($$0.format(f)).a(n.u, n.h);
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return this.d.a($$0);
+      }
+
+      public UUID e() {
+         return this.c.getId();
+      }
+
+      @Override
+      public fzg.a a() {
+         return fzg.a.a;
+      }
+
+      public GameProfile f() {
+         return this.c;
+      }
+
+      public xk g() {
+         return this.d;
+      }
+
+      public fzf h() {
+         return this.e;
+      }
+   }
+
+   public static record b(wu c, Instant d) implements fzh {
+      public static final MapCodec<fzh.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ww.a.fieldOf("message").forGetter(fzh.b::d), axo.o.fieldOf("time_stamp").forGetter(fzh.b::e)).apply($$0, fzh.b::new)
+      );
+
+      @Override
+      public wu b() {
+         return this.c;
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return false;
+      }
+
+      @Override
+      public fzg.a a() {
+         return fzg.a.b;
+      }
+
+      public wu d() {
+         return this.c;
+      }
+
+      public Instant e() {
+         return this.d;
       }
    }
 }

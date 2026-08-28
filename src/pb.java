@@ -75,7 +75,7 @@ public class pb implements lx {
          Path var7;
          try (
             InputStream $$4 = Files.newInputStream($$1);
-            InputStream $$5 = new axn($$4);
+            InputStream $$5 = new axp($$4);
          ) {
             Path $$6 = $$3.resolve($$2 + ".snbt");
             a($$0, $$6, um.a(uk.a($$5, ug.a())));

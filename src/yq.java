@@ -493,7 +493,7 @@ public interface yq {
             int $$1 = wl.a($$0) - 1;
             if ($$1 == -1) {
                jw<T> $$2 = $$0.G().d($$0);
-               return $$2.b(awk.a($$0, akk.b.decode($$0))).orElseThrow();
+               return $$2.b(awm.a($$0, akk.b.decode($$0))).orElseThrow();
             } else {
                List<jj<T>> $$3 = new ArrayList<>(Math.min($$1, 65536));
 
@@ -506,7 +506,7 @@ public interface yq {
          }
 
          public void a(wf $$0x, jn<T> $$1) {
-            Optional<awk<T>> $$2 = $$1.d();
+            Optional<awm<T>> $$2 = $$1.d();
             if ($$2.isPresent()) {
                wl.a($$0, 0);
                akk.b.encode($$0, $$2.get().b());

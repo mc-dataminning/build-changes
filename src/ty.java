@@ -97,17 +97,17 @@ public class ty extends un {
 
    @Override
    public int g() {
-      return aye.a(this.w);
+      return ayg.a(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(aye.a(this.w) & 65535);
+      return (short)(ayg.a(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(aye.a(this.w) & 0xFF);
+      return (byte)(ayg.a(this.w) & 0xFF);
    }
 
    @Override

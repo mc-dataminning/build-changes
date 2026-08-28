@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class fb implements ArgumentType<akk> {
-   private static final Collection<String> a = Stream.of(dcd.h, dcd.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
+   private static final Collection<String> a = Stream.of(dcf.h, dcf.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wu.b("argument.dimension.invalid", $$0));
 
    public akk a(StringReader $$0) throws CommandSyntaxException {
@@ -30,10 +30,10 @@ public class fb implements ArgumentType<akk> {
       return new fb();
    }
 
-   public static aqk a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static aqm a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       akk $$2 = (akk)$$0.getArgument($$1, akk.class);
-      akj<dcd> $$3 = akj.a(lr.aZ, $$2);
-      aqk $$4 = ((eq)$$0.getSource()).l().a($$3);
+      akj<dcf> $$3 = akj.a(lr.aZ, $$2);
+      aqm $$4 = ((eq)$$0.getSource()).l().a($$3);
       if ($$4 == null) {
          throw b.create($$2);
       } else {

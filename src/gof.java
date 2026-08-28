@@ -1,23 +1,12 @@
-public class gof<T extends bsy> extends gmw<T, fwx<T>> {
-   public gof(glc<T, fwx<T>> $$0, gdt $$1) {
-      super($$0, $$1);
+public class gof<T extends bsg, M extends fwp<T>> extends gnk<T, M> {
+   private static final gel a = gel.p(new akk("textures/entity/spider_eyes.png"));
+
+   public gof(gli<T, M> $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(fag $$0, gdx $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cua $$10 = $$3.eT();
-      $$0.a();
-      if ($$10.a(cud.sk)) {
-         this.c().d().a($$0);
-         this.c().e().a($$0);
-         $$0.a(0.0625F, 0.25F, 0.0F);
-         $$0.a(a.f.rotationDegrees(180.0F));
-         $$0.a(a.b.rotationDegrees(140.0F));
-         $$0.a(a.f.rotationDegrees(10.0F));
-         $$0.a(0.0F, -0.4F, 0.4F);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-      $$0.b();
+   public gel a() {
+      return a;
    }
 }

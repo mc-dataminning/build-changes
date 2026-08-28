@@ -1,26 +1,61 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class bpg implements bpl {
-   private static final Codec<Either<Float, bpg>> a = Codec.either(Codec.FLOAT, lq.J.r().dispatch(bpg::c, bph::codec));
-   public static final Codec<bpg> c = a.xmap(
-      $$0 -> (bpg)$$0.map(bpe::a, $$0x -> $$0x), $$0 -> $$0.c() == bph.a ? Either.left(((bpe)$$0).d()) : Either.right($$0)
-   );
+public class bpg extends bpl {
+   public static final MapCodec<bpg> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
+               )
+               .apply($$0, bpg::new)
+      )
+      .validate($$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0));
+   private final float b;
+   private final float f;
+   private final int g;
+   private final int h;
 
-   public static Codec<bpg> a(float $$0, float $$1) {
-      return c.validate($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      });
+   public static bpg a(float $$0, float $$1, int $$2, int $$3) {
+      return new bpg($$0, $$1, $$2, $$3);
    }
 
-   public abstract float a();
+   private bpg(float $$0, float $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+   }
 
-   public abstract float b();
+   @Override
+   public int a(ayo $$0) {
+      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
+   }
 
-   public abstract bph<?> c();
+   public static int a(ayo $$0, float $$1, float $$2, float $$3, float $$4) {
+      return (int)ayg.a(ayg.c($$0, $$1, $$2), $$3, $$4);
+   }
+
+   @Override
+   public int a() {
+      return this.g;
+   }
+
+   @Override
+   public int b() {
+      return this.h;
+   }
+
+   @Override
+   public bpm<?> c() {
+      return bpm.f;
+   }
+
+   @Override
+   public String toString() {
+      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
+   }
 }

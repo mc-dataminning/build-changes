@@ -1,5 +1,15 @@
-public interface dua {
-   dsh a(int var1);
+public enum dua {
+   a(4259712),
+   b(16724016),
+   c(2138367);
 
-   void a(int var1, dsh var2);
+   private final int d;
+
+   private dua(final int $$0) {
+      this.d = $$0;
+   }
+
+   public int a() {
+      return this.d;
+   }
 }

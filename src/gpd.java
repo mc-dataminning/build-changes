@@ -1,138 +1,133 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
-
 public class gpd {
-   public static final Set<ast<?>> a = Set.of(gqt.a);
-   private static final Logger b = LogUtils.getLogger();
-   private final akk c;
-   private final int d;
-   private final int e;
-   private final int f;
+   private static final int a = 96;
+   private static final float[] b = ac.a(new float[256], $$0 -> {
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         $$0[$$1] = (float)Math.pow((double)((float)$$1 / 255.0F), 2.2);
+      }
+   });
 
-   public gpd(akk $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   private gpd() {
    }
 
-   public static gpd a(gph $$0) {
-      return new gpd($$0.g(), $$0.h(), $$0.i(), $$0.j());
-   }
+   public static ezn[] a(ezn[] $$0, int $$1) {
+      if ($$1 + 1 <= $$0.length) {
+         return $$0;
+      } else {
+         ezn[] $$2 = new ezn[$$1 + 1];
+         $$2[0] = $$0[0];
+         boolean $$3 = a($$2[0]);
 
-   public gpd.a a(List<gpc> $$0, int $$1, Executor $$2) {
-      int $$3 = this.d;
-      gpf<gpc> $$4 = new gpf<>($$3, $$3, $$1);
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = 1 << $$1;
+         for (int $$4 = 1; $$4 <= $$1; $$4++) {
+            if ($$4 < $$0.length) {
+               $$2[$$4] = $$0[$$4];
+            } else {
+               ezn $$5 = $$2[$$4 - 1];
+               ezn $$6 = new ezn($$5.a() >> 1, $$5.b() >> 1, false);
+               int $$7 = $$6.a();
+               int $$8 = $$6.b();
 
-      for (gpc $$7 : $$0) {
-         $$5 = Math.min($$5, Math.min($$7.a(), $$7.b()));
-         int $$8 = Math.min(Integer.lowestOneBit($$7.a()), Integer.lowestOneBit($$7.b()));
-         if ($$8 < $$6) {
-            b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$7.c(), $$7.a(), $$7.b(), aye.f($$6), aye.f($$8)});
-            $$6 = $$8;
+               for (int $$9 = 0; $$9 < $$7; $$9++) {
+                  for (int $$10 = 0; $$10 < $$8; $$10++) {
+                     $$6.a(
+                        $$9,
+                        $$10,
+                        a(
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 1),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 1),
+                           $$3
+                        )
+                     );
+                  }
+               }
+
+               $$2[$$4] = $$6;
+            }
          }
 
-         $$4.a($$7);
+         return $$2;
+      }
+   }
+
+   private static boolean a(ezn $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            if ($$0.a($$1, $$2) >> 24 == 0) {
+               return true;
+            }
+         }
       }
 
-      int $$9 = Math.min($$5, $$6);
-      int $$10 = aye.f($$9);
-      int $$11;
-      if ($$10 < $$1) {
-         b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$10, $$9});
-         $$11 = $$10;
+      return false;
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      if ($$4) {
+         float $$5 = 0.0F;
+         float $$6 = 0.0F;
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         if ($$0 >> 24 != 0) {
+            $$5 += a($$0 >> 24);
+            $$6 += a($$0 >> 16);
+            $$7 += a($$0 >> 8);
+            $$8 += a($$0 >> 0);
+         }
+
+         if ($$1 >> 24 != 0) {
+            $$5 += a($$1 >> 24);
+            $$6 += a($$1 >> 16);
+            $$7 += a($$1 >> 8);
+            $$8 += a($$1 >> 0);
+         }
+
+         if ($$2 >> 24 != 0) {
+            $$5 += a($$2 >> 24);
+            $$6 += a($$2 >> 16);
+            $$7 += a($$2 >> 8);
+            $$8 += a($$2 >> 0);
+         }
+
+         if ($$3 >> 24 != 0) {
+            $$5 += a($$3 >> 24);
+            $$6 += a($$3 >> 16);
+            $$7 += a($$3 >> 8);
+            $$8 += a($$3 >> 0);
+         }
+
+         $$5 /= 4.0F;
+         $$6 /= 4.0F;
+         $$7 /= 4.0F;
+         $$8 /= 4.0F;
+         int $$9 = (int)(Math.pow((double)$$5, 0.45454545454545453) * 255.0);
+         int $$10 = (int)(Math.pow((double)$$6, 0.45454545454545453) * 255.0);
+         int $$11 = (int)(Math.pow((double)$$7, 0.45454545454545453) * 255.0);
+         int $$12 = (int)(Math.pow((double)$$8, 0.45454545454545453) * 255.0);
+         if ($$9 < 96) {
+            $$9 = 0;
+         }
+
+         return $$9 << 24 | $$10 << 16 | $$11 << 8 | $$12;
       } else {
-         $$11 = $$1;
+         int $$13 = a($$0, $$1, $$2, $$3, 24);
+         int $$14 = a($$0, $$1, $$2, $$3, 16);
+         int $$15 = a($$0, $$1, $$2, $$3, 8);
+         int $$16 = a($$0, $$1, $$2, $$3, 0);
+         return $$13 << 24 | $$14 << 16 | $$15 << 8 | $$16;
       }
-
-      try {
-         $$4.c();
-      } catch (gpg var16) {
-         o $$14 = o.a(var16, "Stitching");
-         p $$15 = $$14.a("Stitcher");
-         $$15.a(
-            "Sprites", var16.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
-         );
-         $$15.a("Max Texture Size", $$3);
-         throw new y($$14);
-      }
-
-      int $$16 = Math.max($$4.a(), this.e);
-      int $$17 = Math.max($$4.b(), this.f);
-      Map<akk, gpi> $$18 = this.a($$4, $$16, $$17);
-      gpi $$19 = $$18.get(goy.b());
-      CompletableFuture<Void> $$20;
-      if ($$11 > 0) {
-         $$20 = CompletableFuture.runAsync(() -> $$18.values().forEach($$1xx -> $$1xx.e().a($$11)), $$2);
-      } else {
-         $$20 = CompletableFuture.completedFuture(null);
-      }
-
-      return new gpd.a($$16, $$17, $$11, $$19, $$18, $$20);
    }
 
-   public static CompletableFuture<List<gpc>> a(gpl $$0, List<Function<gpl, gpc>> $$1, Executor $$2) {
-      List<CompletableFuture<gpc>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (gpc)$$2x.apply($$0), $$2)).toList();
-      return ac.d($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
+   private static int a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      float $$5 = a($$0 >> $$4);
+      float $$6 = a($$1 >> $$4);
+      float $$7 = a($$2 >> $$4);
+      float $$8 = a($$3 >> $$4);
+      float $$9 = (float)((double)((float)Math.pow((double)($$5 + $$6 + $$7 + $$8) * 0.25, 0.45454545454545453)));
+      return (int)((double)$$9 * 255.0);
    }
 
-   public CompletableFuture<gpd.a> a(atu $$0, akk $$1, int $$2, Executor $$3) {
-      return this.a($$0, $$1, $$2, $$3, a);
-   }
-
-   public CompletableFuture<gpd.a> a(atu $$0, akk $$1, int $$2, Executor $$3, Collection<ast<?>> $$4) {
-      gpl $$5 = gpl.create($$4);
-      return CompletableFuture.<List<Function<gpl, gpc>>>supplyAsync(() -> gpn.a($$0, $$1).a($$0), $$3)
-         .thenCompose($$2x -> a($$5, $$2x, $$3))
-         .thenApply($$2x -> this.a($$2x, $$2, $$3));
-   }
-
-   private Map<akk, gpi> a(gpf<gpc> $$0, int $$1, int $$2) {
-      Map<akk, gpi> $$3 = new HashMap<>();
-      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new gpi(this.c, $$3x, $$1, $$2, $$4, $$5)));
-      return $$3;
-   }
-
-   public static record a(int a, int b, int c, gpi d, Map<akk, gpi> e, CompletableFuture<Void> f) {
-      public CompletableFuture<gpd.a> a() {
-         return this.f.thenApply($$0 -> this);
-      }
-
-      public int b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public gpi e() {
-         return this.d;
-      }
-
-      public Map<akk, gpi> f() {
-         return this.e;
-      }
-
-      public CompletableFuture<Void> g() {
-         return this.f;
-      }
+   private static float a(int $$0) {
+      return b[$$0 & 0xFF];
    }
 }

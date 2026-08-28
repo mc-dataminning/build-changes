@@ -1,24 +1,9 @@
-import org.joml.Matrix4f;
+public class fpl extends fnz<crh> {
+   private static final akk E = new akk("container/smoker/lit_progress");
+   private static final akk F = new akk("container/smoker/burn_progress");
+   private static final akk G = new akk("textures/gui/container/smoker.png");
 
-public class fpl implements fpm {
-   private final axq a;
-
-   public fpl(axq $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public int a(fgx $$0) {
-      return $$0.a(this.a);
-   }
-
-   @Override
-   public int a() {
-      return 10;
-   }
-
-   @Override
-   public void a(fgx $$0, int $$1, int $$2, Matrix4f $$3, gdx.a $$4) {
-      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fgx.a.a, 0, 15728880);
+   public fpl(crh $$0, cmj $$1, wu $$2) {
+      super($$0, new frm(), $$1, $$2, G, E, F);
    }
 }

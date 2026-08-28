@@ -1,22 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dzk implements dzg {
-   public static final MapCodec<dzk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ke.v(16).optionalFieldOf("offset", ja.c).forGetter($$0x -> $$0x.e)).apply($$0, dzk::new)
-   );
-   private final ke e;
+class dzk extends dzo {
+   public static final MapCodec<dzk> a = a(dzk::new);
 
-   public dzk(ke $$0) {
-      this.e = $$0;
+   public dzk(List<dzm> $$0) {
+      super($$0);
    }
 
-   public boolean a(dcz $$0, ja $$1) {
-      return !$$0.s($$1.a(this.e));
+   public boolean a(ddb $$0, ja $$1) {
+      for (dzm $$2 : this.e) {
+         if (!$$2.test($$0, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   public dzh<?> a() {
-      return dzh.h;
+   public dzn<?> a() {
+      return dzn.j;
    }
 }

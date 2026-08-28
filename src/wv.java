@@ -12,13 +12,13 @@ public interface wv {
       return Optional.empty();
    }
 
-   default xi a(@Nullable eq $$0, @Nullable bsd $$1, int $$2) throws CommandSyntaxException {
+   default xi a(@Nullable eq $$0, @Nullable bsg $$1, int $$2) throws CommandSyntaxException {
       return xi.a(this);
    }
 
    wv.a<?> a();
 
-   public static record a<T extends wv>(MapCodec<T> a, String b) implements ayz {
+   public static record a<T extends wv>(MapCodec<T> a, String b) implements azc {
       @Override
       public String c() {
          return this.b;

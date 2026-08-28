@@ -1,8 +1,8 @@
-public record apz(String b, int c, cmf d, boolean e, int f, bss g, boolean h, boolean i) {
+public record apz(String b, int c, cmi d, boolean e, int f, bsv g, boolean h, boolean i) {
    public static final int a = 16;
 
    public apz(vr $$0) {
-      this($$0.d(16), $$0.readByte(), $$0.b(cmf.class), $$0.readBoolean(), $$0.readUnsignedByte(), $$0.b(bss.class), $$0.readBoolean(), $$0.readBoolean());
+      this($$0.d(16), $$0.readByte(), $$0.b(cmi.class), $$0.readBoolean(), $$0.readUnsignedByte(), $$0.b(bsv.class), $$0.readBoolean(), $$0.readBoolean());
    }
 
    public void a(vr $$0) {
@@ -17,6 +17,6 @@ public record apz(String b, int c, cmf d, boolean e, int f, bss g, boolean h, bo
    }
 
    public static apz a() {
-      return new apz("en_us", 2, cmf.a, true, 0, cmh.bH, false, false);
+      return new apz("en_us", 2, cmi.a, true, 0, cmk.bH, false, false);
    }
 }

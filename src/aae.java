@@ -1,4 +1,4 @@
-public record aae(akj<dxa> c, evz d) implements aac {
+public record aae(akj<dxg> c, ewf d) implements aac {
    public static final ys<vr, aae> a = aac.a(aae::a, aae::new);
    public static final aac.b<aae> b = aac.a("debug/game_event");
 
@@ -16,11 +16,11 @@ public record aae(akj<dxa> c, evz d) implements aac {
       return b;
    }
 
-   public akj<dxa> b() {
+   public akj<dxg> b() {
       return this.c;
    }
 
-   public evz c() {
+   public ewf c() {
       return this.d;
    }
 }

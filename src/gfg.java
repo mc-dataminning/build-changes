@@ -1,90 +1,166 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import java.io.Reader;
 import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
 public class gfg {
-   public static final gfg a = new gfg();
-   public final gff b;
-   public final gff c;
-   public final gff d;
-   public final gff e;
-   public final gff f;
-   public final gff g;
-   public final gff h;
-   public final gff i;
+   private final Map<String, gfn> a = Maps.newLinkedHashMap();
+   private gfs b;
 
-   private gfg() {
-      this(gff.a, gff.a, gff.a, gff.a, gff.a, gff.a, gff.a, gff.a);
+   public static gfg a(gfg.a $$0, Reader $$1) {
+      return axw.a($$0.a, $$1, gfg.class);
    }
 
-   public gfg(gfg $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = $$0.h;
-      this.i = $$0.i;
+   public static gfg a(gfg.a $$0, JsonElement $$1) {
+      return (gfg)$$0.a.fromJson($$1, gfg.class);
    }
 
-   public gfg(gff $$0, gff $$1, gff $$2, gff $$3, gff $$4, gff $$5, gff $$6, gff $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+   public gfg(Map<String, gfn> $$0, gfs $$1) {
+      this.b = $$1;
+      this.a.putAll($$0);
    }
 
-   public gff a(ctx $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> gff.a;
-      };
+   public gfg(List<gfg> $$0) {
+      gfg $$1 = null;
+
+      for (gfg $$2 : $$0) {
+         if ($$2.c()) {
+            this.a.clear();
+            $$1 = $$2;
+         }
+
+         this.a.putAll($$2.a);
+      }
+
+      if ($$1 != null) {
+         this.b = $$1.b;
+      }
    }
 
-   public boolean b(ctx $$0) {
-      return this.a($$0) != gff.a;
+   @VisibleForTesting
+   public boolean a(String $$0) {
+      return this.a.get($$0) != null;
    }
 
-   protected static class a implements JsonDeserializer<gfg> {
+   @VisibleForTesting
+   public gfn b(String $$0) {
+      gfn $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new gfg.c();
+      } else {
+         return $$1;
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof gfg $$1 && this.a.equals($$1.a)) {
+            return this.c() ? this.b.equals($$1.b) : !$$1.c();
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * this.a.hashCode() + (this.c() ? this.b.hashCode() : 0);
+   }
+
+   public Map<String, gfn> a() {
+      return this.a;
+   }
+
+   @VisibleForTesting
+   public Set<gfn> b() {
+      Set<gfn> $$0 = Sets.newHashSet(this.a.values());
+      if (this.c()) {
+         $$0.addAll(this.b.b());
+      }
+
+      return $$0;
+   }
+
+   public boolean c() {
+      return this.b != null;
+   }
+
+   public gfs d() {
+      return this.b;
+   }
+
+   public static final class a {
+      protected final Gson a = new GsonBuilder()
+         .registerTypeAdapter(gfg.class, new gfg.b())
+         .registerTypeAdapter(gfo.class, new gfo.a())
+         .registerTypeAdapter(gfn.class, new gfn.a())
+         .registerTypeAdapter(gfs.class, new gfs.a(this))
+         .registerTypeAdapter(gfu.class, new gfu.a())
+         .create();
+      private dsl<dfh, dsk> b;
+
+      public dsl<dfh, dsk> a() {
+         return this.b;
+      }
+
+      public void a(dsl<dfh, dsk> $$0) {
+         this.b = $$0;
+      }
+   }
+
+   public static class b implements JsonDeserializer<gfg> {
       public gfg a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         gff $$4 = this.a($$2, $$3, ctx.c);
-         gff $$5 = this.a($$2, $$3, ctx.b);
-         if ($$5 == gff.a) {
-            $$5 = $$4;
+         Map<String, gfn> $$4 = this.a($$2, $$3);
+         gfs $$5 = this.b($$2, $$3);
+         if (!$$4.isEmpty() || $$5 != null && !$$5.b().isEmpty()) {
+            return new gfg($$4, $$5);
+         } else {
+            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
          }
-
-         gff $$6 = this.a($$2, $$3, ctx.e);
-         gff $$7 = this.a($$2, $$3, ctx.d);
-         if ($$7 == gff.a) {
-            $$7 = $$6;
-         }
-
-         gff $$8 = this.a($$2, $$3, ctx.f);
-         gff $$9 = this.a($$2, $$3, ctx.g);
-         gff $$10 = this.a($$2, $$3, ctx.h);
-         gff $$11 = this.a($$2, $$3, ctx.i);
-         return new gfg($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
 
-      private gff a(JsonDeserializationContext $$0, JsonObject $$1, ctx $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (gff)$$0.deserialize($$1.get($$3), gff.class) : gff.a;
+      protected Map<String, gfn> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<String, gfn> $$2 = Maps.newHashMap();
+         if ($$1.has("variants")) {
+            JsonObject $$3 = axw.u($$1, "variants");
+
+            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+               $$2.put($$4.getKey(), (gfn)$$0.deserialize($$4.getValue(), gfn.class));
+            }
+         }
+
+         return $$2;
       }
+
+      @Nullable
+      protected gfs b(JsonDeserializationContext $$0, JsonObject $$1) {
+         if (!$$1.has("multipart")) {
+            return null;
+         } else {
+            JsonArray $$2 = axw.v($$1, "multipart");
+            return (gfs)$$0.deserialize($$2, gfs.class);
+         }
+      }
+   }
+
+   protected class c extends RuntimeException {
    }
 }

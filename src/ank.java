@@ -15,13 +15,13 @@ public class ank {
    public static void a(CommandDispatcher<eq> $$0) {
       $$0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("publish").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((eq)$$0x.getSource(), axv.a(), false, null)))
+               .executes($$0x -> a((eq)$$0x.getSource(), axx.a(), false, null)))
             .then(
                ((RequiredArgumentBuilder)er.a("allowCommands", BoolArgumentType.bool())
-                     .executes($$0x -> a((eq)$$0x.getSource(), axv.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
+                     .executes($$0x -> a((eq)$$0x.getSource(), axx.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
                   .then(
                      ((RequiredArgumentBuilder)er.a("gamemode", fe.a())
-                           .executes($$0x -> a((eq)$$0x.getSource(), axv.a(), BoolArgumentType.getBool($$0x, "allowCommands"), fe.a($$0x, "gamemode"))))
+                           .executes($$0x -> a((eq)$$0x.getSource(), axx.a(), BoolArgumentType.getBool($$0x, "allowCommands"), fe.a($$0x, "gamemode"))))
                         .then(
                            er.a("port", IntegerArgumentType.integer(0, 65535))
                               .executes(
@@ -38,9 +38,9 @@ public class ank {
       );
    }
 
-   private static int a(eq $$0, int $$1, boolean $$2, @Nullable dca $$3) throws CommandSyntaxException {
+   private static int a(eq $$0, int $$1, boolean $$2, @Nullable dcc $$3) throws CommandSyntaxException {
       if ($$0.l().r()) {
-         throw b.create($$0.l().R());
+         throw b.create($$0.l().S());
       } else if (!$$0.l().a($$3, $$2, $$1)) {
          throw a.create();
       } else {

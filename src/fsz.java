@@ -1,9 +1,21 @@
-public class fsz extends RuntimeException {
-   public fsz(String $$0) {
-      super($$0);
+import com.google.common.base.MoreObjects;
+import java.util.List;
+
+public class fsz {
+   public static final int a = -1;
+   private final List<fsx> b;
+   private final int c;
+
+   public fsz(List<fsx> $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public fsz(String $$0, Throwable $$1) {
-      super($$0, $$1);
+   public fsx a(int $$0) {
+      return $$0 >= 0 && $$0 < this.b.size() ? (fsx)MoreObjects.firstNonNull(this.b.get($$0), fsv.a) : fsv.a;
+   }
+
+   public int a() {
+      return this.c;
    }
 }

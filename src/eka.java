@@ -1,25 +1,29 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
 
-record eka(akj<ejz> c, akj<ejz> d) implements ekb {
-   static MapCodec<eka> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akj.a(lr.aT).fieldOf("alias").forGetter(eka::c), akj.a(lr.aT).fieldOf("target").forGetter(eka::d)).apply($$0, eka::new)
-   );
+public class eka extends ekc {
+   public static final MapCodec<eka> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c(), b(), d()).apply($$0, eka::new));
 
-   @Override
-   public void a(aym $$0, BiConsumer<akj<ejz>, akj<ejz>> $$1) {
-      $$1.accept(this.c, this.d);
+   protected eka(Either<akk, emw> $$0, jj<emu> $$1, ekf.a $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public Stream<akj<ejz>> a() {
-      return Stream.of(this.d);
+   protected ems a(dlu $$0, eio $$1, boolean $$2) {
+      ems $$3 = super.a($$0, $$1, $$2);
+      $$3.b(ely.b);
+      $$3.a(ely.d);
+      return $$3;
    }
 
    @Override
-   public MapCodec<eka> b() {
-      return a;
+   public eke<?> a() {
+      return eke.e;
+   }
+
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
 }

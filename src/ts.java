@@ -47,8 +47,8 @@ public abstract class ts {
          }
 
          @Override
-         public axq a(wz $$0) {
-            return $$1 -> $$0.a(($$1x, $$2xxx) -> ayy.c($$2xxx, $$1x, $$1) ? Optional.empty() : wz.a, xr.a).isPresent();
+         public axs a(wz $$0) {
+            return $$1 -> $$0.a(($$1x, $$2xxx) -> azb.c($$2xxx, $$1x, $$1) ? Optional.empty() : wz.a, xr.a).isPresent();
          }
       };
    }
@@ -65,7 +65,7 @@ public abstract class ts {
       JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
 
       for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-         String $$4 = d.matcher(axu.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         String $$4 = d.matcher(axw.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
          $$1.accept($$3.getKey(), $$4);
       }
    }
@@ -88,9 +88,9 @@ public abstract class ts {
 
    public abstract boolean b();
 
-   public abstract axq a(wz var1);
+   public abstract axs a(wz var1);
 
-   public List<axq> a(List<wz> $$0) {
+   public List<axs> a(List<wz> $$0) {
       return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

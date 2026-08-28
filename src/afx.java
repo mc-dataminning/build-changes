@@ -69,25 +69,25 @@ public class afx {
       "Fist"
    };
 
-   public static String a(bsd $$0) {
-      if ($$0 instanceof cmh) {
-         return $$0.af().getString();
+   public static String a(bsg $$0) {
+      if ($$0 instanceof cmk) {
+         return $$0.ag().getString();
       } else {
-         wu $$1 = $$0.ah();
-         return $$1 != null ? $$1.getString() : a($$0.cz());
+         wu $$1 = $$0.ai();
+         return $$1 != null ? $$1.getString() : a($$0.cA());
       }
    }
 
    public static String a(UUID $$0) {
-      aym $$1 = b($$0);
+      ayo $$1 = b($$0);
       return a($$1, a) + a($$1, b);
    }
 
-   private static String a(aym $$0, String[] $$1) {
+   private static String a(ayo $$0, String[] $$1) {
       return ac.a($$1, $$0);
    }
 
-   private static aym b(UUID $$0) {
-      return aym.a((long)($$0.hashCode() >> 2));
+   private static ayo b(UUID $$0) {
+      return ayo.a((long)($$0.hashCode() >> 2));
    }
 }

@@ -1,62 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dga extends ddy {
-   public static final MapCodec<dga> d = b(dga::new);
-   private static final float e = 0.05F;
-   private static final float f = 0.1F;
+public class dga extends dfh {
+   public static final MapCodec<dga> a = b(dga::new);
+   private static final wu b = wu.c("container.cartography_table");
 
    @Override
    public MapCodec<dga> a() {
-      return d;
+      return a;
    }
 
-   public dga(dsg.d $$0) {
-      super($$0, kg.c);
+   protected dga(dsj.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean d(dsh $$0) {
-      return false;
-   }
-
-   protected static boolean a(dcd $$0, ddd.c $$1) {
-      if ($$1 == ddd.c.b) {
-         return $$0.E_().i() < 0.05F;
+   protected bqg a(dsk $$0, dcf $$1, ja $$2, cmk $$3, ewb $$4) {
+      if ($$1.B) {
+         return bqg.a;
       } else {
-         return $$1 == ddd.c.c ? $$0.E_().i() < 0.1F : false;
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(avr.aw);
+         return bqg.c;
       }
    }
 
+   @Nullable
    @Override
-   public void a(dsh $$0, dcd $$1, ja $$2, ddd.c $$3) {
-      if (a($$1, $$3)) {
-         if ($$3 == ddd.c.b) {
-            $$1.b($$2, dfh.fu.o());
-            $$1.a(null, dxa.c, $$2);
-         } else if ($$3 == ddd.c.c) {
-            $$1.b($$2, dfh.fw.o());
-            $$1.a(null, dxa.c, $$2);
-         }
-      }
-   }
-
-   @Override
-   protected boolean a(eoa $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(dsh $$0, dcd $$1, ja $$2, eoa $$3) {
-      if ($$3 == eoc.c) {
-         dsh $$4 = dfh.fu.o();
-         $$1.b($$2, $$4);
-         $$1.a(dxa.c, $$2, dxa.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      } else if ($$3 == eoc.e) {
-         dsh $$5 = dfh.fv.o();
-         $$1.b($$2, $$5);
-         $$1.a(dxa.c, $$2, dxa.a.a($$5));
-         $$1.c(1046, $$2, 0);
-      }
+   protected bqk b(dsk $$0, dcf $$1, ja $$2) {
+      return new bqq(($$2x, $$3, $$4) -> new cpo($$2x, $$3, cpt.a($$1, $$2)), b);
    }
 }

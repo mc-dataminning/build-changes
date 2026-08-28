@@ -1,52 +1,21 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 import org.slf4j.Logger;
 
-public class fbr extends fcc {
-   private static final Logger c = LogUtils.getLogger();
-   public long a;
-   public List<UUID> b;
+public class fbr extends fci {
+   private static final Logger b = LogUtils.getLogger();
+   public String a;
 
-   public static fbr a(JsonObject $$0) {
+   public static fbr a(String $$0) {
       fbr $$1 = new fbr();
 
       try {
-         $$1.a = fdz.a("serverId", $$0, -1L);
-         String $$2 = fdz.b("playerList", $$0, null);
-         if ($$2 != null) {
-            JsonElement $$3 = JsonParser.parseString($$2);
-            if ($$3.isJsonArray()) {
-               $$1.b = a($$3.getAsJsonArray());
-            } else {
-               $$1.b = Lists.newArrayList();
-            }
-         } else {
-            $$1.b = Lists.newArrayList();
-         }
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = fef.b("newsLink", $$3, null);
       } catch (Exception var4) {
-         c.error("Could not parse RealmsServerPlayerList: {}", var4.getMessage());
-      }
-
-      return $$1;
-   }
-
-   private static List<UUID> a(JsonArray $$0) {
-      List<UUID> $$1 = new ArrayList<>($$0.size());
-
-      for (JsonElement $$2 : $$0) {
-         if ($$2.isJsonObject()) {
-            UUID $$3 = fdz.a("playerId", $$2.getAsJsonObject(), null);
-            if ($$3 != null) {
-               $$1.add($$3);
-            }
-         }
+         b.error("Could not parse RealmsNews: {}", var4.getMessage());
       }
 
       return $$1;

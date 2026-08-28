@@ -1,32 +1,19 @@
+import com.google.common.collect.ImmutableList;
+
 public interface flo {
-   flq a();
-
-   public static record a(flq a) implements flo {
-      @Override
-      public flq a() {
-         return this.a.a() == flp.b ? this.a : flq.b;
-      }
-
-      public flq b() {
-         return this.a;
-      }
+   default void a(fln $$0, wu $$1) {
+      this.a($$0, flq.a($$1.getString()));
    }
 
-   public static class b implements flo {
-      @Override
-      public flq a() {
-         return flq.b;
-      }
+   default void a(fln $$0, String $$1) {
+      this.a($$0, flq.a($$1));
    }
 
-   public static record c(boolean a) implements flo {
-      @Override
-      public flq a() {
-         return this.a ? flq.b : flq.a;
-      }
-
-      public boolean b() {
-         return this.a;
-      }
+   default void a(fln $$0, wu... $$1) {
+      this.a($$0, flq.a(ImmutableList.copyOf($$1)));
    }
+
+   void a(fln var1, flq<?> var2);
+
+   flo a();
 }

@@ -1,59 +1,63 @@
-public class byu implements byv {
-   private final bta a;
-   private static final int b = 15;
-   private static final int c = 10;
-   private static final int d = 10;
-   private int e;
-   private float f;
+import com.google.common.collect.ImmutableMap;
 
-   public byu(bta $$0) {
-      this.a = $$0;
+public class byu extends buu<clo> {
+   private static final int d = 15;
+   private static final int e = 20;
+   private static final double f = 0.5;
+   private static final double g = 2.5;
+   public static final int c = 40;
+   private static final int h = ayg.c(34.0);
+   private static final int i = ayg.f(60.0F);
+
+   public byu() {
+      super(ImmutableMap.of(ccf.o, ccg.a, ccf.aJ, ccg.b, ccf.aK, ccg.c, ccf.aL, ccg.c), i);
    }
 
-   public void a() {
-      if (this.f()) {
-         this.a.aY = this.a.dF();
-         this.c();
-         this.f = this.a.ba;
-         this.e = 0;
-      } else {
-         if (this.e()) {
-            if (Math.abs(this.a.ba - this.f) > 15.0F) {
-               this.e = 0;
-               this.f = this.a.ba;
-               this.b();
-            } else {
-               this.e++;
-               if (this.e > 10) {
-                  this.d();
-               }
+   protected boolean a(aqm $$0, clo $$1) {
+      return $$1.a($$1.dU().c(ccf.o).get(), 15.0, 20.0);
+   }
+
+   protected boolean a(aqm $$0, clo $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(aqm $$0, clo $$1, long $$2) {
+      $$1.dU().a(ccf.p, true, (long)i);
+      $$1.dU().a(ccf.aL, azk.a, (long)h);
+      $$0.a($$1, (byte)62);
+      $$1.a(avh.BW, 3.0F, 1.0F);
+   }
+
+   protected void c(aqm $$0, clo $$1, long $$2) {
+      $$1.dU().c(ccf.o).ifPresent($$1x -> $$1.G().a($$1x.do()));
+      if (!$$1.dU().a(ccf.aL) && !$$1.dU().a(ccf.aK)) {
+         $$1.dU().a(ccf.aK, azk.a, (long)(i - h));
+         $$1.dU().c(ccf.o).filter($$1::b).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
+            ewf $$3 = $$1.do().e($$1.dn().b(bsh.d, 0, $$1.dG()));
+            ewf $$4 = $$2x.by().d($$3);
+            ewf $$5 = $$4.d();
+            int $$6 = ayg.a($$4.f()) + 7;
+
+            for (int $$7 = 1; $$7 < $$6; $$7++) {
+               ewf $$8 = $$3.e($$5.a((double)$$7));
+               $$0.a(lj.B, $$8.c, $$8.d, $$8.e, 1, 0.0, 0.0, 0.0, 0.0);
             }
-         }
+
+            $$1.a(avh.BV, 3.0F, 1.0F);
+            if ($$2x.a($$0.aj().e($$1), 10.0F)) {
+               double $$9 = 0.5 * (1.0 - $$2x.g(buj.p));
+               double $$10 = 2.5 * (1.0 - $$2x.g(buj.p));
+               $$2x.j($$5.a() * $$10, $$5.b() * $$9, $$5.c() * $$10);
+            }
+         });
       }
    }
 
-   private void b() {
-      this.a.aY = aye.c(this.a.aY, this.a.ba, (float)this.a.ab());
+   protected void d(aqm $$0, clo $$1, long $$2) {
+      a($$1, 40);
    }
 
-   private void c() {
-      this.a.ba = aye.c(this.a.ba, this.a.aY, (float)this.a.ab());
-   }
-
-   private void d() {
-      int $$0 = this.e - 10;
-      float $$1 = aye.a((float)$$0 / 10.0F, 0.0F, 1.0F);
-      float $$2 = (float)this.a.ab() * (1.0F - $$1);
-      this.a.aY = aye.c(this.a.aY, this.a.ba, $$2);
-   }
-
-   private boolean e() {
-      return !(this.a.cT() instanceof bta);
-   }
-
-   private boolean f() {
-      double $$0 = this.a.du() - this.a.L;
-      double $$1 = this.a.dA() - this.a.N;
-      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
+   public static void a(btb $$0, int $$1) {
+      $$0.dU().a(ccf.aJ, azk.a, (long)$$1);
    }
 }

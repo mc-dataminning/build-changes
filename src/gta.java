@@ -1,8 +1,28 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gta {
+public class gta {
+   private final List<gsz> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
+
+   public gta(List<gsz> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public List<gsz> a() {
+      return this.a;
+   }
+
+   public boolean b() {
+      return this.b;
+   }
+
+   @Nullable
+   public String c() {
+      return this.c;
+   }
 }

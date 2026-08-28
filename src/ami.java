@@ -106,8 +106,8 @@ public class ami {
       );
    }
 
-   private static int a(eq $$0, Collection<? extends bsd> $$1, jj<brj> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
-      brj $$6 = $$2.a();
+   private static int a(eq $$0, Collection<? extends bsg> $$1, jj<brm> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
+      brm $$6 = $$2.a();
       int $$7 = 0;
       int $$8;
       if ($$3 != null) {
@@ -124,10 +124,10 @@ public class ami {
          $$8 = 600;
       }
 
-      for (bsd $$13 : $$1) {
-         if ($$13 instanceof bsy) {
-            brl $$14 = new brl($$2, $$8, $$4, false, $$5);
-            if (((bsy)$$13).b($$14, $$0.f())) {
+      for (bsg $$13 : $$1) {
+         if ($$13 instanceof btb) {
+            bro $$14 = new bro($$2, $$8, $$4, false, $$5);
+            if (((btb)$$13).b($$14, $$0.f())) {
                $$7++;
             }
          }
@@ -146,11 +146,11 @@ public class ami {
       }
    }
 
-   private static int a(eq $$0, Collection<? extends bsd> $$1) throws CommandSyntaxException {
+   private static int a(eq $$0, Collection<? extends bsg> $$1) throws CommandSyntaxException {
       int $$2 = 0;
 
-      for (bsd $$3 : $$1) {
-         if ($$3 instanceof bsy && ((bsy)$$3).es()) {
+      for (bsg $$3 : $$1) {
+         if ($$3 instanceof btb && ((btb)$$3).et()) {
             $$2++;
          }
       }
@@ -168,12 +168,12 @@ public class ami {
       }
    }
 
-   private static int a(eq $$0, Collection<? extends bsd> $$1, jj<brj> $$2) throws CommandSyntaxException {
-      brj $$3 = $$2.a();
+   private static int a(eq $$0, Collection<? extends bsg> $$1, jj<brm> $$2) throws CommandSyntaxException {
+      brm $$3 = $$2.a();
       int $$4 = 0;
 
-      for (bsd $$5 : $$1) {
-         if ($$5 instanceof bsy && ((bsy)$$5).e($$2)) {
+      for (bsg $$5 : $$1) {
+         if ($$5 instanceof btb && ((btb)$$5).e($$2)) {
             $$4++;
          }
       }

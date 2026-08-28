@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class gd extends ga<dkc> {
+public class gd extends ga<dke> {
    private gd() {
-      super(dkc.d, dkc::values);
+      super(dke.d, dke::values);
    }
 
-   public static ga<dkc> a() {
+   public static ga<dke> a() {
       return new gd();
    }
 
-   public static dkc a(CommandContext<eq> $$0, String $$1) {
-      return (dkc)$$0.getArgument($$1, dkc.class);
+   public static dke a(CommandContext<eq> $$0, String $$1) {
+      return (dke)$$0.getArgument($$1, dke.class);
    }
 }

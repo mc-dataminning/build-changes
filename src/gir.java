@@ -1,17 +1,13 @@
-public class gir extends gkm<cet, ftx<cet>> {
-   private static final akk a = new akk("textures/entity/chicken.png");
+public class gir extends glo<cja> {
+   private static final akk a = new akk("textures/entity/skeleton/bogged.png");
+   private static final akk i = new akk("textures/entity/skeleton/bogged_overlay.png");
 
-   public gir(gjg.a $$0) {
-      super($$0, new ftx<>($$0.a(fxh.z)), 0.3F);
+   public gir(gjm.a $$0) {
+      super($$0, fxn.o, fxn.p, new ftv($$0.a(fxn.n)));
+      this.a(new goc<>(this, $$0.f(), fxn.q, i));
    }
 
-   public akk a(cet $$0) {
+   public akk a(cja $$0) {
       return a;
-   }
-
-   protected float a(cet $$0, float $$1) {
-      float $$2 = aye.i($$1, $$0.ce, $$0.ca);
-      float $$3 = aye.i($$1, $$0.cd, $$0.cb);
-      return (aye.a($$2) + 1.0F) * $$3;
    }
 }

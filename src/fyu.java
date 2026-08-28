@@ -1,90 +1,101 @@
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.GameProfile;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
 public class fyu {
-   private static final fyu.a a = new fyu.a();
-   private static final fyu.a b = new fyu.a();
-   private static final fyu.a c = new fyu.a();
-   private CompletableFuture<gtg<cua>> d = CompletableFuture.completedFuture(gtg.empty());
-   private CompletableFuture<gtg<cua>> e = CompletableFuture.completedFuture(gtg.empty());
-   private CompletableFuture<gtg<frc>> f = CompletableFuture.completedFuture(gtg.empty());
-   private final Map<fyu.a, Runnable> g = new IdentityHashMap<>();
+   private final GameProfile a;
+   private final Supplier<gqo> b;
+   private dcc c = dcc.e;
+   private int d;
+   @Nullable
+   private wu e;
+   @Nullable
+   private xl f;
+   private xq g;
 
-   private void a(fyu.a $$0, Runnable $$1) {
-      $$1.run();
-      this.g.put($$0, $$1);
+   public fyu(GameProfile $$0, boolean $$1) {
+      this.a = $$0;
+      this.g = b($$1);
+      Supplier<Supplier<gqo>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
    }
 
-   public void a() {
-      for (Runnable $$0 : this.g.values()) {
-         $$0.run();
-      }
+   private static Supplier<gqo> a(GameProfile $$0) {
+      fft $$1 = fft.Q();
+      gqp $$2 = $$1.am();
+      CompletableFuture<gqo> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      gqo $$5 = gqg.a($$0);
+      return () -> {
+         gqo $$3x = $$3.getNow($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
    }
 
-   private static Stream<String> a(Stream<cua> $$0, ctv.b $$1, cvt $$2) {
-      return $$0.<wu>flatMap($$2x -> $$2x.a($$1, null, $$2).stream()).map($$0x -> n.a($$0x.getString()).trim()).filter($$0x -> !$$0x.isEmpty());
+   public GameProfile a() {
+      return this.a;
    }
 
-   public void a(ffa $$0, jx.b $$1) {
-      this.a(
-         a,
-         () -> {
-            List<frc> $$2 = $$0.b();
-            jw<ctv> $$3 = $$1.d(lr.K);
-            ctv.b $$4 = ctv.b.a($$1);
-            cvt $$5 = cvt.a.a;
-            CompletableFuture<?> $$6 = this.f;
-            this.f = CompletableFuture.supplyAsync(
-               () -> new gtb<>(
-                     $$3xx -> a($$3xx.e().stream().map($$1xxxx -> $$1xxxx.b().a($$1)), $$4, $$5),
-                     $$2xx -> $$2xx.e().stream().map($$2xxx -> $$3.b($$2xxx.b().a($$1).g())),
-                     $$2
-                  ),
-               ac.g()
-            );
-            $$6.cancel(true);
-         }
-      );
+   @Nullable
+   public xl b() {
+      return this.f;
    }
 
-   public gtg<frc> b() {
-      return this.f.join();
+   public xq c() {
+      return this.g;
    }
 
-   public void a(List<cua> $$0) {
-      this.a(c, () -> {
-         CompletableFuture<?> $$1 = this.e;
-         this.e = CompletableFuture.supplyAsync(() -> new gtc<>($$0xxx -> $$0xxx.i().map(awk::b), $$0), ac.g());
-         $$1.cancel(true);
-      });
+   public boolean d() {
+      return this.f != null;
    }
 
-   public gtg<cua> c() {
-      return this.e.join();
+   protected void a(xl $$0) {
+      this.f = $$0;
+      this.g = $$0.a(cmn.b);
    }
 
-   public void a(jl.a $$0, List<cua> $$1) {
-      this.a(
-         b,
-         () -> {
-            ctv.b $$2 = ctv.b.a($$0);
-            cvt $$3 = cvt.a.a.c();
-            CompletableFuture<?> $$4 = this.d;
-            this.d = CompletableFuture.supplyAsync(
-               () -> new gtb<>($$2xx -> a(Stream.of($$2xx), $$2, $$3), $$0xxx -> $$0xxx.h().e().map(akj::a).stream(), $$1), ac.g()
-            );
-            $$4.cancel(true);
-         }
-      );
+   protected void a(boolean $$0) {
+      this.f = null;
+      this.g = b($$0);
    }
 
-   public gtg<cua> d() {
-      return this.d.join();
+   private static xq b(boolean $$0) {
+      return $$0 ? xq.c : xq.b;
    }
 
-   static class a {
+   public dcc e() {
+      return this.c;
+   }
+
+   protected void a(dcc $$0) {
+      this.c = $$0;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   protected void a(int $$0) {
+      this.d = $$0;
+   }
+
+   public gqo g() {
+      return this.b.get();
+   }
+
+   @Nullable
+   public exe h() {
+      return fft.Q().r.M().e(this.a().getName());
+   }
+
+   public void a(@Nullable wu $$0) {
+      this.e = $$0;
+   }
+
+   @Nullable
+   public wu i() {
+      return this.e;
    }
 }

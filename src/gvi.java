@@ -1,37 +1,38 @@
-public class gvi extends gvm {
-   private final wu a;
-   private fif b = fif.a;
-   private final fnd c;
-   private int A;
+public class gvi implements gvl {
+   private static final int a = 600;
+   private static final wu b = wu.c("tutorial.open_inventory.title");
+   private static final wu c = wu.a("tutorial.open_inventory.description", gvk.a("inventory"));
+   private final gvk d;
+   private fkd e;
+   private int f;
 
-   public gvi(fnd $$0, wu $$1, wu $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+   public gvi(gvk $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void aO_() {
-      this.l.ae().i();
-      this.b = fif.a(this.o, this.a, this.m - 50);
-      this.A = this.b.a() * 9;
-      this.c(fhm.a(wt.k, $$0 -> this.l.a(this.c)).a(this.m / 2 - 100, this.n / 2 + this.A / 2 + 9, 200, 20).a());
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gvm.f);
+      } else {
+         if (this.f >= 600 && this.e == null) {
+            this.e = new fkd(fkd.a.d, b, c, false);
+            this.d.e().ax().a(this.e);
+         }
+      }
    }
 
    @Override
-   public wu i() {
-      return wu.i().b(this.k).f(": ").b(this.a);
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
    }
 
    @Override
-   public void d() {
-      ffn.Q().a(this.c);
-   }
-
-   @Override
-   public void a(fgz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, this.n / 2 - this.A / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.m / 2, this.n / 2 - this.A / 2);
+   public void c() {
+      this.d.a(gvm.e);
    }
 }

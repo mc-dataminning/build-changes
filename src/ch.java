@@ -2,19 +2,19 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record ch(Optional<bc<cua, cp>> c) implements dt<cwv> {
+public record ch(Optional<bc<cuc, cp>> c) implements dt<cwx> {
    public static final Codec<ch> a = RecordCodecBuilder.create($$0 -> $$0.group(bc.a(cp.a).optionalFieldOf("items").forGetter(ch::b)).apply($$0, ch::new));
 
    @Override
-   public km<cwv> a() {
+   public km<cwx> a() {
       return kn.aa;
    }
 
-   public boolean a(cua $$0, cwv $$1) {
+   public boolean a(cuc $$0, cwx $$1) {
       return !this.c.isPresent() || this.c.get().a($$1.d());
    }
 
-   public Optional<bc<cua, cp>> b() {
+   public Optional<bc<cuc, cp>> b() {
       return this.c;
    }
 }

@@ -1,54 +1,52 @@
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class gtf {
+   public static class a extends gsl {
+      private final gdf n;
 
-public interface gtf<T> {
-   static <T> gtf<T> a() {
-      return new gtf<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
+      protected a(gdf $$0, avg $$1) {
+         super($$1, avi.i, gtc.t());
+         this.n = $$0;
+         this.i = false;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
+
+      @Override
+      public void q() {
+         if (this.n.dL() || !this.n.bk()) {
+            this.n();
          }
-
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
-   }
-
-   static <T> gtf<T> a(List<T> $$0, Function<T, Stream<akk>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
-      } else {
-         final gth<T> $$2 = new gth<>();
-         final gth<T> $$3 = new gth<>();
-
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
-         }
-
-         $$2.a();
-         $$3.a();
-         return new gtf<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
       }
    }
 
-   List<T> a(String var1);
+   public static class b extends gsl {
+      public static final int n = 40;
+      private final gdf o;
+      private int p;
 
-   List<T> b(String var1);
+      public b(gdf $$0) {
+         super(avh.z, avi.i, gtc.t());
+         this.o = $$0;
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
+
+      @Override
+      public void q() {
+         if (!this.o.dL() && this.p >= 0) {
+            if (this.o.bk()) {
+               this.p++;
+            } else {
+               this.p -= 2;
+            }
+
+            this.p = Math.min(this.p, 40);
+            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         } else {
+            this.n();
+         }
+      }
+   }
 }

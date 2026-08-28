@@ -1,20 +1,15 @@
-public class gln<T extends cjy> extends gkm<T, fwj<T>> {
-   private static final akk a = new akk("textures/entity/spider/spider.png");
+public class gln extends gks<cjx, fwi<cjx>> {
+   private static final akk a = new akk("textures/entity/silverfish.png");
 
-   public gln(gjg.a $$0) {
-      this($$0, fxh.bx);
+   public gln(gjm.a $$0) {
+      super($$0, new fwi<>($$0.a(fxn.bm)), 0.3F);
    }
 
-   public gln(gjg.a $$0, fxg $$1) {
-      super($$0, new fwj<>($$0.a($$1)), 0.8F);
-      this.a(new gnz<>(this));
-   }
-
-   protected float b(T $$0) {
+   protected float a(cjx $$0) {
       return 180.0F;
    }
 
-   public akk a(T $$0) {
+   public akk b(cjx $$0) {
       return a;
    }
 }

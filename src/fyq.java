@@ -1,58 +1,68 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.google.common.base.Splitter;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
 import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
 
-public class fyq {
-   @Nullable
-   private fyq.a a;
-   @Nullable
-   private fyv b;
+public class fyq extends SimpleChannelInboundHandler<ByteBuf> {
+   private static final Splitter a = Splitter.on('\u0000').limit(6);
+   private final gab b;
+   private final fyq.a c;
 
-   public void a(akj<? extends jw<?>> $$0, List<ka.a> $$1) {
-      if (this.a == null) {
-         this.a = new fyq.a();
-      }
-
-      this.a.a($$0, $$1);
+   public fyq(gab $$0, fyq.a $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(Map<akj<? extends jw<?>>, awn.a> $$0) {
-      if (this.b == null) {
-         this.b = new fyv();
-      }
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      ByteBuf $$1 = $$0.alloc().buffer();
 
-      $$0.forEach(this.b::a);
+      try {
+         $$1.writeByte(254);
+         $$1.writeByte(1);
+         $$1.writeByte(250);
+         arf.a($$1, "MC|PingHost");
+         int $$2 = $$1.writerIndex();
+         $$1.writeShort(0);
+         int $$3 = $$1.writerIndex();
+         $$1.writeByte(127);
+         arf.a($$1, this.b.a());
+         $$1.writeInt(this.b.b());
+         int $$4 = $$1.writerIndex() - $$3;
+         $$1.setShort($$2, $$4);
+         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+      } catch (Exception var6) {
+         $$1.release();
+         throw var6;
+      }
    }
 
-   public jx.b a(atx $$0, jx $$1, boolean $$2) {
-      jq<fyf> $$3 = fyf.a();
-      jx $$6;
-      if (this.a != null) {
-         jx.b $$4 = $$3.b(fyf.b);
-         jx.b $$5 = this.a.a($$0, $$4).d();
-         $$6 = $$3.a(fyf.b, $$5).a();
-      } else {
-         $$6 = $$1;
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      short $$2 = $$1.readUnsignedByte();
+      if ($$2 == 255) {
+         String $$3 = arf.a($$1);
+         List<String> $$4 = a.splitToList($$3);
+         if ("§1".equals($$4.get(0))) {
+            int $$5 = ayg.a($$4.get(1), 0);
+            String $$6 = $$4.get(2);
+            String $$7 = $$4.get(3);
+            int $$8 = ayg.a($$4.get(4), -1);
+            int $$9 = ayg.a($$4.get(5), -1);
+            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
+         }
       }
 
-      if (this.b != null) {
-         this.b.a($$6, $$2);
-      }
-
-      return $$6.d();
+      $$0.close();
    }
 
-   static class a {
-      private final Map<akj<? extends jw<?>>, List<ka.a>> a = new HashMap<>();
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      $$0.close();
+   }
 
-      public void a(akj<? extends jw<?>> $$0, List<ka.a> $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
-      }
-
-      public jx a(atx $$0, jx $$1) {
-         return akf.a(this.a, $$0, $$1, akf.c);
-      }
+   @FunctionalInterface
+   public interface a {
+      void handleResponse(int var1, String var2, String var3, int var4, int var5);
    }
 }

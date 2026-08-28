@@ -1,63 +1,42 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class elc extends eiq {
-   public static final MapCodec<elc> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               a($$0),
-               elc.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, elc::new)
+public class elc extends eiw {
+   public static final bou<ddr.c> d = bou.a(
+      new ddr.c(bsm.i, 10, 2, 3), new ddr.c(bsm.bx, 5, 4, 4), new ddr.c(bsm.bq, 8, 5, 5), new ddr.c(bsm.aN, 2, 5, 5), new ddr.c(bsm.ap, 3, 4, 4)
    );
-   public final elc.a e;
-   public final float f;
-   public final float g;
+   public static final MapCodec<elc> e = a(elc::new);
 
-   public elc(eiq.c $$0, elc.a $$1, float $$2, float $$3) {
+   public elc(eiw.c $$0) {
       super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
    }
 
    @Override
-   public Optional<eiq.b> a(eiq.a $$0) {
-      return a($$0, dxz.a.c, $$1 -> this.a($$1, $$0));
+   public Optional<eiw.b> a(eiw.a $$0) {
+      dbm $$1 = $$0.h();
+      ja $$2 = new ja($$1.d(), 64, $$1.e());
+      return Optional.of(new eiw.b($$2, (Consumer<ejo>)($$1x -> a($$1x, $$0))));
    }
 
-   private void a(eji $$0, eiq.a $$1) {
-      ja $$2 = new ja($$1.h().d(), 90, $$1.h().e());
-      dls $$3 = dls.a($$1.f());
-      elb.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
+   private static void a(ejo $$0, eiw.a $$1) {
+      elb.q $$2 = new elb.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<eja> $$3 = $$2.d;
+
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         eja $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
+      }
+
+      $$0.a($$1.f(), 48, 70);
    }
 
    @Override
-   public eiz<?> e() {
-      return eiz.k;
-   }
-
-   public static enum a implements ayz {
-      a("warm"),
-      b("cold");
-
-      public static final Codec<elc.a> c = ayz.a(elc.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public ejf<?> e() {
+      return ejf.d;
    }
 }

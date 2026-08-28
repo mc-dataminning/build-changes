@@ -1,36 +1,60 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class etv implements etz {
-   private static final etv b = new etv();
-   public static final MapCodec<etv> a = MapCodec.unit(b);
+public abstract class etv implements euf {
+   protected final List<euf> c;
+   private final Predicate<equ> a;
 
-   private etv() {
+   protected etv(List<euf> $$0, Predicate<equ> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends etv> MapCodec<T> a(Function<List<euf>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(euf.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends etv> Codec<T> b(Function<List<euf>, T> $$0) {
+      return euf.e.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(equ $$0) {
+      return this.a.test($$0);
    }
 
    @Override
-   public eua b() {
-      return eub.l;
-   }
+   public void a(era $$0) {
+      euf.super.a($$0);
 
-   @Override
-   public Set<eth<?>> a() {
-      return ImmutableSet.of(etk.j);
-   }
-
-   public boolean a(eqo $$0) {
-      Float $$1 = $$0.c(etk.j);
-      if ($$1 != null) {
-         aym $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
       }
    }
 
-   public static etz.a c() {
-      return () -> b;
+   public abstract static class a implements euf.a {
+      private final Builder<euf> a = ImmutableList.builder();
+
+      protected a(euf.a... $$0) {
+         for (euf.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
+      }
+
+      public void a(euf.a $$0) {
+         this.a.add($$0.build());
+      }
+
+      @Override
+      public euf build() {
+         return this.a(this.a.build());
+      }
+
+      protected abstract euf a(List<euf> var1);
    }
 }

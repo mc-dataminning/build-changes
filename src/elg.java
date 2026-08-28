@@ -1,45 +1,60 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import java.util.Optional;
 
-public class elg extends eiq {
-   public static final MapCodec<elg> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, elg::new)
-   );
-   public final boolean e;
+public class elg extends eiw {
+   public static final MapCodec<elg> d = a(elg::new);
 
-   public elg(eiq.c $$0, boolean $$1) {
+   public elg(eiw.c $$0) {
       super($$0);
-      this.e = $$1;
    }
 
    @Override
-   public Optional<eiq.b> a(eiq.a $$0) {
-      dxz.a $$1 = this.e ? dxz.a.a : dxz.a.c;
-      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
+   public Optional<eiw.b> a(eiw.a $$0) {
+      int $$1 = $$0.h().a(9);
+      int $$2 = $$0.h().b(9);
+
+      for (jj<ddf> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
+         if (!$$4.a(avv.X)) {
+            return Optional.empty();
+         }
+      }
+
+      return a($$0, dyf.a.c, $$1x -> a($$1x, $$0));
    }
 
-   private void a(eji $$0, eiq.a $$1) {
-      dls $$2 = dls.a($$1.f());
-      ja $$3 = new ja($$1.h().d(), 90, $$1.h().e());
-      elf.a $$4 = elf.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
-      if ($$4.l()) {
-         eii $$5 = $$4.f();
-         int $$7;
-         if (this.e) {
-            int $$6 = eiq.b($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
-            $$7 = $$4.a($$6, $$1.f());
-         } else {
-            $$7 = eiq.a($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
-         }
+   private static eja a(dbm $$0, dze $$1) {
+      int $$2 = $$0.d() - 29;
+      int $$3 = $$0.e() - 29;
+      jf $$4 = jf.c.a.a($$1);
+      return new elf.h($$1, $$2, $$3, $$4);
+   }
 
-         $$4.c($$7);
+   private static void a(ejo $$0, eiw.a $$1) {
+      $$0.a(a($$1.h(), $$1.f()));
+   }
+
+   public static ejl a(dbm $$0, long $$1, ejl $$2) {
+      if ($$2.a()) {
+         return $$2;
+      } else {
+         dze $$3 = new dze(new dyg(dyu.a()));
+         $$3.c($$1, $$0.e, $$0.f);
+         eja $$4 = $$2.c().get(0);
+         eio $$5 = $$4.f();
+         int $$6 = $$5.h();
+         int $$7 = $$5.j();
+         jf $$8 = jf.c.a.a($$3);
+         jf $$9 = Objects.requireNonNullElse($$4.i(), $$8);
+         eja $$10 = new elf.h($$3, $$6, $$7, $$9);
+         ejo $$11 = new ejo();
+         $$11.a($$10);
+         return $$11.a();
       }
    }
 
    @Override
-   public eiz<?> e() {
-      return eiz.m;
+   public ejf<?> e() {
+      return ejf.j;
    }
 }

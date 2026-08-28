@@ -1,79 +1,43 @@
-import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class gau extends gcl {
-   private final float a;
-   private final gcg b;
+public class gau extends gaw<ld> {
+   private final Vector3f a;
+   private final Vector3f b;
 
-   gau(fyd $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gcg $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
+   protected gau(fyj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ld $$7, gcm $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.b(), $$9);
+      this.b = this.a($$7.c(), $$9);
+   }
+
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   }
+
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   public gbp b() {
-      return gbp.b;
+   public void a(faq $$0, ffe $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * aye.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   public static class a implements gbu<ld> {
+      private final gcm a;
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
-         }
-
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
-      }
-   }
-
-   public static class a implements gbo<lb> {
-      private final gcg a;
-
-      public a(gcg $$0) {
+      public a(gcm $$0) {
          this.a = $$0;
       }
 
-      @Nullable
-      public gbl a(lb $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dsh $$8 = $$0.b();
-         if (!$$8.i() && $$8.l() == dll.a) {
-            return null;
-         } else {
-            ja $$9 = ja.a($$2, $$3, $$4);
-            int $$10 = ffn.Q().av().a($$8, $$1, $$9);
-            if ($$8.b() instanceof dib) {
-               $$10 = ((dib)$$8.b()).b($$8, $$1, $$9);
-            }
-
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new gau($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
-         }
+      public gbr a(ld $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gau($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

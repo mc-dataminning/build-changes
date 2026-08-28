@@ -1,25 +1,15 @@
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Collection;
+import java.util.Locale;
 
-public interface gpm {
-   akd a = new akd("textures", ".png");
+public class gpm extends RuntimeException {
+   private final Collection<gpl.a> a;
 
-   void a(atu var1, gpm.a var2);
-
-   gpo a();
-
-   public interface a {
-      default void a(akk $$0, ats $$1) {
-         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
-      }
-
-      void a(akk var1, gpm.b var2);
-
-      void a(Predicate<akk> var1);
+   public gpm(gpl.a $$0, Collection<gpl.a> $$1) {
+      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
+      this.a = $$1;
    }
 
-   public interface b extends Function<gpl, gpc> {
-      default void a() {
-      }
+   public Collection<gpl.a> a() {
+      return this.a;
    }
 }

@@ -1,31 +1,76 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dne extends dff {
+public class dne extends dfh {
    public static final MapCodec<dne> a = b(dne::new);
-   private static final double b = 5.0;
-   private static final ews c = dff.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+   private static final wu d = wu.c("container.stonecutter");
+   public static final dte b = djd.aE;
+   protected static final ewy c = dfh.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
    @Override
    public MapCodec<dne> a() {
       return a;
    }
 
-   protected dne(dsg.d $$0) {
+   public dne(dsj.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, jf.c));
    }
 
    @Override
-   protected dll a_(dsh $$0) {
-      return dll.a;
+   public dsk a(cxm $$0) {
+      return this.o().a(b, $$0.g().g());
    }
 
    @Override
-   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
+   protected bqg a(dsk $$0, dcf $$1, ja $$2, cmk $$3, ewb $$4) {
+      if ($$1.B) {
+         return bqg.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(avr.ay);
+         return bqg.c;
+      }
+   }
+
+   @Nullable
+   @Override
+   protected bqk b(dsk $$0, dcf $$1, ja $$2) {
+      return new bqq(($$2x, $$3, $$4) -> new crj($$2x, $$3, cpt.a($$1, $$2)), d);
+   }
+
+   @Override
+   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
       return c;
    }
 
    @Override
-   protected float d(dsh $$0, dbj $$1, ja $$2) {
-      return 1.0F;
+   protected boolean f_(dsk $$0) {
+      return true;
+   }
+
+   @Override
+   protected dln a_(dsk $$0) {
+      return dln.c;
+   }
+
+   @Override
+   protected dsk a(dsk $$0, dlu $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dsk a(dsk $$0, dke $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dsl.a<dfh, dsk> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(dsk $$0, eow $$1) {
+      return false;
    }
 }

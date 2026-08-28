@@ -1,4 +1,4 @@
-public class aqb extends aqm {
+public class aqb extends aqo {
    public static final int a = 5;
    public static final int b = 120500;
    private boolean e;
@@ -6,7 +6,7 @@ public class aqb extends aqm {
    private int g;
    private int h;
 
-   public aqb(aql $$0) {
+   public aqb(aqn $$0) {
       super($$0);
    }
 
@@ -64,20 +64,20 @@ public class aqb extends aqm {
    }
 
    @Override
-   public bqd a(aql $$0, dcd $$1, cua $$2, bqc $$3) {
+   public bqg a(aqn $$0, dcf $$1, cuc $$2, bqf $$3) {
       if (this.f) {
          this.f();
-         return bqd.e;
+         return bqg.e;
       } else {
          return super.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public bqd a(aql $$0, dcd $$1, cua $$2, bqc $$3, evv $$4) {
+   public bqg a(aqn $$0, dcf $$1, cuc $$2, bqf $$3, ewb $$4) {
       if (this.f) {
          this.f();
-         return bqd.e;
+         return bqg.e;
       } else {
          return super.a($$0, $$1, $$2, $$3, $$4);
       }

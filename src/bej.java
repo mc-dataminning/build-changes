@@ -8,39 +8,32 @@ import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 
-public class bej extends DataFix {
-   public bej(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public abstract class bej extends DataFix {
+   private final String a;
+   private final Predicate<String> b;
+
+   public bej(Schema $$0, String $$1, Predicate<String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgd.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgd.D.typeName(), bhp.a()));
-      OpticFinder<?> $$2 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "ItemWaterPotionFix",
-         $$0,
-         $$2x -> {
-            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
-            if ($$3.isPresent()) {
-               String $$4 = (String)$$3.get().getSecond();
-               if ("minecraft:potion".equals($$4)
-                  || "minecraft:splash_potion".equals($$4)
-                  || "minecraft:lingering_potion".equals($$4)
-                  || "minecraft:tipped_arrow".equals($$4)) {
-                  Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
-                  Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
-                  if ($$6.get("Potion").asString().result().isEmpty()) {
-                     $$6 = $$6.set("Potion", $$6.createString("minecraft:water"));
-                  }
-
-                  return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
-               }
-            }
-
-            return $$2x;
-         }
-      );
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgg.t);
+      return this.fixTypeEverywhereTyped(this.a, $$0, a($$0, this.b, this::a));
    }
+
+   public static UnaryOperator<Typed<?>> a(Type<?> $$0, Predicate<String> $$1, UnaryOperator<Dynamic<?>> $$2) {
+      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bgg.D.typeName(), bhs.a()));
+      OpticFinder<?> $$4 = $$0.findField("tag");
+      return $$4x -> {
+         Optional<Pair<String, String>> $$5 = $$4x.getOptional($$3);
+         return $$5.isPresent() && $$1.test((String)$$5.get().getSecond()) ? $$4x.updateTyped($$4, $$1xx -> $$1xx.update(DSL.remainderFinder(), $$2)) : $$4x;
+      };
+   }
+
+   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

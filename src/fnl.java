@@ -1,257 +1,293 @@
-import com.google.common.collect.Lists;
+import com.mojang.authlib.minecraft.BanDetails;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class fnl {
-   private static final akk a = new akk("advancements/title_box");
-   private static final int b = 26;
-   private static final int c = 0;
-   private static final int d = 200;
-   private static final int e = 26;
-   private static final int f = 8;
-   private static final int g = 5;
-   private static final int h = 26;
-   private static final int i = 3;
-   private static final int j = 5;
-   private static final int k = 32;
-   private static final int l = 9;
-   private static final int m = 163;
-   private static final int[] n = new int[]{0, 10, -10, 25, -25};
-   private final fnj o;
-   private final ag p;
-   private final ar q;
-   private final axq r;
-   private final int s;
-   private final List<axq> t;
-   private final ffn u;
+public class fnl extends fnj {
+   private static final Logger a = LogUtils.getLogger();
+   private static final wu b = wu.c("narrator.screen.title");
+   private static final wu c = wu.c("title.credits");
+   private static final String q = "Demo_World";
+   private static final float r = 2000.0F;
    @Nullable
-   private fnl v;
-   private final List<fnl> w = Lists.newArrayList();
+   private fiw s;
+   private fhs u;
    @Nullable
-   private ah x;
-   private final int y;
-   private final int z;
-
-   public fnl(fnj $$0, ffn $$1, ag $$2, ar $$3) {
-      this.o = $$0;
-      this.p = $$2;
-      this.q = $$3;
-      this.u = $$1;
-      this.r = ts.a().a($$1.h.a($$3.a(), 163));
-      this.y = aye.d($$3.f() * 28.0F);
-      this.z = aye.d($$3.g() * 27.0F);
-      int $$4 = $$2.a().f().a();
-      int $$5 = String.valueOf($$4).length();
-      int $$6 = $$4 > 1 ? $$1.h.b("  ") + $$1.h.b("0") * $$5 * 2 + $$1.h.b("/") : 0;
-      int $$7 = 29 + $$1.h.a(this.r) + $$6;
-      this.t = ts.a().a(this.a(wx.a($$3.b().f(), xr.a.a($$3.e().a())), $$7));
-
-      for (axq $$8 : this.t) {
-         $$7 = Math.max($$7, $$1.h.a($$8));
-      }
-
-      this.s = $$7 + 3 + 5;
-   }
-
-   private static float a(ffy $$0, List<wz> $$1) {
-      return (float)$$1.stream().mapToDouble($$0::a).max().orElse(0.0);
-   }
-
-   private List<wz> a(wu $$0, int $$1) {
-      ffy $$2 = this.u.h.b();
-      List<wz> $$3 = null;
-      float $$4 = Float.MAX_VALUE;
-
-      for (int $$5 : n) {
-         List<wz> $$6 = $$2.b($$0, $$1 - $$5, xr.a);
-         float $$7 = Math.abs(a($$2, $$6) - (float)$$1);
-         if ($$7 <= 10.0F) {
-            return $$6;
-         }
-
-         if ($$7 < $$4) {
-            $$4 = $$7;
-            $$3 = $$6;
-         }
-      }
-
-      return $$3;
-   }
-
+   private fdl v;
+   private float w = 1.0F;
+   private boolean x;
+   private long y;
    @Nullable
-   private fnl a(ag $$0) {
-      do {
-         $$0 = $$0.c();
-      } while ($$0 != null && $$0.a().c().isEmpty());
+   private fnl.a z;
+   private final fij A;
 
-      return $$0 != null && !$$0.a().c().isEmpty() ? this.o.a($$0.b()) : null;
+   public fnl() {
+      this(false);
    }
 
-   public void a(fgz $$0, int $$1, int $$2, boolean $$3) {
-      if (this.v != null) {
-         int $$4 = $$1 + this.v.y + 13;
-         int $$5 = $$1 + this.v.y + 26 + 4;
-         int $$6 = $$2 + this.v.z + 13;
-         int $$7 = $$1 + this.y + 13;
-         int $$8 = $$2 + this.z + 13;
-         int $$9 = $$3 ? -16777216 : -1;
-         if ($$3) {
-            $$0.a($$5, $$4, $$6 - 1, $$9);
-            $$0.a($$5 + 1, $$4, $$6, $$9);
-            $$0.a($$5, $$4, $$6 + 1, $$9);
-            $$0.a($$7, $$5 - 1, $$8 - 1, $$9);
-            $$0.a($$7, $$5 - 1, $$8, $$9);
-            $$0.a($$7, $$5 - 1, $$8 + 1, $$9);
-            $$0.b($$5 - 1, $$8, $$6, $$9);
-            $$0.b($$5 + 1, $$8, $$6, $$9);
-         } else {
-            $$0.a($$5, $$4, $$6, $$9);
-            $$0.a($$7, $$5, $$8, $$9);
-            $$0.b($$5, $$8, $$6, $$9);
-         }
-      }
-
-      for (fnl $$10 : this.w) {
-         $$10.a($$0, $$1, $$2, $$3);
-      }
+   public fnl(boolean $$0) {
+      this($$0, null);
    }
 
-   public void a(fgz $$0, int $$1, int $$2) {
-      if (!this.q.j() || this.x != null && this.x.a()) {
-         float $$3 = this.x == null ? 0.0F : this.x.c();
-         fnm $$4;
-         if ($$3 >= 1.0F) {
-            $$4 = fnm.a;
-         } else {
-            $$4 = fnm.b;
-         }
-
-         $$0.a($$4.a(this.q.e()), $$1 + this.y + 3, $$2 + this.z, 26, 26);
-         $$0.b(this.q.c(), $$1 + this.y + 8, $$2 + this.z + 5);
-      }
-
-      for (fnl $$6 : this.w) {
-         $$6.a($$0, $$1, $$2);
-      }
-   }
-
-   public int a() {
-      return this.s;
-   }
-
-   public void a(ah $$0) {
+   public fnl(boolean $$0, @Nullable fij $$1) {
+      super(b);
       this.x = $$0;
+      this.A = Objects.requireNonNullElseGet($$1, () -> new fij(false));
    }
 
-   public void a(fnl $$0) {
-      this.w.add($$0);
+   private boolean m() {
+      return this.v != null;
    }
 
-   public void a(fgz $$0, int $$1, int $$2, float $$3, int $$4, int $$5) {
-      boolean $$6 = $$4 + $$1 + this.y + this.s + 26 >= this.o.f().m;
-      wu $$7 = this.x == null ? null : this.x.d();
-      int $$8 = $$7 == null ? 0 : this.u.h.a($$7);
-      boolean $$9 = 113 - $$2 - this.z - 26 <= 6 + this.t.size() * 9;
-      float $$10 = this.x == null ? 0.0F : this.x.c();
-      int $$11 = aye.d($$10 * (float)this.s);
-      fnm $$12;
-      fnm $$13;
-      fnm $$14;
-      if ($$10 >= 1.0F) {
-         $$11 = this.s / 2;
-         $$12 = fnm.a;
-         $$13 = fnm.a;
-         $$14 = fnm.a;
-      } else if ($$11 < 2) {
-         $$11 = this.s / 2;
-         $$12 = fnm.b;
-         $$13 = fnm.b;
-         $$14 = fnm.b;
-      } else if ($$11 > this.s - 2) {
-         $$11 = this.s / 2;
-         $$12 = fnm.a;
-         $$13 = fnm.a;
-         $$14 = fnm.b;
-      } else {
-         $$12 = fnm.a;
-         $$13 = fnm.b;
-         $$14 = fnm.b;
+   @Override
+   public void e() {
+      if (this.m()) {
+         this.v.e();
+      }
+   }
+
+   public static CompletableFuture<Void> a(gpp $$0, Executor $$1) {
+      return CompletableFuture.allOf($$0.a(fij.a, $$1), $$0.a(fij.c, $$1), $$0.a(gef.a, $$1), d.a($$0, $$1));
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   @Override
+   public boolean aF_() {
+      return false;
+   }
+
+   @Override
+   protected void aP_() {
+      if (this.s == null) {
+         this.s = this.l.aK().a();
       }
 
-      int $$24 = this.s - $$11;
-      RenderSystem.enableBlend();
-      int $$25 = $$2 + this.z;
-      int $$26;
-      if ($$6) {
-         $$26 = $$1 + this.y - this.s + 26 + 6;
+      int $$0 = this.o.a(c);
+      int $$1 = this.m - $$0 - 2;
+      int $$2 = 24;
+      int $$3 = this.n / 4 + 48;
+      if (this.l.K()) {
+         this.b($$3, 24);
       } else {
-         $$26 = $$1 + this.y;
+         this.a($$3, 24);
       }
 
-      int $$28 = 32 + this.t.size() * 9;
-      if (!this.t.isEmpty()) {
-         if ($$9) {
-            $$0.a(a, $$26, $$25 + 26 - $$28, this.s, $$28);
+      fix $$4 = this.c(fhw.a(20, $$0x -> this.l.a(new fqh(this, this.l.m, this.l.ag())), true));
+      $$4.c(this.m / 2 - 124, $$3 + 72 + 12);
+      this.c(fhs.a(wu.c("menu.options"), $$0x -> this.l.a(new fqk(this, this.l.m))).a(this.m / 2 - 100, $$3 + 72 + 12, 98, 20).a());
+      this.c(fhs.a(wu.c("menu.quit"), $$0x -> this.l.q()).a(this.m / 2 + 2, $$3 + 72 + 12, 98, 20).a());
+      fix $$5 = this.c(fhw.b(20, $$0x -> this.l.a(new fqe(this, this.l.m)), true));
+      $$5.c(this.m / 2 + 104, $$3 + 72 + 12);
+      this.c(new fiq($$1, this.n - 10, $$0, 10, c, $$0x -> this.l.a(new fml(this)), this.o));
+      if (this.v == null) {
+         this.v = new fdl();
+      }
+
+      if (this.m()) {
+         this.v.b(this.l, this.m, this.n);
+      }
+   }
+
+   private void a(int $$0, int $$1) {
+      this.c(fhs.a(wu.c("menu.singleplayer"), $$0x -> this.l.a(new fsm(this))).a(this.m / 2 - 100, $$0, 200, 20).a());
+      wu $$2 = this.E();
+      boolean $$3 = $$2 == null;
+      fjd $$4 = $$2 != null ? fjd.a($$2) : null;
+      this.c(fhs.a(wu.c("menu.multiplayer"), $$0x -> {
+         fnj $$1x = (fnj)(this.l.m.v ? new fpy(this) : new fpz(this));
+         this.l.a($$1x);
+      }).a(this.m / 2 - 100, $$0 + $$1 * 1, 200, 20).a($$4).a()).j = $$3;
+      this.c(fhs.a(wu.c("menu.online"), $$0x -> this.l.a(new fax(this))).a(this.m / 2 - 100, $$0 + $$1 * 2, 200, 20).a($$4).a()).j = $$3;
+   }
+
+   @Nullable
+   private wu E() {
+      if (this.l.F()) {
+         return null;
+      } else if (this.l.I()) {
+         return wu.c("title.multiplayer.disabled.banned.name");
+      } else {
+         BanDetails $$0 = this.l.H();
+         if ($$0 != null) {
+            return $$0.expires() != null ? wu.c("title.multiplayer.disabled.banned.temporary") : wu.c("title.multiplayer.disabled.banned.permanent");
          } else {
-            $$0.a(a, $$26, $$25, this.s, $$28);
+            return wu.c("title.multiplayer.disabled");
          }
       }
-
-      $$0.a($$12.a(), 200, 26, 0, 0, $$26, $$25, $$11, 26);
-      $$0.a($$13.a(), 200, 26, 200 - $$24, 0, $$26 + $$11, $$25, $$24, 26);
-      $$0.a($$14.a(this.q.e()), $$1 + this.y + 3, $$2 + this.z, 26, 26);
-      if ($$6) {
-         $$0.b(this.u.h, this.r, $$26 + 5, $$2 + this.z + 9, -1);
-         if ($$7 != null) {
-            $$0.b(this.u.h, $$7, $$1 + this.y - $$8, $$2 + this.z + 9, -1);
-         }
-      } else {
-         $$0.b(this.u.h, this.r, $$1 + this.y + 32, $$2 + this.z + 9, -1);
-         if ($$7 != null) {
-            $$0.b(this.u.h, $$7, $$1 + this.y + this.s - $$8 - 5, $$2 + this.z + 9, -1);
-         }
-      }
-
-      if ($$9) {
-         for (int $$29 = 0; $$29 < this.t.size(); $$29++) {
-            $$0.a(this.u.h, this.t.get($$29), $$26 + 5, $$25 + 26 - $$28 + 7 + $$29 * 9, -5592406, false);
-         }
-      } else {
-         for (int $$30 = 0; $$30 < this.t.size(); $$30++) {
-            $$0.a(this.u.h, this.t.get($$30), $$26 + 5, $$2 + this.z + 9 + 17 + $$30 * 9, -5592406, false);
-         }
-      }
-
-      $$0.b(this.q.c(), $$1 + this.y + 8, $$2 + this.z + 5);
    }
 
-   public boolean a(int $$0, int $$1, int $$2, int $$3) {
-      if (!this.q.j() || this.x != null && this.x.a()) {
-         int $$4 = $$0 + this.y;
-         int $$5 = $$4 + 26;
-         int $$6 = $$1 + this.z;
-         int $$7 = $$6 + 26;
-         return $$2 >= $$4 && $$2 <= $$5 && $$3 >= $$6 && $$3 <= $$7;
-      } else {
+   private void b(int $$0, int $$1) {
+      boolean $$2 = this.F();
+      this.c(fhs.a(wu.c("menu.playdemo"), $$1x -> {
+         if ($$2) {
+            this.l.x().a("Demo_World", () -> this.l.a(this));
+         } else {
+            this.l.x().a("Demo_World", MinecraftServer.d, dzd.b, eim::a, this);
+         }
+      }).a(this.m / 2 - 100, $$0, 200, 20).a());
+      this.u = this.c(
+         fhs.a(
+               wu.c("menu.resetdemo"),
+               $$0x -> {
+                  eqi $$1x = this.l.m();
+
+                  try (eqi.c $$2x = $$1x.e("Demo_World")) {
+                     if ($$2x.m()) {
+                        this.l
+                           .a(
+                              new fmh(
+                                 this::c,
+                                 wu.c("selectWorld.deleteQuestion"),
+                                 wu.a("selectWorld.deleteWarning", MinecraftServer.d.a()),
+                                 wu.c("selectWorld.deleteButton"),
+                                 wt.e
+                              )
+                           );
+                     }
+                  } catch (IOException var8) {
+                     fka.a(this.l, "Demo_World");
+                     a.warn("Failed to access demo world", var8);
+                  }
+               }
+            )
+            .a(this.m / 2 - 100, $$0 + $$1 * 1, 200, 20)
+            .a()
+      );
+      this.u.j = $$2;
+   }
+
+   private boolean F() {
+      try {
+         boolean var2;
+         try (eqi.c $$0 = this.l.m().e("Demo_World")) {
+            var2 = $$0.m();
+         }
+
+         return var2;
+      } catch (IOException var6) {
+         fka.a(this.l, "Demo_World");
+         a.warn("Failed to read demo world data", var6);
          return false;
       }
    }
 
-   public void b() {
-      if (this.v == null && this.p.c() != null) {
-         this.v = this.a(this.p);
-         if (this.v != null) {
-            this.v.a(this);
+   @Override
+   public void a(fhf $$0, int $$1, int $$2, float $$3) {
+      if (this.y == 0L && this.x) {
+         this.y = ac.c();
+      }
+
+      float $$4 = 1.0F;
+      if (this.x) {
+         float $$5 = (float)(ac.c() - this.y) / 2000.0F;
+         if ($$5 > 1.0F) {
+            this.x = false;
+            this.w = 1.0F;
+         } else {
+            $$5 = ayg.a($$5, 0.0F, 1.0F);
+            $$4 = ayg.b($$5, 0.5F, 1.0F, 0.0F, 1.0F);
+            this.w = ayg.b($$5, 0.0F, 0.5F, 0.0F, 1.0F);
+         }
+
+         this.b($$4);
+      }
+
+      this.a($$0, $$3);
+      int $$6 = ayg.f($$4 * 255.0F) << 24;
+      if (($$6 & -67108864) != 0) {
+         super.a($$0, $$1, $$2, $$3);
+         this.A.a($$0, this.m, $$4);
+         if (this.z != null) {
+            this.z.a($$0, $$6);
+         }
+
+         if (this.s != null && !this.l.m.c().c()) {
+            this.s.a($$0, this.m, this.o, $$6);
+         }
+
+         String $$7 = "Minecraft " + aa.b().c();
+         if (this.l.K()) {
+            $$7 = $$7 + " Demo";
+         } else {
+            $$7 = $$7 + ("release".equalsIgnoreCase(this.l.j()) ? "" : "/" + this.l.j());
+         }
+
+         if (fft.e().a()) {
+            $$7 = $$7 + gqu.a("menu.modded");
+         }
+
+         $$0.b(this.o, $$7, 2, this.n - 10, 16777215 | $$6);
+         if (this.m() && $$4 >= 1.0F) {
+            RenderSystem.enableDepthTest();
+            this.v.a($$0, $$1, $$2, $$3);
          }
       }
    }
 
-   public int c() {
-      return this.z;
+   private void b(float $$0) {
+      for (fjo $$1 : this.aG_()) {
+         if ($$1 instanceof fhq $$2) {
+            $$2.a($$0);
+         }
+      }
    }
 
-   public int d() {
-      return this.y;
+   @Override
+   public void b(fhf $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   protected void a(fhf $$0, float $$1) {
+      e.a($$0, this.m, this.n, this.w, this.r());
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return super.a($$0, $$1, $$2) ? true : this.m() && this.v.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void j() {
+      if (this.v != null) {
+         this.v.j();
+      }
+   }
+
+   @Override
+   public void aH_() {
+      super.aH_();
+      if (this.v != null) {
+         this.v.aH_();
+      }
+   }
+
+   private void c(boolean $$0) {
+      if ($$0) {
+         try (eqi.c $$1 = this.l.m().e("Demo_World")) {
+            $$1.k();
+         } catch (IOException var7) {
+            fka.b(this.l, "Demo_World");
+            a.warn("Failed to delete demo world", var7);
+         }
+      }
+
+      this.l.a(this);
+   }
+
+   static record a(fhd a, fil b, int c, int d) {
+      public void a(fhf $$0, int $$1) {
+         this.b.a($$0, this.c, this.d, 9, 2, 2097152 | Math.min($$1, 1426063360));
+         this.b.a($$0, this.c, this.d, 9, 16777215 | $$1);
+      }
    }
 }

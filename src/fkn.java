@@ -1,81 +1,73 @@
-import com.mojang.logging.LogUtils;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
 
 public class fkn {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Object a = new Object();
-   private static long c = 0L;
+   private final fkl a;
+   private final float b;
+   private final float c;
+   private final float d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   public static long a() {
-      synchronized (a) {
-         if (c == 0L) {
-            MemoryStack $$0 = MemoryStack.stackPush();
-
-            try {
-               PointerBuffer $$1 = $$0.mallocPointer(1);
-               a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
-               c = $$1.get();
-            } catch (Throwable var6) {
-               if ($$0 != null) {
-                  try {
-                     $$0.close();
-                  } catch (Throwable var5) {
-                     var6.addSuppressed(var5);
-                  }
-               }
-
-               throw var6;
-            }
-
-            if ($$0 != null) {
-               $$0.close();
-            }
-         }
-
-         return c;
-      }
+   public fkn(fkl $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
+      this.i = $$8;
    }
 
-   public static void a(int $$0, String $$1) {
-      if ($$0 != 0) {
-         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
-      }
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, faq $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      float $$10 = $$1 + this.f;
+      float $$11 = $$1 + this.g;
+      float $$12 = $$2 + this.h;
+      float $$13 = $$2 + this.i;
+      float $$14 = $$0 ? 1.0F - 0.25F * this.h : 0.0F;
+      float $$15 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
+      $$4.a($$3, $$10 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).b($$9).e();
+      $$4.a($$3, $$10 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).b($$9).e();
+      $$4.a($$3, $$11 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).b($$9).e();
+      $$4.a($$3, $$11 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).b($$9).e();
    }
 
-   public static boolean b(int $$0, String $$1) {
-      if ($$0 != 0) {
-         b.error("FreeType error: {} ({})", a($$0), $$1);
-         return true;
-      } else {
-         return false;
-      }
+   public void a(fkn.a $$0, Matrix4f $$1, faq $$2, int $$3) {
+      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).b($$3).e();
+      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).b($$3).e();
+      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).b($$3).e();
+      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).b($$3).e();
    }
 
-   private static String a(int $$0) {
-      String $$1 = FreeType.FT_Error_String($$0);
-      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
+   public gel a(fhd.a $$0) {
+      return this.a.a($$0);
    }
 
-   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
-      long $$3 = (long)Math.round($$1 * 64.0F);
-      long $$4 = (long)Math.round($$2 * 64.0F);
-      return $$0.set($$3, $$4);
-   }
+   public static class a {
+      protected final float a;
+      protected final float b;
+      protected final float c;
+      protected final float d;
+      protected final float e;
+      protected final float f;
+      protected final float g;
+      protected final float h;
+      protected final float i;
 
-   public static float a(FT_Vector $$0) {
-      return (float)$$0.x() / 64.0F;
-   }
-
-   public static void b() {
-      synchronized (a) {
-         if (c != 0L) {
-            FreeType.FT_Done_Library(c);
-            c = 0L;
-         }
+      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
       }
    }
 }

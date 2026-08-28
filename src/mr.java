@@ -10,49 +10,49 @@ import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
 public abstract class mr implements mt {
-   private static final Set<bsj<?>> b = ImmutableSet.of(bsj.by, bsj.d, bsj.af, bsj.aS, bsj.bj);
+   private static final Set<bsm<?>> b = ImmutableSet.of(bsm.by, bsm.d, bsm.af, bsm.aS, bsm.bj);
    protected final jl.a a;
-   private final cov c;
-   private final cov d;
-   private final Map<bsj<?>, Map<akj<eqt>, eqt.a>> e = Maps.newHashMap();
+   private final coy c;
+   private final coy d;
+   private final Map<bsm<?>, Map<akj<eqz>, eqz.a>> e = Maps.newHashMap();
 
-   protected final etn.a a() {
-      jl.b<czj> $$0 = this.a.b(lr.aK);
-      return etn.a(
-         euc.a(eqo.b.a, bu.a.a().a(bs.a.a().b(true))), euc.a(eqo.b.c, bu.a.a().a(br.a.a().f(cp.a.a().a(cr.b, cl.a(List.of(new bp($$0.b(avx.p), de.d.c)))))))
+   protected final ett.a a() {
+      jl.b<czl> $$0 = this.a.b(lr.aK);
+      return ett.a(
+         eui.a(equ.b.a, bu.a.a().a(bs.a.a().b(true))), eui.a(equ.b.c, bu.a.a().a(br.a.a().f(cp.a.a().a(cr.b, cl.a(List.of(new bp($$0.b(avz.p), de.d.c)))))))
       );
    }
 
-   protected mr(cov $$0, jl.a $$1) {
+   protected mr(coy $$0, jl.a $$1) {
       this($$0, $$0, $$1);
    }
 
-   protected mr(cov $$0, cov $$1, jl.a $$2) {
+   protected mr(coy $$0, coy $$1, jl.a $$2) {
       this.c = $$0;
       this.d = $$1;
       this.a = $$2;
    }
 
-   protected static eqt.a a(dcc $$0) {
-      return eqt.b().a(eqs.a().a(eus.a(1.0F)).a(erb.a($$0))).a(eqs.a().a(eus.a(1.0F)).a(erh.a(bsj.aJ.k())));
+   protected static eqz.a a(dce $$0) {
+      return eqz.b().a(eqy.a().a(euy.a(1.0F)).a(erh.a($$0))).a(eqy.a().a(euy.a(1.0F)).a(ern.a(bsm.aJ.k())));
    }
 
    public abstract void b();
 
    @Override
-   public void generate(BiConsumer<akj<eqt>, eqt.a> $$0) {
+   public void generate(BiConsumer<akj<eqz>, eqz.a> $$0) {
       this.b();
-      Set<akj<eqt>> $$1 = new HashSet<>();
+      Set<akj<eqz>> $$1 = new HashSet<>();
       lq.f
          .i()
          .forEach(
             $$2 -> {
-               bsj<?> $$3 = $$2.a();
+               bsm<?> $$3 = $$2.a();
                if ($$3.a(this.c)) {
                   if (a($$3)) {
-                     Map<akj<eqt>, eqt.a> $$4 = this.e.remove($$3);
-                     akj<eqt> $$5 = $$3.k();
-                     if ($$5 != eqk.a && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
+                     Map<akj<eqz>, eqz.a> $$4 = this.e.remove($$3);
+                     akj<eqz> $$5 = $$3.k();
+                     if ($$5 != eqq.a && $$3.a(this.d) && ($$4 == null || !$$4.containsKey($$5))) {
                         throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$5, $$2.h().a()));
                      }
 
@@ -66,7 +66,7 @@ public abstract class mr implements mt {
                         });
                      }
                   } else {
-                     Map<akj<eqt>, eqt.a> $$6 = this.e.remove($$3);
+                     Map<akj<eqz>, eqz.a> $$6 = this.e.remove($$3);
                      if ($$6 != null) {
                         throw new IllegalStateException(
                            String.format(
@@ -86,23 +86,23 @@ public abstract class mr implements mt {
       }
    }
 
-   private static boolean a(bsj<?> $$0) {
-      return b.contains($$0) || $$0.f() != btb.h;
+   private static boolean a(bsm<?> $$0) {
+      return b.contains($$0) || $$0.f() != bte.h;
    }
 
-   protected etz.a c() {
-      return ets.a(bj.a.a().b(bu.a.a().a(bsj.R)));
+   protected euf.a c() {
+      return ety.a(bj.a.a().b(bu.a.a().a(bsm.R)));
    }
 
-   protected etz.a a(akj<cez> $$0) {
-      return ets.a(bj.a.a().b(bu.a.a().a(bsj.R).a(bw.b(lq.aj.g($$0)))));
+   protected euf.a a(akj<cfc> $$0) {
+      return ety.a(bj.a.a().b(bu.a.a().a(bsm.R).a(bw.b(lq.aj.g($$0)))));
    }
 
-   protected void a(bsj<?> $$0, eqt.a $$1) {
+   protected void a(bsm<?> $$0, eqz.a $$1) {
       this.a($$0, $$0.k(), $$1);
    }
 
-   protected void a(bsj<?> $$0, akj<eqt> $$1, eqt.a $$2) {
+   protected void a(bsm<?> $$0, akj<eqz> $$1, eqz.a $$2) {
       this.e.computeIfAbsent($$0, $$0x -> new HashMap<>()).put($$1, $$2);
    }
 }

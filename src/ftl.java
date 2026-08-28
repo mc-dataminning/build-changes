@@ -1,56 +1,70 @@
-public class ftl extends fur<cej> {
-   private final fxi a;
-   private final fxi b;
-   private final fxi f;
-   private final fxi g;
-   private final fxi h;
-   private final fxi i;
-   private final fxi j;
-   private final fxi k;
-
-   public ftl(fxi $$0) {
-      super(gef::d);
-      this.a = $$0;
-      this.f = $$0.b("body");
-      this.b = $$0.b("head");
-      this.g = this.f.b("right_wing");
-      this.i = this.g.b("right_wing_tip");
-      this.h = this.f.b("left_wing");
-      this.j = this.h.b("left_wing_tip");
-      this.k = this.f.b("feet");
+public class ftl {
+   public static void a(fxo $$0, fxo $$1, fxo $$2, boolean $$3) {
+      fxo $$4 = $$3 ? $$0 : $$1;
+      fxo $$5 = $$3 ? $$1 : $$0;
+      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
+      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
+      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
+      $$5.e = -1.5F + $$2.e;
    }
 
-   public static fxo b() {
-      fxq $$0 = new fxq();
-      fxr $$1 = $$0.a();
-      fxr $$2 = $$1.a("body", fxn.c().a(0, 0).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F), fxk.a(0.0F, 17.0F, 0.0F));
-      fxr $$3 = $$1.a("head", fxn.c().a(0, 7).a(-2.0F, -3.0F, -1.0F, 4.0F, 3.0F, 2.0F), fxk.a(0.0F, 17.0F, 0.0F));
-      $$3.a("right_ear", fxn.c().a(1, 15).a(-2.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F), fxk.a(-1.5F, -2.0F, 0.0F));
-      $$3.a("left_ear", fxn.c().a(8, 15).a(-0.1F, -3.0F, 0.0F, 3.0F, 5.0F, 0.0F), fxk.a(1.1F, -3.0F, 0.0F));
-      fxr $$4 = $$2.a("right_wing", fxn.c().a(12, 0).a(-2.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), fxk.a(-1.5F, 0.0F, 0.0F));
-      $$4.a("right_wing_tip", fxn.c().a(16, 0).a(-6.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), fxk.a(-2.0F, 0.0F, 0.0F));
-      fxr $$5 = $$2.a("left_wing", fxn.c().a(12, 7).a(0.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), fxk.a(1.5F, 0.0F, 0.0F));
-      $$5.a("left_wing_tip", fxn.c().a(16, 8).a(0.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), fxk.a(2.0F, 0.0F, 0.0F));
-      $$2.a("feet", fxn.c().a(16, 16).a(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 0.0F), fxk.a(0.0F, 5.0F, 0.0F));
-      return fxo.a($$0, 32, 32);
+   public static void a(fxo $$0, fxo $$1, btb $$2, boolean $$3) {
+      fxo $$4 = $$3 ? $$0 : $$1;
+      fxo $$5 = $$3 ? $$1 : $$0;
+      $$4.f = $$3 ? -0.8F : 0.8F;
+      $$4.e = -0.97079635F;
+      $$5.e = $$4.e;
+      float $$6 = (float)csp.a($$2);
+      float $$7 = ayg.a((float)$$2.fw(), 0.0F, $$6);
+      float $$8 = $$7 / $$6;
+      $$5.f = ayg.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
+      $$5.e = ayg.i($$8, $$5.e, (float) (-Math.PI / 2));
    }
 
-   @Override
-   public fxi a() {
-      return this.a;
-   }
-
-   public void a(cej $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fxi::c);
-      if ($$0.u()) {
-         this.a($$4);
+   public static <T extends btd> void a(fxo $$0, fxo $$1, T $$2, float $$3, float $$4) {
+      float $$5 = ayg.a($$3 * (float) Math.PI);
+      float $$6 = ayg.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$0.g = 0.0F;
+      $$1.g = 0.0F;
+      $$0.f = (float) (Math.PI / 20);
+      $$1.f = (float) (-Math.PI / 20);
+      if ($$2.fr() == bsv.b) {
+         $$0.e = -1.8849558F + ayg.b($$4 * 0.09F) * 0.15F;
+         $$1.e = -0.0F + ayg.b($$4 * 0.19F) * 0.5F;
+         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      } else {
+         $$0.e = -0.0F + ayg.b($$4 * 0.19F) * 0.5F;
+         $$1.e = -1.8849558F + ayg.b($$4 * 0.09F) * 0.15F;
+         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
       }
 
-      this.a($$0.d, fgh.b, $$3, 1.0F);
-      this.a($$0.e, fgh.a, $$3, 1.0F);
+      a($$0, $$1, $$4);
    }
 
-   private void a(float $$0) {
-      this.b.f = $$0 * (float) (Math.PI / 180.0);
+   public static void a(fxo $$0, float $$1, float $$2) {
+      $$0.g = $$0.g + $$2 * (ayg.b($$1 * 0.09F) * 0.05F + 0.05F);
+      $$0.e = $$0.e + $$2 * ayg.a($$1 * 0.067F) * 0.05F;
+   }
+
+   public static void a(fxo $$0, fxo $$1, float $$2) {
+      a($$0, $$2, 1.0F);
+      a($$1, $$2, -1.0F);
+   }
+
+   public static void a(fxo $$0, fxo $$1, boolean $$2, float $$3, float $$4) {
+      float $$5 = ayg.a($$3 * (float) Math.PI);
+      float $$6 = ayg.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$1.g = 0.0F;
+      $$0.g = 0.0F;
+      $$1.f = -(0.1F - $$5 * 0.6F);
+      $$0.f = 0.1F - $$5 * 0.6F;
+      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
+      $$1.e = $$7;
+      $$0.e = $$7;
+      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+      a($$1, $$0, $$4);
    }
 }

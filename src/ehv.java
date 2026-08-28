@@ -1,42 +1,34 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class ehv extends dyw {
-   private final dcz a;
-   private final due b;
-   private final Optional<ehu> c;
+public class ehv extends eid {
+   public static final MapCodec<ehv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ehd.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ehv::new));
+   private final ehd c;
 
-   public ehv(dcz $$0, due $$1, Optional<ehu> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private ehv(ehd $$0) {
+      this.c = $$0;
    }
 
-   public int a(dxz.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public static ehv a(ehd $$0) {
+      return new ehv($$0);
    }
 
-   public duc a(dbk $$0, dxv.a $$1) {
-      return ((dux)this.a.a($$0.e, $$0.f)).b($$1);
+   public static ehv a(dyz $$0, dyz $$1) {
+      return a(ehg.a($$0, $$1));
    }
 
-   public dsh a(ja $$0) {
-      return this.a.a_($$0);
+   public static ehv b(dyz $$0, dyz $$1) {
+      return a(ehf.a($$0, $$1));
    }
 
-   public int c() {
-      return this.a.I_();
+   @Override
+   public Stream<ja> a_(eib $$0, ayo $$1, ja $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
    }
 
-   public dcz d() {
-      return this.a;
-   }
-
-   public Optional<ehu> e() {
-      return this.c;
-   }
-
-   public due f() {
-      return this.b;
+   @Override
+   public eie<?> b() {
+      return eie.l;
    }
 }

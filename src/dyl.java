@@ -1,60 +1,110 @@
-public class dyl implements dbq {
-   private int a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   @Override
-   public int a(aqk $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.ab().b(dbz.C)) {
-         return 0;
-      } else {
-         aym $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + (60 + $$3.a(60)) * 20;
-            if ($$0.B_() < 5 && $$0.D_().g()) {
-               return 0;
-            } else {
-               int $$4 = 0;
+public record dyl(dxy b, dxy c, dxy d, dxy e, dxy f, dxy g, dxy h, dxy i, dxy j, dxy k, dxy l, dxy m, dxy n, dxy o, dxy p) {
+   public static final Codec<dyl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               a("barrier", dyl::a),
+               a("fluid_level_floodedness", dyl::b),
+               a("fluid_level_spread", dyl::c),
+               a("lava", dyl::d),
+               a("temperature", dyl::e),
+               a("vegetation", dyl::f),
+               a("continents", dyl::g),
+               a("erosion", dyl::h),
+               a("depth", dyl::i),
+               a("ridges", dyl::j),
+               a("initial_density_without_jaggedness", dyl::k),
+               a("final_density", dyl::l),
+               a("vein_toggle", dyl::m),
+               a("vein_ridged", dyl::n),
+               a("vein_gap", dyl::o)
+            )
+            .apply($$0, dyl::new)
+   );
 
-               for (aql $$5 : $$0.x()) {
-                  if (!$$5.N_()) {
-                     ja $$6 = $$5.dp();
-                     if (!$$0.D_().g() || $$6.v() >= $$0.z_() && $$0.h($$6)) {
-                        bqb $$7 = $$0.d_($$6);
-                        if ($$7.a($$3.i() * 3.0F)) {
-                           avl $$8 = $$5.H();
-                           int $$9 = aye.a($$8.a(avp.i.b(avp.n)), 1, Integer.MAX_VALUE);
-                           int $$10 = 24000;
-                           if ($$3.a($$9) >= 72000) {
-                              ja $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
-                              dsh $$12 = $$0.a_($$11);
-                              eob $$13 = $$0.b_($$11);
-                              if (dco.a($$0, $$11, $$12, $$13, bsj.ay)) {
-                                 btr $$14 = null;
-                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
+   private static RecordCodecBuilder<dyl, dxy> a(String $$0, Function<dyl, dxy> $$1) {
+      return dxy.d.fieldOf($$0).forGetter($$1);
+   }
 
-                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
-                                    cjp $$17 = bsj.ay.a((dcd)$$0);
-                                    if ($$17 != null) {
-                                       $$17.a($$11, 0.0F, 0.0F);
-                                       $$14 = $$17.a($$0, $$7, btc.a, $$14);
-                                       $$0.a_($$17);
-                                       $$4++;
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
+   public dyl a(dxy.f $$0) {
+      return new dyl(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
+   }
 
-               return $$4;
-            }
-         }
-      }
+   public dxy a() {
+      return this.b;
+   }
+
+   public dxy b() {
+      return this.c;
+   }
+
+   public dxy c() {
+      return this.d;
+   }
+
+   public dxy d() {
+      return this.e;
+   }
+
+   public dxy e() {
+      return this.f;
+   }
+
+   public dxy f() {
+      return this.g;
+   }
+
+   public dxy g() {
+      return this.h;
+   }
+
+   public dxy h() {
+      return this.i;
+   }
+
+   public dxy i() {
+      return this.j;
+   }
+
+   public dxy j() {
+      return this.k;
+   }
+
+   public dxy k() {
+      return this.l;
+   }
+
+   public dxy l() {
+      return this.m;
+   }
+
+   public dxy m() {
+      return this.n;
+   }
+
+   public dxy n() {
+      return this.o;
+   }
+
+   public dxy o() {
+      return this.p;
    }
 }

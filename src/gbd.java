@@ -1,21 +1,43 @@
-public class gbd extends gcl {
-   private final gcg a;
+public class gbd extends gcr {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final int G;
+   private final int H;
 
-   protected gbd(fyd $$0, double $$1, double $$2, double $$3, double $$4, gcg $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
+   gbd(fyj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
+      super($$0, $$1, $$2, $$3);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
+      this.n = false;
+      this.t = (int)(Math.random() * 5.0) + 25;
+      this.G = $$7;
+      this.H = $$8;
+   }
+
+   @Override
+   public gbv b() {
+      return gbv.b;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
    }
 
    @Override
    public int a(float $$0) {
-      return 15728880;
+      return 240;
    }
 
    @Override
@@ -26,24 +48,29 @@ public class gbd extends gcl {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.b(this.a);
+         float $$0 = (float)this.s / (float)this.t;
+         float $$1 = 1.0F - $$0;
+         this.g = this.a + this.j * (double)$$1;
+         this.h = this.b + this.k * (double)$$1;
+         this.i = this.F + this.l * (double)$$1;
+         int $$2 = axq.b.a($$0, this.G, this.H);
+         this.a((float)axq.b.b($$2) / 255.0F, (float)axq.b.c($$2) / 255.0F, (float)axq.b.d($$2) / 255.0F);
+         this.e((float)axq.b.a($$2) / 255.0F);
       }
    }
 
-   @Override
-   public gbp b() {
-      return gbp.d;
-   }
+   public static class a implements gbu<ln> {
+      private final gcm a;
 
-   public static class a implements gbo<ln> {
-      private final gcg a;
-
-      public a(gcg $$0) {
+      public a(gcm $$0) {
          this.a = $$0;
       }
 
-      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbd($$1, $$2, $$3, $$4, $$5, this.a);
+      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbd $$8 = new gbd($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
+         $$8.d(ayg.b($$1.E_(), 3.0F, 5.0F));
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

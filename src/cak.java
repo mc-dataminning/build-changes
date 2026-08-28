@@ -1,42 +1,27 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cak extends bzw {
-   private final bth a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
+public class cak extends caw {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public cak(bth $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(bzw.a.a));
+   public cak(btk $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean a() {
-      if (this.a.fT()) {
-         return false;
-      } else {
-         evz $$0 = cdt.a(this.a, 16, 7, evz.c(this.a.fU()), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.c;
-            this.c = $$0.d;
-            this.d = $$0.e;
-            return true;
-         }
-      }
+      aqm $$0 = (aqm)this.b.dQ();
+      ja $$1 = this.b.dq();
+      return $$0.c($$1) ? false : super.a();
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      return !this.a.K().l();
-   }
-
-   @Override
-   public void c() {
-      this.a.K().a(this.b, this.c, this.d, this.e);
+   protected ewf h() {
+      aqm $$0 = (aqm)this.b.dQ();
+      ja $$1 = this.b.dq();
+      kc $$2 = kc.a($$1);
+      kc $$3 = buw.a($$0, $$2, 2);
+      return $$3 != $$2 ? cdw.a(this.b, 10, 7, ewf.c($$3.q()), (float) (Math.PI / 2)) : null;
    }
 }

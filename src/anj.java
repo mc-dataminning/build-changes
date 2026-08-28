@@ -14,16 +14,16 @@ public class anj {
    public static void a(CommandDispatcher<eq> $$0) {
       RequiredArgumentBuilder<eq, akk> $$1 = (RequiredArgumentBuilder<eq, akk>)er.a("sound", fr.a())
          .suggests(ip.c)
-         .executes($$0x -> a((eq)$$0x.getSource(), a(((eq)$$0x.getSource()).i()), fr.c($$0x, "sound"), avg.a, ((eq)$$0x.getSource()).d(), 1.0F, 1.0F, 0.0F));
+         .executes($$0x -> a((eq)$$0x.getSource(), a(((eq)$$0x.getSource()).i()), fr.c($$0x, "sound"), avi.a, ((eq)$$0x.getSource()).d(), 1.0F, 1.0F, 0.0F));
 
-      for (avg $$2 : avg.values()) {
+      for (avi $$2 : avi.values()) {
          $$1.then(a($$2));
       }
 
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   private static LiteralArgumentBuilder<eq> a(avg $$0) {
+   private static LiteralArgumentBuilder<eq> a(avi $$0) {
       return (LiteralArgumentBuilder<eq>)((LiteralArgumentBuilder)er.a($$0.a())
             .executes($$1 -> a((eq)$$1.getSource(), a(((eq)$$1.getSource()).i()), fr.c($$1, "sound"), $$0, ((eq)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
          .then(
@@ -81,22 +81,22 @@ public class anj {
          );
    }
 
-   private static Collection<aql> a(@Nullable aql $$0) {
+   private static Collection<aqn> a(@Nullable aqn $$0) {
       return $$0 != null ? List.of($$0) : List.of();
    }
 
-   private static int a(eq $$0, Collection<aql> $$1, akk $$2, avg $$3, evz $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
-      jj<ave> $$8 = jj.a(ave.a($$2));
-      double $$9 = (double)aye.k($$8.a().a($$5));
+   private static int a(eq $$0, Collection<aqn> $$1, akk $$2, avi $$3, ewf $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+      jj<avg> $$8 = jj.a(avg.a($$2));
+      double $$9 = (double)ayg.k($$8.a().a($$5));
       int $$10 = 0;
       long $$11 = $$0.e().E_().g();
 
-      for (aql $$12 : $$1) {
-         double $$13 = $$4.c - $$12.du();
-         double $$14 = $$4.d - $$12.dw();
-         double $$15 = $$4.e - $$12.dA();
+      for (aqn $$12 : $$1) {
+         double $$13 = $$4.c - $$12.dv();
+         double $$14 = $$4.d - $$12.dx();
+         double $$15 = $$4.e - $$12.dB();
          double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         evz $$17 = $$4;
+         ewf $$17 = $$4;
          float $$18 = $$5;
          if ($$16 > $$9) {
             if ($$7 <= 0.0F) {
@@ -104,7 +104,7 @@ public class anj {
             }
 
             double $$19 = Math.sqrt($$16);
-            $$17 = new evz($$12.du() + $$13 / $$19 * 2.0, $$12.dw() + $$14 / $$19 * 2.0, $$12.dA() + $$15 / $$19 * 2.0);
+            $$17 = new ewf($$12.dv() + $$13 / $$19 * 2.0, $$12.dx() + $$14 / $$19 * 2.0, $$12.dB() + $$15 / $$19 * 2.0);
             $$18 = $$7;
          }
 

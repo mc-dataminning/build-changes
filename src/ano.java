@@ -17,7 +17,7 @@ public class ano {
       });
    }
 
-   private static Collection<String> a(atf $$0, eqi $$1, Collection<String> $$2) {
+   private static Collection<String> a(ath $$0, eqo $$1, Collection<String> $$2) {
       $$0.a();
       Collection<String> $$3 = Lists.newArrayList($$2);
       Collection<String> $$4 = $$1.D().a().b();
@@ -35,8 +35,8 @@ public class ano {
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
          eq $$1 = (eq)$$0x.getSource();
          MinecraftServer $$2 = $$1.l();
-         atf $$3 = $$2.aG();
-         eqi $$4 = $$2.bb();
+         ath $$3 = $$2.aH();
+         eqo $$4 = $$2.bc();
          Collection<String> $$5 = $$3.d();
          Collection<String> $$6 = a($$3, $$4, $$5);
          $$1.a(() -> wu.c("commands.reload.success"), true);

@@ -1,95 +1,76 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class djo extends ddy {
-   public static final MapCodec<djo> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ddd.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), kg.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), u())
-            .apply($$0, djo::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final dth g = dsx.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final ddd.c j;
+public class djo extends dfh implements dmi {
+   public static final MapCodec<djo> a = b(djo::new);
+   public static final dtb b = dta.j;
+   public static final dtb c = dta.C;
+   protected static final ewy d = ewv.a(dfh.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), dfh.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
+   protected static final ewy e = ewv.a(dfh.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), dfh.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
 
    @Override
    public MapCodec<djo> a() {
-      return d;
+      return a;
    }
 
-   public djo(ddd.c $$0, kg.a $$1, dsg.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.k(this.E.b().a(g, Integer.valueOf(1)));
+   public djo(dsj.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
    }
 
+   @Nullable
    @Override
-   public boolean d(dsh $$0) {
-      return $$0.c(g) == 3;
-   }
+   public dsk a(cxm $$0) {
+      eoh $$1 = $$0.q().b_($$0.a());
 
-   @Override
-   protected boolean a(eoa $$0) {
-      return $$0 == eoc.c && this.j == ddd.c.b;
-   }
-
-   @Override
-   protected double b(dsh $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
-   }
-
-   @Override
-   protected void a(dsh $$0, dcd $$1, ja $$2, bsd $$3) {
-      if (!$$1.B && $$3.bQ() && this.a($$0, $$2, $$3)) {
-         $$3.aC();
-         if ($$3.a($$1, $$2)) {
-            this.e($$0, $$1, $$2);
+      for (jf $$2 : $$0.f()) {
+         if ($$2.o() == jf.a.b) {
+            dsk $$3 = this.o().a(b, Boolean.valueOf($$2 == jf.b));
+            if ($$3.a((dci)$$0.q(), $$0.a())) {
+               return $$3.a(c, Boolean.valueOf($$1.a() == eoi.c));
+            }
          }
       }
+
+      return null;
    }
 
-   private void e(dsh $$0, dcd $$1, ja $$2) {
-      if (this.j == ddd.c.c) {
-         d(dfh.fu.o().a(g, $$0.c(g)), $$1, $$2);
-      } else {
-         d($$0, $$1, $$2);
+   @Override
+   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return $$0.c(b) ? e : d;
+   }
+
+   @Override
+   protected void a(dsl.a<dfh, dsk> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected boolean a(dsk $$0, dci $$1, ja $$2) {
+      jf $$3 = m($$0).g();
+      return dfh.a($$1, $$2.a($$3), $$3.g());
+   }
+
+   protected static jf m(dsk $$0) {
+      return $$0.c(b) ? jf.a : jf.b;
+   }
+
+   @Override
+   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eoi.c, eoi.c.a($$3));
       }
-   }
 
-   public static void d(dsh $$0, dcd $$1, ja $$2) {
-      int $$3 = $$0.c(g) - 1;
-      dsh $$4 = $$3 == 0 ? dfh.ft.o() : $$0.a(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(dxa.c, $$2, dxa.a.a($$4));
+      return m($$0).g() == $$1 && !$$0.a($$3, $$4) ? dfj.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(dsh $$0, dcd $$1, ja $$2, ddd.c $$3) {
-      if (dga.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         dsh $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(dxa.c, $$2, dxa.a.a($$4));
-      }
+   protected eoh b_(dsk $$0) {
+      return $$0.c(c) ? eoi.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected int a(dsh $$0, dcd $$1, ja $$2) {
-      return $$0.c(g);
-   }
-
-   @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
-      $$0.a(g);
-   }
-
-   @Override
-   protected void a(dsh $$0, dcd $$1, ja $$2, eoa $$3) {
-      if (!this.d($$0)) {
-         dsh $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(dxa.c, $$2, dxa.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      }
+   protected boolean a(dsk $$0, eow $$1) {
+      return false;
    }
 }

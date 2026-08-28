@@ -1,5 +1,9 @@
-public interface cpr {
-   void a(cpe var1, int var2, cua var3);
-
-   void a(cpe var1, int var2, int var3);
+public enum cpr {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g;
 }

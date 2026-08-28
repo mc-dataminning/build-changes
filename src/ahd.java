@@ -4,7 +4,7 @@ public class ahd implements zb<agb> {
    private final akk c;
    private final boolean d;
 
-   public ahd(int $$0, cyi<?> $$1, boolean $$2) {
+   public ahd(int $$0, cyk<?> $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1.a();
       this.d = $$2;

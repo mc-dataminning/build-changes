@@ -8,8 +8,8 @@ public class ed extends ds<ed.a> {
       return ed.a.a;
    }
 
-   public void a(aql $$0, clp $$1, cua $$2) {
-      eqo $$3 = bu.b($$0, $$1);
+   public void a(aqn $$0, cls $$1, cuc $$2) {
+      equ $$3 = bu.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$3, $$2));
    }
 
@@ -31,7 +31,7 @@ public class ed extends ds<ed.a> {
          return am.t.a(new ed.a(Optional.of(bu.a($$0)), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(eqo $$0, cua $$1) {
+      public boolean a(equ $$0, cuc $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

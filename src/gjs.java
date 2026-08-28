@@ -1,16 +1,27 @@
-public class gjs extends glo<bsq> {
-   private static final akk a = new akk("textures/entity/squid/glow_squid.png");
+public class gjs extends gjl<cmx> {
+   private final gkk a;
 
-   public gjs(gjg.a $$0, fwk<bsq> $$1) {
-      super($$0, $$1);
+   public gjs(gjm.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   public akk a(bsq $$0) {
-      return a;
+   public void a(cmx $$0, float $$1, float $$2, fam $$3, ged $$4, int $$5) {
+      $$3.a();
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      if ($$0.u()) {
+         $$3.a(a.f.rotationDegrees(180.0F));
+         $$3.a(a.d.rotationDegrees(180.0F));
+         $$3.a(a.b.rotationDegrees(90.0F));
+      }
+
+      this.a.a($$0.p(), ctz.h, $$5, gpf.d, $$3, $$4, $$0.dQ(), $$0.am());
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected int a(bsq $$0, ja $$1) {
-      int $$2 = (int)aye.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
+   public akk a(cmx $$0) {
+      return gpn.e;
    }
 }

@@ -1,15 +1,8 @@
-import java.util.Set;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class fqv extends fqu {
-   private static final wu i = wu.c("gui.recipebook.toggleRecipes.blastable");
-
-   @Override
-   protected wu c() {
-      return i;
-   }
-
-   @Override
-   protected Set<ctv> b() {
-      return dpb.g().keySet();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fqv {
 }

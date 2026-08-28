@@ -1,8 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface grn {
-   gru a(akk var1);
-
-   @Nullable
-   grj a(akk var1, grr var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface grn {
 }

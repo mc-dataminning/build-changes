@@ -1,70 +1,71 @@
-public abstract class cxo implements cyg<cyw> {
-   protected final cym<?> a;
-   protected final cxu b;
-   protected final String c;
-   protected final cyd d;
-   protected final cua e;
-   protected final float f;
-   protected final int g;
+import javax.annotation.Nullable;
 
-   public cxo(cym<?> $$0, String $$1, cxu $$2, cyd $$3, cua $$4, float $$5, int $$6) {
-      this.a = $$0;
+public class cxo {
+   @Nullable
+   private final cmk a;
+   private final bqf b;
+   private final ewb c;
+   private final dcf d;
+   private final cuc e;
+
+   public cxo(cmk $$0, bqf $$1, ewb $$2) {
+      this($$0.dQ(), $$0, $$1, $$0.b($$1), $$2);
+   }
+
+   protected cxo(dcf $$0, @Nullable cmk $$1, bqf $$2, cuc $$3, ewb $$4) {
+      this.a = $$1;
       this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public boolean a(cyw $$0, dcd $$1) {
-      return this.d.a($$0.c());
-   }
-
-   public cua a(cyw $$0, jl.a $$1) {
-      return this.e.s();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public js<cyd> a() {
-      js<cyd> $$0 = js.a();
-      $$0.add(this.d);
-      return $$0;
-   }
-
-   public float b() {
-      return this.f;
-   }
-
-   @Override
-   public cua a(jl.a $$0) {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
+   protected final ewb j() {
       return this.c;
    }
 
-   public int d() {
-      return this.g;
+   public ja a() {
+      return this.c.a();
    }
 
-   @Override
-   public cym<?> e() {
+   public jf k() {
+      return this.c.b();
+   }
+
+   public ewf l() {
+      return this.c.e();
+   }
+
+   public boolean m() {
+      return this.c.d();
+   }
+
+   public cuc n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cmk o() {
       return this.a;
    }
 
-   public cxu f() {
+   public bqf p() {
       return this.b;
    }
 
-   public interface a<T extends cxo> {
-      T create(String var1, cxu var2, cyd var3, cua var4, float var5, int var6);
+   public dcf q() {
+      return this.d;
+   }
+
+   public jf g() {
+      return this.a == null ? jf.c : this.a.cI();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fO();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dG();
    }
 }

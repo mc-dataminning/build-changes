@@ -9,7 +9,7 @@ public interface xw {
 
    xw.a<?> a();
 
-   public static record a<T extends xw>(MapCodec<T> a, String b) implements ayz {
+   public static record a<T extends xw>(MapCodec<T> a, String b) implements azc {
       @Override
       public String c() {
          return this.b;

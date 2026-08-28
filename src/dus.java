@@ -1,5 +1,7 @@
-public class dus extends RuntimeException {
-   public dus(int $$0) {
-      super("Missing Palette entry for index " + $$0 + ".");
-   }
+import java.util.function.BiConsumer;
+
+public interface dus extends dbl {
+   void a(BiConsumer<ja, dsk> var1);
+
+   enr B();
 }

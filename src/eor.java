@@ -1,133 +1,145 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
 public class eor {
-   private static final float a = 1.5F;
-   private final eon[] b = new eon[32];
-   private final int c;
-   private final eoo d;
-   private static final boolean e = false;
-   private final eol f = new eol();
+   private eot[] a = new eot[128];
+   private int b;
 
-   public eor(eoo $$0, int $$1) {
-      this.d = $$0;
-      this.c = $$1;
-   }
-
-   @Nullable
-   public eop a(dcq $$0, bta $$1, Set<ja> $$2, float $$3, int $$4, float $$5) {
-      this.f.a();
-      this.d.a($$0, $$1);
-      eon $$6 = this.d.a();
-      if ($$6 == null) {
-         return null;
+   public eot a(eot $$0) {
+      if ($$0.d >= 0) {
+         throw new IllegalStateException("OW KNOWS!");
       } else {
-         Map<eow, ja> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
-         eop $$8 = this.a($$0.a(), $$6, $$7, $$3, $$4, $$5);
-         this.d.b();
-         return $$8;
+         if (this.b == this.a.length) {
+            eot[] $$1 = new eot[this.b << 1];
+            System.arraycopy(this.a, 0, $$1, 0, this.b);
+            this.a = $$1;
+         }
+
+         this.a[this.b] = $$0;
+         $$0.d = this.b;
+         this.a(this.b++);
+         return $$0;
       }
    }
 
-   @Nullable
-   private eop a(bmr $$0, eon $$1, Map<eow, ja> $$2, float $$3, int $$4, float $$5) {
-      $$0.a("find_path");
-      $$0.a(bnx.a);
-      Set<eow> $$6 = $$2.keySet();
-      $$1.e = 0.0F;
-      $$1.f = this.a($$1, $$6);
-      $$1.g = $$1.f;
-      this.f.a();
-      this.f.a($$1);
-      Set<eon> $$7 = ImmutableSet.of();
-      int $$8 = 0;
-      Set<eow> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
-      int $$10 = (int)((float)this.c * $$5);
+   public void a() {
+      this.b = 0;
+   }
 
-      while (!this.f.e()) {
-         if (++$$8 >= $$10) {
+   public eot b() {
+      return this.a[0];
+   }
+
+   public eot c() {
+      eot $$0 = this.a[0];
+      this.a[0] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > 0) {
+         this.b(0);
+      }
+
+      $$0.d = -1;
+      return $$0;
+   }
+
+   public void b(eot $$0) {
+      this.a[$$0.d] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > $$0.d) {
+         if (this.a[$$0.d].g < $$0.g) {
+            this.a($$0.d);
+         } else {
+            this.b($$0.d);
+         }
+      }
+
+      $$0.d = -1;
+   }
+
+   public void a(eot $$0, float $$1) {
+      float $$2 = $$0.g;
+      $$0.g = $$1;
+      if ($$1 < $$2) {
+         this.a($$0.d);
+      } else {
+         this.b($$0.d);
+      }
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   private void a(int $$0) {
+      eot $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while ($$0 > 0) {
+         int $$3 = $$0 - 1 >> 1;
+         eot $$4 = this.a[$$3];
+         if (!($$2 < $$4.g)) {
             break;
          }
 
-         eon $$11 = this.f.c();
-         $$11.i = true;
+         this.a[$$0] = $$4;
+         $$4.d = $$0;
+         $$0 = $$3;
+      }
 
-         for (eow $$12 : $$6) {
-            if ($$11.d($$12) <= (float)$$4) {
-               $$12.e();
-               $$9.add($$12);
-            }
-         }
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
 
-         if (!$$9.isEmpty()) {
+   private void b(int $$0) {
+      eot $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while (true) {
+         int $$3 = 1 + ($$0 << 1);
+         int $$4 = $$3 + 1;
+         if ($$3 >= this.b) {
             break;
          }
 
-         if (!($$11.a($$1) >= $$3)) {
-            int $$13 = this.d.a(this.b, $$11);
+         eot $$5 = this.a[$$3];
+         float $$6 = $$5.g;
+         eot $$7;
+         float $$8;
+         if ($$4 >= this.b) {
+            $$7 = null;
+            $$8 = Float.POSITIVE_INFINITY;
+         } else {
+            $$7 = this.a[$$4];
+            $$8 = $$7.g;
+         }
 
-            for (int $$14 = 0; $$14 < $$13; $$14++) {
-               eon $$15 = this.b[$$14];
-               float $$16 = this.a($$11, $$15);
-               $$15.j = $$11.j + $$16;
-               float $$17 = $$11.e + $$16 + $$15.k;
-               if ($$15.j < $$3 && (!$$15.c() || $$17 < $$15.e)) {
-                  $$15.h = $$11;
-                  $$15.e = $$17;
-                  $$15.f = this.a($$15, $$6) * 1.5F;
-                  if ($$15.c()) {
-                     this.f.a($$15, $$15.e + $$15.f);
-                  } else {
-                     $$15.g = $$15.e + $$15.f;
-                     this.f.a($$15);
-                  }
-               }
+         if ($$6 < $$8) {
+            if (!($$6 < $$2)) {
+               break;
             }
+
+            this.a[$$0] = $$5;
+            $$5.d = $$0;
+            $$0 = $$3;
+         } else {
+            if (!($$8 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$7;
+            $$7.d = $$0;
+            $$0 = $$4;
          }
       }
 
-      Optional<eop> $$18 = !$$9.isEmpty()
-         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), true)).min(Comparator.comparingInt(eop::e))
-         : $$6.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), false)).min(Comparator.comparingDouble(eop::m).thenComparingInt(eop::e));
-      $$0.c();
-      return $$18.isEmpty() ? null : $$18.get();
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
    }
 
-   protected float a(eon $$0, eon $$1) {
-      return $$0.a($$1);
+   public boolean e() {
+      return this.b == 0;
    }
 
-   private float a(eon $$0, Set<eow> $$1) {
-      float $$2 = Float.MAX_VALUE;
-
-      for (eow $$3 : $$1) {
-         float $$4 = $$0.a($$3);
-         $$3.a($$4, $$0);
-         $$2 = Math.min($$4, $$2);
-      }
-
-      return $$2;
-   }
-
-   private eop a(eon $$0, ja $$1, boolean $$2) {
-      List<eon> $$3 = Lists.newArrayList();
-      eon $$4 = $$0;
-      $$3.add(0, $$0);
-
-      while ($$4.h != null) {
-         $$4 = $$4.h;
-         $$3.add(0, $$4);
-      }
-
-      return new eop($$3, $$1, $$2);
+   public eot[] f() {
+      return Arrays.copyOf(this.a, this.b);
    }
 }

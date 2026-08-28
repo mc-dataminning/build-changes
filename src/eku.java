@@ -1,97 +1,80 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.IntFunction;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class eku extends eiq {
-   public static final MapCodec<eku> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), eku.a.c.fieldOf("mineshaft_type").forGetter($$0x -> $$0x.e)).apply($$0, eku::new)
-   );
-   private final eku.a e;
+public class eku {
+   public static final int a = 90;
+   static final akk b = new akk("igloo/top");
+   private static final akk c = new akk("igloo/middle");
+   private static final akk d = new akk("igloo/bottom");
+   static final Map<akk, ja> e = ImmutableMap.of(b, new ja(3, 5, 5), c, new ja(1, 3, 1), d, new ja(3, 6, 7));
+   static final Map<akk, ja> f = ImmutableMap.of(b, ja.c, c, new ja(2, -3, 4), d, new ja(0, -3, -2));
 
-   public eku(eiq.c $$0, eku.a $$1) {
-      super($$0);
-      this.e = $$1;
+   public static void a(emx $$0, ja $$1, dlu $$2, ejb $$3, ayo $$4) {
+      if ($$4.j() < 0.5) {
+         int $$5 = $$4.a(8) + 4;
+         $$3.a(new eku.a($$0, d, $$1, $$2, $$5 * 3));
+
+         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
+            $$3.a(new eku.a($$0, c, $$1, $$2, $$6 * 3));
+         }
+      }
+
+      $$3.a(new eku.a($$0, b, $$1, $$2, 0));
    }
 
-   @Override
-   public Optional<eiq.b> a(eiq.a $$0) {
-      $$0.f().j();
-      dbk $$1 = $$0.h();
-      ja $$2 = new ja($$1.b(), 50, $$1.e());
-      eji $$3 = new eji();
-      int $$4 = this.a($$3, $$0);
-      return Optional.of(new eiq.b($$2.b(0, $$4, 0), Either.right($$3)));
-   }
-
-   private int a(eji $$0, eiq.a $$1) {
-      dbk $$2 = $$1.h();
-      dyy $$3 = $$1.f();
-      due $$4 = $$1.b();
-      ekt.d $$5 = new ekt.d(0, $$3, $$2.a(2), $$2.b(2), this.e);
-      $$0.a($$5);
-      $$5.a($$5, $$0, $$3);
-      int $$6 = $$4.f();
-      if (this.e == eku.a.b) {
-         ja $$7 = $$0.d().g();
-         int $$8 = $$4.a($$7.u(), $$7.w(), dxz.a.a, $$1.i(), $$1.d());
-         int $$9 = $$8 <= $$6 ? $$6 : aye.b($$3, $$6, $$8);
-         int $$10 = $$9 - $$7.v();
-         $$0.a($$10);
-         return $$10;
-      } else {
-         return $$0.a($$6, $$4.g(), $$3, 10);
-      }
-   }
-
-   @Override
-   public eiz<?> e() {
-      return eiz.h;
-   }
-
-   public static enum a implements ayz {
-      a("normal", dfh.U, dfh.n, dfh.dU),
-      b("mesa", dfh.aa, dfh.t, dfh.ki);
-
-      public static final Codec<eku.a> c = ayz.a(eku.a::values);
-      private static final IntFunction<eku.a> d = awu.a(Enum::ordinal, values(), awu.a.a);
-      private final String e;
-      private final dsh f;
-      private final dsh g;
-      private final dsh h;
-
-      private a(final String $$0, final dff $$1, final dff $$2, final dff $$3) {
-         this.e = $$0;
-         this.f = $$1.o();
-         this.g = $$2.o();
-         this.h = $$3.o();
+   public static class a extends ejg {
+      public a(emx $$0, akk $$1, ja $$2, dlu $$3, int $$4) {
+         super(ejn.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
       }
 
-      public String a() {
-         return this.e;
+      public a(emx $$0, tx $$1) {
+         super(ejn.I, $$1, $$0, $$1x -> a(dlu.valueOf($$1.l("Rot")), $$1x));
       }
 
-      public static eku.a a(int $$0) {
-         return d.apply($$0);
+      private static ems a(dlu $$0, akk $$1) {
+         return new ems().a($$0).a(dke.a).a(eku.e.get($$1)).a(ely.b);
       }
 
-      public dsh b() {
-         return this.f;
-      }
-
-      public dsh d() {
-         return this.g;
-      }
-
-      public dsh e() {
-         return this.h;
+      private static ja a(akk $$0, ja $$1, int $$2) {
+         return $$1.a(eku.f.get($$0)).c($$2);
       }
 
       @Override
-      public String c() {
-         return this.e;
+      protected void a(ejm $$0, tx $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, ja $$1, dcu $$2, ayo $$3, eio $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, dfj.a.o(), 3);
+            dpp $$5 = $$2.c_($$1.d());
+            if ($$5 instanceof dpw) {
+               ((dpw)$$5).a(eqq.C, $$3.g());
+            }
+         }
+      }
+
+      @Override
+      public void a(ddb $$0, dcz $$1, duh $$2, ayo $$3, eio $$4, dbm $$5, ja $$6) {
+         akk $$7 = new akk(this.a);
+         ems $$8 = a(this.c.d(), $$7);
+         ja $$9 = eku.f.get($$7);
+         ja $$10 = this.d.a((ke)emw.a($$8, new ja(3 - $$9.u(), 0, -$$9.w())));
+         int $$11 = $$0.a(dyf.a.a, $$10.u(), $$10.w());
+         ja $$12 = this.d;
+         this.d = this.d.b(0, $$11 - 90 - 1, 0);
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         if ($$7.equals(eku.b)) {
+            ja $$13 = this.d.a((ke)emw.a($$8, new ja(3, 0, 5)));
+            dsk $$14 = $$0.a_($$13.d());
+            if (!$$14.i() && !$$14.a(dfj.cO)) {
+               $$0.a($$13, dfj.dP.o(), 3);
+            }
+         }
+
+         this.d = $$12;
       }
    }
 }

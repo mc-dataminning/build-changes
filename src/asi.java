@@ -1,14 +1,41 @@
-public enum asi {
-   a("assets"),
-   b("data");
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import javax.annotation.Nullable;
 
-   private final String c;
+public interface asi extends AutoCloseable {
+   String a = ".mcmeta";
+   String b = "pack.mcmeta";
 
-   private asi(final String $$0) {
-      this.c = $$0;
+   @Nullable
+   ato<InputStream> a(String... var1);
+
+   @Nullable
+   ato<InputStream> a(ask var1, akk var2);
+
+   void a(ask var1, String var2, String var3, asi.a var4);
+
+   Set<String> a(ask var1);
+
+   @Nullable
+   <T> T a(asv<T> var1) throws IOException;
+
+   ash a();
+
+   default String b() {
+      return this.a().a();
    }
 
-   public String a() {
-      return this.c;
+   default Optional<atd> c() {
+      return this.a().d();
+   }
+
+   @Override
+   void close();
+
+   @FunctionalInterface
+   public interface a extends BiConsumer<akk, ato<InputStream>> {
    }
 }

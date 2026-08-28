@@ -1,78 +1,56 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
+import java.util.Locale;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gqq implements atv {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gqp b = new gqp("US", "English", false);
-   private Map<String, gqp> c = ImmutableMap.of("en_us", b);
-   private String d;
-   private final Consumer<gqm> e;
+public class gqq extends aub<List<String>> {
+   private static final akk a = new akk("texts/splashes.txt");
+   private static final ayo b = ayo.a();
+   private final List<String> c = Lists.newArrayList();
+   private final fgh d;
 
-   public gqq(String $$0, Consumer<gqm> $$1) {
+   public gqq(fgh $$0) {
       this.d = $$0;
-      this.e = $$1;
    }
 
-   private static Map<String, gqp> a(Stream<asg> $$0) {
-      Map<String, gqp> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            grc $$2 = $$1x.a(grc.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
+   protected List<String> a(atw $$0, bmu $$1) {
+      try {
+         List var4;
+         try (BufferedReader $$2 = fft.Q().ab().openAsReader(a)) {
+            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
          }
-      });
-      return ImmutableMap.copyOf($$1);
-   }
 
-   @Override
-   public void a(atu $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         gqp $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
-         }
+         return var4;
+      } catch (IOException var8) {
+         return Collections.emptyList();
       }
-
-      gqm $$4 = gqm.a($$0, $$1, $$2);
-      gqo.a($$4);
-      ts.a($$4);
-      this.e.accept($$4);
    }
 
-   public void a(String $$0) {
-      this.d = $$0;
-   }
-
-   public String a() {
-      return this.d;
-   }
-
-   public SortedMap<String, gqp> b() {
-      return new TreeMap<>(this.c);
+   protected void a(List<String> $$0, atw $$1, bmu $$2) {
+      this.c.clear();
+      this.c.addAll($$0);
    }
 
    @Nullable
-   public gqp b(String $$0) {
-      return this.c.get($$0);
+   public fiw a() {
+      Calendar $$0 = Calendar.getInstance();
+      $$0.setTime(new Date());
+      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
+         return fiw.a;
+      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
+         return fiw.b;
+      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
+         return fiw.c;
+      } else if (this.c.isEmpty()) {
+         return null;
+      } else {
+         return this.d != null && b.a(this.c.size()) == 42 ? new fiw(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new fiw(this.c.get(b.a(this.c.size())));
+      }
    }
 }

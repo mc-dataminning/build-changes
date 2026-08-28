@@ -1,30 +1,53 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record edf(efr b, dzg c, bpi d, int e) implements edi {
+public record edf(List<edf.a> b, jf c, dzm d, boolean e) implements edo {
    public static final Codec<edf> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               efr.a.fieldOf("state_provider").forGetter(edf::a),
-               dzg.b.fieldOf("target").forGetter(edf::b),
-               bpi.b(0, 8).fieldOf("radius").forGetter(edf::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(edf::d)
+               edf.a.a.listOf().fieldOf("layers").forGetter(edf::a),
+               jf.g.fieldOf("direction").forGetter(edf::b),
+               dzm.b.fieldOf("allowed_placement").forGetter(edf::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(edf::d)
             )
             .apply($$0, edf::new)
    );
 
-   public efr a() {
+   public static edf.a a(bpl $$0, efp $$1) {
+      return new edf.a($$0, $$1);
+   }
+
+   public static edf b(bpl $$0, efp $$1) {
+      return new edf(List.of(a($$0, $$1)), jf.b, dzm.c, false);
+   }
+
+   public List<edf.a> a() {
       return this.b;
    }
 
-   public dzg b() {
+   public jf b() {
       return this.c;
    }
 
-   public bpi c() {
+   public dzm c() {
       return this.d;
    }
 
-   public int d() {
+   public boolean d() {
       return this.e;
+   }
+
+   public static record a(bpl b, efp c) {
+      public static final Codec<edf.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bpl.d.fieldOf("height").forGetter(edf.a::a), efp.a.fieldOf("provider").forGetter(edf.a::b)).apply($$0, edf.a::new)
+      );
+
+      public bpl a() {
+         return this.b;
+      }
+
+      public efp b() {
+         return this.c;
+      }
    }
 }

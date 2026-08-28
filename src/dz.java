@@ -8,8 +8,8 @@ public class dz extends ds<dz.a> {
       return dz.a.a;
    }
 
-   public void a(aql $$0, bsd $$1) {
-      eqo $$2 = bu.b($$0, $$1);
+   public void a(aqn $$0, bsg $$1) {
+      equ $$2 = bu.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -22,7 +22,7 @@ public class dz extends ds<dz.a> {
          return am.o.a(new dz.a(Optional.empty(), Optional.of(bu.a($$0))));
       }
 
-      public boolean a(eqo $$0) {
+      public boolean a(equ $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

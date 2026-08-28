@@ -1,20 +1,16 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class aqx implements aqt {
-   private final aqv a;
-   private final Long2ObjectOpenHashMap<dvc> b = new Long2ObjectOpenHashMap();
-   private dbk c = new dbk(0, 0);
-   private final int d;
-   private final int e;
-   private final int f;
-   private boolean g;
+public class aqx implements aqv {
+   private static final Logger a = LogUtils.getLogger();
+   private final int b;
+   private int c;
+   private long d;
+   private long e = Long.MAX_VALUE;
 
-   private aqx(aqv $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   private aqx(int $$0) {
+      this.b = $$0;
    }
 
    public static aqx b(int $$0) {
@@ -22,64 +18,44 @@ public class aqx implements aqt {
    }
 
    public static aqx c(int $$0) {
-      aqv $$1 = aqv.c($$0);
-      int $$2 = aqt.a($$0);
-      int $$3 = $$0 + dvc.b();
-      int $$4 = aqt.a($$3);
-      return new aqx($$1, $$2, $$3, $$4);
+      int $$1 = aqv.a($$0);
+      return new aqx($$1 * $$1);
    }
 
    public static aqx c() {
-      return new aqx(aqv.c(), 0, 0, 0);
+      return new aqx(0);
    }
 
    @Override
-   public void a(dbk $$0) {
-      if (this.g) {
-         this.a.a($$0);
-         this.c = $$0;
+   public void a(dbm $$0) {
+      this.e = ac.c();
+      this.d = this.e;
+   }
+
+   @Override
+   public void a(dbm $$0, @Nullable dvh $$1) {
+      if ($$1 == dvh.n) {
+         this.c++;
       }
-   }
 
-   @Override
-   public void a(dbk $$0, @Nullable dvc $$1) {
-      if (this.g) {
-         this.a.a($$0, $$1);
-         if ($$1 == null) {
-            this.b.remove($$0.a());
-         } else {
-            this.b.put($$0.a(), $$1);
-         }
+      int $$2 = this.d();
+      if (ac.c() > this.e) {
+         this.e += 500L;
+         a.info(wu.a("menu.preparingSpawn", ayg.a($$2, 0, 100)).getString());
       }
    }
 
    @Override
    public void a() {
-      this.g = true;
-      this.b.clear();
-      this.a.a();
    }
 
    @Override
    public void b() {
-      this.g = false;
-      this.a.b();
+      a.info("Time elapsed: {} ms", ac.c() - this.d);
+      this.e = Long.MAX_VALUE;
    }
 
    public int d() {
-      return this.d;
-   }
-
-   public int e() {
-      return this.f;
-   }
-
-   public int f() {
-      return this.a.d();
-   }
-
-   @Nullable
-   public dvc a(int $$0, int $$1) {
-      return (dvc)this.b.get(dbk.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
+      return this.b == 0 ? 100 : ayg.d((float)this.c * 100.0F / (float)this.b);
    }
 }

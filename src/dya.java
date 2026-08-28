@@ -1,77 +1,112 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-public class dya implements dxo {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dyb i = new dyb(this);
+public class dya extends duh {
+   public static final MapCodec<dya> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(egz.a.fieldOf("settings").forGetter(dya::h)).apply($$0, $$0.stable(dya::new))
+   );
+   private final egz d;
 
-   public dya(long $$0) {
-      this.b($$0);
+   public dya(egz $$0) {
+      super(new ddq($$0.d()), ac.b($$0::a));
+      this.d = $$0;
    }
 
    @Override
-   public aym d() {
-      return new dya(this.g());
+   public dui a(jl<ejc> $$0, dyt $$1, long $$2) {
+      Stream<jj<ejc>> $$3 = this.d.c().map(jn::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
+      return dui.a($$1, $$2, this.b, $$3);
    }
 
    @Override
-   public dym e() {
-      return new dya.a(this.g());
+   protected MapCodec<? extends duh> b() {
+      return c;
+   }
+
+   public egz h() {
+      return this.d;
    }
 
    @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw azc.a("LegacyRandomSource", null);
-      } else {
-         this.i.a();
-      }
+   public void a(aqt $$0, dcz $$1, dyt $$2, dug $$3) {
    }
 
    @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw azc.a("LegacyRandomSource", null);
-      } else {
-         return (int)($$2 >> 48 - $$0);
-      }
+   public int a(dch $$0) {
+      return $$0.I_() + Math.min($$0.J_(), this.d.f().size());
    }
 
    @Override
-   public double k() {
-      return this.i.b();
+   public CompletableFuture<dug> a(dzh $$0, dyt $$1, dcz $$2, dug $$3) {
+      List<dsk> $$4 = this.d.f();
+      ja.a $$5 = new ja.a();
+      dyf $$6 = $$3.a(dyf.a.c);
+      dyf $$7 = $$3.a(dyf.a.a);
+
+      for (int $$8 = 0; $$8 < Math.min($$3.J_(), $$4.size()); $$8++) {
+         dsk $$9 = $$4.get($$8);
+         if ($$9 != null) {
+            int $$10 = $$3.I_() + $$8;
+
+            for (int $$11 = 0; $$11 < 16; $$11++) {
+               for (int $$12 = 0; $$12 < 16; $$12++) {
+                  $$3.a($$5.d($$11, $$10, $$12), $$9, false);
+                  $$6.a($$11, $$10, $$12, $$9);
+                  $$7.a($$11, $$10, $$12, $$9);
+               }
+            }
+         }
+      }
+
+      return CompletableFuture.completedFuture($$3);
    }
 
-   public static class a implements dym {
-      private final long a;
+   @Override
+   public int a(int $$0, int $$1, dyf.a $$2, dch $$3, dyt $$4) {
+      List<dsk> $$5 = this.d.f();
 
-      public a(long $$0) {
-         this.a = $$0;
+      for (int $$6 = Math.min($$5.size(), $$3.am()) - 1; $$6 >= 0; $$6--) {
+         dsk $$7 = $$5.get($$6);
+         if ($$7 != null && $$2.e().test($$7)) {
+            return $$3.I_() + $$6 + 1;
+         }
       }
 
-      @Override
-      public aym a(int $$0, int $$1, int $$2) {
-         long $$3 = aye.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dya($$4);
-      }
+      return $$3.I_();
+   }
 
-      @Override
-      public aym a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new dya((long)$$1 ^ this.a);
-      }
+   @Override
+   public dcr a(int $$0, int $$1, dch $$2, dyt $$3) {
+      return new dcr($$2.I_(), this.d.f().stream().limit((long)$$2.J_()).map($$0x -> $$0x == null ? dfj.a.o() : $$0x).toArray(dsk[]::new));
+   }
 
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
-      }
+   @Override
+   public void a(List<String> $$0, dyt $$1, ja $$2) {
+   }
+
+   @Override
+   public void a(aqt $$0, long $$1, dyt $$2, ddh $$3, dcz $$4, dug $$5, dyb.a $$6) {
+   }
+
+   @Override
+   public void a(aqt $$0) {
+   }
+
+   @Override
+   public int g() {
+      return 0;
+   }
+
+   @Override
+   public int e() {
+      return 384;
+   }
+
+   @Override
+   public int f() {
+      return -63;
    }
 }

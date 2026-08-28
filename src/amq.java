@@ -18,7 +18,7 @@ public class amq {
    @VisibleForTesting
    public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("commands.function.instantiationFailure", $$0, $$1));
    public static final SuggestionProvider<eq> b = ($$0, $$1) -> {
-      akz $$2 = ((eq)$$0.getSource()).l().aF();
+      akz $$2 = ((eq)$$0.getSource()).l().aG();
       ev.a($$2.e(), $$1, "#");
       return ev.a($$2.d(), $$1);
    };
@@ -31,7 +31,7 @@ public class amq {
    public static void a(CommandDispatcher<eq> $$0) {
       LiteralArgumentBuilder<eq> $$1 = er.a("with");
 
-      for (apa.c $$2 : apa.c) {
+      for (aoz.c $$2 : aoz.c) {
          $$2.a($$1, $$1x -> $$1x.executes(new amq.c() {
                @Override
                protected tx a(CommandContext<eq> $$0) throws CommandSyntaxException {
@@ -62,8 +62,8 @@ public class amq {
       );
    }
 
-   static tx a(fi.g $$0, aoz $$1) throws CommandSyntaxException {
-      uu $$2 = apa.a($$0, $$1);
+   static tx a(fi.g $$0, aoy $$1) throws CommandSyntaxException {
+      uu $$2 = aoz.a($$0, $$1);
       if ($$2 instanceof tx) {
          return (tx)$$2;
       } else {

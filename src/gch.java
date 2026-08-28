@@ -1,54 +1,20 @@
-public class gch extends gbx {
-   gch(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gcg $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)axo.b.b($$7), (float)axo.b.c($$7), (float)axo.b.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
-      this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+public class gch extends gbj {
+   protected gch(fyj $$0, double $$1, double $$2, double $$3, double $$4, gcm $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.t = 16;
+      this.D = 1.5F;
+      this.b($$5);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
+   public static class a implements gbu<ln> {
+      private final gcm a;
 
-         if (this.c.a_(ja.a(this.g, this.h, this.i)).i()) {
-            this.k -= 0.0074F;
-         }
-      }
-   }
-
-   public static class a implements gbo<ln> {
-      private final gcg a;
-
-      public a(gcg $$0) {
+      public a(gcm $$0) {
          this.a = $$0;
       }
 
-      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gch($$1, $$2, $$3, $$4, $$5, $$6, $$7, axo.b.a(255, 204, 31, 102), this.a);
-      }
-   }
-
-   public static class b implements gbo<ln> {
-      private final gcg a;
-
-      public b(gcg $$0) {
-         this.a = $$0;
-      }
-
-      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gch($$1, $$2, $$3, $$4, $$5, $$6, $$7, axo.b.a(255, 255, 255, 255), this.a);
+      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gch($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

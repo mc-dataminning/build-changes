@@ -1,34 +1,26 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Predicate;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-public class fyv {
-   private final Map<akj<? extends jw<?>>, awn.a> a = new HashMap<>();
-
-   public void a(akj<? extends jw<?>> $$0, awn.a $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   private static void a() {
-      dpb.f();
-      dfh.a();
-   }
-
-   private void a(jx $$0, Predicate<akj<? extends jw<?>>> $$1) {
-      this.a.forEach(($$2, $$3) -> {
-         if ($$1.test((akj<? extends jw<?>>)$$2)) {
-            $$3.a($$0.d((akj<? extends jw<?>>)$$2));
-         }
-      });
-   }
-
-   public void a(jx $$0, boolean $$1) {
-      if ($$1) {
-         this.a($$0, ka.a::contains);
-      } else {
-         $$0.c().filter($$0x -> !ka.a.contains($$0x.a())).forEach($$0x -> $$0x.b().n());
-         this.a($$0, $$0x -> true);
-         a();
+public interface fyv {
+   fyv a = new fyv() {
+      @Override
+      public CompletableFuture<Optional<cmm>> a() {
+         return CompletableFuture.completedFuture(Optional.empty());
       }
+
+      @Override
+      public boolean b() {
+         return false;
+      }
+   };
+
+   static fyv a(UserApiService $$0, fgh $$1, Path $$2) {
+      return (fyv)($$1.g() == fgh.a.c ? new fyc($$0, $$1.b(), $$2) : a);
    }
+
+   CompletableFuture<Optional<cmm>> a();
+
+   boolean b();
 }

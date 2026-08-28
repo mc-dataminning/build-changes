@@ -1,32 +1,17 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-
-public class ewk implements ewl {
-   private final DoubleList a;
-
-   public ewk(DoubleList $$0) {
-      this.a = $$0;
+public interface ewk {
+   static ewk a() {
+      return ewp.a;
    }
 
-   @Override
-   public boolean a(ewl.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   static ewk a(bsg $$0) {
+      return new ewp($$0);
    }
 
-   @Override
-   public int size() {
-      return this.a.size();
-   }
+   boolean b();
 
-   @Override
-   public DoubleList a() {
-      return this.a;
-   }
+   boolean a(ewy var1, ja var2, boolean var3);
+
+   boolean a(ctx var1);
+
+   boolean a(eoh var1, eoh var2);
 }

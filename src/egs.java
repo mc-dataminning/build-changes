@@ -1,112 +1,76 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class egs {
-   public static final akj<egr> a = a("classic_flat");
-   public static final akj<egr> b = a("tunnelers_dream");
-   public static final akj<egr> c = a("water_world");
-   public static final akj<egr> d = a("overworld");
-   public static final akj<egr> e = a("snowy_kingdom");
-   public static final akj<egr> f = a("bottomless_pit");
-   public static final akj<egr> g = a("desert");
-   public static final akj<egr> h = a("redstone_ready");
-   public static final akj<egr> i = a("the_void");
+public abstract class egs {
+   public static final Codec<egs> c = lq.V.r().dispatch(egs::a, egt::a);
+   private static final int a = 32;
+   private static final int b = 24;
+   public static final int d = 80;
+   protected final int e;
+   protected final int f;
+   protected final int g;
 
-   public static void a(qm<egr> $$0) {
-      new egs.a($$0).a();
+   protected static <P extends egs> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
+         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
+         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   private static akj<egr> a(String $$0) {
-      return akj.a(lr.aM, new akk($$0));
+   public egs(int $$0, int $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   static class a {
-      private final qm<egr> a;
+   protected abstract egt<?> a();
 
-      a(qm<egr> $$0) {
-         this.a = $$0;
+   public abstract List<efa.a> a(dcl var1, BiConsumer<ja, dsk> var2, ayo var3, int var4, ja var5, eek var6);
+
+   public int a(ayo $$0) {
+      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
+   }
+
+   private static boolean c(dcl $$0, ja $$1) {
+      return $$0.a($$1, $$0x -> ebk.b($$0x) && !$$0x.a(dfj.i) && !$$0x.a(dfj.fl));
+   }
+
+   protected static void a(dcl $$0, BiConsumer<ja, dsk> $$1, ayo $$2, ja $$3, eek $$4) {
+      if ($$4.k || !c($$0, $$3)) {
+         $$1.accept($$3, $$4.c.a($$2, $$3));
       }
+   }
 
-      private void a(akj<egr> $$0, dcc $$1, akj<ddd> $$2, Set<akj<eiw>> $$3, boolean $$4, boolean $$5, egq... $$6) {
-         jk<eiw> $$7 = this.a.a(lr.aS);
-         jk<ehu> $$8 = this.a.a(lr.aP);
-         jk<ddd> $$9 = this.a.a(lr.aE);
-         jn.a<eiw> $$10 = jn.a($$3.stream().map($$7::b).collect(Collectors.toList()));
-         egt $$11 = new egt(Optional.of($$10), $$9.b($$2), egt.b($$8));
-         if ($$4) {
-            $$11.a();
-         }
+   protected boolean b(dcl $$0, BiConsumer<ja, dsk> $$1, ayo $$2, ja $$3, eek $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
+   }
 
-         if ($$5) {
-            $$11.b();
-         }
-
-         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
-            $$11.e().add($$6[$$12]);
-         }
-
-         this.a.a($$0, new egr($$1.r().o(), $$11));
+   protected boolean a(dcl $$0, BiConsumer<ja, dsk> $$1, ayo $$2, ja $$3, eek $$4, Function<dsk, dsk> $$5) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      public void a() {
-         this.a(egs.a, dfh.i, ddk.b, ImmutableSet.of(eij.a), false, false, new egq(1, dfh.i), new egq(2, dfh.j), new egq(1, dfh.F));
-         this.a(egs.b, dfh.b, ddk.t, ImmutableSet.of(eij.j, eij.r), true, false, new egq(1, dfh.i), new egq(5, dfh.j), new egq(230, dfh.b), new egq(1, dfh.F));
-         this.a(
-            egs.c,
-            cud.qz,
-            ddk.T,
-            ImmutableSet.of(eij.m, eij.l, eij.g),
-            false,
-            false,
-            new egq(90, dfh.G),
-            new egq(5, dfh.L),
-            new egq(5, dfh.j),
-            new egq(5, dfh.b),
-            new egq(64, dfh.sJ),
-            new egq(1, dfh.F)
-         );
-         this.a(
-            egs.d,
-            dfh.bt,
-            ddk.b,
-            ImmutableSet.of(eij.a, eij.j, eij.f, eij.k, eij.r),
-            true,
-            true,
-            new egq(1, dfh.i),
-            new egq(3, dfh.j),
-            new egq(59, dfh.b),
-            new egq(1, dfh.F)
-         );
-         this.a(
-            egs.e,
-            dfh.dN,
-            ddk.d,
-            ImmutableSet.of(eij.a, eij.c),
-            false,
-            false,
-            new egq(1, dfh.dN),
-            new egq(1, dfh.i),
-            new egq(3, dfh.j),
-            new egq(59, dfh.b),
-            new egq(1, dfh.F)
-         );
-         this.a(egs.f, cud.pt, ddk.b, ImmutableSet.of(eij.a), false, false, new egq(1, dfh.i), new egq(3, dfh.j), new egq(2, dfh.m));
-         this.a(
-            egs.g,
-            dfh.I,
-            ddk.f,
-            ImmutableSet.of(eij.a, eij.b, eij.j, eij.r),
-            true,
-            false,
-            new egq(8, dfh.I),
-            new egq(52, dfh.aV),
-            new egq(3, dfh.b),
-            new egq(1, dfh.F)
-         );
-         this.a(egs.h, cud.lH, ddk.f, ImmutableSet.of(), false, false, new egq(116, dfh.aV), new egq(3, dfh.b), new egq(1, dfh.F));
-         this.a(egs.i, dfh.hW, ddk.a, ImmutableSet.of(), true, false, new egq(1, dfh.a));
+   protected void a(dcl $$0, BiConsumer<ja, dsk> $$1, ayo $$2, ja.a $$3, eek $$4) {
+      if (this.b($$0, $$3)) {
+         this.b($$0, $$1, $$2, $$3, $$4);
       }
+   }
+
+   protected boolean a(dcl $$0, ja $$1) {
+      return ecw.c($$0, $$1);
+   }
+
+   public boolean b(dcl $$0, ja $$1) {
+      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(avw.t));
    }
 }

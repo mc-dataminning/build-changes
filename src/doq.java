@@ -1,33 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class doq extends dmz implements dok {
-   public static final MapCodec<doq> I = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dok.a.e.fieldOf("weathering_state").forGetter(dgg::c), dsh.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, doq::new)
+public class doq extends dol implements dom {
+   public static final MapCodec<doq> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dom.a.e.fieldOf("weathering_state").forGetter(doq::m), u()).apply($$0, doq::new)
    );
-   private final dok.a J;
+   private final dom.a f;
 
    @Override
-   public MapCodec<doq> a() {
-      return I;
+   protected MapCodec<doq> a() {
+      return e;
    }
 
-   public doq(dok.a $$0, dsh $$1, dsg.d $$2) {
-      super($$1, $$2);
-      this.J = $$0;
+   protected doq(dom.a $$0, dsj.d $$1) {
+      super($$1);
+      this.f = $$0;
    }
 
    @Override
-   protected void b(dsh $$0, aqk $$1, ja $$2, aym $$3) {
+   protected void b(dsk $$0, aqm $$1, ja $$2, ayo $$3) {
       this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean d_(dsh $$0) {
-      return dok.c($$0.b()).isPresent();
+   protected boolean d_(dsk $$0) {
+      return dom.c($$0.b()).isPresent();
    }
 
-   public dok.a m() {
-      return this.J;
+   public dom.a m() {
+      return this.f;
    }
 }

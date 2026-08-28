@@ -1,151 +1,59 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
 
-public abstract class cod extends coc implements cog {
-   private js<cua> c = js.a(36, cua.l);
-   @Nullable
-   private akj<eqt> d;
-   private long e;
+public class cod {
+   private final List<coa> a = Lists.newArrayList();
+   private int b;
 
-   protected cod(bsj<?> $$0, dcd $$1) {
-      super($$0, $$1);
+   public ImmutableList<coa> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   protected cod(bsj<?> $$0, double $$1, double $$2, double $$3, dcd $$4) {
-      super($$0, $$4, $$1, $$2, $$3);
+   public cod a(int $$0, float $$1) {
+      this.a.add(new coa($$0, $$1));
+      this.b();
+      return this;
    }
 
-   @Override
-   public void a(bqw $$0) {
-      super.a($$0);
-      this.a($$0, this.dP(), this);
+   public cod a(Collection<coa> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
    }
 
-   @Override
-   public cua a(int $$0) {
-      return this.f_($$0);
+   private void b() {
+      Int2ObjectSortedMap<coa> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
    }
 
-   @Override
-   public cua a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public cua b(int $$0) {
-      return this.e_($$0);
-   }
-
-   @Override
-   public void a(int $$0, cua $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public btq a_(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cmh $$0) {
-      return this.g($$0);
-   }
-
-   @Override
-   public void a(bsd.c $$0) {
-      if (!this.dP().B && $$0.a()) {
-         bpz.a(this.dP(), this, this);
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   protected void b(tx $$0) {
-      super.b($$0);
-      this.a($$0, this.dR());
-   }
-
-   @Override
-   protected void a(tx $$0) {
-      super.a($$0);
-      this.b($$0, this.dR());
-   }
-
-   @Override
-   public bqd a(cmh $$0, bqc $$1) {
-      return this.c_($$0);
-   }
-
-   @Override
-   protected void u() {
-      float $$0 = 0.98F;
-      if (this.d == null) {
-         int $$1 = 15 - cpe.b(this);
-         $$0 += (float)$$1 * 0.001F;
-      }
-
-      if (this.be()) {
-         $$0 *= 0.95F;
-      }
-
-      this.h(this.ds().d((double)$$0, 0.0, (double)$$0));
-   }
-
-   @Override
-   public void a() {
-      this.f();
-   }
-
-   public void a(akj<eqt> $$0, long $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   @Nullable
-   @Override
-   public cpe createMenu(int $$0, cmg $$1, cmh $$2) {
-      if (this.d != null && $$2.N_()) {
-         return null;
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
       } else {
-         this.f($$1.l);
-         return this.a($$0, $$1);
+         coa $$1 = this.a.get(this.b);
+         coa $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
+
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            coa $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
+
+            this.b = $$6;
+            $$5 = $$7.b();
+         }
+
+         return $$5;
       }
-   }
-
-   protected abstract cpe a(int var1, cmg var2);
-
-   @Nullable
-   @Override
-   public akj<eqt> B() {
-      return this.d;
-   }
-
-   @Override
-   public void a(@Nullable akj<eqt> $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public long C() {
-      return this.e;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public js<cua> D() {
-      return this.c;
-   }
-
-   @Override
-   public void E() {
-      this.c = js.a(this.b(), cua.l);
    }
 }

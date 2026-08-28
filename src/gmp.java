@@ -1,44 +1,37 @@
-public class gmp<T extends bsy, M extends fvn<T>> extends gob<T, M> {
-   private static final akk a = new akk("textures/entity/bee/bee_stinger.png");
+public class gmp extends gjl<cnq> {
+   private static final akk a = new akk("textures/entity/wither/wither_invulnerable.png");
+   private static final akk f = new akk("textures/entity/wither/wither.png");
+   private final fwk g;
 
-   public gmp(gkh<T, M> $$0) {
+   public gmp(gjm.a $$0) {
       super($$0);
+      this.g = new fwk($$0.a(fxn.cb));
    }
 
-   @Override
-   protected int a(T $$0) {
-      return $$0.eQ();
+   public static fxu a() {
+      fxw $$0 = new fxw();
+      fxx $$1 = $$0.a();
+      $$1.a("head", fxt.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fxq.a);
+      return fxu.a($$0, 64, 64);
    }
 
-   @Override
-   protected void a(fag $$0, gdx $$1, int $$2, bsd $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = aye.c($$4 * $$4 + $$6 * $$6);
-      float $$9 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
-      float $$10 = (float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI);
-      $$0.a(0.0F, 0.0F, 0.0F);
-      $$0.a(a.d.rotationDegrees($$9 - 90.0F));
-      $$0.a(a.f.rotationDegrees($$10));
-      float $$11 = 0.0F;
-      float $$12 = 0.125F;
-      float $$13 = 0.0F;
-      float $$14 = 0.0625F;
-      float $$15 = 0.03125F;
-      $$0.a(a.b.rotationDegrees(45.0F));
-      $$0.b(0.03125F, 0.03125F, 0.03125F);
-      $$0.a(2.5F, 0.0F, 0.0F);
-      fak $$16 = $$1.getBuffer(gef.e(a));
-
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         $$0.a(a.b.rotationDegrees(90.0F));
-         fag.a $$18 = $$0.c();
-         a($$16, $$18, -4.5F, -1, 0.0F, 0.0F, $$2);
-         a($$16, $$18, 4.5F, -1, 0.125F, 0.0F, $$2);
-         a($$16, $$18, 4.5F, 1, 0.125F, 0.0625F, $$2);
-         a($$16, $$18, -4.5F, 1, 0.0F, 0.0625F, $$2);
-      }
+   protected int a(cnq $$0, ja $$1) {
+      return 15;
    }
 
-   private static void a(fak $$0, fag.a $$1, float $$2, int $$3, float $$4, float $$5, int $$6) {
-      $$0.a($$1, $$2, (float)$$3, 0.0F).a(255, 255, 255, 255).a($$4, $$5).c(goz.d).b($$6).b($$1, 0.0F, 1.0F, 0.0F).e();
+   public void a(cnq $$0, float $$1, float $$2, fam $$3, ged $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      float $$6 = ayg.j($$2, $$0.O, $$0.dG());
+      float $$7 = ayg.i($$2, $$0.P, $$0.dI());
+      faq $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
+      this.g.a(0.0F, $$6, $$7);
+      this.g.a($$3, $$8, $$5, gpf.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public akk a(cnq $$0) {
+      return $$0.y() ? a : f;
    }
 }

@@ -1,5 +1,5 @@
 public interface alb extends ala {
-   aph a();
+   apg a();
 
    String b();
 
@@ -7,7 +7,7 @@ public interface alb extends ala {
 
    String h();
 
-   String[] O();
+   String[] P();
 
    String s();
 

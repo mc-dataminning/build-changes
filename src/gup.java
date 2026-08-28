@@ -1,51 +1,16 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public abstract class gup {
-   private static final int a = 60000;
-   private static final int b = 10;
-   private int c;
-   private boolean d = false;
-   @Nullable
-   private Instant e;
+@FunctionalInterface
+public interface gup {
+   gup a = ($$0, $$1) -> {
+   };
 
-   public void a() {
-      this.d = true;
-      this.e = Instant.now();
-      this.c = 0;
+   default gup decorate(Consumer<gut.a> $$0) {
+      return ($$1, $$2) -> this.send($$1, $$2x -> {
+            $$2.accept($$2x);
+            $$0.accept($$2x);
+         });
    }
 
-   public void a(guj $$0) {
-      if (this.b()) {
-         this.f();
-         this.c++;
-         this.e = Instant.now();
-      }
-
-      if (this.c()) {
-         this.b($$0);
-         this.c = 0;
-      }
-   }
-
-   public boolean b() {
-      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
-   }
-
-   public boolean c() {
-      return this.c >= 10;
-   }
-
-   public void d() {
-      this.d = false;
-   }
-
-   protected int e() {
-      return this.c;
-   }
-
-   public abstract void f();
-
-   public abstract void b(guj var1);
+   void send(guq var1, Consumer<gut.a> var2);
 }

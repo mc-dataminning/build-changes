@@ -1,95 +1,93 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class ert extends esb {
-   public static final int a = 0;
-   public static final MapCodec<ert> b = RecordCodecBuilder.mapCodec(
+public class ert extends esh {
+   public static final MapCodec<ert> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  czj.b.fieldOf("enchantment").forGetter($$0x -> $$0x.c),
-                  euw.a.fieldOf("count").forGetter($$0x -> $$0x.d),
-                  Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.e)
+                  lq.e.s().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dtn::f).toList())
                )
             )
             .apply($$0, ert::new)
    );
-   private final jj<czj> c;
-   private final euv d;
-   private final int e;
+   private final jj<dfh> b;
+   private final Set<dtn<?>> c;
 
-   ert(List<etz> $$0, jj<czj> $$1, euv $$2, int $$3) {
+   ert(List<euf> $$0, jj<dfh> $$1, Set<dtn<?>> $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private ert(List<euf> $$0, jj<dfh> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public esd<ert> b() {
-      return ese.m;
+   public esj<ert> b() {
+      return esk.D;
    }
 
    @Override
-   public Set<eth<?>> a() {
-      return Sets.union(ImmutableSet.of(etk.d), this.d.a());
-   }
-
-   private boolean c() {
-      return this.e > 0;
+   public Set<etn<?>> a() {
+      return ImmutableSet.of(etq.g);
    }
 
    @Override
-   public cua a(cua $$0, eqo $$1) {
-      bsd $$2 = $$1.c(etk.d);
-      if ($$2 instanceof bsy $$3) {
-         int $$4 = czl.a(this.c, $$3);
-         if ($$4 == 0) {
-            return $$0;
-         }
+   protected cuc a(cuc $$0, equ $$1) {
+      dsk $$2 = $$1.c(etq.g);
+      if ($$2 != null) {
+         $$0.a(kn.ab, cwm.a, $$1x -> {
+            for (dtn<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
+            }
 
-         float $$5 = (float)$$4 * this.d.b($$1);
-         $$0.g(Math.round($$5));
-         if (this.c()) {
-            $$0.f(this.e);
-         }
+            return $$1x;
+         });
       }
 
       return $$0;
    }
 
-   public static ert.a a(jl.a $$0, euv $$1) {
-      jl.b<czj> $$2 = $$0.b(lr.aK);
-      return new ert.a($$2.b(czo.s), $$1);
+   public static ert.a a(dfh $$0) {
+      return new ert.a($$0);
    }
 
-   public static class a extends esb.a<ert.a> {
-      private final jj<czj> a;
-      private final euv b;
-      private int c = 0;
+   public static class a extends esh.a<ert.a> {
+      private final jj<dfh> a;
+      private final Builder<dtn<?>> b = ImmutableSet.builder();
 
-      public a(jj<czj> $$0, euv $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      a(dfh $$0) {
+         this.a = $$0.s();
+      }
+
+      public ert.a a(dtn<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
       protected ert.a a() {
          return this;
       }
 
-      public ert.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
       @Override
-      public esc b() {
-         return new ert(this.g(), this.a, this.b, this.c);
+      public esi b() {
+         return new ert(this.g(), this.a, this.b.build());
       }
    }
 }

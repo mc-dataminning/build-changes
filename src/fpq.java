@@ -1,47 +1,90 @@
-public class fpq {
-   public static final int a = 12;
-   private static final int f = 3;
-   public static final int b = 3;
-   public static final int c = 3;
-   public static final int d = 3;
-   public static final int e = 3;
-   private static final int g = -267386864;
-   private static final int h = 1347420415;
-   private static final int i = 1344798847;
+import org.apache.commons.lang3.math.Fraction;
 
-   public static void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$1 - 3;
-      int $$7 = $$2 - 3;
-      int $$8 = $$3 + 3 + 3;
-      int $$9 = $$4 + 3 + 3;
-      c($$0, $$6, $$7 - 1, $$8, $$5, -267386864);
-      c($$0, $$6, $$7 + $$9, $$8, $$5, -267386864);
-      b($$0, $$6, $$7, $$8, $$9, $$5, -267386864);
-      b($$0, $$6 - 1, $$7, $$9, $$5, -267386864);
-      b($$0, $$6 + $$8, $$7, $$9, $$5, -267386864);
-      a($$0, $$6, $$7 + 1, $$8, $$9, $$5, 1347420415, 1344798847);
+public class fpq implements fps {
+   private static final akk a = new akk("container/bundle/background");
+   private static final int b = 4;
+   private static final int c = 1;
+   private static final int d = 18;
+   private static final int e = 20;
+   private final cwo f;
+
+   public fpq(cwo $$0) {
+      this.f = $$0;
    }
 
-   private static void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      a($$0, $$1, $$2, $$4 - 2, $$5, $$6, $$7);
-      a($$0, $$1 + $$3 - 1, $$2, $$4 - 2, $$5, $$6, $$7);
-      c($$0, $$1, $$2 - 1, $$3, $$5, $$6);
-      c($$0, $$1, $$2 - 1 + $$4 - 1, $$3, $$5, $$7);
+   @Override
+   public int a() {
+      return this.c() + 4;
    }
 
-   private static void b(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5);
+   @Override
+   public int a(fhd $$0) {
+      return this.b();
    }
 
-   private static void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5, $$6);
+   private int b() {
+      return this.d() * 18 + 2;
    }
 
-   private static void c(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      $$0.a($$1, $$2, $$1 + $$3, $$2 + 1, $$4, $$5);
+   private int c() {
+      return this.e() * 20 + 2;
    }
 
-   private static void b(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$2, $$1 + $$3, $$2 + $$4, $$5, $$6);
+   @Override
+   public void a(fhd $$0, int $$1, int $$2, fhf $$3) {
+      int $$4 = this.d();
+      int $$5 = this.e();
+      $$3.a(a, $$1, $$2, this.b(), this.c());
+      boolean $$6 = this.f.e().compareTo(Fraction.ONE) >= 0;
+      int $$7 = 0;
+
+      for (int $$8 = 0; $$8 < $$5; $$8++) {
+         for (int $$9 = 0; $$9 < $$4; $$9++) {
+            int $$10 = $$1 + $$9 * 18 + 1;
+            int $$11 = $$2 + $$8 * 20 + 1;
+            this.a($$10, $$11, $$7++, $$6, $$3, $$0);
+         }
+      }
+   }
+
+   private void a(int $$0, int $$1, int $$2, boolean $$3, fhf $$4, fhd $$5) {
+      if ($$2 >= this.f.d()) {
+         this.a($$4, $$0, $$1, $$3 ? fpq.a.a : fpq.a.b);
+      } else {
+         cuc $$6 = this.f.a($$2);
+         this.a($$4, $$0, $$1, fpq.a.b);
+         $$4.a($$6, $$0 + 1, $$1 + 1, $$2);
+         $$4.a($$5, $$6, $$0 + 1, $$1 + 1);
+         if ($$2 == 0) {
+            fny.a($$4, $$0 + 1, $$1 + 1, 0);
+         }
+      }
+   }
+
+   private void a(fhf $$0, int $$1, int $$2, fpq.a $$3) {
+      $$0.a($$3.c, $$1, $$2, 0, $$3.d, $$3.e);
+   }
+
+   private int d() {
+      return Math.max(2, (int)Math.ceil(Math.sqrt((double)this.f.d() + 1.0)));
+   }
+
+   private int e() {
+      return (int)Math.ceil(((double)this.f.d() + 1.0) / (double)this.d());
+   }
+
+   static enum a {
+      a(new akk("container/bundle/blocked_slot"), 18, 20),
+      b(new akk("container/bundle/slot"), 18, 20);
+
+      public final akk c;
+      public final int d;
+      public final int e;
+
+      private a(final akk $$0, final int $$1, final int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
    }
 }

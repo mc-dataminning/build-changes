@@ -1,63 +1,47 @@
-import javax.annotation.Nullable;
+public class fpw {
+   public static final int a = 12;
+   private static final int f = 3;
+   public static final int b = 3;
+   public static final int c = 3;
+   public static final int d = 3;
+   public static final int e = 3;
+   private static final int g = -267386864;
+   private static final int h = 1347420415;
+   private static final int i = 1344798847;
 
-public abstract class fpw extends fnd {
-   private static final int b = 100;
-   private final wu c;
-   @Nullable
-   private final wu q;
-   private final wu r;
-   @Nullable
-   protected fho a;
-   @Nullable
-   private fhx s;
-   private final fkx u;
-
-   protected fpw(wu $$0, wu $$1, wu $$2) {
-      this($$0, $$1, null, $$2);
+   public static void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$1 - 3;
+      int $$7 = $$2 - 3;
+      int $$8 = $$3 + 3 + 3;
+      int $$9 = $$4 + 3 + 3;
+      c($$0, $$6, $$7 - 1, $$8, $$5, -267386864);
+      c($$0, $$6, $$7 + $$9, $$8, $$5, -267386864);
+      b($$0, $$6, $$7, $$8, $$9, $$5, -267386864);
+      b($$0, $$6 - 1, $$7, $$9, $$5, -267386864);
+      b($$0, $$6 + $$8, $$7, $$9, $$5, -267386864);
+      a($$0, $$6, $$7 + 1, $$8, $$9, $$5, 1347420415, 1344798847);
    }
 
-   protected fpw(wu $$0, wu $$1, @Nullable wu $$2, wu $$3) {
-      super($$0);
-      this.c = $$1;
-      this.q = $$2;
-      this.r = $$3;
-      this.u = new fkx(0, 0, this.m, this.n);
+   private static void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, $$2, $$4 - 2, $$5, $$6, $$7);
+      a($$0, $$1 + $$3 - 1, $$2, $$4 - 2, $$5, $$6, $$7);
+      c($$0, $$1, $$2 - 1, $$3, $$5, $$6);
+      c($$0, $$1, $$2 - 1 + $$4 - 1, $$3, $$5, $$7);
    }
 
-   protected abstract fla m();
-
-   @Override
-   protected void aO_() {
-      fld $$0 = this.u.a(fld.d().a(8));
-      $$0.c().b();
-      $$0.a(new fit(this.n(), this.o));
-      this.s = $$0.a(new fhx(this.m - 100, this.c, this.o, 12), $$0x -> $$0x.a(12));
-      this.s.b(false);
-      fld $$1 = $$0.a(fld.d().a(8));
-      $$1.c().b();
-      if (this.q != null) {
-         this.a = $$1.a(fho.a(this.q, this.o).a());
-      }
-
-      $$1.a(this.m());
-      this.u.a($$1x -> {
-         fhk var10000 = this.c($$1x);
-      });
-      this.c();
+   private static void b(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5);
    }
 
-   @Override
-   protected void c() {
-      if (this.s != null) {
-         this.s.d(this.m - 100);
-      }
-
-      this.u.a();
-      fkx.a(this.u, this.H());
+   private static void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5, $$6);
    }
 
-   @Override
-   public wu i() {
-      return this.r;
+   private static void c(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      $$0.a($$1, $$2, $$1 + $$3, $$2 + 1, $$4, $$5);
+   }
+
+   private static void b(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$2, $$1 + $$3, $$2 + $$4, $$5, $$6);
    }
 }

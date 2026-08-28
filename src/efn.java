@@ -1,41 +1,18 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class efn extends efm {
-   public static final MapCodec<efn> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, efn::new));
-   protected final List<dsh> h;
+public class efn<P extends efm> {
+   public static final efn<efl> a = a("mangrove_root_placer", efl.c);
+   private final MapCodec<P> b;
 
-   protected static <P extends efn> P4<Mu<P>, Long, ene.a, Float, List<dsh>> b(Instance<P> $$0) {
-      return a($$0).and(Codec.list(dsh.b).fieldOf("states").forGetter($$0x -> $$0x.h));
+   private static <P extends efm> efn<P> a(String $$0, MapCodec<P> $$1) {
+      return jw.a(lq.W, $$0, new efn<>($$1));
    }
 
-   public efn(long $$0, ene.a $$1, float $$2, List<dsh> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   private efn(MapCodec<P> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected efk<?> a() {
-      return efk.d;
-   }
-
-   @Override
-   public dsh a(aym $$0, ja $$1) {
-      return this.a(this.h, $$1, (double)this.e);
-   }
-
-   protected dsh a(List<dsh> $$0, ja $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
-   }
-
-   protected dsh a(List<dsh> $$0, double $$1) {
-      double $$2 = aye.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   public MapCodec<P> a() {
+      return this.b;
    }
 }

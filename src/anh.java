@@ -27,10 +27,10 @@ public class anh {
 
    private static int a(eq $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
-      if ($$1.aV()) {
+      if ($$1.aW()) {
          throw c.create();
       } else {
-         Consumer<bmq> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<bmt> $$2 = $$1x -> a($$0, $$1x);
          Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
          $$1.a($$2, $$3);
          $$0.a(() -> wu.c("commands.perf.started"), false);
@@ -40,27 +40,27 @@ public class anh {
 
    private static int b(eq $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
-      if (!$$1.aV()) {
+      if (!$$1.aW()) {
          throw b.create();
       } else {
-         $$1.aX();
+         $$1.aY();
          return 0;
       }
    }
 
    private static void a(eq $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.f(), $$2.bb().e(), aa.b().b());
+      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.f(), $$2.bc().e(), aa.b().b());
 
       String $$4;
       try {
-         $$4 = v.a(boj.a, $$3, ".zip");
+         $$4 = v.a(bom.a, $$3, ".zip");
       } catch (IOException var11) {
          $$0.b(wu.c("commands.perf.reportFailed"));
          a.error("Failed to create report name", var11);
          return;
       }
 
-      try (axp $$7 = new axp(boj.a.resolve($$4))) {
+      try (axr $$7 = new axr(bom.a.resolve($$4))) {
          $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
          $$7.a($$1);
       }
@@ -74,10 +74,10 @@ public class anh {
       $$0.a(() -> wu.a("commands.perf.reportSaved", $$4), false);
    }
 
-   private static void a(eq $$0, bmq $$1) {
-      if ($$1 != bmm.a) {
+   private static void a(eq $$0, bmt $$1) {
+      if ($$1 != bmp.a) {
          int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)aze.a;
+         double $$3 = (double)$$1.g() / (double)azh.a;
          $$0.a(() -> wu.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
       }
    }

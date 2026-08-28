@@ -2,7 +2,7 @@ public class adp implements zb<abn> {
    public static final ys<vr, adp> a = zb.a(adp::a, adp::new);
    private final int b;
 
-   public adp(bqt $$0) {
+   public adp(bqw $$0) {
       this($$0.b());
    }
 

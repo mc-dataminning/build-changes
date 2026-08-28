@@ -1,40 +1,22 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bxz extends bur<clu> {
-   public bxz() {
-      super(ImmutableMap.of());
-   }
+public class bxz {
+   private static final int a = 36;
 
-   protected boolean a(aqk $$0, clu $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
+   public static buv<btb> a() {
+      return byh.a(
+         (Function<byh.b<btb>, ? extends App<byh.c<btb>, byk<btb>>>)($$0 -> $$0.group($$0.a(ccf.x), $$0.a(ccf.y), $$0.a(ccf.A))
+               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
+                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<btb>a($$2).filter($$1xx -> $$1xx.g((bsg)$$5) <= 36.0).isPresent();
+                     if (!$$7) {
+                        $$1.b();
+                        $$2.b();
+                        $$5.dU().a($$4.aa(), $$4.Z());
+                     }
 
-   protected void b(aqk $$0, clu $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bua<?> $$3 = $$1.dT();
-         if (!$$3.c(cnw.g)) {
-            $$3.b(ccc.t);
-            $$3.b(ccc.m);
-            $$3.b(ccc.n);
-            $$3.b(ccc.r);
-            $$3.b(ccc.q);
-         }
-
-         $$3.a(cnw.g);
-      }
-   }
-
-   protected void c(aqk $$0, clu $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bsy $$0) {
-      return $$0.dT().a(ccc.A);
-   }
-
-   public static boolean c(bsy $$0) {
-      return $$0.dT().a(ccc.x);
+                     return true;
+                  }))
+      );
    }
 }

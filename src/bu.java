@@ -37,7 +37,7 @@ public record bu(
                      bs.a.optionalFieldOf("flags").forGetter(bu::h),
                      br.a.optionalFieldOf("equipment").forGetter(bu::i),
                      bv.a.optionalFieldOf("type_specific").forGetter(bu::j),
-                     axm.l.optionalFieldOf("periodic_tick").forGetter(bu::k),
+                     axo.l.optionalFieldOf("periodic_tick").forGetter(bu::k),
                      $$0.optionalFieldOf("vehicle").forGetter(bu::l),
                      $$0.optionalFieldOf("passenger").forGetter(bu::m),
                      $$0.optionalFieldOf("targeted_entity").forGetter(bu::n),
@@ -62,41 +62,41 @@ public record bu(
    }
 
    public static bf a(bu $$0) {
-      etz $$1 = euc.a(eqo.b.a, $$0).build();
+      euf $$1 = eui.a(equ.b.a, $$0).build();
       return new bf(List.of($$1));
    }
 
-   public boolean a(aql $$0, @Nullable bsd $$1) {
-      return this.a($$0.z(), $$0.dn(), $$1);
+   public boolean a(aqn $$0, @Nullable bsg $$1) {
+      return this.a($$0.z(), $$0.do(), $$1);
    }
 
-   public boolean a(aqk $$0, @Nullable evz $$1, @Nullable bsd $$2) {
+   public boolean a(aqm $$0, @Nullable ewf $$1, @Nullable bsg $$2) {
       if ($$2 == null) {
          return false;
-      } else if (this.c.isPresent() && !this.c.get().b($$2.ak())) {
+      } else if (this.c.isPresent() && !this.c.get().b($$2.al())) {
          return false;
       } else {
          if ($$1 == null) {
             if (this.d.isPresent()) {
                return false;
             }
-         } else if (this.d.isPresent() && !this.d.get().a($$1.c, $$1.d, $$1.e, $$2.du(), $$2.dw(), $$2.dA())) {
+         } else if (this.d.isPresent() && !this.d.get().a($$1.c, $$1.d, $$1.e, $$2.dv(), $$2.dx(), $$2.dB())) {
             return false;
          }
 
          if (this.e.isPresent()) {
-            evz $$3 = $$2.ds();
-            evz $$4 = $$3.a(20.0);
+            ewf $$3 = $$2.dt();
+            ewf $$4 = $$3.a(20.0);
             if (!this.e.get().a($$4.c, $$4.d, $$4.e, (double)$$2.ac)) {
                return false;
             }
          }
 
-         if (this.f.isPresent() && !this.f.get().a($$0, $$2.du(), $$2.dw(), $$2.dA())) {
+         if (this.f.isPresent() && !this.f.get().a($$0, $$2.dv(), $$2.dx(), $$2.dB())) {
             return false;
          } else {
             if (this.g.isPresent()) {
-               evz $$5 = evz.b($$2.aL());
+               ewf $$5 = ewf.b($$2.aM());
                if (!this.g.get().a($$0, $$5.a(), $$5.b(), $$5.c())) {
                   return false;
                }
@@ -110,17 +110,17 @@ public record bu(
                return false;
             } else if (this.l.isPresent() && !this.l.get().a($$2, $$0, $$1)) {
                return false;
-            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2.dc())) {
+            } else if (this.n.isPresent() && !this.n.get().a($$0, $$1, $$2.dd())) {
                return false;
-            } else if (this.o.isPresent() && $$2.cS().stream().noneMatch($$2x -> this.o.get().a($$0, $$1, $$2x))) {
+            } else if (this.o.isPresent() && $$2.cT().stream().noneMatch($$2x -> this.o.get().a($$0, $$1, $$2x))) {
                return false;
-            } else if (this.p.isPresent() && !this.p.get().a($$0, $$1, $$2 instanceof bta ? ((bta)$$2).p() : null)) {
+            } else if (this.p.isPresent() && !this.p.get().a($$0, $$1, $$2 instanceof btd ? ((btd)$$2).p() : null)) {
                return false;
             } else if (this.m.isPresent() && $$2.ai % this.m.get() != 0) {
                return false;
             } else {
                if (this.q.isPresent()) {
-                  exf $$6 = $$2.cj();
+                  exl $$6 = $$2.ck();
                   if ($$6 == null || !this.q.get().equals($$6.b())) {
                      return false;
                   }
@@ -132,9 +132,9 @@ public record bu(
       }
    }
 
-   public static eqo b(aql $$0, bsd $$1) {
-      eqr $$2 = new eqr.a($$0.z()).a(etk.a, $$1).a(etk.f, $$0.dn()).a(etj.n);
-      return new eqo.a($$2).a(Optional.empty());
+   public static equ b(aqn $$0, bsg $$1) {
+      eqx $$2 = new eqx.a($$0.z()).a(etq.a, $$1).a(etq.f, $$0.do()).a(etp.n);
+      return new equ.a($$2).a(Optional.empty());
    }
 
    public Optional<bx> a() {
@@ -224,12 +224,12 @@ public record bu(
          return new bu.a();
       }
 
-      public bu.a a(bsj<?> $$0) {
+      public bu.a a(bsm<?> $$0) {
          this.a = Optional.of(bx.a($$0));
          return this;
       }
 
-      public bu.a a(awk<bsj<?>> $$0) {
+      public bu.a a(awm<bsm<?>> $$0) {
          this.a = Optional.of(bx.a($$0));
          return this;
       }

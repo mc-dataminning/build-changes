@@ -1,37 +1,35 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
+import java.util.Iterator;
 
-public class gtj extends auh {
-   @Nullable
-   private tx h;
+public class gtj<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
 
-   public gtj(gtk $$0, jq<akt> $$1, eqf $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public gtj(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   @Override
-   protected void b(aql $$0) {
-      if (this.b().a($$0.fX())) {
-         this.h = $$0.f(new tx());
+   protected T computeNext() {
+      while (this.a.hasNext() && this.b.hasNext()) {
+         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$0 == 0) {
+            this.b.next();
+            return (T)this.a.next();
+         }
+
+         if ($$0 < 0) {
+            this.a.next();
+         } else {
+            this.b.next();
+         }
       }
 
-      super.b($$0);
-   }
-
-   @Override
-   public wu a(SocketAddress $$0, GameProfile $$1) {
-      return (wu)(this.b().a($$1) && this.a($$1.getName()) != null ? wu.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public gtk b() {
-      return (gtk)super.c();
-   }
-
-   @Nullable
-   @Override
-   public tx r() {
-      return this.h;
+      return (T)this.endOfData();
    }
 }

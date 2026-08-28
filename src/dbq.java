@@ -1,3 +1,4 @@
+@FunctionalInterface
 public interface dbq {
-   int a(aqk var1, boolean var2, boolean var3);
+   int getColor(ddf var1, double var2, double var4);
 }

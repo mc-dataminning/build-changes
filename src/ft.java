@@ -39,7 +39,7 @@ public class ft<T> implements ArgumentType<ft.c<T>> {
             akj<?> $$2x = $$1xx.h();
             return fp.b.create($$2x.a(), $$2x.b(), $$2.a());
          }, $$1xx -> {
-            awk<?> $$2x = $$1xx.g();
+            awm<?> $$2x = $$1xx.g();
             return c.create($$2x.b(), $$2x.a(), $$2.a());
          }));
    }
@@ -51,7 +51,7 @@ public class ft<T> implements ArgumentType<ft.c<T>> {
          try {
             $$0.skip();
             akk $$2 = akk.a($$0);
-            awk<T> $$3 = awk.a(this.e, $$2);
+            awm<T> $$3 = awm.a(this.e, $$2);
             jn.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.createWithContext($$0, $$2, this.e.a()));
             return new ft.d<>($$4);
          } catch (CommandSyntaxException var6) {
@@ -67,7 +67,7 @@ public class ft<T> implements ArgumentType<ft.c<T>> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      ev.a(this.d.e().map(awk::b), $$1, "#");
+      ev.a(this.d.e().map(awm::b), $$1, "#");
       return ev.a(this.d.c().map(akj::a), $$1);
    }
 

@@ -1,20 +1,26 @@
-public interface ewd {
-   ewd a = ($$0, $$1) -> false;
-   ewd b = ($$0, $$1) -> !$$0 && !$$1;
-   ewd c = ($$0, $$1) -> $$1 && !$$0;
-   ewd d = ($$0, $$1) -> !$$0;
-   ewd e = ($$0, $$1) -> $$0 && !$$1;
-   ewd f = ($$0, $$1) -> !$$1;
-   ewd g = ($$0, $$1) -> $$0 != $$1;
-   ewd h = ($$0, $$1) -> !$$0 || !$$1;
-   ewd i = ($$0, $$1) -> $$0 && $$1;
-   ewd j = ($$0, $$1) -> $$0 == $$1;
-   ewd k = ($$0, $$1) -> $$1;
-   ewd l = ($$0, $$1) -> !$$0 || $$1;
-   ewd m = ($$0, $$1) -> $$0;
-   ewd n = ($$0, $$1) -> $$0 || !$$1;
-   ewd o = ($$0, $$1) -> $$0 || $$1;
-   ewd p = ($$0, $$1) -> true;
+public abstract class ewd {
+   protected final ewf a;
 
-   boolean apply(boolean var1, boolean var2);
+   protected ewd(ewf $$0) {
+      this.a = $$0;
+   }
+
+   public double a(bsg $$0) {
+      double $$1 = this.a.c - $$0.dv();
+      double $$2 = this.a.d - $$0.dx();
+      double $$3 = this.a.e - $$0.dB();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public abstract ewd.a c();
+
+   public ewf e() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
 }

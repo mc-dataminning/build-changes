@@ -1,411 +1,541 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.tuple.Triple;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
 
-public class gek {
-   private static final Logger a = LogUtils.getLogger();
-   private static final jf[] b = jf.values();
-   private static final int c = 60;
-   private static final double d = Math.ceil(Math.sqrt(3.0) * 16.0);
-   private boolean e = true;
-   @Nullable
-   private Future<?> f;
-   @Nullable
-   private geo g;
-   private final AtomicReference<gek.b> h = new AtomicReference<>();
-   private final AtomicReference<gek.a> i = new AtomicReference<>();
-   private final AtomicBoolean j = new AtomicBoolean(false);
-
-   public void a(@Nullable geo $$0) {
-      if (this.f != null) {
-         try {
-            this.f.get();
-            this.f = null;
-         } catch (Exception var3) {
-            a.warn("Full update failed", var3);
-         }
+public abstract class gek {
+   private static final float aT = 0.99975586F;
+   public static final double a = 8.0;
+   protected final String b;
+   private final Runnable aU;
+   private final Runnable aV;
+   protected static final gek.p c = new gek.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
+   });
+   protected static final gek.p d = new gek.p("additive_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final gek.p e = new gek.p("lightning_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final gek.p f = new gek.p(
+      "glint_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
       }
-
-      this.g = $$0;
-      if ($$0 != null) {
-         this.h.set(new gek.b($$0.f.length));
-         this.a();
-      } else {
-         this.h.set(null);
+   );
+   protected static final gek.p g = new gek.p(
+      "crumbling_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
       }
+   );
+   protected static final gek.p h = new gek.p(
+      "translucent_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+            GlStateManager.SourceFactor.ONE,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gek.m i = new gek.m();
+   protected static final gek.m j = new gek.m(gdw::u);
+   protected static final gek.m k = new gek.m(gdw::o);
+   protected static final gek.m l = new gek.m(gdw::q);
+   protected static final gek.m m = new gek.m(gdw::r);
+   protected static final gek.m n = new gek.m(gdw::v);
+   protected static final gek.m o = new gek.m(gdw::p);
+   protected static final gek.m p = new gek.m(gdw::w);
+   protected static final gek.m q = new gek.m(gdw::x);
+   protected static final gek.m r = new gek.m(gdw::y);
+   protected static final gek.m s = new gek.m(gdw::z);
+   protected static final gek.m t = new gek.m(gdw::A);
+   protected static final gek.m u = new gek.m(gdw::B);
+   protected static final gek.m v = new gek.m(gdw::C);
+   protected static final gek.m w = new gek.m(gdw::D);
+   protected static final gek.m x = new gek.m(gdw::E);
+   protected static final gek.m y = new gek.m(gdw::F);
+   protected static final gek.m z = new gek.m(gdw::G);
+   protected static final gek.m A = new gek.m(gdw::H);
+   protected static final gek.m B = new gek.m(gdw::I);
+   protected static final gek.m C = new gek.m(gdw::J);
+   protected static final gek.m D = new gek.m(gdw::K);
+   protected static final gek.m E = new gek.m(gdw::L);
+   protected static final gek.m F = new gek.m(gdw::M);
+   protected static final gek.m G = new gek.m(gdw::N);
+   protected static final gek.m H = new gek.m(gdw::O);
+   protected static final gek.m I = new gek.m(gdw::P);
+   protected static final gek.m J = new gek.m(gdw::Q);
+   protected static final gek.m K = new gek.m(gdw::R);
+   protected static final gek.m L = new gek.m(gdw::T);
+   protected static final gek.m M = new gek.m(gdw::U);
+   protected static final gek.m N = new gek.m(gdw::V);
+   protected static final gek.m O = new gek.m(gdw::W);
+   protected static final gek.m P = new gek.m(gdw::X);
+   protected static final gek.m Q = new gek.m(gdw::Y);
+   protected static final gek.m R = new gek.m(gdw::Z);
+   protected static final gek.m S = new gek.m(gdw::aa);
+   protected static final gek.m T = new gek.m(gdw::ab);
+   protected static final gek.m U = new gek.m(gdw::ac);
+   protected static final gek.m V = new gek.m(gdw::ap);
+   protected static final gek.m W = new gek.m(gdw::ad);
+   protected static final gek.m X = new gek.m(gdw::ae);
+   protected static final gek.m Y = new gek.m(gdw::af);
+   protected static final gek.m Z = new gek.m(gdw::ag);
+   protected static final gek.m aa = new gek.m(gdw::ah);
+   protected static final gek.m ab = new gek.m(gdw::ai);
+   protected static final gek.m ac = new gek.m(gdw::aj);
+   protected static final gek.m ad = new gek.m(gdw::ak);
+   protected static final gek.m ae = new gek.m(gdw::al);
+   protected static final gek.m af = new gek.m(gdw::am);
+   protected static final gek.m ag = new gek.m(gdw::an);
+   protected static final gek.m ah = new gek.m(gdw::ao);
+   protected static final gek.m ai = new gek.m(gdw::aq);
+   protected static final gek.m aj = new gek.m(gdw::ar);
+   protected static final gek.m ak = new gek.m(gdw::as);
+   protected static final gek.m al = new gek.m(gdw::at);
+   protected static final gek.m am = new gek.m(gdw::S);
+   protected static final gek.n an = new gek.n(gpn.e, false, true);
+   protected static final gek.n ao = new gek.n(gpn.e, false, false);
+   protected static final gek.e ap = new gek.e();
+   protected static final gek.o aq = new gek.o("default_texturing", () -> {
+   }, () -> {
+   });
+   protected static final gek.o ar = new gek.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gek.o as = new gek.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gek.g at = new gek.g(true);
+   protected static final gek.g au = new gek.g(false);
+   protected static final gek.l av = new gek.l(true);
+   protected static final gek.l aw = new gek.l(false);
+   protected static final gek.c ax = new gek.c(true);
+   protected static final gek.c ay = new gek.c(false);
+   protected static final gek.d az = new gek.d("always", 519);
+   protected static final gek.d aA = new gek.d("==", 514);
+   protected static final gek.d aB = new gek.d("<=", 515);
+   protected static final gek.d aC = new gek.d(">", 516);
+   protected static final gek.q aD = new gek.q(true, true);
+   protected static final gek.q aE = new gek.q(true, false);
+   protected static final gek.q aF = new gek.q(false, true);
+   protected static final gek.f aG = new gek.f("no_layering", () -> {
+   }, () -> {
+   });
+   protected static final gek.f aH = new gek.f("polygon_offset_layering", () -> {
+      RenderSystem.polygonOffset(-1.0F, -10.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
+   });
+   protected static final gek.f aI = new gek.f("view_offset_z_layering", () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.pushMatrix();
+      $$0.scale(0.99975586F, 0.99975586F, 0.99975586F);
+      RenderSystem.applyModelViewMatrix();
+   }, () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.popMatrix();
+      RenderSystem.applyModelViewMatrix();
+   });
+   protected static final gek.k aJ = new gek.k("main_target", () -> {
+   }, () -> {
+   });
+   protected static final gek.k aK = new gek.k("outline_target", () -> fft.Q().f.s().a(false), () -> fft.Q().h().a(false));
+   protected static final gek.k aL = new gek.k("translucent_target", () -> {
+      if (fft.O()) {
+         fft.Q().f.t().a(false);
+      }
+   }, () -> {
+      if (fft.O()) {
+         fft.Q().h().a(false);
+      }
+   });
+   protected static final gek.k aM = new gek.k("particles_target", () -> {
+      if (fft.O()) {
+         fft.Q().f.v().a(false);
+      }
+   }, () -> {
+      if (fft.O()) {
+         fft.Q().h().a(false);
+      }
+   });
+   protected static final gek.k aN = new gek.k("weather_target", () -> {
+      if (fft.O()) {
+         fft.Q().f.w().a(false);
+      }
+   }, () -> {
+      if (fft.O()) {
+         fft.Q().h().a(false);
+      }
+   });
+   protected static final gek.k aO = new gek.k("clouds_target", () -> {
+      if (fft.O()) {
+         fft.Q().f.x().a(false);
+      }
+   }, () -> {
+      if (fft.O()) {
+         fft.Q().h().a(false);
+      }
+   });
+   protected static final gek.k aP = new gek.k("item_entity_target", () -> {
+      if (fft.O()) {
+         fft.Q().f.u().a(false);
+      }
+   }, () -> {
+      if (fft.O()) {
+         fft.Q().h().a(false);
+      }
+   });
+   protected static final gek.h aQ = new gek.h(OptionalDouble.of(1.0));
+   protected static final gek.b aR = new gek.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
+   });
+   protected static final gek.b aS = new gek.b("or_reverse", () -> {
+      RenderSystem.enableColorLogicOp();
+      RenderSystem.logicOp(GlStateManager.g.n);
+   }, () -> RenderSystem.disableColorLogicOp());
+
+   public gek(String $$0, Runnable $$1, Runnable $$2) {
+      this.b = $$0;
+      this.aU = $$1;
+      this.aV = $$2;
    }
 
    public void a() {
-      this.e = true;
+      this.aU.run();
    }
 
-   public void a(ghb $$0, List<ggx.b> $$1) {
-      for (gek.d $$2 : this.h.get().a().b) {
-         if ($$0.a($$2.a.b())) {
-            $$1.add($$2.a);
-         }
+   public void b() {
+      this.aV.run();
+   }
+
+   @Override
+   public String toString() {
+      return this.b;
+   }
+
+   private static void a(float $$0) {
+      long $$1 = (long)((double)ac.c() * fft.Q().m.am().c() * 8.0);
+      float $$2 = (float)($$1 % 110000L) / 110000.0F;
+      float $$3 = (float)($$1 % 30000L) / 30000.0F;
+      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
+      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
+      RenderSystem.setTextureMatrix($$4);
+   }
+
+   static class a extends gek {
+      private final boolean aT;
+
+      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
+         super($$0, $$1, $$2);
+         this.aT = $$3;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "]";
       }
    }
 
-   public boolean b() {
-      return this.j.compareAndSet(true, false);
-   }
-
-   public void a(dbk $$0) {
-      gek.a $$1 = this.i.get();
-      if ($$1 != null) {
-         this.a($$1, $$0);
-      }
-
-      gek.a $$2 = this.h.get().b;
-      if ($$2 != $$1) {
-         this.a($$2, $$0);
+   protected static class b extends gek {
+      public b(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
       }
    }
 
-   public void a(ggx.b $$0) {
-      gek.a $$1 = this.i.get();
-      if ($$1 != null) {
-         $$1.b.add($$0);
-      }
-
-      gek.a $$2 = this.h.get().b;
-      if ($$2 != $$1) {
-         $$2.b.add($$0);
+   protected static class c extends gek.a {
+      public c(boolean $$0) {
+         super("cull", () -> {
+            if (!$$0) {
+               RenderSystem.disableCull();
+            }
+         }, () -> {
+            if (!$$0) {
+               RenderSystem.enableCull();
+            }
+         }, $$0);
       }
    }
 
-   public void a(boolean $$0, fey $$1, ghb $$2, List<ggx.b> $$3) {
-      evz $$4 = $$1.b();
-      if (this.e && (this.f == null || this.f.isDone())) {
-         this.a($$0, $$1, $$4);
-      }
+   protected static class d extends gek {
+      private final String aT;
 
-      this.a($$0, $$2, $$3, $$4);
-   }
-
-   private void a(boolean $$0, fey $$1, evz $$2) {
-      this.e = false;
-      this.f = ac.g().submit(() -> {
-         gek.b $$3 = new gek.b(this.g.f.length);
-         this.i.set($$3.b);
-         Queue<gek.d> $$4 = Queues.newArrayDeque();
-         this.a($$1, $$4);
-         $$4.forEach($$1xx -> $$3.a.a.a($$1xx.a, $$1xx));
-         this.a($$3.a, $$2, $$4, $$0, $$0xx -> {
+      public d(String $$0, int $$1) {
+         super("depth_test", () -> {
+            if ($$1 != 519) {
+               RenderSystem.enableDepthTest();
+               RenderSystem.depthFunc($$1);
+            }
+         }, () -> {
+            if ($$1 != 519) {
+               RenderSystem.disableDepthTest();
+               RenderSystem.depthFunc(515);
+            }
          });
-         this.h.set($$3);
-         this.i.set(null);
-         this.j.set(true);
-      });
-   }
+         this.aT = $$0;
+      }
 
-   private void a(boolean $$0, ghb $$1, List<ggx.b> $$2, evz $$3) {
-      gek.b $$4 = this.h.get();
-      this.a($$4);
-      if (!$$4.b.b.isEmpty()) {
-         Queue<gek.d> $$5 = Queues.newArrayDeque();
-
-         while (!$$4.b.b.isEmpty()) {
-            ggx.b $$6 = $$4.b.b.poll();
-            gek.d $$7 = $$4.a.a.a($$6);
-            if ($$7 != null && $$7.a == $$6) {
-               $$5.add($$7);
-            }
-         }
-
-         ghb $$8 = gdv.a($$1);
-         Consumer<ggx.b> $$9 = $$2x -> {
-            if ($$8.a($$2x.b())) {
-               $$2.add($$2x);
-            }
-         };
-         this.a($$4.a, $$3, $$5, $$0, $$9);
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "]";
       }
    }
 
-   private void a(gek.b $$0) {
-      LongIterator $$1 = $$0.b.a.iterator();
-
-      while ($$1.hasNext()) {
-         long $$2 = $$1.nextLong();
-         List<ggx.b> $$3 = (List<ggx.b>)$$0.a.c.get($$2);
-         if ($$3 != null && $$3.get(0).a()) {
-            $$0.b.b.addAll($$3);
-            $$0.a.c.remove($$2);
-         }
+   protected static class e extends gek {
+      public e(Runnable $$0, Runnable $$1) {
+         super("texture", $$0, $$1);
       }
 
-      $$0.b.a.clear();
+      e() {
+         super("texture", () -> {
+         }, () -> {
+         });
+      }
+
+      protected Optional<akk> c() {
+         return Optional.empty();
+      }
    }
 
-   private void a(gek.a $$0, dbk $$1) {
-      $$0.a.add(dbk.c($$1.e - 1, $$1.f));
-      $$0.a.add(dbk.c($$1.e, $$1.f - 1));
-      $$0.a.add(dbk.c($$1.e + 1, $$1.f));
-      $$0.a.add(dbk.c($$1.e, $$1.f + 1));
+   protected static class f extends gek {
+      public f(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
    }
 
-   private void a(fey $$0, Queue<gek.d> $$1) {
-      int $$2 = 16;
-      evz $$3 = $$0.b();
-      ja $$4 = $$0.c();
-      ggx.b $$5 = this.g.a($$4);
-      if ($$5 == null) {
-         dcf $$6 = this.g.c();
-         boolean $$7 = $$4.v() > $$6.I_();
-         int $$8 = $$7 ? $$6.am() - 8 : $$6.I_() + 8;
-         int $$9 = aye.a($$3.c / 16.0) * 16;
-         int $$10 = aye.a($$3.e / 16.0) * 16;
-         int $$11 = this.g.b();
-         List<gek.d> $$12 = Lists.newArrayList();
-
-         for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
-            for (int $$14 = -$$11; $$14 <= $$11; $$14++) {
-               ggx.b $$15 = this.g.a(new ja($$9 + kc.a($$13, 8), $$8, $$10 + kc.a($$14, 8)));
-               if ($$15 != null && this.a($$4, $$15.f())) {
-                  jf $$16 = $$7 ? jf.a : jf.b;
-                  gek.d $$17 = new gek.d($$15, $$16, 0);
-                  $$17.a($$17.d, $$16);
-                  if ($$13 > 0) {
-                     $$17.a($$17.d, jf.f);
-                  } else if ($$13 < 0) {
-                     $$17.a($$17.d, jf.e);
-                  }
-
-                  if ($$14 > 0) {
-                     $$17.a($$17.d, jf.d);
-                  } else if ($$14 < 0) {
-                     $$17.a($$17.d, jf.c);
-                  }
-
-                  $$12.add($$17);
-               }
+   protected static class g extends gek.a {
+      public g(boolean $$0) {
+         super("lightmap", () -> {
+            if ($$0) {
+               fft.Q().j.m().c();
             }
-         }
-
-         $$12.sort(Comparator.comparingDouble($$1x -> $$4.j($$1x.a.f().b(8, 8, 8))));
-         $$1.addAll($$12);
-      } else {
-         $$1.add(new gek.d($$5, null, 0));
+         }, () -> {
+            if ($$0) {
+               fft.Q().j.m().b();
+            }
+         }, $$0);
       }
    }
 
-   private void a(gek.c $$0, evz $$1, Queue<gek.d> $$2, boolean $$3, Consumer<ggx.b> $$4) {
-      int $$5 = 16;
-      ja $$6 = new ja(aye.a($$1.c / 16.0) * 16, aye.a($$1.d / 16.0) * 16, aye.a($$1.e / 16.0) * 16);
-      ja $$7 = $$6.b(8, 8, 8);
+   protected static class h extends gek {
+      private final OptionalDouble aT;
 
-      while (!$$2.isEmpty()) {
-         gek.d $$8 = $$2.poll();
-         ggx.b $$9 = $$8.a;
-         if ($$0.b.add($$8)) {
-            $$4.accept($$8.a);
-         }
-
-         boolean $$10 = Math.abs($$9.f().u() - $$6.u()) > 60 || Math.abs($$9.f().v() - $$6.v()) > 60 || Math.abs($$9.f().w() - $$6.w()) > 60;
-
-         for (jf $$11 : b) {
-            ggx.b $$12 = this.a($$6, $$9, $$11);
-            if ($$12 != null && (!$$3 || !$$8.a($$11.g()))) {
-               if ($$3 && $$8.a()) {
-                  ggx.a $$13 = $$9.d();
-                  boolean $$14 = false;
-
-                  for (int $$15 = 0; $$15 < b.length; $$15++) {
-                     if ($$8.a($$15) && $$13.a(b[$$15].g(), $$11)) {
-                        $$14 = true;
-                        break;
-                     }
-                  }
-
-                  if (!$$14) {
-                     continue;
-                  }
-               }
-
-               if ($$3 && $$10) {
-                  ja $$16 = $$12.f();
-                  ja $$17 = $$16.b(
-                     ($$11.o() == jf.a.a ? $$7.u() <= $$16.u() : $$7.u() >= $$16.u()) ? 0 : 16,
-                     ($$11.o() == jf.a.b ? $$7.v() <= $$16.v() : $$7.v() >= $$16.v()) ? 0 : 16,
-                     ($$11.o() == jf.a.c ? $$7.w() <= $$16.w() : $$7.w() >= $$16.w()) ? 0 : 16
-                  );
-                  evz $$18 = new evz((double)$$17.u(), (double)$$17.v(), (double)$$17.w());
-                  evz $$19 = $$1.d($$18).d().a(d);
-                  boolean $$20 = true;
-
-                  while ($$1.d($$18).g() > 3600.0) {
-                     $$18 = $$18.e($$19);
-                     dcf $$21 = this.g.c();
-                     if ($$18.d > (double)$$21.am() || $$18.d < (double)$$21.I_()) {
-                        break;
-                     }
-
-                     ggx.b $$22 = this.g.a(ja.a($$18.c, $$18.d, $$18.e));
-                     if ($$22 == null || $$0.a.a($$22) == null) {
-                        $$20 = false;
-                        break;
-                     }
-                  }
-
-                  if (!$$20) {
-                     continue;
-                  }
-               }
-
-               gek.d $$23 = $$0.a.a($$12);
-               if ($$23 != null) {
-                  $$23.b($$11);
+      public h(OptionalDouble $$0) {
+         super("line_width", () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               if ($$0.isPresent()) {
+                  RenderSystem.lineWidth((float)$$0.getAsDouble());
                } else {
-                  gek.d $$24 = new gek.d($$12, $$11, $$8.b + 1);
-                  $$24.a($$8.d, $$11);
-                  if ($$12.a()) {
-                     $$2.add($$24);
-                     $$0.a.a($$12, $$24);
-                  } else if (this.a($$6, $$12.f())) {
-                     $$0.a.a($$12, $$24);
-                     ((List)$$0.c.computeIfAbsent(dbk.a($$12.f()), $$0x -> new ArrayList())).add($$12);
-                  }
+                  RenderSystem.lineWidth(Math.max(2.5F, (float)fft.Q().aO().k() / 1920.0F * 2.5F));
                }
             }
+         }, () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               RenderSystem.lineWidth(1.0F);
+            }
+         });
+         this.aT = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + (this.aT.isPresent() ? this.aT.getAsDouble() : "window_scale") + "]";
+      }
+   }
+
+   protected static class i extends gek.e {
+      private final Optional<akk> aT;
+
+      i(ImmutableList<Triple<akk, Boolean, Boolean>> $$0) {
+         super(() -> {
+            int $$1 = 0;
+            UnmodifiableIterator var2 = $$0.iterator();
+
+            while (var2.hasNext()) {
+               Triple<akk, Boolean, Boolean> $$2 = (Triple<akk, Boolean, Boolean>)var2.next();
+               gpp $$3 = fft.Q().aa();
+               $$3.b((akk)$$2.getLeft()).a((Boolean)$$2.getMiddle(), (Boolean)$$2.getRight());
+               RenderSystem.setShaderTexture($$1++, (akk)$$2.getLeft());
+            }
+         }, () -> {
+         });
+         this.aT = $$0.stream().findFirst().map(Triple::getLeft);
+      }
+
+      @Override
+      protected Optional<akk> c() {
+         return this.aT;
+      }
+
+      public static gek.i.a d() {
+         return new gek.i.a();
+      }
+
+      public static final class a {
+         private final Builder<Triple<akk, Boolean, Boolean>> a = new Builder();
+
+         public gek.i.a a(akk $$0, boolean $$1, boolean $$2) {
+            this.a.add(Triple.of($$0, $$1, $$2));
+            return this;
+         }
+
+         public gek.i a() {
+            return new gek.i(this.a.build());
          }
       }
    }
 
-   private boolean a(ja $$0, ja $$1) {
-      int $$2 = kc.a($$0.u());
-      int $$3 = kc.a($$0.w());
-      int $$4 = kc.a($$1.u());
-      int $$5 = kc.a($$1.w());
-      return apy.a($$2, $$3, this.g.b(), $$4, $$5);
-   }
-
-   @Nullable
-   private ggx.b a(ja $$0, ggx.b $$1, jf $$2) {
-      ja $$3 = $$1.a($$2);
-      if (!this.a($$0, $$3)) {
-         return null;
-      } else {
-         return aye.a($$0.v() - $$3.v()) > this.g.b() * 16 ? null : this.g.a($$3);
+   protected static final class j extends gek.o {
+      public j(float $$0, float $$1) {
+         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
       }
    }
 
-   @Nullable
-   @azi
-   protected gek.d b(ggx.b $$0) {
-      return this.h.get().a.a.a($$0);
-   }
-
-   static record a(LongSet a, BlockingQueue<ggx.b> b) {
-
-      public a() {
-         this(new LongOpenHashSet(), new LinkedBlockingQueue<>());
+   protected static class k extends gek {
+      public k(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
       }
    }
 
-   static record b(gek.c a, gek.a b) {
-
-      public b(int $$0) {
-         this(new gek.c($$0), new gek.a());
+   protected static class l extends gek.a {
+      public l(boolean $$0) {
+         super("overlay", () -> {
+            if ($$0) {
+               fft.Q().j.n().a();
+            }
+         }, () -> {
+            if ($$0) {
+               fft.Q().j.n().b();
+            }
+         }, $$0);
       }
    }
 
-   static class c {
-      public final gek.e a;
-      public final LinkedHashSet<gek.d> b;
-      public final Long2ObjectMap<List<ggx.b>> c;
+   protected static class m extends gek {
+      private final Optional<Supplier<ger>> aT;
 
-      public c(int $$0) {
-         this.a = new gek.e($$0);
-         this.b = new LinkedHashSet<>($$0);
-         this.c = new Long2ObjectOpenHashMap();
-      }
-   }
-
-   @azi
-   protected static class d {
-      @azi
-      protected final ggx.b a;
-      private byte c;
-      byte d;
-      @azi
-      protected final int b;
-
-      d(ggx.b $$0, @Nullable jf $$1, int $$2) {
-         this.a = $$0;
-         if ($$1 != null) {
-            this.b($$1);
-         }
-
-         this.b = $$2;
+      public m(Supplier<ger> $$0) {
+         super("shader", () -> RenderSystem.setShader($$0), () -> {
+         });
+         this.aT = Optional.of($$0);
       }
 
-      void a(byte $$0, jf $$1) {
-         this.d = (byte)(this.d | $$0 | 1 << $$1.ordinal());
-      }
-
-      boolean a(jf $$0) {
-         return (this.d & 1 << $$0.ordinal()) > 0;
-      }
-
-      void b(jf $$0) {
-         this.c = (byte)(this.c | this.c | 1 << $$0.ordinal());
-      }
-
-      @azi
-      protected boolean a(int $$0) {
-         return (this.c & 1 << $$0) > 0;
-      }
-
-      boolean a() {
-         return this.c != 0;
+      public m() {
+         super("shader", () -> RenderSystem.setShader(() -> null), () -> {
+         });
+         this.aT = Optional.empty();
       }
 
       @Override
-      public int hashCode() {
-         return this.a.f().hashCode();
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof gek.d $$1) ? false : this.a.f().equals($$1.a.f());
+      public String toString() {
+         return this.b + "[" + this.aT + "]";
       }
    }
 
-   static class e {
-      private final gek.d[] a;
+   protected static class n extends gek.e {
+      private final Optional<akk> aT;
+      private final boolean aU;
+      private final boolean aV;
 
-      e(int $$0) {
-         this.a = new gek.d[$$0];
+      public n(akk $$0, boolean $$1, boolean $$2) {
+         super(() -> {
+            gpp $$3 = fft.Q().aa();
+            $$3.b($$0).a($$1, $$2);
+            RenderSystem.setShaderTexture(0, $$0);
+         }, () -> {
+         });
+         this.aT = Optional.of($$0);
+         this.aU = $$1;
+         this.aV = $$2;
       }
 
-      public void a(ggx.b $$0, gek.d $$1) {
-         this.a[$$0.b] = $$1;
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aT + "(blur=" + this.aU + ", mipmap=" + this.aV + ")]";
       }
 
-      @Nullable
-      public gek.d a(ggx.b $$0) {
-         int $$1 = $$0.b;
-         return $$1 >= 0 && $$1 < this.a.length ? this.a[$$1] : null;
+      @Override
+      protected Optional<akk> c() {
+         return this.aT;
+      }
+   }
+
+   protected static class o extends gek {
+      public o(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class p extends gek {
+      public p(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class q extends gek {
+      private final boolean aT;
+      private final boolean aU;
+
+      public q(boolean $$0, boolean $$1) {
+         super("write_mask_state", () -> {
+            if (!$$1) {
+               RenderSystem.depthMask($$1);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask($$0, $$0, $$0, $$0);
+            }
+         }, () -> {
+            if (!$$1) {
+               RenderSystem.depthMask(true);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask(true, true, true, true);
+            }
+         });
+         this.aT = $$0;
+         this.aU = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[writeColor=" + this.aT + ", writeDepth=" + this.aU + "]";
       }
    }
 }

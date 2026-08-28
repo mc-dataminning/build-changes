@@ -1,27 +1,35 @@
-public class gjo extends gkm<cey, fuk<cey>> {
-   private static final akk a = new akk("textures/entity/fox/fox.png");
-   private static final akk i = new akk("textures/entity/fox/fox_sleep.png");
-   private static final akk j = new akk("textures/entity/fox/snow_fox.png");
-   private static final akk k = new akk("textures/entity/fox/snow_fox_sleep.png");
+public class gjo extends gjl<cmu> {
+   private static final akk a = new akk("textures/entity/illager/evoker_fangs.png");
+   private final fup<cmu> f;
 
-   public gjo(gjg.a $$0) {
-      super($$0, new fuk<>($$0.a(fxh.ad)), 0.4F);
-      this.a(new gnf(this, $$0.d()));
+   public gjo(gjm.a $$0) {
+      super($$0);
+      this.f = new fup<>($$0.a(fxn.ac));
    }
 
-   protected void a(cey $$0, fag $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gt() || $$0.gn()) {
-         float $$6 = -aye.i($$4, $$0.P, $$0.dH());
-         $$1.a(a.b.rotationDegrees($$6));
+   public void a(cmu $$0, float $$1, float $$2, fam $$3, ged $$4, int $$5) {
+      float $$6 = $$0.a($$2);
+      if ($$6 != 0.0F) {
+         float $$7 = 2.0F;
+         if ($$6 > 0.9F) {
+            $$7 *= (1.0F - $$6) / 0.1F;
+         }
+
+         $$3.a();
+         $$3.a(a.d.rotationDegrees(90.0F - $$0.dG()));
+         $$3.b(-$$7, -$$7, $$7);
+         float $$8 = 0.03125F;
+         $$3.a(0.0, -0.626, 0.0);
+         $$3.b(0.5F, 0.5F, 0.5F);
+         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dG(), $$0.dI());
+         faq $$9 = $$4.getBuffer(this.f.a(a));
+         this.f.a($$3, $$9, $$5, gpf.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   public akk a(cey $$0) {
-      if ($$0.u() == cey.v.a) {
-         return $$0.fH() ? i : a;
-      } else {
-         return $$0.fH() ? k : j;
-      }
+   public akk a(cmu $$0) {
+      return a;
    }
 }

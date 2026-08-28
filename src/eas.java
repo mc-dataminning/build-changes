@@ -1,57 +1,66 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class eas extends eat {
-   public eas(Codec<edp> $$0) {
+public class eas extends ebk<edf> {
+   public eas(Codec<edf> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dce $$0, aym $$1, ja $$2, dsh $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
+   public boolean a(ebm<edf> $$0) {
+      ddb $$1 = $$0.b();
+      edf $$2 = $$0.f();
+      ayo $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
+
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
+      }
+
+      if ($$6 == 0) {
          return false;
       } else {
-         jf $$4 = jf.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<jf> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+         ja.a $$8 = $$0.e().j();
+         ja.a $$9 = $$8.j().c($$2.b());
 
-         for (jf $$8 : $$6.subList(0, $$5)) {
-            ja.a $$9 = $$2.j();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            jf $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(jf.b);
-               jf[] $$13 = new jf[]{$$8, jf.b};
-               $$11 = ac.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
             }
 
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
+            $$9.c($$2.b());
+         }
 
-            $$9.c($$11.g());
-            $$9.c(jf.b);
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               edf.a $$13 = $$2.a().get($$11);
 
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
-
-               if ($$1.i() < 0.25F) {
-                  $$9.c(jf.b);
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
                }
             }
          }
 
          return true;
+      }
+   }
+
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
+
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
       }
    }
 }

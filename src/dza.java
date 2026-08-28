@@ -1,132 +1,167 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class dza implements aym {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<dza> b = dyz.a.xmap($$0 -> new dza($$0), $$0 -> $$0.e);
-   private dyz e;
-   private final dyb f = new dyb(this);
+public record dza(Map<akj<dwg>, dwg> b) {
+   public static final MapCodec<dza> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.unboundedMap(akj.a(lr.ba), dwg.a).fieldOf("dimensions").forGetter(dza::d)).apply($$0, $$0.stable(dza::new))
+   );
+   private static final Set<akj<dwg>> c = ImmutableSet.of(dwg.b, dwg.c, dwg.d);
+   private static final int d = c.size();
 
-   public dza(long $$0) {
-      this.e = new dyz(dyo.c($$0));
-   }
-
-   public dza(dyo.a $$0) {
-      this.e = new dyz($$0);
-   }
-
-   public dza(long $$0, long $$1) {
-      this.e = new dyz($$0, $$1);
-   }
-
-   private dza(dyz $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public aym d() {
-      return new dza(this.e.a(), this.e.a());
-   }
-
-   @Override
-   public dym e() {
-      return new dza.a(this.e.a(), this.e.a());
-   }
-
-   @Override
-   public void b(long $$0) {
-      this.e = new dyz(dyo.c($$0));
-      this.f.a();
-   }
-
-   @Override
-   public int f() {
-      return (int)this.e.a();
-   }
-
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
+   public dza(Map<akj<dwg>, dwg> b) {
+      dwg $$1 = b.get(dwg.b);
+      if ($$1 == null) {
+         throw new IllegalStateException("Overworld settings missing");
       } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
-            }
+         this.b = b;
+      }
+   }
+
+   public dza(jw<dwg> $$0) {
+      this($$0.i().collect(Collectors.toMap(jj.c::h, jj.c::a)));
+   }
+
+   public static Stream<akj<dwg>> a(Stream<akj<dwg>> $$0) {
+      return Stream.concat(c.stream(), $$0.filter($$0x -> !c.contains($$0x)));
+   }
+
+   public dza a(jx $$0, duh $$1) {
+      jw<dwf> $$2 = $$0.d(lr.aJ);
+      Map<akj<dwg>, dwg> $$3 = a($$2, this.b, $$1);
+      return new dza($$3);
+   }
+
+   public static Map<akj<dwg>, dwg> a(jw<dwf> $$0, Map<akj<dwg>, dwg> $$1, duh $$2) {
+      dwg $$3 = $$1.get(dwg.b);
+      jj<dwf> $$4 = (jj<dwf>)($$3 == null ? $$0.g(dwd.a) : $$3.a());
+      return a($$1, $$4, $$2);
+   }
+
+   public static Map<akj<dwg>, dwg> a(Map<akj<dwg>, dwg> $$0, jj<dwf> $$1, duh $$2) {
+      Builder<akj<dwg>, dwg> $$3 = ImmutableMap.builder();
+      $$3.putAll($$0);
+      $$3.put(dwg.b, new dwg($$1, $$2));
+      return $$3.buildKeepingLast();
+   }
+
+   public duh a() {
+      dwg $$0 = this.b.get(dwg.b);
+      if ($$0 == null) {
+         throw new IllegalStateException("Overworld settings missing");
+      } else {
+         return $$0.b();
+      }
+   }
+
+   public Optional<dwg> a(akj<dwg> $$0) {
+      return Optional.ofNullable(this.b.get($$0));
+   }
+
+   public ImmutableSet<akj<dcf>> b() {
+      return this.d().keySet().stream().map(lr::a).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public boolean c() {
+      return this.a() instanceof dxw;
+   }
+
+   private static eqm.a b(jw<dwg> $$0) {
+      return $$0.e(dwg.b).map($$0x -> {
+         duh $$1 = $$0x.b();
+         if ($$1 instanceof dxw) {
+            return eqm.a.c;
+         } else {
+            return $$1 instanceof dya ? eqm.a.b : eqm.a.a;
+         }
+      }).orElse(eqm.a.a);
+   }
+
+   static Lifecycle a(akj<dwg> $$0, dwg $$1) {
+      return b($$0, $$1) ? Lifecycle.stable() : Lifecycle.experimental();
+   }
+
+   private static boolean b(akj<dwg> $$0, dwg $$1) {
+      if ($$0 == dwg.b) {
+         return a($$1);
+      } else if ($$0 == dwg.c) {
+         return b($$1);
+      } else {
+         return $$0 == dwg.d ? c($$1) : false;
+      }
+   }
+
+   private static boolean a(dwg $$0) {
+      jj<dwf> $$1 = $$0.a();
+      if (!$$1.a(dwd.a) && !$$1.a(dwd.d)) {
+         return false;
+      } else {
+         if ($$0.b().d() instanceof dds $$2 && !$$2.a(ddu.b)) {
+            return false;
          }
 
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
+         return true;
       }
    }
 
-   @Override
-   public long g() {
-      return this.e.a();
+   private static boolean b(dwg $$0) {
+      return $$0.a().a(dwd.b) && $$0.b() instanceof dyi $$1 && $$1.a(dyk.f) && $$1.d() instanceof dds $$2 && $$2.a(ddu.a);
    }
 
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
+   private static boolean c(dwg $$0) {
+      return $$0.a().a(dwd.c) && $$0.b() instanceof dyi $$1 && $$1.a(dyk.g) && $$1.d() instanceof ddw;
    }
 
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
-   }
+   public dza.b a(jw<dwg> $$0) {
+      Stream<akj<dwg>> $$1 = Stream.concat($$0.g().stream(), this.b.keySet().stream()).distinct();
 
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
-   }
+      record a(akj<dwg> a, dwg b) {
 
-   @Override
-   public double k() {
-      return this.f.b();
-   }
-
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
-      }
-   }
-
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
-   }
-
-   public static class a implements dym {
-      private final long a;
-      private final long b;
-
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
+         jv c() {
+            return new jv(Optional.empty(), dza.a(this.a, this.b));
+         }
       }
 
-      @Override
-      public aym a(int $$0, int $$1, int $$2) {
-         long $$3 = aye.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dza($$4, this.b);
+      List<a> $$2 = new ArrayList<>();
+      a($$1).forEach($$2x -> $$0.e($$2x).or(() -> Optional.ofNullable(this.b.get($$2x))).ifPresent($$2xx -> $$2.add(new a($$2x, $$2xx))));
+      Lifecycle $$3 = $$2.size() == d ? Lifecycle.stable() : Lifecycle.experimental();
+      kf<dwg> $$4 = new jr<>(lr.ba, $$3);
+      $$2.forEach($$1x -> $$4.a($$1x.a, $$1x.b, $$1x.c()));
+      jw<dwg> $$5 = $$4.m();
+      eqm.a $$6 = b($$5);
+      return new dza.b($$5.m(), $$6);
+   }
+
+   public Map<akj<dwg>, dwg> d() {
+      return this.b;
+   }
+
+   public static record b(jw<dwg> a, eqm.a b) {
+      public Lifecycle a() {
+         return this.a.e();
       }
 
-      @Override
-      public aym a(String $$0) {
-         dyo.a $$1 = dyo.a($$0);
-         return new dza($$1.a(this.a, this.b));
+      public jx.b b() {
+         return new jx.c(List.of(this.a)).d();
       }
 
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
+      public jw<dwg> c() {
+         return this.a;
+      }
+
+      public eqm.a d() {
+         return this.b;
       }
    }
 }

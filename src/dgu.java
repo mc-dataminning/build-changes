@@ -1,56 +1,71 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dgu extends dff {
-   public static final MapCodec<dff> a = lq.e.r().fieldOf("dead");
-   public static final MapCodec<dgu> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, dgu::new));
-   private final dff c;
-
-   public dgu(dff $$0, dsg.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
+public class dgu extends det implements dmi {
+   public static final MapCodec<dgu> a = b(dgu::new);
+   public static final dtb b = dta.C;
+   private static final int d = 3;
+   protected static final ewy c = dfh.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
    @Override
    public MapCodec<dgu> a() {
-      return b;
+      return a;
+   }
+
+   public dgu(dsj.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected void a(dsh $$0, aqk $$1, ja $$2, aym $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.c.o(), 2);
-      }
+   protected void a(dsl.a<dfh, dsk> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
-      if (!this.a($$3, $$4)) {
-         $$3.a($$4, this, 60 + $$3.E_().a(40));
+   public dpp a(ja $$0, dsk $$1) {
+      return new dqb($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dpp> dpq<T> a(dcf $$0, dsk $$1, dpr<T> $$2) {
+      return a($$2, dpr.z, $$0.B ? dqb::a : dqb::b);
+   }
+
+   @Override
+   protected dln a_(dsk $$0) {
+      return dln.b;
+   }
+
+   @Override
+   protected eoh b_(dsk $$0) {
+      return $$0.c(b) ? eoi.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eoi.c, eoi.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected boolean a(dbj $$0, ja $$1) {
-      for (jf $$2 : jf.values()) {
-         eob $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(awa.a)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return c;
    }
 
    @Nullable
    @Override
-   public dsh a(cxk $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().E_().a(40));
-      }
+   public dsk a(cxm $$0) {
+      eoh $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Boolean.valueOf($$1.a(awc.a) && $$1.e() == 8));
+   }
 
-      return this.o();
+   @Override
+   protected boolean a(dsk $$0, eow $$1) {
+      return false;
    }
 }

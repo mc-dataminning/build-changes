@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 public class apv<T> {
-   public static final int a = aps.a + 2;
+   public static final int a = aps.b + 2;
    private final List<Long2ObjectLinkedOpenHashMap<List<Optional<T>>>> b = IntStream.range(0, a)
       .mapToObj($$0x -> new Long2ObjectLinkedOpenHashMap())
       .collect(Collectors.toList());
@@ -26,7 +26,7 @@ public class apv<T> {
       this.f = $$1;
    }
 
-   protected void a(int $$0, dbk $$1, int $$2) {
+   protected void a(int $$0, dbm $$1, int $$2) {
       if ($$0 < a) {
          Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$3 = this.b.get($$0);
          List<Optional<T>> $$4 = (List<Optional<T>>)$$3.remove($$1.a());

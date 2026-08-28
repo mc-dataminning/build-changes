@@ -1,31 +1,35 @@
-public class fvx<T extends cfk> extends fvs<T> {
-   private float j;
+public class fvx<T extends bsg> extends fux<T> {
+   private final fxo a;
+   private final fxo b;
+   private final fxo f;
 
-   public fvx(fxi $$0) {
-      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
+   public fvx(fxo $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_fin");
+      this.f = $$0.b("right_fin");
    }
 
-   public static fxo c() {
-      fxq $$0 = new fxq();
-      fxr $$1 = $$0.a();
-      $$1.a("head", fxn.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new fxm(0.6F)), fxk.a(0.0F, 6.0F, -8.0F));
-      $$1.a("body", fxn.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new fxm(1.75F)), fxk.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fxn $$2 = fxn.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new fxm(0.5F));
-      $$1.a("right_hind_leg", $$2, fxk.a(-3.0F, 12.0F, 7.0F));
-      $$1.a("left_hind_leg", $$2, fxk.a(3.0F, 12.0F, 7.0F));
-      $$1.a("right_front_leg", $$2, fxk.a(-3.0F, 12.0F, -5.0F));
-      $$1.a("left_front_leg", $$2, fxk.a(3.0F, 12.0F, -5.0F));
-      return fxo.a($$0, 64, 32);
+   public static fxu b() {
+      fxw $$0 = new fxw();
+      fxx $$1 = $$0.a();
+      int $$2 = 23;
+      $$1.a("body", fxt.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), fxq.a(0.0F, 23.0F, 0.0F));
+      $$1.a("right_eye", fxt.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fxq.a(0.0F, 20.0F, 0.0F));
+      $$1.a("left_eye", fxt.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fxq.a(0.0F, 20.0F, 0.0F));
+      $$1.a("back_fin", fxt.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), fxq.a(0.0F, 22.0F, 1.5F));
+      $$1.a("right_fin", fxt.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fxq.a(-1.5F, 22.0F, -1.5F));
+      $$1.a("left_fin", fxt.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fxq.a(1.5F, 22.0F, -1.5F));
+      return fxu.a($$0, 32, 32);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.c = 6.0F + $$0.H($$3) * 9.0F;
-      this.j = $$0.I($$3);
+   @Override
+   public fxo a() {
+      return this.a;
    }
 
+   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.a.e = this.j;
+      this.f.g = -0.2F + 0.4F * ayg.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * ayg.a($$3 * 0.2F);
    }
 }

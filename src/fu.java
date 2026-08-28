@@ -38,7 +38,7 @@ public class fu<T> implements ArgumentType<fu.c<T>> {
          try {
             $$0.skip();
             akk $$2 = akk.a($$0);
-            return new fu.d<>(awk.a(this.b, $$2));
+            return new fu.d<>(awm.a(this.b, $$2));
          } catch (CommandSyntaxException var4) {
             $$0.setCursor($$1);
             throw var4;
@@ -94,7 +94,7 @@ public class fu<T> implements ArgumentType<fu.c<T>> {
 
    static record b<T>(akj<T> a) implements fu.c<T> {
       @Override
-      public Either<akj<T>, awk<T>> a() {
+      public Either<akj<T>, awm<T>> a() {
          return Either.left(this.a);
       }
 
@@ -118,16 +118,16 @@ public class fu<T> implements ArgumentType<fu.c<T>> {
    }
 
    public interface c<T> extends Predicate<jj<T>> {
-      Either<akj<T>, awk<T>> a();
+      Either<akj<T>, awm<T>> a();
 
       <E> Optional<fu.c<E>> a(akj<? extends jw<E>> var1);
 
       String b();
    }
 
-   static record d<T>(awk<T> a) implements fu.c<T> {
+   static record d<T>(awm<T> a) implements fu.c<T> {
       @Override
-      public Either<akj<T>, awk<T>> a() {
+      public Either<akj<T>, awm<T>> a() {
          return Either.right(this.a);
       }
 
@@ -145,7 +145,7 @@ public class fu<T> implements ArgumentType<fu.c<T>> {
          return "#" + this.a.b();
       }
 
-      public awk<T> c() {
+      public awm<T> c() {
          return this.a;
       }
    }

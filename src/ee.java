@@ -8,9 +8,9 @@ public class ee extends ds<ee.a> {
       return ee.a.a;
    }
 
-   public void a(aql $$0, ja $$1) {
-      double $$2 = $$0.du() - (double)$$1.u();
-      double $$3 = $$0.dA() - (double)$$1.w();
+   public void a(aqn $$0, ja $$1) {
+      double $$2 = $$0.dv() - (double)$$1.u();
+      double $$3 = $$0.dB() - (double)$$1.w();
       double $$4 = $$2 * $$2 + $$3 * $$3;
       this.a($$0, $$1x -> $$1x.a($$4));
    }

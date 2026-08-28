@@ -1,50 +1,27 @@
-public class fpu extends fnd {
-   private static final int a = 600;
-   private final vp b;
-   private fhm c;
-   private int q;
-   private final fld r = fld.d();
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public fpu(wu $$0, vp $$1) {
-      super($$0);
-      this.b = $$1;
+public class fpu implements fpt {
+   public static final fpt a = new fpu();
+
+   private fpu() {
    }
 
    @Override
-   public boolean aE_() {
-      return false;
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
+      this.a($$0, $$1, $$6, $$4, $$5);
+      return $$6;
    }
 
-   @Override
-   protected void aO_() {
-      this.r.c().b().a(10);
-      this.r.a(new fit(this.k, this.o));
-      this.c = this.r.a(fhm.a(wt.p, $$0 -> this.b.a(fmc.a)).a());
-      this.c.j = false;
-      this.r.a();
-      this.r.a($$1 -> {
-         fhk var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      fkx.a(this.r, this.H());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.q++;
-      if (this.q == 600) {
-         this.c.j = true;
+   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
+      if ($$2.x + $$3 > $$0) {
+         $$2.x = Math.max($$2.x - 24 - $$3, 4);
       }
 
-      if (this.b.i()) {
-         this.b.b();
-      } else {
-         this.b.n();
+      int $$5 = $$4 + 3;
+      if ($$2.y + $$5 > $$1) {
+         $$2.y = $$1 - $$5;
       }
    }
 }

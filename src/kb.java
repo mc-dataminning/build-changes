@@ -52,14 +52,14 @@ public class kb {
    }
 
    public float e() {
-      return aye.g(this.b);
+      return ayg.g(this.b);
    }
 
    public float f() {
-      return aye.g(this.c);
+      return ayg.g(this.c);
    }
 
    public float g() {
-      return aye.g(this.d);
+      return ayg.g(this.d);
    }
 }

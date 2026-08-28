@@ -1,10 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eef(int b, int c, int d) implements edi {
+public record eef(int b, int c, int d, int e, int f, bpl g, float h) implements edo {
    public static final Codec<eef> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               axm.l.fieldOf("spread_width").forGetter(eef::a), axm.l.fieldOf("spread_height").forGetter(eef::b), axm.l.fieldOf("max_height").forGetter(eef::c)
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(eef::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(eef::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(eef::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(eef::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(eef::f),
+               bpl.c.fieldOf("extra_rare_growths").forGetter(eef::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(eef::h)
             )
             .apply($$0, eef::new)
    );
@@ -19,5 +25,9 @@ public record eef(int b, int c, int d) implements edi {
 
    public int c() {
       return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

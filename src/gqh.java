@@ -1,15 +1,17 @@
-public class gqh extends gql {
-   private static final akk a = new akk("back");
+import java.io.IOException;
 
-   public gqh(gpj $$0) {
-      super($$0, new akk("textures/atlas/paintings.png"), new akk("paintings"));
+public class gqh extends aub<int[]> {
+   private static final akk a = new akk("textures/colormap/foliage.png");
+
+   protected int[] a(atw $$0, bmu $$1) {
+      try {
+         return gqk.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
+      }
    }
 
-   public gpi a(cin $$0) {
-      return this.a($$0.d());
-   }
-
-   public gpi a() {
-      return this.a(a);
+   protected void a(int[] $$0, atw $$1, bmu $$2) {
+      dbz.a($$0);
    }
 }

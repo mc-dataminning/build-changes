@@ -1,22 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class edu implements edi {
-   public static final Codec<edu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.apply2(edu::new, ecy.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), ehu.b.fieldOf("default").forGetter($$0x -> $$0x.c))
+public class edu extends edg {
+   public static final Codec<edu> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               efp.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
+               axo.l.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               axo.l.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, edu::new)
    );
-   public final List<ecy> b;
-   public final jj<ehu> c;
+   public final int d;
+   public final int e;
 
-   public edu(List<ecy> $$0, jj<ehu> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public Stream<ear<?, ?>> e() {
-      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
+   public edu(efp $$0, int $$1, int $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 }

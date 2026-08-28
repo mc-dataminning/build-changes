@@ -1,102 +1,146 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
 
-public class err extends esb {
-   private static final Logger b = LogUtils.getLogger();
+public class err extends esh {
+   private static final Map<akk, err.c> b = Stream.of(err.a.a, err.d.b, err.e.b).collect(Collectors.toMap(err.c::a, Function.identity()));
+   private static final Codec<err.c> c = akk.a.comapFlatMap($$0 -> {
+      err.c $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
+   }, err.c::a);
+   private static final MapCodec<err.b> d = axo.a("formula", "parameters", c, err.b::a, err.c::b);
    public static final MapCodec<err> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  jy.a(lr.aK).optionalFieldOf("options").forGetter($$0x -> $$0x.c),
-                  Codec.BOOL.optionalFieldOf("only_compatible", true).forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, err::new)
+      $$0 -> a($$0).and($$0.group(czl.b.fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, err::new)
    );
-   private final Optional<jn<czj>> c;
-   private final boolean d;
+   private final jj<czl> e;
+   private final err.b f;
 
-   err(List<etz> $$0, Optional<jn<czj>> $$1, boolean $$2) {
+   private err(List<euf> $$0, jj<czl> $$1, err.b $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public esd<err> b() {
-      return ese.h;
+   public esj<err> b() {
+      return esk.x;
    }
 
    @Override
-   public cua a(cua $$0, eqo $$1) {
-      aym $$2 = $$1.b();
-      boolean $$3 = $$0.a(cud.qP);
-      boolean $$4 = !$$3 && this.d;
-      Stream<jj<czj>> $$5 = this.c
-         .<Stream<jj<czj>>>map(jn::a)
-         .orElseGet(() -> $$1.d().H_().d(lr.aK).i().map(Function.identity()))
-         .filter($$2x -> !$$4 || ((czj)$$2x.a()).c($$0));
-      List<jj<czj>> $$6 = $$5.toList();
-      Optional<jj<czj>> $$7 = ac.b($$6, $$2);
-      if ($$7.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$7.get(), $$2);
-      }
+   public Set<etn<?>> a() {
+      return ImmutableSet.of(etq.i);
    }
 
-   private static cua a(cua $$0, jj<czj> $$1, aym $$2) {
-      int $$3 = aye.a($$2, $$1.a().d(), $$1.a().e());
-      if ($$0.a(cud.qP)) {
-         $$0 = new cua(cud.uw);
+   @Override
+   public cuc a(cuc $$0, equ $$1) {
+      cuc $$2 = $$1.c(etq.i);
+      if ($$2 != null) {
+         int $$3 = czn.a(this.e, $$2);
+         int $$4 = this.f.a($$1.b(), $$0.H(), $$3);
+         $$0.e($$4);
       }
 
-      $$0.a($$1, $$3);
       return $$0;
    }
 
-   public static err.a c() {
-      return new err.a();
+   public static esh.a<?> a(jj<czl> $$0, float $$1, int $$2) {
+      return a($$3 -> new err($$3, $$0, new err.a($$2, $$1)));
    }
 
-   public static err.a a(jl.a $$0) {
-      return c().a($$0.b(lr.aK).b(avx.n));
+   public static esh.a<?> a(jj<czl> $$0) {
+      return a($$1 -> new err($$1, $$0, new err.d()));
    }
 
-   public static class a extends esb.a<err.a> {
-      private Optional<jn<czj>> a = Optional.empty();
-      private boolean b = true;
+   public static esh.a<?> b(jj<czl> $$0) {
+      return a($$1 -> new err($$1, $$0, new err.e(1)));
+   }
 
-      protected err.a a() {
-         return this;
-      }
+   public static esh.a<?> a(jj<czl> $$0, int $$1) {
+      return a($$2 -> new err($$2, $$0, new err.e($$1)));
+   }
 
-      public err.a a(jj<czj> $$0) {
-         this.a = Optional.of(jn.a($$0));
-         return this;
-      }
+   static record a(int b, float c) implements err.b {
+      private static final Codec<err.a> d = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(err.a::b), Codec.FLOAT.fieldOf("probability").forGetter(err.a::c)).apply($$0, err.a::new)
+      );
+      public static final err.c a = new err.c(new akk("binomial_with_bonus_count"), d);
 
-      public err.a a(jn<czj> $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
+      @Override
+      public int a(ayo $$0, int $$1, int $$2) {
+         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
+            if ($$0.i() < this.c) {
+               $$1++;
+            }
+         }
 
-      public err.a e() {
-         this.b = false;
-         return this;
+         return $$1;
       }
 
       @Override
-      public esc b() {
-         return new err(this.g(), this.a, this.b);
+      public err.c a() {
+         return a;
+      }
+   }
+
+   interface b {
+      int a(ayo var1, int var2, int var3);
+
+      err.c a();
+   }
+
+   static record c(akk a, Codec<? extends err.b> b) {
+   }
+
+   static record d() implements err.b {
+      public static final Codec<err.d> a = Codec.unit(err.d::new);
+      public static final err.c b = new err.c(new akk("ore_drops"), a);
+
+      @Override
+      public int a(ayo $$0, int $$1, int $$2) {
+         if ($$2 > 0) {
+            int $$3 = $$0.a($$2 + 2) - 1;
+            if ($$3 < 0) {
+               $$3 = 0;
+            }
+
+            return $$1 * ($$3 + 1);
+         } else {
+            return $$1;
+         }
+      }
+
+      @Override
+      public err.c a() {
+         return b;
+      }
+   }
+
+   static record e(int c) implements err.b {
+      public static final Codec<err.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(err.e::b)).apply($$0, err.e::new)
+      );
+      public static final err.c b = new err.c(new akk("uniform_bonus_count"), a);
+
+      @Override
+      public int a(ayo $$0, int $$1, int $$2) {
+         return $$1 + $$0.a(this.c * $$2 + 1);
+      }
+
+      @Override
+      public err.c a() {
+         return b;
+      }
+
+      public int b() {
+         return this.c;
       }
    }
 }

@@ -1,39 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class ecn extends ebe<edp> {
-   public ecn(Codec<edp> $$0) {
+public class ecn extends ebk<edw> {
+   private static final int a = 7;
+
+   ecn(Codec<edw> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebg<edp> $$0) {
-      dcz $$1 = $$0.b();
-      ja $$2 = $$0.e();
-      ja.a $$3 = new ja.a();
-      ja.a $$4 = new ja.a();
+   public boolean a(ebm<edw> $$0) {
+      ddb $$1 = $$0.b();
+      ayo $$2 = $$0.d();
+      edw $$3 = $$0.f();
+      ja $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      ja.a $$6 = new ja.a();
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$2.u() + $$5;
-            int $$8 = $$2.w() + $$6;
-            int $$9 = $$1.a(dxz.a.e, $$7, $$8);
-            $$3.d($$7, $$9, $$8);
-            $$4.g($$3).c(jf.a, 1);
-            ddd $$10 = $$1.t($$3).a();
-            if ($$10.a($$1, $$4, false)) {
-               $$1.a($$4, dfh.dO.o(), 2);
-            }
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dsk $$8 = $$1.a_($$6);
 
-            if ($$10.b($$1, $$3)) {
-               $$1.a($$3, dfh.dN.o(), 2);
-               dsh $$11 = $$1.a_($$4);
-               if ($$11.b(dmp.c)) {
-                  $$1.a($$4, $$11.a(dmp.c, Boolean.valueOf(true)), 2);
-               }
+         for (edw.a $$9 : $$3.b) {
+            if (ecf.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
             }
          }
       }
 
       return true;
+   }
+
+   private void a(ja.a $$0, ayo $$1, ja $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(ayo $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

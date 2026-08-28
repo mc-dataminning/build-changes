@@ -1,6 +1,6 @@
 import net.minecraft.server.MinecraftServer;
 
-public class ald extends bqo {
+public class ald extends bqr {
    private long g = 0L;
    private long h = 0L;
    private long i = 0L;
@@ -23,11 +23,11 @@ public class ald extends bqo {
    }
 
    private void n() {
-      this.l.ah().a(afq.a(this));
+      this.l.ai().a(afq.a(this));
    }
 
    private void o() {
-      this.l.ah().a(afr.a(this));
+      this.l.ai().a(afr.a(this));
    }
 
    public boolean a(int $$0) {
@@ -71,15 +71,15 @@ public class ald extends bqo {
 
    private void p() {
       long $$0 = this.j - this.g;
-      double $$1 = Math.max(1.0, (double)this.i) / (double)aze.b;
-      int $$2 = (int)((double)(aze.c * $$0) / $$1);
+      double $$1 = Math.max(1.0, (double)this.i) / (double)azh.b;
+      int $$2 = (int)((double)(azh.c * $$0) / $$1);
       String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
       this.j = 0L;
       this.i = 0L;
-      this.l.aI().a(() -> wu.a("commands.tick.sprint.report", $$2, $$3), true);
+      this.l.aJ().a(() -> wu.a("commands.tick.sprint.report", $$2, $$3), true);
       this.g = 0L;
       this.a(this.k);
-      this.l.E();
+      this.l.F();
    }
 
    public boolean d() {
@@ -102,11 +102,11 @@ public class ald extends bqo {
    @Override
    public void a(float $$0) {
       super.a($$0);
-      this.l.E();
+      this.l.F();
       this.n();
    }
 
-   public void a(aql $$0) {
+   public void a(aqn $$0) {
       $$0.c.b(afq.a(this));
       $$0.c.b(afr.a(this));
    }

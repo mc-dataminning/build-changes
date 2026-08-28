@@ -1,71 +1,118 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
-
-class ggu {
-   private final Map<ja, dpn> a;
-   @Nullable
-   private final List<duv<dsh>> b;
-   private final boolean c;
-   private final dun d;
-
-   ggu(dun $$0) {
-      this.d = $$0;
-      this.c = $$0.F().ai();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof duj) {
-         this.b = null;
-      } else {
-         duo[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (duo $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
-      }
+public class ggu implements ggd<drf> {
+   public ggu(gge.a $$0) {
    }
 
-   @Nullable
-   public dpn a(ja $$0) {
-      return this.a.get($$0);
-   }
+   public void a(drf $$0, float $$1, fam $$2, ged $$3, int $$4, int $$5) {
+      if (fft.Q().s.gw() || fft.Q().s.N_()) {
+         ja $$6 = $$0.f();
+         ke $$7 = $$0.j();
+         if ($$7.u() >= 1 && $$7.v() >= 1 && $$7.w() >= 1) {
+            if ($$0.v() == dtu.a || $$0.v() == dtu.b) {
+               double $$8 = (double)$$6.u();
+               double $$9 = (double)$$6.w();
+               double $$10 = (double)$$6.v();
+               double $$11 = $$10 + (double)$$7.v();
+               double $$12;
+               double $$13;
+               switch ($$0.k()) {
+                  case b:
+                     $$12 = (double)$$7.u();
+                     $$13 = (double)(-$$7.w());
+                     break;
+                  case c:
+                     $$12 = (double)(-$$7.u());
+                     $$13 = (double)$$7.w();
+                     break;
+                  default:
+                     $$12 = (double)$$7.u();
+                     $$13 = (double)$$7.w();
+               }
 
-   public dsh b(ja $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dsh $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dfh.hW.o();
-         }
+               double $$30;
+               double $$31;
+               double $$32;
+               double $$33;
+               switch ($$0.l()) {
+                  case b:
+                     $$30 = $$13 < 0.0 ? $$8 : $$8 + 1.0;
+                     $$31 = $$12 < 0.0 ? $$9 + 1.0 : $$9;
+                     $$32 = $$30 - $$13;
+                     $$33 = $$31 + $$12;
+                     break;
+                  case c:
+                     $$30 = $$12 < 0.0 ? $$8 : $$8 + 1.0;
+                     $$31 = $$13 < 0.0 ? $$9 : $$9 + 1.0;
+                     $$32 = $$30 - $$12;
+                     $$33 = $$31 - $$13;
+                     break;
+                  case d:
+                     $$30 = $$13 < 0.0 ? $$8 + 1.0 : $$8;
+                     $$31 = $$12 < 0.0 ? $$9 : $$9 + 1.0;
+                     $$32 = $$30 + $$13;
+                     $$33 = $$31 - $$12;
+                     break;
+                  default:
+                     $$30 = $$12 < 0.0 ? $$8 + 1.0 : $$8;
+                     $$31 = $$13 < 0.0 ? $$9 + 1.0 : $$9;
+                     $$32 = $$30 + $$12;
+                     $$33 = $$31 + $$13;
+               }
 
-         if ($$2 == 70) {
-            $$4 = dxq.a($$1, $$3);
-         }
+               float $$34 = 1.0F;
+               float $$35 = 0.9F;
+               float $$36 = 0.5F;
+               faq $$37 = $$3.getBuffer(gel.y());
+               if ($$0.v() == dtu.a || $$0.F()) {
+                  geb.a($$2, $$37, $$30, $$10, $$31, $$32, $$11, $$33, 0.9F, 0.9F, 0.9F, 1.0F, 0.5F, 0.5F, 0.5F);
+               }
 
-         return $$4 == null ? dfh.a.o() : $$4;
-      } else if (this.b == null) {
-         return dfh.a.o();
-      } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               duv<dsh> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               if ($$0.v() == dtu.a && $$0.E()) {
+                  this.a($$0, $$37, $$6, $$2);
                }
             }
-
-            return dfh.a.o();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
          }
       }
+   }
+
+   private void a(drf $$0, faq $$1, ja $$2, fam $$3) {
+      dbl $$4 = $$0.i();
+      ja $$5 = $$0.az_();
+      ja $$6 = $$5.a((ke)$$2);
+
+      for (ja $$7 : ja.c($$6, $$6.a($$0.j()).b(-1, -1, -1))) {
+         dsk $$8 = $$4.a_($$7);
+         boolean $$9 = $$8.i();
+         boolean $$10 = $$8.a(dfj.kN);
+         boolean $$11 = $$8.a(dfj.hW);
+         boolean $$12 = $$8.a(dfj.hX);
+         boolean $$13 = $$10 || $$11 || $$12;
+         if ($$9 || $$13) {
+            float $$14 = $$9 ? 0.05F : 0.0F;
+            double $$15 = (double)((float)($$7.u() - $$5.u()) + 0.45F - $$14);
+            double $$16 = (double)((float)($$7.v() - $$5.v()) + 0.45F - $$14);
+            double $$17 = (double)((float)($$7.w() - $$5.w()) + 0.45F - $$14);
+            double $$18 = (double)((float)($$7.u() - $$5.u()) + 0.55F + $$14);
+            double $$19 = (double)((float)($$7.v() - $$5.v()) + 0.55F + $$14);
+            double $$20 = (double)((float)($$7.w() - $$5.w()) + 0.55F + $$14);
+            if ($$9) {
+               geb.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 1.0F);
+            } else if ($$10) {
+               geb.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.75F, 0.75F, 1.0F, 1.0F, 0.75F, 0.75F);
+            } else if ($$11) {
+               geb.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F);
+            } else if ($$12) {
+               geb.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F);
+            }
+         }
+      }
+   }
+
+   public boolean a(drf $$0) {
+      return true;
+   }
+
+   @Override
+   public int aT_() {
+      return 96;
    }
 }

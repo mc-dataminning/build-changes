@@ -14,7 +14,7 @@ public class anf {
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("pardon-ip").requires($$0x -> $$0x.c(3)))
             .then(
                er.a("target", StringArgumentType.word())
-                  .suggests(($$0x, $$1) -> ev.a(((eq)$$0x.getSource()).l().ah().g().a(), $$1))
+                  .suggests(($$0x, $$1) -> ev.a(((eq)$$0x.getSource()).l().ai().g().a(), $$1))
                   .executes($$0x -> a((eq)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
             )
       );
@@ -24,7 +24,7 @@ public class anf {
       if (!InetAddresses.isInetAddress($$1)) {
          throw a.create();
       } else {
-         aue $$2 = $$0.l().ah().g();
+         aug $$2 = $$0.l().ai().g();
          if (!$$2.a($$1)) {
             throw b.create();
          } else {

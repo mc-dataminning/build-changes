@@ -1,178 +1,84 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class fkd implements AutoCloseable {
-   private static final aym a = aym.a();
-   private static final float b = 32.0F;
-   private final gpj c;
-   private final akk d;
-   private fkh e;
-   private fkh f;
-   private List<eyj.a> g = List.of();
-   private List<eyj> h = List.of();
-   private final fka<fkh> i = new fka<>(fkh[]::new, fkh[][]::new);
-   private final fka<fkd.a> j = new fka<>(fkd.a[]::new, fkd.a[][]::new);
-   private final Int2ObjectMap<IntList> k = new Int2ObjectOpenHashMap();
-   private final List<fke> l = Lists.newArrayList();
+public class fkd implements fkb {
+   private static final akk g = new akk("toast/tutorial");
+   public static final int a = 154;
+   public static final int d = 1;
+   public static final int e = 3;
+   public static final int f = 28;
+   private final fkd.a h;
+   private final wu i;
+   @Nullable
+   private final wu j;
+   private fkb.a k = fkb.a.a;
+   private long l;
+   private float m;
+   private float n;
+   private final boolean o;
 
-   public fkd(gpj $$0, akk $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public void a(List<eyj.a> $$0, Set<fkc> $$1) {
-      this.g = $$0;
-      this.a($$1);
-   }
-
-   public void a(Set<fkc> $$0) {
-      this.h = List.of();
-      this.c();
-      this.h = this.b(this.g, $$0);
-   }
-
-   private void c() {
-      this.d();
-      this.i.a();
-      this.j.a();
-      this.k.clear();
-      this.e = fkj.b.bake(this::a);
-      this.f = fkj.a.bake(this::a);
-   }
-
-   private List<eyj> b(List<eyj.a> $$0, Set<fkc> $$1) {
-      IntSet $$2 = new IntOpenHashSet();
-      List<eyj> $$3 = new ArrayList<>();
-
-      for (eyj.a $$4 : $$0) {
-         if ($$4.b().a($$1)) {
-            $$3.add($$4.a());
-            $$2.addAll($$4.a().a());
-         }
-      }
-
-      Set<eyj> $$5 = Sets.newHashSet();
-      $$2.forEach($$2x -> {
-         for (eyj $$3x : $$3) {
-            eyi $$4x = $$3x.a($$2x);
-            if ($$4x != null) {
-               $$5.add($$3x);
-               if ($$4x != fkj.b) {
-                  ((IntList)this.k.computeIfAbsent(aye.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
-               }
-               break;
-            }
-         }
-      });
-      return $$3.stream().filter($$5::contains).toList();
+   public fkd(fkd.a $$0, wu $$1, @Nullable wu $$2, boolean $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.o = $$3;
    }
 
    @Override
-   public void close() {
-      this.d();
-   }
-
-   private void d() {
-      for (fke $$0 : this.l) {
-         $$0.close();
-      }
-
-      this.l.clear();
-   }
-
-   private static boolean b(eyi $$0) {
-      float $$1 = $$0.a(false);
-      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
-         float $$2 = $$0.a(true);
-         return $$2 < 0.0F || $$2 > 32.0F;
+   public fkb.a a(fhf $$0, fkc $$1, long $$2) {
+      $$0.a(g, 0, 0, this.a(), this.b());
+      this.h.a($$0, 6, 6);
+      if (this.j == null) {
+         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
       } else {
-         return true;
+         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
       }
-   }
 
-   private fkd.a b(int $$0) {
-      eyi $$1 = null;
-
-      for (eyj $$2 : this.h) {
-         eyi $$3 = $$2.a($$0);
-         if ($$3 != null) {
-            if ($$1 == null) {
-               $$1 = $$3;
-            }
-
-            if (!b($$3)) {
-               return new fkd.a($$1, $$3);
-            }
+      if (this.o) {
+         $$0.a(3, 28, 157, 29, -1);
+         float $$3 = ayg.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
+         int $$4;
+         if (this.n >= this.m) {
+            $$4 = -16755456;
+         } else {
+            $$4 = -11206656;
          }
+
+         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
+         this.m = $$3;
+         this.l = $$2;
       }
 
-      return $$1 != null ? new fkd.a($$1, fkj.b) : fkd.a.c;
+      return this.k;
    }
 
-   public eyi a(int $$0, boolean $$1) {
-      return this.j.a($$0, this::b).a($$1);
+   public void c() {
+      this.k = fkb.a.b;
    }
 
-   private fkh c(int $$0) {
-      for (eyj $$1 : this.h) {
-         eyi $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2.bake(this::a);
-         }
+   public void a(float $$0) {
+      this.n = $$0;
+   }
+
+   public static enum a {
+      a(new akk("toast/movement_keys")),
+      b(new akk("toast/mouse")),
+      c(new akk("toast/tree")),
+      d(new akk("toast/recipe_book")),
+      e(new akk("toast/wooden_planks")),
+      f(new akk("toast/social_interactions")),
+      g(new akk("toast/right_click"));
+
+      private final akk h;
+
+      private a(final akk $$0) {
+         this.h = $$0;
       }
 
-      return this.e;
-   }
-
-   public fkh a(int $$0) {
-      return this.i.a($$0, this::c);
-   }
-
-   private fkh a(eyk $$0) {
-      for (fke $$1 : this.l) {
-         fkh $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
-
-      akk $$3 = this.d.e("/" + this.l.size());
-      boolean $$4 = $$0.c();
-      fkf $$5 = $$4 ? fkf.b($$3) : fkf.a($$3);
-      fke $$6 = new fke($$5, $$4);
-      this.l.add($$6);
-      this.c.a($$3, $$6);
-      fkh $$7 = $$6.a($$0);
-      return $$7 == null ? this.e : $$7;
-   }
-
-   public fkh a(eyi $$0) {
-      IntList $$1 = (IntList)this.k.get(aye.f($$0.a(false)));
-      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
-   }
-
-   public akk a() {
-      return this.d;
-   }
-
-   public fkh b() {
-      return this.f;
-   }
-
-   static record a(eyi a, eyi b) {
-      static final fkd.a c = new fkd.a(fkj.b, fkj.b);
-
-      eyi a(boolean $$0) {
-         return $$0 ? this.b : this.a;
+      public void a(fhf $$0, int $$1, int $$2) {
+         RenderSystem.enableBlend();
+         $$0.a(this.h, $$1, $$2, 20, 20);
       }
    }
 }

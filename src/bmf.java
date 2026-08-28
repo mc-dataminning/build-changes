@@ -1,24 +1,21 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Optional;
 
-public class bmf extends blw<StringReader> {
-   private final StringReader a;
+public class bmf implements bma<StringReader, akk> {
+   public static final bma<StringReader, akk> a = new bmf();
 
-   public bmf(blt<StringReader> $$0, blu<StringReader> $$1, StringReader $$2) {
-      super($$0, $$1);
-      this.a = $$2;
-   }
-
-   public StringReader d() {
-      return this.a;
+   private bmf() {
    }
 
    @Override
-   public int c() {
-      return this.a.getCursor();
-   }
+   public Optional<akk> a(blz<StringReader> $$0) {
+      $$0.b().skipWhitespace();
 
-   @Override
-   public void a(int $$0) {
-      this.a.setCursor($$0);
+      try {
+         return Optional.of(akk.b($$0.b()));
+      } catch (CommandSyntaxException var3) {
+         return Optional.empty();
+      }
    }
 }

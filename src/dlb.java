@@ -1,253 +1,125 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dlb extends deu {
-   public static final MapCodec<dlb> d = b(dlb::new);
-   public static final dtf<dtl> e = dsx.ah;
-   public static final dsy f = dsx.w;
+public class dlb extends dfh implements dfo {
+   public static final MapCodec<dlb> a = b(dlb::new);
+   private static final float b = 0.083333336F;
+   private static final float c = 0.9F;
+   private static final float d = 1.5F;
+   private static final float e = 2.5F;
+   private static final ewy f = ewv.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
+   private static final double g = 4.0;
+   private static final double h = 7.0;
 
    @Override
    public MapCodec<dlb> a() {
-      return d;
+      return a;
    }
 
-   protected dlb(dsg.d $$0) {
-      super(true, $$0);
-      this.k(this.E.b().a(e, dtl.a).a(f, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+   public dlb(dsj.d $$0) {
+      super($$0);
    }
 
-   protected boolean a(dcd $$0, ja $$1, dsh $$2, boolean $$3, int $$4) {
-      if ($$4 >= 8) {
-         return false;
+   @Override
+   protected boolean a(dsk $$0, dsk $$1, jf $$2) {
+      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected ewy f(dsk $$0, dbl $$1, ja $$2) {
+      return ewv.a();
+   }
+
+   @Override
+   protected void a(dsk $$0, dcf $$1, ja $$2, bsg $$3) {
+      if (!($$3 instanceof btb) || $$3.dr().a(this)) {
+         $$3.a($$0, new ewf(0.9F, 1.5, 0.9F));
+         if ($$1.B) {
+            ayo $$4 = $$1.E_();
+            boolean $$5 = $$3.ad != $$3.dv() || $$3.af != $$3.dB();
+            if ($$5 && $$4.h()) {
+               $$1.a(
+                  lj.aK,
+                  $$3.dv(),
+                  (double)($$2.v() + 1),
+                  $$3.dB(),
+                  (double)(ayg.b($$4, -1.0F, 1.0F) * 0.083333336F),
+                  0.05F,
+                  (double)(ayg.b($$4, -1.0F, 1.0F) * 0.083333336F)
+               );
+            }
+         }
+      }
+
+      $$3.p(true);
+      if (!$$1.B) {
+         if ($$3.bR() && ($$1.ab().b(dcb.c) || $$3 instanceof cmk) && $$3.a($$1, $$2)) {
+            $$1.b($$2, false);
+         }
+
+         $$3.c(false);
+      }
+   }
+
+   @Override
+   public void a(dcf $$0, dsk $$1, ja $$2, bsg $$3, float $$4) {
+      if (!((double)$$4 < 4.0) && $$3 instanceof btb $$5) {
+         btb.a $$7 = $$5.eI();
+         avg $$8 = (double)$$4 < 7.0 ? $$7.a() : $$7.b();
+         $$3.a($$8, 1.0F, 1.0F);
+      }
+   }
+
+   @Override
+   protected ewy b(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      if ($$3 instanceof ewp $$4) {
+         bsg $$5 = $$4.c();
+         if ($$5 != null) {
+            if ($$5.ac > 2.5F) {
+               return f;
+            }
+
+            boolean $$6 = $$5 instanceof cit;
+            if ($$6 || a($$5) && $$3.a(ewv.b(), $$2, false) && !$$3.b()) {
+               return super.b($$0, $$1, $$2, $$3);
+            }
+         }
+      }
+
+      return ewv.a();
+   }
+
+   @Override
+   protected ewy c(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return ewv.a();
+   }
+
+   public static boolean a(bsg $$0) {
+      if ($$0.al().a(awa.h)) {
+         return true;
       } else {
-         int $$5 = $$1.u();
-         int $$6 = $$1.v();
-         int $$7 = $$1.w();
-         boolean $$8 = true;
-         dtl $$9 = $$2.c(e);
-         switch ($$9) {
-            case a:
-               if ($$3) {
-                  $$7++;
-               } else {
-                  $$7--;
-               }
-               break;
-            case b:
-               if ($$3) {
-                  $$5--;
-               } else {
-                  $$5++;
-               }
-               break;
-            case c:
-               if ($$3) {
-                  $$5--;
-               } else {
-                  $$5++;
-                  $$6++;
-                  $$8 = false;
-               }
-
-               $$9 = dtl.b;
-               break;
-            case d:
-               if ($$3) {
-                  $$5--;
-                  $$6++;
-                  $$8 = false;
-               } else {
-                  $$5++;
-               }
-
-               $$9 = dtl.b;
-               break;
-            case e:
-               if ($$3) {
-                  $$7++;
-               } else {
-                  $$7--;
-                  $$6++;
-                  $$8 = false;
-               }
-
-               $$9 = dtl.a;
-               break;
-            case f:
-               if ($$3) {
-                  $$7++;
-                  $$6++;
-                  $$8 = false;
-               } else {
-                  $$7--;
-               }
-
-               $$9 = dtl.a;
-         }
-
-         return this.a($$0, new ja($$5, $$6, $$7), $$3, $$4, $$9) ? true : $$8 && this.a($$0, new ja($$5, $$6 - 1, $$7), $$3, $$4, $$9);
-      }
-   }
-
-   protected boolean a(dcd $$0, ja $$1, boolean $$2, int $$3, dtl $$4) {
-      dsh $$5 = $$0.a_($$1);
-      if (!$$5.a(this)) {
-         return false;
-      } else {
-         dtl $$6 = $$5.c(e);
-         if ($$4 != dtl.b || $$6 != dtl.a && $$6 != dtl.e && $$6 != dtl.f) {
-            if ($$4 != dtl.a || $$6 != dtl.b && $$6 != dtl.c && $$6 != dtl.d) {
-               if (!$$5.c(f)) {
-                  return false;
-               } else {
-                  return $$0.C($$1) ? true : this.a($$0, $$1, $$5, $$2, $$3 + 1);
-               }
-            } else {
-               return false;
-            }
-         } else {
-            return false;
-         }
+         return $$0 instanceof btb ? ((btb)$$0).a(bsn.c).a(cuf.pB) : false;
       }
    }
 
    @Override
-   protected void a(dsh $$0, dcd $$1, ja $$2, dff $$3) {
-      boolean $$4 = $$0.c(f);
-      boolean $$5 = $$1.C($$2) || this.a($$1, $$2, $$0, true, 0) || this.a($$1, $$2, $$0, false, 0);
-      if ($$5 != $$4) {
-         $$1.a($$2, $$0.a(f, Boolean.valueOf($$5)), 3);
-         $$1.a($$2.d(), this);
-         if ($$0.c(e).b()) {
-            $$1.a($$2.c(), this);
-         }
-      }
-   }
-
-   @Override
-   public dtk<dtl> c() {
-      return e;
-   }
-
-   @Override
-   protected dsh a(dsh $$0, dls $$1) {
-      switch ($$1) {
-         case c:
-            switch ((dtl)$$0.c(e)) {
-               case c:
-                  return $$0.a(e, dtl.d);
-               case d:
-                  return $$0.a(e, dtl.c);
-               case e:
-                  return $$0.a(e, dtl.f);
-               case f:
-                  return $$0.a(e, dtl.e);
-               case g:
-                  return $$0.a(e, dtl.i);
-               case h:
-                  return $$0.a(e, dtl.j);
-               case i:
-                  return $$0.a(e, dtl.g);
-               case j:
-                  return $$0.a(e, dtl.h);
-            }
-         case d:
-            switch ((dtl)$$0.c(e)) {
-               case a:
-                  return $$0.a(e, dtl.b);
-               case b:
-                  return $$0.a(e, dtl.a);
-               case c:
-                  return $$0.a(e, dtl.e);
-               case d:
-                  return $$0.a(e, dtl.f);
-               case e:
-                  return $$0.a(e, dtl.d);
-               case f:
-                  return $$0.a(e, dtl.c);
-               case g:
-                  return $$0.a(e, dtl.j);
-               case h:
-                  return $$0.a(e, dtl.g);
-               case i:
-                  return $$0.a(e, dtl.h);
-               case j:
-                  return $$0.a(e, dtl.i);
-            }
-         case b:
-            switch ((dtl)$$0.c(e)) {
-               case a:
-                  return $$0.a(e, dtl.b);
-               case b:
-                  return $$0.a(e, dtl.a);
-               case c:
-                  return $$0.a(e, dtl.f);
-               case d:
-                  return $$0.a(e, dtl.e);
-               case e:
-                  return $$0.a(e, dtl.c);
-               case f:
-                  return $$0.a(e, dtl.d);
-               case g:
-                  return $$0.a(e, dtl.h);
-               case h:
-                  return $$0.a(e, dtl.i);
-               case i:
-                  return $$0.a(e, dtl.j);
-               case j:
-                  return $$0.a(e, dtl.g);
-            }
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected dsh a(dsh $$0, dkc $$1) {
-      dtl $$2 = $$0.c(e);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.a(e, dtl.f);
-               case f:
-                  return $$0.a(e, dtl.e);
-               case g:
-                  return $$0.a(e, dtl.j);
-               case h:
-                  return $$0.a(e, dtl.i);
-               case i:
-                  return $$0.a(e, dtl.h);
-               case j:
-                  return $$0.a(e, dtl.g);
-               default:
-                  return super.a($$0, $$1);
-            }
-         case c:
-            switch ($$2) {
-               case c:
-                  return $$0.a(e, dtl.d);
-               case d:
-                  return $$0.a(e, dtl.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.a(e, dtl.h);
-               case h:
-                  return $$0.a(e, dtl.g);
-               case i:
-                  return $$0.a(e, dtl.j);
-               case j:
-                  return $$0.a(e, dtl.i);
-            }
+   public cuc a(@Nullable cmk $$0, dcg $$1, ja $$2, dsk $$3) {
+      $$1.a($$2, dfj.a.o(), 11);
+      if (!$$1.x_()) {
+         $$1.c(2001, $$2, dfh.i($$3));
       }
 
-      return super.a($$0, $$1);
+      return new cuc(cuf.qB);
    }
 
    @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
-      $$0.a(e, f, c);
+   public Optional<avg> as_() {
+      return Optional.of(avh.dm);
+   }
+
+   @Override
+   protected boolean a(dsk $$0, eow $$1) {
+      return true;
    }
 }

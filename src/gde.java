@@ -1,36 +1,31 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
+public class gde extends gdd {
+   private final ffx i;
 
-public class gde implements boa {
-   private final gdv a;
-   private final Set<bny> b = new ObjectOpenHashSet();
-   private final bog c = new bog();
-
-   public gde(LongSupplier $$0, gdv $$1) {
-      this.a = $$1;
-      this.b.add(boh.a($$0));
-      this.a();
+   public gde(ffx $$0) {
+      this.i = $$0;
    }
 
-   private void a() {
-      this.b.addAll(boh.a());
-      this.b.add(bny.a("totalChunks", bnx.f, this.a, gdv::i));
-      this.b.add(bny.a("renderedChunks", bnx.f, this.a, gdv::k));
-      this.b.add(bny.a("lastViewDistance", bnx.f, this.a, gdv::j));
-      ggx $$0 = this.a.h();
-      this.b.add(bny.a("toUpload", bnx.g, $$0, ggx::c));
-      this.b.add(bny.a("freeBufferCount", bnx.g, $$0, ggx::d));
-      this.b.add(bny.a("toBatchCount", bnx.g, $$0, ggx::b));
-      if (ezz.a().isPresent()) {
-         this.b.add(bny.a("gpuUtilization", bnx.i, ffn.Q(), ffn::v));
+   private static float a(boolean $$0, boolean $$1) {
+      if ($$0 == $$1) {
+         return 0.0F;
+      } else {
+         return $$0 ? 1.0F : -1.0F;
       }
    }
 
    @Override
-   public Set<bny> a(Supplier<bmp> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+   public void a(boolean $$0, float $$1) {
+      this.c = this.i.w.e();
+      this.d = this.i.y.e();
+      this.e = this.i.x.e();
+      this.f = this.i.z.e();
+      this.b = a(this.c, this.d);
+      this.a = a(this.e, this.f);
+      this.g = this.i.A.e();
+      this.h = this.i.B.e();
+      if ($$0) {
+         this.a *= $$1;
+         this.b *= $$1;
+      }
    }
 }

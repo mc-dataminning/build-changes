@@ -1,59 +1,48 @@
-public class cte extends ctv implements cus {
-   public cte(ctv.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public interface cte {
+   bsn m();
+
+   default jj<avg> n() {
+      return avh.as;
    }
 
-   @Override
-   public bqd a(cxm $$0) {
-      dcd $$1 = $$0.q();
-      ja $$2 = $$0.a();
-      dsh $$3 = $$1.a_($$2);
-      boolean $$4 = false;
-      if (!dft.h($$3) && !dfu.g($$3) && !dfv.g($$3)) {
-         $$2 = $$2.a($$0.k());
-         if (des.a($$1, $$2, $$0.g())) {
-            this.a($$1, $$2);
-            $$1.b($$2, des.a($$1, $$2));
-            $$1.a($$0.o(), dxa.i, $$2);
-            $$4 = true;
+   default bqh<cuc> a(ctx $$0, dcf $$1, cmk $$2, bqf $$3) {
+      cuc $$4 = $$2.b($$3);
+      bsn $$5 = btd.h($$4);
+      if (!$$2.d($$5)) {
+         return bqh.c($$4);
+      } else {
+         cuc $$6 = $$2.a($$5);
+         if ((!czn.a($$6, czm.E) || $$2.f()) && !cuc.a($$4, $$6)) {
+            if (!$$1.x_()) {
+               $$2.b(avr.c.b($$0));
+            }
+
+            cuc $$7 = $$6.e() ? $$4 : $$6.f();
+            cuc $$8 = $$2.f() ? $$4.s() : $$4.f();
+            $$2.a($$5, $$8);
+            return bqh.a($$7, $$1.x_());
+         } else {
+            return bqh.d($$4);
          }
-      } else {
-         this.a($$1, $$2);
-         $$1.b($$2, $$3.a(dsx.r, Boolean.valueOf(true)));
-         $$1.a($$0.o(), dxa.c, $$2);
-         $$4 = true;
-      }
-
-      if ($$4) {
-         $$0.n().h(1);
-         return bqd.a($$1.B);
-      } else {
-         return bqd.f;
       }
    }
 
-   private void a(dcd $$0, ja $$1) {
-      aym $$2 = $$0.E_();
-      $$0.a(null, $$1, avf.iK, avg.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
-   }
+   @Nullable
+   static cte c_(cuc $$0) {
+      ctx $$3 = $$0.g();
+      if ($$3 instanceof cte) {
+         return (cte)$$3;
+      } else {
+         if ($$0.g() instanceof csb $$2) {
+            dfh var6 = $$2.d();
+            if (var6 instanceof cte) {
+               return (cte)var6;
+            }
+         }
 
-   @Override
-   public cmz a(dcd $$0, jt $$1, cua $$2, jf $$3) {
-      aym $$4 = $$0.E_();
-      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
-      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
-      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
-      cnd $$8 = new cnd($$0, $$1.a(), $$1.b(), $$1.c(), $$5, $$6, $$7);
-      $$8.a($$2);
-      return $$8;
-   }
-
-   @Override
-   public void a(cmz $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public cus.a c() {
-      return cus.a.a().a(($$0, $$1) -> dhk.a($$0, 1.0, evz.b)).a(6.6666665F).b(1.0F).a(1018).a();
+         return null;
+      }
    }
 }

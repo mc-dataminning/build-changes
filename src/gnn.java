@@ -1,52 +1,24 @@
-public class gnn<T extends cfb> extends gns<T, fub<T>> {
-   private final ger a;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gnn(glc<T, fub<T>> $$0, ger $$1) {
+public class gnn extends gny<cgx, fuz<cgx>> {
+   private static final Map<cgz, akk> a = ac.a(Maps.newEnumMap(cgz.class), $$0 -> {
+      $$0.put(cgz.a, null);
+      $$0.put(cgz.b, new akk("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(cgz.c, new akk("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(cgz.d, new akk("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(cgz.e, new akk("textures/entity/horse/horse_markings_blackdots.png"));
+   });
+
+   public gnn(gli<cgx, fuz<cgx>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(fag $$0, gdx $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.p_()) {
-         ffn $$10 = ffn.Q();
-         boolean $$11 = $$10.b($$3) && $$3.ch();
-         if (!$$3.ch() || $$11) {
-            dsh $$12 = $$3.u().a();
-            int $$13 = gkh.c($$3, 0.0F);
-            grj $$14 = this.a.a($$12);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            this.c().d().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-         }
-      }
-   }
-
-   private void a(fag $$0, gdx $$1, int $$2, boolean $$3, dsh $$4, int $$5, grj $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(gef.r(gph.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
+   public void a(fam $$0, ged $$1, int $$2, cgx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      akk $$10 = a.get($$3.u());
+      if ($$10 != null && !$$3.ci()) {
+         faq $$11 = $$1.getBuffer(gel.i($$10));
+         this.c().a($$0, $$11, $$2, gkn.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }
    }
 }

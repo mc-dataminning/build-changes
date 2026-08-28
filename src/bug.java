@@ -1,43 +1,127 @@
-public class bug {
-   public static final jj<bub> a = a("generic.armor", new bui("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
-   public static final jj<bub> b = a("generic.armor_toughness", new bui("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
-   public static final jj<bub> c = a("generic.attack_damage", new bui("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
-   public static final jj<bub> d = a("generic.attack_knockback", new bui("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
-   public static final jj<bub> e = a("generic.attack_speed", new bui("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
-   public static final jj<bub> f = a("player.block_break_speed", new bui("attribute.name.player.block_break_speed", 1.0, 0.0, 1024.0).a(true));
-   public static final jj<bub> g = a("player.block_interaction_range", new bui("attribute.name.player.block_interaction_range", 4.5, 0.0, 64.0).a(true));
-   public static final jj<bub> h = a("generic.burning_time", new bui("attribute.name.generic.burning_time", 1.0, 0.0, 1024.0).a(true));
-   public static final jj<bub> i = a(
-      "generic.explosion_knockback_resistance", new bui("attribute.name.generic.explosion_knockback_resistance", 0.0, 0.0, 1.0).a(true)
-   );
-   public static final jj<bub> j = a("player.entity_interaction_range", new bui("attribute.name.player.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
-   public static final jj<bub> k = a("generic.fall_damage_multiplier", new bui("attribute.name.generic.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true));
-   public static final jj<bub> l = a("generic.flying_speed", new bui("attribute.name.generic.flying_speed", 0.4, 0.0, 1024.0).a(true));
-   public static final jj<bub> m = a("generic.follow_range", new bui("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
-   public static final jj<bub> n = a("generic.gravity", new bui("attribute.name.generic.gravity", 0.08, -1.0, 1.0).a(true));
-   public static final jj<bub> o = a("generic.jump_strength", new bui("attribute.name.generic.jump_strength", 0.42F, 0.0, 32.0).a(true));
-   public static final jj<bub> p = a("generic.knockback_resistance", new bui("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
-   public static final jj<bub> q = a("generic.luck", new bui("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
-   public static final jj<bub> r = a("generic.max_absorption", new bui("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0).a(true));
-   public static final jj<bub> s = a("generic.max_health", new bui("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
-   public static final jj<bub> t = a("player.mining_efficiency", new bui("attribute.name.player.mining_efficiency", 0.0, 0.0, 1024.0).a(true));
-   public static final jj<bub> u = a("generic.movement_efficiency", new bui("attribute.name.generic.movement_efficiency", 0.0, 0.0, 1.0).a(true));
-   public static final jj<bub> v = a("generic.movement_speed", new bui("attribute.name.generic.movement_speed", 0.7, 0.0, 1024.0).a(true));
-   public static final jj<bub> w = a("generic.oxygen_bonus", new bui("attribute.name.generic.oxygen_bonus", 0.0, 0.0, 1024.0).a(true));
-   public static final jj<bub> x = a("generic.safe_fall_distance", new bui("attribute.name.generic.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
-   public static final jj<bub> y = a("generic.scale", new bui("attribute.name.generic.scale", 1.0, 0.0625, 16.0).a(true));
-   public static final jj<bub> z = a("player.sneaking_speed", new bui("attribute.name.player.sneaking_speed", 0.3, 0.0, 1.0).a(true));
-   public static final jj<bub> A = a("zombie.spawn_reinforcements", new bui("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
-   public static final jj<bub> B = a("generic.step_height", new bui("attribute.name.generic.step_height", 0.6, 0.0, 10.0).a(true));
-   public static final jj<bub> C = a("player.submerged_mining_speed", new bui("attribute.name.player.submerged_mining_speed", 0.2, 0.0, 20.0).a(true));
-   public static final jj<bub> D = a("player.sweeping_damage_ratio", new bui("attribute.name.player.sweeping_damage_ratio", 0.0, 0.0, 1.0).a(true));
-   public static final jj<bub> E = a("generic.water_movement_efficiency", new bui("attribute.name.generic.water_movement_efficiency", 0.0, 0.0, 1.0).a(true));
+import com.google.common.collect.Multimap;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   private static jj<bub> a(String $$0, bub $$1) {
-      return jw.b(lq.s, new akk($$0), $$1);
+public class bug {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<jj<bue>, buf> b = new Object2ObjectOpenHashMap();
+   private final Set<buf> c = new ObjectOpenHashSet();
+   private final Set<buf> d = new ObjectOpenHashSet();
+   private final bui e;
+
+   public bug(bui $$0) {
+      this.e = $$0;
    }
 
-   public static jj<bub> a(jw<bub> $$0) {
-      return s;
+   private void a(buf $$0) {
+      this.d.add($$0);
+      if ($$0.a().a().b()) {
+         this.c.add($$0);
+      }
+   }
+
+   public Set<buf> a() {
+      return this.c;
+   }
+
+   public Set<buf> b() {
+      return this.d;
+   }
+
+   public Collection<buf> c() {
+      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
+   }
+
+   @Nullable
+   public buf a(jj<bue> $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> this.e.a(this::a, $$0x));
+   }
+
+   public boolean b(jj<bue> $$0) {
+      return this.b.get($$0) != null || this.e.c($$0);
+   }
+
+   public boolean a(jj<bue> $$0, UUID $$1) {
+      buf $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.e.b($$0, $$1);
+   }
+
+   public double c(jj<bue> $$0) {
+      buf $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.f() : this.e.a($$0);
+   }
+
+   public double d(jj<bue> $$0) {
+      buf $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.b() : this.e.b($$0);
+   }
+
+   public double b(jj<bue> $$0, UUID $$1) {
+      buf $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1).d() : this.e.a($$0, $$1);
+   }
+
+   public void a(Multimap<jj<bue>, buh> $$0) {
+      $$0.forEach(($$0x, $$1) -> {
+         buf $$2 = this.a($$0x);
+         if ($$2 != null) {
+            $$2.b($$1.b());
+            $$2.c($$1);
+         }
+      });
+   }
+
+   public void b(Multimap<jj<bue>, buh> $$0) {
+      $$0.asMap().forEach(($$0x, $$1) -> {
+         buf $$2 = this.b.get($$0x);
+         if ($$2 != null) {
+            $$1.forEach($$1x -> $$2.b($$1x.b()));
+         }
+      });
+   }
+
+   public void a(bug $$0) {
+      $$0.b.values().forEach($$0x -> {
+         buf $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
+
+   public ud d() {
+      ud $$0 = new ud();
+
+      for (buf $$1 : this.b.values()) {
+         $$0.add($$1.g());
+      }
+
+      return $$0;
+   }
+
+   public void a(ud $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         tx $$2 = $$0.a($$1);
+         String $$3 = $$2.l("Name");
+         akk $$4 = akk.a($$3);
+         if ($$4 != null) {
+            ac.a(lq.s.c($$4), $$1x -> {
+               buf $$2x = this.a($$1x);
+               if ($$2x != null) {
+                  $$2x.a($$2);
+               }
+            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
+         } else {
+            a.warn("Ignoring malformed attribute '{}'", $$3);
+         }
+      }
    }
 }

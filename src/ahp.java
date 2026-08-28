@@ -8,9 +8,9 @@ public class ahp implements zb<agb> {
    private final boolean g;
    private final boolean h;
    private final boolean i;
-   private final dpx.a j;
+   private final dpz.a j;
 
-   public ahp(ja $$0, String $$1, dpx.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+   public ahp(ja $$0, String $$1, dpz.a $$2, boolean $$3, boolean $$4, boolean $$5) {
       this.e = $$0;
       this.f = $$1;
       this.g = $$3;
@@ -22,7 +22,7 @@ public class ahp implements zb<agb> {
    private ahp(vr $$0) {
       this.e = $$0.e();
       this.f = $$0.p();
-      this.j = $$0.b(dpx.a.class);
+      this.j = $$0.b(dpz.a.class);
       int $$1 = $$0.readByte();
       this.g = ($$1 & 1) != 0;
       this.h = ($$1 & 2) != 0;
@@ -78,7 +78,7 @@ public class ahp implements zb<agb> {
       return this.i;
    }
 
-   public dpx.a i() {
+   public dpz.a i() {
       return this.j;
    }
 }

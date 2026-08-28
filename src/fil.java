@@ -1,39 +1,146 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.List;
 
-public class fil {
-   public static final int a = 8;
-   public static final int b = 8;
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 40;
-   public static final int f = 8;
-   public static final int g = 8;
-   public static final int h = 8;
-   public static final int i = 64;
-   public static final int j = 64;
-
-   public static void a(fgz $$0, gqi $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1.a(), $$2, $$3, $$4);
-   }
-
-   public static void a(fgz $$0, akk $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, true, false);
-   }
-
-   public static void a(fgz $$0, akk $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6) {
-      int $$7 = 8 + ($$6 ? 8 : 0);
-      int $$8 = 8 * ($$6 ? -1 : 1);
-      $$0.a($$1, $$2, $$3, $$4, $$4, 8.0F, (float)$$7, 8, $$8, 64, 64);
-      if ($$5) {
-         a($$0, $$1, $$2, $$3, $$4, $$6);
+public interface fil {
+   fil a = new fil() {
+      @Override
+      public int a(fhf $$0, int $$1, int $$2) {
+         return $$2;
       }
+
+      @Override
+      public int a(fhf $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int b(fhf $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int c(fhf $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public int b() {
+         return 0;
+      }
+   };
+
+   static fil a(fhd $$0, wz $$1, int $$2) {
+      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new fil.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   private static void a(fgz $$0, akk $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6 = 8 + ($$5 ? 8 : 0);
-      int $$7 = 8 * ($$5 ? -1 : 1);
-      RenderSystem.enableBlend();
-      $$0.a($$1, $$2, $$3, $$4, $$4, 40.0F, (float)$$6, 8, $$7, 64, 64);
-      RenderSystem.disableBlend();
+   static fil a(fhd $$0, wz $$1, int $$2, int $$3) {
+      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new fil.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static fil a(fhd $$0, wu... $$1) {
+      return b($$0, Arrays.stream($$1).map(wu::g).map($$1x -> new fil.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static fil a(fhd $$0, List<wu> $$1) {
+      return b($$0, $$1.stream().map(wu::g).map($$1x -> new fil.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static fil b(final fhd $$0, final List<fil.a> $$1) {
+      return $$1.isEmpty() ? a : new fil() {
+         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
+
+         @Override
+         public int a(fhf $$0x, int $$1x, int $$2) {
+            return this.a($$0, $$1, $$2, 9, 16777215);
+         }
+
+         @Override
+         public int a(fhf $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fil.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public int b(fhf $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fil.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public int c(fhf $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fil.a $$6 : $$1) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public void a(fhf $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
+            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
+            if ($$6 > 0) {
+               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
+            }
+         }
+
+         @Override
+         public int a() {
+            return $$1.size();
+         }
+
+         @Override
+         public int b() {
+            return this.d;
+         }
+      };
+   }
+
+   int a(fhf var1, int var2, int var3);
+
+   int a(fhf var1, int var2, int var3, int var4, int var5);
+
+   int b(fhf var1, int var2, int var3, int var4, int var5);
+
+   int c(fhf var1, int var2, int var3, int var4, int var5);
+
+   void a(fhf var1, int var2, int var3, int var4, int var5, int var6);
+
+   int a();
+
+   int b();
+
+   public static class a {
+      final axs a;
+      final int b;
+
+      a(axs $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

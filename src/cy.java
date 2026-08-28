@@ -8,7 +8,7 @@ public class cy extends ds<cy.a> {
       return cy.a.a;
    }
 
-   public void a(aql $$0, evz $$1, int $$2) {
+   public void a(aqn $$0, ewf $$1, int $$2) {
       this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
@@ -26,8 +26,8 @@ public class cy extends ds<cy.a> {
          return am.v.a(new cy.a(Optional.empty(), Optional.of($$0), de.d.c));
       }
 
-      public boolean a(aql $$0, evz $$1, int $$2) {
-         return this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$0.du(), $$0.dw(), $$0.dA()) ? false : this.d.d($$2);
+      public boolean a(aqn $$0, ewf $$1, int $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$0.dv(), $$0.dx(), $$0.dB()) ? false : this.d.d($$2);
       }
 
       @Override

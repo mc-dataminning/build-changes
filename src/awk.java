@@ -1,43 +1,109 @@
-import com.google.common.collect.Interner;
-import com.google.common.collect.Interners;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public record awk<T>(akj<? extends jw<T>> a, akk b) {
-   private static final Interner<awk<?>> c = Interners.newWeakInterner();
+public class awk {
+   private static final Codec<awk> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axo.r.fieldOf("id").forGetter(awk::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, awk::new)
+   );
+   public static final Codec<awk> a = Codec.either(axo.r, b)
+      .xmap($$0 -> (awk)$$0.map($$0x -> new awk($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
+   private final akk c;
+   private final boolean d;
+   private final boolean e;
 
-   @Deprecated
-   public awk(akj<? extends jw<T>> a, akk b) {
-      this.a = a;
-      this.b = b;
+   private awk(akk $$0, boolean $$1, boolean $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static <T> Codec<awk<T>> a(akj<? extends jw<T>> $$0) {
-      return akk.a.xmap($$1 -> a($$0, $$1), awk::b);
+   private awk(axo.c $$0, boolean $$1) {
+      this.c = $$0.a();
+      this.d = $$0.b();
+      this.e = $$1;
    }
 
-   public static <T> Codec<awk<T>> b(akj<? extends jw<T>> $$0) {
-      return Codec.STRING
-         .comapFlatMap(
-            $$1 -> $$1.startsWith("#") ? akk.b($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
-         );
+   private axo.c a() {
+      return new axo.c(this.c, this.d);
    }
 
-   public static <T> awk<T> a(akj<? extends jw<T>> $$0, akk $$1) {
-      return (awk<T>)c.intern(new awk<>($$0, $$1));
+   public static awk a(akk $$0) {
+      return new awk($$0, false, true);
    }
 
-   public boolean c(akj<? extends jw<?>> $$0) {
-      return this.a == $$0;
+   public static awk b(akk $$0) {
+      return new awk($$0, false, false);
    }
 
-   public <E> Optional<awk<E>> d(akj<? extends jw<E>> $$0) {
-      return this.c($$0) ? Optional.of((awk<E>)this) : Optional.empty();
+   public static awk c(akk $$0) {
+      return new awk($$0, true, true);
+   }
+
+   public static awk d(akk $$0) {
+      return new awk($$0, true, false);
+   }
+
+   public <T> boolean a(awk.a<T> $$0, Consumer<T> $$1) {
+      if (this.d) {
+         Collection<T> $$2 = $$0.b(this.c);
+         if ($$2 == null) {
+            return !this.e;
+         }
+
+         $$2.forEach($$1);
+      } else {
+         T $$3 = $$0.a(this.c);
+         if ($$3 == null) {
+            return !this.e;
+         }
+
+         $$1.accept($$3);
+      }
+
+      return true;
+   }
+
+   public void a(Consumer<akk> $$0) {
+      if (this.d && this.e) {
+         $$0.accept(this.c);
+      }
+   }
+
+   public void b(Consumer<akk> $$0) {
+      if (this.d && !this.e) {
+         $$0.accept(this.c);
+      }
+   }
+
+   public boolean a(Predicate<akk> $$0, Predicate<akk> $$1) {
+      return !this.e || (this.d ? $$1 : $$0).test(this.c);
    }
 
    @Override
    public String toString() {
-      return "TagKey[" + this.a.a() + " / " + this.b + "]";
+      StringBuilder $$0 = new StringBuilder();
+      if (this.d) {
+         $$0.append('#');
+      }
+
+      $$0.append(this.c);
+      if (!this.e) {
+         $$0.append('?');
+      }
+
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      @Nullable
+      T a(akk var1);
+
+      @Nullable
+      Collection<T> b(akk var1);
    }
 }

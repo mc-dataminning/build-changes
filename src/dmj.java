@@ -1,51 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dmj extends div {
-   public static final MapCodec<dmj> a = b(dmj::new);
-
-   @Override
-   public MapCodec<dmj> a() {
-      return a;
-   }
-
-   public dmj(dsg.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void a(dcd $$0, dsh $$1, ja $$2, bsd $$3, float $$4) {
-      if ($$3.bX()) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      } else {
-         $$3.a($$4, 0.0F, $$0.aj().l());
-      }
-   }
+public class dmj extends ded {
+   public static final MapCodec<dmj> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dmj.a.b.fieldOf("kind").forGetter(ded::b), u()).apply($$0, dmj::new));
+   public static final int d = dtq.a();
+   private static final int b = d + 1;
+   public static final dtk e = dta.ba;
+   protected static final ewy f = dfh.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final ewy g = dfh.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
    @Override
-   public void a(dbj $$0, bsd $$1) {
-      if ($$1.bX()) {
-         super.a($$0, $$1);
-      } else {
-         this.a($$1);
-      }
+   public MapCodec<? extends dmj> a() {
+      return c;
    }
 
-   private void a(bsd $$0) {
-      evz $$1 = $$0.ds();
-      if ($$1.d < 0.0) {
-         double $$2 = $$0 instanceof bsy ? 1.0 : 0.8;
-         $$0.o($$1.c, -$$1.d * $$2, $$1.e);
-      }
+   protected dmj(dmj.a $$0, dsj.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   public void a(dcd $$0, ja $$1, dsh $$2, bsd $$3) {
-      double $$4 = Math.abs($$3.ds().d);
-      if ($$4 < 0.1 && !$$3.bW()) {
-         double $$5 = 0.4 + $$4 * 0.2;
-         $$3.h($$3.ds().d($$5, 1.0, $$5));
+   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return this.b() == dmj.b.h ? g : f;
+   }
+
+   @Override
+   protected ewy f(dsk $$0, dbl $$1, ja $$2) {
+      return ewv.a();
+   }
+
+   @Override
+   public dsk a(cxm $$0) {
+      return super.a($$0).a(e, Integer.valueOf(dtq.a($$0.i())));
+   }
+
+   @Override
+   protected dsk a(dsk $$0, dlu $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected dsk a(dsk $$0, dke $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected void a(dsl.a<dfh, dsk> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends azc {
+      Map<String, dmj.a> a = new Object2ObjectArrayMap();
+      Codec<dmj.a> b = Codec.stringResolver(azc::c, a::get);
+   }
+
+   public static enum b implements dmj.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(final String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
 
-      super.a($$0, $$1, $$2, $$3);
+      @Override
+      public String c() {
+         return this.j;
+      }
    }
 }

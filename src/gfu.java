@@ -1,53 +1,82 @@
-public class gfu implements gfx<dpj> {
-   private final fxi a;
-   private final fxi b;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public gfu(gfy.a $$0) {
-      this.a = $$0.a(fxh.j);
-      this.b = $$0.a(fxh.i);
-   }
+public class gfu {
+   private final gfq a;
+   private final gfn b;
 
-   public static fxo b() {
-      fxq $$0 = new fxq();
-      fxr $$1 = $$0.a();
-      $$1.a("main", fxn.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fxk.a);
-      $$1.a("left_leg", fxn.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fxk.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", fxn.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fxk.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return fxo.a($$0, 64, 64);
-   }
-
-   public static fxo c() {
-      fxq $$0 = new fxq();
-      fxr $$1 = $$0.a();
-      $$1.a("main", fxn.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fxk.a);
-      $$1.a("left_leg", fxn.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fxk.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", fxn.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fxk.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return fxo.a($$0, 64, 64);
-   }
-
-   public void a(dpj $$0, float $$1, fag $$2, gdx $$3, int $$4, int $$5) {
-      grm $$6 = gem.p[$$0.c().a()];
-      dcd $$7 = $$0.i();
-      if ($$7 != null) {
-         dsh $$8 = $$0.n();
-         dhm.c<? extends dpj> $$9 = dhm.a(dpp.y, dey::h, dey::g, dgi.c, $$8, $$7, $$0.az_(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new gga<>()).get($$4);
-         this.a($$2, $$3, $$8.c(dey.b) == dsu.a ? this.a : this.b, $$8.c(dey.aE), $$6, $$10, $$5, false);
+   public gfu(gfq $$0, gfn $$1) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Missing condition for selector");
+      } else if ($$1 == null) {
+         throw new IllegalArgumentException("Missing variant for selector");
       } else {
-         this.a($$2, $$3, this.a, jf.d, $$6, $$4, $$5, false);
-         this.a($$2, $$3, this.b, jf.d, $$6, $$4, $$5, true);
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 
-   private void a(fag $$0, gdx $$1, fxi $$2, jf $$3, grm $$4, int $$5, int $$6, boolean $$7) {
-      $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      fak $$8 = $$4.a($$1, gef::c);
-      $$2.a($$0, $$8, $$5, $$6);
-      $$0.b();
+   public gfn a() {
+      return this.b;
+   }
+
+   public Predicate<dsk> a(dsl<dfh, dsk> $$0) {
+      return this.a.getPredicate($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0;
+   }
+
+   @Override
+   public int hashCode() {
+      return System.identityHashCode(this);
+   }
+
+   public static class a implements JsonDeserializer<gfu> {
+      public gfu a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new gfu(this.b($$3), (gfn)$$2.deserialize($$3.get("apply"), gfn.class));
+      }
+
+      private gfq b(JsonObject $$0) {
+         return $$0.has("when") ? a(axw.u($$0, "when")) : gfq.b;
+      }
+
+      @VisibleForTesting
+      static gfq a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<gfq> $$2 = Streams.stream(axw.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gft($$2);
+            } else if ($$0.has("AND")) {
+               List<gfq> $$3 = Streams.stream(axw.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gfp($$3);
+            } else {
+               return a($$1.iterator().next());
+            }
+         } else {
+            return new gfp($$1.stream().map(gfu.a::a).collect(Collectors.toList()));
+         }
+      }
+
+      private static gfq a(Entry<String, JsonElement> $$0) {
+         return new gfr($$0.getKey(), $$0.getValue().getAsString());
+      }
    }
 }

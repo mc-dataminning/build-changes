@@ -1,59 +1,151 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-public class ghq implements ghj.a {
-   private final ffn a;
-   private final Map<Long, Map<ja, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class ghq implements ghp.a {
+   private final fft a;
+   private static final int b = 32;
+   private static final float c = 1.0F;
+   private final List<ghq.a> d = Lists.newArrayList();
+   private final List<ghq.b> e = Lists.newArrayList();
 
-   ghq(ffn $$0) {
+   public ghq(fft $$0) {
       this.a = $$0;
    }
 
-   public void a(long $$0, ja $$1) {
-      Map<ja, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
-   }
-
    @Override
-   public void a(fag $$0, gdx $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.r.Z();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<ja> $$8 = Sets.newHashSet();
-      Map<ja, Integer> $$9 = Maps.newHashMap();
-      fak $$10 = $$1.getBuffer(gef.y());
-      Iterator<Entry<Long, Map<ja, Integer>>> $$11 = this.b.entrySet().iterator();
+   public void a(fam $$0, ged $$1, double $$2, double $$3, double $$4) {
+      dcf $$5 = this.a.r;
+      if ($$5 == null) {
+         this.d.clear();
+         this.e.clear();
+      } else {
+         ewf $$6 = new ewf($$2, 0.0, $$4);
+         this.d.removeIf(ghq.a::a);
+         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
+         faq $$7 = $$1.getBuffer(gel.y());
 
-      while ($$11.hasNext()) {
-         Entry<Long, Map<ja, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<ja, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<ja, Integer> $$16 : $$14.entrySet()) {
-               ja $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  evu $$19 = new evu(ja.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  gdv.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
-            }
+         for (ghq.b $$8 : this.e) {
+            $$8.a($$5).ifPresent($$6x -> {
+               double $$7x = $$6x.a() - (double)$$8.b();
+               double $$8x = $$6x.b() - (double)$$8.b();
+               double $$9 = $$6x.c() - (double)$$8.b();
+               double $$10 = $$6x.a() + (double)$$8.b();
+               double $$11 = $$6x.b() + (double)$$8.b();
+               double $$12x = $$6x.c() + (double)$$8.b();
+               geb.a($$0, $$7, ewv.a(new ewa($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
+            });
+         }
+
+         faq $$9 = $$1.getBuffer(gel.A());
+
+         for (ghq.b $$10 : this.e) {
+            $$10.a($$5)
+               .ifPresent(
+                  $$5x -> geb.b(
+                        $$0,
+                        $$9,
+                        $$5x.a() - 0.25 - $$2,
+                        $$5x.b() - $$3,
+                        $$5x.c() - 0.25 - $$4,
+                        $$5x.a() + 0.25 - $$2,
+                        $$5x.b() - $$3 + 1.0,
+                        $$5x.c() + 0.25 - $$4,
+                        1.0F,
+                        1.0F,
+                        0.0F,
+                        0.35F
+                     )
+               );
+         }
+
+         for (ghq.b $$11 : this.e) {
+            $$11.a($$5).ifPresent($$2x -> {
+               ghp.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
+               ghp.a($$0, $$1, ja.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
+            });
+         }
+
+         for (ghq.a $$12 : this.d) {
+            ewf $$13 = $$12.c;
+            double $$14 = 0.2F;
+            double $$15 = $$13.c - 0.2F;
+            double $$16 = $$13.d - 0.2F;
+            double $$17 = $$13.e - 0.2F;
+            double $$18 = $$13.c + 0.2F;
+            double $$19 = $$13.d + 0.2F + 0.5;
+            double $$20 = $$13.e + 0.2F;
+            a($$0, $$1, new ewa($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
+            ghp.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
          }
       }
+   }
 
-      for (Entry<ja, Integer> $$20 : $$9.entrySet()) {
-         ja $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         ghj.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+   private static void a(fam $$0, ged $$1, ewa $$2, float $$3, float $$4, float $$5, float $$6) {
+      ffe $$7 = fft.Q().j.l();
+      if ($$7.h()) {
+         ewf $$8 = $$7.b().e();
+         ghp.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+      }
+   }
+
+   public void a(akj<dxg> $$0, ewf $$1) {
+      this.d.add(new ghq.a(ac.c(), $$0, $$1));
+   }
+
+   public void a(dxk $$0, int $$1) {
+      this.e.add(new ghq.b($$0, $$1));
+   }
+
+   static record a(long a, akj<dxg> b, ewf c) {
+
+      public boolean a() {
+         return ac.c() - this.a > 3000L;
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public akj<dxg> c() {
+         return this.b;
+      }
+
+      public ewf d() {
+         return this.c;
+      }
+   }
+
+   static class b implements dxi {
+      public final dxk a;
+      public final int b;
+
+      public b(dxk $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public boolean a(dcf $$0, ewf $$1) {
+         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
+      }
+
+      public Optional<ewf> a(dcf $$0) {
+         return this.a.a($$0);
+      }
+
+      @Override
+      public dxk a() {
+         return this.a;
+      }
+
+      @Override
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public boolean a(aqm $$0, jj<dxg> $$1, dxg.a $$2, ewf $$3) {
+         return false;
       }
    }
 }

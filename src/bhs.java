@@ -1,32 +1,42 @@
-import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.Const.PrimitiveType;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.PrimitiveCodec;
 
 public class bhs extends Schema {
+   public static final PrimitiveCodec<String> a = new PrimitiveCodec<String>() {
+      public <T> DataResult<String> read(DynamicOps<T> $$0, T $$1) {
+         return $$0.getStringValue($$1).map(bhs::a);
+      }
+
+      public <T> T a(DynamicOps<T> $$0, String $$1) {
+         return (T)$$0.createString($$1);
+      }
+
+      @Override
+      public String toString() {
+         return "NamespacedString";
+      }
+   };
+   private static final Type<String> b = new PrimitiveType(a);
+
    public bhs(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(false, bgd.J, () -> DSL.constType(bhp.a()));
-      $$0.registerType(
-         false,
-         bgd.b,
-         () -> DSL.optionalFields(
-               new Pair[]{
-                  Pair.of("RootVehicle", DSL.optionalFields("Entity", bgd.A.in($$0))),
-                  Pair.of("Inventory", DSL.list(bgd.t.in($$0))),
-                  Pair.of("EnderItems", DSL.list(bgd.t.in($$0))),
-                  Pair.of("ShoulderEntityLeft", bgd.A.in($$0)),
-                  Pair.of("ShoulderEntityRight", bgd.A.in($$0)),
-                  Pair.of("recipeBook", DSL.optionalFields("recipes", DSL.list(bgd.J.in($$0)), "toBeDisplayed", DSL.list(bgd.J.in($$0))))
-               }
-            )
-      );
-      $$0.registerType(false, bgd.d, () -> DSL.compoundList(DSL.list(bgd.t.in($$0))));
+   public static String a(String $$0) {
+      akk $$1 = akk.a($$0);
+      return $$1 != null ? $$1.toString() : $$0;
+   }
+
+   public static Type<String> a() {
+      return b;
+   }
+
+   public Type<?> getChoiceType(TypeReference $$0, String $$1) {
+      return super.getChoiceType($$0, a($$1));
    }
 }

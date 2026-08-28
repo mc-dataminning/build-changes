@@ -1,40 +1,31 @@
 import com.google.common.collect.ImmutableMap;
 
-public class byn extends bur<cll> {
-   private static final int c = 25;
-   private static final int d = 20;
-
-   public byn() {
-      super(ImmutableMap.of(ccc.ay, ccd.a, ccc.o, ccd.b, ccc.aF, ccd.c, ccc.aD, ccd.c), clm.b);
+public class byn<E extends clo> extends buu<E> {
+   public byn(int $$0) {
+      super(ImmutableMap.of(ccf.o, ccg.b, ccf.m, ccg.b), $$0);
    }
 
-   protected void a(aqk $$0, cll $$1, long $$2) {
-      bua<cll> $$3 = $$1.dT();
-      $$3.a(ccc.aD, azh.a, 25L);
-      $$3.b(ccc.m);
-      bsy $$4 = $$1.dT().c(ccc.ay).get();
-      but.a($$1, $$4);
-      $$1.b(btk.l);
-      $$1.a($$4, 20, false);
+   protected boolean a(aqm $$0, E $$1, long $$2) {
+      return $$1.dM() == null;
    }
 
-   protected boolean b(aqk $$0, cll $$1, long $$2) {
-      return true;
+   protected boolean a(aqm $$0, E $$1) {
+      return $$1.aF() || $$1.bf() || $$1.bt();
    }
 
-   protected void c(aqk $$0, cll $$1, long $$2) {
-      if (!$$1.dT().a(ccc.aD) && !$$1.dT().a(ccc.aF)) {
-         $$1.dT().a(ccc.aF, azh.a, (long)(clm.b - 25));
-         $$1.a(avf.BT, 3.0F, 1.0F);
+   protected void b(aqm $$0, E $$1, long $$2) {
+      if ($$1.aF()) {
+         $$1.b(btn.o);
+         $$1.a(avh.BK, 5.0F, 1.0F);
+      } else {
+         $$1.a(avh.BF, 5.0F, 1.0F);
+         this.c($$0, $$1, $$2);
       }
    }
 
-   protected void d(aqk $$0, cll $$1, long $$2) {
-      if ($$1.c(btk.l)) {
-         $$1.b(btk.a);
+   protected void c(aqm $$0, E $$1, long $$2) {
+      if ($$1.dM() == null) {
+         $$1.a(bsg.c.b);
       }
-
-      $$1.dT().c(ccc.ay).ifPresent($$1::j);
-      $$1.dT().b(ccc.ay);
    }
 }

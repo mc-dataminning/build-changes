@@ -1,118 +1,89 @@
-public class cok extends coc {
-   static final ajp<String> c = ajt.a(cok.class, ajr.e);
-   static final ajp<wu> d = ajt.a(cok.class, ajr.f);
-   private final dbe e = new cok.a();
-   private static final int i = 4;
-   private int j;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public cok(bsj<? extends cok> $$0, dcd $$1) {
-      super($$0, $$1);
+public class cok {
+   public static int[][] a(jf $$0) {
+      jf $$1 = $$0.h();
+      jf $$2 = $$1.g();
+      jf $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   public cok(dcd $$0, double $$1, double $$2, double $$3) {
-      super(bsj.v, $$0, $$1, $$2, $$3);
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   @Override
-   protected ctv ag_() {
-      return cud.nM;
-   }
-
-   @Override
-   protected void a(ajt.a $$0) {
-      super.a($$0);
-      $$0.a(c, "");
-      $$0.a(d, wt.a);
-   }
-
-   @Override
-   protected void a(tx $$0) {
-      super.a($$0);
-      this.e.b($$0, this.dR());
-      this.ap().a(c, this.B().m());
-      this.ap().a(d, this.B().l());
-   }
-
-   @Override
-   protected void b(tx $$0) {
-      super.b($$0);
-      this.e.a($$0, this.dR());
-   }
-
-   @Override
-   public coc.a v() {
-      return coc.a.g;
-   }
-
-   @Override
-   public dsh x() {
-      return dfh.fN.o();
-   }
-
-   public dbe B() {
-      return this.e;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ai - this.j >= 4) {
-         this.B().a(this.dP());
-         this.j = this.ai;
-      }
-   }
-
-   @Override
-   public bqd a(cmh $$0, bqc $$1) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public void a(ajp<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.ap().a(d));
-         } catch (Throwable var3) {
+   public static boolean a(dbp $$0, btb $$1, ewa $$2) {
+      for (ewy $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
          }
-      } else if (c.equals($$0)) {
-         this.e.a(this.ap().a(c));
       }
+
+      return $$0.C_().a($$2);
    }
 
-   @Override
-   public boolean cP() {
-      return true;
+   public static boolean a(dbp $$0, ewf $$1, btb $$2, btn $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
    }
 
-   public class a extends dbe {
-      @Override
-      public aqk e() {
-         return (aqk)cok.this.dP();
+   public static ewy a(dbl $$0, ja $$1) {
+      dsk $$2 = $$0.a_($$1);
+      return !$$2.a(avw.aP) && (!($$2.b() instanceof dnu) || !$$2.c(dnu.b)) ? $$2.k($$0, $$1) : ewv.a();
+   }
+
+   public static double a(ja $$0, int $$1, Function<ja, ewy> $$2) {
+      ja.a $$3 = $$0.j();
+      int $$4 = 0;
+
+      while ($$4 < $$1) {
+         ewy $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(jf.a.b);
+         }
+
+         $$4++;
+         $$3.c(jf.b);
       }
 
-      @Override
-      public void f() {
-         cok.this.ap().a(cok.c, this.m());
-         cok.this.ap().a(cok.d, this.l());
-      }
+      return Double.POSITIVE_INFINITY;
+   }
 
-      @Override
-      public evz g() {
-         return cok.this.dn();
-      }
+   @Nullable
+   public static ewf a(bsm<?> $$0, dbp $$1, ja $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
+      } else {
+         double $$4 = $$1.a(a((dbl)$$1, $$2), () -> a((dbl)$$1, $$2.d()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
+            return null;
+         } else {
+            ewf $$5 = ewf.a($$2, $$4);
+            ewa $$6 = $$0.n().a($$5);
 
-      public cok h() {
-         return cok.this;
-      }
+            for (ewy $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
 
-      @Override
-      public eq i() {
-         return new eq(this, cok.this.dn(), cok.this.bM(), this.e(), 2, this.n().getString(), cok.this.O_(), this.e().o(), cok.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !cok.this.dK();
+            if ($$0 != bsm.by || !$$1.a_($$2).a(avw.cq) && !$$1.a_($$2.c()).a(avw.cq)) {
+               return !$$1.C_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
       }
    }
 }

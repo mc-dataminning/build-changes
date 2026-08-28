@@ -1,30 +1,24 @@
-import com.mojang.serialization.Codec;
+public enum bqg {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f;
 
-public record bqg(String d) {
-   public static final bqg a = new bqg("");
-   public static final Codec<bqg> b = Codec.STRING.xmap(bqg::new, bqg::a);
-   public static final String c = "Lock";
-
-   public boolean a(cua $$0) {
-      if (this.d.isEmpty()) {
-         return true;
-      } else {
-         wu $$1 = $$0.a(kn.g);
-         return $$1 != null && this.d.equals($$1.getString());
-      }
+   public boolean a() {
+      return this == a || this == c || this == d || this == b;
    }
 
-   public void a(tx $$0) {
-      if (!this.d.isEmpty()) {
-         $$0.a("Lock", this.d);
-      }
+   public boolean b() {
+      return this == a || this == b;
    }
 
-   public static bqg b(tx $$0) {
-      return $$0.b("Lock", 8) ? new bqg($$0.l("Lock")) : a;
+   public boolean c() {
+      return this == a || this == c;
    }
 
-   public String a() {
-      return this.d;
+   public static bqg a(boolean $$0) {
+      return $$0 ? a : c;
    }
 }

@@ -1,111 +1,108 @@
-import java.util.ArrayList;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
 import java.util.List;
-import java.util.function.Consumer;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FreeType;
 
-public class fkx extends fku {
-   private final List<fkx.a> c = new ArrayList<>();
-   private int d;
-   private int e;
-   private final flc f = flc.i().a(0.5F, 0.5F);
+public record fkx(akk c, float d, float e, fkx.a f, String g) implements fku {
+   private static final Codec<String> h = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
+   public static final MapCodec<fkx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               akk.a.fieldOf("file").forGetter(fkx::c),
+               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fkx::d),
+               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fkx::e),
+               fkx.a.b.optionalFieldOf("shift", fkx.a.a).forGetter(fkx::f),
+               h.optionalFieldOf("skip", "").forGetter(fkx::g)
+            )
+            .apply($$0, fkx::new)
+   );
 
-   public fkx() {
-      this(0, 0, 0, 0);
-   }
-
-   public fkx(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public fkx(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$2, $$3);
-   }
-
-   public fkx a(int $$0, int $$1) {
-      return this.b($$0).a($$1);
-   }
-
-   public fkx a(int $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public fkx b(int $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public flc b() {
-      return this.f.g();
-   }
-
-   public flc c() {
-      return this.f;
+   @Override
+   public fkv a() {
+      return fkv.b;
    }
 
    @Override
-   public void a() {
-      super.a();
-      int $$0 = this.d;
-      int $$1 = this.e;
+   public Either<fku.b, fku.c> b() {
+      return Either.left(this::a);
+   }
 
-      for (fkx.a $$2 : this.c) {
-         $$0 = Math.max($$0, $$2.b());
-         $$1 = Math.max($$1, $$2.a());
+   private eyp a(atw $$0) throws IOException {
+      FT_Face $$1 = null;
+      ByteBuffer $$2 = null;
+
+      try {
+         eys var20;
+         try (InputStream $$3 = $$0.open(this.c.d("font/"))) {
+            $$2 = TextureUtil.readResource($$3);
+            $$2.flip();
+            synchronized (fkt.a) {
+               MemoryStack $$4 = MemoryStack.stackPush();
+
+               try {
+                  PointerBuffer $$5 = $$4.mallocPointer(1);
+                  fkt.a(FreeType.FT_New_Memory_Face(fkt.a(), $$2, 0L, $$5), "Initializing font face");
+                  $$1 = FT_Face.create($$5.get());
+               } catch (Throwable var14) {
+                  if ($$4 != null) {
+                     try {
+                        $$4.close();
+                     } catch (Throwable var12) {
+                        var14.addSuppressed(var12);
+                     }
+                  }
+
+                  throw var14;
+               }
+
+               if ($$4 != null) {
+                  $$4.close();
+               }
+
+               String $$6 = FreeType.FT_Get_Font_Format($$1);
+               if (!"TrueType".equals($$6)) {
+                  throw new IOException("Font is not in TTF format, was " + $$6);
+               }
+
+               fkt.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
+               var20 = new eys($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
+            }
+         }
+
+         return var20;
+      } catch (Exception var17) {
+         synchronized (fkt.a) {
+            if ($$1 != null) {
+               FreeType.FT_Done_Face($$1);
+            }
+         }
+
+         MemoryUtil.memFree($$2);
+         throw var17;
+      }
+   }
+
+   public static record a(float c, float d) {
+      public static final fkx.a a = new fkx.a(0.0F, 0.0F);
+      public static final Codec<fkx.a> b = Codec.floatRange(-512.0F, 512.0F)
+         .listOf()
+         .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new fkx.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
+
+      public float a() {
+         return this.c;
       }
 
-      for (fkx.a $$3 : this.c) {
-         $$3.a(this.D(), $$0);
-         $$3.b(this.E(), $$1);
-      }
-
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public <T extends flb> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends flb> T a(T $$0, flc $$1) {
-      this.c.add(new fkx.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends flb> T a(T $$0, Consumer<flc> $$1) {
-      return this.a($$0, ac.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<flb> $$0) {
-      this.c.forEach($$1 -> $$0.accept($$1.a));
-   }
-
-   public static void a(flb $$0, int $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
-   }
-
-   public static void a(flb $$0, fls $$1) {
-      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
-   }
-
-   public static void a(flb $$0, fls $$1, float $$2, float $$3) {
-      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
-   }
-
-   public static void a(flb $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
-      a($$1, $$3, $$0.y(), $$0::m, $$5);
-      a($$2, $$4, $$0.w(), $$0::n, $$6);
-   }
-
-   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
-      int $$5 = (int)aye.i($$4, 0.0F, (float)($$1 - $$2));
-      $$3.accept($$0 + $$5);
-   }
-
-   static class a extends fku.a {
-      protected a(flb $$0, flc $$1) {
-         super($$0, $$1);
+      public float b() {
+         return this.d;
       }
    }
 }

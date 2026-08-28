@@ -1,8 +1,24 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cli {
+public class cli<E extends cla> {
+   public static buv<btb> a(int $$0) {
+      return byh.a(
+         (Function<byh.b<btb>, ? extends App<byh.c<btb>, byk<btb>>>)($$1 -> $$1.group($$1.b(ccf.ad), $$1.a(ccf.L))
+               .apply($$1, ($$2, $$3) -> ($$4, $$5, $$6) -> {
+                     if (!$$5.eV().e()) {
+                        return false;
+                     } else {
+                        Optional<ciu> $$7 = $$1.a($$3);
+                        if ($$7.isPresent() && $$7.get().a($$5, (double)$$0)) {
+                           return false;
+                        } else {
+                           $$2.b();
+                           return true;
+                        }
+                     }
+                  }))
+      );
+   }
 }

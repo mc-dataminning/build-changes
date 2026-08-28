@@ -15,243 +15,258 @@ public class uz implements uy {
    private static final Logger a = LogUtils.getLogger();
    private static final int b = 8;
    private static final int c = 64;
-   private static final ByteCollection d = new ByteOpenHashSet(Arrays.asList((byte)1, (byte)2, (byte)3, (byte)4, (byte)5, (byte)6));
-   private static final n e = n.l;
-   private static final n f = n.k;
-   private static final n g = n.g;
-   private static final n h = n.m;
-   private static final Pattern i = Pattern.compile("[A-Za-z0-9._+-]+");
-   private static final String j = String.valueOf(':');
-   private static final String k = String.valueOf(',');
-   private static final String l = "[";
-   private static final String m = "]";
-   private static final String n = ";";
-   private static final String o = " ";
-   private static final String p = "{";
-   private static final String q = "}";
-   private static final String r = "\n";
-   private static final wu s = wu.b("<...>").a(n.h);
-   private final String t;
-   private final int u;
-   private final int v;
-   private wu w = wt.a;
+   private static final int d = 128;
+   private static final ByteCollection e = new ByteOpenHashSet(Arrays.asList((byte)1, (byte)2, (byte)3, (byte)4, (byte)5, (byte)6));
+   private static final n f = n.l;
+   private static final n g = n.k;
+   private static final n h = n.g;
+   private static final n i = n.m;
+   private static final Pattern j = Pattern.compile("[A-Za-z0-9._+-]+");
+   private static final String k = "[";
+   private static final String l = "]";
+   private static final String m = ";";
+   private static final String n = " ";
+   private static final String o = "{";
+   private static final String p = "}";
+   private static final String q = "\n";
+   private static final String r = ": ";
+   private static final String s = String.valueOf(',');
+   private static final String t = s + "\n";
+   private static final String u = s + " ";
+   private static final wu v = wu.b("<...>").a(n.h);
+   private static final wu w = wu.b("b").a(i);
+   private static final wu x = wu.b("s").a(i);
+   private static final wu y = wu.b("I").a(i);
+   private static final wu z = wu.b("L").a(i);
+   private static final wu A = wu.b("f").a(i);
+   private static final wu B = wu.b("d").a(i);
+   private static final wu C = wu.b("B").a(i);
+   private final String D;
+   private int E;
+   private int F;
+   private final xi G = wu.i();
 
    public uz(String $$0) {
-      this($$0, 0, 0);
-   }
-
-   private uz(String $$0, int $$1, int $$2) {
-      this.t = $$0;
-      this.u = $$1;
-      this.v = $$2;
+      this.D = $$0;
    }
 
    public wu a(uu $$0) {
       $$0.a(this);
-      return this.w;
+      return this.G;
    }
 
    @Override
    public void a(us $$0) {
       String $$1 = us.b($$0.s_());
       String $$2 = $$1.substring(0, 1);
-      wu $$3 = wu.b($$1.substring(1, $$1.length() - 1)).a(f);
-      this.w = wu.b($$2).b($$3).f($$2);
+      wu $$3 = wu.b($$1.substring(1, $$1.length() - 1)).a(g);
+      this.G.f($$2).b($$3).f($$2);
    }
 
    @Override
    public void a(tv $$0) {
-      wu $$1 = wu.b("b").a(h);
-      this.w = wu.b(String.valueOf($$0.l())).b($$1).a(g);
+      this.G.b(wu.b(String.valueOf($$0.l())).a(h)).b(w);
    }
 
    @Override
    public void a(up $$0) {
-      wu $$1 = wu.b("s").a(h);
-      this.w = wu.b(String.valueOf($$0.l())).b($$1).a(g);
+      this.G.b(wu.b(String.valueOf($$0.l())).a(h)).b(x);
    }
 
    @Override
    public void a(uc $$0) {
-      this.w = wu.b(String.valueOf($$0.l())).a(g);
+      this.G.b(wu.b(String.valueOf($$0.l())).a(h));
    }
 
    @Override
    public void a(uf $$0) {
-      wu $$1 = wu.b("L").a(h);
-      this.w = wu.b(String.valueOf($$0.l())).b($$1).a(g);
+      this.G.b(wu.b(String.valueOf($$0.l())).a(h)).b(z);
    }
 
    @Override
    public void a(ua $$0) {
-      wu $$1 = wu.b("f").a(h);
-      this.w = wu.b(String.valueOf($$0.k())).b($$1).a(g);
+      this.G.b(wu.b(String.valueOf($$0.k())).a(h)).b(A);
    }
 
    @Override
    public void a(ty $$0) {
-      wu $$1 = wu.b("d").a(h);
-      this.w = wu.b(String.valueOf($$0.j())).b($$1).a(g);
+      this.G.b(wu.b(String.valueOf($$0.j())).a(h)).b(B);
    }
 
    @Override
    public void a(tu $$0) {
-      wu $$1 = wu.b("B").a(h);
-      xi $$2 = wu.b("[").b($$1).f(";");
-      byte[] $$3 = $$0.e();
+      this.G.f("[").b(C).f(";");
+      byte[] $$1 = $$0.e();
 
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         xi $$5 = wu.b(String.valueOf($$3[$$4])).a(g);
-         $$2.f(" ").b($$5).b($$1);
-         if ($$4 != $$3.length - 1) {
-            $$2.f(k);
+      for (int $$2 = 0; $$2 < $$1.length && $$2 < 128; $$2++) {
+         xi $$3 = wu.b(String.valueOf($$1[$$2])).a(h);
+         this.G.f(" ").b($$3).b(C);
+         if ($$2 != $$1.length - 1) {
+            this.G.f(s);
          }
       }
 
-      $$2.f("]");
-      this.w = $$2;
+      if ($$1.length > 128) {
+         this.G.b(v);
+      }
+
+      this.G.f("]");
    }
 
    @Override
    public void a(ub $$0) {
-      wu $$1 = wu.b("I").a(h);
-      xi $$2 = wu.b("[").b($$1).f(";");
-      int[] $$3 = $$0.g();
+      this.G.f("[").b(y).f(";");
+      int[] $$1 = $$0.g();
 
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         $$2.f(" ").b(wu.b(String.valueOf($$3[$$4])).a(g));
-         if ($$4 != $$3.length - 1) {
-            $$2.f(k);
+      for (int $$2 = 0; $$2 < $$1.length && $$2 < 128; $$2++) {
+         this.G.f(" ").b(wu.b(String.valueOf($$1[$$2])).a(h));
+         if ($$2 != $$1.length - 1) {
+            this.G.f(s);
          }
       }
 
-      $$2.f("]");
-      this.w = $$2;
+      if ($$1.length > 128) {
+         this.G.b(v);
+      }
+
+      this.G.f("]");
    }
 
    @Override
    public void a(ue $$0) {
-      wu $$1 = wu.b("L").a(h);
-      xi $$2 = wu.b("[").b($$1).f(";");
-      long[] $$3 = $$0.g();
+      this.G.f("[").b(z).f(";");
+      long[] $$1 = $$0.g();
 
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         wu $$5 = wu.b(String.valueOf($$3[$$4])).a(g);
-         $$2.f(" ").b($$5).b($$1);
-         if ($$4 != $$3.length - 1) {
-            $$2.f(k);
+      for (int $$2 = 0; $$2 < $$1.length && $$2 < 128; $$2++) {
+         wu $$3 = wu.b(String.valueOf($$1[$$2])).a(h);
+         this.G.f(" ").b($$3).b(z);
+         if ($$2 != $$1.length - 1) {
+            this.G.f(s);
          }
       }
 
-      $$2.f("]");
-      this.w = $$2;
+      if ($$1.length > 128) {
+         this.G.b(v);
+      }
+
+      this.G.f("]");
    }
 
    @Override
    public void a(ud $$0) {
       if ($$0.isEmpty()) {
-         this.w = wu.b("[]");
-      } else if (this.v >= 64) {
-         this.w = wu.b("[").b(s).f("]");
-      } else if (d.contains($$0.f()) && $$0.size() <= 8) {
-         String $$1 = k + " ";
-         xi $$2 = wu.b("[");
+         this.G.f("[]");
+      } else if (this.F >= 64) {
+         this.G.f("[" + v + "]");
+      } else if (e.contains($$0.f()) && $$0.size() <= 8) {
+         this.G.f("[");
 
-         for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-            if ($$3 != 0) {
-               $$2.f($$1);
+         for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+            if ($$1 != 0) {
+               this.G.f(u);
             }
 
-            $$2.b(this.a($$0.k($$3), false));
+            this.a($$0.k($$1), false);
          }
 
-         $$2.f("]");
-         this.w = $$2;
+         this.G.f("]");
       } else {
-         xi $$4 = wu.b("[");
-         if (!this.t.isEmpty()) {
-            $$4.f("\n");
+         this.G.f("[");
+         if (!this.D.isEmpty()) {
+            this.G.f("\n");
          }
 
-         String $$5 = Strings.repeat(this.t, this.u + 1);
+         String $$2 = Strings.repeat(this.D, this.E + 1);
 
-         for (int $$6 = 0; $$6 < $$0.size(); $$6++) {
-            xi $$7 = wu.b($$5);
-            $$7.b(this.a($$0.k($$6), true));
-            if ($$6 != $$0.size() - 1) {
-               $$7.f(k).f(this.t.isEmpty() ? " " : "\n");
+         for (int $$3 = 0; $$3 < $$0.size() && $$3 < 128; $$3++) {
+            this.G.f($$2);
+            this.a($$0.k($$3), true);
+            if ($$3 != $$0.size() - 1) {
+               this.G.f(this.D.isEmpty() ? u : t);
             }
-
-            $$4.b($$7);
          }
 
-         if (!this.t.isEmpty()) {
-            $$4.f("\n").f(Strings.repeat(this.t, this.u));
+         if ($$0.size() > 128) {
+            this.G.f($$2 + v);
          }
 
-         $$4.f("]");
-         this.w = $$4;
+         if (!this.D.isEmpty()) {
+            this.G.f("\n" + Strings.repeat(this.D, this.E));
+         }
+
+         this.G.f("]");
       }
    }
 
    @Override
    public void a(tx $$0) {
       if ($$0.g()) {
-         this.w = wu.b("{}");
-      } else if (this.v >= 64) {
-         this.w = wu.b("{").b(s).f("}");
+         this.G.f("{}");
+      } else if (this.F >= 64) {
+         this.G.f("{" + v + "}");
       } else {
-         xi $$1 = wu.b("{");
-         Collection<String> $$2 = $$0.e();
+         this.G.f("{");
+         Collection<String> $$1 = $$0.e();
          if (a.isDebugEnabled()) {
-            List<String> $$3 = Lists.newArrayList($$0.e());
-            Collections.sort($$3);
-            $$2 = $$3;
+            List<String> $$2 = Lists.newArrayList($$0.e());
+            Collections.sort($$2);
+            $$1 = $$2;
          }
 
-         if (!this.t.isEmpty()) {
-            $$1.f("\n");
+         if (!this.D.isEmpty()) {
+            this.G.f("\n");
          }
 
-         String $$4 = Strings.repeat(this.t, this.u + 1);
-         Iterator<String> $$5 = $$2.iterator();
+         String $$3 = Strings.repeat(this.D, this.E + 1);
+         Iterator<String> $$4 = $$1.iterator();
 
-         while ($$5.hasNext()) {
-            String $$6 = $$5.next();
-            xi $$7 = wu.b($$4).b(a($$6)).f(j).f(" ").b(this.a($$0.c($$6), true));
-            if ($$5.hasNext()) {
-               $$7.f(k).f(this.t.isEmpty() ? " " : "\n");
+         while ($$4.hasNext()) {
+            String $$5 = $$4.next();
+            this.G.f($$3).b(a($$5)).f(": ");
+            this.a($$0.c($$5), true);
+            if ($$4.hasNext()) {
+               this.G.f(this.D.isEmpty() ? u : t);
             }
-
-            $$1.b($$7);
          }
 
-         if (!this.t.isEmpty()) {
-            $$1.f("\n").f(Strings.repeat(this.t, this.u));
+         if (!this.D.isEmpty()) {
+            this.G.f("\n" + Strings.repeat(this.D, this.E));
          }
 
-         $$1.f("}");
-         this.w = $$1;
+         this.G.f("}");
       }
    }
 
-   private wu a(uu $$0, boolean $$1) {
-      return new uz(this.t, $$1 ? this.u + 1 : this.u, this.v + 1).a($$0);
+   private void a(uu $$0, boolean $$1) {
+      if ($$1) {
+         this.E++;
+      }
+
+      this.F++;
+
+      try {
+         $$0.a(this);
+      } finally {
+         if ($$1) {
+            this.E--;
+         }
+
+         this.F--;
+      }
    }
 
    protected static wu a(String $$0) {
-      if (i.matcher($$0).matches()) {
-         return wu.b($$0).a(e);
+      if (j.matcher($$0).matches()) {
+         return wu.b($$0).a(f);
       } else {
          String $$1 = us.b($$0);
          String $$2 = $$1.substring(0, 1);
-         wu $$3 = wu.b($$1.substring(1, $$1.length() - 1)).a(e);
+         wu $$3 = wu.b($$1.substring(1, $$1.length() - 1)).a(f);
          return wu.b($$2).b($$3).f($$2);
       }
    }
 
    @Override
    public void a(tz $$0) {
-      this.w = wt.a;
    }
 }

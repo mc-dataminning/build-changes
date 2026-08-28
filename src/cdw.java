@@ -1,58 +1,38 @@
-import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
 public class cdw {
    @Nullable
-   public static evz a(bth $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, $$0::c);
-   }
-
-   @Nullable
-   public static evz a(bth $$0, int $$1, int $$2, ToDoubleFunction<ja> $$3) {
-      boolean $$4 = cdu.a($$0, $$1);
-      return cdx.a(() -> {
-         ja $$4x = cdx.a($$0.dS(), $$1, $$2);
-         ja $$5 = a($$0, $$1, $$4, $$4x);
-         return $$5 == null ? null : a($$0, $$5);
-      }, $$3);
-   }
-
-   @Nullable
-   public static evz a(bth $$0, int $$1, int $$2, evz $$3) {
-      evz $$4 = $$3.a($$0.du(), $$0.dw(), $$0.dA());
-      boolean $$5 = cdu.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Nullable
-   public static evz b(bth $$0, int $$1, int $$2, evz $$3) {
-      evz $$4 = $$0.dn().d($$3);
-      boolean $$5 = cdu.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Nullable
-   private static evz a(bth $$0, int $$1, int $$2, evz $$3, boolean $$4) {
-      return cdx.a($$0, () -> {
-         ja $$5 = cdx.a($$0.dS(), $$1, $$2, 0, $$3.c, $$3.e, (float) (Math.PI / 2));
-         if ($$5 == null) {
-            return null;
-         } else {
-            ja $$6 = a($$0, $$1, $$4, $$5);
-            return $$6 == null ? null : a($$0, $$6);
-         }
+   public static ewf a(btk $$0, int $$1, int $$2) {
+      boolean $$3 = cdx.a($$0, $$1);
+      return cea.a($$0, () -> {
+         ja $$4 = cea.a($$0.dT(), $$1, $$2);
+         return a($$0, $$1, $$3, $$4);
       });
    }
 
    @Nullable
-   public static ja a(bth $$0, ja $$1) {
-      $$1 = cdx.a($$1, $$0.dP().am(), $$1x -> cdu.c($$0, $$1x));
-      return !cdu.a($$0, $$1) && !cdu.b($$0, $$1) ? $$1 : null;
+   public static ewf a(btk $$0, int $$1, int $$2, ewf $$3, double $$4) {
+      ewf $$5 = $$3.a($$0.dv(), $$0.dx(), $$0.dB());
+      boolean $$6 = cdx.a($$0, $$1);
+      return cea.a($$0, () -> {
+         ja $$6x = cea.a($$0.dT(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
+         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
+      });
    }
 
    @Nullable
-   public static ja a(bth $$0, int $$1, boolean $$2, ja $$3) {
-      ja $$4 = cdx.a($$0, $$1, $$0.dS(), $$3);
-      return !cdu.a($$4, $$0) && !cdu.a($$2, $$0, $$4) && !cdu.a($$0.K(), $$4) ? $$4 : null;
+   public static ewf a(btk $$0, int $$1, int $$2, ewf $$3) {
+      ewf $$4 = $$0.do().d($$3);
+      boolean $$5 = cdx.a($$0, $$1);
+      return cea.a($$0, () -> {
+         ja $$5x = cea.a($$0.dT(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
+         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
+      });
+   }
+
+   @Nullable
+   private static ja a(btk $$0, int $$1, boolean $$2, ja $$3) {
+      ja $$4 = cea.a($$0, $$1, $$0.dT(), $$3);
+      return !cdx.a($$4, $$0) && !cdx.a($$2, $$0, $$4) && !cdx.a($$0.K(), $$4) && !cdx.b($$0, $$4) ? $$4 : null;
    }
 }

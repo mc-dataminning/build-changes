@@ -1,34 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egw extends egx {
-   public static final egw a = new egw(dyt.a(0));
-   public static final MapCodec<egw> b = dyt.a.fieldOf("value").xmap(egw::new, egw::b);
-   private final dyt d;
+public class egw {
+   public static final Codec<egw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, dwf.c).fieldOf("height").forGetter(egw::a), lq.e.r().fieldOf("block").orElse(dfj.a).forGetter($$0x -> $$0x.b().b()))
+            .apply($$0, egw::new)
+   );
+   private final dfh b;
+   private final int c;
 
-   public static egw a(dyt $$0) {
-      return new egw($$0);
+   public egw(int $$0, dfh $$1) {
+      this.c = $$0;
+      this.b = $$1;
    }
 
-   private egw(dyt $$0) {
-      this.d = $$0;
+   public int a() {
+      return this.c;
    }
 
-   public dyt b() {
-      return this.d;
-   }
-
-   @Override
-   public int a(aym $$0, dyw $$1) {
-      return this.d.a($$1);
-   }
-
-   @Override
-   public egy<?> a() {
-      return egy.a;
+   public dsk b() {
+      return this.b.o();
    }
 
    @Override
    public String toString() {
-      return this.d.toString();
+      return (this.c != 1 ? this.c + "*" : "") + lq.e.b(this.b);
    }
 }

@@ -1,11 +1,19 @@
-public interface dia {
-   default void a(dcd $$0, ja $$1, dsh $$2, dsh $$3, ciq $$4) {
+import com.mojang.serialization.MapCodec;
+
+public class dia extends dgb implements cte {
+   public static final MapCodec<dia> c = b(dia::new);
+
+   @Override
+   public MapCodec<dia> a() {
+      return c;
    }
 
-   default void a(dcd $$0, ja $$1, ciq $$2) {
+   protected dia(dsj.d $$0) {
+      super($$0);
    }
 
-   default bqw a(bsd $$0) {
-      return $$0.dQ().a($$0);
+   @Override
+   public bsn m() {
+      return bsn.f;
    }
 }

@@ -21,40 +21,40 @@ public class eq implements es<eq>, ev {
    public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("permissions.requires.player"));
    public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("permissions.requires.entity"));
    private final ep c;
-   private final evz d;
-   private final aqk e;
+   private final ewf d;
+   private final aqm e;
    private final int f;
    private final String g;
    private final wu h;
    private final MinecraftServer i;
    private final boolean j;
    @Nullable
-   private final bsd k;
+   private final bsg k;
    private final en l;
    private final fc.a m;
-   private final evy n;
+   private final ewe n;
    private final eo o;
-   private final azb p;
+   private final aze p;
 
-   public eq(ep $$0, evz $$1, evy $$2, aqk $$3, int $$4, String $$5, wu $$6, MinecraftServer $$7, @Nullable bsd $$8) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, en.a, fc.a.a, eo.a, azb.immediate($$7));
+   public eq(ep $$0, ewf $$1, ewe $$2, aqm $$3, int $$4, String $$5, wu $$6, MinecraftServer $$7, @Nullable bsg $$8) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, en.a, fc.a.a, eo.a, aze.immediate($$7));
    }
 
    protected eq(
       ep $$0,
-      evz $$1,
-      evy $$2,
-      aqk $$3,
+      ewf $$1,
+      ewe $$2,
+      aqm $$3,
       int $$4,
       String $$5,
       wu $$6,
       MinecraftServer $$7,
-      @Nullable bsd $$8,
+      @Nullable bsg $$8,
       boolean $$9,
       en $$10,
       fc.a $$11,
       eo $$12,
-      azb $$13
+      aze $$13
    ) {
       this.c = $$0;
       this.d = $$1;
@@ -76,17 +76,17 @@ public class eq implements es<eq>, ev {
       return this.c == $$0 ? this : new eq($$0, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public eq a(bsd $$0) {
+   public eq a(bsg $$0) {
       return this.k == $$0
          ? this
-         : new eq(this.c, this.d, this.n, this.e, this.f, $$0.af().getString(), $$0.O_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p);
+         : new eq(this.c, this.d, this.n, this.e, this.f, $$0.ag().getString(), $$0.O_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public eq a(evz $$0) {
+   public eq a(ewf $$0) {
       return this.d.equals($$0) ? this : new eq(this.c, $$0, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public eq a(evy $$0) {
+   public eq a(ewe $$0) {
       return this.n.c($$0) ? this : new eq(this.c, this.d, $$0, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
@@ -119,32 +119,32 @@ public class eq implements es<eq>, ev {
       return $$0 == this.m ? this : new eq(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, $$0, this.o, this.p);
    }
 
-   public eq a(aqk $$0) {
+   public eq a(aqm $$0) {
       if ($$0 == this.e) {
          return this;
       } else {
-         double $$1 = dvz.a(this.e.D_(), $$0.D_());
-         evz $$2 = new evz(this.d.c * $$1, this.d.d, this.d.e * $$1);
+         double $$1 = dwf.a(this.e.D_(), $$0.D_());
+         ewf $$2 = new ewf(this.d.c * $$1, this.d.d, this.d.e * $$1);
          return new eq(this.c, $$2, this.n, $$0, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
       }
    }
 
-   public eq a(bsd $$0, fc.a $$1) {
+   public eq a(bsg $$0, fc.a $$1) {
       return this.b($$1.a($$0));
    }
 
-   public eq b(evz $$0) {
-      evz $$1 = this.m.a(this);
+   public eq b(ewf $$0) {
+      ewf $$1 = this.m.a(this);
       double $$2 = $$0.c - $$1.c;
       double $$3 = $$0.d - $$1.d;
       double $$4 = $$0.e - $$1.e;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
-      float $$6 = aye.g((float)(-(aye.d($$3, $$5) * 180.0F / (float)Math.PI)));
-      float $$7 = aye.g((float)(aye.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new evy($$6, $$7));
+      float $$6 = ayg.g((float)(-(ayg.d($$3, $$5) * 180.0F / (float)Math.PI)));
+      float $$7 = ayg.g((float)(ayg.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
+      return this.a(new ewe($$6, $$7));
    }
 
-   public eq a(eo $$0, azb $$1) {
+   public eq a(eo $$0, aze $$1) {
       return $$0 == this.o && $$1 == this.p
          ? this
          : new eq(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, $$0, $$1);
@@ -163,20 +163,20 @@ public class eq implements es<eq>, ev {
       return this.f >= $$0;
    }
 
-   public evz d() {
+   public ewf d() {
       return this.d;
    }
 
-   public aqk e() {
+   public aqm e() {
       return this.e;
    }
 
    @Nullable
-   public bsd f() {
+   public bsg f() {
       return this.k;
    }
 
-   public bsd g() throws CommandSyntaxException {
+   public bsg g() throws CommandSyntaxException {
       if (this.k == null) {
          throw b.create();
       } else {
@@ -184,25 +184,25 @@ public class eq implements es<eq>, ev {
       }
    }
 
-   public aql h() throws CommandSyntaxException {
-      bsd var2 = this.k;
-      if (var2 instanceof aql) {
-         return (aql)var2;
+   public aqn h() throws CommandSyntaxException {
+      bsg var2 = this.k;
+      if (var2 instanceof aqn) {
+         return (aqn)var2;
       } else {
          throw a.create();
       }
    }
 
    @Nullable
-   public aql i() {
-      return this.k instanceof aql $$0 ? $$0 : null;
+   public aqn i() {
+      return this.k instanceof aqn $$0 ? $$0 : null;
    }
 
    public boolean j() {
-      return this.k instanceof aql;
+      return this.k instanceof aqn;
    }
 
-   public evy k() {
+   public ewe k() {
       return this.n;
    }
 
@@ -218,18 +218,18 @@ public class eq implements es<eq>, ev {
       return this.o;
    }
 
-   public azb o() {
+   public aze o() {
       return this.p;
    }
 
-   public boolean a(aql $$0) {
-      aql $$1 = this.i();
+   public boolean a(aqn $$0) {
+      aqn $$1 = this.i();
       return $$0 == $$1 ? false : $$1 != null && $$1.Y() || $$0.Y();
    }
 
    public void a(xj $$0, boolean $$1, wq.a $$2) {
       if (!this.j) {
-         aql $$3 = this.i();
+         aqn $$3 = this.i();
          if ($$3 != null) {
             $$3.a($$0, $$1, $$2);
          } else {
@@ -240,7 +240,7 @@ public class eq implements es<eq>, ev {
 
    public void a(wu $$0) {
       if (!this.j) {
-         aql $$1 = this.i();
+         aqn $$1 = this.i();
          if ($$1 != null) {
             $$1.a($$0);
          } else {
@@ -266,15 +266,15 @@ public class eq implements es<eq>, ev {
 
    private void c(wu $$0) {
       wu $$1 = wu.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.i.aM().b(dbz.p)) {
-         for (aql $$2 : this.i.ah().t()) {
-            if ($$2 != this.c && this.i.ah().f($$2.fX())) {
+      if (this.i.aN().b(dcb.p)) {
+         for (aqn $$2 : this.i.ai().t()) {
+            if ($$2 != this.c && this.i.ai().f($$2.fY())) {
                $$2.a($$1);
             }
          }
       }
 
-      if (this.c != this.i && this.i.aM().b(dbz.m)) {
+      if (this.c != this.i && this.i.aN().b(dcb.m)) {
          this.i.a($$1);
       }
    }
@@ -292,22 +292,22 @@ public class eq implements es<eq>, ev {
 
    @Override
    public Collection<String> q() {
-      return Lists.newArrayList(this.i.O());
+      return Lists.newArrayList(this.i.P());
    }
 
    @Override
    public Collection<String> r() {
-      return this.i.aK().f();
+      return this.i.aL().f();
    }
 
    @Override
    public Stream<akk> s() {
-      return lq.b.t().map(ave::a);
+      return lq.b.t().map(avg::a);
    }
 
    @Override
    public Stream<akk> t() {
-      return this.i.aJ().e();
+      return this.i.aK().e();
    }
 
    @Override
@@ -324,23 +324,23 @@ public class eq implements es<eq>, ev {
    }
 
    @Override
-   public Set<akj<dcd>> u() {
-      return this.i.J();
+   public Set<akj<dcf>> u() {
+      return this.i.K();
    }
 
    @Override
    public jx v() {
-      return this.i.bc();
+      return this.i.bd();
    }
 
    @Override
-   public cov w() {
+   public coy w() {
       return this.e.J();
    }
 
    @Override
    public CommandDispatcher<eq> x() {
-      return this.l().aF().a();
+      return this.l().aG().a();
    }
 
    @Override

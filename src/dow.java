@@ -1,61 +1,20 @@
 import com.mojang.serialization.MapCodec;
 
-public class dow extends dff {
-   public static final MapCodec<dow> a = b(dow::new);
+public class dow extends div {
+   public static final MapCodec<dow> c = b(dow::new);
+   public static final ewy e = dfh.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<dow> a() {
-      return a;
+      return c;
    }
 
-   protected dow(dsg.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected void b(dsh $$0, dcd $$1, ja $$2, dsh $$3, boolean $$4) {
-      if ($$1.D_().i()) {
-         $$1.a($$2, dfh.aO.o(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, avf.Ck, avg.e, 1.0F, (1.0F + $$1.E_().i() * 0.2F) * 0.7F);
-      }
+   public dow(dsj.d $$0) {
+      super($$0, jf.a, e, false);
    }
 
    @Override
-   public void a(dsh $$0, dcd $$1, ja $$2, aym $$3) {
-      jf $$4 = jf.b($$3);
-      if ($$4 != jf.b) {
-         ja $$5 = $$2.a($$4);
-         dsh $$6 = $$1.a_($$5);
-         if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == jf.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == jf.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == jf.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
-                  }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == jf.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
-               }
-            }
-
-            $$1.a(lj.l, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-         }
-      }
+   protected diw c() {
+      return (diw)dfj.oz;
    }
 }

@@ -1,47 +1,155 @@
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public final class brm {
-   public static wu a(brl $$0, float $$1, float $$2) {
-      if ($$0.b()) {
-         return wu.c("effect.duration.infinite");
-      } else {
-         int $$3 = aye.d((float)$$0.d() * $$1);
-         return wu.b(aza.a($$3, $$2));
+public class brm implements cov {
+   private static final int a = ayg.d(38.25F);
+   private final Map<jj<bue>, brm.a> b = new Object2ObjectOpenHashMap();
+   private final brn c;
+   private final int d;
+   private final Function<bro, lh> e;
+   @Nullable
+   private String f;
+   private int g;
+   private Optional<avg> h = Optional.empty();
+   private coy i = cpa.f;
+
+   protected brm(brn $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$1x -> {
+         int $$2 = $$1x.f() ? a : 255;
+         return lc.a(lj.u, axq.b.b($$2, $$1));
+      };
+   }
+
+   protected brm(brn $$0, int $$1, lh $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$1x -> $$2;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public boolean a(btb $$0, int $$1) {
+      return true;
+   }
+
+   public void a(@Nullable bsg $$0, @Nullable bsg $$1, btb $$2, int $$3, double $$4) {
+      this.a($$2, $$3);
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return false;
+   }
+
+   public void b(btb $$0, int $$1) {
+   }
+
+   public void c(btb $$0, int $$1) {
+      this.h.ifPresent($$1x -> $$0.dQ().a(null, $$0.dv(), $$0.dx(), $$0.dB(), $$1x, $$0.df(), 1.0F, 1.0F));
+   }
+
+   public void a(btb $$0, int $$1, bsg.c $$2) {
+   }
+
+   public void a(btb $$0, int $$1, bqz $$2, float $$3) {
+   }
+
+   public boolean a() {
+      return false;
+   }
+
+   protected String c() {
+      if (this.f == null) {
+         this.f = ac.a("effect", lq.d.b(this));
+      }
+
+      return this.f;
+   }
+
+   public String d() {
+      return this.c();
+   }
+
+   public wu e() {
+      return wu.c(this.d());
+   }
+
+   public brn f() {
+      return this.c;
+   }
+
+   public int g() {
+      return this.d;
+   }
+
+   public brm a(jj<bue> $$0, String $$1, double $$2, buh.a $$3) {
+      this.b.put($$0, new brm.a(UUID.fromString($$1), $$2, $$3));
+      return this;
+   }
+
+   public brm a(int $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public void a(int $$0, BiConsumer<jj<bue>, buh> $$1) {
+      this.b.forEach(($$2, $$3) -> $$1.accept((jj<bue>)$$2, $$3.a(this.d(), $$0)));
+   }
+
+   public void a(bug $$0) {
+      for (Entry<jj<bue>, brm.a> $$1 : this.b.entrySet()) {
+         buf $$2 = $$0.a($$1.getKey());
+         if ($$2 != null) {
+            $$2.b($$1.getValue().a());
+         }
       }
    }
 
-   public static boolean a(bsy $$0) {
-      return $$0.b(brn.c) || $$0.b(brn.C);
-   }
-
-   public static int b(bsy $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-      if ($$0.b(brn.c)) {
-         $$1 = $$0.c(brn.c).e();
+   public void a(bug $$0, int $$1) {
+      for (Entry<jj<bue>, brm.a> $$2 : this.b.entrySet()) {
+         buf $$3 = $$0.a($$2.getKey());
+         if ($$3 != null) {
+            $$3.b($$2.getValue().a());
+            $$3.d($$2.getValue().a(this.d(), $$1));
+         }
       }
+   }
 
-      if ($$0.b(brn.C)) {
-         $$2 = $$0.c(brn.C).e();
+   public boolean h() {
+      return this.c == brn.a;
+   }
+
+   public lh a(bro $$0) {
+      return this.e.apply($$0);
+   }
+
+   public brm a(avg $$0) {
+      this.h = Optional.of($$0);
+      return this;
+   }
+
+   public brm a(cow... $$0) {
+      this.i = cpa.d.a($$0);
+      return this;
+   }
+
+   @Override
+   public coy i() {
+      return this.i;
+   }
+
+   static record a(UUID a, double b, buh.a c) {
+      public buh a(String $$0, int $$1) {
+         return new buh(this.a, $$0 + " " + $$1, this.b * (double)($$1 + 1), this.c);
       }
-
-      return Math.max($$1, $$2);
-   }
-
-   public static boolean c(bsy $$0) {
-      return $$0.b(brn.m) || $$0.b(brn.C);
-   }
-
-   public static List<aql> a(aqk $$0, @Nullable bsd $$1, evz $$2, double $$3, brl $$4, int $$5) {
-      jj<brj> $$6 = $$4.c();
-      List<aql> $$7 = $$0.a(
-         $$6x -> $$6x.e.d()
-               && ($$1 == null || !$$1.s($$6x))
-               && $$2.a((jt)$$6x.dn(), $$3)
-               && (!$$6x.b($$6) || $$6x.c($$6).e() < $$4.e() || $$6x.c($$6).a($$5 - 1))
-      );
-      $$7.forEach($$2x -> $$2x.b(new brl($$4), $$1));
-      return $$7;
    }
 }

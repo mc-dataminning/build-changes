@@ -75,7 +75,7 @@ public class vr extends ByteBuf {
    }
 
    public <T> T a(Codec<T> $$0) {
-      JsonElement $$1 = axu.a(h, this.p(), JsonElement.class);
+      JsonElement $$1 = axw.a(h, this.p(), JsonElement.class);
       DataResult<T> $$2 = $$0.parse(JsonOps.INSTANCE, $$1);
       return (T)$$2.getOrThrow($$0x -> new DecoderException("Failed to decode json: " + $$0x));
    }
@@ -342,11 +342,11 @@ public class vr extends ByteBuf {
       $$0.writeLong($$1.a());
    }
 
-   public dbk f() {
-      return new dbk(this.readLong());
+   public dbm f() {
+      return new dbm(this.readLong());
    }
 
-   public vr a(dbk $$0) {
+   public vr a(dbm $$0) {
       this.b($$0.a());
       return this;
    }
@@ -361,7 +361,7 @@ public class vr extends ByteBuf {
    }
 
    public ji h() {
-      akj<dcd> $$0 = this.a(lr.aZ);
+      akj<dcf> $$0 = this.a(lr.aZ);
       ja $$1 = this.e();
       return ji.a($$0, $$1);
    }
@@ -408,11 +408,11 @@ public class vr extends ByteBuf {
       $$0.writeFloat($$1.w);
    }
 
-   public evz k() {
-      return new evz(this.readDouble(), this.readDouble(), this.readDouble());
+   public ewf k() {
+      return new ewf(this.readDouble(), this.readDouble(), this.readDouble());
    }
 
-   public void a(evz $$0) {
+   public void a(ewf $$0) {
       this.a($$0.a());
       this.a($$0.b());
       this.a($$0.c());
@@ -578,8 +578,8 @@ public class vr extends ByteBuf {
 
    public PublicKey u() {
       try {
-         return axb.a(this.a(512));
-      } catch (axc var2) {
+         return axd.a(this.a(512));
+      } catch (axe var2) {
          throw new DecoderException("Malformed public key bytes", var2);
       }
    }
@@ -589,21 +589,21 @@ public class vr extends ByteBuf {
       return this;
    }
 
-   public evv v() {
+   public ewb v() {
       ja $$0 = this.e();
       jf $$1 = this.b(jf.class);
       float $$2 = this.readFloat();
       float $$3 = this.readFloat();
       float $$4 = this.readFloat();
       boolean $$5 = this.readBoolean();
-      return new evv(new evz((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
+      return new ewb(new ewf((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
    }
 
-   public void a(evv $$0) {
+   public void a(ewb $$0) {
       ja $$1 = $$0.a();
       this.a($$1);
       this.a($$0.b());
-      evz $$2 = $$0.e();
+      ewf $$2 = $$0.e();
       this.a((float)($$2.c - (double)$$1.u()));
       this.a((float)($$2.d - (double)$$1.v()));
       this.a((float)($$2.e - (double)$$1.w()));
@@ -619,7 +619,7 @@ public class vr extends ByteBuf {
    }
 
    public BitSet e(int $$0) {
-      byte[] $$1 = new byte[aye.e($$0, 8)];
+      byte[] $$1 = new byte[ayg.e($$0, 8)];
       this.b($$1);
       return BitSet.valueOf($$1);
    }
@@ -629,7 +629,7 @@ public class vr extends ByteBuf {
          throw new EncoderException("BitSet is larger than expected size (" + $$0.length() + ">" + $$1 + ")");
       } else {
          byte[] $$2 = $$0.toByteArray();
-         this.c(Arrays.copyOf($$2, aye.e($$1, 8)));
+         this.c(Arrays.copyOf($$2, ayg.e($$1, 8)));
       }
    }
 

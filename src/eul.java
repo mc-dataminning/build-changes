@@ -1,93 +1,45 @@
 import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public class eul implements eun {
-   private static final String d = "block_entity";
-   private static final eul.a e = new eul.a() {
-      @Override
-      public uu a(eqo $$0) {
-         dpn $$1 = $$0.c(etk.h);
-         return $$1 != null ? $$1.b($$1.i().H_()) : null;
-      }
+public record eul(czs b, jj<czl> c) implements euf {
+   public static final MapCodec<eul> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(czs.b.fieldOf("chance").forGetter(eul::c), czl.b.fieldOf("enchantment").forGetter(eul::d)).apply($$0, eul::new)
+   );
 
-      @Override
-      public String a() {
-         return "block_entity";
-      }
+   @Override
+   public eug b() {
+      return euh.e;
+   }
 
-      @Override
-      public Set<eth<?>> b() {
-         return ImmutableSet.of(etk.h);
-      }
-   };
-   public static final eul a = new eul(e);
-   private static final Codec<eul.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
+   @Override
+   public Set<etn<?>> a() {
+      return ImmutableSet.of(etq.d);
+   }
+
+   public boolean a(equ $$0) {
+      bsg $$1 = $$0.c(etq.d);
+      int $$3;
+      if ($$1 instanceof btb $$2) {
+         $$3 = czn.a(this.c, $$2);
       } else {
-         eqo.b $$1 = eqo.b.a($$0);
-         return b($$1);
+         $$3 = 0;
       }
-   }, eul.a::a);
-   public static final MapCodec<eul> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, eul::new));
-   public static final Codec<eul> c = f.xmap(eul::new, $$0 -> $$0.g);
-   private final eul.a g;
 
-   private static eul.a b(final eqo.b $$0) {
-      return new eul.a() {
-         @Nullable
-         @Override
-         public uu a(eqo $$0x) {
-            bsd $$1 = $$0.c($$0.a());
-            return $$1 != null ? dh.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<eth<?>> b() {
-            return ImmutableSet.of($$0.a());
-         }
-      };
+      return $$0.b().i() < this.b.a($$3);
    }
 
-   private eul(eul.a $$0) {
-      this.g = $$0;
+   public static euf.a a(jl.a $$0, float $$1, float $$2) {
+      jl.b<czl> $$3 = $$0.b(lr.aK);
+      return () -> new eul(new czs.e($$1 + $$2, $$2), $$3.b(czq.s));
    }
 
-   @Override
-   public eum a() {
-      return euo.c;
+   public czs c() {
+      return this.b;
    }
 
-   @Nullable
-   @Override
-   public uu a(eqo $$0) {
-      return this.g.a($$0);
-   }
-
-   @Override
-   public Set<eth<?>> b() {
-      return this.g.b();
-   }
-
-   public static eun a(eqo.b $$0) {
-      return new eul(b($$0));
-   }
-
-   interface a {
-      @Nullable
-      uu a(eqo var1);
-
-      String a();
-
-      Set<eth<?>> b();
+   public jj<czl> d() {
+      return this.c;
    }
 }

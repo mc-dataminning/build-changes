@@ -1,55 +1,31 @@
 public class cpc {
-   public static final cpb a = new cpb.a().a(4).a(0.3F).c();
-   public static final cpb b = new cpb.a().a(5).a(0.6F).c();
-   public static final cpb c = new cpb.a().a(3).a(0.3F).c();
-   public static final cpb d = new cpb.a().a(1).a(0.6F).c();
-   public static final cpb e = a(6).c();
-   public static final cpb f = new cpb.a().a(5).a(0.6F).c();
-   public static final cpb g = new cpb.a().a(3).a(0.6F).c();
-   public static final cpb h = new cpb.a().a(2).a(0.3F).a(new brl(brn.q, 600, 0), 0.3F).c();
-   public static final cpb i = new cpb.a().a(4).a(0.3F).a().c();
-   public static final cpb j = new cpb.a().a(2).a(0.1F).c();
-   public static final cpb k = new cpb.a().a(8).a(0.8F).c();
-   public static final cpb l = new cpb.a().a(6).a(0.6F).c();
-   public static final cpb m = new cpb.a().a(5).a(0.6F).c();
-   public static final cpb n = new cpb.a().a(6).a(0.8F).c();
-   public static final cpb o = new cpb.a().a(8).a(0.8F).c();
-   public static final cpb p = new cpb.a().a(5).a(0.6F).c();
-   public static final cpb q = new cpb.a().a(6).a(0.8F).c();
-   public static final cpb r = new cpb.a().a(2).a(0.1F).c();
-   public static final cpb s = new cpb.a().a(1).a(0.3F).b().c();
-   public static final cpb t = new cpb.a()
-      .a(4)
-      .a(1.2F)
-      .a(new brl(brn.j, 400, 1), 1.0F)
-      .a(new brl(brn.k, 6000, 0), 1.0F)
-      .a(new brl(brn.l, 6000, 0), 1.0F)
-      .a(new brl(brn.v, 2400, 3), 1.0F)
-      .a()
-      .c();
-   public static final cpb u = new cpb.a().a(4).a(1.2F).a(new brl(brn.j, 100, 1), 1.0F).a(new brl(brn.v, 2400, 0), 1.0F).a().c();
-   public static final cpb v = new cpb.a().a(6).a(1.2F).c();
-   public static final cpb w = new cpb.a().a(6).a(0.1F).c();
-   public static final cpb x = new cpb.a().a(2).a(0.3F).c();
-   public static final cpb y = a(6).c();
-   public static final cpb z = new cpb.a().a(2).a(0.3F).c();
-   public static final cpb A = new cpb.a().a(2).a(0.3F).a(new brl(brn.s, 100, 0), 0.6F).c();
-   public static final cpb B = new cpb.a().a(3).a(0.3F).c();
-   public static final cpb C = new cpb.a().a(1).a(0.3F).c();
-   public static final cpb D = new cpb.a().a(1).a(0.1F).a(new brl(brn.s, 1200, 1), 1.0F).a(new brl(brn.q, 300, 2), 1.0F).a(new brl(brn.i, 300, 0), 1.0F).c();
-   public static final cpb E = new cpb.a().a(8).a(0.3F).c();
-   public static final cpb F = new cpb.a().a(3).a(0.3F).c();
-   public static final cpb G = a(10).c();
-   public static final cpb H = new cpb.a().a(4).a(0.1F).a(new brl(brn.q, 600, 0), 0.8F).c();
-   public static final cpb I = new cpb.a().a(2).a(0.1F).c();
-   public static final cpb J = new cpb.a().a(2).a(0.8F).a(new brl(brn.s, 100, 0), 1.0F).c();
-   public static final cpb K = a(6).a().c();
-   public static final cpb L = new cpb.a().a(2).a(0.1F).c();
-   public static final cpb M = new cpb.a().a(2).a(0.1F).c();
-   public static final cpb N = new cpb.a().a(1).a(0.1F).c();
-   public static final cpb O = new cpb.a().a(1).a(0.1F).c();
+   public static final int a = 20;
+   public static final float b = 20.0F;
+   public static final float c = 5.0F;
+   public static final float d = 2.5F;
+   public static final float e = 4.0F;
+   public static final int f = 80;
+   public static final int g = 10;
+   public static final int h = 18;
+   public static final int i = 6;
+   public static final int j = 0;
+   public static final float k = 0.1F;
+   public static final float l = 0.3F;
+   public static final float m = 0.6F;
+   public static final float n = 0.8F;
+   public static final float o = 1.0F;
+   public static final float p = 1.2F;
+   public static final float q = 6.0F;
+   public static final float r = 0.05F;
+   public static final float s = 0.2F;
+   public static final float t = 0.005F;
+   public static final float u = 0.1F;
+   public static final float v = 0.0F;
+   public static final float w = 0.0F;
+   public static final float x = 0.1F;
+   public static final float y = 0.01F;
 
-   private static cpb.a a(int $$0) {
-      return new cpb.a().a($$0).a(0.6F);
+   public static float a(int $$0, float $$1) {
+      return (float)$$0 * $$1 * 2.0F;
    }
 }

@@ -1,49 +1,34 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dkb extends dff implements dmg {
+public class dkb extends djr implements dfk {
    public static final MapCodec<dkb> a = b(dkb::new);
-   public static final dsy b = dsx.C;
 
    @Override
    public MapCodec<dkb> a() {
       return a;
    }
 
-   protected dkb(dsg.d $$0) {
+   public dkb(dsj.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(dsh $$0, dsh $$1, jf $$2) {
-      return $$1.a(dfh.ac) && $$2.o() == jf.a.b;
-   }
-
-   @Nullable
-   @Override
-   public dsh a(cxk $$0) {
-      eob $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == eoc.c;
-      return super.a($$0).a(b, Boolean.valueOf($$2));
+   public boolean b(dci $$0, ja $$1, dsk $$2) {
+      return $$0.a_($$1.d()).i();
    }
 
    @Override
-   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, eoc.c, eoc.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public boolean a(dcf $$0, ayo $$1, ja $$2, dsk $$3) {
+      return true;
    }
 
    @Override
-   protected eob b_(dsh $$0) {
-      return $$0.c(b) ? eoc.c.a(false) : super.b_($$0);
+   public void a(aqm $$0, ayo $$1, ja $$2, dsk $$3) {
+      $$0.a($$2.d(), dkc.c(), 2);
    }
 
    @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
-      $$0.a(b);
+   public ja a(ja $$0) {
+      return $$0.d();
    }
 }

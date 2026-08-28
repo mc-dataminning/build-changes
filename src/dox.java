@@ -1,47 +1,54 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dox extends dih {
-   public static final MapCodec<dox> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dih::b), u()).apply($$0, dox::new));
+public class dox extends dev {
+   public static final MapCodec<dox> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dsz.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u())
+            .apply($$0, dox::new)
+   );
+   public static final dtk f = dta.aT;
+   private final int g;
 
    @Override
    public MapCodec<dox> a() {
       return e;
    }
 
-   public dox(jj<brj> $$0, float $$1, dsg.d $$2) {
-      this(a($$0, $$1), $$2);
-   }
-
-   public dox(cxd $$0, dsg.d $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected boolean b(dsh $$0, dbj $$1, ja $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(dfh.dV) || $$0.a(dfh.dW) || $$0.a(dfh.dX);
+   protected dox(int $$0, dsz $$1, dsj.d $$2) {
+      super($$2, $$1);
+      this.k(this.E.b().a(f, Integer.valueOf(0)));
+      this.g = $$0;
    }
 
    @Override
-   public void a(dsh $$0, dcd $$1, ja $$2, aym $$3) {
-      ews $$4 = this.a($$0, $$1, $$2, ewe.a());
-      evz $$5 = $$4.a().f();
-      double $$6 = (double)$$2.u() + $$5.c;
-      double $$7 = (double)$$2.w() + $$5.e;
-
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         if ($$3.h()) {
-            $$1.a(lj.ae, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
-         }
+   protected int b(dcf $$0, ja $$1) {
+      int $$2 = Math.min(a($$0, c.a($$1), bsg.class), this.g);
+      if ($$2 > 0) {
+         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
+         return ayg.f($$3 * 15.0F);
+      } else {
+         return 0;
       }
    }
 
    @Override
-   protected void a(dsh $$0, dcd $$1, ja $$2, bsd $$3) {
-      if (!$$1.B && $$1.al() != bqa.a) {
-         if ($$3 instanceof bsy $$4 && !$$4.b($$1.aj().q())) {
-            $$4.b(new brl(brn.t, 40));
-         }
-      }
+   protected int g(dsk $$0) {
+      return $$0.c(f);
+   }
+
+   @Override
+   protected dsk a(dsk $$0, int $$1) {
+      return $$0.a(f, Integer.valueOf($$1));
+   }
+
+   @Override
+   protected int b() {
+      return 10;
+   }
+
+   @Override
+   protected void a(dsl.a<dfh, dsk> $$0) {
+      $$0.a(f);
    }
 }

@@ -1,195 +1,100 @@
-import java.util.List;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public abstract class fhs<E extends fhs.a<E>> extends fhh<E> {
-   public fhs(ffn $$0, int $$1, int $$2, int $$3, int $$4) {
+public class fhs extends fhj {
+   public static final int f = 120;
+   public static final int m = 150;
+   public static final int n = 200;
+   public static final int o = 20;
+   public static final int p = 8;
+   protected static final fhs.b q = $$0 -> $$0.get();
+   protected final fhs.c r;
+   protected final fhs.b s;
+
+   public static fhs.a a(wu $$0, fhs.c $$1) {
+      return new fhs.a($$0, $$1);
+   }
+
+   protected fhs(int $$0, int $$1, int $$2, int $$3, wu $$4, fhs.c $$5, fhs.b $$6) {
       super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   @Override
-   public fgw a(flo $$0) {
-      if (this.l() == 0) {
-         return null;
-      } else if (!($$0 instanceof flo.a $$1)) {
-         return super.a($$0);
-      } else {
-         E $$2 = this.j();
-         if ($$1.b().a() == flp.a && $$2 != null) {
-            return fgw.a(this, $$2.a($$0));
-         } else {
-            int $$3 = -1;
-            flq $$4 = $$1.b();
-            if ($$2 != null) {
-               $$3 = $$2.aF_().indexOf($$2.aI_());
-            }
-
-            if ($$3 == -1) {
-               switch ($$4) {
-                  case c:
-                     $$3 = Integer.MAX_VALUE;
-                     $$4 = flq.b;
-                     break;
-                  case d:
-                     $$3 = 0;
-                     $$4 = flq.b;
-                     break;
-                  default:
-                     $$3 = 0;
-               }
-            }
-
-            E $$5 = $$2;
-
-            fgw $$6;
-            do {
-               $$5 = this.a($$4, $$0x -> !$$0x.aF_().isEmpty(), $$5);
-               if ($$5 == null) {
-                  return null;
-               }
-
-               $$6 = $$5.a($$1, $$3);
-            } while ($$6 == null);
-
-            return fgw.a(this, $$6);
-         }
-      }
+      this.r = $$5;
+      this.s = $$6;
    }
 
    @Override
-   public void a(@Nullable fji $$0) {
-      if (this.j() != $$0) {
-         super.a($$0);
-         if ($$0 == null) {
-            this.a(null);
-         }
-      }
+   public void b() {
+      this.r.onPress(this);
    }
 
    @Override
-   public flg.a u() {
-      return this.aJ_() ? flg.a.c : super.u();
+   protected xi aM_() {
+      return this.s.createNarrationMessage(() -> super.aM_());
    }
 
    @Override
-   protected boolean e(int $$0) {
-      return false;
+   public void a(flo $$0) {
+      this.c($$0);
    }
 
-   @Override
-   public void a(fli $$0) {
-      E $$1 = this.v();
-      if ($$1 != null) {
-         $$1.a($$0.a());
-         this.a($$0, $$1);
-      } else {
-         E $$2 = this.j();
-         if ($$2 != null) {
-            $$2.a($$0.a());
-            this.a($$0, $$2);
-         }
-      }
-
-      $$0.a(flh.d, wu.c("narration.component_list.usage"));
-   }
-
-   public abstract static class a<E extends fhs.a<E>> extends fhh.a<E> implements fjh {
+   public static class a {
+      private final wu a;
+      private final fhs.c b;
       @Nullable
-      private fji a;
-      @Nullable
-      private flg b;
-      private boolean c;
+      private fjd c;
+      private int d;
+      private int e;
+      private int f = 150;
+      private int g = 20;
+      private fhs.b h = fhs.q;
 
-      @Override
-      public boolean aH_() {
-         return this.c;
-      }
-
-      @Override
-      public void b_(boolean $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return fjh.super.a($$0, $$1, $$2);
-      }
-
-      @Override
-      public void a(@Nullable fji $$0) {
-         if (this.a != null) {
-            this.a.a(false);
-         }
-
-         if ($$0 != null) {
-            $$0.a(true);
-         }
-
+      public a(wu $$0, fhs.c $$1) {
          this.a = $$0;
+         this.b = $$1;
       }
 
-      @Nullable
-      @Override
-      public fji aI_() {
-         return this.a;
+      public fhs.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
       }
 
-      @Nullable
-      public fgw a(flo $$0, int $$1) {
-         if (this.aF_().isEmpty()) {
-            return null;
-         } else {
-            fgw $$2 = this.aF_().get(Math.min($$1, this.aF_().size() - 1)).a($$0);
-            return fgw.a(this, $$2);
-         }
+      public fhs.a a(int $$0) {
+         this.f = $$0;
+         return this;
       }
 
-      @Nullable
-      @Override
-      public fgw a(flo $$0) {
-         if ($$0 instanceof flo.a $$1) {
-            int $$2 = switch ($$1.b()) {
-               case c -> -1;
-               case d -> 1;
-               case a, b -> 0;
-            };
-            if ($$2 == 0) {
-               return null;
-            }
-
-            int $$3 = aye.a($$2 + this.aF_().indexOf(this.aI_()), 0, this.aF_().size() - 1);
-
-            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.aF_().size(); $$4 += $$2) {
-               fji $$5 = this.aF_().get($$4);
-               fgw $$6 = $$5.a($$0);
-               if ($$6 != null) {
-                  return fgw.a(this, $$6);
-               }
-            }
-         }
-
-         return fjh.super.a($$0);
+      public fhs.a b(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+         return this;
       }
 
-      public abstract List<? extends flg> b();
-
-      void a(fli $$0) {
-         List<? extends flg> $$1 = this.b();
-         fnd.b $$2 = fnd.a($$1, this.b);
-         if ($$2 != null) {
-            if ($$2.c.a()) {
-               this.b = $$2.a;
-            }
-
-            if ($$1.size() > 1) {
-               $$0.a(flh.b, wu.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
-               if ($$2.c == flg.a.c) {
-                  $$0.a(flh.d, wu.c("narration.component_list.usage"));
-               }
-            }
-
-            $$2.a.b($$0.a());
-         }
+      public fhs.a a(int $$0, int $$1, int $$2, int $$3) {
+         return this.a($$0, $$1).b($$2, $$3);
       }
+
+      public fhs.a a(@Nullable fjd $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fhs.a a(fhs.b $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public fhs a() {
+         fhs $$0 = new fhs(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
+         $$0.a(this.c);
+         return $$0;
+      }
+   }
+
+   public interface b {
+      xi createNarrationMessage(Supplier<xi> var1);
+   }
+
+   public interface c {
+      void onPress(fhs var1);
    }
 }

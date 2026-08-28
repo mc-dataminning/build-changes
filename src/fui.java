@@ -1,26 +1,46 @@
-import java.util.function.Function;
+public class fui<T extends bsg> extends fux<T> {
+   private final fxo a;
+   private final fxo b;
+   private final fxo f;
+   private final fxo g;
+   private final fxo h;
+   private final fxo i;
+   private static final int j = 6;
 
-public abstract class fui<T extends bsd> extends fve {
-   public float c;
-   public boolean d;
-   public boolean e = true;
-
-   protected fui() {
-      this(gef::e);
+   public fui(fxo $$0) {
+      this.a = $$0;
+      this.b = $$0.b("head");
+      this.g = $$0.b("right_hind_leg");
+      this.f = $$0.b("left_hind_leg");
+      this.i = $$0.b("right_front_leg");
+      this.h = $$0.b("left_front_leg");
    }
 
-   protected fui(Function<akk, gef> $$0) {
-      super($$0);
+   public static fxu a(fxs $$0) {
+      fxw $$1 = new fxw();
+      fxx $$2 = $$1.a();
+      $$2.a("head", fxt.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fxq.a(0.0F, 6.0F, 0.0F));
+      $$2.a("body", fxt.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fxq.a(0.0F, 6.0F, 0.0F));
+      fxt $$3 = fxt.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$3, fxq.a(-2.0F, 18.0F, 4.0F));
+      $$2.a("left_hind_leg", $$3, fxq.a(2.0F, 18.0F, 4.0F));
+      $$2.a("right_front_leg", $$3, fxq.a(-2.0F, 18.0F, -4.0F));
+      $$2.a("left_front_leg", $$3, fxq.a(2.0F, 18.0F, -4.0F));
+      return fxu.a($$1, 64, 32);
    }
 
-   public abstract void a(T var1, float var2, float var3, float var4, float var5, float var6);
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
+   @Override
+   public fxo a() {
+      return this.a;
    }
 
-   public void a(fui<T> $$0) {
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.e = ayg.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.g.e = ayg.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.h.e = ayg.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.e = ayg.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

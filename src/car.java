@@ -1,42 +1,32 @@
-import java.util.EnumSet;
+public class car extends bzq {
+   private final boolean a;
+   private int b;
 
-public class car extends bzw {
-   private final bta a;
-   private double b;
-   private double c;
-   private int d;
-
-   public car(bta $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bzw.a.a, bzw.a.b));
-   }
-
-   @Override
-   public boolean a() {
-      return this.a.dS().i() < 0.02F;
+   public car(btd $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
    @Override
    public boolean b() {
-      return this.d >= 0;
+      return this.a && this.b > 0 && super.b();
    }
 
    @Override
    public void c() {
-      double $$0 = (Math.PI * 2) * this.a.dS().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.dS().a(20);
+      this.b = 20;
+      this.a(true);
    }
 
    @Override
-   public boolean R_() {
-      return true;
+   public void d() {
+      this.a(false);
    }
 
    @Override
    public void e() {
-      this.d--;
-      this.a.G().a(this.a.du() + this.b, this.a.dy(), this.a.dA() + this.c);
+      this.b--;
+      super.e();
    }
 }

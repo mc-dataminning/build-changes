@@ -11,7 +11,7 @@ public class dp extends ds<dp.a> {
       return dp.a.a;
    }
 
-   public void a(aql $$0, akk $$1, List<cua> $$2) {
+   public void a(aqn $$0, akk $$1, List<cuc> $$2) {
       this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
@@ -37,15 +37,15 @@ public class dp extends ds<dp.a> {
          return am.ad.a(new dp.a(Optional.empty(), $$0, List.of()));
       }
 
-      boolean b(akk $$0, List<cua> $$1) {
+      boolean b(akk $$0, List<cuc> $$1) {
          if (!$$0.equals(this.c)) {
             return false;
          } else {
-            List<cua> $$2 = new ArrayList<>($$1);
+            List<cuc> $$2 = new ArrayList<>($$1);
 
             for (cp $$3 : this.d) {
                boolean $$4 = false;
-               Iterator<cua> $$5 = $$2.iterator();
+               Iterator<cuc> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
                   if ($$3.a($$5.next())) {

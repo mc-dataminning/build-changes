@@ -1,53 +1,34 @@
-import com.mojang.authlib.GameProfile;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public interface exc {
-   String a_ = "*";
-   exc cA = new exc() {
-      @Override
-      public String cB() {
-         return "*";
-      }
-   };
+public record exc(String a, int b, @Nullable wu c, @Nullable yk d) {
+   public boolean a() {
+      return this.a.startsWith("#");
+   }
 
-   String cB();
+   public wu b() {
+      return (wu)(this.c != null ? this.c : wu.b(this.c()));
+   }
+
+   public xi a(yk $$0) {
+      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
+   }
+
+   public String c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
+   }
 
    @Nullable
-   default wu O_() {
-      return null;
+   public wu e() {
+      return this.c;
    }
 
-   default wu hb() {
-      wu $$0 = this.O_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xa(xa.a.a, wu.b(this.cB())))) : wu.b(this.cB());
-   }
-
-   static exc c(final String $$0) {
-      if ($$0.equals("*")) {
-         return cA;
-      } else {
-         final wu $$1 = wu.b($$0);
-         return new exc() {
-            @Override
-            public String cB() {
-               return $$0;
-            }
-
-            @Override
-            public wu hb() {
-               return $$1;
-            }
-         };
-      }
-   }
-
-   static exc a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new exc() {
-         @Override
-         public String cB() {
-            return $$1;
-         }
-      };
+   @Nullable
+   public yk f() {
+      return this.d;
    }
 }

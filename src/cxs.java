@@ -1,82 +1,77 @@
-public class cxs extends cxy {
-   public cxs(cxv $$0) {
+public class cxs extends cya {
+   public cxs(cxx $$0) {
       super($$0);
    }
 
-   public boolean a(cxw $$0, dcd $$1) {
-      int $$2 = 0;
-      cua $$3 = cua.l;
+   public boolean a(cxy $$0, dcf $$1) {
+      csv $$2 = null;
+      cuc $$3 = null;
+      cuc $$4 = null;
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cua $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(cud.ua)) {
-               if (!$$3.e()) {
+      for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
+         cuc $$6 = $$0.a($$5);
+         if (!$$6.e()) {
+            ctx $$7 = $$6.g();
+            if (!($$7 instanceof cry)) {
+               return false;
+            }
+
+            cry $$8 = (cry)$$7;
+            if ($$2 == null) {
+               $$2 = $$8.b();
+            } else if ($$2 != $$8.b()) {
+               return false;
+            }
+
+            int $$9 = $$6.a(kn.X, dpg.a).b().size();
+            if ($$9 > 6) {
+               return false;
+            }
+
+            if ($$9 > 0) {
+               if ($$3 != null) {
                   return false;
                }
 
-               $$3 = $$5;
+               $$3 = $$6;
             } else {
-               if (!$$5.a(cud.tZ)) {
+               if ($$4 != null) {
                   return false;
                }
 
-               $$2++;
+               $$4 = $$6;
             }
          }
       }
 
-      return !$$3.e() && $$2 > 0;
+      return $$3 != null && $$4 != null;
    }
 
-   public cua a(cxw $$0, jl.a $$1) {
-      int $$2 = 0;
-      cua $$3 = cua.l;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cua $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(cud.ua)) {
-               if (!$$3.e()) {
-                  return cua.l;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cud.tZ)) {
-                  return cua.l;
-               }
-
-               $$2++;
+   public cuc a(cxy $$0, jl.a $$1) {
+      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+         cuc $$3 = $$0.a($$2);
+         if (!$$3.e()) {
+            int $$4 = $$3.a(kn.X, dpg.a).b().size();
+            if ($$4 > 0 && $$4 <= 6) {
+               return $$3.c(1);
             }
          }
       }
 
-      cxi $$6 = $$3.a(kn.J);
-      if (!$$3.e() && $$2 >= 1 && $$6 != null) {
-         cxi $$7 = $$6.b();
-         if ($$7 == null) {
-            return cua.l;
-         } else {
-            cua $$8 = $$3.c($$2);
-            $$8.b(kn.J, $$7);
-            return $$8;
-         }
-      } else {
-         return cua.l;
-      }
+      return cuc.l;
    }
 
-   public js<cua> a(cxw $$0) {
-      js<cua> $$1 = js.a($$0.a(), cua.l);
+   public js<cuc> a(cxy $$0) {
+      js<cuc> $$1 = js.a($$0.a(), cuc.l);
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cua $$3 = $$0.a($$2);
-         if ($$3.g().v()) {
-            $$1.set($$2, new cua($$3.g().u()));
-         } else if ($$3.g() instanceof cvy) {
-            $$1.set($$2, $$3.c(1));
-            break;
+         cuc $$3 = $$0.a($$2);
+         if (!$$3.e()) {
+            if ($$3.g().v()) {
+               $$1.set($$2, new cuc($$3.g().u()));
+            } else if (!$$3.a(kn.X, dpg.a).b().isEmpty()) {
+               $$1.set($$2, $$3.c(1));
+            }
          }
       }
 
@@ -84,12 +79,12 @@ public class cxs extends cxy {
    }
 
    @Override
-   public cyl<?> ap_() {
-      return cyl.d;
+   public cyn<?> ap_() {
+      return cyn.k;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return $$0 * $$1 >= 2;
    }
 }

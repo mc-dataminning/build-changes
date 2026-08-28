@@ -16,11 +16,11 @@ public class amf {
    }
 
    private static int a(eq $$0, ja $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof bta $$3)) {
+      if (!($$0.f() instanceof btd $$3)) {
          throw a.create();
       } else {
-         cck $$4 = new ccj($$3, $$0.e());
-         eop $$5 = $$4.a($$1, 0);
+         ccn $$4 = new ccm($$3, $$0.e());
+         eov $$5 = $$4.a($$1, 0);
          afy.a($$0.e(), $$3, $$5, $$4.q());
          if ($$5 == null) {
             throw b.create();

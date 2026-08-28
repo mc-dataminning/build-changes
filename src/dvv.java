@@ -1,45 +1,37 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Dynamic;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.BitSet;
 
-public class dvv implements AutoCloseable {
-   private final dvm a;
-   private final DataFixer b;
-   private final azl c;
+public class dvv {
+   private final BitSet a = new BitSet();
 
-   public dvv(dvt $$0, Path $$1, DataFixer $$2, boolean $$3, azl $$4) {
-      this.b = $$2;
-      this.c = $$4;
-      this.a = new dvm($$0, $$1, $$3);
+   public void a(int $$0, int $$1) {
+      this.a.set($$0, $$0 + $$1);
    }
 
-   public CompletableFuture<Optional<tx>> a(dbk $$0) {
-      return this.a.a($$0);
+   public void b(int $$0, int $$1) {
+      this.a.clear($$0, $$0 + $$1);
    }
 
-   public CompletableFuture<Void> a(dbk $$0, @Nullable tx $$1) {
-      return this.a.a($$0, $$1);
+   public int a(int $$0) {
+      int $$1 = 0;
+
+      while (true) {
+         int $$2 = this.a.nextClearBit($$1);
+         int $$3 = this.a.nextSetBit($$2);
+         if ($$3 == -1 || $$3 - $$2 >= $$0) {
+            this.a($$2, $$0);
+            return $$2;
+         }
+
+         $$1 = $$3;
+      }
    }
 
-   public tx a(tx $$0, int $$1) {
-      int $$2 = um.b($$0, $$1);
-      return this.c.a(this.b, $$0, $$2);
-   }
-
-   public Dynamic<uu> a(Dynamic<uu> $$0, int $$1) {
-      return this.c.a(this.b, $$0, $$1);
-   }
-
-   public CompletableFuture<Void> a(boolean $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.a.close();
+   @VisibleForTesting
+   public IntSet a() {
+      return this.a.stream().collect(IntArraySet::new, IntCollection::add, IntCollection::addAll);
    }
 }

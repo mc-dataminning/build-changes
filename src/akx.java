@@ -11,7 +11,7 @@ import java.util.Map;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class akx extends aty {
+public class akx extends aua {
    private static final Logger a = LogUtils.getLogger();
    private static final Gson b = new GsonBuilder().create();
    private Map<akk, af> c = Map.of();
@@ -23,7 +23,7 @@ public class akx extends aty {
       this.e = $$0;
    }
 
-   protected void a(Map<akk, JsonElement> $$0, atu $$1, bmr $$2) {
+   protected void a(Map<akk, JsonElement> $$0, atw $$1, bmu $$2) {
       aki<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
       Builder<akk, af> $$4 = ImmutableMap.builder();
       $$0.forEach(($$2x, $$3x) -> {
@@ -49,7 +49,7 @@ public class akx extends aty {
    }
 
    private void a(akk $$0, ae $$1) {
-      ayk.a $$2 = new ayk.a();
+      aym.a $$2 = new aym.a();
       $$1.a($$2, this.e.b());
       $$2.b().ifPresent($$1x -> a.warn("Found validation problems in advancement {}: \n{}", $$0, $$1x));
    }

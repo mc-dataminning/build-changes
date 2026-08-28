@@ -1,84 +1,59 @@
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+public class fnb extends fnj {
+   private static final wu a = wu.c("symlink_warning.title.world").a(n.r);
+   private static final wu b = wu.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
+   private static final wu c = wu.c("symlink_warning.title.pack").a(n.r);
+   private static final wu q = wu.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
+   private final wu r;
+   private final String s;
+   private final Runnable u;
+   private final fle v = new fle().b(10);
 
-public class fnb extends fnd {
-   private static final wu a = wu.c("multiplayer.downloadingTerrain");
-   private static final long b = 30000L;
-   private final long c;
-   private final BooleanSupplier q;
-   private final fnb.a r;
-   @Nullable
-   private gpi s;
-
-   public fnb(BooleanSupplier $$0, fnb.a $$1) {
-      super(fff.a);
-      this.q = $$0;
+   public fnb(wu $$0, wu $$1, String $$2, Runnable $$3) {
+      super($$0);
       this.r = $$1;
-      this.c = System.currentTimeMillis();
+      this.s = $$2;
+      this.u = $$3;
+   }
+
+   public static fnj a(Runnable $$0) {
+      return new fnb(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
+   }
+
+   public static fnj b(Runnable $$0) {
+      return new fnb(c, q, "https://aka.ms/MinecraftSymLinks", $$0);
    }
 
    @Override
-   public boolean aE_() {
-      return false;
+   protected void aP_() {
+      super.aP_();
+      this.v.c().b();
+      fle.b $$0 = this.v.d(1);
+      $$0.a(new fiz(this.k, this.o));
+      $$0.a(new fim(this.r, this.o).d(this.m - 50).b(true));
+      int $$1 = 120;
+      fle $$2 = new fle().a(5);
+      fle.b $$3 = $$2.d(3);
+      $$3.a(fhs.a(wt.n, $$0x -> ac.k().a(this.s)).b(120, 20).a());
+      $$3.a(fhs.a(wt.o, $$0x -> this.l.o.a(this.s)).b(120, 20).a());
+      $$3.a(fhs.a(wt.k, $$0x -> this.d()).b(120, 20).a());
+      $$0.a($$2);
+      this.c();
+      this.v.a(this::c);
    }
 
    @Override
-   protected boolean aN_() {
-      return false;
+   protected void c() {
+      this.v.a();
+      fld.a(this.v, this.H());
    }
 
    @Override
-   public void a(fgz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, a, this.m / 2, this.n / 2 - 50, 16777215);
-   }
-
-   @Override
-   public void b(fgz $$0, int $$1, int $$2, float $$3) {
-      switch (this.r) {
-         case a:
-            $$0.a(0, 0, -90, $$0.a(), $$0.b(), this.m());
-            break;
-         case b:
-            $$0.b(gef.u(), 0, 0, this.m, this.n, 0);
-            break;
-         case c:
-            this.a($$0, $$3);
-            this.a($$3);
-            this.a($$0);
-      }
-   }
-
-   private gpi m() {
-      if (this.s != null) {
-         return this.s;
-      } else {
-         this.s = this.l.ao().a().a(dfh.ed.o());
-         return this.s;
-      }
-   }
-
-   @Override
-   public void e() {
-      if (this.q.getAsBoolean() || System.currentTimeMillis() > this.c + 30000L) {
-         this.d();
-      }
+   public wu i() {
+      return wt.a(super.i(), this.r);
    }
 
    @Override
    public void d() {
-      this.l.aX().c(wu.c("narrator.ready_to_play"));
-      super.d();
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+      this.u.run();
    }
 }

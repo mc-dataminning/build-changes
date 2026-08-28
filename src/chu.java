@@ -1,26 +1,43 @@
 import javax.annotation.Nullable;
 
-public interface chu {
-   boolean a();
+public class chu extends chp {
+   @Nullable
+   private ewf b;
 
-   void b();
+   public chu(chn $$0) {
+      super($$0);
+   }
 
-   void c();
+   @Override
+   public void c() {
+      if (this.b == null) {
+         this.b = this.a.do();
+      }
+   }
 
-   void a(chj var1, ja var2, bqw var3, @Nullable cmh var4);
+   @Override
+   public boolean a() {
+      return true;
+   }
 
-   void d();
+   @Override
+   public void d() {
+      this.b = null;
+   }
 
-   void e();
-
-   float f();
-
-   float h();
-
-   cia<? extends chu> i();
+   @Override
+   public float f() {
+      return 1.0F;
+   }
 
    @Nullable
-   evz g();
+   @Override
+   public ewf g() {
+      return this.b;
+   }
 
-   float a(bqw var1, float var2);
+   @Override
+   public cid<chu> i() {
+      return cid.k;
+   }
 }

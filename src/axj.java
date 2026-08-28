@@ -1,100 +1,80 @@
-import com.google.common.base.Charsets;
+import java.io.DataOutput;
 import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
 
-public class axj implements AutoCloseable {
-   public static final String a = "session.lock";
-   private final FileChannel b;
-   private final FileLock c;
-   private static final ByteBuffer d;
+public class axj implements DataOutput {
+   private final DataOutput a;
 
-   public static axj a(Path $$0) throws IOException {
-      Path $$1 = $$0.resolve("session.lock");
-      v.c($$0);
-      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-
-      try {
-         $$2.write(d.duplicate());
-         $$2.force(true);
-         FileLock $$3 = $$2.tryLock();
-         if ($$3 == null) {
-            throw axj.a.a($$1);
-         } else {
-            return new axj($$2, $$3);
-         }
-      } catch (IOException var6) {
-         try {
-            $$2.close();
-         } catch (IOException var5) {
-            var6.addSuppressed(var5);
-         }
-
-         throw var6;
-      }
-   }
-
-   private axj(FileChannel $$0, FileLock $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public axj(DataOutput $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void close() throws IOException {
-      try {
-         if (this.c.isValid()) {
-            this.c.release();
-         }
-      } finally {
-         if (this.b.isOpen()) {
-            this.b.close();
-         }
-      }
+   public void write(int $$0) throws IOException {
+      this.a.write($$0);
    }
 
-   public boolean a() {
-      return this.c.isValid();
+   @Override
+   public void write(byte[] $$0) throws IOException {
+      this.a.write($$0);
    }
 
-   public static boolean b(Path $$0) throws IOException {
-      Path $$1 = $$0.resolve("session.lock");
-
-      try {
-         boolean var4;
-         try (
-            FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE);
-            FileLock $$3 = $$2.tryLock();
-         ) {
-            var4 = $$3 == null;
-         }
-
-         return var4;
-      } catch (AccessDeniedException var10) {
-         return true;
-      } catch (NoSuchFileException var11) {
-         return false;
-      }
+   @Override
+   public void write(byte[] $$0, int $$1, int $$2) throws IOException {
+      this.a.write($$0, $$1, $$2);
    }
 
-   static {
-      byte[] $$0 = "☃".getBytes(Charsets.UTF_8);
-      d = ByteBuffer.allocateDirect($$0.length);
-      d.put($$0);
-      d.flip();
+   @Override
+   public void writeBoolean(boolean $$0) throws IOException {
+      this.a.writeBoolean($$0);
    }
 
-   public static class a extends IOException {
-      private a(Path $$0, String $$1) {
-         super($$0.toAbsolutePath() + ": " + $$1);
-      }
+   @Override
+   public void writeByte(int $$0) throws IOException {
+      this.a.writeByte($$0);
+   }
 
-      public static axj.a a(Path $$0) {
-         return new axj.a($$0, "already locked (possibly by other Minecraft instance?)");
-      }
+   @Override
+   public void writeShort(int $$0) throws IOException {
+      this.a.writeShort($$0);
+   }
+
+   @Override
+   public void writeChar(int $$0) throws IOException {
+      this.a.writeChar($$0);
+   }
+
+   @Override
+   public void writeInt(int $$0) throws IOException {
+      this.a.writeInt($$0);
+   }
+
+   @Override
+   public void writeLong(long $$0) throws IOException {
+      this.a.writeLong($$0);
+   }
+
+   @Override
+   public void writeFloat(float $$0) throws IOException {
+      this.a.writeFloat($$0);
+   }
+
+   @Override
+   public void writeDouble(double $$0) throws IOException {
+      this.a.writeDouble($$0);
+   }
+
+   @Override
+   public void writeBytes(String $$0) throws IOException {
+      this.a.writeBytes($$0);
+   }
+
+   @Override
+   public void writeChars(String $$0) throws IOException {
+      this.a.writeChars($$0);
+   }
+
+   @Override
+   public void writeUTF(String $$0) throws IOException {
+      this.a.writeUTF($$0);
    }
 }

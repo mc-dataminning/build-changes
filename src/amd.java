@@ -25,8 +25,8 @@ public class amd {
    private static Iterable<String> a(MinecraftServer $$0) {
       Set<String> $$1 = new HashSet<>();
 
-      for (vp $$2 : $$0.ai().e()) {
-         if ($$2.k() instanceof ari $$3) {
+      for (vp $$2 : $$0.aj().e()) {
+         if ($$2.k() instanceof ark $$3) {
             $$1.add($$3.j().getId().toString());
          }
       }
@@ -34,18 +34,18 @@ public class amd {
       return $$1;
    }
 
-   private static int a(eq $$0, aql $$1) {
-      GameProfile $$2 = $$1.fX();
+   private static int a(eq $$0, aqn $$1) {
+      GameProfile $$2 = $$1.fY();
       $$1.c.n();
       $$0.a(() -> wu.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
       return 1;
    }
 
    private static int a(eq $$0, UUID $$1) {
-      for (vp $$2 : $$0.l().ai().e()) {
+      for (vp $$2 : $$0.l().aj().e()) {
          wa var5 = $$2.k();
-         if (var5 instanceof ari) {
-            ari $$3 = (ari)var5;
+         if (var5 instanceof ark) {
+            ark $$3 = (ark)var5;
             if ($$3.j().getId().equals($$1)) {
                $$3.m();
             }

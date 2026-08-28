@@ -1,139 +1,159 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+public class dpw extends dqv implements dqt {
+   private static final int d = 1;
+   private js<cuc> e = js.a(27, cuc.l);
+   private final dqc f = new dqc() {
+      @Override
+      protected void a(dcf $$0, ja $$1, dsk $$2) {
+         dpw.a($$0, $$1, $$2, avh.eQ);
+      }
 
-public class dpw extends dpn implements bpw {
-   public static final int b = 6;
-   private static final Logger c = LogUtils.getLogger();
-   private final js<cua> d = js.a(6, cua.l);
-   private int e = -1;
+      @Override
+      protected void b(dcf $$0, ja $$1, dsk $$2) {
+         dpw.a($$0, $$1, $$2, avh.eO);
+      }
 
-   public dpw(ja $$0, dsh $$1) {
-      super(dpp.M, $$0, $$1);
+      @Override
+      protected void a(dcf $$0, ja $$1, dsk $$2, int $$3, int $$4) {
+         dpw.this.a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      protected boolean a(cmk $$0) {
+         if (!($$0.cd instanceof cpp)) {
+            return false;
+         } else {
+            bpz $$1 = ((cpp)$$0.cd).l();
+            return $$1 == dpw.this || $$1 instanceof bpy && ((bpy)$$1).a(dpw.this);
+         }
+      }
+   };
+   private final dpx g = new dpx();
+
+   protected dpw(dpr<?> $$0, ja $$1, dsk $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.e = $$0;
-         dsh $$1 = this.n();
+   public dpw(ja $$0, dsk $$1) {
+      this(dpr.b, $$0, $$1);
+   }
 
-         for (int $$2 = 0; $$2 < dgj.c.size(); $$2++) {
-            boolean $$3 = !this.a($$2).e();
-            dsy $$4 = dgj.c.get($$2);
-            $$1 = $$1.a($$4, Boolean.valueOf($$3));
-         }
+   @Override
+   public int b() {
+      return 27;
+   }
 
-         Objects.requireNonNull(this.n).a(this.o, $$1, 3);
-         this.n.a(dxa.c, this.o, dxa.a.a($$1));
-      } else {
-         c.error("Expected slot 0-5, got {}", $$0);
-      }
+   @Override
+   protected wu k() {
+      return wu.c("container.chest");
    }
 
    @Override
    protected void a(tx $$0, jl.a $$1) {
       super.a($$0, $$1);
-      this.d.clear();
-      bpx.b($$0, this.d, $$1);
-      this.e = $$0.h("last_interacted_slot");
+      this.e = js.a(this.b(), cuc.l);
+      if (!this.a_($$0)) {
+         bqa.b($$0, this.e, $$1);
+      }
    }
 
    @Override
    protected void b(tx $$0, jl.a $$1) {
       super.b($$0, $$1);
-      bpx.a($$0, this.d, true, $$1);
-      $$0.a("last_interacted_slot", this.e);
-   }
-
-   public int f() {
-      return (int)this.d.stream().filter(Predicate.not(cua::e)).count();
-   }
-
-   @Override
-   public void a() {
-      this.d.clear();
-   }
-
-   @Override
-   public int b() {
-      return 6;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d.stream().allMatch(cua::e);
-   }
-
-   @Override
-   public cua a(int $$0) {
-      return this.d.get($$0);
-   }
-
-   @Override
-   public cua a(int $$0, int $$1) {
-      cua $$2 = Objects.requireNonNullElse(this.d.get($$0), cua.l);
-      this.d.set($$0, cua.l);
-      if (!$$2.e()) {
-         this.c($$0);
+      if (!this.b_($$0)) {
+         bqa.a($$0, this.e, $$1);
       }
-
-      return $$2;
    }
 
-   @Override
-   public cua b(int $$0) {
-      return this.a($$0, 1);
+   public static void a(dcf $$0, ja $$1, dsk $$2, dpw $$3) {
+      $$3.g.a();
    }
 
-   @Override
-   public void a(int $$0, cua $$1) {
-      if ($$1.a(awd.aW)) {
-         this.d.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.e()) {
-         this.a($$0, 1);
+   static void a(dcf $$0, ja $$1, dsk $$2, avg $$3) {
+      dtc $$4 = $$2.c(dgk.d);
+      if ($$4 != dtc.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == dtc.c) {
+            jf $$8 = dgk.h($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
+         }
+
+         $$0.a(null, $$5, $$6, $$7, $$3, avi.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
       }
    }
 
    @Override
-   public boolean a(bpw $$0, int $$1, cua $$2) {
-      return $$0.a_($$2x -> $$2x.e() ? true : cua.c($$2, $$2x) && $$2x.H() + $$2.H() <= $$0.e_($$2x));
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.g.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
    }
 
    @Override
-   public int ah_() {
-      return 1;
+   public void d_(cmk $$0) {
+      if (!this.p && !$$0.N_()) {
+         this.f.a($$0, this.i(), this.az_(), this.n());
+      }
    }
 
    @Override
-   public boolean a(cmh $$0) {
-      return bpw.a(this, $$0);
+   public void c(cmk $$0) {
+      if (!this.p && !$$0.N_()) {
+         this.f.b($$0, this.i(), this.az_(), this.n());
+      }
    }
 
    @Override
-   public boolean b(int $$0, cua $$1) {
-      return $$1.a(awd.aW) && this.a($$0).e() && $$1.H() == this.ah_();
-   }
-
-   public int j() {
+   protected js<cuc> j() {
       return this.e;
    }
 
    @Override
-   protected void a(dpn.b $$0) {
-      super.a($$0);
-      $$0.a(kn.aa, cwv.a).a(this.d);
+   protected void a(js<cuc> $$0) {
+      this.e = $$0;
    }
 
    @Override
-   protected void a(kj.a $$0) {
-      super.a($$0);
-      $$0.a(kn.aa, cwv.a(this.d));
+   public float a(float $$0) {
+      return this.g.a($$0);
+   }
+
+   public static int a(dbl $$0, ja $$1) {
+      dsk $$2 = $$0.a_($$1);
+      if ($$2.t()) {
+         dpp $$3 = $$0.c_($$1);
+         if ($$3 instanceof dpw) {
+            return ((dpw)$$3).f.a();
+         }
+      }
+
+      return 0;
+   }
+
+   public static void a(dpw $$0, dpw $$1) {
+      js<cuc> $$2 = $$0.j();
+      $$0.a($$1.j());
+      $$1.a($$2);
    }
 
    @Override
-   public void a(tx $$0) {
-      $$0.r("Items");
+   protected cph a(int $$0, cmj $$1) {
+      return cpp.a($$0, $$1, this);
+   }
+
+   public void l() {
+      if (!this.p) {
+         this.f.c(this.i(), this.az_(), this.n());
+      }
+   }
+
+   protected void a(dcf $$0, ja $$1, dsk $$2, int $$3, int $$4) {
+      dfh $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

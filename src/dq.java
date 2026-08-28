@@ -8,7 +8,7 @@ public class dq extends ds<dq.a> {
       return dq.a.a;
    }
 
-   public void a(aql $$0, cyi<?> $$1) {
+   public void a(aqn $$0, cyk<?> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class dq extends ds<dq.a> {
          $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(dq.a::a), akk.a.fieldOf("recipe").forGetter(dq.a::b)).apply($$0, dq.a::new)
       );
 
-      public boolean a(cyi<?> $$0) {
+      public boolean a(cyk<?> $$0) {
          return this.c.equals($$0.a());
       }
 

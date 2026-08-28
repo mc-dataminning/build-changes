@@ -1,45 +1,46 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-public enum flq {
-   a,
-   b,
-   c,
-   d;
+public class flq<T> {
+   private final T b;
+   private final BiConsumer<Consumer<String>, T> c;
+   public static final flq<?> a = new flq<>(azk.a, ($$0, $$1) -> {
+   });
 
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
-
-   public flp a() {
-      return switch (this) {
-         case a, b -> flp.b;
-         case c, d -> flp.a;
-      };
+   private flq(T $$0, BiConsumer<Consumer<String>, T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public flq b() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-         case c -> d;
-         case d -> c;
-      };
+   public static flq<?> a(String $$0) {
+      return new flq<>($$0, Consumer::accept);
    }
 
-   public boolean c() {
-      return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
-      };
+   public static flq<?> a(wu $$0) {
+      return new flq<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
    }
 
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
+   public static flq<?> a(List<wu> $$0) {
+      return new flq<>($$0, ($$1, $$2) -> $$0.stream().map(wu::getString).forEach($$1));
    }
 
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
+   public void a(Consumer<String> $$0) {
+      this.c.accept($$0, this.b);
    }
 
-   public IntComparator d() {
-      return this.e;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof flq<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

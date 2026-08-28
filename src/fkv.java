@@ -1,20 +1,28 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class fkv {
-   private static final int a = 4;
+public enum fkv implements azc {
+   a("bitmap", fks.a.a),
+   b("ttf", fkx.a),
+   c("space", eyr.a.a),
+   d("unihex", fky.b.a),
+   e("reference", fkw.a);
 
-   private fkv() {
+   public static final Codec<fkv> f = azc.a(fkv::values);
+   private final String g;
+   private final MapCodec<? extends fku> h;
+
+   private fkv(final String $$0, final MapCodec<? extends fku> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public static fla a(fgx $$0, flb $$1, wu $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
-      });
+   @Override
+   public String c() {
+      return this.g;
    }
 
-   public static fla a(fgx $$0, flb $$1, wu $$2, Consumer<flc> $$3) {
-      fld $$4 = fld.d().a(4);
-      $$4.a(new fit($$2, $$0));
-      $$4.a($$1, $$3);
-      return $$4;
+   public MapCodec<? extends fku> a() {
+      return this.h;
    }
 }

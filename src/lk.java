@@ -9,7 +9,7 @@ public abstract class lk implements lh {
    private final float a;
 
    public lk(float $$0) {
-      this.a = aye.a($$0, 0.01F, 4.0F);
+      this.a = ayg.a($$0, 0.01F, 4.0F);
    }
 
    public float d() {

@@ -1,26 +1,36 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface emp<P extends emn> {
-   Codec<emn> a = lq.af.r().dispatch("processor_type", emn::a, emp::codec);
-   Codec<emo> b = a.listOf().xmap(emo::new, emo::a);
-   Codec<emo> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
-   Codec<jj<emo>> d = akg.a(lr.aR, c);
-   emp<els> e = a("block_ignore", els.a);
-   emp<elu> f = a("block_rot", elu.a);
-   emp<elx> g = a("gravity", elx.a);
-   emp<ely> h = a("jigsaw_replacement", ely.a);
-   emp<emj> i = a("rule", emj.a);
-   emp<emb> j = a("nop", emb.a);
-   emp<elr> k = a("block_age", elr.a);
-   emp<elq> l = a("blackstone_replace", elq.a);
-   emp<elz> m = a("lava_submerged_block", elz.a);
-   emp<emg> n = a("protected_blocks", emg.b);
-   emp<elw> o = a("capped", elw.a);
+public class emp extends emt {
+   public static final MapCodec<emp> a = eml.b.listOf().fieldOf("rules").xmap(emp::new, $$0 -> $$0.b);
+   private final ImmutableList<eml> b;
 
-   MapCodec<P> codec();
+   public emp(List<? extends eml> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+   }
 
-   static <P extends emn> emp<P> a(String $$0, MapCodec<P> $$1) {
-      return jw.a(lq.af, $$0, () -> $$1);
+   @Nullable
+   @Override
+   public emw.c a(dci $$0, ja $$1, ja $$2, emw.c $$3, emw.c $$4, ems $$5) {
+      ayo $$6 = ayo.a(ayg.a($$4.a()));
+      dsk $$7 = $$0.a_($$4.a());
+      UnmodifiableIterator var9 = this.b.iterator();
+
+      while (var9.hasNext()) {
+         eml $$8 = (eml)var9.next();
+         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
+            return new emw.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
+         }
+      }
+
+      return $$4;
+   }
+
+   @Override
+   protected emv<?> a() {
+      return emv.i;
    }
 }

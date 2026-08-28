@@ -1,33 +1,52 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum ffb implements ayh, ayz {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
-
-   public static final Codec<ffb> d = ayz.a(ffb::values);
+public class ffb extends fet {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wu c = wu.c("mco.minigame.world.slot.screen.title");
+   private final long d;
    private final int e;
-   private final String f;
-   private final String g;
+   private final Runnable f;
 
-   private ffb(final int $$0, final String $$1, final String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public ffb(long $$0, int $$1, Runnable $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public void run() {
+      fbc $$0 = fbc.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
+               break;
+            }
+         } catch (fcq var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't switch world!");
+            this.a(var5);
+         }
+      }
    }
 
    @Override
-   public int a() {
-      return this.e;
-   }
-
-   @Override
-   public String b() {
-      return this.g;
+   public wu a() {
+      return c;
    }
 }

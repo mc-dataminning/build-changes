@@ -1,10 +1,10 @@
 import java.util.Collection;
 import java.util.function.Consumer;
 
-public record sn(String b, Collection<st> c, Consumer<aqk> d, Consumer<aqk> e) {
+public record sn(String b, Collection<st> c, Consumer<aqm> d, Consumer<aqm> e) {
    public static final String a = "defaultBatch";
 
-   public sn(String b, Collection<st> c, Consumer<aqk> d, Consumer<aqk> e) {
+   public sn(String b, Collection<st> c, Consumer<aqm> d, Consumer<aqm> e) {
       if (c.isEmpty()) {
          throw new IllegalArgumentException("A GameTestBatch must include at least one GameTestInfo!");
       } else {
@@ -23,11 +23,11 @@ public record sn(String b, Collection<st> c, Consumer<aqk> d, Consumer<aqk> e) {
       return this.c;
    }
 
-   public Consumer<aqk> c() {
+   public Consumer<aqm> c() {
       return this.d;
    }
 
-   public Consumer<aqk> d() {
+   public Consumer<aqm> d() {
       return this.e;
    }
 }

@@ -1,66 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
 
-public abstract class ere implements eqw {
-   protected final List<etz> e;
-   private final Predicate<eqo> a;
+public class ere extends erm {
+   public static final MapCodec<ere> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akk.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ere::new)
+   );
+   private final akk j;
 
-   protected ere(List<etz> $$0) {
-      this.e = $$0;
-      this.a = ac.a($$0);
+   private ere(akk $$0, int $$1, int $$2, List<euf> $$3, List<esi> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
-   protected static <T extends ere> P1<Mu<T>, List<etz>> a(Instance<T> $$0) {
-      return $$0.group(etz.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
+   @Override
+   public erl a() {
+      return eri.e;
    }
 
-   public void a(equ $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
+   @Override
+   public void a(Consumer<cuc> $$0, equ $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   protected final boolean a(eqo $$0) {
-      return this.a.test($$0);
-   }
-
-   public abstract erf a();
-
-   public abstract static class a<T extends ere.a<T>> implements etr<T> {
-      private final Builder<etz> a = ImmutableList.builder();
-
-      protected abstract T aC_();
-
-      public T a(etz.a $$0) {
-         this.a.add($$0.build());
-         return this.aC_();
-      }
-
-      public final T e() {
-         return this.aC_();
-      }
-
-      protected List<etz> f() {
-         return this.a.build();
-      }
-
-      public eqv.a a(ere.a<?> $$0) {
-         return new eqv.a(this, $$0);
-      }
-
-      public era.a b(ere.a<?> $$0) {
-         return new era.a(this, $$0);
-      }
-
-      public eri.a c(ere.a<?> $$0) {
-         return new eri.a(this, $$0);
-      }
-
-      public abstract ere b();
+   public static erm.a<?> a(akk $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ere($$0, $$1, $$2, $$3, $$4));
    }
 }

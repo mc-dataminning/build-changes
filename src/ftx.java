@@ -1,64 +1,108 @@
-import com.google.common.collect.ImmutableList;
+public class ftx<T extends ckm> extends fux<T> {
+   private static final float a = 0.6F;
+   private static final float b = 0.8F;
+   private static final float f = 1.0F;
+   private final fxo g;
+   private final fxo h;
+   private final fxo i;
+   private final fxo j;
+   private final fxo k;
+   private final fxo l;
+   private final fxo m;
+   private final fxo n;
 
-public class ftx<T extends bsd> extends ftd<T> {
-   public static final String a = "red_thing";
-   private final fxi b;
-   private final fxi f;
-   private final fxi g;
-   private final fxi h;
-   private final fxi i;
-   private final fxi j;
-   private final fxi k;
-   private final fxi l;
-
-   public ftx(fxi $$0) {
-      this.b = $$0.b("head");
-      this.k = $$0.b("beak");
-      this.l = $$0.b("red_thing");
-      this.f = $$0.b("body");
-      this.g = $$0.b("right_leg");
-      this.h = $$0.b("left_leg");
-      this.i = $$0.b("right_wing");
-      this.j = $$0.b("left_wing");
+   public ftx(fxo $$0) {
+      super(gel::i);
+      this.g = $$0;
+      this.j = $$0.b("wind_body");
+      this.m = this.j.b("wind_bottom");
+      this.l = this.m.b("wind_mid");
+      this.k = this.l.b("wind_top");
+      this.h = $$0.b("body").b("head");
+      this.i = this.h.b("eyes");
+      this.n = $$0.b("body").b("rods");
    }
 
-   public static fxo c() {
-      fxq $$0 = new fxq();
-      fxr $$1 = $$0.a();
-      int $$2 = 16;
-      $$1.a("head", fxn.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), fxk.a(0.0F, 15.0F, -4.0F));
-      $$1.a("beak", fxn.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), fxk.a(0.0F, 15.0F, -4.0F));
-      $$1.a("red_thing", fxn.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), fxk.a(0.0F, 15.0F, -4.0F));
-      $$1.a("body", fxn.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), fxk.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fxn $$3 = fxn.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
-      $$1.a("right_leg", $$3, fxk.a(-2.0F, 19.0F, 1.0F));
-      $$1.a("left_leg", $$3, fxk.a(1.0F, 19.0F, 1.0F));
-      $$1.a("right_wing", fxn.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fxk.a(-4.0F, 13.0F, 0.0F));
-      $$1.a("left_wing", fxn.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fxk.a(4.0F, 13.0F, 0.0F));
-      return fxo.a($$0, 64, 32);
+   public static fxu a(int $$0, int $$1) {
+      fxw $$2 = new fxw();
+      fxx $$3 = $$2.a();
+      fxx $$4 = $$3.a("body", fxt.c(), fxq.a(0.0F, 0.0F, 0.0F));
+      fxx $$5 = $$4.a("rods", fxt.c(), fxq.a(0.0F, 8.0F, 0.0F));
+      $$5.a("rod_1", fxt.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fxs(0.0F)), fxq.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
+      $$5.a("rod_2", fxt.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fxs(0.0F)), fxq.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
+      $$5.a("rod_3", fxt.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fxs(0.0F)), fxq.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
+      fxx $$6 = $$4.a(
+         "head",
+         fxt.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new fxs(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fxs(0.0F)),
+         fxq.a(0.0F, 4.0F, 0.0F)
+      );
+      $$6.a(
+         "eyes",
+         fxt.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new fxs(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fxs(0.0F)),
+         fxq.a(0.0F, 0.0F, 0.0F)
+      );
+      fxx $$7 = $$3.a("wind_body", fxt.c(), fxq.a(0.0F, 0.0F, 0.0F));
+      fxx $$8 = $$7.a("wind_bottom", fxt.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new fxs(0.0F)), fxq.a(0.0F, 24.0F, 0.0F));
+      fxx $$9 = $$8.a(
+         "wind_mid",
+         fxt.c()
+            .a(74, 28)
+            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new fxs(0.0F))
+            .a(78, 32)
+            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new fxs(0.0F))
+            .a(49, 71)
+            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new fxs(0.0F)),
+         fxq.a(0.0F, -7.0F, 0.0F)
+      );
+      $$9.a(
+         "wind_top",
+         fxt.c()
+            .a(0, 0)
+            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new fxs(0.0F))
+            .a(6, 6)
+            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new fxs(0.0F))
+            .a(105, 57)
+            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new fxs(0.0F)),
+         fxq.a(0.0F, -6.0F, 0.0F)
+      );
+      return fxu.a($$2, $$0, $$1);
    }
 
-   @Override
-   protected Iterable<fxi> a() {
-      return ImmutableList.of(this.b, this.k, this.l);
-   }
-
-   @Override
-   protected Iterable<fxi> b() {
-      return ImmutableList.of(this.f, this.g, this.h, this.i, this.j);
-   }
-
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.k.e = this.b.e;
-      this.k.f = this.b.f;
-      this.l.e = this.b.e;
-      this.l.f = this.b.f;
-      this.g.e = aye.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.h.e = aye.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.g = $$3;
-      this.j.g = -$$3;
+      this.a().e().forEach(fxo::c);
+      float $$6 = $$3 * (float) Math.PI * -0.1F;
+      this.k.b = ayg.b($$6) * 1.0F * 0.6F;
+      this.k.d = ayg.a($$6) * 1.0F * 0.6F;
+      this.l.b = ayg.a($$6) * 0.5F * 0.8F;
+      this.l.d = ayg.b($$6) * 0.8F;
+      this.m.b = ayg.b($$6) * -0.25F * 1.0F;
+      this.m.d = ayg.a($$6) * -0.25F * 1.0F;
+      this.h.c = 4.0F + ayg.b($$6) / 4.0F;
+      this.n.f = $$3 * (float) Math.PI * 0.1F;
+      this.a($$0.ca, fgo.a, $$3);
+      this.a($$0.c, fgo.c, $$3);
+      this.a($$0.d, fgo.d, $$3);
+      this.a($$0.e, fgo.b, $$3);
+   }
+
+   @Override
+   public fxo a() {
+      return this.g;
+   }
+
+   public fxo b() {
+      return this.h;
+   }
+
+   public fxo c() {
+      return this.i;
+   }
+
+   public fxo d() {
+      return this.n;
+   }
+
+   public fxo e() {
+      return this.j;
    }
 }

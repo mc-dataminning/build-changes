@@ -1,8 +1,101 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public record ejg(atu a, jx b, emr c) {
-   public static ejg a(aqk $$0) {
-      MinecraftServer $$1 = $$0.o();
-      return new ejg($$1.bg(), $$1.bc(), $$1.ba());
+public abstract class ejg extends eja {
+   private static final Logger h = LogUtils.getLogger();
+   protected final String a;
+   protected emw b;
+   protected ems c;
+   protected ja d;
+
+   public ejg(ejn $$0, int $$1, emx $$2, akk $$3, String $$4, ems $$5, ja $$6) {
+      super($$0, $$1, $$2.a($$3).b($$5, $$6));
+      this.a(jf.c);
+      this.a = $$4;
+      this.d = $$6;
+      this.b = $$2.a($$3);
+      this.c = $$5;
+   }
+
+   public ejg(ejn $$0, tx $$1, emx $$2, Function<akk, ems> $$3) {
+      super($$0, $$1);
+      this.a(jf.c);
+      this.a = $$1.l("Template");
+      this.d = new ja($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
+      akk $$4 = this.b();
+      this.b = $$2.a($$4);
+      this.c = $$3.apply($$4);
+      this.f = this.b.b(this.c, this.d);
+   }
+
+   protected akk b() {
+      return new akk(this.a);
+   }
+
+   @Override
+   protected void a(ejm $$0, tx $$1) {
+      $$1.a("TPX", this.d.u());
+      $$1.a("TPY", this.d.v());
+      $$1.a("TPZ", this.d.w());
+      $$1.a("Template", this.a);
+   }
+
+   @Override
+   public void a(ddb $$0, dcz $$1, duh $$2, ayo $$3, eio $$4, dbm $$5, ja $$6) {
+      this.c.a($$4);
+      this.f = this.b.b(this.c, this.d);
+      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
+         for (emw.c $$8 : this.b.a(this.d, this.c, dfj.pa)) {
+            if ($$8.c() != null) {
+               dtu $$9 = dtu.valueOf($$8.c().l("mode"));
+               if ($$9 == dtu.d) {
+                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
+               }
+            }
+         }
+
+         for (emw.c $$11 : this.b.a(this.d, this.c, dfj.pb)) {
+            if ($$11.c() != null) {
+               String $$12 = $$11.c().l("final_state");
+               dsk $$13 = dfj.a.o();
+
+               try {
+                  $$13 = gk.a($$0.a(lr.f), $$12, true).a();
+               } catch (CommandSyntaxException var15) {
+                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
+               }
+
+               $$0.a($$11.a(), $$13, 3);
+            }
+         }
+      }
+   }
+
+   protected abstract void a(String var1, ja var2, dcu var3, ayo var4, eio var5);
+
+   @Deprecated
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.d = this.d.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public dlu a() {
+      return this.c.d();
+   }
+
+   public emw c() {
+      return this.b;
+   }
+
+   public ja d() {
+      return this.d;
+   }
+
+   public ems e() {
+      return this.c;
    }
 }

@@ -1,41 +1,25 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public final class dcr implements dud {
+   private final int a;
+   private final dsk[] b;
 
-public class dcr {
-   private final List<dcr.a> a = Lists.newArrayList();
-
-   public void a(ja $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new dcr.a($$0, $$1));
-      }
+   public dcr(int $$0, dsk[] $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public double b(ja $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
+   @Override
+   public dsk a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dfj.a.o();
+   }
+
+   @Override
+   public void a(int $$0, dsk $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
       } else {
-         double $$2 = 0.0;
-
-         for (dcr.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
-   }
-
-   static class a {
-      private final ja a;
-      private final double b;
-
-      public a(ja $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public double a(ja $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
       }
    }
 }

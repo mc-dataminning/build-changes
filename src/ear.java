@@ -1,29 +1,45 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public record ear<FC extends edi, F extends ebe<FC>>(F d, FC e) {
-   public static final Codec<ear<?, ?>> a = lq.O.r().dispatch($$0 -> $$0.d, ebe::a);
-   public static final Codec<jj<ear<?, ?>>> b = akg.a(lr.aH, a);
-   public static final Codec<jn<ear<?, ?>>> c = jy.a(lr.aH, a);
-
-   public boolean a(dcz $$0, due $$1, aym $$2, ja $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
-   }
-
-   public Stream<ear<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
+public class ear extends ebk<edh> {
+   public ear(Codec<edh> $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
-   }
+   public boolean a(ebm<edh> $$0) {
+      ja $$1 = $$0.e();
+      ddb $$2 = $$0.b();
+      ayo $$3 = $$0.d();
 
-   public F b() {
-      return this.d;
-   }
+      edh $$4;
+      for ($$4 = $$0.f(); $$1.v() > $$2.I_() + 3; $$1 = $$1.d()) {
+         if (!$$2.u($$1.d())) {
+            dsk $$5 = $$2.a_($$1.d());
+            if (b($$5) || a($$5)) {
+               break;
+            }
+         }
+      }
 
-   public FC c() {
-      return this.e;
+      if ($$1.v() <= $$2.I_() + 3) {
+         return false;
+      } else {
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            int $$7 = $$3.a(2);
+            int $$8 = $$3.a(2);
+            int $$9 = $$3.a(2);
+            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
+
+            for (ja $$11 : ja.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
+               if ($$11.j($$1) <= (double)($$10 * $$10)) {
+                  $$2.a($$11, $$4.b, 3);
+               }
+            }
+
+            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
+         }
+
+         return true;
+      }
    }
 }

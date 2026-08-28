@@ -1,135 +1,412 @@
-import com.google.common.base.Preconditions;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.shorts.Short2BooleanMap;
+import it.unimi.dsi.fastutil.shorts.Short2BooleanOpenHashMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class eof {
-   private static final eof[] am = new eof[64];
-   public static final eof a = new eof(0, 0);
-   public static final eof b = new eof(1, 8368696);
-   public static final eof c = new eof(2, 16247203);
-   public static final eof d = new eof(3, 13092807);
-   public static final eof e = new eof(4, 16711680);
-   public static final eof f = new eof(5, 10526975);
-   public static final eof g = new eof(6, 10987431);
-   public static final eof h = new eof(7, 31744);
-   public static final eof i = new eof(8, 16777215);
-   public static final eof j = new eof(9, 10791096);
-   public static final eof k = new eof(10, 9923917);
-   public static final eof l = new eof(11, 7368816);
-   public static final eof m = new eof(12, 4210943);
-   public static final eof n = new eof(13, 9402184);
-   public static final eof o = new eof(14, 16776437);
-   public static final eof p = new eof(15, 14188339);
-   public static final eof q = new eof(16, 11685080);
-   public static final eof r = new eof(17, 6724056);
-   public static final eof s = new eof(18, 15066419);
-   public static final eof t = new eof(19, 8375321);
-   public static final eof u = new eof(20, 15892389);
-   public static final eof v = new eof(21, 5000268);
-   public static final eof w = new eof(22, 10066329);
-   public static final eof x = new eof(23, 5013401);
-   public static final eof y = new eof(24, 8339378);
-   public static final eof z = new eof(25, 3361970);
-   public static final eof A = new eof(26, 6704179);
-   public static final eof B = new eof(27, 6717235);
-   public static final eof C = new eof(28, 10040115);
-   public static final eof D = new eof(29, 1644825);
-   public static final eof E = new eof(30, 16445005);
-   public static final eof F = new eof(31, 6085589);
-   public static final eof G = new eof(32, 4882687);
-   public static final eof H = new eof(33, 55610);
-   public static final eof I = new eof(34, 8476209);
-   public static final eof J = new eof(35, 7340544);
-   public static final eof K = new eof(36, 13742497);
-   public static final eof L = new eof(37, 10441252);
-   public static final eof M = new eof(38, 9787244);
-   public static final eof N = new eof(39, 7367818);
-   public static final eof O = new eof(40, 12223780);
-   public static final eof P = new eof(41, 6780213);
-   public static final eof Q = new eof(42, 10505550);
-   public static final eof R = new eof(43, 3746083);
-   public static final eof S = new eof(44, 8874850);
-   public static final eof T = new eof(45, 5725276);
-   public static final eof U = new eof(46, 8014168);
-   public static final eof V = new eof(47, 4996700);
-   public static final eof W = new eof(48, 4993571);
-   public static final eof X = new eof(49, 5001770);
-   public static final eof Y = new eof(50, 9321518);
-   public static final eof Z = new eof(51, 2430480);
-   public static final eof aa = new eof(52, 12398641);
-   public static final eof ab = new eof(53, 9715553);
-   public static final eof ac = new eof(54, 6035741);
-   public static final eof ad = new eof(55, 1474182);
-   public static final eof ae = new eof(56, 3837580);
-   public static final eof af = new eof(57, 5647422);
-   public static final eof ag = new eof(58, 1356933);
-   public static final eof ah = new eof(59, 6579300);
-   public static final eof ai = new eof(60, 14200723);
-   public static final eof aj = new eof(61, 8365974);
-   public final int ak;
-   public final int al;
+public abstract class eof extends eog {
+   public static final dtb a = dta.i;
+   public static final dtk b = dta.aM;
+   private static final int e = 200;
+   private static final ThreadLocal<Object2ByteLinkedOpenHashMap<dfh.a>> f = ThreadLocal.withInitial(() -> {
+      Object2ByteLinkedOpenHashMap<dfh.a> $$0 = new Object2ByteLinkedOpenHashMap<dfh.a>(200) {
+         protected void rehash(int $$0) {
+         }
+      };
+      $$0.defaultReturnValue((byte)127);
+      return $$0;
+   });
+   private final Map<eoh, ewy> g = Maps.newIdentityHashMap();
 
-   private eof(int $$0, int $$1) {
-      if ($$0 >= 0 && $$0 <= 63) {
-         this.al = $$0;
-         this.ak = $$1;
-         am[$$0] = this;
+   @Override
+   protected void a(dsl.a<eog, eoh> $$0) {
+      $$0.a(a);
+   }
+
+   @Override
+   public ewf a(dbl $$0, ja $$1, eoh $$2) {
+      double $$3 = 0.0;
+      double $$4 = 0.0;
+      ja.a $$5 = new ja.a();
+
+      for (jf $$6 : jf.c.a) {
+         $$5.a($$1, $$6);
+         eoh $$7 = $$0.b_($$5);
+         if (this.g($$7)) {
+            float $$8 = $$7.d();
+            float $$9 = 0.0F;
+            if ($$8 == 0.0F) {
+               if (!$$0.a_($$5).d()) {
+                  ja $$10 = $$5.d();
+                  eoh $$11 = $$0.b_($$10);
+                  if (this.g($$11)) {
+                     $$8 = $$11.d();
+                     if ($$8 > 0.0F) {
+                        $$9 = $$2.d() - ($$8 - 0.8888889F);
+                     }
+                  }
+               }
+            } else if ($$8 > 0.0F) {
+               $$9 = $$2.d() - $$8;
+            }
+
+            if ($$9 != 0.0F) {
+               $$3 += (double)((float)$$6.j() * $$9);
+               $$4 += (double)((float)$$6.l() * $$9);
+            }
+         }
+      }
+
+      ewf $$12 = new ewf($$3, 0.0, $$4);
+      if ($$2.c(a)) {
+         for (jf $$13 : jf.c.a) {
+            $$5.a($$1, $$13);
+            if (this.a($$0, $$5, $$13) || this.a($$0, $$5.c(), $$13)) {
+               $$12 = $$12.d().b(0.0, -6.0, 0.0);
+               break;
+            }
+         }
+      }
+
+      return $$12.d();
+   }
+
+   private boolean g(eoh $$0) {
+      return $$0.c() || $$0.a().a(this);
+   }
+
+   protected boolean a(dbl $$0, ja $$1, jf $$2) {
+      dsk $$3 = $$0.a_($$1);
+      eoh $$4 = $$0.b_($$1);
+      if ($$4.a().a(this)) {
+         return false;
+      } else if ($$2 == jf.b) {
+         return true;
       } else {
-         throw new IndexOutOfBoundsException("Map colour ID must be between 0 and 63 (inclusive)");
+         return $$3.b() instanceof djf ? false : $$3.d($$0, $$1, $$2);
       }
    }
 
-   public int a(eof.a $$0) {
-      if (this == a) {
-         return 0;
+   protected void a(dcf $$0, ja $$1, eoh $$2) {
+      if (!$$2.c()) {
+         dsk $$3 = $$0.a_($$1);
+         ja $$4 = $$1.d();
+         dsk $$5 = $$0.a_($$4);
+         eoh $$6 = this.a($$0, $$4, $$5);
+         if (this.a($$0, $$1, $$3, jf.a, $$4, $$5, $$0.b_($$4), $$6.a())) {
+            this.a($$0, $$4, $$5, jf.a, $$6);
+            if (this.a($$0, $$1) >= 3) {
+               this.a($$0, $$1, $$2, $$3);
+            }
+         } else if ($$2.b() || !this.a($$0, $$6.a(), $$1, $$3, $$4, $$5)) {
+            this.a($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   private void a(dcf $$0, ja $$1, eoh $$2, dsk $$3) {
+      int $$4 = $$2.e() - this.c($$0);
+      if ($$2.c(a)) {
+         $$4 = 7;
+      }
+
+      if ($$4 > 0) {
+         Map<jf, eoh> $$5 = this.b($$0, $$1, $$3);
+
+         for (Entry<jf, eoh> $$6 : $$5.entrySet()) {
+            jf $$7 = $$6.getKey();
+            eoh $$8 = $$6.getValue();
+            ja $$9 = $$1.a($$7);
+            dsk $$10 = $$0.a_($$9);
+            if (this.a($$0, $$1, $$3, $$7, $$9, $$10, $$0.b_($$9), $$8.a())) {
+               this.a($$0, $$9, $$10, $$7, $$8);
+            }
+         }
+      }
+   }
+
+   protected eoh a(dcf $$0, ja $$1, dsk $$2) {
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (jf $$5 : jf.c.a) {
+         ja $$6 = $$1.a($$5);
+         dsk $$7 = $$0.a_($$6);
+         eoh $$8 = $$7.u();
+         if ($$8.a().a(this) && this.a($$5, $$0, $$1, $$2, $$6, $$7)) {
+            if ($$8.b()) {
+               $$4++;
+            }
+
+            $$3 = Math.max($$3, $$8.e());
+         }
+      }
+
+      if (this.a($$0) && $$4 >= 2) {
+         dsk $$9 = $$0.a_($$1.d());
+         eoh $$10 = $$9.u();
+         if ($$9.e() || this.h($$10)) {
+            return this.a(false);
+         }
+      }
+
+      ja $$11 = $$1.c();
+      dsk $$12 = $$0.a_($$11);
+      eoh $$13 = $$12.u();
+      if (!$$13.c() && $$13.a().a(this) && this.a(jf.b, $$0, $$1, $$2, $$11, $$12)) {
+         return this.a(8, true);
       } else {
-         int $$1 = $$0.f;
-         int $$2 = (this.ak >> 16 & 0xFF) * $$1 / 255;
-         int $$3 = (this.ak >> 8 & 0xFF) * $$1 / 255;
-         int $$4 = (this.ak & 0xFF) * $$1 / 255;
-         return 0xFF000000 | $$4 << 16 | $$3 << 8 | $$2;
+         int $$14 = $$3 - this.c($$0);
+         return $$14 <= 0 ? eoi.a.g() : this.a($$14, false);
       }
    }
 
-   public static eof a(int $$0) {
-      Preconditions.checkPositionIndex($$0, am.length, "material id");
-      return c($$0);
-   }
-
-   private static eof c(int $$0) {
-      eof $$1 = am[$$0];
-      return $$1 != null ? $$1 : a;
-   }
-
-   public static int b(int $$0) {
-      int $$1 = $$0 & 0xFF;
-      return c($$1 >> 2).a(eof.a.b($$1 & 3));
-   }
-
-   public byte b(eof.a $$0) {
-      return (byte)(this.al << 2 | $$0.e & 3);
-   }
-
-   public static enum a {
-      a(0, 180),
-      b(1, 220),
-      c(2, 255),
-      d(3, 135);
-
-      private static final eof.a[] g = new eof.a[]{a, b, c, d};
-      public final int e;
-      public final int f;
-
-      private a(final int $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
+   private boolean a(jf $$0, dbl $$1, ja $$2, dsk $$3, ja $$4, dsk $$5) {
+      Object2ByteLinkedOpenHashMap<dfh.a> $$7;
+      if (!$$3.b().p() && !$$5.b().p()) {
+         $$7 = f.get();
+      } else {
+         $$7 = null;
       }
 
-      public static eof.a a(int $$0) {
-         Preconditions.checkPositionIndex($$0, g.length, "brightness id");
-         return b($$0);
+      dfh.a $$8;
+      if ($$7 != null) {
+         $$8 = new dfh.a($$3, $$5, $$0);
+         byte $$9 = $$7.getAndMoveToFirst($$8);
+         if ($$9 != 127) {
+            return $$9 != 0;
+         }
+      } else {
+         $$8 = null;
       }
 
-      static eof.a b(int $$0) {
-         return g[$$0];
+      ewy $$11 = $$3.k($$1, $$2);
+      ewy $$12 = $$5.k($$1, $$4);
+      boolean $$13 = !ewv.b($$11, $$12, $$0);
+      if ($$7 != null) {
+         if ($$7.size() == 200) {
+            $$7.removeLastByte();
+         }
+
+         $$7.putAndMoveToFirst($$8, (byte)($$13 ? 1 : 0));
       }
+
+      return $$13;
+   }
+
+   public abstract eog d();
+
+   public eoh a(int $$0, boolean $$1) {
+      return this.d().g().a(b, $$0).a(a, $$1);
+   }
+
+   public abstract eog e();
+
+   public eoh a(boolean $$0) {
+      return this.e().g().a(a, $$0);
+   }
+
+   protected abstract boolean a(dcf var1);
+
+   protected void a(dcg $$0, ja $$1, dsk $$2, jf $$3, eoh $$4) {
+      if ($$2.b() instanceof djy) {
+         ((djy)$$2.b()).a($$0, $$1, $$2, $$4);
+      } else {
+         if (!$$2.i()) {
+            this.a($$0, $$1, $$2);
+         }
+
+         $$0.a($$1, $$4.g(), 3);
+      }
+   }
+
+   protected abstract void a(dcg var1, ja var2, dsk var3);
+
+   private static short a(ja $$0, ja $$1) {
+      int $$2 = $$1.u() - $$0.u();
+      int $$3 = $$1.w() - $$0.w();
+      return (short)(($$2 + 128 & 0xFF) << 8 | $$3 + 128 & 0xFF);
+   }
+
+   protected int a(dci $$0, ja $$1, int $$2, jf $$3, dsk $$4, ja $$5, Short2ObjectMap<Pair<dsk, eoh>> $$6, Short2BooleanMap $$7) {
+      int $$8 = 1000;
+
+      for (jf $$9 : jf.c.a) {
+         if ($$9 != $$3) {
+            ja $$10 = $$1.a($$9);
+            short $$11 = a($$5, $$10);
+            Pair<dsk, eoh> $$12 = (Pair<dsk, eoh>)$$6.computeIfAbsent($$11, $$2x -> {
+               dsk $$3x = $$0.a_($$10);
+               return Pair.of($$3x, $$3x.u());
+            });
+            dsk $$13 = (dsk)$$12.getFirst();
+            eoh $$14 = (eoh)$$12.getSecond();
+            if (this.a($$0, this.d(), $$1, $$4, $$9, $$10, $$13, $$14)) {
+               boolean $$15 = $$7.computeIfAbsent($$11, $$3x -> {
+                  ja $$4x = $$10.d();
+                  dsk $$5x = $$0.a_($$4x);
+                  return this.a($$0, this.d(), $$10, $$13, $$4x, $$5x);
+               });
+               if ($$15) {
+                  return $$2;
+               }
+
+               if ($$2 < this.b($$0)) {
+                  int $$16 = this.a($$0, $$10, $$2 + 1, $$9.g(), $$13, $$5, $$6, $$7);
+                  if ($$16 < $$8) {
+                     $$8 = $$16;
+                  }
+               }
+            }
+         }
+      }
+
+      return $$8;
+   }
+
+   private boolean a(dbl $$0, eog $$1, ja $$2, dsk $$3, ja $$4, dsk $$5) {
+      if (!this.a(jf.a, $$0, $$2, $$3, $$4, $$5)) {
+         return false;
+      } else {
+         return $$5.u().a().a(this) ? true : this.a($$0, $$4, $$5, $$1);
+      }
+   }
+
+   private boolean a(dbl $$0, eog $$1, ja $$2, dsk $$3, jf $$4, ja $$5, dsk $$6, eoh $$7) {
+      return !this.h($$7) && this.a($$4, $$0, $$2, $$3, $$5, $$6) && this.a($$0, $$5, $$6, $$1);
+   }
+
+   private boolean h(eoh $$0) {
+      return $$0.a().a(this) && $$0.b();
+   }
+
+   protected abstract int b(dci var1);
+
+   private int a(dci $$0, ja $$1) {
+      int $$2 = 0;
+
+      for (jf $$3 : jf.c.a) {
+         ja $$4 = $$1.a($$3);
+         eoh $$5 = $$0.b_($$4);
+         if (this.h($$5)) {
+            $$2++;
+         }
+      }
+
+      return $$2;
+   }
+
+   protected Map<jf, eoh> b(dcf $$0, ja $$1, dsk $$2) {
+      int $$3 = 1000;
+      Map<jf, eoh> $$4 = Maps.newEnumMap(jf.class);
+      Short2ObjectMap<Pair<dsk, eoh>> $$5 = new Short2ObjectOpenHashMap();
+      Short2BooleanMap $$6 = new Short2BooleanOpenHashMap();
+
+      for (jf $$7 : jf.c.a) {
+         ja $$8 = $$1.a($$7);
+         short $$9 = a($$1, $$8);
+         Pair<dsk, eoh> $$10 = (Pair<dsk, eoh>)$$5.computeIfAbsent($$9, $$2x -> {
+            dsk $$3x = $$0.a_($$8);
+            return Pair.of($$3x, $$3x.u());
+         });
+         dsk $$11 = (dsk)$$10.getFirst();
+         eoh $$12 = (eoh)$$10.getSecond();
+         eoh $$13 = this.a($$0, $$8, $$11);
+         if (this.a($$0, $$13.a(), $$1, $$2, $$7, $$8, $$11, $$12)) {
+            ja $$14 = $$8.d();
+            boolean $$15 = $$6.computeIfAbsent($$9, $$4x -> {
+               dsk $$5x = $$0.a_($$14);
+               return this.a($$0, this.d(), $$8, $$11, $$14, $$5x);
+            });
+            int $$16;
+            if ($$15) {
+               $$16 = 0;
+            } else {
+               $$16 = this.a($$0, $$8, 1, $$7.g(), $$11, $$1, $$5, $$6);
+            }
+
+            if ($$16 < $$3) {
+               $$4.clear();
+            }
+
+            if ($$16 <= $$3) {
+               $$4.put($$7, $$13);
+               $$3 = $$16;
+            }
+         }
+      }
+
+      return $$4;
+   }
+
+   private boolean a(dbl $$0, ja $$1, dsk $$2, eog $$3) {
+      dfh $$4 = $$2.b();
+      if ($$4 instanceof djy $$5) {
+         return $$5.a(null, $$0, $$1, $$2, $$3);
+      } else if ($$4 instanceof dhn || $$2.a(avw.ax) || $$2.a(dfj.cO) || $$2.a(dfj.dS) || $$2.a(dfj.nd)) {
+         return false;
+      } else {
+         return !$$2.a(dfj.ed) && !$$2.a(dfj.fx) && !$$2.a(dfj.kF) && !$$2.a(dfj.kN) ? !$$2.d() : false;
+      }
+   }
+
+   protected boolean a(dbl $$0, ja $$1, dsk $$2, jf $$3, ja $$4, dsk $$5, eoh $$6, eog $$7) {
+      return $$6.a($$0, $$4, $$7, $$3) && this.a($$3, $$0, $$1, $$2, $$4, $$5) && this.a($$0, $$4, $$5, $$7);
+   }
+
+   protected abstract int c(dci var1);
+
+   protected int a(dcf $$0, ja $$1, eoh $$2, eoh $$3) {
+      return this.a((dci)$$0);
+   }
+
+   @Override
+   public void b(dcf $$0, ja $$1, eoh $$2) {
+      if (!$$2.b()) {
+         eoh $$3 = this.a($$0, $$1, $$0.a_($$1));
+         int $$4 = this.a($$0, $$1, $$2, $$3);
+         if ($$3.c()) {
+            $$2 = $$3;
+            $$0.a($$1, dfj.a.o(), 3);
+         } else if (!$$3.equals($$2)) {
+            $$2 = $$3;
+            dsk $$5 = $$3.g();
+            $$0.a($$1, $$5, 2);
+            $$0.a($$1, $$3.a(), $$4);
+            $$0.a($$1, $$5.b());
+         }
+      }
+
+      this.a($$0, $$1, $$2);
+   }
+
+   protected static int e(eoh $$0) {
+      return $$0.b() ? 0 : 8 - Math.min($$0.e(), 8) + ($$0.c(a) ? 8 : 0);
+   }
+
+   private static boolean c(eoh $$0, dbl $$1, ja $$2) {
+      return $$0.a().a($$1.b_($$2.c()).a());
+   }
+
+   @Override
+   public float a(eoh $$0, dbl $$1, ja $$2) {
+      return c($$0, $$1, $$2) ? 1.0F : $$0.d();
+   }
+
+   @Override
+   public float a(eoh $$0) {
+      return (float)$$0.e() / 9.0F;
+   }
+
+   @Override
+   public abstract int d(eoh var1);
+
+   @Override
+   public ewy b(eoh $$0, dbl $$1, ja $$2) {
+      return $$0.e() == 9 && c($$0, $$1, $$2) ? ewv.b() : this.g.computeIfAbsent($$0, $$2x -> ewv.a(0.0, 0.0, 0.0, 1.0, (double)$$2x.a($$1, $$2), 1.0));
    }
 }

@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 public class sw {
    public static final int a = 8;
    private static final Logger b = LogUtils.getLogger();
-   final aqk c;
+   final aqm c;
    private final sz d;
    private final List<st> e;
    private ImmutableList<sn> f;
@@ -26,7 +26,7 @@ public class sw {
    private final sw.c l;
    private final sw.c m;
 
-   protected sw(sw.b $$0, Collection<sn> $$1, aqk $$2, sz $$3, sw.c $$4, sw.c $$5) {
+   protected sw(sw.b $$0, Collection<sn> $$1, aqm $$2, sz $$3, sw.c $$4, sw.c $$5) {
       this.c = $$2;
       this.d = $$3;
       this.i = $$0;
@@ -82,7 +82,7 @@ public class sw {
                   sw.this.k.d().accept(sw.this.c);
                   sw.this.g.forEach($$0xxx -> $$0xxx.b(sw.this.k));
                   LongSet $$0 = new LongArraySet(sw.this.c.w());
-                  $$0.forEach($$0xxx -> sw.this.c.a(dbk.a($$0xxx), dbk.b($$0xxx), false));
+                  $$0.forEach($$0xxx -> sw.this.c.a(dbm.a($$0xxx), dbm.b($$0xxx), false));
                   sw.this.a($$0 + 1);
                }
             }
@@ -134,28 +134,28 @@ public class sw {
       return $$0.c() == null ? this.m.spawnStructure($$0) : this.l.spawnStructure($$0);
    }
 
-   public static void a(aqk $$0) {
+   public static void a(aqm $$0) {
       afy.a($$0);
    }
 
    public static class a {
-      private final aqk a;
+      private final aqm a;
       private final sz b = sz.a;
       private final sw.b c = so.a();
       private final sw.c d = sw.c.a;
       private sw.c e = sw.c.b;
       private final Collection<sn> f;
 
-      private a(Collection<sn> $$0, aqk $$1) {
+      private a(Collection<sn> $$0, aqm $$1) {
          this.f = $$0;
          this.a = $$1;
       }
 
-      public static sw.a a(Collection<sn> $$0, aqk $$1) {
+      public static sw.a a(Collection<sn> $$0, aqm $$1) {
          return new sw.a($$0, $$1);
       }
 
-      public static sw.a b(Collection<st> $$0, aqk $$1) {
+      public static sw.a b(Collection<st> $$0, aqm $$1) {
          return a(so.a().batch($$0), $$1);
       }
 

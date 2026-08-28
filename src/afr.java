@@ -5,7 +5,7 @@ public record afr(int b) implements zb<abn> {
       this($$0.l());
    }
 
-   public static afr a(bqo $$0) {
+   public static afr a(bqr $$0) {
       return new afr($$0.k());
    }
 

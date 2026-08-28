@@ -1,29 +1,33 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public record ffh(int a, wu b, @Nullable xg c, @Nullable ffi d) {
-   @Nullable
-   public ffi.a a() {
-      return this.d != null ? this.d.f() : null;
+public enum ffh implements ayj, azc {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
+
+   public static final Codec<ffh> d = azc.a(ffh::values);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private ffh(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public int b() {
-      return this.a;
+   @Override
+   public String c() {
+      return this.f;
    }
 
-   public wu c() {
-      return this.b;
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   @Nullable
-   public xg d() {
-      return this.c;
-   }
-
-   @Nullable
-   public ffi e() {
-      return this.d;
-   }
-
-   public static record a(int a, axq b, @Nullable ffi c, boolean d) {
+   @Override
+   public String b() {
+      return this.g;
    }
 }

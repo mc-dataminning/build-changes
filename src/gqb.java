@@ -1,17 +1,21 @@
-import java.io.IOException;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gqb extends atz<int[]> {
-   private static final akk a = new akk("textures/colormap/foliage.png");
+public class gqb implements gps {
+   public static final MapCodec<gqb> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayp.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gqb::new));
+   private final ayp c;
 
-   protected int[] a(atu $$0, bmr $$1) {
-      try {
-         return gqe.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load foliage color texture", var4);
-      }
+   public gqb(ayp $$0) {
+      this.c = $$0;
    }
 
-   protected void a(int[] $$0, atu $$1, bmr $$2) {
-      dbx.a($$0);
+   @Override
+   public void a(atw $$0, gps.a $$1) {
+      $$1.a(this.c.c());
+   }
+
+   @Override
+   public gpu a() {
+      return gpv.c;
    }
 }

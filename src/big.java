@@ -1,40 +1,17 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class big extends bhp {
+public class big extends bhs {
    public big(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bgd.c,
-         () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(bgd.A.in($$0)),
-                  "TileEntities",
-                  DSL.list(DSL.or(bgd.s.in($$0), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", bgd.C.in($$0))),
-                  "Sections",
-                  DSL.list(DSL.optionalFields("Palette", DSL.list(bgd.u.in($$0)))),
-                  "Structures",
-                  DSL.optionalFields("Starts", DSL.compoundList(bgd.G.in($$0)))
-               )
-            )
-      );
-   }
-
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$1.put("DUMMY", DSL::remainder);
+      $$1.remove("minecraft:flower_pot");
+      $$1.remove("minecraft:noteblock");
       return $$1;
    }
 }

@@ -1,34 +1,48 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class feu extends fen {
+public class feu extends fet {
    private static final Logger b = LogUtils.getLogger();
-   private static final wu c = wu.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final fce e;
-   private final fcx f;
+   private static final wu c = wu.c("mco.configure.world.opening");
+   private final fbt d;
+   private final fnj e;
+   private final boolean f;
+   private final fft g;
 
-   public feu(long $$0, fce $$1, fcx $$2) {
+   public feu(fbt $$0, fnj $$1, boolean $$2, fft $$3) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
    public void run() {
-      faw $$0 = faw.a();
+      fbc $$0 = fbc.a();
 
       for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
+         if (this.d()) {
+            return;
+         }
 
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
+         try {
+            boolean $$2 = $$0.f(this.d.a);
+            if ($$2) {
+               this.g.execute(() -> {
+                  if (this.e instanceof fdd) {
+                     ((fdd)this.e).f();
+                  }
+
+                  this.d.e = fbt.c.b;
+                  if (this.f) {
+                     fax.a(this.d, this.e);
+                  } else {
+                     this.g.a(this.e);
+                  }
+               });
                break;
             }
-         } catch (fck var4) {
+         } catch (fcq var4) {
             if (this.d()) {
                return;
             }
@@ -39,7 +53,7 @@ public class feu extends fen {
                return;
             }
 
-            b.error("Couldn't start mini game!");
+            b.error("Failed to open server", var5);
             this.a(var5);
          }
       }

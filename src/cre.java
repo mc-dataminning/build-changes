@@ -1,9 +1,28 @@
-public class cre extends cpf {
-   public cre(int $$0, cmg $$1) {
-      super(cqm.w, cym.d, cqt.d, $$0, $$1);
+import it.unimi.dsi.fastutil.ints.IntList;
+
+public interface cre extends azc {
+   IntList a();
+
+   default int b() {
+      return this.a().size();
    }
 
-   public cre(int $$0, cmg $$1, bpw $$2, cpp $$3) {
-      super(cqm.w, cym.d, cqt.d, $$0, $$1, $$2, $$3);
+   static cre a(final String $$0, final IntList $$1) {
+      return new cre() {
+         @Override
+         public IntList a() {
+            return $$1;
+         }
+
+         @Override
+         public String c() {
+            return $$0;
+         }
+
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

@@ -1,67 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dem extends dff implements dmg {
-   public static final MapCodec<dem> a = b(dem::new);
-   public static final dsy b = dsx.C;
+public class dem extends ddy {
+   public static final MapCodec<dem> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(csv.q.fieldOf("color").forGetter(ddy::b), u()).apply($$0, dem::new));
+   public static final dtk b = dta.ba;
+   private static final Map<csv, dfh> c = Maps.newHashMap();
+   private static final ewy d = dfh.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<dem> a() {
       return a;
    }
 
-   protected dem(dsg.d $$0) {
-      super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
+   public dem(csv $$0, dsj.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   protected boolean a_(dsh $$0, dbj $$1, ja $$2) {
-      return $$0.u().c();
+   protected boolean a(dsk $$0, dci $$1, ja $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   protected dll a_(dsh $$0) {
-      return dll.a;
+   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return d;
    }
 
    @Override
-   protected float d(dsh $$0, dbj $$1, ja $$2) {
-      return 1.0F;
+   public dsk a(cxm $$0) {
+      return this.o().a(b, Integer.valueOf(dtq.a($$0.i() + 180.0F)));
    }
 
    @Override
-   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, eoc.c, eoc.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
+      return $$1 == jf.a && !$$0.a($$3, $$4) ? dfj.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected eob b_(dsh $$0) {
-      return $$0.c(b) ? eoc.c.a(false) : super.b_($$0);
-   }
-
-   @Nullable
-   @Override
-   public dsh a(cxk $$0) {
-      return this.o().a(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == eoc.c));
+   protected dsk a(dsk $$0, dlu $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
+   protected dsk a(dsk $$0, dke $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(dsl.a<dfh, dsk> $$0) {
       $$0.a(b);
    }
 
-   @Override
-   public cua a(@Nullable cmh $$0, dce $$1, ja $$2, dsh $$3) {
-      return $$0 != null && $$0.f() ? dmg.super.a($$0, $$1, $$2, $$3) : cua.l;
-   }
-
-   @Override
-   public boolean a(@Nullable cmh $$0, dbj $$1, ja $$2, dsh $$3, eoa $$4) {
-      return $$0 != null && $$0.f() ? dmg.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   public static dfh a(csv $$0) {
+      return c.getOrDefault($$0, dfj.iJ);
    }
 }

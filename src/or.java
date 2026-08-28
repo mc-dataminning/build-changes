@@ -1,13 +1,13 @@
 import java.util.function.Function;
 
 public class or {
-   private final Function<cxv, cyg<?>> a;
+   private final Function<cxx, cyi<?>> a;
 
-   public or(Function<cxv, cyg<?>> $$0) {
+   public or(Function<cxx, cyi<?>> $$0) {
       this.a = $$0;
    }
 
-   public static or a(Function<cxv, cyg<?>> $$0) {
+   public static or a(Function<cxx, cyi<?>> $$0) {
       return new or($$0);
    }
 
@@ -16,6 +16,6 @@ public class or {
    }
 
    public void a(oj $$0, akk $$1) {
-      $$0.a($$1, this.a.apply(cxv.d), null);
+      $$0.a($$1, this.a.apply(cxx.d), null);
    }
 }

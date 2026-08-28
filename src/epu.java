@@ -1,30 +1,15 @@
-public class epu {
-   private final int b;
-   private final String c;
-   public static String a = "main";
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
 
-   public epu(int $$0) {
-      this($$0, a);
+public record epu(int c) {
+   public static final Codec<epu> a = Codec.INT.xmap(epu::new, epu::b);
+   public static final ys<ByteBuf, epu> b = yq.g.a(epu::new, epu::b);
+
+   public String a() {
+      return "map_" + this.c;
    }
 
-   public epu(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public boolean a() {
-      return !this.c.equals(a);
-   }
-
-   public String b() {
+   public int b() {
       return this.c;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public boolean a(epu $$0) {
-      return this.b().equals($$0.b());
    }
 }

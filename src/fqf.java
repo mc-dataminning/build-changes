@@ -1,63 +1,53 @@
 import javax.annotation.Nullable;
 
-public abstract class fqf extends fnd {
-   protected final fnd b;
-   protected final ffr c;
+public class fqf extends fql {
+   private static final wu a = wu.c("options.chat.title");
    @Nullable
-   protected fij q;
-   public final fkz r = new fkz(this);
+   private fhq s;
 
-   public fqf(fnd $$0, ffr $$1, wu $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
+   private static ffw<?>[] a(ffx $$0) {
+      return new ffw[]{
+         $$0.m(),
+         $$0.K(),
+         $$0.L(),
+         $$0.M(),
+         $$0.n(),
+         $$0.r(),
+         $$0.w(),
+         $$0.o(),
+         $$0.A(),
+         $$0.x(),
+         $$0.z(),
+         $$0.y(),
+         $$0.as(),
+         $$0.J(),
+         $$0.ae(),
+         $$0.V(),
+         $$0.ag()
+      };
+   }
+
+   public fqf(fnj $$0, ffx $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
-   protected void aO_() {
-      this.G();
-      this.aP_();
-      this.E();
-      this.r.a($$1 -> {
-         fhk var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   protected void G() {
-      this.r.a(this.k, this.o);
-   }
-
-   protected void aP_() {
-      this.q = this.r.c(new fij(this.l, this.m, this));
-      this.m();
-   }
-
-   protected abstract void m();
-
-   protected void E() {
-      this.r.b(fhm.a(wt.d, $$0 -> this.d()).a(200).a());
-   }
-
-   @Override
-   protected void c() {
-      this.r.a();
-      if (this.q != null) {
-         this.q.a(this.m, this.r);
+   public void aP_() {
+      super.aP_();
+      this.s = this.q.b(this.c.as());
+      if (this.s != null) {
+         this.s.j = this.l.aX().a();
       }
    }
 
    @Override
-   public void j() {
-      this.l.m.av();
+   protected void m() {
+      this.q.a(a(this.c));
    }
 
-   @Override
-   public void d() {
-      if (this.q != null) {
-         this.q.c();
+   public void F() {
+      if (this.s instanceof fhz) {
+         ((fhz)this.s).a(this.c.as().c());
       }
-
-      this.l.a(this.b);
    }
 }

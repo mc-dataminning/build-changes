@@ -13,14 +13,14 @@ public class amb {
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("deop").requires($$0x -> $$0x.c(3)))
             .then(
                er.a("targets", ff.a())
-                  .suggests(($$0x, $$1) -> ev.a(((eq)$$0x.getSource()).l().ah().l(), $$1))
+                  .suggests(($$0x, $$1) -> ev.a(((eq)$$0x.getSource()).l().ai().l(), $$1))
                   .executes($$0x -> a((eq)$$0x.getSource(), ff.a($$0x, "targets")))
             )
       );
    }
 
    private static int a(eq $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      auh $$2 = $$0.l().ah();
+      auj $$2 = $$0.l().ai();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {

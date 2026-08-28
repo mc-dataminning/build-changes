@@ -1,18 +1,73 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
-public class crt extends ctv implements cus {
-   public crt(ctv.a $$0) {
-      super($$0);
+public record crt(Map<crs.a, Integer> b, int c, jj<avg> d, Supplier<cyf> e, List<crt.a> f, float g, float h) {
+   public static final Codec<jj<crt>> a = lq.ap.s();
+
+   public int a(crs.a $$0) {
+      return this.b.getOrDefault($$0, 0);
    }
 
-   public cmn a(dcd $$0, cua $$1, bsy $$2, @Nullable cua $$3) {
-      return new cmp($$0, $$2, $$1.c(1), $$3);
+   public Map<crs.a, Integer> a() {
+      return this.b;
    }
 
-   @Override
-   public cmz a(dcd $$0, jt $$1, cua $$2, jf $$3) {
-      cmp $$4 = new cmp($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
-      $$4.d = cmn.a.b;
-      return $$4;
+   public int b() {
+      return this.c;
+   }
+
+   public jj<avg> c() {
+      return this.d;
+   }
+
+   public Supplier<cyf> d() {
+      return this.e;
+   }
+
+   public List<crt.a> e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
+
+   public static final class a {
+      private final akk a;
+      private final String b;
+      private final boolean c;
+      private final akk d;
+      private final akk e;
+
+      public a(akk $$0, String $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = this.b(true);
+         this.e = this.b(false);
+      }
+
+      public a(akk $$0) {
+         this($$0, "", false);
+      }
+
+      private akk b(boolean $$0) {
+         return this.a.a((UnaryOperator<String>)($$1 -> "textures/models/armor/" + this.a.a() + "_layer_" + ($$0 ? 2 : 1) + this.b + ".png"));
+      }
+
+      public akk a(boolean $$0) {
+         return $$0 ? this.d : this.e;
+      }
+
+      public boolean a() {
+         return this.c;
+      }
    }
 }

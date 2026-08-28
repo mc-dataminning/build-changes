@@ -47,7 +47,7 @@ public class ws {
       return 31 * $$0 + this.c.hashCode();
    }
 
-   public static enum a implements ayz {
+   public static enum a implements azc {
       a("open_url", true),
       b("open_file", false),
       c("run_command", true),
@@ -55,7 +55,7 @@ public class ws {
       e("change_page", true),
       f("copy_to_clipboard", true);
 
-      public static final MapCodec<ws.a> g = ayz.a(ws.a::values).fieldOf("action");
+      public static final MapCodec<ws.a> g = azc.a(ws.a::values).fieldOf("action");
       public static final MapCodec<ws.a> h = g.validate(ws.a::a);
       private final boolean i;
       private final String j;

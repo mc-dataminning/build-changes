@@ -1,26 +1,30 @@
-import javax.annotation.Nullable;
+public class cbj extends bzz {
+   private final btk a;
 
-public class cbj extends cat {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public cbj(bth $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public cbj(btk $$0) {
+      this.a = $$0;
    }
 
-   public cbj(bth $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected evz h() {
-      if (this.b.bh()) {
-         evz $$0 = cdw.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
-      } else {
-         return this.b.dS().i() >= this.j ? cdw.a(this.b, 10, 7) : super.h();
+   public boolean a() {
+      return this.a.aF() && !this.a.dQ().b_(this.a.dq()).a(awc.a);
+   }
+
+   @Override
+   public void c() {
+      ja $$0 = null;
+
+      for (ja $$2 : ja.b(
+         ayg.a(this.a.dv() - 2.0), ayg.a(this.a.dx() - 2.0), ayg.a(this.a.dB() - 2.0), ayg.a(this.a.dv() + 2.0), this.a.dw(), ayg.a(this.a.dB() + 2.0)
+      )) {
+         if (this.a.dQ().b_($$2).a(awc.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

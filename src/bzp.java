@@ -1,70 +1,85 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class bzp extends cad {
+   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
+   private final cez b;
+   private final int c;
+   private boolean d;
 
-public class bzp extends bzw {
-   protected final bth a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final dcd f;
-
-   public bzp(bth $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dP();
-      this.a(EnumSet.of(bzw.a.a));
+   public bzp(cez $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
    }
 
    @Override
    public boolean a() {
-      if (this.a.p() != null) {
-         return false;
-      } else if (!this.f.R()) {
-         return false;
-      } else if (!this.a.bQ()) {
-         return false;
-      } else if (!this.f.h(this.a.dp())) {
+      if (this.b.dT().a(this.c) != 0) {
          return false;
       } else {
-         return !this.a.a(bsk.f).e() ? false : this.h();
-      }
-   }
+         jf $$0 = this.b.cJ();
+         int $$1 = $$0.j();
+         int $$2 = $$0.l();
+         ja $$3 = this.b.dq();
 
-   protected boolean h() {
-      evz $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.c;
-         this.c = $$0.d;
-         this.d = $$0.e;
+         for (int $$4 : a) {
+            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
+               return false;
+            }
+         }
+
          return true;
       }
    }
 
+   private boolean a(ja $$0, int $$1, int $$2, int $$3) {
+      ja $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
+      return this.b.dQ().b_($$4).a(awc.a) && !this.b.dQ().a_($$4).d();
+   }
+
+   private boolean b(ja $$0, int $$1, int $$2, int $$3) {
+      return this.b.dQ().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dQ().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
+   }
+
    @Override
    public boolean b() {
-      return !this.a.K().l();
+      double $$0 = this.b.dt().d;
+      return (!($$0 * $$0 < 0.03F) || this.b.dI() == 0.0F || !(Math.abs(this.b.dI()) < 10.0F) || !this.b.bf()) && !this.b.aF();
+   }
+
+   @Override
+   public boolean Q_() {
+      return false;
    }
 
    @Override
    public void c() {
-      this.a.K().a(this.b, this.c, this.d, this.e);
+      jf $$0 = this.b.cJ();
+      this.b.i(this.b.dt().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
+      this.b.K().n();
    }
 
-   @Nullable
-   protected evz i() {
-      aym $$0 = this.a.dS();
-      ja $$1 = this.a.dp();
+   @Override
+   public void d() {
+      this.b.t(0.0F);
+   }
 
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         ja $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
-            return evz.c($$3);
-         }
+   @Override
+   public void e() {
+      boolean $$0 = this.d;
+      if (!$$0) {
+         eoh $$1 = this.b.dQ().b_(this.b.dq());
+         this.d = $$1.a(awc.a);
       }
 
-      return null;
+      if (this.d && !$$0) {
+         this.b.a(avh.hb, 1.0F, 1.0F);
+      }
+
+      ewf $$2 = this.b.dt();
+      if ($$2.d * $$2.d < 0.03F && this.b.dI() != 0.0F) {
+         this.b.t(ayg.j(0.2F, this.b.dI(), 0.0F));
+      } else if ($$2.f() > 1.0E-5F) {
+         double $$3 = $$2.h();
+         double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;
+         this.b.t((float)$$4);
+      }
    }
 }

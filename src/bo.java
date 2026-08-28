@@ -8,7 +8,7 @@ public class bo extends ds<bo.a> {
       return bo.a.a;
    }
 
-   public void a(aql $$0, cua $$1, int $$2) {
+   public void a(aqn $$0, cuc $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
@@ -26,7 +26,7 @@ public class bo extends ds<bo.a> {
          return am.j.a(new bo.a(Optional.empty(), Optional.empty(), de.d.c));
       }
 
-      public boolean a(cua $$0, int $$1) {
+      public boolean a(cuc $$0, int $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.d($$1);
       }
 

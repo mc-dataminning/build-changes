@@ -1,150 +1,76 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
-public final class drw {
-   private static final Map<String, drw> k = new Object2ObjectArrayMap();
-   public static final Codec<drw> a = Codec.stringResolver($$0 -> $$0.l, k::get);
-   public static final drw b = new drw(
-      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(rs.g), Optional.of(rs.n), Optional.of(rs.C), Optional.of(rs.I)
+public class drw {
+   static final String a = "shared_data";
+   static Codec<drw> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cuc.a("display_item").forGetter($$0x -> $$0x.d),
+               kd.c.lenientOptionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.lenientOptionalFieldOf("connected_particles_range", dru.b.d()).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, drw::new)
    );
-   public static final drw c = new drw(
-      "spruce", 0.5F, Optional.of(rs.q), Optional.of(rs.r), Optional.of(rs.k), Optional.empty(), Optional.empty(), Optional.empty()
-   );
-   public static final drw d = new drw(
-      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(rs.x), Optional.of(rs.y), Optional.empty(), Optional.empty()
-   );
-   public static final drw e = new drw("azalea", Optional.empty(), Optional.of(rs.w), Optional.empty());
-   public static final drw f = new drw("birch", Optional.empty(), Optional.of(rs.i), Optional.of(rs.F));
-   public static final drw g = new drw("jungle", Optional.of(rs.p), Optional.of(rs.o), Optional.empty());
-   public static final drw h = new drw("acacia", Optional.empty(), Optional.of(rs.j), Optional.empty());
-   public static final drw i = new drw("cherry", Optional.empty(), Optional.of(rs.z), Optional.of(rs.K));
-   public static final drw j = new drw("dark_oak", Optional.of(rs.h), Optional.empty(), Optional.empty());
-   private final String l;
-   private final float m;
-   private final Optional<akj<ear<?, ?>>> n;
-   private final Optional<akj<ear<?, ?>>> o;
-   private final Optional<akj<ear<?, ?>>> p;
-   private final Optional<akj<ear<?, ?>>> q;
-   private final Optional<akj<ear<?, ?>>> r;
-   private final Optional<akj<ear<?, ?>>> s;
+   private cuc d = cuc.l;
+   private Set<UUID> e = new ObjectLinkedOpenHashSet();
+   private double f = dru.b.d();
+   boolean c;
 
-   public drw(String $$0, Optional<akj<ear<?, ?>>> $$1, Optional<akj<ear<?, ?>>> $$2, Optional<akj<ear<?, ?>>> $$3) {
-      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
+   drw(cuc $$0, Set<UUID> $$1, double $$2) {
+      this.d = $$0;
+      this.e.addAll($$1);
+      this.f = $$2;
    }
 
-   public drw(
-      String $$0,
-      float $$1,
-      Optional<akj<ear<?, ?>>> $$2,
-      Optional<akj<ear<?, ?>>> $$3,
-      Optional<akj<ear<?, ?>>> $$4,
-      Optional<akj<ear<?, ?>>> $$5,
-      Optional<akj<ear<?, ?>>> $$6,
-      Optional<akj<ear<?, ?>>> $$7
-   ) {
-      this.l = $$0;
-      this.m = $$1;
-      this.n = $$2;
-      this.o = $$3;
-      this.p = $$4;
-      this.q = $$5;
-      this.r = $$6;
-      this.s = $$7;
-      k.put($$0, this);
+   drw() {
    }
 
-   @Nullable
-   private akj<ear<?, ?>> a(aym $$0, boolean $$1) {
-      if ($$0.i() < this.m) {
-         if ($$1 && this.s.isPresent()) {
-            return this.s.get();
-         }
-
-         if (this.q.isPresent()) {
-            return this.q.get();
-         }
-      }
-
-      return $$1 && this.r.isPresent() ? this.r.get() : this.p.orElse(null);
+   public cuc a() {
+      return this.d;
    }
 
-   @Nullable
-   private akj<ear<?, ?>> a(aym $$0) {
-      return this.o.isPresent() && $$0.i() < this.m ? this.o.get() : this.n.orElse(null);
+   public boolean b() {
+      return !this.d.e();
    }
 
-   public boolean a(aqk $$0, due $$1, ja $$2, dsh $$3, aym $$4) {
-      akj<ear<?, ?>> $$5 = this.a($$4);
-      if ($$5 != null) {
-         jj<ear<?, ?>> $$6 = $$0.H_().d(lr.aH).b($$5).orElse(null);
-         if ($$6 != null) {
-            for (int $$7 = 0; $$7 >= -1; $$7--) {
-               for (int $$8 = 0; $$8 >= -1; $$8--) {
-                  if (a($$3, $$0, $$2, $$7, $$8)) {
-                     ear<?, ?> $$9 = $$6.a();
-                     dsh $$10 = dfh.a.o();
-                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
-                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
-                        return true;
-                     }
-
-                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
-                     return false;
-                  }
-               }
-            }
-         }
-      }
-
-      akj<ear<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
-      if ($$11 == null) {
-         return false;
-      } else {
-         jj<ear<?, ?>> $$12 = $$0.H_().d(lr.aH).b($$11).orElse(null);
-         if ($$12 == null) {
-            return false;
-         } else {
-            ear<?, ?> $$13 = $$12.a();
-            dsh $$14 = $$0.b_($$2).g();
-            $$0.a($$2, $$14, 4);
-            if ($$13.a($$0, $$1, $$4, $$2)) {
-               if ($$0.a_($$2) == $$14) {
-                  $$0.a($$2, $$3, $$14, 2);
-               }
-
-               return true;
-            } else {
-               $$0.a($$2, $$3, 4);
-               return false;
-            }
-         }
+   public void a(cuc $$0) {
+      if (!cuc.a(this.d, $$0)) {
+         this.d = $$0.s();
+         this.f();
       }
    }
 
-   private static boolean a(dsh $$0, dbj $$1, ja $$2, int $$3, int $$4) {
-      dff $$5 = $$0.b();
-      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
+   boolean c() {
+      return !this.e.isEmpty();
    }
 
-   private boolean a(dce $$0, ja $$1) {
-      for (ja $$2 : ja.a.c($$1.d().d(2).f(2), $$1.c().e(2).g(2))) {
-         if ($$0.a_($$2).a(avu.U)) {
-            return true;
-         }
-      }
+   Set<UUID> d() {
+      return this.e;
+   }
 
-      return false;
+   double e() {
+      return this.f;
+   }
+
+   void a(aqm $$0, ja $$1, drv $$2, dru $$3, double $$4) {
+      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4, false).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
+      if (!this.e.equals($$5)) {
+         this.e = $$5;
+         this.f();
+      }
+   }
+
+   private void f() {
+      this.c = true;
+   }
+
+   void a(drw $$0) {
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
    }
 }

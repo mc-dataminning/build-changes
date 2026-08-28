@@ -1,35 +1,83 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+public abstract class btk extends btd {
+   protected static final float bZ = 0.0F;
 
-public enum btk {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4),
-   f(5),
-   g(6),
-   h(7),
-   i(8),
-   j(9),
-   k(10),
-   l(11),
-   m(12),
-   n(13),
-   o(14),
-   p(15),
-   q(16),
-   r(17);
-
-   public static final IntFunction<btk> s = awu.a(btk::a, values(), awu.a.a);
-   public static final ys<ByteBuf, btk> t = yq.a(s, btk::a);
-   private final int u;
-
-   private btk(final int $$0) {
-      this.u = $$0;
+   protected btk(bsm<? extends btk> $$0, dcf $$1) {
+      super($$0, $$1);
    }
 
-   public int a() {
-      return this.u;
+   public float c(ja $$0) {
+      return this.a($$0, this.dQ());
+   }
+
+   public float a(ja $$0, dci $$1) {
+      return 0.0F;
+   }
+
+   @Override
+   public boolean a(dcg $$0, btf $$1) {
+      return this.a(this.dq(), $$0) >= 0.0F;
+   }
+
+   public boolean gk() {
+      return !this.K().l();
+   }
+
+   public boolean gl() {
+      if (this.bF.a(ccf.Z)) {
+         return this.bF.c(ccf.Z).isPresent();
+      } else {
+         for (cbn $$0 : this.bU.b()) {
+            if ($$0.h() && $$0.k() instanceof cas) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   protected void fZ() {
+      super.fZ();
+      bsg $$0 = this.gc();
+      if ($$0 != null && $$0.dQ() == this.dQ()) {
+         this.a($$0.dq(), 5);
+         float $$1 = this.f($$0);
+         if (this instanceof bty && ((bty)this).y()) {
+            if ($$1 > 10.0F) {
+               this.a(true, true);
+            }
+
+            return;
+         }
+
+         this.G($$1);
+         if ($$1 > 10.0F) {
+            this.a(true, true);
+            this.bU.a(bzz.a.a);
+         } else if ($$1 > 6.0F) {
+            double $$2 = ($$0.dv() - this.dv()) / (double)$$1;
+            double $$3 = ($$0.dx() - this.dx()) / (double)$$1;
+            double $$4 = ($$0.dB() - this.dB()) / (double)$$1;
+            this.i(this.dt().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
+            this.cr();
+         } else if (this.gm() && !this.gl()) {
+            this.bU.b(bzz.a.a);
+            float $$5 = 2.0F;
+            ewf $$6 = new ewf($$0.dv() - this.dv(), $$0.dx() - this.dx(), $$0.dB() - this.dB()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
+            this.K().a(this.dv() + $$6.c, this.dx() + $$6.d, this.dB() + $$6.e, this.gn());
+         }
+      }
+   }
+
+   protected boolean gm() {
+      return true;
+   }
+
+   protected double gn() {
+      return 1.0;
+   }
+
+   protected void G(float $$0) {
    }
 }

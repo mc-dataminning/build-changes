@@ -13,17 +13,17 @@ public class adt implements zb<abn> {
    private final EnumSet<adt.a> b;
    private final List<adt.b> c;
 
-   public adt(EnumSet<adt.a> $$0, Collection<aql> $$1) {
+   public adt(EnumSet<adt.a> $$0, Collection<aqn> $$1) {
       this.b = $$0;
       this.c = $$1.stream().map(adt.b::new).toList();
    }
 
-   public adt(adt.a $$0, aql $$1) {
+   public adt(adt.a $$0, aqn $$1) {
       this.b = EnumSet.of($$0);
       this.c = List.of(new adt.b($$1));
    }
 
-   public static adt a(Collection<aql> $$0) {
+   public static adt a(Collection<aqn> $$0) {
       EnumSet<adt.a> $$1 = EnumSet.of(adt.a.a, adt.a.b, adt.a.c, adt.a.d, adt.a.e, adt.a.f);
       return new adt($$1, $$0);
    }
@@ -89,7 +89,7 @@ public class adt implements zb<abn> {
          yq.t.encode($$0, $$2.getProperties());
       }),
       b(($$0, $$1) -> $$0.g = $$1.c(xl.a::a), ($$0, $$1) -> $$0.a($$1.g, xl.a::a)),
-      c(($$0, $$1) -> $$0.e = dca.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      c(($$0, $$1) -> $$0.e = dcc.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
       d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
       e(($$0, $$1) -> $$0.d = $$1.l(), ($$0, $$1) -> $$0.c($$1.d())),
       f(($$0, $$1) -> $$0.f = vr.a($$1, ww.d), ($$0, $$1) -> vr.a($$0, $$1.f(), ww.d));
@@ -111,10 +111,10 @@ public class adt implements zb<abn> {
       }
    }
 
-   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dca e, @Nullable wu f, @Nullable xl.a g) {
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dcc e, @Nullable wu f, @Nullable xl.a g) {
 
-      b(aql $$0) {
-         this($$0.cz(), $$0.fX(), true, $$0.c.k(), $$0.e.b(), $$0.N(), x.a($$0.ab(), xl::a));
+      b(aqn $$0) {
+         this($$0.cA(), $$0.fY(), true, $$0.c.k(), $$0.e.b(), $$0.N(), x.a($$0.ab(), xl::a));
       }
    }
 
@@ -124,14 +124,14 @@ public class adt implements zb<abn> {
       GameProfile b;
       boolean c;
       int d;
-      dca e;
+      dcc e;
       @Nullable
       wu f;
       @Nullable
       xl.a g;
 
       c(UUID $$0) {
-         this.e = dca.e;
+         this.e = dcc.e;
          this.a = $$0;
       }
 

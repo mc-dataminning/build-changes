@@ -1,464 +1,733 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.util.Arrays;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
-public class gel implements ezw, AutoCloseable {
-   public static final String a = "shaders";
-   private static final String q = "shaders/core/";
-   private static final String r = "shaders/include/";
-   static final Logger s = LogUtils.getLogger();
-   private static final ezp t = new ezp();
-   private static final boolean u = true;
-   private static gel v;
-   private static int w = -1;
-   private final Map<String, Object> x = Maps.newHashMap();
-   private final List<String> y = Lists.newArrayList();
-   private final List<Integer> z = Lists.newArrayList();
-   private final List<ezx> A = Lists.newArrayList();
-   private final List<Integer> B = Lists.newArrayList();
-   private final Map<String, ezx> C = Maps.newHashMap();
-   private final int D;
-   private final String E;
-   private boolean F;
-   private final ezq G;
-   private final ezu H;
-   private final ezu I;
-   private final fal J;
-   @Nullable
-   public final ezx b;
-   @Nullable
-   public final ezx c;
-   @Nullable
-   public final ezx d;
-   @Nullable
-   public final ezx e;
-   @Nullable
-   public final ezx f;
-   @Nullable
-   public final ezx g;
-   @Nullable
-   public final ezx h;
-   @Nullable
-   public final ezx i;
-   @Nullable
-   public final ezx j;
-   @Nullable
-   public final ezx k;
-   @Nullable
-   public final ezx l;
-   @Nullable
-   public final ezx m;
-   @Nullable
-   public final ezx n;
-   @Nullable
-   public final ezx o;
-   @Nullable
-   public final ezx p;
+public abstract class gel extends gek {
+   private static final int aY = 1048576;
+   public static final int aT = 4194304;
+   public static final int aU = 786432;
+   public static final int aV = 1536;
+   private static final gel aZ = a("solid", fak.j, far.b.h, 4194304, true, false, gel.b.a().a(at).a(p).a(an).a(true));
+   private static final gel ba = a("cutout_mipped", fak.j, far.b.h, 4194304, true, false, gel.b.a().a(at).a(q).a(an).a(true));
+   private static final gel bb = a("cutout", fak.j, far.b.h, 786432, true, false, gel.b.a().a(at).a(r).a(ao).a(true));
+   private static final gel bc = a("translucent", fak.j, far.b.h, 786432, true, true, a(s));
+   private static final gel bd = a("translucent_moving_block", fak.j, far.b.h, 786432, false, true, Q());
+   private static final Function<akk, gel> be = ac.b($$0 -> a("armor_cutout_no_cull", $$0, false));
+   private static final Function<akk, gel> bf = ac.b($$0 -> {
+      gel.b $$1 = gel.b.a().a(v).a(new gek.n($$0, false, false)).a(c).a(at).a(av).a(true);
+      return a("entity_solid", fak.k, far.b.h, 1536, true, false, $$1);
+   });
+   private static final Function<akk, gel> bg = ac.b($$0 -> {
+      gel.b $$1 = gel.b.a().a(w).a(new gek.n($$0, false, false)).a(c).a(at).a(av).a(true);
+      return a("entity_cutout", fak.k, far.b.h, 1536, true, false, $$1);
+   });
+   private static final BiFunction<akk, Boolean, gel> bh = ac.a(($$0, $$1) -> {
+      gel.b $$2 = gel.b.a().a(x).a(new gek.n($$0, false, false)).a(c).a(ay).a(at).a(av).a($$1);
+      return a("entity_cutout_no_cull", fak.k, far.b.h, 1536, true, false, $$2);
+   });
+   private static final BiFunction<akk, Boolean, gel> bi = ac.a(($$0, $$1) -> {
+      gel.b $$2 = gel.b.a().a(y).a(new gek.n($$0, false, false)).a(c).a(ay).a(at).a(av).a(aI).a($$1);
+      return a("entity_cutout_no_cull_z_offset", fak.k, far.b.h, 1536, true, false, $$2);
+   });
+   private static final Function<akk, gel> bj = ac.b($$0 -> {
+      gel.b $$1 = gel.b.a().a(z).a(new gek.n($$0, false, false)).a(h).a(aP).a(at).a(av).a(gek.aD).a(true);
+      return a("item_entity_translucent_cull", fak.k, far.b.h, 1536, true, true, $$1);
+   });
+   private static final Function<akk, gel> bk = ac.b($$0 -> {
+      gel.b $$1 = gel.b.a().a(A).a(new gek.n($$0, false, false)).a(h).a(at).a(av).a(true);
+      return a("entity_translucent_cull", fak.k, far.b.h, 1536, true, true, $$1);
+   });
+   private static final BiFunction<akk, Boolean, gel> bl = ac.a(($$0, $$1) -> {
+      gel.b $$2 = gel.b.a().a(B).a(new gek.n($$0, false, false)).a(h).a(ay).a(at).a(av).a($$1);
+      return a("entity_translucent", fak.k, far.b.h, 1536, true, true, $$2);
+   });
+   private static final BiFunction<akk, Boolean, gel> bm = ac.a(($$0, $$1) -> {
+      gel.b $$2 = gel.b.a().a(C).a(new gek.n($$0, false, false)).a(h).a(ay).a(aE).a(av).a($$1);
+      return a("entity_translucent_emissive", fak.k, far.b.h, 1536, true, true, $$2);
+   });
+   private static final Function<akk, gel> bn = ac.b($$0 -> {
+      gel.b $$1 = gel.b.a().a(D).a(new gek.n($$0, false, false)).a(ay).a(at).a(true);
+      return a("entity_smooth_cutout", fak.k, far.b.h, 1536, $$1);
+   });
+   private static final BiFunction<akk, Boolean, gel> bo = ac.a(($$0, $$1) -> {
+      gel.b $$2 = gel.b.a().a(E).a(new gek.n($$0, false, false)).a($$1 ? h : c).a($$1 ? aE : aD).a(false);
+      return a("beacon_beam", fak.j, far.b.h, 1536, false, true, $$2);
+   });
+   private static final Function<akk, gel> bp = ac.b($$0 -> {
+      gel.b $$1 = gel.b.a().a(F).a(new gek.n($$0, false, false)).a(aA).a(ay).a(at).a(av).a(false);
+      return a("entity_decal", fak.k, far.b.h, 1536, $$1);
+   });
+   private static final Function<akk, gel> bq = ac.b($$0 -> {
+      gel.b $$1 = gel.b.a().a(G).a(new gek.n($$0, false, false)).a(h).a(ay).a(at).a(av).a(aE).a(false);
+      return a("entity_no_outline", fak.k, far.b.h, 1536, false, true, $$1);
+   });
+   private static final Function<akk, gel> br = ac.b($$0 -> {
+      gel.b $$1 = gel.b.a().a(H).a(new gek.n($$0, false, false)).a(h).a(ax).a(at).a(av).a(aE).a(aB).a(aI).a(false);
+      return a("entity_shadow", fak.k, far.b.h, 1536, false, false, $$1);
+   });
+   private static final Function<akk, gel> bs = ac.b($$0 -> {
+      gel.b $$1 = gel.b.a().a(I).a(new gek.n($$0, false, false)).a(ay).a(true);
+      return a("entity_alpha", fak.k, far.b.h, 1536, $$1);
+   });
+   private static final BiFunction<akk, gek.p, gel> bt = ac.a(($$0, $$1) -> {
+      gek.n $$2 = new gek.n($$0, false, false);
+      return a("eyes", fak.k, far.b.h, 1536, false, true, gel.b.a().a(J).a($$2).a($$1).a(aE).a(false));
+   });
+   private static final gel bu = a("leash", fak.p, far.b.f, 1536, gel.b.a().a(L).a(ap).a(ay).a(at).a(false));
+   private static final gel bv = a("water_mask", fak.m, far.b.h, 1536, gel.b.a().a(M).a(ap).a(aF).a(false));
+   private static final gel bw = a(
+      "armor_glint", fak.q, far.b.h, 1536, gel.b.a().a(O).a(new gek.n(gkk.a, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(aI).a(false)
+   );
+   private static final gel bx = a(
+      "armor_entity_glint", fak.q, far.b.h, 1536, gel.b.a().a(P).a(new gek.n(gkk.a, true, false)).a(aE).a(ay).a(aA).a(f).a(as).a(aI).a(false)
+   );
+   private static final gel by = a(
+      "glint_translucent", fak.q, far.b.h, 1536, gel.b.a().a(Q).a(new gek.n(gkk.b, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(aP).a(false)
+   );
+   private static final gel bz = a("glint", fak.q, far.b.h, 1536, gel.b.a().a(R).a(new gek.n(gkk.b, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(false));
+   private static final gel bA = a("glint_direct", fak.q, far.b.h, 1536, gel.b.a().a(S).a(new gek.n(gkk.b, true, false)).a(aE).a(ay).a(aA).a(f).a(ar).a(false));
+   private static final gel bB = a(
+      "entity_glint", fak.q, far.b.h, 1536, gel.b.a().a(T).a(new gek.n(gkk.a, true, false)).a(aE).a(ay).a(aA).a(f).a(aP).a(as).a(false)
+   );
+   private static final gel bC = a(
+      "entity_glint_direct", fak.q, far.b.h, 1536, gel.b.a().a(U).a(new gek.n(gkk.a, true, false)).a(aE).a(ay).a(aA).a(f).a(as).a(false)
+   );
+   private static final Function<akk, gel> bD = ac.b($$0 -> {
+      gek.n $$1 = new gek.n($$0, false, false);
+      return a("crumbling", fak.j, far.b.h, 1536, false, true, gel.b.a().a(V).a($$1).a(g).a(aE).a(aH).a(false));
+   });
+   private static final Function<akk, gel> bE = ac.b(
+      $$0 -> a("text", fak.t, far.b.h, 786432, false, true, gel.b.a().a(W).a(new gek.n($$0, false, false)).a(h).a(at).a(false))
+   );
+   private static final gel bF = a("text_background", fak.p, far.b.h, 1536, false, true, gel.b.a().a(X).a(ap).a(h).a(at).a(false));
+   private static final Function<akk, gel> bG = ac.b(
+      $$0 -> a("text_intensity", fak.t, far.b.h, 786432, false, true, gel.b.a().a(Y).a(new gek.n($$0, false, false)).a(h).a(at).a(false))
+   );
+   private static final Function<akk, gel> bH = ac.b(
+      $$0 -> a("text_polygon_offset", fak.t, far.b.h, 1536, false, true, gel.b.a().a(W).a(new gek.n($$0, false, false)).a(h).a(at).a(aH).a(false))
+   );
+   private static final Function<akk, gel> bI = ac.b(
+      $$0 -> a("text_intensity_polygon_offset", fak.t, far.b.h, 1536, false, true, gel.b.a().a(Y).a(new gek.n($$0, false, false)).a(h).a(at).a(aH).a(false))
+   );
+   private static final Function<akk, gel> bJ = ac.b(
+      $$0 -> a("text_see_through", fak.t, far.b.h, 1536, false, true, gel.b.a().a(Z).a(new gek.n($$0, false, false)).a(h).a(at).a(az).a(aE).a(false))
+   );
+   private static final gel bK = a("text_background_see_through", fak.p, far.b.h, 1536, false, true, gel.b.a().a(aa).a(ap).a(h).a(at).a(az).a(aE).a(false));
+   private static final Function<akk, gel> bL = ac.b(
+      $$0 -> a("text_intensity_see_through", fak.t, far.b.h, 1536, false, true, gel.b.a().a(ab).a(new gek.n($$0, false, false)).a(h).a(at).a(az).a(aE).a(false))
+   );
+   private static final gel bM = a("lightning", fak.n, far.b.h, 1536, false, true, gel.b.a().a(ac).a(aD).a(e).a(aN).a(false));
+   private static final gel bN = a("tripwire", fak.j, far.b.h, 1536, true, true, R());
+   private static final gel bO = a(
+      "end_portal", fak.m, far.b.h, 1536, false, false, gel.b.a().a(ae).a(gek.i.d().a(ggw.a, false, false).a(ggw.b, false, false).a()).a(false)
+   );
+   private static final gel bP = a(
+      "end_gateway", fak.m, far.b.h, 1536, false, false, gel.b.a().a(af).a(gek.i.d().a(ggw.a, false, false).a(ggw.b, false, false).a()).a(false)
+   );
+   private static final gel bQ = a(false);
+   private static final gel bR = a(true);
+   public static final gel.a aW = a("lines", fak.o, far.b.a, 1536, gel.b.a().a(ah).a(new gek.h(OptionalDouble.empty())).a(aI).a(h).a(aP).a(aD).a(ay).a(false));
+   public static final gel.a aX = a(
+      "line_strip", fak.o, far.b.b, 1536, gel.b.a().a(ah).a(new gek.h(OptionalDouble.empty())).a(aI).a(h).a(aP).a(aD).a(ay).a(false)
+   );
+   private static final Function<Double, gel.a> bS = ac.b(
+      $$0 -> a("debug_line_strip", fak.n, far.b.d, 1536, gel.b.a().a(o).a(new gek.h(OptionalDouble.of($$0))).a(c).a(ay).a(false))
+   );
+   private static final gel.a bT = a("debug_filled_box", fak.n, far.b.f, 1536, false, true, gel.b.a().a(o).a(aI).a(h).a(false));
+   private static final gel.a bU = a("debug_quads", fak.n, far.b.h, 1536, false, true, gel.b.a().a(o).a(h).a(ay).a(false));
+   private static final gel.a bV = a("debug_section_quads", fak.n, far.b.h, 1536, false, true, gel.b.a().a(o).a(aI).a(h).a(ax).a(false));
+   private static final gel.a bW = a("gui", fak.n, far.b.h, 786432, gel.b.a().a(ai).a(h).a(aB).a(false));
+   private static final gel.a bX = a("gui_overlay", fak.n, far.b.h, 1536, gel.b.a().a(aj).a(h).a(az).a(aE).a(false));
+   private static final gel.a bY = a("gui_text_highlight", fak.n, far.b.h, 1536, gel.b.a().a(ak).a(h).a(az).a(aS).a(false));
+   private static final gel.a bZ = a("gui_ghost_recipe_overlay", fak.n, far.b.h, 1536, gel.b.a().a(al).a(h).a(aC).a(aE).a(false));
+   private static final ImmutableList<gel> ca = ImmutableList.of(c(), d(), e(), f(), t());
+   private final far cb;
+   private final far.b cc;
+   private final int cd;
+   private final boolean ce;
+   private final boolean cf;
+   private final Optional<gel> cg;
 
-   public gel(atx $$0, String $$1, fal $$2) throws IOException {
-      this.E = $$1;
-      this.J = $$2;
-      akk $$3 = new akk("shaders/core/" + $$1 + ".json");
-
-      try (Reader $$4 = $$0.openAsReader($$3)) {
-         JsonObject $$5 = axu.a($$4);
-         String $$6 = axu.i($$5, "vertex");
-         String $$7 = axu.i($$5, "fragment");
-         JsonArray $$8 = axu.a($$5, "samplers", null);
-         if ($$8 != null) {
-            int $$9 = 0;
-
-            for (JsonElement $$10 : $$8) {
-               try {
-                  this.a($$10);
-               } catch (Exception var18) {
-                  akn $$12 = akn.a(var18);
-                  $$12.a("samplers[" + $$9 + "]");
-                  throw $$12;
-               }
-
-               $$9++;
-            }
-         }
-
-         JsonArray $$13 = axu.a($$5, "uniforms", null);
-         if ($$13 != null) {
-            int $$14 = 0;
-
-            for (JsonElement $$15 : $$13) {
-               try {
-                  this.b($$15);
-               } catch (Exception var17) {
-                  akn $$17 = akn.a(var17);
-                  $$17.a("uniforms[" + $$14 + "]");
-                  throw $$17;
-               }
-
-               $$14++;
-            }
-         }
-
-         this.G = a(axu.a($$5, "blend", null));
-         this.H = a($$0, ezu.a.a, $$6);
-         this.I = a($$0, ezu.a.b, $$7);
-         this.D = ezv.a();
-         int $$18 = 0;
-
-         for (UnmodifiableIterator var26 = $$2.d().iterator(); var26.hasNext(); $$18++) {
-            String $$19 = (String)var26.next();
-            ezx.a(this.D, $$18, $$19);
-         }
-
-         ezv.b(this);
-         this.j();
-      } catch (Exception var20) {
-         akn $$22 = akn.a(var20);
-         $$22.b($$3.a());
-         throw $$22;
-      }
-
-      this.b();
-      this.b = this.a("ModelViewMat");
-      this.c = this.a("ProjMat");
-      this.d = this.a("TextureMat");
-      this.e = this.a("ScreenSize");
-      this.f = this.a("ColorModulator");
-      this.g = this.a("Light0_Direction");
-      this.h = this.a("Light1_Direction");
-      this.i = this.a("GlintAlpha");
-      this.j = this.a("FogStart");
-      this.k = this.a("FogEnd");
-      this.l = this.a("FogColor");
-      this.m = this.a("FogShape");
-      this.n = this.a("LineWidth");
-      this.o = this.a("GameTime");
-      this.p = this.a("ChunkOffset");
+   public static gel c() {
+      return aZ;
    }
 
-   private static ezu a(final atx $$0, ezu.a $$1, String $$2) throws IOException {
-      ezu $$3 = $$1.c().get($$2);
-      ezu $$8;
-      if ($$3 == null) {
-         String $$4 = "shaders/core/" + $$2 + $$1.b();
-         ats $$5 = $$0.getResourceOrThrow(new akk($$4));
-
-         try (InputStream $$6 = $$5.d()) {
-            final String $$7 = v.a($$4);
-            $$8 = ezu.a($$1, $$2, $$6, $$5.b(), new ezn() {
-               private final Set<String> c = Sets.newHashSet();
-
-               @Override
-               public String a(boolean $$0x, String $$1) {
-                  $$1 = v.b(($$0 ? $$7 : "shaders/include/") + $$1);
-                  if (!this.c.add($$1)) {
-                     return null;
-                  } else {
-                     akk $$2 = new akk($$1);
-
-                     try {
-                        String var5;
-                        try (Reader $$3 = $$0.openAsReader($$2)) {
-                           var5 = IOUtils.toString($$3);
-                        }
-
-                        return var5;
-                     } catch (IOException var9) {
-                        gel.s.error("Could not open GLSL import {}: {}", $$1, var9.getMessage());
-                        return "#error " + var9.getMessage();
-                     }
-                  }
-               }
-            });
-         }
-      } else {
-         $$8 = $$3;
-      }
-
-      return $$8;
+   public static gel d() {
+      return ba;
    }
 
-   public static ezq a(JsonObject $$0) {
-      if ($$0 == null) {
-         return new ezq();
-      } else {
-         int $$1 = 32774;
-         int $$2 = 1;
-         int $$3 = 0;
-         int $$4 = 1;
-         int $$5 = 0;
-         boolean $$6 = true;
-         boolean $$7 = false;
-         if (axu.a($$0, "func")) {
-            $$1 = ezq.a($$0.get("func").getAsString());
-            if ($$1 != 32774) {
-               $$6 = false;
-            }
+   public static gel e() {
+      return bb;
+   }
+
+   private static gel.b a(gek.m $$0) {
+      return gel.b.a().a(at).a($$0).a(an).a(h).a(aL).a(true);
+   }
+
+   public static gel f() {
+      return bc;
+   }
+
+   private static gel.b Q() {
+      return gel.b.a().a(at).a(t).a(an).a(h).a(aP).a(true);
+   }
+
+   public static gel g() {
+      return bd;
+   }
+
+   private static gel.a a(String $$0, akk $$1, boolean $$2) {
+      gel.b $$3 = gel.b.a().a(u).a(new gek.n($$1, false, false)).a(c).a(ay).a(at).a(av).a(aI).a($$2 ? aA : aB).a(true);
+      return a($$0, fak.k, far.b.h, 1536, true, false, $$3);
+   }
+
+   public static gel a(akk $$0) {
+      return be.apply($$0);
+   }
+
+   public static gel b(akk $$0) {
+      return a("armor_decal_cutout_no_cull", $$0, true);
+   }
+
+   public static gel c(akk $$0) {
+      return bf.apply($$0);
+   }
+
+   public static gel d(akk $$0) {
+      return bg.apply($$0);
+   }
+
+   public static gel a(akk $$0, boolean $$1) {
+      return bh.apply($$0, $$1);
+   }
+
+   public static gel e(akk $$0) {
+      return a($$0, true);
+   }
+
+   public static gel b(akk $$0, boolean $$1) {
+      return bi.apply($$0, $$1);
+   }
+
+   public static gel f(akk $$0) {
+      return b($$0, true);
+   }
+
+   public static gel g(akk $$0) {
+      return bj.apply($$0);
+   }
+
+   public static gel h(akk $$0) {
+      return bk.apply($$0);
+   }
+
+   public static gel c(akk $$0, boolean $$1) {
+      return bl.apply($$0, $$1);
+   }
+
+   public static gel i(akk $$0) {
+      return c($$0, true);
+   }
+
+   public static gel d(akk $$0, boolean $$1) {
+      return bm.apply($$0, $$1);
+   }
+
+   public static gel j(akk $$0) {
+      return d($$0, true);
+   }
+
+   public static gel k(akk $$0) {
+      return bn.apply($$0);
+   }
+
+   public static gel e(akk $$0, boolean $$1) {
+      return bo.apply($$0, $$1);
+   }
+
+   public static gel l(akk $$0) {
+      return bp.apply($$0);
+   }
+
+   public static gel m(akk $$0) {
+      return bq.apply($$0);
+   }
+
+   public static gel n(akk $$0) {
+      return br.apply($$0);
+   }
+
+   public static gel o(akk $$0) {
+      return bs.apply($$0);
+   }
+
+   public static gel p(akk $$0) {
+      return bt.apply($$0, d);
+   }
+
+   public static gel q(akk $$0) {
+      return bm.apply($$0, false);
+   }
+
+   public static gel a(akk $$0, float $$1, float $$2) {
+      return a(
+         "breeze_wind",
+         fak.k,
+         far.b.h,
+         1536,
+         false,
+         true,
+         gel.b.a().a(am).a(new gek.n($$0, false, false)).a(new gek.j($$1, $$2)).a(h).a(ay).a(at).a(aw).a(false)
+      );
+   }
+
+   public static gel b(akk $$0, float $$1, float $$2) {
+      return a(
+         "energy_swirl",
+         fak.k,
+         far.b.h,
+         1536,
+         false,
+         true,
+         gel.b.a().a(K).a(new gek.n($$0, false, false)).a(new gek.j($$1, $$2)).a(d).a(ay).a(at).a(av).a(false)
+      );
+   }
+
+   public static gel h() {
+      return bu;
+   }
+
+   public static gel i() {
+      return bv;
+   }
+
+   public static gel r(akk $$0) {
+      return gel.a.aY.apply($$0, ay);
+   }
+
+   public static gel j() {
+      return bw;
+   }
+
+   public static gel k() {
+      return bx;
+   }
+
+   public static gel l() {
+      return by;
+   }
+
+   public static gel m() {
+      return bz;
+   }
+
+   public static gel n() {
+      return bA;
+   }
+
+   public static gel o() {
+      return bB;
+   }
+
+   public static gel p() {
+      return bC;
+   }
+
+   public static gel s(akk $$0) {
+      return bD.apply($$0);
+   }
+
+   public static gel t(akk $$0) {
+      return bE.apply($$0);
+   }
+
+   public static gel q() {
+      return bF;
+   }
+
+   public static gel u(akk $$0) {
+      return bG.apply($$0);
+   }
+
+   public static gel v(akk $$0) {
+      return bH.apply($$0);
+   }
+
+   public static gel w(akk $$0) {
+      return bI.apply($$0);
+   }
+
+   public static gel x(akk $$0) {
+      return bJ.apply($$0);
+   }
+
+   public static gel r() {
+      return bK;
+   }
+
+   public static gel y(akk $$0) {
+      return bL.apply($$0);
+   }
+
+   public static gel s() {
+      return bM;
+   }
+
+   private static gel.b R() {
+      return gel.b.a().a(at).a(ad).a(an).a(h).a(aN).a(true);
+   }
+
+   public static gel t() {
+      return bN;
+   }
+
+   public static gel u() {
+      return bO;
+   }
+
+   public static gel v() {
+      return bP;
+   }
+
+   private static gel.a a(boolean $$0) {
+      return a("clouds", fak.v, far.b.h, 786432, false, false, gel.b.a().a(ag).a(new gek.n(geb.c, false, false)).a(h).a(ay).a($$0 ? aF : aD).a(aO).a(true));
+   }
+
+   public static gel w() {
+      return bQ;
+   }
+
+   public static gel x() {
+      return bR;
+   }
+
+   public static gel y() {
+      return aW;
+   }
+
+   public static gel z() {
+      return aX;
+   }
+
+   public static gel a(double $$0) {
+      return bS.apply($$0);
+   }
+
+   public static gel A() {
+      return bT;
+   }
+
+   public static gel B() {
+      return bU;
+   }
+
+   public static gel C() {
+      return bV;
+   }
+
+   public static gel D() {
+      return bW;
+   }
+
+   public static gel E() {
+      return bX;
+   }
+
+   public static gel F() {
+      return bY;
+   }
+
+   public static gel G() {
+      return bZ;
+   }
+
+   public gel(String $$0, far $$1, far.b $$2, int $$3, boolean $$4, boolean $$5, Runnable $$6, Runnable $$7) {
+      super($$0, $$6, $$7);
+      this.cb = $$1;
+      this.cc = $$2;
+      this.cd = $$3;
+      this.ce = $$4;
+      this.cf = $$5;
+      this.cg = Optional.of(this);
+   }
+
+   static gel.a a(String $$0, far $$1, far.b $$2, int $$3, gel.b $$4) {
+      return a($$0, $$1, $$2, $$3, false, false, $$4);
+   }
+
+   private static gel.a a(String $$0, far $$1, far.b $$2, int $$3, boolean $$4, boolean $$5, gel.b $$6) {
+      return new gel.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public void a(fah $$0, fau $$1) {
+      if ($$0.k()) {
+         if (this.cf) {
+            $$0.a($$1);
          }
 
-         if (axu.a($$0, "srcrgb")) {
-            $$2 = ezq.b($$0.get("srcrgb").getAsString());
-            if ($$2 != 1) {
-               $$6 = false;
-            }
-         }
-
-         if (axu.a($$0, "dstrgb")) {
-            $$3 = ezq.b($$0.get("dstrgb").getAsString());
-            if ($$3 != 0) {
-               $$6 = false;
-            }
-         }
-
-         if (axu.a($$0, "srcalpha")) {
-            $$4 = ezq.b($$0.get("srcalpha").getAsString());
-            if ($$4 != 1) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if (axu.a($$0, "dstalpha")) {
-            $$5 = ezq.b($$0.get("dstalpha").getAsString());
-            if ($$5 != 0) {
-               $$6 = false;
-            }
-
-            $$7 = true;
-         }
-
-         if ($$6) {
-            return new ezq();
-         } else {
-            return $$7 ? new ezq($$2, $$3, $$4, $$5, $$1) : new ezq($$2, $$3, $$1);
-         }
+         fah.b $$2 = $$0.d();
+         this.a();
+         fai.a($$2);
+         this.b();
       }
    }
 
    @Override
-   public void close() {
-      for (ezx $$0 : this.A) {
-         $$0.close();
-      }
-
-      ezv.a(this);
+   public String toString() {
+      return this.b;
    }
 
-   public void f() {
-      RenderSystem.assertOnRenderThread();
-      ezv.a(0);
-      w = -1;
-      v = null;
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
-         if (this.x.get(this.y.get($$1)) != null) {
-            GlStateManager._activeTexture(33984 + $$1);
-            GlStateManager._bindTexture(0);
-         }
-      }
-
-      GlStateManager._activeTexture($$0);
+   public static List<gel> H() {
+      return ca;
    }
 
-   public void g() {
-      RenderSystem.assertOnRenderThread();
-      this.F = false;
-      v = this;
-      this.G.a();
-      if (this.D != w) {
-         ezv.a(this.D);
-         w = this.D;
-      }
-
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
-         String $$2 = this.y.get($$1);
-         if (this.x.get($$2) != null) {
-            int $$3 = ezx.a(this.D, $$2);
-            ezx.b($$3, $$1);
-            RenderSystem.activeTexture(33984 + $$1);
-            Object $$4 = this.x.get($$2);
-            int $$5 = -1;
-            if ($$4 instanceof eys) {
-               $$5 = ((eys)$$4).f();
-            } else if ($$4 instanceof got) {
-               $$5 = ((got)$$4).a();
-            } else if ($$4 instanceof Integer) {
-               $$5 = (Integer)$$4;
-            }
-
-            if ($$5 != -1) {
-               RenderSystem.bindTexture($$5);
-            }
-         }
-      }
-
-      GlStateManager._activeTexture($$0);
-
-      for (ezx $$6 : this.A) {
-         $$6.b();
-      }
+   public int I() {
+      return this.cd;
    }
 
-   @Override
-   public void b() {
-      this.F = true;
+   public far J() {
+      return this.cb;
    }
 
-   @Nullable
-   public ezx a(String $$0) {
-      RenderSystem.assertOnRenderThread();
-      return this.C.get($$0);
+   public far.b K() {
+      return this.cc;
    }
 
-   public ezp b(String $$0) {
-      RenderSystem.assertOnGameThread();
-      ezx $$1 = this.a($$0);
-      return (ezp)($$1 == null ? t : $$1);
+   public Optional<gel> L() {
+      return Optional.empty();
    }
 
-   private void j() {
-      RenderSystem.assertOnRenderThread();
-      IntList $$0 = new IntArrayList();
+   public boolean M() {
+      return false;
+   }
 
-      for (int $$1 = 0; $$1 < this.y.size(); $$1++) {
-         String $$2 = this.y.get($$1);
-         int $$3 = ezx.a(this.D, $$2);
-         if ($$3 == -1) {
-            s.warn("Shader {} could not find sampler named {} in the specified shader program.", this.E, $$2);
-            this.x.remove($$2);
-            $$0.add($$1);
-         } else {
-            this.z.add($$3);
-         }
+   public boolean N() {
+      return this.ce;
+   }
+
+   public boolean O() {
+      return !this.cc.l;
+   }
+
+   public Optional<gel> P() {
+      return this.cg;
+   }
+
+   static final class a extends gel {
+      static final BiFunction<akk, gek.c, gel> aY = ac.a(
+         ($$0, $$1) -> gel.a("outline", fak.r, far.b.h, 1536, gel.b.a().a(N).a(new gek.n($$0, false, false)).a($$1).a(az).a(aK).a(gel.c.b))
+      );
+      private final gel.b aZ;
+      private final Optional<gel> ba;
+      private final boolean bb;
+
+      a(String $$0, far $$1, far.b $$2, int $$3, boolean $$4, boolean $$5, gel.b $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, () -> $$6.o.forEach(gek::a), () -> $$6.o.forEach(gek::b));
+         this.aZ = $$6;
+         this.ba = $$6.n == gel.c.c ? $$6.a.c().map($$1x -> aY.apply($$1x, $$6.e)) : Optional.empty();
+         this.bb = $$6.n == gel.c.b;
       }
 
-      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
-         int $$5 = $$0.getInt($$4);
-         this.y.remove($$5);
+      @Override
+      public Optional<gel> L() {
+         return this.ba;
       }
 
-      for (ezx $$6 : this.A) {
-         String $$7 = $$6.a();
-         int $$8 = ezx.a(this.D, $$7);
-         if ($$8 == -1) {
-            s.warn("Shader {} could not find uniform named {} in the specified shader program.", this.E, $$7);
-         } else {
-            this.B.add($$8);
-            $$6.b($$8);
-            this.C.put($$7, $$6);
-         }
+      @Override
+      public boolean M() {
+         return this.bb;
+      }
+
+      protected final gel.b Q() {
+         return this.aZ;
+      }
+
+      @Override
+      public String toString() {
+         return "RenderType[" + this.b + ":" + this.aZ + "]";
       }
    }
 
-   private void a(JsonElement $$0) {
-      JsonObject $$1 = axu.m($$0, "sampler");
-      String $$2 = axu.i($$1, "name");
-      if (!axu.a($$1, "file")) {
-         this.x.put($$2, null);
-         this.y.add($$2);
-      } else {
-         this.y.add($$2);
+   protected static final class b {
+      final gek.e a;
+      private final gek.m b;
+      private final gek.p c;
+      private final gek.d d;
+      final gek.c e;
+      private final gek.g f;
+      private final gek.l g;
+      private final gek.f h;
+      private final gek.k i;
+      private final gek.o j;
+      private final gek.q k;
+      private final gek.h l;
+      private final gek.b m;
+      final gel.c n;
+      final ImmutableList<gek> o;
+
+      b(
+         gek.e $$0,
+         gek.m $$1,
+         gek.p $$2,
+         gek.d $$3,
+         gek.c $$4,
+         gek.g $$5,
+         gek.l $$6,
+         gek.f $$7,
+         gek.k $$8,
+         gek.o $$9,
+         gek.q $$10,
+         gek.h $$11,
+         gek.b $$12,
+         gel.c $$13
+      ) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
+         this.j = $$9;
+         this.k = $$10;
+         this.l = $$11;
+         this.m = $$12;
+         this.n = $$13;
+         this.o = ImmutableList.of(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.m, new gek[]{this.l});
       }
-   }
 
-   public void a(String $$0, Object $$1) {
-      this.x.put($$0, $$1);
-      this.b();
-   }
+      @Override
+      public String toString() {
+         return "CompositeState[" + this.o + ", outlineProperty=" + this.n + "]";
+      }
 
-   private void b(JsonElement $$0) throws akn {
-      JsonObject $$1 = axu.m($$0, "uniform");
-      String $$2 = axu.i($$1, "name");
-      int $$3 = ezx.a(axu.i($$1, "type"));
-      int $$4 = axu.o($$1, "count");
-      float[] $$5 = new float[Math.max($$4, 16)];
-      JsonArray $$6 = axu.v($$1, "values");
-      if ($$6.size() != $$4 && $$6.size() > 1) {
-         throw new akn("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
-      } else {
-         int $$7 = 0;
+      public static gel.b.a a() {
+         return new gel.b.a();
+      }
 
-         for (JsonElement $$8 : $$6) {
-            try {
-               $$5[$$7] = axu.e($$8, "value");
-            } catch (Exception var13) {
-               akn $$10 = akn.a(var13);
-               $$10.a("values[" + $$7 + "]");
-               throw $$10;
-            }
+      public static class a {
+         private gek.e a = gek.ap;
+         private gek.m b = gek.i;
+         private gek.p c;
+         private gek.d d;
+         private gek.c e;
+         private gek.g f;
+         private gek.l g;
+         private gek.f h;
+         private gek.k i;
+         private gek.o j;
+         private gek.q k;
+         private gek.h l;
+         private gek.b m;
 
-            $$7++;
-         }
-
-         if ($$4 > 1 && $$6.size() == 1) {
-            while ($$7 < $$4) {
-               $$5[$$7] = $$5[0];
-               $$7++;
-            }
-         }
-
-         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
-         ezx $$12 = new ezx($$2, $$3 + $$11, $$4, this);
-         if ($$3 <= 3) {
-            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
-         } else if ($$3 <= 7) {
-            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
-         } else {
-            $$12.a(Arrays.copyOfRange($$5, 0, $$4));
+         a() {
+            this.c = gek.c;
+            this.d = gek.aB;
+            this.e = gek.ax;
+            this.f = gek.au;
+            this.g = gek.aw;
+            this.h = gek.aG;
+            this.i = gek.aJ;
+            this.j = gek.aq;
+            this.k = gek.aD;
+            this.l = gek.aQ;
+            this.m = gek.aR;
          }
 
-         this.A.add($$12);
+         public gel.b.a a(gek.e $$0) {
+            this.a = $$0;
+            return this;
+         }
+
+         public gel.b.a a(gek.m $$0) {
+            this.b = $$0;
+            return this;
+         }
+
+         public gel.b.a a(gek.p $$0) {
+            this.c = $$0;
+            return this;
+         }
+
+         public gel.b.a a(gek.d $$0) {
+            this.d = $$0;
+            return this;
+         }
+
+         public gel.b.a a(gek.c $$0) {
+            this.e = $$0;
+            return this;
+         }
+
+         public gel.b.a a(gek.g $$0) {
+            this.f = $$0;
+            return this;
+         }
+
+         public gel.b.a a(gek.l $$0) {
+            this.g = $$0;
+            return this;
+         }
+
+         public gel.b.a a(gek.f $$0) {
+            this.h = $$0;
+            return this;
+         }
+
+         public gel.b.a a(gek.k $$0) {
+            this.i = $$0;
+            return this;
+         }
+
+         public gel.b.a a(gek.o $$0) {
+            this.j = $$0;
+            return this;
+         }
+
+         public gel.b.a a(gek.q $$0) {
+            this.k = $$0;
+            return this;
+         }
+
+         public gel.b.a a(gek.h $$0) {
+            this.l = $$0;
+            return this;
+         }
+
+         public gel.b.a a(gek.b $$0) {
+            this.m = $$0;
+            return this;
+         }
+
+         public gel.b a(boolean $$0) {
+            return this.a($$0 ? gel.c.c : gel.c.a);
+         }
+
+         public gel.b a(gel.c $$0) {
+            return new gel.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, $$0);
+         }
       }
    }
 
-   @Override
-   public ezu c() {
-      return this.H;
-   }
+   static enum c {
+      a("none"),
+      b("is_outline"),
+      c("affects_outline");
 
-   @Override
-   public ezu d() {
-      return this.I;
-   }
+      private final String d;
 
-   @Override
-   public void e() {
-      this.I.a(this);
-      this.H.a(this);
-   }
+      private c(final String $$0) {
+         this.d = $$0;
+      }
 
-   public fal h() {
-      return this.J;
-   }
-
-   public String i() {
-      return this.E;
-   }
-
-   @Override
-   public int a() {
-      return this.D;
+      @Override
+      public String toString() {
+         return this.d;
+      }
    }
 }

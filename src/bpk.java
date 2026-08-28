@@ -1,25 +1,14 @@
-import java.util.Arrays;
+import com.mojang.serialization.MapCodec;
 
-public class bpk implements bpl {
-   private final bpl[] a;
+public interface bpk<P extends bpj> {
+   bpk<bph> a = a("constant", bph.b);
+   bpk<bpq> b = a("uniform", bpq.a);
+   bpk<bpf> c = a("clamped_normal", bpf.a);
+   bpk<bpp> d = a("trapezoid", bpp.a);
 
-   public bpk(bpl... $$0) {
-      this.a = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public float a(aym $$0) {
-      float $$1 = 1.0F;
-
-      for (bpl $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+   static <P extends bpj> bpk<P> a(String $$0, MapCodec<P> $$1) {
+      return jw.a(lq.J, $$0, () -> $$1);
    }
 }

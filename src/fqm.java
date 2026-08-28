@@ -1,88 +1,22 @@
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class fqm extends fqf {
-   private static final wu u = wu.c("controls.keybinds.title");
-   @Nullable
-   public ffl a;
-   public long s;
-   private fql v;
-   private fhm w;
+public class fqm extends fql {
+   private static final wu a = wu.c("options.skinCustomisation.title");
 
-   public fqm(fnd $$0, ffr $$1) {
-      super($$0, $$1, u);
-   }
-
-   @Override
-   protected void aP_() {
-      this.v = this.r.c(this.c(new fql(this, this.l)));
+   public fqm(fnj $$0, ffx $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
    protected void m() {
-   }
+      List<fhq> $$0 = new ArrayList<>();
 
-   @Override
-   protected void E() {
-      this.w = fhm.a(wu.c("controls.resetAll"), $$0x -> {
-         for (ffl $$1 : this.c.W) {
-            $$1.b($$1.i());
-         }
-
-         this.v.c();
-      }).a();
-      fld $$0 = this.r.b(fld.e().a(8));
-      $$0.a(this.w);
-      $$0.a(fhm.a(wt.d, $$0x -> this.d()).a());
-   }
-
-   @Override
-   protected void c() {
-      this.r.a();
-      this.v.a(this.m, this.r);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.a != null) {
-         this.c.a(this.a, ezb.b.c.a($$2));
-         this.a = null;
-         this.v.c();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.a != null) {
-         if ($$0 == 256) {
-            this.c.a(this.a, ezb.bv);
-         } else {
-            this.c.a(this.a, ezb.a($$0, $$1));
-         }
-
-         this.a = null;
-         this.s = ac.c();
-         this.v.c();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(fgz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      boolean $$4 = false;
-
-      for (ffl $$5 : this.c.W) {
-         if (!$$5.l()) {
-            $$4 = true;
-            break;
-         }
+      for (cml $$1 : cml.values()) {
+         $$0.add(fhz.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
       }
 
-      this.w.j = $$4;
+      $$0.add(this.c.v().a(this.c));
+      this.q.a($$0);
    }
 }

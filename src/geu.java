@@ -1,39 +1,108 @@
+import javax.annotation.Nullable;
+
 public class geu {
-   protected final int[] a;
-   protected final int b;
-   protected final jf c;
-   protected final gpi d;
-   private final boolean e;
+   protected final geb a;
+   protected final dcf b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   public ghd.b[] f;
 
-   public geu(int[] $$0, int $$1, jf $$2, gpi $$3, boolean $$4) {
-      this.a = $$0;
+   public geu(ghd $$0, dcf $$1, int $$2, geb $$3) {
+      this.a = $$3;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+      this.a($$2);
+      this.a($$0);
    }
 
-   public gpi a() {
-      return this.d;
+   protected void a(ghd $$0) {
+      if (!fft.Q().bx()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
+      } else {
+         int $$1 = this.d * this.c * this.e;
+         this.f = new ghd.b[$$1];
+
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.I_() + $$3 * 16, $$4 * 16);
+               }
+            }
+         }
+      }
    }
 
-   public int[] b() {
-      return this.a;
+   public void a() {
+      for (ghd.b $$0 : this.f) {
+         $$0.e();
+      }
    }
 
-   public boolean c() {
-      return this.b != -1;
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
    }
 
-   public int d() {
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.an();
+      this.e = $$1;
+      this.g = $$0;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public dch c() {
       return this.b;
    }
 
-   public jf e() {
-      return this.c;
+   public void a(double $$0, double $$1) {
+      int $$2 = ayg.c($$0);
+      int $$3 = ayg.c($$1);
+
+      for (int $$4 = 0; $$4 < this.d; $$4++) {
+         int $$5 = this.d * 16;
+         int $$6 = $$2 - 8 - $$5 / 2;
+         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
+
+         for (int $$8 = 0; $$8 < this.e; $$8++) {
+            int $$9 = this.e * 16;
+            int $$10 = $$3 - 8 - $$9 / 2;
+            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
+
+            for (int $$12 = 0; $$12 < this.c; $$12++) {
+               int $$13 = this.b.I_() + $$12 * 16;
+               ghd.b $$14 = this.f[this.a($$4, $$12, $$8)];
+               ja $$15 = $$14.f();
+               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
+                  $$14.a($$7, $$13, $$11);
+               }
+            }
+         }
+      }
    }
 
-   public boolean f() {
-      return this.e;
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = Math.floorMod($$0, this.d);
+      int $$5 = Math.floorMod($$1 - this.b.ao(), this.c);
+      int $$6 = Math.floorMod($$2, this.e);
+      ghd.b $$7 = this.f[this.a($$4, $$5, $$6)];
+      $$7.a($$3);
+   }
+
+   @Nullable
+   protected ghd.b a(ja $$0) {
+      int $$1 = ayg.a($$0.v() - this.b.I_(), 16);
+      if ($$1 >= 0 && $$1 < this.c) {
+         int $$2 = ayg.b(ayg.a($$0.u(), 16), this.d);
+         int $$3 = ayg.b(ayg.a($$0.w(), 16), this.e);
+         return this.f[this.a($$2, $$1, $$3)];
+      } else {
+         return null;
+      }
    }
 }

@@ -1,94 +1,67 @@
-import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
 public class bef extends DataFix {
-   private final String a;
-   private static final Map<String, String> b = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-      $$0.put("minecraft:bat", "minecraft:bat_spawn_egg");
-      $$0.put("minecraft:blaze", "minecraft:blaze_spawn_egg");
-      $$0.put("minecraft:cave_spider", "minecraft:cave_spider_spawn_egg");
-      $$0.put("minecraft:chicken", "minecraft:chicken_spawn_egg");
-      $$0.put("minecraft:cow", "minecraft:cow_spawn_egg");
-      $$0.put("minecraft:creeper", "minecraft:creeper_spawn_egg");
-      $$0.put("minecraft:donkey", "minecraft:donkey_spawn_egg");
-      $$0.put("minecraft:elder_guardian", "minecraft:elder_guardian_spawn_egg");
-      $$0.put("minecraft:ender_dragon", "minecraft:ender_dragon_spawn_egg");
-      $$0.put("minecraft:enderman", "minecraft:enderman_spawn_egg");
-      $$0.put("minecraft:endermite", "minecraft:endermite_spawn_egg");
-      $$0.put("minecraft:evocation_illager", "minecraft:evocation_illager_spawn_egg");
-      $$0.put("minecraft:ghast", "minecraft:ghast_spawn_egg");
-      $$0.put("minecraft:guardian", "minecraft:guardian_spawn_egg");
-      $$0.put("minecraft:horse", "minecraft:horse_spawn_egg");
-      $$0.put("minecraft:husk", "minecraft:husk_spawn_egg");
-      $$0.put("minecraft:iron_golem", "minecraft:iron_golem_spawn_egg");
-      $$0.put("minecraft:llama", "minecraft:llama_spawn_egg");
-      $$0.put("minecraft:magma_cube", "minecraft:magma_cube_spawn_egg");
-      $$0.put("minecraft:mooshroom", "minecraft:mooshroom_spawn_egg");
-      $$0.put("minecraft:mule", "minecraft:mule_spawn_egg");
-      $$0.put("minecraft:ocelot", "minecraft:ocelot_spawn_egg");
-      $$0.put("minecraft:pufferfish", "minecraft:pufferfish_spawn_egg");
-      $$0.put("minecraft:parrot", "minecraft:parrot_spawn_egg");
-      $$0.put("minecraft:pig", "minecraft:pig_spawn_egg");
-      $$0.put("minecraft:polar_bear", "minecraft:polar_bear_spawn_egg");
-      $$0.put("minecraft:rabbit", "minecraft:rabbit_spawn_egg");
-      $$0.put("minecraft:sheep", "minecraft:sheep_spawn_egg");
-      $$0.put("minecraft:shulker", "minecraft:shulker_spawn_egg");
-      $$0.put("minecraft:silverfish", "minecraft:silverfish_spawn_egg");
-      $$0.put("minecraft:skeleton", "minecraft:skeleton_spawn_egg");
-      $$0.put("minecraft:skeleton_horse", "minecraft:skeleton_horse_spawn_egg");
-      $$0.put("minecraft:slime", "minecraft:slime_spawn_egg");
-      $$0.put("minecraft:snow_golem", "minecraft:snow_golem_spawn_egg");
-      $$0.put("minecraft:spider", "minecraft:spider_spawn_egg");
-      $$0.put("minecraft:squid", "minecraft:squid_spawn_egg");
-      $$0.put("minecraft:stray", "minecraft:stray_spawn_egg");
-      $$0.put("minecraft:turtle", "minecraft:turtle_spawn_egg");
-      $$0.put("minecraft:vex", "minecraft:vex_spawn_egg");
-      $$0.put("minecraft:villager", "minecraft:villager_spawn_egg");
-      $$0.put("minecraft:vindication_illager", "minecraft:vindication_illager_spawn_egg");
-      $$0.put("minecraft:witch", "minecraft:witch_spawn_egg");
-      $$0.put("minecraft:wither", "minecraft:wither_spawn_egg");
-      $$0.put("minecraft:wither_skeleton", "minecraft:wither_skeleton_spawn_egg");
-      $$0.put("minecraft:wolf", "minecraft:wolf_spawn_egg");
-      $$0.put("minecraft:zombie", "minecraft:zombie_spawn_egg");
-      $$0.put("minecraft:zombie_horse", "minecraft:zombie_horse_spawn_egg");
-      $$0.put("minecraft:zombie_pigman", "minecraft:zombie_pigman_spawn_egg");
-      $$0.put("minecraft:zombie_villager", "minecraft:zombie_villager_spawn_egg");
-   });
+   private static final Set<String> a = Set.of(
+      "filled_map.buried_treasure",
+      "filled_map.explorer_jungle",
+      "filled_map.explorer_swamp",
+      "filled_map.mansion",
+      "filled_map.monument",
+      "filled_map.trial_chambers",
+      "filled_map.village_desert",
+      "filled_map.village_plains",
+      "filled_map.village_savanna",
+      "filled_map.village_snowy",
+      "filled_map.village_taiga"
+   );
 
-   public bef(Schema $$0, boolean $$1, String $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+   public bef(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgd.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgd.D.typeName(), bhp.a()));
-      OpticFinder<String> $$2 = DSL.fieldFinder("id", bhp.a());
-      OpticFinder<?> $$3 = $$0.findField("tag");
-      OpticFinder<?> $$4 = $$3.type().findField("EntityTag");
-      return this.fixTypeEverywhereTyped("ItemInstanceSpawnEggFix" + this.getOutputSchema().getVersionKey(), $$0, $$4x -> {
-         Optional<Pair<String, String>> $$5 = $$4x.getOptional($$1);
-         if ($$5.isPresent() && Objects.equals($$5.get().getSecond(), this.a)) {
-            Typed<?> $$6 = $$4x.getOrCreateTyped($$3);
-            Typed<?> $$7 = $$6.getOrCreateTyped($$4);
-            Optional<String> $$8 = $$7.getOptional($$2);
-            if ($$8.isPresent()) {
-               return $$4x.set($$1, Pair.of(bgd.D.typeName(), b.getOrDefault($$8.get(), "minecraft:pig_spawn_egg")));
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgg.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgg.D.typeName(), bhs.a()));
+      OpticFinder<?> $$2 = $$0.findField("components");
+      return this.fixTypeEverywhereTyped(
+         "ItemStack custom_name to item_name component fix",
+         $$0,
+         $$2x -> {
+            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+            Optional<String> $$4 = $$3.map(Pair::getSecond);
+            if ($$4.filter($$0xx -> $$0xx.equals("minecraft:white_banner")).isPresent()) {
+               return $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), bef::b));
+            } else {
+               return $$4.filter($$0xx -> $$0xx.equals("minecraft:filled_map")).isPresent()
+                  ? $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), bef::a))
+                  : $$2x;
             }
          }
+      );
+   }
 
-         return $$4x;
-      });
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return a($$0, a::contains);
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      return a($$0, $$0x -> $$0x.equals("block.minecraft.ominous_banner"));
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0, Predicate<String> $$1) {
+      OptionalDynamic<T> $$2 = $$0.get("minecraft:custom_name");
+      Optional<String> $$3 = $$2.asString().result().flatMap(azn::a).filter($$1);
+      return $$3.isPresent() ? $$0.renameField("minecraft:custom_name", "minecraft:item_name") : $$0;
    }
 }

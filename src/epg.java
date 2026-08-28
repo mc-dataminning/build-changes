@@ -1,5 +1,13 @@
 public class epg {
-   public static final int a = 0;
-   public static final int b = 15;
-   public static final int c = 0;
+   public final ewf a;
+   public final ewf b;
+   public final float c;
+   public final float d;
+
+   public epg(ewf $$0, ewf $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
 }

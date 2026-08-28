@@ -1,30 +1,13 @@
-import java.util.function.IntFunction;
+public class fex extends fey {
+   private final fck b;
 
-public enum fex implements ayh {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
-
-   private static final IntFunction<fex> d = awu.a(fex::a, values(), awu.a.b);
-   private final int e;
-   private final String f;
-
-   private fex(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public fex(fck $$0, long $$1, wu $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public int a() {
-      return this.e;
-   }
-
-   @Override
-   public String b() {
-      return this.f;
-   }
-
-   public static fex a(int $$0) {
-      return d.apply($$0);
+   protected void a(fbc $$0, long $$1) throws fcp {
+      $$0.d($$1, this.b.a);
    }
 }

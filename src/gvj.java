@@ -1,95 +1,74 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetSocketAddress;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gvj implements gvl {
+   private static final int a = 600;
+   private static final wu b = wu.c("tutorial.punch_tree.title");
+   private static final wu c = wu.a("tutorial.punch_tree.description", gvk.a("attack"));
+   private final gvk d;
+   private fkd e;
+   private int f;
+   private int g;
 
-public class gvj {
-   static final Logger a = LogUtils.getLogger();
-   final fnd b;
-   volatile boolean c;
-   @Nullable
-   vp d;
-
-   public gvj(fnd $$0) {
-      this.b = $$0;
+   public gvj(gvk $$0) {
+      this.d = $$0;
    }
 
-   public void a(final fbn $$0, fzv $$1) {
-      final ffn $$2 = ffn.Q();
-      $$2.aT();
-      $$2.aX().c(wu.c("mco.connect.success"));
-      final String $$3 = $$1.a();
-      final int $$4 = $$1.b();
-      (new Thread("Realms-connect-task") {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
-
-            try {
-               $$0 = new InetSocketAddress($$3, $$4);
-               if (gvj.this.c) {
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gvm.f);
+      } else {
+         if (this.f == 1) {
+            gdf $$0 = this.d.e().s;
+            if ($$0 != null) {
+               if ($$0.fZ().a(awf.r)) {
+                  this.d.a(gvm.e);
                   return;
                }
 
-               gvj.this.d = vp.a($$0, $$2.m.az(), $$2.aP().n());
-               if (gvj.this.c) {
+               if (gvg.a($$0)) {
+                  this.d.a(gvm.e);
                   return;
                }
-
-               fyc $$1 = new fyc(gvj.this.d, $$2, $$0.e($$3), gvj.this.b, false, null, $$0xx -> {
-               }, null);
-               if ($$0.i()) {
-                  $$1.a($$0.o);
-               }
-
-               if (gvj.this.c) {
-                  return;
-               }
-
-               gvj.this.d.a($$3, $$4, $$1);
-               if (gvj.this.c) {
-                  return;
-               }
-
-               gvj.this.d.a(new air($$2.X().c(), $$2.X().b()));
-               $$2.a(fzj.a($$0));
-               $$2.bb().a(gdh.c.c, String.valueOf($$0.a), $$0.c);
-               $$2.ae().a(gvj.this.d, gsc.c.b);
-            } catch (Exception var5) {
-               $$2.ae().i();
-               if (gvj.this.c) {
-                  return;
-               }
-
-               gvj.a.error("Couldn't connect to world", var5);
-               String $$3 = var5.toString();
-               if ($$0 != null) {
-                  String $$4 = $$0 + ":" + $$4;
-                  $$3 = $$3.replaceAll($$4, "");
-               }
-
-               gvi $$5 = new gvi(gvj.this.b, wt.r, wu.a("disconnect.genericReason", $$3));
-               $$2.execute(() -> $$2.a($$5));
             }
          }
-      }).start();
-   }
 
-   public void a() {
-      this.c = true;
-      if (this.d != null && this.d.i()) {
-         this.d.a(wu.c("disconnect.genericReason"));
-         this.d.n();
+         if ((this.f >= 600 || this.g > 3) && this.e == null) {
+            this.e = new fkd(fkd.a.c, b, c, true);
+            this.d.e().ax().a(this.e);
+         }
       }
    }
 
+   @Override
    public void b() {
-      if (this.d != null) {
-         if (this.d.i()) {
-            this.d.b();
-         } else {
-            this.d.n();
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
+   }
+
+   @Override
+   public void a(fyj $$0, ja $$1, dsk $$2, float $$3) {
+      boolean $$4 = $$2.a(avw.t);
+      if ($$4 && $$3 > 0.0F) {
+         if (this.e != null) {
+            this.e.a($$3);
          }
+
+         if ($$3 >= 1.0F) {
+            this.d.a(gvm.d);
+         }
+      } else if (this.e != null) {
+         this.e.a(0.0F);
+      } else if ($$4) {
+         this.g++;
+      }
+   }
+
+   @Override
+   public void a(cuc $$0) {
+      if ($$0.a(awf.r)) {
+         this.d.a(gvm.e);
       }
    }
 }

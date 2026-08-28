@@ -1,83 +1,34 @@
-public abstract class fku implements fla {
-   private int c;
-   private int d;
-   protected int a;
-   protected int b;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-   public fku(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-   }
+public interface fku {
+   MapCodec<fku> b = fkv.f.dispatchMap(fku::a, fkv::a);
 
-   @Override
-   public void m(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.D() + ($$0 - this.D());
-         $$1.m($$2);
-      });
-      this.c = $$0;
-   }
+   fkv a();
 
-   @Override
-   public void n(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.E() + ($$0 - this.E());
-         $$1.n($$2);
-      });
-      this.d = $$0;
-   }
+   Either<fku.b, fku.c> b();
 
-   @Override
-   public int D() {
-      return this.c;
-   }
+   public static record a(fku b, fki.a c) {
+      public static final Codec<fku.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fku.b.forGetter(fku.a::a), fki.a.a.optionalFieldOf("filter", fki.a.b).forGetter(fku.a::b)).apply($$0, fku.a::new)
+      );
 
-   @Override
-   public int E() {
-      return this.d;
-   }
-
-   @Override
-   public int y() {
-      return this.a;
-   }
-
-   @Override
-   public int w() {
-      return this.b;
-   }
-
-   protected abstract static class a {
-      public final flb a;
-      public final flc.a b;
-
-      protected a(flb $$0, flc $$1) {
-         this.a = $$0;
-         this.b = $$1.h();
+      public fku a() {
+         return this.b;
       }
 
-      public int a() {
-         return this.a.w() + this.b.b + this.b.d;
+      public fki.a b() {
+         return this.c;
       }
+   }
 
-      public int b() {
-         return this.a.y() + this.b.a + this.b.c;
-      }
+   public interface b {
+      eyp load(atw var1) throws IOException;
+   }
 
-      public void a(int $$0, int $$1) {
-         float $$2 = (float)this.b.a;
-         float $$3 = (float)($$1 - this.a.y() - this.b.c);
-         int $$4 = (int)aye.i(this.b.e, $$2, $$3);
-         this.a.m($$4 + $$0);
-      }
-
-      public void b(int $$0, int $$1) {
-         float $$2 = (float)this.b.b;
-         float $$3 = (float)($$1 - this.a.w() - this.b.d);
-         int $$4 = Math.round(aye.i(this.b.f, $$2, $$3));
-         this.a.n($$4 + $$0);
-      }
+   public static record c(akk a) {
    }
 }

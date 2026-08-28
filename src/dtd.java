@@ -1,28 +1,20 @@
-public enum dtd implements ayz {
-   a(jf.a),
-   b(jf.b);
+public enum dtd implements azc {
+   a("compare"),
+   b("subtract");
 
-   private final jf c;
+   private final String c;
 
-   private dtd(final jf $$0) {
+   private dtd(final String $$0) {
       this.c = $$0;
-   }
-
-   public jf a() {
-      return this.c;
    }
 
    @Override
    public String toString() {
-      return this.c();
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public dtd b() {
-      return this == a ? b : a;
+      return this.c;
    }
 }

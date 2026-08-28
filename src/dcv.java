@@ -1,76 +1,92 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public interface dcv extends dbl {
+   jf[] C = jf.values();
 
-public record dcv(tx d, Optional<dcv.a> e, Optional<bsm> f) {
-   public static final String a = "entity";
-   public static final Codec<dcv> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               tx.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
-               dcv.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
-               bsm.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dcv::new)
-   );
-   public static final Codec<bon<dcv>> c = bon.a(b);
-
-   public dcv() {
-      this(new tx(), Optional.empty(), Optional.empty());
+   default int a(ja $$0, jf $$1) {
+      return this.a_($$0).c(this, $$0, $$1);
    }
 
-   public dcv(tx d, Optional<dcv.a> e, Optional<bsm> f) {
-      if (d.e("id")) {
-         akk $$3 = akk.a(d.l("id"));
-         if ($$3 != null) {
-            d.a("id", $$3.toString());
+   default int e_(ja $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.d(), jf.a));
+      if ($$1 >= 15) {
+         return $$1;
+      } else {
+         $$1 = Math.max($$1, this.a($$0.c(), jf.b));
+         if ($$1 >= 15) {
+            return $$1;
          } else {
-            d.r("id");
+            $$1 = Math.max($$1, this.a($$0.e(), jf.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.f(), jf.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.g(), jf.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.h(), jf.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   default int a(ja $$0, jf $$1, boolean $$2) {
+      dsk $$3 = this.a_($$0);
+      if ($$2) {
+         return dhj.m($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(dfj.ha)) {
+         return 15;
+      } else if ($$3.a(dfj.cw)) {
+         return $$3.c(dlj.f);
+      } else {
+         return $$3.m() ? this.a($$0, $$1) : 0;
+      }
+   }
+
+   default boolean b(ja $$0, jf $$1) {
+      return this.c($$0, $$1) > 0;
+   }
+
+   default int c(ja $$0, jf $$1) {
+      dsk $$2 = this.a_($$0);
+      int $$3 = $$2.b(this, $$0, $$1);
+      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
+   }
+
+   default boolean C(ja $$0) {
+      if (this.c($$0.d(), jf.a) > 0) {
+         return true;
+      } else if (this.c($$0.c(), jf.b) > 0) {
+         return true;
+      } else if (this.c($$0.e(), jf.c) > 0) {
+         return true;
+      } else if (this.c($$0.f(), jf.d) > 0) {
+         return true;
+      } else {
+         return this.c($$0.g(), jf.e) > 0 ? true : this.c($$0.h(), jf.f) > 0;
+      }
+   }
+
+   default int D(ja $$0) {
+      int $$1 = 0;
+
+      for (jf $$2 : C) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
+         }
+
+         if ($$3 > $$1) {
+            $$1 = $$3;
          }
       }
 
-      this.d = d;
-      this.e = e;
-      this.f = f;
-   }
-
-   public tx a() {
-      return this.d;
-   }
-
-   public Optional<dcv.a> b() {
-      return this.e;
-   }
-
-   public Optional<bsm> c() {
-      return this.f;
-   }
-
-   public static record a(axw<Integer> b, axw<Integer> c) {
-      private static final axw<Integer> d = new axw<>(0, 15);
-      public static final Codec<dcv.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dcv.a::new)
-      );
-
-      private static DataResult<axw<Integer>> a(axw<Integer> $$0) {
-         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
-      }
-
-      private static MapCodec<axw<Integer>> a(String $$0) {
-         return axw.a.lenientOptionalFieldOf($$0, d).validate(dcv.a::a);
-      }
-
-      public boolean a(ja $$0, aqk $$1) {
-         return this.b.a($$1.a(dcm.b, $$0)) && this.c.a($$1.a(dcm.a, $$0));
-      }
-
-      public axw<Integer> a() {
-         return this.b;
-      }
-
-      public axw<Integer> b() {
-         return this.c;
-      }
+      return $$1;
    }
 }

@@ -1,46 +1,39 @@
-import org.joml.Matrix4f;
+public class ggq implements ggd<dqz> {
+   private final fwh<?> a;
 
-public class ggq<T extends dre> implements gfx<T> {
-   public static final akk a = new akk("textures/environment/end_sky.png");
-   public static final akk b = new akk("textures/entity/end_portal.png");
-
-   public ggq(gfy.a $$0) {
+   public ggq(gge.a $$0) {
+      this.a = new fwh($$0.a(fxn.bk));
    }
 
-   public void a(T $$0, float $$1, fag $$2, gdx $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
-   }
-
-   private void a(T $$0, Matrix4f $$1, fak $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jf.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jf.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jf.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jf.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jf.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jf.b);
-   }
-
-   private void a(T $$0, Matrix4f $$1, fak $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jf $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7).e();
-         $$2.a($$1, $$4, $$5, $$8).e();
-         $$2.a($$1, $$4, $$6, $$9).e();
-         $$2.a($$1, $$3, $$6, $$10).e();
+   public void a(dqz $$0, float $$1, fam $$2, ged $$3, int $$4, int $$5) {
+      jf $$6 = jf.b;
+      if ($$0.m()) {
+         dsk $$7 = $$0.i().a_($$0.az_());
+         if ($$7.b() instanceof dmg) {
+            $$6 = $$7.c(dmg.b);
+         }
       }
-   }
 
-   protected float b() {
-      return 0.75F;
-   }
+      csv $$8 = $$0.u();
+      grs $$9;
+      if ($$8 == null) {
+         $$9 = ges.i;
+      } else {
+         $$9 = ges.j.get($$8.a());
+      }
 
-   protected float c() {
-      return 0.375F;
-   }
-
-   protected gef d() {
-      return gef.u();
+      $$2.a();
+      $$2.a(0.5F, 0.5F, 0.5F);
+      float $$11 = 0.9995F;
+      $$2.b(0.9995F, 0.9995F, 0.9995F);
+      $$2.a($$6.b());
+      $$2.b(1.0F, -1.0F, -1.0F);
+      $$2.a(0.0F, -1.0F, 0.0F);
+      fxo $$12 = this.a.b();
+      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
+      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
+      faq $$13 = $$9.a($$3, gel::e);
+      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

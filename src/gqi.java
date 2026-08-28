@@ -1,37 +1,17 @@
-import javax.annotation.Nullable;
+import java.io.IOException;
 
-public record gqi(akk a, @Nullable String b, @Nullable akk c, @Nullable akk d, gqi.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
+public class gqi extends aub<int[]> {
+   private static final akk a = new akk("textures/colormap/grass.png");
 
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
+   protected int[] a(atw $$0, bmu $$1) {
+      try {
+         return gqk.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
       }
+   }
 
-      public static gqi.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
-
-      public String a() {
-         return this.c;
-      }
+   protected void a(int[] $$0, atw $$1, bmu $$2) {
+      dcd.a($$0);
    }
 }

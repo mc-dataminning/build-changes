@@ -13,14 +13,14 @@ public class ane {
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("pardon").requires($$0x -> $$0x.c(3)))
             .then(
                er.a("targets", ff.a())
-                  .suggests(($$0x, $$1) -> ev.a(((eq)$$0x.getSource()).l().ah().f().a(), $$1))
+                  .suggests(($$0x, $$1) -> ev.a(((eq)$$0x.getSource()).l().ai().f().a(), $$1))
                   .executes($$0x -> a((eq)$$0x.getSource(), ff.a($$0x, "targets")))
             )
       );
    }
 
    private static int a(eq $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aun $$2 = $$0.l().ah().f();
+      aup $$2 = $$0.l().ai().f();
       int $$3 = 0;
 
       for (GameProfile $$4 : $$1) {

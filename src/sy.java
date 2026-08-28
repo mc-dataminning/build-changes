@@ -19,27 +19,27 @@ public class sy extends MinecraftServer {
    private static final int l = 20;
    private static final int m = 14999992;
    private static final ale n = new ale(null, ServicesKeySet.EMPTY, null, null);
-   private final bld o = new bld(4);
+   private final blg o = new blg(4);
    private List<sn> p = new ArrayList<>();
    private final List<tn> q;
    private final ja r;
    private final Stopwatch s = Stopwatch.createUnstarted();
-   private static final dbz t = ac.a(new dbz(), $$0 -> {
-      $$0.a(dbz.e).a(false, null);
-      $$0.a(dbz.v).a(false, null);
-      $$0.a(dbz.o).a(0, null);
+   private static final dcb t = ac.a(new dcb(), $$0 -> {
+      $$0.a(dcb.e).a(false, null);
+      $$0.a(dcb.v).a(false, null);
+      $$0.a(dcb.o).a(0, null);
    });
-   private static final dyx u = new dyx(0L, false, false);
+   private static final dzd u = new dzd(0L, false, false);
    @Nullable
    private te v;
 
-   public static sy a(Thread $$0, eqc.c $$1, atf $$2, Collection<tn> $$3, ja $$4) {
+   public static sy a(Thread $$0, eqi.c $$1, ath $$2, Collection<tn> $$3, ja $$4) {
       if ($$3.isEmpty()) {
          throw new IllegalArgumentException("No test functions were given!");
       } else {
          $$2.a();
-         dcy $$5 = new dcy(new dbr(new ArrayList<>($$2.b()), List.of()), cox.d.a());
-         dch $$6 = new dch("Test Level", dca.b, false, bqa.c, true, t, $$5);
+         dda $$5 = new dda(new dbt(new ArrayList<>($$2.b()), List.of()), cpa.d.a());
+         dcj $$6 = new dcj("Test Level", dcc.b, false, bqd.c, true, t, $$5);
          alg.d $$7 = new alg.d($$2, $$5, false, true);
          alg.c $$8 = new alg.c($$7, er.a.b, 4);
 
@@ -47,9 +47,9 @@ public class sy extends MinecraftServer {
             k.debug("Starting resource loading");
             Stopwatch $$9 = Stopwatch.createStarted();
             alh $$10 = ac.<alh>c($$2x -> alg.a($$8, $$1xx -> {
-                  jw<dwa> $$2xx = new jr<>(lr.ba, Lifecycle.stable()).m();
-                  dyu.b $$3x = $$1xx.c().d(lr.aX).g(eig.b).a().a().a($$2xx);
-                  return new alg.b<>(new eqg($$6, u, $$3x.d(), $$3x.a()), $$3x.b());
+                  jw<dwg> $$2xx = new jr<>(lr.ba, Lifecycle.stable()).m();
+                  dza.b $$3x = $$1xx.c().d(lr.aX).g(eim.b).a().a().a($$2xx);
+                  return new alg.b<>(new eqm($$6, u, $$3x.d(), $$3x.a()), $$3x.b());
                }, alh::new, ac.g(), $$2x)).get();
             $$9.stop();
             k.debug("Finished resource loading after {} ms", $$9.elapsed(TimeUnit.MILLISECONDS));
@@ -62,18 +62,18 @@ public class sy extends MinecraftServer {
       }
    }
 
-   private sy(Thread $$0, eqc.c $$1, atf $$2, alh $$3, Collection<tn> $$4, ja $$5) {
-      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, azm.a(), n, aqv::b);
+   private sy(Thread $$0, eqi.c $$1, ath $$2, alh $$3, Collection<tn> $$4, ja $$5) {
+      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, azp.a(), n, aqx::b);
       this.q = Lists.newArrayList($$4);
       this.r = $$5;
    }
 
    @Override
    public boolean e() {
-      this.a(new auh(this, this.bd(), this.g, 1) {
+      this.a(new auj(this, this.be(), this.g, 1) {
       });
       this.t_();
-      aqk $$0 = this.I();
+      aqm $$0 = this.J();
       this.p = Lists.newArrayList(so.a(this.q, $$0));
       $$0.a(this.r, 0.0F);
       int $$1 = 20000000;
@@ -85,8 +85,8 @@ public class sy extends MinecraftServer {
    @Override
    public void a(BooleanSupplier $$0) {
       super.a($$0);
-      aqk $$1 = this.I();
-      if (!this.bq()) {
+      aqm $$1 = this.J();
+      if (!this.br()) {
          this.b($$1);
       }
 
@@ -116,7 +116,7 @@ public class sy extends MinecraftServer {
    }
 
    @Override
-   public blg f() {
+   public blj f() {
       return this.o;
    }
 
@@ -127,7 +127,7 @@ public class sy extends MinecraftServer {
 
    @Override
    public void v_() {
-      this.bA();
+      this.bB();
    }
 
    @Override
@@ -150,7 +150,7 @@ public class sy extends MinecraftServer {
       System.exit(1);
    }
 
-   private void b(aqk $$0) {
+   private void b(aqm $$0) {
       ja $$1 = new ja($$0.z.a(-14999992, 14999992), -59, $$0.z.a(-14999992, 14999992));
       sw $$2 = sw.a.a(this.p, $$0).a(new ti($$1, 8)).a();
       Collection<st> $$3 = $$2.a();
@@ -161,7 +161,7 @@ public class sy extends MinecraftServer {
       $$2.b();
    }
 
-   private boolean bq() {
+   private boolean br() {
       return this.v != null;
    }
 

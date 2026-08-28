@@ -1,76 +1,53 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dnc extends dff {
-   public static final MapCodec<dnc> a = b(dnc::new);
-   private static final wu d = wu.c("container.stonecutter");
-   public static final dtb b = djb.aE;
-   protected static final ews c = dff.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+public class dnc extends dmh {
+   public static final MapCodec<dnc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dtx.a.fieldOf("wood_type").forGetter(dmh::d), u()).apply($$0, dnc::new));
+   public static final dtk b = dta.ba;
 
    @Override
    public MapCodec<dnc> a() {
       return a;
    }
 
-   public dnc(dsg.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, jf.c));
+   public dnc(dtx $$0, dsj.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public dsh a(cxk $$0) {
-      return this.o().a(b, $$0.g().g());
+   protected boolean a(dsk $$0, dci $$1, ja $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   protected bqd a(dsh $$0, dcd $$1, ja $$2, cmh $$3, evv $$4) {
-      if ($$1.B) {
-         return bqd.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(avp.ay);
-         return bqd.c;
-      }
-   }
-
-   @Nullable
-   @Override
-   protected bqh b(dsh $$0, dcd $$1, ja $$2) {
-      return new bqn(($$2x, $$3, $$4) -> new crg($$2x, $$3, cpq.a($$1, $$2)), d);
+   public dsk a(cxm $$0) {
+      eoh $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Integer.valueOf(dtq.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == eoi.c));
    }
 
    @Override
-   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
-      return c;
+   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
+      return $$1 == jf.a && !this.a($$0, $$3, $$4) ? dfj.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean f_(dsh $$0) {
-      return true;
+   public float g(dsk $$0) {
+      return dtq.b($$0.c(b));
    }
 
    @Override
-   protected dll a_(dsh $$0) {
-      return dll.c;
+   protected dsk a(dsk $$0, dlu $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected dsh a(dsh $$0, dls $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected dsk a(dsk $$0, dke $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected dsh a(dsh $$0, dkc $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dsh $$0, eoq $$1) {
-      return false;
+   protected void a(dsl.a<dfh, dsk> $$0) {
+      $$0.a(b, f);
    }
 }

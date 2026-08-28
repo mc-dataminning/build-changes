@@ -4,12 +4,12 @@ import org.slf4j.Logger;
 public class ze {
    private static final Logger a = LogUtils.getLogger();
 
-   public static <T extends wa> void a(zb<T> $$0, T $$1, aqk $$2) throws akw {
+   public static <T extends wa> void a(zb<T> $$0, T $$1, aqm $$2) throws akw {
       a($$0, $$1, $$2.o());
    }
 
-   public static <T extends wa> void a(zb<T> $$0, T $$1, bot<?> $$2) throws akw {
-      if (!$$2.bw()) {
+   public static <T extends wa> void a(zb<T> $$0, T $$1, bow<?> $$2) throws akw {
+      if (!$$2.bx()) {
          $$2.c(() -> {
             if ($$1.a($$0)) {
                try {

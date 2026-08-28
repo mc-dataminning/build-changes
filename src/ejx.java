@@ -1,81 +1,61 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public abstract class ejx {
-   public static final Codec<ejx> e = lq.ag.r().dispatch("element_type", ejx::a, ejy::codec);
-   private static final jj<emo> a = jj.a(new emo(List.of()));
-   @Nullable
-   private volatile ejz.a b;
+public class ejx extends ekd {
+   public static final MapCodec<ejx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eia.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, ejx::new)
+   );
+   private final jj<eia> b;
+   private final tx c;
 
-   protected static <E extends ejx> RecordCodecBuilder<E, ejz.a> d() {
-      return ejz.a.c.fieldOf("projection").forGetter(ejx::e);
-   }
-
-   protected ejx(ejz.a $$0) {
+   protected ejx(jj<eia> $$0, ekf.a $$1) {
+      super($$1);
       this.b = $$0;
+      this.c = this.b();
    }
 
-   public abstract ke a(emr var1, dls var2);
-
-   public abstract List<emq.c> a(emr var1, ja var2, dls var3, aym var4);
-
-   public abstract eii a(emr var1, ja var2, dls var3);
-
-   public abstract boolean a(emr var1, dcz var2, dcx var3, due var4, ja var5, ja var6, dls var7, eii var8, aym var9, boolean var10);
-
-   public abstract ejy<?> a();
-
-   public void a(dce $$0, emq.c $$1, ja $$2, dls $$3, aym $$4, eii $$5) {
+   private tx b() {
+      tx $$0 = new tx();
+      $$0.a("name", "minecraft:bottom");
+      $$0.a("final_state", "minecraft:air");
+      $$0.a("pool", "minecraft:empty");
+      $$0.a("target", "minecraft:empty");
+      $$0.a("joint", dqq.a.a.c());
+      return $$0;
    }
 
-   public ejx a(ejz.a $$0) {
-      this.b = $$0;
-      return this;
+   @Override
+   public ke a(emx $$0, dlu $$1) {
+      return ke.g;
    }
 
-   public ejz.a e() {
-      ejz.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
-      } else {
-         return $$0;
-      }
+   @Override
+   public List<emw.c> a(emx $$0, ja $$1, dlu $$2, ayo $$3) {
+      List<emw.c> $$4 = Lists.newArrayList();
+      $$4.add(new emw.c($$1, dfj.pb.o().a(djj.b, jh.a(jf.a, jf.d)), this.c));
+      return $$4;
    }
 
-   public int f() {
-      return 1;
+   @Override
+   public eio a(emx $$0, ja $$1, dlu $$2) {
+      ke $$3 = this.a($$0, $$2);
+      return new eio($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
    }
 
-   public static Function<ejz.a, ejq> g() {
-      return $$0 -> ejq.b;
+   @Override
+   public boolean a(emx $$0, ddb $$1, dcz $$2, duh $$3, ja $$4, ja $$5, dlu $$6, eio $$7, ayo $$8, boolean $$9) {
+      return this.b.a().a($$1, $$3, $$8, $$4);
    }
 
-   public static Function<ejz.a, eju> a(String $$0) {
-      return $$1 -> new eju(Either.left(new akk($$0)), a, $$1);
+   @Override
+   public eke<?> a() {
+      return eke.c;
    }
 
-   public static Function<ejz.a, eju> a(String $$0, jj<emo> $$1) {
-      return $$2 -> new eju(Either.left(new akk($$0)), $$1, $$2);
-   }
-
-   public static Function<ejz.a, ejw> b(String $$0) {
-      return $$1 -> new ejw(Either.left(new akk($$0)), a, $$1);
-   }
-
-   public static Function<ejz.a, ejw> b(String $$0, jj<emo> $$1) {
-      return $$2 -> new ejw(Either.left(new akk($$0)), $$1, $$2);
-   }
-
-   public static Function<ejz.a, ejr> a(jj<ehu> $$0) {
-      return $$1 -> new ejr($$0, $$1);
-   }
-
-   public static Function<ejz.a, ejv> b(List<Function<ejz.a, ? extends ejx>> $$0) {
-      return $$1 -> new ejv($$0.stream().map($$1x -> (ejx)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+   @Override
+   public String toString() {
+      return "Feature[" + this.b + "]";
    }
 }

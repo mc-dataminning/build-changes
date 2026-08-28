@@ -62,14 +62,14 @@ public class fm implements ArgumentType<fm.a> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return aye.a($$0x, $$1);
+            return ayg.a($$0x, $$1);
          }
       };
          case "%=" -> ($$0x, $$1) -> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return aye.b($$0x, $$1);
+            return ayg.b($$0x, $$1);
          }
       };
          case "<" -> Math::min;
@@ -80,7 +80,7 @@ public class fm implements ArgumentType<fm.a> {
 
    @FunctionalInterface
    public interface a {
-      void apply(exb var1, exb var2) throws CommandSyntaxException;
+      void apply(exh var1, exh var2) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
@@ -88,7 +88,7 @@ public class fm implements ArgumentType<fm.a> {
       int apply(int var1, int var2) throws CommandSyntaxException;
 
       @Override
-      default void apply(exb $$0, exb $$1) throws CommandSyntaxException {
+      default void apply(exh $$0, exh $$1) throws CommandSyntaxException {
          $$0.a(this.apply($$0.a(), $$1.a()));
       }
    }

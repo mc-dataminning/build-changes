@@ -1,35 +1,31 @@
-public class gji extends gjf<cmr> {
-   private static final akk a = new akk("textures/entity/illager/evoker_fangs.png");
-   private final fuj<cmr> f;
+public class gji extends gks<cjg, fum<cjg>> {
+   private static final akk a = new akk("textures/entity/enderman/enderman.png");
+   private final ayo i = ayo.a();
 
-   public gji(gjg.a $$0) {
-      super($$0);
-      this.f = new fuj<>($$0.a(fxh.ac));
+   public gji(gjm.a $$0) {
+      super($$0, new fum<>($$0.a(fxn.X)), 0.5F);
+      this.a(new gni<>(this));
+      this.a(new gmz(this, $$0.c()));
    }
 
-   public void a(cmr $$0, float $$1, float $$2, fag $$3, gdx $$4, int $$5) {
-      float $$6 = $$0.a($$2);
-      if ($$6 != 0.0F) {
-         float $$7 = 2.0F;
-         if ($$6 > 0.9F) {
-            $$7 *= (1.0F - $$6) / 0.1F;
-         }
+   public void a(cjg $$0, float $$1, float $$2, fam $$3, ged $$4, int $$5) {
+      dsk $$6 = $$0.go();
+      fum<cjg> $$7 = this.a();
+      $$7.a = $$6 != null;
+      $$7.b = $$0.gp();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-         $$3.a();
-         $$3.a(a.d.rotationDegrees(90.0F - $$0.dF()));
-         $$3.b(-$$7, -$$7, $$7);
-         float $$8 = 0.03125F;
-         $$3.a(0.0, -0.626, 0.0);
-         $$3.b(0.5F, 0.5F, 0.5F);
-         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dF(), $$0.dH());
-         fak $$9 = $$4.getBuffer(this.f.a(a));
-         this.f.a($$3, $$9, $$5, goz.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public ewf a(cjg $$0, float $$1) {
+      if ($$0.gp()) {
+         double $$2 = 0.02 * (double)$$0.ec();
+         return new ewf(this.i.k() * $$2, 0.0, this.i.k() * $$2);
+      } else {
+         return super.a($$0, $$1);
       }
    }
 
-   public akk a(cmr $$0) {
+   public akk a(cjg $$0) {
       return a;
    }
 }

@@ -1,52 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.ContextChain;
-import java.util.List;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class anq {
-   public static <T extends es<T>> void a(CommandDispatcher<T> $$0) {
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wu.b("commands.ride.not_riding", $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("commands.ride.already_riding", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("commands.ride.mount.failure.generic", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wu.c("commands.ride.mount.failure.cant_ride_players"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wu.c("commands.ride.mount.failure.loop"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wu.c("commands.ride.mount.failure.wrong_dimension"));
+
+   public static void a(CommandDispatcher<eq> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
-                     .requires($$0x -> $$0x.c(2)))
-                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new anq.c())))
-               .then(LiteralArgumentBuilder.literal("fail").executes(new anq.a())))
-            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new anq.b(), false))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("ride").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)er.a("target", fd.a())
+                     .then(er.a("mount").then(er.a("vehicle", fd.a()).executes($$0x -> a((eq)$$0x.getSource(), fd.a($$0x, "target"), fd.a($$0x, "vehicle"))))))
+                  .then(er.a("dismount").executes($$0x -> a((eq)$$0x.getSource(), fd.a($$0x, "target"))))
+            )
       );
    }
 
-   static class a<T extends es<T>> implements hm.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hk $$2, hq<T> $$3) {
-         $$0.p().onFailure();
-         hr $$4 = $$3.b();
-         $$4.a();
-         $$4.b();
+   private static int a(eq $$0, bsg $$1, bsg $$2) throws CommandSyntaxException {
+      bsg $$3 = $$1.dd();
+      if ($$3 != null) {
+         throw b.create($$1.O_(), $$3.O_());
+      } else if ($$2.al() == bsm.by) {
+         throw d.create();
+      } else if ($$1.cV().anyMatch($$1x -> $$1x == $$2)) {
+         throw e.create();
+      } else if ($$1.dQ() != $$2.dQ()) {
+         throw f.create();
+      } else if (!$$1.a($$2, true)) {
+         throw c.create($$1.O_(), $$2.O_());
+      } else {
+         $$0.a(() -> wu.a("commands.ride.mount.success", $$1.O_(), $$2.O_()), true);
+         return 1;
       }
    }
 
-   static class b<T extends es<T>> implements hn.a<T> {
-      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, hk $$3, hq<T> $$4) {
-         if ($$1.isEmpty()) {
-            if ($$3.c()) {
-               $$4.a(hz.a());
-            }
-         } else {
-            $$4.b().b();
-            ContextChain<T> $$5 = $$2.nextStage();
-            String $$6 = $$5.getTopContext().getInput();
-            $$4.a(new hv.a<>($$6, $$5, $$3.d(), $$0, $$1));
-         }
-      }
-   }
-
-   static class c<T extends es<T>> implements hm.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hk $$2, hq<T> $$3) {
-         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
-         $$0.p().onSuccess($$4);
-         hr $$5 = $$3.b();
-         $$5.a($$4);
-         $$5.b();
+   private static int a(eq $$0, bsg $$1) throws CommandSyntaxException {
+      bsg $$2 = $$1.dd();
+      if ($$2 == null) {
+         throw a.create($$1.O_());
+      } else {
+         $$1.ac();
+         $$0.a(() -> wu.a("commands.ride.dismount.success", $$1.O_(), $$2.O_()), true);
+         return 1;
       }
    }
 }

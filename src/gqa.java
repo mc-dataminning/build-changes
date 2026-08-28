@@ -1,41 +1,35 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class gqa {
-   private static final gqi[] a = new gqi[]{
-      a("textures/entity/player/slim/alex.png", gqi.a.a),
-      a("textures/entity/player/slim/ari.png", gqi.a.a),
-      a("textures/entity/player/slim/efe.png", gqi.a.a),
-      a("textures/entity/player/slim/kai.png", gqi.a.a),
-      a("textures/entity/player/slim/makena.png", gqi.a.a),
-      a("textures/entity/player/slim/noor.png", gqi.a.a),
-      a("textures/entity/player/slim/steve.png", gqi.a.a),
-      a("textures/entity/player/slim/sunny.png", gqi.a.a),
-      a("textures/entity/player/slim/zuri.png", gqi.a.a),
-      a("textures/entity/player/wide/alex.png", gqi.a.b),
-      a("textures/entity/player/wide/ari.png", gqi.a.b),
-      a("textures/entity/player/wide/efe.png", gqi.a.b),
-      a("textures/entity/player/wide/kai.png", gqi.a.b),
-      a("textures/entity/player/wide/makena.png", gqi.a.b),
-      a("textures/entity/player/wide/noor.png", gqi.a.b),
-      a("textures/entity/player/wide/steve.png", gqi.a.b),
-      a("textures/entity/player/wide/sunny.png", gqi.a.b),
-      a("textures/entity/player/wide/zuri.png", gqi.a.b)
-   };
+public class gqa implements gps {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<gqa> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akk.a.fieldOf("resource").forGetter($$0x -> $$0x.d), akk.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gqa::new)
+   );
+   private final akk d;
+   private final Optional<akk> e;
 
-   public static akk a() {
-      return a[6].a();
+   public gqa(akk $$0, Optional<akk> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static gqi a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   @Override
+   public void a(atw $$0, gps.a $$1) {
+      akk $$2 = a.a(this.d);
+      Optional<atu> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.e.orElse(this.d), $$3.get());
+      } else {
+         c.warn("Missing sprite: {}", $$2);
+      }
    }
 
-   public static gqi a(GameProfile $$0) {
-      return a($$0.getId());
-   }
-
-   private static gqi a(String $$0, gqi.a $$1) {
-      return new gqi(new akk($$0), null, null, null, $$1, true);
+   @Override
+   public gpu a() {
+      return gpv.a;
    }
 }

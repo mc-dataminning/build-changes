@@ -1,9 +1,11 @@
-public interface awc {
-   awk<cts> a = a("regular_goat_horns");
-   awk<cts> b = a("screaming_goat_horns");
-   awk<cts> c = a("goat_horns");
+public final class awc {
+   public static final awm<eog> a = a("water");
+   public static final awm<eog> b = a("lava");
 
-   private static awk<cts> a(String $$0) {
-      return awk.a(lr.I, new akk($$0));
+   private awc() {
+   }
+
+   private static awm<eog> a(String $$0) {
+      return awm.a(lr.D, new akk($$0));
    }
 }

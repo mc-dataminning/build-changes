@@ -1,32 +1,21 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record evc(String b) implements eve {
-   public static final MapCodec<evc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(evc::c)).apply($$0, evc::new));
+public class evc {
+   private static final Codec<evb> h = lq.G.r().dispatch(evb::b, eva::a);
+   public static final Codec<evb> a = Codec.lazyInitialized(() -> {
+      Codec<evb> $$0 = Codec.withAlternative(h, evf.a.codec());
+      return Codec.either(euy.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof euy $$1 ? Either.left($$1) : Either.right($$0x));
+   });
+   public static final eva b = a("constant", euy.a);
+   public static final eva c = a("uniform", evf.a);
+   public static final eva d = a("binomial", eux.a);
+   public static final eva e = a("score", evd.a);
+   public static final eva f = a("storage", eve.a);
+   public static final eva g = a("enchantment_level", euz.a);
 
-   public static eve a(String $$0) {
-      return new evc($$0);
-   }
-
-   @Override
-   public evd a() {
-      return evf.b;
-   }
-
-   @Override
-   public exc a(eqo $$0) {
-      return exc.c(this.b);
-   }
-
-   @Override
-   public Set<eth<?>> b() {
-      return ImmutableSet.of();
-   }
-
-   public String c() {
-      return this.b;
+   private static eva a(String $$0, MapCodec<? extends evb> $$1) {
+      return jw.a(lq.G, new akk($$0), new eva($$1));
    }
 }

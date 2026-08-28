@@ -1,40 +1,35 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class esf extends esb {
-   public static final MapCodec<esf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(eqm.e.fieldOf("component").forGetter($$0x -> $$0x.b), ese.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
-            .apply($$0, esf::new)
-   );
-   private final eql<?> b;
-   private final esc c;
+public class esf extends esh {
+   public static final MapCodec<esf> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(eqt.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, esf::new));
+   private final eqt b;
 
-   private esf(List<etz> $$0, eql<?> $$1, esc $$2) {
+   private esf(List<euf> $$0, eqt $$1) {
       super($$0);
       this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   public esd<esf> b() {
-      return ese.u;
+   public esj<esf> b() {
+      return esk.w;
    }
 
    @Override
-   public cua a(cua $$0, eqo $$1) {
-      if ($$0.e()) {
-         return $$0;
-      } else {
-         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
-         return $$0;
-      }
+   public Set<etn<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public void a(equ $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
+   public cuc a(cuc $$0, equ $$1) {
+      int $$2 = this.b.a($$1, $$0.H());
+      $$0.e($$2);
+      return $$0;
+   }
+
+   public static esh.a<?> a(eqt $$0) {
+      return a($$1 -> new esf($$1, $$0));
    }
 }

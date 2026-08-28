@@ -4,7 +4,7 @@ public class aei implements zb<abn> {
    private final double c;
    private final long d;
 
-   public aei(dty $$0) {
+   public aei(dub $$0) {
       this.b = $$0.i();
       this.c = $$0.k();
       this.d = $$0.j();

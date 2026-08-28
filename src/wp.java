@@ -4,5 +4,5 @@ import javax.annotation.Nullable;
 public interface wp {
    wp a = ($$0, $$1) -> $$1;
 
-   wu decorate(@Nullable aql var1, wu var2);
+   wu decorate(@Nullable aqn var1, wu var2);
 }

@@ -1,56 +1,67 @@
-import com.mojang.serialization.Codec;
+public class cyg extends cya {
+   public cyg(cxx $$0) {
+      super($$0);
+   }
 
-public interface cyg<T extends cyj> {
-   Codec<cyg<?>> h = lq.r.r().dispatch(cyg::ap_, cyl::a);
-   ys<wf, cyg<?>> i = yq.a(lr.ad).b(cyg::ap_, cyl::b);
+   public boolean a(cxy $$0, dcf $$1) {
+      int $$2 = 0;
+      cuc $$3 = cuc.l;
 
-   boolean a(T var1, dcd var2);
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cuc $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(cuf.rU)) {
+               if (!$$3.e()) {
+                  return false;
+               }
 
-   cua a(T var1, jl.a var2);
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cuf.uj)) {
+                  return false;
+               }
 
-   boolean a(int var1, int var2);
-
-   cua a(jl.a var1);
-
-   default js<cua> a(T $$0) {
-      js<cua> $$1 = js.a($$0.a(), cua.l);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         ctv $$3 = $$0.a($$2).g();
-         if ($$3.v()) {
-            $$1.set($$2, new cua($$3.u()));
+               $$2++;
+            }
          }
       }
 
-      return $$1;
+      return !$$3.e() && $$2 > 0;
    }
 
-   default js<cyd> a() {
-      return js.a();
+   public cuc a(cxy $$0, jl.a $$1) {
+      int $$2 = 0;
+      cuc $$3 = cuc.l;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cuc $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.a(cuf.rU)) {
+               if (!$$3.e()) {
+                  return cuc.l;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cuf.uj)) {
+                  return cuc.l;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.e() && $$2 >= 1 ? $$3.c($$2 + 1) : cuc.l;
    }
 
-   default boolean ao_() {
-      return false;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
    }
 
-   default boolean h() {
-      return true;
-   }
-
-   default String c() {
-      return "";
-   }
-
-   default cua g() {
-      return new cua(dfh.cA);
-   }
-
-   cyl<?> ap_();
-
-   cym<?> e();
-
-   default boolean i() {
-      js<cyd> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
+   @Override
+   public cyn<?> ap_() {
+      return cyn.e;
    }
 }

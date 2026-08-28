@@ -1,7 +1,7 @@
-public enum dtp implements ayz {
-   a("top"),
-   b("bottom"),
-   c("double");
+public enum dtp implements azc {
+   a("up"),
+   b("side"),
+   c("none");
 
    private final String d;
 
@@ -11,11 +11,15 @@ public enum dtp implements ayz {
 
    @Override
    public String toString() {
-      return this.d;
+      return this.c();
    }
 
    @Override
    public String c() {
       return this.d;
+   }
+
+   public boolean a() {
+      return this != c;
    }
 }

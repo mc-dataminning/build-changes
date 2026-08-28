@@ -1,53 +1,147 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
 public class equ {
-   private final ayk a;
-   private final eti b;
+   private final eqx a;
+   private final ayo b;
    private final jk.a c;
-   private final Set<akj<?>> d;
+   private final Set<equ.c<?>> d = Sets.newLinkedHashSet();
 
-   public equ(ayk $$0, eti $$1, jk.a $$2) {
-      this($$0, $$1, $$2, Set.of());
-   }
-
-   private equ(ayk $$0, eti $$1, jk.a $$2, Set<akj<?>> $$3) {
+   equ(eqx $$0, ayo $$1, jk.a $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
-      this.d = $$3;
    }
 
-   public equ a(String $$0) {
-      return new equ(this.a.a($$0), this.b, this.c, this.d);
+   public boolean a(etn<?> $$0) {
+      return this.a.a($$0);
    }
 
-   public equ a(String $$0, akj<?> $$1) {
-      Set<akj<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
-      return new equ(this.a.a($$0), this.b, this.c, $$2);
+   public <T> T b(etn<T> $$0) {
+      return this.a.b($$0);
    }
 
-   public boolean a(akj<?> $$0) {
+   public void a(akk $$0, Consumer<cuc> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   @Nullable
+   public <T> T c(etn<T> $$0) {
+      return this.a.d($$0);
+   }
+
+   public boolean a(equ.c<?> $$0) {
       return this.d.contains($$0);
    }
 
-   public void b(String $$0) {
-      this.a.b($$0);
+   public boolean b(equ.c<?> $$0) {
+      return this.d.add($$0);
    }
 
-   public void a(eqp $$0) {
-      this.b.a(this, $$0);
+   public void c(equ.c<?> $$0) {
+      this.d.remove($$0);
    }
 
    public jk.a a() {
       return this.c;
    }
 
-   public equ a(eti $$0) {
-      return new equ(this.a, $$0, this.c, this.d);
+   public ayo b() {
+      return this.b;
    }
 
-   public ayk b() {
-      return this.a;
+   public float c() {
+      return this.a.b();
+   }
+
+   public aqm d() {
+      return this.a.a();
+   }
+
+   public static equ.c<eqz> a(eqz $$0) {
+      return new equ.c<>(eqw.c, $$0);
+   }
+
+   public static equ.c<euf> a(euf $$0) {
+      return new equ.c<>(eqw.a, $$0);
+   }
+
+   public static equ.c<esi> a(esi $$0) {
+      return new equ.c<>(eqw.b, $$0);
+   }
+
+   public static class a {
+      private final eqx a;
+      @Nullable
+      private ayo b;
+
+      public a(eqx $$0) {
+         this.a = $$0;
+      }
+
+      public equ.a a(long $$0) {
+         if ($$0 != 0L) {
+            this.b = ayo.a($$0);
+         }
+
+         return this;
+      }
+
+      public equ.a a(ayo $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public aqm a() {
+         return this.a.a();
+      }
+
+      public equ a(Optional<akk> $$0) {
+         aqm $$1 = this.a();
+         MinecraftServer $$2 = $$1.o();
+         ayo $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
+         return new equ(this.a, $$3, $$2.bf().b());
+      }
+   }
+
+   public static enum b implements azc {
+      a("this", etq.a),
+      b("attacker", etq.d),
+      c("direct_attacker", etq.e),
+      d("attacking_player", etq.b);
+
+      public static final azc.a<equ.b> e = azc.a(equ.b::values);
+      private final String f;
+      private final etn<? extends bsg> g;
+
+      private b(final String $$0, final etn<? extends bsg> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public etn<? extends bsg> a() {
+         return this.g;
+      }
+
+      public static equ.b a(String $$0) {
+         equ.b $$1 = e.a($$0);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            throw new IllegalArgumentException("Invalid entity target " + $$0);
+         }
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static record c<T>(eqw<T> a, T b) {
    }
 }

@@ -1,1129 +1,162 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
 
-public class far extends gvm {
-   static final akk a = new akk("icon/info");
-   static final akk b = new akk("icon/new_realm");
-   static final akk c = new akk("realm_status/expired");
-   static final akk A = new akk("realm_status/expires_soon");
-   static final akk B = new akk("realm_status/open");
-   static final akk C = new akk("realm_status/closed");
-   private static final akk D = new akk("icon/invite");
-   private static final akk E = new akk("icon/news");
-   static final Logger F = LogUtils.getLogger();
-   private static final akk G = new akk("textures/gui/title/realms.png");
-   private static final akk H = new akk("textures/gui/realms/no_realms.png");
-   private static final wu I = wu.c("menu.online");
-   private static final wu J = wu.c("mco.selectServer.loading");
-   static final wu K = wu.c("mco.selectServer.uninitialized");
-   static final wu L = wu.c("mco.selectServer.expiredList");
-   private static final wu M = wu.c("mco.selectServer.expiredRenew");
-   static final wu N = wu.c("mco.selectServer.expiredTrial");
-   private static final wu O = wu.c("mco.selectServer.play");
-   private static final wu P = wu.c("mco.selectServer.leave");
-   private static final wu Q = wu.c("mco.selectServer.configure");
-   static final wu R = wu.c("mco.selectServer.expired");
-   static final wu S = wu.c("mco.selectServer.expires.soon");
-   static final wu T = wu.c("mco.selectServer.expires.day");
-   static final wu U = wu.c("mco.selectServer.open");
-   static final wu V = wu.c("mco.selectServer.closed");
-   static final wu W = wu.a("gui.narrate.button", K);
-   private static final wu X = wu.c("mco.selectServer.noRealms");
-   private static final wu Y = wu.c("mco.invites.nopending");
-   private static final wu Z = wu.c("mco.invites.pending");
-   private static final wu aa = wu.c("mco.compatibility.incompatible.popup.title");
-   private static final wu ab = wu.c("mco.compatibility.incompatible.releaseType.popup.message");
-   private static final int ac = 100;
-   private static final int ad = 3;
-   private static final int ae = 4;
-   private static final int af = 308;
-   private static final int ag = 128;
-   private static final int ah = 34;
-   private static final int ai = 128;
-   private static final int aj = 64;
-   private static final int ak = 5;
-   private static final int al = 44;
-   private static final int am = 11;
-   private static final int an = 40;
-   private static final int ao = 20;
-   private static final int ap = 216;
-   private static final int aq = 36;
-   private static final boolean ar = !aa.b().g();
-   private static boolean as = ar;
-   private final CompletableFuture<faq.a> at = faq.a();
+public class far {
+   private final ImmutableList<fas> a;
+   private final ImmutableMap<String, fas> b;
+   private final IntList c = new IntArrayList();
+   private final int d;
    @Nullable
-   private fdv.c au;
-   private final Set<UUID> av = new HashSet<>();
-   private static boolean aw;
-   private final RateLimiter ax;
-   private final fnd ay;
-   private fhm az;
-   private fhm aA;
-   private fhm aB;
-   private fhm aC;
-   private fhm aD;
-   far.j aE;
-   private fco aF;
-   private List<fbn> aG = List.of();
-   private volatile boolean aH;
-   @Nullable
-   private volatile String aI;
-   long aJ;
-   private final List<fbm> aK = new ArrayList<>();
-   private fhm aL;
-   private far.g aM;
-   private far.g aN;
-   private far.f aO;
-   @Nullable
-   private fkz aP;
+   private fap e;
 
-   public far(fnd $$0) {
-      super(I);
-      this.ay = $$0;
-      this.ax = RateLimiter.create(0.016666668F);
-   }
+   public far(ImmutableMap<String, fas> $$0) {
+      this.b = $$0;
+      this.a = $$0.values().asList();
+      int $$1 = 0;
+      UnmodifiableIterator var3 = $$0.values().iterator();
 
-   @Override
-   public void aO_() {
-      this.aF = new fco(this.l);
-      this.aE = new far.j();
-      wu $$0 = wu.c("mco.invites.title");
-      this.aM = new far.g($$0, D, $$1x -> this.l.a(new fdh(this, $$0)));
-      wu $$1 = wu.c("mco.news");
-      this.aN = new far.g($$1, E, $$0x -> {
-         String $$1x = this.aI;
-         if ($$1x != null) {
-            fma.a(this, $$1x);
-            if (this.aN.a() != 0) {
-               feb.a $$2 = feb.b();
-               $$2.b = false;
-               feb.b($$2);
-               this.aN.a(0);
-            }
-         }
-      });
-      this.aN.a(fix.a($$1));
-      this.az = fhm.a(O, $$0x -> a(this.O(), this)).a(100).a();
-      this.aC = fhm.a(Q, $$0x -> this.f(this.O())).a(100).a();
-      this.aB = fhm.a(M, $$0x -> this.e(this.O())).a(100).a();
-      this.aD = fhm.a(P, $$0x -> this.g(this.O())).a(100).a();
-      this.aL = fhm.a(wu.c("mco.selectServer.purchase"), $$0x -> this.P()).b(100, 20).a();
-      this.aA = fhm.a(wt.k, $$0x -> this.d()).a(100).a();
-      if (faw.a == faw.b.b) {
-         this.c(fht.a(wu.b("Snapshot"), wu.b("Release")).a(5, 5, 100, 20, wu.b("Realm"), ($$0x, $$1x) -> {
-            as = $$1x;
-            this.aG = List.of();
-            this.K();
-         }));
+      while (var3.hasNext()) {
+         fas $$2 = (fas)var3.next();
+         this.c.add($$1);
+         $$1 += $$2.e();
       }
 
-      this.a(far.f.a);
-      this.J();
-      this.at.thenAcceptAsync($$0x -> {
-         fnd $$1x = $$0x.a(this.ay);
-         if ($$1x == null) {
-            this.au = this.a(this.l.ba());
-         } else {
-            this.l.a($$1x);
-         }
-      }, this.p);
-   }
-
-   public static boolean b() {
-      return ar && as;
+      this.d = $$1;
    }
 
    @Override
-   protected void c() {
-      if (this.aP != null) {
-         this.aE.a(this.m, this.aP);
-         this.aP.a();
-      }
+   public String toString() {
+      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
+   }
+
+   public int a() {
+      return this.b() / 4;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public ImmutableList<fas> c() {
+      return this.a;
+   }
+
+   public ImmutableList<String> d() {
+      return this.b.keySet().asList();
    }
 
    @Override
-   public void d() {
-      this.l.a(this.ay);
-   }
-
-   private void E() {
-      if (this.aF.a() && this.aG.isEmpty() && this.aK.isEmpty()) {
-         this.a(far.f.b);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         far $$1 = (far)$$0;
+         return this.d != $$1.d ? false : this.b.equals($$1.b);
       } else {
-         this.a(far.f.c);
-      }
-   }
-
-   private void a(far.f $$0) {
-      if (this.aO != $$0) {
-         if (this.aP != null) {
-            this.aP.a($$1 -> this.e($$1));
-         }
-
-         this.aP = this.b($$0);
-         this.aO = $$0;
-         this.aP.a($$1 -> {
-            fhk var10000 = this.c($$1);
-         });
-         this.c();
-      }
-   }
-
-   private fkz b(far.f $$0) {
-      fkz $$1 = new fkz(this);
-      $$1.b(44);
-      $$1.a(this.F());
-      fla $$2 = this.c($$0);
-      $$2.a();
-      $$1.a($$2.w() + 22);
-      $$1.b($$2);
-      switch ($$0) {
-         case a:
-            $$1.c(new fib(this.o, J));
-            break;
-         case b:
-            $$1.c(this.G());
-            break;
-         case c:
-            $$1.c(this.aE);
-      }
-
-      return $$1;
-   }
-
-   private fla F() {
-      int $$0 = 90;
-      fld $$1 = fld.e().a(4);
-      $$1.c().e();
-      $$1.a(this.aM);
-      $$1.a(this.aN);
-      fld $$2 = fld.e();
-      $$2.c().e();
-      $$2.a(fle.a(90));
-      $$2.a(fhz.a(128, 34, G, 128, 64), flc::b);
-      $$2.a(new fkx(90, 44)).a($$1, flc::c);
-      return $$2;
-   }
-
-   private fla c(far.f $$0) {
-      fky $$1 = new fky().c(4);
-      fky.b $$2 = $$1.d(3);
-      if ($$0 == far.f.c) {
-         $$2.a(this.az);
-         $$2.a(this.aC);
-         $$2.a(this.aB);
-         $$2.a(this.aD);
-      }
-
-      $$2.a(this.aL);
-      $$2.a(this.aA);
-      return $$1;
-   }
-
-   private fld G() {
-      fld $$0 = fld.d().a(8);
-      $$0.c().b();
-      $$0.a(fhz.a(130, 64, H, 130, 64));
-      fhx $$1 = new fhx(308, X, this.o, false, 4);
-      $$0.a($$1);
-      return $$0;
-   }
-
-   void J() {
-      fbn $$0 = this.O();
-      this.aL.j = this.aO != far.f.a;
-      this.az.j = $$0 != null && this.a($$0);
-      this.aB.j = $$0 != null && this.b($$0);
-      this.aD.j = $$0 != null && this.d($$0);
-      this.aC.j = $$0 != null && this.c($$0);
-   }
-
-   boolean a(fbn $$0) {
-      boolean $$1 = !$$0.j && $$0.e == fbn.c.b;
-      return $$1 && ($$0.d() || this.i($$0));
-   }
-
-   private boolean b(fbn $$0) {
-      return $$0.j && this.i($$0);
-   }
-
-   private boolean c(fbn $$0) {
-      return this.i($$0) && $$0.e != fbn.c.c;
-   }
-
-   private boolean d(fbn $$0) {
-      return !this.i($$0);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      if (this.au != null) {
-         this.au.b();
-      }
-   }
-
-   public static void f() {
-      ffn.Q().ba().d.a();
-   }
-
-   public static void g() {
-      ffn.Q().ba().c.a();
-   }
-
-   private void K() {
-      for (fdv.e<?> $$0 : this.l.ba().a()) {
-         $$0.a();
-      }
-   }
-
-   private fdv.c a(fcm $$0) {
-      fdv.c $$1 = $$0.a.a();
-      $$1.a($$0.c, $$0x -> {
-         this.aF.a($$0x.a());
-         this.aG = $$0x.b();
-         this.L();
-         boolean $$1x = false;
-
-         for (fbn $$2 : this.aF) {
-            if (this.j($$2)) {
-               $$1x = true;
-            }
-         }
-
-         if (!aw && $$1x) {
-            aw = true;
-            this.M();
-         }
-      });
-      a(faw::d, $$0x -> {
-         this.aK.clear();
-         this.aK.addAll($$0x);
-
-         for (fbm $$1x : $$0x) {
-            if ($$1x instanceof fbm.a $$2) {
-               fio $$3 = $$2.a(this, this::a);
-               if ($$3 != null) {
-                  this.l.a($$3);
-                  this.a(List.of($$1x));
-                  break;
-               }
-            }
-         }
-
-         if (!this.aK.isEmpty() && this.aO != far.f.a) {
-            this.L();
-         }
-      });
-      $$1.a($$0.d, $$0x -> {
-         this.aM.a($$0x);
-         this.aM.a($$0x == 0 ? fix.a(Y) : fix.a(Z));
-         if ($$0x > 0 && this.ax.tryAcquire(1)) {
-            this.l.aX().c(wu.a("mco.configure.world.invite.narration", $$0x));
-         }
-      });
-      $$1.a($$0.e, $$0x -> this.aH = $$0x);
-      $$1.a($$0.f, $$1x -> {
-         $$0.g.a($$1x);
-         this.aI = $$0.g.b();
-         this.aN.a($$0.g.a() ? Integer.MAX_VALUE : 0);
-      });
-      return $$1;
-   }
-
-   private void a(Collection<fbm> $$0) {
-      List<UUID> $$1 = new ArrayList<>($$0.size());
-
-      for (fbm $$2 : $$0) {
-         if (!$$2.a() && !this.av.contains($$2.c())) {
-            $$1.add($$2.c());
-         }
-      }
-
-      if (!$$1.isEmpty()) {
-         a($$1x -> {
-            $$1x.a($$1);
-            return null;
-         }, $$1x -> this.av.addAll($$1));
-      }
-   }
-
-   private static <T> void a(far.k<T> $$0, Consumer<T> $$1) {
-      ffn $$2 = ffn.Q();
-      CompletableFuture.<T>supplyAsync(() -> {
-         try {
-            return $$0.request(faw.a($$2));
-         } catch (fcj var3) {
-            throw new RuntimeException(var3);
-         }
-      }).thenAcceptAsync($$1, $$2).exceptionally($$0x -> {
-         F.error("Failed to execute call to Realms Service", $$0x);
-         return null;
-      });
-   }
-
-   private void L() {
-      fbn $$0 = this.O();
-      this.aE.J();
-
-      for (fbm $$1 : this.aK) {
-         if (this.a($$1)) {
-            this.a(List.of($$1));
-            break;
-         }
-      }
-
-      for (fbn $$2 : this.aG) {
-         this.aE.a(new far.a($$2));
-      }
-
-      for (fbn $$3 : this.aF) {
-         far.e $$4;
-         if (b() && !$$3.h()) {
-            if ($$3.e == fbn.c.c) {
-               continue;
-            }
-
-            $$4 = new far.i($$3);
-         } else {
-            $$4 = new far.l($$3);
-         }
-
-         this.aE.a((far.e)$$4);
-         if ($$0 != null && $$0.a == $$3.a) {
-            this.aE.a($$4);
-         }
-      }
-
-      this.E();
-      this.J();
-   }
-
-   private boolean a(fbm $$0) {
-      if (!($$0 instanceof fbm.c $$1)) {
          return false;
-      } else {
-         wu $$2 = $$1.d();
-         int $$3 = this.o.b($$2, 216);
-         int $$4 = aye.e($$3 + 7, 36) - 1;
-         this.aE.a(new far.h($$2, $$4 + 2, $$1));
-
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            this.aE.a(new far.d());
-         }
-
-         this.aE.a(new far.b($$1.a(this)));
-         return true;
       }
    }
 
-   private void M() {
-      new Thread(() -> {
-         List<fbx> $$0 = fav.a();
-         faw $$1 = faw.a();
-         fbi $$2 = new fbi();
-         $$2.a = $$0;
-         $$2.b = this.N();
-
-         try {
-            $$1.a($$2);
-         } catch (Throwable var5) {
-            F.warn("Could not send ping result to Realms: ", var5);
-         }
-      }).start();
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 
-   private List<Long> N() {
-      List<Long> $$0 = Lists.newArrayList();
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::h);
+      } else {
+         this.h();
+      }
+   }
 
-      for (fbn $$1 : this.aF) {
-         if (this.j($$1)) {
-            $$0.add($$1.a);
-         }
+   private void h() {
+      int $$0 = this.b();
+      List<fas> $$1 = this.c();
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
+      }
+   }
+
+   public void f() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::i);
+      } else {
+         this.i();
+      }
+   }
+
+   private void i() {
+      ImmutableList<fas> $$0 = this.c();
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         fas $$2 = (fas)$$0.get($$1);
+         $$2.a($$1);
+      }
+   }
+
+   public fap g() {
+      fap $$0 = this.e;
+      if ($$0 == null) {
+         this.e = $$0 = new fap(fap.a.b);
       }
 
       return $$0;
    }
 
-   private void e(@Nullable fbn $$0) {
-      if ($$0 != null) {
-         String $$1 = awz.a($$0.b, this.l.X().b(), $$0.k);
-         this.l.o.a($$1);
-         ac.k().a($$1);
-      }
-   }
+   public static enum a {
+      a(5123, 2),
+      b(5125, 4);
 
-   private void f(@Nullable fbn $$0) {
-      if ($$0 != null && this.l.b($$0.g)) {
-         this.l.a(new fcx(this, $$0.a));
-      }
-   }
+      public final int c;
+      public final int d;
 
-   private void g(@Nullable fbn $$0) {
-      if ($$0 != null && !this.l.b($$0.g)) {
-         wu $$1 = wu.c("mco.configure.world.leave.question.line1");
-         this.l.a(fdj.a(this, $$1, $$1x -> this.h($$0)));
-      }
-   }
-
-   @Nullable
-   private fbn O() {
-      return this.aE.h() instanceof far.l $$0 ? $$0.c() : null;
-   }
-
-   private void h(final fbn $$0) {
-      (new Thread("Realms-leave-server") {
-         @Override
-         public void run() {
-            try {
-               faw $$0 = faw.a();
-               $$0.d($$0.a);
-               far.this.l.execute(far::g);
-            } catch (fcj var2) {
-               far.F.error("Couldn't configure world", var2);
-               far.this.l.execute(() -> far.this.l.a(new fdb(var2, far.this)));
-            }
-         }
-      }).start();
-      this.l.a(this);
-   }
-
-   void a(UUID $$0) {
-      a($$1 -> {
-         $$1.b(List.of($$0));
-         return null;
-      }, $$1 -> {
-         this.aK.removeIf($$1x -> $$1x.b() && $$0.equals($$1x.c()));
-         this.L();
-      });
-   }
-
-   public void h() {
-      this.aE.a(null);
-      g();
-   }
-
-   @Override
-   public wu i() {
-      return (wu)(switch (this.aO) {
-         case a -> wt.a(super.i(), J);
-         case b -> wt.a(super.i(), X);
-         case c -> super.i();
-      });
-   }
-
-   @Override
-   public void a(fgz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (b()) {
-         $$0.b(this.o, "Minecraft " + aa.b().c(), 2, this.n - 10, -1);
-      }
-
-      if (this.aH && this.aL.j) {
-         fcs.a($$0, this.aL);
-      }
-
-      switch (faw.a) {
-         case b:
-            this.a($$0, "STAGE!", -256);
-            break;
-         case c:
-            this.a($$0, "LOCAL!", 8388479);
-      }
-   }
-
-   private void P() {
-      this.l.a(new fcs(this, this.aH));
-   }
-
-   public static void a(@Nullable fbn $$0, fnd $$1) {
-      a($$0, $$1, false);
-   }
-
-   public static void a(@Nullable fbn $$0, fnd $$1, boolean $$2) {
-      if ($$0 != null) {
-         if (!b() || $$2 || $$0.i()) {
-            ffn.Q().a(new fdd($$1, new fem($$1, $$0)));
-            return;
-         }
-
-         switch ($$0.u) {
-            case f:
-               ffn.Q().a(new fdd($$1, new fem($$1, $$0)));
-               break;
-            case a:
-               a($$0, $$1, wu.c("mco.compatibility.unverifiable.title").b(-171), wu.c("mco.compatibility.unverifiable.message"), wt.j);
-               break;
-            case d:
-               a(
-                  $$0,
-                  $$1,
-                  wu.c("selectWorld.backupQuestion.downgrade").b(-2142128),
-                  wu.a("mco.compatibility.downgrade.description", wu.b($$0.t).b(-171), wu.b(aa.b().c()).b(-171)),
-                  wu.c("mco.compatibility.downgrade")
-               );
-               break;
-            case e:
-               a(
-                  $$0,
-                  $$1,
-                  wu.c("mco.compatibility.upgrade.title").b(-171),
-                  wu.a("mco.compatibility.upgrade.description", wu.b($$0.t).b(-171), wu.b(aa.b().c()).b(-171)),
-                  wu.c("mco.compatibility.upgrade")
-               );
-               break;
-            case b:
-               ffn.Q()
-                  .a(
-                     new fio.a($$1, aa)
-                        .a(wu.a("mco.compatibility.incompatible.series.popup.message", wu.b($$0.t).b(-171), wu.b(aa.b().c()).b(-171)))
-                        .a(wt.k, fio::d)
-                        .a()
-                  );
-               break;
-            case c:
-               ffn.Q().a(new fio.a($$1, aa).a(ab).a(wt.k, fio::d).a());
-         }
-      }
-   }
-
-   private static void a(fbn $$0, fnd $$1, wu $$2, wu $$3, wu $$4) {
-      ffn.Q().a(new fmb($$2x -> {
-         fnd $$3x;
-         if ($$2x) {
-            $$3x = new fdd($$1, new fem($$1, $$0));
-            g();
-         } else {
-            $$3x = $$1;
-         }
-
-         ffn.Q().a($$3x);
-      }, $$2, $$3, $$4, wt.e));
-   }
-
-   public static wu a(String $$0, boolean $$1) {
-      return a($$0, $$1 ? -8355712 : -2142128);
-   }
-
-   public static wu a(String $$0, int $$1) {
-      return (wu)(StringUtils.isBlank($$0) ? wt.a : wu.a("mco.version", wu.b($$0).b($$1)));
-   }
-
-   boolean i(fbn $$0) {
-      return this.l.b($$0.g);
-   }
-
-   private boolean j(fbn $$0) {
-      return this.i($$0) && !$$0.j;
-   }
-
-   private void a(fgz $$0, String $$1, int $$2) {
-      $$0.c().a();
-      $$0.c().a((float)(this.m / 2 - 25), 20.0F, 0.0F);
-      $$0.c().a(a.f.rotationDegrees(-20.0F));
-      $$0.c().b(1.5F, 1.5F, 1.5F);
-      $$0.a(this.o, $$1, 0, 0, $$2, false);
-      $$0.c().b();
-   }
-
-   class a extends far.e {
-      private static final wu c = wu.c("mco.snapshot.start");
-      private static final int d = 5;
-      private final fja e = new fja();
-      private final fbn f;
-
-      public a(final fbn $$0) {
-         this.f = $$0;
-         this.e.a(fix.a(wu.c("mco.snapshot.tooltip")));
-      }
-
-      @Override
-      public void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(far.b, $$3 - 5, $$2 + $$5 / 2 - 10, 40, 20);
-         int $$10 = $$2 + $$5 / 2 - 9 / 2;
-         $$0.b(far.this.o, c, $$3 + 40 - 2, $$10 - 5, 8388479);
-         $$0.b(far.this.o, wu.a("mco.snapshot.description", this.f.c), $$3 + 40 - 2, $$10 + 5, -8355712);
-         this.e.a($$8, this.aJ_(), new fls($$3, $$2, $$4, $$5));
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         this.c();
-         return true;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, int $$2) {
-         if (fln.a($$0)) {
-            this.c();
-            return true;
-         } else {
-            return super.a($$0, $$1, $$2);
-         }
-      }
-
-      private void c() {
-         far.this.l.aj().a(gsr.a(avf.Ar, 1.0F));
-         far.this.l
-            .a(
-               new fio.a(far.this, wu.c("mco.snapshot.createSnapshotPopup.title"))
-                  .a(wu.c("mco.snapshot.createSnapshotPopup.text"))
-                  .a(wu.c("mco.selectServer.create"), $$0 -> far.this.l.a(new fcz(far.this, this.f.a)))
-                  .a(wt.e, fio::d)
-                  .a()
-            );
-      }
-
-      @Override
-      public wu a() {
-         return wu.a("gui.narrate.button", wt.a(c, wu.a("mco.snapshot.description", this.f.c)));
-      }
-   }
-
-   class b extends far.e {
-      private final fhm c;
-
-      public b(final fhm $$0) {
+      private a(final int $$0, final int $$1) {
          this.c = $$0;
+         this.d = $$1;
       }
 
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         this.c.a($$0, $$1, $$2);
-         return super.a($$0, $$1, $$2);
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, int $$2) {
-         return this.c.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-      }
-
-      @Override
-      public void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.c.c(far.this.m / 2 - 75, $$2 + 4);
-         this.c.a($$0, $$6, $$7, $$9);
-      }
-
-      @Override
-      public void a(boolean $$0) {
-         super.a($$0);
-         this.c.a($$0);
-      }
-
-      @Override
-      public wu a() {
-         return this.c.z();
+      public static far.a a(int $$0) {
+         return ($$0 & -65536) != 0 ? b : a;
       }
    }
 
-   static class c extends fhy {
-      private static final fiz b = new fiz(new akk("widget/cross_button"), new akk("widget/cross_button_highlighted"));
+   public static enum b {
+      a(4, 2, 2, false),
+      b(5, 2, 1, true),
+      c(1, 2, 2, false),
+      d(3, 2, 1, true),
+      e(4, 3, 3, false),
+      f(5, 3, 1, true),
+      g(6, 3, 1, true),
+      h(4, 4, 4, false);
 
-      protected c(fhm.c $$0, wu $$1) {
-         super(0, 0, 14, 14, b, $$0);
-         this.a(fix.a($$1));
-      }
-   }
+      public final int i;
+      public final int j;
+      public final int k;
+      public final boolean l;
 
-   class d extends far.e {
-      @Override
-      public void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-      }
-
-      @Override
-      public wu a() {
-         return wu.i();
-      }
-   }
-
-   abstract class e extends fii.a<far.e> {
-      private static final int a = 10;
-      private static final int c = 28;
-      private static final int d = 7;
-
-      protected void a(fbn $$0, fgz $$1, int $$2, int $$3, int $$4, int $$5) {
-         int $$6 = $$2 - 10 - 7;
-         int $$7 = $$3 + 2;
-         if ($$0.j) {
-            this.a($$1, $$6, $$7, $$4, $$5, far.c, () -> far.R);
-         } else if ($$0.e == fbn.c.a) {
-            this.a($$1, $$6, $$7, $$4, $$5, far.C, () -> far.V);
-         } else if (far.this.i($$0) && $$0.l < 7) {
-            this.a($$1, $$6, $$7, $$4, $$5, far.A, () -> {
-               if ($$0.l <= 0) {
-                  return far.S;
-               } else {
-                  return (wu)($$0.l == 1 ? far.T : wu.a("mco.selectServer.expires.days", $$0.l));
-               }
-            });
-         } else if ($$0.e == fbn.c.b) {
-            this.a($$1, $$6, $$7, $$4, $$5, far.B, () -> far.U);
-         }
+      private b(final int $$0, final int $$1, final int $$2, final boolean $$3) {
+         this.i = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
       }
 
-      private void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, akk $$5, Supplier<wu> $$6) {
-         $$0.a($$5, $$1, $$2, 10, 28);
-         if (far.this.aE.c((double)$$3, (double)$$4) && $$3 >= $$1 && $$3 <= $$1 + 10 && $$4 >= $$2 && $$4 <= $$2 + 28) {
-            far.this.d($$6.get());
-         }
-      }
-
-      protected void a(fgz $$0, int $$1, int $$2, fbn $$3) {
-         int $$4 = this.b($$2);
-         int $$5 = this.a($$1);
-         int $$6 = this.d($$5);
-         if (!far.this.i($$3)) {
-            $$0.a(far.this.o, $$3.f, $$4, this.d($$5), -8355712, false);
-         } else if ($$3.j) {
-            wu $$7 = $$3.k ? far.N : far.L;
-            $$0.a(far.this.o, $$7, $$4, $$6, -2142128, false);
-         }
-      }
-
-      protected void a(fgz $$0, String $$1, int $$2, int $$3, int $$4, int $$5) {
-         int $$6 = $$4 - $$2;
-         if (far.this.o.b($$1) > $$6) {
-            String $$7 = far.this.o.a($$1, $$6 - far.this.o.b("... "));
-            $$0.a(far.this.o, $$7 + "...", $$2, $$3, $$5, false);
-         } else {
-            $$0.a(far.this.o, $$1, $$2, $$3, $$5, false);
-         }
-      }
-
-      protected int a(int $$0, int $$1, wu $$2) {
-         return $$0 + $$1 - far.this.o.a($$2) - 20;
-      }
-
-      protected int a(int $$0) {
-         return $$0 + 1;
-      }
-
-      protected int b() {
-         return 2 + 9;
-      }
-
-      protected int b(int $$0) {
-         return $$0 + 36 + 2;
-      }
-
-      protected int c(int $$0) {
-         return $$0 + this.b();
-      }
-
-      protected int d(int $$0) {
-         return $$0 + this.b() * 2;
-      }
-   }
-
-   static enum f {
-      a,
-      b,
-      c;
-   }
-
-   static class g extends fir.b {
-      private static final akk[] d = new akk[]{
-         new akk("notification/1"),
-         new akk("notification/2"),
-         new akk("notification/3"),
-         new akk("notification/4"),
-         new akk("notification/5"),
-         new akk("notification/more")
-      };
-      private static final int u = Integer.MAX_VALUE;
-      private static final int v = 20;
-      private static final int w = 14;
-      private int x;
-
-      public g(wu $$0, akk $$1, fhm.c $$2) {
-         super(20, 20, $$0, 14, 14, $$1, $$2, null);
-      }
-
-      int a() {
-         return this.x;
-      }
-
-      public void a(int $$0) {
-         this.x = $$0;
-      }
-
-      @Override
-      public void b(fgz $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         if (this.j && this.x != 0) {
-            this.a($$0);
-         }
-      }
-
-      private void a(fgz $$0) {
-         $$0.a(d[Math.min(this.x, 6) - 1], this.D() + this.y() - 5, this.E() - 3, 8, 8);
-      }
-   }
-
-   class h extends far.e {
-      private static final int c = 40;
-      private static final int d = -12303292;
-      private final wu e;
-      private final int f;
-      private final List<fhk> g = new ArrayList<>();
-      @Nullable
-      private final far.c h;
-      private final fig i;
-      private final fky j;
-      private final fkx k;
-      private int l = -1;
-
-      public h(final wu $$0, final int $$1, final fbm $$2) {
-         this.e = $$0;
-         this.f = $$1;
-         this.j = new fky();
-         int $$3 = 7;
-         this.j.a(fhz.a(20, 20, far.a), 0, 0, this.j.b().a(7, 7, 0, 0));
-         this.j.a(fle.a(40), 0, 0);
-         this.k = this.j.a(new fkx(0, 9 * 3 * ($$1 - 1)), 0, 1, this.j.b().c(7));
-         this.i = this.k.a(new fig($$0, far.this.o).b(true), this.k.b().b().d());
-         this.j.a(fle.a(40), 0, 2);
-         if ($$2.b()) {
-            this.h = this.j.a(new far.c($$1x -> far.this.a($$2.c()), wu.c("mco.notification.dismiss")), 0, 2, this.j.b().c().a(0, 7, 7, 0));
-         } else {
-            this.h = null;
-         }
-
-         this.j.a(this.g::add);
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, int $$2) {
-         return this.h != null && this.h.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-      }
-
-      private void e(int $$0) {
-         if (this.l != $$0) {
-            this.f($$0);
-            this.l = $$0;
-         }
-      }
-
-      private void f(int $$0) {
-         int $$1 = $$0 - 80;
-         this.k.b($$1);
-         this.i.d($$1);
-         this.j.a();
-      }
-
-      @Override
-      public void b(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         super.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-         $$0.b($$3 - 2, $$2 - 2, $$4, 36 * this.f - 2, -12303292);
-      }
-
-      @Override
-      public void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.j.c($$3, $$2);
-         this.e($$4 - 4);
-         this.g.forEach($$4x -> $$4x.a($$0, $$6, $$7, $$9));
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (this.h != null) {
-            this.h.a($$0, $$1, $$2);
-         }
-
-         return super.a($$0, $$1, $$2);
-      }
-
-      @Override
-      public wu a() {
-         return this.e;
-      }
-   }
-
-   class i extends far.e {
-      private final fbn c;
-      private final fja d = new fja();
-
-      public i(final fbn $$0) {
-         this.c = $$0;
-         if (!$$0.j) {
-            this.d.a(fix.a(wu.c("mco.snapshot.parent.tooltip")));
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
-      }
-
-      @Override
-      public void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = this.b($$3);
-         int $$11 = this.a($$2);
-         fed.a($$0, $$3, $$2, 32, this.c.g);
-         wu $$12 = far.a(this.c.t, -8355712);
-         int $$13 = this.a($$3, $$4, $$12);
-         this.a($$0, this.c.b(), $$10, $$11, $$13, -8355712);
-         if ($$12 != wt.a) {
-            $$0.a(far.this.o, $$12, $$13, $$11, -8355712, false);
-         }
-
-         $$0.a(far.this.o, this.c.a(), $$10, this.c($$11), -8355712, false);
-         this.a($$0, $$2, $$3, this.c);
-         this.a(this.c, $$0, $$3 + $$4, $$2, $$6, $$7);
-         this.d.a($$8, this.aJ_(), new fls($$3, $$2, $$4, $$5));
-      }
-
-      @Override
-      public wu a() {
-         return wu.b(this.c.c);
-      }
-   }
-
-   class j extends gvl<far.e> {
-      public j() {
-         super(far.this.m, far.this.n, 0, 36);
-      }
-
-      public void a(@Nullable far.e $$0) {
-         super.a($$0);
-         far.this.J();
-      }
-
-      @Override
-      public int a() {
-         return this.l() * 36;
-      }
-
-      @Override
-      public int b() {
-         return 300;
-      }
-   }
-
-   interface k<T> {
-      T request(faw var1) throws fcj;
-   }
-
-   class l extends far.e {
-      private static final int c = 36;
-      private final fbn d;
-      private final fja e = new fja();
-
-      public l(final fbn $$0) {
-         this.d = $$0;
-         boolean $$1 = far.this.i($$0);
-         if (far.b() && $$1 && $$0.h()) {
-            this.e.a(fix.a(wu.a("mco.snapshot.paired", $$0.s)));
-         } else if (!$$1 && $$0.e()) {
-            this.e.a(fix.a(wu.a("mco.snapshot.friendsRealm.upgrade", $$0.f)));
-         } else if (!$$1 && $$0.f()) {
-            this.e.a(fix.a(wu.a("mco.snapshot.friendsRealm.downgrade", $$0.t)));
-         }
-      }
-
-      @Override
-      public void a(fgz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         if (this.d.e == fbn.c.c) {
-            $$0.a(far.b, $$3 - 5, $$2 + $$5 / 2 - 10, 40, 20);
-            int $$10 = $$2 + $$5 / 2 - 9 / 2;
-            $$0.b(far.this.o, far.K, $$3 + 40 - 2, $$10, 8388479);
-         } else {
-            fed.a($$0, $$3, $$2, 32, this.d.g);
-            this.a($$0, $$2, $$3, $$4);
-            this.a($$0, $$2, $$3);
-            this.a($$0, $$2, $$3, this.d);
-            this.a(this.d, $$0, $$3 + $$4, $$2, $$6, $$7);
-            this.e.a($$8, this.aJ_(), new fls($$3, $$2, $$4, $$5));
-         }
-      }
-
-      private void a(fgz $$0, int $$1, int $$2, int $$3) {
-         int $$4 = this.b($$2);
-         int $$5 = this.a($$1);
-         wu $$6 = far.a(this.d.t, this.d.d());
-         int $$7 = this.a($$2, $$3, $$6);
-         this.a($$0, this.d.b(), $$4, $$5, $$7, -1);
-         if ($$6 != wt.a && !this.d.i()) {
-            $$0.a(far.this.o, $$6, $$7, $$5, -8355712, false);
-         }
-      }
-
-      private void a(fgz $$0, int $$1, int $$2) {
-         int $$3 = this.b($$2);
-         int $$4 = this.a($$1);
-         int $$5 = this.c($$4);
-         String $$6 = this.d.c();
-         if (this.d.i() && $$6 != null) {
-            wu $$7 = wu.b($$6).a(n.h);
-            $$0.a(far.this.o, wu.a("mco.selectServer.minigameName", $$7).b(-171), $$3, $$5, -1, false);
-         } else {
-            $$0.a(far.this.o, this.d.a(), $$3, this.c($$4), -8355712, false);
-         }
-      }
-
-      private void d() {
-         far.this.l.aj().a(gsr.a(avf.Ar, 1.0F));
-         far.a(this.d, far.this);
-      }
-
-      private void e() {
-         far.this.l.aj().a(gsr.a(avf.Ar, 1.0F));
-         fcz $$0 = new fcz(far.this, this.d);
-         far.this.l.a($$0);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (this.d.e == fbn.c.c) {
-            this.e();
-         } else if (far.this.a(this.d)) {
-            if (ac.c() - far.this.aJ < 250L && this.aJ_()) {
-               this.d();
-            }
-
-            far.this.aJ = ac.c();
-         }
-
-         return true;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, int $$2) {
-         if (fln.a($$0)) {
-            if (this.d.e == fbn.c.c) {
-               this.e();
-               return true;
-            }
-
-            if (far.this.a(this.d)) {
-               this.d();
-               return true;
-            }
-         }
-
-         return super.a($$0, $$1, $$2);
-      }
-
-      @Override
-      public wu a() {
-         return (wu)(this.d.e == fbn.c.c ? far.W : wu.a("narrator.select", this.d.c));
-      }
-
-      public fbn c() {
-         return this.d;
+      public int a(int $$0) {
+         return switch (this) {
+            case a, h -> $$0 / 4 * 6;
+            case b, c, d, e, f, g -> $$0;
+            default -> 0;
+         };
       }
    }
 }

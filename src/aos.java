@@ -1,40 +1,47 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class aos {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.transfer.error.no_players"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.trigger.failed.unprimed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.trigger.failed.invalid"));
 
    public static void a(CommandDispatcher<eq> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("transfer").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)er.a("trigger")
             .then(
-               ((RequiredArgumentBuilder)er.a("hostname", StringArgumentType.string())
-                     .executes($$0x -> a((eq)$$0x.getSource(), StringArgumentType.getString($$0x, "hostname"), 25565, List.of(((eq)$$0x.getSource()).h()))))
-                  .then(
-                     ((RequiredArgumentBuilder)er.a("port", IntegerArgumentType.integer(1, 65535))
-                           .executes(
-                              $$0x -> a(
-                                    (eq)$$0x.getSource(),
-                                    StringArgumentType.getString($$0x, "hostname"),
-                                    IntegerArgumentType.getInteger($$0x, "port"),
-                                    List.of(((eq)$$0x.getSource()).h())
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)er.a("objective", fk.a())
+                        .suggests(($$0x, $$1) -> a((eq)$$0x.getSource(), $$1))
+                        .executes($$0x -> a((eq)$$0x.getSource(), ((eq)$$0x.getSource()).h(), fk.a($$0x, "objective"))))
+                     .then(
+                        er.a("add")
+                           .then(
+                              er.a("value", IntegerArgumentType.integer())
+                                 .executes(
+                                    $$0x -> a(
+                                          (eq)$$0x.getSource(),
+                                          ((eq)$$0x.getSource()).h(),
+                                          fk.a($$0x, "objective"),
+                                          IntegerArgumentType.getInteger($$0x, "value")
+                                       )
                                  )
-                           ))
+                           )
+                     ))
+                  .then(
+                     er.a("set")
                         .then(
-                           er.a("players", fd.d())
+                           er.a("value", IntegerArgumentType.integer())
                               .executes(
-                                 $$0x -> a(
-                                       (eq)$$0x.getSource(),
-                                       StringArgumentType.getString($$0x, "hostname"),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       fd.f($$0x, "players")
+                                 $$0x -> b(
+                                       (eq)$$0x.getSource(), ((eq)$$0x.getSource()).h(), fk.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
                                     )
                               )
                         )
@@ -43,21 +50,58 @@ public class aos {
       );
    }
 
-   private static int a(eq $$0, String $$1, int $$2, Collection<aql> $$3) throws CommandSyntaxException {
-      if ($$3.isEmpty()) {
-         throw a.create();
+   public static CompletableFuture<Suggestions> a(eq $$0, SuggestionsBuilder $$1) {
+      exi $$2 = $$0.f();
+      List<String> $$3 = Lists.newArrayList();
+      if ($$2 != null) {
+         exj $$4 = $$0.l().aL();
+
+         for (exb $$5 : $$4.c()) {
+            if ($$5.c() == exm.c) {
+               exf $$6 = $$4.d($$2, $$5);
+               if ($$6 != null && !$$6.b()) {
+                  $$3.add($$5.b());
+               }
+            }
+         }
+      }
+
+      return ev.b($$3, $$1);
+   }
+
+   private static int a(eq $$0, aqn $$1, exb $$2, int $$3) throws CommandSyntaxException {
+      exh $$4 = a($$0.l().aL(), $$1, $$2);
+      int $$5 = $$4.b($$3);
+      $$0.a(() -> wu.a("commands.trigger.add.success", $$2.g(), $$3), true);
+      return $$5;
+   }
+
+   private static int b(eq $$0, aqn $$1, exb $$2, int $$3) throws CommandSyntaxException {
+      exh $$4 = a($$0.l().aL(), $$1, $$2);
+      $$4.a($$3);
+      $$0.a(() -> wu.a("commands.trigger.set.success", $$2.g(), $$3), true);
+      return $$3;
+   }
+
+   private static int a(eq $$0, aqn $$1, exb $$2) throws CommandSyntaxException {
+      exh $$3 = a($$0.l().aL(), $$1, $$2);
+      int $$4 = $$3.b(1);
+      $$0.a(() -> wu.a("commands.trigger.simple.success", $$2.g()), true);
+      return $$4;
+   }
+
+   private static exh a(exj $$0, exi $$1, exb $$2) throws CommandSyntaxException {
+      if ($$2.c() != exm.c) {
+         throw b.create();
       } else {
-         for (aql $$4 : $$3) {
-            $$4.c.b(new zp($$1, $$2));
-         }
-
-         if ($$3.size() == 1) {
-            $$0.a(() -> wu.a("commands.transfer.success.single", $$3.iterator().next().O_(), $$1, $$2), true);
+         exf $$3 = $$0.d($$1, $$2);
+         if ($$3 != null && !$$3.b()) {
+            exh $$4 = $$0.c($$1, $$2);
+            $$4.f();
+            return $$4;
          } else {
-            $$0.a(() -> wu.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
+            throw a.create();
          }
-
-         return $$3.size();
       }
    }
 }

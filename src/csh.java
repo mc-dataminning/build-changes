@@ -1,155 +1,112 @@
-import java.util.List;
-import java.util.Optional;
-import org.apache.commons.lang3.math.Fraction;
+public class csh extends ctx {
+   public static final int a = 10;
+   private static final int b = 200;
 
-public class csh extends ctv {
-   private static final int a = aye.f(0.4F, 0.4F, 1.0F);
-   private static final int b = 64;
-
-   public csh(ctv.a $$0) {
+   public csh(ctx.a $$0) {
       super($$0);
    }
 
-   public static float c(cua $$0) {
-      cwm $$1 = $$0.a(kn.F, cwm.a);
-      return $$1.e().floatValue();
-   }
-
    @Override
-   public boolean a(cua $$0, cra $$1, cpn $$2, cmh $$3) {
-      if ($$2 != cpn.b) {
-         return false;
-      } else {
-         cwm $$4 = $$0.a(kn.F);
-         if ($$4 == null) {
-            return false;
-         } else {
-            cua $$5 = $$1.g();
-            cwm.a $$6 = new cwm.a($$4);
-            if ($$5.e()) {
-               this.a($$3);
-               cua $$7 = $$6.b();
-               if ($$7 != null) {
-                  cua $$8 = $$1.d($$7);
-                  $$6.a($$8);
-               }
-            } else if ($$5.g().an_()) {
-               int $$9 = $$6.a($$1, $$3);
-               if ($$9 > 0) {
-                  this.b($$3);
-               }
-            }
-
-            $$0.b(kn.F, $$6.d());
-            return true;
-         }
+   public bqg a(cxo $$0) {
+      cmk $$1 = $$0.o();
+      if ($$1 != null && this.a($$1).c() == ewd.a.b) {
+         $$1.c($$0.p());
       }
+
+      return bqg.c;
    }
 
    @Override
-   public boolean a(cua $$0, cua $$1, cra $$2, cpn $$3, cmh $$4, btq $$5) {
-      if ($$3 == cpn.b && $$2.b($$4)) {
-         cwm $$6 = $$0.a(kn.F);
-         if ($$6 == null) {
-            return false;
-         } else {
-            cwm.a $$7 = new cwm.a($$6);
-            if ($$1.e()) {
-               cua $$8 = $$7.b();
-               if ($$8 != null) {
-                  this.a($$4);
-                  $$5.a($$8);
+   public cvx b(cuc $$0) {
+      return cvx.j;
+   }
+
+   @Override
+   public int a(cuc $$0, btb $$1) {
+      return 200;
+   }
+
+   @Override
+   public void a(dcf $$0, btb $$1, cuc $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof cmk $$4) {
+         ewd $$6 = this.a($$4);
+         if ($$6 instanceof ewb $$7 && $$6.c() == ewd.a.b) {
+            int $$9 = this.a($$2, $$1) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               ja $$11 = $$7.a();
+               dsk $$12 = $$0.a_($$11);
+               bsv $$13 = $$1.ft() == bqf.a ? $$4.fr() : $$4.fr().e();
+               if ($$12.z() && $$12.l() != dln.a) {
+                  this.a($$0, $$7, $$12, $$1.g(0.0F), $$13);
                }
-            } else {
-               int $$9 = $$7.a($$1);
-               if ($$9 > 0) {
-                  this.b($$4);
+
+               avg $$15;
+               if ($$12.b() instanceof dfm $$14) {
+                  $$15 = $$14.c();
+               } else {
+                  $$15 = avh.cS;
+               }
+
+               $$0.a($$4, $$11, $$15, avi.e);
+               if (!$$0.x_() && $$0.c_($$11) instanceof dpt $$17) {
+                  boolean $$18 = $$17.a($$0.Z(), $$4, $$7.b());
+                  if ($$18) {
+                     bsn $$19 = $$2.equals($$4.a(bsn.b)) ? bsn.b : bsn.a;
+                     $$2.a(1, $$1, $$19);
+                  }
                }
             }
 
-            $$0.b(kn.F, $$7.d());
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public bqe<cua> a(dcd $$0, cmh $$1, bqc $$2) {
-      cua $$3 = $$1.b($$2);
-      if (a($$3, $$1)) {
-         this.c($$1);
-         $$1.b(avp.c.b(this));
-         return bqe.a($$3, $$0.x_());
-      } else {
-         return bqe.d($$3);
-      }
-   }
-
-   @Override
-   public boolean d(cua $$0) {
-      cwm $$1 = $$0.a(kn.F, cwm.a);
-      return $$1.e().compareTo(Fraction.ZERO) > 0;
-   }
-
-   @Override
-   public int e(cua $$0) {
-      cwm $$1 = $$0.a(kn.F, cwm.a);
-      return Math.min(1 + aye.a($$1.e(), 12), 13);
-   }
-
-   @Override
-   public int f(cua $$0) {
-      return a;
-   }
-
-   private static boolean a(cua $$0, cmh $$1) {
-      cwm $$2 = $$0.a(kn.F);
-      if ($$2 != null && !$$2.f()) {
-         $$0.b(kn.F, cwm.a);
-         if ($$1 instanceof aql) {
-            $$2.c().forEach($$1x -> $$1.a($$1x, true));
+            return;
          }
 
-         return true;
+         $$1.fx();
       } else {
-         return false;
+         $$1.fx();
       }
    }
 
-   @Override
-   public Optional<crk> g(cua $$0) {
-      return !$$0.b(kn.q) && !$$0.b(kn.p) ? Optional.ofNullable($$0.a(kn.F)).map(crj::new) : Optional.empty();
+   private ewd a(cmk $$0) {
+      return cne.a($$0, $$0x -> !$$0x.N_() && $$0x.bA(), $$0.gz());
    }
 
-   @Override
-   public void a(cua $$0, ctv.b $$1, List<wu> $$2, cvt $$3) {
-      cwm $$4 = $$0.a(kn.F);
-      if ($$4 != null) {
-         int $$5 = aye.a($$4.e(), 64);
-         $$2.add(wu.a("item.minecraft.bundle.fullness", $$5, 64).a(n.h));
+   private void a(dcf $$0, ewb $$1, dsk $$2, ewf $$3, bsv $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == bsv.b ? 1 : -1;
+      int $$7 = $$0.E_().b(7, 12);
+      lb $$8 = new lb(lj.b, $$2);
+      jf $$9 = $$1.b();
+      csh.a $$10 = csh.a.a($$3, $$9);
+      ewf $$11 = $$1.e();
+
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.c - (double)($$9 == jf.e ? 1.0E-6F : 0.0F),
+            $$11.d,
+            $$11.e - (double)($$9 == jf.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.E_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.E_().j()
+         );
       }
    }
 
-   @Override
-   public void a(cir $$0) {
-      cwm $$1 = $$0.p().a(kn.F);
-      if ($$1 != null) {
-         $$0.p().b(kn.F, cwm.a);
-         cuc.a($$0, $$1.c());
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
+
+      public static csh.a a(ewf $$0, jf $$1) {
+         double $$2 = 0.0;
+
+         return switch ($$1) {
+            case a, b -> new csh.a($$0.c(), 0.0, -$$0.a());
+            case c -> new csh.a(1.0, 0.0, -0.1);
+            case d -> new csh.a(-1.0, 0.0, 0.1);
+            case e -> new csh.a(-0.1, 0.0, -1.0);
+            case f -> new csh.a(0.1, 0.0, 1.0);
+         };
       }
-   }
-
-   private void a(bsd $$0) {
-      $$0.a(avf.dq, 0.8F, 0.8F + $$0.dP().E_().i() * 0.4F);
-   }
-
-   private void b(bsd $$0) {
-      $$0.a(avf.dp, 0.8F, 0.8F + $$0.dP().E_().i() * 0.4F);
-   }
-
-   private void c(bsd $$0) {
-      $$0.a(avf.do, 0.8F, 0.8F + $$0.dP().E_().i() * 0.4F);
    }
 }

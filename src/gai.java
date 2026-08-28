@@ -1,15 +1,21 @@
-public class gai extends gcl {
-   private final gcg a;
+public class gai extends gcr {
+   private final gcm a;
 
-   gai(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gcg $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$7;
+   gai(fyj $$0, double $$1, double $$2, double $$3, double $$4, gcm $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$5;
       this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
@@ -20,26 +26,24 @@ public class gai extends gcl {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
          this.b(this.a);
       }
    }
 
    @Override
-   public gbp b() {
-      return gbp.b;
+   public gbv b() {
+      return gbv.d;
    }
 
-   public static class a implements gbo<ln> {
-      private final gcg a;
+   public static class a implements gbu<ln> {
+      private final gcm a;
 
-      public a(gcg $$0) {
+      public a(gcm $$0) {
          this.a = $$0;
       }
 
-      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gai($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gai($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

@@ -1,5 +1,6 @@
 import java.util.concurrent.CompletableFuture;
 
+@FunctionalInterface
 public interface dvi {
-   CompletableFuture<Void> a(dbk var1, ur var2);
+   CompletableFuture<dug> doWork(dvm var1, dvk var2, aza<aqf> var3, dug var4);
 }

@@ -1,18 +1,28 @@
-public class avs {
-   public static final awk<dpd> a = a("no_item_required");
-   public static final awk<dpd> b = a("pattern_item/flower");
-   public static final awk<dpd> c = a("pattern_item/creeper");
-   public static final awk<dpd> d = a("pattern_item/skull");
-   public static final awk<dpd> e = a("pattern_item/mojang");
-   public static final awk<dpd> f = a("pattern_item/globe");
-   public static final awk<dpd> g = a("pattern_item/piglin");
-   public static final awk<dpd> h = a("pattern_item/flow");
-   public static final awk<dpd> i = a("pattern_item/guster");
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private avs() {
+public class avs {
+   protected final Object2IntMap<avo<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+
+   public avs() {
+      this.a.defaultReturnValue(0);
    }
 
-   private static awk<dpd> a(String $$0) {
-      return awk.a(lr.d, new akk($$0));
+   public void b(cmk $$0, avo<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
+   }
+
+   public void a(cmk $$0, avo<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
+   }
+
+   public <T> int a(avq<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   }
+
+   public int a(avo<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

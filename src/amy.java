@@ -12,9 +12,9 @@ public class amy {
       );
    }
 
-   private static int a(eq $$0, Collection<? extends bsd> $$1) {
-      for (bsd $$2 : $$1) {
-         $$2.an();
+   private static int a(eq $$0, Collection<? extends bsg> $$1) {
+      for (bsg $$2 : $$1) {
+         $$2.ao();
       }
 
       if ($$1.size() == 1) {

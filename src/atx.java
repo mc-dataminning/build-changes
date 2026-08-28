@@ -1,29 +1,17 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-@FunctionalInterface
-public interface atx {
-   atx b = $$0 -> Optional.empty();
-
-   Optional<ats> getResource(akk var1);
-
-   default ats getResourceOrThrow(akk $$0) throws FileNotFoundException {
-      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
+public interface atx extends atq {
+   @Override
+   default CompletableFuture<Void> a(atq.a $$0, atw $$1, bmu $$2, bmu $$3, Executor $$4, Executor $$5) {
+      return $$0.a(azk.a).thenRunAsync(() -> {
+         $$3.a();
+         $$3.a("listener");
+         this.a($$1);
+         $$3.c();
+         $$3.b();
+      }, $$5);
    }
 
-   default InputStream open(akk $$0) throws IOException {
-      return this.getResourceOrThrow($$0).d();
-   }
-
-   default BufferedReader openAsReader(akk $$0) throws IOException {
-      return this.getResourceOrThrow($$0).e();
-   }
-
-   static atx fromMap(Map<akk, ats> $$0) {
-      return $$1 -> Optional.ofNullable($$0.get($$1));
-   }
+   void a(atw var1);
 }

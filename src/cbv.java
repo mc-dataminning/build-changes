@@ -1,39 +1,21 @@
-import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cbv<T extends bta & bte> extends bzw {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class cbv<T extends btb> extends cbs<T> {
+   private final bty i;
 
-   public cbv(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public cbv(bty $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<btb> $$3) {
+      super($$0, $$1, 10, $$2, false, $$3);
+      this.i = $$0;
    }
 
    @Override
    public boolean a() {
-      return this.b.dP().ab().b(dbz.O) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.ei() != null && this.b.ei().ak() == bsj.by && this.b.ej() > this.d;
+      return !this.i.s() && super.a();
    }
 
    @Override
-   public void c() {
-      this.d = this.b.ej();
-      this.b.aa_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bte)$$0).forEach(bte::aa_);
-      }
-
-      super.c();
-   }
-
-   private List<? extends bta> i() {
-      double $$0 = this.b.g(bug.m);
-      evu $$1 = evu.a(this.b.dn()).c($$0, 10.0, $$0);
-      return this.b.dP().a((Class<? extends bta>)this.b.getClass(), $$1, bsi.f);
+   public boolean b() {
+      return this.d != null ? this.d.a(this.e, this.c) : super.b();
    }
 }

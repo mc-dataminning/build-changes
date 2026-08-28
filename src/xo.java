@@ -15,7 +15,7 @@ public class xo {
       this.b = xp.a($$0, $$1);
    }
 
-   public xo.c a(ays $$0) {
+   public xo.c a(ayu $$0) {
       return $$1 -> {
          xp $$2 = this.b;
          if ($$2 == null) {
@@ -27,8 +27,8 @@ public class xo {
       };
    }
 
-   public xo.b a(final cmk $$0) {
-      final ayr $$1 = $$0.a();
+   public xo.b a(final cmn $$0) {
+      final ayt $$1 = $$0.a();
       return new xo.b() {
          @Override
          public xk unpack(@Nullable xg $$0x, xn $$1x) throws xo.a {

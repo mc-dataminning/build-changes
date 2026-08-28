@@ -1,43 +1,39 @@
-public class gca extends gcl {
-   private final gcg a;
+public class gca extends gcr {
+   private final gcm a;
 
-   protected gca(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gcg $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.225F;
-      this.B = 1.0F;
+   gca(fyj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gcm $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
       this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.d(1.5F);
+      this.n = false;
       this.b($$7);
    }
 
    @Override
-   public gbp b() {
-      return gbp.b;
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gbv b() {
+      return gbv.c;
    }
 
    @Override
    public void a() {
       super.a();
       this.b(this.a);
-      this.j *= 0.95F;
-      this.k *= 0.9F;
-      this.l *= 0.95F;
    }
 
-   public static class a implements gbo<ln> {
-      private final gcg a;
-
-      public a(gcg $$0) {
-         this.a = $$0;
-      }
-
-      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static record a(gcm a) implements gbu<ll> {
+      public gbr a(ll $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gca $$8 = new gca($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(0.923F, 0.964F, 0.999F);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.z.a(12) + 8);
          return $$8;
       }
    }

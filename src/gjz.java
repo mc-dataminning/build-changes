@@ -1,11 +1,11 @@
-public abstract class gjz<T extends ciu> extends gkm<T, fuw<T>> {
-   protected gjz(gjg.a $$0, fuw<T> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(new gmx<>(this, $$0.f(), $$0.d()));
+public class gjz extends gks<cgr, fuu<cgr>> {
+   private static final akk a = new akk("textures/entity/goat/goat.png");
+
+   public gjz(gjm.a $$0) {
+      super($$0, new fuu<>($$0.a(fxn.al)), 0.7F);
    }
 
-   protected void a(T $$0, fag $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public akk a(cgr $$0) {
+      return a;
    }
 }

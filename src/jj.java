@@ -17,12 +17,12 @@ public interface jj<T> {
 
    boolean a(Predicate<akj<T>> var1);
 
-   boolean a(awk<T> var1);
+   boolean a(awm<T> var1);
 
    @Deprecated
    boolean a(jj<T> var1);
 
-   Stream<awk<T>> c();
+   Stream<awm<T>> c();
 
    Either<akj<T>, T> d();
 
@@ -57,7 +57,7 @@ public interface jj<T> {
       }
 
       @Override
-      public boolean a(awk<T> $$0) {
+      public boolean a(awm<T> $$0) {
          return false;
       }
 
@@ -97,7 +97,7 @@ public interface jj<T> {
       }
 
       @Override
-      public Stream<awk<T>> c() {
+      public Stream<awm<T>> c() {
          return Stream.of();
       }
    }
@@ -109,7 +109,7 @@ public interface jj<T> {
 
    public static class c<T> implements jj<T> {
       private final jm<T> a;
-      private Set<awk<T>> b = Set.of();
+      private Set<awm<T>> b = Set.of();
       private final jj.c.a c;
       @Nullable
       private akj<T> d;
@@ -160,7 +160,7 @@ public interface jj<T> {
       }
 
       @Override
-      public boolean a(awk<T> $$0) {
+      public boolean a(awm<T> $$0) {
          return this.b.contains($$0);
       }
 
@@ -215,12 +215,12 @@ public interface jj<T> {
          }
       }
 
-      void a(Collection<awk<T>> $$0) {
+      void a(Collection<awm<T>> $$0) {
          this.b = Set.copyOf($$0);
       }
 
       @Override
-      public Stream<awk<T>> c() {
+      public Stream<awm<T>> c() {
          return this.b.stream();
       }
 

@@ -44,7 +44,7 @@ public class ff implements ArgumentType<ff.a> {
 
          String $$4 = $$0.getString().substring($$3, $$0.getCursor());
          return $$1 -> {
-            Optional<GameProfile> $$2 = $$1.l().au().a($$4);
+            Optional<GameProfile> $$2 = $$1.l().av().a($$4);
             return Collections.singleton($$2.orElseThrow(a::create));
          };
       }
@@ -85,14 +85,14 @@ public class ff implements ArgumentType<ff.a> {
 
       @Override
       public Collection<GameProfile> getNames(eq $$0) throws CommandSyntaxException {
-         List<aql> $$1 = this.a.d($$0);
+         List<aqn> $$1 = this.a.d($$0);
          if ($$1.isEmpty()) {
             throw fd.e.create();
          } else {
             List<GameProfile> $$2 = Lists.newArrayList();
 
-            for (aql $$3 : $$1) {
-               $$2.add($$3.fX());
+            for (aqn $$3 : $$1) {
+               $$2.add($$3.fY());
             }
 
             return $$2;

@@ -28,16 +28,16 @@ public class agw implements zb<agb> {
       this.d = $$1;
    }
 
-   public static agw a(bsd $$0, boolean $$1) {
-      return new agw($$0.al(), $$1, e);
+   public static agw a(bsg $$0, boolean $$1) {
+      return new agw($$0.am(), $$1, e);
    }
 
-   public static agw a(bsd $$0, boolean $$1, bqc $$2) {
-      return new agw($$0.al(), $$1, new agw.d($$2));
+   public static agw a(bsg $$0, boolean $$1, bqf $$2) {
+      return new agw($$0.am(), $$1, new agw.d($$2));
    }
 
-   public static agw a(bsd $$0, boolean $$1, bqc $$2, evz $$3) {
-      return new agw($$0.al(), $$1, new agw.e($$2, $$3));
+   public static agw a(bsg $$0, boolean $$1, bqf $$2, ewf $$3) {
+      return new agw($$0.am(), $$1, new agw.e($$2, $$3));
    }
 
    private agw(vr $$0) {
@@ -64,7 +64,7 @@ public class agw implements zb<agb> {
    }
 
    @Nullable
-   public bsd a(aqk $$0) {
+   public bsg a(aqm $$0) {
       return $$0.b(this.b);
    }
 
@@ -97,22 +97,22 @@ public class agw implements zb<agb> {
    }
 
    public interface c {
-      void a(bqc var1);
+      void a(bqf var1);
 
-      void a(bqc var1, evz var2);
+      void a(bqf var1, ewf var2);
 
       void a();
    }
 
    static class d implements agw.a {
-      private final bqc a;
+      private final bqf a;
 
-      d(bqc $$0) {
+      d(bqf $$0) {
          this.a = $$0;
       }
 
       private d(vr $$0) {
-         this.a = $$0.b(bqc.class);
+         this.a = $$0.b(bqf.class);
       }
 
       @Override
@@ -132,17 +132,17 @@ public class agw implements zb<agb> {
    }
 
    static class e implements agw.a {
-      private final bqc a;
-      private final evz b;
+      private final bqf a;
+      private final ewf b;
 
-      e(bqc $$0, evz $$1) {
+      e(bqf $$0, ewf $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private e(vr $$0) {
-         this.b = new evz((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(bqc.class);
+         this.b = new ewf((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(bqf.class);
       }
 
       @Override

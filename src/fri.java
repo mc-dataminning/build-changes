@@ -1,152 +1,116 @@
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Set;
 
-public abstract class fri<B extends fzi.a<?>> extends fnd {
-   private static final wu y = wu.c("gui.abuseReport.report_sent_msg");
-   private static final wu z = wu.c("gui.abuseReport.sending.title").a(n.r);
-   private static final wu A = wu.c("gui.abuseReport.sent.title").a(n.r);
-   private static final wu B = wu.c("gui.abuseReport.error.title").a(n.r);
-   private static final wu C = wu.c("gui.abuseReport.send.generic_error");
-   protected static final wu a = wu.c("gui.abuseReport.send");
-   protected static final wu b = wu.c("gui.abuseReport.observed_what");
-   protected static final wu c = wu.c("gui.abuseReport.select_reason");
-   private static final wu D = wu.c("gui.abuseReport.describe");
-   protected static final wu q = wu.c("gui.abuseReport.more_comments");
-   private static final wu E = wu.c("gui.abuseReport.comments");
-   protected static final int r = 20;
-   protected static final int s = 280;
-   protected static final int u = 8;
-   private static final Logger F = LogUtils.getLogger();
-   protected final fnd v;
-   protected final fzm w;
-   protected B x;
+public class fri {
+   private final jx a;
+   private final List<cyk<?>> b;
+   private final boolean c;
+   private final Set<cyk<?>> d = Sets.newHashSet();
+   private final Set<cyk<?>> e = Sets.newHashSet();
+   private final Set<cyk<?>> f = Sets.newHashSet();
 
-   protected fri(wu $$0, fnd $$1, fzm $$2, B $$3) {
-      super($$0);
-      this.v = $$1;
-      this.w = $$2;
-      this.x = $$3;
-   }
-
-   protected fie a(int $$0, int $$1, Consumer<String> $$2) {
-      AbuseReportLimits $$3 = this.w.a().b();
-      fie $$4 = new fie(this.o, 0, 0, $$0, $$1, D, E);
-      $$4.a(this.x.g());
-      $$4.a($$3.maxOpinionCommentsLength());
-      $$4.b($$2);
-      return $$4;
-   }
-
-   protected void m() {
-      this.x.a(this.w).ifLeft($$0 -> {
-         CompletableFuture<?> $$1 = this.w.a().a($$0.a(), $$0.b(), $$0.c());
-         this.l.a(fmp.a(z, wt.e, () -> {
-            this.l.a(this);
-            $$1.cancel(true);
-         }));
-         $$1.handleAsync(($$0x, $$1x) -> {
-            if ($$1x == null) {
-               this.E();
-            } else {
-               if ($$1x instanceof CancellationException) {
-                  return null;
-               }
-
-               this.a($$1x);
-            }
-
-            return null;
-         }, this.l);
-      }).ifRight($$0 -> this.a($$0.b()));
-   }
-
-   private void E() {
-      this.G();
-      this.l.a(fmp.a(A, y, wt.d, () -> this.l.a(null)));
-   }
-
-   private void a(Throwable $$0) {
-      F.error("Encountered error while sending abuse report", $$0);
-      wu $$2;
-      if ($$0.getCause() instanceof xu $$1) {
-         $$2 = $$1.a();
+   public fri(jx $$0, List<cyk<?>> $$1) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      if ($$1.size() <= 1) {
+         this.c = true;
       } else {
-         $$2 = C;
-      }
-
-      this.a($$2);
-   }
-
-   private void a(wu $$0) {
-      wu $$1 = $$0.f().a(n.m);
-      this.l.a(fmp.a(B, $$1, wt.k, () -> this.l.a(this)));
-   }
-
-   void F() {
-      if (this.x.b()) {
-         this.w.a(this.x.e().b());
+         this.c = a($$0, $$1);
       }
    }
 
-   void G() {
-      this.w.a(null);
+   private static boolean a(jx $$0, List<cyk<?>> $$1) {
+      int $$2 = $$1.size();
+      cuc $$3 = $$1.get(0).b().a($$0);
+
+      for (int $$4 = 1; $$4 < $$2; $$4++) {
+         cuc $$5 = $$1.get($$4).b().a($$0);
+         if (!cuc.c($$3, $$5)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   @Override
-   public void d() {
-      if (this.x.b()) {
-         this.l.a(new fri.a());
-      } else {
-         this.l.a(this.v);
+   public jx a() {
+      return this.a;
+   }
+
+   public boolean b() {
+      return !this.f.isEmpty();
+   }
+
+   public void a(avk $$0) {
+      for (cyk<?> $$1 : this.b) {
+         if ($$0.b($$1)) {
+            this.f.add($$1);
+         }
       }
    }
 
-   @Override
-   public void j() {
-      this.F();
-      super.j();
+   public void a(cmo $$0, int $$1, int $$2, avk $$3) {
+      for (cyk<?> $$4 : this.b) {
+         boolean $$5 = $$4.b().a($$1, $$2) && $$3.b($$4);
+         if ($$5) {
+            this.e.add($$4);
+         } else {
+            this.e.remove($$4);
+         }
+
+         if ($$5 && $$0.a($$4.b(), null)) {
+            this.d.add($$4);
+         } else {
+            this.d.remove($$4);
+         }
+      }
    }
 
-   class a extends fpw {
-      private static final wu c = wu.c("gui.abuseReport.discard.title").a(n.r);
-      private static final wu q = wu.c("gui.abuseReport.discard.content");
-      private static final wu r = wu.c("gui.abuseReport.discard.return");
-      private static final wu s = wu.c("gui.abuseReport.discard.draft");
-      private static final wu u = wu.c("gui.abuseReport.discard.discard");
+   public boolean a(cyk<?> $$0) {
+      return this.d.contains($$0);
+   }
 
-      protected a() {
-         super(c, q, q);
+   public boolean c() {
+      return !this.d.isEmpty();
+   }
+
+   public boolean d() {
+      return !this.e.isEmpty();
+   }
+
+   public List<cyk<?>> e() {
+      return this.b;
+   }
+
+   public List<cyk<?>> a(boolean $$0) {
+      List<cyk<?>> $$1 = Lists.newArrayList();
+      Set<cyk<?>> $$2 = $$0 ? this.d : this.e;
+
+      for (cyk<?> $$3 : this.b) {
+         if ($$2.contains($$3)) {
+            $$1.add($$3);
+         }
       }
 
-      @Override
-      protected fla m() {
-         fld $$0 = fld.d().a(8);
-         $$0.c().b();
-         fld $$1 = $$0.a(fld.e().a(8));
-         $$1.a(fhm.a(r, $$0x -> this.d()).a());
-         $$1.a(fhm.a(s, $$0x -> {
-            fri.this.F();
-            this.l.a(fri.this.v);
-         }).a());
-         $$0.a(fhm.a(u, $$0x -> {
-            fri.this.G();
-            this.l.a(fri.this.v);
-         }).a());
-         return $$0;
+      return $$1;
+   }
+
+   public List<cyk<?>> b(boolean $$0) {
+      List<cyk<?>> $$1 = Lists.newArrayList();
+
+      for (cyk<?> $$2 : this.b) {
+         if (this.e.contains($$2) && this.d.contains($$2) == $$0) {
+            $$1.add($$2);
+         }
       }
 
-      @Override
-      public void d() {
-         this.l.a(fri.this);
-      }
+      return $$1;
+   }
 
-      @Override
-      public boolean aE_() {
-         return false;
-      }
+   public boolean f() {
+      return this.c;
    }
 }

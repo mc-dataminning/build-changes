@@ -1,44 +1,86 @@
-public class bpz {
-   public static void a(dcd $$0, ja $$1, bpw $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import java.util.Set;
+import java.util.function.Predicate;
+
+public interface bpz extends bpx {
+   float o_ = 4.0F;
+
+   int b();
+
+   boolean c();
+
+   cuc a(int var1);
+
+   cuc a(int var1, int var2);
+
+   cuc b(int var1);
+
+   void a(int var1, cuc var2);
+
+   default int ah_() {
+      return 99;
    }
 
-   public static void a(dcd $$0, bsd $$1, bpw $$2) {
-      a($$0, $$1.du(), $$1.dw(), $$1.dA(), $$2);
+   default int e_(cuc $$0) {
+      return Math.min(this.ah_(), $$0.j());
    }
 
-   private static void a(dcd $$0, double $$1, double $$2, double $$3, bpw $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
-      }
+   void e();
+
+   boolean a(cmk var1);
+
+   default void d_(cmk $$0) {
    }
 
-   public static void a(dcd $$0, ja $$1, js<cua> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   default void c(cmk $$0) {
    }
 
-   public static void a(dcd $$0, double $$1, double $$2, double $$3, cua $$4) {
-      double $$5 = (double)bsj.ag.l();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
-
-      while (!$$4.e()) {
-         cir $$11 = new cir($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
-      }
+   default boolean b(int $$0, cuc $$1) {
+      return true;
    }
 
-   public static void a(dsh $$0, dsh $$1, dcd $$2, ja $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof bpw $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
+   default boolean a(bpz $$0, int $$1, cuc $$2) {
+      return true;
+   }
+
+   default int a_(ctx $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cuc $$3 = this.a($$2);
+         if ($$3.g().equals($$0)) {
+            $$1 += $$3.H();
          }
+      }
+
+      return $$1;
+   }
+
+   default boolean a(Set<ctx> $$0) {
+      return this.a_($$1 -> !$$1.e() && $$0.contains($$1.g()));
+   }
+
+   default boolean a_(Predicate<cuc> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cuc $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   static boolean a(dpp $$0, cmk $$1) {
+      return a($$0, $$1, 4.0F);
+   }
+
+   static boolean a(dpp $$0, cmk $$1, float $$2) {
+      dcf $$3 = $$0.i();
+      ja $$4 = $$0.az_();
+      if ($$3 == null) {
+         return false;
+      } else {
+         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
       }
    }
 }

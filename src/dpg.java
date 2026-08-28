@@ -1,108 +1,76 @@
-public class dpg extends dqs {
-   private js<cua> d = js.a(27, cua.l);
-   private final dqa e = new dqa() {
-      @Override
-      protected void a(dcd $$0, ja $$1, dsh $$2) {
-         dpg.this.a($$2, avf.bz);
-         dpg.this.a($$2, true);
-      }
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-      @Override
-      protected void b(dcd $$0, ja $$1, dsh $$2) {
-         dpg.this.a($$2, avf.by);
-         dpg.this.a($$2, false);
-      }
+public record dpg(List<dpg.b> d) {
+   static final Logger e = LogUtils.getLogger();
+   public static final dpg a = new dpg(List.of());
+   public static final Codec<dpg> b = dpg.b.a.listOf().xmap(dpg::new, dpg::b);
+   public static final ys<wf, dpg> c = dpg.b.b.a(yq.a()).a(dpg::new, dpg::b);
 
-      @Override
-      protected void a(dcd $$0, ja $$1, dsh $$2, int $$3, int $$4) {
-      }
-
-      @Override
-      protected boolean a(cmh $$0) {
-         if ($$0.cd instanceof cpm) {
-            bpw $$1 = ((cpm)$$0.cd).l();
-            return $$1 == dpg.this;
-         } else {
-            return false;
-         }
-      }
-   };
-
-   public dpg(ja $$0, dsh $$1) {
-      super(dpp.A, $$0, $$1);
+   public dpg a() {
+      return new dpg(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
-   @Override
-   protected void b(tx $$0, jl.a $$1) {
-      super.b($$0, $$1);
-      if (!this.b_($$0)) {
-         bpx.a($$0, this.d, $$1);
-      }
-   }
-
-   @Override
-   protected void a(tx $$0, jl.a $$1) {
-      super.a($$0, $$1);
-      this.d = js.a(this.b(), cua.l);
-      if (!this.a_($$0)) {
-         bpx.b($$0, this.d, $$1);
-      }
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected js<cua> j() {
+   public List<dpg.b> b() {
       return this.d;
    }
 
-   @Override
-   protected void a(js<cua> $$0) {
-      this.d = $$0;
-   }
+   public static class a {
+      private final Builder<dpg.b> a = ImmutableList.builder();
 
-   @Override
-   protected wu k() {
-      return wu.c("container.barrel");
-   }
+      @Deprecated
+      public dpg.a a(jk<dpf> $$0, akj<dpf> $$1, csv $$2) {
+         Optional<jj.c<dpf>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            dpg.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
+         } else {
+            return this.a($$3.get(), $$2);
+         }
+      }
 
-   @Override
-   protected cpe a(int $$0, cmg $$1) {
-      return cpm.a($$0, $$1, this);
-   }
+      public dpg.a a(jj<dpf> $$0, csv $$1) {
+         return this.a(new dpg.b($$0, $$1));
+      }
 
-   @Override
-   public void d_(cmh $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.e.a($$0, this.i(), this.az_(), this.n());
+      public dpg.a a(dpg.b $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public dpg.a a(dpg $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public dpg a() {
+         return new dpg(this.a.build());
       }
    }
 
-   @Override
-   public void c(cmh $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.e.b($$0, this.i(), this.az_(), this.n());
+   public static record b(jj<dpf> c, csv d) {
+      public static final Codec<dpg.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dpf.c.fieldOf("pattern").forGetter(dpg.b::b), csv.q.fieldOf("color").forGetter(dpg.b::c)).apply($$0, dpg.b::new)
+      );
+      public static final ys<wf, dpg.b> b = ys.a(dpf.d, dpg.b::b, csv.r, dpg.b::c, dpg.b::new);
+
+      public xi a() {
+         String $$0 = this.c.a().b();
+         return wu.c($$0 + "." + this.d.b());
       }
-   }
 
-   public void l() {
-      if (!this.p) {
-         this.e.c(this.i(), this.az_(), this.n());
+      public jj<dpf> b() {
+         return this.c;
       }
-   }
 
-   void a(dsh $$0, boolean $$1) {
-      this.n.a(this.az_(), $$0.a(del.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(dsh $$0, ave $$1) {
-      ke $$2 = $$0.c(del.b).q();
-      double $$3 = (double)this.o.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.o.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.o.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.n.a(null, $$3, $$4, $$5, $$1, avg.e, 0.5F, this.n.z.i() * 0.1F + 0.9F);
+      public csv c() {
+         return this.d;
+      }
    }
 }

@@ -1,9 +1,13 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class emk {
-   public static final Codec<emk> c = lq.m.r().dispatch("predicate_type", emk::a, eml::codec);
+public interface emk<P extends emj> {
+   emk<emi> a = a("always_true", emi.a);
+   emk<emg> b = a("linear_pos", emg.a);
+   emk<elv> c = a("axis_aligned_linear_pos", elv.a);
 
-   public abstract boolean a(dsh var1, aym var2);
+   MapCodec<P> codec();
 
-   protected abstract eml<?> a();
+   static <P extends emj> emk<P> a(String $$0, MapCodec<P> $$1) {
+      return jw.a(lq.o, $$0, () -> $$1);
+   }
 }

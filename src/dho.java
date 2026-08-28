@@ -1,68 +1,88 @@
-import com.mojang.serialization.MapCodec;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class dho extends dib {
-   public static final MapCodec<dho> a = b(dho::new);
-   protected static final ews b = dff.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class dho {
+   public static <S extends dpp> dho.c<S> a(
+      dpr<S> $$0, Function<dsk, dho.a> $$1, Function<dsk, jf> $$2, dte $$3, dsk $$4, dcg $$5, ja $$6, BiPredicate<dcg, ja> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return dho.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return dho.b::b;
+      } else {
+         dho.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == dho.a.a;
+         boolean $$11 = $$9 == dho.a.b;
+         if ($$10) {
+            return new dho.c.b<>($$8);
+         } else {
+            ja $$12 = $$6.a($$2.apply($$4));
+            dsk $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               dho.a $$14 = $$1.apply($$13);
+               if ($$14 != dho.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return dho.b::b;
+                  }
 
-   @Override
-   public MapCodec<dho> a() {
-      return a;
-   }
-
-   public dho(dsg.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
-      return b;
-   }
-
-   @Override
-   protected bqd a(dsh $$0, dcd $$1, ja $$2, cmh $$3, evv $$4) {
-      this.d($$0, $$1, $$2);
-      return bqd.a($$1.B);
-   }
-
-   @Override
-   protected void a_(dsh $$0, dcd $$1, ja $$2, cmh $$3) {
-      this.d($$0, $$1, $$2);
-   }
-
-   private void d(dsh $$0, dcd $$1, ja $$2) {
-      dty $$3 = $$1.C_();
-
-      for (int $$4 = 0; $$4 < 1000; $$4++) {
-         ja $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
-         if ($$1.a_($$5).i() && $$3.a($$5)) {
-            if ($$1.B) {
-               for (int $$6 = 0; $$6 < 128; $$6++) {
-                  double $$7 = $$1.z.j();
-                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
-                  double $$11 = aye.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
-                  double $$12 = aye.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
-                  double $$13 = aye.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
-                  $$1.a(lj.ac, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new dho.c.a<>($$16, $$17);
+                  }
                }
-            } else {
-               $$1.a($$5, $$0, 2);
-               $$1.a($$2, false);
             }
 
-            return;
+            return new dho.c.b<>($$8);
          }
       }
    }
 
-   @Override
-   protected int b() {
-      return 5;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Override
-   protected boolean a(dsh $$0, eoq $$1) {
-      return false;
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
+   }
+
+   public interface c<S> {
+      <T> T apply(dho.b<? super S, T> var1);
+
+      public static final class a<S> implements dho.c<S> {
+         private final S a;
+         private final S b;
+
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
+
+         @Override
+         public <T> T apply(dho.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
+      }
+
+      public static final class b<S> implements dho.c<S> {
+         private final S a;
+
+         public b(S $$0) {
+            this.a = $$0;
+         }
+
+         @Override
+         public <T> T apply(dho.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
+      }
    }
 }

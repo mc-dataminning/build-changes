@@ -5,31 +5,33 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
 import javax.annotation.Nullable;
 
-public class doh extends dnp {
-   public static final MapCodec<doh> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, doh::new));
-   public static final dtb g = djb.aE;
-   protected static final float h = 2.5F;
-   private static final Map<jf, ews> i = Maps.newEnumMap(
+public class doh extends dmh {
+   public static final MapCodec<doh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dtx.a.fieldOf("wood_type").forGetter(dmh::d), u()).apply($$0, doh::new));
+   public static final dte b = djd.aE;
+   protected static final float c = 2.0F;
+   protected static final float d = 4.5F;
+   protected static final float e = 12.5F;
+   private static final Map<jf, ewy> i = Maps.newEnumMap(
       ImmutableMap.of(
          jf.c,
-         dff.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
+         dfh.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
          jf.d,
-         dff.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
-         jf.e,
-         dff.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
+         dfh.a(0.0, 4.5, 0.0, 16.0, 12.5, 2.0),
          jf.f,
-         dff.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
+         dfh.a(0.0, 4.5, 0.0, 2.0, 12.5, 16.0),
+         jf.e,
+         dfh.a(14.0, 4.5, 0.0, 16.0, 12.5, 16.0)
       )
    );
 
    @Override
    public MapCodec<doh> a() {
-      return f;
+      return a;
    }
 
-   protected doh(ln $$0, dsg.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(g, jf.c));
+   public doh(dtx $$0, dsj.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.k(this.E.b().a(b, jf.c).a(f, Boolean.valueOf(false)));
    }
 
    @Override
@@ -38,39 +40,30 @@ public class doh extends dnp {
    }
 
    @Override
-   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
-      return m($$0);
-   }
-
-   public static ews m(dsh $$0) {
-      return i.get($$0.c(g));
+   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return i.get($$0.c(b));
    }
 
    @Override
-   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
-      return b($$1, $$2, $$0.c(g));
-   }
-
-   public static boolean b(dcg $$0, ja $$1, jf $$2) {
-      ja $$3 = $$1.a($$2.g());
-      dsh $$4 = $$0.a_($$3);
-      return $$4.d($$0, $$3, $$2);
+   protected boolean a(dsk $$0, dci $$1, ja $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
    }
 
    @Nullable
    @Override
-   public dsh a(cxk $$0) {
-      dsh $$1 = this.o();
-      dcg $$2 = $$0.q();
-      ja $$3 = $$0.a();
-      jf[] $$4 = $$0.f();
+   public dsk a(cxm $$0) {
+      dsk $$1 = this.o();
+      eoh $$2 = $$0.q().b_($$0.a());
+      dci $$3 = $$0.q();
+      ja $$4 = $$0.a();
+      jf[] $$5 = $$0.f();
 
-      for (jf $$5 : $$4) {
-         if ($$5.o().d()) {
-            jf $$6 = $$5.g();
-            $$1 = $$1.a(g, $$6);
-            if ($$1.a($$2, $$3)) {
-               return $$1;
+      for (jf $$6 : $$5) {
+         if ($$6.o().d()) {
+            jf $$7 = $$6.g();
+            $$1 = $$1.a(b, $$7);
+            if ($$1.a($$3, $$4)) {
+               return $$1.a(f, Boolean.valueOf($$2.a() == eoi.c));
             }
          }
       }
@@ -79,35 +72,33 @@ public class doh extends dnp {
    }
 
    @Override
-   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
-      return $$1.g() == $$0.c(g) && !$$0.a($$3, $$4) ? dfh.a.o() : $$0;
+   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
+      return $$1.g() == $$0.c(b) && !$$0.a($$3, $$4) ? dfj.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(dsh $$0, dcd $$1, ja $$2, aym $$3) {
-      jf $$4 = $$0.c(g);
-      double $$5 = (double)$$2.u() + 0.5;
-      double $$6 = (double)$$2.v() + 0.7;
-      double $$7 = (double)$$2.w() + 0.5;
-      double $$8 = 0.22;
-      double $$9 = 0.27;
-      jf $$10 = $$4.g();
-      $$1.a(lj.ae, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
-      $$1.a(this.e, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+   public float g(dsk $$0) {
+      return $$0.c(b).p();
    }
 
    @Override
-   protected dsh a(dsh $$0, dls $$1) {
-      return $$0.a(g, $$1.a($$0.c(g)));
+   public ewf m(dsk $$0) {
+      ewy $$1 = i.get($$0.c(b));
+      return $$1.a().f();
    }
 
    @Override
-   protected dsh a(dsh $$0, dkc $$1) {
-      return $$0.a($$1.a($$0.c(g)));
+   protected dsk a(dsk $$0, dlu $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
-      $$0.a(g);
+   protected dsk a(dsk $$0, dke $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dsl.a<dfh, dsk> $$0) {
+      $$0.a(b, f);
    }
 }

@@ -1,26 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edx implements edi {
+public class edx implements edo {
    public static final Codec<edx> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dsh.b.fieldOf("target").forGetter($$0x -> $$0x.b),
-               dsh.b.fieldOf("state").forGetter($$0x -> $$0x.c),
-               bpi.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
             )
             .apply($$0, edx::new)
    );
-   public final dsh b;
-   public final dsh c;
-   private final bpi d;
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
 
-   public edx(dsh $$0, dsh $$1, bpi $$2) {
+   public edx(float $$0, float $$1, float $$2, float $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
-   }
-
-   public bpi a() {
-      return this.d;
+      this.e = $$3;
    }
 }

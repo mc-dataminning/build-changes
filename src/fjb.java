@@ -1,89 +1,70 @@
-public abstract class fjb {
-   protected static final int a = 14737632;
-   protected static final int b = 60;
-   protected static final int c = 1;
-   protected final fgx d;
-   protected final blh e;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   protected fjb(fgx $$0, blh $$1) {
-      this.d = $$0;
-      this.e = $$1;
+public class fjb extends fhq {
+   private static final fjf a = new fjf(
+      new akk("widget/tab_selected"), new akk("widget/tab"), new akk("widget/tab_selected_highlighted"), new akk("widget/tab_highlighted")
+   );
+   private static final int b = 3;
+   private static final int c = 1;
+   private static final int d = 1;
+   private static final int e = 4;
+   private static final int f = 2;
+   private final fjv m;
+   private final fju n;
+
+   public fjb(fjv $$0, fju $$1, int $$2, int $$3) {
+      super(0, 0, $$2, $$3, $$1.a());
+      this.m = $$0;
+      this.n = $$1;
    }
 
-   public int a(int $$0) {
-      return Math.min(this.e.c() + 2, $$0);
-   }
-
-   public void a(fgz $$0, int $$1, int $$2) {
-      int $$3 = $$0.b();
-      $$0.a(gef.E(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
-      long $$4 = 0L;
-      long $$5 = 2147483647L;
-      long $$6 = -2147483648L;
-      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
-      int $$8 = this.e.d() - $$7;
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         int $$10 = $$1 + $$9 + 1;
-         int $$11 = $$7 + $$9;
-         long $$12 = this.b($$11);
-         $$5 = Math.min($$5, $$12);
-         $$6 = Math.max($$6, $$12);
-         $$4 += $$12;
-         this.a($$0, $$3, $$10, $$11);
+   @Override
+   public void b(fhf $$0, int $$1, int $$2, float $$3) {
+      RenderSystem.enableBlend();
+      $$0.a(a.a(this.b(), this.B()), this.D(), this.E(), this.g, this.h);
+      RenderSystem.disableBlend();
+      fhd $$4 = fft.Q().h;
+      int $$5 = this.j ? -1 : -6250336;
+      this.a($$0, $$4, $$5);
+      if (this.b()) {
+         this.a($$0, this.D() + 2, this.E() + 2, this.F() - 2, this.G());
+         this.b($$0, $$4, $$5);
       }
-
-      $$0.a(gef.E(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(gef.E(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(gef.E(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(gef.E(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
-      if ($$8 > 0) {
-         String $$13 = this.a((double)$$5) + " min";
-         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
-         String $$15 = this.a((double)$$6) + " max";
-         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
-         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
-         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
-      }
-
-      this.d($$0, $$1, $$2, $$3);
    }
 
-   protected void a(fgz $$0, int $$1, int $$2, int $$3) {
-      this.b($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2, $$3);
+   protected void a(fhf $$0, int $$1, int $$2, int $$3, int $$4) {
+      fnj.a($$0, fnj.f, $$1, $$2, 0.0F, 0.0F, $$3 - $$1, $$4 - $$2);
    }
 
-   protected void b(fgz $$0, int $$1, int $$2, int $$3) {
-      long $$4 = this.e.a($$3);
-      int $$5 = this.b((double)$$4);
-      int $$6 = this.a($$4);
-      $$0.a(gef.E(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
+   public void a(fhf $$0, fhd $$1, int $$2) {
+      int $$3 = this.D() + 1;
+      int $$4 = this.E() + (this.b() ? 0 : 3);
+      int $$5 = this.D() + this.y() - 1;
+      int $$6 = this.E() + this.w();
+      a($$0, $$1, this.z(), $$3, $$4, $$5, $$6, $$2);
    }
 
-   protected void c(fgz $$0, int $$1, int $$2, int $$3) {
+   private void b(fhf $$0, fhd $$1, int $$2) {
+      int $$3 = Math.min($$1.a(this.z()), this.y() - 4);
+      int $$4 = this.D() + (this.y() - $$3) / 2;
+      int $$5 = this.E() + this.w() - 2;
+      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
    }
 
-   protected long b(int $$0) {
-      return this.e.a($$0);
+   @Override
+   protected void a(flo $$0) {
+      $$0.a(fln.a, wu.a("gui.narrate.tab", this.n.a()));
    }
 
-   protected void d(fgz $$0, int $$1, int $$2, int $$3) {
+   @Override
+   public void a(guh $$0) {
    }
 
-   protected void a(fgz $$0, String $$1, int $$2, int $$3) {
-      $$0.a(gef.E(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
-      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
+   public fju a() {
+      return this.n;
    }
 
-   protected abstract String a(double var1);
-
-   protected abstract int b(double var1);
-
-   protected abstract int a(long var1);
-
-   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
-      $$0 = aye.a($$0, $$1, $$5);
-      return $$0 < $$3 ? axo.b.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : axo.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
+   public boolean b() {
+      return this.m.a() == this.n;
    }
 }

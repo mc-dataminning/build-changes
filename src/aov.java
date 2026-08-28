@@ -1,47 +1,120 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class aov {
-   private static final int a = -1;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.whitelist.alreadyOn"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.whitelist.alreadyOff"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wu.c("commands.whitelist.add.failed"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wu.c("commands.whitelist.remove.failed"));
 
    public static void a(CommandDispatcher<eq> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("weather").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)er.a("clear").executes($$0x -> a((eq)$$0x.getSource(), -1)))
-                        .then(er.a("duration", gf.a(1)).executes($$0x -> a((eq)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-                  ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a(
+                                 "whitelist"
+                              )
+                              .requires($$0x -> $$0x.c(3)))
+                           .then(er.a("on").executes($$0x -> b((eq)$$0x.getSource()))))
+                        .then(er.a("off").executes($$0x -> c((eq)$$0x.getSource()))))
+                     .then(er.a("list").executes($$0x -> d((eq)$$0x.getSource()))))
+                  .then(er.a("add").then(er.a("targets", ff.a()).suggests(($$0x, $$1) -> {
+                     auj $$2 = ((eq)$$0x.getSource()).l().ai();
+                     return ev.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.fY())).map($$0xx -> $$0xx.fY().getName()), $$1);
+                  }).executes($$0x -> a((eq)$$0x.getSource(), ff.a($$0x, "targets"))))))
                .then(
-                  ((LiteralArgumentBuilder)er.a("rain").executes($$0x -> b((eq)$$0x.getSource(), -1)))
-                     .then(er.a("duration", gf.a(1)).executes($$0x -> b((eq)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+                  er.a("remove")
+                     .then(
+                        er.a("targets", ff.a())
+                           .suggests(($$0x, $$1) -> ev.a(((eq)$$0x.getSource()).l().ai().j(), $$1))
+                           .executes($$0x -> b((eq)$$0x.getSource(), ff.a($$0x, "targets")))
+                     )
                ))
-            .then(
-               ((LiteralArgumentBuilder)er.a("thunder").executes($$0x -> c((eq)$$0x.getSource(), -1)))
-                  .then(er.a("duration", gf.a(1)).executes($$0x -> c((eq)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-            )
+            .then(er.a("reload").executes($$0x -> a((eq)$$0x.getSource())))
       );
    }
 
-   private static int a(eq $$0, int $$1, bpi $$2) {
-      return $$1 == -1 ? $$2.a($$0.l().I().E_()) : $$1;
+   private static int a(eq $$0) {
+      $$0.l().ai().a();
+      $$0.a(() -> wu.c("commands.whitelist.reloaded"), true);
+      $$0.l().a($$0);
+      return 1;
    }
 
-   private static int a(eq $$0, int $$1) {
-      $$0.l().I().a(a($$0, $$1, aqk.b), 0, false, false);
-      $$0.a(() -> wu.c("commands.weather.set.clear"), true);
-      return $$1;
+   private static int a(eq $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      aur $$2 = $$0.l().ai().i();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.a($$4)) {
+            aus $$5 = new aus($$4);
+            $$2.a($$5);
+            $$0.a(() -> wu.a("commands.whitelist.add.success", wu.b($$4.getName())), true);
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw c.create();
+      } else {
+         return $$3;
+      }
    }
 
-   private static int b(eq $$0, int $$1) {
-      $$0.l().I().a(0, a($$0, $$1, aqk.c), true, false);
-      $$0.a(() -> wu.c("commands.weather.set.rain"), true);
-      return $$1;
+   private static int b(eq $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      aur $$2 = $$0.l().ai().i();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if ($$2.a($$4)) {
+            aus $$5 = new aus($$4);
+            $$2.b($$5);
+            $$0.a(() -> wu.a("commands.whitelist.remove.success", wu.b($$4.getName())), true);
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw d.create();
+      } else {
+         $$0.l().a($$0);
+         return $$3;
+      }
    }
 
-   private static int c(eq $$0, int $$1) {
-      $$0.l().I().a(0, a($$0, $$1, aqk.d), true, true);
-      $$0.a(() -> wu.c("commands.weather.set.thunder"), true);
-      return $$1;
+   private static int b(eq $$0) throws CommandSyntaxException {
+      auj $$1 = $$0.l().ai();
+      if ($$1.o()) {
+         throw a.create();
+      } else {
+         $$1.a(true);
+         $$0.a(() -> wu.c("commands.whitelist.enabled"), true);
+         $$0.l().a($$0);
+         return 1;
+      }
+   }
+
+   private static int c(eq $$0) throws CommandSyntaxException {
+      auj $$1 = $$0.l().ai();
+      if (!$$1.o()) {
+         throw b.create();
+      } else {
+         $$1.a(false);
+         $$0.a(() -> wu.c("commands.whitelist.disabled"), true);
+         return 1;
+      }
+   }
+
+   private static int d(eq $$0) {
+      String[] $$1 = $$0.l().ai().j();
+      if ($$1.length == 0) {
+         $$0.a(() -> wu.c("commands.whitelist.none"), false);
+      } else {
+         $$0.a(() -> wu.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
+      }
+
+      return $$1.length;
    }
 }

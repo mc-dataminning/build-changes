@@ -1,26 +1,40 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dyv implements dxu {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final dyh i = new dyh(this);
 
-public record dyv(dyx b, dyu c) {
-   public static final Codec<dyv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dyx.a.forGetter(dyv::a), dyu.a.forGetter(dyv::b)).apply($$0, $$0.stable(dyv::new))
-   );
-
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dyx $$1, dyu $$2) {
-      return a.encodeStart($$0, new dyv($$1, $$2));
+   public dyv(long $$0) {
+      this.b($$0);
    }
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dyx $$1, jx $$2) {
-      return a($$0, $$1, new dyu($$2.d(lr.ba)));
+   @Override
+   public ayo d() {
+      return new dyv(this.g());
    }
 
-   public dyx a() {
-      return this.b;
+   @Override
+   public dys e() {
+      return new dyg.a(this.g());
    }
 
-   public dyu b() {
-      return this.c;
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

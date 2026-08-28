@@ -1,9 +1,9 @@
-public record aal(int c, eop d, float e) implements aac {
+public record aal(int c, eov d, float e) implements aac {
    public static final ys<vr, aal> a = aac.a(aal::a, aal::new);
    public static final aac.b<aal> b = aac.a("debug/path");
 
    private aal(vr $$0) {
-      this($$0.readInt(), eop.b($$0), $$0.readFloat());
+      this($$0.readInt(), eov.b($$0), $$0.readFloat());
    }
 
    private void a(vr $$0) {
@@ -21,7 +21,7 @@ public record aal(int c, eop d, float e) implements aac {
       return this.c;
    }
 
-   public eop c() {
+   public eov c() {
       return this.d;
    }
 

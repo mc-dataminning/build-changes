@@ -1,200 +1,37 @@
-public class fgi {
-   public static final fgd a = fgd.a.a(1.125F)
-      .a(
-         "head",
-         new fgc(
-            fgc.d.b,
-            new fge(0.0F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.25F, fgf.b(-12.5F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.75F, fgf.b(-12.5F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.9167F, fgf.b(5.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(1.125F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fgc(
-            fgc.d.a,
-            new fge(0.0F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.25F, fgf.a(0.0F, -2.0F, 0.0F), fgc.b.a),
-            new fge(0.7917F, fgf.a(0.0F, -1.0F, 2.0F), fgc.b.a),
-            new fge(0.9583F, fgf.a(0.0F, -1.0F, 0.0F), fgc.b.a),
-            new fge(1.125F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a)
-         )
-      )
-      .a("wind_bottom", new fgc(fgc.d.b, new fge(0.0F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a)))
-      .a(
-         "wind_mid",
-         new fgc(
-            fgc.d.b,
-            new fge(0.0F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.25F, fgf.b(12.5F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.75F, fgf.b(12.5F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.9167F, fgf.b(-10.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(1.125F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new fgc(
-            fgc.d.a,
-            new fge(0.0F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.25F, fgf.a(0.0F, 0.0F, 5.0F), fgc.b.a),
-            new fge(0.75F, fgf.a(0.0F, 0.0F, 6.0F), fgc.b.a),
-            new fge(0.9167F, fgf.a(0.0F, 0.0F, -2.0F), fgc.b.a),
-            new fge(1.125F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new fgc(
-            fgc.d.b,
-            new fge(0.0F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.25F, fgf.b(15.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.75F, fgf.b(15.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.9167F, fgf.b(-10.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(1.125F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new fgc(
-            fgc.d.a,
-            new fge(0.0F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.25F, fgf.a(0.0F, 0.0F, 3.0F), fgc.b.a),
-            new fge(0.8333F, fgf.a(0.0F, 0.0F, 4.0F), fgc.b.a),
-            new fge(0.9583F, fgf.a(0.0F, 0.0F, -2.0F), fgc.b.a),
-            new fge(1.125F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fgc(
-            fgc.d.b,
-            new fge(0.0F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.25F, fgf.b(12.5F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.75F, fgf.b(12.5F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.9167F, fgf.b(-2.5F, 0.0F, 0.0F), fgc.b.a),
-            new fge(1.125F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fgc(
-            fgc.d.a,
-            new fge(0.0F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.25F, fgf.a(0.0F, 3.0F, 5.0F), fgc.b.a),
-            new fge(0.8333F, fgf.a(0.0F, 3.0F, 6.0F), fgc.b.a),
-            new fge(0.9583F, fgf.a(0.0F, 3.0F, -1.0F), fgc.b.a),
-            new fge(1.125F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a)
-         )
-      )
-      .a("rods", new fgc(fgc.d.b, new fge(0.0F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a), new fge(1.0F, fgf.b(0.0F, 360.0F, 0.0F), fgc.b.a)))
-      .b();
-   public static final fgd b = fgd.a.a(1.125F)
-      .a(
-         "body",
-         new fgc(
-            fgc.d.a,
-            new fge(0.0F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.5F, fgf.a(0.0F, -10.0F, 0.0F), fgc.b.a),
-            new fge(0.625F, fgf.a(0.0F, -10.0F, 0.0F), fgc.b.a),
-            new fge(0.75F, fgf.a(0.0F, 11.0F, 0.0F), fgc.b.a),
-            new fge(1.125F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fgc(
-            fgc.d.b,
-            new fge(0.0F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.5F, fgf.b(22.5F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.625F, fgf.b(22.5F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.8333F, fgf.b(-19.25F, 0.0F, 0.0F), fgc.b.a),
-            new fge(1.125F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a)
-         )
-      )
-      .a(
-         "wind_body",
-         new fgc(
-            fgc.d.c,
-            new fge(0.0F, fgf.a(1.0, 1.0, 1.0), fgc.b.a),
-            new fge(0.5F, fgf.a(1.0, 1.0, 1.0), fgc.b.a),
-            new fge(0.625F, fgf.a(1.0, 1.0, 1.0), fgc.b.a),
-            new fge(0.75F, fgf.a(1.0, 1.3F, 1.0), fgc.b.a),
-            new fge(1.125F, fgf.a(1.0, 1.0, 1.0), fgc.b.a)
-         )
-      )
-      .a(
-         "wind_bottom",
-         new fgc(
-            fgc.d.b,
-            new fge(0.0F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.625F, fgf.b(0.0F, 90.0F, 0.0F), fgc.b.a),
-            new fge(1.125F, fgf.b(0.0F, 360.0F, 0.0F), fgc.b.a)
-         )
-      )
-      .a(
-         "wind_bottom",
-         new fgc(
-            fgc.d.c,
-            new fge(0.0F, fgf.a(1.0, 1.0, 1.0), fgc.b.a),
-            new fge(0.5F, fgf.a(1.0, 1.0, 1.0), fgc.b.a),
-            new fge(0.625F, fgf.a(1.0, 1.0, 1.0), fgc.b.a),
-            new fge(0.75F, fgf.a(1.0, 1.1F, 1.0), fgc.b.a),
-            new fge(1.125F, fgf.a(1.0, 1.0, 1.0), fgc.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new fgc(
-            fgc.d.b,
-            new fge(0.0F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.625F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(1.125F, fgf.b(0.0F, 180.0F, 0.0F), fgc.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new fgc(
-            fgc.d.a,
-            new fge(0.0F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.5F, fgf.a(0.0F, -6.0F, 0.0F), fgc.b.a),
-            new fge(0.625F, fgf.a(0.0F, -6.0F, 0.0F), fgc.b.a),
-            new fge(0.75F, fgf.a(0.0F, 2.0F, 0.0F), fgc.b.a),
-            new fge(1.125F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new fgc(
-            fgc.d.b,
-            new fge(0.0F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.625F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(1.125F, fgf.b(0.0F, 90.0F, 0.0F), fgc.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new fgc(
-            fgc.d.a,
-            new fge(0.0F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a),
-            new fge(0.5F, fgf.a(0.0F, -5.0F, 0.0F), fgc.b.a),
-            new fge(0.625F, fgf.a(0.0F, -5.0F, 0.0F), fgc.b.a),
-            new fge(0.75F, fgf.a(0.0F, 2.0F, 0.0F), fgc.b.a),
-            new fge(1.125F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a)
-         )
-      )
-      .a("rods", new fgc(fgc.d.b, new fge(0.0F, fgf.b(0.0F, 0.0F, 0.0F), fgc.b.a), new fge(0.8333F, fgf.b(0.0F, 360.0F, 0.0F), fgc.b.a)))
-      .b();
-   public static final fgd c = fgd.a.a(0.2F)
-      .a("body", new fgc(fgc.d.a, new fge(0.0F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a), new fge(0.2F, fgf.a(0.0F, 0.0F, -6.0F), fgc.b.a)))
-      .a("wind_mid", new fgc(fgc.d.a, new fge(0.0F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a), new fge(0.2F, fgf.a(0.0F, 0.0F, -3.0F), fgc.b.a)))
-      .a("wind_top", new fgc(fgc.d.a, new fge(0.0F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a), new fge(0.2F, fgf.a(0.0F, 0.0F, -2.0F), fgc.b.a)))
-      .b();
-   public static final fgd d = fgd.a.a(0.1F)
-      .a("body", new fgc(fgc.d.a, new fge(0.0F, fgf.a(0.0F, 0.0F, -6.0F), fgc.b.a), new fge(0.1F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a)))
-      .a("wind_mid", new fgc(fgc.d.a, new fge(0.0F, fgf.a(0.0F, 0.0F, -3.0F), fgc.b.a), new fge(0.1F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a)))
-      .a("wind_top", new fgc(fgc.d.a, new fge(0.0F, fgf.a(0.0F, 0.0F, -2.0F), fgc.b.a), new fge(0.1F, fgf.a(0.0F, 0.0F, 0.0F), fgc.b.a)))
-      .b();
+import org.joml.Vector3f;
+
+public record fgi(fgi.c a, fgk... b) {
+   public interface a {
+      Vector3f apply(Vector3f var1, float var2, fgk[] var3, int var4, int var5, float var6);
+   }
+
+   public static class b {
+      public static final fgi.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[$$3].b();
+         Vector3f $$7 = $$2[$$4].b();
+         return $$6.lerp($$7, $$1, $$0).mul($$5);
+      };
+      public static final fgi.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
+         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
+         Vector3f $$7 = $$2[$$3].b();
+         Vector3f $$8 = $$2[$$4].b();
+         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
+         $$0.set(
+            ayg.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
+            ayg.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
+            ayg.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
+         );
+         return $$0;
+      };
+   }
+
+   public interface c {
+      void apply(fxo var1, Vector3f var2);
+   }
+
+   public static class d {
+      public static final fgi.c a = fxo::a;
+      public static final fgi.c b = fxo::b;
+      public static final fgi.c c = fxo::c;
+   }
 }

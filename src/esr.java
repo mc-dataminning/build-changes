@@ -1,41 +1,75 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public class esr extends esb {
+public class esr extends esh {
    public static final MapCodec<esr> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  esa.e.a(cws.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
-                  axm.j.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(eqs.e.fieldOf("component").forGetter($$0x -> $$0x.b), eri.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
             .apply($$0, esr::new)
    );
-   public static final cwt b = new cwt(0, List.of());
-   private final Optional<esa.e<cws>> c;
-   private final Optional<Integer> d;
+   private final eqr<?> b;
+   private final List<erk> c;
 
-   protected esr(List<etz> $$0, Optional<esa.e<cws>> $$1, Optional<Integer> $$2) {
+   esr(List<euf> $$0, eqr<?> $$1, List<erk> $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   protected cua a(cua $$0, eqo $$1) {
-      $$0.a(kn.U, b, this::a);
-      return $$0;
-   }
-
-   private cwt a(cwt $$0) {
-      return new cwt(this.d.orElseGet($$0::a), this.c.<List<cws>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
+   public esj<esr> b() {
+      return esk.t;
    }
 
    @Override
-   public esd<esr> b() {
-      return ese.K;
+   public cuc a(cuc $$0, equ $$1) {
+      if ($$0.e()) {
+         return $$0;
+      } else {
+         Builder<cuc> $$2 = Stream.builder();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(eqz.a($$1.d(), $$2::add), $$1)));
+         this.b.a($$0, $$2.build());
+         return $$0;
+      }
+   }
+
+   @Override
+   public void a(era $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
+   }
+
+   public static esr.a a(eqr<?> $$0) {
+      return new esr.a($$0);
+   }
+
+   public static class a extends esh.a<esr.a> {
+      private final com.google.common.collect.ImmutableList.Builder<erk> a = ImmutableList.builder();
+      private final eqr<?> b;
+
+      public a(eqr<?> $$0) {
+         this.b = $$0;
+      }
+
+      protected esr.a a() {
+         return this;
+      }
+
+      public esr.a a(erk.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public esi b() {
+         return new esr(this.g(), this.b, this.a.build());
+      }
    }
 }

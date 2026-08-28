@@ -42,7 +42,7 @@ public final class kk {
             if ($$4.isPresent()) {
                $$1.put(new kk.b($$3, false), $$4.get());
             } else {
-               $$1.put(new kk.b($$3, true), azh.a);
+               $$1.put(new kk.b($$3, true), azk.a);
             }
          }
       }
@@ -56,20 +56,21 @@ public final class kk {
          if ($$1 == 0 && $$2 == 0) {
             return kk.a;
          } else {
-            Reference2ObjectMap<km<?>, Optional<?>> $$3 = new Reference2ObjectArrayMap($$1 + $$2);
+            int $$3 = $$1 + $$2;
+            Reference2ObjectMap<km<?>, Optional<?>> $$4 = new Reference2ObjectArrayMap(Math.min($$3, 65536));
 
-            for (int $$4 = 0; $$4 < $$1; $$4++) {
-               km<?> $$5 = km.b.decode($$0);
-               Object $$6 = $$5.e().decode($$0);
-               $$3.put($$5, Optional.of($$6));
+            for (int $$5 = 0; $$5 < $$1; $$5++) {
+               km<?> $$6 = km.b.decode($$0);
+               Object $$7 = $$6.e().decode($$0);
+               $$4.put($$6, Optional.of($$7));
             }
 
-            for (int $$7 = 0; $$7 < $$2; $$7++) {
-               km<?> $$8 = km.b.decode($$0);
-               $$3.put($$8, Optional.empty());
+            for (int $$8 = 0; $$8 < $$2; $$8++) {
+               km<?> $$9 = km.b.decode($$0);
+               $$4.put($$9, Optional.empty());
             }
 
-            return new kk($$3);
+            return new kk($$4);
          }
       }
 

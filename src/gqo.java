@@ -1,26 +1,37 @@
-import java.util.IllegalFormatException;
+import javax.annotation.Nullable;
 
-public class gqo {
-   private static volatile ts a = ts.a();
+public record gqo(akk a, @Nullable String b, @Nullable akk c, @Nullable akk d, gqo.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   private gqo() {
-   }
+      private final String c;
 
-   static void a(ts $$0) {
-      a = $$0;
-   }
-
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
-      try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
+      private a(final String $$0) {
+         this.c = $$0;
       }
-   }
 
-   public static boolean a(String $$0) {
-      return a.b($$0);
+      public static gqo.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
+
+      public String a() {
+         return this.c;
+      }
    }
 }

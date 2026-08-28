@@ -71,7 +71,7 @@ public class im {
       a($$0, "loot_table", fs.c.class, io.a(fs::a));
       a($$0, "loot_predicate", fs.b.class, io.a(fs::c));
       a($$0, "loot_modifier", fs.a.class, io.a(fs::b));
-      if (aa.aX) {
+      if (aa.aW) {
          a($$0, "test_argument", to.class, io.a(to::a));
          a($$0, "test_class", tk.class, io.a(tk::a));
       }

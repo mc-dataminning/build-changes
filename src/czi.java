@@ -1,7 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record czi(cua a, @Nullable bsk b, @Nullable bsy c, Runnable d) {
-   public czi(cua $$0, bsk $$1, bsy $$2) {
-      this($$0, $$1, $$2, () -> $$2.e($$1));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface czi {
 }

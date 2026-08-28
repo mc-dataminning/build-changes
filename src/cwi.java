@@ -1,56 +1,45 @@
+import java.util.Map;
 import java.util.Optional;
 
 public class cwi {
-   public static final akj<cwh> a = a("sentry");
-   public static final akj<cwh> b = a("dune");
-   public static final akj<cwh> c = a("coast");
-   public static final akj<cwh> d = a("wild");
-   public static final akj<cwh> e = a("ward");
-   public static final akj<cwh> f = a("eye");
-   public static final akj<cwh> g = a("vex");
-   public static final akj<cwh> h = a("tide");
-   public static final akj<cwh> i = a("snout");
-   public static final akj<cwh> j = a("rib");
-   public static final akj<cwh> k = a("spire");
-   public static final akj<cwh> l = a("wayfinder");
-   public static final akj<cwh> m = a("shaper");
-   public static final akj<cwh> n = a("silence");
-   public static final akj<cwh> o = a("raiser");
-   public static final akj<cwh> p = a("host");
-   public static final akj<cwh> q = a("flow");
-   public static final akj<cwh> r = a("bolt");
+   public static final akj<cwh> a = a("quartz");
+   public static final akj<cwh> b = a("iron");
+   public static final akj<cwh> c = a("netherite");
+   public static final akj<cwh> d = a("redstone");
+   public static final akj<cwh> e = a("copper");
+   public static final akj<cwh> f = a("gold");
+   public static final akj<cwh> g = a("emerald");
+   public static final akj<cwh> h = a("diamond");
+   public static final akj<cwh> i = a("lapis");
+   public static final akj<cwh> j = a("amethyst");
 
    public static void a(qm<cwh> $$0) {
-      a($$0, cud.xw, a);
-      a($$0, cud.xx, b);
-      a($$0, cud.xy, c);
-      a($$0, cud.xz, d);
-      a($$0, cud.xA, e);
-      a($$0, cud.xB, f);
-      a($$0, cud.xC, g);
-      a($$0, cud.xD, h);
-      a($$0, cud.xE, i);
-      a($$0, cud.xF, j);
-      a($$0, cud.xG, k);
-      a($$0, cud.xH, l);
-      a($$0, cud.xI, m);
-      a($$0, cud.xJ, n);
-      a($$0, cud.xK, o);
-      a($$0, cud.xL, p);
-      a($$0, cud.xM, q);
-      a($$0, cud.xN, r);
+      a($$0, a, cuf.oC, xr.a.a(14931140), 0.1F);
+      a($$0, b, cuf.oF, xr.a.a(15527148), 0.2F, Map.of(cru.c, "iron_darker"));
+      a($$0, c, cuf.oK, xr.a.a(6445145), 0.3F, Map.of(cru.g, "netherite_darker"));
+      a($$0, d, cuf.lH, xr.a.a(9901575), 0.4F);
+      a($$0, e, cuf.oH, xr.a.a(11823181), 0.5F);
+      a($$0, f, cuf.oJ, xr.a.a(14594349), 0.6F, Map.of(cru.d, "gold_darker"));
+      a($$0, g, cuf.oA, xr.a.a(1155126), 0.7F);
+      a($$0, h, cuf.oz, xr.a.a(7269586), 0.8F, Map.of(cru.e, "diamond_darker"));
+      a($$0, i, cuf.oB, xr.a.a(4288151), 0.9F);
+      a($$0, j, cuf.oD, xr.a.a(10116294), 1.0F);
    }
 
-   public static Optional<jj.c<cwh>> a(jl.a $$0, cua $$1) {
-      return $$0.b(lr.aW).b().filter($$1x -> $$1.a(((cwh)$$1x.a()).b())).findFirst();
+   public static Optional<jj.c<cwh>> a(jl.a $$0, cuc $$1) {
+      return $$0.b(lr.aV).b().filter($$1x -> $$1.a(((cwh)$$1x.a()).b())).findFirst();
    }
 
-   public static void a(qm<cwh> $$0, ctv $$1, akj<cwh> $$2) {
-      cwh $$3 = new cwh($$2.a(), lq.g.e($$1), wu.c(ac.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
+   private static void a(qm<cwh> $$0, akj<cwh> $$1, ctx $$2, xr $$3, float $$4) {
+      a($$0, $$1, $$2, $$3, $$4, Map.of());
+   }
+
+   private static void a(qm<cwh> $$0, akj<cwh> $$1, ctx $$2, xr $$3, float $$4, Map<jj<crt>, String> $$5) {
+      cwh $$6 = cwh.a($$1.a().a(), $$2, $$4, wu.c(ac.a("trim_material", $$1.a())).c($$3), $$5);
+      $$0.a($$1, $$6);
    }
 
    private static akj<cwh> a(String $$0) {
-      return akj.a(lr.aW, new akk($$0));
+      return akj.a(lr.aV, new akk($$0));
    }
 }

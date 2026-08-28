@@ -1,60 +1,71 @@
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cux extends cry {
-   public cux(dff $$0, ctv.a $$1) {
-      super($$0, $$1);
+public class cux extends ctx {
+   private static final Map<avg, cux> a = Maps.newHashMap();
+   private final int b;
+   private final avg c;
+   private final int j;
+
+   protected cux(int $$0, avg $$1, ctx.a $$2, int $$3) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
+      this.j = $$3 * 20;
+      a.put(this.c, this);
    }
 
-   @Nullable
    @Override
-   public cxk b(cxk $$0) {
-      ja $$1 = $$0.a();
-      dcd $$2 = $$0.q();
-      dsh $$3 = $$2.a_($$1);
-      dff $$4 = this.d();
-      if (!$$3.a($$4)) {
-         return dlu.a($$2, $$1) == 7 ? null : $$0;
+   public bqg a(cxo $$0) {
+      dcf $$1 = $$0.q();
+      ja $$2 = $$0.a();
+      dsk $$3 = $$1.a_($$2);
+      if ($$3.a(dfj.dT) && !$$3.c(djk.b)) {
+         cuc $$4 = $$0.n();
+         if (!$$1.B) {
+            cmk $$5 = $$0.o();
+            cuc $$6 = $$4.b(1, $$5);
+            if ($$1.c_($$2) instanceof dqr $$7) {
+               $$7.b($$6);
+               $$1.a(dxg.c, $$2, dxg.a.a($$5, $$3));
+            }
+
+            if ($$5 != null) {
+               $$5.a(avr.al);
+            }
+         }
+
+         return bqg.a($$1.B);
       } else {
-         jf $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == jf.b ? $$0.g() : jf.b;
-         }
-
-         int $$7 = 0;
-         ja.a $$8 = $$1.j().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.B && !$$2.k($$8)) {
-               cmh $$9 = $$0.o();
-               int $$10 = $$2.am();
-               if ($$9 instanceof aql && $$8.v() >= $$10) {
-                  ((aql)$$9).b(wu.a("build.tooHigh", $$10 - 1).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.d())) {
-               if ($$3.a($$0)) {
-                  return cxk.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
+         return bqg.e;
       }
    }
 
+   public int h() {
+      return this.b;
+   }
+
    @Override
-   protected boolean c() {
-      return false;
+   public void a(cuc $$0, ctx.b $$1, List<wu> $$2, cvv $$3) {
+      $$2.add(this.k().a(n.h));
+   }
+
+   public xi k() {
+      return wu.c(this.a() + ".desc");
+   }
+
+   @Nullable
+   public static cux a(avg $$0) {
+      return a.get($$0);
+   }
+
+   public avg l() {
+      return this.c;
+   }
+
+   public int m() {
+      return this.j;
    }
 }

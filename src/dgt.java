@@ -1,59 +1,71 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dgt extends dff {
-   public static final MapCodec<dgt> a = b(dgt::new);
-   public static final dsy b = dsx.w;
-   public static final dsy c = dsx.r;
+public class dgt extends did {
+   public static final MapCodec<dgt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lq.e.r().fieldOf("concrete").forGetter($$0x -> $$0x.b), u()).apply($$0, dgt::new)
+   );
+   private final dfh b;
 
    @Override
-   protected MapCodec<? extends dgt> a() {
+   public MapCodec<dgt> a() {
       return a;
    }
 
-   public dgt(dsg.d $$0) {
-      super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
+   public dgt(dfh $$0, dsj.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected void b(dsh $$0, dcd $$1, ja $$2, dsh $$3, boolean $$4) {
-      if ($$3.b() != $$0.b() && $$1 instanceof aqk $$5) {
-         this.a($$0, $$5, $$2);
+   public void a(dcf $$0, ja $$1, dsk $$2, dsk $$3, cit $$4) {
+      if (a($$0, $$1, $$3)) {
+         $$0.a($$1, this.b.o(), 3);
       }
    }
 
    @Override
-   protected void a(dsh $$0, dcd $$1, ja $$2, dff $$3, ja $$4, boolean $$5) {
-      if ($$1 instanceof aqk $$6) {
-         this.a($$0, $$6, $$2);
-      }
+   public dsk a(cxm $$0) {
+      dbl $$1 = $$0.q();
+      ja $$2 = $$0.a();
+      dsk $$3 = $$1.a_($$2);
+      return a($$1, $$2, $$3) ? this.b.o() : super.a($$0);
    }
 
-   public void a(dsh $$0, aqk $$1, ja $$2) {
-      boolean $$3 = $$1.C($$2);
-      if ($$3 != $$0.c(b)) {
-         dsh $$4 = $$0;
-         if (!$$0.c(b)) {
-            $$4 = $$0.a(c);
-            $$1.a(null, $$2, $$4.c(c) ? avf.fG : avf.fH, avg.e);
+   private static boolean a(dbl $$0, ja $$1, dsk $$2) {
+      return n($$2) || a($$0, $$1);
+   }
+
+   private static boolean a(dbl $$0, ja $$1) {
+      boolean $$2 = false;
+      ja.a $$3 = $$1.j();
+
+      for (jf $$4 : jf.values()) {
+         dsk $$5 = $$0.a_($$3);
+         if ($$4 != jf.a || n($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (n($$5) && !$$5.d($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
+            }
          }
-
-         $$1.a($$2, $$4.a(b, Boolean.valueOf($$3)), 3);
       }
+
+      return $$2;
+   }
+
+   private static boolean n(dsk $$0) {
+      return $$0.u().a(awc.a);
    }
 
    @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
-      $$0.a(c, b);
+   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
+      return a($$3, $$4) ? this.b.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean c_(dsh $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dsh $$0, dcd $$1, ja $$2) {
-      return $$1.a_($$2).c(c) ? 15 : 0;
+   public int b(dsk $$0, dbl $$1, ja $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

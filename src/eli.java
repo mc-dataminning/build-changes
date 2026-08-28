@@ -1,45 +1,63 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class eli extends eiq {
-   public static final MapCodec<eli> d = a(eli::new);
+public class eli extends eiw {
+   public static final MapCodec<eli> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               a($$0),
+               eli.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eli::new)
+   );
+   public final eli.a e;
+   public final float f;
+   public final float g;
 
-   public eli(eiq.c $$0) {
+   public eli(eiw.c $$0, eli.a $$1, float $$2, float $$3) {
       super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public Optional<eiq.b> a(eiq.a $$0) {
-      return Optional.of(new eiq.b($$0.h().l(), (Consumer<eji>)($$1 -> a($$1, $$0))));
+   public Optional<eiw.b> a(eiw.a $$0) {
+      return a($$0, dyf.a.c, $$1 -> this.a($$1, $$0));
    }
 
-   private static void a(eji $$0, eiq.a $$1) {
-      int $$2 = 0;
-
-      elh.m $$3;
-      do {
-         $$0.b();
-         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
-         elh.a();
-         $$3 = new elh.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
-         $$0.a($$3);
-         $$3.a($$3, $$0, $$1.f());
-         List<eiu> $$4 = $$3.c;
-
-         while (!$$4.isEmpty()) {
-            int $$5 = $$1.f().a($$4.size());
-            eiu $$6 = $$4.remove($$5);
-            $$6.a($$3, $$0, $$1.f());
-         }
-
-         $$0.a($$1.b().f(), $$1.b().g(), $$1.f(), 10);
-      } while ($$0.c() || $$3.b == null);
+   private void a(ejo $$0, eiw.a $$1) {
+      ja $$2 = new ja($$1.h().d(), 90, $$1.h().e());
+      dlu $$3 = dlu.a($$1.f());
+      elh.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
    }
 
    @Override
-   public eiz<?> e() {
-      return eiz.n;
+   public ejf<?> e() {
+      return ejf.k;
+   }
+
+   public static enum a implements azc {
+      a("warm"),
+      b("cold");
+
+      public static final Codec<eli.a> c = azc.a(eli.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

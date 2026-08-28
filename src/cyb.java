@@ -1,68 +1,49 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-
-public class cyb extends cxy {
-   private static final cyd a = cyd.a(cud.uv);
-
-   public cyb(cxv $$0) {
+public class cyb extends cya {
+   public cyb(cxx $$0) {
       super($$0);
    }
 
-   public boolean a(cxw $$0, dcd $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cua $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.g() instanceof csu) {
-               $$2 = true;
-            } else {
-               if (!a.a($$5)) {
-                  return false;
-               }
-
-               if ($$3) {
-                  return false;
-               }
-
-               $$3 = true;
+   public boolean a(cxy $$0, dcf $$1) {
+      if (!this.a($$0.f(), $$0.g())) {
+         return false;
+      } else {
+         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+            cuc $$3 = $$0.a($$2);
+            switch ($$2) {
+               case 1:
+               case 3:
+               case 5:
+               case 7:
+                  if (!$$3.a(awf.bq)) {
+                     return false;
+                  }
+                  break;
+               case 2:
+               case 4:
+               case 6:
+               default:
+                  if (!$$3.a(cuf.a)) {
+                     return false;
+                  }
             }
          }
-      }
 
-      return $$3 && $$2;
+         return true;
+      }
    }
 
-   public cua a(cxw $$0, jl.a $$1) {
-      IntList $$2 = new IntArrayList();
-      cua $$3 = null;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cua $$5 = $$0.a($$4);
-         ctv $$6 = $$5.g();
-         if ($$6 instanceof csu) {
-            $$2.add(((csu)$$6).c().f());
-         } else if (a.a($$5)) {
-            $$3 = $$5.c(1);
-         }
-      }
-
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(kn.T, cws.a, $$2, cws::a);
-         return $$3;
-      } else {
-         return cua.l;
-      }
+   public cuc a(cxy $$0, jl.a $$1) {
+      dqu $$2 = new dqu($$0.a(1).g(), $$0.a(3).g(), $$0.a(5).g(), $$0.a(7).g());
+      return dqf.a($$2);
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+      return $$0 == 3 && $$1 == 3;
    }
 
    @Override
-   public cyl<?> ap_() {
-      return cyl.i;
+   public cyn<?> ap_() {
+      return cyn.w;
    }
 }

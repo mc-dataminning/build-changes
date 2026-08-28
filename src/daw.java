@@ -1,24 +1,26 @@
-public interface daw {
-   akj<daq> a = a("mob_spawn_equipment");
-   akj<daq> b = a("pillager_spawn_crossbow");
-   akj<daq> c = a("raid/pillager_post_wave_3");
-   akj<daq> d = a("raid/pillager_post_wave_5");
-   akj<daq> e = a("raid/vindicator");
-   akj<daq> f = a("raid/vindicator_post_wave_5");
-   akj<daq> g = a("enderman_loot_drop");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(qm<daq> $$0) {
-      jk<czj> $$1 = $$0.a(lr.aK);
-      $$0.a(a, new dat($$1.b(avx.l), 5, 17));
-      $$0.a(b, new dau($$1.b(czo.K), bpf.a(1)));
-      $$0.a(c, new dau($$1.b(czo.J), bpf.a(1)));
-      $$0.a(d, new dau($$1.b(czo.J), bpf.a(2)));
-      $$0.a(e, new dau($$1.b(czo.n), bpf.a(1)));
-      $$0.a(f, new dau($$1.b(czo.n), bpf.a(2)));
-      $$0.a(g, new dau($$1.b(czo.v), bpf.a(1)));
+public record daw(jj<czl> c, bpl d) implements das {
+   public static final MapCodec<daw> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(czl.b.fieldOf("enchantment").forGetter(daw::b), bpl.c.fieldOf("level").forGetter(daw::c)).apply($$0, daw::new)
+   );
+
+   @Override
+   public void a(cuc $$0, czr.a $$1, ayo $$2, dcf $$3, ja $$4) {
+      $$1.b(this.c, ayg.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
    }
 
-   static akj<daq> a(String $$0) {
-      return akj.a(lr.aL, new akk($$0));
+   @Override
+   public MapCodec<daw> a() {
+      return b;
+   }
+
+   public jj<czl> b() {
+      return this.c;
+   }
+
+   public bpl c() {
+      return this.d;
    }
 }

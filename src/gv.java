@@ -13,15 +13,15 @@ public class gv implements go {
    }
 
    @Override
-   public evz a(eq $$0) {
-      evz $$1 = $$0.d();
-      return new evz(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
+   public ewf a(eq $$0) {
+      ewf $$1 = $$0.d();
+      return new ewf(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
    }
 
    @Override
-   public evy b(eq $$0) {
-      evy $$1 = $$0.k();
-      return new evy((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public ewe b(eq $$0) {
+      ewe $$1 = $$0.k();
+      return new ewe((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
    }
 
    @Override
@@ -96,7 +96,7 @@ public class gv implements go {
       return new gv(new gu(false, $$0), new gu(false, $$1), new gu(false, $$2));
    }
 
-   public static gv a(evy $$0) {
+   public static gv a(ewe $$0) {
       return new gv(new gu(false, (double)$$0.i), new gu(false, (double)$$0.j), new gu(true, 0.0));
    }
 

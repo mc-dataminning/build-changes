@@ -3,9 +3,7 @@ import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 
 public class bgx extends DataFix {
    public bgx(Schema $$0, boolean $$1) {
@@ -13,11 +11,11 @@ public class bgx extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bgd.I.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bgd.I))) {
-         throw new IllegalStateException("Team type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("TeamDisplayNameFix", $$0, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DisplayName", azk::a)));
-      }
+      Type<?> $$0 = this.getInputSchema().getType(bgg.G);
+      return this.fixTypeEverywhereTyped("Structure Reference Fix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bgx::a));
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("references", $$0x -> $$0x.createInt($$0x.asNumber().map(Number::intValue).result().filter($$0xx -> $$0xx > 0).orElse(1)));
    }
 }

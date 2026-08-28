@@ -8,7 +8,7 @@ public class dx extends ds<dx.a> {
       return dx.a.a;
    }
 
-   public void a(aql $$0) {
+   public void a(aqn $$0) {
       this.a($$0, $$0x -> true);
    }
 

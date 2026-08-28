@@ -1,13 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eds implements edi {
-   public static final Codec<eds> k = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, eds::new)
+public class eds implements edo {
+   public static final Codec<eds> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, dwf.c).fieldOf("height").forGetter($$0x -> $$0x.b), dsk.b.fieldOf("state").forGetter($$0x -> $$0x.c))
+            .apply($$0, eds::new)
    );
-   public final float l;
+   public final int b;
+   public final dsk c;
 
-   public eds(float $$0) {
-      this.l = $$0;
+   public eds(int $$0, dsk $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 }

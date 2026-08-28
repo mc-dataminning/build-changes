@@ -1,28 +1,29 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bxl extends bur<bta> {
-   private final float c;
+public class bxl {
+   private static final int a = 180;
+   private static final int b = 8;
+   private static final int c = 6;
 
-   public bxl(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
-   }
-
-   public static boolean a(bta $$0) {
-      return $$0.be() && $$0.b(awa.a) > $$0.di() || $$0.bs();
-   }
-
-   protected boolean a(aqk $$0, bta $$1) {
-      return a($$1);
-   }
-
-   protected boolean a(aqk $$0, bta $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(aqk $$0, bta $$1, long $$2) {
-      if ($$1.dS().i() < this.c) {
-         $$1.I().a();
-      }
+   public static bwf<btk> a(ccf<ji> $$0, float $$1, int $$2) {
+      MutableLong $$3 = new MutableLong(0L);
+      return byh.a(
+         (Function<byh.b<btk>, ? extends App<byh.c<btk>, byk<btk>>>)($$4 -> $$4.group($$4.a(ccf.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                  ji $$9 = $$4.b($$5);
+                  if ($$6.af() != $$9.a() || !$$9.b().a($$7.do(), (double)$$2)) {
+                     return false;
+                  } else if ($$8 <= $$3.getValue()) {
+                     return true;
+                  } else {
+                     Optional<ewf> $$10 = Optional.ofNullable(cdz.a($$7, 8, 6));
+                     $$4x.a($$10.map($$1xxxx -> new cci($$1xxxx, $$1, 1)));
+                     $$3.setValue($$8 + 180L);
+                     return true;
+                  }
+               }))
+      );
    }
 }

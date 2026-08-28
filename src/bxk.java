@@ -1,32 +1,22 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bxk {
-   public static bus<clu> a(ccc<List<ji>> $$0, float $$1, int $$2, int $$3, ccc<ji> $$4) {
-      MutableLong $$5 = new MutableLong(0L);
-      return bye.a(
-         (Function<bye.b<clu>, ? extends App<bye.c<clu>, byh<clu>>>)($$6 -> $$6.group($$6.a(ccc.m), $$6.b($$0), $$6.b($$4))
-               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
-                     List<ji> $$11 = $$6.b($$6x);
-                     ji $$12 = $$6.b($$7);
-                     if ($$11.isEmpty()) {
-                        return false;
-                     } else {
-                        ji $$13 = $$11.get($$8.E_().a($$11.size()));
-                        if ($$13 != null && $$8.af() == $$13.a() && $$12.b().a($$9.dn(), (double)$$3)) {
-                           if ($$10 > $$5.getValue()) {
-                              $$5xx.a(new ccf($$13.b(), $$1, $$2));
-                              $$5.setValue($$10 + 100L);
-                           }
-
-                           return true;
-                        } else {
-                           return false;
-                        }
+   public static buv<btb> a() {
+      return byh.a(
+         (Function<byh.b<btb>, ? extends App<byh.c<btb>, byk<btb>>>)($$0 -> $$0.group($$0.b(ccf.ab))
+               .apply(
+                  $$0,
+                  $$1 -> ($$2, $$3, $$4) -> {
+                        Optional.ofNullable($$2.a($$0.b($$1)))
+                           .map($$0xxx -> $$0xxx instanceof btb $$1xx ? $$1xx : null)
+                           .filter(btb::ey)
+                           .filter($$1xx -> $$1xx.al() != bsm.by || $$2.ab().b(dcb.N))
+                           .ifPresent($$1xx -> $$1.b());
+                        return true;
                      }
-                  }))
+               ))
       );
    }
 }

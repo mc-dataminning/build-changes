@@ -1,87 +1,85 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dik extends djd {
-   public static final MapCodec<dik> a = b(dik::new);
-   public static final int b = 3;
-   public static final dth c = dsx.as;
-   private static final int f = 4;
-   private static final int g = 2;
+public class dik extends dfh {
+   public static final MapCodec<dik> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lq.e.r().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, dik::new)
+   );
+   private static final Map<dfh, dfh> d = Maps.newHashMap();
+   public static final float b = 3.0F;
+   protected static final ewy c = dfh.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final dfh e;
 
    @Override
    public MapCodec<dik> a() {
       return a;
    }
 
-   public dik(dsg.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   public dik(dfh $$0, dsj.d $$1) {
+      super($$1);
+      this.e = $$0;
+      d.put($$0, this);
    }
 
    @Override
-   public void b(dsh $$0, dcd $$1, ja $$2, dsh $$3, boolean $$4) {
-      $$1.a($$2, this, aye.a($$1.E_(), 60, 120));
+   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dsh $$0, aqk $$1, ja $$2, aym $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.b($$1, $$2) && this.e($$0, $$1, $$2)) {
-         ja.a $$4 = new ja.a();
-
-         for (jf $$5 : jf.values()) {
-            $$4.a($$2, $$5);
-            dsh $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
-               $$1.a($$4, this, aye.a($$3, 20, 40));
-            }
-         }
+   protected bqi a(cuc $$0, dsk $$1, dcf $$2, ja $$3, cmk $$4, bqf $$5, ewb $$6) {
+      dsk $$8 = ($$0.g() instanceof csb $$7 ? d.getOrDefault($$7.d(), dfj.a) : dfj.a).o();
+      if ($$8.i()) {
+         return bqi.d;
+      } else if (!this.m()) {
+         return bqi.b;
       } else {
-         $$1.a($$2, this, aye.a($$3, 20, 40));
+         $$2.a($$3, $$8, 3);
+         $$2.a($$4, dxg.c, $$3);
+         $$4.a(avr.ah);
+         $$0.a(1, $$4);
+         return bqi.a($$2.B);
       }
    }
 
-   private boolean e(dsh $$0, dcd $$1, ja $$2) {
-      int $$3 = $$0.c(c);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.a(c, Integer.valueOf($$3 + 1)), 2);
-         return false;
+   @Override
+   protected bqg a(dsk $$0, dcf $$1, ja $$2, cmk $$3, ewb $$4) {
+      if (this.m()) {
+         return bqg.c;
       } else {
-         this.d($$0, $$1, $$2);
-         return true;
-      }
-   }
-
-   @Override
-   protected void a(dsh $$0, dcd $$1, ja $$2, dff $$3, ja $$4, boolean $$5) {
-      if ($$3.o().a(this) && this.a($$1, $$2, 2)) {
-         this.d($$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(dbj $$0, ja $$1, int $$2) {
-      int $$3 = 0;
-      ja.a $$4 = new ja.a();
-
-      for (jf $$5 : jf.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
-            }
+         cuc $$5 = new cuc(this.e);
+         if (!$$3.i($$5)) {
+            $$3.a($$5, false);
          }
+
+         $$1.a($$2, dfj.fR.o(), 3);
+         $$1.a($$3, dxg.c, $$2);
+         return bqg.a($$1.B);
       }
-
-      return true;
    }
 
    @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
-      $$0.a(c);
+   public cuc a(dci $$0, ja $$1, dsk $$2) {
+      return this.m() ? super.a($$0, $$1, $$2) : new cuc(this.e);
+   }
+
+   private boolean m() {
+      return this.e == dfj.a;
    }
 
    @Override
-   public cua a(dcg $$0, ja $$1, dsh $$2) {
-      return cua.l;
+   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
+      return $$1 == jf.a && !$$0.a($$3, $$4) ? dfj.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public dfh b() {
+      return this.e;
+   }
+
+   @Override
+   protected boolean a(dsk $$0, eow $$1) {
+      return false;
    }
 }

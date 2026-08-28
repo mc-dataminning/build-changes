@@ -253,7 +253,7 @@ public class akk implements Comparable<akk> {
 
    public static class b implements JsonDeserializer<akk>, JsonSerializer<akk> {
       public akk a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new akk(axu.a($$0, "location"));
+         return new akk(axw.a($$0, "location"));
       }
 
       public JsonElement a(akk $$0, Type $$1, JsonSerializationContext $$2) {

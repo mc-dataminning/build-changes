@@ -1,27 +1,122 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collection;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fcy extends gvm {
-   protected BooleanConsumer a;
-   private final wu b;
-   private final wu c;
+public class fcy extends gvs {
+   private static final wu a = wu.c("mco.selectServer.popup");
+   private static final wu b = wu.c("mco.selectServer.close");
+   private static final akk c = new akk("popup/background");
+   private static final akk A = new akk("icon/trial_available");
+   private static final fjf B = new fjf(new akk("widget/cross_button"), new akk("widget/cross_button_highlighted"));
+   private static final int C = 236;
+   private static final int D = 34;
+   private static final int E = 6;
+   private static final int F = 195;
+   private static final int G = 152;
+   private static final int H = 4;
+   private static final int I = 10;
+   private static final int J = 320;
+   private static final int K = 172;
+   private static final int L = 100;
+   private static final int M = 99;
+   private static final int N = 100;
+   private static List<akk> O = List.of();
+   private final fnj P;
+   private final boolean Q;
+   @Nullable
+   private fhs R;
+   private int S;
+   private int T;
 
-   public fcy(BooleanConsumer $$0, wu $$1, wu $$2) {
-      super(fff.a);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public fcy(fnj $$0, boolean $$1) {
+      super(a);
+      this.P = $$0;
+      this.Q = $$1;
+   }
+
+   public static void a(atw $$0) {
+      Collection<akk> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
+      O = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
    }
 
    @Override
-   public void aO_() {
-      this.c(fhm.a(wt.f, $$0 -> this.a.accept(true)).a(this.m / 2 - 105, g(9), 100, 20).a());
-      this.c(fhm.a(wt.g, $$0 -> this.a.accept(false)).a(this.m / 2 + 5, g(9), 100, 20).a());
+   protected void aP_() {
+      this.P.a(this.l, this.m, this.n);
+      if (this.Q) {
+         this.R = this.c(
+            fhs.a(wu.c("mco.selectServer.trial"), fmg.b(this, "https://aka.ms/startjavarealmstrial")).a(this.G() - 10 - 99, this.J() - 10 - 4 - 40, 99, 20).a()
+         );
+      }
+
+      this.c(fhs.a(wu.c("mco.selectServer.buy"), fmg.b(this, "https://aka.ms/BuyJavaRealms")).a(this.G() - 10 - 99, this.J() - 10 - 20, 99, 20).a());
+      fie $$0 = this.c(new fie(this.E() + 4, this.F() + 4, 14, 14, B, $$0x -> this.d(), b));
+      $$0.a(fjd.a(b));
+      int $$1 = 142 - (this.Q ? 40 : 20);
+      fic $$2 = new fic(this.G() - 10 - 100, this.F() + 10, 100, $$1, a, this.o);
+      if ($$2.j()) {
+         $$2.k(100 - $$2.f());
+      }
+
+      this.c($$2);
    }
 
    @Override
-   public void a(fgz $$0, int $$1, int $$2, float $$3) {
+   public void e() {
+      super.e();
+      if (++this.T > 100) {
+         this.T = 0;
+         this.S = (this.S + 1) % O.size();
+      }
+   }
+
+   @Override
+   public void a(fhf $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.b, this.m / 2, g(3), -1);
-      $$0.a(this.o, this.c, this.m / 2, g(5), -1);
+      if (this.R != null) {
+         a($$0, this.R);
+      }
+   }
+
+   public static void a(fhf $$0, fhs $$1) {
+      int $$2 = 8;
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 110.0F);
+      $$0.a(A, $$1.D() + $$1.y() - 8 - 4, $$1.E() + $$1.w() / 2 - 4, 8, 8);
+      $$0.c().b();
+   }
+
+   @Override
+   public void b(fhf $$0, int $$1, int $$2, float $$3) {
+      this.P.a($$0, -1, -1, $$3);
+      $$0.e();
+      RenderSystem.clear(256, fft.a);
+      this.C();
+      this.b($$0);
+      $$0.a(c, this.E(), this.F(), 320, 172);
+      if (!O.isEmpty()) {
+         $$0.a(O.get(this.S), this.E() + 10, this.F() + 10, 0, 0.0F, 0.0F, 195, 152, 195, 152);
+      }
+   }
+
+   private int E() {
+      return (this.m - 320) / 2;
+   }
+
+   private int F() {
+      return (this.n - 172) / 2;
+   }
+
+   private int G() {
+      return this.E() + 320;
+   }
+
+   private int J() {
+      return this.F() + 172;
+   }
+
+   @Override
+   public void d() {
+      this.l.a(this.P);
    }
 }

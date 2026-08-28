@@ -1,80 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
 public class eko {
-   public static final int a = 90;
-   static final akk b = new akk("igloo/top");
-   private static final akk c = new akk("igloo/middle");
-   private static final akk d = new akk("igloo/bottom");
-   static final Map<akk, ja> e = ImmutableMap.of(b, new ja(3, 5, 5), c, new ja(1, 3, 1), d, new ja(3, 6, 7));
-   static final Map<akk, ja> f = ImmutableMap.of(b, ja.c, c, new ja(2, -3, 4), d, new ja(0, -3, -2));
-
-   public static void a(emr $$0, ja $$1, dls $$2, eiv $$3, aym $$4) {
-      if ($$4.j() < 0.5) {
-         int $$5 = $$4.a(8) + 4;
-         $$3.a(new eko.a($$0, d, $$1, $$2, $$5 * 3));
-
-         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
-            $$3.a(new eko.a($$0, c, $$1, $$2, $$6 * 3));
-         }
-      }
-
-      $$3.a(new eko.a($$0, b, $$1, $$2, 0));
-   }
-
    public static class a extends eja {
-      public a(emr $$0, akk $$1, ja $$2, dls $$3, int $$4) {
-         super(ejh.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
+      public a(ja $$0) {
+         super(ejn.aa, 0, new eio($$0));
       }
 
-      public a(emr $$0, tx $$1) {
-         super(ejh.I, $$1, $$0, $$1x -> a(dls.valueOf($$1.l("Rot")), $$1x));
-      }
-
-      private static emm a(dls $$0, akk $$1) {
-         return new emm().a($$0).a(dkc.a).a(eko.e.get($$1)).a(els.b);
-      }
-
-      private static ja a(akk $$0, ja $$1, int $$2) {
-         return $$1.a(eko.f.get($$0)).c($$2);
+      public a(tx $$0) {
+         super(ejn.aa, $$0);
       }
 
       @Override
-      protected void a(ejg $$0, tx $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
+      protected void a(ejm $$0, tx $$1) {
       }
 
       @Override
-      protected void a(String $$0, ja $$1, dcs $$2, aym $$3, eii $$4) {
-         if ("chest".equals($$0)) {
-            $$2.a($$1, dfh.a.o(), 3);
-            dpn $$5 = $$2.c_($$1.d());
-            if ($$5 instanceof dpu) {
-               ((dpu)$$5).a(eqk.C, $$3.g());
+      public void a(ddb $$0, dcz $$1, duh $$2, ayo $$3, eio $$4, dbm $$5, ja $$6) {
+         int $$7 = $$0.a(dyf.a.c, this.f.h(), this.f.j());
+         ja.a $$8 = new ja.a(this.f.h(), $$7, this.f.j());
+
+         while ($$8.v() > $$0.I_()) {
+            dsk $$9 = $$0.a_($$8);
+            dsk $$10 = $$0.a_($$8.d());
+            if ($$10 == dfj.aV.o() || $$10 == dfj.b.o() || $$10 == dfj.g.o() || $$10 == dfj.c.o() || $$10 == dfj.e.o()) {
+               dsk $$11 = !$$9.i() && !this.b($$9) ? $$9 : dfj.I.o();
+
+               for (jf $$12 : jf.values()) {
+                  ja $$13 = $$8.a($$12);
+                  dsk $$14 = $$0.a_($$13);
+                  if ($$14.i() || this.b($$14)) {
+                     ja $$15 = $$13.d();
+                     dsk $$16 = $$0.a_($$15);
+                     if (($$16.i() || this.b($$16)) && $$12 != jf.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
+               }
+
+               this.f = new eio($$8);
+               this.a($$0, $$4, $$3, $$8, eqq.G, null);
+               return;
             }
+
+            $$8.e(0, -1, 0);
          }
       }
 
-      @Override
-      public void a(dcz $$0, dcx $$1, due $$2, aym $$3, eii $$4, dbk $$5, ja $$6) {
-         akk $$7 = new akk(this.a);
-         emm $$8 = a(this.c.d(), $$7);
-         ja $$9 = eko.f.get($$7);
-         ja $$10 = this.d.a((ke)emq.a($$8, new ja(3 - $$9.u(), 0, -$$9.w())));
-         int $$11 = $$0.a(dxz.a.a, $$10.u(), $$10.w());
-         ja $$12 = this.d;
-         this.d = this.d.b(0, $$11 - 90 - 1, 0);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         if ($$7.equals(eko.b)) {
-            ja $$13 = this.d.a((ke)emq.a($$8, new ja(3, 0, 5)));
-            dsh $$14 = $$0.a_($$13.d());
-            if (!$$14.i() && !$$14.a(dfh.cO)) {
-               $$0.a($$13, dfh.dP.o(), 3);
-            }
-         }
-
-         this.d = $$12;
+      private boolean b(dsk $$0) {
+         return $$0 == dfj.G.o() || $$0 == dfj.H.o();
       }
    }
 }

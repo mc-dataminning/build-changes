@@ -1,1816 +1,786 @@
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Set;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class ekz {
-   private ekz() {
+   static final Logger b = LogUtils.getLogger();
+   private static final int c = 3;
+   private static final int d = 3;
+   private static final int e = 5;
+   private static final int f = 20;
+   private static final int g = 50;
+   private static final int h = 8;
+   public static final int a = 50;
+
+   private static ekz.c a(ejb $$0, ayo $$1, int $$2, int $$3, int $$4, @Nullable jf $$5, int $$6, ela.a $$7) {
+      int $$8 = $$1.a(100);
+      if ($$8 >= 80) {
+         eio $$9 = ekz.b.a($$0, $$1, $$2, $$3, $$4, $$5);
+         if ($$9 != null) {
+            return new ekz.b($$6, $$9, $$5, $$7);
+         }
+      } else if ($$8 >= 70) {
+         eio $$10 = ekz.e.a($$0, $$1, $$2, $$3, $$4, $$5);
+         if ($$10 != null) {
+            return new ekz.e($$6, $$10, $$5, $$7);
+         }
+      } else {
+         eio $$11 = ekz.a.a($$0, $$1, $$2, $$3, $$4, $$5);
+         if ($$11 != null) {
+            return new ekz.a($$6, $$1, $$11, $$5, $$7);
+         }
+      }
+
+      return null;
    }
 
-   static class a implements ekz.i {
-      @Override
-      public boolean a(ekz.v $$0) {
-         return $$0.c[jf.f.d()] && !$$0.b[jf.f.d()].d;
-      }
-
-      @Override
-      public ekz.r a(jf $$0, ekz.v $$1, aym $$2) {
-         $$1.d = true;
-         $$1.b[jf.f.d()].d = true;
-         return new ekz.k($$0, $$1);
-      }
-   }
-
-   static class b implements ekz.i {
-      @Override
-      public boolean a(ekz.v $$0) {
-         if ($$0.c[jf.f.d()] && !$$0.b[jf.f.d()].d && $$0.c[jf.b.d()] && !$$0.b[jf.b.d()].d) {
-            ekz.v $$1 = $$0.b[jf.f.d()];
-            return $$1.c[jf.b.d()] && !$$1.b[jf.b.d()].d;
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public ekz.r a(jf $$0, ekz.v $$1, aym $$2) {
-         $$1.d = true;
-         $$1.b[jf.f.d()].d = true;
-         $$1.b[jf.b.d()].d = true;
-         $$1.b[jf.f.d()].b[jf.b.d()].d = true;
-         return new ekz.l($$0, $$1);
-      }
-   }
-
-   static class c implements ekz.i {
-      @Override
-      public boolean a(ekz.v $$0) {
-         return $$0.c[jf.b.d()] && !$$0.b[jf.b.d()].d;
-      }
-
-      @Override
-      public ekz.r a(jf $$0, ekz.v $$1, aym $$2) {
-         $$1.d = true;
-         $$1.b[jf.b.d()].d = true;
-         return new ekz.m($$0, $$1);
-      }
-   }
-
-   static class d implements ekz.i {
-      @Override
-      public boolean a(ekz.v $$0) {
-         if ($$0.c[jf.c.d()] && !$$0.b[jf.c.d()].d && $$0.c[jf.b.d()] && !$$0.b[jf.b.d()].d) {
-            ekz.v $$1 = $$0.b[jf.c.d()];
-            return $$1.c[jf.b.d()] && !$$1.b[jf.b.d()].d;
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public ekz.r a(jf $$0, ekz.v $$1, aym $$2) {
-         $$1.d = true;
-         $$1.b[jf.c.d()].d = true;
-         $$1.b[jf.b.d()].d = true;
-         $$1.b[jf.c.d()].b[jf.b.d()].d = true;
-         return new ekz.n($$0, $$1);
-      }
-   }
-
-   static class e implements ekz.i {
-      @Override
-      public boolean a(ekz.v $$0) {
-         return $$0.c[jf.c.d()] && !$$0.b[jf.c.d()].d;
-      }
-
-      @Override
-      public ekz.r a(jf $$0, ekz.v $$1, aym $$2) {
-         ekz.v $$3 = $$1;
-         if (!$$1.c[jf.c.d()] || $$1.b[jf.c.d()].d) {
-            $$3 = $$1.b[jf.d.d()];
-         }
-
-         $$3.d = true;
-         $$3.b[jf.c.d()].d = true;
-         return new ekz.o($$0, $$3);
-      }
-   }
-
-   static class f implements ekz.i {
-      @Override
-      public boolean a(ekz.v $$0) {
-         return true;
-      }
-
-      @Override
-      public ekz.r a(jf $$0, ekz.v $$1, aym $$2) {
-         $$1.d = true;
-         return new ekz.s($$0, $$1, $$2);
-      }
-   }
-
-   static class g implements ekz.i {
-      @Override
-      public boolean a(ekz.v $$0) {
-         return !$$0.c[jf.e.d()] && !$$0.c[jf.f.d()] && !$$0.c[jf.c.d()] && !$$0.c[jf.d.d()] && !$$0.c[jf.b.d()];
-      }
-
-      @Override
-      public ekz.r a(jf $$0, ekz.v $$1, aym $$2) {
-         $$1.d = true;
-         return new ekz.t($$0, $$1);
-      }
-   }
-
-   public static class h extends ekz.r {
-      private static final int C = 58;
-      private static final int D = 22;
-      private static final int E = 58;
-      public static final int a = 29;
-      private static final int F = 61;
-      private ekz.v G;
-      private ekz.v H;
-      private final List<ekz.r> I = Lists.newArrayList();
-
-      public h(aym $$0, int $$1, int $$2, jf $$3) {
-         super(ejh.M, $$3, 0, a($$1, 39, $$2, $$3, 58, 23, 58));
-         this.a($$3);
-         List<ekz.v> $$4 = this.b($$0);
-         this.G.d = true;
-         this.I.add(new ekz.p($$3, this.G));
-         this.I.add(new ekz.j($$3, this.H));
-         List<ekz.i> $$5 = Lists.newArrayList();
-         $$5.add(new ekz.b());
-         $$5.add(new ekz.d());
-         $$5.add(new ekz.e());
-         $$5.add(new ekz.a());
-         $$5.add(new ekz.c());
-         $$5.add(new ekz.g());
-         $$5.add(new ekz.f());
-
-         for (ekz.v $$6 : $$4) {
-            if (!$$6.d && !$$6.b()) {
-               for (ekz.i $$7 : $$5) {
-                  if ($$7.a($$6)) {
-                     this.I.add($$7.a($$3, $$6, $$0));
-                     break;
-                  }
-               }
-            }
-         }
-
-         ja $$8 = this.b(9, 0, 22);
-
-         for (ekz.r $$9 : this.I) {
-            $$9.f().a((ke)$$8);
-         }
-
-         eii $$10 = eii.a(this.b(1, 1, 1), this.b(23, 8, 21));
-         eii $$11 = eii.a(this.b(34, 1, 1), this.b(56, 8, 21));
-         eii $$12 = eii.a(this.b(22, 13, 22), this.b(35, 17, 35));
-         int $$13 = $$0.f();
-         this.I.add(new ekz.u($$3, $$10, $$13++));
-         this.I.add(new ekz.u($$3, $$11, $$13++));
-         this.I.add(new ekz.q($$3, $$12));
-      }
-
-      public h(tx $$0) {
-         super(ejh.M, $$0);
-      }
-
-      private List<ekz.v> b(aym $$0) {
-         ekz.v[] $$1 = new ekz.v[75];
-
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            for (int $$3 = 0; $$3 < 4; $$3++) {
-               int $$4 = 0;
-               int $$5 = c($$2, 0, $$3);
-               $$1[$$5] = new ekz.v($$5);
-            }
-         }
-
-         for (int $$6 = 0; $$6 < 5; $$6++) {
-            for (int $$7 = 0; $$7 < 4; $$7++) {
-               int $$8 = 1;
-               int $$9 = c($$6, 1, $$7);
-               $$1[$$9] = new ekz.v($$9);
-            }
-         }
-
-         for (int $$10 = 1; $$10 < 4; $$10++) {
-            for (int $$11 = 0; $$11 < 2; $$11++) {
-               int $$12 = 2;
-               int $$13 = c($$10, 2, $$11);
-               $$1[$$13] = new ekz.v($$13);
-            }
-         }
-
-         this.G = $$1[u];
-
-         for (int $$14 = 0; $$14 < 5; $$14++) {
-            for (int $$15 = 0; $$15 < 5; $$15++) {
-               for (int $$16 = 0; $$16 < 3; $$16++) {
-                  int $$17 = c($$14, $$16, $$15);
-                  if ($$1[$$17] != null) {
-                     for (jf $$18 : jf.values()) {
-                        int $$19 = $$14 + $$18.j();
-                        int $$20 = $$16 + $$18.k();
-                        int $$21 = $$15 + $$18.l();
-                        if ($$19 >= 0 && $$19 < 5 && $$21 >= 0 && $$21 < 5 && $$20 >= 0 && $$20 < 3) {
-                           int $$22 = c($$19, $$20, $$21);
-                           if ($$1[$$22] != null) {
-                              if ($$21 == $$15) {
-                                 $$1[$$17].a($$18, $$1[$$22]);
-                              } else {
-                                 $$1[$$17].a($$18.g(), $$1[$$22]);
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         ekz.v $$23 = new ekz.v(1003);
-         ekz.v $$24 = new ekz.v(1001);
-         ekz.v $$25 = new ekz.v(1002);
-         $$1[v].a(jf.b, $$23);
-         $$1[w].a(jf.d, $$24);
-         $$1[x].a(jf.d, $$25);
-         $$23.d = true;
-         $$24.d = true;
-         $$25.d = true;
-         this.G.e = true;
-         this.H = $$1[c($$0.a(4), 0, 2)];
-         this.H.d = true;
-         this.H.b[jf.f.d()].d = true;
-         this.H.b[jf.c.d()].d = true;
-         this.H.b[jf.f.d()].b[jf.c.d()].d = true;
-         this.H.b[jf.b.d()].d = true;
-         this.H.b[jf.f.d()].b[jf.b.d()].d = true;
-         this.H.b[jf.c.d()].b[jf.b.d()].d = true;
-         this.H.b[jf.f.d()].b[jf.c.d()].b[jf.b.d()].d = true;
-         ObjectArrayList<ekz.v> $$26 = new ObjectArrayList();
-
-         for (ekz.v $$27 : $$1) {
-            if ($$27 != null) {
-               $$27.a();
-               $$26.add($$27);
-            }
-         }
-
-         $$23.a();
-         ac.c($$26, $$0);
-         int $$28 = 1;
-         ObjectListIterator var34 = $$26.iterator();
-
-         while (var34.hasNext()) {
-            ekz.v $$29 = (ekz.v)var34.next();
-            int $$30 = 0;
-            int $$31 = 0;
-
-            while ($$30 < 2 && $$31 < 5) {
-               $$31++;
-               int $$32 = $$0.a(6);
-               if ($$29.c[$$32]) {
-                  int $$33 = jf.a($$32).g().d();
-                  $$29.c[$$32] = false;
-                  $$29.b[$$32].c[$$33] = false;
-                  if ($$29.a($$28++) && $$29.b[$$32].a($$28++)) {
-                     $$30++;
-                  } else {
-                     $$29.c[$$32] = true;
-                     $$29.b[$$32].c[$$33] = true;
-                  }
-               }
-            }
-         }
-
-         $$26.add($$23);
-         $$26.add($$24);
-         $$26.add($$25);
-         return $$26;
-      }
-
-      @Override
-      public void a(dcz $$0, dcx $$1, due $$2, aym $$3, eii $$4, dbk $$5, ja $$6) {
-         int $$7 = Math.max($$0.z_(), 64) - this.f.i();
-         this.b($$0, $$4, 0, 0, 0, 58, $$7, 58);
-         this.a(false, 0, $$0, $$3, $$4);
-         this.a(true, 33, $$0, $$3, $$4);
-         this.a($$0, $$3, $$4);
-         this.b($$0, $$3, $$4);
-         this.c($$0, $$3, $$4);
-         this.d($$0, $$3, $$4);
-         this.e($$0, $$3, $$4);
-         this.f($$0, $$3, $$4);
-
-         for (int $$8 = 0; $$8 < 7; $$8++) {
-            int $$9 = 0;
-
-            while ($$9 < 7) {
-               if ($$9 == 0 && $$8 == 3) {
-                  $$9 = 6;
-               }
-
-               int $$10 = $$8 * 9;
-               int $$11 = $$9 * 9;
-
-               for (int $$12 = 0; $$12 < 4; $$12++) {
-                  for (int $$13 = 0; $$13 < 4; $$13++) {
-                     this.a($$0, c, $$10 + $$12, 0, $$11 + $$13, $$4);
-                     this.b($$0, c, $$10 + $$12, -1, $$11 + $$13, $$4);
-                  }
-               }
-
-               if ($$8 != 0 && $$8 != 6) {
-                  $$9 += 6;
-               } else {
-                  $$9++;
-               }
-            }
-         }
-
-         for (int $$14 = 0; $$14 < 5; $$14++) {
-            this.b($$0, $$4, -1 - $$14, 0 + $$14 * 2, -1 - $$14, -1 - $$14, 23, 58 + $$14);
-            this.b($$0, $$4, 58 + $$14, 0 + $$14 * 2, -1 - $$14, 58 + $$14, 23, 58 + $$14);
-            this.b($$0, $$4, 0 - $$14, 0 + $$14 * 2, -1 - $$14, 57 + $$14, 23, -1 - $$14);
-            this.b($$0, $$4, 0 - $$14, 0 + $$14 * 2, 58 + $$14, 57 + $$14, 23, 58 + $$14);
-         }
-
-         for (ekz.r $$15 : this.I) {
-            if ($$15.f().a($$4)) {
-               $$15.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-            }
-         }
-      }
-
-      private void a(boolean $$0, int $$1, dcz $$2, aym $$3, eii $$4) {
-         int $$5 = 24;
-         if (this.a($$4, $$1, 0, $$1 + 23, 20)) {
-            this.a($$2, $$4, $$1 + 0, 0, 0, $$1 + 24, 0, 20, b, b, false);
-            this.b($$2, $$4, $$1 + 0, 1, 0, $$1 + 24, 10, 20);
-
-            for (int $$6 = 0; $$6 < 4; $$6++) {
-               this.a($$2, $$4, $$1 + $$6, $$6 + 1, $$6, $$1 + $$6, $$6 + 1, 20, c, c, false);
-               this.a($$2, $$4, $$1 + $$6 + 7, $$6 + 5, $$6 + 7, $$1 + $$6 + 7, $$6 + 5, 20, c, c, false);
-               this.a($$2, $$4, $$1 + 17 - $$6, $$6 + 5, $$6 + 7, $$1 + 17 - $$6, $$6 + 5, 20, c, c, false);
-               this.a($$2, $$4, $$1 + 24 - $$6, $$6 + 1, $$6, $$1 + 24 - $$6, $$6 + 1, 20, c, c, false);
-               this.a($$2, $$4, $$1 + $$6 + 1, $$6 + 1, $$6, $$1 + 23 - $$6, $$6 + 1, $$6, c, c, false);
-               this.a($$2, $$4, $$1 + $$6 + 8, $$6 + 5, $$6 + 7, $$1 + 16 - $$6, $$6 + 5, $$6 + 7, c, c, false);
-            }
-
-            this.a($$2, $$4, $$1 + 4, 4, 4, $$1 + 6, 4, 20, b, b, false);
-            this.a($$2, $$4, $$1 + 7, 4, 4, $$1 + 17, 4, 6, b, b, false);
-            this.a($$2, $$4, $$1 + 18, 4, 4, $$1 + 20, 4, 20, b, b, false);
-            this.a($$2, $$4, $$1 + 11, 8, 11, $$1 + 13, 8, 20, b, b, false);
-            this.a($$2, h, $$1 + 12, 9, 12, $$4);
-            this.a($$2, h, $$1 + 12, 9, 15, $$4);
-            this.a($$2, h, $$1 + 12, 9, 18, $$4);
-            int $$7 = $$1 + ($$0 ? 19 : 5);
-            int $$8 = $$1 + ($$0 ? 5 : 19);
-
-            for (int $$9 = 20; $$9 >= 5; $$9 -= 3) {
-               this.a($$2, h, $$7, 5, $$9, $$4);
-            }
-
-            for (int $$10 = 19; $$10 >= 7; $$10 -= 3) {
-               this.a($$2, h, $$8, 5, $$10, $$4);
-            }
-
-            for (int $$11 = 0; $$11 < 4; $$11++) {
-               int $$12 = $$0 ? $$1 + 24 - (17 - $$11 * 3) : $$1 + 17 - $$11 * 3;
-               this.a($$2, h, $$12, 5, 5, $$4);
-            }
-
-            this.a($$2, h, $$8, 5, 5, $$4);
-            this.a($$2, $$4, $$1 + 11, 1, 12, $$1 + 13, 7, 12, b, b, false);
-            this.a($$2, $$4, $$1 + 12, 1, 11, $$1 + 12, 7, 13, b, b, false);
-         }
-      }
-
-      private void a(dcz $$0, aym $$1, eii $$2) {
-         if (this.a($$2, 22, 5, 35, 17)) {
-            this.b($$0, $$2, 25, 0, 0, 32, 8, 20);
-
-            for (int $$3 = 0; $$3 < 4; $$3++) {
-               this.a($$0, $$2, 24, 2, 5 + $$3 * 4, 24, 4, 5 + $$3 * 4, c, c, false);
-               this.a($$0, $$2, 22, 4, 5 + $$3 * 4, 23, 4, 5 + $$3 * 4, c, c, false);
-               this.a($$0, c, 25, 5, 5 + $$3 * 4, $$2);
-               this.a($$0, c, 26, 6, 5 + $$3 * 4, $$2);
-               this.a($$0, i, 26, 5, 5 + $$3 * 4, $$2);
-               this.a($$0, $$2, 33, 2, 5 + $$3 * 4, 33, 4, 5 + $$3 * 4, c, c, false);
-               this.a($$0, $$2, 34, 4, 5 + $$3 * 4, 35, 4, 5 + $$3 * 4, c, c, false);
-               this.a($$0, c, 32, 5, 5 + $$3 * 4, $$2);
-               this.a($$0, c, 31, 6, 5 + $$3 * 4, $$2);
-               this.a($$0, i, 31, 5, 5 + $$3 * 4, $$2);
-               this.a($$0, $$2, 27, 6, 5 + $$3 * 4, 30, 6, 5 + $$3 * 4, b, b, false);
-            }
-         }
-      }
-
-      private void b(dcz $$0, aym $$1, eii $$2) {
-         if (this.a($$2, 15, 20, 42, 21)) {
-            this.a($$0, $$2, 15, 0, 21, 42, 0, 21, b, b, false);
-            this.b($$0, $$2, 26, 1, 21, 31, 3, 21);
-            this.a($$0, $$2, 21, 12, 21, 36, 12, 21, b, b, false);
-            this.a($$0, $$2, 17, 11, 21, 40, 11, 21, b, b, false);
-            this.a($$0, $$2, 16, 10, 21, 41, 10, 21, b, b, false);
-            this.a($$0, $$2, 15, 7, 21, 42, 9, 21, b, b, false);
-            this.a($$0, $$2, 16, 6, 21, 41, 6, 21, b, b, false);
-            this.a($$0, $$2, 17, 5, 21, 40, 5, 21, b, b, false);
-            this.a($$0, $$2, 21, 4, 21, 36, 4, 21, b, b, false);
-            this.a($$0, $$2, 22, 3, 21, 26, 3, 21, b, b, false);
-            this.a($$0, $$2, 31, 3, 21, 35, 3, 21, b, b, false);
-            this.a($$0, $$2, 23, 2, 21, 25, 2, 21, b, b, false);
-            this.a($$0, $$2, 32, 2, 21, 34, 2, 21, b, b, false);
-            this.a($$0, $$2, 28, 4, 20, 29, 4, 21, c, c, false);
-            this.a($$0, c, 27, 3, 21, $$2);
-            this.a($$0, c, 30, 3, 21, $$2);
-            this.a($$0, c, 26, 2, 21, $$2);
-            this.a($$0, c, 31, 2, 21, $$2);
-            this.a($$0, c, 25, 1, 21, $$2);
-            this.a($$0, c, 32, 1, 21, $$2);
-
-            for (int $$3 = 0; $$3 < 7; $$3++) {
-               this.a($$0, d, 28 - $$3, 6 + $$3, 21, $$2);
-               this.a($$0, d, 29 + $$3, 6 + $$3, 21, $$2);
-            }
-
-            for (int $$4 = 0; $$4 < 4; $$4++) {
-               this.a($$0, d, 28 - $$4, 9 + $$4, 21, $$2);
-               this.a($$0, d, 29 + $$4, 9 + $$4, 21, $$2);
-            }
-
-            this.a($$0, d, 28, 12, 21, $$2);
-            this.a($$0, d, 29, 12, 21, $$2);
-
-            for (int $$5 = 0; $$5 < 3; $$5++) {
-               this.a($$0, d, 22 - $$5 * 2, 8, 21, $$2);
-               this.a($$0, d, 22 - $$5 * 2, 9, 21, $$2);
-               this.a($$0, d, 35 + $$5 * 2, 8, 21, $$2);
-               this.a($$0, d, 35 + $$5 * 2, 9, 21, $$2);
-            }
-
-            this.b($$0, $$2, 15, 13, 21, 42, 15, 21);
-            this.b($$0, $$2, 15, 1, 21, 15, 6, 21);
-            this.b($$0, $$2, 16, 1, 21, 16, 5, 21);
-            this.b($$0, $$2, 17, 1, 21, 20, 4, 21);
-            this.b($$0, $$2, 21, 1, 21, 21, 3, 21);
-            this.b($$0, $$2, 22, 1, 21, 22, 2, 21);
-            this.b($$0, $$2, 23, 1, 21, 24, 1, 21);
-            this.b($$0, $$2, 42, 1, 21, 42, 6, 21);
-            this.b($$0, $$2, 41, 1, 21, 41, 5, 21);
-            this.b($$0, $$2, 37, 1, 21, 40, 4, 21);
-            this.b($$0, $$2, 36, 1, 21, 36, 3, 21);
-            this.b($$0, $$2, 33, 1, 21, 34, 1, 21);
-            this.b($$0, $$2, 35, 1, 21, 35, 2, 21);
-         }
-      }
-
-      private void c(dcz $$0, aym $$1, eii $$2) {
-         if (this.a($$2, 21, 21, 36, 36)) {
-            this.a($$0, $$2, 21, 0, 22, 36, 0, 36, b, b, false);
-            this.b($$0, $$2, 21, 1, 22, 36, 23, 36);
-
-            for (int $$3 = 0; $$3 < 4; $$3++) {
-               this.a($$0, $$2, 21 + $$3, 13 + $$3, 21 + $$3, 36 - $$3, 13 + $$3, 21 + $$3, c, c, false);
-               this.a($$0, $$2, 21 + $$3, 13 + $$3, 36 - $$3, 36 - $$3, 13 + $$3, 36 - $$3, c, c, false);
-               this.a($$0, $$2, 21 + $$3, 13 + $$3, 22 + $$3, 21 + $$3, 13 + $$3, 35 - $$3, c, c, false);
-               this.a($$0, $$2, 36 - $$3, 13 + $$3, 22 + $$3, 36 - $$3, 13 + $$3, 35 - $$3, c, c, false);
-            }
-
-            this.a($$0, $$2, 25, 16, 25, 32, 16, 32, b, b, false);
-            this.a($$0, $$2, 25, 17, 25, 25, 19, 25, c, c, false);
-            this.a($$0, $$2, 32, 17, 25, 32, 19, 25, c, c, false);
-            this.a($$0, $$2, 25, 17, 32, 25, 19, 32, c, c, false);
-            this.a($$0, $$2, 32, 17, 32, 32, 19, 32, c, c, false);
-            this.a($$0, c, 26, 20, 26, $$2);
-            this.a($$0, c, 27, 21, 27, $$2);
-            this.a($$0, i, 27, 20, 27, $$2);
-            this.a($$0, c, 26, 20, 31, $$2);
-            this.a($$0, c, 27, 21, 30, $$2);
-            this.a($$0, i, 27, 20, 30, $$2);
-            this.a($$0, c, 31, 20, 31, $$2);
-            this.a($$0, c, 30, 21, 30, $$2);
-            this.a($$0, i, 30, 20, 30, $$2);
-            this.a($$0, c, 31, 20, 26, $$2);
-            this.a($$0, c, 30, 21, 27, $$2);
-            this.a($$0, i, 30, 20, 27, $$2);
-            this.a($$0, $$2, 28, 21, 27, 29, 21, 27, b, b, false);
-            this.a($$0, $$2, 27, 21, 28, 27, 21, 29, b, b, false);
-            this.a($$0, $$2, 28, 21, 30, 29, 21, 30, b, b, false);
-            this.a($$0, $$2, 30, 21, 28, 30, 21, 29, b, b, false);
-         }
-      }
-
-      private void d(dcz $$0, aym $$1, eii $$2) {
-         if (this.a($$2, 0, 21, 6, 58)) {
-            this.a($$0, $$2, 0, 0, 21, 6, 0, 57, b, b, false);
-            this.b($$0, $$2, 0, 1, 21, 6, 7, 57);
-            this.a($$0, $$2, 4, 4, 21, 6, 4, 53, b, b, false);
-
-            for (int $$3 = 0; $$3 < 4; $$3++) {
-               this.a($$0, $$2, $$3, $$3 + 1, 21, $$3, $$3 + 1, 57 - $$3, c, c, false);
-            }
-
-            for (int $$4 = 23; $$4 < 53; $$4 += 3) {
-               this.a($$0, h, 5, 5, $$4, $$2);
-            }
-
-            this.a($$0, h, 5, 5, 52, $$2);
-
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               this.a($$0, $$2, $$5, $$5 + 1, 21, $$5, $$5 + 1, 57 - $$5, c, c, false);
-            }
-
-            this.a($$0, $$2, 4, 1, 52, 6, 3, 52, b, b, false);
-            this.a($$0, $$2, 5, 1, 51, 5, 3, 53, b, b, false);
-         }
-
-         if (this.a($$2, 51, 21, 58, 58)) {
-            this.a($$0, $$2, 51, 0, 21, 57, 0, 57, b, b, false);
-            this.b($$0, $$2, 51, 1, 21, 57, 7, 57);
-            this.a($$0, $$2, 51, 4, 21, 53, 4, 53, b, b, false);
-
-            for (int $$6 = 0; $$6 < 4; $$6++) {
-               this.a($$0, $$2, 57 - $$6, $$6 + 1, 21, 57 - $$6, $$6 + 1, 57 - $$6, c, c, false);
-            }
-
-            for (int $$7 = 23; $$7 < 53; $$7 += 3) {
-               this.a($$0, h, 52, 5, $$7, $$2);
-            }
-
-            this.a($$0, h, 52, 5, 52, $$2);
-            this.a($$0, $$2, 51, 1, 52, 53, 3, 52, b, b, false);
-            this.a($$0, $$2, 52, 1, 51, 52, 3, 53, b, b, false);
-         }
-
-         if (this.a($$2, 0, 51, 57, 57)) {
-            this.a($$0, $$2, 7, 0, 51, 50, 0, 57, b, b, false);
-            this.b($$0, $$2, 7, 1, 51, 50, 10, 57);
-
-            for (int $$8 = 0; $$8 < 4; $$8++) {
-               this.a($$0, $$2, $$8 + 1, $$8 + 1, 57 - $$8, 56 - $$8, $$8 + 1, 57 - $$8, c, c, false);
-            }
-         }
-      }
-
-      private void e(dcz $$0, aym $$1, eii $$2) {
-         if (this.a($$2, 7, 21, 13, 50)) {
-            this.a($$0, $$2, 7, 0, 21, 13, 0, 50, b, b, false);
-            this.b($$0, $$2, 7, 1, 21, 13, 10, 50);
-            this.a($$0, $$2, 11, 8, 21, 13, 8, 53, b, b, false);
-
-            for (int $$3 = 0; $$3 < 4; $$3++) {
-               this.a($$0, $$2, $$3 + 7, $$3 + 5, 21, $$3 + 7, $$3 + 5, 54, c, c, false);
-            }
-
-            for (int $$4 = 21; $$4 <= 45; $$4 += 3) {
-               this.a($$0, h, 12, 9, $$4, $$2);
-            }
-         }
-
-         if (this.a($$2, 44, 21, 50, 54)) {
-            this.a($$0, $$2, 44, 0, 21, 50, 0, 50, b, b, false);
-            this.b($$0, $$2, 44, 1, 21, 50, 10, 50);
-            this.a($$0, $$2, 44, 8, 21, 46, 8, 53, b, b, false);
-
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               this.a($$0, $$2, 50 - $$5, $$5 + 5, 21, 50 - $$5, $$5 + 5, 54, c, c, false);
-            }
-
-            for (int $$6 = 21; $$6 <= 45; $$6 += 3) {
-               this.a($$0, h, 45, 9, $$6, $$2);
-            }
-         }
-
-         if (this.a($$2, 8, 44, 49, 54)) {
-            this.a($$0, $$2, 14, 0, 44, 43, 0, 50, b, b, false);
-            this.b($$0, $$2, 14, 1, 44, 43, 10, 50);
-
-            for (int $$7 = 12; $$7 <= 45; $$7 += 3) {
-               this.a($$0, h, $$7, 9, 45, $$2);
-               this.a($$0, h, $$7, 9, 52, $$2);
-               if ($$7 == 12 || $$7 == 18 || $$7 == 24 || $$7 == 33 || $$7 == 39 || $$7 == 45) {
-                  this.a($$0, h, $$7, 9, 47, $$2);
-                  this.a($$0, h, $$7, 9, 50, $$2);
-                  this.a($$0, h, $$7, 10, 45, $$2);
-                  this.a($$0, h, $$7, 10, 46, $$2);
-                  this.a($$0, h, $$7, 10, 51, $$2);
-                  this.a($$0, h, $$7, 10, 52, $$2);
-                  this.a($$0, h, $$7, 11, 47, $$2);
-                  this.a($$0, h, $$7, 11, 50, $$2);
-                  this.a($$0, h, $$7, 12, 48, $$2);
-                  this.a($$0, h, $$7, 12, 49, $$2);
-               }
-            }
-
-            for (int $$8 = 0; $$8 < 3; $$8++) {
-               this.a($$0, $$2, 8 + $$8, 5 + $$8, 54, 49 - $$8, 5 + $$8, 54, b, b, false);
-            }
-
-            this.a($$0, $$2, 11, 8, 54, 46, 8, 54, c, c, false);
-            this.a($$0, $$2, 14, 8, 44, 43, 8, 53, b, b, false);
-         }
-      }
-
-      private void f(dcz $$0, aym $$1, eii $$2) {
-         if (this.a($$2, 14, 21, 20, 43)) {
-            this.a($$0, $$2, 14, 0, 21, 20, 0, 43, b, b, false);
-            this.b($$0, $$2, 14, 1, 22, 20, 14, 43);
-            this.a($$0, $$2, 18, 12, 22, 20, 12, 39, b, b, false);
-            this.a($$0, $$2, 18, 12, 21, 20, 12, 21, c, c, false);
-
-            for (int $$3 = 0; $$3 < 4; $$3++) {
-               this.a($$0, $$2, $$3 + 14, $$3 + 9, 21, $$3 + 14, $$3 + 9, 43 - $$3, c, c, false);
-            }
-
-            for (int $$4 = 23; $$4 <= 39; $$4 += 3) {
-               this.a($$0, h, 19, 13, $$4, $$2);
-            }
-         }
-
-         if (this.a($$2, 37, 21, 43, 43)) {
-            this.a($$0, $$2, 37, 0, 21, 43, 0, 43, b, b, false);
-            this.b($$0, $$2, 37, 1, 22, 43, 14, 43);
-            this.a($$0, $$2, 37, 12, 22, 39, 12, 39, b, b, false);
-            this.a($$0, $$2, 37, 12, 21, 39, 12, 21, c, c, false);
-
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               this.a($$0, $$2, 43 - $$5, $$5 + 9, 21, 43 - $$5, $$5 + 9, 43 - $$5, c, c, false);
-            }
-
-            for (int $$6 = 23; $$6 <= 39; $$6 += 3) {
-               this.a($$0, h, 38, 13, $$6, $$2);
-            }
-         }
-
-         if (this.a($$2, 15, 37, 42, 43)) {
-            this.a($$0, $$2, 21, 0, 37, 36, 0, 43, b, b, false);
-            this.b($$0, $$2, 21, 1, 37, 36, 14, 43);
-            this.a($$0, $$2, 21, 12, 37, 36, 12, 39, b, b, false);
-
-            for (int $$7 = 0; $$7 < 4; $$7++) {
-               this.a($$0, $$2, 15 + $$7, $$7 + 9, 43 - $$7, 42 - $$7, $$7 + 9, 43 - $$7, c, c, false);
-            }
-
-            for (int $$8 = 21; $$8 <= 36; $$8 += 3) {
-               this.a($$0, h, $$8, 13, 38, $$2);
-            }
-         }
-      }
-   }
-
-   interface i {
-      boolean a(ekz.v var1);
-
-      ekz.r a(jf var1, ekz.v var2, aym var3);
-   }
-
-   public static class j extends ekz.r {
-      public j(jf $$0, ekz.v $$1) {
-         super(ejh.N, 1, $$0, $$1, 2, 2, 2);
-      }
-
-      public j(tx $$0) {
-         super(ejh.N, $$0);
-      }
-
-      @Override
-      public void a(dcz $$0, dcx $$1, due $$2, aym $$3, eii $$4, dbk $$5, ja $$6) {
-         this.a($$0, $$4, 1, 8, 0, 14, 8, 14, b);
-         int $$7 = 7;
-         dsh $$8 = c;
-         this.a($$0, $$4, 0, 7, 0, 0, 7, 15, $$8, $$8, false);
-         this.a($$0, $$4, 15, 7, 0, 15, 7, 15, $$8, $$8, false);
-         this.a($$0, $$4, 1, 7, 0, 15, 7, 0, $$8, $$8, false);
-         this.a($$0, $$4, 1, 7, 15, 14, 7, 15, $$8, $$8, false);
-
-         for (int $$9 = 1; $$9 <= 6; $$9++) {
-            $$8 = c;
-            if ($$9 == 2 || $$9 == 6) {
-               $$8 = b;
-            }
-
-            for (int $$11 = 0; $$11 <= 15; $$11 += 15) {
-               this.a($$0, $$4, $$11, $$9, 0, $$11, $$9, 1, $$8, $$8, false);
-               this.a($$0, $$4, $$11, $$9, 6, $$11, $$9, 9, $$8, $$8, false);
-               this.a($$0, $$4, $$11, $$9, 14, $$11, $$9, 15, $$8, $$8, false);
-            }
-
-            this.a($$0, $$4, 1, $$9, 0, 1, $$9, 0, $$8, $$8, false);
-            this.a($$0, $$4, 6, $$9, 0, 9, $$9, 0, $$8, $$8, false);
-            this.a($$0, $$4, 14, $$9, 0, 14, $$9, 0, $$8, $$8, false);
-            this.a($$0, $$4, 1, $$9, 15, 14, $$9, 15, $$8, $$8, false);
-         }
-
-         this.a($$0, $$4, 6, 3, 6, 9, 6, 9, d, d, false);
-         this.a($$0, $$4, 7, 4, 7, 8, 5, 8, dfh.ch.o(), dfh.ch.o(), false);
-
-         for (int $$12 = 3; $$12 <= 6; $$12 += 3) {
-            for (int $$13 = 6; $$13 <= 9; $$13 += 3) {
-               this.a($$0, i, $$13, $$12, 6, $$4);
-               this.a($$0, i, $$13, $$12, 9, $$4);
-            }
-         }
-
-         this.a($$0, $$4, 5, 1, 6, 5, 2, 6, c, c, false);
-         this.a($$0, $$4, 5, 1, 9, 5, 2, 9, c, c, false);
-         this.a($$0, $$4, 10, 1, 6, 10, 2, 6, c, c, false);
-         this.a($$0, $$4, 10, 1, 9, 10, 2, 9, c, c, false);
-         this.a($$0, $$4, 6, 1, 5, 6, 2, 5, c, c, false);
-         this.a($$0, $$4, 9, 1, 5, 9, 2, 5, c, c, false);
-         this.a($$0, $$4, 6, 1, 10, 6, 2, 10, c, c, false);
-         this.a($$0, $$4, 9, 1, 10, 9, 2, 10, c, c, false);
-         this.a($$0, $$4, 5, 2, 5, 5, 6, 5, c, c, false);
-         this.a($$0, $$4, 5, 2, 10, 5, 6, 10, c, c, false);
-         this.a($$0, $$4, 10, 2, 5, 10, 6, 5, c, c, false);
-         this.a($$0, $$4, 10, 2, 10, 10, 6, 10, c, c, false);
-         this.a($$0, $$4, 5, 7, 1, 5, 7, 6, c, c, false);
-         this.a($$0, $$4, 10, 7, 1, 10, 7, 6, c, c, false);
-         this.a($$0, $$4, 5, 7, 9, 5, 7, 14, c, c, false);
-         this.a($$0, $$4, 10, 7, 9, 10, 7, 14, c, c, false);
-         this.a($$0, $$4, 1, 7, 5, 6, 7, 5, c, c, false);
-         this.a($$0, $$4, 1, 7, 10, 6, 7, 10, c, c, false);
-         this.a($$0, $$4, 9, 7, 5, 14, 7, 5, c, c, false);
-         this.a($$0, $$4, 9, 7, 10, 14, 7, 10, c, c, false);
-         this.a($$0, $$4, 2, 1, 2, 2, 1, 3, c, c, false);
-         this.a($$0, $$4, 3, 1, 2, 3, 1, 2, c, c, false);
-         this.a($$0, $$4, 13, 1, 2, 13, 1, 3, c, c, false);
-         this.a($$0, $$4, 12, 1, 2, 12, 1, 2, c, c, false);
-         this.a($$0, $$4, 2, 1, 12, 2, 1, 13, c, c, false);
-         this.a($$0, $$4, 3, 1, 13, 3, 1, 13, c, c, false);
-         this.a($$0, $$4, 13, 1, 12, 13, 1, 13, c, c, false);
-         this.a($$0, $$4, 12, 1, 13, 12, 1, 13, c, c, false);
-      }
-   }
-
-   public static class k extends ekz.r {
-      public k(jf $$0, ekz.v $$1) {
-         super(ejh.O, 1, $$0, $$1, 2, 1, 1);
-      }
-
-      public k(tx $$0) {
-         super(ejh.O, $$0);
-      }
-
-      @Override
-      public void a(dcz $$0, dcx $$1, due $$2, aym $$3, eii $$4, dbk $$5, ja $$6) {
-         ekz.v $$7 = this.B.b[jf.f.d()];
-         ekz.v $$8 = this.B;
-         if (this.B.a / 25 > 0) {
-            this.a($$0, $$4, 8, 0, $$7.c[jf.a.d()]);
-            this.a($$0, $$4, 0, 0, $$8.c[jf.a.d()]);
-         }
-
-         if ($$8.b[jf.b.d()] == null) {
-            this.a($$0, $$4, 1, 4, 1, 7, 4, 6, b);
-         }
-
-         if ($$7.b[jf.b.d()] == null) {
-            this.a($$0, $$4, 8, 4, 1, 14, 4, 6, b);
-         }
-
-         this.a($$0, $$4, 0, 3, 0, 0, 3, 7, c, c, false);
-         this.a($$0, $$4, 15, 3, 0, 15, 3, 7, c, c, false);
-         this.a($$0, $$4, 1, 3, 0, 15, 3, 0, c, c, false);
-         this.a($$0, $$4, 1, 3, 7, 14, 3, 7, c, c, false);
-         this.a($$0, $$4, 0, 2, 0, 0, 2, 7, b, b, false);
-         this.a($$0, $$4, 15, 2, 0, 15, 2, 7, b, b, false);
-         this.a($$0, $$4, 1, 2, 0, 15, 2, 0, b, b, false);
-         this.a($$0, $$4, 1, 2, 7, 14, 2, 7, b, b, false);
-         this.a($$0, $$4, 0, 1, 0, 0, 1, 7, c, c, false);
-         this.a($$0, $$4, 15, 1, 0, 15, 1, 7, c, c, false);
-         this.a($$0, $$4, 1, 1, 0, 15, 1, 0, c, c, false);
-         this.a($$0, $$4, 1, 1, 7, 14, 1, 7, c, c, false);
-         this.a($$0, $$4, 5, 1, 0, 10, 1, 4, c, c, false);
-         this.a($$0, $$4, 6, 2, 0, 9, 2, 3, b, b, false);
-         this.a($$0, $$4, 5, 3, 0, 10, 3, 4, c, c, false);
-         this.a($$0, i, 6, 2, 3, $$4);
-         this.a($$0, i, 9, 2, 3, $$4);
-         if ($$8.c[jf.d.d()]) {
-            this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
-         }
-
-         if ($$8.c[jf.c.d()]) {
-            this.b($$0, $$4, 3, 1, 7, 4, 2, 7);
-         }
-
-         if ($$8.c[jf.e.d()]) {
-            this.b($$0, $$4, 0, 1, 3, 0, 2, 4);
-         }
-
-         if ($$7.c[jf.d.d()]) {
-            this.b($$0, $$4, 11, 1, 0, 12, 2, 0);
-         }
-
-         if ($$7.c[jf.c.d()]) {
-            this.b($$0, $$4, 11, 1, 7, 12, 2, 7);
-         }
-
-         if ($$7.c[jf.f.d()]) {
-            this.b($$0, $$4, 15, 1, 3, 15, 2, 4);
-         }
-      }
-   }
-
-   public static class l extends ekz.r {
-      public l(jf $$0, ekz.v $$1) {
-         super(ejh.P, 1, $$0, $$1, 2, 2, 1);
-      }
-
-      public l(tx $$0) {
-         super(ejh.P, $$0);
-      }
-
-      @Override
-      public void a(dcz $$0, dcx $$1, due $$2, aym $$3, eii $$4, dbk $$5, ja $$6) {
-         ekz.v $$7 = this.B.b[jf.f.d()];
-         ekz.v $$8 = this.B;
-         ekz.v $$9 = $$8.b[jf.b.d()];
-         ekz.v $$10 = $$7.b[jf.b.d()];
-         if (this.B.a / 25 > 0) {
-            this.a($$0, $$4, 8, 0, $$7.c[jf.a.d()]);
-            this.a($$0, $$4, 0, 0, $$8.c[jf.a.d()]);
-         }
-
-         if ($$9.b[jf.b.d()] == null) {
-            this.a($$0, $$4, 1, 8, 1, 7, 8, 6, b);
-         }
-
-         if ($$10.b[jf.b.d()] == null) {
-            this.a($$0, $$4, 8, 8, 1, 14, 8, 6, b);
-         }
-
-         for (int $$11 = 1; $$11 <= 7; $$11++) {
-            dsh $$12 = c;
-            if ($$11 == 2 || $$11 == 6) {
-               $$12 = b;
-            }
-
-            this.a($$0, $$4, 0, $$11, 0, 0, $$11, 7, $$12, $$12, false);
-            this.a($$0, $$4, 15, $$11, 0, 15, $$11, 7, $$12, $$12, false);
-            this.a($$0, $$4, 1, $$11, 0, 15, $$11, 0, $$12, $$12, false);
-            this.a($$0, $$4, 1, $$11, 7, 14, $$11, 7, $$12, $$12, false);
-         }
-
-         this.a($$0, $$4, 2, 1, 3, 2, 7, 4, c, c, false);
-         this.a($$0, $$4, 3, 1, 2, 4, 7, 2, c, c, false);
-         this.a($$0, $$4, 3, 1, 5, 4, 7, 5, c, c, false);
-         this.a($$0, $$4, 13, 1, 3, 13, 7, 4, c, c, false);
-         this.a($$0, $$4, 11, 1, 2, 12, 7, 2, c, c, false);
-         this.a($$0, $$4, 11, 1, 5, 12, 7, 5, c, c, false);
-         this.a($$0, $$4, 5, 1, 3, 5, 3, 4, c, c, false);
-         this.a($$0, $$4, 10, 1, 3, 10, 3, 4, c, c, false);
-         this.a($$0, $$4, 5, 7, 2, 10, 7, 5, c, c, false);
-         this.a($$0, $$4, 5, 5, 2, 5, 7, 2, c, c, false);
-         this.a($$0, $$4, 10, 5, 2, 10, 7, 2, c, c, false);
-         this.a($$0, $$4, 5, 5, 5, 5, 7, 5, c, c, false);
-         this.a($$0, $$4, 10, 5, 5, 10, 7, 5, c, c, false);
-         this.a($$0, c, 6, 6, 2, $$4);
-         this.a($$0, c, 9, 6, 2, $$4);
-         this.a($$0, c, 6, 6, 5, $$4);
-         this.a($$0, c, 9, 6, 5, $$4);
-         this.a($$0, $$4, 5, 4, 3, 6, 4, 4, c, c, false);
-         this.a($$0, $$4, 9, 4, 3, 10, 4, 4, c, c, false);
-         this.a($$0, i, 5, 4, 2, $$4);
-         this.a($$0, i, 5, 4, 5, $$4);
-         this.a($$0, i, 10, 4, 2, $$4);
-         this.a($$0, i, 10, 4, 5, $$4);
-         if ($$8.c[jf.d.d()]) {
-            this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
-         }
-
-         if ($$8.c[jf.c.d()]) {
-            this.b($$0, $$4, 3, 1, 7, 4, 2, 7);
-         }
-
-         if ($$8.c[jf.e.d()]) {
-            this.b($$0, $$4, 0, 1, 3, 0, 2, 4);
-         }
-
-         if ($$7.c[jf.d.d()]) {
-            this.b($$0, $$4, 11, 1, 0, 12, 2, 0);
-         }
-
-         if ($$7.c[jf.c.d()]) {
-            this.b($$0, $$4, 11, 1, 7, 12, 2, 7);
-         }
-
-         if ($$7.c[jf.f.d()]) {
-            this.b($$0, $$4, 15, 1, 3, 15, 2, 4);
-         }
-
-         if ($$9.c[jf.d.d()]) {
-            this.b($$0, $$4, 3, 5, 0, 4, 6, 0);
-         }
-
-         if ($$9.c[jf.c.d()]) {
-            this.b($$0, $$4, 3, 5, 7, 4, 6, 7);
-         }
-
-         if ($$9.c[jf.e.d()]) {
-            this.b($$0, $$4, 0, 5, 3, 0, 6, 4);
-         }
-
-         if ($$10.c[jf.d.d()]) {
-            this.b($$0, $$4, 11, 5, 0, 12, 6, 0);
-         }
-
-         if ($$10.c[jf.c.d()]) {
-            this.b($$0, $$4, 11, 5, 7, 12, 6, 7);
-         }
-
-         if ($$10.c[jf.f.d()]) {
-            this.b($$0, $$4, 15, 5, 3, 15, 6, 4);
-         }
-      }
-   }
-
-   public static class m extends ekz.r {
-      public m(jf $$0, ekz.v $$1) {
-         super(ejh.Q, 1, $$0, $$1, 1, 2, 1);
-      }
-
-      public m(tx $$0) {
-         super(ejh.Q, $$0);
-      }
-
-      @Override
-      public void a(dcz $$0, dcx $$1, due $$2, aym $$3, eii $$4, dbk $$5, ja $$6) {
-         if (this.B.a / 25 > 0) {
-            this.a($$0, $$4, 0, 0, this.B.c[jf.a.d()]);
-         }
-
-         ekz.v $$7 = this.B.b[jf.b.d()];
-         if ($$7.b[jf.b.d()] == null) {
-            this.a($$0, $$4, 1, 8, 1, 6, 8, 6, b);
-         }
-
-         this.a($$0, $$4, 0, 4, 0, 0, 4, 7, c, c, false);
-         this.a($$0, $$4, 7, 4, 0, 7, 4, 7, c, c, false);
-         this.a($$0, $$4, 1, 4, 0, 6, 4, 0, c, c, false);
-         this.a($$0, $$4, 1, 4, 7, 6, 4, 7, c, c, false);
-         this.a($$0, $$4, 2, 4, 1, 2, 4, 2, c, c, false);
-         this.a($$0, $$4, 1, 4, 2, 1, 4, 2, c, c, false);
-         this.a($$0, $$4, 5, 4, 1, 5, 4, 2, c, c, false);
-         this.a($$0, $$4, 6, 4, 2, 6, 4, 2, c, c, false);
-         this.a($$0, $$4, 2, 4, 5, 2, 4, 6, c, c, false);
-         this.a($$0, $$4, 1, 4, 5, 1, 4, 5, c, c, false);
-         this.a($$0, $$4, 5, 4, 5, 5, 4, 6, c, c, false);
-         this.a($$0, $$4, 6, 4, 5, 6, 4, 5, c, c, false);
-         ekz.v $$8 = this.B;
-
-         for (int $$9 = 1; $$9 <= 5; $$9 += 4) {
-            int $$10 = 0;
-            if ($$8.c[jf.d.d()]) {
-               this.a($$0, $$4, 2, $$9, $$10, 2, $$9 + 2, $$10, c, c, false);
-               this.a($$0, $$4, 5, $$9, $$10, 5, $$9 + 2, $$10, c, c, false);
-               this.a($$0, $$4, 3, $$9 + 2, $$10, 4, $$9 + 2, $$10, c, c, false);
-            } else {
-               this.a($$0, $$4, 0, $$9, $$10, 7, $$9 + 2, $$10, c, c, false);
-               this.a($$0, $$4, 0, $$9 + 1, $$10, 7, $$9 + 1, $$10, b, b, false);
-            }
-
-            int var13 = 7;
-            if ($$8.c[jf.c.d()]) {
-               this.a($$0, $$4, 2, $$9, var13, 2, $$9 + 2, var13, c, c, false);
-               this.a($$0, $$4, 5, $$9, var13, 5, $$9 + 2, var13, c, c, false);
-               this.a($$0, $$4, 3, $$9 + 2, var13, 4, $$9 + 2, var13, c, c, false);
-            } else {
-               this.a($$0, $$4, 0, $$9, var13, 7, $$9 + 2, var13, c, c, false);
-               this.a($$0, $$4, 0, $$9 + 1, var13, 7, $$9 + 1, var13, b, b, false);
-            }
-
-            int $$11 = 0;
-            if ($$8.c[jf.e.d()]) {
-               this.a($$0, $$4, $$11, $$9, 2, $$11, $$9 + 2, 2, c, c, false);
-               this.a($$0, $$4, $$11, $$9, 5, $$11, $$9 + 2, 5, c, c, false);
-               this.a($$0, $$4, $$11, $$9 + 2, 3, $$11, $$9 + 2, 4, c, c, false);
-            } else {
-               this.a($$0, $$4, $$11, $$9, 0, $$11, $$9 + 2, 7, c, c, false);
-               this.a($$0, $$4, $$11, $$9 + 1, 0, $$11, $$9 + 1, 7, b, b, false);
-            }
-
-            int var14 = 7;
-            if ($$8.c[jf.f.d()]) {
-               this.a($$0, $$4, var14, $$9, 2, var14, $$9 + 2, 2, c, c, false);
-               this.a($$0, $$4, var14, $$9, 5, var14, $$9 + 2, 5, c, c, false);
-               this.a($$0, $$4, var14, $$9 + 2, 3, var14, $$9 + 2, 4, c, c, false);
-            } else {
-               this.a($$0, $$4, var14, $$9, 0, var14, $$9 + 2, 7, c, c, false);
-               this.a($$0, $$4, var14, $$9 + 1, 0, var14, $$9 + 1, 7, b, b, false);
-            }
-
-            $$8 = $$7;
-         }
-      }
-   }
-
-   public static class n extends ekz.r {
-      public n(jf $$0, ekz.v $$1) {
-         super(ejh.R, 1, $$0, $$1, 1, 2, 2);
-      }
-
-      public n(tx $$0) {
-         super(ejh.R, $$0);
-      }
-
-      @Override
-      public void a(dcz $$0, dcx $$1, due $$2, aym $$3, eii $$4, dbk $$5, ja $$6) {
-         ekz.v $$7 = this.B.b[jf.c.d()];
-         ekz.v $$8 = this.B;
-         ekz.v $$9 = $$7.b[jf.b.d()];
-         ekz.v $$10 = $$8.b[jf.b.d()];
-         if (this.B.a / 25 > 0) {
-            this.a($$0, $$4, 0, 8, $$7.c[jf.a.d()]);
-            this.a($$0, $$4, 0, 0, $$8.c[jf.a.d()]);
-         }
-
-         if ($$10.b[jf.b.d()] == null) {
-            this.a($$0, $$4, 1, 8, 1, 6, 8, 7, b);
-         }
-
-         if ($$9.b[jf.b.d()] == null) {
-            this.a($$0, $$4, 1, 8, 8, 6, 8, 14, b);
-         }
-
-         for (int $$11 = 1; $$11 <= 7; $$11++) {
-            dsh $$12 = c;
-            if ($$11 == 2 || $$11 == 6) {
-               $$12 = b;
-            }
-
-            this.a($$0, $$4, 0, $$11, 0, 0, $$11, 15, $$12, $$12, false);
-            this.a($$0, $$4, 7, $$11, 0, 7, $$11, 15, $$12, $$12, false);
-            this.a($$0, $$4, 1, $$11, 0, 6, $$11, 0, $$12, $$12, false);
-            this.a($$0, $$4, 1, $$11, 15, 6, $$11, 15, $$12, $$12, false);
-         }
-
-         for (int $$13 = 1; $$13 <= 7; $$13++) {
-            dsh $$14 = d;
-            if ($$13 == 2 || $$13 == 6) {
-               $$14 = i;
-            }
-
-            this.a($$0, $$4, 3, $$13, 7, 4, $$13, 8, $$14, $$14, false);
-         }
-
-         if ($$8.c[jf.d.d()]) {
-            this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
-         }
-
-         if ($$8.c[jf.f.d()]) {
-            this.b($$0, $$4, 7, 1, 3, 7, 2, 4);
-         }
-
-         if ($$8.c[jf.e.d()]) {
-            this.b($$0, $$4, 0, 1, 3, 0, 2, 4);
-         }
-
-         if ($$7.c[jf.c.d()]) {
-            this.b($$0, $$4, 3, 1, 15, 4, 2, 15);
-         }
-
-         if ($$7.c[jf.e.d()]) {
-            this.b($$0, $$4, 0, 1, 11, 0, 2, 12);
-         }
-
-         if ($$7.c[jf.f.d()]) {
-            this.b($$0, $$4, 7, 1, 11, 7, 2, 12);
-         }
-
-         if ($$10.c[jf.d.d()]) {
-            this.b($$0, $$4, 3, 5, 0, 4, 6, 0);
-         }
-
-         if ($$10.c[jf.f.d()]) {
-            this.b($$0, $$4, 7, 5, 3, 7, 6, 4);
-            this.a($$0, $$4, 5, 4, 2, 6, 4, 5, c, c, false);
-            this.a($$0, $$4, 6, 1, 2, 6, 3, 2, c, c, false);
-            this.a($$0, $$4, 6, 1, 5, 6, 3, 5, c, c, false);
-         }
-
-         if ($$10.c[jf.e.d()]) {
-            this.b($$0, $$4, 0, 5, 3, 0, 6, 4);
-            this.a($$0, $$4, 1, 4, 2, 2, 4, 5, c, c, false);
-            this.a($$0, $$4, 1, 1, 2, 1, 3, 2, c, c, false);
-            this.a($$0, $$4, 1, 1, 5, 1, 3, 5, c, c, false);
-         }
-
-         if ($$9.c[jf.c.d()]) {
-            this.b($$0, $$4, 3, 5, 15, 4, 6, 15);
-         }
-
-         if ($$9.c[jf.e.d()]) {
-            this.b($$0, $$4, 0, 5, 11, 0, 6, 12);
-            this.a($$0, $$4, 1, 4, 10, 2, 4, 13, c, c, false);
-            this.a($$0, $$4, 1, 1, 10, 1, 3, 10, c, c, false);
-            this.a($$0, $$4, 1, 1, 13, 1, 3, 13, c, c, false);
-         }
-
-         if ($$9.c[jf.f.d()]) {
-            this.b($$0, $$4, 7, 5, 11, 7, 6, 12);
-            this.a($$0, $$4, 5, 4, 10, 6, 4, 13, c, c, false);
-            this.a($$0, $$4, 6, 1, 10, 6, 3, 10, c, c, false);
-            this.a($$0, $$4, 6, 1, 13, 6, 3, 13, c, c, false);
-         }
-      }
-   }
-
-   public static class o extends ekz.r {
-      public o(jf $$0, ekz.v $$1) {
-         super(ejh.S, 1, $$0, $$1, 1, 1, 2);
-      }
-
-      public o(tx $$0) {
-         super(ejh.S, $$0);
-      }
-
-      @Override
-      public void a(dcz $$0, dcx $$1, due $$2, aym $$3, eii $$4, dbk $$5, ja $$6) {
-         ekz.v $$7 = this.B.b[jf.c.d()];
-         ekz.v $$8 = this.B;
-         if (this.B.a / 25 > 0) {
-            this.a($$0, $$4, 0, 8, $$7.c[jf.a.d()]);
-            this.a($$0, $$4, 0, 0, $$8.c[jf.a.d()]);
-         }
-
-         if ($$8.b[jf.b.d()] == null) {
-            this.a($$0, $$4, 1, 4, 1, 6, 4, 7, b);
-         }
-
-         if ($$7.b[jf.b.d()] == null) {
-            this.a($$0, $$4, 1, 4, 8, 6, 4, 14, b);
-         }
-
-         this.a($$0, $$4, 0, 3, 0, 0, 3, 15, c, c, false);
-         this.a($$0, $$4, 7, 3, 0, 7, 3, 15, c, c, false);
-         this.a($$0, $$4, 1, 3, 0, 7, 3, 0, c, c, false);
-         this.a($$0, $$4, 1, 3, 15, 6, 3, 15, c, c, false);
-         this.a($$0, $$4, 0, 2, 0, 0, 2, 15, b, b, false);
-         this.a($$0, $$4, 7, 2, 0, 7, 2, 15, b, b, false);
-         this.a($$0, $$4, 1, 2, 0, 7, 2, 0, b, b, false);
-         this.a($$0, $$4, 1, 2, 15, 6, 2, 15, b, b, false);
-         this.a($$0, $$4, 0, 1, 0, 0, 1, 15, c, c, false);
-         this.a($$0, $$4, 7, 1, 0, 7, 1, 15, c, c, false);
-         this.a($$0, $$4, 1, 1, 0, 7, 1, 0, c, c, false);
-         this.a($$0, $$4, 1, 1, 15, 6, 1, 15, c, c, false);
-         this.a($$0, $$4, 1, 1, 1, 1, 1, 2, c, c, false);
-         this.a($$0, $$4, 6, 1, 1, 6, 1, 2, c, c, false);
-         this.a($$0, $$4, 1, 3, 1, 1, 3, 2, c, c, false);
-         this.a($$0, $$4, 6, 3, 1, 6, 3, 2, c, c, false);
-         this.a($$0, $$4, 1, 1, 13, 1, 1, 14, c, c, false);
-         this.a($$0, $$4, 6, 1, 13, 6, 1, 14, c, c, false);
-         this.a($$0, $$4, 1, 3, 13, 1, 3, 14, c, c, false);
-         this.a($$0, $$4, 6, 3, 13, 6, 3, 14, c, c, false);
-         this.a($$0, $$4, 2, 1, 6, 2, 3, 6, c, c, false);
-         this.a($$0, $$4, 5, 1, 6, 5, 3, 6, c, c, false);
-         this.a($$0, $$4, 2, 1, 9, 2, 3, 9, c, c, false);
-         this.a($$0, $$4, 5, 1, 9, 5, 3, 9, c, c, false);
-         this.a($$0, $$4, 3, 2, 6, 4, 2, 6, c, c, false);
-         this.a($$0, $$4, 3, 2, 9, 4, 2, 9, c, c, false);
-         this.a($$0, $$4, 2, 2, 7, 2, 2, 8, c, c, false);
-         this.a($$0, $$4, 5, 2, 7, 5, 2, 8, c, c, false);
-         this.a($$0, i, 2, 2, 5, $$4);
-         this.a($$0, i, 5, 2, 5, $$4);
-         this.a($$0, i, 2, 2, 10, $$4);
-         this.a($$0, i, 5, 2, 10, $$4);
-         this.a($$0, c, 2, 3, 5, $$4);
-         this.a($$0, c, 5, 3, 5, $$4);
-         this.a($$0, c, 2, 3, 10, $$4);
-         this.a($$0, c, 5, 3, 10, $$4);
-         if ($$8.c[jf.d.d()]) {
-            this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
-         }
-
-         if ($$8.c[jf.f.d()]) {
-            this.b($$0, $$4, 7, 1, 3, 7, 2, 4);
-         }
-
-         if ($$8.c[jf.e.d()]) {
-            this.b($$0, $$4, 0, 1, 3, 0, 2, 4);
-         }
-
-         if ($$7.c[jf.c.d()]) {
-            this.b($$0, $$4, 3, 1, 15, 4, 2, 15);
-         }
-
-         if ($$7.c[jf.e.d()]) {
-            this.b($$0, $$4, 0, 1, 11, 0, 2, 12);
-         }
-
-         if ($$7.c[jf.f.d()]) {
-            this.b($$0, $$4, 7, 1, 11, 7, 2, 12);
-         }
-      }
-   }
-
-   public static class p extends ekz.r {
-      public p(jf $$0, ekz.v $$1) {
-         super(ejh.T, 1, $$0, $$1, 1, 1, 1);
-      }
-
-      public p(tx $$0) {
-         super(ejh.T, $$0);
-      }
-
-      @Override
-      public void a(dcz $$0, dcx $$1, due $$2, aym $$3, eii $$4, dbk $$5, ja $$6) {
-         this.a($$0, $$4, 0, 3, 0, 2, 3, 7, c, c, false);
-         this.a($$0, $$4, 5, 3, 0, 7, 3, 7, c, c, false);
-         this.a($$0, $$4, 0, 2, 0, 1, 2, 7, c, c, false);
-         this.a($$0, $$4, 6, 2, 0, 7, 2, 7, c, c, false);
-         this.a($$0, $$4, 0, 1, 0, 0, 1, 7, c, c, false);
-         this.a($$0, $$4, 7, 1, 0, 7, 1, 7, c, c, false);
-         this.a($$0, $$4, 0, 1, 7, 7, 3, 7, c, c, false);
-         this.a($$0, $$4, 1, 1, 0, 2, 3, 0, c, c, false);
-         this.a($$0, $$4, 5, 1, 0, 6, 3, 0, c, c, false);
-         if (this.B.c[jf.c.d()]) {
-            this.b($$0, $$4, 3, 1, 7, 4, 2, 7);
-         }
-
-         if (this.B.c[jf.e.d()]) {
-            this.b($$0, $$4, 0, 1, 3, 1, 2, 4);
-         }
-
-         if (this.B.c[jf.f.d()]) {
-            this.b($$0, $$4, 6, 1, 3, 7, 2, 4);
-         }
-      }
-   }
-
-   public static class q extends ekz.r {
-      public q(jf $$0, eii $$1) {
-         super(ejh.U, $$0, 1, $$1);
-      }
-
-      public q(tx $$0) {
-         super(ejh.U, $$0);
-      }
-
-      @Override
-      public void a(dcz $$0, dcx $$1, due $$2, aym $$3, eii $$4, dbk $$5, ja $$6) {
-         this.a($$0, $$4, 2, -1, 2, 11, -1, 11, c, c, false);
-         this.a($$0, $$4, 0, -1, 0, 1, -1, 11, b, b, false);
-         this.a($$0, $$4, 12, -1, 0, 13, -1, 11, b, b, false);
-         this.a($$0, $$4, 2, -1, 0, 11, -1, 1, b, b, false);
-         this.a($$0, $$4, 2, -1, 12, 11, -1, 13, b, b, false);
-         this.a($$0, $$4, 0, 0, 0, 0, 0, 13, c, c, false);
-         this.a($$0, $$4, 13, 0, 0, 13, 0, 13, c, c, false);
-         this.a($$0, $$4, 1, 0, 0, 12, 0, 0, c, c, false);
-         this.a($$0, $$4, 1, 0, 13, 12, 0, 13, c, c, false);
-
-         for (int $$7 = 2; $$7 <= 11; $$7 += 3) {
-            this.a($$0, i, 0, 0, $$7, $$4);
-            this.a($$0, i, 13, 0, $$7, $$4);
-            this.a($$0, i, $$7, 0, 0, $$4);
-         }
-
-         this.a($$0, $$4, 2, 0, 3, 4, 0, 9, c, c, false);
-         this.a($$0, $$4, 9, 0, 3, 11, 0, 9, c, c, false);
-         this.a($$0, $$4, 4, 0, 9, 9, 0, 11, c, c, false);
-         this.a($$0, c, 5, 0, 8, $$4);
-         this.a($$0, c, 8, 0, 8, $$4);
-         this.a($$0, c, 10, 0, 10, $$4);
-         this.a($$0, c, 3, 0, 10, $$4);
-         this.a($$0, $$4, 3, 0, 3, 3, 0, 7, d, d, false);
-         this.a($$0, $$4, 10, 0, 3, 10, 0, 7, d, d, false);
-         this.a($$0, $$4, 6, 0, 10, 7, 0, 10, d, d, false);
-         int $$8 = 3;
-
-         for (int $$9 = 0; $$9 < 2; $$9++) {
-            for (int $$10 = 2; $$10 <= 8; $$10 += 3) {
-               this.a($$0, $$4, $$8, 0, $$10, $$8, 2, $$10, c, c, false);
-            }
-
-            $$8 = 10;
-         }
-
-         this.a($$0, $$4, 5, 0, 10, 5, 2, 10, c, c, false);
-         this.a($$0, $$4, 8, 0, 10, 8, 2, 10, c, c, false);
-         this.a($$0, $$4, 6, -1, 7, 7, -1, 8, d, d, false);
-         this.b($$0, $$4, 6, -1, 3, 7, -1, 4);
-         this.a($$0, $$4, 6, 1, 6);
-      }
-   }
-
-   protected abstract static class r extends eiu {
-      protected static final dsh b = dfh.hZ.o();
-      protected static final dsh c = dfh.ia.o();
-      protected static final dsh d = dfh.ib.o();
-      protected static final dsh h = c;
-      protected static final dsh i = dfh.ii.o();
-      protected static final boolean j = true;
-      protected static final dsh k = dfh.G.o();
-      protected static final Set<dff> l = ImmutableSet.builder().add(dfh.dO).add(dfh.iC).add(dfh.mW).add(k.b()).build();
-      protected static final int m = 8;
-      protected static final int n = 8;
-      protected static final int o = 4;
-      protected static final int p = 5;
-      protected static final int q = 5;
-      protected static final int r = 3;
-      protected static final int s = 25;
-      protected static final int t = 75;
-      protected static final int u = c(2, 0, 0);
-      protected static final int v = c(2, 2, 0);
-      protected static final int w = c(0, 1, 0);
-      protected static final int x = c(4, 1, 0);
-      protected static final int y = 1001;
-      protected static final int z = 1002;
-      protected static final int A = 1003;
-      protected ekz.v B;
-
-      protected static int c(int $$0, int $$1, int $$2) {
-         return $$1 * 25 + $$2 * 5 + $$0;
-      }
-
-      public r(ejh $$0, jf $$1, int $$2, eii $$3) {
-         super($$0, $$2, $$3);
-         this.a($$1);
-      }
-
-      protected r(ejh $$0, int $$1, jf $$2, ekz.v $$3, int $$4, int $$5, int $$6) {
-         super($$0, $$1, a($$2, $$3, $$4, $$5, $$6));
-         this.a($$2);
-         this.B = $$3;
-      }
-
-      private static eii a(jf $$0, ekz.v $$1, int $$2, int $$3, int $$4) {
-         int $$5 = $$1.a;
-         int $$6 = $$5 % 5;
-         int $$7 = $$5 / 5 % 5;
-         int $$8 = $$5 / 25;
-         eii $$9 = a(0, 0, 0, $$0, $$2 * 8, $$3 * 4, $$4 * 8);
-         switch ($$0) {
-            case c:
-               $$9.a($$6 * 8, $$8 * 4, -($$7 + $$4) * 8 + 1);
-               break;
-            case d:
-               $$9.a($$6 * 8, $$8 * 4, $$7 * 8);
-               break;
-            case e:
-               $$9.a(-($$7 + $$4) * 8 + 1, $$8 * 4, $$6 * 8);
-               break;
-            case f:
-            default:
-               $$9.a($$7 * 8, $$8 * 4, $$6 * 8);
+   static ekz.c a(eja $$0, ejb $$1, ayo $$2, int $$3, int $$4, int $$5, jf $$6, int $$7) {
+      if ($$7 > 8) {
+         return null;
+      } else if (Math.abs($$3 - $$0.f().h()) <= 80 && Math.abs($$5 - $$0.f().j()) <= 80) {
+         ela.a $$8 = ((ekz.c)$$0).a;
+         ekz.c $$9 = a($$1, $$2, $$3, $$4, $$5, $$6, $$7 + 1, $$8);
+         if ($$9 != null) {
+            $$1.a($$9);
+            $$9.a($$0, $$1, $$2);
          }
 
          return $$9;
+      } else {
+         return null;
       }
+   }
 
-      public r(ejh $$0, tx $$1) {
-         super($$0, $$1);
+   public static class a extends ekz.c {
+      private final boolean b;
+      private final boolean c;
+      private boolean d;
+      private final int h;
+
+      public a(tx $$0) {
+         super(ejn.a, $$0);
+         this.b = $$0.q("hr");
+         this.c = $$0.q("sc");
+         this.d = $$0.q("hps");
+         this.h = $$0.h("Num");
       }
 
       @Override
-      protected void a(ejg $$0, tx $$1) {
+      protected void a(ejm $$0, tx $$1) {
+         super.a($$0, $$1);
+         $$1.a("hr", this.b);
+         $$1.a("sc", this.c);
+         $$1.a("hps", this.d);
+         $$1.a("Num", this.h);
       }
 
-      protected void b(dcz $$0, eii $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-         for (int $$8 = $$3; $$8 <= $$6; $$8++) {
-            for (int $$9 = $$2; $$9 <= $$5; $$9++) {
-               for (int $$10 = $$4; $$10 <= $$7; $$10++) {
-                  dsh $$11 = this.a($$0, $$9, $$8, $$10, $$1);
-                  if (!l.contains($$11.b())) {
-                     if (this.b($$8) >= $$0.z_() && $$11 != k) {
-                        this.a($$0, dfh.a.o(), $$9, $$8, $$10, $$1);
-                     } else {
-                        this.a($$0, k, $$9, $$8, $$10, $$1);
+      public a(int $$0, ayo $$1, eio $$2, jf $$3, ela.a $$4) {
+         super(ejn.a, $$0, $$4, $$2);
+         this.a($$3);
+         this.b = $$1.a(3) == 0;
+         this.c = !this.b && $$1.a(23) == 0;
+         if (this.i().o() == jf.a.c) {
+            this.h = $$2.f() / 5;
+         } else {
+            this.h = $$2.d() / 5;
+         }
+      }
+
+      @Nullable
+      public static eio a(ejb $$0, ayo $$1, int $$2, int $$3, int $$4, jf $$5) {
+         for (int $$6 = $$1.a(3) + 2; $$6 > 0; $$6--) {
+            int $$7 = $$6 * 5;
+
+            eio $$11 = switch ($$5) {
+               default -> new eio(0, 0, -($$7 - 1), 2, 2, 0);
+               case d -> new eio(0, 0, 0, 2, 2, $$7 - 1);
+               case e -> new eio(-($$7 - 1), 0, 0, 0, 2, 2);
+               case f -> new eio(0, 0, 0, $$7 - 1, 2, 2);
+            };
+            $$11.a($$2, $$3, $$4);
+            if ($$0.a($$11) == null) {
+               return $$11;
+            }
+         }
+
+         return null;
+      }
+
+      @Override
+      public void a(eja $$0, ejb $$1, ayo $$2) {
+         int $$3 = this.g();
+         int $$4 = $$2.a(4);
+         jf $$5 = this.i();
+         if ($$5 != null) {
+            switch ($$5) {
+               case c:
+               default:
+                  if ($$4 <= 1) {
+                     ekz.a($$0, $$1, $$2, this.f.h(), this.f.i() - 1 + $$2.a(3), this.f.j() - 1, $$5, $$3);
+                  } else if ($$4 == 2) {
+                     ekz.a($$0, $$1, $$2, this.f.h() - 1, this.f.i() - 1 + $$2.a(3), this.f.j(), jf.e, $$3);
+                  } else {
+                     ekz.a($$0, $$1, $$2, this.f.k() + 1, this.f.i() - 1 + $$2.a(3), this.f.j(), jf.f, $$3);
+                  }
+                  break;
+               case d:
+                  if ($$4 <= 1) {
+                     ekz.a($$0, $$1, $$2, this.f.h(), this.f.i() - 1 + $$2.a(3), this.f.m() + 1, $$5, $$3);
+                  } else if ($$4 == 2) {
+                     ekz.a($$0, $$1, $$2, this.f.h() - 1, this.f.i() - 1 + $$2.a(3), this.f.m() - 3, jf.e, $$3);
+                  } else {
+                     ekz.a($$0, $$1, $$2, this.f.k() + 1, this.f.i() - 1 + $$2.a(3), this.f.m() - 3, jf.f, $$3);
+                  }
+                  break;
+               case e:
+                  if ($$4 <= 1) {
+                     ekz.a($$0, $$1, $$2, this.f.h() - 1, this.f.i() - 1 + $$2.a(3), this.f.j(), $$5, $$3);
+                  } else if ($$4 == 2) {
+                     ekz.a($$0, $$1, $$2, this.f.h(), this.f.i() - 1 + $$2.a(3), this.f.j() - 1, jf.c, $$3);
+                  } else {
+                     ekz.a($$0, $$1, $$2, this.f.h(), this.f.i() - 1 + $$2.a(3), this.f.m() + 1, jf.d, $$3);
+                  }
+                  break;
+               case f:
+                  if ($$4 <= 1) {
+                     ekz.a($$0, $$1, $$2, this.f.k() + 1, this.f.i() - 1 + $$2.a(3), this.f.j(), $$5, $$3);
+                  } else if ($$4 == 2) {
+                     ekz.a($$0, $$1, $$2, this.f.k() - 3, this.f.i() - 1 + $$2.a(3), this.f.j() - 1, jf.c, $$3);
+                  } else {
+                     ekz.a($$0, $$1, $$2, this.f.k() - 3, this.f.i() - 1 + $$2.a(3), this.f.m() + 1, jf.d, $$3);
+                  }
+            }
+         }
+
+         if ($$3 < 8) {
+            if ($$5 != jf.c && $$5 != jf.d) {
+               for (int $$8 = this.f.h() + 3; $$8 + 3 <= this.f.k(); $$8 += 5) {
+                  int $$9 = $$2.a(5);
+                  if ($$9 == 0) {
+                     ekz.a($$0, $$1, $$2, $$8, this.f.i(), this.f.j() - 1, jf.c, $$3 + 1);
+                  } else if ($$9 == 1) {
+                     ekz.a($$0, $$1, $$2, $$8, this.f.i(), this.f.m() + 1, jf.d, $$3 + 1);
+                  }
+               }
+            } else {
+               for (int $$6 = this.f.j() + 3; $$6 + 3 <= this.f.m(); $$6 += 5) {
+                  int $$7 = $$2.a(5);
+                  if ($$7 == 0) {
+                     ekz.a($$0, $$1, $$2, this.f.h() - 1, this.f.i(), $$6, jf.e, $$3 + 1);
+                  } else if ($$7 == 1) {
+                     ekz.a($$0, $$1, $$2, this.f.k() + 1, this.f.i(), $$6, jf.f, $$3 + 1);
+                  }
+               }
+            }
+         }
+      }
+
+      @Override
+      protected boolean a(ddb $$0, eio $$1, ayo $$2, int $$3, int $$4, int $$5, akj<eqz> $$6) {
+         ja $$7 = this.b($$3, $$4, $$5);
+         if ($$1.b($$7) && $$0.a_($$7).i() && !$$0.a_($$7.d()).i()) {
+            dsk $$8 = dfj.cP.o().a(dlg.e, $$2.h() ? dto.a : dto.b);
+            this.a($$0, $$8, $$3, $$4, $$5, $$1);
+            com $$9 = new com($$0.E(), (double)$$7.u() + 0.5, (double)$$7.v() + 0.5, (double)$$7.w() + 0.5);
+            $$9.a($$6, $$2.g());
+            $$0.b($$9);
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public void a(ddb $$0, dcz $$1, duh $$2, ayo $$3, eio $$4, dbm $$5, ja $$6) {
+         if (!this.a($$0, $$4)) {
+            int $$7 = 0;
+            int $$8 = 2;
+            int $$9 = 0;
+            int $$10 = 2;
+            int $$11 = this.h * 5 - 1;
+            dsk $$12 = this.a.d();
+            this.a($$0, $$4, 0, 0, 0, 2, 1, $$11, e, e, false);
+            this.a($$0, $$4, $$3, 0.8F, 0, 2, 0, 2, 2, $$11, e, e, false, false);
+            if (this.c) {
+               this.a($$0, $$4, $$3, 0.6F, 0, 0, 0, 2, 1, $$11, dfj.bs.o(), e, false, true);
+            }
+
+            for (int $$13 = 0; $$13 < this.h; $$13++) {
+               int $$14 = 2 + $$13 * 5;
+               this.a($$0, $$4, 0, 0, $$14, 2, 2, $$3);
+               this.a($$0, $$4, $$3, 0.1F, 0, 2, $$14 - 1);
+               this.a($$0, $$4, $$3, 0.1F, 2, 2, $$14 - 1);
+               this.a($$0, $$4, $$3, 0.1F, 0, 2, $$14 + 1);
+               this.a($$0, $$4, $$3, 0.1F, 2, 2, $$14 + 1);
+               this.a($$0, $$4, $$3, 0.05F, 0, 2, $$14 - 2);
+               this.a($$0, $$4, $$3, 0.05F, 2, 2, $$14 - 2);
+               this.a($$0, $$4, $$3, 0.05F, 0, 2, $$14 + 2);
+               this.a($$0, $$4, $$3, 0.05F, 2, 2, $$14 + 2);
+               if ($$3.a(100) == 0) {
+                  this.a($$0, $$4, $$3, 2, 0, $$14 - 1, eqq.u);
+               }
+
+               if ($$3.a(100) == 0) {
+                  this.a($$0, $$4, $$3, 0, 0, $$14 + 1, eqq.u);
+               }
+
+               if (this.c && !this.d) {
+                  int $$15 = 1;
+                  int $$16 = $$14 - 1 + $$3.a(3);
+                  ja $$17 = this.b(1, 0, $$16);
+                  if ($$4.b($$17) && this.b($$0, 1, 0, $$16, $$4)) {
+                     this.d = true;
+                     $$0.a($$17, dfj.ct.o(), 2);
+                     if ($$0.c_($$17) instanceof dre $$19) {
+                        $$19.a(bsm.q, $$3);
                      }
                   }
                }
             }
-         }
-      }
 
-      protected void a(dcz $$0, eii $$1, int $$2, int $$3, boolean $$4) {
-         if ($$4) {
-            this.a($$0, $$1, $$2 + 0, 0, $$3 + 0, $$2 + 2, 0, $$3 + 8 - 1, b, b, false);
-            this.a($$0, $$1, $$2 + 5, 0, $$3 + 0, $$2 + 8 - 1, 0, $$3 + 8 - 1, b, b, false);
-            this.a($$0, $$1, $$2 + 3, 0, $$3 + 0, $$2 + 4, 0, $$3 + 2, b, b, false);
-            this.a($$0, $$1, $$2 + 3, 0, $$3 + 5, $$2 + 4, 0, $$3 + 8 - 1, b, b, false);
-            this.a($$0, $$1, $$2 + 3, 0, $$3 + 2, $$2 + 4, 0, $$3 + 2, c, c, false);
-            this.a($$0, $$1, $$2 + 3, 0, $$3 + 5, $$2 + 4, 0, $$3 + 5, c, c, false);
-            this.a($$0, $$1, $$2 + 2, 0, $$3 + 3, $$2 + 2, 0, $$3 + 4, c, c, false);
-            this.a($$0, $$1, $$2 + 5, 0, $$3 + 3, $$2 + 5, 0, $$3 + 4, c, c, false);
-         } else {
-            this.a($$0, $$1, $$2 + 0, 0, $$3 + 0, $$2 + 8 - 1, 0, $$3 + 8 - 1, b, b, false);
-         }
-      }
+            for (int $$20 = 0; $$20 <= 2; $$20++) {
+               for (int $$21 = 0; $$21 <= $$11; $$21++) {
+                  this.a($$0, $$4, $$12, $$20, -1, $$21);
+               }
+            }
 
-      protected void a(dcz $$0, eii $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, dsh $$8) {
-         for (int $$9 = $$3; $$9 <= $$6; $$9++) {
-            for (int $$10 = $$2; $$10 <= $$5; $$10++) {
-               for (int $$11 = $$4; $$11 <= $$7; $$11++) {
-                  if (this.a($$0, $$10, $$9, $$11, $$1) == k) {
-                     this.a($$0, $$8, $$10, $$9, $$11, $$1);
+            int $$22 = 2;
+            this.a($$0, $$4, 0, -1, 2);
+            if (this.h > 1) {
+               int $$23 = $$11 - 2;
+               this.a($$0, $$4, 0, -1, $$23);
+            }
+
+            if (this.b) {
+               dsk $$24 = dfj.cP.o().a(dlg.e, dto.a);
+
+               for (int $$25 = 0; $$25 <= $$11; $$25++) {
+                  dsk $$26 = this.a($$0, 1, -1, $$25, $$4);
+                  if (!$$26.i() && $$26.i($$0, this.b(1, -1, $$25))) {
+                     float $$27 = this.b($$0, 1, 0, $$25, $$4) ? 0.7F : 0.9F;
+                     this.a($$0, $$4, $$3, $$27, 1, 0, $$25, $$24);
                   }
                }
             }
          }
       }
 
-      protected boolean a(eii $$0, int $$1, int $$2, int $$3, int $$4) {
-         int $$5 = this.a($$1, $$2);
-         int $$6 = this.b($$1, $$2);
-         int $$7 = this.a($$3, $$4);
-         int $$8 = this.b($$3, $$4);
-         return $$0.a(Math.min($$5, $$7), Math.min($$6, $$8), Math.max($$5, $$7), Math.max($$6, $$8));
-      }
-
-      protected void a(dcz $$0, eii $$1, int $$2, int $$3, int $$4) {
-         ja $$5 = this.b($$2, $$3, $$4);
-         if ($$1.b($$5)) {
-            cjc $$6 = bsj.D.a((dcd)$$0.E());
-            if ($$6 != null) {
-               $$6.c($$6.eN());
-               $$6.b((double)$$5.u() + 0.5, (double)$$5.v(), (double)$$5.w() + 0.5, 0.0F, 0.0F);
-               $$6.a($$0, $$0.d_($$6.dp()), btc.d, null);
-               $$0.a_($$6);
-            }
+      private void a(ddb $$0, eio $$1, int $$2, int $$3, int $$4) {
+         dsk $$5 = this.a.b();
+         dsk $$6 = this.a.d();
+         if (this.a($$0, $$2, $$3, $$4, $$1).a($$6.b())) {
+            this.c($$0, $$5, $$2, $$3, $$4, $$1);
          }
-      }
-   }
 
-   public static class s extends ekz.r {
-      private int a;
-
-      public s(jf $$0, ekz.v $$1, aym $$2) {
-         super(ejh.V, 1, $$0, $$1, 1, 1, 1);
-         this.a = $$2.a(3);
-      }
-
-      public s(tx $$0) {
-         super(ejh.V, $$0);
+         if (this.a($$0, $$2 + 2, $$3, $$4, $$1).a($$6.b())) {
+            this.c($$0, $$5, $$2 + 2, $$3, $$4, $$1);
+         }
       }
 
       @Override
-      public void a(dcz $$0, dcx $$1, due $$2, aym $$3, eii $$4, dbk $$5, ja $$6) {
-         if (this.B.a / 25 > 0) {
-            this.a($$0, $$4, 0, 0, this.B.c[jf.a.d()]);
-         }
+      protected void b(ddb $$0, dsk $$1, int $$2, int $$3, int $$4, eio $$5) {
+         ja.a $$6 = this.b($$2, $$3, $$4);
+         if ($$5.b($$6)) {
+            int $$7 = $$6.v();
 
-         if (this.B.b[jf.b.d()] == null) {
-            this.a($$0, $$4, 1, 4, 1, 6, 4, 6, b);
-         }
-
-         boolean $$7 = this.a != 0 && $$3.h() && !this.B.c[jf.a.d()] && !this.B.c[jf.b.d()] && this.B.c() > 1;
-         if (this.a == 0) {
-            this.a($$0, $$4, 0, 1, 0, 2, 1, 2, c, c, false);
-            this.a($$0, $$4, 0, 3, 0, 2, 3, 2, c, c, false);
-            this.a($$0, $$4, 0, 2, 0, 0, 2, 2, b, b, false);
-            this.a($$0, $$4, 1, 2, 0, 2, 2, 0, b, b, false);
-            this.a($$0, i, 1, 2, 1, $$4);
-            this.a($$0, $$4, 5, 1, 0, 7, 1, 2, c, c, false);
-            this.a($$0, $$4, 5, 3, 0, 7, 3, 2, c, c, false);
-            this.a($$0, $$4, 7, 2, 0, 7, 2, 2, b, b, false);
-            this.a($$0, $$4, 5, 2, 0, 6, 2, 0, b, b, false);
-            this.a($$0, i, 6, 2, 1, $$4);
-            this.a($$0, $$4, 0, 1, 5, 2, 1, 7, c, c, false);
-            this.a($$0, $$4, 0, 3, 5, 2, 3, 7, c, c, false);
-            this.a($$0, $$4, 0, 2, 5, 0, 2, 7, b, b, false);
-            this.a($$0, $$4, 1, 2, 7, 2, 2, 7, b, b, false);
-            this.a($$0, i, 1, 2, 6, $$4);
-            this.a($$0, $$4, 5, 1, 5, 7, 1, 7, c, c, false);
-            this.a($$0, $$4, 5, 3, 5, 7, 3, 7, c, c, false);
-            this.a($$0, $$4, 7, 2, 5, 7, 2, 7, b, b, false);
-            this.a($$0, $$4, 5, 2, 7, 6, 2, 7, b, b, false);
-            this.a($$0, i, 6, 2, 6, $$4);
-            if (this.B.c[jf.d.d()]) {
-               this.a($$0, $$4, 3, 3, 0, 4, 3, 0, c, c, false);
-            } else {
-               this.a($$0, $$4, 3, 3, 0, 4, 3, 1, c, c, false);
-               this.a($$0, $$4, 3, 2, 0, 4, 2, 0, b, b, false);
-               this.a($$0, $$4, 3, 1, 0, 4, 1, 1, c, c, false);
+            while (this.a($$0.a_($$6)) && $$6.v() > $$0.I_() + 1) {
+               $$6.c(jf.a);
             }
 
-            if (this.B.c[jf.c.d()]) {
-               this.a($$0, $$4, 3, 3, 7, 4, 3, 7, c, c, false);
-            } else {
-               this.a($$0, $$4, 3, 3, 6, 4, 3, 7, c, c, false);
-               this.a($$0, $$4, 3, 2, 7, 4, 2, 7, b, b, false);
-               this.a($$0, $$4, 3, 1, 6, 4, 1, 7, c, c, false);
-            }
-
-            if (this.B.c[jf.e.d()]) {
-               this.a($$0, $$4, 0, 3, 3, 0, 3, 4, c, c, false);
-            } else {
-               this.a($$0, $$4, 0, 3, 3, 1, 3, 4, c, c, false);
-               this.a($$0, $$4, 0, 2, 3, 0, 2, 4, b, b, false);
-               this.a($$0, $$4, 0, 1, 3, 1, 1, 4, c, c, false);
-            }
-
-            if (this.B.c[jf.f.d()]) {
-               this.a($$0, $$4, 7, 3, 3, 7, 3, 4, c, c, false);
-            } else {
-               this.a($$0, $$4, 6, 3, 3, 7, 3, 4, c, c, false);
-               this.a($$0, $$4, 7, 2, 3, 7, 2, 4, b, b, false);
-               this.a($$0, $$4, 6, 1, 3, 7, 1, 4, c, c, false);
-            }
-         } else if (this.a == 1) {
-            this.a($$0, $$4, 2, 1, 2, 2, 3, 2, c, c, false);
-            this.a($$0, $$4, 2, 1, 5, 2, 3, 5, c, c, false);
-            this.a($$0, $$4, 5, 1, 5, 5, 3, 5, c, c, false);
-            this.a($$0, $$4, 5, 1, 2, 5, 3, 2, c, c, false);
-            this.a($$0, i, 2, 2, 2, $$4);
-            this.a($$0, i, 2, 2, 5, $$4);
-            this.a($$0, i, 5, 2, 5, $$4);
-            this.a($$0, i, 5, 2, 2, $$4);
-            this.a($$0, $$4, 0, 1, 0, 1, 3, 0, c, c, false);
-            this.a($$0, $$4, 0, 1, 1, 0, 3, 1, c, c, false);
-            this.a($$0, $$4, 0, 1, 7, 1, 3, 7, c, c, false);
-            this.a($$0, $$4, 0, 1, 6, 0, 3, 6, c, c, false);
-            this.a($$0, $$4, 6, 1, 7, 7, 3, 7, c, c, false);
-            this.a($$0, $$4, 7, 1, 6, 7, 3, 6, c, c, false);
-            this.a($$0, $$4, 6, 1, 0, 7, 3, 0, c, c, false);
-            this.a($$0, $$4, 7, 1, 1, 7, 3, 1, c, c, false);
-            this.a($$0, b, 1, 2, 0, $$4);
-            this.a($$0, b, 0, 2, 1, $$4);
-            this.a($$0, b, 1, 2, 7, $$4);
-            this.a($$0, b, 0, 2, 6, $$4);
-            this.a($$0, b, 6, 2, 7, $$4);
-            this.a($$0, b, 7, 2, 6, $$4);
-            this.a($$0, b, 6, 2, 0, $$4);
-            this.a($$0, b, 7, 2, 1, $$4);
-            if (!this.B.c[jf.d.d()]) {
-               this.a($$0, $$4, 1, 3, 0, 6, 3, 0, c, c, false);
-               this.a($$0, $$4, 1, 2, 0, 6, 2, 0, b, b, false);
-               this.a($$0, $$4, 1, 1, 0, 6, 1, 0, c, c, false);
-            }
-
-            if (!this.B.c[jf.c.d()]) {
-               this.a($$0, $$4, 1, 3, 7, 6, 3, 7, c, c, false);
-               this.a($$0, $$4, 1, 2, 7, 6, 2, 7, b, b, false);
-               this.a($$0, $$4, 1, 1, 7, 6, 1, 7, c, c, false);
-            }
-
-            if (!this.B.c[jf.e.d()]) {
-               this.a($$0, $$4, 0, 3, 1, 0, 3, 6, c, c, false);
-               this.a($$0, $$4, 0, 2, 1, 0, 2, 6, b, b, false);
-               this.a($$0, $$4, 0, 1, 1, 0, 1, 6, c, c, false);
-            }
-
-            if (!this.B.c[jf.f.d()]) {
-               this.a($$0, $$4, 7, 3, 1, 7, 3, 6, c, c, false);
-               this.a($$0, $$4, 7, 2, 1, 7, 2, 6, b, b, false);
-               this.a($$0, $$4, 7, 1, 1, 7, 1, 6, c, c, false);
-            }
-         } else if (this.a == 2) {
-            this.a($$0, $$4, 0, 1, 0, 0, 1, 7, c, c, false);
-            this.a($$0, $$4, 7, 1, 0, 7, 1, 7, c, c, false);
-            this.a($$0, $$4, 1, 1, 0, 6, 1, 0, c, c, false);
-            this.a($$0, $$4, 1, 1, 7, 6, 1, 7, c, c, false);
-            this.a($$0, $$4, 0, 2, 0, 0, 2, 7, d, d, false);
-            this.a($$0, $$4, 7, 2, 0, 7, 2, 7, d, d, false);
-            this.a($$0, $$4, 1, 2, 0, 6, 2, 0, d, d, false);
-            this.a($$0, $$4, 1, 2, 7, 6, 2, 7, d, d, false);
-            this.a($$0, $$4, 0, 3, 0, 0, 3, 7, c, c, false);
-            this.a($$0, $$4, 7, 3, 0, 7, 3, 7, c, c, false);
-            this.a($$0, $$4, 1, 3, 0, 6, 3, 0, c, c, false);
-            this.a($$0, $$4, 1, 3, 7, 6, 3, 7, c, c, false);
-            this.a($$0, $$4, 0, 1, 3, 0, 2, 4, d, d, false);
-            this.a($$0, $$4, 7, 1, 3, 7, 2, 4, d, d, false);
-            this.a($$0, $$4, 3, 1, 0, 4, 2, 0, d, d, false);
-            this.a($$0, $$4, 3, 1, 7, 4, 2, 7, d, d, false);
-            if (this.B.c[jf.d.d()]) {
-               this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
-            }
-
-            if (this.B.c[jf.c.d()]) {
-               this.b($$0, $$4, 3, 1, 7, 4, 2, 7);
-            }
-
-            if (this.B.c[jf.e.d()]) {
-               this.b($$0, $$4, 0, 1, 3, 0, 2, 4);
-            }
-
-            if (this.B.c[jf.f.d()]) {
-               this.b($$0, $$4, 7, 1, 3, 7, 2, 4);
-            }
-         }
-
-         if ($$7) {
-            this.a($$0, $$4, 3, 1, 3, 4, 1, 4, c, c, false);
-            this.a($$0, $$4, 3, 2, 3, 4, 2, 4, b, b, false);
-            this.a($$0, $$4, 3, 3, 3, 4, 3, 4, c, c, false);
-         }
-      }
-   }
-
-   public static class t extends ekz.r {
-      public t(jf $$0, ekz.v $$1) {
-         super(ejh.W, 1, $$0, $$1, 1, 1, 1);
-      }
-
-      public t(tx $$0) {
-         super(ejh.W, $$0);
-      }
-
-      @Override
-      public void a(dcz $$0, dcx $$1, due $$2, aym $$3, eii $$4, dbk $$5, ja $$6) {
-         if (this.B.a / 25 > 0) {
-            this.a($$0, $$4, 0, 0, this.B.c[jf.a.d()]);
-         }
-
-         if (this.B.b[jf.b.d()] == null) {
-            this.a($$0, $$4, 1, 4, 1, 6, 4, 6, b);
-         }
-
-         for (int $$7 = 1; $$7 <= 6; $$7++) {
-            for (int $$8 = 1; $$8 <= 6; $$8++) {
-               if ($$3.a(3) != 0) {
-                  int $$9 = 2 + ($$3.a(4) == 0 ? 0 : 1);
-                  dsh $$10 = dfh.aP.o();
-                  this.a($$0, $$4, $$7, $$9, $$8, $$7, 3, $$8, $$10, $$10, false);
+            if (this.a($$0, $$6, $$0.a_($$6))) {
+               while ($$6.v() < $$7) {
+                  $$6.c(jf.b);
+                  $$0.a($$6, $$1, 2);
                }
             }
          }
-
-         this.a($$0, $$4, 0, 1, 0, 0, 1, 7, c, c, false);
-         this.a($$0, $$4, 7, 1, 0, 7, 1, 7, c, c, false);
-         this.a($$0, $$4, 1, 1, 0, 6, 1, 0, c, c, false);
-         this.a($$0, $$4, 1, 1, 7, 6, 1, 7, c, c, false);
-         this.a($$0, $$4, 0, 2, 0, 0, 2, 7, d, d, false);
-         this.a($$0, $$4, 7, 2, 0, 7, 2, 7, d, d, false);
-         this.a($$0, $$4, 1, 2, 0, 6, 2, 0, d, d, false);
-         this.a($$0, $$4, 1, 2, 7, 6, 2, 7, d, d, false);
-         this.a($$0, $$4, 0, 3, 0, 0, 3, 7, c, c, false);
-         this.a($$0, $$4, 7, 3, 0, 7, 3, 7, c, c, false);
-         this.a($$0, $$4, 1, 3, 0, 6, 3, 0, c, c, false);
-         this.a($$0, $$4, 1, 3, 7, 6, 3, 7, c, c, false);
-         this.a($$0, $$4, 0, 1, 3, 0, 2, 4, d, d, false);
-         this.a($$0, $$4, 7, 1, 3, 7, 2, 4, d, d, false);
-         this.a($$0, $$4, 3, 1, 0, 4, 2, 0, d, d, false);
-         this.a($$0, $$4, 3, 1, 7, 4, 2, 7, d, d, false);
-         if (this.B.c[jf.d.d()]) {
-            this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
-         }
-      }
-   }
-
-   public static class u extends ekz.r {
-      private int a;
-
-      public u(jf $$0, eii $$1, int $$2) {
-         super(ejh.X, $$0, 1, $$1);
-         this.a = $$2 & 1;
       }
 
-      public u(tx $$0) {
-         super(ejh.X, $$0);
-      }
+      protected void c(ddb $$0, dsk $$1, int $$2, int $$3, int $$4, eio $$5) {
+         ja.a $$6 = this.b($$2, $$3, $$4);
+         if ($$5.b($$6)) {
+            int $$7 = $$6.v();
+            int $$8 = 1;
+            boolean $$9 = true;
 
-      @Override
-      public void a(dcz $$0, dcx $$1, due $$2, aym $$3, eii $$4, dbk $$5, ja $$6) {
-         if (this.a == 0) {
-            for (int $$7 = 0; $$7 < 4; $$7++) {
-               this.a($$0, $$4, 10 - $$7, 3 - $$7, 20 - $$7, 12 + $$7, 3 - $$7, 20, c, c, false);
+            for (boolean $$10 = true; $$9 || $$10; $$8++) {
+               if ($$9) {
+                  $$6.q($$7 - $$8);
+                  dsk $$11 = $$0.a_($$6);
+                  boolean $$12 = this.a($$11) && !$$11.a(dfj.H);
+                  if (!$$12 && this.a($$0, $$6, $$11)) {
+                     a($$0, $$1, $$6, $$7 - $$8 + 1, $$7);
+                     return;
+                  }
+
+                  $$9 = $$8 <= 20 && $$12 && $$6.v() > $$0.I_() + 1;
+               }
+
+               if ($$10) {
+                  $$6.q($$7 + $$8);
+                  dsk $$13 = $$0.a_($$6);
+                  boolean $$14 = this.a($$13);
+                  if (!$$14 && this.b($$0, $$6, $$13)) {
+                     $$0.a($$6.q($$7 + 1), this.a.e(), 2);
+                     a($$0, dfj.eX.o(), $$6, $$7 + 2, $$7 + $$8);
+                     return;
+                  }
+
+                  $$10 = $$8 <= 50 && $$14 && $$6.v() < $$0.am() - 1;
+               }
             }
-
-            this.a($$0, $$4, 7, 0, 6, 15, 0, 16, c, c, false);
-            this.a($$0, $$4, 6, 0, 6, 6, 3, 20, c, c, false);
-            this.a($$0, $$4, 16, 0, 6, 16, 3, 20, c, c, false);
-            this.a($$0, $$4, 7, 1, 7, 7, 1, 20, c, c, false);
-            this.a($$0, $$4, 15, 1, 7, 15, 1, 20, c, c, false);
-            this.a($$0, $$4, 7, 1, 6, 9, 3, 6, c, c, false);
-            this.a($$0, $$4, 13, 1, 6, 15, 3, 6, c, c, false);
-            this.a($$0, $$4, 8, 1, 7, 9, 1, 7, c, c, false);
-            this.a($$0, $$4, 13, 1, 7, 14, 1, 7, c, c, false);
-            this.a($$0, $$4, 9, 0, 5, 13, 0, 5, c, c, false);
-            this.a($$0, $$4, 10, 0, 7, 12, 0, 7, d, d, false);
-            this.a($$0, $$4, 8, 0, 10, 8, 0, 12, d, d, false);
-            this.a($$0, $$4, 14, 0, 10, 14, 0, 12, d, d, false);
-
-            for (int $$8 = 18; $$8 >= 7; $$8 -= 3) {
-               this.a($$0, i, 6, 3, $$8, $$4);
-               this.a($$0, i, 16, 3, $$8, $$4);
-            }
-
-            this.a($$0, i, 10, 0, 10, $$4);
-            this.a($$0, i, 12, 0, 10, $$4);
-            this.a($$0, i, 10, 0, 12, $$4);
-            this.a($$0, i, 12, 0, 12, $$4);
-            this.a($$0, i, 8, 3, 6, $$4);
-            this.a($$0, i, 14, 3, 6, $$4);
-            this.a($$0, c, 4, 2, 4, $$4);
-            this.a($$0, i, 4, 1, 4, $$4);
-            this.a($$0, c, 4, 0, 4, $$4);
-            this.a($$0, c, 18, 2, 4, $$4);
-            this.a($$0, i, 18, 1, 4, $$4);
-            this.a($$0, c, 18, 0, 4, $$4);
-            this.a($$0, c, 4, 2, 18, $$4);
-            this.a($$0, i, 4, 1, 18, $$4);
-            this.a($$0, c, 4, 0, 18, $$4);
-            this.a($$0, c, 18, 2, 18, $$4);
-            this.a($$0, i, 18, 1, 18, $$4);
-            this.a($$0, c, 18, 0, 18, $$4);
-            this.a($$0, c, 9, 7, 20, $$4);
-            this.a($$0, c, 13, 7, 20, $$4);
-            this.a($$0, $$4, 6, 0, 21, 7, 4, 21, c, c, false);
-            this.a($$0, $$4, 15, 0, 21, 16, 4, 21, c, c, false);
-            this.a($$0, $$4, 11, 2, 16);
-         } else if (this.a == 1) {
-            this.a($$0, $$4, 9, 3, 18, 13, 3, 20, c, c, false);
-            this.a($$0, $$4, 9, 0, 18, 9, 2, 18, c, c, false);
-            this.a($$0, $$4, 13, 0, 18, 13, 2, 18, c, c, false);
-            int $$9 = 9;
-            int $$10 = 20;
-            int $$11 = 5;
-
-            for (int $$12 = 0; $$12 < 2; $$12++) {
-               this.a($$0, c, $$9, 6, 20, $$4);
-               this.a($$0, i, $$9, 5, 20, $$4);
-               this.a($$0, c, $$9, 4, 20, $$4);
-               $$9 = 13;
-            }
-
-            this.a($$0, $$4, 7, 3, 7, 15, 3, 14, c, c, false);
-            int var14 = 10;
-
-            for (int $$13 = 0; $$13 < 2; $$13++) {
-               this.a($$0, $$4, var14, 0, 10, var14, 6, 10, c, c, false);
-               this.a($$0, $$4, var14, 0, 12, var14, 6, 12, c, c, false);
-               this.a($$0, i, var14, 0, 10, $$4);
-               this.a($$0, i, var14, 0, 12, $$4);
-               this.a($$0, i, var14, 4, 10, $$4);
-               this.a($$0, i, var14, 4, 12, $$4);
-               var14 = 12;
-            }
-
-            var14 = 8;
-
-            for (int $$14 = 0; $$14 < 2; $$14++) {
-               this.a($$0, $$4, var14, 0, 7, var14, 2, 7, c, c, false);
-               this.a($$0, $$4, var14, 0, 14, var14, 2, 14, c, c, false);
-               var14 = 14;
-            }
-
-            this.a($$0, $$4, 8, 3, 8, 8, 3, 13, d, d, false);
-            this.a($$0, $$4, 14, 3, 8, 14, 3, 13, d, d, false);
-            this.a($$0, $$4, 11, 5, 13);
-         }
-      }
-   }
-
-   static class v {
-      final int a;
-      final ekz.v[] b = new ekz.v[6];
-      final boolean[] c = new boolean[6];
-      boolean d;
-      boolean e;
-      private int f;
-
-      public v(int $$0) {
-         this.a = $$0;
-      }
-
-      public void a(jf $$0, ekz.v $$1) {
-         this.b[$$0.d()] = $$1;
-         $$1.b[$$0.g().d()] = this;
-      }
-
-      public void a() {
-         for (int $$0 = 0; $$0 < 6; $$0++) {
-            this.c[$$0] = this.b[$$0] != null;
          }
       }
 
-      public boolean a(int $$0) {
-         if (this.e) {
-            return true;
-         } else {
-            this.f = $$0;
+      private static void a(ddb $$0, dsk $$1, ja.a $$2, int $$3, int $$4) {
+         for (int $$5 = $$3; $$5 < $$4; $$5++) {
+            $$0.a($$2.q($$5), $$1, 2);
+         }
+      }
 
-            for (int $$1 = 0; $$1 < 6; $$1++) {
-               if (this.b[$$1] != null && this.c[$$1] && this.b[$$1].f != $$0 && this.b[$$1].a($$0)) {
+      private boolean a(dci $$0, ja $$1, dsk $$2) {
+         return $$2.d($$0, $$1, jf.b);
+      }
+
+      private boolean b(dci $$0, ja $$1, dsk $$2) {
+         return dfh.a($$0, $$1, jf.a) && !($$2.b() instanceof did);
+      }
+
+      private void a(ddb $$0, eio $$1, int $$2, int $$3, int $$4, int $$5, int $$6, ayo $$7) {
+         if (this.a($$0, $$1, $$2, $$6, $$5, $$4)) {
+            dsk $$8 = this.a.d();
+            dsk $$9 = this.a.e();
+            this.a($$0, $$1, $$2, $$3, $$4, $$2, $$5 - 1, $$4, $$9.a(dif.d, Boolean.valueOf(true)), e, false);
+            this.a($$0, $$1, $$6, $$3, $$4, $$6, $$5 - 1, $$4, $$9.a(dif.b, Boolean.valueOf(true)), e, false);
+            if ($$7.a(4) == 0) {
+               this.a($$0, $$1, $$2, $$5, $$4, $$2, $$5, $$4, $$8, e, false);
+               this.a($$0, $$1, $$6, $$5, $$4, $$6, $$5, $$4, $$8, e, false);
+            } else {
+               this.a($$0, $$1, $$2, $$5, $$4, $$6, $$5, $$4, $$8, e, false);
+               this.a($$0, $$1, $$7, 0.05F, $$2 + 1, $$5, $$4 - 1, dfj.cq.o().a(doj.g, jf.d));
+               this.a($$0, $$1, $$7, 0.05F, $$2 + 1, $$5, $$4 + 1, dfj.cq.o().a(doj.g, jf.c));
+            }
+         }
+      }
+
+      private void a(ddb $$0, eio $$1, ayo $$2, float $$3, int $$4, int $$5, int $$6) {
+         if (this.b($$0, $$4, $$5, $$6, $$1) && $$2.i() < $$3 && this.a($$0, $$1, $$4, $$5, $$6, 2)) {
+            this.a($$0, dfj.bs.o(), $$4, $$5, $$6, $$1);
+         }
+      }
+
+      private boolean a(ddb $$0, eio $$1, int $$2, int $$3, int $$4, int $$5) {
+         ja.a $$6 = this.b($$2, $$3, $$4);
+         int $$7 = 0;
+
+         for (jf $$8 : jf.values()) {
+            $$6.c($$8);
+            if ($$1.b($$6) && $$0.a_($$6).d($$0, $$6, $$8.g())) {
+               if (++$$7 >= $$5) {
                   return true;
                }
             }
 
+            $$6.c($$8.g());
+         }
+
+         return false;
+      }
+   }
+
+   public static class b extends ekz.c {
+      private final jf b;
+      private final boolean c;
+
+      public b(tx $$0) {
+         super(ejn.b, $$0);
+         this.c = $$0.q("tf");
+         this.b = jf.b($$0.h("D"));
+      }
+
+      @Override
+      protected void a(ejm $$0, tx $$1) {
+         super.a($$0, $$1);
+         $$1.a("tf", this.c);
+         $$1.a("D", this.b.e());
+      }
+
+      public b(int $$0, eio $$1, @Nullable jf $$2, ela.a $$3) {
+         super(ejn.b, $$0, $$3, $$1);
+         this.b = $$2;
+         this.c = $$1.e() > 3;
+      }
+
+      @Nullable
+      public static eio a(ejb $$0, ayo $$1, int $$2, int $$3, int $$4, jf $$5) {
+         int $$6;
+         if ($$1.a(4) == 0) {
+            $$6 = 6;
+         } else {
+            $$6 = 2;
+         }
+         eio $$11 = switch ($$5) {
+            default -> new eio(-1, 0, -4, 3, $$6, 0);
+            case d -> new eio(-1, 0, 0, 3, $$6, 4);
+            case e -> new eio(-4, 0, -1, 0, $$6, 3);
+            case f -> new eio(0, 0, -1, 4, $$6, 3);
+         };
+         $$11.a($$2, $$3, $$4);
+         return $$0.a($$11) != null ? null : $$11;
+      }
+
+      @Override
+      public void a(eja $$0, ejb $$1, ayo $$2) {
+         int $$3 = this.g();
+         switch (this.b) {
+            case c:
+            default:
+               ekz.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.j() - 1, jf.c, $$3);
+               ekz.a($$0, $$1, $$2, this.f.h() - 1, this.f.i(), this.f.j() + 1, jf.e, $$3);
+               ekz.a($$0, $$1, $$2, this.f.k() + 1, this.f.i(), this.f.j() + 1, jf.f, $$3);
+               break;
+            case d:
+               ekz.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.m() + 1, jf.d, $$3);
+               ekz.a($$0, $$1, $$2, this.f.h() - 1, this.f.i(), this.f.j() + 1, jf.e, $$3);
+               ekz.a($$0, $$1, $$2, this.f.k() + 1, this.f.i(), this.f.j() + 1, jf.f, $$3);
+               break;
+            case e:
+               ekz.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.j() - 1, jf.c, $$3);
+               ekz.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.m() + 1, jf.d, $$3);
+               ekz.a($$0, $$1, $$2, this.f.h() - 1, this.f.i(), this.f.j() + 1, jf.e, $$3);
+               break;
+            case f:
+               ekz.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.j() - 1, jf.c, $$3);
+               ekz.a($$0, $$1, $$2, this.f.h() + 1, this.f.i(), this.f.m() + 1, jf.d, $$3);
+               ekz.a($$0, $$1, $$2, this.f.k() + 1, this.f.i(), this.f.j() + 1, jf.f, $$3);
+         }
+
+         if (this.c) {
+            if ($$2.h()) {
+               ekz.a($$0, $$1, $$2, this.f.h() + 1, this.f.i() + 3 + 1, this.f.j() - 1, jf.c, $$3);
+            }
+
+            if ($$2.h()) {
+               ekz.a($$0, $$1, $$2, this.f.h() - 1, this.f.i() + 3 + 1, this.f.j() + 1, jf.e, $$3);
+            }
+
+            if ($$2.h()) {
+               ekz.a($$0, $$1, $$2, this.f.k() + 1, this.f.i() + 3 + 1, this.f.j() + 1, jf.f, $$3);
+            }
+
+            if ($$2.h()) {
+               ekz.a($$0, $$1, $$2, this.f.h() + 1, this.f.i() + 3 + 1, this.f.m() + 1, jf.d, $$3);
+            }
+         }
+      }
+
+      @Override
+      public void a(ddb $$0, dcz $$1, duh $$2, ayo $$3, eio $$4, dbm $$5, ja $$6) {
+         if (!this.a($$0, $$4)) {
+            dsk $$7 = this.a.d();
+            if (this.c) {
+               this.a($$0, $$4, this.f.h() + 1, this.f.i(), this.f.j(), this.f.k() - 1, this.f.i() + 3 - 1, this.f.m(), e, e, false);
+               this.a($$0, $$4, this.f.h(), this.f.i(), this.f.j() + 1, this.f.k(), this.f.i() + 3 - 1, this.f.m() - 1, e, e, false);
+               this.a($$0, $$4, this.f.h() + 1, this.f.l() - 2, this.f.j(), this.f.k() - 1, this.f.l(), this.f.m(), e, e, false);
+               this.a($$0, $$4, this.f.h(), this.f.l() - 2, this.f.j() + 1, this.f.k(), this.f.l(), this.f.m() - 1, e, e, false);
+               this.a($$0, $$4, this.f.h() + 1, this.f.i() + 3, this.f.j() + 1, this.f.k() - 1, this.f.i() + 3, this.f.m() - 1, e, e, false);
+            } else {
+               this.a($$0, $$4, this.f.h() + 1, this.f.i(), this.f.j(), this.f.k() - 1, this.f.l(), this.f.m(), e, e, false);
+               this.a($$0, $$4, this.f.h(), this.f.i(), this.f.j() + 1, this.f.k(), this.f.l(), this.f.m() - 1, e, e, false);
+            }
+
+            this.a($$0, $$4, this.f.h() + 1, this.f.i(), this.f.j() + 1, this.f.l());
+            this.a($$0, $$4, this.f.h() + 1, this.f.i(), this.f.m() - 1, this.f.l());
+            this.a($$0, $$4, this.f.k() - 1, this.f.i(), this.f.j() + 1, this.f.l());
+            this.a($$0, $$4, this.f.k() - 1, this.f.i(), this.f.m() - 1, this.f.l());
+            int $$8 = this.f.i() - 1;
+
+            for (int $$9 = this.f.h(); $$9 <= this.f.k(); $$9++) {
+               for (int $$10 = this.f.j(); $$10 <= this.f.m(); $$10++) {
+                  this.a($$0, $$4, $$7, $$9, $$8, $$10);
+               }
+            }
+         }
+      }
+
+      private void a(ddb $$0, eio $$1, int $$2, int $$3, int $$4, int $$5) {
+         if (!this.a($$0, $$2, $$5 + 1, $$4, $$1).i()) {
+            this.a($$0, $$1, $$2, $$3, $$4, $$2, $$5, $$4, this.a.d(), e, false);
+         }
+      }
+   }
+
+   abstract static class c extends eja {
+      protected ela.a a;
+
+      public c(ejn $$0, int $$1, ela.a $$2, eio $$3) {
+         super($$0, $$1, $$3);
+         this.a = $$2;
+      }
+
+      public c(ejn $$0, tx $$1) {
+         super($$0, $$1);
+         this.a = ela.a.a($$1.h("MST"));
+      }
+
+      @Override
+      protected boolean a(dci $$0, int $$1, int $$2, int $$3, eio $$4) {
+         dsk $$5 = this.a($$0, $$1, $$2, $$3, $$4);
+         return !$$5.a(this.a.d().b()) && !$$5.a(this.a.b().b()) && !$$5.a(this.a.e().b()) && !$$5.a(dfj.eX);
+      }
+
+      @Override
+      protected void a(ejm $$0, tx $$1) {
+         $$1.a("MST", this.a.ordinal());
+      }
+
+      protected boolean a(dbl $$0, eio $$1, int $$2, int $$3, int $$4, int $$5) {
+         for (int $$6 = $$2; $$6 <= $$3; $$6++) {
+            if (this.a($$0, $$6, $$4 + 1, $$5, $$1).i()) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+
+      protected boolean a(dcg $$0, eio $$1) {
+         int $$2 = Math.max(this.f.h() - 1, $$1.h());
+         int $$3 = Math.max(this.f.i() - 1, $$1.i());
+         int $$4 = Math.max(this.f.j() - 1, $$1.j());
+         int $$5 = Math.min(this.f.k() + 1, $$1.k());
+         int $$6 = Math.min(this.f.l() + 1, $$1.l());
+         int $$7 = Math.min(this.f.m() + 1, $$1.m());
+         ja.a $$8 = new ja.a(($$2 + $$5) / 2, ($$3 + $$6) / 2, ($$4 + $$7) / 2);
+         if ($$0.t($$8).a(avv.Y)) {
+            return true;
+         } else {
+            for (int $$9 = $$2; $$9 <= $$5; $$9++) {
+               for (int $$10 = $$4; $$10 <= $$7; $$10++) {
+                  if ($$0.a_($$8.d($$9, $$3, $$10)).k()) {
+                     return true;
+                  }
+
+                  if ($$0.a_($$8.d($$9, $$6, $$10)).k()) {
+                     return true;
+                  }
+               }
+            }
+
+            for (int $$11 = $$2; $$11 <= $$5; $$11++) {
+               for (int $$12 = $$3; $$12 <= $$6; $$12++) {
+                  if ($$0.a_($$8.d($$11, $$12, $$4)).k()) {
+                     return true;
+                  }
+
+                  if ($$0.a_($$8.d($$11, $$12, $$7)).k()) {
+                     return true;
+                  }
+               }
+            }
+
+            for (int $$13 = $$4; $$13 <= $$7; $$13++) {
+               for (int $$14 = $$3; $$14 <= $$6; $$14++) {
+                  if ($$0.a_($$8.d($$2, $$14, $$13)).k()) {
+                     return true;
+                  }
+
+                  if ($$0.a_($$8.d($$5, $$14, $$13)).k()) {
+                     return true;
+                  }
+               }
+            }
+
             return false;
          }
       }
 
-      public boolean b() {
-         return this.a >= 75;
-      }
-
-      public int c() {
-         int $$0 = 0;
-
-         for (int $$1 = 0; $$1 < 6; $$1++) {
-            if (this.c[$$1]) {
-               $$0++;
+      protected void a(ddb $$0, eio $$1, dsk $$2, int $$3, int $$4, int $$5) {
+         if (this.b($$0, $$3, $$4, $$5, $$1)) {
+            ja $$6 = this.b($$3, $$4, $$5);
+            dsk $$7 = $$0.a_($$6);
+            if (!$$7.d($$0, $$6, jf.b)) {
+               $$0.a($$6, $$2, 2);
             }
          }
+      }
+   }
 
-         return $$0;
+   public static class d extends ekz.c {
+      private final List<eio> b = Lists.newLinkedList();
+
+      public d(int $$0, ayo $$1, int $$2, int $$3, ela.a $$4) {
+         super(ejn.c, $$0, $$4, new eio($$2, 50, $$3, $$2 + 7 + $$1.a(6), 54 + $$1.a(6), $$3 + 7 + $$1.a(6)));
+         this.a = $$4;
+      }
+
+      public d(tx $$0) {
+         super(ejn.c, $$0);
+         eio.a.listOf().parse(ul.a, $$0.c("Entrances", 11)).resultOrPartial(ekz.b::error).ifPresent(this.b::addAll);
+      }
+
+      @Override
+      public void a(eja $$0, ejb $$1, ayo $$2) {
+         int $$3 = this.g();
+         int $$4 = this.f.e() - 3 - 1;
+         if ($$4 <= 0) {
+            $$4 = 1;
+         }
+
+         int $$5 = 0;
+
+         while ($$5 < this.f.d()) {
+            $$5 += $$2.a(this.f.d());
+            if ($$5 + 3 > this.f.d()) {
+               break;
+            }
+
+            ekz.c $$6 = ekz.a($$0, $$1, $$2, this.f.h() + $$5, this.f.i() + $$2.a($$4) + 1, this.f.j() - 1, jf.c, $$3);
+            if ($$6 != null) {
+               eio $$7 = $$6.f();
+               this.b.add(new eio($$7.h(), $$7.i(), this.f.j(), $$7.k(), $$7.l(), this.f.j() + 1));
+            }
+
+            $$5 += 4;
+         }
+
+         $$5 = 0;
+
+         while ($$5 < this.f.d()) {
+            $$5 += $$2.a(this.f.d());
+            if ($$5 + 3 > this.f.d()) {
+               break;
+            }
+
+            ekz.c $$8 = ekz.a($$0, $$1, $$2, this.f.h() + $$5, this.f.i() + $$2.a($$4) + 1, this.f.m() + 1, jf.d, $$3);
+            if ($$8 != null) {
+               eio $$9 = $$8.f();
+               this.b.add(new eio($$9.h(), $$9.i(), this.f.m() - 1, $$9.k(), $$9.l(), this.f.m()));
+            }
+
+            $$5 += 4;
+         }
+
+         $$5 = 0;
+
+         while ($$5 < this.f.f()) {
+            $$5 += $$2.a(this.f.f());
+            if ($$5 + 3 > this.f.f()) {
+               break;
+            }
+
+            ekz.c $$10 = ekz.a($$0, $$1, $$2, this.f.h() - 1, this.f.i() + $$2.a($$4) + 1, this.f.j() + $$5, jf.e, $$3);
+            if ($$10 != null) {
+               eio $$11 = $$10.f();
+               this.b.add(new eio(this.f.h(), $$11.i(), $$11.j(), this.f.h() + 1, $$11.l(), $$11.m()));
+            }
+
+            $$5 += 4;
+         }
+
+         $$5 = 0;
+
+         while ($$5 < this.f.f()) {
+            $$5 += $$2.a(this.f.f());
+            if ($$5 + 3 > this.f.f()) {
+               break;
+            }
+
+            eja $$12 = ekz.a($$0, $$1, $$2, this.f.k() + 1, this.f.i() + $$2.a($$4) + 1, this.f.j() + $$5, jf.f, $$3);
+            if ($$12 != null) {
+               eio $$13 = $$12.f();
+               this.b.add(new eio(this.f.k() - 1, $$13.i(), $$13.j(), this.f.k(), $$13.l(), $$13.m()));
+            }
+
+            $$5 += 4;
+         }
+      }
+
+      @Override
+      public void a(ddb $$0, dcz $$1, duh $$2, ayo $$3, eio $$4, dbm $$5, ja $$6) {
+         if (!this.a($$0, $$4)) {
+            this.a($$0, $$4, this.f.h(), this.f.i() + 1, this.f.j(), this.f.k(), Math.min(this.f.i() + 3, this.f.l()), this.f.m(), e, e, false);
+
+            for (eio $$7 : this.b) {
+               this.a($$0, $$4, $$7.h(), $$7.l() - 2, $$7.j(), $$7.k(), $$7.l(), $$7.m(), e, e, false);
+            }
+
+            this.a($$0, $$4, this.f.h(), this.f.i() + 4, this.f.j(), this.f.k(), this.f.l(), this.f.m(), e, false);
+         }
+      }
+
+      @Override
+      public void a(int $$0, int $$1, int $$2) {
+         super.a($$0, $$1, $$2);
+
+         for (eio $$3 : this.b) {
+            $$3.a($$0, $$1, $$2);
+         }
+      }
+
+      @Override
+      protected void a(ejm $$0, tx $$1) {
+         super.a($$0, $$1);
+         eio.a.listOf().encodeStart(ul.a, this.b).resultOrPartial(ekz.b::error).ifPresent($$1x -> $$1.a("Entrances", $$1x));
+      }
+   }
+
+   public static class e extends ekz.c {
+      public e(int $$0, eio $$1, jf $$2, ela.a $$3) {
+         super(ejn.d, $$0, $$3, $$1);
+         this.a($$2);
+      }
+
+      public e(tx $$0) {
+         super(ejn.d, $$0);
+      }
+
+      @Nullable
+      public static eio a(ejb $$0, ayo $$1, int $$2, int $$3, int $$4, jf $$5) {
+         eio $$9 = switch ($$5) {
+            default -> new eio(0, -5, -8, 2, 2, 0);
+            case d -> new eio(0, -5, 0, 2, 2, 8);
+            case e -> new eio(-8, -5, 0, 0, 2, 2);
+            case f -> new eio(0, -5, 0, 8, 2, 2);
+         };
+         $$9.a($$2, $$3, $$4);
+         return $$0.a($$9) != null ? null : $$9;
+      }
+
+      @Override
+      public void a(eja $$0, ejb $$1, ayo $$2) {
+         int $$3 = this.g();
+         jf $$4 = this.i();
+         if ($$4 != null) {
+            switch ($$4) {
+               case c:
+               default:
+                  ekz.a($$0, $$1, $$2, this.f.h(), this.f.i(), this.f.j() - 1, jf.c, $$3);
+                  break;
+               case d:
+                  ekz.a($$0, $$1, $$2, this.f.h(), this.f.i(), this.f.m() + 1, jf.d, $$3);
+                  break;
+               case e:
+                  ekz.a($$0, $$1, $$2, this.f.h() - 1, this.f.i(), this.f.j(), jf.e, $$3);
+                  break;
+               case f:
+                  ekz.a($$0, $$1, $$2, this.f.k() + 1, this.f.i(), this.f.j(), jf.f, $$3);
+            }
+         }
+      }
+
+      @Override
+      public void a(ddb $$0, dcz $$1, duh $$2, ayo $$3, eio $$4, dbm $$5, ja $$6) {
+         if (!this.a($$0, $$4)) {
+            this.a($$0, $$4, 0, 5, 0, 2, 7, 1, e, e, false);
+            this.a($$0, $$4, 0, 0, 7, 2, 2, 8, e, e, false);
+
+            for (int $$7 = 0; $$7 < 5; $$7++) {
+               this.a($$0, $$4, 0, 5 - $$7 - ($$7 < 4 ? 1 : 0), 2 + $$7, 2, 7 - $$7, 2 + $$7, e, e, false);
+            }
+         }
       }
    }
 }

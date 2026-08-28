@@ -41,8 +41,8 @@ public class aik implements zb<aih> {
       return this.b;
    }
 
-   public PublicKey e() throws axc {
-      return axb.a(this.c);
+   public PublicKey e() throws axe {
+      return axd.a(this.c);
    }
 
    public byte[] f() {

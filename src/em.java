@@ -2,7 +2,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public interface em extends jl.a {
-   static em a(final jl.a $$0, final cov $$1) {
+   static em a(final jl.a $$0, final coy $$1) {
       return new em() {
          @Override
          public Stream<akj<? extends jw<?>>> a() {

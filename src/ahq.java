@@ -34,9 +34,9 @@ public class ahq implements zb<agb> {
    }
 
    @Nullable
-   public dbe a(dcd $$0) {
-      bsd $$1 = $$0.a(this.b);
-      return $$1 instanceof cok ? ((cok)$$1).B() : null;
+   public dbg a(dcf $$0) {
+      bsg $$1 = $$0.a(this.b);
+      return $$1 instanceof coo ? ((coo)$$1).B() : null;
    }
 
    public String b() {

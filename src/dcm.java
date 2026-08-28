@@ -1,4 +1,15 @@
-public enum dcm {
-   a,
-   b;
+public interface dcm extends dci {
+   long ak();
+
+   default float aq() {
+      return dwf.i[this.D_().b(this.ak())];
+   }
+
+   default float f(float $$0) {
+      return this.D_().a(this.ak());
+   }
+
+   default int ar() {
+      return this.D_().b(this.ak());
+   }
 }

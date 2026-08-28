@@ -1,45 +1,65 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class cnz {
-   private final cny a;
-   private final List<cnz.a> b = Lists.newArrayList();
+   public static final cnz a = a("core");
+   public static final cnz b = a("idle");
+   public static final cnz c = a("work");
+   public static final cnz d = a("play");
+   public static final cnz e = a("rest");
+   public static final cnz f = a("meet");
+   public static final cnz g = a("panic");
+   public static final cnz h = a("raid");
+   public static final cnz i = a("pre_raid");
+   public static final cnz j = a("hide");
+   public static final cnz k = a("fight");
+   public static final cnz l = a("celebrate");
+   public static final cnz m = a("admire_item");
+   public static final cnz n = a("avoid");
+   public static final cnz o = a("ride");
+   public static final cnz p = a("play_dead");
+   public static final cnz q = a("long_jump");
+   public static final cnz r = a("ram");
+   public static final cnz s = a("tongue");
+   public static final cnz t = a("swim");
+   public static final cnz u = a("lay_spawn");
+   public static final cnz v = a("sniff");
+   public static final cnz w = a("investigate");
+   public static final cnz x = a("roar");
+   public static final cnz y = a("emerge");
+   public static final cnz z = a("dig");
+   private final String A;
+   private final int B;
 
-   public cnz(cny $$0) {
-      this.a = $$0;
+   private cnz(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   public cnz a(int $$0, cnw $$1) {
-      this.b.add(new cnz.a($$0, $$1));
-      return this;
+   public String a() {
+      return this.A;
    }
 
-   public cny a() {
-      this.b.stream().map(cnz.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         cnw $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   private static cnz a(String $$0) {
+      return jw.a(lq.C, $$0, new cnz($$0));
    }
 
-   static class a {
-      private final int a;
-      private final cnw b;
-
-      public a(int $$0, cnw $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         cnz $$1 = (cnz)$$0;
+         return this.A.equals($$1.A);
+      } else {
+         return false;
       }
+   }
 
-      public int a() {
-         return this.a;
-      }
+   @Override
+   public int hashCode() {
+      return this.B;
+   }
 
-      public cnw b() {
-         return this.b;
-      }
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

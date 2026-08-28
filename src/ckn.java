@@ -1,79 +1,78 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Set;
 
-public class ckn extends bur<ckj> {
-   private static final int c = 4;
-   private static final int d = 256;
-   private static final int e = 5;
-   private static final int f = 4;
-   private static final float g = 0.7F;
-   private static final int h = Math.round(15.0F);
-   private static final int i = Math.round(4.0F);
-   private static final int j = Math.round(10.0F);
+public class ckn {
+   public static final float a = 0.6F;
+   public static final float b = 4.0F;
+   public static final float c = 8.0F;
+   public static final float d = 20.0F;
+   static final List<cdm<? extends cdl<? super ckm>>> e = ImmutableList.of(cdm.c, cdm.f, cdm.d, cdm.z);
+   static final List<ccf<?>> f = ImmutableList.of(
+      ccf.n, ccf.h, ccf.B, ccf.E, ccf.o, ccf.m, ccf.aU, ccf.aZ, ccf.aV, ccf.aW, ccf.aX, ccf.aY, new ccf[]{ccf.ba, ccf.bb, ccf.x, ccf.y, ccf.t}
+   );
 
-   @VisibleForTesting
-   public ckn() {
-      super(ImmutableMap.of(ccc.o, ccd.a, ccc.aY, ccd.b, ccc.aW, ccd.b, ccc.aX, ccd.b, ccc.aV, ccd.a, ccc.m, ccd.b, ccc.ba, ccd.b), h + 1 + i);
+   protected static bud<?> a(bud<ckm> $$0) {
+      b($$0);
+      c($$0);
+      d($$0);
+      $$0.a(Set.of(cnz.a));
+      $$0.b(cnz.k);
+      $$0.f();
+      return $$0;
    }
 
-   protected boolean a(aqk $$0, ckj $$1) {
-      return $$1.ar() != btk.a ? false : $$1.dT().c(ccc.o).map($$1x -> b($$1, $$1x)).map($$1x -> {
-         if (!$$1x) {
-            $$1.dT().b(ccc.aV);
-         }
-
-         return $$1x;
-      }).orElse(false);
+   private static void b(bud<ckm> $$0) {
+      $$0.a(cnz.a, 0, ImmutableList.of(new bxo(0.8F), new bwa(45, 90)));
    }
 
-   protected boolean a(aqk $$0, ckj $$1, long $$2) {
-      return $$1.dT().a(ccc.o) && $$1.dT().a(ccc.aV);
+   private static void c(bud<ckm> $$0) {
+      $$0.a(
+         cnz.b,
+         ImmutableList.of(
+            Pair.of(0, bxg.a($$0x -> $$0x.dU().c(ccf.B))),
+            Pair.of(1, bxg.a(ckm::gp)),
+            Pair.of(2, new ckn.a(20, 40)),
+            Pair.of(3, new bwr(ImmutableList.of(Pair.of(new bve(20, 100), 1), Pair.of(bwm.a(0.6F), 2))))
+         )
+      );
    }
 
-   protected void b(aqk $$0, ckj $$1, long $$2) {
-      $$1.dT().c(ccc.o).ifPresent($$1x -> $$1.b(btk.q));
-      $$1.dT().a(ccc.aW, azh.a, (long)h);
-      $$1.a(avf.cG, 1.0F, 1.0F);
+   private static void d(bud<ckm> $$0) {
+      $$0.a(
+         cnz.k,
+         ImmutableList.of(Pair.of(0, bxj.a()), Pair.of(1, new ckq()), Pair.of(2, new ckp()), Pair.of(3, new ckr()), Pair.of(4, new cks())),
+         ImmutableSet.of(Pair.of(ccf.o, ccg.a), Pair.of(ccf.m, ccg.b))
+      );
    }
 
-   protected void c(aqk $$0, ckj $$1, long $$2) {
-      if ($$1.ar() == btk.q) {
-         $$1.b(btk.a);
+   static void a(ckm $$0) {
+      $$0.dU().a(ImmutableList.of(cnz.k, cnz.b));
+   }
+
+   public static class a extends bwe {
+      @VisibleForTesting
+      public a(int $$0, int $$1) {
+         super($$0, $$1);
       }
 
-      $$1.dT().a(ccc.aY, azh.a, (long)j);
-      $$1.dT().b(ccc.aV);
-   }
+      @Override
+      protected void c(aqm $$0, btd $$1, long $$2) {
+         super.c($$0, $$1, $$2);
+         $$1.a(avh.cM);
+         $$1.b(btn.p);
+      }
 
-   protected void d(aqk $$0, ckj $$1, long $$2) {
-      bua<ckj> $$3 = $$1.dT();
-      bsy $$4 = $$3.c(ccc.o).orElse(null);
-      if ($$4 != null) {
-         $$1.a(fc.a.b, $$4.dn());
-         if (!$$3.c(ccc.aW).isPresent() && !$$3.c(ccc.aX).isPresent()) {
-            $$3.a(ccc.aX, azh.a, (long)i);
-            if (a($$1, $$4)) {
-               double $$5 = $$4.du() - $$1.du();
-               double $$6 = $$4.e(0.3) - $$1.e(0.5);
-               double $$7 = $$4.dA() - $$1.dA();
-               cnq $$8 = new cnq($$1, $$0);
-               $$1.a(avf.cJ, 1.5F, 1.0F);
-               $$8.c($$5, $$6, $$7, 0.7F, (float)(5 - $$0.al().a() * 4));
-               $$0.b($$8);
-            }
+      @Override
+      protected void b(aqm $$0, btd $$1, long $$2) {
+         super.b($$0, $$1, $$2);
+         $$1.b(btn.a);
+         if ($$1.dU().a(ccf.o)) {
+            $$1.dU().a(ccf.aV, azk.a, 60L);
          }
       }
-   }
-
-   @VisibleForTesting
-   public static boolean a(ckj $$0, bsy $$1) {
-      evz $$2 = $$0.g(1.0F);
-      evz $$3 = $$1.dn().d($$0.dn()).d();
-      return $$2.b($$3) > 0.5;
-   }
-
-   private static boolean b(ckj $$0, bsy $$1) {
-      double $$2 = $$0.dn().g($$1.dn());
-      return $$2 > 4.0 && $$2 < 256.0;
    }
 }

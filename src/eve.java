@@ -1,11 +1,48 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public interface eve {
-   @Nullable
-   exc a(eqo var1);
+public record eve(akk b, fi.g c) implements evb {
+   public static final MapCodec<eve> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akk.a.fieldOf("storage").forGetter(eve::c), fi.g.a.fieldOf("path").forGetter(eve::d)).apply($$0, eve::new)
+   );
 
-   evd a();
+   @Override
+   public eva b() {
+      return evc.f;
+   }
 
-   Set<eth<?>> b();
+   private Optional<un> c(equ $$0) {
+      tx $$1 = $$0.d().o().aM().a(this.b);
+
+      try {
+         List<uu> $$2 = this.c.a($$1);
+         if ($$2.size() == 1 && $$2.get(0) instanceof un $$3) {
+            return Optional.of($$3);
+         }
+      } catch (CommandSyntaxException var6) {
+      }
+
+      return Optional.empty();
+   }
+
+   @Override
+   public float b(equ $$0) {
+      return this.c($$0).map(un::k).orElse(0.0F);
+   }
+
+   @Override
+   public int a(equ $$0) {
+      return this.c($$0).map(un::g).orElse(0);
+   }
+
+   public akk c() {
+      return this.b;
+   }
+
+   public fi.g d() {
+      return this.c;
+   }
 }

@@ -1,150 +1,177 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import io.netty.buffer.ByteBuf;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.math.Fraction;
 
-public final class cwo {
-   private static final Logger e = LogUtils.getLogger();
-   public static final cwo a = new cwo(new tx());
-   public static final Codec<cwo> b = tx.a.xmap(cwo::new, $$0 -> $$0.f);
-   public static final Codec<cwo> c = b.validate(
-      $$0 -> $$0.d().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
-   );
-   @Deprecated
-   public static final ys<ByteBuf, cwo> d = yq.o.a(cwo::new, $$0 -> $$0.f);
-   private final tx f;
+public final class cwo implements crn {
+   public static final cwo a = new cwo(List.of());
+   public static final Codec<cwo> b = cuc.b.listOf().xmap(cwo::new, $$0 -> $$0.f);
+   public static final ys<wf, cwo> c = cuc.i.a(yq.a()).a(cwo::new, $$0 -> $$0.f);
+   private static final Fraction d = Fraction.getFraction(1, 16);
+   private static final int e = -1;
+   final List<cuc> f;
+   final Fraction g;
 
-   private cwo(tx $$0) {
+   cwo(List<cuc> $$0, Fraction $$1) {
       this.f = $$0;
+      this.g = $$1;
    }
 
-   public static cwo a(tx $$0) {
-      return new cwo($$0.i());
+   public cwo(List<cuc> $$0) {
+      this($$0, a($$0));
    }
 
-   public static Predicate<cua> a(km<cwo> $$0, tx $$1) {
-      return $$2 -> {
-         cwo $$3 = $$2.a($$0, a);
-         return $$3.b($$1);
-      };
+   private static Fraction a(List<cuc> $$0) {
+      Fraction $$1 = Fraction.ZERO;
+
+      for (cuc $$2 : $$0) {
+         $$1 = $$1.add(a($$2).multiplyBy(Fraction.getFraction($$2.H(), 1)));
+      }
+
+      return $$1;
    }
 
-   public boolean b(tx $$0) {
-      return um.a($$0, this.f, true);
-   }
-
-   public static void a(km<cwo> $$0, cua $$1, Consumer<tx> $$2) {
-      cwo $$3 = $$1.a($$0, a).a($$2);
-      if ($$3.f.g()) {
-         $$1.c($$0);
+   static Fraction a(cuc $$0) {
+      cwo $$1 = $$0.a(kn.F);
+      if ($$1 != null) {
+         return d.add($$1.e());
       } else {
-         $$1.b($$0, $$3);
+         List<dpm.c> $$2 = $$0.a(kn.ac, List.of());
+         return !$$2.isEmpty() ? Fraction.ONE : Fraction.getFraction(1, $$0.j());
       }
    }
 
-   public static void a(km<cwo> $$0, cua $$1, tx $$2) {
-      if (!$$2.g()) {
-         $$1.b($$0, a($$2));
-      } else {
-         $$1.c($$0);
-      }
+   public cuc a(int $$0) {
+      return this.f.get($$0);
    }
 
-   public cwo a(Consumer<tx> $$0) {
-      tx $$1 = this.f.i();
-      $$0.accept($$1);
-      return new cwo($$1);
+   public Stream<cuc> a() {
+      return this.f.stream().map(cuc::s);
    }
 
-   public void a(bsd $$0) {
-      tx $$1 = $$0.f(new tx());
-      UUID $$2 = $$0.cz();
-      $$1.a(this.f);
-      $$0.g($$1);
-      $$0.a_($$2);
+   public Iterable<cuc> b() {
+      return this.f;
    }
 
-   public boolean a(dpn $$0, jl.a $$1) {
-      tx $$2 = $$0.e($$1);
-      tx $$3 = $$2.i();
-      $$2.a(this.f);
-      if (!$$2.equals($$3)) {
-         try {
-            $$0.d($$2, $$1);
-            $$0.e();
-            return true;
-         } catch (Exception var8) {
-            e.warn("Failed to apply custom data to block entity at {}", $$0.az_(), var8);
-
-            try {
-               $$0.d($$3, $$1);
-            } catch (Exception var7) {
-               e.warn("Failed to rollback block entity at {} after failure", $$0.az_(), var7);
-            }
-         }
-      }
-
-      return false;
+   public Iterable<cuc> c() {
+      return Lists.transform(this.f, cuc::s);
    }
 
-   public <T> DataResult<cwo> a(DynamicOps<uu> $$0, MapEncoder<T> $$1, T $$2) {
-      return $$1.encode($$2, $$0, $$0.mapBuilder()).build(this.f).map($$0x -> new cwo((tx)$$0x));
+   public int d() {
+      return this.f.size();
    }
 
-   public <T> DataResult<T> a(MapDecoder<T> $$0) {
-      return this.a(ul.a, $$0);
+   public Fraction e() {
+      return this.g;
    }
 
-   public <T> DataResult<T> a(DynamicOps<uu> $$0, MapDecoder<T> $$1) {
-      MapLike<uu> $$2 = (MapLike<uu>)$$0.getMap(this.f).getOrThrow();
-      return $$1.decode($$0, $$2);
-   }
-
-   public int a() {
-      return this.f.f();
-   }
-
-   public boolean b() {
-      return this.f.g();
-   }
-
-   public tx c() {
-      return this.f.i();
-   }
-
-   public boolean a(String $$0) {
-      return this.f.e($$0);
+   public boolean f() {
+      return this.f.isEmpty();
    }
 
    @Override
    public boolean equals(Object $$0) {
-      if ($$0 == this) {
+      if (this == $$0) {
          return true;
       } else {
-         return $$0 instanceof cwo $$1 ? this.f.equals($$1.f) : false;
+         return !($$0 instanceof cwo $$1) ? false : this.g.equals($$1.g) && cuc.a(this.f, $$1.f);
       }
    }
 
    @Override
    public int hashCode() {
-      return this.f.hashCode();
+      return cuc.a(this.f);
    }
 
    @Override
    public String toString() {
-      return this.f.toString();
+      return "BundleContents" + this.f;
    }
 
-   @Deprecated
-   public tx d() {
-      return this.f;
+   public static class a {
+      private final List<cuc> a;
+      private Fraction b;
+
+      public a(cwo $$0) {
+         this.a = new ArrayList<>($$0.f);
+         this.b = $$0.g;
+      }
+
+      public cwo.a a() {
+         this.a.clear();
+         this.b = Fraction.ZERO;
+         return this;
+      }
+
+      private int b(cuc $$0) {
+         if (!$$0.k()) {
+            return -1;
+         } else {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (cuc.c(this.a.get($$1), $$0)) {
+                  return $$1;
+               }
+            }
+
+            return -1;
+         }
+      }
+
+      private int c(cuc $$0) {
+         Fraction $$1 = Fraction.ONE.subtract(this.b);
+         return Math.max($$1.divideBy(cwo.a($$0)).intValue(), 0);
+      }
+
+      public int a(cuc $$0) {
+         if (!$$0.e() && $$0.g().an_()) {
+            int $$1 = Math.min($$0.H(), this.c($$0));
+            if ($$1 == 0) {
+               return 0;
+            } else {
+               this.b = this.b.add(cwo.a($$0).multiplyBy(Fraction.getFraction($$1, 1)));
+               int $$2 = this.b($$0);
+               if ($$2 != -1) {
+                  cuc $$3 = this.a.remove($$2);
+                  cuc $$4 = $$3.c($$3.H() + $$1);
+                  $$0.h($$1);
+                  this.a.add(0, $$4);
+               } else {
+                  this.a.add(0, $$0.a($$1));
+               }
+
+               return $$1;
+            }
+         } else {
+            return 0;
+         }
+      }
+
+      public int a(crd $$0, cmk $$1) {
+         cuc $$2 = $$0.g();
+         int $$3 = this.c($$2);
+         return this.a($$0.b($$2.H(), $$3, $$1));
+      }
+
+      @Nullable
+      public cuc b() {
+         if (this.a.isEmpty()) {
+            return null;
+         } else {
+            cuc $$0 = this.a.remove(0).s();
+            this.b = this.b.subtract(cwo.a($$0).multiplyBy(Fraction.getFraction($$0.H(), 1)));
+            return $$0;
+         }
+      }
+
+      public Fraction c() {
+         return this.b;
+      }
+
+      public cwo d() {
+         return new cwo(List.copyOf(this.a), this.b);
+      }
    }
 }

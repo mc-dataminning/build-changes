@@ -35,10 +35,10 @@ public class amc {
 
    private static int a(eq $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
-      if ($$1.bi()) {
+      if ($$1.bj()) {
          throw c.create();
       } else {
-         $$1.bj();
+         $$1.bk();
          $$0.a(() -> wu.c("commands.debug.started"), true);
          return 0;
       }
@@ -46,11 +46,11 @@ public class amc {
 
    private static int b(eq $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
-      if (!$$1.bi()) {
+      if (!$$1.bj()) {
          throw b.create();
       } else {
-         bmq $$2 = $$1.bk();
-         double $$3 = (double)$$2.g() / (double)aze.a;
+         bmt $$2 = $$1.bl();
+         double $$3 = (double)$$2.g() / (double)azh.a;
          double $$4 = (double)$$2.f() / $$3;
          $$0.a(() -> wu.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
          return (int)$$4;
@@ -68,7 +68,7 @@ public class amc {
             Collection<ic<eq>> $$5 = gy.a($$4, "name");
             MinecraftServer $$6 = $$0.l();
             String $$7 = "debug-trace-" + ac.f() + ".txt";
-            CommandDispatcher<eq> $$8 = $$0.l().aF().a();
+            CommandDispatcher<eq> $$8 = $$0.l().aG().a();
             int $$9 = 0;
 
             try {

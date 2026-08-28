@@ -17,7 +17,7 @@ public class fr implements ArgumentType<akk> {
 
    public static af a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       akk $$2 = c($$0, $$1);
-      af $$3 = ((eq)$$0.getSource()).l().aE().a($$2);
+      af $$3 = ((eq)$$0.getSource()).l().aF().a($$2);
       if ($$3 == null) {
          throw b.create($$2);
       } else {
@@ -25,8 +25,8 @@ public class fr implements ArgumentType<akk> {
       }
    }
 
-   public static cyi<?> b(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
-      cyk $$2 = ((eq)$$0.getSource()).l().aJ();
+   public static cyk<?> b(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+      cym $$2 = ((eq)$$0.getSource()).l().aK();
       akk $$3 = c($$0, $$1);
       return $$2.a($$3).orElseThrow(() -> c.create($$3));
    }

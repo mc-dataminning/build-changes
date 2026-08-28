@@ -1,42 +1,27 @@
-public class gbs extends gbr {
-   gbs(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.D *= 1.5F;
-      this.t = (int)(Math.random() * 2.0) + 60;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.util.List;
+
+public class gbs {
+   private final List<akk> a;
+
+   private gbs(List<akk> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public float b(float $$0) {
-      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
-      return this.D * $$1;
+   public List<akk> a() {
+      return this.a;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   public static gbs a(JsonObject $$0) {
+      JsonArray $$1 = axw.a($$0, "textures", null);
+      if ($$1 == null) {
+         return new gbs(List.of());
       } else {
-         float $$0 = (float)this.s / (float)this.t;
-         this.g = this.g + this.j * (double)$$0;
-         this.h = this.h + this.k * (double)$$0;
-         this.i = this.i + this.l * (double)$$0;
-      }
-   }
-
-   public static class a implements gbo<ln> {
-      private final gcg a;
-
-      public a(gcg $$0) {
-         this.a = $$0;
-      }
-
-      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbs $$8 = new gbs($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+         List<akk> $$2 = Streams.stream($$1).map($$0x -> axw.a($$0x, "texture")).map(akk::new).collect(ImmutableList.toImmutableList());
+         return new gbs($$2);
       }
    }
 }

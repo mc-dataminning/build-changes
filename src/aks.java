@@ -27,30 +27,30 @@ import org.slf4j.Logger;
 public class aks {
    private static final Logger a = LogUtils.getLogger();
    private static final Gson b = new GsonBuilder().setPrettyPrinting().create();
-   private final auh c;
+   private final auj c;
    private final Path d;
    private ak e;
    private final Map<af, ah> f = new LinkedHashMap<>();
    private final Set<af> g = new HashSet<>();
    private final Set<af> h = new HashSet<>();
    private final Set<ag> i = new HashSet<>();
-   private aql j;
+   private aqn j;
    @Nullable
    private af k;
    private boolean l = true;
    private final Codec<aks.a> m;
 
-   public aks(DataFixer $$0, auh $$1, akx $$2, Path $$3, aql $$4) {
+   public aks(DataFixer $$0, auj $$1, akx $$2, Path $$3, aqn $$4) {
       this.c = $$1;
       this.d = $$3;
       this.j = $$4;
       this.e = $$2.a();
       int $$5 = 1343;
-      this.m = azl.p.a(aks.a.a, $$0, 1343);
+      this.m = azo.p.a(aks.a.a, $$0, 1343);
       this.d($$2);
    }
 
-   public void a(aql $$0) {
+   public void a(aqn $$0) {
       this.j = $$0;
    }
 
@@ -168,7 +168,7 @@ public class aks {
          if (!$$4 && $$3.a()) {
             $$0.b().d().a(this.j);
             $$0.b().c().ifPresent($$1x -> {
-               if ($$1x.i() && this.j.dP().ab().b(dbz.A)) {
+               if ($$1x.i() && this.j.dQ().ab().b(dcb.A)) {
                   this.c.a($$1x.e().a($$0, this.j), false);
                }
             });
@@ -237,7 +237,7 @@ public class aks {
       $$2.a().b(this, new ap.a<>($$2.b(), $$0, $$1));
    }
 
-   public void b(aql $$0) {
+   public void b(aqn $$0) {
       if (this.l || !this.i.isEmpty() || !this.h.isEmpty()) {
          Map<akk, ah> $$1 = new HashMap<>();
          Set<af> $$2 = new HashSet<>();

@@ -1,76 +1,72 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 
-public abstract class egm {
-   public static final Codec<egm> c = lq.V.r().dispatch(egm::a, egn::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
-
-   protected static <P extends egm> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
-      );
-   }
+public class egm extends egs {
+   public static final MapCodec<egm> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, egm::new));
 
    public egm(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+      super($$0, $$1, $$2);
    }
 
-   protected abstract egn<?> a();
-
-   public abstract List<eeu.a> a(dcj var1, BiConsumer<ja, dsh> var2, aym var3, int var4, ja var5, eee var6);
-
-   public int a(aym $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
+   @Override
+   protected egt<?> a() {
+      return egt.e;
    }
 
-   private static boolean c(dcj $$0, ja $$1) {
-      return $$0.a($$1, $$0x -> ebe.b($$0x) && !$$0x.a(dfh.i) && !$$0x.a(dfh.fl));
-   }
+   @Override
+   public List<efa.a> a(dcl $$0, BiConsumer<ja, dsk> $$1, ayo $$2, int $$3, ja $$4, eek $$5) {
+      List<efa.a> $$6 = Lists.newArrayList();
+      ja $$7 = $$4.d();
+      a($$0, $$1, $$2, $$7, $$5);
+      a($$0, $$1, $$2, $$7.h(), $$5);
+      a($$0, $$1, $$2, $$7.f(), $$5);
+      a($$0, $$1, $$2, $$7.f().h(), $$5);
+      jf $$8 = jf.c.a.a($$2);
+      int $$9 = $$3 - $$2.a(4);
+      int $$10 = 2 - $$2.a(3);
+      int $$11 = $$4.u();
+      int $$12 = $$4.v();
+      int $$13 = $$4.w();
+      int $$14 = $$11;
+      int $$15 = $$13;
+      int $$16 = $$12 + $$3 - 1;
 
-   protected static void a(dcj $$0, BiConsumer<ja, dsh> $$1, aym $$2, ja $$3, eee $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
+      for (int $$17 = 0; $$17 < $$3; $$17++) {
+         if ($$17 >= $$9 && $$10 > 0) {
+            $$14 += $$8.j();
+            $$15 += $$8.l();
+            $$10--;
+         }
+
+         int $$18 = $$12 + $$17;
+         ja $$19 = new ja($$14, $$18, $$15);
+         if (ecw.b($$0, $$19)) {
+            this.b($$0, $$1, $$2, $$19, $$5);
+            this.b($$0, $$1, $$2, $$19.h(), $$5);
+            this.b($$0, $$1, $$2, $$19.f(), $$5);
+            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
+         }
       }
-   }
 
-   protected boolean b(dcj $$0, BiConsumer<ja, dsh> $$1, aym $$2, ja $$3, eee $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
+      $$6.add(new efa.a(new ja($$14, $$16, $$15), 0, true));
 
-   protected boolean a(dcj $$0, BiConsumer<ja, dsh> $$1, aym $$2, ja $$3, eee $$4, Function<dsh, dsh> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
-      } else {
-         return false;
+      for (int $$20 = -1; $$20 <= 2; $$20++) {
+         for (int $$21 = -1; $$21 <= 2; $$21++) {
+            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
+               int $$22 = $$2.a(3) + 2;
+
+               for (int $$23 = 0; $$23 < $$22; $$23++) {
+                  this.b($$0, $$1, $$2, new ja($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
+               }
+
+               $$6.add(new efa.a(new ja($$14 + $$20, $$16, $$15 + $$21), 0, false));
+            }
+         }
       }
-   }
 
-   protected void a(dcj $$0, BiConsumer<ja, dsh> $$1, aym $$2, ja.a $$3, eee $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected boolean a(dcj $$0, ja $$1) {
-      return ecq.c($$0, $$1);
-   }
-
-   public boolean b(dcj $$0, ja $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(avu.t));
+      return $$6;
    }
 }

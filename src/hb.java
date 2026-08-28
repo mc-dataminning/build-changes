@@ -28,7 +28,7 @@ public class hb {
    public static final char d = '=';
    public static final char e = '!';
    static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> l = SuggestionsBuilder::buildFuture;
-   final jl.b<ctv> m;
+   final jl.b<ctx> m;
    final DynamicOps<uu> n;
 
    public hb(jl.a $$0) {
@@ -37,11 +37,11 @@ public class hb {
    }
 
    public hb.a a(StringReader $$0) throws CommandSyntaxException {
-      final MutableObject<jj<ctv>> $$1 = new MutableObject();
+      final MutableObject<jj<ctx>> $$1 = new MutableObject();
       final kk.a $$2 = kk.a();
       this.a($$0, new hb.d() {
          @Override
-         public void a(jj<ctv> $$0) {
+         public void a(jj<ctx> $$0) {
             $$1.setValue($$0);
          }
 
@@ -55,15 +55,15 @@ public class hb {
             $$2.a($$0);
          }
       });
-      jj<ctv> $$3 = Objects.requireNonNull((jj<ctv>)$$1.getValue(), "Parser gave no item");
+      jj<ctx> $$3 = Objects.requireNonNull((jj<ctx>)$$1.getValue(), "Parser gave no item");
       kk $$4 = $$2.a();
       a($$0, $$3, $$4);
       return new hb.a($$3, $$4);
    }
 
-   private static void a(StringReader $$0, jj<ctv> $$1, kk $$2) throws CommandSyntaxException {
+   private static void a(StringReader $$0, jj<ctx> $$1, kk $$2) throws CommandSyntaxException {
       kj $$3 = ko.a($$1.a().p(), $$2);
-      DataResult<azh> $$4 = cua.a($$3);
+      DataResult<azk> $$4 = cuc.a($$3);
       $$4.getOrThrow($$1x -> k.createWithContext($$0, $$1x));
    }
 
@@ -92,7 +92,7 @@ public class hb {
       return $$2.a($$0, $$1);
    }
 
-   public static record a(jj<ctv> a, kk b) {
+   public static record a(jj<ctx> a, kk b) {
    }
 
    class b {
@@ -264,7 +264,7 @@ public class hb {
    }
 
    public interface d {
-      default void a(jj<ctv> $$0) {
+      default void a(jj<ctx> $$0) {
       }
 
       default <T> void a(km<T> $$0, T $$1) {

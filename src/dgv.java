@@ -1,43 +1,59 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dgv extends den {
-   public static final MapCodec<dgv> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dgu.a.forGetter($$0x -> $$0x.c), u()).apply($$0, dgv::new));
-   private final dff c;
-
-   @Override
-   public MapCodec<dgv> a() {
-      return b;
-   }
-
-   protected dgv(dff $$0, dsg.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
+public class dgv extends dfh {
+   public static final MapCodec<dgv> a = b(dgv::new);
+   public static final dtb b = dta.w;
+   public static final dtb c = dta.r;
 
    @Override
-   protected void b(dsh $$0, dcd $$1, ja $$2, dsh $$3, boolean $$4) {
-      this.a($$0, (dce)$$1, $$2);
+   protected MapCodec<? extends dgv> a() {
+      return a;
+   }
+
+   public dgv(dsj.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dsh $$0, aqk $$1, ja $$2, aym $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.c.o().a(d, Boolean.valueOf(false)), 2);
+   protected void b(dsk $$0, dcf $$1, ja $$2, dsk $$3, boolean $$4) {
+      if ($$3.b() != $$0.b() && $$1 instanceof aqm $$5) {
+         this.a($$0, $$5, $$2);
       }
    }
 
    @Override
-   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
-      if ($$1 == jf.a && !$$0.a($$3, $$4)) {
-         return dfh.a.o();
-      } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, eoc.c, eoc.c.a($$3));
+   protected void a(dsk $$0, dcf $$1, ja $$2, dfh $$3, ja $$4, boolean $$5) {
+      if ($$1 instanceof aqm $$6) {
+         this.a($$0, $$6, $$2);
+      }
+   }
+
+   public void a(dsk $$0, aqm $$1, ja $$2) {
+      boolean $$3 = $$1.C($$2);
+      if ($$3 != $$0.c(b)) {
+         dsk $$4 = $$0;
+         if (!$$0.c(b)) {
+            $$4 = $$0.a(c);
+            $$1.a(null, $$2, $$4.c(c) ? avh.fG : avh.fH, avi.e);
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         $$1.a($$2, $$4.a(b, Boolean.valueOf($$3)), 3);
       }
+   }
+
+   @Override
+   protected void a(dsl.a<dfh, dsk> $$0) {
+      $$0.a(c, b);
+   }
+
+   @Override
+   protected boolean c_(dsk $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dsk $$0, dcf $$1, ja $$2) {
+      return $$1.a_($$2).c(c) ? 15 : 0;
    }
 }

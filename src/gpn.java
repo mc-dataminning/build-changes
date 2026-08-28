@@ -1,75 +1,156 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gpn {
-   private static final Logger a = LogUtils.getLogger();
-   private static final akd b = new akd("atlases", ".json");
-   private final List<gpm> c;
+public class gpn extends goz implements gpa, gpq {
+   private static final Logger g = LogUtils.getLogger();
+   @Deprecated
+   public static final akk e = cqj.x;
+   @Deprecated
+   public static final akk f = new akk("textures/atlas/particles.png");
+   private List<gpi> h = List.of();
+   private List<gpo.a> i = List.of();
+   private Map<akk, gpo> j = Map.of();
+   @Nullable
+   private gpo k;
+   private final akk l;
+   private final int m;
+   private int n;
+   private int o;
+   private int p;
 
-   private gpn(List<gpm> $$0) {
-      this.c = $$0;
+   public gpn(akk $$0) {
+      this.l = $$0;
+      this.m = RenderSystem.maxSupportedTextureSize();
    }
 
-   public List<Function<gpl, gpc>> a(atu $$0) {
-      final Map<akk, gpm.b> $$1 = new HashMap<>();
-      gpm.a $$2 = new gpm.a() {
-         @Override
-         public void a(akk $$0, gpm.b $$1x) {
-            gpm.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
+   @Override
+   public void a(atw $$0) {
+   }
+
+   public void a(gpj.a $$0) {
+      g.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.l});
+      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
+      this.n = $$0.b();
+      this.o = $$0.c();
+      this.p = $$0.d();
+      this.f();
+      this.j = Map.copyOf($$0.f());
+      this.k = this.j.get(gpe.b());
+      if (this.k == null) {
+         throw new IllegalStateException("Atlas '" + this.l + "' (" + this.j.size() + " sprites) has no missing texture sprite");
+      } else {
+         List<gpi> $$1 = new ArrayList<>();
+         List<gpo.a> $$2 = new ArrayList<>();
+
+         for (gpo $$3 : $$0.f().values()) {
+            $$1.add($$3.e());
+
+            try {
+               $$3.j();
+            } catch (Throwable var9) {
+               o $$5 = o.a(var9, "Stitching texture atlas");
+               p $$6 = $$5.a("Texture being stitched together");
+               $$6.a("Atlas path", this.l);
+               $$6.a("Sprite", $$3);
+               throw new y($$5);
+            }
+
+            gpo.a $$7 = $$3.f();
+            if ($$7 != null) {
+               $$2.add($$7);
             }
          }
 
-         @Override
-         public void a(Predicate<akk> $$0) {
-            Iterator<Entry<akk, gpm.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<akk, gpm.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
-            }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<gpl, gpc>> $$3 = ImmutableList.builder();
-      $$3.add((Function<gpl, gpc>)$$0x -> goy.a());
-      $$3.addAll($$1.values());
-      return $$3.build();
-   }
-
-   public static gpn a(atu $$0, akk $$1) {
-      akk $$2 = b.a($$1);
-      List<gpm> $$3 = new ArrayList<>();
-
-      for (ats $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends gpm>)gpp.h.parse($$6).getOrThrow());
-         } catch (Exception var11) {
-            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
-         }
+         this.h = List.copyOf($$1);
+         this.i = List.copyOf($$2);
       }
+   }
 
-      return new gpn($$3);
+   @Override
+   public void a(akk $$0, Path $$1) throws IOException {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.p, this.n, this.o);
+      a($$1, $$2, this.j);
+   }
+
+   private static void a(Path $$0, String $$1, Map<akk, gpo> $$2) {
+      Path $$3 = $$0.resolve($$1 + ".txt");
+
+      try (Writer $$4 = Files.newBufferedWriter($$3)) {
+         for (Entry<akk, gpo> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
+            gpo $$6 = $$5.getValue();
+            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
+         }
+      } catch (IOException var10) {
+         g.warn("Failed to write file {}", $$3, var10);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.c();
+
+      for (gpo.a $$0 : this.i) {
+         $$0.a();
+      }
+   }
+
+   @Override
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::d);
+      } else {
+         this.d();
+      }
+   }
+
+   public gpo a(akk $$0) {
+      gpo $$1 = this.j.getOrDefault($$0, this.k);
+      if ($$1 == null) {
+         throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
+      } else {
+         return $$1;
+      }
+   }
+
+   public void f() {
+      this.h.forEach(gpi::close);
+      this.i.forEach(gpo.a::close);
+      this.h = List.of();
+      this.i = List.of();
+      this.j = Map.of();
+      this.k = null;
+   }
+
+   public akk g() {
+      return this.l;
+   }
+
+   public int h() {
+      return this.m;
+   }
+
+   int i() {
+      return this.n;
+   }
+
+   int j() {
+      return this.o;
+   }
+
+   public void b(gpj.a $$0) {
+      this.a(false, $$0.d() > 0);
    }
 }

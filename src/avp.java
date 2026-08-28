@@ -1,98 +1,37 @@
-public class avp {
-   public static final avo<dff> a = a("mined", lq.e);
-   public static final avo<ctv> b = a("crafted", lq.g);
-   public static final avo<ctv> c = a("used", lq.g);
-   public static final avo<ctv> d = a("broken", lq.g);
-   public static final avo<ctv> e = a("picked_up", lq.g);
-   public static final avo<ctv> f = a("dropped", lq.g);
-   public static final avo<bsj<?>> g = a("killed", lq.f);
-   public static final avo<bsj<?>> h = a("killed_by", lq.f);
-   public static final avo<akk> i = a("custom", lq.k);
-   public static final akk j = a("leave_game", avn.b);
-   public static final akk k = a("play_time", avn.e);
-   public static final akk l = a("total_world_time", avn.e);
-   public static final akk m = a("time_since_death", avn.e);
-   public static final akk n = a("time_since_rest", avn.e);
-   public static final akk o = a("sneak_time", avn.e);
-   public static final akk p = a("walk_one_cm", avn.d);
-   public static final akk q = a("crouch_one_cm", avn.d);
-   public static final akk r = a("sprint_one_cm", avn.d);
-   public static final akk s = a("walk_on_water_one_cm", avn.d);
-   public static final akk t = a("fall_one_cm", avn.d);
-   public static final akk u = a("climb_one_cm", avn.d);
-   public static final akk v = a("fly_one_cm", avn.d);
-   public static final akk w = a("walk_under_water_one_cm", avn.d);
-   public static final akk x = a("minecart_one_cm", avn.d);
-   public static final akk y = a("boat_one_cm", avn.d);
-   public static final akk z = a("pig_one_cm", avn.d);
-   public static final akk A = a("horse_one_cm", avn.d);
-   public static final akk B = a("aviate_one_cm", avn.d);
-   public static final akk C = a("swim_one_cm", avn.d);
-   public static final akk D = a("strider_one_cm", avn.d);
-   public static final akk E = a("jump", avn.b);
-   public static final akk F = a("drop", avn.b);
-   public static final akk G = a("damage_dealt", avn.c);
-   public static final akk H = a("damage_dealt_absorbed", avn.c);
-   public static final akk I = a("damage_dealt_resisted", avn.c);
-   public static final akk J = a("damage_taken", avn.c);
-   public static final akk K = a("damage_blocked_by_shield", avn.c);
-   public static final akk L = a("damage_absorbed", avn.c);
-   public static final akk M = a("damage_resisted", avn.c);
-   public static final akk N = a("deaths", avn.b);
-   public static final akk O = a("mob_kills", avn.b);
-   public static final akk P = a("animals_bred", avn.b);
-   public static final akk Q = a("player_kills", avn.b);
-   public static final akk R = a("fish_caught", avn.b);
-   public static final akk S = a("talked_to_villager", avn.b);
-   public static final akk T = a("traded_with_villager", avn.b);
-   public static final akk U = a("eat_cake_slice", avn.b);
-   public static final akk V = a("fill_cauldron", avn.b);
-   public static final akk W = a("use_cauldron", avn.b);
-   public static final akk X = a("clean_armor", avn.b);
-   public static final akk Y = a("clean_banner", avn.b);
-   public static final akk Z = a("clean_shulker_box", avn.b);
-   public static final akk aa = a("interact_with_brewingstand", avn.b);
-   public static final akk ab = a("interact_with_beacon", avn.b);
-   public static final akk ac = a("inspect_dropper", avn.b);
-   public static final akk ad = a("inspect_hopper", avn.b);
-   public static final akk ae = a("inspect_dispenser", avn.b);
-   public static final akk af = a("play_noteblock", avn.b);
-   public static final akk ag = a("tune_noteblock", avn.b);
-   public static final akk ah = a("pot_flower", avn.b);
-   public static final akk ai = a("trigger_trapped_chest", avn.b);
-   public static final akk aj = a("open_enderchest", avn.b);
-   public static final akk ak = a("enchant_item", avn.b);
-   public static final akk al = a("play_record", avn.b);
-   public static final akk am = a("interact_with_furnace", avn.b);
-   public static final akk an = a("interact_with_crafting_table", avn.b);
-   public static final akk ao = a("open_chest", avn.b);
-   public static final akk ap = a("sleep_in_bed", avn.b);
-   public static final akk aq = a("open_shulker_box", avn.b);
-   public static final akk ar = a("open_barrel", avn.b);
-   public static final akk as = a("interact_with_blast_furnace", avn.b);
-   public static final akk at = a("interact_with_smoker", avn.b);
-   public static final akk au = a("interact_with_lectern", avn.b);
-   public static final akk av = a("interact_with_campfire", avn.b);
-   public static final akk aw = a("interact_with_cartography_table", avn.b);
-   public static final akk ax = a("interact_with_loom", avn.b);
-   public static final akk ay = a("interact_with_stonecutter", avn.b);
-   public static final akk az = a("bell_ring", avn.b);
-   public static final akk aA = a("raid_trigger", avn.b);
-   public static final akk aB = a("raid_win", avn.b);
-   public static final akk aC = a("interact_with_anvil", avn.b);
-   public static final akk aD = a("interact_with_grindstone", avn.b);
-   public static final akk aE = a("target_hit", avn.b);
-   public static final akk aF = a("interact_with_smithing_table", avn.b);
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 
-   private static akk a(String $$0, avn $$1) {
-      akk $$2 = new akk($$0);
-      jw.a(lq.k, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
-   }
+public interface avp {
+   DecimalFormat a = ac.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   avp b = NumberFormat.getIntegerInstance(Locale.US)::format;
+   avp c = $$0 -> a.format((double)$$0 * 0.1);
+   avp d = $$0 -> {
+      double $$1 = (double)$$0 / 100.0;
+      double $$2 = $$1 / 1000.0;
+      if ($$2 > 0.5) {
+         return a.format($$2) + " km";
+      } else {
+         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
+      }
+   };
+   avp e = $$0 -> {
+      double $$1 = (double)$$0 / 20.0;
+      double $$2 = $$1 / 60.0;
+      double $$3 = $$2 / 60.0;
+      double $$4 = $$3 / 24.0;
+      double $$5 = $$4 / 365.0;
+      if ($$5 > 0.5) {
+         return a.format($$5) + " y";
+      } else if ($$4 > 0.5) {
+         return a.format($$4) + " d";
+      } else if ($$3 > 0.5) {
+         return a.format($$3) + " h";
+      } else {
+         return $$2 > 0.5 ? a.format($$2) + " m" : $$1 + " s";
+      }
+   };
 
-   private static <T> avo<T> a(String $$0, jw<T> $$1) {
-      wu $$2 = wu.c("stat_type.minecraft." + $$0);
-      return jw.a(lq.v, $$0, new avo<>($$1, $$2));
-   }
+   String format(int var1);
 }

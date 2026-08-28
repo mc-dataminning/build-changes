@@ -15,7 +15,7 @@ public interface jl<T> extends jk<T> {
 
    Stream<jn.c<T>> d();
 
-   default Stream<awk<T>> e() {
+   default Stream<awm<T>> e() {
       return this.d().map(jn.c::g);
    }
 
@@ -62,8 +62,8 @@ public interface jl<T> extends jk<T> {
 
       Lifecycle g();
 
-      default jl.b<T> a(cov $$0) {
-         return cos.bA.contains(this.f()) ? this.a($$1 -> ((cos)$$1).a($$0)) : this;
+      default jl.b<T> a(coy $$0) {
+         return cov.bA.contains(this.f()) ? this.a($$1 -> ((cov)$$1).a($$0)) : this;
       }
 
       default jl.b<T> a(final Predicate<T> $$0) {
@@ -109,7 +109,7 @@ public interface jl<T> extends jk<T> {
          }
 
          @Override
-         default Optional<jn.c<T>> a(awk<T> $$0) {
+         default Optional<jn.c<T>> a(awm<T> $$0) {
             return this.a().a($$0);
          }
 

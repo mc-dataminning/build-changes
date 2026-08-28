@@ -360,8 +360,8 @@ public class vp extends SimpleChannelInboundHandler<zb<?>> {
    }
 
    protected void c() {
-      this.x = aye.i(0.75F, (float)this.v, this.x);
-      this.w = aye.i(0.75F, (float)this.u, this.w);
+      this.x = ayg.i(0.75F, (float)this.v, this.x);
+      this.w = ayg.i(0.75F, (float)this.u, this.w);
       this.v = 0;
       this.u = 0;
    }
@@ -401,7 +401,7 @@ public class vp extends SimpleChannelInboundHandler<zb<?>> {
       return this.k.a();
    }
 
-   public static vp a(InetSocketAddress $$0, boolean $$1, @Nullable bld $$2) {
+   public static vp a(InetSocketAddress $$0, boolean $$1, @Nullable blg $$2) {
       vp $$3 = new vp(zc.b);
       if ($$2 != null) {
          $$3.a($$2);
@@ -574,7 +574,7 @@ public class vp extends SimpleChannelInboundHandler<zb<?>> {
       return this.x;
    }
 
-   public void a(bld $$0) {
+   public void a(blg $$0) {
       this.B = new vi($$0);
    }
 }

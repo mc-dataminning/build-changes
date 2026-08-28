@@ -1,21 +1,19 @@
-class brd extends brj {
-   protected brd(brk $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum brd implements azc {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<brd> d = azc.a(brd::values);
+   private final String e;
+
+   private brd(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(bsy $$0, int $$1) {
-      return $$0.fo() > 0.0F || $$0.dP().B;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public void b(bsy $$0, int $$1) {
-      super.b($$0, $$1);
-      $$0.B(Math.max($$0.fo(), (float)(4 * (1 + $$1))));
+   public String c() {
+      return this.e;
    }
 }

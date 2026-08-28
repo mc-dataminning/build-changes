@@ -1,16 +1,11 @@
-public class giz extends gju {
-   public static final akk a = new akk("textures/entity/guardian_elder.png");
+public class giz extends gks<cey, fuh<cey>> {
+   private static final akk a = new akk("textures/entity/cow/cow.png");
 
-   public giz(gjg.a $$0) {
-      super($$0, 1.2F, fxh.V);
+   public giz(gjm.a $$0) {
+      super($$0, new fuh<>($$0.a(fxn.G)), 0.7F);
    }
 
-   protected void a(cjj $$0, fag $$1, float $$2) {
-      $$1.b(cjc.b, cjc.b, cjc.b);
-   }
-
-   @Override
-   public akk a(cjj $$0) {
+   public akk a(cey $$0) {
       return a;
    }
 }

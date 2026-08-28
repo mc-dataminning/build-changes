@@ -1,19 +1,33 @@
 import java.util.List;
 
-public interface cvp {
-   int a();
+public class cvp extends cvs {
+   public cvp(cvr $$0, ctx.a $$1) {
+      super($$0, $$1.a(kn.x, k()));
+   }
 
-   float b();
+   private static cxg k() {
+      return new cxg(List.of(cxg.a.a(List.of(dfj.bs), 15.0F), cxg.a.b(avw.bE, 1.5F)), 1.0F, 2);
+   }
 
-   float c();
+   public static cww a(cvr $$0, int $$1, float $$2) {
+      return cww.a()
+         .a(buj.c, new buh(e, "Weapon modifier", (double)((float)$$1 + $$0.c()), buh.a.a), bso.b)
+         .a(buj.e, new buh(f, "Weapon modifier", (double)$$2, buh.a.a), bso.b)
+         .a();
+   }
 
-   awk<dff> d();
+   @Override
+   public boolean a(dsk $$0, dcf $$1, ja $$2, cmk $$3) {
+      return !$$3.f();
+   }
 
-   int e();
+   @Override
+   public boolean a(cuc $$0, btb $$1, btb $$2) {
+      return true;
+   }
 
-   cyd f();
-
-   default cxe a(awk<dff> $$0) {
-      return new cxe(List.of(cxe.a.a(this.d()), cxe.a.a($$0, this.b())), 1.0F, 1);
+   @Override
+   public void b(cuc $$0, btb $$1, btb $$2) {
+      $$0.a(1, $$2, bsn.a);
    }
 }

@@ -250,7 +250,7 @@ public class jz {
       }
 
       @Override
-      public Optional<jn.c<T>> a(awk<T> $$0) {
+      public Optional<jn.c<T>> a(awm<T> $$0) {
          return Optional.of(jn.a(this.d, $$0));
       }
    }

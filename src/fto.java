@@ -1,88 +1,37 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-
-public class fto extends fva<coe> implements fwv {
-   private static final String a = "left_paddle";
-   private static final String b = "right_paddle";
-   private static final String f = "water_patch";
-   private static final String g = "bottom";
-   private static final String h = "back";
-   private static final String i = "front";
-   private static final String j = "right";
-   private static final String k = "left";
-   private final fxi l;
-   private final fxi m;
-   private final fxi n;
-   private final ImmutableList<fxi> o;
-
-   public fto(fxi $$0) {
-      this.l = $$0.b("left_paddle");
-      this.m = $$0.b("right_paddle");
-      this.n = $$0.b("water_patch");
-      this.o = this.a($$0).build();
+public class fto extends fvb<cij> {
+   public fto(fxo $$0) {
+      super($$0);
    }
 
-   protected Builder<fxi> a(fxi $$0) {
-      Builder<fxi> $$1 = new Builder();
-      $$1.add(new fxi[]{$$0.b("bottom"), $$0.b("back"), $$0.b("front"), $$0.b("right"), $$0.b("left"), this.l, this.m});
-      return $$1;
+   public static fxu a(fxs $$0) {
+      fxw $$1 = fvb.a($$0, 0.0F);
+      fxx $$2 = $$1.a();
+      $$2.a("head", fxt.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fxq.a(0.0F, 1.0F, 0.0F));
+      $$2.a("hat", fxt.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), fxq.a(0.0F, 1.0F, 0.0F));
+      $$2.a("right_leg", fxt.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fxq.a(-1.9F, 11.0F, 0.0F));
+      $$2.a("left_leg", fxt.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fxq.a(1.9F, 11.0F, 0.0F));
+      return fxu.a($$1, 64, 32);
    }
 
-   public static void a(fxr $$0) {
-      int $$1 = 32;
-      int $$2 = 6;
-      int $$3 = 20;
-      int $$4 = 4;
-      int $$5 = 28;
-      $$0.a("bottom", fxn.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fxk.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$0.a("back", fxn.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), fxk.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$0.a("front", fxn.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), fxk.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$0.a("right", fxn.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fxk.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$0.a("left", fxn.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), fxk.a(0.0F, 4.0F, 9.0F));
-      int $$6 = 20;
-      int $$7 = 7;
-      int $$8 = 6;
-      float $$9 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         fxn.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fxk.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         fxn.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fxk.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
-      $$0.a("water_patch", fxn.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), fxk.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-   }
-
-   public static fxo a() {
-      fxq $$0 = new fxq();
-      fxr $$1 = $$0.a();
-      a($$1);
-      return fxo.a($$0, 128, 64);
-   }
-
-   public void a(coe $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      a($$0, 0, this.l, $$1);
-      a($$0, 1, this.m, $$1);
-   }
-
-   public ImmutableList<fxi> b() {
-      return this.o;
-   }
-
-   @Override
-   public fxi c() {
-      return this.n;
-   }
-
-   private static void a(coe $$0, int $$1, fxi $$2, float $$3) {
-      float $$4 = $$0.a($$1, $$3);
-      $$2.e = aye.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (aye.a(-$$4) + 1.0F) / 2.0F);
-      $$2.f = aye.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (aye.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
-      }
+   public void a(cij $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.k.e = (float) (Math.PI / 180.0) * $$0.A().b();
+      this.k.f = (float) (Math.PI / 180.0) * $$0.A().c();
+      this.k.g = (float) (Math.PI / 180.0) * $$0.A().d();
+      this.m.e = (float) (Math.PI / 180.0) * $$0.B().b();
+      this.m.f = (float) (Math.PI / 180.0) * $$0.B().c();
+      this.m.g = (float) (Math.PI / 180.0) * $$0.B().d();
+      this.o.e = (float) (Math.PI / 180.0) * $$0.C().b();
+      this.o.f = (float) (Math.PI / 180.0) * $$0.C().c();
+      this.o.g = (float) (Math.PI / 180.0) * $$0.C().d();
+      this.n.e = (float) (Math.PI / 180.0) * $$0.D().b();
+      this.n.f = (float) (Math.PI / 180.0) * $$0.D().c();
+      this.n.g = (float) (Math.PI / 180.0) * $$0.D().d();
+      this.q.e = (float) (Math.PI / 180.0) * $$0.E().b();
+      this.q.f = (float) (Math.PI / 180.0) * $$0.E().c();
+      this.q.g = (float) (Math.PI / 180.0) * $$0.E().d();
+      this.p.e = (float) (Math.PI / 180.0) * $$0.G().b();
+      this.p.f = (float) (Math.PI / 180.0) * $$0.G().c();
+      this.p.g = (float) (Math.PI / 180.0) * $$0.G().d();
+      this.l.a(this.k);
    }
 }

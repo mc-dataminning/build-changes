@@ -1,27 +1,17 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
-
-public class gbm {
-   private final List<akk> a;
-
-   private gbm(List<akk> $$0) {
-      this.a = $$0;
+public class gbm extends gcf {
+   protected gbm(fyj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gcm $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
    }
 
-   public List<akk> a() {
-      return this.a;
-   }
+   public static class a implements gbu<ln> {
+      private final gcm a;
 
-   public static gbm a(JsonObject $$0) {
-      JsonArray $$1 = axu.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new gbm(List.of());
-      } else {
-         List<akk> $$2 = Streams.stream($$1).map($$0x -> axu.a($$0x, "texture")).map(akk::new).collect(ImmutableList.toImmutableList());
-         return new gbm($$2);
+      public a(gcm $$0) {
+         this.a = $$0;
+      }
+
+      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbm($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

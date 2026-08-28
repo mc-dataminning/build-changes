@@ -34,7 +34,7 @@ public class abx implements zb<abn> {
       this.f = $$1.g.decode($$0);
    }
 
-   public static abx a(bpt $$0) {
+   public static abx a(bpw $$0) {
       return new abx($$0.h(), new abx.a($$0));
    }
 
@@ -42,19 +42,19 @@ public class abx implements zb<abn> {
       return new abx($$0, g);
    }
 
-   public static abx b(bpt $$0) {
+   public static abx b(bpw $$0) {
       return new abx($$0.h(), new abx.f($$0.j()));
    }
 
-   public static abx c(bpt $$0) {
+   public static abx c(bpw $$0) {
       return new abx($$0.h(), new abx.e($$0.i()));
    }
 
-   public static abx d(bpt $$0) {
+   public static abx d(bpw $$0) {
       return new abx($$0.h(), new abx.h($$0.k(), $$0.l()));
    }
 
-   public static abx e(bpt $$0) {
+   public static abx e(bpw $$0) {
       return new abx($$0.h(), new abx.g($$0.m(), $$0.n(), $$0.o()));
    }
 
@@ -97,13 +97,13 @@ public class abx implements zb<abn> {
    static class a implements abx.c {
       private final wu a;
       private final float b;
-      private final bpt.a c;
-      private final bpt.b d;
+      private final bpw.a c;
+      private final bpw.b d;
       private final boolean e;
       private final boolean f;
       private final boolean g;
 
-      a(bpt $$0) {
+      a(bpw $$0) {
          this.a = $$0.i();
          this.b = $$0.j();
          this.c = $$0.k();
@@ -116,8 +116,8 @@ public class abx implements zb<abn> {
       private a(wf $$0) {
          this.a = ww.d.decode($$0);
          this.b = $$0.readFloat();
-         this.c = $$0.b(bpt.a.class);
-         this.d = $$0.b(bpt.b.class);
+         this.c = $$0.b(bpw.a.class);
+         this.d = $$0.b(bpw.b.class);
          int $$1 = $$0.readUnsignedByte();
          this.e = ($$1 & 1) > 0;
          this.f = ($$1 & 2) > 0;
@@ -145,7 +145,7 @@ public class abx implements zb<abn> {
    }
 
    public interface b {
-      default void a(UUID $$0, wu $$1, float $$2, bpt.a $$3, bpt.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      default void a(UUID $$0, wu $$1, float $$2, bpw.a $$3, bpw.b $$4, boolean $$5, boolean $$6, boolean $$7) {
       }
 
       default void a(UUID $$0) {
@@ -157,7 +157,7 @@ public class abx implements zb<abn> {
       default void a(UUID $$0, wu $$1) {
       }
 
-      default void a(UUID $$0, bpt.a $$1, bpt.b $$2) {
+      default void a(UUID $$0, bpw.a $$1, bpw.b $$2) {
       }
 
       default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
@@ -272,17 +272,17 @@ public class abx implements zb<abn> {
    }
 
    static class h implements abx.c {
-      private final bpt.a a;
-      private final bpt.b b;
+      private final bpw.a a;
+      private final bpw.b b;
 
-      h(bpt.a $$0, bpt.b $$1) {
+      h(bpw.a $$0, bpw.b $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private h(wf $$0) {
-         this.a = $$0.b(bpt.a.class);
-         this.b = $$0.b(bpt.b.class);
+         this.a = $$0.b(bpw.a.class);
+         this.b = $$0.b(bpw.b.class);
       }
 
       @Override

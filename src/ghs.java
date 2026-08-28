@@ -1,45 +1,52 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.List;
 
-public class ghs implements ghj.a {
+public class ghs implements ghp.a {
    private static final int a = 160;
-   private static final float b = 0.04F;
-   private final ffn c;
-   private Collection<ja> d = Lists.newArrayList();
+   private final fft b;
+   private final Int2ObjectMap<ghs.a> c = new Int2ObjectOpenHashMap();
 
-   public ghs(ffn $$0) {
-      this.c = $$0;
+   @Override
+   public void a() {
+      this.c.clear();
    }
 
-   public void a(Collection<ja> $$0) {
-      this.d = $$0;
+   public void a(int $$0, ja $$1, List<aai.a> $$2) {
+      this.c.put($$0, new ghs.a($$1, $$2));
+   }
+
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public ghs(fft $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(fag $$0, gdx $$1, double $$2, double $$3, double $$4) {
-      ja $$5 = this.b().c();
+   public void a(fam $$0, ged $$1, double $$2, double $$3, double $$4) {
+      ffe $$5 = this.b.j.l();
+      ja $$6 = ja.a($$5.b().c, 0.0, $$5.b().e);
+      ObjectIterator var11 = this.c.values().iterator();
 
-      for (ja $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
+      while (var11.hasNext()) {
+         ghs.a $$7 = (ghs.a)var11.next();
+         ja $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               aai.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               ghp.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+            }
          }
       }
    }
 
-   private static void a(fag $$0, gdx $$1, ja $$2) {
-      ghj.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      int $$3 = -65536;
-      a($$0, $$1, "Raid center", $$2, -65536);
-   }
-
-   private static void a(fag $$0, gdx $$1, String $$2, ja $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      ghj.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
-
-   private fey b() {
-      return this.c.j.l();
+   static record a(ja a, List<aai.a> b) {
    }
 }

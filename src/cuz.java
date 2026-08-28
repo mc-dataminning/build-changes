@@ -1,54 +1,60 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cuz extends ctv {
-   public cuz(ctv.a $$0) {
-      super($$0);
+public class cuz extends csb {
+   public cuz(dfh $$0, ctx.a $$1) {
+      super($$0, $$1);
    }
 
-   public static cxe h() {
-      return new cxe(List.of(cxe.a.a(List.of(dfh.bs), 15.0F), cxe.a.b(avu.O, 15.0F), cxe.a.b(avu.a, 5.0F), cxe.a.b(List.of(dfh.ff, dfh.fg), 2.0F)), 1.0F, 1);
+   @Nullable
+   @Override
+   public cxm b(cxm $$0) {
+      ja $$1 = $$0.a();
+      dcf $$2 = $$0.q();
+      dsk $$3 = $$2.a_($$1);
+      dfh $$4 = this.d();
+      if (!$$3.a($$4)) {
+         return dlw.a($$2, $$1) == 7 ? null : $$0;
+      } else {
+         jf $$5;
+         if ($$0.h()) {
+            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         } else {
+            $$5 = $$0.k() == jf.b ? $$0.g() : jf.b;
+         }
+
+         int $$7 = 0;
+         ja.a $$8 = $$1.j().c($$5);
+
+         while ($$7 < 7) {
+            if (!$$2.B && !$$2.k($$8)) {
+               cmk $$9 = $$0.o();
+               int $$10 = $$2.am();
+               if ($$9 instanceof aqn && $$8.v() >= $$10) {
+                  ((aqn)$$9).b(wu.a("build.tooHigh", $$10 - 1).a(n.m), true);
+               }
+               break;
+            }
+
+            $$3 = $$2.a_($$8);
+            if (!$$3.a(this.d())) {
+               if ($$3.a($$0)) {
+                  return cxm.a($$0, $$8, $$5);
+               }
+               break;
+            }
+
+            $$8.c($$5);
+            if ($$5.o().d()) {
+               $$7++;
+            }
+         }
+
+         return null;
+      }
    }
 
    @Override
-   public boolean a(cua $$0, dcd $$1, dsh $$2, ja $$3, bsy $$4) {
-      if (!$$1.B && !$$2.a(avu.aK)) {
-         $$0.a(1, $$4, bsk.a);
-      }
-
-      return $$2.a(avu.O)
-         || $$2.a(dfh.bs)
-         || $$2.a(dfh.bt)
-         || $$2.a(dfh.bu)
-         || $$2.a(dfh.bv)
-         || $$2.a(dfh.sG)
-         || $$2.a(dfh.ff)
-         || $$2.a(dfh.fI)
-         || $$2.a(avu.a);
-   }
-
-   @Override
-   public bqd a(cxm $$0) {
-      dcd $$1 = $$0.q();
-      ja $$2 = $$0.a();
-      dsh $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof diu $$5 && !$$5.o($$3)) {
-         cmh $$6 = $$0.o();
-         cua $$7 = $$0.n();
-         if ($$6 instanceof aql) {
-            am.N.a((aql)$$6, $$2, $$7);
-         }
-
-         $$1.a($$6, $$2, avf.lp, avg.e, 1.0F, 1.0F);
-         dsh $$8 = $$5.n($$3);
-         $$1.b($$2, $$8);
-         $$1.a(dxa.c, $$2, dxa.a.a($$0.o(), $$8));
-         if ($$6 != null) {
-            $$7.a(1, $$6, bsy.d($$0.p()));
-         }
-
-         return bqd.a($$1.B);
-      }
-
-      return super.a($$0);
+   protected boolean c() {
+      return false;
    }
 }

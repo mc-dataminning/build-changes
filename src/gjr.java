@@ -1,19 +1,28 @@
-public class gjr extends gkm<cji, fuv<cji>> {
-   private static final akk a = new akk("textures/entity/zombie/zombie.png");
-   private final float i;
+public class gjr extends gjl<cit> {
+   private final gex a;
 
-   public gjr(gjg.a $$0, float $$1) {
-      super($$0, new fun($$0.a(fxh.ah)), 0.5F * $$1);
-      this.i = $$1;
-      this.a(new gnl<>(this, $$0.d()));
-      this.a(new gni<>(this, new fun($$0.a(fxh.ai)), new fun($$0.a(fxh.aj)), $$0.g()));
+   public gjr(gjm.a $$0) {
+      super($$0);
+      this.d = 0.5F;
+      this.a = $$0.c();
    }
 
-   protected void a(cji $$0, fag $$1, float $$2) {
-      $$1.b(this.i, this.i, this.i);
+   public void a(cit $$0, float $$1, float $$2, fam $$3, ged $$4, int $$5) {
+      dsk $$6 = $$0.u();
+      if ($$6.l() == dln.c) {
+         dcf $$7 = $$0.dQ();
+         if ($$6 != $$7.a_($$0.dq()) && $$6.l() != dln.a) {
+            $$3.a();
+            ja $$8 = ja.a($$0.dv(), $$0.cL().e, $$0.dB());
+            $$3.a(-0.5, 0.0, -0.5);
+            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(gdy.b($$6)), false, ayo.a(), $$6.a($$0.p()), gpf.d);
+            $$3.b();
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
+      }
    }
 
-   public akk a(cji $$0) {
-      return a;
+   public akk a(cit $$0) {
+      return gpn.e;
    }
 }

@@ -5,7 +5,7 @@ public record afq(float b, boolean c) implements zb<abn> {
       this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public static afq a(bqo $$0) {
+   public static afq a(bqr $$0) {
       return new afq($$0.f(), $$0.l());
    }
 

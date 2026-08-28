@@ -1,113 +1,123 @@
-public class cio {
-   public static final akj<cin> a = a("kebab");
-   public static final akj<cin> b = a("aztec");
-   public static final akj<cin> c = a("alban");
-   public static final akj<cin> d = a("aztec2");
-   public static final akj<cin> e = a("bomb");
-   public static final akj<cin> f = a("plant");
-   public static final akj<cin> g = a("wasteland");
-   public static final akj<cin> h = a("pool");
-   public static final akj<cin> i = a("courbet");
-   public static final akj<cin> j = a("sea");
-   public static final akj<cin> k = a("sunset");
-   public static final akj<cin> l = a("creebet");
-   public static final akj<cin> m = a("wanderer");
-   public static final akj<cin> n = a("graham");
-   public static final akj<cin> o = a("match");
-   public static final akj<cin> p = a("bust");
-   public static final akj<cin> q = a("stage");
-   public static final akj<cin> r = a("void");
-   public static final akj<cin> s = a("skull_and_roses");
-   public static final akj<cin> t = a("wither");
-   public static final akj<cin> u = a("fighters");
-   public static final akj<cin> v = a("pointer");
-   public static final akj<cin> w = a("pigscene");
-   public static final akj<cin> x = a("burning_skull");
-   public static final akj<cin> y = a("skeleton");
-   public static final akj<cin> z = a("donkey_kong");
-   public static final akj<cin> A = a("earth");
-   public static final akj<cin> B = a("wind");
-   public static final akj<cin> C = a("water");
-   public static final akj<cin> D = a("fire");
-   public static final akj<cin> E = a("baroque");
-   public static final akj<cin> F = a("humble");
-   public static final akj<cin> G = a("meditative");
-   public static final akj<cin> H = a("prairie_ride");
-   public static final akj<cin> I = a("unpacked");
-   public static final akj<cin> J = a("backyard");
-   public static final akj<cin> K = a("bouquet");
-   public static final akj<cin> L = a("cavebird");
-   public static final akj<cin> M = a("changing");
-   public static final akj<cin> N = a("cotan");
-   public static final akj<cin> O = a("endboss");
-   public static final akj<cin> P = a("fern");
-   public static final akj<cin> Q = a("finding");
-   public static final akj<cin> R = a("lowmist");
-   public static final akj<cin> S = a("orb");
-   public static final akj<cin> T = a("owlemons");
-   public static final akj<cin> U = a("passage");
-   public static final akj<cin> V = a("pond");
-   public static final akj<cin> W = a("sunflowers");
-   public static final akj<cin> X = a("tides");
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public static void a(qm<cin> $$0) {
-      a($$0, a, 1, 1);
-      a($$0, b, 1, 1);
-      a($$0, c, 1, 1);
-      a($$0, d, 1, 1);
-      a($$0, e, 1, 1);
-      a($$0, f, 1, 1);
-      a($$0, g, 1, 1);
-      a($$0, h, 2, 1);
-      a($$0, i, 2, 1);
-      a($$0, j, 2, 1);
-      a($$0, k, 2, 1);
-      a($$0, l, 2, 1);
-      a($$0, m, 1, 2);
-      a($$0, n, 1, 2);
-      a($$0, o, 2, 2);
-      a($$0, p, 2, 2);
-      a($$0, q, 2, 2);
-      a($$0, r, 2, 2);
-      a($$0, s, 2, 2);
-      a($$0, t, 2, 2);
-      a($$0, u, 4, 2);
-      a($$0, v, 4, 4);
-      a($$0, w, 4, 4);
-      a($$0, x, 4, 4);
-      a($$0, y, 4, 3);
-      a($$0, A, 2, 2);
-      a($$0, B, 2, 2);
-      a($$0, C, 2, 2);
-      a($$0, D, 2, 2);
-      a($$0, z, 4, 3);
-      a($$0, E, 2, 2);
-      a($$0, F, 2, 2);
-      a($$0, G, 1, 1);
-      a($$0, H, 1, 2);
-      a($$0, I, 4, 4);
-      a($$0, J, 3, 4);
-      a($$0, K, 3, 3);
-      a($$0, L, 3, 3);
-      a($$0, M, 4, 2);
-      a($$0, N, 3, 3);
-      a($$0, O, 3, 3);
-      a($$0, P, 3, 3);
-      a($$0, Q, 4, 2);
-      a($$0, R, 4, 2);
-      a($$0, S, 4, 4);
-      a($$0, T, 3, 3);
-      a($$0, U, 4, 2);
-      a($$0, V, 3, 4);
-      a($$0, W, 3, 3);
-      a($$0, X, 3, 3);
+public class cio extends cik {
+   public static final double c = 0.375;
+
+   public cio(bsm<? extends cio> $$0, dcf $$1) {
+      super($$0, $$1);
    }
 
-   private static void a(qm<cin> $$0, akj<cin> $$1, int $$2, int $$3) {
-      $$0.a($$1, new cin($$2, $$3, $$1.a()));
+   public cio(dcf $$0, ja $$1) {
+      super(bsm.al, $$0, $$1);
+      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
    }
 
-   private static akj<cin> a(String $$0) {
-      return akj.a(lr.W, new akk($$0));
+   @Override
+   protected void a(ajt.a $$0) {
+   }
+
+   @Override
+   protected void p() {
+      this.p((double)this.b.u() + 0.5, (double)this.b.v() + 0.375, (double)this.b.w() + 0.5);
+      double $$0 = (double)this.al().l() / 2.0;
+      double $$1 = (double)this.al().m();
+      this.a(new ewa(this.dv() - $$0, this.dx(), this.dB() - $$0, this.dv() + $$0, this.dx() + $$1, this.dB() + $$0));
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return $$0 < 1024.0;
+   }
+
+   @Override
+   public void b(@Nullable bsg $$0) {
+      this.a(avh.nS, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(tx $$0) {
+   }
+
+   @Override
+   public void a(tx $$0) {
+   }
+
+   @Override
+   public bqg a(cmk $$0, bqf $$1) {
+      if (this.dQ().B) {
+         return bqg.a;
+      } else {
+         boolean $$2 = false;
+         double $$3 = 7.0;
+         List<btd> $$4 = this.dQ().a(btd.class, new ewa(this.dv() - 7.0, this.dx() - 7.0, this.dB() - 7.0, this.dv() + 7.0, this.dx() + 7.0, this.dB() + 7.0));
+
+         for (btd $$5 : $$4) {
+            if ($$5.gc() == $$0) {
+               $$5.b(this, true);
+               $$2 = true;
+            }
+         }
+
+         boolean $$6 = false;
+         if (!$$2) {
+            this.ap();
+            if ($$0.ga().d) {
+               for (btd $$7 : $$4) {
+                  if ($$7.ga() && $$7.gc() == this) {
+                     $$7.a(true, false);
+                     $$6 = true;
+                  }
+               }
+            }
+         }
+
+         if ($$2 || $$6) {
+            this.a(dxg.b, $$0);
+         }
+
+         return bqg.c;
+      }
+   }
+
+   @Override
+   public boolean s() {
+      return this.dQ().a_(this.b).a(avw.S);
+   }
+
+   public static cio b(dcf $$0, ja $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+
+      for (cio $$6 : $$0.a(cio.class, new ewa((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
+         if ($$6.u().equals($$1)) {
+            return $$6;
+         }
+      }
+
+      cio $$7 = new cio($$0, $$1);
+      $$0.b($$7);
+      return $$7;
+   }
+
+   @Override
+   public void v() {
+      this.a(avh.nT, 1.0F, 1.0F);
+   }
+
+   @Override
+   public zb<abn> dm() {
+      return new abo(this, 0, this.u());
+   }
+
+   @Override
+   public ewf r(float $$0) {
+      return this.m($$0).b(0.0, 0.2, 0.0);
+   }
+
+   @Override
+   public cuc dD() {
+      return new cuc(cuf.uK);
    }
 }

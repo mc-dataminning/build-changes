@@ -24,7 +24,7 @@ public class uk {
       tx var4;
       try (
          InputStream $$2 = Files.newInputStream($$0);
-         InputStream $$3 = new axn($$2);
+         InputStream $$3 = new axp($$2);
       ) {
          var4 = a($$3, $$1);
       }
@@ -33,7 +33,7 @@ public class uk {
    }
 
    private static DataInputStream a(InputStream $$0) throws IOException {
-      return new DataInputStream(new axn(new GZIPInputStream($$0)));
+      return new DataInputStream(new axp(new GZIPInputStream($$0)));
    }
 
    private static DataOutputStream a(OutputStream $$0) throws IOException {
@@ -52,7 +52,7 @@ public class uk {
    public static void a(Path $$0, ur $$1, ug $$2) throws IOException {
       try (
          InputStream $$3 = Files.newInputStream($$0);
-         InputStream $$4 = new axn($$3);
+         InputStream $$4 = new axp($$3);
       ) {
          a($$4, $$1, $$2);
       }
@@ -190,7 +190,7 @@ public class uk {
       }
    }
 
-   public static class a extends axh {
+   public static class a extends axj {
       public a(DataOutput $$0) {
          super($$0);
       }

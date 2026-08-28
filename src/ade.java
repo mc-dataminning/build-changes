@@ -1,7 +1,7 @@
 import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record ade(int b, boolean c, Set<akj<dcd>> d, int e, int f, int g, boolean h, boolean i, boolean j, afw k, boolean l) implements zb<abn> {
+public record ade(int b, boolean c, Set<akj<dcf>> d, int e, int f, int g, boolean h, boolean i, boolean j, afw k, boolean l) implements zb<abn> {
    public static final ys<wf, ade> a = zb.a(ade::a, ade::new);
 
    private ade(wf $$0) {
@@ -47,7 +47,7 @@ public record ade(int b, boolean c, Set<akj<dcd>> d, int e, int f, int g, boolea
       return this.c;
    }
 
-   public Set<akj<dcd>> f() {
+   public Set<akj<dcf>> f() {
       return this.d;
    }
 

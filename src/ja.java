@@ -34,7 +34,7 @@ public class ja extends ke {
    };
    private static final Logger e = LogUtils.getLogger();
    public static final ja c = new ja(0, 0, 0);
-   private static final int h = 1 + aye.f(aye.c(30000000));
+   private static final int h = 1 + ayg.f(ayg.c(30000000));
    private static final int i = h;
    public static final int d = 64 - h - i;
    private static final long j = (1L << h) - 1L;
@@ -77,7 +77,7 @@ public class ja extends ke {
    }
 
    public static ja a(double $$0, double $$1, double $$2) {
-      return new ja(aye.a($$0), aye.a($$1), aye.a($$2));
+      return new ja(ayg.a($$0), ayg.a($$1), ayg.a($$2));
    }
 
    public static ja a(jt $$0) {
@@ -111,8 +111,8 @@ public class ja extends ke {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new ja(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public evz b() {
-      return evz.b(this);
+   public ewf b() {
+      return ewf.b(this);
    }
 
    public ja a(ke $$0) {
@@ -198,7 +198,7 @@ public class ja extends ke {
       }
    }
 
-   public ja a(dls $$0) {
+   public ja a(dlu $$0) {
       switch ($$0) {
          case a:
          default:
@@ -228,7 +228,7 @@ public class ja extends ke {
       return new ja.a(this.u(), this.v(), this.w());
    }
 
-   public static Iterable<ja> a(aym $$0, int $$1, ja $$2, int $$3) {
+   public static Iterable<ja> a(ayo $$0, int $$1, ja $$2, int $$3) {
       return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
    }
 
@@ -237,7 +237,7 @@ public class ja extends ke {
       return Stream.of($$0, $$0.f(), $$0.h(), $$0.f().h());
    }
 
-   public static Iterable<ja> a(aym $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+   public static Iterable<ja> a(ayo $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
       int $$8 = $$5 - $$2 + 1;
       int $$9 = $$6 - $$3 + 1;
       int $$10 = $$7 - $$4 + 1;
@@ -339,7 +339,7 @@ public class ja extends ke {
       return StreamSupport.stream(c($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<ja> a(eii $$0) {
+   public static Stream<ja> a(eio $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -350,8 +350,8 @@ public class ja extends ke {
       );
    }
 
-   public static Stream<ja> a(evu $$0) {
-      return a(aye.a($$0.a), aye.a($$0.b), aye.a($$0.c), aye.a($$0.d), aye.a($$0.e), aye.a($$0.f));
+   public static Stream<ja> a(ewa $$0) {
+      return a(ayg.a($$0.a), ayg.a($$0.b), ayg.a($$0.c), ayg.a($$0.d), ayg.a($$0.e), ayg.a($$0.f));
    }
 
    public static Stream<ja> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
@@ -451,7 +451,7 @@ public class ja extends ke {
       }
 
       public a(double $$0, double $$1, double $$2) {
-         this(aye.a($$0), aye.a($$1), aye.a($$2));
+         this(ayg.a($$0), ayg.a($$1), ayg.a($$2));
       }
 
       @Override
@@ -475,7 +475,7 @@ public class ja extends ke {
       }
 
       @Override
-      public ja a(dls $$0) {
+      public ja a(dlu $$0) {
          return super.a($$0).i();
       }
 
@@ -487,7 +487,7 @@ public class ja extends ke {
       }
 
       public ja.a b(double $$0, double $$1, double $$2) {
-         return this.d(aye.a($$0), aye.a($$1), aye.a($$2));
+         return this.d(ayg.a($$0), ayg.a($$1), ayg.a($$2));
       }
 
       public ja.a g(ke $$0) {
@@ -533,11 +533,11 @@ public class ja extends ke {
       public ja.a a(jf.a $$0, int $$1, int $$2) {
          switch ($$0) {
             case a:
-               return this.d(aye.a(this.u(), $$1, $$2), this.v(), this.w());
+               return this.d(ayg.a(this.u(), $$1, $$2), this.v(), this.w());
             case b:
-               return this.d(this.u(), aye.a(this.v(), $$1, $$2), this.w());
+               return this.d(this.u(), ayg.a(this.v(), $$1, $$2), this.w());
             case c:
-               return this.d(this.u(), this.v(), aye.a(this.w(), $$1, $$2));
+               return this.d(this.u(), this.v(), ayg.a(this.w(), $$1, $$2));
             default:
                throw new IllegalStateException("Unable to clamp axis " + $$0);
          }

@@ -8,7 +8,7 @@ public record ye(akk d) implements xw {
 
    @Override
    public Stream<tx> a(eq $$0) {
-      tx $$1 = $$0.l().aL().a(this.d);
+      tx $$1 = $$0.l().aM().a(this.d);
       return Stream.of($$1);
    }
 

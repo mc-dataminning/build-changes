@@ -1,96 +1,82 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dji extends der {
-   public static final MapCodec<dji> a = b(dji::new);
-   public static final dsy b = dsx.n;
+public class dji extends dhd {
+   public static final MapCodec<dji> i = b(dji::new);
 
    @Override
-   public MapCodec<dji> a() {
-      return a;
+   public MapCodec<? extends dji> a() {
+      return i;
    }
 
-   protected dji(dsg.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+   protected dji(dsj.d $$0) {
+      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   public void a(dcd $$0, ja $$1, dsh $$2, @Nullable bsy $$3, cua $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      cwo $$5 = $$4.a(kn.O, cwo.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
+   public dsk a(cxm $$0) {
+      dbl $$1 = $$0.q();
+      ja $$2 = $$0.a();
+      eoh $$3 = $$0.q().b_($$0.a());
+      ja $$4 = $$2.e();
+      ja $$5 = $$2.f();
+      ja $$6 = $$2.g();
+      ja $$7 = $$2.h();
+      dsk $$8 = $$1.a_($$4);
+      dsk $$9 = $$1.a_($$5);
+      dsk $$10 = $$1.a_($$6);
+      dsk $$11 = $$1.a_($$7);
+      return this.o()
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, jf.d))))
+         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, jf.c))))
+         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, jf.f))))
+         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, jf.e))))
+         .a(e, Boolean.valueOf($$3.a() == eoi.c));
+   }
+
+   @Override
+   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, eoi.c, eoi.c.a($$3));
       }
+
+      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected bqd a(dsh $$0, dcd $$1, ja $$2, cmh $$3, evv $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dqo $$5) {
-         $$5.l();
-         return bqd.a($$1.B);
-      } else {
-         return bqd.e;
-      }
+   protected ewy c(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return ewv.a();
    }
 
    @Override
-   protected void a(dsh $$0, dcd $$1, ja $$2, dsh $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dqo $$5) {
-            $$5.l();
+   protected boolean a(dsk $$0, dsk $$1, jf $$2) {
+      if ($$1.a(this)) {
+         if (!$$2.o().d()) {
+            return true;
          }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public dpn a(ja $$0, dsh $$1) {
-      return new dqo($$0, $$1);
-   }
-
-   @Override
-   public boolean e_(dsh $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dsh $$0, dbj $$1, ja $$2, jf $$3) {
-      if ($$1.c_($$2) instanceof dqo $$4 && $$4.j()) {
-         return 15;
+         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
+            return true;
+         }
       }
 
-      return 0;
+      return super.a($$0, $$1, $$2);
+   }
+
+   public final boolean a(dsk $$0, boolean $$1) {
+      return !j($$0) && $$1 || $$0.b() instanceof dji || $$0.a(avw.L);
    }
 
    @Override
-   protected boolean c_(dsh $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dsh $$0, dcd $$1, ja $$2) {
-      if ($$1.c_($$2) instanceof dqo $$3 && $$3.f().g() instanceof cuv $$4) {
-         return $$4.h();
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected dll a_(dsh $$0) {
-      return dll.c;
-   }
-
-   @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dpn> dpo<T> a(dcd $$0, dsh $$1, dpp<T> $$2) {
-      return $$1.c(b) ? a($$2, dpp.e, dqo::a) : null;
+   protected void a(dsl.a<dfh, dsk> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

@@ -1,19 +1,27 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dbt extends dbw {
-   private final bsd a;
+public class dbt {
+   public static final dbt a = new dbt(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<dbt> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, dbt::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
 
-   public dbt(bsd $$0) {
-      this.a = $$0;
+   public dbt(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   @Override
-   public Optional<Float> a(dbv $$0, dbj $$1, ja $$2, dsh $$3, eob $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   public List<String> a() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(dbv $$0, dbj $$1, ja $$2, dsh $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   public List<String> b() {
+      return this.d;
    }
 }

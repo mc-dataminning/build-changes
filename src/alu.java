@@ -21,16 +21,16 @@ public class alu {
    }
 
    private static int a(eq $$0, Collection<GameProfile> $$1, @Nullable wu $$2) throws CommandSyntaxException {
-      aun $$3 = $$0.l().ah().f();
+      aup $$3 = $$0.l().ai().f();
       int $$4 = 0;
 
       for (GameProfile $$5 : $$1) {
          if (!$$3.a($$5)) {
-            auo $$6 = new auo($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+            auq $$6 = new auq($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
             $$3.a($$6);
             $$4++;
             $$0.a(() -> wu.a("commands.ban.success", wu.b($$5.getName()), $$6.d()), true);
-            aql $$7 = $$0.l().ah().a($$5.getId());
+            aqn $$7 = $$0.l().ai().a($$5.getId());
             if ($$7 != null) {
                $$7.c.b(wu.c("multiplayer.disconnect.banned"));
             }

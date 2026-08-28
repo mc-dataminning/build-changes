@@ -16,7 +16,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-public enum jf implements ayz {
+public enum jf implements azc {
    a(0, 1, -1, "down", jf.b.b, jf.a.b, new ke(0, -1, 0)),
    b(1, 0, -1, "up", jf.b.a, jf.a.b, new ke(0, 1, 0)),
    c(2, 3, 2, "north", jf.b.b, jf.a.c, new ke(0, 0, -1)),
@@ -24,9 +24,9 @@ public enum jf implements ayz {
    e(4, 5, 1, "west", jf.b.b, jf.a.a, new ke(-1, 0, 0)),
    f(5, 4, 3, "east", jf.b.a, jf.a.a, new ke(1, 0, 0));
 
-   public static final ayz.a<jf> g = ayz.a(jf::values);
+   public static final azc.a<jf> g = azc.a(jf::values);
    public static final Codec<jf> h = g.validate(jf::a);
-   public static final IntFunction<jf> i = awu.a(jf::d, values(), awu.a.b);
+   public static final IntFunction<jf> i = aww.a(jf::d, values(), aww.a.b);
    public static final ys<ByteBuf, jf> j = yq.a(i, jf::d);
    private final int k;
    private final int l;
@@ -49,13 +49,13 @@ public enum jf implements ayz {
       this.q = $$6;
    }
 
-   public static jf[] a(bsd $$0) {
+   public static jf[] a(bsg $$0) {
       float $$1 = $$0.h(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.i(1.0F) * (float) (Math.PI / 180.0);
-      float $$3 = aye.a($$1);
-      float $$4 = aye.b($$1);
-      float $$5 = aye.a($$2);
-      float $$6 = aye.b($$2);
+      float $$3 = ayg.a($$1);
+      float $$4 = ayg.b($$1);
+      float $$5 = ayg.a($$2);
+      float $$6 = ayg.b($$2);
       boolean $$7 = $$5 > 0.0F;
       boolean $$8 = $$3 < 0.0F;
       boolean $$9 = $$6 > 0.0F;
@@ -90,7 +90,7 @@ public enum jf implements ayz {
       return a($$3.x(), $$3.y(), $$3.z());
    }
 
-   public static Collection<jf> a(aym $$0) {
+   public static Collection<jf> a(ayo $$0) {
       return ac.b(values(), $$0);
    }
 
@@ -121,7 +121,7 @@ public enum jf implements ayz {
       return this.p;
    }
 
-   public static jf a(bsd $$0, jf.a $$1) {
+   public static jf a(bsg $$0, jf.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.i(1.0F)) ? f : e;
          case b -> $$0.h(1.0F) < 0.0F ? b : a;
@@ -239,11 +239,11 @@ public enum jf implements ayz {
    }
 
    public static jf a(int $$0) {
-      return s[aye.a($$0 % s.length)];
+      return s[ayg.a($$0 % s.length)];
    }
 
    public static jf b(int $$0) {
-      return t[aye.a($$0 % t.length)];
+      return t[ayg.a($$0 % t.length)];
    }
 
    @Nullable
@@ -276,7 +276,7 @@ public enum jf implements ayz {
    }
 
    public static jf a(double $$0) {
-      return b(aye.a($$0 / 90.0 + 0.5) & 3);
+      return b(ayg.a($$0 / 90.0 + 0.5) & 3);
    }
 
    public static jf a(jf.a $$0, jf.b $$1) {
@@ -291,7 +291,7 @@ public enum jf implements ayz {
       return (float)((this.m & 3) * 90);
    }
 
-   public static jf b(aym $$0) {
+   public static jf b(ayo $$0) {
       return ac.a(r, $$0);
    }
 
@@ -314,7 +314,7 @@ public enum jf implements ayz {
       return $$3;
    }
 
-   public static jf a(evz $$0) {
+   public static jf a(ewf $$0) {
       return a($$0.c, $$0.d, $$0.e);
    }
 
@@ -348,12 +348,12 @@ public enum jf implements ayz {
 
    public boolean a(float $$0) {
       float $$1 = $$0 * (float) (Math.PI / 180.0);
-      float $$2 = -aye.a($$1);
-      float $$3 = aye.b($$1);
+      float $$2 = -ayg.a($$1);
+      float $$3 = ayg.b($$1);
       return (float)this.q.u() * $$2 + (float)this.q.w() * $$3 > 0.0F;
    }
 
-   public static enum a implements ayz, Predicate<jf> {
+   public static enum a implements azc, Predicate<jf> {
       a("x") {
          @Override
          public int a(int $$0, int $$1, int $$2) {
@@ -389,7 +389,7 @@ public enum jf implements ayz {
       };
 
       public static final jf.a[] d = values();
-      public static final ayz.a<jf.a> e = ayz.a(jf.a::values);
+      public static final azc.a<jf.a> e = azc.a(jf.a::values);
       private final String f;
 
       a(final String $$0) {
@@ -418,7 +418,7 @@ public enum jf implements ayz {
          return this.f;
       }
 
-      public static jf.a a(aym $$0) {
+      public static jf.a a(ayo $$0) {
          return ac.a(d, $$0);
       }
 
@@ -485,11 +485,11 @@ public enum jf implements ayz {
          this.d = $$1;
       }
 
-      public jf a(aym $$0) {
+      public jf a(ayo $$0) {
          return ac.a(this.c, $$0);
       }
 
-      public jf.a b(aym $$0) {
+      public jf.a b(ayo $$0) {
          return ac.a(this.d, $$0);
       }
 
@@ -506,7 +506,7 @@ public enum jf implements ayz {
          return Arrays.stream(this.c);
       }
 
-      public List<jf> c(aym $$0) {
+      public List<jf> c(ayo $$0) {
          return ac.b(this.c, $$0);
       }
 

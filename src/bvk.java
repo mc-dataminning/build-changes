@@ -1,28 +1,79 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 
-public class bvk {
-   private static ja a(bta $$0, ja $$1) {
-      aym $$2 = $$0.dP().z;
-      return $$1.b(a($$2), 0, a($$2));
+public class bvk<E extends btb & clv> extends buu<E> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private final Function<btb, Optional<bwi>> e;
+   private final float f;
+
+   public bvk(Function<btb, Optional<bwi>> $$0, float $$1, int $$2) {
+      super(Map.of(ccf.n, ccg.c, ccf.m, ccg.c, ccf.aP, ccg.c), $$2);
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   private static int a(aym $$0) {
-      return $$0.a(3) - 1;
+   @Override
+   protected boolean a(aqm $$0, E $$1) {
+      return this.b($$1);
    }
 
-   public static <E extends bta> bwc<E> a(ccc<ja> $$0, int $$1, float $$2) {
-      return bye.a(
-         (Function<bye.b<E>, ? extends App<bye.c<E>, byh<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(ccc.o), $$3.c(ccc.m), $$3.a(ccc.n))
-               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
-                     ja $$7 = $$3.b($$3x);
-                     boolean $$8 = $$7.a($$5x.dp(), (double)$$1);
-                     if (!$$8) {
-                        but.a($$5x, a($$5x, $$7), $$2, $$1);
-                     }
+   @Override
+   protected boolean a(aqm $$0, E $$1, long $$2) {
+      return this.b($$1);
+   }
 
-                     return true;
-                  }))
-      );
+   @Override
+   protected void d(aqm $$0, E $$1, long $$2) {
+      this.e.apply($$1).ifPresent($$1x -> buw.a($$1, $$1x, this.f, 3));
+   }
+
+   @Override
+   protected void c(aqm $$0, E $$1, long $$2) {
+      Optional<bwi> $$3 = this.e.apply($$1);
+      if (!$$3.isEmpty()) {
+         bwi $$4 = $$3.get();
+         double $$5 = $$4.a().f($$1.by());
+         if ($$5 < 3.0) {
+            cuc $$6 = $$1.y().a(0, 1);
+            if (!$$6.e()) {
+               a($$1, $$6, a($$4));
+               if ($$1 instanceof cfx $$7) {
+                  cfy.a((btb)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
+               }
+
+               $$1.dU().a(ccf.aP, 60);
+            }
+         }
+      }
+   }
+
+   private void a(bwi $$0, cuc $$1, aqn $$2) {
+      ja $$3 = $$0.b().d();
+      am.aa.a($$2, $$3, $$1);
+   }
+
+   private boolean b(E $$0) {
+      if ($$0.y().c()) {
+         return false;
+      } else {
+         Optional<bwi> $$1 = this.e.apply($$0);
+         return $$1.isPresent();
+      }
+   }
+
+   private static ewf a(bwi $$0) {
+      return $$0.a().b(0.0, 1.0, 0.0);
+   }
+
+   public static void a(btb $$0, cuc $$1, ewf $$2) {
+      ewf $$3 = new ewf(0.2F, 0.3F, 0.2F);
+      buw.a($$0, $$1, $$2, $$3, 0.2F);
+      dcf $$4 = $$0.dQ();
+      if ($$4.Z() % 7L == 0L && $$4.z.j() < 0.9) {
+         float $$5 = ac.<Float>a(cfx.d, $$4.E_());
+         $$4.a(null, $$0, avh.g, avi.g, 1.0F, $$5);
+      }
    }
 }

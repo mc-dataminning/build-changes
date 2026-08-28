@@ -1,30 +1,146 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class eqy extends erg {
-   public static final MapCodec<eqy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akk.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, eqy::new)
+public class eqy {
+   public static final Codec<eqy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eri.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
+               euf.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
+               esk.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
+               evc.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
+               evc.a.fieldOf("bonus_rolls").orElse(euy.a(0.0F)).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, eqy::new)
    );
-   private final akk j;
+   private final List<erk> b;
+   private final List<euf> c;
+   private final Predicate<equ> d;
+   private final List<esi> e;
+   private final BiFunction<cuc, equ, cuc> f;
+   private final evb g;
+   private final evb h;
 
-   private eqy(akk $$0, int $$1, int $$2, List<etz> $$3, List<esc> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   eqy(List<erk> $$0, List<euf> $$1, List<esi> $$2, evb $$3, evb $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = ac.a($$1);
+      this.e = $$2;
+      this.f = esk.a($$2);
+      this.g = $$3;
+      this.h = $$4;
    }
 
-   @Override
-   public erf a() {
-      return erc.e;
+   private void b(Consumer<cuc> $$0, equ $$1) {
+      ayo $$2 = $$1.b();
+      List<erj> $$3 = Lists.newArrayList();
+      MutableInt $$4 = new MutableInt();
+
+      for (erk $$5 : this.b) {
+         $$5.expand($$1, $$3x -> {
+            int $$4x = $$3x.a($$1.c());
+            if ($$4x > 0) {
+               $$3.add($$3x);
+               $$4.add($$4x);
+            }
+         });
+      }
+
+      int $$6 = $$3.size();
+      if ($$4.intValue() != 0 && $$6 != 0) {
+         if ($$6 == 1) {
+            $$3.get(0).a($$0, $$1);
+         } else {
+            int $$7 = $$2.a($$4.intValue());
+
+            for (erj $$8 : $$3) {
+               $$7 -= $$8.a($$1.c());
+               if ($$7 < 0) {
+                  $$8.a($$0, $$1);
+                  return;
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   public void a(Consumer<cua> $$0, eqo $$1) {
-      $$1.a(this.j, $$0);
+   public void a(Consumer<cuc> $$0, equ $$1) {
+      if (this.d.test($$1)) {
+         Consumer<cuc> $$2 = esi.a(this.f, $$0, $$1);
+         int $$3 = this.g.a($$1) + ayg.d(this.h.b($$1) * $$1.c());
+
+         for (int $$4 = 0; $$4 < $$3; $$4++) {
+            this.b($$2, $$1);
+         }
+      }
    }
 
-   public static erg.a<?> a(akk $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eqy($$0, $$1, $$2, $$3, $$4));
+   public void a(era $$0) {
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
+
+      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
+         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
+      }
+
+      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
+         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
+      }
+
+      this.g.a($$0.a(".rolls"));
+      this.h.a($$0.a(".bonusRolls"));
+   }
+
+   public static eqy.a a() {
+      return new eqy.a();
+   }
+
+   public static class a implements ese<eqy.a>, etx<eqy.a> {
+      private final Builder<erk> a = ImmutableList.builder();
+      private final Builder<euf> b = ImmutableList.builder();
+      private final Builder<esi> c = ImmutableList.builder();
+      private evb d = euy.a(1.0F);
+      private evb e = euy.a(0.0F);
+
+      public eqy.a a(evb $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public eqy.a a() {
+         return this;
+      }
+
+      public eqy.a b(evb $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public eqy.a a(erk.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      public eqy.a a(euf.a $$0) {
+         this.b.add($$0.build());
+         return this;
+      }
+
+      public eqy.a a(esi.a $$0) {
+         this.c.add($$0.b());
+         return this;
+      }
+
+      public eqy b() {
+         return new eqy(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
+      }
    }
 }

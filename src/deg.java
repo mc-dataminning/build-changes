@@ -1,91 +1,103 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class deg extends dfo {
-   public static final MapCodec<deg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               akj.a(lr.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
-               akj.a(lr.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
-               akj.a(lr.K).fieldOf("seed").forGetter($$0x -> $$0x.g),
-               u()
-            )
+public class deg extends def implements dmi {
+   public static final MapCodec<deg> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("height").forGetter($$0x -> $$0x.k), Codec.FLOAT.fieldOf("aabb_offset").forGetter($$0x -> $$0x.l), u())
             .apply($$0, deg::new)
    );
-   public static final dtb b = djb.aE;
-   protected static final float c = 2.0F;
-   private static final Map<jf, ews> d = Maps.newEnumMap(
-      ImmutableMap.of(
-         jf.d,
-         dff.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
-         jf.e,
-         dff.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
-         jf.c,
-         dff.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
-         jf.f,
-         dff.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
-      )
-   );
-   private final akj<dff> e;
-   private final akj<dff> f;
-   private final akj<ctv> g;
+   public static final dtb c = dta.C;
+   public static final dte d = dta.P;
+   private final float k;
+   private final float l;
+   protected final ewy e;
+   protected final ewy f;
+   protected final ewy g;
+   protected final ewy h;
+   protected final ewy i;
+   protected final ewy j;
 
    @Override
    public MapCodec<deg> a() {
-      return a;
+      return b;
    }
 
-   protected deg(akj<dff> $$0, akj<dff> $$1, akj<ctv> $$2, dsg.d $$3) {
-      super($$3);
-      this.k(this.E.b().a(b, jf.c));
-      this.f = $$0;
-      this.e = $$1;
-      this.g = $$2;
+   public deg(float $$0, float $$1, dsj.d $$2) {
+      super($$2);
+      this.k(this.o().a(c, Boolean.valueOf(false)).a(d, jf.b));
+      this.i = dfh.a((double)$$1, 0.0, (double)$$1, (double)(16.0F - $$1), (double)$$0, (double)(16.0F - $$1));
+      this.j = dfh.a((double)$$1, (double)(16.0F - $$0), (double)$$1, (double)(16.0F - $$1), 16.0, (double)(16.0F - $$1));
+      this.e = dfh.a((double)$$1, (double)$$1, (double)(16.0F - $$0), (double)(16.0F - $$1), (double)(16.0F - $$1), 16.0);
+      this.f = dfh.a((double)$$1, (double)$$1, 0.0, (double)(16.0F - $$1), (double)(16.0F - $$1), (double)$$0);
+      this.g = dfh.a(0.0, (double)$$1, (double)$$1, (double)$$0, (double)(16.0F - $$1), (double)(16.0F - $$1));
+      this.h = dfh.a((double)(16.0F - $$0), (double)$$1, (double)$$1, 16.0, (double)(16.0F - $$1), (double)(16.0F - $$1));
+      this.k = $$0;
+      this.l = $$1;
    }
 
    @Override
-   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
-      return d.get($$0.c(b));
+   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      jf $$4 = $$0.c(d);
+      switch ($$4) {
+         case c:
+            return this.e;
+         case d:
+            return this.f;
+         case f:
+            return this.g;
+         case e:
+            return this.h;
+         case a:
+            return this.j;
+         case b:
+         default:
+            return this.i;
+      }
    }
 
    @Override
-   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
-      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
-         Optional<dff> $$6 = $$3.H_().d(lr.f).e(this.f);
-         if ($$6.isPresent()) {
-            return $$6.get().o().b(dnb.c, Integer.valueOf(7));
-         }
+   protected boolean a(dsk $$0, dci $$1, ja $$2) {
+      jf $$3 = $$0.c(d);
+      ja $$4 = $$2.a($$3.g());
+      return $$1.a_($$4).d($$1, $$4, $$3);
+   }
+
+   @Override
+   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eoi.c, eoi.c.a($$3));
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return $$1 == $$0.c(d).g() && !$$0.a($$3, $$4) ? dfj.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Nullable
+   @Override
+   public dsk a(cxm $$0) {
+      dcg $$1 = $$0.q();
+      ja $$2 = $$0.a();
+      return this.o().a(c, Boolean.valueOf($$1.b_($$2).a() == eoi.c)).a(d, $$0.k());
    }
 
    @Override
-   protected boolean b(dsh $$0, dbj $$1, ja $$2) {
-      return $$0.a(dfh.cC);
+   protected dsk a(dsk $$0, dlu $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   public cua a(dcg $$0, ja $$1, dsh $$2) {
-      return new cua((dcc)DataFixUtils.orElse($$0.H_().d(lr.K).e(this.g), this));
+   protected dsk a(dsk $$0, dke $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
    @Override
-   protected dsh a(dsh $$0, dls $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected eoh b_(dsk $$0) {
+      return $$0.c(c) ? eoi.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected dsh a(dsh $$0, dkc $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
-      $$0.a(b);
+   protected void a(dsl.a<dfh, dsk> $$0) {
+      $$0.a(c, d);
    }
 }

@@ -1,78 +1,39 @@
-import javax.annotation.Nullable;
+public record cev(akk l) {
+   public static final akj<cev> a = a("tabby");
+   public static final akj<cev> b = a("black");
+   public static final akj<cev> c = a("red");
+   public static final akj<cev> d = a("siamese");
+   public static final akj<cev> e = a("british_shorthair");
+   public static final akj<cev> f = a("calico");
+   public static final akj<cev> g = a("persian");
+   public static final akj<cev> h = a("ragdoll");
+   public static final akj<cev> i = a("white");
+   public static final akj<cev> j = a("jellie");
+   public static final akj<cev> k = a("all_black");
 
-public class cev extends ceo {
-   private static final bsg ca = bsj.w.n().a(0.5F).b(0.665F);
-
-   public cev(bsj<? extends cev> $$0, dcd $$1) {
-      super($$0, $$1);
+   private static akj<cev> a(String $$0) {
+      return akj.a(lr.l, new akk($$0));
    }
 
-   @Override
-   protected void z() {
-      this.bU.a(0, new bzq(this));
-      this.bU.a(1, new cap(this, 2.0));
-      this.bU.a(2, new bzi(this, 1.0));
-      this.bU.a(3, new cbe(this, 1.25, $$0 -> $$0.a(awd.aa), false));
-      this.bU.a(4, new bzv(this, 1.25));
-      this.bU.a(5, new cbj(this, 1.0));
-      this.bU.a(6, new cae(this, cmh.class, 6.0F));
-      this.bU.a(7, new car(this));
+   public static cev a(jw<cev> $$0) {
+      a($$0, a, "textures/entity/cat/tabby.png");
+      a($$0, b, "textures/entity/cat/black.png");
+      a($$0, c, "textures/entity/cat/red.png");
+      a($$0, d, "textures/entity/cat/siamese.png");
+      a($$0, e, "textures/entity/cat/british_shorthair.png");
+      a($$0, f, "textures/entity/cat/calico.png");
+      a($$0, g, "textures/entity/cat/persian.png");
+      a($$0, h, "textures/entity/cat/ragdoll.png");
+      a($$0, i, "textures/entity/cat/white.png");
+      a($$0, j, "textures/entity/cat/jellie.png");
+      return a($$0, k, "textures/entity/cat/all_black.png");
    }
 
-   @Override
-   public boolean o(cua $$0) {
-      return $$0.a(awd.aa);
+   private static cev a(jw<cev> $$0, akj<cev> $$1, String $$2) {
+      return jw.a($$0, $$1, new cev(new akk($$2)));
    }
 
-   public static buf.a s() {
-      return bta.A().a(bug.s, 10.0).a(bug.v, 0.2F);
-   }
-
-   @Override
-   protected ave v() {
-      return avf.gb;
-   }
-
-   @Override
-   protected ave d(bqw $$0) {
-      return avf.gd;
-   }
-
-   @Override
-   protected ave o_() {
-      return avf.gc;
-   }
-
-   @Override
-   protected void b(ja $$0, dsh $$1) {
-      this.a(avf.gf, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float fa() {
-      return 0.4F;
-   }
-
-   @Override
-   public bqd b(cmh $$0, bqc $$1) {
-      cua $$2 = $$0.b($$1);
-      if ($$2.a(cud.qy) && !this.p_()) {
-         $$0.a(avf.ge, 1.0F, 1.0F);
-         cua $$3 = cuc.a($$2, $$0, cud.qE.w());
-         $$0.a($$1, $$3);
-         return bqd.a(this.dP().B);
-      } else {
-         return super.b($$0, $$1);
-      }
-   }
-
-   @Nullable
-   public cev b(aqk $$0, brx $$1) {
-      return bsj.w.a((dcd)$$0);
-   }
-
-   @Override
-   public bsg e(btk $$0) {
-      return this.p_() ? ca : super.e($$0);
+   public akk a() {
+      return this.l;
    }
 }

@@ -1,28 +1,37 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bva {
-   public static <E extends bsy> bus<E> a(int $$0, BiPredicate<E, bsd> $$1) {
-      return bye.a((Function<bye.b<E>, ? extends App<bye.c<E>, byh<E>>>)($$2 -> $$2.group($$2.a(ccc.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
-               bsd $$7 = $$5.dc();
-               bsd $$8 = $$2.<bsd>a($$3).orElse(null);
-               if ($$7 == null && $$8 == null) {
-                  return false;
-               } else {
-                  bsd $$9 = $$7 == null ? $$8 : $$7;
-                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
-                     return false;
-                  } else {
-                     $$5.ac();
-                     $$3.b();
-                     return true;
-                  }
-               }
-            })));
+public class bva extends buu<btb> {
+   private final ccf<Integer> c;
+
+   public bva(ccf<Integer> $$0) {
+      super(ImmutableMap.of($$0, ccg.a));
+      this.c = $$0;
    }
 
-   private static boolean a(bsy $$0, bsd $$1, int $$2) {
-      return $$1.bD() && $$1.a($$0, (double)$$2) && $$1.dP() == $$0.dP();
+   private Optional<Integer> b(btb $$0) {
+      return $$0.dU().c(this.c);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean a(aqm $$0, btb $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
+   }
+
+   @Override
+   protected void c(aqm $$0, btb $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.dU().a(this.c, $$3.get() - 1);
+   }
+
+   @Override
+   protected void b(aqm $$0, btb $$1, long $$2) {
+      $$1.dU().b(this.c);
    }
 }

@@ -1,47 +1,79 @@
-public class evv extends evx {
-   private final jf b;
-   private final ja c;
-   private final boolean d;
-   private final boolean e;
+import java.io.IOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
+import java.util.List;
 
-   public static evv a(evz $$0, jf $$1, ja $$2) {
-      return new evv(true, $$0, $$1, $$2, false);
+public class evv {
+   private final PathMatcher a;
+
+   public evv(PathMatcher $$0) {
+      this.a = $$0;
    }
 
-   public evv(evz $$0, jf $$1, ja $$2, boolean $$3) {
-      this(false, $$0, $$1, $$2, $$3);
+   public void a(Path $$0, List<evw> $$1) throws IOException {
+      Path $$2 = Files.readSymbolicLink($$0);
+      if (!this.a.matches($$2)) {
+         $$1.add(new evw($$0, $$2));
+      }
    }
 
-   private evv(boolean $$0, evz $$1, jf $$2, ja $$3, boolean $$4) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.c = $$3;
-      this.e = $$4;
+   public List<evw> a(Path $$0) throws IOException {
+      List<evw> $$1 = new ArrayList<>();
+      this.a($$0, $$1);
+      return $$1;
    }
 
-   public evv a(jf $$0) {
-      return new evv(this.d, this.a, $$0, this.c, this.e);
+   public List<evw> a(Path $$0, boolean $$1) throws IOException {
+      List<evw> $$2 = new ArrayList<>();
+
+      BasicFileAttributes $$3;
+      try {
+         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      } catch (NoSuchFileException var6) {
+         return $$2;
+      }
+
+      if ($$3.isRegularFile()) {
+         throw new IOException("Path " + $$0 + " is not a directory");
+      } else {
+         if ($$3.isSymbolicLink()) {
+            if (!$$1) {
+               this.a($$0, $$2);
+               return $$2;
+            }
+
+            $$0 = Files.readSymbolicLink($$0);
+         }
+
+         this.b($$0, $$2);
+         return $$2;
+      }
    }
 
-   public evv a(ja $$0) {
-      return new evv(this.d, this.a, this.b, $$0, this.e);
-   }
+   public void b(Path $$0, final List<evw> $$1) throws IOException {
+      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
+         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            if ($$1.isSymbolicLink()) {
+               evv.this.a($$0, $$1);
+            }
+         }
 
-   public ja a() {
-      return this.c;
-   }
+         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.preVisitDirectory($$0, $$1);
+         }
 
-   public jf b() {
-      return this.b;
-   }
-
-   @Override
-   public evx.a c() {
-      return this.d ? evx.a.a : evx.a.b;
-   }
-
-   public boolean d() {
-      return this.e;
+         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.visitFile($$0, $$1);
+         }
+      });
    }
 }

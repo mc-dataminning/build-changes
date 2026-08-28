@@ -1,69 +1,51 @@
-public class cni extends cng {
-   public cni(bsj<? extends cni> $$0, dcd $$1) {
+import javax.annotation.Nullable;
+
+public class cni extends cmq {
+   private int f = 200;
+
+   public cni(bsm<? extends cni> $$0, dcf $$1) {
       super($$0, $$1);
    }
 
-   public cni(dcd $$0, bsy $$1) {
-      super(bsj.C, $$1, $$0);
+   public cni(dcf $$0, btb $$1, cuc $$2, @Nullable cuc $$3) {
+      super(bsm.aV, $$1, $$0, $$2, $$3);
    }
 
-   public cni(dcd $$0, double $$1, double $$2, double $$3) {
-      super(bsj.C, $$1, $$2, $$3, $$0);
+   public cni(dcf $$0, double $$1, double $$2, double $$3, cuc $$4, @Nullable cuc $$5) {
+      super(bsm.aV, $$1, $$2, $$3, $$0, $$4, $$5);
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dP()
-               .a(
-                  new lf(lj.S, this.p()),
-                  this.du(),
-                  this.dw(),
-                  this.dA(),
-                  ((double)this.ah.i() - 0.5) * 0.08,
-                  ((double)this.ah.i() - 0.5) * 0.08,
-                  ((double)this.ah.i() - 0.5) * 0.08
-               );
-         }
+   public void l() {
+      super.l();
+      if (this.dQ().B && !this.b) {
+         this.dQ().a(lj.R, this.dv(), this.dx(), this.dB(), 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   protected void a(evw $$0) {
+   protected void a(btb $$0) {
       super.a($$0);
-      $$0.a().a(this.dQ().b(this, this.s()), 0.0F);
+      bro $$1 = new bro(brq.x, this.f, 0);
+      $$0.b($$1, this.I());
    }
 
    @Override
-   protected void a(evx $$0) {
+   public void a(tx $$0) {
       super.a($$0);
-      if (!this.dP().B) {
-         if (this.ah.a(8) == 0) {
-            int $$1 = 1;
-            if (this.ah.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               cet $$3 = bsj.t.a(this.dP());
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.du(), this.dw(), this.dA(), this.dF(), 0.0F);
-                  this.dP().b($$3);
-               }
-            }
-         }
-
-         this.dP().a(this, (byte)3);
-         this.ao();
+      if ($$0.e("Duration")) {
+         this.f = $$0.h("Duration");
       }
    }
 
    @Override
-   protected ctv u() {
-      return cud.qR;
+   public void b(tx $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.f);
+   }
+
+   @Override
+   protected cuc y() {
+      return new cuc(cuf.vp);
    }
 }

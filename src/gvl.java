@@ -1,57 +1,25 @@
-import java.util.Collection;
-
-public abstract class gvl<E extends fii.a<E>> extends fii<E> {
-   protected gvl(int $$0, int $$1, int $$2, int $$3) {
-      super(ffn.Q(), $$0, $$1, $$2, $$3);
+public interface gvl {
+   default void b() {
    }
 
-   public void p(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.l() != 0) {
-         this.a(this.d($$0));
-      }
+   default void a() {
    }
 
-   public void b(int $$0) {
-      this.p($$0);
+   default void a(gdd $$0) {
    }
 
-   @Override
-   public int a() {
-      return 0;
+   default void a(double $$0, double $$1) {
    }
 
-   @Override
-   public int b() {
-      return (int)((double)this.g * 0.6);
+   default void a(fyj $$0, ewd $$1) {
    }
 
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
+   default void a(fyj $$0, ja $$1, dsk $$2, float $$3) {
    }
 
-   @Override
-   public int l() {
-      return super.l();
+   default void c() {
    }
 
-   @Override
-   public int g(int $$0) {
-      return super.g($$0);
-   }
-
-   @Override
-   public int s() {
-      return super.s();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void J() {
-      this.k();
+   default void a(cuc $$0) {
    }
 }

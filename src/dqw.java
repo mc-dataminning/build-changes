@@ -1,227 +1,98 @@
-import java.util.List;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
 
-public class dqw extends dqs implements bqp {
-   public static final int d = 9;
-   public static final int e = 3;
-   public static final int f = 27;
-   public static final int g = 1;
-   public static final int h = 10;
-   public static final float i = 0.5F;
-   public static final float j = 270.0F;
-   private static final int[] k = IntStream.range(0, 27).toArray();
-   private js<cua> q = js.a(27, cua.l);
-   private int r;
-   private dqw.a s = dqw.a.a;
-   private float t;
-   private float u;
-   @Nullable
-   private final cst v;
+public class dqw extends dpp implements dxi.b<dqw.a> {
+   private final dqw.a a;
 
-   public dqw(@Nullable cst $$0, ja $$1, dsh $$2) {
-      super(dpp.x, $$1, $$2);
-      this.v = $$0;
+   public dqw(ja $$0, dsk $$1) {
+      super(dpr.K, $$0, $$1);
+      this.a = new dqw.a($$1, new dxc($$0));
    }
 
-   public dqw(ja $$0, dsh $$1) {
-      super(dpp.x, $$0, $$1);
-      this.v = dme.a($$1.b());
-   }
-
-   public static void a(dcd $$0, ja $$1, dsh $$2, dqw $$3) {
-      $$3.b($$0, $$1, $$2);
-   }
-
-   private void b(dcd $$0, ja $$1, dsh $$2) {
-      this.u = this.t;
-      switch (this.s) {
-         case a:
-            this.t = 0.0F;
-            break;
-         case b:
-            this.t += 0.1F;
-            if (this.u == 0.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.t >= 1.0F) {
-               this.s = dqw.a.c;
-               this.t = 1.0F;
-               d($$0, $$1, $$2);
-            }
-
-            this.c($$0, $$1, $$2);
-            break;
-         case c:
-            this.t = 1.0F;
-            break;
-         case d:
-            this.t -= 0.1F;
-            if (this.u == 1.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.t <= 0.0F) {
-               this.s = dqw.a.a;
-               this.t = 0.0F;
-               d($$0, $$1, $$2);
-            }
-      }
-   }
-
-   public dqw.a l() {
-      return this.s;
-   }
-
-   public evu a(dsh $$0) {
-      return cjt.a(1.0F, $$0.c(dme.b), 0.5F * this.a(1.0F));
-   }
-
-   private void c(dcd $$0, ja $$1, dsh $$2) {
-      if ($$2.b() instanceof dme) {
-         jf $$3 = $$2.c(dme.b);
-         evu $$4 = cjt.a(1.0F, $$3, this.u, this.t).a($$1);
-         List<bsd> $$5 = $$0.a_(null, $$4);
-         if (!$$5.isEmpty()) {
-            for (bsd $$6 : $$5) {
-               if ($$6.k_() != eog.d) {
-                  $$6.a(btd.d, new evz(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   public int b() {
-      return this.q.size();
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.r = $$1;
-         if ($$1 == 0) {
-            this.s = dqw.a.d;
-         }
-
-         if ($$1 == 1) {
-            this.s = dqw.a.b;
-         }
-
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   private static void d(dcd $$0, ja $$1, dsh $$2) {
-      $$2.a($$0, $$1, 3);
-      $$0.a($$1, $$2.b());
-   }
-
-   @Override
-   public void d_(cmh $$0) {
-      if (!this.p && !$$0.N_()) {
-         if (this.r < 0) {
-            this.r = 0;
-         }
-
-         this.r++;
-         this.n.a(this.o, this.n().b(), 1, this.r);
-         if (this.r == 1) {
-            this.n.a($$0, dxa.k, this.o);
-            this.n.a(null, this.o, avf.wN, avg.e, 0.5F, this.n.z.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   public void c(cmh $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.r--;
-         this.n.a(this.o, this.n().b(), 1, this.r);
-         if (this.r <= 0) {
-            this.n.a($$0, dxa.j, this.o);
-            this.n.a(null, this.o, avf.wM, avg.e, 0.5F, this.n.z.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   protected wu k() {
-      return wu.c("container.shulkerBox");
+   public static void a(dcf $$0, ja $$1, dsk $$2, dqw $$3) {
+      $$3.a.d().a($$0, $$1, $$0.E_(), true);
    }
 
    @Override
    protected void a(tx $$0, jl.a $$1) {
       super.a($$0, $$1);
-      this.e($$0, $$1);
+      this.a.b.a($$0);
    }
 
    @Override
    protected void b(tx $$0, jl.a $$1) {
+      this.a.b.b($$0);
       super.b($$0, $$1);
-      if (!this.b_($$0)) {
-         bpx.a($$0, this.q, false, $$1);
+   }
+
+   public dqw.a b() {
+      return this.a;
+   }
+
+   public static class a implements dxi {
+      public static final int a = 8;
+      final dmc b;
+      private final dsk c;
+      private final dxk d;
+
+      public a(dsk $$0, dxk $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = dmc.a();
       }
-   }
 
-   public void e(tx $$0, jl.a $$1) {
-      this.q = js.a(this.b(), cua.l);
-      if (!this.a_($$0) && $$0.b("Items", 9)) {
-         bpx.b($$0, this.q, $$1);
+      @Override
+      public dxk a() {
+         return this.d;
       }
-   }
 
-   @Override
-   protected js<cua> j() {
-      return this.q;
-   }
+      @Override
+      public int b() {
+         return 8;
+      }
 
-   @Override
-   protected void a(js<cua> $$0) {
-      this.q = $$0;
-   }
+      @Override
+      public dxi.a c() {
+         return dxi.a.b;
+      }
 
-   @Override
-   public int[] a(jf $$0) {
-      return k;
-   }
+      @Override
+      public boolean a(aqm $$0, jj<dxg> $$1, dxg.a $$2, ewf $$3) {
+         if ($$1.a(dxg.p) && $$2.a() instanceof btb $$4) {
+            if (!$$4.eE()) {
+               bqz $$5 = $$4.ez();
+               int $$6 = $$4.a($$0, x.a($$5, bqz::d));
+               if ($$4.ef() && $$6 > 0) {
+                  this.b.a(ja.a($$3.a(jf.b, 0.5)), $$6);
+                  this.a($$0, $$4);
+               }
 
-   @Override
-   public boolean a(int $$0, cua $$1, @Nullable jf $$2) {
-      return !(dff.a($$1.g()) instanceof dme);
-   }
+               $$4.eD();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, ja.a($$1x), this.c, $$0.E_()));
+            }
 
-   @Override
-   public boolean b(int $$0, cua $$1, jf $$2) {
-      return true;
-   }
+            return true;
+         } else {
+            return false;
+         }
+      }
 
-   public float a(float $$0) {
-      return aye.i($$0, this.u, this.t);
-   }
+      @VisibleForTesting
+      public dmc d() {
+         return this.b;
+      }
 
-   @Nullable
-   public cst u() {
-      return this.v;
-   }
+      private void a(aqm $$0, ja $$1, dsk $$2, ayo $$3) {
+         $$0.a($$1, $$2.a(dlz.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(lj.I, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, avh.wa, avi.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      }
 
-   @Override
-   protected cpe a(int $$0, cmg $$1) {
-      return new cqx($$0, $$1, this);
-   }
-
-   public boolean v() {
-      return this.s == dqw.a.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+      private void a(dcf $$0, btb $$1) {
+         if ($$1.ej() instanceof aqn $$3) {
+            bqz $$4 = $$1.ez() == null ? $$0.aj().a((cmk)$$3) : $$1.ez();
+            am.Z.a($$3, $$1, $$4);
+         }
+      }
    }
 }

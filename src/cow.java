@@ -1,12 +1,9 @@
 public class cow {
-   private final String a;
+   final coz a;
+   final long b;
 
-   public cow(String $$0) {
+   cow(coz $$0, int $$1) {
       this.a = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.a;
+      this.b = 1L << $$1;
    }
 }

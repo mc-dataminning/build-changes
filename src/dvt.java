@@ -1,5 +1,31 @@
-public record dvt(String a, akj<dcd> b, String c) {
-   public dvt a(String $$0) {
-      return new dvt(this.a, this.b, this.c + $$0);
+import com.mojang.datafixers.DataFixer;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
+import org.apache.commons.io.FileUtils;
+
+public class dvt extends dvq {
+   private final dvs a;
+   private final Path b;
+
+   public dvt(dvz $$0, Path $$1, dvz $$2, Path $$3, DataFixer $$4, boolean $$5) {
+      super($$0, $$1, $$4, $$5);
+      this.b = $$3;
+      this.a = new dvs($$2, $$3, $$5);
+   }
+
+   @Override
+   public CompletableFuture<Void> a(dbm $$0, tx $$1) {
+      this.e($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   @Override
+   public void close() throws IOException {
+      super.close();
+      this.a.close();
+      if (this.b.toFile().exists()) {
+         FileUtils.deleteDirectory(this.b.toFile());
+      }
    }
 }

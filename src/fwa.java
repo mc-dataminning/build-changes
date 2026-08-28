@@ -1,38 +1,70 @@
-public class fwa<T extends bsd> extends fur<T> {
-   private static final String a = "main";
-   private final fxi b;
-   private final fxi f;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 
-   public fwa(fxi $$0) {
-      this.b = $$0;
-      this.f = $$0.b("main");
+public class fwa extends fvg<coh> {
+   private static final String a = "left_paddle";
+   private static final String b = "right_paddle";
+   private static final String f = "bottom";
+   private final fxo g;
+   private final fxo h;
+   private final ImmutableList<fxo> i;
+
+   public fwa(fxo $$0) {
+      this.g = $$0.b("left_paddle");
+      this.h = $$0.b("right_paddle");
+      this.i = this.a($$0).build();
    }
 
-   public static fxo b() {
-      fxq $$0 = new fxq();
-      fxr $$1 = $$0.a();
-      $$1.a(
-         "main",
-         fxn.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
-            .a(0, 10)
-            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
-            .a(20, 0)
-            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
-         fxk.a
+   protected Builder<fxo> a(fxo $$0) {
+      Builder<fxo> $$1 = new Builder();
+      $$1.add(new fxo[]{$$0.b("bottom"), this.g, this.h});
+      return $$1;
+   }
+
+   public static void a(fxx $$0) {
+      $$0.a(
+         "bottom",
+         fxt.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
+         fxq.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
       );
-      return fxo.a($$0, 64, 32);
+      int $$1 = 20;
+      int $$2 = 7;
+      int $$3 = 6;
+      float $$4 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         fxt.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fxq.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         fxt.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fxq.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   @Override
-   public fxi a() {
-      return this.b;
+   public static fxu b() {
+      fxw $$0 = new fxw();
+      fxx $$1 = $$0.a();
+      a($$1);
+      return fxu.a($$0, 128, 64);
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
+   public void a(coh $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      a($$0, 0, this.g, $$1);
+      a($$0, 1, this.h, $$1);
+   }
+
+   public ImmutableList<fxo> c() {
+      return this.i;
+   }
+
+   private static void a(coh $$0, int $$1, fxo $$2, float $$3) {
+      float $$4 = $$0.a($$1, $$3);
+      $$2.e = ayg.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (ayg.a(-$$4) + 1.0F) / 2.0F);
+      $$2.f = ayg.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (ayg.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
+      }
    }
 }

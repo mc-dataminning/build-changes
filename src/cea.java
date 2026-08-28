@@ -1,122 +1,119 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cea implements dbq {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-   private cea.a c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
+public class cea {
+   private static final int a = 10;
 
-   public cea() {
-      this.c = cea.a.c;
+   public static ja a(ayo $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new ja($$3, $$4, $$5);
    }
 
-   @Override
-   public int a(aqk $$0, boolean $$1, boolean $$2) {
-      if (!$$0.R() && $$1) {
-         float $$3 = $$0.f(0.0F);
-         if ((double)$$3 == 0.5) {
-            this.c = $$0.z.a(10) == 0 ? cea.a.b : cea.a.c;
-         }
-
-         if (this.c == cea.a.c) {
-            return 0;
-         } else {
-            if (!this.b) {
-               if (!this.a($$0)) {
-                  return 0;
-               }
-
-               this.b = true;
-            }
-
-            if (this.e > 0) {
-               this.e--;
-               return 0;
-            } else {
-               this.e = 2;
-               if (this.d > 0) {
-                  this.b($$0);
-                  this.d--;
-               } else {
-                  this.c = cea.a.c;
-               }
-
-               return 1;
-            }
-         }
+   @Nullable
+   public static ja a(ayo $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = ayg.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)ayg.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return ja.a($$10, (double)$$12, $$11);
       } else {
-         this.c = cea.a.c;
-         this.b = false;
-         return 0;
+         return null;
       }
    }
 
-   private boolean a(aqk $$0) {
-      for (cmh $$1 : $$0.x()) {
-         if (!$$1.N_()) {
-            ja $$2 = $$1.dp();
-            if ($$0.c($$2) && !$$0.t($$2).a(avt.af)) {
-               for (int $$3 = 0; $$3 < 10; $$3++) {
-                  float $$4 = $$0.z.i() * (float) (Math.PI * 2);
-                  this.f = $$2.u() + aye.d(aye.b($$4) * 32.0F);
-                  this.g = $$2.v();
-                  this.h = $$2.w() + aye.d(aye.a($$4) * 32.0F);
-                  if (this.a($$0, new ja(this.f, this.g, this.h)) != null) {
-                     this.e = 0;
-                     this.d = 20;
-                     break;
-                  }
-               }
+   @VisibleForTesting
+   public static ja a(ja $$0, int $$1, Predicate<ja> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
+      } else {
+         ja $$3 = $$0.c();
 
-               return true;
+         while ($$3.v() < $$1 && $$2.test($$3)) {
+            $$3 = $$3.c();
+         }
+
+         return $$3;
+      }
+   }
+
+   @VisibleForTesting
+   public static ja a(ja $$0, int $$1, int $$2, Predicate<ja> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         ja $$4 = $$0.c();
+
+         while ($$4.v() < $$2 && $$3.test($$4)) {
+            $$4 = $$4.c();
+         }
+
+         ja $$5 = $$4;
+
+         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
+            ja $$6 = $$5.c();
+            if ($$3.test($$6)) {
+               break;
             }
-         }
-      }
 
-      return false;
-   }
-
-   private void b(aqk $$0) {
-      evz $$1 = this.a($$0, new ja(this.f, this.g, this.h));
-      if ($$1 != null) {
-         ckg $$2;
-         try {
-            $$2 = new ckg($$0);
-            $$2.a($$0, $$0.d_($$2.dp()), btc.h, null);
-         } catch (Exception var5) {
-            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
-            return;
+            $$5 = $$6;
          }
 
-         $$2.b($$1.c, $$1.d, $$1.e, $$0.z.i() * 360.0F, 0.0F);
-         $$0.a_($$2);
+         return $$5;
       }
    }
 
    @Nullable
-   private evz a(aqk $$0, ja $$1) {
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         int $$3 = $$1.u() + $$0.z.a(16) - 8;
-         int $$4 = $$1.w() + $$0.z.a(16) - 8;
-         int $$5 = $$0.a(dxz.a.b, $$3, $$4);
-         ja $$6 = new ja($$3, $$5, $$4);
-         if ($$0.c($$6) && cjn.b(bsj.bu, $$0, btc.h, $$6, $$0.z)) {
-            return evz.c($$6);
+   public static ewf a(btk $$0, Supplier<ja> $$1) {
+      return a($$1, $$0::c);
+   }
+
+   @Nullable
+   public static ewf a(Supplier<ja> $$0, ToDoubleFunction<ja> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      ja $$3 = null;
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         ja $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
+            }
          }
       }
 
-      return null;
+      return $$3 != null ? ewf.c($$3) : null;
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public static ja a(btk $$0, int $$1, ayo $$2, ja $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.fY() && $$1 > 1) {
+         ja $$6 = $$0.fV();
+         if ($$0.dv() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
+         } else {
+            $$4 += $$2.a($$1 / 2);
+         }
+
+         if ($$0.dB() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
+         }
+      }
+
+      return ja.a((double)$$4 + $$0.dv(), (double)$$3.v() + $$0.dx(), (double)$$5 + $$0.dB());
    }
 }

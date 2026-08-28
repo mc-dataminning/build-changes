@@ -1,48 +1,56 @@
-public class cft {
-   public static final akj<cfs> a = a("pale");
-   public static final akj<cfs> b = a("spotted");
-   public static final akj<cfs> c = a("snowy");
-   public static final akj<cfs> d = a("black");
-   public static final akj<cfs> e = a("ashen");
-   public static final akj<cfs> f = a("rusty");
-   public static final akj<cfs> g = a("woods");
-   public static final akj<cfs> h = a("chestnut");
-   public static final akj<cfs> i = a("striped");
-   public static final akj<cfs> j = a;
-
-   private static akj<cfs> a(String $$0) {
-      return akj.a(lr.m, new akk($$0));
+public abstract class cft extends btk {
+   protected cft(bsm<? extends cft> $$0, dcf $$1) {
+      super($$0, $$1);
+      this.a(eoy.j, 0.0F);
    }
 
-   static void a(qm<cfs> $$0, akj<cfs> $$1, String $$2, akj<ddd> $$3) {
-      a($$0, $$1, $$2, jn.a($$0.a(lr.aE).b($$3)));
+   @Override
+   public boolean a(dci $$0) {
+      return $$0.f(this);
    }
 
-   static void a(qm<cfs> $$0, akj<cfs> $$1, String $$2, awk<ddd> $$3) {
-      a($$0, $$1, $$2, $$0.a(lr.aE).b($$3));
+   @Override
+   public int P() {
+      return 120;
    }
 
-   static void a(qm<cfs> $$0, akj<cfs> $$1, String $$2, jn<ddd> $$3) {
-      akk $$4 = new akk("entity/wolf/" + $$2);
-      akk $$5 = new akk("entity/wolf/" + $$2 + "_tame");
-      akk $$6 = new akk("entity/wolf/" + $$2 + "_angry");
-      $$0.a($$1, new cfs($$4, $$5, $$6, $$3));
+   @Override
+   protected int eh() {
+      return 1 + this.dQ().z.a(3);
    }
 
-   public static jj<cfs> a(jx $$0, jj<ddd> $$1) {
-      jw<cfs> $$2 = $$0.d(lr.m);
-      return $$2.i().filter($$1x -> ((cfs)$$1x.a()).d().a($$1)).findFirst().or(() -> $$2.b(j)).or($$2::a).orElseThrow();
+   protected void b(int $$0) {
+      if (this.bE() && !this.bi()) {
+         this.j($$0 - 1);
+         if (this.cm() == -20) {
+            this.j(0);
+            this.a(this.dR().i(), 2.0F);
+         }
+      } else {
+         this.j(300);
+      }
    }
 
-   public static void a(qm<cfs> $$0) {
-      a($$0, a, "wolf", ddk.p);
-      a($$0, b, "wolf_spotted", avt.k);
-      a($$0, c, "wolf_snowy", ddk.F);
-      a($$0, d, "wolf_black", ddk.n);
-      a($$0, e, "wolf_ashen", ddk.q);
-      a($$0, f, "wolf_rusty", avt.i);
-      a($$0, g, "wolf_woods", ddk.i);
-      a($$0, h, "wolf_chestnut", ddk.o);
-      a($$0, i, "wolf_striped", avt.f);
+   @Override
+   public void av() {
+      int $$0 = this.cm();
+      super.av();
+      this.b($$0);
+   }
+
+   @Override
+   public boolean cD() {
+      return false;
+   }
+
+   @Override
+   public boolean a(cmk $$0) {
+      return false;
+   }
+
+   public static boolean c(bsm<? extends cft> $$0, dcg $$1, btf $$2, ja $$3, ayo $$4) {
+      int $$5 = $$1.z_();
+      int $$6 = $$5 - 13;
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.d()).a(awc.a) && $$1.a_($$3.c()).a(dfj.G);
    }
 }

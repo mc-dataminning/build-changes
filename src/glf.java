@@ -1,38 +1,39 @@
-public class glf extends gjf<cnc> {
-   private static final akk a = new akk("textures/entity/shulker/spark.png");
-   private static final gef f = gef.i(a);
-   private final fwa<cnc> g;
+public class glf extends gks<cfk, fuo<cfk>> {
+   private static final akk a = new akk("textures/entity/fish/pufferfish.png");
+   private int i = 3;
+   private final fuo<cfk> j;
+   private final fuo<cfk> k;
+   private final fuo<cfk> l = this.a();
 
-   public glf(gjg.a $$0) {
-      super($$0);
-      this.g = new fwa<>($$0.a(fxh.bl));
+   public glf(gjm.a $$0) {
+      super($$0, new fvv<>($$0.a(fxn.bb)), 0.2F);
+      this.k = new fvw<>($$0.a(fxn.bc));
+      this.j = new fvx<>($$0.a(fxn.bd));
    }
 
-   protected int a(cnc $$0, ja $$1) {
-      return 15;
+   public akk a(cfk $$0) {
+      return a;
    }
 
-   public void a(cnc $$0, float $$1, float $$2, fag $$3, gdx $$4, int $$5) {
-      $$3.a();
-      float $$6 = aye.j($$2, $$0.O, $$0.dF());
-      float $$7 = aye.i($$2, $$0.P, $$0.dH());
-      float $$8 = (float)$$0.ai + $$2;
-      $$3.a(0.0F, 0.15F, 0.0F);
-      $$3.a(a.d.rotationDegrees(aye.a($$8 * 0.1F) * 180.0F));
-      $$3.a(a.b.rotationDegrees(aye.b($$8 * 0.1F) * 180.0F));
-      $$3.a(a.f.rotationDegrees(aye.a($$8 * 0.15F) * 360.0F));
-      $$3.b(-0.5F, -0.5F, 0.5F);
-      this.g.a($$0, 0.0F, 0.0F, 0.0F, $$6, $$7);
-      fak $$9 = $$4.getBuffer(this.g.a(a));
-      this.g.a($$3, $$9, $$5, goz.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b(1.5F, 1.5F, 1.5F);
-      fak $$10 = $$4.getBuffer(f);
-      this.g.a($$3, $$10, $$5, goz.d, 1.0F, 1.0F, 1.0F, 0.15F);
-      $$3.b();
+   public void a(cfk $$0, float $$1, float $$2, fam $$3, ged $$4, int $$5) {
+      int $$6 = $$0.gq();
+      if ($$6 != this.i) {
+         if ($$6 == 0) {
+            this.f = this.j;
+         } else if ($$6 == 1) {
+            this.f = this.k;
+         } else {
+            this.f = this.l;
+         }
+      }
+
+      this.i = $$6;
+      this.d = 0.1F + 0.1F * (float)$$6;
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public akk a(cnc $$0) {
-      return a;
+   protected void a(cfk $$0, fam $$1, float $$2, float $$3, float $$4, float $$5) {
+      $$1.a(0.0F, ayg.b($$2 * 0.05F) * 0.08F, 0.0F);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

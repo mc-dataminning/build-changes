@@ -1,17 +1,13 @@
-public class gmw<T extends bsy, M extends fui<T>> extends gns<T, M> {
-   private final gdt a;
+public class gmw extends gny<ckm, ftx<ckm>> {
+   private static final gel a = gel.q(new akk("textures/entity/breeze/breeze_eyes.png"));
 
-   public gmw(glc<T, M> $$0, gdt $$1) {
+   public gmw(gli<ckm, ftx<ckm>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(fag $$0, gdx $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      $$0.a();
-      $$0.a(0.0F, 0.4F, -0.4F);
-      $$0.a(a.b.rotationDegrees(180.0F));
-      cua $$10 = $$3.a(bsk.a);
-      this.a.a($$3, $$10, ctx.h, false, $$0, $$1, $$2);
-      $$0.b();
+   public void a(fam $$0, ged $$1, int $$2, ckm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      faq $$10 = $$1.getBuffer(a);
+      ftx<ckm> $$11 = this.c();
+      gis.a($$11, $$11.b(), $$11.c()).a($$0, $$10, $$2, gpf.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

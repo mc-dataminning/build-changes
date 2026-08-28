@@ -1,12 +1,3 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-
-public interface eqp {
-   default Set<eth<?>> a() {
-      return ImmutableSet.of();
-   }
-
-   default void a(equ $$0) {
-      $$0.a(this);
-   }
+public interface eqp extends eqe {
+   void a(ja var1, float var2);
 }

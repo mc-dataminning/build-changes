@@ -1,15 +1,39 @@
-import java.util.Collection;
-import java.util.Locale;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-public class gpg extends RuntimeException {
-   private final Collection<gpf.a> a;
+public class gpg extends gph {
+   @Nullable
+   private CompletableFuture<gph.a> f;
 
-   public gpg(gpf.a $$0, Collection<gpf.a> $$1) {
-      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
-      this.a = $$1;
+   public gpg(atw $$0, akk $$1, Executor $$2) {
+      super($$1);
+      this.f = CompletableFuture.supplyAsync(() -> gph.a.a($$0, $$1), $$2);
    }
 
-   public Collection<gpf.a> a() {
-      return this.a;
+   @Override
+   protected gph.a b(atw $$0) {
+      if (this.f != null) {
+         gph.a $$1 = this.f.join();
+         this.f = null;
+         return $$1;
+      } else {
+         return gph.a.a($$0, this.e);
+      }
+   }
+
+   public CompletableFuture<Void> d() {
+      return this.f == null ? CompletableFuture.completedFuture(null) : this.f.thenApply($$0 -> null);
+   }
+
+   @Override
+   public void a(gpp $$0, atw $$1, akk $$2, Executor $$3) {
+      this.f = CompletableFuture.supplyAsync(() -> gph.a.a($$1, this.e), ac.g());
+      this.f.thenRunAsync(() -> $$0.a(this.e, this), a($$3));
+   }
+
+   private static Executor a(Executor $$0) {
+      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
    }
 }

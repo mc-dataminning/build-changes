@@ -1,61 +1,116 @@
+import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Set;
 
 public class aoj {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.summon.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.summon.failed.uuid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wu.c("commands.summon.invalidPosition"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.tag.add.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.tag.remove.failed"));
 
-   public static void a(CommandDispatcher<eq> $$0, em $$1) {
+   public static void a(CommandDispatcher<eq> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("summon").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("tag").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)er.a("entity", fp.a($$1, lr.z))
-                     .suggests(ip.d)
-                     .executes($$0x -> b((eq)$$0x.getSource(), fp.e($$0x, "entity"), ((eq)$$0x.getSource()).d(), new tx(), true)))
-                  .then(
-                     ((RequiredArgumentBuilder)er.a("pos", gt.a())
-                           .executes($$0x -> b((eq)$$0x.getSource(), fp.e($$0x, "entity"), gt.a($$0x, "pos"), new tx(), true)))
-                        .then(er.a("nbt", fa.a()).executes($$0x -> b((eq)$$0x.getSource(), fp.e($$0x, "entity"), gt.a($$0x, "pos"), fa.a($$0x, "nbt"), false)))
-                  )
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)er.a("targets", fd.b())
+                        .then(
+                           er.a("add")
+                              .then(
+                                 er.a("name", StringArgumentType.word())
+                                    .executes($$0x -> a((eq)$$0x.getSource(), fd.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                              )
+                        ))
+                     .then(
+                        er.a("remove")
+                           .then(
+                              er.a("name", StringArgumentType.word())
+                                 .suggests(($$0x, $$1) -> ev.b(a(fd.b($$0x, "targets")), $$1))
+                                 .executes($$0x -> b((eq)$$0x.getSource(), fd.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                           )
+                     ))
+                  .then(er.a("list").executes($$0x -> a((eq)$$0x.getSource(), fd.b($$0x, "targets"))))
             )
       );
    }
 
-   public static bsd a(eq $$0, jj.c<bsj<?>> $$1, evz $$2, tx $$3, boolean $$4) throws CommandSyntaxException {
-      ja $$5 = ja.a($$2);
-      if (!dcd.l($$5)) {
-         throw c.create();
-      } else {
-         tx $$6 = $$3.i();
-         $$6.a("id", $$1.h().a().toString());
-         aqk $$7 = $$0.e();
-         bsd $$8 = bsj.a($$6, $$7, $$1x -> {
-            $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dF(), $$1x.dH());
-            return $$1x;
-         });
-         if ($$8 == null) {
-            throw a.create();
-         } else {
-            if ($$4 && $$8 instanceof bta) {
-               ((bta)$$8).a($$0.e(), $$0.e().d_($$8.dp()), btc.n, null);
-            }
+   private static Collection<String> a(Collection<? extends bsg> $$0) {
+      Set<String> $$1 = Sets.newHashSet();
 
-            if (!$$7.e($$8)) {
-               throw b.create();
-            } else {
-               return $$8;
-            }
+      for (bsg $$2 : $$0) {
+         $$1.addAll($$2.an());
+      }
+
+      return $$1;
+   }
+
+   private static int a(eq $$0, Collection<? extends bsg> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (bsg $$4 : $$1) {
+         if ($$4.a($$2)) {
+            $$3++;
          }
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> wu.a("commands.tag.add.success.single", $$2, $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wu.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
       }
    }
 
-   private static int b(eq $$0, jj.c<bsj<?>> $$1, evz $$2, tx $$3, boolean $$4) throws CommandSyntaxException {
-      bsd $$5 = a($$0, $$1, $$2, $$3, $$4);
-      $$0.a(() -> wu.a("commands.summon.success", $$5.O_()), true);
-      return 1;
+   private static int b(eq $$0, Collection<? extends bsg> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (bsg $$4 : $$1) {
+         if ($$4.b($$2)) {
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> wu.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wu.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
+   }
+
+   private static int a(eq $$0, Collection<? extends bsg> $$1) {
+      Set<String> $$2 = Sets.newHashSet();
+
+      for (bsg $$3 : $$1) {
+         $$2.addAll($$3.an());
+      }
+
+      if ($$1.size() == 1) {
+         bsg $$4 = $$1.iterator().next();
+         if ($$2.isEmpty()) {
+            $$0.a(() -> wu.a("commands.tag.list.single.empty", $$4.O_()), false);
+         } else {
+            $$0.a(() -> wu.a("commands.tag.list.single.success", $$4.O_(), $$2.size(), wx.a($$2)), false);
+         }
+      } else if ($$2.isEmpty()) {
+         $$0.a(() -> wu.a("commands.tag.list.multiple.empty", $$1.size()), false);
+      } else {
+         $$0.a(() -> wu.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), wx.a($$2)), false);
+      }
+
+      return $$2.size();
    }
 }

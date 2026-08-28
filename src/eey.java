@@ -1,48 +1,51 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eey extends eeu {
-   public static final MapCodec<eey> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(bpi.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, eey::new)
-   );
-   private final bpi b;
+public class eey extends efa {
+   public static final MapCodec<eey> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eey::new));
 
-   public eey(bpi $$0, bpi $$1, bpi $$2) {
+   public eey(bpl $$0, bpl $$1) {
       super($$0, $$1);
-      this.b = $$2;
    }
 
    @Override
-   protected eev<?> a() {
-      return eev.c;
+   protected efb<?> a() {
+      return efb.i;
    }
 
    @Override
-   protected void a(dcj $$0, eeu.b $$1, aym $$2, eee $$3, int $$4, eeu.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = 0;
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
-         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
-            $$9--;
-         } else if ($$9 < $$7 + $$5.b()) {
-            $$9++;
+   protected void a(dcl $$0, efa.b $$1, ayo $$2, eek $$3, int $$4, efa.a $$5, int $$6, int $$7, int $$8) {
+      ja $$9 = $$5.a().b($$8);
+      boolean $$10 = $$5.c();
+      if ($$10) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
+         if ($$2.h()) {
+            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
          }
+      } else {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
       }
    }
 
    @Override
-   public int a(aym $$0, int $$1) {
-      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   public int a(ayo $$0, int $$1, eek $$2) {
+      return 4;
    }
 
    @Override
-   public int a(aym $$0, int $$1, eee $$2) {
-      return this.b.a($$0);
+   protected boolean b(ayo $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
    }
 
    @Override
-   protected boolean a(aym $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   protected boolean a(ayo $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && !$$5) {
+         return $$1 == $$4 && $$3 == $$4;
+      } else {
+         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
+      }
    }
 }

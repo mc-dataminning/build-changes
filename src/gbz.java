@@ -1,17 +1,13 @@
-public class gbz extends gad {
-   protected gbz(fyd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gcg $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
-   }
-
-   public static class a implements gbo<ln> {
-      private final gcg a;
-
-      public a(gcg $$0) {
-         this.a = $$0;
-      }
-
-      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbz($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
-      }
+public abstract class gbz extends gcr {
+   protected gbz(fyj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.j = this.j * 0.01F + $$4;
+      this.k = this.k * 0.01F + $$5;
+      this.l = this.l * 0.01F + $$6;
+      this.g = this.g + (double)((this.r.i() - this.r.i()) * 0.05F);
+      this.h = this.h + (double)((this.r.i() - this.r.i()) * 0.05F);
+      this.i = this.i + (double)((this.r.i() - this.r.i()) * 0.05F);
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2)) + 4;
    }
 }

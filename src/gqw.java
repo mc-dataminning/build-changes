@@ -1,38 +1,78 @@
-import java.util.Arrays;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gqw {
-   public static final gqx a = new gqx();
-   public static final String b = "villager";
-   private final gqw.a c;
+public class gqw implements atx {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gqv b = new gqv("US", "English", false);
+   private Map<String, gqv> c = ImmutableMap.of("en_us", b);
+   private String d;
+   private final Consumer<gqs> e;
 
-   public gqw(gqw.a $$0) {
-      this.c = $$0;
+   public gqw(String $$0, Consumer<gqs> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public gqw.a a() {
-      return this.c;
+   private static Map<String, gqv> a(Stream<asi> $$0) {
+      Map<String, gqv> $$1 = Maps.newHashMap();
+      $$0.forEach($$1x -> {
+         try {
+            gri $$2 = $$1x.a(gri.c);
+            if ($$2 != null) {
+               $$2.a().forEach($$1::putIfAbsent);
+            }
+         } catch (IOException | RuntimeException var3) {
+            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
+         }
+      });
+      return ImmutableMap.copyOf($$1);
    }
 
-   public static enum a {
-      a("none"),
-      b("partial"),
-      c("full");
-
-      private static final Map<String, gqw.a> d = Arrays.stream(values()).collect(Collectors.toMap(gqw.a::a, $$0 -> (gqw.a)$$0));
-      private final String e;
-
-      private a(final String $$0) {
-         this.e = $$0;
+   @Override
+   public void a(atw $$0) {
+      this.c = a($$0.b());
+      List<String> $$1 = new ArrayList<>(2);
+      boolean $$2 = b.d();
+      $$1.add("en_us");
+      if (!this.d.equals("en_us")) {
+         gqv $$3 = this.c.get(this.d);
+         if ($$3 != null) {
+            $$1.add(this.d);
+            $$2 = $$3.d();
+         }
       }
 
-      public String a() {
-         return this.e;
-      }
+      gqs $$4 = gqs.a($$0, $$1, $$2);
+      gqu.a($$4);
+      ts.a($$4);
+      this.e.accept($$4);
+   }
 
-      public static gqw.a a(String $$0) {
-         return d.getOrDefault($$0, a);
-      }
+   public void a(String $$0) {
+      this.d = $$0;
+   }
+
+   public String a() {
+      return this.d;
+   }
+
+   public SortedMap<String, gqv> b() {
+      return new TreeMap<>(this.c);
+   }
+
+   @Nullable
+   public gqv b(String $$0) {
+      return this.c.get($$0);
    }
 }

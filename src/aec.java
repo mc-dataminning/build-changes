@@ -3,8 +3,8 @@ public class aec implements zb<abn> {
    private final int b;
    private final byte c;
 
-   public aec(bsd $$0, byte $$1) {
-      this.b = $$0.al();
+   public aec(bsg $$0, byte $$1) {
+      this.b = $$0.am();
       this.c = $$1;
    }
 
@@ -27,7 +27,7 @@ public class aec implements zb<abn> {
       $$0.a(this);
    }
 
-   public bsd a(dcd $$0) {
+   public bsg a(dcf $$0) {
       return $$0.a(this.b);
    }
 

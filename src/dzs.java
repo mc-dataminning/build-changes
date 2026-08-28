@@ -1,18 +1,24 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dzs implements dzg {
-   public static dzs a = new dzs();
-   public static final MapCodec<dzs> e = MapCodec.unit(() -> a);
+class dzs extends dzx {
+   private final jn<dfh> e;
+   public static final MapCodec<dzs> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(jy.a(lr.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dzs::new)
+   );
 
-   private dzs() {
-   }
-
-   public boolean a(dcz $$0, ja $$1) {
-      return true;
+   public dzs(ke $$0, jn<dfh> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public dzh<?> a() {
-      return dzh.l;
+   protected boolean a(dsk $$0) {
+      return $$0.a(this.e);
+   }
+
+   @Override
+   public dzn<?> a() {
+      return dzn.a;
    }
 }

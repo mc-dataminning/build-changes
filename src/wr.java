@@ -58,12 +58,12 @@ public record wr(String b, List<wr.a> c, xr d) {
       return this.d;
    }
 
-   public static enum a implements ayz {
+   public static enum a implements azc {
       a("sender", ($$0, $$1) -> $$1.b()),
       b("target", ($$0, $$1) -> $$1.c().orElse(wt.a)),
       c("content", ($$0, $$1) -> $$0);
 
-      public static final Codec<wr.a> d = ayz.a(wr.a::values);
+      public static final Codec<wr.a> d = azc.a(wr.a::values);
       private final String e;
       private final wr.a.a f;
 

@@ -1,29 +1,26 @@
-import java.util.Optional;
+public interface eip {
+   akj<ejc> a = a("villages");
+   akj<ejc> b = a("desert_pyramids");
+   akj<ejc> c = a("igloos");
+   akj<ejc> d = a("jungle_temples");
+   akj<ejc> e = a("swamp_huts");
+   akj<ejc> f = a("pillager_outposts");
+   akj<ejc> g = a("ocean_monuments");
+   akj<ejc> h = a("woodland_mansions");
+   akj<ejc> i = a("buried_treasures");
+   akj<ejc> j = a("mineshafts");
+   akj<ejc> k = a("ruined_portals");
+   akj<ejc> l = a("shipwrecks");
+   akj<ejc> m = a("ocean_ruins");
+   akj<ejc> n = a("nether_complexes");
+   akj<ejc> o = a("nether_fossils");
+   akj<ejc> p = a("end_cities");
+   akj<ejc> q = a("ancient_cities");
+   akj<ejc> r = a("strongholds");
+   akj<ejc> s = a("trail_ruins");
+   akj<ejc> t = a("trial_chambers");
 
-public abstract class eip extends eiq {
-   private final eip.a d;
-   private final int e;
-   private final int f;
-
-   protected eip(eip.a $$0, int $$1, int $$2, eiq.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   @Override
-   public Optional<eiq.b> a(eiq.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, dxz.a.a, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(eji $$0, eiq.a $$1) {
-      dbk $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
-   }
-
-   @FunctionalInterface
-   protected interface a {
-      eiu construct(dyy var1, int var2, int var3);
+   private static akj<ejc> a(String $$0) {
+      return akj.a(lr.aS, new akk($$0));
    }
 }

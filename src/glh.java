@@ -1,15 +1,11 @@
-public class glh extends gkm<cju, fwc<cju>> {
-   private static final akk a = new akk("textures/entity/silverfish.png");
+public class glh extends gks<cjv, fwb> {
+   private static final akk a = new akk("textures/entity/illager/ravager.png");
 
-   public glh(gjg.a $$0) {
-      super($$0, new fwc<>($$0.a(fxh.bm)), 0.3F);
+   public glh(gjm.a $$0) {
+      super($$0, new fwb($$0.a(fxn.bf)), 1.1F);
    }
 
-   protected float a(cju $$0) {
-      return 180.0F;
-   }
-
-   public akk b(cju $$0) {
+   public akk a(cjv $$0) {
       return a;
    }
 }

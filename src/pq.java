@@ -15,20 +15,20 @@ public abstract class pq<T> extends pv<T> {
       this.d = $$4;
    }
 
-   protected pq.a<T> a(awk<T> $$0) {
-      awh $$1 = this.c($$0);
+   protected pq.a<T> a(awm<T> $$0) {
+      awj $$1 = this.c($$0);
       return new pq.a<>($$1, this.d);
    }
 
    protected static class a<T> extends pv.b<T> {
       private final Function<T, akj<T>> a;
 
-      a(awh $$0, Function<T, akj<T>> $$1) {
+      a(awj $$0, Function<T, akj<T>> $$1) {
          super($$0);
          this.a = $$1;
       }
 
-      public pq.a<T> a(awk<T> $$0) {
+      public pq.a<T> a(awm<T> $$0) {
          super.b($$0);
          return this;
       }

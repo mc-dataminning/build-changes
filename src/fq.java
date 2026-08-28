@@ -33,7 +33,7 @@ public class fq<T> implements ArgumentType<akj<T>> {
    }
 
    private static <T> jw<T> a(CommandContext<eq> $$0, akj<? extends jw<T>> $$1) {
-      return ((eq)$$0.getSource()).l().bc().d($$1);
+      return ((eq)$$0.getSource()).l().bd().d($$1);
    }
 
    private static <T> jj.c<T> b(CommandContext<eq> $$0, String $$1, akj<jw<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
@@ -41,15 +41,15 @@ public class fq<T> implements ArgumentType<akj<T>> {
       return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static jj.c<ear<?, ?>> a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static jj.c<eax<?, ?>> a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, lr.aH, b);
    }
 
-   public static jj.c<eiq> b(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static jj.c<eiw> b(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, lr.aQ, c);
    }
 
-   public static jj.c<ejz> c(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static jj.c<ekf> c(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, lr.aT, d);
    }
 

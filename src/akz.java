@@ -23,11 +23,11 @@ public class akz {
    }
 
    public CommandDispatcher<eq> a() {
-      return this.d.aH().a();
+      return this.d.aI().a();
    }
 
    public void b() {
-      if (this.d.aQ().i()) {
+      if (this.d.aR().i()) {
          if (this.f) {
             this.f = false;
             Collection<ic<eq>> $$0 = this.g.b(c);
@@ -39,17 +39,17 @@ public class akz {
    }
 
    private void a(Collection<ic<eq>> $$0, akk $$1) {
-      this.d.aT().a($$1::toString);
+      this.d.aU().a($$1::toString);
 
       for (ic<eq> $$2 : $$0) {
          this.a($$2, this.c());
       }
 
-      this.d.aT().c();
+      this.d.aU().c();
    }
 
    public void a(ic<eq> $$0, eq $$1) {
-      bmr $$2 = this.d.aT();
+      bmu $$2 = this.d.aU();
       $$2.a(() -> "function " + $$0.a());
 
       try {
@@ -74,7 +74,7 @@ public class akz {
    }
 
    public eq c() {
-      return this.d.aI().a(2).a();
+      return this.d.aJ().a(2).a();
    }
 
    public Optional<ic<eq>> a(akk $$0) {

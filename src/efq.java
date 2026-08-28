@@ -1,21 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class efq extends efj {
-   public static final MapCodec<efq> b = dsh.b.fieldOf("state").xmap(dsg.a::b, dff::o).xmap(efq::new, $$0 -> $$0.c);
-   private final dff c;
+public class efq<P extends efp> {
+   public static final efq<efy> a = a("simple_state_provider", efy.b);
+   public static final efq<efz> b = a("weighted_state_provider", efz.b);
+   public static final efq<efu> c = a("noise_threshold_provider", efu.b);
+   public static final efq<eft> d = a("noise_provider", eft.g);
+   public static final efq<efr> e = a("dual_noise_provider", efr.b);
+   public static final efq<efw> f = a("rotated_block_provider", efw.b);
+   public static final efq<efv> g = a("randomized_int_state_provider", efv.b);
+   private final MapCodec<P> h;
 
-   public efq(dff $$0) {
-      this.c = $$0;
+   private static <P extends efp> efq<P> a(String $$0, MapCodec<P> $$1) {
+      return jw.a(lq.T, $$0, new efq<>($$1));
    }
 
-   @Override
-   protected efk<?> a() {
-      return efk.f;
+   private efq(MapCodec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public dsh a(aym $$0, ja $$1) {
-      jf.a $$2 = jf.a.a($$0);
-      return this.c.o().a(dlr.i, $$2);
+   public MapCodec<P> a() {
+      return this.h;
    }
 }

@@ -1,34 +1,36 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record ett(boolean b) implements etz {
-   public static final MapCodec<ett> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(ett::e)).apply($$0, ett::new));
+public class ett extends etv {
+   public static final MapCodec<ett> a = a(ett::new);
 
-   public boolean a(eqo $$0) {
-      return $$0.b(etk.l) != this.b;
+   ett(List<euf> $$0) {
+      super($$0, ac.b($$0));
    }
 
    @Override
-   public eua b() {
-      return eub.s;
+   public eug b() {
+      return euh.b;
    }
 
-   @Override
-   public Set<eth<?>> a() {
-      return Set.of(etk.l);
+   public static ett.a a(euf.a... $$0) {
+      return new ett.a($$0);
    }
 
-   public static etz.a c() {
-      return () -> new ett(true);
-   }
+   public static class a extends etv.a {
+      public a(euf.a... $$0) {
+         super($$0);
+      }
 
-   public static etz.a d() {
-      return () -> new ett(false);
-   }
+      @Override
+      public ett.a or(euf.a $$0) {
+         this.a($$0);
+         return this;
+      }
 
-   public boolean e() {
-      return this.b;
+      @Override
+      protected euf a(List<euf> $$0) {
+         return new ett($$0);
+      }
    }
 }

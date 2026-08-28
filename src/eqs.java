@@ -1,146 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class eqs {
-   public static final Codec<eqs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               erc.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               etz.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
-               ese.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
-               euw.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               euw.a.fieldOf("bonus_rolls").orElse(eus.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, eqs::new)
-   );
-   private final List<ere> b;
-   private final List<etz> c;
-   private final Predicate<eqo> d;
-   private final List<esc> e;
-   private final BiFunction<cua, eqo, cua> f;
-   private final euv g;
-   private final euv h;
-
-   eqs(List<ere> $$0, List<etz> $$1, List<esc> $$2, euv $$3, euv $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = ac.a($$1);
-      this.e = $$2;
-      this.f = ese.a($$2);
-      this.g = $$3;
-      this.h = $$4;
-   }
-
-   private void b(Consumer<cua> $$0, eqo $$1) {
-      aym $$2 = $$1.b();
-      List<erd> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
-
-      for (ere $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
+public interface eqs {
+   eqr<cwx> a = new eqr<cwx>() {
+      @Override
+      public km<cwx> a() {
+         return kn.aa;
       }
 
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
-         } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (erd $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
-         }
-      }
-   }
-
-   public void a(Consumer<cua> $$0, eqo $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cua> $$2 = esc.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + aye.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
-      }
-   }
-
-   public void a(equ $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      public Stream<cuc> a(cwx $$0) {
+         return $$0.b();
       }
 
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
+      public cwx c() {
+         return cwx.a;
       }
 
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
+      public cwx a(cwx $$0, Stream<cuc> $$1) {
+         return cwx.a($$1.toList());
+      }
+   };
+   eqr<cwo> b = new eqr<cwo>() {
+      @Override
+      public km<cwo> a() {
+         return kn.F;
       }
 
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
-   }
-
-   public static eqs.a a() {
-      return new eqs.a();
-   }
-
-   public static class a implements ery<eqs.a>, etr<eqs.a> {
-      private final Builder<ere> a = ImmutableList.builder();
-      private final Builder<etz> b = ImmutableList.builder();
-      private final Builder<esc> c = ImmutableList.builder();
-      private euv d = eus.a(1.0F);
-      private euv e = eus.a(0.0F);
-
-      public eqs.a a(euv $$0) {
-         this.d = $$0;
-         return this;
+      public cwo c() {
+         return cwo.a;
       }
 
-      public eqs.a a() {
-         return this;
+      public Stream<cuc> a(cwo $$0) {
+         return $$0.a();
       }
 
-      public eqs.a b(euv $$0) {
-         this.e = $$0;
-         return this;
+      public cwo a(cwo $$0, Stream<cuc> $$1) {
+         cwo.a $$2 = new cwo.a($$0).a();
+         $$1.forEach($$2::a);
+         return $$2.d();
+      }
+   };
+   eqr<cwp> c = new eqr<cwp>() {
+      @Override
+      public km<cwp> a() {
+         return kn.E;
       }
 
-      public eqs.a a(ere.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
+      public cwp c() {
+         return cwp.a;
       }
 
-      public eqs.a a(etz.a $$0) {
-         this.b.add($$0.build());
-         return this;
+      public Stream<cuc> a(cwp $$0) {
+         return $$0.a().stream();
       }
 
-      public eqs.a a(esc.a $$0) {
-         this.c.add($$0.b());
-         return this;
+      public cwp a(cwp $$0, Stream<cuc> $$1) {
+         return cwp.a($$1.toList());
       }
-
-      public eqs b() {
-         return new eqs(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
-   }
+   };
+   Map<km<?>, eqr<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(eqr::a, $$0 -> (eqr<?>)$$0));
+   Codec<eqr<?>> e = lq.aq.r().comapFlatMap($$0 -> {
+      eqr<?> $$1 = d.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
+   }, eqr::a);
 }

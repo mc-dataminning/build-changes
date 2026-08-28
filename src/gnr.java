@@ -1,33 +1,39 @@
-public class gnr<T extends cmh, M extends fui<T> & fth & fuq> extends gnl<T, M> {
-   private final gdt a;
-   private static final float b = (float) (-Math.PI / 6);
-   private static final float c = (float) (Math.PI / 2);
+public class gnr<T extends btb, M extends fuo<T> & ftn> extends gny<T, M> {
+   private final gdz a;
 
-   public gnr(glc<T, M> $$0, gdt $$1) {
-      super($$0, $$1);
+   public gnr(gli<T, M> $$0, gdz $$1) {
+      super($$0);
       this.a = $$1;
    }
 
-   @Override
-   protected void a(bsy $$0, cua $$1, ctx $$2, bss $$3, fag $$4, gdx $$5, int $$6) {
-      if ($$1.a(cud.qX) && $$0.ft() == $$1 && $$0.aL == 0) {
-         this.a($$0, $$1, $$3, $$4, $$5, $$6);
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   public void a(fam $$0, ged $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fr() == bsv.b;
+      cuc $$11 = $$10 ? $$3.eV() : $$3.eU();
+      cuc $$12 = $$10 ? $$3.eU() : $$3.eV();
+      if (!$$11.e() || !$$12.e()) {
+         $$0.a();
+         if (this.c().e) {
+            float $$13 = 0.5F;
+            $$0.a(0.0F, 0.75F, 0.0F);
+            $$0.b(0.5F, 0.5F, 0.5F);
+         }
+
+         this.a($$3, $$12, ctz.c, bsv.b, $$0, $$1, $$2);
+         this.a($$3, $$11, ctz.b, bsv.a, $$0, $$1, $$2);
+         $$0.b();
       }
    }
 
-   private void a(bsy $$0, cua $$1, bss $$2, fag $$3, gdx $$4, int $$5) {
-      $$3.a();
-      fxi $$6 = this.c().d();
-      float $$7 = $$6.e;
-      $$6.e = aye.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
-      $$6.a($$3);
-      $$6.e = $$7;
-      gmx.a($$3, false);
-      boolean $$8 = $$2 == bss.a;
-      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-      this.a.a($$0, $$1, ctx.f, false, $$3, $$4, $$5);
-      $$3.b();
+   protected void a(btb $$0, cuc $$1, ctz $$2, bsv $$3, fam $$4, ged $$5, int $$6) {
+      if (!$$1.e()) {
+         $$4.a();
+         this.c().a($$3, $$4);
+         $$4.a(a.b.rotationDegrees(-90.0F));
+         $$4.a(a.d.rotationDegrees(180.0F));
+         boolean $$7 = $$3 == bsv.a;
+         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
+         $$4.b();
+      }
    }
 }

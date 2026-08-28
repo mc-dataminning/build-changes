@@ -8,11 +8,11 @@ public class at extends ds<at.a> {
       return at.a.a;
    }
 
-   public void a(aql $$0, ja $$1, cua $$2) {
-      aqk $$3 = $$0.z();
-      dsh $$4 = $$3.a_($$1);
-      eqr $$5 = new eqr.a($$3).a(etk.f, $$1.b()).a(etk.a, $$0).a(etk.g, $$4).a(etk.i, $$2).a(etj.o);
-      eqo $$6 = new eqo.a($$5).a(Optional.empty());
+   public void a(aqn $$0, ja $$1, cuc $$2) {
+      aqm $$3 = $$0.z();
+      dsk $$4 = $$3.a_($$1);
+      eqx $$5 = new eqx.a($$3).a(etq.f, $$1.b()).a(etq.a, $$0).a(etq.g, $$4).a(etq.i, $$2).a(etp.o);
+      equ $$6 = new equ.a($$5).a(Optional.empty());
       this.a($$0, $$1x -> $$1x.a($$6));
    }
 
@@ -21,14 +21,14 @@ public class at extends ds<at.a> {
          $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(at.a::a), bf.a.optionalFieldOf("location").forGetter(at.a::b)).apply($$0, at.a::new)
       );
 
-      public boolean a(eqo $$0) {
+      public boolean a(equ $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
       public void a(bg $$0) {
          ds.a.super.a($$0);
-         this.c.ifPresent($$1 -> $$0.a($$1, etj.o, ".location"));
+         this.c.ifPresent($$1 -> $$0.a($$1, etp.o, ".location"));
       }
 
       @Override

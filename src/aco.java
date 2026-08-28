@@ -1,8 +1,8 @@
-public record aco(long[] b, ble c) implements zb<abn> {
+public record aco(long[] b, blh c) implements zb<abn> {
    public static final ys<vr, aco> a = zb.a(aco::a, aco::new);
 
    private aco(vr $$0) {
-      this($$0.d(), $$0.b(ble.class));
+      this($$0.d(), $$0.b(blh.class));
    }
 
    private void a(vr $$0) {
@@ -19,7 +19,7 @@ public record aco(long[] b, ble c) implements zb<abn> {
       $$0.a(this);
    }
 
-   public ble e() {
+   public blh e() {
       return this.c;
    }
 }

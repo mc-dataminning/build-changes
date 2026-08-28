@@ -1,33 +1,30 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dfy extends dff {
+public class dfy extends dfh {
    public static final MapCodec<dfy> a = b(dfy::new);
-   private static final wu b = wu.c("container.cartography_table");
+   protected static final ewy b = dfh.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
 
    @Override
-   public MapCodec<dfy> a() {
+   public MapCodec<? extends dfy> a() {
       return a;
    }
 
-   protected dfy(dsg.d $$0) {
+   public dfy(dsj.d $$0) {
       super($$0);
    }
 
    @Override
-   protected bqd a(dsh $$0, dcd $$1, ja $$2, cmh $$3, evv $$4) {
-      if ($$1.B) {
-         return bqd.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(avp.aw);
-         return bqd.c;
-      }
+   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return b;
    }
 
-   @Nullable
    @Override
-   protected bqh b(dsh $$0, dcd $$1, ja $$2) {
-      return new bqn(($$2x, $$3, $$4) -> new cpl($$2x, $$3, cpq.a($$1, $$2)), b);
+   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
+      return !$$0.a($$3, $$4) ? dfj.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dsk $$0, dci $$1, ja $$2) {
+      return !$$1.u($$2.d());
    }
 }

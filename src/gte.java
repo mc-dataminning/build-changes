@@ -1,36 +1,32 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+public class gte implements gsm {
+   public static final float a = 0.01F;
+   public static final float b = 0.001F;
+   public static final float c = 1.0E-4F;
+   private static final int d = 0;
+   private final gdf e;
+   private final guh f;
+   private int g = 0;
 
-public class gte<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
-
-   public gte(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   public gte(gdf $$0, guh $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   protected T computeNext() {
-      boolean $$0 = !this.a.hasNext();
-      boolean $$1 = !this.b.hasNext();
-      if ($$0 && $$1) {
-         return (T)this.endOfData();
-      } else if ($$0) {
-         return (T)this.b.next();
-      } else if ($$1) {
-         return (T)this.a.next();
-      } else {
-         int $$2 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$2 == 0) {
-            this.b.next();
+   @Override
+   public void a() {
+      this.g--;
+      if (this.g <= 0 && this.e.bk()) {
+         float $$0 = this.e.dQ().z.i();
+         if ($$0 < 1.0E-4F) {
+            this.g = 0;
+            this.f.a((gtc)(new gtf.a(this.e, avh.C)));
+         } else if ($$0 < 0.001F) {
+            this.g = 0;
+            this.f.a((gtc)(new gtf.a(this.e, avh.B)));
+         } else if ($$0 < 0.01F) {
+            this.g = 0;
+            this.f.a((gtc)(new gtf.a(this.e, avh.A)));
          }
-
-         return (T)($$2 <= 0 ? this.a.next() : this.b.next());
       }
    }
 }

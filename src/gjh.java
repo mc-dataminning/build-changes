@@ -1,185 +1,355 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class gjh {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<bsj<?>, gjg<?>> b = new Object2ObjectOpenHashMap();
-   private static final Map<gqi.a, gjg<gcw>> c = Map.of(gqi.a.b, $$0 -> new gol($$0, false), gqi.a.a, $$0 -> new gol($$0, true));
+public class gjh extends gjl<chn> {
+   public static final akk a = new akk("textures/entity/end_crystal/end_crystal_beam.png");
+   private static final akk f = new akk("textures/entity/enderdragon/dragon_exploding.png");
+   private static final akk g = new akk("textures/entity/enderdragon/dragon.png");
+   private static final akk h = new akk("textures/entity/enderdragon/dragon_eyes.png");
+   private static final gel i = gel.e(g);
+   private static final gel j = gel.l(g);
+   private static final gel k = gel.p(h);
+   private static final gel l = gel.k(a);
+   private static final float m = (float)(Math.sqrt(3.0) / 2.0);
+   private final gjh.a n;
 
-   private static <T extends bsd> void a(bsj<? extends T> $$0, gjg<T> $$1) {
-      b.put($$0, $$1);
+   public gjh(gjm.a $$0) {
+      super($$0);
+      this.d = 0.5F;
+      this.n = new gjh.a($$0.a(fxn.Z));
    }
 
-   public static Map<bsj<?>, gjf<?>> a(gjg.a $$0) {
-      Builder<bsj<?>, gjf<?>> $$1 = ImmutableMap.builder();
-      b.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalArgumentException("Failed to create model for " + lq.f.b((bsj<?>)$$2), var5);
-         }
-      });
-      return $$1.build();
-   }
-
-   public static Map<gqi.a, gjf<? extends cmh>> b(gjg.a $$0) {
-      Builder<gqi.a, gjf<? extends cmh>> $$1 = ImmutableMap.builder();
-      c.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalArgumentException("Failed to create player model for " + $$2, var5);
-         }
-      });
-      return $$1.build();
-   }
-
-   public static boolean a() {
-      boolean $$0 = true;
-
-      for (bsj<?> $$1 : lq.f) {
-         if ($$1 != bsj.by && !b.containsKey($$1)) {
-            a.warn("No renderer registered for {}", lq.f.b($$1));
-            $$0 = false;
-         }
+   public void a(chn $$0, float $$1, float $$2, fam $$3, ged $$4, int $$5) {
+      $$3.a();
+      float $$6 = (float)$$0.a(7, $$2)[0];
+      float $$7 = (float)($$0.a(5, $$2)[1] - $$0.a(10, $$2)[1]);
+      $$3.a(a.d.rotationDegrees(-$$6));
+      $$3.a(a.b.rotationDegrees($$7 * 10.0F));
+      $$3.a(0.0F, 0.0F, 1.0F);
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      $$3.a(0.0F, -1.501F, 0.0F);
+      boolean $$8 = $$0.aO > 0;
+      this.n.a($$0, 0.0F, 0.0F, $$2);
+      if ($$0.cc > 0) {
+         float $$9 = (float)$$0.cc / 200.0F;
+         faq $$10 = $$4.getBuffer(gel.o(f));
+         this.n.a($$3, $$10, $$5, gpf.d, 1.0F, 1.0F, 1.0F, $$9);
+         faq $$11 = $$4.getBuffer(j);
+         this.n.a($$3, $$11, $$5, gpf.a(0.0F, $$8), 1.0F, 1.0F, 1.0F, 1.0F);
+      } else {
+         faq $$12 = $$4.getBuffer(i);
+         this.n.a($$3, $$12, $$5, gpf.a(0.0F, $$8), 1.0F, 1.0F, 1.0F, 1.0F);
       }
 
-      return !$$0;
+      faq $$13 = $$4.getBuffer(k);
+      this.n.a($$3, $$13, $$5, gpf.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      if ($$0.cc > 0) {
+         float $$14 = ((float)$$0.cc + $$2) / 200.0F;
+         float $$15 = Math.min($$14 > 0.8F ? ($$14 - 0.8F) / 0.2F : 0.0F, 1.0F);
+         ayo $$16 = ayo.a(432L);
+         faq $$17 = $$4.getBuffer(gel.s());
+         $$3.a();
+         $$3.a(0.0F, -1.0F, -2.0F);
+
+         for (int $$18 = 0; (float)$$18 < ($$14 + $$14 * $$14) / 2.0F * 60.0F; $$18++) {
+            $$3.a(a.b.rotationDegrees($$16.i() * 360.0F));
+            $$3.a(a.d.rotationDegrees($$16.i() * 360.0F));
+            $$3.a(a.f.rotationDegrees($$16.i() * 360.0F));
+            $$3.a(a.b.rotationDegrees($$16.i() * 360.0F));
+            $$3.a(a.d.rotationDegrees($$16.i() * 360.0F));
+            $$3.a(a.f.rotationDegrees($$16.i() * 360.0F + $$14 * 90.0F));
+            float $$19 = $$16.i() * 20.0F + 5.0F + $$15 * 10.0F;
+            float $$20 = $$16.i() * 2.0F + 1.0F + $$15 * 2.0F;
+            Matrix4f $$21 = $$3.c().a();
+            int $$22 = (int)(255.0F * (1.0F - $$15));
+            a($$17, $$21, $$22);
+            a($$17, $$21, $$19, $$20);
+            b($$17, $$21, $$19, $$20);
+            a($$17, $$21, $$22);
+            b($$17, $$21, $$19, $$20);
+            c($$17, $$21, $$19, $$20);
+            a($$17, $$21, $$22);
+            c($$17, $$21, $$19, $$20);
+            a($$17, $$21, $$19, $$20);
+         }
+
+         $$3.b();
+      }
+
+      $$3.b();
+      if ($$0.ce != null) {
+         $$3.a();
+         float $$23 = (float)($$0.ce.dv() - ayg.d((double)$$2, $$0.L, $$0.dv()));
+         float $$24 = (float)($$0.ce.dx() - ayg.d((double)$$2, $$0.M, $$0.dx()));
+         float $$25 = (float)($$0.ce.dB() - ayg.d((double)$$2, $$0.N, $$0.dB()));
+         a($$23, $$24 + gjg.a($$0.ce, $$2), $$25, $$2, $$0.ai, $$3, $$4, $$5);
+         $$3.b();
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   static {
-      a(bsj.a, gic::new);
-      a(bsj.b, gko::new);
-      a(bsj.c, gid::new);
-      a(bsj.d, gie::new);
-      a(bsj.e, glu::new);
-      a(bsj.f, gig::new);
-      a(bsj.g, gih::new);
-      a(bsj.h, gii::new);
-      a(bsj.i, gij::new);
-      a(bsj.j, giv.a::new);
-      a(bsj.k, $$0 -> new gik($$0, false));
-      a(bsj.l, gil::new);
-      a(bsj.m, gim::new);
-      a(bsj.n, gmf::new);
-      a(bsj.p, gio::new);
-      a(bsj.o, $$0 -> new gin($$0, fxh.v));
-      a(bsj.q, gip::new);
-      a(bsj.r, $$0 -> new gik($$0, true));
-      a(bsj.s, $$0 -> new gkl<>($$0, fxh.y));
-      a(bsj.t, gir::new);
-      a(bsj.u, gis::new);
-      a(bsj.v, $$0 -> new gkl<>($$0, fxh.B));
-      a(bsj.w, git::new);
-      a(bsj.x, giu::new);
-      a(bsj.y, giw::new);
-      a(bsj.z, $$0 -> new giq<>($$0, 0.87F, fxh.N));
-      a(bsj.A, gix::new);
-      a(bsj.B, giy::new);
-      a(bsj.C, gls::new);
-      a(bsj.D, giz::new);
-      a(bsj.H, gjc::new);
-      a(bsj.I, gjd::new);
-      a(bsj.F, gjb::new);
-      a(bsj.G, gls::new);
-      a(bsj.E, gja::new);
-      a(bsj.J, gjj::new);
-      a(bsj.K, gji::new);
-      a(bsj.L, gls::new);
-      a(bsj.M, gjk::new);
-      a(bsj.N, $$0 -> new gls<>($$0, 1.0F, true));
-      a(bsj.O, gjl::new);
-      a(bsj.ak, $$0 -> new gls<>($$0, 3.0F, true));
-      a(bsj.P, gjm::new);
-      a(bsj.bz, gjn::new);
-      a(bsj.Q, gjo::new);
-      a(bsj.R, gjp::new);
-      a(bsj.S, $$0 -> new gkl<>($$0, fxh.af));
-      a(bsj.T, gjq::new);
-      a(bsj.U, $$0 -> new gjr($$0, 6.0F));
-      a(bsj.V, gkd::new);
-      a(bsj.W, $$0 -> new gjs($$0, new fwk<>($$0.a(fxh.ak))));
-      a(bsj.X, gjt::new);
-      a(bsj.Y, gju::new);
-      a(bsj.Z, gjv::new);
-      a(bsj.aa, $$0 -> new gkl<>($$0, fxh.ao));
-      a(bsj.ab, gjw::new);
-      a(bsj.ac, gjy::new);
-      a(bsj.ad, gka::new);
-      a(bsj.ae, gko::new);
-      a(bsj.af, gkb::new);
-      a(bsj.ag, gkc::new);
-      a(bsj.ah, giv.b::new);
-      a(bsj.ai, gkd::new);
-      a(bsj.aj, gkq::new);
-      a(bsj.al, gkf::new);
-      a(bsj.am, gkg::new);
-      a(bsj.an, $$0 -> new gki($$0, fxh.ax));
-      a(bsj.ao, gkj::new);
-      a(bsj.ap, gkk::new);
-      a(bsj.aq, gko::new);
-      a(bsj.ar, $$0 -> new gkl<>($$0, fxh.aB));
-      a(bsj.as, gkn::new);
-      a(bsj.at, $$0 -> new giq<>($$0, 0.92F, fxh.aD));
-      a(bsj.au, gkp::new);
-      a(bsj.av, gkr::new);
-      a(bsj.aw, gks::new);
-      a(bsj.ax, gkt::new);
-      a(bsj.ay, gku::new);
-      a(bsj.az, gkv::new);
-      a(bsj.aA, $$0 -> new gkw($$0, fxh.aJ, fxh.aO, fxh.aP, false));
-      a(bsj.aB, $$0 -> new gkw($$0, fxh.aK, fxh.aL, fxh.aM, false));
-      a(bsj.aC, gkx::new);
-      a(bsj.aD, gky::new);
-      a(bsj.aE, gls::new);
-      a(bsj.aF, gkz::new);
-      a(bsj.aG, gla::new);
-      a(bsj.aH, glb::new);
-      a(bsj.aI, gld::new);
-      a(bsj.aJ, gle::new);
-      a(bsj.aK, glg::new);
-      a(bsj.aL, glf::new);
-      a(bsj.aM, glh::new);
-      a(bsj.aN, gli::new);
-      a(bsj.aO, $$0 -> new glz($$0, fxh.bo));
-      a(bsj.aP, glj::new);
-      a(bsj.aQ, $$0 -> new gls<>($$0, 0.75F, true));
-      a(bsj.aR, glk::new);
-      a(bsj.aT, gls::new);
-      a(bsj.aS, gll::new);
-      a(bsj.aU, $$0 -> new gkl<>($$0, fxh.bw));
-      a(bsj.aV, glm::new);
-      a(bsj.aW, gln::new);
-      a(bsj.aX, $$0 -> new glo<>($$0, new fwk<>($$0.a(fxh.by))));
-      a(bsj.aY, glp::new);
-      a(bsj.aZ, glq::new);
-      a(bsj.ba, glr::new);
-      a(bsj.bb, giv.c::new);
-      a(bsj.bc, glw::new);
-      a(bsj.bd, glv::new);
-      a(bsj.be, $$0 -> new gki($$0, fxh.bH));
-      a(bsj.bf, glt::new);
-      a(bsj.bg, glx::new);
-      a(bsj.bh, gly::new);
-      a(bsj.bi, gma::new);
-      a(bsj.bj, gmb::new);
-      a(bsj.bk, gmc::new);
-      a(bsj.bm, gme::new);
-      a(bsj.bl, gmd::new);
-      a(bsj.bn, gmf::new);
-      a(bsj.bo, gmg::new);
-      a(bsj.bp, gmh::new);
-      a(bsj.bq, gmi::new);
-      a(bsj.br, gmj::new);
-      a(bsj.bs, gmk::new);
-      a(bsj.bt, gml::new);
-      a(bsj.bu, gmm::new);
-      a(bsj.bv, $$0 -> new glz($$0, fxh.ch));
-      a(bsj.bw, gmn::new);
-      a(bsj.bx, $$0 -> new gkw($$0, fxh.cn, fxh.co, fxh.cp, true));
+   private static void a(faq $$0, Matrix4f $$1, int $$2) {
+      $$0.a($$1, 0.0F, 0.0F, 0.0F).a(255, 255, 255, $$2).e();
+   }
+
+   private static void a(faq $$0, Matrix4f $$1, float $$2, float $$3) {
+      $$0.a($$1, -m * $$3, $$2, -0.5F * $$3).a(255, 0, 255, 0).e();
+   }
+
+   private static void b(faq $$0, Matrix4f $$1, float $$2, float $$3) {
+      $$0.a($$1, m * $$3, $$2, -0.5F * $$3).a(255, 0, 255, 0).e();
+   }
+
+   private static void c(faq $$0, Matrix4f $$1, float $$2, float $$3) {
+      $$0.a($$1, 0.0F, $$2, 1.0F * $$3).a(255, 0, 255, 0).e();
+   }
+
+   public static void a(float $$0, float $$1, float $$2, float $$3, int $$4, fam $$5, ged $$6, int $$7) {
+      float $$8 = ayg.c($$0 * $$0 + $$2 * $$2);
+      float $$9 = ayg.c($$0 * $$0 + $$1 * $$1 + $$2 * $$2);
+      $$5.a();
+      $$5.a(0.0F, 2.0F, 0.0F);
+      $$5.a(a.d.rotation((float)(-Math.atan2((double)$$2, (double)$$0)) - (float) (Math.PI / 2)));
+      $$5.a(a.b.rotation((float)(-Math.atan2((double)$$8, (double)$$1)) - (float) (Math.PI / 2)));
+      faq $$10 = $$6.getBuffer(l);
+      float $$11 = 0.0F - ((float)$$4 + $$3) * 0.01F;
+      float $$12 = ayg.c($$0 * $$0 + $$1 * $$1 + $$2 * $$2) / 32.0F - ((float)$$4 + $$3) * 0.01F;
+      int $$13 = 8;
+      float $$14 = 0.0F;
+      float $$15 = 0.75F;
+      float $$16 = 0.0F;
+      fam.a $$17 = $$5.c();
+
+      for (int $$18 = 1; $$18 <= 8; $$18++) {
+         float $$19 = ayg.a((float)$$18 * (float) (Math.PI * 2) / 8.0F) * 0.75F;
+         float $$20 = ayg.b((float)$$18 * (float) (Math.PI * 2) / 8.0F) * 0.75F;
+         float $$21 = (float)$$18 / 8.0F;
+         $$10.a($$17, $$14 * 0.2F, $$15 * 0.2F, 0.0F).a(0, 0, 0, 255).a($$16, $$11).c(gpf.d).b($$7).b($$17, 0.0F, -1.0F, 0.0F).e();
+         $$10.a($$17, $$14, $$15, $$9).a(255, 255, 255, 255).a($$16, $$12).c(gpf.d).b($$7).b($$17, 0.0F, -1.0F, 0.0F).e();
+         $$10.a($$17, $$19, $$20, $$9).a(255, 255, 255, 255).a($$21, $$12).c(gpf.d).b($$7).b($$17, 0.0F, -1.0F, 0.0F).e();
+         $$10.a($$17, $$19 * 0.2F, $$20 * 0.2F, 0.0F).a(0, 0, 0, 255).a($$21, $$11).c(gpf.d).b($$7).b($$17, 0.0F, -1.0F, 0.0F).e();
+         $$14 = $$19;
+         $$15 = $$20;
+         $$16 = $$21;
+      }
+
+      $$5.b();
+   }
+
+   public akk a(chn $$0) {
+      return g;
+   }
+
+   public static fxu a() {
+      fxw $$0 = new fxw();
+      fxx $$1 = $$0.a();
+      float $$2 = -16.0F;
+      fxx $$3 = $$1.a(
+         "head",
+         fxt.c()
+            .a("upperlip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
+            .a("upperhead", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
+            .a()
+            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
+            .a()
+            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
+         fxq.a
+      );
+      $$3.a("jaw", fxt.c().a("jaw", -6.0F, 0.0F, -16.0F, 12, 4, 16, 176, 65), fxq.a(0.0F, 4.0F, -8.0F));
+      $$1.a("neck", fxt.c().a("box", -5.0F, -5.0F, -5.0F, 10, 10, 10, 192, 104).a("scale", -1.0F, -9.0F, -3.0F, 2, 4, 6, 48, 0), fxq.a);
+      $$1.a(
+         "body",
+         fxt.c()
+            .a("body", -12.0F, 0.0F, -16.0F, 24, 24, 64, 0, 0)
+            .a("scale", -1.0F, -6.0F, -10.0F, 2, 6, 12, 220, 53)
+            .a("scale", -1.0F, -6.0F, 10.0F, 2, 6, 12, 220, 53)
+            .a("scale", -1.0F, -6.0F, 30.0F, 2, 6, 12, 220, 53),
+         fxq.a(0.0F, 4.0F, 8.0F)
+      );
+      fxx $$4 = $$1.a(
+         "left_wing", fxt.c().a().a("bone", 0.0F, -4.0F, -4.0F, 56, 8, 8, 112, 88).a("skin", 0.0F, 0.0F, 2.0F, 56, 0, 56, -56, 88), fxq.a(12.0F, 5.0F, 2.0F)
+      );
+      $$4.a(
+         "left_wing_tip",
+         fxt.c().a().a("bone", 0.0F, -2.0F, -2.0F, 56, 4, 4, 112, 136).a("skin", 0.0F, 0.0F, 2.0F, 56, 0, 56, -56, 144),
+         fxq.a(56.0F, 0.0F, 0.0F)
+      );
+      fxx $$5 = $$1.a("left_front_leg", fxt.c().a("main", -4.0F, -4.0F, -4.0F, 8, 24, 8, 112, 104), fxq.a(12.0F, 20.0F, 2.0F));
+      fxx $$6 = $$5.a("left_front_leg_tip", fxt.c().a("main", -3.0F, -1.0F, -3.0F, 6, 24, 6, 226, 138), fxq.a(0.0F, 20.0F, -1.0F));
+      $$6.a("left_front_foot", fxt.c().a("main", -4.0F, 0.0F, -12.0F, 8, 4, 16, 144, 104), fxq.a(0.0F, 23.0F, 0.0F));
+      fxx $$7 = $$1.a("left_hind_leg", fxt.c().a("main", -8.0F, -4.0F, -8.0F, 16, 32, 16, 0, 0), fxq.a(16.0F, 16.0F, 42.0F));
+      fxx $$8 = $$7.a("left_hind_leg_tip", fxt.c().a("main", -6.0F, -2.0F, 0.0F, 12, 32, 12, 196, 0), fxq.a(0.0F, 32.0F, -4.0F));
+      $$8.a("left_hind_foot", fxt.c().a("main", -9.0F, 0.0F, -20.0F, 18, 6, 24, 112, 0), fxq.a(0.0F, 31.0F, 4.0F));
+      fxx $$9 = $$1.a(
+         "right_wing", fxt.c().a("bone", -56.0F, -4.0F, -4.0F, 56, 8, 8, 112, 88).a("skin", -56.0F, 0.0F, 2.0F, 56, 0, 56, -56, 88), fxq.a(-12.0F, 5.0F, 2.0F)
+      );
+      $$9.a(
+         "right_wing_tip",
+         fxt.c().a("bone", -56.0F, -2.0F, -2.0F, 56, 4, 4, 112, 136).a("skin", -56.0F, 0.0F, 2.0F, 56, 0, 56, -56, 144),
+         fxq.a(-56.0F, 0.0F, 0.0F)
+      );
+      fxx $$10 = $$1.a("right_front_leg", fxt.c().a("main", -4.0F, -4.0F, -4.0F, 8, 24, 8, 112, 104), fxq.a(-12.0F, 20.0F, 2.0F));
+      fxx $$11 = $$10.a("right_front_leg_tip", fxt.c().a("main", -3.0F, -1.0F, -3.0F, 6, 24, 6, 226, 138), fxq.a(0.0F, 20.0F, -1.0F));
+      $$11.a("right_front_foot", fxt.c().a("main", -4.0F, 0.0F, -12.0F, 8, 4, 16, 144, 104), fxq.a(0.0F, 23.0F, 0.0F));
+      fxx $$12 = $$1.a("right_hind_leg", fxt.c().a("main", -8.0F, -4.0F, -8.0F, 16, 32, 16, 0, 0), fxq.a(-16.0F, 16.0F, 42.0F));
+      fxx $$13 = $$12.a("right_hind_leg_tip", fxt.c().a("main", -6.0F, -2.0F, 0.0F, 12, 32, 12, 196, 0), fxq.a(0.0F, 32.0F, -4.0F));
+      $$13.a("right_hind_foot", fxt.c().a("main", -9.0F, 0.0F, -20.0F, 18, 6, 24, 112, 0), fxq.a(0.0F, 31.0F, 4.0F));
+      return fxu.a($$0, 256, 256);
+   }
+
+   public static class a extends fuo<chn> {
+      private final fxo a;
+      private final fxo b;
+      private final fxo f;
+      private final fxo g;
+      private final fxo h;
+      private final fxo i;
+      private final fxo j;
+      private final fxo k;
+      private final fxo l;
+      private final fxo m;
+      private final fxo n;
+      private final fxo o;
+      private final fxo p;
+      private final fxo q;
+      private final fxo r;
+      private final fxo s;
+      private final fxo t;
+      private final fxo u;
+      private final fxo w;
+      private final fxo x;
+      @Nullable
+      private chn y;
+      private float z;
+
+      public a(fxo $$0) {
+         this.a = $$0.b("head");
+         this.f = this.a.b("jaw");
+         this.b = $$0.b("neck");
+         this.g = $$0.b("body");
+         this.h = $$0.b("left_wing");
+         this.i = this.h.b("left_wing_tip");
+         this.j = $$0.b("left_front_leg");
+         this.k = this.j.b("left_front_leg_tip");
+         this.l = this.k.b("left_front_foot");
+         this.m = $$0.b("left_hind_leg");
+         this.n = this.m.b("left_hind_leg_tip");
+         this.o = this.n.b("left_hind_foot");
+         this.p = $$0.b("right_wing");
+         this.q = this.p.b("right_wing_tip");
+         this.r = $$0.b("right_front_leg");
+         this.s = this.r.b("right_front_leg_tip");
+         this.t = this.s.b("right_front_foot");
+         this.u = $$0.b("right_hind_leg");
+         this.w = this.u.b("right_hind_leg_tip");
+         this.x = this.w.b("right_hind_foot");
+      }
+
+      public void a(chn $$0, float $$1, float $$2, float $$3) {
+         this.y = $$0;
+         this.z = $$3;
+      }
+
+      public void a(chn $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      }
+
+      @Override
+      public void a(fam $$0, faq $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+         $$0.a();
+         float $$8 = ayg.i(this.z, this.y.bZ, this.y.ca);
+         this.f.e = (float)(Math.sin((double)($$8 * (float) (Math.PI * 2))) + 1.0) * 0.2F;
+         float $$9 = (float)(Math.sin((double)($$8 * (float) (Math.PI * 2) - 1.0F)) + 1.0);
+         $$9 = ($$9 * $$9 + $$9 * 2.0F) * 0.05F;
+         $$0.a(0.0F, $$9 - 2.0F, -3.0F);
+         $$0.a(a.b.rotationDegrees($$9 * 2.0F));
+         float $$10 = 0.0F;
+         float $$11 = 20.0F;
+         float $$12 = -12.0F;
+         float $$13 = 1.5F;
+         double[] $$14 = this.y.a(6, this.z);
+         float $$15 = ayg.g((float)(this.y.a(5, this.z)[0] - this.y.a(10, this.z)[0]));
+         float $$16 = ayg.g((float)(this.y.a(5, this.z)[0] + (double)($$15 / 2.0F)));
+         float $$17 = $$8 * (float) (Math.PI * 2);
+
+         for (int $$18 = 0; $$18 < 5; $$18++) {
+            double[] $$19 = this.y.a(5 - $$18, this.z);
+            float $$20 = (float)Math.cos((double)((float)$$18 * 0.45F + $$17)) * 0.15F;
+            this.b.f = ayg.g((float)($$19[0] - $$14[0])) * (float) (Math.PI / 180.0) * 1.5F;
+            this.b.e = $$20 + this.y.a($$18, $$14, $$19) * (float) (Math.PI / 180.0) * 1.5F * 5.0F;
+            this.b.g = -ayg.g((float)($$19[0] - (double)$$16)) * (float) (Math.PI / 180.0) * 1.5F;
+            this.b.c = $$11;
+            this.b.d = $$12;
+            this.b.b = $$10;
+            $$11 += ayg.a(this.b.e) * 10.0F;
+            $$12 -= ayg.b(this.b.f) * ayg.b(this.b.e) * 10.0F;
+            $$10 -= ayg.a(this.b.f) * ayg.b(this.b.e) * 10.0F;
+            this.b.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, $$7);
+         }
+
+         this.a.c = $$11;
+         this.a.d = $$12;
+         this.a.b = $$10;
+         double[] $$21 = this.y.a(0, this.z);
+         this.a.f = ayg.g((float)($$21[0] - $$14[0])) * (float) (Math.PI / 180.0);
+         this.a.e = ayg.g(this.y.a(6, $$14, $$21)) * (float) (Math.PI / 180.0) * 1.5F * 5.0F;
+         this.a.g = -ayg.g((float)($$21[0] - (double)$$16)) * (float) (Math.PI / 180.0);
+         this.a.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, $$7);
+         $$0.a();
+         $$0.a(0.0F, 1.0F, 0.0F);
+         $$0.a(a.f.rotationDegrees(-$$15 * 1.5F));
+         $$0.a(0.0F, -1.0F, 0.0F);
+         this.g.g = 0.0F;
+         this.g.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, $$7);
+         float $$22 = $$8 * (float) (Math.PI * 2);
+         this.h.e = 0.125F - (float)Math.cos((double)$$22) * 0.2F;
+         this.h.f = -0.25F;
+         this.h.g = -((float)(Math.sin((double)$$22) + 0.125)) * 0.8F;
+         this.i.g = (float)(Math.sin((double)($$22 + 2.0F)) + 0.5) * 0.75F;
+         this.p.e = this.h.e;
+         this.p.f = -this.h.f;
+         this.p.g = -this.h.g;
+         this.q.g = -this.i.g;
+         this.a($$0, $$1, $$2, $$3, $$9, this.h, this.j, this.k, this.l, this.m, this.n, this.o, $$7);
+         this.a($$0, $$1, $$2, $$3, $$9, this.p, this.r, this.s, this.t, this.u, this.w, this.x, $$7);
+         $$0.b();
+         float $$23 = -ayg.a($$8 * (float) (Math.PI * 2)) * 0.0F;
+         $$17 = $$8 * (float) (Math.PI * 2);
+         $$11 = 10.0F;
+         $$12 = 60.0F;
+         $$10 = 0.0F;
+         $$14 = this.y.a(11, this.z);
+
+         for (int $$24 = 0; $$24 < 12; $$24++) {
+            $$21 = this.y.a(12 + $$24, this.z);
+            $$23 += ayg.a((float)$$24 * 0.45F + $$17) * 0.05F;
+            this.b.f = (ayg.g((float)($$21[0] - $$14[0])) * 1.5F + 180.0F) * (float) (Math.PI / 180.0);
+            this.b.e = $$23 + (float)($$21[1] - $$14[1]) * (float) (Math.PI / 180.0) * 1.5F * 5.0F;
+            this.b.g = ayg.g((float)($$21[0] - (double)$$16)) * (float) (Math.PI / 180.0) * 1.5F;
+            this.b.c = $$11;
+            this.b.d = $$12;
+            this.b.b = $$10;
+            $$11 += ayg.a(this.b.e) * 10.0F;
+            $$12 -= ayg.b(this.b.f) * ayg.b(this.b.e) * 10.0F;
+            $$10 -= ayg.a(this.b.f) * ayg.b(this.b.e) * 10.0F;
+            this.b.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, $$7);
+         }
+
+         $$0.b();
+      }
+
+      private void a(fam $$0, faq $$1, int $$2, int $$3, float $$4, fxo $$5, fxo $$6, fxo $$7, fxo $$8, fxo $$9, fxo $$10, fxo $$11, float $$12) {
+         $$9.e = 1.0F + $$4 * 0.1F;
+         $$10.e = 0.5F + $$4 * 0.1F;
+         $$11.e = 0.75F + $$4 * 0.1F;
+         $$6.e = 1.3F + $$4 * 0.1F;
+         $$7.e = -0.5F - $$4 * 0.1F;
+         $$8.e = 0.75F + $$4 * 0.1F;
+         $$5.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, $$12);
+         $$6.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, $$12);
+         $$9.a($$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F, $$12);
+      }
    }
 }

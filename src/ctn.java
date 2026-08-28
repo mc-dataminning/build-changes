@@ -1,14 +1,15 @@
-public class ctn extends cvd {
-   public ctn(dff $$0, dff $$1, ctv.a $$2) {
-      super($$2, $$0, $$1, jf.b);
+public class ctn extends ctx implements cve {
+   public ctn(ctx.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(dcg $$0, dsh $$1, ja $$2) {
-      if ($$1.b() instanceof doe $$3 && !$$3.b($$1, $$0, $$2)) {
+   public boolean a(dcf $$0, dra $$1, boolean $$2, cmk $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.az_(), avh.kA, avi.e, 1.0F, 1.0F);
+         return true;
+      } else {
          return false;
       }
-
-      return super.a($$0, $$1, $$2);
    }
 }

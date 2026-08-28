@@ -1,320 +1,175 @@
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+
 public class ges {
-   private static final float a = 0.8888889F;
-   private final gpi[] b = new gpi[2];
-   private final gpi[] c = new gpi[2];
-   private gpi d;
+   public static final akk a = new akk("textures/atlas/shulker_boxes.png");
+   public static final akk b = new akk("textures/atlas/beds.png");
+   public static final akk c = new akk("textures/atlas/banner_patterns.png");
+   public static final akk d = new akk("textures/atlas/shield_patterns.png");
+   public static final akk e = new akk("textures/atlas/signs.png");
+   public static final akk f = new akk("textures/atlas/chest.png");
+   public static final akk g = new akk("textures/atlas/armor_trims.png");
+   public static final akk h = new akk("textures/atlas/decorated_pot.png");
+   private static final gel C = gel.e(a);
+   private static final gel D = gel.c(b);
+   private static final gel E = gel.m(c);
+   private static final gel F = gel.m(d);
+   private static final gel G = gel.e(e);
+   private static final gel H = gel.d(f);
+   private static final gel I = gel.a(g);
+   private static final gel J = gel.b(g);
+   private static final gel K = gel.c(gpn.e);
+   private static final gel L = gel.d(gpn.e);
+   private static final gel M = gel.g(gpn.e);
+   private static final gel N = gel.h(gpn.e);
+   public static final grs i = new grs(a, new akk("entity/shulker/shulker"));
+   public static final List<grs> j = Stream.of(
+         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
+      )
+      .map($$0 -> new grs(a, new akk("entity/shulker/shulker_" + $$0)))
+      .collect(ImmutableList.toImmutableList());
+   public static final Map<dtx, grs> k = dtx.a().collect(Collectors.toMap(Function.identity(), ges::c));
+   public static final Map<dtx, grs> l = dtx.a().collect(Collectors.toMap(Function.identity(), ges::d));
+   public static final grs m = new grs(c, new akk("entity/banner/base"));
+   public static final grs n = new grs(d, new akk("entity/shield/base"));
+   private static final Map<akk, grs> O = new HashMap<>();
+   private static final Map<akk, grs> P = new HashMap<>();
+   public static final Map<akj<dqg>, grs> o = lq.al.i().collect(Collectors.toMap(jj.c::h, $$0 -> a($$0.a().a())));
+   public static final grs p = a(new akk("decorated_pot_base"));
+   public static final grs q = a(new akk("decorated_pot_side"));
+   public static final grs[] r = Arrays.stream(csv.values())
+      .sorted(Comparator.comparingInt(csv::a))
+      .map($$0 -> new grs(b, new akk("entity/bed/" + $$0.b())))
+      .toArray(grs[]::new);
+   public static final grs s = a("trapped");
+   public static final grs t = a("trapped_left");
+   public static final grs u = a("trapped_right");
+   public static final grs v = a("christmas");
+   public static final grs w = a("christmas_left");
+   public static final grs x = a("christmas_right");
+   public static final grs y = a("normal");
+   public static final grs z = a("normal_left");
+   public static final grs A = a("normal_right");
+   public static final grs B = a("ender");
 
-   protected void a() {
-      this.b[0] = ffn.Q().aD().b().b(dfh.H.o()).e();
-      this.b[1] = gro.c.c();
-      this.c[0] = ffn.Q().aD().b().b(dfh.G.o()).e();
-      this.c[1] = gro.d.c();
-      this.d = gro.e.c();
+   public static gel a() {
+      return E;
    }
 
-   private static boolean a(eob $$0, eob $$1) {
-      return $$1.a().a($$0.a());
+   public static gel b() {
+      return F;
    }
 
-   private static boolean a(dbj $$0, jf $$1, float $$2, ja $$3, dsh $$4) {
-      if ($$4.p()) {
-         ews $$5 = ewp.a(0.0, 0.0, 0.0, 1.0, (double)$$2, 1.0);
-         ews $$6 = $$4.c($$0, $$3);
-         return ewp.a($$5, $$6, $$1);
+   public static gel c() {
+      return D;
+   }
+
+   public static gel d() {
+      return C;
+   }
+
+   public static gel e() {
+      return G;
+   }
+
+   public static gel f() {
+      return G;
+   }
+
+   public static gel g() {
+      return H;
+   }
+
+   public static gel a(boolean $$0) {
+      return $$0 ? J : I;
+   }
+
+   public static gel h() {
+      return K;
+   }
+
+   public static gel i() {
+      return L;
+   }
+
+   public static gel j() {
+      return M;
+   }
+
+   public static gel k() {
+      return N;
+   }
+
+   private static grs c(dtx $$0) {
+      return new grs(e, new akk("entity/signs/" + $$0.b()));
+   }
+
+   private static grs d(dtx $$0) {
+      return new grs(e, new akk("entity/signs/hanging/" + $$0.b()));
+   }
+
+   public static grs a(dtx $$0) {
+      return k.get($$0);
+   }
+
+   public static grs b(dtx $$0) {
+      return l.get($$0);
+   }
+
+   public static grs a(jj<dpf> $$0) {
+      return O.computeIfAbsent($$0.a().a(), $$0x -> {
+         akk $$1 = $$0x.d("entity/banner/");
+         return new grs(c, $$1);
+      });
+   }
+
+   public static grs b(jj<dpf> $$0) {
+      return P.computeIfAbsent($$0.a().a(), $$0x -> {
+         akk $$1 = $$0x.d("entity/shield/");
+         return new grs(d, $$1);
+      });
+   }
+
+   private static grs a(String $$0) {
+      return new grs(f, new akk("entity/chest/" + $$0));
+   }
+
+   private static grs a(akk $$0) {
+      return new grs(h, $$0.d("entity/decorated_pot/"));
+   }
+
+   @Nullable
+   public static grs a(@Nullable akj<dqg> $$0) {
+      return $$0 == null ? null : o.get($$0);
+   }
+
+   public static grs a(dpp $$0, dtc $$1, boolean $$2) {
+      if ($$0 instanceof dql) {
+         return B;
+      } else if ($$2) {
+         return a($$1, v, w, x);
       } else {
-         return false;
+         return $$0 instanceof drj ? a($$1, s, t, u) : a($$1, y, z, A);
       }
    }
 
-   private static boolean a(dbj $$0, ja $$1, jf $$2, float $$3, dsh $$4) {
-      return a($$0, $$2, $$3, $$1.a($$2), $$4);
-   }
-
-   private static boolean a(dbj $$0, ja $$1, dsh $$2, jf $$3) {
-      return a($$0, $$3.g(), 1.0F, $$1, $$2);
-   }
-
-   public static boolean a(dbg $$0, ja $$1, eob $$2, dsh $$3, jf $$4, eob $$5) {
-      return !a($$0, $$1, $$3, $$4) && !a($$2, $$5);
-   }
-
-   public void a(dbg $$0, ja $$1, fak $$2, dsh $$3, eob $$4) {
-      boolean $$5 = $$4.a(awa.b);
-      gpi[] $$6 = $$5 ? this.b : this.c;
-      int $$7 = $$5 ? 16777215 : gdj.c($$0, $$1);
-      float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-      float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-      float $$10 = (float)($$7 & 0xFF) / 255.0F;
-      dsh $$11 = $$0.a_($$1.a(jf.a));
-      eob $$12 = $$11.u();
-      dsh $$13 = $$0.a_($$1.a(jf.b));
-      eob $$14 = $$13.u();
-      dsh $$15 = $$0.a_($$1.a(jf.c));
-      eob $$16 = $$15.u();
-      dsh $$17 = $$0.a_($$1.a(jf.d));
-      eob $$18 = $$17.u();
-      dsh $$19 = $$0.a_($$1.a(jf.e));
-      eob $$20 = $$19.u();
-      dsh $$21 = $$0.a_($$1.a(jf.f));
-      eob $$22 = $$21.u();
-      boolean $$23 = !a($$4, $$14);
-      boolean $$24 = a($$0, $$1, $$4, $$3, jf.a, $$12) && !a($$0, $$1, jf.a, 0.8888889F, $$11);
-      boolean $$25 = a($$0, $$1, $$4, $$3, jf.c, $$16);
-      boolean $$26 = a($$0, $$1, $$4, $$3, jf.d, $$18);
-      boolean $$27 = a($$0, $$1, $$4, $$3, jf.e, $$20);
-      boolean $$28 = a($$0, $$1, $$4, $$3, jf.f, $$22);
-      if ($$23 || $$24 || $$28 || $$27 || $$25 || $$26) {
-         float $$29 = $$0.a(jf.a, true);
-         float $$30 = $$0.a(jf.b, true);
-         float $$31 = $$0.a(jf.c, true);
-         float $$32 = $$0.a(jf.e, true);
-         eoa $$33 = $$4.a();
-         float $$34 = this.a($$0, $$33, $$1, $$3, $$4);
-         float $$35;
-         float $$36;
-         float $$37;
-         float $$38;
-         if ($$34 >= 1.0F) {
-            $$35 = 1.0F;
-            $$36 = 1.0F;
-            $$37 = 1.0F;
-            $$38 = 1.0F;
-         } else {
-            float $$39 = this.a($$0, $$33, $$1.e(), $$15, $$16);
-            float $$40 = this.a($$0, $$33, $$1.f(), $$17, $$18);
-            float $$41 = this.a($$0, $$33, $$1.h(), $$21, $$22);
-            float $$42 = this.a($$0, $$33, $$1.g(), $$19, $$20);
-            $$35 = this.a($$0, $$33, $$34, $$39, $$41, $$1.a(jf.c).a(jf.f));
-            $$36 = this.a($$0, $$33, $$34, $$39, $$42, $$1.a(jf.c).a(jf.e));
-            $$37 = this.a($$0, $$33, $$34, $$40, $$41, $$1.a(jf.d).a(jf.f));
-            $$38 = this.a($$0, $$33, $$34, $$40, $$42, $$1.a(jf.d).a(jf.e));
-         }
-
-         double $$47 = (double)($$1.u() & 15);
-         double $$48 = (double)($$1.v() & 15);
-         double $$49 = (double)($$1.w() & 15);
-         float $$50 = 0.001F;
-         float $$51 = $$24 ? 0.001F : 0.0F;
-         if ($$23 && !a($$0, $$1, jf.b, Math.min(Math.min($$36, $$38), Math.min($$37, $$35)), $$13)) {
-            $$36 -= 0.001F;
-            $$38 -= 0.001F;
-            $$37 -= 0.001F;
-            $$35 -= 0.001F;
-            evz $$52 = $$4.c($$0, $$1);
-            float $$54;
-            float $$56;
-            float $$58;
-            float $$60;
-            float $$55;
-            float $$57;
-            float $$59;
-            float $$61;
-            if ($$52.c == 0.0 && $$52.e == 0.0) {
-               gpi $$53 = $$6[0];
-               $$54 = $$53.a(0.0F);
-               $$55 = $$53.c(0.0F);
-               $$56 = $$54;
-               $$57 = $$53.c(1.0F);
-               $$58 = $$53.a(1.0F);
-               $$59 = $$57;
-               $$60 = $$58;
-               $$61 = $$55;
-            } else {
-               gpi $$62 = $$6[1];
-               float $$63 = (float)aye.d($$52.e, $$52.c) - (float) (Math.PI / 2);
-               float $$64 = aye.a($$63) * 0.25F;
-               float $$65 = aye.b($$63) * 0.25F;
-               float $$66 = 0.5F;
-               $$54 = $$62.a(0.5F + (-$$65 - $$64));
-               $$55 = $$62.c(0.5F + -$$65 + $$64);
-               $$56 = $$62.a(0.5F + -$$65 + $$64);
-               $$57 = $$62.c(0.5F + $$65 + $$64);
-               $$58 = $$62.a(0.5F + $$65 + $$64);
-               $$59 = $$62.c(0.5F + ($$65 - $$64));
-               $$60 = $$62.a(0.5F + ($$65 - $$64));
-               $$61 = $$62.c(0.5F + (-$$65 - $$64));
-            }
-
-            float $$75 = ($$54 + $$56 + $$58 + $$60) / 4.0F;
-            float $$76 = ($$55 + $$57 + $$59 + $$61) / 4.0F;
-            float $$77 = $$6[0].k();
-            $$54 = aye.i($$77, $$54, $$75);
-            $$56 = aye.i($$77, $$56, $$75);
-            $$58 = aye.i($$77, $$58, $$75);
-            $$60 = aye.i($$77, $$60, $$75);
-            $$55 = aye.i($$77, $$55, $$76);
-            $$57 = aye.i($$77, $$57, $$76);
-            $$59 = aye.i($$77, $$59, $$76);
-            $$61 = aye.i($$77, $$61, $$76);
-            int $$78 = this.a($$0, $$1);
-            float $$79 = $$30 * $$8;
-            float $$80 = $$30 * $$9;
-            float $$81 = $$30 * $$10;
-            this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
-            this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
-            if ($$4.b($$0, $$1.c())) {
-               this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
-               this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
-               this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
-               this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
-            }
-         }
-
-         if ($$24) {
-            float $$82 = $$6[0].c();
-            float $$83 = $$6[0].d();
-            float $$84 = $$6[0].g();
-            float $$85 = $$6[0].h();
-            int $$86 = this.a($$0, $$1.d());
-            float $$87 = $$29 * $$8;
-            float $$88 = $$29 * $$9;
-            float $$89 = $$29 * $$10;
-            this.a($$2, $$47, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$82, $$85, $$86);
-            this.a($$2, $$47, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$82, $$84, $$86);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$83, $$84, $$86);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$83, $$85, $$86);
-         }
-
-         int $$90 = this.a($$0, $$1);
-
-         for (jf $$91 : jf.c.a) {
-            float $$92;
-            float $$93;
-            double $$94;
-            double $$96;
-            double $$95;
-            double $$97;
-            boolean $$98;
-            switch ($$91) {
-               case c:
-                  $$92 = $$36;
-                  $$93 = $$35;
-                  $$94 = $$47;
-                  $$95 = $$47 + 1.0;
-                  $$96 = $$49 + 0.001F;
-                  $$97 = $$49 + 0.001F;
-                  $$98 = $$25;
-                  break;
-               case d:
-                  $$92 = $$37;
-                  $$93 = $$38;
-                  $$94 = $$47 + 1.0;
-                  $$95 = $$47;
-                  $$96 = $$49 + 1.0 - 0.001F;
-                  $$97 = $$49 + 1.0 - 0.001F;
-                  $$98 = $$26;
-                  break;
-               case e:
-                  $$92 = $$38;
-                  $$93 = $$36;
-                  $$94 = $$47 + 0.001F;
-                  $$95 = $$47 + 0.001F;
-                  $$96 = $$49 + 1.0;
-                  $$97 = $$49;
-                  $$98 = $$27;
-                  break;
-               default:
-                  $$92 = $$35;
-                  $$93 = $$37;
-                  $$94 = $$47 + 1.0 - 0.001F;
-                  $$95 = $$47 + 1.0 - 0.001F;
-                  $$96 = $$49;
-                  $$97 = $$49 + 1.0;
-                  $$98 = $$28;
-            }
-
-            if ($$98 && !a($$0, $$1, $$91, Math.max($$92, $$93), $$0.a_($$1.a($$91)))) {
-               ja $$120 = $$1.a($$91);
-               gpi $$121 = $$6[1];
-               if (!$$5) {
-                  dff $$122 = $$0.a_($$120).b();
-                  if ($$122 instanceof div || $$122 instanceof djp) {
-                     $$121 = this.d;
-                  }
-               }
-
-               float $$123 = $$121.a(0.0F);
-               float $$124 = $$121.a(0.5F);
-               float $$125 = $$121.c((1.0F - $$92) * 0.5F);
-               float $$126 = $$121.c((1.0F - $$93) * 0.5F);
-               float $$127 = $$121.c(0.5F);
-               float $$128 = $$91.o() == jf.a.c ? $$31 : $$32;
-               float $$129 = $$30 * $$128 * $$8;
-               float $$130 = $$30 * $$128 * $$9;
-               float $$131 = $$30 * $$128 * $$10;
-               this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
-               this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
-               this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
-               this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
-               if ($$121 != this.d) {
-                  this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
-                  this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
-                  this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
-                  this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
-               }
-            }
-         }
+   private static grs a(dtc $$0, grs $$1, grs $$2, grs $$3) {
+      switch ($$0) {
+         case b:
+            return $$2;
+         case c:
+            return $$3;
+         case a:
+         default:
+            return $$1;
       }
-   }
-
-   private float a(dbg $$0, eoa $$1, float $$2, float $$3, float $$4, ja $$5) {
-      if (!($$4 >= 1.0F) && !($$3 >= 1.0F)) {
-         float[] $$6 = new float[2];
-         if ($$4 > 0.0F || $$3 > 0.0F) {
-            float $$7 = this.a($$0, $$1, $$5);
-            if ($$7 >= 1.0F) {
-               return 1.0F;
-            }
-
-            this.a($$6, $$7);
-         }
-
-         this.a($$6, $$2);
-         this.a($$6, $$4);
-         this.a($$6, $$3);
-         return $$6[0] / $$6[1];
-      } else {
-         return 1.0F;
-      }
-   }
-
-   private void a(float[] $$0, float $$1) {
-      if ($$1 >= 0.8F) {
-         $$0[0] += $$1 * 10.0F;
-         $$0[1] += 10.0F;
-      } else if ($$1 >= 0.0F) {
-         $$0[0] += $$1;
-         $$0[1]++;
-      }
-   }
-
-   private float a(dbg $$0, eoa $$1, ja $$2) {
-      dsh $$3 = $$0.a_($$2);
-      return this.a($$0, $$1, $$2, $$3, $$3.u());
-   }
-
-   private float a(dbg $$0, eoa $$1, ja $$2, dsh $$3, eob $$4) {
-      if ($$1.a($$4.a())) {
-         dsh $$5 = $$0.a_($$2.c());
-         return $$1.a($$5.u().a()) ? 1.0F : $$4.d();
-      } else {
-         return !$$3.e() ? 0.0F : -1.0F;
-      }
-   }
-
-   private void a(fak $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      $$0.a($$1, $$2, $$3).a($$4, $$5, $$6, 1.0F).a($$7, $$8).b($$9).a(0.0F, 1.0F, 0.0F).e();
-   }
-
-   private int a(dbg $$0, ja $$1) {
-      int $$2 = gdv.a($$0, $$1);
-      int $$3 = gdv.a($$0, $$1.c());
-      int $$4 = $$2 & 0xFF;
-      int $$5 = $$3 & 0xFF;
-      int $$6 = $$2 >> 16 & 0xFF;
-      int $$7 = $$3 >> 16 & 0xFF;
-      return ($$4 > $$5 ? $$4 : $$5) | ($$6 > $$7 ? $$6 : $$7) << 16;
    }
 }

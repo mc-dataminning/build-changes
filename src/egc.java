@@ -1,45 +1,72 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-public class egc extends ega {
-   public static final MapCodec<egc> a = MapCodec.unit(() -> egc.b);
-   public static final egc b = new egc();
+public class egc extends egg {
+   public static final MapCodec<egc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
+               efp.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
+               axo.a(jf.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, egc::new)
+   );
+   protected final float b;
+   protected final int c;
+   protected final int d;
+   protected final efp e;
+   protected final int f;
+   protected final List<jf> g;
 
-   @Override
-   protected egb<?> a() {
-      return egb.a;
+   public egc(float $$0, int $$1, int $$2, efp $$3, int $$4, List<jf> $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
    @Override
-   public void a(ega.a $$0) {
-      aym $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            ja $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dob.d);
-            }
-         }
+   public void a(egg.a $$0) {
+      Set<ja> $$1 = new HashSet<>();
+      ayo $$2 = $$0.b();
 
-         if ($$1.a(3) > 0) {
-            ja $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dob.f);
-            }
-         }
+      for (ja $$3 : ac.a($$0.d(), $$2)) {
+         jf $$4 = ac.a(this.g, $$2);
+         ja $$5 = $$3.a($$4);
+         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
+            ja $$6 = $$5.b(-this.c, -this.d, -this.c);
+            ja $$7 = $$5.b(this.c, this.d, this.c);
 
-         if ($$1.a(3) > 0) {
-            ja $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dob.e);
+            for (ja $$8 : ja.c($$6, $$7)) {
+               $$1.add($$8.i());
             }
-         }
 
-         if ($$1.a(3) > 0) {
-            ja $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dob.c);
-            }
+            $$0.a($$5, this.e.a($$2, $$5));
          }
-      });
+      }
+   }
+
+   private boolean a(egg.a $$0, ja $$1, jf $$2) {
+      for (int $$3 = 1; $$3 <= this.f; $$3++) {
+         ja $$4 = $$1.a($$2, $$3);
+         if (!$$0.a($$4)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   protected egh<?> a() {
+      return egh.f;
    }
 }

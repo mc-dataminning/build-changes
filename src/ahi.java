@@ -1,17 +1,17 @@
 public class ahi implements zb<agb> {
    public static final ys<vr, ahi> a = zb.a(ahi::a, ahi::new);
-   private final cqt b;
+   private final cqw b;
    private final boolean c;
    private final boolean d;
 
-   public ahi(cqt $$0, boolean $$1, boolean $$2) {
+   public ahi(cqw $$0, boolean $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
    }
 
    private ahi(vr $$0) {
-      this.b = $$0.b(cqt.class);
+      this.b = $$0.b(cqw.class);
       this.c = $$0.readBoolean();
       this.d = $$0.readBoolean();
    }
@@ -31,7 +31,7 @@ public class ahi implements zb<agb> {
       $$0.a(this);
    }
 
-   public cqt b() {
+   public cqw b() {
       return this.b;
    }
 

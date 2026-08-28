@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 public class ajt {
    private static final Logger a = LogUtils.getLogger();
    private static final int b = 254;
-   static final aww c = new aww();
+   static final awy c = new awy();
    private final ajs d;
    private final ajt.b<?>[] e;
    private boolean f;

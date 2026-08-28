@@ -1,143 +1,117 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class eon {
-   public final int a;
-   public final int b;
-   public final int c;
-   private final int m;
-   public int d = -1;
-   public float e;
-   public float f;
-   public float g;
+public abstract class eon extends eof {
+   @Override
+   public eog d() {
+      return eoi.b;
+   }
+
+   @Override
+   public eog e() {
+      return eoi.c;
+   }
+
+   @Override
+   public ctx a() {
+      return cuf.qz;
+   }
+
+   @Override
+   public void a(dcf $$0, ja $$1, eoh $$2, ayo $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, avh.Cb, avi.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+         }
+      } else if ($$3.a(10) == 0) {
+         $$0.a(lj.al, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+      }
+   }
+
    @Nullable
-   public eon h;
-   public boolean i;
-   public float j;
-   public float k;
-   public eos l = eos.a;
-
-   public eon(int $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.m = b($$0, $$1, $$2);
-   }
-
-   public eon a(int $$0, int $$1, int $$2) {
-      eon $$3 = new eon($$0, $$1, $$2);
-      $$3.d = this.d;
-      $$3.e = this.e;
-      $$3.f = this.f;
-      $$3.g = this.g;
-      $$3.h = this.h;
-      $$3.i = this.i;
-      $$3.j = this.j;
-      $$3.k = this.k;
-      $$3.l = this.l;
-      return $$3;
-   }
-
-   public static int b(int $$0, int $$1, int $$2) {
-      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
-   }
-
-   public float a(eon $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return aye.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public float b(eon $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.c - this.c);
-      return aye.c($$1 * $$1 + $$2 * $$2);
-   }
-
-   public float a(ja $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return aye.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public float c(eon $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float b(ja $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float d(eon $$0) {
-      float $$1 = (float)Math.abs($$0.a - this.a);
-      float $$2 = (float)Math.abs($$0.b - this.b);
-      float $$3 = (float)Math.abs($$0.c - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public float c(ja $$0) {
-      float $$1 = (float)Math.abs($$0.u() - this.a);
-      float $$2 = (float)Math.abs($$0.v() - this.b);
-      float $$3 = (float)Math.abs($$0.w() - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public ja a() {
-      return new ja(this.a, this.b, this.c);
-   }
-
-   public evz b() {
-      return new evz((double)this.a, (double)this.b, (double)this.c);
+   @Override
+   public lh h() {
+      return lj.l;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof eon $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+   protected boolean a(dcf $$0) {
+      return $$0.ab().b(dcb.U);
    }
 
    @Override
-   public int hashCode() {
-      return this.m;
-   }
-
-   public boolean c() {
-      return this.d >= 0;
+   protected void a(dcg $$0, ja $$1, dsk $$2) {
+      dpp $$3 = $$2.t() ? $$0.c_($$1) : null;
+      dfh.a($$2, $$0, $$1, $$3);
    }
 
    @Override
-   public String toString() {
-      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
+   public int b(dci $$0) {
+      return 4;
    }
 
-   public void a(vr $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
-      $$0.p(this.c);
-      $$0.a(this.j);
-      $$0.a(this.k);
-      $$0.a(this.i);
-      $$0.a(this.l);
-      $$0.a(this.g);
+   @Override
+   public dsk b(eoh $$0) {
+      return dfj.G.o().a(djx.b, Integer.valueOf(e($$0)));
    }
 
-   public static eon b(vr $$0) {
-      eon $$1 = new eon($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   @Override
+   public boolean a(eog $$0) {
+      return $$0 == eoi.c || $$0 == eoi.b;
    }
 
-   protected static void a(vr $$0, eon $$1) {
-      $$1.j = $$0.readFloat();
-      $$1.k = $$0.readFloat();
-      $$1.i = $$0.readBoolean();
-      $$1.l = $$0.b(eos.class);
-      $$1.g = $$0.readFloat();
+   @Override
+   public int c(dci $$0) {
+      return 1;
+   }
+
+   @Override
+   public int a(dci $$0) {
+      return 5;
+   }
+
+   @Override
+   public boolean a(eoh $$0, dbl $$1, ja $$2, eog $$3, jf $$4) {
+      return $$4 == jf.a && !$$3.a(awc.a);
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<avg> j() {
+      return Optional.of(avh.di);
+   }
+
+   public static class a extends eon {
+      @Override
+      protected void a(dsl.a<eog, eoh> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(eoh $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(eoh $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends eon {
+      @Override
+      public int d(eoh $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(eoh $$0) {
+         return true;
+      }
    }
 }

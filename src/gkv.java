@@ -1,9 +1,8 @@
-public class gkv extends gkm<cff, fvk<cff>> {
-   private static final akk a = new akk("textures/entity/pig/pig.png");
+public class gkv extends gks<cff, fvm<cff>> {
+   private static final akk a = new akk("textures/entity/cat/ocelot.png");
 
-   public gkv(gjg.a $$0) {
-      super($$0, new fvk<>($$0.a(fxh.aI)), 0.7F);
-      this.a(new gnt<>(this, new fvk<>($$0.a(fxh.aQ)), new akk("textures/entity/pig/pig_saddle.png")));
+   public gkv(gjm.a $$0) {
+      super($$0, new fvm<>($$0.a(fxn.aE)), 0.4F);
    }
 
    public akk a(cff $$0) {

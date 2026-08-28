@@ -1,55 +1,88 @@
-public class cqm<T extends cpe> implements cos {
-   public static final cqm<cpm> a = a("generic_9x1", cpm::a);
-   public static final cqm<cpm> b = a("generic_9x2", cpm::b);
-   public static final cqm<cpm> c = a("generic_9x3", cpm::c);
-   public static final cqm<cpm> d = a("generic_9x4", cpm::d);
-   public static final cqm<cpm> e = a("generic_9x5", cpm::e);
-   public static final cqm<cpm> f = a("generic_9x6", cpm::f);
-   public static final cqm<cpy> g = a("generic_3x3", cpy::new);
-   public static final cqm<cpt> h = a("crafter_3x3", cpt::new);
-   public static final cqm<cpg> i = a("anvil", cpg::new);
-   public static final cqm<cpi> j = a("beacon", cpi::new);
-   public static final cqm<cpj> k = a("blast_furnace", cpj::new);
-   public static final cqm<cpk> l = a("brewing_stand", cpk::new);
-   public static final cqm<cpw> m = a("crafting", cpw::new);
-   public static final cqm<cpz> n = a("enchantment", cpz::new);
-   public static final cqm<cqb> o = a("furnace", cqb::new);
-   public static final cqm<cqd> p = a("grindstone", cqd::new);
-   public static final cqm<cqe> q = a("hopper", cqe::new);
-   public static final cqm<cqj> r = a("lectern", ($$0, $$1) -> new cqj($$0));
-   public static final cqm<cqk> s = a("loom", cqk::new);
-   public static final cqm<cqo> t = a("merchant", cqo::new);
-   public static final cqm<cqx> u = a("shulker_box", cqx::new);
-   public static final cqm<crd> v = a("smithing", crd::new);
-   public static final cqm<cre> w = a("smoker", cre::new);
-   public static final cqm<cpl> x = a("cartography_table", cpl::new);
-   public static final cqm<crg> y = a("stonecutter", crg::new);
-   private final cov z;
-   private final cqm.a<T> A;
+public class cqm extends cph {
+   private static final int o = 1;
+   private static final int p = 1;
+   public static final int k = 1;
+   public static final int l = 2;
+   public static final int m = 3;
+   public static final int n = 100;
+   private final bpz q;
+   private final cps r;
 
-   private static <T extends cpe> cqm<T> a(String $$0, cqm.a<T> $$1) {
-      return jw.a(lq.p, $$0, new cqm<>($$1, cox.f));
+   public cqm(int $$0) {
+      this($$0, new bqp(1), new crc(1));
    }
 
-   private static <T extends cpe> cqm<T> a(String $$0, cqm.a<T> $$1, cot... $$2) {
-      return jw.a(lq.p, $$0, new cqm<>($$1, cox.d.a($$2)));
-   }
-
-   private cqm(cqm.a<T> $$0, cov $$1) {
-      this.A = $$0;
-      this.z = $$1;
-   }
-
-   public T a(int $$0, cmg $$1) {
-      return this.A.create($$0, $$1);
+   public cqm(int $$0, bpz $$1, cps $$2) {
+      super(cqp.r, $$0);
+      a($$1, 1);
+      a($$2, 1);
+      this.q = $$1;
+      this.r = $$2;
+      this.a(new crd($$1, 0, 0, 0) {
+         @Override
+         public void c() {
+            super.c();
+            cqm.this.a(this.c);
+         }
+      });
+      this.a($$2);
    }
 
    @Override
-   public cov i() {
-      return this.z;
+   public boolean a(cmk $$0, int $$1) {
+      if ($$1 >= 100) {
+         int $$2 = $$1 - 100;
+         this.a(0, $$2);
+         return true;
+      } else {
+         switch ($$1) {
+            case 1:
+               int $$4 = this.r.a(0);
+               this.a(0, $$4 - 1);
+               return true;
+            case 2:
+               int $$3 = this.r.a(0);
+               this.a(0, $$3 + 1);
+               return true;
+            case 3:
+               if (!$$0.gl()) {
+                  return false;
+               }
+
+               cuc $$5 = this.q.b(0);
+               this.q.e();
+               if (!$$0.fZ().f($$5)) {
+                  $$0.a($$5, false);
+               }
+
+               return true;
+            default:
+               return false;
+         }
+      }
    }
 
-   interface a<T extends cpe> {
-      T create(int var1, cmg var2);
+   @Override
+   public cuc b(cmk $$0, int $$1) {
+      return cuc.l;
+   }
+
+   @Override
+   public void a(int $$0, int $$1) {
+      super.a($$0, $$1);
+      this.d();
+   }
+
+   @Override
+   public boolean b(cmk $$0) {
+      return this.q.a($$0);
+   }
+
+   public cuc l() {
+      return this.q.a(0);
+   }
+
+   public int m() {
+      return this.r.a(0);
    }
 }

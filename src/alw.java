@@ -16,7 +16,7 @@ public class alw {
    private static final String d = "0.0.0.0";
    private static final int e = 10000;
    private static final int f = 100;
-   public static BiMap<String, akj<dcd>> a = ImmutableBiMap.of("o", dcd.h, "n", dcd.i, "e", dcd.j);
+   public static BiMap<String, akj<dcf>> a = ImmutableBiMap.of("o", dcf.h, "n", dcf.i, "e", dcf.j);
    @Nullable
    private static alo g;
    @Nullable
@@ -95,7 +95,7 @@ public class alw {
       if (b($$0)) {
          return 0;
       } else {
-         g = new alo($$1, $$2, $$0.l().ah(), 100);
+         g = new alo($$1, $$2, $$0.l().ai(), 100);
 
          try {
             g.a();

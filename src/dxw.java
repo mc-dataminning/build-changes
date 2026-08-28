@@ -1,38 +1,107 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
-public class dxw {
-   public final efj a;
-   public final efj b;
-   public final efj c;
-   public final efj d;
-   public final efj e;
-   public final List<dsh> f;
-   public final awk<dff> g;
-   public final awk<dff> h;
-   public static final Codec<dxw> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               efj.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
-               efj.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
-               efj.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
-               efj.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
-               efj.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
-               axm.a(dsh.b.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
-               awk.b(lr.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
-               awk.b(lr.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, dxw::new)
-   );
+public class dxw extends duh {
+   public static final MapCodec<dxw> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aki.d(ddm.b)).apply($$0, $$0.stable(dxw::new)));
+   private static final int h = 2;
+   private static final List<dsk> i = StreamSupport.stream(lq.e.spliterator(), false).flatMap($$0 -> $$0.l().a().stream()).collect(Collectors.toList());
+   private static final int j = ayg.f(ayg.c((float)i.size()));
+   private static final int k = ayg.f((float)i.size() / (float)j);
+   protected static final dsk d = dfj.a.o();
+   protected static final dsk e = dfj.hW.o();
+   public static final int f = 70;
+   public static final int g = 60;
 
-   public dxw(efj $$0, efj $$1, efj $$2, efj $$3, efj $$4, List<dsh> $$5, awk<dff> $$6, awk<dff> $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   public dxw(jj.c<ddf> $$0) {
+      super(new ddq($$0));
+   }
+
+   @Override
+   protected MapCodec<? extends duh> b() {
+      return c;
+   }
+
+   @Override
+   public void a(aqt $$0, dcz $$1, dyt $$2, dug $$3) {
+   }
+
+   @Override
+   public void a(ddb $$0, dug $$1, dcz $$2) {
+      ja.a $$3 = new ja.a();
+      dbm $$4 = $$1.f();
+      int $$5 = $$4.e;
+      int $$6 = $$4.f;
+
+      for (int $$7 = 0; $$7 < 16; $$7++) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            int $$9 = kc.a($$5, $$7);
+            int $$10 = kc.a($$6, $$8);
+            $$0.a($$3.d($$9, 60, $$10), e, 2);
+            dsk $$11 = a($$9, $$10);
+            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
+         }
+      }
+   }
+
+   @Override
+   public CompletableFuture<dug> a(dzh $$0, dyt $$1, dcz $$2, dug $$3) {
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   @Override
+   public int a(int $$0, int $$1, dyf.a $$2, dch $$3, dyt $$4) {
+      return 0;
+   }
+
+   @Override
+   public dcr a(int $$0, int $$1, dch $$2, dyt $$3) {
+      return new dcr(0, new dsk[0]);
+   }
+
+   @Override
+   public void a(List<String> $$0, dyt $$1, ja $$2) {
+   }
+
+   public static dsk a(int $$0, int $$1) {
+      dsk $$2 = d;
+      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
+         $$0 /= 2;
+         $$1 /= 2;
+         if ($$0 <= j && $$1 <= k) {
+            int $$3 = ayg.a($$0 * j + $$1);
+            if ($$3 < i.size()) {
+               $$2 = i.get($$3);
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(aqt $$0, long $$1, dyt $$2, ddh $$3, dcz $$4, dug $$5, dyb.a $$6) {
+   }
+
+   @Override
+   public void a(aqt $$0) {
+   }
+
+   @Override
+   public int g() {
+      return 0;
+   }
+
+   @Override
+   public int e() {
+      return 384;
+   }
+
+   @Override
+   public int f() {
+      return 63;
    }
 }

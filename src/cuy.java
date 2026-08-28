@@ -1,19 +1,20 @@
-public class cuy extends ctw {
-   private final aql a;
-
-   public cuy(aql $$0) {
-      this.a = $$0;
+public class cuy extends ctx {
+   public cuy(ctx.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(ctv $$0, int $$1) {
-      super.b($$0, $$1);
-      this.a.c.b(new acl($$0, $$1));
-   }
+   public bqg a(cuc $$0, cmk $$1, btb $$2, bqf $$3) {
+      if ($$2 instanceof btr $$4 && $$2.bE() && !$$4.i() && $$4.f()) {
+         if (!$$1.dQ().B) {
+            $$4.a(avi.g);
+            $$2.dQ().a($$2, dxg.v, $$2.do());
+            $$0.h(1);
+         }
 
-   @Override
-   protected void c(ctv $$0) {
-      super.c($$0);
-      this.a.c.b(new acl($$0, 0));
+         return bqg.a($$1.dQ().B);
+      }
+
+      return bqg.e;
    }
 }

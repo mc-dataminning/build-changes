@@ -1,4 +1,4 @@
-public record alh(atk a, akv b, jq<akt> c, eqi d) implements AutoCloseable {
+public record alh(atm a, akv b, jq<akt> c, eqo d) implements AutoCloseable {
    @Override
    public void close() {
       this.a.close();

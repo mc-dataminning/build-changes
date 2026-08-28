@@ -5,11 +5,11 @@ public class ahs implements zb<agb> {
    private final akk d;
    private final akk e;
    private final String f;
-   private final dqn.a g;
+   private final dqq.a g;
    private final int h;
    private final int i;
 
-   public ahs(ja $$0, akk $$1, akk $$2, akk $$3, String $$4, dqn.a $$5, int $$6, int $$7) {
+   public ahs(ja $$0, akk $$1, akk $$2, akk $$3, String $$4, dqq.a $$5, int $$6, int $$7) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -26,7 +26,7 @@ public class ahs implements zb<agb> {
       this.d = $$0.q();
       this.e = $$0.q();
       this.f = $$0.p();
-      this.g = dqn.a.a($$0.p()).orElse(dqn.a.b);
+      this.g = dqq.a.a($$0.p()).orElse(dqq.a.b);
       this.h = $$0.l();
       this.i = $$0.l();
    }
@@ -71,7 +71,7 @@ public class ahs implements zb<agb> {
       return this.f;
    }
 
-   public dqn.a i() {
+   public dqq.a i() {
       return this.g;
    }
 

@@ -1,30 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dot extends diu {
-   public static final MapCodec<dot> c = b(dot::new);
-   protected static final ews g = dff.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class dot extends dnu implements dom {
+   public static final MapCodec<dot> m = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dsz.a.fieldOf("block_set_type").forGetter(dnu::m), dom.a.e.fieldOf("weathering_state").forGetter(dot::n), u()).apply($$0, dot::new)
+   );
+   private final dom.a n;
 
    @Override
    public MapCodec<dot> a() {
-      return c;
+      return m;
    }
 
-   public dot(dsg.d $$0) {
-      super($$0, jf.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(aym $$0) {
-      return dkl.a($$0);
+   protected dot(dsz $$0, dom.a $$1, dsj.d $$2) {
+      super($$0, $$2);
+      this.n = $$1;
    }
 
    @Override
-   protected dff b() {
-      return dfh.oA;
+   protected void b(dsk $$0, aqm $$1, ja $$2, ayo $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean g(dsh $$0) {
-      return dkl.a($$0);
+   protected boolean d_(dsk $$0) {
+      return dom.c($$0.b()).isPresent();
+   }
+
+   public dom.a n() {
+      return this.n;
    }
 }

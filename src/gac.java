@@ -1,49 +1,22 @@
-public class gac extends gcl {
-   private final gcg a;
+import com.mojang.logging.LogUtils;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   gac(fyd $$0, double $$1, double $$2, double $$3, double $$4, gcg $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
+@FunctionalInterface
+public interface gac {
+   Logger a = LogUtils.getLogger();
+   gac b = $$0 -> {
+      try {
+         InetAddress $$1 = InetAddress.getByName($$0.a());
+         return Optional.of(gaa.a(new InetSocketAddress($$1, $$0.b())));
+      } catch (UnknownHostException var2) {
+         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
+         return Optional.empty();
       }
-   }
+   };
 
-   @Override
-   public gbp b() {
-      return gbp.d;
-   }
-
-   public static class a implements gbo<ln> {
-      private final gcg a;
-
-      public a(gcg $$0) {
-         this.a = $$0;
-      }
-
-      public gbl a(ln $$0, fyd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gac($$1, $$2, $$3, $$4, $$5, this.a);
-      }
-   }
+   Optional<gaa> resolve(gab var1);
 }

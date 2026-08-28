@@ -1,23 +1,20 @@
-public class glt extends gjf<cnm> {
-   public static final akk a = new akk("textures/entity/trident.png");
-   private final fwn f;
+public class glt<T extends ckb> extends gks<T, fwp<T>> {
+   private static final akk a = new akk("textures/entity/spider/spider.png");
 
-   public glt(gjg.a $$0) {
-      super($$0);
-      this.f = new fwn($$0.a(fxh.bI));
+   public glt(gjm.a $$0) {
+      this($$0, fxn.bx);
    }
 
-   public void a(cnm $$0, float $$1, float $$2, fag $$3, gdx $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(aye.i($$2, $$0.O, $$0.dF()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(aye.i($$2, $$0.P, $$0.dH()) + 90.0F));
-      fak $$6 = gke.c($$4, this.f.a(this.a($$0)), false, $$0.H());
-      this.f.a($$3, $$6, $$5, goz.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public glt(gjm.a $$0, fxm $$1) {
+      super($$0, new fwp<>($$0.a($$1)), 0.8F);
+      this.a(new gof<>(this));
    }
 
-   public akk a(cnm $$0) {
+   protected float b(T $$0) {
+      return 180.0F;
+   }
+
+   public akk a(T $$0) {
       return a;
    }
 }

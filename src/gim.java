@@ -1,32 +1,19 @@
-public class gim extends gkm<ckj, ftr<ckj>> {
-   private static final akk a = new akk("textures/entity/breeze/breeze.png");
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-   public gim(gjg.a $$0) {
-      super($$0, new ftr<>($$0.a(fxh.s)), 0.5F);
-      this.a(new gmr(this));
-      this.a(new gmq(this));
-   }
-
-   public void a(ckj $$0, float $$1, float $$2, fag $$3, gdx $$4, int $$5) {
-      ftr<ckj> $$6 = this.a();
-      a($$6, $$6.b(), $$6.d());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public akk a(ckj $$0) {
-      return a;
-   }
-
-   public static ftr<ckj> a(ftr<ckj> $$0, fxi... $$1) {
-      $$0.b().k = false;
-      $$0.c().k = false;
-      $$0.d().k = false;
-      $$0.e().k = false;
-
-      for (fxi $$2 : $$1) {
-         $$2.k = true;
+public class gim extends gks<cgd, ftq<cgd>> {
+   private static final Map<cgd.d, akk> a = ac.a(Maps.newHashMap(), $$0 -> {
+      for (cgd.d $$1 : cgd.d.values()) {
+         $$0.put($$1, new akk(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
       }
+   });
 
-      return $$0;
+   public gim(gjm.a $$0) {
+      super($$0, new ftq<>($$0.a(fxn.f)), 0.5F);
+   }
+
+   public akk a(cgd $$0) {
+      return a.get($$0.go());
    }
 }

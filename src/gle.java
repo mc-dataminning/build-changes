@@ -1,12 +1,16 @@
-public class gle extends gkm<cfk, fvy<cfk>> {
-   private static final akk a = new akk("textures/entity/sheep/sheep.png");
+public class gle extends gks<cfj, fvu<cfj>> {
+   private static final akk a = new akk("textures/entity/bear/polarbear.png");
 
-   public gle(gjg.a $$0) {
-      super($$0, new fvy<>($$0.a(fxh.bh)), 0.7F);
-      this.a(new gnu(this, $$0.f()));
+   public gle(gjm.a $$0) {
+      super($$0, new fvu<>($$0.a(fxn.ba)), 0.9F);
    }
 
-   public akk a(cfk $$0) {
+   public akk a(cfj $$0) {
       return a;
+   }
+
+   protected void a(cfj $$0, fam $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

@@ -1,75 +1,390 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
-
 public class fgq {
-   private static final int a = -1;
-   private final jp<fgp> b = new jp<>(32);
-   private final Map<dff, Set<dtk<?>>> c = Maps.newHashMap();
-
-   public static fgq a() {
-      fgq $$0 = new fgq();
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gdj.a($$1, $$0x.c(dhn.b) == dtd.a ? $$2.d() : $$2) : dcb.a(), dfh.iI, dfh.iH);
-      $$0.a(dhn.b, dfh.iI, dfh.iH);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gdj.a($$1, $$2) : dcb.a(), dfh.i, dfh.bu, dfh.bt, dfh.gb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         if ($$3 != 0) {
-            return $$1 != null && $$2 != null ? gdj.a($$1, $$2) : dcb.a();
-         } else {
-            return -1;
-         }
-      }, dfh.sB);
-      $$0.a(($$0x, $$1, $$2, $$3) -> dbx.a(), dfh.aF);
-      $$0.a(($$0x, $$1, $$2, $$3) -> dbx.b(), dfh.aG);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gdj.b($$1, $$2) : dbx.c(), dfh.aE, dfh.aH, dfh.aI, dfh.aK, dfh.ff, dfh.aL);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gdj.c($$1, $$2) : -1, dfh.G, dfh.nd, dfh.fu);
-      $$0.a(($$0x, $$1, $$2, $$3) -> dlh.b($$0x.c(dlh.f)), dfh.cw);
-      $$0.a(dlh.f, dfh.cw);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gdj.a($$1, $$2) : -1, dfh.dS);
-      $$0.a(($$0x, $$1, $$2, $$3) -> -2046180, dfh.fc, dfh.fb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         int $$4 = $$0x.c(dnb.c);
-         return axo.b.a($$4 * 32, 255 - $$4 * 8, $$4 * 4);
-      }, dfh.fe, dfh.fd);
-      $$0.a(dnb.c, dfh.fe, dfh.fd);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? -14647248 : -9321636, dfh.fm);
-      return $$0;
-   }
-
-   public int a(dsh $$0, dcd $$1, ja $$2) {
-      fgp $$3 = this.b.a(lq.e.a($$0.b()));
-      if ($$3 != null) {
-         return $$3.getColor($$0, null, null, 0);
-      } else {
-         eof $$4 = $$0.d($$1, $$2);
-         return $$4 != null ? $$4.ak : -1;
-      }
-   }
-
-   public int a(dsh $$0, @Nullable dbg $$1, @Nullable ja $$2, int $$3) {
-      fgp $$4 = this.b.a(lq.e.a($$0.b()));
-      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
-   }
-
-   public void a(fgp $$0, dff... $$1) {
-      for (dff $$2 : $$1) {
-         this.b.a($$0, lq.e.a($$2));
-      }
-   }
-
-   private void a(Set<dtk<?>> $$0, dff... $$1) {
-      for (dff $$2 : $$1) {
-         this.c.put($$2, $$0);
-      }
-   }
-
-   private void a(dtk<?> $$0, dff... $$1) {
-      this.a(ImmutableSet.of($$0), $$1);
-   }
-
-   public Set<dtk<?>> a(dff $$0) {
-      return this.c.getOrDefault($$0, ImmutableSet.of());
-   }
+   public static final fgj a = fgj.a.a(3.0F)
+      .a(
+         "croaking_body",
+         new fgi(
+            fgi.d.a,
+            new fgk(0.0F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.375F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.4167F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.4583F, fgl.a(0.0F, 1.0F, 0.0F), fgi.b.a),
+            new fgk(2.9583F, fgl.a(0.0F, 1.0F, 0.0F), fgi.b.a),
+            new fgk(3.0F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a)
+         )
+      )
+      .a(
+         "croaking_body",
+         new fgi(
+            fgi.d.c,
+            new fgk(0.0F, fgl.a(0.0, 0.0, 0.0), fgi.b.a),
+            new fgk(0.375F, fgl.a(0.0, 0.0, 0.0), fgi.b.a),
+            new fgk(0.4167F, fgl.a(1.0, 1.0, 1.0), fgi.b.a),
+            new fgk(0.4583F, fgl.a(1.0, 1.0, 1.0), fgi.b.a),
+            new fgk(0.5417F, fgl.a(1.3F, 2.1F, 1.6F), fgi.b.a),
+            new fgk(0.625F, fgl.a(1.3F, 2.1F, 1.6F), fgi.b.a),
+            new fgk(0.7083F, fgl.a(1.0, 1.0, 1.0), fgi.b.a),
+            new fgk(2.25F, fgl.a(1.0, 1.0, 1.0), fgi.b.a),
+            new fgk(2.3333F, fgl.a(1.3F, 2.1F, 1.6F), fgi.b.a),
+            new fgk(2.4167F, fgl.a(1.3F, 2.1F, 1.6F), fgi.b.a),
+            new fgk(2.5F, fgl.a(1.0, 1.0, 1.0), fgi.b.a),
+            new fgk(2.5833F, fgl.a(1.0, 1.0, 1.0), fgi.b.a),
+            new fgk(2.6667F, fgl.a(1.3F, 2.1F, 1.6F), fgi.b.a),
+            new fgk(2.875F, fgl.a(1.3F, 2.1F, 1.6F), fgi.b.a),
+            new fgk(2.9583F, fgl.a(1.0, 1.0, 1.0), fgi.b.a),
+            new fgk(3.0F, fgl.a(0.0, 0.0, 0.0), fgi.b.a)
+         )
+      )
+      .b();
+   public static final fgj b = fgj.a.a(1.25F)
+      .a()
+      .a(
+         "left_arm",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(0.0F, -5.0F, 0.0F), fgi.b.a),
+            new fgk(0.2917F, fgl.b(7.5F, -2.67F, -7.5F), fgi.b.a),
+            new fgk(0.625F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.7917F, fgl.b(22.5F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(1.125F, fgl.b(-45.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(1.25F, fgl.b(0.0F, -5.0F, 0.0F), fgi.b.a)
+         )
+      )
+      .a(
+         "left_arm",
+         new fgi(
+            fgi.d.a,
+            new fgk(0.0F, fgl.a(0.0F, 0.1F, -2.0F), fgi.b.a),
+            new fgk(0.2917F, fgl.a(-0.5F, -0.25F, -0.13F), fgi.b.a),
+            new fgk(0.625F, fgl.a(-0.5F, 0.1F, 2.0F), fgi.b.a),
+            new fgk(0.9583F, fgl.a(0.5F, 1.0F, -0.11F), fgi.b.a),
+            new fgk(1.25F, fgl.a(0.0F, 0.1F, -2.0F), fgi.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.125F, fgl.b(22.5F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.4583F, fgl.b(-45.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.625F, fgl.b(0.0F, 5.0F, 0.0F), fgi.b.a),
+            new fgk(0.9583F, fgl.b(7.5F, 2.33F, 7.5F), fgi.b.a),
+            new fgk(1.25F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new fgi(
+            fgi.d.a,
+            new fgk(0.0F, fgl.a(0.5F, 0.1F, 2.0F), fgi.b.a),
+            new fgk(0.2917F, fgl.a(-0.5F, 1.0F, 0.12F), fgi.b.a),
+            new fgk(0.625F, fgl.a(0.0F, 0.1F, -2.0F), fgi.b.a),
+            new fgk(0.9583F, fgl.a(0.5F, -0.25F, -0.13F), fgi.b.a),
+            new fgk(1.25F, fgl.a(0.5F, 0.1F, 2.0F), fgi.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.1667F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.2917F, fgl.b(45.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.625F, fgl.b(-45.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.7917F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(1.25F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new fgi(
+            fgi.d.a,
+            new fgk(0.0F, fgl.a(0.0F, 0.1F, 1.2F), fgi.b.a),
+            new fgk(0.1667F, fgl.a(0.0F, 0.1F, 2.0F), fgi.b.a),
+            new fgk(0.4583F, fgl.a(0.0F, 2.0F, 1.06F), fgi.b.a),
+            new fgk(0.7917F, fgl.a(0.0F, 0.1F, -1.0F), fgi.b.a),
+            new fgk(1.25F, fgl.a(0.0F, 0.1F, 1.2F), fgi.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(-33.75F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.0417F, fgl.b(-45.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.1667F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.7917F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.9583F, fgl.b(45.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(1.25F, fgl.b(-33.75F, 0.0F, 0.0F), fgi.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new fgi(
+            fgi.d.a,
+            new fgk(0.0F, fgl.a(0.0F, 1.14F, 0.11F), fgi.b.a),
+            new fgk(0.1667F, fgl.a(0.0F, 0.1F, -1.0F), fgi.b.a),
+            new fgk(0.7917F, fgl.a(0.0F, 0.1F, 2.0F), fgi.b.a),
+            new fgk(1.125F, fgl.a(0.0F, 2.0F, 0.95F), fgi.b.a),
+            new fgk(1.25F, fgl.a(0.0F, 1.14F, 0.11F), fgi.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(0.0F, 5.0F, 0.0F), fgi.b.a),
+            new fgk(0.2917F, fgl.b(-7.5F, 0.33F, 7.5F), fgi.b.a),
+            new fgk(0.625F, fgl.b(0.0F, -5.0F, 0.0F), fgi.b.a),
+            new fgk(0.9583F, fgl.b(-7.5F, 0.33F, -7.5F), fgi.b.a),
+            new fgk(1.25F, fgl.b(0.0F, 5.0F, 0.0F), fgi.b.a)
+         )
+      )
+      .b();
+   public static final fgj c = fgj.a.a(0.5F)
+      .a("body", new fgi(fgi.d.b, new fgk(0.0F, fgl.b(-22.5F, 0.0F, 0.0F), fgi.b.a), new fgk(0.5F, fgl.b(-22.5F, 0.0F, 0.0F), fgi.b.a)))
+      .a("body", new fgi(fgi.d.a, new fgk(0.0F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a), new fgk(0.5F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a)))
+      .a("left_arm", new fgi(fgi.d.b, new fgk(0.0F, fgl.b(-56.14F, 0.0F, 0.0F), fgi.b.a), new fgk(0.5F, fgl.b(-56.14F, 0.0F, 0.0F), fgi.b.a)))
+      .a("left_arm", new fgi(fgi.d.a, new fgk(0.0F, fgl.a(0.0F, 1.0F, 0.0F), fgi.b.a), new fgk(0.5F, fgl.a(0.0F, 1.0F, 0.0F), fgi.b.a)))
+      .a("right_arm", new fgi(fgi.d.b, new fgk(0.0F, fgl.b(-56.14F, 0.0F, 0.0F), fgi.b.a), new fgk(0.5F, fgl.b(-56.14F, 0.0F, 0.0F), fgi.b.a)))
+      .a("right_arm", new fgi(fgi.d.a, new fgk(0.0F, fgl.a(0.0F, 1.0F, 0.0F), fgi.b.a), new fgk(0.5F, fgl.a(0.0F, 1.0F, 0.0F), fgi.b.a)))
+      .a("left_leg", new fgi(fgi.d.b, new fgk(0.0F, fgl.b(45.0F, 0.0F, 0.0F), fgi.b.a), new fgk(0.5F, fgl.b(45.0F, 0.0F, 0.0F), fgi.b.a)))
+      .a("left_leg", new fgi(fgi.d.a, new fgk(0.0F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a), new fgk(0.5F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a)))
+      .a("right_leg", new fgi(fgi.d.b, new fgk(0.0F, fgl.b(45.0F, 0.0F, 0.0F), fgi.b.a), new fgk(0.5F, fgl.b(45.0F, 0.0F, 0.0F), fgi.b.a)))
+      .a("right_leg", new fgi(fgi.d.a, new fgk(0.0F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a), new fgk(0.5F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a)))
+      .b();
+   public static final fgj d = fgj.a.a(0.5F)
+      .a(
+         "head",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.0833F, fgl.b(-60.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.4167F, fgl.b(-60.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.5F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fgi(
+            fgi.d.c,
+            new fgk(0.0F, fgl.b(1.0F, 1.0F, 1.0F), fgi.b.a),
+            new fgk(0.0833F, fgl.b(0.998F, 1.0F, 1.0F), fgi.b.a),
+            new fgk(0.4167F, fgl.b(0.998F, 1.0F, 1.0F), fgi.b.a),
+            new fgk(0.5F, fgl.b(1.0F, 1.0F, 1.0F), fgi.b.a)
+         )
+      )
+      .a(
+         "tongue",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.0833F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.4167F, fgl.b(-18.0F, 0.0F, 0.0F), fgi.b.a),
+            new fgk(0.5F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a)
+         )
+      )
+      .a(
+         "tongue",
+         new fgi(
+            fgi.d.c,
+            new fgk(0.0833F, fgl.a(1.0, 1.0, 1.0), fgi.b.a),
+            new fgk(0.1667F, fgl.a(0.5, 1.0, 5.0), fgi.b.a),
+            new fgk(0.4167F, fgl.a(1.0, 1.0, 1.0), fgi.b.a)
+         )
+      )
+      .b();
+   public static final fgj e = fgj.a.a(1.04167F)
+      .a()
+      .a(
+         "body",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.b),
+            new fgk(0.3333F, fgl.b(10.0F, 0.0F, 0.0F), fgi.b.b),
+            new fgk(0.6667F, fgl.b(-10.0F, 0.0F, 0.0F), fgi.b.b),
+            new fgk(1.0417F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(90.0F, 22.5F, 0.0F), fgi.b.b),
+            new fgk(0.4583F, fgl.b(45.0F, 22.5F, 0.0F), fgi.b.b),
+            new fgk(0.6667F, fgl.b(-22.5F, -22.5F, -22.5F), fgi.b.b),
+            new fgk(0.875F, fgl.b(-45.0F, -22.5F, 0.0F), fgi.b.b),
+            new fgk(0.9583F, fgl.b(22.5F, 0.0F, 22.5F), fgi.b.b),
+            new fgk(1.0417F, fgl.b(90.0F, 22.5F, 0.0F), fgi.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fgi(
+            fgi.d.a,
+            new fgk(0.0F, fgl.a(0.0F, -0.64F, 2.0F), fgi.b.b),
+            new fgk(0.4583F, fgl.a(0.0F, -0.64F, 0.0F), fgi.b.b),
+            new fgk(0.6667F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.b),
+            new fgk(0.875F, fgl.a(0.0F, -0.27F, -1.14F), fgi.b.b),
+            new fgk(0.9583F, fgl.a(0.0F, -1.45F, 0.43F), fgi.b.b),
+            new fgk(1.0417F, fgl.a(0.0F, -0.64F, 2.0F), fgi.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(90.0F, -22.5F, 0.0F), fgi.b.b),
+            new fgk(0.4583F, fgl.b(45.0F, -22.5F, 0.0F), fgi.b.b),
+            new fgk(0.6667F, fgl.b(-22.5F, 22.5F, 22.5F), fgi.b.b),
+            new fgk(0.875F, fgl.b(-45.0F, 22.5F, 0.0F), fgi.b.b),
+            new fgk(0.9583F, fgl.b(22.5F, 0.0F, -22.5F), fgi.b.b),
+            new fgk(1.0417F, fgl.b(90.0F, -22.5F, 0.0F), fgi.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fgi(
+            fgi.d.a,
+            new fgk(0.0F, fgl.a(0.0F, -0.64F, 2.0F), fgi.b.b),
+            new fgk(0.4583F, fgl.a(0.0F, -0.64F, 0.0F), fgi.b.b),
+            new fgk(0.6667F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.b),
+            new fgk(0.875F, fgl.a(0.0F, -0.27F, -1.14F), fgi.b.b),
+            new fgk(0.9583F, fgl.a(0.0F, -1.45F, 0.43F), fgi.b.b),
+            new fgk(1.0417F, fgl.a(0.0F, -0.64F, 2.0F), fgi.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(90.0F, 0.0F, 0.0F), fgi.b.b),
+            new fgk(0.25F, fgl.b(90.0F, 0.0F, 0.0F), fgi.b.b),
+            new fgk(0.4583F, fgl.b(67.5F, -45.0F, 0.0F), fgi.b.b),
+            new fgk(0.7917F, fgl.b(90.0F, 45.0F, 0.0F), fgi.b.b),
+            new fgk(0.9583F, fgl.b(90.0F, 0.0F, 0.0F), fgi.b.b),
+            new fgk(1.0417F, fgl.b(90.0F, 0.0F, 0.0F), fgi.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new fgi(
+            fgi.d.a,
+            new fgk(0.0F, fgl.a(-2.5F, 0.0F, 1.0F), fgi.b.b),
+            new fgk(0.25F, fgl.a(-2.0F, 0.0F, 1.0F), fgi.b.b),
+            new fgk(0.4583F, fgl.a(1.0F, -2.0F, -1.0F), fgi.b.b),
+            new fgk(0.7917F, fgl.a(0.58F, 0.0F, -2.83F), fgi.b.b),
+            new fgk(0.9583F, fgl.a(-2.5F, 0.0F, 1.0F), fgi.b.b),
+            new fgk(1.0417F, fgl.a(-2.5F, 0.0F, 1.0F), fgi.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(90.0F, 0.0F, 0.0F), fgi.b.b),
+            new fgk(0.25F, fgl.b(90.0F, 0.0F, 0.0F), fgi.b.b),
+            new fgk(0.4583F, fgl.b(67.5F, 45.0F, 0.0F), fgi.b.b),
+            new fgk(0.7917F, fgl.b(90.0F, -45.0F, 0.0F), fgi.b.b),
+            new fgk(0.9583F, fgl.b(90.0F, 0.0F, 0.0F), fgi.b.b),
+            new fgk(1.0417F, fgl.b(90.0F, 0.0F, 0.0F), fgi.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new fgi(
+            fgi.d.a,
+            new fgk(0.0F, fgl.a(2.5F, 0.0F, 1.0F), fgi.b.b),
+            new fgk(0.25F, fgl.a(2.0F, 0.0F, 1.0F), fgi.b.b),
+            new fgk(0.4583F, fgl.a(-1.0F, -2.0F, -1.0F), fgi.b.b),
+            new fgk(0.7917F, fgl.a(-0.58F, 0.0F, -2.83F), fgi.b.b),
+            new fgk(0.9583F, fgl.a(2.5F, 0.0F, 1.0F), fgi.b.b),
+            new fgk(1.0417F, fgl.a(2.5F, 0.0F, 1.0F), fgi.b.b)
+         )
+      )
+      .b();
+   public static final fgj f = fgj.a.a(3.0F)
+      .a()
+      .a(
+         "body",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.b),
+            new fgk(1.625F, fgl.b(-10.0F, 0.0F, 0.0F), fgi.b.b),
+            new fgk(3.0F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(0.0F, 0.0F, -22.5F), fgi.b.b),
+            new fgk(2.2083F, fgl.b(0.0F, 0.0F, -45.0F), fgi.b.b),
+            new fgk(3.0F, fgl.b(0.0F, 0.0F, -22.5F), fgi.b.b)
+         )
+      )
+      .a(
+         "left_arm",
+         new fgi(
+            fgi.d.a,
+            new fgk(0.0F, fgl.a(-1.0F, 0.0F, 0.0F), fgi.b.b),
+            new fgk(2.2083F, fgl.a(-1.0F, -0.5F, 0.0F), fgi.b.b),
+            new fgk(3.0F, fgl.a(-1.0F, 0.0F, 0.0F), fgi.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(0.0F, 0.0F, 22.5F), fgi.b.b),
+            new fgk(2.2083F, fgl.b(0.0F, 0.0F, 45.0F), fgi.b.b),
+            new fgk(3.0F, fgl.b(0.0F, 0.0F, 22.5F), fgi.b.b)
+         )
+      )
+      .a(
+         "right_arm",
+         new fgi(
+            fgi.d.a,
+            new fgk(0.0F, fgl.a(1.0F, 0.0F, 0.0F), fgi.b.b),
+            new fgk(2.2083F, fgl.a(1.0F, -0.5F, 0.0F), fgi.b.b),
+            new fgk(3.0F, fgl.a(1.0F, 0.0F, 0.0F), fgi.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(22.5F, -22.5F, 0.0F), fgi.b.b),
+            new fgk(1.0F, fgl.b(22.5F, -22.5F, -45.0F), fgi.b.b),
+            new fgk(3.0F, fgl.b(22.5F, -22.5F, 0.0F), fgi.b.b)
+         )
+      )
+      .a(
+         "left_leg",
+         new fgi(
+            fgi.d.a,
+            new fgk(0.0F, fgl.a(0.0F, 0.0F, 1.0F), fgi.b.b),
+            new fgk(1.0F, fgl.a(0.0F, -1.0F, 1.0F), fgi.b.b),
+            new fgk(3.0F, fgl.a(0.0F, 0.0F, 1.0F), fgi.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new fgi(
+            fgi.d.b,
+            new fgk(0.0F, fgl.b(22.5F, 22.5F, 0.0F), fgi.b.b),
+            new fgk(1.0F, fgl.b(22.5F, 22.5F, 45.0F), fgi.b.b),
+            new fgk(3.0F, fgl.b(22.5F, 22.5F, 0.0F), fgi.b.b)
+         )
+      )
+      .a(
+         "right_leg",
+         new fgi(
+            fgi.d.a,
+            new fgk(0.0F, fgl.a(0.0F, 0.0F, 1.0F), fgi.b.b),
+            new fgk(1.0F, fgl.a(0.0F, -1.0F, 1.0F), fgi.b.b),
+            new fgk(3.0F, fgl.a(0.0F, 0.0F, 1.0F), fgi.b.b)
+         )
+      )
+      .b();
 }

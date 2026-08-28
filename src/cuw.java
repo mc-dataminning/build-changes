@@ -1,20 +1,32 @@
-public class cuw extends ctv {
-   public cuw(ctv.a $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+
+public enum cuw implements azc {
+   a(0, "common", n.p),
+   b(1, "uncommon", n.o),
+   c(2, "rare", n.l),
+   d(3, "epic", n.n);
+
+   public static final Codec<cuw> e = azc.b(cuw::values);
+   public static final IntFunction<cuw> f = aww.a($$0 -> $$0.h, values(), aww.a.a);
+   public static final ys<ByteBuf, cuw> g = yq.a(f, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final n j;
+
+   private cuw(final int $$0, final String $$1, final n $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+   }
+
+   public n a() {
+      return this.j;
    }
 
    @Override
-   public bqd a(cua $$0, cmh $$1, bsy $$2, bqc $$3) {
-      if ($$2 instanceof bto $$4 && $$2.bD() && !$$4.i() && $$4.f()) {
-         if (!$$1.dP().B) {
-            $$4.a(avg.g);
-            $$2.dP().a($$2, dxa.v, $$2.dn());
-            $$0.h(1);
-         }
-
-         return bqd.a($$1.dP().B);
-      }
-
-      return bqd.e;
+   public String c() {
+      return this.i;
    }
 }

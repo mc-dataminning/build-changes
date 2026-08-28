@@ -52,15 +52,15 @@ public class od {
       return this;
    }
 
-   public akk a(dff $$0, BiConsumer<akk, Supplier<JsonElement>> $$1) {
+   public akk a(dfh $$0, BiConsumer<akk, Supplier<JsonElement>> $$1) {
       return this.B.a($$0, this.A, $$1);
    }
 
-   public akk a(dff $$0, String $$1, BiConsumer<akk, Supplier<JsonElement>> $$2) {
+   public akk a(dfh $$0, String $$1, BiConsumer<akk, Supplier<JsonElement>> $$2) {
       return this.B.a($$0, $$1, this.A, $$2);
    }
 
-   private static od.a a(Function<dff, ob> $$0, nz $$1) {
+   private static od.a a(Function<dfh, ob> $$0, nz $$1) {
       return $$2 -> new od($$0.apply($$2), $$1);
    }
 
@@ -70,13 +70,13 @@ public class od {
 
    @FunctionalInterface
    public interface a {
-      od get(dff var1);
+      od get(dfh var1);
 
-      default akk create(dff $$0, BiConsumer<akk, Supplier<JsonElement>> $$1) {
+      default akk create(dfh $$0, BiConsumer<akk, Supplier<JsonElement>> $$1) {
          return this.get($$0).a($$0, $$1);
       }
 
-      default akk createWithSuffix(dff $$0, String $$1, BiConsumer<akk, Supplier<JsonElement>> $$2) {
+      default akk createWithSuffix(dfh $$0, String $$1, BiConsumer<akk, Supplier<JsonElement>> $$2) {
          return this.get($$0).a($$0, $$1, $$2);
       }
 

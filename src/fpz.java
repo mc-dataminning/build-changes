@@ -1,53 +1,32 @@
-import javax.annotation.Nullable;
+public class fpz extends fqc {
+   private static final wu b = wu.c("multiplayerWarning.header").a(n.r);
+   private static final wu c = wu.c("multiplayerWarning.message");
+   private static final wu q = wu.c("multiplayerWarning.check");
+   private static final wu r = b.f().f("\n").b(c);
+   private final fnj s;
 
-public class fpz extends fqf {
-   private static final wu a = wu.c("options.chat.title");
-   @Nullable
-   private fhk s;
-
-   private static ffq<?>[] a(ffr $$0) {
-      return new ffq[]{
-         $$0.m(),
-         $$0.K(),
-         $$0.L(),
-         $$0.M(),
-         $$0.n(),
-         $$0.r(),
-         $$0.w(),
-         $$0.o(),
-         $$0.A(),
-         $$0.x(),
-         $$0.z(),
-         $$0.y(),
-         $$0.as(),
-         $$0.J(),
-         $$0.ae(),
-         $$0.V(),
-         $$0.ag()
-      };
-   }
-
-   public fpz(fnd $$0, ffr $$1) {
-      super($$0, $$1, a);
+   public fpz(fnj $$0) {
+      super(b, c, q, r);
+      this.s = $$0;
    }
 
    @Override
-   public void aO_() {
-      super.aO_();
-      this.s = this.q.b(this.c.as());
-      if (this.s != null) {
-         this.s.j = this.l.aX().a();
-      }
+   protected flg m() {
+      flj $$0 = flj.e().a(8);
+      $$0.a(fhs.a(wt.i, $$0x -> {
+         if (this.a.a()) {
+            this.l.m.v = true;
+            this.l.m.av();
+         }
+
+         this.l.a(new fpy(this.s));
+      }).a());
+      $$0.a(fhs.a(wt.k, $$0x -> this.d()).a());
+      return $$0;
    }
 
    @Override
-   protected void m() {
-      this.q.a(a(this.c));
-   }
-
-   public void F() {
-      if (this.s instanceof fht) {
-         ((fht)this.s).a(this.c.as().c());
-      }
+   public void d() {
+      this.l.a(this.s);
    }
 }

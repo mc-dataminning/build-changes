@@ -1,151 +1,148 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Queues;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2BooleanFunction;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.Queue;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.LockSupport;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
+import javax.annotation.CheckReturnValue;
 import org.slf4j.Logger;
 
-public class bow<T> implements bob, bov<T>, AutoCloseable, Runnable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 1;
-   private static final int c = 2;
-   private final AtomicInteger d = new AtomicInteger(0);
-   private final boy<? super T, ? extends Runnable> e;
-   private final Executor f;
-   private final String g;
+public abstract class bow<R extends Runnable> implements boe, boy<R>, Executor {
+   private final String b;
+   private static final Logger c = LogUtils.getLogger();
+   private final Queue<R> d = Queues.newConcurrentLinkedQueue();
+   private int e;
 
-   public static bow<Runnable> a(Executor $$0, String $$1) {
-      return new bow<>(new boy.c<>(new ConcurrentLinkedQueue<>()), $$0, $$1);
+   protected bow(String $$0) {
+      this.b = $$0;
+      boc.a.a(this);
    }
 
-   public bow(boy<? super T, ? extends Runnable> $$0, Executor $$1, String $$2) {
-      this.f = $$1;
-      this.e = $$0;
-      this.g = $$2;
-      bnz.a.a(this);
+   protected abstract R f(Runnable var1);
+
+   protected abstract boolean e(R var1);
+
+   public boolean bx() {
+      return Thread.currentThread() == this.aA();
    }
 
-   private boolean d() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-         if (($$0 & 3) != 0) {
-            return false;
-         }
-      } while (!this.d.compareAndSet($$0, $$0 | 2));
+   protected abstract Thread aA();
 
-      return true;
+   protected boolean az() {
+      return !this.bx();
    }
 
-   private void e() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 & -3));
-   }
-
-   private boolean f() {
-      return (this.d.get() & 1) != 0 ? false : !this.e.b();
+   public int by() {
+      return this.d.size();
    }
 
    @Override
-   public void close() {
-      int $$0;
-      do {
-         $$0 = this.d.get();
-      } while (!this.d.compareAndSet($$0, $$0 | 1));
+   public String bz() {
+      return this.b;
    }
 
-   private boolean g() {
-      return (this.d.get() & 2) != 0;
+   public <V> CompletableFuture<V> a(Supplier<V> $$0) {
+      return this.az() ? CompletableFuture.supplyAsync($$0, this) : CompletableFuture.completedFuture($$0.get());
    }
 
-   private boolean h() {
-      if (!this.g()) {
+   private CompletableFuture<Void> a(Runnable $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         $$0.run();
+         return null;
+      }, this);
+   }
+
+   @CheckReturnValue
+   public CompletableFuture<Void> g(Runnable $$0) {
+      if (this.az()) {
+         return this.a($$0);
+      } else {
+         $$0.run();
+         return CompletableFuture.completedFuture(null);
+      }
+   }
+
+   public void h(Runnable $$0) {
+      if (!this.bx()) {
+         this.a($$0).join();
+      } else {
+         $$0.run();
+      }
+   }
+
+   public void i(R $$0) {
+      this.d.add($$0);
+      LockSupport.unpark(this.aA());
+   }
+
+   @Override
+   public void execute(Runnable $$0) {
+      if (this.az()) {
+         this.i(this.f($$0));
+      } else {
+         $$0.run();
+      }
+   }
+
+   public void c(Runnable $$0) {
+      this.execute($$0);
+   }
+
+   protected void bA() {
+      this.d.clear();
+   }
+
+   protected void bB() {
+      while (this.B()) {
+      }
+   }
+
+   public boolean B() {
+      R $$0 = this.d.peek();
+      if ($$0 == null) {
+         return false;
+      } else if (this.e == 0 && !this.e($$0)) {
          return false;
       } else {
-         Runnable $$0 = this.e.a();
-         if ($$0 == null) {
-            return false;
-         } else {
-            ac.a(this.g, $$0).run();
-            return true;
-         }
+         this.d(this.d.remove());
+         return true;
       }
    }
 
-   @Override
-   public void run() {
+   public void b(BooleanSupplier $$0) {
+      this.e++;
+
       try {
-         this.a($$0 -> $$0 == 0);
-      } finally {
-         this.e();
-         this.i();
-      }
-   }
-
-   public void a() {
-      try {
-         this.a($$0 -> true);
-      } finally {
-         this.e();
-         this.i();
-      }
-   }
-
-   @Override
-   public void a(T $$0) {
-      this.e.a($$0);
-      this.i();
-   }
-
-   private void i() {
-      if (this.f() && this.d()) {
-         try {
-            this.f.execute(this);
-         } catch (RejectedExecutionException var4) {
-            try {
-               this.f.execute(this);
-            } catch (RejectedExecutionException var3) {
-               a.error("Cound not schedule mailbox", var3);
+         while (!$$0.getAsBoolean()) {
+            if (!this.B()) {
+               this.A();
             }
          }
+      } finally {
+         this.e--;
       }
    }
 
-   private int a(Int2BooleanFunction $$0) {
-      int $$1 = 0;
+   public void A() {
+      Thread.yield();
+      LockSupport.parkNanos("waiting for tasks", 100000L);
+   }
 
-      while ($$0.get($$1) && this.h()) {
-         $$1++;
+   protected void d(R $$0) {
+      try {
+         $$0.run();
+      } catch (Exception var3) {
+         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.bz(), var3);
+         throw var3;
       }
-
-      return $$1;
-   }
-
-   public int b() {
-      return this.e.c();
-   }
-
-   public boolean c() {
-      return this.g() && !this.e.b();
    }
 
    @Override
-   public String toString() {
-      return this.g + " " + this.d.get() + " " + this.e.b();
-   }
-
-   @Override
-   public String by() {
-      return this.g;
-   }
-
-   @Override
-   public List<bny> bv() {
-      return ImmutableList.of(bny.a(this.g + "-queue-size", bnx.c, this::b));
+   public List<bob> bw() {
+      return ImmutableList.of(bob.a(this.b + "-pending-tasks", boa.b, this::by));
    }
 }

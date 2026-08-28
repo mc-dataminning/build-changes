@@ -1,8 +1,8 @@
-public record agt(ble b) implements zb<agb> {
+public record agt(blh b) implements zb<agb> {
    public static final ys<vr, agt> a = zb.a(agt::a, agt::new);
 
    private agt(vr $$0) {
-      this($$0.b(ble.class));
+      this($$0.b(blh.class));
    }
 
    private void a(vr $$0) {

@@ -1,27 +1,47 @@
-import com.google.common.collect.Lists;
-import java.util.Arrays;
+import com.google.common.collect.ImmutableSet;
 import java.util.Collection;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
-public class dtb extends dtf<jf> {
-   protected dtb(String $$0, Collection<jf> $$1) {
-      super($$0, jf.class, $$1);
+public class dtb extends dtn<Boolean> {
+   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
+
+   protected dtb(String $$0) {
+      super($$0, Boolean.class);
+   }
+
+   @Override
+   public Collection<Boolean> a() {
+      return this.a;
    }
 
    public static dtb a(String $$0) {
-      return a($$0, $$0x -> true);
+      return new dtb($$0);
    }
 
-   public static dtb a(String $$0, Predicate<jf> $$1) {
-      return a($$0, Arrays.stream(jf.values()).filter($$1).collect(Collectors.toList()));
+   @Override
+   public Optional<Boolean> b(String $$0) {
+      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
    }
 
-   public static dtb a(String $$0, jf... $$1) {
-      return a($$0, Lists.newArrayList($$1));
+   public String a(Boolean $$0) {
+      return $$0.toString();
    }
 
-   public static dtb a(String $$0, Collection<jf> $$1) {
-      return new dtb($$0, $$1);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dtb $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
    }
 }

@@ -1,150 +1,46 @@
-import com.google.common.collect.Iterables;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.OptionalInt;
-import java.util.stream.Stream;
+import java.util.function.Consumer;
 
-public final class cwv {
-   private static final int d = -1;
-   private static final int e = 256;
-   public static final cwv a = new cwv(js.a());
-   public static final Codec<cwv> b = cwv.a.a.sizeLimitedListOf(256).xmap(cwv::b, cwv::f);
-   public static final ys<wf, cwv> c = cua.h.a(yq.c(256)).a(cwv::new, $$0 -> $$0.f);
-   private final js<cua> f;
-   private final int g;
+public record cwv(int d, List<cwu> e) implements cxh {
+   public static final int a = 256;
+   public static final Codec<cwv> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axo.j.optionalFieldOf("flight_duration", 0).forGetter(cwv::a),
+               cwu.c.sizeLimitedListOf(256).optionalFieldOf("explosions", List.of()).forGetter(cwv::b)
+            )
+            .apply($$0, cwv::new)
+   );
+   public static final ys<ByteBuf, cwv> c = ys.a(yq.g, cwv::a, cwu.d.a(yq.c(256)), cwv::b, cwv::new);
 
-   private cwv(js<cua> $$0) {
-      if ($$0.size() > 256) {
-         throw new IllegalArgumentException("Got " + $$0.size() + " items, but maximum is 256");
+   public cwv(int d, List<cwu> e) {
+      if (e.size() > 256) {
+         throw new IllegalArgumentException("Got " + e.size() + " explosions, but maximum is 256");
       } else {
-         this.f = $$0;
-         this.g = cua.a($$0);
-      }
-   }
-
-   private cwv(int $$0) {
-      this(js.a($$0, cua.l));
-   }
-
-   private cwv(List<cua> $$0) {
-      this($$0.size());
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         this.f.set($$1, $$0.get($$1));
-      }
-   }
-
-   private static cwv b(List<cwv.a> $$0) {
-      OptionalInt $$1 = $$0.stream().mapToInt(cwv.a::a).max();
-      if ($$1.isEmpty()) {
-         return a;
-      } else {
-         cwv $$2 = new cwv($$1.getAsInt() + 1);
-
-         for (cwv.a $$3 : $$0) {
-            $$2.f.set($$3.a(), $$3.b());
-         }
-
-         return $$2;
-      }
-   }
-
-   public static cwv a(List<cua> $$0) {
-      int $$1 = c($$0);
-      if ($$1 == -1) {
-         return a;
-      } else {
-         cwv $$2 = new cwv($$1 + 1);
-
-         for (int $$3 = 0; $$3 <= $$1; $$3++) {
-            $$2.f.set($$3, $$0.get($$3).s());
-         }
-
-         return $$2;
-      }
-   }
-
-   private static int c(List<cua> $$0) {
-      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
-         if (!$$0.get($$1).e()) {
-            return $$1;
-         }
-      }
-
-      return -1;
-   }
-
-   private List<cwv.a> f() {
-      List<cwv.a> $$0 = new ArrayList<>();
-
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         cua $$2 = this.f.get($$1);
-         if (!$$2.e()) {
-            $$0.add(new cwv.a($$1, $$2));
-         }
-      }
-
-      return $$0;
-   }
-
-   public void a(js<cua> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         cua $$2 = $$1 < this.f.size() ? this.f.get($$1) : cua.l;
-         $$0.set($$1, $$2.s());
-      }
-   }
-
-   public cua a() {
-      return this.f.isEmpty() ? cua.l : this.f.get(0).s();
-   }
-
-   public Stream<cua> b() {
-      return this.f.stream().map(cua::s);
-   }
-
-   public Stream<cua> c() {
-      return this.f.stream().filter($$0 -> !$$0.e()).map(cua::s);
-   }
-
-   public Iterable<cua> d() {
-      return Iterables.filter(this.f, $$0 -> !$$0.e());
-   }
-
-   public Iterable<cua> e() {
-      return Iterables.transform(this.d(), cua::s);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cwv $$1 && cua.a(this.f, $$1.f)) {
-            return true;
-         }
-
-         return false;
+         this.d = d;
+         this.e = e;
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.g;
+   public void a(ctx.b $$0, Consumer<wu> $$1, cvv $$2) {
+      if (this.d > 0) {
+         $$1.accept(wu.c("item.minecraft.firework_rocket.flight").b(wt.v).f(String.valueOf(this.d)).a(n.h));
+      }
+
+      for (cwu $$3 : this.e) {
+         $$3.a($$1);
+         $$3.b($$1x -> $$1.accept(wu.b("  ").b($$1x)));
+      }
    }
 
-   static record a(int b, cua c) {
-      public static final Codec<cwv.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(cwv.a::a), cua.b.fieldOf("item").forGetter(cwv.a::b)).apply($$0, cwv.a::new)
-      );
+   public int a() {
+      return this.d;
+   }
 
-      public int a() {
-         return this.b;
-      }
-
-      public cua b() {
-         return this.c;
-      }
+   public List<cwu> b() {
+      return this.e;
    }
 }

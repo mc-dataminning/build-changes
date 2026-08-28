@@ -1,24 +1,19 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gjw extends gks<cjk, fus<cjk>> {
+   private static final akk a = new akk("textures/entity/ghast/ghast.png");
+   private static final akk i = new akk("textures/entity/ghast/ghast_shooting.png");
 
-public final class gjw extends gia<cgu, fut<cgu>> {
-   private static final Map<chb, akk> a = ac.a(Maps.newEnumMap(chb.class), $$0 -> {
-      $$0.put(chb.a, new akk("textures/entity/horse/horse_white.png"));
-      $$0.put(chb.b, new akk("textures/entity/horse/horse_creamy.png"));
-      $$0.put(chb.c, new akk("textures/entity/horse/horse_chestnut.png"));
-      $$0.put(chb.d, new akk("textures/entity/horse/horse_brown.png"));
-      $$0.put(chb.e, new akk("textures/entity/horse/horse_black.png"));
-      $$0.put(chb.f, new akk("textures/entity/horse/horse_gray.png"));
-      $$0.put(chb.g, new akk("textures/entity/horse/horse_darkbrown.png"));
-   });
-
-   public gjw(gjg.a $$0) {
-      super($$0, new fut<>($$0.a(fxh.ap)), 1.1F);
-      this.a(new gnh(this));
-      this.a(new gng(this, $$0.f()));
+   public gjw(gjm.a $$0) {
+      super($$0, new fus<>($$0.a(fxn.ag)), 1.5F);
    }
 
-   public akk a(cgu $$0) {
-      return a.get($$0.s());
+   public akk a(cjk $$0) {
+      return $$0.s() ? i : a;
+   }
+
+   protected void a(cjk $$0, fam $$1, float $$2) {
+      float $$3 = 1.0F;
+      float $$4 = 4.5F;
+      float $$5 = 4.5F;
+      $$1.b(4.5F, 4.5F, 4.5F);
    }
 }

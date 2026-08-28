@@ -1,111 +1,39 @@
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public abstract class fir extends fhm {
-   protected final akk a;
-   protected final int b;
-   protected final int c;
+public class fir {
+   public static final int a = 8;
+   public static final int b = 8;
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 40;
+   public static final int f = 8;
+   public static final int g = 8;
+   public static final int h = 8;
+   public static final int i = 64;
+   public static final int j = 64;
 
-   fir(int $$0, int $$1, wu $$2, int $$3, int $$4, akk $$5, fhm.c $$6, @Nullable fhm.b $$7) {
-      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
-      this.b = $$3;
-      this.c = $$4;
-      this.a = $$5;
+   public static void a(fhf $$0, gqo $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1.a(), $$2, $$3, $$4);
    }
 
-   public static fir.a a(wu $$0, fhm.c $$1, boolean $$2) {
-      return new fir.a($$0, $$1, $$2);
+   public static void a(fhf $$0, akk $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, true, false);
    }
 
-   public static class a {
-      private final wu b;
-      private final fhm.c c;
-      private final boolean d;
-      private int e = 150;
-      private int f = 20;
-      @Nullable
-      private akk g;
-      private int h;
-      private int i;
-      @Nullable
-      fhm.b a;
-
-      public a(wu $$0, fhm.c $$1, boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public fir.a a(int $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fir.a a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public fir.a a(akk $$0, int $$1, int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      public fir.a a(fhm.b $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fir a() {
-         if (this.g == null) {
-            throw new IllegalStateException("Sprite not set");
-         } else {
-            return (fir)(this.d
-               ? new fir.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
-               : new fir.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
-         }
+   public static void a(fhf $$0, akk $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6) {
+      int $$7 = 8 + ($$6 ? 8 : 0);
+      int $$8 = 8 * ($$6 ? -1 : 1);
+      $$0.a($$1, $$2, $$3, $$4, $$4, 8.0F, (float)$$7, 8, $$8, 64, 64);
+      if ($$5) {
+         a($$0, $$1, $$2, $$3, $$4, $$6);
       }
    }
 
-   public static class b extends fir {
-      protected b(int $$0, int $$1, wu $$2, int $$3, int $$4, akk $$5, fhm.c $$6, @Nullable fhm.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void b(fgz $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.D() + this.y() / 2 - this.b / 2;
-         int $$5 = this.E() + this.w() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fgz $$0, fgx $$1, int $$2) {
-      }
-   }
-
-   public static class c extends fir {
-      protected c(int $$0, int $$1, wu $$2, int $$3, int $$4, akk $$5, fhm.c $$6, @Nullable fhm.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void b(fgz $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.D() + this.y() - this.b - 2;
-         int $$5 = this.E() + this.w() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fgz $$0, fgx $$1, int $$2) {
-         int $$3 = this.D() + 2;
-         int $$4 = this.D() + this.y() - this.b - 4;
-         int $$5 = this.D() + this.y() / 2;
-         a($$0, $$1, this.z(), $$5, $$3, this.E(), $$4, this.E() + this.w(), $$2);
-      }
+   private static void a(fhf $$0, akk $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6 = 8 + ($$5 ? 8 : 0);
+      int $$7 = 8 * ($$5 ? -1 : 1);
+      RenderSystem.enableBlend();
+      $$0.a($$1, $$2, $$3, $$4, $$4, 40.0F, (float)$$6, 8, $$7, 64, 64);
+      RenderSystem.disableBlend();
    }
 }

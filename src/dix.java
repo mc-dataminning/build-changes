@@ -1,20 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public class dix extends dlr {
-   public static final MapCodec<dix> a = b(dix::new);
+public class dix extends dfh {
+   public static final MapCodec<dix> d = b(dix::new);
 
    @Override
-   public MapCodec<dix> a() {
-      return a;
+   protected MapCodec<? extends dix> a() {
+      return d;
    }
 
-   public dix(dsg.d $$0) {
+   protected dix(dsj.d $$0) {
       super($$0);
-      this.k(this.E.b().a(i, jf.a.b));
    }
 
    @Override
-   public void a(dcd $$0, dsh $$1, ja $$2, bsd $$3, float $$4) {
-      $$3.a($$4, 0.2F, $$0.aj().l());
+   protected boolean a(dsk $$0, dsk $$1, jf $$2) {
+      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
    }
 }

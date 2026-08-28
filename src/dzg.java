@@ -1,127 +1,132 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
 
-public interface dzg extends BiPredicate<dcz, ja> {
-   Codec<dzg> b = lq.M.r().dispatch(dzg::a, dzh::codec);
-   dzg c = a(dfh.a);
-   dzg d = a(dfh.a, dfh.G);
+public class dzg implements ayo {
+   private static final float c = 5.9604645E-8F;
+   private static final double d = 1.110223E-16F;
+   public static final Codec<dzg> b = dzf.a.xmap($$0 -> new dzg($$0), $$0 -> $$0.e);
+   private dzf e;
+   private final dyh f = new dyh(this);
 
-   dzh<?> a();
-
-   static dzg a(List<dzg> $$0) {
-      return new dze($$0);
+   public dzg(long $$0) {
+      this.e = new dzf(dyu.c($$0));
    }
 
-   static dzg a(dzg... $$0) {
-      return a(List.of($$0));
+   public dzg(dyu.a $$0) {
+      this.e = new dzf($$0);
    }
 
-   static dzg a(dzg $$0, dzg $$1) {
-      return a(List.of($$0, $$1));
+   public dzg(long $$0, long $$1) {
+      this.e = new dzf($$0, $$1);
    }
 
-   static dzg b(List<dzg> $$0) {
-      return new dzf($$0);
+   private dzg(dzf $$0) {
+      this.e = $$0;
    }
 
-   static dzg b(dzg... $$0) {
-      return b(List.of($$0));
+   @Override
+   public ayo d() {
+      return new dzg(this.e.a(), this.e.a());
    }
 
-   static dzg b(dzg $$0, dzg $$1) {
-      return b(List.of($$0, $$1));
+   @Override
+   public dys e() {
+      return new dzg.a(this.e.a(), this.e.a());
    }
 
-   static dzg a(ke $$0, List<dff> $$1) {
-      return new dzm($$0, jn.a(dff::s, $$1));
+   @Override
+   public void b(long $$0) {
+      this.e = new dzf(dyu.c($$0));
+      this.f.a();
    }
 
-   static dzg c(List<dff> $$0) {
-      return a(ke.g, $$0);
+   @Override
+   public int f() {
+      return (int)this.e.a();
    }
 
-   static dzg a(ke $$0, dff... $$1) {
-      return a($$0, List.of($$1));
+   @Override
+   public int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else {
+         long $$1 = Integer.toUnsignedLong(this.f());
+         long $$2 = $$1 * (long)$$0;
+         long $$3 = $$2 & 4294967295L;
+         if ($$3 < (long)$$0) {
+            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
+               $$1 = Integer.toUnsignedLong(this.f());
+               $$2 = $$1 * (long)$$0;
+            }
+         }
+
+         long $$5 = $$2 >> 32;
+         return (int)$$5;
+      }
    }
 
-   static dzg a(dff... $$0) {
-      return a(ke.g, $$0);
+   @Override
+   public long g() {
+      return this.e.a();
    }
 
-   static dzg a(ke $$0, awk<dff> $$1) {
-      return new dzl($$0, $$1);
+   @Override
+   public boolean h() {
+      return (this.e.a() & 1L) != 0L;
    }
 
-   static dzg a(awk<dff> $$0) {
-      return a(ke.g, $$0);
+   @Override
+   public float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
    }
 
-   static dzg b(ke $$0, List<eoa> $$1) {
-      return new dzn($$0, jn.a(eoa::k, $$1));
+   @Override
+   public double j() {
+      return (double)this.c(53) * 1.110223E-16F;
    }
 
-   static dzg a(ke $$0, eoa... $$1) {
-      return b($$0, List.of($$1));
+   @Override
+   public double k() {
+      return this.f.b();
    }
 
-   static dzg a(eoa... $$0) {
-      return a(ke.g, $$0);
+   @Override
+   public void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.e.a();
+      }
    }
 
-   static dzg a(dzg $$0) {
-      return new dzo($$0);
+   private long c(int $$0) {
+      return this.e.a() >>> 64 - $$0;
    }
 
-   static dzg a(ke $$0) {
-      return new dzp($$0);
-   }
+   public static class a implements dys {
+      private final long a;
+      private final long b;
 
-   static dzg b() {
-      return a(ke.g);
-   }
+      public a(long $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   static dzg a(dsh $$0, ke $$1) {
-      return new dzu($$1, $$0);
-   }
+      @Override
+      public ayo a(int $$0, int $$1, int $$2) {
+         long $$3 = ayg.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dzg($$4, this.b);
+      }
 
-   static dzg a(ke $$0, jf $$1) {
-      return new dzj($$0, $$1);
-   }
+      @Override
+      public ayo a(String $$0) {
+         dyu.a $$1 = dyu.a($$0);
+         return new dzg($$1.a(this.a, this.b));
+      }
 
-   static dzg a(jf $$0) {
-      return a(ke.g, $$0);
-   }
-
-   static dzg b(ke $$0) {
-      return new dzq($$0);
-   }
-
-   static dzg c() {
-      return b(ke.g);
-   }
-
-   static dzg d() {
-      return c(ke.g);
-   }
-
-   static dzg c(ke $$0) {
-      return a($$0, eoc.a);
-   }
-
-   static dzg d(ke $$0) {
-      return new dzk($$0);
-   }
-
-   static dzg e() {
-      return dzs.a;
-   }
-
-   static dzg e(ke $$0) {
-      return new dzt($$0);
-   }
-
-   static dzg f() {
-      return e(ke.g);
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
+      }
    }
 }

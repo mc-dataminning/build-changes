@@ -1,78 +1,59 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 
-public class frs {
-   private final ffn a;
-   private final Set<UUID> b = Sets.newHashSet();
-   private final UserApiService c;
-   private final Map<String, UUID> d = Maps.newHashMap();
-   private boolean e;
-   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
+public class frs extends fro<fzn.a> {
+   private static final int y = 120;
+   private static final wu z = wu.c("gui.abuseReport.name.title");
+   private final flj A = flj.d().a(8);
+   private fik B;
+   private fhs C;
 
-   public frs(ffn $$0, UserApiService $$1) {
-      this.a = $$0;
-      this.c = $$1;
+   private frs(fnj $$0, fzs $$1, fzn.a $$2) {
+      super(z, $$0, $$1, $$2);
    }
 
-   public void a(UUID $$0) {
-      this.b.add($$0);
+   public frs(fnj $$0, fzs $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new fzn.a($$2, $$3, $$1.a().b()));
    }
 
-   public void b(UUID $$0) {
-      this.b.remove($$0);
+   public frs(fnj $$0, fzs $$1, fzn $$2) {
+      this($$0, $$1, new fzn.a($$2, $$1.a().b()));
    }
 
-   public boolean c(UUID $$0) {
-      return this.d($$0) || this.e($$0);
+   @Override
+   protected void aP_() {
+      this.A.c().b();
+      this.A.a(new fiz(this.k, this.o));
+      wu $$0 = wu.b(this.x.e().a()).a(n.o);
+      this.A.a(new fiz(wu.a("gui.abuseReport.name.reporting", $$0), this.o), $$0x -> $$0x.a().a(0, 8));
+      this.B = this.a(280, 9 * 8, $$0x -> {
+         this.x.a($$0x);
+         this.E();
+      });
+      this.A.a(flb.a(this.o, this.B, q, $$0x -> $$0x.e(12)));
+      flj $$1 = this.A.a(flj.e().a(8));
+      $$1.a(fhs.a(wt.k, $$0x -> this.d()).a(120).a());
+      this.C = $$1.a(fhs.a(a, $$0x -> this.m()).a(120).a());
+      this.E();
+      this.A.a($$1x -> {
+         fhq var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public boolean d(UUID $$0) {
-      return this.b.contains($$0);
+   @Override
+   protected void c() {
+      this.A.a();
+      fld.a(this.A, this.H());
    }
 
-   public void a() {
-      this.e = true;
-      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ac.h());
+   private void E() {
+      fzo.b $$0 = this.x.c();
+      this.C.j = $$0 == null;
+      this.C.a(x.a($$0, fzo.b::a));
    }
 
-   public void b() {
-      this.e = false;
-   }
-
-   public boolean e(UUID $$0) {
-      if (!this.e) {
-         return false;
-      } else {
-         this.f.join();
-         return this.c.isBlockedPlayer($$0);
-      }
-   }
-
-   public Set<UUID> c() {
-      return this.b;
-   }
-
-   public UUID a(String $$0) {
-      return this.d.getOrDefault($$0, ac.e);
-   }
-
-   public void a(fyo $$0) {
-      GameProfile $$1 = $$0.a();
-      this.d.put($$1.getName(), $$1.getId());
-      if (this.a.y instanceof fru $$2) {
-         $$2.a($$0);
-      }
-   }
-
-   public void f(UUID $$0) {
-      if (this.a.y instanceof fru $$1) {
-         $$1.a($$0);
-      }
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.B.b($$0, $$1, $$2);
    }
 }

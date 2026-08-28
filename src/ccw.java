@@ -1,30 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-public class ccw extends cdi<bsy> {
+public class ccw extends cdf {
+   public static final float a = 10.0F;
+
    @Override
-   public Set<ccc<?>> a() {
-      return ImmutableSet.of(ccc.x, ccc.y);
+   protected boolean a(btb $$0, btb $$1) {
+      return !$$0.dU().a(ccf.U) && cdl.c($$0, $$1) && cgl.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   }
+
+   private boolean e(btb $$0, btb $$1) {
+      List<UUID> $$2 = $$0.dU().c(ccf.aa).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cA());
    }
 
    @Override
-   protected void a(aqk $$0, bsy $$1) {
-      bua<?> $$2 = $$1.dT();
-      bqw $$3 = $$1.ey();
-      if ($$3 != null) {
-         $$2.a(ccc.x, $$1.ey());
-         bsd $$4 = $$3.d();
-         if ($$4 instanceof bsy) {
-            $$2.a(ccc.y, (bsy)$$4);
-         }
-      } else {
-         $$2.b(ccc.x);
-      }
-
-      $$2.c(ccc.y).ifPresent($$2x -> {
-         if (!$$2x.bD() || $$2x.dP() != $$0) {
-            $$2.b(ccc.y);
-         }
-      });
+   protected ccf<btb> b() {
+      return ccf.B;
    }
 }

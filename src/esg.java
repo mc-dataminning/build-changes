@@ -1,41 +1,199 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class esg implements esc {
-   public static final MapCodec<esg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ese.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, esg::new)
-   );
-   public static final Codec<esg> b = ese.b.listOf().xmap(esg::new, $$0 -> $$0.c);
-   private final List<esc> c;
-   private final BiFunction<cua, eqo, cua> d;
+public interface esg {
+   MapCodec<esg> a = a(Integer.MAX_VALUE);
 
-   private esg(List<esc> $$0) {
-      this.c = $$0;
-      this.d = ese.a($$0);
+   static MapCodec<esg> a(int $$0) {
+      return esg.f.e.dispatchMap("mode", esg::a, $$0x -> $$0x.g).validate($$1 -> {
+         if ($$1 instanceof esg.d $$2 && $$2.c().isPresent()) {
+            int $$3 = $$2.c().get();
+            if ($$3 > $$0) {
+               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
+            }
+         }
+
+         return DataResult.success($$1);
+      });
    }
 
-   public static esg a(List<esc> $$0) {
-      return new esg(List.copyOf($$0));
+   esg.f a();
+
+   default <T> List<T> a(List<T> $$0, List<T> $$1) {
+      return this.a($$0, $$1, Integer.MAX_VALUE);
    }
 
-   public cua a(cua $$0, eqo $$1) {
-      return this.d.apply($$0, $$1);
-   }
+   <T> List<T> a(List<T> var1, List<T> var2, int var3);
 
-   @Override
-   public void a(equ $$0) {
-      esc.super.a($$0);
+   public static class a implements esg {
+      private static final Logger d = LogUtils.getLogger();
+      public static final esg.a b = new esg.a();
+      public static final MapCodec<esg.a> c = MapCodec.unit(() -> b);
 
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+      private a() {
+      }
+
+      @Override
+      public esg.f a() {
+         return esg.f.d;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         if ($$0.size() + $$1.size() > $$2) {
+            d.error("Contents overflow in section append");
+            return $$0;
+         } else {
+            return Stream.concat($$0.stream(), $$1.stream()).toList();
+         }
       }
    }
 
-   @Override
-   public esd<esg> b() {
-      return ese.I;
+   public static record b(int c) implements esg {
+      private static final Logger d = LogUtils.getLogger();
+      public static final MapCodec<esg.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(axo.k.optionalFieldOf("offset", 0).forGetter(esg.b::b)).apply($$0, esg.b::new)
+      );
+
+      @Override
+      public esg.f a() {
+         return esg.f.c;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            d.error("Cannot insert when offset is out of bounds");
+            return $$0;
+         } else if ($$3 + $$1.size() > $$2) {
+            d.error("Contents overflow in section insertion");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            $$4.addAll($$0.subList(this.c, $$3));
+            return $$4.build();
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   public static class c implements esg {
+      public static final esg.c b = new esg.c();
+      public static final MapCodec<esg.c> c = MapCodec.unit(() -> b);
+
+      private c() {
+      }
+
+      @Override
+      public esg.f a() {
+         return esg.f.a;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         return $$1;
+      }
+   }
+
+   public static record d(int c, Optional<Integer> d) implements esg {
+      private static final Logger e = LogUtils.getLogger();
+      public static final MapCodec<esg.d> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(axo.k.optionalFieldOf("offset", 0).forGetter(esg.d::b), axo.k.optionalFieldOf("size").forGetter(esg.d::c)).apply($$0, esg.d::new)
+      );
+
+      public d(int $$0) {
+         this($$0, Optional.empty());
+      }
+
+      @Override
+      public esg.f a() {
+         return esg.f.b;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            e.error("Cannot replace when offset is out of bounds");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            int $$5 = this.c + this.d.orElse($$1.size());
+            if ($$5 < $$3) {
+               $$4.addAll($$0.subList($$5, $$3));
+            }
+
+            List<T> $$6 = $$4.build();
+            if ($$6.size() > $$2) {
+               e.error("Contents overflow in section replacement");
+               return $$0;
+            } else {
+               return $$6;
+            }
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public Optional<Integer> c() {
+         return this.d;
+      }
+   }
+
+   public static record e<T>(List<T> a, esg b) {
+      public static <T> Codec<esg.e<T>> a(Codec<T> $$0, int $$1) {
+         return RecordCodecBuilder.create(
+            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), esg.a($$1).forGetter($$0xx -> $$0xx.b))
+                  .apply($$2, esg.e::new)
+         );
+      }
+
+      public List<T> a(List<T> $$0) {
+         return this.b.a($$0, this.a);
+      }
+   }
+
+   public static enum f implements azc {
+      a("replace_all", esg.c.c),
+      b("replace_section", esg.d.b),
+      c("insert", esg.b.b),
+      d("append", esg.a.c);
+
+      public static final Codec<esg.f> e = azc.a(esg.f::values);
+      private final String f;
+      final MapCodec<? extends esg> g;
+
+      private f(final String $$0, final MapCodec<? extends esg> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public MapCodec<? extends esg> a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

@@ -9,8 +9,8 @@ public class ox {
          akf.a.forEach($$1xx -> $$1xx.a($$3::a));
          jz.g $$4 = $$1.a($$2, $$1x, $$3);
          jl.a $$5 = $$4.a();
-         Optional<jl.b<ddd>> $$6 = $$5.a(lr.aE);
-         Optional<jl.b<ehu>> $$7 = $$5.a(lr.aP);
+         Optional<jl.b<ddf>> $$6 = $$5.a(lr.aE);
+         Optional<jl.b<eia>> $$7 = $$5.a(lr.aP);
          if ($$6.isPresent() || $$7.isPresent()) {
             oz.a($$7.orElseGet(() -> $$1x.b(lr.aP)), $$6.orElseGet(() -> $$1x.b(lr.aE)));
          }

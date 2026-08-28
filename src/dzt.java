@@ -1,19 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-record dzt(ke e) implements dzg {
-   public static MapCodec<dzt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ke.f.optionalFieldOf("offset", ke.g).forGetter(dzt::g)).apply($$0, dzt::new));
+class dzt extends dzx {
+   private final jn<eog> e;
+   public static final MapCodec<dzt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(jy.a(lr.D).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dzt::new)
+   );
+
+   public dzt(ke $$0, jn<eog> $$1) {
+      super($$0);
+      this.e = $$1;
+   }
 
    @Override
-   public dzh<?> a() {
-      return dzh.m;
+   protected boolean a(dsk $$0) {
+      return $$0.u().a(this.e);
    }
 
-   public boolean a(dcz $$0, ja $$1) {
-      return $$0.a(null, ewp.b().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
-   }
-
-   public ke g() {
-      return this.e;
+   @Override
+   public dzn<?> a() {
+      return dzn.c;
    }
 }

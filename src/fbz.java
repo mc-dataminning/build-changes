@@ -1,31 +1,54 @@
-import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class fbz extends fcc {
-   public long a;
-   public List<fby> b = Lists.newArrayList();
+public class fbz {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
+   @Nullable
+   private final String[] d;
 
-   public static fbz a(String $$0) {
-      fbz $$1 = new fbz();
-      JsonParser $$2 = new JsonParser();
+   private fbz(String $$0, @Nullable String[] $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-      try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         $$1.a = fdz.a("periodInMillis", $$4, -1L);
-         JsonElement $$5 = $$4.get("playerActivityDto");
-         if ($$5 != null && $$5.isJsonArray()) {
-            for (JsonElement $$7 : $$5.getAsJsonArray()) {
-               fby $$8 = fby.a($$7.getAsJsonObject());
-               $$1.b.add($$8);
-            }
+   public wu a(wu $$0) {
+      return Objects.requireNonNullElse(this.a(), $$0);
+   }
+
+   @Nullable
+   public wu a() {
+      if (!gqu.a(this.c)) {
+         return null;
+      } else {
+         return this.d == null ? wu.c(this.c) : wu.a(this.c, this.d);
+      }
+   }
+
+   public static fbz a(JsonObject $$0) {
+      String $$1 = fef.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
+
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
          }
-      } catch (Exception var10) {
+      } else {
+         $$5 = null;
       }
 
-      return $$1;
+      return new fbz($$1, $$5);
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 }

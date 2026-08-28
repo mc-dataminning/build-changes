@@ -1,33 +1,34 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bxu {
-   private static final int a = 16;
+   public static buv<btb> a(dfh $$0) {
+      return byh.a(
+         (Function<byh.b<btb>, ? extends App<byh.c<btb>, byk<btb>>>)($$1 -> $$1.group($$1.c(ccf.o), $$1.b(ccf.m), $$1.b(ccf.Y))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.bf() && $$3x.aF()) {
+                        ja $$5 = $$3x.dq().d();
 
-   public static bus<bsy> a(Predicate<jj<cef>> $$0, ccc<ji> $$1) {
-      return bye.a((Function<bye.b<bsy>, ? extends App<bye.c<bsy>, byh<bsy>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               ji $$6 = $$2.b($$2x);
-               ja $$7 = $$6.b();
-               if ($$3.af() == $$6.a() && $$7.a($$4.dn(), 16.0)) {
-                  aqk $$8 = $$3.o().a($$6.a());
-                  if ($$8 == null || !$$8.y().a($$7, $$0)) {
-                     $$2x.b();
-                  } else if (a($$8, $$7, $$4)) {
-                     $$2x.b();
-                     $$3.y().b($$7);
-                     afy.c($$3, $$7);
-                  }
+                        for (jf $$6 : jf.c.a) {
+                           ja $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).k($$2x, $$7).a(jf.b).c() && $$2x.b_($$7).b(eoi.c)) {
+                              ja $$8 = $$7.c();
+                              if ($$2x.a_($$8).i()) {
+                                 dsk $$9 = $$0.o();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(dxg.i, $$8, dxg.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, avh.jP, avi.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
+                              }
+                           }
+                        }
 
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
-   }
-
-   private static boolean a(aqk $$0, ja $$1, bsy $$2) {
-      dsh $$3 = $$0.a_($$1);
-      return $$3.a(avu.R) && $$3.c(dey.c) && !$$2.fH();
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

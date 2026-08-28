@@ -1,6 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-@Deprecated
-public interface goq {
-   float call(cua var1, @Nullable fyd var2, @Nullable bsy var3, int var4);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface goq {
 }

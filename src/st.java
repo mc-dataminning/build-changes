@@ -16,7 +16,7 @@ public class st {
    private ja b;
    @Nullable
    private ja c;
-   private final aqk d;
+   private final aqm d;
    private final Collection<su> e = Lists.newArrayList();
    private final int f;
    private final Collection<sx> g = Lists.newCopyOnWriteArrayList();
@@ -30,13 +30,13 @@ public class st {
    private final tg o;
    private final Stopwatch p = Stopwatch.createUnstarted();
    private boolean q;
-   private final dls r;
+   private final dlu r;
    @Nullable
    private Throwable s;
    @Nullable
-   private drc t;
+   private drf t;
 
-   public st(tn $$0, dls $$1, aqk $$2, tg $$3) {
+   public st(tn $$0, dlu $$1, aqm $$2, tg $$3) {
       this.a = $$0;
       this.d = $$2;
       this.o = $$3;
@@ -60,9 +60,9 @@ public class st {
       } else {
          this.j = 0;
          this.k = true;
-         drc $$0 = this.e();
+         drf $$0 = this.e();
          $$0.c(this.d);
-         eii $$1 = tj.b($$0);
+         eio $$1 = tj.b($$0);
          this.d.m().a($$1);
          this.d.a($$1);
          return this;
@@ -165,18 +165,18 @@ public class st {
       return this.b;
    }
 
-   public evu d() {
-      drc $$0 = this.e();
+   public ewa d() {
+      drf $$0 = this.e();
       return tj.a($$0);
    }
 
-   public drc e() {
+   public drf e() {
       if (this.t == null) {
          if (this.b == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity for this GameTestInfo");
          }
 
-         this.t = (drc)this.d.c_(this.b);
+         this.t = (drf)this.d.c_(this.b);
          if (this.t == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity at the given coordinate " + this.b);
          }
@@ -185,7 +185,7 @@ public class st {
       return this.t;
    }
 
-   public aqk f() {
+   public aqm f() {
       return this.d;
    }
 
@@ -221,9 +221,9 @@ public class st {
    public void l() {
       if (this.s == null) {
          this.F();
-         evu $$0 = this.d();
-         List<bsd> $$1 = this.f().a(bsd.class, $$0.g(1.0), $$0x -> !($$0x instanceof cmh));
-         $$1.forEach($$0x -> $$0x.a(bsd.c.b));
+         ewa $$0 = this.d();
+         List<bsg> $$1 = this.f().a(bsg.class, $$0.g(1.0), $$0x -> !($$0x instanceof cmk));
+         $$1.forEach($$0x -> $$0x.a(bsg.c.b));
       }
    }
 
@@ -278,7 +278,7 @@ public class st {
       return this.a.d();
    }
 
-   public dls t() {
+   public dlu t() {
       return this.r;
    }
 
@@ -325,7 +325,7 @@ public class st {
 
    private ja G() {
       if (this.c == null) {
-         eii $$0 = tj.b(this.e());
+         eio $$0 = tj.b(this.e());
          this.c = new ja($$0.h(), $$0.i(), $$0.j());
       }
 

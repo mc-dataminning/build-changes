@@ -22,7 +22,7 @@ public class ann {
                                     .suggests(ip.b)
                                     .executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), Collections.singleton(fr.b($$0x, "recipe"))))
                               ))
-                           .then(er.a("*").executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), ((eq)$$0x.getSource()).l().aJ().d())))
+                           .then(er.a("*").executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), ((eq)$$0x.getSource()).l().aK().d())))
                      )
                ))
             .then(
@@ -34,16 +34,16 @@ public class ann {
                                  .suggests(ip.b)
                                  .executes($$0x -> b((eq)$$0x.getSource(), fd.f($$0x, "targets"), Collections.singleton(fr.b($$0x, "recipe"))))
                            ))
-                        .then(er.a("*").executes($$0x -> b((eq)$$0x.getSource(), fd.f($$0x, "targets"), ((eq)$$0x.getSource()).l().aJ().d())))
+                        .then(er.a("*").executes($$0x -> b((eq)$$0x.getSource(), fd.f($$0x, "targets"), ((eq)$$0x.getSource()).l().aK().d())))
                   )
             )
       );
    }
 
-   private static int a(eq $$0, Collection<aql> $$1, Collection<cyi<?>> $$2) throws CommandSyntaxException {
+   private static int a(eq $$0, Collection<aqn> $$1, Collection<cyk<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (aql $$4 : $$1) {
+      for (aqn $$4 : $$1) {
          $$3 += $$4.a($$2);
       }
 
@@ -60,10 +60,10 @@ public class ann {
       }
    }
 
-   private static int b(eq $$0, Collection<aql> $$1, Collection<cyi<?>> $$2) throws CommandSyntaxException {
+   private static int b(eq $$0, Collection<aqn> $$1, Collection<cyk<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (aql $$4 : $$1) {
+      for (aqn $$4 : $$1) {
          $$3 += $$4.b($$2);
       }
 

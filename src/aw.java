@@ -9,10 +9,10 @@ public class aw extends ds<aw.a> {
       return aw.a.a;
    }
 
-   public void a(aql $$0, ceo $$1, ceo $$2, @Nullable brx $$3) {
-      eqo $$4 = bu.b($$0, $$1);
-      eqo $$5 = bu.b($$0, $$2);
-      eqo $$6 = $$3 != null ? bu.b($$0, $$3) : null;
+   public void a(aqn $$0, cer $$1, cer $$2, @Nullable bsa $$3) {
+      equ $$4 = bu.b($$0, $$1);
+      equ $$5 = bu.b($$0, $$2);
+      equ $$6 = $$3 != null ? bu.b($$0, $$3) : null;
       this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
@@ -39,11 +39,11 @@ public class aw extends ds<aw.a> {
          return am.p.a(new aw.a(Optional.empty(), bu.a($$0), bu.a($$1), bu.a($$2)));
       }
 
-      public boolean a(eqo $$0, eqo $$1, @Nullable eqo $$2) {
+      public boolean a(equ $$0, equ $$1, @Nullable equ $$2) {
          return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
       }
 
-      private static boolean a(Optional<bf> $$0, eqo $$1) {
+      private static boolean a(Optional<bf> $$0, equ $$1) {
          return $$0.isEmpty() || $$0.get().a($$1);
       }
 

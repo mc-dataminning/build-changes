@@ -1,33 +1,25 @@
+import javax.annotation.Nullable;
+
 public class cdu {
-   public static boolean a(bta $$0) {
-      return $$0.K() instanceof ccj;
+   @Nullable
+   public static ewf a(btk $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      boolean $$7 = cdx.a($$0, $$1);
+      return cea.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   public static boolean a(bth $$0, int $$1) {
-      return $$0.fX() && $$0.fU().a($$0.dn(), (double)($$0.fV() + (float)$$1) + 1.0);
-   }
-
-   public static boolean a(ja $$0, bth $$1) {
-      return $$0.v() < $$1.dP().I_() || $$0.v() > $$1.dP().am();
-   }
-
-   public static boolean a(boolean $$0, bth $$1, ja $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(cck $$0, ja $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(bth $$0, ja $$1) {
-      return $$0.dP().b_($$1).a(awa.a);
-   }
-
-   public static boolean b(bth $$0, ja $$1) {
-      return $$0.a(eox.b($$0, $$1)) != 0.0F;
-   }
-
-   public static boolean c(bth $$0, ja $$1) {
-      return $$0.dP().a_($$1).e();
+   @Nullable
+   public static ja a(btk $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      ja $$8 = cea.a($$0.dT(), $$1, $$2, $$3, $$4, $$5, $$6);
+      if ($$8 == null) {
+         return null;
+      } else {
+         ja $$9 = cea.a($$0, $$1, $$0.dT(), $$8);
+         if (!cdx.a($$9, $$0) && !cdx.a($$7, $$0, $$9)) {
+            $$9 = cea.a($$9, $$0.dQ().am(), $$1x -> cdx.c($$0, $$1x));
+            return cdx.b($$0, $$9) ? null : $$9;
+         } else {
+            return null;
+         }
+      }
    }
 }

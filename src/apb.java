@@ -1,58 +1,56 @@
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.Locale;
-import java.util.UUID;
 import java.util.function.Function;
 
-public class apb implements aoz {
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.data.entity.invalid"));
-   public static final Function<String, apa.c> a = $$0 -> new apa.c() {
+public class apb implements aoy {
+   static final SuggestionProvider<eq> b = ($$0, $$1) -> ev.a(a($$0).a(), $$1);
+   public static final Function<String, aoz.c> a = $$0 -> new aoz.c() {
          @Override
-         public aoz a(CommandContext<eq> $$0x) throws CommandSyntaxException {
-            return new apb(fd.a($$0, $$0));
+         public aoy a(CommandContext<eq> $$0x) {
+            return new apb(apb.a($$0), fr.c($$0, $$0));
          }
 
          @Override
          public ArgumentBuilder<eq, ?> a(ArgumentBuilder<eq, ?> $$0x, Function<ArgumentBuilder<eq, ?>, ArgumentBuilder<eq, ?>> $$1) {
-            return $$0.then(er.a("entity").then($$1.apply(er.a($$0, fd.a()))));
+            return $$0.then(er.a("storage").then($$1.apply(er.a($$0, fr.a()).suggests(apb.b))));
          }
       };
-   private final bsd c;
+   private final epz c;
+   private final akk d;
 
-   public apb(bsd $$0) {
+   static epz a(CommandContext<eq> $$0) {
+      return ((eq)$$0.getSource()).l().aM();
+   }
+
+   apb(epz $$0, akk $$1) {
       this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(tx $$0) throws CommandSyntaxException {
-      if (this.c instanceof cmh) {
-         throw b.create();
-      } else {
-         UUID $$1 = this.c.cz();
-         this.c.g($$0);
-         this.c.a_($$1);
-      }
+   public void a(tx $$0) {
+      this.c.a(this.d, $$0);
    }
 
    @Override
    public tx a() {
-      return dh.b(this.c);
+      return this.c.a(this.d);
    }
 
    @Override
    public wu b() {
-      return wu.a("commands.data.entity.modified", this.c.O_());
+      return wu.a("commands.data.storage.modified", wu.a(this.d));
    }
 
    @Override
    public wu a(uu $$0) {
-      return wu.a("commands.data.entity.query", this.c.O_(), um.c($$0));
+      return wu.a("commands.data.storage.query", wu.a(this.d), um.c($$0));
    }
 
    @Override
    public wu a(fi.g $$0, double $$1, int $$2) {
-      return wu.a("commands.data.entity.get", $$0.a(), this.c.O_(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+      return wu.a("commands.data.storage.get", $$0.a(), wu.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

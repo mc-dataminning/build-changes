@@ -1,102 +1,31 @@
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
-public class fzg {
-   final int a;
-   private final List<fzg.a> b = new ArrayList<>();
+public interface fzg {
+   Codec<fzg> a = azc.a(fzg.a::values).dispatch(fzg::a, fzg.a::a);
 
-   public fzg(int $$0) {
-      this.a = $$0;
-   }
+   fzg.a a();
 
-   public void a(fyy $$0, IntCollection $$1, fzg.b $$2) {
-      IntSortedSet $$3 = new IntRBTreeSet($$1);
+   public static enum a implements azc {
+      a("player", () -> fzh.a.b),
+      b("system", () -> fzh.b.b);
 
-      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
-         fza $$6 = $$0.b($$4);
-         if ($$6 instanceof fzb.a) {
-            fzb.a $$5 = (fzb.a)$$6;
-            boolean $$6x = this.b($$5.g());
-            if ($$3.remove($$4)) {
-               this.a($$5.g());
-               $$2.accept($$4, $$5);
-            } else if ($$6x) {
-               $$2.accept($$4, $$5);
-            }
-         }
-      }
-   }
+      private final String c;
+      private final Supplier<MapCodec<? extends fzg>> d;
 
-   public void a(xk $$0) {
-      this.b.add(new fzg.a($$0));
-   }
-
-   public boolean b(xk $$0) {
-      boolean $$1 = false;
-      Iterator<fzg.a> $$2 = this.b.iterator();
-
-      while ($$2.hasNext()) {
-         fzg.a $$3 = $$2.next();
-         if ($$3.a($$0)) {
-            $$1 = true;
-            if ($$3.a()) {
-               $$2.remove();
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   public boolean a() {
-      return !this.b.isEmpty();
-   }
-
-   class a {
-      private final Set<xg> b;
-      private xk c;
-      private boolean d = true;
-      private int e;
-
-      a(final xk $$0) {
-         this.b = new ObjectOpenHashSet($$0.m().d().a());
+      private a(final String $$0, final Supplier<MapCodec<? extends fzg>> $$1) {
          this.c = $$0;
+         this.d = $$1;
       }
 
-      boolean a(xk $$0) {
-         if ($$0.equals(this.c)) {
-            return false;
-         } else {
-            boolean $$1 = this.b.remove($$0.l());
-            if (this.d && this.c.g().equals($$0.g())) {
-               if (this.c.k().a($$0.k())) {
-                  $$1 = true;
-                  this.c = $$0;
-               } else {
-                  this.d = false;
-               }
-            }
-
-            if ($$1) {
-               this.e++;
-            }
-
-            return $$1;
-         }
+      private MapCodec<? extends fzg> a() {
+         return this.d.get();
       }
 
-      boolean a() {
-         return this.e >= fzg.this.a || !this.d && this.b.isEmpty();
+      @Override
+      public String c() {
+         return this.c;
       }
-   }
-
-   public interface b {
-      void accept(int var1, fzb.a var2);
    }
 }

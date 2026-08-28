@@ -22,19 +22,19 @@ public class nz {
       this.b = ImmutableSet.copyOf($$2);
    }
 
-   public akk a(dff $$0) {
+   public akk a(dfh $$0) {
       return ny.a($$0, this.c.orElse(""));
    }
 
-   public akk a(dff $$0, ob $$1, BiConsumer<akk, Supplier<JsonElement>> $$2) {
+   public akk a(dfh $$0, ob $$1, BiConsumer<akk, Supplier<JsonElement>> $$2) {
       return this.a(ny.a($$0, this.c.orElse("")), $$1, $$2);
    }
 
-   public akk a(dff $$0, String $$1, ob $$2, BiConsumer<akk, Supplier<JsonElement>> $$3) {
+   public akk a(dfh $$0, String $$1, ob $$2, BiConsumer<akk, Supplier<JsonElement>> $$3) {
       return this.a(ny.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
    }
 
-   public akk b(dff $$0, String $$1, ob $$2, BiConsumer<akk, Supplier<JsonElement>> $$3) {
+   public akk b(dfh $$0, String $$1, ob $$2, BiConsumer<akk, Supplier<JsonElement>> $$3) {
       return this.a(ny.a($$0, $$1), $$2, $$3);
    }
 

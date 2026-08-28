@@ -6,7 +6,7 @@ public class lc implements lh {
    private final int b;
 
    public static MapCodec<lc> a(li<lc> $$0) {
-      return axm.i.xmap($$1 -> new lc($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
+      return axo.i.xmap($$1 -> new lc($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
    }
 
    public static ys<? super ByteBuf, lc> b(li<lc> $$0) {
@@ -24,19 +24,19 @@ public class lc implements lh {
    }
 
    public float b() {
-      return (float)axo.b.b(this.b) / 255.0F;
+      return (float)axq.b.b(this.b) / 255.0F;
    }
 
    public float c() {
-      return (float)axo.b.c(this.b) / 255.0F;
+      return (float)axq.b.c(this.b) / 255.0F;
    }
 
    public float d() {
-      return (float)axo.b.d(this.b) / 255.0F;
+      return (float)axq.b.d(this.b) / 255.0F;
    }
 
    public float e() {
-      return (float)axo.b.a(this.b) / 255.0F;
+      return (float)axq.b.a(this.b) / 255.0F;
    }
 
    public static lc a(li<lc> $$0, int $$1) {
@@ -44,6 +44,6 @@ public class lc implements lh {
    }
 
    public static lc a(li<lc> $$0, float $$1, float $$2, float $$3) {
-      return a($$0, axo.b.a(1.0F, $$1, $$2, $$3));
+      return a($$0, axq.b.a(1.0F, $$1, $$2, $$3));
    }
 }

@@ -3,9 +3,9 @@ public class abv implements zb<abn> {
    private final ja b;
    private final int c;
    private final int d;
-   private final dff e;
+   private final dfh e;
 
-   public abv(ja $$0, dff $$1, int $$2, int $$3) {
+   public abv(ja $$0, dfh $$1, int $$2, int $$3) {
       this.b = $$0;
       this.e = $$1;
       this.c = $$2;
@@ -47,7 +47,7 @@ public class abv implements zb<abn> {
       return this.d;
    }
 
-   public dff g() {
+   public dfh g() {
       return this.e;
    }
 }

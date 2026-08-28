@@ -1,103 +1,56 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
+public class cwe {
+   public static final jj<cwb> a = a("water", new cwb());
+   public static final jj<cwb> b = a("mundane", new cwb());
+   public static final jj<cwb> c = a("thick", new cwb());
+   public static final jj<cwb> d = a("awkward", new cwb());
+   public static final jj<cwb> e = a("night_vision", new cwb(new bro(brq.p, 3600)));
+   public static final jj<cwb> f = a("long_night_vision", new cwb("night_vision", new bro(brq.p, 9600)));
+   public static final jj<cwb> g = a("invisibility", new cwb(new bro(brq.n, 3600)));
+   public static final jj<cwb> h = a("long_invisibility", new cwb("invisibility", new bro(brq.n, 9600)));
+   public static final jj<cwb> i = a("leaping", new cwb(new bro(brq.h, 3600)));
+   public static final jj<cwb> j = a("long_leaping", new cwb("leaping", new bro(brq.h, 9600)));
+   public static final jj<cwb> k = a("strong_leaping", new cwb("leaping", new bro(brq.h, 1800, 1)));
+   public static final jj<cwb> l = a("fire_resistance", new cwb(new bro(brq.l, 3600)));
+   public static final jj<cwb> m = a("long_fire_resistance", new cwb("fire_resistance", new bro(brq.l, 9600)));
+   public static final jj<cwb> n = a("swiftness", new cwb(new bro(brq.a, 3600)));
+   public static final jj<cwb> o = a("long_swiftness", new cwb("swiftness", new bro(brq.a, 9600)));
+   public static final jj<cwb> p = a("strong_swiftness", new cwb("swiftness", new bro(brq.a, 1800, 1)));
+   public static final jj<cwb> q = a("slowness", new cwb(new bro(brq.b, 1800)));
+   public static final jj<cwb> r = a("long_slowness", new cwb("slowness", new bro(brq.b, 4800)));
+   public static final jj<cwb> s = a("strong_slowness", new cwb("slowness", new bro(brq.b, 400, 3)));
+   public static final jj<cwb> t = a("turtle_master", new cwb("turtle_master", new bro(brq.b, 400, 3), new bro(brq.k, 400, 2)));
+   public static final jj<cwb> u = a("long_turtle_master", new cwb("turtle_master", new bro(brq.b, 800, 3), new bro(brq.k, 800, 2)));
+   public static final jj<cwb> v = a("strong_turtle_master", new cwb("turtle_master", new bro(brq.b, 400, 5), new bro(brq.k, 400, 3)));
+   public static final jj<cwb> w = a("water_breathing", new cwb(new bro(brq.m, 3600)));
+   public static final jj<cwb> x = a("long_water_breathing", new cwb("water_breathing", new bro(brq.m, 9600)));
+   public static final jj<cwb> y = a("healing", new cwb(new bro(brq.f, 1)));
+   public static final jj<cwb> z = a("strong_healing", new cwb("healing", new bro(brq.f, 1, 1)));
+   public static final jj<cwb> A = a("harming", new cwb(new bro(brq.g, 1)));
+   public static final jj<cwb> B = a("strong_harming", new cwb("harming", new bro(brq.g, 1, 1)));
+   public static final jj<cwb> C = a("poison", new cwb(new bro(brq.s, 900)));
+   public static final jj<cwb> D = a("long_poison", new cwb("poison", new bro(brq.s, 1800)));
+   public static final jj<cwb> E = a("strong_poison", new cwb("poison", new bro(brq.s, 432, 1)));
+   public static final jj<cwb> F = a("regeneration", new cwb(new bro(brq.j, 900)));
+   public static final jj<cwb> G = a("long_regeneration", new cwb("regeneration", new bro(brq.j, 1800)));
+   public static final jj<cwb> H = a("strong_regeneration", new cwb("regeneration", new bro(brq.j, 450, 1)));
+   public static final jj<cwb> I = a("strength", new cwb(new bro(brq.e, 3600)));
+   public static final jj<cwb> J = a("long_strength", new cwb("strength", new bro(brq.e, 9600)));
+   public static final jj<cwb> K = a("strong_strength", new cwb("strength", new bro(brq.e, 1800, 1)));
+   public static final jj<cwb> L = a("weakness", new cwb(new bro(brq.r, 1800)));
+   public static final jj<cwb> M = a("long_weakness", new cwb("weakness", new bro(brq.r, 4800)));
+   public static final jj<cwb> N = a("luck", new cwb("luck", new bro(brq.z, 6000)));
+   public static final jj<cwb> O = a("slow_falling", new cwb(new bro(brq.B, 1800)));
+   public static final jj<cwb> P = a("long_slow_falling", new cwb("slow_falling", new bro(brq.B, 4800)));
+   public static final jj<cwb> Q = a("wind_charged", new cwb("wind_charged", new bro(brq.J, 3600)));
+   public static final jj<cwb> R = a("weaving", new cwb("weaving", new bro(brq.K, 3600)));
+   public static final jj<cwb> S = a("oozing", new cwb("oozing", new bro(brq.L, 3600)));
+   public static final jj<cwb> T = a("infested", new cwb("infested", new bro(brq.M, 3600)));
 
-public class cwe implements cxf {
-   public static final Codec<cwe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cwf.c.fieldOf("material").forGetter(cwe::b),
-               cwh.c.fieldOf("pattern").forGetter(cwe::a),
-               Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, cwe::new)
-   );
-   public static final ys<wf, cwe> b = ys.a(cwf.d, cwe::b, cwh.d, cwe::a, yq.b, $$0 -> $$0.f, cwe::new);
-   private static final wu c = wu.c(ac.a("item", new akk("smithing_template.upgrade"))).a(n.h);
-   private final jj<cwf> d;
-   private final jj<cwh> e;
-   private final boolean f;
-   private final Function<jj<crq>, akk> g;
-   private final Function<jj<crq>, akk> h;
-
-   private cwe(jj<cwf> $$0, jj<cwh> $$1, boolean $$2, Function<jj<crq>, akk> $$3, Function<jj<crq>, akk> $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
+   private static jj<cwb> a(String $$0, cwb $$1) {
+      return jw.b(lq.h, new akk($$0), $$1);
    }
 
-   public cwe(jj<cwf> $$0, jj<cwh> $$1, boolean $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.g = ac.b($$2x -> {
-         akk $$3 = $$1.a().a();
-         String $$4 = b($$0, $$2x);
-         return $$3.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$4));
-      });
-      this.h = ac.b($$2x -> {
-         akk $$3 = $$1.a().a();
-         String $$4 = b($$0, $$2x);
-         return $$3.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$4));
-      });
-      this.f = $$2;
-   }
-
-   public cwe(jj<cwf> $$0, jj<cwh> $$1) {
-      this($$0, $$1, true);
-   }
-
-   private static String b(jj<cwf> $$0, jj<crq> $$1) {
-      Map<jj<crq>, String> $$2 = $$0.a().d();
-      String $$3 = $$2.get($$1);
-      return $$3 != null ? $$3 : $$0.a().a();
-   }
-
-   public boolean a(jj<cwh> $$0, jj<cwf> $$1) {
-      return $$0.equals(this.e) && $$1.equals(this.d);
-   }
-
-   public jj<cwh> a() {
-      return this.e;
-   }
-
-   public jj<cwf> b() {
-      return this.d;
-   }
-
-   public akk a(jj<crq> $$0) {
-      return this.g.apply($$0);
-   }
-
-   public akk b(jj<crq> $$0) {
-      return this.h.apply($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof cwe $$1) ? false : this.f == $$1.f && this.e.equals($$1.e) && this.d.equals($$1.d);
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.d.hashCode();
-      $$0 = 31 * $$0 + this.e.hashCode();
-      return 31 * $$0 + (this.f ? 1 : 0);
-   }
-
-   @Override
-   public void a(ctv.b $$0, Consumer<wu> $$1, cvt $$2) {
-      if (this.f) {
-         $$1.accept(c);
-         $$1.accept(wt.a().b(this.e.a().a(this.d)));
-         $$1.accept(wt.a().b(this.d.a().e()));
-      }
-   }
-
-   public cwe a(boolean $$0) {
-      return new cwe(this.d, this.e, $$0, this.g, this.h);
+   public static jj<cwb> a(jw<cwb> $$0) {
+      return a;
    }
 }

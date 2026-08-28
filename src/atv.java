@@ -1,17 +1,23 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface atv extends ato {
-   @Override
-   default CompletableFuture<Void> a(ato.a $$0, atu $$1, bmr $$2, bmr $$3, Executor $$4, Executor $$5) {
-      return $$0.a(azh.a).thenRunAsync(() -> {
-         $$3.a();
-         $$3.a("listener");
-         this.a($$1);
-         $$3.c();
-         $$3.b();
-      }, $$5);
+public class atv {
+   private static final Codec<atv> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(ayp.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, atv::new)
+   );
+   public static final asw<atv> a = asw.a("filter", b);
+   private final List<ayp> c;
+
+   public atv(List<ayp> $$0) {
+      this.c = List.copyOf($$0);
    }
 
-   void a(atu var1);
+   public boolean a(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
+   }
+
+   public boolean b(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
+   }
 }

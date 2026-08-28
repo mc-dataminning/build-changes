@@ -1,5 +1,5 @@
-public record aaf(dxe c, int d) implements aac {
-   public static final ys<wf, aaf> a = ys.a(dxe.d, aaf::b, yq.g, aaf::c, aaf::new);
+public record aaf(dxk c, int d) implements aac {
+   public static final ys<wf, aaf> a = ys.a(dxk.d, aaf::b, yq.g, aaf::c, aaf::new);
    public static final aac.b<aaf> b = aac.a("debug/game_event_listeners");
 
    @Override
@@ -7,7 +7,7 @@ public record aaf(dxe c, int d) implements aac {
       return b;
    }
 
-   public dxe b() {
+   public dxk b() {
       return this.c;
    }
 

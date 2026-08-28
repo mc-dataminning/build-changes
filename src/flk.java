@@ -1,46 +1,61 @@
-import java.util.List;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class flk<T> {
-   private final T b;
-   private final BiConsumer<Consumer<String>, T> c;
-   public static final flk<?> a = new flk<>(azh.a, ($$0, $$1) -> {
-   });
+public class flk implements flh {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
 
-   private flk(T $$0, BiConsumer<Consumer<String>, T> $$1) {
+   public flk(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
+   }
+
+   public flk(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public static flk a(int $$0) {
+      return new flk($$0, 0);
+   }
+
+   public static flk b(int $$0) {
+      return new flk(0, $$0);
+   }
+
+   @Override
+   public void m(int $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void n(int $$0) {
       this.b = $$0;
-      this.c = $$1;
-   }
-
-   public static flk<?> a(String $$0) {
-      return new flk<>($$0, Consumer::accept);
-   }
-
-   public static flk<?> a(wu $$0) {
-      return new flk<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
-   }
-
-   public static flk<?> a(List<wu> $$0) {
-      return new flk<>($$0, ($$1, $$2) -> $$0.stream().map(wu::getString).forEach($$1));
-   }
-
-   public void a(Consumer<String> $$0) {
-      this.c.accept($$0, this.b);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof flk<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
-      }
+   public int D() {
+      return this.a;
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public int E() {
+      return this.b;
+   }
+
+   @Override
+   public int y() {
+      return this.c;
+   }
+
+   @Override
+   public int w() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<fhq> $$0) {
    }
 }

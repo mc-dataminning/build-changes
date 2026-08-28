@@ -33,10 +33,10 @@ public class anl {
    }
 
    private static int a(eq $$0) throws CommandSyntaxException {
-      cns $$1 = a($$0.h());
+      cnv $$1 = a($$0.h());
       if ($$1 != null) {
-         for (cnt $$3 : $$1.h()) {
-            $$3.b(new brl(brn.x, 1000, 1));
+         for (cnw $$3 : $$1.h()) {
+            $$3.b(new bro(brq.x, 1000, 1));
          }
       }
 
@@ -44,7 +44,7 @@ public class anl {
    }
 
    private static int a(eq $$0, int $$1) throws CommandSyntaxException {
-      cns $$2 = a($$0.h());
+      cnv $$2 = a($$0.h());
       if ($$2 != null) {
          int $$3 = $$2.l();
          if ($$1 > $$3) {
@@ -63,15 +63,15 @@ public class anl {
 
    private static int b(eq $$0) {
       $$0.a(() -> wu.b("Spawned a raid captain"), false);
-      cnt $$1 = bsj.aC.a((dcd)$$0.e());
+      cnw $$1 = bsm.aC.a((dcf)$$0.e());
       if ($$1 == null) {
          $$0.b(wu.b("Pillager failed to spawn"));
          return 0;
       } else {
          $$1.w(true);
-         $$1.a(bsk.f, cns.a($$0.v().b(lr.d)));
+         $$1.a(bsn.f, cnv.a($$0.v().b(lr.d)));
          $$1.a_($$0.d().c, $$0.d().d, $$0.d().e);
-         $$1.a($$0.e(), $$0.e().d_(ja.a($$0.d())), btc.n, null);
+         $$1.a($$0.e(), $$0.e().d_(ja.a($$0.d())), btf.n, null);
          $$0.e().a_($$1);
          return 1;
       }
@@ -79,23 +79,23 @@ public class anl {
 
    private static int a(eq $$0, @Nullable wu $$1) {
       if ($$1 != null && $$1.getString().equals("local")) {
-         aqk $$2 = $$0.e();
-         evz $$3 = $$0.d().b(5.0, 0.0, 0.0);
-         $$2.a(null, $$3.c, $$3.d, $$3.e, avf.vc, avg.g, 2.0F, 1.0F, $$2.z.g());
+         aqm $$2 = $$0.e();
+         ewf $$3 = $$0.d().b(5.0, 0.0, 0.0);
+         $$2.a(null, $$3.c, $$3.d, $$3.e, avh.vc, avi.g, 2.0F, 1.0F, $$2.z.g());
       }
 
       return 1;
    }
 
    private static int b(eq $$0, int $$1) throws CommandSyntaxException {
-      aql $$2 = $$0.h();
-      ja $$3 = $$2.dp();
+      aqn $$2 = $$0.h();
+      ja $$3 = $$2.dq();
       if ($$2.z().e($$3)) {
          $$0.b(wu.b("Raid already started close by"));
          return -1;
       } else {
-         cnu $$4 = $$2.z().z();
-         cns $$5 = $$4.a($$2, $$2.dp());
+         cnx $$4 = $$2.z().z();
+         cnv $$5 = $$4.a($$2, $$2.dq());
          if ($$5 != null) {
             $$5.a($$1);
             $$4.c();
@@ -109,9 +109,9 @@ public class anl {
    }
 
    private static int c(eq $$0) throws CommandSyntaxException {
-      aql $$1 = $$0.h();
-      ja $$2 = $$1.dp();
-      cns $$3 = $$1.z().d($$2);
+      aqn $$1 = $$0.h();
+      ja $$2 = $$1.dq();
+      cnv $$3 = $$1.z().d($$2);
       if ($$3 != null) {
          $$3.n();
          $$0.a(() -> wu.b("Stopped raid"), false);
@@ -123,7 +123,7 @@ public class anl {
    }
 
    private static int d(eq $$0) throws CommandSyntaxException {
-      cns $$1 = a($$0.h());
+      cnv $$1 = a($$0.h());
       if ($$1 != null) {
          StringBuilder $$2 = new StringBuilder();
          $$2.append("Found a started raid! ");
@@ -148,7 +148,7 @@ public class anl {
    }
 
    @Nullable
-   private static cns a(aql $$0) {
-      return $$0.z().d($$0.dp());
+   private static cnv a(aqn $$0) {
+      return $$0.z().d($$0.dq());
    }
 }

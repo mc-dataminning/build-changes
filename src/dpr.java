@@ -1,229 +1,219 @@
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.types.Type;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Objects;
+import java.util.Set;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dpr extends dpn {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "LootTable";
-   private static final String c = "LootTableSeed";
-   private static final String d = "hit_direction";
-   private static final String e = "item";
-   private static final int f = 10;
-   private static final int g = 40;
-   private static final int h = 10;
-   private int i;
-   private long j;
-   private long k;
-   private cua l;
+public class dpr<T extends dpp> {
+   private static final Logger S = LogUtils.getLogger();
+   public static final dpr<dqm> a = a("furnace", dpr.b.a(dqm::new, dfj.cD));
+   public static final dpr<dpw> b = a("chest", dpr.b.a(dpw::new, dfj.cv));
+   public static final dpr<drj> c = a("trapped_chest", dpr.b.a(drj::new, dfj.gV));
+   public static final dpr<dql> d = a("ender_chest", dpr.b.a(dql::new, dfj.fG));
+   public static final dpr<dqr> e = a("jukebox", dpr.b.a(dqr::new, dfj.dT));
+   public static final dpr<dqi> f = a("dispenser", dpr.b.a(dqi::new, dfj.aU));
+   public static final dpr<dqj> g = a("dropper", dpr.b.a(dqj::new, dfj.hi));
+   public static final dpr<dra> h = a(
+      "sign",
+      dpr.b.a(
+         dra::new,
+         dfj.cE,
+         dfj.cF,
+         dfj.cG,
+         dfj.cH,
+         dfj.cI,
+         dfj.cJ,
+         dfj.cK,
+         dfj.cR,
+         dfj.cS,
+         dfj.cT,
+         dfj.cU,
+         dfj.cV,
+         dfj.cW,
+         dfj.cX,
+         dfj.oW,
+         dfj.oY,
+         dfj.oX,
+         dfj.oZ,
+         dfj.cL,
+         dfj.cY,
+         dfj.cM,
+         dfj.cZ
+      )
+   );
+   public static final dpr<dqn> i = a(
+      "hanging_sign",
+      dpr.b.a(
+         dqn::new,
+         dfj.da,
+         dfj.db,
+         dfj.dc,
+         dfj.dd,
+         dfj.de,
+         dfj.df,
+         dfj.dg,
+         dfj.dh,
+         dfj.di,
+         dfj.dj,
+         dfj.dk,
+         dfj.dl,
+         dfj.dm,
+         dfj.dn,
+         dfj.do,
+         dfj.dp,
+         dfj.dq,
+         dfj.dr,
+         dfj.dt,
+         dfj.du,
+         dfj.ds,
+         dfj.dv
+      )
+   );
+   public static final dpr<dre> j = a("mob_spawner", dpr.b.a(dre::new, dfj.ct));
+   public static final dpr<dsg> k = a("piston", dpr.b.a(dsg::new, dfj.bQ));
+   public static final dpr<dps> l = a("brewing_stand", dpr.b.a(dps::new, dfj.fs));
+   public static final dpr<dqk> m = a("enchanting_table", dpr.b.a(dqk::new, dfj.fr));
+   public static final dpr<drh> n = a("end_portal", dpr.b.a(drh::new, dfj.fx));
+   public static final dpr<dpk> o = a("beacon", dpr.b.a(dpk::new, dfj.fO));
+   public static final dpr<drc> p = a(
+      "skull", dpr.b.a(drc::new, dfj.gE, dfj.gF, dfj.gM, dfj.gN, dfj.gO, dfj.gP, dfj.gI, dfj.gJ, dfj.gG, dfj.gH, dfj.gK, dfj.gL, dfj.gQ, dfj.gR)
+   );
+   public static final dpr<dqe> q = a("daylight_detector", dpr.b.a(dqe::new, dfj.gZ));
+   public static final dpr<dqp> r = a("hopper", dpr.b.a(dqp::new, dfj.hc));
+   public static final dpr<dqa> s = a("comparator", dpr.b.a(dqa::new, dfj.gY));
+   public static final dpr<dpe> t = a(
+      "banner",
+      dpr.b.a(
+         dpe::new,
+         dfj.iJ,
+         dfj.iK,
+         dfj.iL,
+         dfj.iM,
+         dfj.iN,
+         dfj.iO,
+         dfj.iP,
+         dfj.iQ,
+         dfj.iR,
+         dfj.iS,
+         dfj.iT,
+         dfj.iU,
+         dfj.iV,
+         dfj.iW,
+         dfj.iX,
+         dfj.iY,
+         dfj.iZ,
+         dfj.ja,
+         dfj.jb,
+         dfj.jc,
+         dfj.jd,
+         dfj.je,
+         dfj.jf,
+         dfj.jg,
+         dfj.jh,
+         dfj.ji,
+         dfj.jj,
+         dfj.jk,
+         dfj.jl,
+         dfj.jm,
+         dfj.jn,
+         dfj.jo
+      )
+   );
+   public static final dpr<drf> u = a("structure_block", dpr.b.a(drf::new, dfj.pa));
+   public static final dpr<drg> v = a("end_gateway", dpr.b.a(drg::new, dfj.kF));
+   public static final dpr<dpz> w = a("command_block", dpr.b.a(dpz::new, dfj.fN, dfj.kH, dfj.kG));
+   public static final dpr<dqz> x = a(
+      "shulker_box",
+      dpr.b.a(dqz::new, dfj.kP, dfj.lf, dfj.lb, dfj.lc, dfj.kZ, dfj.kX, dfj.ld, dfj.kT, dfj.kY, dfj.kV, dfj.kS, dfj.kR, dfj.kW, dfj.la, dfj.le, dfj.kQ, dfj.kU)
+   );
+   public static final dpr<dpl> y = a(
+      "bed", dpr.b.a(dpl::new, dfj.bn, dfj.bo, dfj.bk, dfj.bl, dfj.bi, dfj.bg, dfj.bm, dfj.bc, dfj.bh, dfj.be, dfj.bb, dfj.ba, dfj.bf, dfj.bj, dfj.aZ, dfj.bd)
+   );
+   public static final dpr<dqb> z = a("conduit", dpr.b.a(dqb::new, dfj.mX));
+   public static final dpr<dpi> A = a("barrel", dpr.b.a(dpi::new, dfj.nU));
+   public static final dpr<drd> B = a("smoker", dpr.b.a(drd::new, dfj.nV));
+   public static final dpr<dpo> C = a("blast_furnace", dpr.b.a(dpo::new, dfj.nW));
+   public static final dpr<dqs> D = a("lectern", dpr.b.a(dqs::new, dfj.oa));
+   public static final dpr<dpn> E = a("bell", dpr.b.a(dpn::new, dfj.od));
+   public static final dpr<dqq> F = a("jigsaw", dpr.b.a(dqq::new, dfj.pb));
+   public static final dpr<dpv> G = a("campfire", dpr.b.a(dpv::new, dfj.og, dfj.oh));
+   public static final dpr<dpm> H = a("beehive", dpr.b.a(dpm::new, dfj.pe, dfj.pf));
+   public static final dpr<dqx> I = a("sculk_sensor", dpr.b.a(dqx::new, dfj.qQ));
+   public static final dpr<dpu> J = a("calibrated_sculk_sensor", dpr.b.a(dpu::new, dfj.qR));
+   public static final dpr<dqw> K = a("sculk_catalyst", dpr.b.a(dqw::new, dfj.qU));
+   public static final dpr<dqy> L = a("sculk_shrieker", dpr.b.a(dqy::new, dfj.qV));
+   public static final dpr<dpy> M = a("chiseled_bookshelf", dpr.b.a(dpy::new, dfj.cm));
+   public static final dpr<dpt> N = a("brushable_block", dpr.b.a(dpt::new, dfj.J, dfj.M));
+   public static final dpr<dqf> O = a("decorated_pot", dpr.b.a(dqf::new, dfj.tp));
+   public static final dpr<dqd> P = a("crafter", dpr.b.a(dqd::new, dfj.tq));
+   public static final dpr<drk> Q = a("trial_spawner", dpr.b.a(drk::new, dfj.tr));
+   public static final dpr<drs> R = a("vault", dpr.b.a(drs::new, dfj.ts));
+   private final dpr.a<? extends T> T;
+   private final Set<dfh> U;
+   private final Type<?> V;
+   private final jj.c<dpr<?>> W = lq.j.f(this);
+
    @Nullable
-   private jf m;
-   @Nullable
-   private akj<eqt> q;
-   private long r;
-
-   public dpr(ja $$0, dsh $$1) {
-      super(dpp.N, $$0, $$1);
-      this.l = cua.l;
+   public static akk a(dpr<?> $$0) {
+      return lq.j.b($$0);
    }
 
-   public boolean a(long $$0, cmh $$1, jf $$2) {
-      if (this.m == null) {
-         this.m = $$2;
+   private static <T extends dpp> dpr<T> a(String $$0, dpr.b<T> $$1) {
+      if ($$1.b.isEmpty()) {
+         S.warn("Block entity type {} requires at least one valid block to be defined!", $$0);
       }
 
-      this.j = $$0 + 40L;
-      if ($$0 >= this.k && this.n instanceof aqk) {
-         this.k = $$0 + 10L;
-         this.a($$1);
-         int $$3 = this.j();
-         if (++this.i >= 10) {
-            this.b($$1);
-            return true;
-         } else {
-            this.n.a(this.az_(), this.n().b(), 2);
-            int $$4 = this.j();
-            if ($$3 != $$4) {
-               dsh $$5 = this.n();
-               dsh $$6 = $$5.a(dsx.bv, Integer.valueOf($$4));
-               this.n.a(this.az_(), $$6, 3);
-            }
-
-            return false;
-         }
-      } else {
-         return false;
-      }
+      Type<?> $$2 = ac.a(bgg.s, $$0);
+      return jw.a(lq.j, $$0, $$1.a($$2));
    }
 
-   public void a(cmh $$0) {
-      if (this.q != null && this.n != null && !this.n.x_() && this.n.o() != null) {
-         eqt $$1 = this.n.o().be().b(this.q);
-         if ($$0 instanceof aql $$2) {
-            am.Q.a($$2, this.q);
-         }
-
-         eqr $$3 = new eqr.a((aqk)this.n).a(etk.f, evz.b(this.o)).a($$0.gu()).a(etk.a, $$0).a(etj.c);
-         ObjectArrayList<cua> $$4 = $$1.a($$3, this.r);
-
-         this.l = switch ($$4.size()) {
-            case 0 -> cua.l;
-            case 1 -> (cua)$$4.get(0);
-            default -> {
-               a.warn("Expected max 1 loot from loot table {}, but got {}", this.q.a(), $$4.size());
-               yield (cua)$$4.get(0);
-            }
-         };
-         this.q = null;
-         this.e();
-      }
-   }
-
-   private void b(cmh $$0) {
-      if (this.n != null && this.n.o() != null) {
-         this.c($$0);
-         dsh $$1 = this.n();
-         this.n.c(3008, this.az_(), dff.i($$1));
-         dff $$4;
-         if (this.n().b() instanceof dfk $$3) {
-            $$4 = $$3.b();
-         } else {
-            $$4 = dfh.a;
-         }
-
-         this.n.a(this.o, $$4.o(), 3);
-      }
-   }
-
-   private void c(cmh $$0) {
-      if (this.n != null && this.n.o() != null) {
-         this.a($$0);
-         if (!this.l.e()) {
-            double $$1 = (double)bsj.ag.l();
-            double $$2 = 1.0 - $$1;
-            double $$3 = $$1 / 2.0;
-            jf $$4 = Objects.requireNonNullElse(this.m, jf.b);
-            ja $$5 = this.o.a($$4, 1);
-            double $$6 = (double)$$5.u() + 0.5 * $$2 + $$3;
-            double $$7 = (double)$$5.v() + 0.5 + (double)(bsj.ag.m() / 2.0F);
-            double $$8 = (double)$$5.w() + 0.5 * $$2 + $$3;
-            cir $$9 = new cir(this.n, $$6, $$7, $$8, this.l.a(this.n.z.a(21) + 10));
-            $$9.h(evz.b);
-            this.n.b($$9);
-            this.l = cua.l;
-         }
-      }
-   }
-
-   public void b() {
-      if (this.n != null) {
-         if (this.i != 0 && this.n.Z() >= this.j) {
-            int $$0 = this.j();
-            this.i = Math.max(0, this.i - 2);
-            int $$1 = this.j();
-            if ($$0 != $$1) {
-               this.n.a(this.az_(), this.n().a(dsx.bv, Integer.valueOf($$1)), 3);
-            }
-
-            int $$2 = 4;
-            this.j = this.n.Z() + 4L;
-         }
-
-         if (this.i == 0) {
-            this.m = null;
-            this.j = 0L;
-            this.k = 0L;
-         } else {
-            this.n.a(this.az_(), this.n().b(), 2);
-         }
-      }
-   }
-
-   private boolean c(tx $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.q = akj.a(lr.bb, new akk($$0.l("LootTable")));
-         this.r = $$0.i("LootTableSeed");
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean d(tx $$0) {
-      if (this.q == null) {
-         return false;
-      } else {
-         $$0.a("LootTable", this.q.a().toString());
-         if (this.r != 0L) {
-            $$0.a("LootTableSeed", this.r);
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   public tx a(jl.a $$0) {
-      tx $$1 = super.a($$0);
-      if (this.m != null) {
-         $$1.a("hit_direction", this.m.ordinal());
-      }
-
-      if (!this.l.e()) {
-         $$1.a("item", this.l.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public abu c() {
-      return abu.a(this);
-   }
-
-   @Override
-   protected void a(tx $$0, jl.a $$1) {
-      super.a($$0, $$1);
-      if (!this.c($$0) && $$0.e("item")) {
-         this.l = cua.a($$1, (uu)$$0.p("item")).orElse(cua.l);
-      } else {
-         this.l = cua.l;
-      }
-
-      if ($$0.e("hit_direction")) {
-         this.m = jf.values()[$$0.h("hit_direction")];
-      }
-   }
-
-   @Override
-   protected void b(tx $$0, jl.a $$1) {
-      super.b($$0, $$1);
-      if (!this.d($$0) && !this.l.e()) {
-         $$0.a("item", this.l.a($$1));
-      }
-   }
-
-   public void a(akj<eqt> $$0, long $$1) {
-      this.q = $$0;
-      this.r = $$1;
-   }
-
-   private int j() {
-      if (this.i == 0) {
-         return 0;
-      } else if (this.i < 3) {
-         return 1;
-      } else {
-         return this.i < 6 ? 2 : 3;
-      }
+   public dpr(dpr.a<? extends T> $$0, Set<dfh> $$1, Type<?> $$2) {
+      this.T = $$0;
+      this.U = $$1;
+      this.V = $$2;
    }
 
    @Nullable
-   public jf d() {
-      return this.m;
+   public T a(ja $$0, dsk $$1) {
+      return (T)this.T.create($$0, $$1);
    }
 
-   public cua f() {
-      return this.l;
+   public boolean a(dsk $$0) {
+      return this.U.contains($$0.b());
+   }
+
+   @Nullable
+   public jj.c<dpr<?>> a() {
+      return this.W;
+   }
+
+   @Nullable
+   public T a(dbl $$0, ja $$1) {
+      dpp $$2 = $$0.c_($$1);
+      return (T)($$2 != null && $$2.r() == this ? $$2 : null);
+   }
+
+   @FunctionalInterface
+   interface a<T extends dpp> {
+      T create(ja var1, dsk var2);
+   }
+
+   public static final class b<T extends dpp> {
+      private final dpr.a<? extends T> a;
+      final Set<dfh> b;
+
+      private b(dpr.a<? extends T> $$0, Set<dfh> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public static <T extends dpp> dpr.b<T> a(dpr.a<? extends T> $$0, dfh... $$1) {
+         return new dpr.b<>($$0, ImmutableSet.copyOf($$1));
+      }
+
+      public dpr<T> a(Type<?> $$0) {
+         return new dpr<>(this.a, this.b, $$0);
+      }
    }
 }

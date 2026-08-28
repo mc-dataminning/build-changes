@@ -1,86 +1,255 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import java.util.Collections;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class fqw {
-   @Nullable
-   private cyi<?> a;
-   private final List<fqw.a> b = Lists.newArrayList();
-   float c;
+   private final ath a;
+   final List<ate> b;
+   final List<ate> c;
+   final Function<ate, akk> d;
+   final Runnable e;
+   private final Consumer<ath> f;
 
-   public void a() {
-      this.a = null;
-      this.b.clear();
-      this.c = 0.0F;
+   public fqw(Runnable $$0, Function<ate, akk> $$1, ath $$2, Consumer<ath> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.f());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.c());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   public void a(cyd $$0, int $$1, int $$2) {
-      this.b.add(new fqw.a($$0, $$1, $$2));
+   public Stream<fqw.a> a() {
+      return this.c.stream().map($$0 -> new fqw.d($$0));
    }
 
-   public fqw.a a(int $$0) {
-      return this.b.get($$0);
+   public Stream<fqw.a> b() {
+      return this.b.stream().map($$0 -> new fqw.c($$0));
    }
 
-   public int b() {
-      return this.b.size();
+   void e() {
+      this.a.b(Lists.reverse(this.b).stream().map(ate::g).collect(ImmutableList.toImmutableList()));
    }
 
-   @Nullable
-   public cyi<?> c() {
-      return this.a;
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
    }
 
-   public void a(cyi<?> $$0) {
-      this.a = $$0;
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.c());
+      this.c.clear();
+      this.c.addAll(this.a.c());
+      this.c.removeAll(this.b);
    }
 
-   public void a(fgz $$0, ffn $$1, int $$2, int $$3, boolean $$4, float $$5) {
-      if (!fnd.s()) {
-         this.c += $$5;
+   public interface a {
+      akk a();
+
+      atf b();
+
+      String c();
+
+      wu d();
+
+      wu e();
+
+      ati f();
+
+      default wu g() {
+         return this.f().a(this.e());
       }
 
-      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
-         fqw.a $$7 = this.b.get($$6);
-         int $$8 = $$7.a() + $$2;
-         int $$9 = $$7.b() + $$3;
-         if ($$6 == 0 && $$4) {
-            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
-         } else {
-            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
+   }
+
+   abstract class b implements fqw.a {
+      private final ate b;
+
+      public b(final ate $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<ate> s();
+
+      protected abstract List<ate> t();
+
+      @Override
+      public akk a() {
+         return fqw.this.d.apply(this.b);
+      }
+
+      @Override
+      public atf b() {
+         return this.b.d();
+      }
+
+      @Override
+      public String c() {
+         return this.b.g();
+      }
+
+      @Override
+      public wu d() {
+         return this.b.b();
+      }
+
+      @Override
+      public wu e() {
+         return this.b.c();
+      }
+
+      @Override
+      public ati f() {
+         return this.b.l();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.i();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.k().a(this.t(), this.b, ate::h, true);
+         fqw.this.e.run();
+         fqw.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.g().equals("high_contrast")) {
+            ffw<Boolean> $$0 = fft.Q().m.t();
+            $$0.a(!$$0.c());
          }
+      }
 
-         cua $$10 = $$7.c();
-         $$0.b($$10, $$8, $$9);
-         $$0.a(gef.G(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
-         if ($$6 == 0) {
-            $$0.a($$1.h, $$10, $$8, $$9);
-         }
+      protected void a(int $$0) {
+         List<ate> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         fqw.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<ate> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).j();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<ate> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
       }
    }
 
-   public class a {
-      private final cyd b;
-      private final int c;
-      private final int d;
-
-      public a(final cyd $$1, final int $$2, final int $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   class c extends fqw.b {
+      public c(final ate $$0) {
+         super($$0);
       }
 
-      public int a() {
-         return this.c;
+      @Override
+      protected List<ate> s() {
+         return fqw.this.b;
       }
 
-      public int b() {
-         return this.d;
+      @Override
+      protected List<ate> t() {
+         return fqw.this.c;
       }
 
-      public cua c() {
-         cua[] $$0 = this.b.a();
-         return $$0.length == 0 ? cua.l : $$0[aye.d(fqw.this.c / 30.0F) % $$0.length];
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
+      }
+   }
+
+   class d extends fqw.b {
+      public d(final ate $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<ate> s() {
+         return fqw.this.c;
+      }
+
+      @Override
+      protected List<ate> t() {
+         return fqw.this.b;
+      }
+
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
       }
    }
 }

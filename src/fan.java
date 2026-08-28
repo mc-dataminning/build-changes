@@ -1,207 +1,93 @@
-import java.util.function.Consumer;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-public class fan {
-   public static fak a() {
-      throw new IllegalArgumentException();
+public class fan extends fal {
+   private final faq f;
+   private final Matrix4f g;
+   private final Matrix3f h;
+   private final float i;
+   private float j;
+   private float k;
+   private float l;
+   private int m;
+   private int n;
+   private int o;
+   private float p;
+   private float q;
+   private float r;
+
+   public fan(faq $$0, fam.a $$1, float $$2) {
+      this.f = $$0;
+      this.g = new Matrix4f($$1.a()).invert();
+      this.h = new Matrix3f($$1.b()).invert();
+      this.i = $$2;
+      this.a();
    }
 
-   public static fak a(fak $$0) {
-      return $$0;
+   private void a() {
+      this.j = 0.0F;
+      this.k = 0.0F;
+      this.l = 0.0F;
+      this.m = 0;
+      this.n = 10;
+      this.o = 15728880;
+      this.p = 0.0F;
+      this.q = 1.0F;
+      this.r = 0.0F;
    }
 
-   public static fak a(fak $$0, fak $$1) {
-      return new fan.a($$0, $$1);
+   @Override
+   public void e() {
+      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
+      jf $$1 = jf.a($$0.x(), $$0.y(), $$0.z());
+      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
+      $$2.rotateY((float) Math.PI);
+      $$2.rotateX((float) (-Math.PI / 2));
+      $$2.rotate($$1.b());
+      float $$3 = -$$2.x() * this.i;
+      float $$4 = -$$2.y() * this.i;
+      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
+      this.a();
    }
 
-   public static fak a(fak... $$0) {
-      return new fan.b($$0);
+   @Override
+   public faq a(double $$0, double $$1, double $$2) {
+      this.j = (float)$$0;
+      this.k = (float)$$1;
+      this.l = (float)$$2;
+      return this;
    }
 
-   static class a implements fak {
-      private final fak a;
-      private final fak b;
-
-      public a(fak $$0, fak $$1) {
-         if ($$0 == $$1) {
-            throw new IllegalArgumentException("Duplicate delegates");
-         } else {
-            this.a = $$0;
-            this.b = $$1;
-         }
-      }
-
-      @Override
-      public fak a(double $$0, double $$1, double $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public fak a(int $$0, int $$1, int $$2, int $$3) {
-         this.a.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         return this;
-      }
-
-      @Override
-      public fak a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fak a(int $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fak b(int $$0, int $$1) {
-         this.a.b($$0, $$1);
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fak a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
-         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
-      }
-
-      @Override
-      public void e() {
-         this.a.e();
-         this.b.e();
-      }
-
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-         this.a.b($$0, $$1, $$2, $$3);
-         this.b.b($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public void l() {
-         this.a.l();
-         this.b.l();
-      }
+   @Override
+   public faq a(int $$0, int $$1, int $$2, int $$3) {
+      return this;
    }
 
-   static class b implements fak {
-      private final fak[] a;
+   @Override
+   public faq a(float $$0, float $$1) {
+      return this;
+   }
 
-      public b(fak[] $$0) {
-         for (int $$1 = 0; $$1 < $$0.length; $$1++) {
-            for (int $$2 = $$1 + 1; $$2 < $$0.length; $$2++) {
-               if ($$0[$$1] == $$0[$$2]) {
-                  throw new IllegalArgumentException("Duplicate delegates");
-               }
-            }
-         }
+   @Override
+   public faq a(int $$0, int $$1) {
+      this.m = $$0;
+      this.n = $$1;
+      return this;
+   }
 
-         this.a = $$0;
-      }
+   @Override
+   public faq b(int $$0, int $$1) {
+      this.o = $$0 | $$1 << 16;
+      return this;
+   }
 
-      private void a(Consumer<fak> $$0) {
-         for (fak $$1 : this.a) {
-            $$0.accept($$1);
-         }
-      }
-
-      @Override
-      public fak a(double $$0, double $$1, double $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public fak a(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
-         return this;
-      }
-
-      @Override
-      public fak a(float $$0, float $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fak a(int $$0, int $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fak b(int $$0, int $$1) {
-         this.a($$2 -> $$2.b($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fak a(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.a($$14 -> $$14.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13));
-      }
-
-      @Override
-      public void e() {
-         this.a(fak::e);
-      }
-
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.b($$0, $$1, $$2, $$3));
-      }
-
-      @Override
-      public void l() {
-         this.a(fak::l);
-      }
+   @Override
+   public faq a(float $$0, float $$1, float $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      return this;
    }
 }

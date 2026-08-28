@@ -1,95 +1,81 @@
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.function.Supplier;
 
-public class cru extends csp {
-   protected static final Map<dff, dff> a = new Builder()
-      .put(dfh.ao, dfh.aw)
-      .put(dfh.U, dfh.al)
-      .put(dfh.au, dfh.aC)
-      .put(dfh.aa, dfh.ak)
-      .put(dfh.as, dfh.aA)
-      .put(dfh.Y, dfh.ai)
-      .put(dfh.at, dfh.aB)
-      .put(dfh.Z, dfh.aj)
-      .put(dfh.aq, dfh.ay)
-      .put(dfh.W, dfh.ag)
-      .put(dfh.ar, dfh.az)
-      .put(dfh.X, dfh.ah)
-      .put(dfh.ap, dfh.ax)
-      .put(dfh.V, dfh.af)
-      .put(dfh.oj, dfh.ok)
-      .put(dfh.ol, dfh.om)
-      .put(dfh.os, dfh.ot)
-      .put(dfh.ou, dfh.ov)
-      .put(dfh.av, dfh.aD)
-      .put(dfh.ab, dfh.am)
-      .put(dfh.ae, dfh.an)
-      .build();
+public class cru {
+   public static final jj<crt> a = a("leather", ac.a(new EnumMap<>(crs.a.class), $$0 -> {
+      $$0.put(crs.a.d, 1);
+      $$0.put(crs.a.c, 2);
+      $$0.put(crs.a.b, 3);
+      $$0.put(crs.a.a, 1);
+      $$0.put(crs.a.e, 3);
+   }), 15, avh.av, 0.0F, 0.0F, () -> cyf.a(cuf.qD), List.of(new crt.a(new akk("leather"), "", true), new crt.a(new akk("leather"), "_overlay", false)));
+   public static final jj<crt> b = a("chainmail", ac.a(new EnumMap<>(crs.a.class), $$0 -> {
+      $$0.put(crs.a.d, 1);
+      $$0.put(crs.a.c, 4);
+      $$0.put(crs.a.b, 5);
+      $$0.put(crs.a.a, 2);
+      $$0.put(crs.a.e, 4);
+   }), 12, avh.ap, 0.0F, 0.0F, () -> cyf.a(cuf.oF));
+   public static final jj<crt> c = a("iron", ac.a(new EnumMap<>(crs.a.class), $$0 -> {
+      $$0.put(crs.a.d, 2);
+      $$0.put(crs.a.c, 5);
+      $$0.put(crs.a.b, 6);
+      $$0.put(crs.a.a, 2);
+      $$0.put(crs.a.e, 5);
+   }), 9, avh.au, 0.0F, 0.0F, () -> cyf.a(cuf.oF));
+   public static final jj<crt> d = a("gold", ac.a(new EnumMap<>(crs.a.class), $$0 -> {
+      $$0.put(crs.a.d, 1);
+      $$0.put(crs.a.c, 3);
+      $$0.put(crs.a.b, 5);
+      $$0.put(crs.a.a, 2);
+      $$0.put(crs.a.e, 7);
+   }), 25, avh.at, 0.0F, 0.0F, () -> cyf.a(cuf.oJ));
+   public static final jj<crt> e = a("diamond", ac.a(new EnumMap<>(crs.a.class), $$0 -> {
+      $$0.put(crs.a.d, 3);
+      $$0.put(crs.a.c, 6);
+      $$0.put(crs.a.b, 8);
+      $$0.put(crs.a.a, 3);
+      $$0.put(crs.a.e, 11);
+   }), 10, avh.aq, 2.0F, 0.0F, () -> cyf.a(cuf.oz));
+   public static final jj<crt> f = a("turtle", ac.a(new EnumMap<>(crs.a.class), $$0 -> {
+      $$0.put(crs.a.d, 2);
+      $$0.put(crs.a.c, 5);
+      $$0.put(crs.a.b, 6);
+      $$0.put(crs.a.a, 2);
+      $$0.put(crs.a.e, 5);
+   }), 9, avh.ax, 0.0F, 0.0F, () -> cyf.a(cuf.op));
+   public static final jj<crt> g = a("netherite", ac.a(new EnumMap<>(crs.a.class), $$0 -> {
+      $$0.put(crs.a.d, 3);
+      $$0.put(crs.a.c, 6);
+      $$0.put(crs.a.b, 8);
+      $$0.put(crs.a.a, 3);
+      $$0.put(crs.a.e, 11);
+   }), 15, avh.aw, 3.0F, 0.1F, () -> cyf.a(cuf.oK));
+   public static final jj<crt> h = a("armadillo", ac.a(new EnumMap<>(crs.a.class), $$0 -> {
+      $$0.put(crs.a.d, 3);
+      $$0.put(crs.a.c, 6);
+      $$0.put(crs.a.b, 8);
+      $$0.put(crs.a.a, 3);
+      $$0.put(crs.a.e, 11);
+   }), 10, avh.ay, 0.0F, 0.0F, () -> cyf.a(cuf.oq));
 
-   public cru(cvp $$0, ctv.a $$1) {
-      super($$0, avu.bA, $$1);
+   public static jj<crt> a(jw<crt> $$0) {
+      return a;
    }
 
-   @Override
-   public bqd a(cxm $$0) {
-      dcd $$1 = $$0.q();
-      ja $$2 = $$0.a();
-      cmh $$3 = $$0.o();
-      if (b($$0)) {
-         return bqd.e;
-      } else {
-         Optional<dsh> $$4 = this.a($$1, $$2, $$3, $$1.a_($$2));
-         if ($$4.isEmpty()) {
-            return bqd.e;
-         } else {
-            cua $$5 = $$0.n();
-            if ($$3 instanceof aql) {
-               am.N.a((aql)$$3, $$2, $$5);
-            }
+   private static jj<crt> a(String $$0, EnumMap<crs.a, Integer> $$1, int $$2, jj<avg> $$3, float $$4, float $$5, Supplier<cyf> $$6) {
+      List<crt.a> $$7 = List.of(new crt.a(new akk($$0)));
+      return a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
 
-            $$1.a($$2, $$4.get(), 11);
-            $$1.a(dxa.c, $$2, dxa.a.a($$3, $$4.get()));
-            if ($$3 != null) {
-               $$5.a(1, $$3, bsy.d($$0.p()));
-            }
+   private static jj<crt> a(String $$0, EnumMap<crs.a, Integer> $$1, int $$2, jj<avg> $$3, float $$4, float $$5, Supplier<cyf> $$6, List<crt.a> $$7) {
+      EnumMap<crs.a, Integer> $$8 = new EnumMap<>(crs.a.class);
 
-            return bqd.a($$1.B);
-         }
+      for (crs.a $$9 : crs.a.values()) {
+         $$8.put($$9, $$1.get($$9));
       }
-   }
 
-   private static boolean b(cxm $$0) {
-      cmh $$1 = $$0.o();
-      return $$0.p().equals(bqc.a) && $$1.eU().a(cud.vs) && !$$1.fN();
-   }
-
-   private Optional<dsh> a(dcd $$0, ja $$1, @Nullable cmh $$2, dsh $$3) {
-      Optional<dsh> $$4 = this.a($$3);
-      if ($$4.isPresent()) {
-         $$0.a($$2, $$1, avf.aH, avg.e, 1.0F, 1.0F);
-         return $$4;
-      } else {
-         Optional<dsh> $$5 = dok.b($$3);
-         if ($$5.isPresent()) {
-            $$0.a($$2, $$1, avf.aI, avg.e, 1.0F, 1.0F);
-            $$0.a($$2, 3005, $$1, 0);
-            return $$5;
-         } else {
-            Optional<dsh> $$6 = Optional.ofNullable((dff)ctq.b.get().get($$3.b())).map($$1x -> $$1x.l($$3));
-            if ($$6.isPresent()) {
-               $$0.a($$2, $$1, avf.aJ, avg.e, 1.0F, 1.0F);
-               $$0.a($$2, 3004, $$1, 0);
-               return $$6;
-            } else {
-               return Optional.empty();
-            }
-         }
-      }
-   }
-
-   private Optional<dsh> a(dsh $$0) {
-      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.o().a(dlr.i, $$0.c(dlr.i)));
+      return jw.b(lq.ap, new akk($$0), new crt($$8, $$2, $$3, $$6, $$7, $$4, $$5));
    }
 }

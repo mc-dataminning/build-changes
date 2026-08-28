@@ -18,14 +18,14 @@ public class alo {
    private static final Logger a = LogUtils.getLogger();
    private final String b;
    private final int c;
-   private final auh d;
+   private final auj d;
    private final int e;
    private volatile boolean f;
    @Nullable
    private ServerSocket g;
    private final CopyOnWriteArrayList<Socket> h = new CopyOnWriteArrayList<>();
 
-   public alo(String $$0, int $$1, auh $$2, int $$3) {
+   public alo(String $$0, int $$1, auj $$2, int $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -120,13 +120,13 @@ public class alo {
 
    @Nullable
    private alo.a e() {
-      List<aql> $$0 = this.d.t();
+      List<aqn> $$0 = this.d.t();
       if ($$0.isEmpty()) {
          return null;
       } else {
-         aql $$1 = $$0.get(0);
-         String $$2 = (String)alw.a.inverse().get($$1.dP().af());
-         return $$2 == null ? null : new alo.a($$2, $$1.du(), $$1.dw(), $$1.dA(), $$1.dF(), $$1.dH());
+         aqn $$1 = $$0.get(0);
+         String $$2 = (String)alw.a.inverse().get($$1.dQ().af());
+         return $$2 == null ? null : new alo.a($$2, $$1.dv(), $$1.dx(), $$1.dB(), $$1.dG(), $$1.dI());
       }
    }
 

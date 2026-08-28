@@ -1,10 +1,29 @@
-public abstract class cei extends bta {
-   protected cei(bsj<? extends cei> $$0, dcd $$1) {
-      super($$0, $$1);
+import java.util.Set;
+import java.util.function.Predicate;
+
+public record cei(Set<dsk> b, int c, int d) {
+   public static final Predicate<jj<cei>> a = $$0 -> false;
+
+   public cei(Set<dsk> b, int c, int d) {
+      b = Set.copyOf(b);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
-   @Override
-   public boolean a(cmh $$0) {
-      return false;
+   public boolean a(dsk $$0) {
+      return this.b.contains($$0);
+   }
+
+   public Set<dsk> a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

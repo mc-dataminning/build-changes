@@ -1,37 +1,21 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bew extends bfa {
-   public bew(Schema $$0, String $$1) {
-      super($$0, false, "Memory expiry data fix (" + $$1 + ")", bgd.B, $$1);
+public class bew extends bed {
+   public bew(Schema $$0) {
+      super($$0, "LodestoneCompassComponentFix", "minecraft:lodestone_target", "minecraft:lodestone_tracker");
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("pos").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("dimension").result();
+      $$0 = $$0.remove("pos").remove("dimension");
+      if ($$1.isPresent() && $$2.isPresent()) {
+         $$0 = $$0.set("target", $$0.emptyMap().set("pos", $$1.get()).set("dimension", $$2.get()));
+      }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("Brain", this::b);
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("memories", this::c);
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return $$0.updateMapValues(this::a);
-   }
-
-   private Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
-      return $$0.mapSecond(this::d);
-   }
-
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      return $$0.createMap(ImmutableMap.of($$0.createString("value"), $$0));
+      return $$0;
    }
 }

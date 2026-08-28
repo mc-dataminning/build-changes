@@ -1,28 +1,43 @@
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class eev<P extends eeu> {
-   public static final eev<eep> a = a("blob_foliage_placer", eep.a);
-   public static final eev<efa> b = a("spruce_foliage_placer", efa.a);
-   public static final eev<eey> c = a("pine_foliage_placer", eey.a);
-   public static final eev<eeo> d = a("acacia_foliage_placer", eeo.a);
-   public static final eev<eeq> e = a("bush_foliage_placer", eeq.c);
-   public static final eev<eet> f = a("fancy_foliage_placer", eet.c);
-   public static final eev<eew> g = a("jungle_foliage_placer", eew.a);
-   public static final eev<eex> h = a("mega_pine_foliage_placer", eex.a);
-   public static final eev<ees> i = a("dark_oak_foliage_placer", ees.a);
-   public static final eev<eez> j = a("random_spread_foliage_placer", eez.a);
-   public static final eev<eer> k = a("cherry_foliage_placer", eer.a);
-   private final MapCodec<P> l;
+public class eev extends efa {
+   public static final MapCodec<eev> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eev::new));
+   protected final int b;
 
-   private static <P extends eeu> eev<P> a(String $$0, MapCodec<P> $$1) {
-      return jw.a(lq.U, $$0, new eev<>($$1));
+   protected static <P extends eev> P3<Mu<P>, bpl, bpl, Integer> a(Instance<P> $$0) {
+      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
    }
 
-   private eev(MapCodec<P> $$0) {
-      this.l = $$0;
+   public eev(bpl $$0, bpl $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public MapCodec<P> a() {
-      return this.l;
+   @Override
+   protected efb<?> a() {
+      return efb.a;
+   }
+
+   @Override
+   protected void a(dcl $$0, efa.b $$1, ayo $$2, eek $$3, int $$4, efa.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
+   }
+
+   @Override
+   public int a(ayo $$0, int $$1, eek $$2) {
+      return this.b;
+   }
+
+   @Override
+   protected boolean a(ayo $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
    }
 }

@@ -1,16 +1,18 @@
-public enum dss implements ayz {
-   a("floor"),
-   b("wall"),
-   c("ceiling");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String d;
+public class dss implements Predicate<dsk> {
+   private final dfh a;
 
-   private dss(final String $$0) {
-      this.d = $$0;
+   public dss(dfh $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public static dss a(dfh $$0) {
+      return new dss($$0);
+   }
+
+   public boolean a(@Nullable dsk $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

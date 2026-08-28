@@ -1,13 +1,13 @@
 public class adg implements zb<abn> {
    public static final ys<wf, adg> a = zb.a(adg::a, adg::new);
    private final int b;
-   private final dbc c;
+   private final dbe c;
    private final int d;
    private final int e;
    private final boolean f;
    private final boolean g;
 
-   public adg(int $$0, dbc $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+   public adg(int $$0, dbe $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
       this.b = $$0;
       this.c = $$1.a();
       this.d = $$2;
@@ -18,7 +18,7 @@ public class adg implements zb<abn> {
 
    private adg(wf $$0) {
       this.b = $$0.l();
-      this.c = dbc.b.decode($$0);
+      this.c = dbe.b.decode($$0);
       this.d = $$0.l();
       this.e = $$0.l();
       this.f = $$0.readBoolean();
@@ -27,7 +27,7 @@ public class adg implements zb<abn> {
 
    private void a(wf $$0) {
       $$0.c(this.b);
-      dbc.b.encode($$0, this.c);
+      dbe.b.encode($$0, this.c);
       $$0.c(this.d);
       $$0.c(this.e);
       $$0.a(this.f);
@@ -47,7 +47,7 @@ public class adg implements zb<abn> {
       return this.b;
    }
 
-   public dbc e() {
+   public dbe e() {
       return this.c;
    }
 

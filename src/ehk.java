@@ -1,26 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ehk extends ehx {
-   public static final MapCodec<ehk> a = dxv.a.c.fieldOf("step").xmap(ehk::new, $$0 -> $$0.c);
-   private final dxv.a c;
-
-   private ehk(dxv.a $$0) {
-      this.c = $$0;
-   }
-
-   public static ehk a(dxv.a $$0) {
-      return new ehk($$0);
-   }
-
+public record ehk(List<dyj.c> a) implements dyj.c {
+   @Nullable
    @Override
-   public Stream<ja> a_(ehv $$0, aym $$1, ja $$2) {
-      dbk $$3 = new dbk($$2);
-      return $$0.a($$3, this.c).a($$3);
-   }
+   public dsk calculate(dxy.b $$0) {
+      for (dyj.c $$1 : this.a) {
+         dsk $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
 
-   @Override
-   public ehy<?> b() {
-      return ehy.o;
+      return null;
    }
 }

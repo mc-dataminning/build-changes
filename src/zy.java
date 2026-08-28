@@ -26,9 +26,9 @@ public record zy(zy.a c) implements aac {
       return this.c;
    }
 
-   public static record a(UUID a, int b, evz c, @Nullable eop d, @Nullable ja e, @Nullable ja f, int g, Set<String> h, List<ja> i) {
+   public static record a(UUID a, int b, ewf c, @Nullable eov d, @Nullable ja e, @Nullable ja f, int g, Set<String> h, List<ja> i) {
       public a(vr $$0) {
-         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(eop::b), $$0.c(ja.b), $$0.c(ja.b), $$0.readInt(), $$0.a(HashSet::new, vr::p), $$0.a(ja.b));
+         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(eov::b), $$0.c(ja.b), $$0.c(ja.b), $$0.readInt(), $$0.a(HashSet::new, vr::p), $$0.a(ja.b));
       }
 
       public void a(vr $$0) {
@@ -64,12 +64,12 @@ public record zy(zy.a c) implements aac {
          return this.b;
       }
 
-      public evz d() {
+      public ewf d() {
          return this.c;
       }
 
       @Nullable
-      public eop e() {
+      public eov e() {
          return this.d;
       }
 

@@ -1,26 +1,54 @@
-import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public interface eiz<S extends eiq> {
-   eiz<ekj> a = a("buried_treasure", ekj.d);
-   eiz<ekl> b = a("desert_pyramid", ekl.d);
-   eiz<ekn> c = a("end_city", ekn.d);
-   eiz<ekw> d = a("fortress", ekw.e);
-   eiz<ekp> e = a("igloo", ekp.d);
-   eiz<ekq> f = a("jigsaw", ekq.g);
-   eiz<eks> g = a("jungle_temple", eks.d);
-   eiz<eku> h = a("mineshaft", eku.d);
-   eiz<eky> i = a("nether_fossil", eky.d);
-   eiz<ela> j = a("ocean_monument", ela.d);
-   eiz<elc> k = a("ocean_ruin", elc.d);
-   eiz<ele> l = a("ruined_portal", ele.d);
-   eiz<elg> m = a("shipwreck", elg.d);
-   eiz<eli> n = a("stronghold", eli.d);
-   eiz<elk> o = a("swamp_hut", elk.d);
-   eiz<elm> p = a("woodland_mansion", elm.d);
+public class eiz extends epo {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   MapCodec<S> codec();
+   public static epo.a<eiz> a() {
+      return new epo.a<>(eiz::new, eiz::b, azo.o);
+   }
 
-   private static <S extends eiq> eiz<S> a(String $$0, MapCodec<S> $$1) {
-      return jw.a(lq.R, $$0, () -> $$1);
+   private eiz(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public eiz() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public static eiz b(tx $$0, jl.a $$1) {
+      return new eiz(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   }
+
+   @Override
+   public tx a(tx $$0, jl.a $$1) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
+   }
+
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
+   }
+
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      this.d.remove($$0);
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

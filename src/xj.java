@@ -1,7 +1,7 @@
 public interface xj {
    wu a();
 
-   void a(aql var1, boolean var2, wq.a var3);
+   void a(aqn var1, boolean var2, wq.a var3);
 
    static xj a(xk $$0) {
       return (xj)($$0.h() ? new xj.a($$0.d()) : new xj.b($$0));
@@ -9,7 +9,7 @@ public interface xj {
 
    public static record a(wu a) implements xj {
       @Override
-      public void a(aql $$0, boolean $$1, wq.a $$2) {
+      public void a(aqn $$0, boolean $$1, wq.a $$2) {
          $$0.c.a(this.a, $$2);
       }
    }
@@ -21,7 +21,7 @@ public interface xj {
       }
 
       @Override
-      public void a(aql $$0, boolean $$1, wq.a $$2) {
+      public void a(aqn $$0, boolean $$1, wq.a $$2) {
          xk $$3 = this.a.a($$1);
          if (!$$3.j()) {
             $$0.c.a($$3, $$2);

@@ -1,28 +1,10 @@
-import it.unimi.dsi.fastutil.ints.IntList;
-
-public interface crb extends ayz {
-   IntList a();
-
-   default int b() {
-      return this.a().size();
+public class crb extends crd {
+   public crb(bpz $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   static crb a(final String $$0, final IntList $$1) {
-      return new crb() {
-         @Override
-         public IntList a() {
-            return $$1;
-         }
-
-         @Override
-         public String c() {
-            return $$0;
-         }
-
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   @Override
+   public boolean a(cuc $$0) {
+      return $$0.g().an_();
    }
 }

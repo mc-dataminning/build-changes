@@ -1,87 +1,74 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class doc extends ddw {
-   public static final MapCodec<doc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cst.q.fieldOf("color").forGetter(ddw::b), u()).apply($$0, doc::new));
-   public static final dtb b = djb.aE;
-   private static final Map<jf, ews> c = Maps.newEnumMap(
-      ImmutableMap.of(
-         jf.c,
-         dff.a(0.0, 0.0, 14.0, 16.0, 12.5, 16.0),
-         jf.d,
-         dff.a(0.0, 0.0, 0.0, 16.0, 12.5, 2.0),
-         jf.e,
-         dff.a(14.0, 0.0, 0.0, 16.0, 12.5, 16.0),
-         jf.f,
-         dff.a(0.0, 0.0, 0.0, 2.0, 12.5, 16.0)
-      )
-   );
+public class doc extends det {
+   public static final MapCodec<doc> a = b(doc::new);
+   public static final dtn<drx> b = dta.bz;
+   public static final dte c = djd.aE;
+   public static final dtb d = dta.bA;
 
    @Override
    public MapCodec<doc> a() {
       return a;
    }
 
-   public doc(cst $$0, dsg.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(b, jf.c));
+   public doc(dsj.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, jf.c).a(b, drx.a).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public String g() {
-      return this.r().a();
-   }
-
-   @Override
-   protected boolean a(dsh $$0, dcg $$1, ja $$2) {
-      return $$1.a_($$2.a($$0.c(b).g())).e();
-   }
-
-   @Override
-   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
-      return $$1 == $$0.c(b).g() && !$$0.a($$3, $$4) ? dfh.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
-      return c.get($$0.c(b));
-   }
-
-   @Override
-   public dsh a(cxk $$0) {
-      dsh $$1 = this.o();
-      dcg $$2 = $$0.q();
-      ja $$3 = $$0.a();
-      jf[] $$4 = $$0.f();
-
-      for (jf $$5 : $$4) {
-         if ($$5.o().d()) {
-            jf $$6 = $$5.g();
-            $$1 = $$1.a(b, $$6);
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
+   public bqi a(cuc $$0, dsk $$1, dcf $$2, ja $$3, cmk $$4, bqf $$5, ewb $$6) {
+      if ($$0.e() || $$1.c(b) != drx.b) {
+         return bqi.d;
+      } else if ($$2 instanceof aqm $$7) {
+         if ($$7.c_($$3) instanceof drs $$9) {
+            drs.b.a($$7, $$3, $$1, $$9.f(), $$9.b(), $$9.c(), $$4, $$0);
+            return bqi.a;
+         } else {
+            return bqi.d;
          }
+      } else {
+         return bqi.b;
       }
+   }
 
-      return null;
+   @Nullable
+   @Override
+   public dpp a(ja $$0, dsk $$1) {
+      return new drs($$0, $$1);
    }
 
    @Override
-   protected dsh a(dsh $$0, dls $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected void a(dsl.a<dfh, dsk> $$0) {
+      $$0.a(c, b, d);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dpp> dpq<T> a(dcf $$0, dsk $$1, dpr<T> $$2) {
+      return $$0 instanceof aqm $$3
+         ? a($$2, dpr.R, ($$1x, $$2x, $$3x, $$4) -> drs.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
+         : a($$2, dpr.R, ($$0x, $$1x, $$2x, $$3x) -> drs.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
    }
 
    @Override
-   protected dsh a(dsh $$0, dkc $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public dsk a(cxm $$0) {
+      return this.o().a(c, $$0.g().g());
    }
 
    @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
-      $$0.a(b);
+   public dsk a(dsk $$0, dlu $$1) {
+      return $$0.a(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   public dsk a(dsk $$0, dke $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   public dln a_(dsk $$0) {
+      return dln.c;
    }
 }

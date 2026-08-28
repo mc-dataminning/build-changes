@@ -1,2 +1,6 @@
-public record blv<S>(int a, blz<S> b, Object c) {
+public interface blv {
+   blv a = () -> {
+   };
+
+   void cut();
 }

@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+@FunctionalInterface
+public interface ejj<C extends edo> {
+   void generatePieces(ejo var1, ejj.a<C> var2);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ejj {
+   public static record a<C extends edo>(C a, duh b, emx c, dbm d, dch e, dze f, long g) {
+   }
 }

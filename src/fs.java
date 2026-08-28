@@ -28,7 +28,7 @@ public class fs<T> implements ArgumentType<jj<T>> {
       return new fs.c($$0);
    }
 
-   public static jj<eqt> a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static jj<eqz> a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return d($$0, $$1);
    }
 
@@ -36,7 +36,7 @@ public class fs<T> implements ArgumentType<jj<T>> {
       return new fs.a($$0);
    }
 
-   public static jj<esc> b(CommandContext<eq> $$0, String $$1) {
+   public static jj<esi> b(CommandContext<eq> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -44,7 +44,7 @@ public class fs<T> implements ArgumentType<jj<T>> {
       return new fs.b($$0);
    }
 
-   public static jj<etz> c(CommandContext<eq> $$0, String $$1) {
+   public static jj<euf> c(CommandContext<eq> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -89,21 +89,21 @@ public class fs<T> implements ArgumentType<jj<T>> {
       return b;
    }
 
-   public static class a extends fs<esc> {
+   public static class a extends fs<esi> {
       protected a(em $$0) {
-         super($$0, lr.bc, ese.d);
+         super($$0, lr.bc, esk.d);
       }
    }
 
-   public static class b extends fs<etz> {
+   public static class b extends fs<euf> {
       protected b(em $$0) {
-         super($$0, lr.bd, etz.f);
+         super($$0, lr.bd, euf.f);
       }
    }
 
-   public static class c extends fs<eqt> {
+   public static class c extends fs<eqz> {
       protected c(em $$0) {
-         super($$0, lr.bb, eqt.e);
+         super($$0, lr.bb, eqz.e);
       }
    }
 }

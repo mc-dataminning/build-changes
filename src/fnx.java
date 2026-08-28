@@ -1,9 +1,140 @@
-public class fnx extends fnt<cpj> {
-   private static final akk E = new akk("container/blast_furnace/lit_progress");
-   private static final akk F = new akk("container/blast_furnace/burn_progress");
-   private static final akk G = new akk("textures/gui/container/blast_furnace.png");
+public abstract class fnx extends fnj {
+   private static final wu s = wu.c("advMode.setCommand");
+   private static final wu u = wu.c("advMode.command");
+   private static final wu v = wu.c("advMode.previousOutput");
+   protected fib a;
+   protected fib b;
+   protected fhs c;
+   protected fhs q;
+   protected fhz<Boolean> r;
+   fhv w;
 
-   public fnx(cpj $$0, cmg $$1, wu $$2) {
-      super($$0, new fqv(), $$1, $$2, G, E, F);
+   public fnx() {
+      super(ffl.a);
+   }
+
+   @Override
+   public void e() {
+      if (!this.m().j()) {
+         this.d();
+      }
+   }
+
+   abstract dbg m();
+
+   abstract int E();
+
+   @Override
+   protected void aP_() {
+      this.c = this.c(fhs.a(wt.d, $$0x -> this.F()).a(this.m / 2 - 4 - 150, this.n / 4 + 120 + 12, 150, 20).a());
+      this.q = this.c(fhs.a(wt.e, $$0x -> this.d()).a(this.m / 2 + 4, this.n / 4 + 120 + 12, 150, 20).a());
+      boolean $$0 = this.m().p();
+      this.r = this.c(fhz.a(wu.b("O"), wu.b("X")).a($$0).a().a(this.m / 2 + 150 - 20, this.E(), 20, 20, wu.c("advMode.trackOutput"), ($$0x, $$1) -> {
+         dbg $$2 = this.m();
+         $$2.a($$1);
+         this.c($$1);
+      }));
+      this.a = new fib(this.o, this.m / 2 - 150, 50, 300, 20, wu.c("advMode.command")) {
+         @Override
+         protected xi aM_() {
+            return super.aM_().b(fnx.this.w.e());
+         }
+      };
+      this.a.f(32500);
+      this.a.b(this::a);
+      this.d(this.a);
+      this.b = new fib(this.o, this.m / 2 - 150, this.E(), 276, 20, wu.c("advMode.previousOutput"));
+      this.b.f(32500);
+      this.b.e(false);
+      this.b.a("-");
+      this.d(this.b);
+      this.w = new fhv(this.l, this, this.a, this.o, true, true, 0, 7, false, Integer.MIN_VALUE);
+      this.w.a(true);
+      this.w.d();
+      this.c($$0);
+   }
+
+   @Override
+   protected void aE_() {
+      this.b(this.a);
+   }
+
+   @Override
+   protected wu A() {
+      return this.w.a() ? this.w.b() : super.A();
+   }
+
+   @Override
+   public void a(fft $$0, int $$1, int $$2) {
+      String $$3 = this.a.a();
+      this.b($$0, $$1, $$2);
+      this.a.a($$3);
+      this.w.d();
+   }
+
+   @Override
+   protected void c(boolean $$0) {
+      this.b.a($$0 ? this.m().l().getString() : "-");
+   }
+
+   protected void F() {
+      dbg $$0 = this.m();
+      this.a($$0);
+      if (!$$0.p()) {
+         $$0.c(null);
+      }
+
+      this.l.a(null);
+   }
+
+   protected abstract void a(dbg var1);
+
+   private void a(String $$0) {
+      this.w.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.w.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
+      } else {
+         this.F();
+         return true;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.w.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return this.w.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(fhf $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, s, this.m / 2, 20, 16777215);
+      $$0.b(this.o, u, this.m / 2 - 150 + 1, 40, 10526880);
+      this.a.a($$0, $$1, $$2, $$3);
+      int $$4 = 75;
+      if (!this.b.a().isEmpty()) {
+         $$4 += 5 * 9 + 1 + this.E() - 135;
+         $$0.b(this.o, v, this.m / 2 - 150 + 1, $$4 + 4, 10526880);
+         this.b.a($$0, $$1, $$2, $$3);
+      }
+
+      this.w.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void b(fhf $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

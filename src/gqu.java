@@ -1,71 +1,26 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import java.util.IllegalFormatException;
 
-public class gqu implements ast<gqt> {
-   public gqt b(JsonObject $$0) {
-      Builder<gqs> $$1 = ImmutableList.builder();
-      int $$2 = axu.a($$0, "frametime", 1);
-      if ($$2 != 1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
-      }
+public class gqu {
+   private static volatile ts a = ts.a();
 
-      if ($$0.has("frames")) {
-         try {
-            JsonArray $$3 = axu.v($$0, "frames");
-
-            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-               JsonElement $$5 = $$3.get($$4);
-               gqs $$6 = this.a($$4, $$5);
-               if ($$6 != null) {
-                  $$1.add($$6);
-               }
-            }
-         } catch (ClassCastException var8) {
-            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
-         }
-      }
-
-      int $$8 = axu.a($$0, "width", -1);
-      int $$9 = axu.a($$0, "height", -1);
-      if ($$8 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
-      }
-
-      if ($$9 != -1) {
-         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
-      }
-
-      boolean $$10 = axu.a($$0, "interpolate", false);
-      return new gqt($$1.build(), $$8, $$9, $$2, $$10);
+   private gqu() {
    }
 
-   @Nullable
-   private gqs a(int $$0, JsonElement $$1) {
-      if ($$1.isJsonPrimitive()) {
-         return new gqs(axu.g($$1, "frames[" + $$0 + "]"));
-      } else if ($$1.isJsonObject()) {
-         JsonObject $$2 = axu.m($$1, "frames[" + $$0 + "]");
-         int $$3 = axu.a($$2, "time", -1);
-         if ($$2.has("time")) {
-            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
-         }
+   static void a(ts $$0) {
+      a = $$0;
+   }
 
-         int $$4 = axu.o($$2, "index");
-         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
-         return new gqs($$4, $$3);
-      } else {
-         return null;
+   public static String a(String $$0, Object... $$1) {
+      String $$2 = a.a($$0);
+
+      try {
+         return String.format($$2, $$1);
+      } catch (IllegalFormatException var4) {
+         return "Format error: " + $$2;
       }
    }
 
-   @Override
-   public String a() {
-      return "animation";
+   public static boolean a(String $$0) {
+      return a.b($$0);
    }
 }

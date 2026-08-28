@@ -1,49 +1,42 @@
 import java.util.EnumSet;
 
-public class can extends bzw {
-   private static final cdp b = cdp.b().a(6.0);
-   public static final int a = 400;
-   private final cfa c;
-   private clu d;
-   private int e;
+public class can extends bzz {
+   private final btk a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
 
-   public can(cfa $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(bzw.a.a, bzw.a.b));
+   public can(btk $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.a(EnumSet.of(bzz.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.c.dP().R()) {
-         return false;
-      } else if (this.c.dS().a(8000) != 0) {
+      if (this.a.fU()) {
          return false;
       } else {
-         this.d = this.c.dP().a(clu.class, b, this.c, this.c.du(), this.c.dw(), this.c.dA(), this.c.cK().c(6.0, 2.0, 6.0));
-         return this.d != null;
+         ewf $$0 = cdw.a(this.a, 16, 7, ewf.c(this.a.fV()), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.c;
+            this.c = $$0.d;
+            this.d = $$0.e;
+            return true;
+         }
       }
    }
 
    @Override
    public boolean b() {
-      return this.e > 0;
+      return !this.a.K().l();
    }
 
    @Override
    public void c() {
-      this.e = this.a(400);
-      this.c.w(true);
-   }
-
-   @Override
-   public void d() {
-      this.c.w(false);
-      this.d = null;
-   }
-
-   @Override
-   public void e() {
-      this.c.G().a(this.d, 30.0F, 30.0F);
-      this.e--;
+      this.a.K().a(this.b, this.c, this.d, this.e);
    }
 }

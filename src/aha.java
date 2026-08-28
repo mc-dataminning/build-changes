@@ -6,12 +6,12 @@ public class aha implements zb<agb> {
    private final float e;
    private final float f;
 
-   public aha(bsd $$0) {
-      this.b = $$0.du();
-      this.c = $$0.dw();
-      this.d = $$0.dA();
-      this.e = $$0.dF();
-      this.f = $$0.dH();
+   public aha(bsg $$0) {
+      this.b = $$0.dv();
+      this.c = $$0.dx();
+      this.d = $$0.dB();
+      this.e = $$0.dG();
+      this.f = $$0.dI();
    }
 
    private aha(vr $$0) {

@@ -1,105 +1,150 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public interface dxs {
-   Codec<dxs> b = dxt.b;
-   Codec<jj<dxs>> c = akg.a(lr.aI, b);
-   Codec<dxs> d = c.xmap(dxt.j::new, $$0 -> (jj)($$0 instanceof dxt.j $$1 ? $$1.j() : new jj.a<>($$0)));
+public class dxs implements dxz.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = ac.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)a($$2 - 12, $$3 - 12, $$1 - 12);
+            }
+         }
+      }
+   });
+   private final ObjectListIterator<dxs.a> h;
+   private final ObjectListIterator<ejy> i;
 
-   double a(dxs.b var1);
+   public static dxs a(dcz $$0, dbm $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<dxs.a> $$4 = new ObjectArrayList(10);
+      ObjectList<ejy> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != ejh.a).forEach($$5x -> {
+         ejh $$6 = $$5x.h().d();
 
-   void a(double[] var1, dxs.a var2);
+         for (eja $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof eis) {
+                  eis $$8 = (eis)$$7;
+                  ekf.a $$9 = $$8.b().e();
+                  if ($$9 == ekf.a.b) {
+                     $$4.add(new dxs.a($$8.f(), $$6, $$8.d()));
+                  }
 
-   dxs a(dxs.f var1);
-
-   double a();
-
-   double b();
-
-   axx<? extends dxs> c();
-
-   default dxs a(double $$0, double $$1) {
-      return new dxt.g(this, $$0, $$1);
+                  for (ejy $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
+                     }
+                  }
+               } else {
+                  $$4.add(new dxs.a($$7.f(), $$6, 0));
+               }
+            }
+         }
+      });
+      return new dxs($$4.iterator(), $$5.iterator());
    }
 
-   default dxs d() {
-      return dxt.a(this, dxt.k.a.a);
+   @VisibleForTesting
+   public dxs(ObjectListIterator<dxs.a> $$0, ObjectListIterator<ejy> $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   default dxs e() {
-      return dxt.a(this, dxt.k.a.b);
+   @Override
+   public double a(dxy.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
+
+      while (this.h.hasNext()) {
+         dxs.a $$5 = (dxs.a)this.h.next();
+         eio $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
+         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
+         int $$10 = $$6.i() + $$7;
+         int $$11 = $$2 - $$10;
+
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
+            case e -> Math.max(0, Math.max($$6.i() - $$2, $$2 - $$6.l()));
+         };
+
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a((double)$$8, (double)$$12 / 2.0, (double)$$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+            case e -> a((double)$$8 / 2.0, (double)$$12 / 2.0, (double)$$9 / 2.0) * 0.8;
+         };
+      }
+
+      this.h.back(Integer.MAX_VALUE);
+
+      while (this.i.hasNext()) {
+         ejy $$13 = (ejy)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      }
+
+      this.i.back(Integer.MAX_VALUE);
+      return $$4;
    }
 
-   default dxs f() {
-      return dxt.a(this, dxt.k.a.c);
+   @Override
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
    }
 
-   default dxs g() {
-      return dxt.a(this, dxt.k.a.d);
+   @Override
+   public double b() {
+      return Double.POSITIVE_INFINITY;
    }
 
-   default dxs h() {
-      return dxt.a(this, dxt.k.a.e);
+   private static double a(double $$0, double $$1, double $$2) {
+      double $$3 = ayg.g($$0, $$1, $$2);
+      return ayg.a($$3, 0.0, 6.0, 1.0, 0.0);
    }
 
-   default dxs i() {
-      return dxt.a(this, dxt.k.a.f);
-   }
-
-   public interface a {
-      dxs.b a(int var1);
-
-      void a(double[] var1, dxs var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default dzb d() {
-         return dzb.a();
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = ayg.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * ayg.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+      } else {
+         return 0.0;
       }
    }
 
-   public static record c(jj<ene.a> b, @Nullable ene c) {
-      public static final Codec<dxs.c> a = ene.a.b.xmap($$0 -> new dxs.c($$0, null), dxs.c::b);
-
-      public c(jj<ene.a> $$0) {
-         this($$0, null);
-      }
-
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
    }
 
-   public interface d extends dxs {
-      @Override
-      default void a(double[] $$0, dxs.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      default dxs a(dxs.f $$0) {
-         return $$0.apply(this);
-      }
+   private static double a(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
    }
 
-   public static record e(int a, int b, int c) implements dxs.b {
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = ayg.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
    }
 
-   public interface f {
-      dxs apply(dxs var1);
-
-      default dxs.c a(dxs.c $$0) {
-         return $$0;
-      }
+   @VisibleForTesting
+   public static record a(eio a, ejh b, int c) {
    }
 }

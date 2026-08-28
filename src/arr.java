@@ -1,15 +1,33 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class arr implements ara {
-   public static final ara.a a = new ara.a("join_world");
+public interface arr {
+   arr a = new arr() {
+      @Override
+      public void a() {
+      }
 
-   @Override
-   public void a(Consumer<zb<?>> $$0) {
-      $$0.accept(aaw.a);
-   }
+      @Override
+      public void b() {
+      }
 
-   @Override
-   public ara.a a() {
-      return a;
-   }
+      @Override
+      public CompletableFuture<are> a(String $$0) {
+         return CompletableFuture.completedFuture(are.a($$0));
+      }
+
+      @Override
+      public CompletableFuture<List<are>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(are::a).collect(ImmutableList.toImmutableList()));
+      }
+   };
+
+   void a();
+
+   void b();
+
+   CompletableFuture<are> a(String var1);
+
+   CompletableFuture<List<are>> a(List<String> var1);
 }

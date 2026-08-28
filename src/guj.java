@@ -1,16 +1,7 @@
-import java.util.function.Consumer;
+public interface guj<T> {
+   int e();
 
-@FunctionalInterface
-public interface guj {
-   guj a = ($$0, $$1) -> {
-   };
+   T b(ayo var1);
 
-   default guj decorate(Consumer<gun.a> $$0) {
-      return ($$1, $$2) -> this.send($$1, $$2x -> {
-            $$2.accept($$2x);
-            $$0.accept($$2x);
-         });
-   }
-
-   void send(guk var1, Consumer<gun.a> var2);
+   void a(gue var1);
 }

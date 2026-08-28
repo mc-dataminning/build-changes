@@ -29,8 +29,8 @@ public record wq(wr j, wr k) {
       $$0.a(i, new wq(wr.a("chat.type.emote"), wr.a("chat.type.emote")));
    }
 
-   public static wq.a a(akj<wq> $$0, bsd $$1) {
-      return a($$0, $$1.dP().H_(), $$1.O_());
+   public static wq.a a(akj<wq> $$0, bsg $$1) {
+      return a($$0, $$1.dQ().H_(), $$1.O_());
    }
 
    public static wq.a a(akj<wq> $$0, eq $$1) {

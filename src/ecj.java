@@ -1,30 +1,24 @@
 import com.mojang.serialization.Codec;
 
-public class ecj extends ebe<edd> {
-   public ecj(Codec<edd> $$0) {
+public class ecj extends ebk<eea> {
+   public ecj(Codec<eea> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebg<edd> $$0) {
-      int $$1 = 0;
-      aym $$2 = $$0.d();
-      dcz $$3 = $$0.b();
-      ja $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+   public boolean a(ebm<eea> $$0) {
+      eea $$1 = $$0.f();
+      ayo $$2 = $$0.d();
+      ddb $$3 = $$0.b();
+      duh $$4 = $$0.c();
+      ja $$5 = $$0.e();
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(dxz.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         ja $$10 = new ja($$4.u() + $$7, $$9, $$4.w() + $$8);
-         dsh $$11 = dfh.mV.o().a(dmc.c, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(dfh.G) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
+      for (ede $$6 : $$1.b) {
+         if ($$2.i() < $$6.c) {
+            return $$6.a($$3, $$4, $$2, $$5);
          }
       }
 
-      return $$1 > 0;
+      return $$1.c.a().a($$3, $$4, $$2, $$5);
    }
 }

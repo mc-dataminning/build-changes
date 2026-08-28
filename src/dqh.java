@@ -1,127 +1,95 @@
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dqh extends dpn implements bqi {
-   public int a;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h;
-   public float i;
-   public float j;
-   private static final aym k = aym.a();
-   @Nullable
-   private wu l;
-
-   public dqh(ja $$0, dsh $$1) {
-      super(dpp.m, $$0, $$1);
-   }
-
-   @Override
-   protected void b(tx $$0, jl.a $$1) {
-      super.b($$0, $$1);
-      if (this.ag()) {
-         $$0.a("CustomName", wu.a.a(this.l, $$1));
-      }
-   }
-
-   @Override
-   protected void a(tx $$0, jl.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("CustomName", 8)) {
-         this.l = a($$0.l("CustomName"), $$1);
-      }
-   }
-
-   public static void a(dcd $$0, ja $$1, dsh $$2, dqh $$3) {
-      $$3.g = $$3.f;
-      $$3.i = $$3.h;
-      cmh $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
-      if ($$4 != null) {
-         double $$5 = $$4.du() - ((double)$$1.u() + 0.5);
-         double $$6 = $$4.dA() - ((double)$$1.w() + 0.5);
-         $$3.j = (float)aye.d($$6, $$5);
-         $$3.f += 0.1F;
-         if ($$3.f < 0.5F || k.a(40) == 0) {
-            float $$7 = $$3.d;
-
-            do {
-               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
-            } while ($$7 == $$3.d);
-         }
-      } else {
-         $$3.j += 0.02F;
-         $$3.f -= 0.1F;
-      }
-
-      while ($$3.h >= (float) Math.PI) {
-         $$3.h -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.h < (float) -Math.PI) {
-         $$3.h += (float) (Math.PI * 2);
-      }
-
-      while ($$3.j >= (float) Math.PI) {
-         $$3.j -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.j < (float) -Math.PI) {
-         $$3.j += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$3.j - $$3.h;
-
-      while ($$8 >= (float) Math.PI) {
-         $$8 -= (float) (Math.PI * 2);
-      }
-
-      while ($$8 < (float) -Math.PI) {
-         $$8 += (float) (Math.PI * 2);
-      }
-
-      $$3.h += $$8 * 0.4F;
-      $$3.f = aye.a($$3.f, 0.0F, 1.0F);
-      $$3.a++;
-      $$3.c = $$3.b;
-      float $$9 = ($$3.d - $$3.b) * 0.4F;
-      float $$10 = 0.2F;
-      $$9 = aye.a($$9, -0.2F, 0.2F);
-      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
-      $$3.b = $$3.b + $$3.e;
-   }
-
-   @Override
-   public wu af() {
-      return (wu)(this.l != null ? this.l : wu.c("container.enchant"));
-   }
-
-   public void a(@Nullable wu $$0) {
-      this.l = $$0;
-   }
+public class dqh {
+   public static final akj<dqg> a = a("blank");
+   public static final akj<dqg> b = a("angler");
+   public static final akj<dqg> c = a("archer");
+   public static final akj<dqg> d = a("arms_up");
+   public static final akj<dqg> e = a("blade");
+   public static final akj<dqg> f = a("brewer");
+   public static final akj<dqg> g = a("burn");
+   public static final akj<dqg> h = a("danger");
+   public static final akj<dqg> i = a("explorer");
+   public static final akj<dqg> j = a("flow");
+   public static final akj<dqg> k = a("friend");
+   public static final akj<dqg> l = a("guster");
+   public static final akj<dqg> m = a("heart");
+   public static final akj<dqg> n = a("heartbreak");
+   public static final akj<dqg> o = a("howl");
+   public static final akj<dqg> p = a("miner");
+   public static final akj<dqg> q = a("mourner");
+   public static final akj<dqg> r = a("plenty");
+   public static final akj<dqg> s = a("prize");
+   public static final akj<dqg> t = a("scrape");
+   public static final akj<dqg> u = a("sheaf");
+   public static final akj<dqg> v = a("shelter");
+   public static final akj<dqg> w = a("skull");
+   public static final akj<dqg> x = a("snort");
+   private static final Map<ctx, akj<dqg>> y = Map.ofEntries(
+      Map.entry(cuf.qL, a),
+      Map.entry(cuf.xO, b),
+      Map.entry(cuf.xP, c),
+      Map.entry(cuf.xQ, d),
+      Map.entry(cuf.xR, e),
+      Map.entry(cuf.xS, f),
+      Map.entry(cuf.xT, g),
+      Map.entry(cuf.xU, h),
+      Map.entry(cuf.xV, i),
+      Map.entry(cuf.xW, j),
+      Map.entry(cuf.xX, k),
+      Map.entry(cuf.xY, l),
+      Map.entry(cuf.xZ, m),
+      Map.entry(cuf.ya, n),
+      Map.entry(cuf.yb, o),
+      Map.entry(cuf.yc, p),
+      Map.entry(cuf.yd, q),
+      Map.entry(cuf.ye, r),
+      Map.entry(cuf.yf, s),
+      Map.entry(cuf.yg, t),
+      Map.entry(cuf.yh, u),
+      Map.entry(cuf.yi, v),
+      Map.entry(cuf.yj, w),
+      Map.entry(cuf.yk, x)
+   );
 
    @Nullable
-   @Override
-   public wu ah() {
-      return this.l;
+   public static akj<dqg> a(ctx $$0) {
+      return y.get($$0);
    }
 
-   @Override
-   protected void a(dpn.b $$0) {
-      super.a($$0);
-      this.l = $$0.a(kn.g);
+   private static akj<dqg> a(String $$0) {
+      return akj.a(lr.aw, new akk($$0));
    }
 
-   @Override
-   protected void a(kj.a $$0) {
-      super.a($$0);
-      $$0.a(kn.g, this.l);
+   public static dqg a(jw<dqg> $$0) {
+      a($$0, b, "angler_pottery_pattern");
+      a($$0, c, "archer_pottery_pattern");
+      a($$0, d, "arms_up_pottery_pattern");
+      a($$0, e, "blade_pottery_pattern");
+      a($$0, f, "brewer_pottery_pattern");
+      a($$0, g, "burn_pottery_pattern");
+      a($$0, h, "danger_pottery_pattern");
+      a($$0, i, "explorer_pottery_pattern");
+      a($$0, j, "flow_pottery_pattern");
+      a($$0, k, "friend_pottery_pattern");
+      a($$0, l, "guster_pottery_pattern");
+      a($$0, m, "heart_pottery_pattern");
+      a($$0, n, "heartbreak_pottery_pattern");
+      a($$0, o, "howl_pottery_pattern");
+      a($$0, p, "miner_pottery_pattern");
+      a($$0, q, "mourner_pottery_pattern");
+      a($$0, r, "plenty_pottery_pattern");
+      a($$0, s, "prize_pottery_pattern");
+      a($$0, t, "scrape_pottery_pattern");
+      a($$0, u, "sheaf_pottery_pattern");
+      a($$0, v, "shelter_pottery_pattern");
+      a($$0, w, "skull_pottery_pattern");
+      a($$0, x, "snort_pottery_pattern");
+      return a($$0, a, "decorated_pot_side");
    }
 
-   @Override
-   public void a(tx $$0) {
-      $$0.r("CustomName");
+   private static dqg a(jw<dqg> $$0, akj<dqg> $$1, String $$2) {
+      return jw.a($$0, $$1, new dqg(new akk($$2)));
    }
 }

@@ -1,33 +1,36 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Function;
 
-public abstract class gvm extends fnd {
-   protected static final int q = 17;
-   protected static final int r = 7;
-   protected static final long s = 5368709120L;
-   protected static final int u = 5000268;
-   protected static final int v = 7105644;
-   protected static final int w = 8388479;
-   protected static final int x = 3368635;
-   protected static final int y = 7107012;
-   protected static final int z = 32;
-   private final List<gvk> a = Lists.newArrayList();
+public enum gvm {
+   a("movement", gvh::new),
+   b("find_tree", gvg::new),
+   c("punch_tree", gvj::new),
+   d("open_inventory", gvi::new),
+   e("craft_planks", gvf::new),
+   f("none", gve::new);
 
-   public gvm(wu $$0) {
-      super($$0);
+   private final String g;
+   private final Function<gvk, ? extends gvl> h;
+
+   private <T extends gvl> gvm(final String $$0, final Function<gvk, T> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   public gvl a(gvk $$0) {
+      return this.h.apply($$0);
    }
 
-   protected gvk a(gvk $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   public String a() {
+      return this.g;
    }
 
-   public wu m() {
-      return wt.a(this.a.stream().map(gvk::a).collect(Collectors.toList()));
+   public static gvm a(String $$0) {
+      for (gvm $$1 : values()) {
+         if ($$1.g.equals($$0)) {
+            return $$1;
+         }
+      }
+
+      return f;
    }
 }

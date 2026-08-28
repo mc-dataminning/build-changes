@@ -1,20 +1,27 @@
-public class fde extends fdd {
-   private final fen a;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public fde(fnd $$0, fen $$1) {
-      super($$0, $$1);
-      this.a = $$1;
+public class fde extends gvs {
+   protected BooleanConsumer a;
+   private final wu b;
+   private final wu c;
+
+   public fde(BooleanConsumer $$0, wu $$1, wu $$2) {
+      super(ffl.a);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public void e() {
-      super.e();
-      this.a.c();
+   public void aP_() {
+      this.c(fhs.a(wt.f, $$0 -> this.a.accept(true)).a(this.m / 2 - 105, g(9), 100, 20).a());
+      this.c(fhs.a(wt.g, $$0 -> this.a.accept(false)).a(this.m / 2 + 5, g(9), 100, 20).a());
    }
 
    @Override
-   protected void f() {
-      this.a.b();
-      super.f();
+   public void a(fhf $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.b, this.m / 2, g(3), -1);
+      $$0.a(this.o, this.c, this.m / 2, g(5), -1);
    }
 }

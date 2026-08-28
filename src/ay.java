@@ -8,11 +8,11 @@ public class ay extends ds<ay.a> {
       return ay.a.a;
    }
 
-   public void a(aql $$0, akj<dcd> $$1, akj<dcd> $$2) {
+   public void a(aqn $$0, akj<dcf> $$1, akj<dcf> $$2) {
       this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public static record a(Optional<bf> b, Optional<akj<dcd>> c, Optional<akj<dcd>> d) implements ds.a {
+   public static record a(Optional<bf> b, Optional<akj<dcf>> c, Optional<akj<dcf>> d) implements ds.a {
       public static final Codec<ay.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bu.b.optionalFieldOf("player").forGetter(ay.a::a),
@@ -26,19 +26,19 @@ public class ay extends ds<ay.a> {
          return am.w.a(new ay.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public static an<ay.a> a(akj<dcd> $$0, akj<dcd> $$1) {
+      public static an<ay.a> a(akj<dcf> $$0, akj<dcf> $$1) {
          return am.w.a(new ay.a(Optional.empty(), Optional.of($$0), Optional.of($$1)));
       }
 
-      public static an<ay.a> a(akj<dcd> $$0) {
+      public static an<ay.a> a(akj<dcf> $$0) {
          return am.w.a(new ay.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
       }
 
-      public static an<ay.a> b(akj<dcd> $$0) {
+      public static an<ay.a> b(akj<dcf> $$0) {
          return am.w.a(new ay.a(Optional.empty(), Optional.of($$0), Optional.empty()));
       }
 
-      public boolean b(akj<dcd> $$0, akj<dcd> $$1) {
+      public boolean b(akj<dcf> $$0, akj<dcf> $$1) {
          return this.c.isPresent() && this.c.get() != $$0 ? false : !this.d.isPresent() || this.d.get() == $$1;
       }
 

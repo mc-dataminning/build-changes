@@ -1,6 +1,6 @@
-public enum dtj implements ayz {
-   a("normal"),
-   b("sticky");
+public enum dtj implements azc {
+   a("top"),
+   b("bottom");
 
    private final String c;
 

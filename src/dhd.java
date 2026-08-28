@@ -1,101 +1,148 @@
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Map;
 
-public class dhd extends der {
-   public static final MapCodec<dhd> a = b(dhd::new);
-   public static final dth b = dsx.aT;
-   public static final dsy c = dsx.p;
-   protected static final ews d = dff.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
+public abstract class dhd extends dfh implements dmi {
+   public static final dtb a = dkv.b;
+   public static final dtb b = dkv.c;
+   public static final dtb c = dkv.d;
+   public static final dtb d = dkv.e;
+   public static final dtb e = dta.C;
+   protected static final Map<jf, dtb> f = dkv.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ac.a());
+   protected final ewy[] g;
+   protected final ewy[] h;
+   private final Object2IntMap<dsk> i = new Object2IntOpenHashMap();
 
-   @Override
-   public MapCodec<dhd> a() {
-      return a;
-   }
+   protected dhd(float $$0, float $$1, float $$2, float $$3, float $$4, dsj.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
+      UnmodifiableIterator var7 = this.E.a().iterator();
 
-   public dhd(dsg.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected ews a(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
-      return d;
-   }
-
-   @Override
-   protected boolean f_(dsh $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dsh $$0, dbj $$1, ja $$2, jf $$3) {
-      return $$0.c(b);
-   }
-
-   private static void d(dsh $$0, dcd $$1, ja $$2) {
-      int $$3 = $$1.a(dcm.a, $$2) - $$1.B_();
-      float $$4 = $$1.a(1.0F);
-      boolean $$5 = $$0.c(c);
-      if ($$5) {
-         $$3 = 15 - $$3;
-      } else if ($$3 > 0) {
-         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
-         $$4 += ($$6 - $$4) * 0.2F;
-         $$3 = Math.round((float)$$3 * aye.b($$4));
-      }
-
-      $$3 = aye.a($$3, 0, 15);
-      if ($$0.c(b) != $$3) {
-         $$1.a($$2, $$0.a(b, Integer.valueOf($$3)), 3);
+      while (var7.hasNext()) {
+         dsk $$6 = (dsk)var7.next();
+         this.g($$6);
       }
    }
 
    @Override
-   protected bqd a(dsh $$0, dcd $$1, ja $$2, cmh $$3, evv $$4) {
-      if ($$3.gk()) {
-         if ($$1.B) {
-            return bqd.a;
-         } else {
-            dsh $$5 = $$0.a(c);
-            $$1.a($$2, $$5, 2);
-            $$1.a(dxa.c, $$2, dxa.a.a($$3, $$5));
-            d($$5, $$1, $$2);
-            return bqd.c;
+   protected abstract MapCodec<? extends dhd> a();
+
+   protected ewy[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      float $$5 = 8.0F - $$0;
+      float $$6 = 8.0F + $$0;
+      float $$7 = 8.0F - $$1;
+      float $$8 = 8.0F + $$1;
+      ewy $$9 = dfh.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
+      ewy $$10 = dfh.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
+      ewy $$11 = dfh.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
+      ewy $$12 = dfh.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
+      ewy $$13 = dfh.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
+      ewy $$14 = ewv.a($$10, $$13);
+      ewy $$15 = ewv.a($$11, $$12);
+      ewy[] $$16 = new ewy[]{
+         ewv.a(),
+         $$11,
+         $$12,
+         $$15,
+         $$10,
+         ewv.a($$11, $$10),
+         ewv.a($$12, $$10),
+         ewv.a($$15, $$10),
+         $$13,
+         ewv.a($$11, $$13),
+         ewv.a($$12, $$13),
+         ewv.a($$15, $$13),
+         $$14,
+         ewv.a($$11, $$14),
+         ewv.a($$12, $$14),
+         ewv.a($$15, $$14)
+      };
+
+      for (int $$17 = 0; $$17 < 16; $$17++) {
+         $$16[$$17] = ewv.a($$9, $$16[$$17]);
+      }
+
+      return $$16;
+   }
+
+   @Override
+   protected boolean a_(dsk $$0, dbl $$1, ja $$2) {
+      return !$$0.c(e);
+   }
+
+   @Override
+   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return this.h[this.g($$0)];
+   }
+
+   @Override
+   protected ewy b(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
+      return this.g[this.g($$0)];
+   }
+
+   private static int a(jf $$0) {
+      return 1 << $$0.e();
+   }
+
+   protected int g(dsk $$0) {
+      return this.i.computeIntIfAbsent($$0, $$0x -> {
+         int $$1 = 0;
+         if ($$0x.c(a)) {
+            $$1 |= a(jf.c);
          }
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
+
+         if ($$0x.c(b)) {
+            $$1 |= a(jf.f);
+         }
+
+         if ($$0x.c(c)) {
+            $$1 |= a(jf.d);
+         }
+
+         if ($$0x.c(d)) {
+            $$1 |= a(jf.e);
+         }
+
+         return $$1;
+      });
+   }
+
+   @Override
+   protected eoh b_(dsk $$0) {
+      return $$0.c(e) ? eoi.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dsk $$0, eow $$1) {
+      return false;
+   }
+
+   @Override
+   protected dsk a(dsk $$0, dlu $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.a(a, $$0.c(c)).a(b, $$0.c(d)).a(c, $$0.c(a)).a(d, $$0.c(b));
+         case d:
+            return $$0.a(a, $$0.c(b)).a(b, $$0.c(c)).a(c, $$0.c(d)).a(d, $$0.c(a));
+         case b:
+            return $$0.a(a, $$0.c(d)).a(b, $$0.c(a)).a(c, $$0.c(b)).a(d, $$0.c(c));
+         default:
+            return $$0;
       }
    }
 
    @Override
-   protected dll a_(dsh $$0) {
-      return dll.c;
-   }
-
-   @Override
-   protected boolean e_(dsh $$0) {
-      return true;
-   }
-
-   @Override
-   public dpn a(ja $$0, dsh $$1) {
-      return new dqc($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dpn> dpo<T> a(dcd $$0, dsh $$1, dpp<T> $$2) {
-      return !$$0.B && $$0.D_().g() ? a($$2, dpp.q, dhd::a) : null;
-   }
-
-   private static void a(dcd $$0, ja $$1, dsh $$2, dqc $$3) {
-      if ($$0.Z() % 20L == 0L) {
-         d($$2, $$0, $$1);
+   protected dsk a(dsk $$0, dke $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.a(a, $$0.c(c)).a(c, $$0.c(a));
+         case c:
+            return $$0.a(b, $$0.c(d)).a(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
       }
-   }
-
-   @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
-      $$0.a(b, c);
    }
 }

@@ -1,49 +1,67 @@
 import java.util.List;
+import java.util.function.Predicate;
 
-public class csc extends ctv {
-   public csc(ctv.a $$0) {
-      super($$0);
+public class csc extends ctx {
+   private static final Predicate<bsg> a = bsl.f.and(bsg::bA);
+   private final coh.b b;
+   private final boolean c;
+
+   public csc(boolean $$0, coh.b $$1, ctx.a $$2) {
+      super($$2);
+      this.c = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public bqe<cua> a(dcd $$0, cmh $$1, bqc $$2) {
-      List<brz> $$3 = $$0.a(brz.class, $$1.cK().g(2.0), $$0x -> $$0x != null && $$0x.bD() && $$0x.q() instanceof chk);
-      cua $$4 = $$1.b($$2);
-      if (!$$3.isEmpty()) {
-         brz $$5 = $$3.get(0);
-         $$5.a($$5.g() - 0.5F);
-         $$0.a(null, $$1.du(), $$1.dw(), $$1.dA(), avf.cD, avg.g, 1.0F, 1.0F);
-         $$0.a($$1, dxa.y, $$1.dn());
-         if ($$1 instanceof aql $$6) {
-            am.T.a($$6, $$4, $$5);
-         }
-
-         return bqe.a(this.a($$4, $$1, new cua(cud.vn)), $$0.x_());
+   public bqh<cuc> a(dcf $$0, cmk $$1, bqf $$2) {
+      cuc $$3 = $$1.b($$2);
+      ewd $$4 = a($$0, $$1, dbo.b.c);
+      if ($$4.c() == ewd.a.a) {
+         return bqh.c($$3);
       } else {
-         evv $$7 = a($$0, $$1, dbm.b.b);
-         if ($$7.c() == evx.a.a) {
-            return bqe.c($$4);
-         } else {
-            if ($$7.c() == evx.a.b) {
-               ja $$8 = $$7.a();
-               if (!$$0.a($$1, $$8)) {
-                  return bqe.c($$4);
-               }
+         ewf $$5 = $$1.g(1.0F);
+         double $$6 = 5.0;
+         List<bsg> $$7 = $$0.a($$1, $$1.cL().b($$5.a(5.0)).g(1.0), a);
+         if (!$$7.isEmpty()) {
+            ewf $$8 = $$1.by();
 
-               if ($$0.b_($$8).a(awa.a)) {
-                  $$0.a($$1, $$1.du(), $$1.dw(), $$1.dA(), avf.cC, avg.g, 1.0F, 1.0F);
-                  $$0.a($$1, dxa.y, $$8);
-                  return bqe.a(this.a($$4, $$1, cwb.a(cud.sk, cwc.a)), $$0.x_());
+            for (bsg $$9 : $$7) {
+               ewa $$10 = $$9.cL().g((double)$$9.bL());
+               if ($$10.d($$8)) {
+                  return bqh.c($$3);
                }
             }
+         }
 
-            return bqe.c($$4);
+         if ($$4.c() == ewd.a.b) {
+            coh $$11 = this.a($$0, $$4, $$3, $$1);
+            $$11.a(this.b);
+            $$11.s($$1.dG());
+            if (!$$0.a($$11, $$11.cL())) {
+               return bqh.d($$3);
+            } else {
+               if (!$$0.B) {
+                  $$0.b($$11);
+                  $$0.a($$1, dxg.t, $$4.e());
+                  $$3.a(1, $$1);
+               }
+
+               $$1.b(avr.c.b(this));
+               return bqh.a($$3, $$0.x_());
+            }
+         } else {
+            return bqh.c($$3);
          }
       }
    }
 
-   protected cua a(cua $$0, cmh $$1, cua $$2) {
-      $$1.b(avp.c.b(this));
-      return cuc.a($$0, $$1, $$2);
+   private coh a(dcf $$0, ewd $$1, cuc $$2, cmk $$3) {
+      ewf $$4 = $$1.e();
+      coh $$5 = (coh)(this.c ? new coi($$0, $$4.c, $$4.d, $$4.e) : new coh($$0, $$4.c, $$4.d, $$4.e));
+      if ($$0 instanceof aqm $$6) {
+         bsm.<coh>a($$6, $$2, $$3).accept($$5);
+      }
+
+      return $$5;
    }
 }

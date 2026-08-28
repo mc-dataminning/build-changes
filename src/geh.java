@@ -1,140 +1,94 @@
+import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.util.List;
+import java.util.function.IntSupplier;
 import org.joml.Matrix4f;
 
-public class geh {
-   private static final akk a = new akk("textures/misc/underwater.png");
+public class geh implements AutoCloseable {
+   private final gdt c;
+   public final eyy a;
+   public final eyy b;
+   private final List<IntSupplier> d = Lists.newArrayList();
+   private final List<String> e = Lists.newArrayList();
+   private final List<Integer> f = Lists.newArrayList();
+   private final List<Integer> g = Lists.newArrayList();
+   private Matrix4f h;
+   private final int i;
 
-   public static void a(ffn $$0, fag $$1) {
-      cmh $$2 = $$0.s;
-      if (!$$2.ag) {
-         dsh $$3 = a($$2);
-         if ($$3 != null) {
-            a($$0.ao().a().a($$3), $$1);
-         }
+   public geh(atz $$0, String $$1, eyy $$2, eyy $$3, boolean $$4) throws IOException {
+      this.c = new gdt($$0, $$1);
+      this.a = $$2;
+      this.b = $$3;
+      this.i = $$4 ? 9729 : 9728;
+   }
+
+   @Override
+   public void close() {
+      this.c.close();
+   }
+
+   public final String a() {
+      return this.c.h();
+   }
+
+   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
+      this.e.add(this.e.size(), $$0);
+      this.d.add(this.d.size(), $$1);
+      this.f.add(this.f.size(), $$2);
+      this.g.add(this.g.size(), $$3);
+   }
+
+   public void a(Matrix4f $$0) {
+      this.h = $$0;
+   }
+
+   public void a(float $$0) {
+      this.a.e();
+      float $$1 = (float)this.b.c;
+      float $$2 = (float)this.b.d;
+      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
+      this.c.a("DiffuseSampler", this.a::f);
+
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.c.a(this.e.get($$3), this.d.get($$3));
+         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
       }
 
-      if (!$$0.s.N_()) {
-         if ($$0.s.a(awa.a)) {
-            b($$0, $$1);
-         }
-
-         if ($$0.s.bQ()) {
-            c($$0, $$1);
-         }
-      }
-   }
-
-   @Nullable
-   private static dsh a(cmh $$0) {
-      ja.a $$1 = new ja.a();
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         double $$3 = $$0.du() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dj() * 0.8F);
-         double $$4 = $$0.dy() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F * $$0.eb());
-         double $$5 = $$0.dA() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dj() * 0.8F);
-         $$1.b($$3, $$4, $$5);
-         dsh $$6 = $$0.dP().a_($$1);
-         if ($$6.l() != dll.a && $$6.p($$0.dP(), $$1)) {
-            return $$6;
-         }
-      }
-
-      return null;
-   }
-
-   private static void a(gpi $$0, fag $$1) {
-      RenderSystem.setShaderTexture(0, $$0.i());
-      RenderSystem.setShader(gdq::q);
-      fab $$2 = fai.b().d();
-      float $$3 = 0.1F;
-      float $$4 = -1.0F;
-      float $$5 = 1.0F;
-      float $$6 = -1.0F;
-      float $$7 = 1.0F;
-      float $$8 = -0.5F;
-      float $$9 = $$0.c();
-      float $$10 = $$0.d();
-      float $$11 = $$0.g();
-      float $$12 = $$0.h();
-      Matrix4f $$13 = $$1.c().a();
-      $$2.a(fal.b.h, fae.r);
-      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$12).e();
-      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$12).e();
-      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$11).e();
-      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$11).e();
-      fac.a($$2.d());
-   }
-
-   private static void b(ffn $$0, fag $$1) {
-      RenderSystem.setShader(gdq::r);
-      RenderSystem.setShaderTexture(0, a);
-      fab $$2 = fai.b().d();
-      ja $$3 = ja.a($$0.s.du(), $$0.s.dy(), $$0.s.dA());
-      float $$4 = gdw.a($$0.s.dP().D_(), $$0.s.dP().A($$3));
-      RenderSystem.enableBlend();
-      RenderSystem.setShaderColor($$4, $$4, $$4, 0.1F);
-      float $$5 = 4.0F;
-      float $$6 = -1.0F;
-      float $$7 = 1.0F;
-      float $$8 = -1.0F;
-      float $$9 = 1.0F;
-      float $$10 = -0.5F;
-      float $$11 = -$$0.s.dF() / 64.0F;
-      float $$12 = $$0.s.dH() / 64.0F;
-      Matrix4f $$13 = $$1.c().a();
-      $$2.a(fal.b.h, fae.q);
-      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(4.0F + $$11, 4.0F + $$12).e();
-      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.0F + $$11, 4.0F + $$12).e();
-      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.0F + $$11, 0.0F + $$12).e();
-      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(4.0F + $$11, 0.0F + $$12).e();
-      fac.a($$2.d());
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
-   }
-
-   private static void c(ffn $$0, fag $$1) {
-      fab $$2 = fai.b().d();
-      RenderSystem.setShader(gdq::q);
+      this.c.b("ProjMat").a(this.h);
+      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
+      this.c.b("OutSize").a($$1, $$2);
+      this.c.b("Time").a($$0);
+      fft $$4 = fft.Q();
+      this.c.b("ScreenSize").a((float)$$4.aO().k(), (float)$$4.aO().l());
+      this.c.g();
+      this.b.b(fft.a);
+      this.b.a(false);
       RenderSystem.depthFunc(519);
-      RenderSystem.depthMask(false);
-      RenderSystem.enableBlend();
-      gpi $$3 = gro.b.c();
-      RenderSystem.setShaderTexture(0, $$3.i());
-      float $$4 = $$3.c();
-      float $$5 = $$3.d();
-      float $$6 = ($$4 + $$5) / 2.0F;
-      float $$7 = $$3.g();
-      float $$8 = $$3.h();
-      float $$9 = ($$7 + $$8) / 2.0F;
-      float $$10 = $$3.k();
-      float $$11 = aye.i($$10, $$4, $$6);
-      float $$12 = aye.i($$10, $$5, $$6);
-      float $$13 = aye.i($$10, $$7, $$9);
-      float $$14 = aye.i($$10, $$8, $$9);
-      float $$15 = 1.0F;
-
-      for (int $$16 = 0; $$16 < 2; $$16++) {
-         $$1.a();
-         float $$17 = -0.5F;
-         float $$18 = 0.5F;
-         float $$19 = -0.5F;
-         float $$20 = 0.5F;
-         float $$21 = -0.5F;
-         $$1.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
-         $$1.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
-         Matrix4f $$22 = $$1.c().a();
-         $$2.a(fal.b.h, fae.r);
-         $$2.a($$22, -0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$14).e();
-         $$2.a($$22, 0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$14).e();
-         $$2.a($$22, 0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$13).e();
-         $$2.a($$22, -0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$13).e();
-         fac.a($$2.d());
-         $$1.b();
-      }
-
-      RenderSystem.disableBlend();
-      RenderSystem.depthMask(true);
+      fah $$5 = fao.b().d();
+      $$5.a(far.b.h, fak.m);
+      $$5.a(0.0, 0.0, 500.0).e();
+      $$5.a((double)$$1, 0.0, 500.0).e();
+      $$5.a((double)$$1, (double)$$2, 500.0).e();
+      $$5.a(0.0, (double)$$2, 500.0).e();
+      fai.b($$5.d());
       RenderSystem.depthFunc(515);
+      this.c.f();
+      this.b.e();
+      this.a.d();
+
+      for (Object $$6 : this.d) {
+         if ($$6 instanceof eyy) {
+            ((eyy)$$6).d();
+         }
+      }
+   }
+
+   public gdt b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.i;
    }
 }

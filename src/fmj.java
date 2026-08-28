@@ -1,79 +1,109 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.ibm.icu.text.Collator;
+import java.util.Comparator;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fmj extends fnd {
-   private static final wu a = wu.c("addServer.enterIp");
-   private fhm b;
-   private final fyr c;
-   private fhv q;
-   private final BooleanConsumer r;
-   private final fnd s;
+public class fmj extends fnj {
+   private static final wu a = wu.c("createWorld.customize.buffet.biome").b(-8355712);
+   private static final int b = 8;
+   private final flf c = new flf(this);
+   private final fnj q;
+   private final Consumer<jj<ddf>> r;
+   final jw<ddf> s;
+   private fmj.a u;
+   jj<ddf> v;
+   private fhs w;
 
-   public fmj(fnd $$0, BooleanConsumer $$1, fyr $$2) {
-      super(wu.c("selectServer.direct"));
-      this.s = $$0;
-      this.c = $$2;
-      this.r = $$1;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aI_() != this.q || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.m();
-         return true;
-      }
-   }
-
-   @Override
-   protected void aO_() {
-      this.q = new fhv(this.o, this.m / 2 - 100, 116, 200, 20, wu.c("addServer.enterIp"));
-      this.q.f(128);
-      this.q.a(this.l.m.Z);
-      this.q.b($$0 -> this.E());
-      this.d(this.q);
-      this.b = this.c(fhm.a(wu.c("selectServer.select"), $$0 -> this.m()).a(this.m / 2 - 100, this.n / 4 + 96 + 12, 200, 20).a());
-      this.c(fhm.a(wt.e, $$0 -> this.r.accept(false)).a(this.m / 2 - 100, this.n / 4 + 120 + 12, 200, 20).a());
-      this.E();
-   }
-
-   @Override
-   protected void aD_() {
-      this.b(this.q);
-   }
-
-   @Override
-   public void a(ffn $$0, int $$1, int $$2) {
-      String $$3 = this.q.a();
-      this.b($$0, $$1, $$2);
-      this.q.a($$3);
-   }
-
-   private void m() {
-      this.c.b = this.q.a();
-      this.r.accept(true);
+   public fmj(fnj $$0, fso $$1, Consumer<jj<ddf>> $$2) {
+      super(wu.c("createWorld.customize.buffet.title"));
+      this.q = $$0;
+      this.r = $$2;
+      this.s = $$1.a().d(lr.aE);
+      jj<ddf> $$3 = this.s.b(ddm.b).or(() -> this.s.i().findAny()).orElseThrow();
+      this.v = $$1.e().a().d().c().stream().findFirst().orElse($$3);
    }
 
    @Override
    public void d() {
-      this.l.a(this.s);
+      this.l.a(this.q);
    }
 
    @Override
-   public void j() {
-      this.l.m.Z = this.q.a();
-      this.l.m.av();
-   }
-
-   private void E() {
-      this.b.j = fzv.b(this.q.a());
+   protected void aP_() {
+      flj $$0 = this.c.a(flj.d().a(8));
+      $$0.c().b();
+      $$0.a(new fiz(this.n(), this.o));
+      $$0.a(new fiz(a, this.o));
+      this.u = this.c.c(new fmj.a());
+      flj $$1 = this.c.b(flj.e().a(8));
+      this.w = $$1.a(fhs.a(wt.d, $$0x -> {
+         this.r.accept(this.v);
+         this.d();
+      }).a());
+      $$1.a(fhs.a(wt.e, $$0x -> this.d()).a());
+      this.u.a(this.u.aG_().stream().filter($$0x -> Objects.equals($$0x.b, this.v)).findFirst().orElse(null));
+      this.c.a(this::c);
+      this.c();
    }
 
    @Override
-   public void a(fgz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 20, 16777215);
-      $$0.b(this.o, a, this.m / 2 - 100 + 1, 100, 10526880);
-      this.q.a($$0, $$1, $$2, $$3);
+   protected void c() {
+      this.c.a();
+      this.u.a(this.m, this.c);
+   }
+
+   void m() {
+      this.w.j = this.u.h() != null;
+   }
+
+   class a extends fio<fmj.a.a> {
+      a() {
+         super(fmj.this.l, fmj.this.m, fmj.this.n - 77, 40, 16);
+         Collator $$0 = Collator.getInstance(Locale.getDefault());
+         fmj.this.s.i().map($$0x -> new fmj.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
+      }
+
+      public void a(@Nullable fmj.a.a $$0) {
+         super.a($$0);
+         if ($$0 != null) {
+            fmj.this.v = $$0.b;
+         }
+
+         fmj.this.m();
+      }
+
+      class a extends fio.a<fmj.a.a> {
+         final jj.c<ddf> b;
+         final wu c;
+
+         public a(final jj.c<ddf> $$0) {
+            this.b = $$0;
+            akk $$1 = $$0.h().a();
+            String $$2 = $$1.f("biome");
+            if (ts.a().b($$2)) {
+               this.c = wu.c($$2);
+            } else {
+               this.c = wu.b($$1.toString());
+            }
+         }
+
+         @Override
+         public wu a() {
+            return wu.a("narrator.select", this.c);
+         }
+
+         @Override
+         public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(fmj.this.o, this.c, $$3 + 5, $$2 + 2, 16777215);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return super.a($$0, $$1, $$2);
+         }
+      }
    }
 }

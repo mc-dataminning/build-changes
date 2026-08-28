@@ -42,7 +42,7 @@ public class er {
       alx.a(this.h, $$1);
       aly.a(this.h, $$1);
       alz.a(this.h, $$1);
-      apa.a(this.h);
+      aoz.a(this.h);
       ama.a(this.h);
       amc.a(this.h);
       amg.a(this.h);
@@ -72,43 +72,42 @@ public class er {
       anm.a(this.h);
       ano.a(this.h);
       ann.a(this.h);
+      anp.a(this.h);
       anq.a(this.h);
-      anr.a(this.h);
+      anu.a(this.h);
       anv.a(this.h);
-      anw.a(this.h);
-      anx.a(this.h, $$1);
-      any.a(this.h, $$0 != er.a.c);
-      aoa.a(this.h, $$1);
+      anw.a(this.h, $$1);
+      anx.a(this.h, $$0 != er.a.c);
+      anz.a(this.h, $$1);
+      aob.a(this.h);
       aoc.a(this.h);
-      aod.a(this.h);
+      aoe.a(this.h);
       aof.a(this.h);
-      aog.a(this.h);
-      aoi.a(this.h);
-      aoj.a(this.h, $$1);
-      aok.a(this.h);
-      aol.a(this.h, $$1);
+      aoh.a(this.h);
+      aoi.a(this.h, $$1);
+      aoj.a(this.h);
+      aok.a(this.h, $$1);
+      aol.a(this.h);
       aom.a(this.h);
-      aon.a(this.h);
-      aoo.a(this.h, $$1);
+      aon.a(this.h, $$1);
+      aoo.a(this.h);
       aop.a(this.h);
-      aoq.a(this.h);
-      aor.a(this.h, $$1);
-      aot.a(this.h);
-      aov.a(this.h);
-      aox.a(this.h);
-      if (bmx.f.d()) {
+      aoq.a(this.h, $$1);
+      aos.a(this.h);
+      aou.a(this.h);
+      aow.a(this.h);
+      if (bna.f.d()) {
          amw.a(this.h);
       }
 
-      if (aa.aX) {
+      if (aa.aW) {
          tl.a(this.h);
-         anp.a(this.h);
          anl.a(this.h, $$1);
          amf.a(this.h);
          ame.a(this.h);
-         aou.a(this.h);
-         aoe.a(this.h);
-         anz.a(this.h);
+         aot.a(this.h);
+         aod.a(this.h);
+         any.a(this.h);
          if ($$0.e) {
             amd.a(this.h);
          }
@@ -123,13 +122,13 @@ public class er {
          ane.a(this.h);
          anf.a(this.h);
          anh.a(this.h);
+         anr.a(this.h);
          ans.a(this.h);
          ant.a(this.h);
-         anu.a(this.h);
-         aob.a(this.h);
-         aoh.a(this.h);
-         aos.a(this.h);
-         aow.a(this.h);
+         aoa.a(this.h);
+         aog.a(this.h);
+         aor.a(this.h);
+         aov.a(this.h);
       }
 
       if ($$0.d) {
@@ -152,7 +151,7 @@ public class er {
 
    public void a(ParseResults<eq> $$0, String $$1) {
       eq $$2 = (eq)$$0.getContext().getSource();
-      $$2.l().aT().a(() -> "/" + $$1);
+      $$2.l().aU().a(() -> "/" + $$1);
       ContextChain<eq> $$3 = a($$0, $$1, $$2);
 
       try {
@@ -171,12 +170,12 @@ public class er {
          }
 
          $$2.b(wu.c("command.failed").a($$1x -> $$1x.a(new xa(xa.a.a, $$5))));
-         if (aa.aX) {
+         if (aa.aW) {
             $$2.b(wu.b(ac.c(var12)));
             g.error("'/{}' threw an exception", $$1, var12);
          }
       } finally {
-         $$2.l().aT().c();
+         $$2.l().aU().c();
       }
    }
 
@@ -214,10 +213,10 @@ public class er {
       hp<eq> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aM().c(dbz.x));
-         int $$6 = $$2.aM().c(dbz.y);
+         int $$5 = Math.max(1, $$2.aN().c(dcb.x));
+         int $$6 = $$2.aN().c(dcb.y);
 
-         try (hp<eq> $$7 = new hp<>($$5, $$6, $$2.aT())) {
+         try (hp<eq> $$7 = new hp<>($$5, $$6, $$2.aU())) {
             f.set($$7);
             $$1.accept($$7);
             $$7.a();
@@ -229,11 +228,11 @@ public class er {
       }
    }
 
-   public void a(aql $$0) {
+   public void a(aqn $$0) {
       Map<CommandNode<eq>, CommandNode<ev>> $$1 = Maps.newHashMap();
       RootCommandNode<ev> $$2 = new RootCommandNode();
       $$1.put(this.h.getRoot(), $$2);
-      this.a(this.h.getRoot(), $$2, $$0.dg(), $$1);
+      this.a(this.h.getRoot(), $$2, $$0.dh(), $$1);
       $$0.c.b(new acg($$2));
    }
 
@@ -330,12 +329,12 @@ public class er {
                }
 
                @Override
-               public Optional<jn.c<T>> a(awk<T> $$0xx) {
+               public Optional<jn.c<T>> a(awm<T> $$0xx) {
                   return Optional.of(this.b($$0));
                }
 
                @Override
-               public jn.c<T> b(awk<T> $$0xx) {
+               public jn.c<T> b(awm<T> $$0xx) {
                   Optional<jn.c<T>> $$1 = this.a().a($$0);
                   return $$1.orElseGet(() -> jn.a(this.a(), $$0));
                }

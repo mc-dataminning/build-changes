@@ -1,17 +1,81 @@
-import java.util.EnumSet;
+public abstract class bzq extends bzz {
+   protected btd d;
+   protected ja e = ja.c;
+   protected boolean f;
+   private boolean a;
+   private float b;
+   private float c;
 
-public class bzq extends bzw {
-   private final bta a;
+   public bzq(btd $$0) {
+      this.d = $$0;
+      if (!cdx.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
+      }
+   }
 
-   public bzq(bta $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bzw.a.c));
-      $$0.K().a(true);
+   protected boolean h() {
+      if (!this.f) {
+         return false;
+      } else {
+         dsk $$0 = this.d.dQ().a_(this.e);
+         if (!($$0.b() instanceof dhn)) {
+            this.f = false;
+            return false;
+         } else {
+            return $$0.c(dhn.c);
+         }
+      }
+   }
+
+   protected void a(boolean $$0) {
+      if (this.f) {
+         dsk $$1 = this.d.dQ().a_(this.e);
+         if ($$1.b() instanceof dhn) {
+            ((dhn)$$1.b()).a(this.d, this.d.dQ(), $$1, this.e, $$0);
+         }
+      }
    }
 
    @Override
    public boolean a() {
-      return this.a.be() && this.a.b(awa.a) > this.a.di() || this.a.bs();
+      if (!cdx.a(this.d)) {
+         return false;
+      } else if (!this.d.Q) {
+         return false;
+      } else {
+         ccm $$0 = (ccm)this.d.K();
+         eov $$1 = $$0.j();
+         if ($$1 != null && !$$1.c() && $$0.f()) {
+            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
+               eot $$3 = $$1.a($$2);
+               this.e = new ja($$3.a, $$3.b + 1, $$3.c);
+               if (!(this.d.i((double)this.e.u(), this.d.dx(), (double)this.e.w()) > 2.25)) {
+                  this.f = dhn.a(this.d.dQ(), this.e);
+                  if (this.f) {
+                     return true;
+                  }
+               }
+            }
+
+            this.e = this.d.dq().c();
+            this.f = dhn.a(this.d.dQ(), this.e);
+            return this.f;
+         } else {
+            return false;
+         }
+      }
+   }
+
+   @Override
+   public boolean b() {
+      return !this.a;
+   }
+
+   @Override
+   public void c() {
+      this.a = false;
+      this.b = (float)((double)this.e.u() + 0.5 - this.d.dv());
+      this.c = (float)((double)this.e.w() + 0.5 - this.d.dB());
    }
 
    @Override
@@ -21,8 +85,11 @@ public class bzq extends bzw {
 
    @Override
    public void e() {
-      if (this.a.dS().i() < 0.8F) {
-         this.a.I().a();
+      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dv());
+      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dB());
+      float $$2 = this.b * $$0 + this.c * $$1;
+      if ($$2 < 0.0F) {
+         this.a = true;
       }
    }
 }

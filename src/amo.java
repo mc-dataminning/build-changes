@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 
 public class amo {
    private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("commands.fill.toobig", $$0, $$1));
-   static final gh b = new gh(dfh.a.o(), Collections.emptySet(), null);
+   static final gh b = new gh(dfj.a.o(), Collections.emptySet(), null);
    private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wu.c("commands.fill.failed"));
 
    public static void a(CommandDispatcher<eq> $$0, em $$1) {
@@ -27,14 +27,14 @@ public class amo {
                                                 "block", gj.a($$1)
                                              )
                                              .executes(
-                                                $$0x -> a((eq)$$0x.getSource(), eii.a(gm.a($$0x, "from"), gm.a($$0x, "to")), gj.a($$0x, "block"), amo.a.a, null)
+                                                $$0x -> a((eq)$$0x.getSource(), eio.a(gm.a($$0x, "from"), gm.a($$0x, "to")), gj.a($$0x, "block"), amo.a.a, null)
                                              ))
                                           .then(
                                              ((LiteralArgumentBuilder)er.a("replace")
                                                    .executes(
                                                       $$0x -> a(
                                                             (eq)$$0x.getSource(),
-                                                            eii.a(gm.a($$0x, "from"), gm.a($$0x, "to")),
+                                                            eio.a(gm.a($$0x, "from"), gm.a($$0x, "to")),
                                                             gj.a($$0x, "block"),
                                                             amo.a.a,
                                                             null
@@ -45,7 +45,7 @@ public class amo {
                                                       .executes(
                                                          $$0x -> a(
                                                                (eq)$$0x.getSource(),
-                                                               eii.a(gm.a($$0x, "from"), gm.a($$0x, "to")),
+                                                               eio.a(gm.a($$0x, "from"), gm.a($$0x, "to")),
                                                                gj.a($$0x, "block"),
                                                                amo.a.a,
                                                                gi.a($$0x, "filter")
@@ -58,7 +58,7 @@ public class amo {
                                              .executes(
                                                 $$0x -> a(
                                                       (eq)$$0x.getSource(),
-                                                      eii.a(gm.a($$0x, "from"), gm.a($$0x, "to")),
+                                                      eio.a(gm.a($$0x, "from"), gm.a($$0x, "to")),
                                                       gj.a($$0x, "block"),
                                                       amo.a.a,
                                                       $$0xx -> $$0xx.c().u($$0xx.d())
@@ -68,18 +68,18 @@ public class amo {
                                     .then(
                                        er.a("outline")
                                           .executes(
-                                             $$0x -> a((eq)$$0x.getSource(), eii.a(gm.a($$0x, "from"), gm.a($$0x, "to")), gj.a($$0x, "block"), amo.a.b, null)
+                                             $$0x -> a((eq)$$0x.getSource(), eio.a(gm.a($$0x, "from"), gm.a($$0x, "to")), gj.a($$0x, "block"), amo.a.b, null)
                                           )
                                     ))
                                  .then(
                                     er.a("hollow")
                                        .executes(
-                                          $$0x -> a((eq)$$0x.getSource(), eii.a(gm.a($$0x, "from"), gm.a($$0x, "to")), gj.a($$0x, "block"), amo.a.c, null)
+                                          $$0x -> a((eq)$$0x.getSource(), eio.a(gm.a($$0x, "from"), gm.a($$0x, "to")), gj.a($$0x, "block"), amo.a.c, null)
                                        )
                                  ))
                               .then(
                                  er.a("destroy")
-                                    .executes($$0x -> a((eq)$$0x.getSource(), eii.a(gm.a($$0x, "from"), gm.a($$0x, "to")), gj.a($$0x, "block"), amo.a.d, null))
+                                    .executes($$0x -> a((eq)$$0x.getSource(), eio.a(gm.a($$0x, "from"), gm.a($$0x, "to")), gj.a($$0x, "block"), amo.a.d, null))
                               )
                         )
                   )
@@ -87,22 +87,22 @@ public class amo {
       );
    }
 
-   private static int a(eq $$0, eii $$1, gh $$2, amo.a $$3, @Nullable Predicate<dsl> $$4) throws CommandSyntaxException {
+   private static int a(eq $$0, eio $$1, gh $$2, amo.a $$3, @Nullable Predicate<dso> $$4) throws CommandSyntaxException {
       int $$5 = $$1.d() * $$1.e() * $$1.f();
-      int $$6 = $$0.e().ab().c(dbz.z);
+      int $$6 = $$0.e().ab().c(dcb.z);
       if ($$5 > $$6) {
          throw a.create($$6, $$5);
       } else {
          List<ja> $$7 = Lists.newArrayList();
-         aqk $$8 = $$0.e();
+         aqm $$8 = $$0.e();
          int $$9 = 0;
 
          for (ja $$10 : ja.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
-            if ($$4 == null || $$4.test(new dsl($$8, $$10, true))) {
+            if ($$4 == null || $$4.test(new dso($$8, $$10, true))) {
                gh $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
                if ($$11 != null) {
-                  dpn $$12 = $$8.c_($$10);
-                  bpu.a_($$12);
+                  dpp $$12 = $$8.c_($$10);
+                  bpx.a_($$12);
                   if ($$11.a($$8, $$10, 2)) {
                      $$7.add($$10.i());
                      $$9++;
@@ -112,7 +112,7 @@ public class amo {
          }
 
          for (ja $$13 : $$7) {
-            dff $$14 = $$8.a_($$13).b();
+            dfh $$14 = $$8.a_($$13).b();
             $$8.b($$13, $$14);
          }
 
@@ -153,9 +153,9 @@ public class amo {
          return $$2;
       });
 
-      public final aoa.a e;
+      public final anz.a e;
 
-      private a(final aoa.a $$0) {
+      private a(final anz.a $$0) {
          this.e = $$0;
       }
    }

@@ -1,32 +1,22 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
+import com.mojang.serialization.Dynamic;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class bfy extends DataFix {
-   public bfy(Schema $$0) {
-      super($$0, true);
+public class bfy extends azu {
+   private final Predicate<String> a;
+
+   public bfy(Schema $$0, String $$1, Predicate<String> $$2) {
+      super($$0, $$1);
+      this.a = $$2.negate();
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgd.B);
-      Type<?> $$1 = this.getOutputSchema().getType(bgd.B);
-      return this.fixTypeEverywhereTyped("Fix Arrow stored weapon", $$0, $$1, azn.a(this.a("minecraft:arrow"), this.a("minecraft:spectral_arrow")));
+   @Override
+   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.filter(this::a);
    }
 
-   private Function<Typed<?>, Typed<?>> a(String $$0) {
-      Type<?> $$1 = this.getInputSchema().getChoiceType(bgd.B, $$0);
-      Type<?> $$2 = this.getOutputSchema().getChoiceType(bgd.B, $$0);
-      return a($$0, $$1, $$2);
-   }
-
-   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, Type<?> $$1, Type<T> $$2) {
-      OpticFinder<?> $$3 = DSL.namedChoice($$0, $$1);
-      return $$2x -> $$2x.updateTyped($$3, $$2, $$1xx -> ac.a($$1xx, $$2, UnaryOperator.identity()));
+   private <T> boolean a(Dynamic<T> $$0) {
+      return $$0.get("type").asString().result().filter(this.a).isPresent();
    }
 }

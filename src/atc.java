@@ -1,180 +1,98 @@
 import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class atc {
-   private static final Logger a = LogUtils.getLogger();
-   private final asf b;
-   private final atc.c c;
-   private final atc.a d;
-   private final ash e;
+public class atc implements atj {
+   static final Logger a = LogUtils.getLogger();
+   private static final asj b = new asj(false, ate.b.a, false);
+   private final Path c;
+   private final ask d;
+   private final ati e;
+   private final evv f;
 
-   @Nullable
-   public static atc a(asf $$0, atc.c $$1, asi $$2, ash $$3) {
-      int $$4 = aa.b().a($$2);
-      atc.a $$5 = a($$0, $$1, $$4);
-      return $$5 != null ? new atc($$0, $$1, $$5, $$3) : null;
+   public atc(Path $$0, ask $$1, ati $$2, evv $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public atc(asf $$0, atc.c $$1, atc.a $$2, ash $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   private static String a(Path $$0) {
+      return $$0.getFileName().toString();
    }
 
-   @Nullable
-   public static atc.a a(asf $$0, atc.c $$1, int $$2) {
+   @Override
+   public void loadPacks(Consumer<ate> $$0) {
       try {
-         atc.a var11;
-         try (asg $$3 = $$1.a($$0)) {
-            asv $$4 = $$3.a(asv.b);
-            if ($$4 == null) {
-               a.warn("Missing metadata in pack {}", $$0.a());
-               return null;
+         v.c(this.c);
+         a(this.c, this.f, ($$1, $$2) -> {
+            ash $$3 = this.b($$1);
+            ate $$4 = ate.a($$3, $$2, this.d, b);
+            if ($$4 != null) {
+               $$0.accept($$4);
             }
-
-            asc $$5 = $$3.a(asc.a);
-            cov $$6 = $$5 != null ? $$5.a() : cov.a();
-            axw<Integer> $$7 = a($$0.a(), $$4);
-            atd $$8 = atd.a($$7, $$2);
-            ase $$9 = $$3.a(ase.a);
-            List<String> $$10 = $$9 != null ? $$9.a($$2) : List.of();
-            var11 = new atc.a($$4.a(), $$8, $$6, $$10);
-         }
-
-         return var11;
-      } catch (Exception var14) {
-         a.warn("Failed to read pack {} metadata", $$0.a(), var14);
-         return null;
+         });
+      } catch (IOException var3) {
+         a.warn("Failed to list packs in {}", this.c, var3);
       }
    }
 
-   private static axw<Integer> a(String $$0, asv $$1) {
-      int $$2 = $$1.b();
-      if ($$1.c().isEmpty()) {
-         return new axw<>($$2);
-      } else {
-         axw<Integer> $$3 = $$1.c().get();
-         if (!$$3.a($$2)) {
-            a.warn("Pack {} declared support for versions {} but declared main format is {}, defaulting to {}", new Object[]{$$0, $$3, $$2, $$2});
-            return new axw<>($$2);
-         } else {
-            return $$3;
-         }
-      }
+   private ash b(Path $$0) {
+      String $$1 = a($$0);
+      return new ash("file/" + $$1, wu.b($$1), this.e, Optional.empty());
    }
 
-   public asf a() {
-      return this.b;
-   }
+   public static void a(Path $$0, evv $$1, BiConsumer<Path, ate.c> $$2) throws IOException {
+      atc.a $$3 = new atc.a($$1);
 
-   public wu b() {
-      return this.b.b();
-   }
-
-   public wu c() {
-      return this.d.a();
-   }
-
-   public wu a(boolean $$0) {
-      return this.b.a($$0, this.d.a);
-   }
-
-   public atd d() {
-      return this.d.b();
-   }
-
-   public cov e() {
-      return this.d.c();
-   }
-
-   public asg f() {
-      return this.c.a(this.b, this.d);
-   }
-
-   public String g() {
-      return this.b.a();
-   }
-
-   public ash h() {
-      return this.e;
-   }
-
-   public boolean i() {
-      return this.e.a();
-   }
-
-   public boolean j() {
-      return this.e.c();
-   }
-
-   public atc.b k() {
-      return this.e.b();
-   }
-
-   public atg l() {
-      return this.b.c();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof atc $$1) ? false : this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public static record a(wu a, atd b, cov c, List<String> d) {
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      public <T> int a(List<T> $$0, T $$1, Function<T, ash> $$2, boolean $$3) {
-         atc.b $$4 = $$3 ? this.a() : this;
-         if ($$4 == b) {
-            int $$5;
-            for ($$5 = 0; $$5 < $$0.size(); $$5++) {
-               ash $$6 = $$2.apply($$0.get($$5));
-               if (!$$6.c() || $$6.b() != this) {
-                  break;
+      try (DirectoryStream<Path> $$4 = Files.newDirectoryStream($$0)) {
+         for (Path $$5 : $$4) {
+            try {
+               List<evw> $$6 = new ArrayList<>();
+               ate.c $$7 = $$3.a($$5, $$6);
+               if (!$$6.isEmpty()) {
+                  a.warn("Ignoring potential pack entry: {}", evu.a($$5, $$6));
+               } else if ($$7 != null) {
+                  $$2.accept($$5, $$7);
+               } else {
+                  a.info("Found non-pack entry '{}', ignoring", $$5);
                }
+            } catch (IOException var10) {
+               a.warn("Failed to read properties of '{}', ignoring", $$5, var10);
             }
-
-            $$0.add($$5, $$1);
-            return $$5;
-         } else {
-            int $$7;
-            for ($$7 = $$0.size() - 1; $$7 >= 0; $$7--) {
-               ash $$8 = $$2.apply($$0.get($$7));
-               if (!$$8.c() || $$8.b() != this) {
-                  break;
-               }
-            }
-
-            $$0.add($$7 + 1, $$1);
-            return $$7 + 1;
          }
-      }
-
-      public atc.b a() {
-         return this == a ? b : a;
       }
    }
 
-   public interface c {
-      asg a(asf var1);
+   static class a extends atg<ate.c> {
+      protected a(evv $$0) {
+         super($$0);
+      }
 
-      asg a(asf var1, atc.a var2);
+      @Nullable
+      protected ate.c a(Path $$0) {
+         FileSystem $$1 = $$0.getFileSystem();
+         if ($$1 != FileSystems.getDefault() && !($$1 instanceof ass)) {
+            atc.a.info("Can't open pack archive at {}", $$0);
+            return null;
+         } else {
+            return new asf.a($$0);
+         }
+      }
+
+      protected ate.c b(Path $$0) {
+         return new asl.a($$0);
+      }
    }
 }

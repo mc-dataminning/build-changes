@@ -32,23 +32,23 @@ public abstract class aqc {
    static final Logger a = LogUtils.getLogger();
    static final int b = aps.a(aqd.d);
    private static final int c = 4;
-   final Long2ObjectMap<ObjectSet<aql>> d = new Long2ObjectOpenHashMap();
-   final Long2ObjectOpenHashMap<ayw<aqo<?>>> e = new Long2ObjectOpenHashMap();
+   final Long2ObjectMap<ObjectSet<aqn>> d = new Long2ObjectOpenHashMap();
+   final Long2ObjectOpenHashMap<ayy<aqq<?>>> e = new Long2ObjectOpenHashMap();
    private final aqc.a f = new aqc.a();
    private final aqc.b g = new aqc.b(8);
-   private final aqq h = new aqq();
+   private final aqs h = new aqs();
    private final aqc.c i = new aqc.c(32);
    final Set<apr> j = Sets.newHashSet();
    final apw k;
-   final bov<apw.a<Runnable>> l;
-   final bov<apw.b> m;
+   final boy<apw.a<Runnable>> l;
+   final boy<apw.b> m;
    final LongSet n = new LongOpenHashSet();
    final Executor o;
    private long p;
    private int q = 10;
 
    protected aqc(Executor $$0, Executor $$1) {
-      bov<Runnable> $$2 = bov.a("player ticket throttler", $$1::execute);
+      boy<Runnable> $$2 = boy.a("player ticket throttler", $$1::execute);
       apw $$3 = new apw(ImmutableList.of($$2), $$0, 4);
       this.k = $$3;
       this.l = $$3.a($$2, true);
@@ -58,15 +58,15 @@ public abstract class aqc {
 
    protected void a() {
       this.p++;
-      ObjectIterator<Entry<ayw<aqo<?>>>> $$0 = this.e.long2ObjectEntrySet().fastIterator();
+      ObjectIterator<Entry<ayy<aqq<?>>>> $$0 = this.e.long2ObjectEntrySet().fastIterator();
 
       while ($$0.hasNext()) {
-         Entry<ayw<aqo<?>>> $$1 = (Entry<ayw<aqo<?>>>)$$0.next();
-         Iterator<aqo<?>> $$2 = ((ayw)$$1.getValue()).iterator();
+         Entry<ayy<aqq<?>>> $$1 = (Entry<ayy<aqq<?>>>)$$0.next();
+         Iterator<aqq<?>> $$2 = ((ayy)$$1.getValue()).iterator();
          boolean $$3 = false;
 
          while ($$2.hasNext()) {
-            aqo<?> $$4 = $$2.next();
+            aqq<?> $$4 = $$2.next();
             if ($$4.b(this.p)) {
                $$2.remove();
                $$3 = true;
@@ -75,17 +75,17 @@ public abstract class aqc {
          }
 
          if ($$3) {
-            this.f.b($$1.getLongKey(), a((ayw<aqo<?>>)$$1.getValue()), false);
+            this.f.b($$1.getLongKey(), a((ayy<aqq<?>>)$$1.getValue()), false);
          }
 
-         if (((ayw)$$1.getValue()).isEmpty()) {
+         if (((ayy)$$1.getValue()).isEmpty()) {
             $$0.remove();
          }
       }
    }
 
-   private static int a(ayw<aqo<?>> $$0) {
-      return !$$0.isEmpty() ? $$0.b().b() : aps.a + 1;
+   private static int a(ayy<aqq<?>> $$0) {
+      return !$$0.isEmpty() ? $$0.b().b() : aps.b + 1;
    }
 
    protected abstract boolean a(long var1);
@@ -106,6 +106,7 @@ public abstract class aqc {
       }
 
       if (!this.j.isEmpty()) {
+         this.j.forEach($$1x -> $$1x.a($$0));
          this.j.forEach($$1x -> $$1x.a($$0, this.o));
          this.j.clear();
          return true;
@@ -115,13 +116,13 @@ public abstract class aqc {
 
             while ($$3.hasNext()) {
                long $$4 = $$3.nextLong();
-               if (this.g($$4).stream().anyMatch($$0x -> $$0x.a() == aqp.c)) {
+               if (this.g($$4).stream().anyMatch($$0x -> $$0x.a() == aqr.c)) {
                   apr $$5 = $$0.a($$4);
                   if ($$5 == null) {
                      throw new IllegalStateException();
                   }
 
-                  CompletableFuture<apu<dun>> $$6 = $$5.b();
+                  CompletableFuture<apu<duq>> $$6 = $$5.b();
                   $$6.thenAccept($$1x -> this.o.execute(() -> this.m.a(apw.a(() -> {
                         }, $$4, false))));
                }
@@ -134,18 +135,18 @@ public abstract class aqc {
       }
    }
 
-   void a(long $$0, aqo<?> $$1) {
-      ayw<aqo<?>> $$2 = this.g($$0);
+   void a(long $$0, aqq<?> $$1) {
+      ayy<aqq<?>> $$2 = this.g($$0);
       int $$3 = a($$2);
-      aqo<?> $$4 = $$2.a($$1);
+      aqq<?> $$4 = $$2.a($$1);
       $$4.a(this.p);
       if ($$1.b() < $$3) {
          this.f.b($$0, $$1.b(), true);
       }
    }
 
-   void b(long $$0, aqo<?> $$1) {
-      ayw<aqo<?>> $$2 = this.g($$0);
+   void b(long $$0, aqq<?> $$1) {
+      ayy<aqq<?>> $$2 = this.g($$0);
       if ($$2.remove($$1)) {
       }
 
@@ -156,35 +157,35 @@ public abstract class aqc {
       this.f.b($$0, a($$2), false);
    }
 
-   public <T> void a(aqp<T> $$0, dbk $$1, int $$2, T $$3) {
-      this.a($$1.a(), new aqo<>($$0, $$2, $$3));
+   public <T> void a(aqr<T> $$0, dbm $$1, int $$2, T $$3) {
+      this.a($$1.a(), new aqq<>($$0, $$2, $$3));
    }
 
-   public <T> void b(aqp<T> $$0, dbk $$1, int $$2, T $$3) {
-      aqo<T> $$4 = new aqo<>($$0, $$2, $$3);
+   public <T> void b(aqr<T> $$0, dbm $$1, int $$2, T $$3) {
+      aqq<T> $$4 = new aqq<>($$0, $$2, $$3);
       this.b($$1.a(), $$4);
    }
 
-   public <T> void c(aqp<T> $$0, dbk $$1, int $$2, T $$3) {
-      aqo<T> $$4 = new aqo<>($$0, aps.a(aqd.b) - $$2, $$3);
+   public <T> void c(aqr<T> $$0, dbm $$1, int $$2, T $$3) {
+      aqq<T> $$4 = new aqq<>($$0, aps.a(aqd.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.a($$5, $$4);
       this.h.a($$5, $$4);
    }
 
-   public <T> void d(aqp<T> $$0, dbk $$1, int $$2, T $$3) {
-      aqo<T> $$4 = new aqo<>($$0, aps.a(aqd.b) - $$2, $$3);
+   public <T> void d(aqr<T> $$0, dbm $$1, int $$2, T $$3) {
+      aqq<T> $$4 = new aqq<>($$0, aps.a(aqd.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.b($$5, $$4);
       this.h.b($$5, $$4);
    }
 
-   private ayw<aqo<?>> g(long $$0) {
-      return (ayw<aqo<?>>)this.e.computeIfAbsent($$0, $$0x -> ayw.a(4));
+   private ayy<aqq<?>> g(long $$0) {
+      return (ayy<aqq<?>>)this.e.computeIfAbsent($$0, $$0x -> ayy.a(4));
    }
 
-   protected void a(dbk $$0, boolean $$1) {
-      aqo<dbk> $$2 = new aqo<>(aqp.d, apt.c, $$0);
+   protected void a(dbm $$0, boolean $$1) {
+      aqq<dbm> $$2 = new aqq<>(aqr.d, apt.c, $$0);
       long $$3 = $$0.a();
       if ($$1) {
          this.a($$3, $$2);
@@ -195,25 +196,25 @@ public abstract class aqc {
       }
    }
 
-   public void a(kc $$0, aql $$1) {
-      dbk $$2 = $$0.r();
+   public void a(kc $$0, aqn $$1) {
+      dbm $$2 = $$0.r();
       long $$3 = $$2.a();
       ((ObjectSet)this.d.computeIfAbsent($$3, $$0x -> new ObjectOpenHashSet())).add($$1);
       this.g.b($$3, 0, true);
       this.i.b($$3, 0, true);
-      this.h.a(aqp.c, $$2, this.g(), $$2);
+      this.h.a(aqr.c, $$2, this.g(), $$2);
    }
 
-   public void b(kc $$0, aql $$1) {
-      dbk $$2 = $$0.r();
+   public void b(kc $$0, aqn $$1) {
+      dbm $$2 = $$0.r();
       long $$3 = $$2.a();
-      ObjectSet<aql> $$4 = (ObjectSet<aql>)this.d.get($$3);
+      ObjectSet<aqn> $$4 = (ObjectSet<aqn>)this.d.get($$3);
       $$4.remove($$1);
       if ($$4.isEmpty()) {
          this.d.remove($$3);
          this.g.b($$3, Integer.MAX_VALUE, false);
          this.i.b($$3, Integer.MAX_VALUE, false);
-         this.h.b(aqp.c, $$2, this.g(), $$2);
+         this.h.b(aqr.c, $$2, this.g(), $$2);
       }
    }
 
@@ -222,15 +223,15 @@ public abstract class aqc {
    }
 
    public boolean c(long $$0) {
-      return aps.c(this.h.c($$0));
-   }
-
-   public boolean d(long $$0) {
       return aps.d(this.h.c($$0));
    }
 
+   public boolean d(long $$0) {
+      return aps.e(this.h.c($$0));
+   }
+
    protected String e(long $$0) {
-      ayw<aqo<?>> $$1 = (ayw<aqo<?>>)this.e.get($$0);
+      ayy<aqq<?>> $$1 = (ayy<aqq<?>>)this.e.get($$0);
       return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
    }
 
@@ -264,10 +265,10 @@ public abstract class aqc {
          ObjectIterator var3 = this.e.long2ObjectEntrySet().iterator();
 
          while (var3.hasNext()) {
-            Entry<ayw<aqo<?>>> $$2 = (Entry<ayw<aqo<?>>>)var3.next();
-            dbk $$3 = new dbk($$2.getLongKey());
+            Entry<ayy<aqq<?>>> $$2 = (Entry<ayy<aqq<?>>>)var3.next();
+            dbm $$3 = new dbm($$2.getLongKey());
 
-            for (aqo<?> $$4 : (ayw)$$2.getValue()) {
+            for (aqq<?> $$4 : (ayy)$$2.getValue()) {
                $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4.a() + "\t" + $$4.b() + "\t\n").getBytes(StandardCharsets.UTF_8));
             }
          }
@@ -277,21 +278,21 @@ public abstract class aqc {
    }
 
    @VisibleForTesting
-   aqq d() {
+   aqs d() {
       return this.h;
    }
 
    public void e() {
-      ImmutableSet<aqp<?>> $$0 = ImmutableSet.of(aqp.h, aqp.g, aqp.e);
-      ObjectIterator<Entry<ayw<aqo<?>>>> $$1 = this.e.long2ObjectEntrySet().fastIterator();
+      ImmutableSet<aqr<?>> $$0 = ImmutableSet.of(aqr.g, aqr.f);
+      ObjectIterator<Entry<ayy<aqq<?>>>> $$1 = this.e.long2ObjectEntrySet().fastIterator();
 
       while ($$1.hasNext()) {
-         Entry<ayw<aqo<?>>> $$2 = (Entry<ayw<aqo<?>>>)$$1.next();
-         Iterator<aqo<?>> $$3 = ((ayw)$$2.getValue()).iterator();
+         Entry<ayy<aqq<?>>> $$2 = (Entry<ayy<aqq<?>>>)$$1.next();
+         Iterator<aqq<?>> $$3 = ((ayy)$$2.getValue()).iterator();
          boolean $$4 = false;
 
          while ($$3.hasNext()) {
-            aqo<?> $$5 = $$3.next();
+            aqq<?> $$5 = $$3.next();
             if (!$$0.contains($$5.a())) {
                $$3.remove();
                $$4 = true;
@@ -300,10 +301,10 @@ public abstract class aqc {
          }
 
          if ($$4) {
-            this.f.b($$2.getLongKey(), a((ayw<aqo<?>>)$$2.getValue()), false);
+            this.f.b($$2.getLongKey(), a((ayy<aqq<?>>)$$2.getValue()), false);
          }
 
-         if (((ayw)$$2.getValue()).isEmpty()) {
+         if (((ayy)$$2.getValue()).isEmpty()) {
             $$1.remove();
          }
       }
@@ -314,7 +315,7 @@ public abstract class aqc {
    }
 
    class a extends apx {
-      private static final int b = aps.a + 1;
+      private static final int b = aps.b + 1;
 
       public a() {
          super(b + 1, 16, 256);
@@ -322,7 +323,7 @@ public abstract class aqc {
 
       @Override
       protected int b(long $$0) {
-         ayw<aqo<?>> $$1 = (ayw<aqo<?>>)aqc.this.e.get($$0);
+         ayy<aqq<?>> $$1 = (ayy<aqq<?>>)aqc.this.e.get($$0);
          if ($$1 == null) {
             return Integer.MAX_VALUE;
          } else {
@@ -335,7 +336,7 @@ public abstract class aqc {
          if (!aqc.this.a($$0)) {
             apr $$1 = aqc.this.b($$0);
             if ($$1 != null) {
-               return $$1.l();
+               return $$1.i();
             }
          }
 
@@ -345,7 +346,7 @@ public abstract class aqc {
       @Override
       protected void a(long $$0, int $$1) {
          apr $$2 = aqc.this.b($$0);
-         int $$3 = $$2 == null ? b : $$2.l();
+         int $$3 = $$2 == null ? b : $$2.i();
          if ($$3 != $$1) {
             $$2 = aqc.this.a($$0, $$1, $$2, $$3);
             if ($$2 != null) {
@@ -395,7 +396,7 @@ public abstract class aqc {
       }
 
       private boolean d(long $$0) {
-         ObjectSet<aql> $$1 = (ObjectSet<aql>)aqc.this.d.get($$0);
+         ObjectSet<aqn> $$1 = (ObjectSet<aqn>)aqc.this.d.get($$0);
          return $$1 != null && !$$1.isEmpty();
       }
 
@@ -409,7 +410,7 @@ public abstract class aqc {
 
             while (var3.hasNext()) {
                it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$2 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var3.next();
-               dbk $$3 = new dbk($$2.getLongKey());
+               dbm $$3 = new dbm($$2.getLongKey());
                String $$4 = Byte.toString($$2.getByteValue());
                $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4 + "\n").getBytes(StandardCharsets.UTF_8));
             }
@@ -450,7 +451,7 @@ public abstract class aqc {
 
       private void a(long $$0, int $$1, boolean $$2, boolean $$3) {
          if ($$2 != $$3) {
-            aqo<?> $$4 = new aqo<>(aqp.c, aqc.b, new dbk($$0));
+            aqq<?> $$4 = new aqq<>(aqr.c, aqc.b, new dbm($$0));
             if ($$3) {
                aqc.this.l.a(apw.a(() -> aqc.this.o.execute(() -> {
                      if (this.c(this.c($$0))) {
@@ -478,7 +479,7 @@ public abstract class aqc {
                int $$2 = this.h.get($$1);
                int $$3 = this.c($$1);
                if ($$2 != $$3) {
-                  aqc.this.k.onLevelChange(new dbk($$1), () -> this.h.get($$1), $$3, $$1x -> {
+                  aqc.this.k.onLevelChange(new dbm($$1), () -> this.h.get($$1), $$3, $$1x -> {
                      if ($$1x >= this.h.defaultReturnValue()) {
                         this.h.remove($$1);
                      } else {

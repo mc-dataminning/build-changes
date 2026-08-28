@@ -1,19 +1,14 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
-public interface dwq<T extends dwh> {
-   @Nullable
-   T a(int var1);
+public interface dwq<T> extends AutoCloseable {
+   CompletableFuture<dwl<T>> a(dbm var1);
 
-   @Nullable
-   T a(UUID var1);
+   void a(dwl<T> var1);
 
-   Iterable<T> a();
+   void a(boolean var1);
 
-   <U extends T> void a(dwo<T, U> var1, awq<U> var2);
-
-   void a(evu var1, Consumer<T> var2);
-
-   <U extends T> void a(dwo<T, U> var1, evu var2, awq<U> var3);
+   @Override
+   default void close() throws IOException {
+   }
 }

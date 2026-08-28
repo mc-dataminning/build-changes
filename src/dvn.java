@@ -1,31 +1,8 @@
-import com.mojang.datafixers.DataFixer;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import org.apache.commons.io.FileUtils;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class dvn extends dvk {
-   private final dvm a;
-   private final Path b;
-
-   public dvn(dvt $$0, Path $$1, dvt $$2, Path $$3, DataFixer $$4, boolean $$5) {
-      super($$0, $$1, $$4, $$5);
-      this.b = $$3;
-      this.a = new dvm($$2, $$3, $$5);
-   }
-
-   @Override
-   public CompletableFuture<Void> a(dbk $$0, tx $$1) {
-      this.f($$0);
-      return this.a.a($$0, $$1);
-   }
-
-   @Override
-   public void close() throws IOException {
-      super.close();
-      this.a.close();
-      if (this.b.toFile().exists()) {
-         FileUtils.deleteDirectory(this.b.toFile());
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dvn {
 }

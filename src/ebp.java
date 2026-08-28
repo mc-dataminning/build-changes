@@ -1,53 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ebp extends eah {
-   public ebp(Codec<edk> $$0) {
-      super($$0);
-   }
+public class ebp implements edo {
+   public static final Codec<ebp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               akk.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               akk.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               emv.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               emv.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ebp::new)
+   );
+   public final List<akk> b;
+   public final List<akk> c;
+   public final jj<emu> d;
+   public final jj<emu> e;
+   public final int f;
 
-   @Override
-   protected void a(dce $$0, aym $$1, ja $$2, int $$3, ja.a $$4, edk $$5) {
-      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
-         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
-         int $$8 = $$5.d - 2;
-
-         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
-            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
-               boolean $$11 = $$9 == -$$7;
-               boolean $$12 = $$9 == $$7;
-               boolean $$13 = $$10 == -$$7;
-               boolean $$14 = $$10 == $$7;
-               boolean $$15 = $$11 || $$12;
-               boolean $$16 = $$13 || $$14;
-               if ($$6 >= $$3 || $$15 != $$16) {
-                  $$4.a($$2, $$9, $$6, $$10);
-                  if (!$$0.a_($$4).i($$0, $$4)) {
-                     dsh $$17 = $$5.b.a($$1, $$2);
-                     if ($$17.b(djc.e) && $$17.b(djc.c) && $$17.b(djc.b) && $$17.b(djc.d) && $$17.b(djc.f)) {
-                        $$17 = $$17.a(djc.f, Boolean.valueOf($$6 >= $$3 - 1))
-                           .a(djc.e, Boolean.valueOf($$9 < -$$8))
-                           .a(djc.c, Boolean.valueOf($$9 > $$8))
-                           .a(djc.b, Boolean.valueOf($$10 < -$$8))
-                           .a(djc.d, Boolean.valueOf($$10 > $$8));
-                     }
-
-                     this.a($$0, $$4, $$17);
-                  }
-               }
-            }
-         }
+   public ebp(List<akk> $$0, List<akk> $$1, jj<emu> $$2, jj<emu> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
+      } else {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
-   }
-
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 0;
-      if ($$3 < $$1 && $$3 >= $$1 - 3) {
-         $$4 = $$2;
-      } else if ($$3 == $$1) {
-         $$4 = $$2;
-      }
-
-      return $$4;
    }
 }

@@ -1,78 +1,40 @@
-public interface dav {
-   akj<daq> a = daw.a("trades/desert_armorer_boots_4");
-   akj<daq> b = daw.a("trades/desert_armorer_leggings_4");
-   akj<daq> c = daw.a("trades/desert_armorer_chestplate_4");
-   akj<daq> d = daw.a("trades/desert_armorer_helmet_4");
-   akj<daq> e = daw.a("trades/desert_armorer_leggings_5");
-   akj<daq> f = daw.a("trades/desert_armorer_chestplate_5");
-   akj<daq> g = daw.a("trades/plains_armorer_boots_4");
-   akj<daq> h = daw.a("trades/plains_armorer_leggings_4");
-   akj<daq> i = daw.a("trades/plains_armorer_chestplate_4");
-   akj<daq> j = daw.a("trades/plains_armorer_helmet_4");
-   akj<daq> k = daw.a("trades/plains_armorer_boots_5");
-   akj<daq> l = daw.a("trades/plains_armorer_leggings_5");
-   akj<daq> m = daw.a("trades/savanna_armorer_boots_4");
-   akj<daq> n = daw.a("trades/savanna_armorer_leggings_4");
-   akj<daq> o = daw.a("trades/savanna_armorer_chestplate_4");
-   akj<daq> p = daw.a("trades/savanna_armorer_helmet_4");
-   akj<daq> q = daw.a("trades/savanna_armorer_chestplate_5");
-   akj<daq> r = daw.a("trades/savanna_armorer_helmet_5");
-   akj<daq> s = daw.a("trades/snow_armorer_boots_4");
-   akj<daq> t = daw.a("trades/snow_armorer_helmet_4");
-   akj<daq> u = daw.a("trades/snow_armorer_boots_5");
-   akj<daq> v = daw.a("trades/snow_armorer_helmet_5");
-   akj<daq> w = daw.a("trades/jungle_armorer_boots_4");
-   akj<daq> x = daw.a("trades/jungle_armorer_leggings_4");
-   akj<daq> y = daw.a("trades/jungle_armorer_chestplate_4");
-   akj<daq> z = daw.a("trades/jungle_armorer_helmet_4");
-   akj<daq> A = daw.a("trades/jungle_armorer_boots_5");
-   akj<daq> B = daw.a("trades/jungle_armorer_helmet_5");
-   akj<daq> C = daw.a("trades/swamp_armorer_boots_4");
-   akj<daq> D = daw.a("trades/swamp_armorer_leggings_4");
-   akj<daq> E = daw.a("trades/swamp_armorer_chestplate_4");
-   akj<daq> F = daw.a("trades/swamp_armorer_helmet_4");
-   akj<daq> G = daw.a("trades/swamp_armorer_boots_5");
-   akj<daq> H = daw.a("trades/swamp_armorer_helmet_5");
-   akj<daq> I = daw.a("trades/taiga_armorer_leggings_5");
-   akj<daq> J = daw.a("trades/taiga_armorer_chestplate_5");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(qm<daq> $$0) {
-      jk<czj> $$1 = $$0.a(lr.aK);
-      $$0.a(a, new dau($$1.b(czo.h), bpf.a(1)));
-      $$0.a(b, new dau($$1.b(czo.h), bpf.a(1)));
-      $$0.a(c, new dau($$1.b(czo.h), bpf.a(1)));
-      $$0.a(d, new dau($$1.b(czo.h), bpf.a(1)));
-      $$0.a(e, new dau($$1.b(czo.h), bpf.a(1)));
-      $$0.a(f, new dau($$1.b(czo.h), bpf.a(1)));
-      $$0.a(g, new dau($$1.b(czo.a), bpf.a(1)));
-      $$0.a(h, new dau($$1.b(czo.a), bpf.a(1)));
-      $$0.a(i, new dau($$1.b(czo.a), bpf.a(1)));
-      $$0.a(j, new dau($$1.b(czo.a), bpf.a(1)));
-      $$0.a(k, new dau($$1.b(czo.a), bpf.a(1)));
-      $$0.a(l, new dau($$1.b(czo.a), bpf.a(1)));
-      $$0.a(m, new dau($$1.b(czo.k), bpf.a(1)));
-      $$0.a(n, new dau($$1.b(czo.k), bpf.a(1)));
-      $$0.a(o, new dau($$1.b(czo.k), bpf.a(1)));
-      $$0.a(p, new dau($$1.b(czo.k), bpf.a(1)));
-      $$0.a(q, new dau($$1.b(czo.k), bpf.a(1)));
-      $$0.a(r, new dau($$1.b(czo.k), bpf.a(1)));
-      $$0.a(s, new dau($$1.b(czo.j), bpf.a(1)));
-      $$0.a(t, new dau($$1.b(czo.g), bpf.a(1)));
-      $$0.a(u, new dau($$1.b(czo.j), bpf.a(1)));
-      $$0.a(v, new dau($$1.b(czo.g), bpf.a(1)));
-      $$0.a(w, new dau($$1.b(czo.w), bpf.a(1)));
-      $$0.a(x, new dau($$1.b(czo.w), bpf.a(1)));
-      $$0.a(y, new dau($$1.b(czo.w), bpf.a(1)));
-      $$0.a(z, new dau($$1.b(czo.w), bpf.a(1)));
-      $$0.a(A, new dau($$1.b(czo.c), bpf.a(1)));
-      $$0.a(B, new dau($$1.b(czo.e), bpf.a(1)));
-      $$0.a(C, new dau($$1.b(czo.O), bpf.a(1)));
-      $$0.a(D, new dau($$1.b(czo.O), bpf.a(1)));
-      $$0.a(E, new dau($$1.b(czo.O), bpf.a(1)));
-      $$0.a(F, new dau($$1.b(czo.O), bpf.a(1)));
-      $$0.a(G, new dau($$1.b(czo.i), bpf.a(1)));
-      $$0.a(H, new dau($$1.b(czo.f), bpf.a(1)));
-      $$0.a(I, new dau($$1.b(czo.d), bpf.a(1)));
-      $$0.a(J, new dau($$1.b(czo.d), bpf.a(1)));
+public record dav(jn<czl> c, int d, int e) implements das {
+   public static final MapCodec<dav> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               jy.a(lr.aK).fieldOf("enchantments").forGetter(dav::b),
+               axo.l.fieldOf("min_cost").forGetter(dav::c),
+               axo.k.fieldOf("max_cost_span").forGetter(dav::d)
+            )
+            .apply($$0, dav::new)
+   );
+
+   @Override
+   public void a(cuc $$0, czr.a $$1, ayo $$2, dcf $$3, ja $$4) {
+      float $$5 = $$3.d_($$4).d();
+      int $$6 = ayg.b($$2, this.d, this.d + (int)($$5 * (float)this.e));
+
+      for (czo $$8 : czn.b($$2, $$0, $$6, this.c.a())) {
+         $$1.b($$8.a, $$8.b);
+      }
+   }
+
+   @Override
+   public MapCodec<dav> a() {
+      return b;
+   }
+
+   public jn<czl> b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

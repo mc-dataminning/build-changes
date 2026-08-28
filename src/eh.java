@@ -66,13 +66,13 @@ public record eh(@Nullable Float c, @Nullable Float d) {
    public static eh a(@Nullable JsonElement $$0) {
       if ($$0 == null || $$0.isJsonNull()) {
          return a;
-      } else if (axu.b($$0)) {
-         float $$1 = axu.e($$0, "value");
+      } else if (axw.b($$0)) {
+         float $$1 = axw.e($$0, "value");
          return new eh($$1, $$1);
       } else {
-         JsonObject $$2 = axu.m($$0, "value");
-         Float $$3 = $$2.has("min") ? axu.m($$2, "min") : null;
-         Float $$4 = $$2.has("max") ? axu.m($$2, "max") : null;
+         JsonObject $$2 = axw.m($$0, "value");
+         Float $$3 = $$2.has("min") ? axw.m($$2, "min") : null;
+         Float $$4 = $$2.has("max") ? axw.m($$2, "max") : null;
          return new eh($$3, $$4);
       }
    }

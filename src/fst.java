@@ -1,21 +1,36 @@
-import com.google.common.base.MoreObjects;
-import java.util.List;
+import com.mojang.authlib.GameProfile;
+import java.util.function.Supplier;
 
-public class fst {
-   public static final int a = -1;
-   private final List<fsr> b;
-   private final int c;
+public class fst implements fsx {
+   private final GameProfile a;
+   private final Supplier<gqo> b;
+   private final wu c;
 
-   public fst(List<fsr> $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public fst(GameProfile $$0) {
+      this.a = $$0;
+      this.b = fft.Q().am().a($$0);
+      this.c = wu.b($$0.getName());
    }
 
-   public fsr a(int $$0) {
-      return $$0 >= 0 && $$0 < this.b.size() ? (fsr)MoreObjects.firstNonNull(this.b.get($$0), fsp.a) : fsp.a;
+   @Override
+   public void a(fsv $$0) {
+      fft.Q().L().b(new ahw(this.a.getId()));
    }
 
-   public int a() {
+   @Override
+   public wu aR_() {
       return this.c;
+   }
+
+   @Override
+   public void a(fhf $$0, float $$1, int $$2) {
+      $$0.a(1.0F, 1.0F, 1.0F, (float)$$2 / 255.0F);
+      fir.a($$0, this.b.get(), 2, 2, 12);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   @Override
+   public boolean aS_() {
+      return true;
    }
 }

@@ -1,34 +1,28 @@
-public class glw extends gjf<cis> {
-   private final ger a;
+public class glw extends gks<ckd, fwr<ckd>> {
+   private static final akk a = new akk("textures/entity/strider/strider.png");
+   private static final akk i = new akk("textures/entity/strider/strider_cold.png");
+   private static final float j = 0.5F;
 
-   public glw(gjg.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public glw(gjm.a $$0) {
+      super($$0, new fwr<>($$0.a(fxn.bD)), 0.5F);
+      this.a(new gnz<>(this, new fwr<>($$0.a(fxn.bE)), new akk("textures/entity/strider/strider_saddle.png")));
    }
 
-   public void a(cis $$0, float $$1, float $$2, fag $$3, gdx $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.u();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = aye.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      glv.a(this.a, $$0.v(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public akk a(ckd $$0) {
+      return $$0.s() ? i : a;
    }
 
-   public akk a(cis $$0) {
-      return gph.e;
+   protected float b(ckd $$0) {
+      float $$1 = super.b($$0);
+      return $$0.p_() ? $$1 * 0.5F : $$1;
+   }
+
+   protected void a(ckd $$0, fam $$1, float $$2) {
+      float $$3 = $$0.eb();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected boolean c(ckd $$0) {
+      return super.a($$0) || $$0.s();
    }
 }

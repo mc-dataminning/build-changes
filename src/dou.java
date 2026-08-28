@@ -1,20 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class dou extends dit {
-   public static final MapCodec<dou> c = b(dou::new);
-   public static final ews e = dff.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class dou extends dfh {
+   public static final MapCodec<dou> a = b(dou::new);
 
    @Override
    public MapCodec<dou> a() {
-      return c;
+      return a;
    }
 
-   public dou(dsg.d $$0) {
-      super($$0, jf.a, e, false);
+   public dou(dsj.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected diu c() {
-      return (diu)dfh.oz;
+   protected void a(dsk $$0, dcf $$1, ja $$2, bsg $$3) {
+      ewf $$4 = new ewf(0.25, 0.05F, 0.25);
+      if ($$3 instanceof btb $$5 && $$5.b(brq.K)) {
+         $$4 = new ewf(0.5, 0.25, 0.5);
+      }
+
+      $$3.a($$0, $$4);
    }
 }

@@ -1,101 +1,68 @@
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public interface bmr {
-   String b = "root";
+public class bmr implements bms {
+   public static final bmr a = new bmr();
 
-   void a();
-
-   void b();
-
-   void a(String var1);
-
-   void a(Supplier<String> var1);
-
-   void c();
-
-   void b(String var1);
-
-   void b(Supplier<String> var1);
-
-   void a(bnx var1);
-
-   default void d(String $$0) {
-      this.a($$0, 1);
+   private bmr() {
    }
 
-   void a(String var1, int var2);
-
-   default void c(Supplier<String> $$0) {
-      this.a($$0, 1);
+   @Override
+   public void a() {
    }
 
-   void a(Supplier<String> var1, int var2);
+   @Override
+   public void b() {
+   }
 
-   static bmr a(final bmr $$0, final bmr $$1) {
-      if ($$0 == bmo.a) {
-         return $$1;
-      } else {
-         return $$1 == bmo.a ? $$0 : new bmr() {
-            @Override
-            public void a() {
-               $$0.a();
-               $$1.a();
-            }
+   @Override
+   public void a(String $$0) {
+   }
 
-            @Override
-            public void b() {
-               $$0.b();
-               $$1.b();
-            }
+   @Override
+   public void a(Supplier<String> $$0) {
+   }
 
-            @Override
-            public void a(String $$0x) {
-               $$0.a($$0);
-               $$1.a($$0);
-            }
+   @Override
+   public void a(boa $$0) {
+   }
 
-            @Override
-            public void a(Supplier<String> $$0x) {
-               $$0.a($$0);
-               $$1.a($$0);
-            }
+   @Override
+   public void c() {
+   }
 
-            @Override
-            public void a(bnx $$0x) {
-               $$0.a($$0);
-               $$1.a($$0);
-            }
+   @Override
+   public void b(String $$0) {
+   }
 
-            @Override
-            public void c() {
-               $$0.c();
-               $$1.c();
-            }
+   @Override
+   public void b(Supplier<String> $$0) {
+   }
 
-            @Override
-            public void b(String $$0x) {
-               $$0.b($$0);
-               $$1.b($$0);
-            }
+   @Override
+   public void a(String $$0, int $$1) {
+   }
 
-            @Override
-            public void b(Supplier<String> $$0x) {
-               $$0.b($$0);
-               $$1.b($$0);
-            }
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+   }
 
-            @Override
-            public void a(String $$0x, int $$1x) {
-               $$0.a($$0, $$1);
-               $$1.a($$0, $$1);
-            }
+   @Override
+   public bmt d() {
+      return bmp.a;
+   }
 
-            @Override
-            public void a(Supplier<String> $$0x, int $$1x) {
-               $$0.a($$0, $$1);
-               $$1.a($$0, $$1);
-            }
-         };
-      }
+   @Nullable
+   @Override
+   public bmn.a c(String $$0) {
+      return null;
+   }
+
+   @Override
+   public Set<Pair<String, boa>> e() {
+      return ImmutableSet.of();
    }
 }

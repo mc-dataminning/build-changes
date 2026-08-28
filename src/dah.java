@@ -1,22 +1,21 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public record dah(ke d, Optional<dzg> e, efj f) implements czz {
+public record dah(jj<avg> d, bpj e, bpj f) implements dab {
    public static final MapCodec<dah> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               ke.f.optionalFieldOf("offset", ke.g).forGetter(dah::b),
-               dzg.b.optionalFieldOf("predicate").forGetter(dah::c),
-               efj.a.fieldOf("block_state").forGetter(dah::d)
+               avg.b.fieldOf("sound").forGetter(dah::b),
+               bpj.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(dah::c),
+               bpj.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(dah::d)
             )
             .apply($$0, dah::new)
    );
 
    @Override
-   public void a(aqk $$0, int $$1, czi $$2, bsd $$3, evz $$4) {
-      ja $$5 = ja.a($$4).a(this.d);
-      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true)) {
-         $$0.b($$5, this.f.a($$3.dS(), $$5));
+   public void a(aqm $$0, int $$1, czk $$2, bsg $$3, ewf $$4) {
+      ayo $$5 = $$3.dT();
+      if (!$$3.aX()) {
+         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.df(), this.e.a($$5), this.f.a($$5));
       }
    }
 
@@ -25,15 +24,15 @@ public record dah(ke d, Optional<dzg> e, efj f) implements czz {
       return a;
    }
 
-   public ke b() {
+   public jj<avg> b() {
       return this.d;
    }
 
-   public Optional<dzg> c() {
+   public bpj c() {
       return this.e;
    }
 
-   public efj d() {
+   public bpj d() {
       return this.f;
    }
 }

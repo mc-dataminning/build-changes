@@ -1,13 +1,57 @@
 import java.util.EnumSet;
 
-public class bzz extends cae {
-   public bzz(bta $$0, Class<? extends bsy> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(EnumSet.of(bzw.a.b, bzw.a.a));
+public abstract class bzz {
+   private final EnumSet<bzz.a> a = EnumSet.noneOf(bzz.a.class);
+
+   public abstract boolean a();
+
+   public boolean b() {
+      return this.a();
    }
 
-   public bzz(bta $$0, Class<? extends bsy> $$1, float $$2, float $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a(EnumSet.of(bzw.a.b, bzw.a.a));
+   public boolean Q_() {
+      return true;
+   }
+
+   public void c() {
+   }
+
+   public void d() {
+   }
+
+   public boolean R_() {
+      return false;
+   }
+
+   public void e() {
+   }
+
+   public void a(EnumSet<bzz.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.getClass().getSimpleName();
+   }
+
+   public EnumSet<bzz.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.R_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return ayg.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

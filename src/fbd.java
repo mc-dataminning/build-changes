@@ -1,33 +1,18 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import java.net.Proxy;
+import javax.annotation.Nullable;
 
-public class fbd extends fcc {
-   private static final Logger b = LogUtils.getLogger();
-   public List<fbc> a;
+public class fbd {
+   @Nullable
+   private static Proxy a;
 
-   public static fbd a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      fbd $$2 = new fbd();
-      $$2.a = Lists.newArrayList();
+   @Nullable
+   public static Proxy a() {
+      return a;
+   }
 
-      try {
-         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
-         if ($$3.isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$2.a.add(fbc.a($$4.next()));
-            }
-         }
-      } catch (Exception var5) {
-         b.error("Could not parse BackupList: {}", var5.getMessage());
+   public static void a(Proxy $$0) {
+      if (a == null) {
+         a = $$0;
       }
-
-      return $$2;
    }
 }

@@ -1,60 +1,53 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public abstract class etp implements etz {
-   protected final List<etz> c;
-   private final Predicate<eqo> a;
+public class etp {
+   private static final BiMap<akk, eto> x = HashBiMap.create();
+   public static final Codec<eto> a = akk.a
+      .comapFlatMap(
+         $$0 -> Optional.ofNullable((eto)x.get($$0))
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
+         x.inverse()::get
+      );
+   public static final eto b = a("empty", $$0 -> {
+   });
+   public static final eto c = a("chest", $$0 -> $$0.a(etq.f).b(etq.a));
+   public static final eto d = a("command", $$0 -> $$0.a(etq.f).b(etq.a));
+   public static final eto e = a("selector", $$0 -> $$0.a(etq.f).a(etq.a));
+   public static final eto f = a("fishing", $$0 -> $$0.a(etq.f).a(etq.i).b(etq.a));
+   public static final eto g = a("entity", $$0 -> $$0.a(etq.a).a(etq.f).a(etq.c).b(etq.d).b(etq.e).b(etq.b));
+   public static final eto h = a("equipment", $$0 -> $$0.a(etq.f).a(etq.a));
+   public static final eto i = a("archaeology", $$0 -> $$0.a(etq.f).b(etq.a));
+   public static final eto j = a("gift", $$0 -> $$0.a(etq.f).a(etq.a));
+   public static final eto k = a("barter", $$0 -> $$0.a(etq.a));
+   public static final eto l = a("vault", $$0 -> $$0.a(etq.f).b(etq.a));
+   public static final eto m = a("advancement_reward", $$0 -> $$0.a(etq.a).a(etq.f));
+   public static final eto n = a("advancement_entity", $$0 -> $$0.a(etq.a).a(etq.f));
+   public static final eto o = a("advancement_location", $$0 -> $$0.a(etq.a).a(etq.f).a(etq.i).a(etq.g));
+   public static final eto p = a("block_use", $$0 -> $$0.a(etq.a).a(etq.f).a(etq.g));
+   public static final eto q = a("generic", $$0 -> $$0.a(etq.a).a(etq.b).a(etq.c).a(etq.d).a(etq.e).a(etq.f).a(etq.g).a(etq.h).a(etq.i).a(etq.j));
+   public static final eto r = a("block", $$0 -> $$0.a(etq.g).a(etq.f).a(etq.i).b(etq.a).b(etq.h).b(etq.j));
+   public static final eto s = a("shearing", $$0 -> $$0.a(etq.f).b(etq.a));
+   public static final eto t = a("enchanted_damage", $$0 -> $$0.a(etq.a).a(etq.k).a(etq.f).a(etq.c).b(etq.e).b(etq.d));
+   public static final eto u = a("enchanted_item", $$0 -> $$0.a(etq.i).a(etq.k));
+   public static final eto v = a("enchanted_location", $$0 -> $$0.a(etq.a).a(etq.k).a(etq.f).a(etq.l));
+   public static final eto w = a("enchanted_entity", $$0 -> $$0.a(etq.a).a(etq.k).a(etq.f));
 
-   protected etp(List<etz> $$0, Predicate<eqo> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends etp> MapCodec<T> a(Function<List<etz>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(etz.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends etp> Codec<T> b(Function<List<etz>, T> $$0) {
-      return etz.e.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(eqo $$0) {
-      return this.a.test($$0);
-   }
-
-   @Override
-   public void a(equ $$0) {
-      etz.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+   private static eto a(String $$0, Consumer<eto.a> $$1) {
+      eto.a $$2 = new eto.a();
+      $$1.accept($$2);
+      eto $$3 = $$2.a();
+      akk $$4 = new akk($$0);
+      eto $$5 = (eto)x.put($$4, $$3);
+      if ($$5 != null) {
+         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
+      } else {
+         return $$3;
       }
-   }
-
-   public abstract static class a implements etz.a {
-      private final Builder<etz> a = ImmutableList.builder();
-
-      protected a(etz.a... $$0) {
-         for (etz.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
-      }
-
-      public void a(etz.a $$0) {
-         this.a.add($$0.build());
-      }
-
-      @Override
-      public etz build() {
-         return this.a(this.a.build());
-      }
-
-      protected abstract etz a(List<etz> var1);
    }
 }

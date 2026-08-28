@@ -1,36 +1,54 @@
-public class fwo<T extends bsd> extends fua<T> {
-   private final fxi a;
-   private final fxi b;
+public class fwo<T extends bsg> extends fux<T> {
+   private static final String a = "upper_body";
+   private final fxo b;
+   private final fxo f;
+   private final fxo g;
+   private final fxo h;
+   private final fxo i;
 
-   public fwo(fxi $$0) {
-      this.a = $$0;
-      this.b = $$0.b("tail");
+   public fwo(fxo $$0) {
+      this.b = $$0;
+      this.g = $$0.b("head");
+      this.h = $$0.b("left_arm");
+      this.i = $$0.b("right_arm");
+      this.f = $$0.b("upper_body");
    }
 
-   public static fxo a(fxm $$0) {
-      fxq $$1 = new fxq();
-      fxr $$2 = $$1.a();
-      int $$3 = 22;
-      $$2.a("body", fxn.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), fxk.a(0.0F, 22.0F, 0.0F));
-      $$2.a("tail", fxn.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fxk.a(0.0F, 22.0F, 3.0F));
-      $$2.a("right_fin", fxn.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fxk.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", fxn.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fxk.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", fxn.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fxk.a(0.0F, 20.5F, -3.0F));
-      return fxo.a($$1, 32, 32);
-   }
-
-   @Override
-   public fxi a() {
-      return this.a;
+   public static fxu b() {
+      fxw $$0 = new fxw();
+      fxx $$1 = $$0.a();
+      float $$2 = 4.0F;
+      fxs $$3 = new fxs(-0.5F);
+      $$1.a("head", fxt.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), fxq.a(0.0F, 4.0F, 0.0F));
+      fxt $$4 = fxt.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, fxq.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, fxq.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", fxt.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), fxq.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", fxt.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), fxq.a(0.0F, 24.0F, 0.0F));
+      return fxu.a($$0, 64, 64);
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      if (!$$0.be()) {
-         $$6 = 1.5F;
-      }
+      this.g.f = $$4 * (float) (Math.PI / 180.0);
+      this.g.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.f = $$4 * (float) (Math.PI / 180.0) * 0.25F;
+      float $$6 = ayg.a(this.f.f);
+      float $$7 = ayg.b(this.f.f);
+      this.h.f = this.f.f;
+      this.i.f = this.f.f + (float) Math.PI;
+      this.h.b = $$7 * 5.0F;
+      this.h.d = -$$6 * 5.0F;
+      this.i.b = -$$7 * 5.0F;
+      this.i.d = $$6 * 5.0F;
+   }
 
-      this.b.f = -$$6 * 0.45F * aye.a(0.6F * $$3);
+   @Override
+   public fxo a() {
+      return this.b;
+   }
+
+   public fxo c() {
+      return this.g;
    }
 }

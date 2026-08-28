@@ -1,24 +1,23 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public record daj(akk d) implements czz {
-   private static final Logger e = LogUtils.getLogger();
-   public static final MapCodec<daj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akk.a.fieldOf("function").forGetter(daj::b)).apply($$0, daj::new));
+public record daj(ke d, Optional<dzm> e, efp f, Optional<jj<dxg>> g) implements dab {
+   public static final MapCodec<daj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ke.f.optionalFieldOf("offset", ke.g).forGetter(daj::b),
+               dzm.b.optionalFieldOf("predicate").forGetter(daj::c),
+               efp.a.fieldOf("block_state").forGetter(daj::d),
+               dxg.aj.optionalFieldOf("trigger_game_event").forGetter(daj::e)
+            )
+            .apply($$0, daj::new)
+   );
 
    @Override
-   public void a(aqk $$0, int $$1, czi $$2, bsd $$3, evz $$4) {
-      MinecraftServer $$5 = $$0.o();
-      akz $$6 = $$5.aF();
-      Optional<ic<eq>> $$7 = $$6.a(this.d);
-      if ($$7.isPresent()) {
-         eq $$8 = $$5.aI().a(2).a().a($$3).a($$4);
-         $$6.a($$7.get(), $$8);
-      } else {
-         e.error("Enchantment run_function effect failed for non-existent function {}", this.d);
+   public void a(aqm $$0, int $$1, czk $$2, bsg $$3, ewf $$4) {
+      ja $$5 = ja.a($$4).a(this.d);
+      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dT(), $$5))) {
+         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
       }
    }
 
@@ -27,7 +26,19 @@ public record daj(akk d) implements czz {
       return a;
    }
 
-   public akk b() {
+   public ke b() {
       return this.d;
+   }
+
+   public Optional<dzm> c() {
+      return this.e;
+   }
+
+   public efp d() {
+      return this.f;
+   }
+
+   public Optional<jj<dxg>> e() {
+      return this.g;
    }
 }

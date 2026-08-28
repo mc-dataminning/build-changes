@@ -9,15 +9,15 @@ public interface apy {
       }
 
       @Override
-      public void a(Consumer<dbk> $$0) {
+      public void a(Consumer<dbm> $$0) {
       }
    };
 
-   static apy a(dbk $$0, int $$1) {
+   static apy a(dbm $$0, int $$1) {
       return new apy.a($$0, $$1);
    }
 
-   static void a(apy $$0, apy $$1, Consumer<dbk> $$2, Consumer<dbk> $$3) {
+   static void a(apy $$0, apy $$1, Consumer<dbm> $$2, Consumer<dbm> $$3) {
       if (!$$0.equals($$1)) {
          if ($$0 instanceof apy.a $$4 && $$1 instanceof apy.a $$5 && $$4.a($$5)) {
             int $$6 = Math.min($$4.c(), $$5.c());
@@ -31,9 +31,9 @@ public interface apy {
                   boolean $$13 = $$5.a($$10, $$11);
                   if ($$12 != $$13) {
                      if ($$13) {
-                        $$2.accept(new dbk($$10, $$11));
+                        $$2.accept(new dbm($$10, $$11));
                      } else {
-                        $$3.accept(new dbk($$10, $$11));
+                        $$3.accept(new dbm($$10, $$11));
                      }
                   }
                }
@@ -47,7 +47,7 @@ public interface apy {
       }
    }
 
-   default boolean a(dbk $$0) {
+   default boolean a(dbm $$0) {
       return this.a($$0.e, $$0.f);
    }
 
@@ -57,7 +57,7 @@ public interface apy {
 
    boolean a(int var1, int var2, boolean var3);
 
-   void a(Consumer<dbk> var1);
+   void a(Consumer<dbm> var1);
 
    default boolean b(int $$0, int $$1) {
       return this.a($$0, $$1, false);
@@ -77,7 +77,7 @@ public interface apy {
       return $$10 < (long)$$11;
    }
 
-   public static record a(dbk b, int c) implements apy {
+   public static record a(dbm b, int c) implements apy {
       int c() {
          return this.b.e - this.c - 1;
       }
@@ -105,17 +105,17 @@ public interface apy {
       }
 
       @Override
-      public void a(Consumer<dbk> $$0) {
+      public void a(Consumer<dbm> $$0) {
          for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
             for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
                if (this.a($$1, $$2)) {
-                  $$0.accept(new dbk($$1, $$2));
+                  $$0.accept(new dbm($$1, $$2));
                }
             }
          }
       }
 
-      public dbk a() {
+      public dbm a() {
          return this.b;
       }
 

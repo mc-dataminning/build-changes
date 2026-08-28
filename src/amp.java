@@ -42,9 +42,9 @@ public class amp {
    }
 
    private static int a(eq $$0, aqa $$1) throws CommandSyntaxException {
-      dbk $$2 = $$1.a();
-      aqk $$3 = $$0.e();
-      akj<dcd> $$4 = $$3.af();
+      dbm $$2 = $$1.a();
+      aqm $$3 = $$0.e();
+      akj<dcf> $$4 = $$3.af();
       boolean $$5 = $$3.w().contains($$2.a());
       if ($$5) {
          $$0.a(() -> wu.a("commands.forceload.query.success", wu.a($$2), wu.a($$4.a())), false);
@@ -55,12 +55,12 @@ public class amp {
    }
 
    private static int a(eq $$0) {
-      aqk $$1 = $$0.e();
-      akj<dcd> $$2 = $$1.af();
+      aqm $$1 = $$0.e();
+      akj<dcf> $$2 = $$1.af();
       LongSet $$3 = $$1.w();
       int $$4 = $$3.size();
       if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dbk::new).map(dbk::toString).iterator());
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dbm::new).map(dbm::toString).iterator());
          if ($$4 == 1) {
             $$0.a(() -> wu.a("commands.forceload.list.single", wu.a($$2.a()), $$5), false);
          } else {
@@ -74,10 +74,10 @@ public class amp {
    }
 
    private static int b(eq $$0) {
-      aqk $$1 = $$0.e();
-      akj<dcd> $$2 = $$1.af();
+      aqm $$1 = $$0.e();
+      akj<dcf> $$2 = $$1.af();
       LongSet $$3 = $$1.w();
-      $$3.forEach($$1x -> $$1.a(dbk.a($$1x), dbk.b($$1x), false));
+      $$3.forEach($$1x -> $$1.a(dbm.a($$1x), dbm.b($$1x), false));
       $$0.a(() -> wu.a("commands.forceload.removed.all", wu.a($$2.a())), true);
       return 0;
    }
@@ -96,9 +96,9 @@ public class amp {
          if ($$12 > 256L) {
             throw b.create(256, $$12);
          } else {
-            aqk $$13 = $$0.e();
-            akj<dcd> $$14 = $$13.af();
-            dbk $$15 = null;
+            aqm $$13 = $$0.e();
+            akj<dcf> $$14 = $$13.af();
+            dbm $$15 = null;
             int $$16 = 0;
 
             for (int $$17 = $$8; $$17 <= $$10; $$17++) {
@@ -107,13 +107,13 @@ public class amp {
                   if ($$19) {
                      $$16++;
                      if ($$15 == null) {
-                        $$15 = new dbk($$17, $$18);
+                        $$15 = new dbm($$17, $$18);
                      }
                   }
                }
             }
 
-            dbk $$20 = $$15;
+            dbm $$20 = $$15;
             int $$21 = $$16;
             if ($$21 == 0) {
                throw ($$3 ? d : e).create();
@@ -121,8 +121,8 @@ public class amp {
                if ($$21 == 1) {
                   $$0.a(() -> wu.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", wu.a($$20), wu.a($$14.a())), true);
                } else {
-                  dbk $$22 = new dbk($$8, $$9);
-                  dbk $$23 = new dbk($$10, $$11);
+                  dbm $$22 = new dbm($$8, $$9);
+                  dbm $$23 = new dbm($$10, $$11);
                   $$0.a(() -> wu.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$21, wu.a($$14.a()), wu.a($$22), wu.a($$23)), true);
                }
 

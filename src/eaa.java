@@ -1,31 +1,25 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eaa extends dyw {
-   private final jx a;
-   private final dyd b;
-   private final dyn c;
-   private final dyq.o d;
+public class eaa implements dzm {
+   public static final MapCodec<eaa> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ke.v(16).optionalFieldOf("offset", ke.g).forGetter($$0x -> $$0x.e), dsk.b.fieldOf("state").forGetter($$0x -> $$0x.f))
+            .apply($$0, eaa::new)
+   );
+   private final ke e;
+   private final dsk f;
 
-   public eaa(dyc $$0, jx $$1, dcf $$2, dyd $$3, dyn $$4, dyq.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   protected eaa(ke $$0, dsk $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Deprecated
-   public Optional<dsh> a(Function<ja, jj<ddd>> $$0, dud $$1, ja $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public boolean a(ddb $$0, ja $$1) {
+      return this.f.a($$0, $$1.a(this.e));
    }
 
-   @Deprecated
-   public jx c() {
-      return this.a;
-   }
-
-   public dyn d() {
-      return this.c;
+   @Override
+   public dzn<?> a() {
+      return dzn.g;
    }
 }

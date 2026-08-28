@@ -1,26 +1,20 @@
 import java.util.function.Consumer;
 
-public interface flb {
-   void m(int var1);
+public class flb {
+   private static final int a = 4;
 
-   void n(int var1);
-
-   int D();
-
-   int E();
-
-   int y();
-
-   int w();
-
-   default fls H() {
-      return new fls(this.D(), this.E(), this.y(), this.w());
+   private flb() {
    }
 
-   default void c(int $$0, int $$1) {
-      this.m($$0);
-      this.n($$1);
+   public static flg a(fhd $$0, flh $$1, wu $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   void a(Consumer<fhk> var1);
+   public static flg a(fhd $$0, flh $$1, wu $$2, Consumer<fli> $$3) {
+      flj $$4 = flj.d().a(4);
+      $$4.a(new fiz($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
+   }
 }

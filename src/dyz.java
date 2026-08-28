@@ -1,32 +1,93 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
+import java.util.function.Function;
 
-public class dyz {
-   private long b;
-   private long c;
-   public static final Codec<dyz> a = Codec.LONG_STREAM
-      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dyz($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+public interface dyz {
+   Codec<dyz> a = Codec.xor(dyz.b.d, Codec.xor(dyz.a.d, dyz.c.d)).xmap(dyz::a, dyz::a);
+   dyz b = b(0);
+   dyz c = c(0);
 
-   public dyz(dyo.a $$0) {
-      this($$0.b(), $$0.c());
+   static dyz a(int $$0) {
+      return new dyz.b($$0);
    }
 
-   public dyz(long $$0, long $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      if ((this.b | this.c) == 0L) {
-         this.b = -7046029254386353131L;
-         this.c = 7640891576956012809L;
+   static dyz b(int $$0) {
+      return new dyz.a($$0);
+   }
+
+   static dyz c(int $$0) {
+      return new dyz.c($$0);
+   }
+
+   static dyz a() {
+      return b;
+   }
+
+   static dyz b() {
+      return c;
+   }
+
+   private static dyz a(Either<dyz.b, Either<dyz.a, dyz.c>> $$0) {
+      return (dyz)$$0.map(Function.identity(), Either::unwrap);
+   }
+
+   private static Either<dyz.b, Either<dyz.a, dyz.c>> a(dyz $$0) {
+      return $$0 instanceof dyz.b ? Either.left((dyz.b)$$0) : Either.right($$0 instanceof dyz.a ? Either.left((dyz.a)$$0) : Either.right((dyz.c)$$0));
+   }
+
+   int a(dzc var1);
+
+   public static record a(int e) implements dyz {
+      public static final Codec<dyz.a> d = Codec.intRange(dwf.e, dwf.d).fieldOf("above_bottom").xmap(dyz.a::new, dyz.a::c).codec();
+
+      @Override
+      public int a(dzc $$0) {
+         return $$0.a() + this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " above bottom";
+      }
+
+      public int c() {
+         return this.e;
       }
    }
 
-   public long a() {
-      long $$0 = this.b;
-      long $$1 = this.c;
-      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
-      $$1 ^= $$0;
-      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
-      this.c = Long.rotateLeft($$1, 28);
-      return $$2;
+   public static record b(int e) implements dyz {
+      public static final Codec<dyz.b> d = Codec.intRange(dwf.e, dwf.d).fieldOf("absolute").xmap(dyz.b::new, dyz.b::c).codec();
+
+      @Override
+      public int a(dzc $$0) {
+         return this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " absolute";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record c(int e) implements dyz {
+      public static final Codec<dyz.c> d = Codec.intRange(dwf.e, dwf.d).fieldOf("below_top").xmap(dyz.c::new, dyz.c::c).codec();
+
+      @Override
+      public int a(dzc $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " below top";
+      }
+
+      public int c() {
+         return this.e;
+      }
    }
 }

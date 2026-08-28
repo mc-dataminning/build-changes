@@ -1,53 +1,59 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class gur extends gup {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public class gur implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = ".json";
+   private static final int c = 7;
+   private final blm d;
+   @Nullable
+   private CompletableFuture<Optional<gun>> e;
 
-   @Override
-   public void a(guj $$0) {
-      if (ffn.Q().C()) {
-         super.a($$0);
+   private gur(blm $$0) {
+      this.d = $$0;
+   }
+
+   public static CompletableFuture<Optional<gur>> a(Path $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            blm $$1 = blm.a($$0, ".json");
+            $$1.a().a(LocalDate.now(), 7).a();
+            return Optional.of(new gur($$1));
+         } catch (Exception var2) {
+            a.error("Failed to create telemetry log manager", var2);
+            return Optional.empty();
+         }
+      }, ac.g());
+   }
+
+   public CompletableFuture<Optional<guo>> a() {
+      if (this.e == null) {
+         this.e = CompletableFuture.supplyAsync(() -> {
+            try {
+               blm.e $$0 = this.d.a(LocalDate.now());
+               FileChannel $$1 = $$0.e();
+               return Optional.of(new gun($$1, ac.g()));
+            } catch (IOException var3) {
+               a.error("Failed to open channel for telemetry event log", var3);
+               return Optional.empty();
+            }
+         }, ac.g());
       }
-   }
 
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
+      return this.e.thenApply($$0 -> $$0.map(gun::a));
    }
 
    @Override
-   public void f() {
-      this.b.add((long)ffn.Q().o());
-      this.h();
-      this.c.add(ffn.Q().p());
-   }
-
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
-   }
-
-   @Override
-   public void b(guj $$0) {
-      $$0.send(guk.c, $$0x -> {
-         $$0x.a(gum.r, new LongArrayList(this.b));
-         $$0x.a(gum.s, new LongArrayList(this.c));
-         $$0x.a(gum.t, new LongArrayList(this.d));
-         $$0x.a(gum.u, this.e());
-         $$0x.a(gum.v, ffn.Q().m.aD());
-         $$0x.a(gum.w, (int)a);
-      });
-      this.g();
-   }
-
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   public void close() {
+      if (this.e != null) {
+         this.e.thenAccept($$0 -> $$0.ifPresent(gun::close));
+      }
    }
 }

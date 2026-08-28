@@ -7,19 +7,19 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class np implements nn {
-   private final dff a;
+   private final dfh a;
    private final List<np.b> b = Lists.newArrayList();
 
-   private np(dff $$0) {
+   private np(dfh $$0) {
       this.a = $$0;
    }
 
    @Override
-   public dff a() {
+   public dfh a() {
       return this.a;
    }
 
-   public static np a(dff $$0) {
+   public static np a(dfh $$0) {
       return new np($$0);
    }
 
@@ -46,7 +46,7 @@ public class np implements nn {
    }
 
    public JsonElement b() {
-      dsi<dff, dsh> $$0 = this.a.l();
+      dsl<dfh, dsk> $$0 = this.a.l();
       this.b.forEach($$1x -> $$1x.a($$0));
       JsonArray $$1 = new JsonArray();
       this.b.stream().map(np.b::a).forEach($$1::add);
@@ -64,7 +64,7 @@ public class np implements nn {
       }
 
       @Override
-      public void a(dsi<?, ?> $$0) {
+      public void a(dsl<?, ?> $$0) {
          this.a.a($$0);
       }
 
@@ -81,7 +81,7 @@ public class np implements nn {
          this.a = $$0;
       }
 
-      public void a(dsi<?, ?> $$0) {
+      public void a(dsl<?, ?> $$0) {
       }
 
       public void a(JsonObject $$0) {

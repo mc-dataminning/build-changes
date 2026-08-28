@@ -11,10 +11,10 @@ public class ake<E> implements Codec<jn<E>> {
    private final akj<? extends jw<E>> a;
    private final Codec<jj<E>> b;
    private final Codec<List<jj<E>>> c;
-   private final Codec<Either<awk<E>, List<jj<E>>>> d;
+   private final Codec<Either<awm<E>, List<jj<E>>>> d;
 
    private static <E> Codec<List<jj<E>>> a(Codec<jj<E>> $$0, boolean $$1) {
-      Codec<List<jj<E>>> $$2 = $$0.listOf().validate(axm.b(jj::f));
+      Codec<List<jj<E>>> $$2 = $$0.listOf().validate(axo.b(jj::f));
       return $$1
          ? $$2
          : Codec.either($$2, $$0)
@@ -29,7 +29,7 @@ public class ake<E> implements Codec<jn<E>> {
       this.a = $$0;
       this.b = $$1;
       this.c = a($$1, $$2);
-      this.d = Codec.either(awk.b($$0), this.c);
+      this.d = Codec.either(awm.b($$0), this.c);
    }
 
    public <T> DataResult<Pair<jn<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
@@ -47,7 +47,7 @@ public class ake<E> implements Codec<jn<E>> {
       return this.a($$0, $$1);
    }
 
-   private static <E> DataResult<jn<E>> a(jk<E> $$0, awk<E> $$1) {
+   private static <E> DataResult<jn<E>> a(jk<E> $$0, awm<E> $$1) {
       return $$0.a($$1)
          .<DataResult<jn<E>>>map(DataResult::success)
          .orElseGet(() -> DataResult.error(() -> "Missing tag: '" + $$1.b() + "' in '" + $$1.a().a() + "'"));

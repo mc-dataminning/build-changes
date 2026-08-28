@@ -1,95 +1,117 @@
-public class dyk implements dbq {
-   private int a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   @Override
-   public int a(aqk $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.ab().b(dbz.K)) {
-         return 0;
-      } else {
-         aym $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.aa() / 24000L;
-            if ($$4 < 5L || !$$0.R()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
-            } else {
-               int $$5 = $$0.x().size();
-               if ($$5 < 1) {
-                  return 0;
-               } else {
-                  cmh $$6 = $$0.x().get($$3.a($$5));
-                  if ($$6.N_()) {
-                     return 0;
-                  } else if ($$0.a($$6.dp(), 2)) {
-                     return 0;
-                  } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     ja.a $$9 = $$6.dp().j().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        jj<ddd> $$11 = $$0.t($$9);
-                        if ($$11.a(avt.ag)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+public record dyk(dyn j, dsk k, dsk l, dyl m, dyw.o n, List<ddo.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+   public static final Codec<dyk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dyn.a.fieldOf("noise").forGetter(dyk::f),
+               dsk.b.fieldOf("default_block").forGetter(dyk::g),
+               dsk.b.fieldOf("default_fluid").forGetter(dyk::h),
+               dyl.a.fieldOf("noise_router").forGetter(dyk::i),
+               dyw.o.b.fieldOf("surface_rule").forGetter(dyk::j),
+               ddo.d.a.listOf().fieldOf("spawn_target").forGetter(dyk::k),
+               Codec.INT.fieldOf("sea_level").forGetter(dyk::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dyk::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dyk::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dyk::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dyk::n)
+            )
+            .apply($$0, dyk::new)
+   );
+   public static final Codec<jj<dyk>> b = akg.a(lr.aN, a);
+   public static final akj<dyk> c = akj.a(lr.aN, new akk("overworld"));
+   public static final akj<dyk> d = akj.a(lr.aN, new akk("large_biomes"));
+   public static final akj<dyk> e = akj.a(lr.aN, new akk("amplified"));
+   public static final akj<dyk> f = akj.a(lr.aN, new akk("nether"));
+   public static final akj<dyk> g = akj.a(lr.aN, new akk("end"));
+   public static final akj<dyk> h = akj.a(lr.aN, new akk("caves"));
+   public static final akj<dyk> i = akj.a(lr.aN, new akk("floating_islands"));
 
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(dxz.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
-
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
-
-                           return $$12;
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   private boolean a(aqk $$0, ja $$1, aym $$2, boolean $$3) {
-      dsh $$4 = $$0.a_($$1);
-      if (!dco.a($$0, $$1, $$4, $$4.u(), bsj.aC)) {
-         return false;
-      } else if (!cjo.b(bsj.aC, $$0, btc.p, $$1, $$2)) {
-         return false;
-      } else {
-         cjo $$5 = bsj.aC.a((dcd)$$0);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.w(true);
-               $$5.gv();
-            }
+   public boolean b() {
+      return this.r;
+   }
 
-            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), btc.p, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
-         }
-      }
+   public boolean c() {
+      return this.s;
+   }
+
+   public dze.a d() {
+      return this.t ? dze.a.a : dze.a.b;
+   }
+
+   public static void a(qm<dyk> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
+   }
+
+   private static dyk b(qm<?> $$0) {
+      return new dyk(dyn.d, dfj.fz.o(), dfj.a.o(), dym.a($$0.a(lr.aI)), qz.c(), List.of(), 0, true, false, false, true);
+   }
+
+   private static dyk c(qm<?> $$0) {
+      return new dyk(dyn.c, dfj.dV.o(), dfj.H.o(), dym.a($$0.a(lr.aI), $$0.a(lr.aO)), qz.b(), List.of(), 32, false, false, false, true);
+   }
+
+   private static dyk a(qm<?> $$0, boolean $$1, boolean $$2) {
+      return new dyk(dyn.b, dfj.b.o(), dfj.G.o(), dym.a($$0.a(lr.aI), $$0.a(lr.aO), $$2, $$1), qz.a(), new ddv().a(), 63, false, true, true, false);
+   }
+
+   private static dyk d(qm<?> $$0) {
+      return new dyk(dyn.e, dfj.b.o(), dfj.G.o(), dym.b($$0.a(lr.aI), $$0.a(lr.aO)), qz.a(false, true, true), List.of(), 32, false, false, false, true);
+   }
+
+   private static dyk e(qm<?> $$0) {
+      return new dyk(dyn.f, dfj.b.o(), dfj.G.o(), dym.c($$0.a(lr.aI), $$0.a(lr.aO)), qz.a(false, false, false), List.of(), -64, false, false, false, true);
+   }
+
+   public static dyk e() {
+      return new dyk(dyn.b, dfj.b.o(), dfj.a.o(), dym.a(), qz.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public dyn f() {
+      return this.j;
+   }
+
+   public dsk g() {
+      return this.k;
+   }
+
+   public dsk h() {
+      return this.l;
+   }
+
+   public dyl i() {
+      return this.m;
+   }
+
+   public dyw.o j() {
+      return this.n;
+   }
+
+   public List<ddo.d> k() {
+      return this.o;
+   }
+
+   public int l() {
+      return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

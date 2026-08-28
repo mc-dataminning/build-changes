@@ -1,27 +1,26 @@
-public interface ctu {
-   int a = 256;
-   int b = 140;
-   akj<cts> c = a("ponder_goat_horn");
-   akj<cts> d = a("sing_goat_horn");
-   akj<cts> e = a("seek_goat_horn");
-   akj<cts> f = a("feel_goat_horn");
-   akj<cts> g = a("admire_goat_horn");
-   akj<cts> h = a("call_goat_horn");
-   akj<cts> i = a("yearn_goat_horn");
-   akj<cts> j = a("dream_goat_horn");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static akj<cts> a(String $$0) {
-      return akj.a(lr.I, new akk($$0));
+public record ctu(jj<avg> e, int f, float g) {
+   public static final Codec<ctu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avg.b.fieldOf("sound_event").forGetter(ctu::a), axo.l.fieldOf("use_duration").forGetter(ctu::b), axo.m.fieldOf("range").forGetter(ctu::c)
+            )
+            .apply($$0, ctu::new)
+   );
+   public static final ys<wf, ctu> b = ys.a(avg.d, ctu::a, yq.g, ctu::b, yq.i, ctu::c, ctu::new);
+   public static final Codec<jj<ctu>> c = akg.a(lr.I, a);
+   public static final ys<wf, jj<ctu>> d = yq.a(lr.I, b);
+
+   public jj<avg> a() {
+      return this.e;
    }
 
-   static cts a(jw<cts> $$0) {
-      jw.a($$0, c, new cts((jj<ave>)avf.mF.get(0), 140, 256.0F));
-      jw.a($$0, d, new cts((jj<ave>)avf.mF.get(1), 140, 256.0F));
-      jw.a($$0, e, new cts((jj<ave>)avf.mF.get(2), 140, 256.0F));
-      jw.a($$0, f, new cts((jj<ave>)avf.mF.get(3), 140, 256.0F));
-      jw.a($$0, g, new cts((jj<ave>)avf.mF.get(4), 140, 256.0F));
-      jw.a($$0, h, new cts((jj<ave>)avf.mF.get(5), 140, 256.0F));
-      jw.a($$0, i, new cts((jj<ave>)avf.mF.get(6), 140, 256.0F));
-      return jw.a($$0, j, new cts((jj<ave>)avf.mF.get(7), 140, 256.0F));
+   public int b() {
+      return this.f;
+   }
+
+   public float c() {
+      return this.g;
    }
 }

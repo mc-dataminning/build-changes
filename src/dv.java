@@ -12,8 +12,8 @@ public record dv(de.d c) implements bv {
    }
 
    @Override
-   public boolean a(bsd $$0, aqk $$1, @Nullable evz $$2) {
-      return $$0 instanceof cjw $$3 ? this.c.d($$3.go()) : false;
+   public boolean a(bsg $$0, aqm $$1, @Nullable ewf $$2) {
+      return $$0 instanceof cjz $$3 ? this.c.d($$3.gp()) : false;
    }
 
    @Override

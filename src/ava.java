@@ -1,113 +1,302 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.PortUnreachableException;
+import java.net.SocketAddress;
 import java.net.SocketTimeoutException;
-import java.util.List;
+import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Map;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ava extends auw {
+public class ava extends auz {
    private static final Logger d = LogUtils.getLogger();
-   private final ServerSocket e;
-   private final String f;
-   private final List<auz> g = Lists.newArrayList();
-   private final alb h;
+   private static final String e = "SMP";
+   private static final String f = "MINECRAFT";
+   private static final long g = 30000L;
+   private static final long h = 5000L;
+   private long i;
+   private final int j;
+   private final int k;
+   private final int l;
+   private final String m;
+   private final String n;
+   private DatagramSocket o;
+   private final byte[] p = new byte[1460];
+   private String q;
+   private String r;
+   private final Map<SocketAddress, ava.a> s;
+   private final auu t;
+   private long u;
+   private final alb v;
 
-   private ava(alb $$0, ServerSocket $$1, String $$2) {
-      super("RCON Listener");
-      this.h = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
+   private ava(alb $$0, int $$1) {
+      super("Query Listener");
+      this.v = $$0;
+      this.j = $$1;
+      this.r = $$0.b();
+      this.k = $$0.d();
+      this.m = $$0.h();
+      this.l = $$0.O();
+      this.n = $$0.s();
+      this.u = 0L;
+      this.q = "0.0.0.0";
+      if (!this.r.isEmpty() && !this.q.equals(this.r)) {
+         this.q = this.r;
+      } else {
+         this.r = "0.0.0.0";
 
-   private void d() {
-      this.g.removeIf($$0 -> !$$0.c());
-   }
-
-   @Override
-   public void run() {
-      try {
-         while (this.a) {
-            try {
-               Socket $$0 = this.e.accept();
-               auz $$1 = new auz(this.h, this.f, $$0);
-               $$1.a();
-               this.g.add($$1);
-               this.d();
-            } catch (SocketTimeoutException var7) {
-               this.d();
-            } catch (IOException var8) {
-               if (this.a) {
-                  d.info("IO exception: ", var8);
-               }
-            }
+         try {
+            InetAddress $$2 = InetAddress.getLocalHost();
+            this.q = $$2.getHostAddress();
+         } catch (UnknownHostException var4) {
+            d.warn("Unable to determine local host IP, please set server-ip in server.properties", var4);
          }
-      } finally {
-         this.a(this.e);
       }
+
+      this.t = new auu(1460);
+      this.s = Maps.newHashMap();
    }
 
    @Nullable
    public static ava a(alb $$0) {
-      aph $$1 = $$0.a();
-      String $$2 = $$0.b();
-      if ($$2.isEmpty()) {
-         $$2 = "0.0.0.0";
-      }
-
-      int $$3 = $$1.s;
-      if (0 < $$3 && 65535 >= $$3) {
-         String $$4 = $$1.t;
-         if ($$4.isEmpty()) {
-            d.warn("No rcon password set in server.properties, rcon disabled!");
-            return null;
-         } else {
-            try {
-               ServerSocket $$5 = new ServerSocket($$3, 0, InetAddress.getByName($$2));
-               $$5.setSoTimeout(500);
-               ava $$6 = new ava($$0, $$5, $$4);
-               if (!$$6.a()) {
-                  return null;
-               } else {
-                  d.info("RCON running on {}:{}", $$2, $$3);
-                  return $$6;
-               }
-            } catch (IOException var7) {
-               d.warn("Unable to initialise RCON on {}:{}", new Object[]{$$2, $$3, var7});
-               return null;
-            }
-         }
+      int $$1 = $$0.a().q;
+      if (0 < $$1 && 65535 >= $$1) {
+         ava $$2 = new ava($$0, $$1);
+         return !$$2.a() ? null : $$2;
       } else {
-         d.warn("Invalid rcon port {} found in server.properties, rcon disabled!", $$3);
+         d.warn("Invalid query port {} found in server.properties (queries disabled)", $$1);
          return null;
       }
    }
 
-   @Override
-   public void b() {
-      this.a = false;
-      this.a(this.e);
-      super.b();
-
-      for (auz $$0 : this.g) {
-         if ($$0.c()) {
-            $$0.b();
-         }
-      }
-
-      this.g.clear();
+   private void a(byte[] $$0, DatagramPacket $$1) throws IOException {
+      this.o.send(new DatagramPacket($$0, $$0.length, $$1.getSocketAddress()));
    }
 
-   private void a(ServerSocket $$0) {
-      d.debug("closeSocket: {}", $$0);
+   private boolean a(DatagramPacket $$0) throws IOException {
+      byte[] $$1 = $$0.getData();
+      int $$2 = $$0.getLength();
+      SocketAddress $$3 = $$0.getSocketAddress();
+      d.debug("Packet len {} [{}]", $$2, $$3);
+      if (3 <= $$2 && -2 == $$1[0] && -3 == $$1[1]) {
+         d.debug("Packet '{}' [{}]", auv.a($$1[2]), $$3);
+         switch ($$1[2]) {
+            case 0:
+               if (!this.c($$0)) {
+                  d.debug("Invalid challenge [{}]", $$3);
+                  return false;
+               } else if (15 == $$2) {
+                  this.a(this.b($$0), $$0);
+                  d.debug("Rules [{}]", $$3);
+               } else {
+                  auu $$4 = new auu(1460);
+                  $$4.a(0);
+                  $$4.a(this.a($$0.getSocketAddress()));
+                  $$4.a(this.m);
+                  $$4.a("SMP");
+                  $$4.a(this.n);
+                  $$4.a(Integer.toString(this.v.N()));
+                  $$4.a(Integer.toString(this.l));
+                  $$4.a((short)this.k);
+                  $$4.a(this.q);
+                  this.a($$4.a(), $$0);
+                  d.debug("Status [{}]", $$3);
+               }
+            default:
+               return true;
+            case 9:
+               this.d($$0);
+               d.debug("Challenge [{}]", $$3);
+               return true;
+         }
+      } else {
+         d.debug("Invalid packet [{}]", $$3);
+         return false;
+      }
+   }
+
+   private byte[] b(DatagramPacket $$0) throws IOException {
+      long $$1 = ac.c();
+      if ($$1 < this.u + 5000L) {
+         byte[] $$2 = this.t.a();
+         byte[] $$3 = this.a($$0.getSocketAddress());
+         $$2[1] = $$3[0];
+         $$2[2] = $$3[1];
+         $$2[3] = $$3[2];
+         $$2[4] = $$3[3];
+         return $$2;
+      } else {
+         this.u = $$1;
+         this.t.b();
+         this.t.a(0);
+         this.t.a(this.a($$0.getSocketAddress()));
+         this.t.a("splitnum");
+         this.t.a(128);
+         this.t.a(0);
+         this.t.a("hostname");
+         this.t.a(this.m);
+         this.t.a("gametype");
+         this.t.a("SMP");
+         this.t.a("game_id");
+         this.t.a("MINECRAFT");
+         this.t.a("version");
+         this.t.a(this.v.M());
+         this.t.a("plugins");
+         this.t.a(this.v.u());
+         this.t.a("map");
+         this.t.a(this.n);
+         this.t.a("numplayers");
+         this.t.a(this.v.N() + "");
+         this.t.a("maxplayers");
+         this.t.a(this.l + "");
+         this.t.a("hostport");
+         this.t.a(this.k + "");
+         this.t.a("hostip");
+         this.t.a(this.q);
+         this.t.a(0);
+         this.t.a(1);
+         this.t.a("player_");
+         this.t.a(0);
+         String[] $$4 = this.v.P();
+
+         for (String $$5 : $$4) {
+            this.t.a($$5);
+         }
+
+         this.t.a(0);
+         return this.t.a();
+      }
+   }
+
+   private byte[] a(SocketAddress $$0) {
+      return this.s.get($$0).c();
+   }
+
+   private Boolean c(DatagramPacket $$0) {
+      SocketAddress $$1 = $$0.getSocketAddress();
+      if (!this.s.containsKey($$1)) {
+         return false;
+      } else {
+         byte[] $$2 = $$0.getData();
+         return this.s.get($$1).a() == auv.c($$2, 7, $$0.getLength());
+      }
+   }
+
+   private void d(DatagramPacket $$0) throws IOException {
+      ava.a $$1 = new ava.a($$0);
+      this.s.put($$0.getSocketAddress(), $$1);
+      this.a($$1.b(), $$0);
+   }
+
+   private void d() {
+      if (this.a) {
+         long $$0 = ac.c();
+         if ($$0 >= this.i + 30000L) {
+            this.i = $$0;
+            this.s.values().removeIf($$1 -> $$1.a($$0));
+         }
+      }
+   }
+
+   @Override
+   public void run() {
+      d.info("Query running on {}:{}", this.r, this.j);
+      this.i = ac.c();
+      DatagramPacket $$0 = new DatagramPacket(this.p, this.p.length);
 
       try {
-         $$0.close();
-      } catch (IOException var3) {
-         d.warn("Failed to close socket", var3);
+         while (this.a) {
+            try {
+               this.o.receive($$0);
+               this.d();
+               this.a($$0);
+            } catch (SocketTimeoutException var8) {
+               this.d();
+            } catch (PortUnreachableException var9) {
+            } catch (IOException var10) {
+               this.a(var10);
+            }
+         }
+      } finally {
+         d.debug("closeSocket: {}:{}", this.r, this.j);
+         this.o.close();
+      }
+   }
+
+   @Override
+   public boolean a() {
+      if (this.a) {
+         return true;
+      } else {
+         return !this.e() ? false : super.a();
+      }
+   }
+
+   private void a(Exception $$0) {
+      if (this.a) {
+         d.warn("Unexpected exception", $$0);
+         if (!this.e()) {
+            d.error("Failed to recover from exception, shutting down!");
+            this.a = false;
+         }
+      }
+   }
+
+   private boolean e() {
+      try {
+         this.o = new DatagramSocket(this.j, InetAddress.getByName(this.r));
+         this.o.setSoTimeout(500);
+         return true;
+      } catch (Exception var2) {
+         d.warn("Unable to initialise query system on {}:{}", new Object[]{this.r, this.j, var2});
+         return false;
+      }
+   }
+
+   static class a {
+      private final long a = new Date().getTime();
+      private final int b;
+      private final byte[] c;
+      private final byte[] d;
+      private final String e;
+
+      public a(DatagramPacket $$0) {
+         byte[] $$1 = $$0.getData();
+         this.c = new byte[4];
+         this.c[0] = $$1[3];
+         this.c[1] = $$1[4];
+         this.c[2] = $$1[5];
+         this.c[3] = $$1[6];
+         this.e = new String(this.c, StandardCharsets.UTF_8);
+         this.b = ayo.a().a(16777216);
+         this.d = String.format(Locale.ROOT, "\t%s%d\u0000", this.e, this.b).getBytes(StandardCharsets.UTF_8);
+      }
+
+      public Boolean a(long $$0) {
+         return this.a < $$0;
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      public byte[] b() {
+         return this.d;
+      }
+
+      public byte[] c() {
+         return this.c;
+      }
+
+      public String d() {
+         return this.e;
       }
    }
 }

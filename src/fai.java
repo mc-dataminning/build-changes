@@ -2,42 +2,65 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
 public class fai {
-   private static final int a = 786432;
-   private final fab b;
    @Nullable
-   private static fai c;
+   private static fap a;
 
    public static void a() {
-      RenderSystem.assertOnGameThreadOrInit();
-      if (c != null) {
-         throw new IllegalStateException("Tesselator has already been initialized");
-      } else {
-         c = new fai();
+      if (a != null) {
+         b();
+         fap.b();
       }
    }
 
-   public static fai b() {
-      RenderSystem.assertOnGameThreadOrInit();
-      if (c == null) {
-         throw new IllegalStateException("Tesselator has not been initialized");
+   public static void b() {
+      a = null;
+   }
+
+   public static void a(fah.b $$0) {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> c($$0));
       } else {
-         return c;
+         c($$0);
       }
    }
 
-   public fai(int $$0) {
-      this.b = new fab($$0);
+   private static void c(fah.b $$0) {
+      fap $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+      }
    }
 
-   public fai() {
-      this(786432);
+   public static void b(fah.b $$0) {
+      fap $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.c();
+      }
    }
 
-   public void c() {
-      fac.a(this.b.d());
+   @Nullable
+   private static fap d(fah.b $$0) {
+      RenderSystem.assertOnRenderThread();
+      if ($$0.d()) {
+         $$0.e();
+         return null;
+      } else {
+         fap $$1 = a($$0.c().g());
+         $$1.a($$0);
+         return $$1;
+      }
    }
 
-   public fab d() {
-      return this.b;
+   private static fap a(far $$0) {
+      fap $$1 = $$0.g();
+      a($$1);
+      return $$1;
+   }
+
+   private static void a(fap $$0) {
+      if ($$0 != a) {
+         $$0.a();
+         a = $$0;
+      }
    }
 }

@@ -1,34 +1,43 @@
-public interface dxd {
-   dxd a = new dxd() {
-      @Override
-      public boolean a() {
-         return true;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+
+public class dxd<T extends dxi> {
+   private final T a;
+   @Nullable
+   private kc b;
+
+   public dxd(T $$0) {
+      this.a = $$0;
+   }
+
+   public void a(aqm $$0) {
+      this.c($$0);
+   }
+
+   public T a() {
+      return this.a;
+   }
+
+   public void b(aqm $$0) {
+      a($$0, this.b, $$0x -> $$0x.b(this.a));
+   }
+
+   public void c(aqm $$0) {
+      this.a.a().a($$0).map(kc::a).ifPresent($$1 -> {
+         if (this.b == null || !this.b.equals($$1)) {
+            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
+            this.b = $$1;
+            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
+         }
+      });
+   }
+
+   private static void a(dci $$0, @Nullable kc $$1, Consumer<dxj> $$2) {
+      if ($$1 != null) {
+         dug $$3 = $$0.a($$1.a(), $$1.c(), dvh.n, false);
+         if ($$3 != null) {
+            $$2.accept($$3.a($$1.b()));
+         }
       }
-
-      @Override
-      public void a(dxc $$0) {
-      }
-
-      @Override
-      public void b(dxc $$0) {
-      }
-
-      @Override
-      public boolean a(jj<dxa> $$0, evz $$1, dxa.a $$2, dxd.a $$3) {
-         return false;
-      }
-   };
-
-   boolean a();
-
-   void a(dxc var1);
-
-   void b(dxc var1);
-
-   boolean a(jj<dxa> var1, evz var2, dxa.a var3, dxd.a var4);
-
-   @FunctionalInterface
-   public interface a {
-      void visit(dxc var1, evz var2);
    }
 }

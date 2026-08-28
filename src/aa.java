@@ -1,31 +1,29 @@
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DSL.TypeReference;
 import io.netty.util.ResourceLeakDetector;
 import io.netty.util.ResourceLeakDetector.Level;
 import java.time.Duration;
-import java.util.Set;
 import javax.annotation.Nullable;
 
 public class aa {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 3940;
+   public static final int b = 3941;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "24w18a";
+   public static final String d = "24w19a";
    @Deprecated
    public static final int e = 767;
    @Deprecated
-   public static final int f = 193;
+   public static final int f = 194;
    public static final int g = 3937;
-   private static final int bp = 30;
+   private static final int bn = 30;
    public static final boolean h = true;
    @Deprecated
    public static final int i = 33;
    @Deprecated
-   public static final int j = 42;
+   public static final int j = 43;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -112,67 +110,61 @@ public class aa {
    public static final boolean aO = false;
    public static final boolean aP = false;
    public static final boolean aQ = false;
-   public static final boolean aR = false;
-   public static final long aS = Duration.ofMillis(300L).toNanos();
-   public static final float aT = 3600000.0F;
+   public static final long aR = Duration.ofMillis(300L).toNanos();
+   public static final float aS = 3600000.0F;
+   public static final boolean aT = false;
    public static final boolean aU = false;
-   public static final boolean aV = false;
-   public static boolean aW = true;
-   public static boolean aX;
-   public static Set<TypeReference> aY = Set.of();
-   public static final int aZ = 16;
-   public static final int ba = 256;
-   public static final int bb = 32500;
-   public static final int bc = 2000000;
-   public static final int bd = 16;
-   public static final int be = 1000000;
-   public static final int bf = 32;
-   public static final char[] bg = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '"', ':'};
-   public static final int bh = 20;
-   public static final int bi = 50;
-   public static final int bj = 1200;
-   public static final int bk = 24000;
-   public static final float bl = 1365.3334F;
-   public static final float bm = 0.87890625F;
-   public static final float bn = 17.578125F;
-   public static final int bo = 64;
+   public static boolean aV = true;
+   public static boolean aW;
+   public static final int aX = 16;
+   public static final int aY = 256;
+   public static final int aZ = 32500;
+   public static final int ba = 2000000;
+   public static final int bb = 16;
+   public static final int bc = 1000000;
+   public static final int bd = 32;
+   public static final char[] be = new char[]{'/', '\n', '\r', '\t', '\u0000', '\f', '`', '?', '*', '\\', '<', '>', '|', '"', ':'};
+   public static final int bf = 20;
+   public static final int bg = 50;
+   public static final int bh = 1200;
+   public static final int bi = 24000;
+   public static final float bj = 1365.3334F;
+   public static final float bk = 0.87890625F;
+   public static final float bl = 17.578125F;
+   public static final int bm = 64;
    @Nullable
-   private static ad bq;
+   private static ad bo;
 
    public static void a(ad $$0) {
-      if (bq == null) {
-         bq = $$0;
-      } else if ($$0 != bq) {
+      if (bo == null) {
+         bo = $$0;
+      } else if ($$0 != bo) {
          throw new IllegalStateException("Cannot override the current game version!");
       }
    }
 
    public static void a() {
-      if (bq == null) {
-         bq = t.a();
+      if (bo == null) {
+         bo = t.a();
       }
    }
 
    public static ad b() {
-      if (bq == null) {
+      if (bo == null) {
          throw new IllegalStateException("Game version not set");
       } else {
-         return bq;
+         return bo;
       }
    }
 
    public static int c() {
-      return 1073742017;
+      return 1073742018;
    }
 
-   public static boolean a(dbk $$0) {
+   public static boolean a(dbm $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !as ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;
-   }
-
-   public static void d() {
-      aY = azl.t;
    }
 
    static {

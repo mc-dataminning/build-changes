@@ -1,54 +1,75 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public interface fgw {
-   static fgw a(fji $$0) {
-      return new fgw.a($$0);
-   }
+public class fgw {
+   private static final int a = -1;
+   private final jp<fgv> b = new jp<>(32);
+   private final Map<dfh, Set<dtn<?>>> c = Maps.newHashMap();
 
-   @Nullable
-   static fgw a(fjh $$0, @Nullable fgw $$1) {
-      return $$1 == null ? null : new fgw.b($$0, $$1);
-   }
-
-   static fgw a(fji $$0, fjh... $$1) {
-      fgw $$2 = a($$0);
-
-      for (fjh $$3 : $$1) {
-         $$2 = a($$3, $$2);
-      }
-
-      return $$2;
-   }
-
-   fji a();
-
-   void a(boolean var1);
-
-   public static record a(fji a) implements fgw {
-      @Override
-      public void a(boolean $$0) {
-         this.a.a($$0);
-      }
-   }
-
-   public static record b(fjh a, fgw b) implements fgw {
-      @Override
-      public void a(boolean $$0) {
-         if (!$$0) {
-            this.a.a(null);
+   public static fgw a() {
+      fgw $$0 = new fgw();
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gdp.a($$1, $$0x.c(dhp.b) == dtg.a ? $$2.d() : $$2) : dcd.a(), dfj.iI, dfj.iH);
+      $$0.a(dhp.b, dfj.iI, dfj.iH);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gdp.a($$1, $$2) : dcd.a(), dfj.i, dfj.bu, dfj.bt, dfj.gb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         if ($$3 != 0) {
+            return $$1 != null && $$2 != null ? gdp.a($$1, $$2) : dcd.a();
          } else {
-            this.a.a(this.b.a());
+            return -1;
          }
+      }, dfj.sB);
+      $$0.a(($$0x, $$1, $$2, $$3) -> dbz.a(), dfj.aF);
+      $$0.a(($$0x, $$1, $$2, $$3) -> dbz.b(), dfj.aG);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gdp.b($$1, $$2) : dbz.c(), dfj.aE, dfj.aH, dfj.aI, dfj.aK, dfj.ff, dfj.aL);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gdp.c($$1, $$2) : -1, dfj.G, dfj.nd, dfj.fu);
+      $$0.a(($$0x, $$1, $$2, $$3) -> dlj.b($$0x.c(dlj.f)), dfj.cw);
+      $$0.a(dlj.f, dfj.cw);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? gdp.a($$1, $$2) : -1, dfj.dS);
+      $$0.a(($$0x, $$1, $$2, $$3) -> -2046180, dfj.fc, dfj.fb);
+      $$0.a(($$0x, $$1, $$2, $$3) -> {
+         int $$4 = $$0x.c(dnd.c);
+         return axq.b.a($$4 * 32, 255 - $$4 * 8, $$4 * 4);
+      }, dfj.fe, dfj.fd);
+      $$0.a(dnd.c, dfj.fe, dfj.fd);
+      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? -14647248 : -9321636, dfj.fm);
+      return $$0;
+   }
 
-         this.b.a($$0);
+   public int a(dsk $$0, dcf $$1, ja $$2) {
+      fgv $$3 = this.b.a(lq.e.a($$0.b()));
+      if ($$3 != null) {
+         return $$3.getColor($$0, null, null, 0);
+      } else {
+         eol $$4 = $$0.d($$1, $$2);
+         return $$4 != null ? $$4.ak : -1;
       }
+   }
 
-      public fjh b() {
-         return this.a;
-      }
+   public int a(dsk $$0, @Nullable dbi $$1, @Nullable ja $$2, int $$3) {
+      fgv $$4 = this.b.a(lq.e.a($$0.b()));
+      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
+   }
 
-      public fgw c() {
-         return this.b;
+   public void a(fgv $$0, dfh... $$1) {
+      for (dfh $$2 : $$1) {
+         this.b.a($$0, lq.e.a($$2));
       }
+   }
+
+   private void a(Set<dtn<?>> $$0, dfh... $$1) {
+      for (dfh $$2 : $$1) {
+         this.c.put($$2, $$0);
+      }
+   }
+
+   private void a(dtn<?> $$0, dfh... $$1) {
+      this.a(ImmutableSet.of($$0), $$1);
+   }
+
+   public Set<dtn<?>> a(dfh $$0) {
+      return this.c.getOrDefault($$0, ImmutableSet.of());
    }
 }

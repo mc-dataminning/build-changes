@@ -1,75 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class ecp extends ebe<eed> {
-   public ecp(Codec<eed> $$0) {
+public class ecp extends ebk<edj> {
+   public ecp(Codec<edj> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebg<eed> $$0) {
-      eed $$1 = $$0.f();
-      dcz $$2 = $$0.b();
-      ja $$3 = $$0.e();
-      if (!$$2.a_($$3.c()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.d()).a($$1.f)) {
-         return false;
-      } else {
-         dsh $$4 = $$2.a_($$3);
-         if (!$$4.i() && !$$4.a($$1.f)) {
-            return false;
-         } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
-            }
+   public boolean a(ebm<edj> $$0) {
+      int $$1 = 0;
+      ayo $$2 = $$0.d();
+      ddb $$3 = $$0.b();
+      ja $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.d()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.u($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.e())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.d())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(dyf.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         ja $$10 = new ja($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dsk $$11 = dfj.mV.o().a(dme.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(dfj.G) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
          }
       }
+
+      return $$1 > 0;
    }
 }

@@ -1,122 +1,201 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public class eov extends eoo {
-   private final boolean k;
-   private final Long2ObjectMap<eos> l = new Long2ObjectOpenHashMap();
+public class eov {
+   private final List<eot> a;
+   @Nullable
+   private eov.a b;
+   private int c;
+   private final ja d;
+   private final float e;
+   private final boolean f;
 
-   public eov(boolean $$0) {
-      this.k = $$0;
+   public eov(List<eot> $$0, ja $$1, boolean $$2) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
+      this.f = $$2;
    }
 
-   @Override
-   public void a(dcq $$0, bta $$1) {
-      super.a($$0, $$1);
-      this.l.clear();
+   public void a() {
+      this.c++;
    }
 
-   @Override
-   public void b() {
-      super.b();
-      this.l.clear();
+   public boolean b() {
+      return this.c <= 0;
    }
 
-   @Override
-   public eon a() {
-      return this.c(aye.a(this.b.cK().a), aye.a(this.b.cK().b + 0.5), aye.a(this.b.cK().c));
-   }
-
-   @Override
-   public eow a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public int a(eon[] $$0, eon $$1) {
-      int $$2 = 0;
-      Map<jf, eon> $$3 = Maps.newEnumMap(jf.class);
-
-      for (jf $$4 : jf.values()) {
-         eon $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
-         $$3.put($$4, $$5);
-         if (this.a($$5)) {
-            $$0[$$2++] = $$5;
-         }
-      }
-
-      for (jf $$6 : jf.c.a) {
-         jf $$7 = $$6.h();
-         if (b($$3.get($$6)) && b($$3.get($$7))) {
-            eon $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
-            if (this.a($$8)) {
-               $$0[$$2++] = $$8;
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   protected boolean a(@Nullable eon $$0) {
-      return $$0 != null && !$$0.i;
-   }
-
-   private static boolean b(@Nullable eon $$0) {
-      return $$0 != null && $$0.k >= 0.0F;
+   public boolean c() {
+      return this.c >= this.a.size();
    }
 
    @Nullable
-   protected eon a(int $$0, int $$1, int $$2) {
-      eon $$3 = null;
-      eos $$4 = this.b($$0, $$1, $$2);
-      if (this.k && $$4 == eos.u || $$4 == eos.j) {
-         float $$5 = this.b.a($$4);
-         if ($$5 >= 0.0F) {
-            $$3 = this.c($$0, $$1, $$2);
-            $$3.l = $$4;
-            $$3.k = Math.max($$3.k, $$5);
-            if (this.a.a().b_(new ja($$0, $$1, $$2)).c()) {
-               $$3.k += 8.0F;
-            }
-         }
-      }
-
-      return $$3;
+   public eot d() {
+      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
    }
 
-   protected eos b(int $$0, int $$1, int $$2) {
-      return (eos)this.l.computeIfAbsent(ja.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
+   public eot a(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public void b(int $$0) {
+      if (this.a.size() > $$0) {
+         this.a.subList($$0, this.a.size()).clear();
+      }
+   }
+
+   public void a(int $$0, eot $$1) {
+      this.a.set($$0, $$1);
+   }
+
+   public int e() {
+      return this.a.size();
+   }
+
+   public int f() {
+      return this.c;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public ewf a(bsg $$0, int $$1) {
+      eot $$2 = this.a.get($$1);
+      double $$3 = (double)$$2.a + (double)((int)($$0.dk() + 1.0F)) * 0.5;
+      double $$4 = (double)$$2.b;
+      double $$5 = (double)$$2.c + (double)((int)($$0.dk() + 1.0F)) * 0.5;
+      return new ewf($$3, $$4, $$5);
+   }
+
+   public ja d(int $$0) {
+      return this.a.get($$0).a();
+   }
+
+   public ewf a(bsg $$0) {
+      return this.a($$0, this.c);
+   }
+
+   public ja g() {
+      return this.a.get(this.c).a();
+   }
+
+   public eot h() {
+      return this.a.get(this.c);
+   }
+
+   @Nullable
+   public eot i() {
+      return this.c > 0 ? this.a.get(this.c - 1) : null;
+   }
+
+   public boolean a(@Nullable eov $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if ($$0.a.size() != this.a.size()) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+            eot $$2 = this.a.get($$1);
+            eot $$3 = $$0.a.get($$1);
+            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   @azl
+   void a(eot[] $$0, eot[] $$1, Set<epc> $$2) {
+      this.b = new eov.a($$0, $$1, $$2);
+   }
+
+   @Nullable
+   public eov.a k() {
+      return this.b;
+   }
+
+   public void a(vr $$0) {
+      if (this.b != null && !this.b.c.isEmpty()) {
+         $$0.a(this.f);
+         $$0.p(this.c);
+         $$0.a(this.d);
+         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+         this.b.a($$0);
+      }
+   }
+
+   public static eov b(vr $$0) {
+      boolean $$1 = $$0.readBoolean();
+      int $$2 = $$0.readInt();
+      ja $$3 = $$0.e();
+      List<eot> $$4 = $$0.a(eot::b);
+      eov.a $$5 = eov.a.b($$0);
+      eov $$6 = new eov($$4, $$3, $$1);
+      $$6.b = $$5;
+      $$6.c = $$2;
+      return $$6;
    }
 
    @Override
-   public eos a(eou $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, this.b);
+   public String toString() {
+      return "Path(length=" + this.a.size() + ")";
    }
 
-   @Override
-   public eos a(eou $$0, int $$1, int $$2, int $$3, bta $$4) {
-      ja.a $$5 = new ja.a();
+   public ja l() {
+      return this.d;
+   }
 
-      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
-         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
-            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
-               dsh $$9 = $$0.a($$5.d($$6, $$7, $$8));
-               eob $$10 = $$9.u();
-               if ($$10.c() && $$9.a(eoq.b) && $$9.i()) {
-                  return eos.u;
-               }
+   public float m() {
+      return this.e;
+   }
 
-               if (!$$10.a(awa.a)) {
-                  return eos.a;
-               }
-            }
-         }
+   static eot[] c(vr $$0) {
+      eot[] $$1 = new eot[$$0.l()];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = eot.b($$0);
       }
 
-      dsh $$11 = $$0.a($$5);
-      return $$11.a(eoq.b) ? eos.j : eos.a;
+      return $$1;
+   }
+
+   static void a(vr $$0, eot[] $$1) {
+      $$0.c($$1.length);
+
+      for (eot $$2 : $$1) {
+         $$2.a($$0);
+      }
+   }
+
+   public eov n() {
+      eov $$0 = new eov(this.a, this.d, this.f);
+      $$0.b = this.b;
+      $$0.c = this.c;
+      return $$0;
+   }
+
+   public static record a(eot[] a, eot[] b, Set<epc> c) {
+
+      public void a(vr $$0) {
+         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+         eov.a($$0, this.a);
+         eov.a($$0, this.b);
+      }
+
+      public static eov.a b(vr $$0) {
+         HashSet<epc> $$1 = $$0.a(HashSet::new, epc::c);
+         eot[] $$2 = eov.c($$0);
+         eot[] $$3 = eov.c($$0);
+         return new eov.a($$2, $$3, $$1);
+      }
    }
 }

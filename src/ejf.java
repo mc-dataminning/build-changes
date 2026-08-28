@@ -1,78 +1,26 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
 
-public record ejf(List<eiu> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final akk c = new akk("jigsaw");
-   private static final Map<akk, akk> d = ImmutableMap.builder()
-      .put(new akk("nvi"), c)
-      .put(new akk("pcp"), c)
-      .put(new akk("bastionremnant"), c)
-      .put(new akk("runtime"), c)
-      .build();
+public interface ejf<S extends eiw> {
+   ejf<ekp> a = a("buried_treasure", ekp.d);
+   ejf<ekr> b = a("desert_pyramid", ekr.d);
+   ejf<ekt> c = a("end_city", ekt.d);
+   ejf<elc> d = a("fortress", elc.e);
+   ejf<ekv> e = a("igloo", ekv.d);
+   ejf<ekw> f = a("jigsaw", ekw.g);
+   ejf<eky> g = a("jungle_temple", eky.d);
+   ejf<ela> h = a("mineshaft", ela.d);
+   ejf<ele> i = a("nether_fossil", ele.d);
+   ejf<elg> j = a("ocean_monument", elg.d);
+   ejf<eli> k = a("ocean_ruin", eli.d);
+   ejf<elk> l = a("ruined_portal", elk.d);
+   ejf<elm> m = a("shipwreck", elm.d);
+   ejf<elo> n = a("stronghold", elo.d);
+   ejf<elq> o = a("swamp_hut", elq.d);
+   ejf<els> p = a("woodland_mansion", els.d);
 
-   public ejf(final List<eiu> a) {
-      this.a = List.copyOf(a);
-   }
+   MapCodec<S> codec();
 
-   public boolean a() {
-      return this.a.isEmpty();
-   }
-
-   public boolean a(ja $$0) {
-      for (eiu $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public uu a(ejg $$0) {
-      ud $$1 = new ud();
-
-      for (eiu $$2 : this.a) {
-         $$1.add($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public static ejf a(ud $$0, ejg $$1) {
-      List<eiu> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         tx $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         akk $$6 = new akk($$5);
-         akk $$7 = d.getOrDefault($$6, $$6);
-         ejh $$8 = lq.Q.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               eiu $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
-            }
-         }
-      }
-
-      return new ejf($$2);
-   }
-
-   public eii b() {
-      return eiu.a(this.a.stream());
-   }
-
-   public List<eiu> c() {
-      return this.a;
+   private static <S extends eiw> ejf<S> a(String $$0, MapCodec<S> $$1) {
+      return jw.a(lq.R, $$0, () -> $$1);
    }
 }

@@ -1,86 +1,147 @@
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.UUID;
 
-public interface bpw extends bpu {
-   float o_ = 4.0F;
+public abstract class bpw {
+   private final UUID h;
+   protected wu a;
+   protected float b;
+   protected bpw.a c;
+   protected bpw.b d;
+   protected boolean e;
+   protected boolean f;
+   protected boolean g;
 
-   int b();
-
-   boolean c();
-
-   cua a(int var1);
-
-   cua a(int var1, int var2);
-
-   cua b(int var1);
-
-   void a(int var1, cua var2);
-
-   default int ah_() {
-      return 99;
+   public bpw(UUID $$0, wu $$1, bpw.a $$2, bpw.b $$3) {
+      this.h = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.b = 1.0F;
    }
 
-   default int e_(cua $$0) {
-      return Math.min(this.ah_(), $$0.j());
+   public UUID h() {
+      return this.h;
    }
 
-   void e();
-
-   boolean a(cmh var1);
-
-   default void d_(cmh $$0) {
+   public wu i() {
+      return this.a;
    }
 
-   default void c(cmh $$0) {
+   public void a(wu $$0) {
+      this.a = $$0;
    }
 
-   default boolean b(int $$0, cua $$1) {
-      return true;
+   public float j() {
+      return this.b;
    }
 
-   default boolean a(bpw $$0, int $$1, cua $$2) {
-      return true;
+   public void a(float $$0) {
+      this.b = $$0;
    }
 
-   default int a_(ctv $$0) {
-      int $$1 = 0;
+   public bpw.a k() {
+      return this.c;
+   }
 
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cua $$3 = this.a($$2);
-         if ($$3.g().equals($$0)) {
-            $$1 += $$3.H();
-         }
+   public void a(bpw.a $$0) {
+      this.c = $$0;
+   }
+
+   public bpw.b l() {
+      return this.d;
+   }
+
+   public void a(bpw.b $$0) {
+      this.d = $$0;
+   }
+
+   public boolean m() {
+      return this.e;
+   }
+
+   public bpw a(boolean $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public boolean n() {
+      return this.f;
+   }
+
+   public bpw b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public bpw c(boolean $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean o() {
+      return this.g;
+   }
+
+   public static enum a {
+      a("pink", n.m),
+      b("blue", n.j),
+      c("red", n.e),
+      d("green", n.k),
+      e("yellow", n.o),
+      f("purple", n.b),
+      g("white", n.p);
+
+      private final String h;
+      private final n i;
+
+      private a(final String $$0, final n $$1) {
+         this.h = $$0;
+         this.i = $$1;
       }
 
-      return $$1;
-   }
-
-   default boolean a(Set<ctv> $$0) {
-      return this.a_($$1 -> !$$1.e() && $$0.contains($$1.g()));
-   }
-
-   default boolean a_(Predicate<cua> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cua $$2 = this.a($$1);
-         if ($$0.test($$2)) {
-            return true;
-         }
+      public n a() {
+         return this.i;
       }
 
-      return false;
+      public String b() {
+         return this.h;
+      }
+
+      public static bpw.a a(String $$0) {
+         for (bpw.a $$1 : values()) {
+            if ($$1.h.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return g;
+      }
    }
 
-   static boolean a(dpn $$0, cmh $$1) {
-      return a($$0, $$1, 4.0F);
-   }
+   public static enum b {
+      a("progress"),
+      b("notched_6"),
+      c("notched_10"),
+      d("notched_12"),
+      e("notched_20");
 
-   static boolean a(dpn $$0, cmh $$1, float $$2) {
-      dcd $$3 = $$0.i();
-      ja $$4 = $$0.az_();
-      if ($$3 == null) {
-         return false;
-      } else {
-         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
+      private final String f;
+
+      private b(final String $$0) {
+         this.f = $$0;
+      }
+
+      public String a() {
+         return this.f;
+      }
+
+      public static bpw.b a(String $$0) {
+         for (bpw.b $$1 : values()) {
+            if ($$1.f.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return a;
       }
    }
 }

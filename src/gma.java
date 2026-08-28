@@ -1,17 +1,12 @@
-public class gma extends gkm<ckb, fwr> {
-   private static final akk a = new akk("textures/entity/illager/vex.png");
-   private static final akk i = new akk("textures/entity/illager/vex_charging.png");
+public class gma extends gil<cms> {
+   public static final akk a = new akk("textures/entity/projectiles/arrow.png");
+   public static final akk f = new akk("textures/entity/projectiles/tipped_arrow.png");
 
-   public gma(gjg.a $$0) {
-      super($$0, new fwr($$0.a(fxh.bO)), 0.3F);
-      this.a(new gnl<>(this, $$0.d()));
+   public gma(gjm.a $$0) {
+      super($$0);
    }
 
-   protected int a(ckb $$0, ja $$1) {
-      return 15;
-   }
-
-   public akk a(ckb $$0) {
-      return $$0.go() ? i : a;
+   public akk a(cms $$0) {
+      return $$0.H() > 0 ? f : a;
    }
 }

@@ -47,7 +47,7 @@ public class ew implements ArgumentType<ew.a> {
       }
 
       public float a(eq $$0) {
-         return aye.g(this.b ? this.a + $$0.k().j : this.a);
+         return ayg.g(this.b ? this.a + $$0.k().j : this.a);
       }
    }
 }

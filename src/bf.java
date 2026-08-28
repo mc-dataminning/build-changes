@@ -3,26 +3,26 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class bf {
-   public static final Codec<bf> a = etz.e.listOf().xmap(bf::new, $$0 -> $$0.b);
-   private final List<etz> b;
-   private final Predicate<eqo> c;
+   public static final Codec<bf> a = euf.e.listOf().xmap(bf::new, $$0 -> $$0.b);
+   private final List<euf> b;
+   private final Predicate<equ> c;
 
-   bf(List<etz> $$0) {
+   bf(List<euf> $$0) {
       this.b = $$0;
       this.c = ac.a($$0);
    }
 
-   public static bf a(etz... $$0) {
+   public static bf a(euf... $$0) {
       return new bf(List.of($$0));
    }
 
-   public boolean a(eqo $$0) {
+   public boolean a(equ $$0) {
       return this.c.test($$0);
    }
 
-   public void a(equ $$0) {
+   public void a(era $$0) {
       for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         etz $$2 = this.b.get($$1);
+         euf $$2 = this.b.get($$1);
          $$2.a($$0.a("[" + $$1 + "]"));
       }
    }

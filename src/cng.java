@@ -1,47 +1,57 @@
-public abstract class cng extends cnh implements cmw {
-   private static final ajp<cua> b = ajt.a(cng.class, ajr.h);
-
-   public cng(bsj<? extends cng> $$0, dcd $$1) {
+public class cng extends cmw {
+   public cng(bsm<? extends cng> $$0, dcf $$1) {
       super($$0, $$1);
    }
 
-   public cng(bsj<? extends cng> $$0, double $$1, double $$2, double $$3, dcd $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public cng(dcf $$0, btb $$1, ewf $$2) {
+      super(bsm.aQ, $$1, $$2, $$0);
    }
 
-   public cng(bsj<? extends cng> $$0, bsy $$1, dcd $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(cua $$0) {
-      this.ap().a(b, $$0.c(1));
-   }
-
-   protected abstract ctv u();
-
-   @Override
-   public cua p() {
-      return this.ap().a(b);
+   public cng(dcf $$0, double $$1, double $$2, double $$3, ewf $$4) {
+      super(bsm.aQ, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   protected void a(ajt.a $$0) {
-      $$0.a(b, new cua(this.u()));
-   }
-
-   @Override
-   public void b(tx $$0) {
-      super.b($$0);
-      $$0.a("Item", this.p().a(this.dR()));
-   }
-
-   @Override
-   public void a(tx $$0) {
+   protected void a(ewc $$0) {
       super.a($$0);
-      if ($$0.b("Item", 10)) {
-         this.a(cua.a(this.dR(), (uu)$$0.p("Item")).orElseGet(() -> new cua(this.u())));
-      } else {
-         this.a(new cua(this.u()));
+      if (this.dQ() instanceof aqm $$1) {
+         bsg var7 = $$0.a();
+         bsg $$4 = this.s();
+         int $$5 = var7.aC();
+         var7.d(5.0F);
+         bqz $$6 = this.dR().a((cmw)this, $$4);
+         if (!var7.a($$6, 5.0F)) {
+            var7.h($$5);
+         } else {
+            czn.a($$1, var7, $$6);
+         }
       }
+   }
+
+   @Override
+   protected void a(ewb $$0) {
+      super.a($$0);
+      if (!this.dQ().B) {
+         bsg $$1 = this.s();
+         if (!($$1 instanceof btd) || this.dQ().ab().b(dcb.c)) {
+            ja $$2 = $$0.a().a($$0.b());
+            if (this.dQ().u($$2)) {
+               this.dQ().b($$2, deu.a(this.dQ(), $$2));
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(ewd $$0) {
+      super.a($$0);
+      if (!this.dQ().B) {
+         this.ap();
+      }
+   }
+
+   @Override
+   public boolean a(bqz $$0, float $$1) {
+      return false;
    }
 }

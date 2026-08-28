@@ -1,125 +1,64 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collections;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
 import org.slf4j.Logger;
 
 public class gdh {
-   private static final gdh a = new gdh("") {
-      @Override
-      public void a(ffn $$0) {
-      }
-
-      @Override
-      public void a(gdh.c $$0, String $$1, String $$2) {
-      }
-   };
    private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   private final Path d;
-   @Nullable
-   private gdh.b e;
+   private static final int c = cmj.g();
+   public static final Codec<gdh> a = Codec.PASSTHROUGH.listOf().validate($$0 -> ac.a($$0, c)).xmap(gdh::new, $$0 -> $$0.f);
+   private static final DynamicOps<uu> d = ul.a;
+   private static final Dynamic<?> e = new Dynamic(d, (uu)cuc.f.encodeStart(d, cuc.l).getOrThrow());
+   private List<Dynamic<?>> f;
 
-   gdh(String $$0) {
-      this.d = ffn.Q().p.toPath().resolve($$0);
+   private gdh(List<Dynamic<?>> $$0) {
+      this.f = $$0;
    }
 
-   public static gdh a(@Nullable String $$0) {
-      return $$0 == null ? a : new gdh($$0);
+   public gdh() {
+      this(Collections.nCopies(c, e));
    }
 
-   public void a(gdh.c $$0, String $$1, String $$2) {
-      this.e = new gdh.b($$0, $$1, $$2);
+   public List<cuc> a(jl.a $$0) {
+      return this.f
+         .stream()
+         .map($$1 -> cuc.f.parse(aki.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(cuc.l))
+         .toList();
    }
 
-   public void a(ffn $$0) {
-      if ($$0.q != null && this.e != null) {
-         ac.h().execute(() -> {
-            try {
-               Files.deleteIfExists(this.d);
-            } catch (IOException var3) {
-               b.error("Failed to delete quickplay log file {}", this.d, var3);
-            }
+   public void a(cmj $$0, jx $$1) {
+      aki<uu> $$2 = $$1.a(d);
+      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
 
-            gdh.a $$2 = new gdh.a(this.e, Instant.now(), $$0.q.j());
-            Codec.list(gdh.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
-               try {
-                  Files.createDirectories(this.d.getParent());
-                  Files.writeString(this.d, c.toJson($$0xx));
-               } catch (IOException var3x) {
-                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
-               }
-            });
-         });
-      } else {
-         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+      for (int $$4 = 0; $$4 < c; $$4++) {
+         cuc $$5 = $$0.a($$4);
+         Optional<Dynamic<?>> $$6 = cuc.f
+            .encodeStart($$2, $$5)
+            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
+            .map($$0x -> new Dynamic(d, $$0x));
+         $$3.add($$6.orElse(e));
       }
+
+      this.f = $$3.build();
    }
 
-   static record a(gdh.b b, Instant c, dca d) {
-      public static final Codec<gdh.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(gdh.b.a.forGetter(gdh.a::a), axm.o.fieldOf("lastPlayedTime").forGetter(gdh.a::b), dca.f.fieldOf("gamemode").forGetter(gdh.a::c))
-               .apply($$0, gdh.a::new)
-      );
-
-      public gdh.b a() {
-         return this.b;
+   public boolean a() {
+      for (Dynamic<?> $$0 : this.f) {
+         if (!a($$0)) {
+            return false;
+         }
       }
 
-      public Instant b() {
-         return this.c;
-      }
-
-      public dca c() {
-         return this.d;
-      }
+      return true;
    }
 
-   static record b(gdh.c b, String c, String d) {
-      public static final MapCodec<gdh.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  gdh.c.d.fieldOf("type").forGetter(gdh.b::a), axm.q.fieldOf("id").forGetter(gdh.b::b), Codec.STRING.fieldOf("name").forGetter(gdh.b::c)
-               )
-               .apply($$0, gdh.b::new)
-      );
-
-      public gdh.c a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public String c() {
-         return this.d;
-      }
-   }
-
-   public static enum c implements ayz {
-      a("singleplayer"),
-      b("multiplayer"),
-      c("realms");
-
-      static final Codec<gdh.c> d = ayz.a(gdh.c::values);
-      private final String e;
-
-      private c(final String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
+   private static boolean a(Dynamic<?> $$0) {
+      return e.equals($$0);
    }
 }

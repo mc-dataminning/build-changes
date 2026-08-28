@@ -20,11 +20,11 @@ public class xs {
       return this.a;
    }
 
-   public List<axq> a(int $$0, int $$1, boolean $$2) {
+   public List<axs> a(int $$0, int $$1, boolean $$2) {
       if ($$1 == 0) {
          return ImmutableList.of();
       } else {
-         List<axq> $$3 = Lists.newArrayList();
+         List<axs> $$3 = Lists.newArrayList();
          xr $$4 = this.b.get($$0);
          int $$5 = $$0;
 
@@ -33,7 +33,7 @@ public class xs {
             xr $$8 = this.b.get($$7);
             if (!$$8.equals($$4)) {
                String $$9 = this.a.substring($$5, $$7);
-               $$3.add($$2 ? axq.backward($$9, $$4, this.c) : axq.forward($$9, $$4));
+               $$3.add($$2 ? axs.backward($$9, $$4, this.c) : axs.forward($$9, $$4));
                $$4 = $$8;
                $$5 = $$7;
             }
@@ -41,7 +41,7 @@ public class xs {
 
          if ($$5 < $$0 + $$1) {
             String $$10 = this.a.substring($$5, $$0 + $$1);
-            $$3.add($$2 ? axq.backward($$10, $$4, this.c) : axq.forward($$10, $$4));
+            $$3.add($$2 ? axs.backward($$10, $$4, this.c) : axs.forward($$10, $$4));
          }
 
          return $$2 ? Lists.reverse($$3) : $$3;
@@ -56,7 +56,7 @@ public class xs {
       StringBuilder $$3 = new StringBuilder();
       List<xr> $$4 = Lists.newArrayList();
       $$0.a(($$2x, $$3x) -> {
-         ayy.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
+         azb.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
             $$3.appendCodePoint($$4x);
             int $$5 = Character.charCount($$4x);
 

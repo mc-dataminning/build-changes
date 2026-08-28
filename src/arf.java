@@ -1,30 +1,24 @@
-import net.minecraft.server.MinecraftServer;
+import io.netty.buffer.ByteBuf;
+import java.nio.charset.StandardCharsets;
 
-public class arf implements aif {
-   private final MinecraftServer b;
-   private final vp c;
+public class arf {
+   public static final int a = 250;
+   public static final String b = "MC|PingHost";
+   public static final int c = 254;
+   public static final int d = 1;
+   public static final int e = 255;
+   public static final int f = 127;
 
-   public arf(MinecraftServer $$0, vp $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static void a(ByteBuf $$0, String $$1) {
+      $$0.writeShort($$1.length());
+      $$0.writeCharSequence($$1, StandardCharsets.UTF_16BE);
    }
 
-   @Override
-   public void a(aic $$0) {
-      if ($$0.g() != aib.b) {
-         throw new UnsupportedOperationException("Invalid intention " + $$0.g());
-      } else {
-         this.c.a(aio.a, new arm(this.b, this.c, false));
-         this.c.a(aio.b);
-      }
-   }
-
-   @Override
-   public void a(wu $$0) {
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.i();
+   public static String a(ByteBuf $$0) {
+      int $$1 = $$0.readShort();
+      int $$2 = $$1 * 2;
+      String $$3 = $$0.toString($$0.readerIndex(), $$2, StandardCharsets.UTF_16BE);
+      $$0.skipBytes($$2);
+      return $$3;
    }
 }

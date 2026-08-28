@@ -1,19 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+public class ccp extends ccn {
+   private boolean p;
 
-public class ccp extends cdi<brx> {
+   public ccp(btd $$0, dcf $$1) {
+      super($$0, $$1);
+   }
+
    @Override
-   public Set<ccc<?>> a() {
-      return ImmutableSet.of(ccc.K, ccc.h);
+   protected eox a(int $$0) {
+      this.p = this.a.al() == bsm.y;
+      this.o = new epb(this.p);
+      return new eox(this.o, $$0);
    }
 
-   protected void a(aqk $$0, brx $$1) {
-      $$1.dT().c(ccc.h).ifPresent($$1x -> this.a($$1, $$1x));
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bj();
    }
 
-   private void a(brx $$0, cce $$1) {
-      Optional<brx> $$2 = $$1.a($$1x -> $$1x.ak() == $$0.ak() && !$$1x.p_()).map(brx.class::cast);
-      $$0.dT().a(ccc.K, $$2);
+   @Override
+   protected ewf b() {
+      return new ewf(this.a.dv(), this.a.e(0.5), this.a.dB());
+   }
+
+   @Override
+   protected double a(ewf $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(ewf $$0, ewf $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(ja $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

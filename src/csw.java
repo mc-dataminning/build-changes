@@ -1,30 +1,46 @@
-public class csw extends ctv implements ctc {
-   public csw(ctv.a $$0) {
-      super($$0);
-      dhk.a(this, crp.a);
-   }
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public static boolean i(cua $$0) {
-      return $$0.n() < $$0.o() - 1;
-   }
+public class csw extends ctx implements cve {
+   private static final Map<csv, csw> a = Maps.newEnumMap(csv.class);
+   private final csv b;
 
-   @Override
-   public boolean a(cua $$0, cua $$1) {
-      return $$1.a(cud.vT);
-   }
-
-   @Override
-   public bqe<cua> a(dcd $$0, cmh $$1, bqc $$2) {
-      return this.a(this, $$0, $$1, $$2);
+   public csw(csv $$0, ctx.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public jj<ave> n() {
-      return avf.ar;
+   public bqg a(cuc $$0, cmk $$1, btb $$2, bqf $$3) {
+      if ($$2 instanceof cfn $$4 && $$4.bE() && !$$4.y() && $$4.u() != this.b) {
+         $$4.dQ().a($$1, $$4, avh.hM, avi.h, 1.0F, 1.0F);
+         if (!$$1.dQ().B) {
+            $$4.b(this.b);
+            $$0.h(1);
+         }
+
+         return bqg.a($$1.dQ().B);
+      }
+
+      return bqg.e;
+   }
+
+   public csv c() {
+      return this.b;
+   }
+
+   public static csw a(csv $$0) {
+      return a.get($$0);
    }
 
    @Override
-   public bsk m() {
-      return bsk.e;
+   public boolean a(dcf $$0, dra $$1, boolean $$2, cmk $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.c()), $$2)) {
+         $$0.a(null, $$1.az_(), avh.hM, avi.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,11 +1,12 @@
-public class glk extends gkm<chf, fwh<chf>> {
-   private static final akk a = new akk("textures/entity/sniffer/sniffer.png");
+public class glk extends gks<cfn, fwe<cfn>> {
+   private static final akk a = new akk("textures/entity/sheep/sheep.png");
 
-   public glk(gjg.a $$0) {
-      super($$0, new fwh<>($$0.a(fxh.bu)), 1.1F);
+   public glk(gjm.a $$0) {
+      super($$0, new fwe<>($$0.a(fxn.bh)), 0.7F);
+      this.a(new goa(this, $$0.f()));
    }
 
-   public akk a(chf $$0) {
+   public akk a(cfn $$0) {
       return a;
    }
 }

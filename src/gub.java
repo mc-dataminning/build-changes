@@ -1,280 +1,58 @@
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import com.mojang.logging.LogUtils;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public class gub extends atz<gub.a> {
-   public static final gst a = new gst("minecraft:empty", bpe.a(1.0F), bpe.a(1.0F), 1, gst.a.a, false, false, 16);
-   public static final akk b = new akk("minecraft", "intentionally_empty");
-   public static final guc c = new guc(b, null);
-   public static final gst d = new gst(b.toString(), bpe.a(1.0F), bpe.a(1.0F), 1, gst.a.a, false, false, 16);
-   static final Logger e = LogUtils.getLogger();
-   private static final String f = "sounds.json";
-   private static final Gson g = new GsonBuilder().registerTypeHierarchyAdapter(wu.class, new wu.b(jx.b)).registerTypeAdapter(gsu.class, new gsv()).create();
-   private static final TypeToken<Map<String, gsu>> h = new TypeToken<Map<String, gsu>>() {
-   };
-   private final Map<akk, guc> i = Maps.newHashMap();
-   private final gty j;
-   private final Map<akk, ats> k = new HashMap<>();
+public class gub implements gtv {
+   private final gub.a a;
+   private gtv b;
+   private final BufferedInputStream c;
 
-   public gub(ffr $$0) {
-      this.j = new gty(this, $$0, atx.fromMap(this.k));
+   public gub(gub.a $$0, InputStream $$1) throws IOException {
+      this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new gub.b(this.c));
    }
 
-   protected gub.a a(atu $$0, bmr $$1) {
-      gub.a $$2 = new gub.a();
-      $$1.a();
-      $$1.a("list");
-      $$2.a($$0);
-      $$1.c();
+   @Override
+   public AudioFormat a() {
+      return this.b.a();
+   }
 
-      for (String $$3 : $$0.a()) {
-         $$1.a($$3);
-
-         try {
-            for (ats $$5 : $$0.a(new akk($$3, "sounds.json"))) {
-               $$1.a($$5.b());
-
-               try (Reader $$6 = $$5.e()) {
-                  $$1.a("parse");
-                  Map<String, gsu> $$7 = axu.a(g, $$6, h);
-                  $$1.b("register");
-
-                  for (Entry<String, gsu> $$8 : $$7.entrySet()) {
-                     $$2.a(new akk($$3, $$8.getKey()), $$8.getValue());
-                  }
-
-                  $$1.c();
-               } catch (RuntimeException var15) {
-                  e.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", $$5.b(), var15});
-               }
-
-               $$1.c();
-            }
-         } catch (IOException var16) {
-         }
-
-         $$1.c();
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new gub.b(this.c));
+         $$1 = this.b.a($$0);
       }
 
-      $$1.b();
-      return $$2;
+      return $$1;
    }
 
-   protected void a(gub.a $$0, atu $$1, bmr $$2) {
-      $$0.a(this.i, this.k, this.j);
-      if (aa.aX) {
-         for (akk $$3 : this.i.keySet()) {
-            guc $$4 = this.i.get($$3);
-            if (!wx.b($$4.a()) && lq.b.d($$3)) {
-               e.error("Missing subtitle {} for sound event: {}", $$4.a(), $$3);
-            }
-         }
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      gtv create(InputStream var1) throws IOException;
+   }
+
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
       }
 
-      if (e.isDebugEnabled()) {
-         for (akk $$5 : this.i.keySet()) {
-            if (!lq.b.d($$5)) {
-               e.debug("Not having sound event for: {}", $$5);
-            }
-         }
-      }
-
-      this.j.a();
-   }
-
-   public List<String> a() {
-      return this.j.h();
-   }
-
-   public eye b() {
-      return this.j.i();
-   }
-
-   static boolean a(gst $$0, akk $$1, atx $$2) {
-      akk $$3 = $$0.b();
-      if ($$2.getResource($$3).isEmpty()) {
-         e.warn("File {} does not exist, cannot add it to event {}", $$3, $$1);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   @Nullable
-   public guc a(akk $$0) {
-      return this.i.get($$0);
-   }
-
-   public Collection<akk> d() {
-      return this.i.keySet();
-   }
-
-   public void a(gsx $$0) {
-      this.j.a($$0);
-   }
-
-   public void a(gsw $$0) {
-      this.j.c($$0);
-   }
-
-   public void a(gsw $$0, int $$1) {
-      this.j.a($$0, $$1);
-   }
-
-   public void a(fey $$0) {
-      this.j.a($$0);
-   }
-
-   public void e() {
-      this.j.e();
-   }
-
-   public void f() {
-      this.j.d();
-   }
-
-   public void g() {
-      this.j.b();
-   }
-
-   public void h() {
-      this.j.c();
-   }
-
-   public void a(boolean $$0) {
-      this.j.a($$0);
-   }
-
-   public void i() {
-      this.j.f();
-   }
-
-   public void a(avg $$0, float $$1) {
-      if ($$0 == avg.a && $$1 <= 0.0F) {
-         this.f();
-      }
-
-      this.j.a($$0, $$1);
-   }
-
-   public void b(gsw $$0) {
-      this.j.a($$0);
-   }
-
-   public boolean c(gsw $$0) {
-      return this.j.b($$0);
-   }
-
-   public void a(gua $$0) {
-      this.j.a($$0);
-   }
-
-   public void b(gua $$0) {
-      this.j.b($$0);
-   }
-
-   public void a(@Nullable akk $$0, @Nullable avg $$1) {
-      this.j.a($$0, $$1);
-   }
-
-   public String j() {
-      return this.j.g();
-   }
-
-   public void k() {
-      this.j.a();
-   }
-
-   protected static class a {
-      final Map<akk, guc> a = Maps.newHashMap();
-      private Map<akk, ats> b = Map.of();
-
-      void a(atu $$0) {
-         this.b = gst.a.a($$0);
-      }
-
-      void a(akk $$0, gsu $$1) {
-         guc $$2 = this.a.get($$0);
-         boolean $$3 = $$2 == null;
-         if ($$3 || $$1.b()) {
-            if (!$$3) {
-               gub.e.debug("Replaced sound event location {}", $$0);
-            }
-
-            $$2 = new guc($$0, $$1.c());
-            this.a.put($$0, $$2);
-         }
-
-         atx $$4 = atx.fromMap(this.b);
-
-         for (final gst $$5 : $$1.a()) {
-            final akk $$6 = $$5.a();
-            gud<gst> $$8;
-            switch ($$5.f()) {
-               case a:
-                  if (!gub.a($$5, $$0, $$4)) {
-                     continue;
-                  }
-
-                  $$8 = $$5;
-                  break;
-               case b:
-                  $$8 = new gud<gst>() {
-                     @Override
-                     public int e() {
-                        guc $$0 = a.this.a.get($$6);
-                        return $$0 == null ? 0 : $$0.e();
-                     }
-
-                     public gst a(aym $$0) {
-                        guc $$1 = a.this.a.get($$6);
-                        if ($$1 == null) {
-                           return gub.a;
-                        } else {
-                           gst $$2 = $$1.a($$0);
-                           return new gst(
-                              $$2.a().toString(), new bpk($$2.c(), $$5.c()), new bpk($$2.d(), $$5.d()), $$5.e(), gst.a.a, $$2.g() || $$5.g(), $$2.h(), $$2.i()
-                           );
-                        }
-                     }
-
-                     @Override
-                     public void a(gty $$0) {
-                        guc $$1 = a.this.a.get($$6);
-                        if ($$1 != null) {
-                           $$1.a($$0);
-                        }
-                     }
-                  };
-                  break;
-               default:
-                  throw new IllegalStateException("Unknown SoundEventRegistration type: " + $$5.f());
-            }
-
-            $$2.a($$8);
-         }
-      }
-
-      public void a(Map<akk, guc> $$0, Map<akk, ats> $$1, gty $$2) {
-         $$0.clear();
-         $$1.clear();
-         $$1.putAll(this.b);
-
-         for (Entry<akk, guc> $$3 : this.a.entrySet()) {
-            $$0.put($$3.getKey(), $$3.getValue());
-            $$3.getValue().a($$2);
-         }
+      @Override
+      public void close() {
       }
    }
 }

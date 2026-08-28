@@ -1,28 +1,73 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public enum fkp implements ayz {
-   a("bitmap", fkm.a.a),
-   b("ttf", fkr.a),
-   c("space", eyl.a.a),
-   d("unihex", fks.b.a),
-   e("reference", fkq.a);
+public enum fkp implements eyo {
+   a(() -> a(5, 8, ($$0, $$1) -> -1)),
+   b(() -> {
+      int $$0 = 5;
+      int $$1 = 8;
+      return a(5, 8, ($$0x, $$1x) -> {
+         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
+         return $$2 ? -1 : 0;
+      });
+   });
 
-   public static final Codec<fkp> f = ayz.a(fkp::values);
-   private final String g;
-   private final MapCodec<? extends fko> h;
+   final ezn c;
 
-   private fkp(final String $$0, final MapCodec<? extends fko> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   private static ezn a(int $$0, int $$1, fkp.a $$2) {
+      ezn $$3 = new ezn(ezn.a.a, $$0, $$1, false);
+
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
+         }
+      }
+
+      $$3.i();
+      return $$3;
+   }
+
+   private fkp(final Supplier<ezn> $$0) {
+      this.c = $$0.get();
    }
 
    @Override
-   public String c() {
-      return this.g;
+   public float getAdvance() {
+      return (float)(this.c.a() + 1);
    }
 
-   public MapCodec<? extends fko> a() {
-      return this.h;
+   @Override
+   public fkn bake(Function<eyq, fkn> $$0) {
+      return $$0.apply(new eyq() {
+         @Override
+         public int a() {
+            return fkp.this.c.a();
+         }
+
+         @Override
+         public int b() {
+            return fkp.this.c.b();
+         }
+
+         @Override
+         public float d() {
+            return 1.0F;
+         }
+
+         @Override
+         public void a(int $$0, int $$1) {
+            fkp.this.c.a(0, $$0, $$1, false);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+      });
+   }
+
+   @FunctionalInterface
+   interface a {
+      int getColor(int var1, int var2);
    }
 }

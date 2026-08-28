@@ -1,10 +1,23 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import java.util.stream.Stream;
 
-public abstract class ehx {
-   public static final Codec<ehx> b = lq.S.r().dispatch(ehx::b, ehy::codec);
+public class ehx extends eid {
+   private static final ehx c = new ehx();
+   public static final MapCodec<ehx> a = MapCodec.unit(() -> c);
 
-   public abstract Stream<ja> a_(ehv var1, aym var2, ja var3);
+   public static ehx a() {
+      return c;
+   }
 
-   public abstract ehy<?> b();
+   @Override
+   public Stream<ja> a_(eib $$0, ayo $$1, ja $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new ja($$3, $$2.v(), $$4));
+   }
+
+   @Override
+   public eie<?> b() {
+      return eie.m;
+   }
 }

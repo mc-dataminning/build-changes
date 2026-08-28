@@ -1,23 +1,21 @@
-public class giy extends gib<cjb, fue<cjb>> {
-   private static final akk a = new akk("textures/entity/zombie/drowned.png");
+public class giy extends gks<cex, fue<cex>> {
+   private static final akk a = new akk("textures/entity/fish/cod.png");
 
-   public giy(gjg.a $$0) {
-      super($$0, new fue<>($$0.a(fxh.R)), new fue<>($$0.a(fxh.S)), new fue<>($$0.a(fxh.T)));
-      this.a(new gna<>(this, $$0.f()));
+   public giy(gjm.a $$0) {
+      super($$0, new fue<>($$0.a(fxn.A)), 0.3F);
    }
 
-   @Override
-   public akk a(ckg $$0) {
+   public akk a(cex $$0) {
       return a;
    }
 
-   protected void a(cjb $$0, fag $$1, float $$2, float $$3, float $$4, float $$5) {
+   protected void a(cex $$0, fam $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.a($$4);
-      if ($$6 > 0.0F) {
-         float $$7 = -10.0F - $$0.dH();
-         float $$8 = aye.i($$6, 0.0F, $$7);
-         $$1.a(a.b.rotationDegrees($$8), 0.0F, $$0.dk() / 2.0F / $$5, 0.0F);
+      float $$6 = 4.3F * ayg.a(0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$6));
+      if (!$$0.bf()) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
       }
    }
 }

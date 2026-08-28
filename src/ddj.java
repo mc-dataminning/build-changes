@@ -1,245 +1,142 @@
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class ddj {
-   public static final Codec<ddj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
-               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
-               ddj.b.d.optionalFieldOf("grass_color_modifier", ddj.b.a).forGetter($$0x -> $$0x.h),
-               ddc.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
-               ave.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
-               ddb.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
-               dda.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
-               avc.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
-            )
-            .apply($$0, ddj::new)
-   );
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final Optional<Integer> f;
-   private final Optional<Integer> g;
-   private final ddj.b h;
-   private final Optional<ddc> i;
-   private final Optional<jj<ave>> j;
-   private final Optional<ddb> k;
-   private final Optional<dda> l;
-   private final Optional<avc> m;
+public abstract class ddj implements ddi {
+   public static final Codec<ddj> a = lq.Z.r().dispatchStable(ddj::a, Function.identity());
+   private final Supplier<Set<jj<ddf>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
 
-   ddj(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      Optional<Integer> $$4,
-      Optional<Integer> $$5,
-      ddj.b $$6,
-      Optional<ddc> $$7,
-      Optional<jj<ave>> $$8,
-      Optional<ddb> $$9,
-      Optional<dda> $$10,
-      Optional<avc> $$11
-   ) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.m = $$11;
+   protected ddj() {
    }
 
-   public int a() {
-      return this.b;
+   protected abstract MapCodec<? extends ddj> a();
+
+   protected abstract Stream<jj<ddf>> b();
+
+   public Set<jj<ddf>> c() {
+      return this.b.get();
    }
 
-   public int b() {
-      return this.c;
-   }
+   public Set<jj<ddf>> a(int $$0, int $$1, int $$2, int $$3, ddo.f $$4) {
+      int $$5 = ju.a($$0 - $$3);
+      int $$6 = ju.a($$1 - $$3);
+      int $$7 = ju.a($$2 - $$3);
+      int $$8 = ju.a($$0 + $$3);
+      int $$9 = ju.a($$1 + $$3);
+      int $$10 = ju.a($$2 + $$3);
+      int $$11 = $$8 - $$5 + 1;
+      int $$12 = $$9 - $$6 + 1;
+      int $$13 = $$10 - $$7 + 1;
+      Set<jj<ddf>> $$14 = Sets.newHashSet();
 
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public Optional<Integer> e() {
-      return this.f;
-   }
-
-   public Optional<Integer> f() {
-      return this.g;
-   }
-
-   public ddj.b g() {
-      return this.h;
-   }
-
-   public Optional<ddc> h() {
-      return this.i;
-   }
-
-   public Optional<jj<ave>> i() {
-      return this.j;
-   }
-
-   public Optional<ddb> j() {
-      return this.k;
-   }
-
-   public Optional<dda> k() {
-      return this.l;
-   }
-
-   public Optional<avc> l() {
-      return this.m;
-   }
-
-   public static class a {
-      private OptionalInt a = OptionalInt.empty();
-      private OptionalInt b = OptionalInt.empty();
-      private OptionalInt c = OptionalInt.empty();
-      private OptionalInt d = OptionalInt.empty();
-      private Optional<Integer> e = Optional.empty();
-      private Optional<Integer> f = Optional.empty();
-      private ddj.b g = ddj.b.a;
-      private Optional<ddc> h = Optional.empty();
-      private Optional<jj<ave>> i = Optional.empty();
-      private Optional<ddb> j = Optional.empty();
-      private Optional<dda> k = Optional.empty();
-      private Optional<avc> l = Optional.empty();
-
-      public ddj.a a(int $$0) {
-         this.a = OptionalInt.of($$0);
-         return this;
-      }
-
-      public ddj.a b(int $$0) {
-         this.b = OptionalInt.of($$0);
-         return this;
-      }
-
-      public ddj.a c(int $$0) {
-         this.c = OptionalInt.of($$0);
-         return this;
-      }
-
-      public ddj.a d(int $$0) {
-         this.d = OptionalInt.of($$0);
-         return this;
-      }
-
-      public ddj.a e(int $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public ddj.a f(int $$0) {
-         this.f = Optional.of($$0);
-         return this;
-      }
-
-      public ddj.a a(ddj.b $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public ddj.a a(ddc $$0) {
-         this.h = Optional.of($$0);
-         return this;
-      }
-
-      public ddj.a a(jj<ave> $$0) {
-         this.i = Optional.of($$0);
-         return this;
-      }
-
-      public ddj.a a(ddb $$0) {
-         this.j = Optional.of($$0);
-         return this;
-      }
-
-      public ddj.a a(dda $$0) {
-         this.k = Optional.of($$0);
-         return this;
-      }
-
-      public ddj.a a(@Nullable avc $$0) {
-         this.l = Optional.ofNullable($$0);
-         return this;
-      }
-
-      public ddj a() {
-         return new ddj(
-            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
-            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
-            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
-            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
-            this.e,
-            this.f,
-            this.g,
-            this.h,
-            this.i,
-            this.j,
-            this.k,
-            this.l
-         );
-      }
-   }
-
-   public static enum b implements ayz {
-      a("none") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return $$2;
+      for (int $$15 = 0; $$15 < $$13; $$15++) {
+         for (int $$16 = 0; $$16 < $$11; $$16++) {
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               int $$18 = $$5 + $$16;
+               int $$19 = $$6 + $$17;
+               int $$20 = $$7 + $$15;
+               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
+            }
          }
-      },
-      b("dark_forest") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return ($$2 & 16711422) + 2634762 >> 1;
+      }
+
+      return $$14;
+   }
+
+   @Nullable
+   public Pair<ja, jj<ddf>> a(int $$0, int $$1, int $$2, int $$3, Predicate<jj<ddf>> $$4, ayo $$5, ddo.f $$6) {
+      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
+   }
+
+   @Nullable
+   public Pair<ja, jj<ddf>> a(ja $$0, int $$1, int $$2, int $$3, Predicate<jj<ddf>> $$4, ddo.f $$5, dci $$6) {
+      Set<jj<ddf>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
+      if ($$7.isEmpty()) {
+         return null;
+      } else {
+         int $$8 = Math.floorDiv($$1, $$2);
+         int[] $$9 = ayg.a($$0.v(), $$6.I_() + 1, $$6.am(), $$3).toArray();
+
+         for (ja.a $$10 : ja.a(ja.c, $$8, jf.f, jf.d)) {
+            int $$11 = $$0.u() + $$10.u() * $$2;
+            int $$12 = $$0.w() + $$10.w() * $$2;
+            int $$13 = ju.a($$11);
+            int $$14 = ju.a($$12);
+
+            for (int $$15 : $$9) {
+               int $$16 = ju.a($$15);
+               jj<ddf> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
+               if ($$7.contains($$17)) {
+                  return Pair.of(new ja($$11, $$15, $$12), $$17);
+               }
+            }
          }
-      },
-      c("swamp") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            double $$3 = ddd.e.a($$0 * 0.0225, $$1 * 0.0225, false);
-            return $$3 < -0.1 ? 5011004 : 6975545;
+
+         return null;
+      }
+   }
+
+   @Nullable
+   public Pair<ja, jj<ddf>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jj<ddf>> $$5, ayo $$6, boolean $$7, ddo.f $$8) {
+      int $$9 = ju.a($$0);
+      int $$10 = ju.a($$2);
+      int $$11 = ju.a($$3);
+      int $$12 = ju.a($$1);
+      Pair<ja, jj<ddf>> $$13 = null;
+      int $$14 = 0;
+      int $$15 = $$7 ? 0 : $$11;
+      int $$16 = $$15;
+
+      while ($$16 <= $$11) {
+         for (int $$17 = aa.as ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
+            boolean $$18 = Math.abs($$17) == $$16;
+
+            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
+               if ($$7) {
+                  boolean $$20 = Math.abs($$19) == $$16;
+                  if (!$$20 && !$$18) {
+                     continue;
+                  }
+               }
+
+               int $$21 = $$9 + $$19;
+               int $$22 = $$10 + $$17;
+               jj<ddf> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
+               if ($$5.test($$23)) {
+                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
+                     ja $$24 = new ja(ju.c($$21), $$1, ju.c($$22));
+                     if ($$7) {
+                        return Pair.of($$24, $$23);
+                     }
+
+                     $$13 = Pair.of($$24, $$23);
+                  }
+
+                  $$14++;
+               }
+            }
          }
-      };
 
-      private final String e;
-      public static final Codec<ddj.b> d = ayz.a(ddj.b::values);
-
-      public abstract int a(double var1, double var3, int var5);
-
-      b(final String $$0) {
-         this.e = $$0;
+         $$16 += $$4;
       }
 
-      public String a() {
-         return this.e;
-      }
+      return $$13;
+   }
 
-      @Override
-      public String c() {
-         return this.e;
-      }
+   @Override
+   public abstract jj<ddf> getNoiseBiome(int var1, int var2, int var3, ddo.f var4);
+
+   public void a(List<String> $$0, ja $$1, ddo.f $$2) {
    }
 }

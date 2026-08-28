@@ -8,15 +8,15 @@ public class afp implements zb<abn> {
    private final byte g;
    private final boolean h;
 
-   public afp(bsd $$0) {
-      this.b = $$0.al();
-      evz $$1 = $$0.do();
+   public afp(bsg $$0) {
+      this.b = $$0.am();
+      ewf $$1 = $$0.dp();
       this.c = $$1.c;
       this.d = $$1.d;
       this.e = $$1.e;
-      this.f = (byte)((int)($$0.dF() * 256.0F / 360.0F));
-      this.g = (byte)((int)($$0.dH() * 256.0F / 360.0F));
-      this.h = $$0.aE();
+      this.f = (byte)((int)($$0.dG() * 256.0F / 360.0F));
+      this.g = (byte)((int)($$0.dI() * 256.0F / 360.0F));
+      this.h = $$0.aF();
    }
 
    private afp(vr $$0) {

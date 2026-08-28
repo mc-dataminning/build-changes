@@ -1,123 +1,180 @@
-import java.util.Optional;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public abstract class cnp extends cmo implements cmw {
-   public static final dbw g = new dcu(true, false, Optional.empty(), lq.e.b(avu.cy).map(Function.identity()));
+public class cnp extends cmq {
+   private static final ajp<Byte> g = ajt.a(cnp.class, ajr.a);
+   private static final ajp<Boolean> h = ajt.a(cnp.class, ajr.k);
+   private boolean i;
+   public int f;
 
-   public cnp(bsj<? extends cnp> $$0, dcd $$1) {
+   public cnp(bsm<? extends cnp> $$0, dcf $$1) {
       super($$0, $$1);
    }
 
-   public cnp(bsj<? extends cnp> $$0, dcd $$1, bsd $$2, double $$3, double $$4, double $$5) {
-      super($$0, $$3, $$4, $$5, $$1);
-      this.c($$2);
+   public cnp(dcf $$0, btb $$1, cuc $$2) {
+      super(bsm.bf, $$1, $$0, $$2, null);
+      this.ao.a(g, this.c($$2));
+      this.ao.a(h, $$2.x());
    }
 
-   cnp(bsj<? extends cnp> $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dcd $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected evu as() {
-      float $$0 = this.ak().n().a() / 2.0F;
-      float $$1 = this.ak().n().b();
-      float $$2 = 0.15F;
-      return new evu(
-         this.dn().c - (double)$$0,
-         this.dn().d - 0.15F,
-         this.dn().e - (double)$$0,
-         this.dn().c + (double)$$0,
-         this.dn().d - 0.15F + (double)$$1,
-         this.dn().e + (double)$$0
-      );
+   public cnp(dcf $$0, double $$1, double $$2, double $$3, cuc $$4) {
+      super(bsm.bf, $$1, $$2, $$3, $$0, $$4, $$4);
+      this.ao.a(g, this.c($$4));
+      this.ao.a(h, $$4.x());
    }
 
    @Override
-   public boolean i(bsd $$0) {
-      return $$0 instanceof cnp ? false : super.i($$0);
-   }
-
-   @Override
-   protected boolean b(bsd $$0) {
-      if ($$0 instanceof cnp) {
-         return false;
-      } else {
-         return $$0.ak() == bsj.E ? false : super.b($$0);
-      }
-   }
-
-   @Override
-   protected void a(evw $$0) {
+   protected void a(ajt.a $$0) {
       super.a($$0);
-      if (!this.dP().B) {
-         bsy $$2 = this.s() instanceof bsy $$1 ? $$1 : null;
-         bsd $$3 = $$0.a().g($$0.e()).orElse($$0.a());
-         if ($$2 != null) {
-            $$2.A($$3);
-         }
-
-         $$3.a(this.dQ().c(this, $$2), 1.0F);
-         this.y();
-      }
-   }
-
-   @Override
-   public void j(double $$0, double $$1, double $$2) {
-   }
-
-   protected abstract void y();
-
-   @Override
-   protected void a(evv $$0) {
-      super.a($$0);
-      if (!this.dP().B) {
-         this.y();
-         this.ao();
-      }
-   }
-
-   @Override
-   protected void a(evx $$0) {
-      super.a($$0);
-      if (!this.dP().B) {
-         this.ao();
-      }
-   }
-
-   @Override
-   protected boolean u() {
-      return false;
-   }
-
-   @Override
-   public cua p() {
-      return cua.l;
-   }
-
-   @Override
-   protected float w() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float x() {
-      return this.w();
-   }
-
-   @Nullable
-   @Override
-   protected lh v() {
-      return null;
+      $$0.a(g, (byte)0);
+      $$0.a(h, false);
    }
 
    @Override
    public void l() {
-      if (!this.dP().B && this.dv() > this.dP().am() + 30) {
-         this.y();
-         this.ao();
-      } else {
-         super.l();
+      if (this.c > 4) {
+         this.i = true;
       }
+
+      bsg $$0 = this.s();
+      int $$1 = this.ao.a(g);
+      if ($$1 > 0 && (this.i || this.G()) && $$0 != null) {
+         if (!this.K()) {
+            if (!this.dQ().B && this.d == cmq.a.b) {
+               this.a(this.x(), 0.1F);
+            }
+
+            this.ap();
+         } else {
+            this.b(true);
+            ewf $$2 = $$0.by().d(this.do());
+            this.p(this.dv(), this.dx() + $$2.d * 0.015 * (double)$$1, this.dB());
+            if (this.dQ().B) {
+               this.ae = this.dx();
+            }
+
+            double $$3 = 0.05 * (double)$$1;
+            this.i(this.dt().a(0.95).e($$2.d().a($$3)));
+            if (this.f == 0) {
+               this.a(avh.zC, 10.0F, 1.0F);
+            }
+
+            this.f++;
+         }
+      }
+
+      super.l();
+   }
+
+   private boolean K() {
+      bsg $$0 = this.s();
+      return $$0 == null || !$$0.bE() ? false : !($$0 instanceof aqn) || !$$0.N_();
+   }
+
+   @Override
+   public boolean H() {
+      return this.ao.a(h);
+   }
+
+   @Nullable
+   @Override
+   protected ewc a(ewf $$0, ewf $$1) {
+      return this.i ? null : super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(ewc $$0) {
+      bsg $$1 = $$0.a();
+      float $$2 = 8.0F;
+      bsg $$3 = this.s();
+      bqz $$4 = this.dR().a(this, (bsg)($$3 == null ? this : $$3));
+      if (this.dQ() instanceof aqm $$5) {
+         $$2 = czn.a($$5, this.z(), $$1, $$4, $$2);
+      }
+
+      this.i = true;
+      if ($$1.a($$4, $$2)) {
+         if ($$1.al() == bsm.H) {
+            return;
+         }
+
+         if (this.dQ() instanceof aqm $$6) {
+            czn.a($$6, $$1, $$4);
+         }
+
+         if ($$1 instanceof btb $$7) {
+            this.a($$7, $$4);
+            this.a($$7);
+         }
+      }
+
+      this.i(this.dt().d(-0.01, -0.1, -0.01));
+      this.a(avh.zA, 1.0F, 1.0F);
+   }
+
+   @Override
+   protected void a(aqm $$0, ewb $$1, cuc $$2) {
+      czn.a($$0, $$2, this.s() instanceof btb $$3 ? $$3 : null, this, null, $$1.e(), this::ao);
+   }
+
+   @Override
+   protected cuc u() {
+      return this.z();
+   }
+
+   @Override
+   protected boolean a(cmk $$0) {
+      return super.a($$0) || this.G() && this.e($$0) && $$0.fZ().f(this.x());
+   }
+
+   @Override
+   protected cuc y() {
+      return new cuc(cuf.vS);
+   }
+
+   @Override
+   protected avg v() {
+      return avh.zB;
+   }
+
+   @Override
+   public void b_(cmk $$0) {
+      if (this.e($$0) || this.s() == null) {
+         super.b_($$0);
+      }
+   }
+
+   @Override
+   public void a(tx $$0) {
+      super.a($$0);
+      this.i = $$0.q("DealtDamage");
+      this.ao.a(g, this.c(this.z()));
+   }
+
+   @Override
+   public void b(tx $$0) {
+      super.b($$0);
+      $$0.a("DealtDamage", this.i);
+   }
+
+   private byte c(cuc $$0) {
+      return this.dQ() instanceof aqm $$1 ? (byte)ayg.a(czn.c($$1, $$0, this), 0, 127) : 0;
+   }
+
+   @Override
+   public void p() {
+      int $$0 = this.ao.a(g);
+      if (this.d != cmq.a.b || $$0 <= 0) {
+         super.p();
+      }
+   }
+
+   @Override
+   protected float E() {
+      return 0.99F;
+   }
+
+   @Override
+   public boolean k(double $$0, double $$1, double $$2) {
+      return true;
    }
 }

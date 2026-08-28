@@ -1,46 +1,73 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dmw extends dmp {
-   protected dmw(dsg.d $$0) {
+public class dmw extends dfh {
+   public static final MapCodec<dmw> a = b(dmw::new);
+   public static final int b = 6;
+   public static final int c = 64;
+   private static final jf[] d = jf.values();
+
+   @Override
+   public MapCodec<dmw> a() {
+      return a;
+   }
+
+   protected dmw(dsj.d $$0) {
       super($$0);
    }
 
-   private static boolean b(dsh $$0, dcg $$1, ja $$2) {
-      ja $$3 = $$2.c();
-      dsh $$4 = $$1.a_($$3);
-      if ($$4.a(dfh.dN) && $$4.c(dmo.c) == 1) {
-         return true;
-      } else if ($$4.u().e() == 8) {
-         return false;
-      } else {
-         int $$5 = ens.a($$1, $$0, $$2, $$4, $$3, jf.b, $$4.b($$1, $$3));
-         return $$5 < $$1.Q();
+   @Override
+   protected void b(dsk $$0, dcf $$1, ja $$2, dsk $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
    }
 
    @Override
-   protected abstract MapCodec<? extends dmw> a();
-
-   private static boolean c(dsh $$0, dcg $$1, ja $$2) {
-      ja $$3 = $$2.c();
-      return b($$0, $$1, $$2) && !$$1.b_($$3).a(awa.a);
+   protected void a(dsk $$0, dcf $$1, ja $$2, dfh $$3, ja $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected void b(dsh $$0, aqk $$1, ja $$2, aym $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dfh.j.o());
-      } else {
-         if ($$1.A($$2.c()) >= 9) {
-            dsh $$4 = this.o();
+   protected void a(dcf $$0, ja $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, dfj.aP.o(), 2);
+         $$0.a(null, $$1, avh.yW, avi.e, 1.0F, 1.0F);
+      }
+   }
 
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               ja $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
-               if ($$1.a_($$6).a(dfh.j) && c($$4, $$1, $$6)) {
-                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(dfh.dN))));
+   private boolean b(dcf $$0, ja $$1) {
+      return ja.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (jf $$2 : d) {
+            $$1x.accept($$0x.a($$2));
+         }
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return true;
+         } else {
+            dsk $$3 = $$0.a_($$2);
+            eoh $$4 = $$0.b_($$2);
+            if (!$$4.a(awc.a)) {
+               return false;
+            } else {
+               if ($$3.b() instanceof dfo $$6 && !$$6.a(null, $$0, $$2, $$3).e()) {
+                  return true;
                }
+
+               if ($$3.b() instanceof djx) {
+                  $$0.a($$2, dfj.a.o(), 3);
+               } else {
+                  if (!$$3.a(dfj.mc) && !$$3.a(dfj.md) && !$$3.a(dfj.bw) && !$$3.a(dfj.bx)) {
+                     return false;
+                  }
+
+                  dpp $$7 = $$3.t() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, dfj.a.o(), 3);
+               }
+
+               return true;
             }
          }
-      }
+      }) > 1;
    }
 }

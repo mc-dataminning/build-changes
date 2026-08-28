@@ -1,21 +1,21 @@
 public class rk {
-   public static final akj<ear<?, ?>> a = rn.a("seagrass_short");
-   public static final akj<ear<?, ?>> b = rn.a("seagrass_slightly_less_short");
-   public static final akj<ear<?, ?>> c = rn.a("seagrass_mid");
-   public static final akj<ear<?, ?>> d = rn.a("seagrass_tall");
-   public static final akj<ear<?, ?>> e = rn.a("sea_pickle");
-   public static final akj<ear<?, ?>> f = rn.a("seagrass_simple");
-   public static final akj<ear<?, ?>> g = rn.a("kelp");
-   public static final akj<ear<?, ?>> h = rn.a("warm_ocean_vegetation");
+   public static final akj<eax<?, ?>> a = rn.a("seagrass_short");
+   public static final akj<eax<?, ?>> b = rn.a("seagrass_slightly_less_short");
+   public static final akj<eax<?, ?>> c = rn.a("seagrass_mid");
+   public static final akj<eax<?, ?>> d = rn.a("seagrass_tall");
+   public static final akj<eax<?, ?>> e = rn.a("sea_pickle");
+   public static final akj<eax<?, ?>> f = rn.a("seagrass_simple");
+   public static final akj<eax<?, ?>> g = rn.a("kelp");
+   public static final akj<eax<?, ?>> h = rn.a("warm_ocean_vegetation");
 
-   public static void a(qm<ear<?, ?>> $$0) {
-      rn.a($$0, a, ebe.M, new eds(0.3F));
-      rn.a($$0, b, ebe.M, new eds(0.4F));
-      rn.a($$0, c, ebe.M, new eds(0.6F));
-      rn.a($$0, d, ebe.M, new eds(0.8F));
-      rn.a($$0, e, ebe.R, new edd(20));
-      rn.a($$0, f, ebe.S, new eea(efj.a(dfh.bw)));
-      rn.a($$0, g, ebe.N);
-      rn.a($$0, h, ebe.ag, new eeb(jn.a(sc.a(ebe.O, edi.m), sc.a(ebe.Q, edi.m), sc.a(ebe.P, edi.m))));
+   public static void a(qm<eax<?, ?>> $$0) {
+      rn.a($$0, a, ebk.M, new edy(0.3F));
+      rn.a($$0, b, ebk.M, new edy(0.4F));
+      rn.a($$0, c, ebk.M, new edy(0.6F));
+      rn.a($$0, d, ebk.M, new edy(0.8F));
+      rn.a($$0, e, ebk.R, new edj(20));
+      rn.a($$0, f, ebk.S, new eeg(efp.a(dfj.bw)));
+      rn.a($$0, g, ebk.N);
+      rn.a($$0, h, ebk.ag, new eeh(jn.a(sc.a(ebk.O, edo.m), sc.a(ebk.Q, edo.m), sc.a(ebk.P, edo.m))));
    }
 }

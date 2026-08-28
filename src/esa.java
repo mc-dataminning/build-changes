@@ -1,199 +1,126 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public interface esa {
-   MapCodec<esa> a = a(Integer.MAX_VALUE);
+public class esa extends esh {
+   public static final awm<eiw> a = awi.l;
+   public static final jj<epr> b = eps.i;
+   public static final byte c = 2;
+   public static final int d = 50;
+   public static final boolean e = true;
+   public static final MapCodec<esa> f = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  awm.a(lr.aQ).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
+                  epr.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
+                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
+                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
+                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+               )
+            )
+            .apply($$0, esa::new)
+   );
+   private final awm<eiw> h;
+   private final jj<epr> i;
+   private final byte j;
+   private final int k;
+   private final boolean l;
 
-   static MapCodec<esa> a(int $$0) {
-      return esa.f.e.dispatchMap("mode", esa::a, $$0x -> $$0x.g).validate($$1 -> {
-         if ($$1 instanceof esa.d $$2 && $$2.c().isPresent()) {
-            int $$3 = $$2.c().get();
-            if ($$3 > $$0) {
-               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
+   esa(List<euf> $$0, awm<eiw> $$1, jj<epr> $$2, byte $$3, int $$4, boolean $$5) {
+      super($$0);
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = $$5;
+   }
+
+   @Override
+   public esj<esa> b() {
+      return esk.q;
+   }
+
+   @Override
+   public Set<etn<?>> a() {
+      return ImmutableSet.of(etq.f);
+   }
+
+   @Override
+   public cuc a(cuc $$0, equ $$1) {
+      if (!$$0.a(cuf.uj)) {
+         return $$0;
+      } else {
+         ewf $$2 = $$1.c(etq.f);
+         if ($$2 != null) {
+            aqm $$3 = $$1.d();
+            ja $$4 = $$3.a(this.h, ja.a($$2), this.k, this.l);
+            if ($$4 != null) {
+               cuc $$5 = cuk.a($$3, $$4.u(), $$4.w(), this.j, true, true);
+               cuk.a($$3, $$5);
+               epw.a($$5, $$4, "+", this.i);
+               return $$5;
             }
          }
 
-         return DataResult.success($$1);
-      });
-   }
-
-   esa.f a();
-
-   default <T> List<T> a(List<T> $$0, List<T> $$1) {
-      return this.a($$0, $$1, Integer.MAX_VALUE);
-   }
-
-   <T> List<T> a(List<T> var1, List<T> var2, int var3);
-
-   public static class a implements esa {
-      private static final Logger d = LogUtils.getLogger();
-      public static final esa.a b = new esa.a();
-      public static final MapCodec<esa.a> c = MapCodec.unit(() -> b);
-
-      private a() {
-      }
-
-      @Override
-      public esa.f a() {
-         return esa.f.d;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         if ($$0.size() + $$1.size() > $$2) {
-            d.error("Contents overflow in section append");
-            return $$0;
-         } else {
-            return Stream.concat($$0.stream(), $$1.stream()).toList();
-         }
+         return $$0;
       }
    }
 
-   public static record b(int c) implements esa {
-      private static final Logger d = LogUtils.getLogger();
-      public static final MapCodec<esa.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(axm.k.optionalFieldOf("offset", 0).forGetter(esa.b::b)).apply($$0, esa.b::new)
-      );
-
-      @Override
-      public esa.f a() {
-         return esa.f.c;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.c > $$3) {
-            d.error("Cannot insert when offset is out of bounds");
-            return $$0;
-         } else if ($$3 + $$1.size() > $$2) {
-            d.error("Contents overflow in section insertion");
-            return $$0;
-         } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.c));
-            $$4.addAll($$1);
-            $$4.addAll($$0.subList(this.c, $$3));
-            return $$4.build();
-         }
-      }
-
-      public int b() {
-         return this.c;
-      }
+   public static esa.a c() {
+      return new esa.a();
    }
 
-   public static class c implements esa {
-      public static final esa.c b = new esa.c();
-      public static final MapCodec<esa.c> c = MapCodec.unit(() -> b);
+   public static class a extends esh.a<esa.a> {
+      private awm<eiw> a;
+      private jj<epr> b;
+      private byte c;
+      private int d;
+      private boolean e;
 
-      private c() {
+      public a() {
+         this.a = esa.a;
+         this.b = esa.b;
+         this.c = 2;
+         this.d = 50;
+         this.e = true;
+      }
+
+      protected esa.a a() {
+         return this;
+      }
+
+      public esa.a a(awm<eiw> $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public esa.a a(jj<epr> $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public esa.a a(byte $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public esa.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public esa.a a(boolean $$0) {
+         this.e = $$0;
+         return this;
       }
 
       @Override
-      public esa.f a() {
-         return esa.f.a;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         return $$1;
-      }
-   }
-
-   public static record d(int c, Optional<Integer> d) implements esa {
-      private static final Logger e = LogUtils.getLogger();
-      public static final MapCodec<esa.d> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(axm.k.optionalFieldOf("offset", 0).forGetter(esa.d::b), axm.k.optionalFieldOf("size").forGetter(esa.d::c)).apply($$0, esa.d::new)
-      );
-
-      public d(int $$0) {
-         this($$0, Optional.empty());
-      }
-
-      @Override
-      public esa.f a() {
-         return esa.f.b;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.c > $$3) {
-            e.error("Cannot replace when offset is out of bounds");
-            return $$0;
-         } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.c));
-            $$4.addAll($$1);
-            int $$5 = this.c + this.d.orElse($$1.size());
-            if ($$5 < $$3) {
-               $$4.addAll($$0.subList($$5, $$3));
-            }
-
-            List<T> $$6 = $$4.build();
-            if ($$6.size() > $$2) {
-               e.error("Contents overflow in section replacement");
-               return $$0;
-            } else {
-               return $$6;
-            }
-         }
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public Optional<Integer> c() {
-         return this.d;
-      }
-   }
-
-   public static record e<T>(List<T> a, esa b) {
-      public static <T> Codec<esa.e<T>> a(Codec<T> $$0, int $$1) {
-         return RecordCodecBuilder.create(
-            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), esa.a($$1).forGetter($$0xx -> $$0xx.b))
-                  .apply($$2, esa.e::new)
-         );
-      }
-
-      public List<T> a(List<T> $$0) {
-         return this.b.a($$0, this.a);
-      }
-   }
-
-   public static enum f implements ayz {
-      a("replace_all", esa.c.c),
-      b("replace_section", esa.d.b),
-      c("insert", esa.b.b),
-      d("append", esa.a.c);
-
-      public static final Codec<esa.f> e = ayz.a(esa.f::values);
-      private final String f;
-      final MapCodec<? extends esa> g;
-
-      private f(final String $$0, final MapCodec<? extends esa> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public MapCodec<? extends esa> a() {
-         return this.g;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
+      public esi b() {
+         return new esa(this.g(), this.a, this.b, this.c, this.d, this.e);
       }
    }
 }

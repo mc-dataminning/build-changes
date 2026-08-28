@@ -1,167 +1,39 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
 public class fyr {
-   private static final Logger j = LogUtils.getLogger();
-   private static final int k = 1024;
-   public String a;
-   public String b;
-   public wu c;
-   public wu d;
-   @Nullable
-   public ajj.b e;
-   public long f;
-   public int g = aa.b().e();
-   public wu h = wu.b(aa.b().c());
-   public List<wu> i = Collections.emptyList();
-   private fyr.a l = fyr.a.c;
-   @Nullable
-   private byte[] m;
-   private fyr.c n;
-   private fyr.b o = fyr.b.a;
+   private final gdf a;
+   private final fyj b;
+   private final geb c;
+   private fyr.a d = fyr.a.a;
 
-   public fyr(String $$0, String $$1, fyr.c $$2) {
+   public fyr(gdf $$0, fyj $$1, geb $$2) {
       this.a = $$0;
       this.b = $$1;
-      this.n = $$2;
+      this.c = $$2;
    }
 
-   public tx a() {
-      tx $$0 = new tx();
-      $$0.a("name", this.a);
-      $$0.a("ip", this.b);
-      if (this.m != null) {
-         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
-      }
-
-      if (this.l == fyr.a.a) {
-         $$0.a("acceptTextures", true);
-      } else if (this.l == fyr.a.b) {
-         $$0.a("acceptTextures", false);
-      }
-
-      return $$0;
-   }
-
-   public fyr.a b() {
-      return this.l;
-   }
-
-   public void a(fyr.a $$0) {
-      this.l = $$0;
-   }
-
-   public static fyr a(tx $$0) {
-      fyr $$1 = new fyr($$0.l("name"), $$0.l("ip"), fyr.c.c);
-      if ($$0.b("icon", 8)) {
-         try {
-            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
-            $$1.a(b($$2));
-         } catch (IllegalArgumentException var3) {
-            j.warn("Malformed base64 server icon", var3);
-         }
-      }
-
-      if ($$0.b("acceptTextures", 1)) {
-         if ($$0.q("acceptTextures")) {
-            $$1.a(fyr.a.a);
-         } else {
-            $$1.a(fyr.a.b);
-         }
-      } else {
-         $$1.a(fyr.a.c);
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   public byte[] c() {
-      return this.m;
-   }
-
-   public void a(@Nullable byte[] $$0) {
-      this.m = $$0;
-   }
-
-   public boolean d() {
-      return this.n == fyr.c.a;
-   }
-
-   public boolean e() {
-      return this.n == fyr.c.b;
-   }
-
-   public fyr.c f() {
-      return this.n;
-   }
-
-   public void a(fyr $$0) {
-      this.b = $$0.b;
-      this.a = $$0.a;
-      this.m = $$0.m;
-   }
-
-   public void b(fyr $$0) {
-      this.a($$0);
-      this.a($$0.b());
-      this.n = $$0.n;
-   }
-
-   public fyr.b g() {
-      return this.o;
-   }
-
-   public void a(fyr.b $$0) {
-      this.o = $$0;
-   }
-
-   @Nullable
-   public static byte[] b(@Nullable byte[] $$0) {
-      if ($$0 != null) {
-         try {
-            ayj $$1 = ayj.a($$0);
-            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
-               return $$0;
+   public void a() {
+      switch (this.d) {
+         case b:
+            ja $$0 = this.a.dq();
+            boolean $$1 = this.b.d($$0.v());
+            if ($$1 || this.c.a($$0) || this.a.N_() || !this.a.bE()) {
+               this.d = fyr.a.c;
             }
-         } catch (IOException var2) {
-            j.warn("Failed to decode server icon", var2);
-         }
-      }
-
-      return null;
-   }
-
-   public static enum a {
-      a("enabled"),
-      b("disabled"),
-      c("prompt");
-
-      private final wu d;
-
-      private a(final String $$0) {
-         this.d = wu.c("addServer.resourcePack." + $$0);
-      }
-
-      public wu a() {
-         return this.d;
+         case a:
+         case c:
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public boolean b() {
+      return this.d == fyr.a.c;
    }
 
-   public static enum c {
+   public void c() {
+      if (this.d == fyr.a.a) {
+         this.d = fyr.a.b;
+      }
+   }
+
+   static enum a {
       a,
       b,
       c;

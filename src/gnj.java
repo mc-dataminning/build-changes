@@ -1,27 +1,24 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
-public class gnj extends gns<cfa, fux<cfa>> {
-   private static final Map<bsb.a, akk> a = ImmutableMap.of(
-      bsb.a.b,
-      new akk("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      bsb.a.c,
-      new akk("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      bsb.a.d,
-      new akk("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public gnj(glc<cfa, fux<cfa>> $$0) {
+public abstract class gnj<T extends bsg & bto, M extends fuo<T>> extends gny<T, M> {
+   public gnj(gli<T, M> $$0) {
       super($$0);
    }
 
-   public void a(fag $$0, gdx $$1, int $$2, cfa $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ch()) {
-         bsb.a $$10 = $$3.u();
-         if ($$10 != bsb.a.a) {
-            akk $$11 = a.get($$10);
-            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-         }
+   @Override
+   public void a(fam $$0, ged $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.a()) {
+         float $$10 = (float)$$3.ai + $$6;
+         fuo<T> $$11 = this.b();
+         $$11.a($$3, $$4, $$5, $$6);
+         this.c().a($$11);
+         faq $$12 = $$1.getBuffer(gel.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
+         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
+         $$11.a($$0, $$12, $$2, gpf.d, 0.5F, 0.5F, 0.5F, 1.0F);
       }
    }
+
+   protected abstract float a(float var1);
+
+   protected abstract akk a();
+
+   protected abstract fuo<T> b();
 }

@@ -1,147 +1,99 @@
-import javax.annotation.Nullable;
+public class dph {
+   public static final akj<dpf> a = a("base");
+   public static final akj<dpf> b = a("square_bottom_left");
+   public static final akj<dpf> c = a("square_bottom_right");
+   public static final akj<dpf> d = a("square_top_left");
+   public static final akj<dpf> e = a("square_top_right");
+   public static final akj<dpf> f = a("stripe_bottom");
+   public static final akj<dpf> g = a("stripe_top");
+   public static final akj<dpf> h = a("stripe_left");
+   public static final akj<dpf> i = a("stripe_right");
+   public static final akj<dpf> j = a("stripe_center");
+   public static final akj<dpf> k = a("stripe_middle");
+   public static final akj<dpf> l = a("stripe_downright");
+   public static final akj<dpf> m = a("stripe_downleft");
+   public static final akj<dpf> n = a("small_stripes");
+   public static final akj<dpf> o = a("cross");
+   public static final akj<dpf> p = a("straight_cross");
+   public static final akj<dpf> q = a("triangle_bottom");
+   public static final akj<dpf> r = a("triangle_top");
+   public static final akj<dpf> s = a("triangles_bottom");
+   public static final akj<dpf> t = a("triangles_top");
+   public static final akj<dpf> u = a("diagonal_left");
+   public static final akj<dpf> v = a("diagonal_up_right");
+   public static final akj<dpf> w = a("diagonal_up_left");
+   public static final akj<dpf> x = a("diagonal_right");
+   public static final akj<dpf> y = a("circle");
+   public static final akj<dpf> z = a("rhombus");
+   public static final akj<dpf> A = a("half_vertical");
+   public static final akj<dpf> B = a("half_horizontal");
+   public static final akj<dpf> C = a("half_vertical_right");
+   public static final akj<dpf> D = a("half_horizontal_bottom");
+   public static final akj<dpf> E = a("border");
+   public static final akj<dpf> F = a("curly_border");
+   public static final akj<dpf> G = a("gradient");
+   public static final akj<dpf> H = a("gradient_up");
+   public static final akj<dpf> I = a("bricks");
+   public static final akj<dpf> J = a("globe");
+   public static final akj<dpf> K = a("creeper");
+   public static final akj<dpf> L = a("skull");
+   public static final akj<dpf> M = a("flower");
+   public static final akj<dpf> N = a("mojang");
+   public static final akj<dpf> O = a("piglin");
+   public static final akj<dpf> P = a("flow");
+   public static final akj<dpf> Q = a("guster");
 
-public abstract class dph extends dpn implements bpw, bqh, bqi {
-   private bqg d = bqg.a;
-   @Nullable
-   private wu e;
-
-   protected dph(dpp<?> $$0, ja $$1, dsh $$2) {
-      super($$0, $$1, $$2);
+   private static akj<dpf> a(String $$0) {
+      return akj.a(lr.d, new akk($$0));
    }
 
-   @Override
-   protected void a(tx $$0, jl.a $$1) {
-      super.a($$0, $$1);
-      this.d = bqg.b($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.e = a($$0.l("CustomName"), $$1);
-      }
+   public static void a(qm<dpf> $$0) {
+      a($$0, a);
+      a($$0, b);
+      a($$0, c);
+      a($$0, d);
+      a($$0, e);
+      a($$0, f);
+      a($$0, g);
+      a($$0, h);
+      a($$0, i);
+      a($$0, j);
+      a($$0, k);
+      a($$0, l);
+      a($$0, m);
+      a($$0, n);
+      a($$0, o);
+      a($$0, p);
+      a($$0, q);
+      a($$0, r);
+      a($$0, s);
+      a($$0, t);
+      a($$0, u);
+      a($$0, v);
+      a($$0, w);
+      a($$0, x);
+      a($$0, y);
+      a($$0, z);
+      a($$0, A);
+      a($$0, B);
+      a($$0, C);
+      a($$0, D);
+      a($$0, E);
+      a($$0, F);
+      a($$0, G);
+      a($$0, H);
+      a($$0, I);
+      a($$0, J);
+      a($$0, K);
+      a($$0, L);
+      a($$0, M);
+      a($$0, N);
+      a($$0, O);
+      a($$0, P);
+      a($$0, Q);
    }
 
-   @Override
-   protected void b(tx $$0, jl.a $$1) {
-      super.b($$0, $$1);
-      this.d.a($$0);
-      if (this.e != null) {
-         $$0.a("CustomName", wu.a.a(this.e, $$1));
-      }
-   }
-
-   @Override
-   public wu af() {
-      return this.e != null ? this.e : this.k();
-   }
-
-   @Override
-   public wu O_() {
-      return this.af();
-   }
-
-   @Nullable
-   @Override
-   public wu ah() {
-      return this.e;
-   }
-
-   protected abstract wu k();
-
-   public boolean d(cmh $$0) {
-      return a($$0, this.d, this.O_());
-   }
-
-   public static boolean a(cmh $$0, bqg $$1, wu $$2) {
-      if (!$$0.N_() && !$$1.a($$0.eT())) {
-         $$0.a(wu.a("container.isLocked", $$2), true);
-         $$0.a(avf.eP, avg.e, 1.0F, 1.0F);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   protected abstract js<cua> j();
-
-   protected abstract void a(js<cua> var1);
-
-   @Override
-   public boolean c() {
-      for (cua $$0 : this.j()) {
-         if (!$$0.e()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cua a(int $$0) {
-      return this.j().get($$0);
-   }
-
-   @Override
-   public cua a(int $$0, int $$1) {
-      cua $$2 = bpx.a(this.j(), $$0, $$1);
-      if (!$$2.e()) {
-         this.e();
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public cua b(int $$0) {
-      return bpx.a(this.j(), $$0);
-   }
-
-   @Override
-   public void a(int $$0, cua $$1) {
-      this.j().set($$0, $$1);
-      $$1.f(this.e_($$1));
-      this.e();
-   }
-
-   @Override
-   public boolean a(cmh $$0) {
-      return bpw.a(this, $$0);
-   }
-
-   @Override
-   public void a() {
-      this.j().clear();
-   }
-
-   @Nullable
-   @Override
-   public cpe createMenu(int $$0, cmg $$1, cmh $$2) {
-      return this.d($$2) ? this.a($$0, $$1) : null;
-   }
-
-   protected abstract cpe a(int var1, cmg var2);
-
-   @Override
-   protected void a(dpn.b $$0) {
-      super.a($$0);
-      this.e = $$0.a(kn.g);
-      this.d = $$0.a(kn.ad, bqg.a);
-      $$0.a(kn.aa, cwv.a).a(this.j());
-   }
-
-   @Override
-   protected void a(kj.a $$0) {
-      super.a($$0);
-      $$0.a(kn.g, this.e);
-      if (!this.d.equals(bqg.a)) {
-         $$0.a(kn.ad, this.d);
-      }
-
-      $$0.a(kn.aa, cwv.a(this.j()));
-   }
-
-   @Override
-   public void a(tx $$0) {
-      $$0.r("CustomName");
-      $$0.r("Lock");
-      $$0.r("Items");
+   public static void a(qm<dpf> $$0, akj<dpf> $$1) {
+      $$0.a($$1, new dpf($$1.a(), "block.minecraft.banner." + $$1.a().e()));
    }
 }

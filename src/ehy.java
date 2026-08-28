@@ -1,25 +1,38 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface ehy<P extends ehx> {
-   ehy<ehj> a = a("block_predicate_filter", ehj.a);
-   ehy<eia> b = a("rarity_filter", eia.a);
-   ehy<eic> c = a("surface_relative_threshold_filter", eic.a);
-   ehy<eid> d = a("surface_water_depth_filter", eid.a);
-   ehy<ehi> e = a("biome", ehi.a);
-   ehy<ehn> f = a("count", ehn.a);
-   ehy<ehs> g = a("noise_based_count", ehs.a);
-   ehy<eht> h = a("noise_threshold_count", eht.a);
-   ehy<ehm> i = a("count_on_every_layer", ehm.a);
-   ehy<eho> j = a("environment_scan", eho.a);
-   ehy<ehq> k = a("heightmap", ehq.a);
-   ehy<ehp> l = a("height_range", ehp.a);
-   ehy<ehr> m = a("in_square", ehr.a);
-   ehy<ehz> n = a("random_offset", ehz.a);
-   ehy<ehk> o = a("carving_mask", ehk.a);
+public class ehy extends eih {
+   public static final MapCodec<ehy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ehy::new)
+   );
+   private final int c;
+   private final double d;
+   private final double e;
 
-   MapCodec<P> codec();
+   private ehy(int $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
 
-   private static <P extends ehx> ehy<P> a(String $$0, MapCodec<P> $$1) {
-      return jw.a(lq.S, $$0, () -> $$1);
+   public static ehy a(int $$0, double $$1, double $$2) {
+      return new ehy($$0, $$1, $$2);
+   }
+
+   @Override
+   protected int a(ayo $$0, ja $$1) {
+      double $$2 = ddf.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   }
+
+   @Override
+   public eie<?> b() {
+      return eie.g;
    }
 }

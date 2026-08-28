@@ -1,48 +1,41 @@
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.function.Function;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
-public class dbc extends ArrayList<dbb> {
-   public static final Codec<dbc> a = dbb.a.listOf().fieldOf("Recipes").xmap(dbc::new, Function.identity()).codec();
-   public static final ys<wf, dbc> b = dbb.b.a(yq.a(dbc::new));
-
-   public dbc() {
-   }
-
-   private dbc(int $$0) {
-      super($$0);
-   }
-
-   private dbc(Collection<dbb> $$0) {
-      super($$0);
-   }
+public interface dbc {
+   void f(@Nullable cmk var1);
 
    @Nullable
-   public dbb a(cua $$0, cua $$1, int $$2) {
-      if ($$2 > 0 && $$2 < this.size()) {
-         dbb $$3 = this.get($$2);
-         return $$3.a($$0, $$1) ? $$3 : null;
-      } else {
-         for (int $$4 = 0; $$4 < this.size(); $$4++) {
-            dbb $$5 = this.get($$4);
-            if ($$5.a($$0, $$1)) {
-               return $$5;
-            }
+   cmk go();
+
+   dbe gq();
+
+   void a(dbe var1);
+
+   void a(dbd var1);
+
+   void n(cuc var1);
+
+   int u();
+
+   void t(int var1);
+
+   boolean gr();
+
+   avg gs();
+
+   default boolean gA() {
+      return false;
+   }
+
+   default void a(cmk $$0, wu $$1, int $$2) {
+      OptionalInt $$3 = $$0.a(new bqq(($$0x, $$1x, $$2x) -> new cqr($$0x, $$1x, this), $$1));
+      if ($$3.isPresent()) {
+         dbe $$4 = this.gq();
+         if (!$$4.isEmpty()) {
+            $$0.a($$3.getAsInt(), $$4, $$2, this.u(), this.gr(), this.gA());
          }
-
-         return null;
       }
    }
 
-   public dbc a() {
-      dbc $$0 = new dbc(this.size());
-
-      for (dbb $$1 : this) {
-         $$0.add($$1.v());
-      }
-
-      return $$0;
-   }
+   boolean gw();
 }

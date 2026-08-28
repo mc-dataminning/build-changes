@@ -1,13 +1,17 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class egx {
-   private static final Codec<Either<dyt, egx>> a = Codec.either(dyt.a, lq.L.r().dispatch(egx::a, egy::codec));
-   public static final Codec<egx> c = a.xmap(
-      $$0 -> (egx)$$0.map(egw::a, $$0x -> $$0x), $$0 -> $$0.a() == egy.a ? Either.left(((egw)$$0).b()) : Either.right($$0)
+public record egx(jj<ctx> c, egz d) {
+   public static final Codec<egx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akh.a(lr.K).fieldOf("display").forGetter($$0x -> $$0x.c), egz.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, egx::new)
    );
+   public static final Codec<jj<egx>> b = akg.a(lr.aM, a);
 
-   public abstract int a(aym var1, dyw var2);
+   public jj<ctx> a() {
+      return this.c;
+   }
 
-   public abstract egy<?> a();
+   public egz b() {
+      return this.d;
+   }
 }

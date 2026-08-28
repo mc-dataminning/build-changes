@@ -1,74 +1,38 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JavaOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eti {
-   private final Set<eth<?>> a;
-   private final Set<eth<?>> b;
+public class eti extends esh {
+   public static final Codec<wu> a = ww.a.validate($$0 -> cxk.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
+   public static final MapCodec<eti> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(cxk.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), esg.a.forGetter($$0x -> $$0x.d))).apply($$0, eti::new)
+   );
+   private final List<ard<wu>> c;
+   private final esg d;
 
-   eti(Set<eth<?>> $$0, Set<eth<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
-   }
-
-   public boolean a(eth<?> $$0) {
-      return this.b.contains($$0);
-   }
-
-   public Set<eth<?>> a() {
-      return this.a;
-   }
-
-   public Set<eth<?>> b() {
-      return this.b;
+   protected eti(List<euf> $$0, List<ard<wu>> $$1, esg $$2) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   protected cuc a(cuc $$0, equ $$1) {
+      $$0.a(kn.J, cxk.a, this::a);
+      return $$0;
    }
 
-   public void a(equ $$0, eqp $$1) {
-      this.a($$0.b(), $$1);
+   @VisibleForTesting
+   public cxk a(cxk $$0) {
+      List<ard<wu>> $$1 = this.d.a($$0.a(), this.c);
+      return $$0.b($$1);
    }
 
-   public void a(ayk $$0, eqp $$1) {
-      Set<eth<?>> $$2 = $$1.a();
-      Set<eth<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.b("Parameters " + $$3 + " are not provided in this context");
-      }
-   }
-
-   public static eti.a c() {
-      return new eti.a();
-   }
-
-   public static class a {
-      private final Set<eth<?>> a = Sets.newIdentityHashSet();
-      private final Set<eth<?>> b = Sets.newIdentityHashSet();
-
-      public eti.a a(eth<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
-      }
-
-      public eti.a b(eth<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      public eti a() {
-         return new eti(this.a, this.b);
-      }
+   @Override
+   public esj<eti> b() {
+      return esk.N;
    }
 }

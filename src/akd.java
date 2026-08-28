@@ -23,11 +23,11 @@ public class akd {
       return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
    }
 
-   public Map<akk, ats> a(atu $$0) {
+   public Map<akk, atu> a(atw $$0) {
       return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 
-   public Map<akk, List<ats>> b(atu $$0) {
+   public Map<akk, List<atu>> b(atw $$0) {
       return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
    }
 }

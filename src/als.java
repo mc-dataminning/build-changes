@@ -27,7 +27,7 @@ public class als {
       if (InetAddresses.isInetAddress($$1)) {
          return b($$0, $$1, $$2);
       } else {
-         aql $$3 = $$0.l().ah().a($$1);
+         aqn $$3 = $$0.l().ai().a($$1);
          if ($$3 != null) {
             return b($$0, $$3.A(), $$2);
          } else {
@@ -37,19 +37,19 @@ public class als {
    }
 
    private static int b(eq $$0, String $$1, @Nullable wu $$2) throws CommandSyntaxException {
-      aue $$3 = $$0.l().ah().g();
+      aug $$3 = $$0.l().ai().g();
       if ($$3.a($$1)) {
          throw b.create();
       } else {
-         List<aql> $$4 = $$0.l().ah().b($$1);
-         auf $$5 = new auf($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+         List<aqn> $$4 = $$0.l().ai().b($$1);
+         auh $$5 = new auh($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
          $$3.a($$5);
          $$0.a(() -> wu.a("commands.banip.success", $$1, $$5.d()), true);
          if (!$$4.isEmpty()) {
             $$0.a(() -> wu.a("commands.banip.info", $$4.size(), hf.a($$4)), true);
          }
 
-         for (aql $$6 : $$4) {
+         for (aqn $$6 : $$4) {
             $$6.c.b(wu.c("multiplayer.disconnect.ip_banned"));
          }
 

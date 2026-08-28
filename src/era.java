@@ -1,70 +1,53 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-public class era extends eqx {
-   public static final MapCodec<era> a = a(era::new);
+public class era {
+   private final aym a;
+   private final eto b;
+   private final jk.a c;
+   private final Set<akj<?>> d;
 
-   era(List<ere> $$0, List<etz> $$1) {
-      super($$0, $$1);
+   public era(aym $$0, eto $$1, jk.a $$2) {
+      this($$0, $$1, $$2, Set.of());
    }
 
-   @Override
-   public erf a() {
-      return erc.i;
+   private era(aym $$0, eto $$1, jk.a $$2, Set<akj<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   protected eqw a(List<? extends eqw> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (eqw)$$0.get(0);
-         case 2 -> {
-            eqw $$1 = $$0.get(0);
-            eqw $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (eqw $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   public era a(String $$0) {
+      return new era(this.a.a($$0), this.b, this.c, this.d);
    }
 
-   public static era.a a(ere.a<?>... $$0) {
-      return new era.a($$0);
+   public era a(String $$0, akj<?> $$1) {
+      Set<akj<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new era(this.a.a($$0), this.b, this.c, $$2);
    }
 
-   public static class a extends ere.a<era.a> {
-      private final Builder<ere> a = ImmutableList.builder();
+   public boolean a(akj<?> $$0) {
+      return this.d.contains($$0);
+   }
 
-      public a(ere.a<?>... $$0) {
-         for (ere.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
 
-      protected era.a a() {
-         return this;
-      }
+   public void a(eqv $$0) {
+      this.b.a(this, $$0);
+   }
 
-      @Override
-      public era.a b(ere.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   public jk.a a() {
+      return this.c;
+   }
 
-      @Override
-      public ere b() {
-         return new era(this.a.build(), this.f());
-      }
+   public era a(eto $$0) {
+      return new era(this.a, $$0, this.c, this.d);
+   }
+
+   public aym b() {
+      return this.a;
    }
 }

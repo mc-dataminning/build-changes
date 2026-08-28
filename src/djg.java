@@ -1,82 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class djg extends dhb {
-   public static final MapCodec<djg> i = b(djg::new);
+public class djg extends dfh {
+   public static final MapCodec<djg> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lq.e.r().fieldOf("host").forGetter(djg::b), u()).apply($$0, djg::new));
+   private final dfh b;
+   private static final Map<dfh, dfh> c = Maps.newIdentityHashMap();
+   private static final Map<dsk, dsk> d = Maps.newIdentityHashMap();
+   private static final Map<dsk, dsk> e = Maps.newIdentityHashMap();
 
    @Override
    public MapCodec<? extends djg> a() {
-      return i;
+      return a;
    }
 
-   protected djg(dsg.d $$0) {
-      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
-      this.k(
-         this.E
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
+   public djg(dfh $$0, dsj.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
    }
 
-   @Override
-   public dsh a(cxk $$0) {
-      dbj $$1 = $$0.q();
-      ja $$2 = $$0.a();
-      eob $$3 = $$0.q().b_($$0.a());
-      ja $$4 = $$2.e();
-      ja $$5 = $$2.f();
-      ja $$6 = $$2.g();
-      ja $$7 = $$2.h();
-      dsh $$8 = $$1.a_($$4);
-      dsh $$9 = $$1.a_($$5);
-      dsh $$10 = $$1.a_($$6);
-      dsh $$11 = $$1.a_($$7);
-      return this.o()
-         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, jf.d))))
-         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, jf.c))))
-         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, jf.f))))
-         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, jf.e))))
-         .a(e, Boolean.valueOf($$3.a() == eoc.c));
+   public dfh b() {
+      return this.b;
    }
 
-   @Override
-   protected dsh a(dsh $$0, jf $$1, dsh $$2, dce $$3, ja $$4, ja $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, eoc.c, eoc.c.a($$3));
+   public static boolean m(dsk $$0) {
+      return c.containsKey($$0.b());
+   }
+
+   private void a(aqm $$0, ja $$1) {
+      cjx $$2 = bsm.aM.a((dcf)$$0);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.R();
       }
-
-      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected ews c(dsh $$0, dbj $$1, ja $$2, ewe $$3) {
-      return ewp.a();
+   protected void a(dsk $$0, aqm $$1, ja $$2, cuc $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.ab().b(dcb.h) && !czn.a($$3, avz.t)) {
+         this.a($$1, $$2);
+      }
    }
 
-   @Override
-   protected boolean a(dsh $$0, dsh $$1, jf $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
+   public static dsk n(dsk $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).o());
+   }
+
+   public dsk o(dsk $$0) {
+      return a(e, $$0, () -> this.b().o());
+   }
+
+   private static dsk a(Map<dsk, dsk> $$0, dsk $$1, Supplier<dsk> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dsk $$2x = $$2.get();
+
+         for (dtn $$3 : $$1x.B()) {
+            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
          }
 
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   public final boolean a(dsh $$0, boolean $$1) {
-      return !j($$0) && $$1 || $$0.b() instanceof djg || $$0.a(avu.L);
-   }
-
-   @Override
-   protected void a(dsi.a<dff, dsh> $$0) {
-      $$0.a(a, b, d, c, e);
+         return $$2x;
+      });
    }
 }

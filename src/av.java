@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record av(Optional<jn<dff>> c, Optional<dy> d, Optional<dh> e) {
+public record av(Optional<jn<dfh>> c, Optional<dy> d, Optional<dh> e) {
    public static final Codec<av> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                jy.a(lr.f).optionalFieldOf("blocks").forGetter(av::b),
@@ -15,7 +15,7 @@ public record av(Optional<jn<dff>> c, Optional<dy> d, Optional<dh> e) {
    );
    public static final ys<wf, av> b = ys.a(yq.a(yq.c(lr.f)), av::b, yq.a(dy.b), av::c, yq.a(dh.b), av::d, av::new);
 
-   public boolean a(aqk $$0, ja $$1) {
+   public boolean a(aqm $$0, ja $$1) {
       if (!$$0.p($$1)) {
          return false;
       } else {
@@ -23,15 +23,15 @@ public record av(Optional<jn<dff>> c, Optional<dy> d, Optional<dh> e) {
       }
    }
 
-   public boolean a(dsl $$0) {
+   public boolean a(dso $$0) {
       return !this.a($$0.a()) ? false : !this.e.isPresent() || a($$0.c(), $$0.b(), this.e.get());
    }
 
-   private boolean a(dsh $$0) {
+   private boolean a(dsk $$0) {
       return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
    }
 
-   private static boolean a(dcg $$0, @Nullable dpn $$1, dh $$2) {
+   private static boolean a(dci $$0, @Nullable dpp $$1, dh $$2) {
       return $$1 != null && $$2.a($$1.b($$0.H_()));
    }
 
@@ -39,7 +39,7 @@ public record av(Optional<jn<dff>> c, Optional<dy> d, Optional<dh> e) {
       return this.e.isPresent();
    }
 
-   public Optional<jn<dff>> b() {
+   public Optional<jn<dfh>> b() {
       return this.c;
    }
 
@@ -52,7 +52,7 @@ public record av(Optional<jn<dff>> c, Optional<dy> d, Optional<dh> e) {
    }
 
    public static class a {
-      private Optional<jn<dff>> a = Optional.empty();
+      private Optional<jn<dfh>> a = Optional.empty();
       private Optional<dy> b = Optional.empty();
       private Optional<dh> c = Optional.empty();
 
@@ -63,17 +63,17 @@ public record av(Optional<jn<dff>> c, Optional<dy> d, Optional<dh> e) {
          return new av.a();
       }
 
-      public av.a a(dff... $$0) {
-         this.a = Optional.of(jn.a(dff::s, $$0));
+      public av.a a(dfh... $$0) {
+         this.a = Optional.of(jn.a(dfh::s, $$0));
          return this;
       }
 
-      public av.a a(Collection<dff> $$0) {
-         this.a = Optional.of(jn.a(dff::s, $$0));
+      public av.a a(Collection<dfh> $$0) {
+         this.a = Optional.of(jn.a(dfh::s, $$0));
          return this;
       }
 
-      public av.a a(awk<dff> $$0) {
+      public av.a a(awm<dfh> $$0) {
          this.a = Optional.of(lq.e.a($$0));
          return this;
       }

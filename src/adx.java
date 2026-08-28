@@ -7,9 +7,9 @@ public class adx implements zb<abn> {
    private final adx.a b;
    private final List<akk> c;
    private final List<akk> d;
-   private final avj e;
+   private final avl e;
 
-   public adx(adx.a $$0, Collection<akk> $$1, Collection<akk> $$2, avj $$3) {
+   public adx(adx.a $$0, Collection<akk> $$1, Collection<akk> $$2, avl $$3) {
       this.b = $$0;
       this.c = ImmutableList.copyOf($$1);
       this.d = ImmutableList.copyOf($$2);
@@ -18,7 +18,7 @@ public class adx implements zb<abn> {
 
    private adx(vr $$0) {
       this.b = $$0.b(adx.a.class);
-      this.e = avj.a($$0);
+      this.e = avl.a($$0);
       this.c = $$0.a(vr::q);
       if (this.b == adx.a.a) {
          this.d = $$0.a(vr::q);
@@ -53,7 +53,7 @@ public class adx implements zb<abn> {
       return this.d;
    }
 
-   public avj f() {
+   public avl f() {
       return this.e;
    }
 

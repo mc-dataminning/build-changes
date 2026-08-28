@@ -1,117 +1,118 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class eoh extends enz {
-   @Override
-   public eoa d() {
-      return eoc.b;
+public final class eoh extends dsm<eog, eoh> {
+   public static final Codec<eoh> a = a(lq.c.r(), eog::g).stable();
+   public static final int b = 9;
+   public static final int g = 8;
+
+   public eoh(eog $$0, Reference2ObjectArrayMap<dtn<?>, Comparable<?>> $$1, MapCodec<eoh> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public eoa e() {
-      return eoc.c;
+   public eog a() {
+      return this.e;
    }
 
-   @Override
-   public ctv a() {
-      return cud.qz;
+   public boolean b() {
+      return this.a().c(this);
    }
 
-   @Override
-   public void a(dcd $$0, ja $$1, eob $$2, aym $$3) {
-      if (!$$2.b() && !$$2.c(a)) {
-         if ($$3.a(64) == 0) {
-            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, avf.Cb, avg.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+   public boolean a(eog $$0) {
+      return this.e == $$0 && this.e.c(this);
+   }
+
+   public boolean c() {
+      return this.a().b();
+   }
+
+   public float a(dbl $$0, ja $$1) {
+      return this.a().a(this, $$0, $$1);
+   }
+
+   public float d() {
+      return this.a().a(this);
+   }
+
+   public int e() {
+      return this.a().d(this);
+   }
+
+   public boolean b(dbl $$0, ja $$1) {
+      for (int $$2 = -1; $$2 <= 1; $$2++) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            ja $$4 = $$1.b($$2, 0, $$3);
+            eoh $$5 = $$0.b_($$4);
+            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
+               return true;
+            }
          }
-      } else if ($$3.a(10) == 0) {
-         $$0.a(lj.al, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
+
+      return false;
+   }
+
+   public void a(dcf $$0, ja $$1) {
+      this.a().b($$0, $$1, this);
+   }
+
+   public void a(dcf $$0, ja $$1, ayo $$2) {
+      this.a().a($$0, $$1, this, $$2);
+   }
+
+   public boolean f() {
+      return this.a().i();
+   }
+
+   public void b(dcf $$0, ja $$1, ayo $$2) {
+      this.a().b($$0, $$1, this, $$2);
+   }
+
+   public ewf c(dbl $$0, ja $$1) {
+      return this.a().a($$0, $$1, this);
+   }
+
+   public dsk g() {
+      return this.a().b(this);
    }
 
    @Nullable
-   @Override
    public lh h() {
-      return lj.l;
+      return this.a().h();
    }
 
-   @Override
-   protected boolean a(dcd $$0) {
-      return $$0.ab().b(dbz.U);
+   public boolean a(awm<eog> $$0) {
+      return this.a().k().a($$0);
    }
 
-   @Override
-   protected void a(dce $$0, ja $$1, dsh $$2) {
-      dpn $$3 = $$2.t() ? $$0.c_($$1) : null;
-      dff.a($$2, $$0, $$1, $$3);
+   public boolean a(jn<eog> $$0) {
+      return $$0.a(this.a().k());
    }
 
-   @Override
-   public int b(dcg $$0) {
-      return 4;
+   public boolean b(eog $$0) {
+      return this.a() == $$0;
    }
 
-   @Override
-   public dsh b(eob $$0) {
-      return dfh.G.o().a(djv.b, Integer.valueOf(e($$0)));
+   public float i() {
+      return this.a().c();
    }
 
-   @Override
-   public boolean a(eoa $$0) {
-      return $$0 == eoc.c || $$0 == eoc.b;
+   public boolean a(dbl $$0, ja $$1, eog $$2, jf $$3) {
+      return this.a().a(this, $$0, $$1, $$2, $$3);
    }
 
-   @Override
-   public int c(dcg $$0) {
-      return 1;
+   public ewy d(dbl $$0, ja $$1) {
+      return this.a().b(this, $$0, $$1);
    }
 
-   @Override
-   public int a(dcg $$0) {
-      return 5;
+   public jj<eog> j() {
+      return this.e.k();
    }
 
-   @Override
-   public boolean a(eob $$0, dbj $$1, ja $$2, eoa $$3, jf $$4) {
-      return $$4 == jf.a && !$$3.a(awa.a);
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<ave> j() {
-      return Optional.of(avf.di);
-   }
-
-   public static class a extends eoh {
-      @Override
-      protected void a(dsi.a<eoa, eob> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(eob $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(eob $$0) {
-         return false;
-      }
-   }
-
-   public static class b extends eoh {
-      @Override
-      public int d(eob $$0) {
-         return 8;
-      }
-
-      @Override
-      public boolean c(eob $$0) {
-         return true;
-      }
+   public Stream<awm<eog>> k() {
+      return this.e.k().c();
    }
 }

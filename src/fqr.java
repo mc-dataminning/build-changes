@@ -1,326 +1,181 @@
-import com.google.common.collect.Maps;
-import com.google.common.hash.Hashing;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.Path;
-import java.nio.file.StandardWatchEventKinds;
-import java.nio.file.WatchEvent;
-import java.nio.file.WatchKey;
-import java.nio.file.WatchService;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class fqr extends fnd {
-   static final Logger a = LogUtils.getLogger();
-   private static final wu b = wu.c("pack.available.title");
-   private static final wu c = wu.c("pack.selected.title");
-   private static final wu q = wu.c("pack.openFolder");
-   private static final int r = 200;
-   private static final wu s = wu.c("pack.dropInfo").a(n.h);
-   private static final wu u = wu.c("pack.folderInfo");
-   private static final int v = 20;
-   private static final akk w = new akk("textures/misc/unknown_pack.png");
-   private final fkz x = new fkz(this);
-   private final fqq y;
-   @Nullable
-   private fqr.a z;
-   private long A;
-   private fqs B;
-   private fqs C;
-   private final Path D;
-   private fhm E;
-   private final Map<String, akk> F = Maps.newHashMap();
+public class fqr extends fhy<fqr.b> {
+   private static final int a = 20;
+   final fqs m;
+   private int n;
 
-   public fqr(atf $$0, Consumer<atf> $$1, Path $$2, wu $$3) {
-      super($$3);
-      this.y = new fqq(this::F, this::a, $$0, $$1);
-      this.D = $$2;
-      this.z = fqr.a.a($$2);
+   public fqr(fqs $$0, fft $$1) {
+      super($$1, $$0.m, $$0.r.d(), $$0.r.c(), 20);
+      this.m = $$0;
+      ffr[] $$2 = (ffr[])ArrayUtils.clone($$1.m.W);
+      Arrays.sort((Object[])$$2);
+      String $$3 = null;
+
+      for (ffr $$4 : $$2) {
+         String $$5 = $$4.f();
+         if (!$$5.equals($$3)) {
+            $$3 = $$5;
+            this.b(new fqr.a(wu.c($$5)));
+         }
+
+         wu $$6 = wu.c($$4.h());
+         int $$7 = $$1.h.a($$6);
+         if ($$7 > this.n) {
+            this.n = $$7;
+         }
+
+         this.b(new fqr.c($$4, $$6));
+      }
+   }
+
+   public void c() {
+      ffr.d();
+      this.J();
+   }
+
+   public void J() {
+      this.aG_().forEach(fqr.b::c);
    }
 
    @Override
-   public void d() {
-      this.y.c();
-      this.E();
+   public int b() {
+      return 340;
    }
 
-   private void E() {
-      if (this.z != null) {
-         try {
-            this.z.close();
-            this.z = null;
-         } catch (Exception var2) {
-         }
-      }
-   }
+   public class a extends fqr.b {
+      final wu b;
+      private final int c;
 
-   @Override
-   protected void aO_() {
-      fld $$0 = this.x.a(fld.d().a(5));
-      $$0.c().b();
-      $$0.a(new fit(this.n(), this.o));
-      $$0.a(new fit(s, this.o));
-      this.B = this.c(new fqs(this.l, this, 200, this.n - 66, b));
-      this.C = this.c(new fqs(this.l, this, 200, this.n - 66, c));
-      fld $$1 = this.x.b(fld.e().a(8));
-      $$1.a(fhm.a(q, $$0x -> ac.k().a(this.D.toUri())).a(fix.a(u)).a());
-      this.E = $$1.a(fhm.a(wt.d, $$0x -> this.d()).a());
-      this.G();
-      this.x.a($$1x -> {
-         fhk var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.x.a();
-      this.B.a(200, this.x);
-      this.B.m(this.m / 2 - 15 - 200);
-      this.C.a(200, this.x);
-      this.C.m(this.m / 2 + 15);
-   }
-
-   @Override
-   public void e() {
-      if (this.z != null) {
-         try {
-            if (this.z.a()) {
-               this.A = 20L;
-            }
-         } catch (IOException var2) {
-            a.warn("Failed to poll for directory {} changes, stopping", this.D);
-            this.E();
-         }
-      }
-
-      if (this.A > 0L && --this.A == 0L) {
-         this.G();
-      }
-   }
-
-   private void F() {
-      this.a(this.C, this.y.b());
-      this.a(this.B, this.y.a());
-      this.E.j = !this.C.aF_().isEmpty();
-   }
-
-   private void a(fqs $$0, Stream<fqq.a> $$1) {
-      $$0.aF_().clear();
-      fqs.a $$2 = $$0.h();
-      String $$3 = $$2 == null ? "" : $$2.b();
-      $$0.a(null);
-      $$1.forEach($$2x -> {
-         fqs.a $$3x = new fqs.a(this.l, $$0, $$2x);
-         $$0.aF_().add($$3x);
-         if ($$2x.c().equals($$3)) {
-            $$0.a($$3x);
-         }
-      });
-   }
-
-   public void a(fqs $$0) {
-      fqs $$1 = this.C == $$0 ? this.B : this.C;
-      this.a(fgw.a($$1.i(), $$1, this));
-   }
-
-   public void m() {
-      this.C.a(null);
-      this.B.a(null);
-   }
-
-   private void G() {
-      this.y.d();
-      this.F();
-      this.A = 0L;
-      this.F.clear();
-   }
-
-   protected static void a(ffn $$0, List<Path> $$1, Path $$2) {
-      MutableBoolean $$3 = new MutableBoolean();
-      $$1.forEach($$2x -> {
-         try (Stream<Path> $$3x = Files.walk($$2x)) {
-            $$3x.forEach($$3xx -> {
-               try {
-                  ac.b($$2x.getParent(), $$2, $$3xx);
-               } catch (IOException var5) {
-                  a.warn("Failed to copy datapack file  from {} to {}", new Object[]{$$3xx, $$2, var5});
-                  $$3.setTrue();
-               }
-            });
-         } catch (IOException var8) {
-            a.warn("Failed to copy datapack file from {} to {}", $$2x, $$2);
-            $$3.setTrue();
-         }
-      });
-      if ($$3.isTrue()) {
-         fju.c($$0, $$2.toString());
-      }
-   }
-
-   @Override
-   public void a(List<Path> $$0) {
-      String $$1 = a($$0).collect(Collectors.joining(", "));
-      this.l.a(new fmb($$1x -> {
-         if ($$1x) {
-            List<Path> $$2 = new ArrayList<>($$0.size());
-            Set<Path> $$3 = new HashSet<>($$0);
-            ate<Path> $$4 = new ate<Path>(this.l.bd()) {
-               protected Path a(Path $$0) {
-                  return $$0;
-               }
-
-               protected Path b(Path $$0) {
-                  return $$0;
-               }
-            };
-            List<evq> $$5 = new ArrayList<>();
-
-            for (Path $$6 : $$0) {
-               try {
-                  Path $$7 = $$4.a($$6, $$5);
-                  if ($$7 == null) {
-                     a.warn("Path {} does not seem like pack", $$6);
-                  } else {
-                     $$2.add($$7);
-                     $$3.remove($$7);
-                  }
-               } catch (IOException var10) {
-                  a.warn("Failed to check {} for packs", $$6, var10);
-               }
-            }
-
-            if (!$$5.isEmpty()) {
-               this.l.a(fmv.b(() -> this.l.a(this)));
-               return;
-            }
-
-            if (!$$2.isEmpty()) {
-               a(this.l, $$2, this.D);
-               this.G();
-            }
-
-            if (!$$3.isEmpty()) {
-               String $$9 = a($$3).collect(Collectors.joining(", "));
-               this.l.a(new flw(() -> this.l.a(this), wu.c("pack.dropRejected.title"), wu.a("pack.dropRejected.message", $$9)));
-               return;
-            }
-         }
-
-         this.l.a(this);
-      }, wu.c("pack.dropConfirm"), wu.b($$1)));
-   }
-
-   private static Stream<String> a(Collection<Path> $$0) {
-      return $$0.stream().map(Path::getFileName).map(Path::toString);
-   }
-
-   private akk a(gpj $$0, atc $$1) {
-      try {
-         akk var9;
-         try (asg $$2 = $$1.f()) {
-            atm<InputStream> $$3 = $$2.a("pack.png");
-            if ($$3 == null) {
-               return w;
-            }
-
-            String $$4 = $$1.g();
-            akk $$5 = new akk("minecraft", "pack/" + ac.a($$4, akk::b) + "/" + Hashing.sha1().hashUnencodedChars($$4) + "/icon");
-
-            try (InputStream $$6 = $$3.get()) {
-               ezh $$7 = ezh.a($$6);
-               $$0.a($$5, new gov($$7));
-               var9 = $$5;
-            }
-         }
-
-         return var9;
-      } catch (Exception var14) {
-         a.warn("Failed to load icon from pack {}", $$1.g(), var14);
-         return w;
-      }
-   }
-
-   private akk a(atc $$0) {
-      return this.F.computeIfAbsent($$0.g(), $$1 -> this.a(this.l.aa(), $$0));
-   }
-
-   static class a implements AutoCloseable {
-      private final WatchService a;
-      private final Path b;
-
-      public a(Path $$0) throws IOException {
-         this.b = $$0;
-         this.a = $$0.getFileSystem().newWatchService();
-
-         try {
-            this.b($$0);
-
-            try (DirectoryStream<Path> $$1 = Files.newDirectoryStream($$0)) {
-               for (Path $$2 : $$1) {
-                  if (Files.isDirectory($$2, LinkOption.NOFOLLOW_LINKS)) {
-                     this.b($$2);
-                  }
-               }
-            }
-         } catch (Exception var7) {
-            this.a.close();
-            throw var7;
-         }
-      }
-
-      @Nullable
-      public static fqr.a a(Path $$0) {
-         try {
-            return new fqr.a($$0);
-         } catch (IOException var2) {
-            fqr.a.warn("Failed to initialize pack directory {} monitoring", $$0, var2);
-            return null;
-         }
-      }
-
-      private void b(Path $$0) throws IOException {
-         $$0.register(this.a, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);
-      }
-
-      public boolean a() throws IOException {
-         boolean $$0 = false;
-
-         WatchKey $$1;
-         while (($$1 = this.a.poll()) != null) {
-            for (WatchEvent<?> $$3 : $$1.pollEvents()) {
-               $$0 = true;
-               if ($$1.watchable() == this.b && $$3.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
-                  Path $$4 = this.b.resolve((Path)$$3.context());
-                  if (Files.isDirectory($$4, LinkOption.NOFOLLOW_LINKS)) {
-                     this.b($$4);
-                  }
-               }
-            }
-
-            $$1.reset();
-         }
-
-         return $$0;
+      public a(final wu $$1) {
+         this.b = $$1;
+         this.c = fqr.this.c.h.a(this.b);
       }
 
       @Override
-      public void close() throws IOException {
-         this.a.close();
+      public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(fqr.this.c.h, this.b, fqr.this.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, -1, false);
+      }
+
+      @Nullable
+      @Override
+      public fhc a(flu $$0) {
+         return null;
+      }
+
+      @Override
+      public List<? extends fjo> aG_() {
+         return Collections.emptyList();
+      }
+
+      @Override
+      public List<? extends flm> b() {
+         return ImmutableList.of(new flm() {
+            @Override
+            public flm.a u() {
+               return flm.a.b;
+            }
+
+            @Override
+            public void b(flo $$0) {
+               $$0.a(fln.a, a.this.b);
+            }
+         });
+      }
+
+      @Override
+      protected void c() {
+      }
+   }
+
+   public abstract static class b extends fhy.a<fqr.b> {
+      abstract void c();
+   }
+
+   public class c extends fqr.b {
+      private static final wu b = wu.c("controls.reset");
+      private static final int c = 10;
+      private final ffr d;
+      private final wu e;
+      private final fhs f;
+      private final fhs g;
+      private boolean h = false;
+
+      c(final ffr $$1, final wu $$2) {
+         this.d = $$1;
+         this.e = $$2;
+         this.f = fhs.a($$2, $$1x -> {
+            fqr.this.m.a = $$1;
+            fqr.this.c();
+         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? wu.a("narrator.controls.unbound", $$2) : wu.a("narrator.controls.bound", $$2, $$2x.get())).a();
+         this.g = fhs.a(b, $$1x -> {
+            fqr.this.c.m.a($$1, $$1.i());
+            fqr.this.c();
+         }).a(0, 0, 50, 20).a($$1x -> wu.a("narrator.controls.reset", $$2)).a();
+         this.c();
+      }
+
+      @Override
+      public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = fqr.this.q() - this.g.y() - 10;
+         int $$11 = $$2 - 2;
+         this.g.c($$10, $$11);
+         this.g.a($$0, $$6, $$7, $$9);
+         int $$12 = $$10 - 5 - this.f.y();
+         this.f.c($$12, $$11);
+         this.f.a($$0, $$6, $$7, $$9);
+         $$0.b(fqr.this.c.h, this.e, $$3, $$2 + $$5 / 2 - 9 / 2, -1);
+         if (this.h) {
+            int $$13 = 3;
+            int $$14 = this.f.D() - 6;
+            $$0.a($$14, $$2 - 1, $$14 + 3, $$2 + $$5, -65536);
+         }
+      }
+
+      @Override
+      public List<? extends fjo> aG_() {
+         return ImmutableList.of(this.f, this.g);
+      }
+
+      @Override
+      public List<? extends flm> b() {
+         return ImmutableList.of(this.f, this.g);
+      }
+
+      @Override
+      protected void c() {
+         this.f.b(this.d.k());
+         this.g.j = !this.d.l();
+         this.h = false;
+         xi $$0 = wu.i();
+         if (!this.d.j()) {
+            for (ffr $$1 : fqr.this.c.m.W) {
+               if ($$1 != this.d && this.d.b($$1)) {
+                  if (this.h) {
+                     $$0.f(", ");
+                  }
+
+                  this.h = true;
+                  $$0.b(wu.c($$1.h()));
+               }
+            }
+         }
+
+         if (this.h) {
+            this.f.b(wu.b("[ ").b(this.f.z().f().a(n.p)).f(" ]").a(n.m));
+            this.f.a(fjd.a(wu.a("controls.keybinds.duplicateKeybinds", $$0)));
+         } else {
+            this.f.a(null);
+         }
+
+         if (fqr.this.m.a == this.d) {
+            this.f.b(wu.b("> ").b(this.f.z().f().a(n.p, n.t)).f(" <").a(n.o));
+         }
       }
    }
 }

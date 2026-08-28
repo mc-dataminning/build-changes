@@ -27,7 +27,7 @@ public class alz {
                                              (eq)$$0x.getSource(),
                                              fd.a($$0x, "target"),
                                              FloatArgumentType.getFloat($$0x, "amount"),
-                                             new bqw(fp.a($$0x, "damageType", lr.s))
+                                             new bqz(fp.a($$0x, "damageType", lr.s))
                                           )
                                     ))
                                  .then(
@@ -39,7 +39,7 @@ public class alz {
                                                       (eq)$$0x.getSource(),
                                                       fd.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bqw(fp.a($$0x, "damageType", lr.s), gt.a($$0x, "location"))
+                                                      new bqz(fp.a($$0x, "damageType", lr.s), gt.a($$0x, "location"))
                                                    )
                                              )
                                        )
@@ -53,7 +53,7 @@ public class alz {
                                                       (eq)$$0x.getSource(),
                                                       fd.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bqw(fp.a($$0x, "damageType", lr.s), fd.a($$0x, "entity"))
+                                                      new bqz(fp.a($$0x, "damageType", lr.s), fd.a($$0x, "entity"))
                                                    )
                                              ))
                                           .then(
@@ -65,7 +65,7 @@ public class alz {
                                                                (eq)$$0x.getSource(),
                                                                fd.a($$0x, "target"),
                                                                FloatArgumentType.getFloat($$0x, "amount"),
-                                                               new bqw(fp.a($$0x, "damageType", lr.s), fd.a($$0x, "entity"), fd.a($$0x, "cause"))
+                                                               new bqz(fp.a($$0x, "damageType", lr.s), fd.a($$0x, "entity"), fd.a($$0x, "cause"))
                                                             )
                                                       )
                                                 )
@@ -78,7 +78,7 @@ public class alz {
       );
    }
 
-   private static int a(eq $$0, bsd $$1, float $$2, bqw $$3) throws CommandSyntaxException {
+   private static int a(eq $$0, bsg $$1, float $$2, bqz $$3) throws CommandSyntaxException {
       if ($$1.a($$3, $$2)) {
          $$0.a(() -> wu.a("commands.damage.success", $$2, $$1.O_()), true);
          return 1;

@@ -1,49 +1,72 @@
 public class fic extends fhm {
-   private boolean a;
+   private final fhd a;
+   private final fim b;
 
-   public fic(int $$0, int $$1, fhm.c $$2) {
-      super($$0, $$1, 20, 20, wu.c("narrator.button.difficulty_lock"), $$2, q);
+   public fic(int $$0, int $$1, int $$2, int $$3, wu $$4, fhd $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.b = new fim($$4, $$5).d(this.y() - this.b());
+   }
+
+   public fic a(int $$0) {
+      this.b.c($$0);
+      return this;
    }
 
    @Override
-   protected xi aL_() {
-      return wt.a(super.aL_(), this.a() ? wu.c("narrator.button.difficulty_lock.locked") : wu.c("narrator.button.difficulty_lock.unlocked"));
-   }
-
-   public boolean a() {
-      return this.a;
-   }
-
-   public void b(boolean $$0) {
-      this.a = $$0;
+   public void k(int $$0) {
+      super.k($$0);
+      this.b.d(this.y() - this.b());
    }
 
    @Override
-   public void b(fgz $$0, int $$1, int $$2, float $$3) {
-      fic.a $$4;
-      if (!this.j) {
-         $$4 = this.a ? fic.a.c : fic.a.f;
-      } else if (this.B()) {
-         $$4 = this.a ? fic.a.b : fic.a.e;
-      } else {
-         $$4 = this.a ? fic.a.a : fic.a.d;
-      }
-
-      $$0.a($$4.g, this.D(), this.E(), this.g, this.h);
+   protected int h() {
+      return this.b.w();
    }
 
-   static enum a {
-      a(new akk("widget/locked_button")),
-      b(new akk("widget/locked_button_highlighted")),
-      c(new akk("widget/locked_button_disabled")),
-      d(new akk("widget/unlocked_button")),
-      e(new akk("widget/unlocked_button_highlighted")),
-      f(new akk("widget/unlocked_button_disabled"));
+   @Override
+   protected double i() {
+      return 9.0;
+   }
 
-      final akk g;
-
-      private a(final akk $$0) {
-         this.g = $$0;
+   @Override
+   protected void b(fhf $$0) {
+      if (this.e()) {
+         super.b($$0);
+      } else if (this.aK_()) {
+         this.a($$0, this.D() - this.a(), this.E() - this.a(), this.y() + this.b(), this.w() + this.b());
       }
+   }
+
+   @Override
+   public void b(fhf $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (!this.e()) {
+            this.b($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.D(), (float)this.E(), 0.0F);
+            this.b.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
+         } else {
+            super.b($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   public boolean j() {
+      return super.e();
+   }
+
+   @Override
+   protected void c(fhf $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)(this.D() + this.a()), (float)(this.E() + this.a()), 0.0F);
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(flo $$0) {
+      $$0.a(fln.a, this.z());
    }
 }

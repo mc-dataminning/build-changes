@@ -1,8 +1,78 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface dax {
+   akj<das> a = day.a("trades/desert_armorer_boots_4");
+   akj<das> b = day.a("trades/desert_armorer_leggings_4");
+   akj<das> c = day.a("trades/desert_armorer_chestplate_4");
+   akj<das> d = day.a("trades/desert_armorer_helmet_4");
+   akj<das> e = day.a("trades/desert_armorer_leggings_5");
+   akj<das> f = day.a("trades/desert_armorer_chestplate_5");
+   akj<das> g = day.a("trades/plains_armorer_boots_4");
+   akj<das> h = day.a("trades/plains_armorer_leggings_4");
+   akj<das> i = day.a("trades/plains_armorer_chestplate_4");
+   akj<das> j = day.a("trades/plains_armorer_helmet_4");
+   akj<das> k = day.a("trades/plains_armorer_boots_5");
+   akj<das> l = day.a("trades/plains_armorer_leggings_5");
+   akj<das> m = day.a("trades/savanna_armorer_boots_4");
+   akj<das> n = day.a("trades/savanna_armorer_leggings_4");
+   akj<das> o = day.a("trades/savanna_armorer_chestplate_4");
+   akj<das> p = day.a("trades/savanna_armorer_helmet_4");
+   akj<das> q = day.a("trades/savanna_armorer_chestplate_5");
+   akj<das> r = day.a("trades/savanna_armorer_helmet_5");
+   akj<das> s = day.a("trades/snow_armorer_boots_4");
+   akj<das> t = day.a("trades/snow_armorer_helmet_4");
+   akj<das> u = day.a("trades/snow_armorer_boots_5");
+   akj<das> v = day.a("trades/snow_armorer_helmet_5");
+   akj<das> w = day.a("trades/jungle_armorer_boots_4");
+   akj<das> x = day.a("trades/jungle_armorer_leggings_4");
+   akj<das> y = day.a("trades/jungle_armorer_chestplate_4");
+   akj<das> z = day.a("trades/jungle_armorer_helmet_4");
+   akj<das> A = day.a("trades/jungle_armorer_boots_5");
+   akj<das> B = day.a("trades/jungle_armorer_helmet_5");
+   akj<das> C = day.a("trades/swamp_armorer_boots_4");
+   akj<das> D = day.a("trades/swamp_armorer_leggings_4");
+   akj<das> E = day.a("trades/swamp_armorer_chestplate_4");
+   akj<das> F = day.a("trades/swamp_armorer_helmet_4");
+   akj<das> G = day.a("trades/swamp_armorer_boots_5");
+   akj<das> H = day.a("trades/swamp_armorer_helmet_5");
+   akj<das> I = day.a("trades/taiga_armorer_leggings_5");
+   akj<das> J = day.a("trades/taiga_armorer_chestplate_5");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dax {
+   static void a(qm<das> $$0) {
+      jk<czl> $$1 = $$0.a(lr.aK);
+      $$0.a(a, new daw($$1.b(czq.h), bpi.a(1)));
+      $$0.a(b, new daw($$1.b(czq.h), bpi.a(1)));
+      $$0.a(c, new daw($$1.b(czq.h), bpi.a(1)));
+      $$0.a(d, new daw($$1.b(czq.h), bpi.a(1)));
+      $$0.a(e, new daw($$1.b(czq.h), bpi.a(1)));
+      $$0.a(f, new daw($$1.b(czq.h), bpi.a(1)));
+      $$0.a(g, new daw($$1.b(czq.a), bpi.a(1)));
+      $$0.a(h, new daw($$1.b(czq.a), bpi.a(1)));
+      $$0.a(i, new daw($$1.b(czq.a), bpi.a(1)));
+      $$0.a(j, new daw($$1.b(czq.a), bpi.a(1)));
+      $$0.a(k, new daw($$1.b(czq.a), bpi.a(1)));
+      $$0.a(l, new daw($$1.b(czq.a), bpi.a(1)));
+      $$0.a(m, new daw($$1.b(czq.k), bpi.a(1)));
+      $$0.a(n, new daw($$1.b(czq.k), bpi.a(1)));
+      $$0.a(o, new daw($$1.b(czq.k), bpi.a(1)));
+      $$0.a(p, new daw($$1.b(czq.k), bpi.a(1)));
+      $$0.a(q, new daw($$1.b(czq.k), bpi.a(1)));
+      $$0.a(r, new daw($$1.b(czq.k), bpi.a(1)));
+      $$0.a(s, new daw($$1.b(czq.j), bpi.a(1)));
+      $$0.a(t, new daw($$1.b(czq.g), bpi.a(1)));
+      $$0.a(u, new daw($$1.b(czq.j), bpi.a(1)));
+      $$0.a(v, new daw($$1.b(czq.g), bpi.a(1)));
+      $$0.a(w, new daw($$1.b(czq.w), bpi.a(1)));
+      $$0.a(x, new daw($$1.b(czq.w), bpi.a(1)));
+      $$0.a(y, new daw($$1.b(czq.w), bpi.a(1)));
+      $$0.a(z, new daw($$1.b(czq.w), bpi.a(1)));
+      $$0.a(A, new daw($$1.b(czq.c), bpi.a(1)));
+      $$0.a(B, new daw($$1.b(czq.e), bpi.a(1)));
+      $$0.a(C, new daw($$1.b(czq.O), bpi.a(1)));
+      $$0.a(D, new daw($$1.b(czq.O), bpi.a(1)));
+      $$0.a(E, new daw($$1.b(czq.O), bpi.a(1)));
+      $$0.a(F, new daw($$1.b(czq.O), bpi.a(1)));
+      $$0.a(G, new daw($$1.b(czq.i), bpi.a(1)));
+      $$0.a(H, new daw($$1.b(czq.f), bpi.a(1)));
+      $$0.a(I, new daw($$1.b(czq.d), bpi.a(1)));
+      $$0.a(J, new daw($$1.b(czq.d), bpi.a(1)));
+   }
 }

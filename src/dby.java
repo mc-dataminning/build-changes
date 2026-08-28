@@ -1,34 +1,27 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Optional;
 
-public class dby extends epi {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
-
-   public static epi.a<dby> a() {
-      return new epi.a<>(dby::new, dby::b, azl.i);
+public class dby {
+   public Optional<Float> a(dbx $$0, dbl $$1, ja $$2, dsk $$3, eoh $$4) {
+      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
    }
 
-   private dby(LongSet $$0) {
-      this.c = $$0;
+   public boolean a(dbx $$0, dbl $$1, ja $$2, dsk $$3, float $$4) {
+      return true;
    }
 
-   public dby() {
-      this(new LongOpenHashSet());
+   public boolean a(dbx $$0, bsg $$1) {
+      return true;
    }
 
-   public static dby b(tx $$0, jl.a $$1) {
-      return new dby(new LongOpenHashSet($$0.o("Forced")));
+   public float a(bsg $$0) {
+      return 1.0F;
    }
 
-   @Override
-   public tx a(tx $$0, jl.a $$1) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
-   }
-
-   public LongSet b() {
-      return this.c;
+   public float b(dbx $$0, bsg $$1) {
+      float $$2 = $$0.a() * 2.0F;
+      ewf $$3 = $$0.b();
+      double $$4 = Math.sqrt($$1.f($$3)) / (double)$$2;
+      double $$5 = (1.0 - $$4) * (double)dbx.a($$3, $$1);
+      return (float)(($$5 * $$5 + $$5) / 2.0 * 7.0 * (double)$$2 + 1.0);
    }
 }

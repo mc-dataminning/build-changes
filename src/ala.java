@@ -1,9 +1,9 @@
 public interface ala {
-   String af();
+   String ag();
 
-   String L();
-
-   int M();
+   String M();
 
    int N();
+
+   int O();
 }

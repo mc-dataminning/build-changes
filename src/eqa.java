@@ -1,28 +1,30 @@
 public class eqa {
-   public static final eqa a = new eqa("advancements");
-   public static final eqa b = new eqa("stats");
-   public static final eqa c = new eqa("playerdata");
-   public static final eqa d = new eqa("players");
-   public static final eqa e = new eqa("level.dat");
-   public static final eqa f = new eqa("level.dat_old");
-   public static final eqa g = new eqa("icon.png");
-   public static final eqa h = new eqa("session.lock");
-   public static final eqa i = new eqa("generated");
-   public static final eqa j = new eqa("datapacks");
-   public static final eqa k = new eqa("resources.zip");
-   public static final eqa l = new eqa(".");
-   private final String m;
+   private final int b;
+   private final String c;
+   public static String a = "main";
 
-   private eqa(String $$0) {
-      this.m = $$0;
+   public eqa(int $$0) {
+      this($$0, a);
    }
 
-   public String a() {
-      return this.m;
+   public eqa(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public String toString() {
-      return "/" + this.m;
+   public boolean a() {
+      return !this.c.equals(a);
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public boolean a(eqa $$0) {
+      return this.b().equals($$0.b());
    }
 }

@@ -1,214 +1,185 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class fnp extends fnd {
-   static final akk a = new akk("gamemode_switcher/slot");
-   static final akk b = new akk("gamemode_switcher/selection");
-   private static final akk c = new akk("textures/gui/container/gamemode_switcher.png");
-   private static final int q = 128;
-   private static final int r = 128;
-   private static final int s = 26;
-   private static final int u = 5;
-   private static final int v = 31;
-   private static final int w = 5;
-   private static final int x = fnp.a.values().length * 31 - 5;
-   private static final wu y = wu.a("debug.gamemodes.select_next", wu.c("debug.gamemodes.press_f4").a(n.l));
-   private final fnp.a z;
-   private fnp.a A;
-   private int B;
-   private int C;
-   private boolean D;
-   private final List<fnp.b> E = Lists.newArrayList();
+public class fnp {
+   private final fft a;
+   private final fnt b;
+   private final fnq c;
+   private final int d;
+   private final ag e;
+   private final ar f;
+   private final cuc g;
+   private final wu h;
+   private final fnr i;
+   private final Map<af, fnr> j = Maps.newLinkedHashMap();
+   private double k;
+   private double l;
+   private int m = Integer.MAX_VALUE;
+   private int n = Integer.MAX_VALUE;
+   private int o = Integer.MIN_VALUE;
+   private int p = Integer.MIN_VALUE;
+   private float q;
+   private boolean r;
 
-   public fnp() {
-      super(fff.a);
-      this.z = fnp.a.a(this.m());
-      this.A = this.z;
+   public fnp(fft $$0, fnt $$1, fnq $$2, int $$3, ag $$4, ar $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$5.c();
+      this.h = $$5.a();
+      this.i = new fnr(this, $$0, $$4, $$5);
+      this.a(this.i, $$4.b());
    }
 
-   private dca m() {
-      fym $$0 = ffn.Q().q;
-      dca $$1 = $$0.i();
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         return $$0.j() == dca.b ? dca.a : dca.b;
+   public fnq a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public ag c() {
+      return this.e;
+   }
+
+   public wu d() {
+      return this.h;
+   }
+
+   public ar e() {
+      return this.f;
+   }
+
+   public void a(fhf $$0, int $$1, int $$2, boolean $$3) {
+      this.c.a($$0, $$1, $$2, $$3, this.d);
+   }
+
+   public void a(fhf $$0, int $$1, int $$2) {
+      this.c.a($$0, $$1, $$2, this.d, this.g);
+   }
+
+   public void b(fhf $$0, int $$1, int $$2) {
+      if (!this.r) {
+         this.k = (double)(117 - (this.o + this.m) / 2);
+         this.l = (double)(56 - (this.p + this.n) / 2);
+         this.r = true;
       }
-   }
 
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.A = this.z;
+      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
+      $$0.c().a();
+      $$0.c().a((float)$$1, (float)$$2, 0.0F);
+      akk $$3 = this.f.d().orElse(gpp.a);
+      int $$4 = ayg.a(this.k);
+      int $$5 = ayg.a(this.l);
+      int $$6 = $$4 % 16;
+      int $$7 = $$5 % 16;
 
-      for (int $$0 = 0; $$0 < fnp.a.e.length; $$0++) {
-         fnp.a $$1 = fnp.a.e[$$0];
-         this.E.add(new fnp.b($$1, this.m / 2 - x / 2 + $$0 * 31, this.n / 2 - 31));
-      }
-   }
-
-   @Override
-   public void a(fgz $$0, int $$1, int $$2, float $$3) {
-      if (!this.F()) {
-         $$0.c().a();
-         RenderSystem.enableBlend();
-         int $$4 = this.m / 2 - 62;
-         int $$5 = this.n / 2 - 31 - 27;
-         $$0.a(c, $$4, $$5, 0.0F, 0.0F, 125, 75, 128, 128);
-         $$0.c().b();
-         super.a($$0, $$1, $$2, $$3);
-         $$0.a(this.o, this.A.a(), this.m / 2, this.n / 2 - 31 - 20, -1);
-         $$0.a(this.o, y, this.m / 2, this.n / 2 + 5, 16777215);
-         if (!this.D) {
-            this.B = $$1;
-            this.C = $$2;
-            this.D = true;
+      for (int $$8 = -1; $$8 <= 15; $$8++) {
+         for (int $$9 = -1; $$9 <= 8; $$9++) {
+            $$0.a($$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
          }
+      }
 
-         boolean $$6 = this.B == $$1 && this.C == $$2;
+      this.i.a($$0, $$4, $$5, true);
+      this.i.a($$0, $$4, $$5, false);
+      this.i.a($$0, $$4, $$5);
+      $$0.c().b();
+      $$0.f();
+   }
 
-         for (fnp.b $$7 : this.E) {
-            $$7.a($$0, $$1, $$2, $$3);
-            $$7.b(this.A == $$7.a);
-            if (!$$6 && $$7.B()) {
-               this.A = $$7.a;
+   public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, -200.0F);
+      $$0.a(0, 0, 234, 113, ayg.d(this.q * 255.0F) << 24);
+      boolean $$5 = false;
+      int $$6 = ayg.a(this.k);
+      int $$7 = ayg.a(this.l);
+      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
+         for (fnr $$8 : this.j.values()) {
+            if ($$8.a($$6, $$7, $$1, $$2)) {
+               $$5 = true;
+               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
+               break;
             }
          }
       }
-   }
 
-   @Override
-   public void b(fgz $$0, int $$1, int $$2, float $$3) {
-   }
-
-   private void E() {
-      a(this.l, this.A);
-   }
-
-   private static void a(ffn $$0, fnp.a $$1) {
-      if ($$0.q != null && $$0.s != null) {
-         fnp.a $$2 = fnp.a.a($$0.q.j());
-         if ($$0.s.l(2) && $$1 != $$2) {
-            $$0.s.cB.d($$1.b());
-         }
-      }
-   }
-
-   private boolean F() {
-      if (!ezb.a(this.l.aO().i(), 292)) {
-         this.E();
-         this.l.a(null);
-         return true;
+      $$0.c().b();
+      if ($$5) {
+         this.q = ayg.a(this.q + 0.02F, 0.0F, 0.3F);
       } else {
-         return false;
+         this.q = ayg.a(this.q - 0.04F, 0.0F, 1.0F);
       }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 293) {
-         this.D = false;
-         this.A = this.A.c();
-         return true;
+   public boolean a(int $$0, int $$1, double $$2, double $$3) {
+      return this.c.a($$0, $$1, this.d, $$2, $$3);
+   }
+
+   @Nullable
+   public static fnp a(fft $$0, fnt $$1, int $$2, ag $$3) {
+      Optional<ar> $$4 = $$3.a().c();
+      if ($$4.isEmpty()) {
+         return null;
       } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
+         for (fnq $$5 : fnq.values()) {
+            if ($$2 < $$5.a()) {
+               return new fnp($$0, $$1, $$5, $$2, $$3, $$4.get());
+            }
 
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   static enum a {
-      a(wu.c("gameMode.creative"), "gamemode creative", new cua(dfh.i)),
-      b(wu.c("gameMode.survival"), "gamemode survival", new cua(cud.pa)),
-      c(wu.c("gameMode.adventure"), "gamemode adventure", new cua(cud.uj)),
-      d(wu.c("gameMode.spectator"), "gamemode spectator", new cua(cud.ss));
-
-      protected static final fnp.a[] e = values();
-      private static final int j = 16;
-      protected static final int f = 5;
-      final wu g;
-      final String h;
-      final cua i;
-
-      private a(final wu $$0, final String $$1, final cua $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      void a(fgz $$0, int $$1, int $$2) {
-         $$0.a(this.i, $$1, $$2);
-      }
-
-      wu a() {
-         return this.g;
-      }
-
-      String b() {
-         return this.h;
-      }
-
-      fnp.a c() {
-         return switch (this) {
-            case a -> b;
-            case b -> c;
-            case c -> d;
-            case d -> a;
-         };
-      }
-
-      static fnp.a a(dca $$0) {
-         return switch ($$0) {
-            case d -> d;
-            case a -> b;
-            case b -> a;
-            case c -> c;
-         };
-      }
-   }
-
-   public class b extends fhk {
-      final fnp.a a;
-      private boolean b;
-
-      public b(final fnp.a $$1, final int $$2, final int $$3) {
-         super($$2, $$3, 26, 26, $$1.a());
-         this.a = $$1;
-      }
-
-      @Override
-      public void b(fgz $$0, int $$1, int $$2, float $$3) {
-         this.a($$0);
-         this.a.a($$0, this.D() + 5, this.E() + 5);
-         if (this.b) {
-            this.b($$0);
+            $$2 -= $$5.a();
          }
+
+         return null;
+      }
+   }
+
+   public void a(double $$0, double $$1) {
+      if (this.o - this.m > 234) {
+         this.k = ayg.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
       }
 
-      @Override
-      public void a(fli $$0) {
-         this.c($$0);
+      if (this.p - this.n > 113) {
+         this.l = ayg.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
       }
+   }
 
-      @Override
-      public boolean B() {
-         return super.B() || this.b;
+   public void a(ag $$0) {
+      Optional<ar> $$1 = $$0.a().c();
+      if (!$$1.isEmpty()) {
+         fnr $$2 = new fnr(this, this.a, $$0, $$1.get());
+         this.a($$2, $$0.b());
       }
+   }
 
-      public void b(boolean $$0) {
-         this.b = $$0;
-      }
+   private void a(fnr $$0, af $$1) {
+      this.j.put($$1, $$0);
+      int $$2 = $$0.d();
+      int $$3 = $$2 + 28;
+      int $$4 = $$0.c();
+      int $$5 = $$4 + 27;
+      this.m = Math.min(this.m, $$2);
+      this.o = Math.max(this.o, $$3);
+      this.n = Math.min(this.n, $$4);
+      this.p = Math.max(this.p, $$5);
 
-      private void a(fgz $$0) {
-         $$0.a(fnp.a, this.D(), this.E(), 26, 26);
+      for (fnr $$6 : this.j.values()) {
+         $$6.b();
       }
+   }
 
-      private void b(fgz $$0) {
-         $$0.a(fnp.b, this.D(), this.E(), 26, 26);
-      }
+   @Nullable
+   public fnr a(af $$0) {
+      return this.j.get($$0);
+   }
+
+   public fnt f() {
+      return this.b;
    }
 }

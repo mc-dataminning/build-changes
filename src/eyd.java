@@ -1,32 +1,21 @@
-import org.lwjgl.openal.AL10;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.system.MemoryUtil;
 
 public class eyd {
-   private float a = 1.0F;
-   private eye b = eye.a;
-
-   public void a(eye $$0) {
-      this.b = $$0;
-      evz $$1 = $$0.b();
-      evz $$2 = $$0.c();
-      evz $$3 = $$0.d();
-      AL10.alListener3f(4100, (float)$$1.c, (float)$$1.d, (float)$$1.e);
-      AL10.alListenerfv(4111, new float[]{(float)$$2.c, (float)$$2.d, (float)$$2.e, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
+   public static void a(eyx $$0, float $$1) {
+      ConcurrentLinkedQueue<eyw> $$2 = $$0.i();
    }
 
-   public void a(float $$0) {
-      AL10.alListenerf(4106, $$0);
-      this.a = $$0;
+   public static void b(eyx $$0, float $$1) {
+      ConcurrentLinkedQueue<eyw> $$2 = $$0.j();
    }
 
-   public float a() {
-      return this.a;
+   public static void a() {
+      MemoryUtil.memSet(0L, 0, 1L);
    }
 
-   public void b() {
-      this.a(eye.a);
-   }
-
-   public eye c() {
-      return this.b;
+   public static double b() {
+      return GLFW.glfwGetTime();
    }
 }

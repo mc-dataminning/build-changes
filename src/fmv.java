@@ -1,59 +1,82 @@
-public class fmv extends fnd {
-   private static final wu a = wu.c("symlink_warning.title.world").a(n.r);
-   private static final wu b = wu.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
-   private static final wu c = wu.c("symlink_warning.title.pack").a(n.r);
-   private static final wu q = wu.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
+import javax.annotation.Nullable;
+
+public class fmv extends fnj {
+   private static final int a = 80;
+   private static final int b = 120;
+   private static final int c = 360;
+   @Nullable
+   private final wu q;
    private final wu r;
-   private final String s;
-   private final Runnable u;
-   private final fky v = new fky().b(10);
+   private final Runnable s;
+   @Nullable
+   private fil u;
+   private fhs v;
+   private int w;
 
-   public fmv(wu $$0, wu $$1, String $$2, Runnable $$3) {
+   public static fmv a(wu $$0, wu $$1, Runnable $$2) {
+      return new fmv($$0, null, $$1, $$2, 0);
+   }
+
+   public static fmv a(wu $$0, wu $$1, wu $$2, Runnable $$3) {
+      return new fmv($$0, $$1, $$2, $$3, 20);
+   }
+
+   protected fmv(wu $$0, @Nullable wu $$1, wu $$2, Runnable $$3, int $$4) {
       super($$0);
-      this.r = $$1;
-      this.s = $$2;
-      this.u = $$3;
-   }
-
-   public static fnd a(Runnable $$0) {
-      return new fmv(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
-   }
-
-   public static fnd b(Runnable $$0) {
-      return new fmv(c, q, "https://aka.ms/MinecraftSymLinks", $$0);
+      this.q = $$1;
+      this.r = $$2;
+      this.s = $$3;
+      this.w = $$4;
    }
 
    @Override
-   protected void aO_() {
-      super.aO_();
-      this.v.c().b();
-      fky.b $$0 = this.v.d(1);
-      $$0.a(new fit(this.k, this.o));
-      $$0.a(new fig(this.r, this.o).d(this.m - 50).b(true));
-      int $$1 = 120;
-      fky $$2 = new fky().a(5);
-      fky.b $$3 = $$2.d(3);
-      $$3.a(fhm.a(wt.n, $$0x -> ac.k().a(this.s)).b(120, 20).a());
-      $$3.a(fhm.a(wt.o, $$0x -> this.l.o.a(this.s)).b(120, 20).a());
-      $$3.a(fhm.a(wt.k, $$0x -> this.d()).b(120, 20).a());
-      $$0.a($$2);
-      this.c();
-      this.v.a(this::c);
+   protected void aP_() {
+      super.aP_();
+      if (this.q != null) {
+         this.u = fil.a(this.o, this.q, 360);
+      }
+
+      int $$0 = 150;
+      int $$1 = 20;
+      int $$2 = this.u != null ? this.u.a() : 1;
+      int $$3 = Math.max($$2, 5) * 9;
+      int $$4 = Math.min(120 + $$3, this.n - 40);
+      this.v = this.c(fhs.a(this.r, $$0x -> this.d()).a((this.m - 150) / 2, $$4, 150, 20).a());
    }
 
    @Override
-   protected void c() {
-      this.v.a();
-      fkx.a(this.v, this.H());
+   public void e() {
+      if (this.w > 0) {
+         this.w--;
+      }
+
+      this.v.j = this.w == 0;
    }
 
    @Override
-   public wu i() {
-      return wt.a(super.i(), this.r);
+   public void a(fhf $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, 80, 16777215);
+      if (this.u == null) {
+         String $$4 = fmy.a(ac.c());
+         $$0.a(this.o, $$4, this.m / 2, 120, 10526880);
+      } else {
+         this.u.a($$0, this.m / 2, 120);
+      }
+   }
+
+   @Override
+   public boolean aF_() {
+      return this.u != null && this.v.j;
    }
 
    @Override
    public void d() {
-      this.u.run();
+      this.s.run();
+   }
+
+   @Override
+   public wu i() {
+      return wt.a(this.k, this.q != null ? this.q : wt.a);
    }
 }

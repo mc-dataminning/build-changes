@@ -1,143 +1,105 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.Comparators;
 import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import java.util.Objects;
 import org.slf4j.Logger;
 
-public class ari extends arh implements abd, wi {
-   private static final Logger f = LogUtils.getLogger();
-   private static final wu g = wu.c("multiplayer.disconnect.invalid_player_data");
-   private final GameProfile h;
-   private final Queue<ara> i = new ConcurrentLinkedQueue<>();
-   @Nullable
-   private ara j;
-   private apz k;
-   @Nullable
-   private art l;
+public class ari {
+   private static final Logger c = LogUtils.getLogger();
+   public static final float a = 0.01F;
+   public static final float b = 64.0F;
+   private static final float d = 9.0F;
+   private static final int e = 10;
+   private final LongSet f = new LongOpenHashSet();
+   private final boolean g;
+   private float h = 9.0F;
+   private float i;
+   private int j;
+   private int k = 1;
 
-   public ari(MinecraftServer $$0, vp $$1, aqz $$2) {
-      super($$0, $$1, $$2);
-      this.h = $$2.a();
-      this.k = $$2.c();
+   public ari(boolean $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   protected GameProfile i() {
-      return this.h;
+   public void a(duq $$0) {
+      this.f.add($$0.f().a());
    }
 
-   @Override
-   public void a(wu $$0) {
-      f.info("{} lost connection: {}", this.h, $$0.getString());
-      super.a($$0);
-   }
-
-   @Override
-   public boolean c() {
-      return this.e.i();
-   }
-
-   @Override
-   public void l() {
-      this.b(new zi(new aaa(this.d.getServerModName())));
-      jq<akt> $$0 = this.d.bd();
-      List<atb> $$1 = this.d.bg().b().flatMap($$0x -> $$0x.a().d().stream()).toList();
-      this.b(new aba(cox.d.b(this.d.bb().K())));
-      this.l = new art($$1, $$0);
-      this.i.add(this.l);
-      this.n();
-      this.i.add(new arr());
-      this.o();
-   }
-
-   public void m() {
-      this.i.add(new arr());
-      this.o();
-   }
-
-   private void n() {
-      this.d.X().ifPresent($$0 -> this.i.add(new ars($$0)));
-   }
-
-   @Override
-   public void a(zt $$0) {
-      this.k = $$0.b();
-   }
-
-   @Override
-   public void a(zx $$0) {
-      super.a($$0);
-      if ($$0.e().a()) {
-         this.a(ars.a);
+   public void a(aqn $$0, dbm $$1) {
+      if (!this.f.remove($$1.a()) && $$0.bE()) {
+         $$0.c.b(new act($$1));
       }
    }
 
-   @Override
-   public void a(abf $$0) {
-      ze.a($$0, this, this.d);
-      if (this.l == null) {
-         throw new IllegalStateException("Unexpected response from client: received pack selection, but no negotiation ongoing");
+   public void a(aqn $$0) {
+      if (this.j < this.k) {
+         float $$1 = Math.max(1.0F, this.h);
+         this.i = Math.min(this.i + this.h, $$1);
+         if (!(this.i < 1.0F)) {
+            if (!this.f.isEmpty()) {
+               aqm $$2 = $$0.z();
+               apt $$3 = $$2.l().a;
+               List<duq> $$4 = this.a($$3, $$0.ds());
+               if (!$$4.isEmpty()) {
+                  arm $$5 = $$0.c;
+                  this.j++;
+                  $$5.b(acc.a);
+
+                  for (duq $$6 : $$4) {
+                     a($$5, $$2, $$6);
+                  }
+
+                  $$5.b(new acb($$4.size()));
+                  this.i = this.i - (float)$$4.size();
+               }
+            }
+         }
+      }
+   }
+
+   private static void a(arm $$0, aqm $$1, duq $$2) {
+      $$0.b(new acz($$2, $$1.y_(), null, null));
+      dbm $$3 = $$2.f();
+      afy.a($$1, $$3);
+   }
+
+   private List<duq> a(apt $$0, dbm $$1) {
+      int $$2 = ayg.d(this.i);
+      List<duq> $$4;
+      if (!this.g && this.f.size() > $$2) {
+         $$4 = this.f
+            .stream()
+            .collect(Comparators.least($$2, Comparator.comparingInt($$1::c)))
+            .stream()
+            .mapToLong(Long::longValue)
+            .mapToObj($$0::e)
+            .filter(Objects::nonNull)
+            .toList();
       } else {
-         this.l.a($$0.b(), this::b);
-         this.a(art.a);
+         $$4 = this.f.longStream().mapToObj($$0::e).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
       }
+
+      for (duq $$5 : $$4) {
+         this.f.remove($$5.f().a());
+      }
+
+      return $$4;
    }
 
-   @Override
-   public void a(abe $$0) {
-      ze.a($$0, this, this.d);
-      this.a(arr.a);
-      this.e.a(aga.b.bind(wf.a(this.d.bc())));
-
-      try {
-         auh $$1 = this.d.ah();
-         if ($$1.a(this.h.getId()) != null) {
-            this.b(auh.f);
-            return;
-         }
-
-         wu $$2 = $$1.a(this.e.d(), this.h);
-         if ($$2 != null) {
-            this.b($$2);
-            return;
-         }
-
-         aql $$3 = $$1.a(this.h, this.k);
-         $$1.a(this.e, $$3, this.a(this.k));
-      } catch (Exception var5) {
-         f.error("Couldn't place player in world", var5);
-         this.e.a(new zj(g));
-         this.e.a(g);
+   public void a(float $$0) {
+      this.j--;
+      this.h = Double.isNaN((double)$$0) ? 0.01F : ayg.a($$0, 0.01F, 64.0F);
+      if (this.j == 0) {
+         this.i = 1.0F;
       }
+
+      this.k = 10;
    }
 
-   @Override
-   public void d() {
-      this.e();
-   }
-
-   private void o() {
-      if (this.j != null) {
-         throw new IllegalStateException("Task " + this.j.a().a() + " has not finished yet");
-      } else if (this.c()) {
-         ara $$0 = this.i.poll();
-         if ($$0 != null) {
-            this.j = $$0;
-            $$0.a(this::b);
-         }
-      }
-   }
-
-   private void a(ara.a $$0) {
-      ara.a $$1 = this.j != null ? this.j.a() : null;
-      if (!$$0.equals($$1)) {
-         throw new IllegalStateException("Unexpected request for task finish, current task: " + $$1 + ", requested: " + $$0);
-      } else {
-         this.j = null;
-         this.o();
-      }
+   public boolean a(long $$0) {
+      return this.f.contains($$0);
    }
 }

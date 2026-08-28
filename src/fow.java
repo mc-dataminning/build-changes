@@ -1,97 +1,30 @@
-import java.util.Objects;
+import org.joml.Vector3f;
 
-public class fow extends fnz implements foy<cqj> {
-   private final cqj x;
-   private final cpr y = new cpr() {
-      @Override
-      public void a(cpe $$0, int $$1, cua $$2) {
-         fow.this.M();
-      }
+public class fow extends foa {
+   public static final float b = 4.5F;
+   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int q = 16;
+   private static final int r = 16;
+   private final akk s = new akk("textures/gui/hanging_signs/" + this.a.b() + ".png");
 
-      @Override
-      public void a(cpe $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fow.this.N();
-         }
-      }
-   };
-
-   public fow(cqj $$0, cmg $$1, wu $$2) {
-      this.x = $$0;
-   }
-
-   public cqj L() {
-      return this.x;
+   public fow(dra $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, wu.c("hanging_sign.edit"));
    }
 
    @Override
-   protected void aO_() {
-      super.aO_();
-      this.x.a(this.y);
+   protected void b(fhf $$0, dsk $$1) {
+      $$0.c().a((float)this.m / 2.0F, 125.0F, 50.0F);
    }
 
    @Override
-   public void d() {
-      this.l.s.r();
-      super.d();
+   protected void a(fhf $$0, dsk $$1) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(this.s, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
    }
 
    @Override
-   public void j() {
-      super.j();
-      this.x.b(this.y);
-   }
-
-   @Override
-   protected void m() {
-      if (this.l.s.gk()) {
-         this.c(fhm.a(wt.d, $$0 -> this.d()).a(this.m / 2 - 100, 196, 98, 20).a());
-         this.c(fhm.a(wu.c("lectern.take_book"), $$0 -> this.g(3)).a(this.m / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.m();
-      }
-   }
-
-   @Override
-   protected void G() {
-      this.g(1);
-   }
-
-   @Override
-   protected void J() {
-      this.g(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.x.m()) {
-         this.g(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void g(int $$0) {
-      this.l.q.a(this.x.j, $$0);
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   void M() {
-      cua $$0 = this.x.l();
-      this.a(Objects.requireNonNullElse(fnz.a.a($$0), fnz.q));
-   }
-
-   void N() {
-      this.a(this.x.m());
-   }
-
-   @Override
-   protected void K() {
-      this.l.s.r();
+   protected Vector3f m() {
+      return c;
    }
 }

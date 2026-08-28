@@ -1,82 +1,79 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fmp extends fnd {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
-   @Nullable
-   private final wu q;
-   private final wu r;
-   private final Runnable s;
-   @Nullable
-   private fif u;
-   private fhm v;
-   private int w;
+public class fmp extends fnj {
+   private static final wu a = wu.c("addServer.enterIp");
+   private fhs b;
+   private final fyx c;
+   private fib q;
+   private final BooleanConsumer r;
+   private final fnj s;
 
-   public static fmp a(wu $$0, wu $$1, Runnable $$2) {
-      return new fmp($$0, null, $$1, $$2, 0);
-   }
-
-   public static fmp a(wu $$0, wu $$1, wu $$2, Runnable $$3) {
-      return new fmp($$0, $$1, $$2, $$3, 20);
-   }
-
-   protected fmp(wu $$0, @Nullable wu $$1, wu $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.q = $$1;
-      this.r = $$2;
-      this.s = $$3;
-      this.w = $$4;
+   public fmp(fnj $$0, BooleanConsumer $$1, fyx $$2) {
+      super(wu.c("selectServer.direct"));
+      this.s = $$0;
+      this.c = $$2;
+      this.r = $$1;
    }
 
    @Override
-   protected void aO_() {
-      super.aO_();
-      if (this.q != null) {
-         this.u = fif.a(this.o, this.q, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.u != null ? this.u.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.n - 40);
-      this.v = this.c(fhm.a(this.r, $$0x -> this.d()).a((this.m - 150) / 2, $$4, 150, 20).a());
-   }
-
-   @Override
-   public void e() {
-      if (this.w > 0) {
-         this.w--;
-      }
-
-      this.v.j = this.w == 0;
-   }
-
-   @Override
-   public void a(fgz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 80, 16777215);
-      if (this.u == null) {
-         String $$4 = fms.a(ac.c());
-         $$0.a(this.o, $$4, this.m / 2, 120, 10526880);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.b.j || this.aJ_() != this.q || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
       } else {
-         this.u.a($$0, this.m / 2, 120);
+         this.m();
+         return true;
       }
    }
 
    @Override
-   public boolean aE_() {
-      return this.u != null && this.v.j;
+   protected void aP_() {
+      this.q = new fib(this.o, this.m / 2 - 100, 116, 200, 20, wu.c("addServer.enterIp"));
+      this.q.f(128);
+      this.q.a(this.l.m.Z);
+      this.q.b($$0 -> this.E());
+      this.d(this.q);
+      this.b = this.c(fhs.a(wu.c("selectServer.select"), $$0 -> this.m()).a(this.m / 2 - 100, this.n / 4 + 96 + 12, 200, 20).a());
+      this.c(fhs.a(wt.e, $$0 -> this.r.accept(false)).a(this.m / 2 - 100, this.n / 4 + 120 + 12, 200, 20).a());
+      this.E();
+   }
+
+   @Override
+   protected void aE_() {
+      this.b(this.q);
+   }
+
+   @Override
+   public void a(fft $$0, int $$1, int $$2) {
+      String $$3 = this.q.a();
+      this.b($$0, $$1, $$2);
+      this.q.a($$3);
+   }
+
+   private void m() {
+      this.c.b = this.q.a();
+      this.r.accept(true);
    }
 
    @Override
    public void d() {
-      this.s.run();
+      this.l.a(this.s);
    }
 
    @Override
-   public wu i() {
-      return wt.a(this.k, this.q != null ? this.q : wt.a);
+   public void j() {
+      this.l.m.Z = this.q.a();
+      this.l.m.av();
+   }
+
+   private void E() {
+      this.b.j = gab.b(this.q.a());
+   }
+
+   @Override
+   public void a(fhf $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, 20, 16777215);
+      $$0.b(this.o, a, this.m / 2 - 100 + 1, 100, 10526880);
+      this.q.a($$0, $$1, $$2, $$3);
    }
 }

@@ -11,13 +11,6 @@ public class bhw extends Schema {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bgd.b,
-         () -> DSL.optionalFields(
-               "RootVehicle", DSL.optionalFields("Entity", bgd.A.in($$0)), "Inventory", DSL.list(bgd.t.in($$0)), "EnderItems", DSL.list(bgd.t.in($$0))
-            )
-      );
-      $$0.registerType(true, bgd.A, () -> DSL.optionalFields("Passengers", DSL.list(bgd.A.in($$0)), bgd.B.in($$0)));
+      $$0.registerType(true, bgg.F, () -> DSL.optionalFields("SpawnPotentials", DSL.list(DSL.fields("Entity", bgg.A.in($$0))), "SpawnData", bgg.A.in($$0)));
    }
 }

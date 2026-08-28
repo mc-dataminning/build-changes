@@ -21,14 +21,14 @@ public class ama {
       ($$0, $$1) -> wu.b("commands.datapack.enable.failed.no_flags", $$0, $$1)
    );
    private static final SuggestionProvider<eq> f = ($$0, $$1) -> ev.b(
-         ((eq)$$0.getSource()).l().aG().d().stream().map(StringArgumentType::escapeIfRequired), $$1
+         ((eq)$$0.getSource()).l().aH().d().stream().map(StringArgumentType::escapeIfRequired), $$1
       );
    private static final SuggestionProvider<eq> g = ($$0, $$1) -> {
-      atf $$2 = ((eq)$$0.getSource()).l().aG();
+      ath $$2 = ((eq)$$0.getSource()).l().aH();
       Collection<String> $$3 = $$2.d();
-      cov $$4 = ((eq)$$0.getSource()).w();
+      coy $$4 = ((eq)$$0.getSource()).w();
       return ev.b(
-         $$2.c().stream().filter($$1x -> $$1x.e().a($$4)).map(atc::g).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
+         $$2.c().stream().filter($$1x -> $$1x.e().a($$4)).map(ate::g).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
       );
    };
 
@@ -43,7 +43,7 @@ public class ama {
                                           )
                                           .suggests(g)
                                           .executes(
-                                             $$0x -> a((eq)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.k().a($$0xx, $$1, atc::h, false))
+                                             $$0x -> a((eq)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.k().a($$0xx, $$1, ate::h, false))
                                           ))
                                        .then(
                                           er.a("after")
@@ -88,21 +88,21 @@ public class ama {
       );
    }
 
-   private static int a(eq $$0, atc $$1, ama.a $$2) throws CommandSyntaxException {
-      atf $$3 = $$0.l().aG();
-      List<atc> $$4 = Lists.newArrayList($$3.f());
+   private static int a(eq $$0, ate $$1, ama.a $$2) throws CommandSyntaxException {
+      ath $$3 = $$0.l().aH();
+      List<ate> $$4 = Lists.newArrayList($$3.f());
       $$2.apply($$4, $$1);
       $$0.a(() -> wu.a("commands.datapack.modify.enable", $$1.a(true)), true);
-      ano.a($$4.stream().map(atc::g).collect(Collectors.toList()), $$0);
+      ano.a($$4.stream().map(ate::g).collect(Collectors.toList()), $$0);
       return $$4.size();
    }
 
-   private static int a(eq $$0, atc $$1) {
-      atf $$2 = $$0.l().aG();
-      List<atc> $$3 = Lists.newArrayList($$2.f());
+   private static int a(eq $$0, ate $$1) {
+      ath $$2 = $$0.l().aH();
+      List<ate> $$3 = Lists.newArrayList($$2.f());
       $$3.remove($$1);
       $$0.a(() -> wu.a("commands.datapack.modify.disable", $$1.a(true)), true);
-      ano.a($$3.stream().map(atc::g).collect(Collectors.toList()), $$0);
+      ano.a($$3.stream().map(ate::g).collect(Collectors.toList()), $$0);
       return $$3.size();
    }
 
@@ -111,12 +111,12 @@ public class ama {
    }
 
    private static int b(eq $$0) {
-      atf $$1 = $$0.l().aG();
+      ath $$1 = $$0.l().aH();
       $$1.a();
-      Collection<atc> $$2 = $$1.f();
-      Collection<atc> $$3 = $$1.c();
-      cov $$4 = $$0.w();
-      List<atc> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.e().a($$4)).toList();
+      Collection<ate> $$2 = $$1.f();
+      Collection<ate> $$3 = $$1.c();
+      coy $$4 = $$0.w();
+      List<ate> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.e().a($$4)).toList();
       if ($$5.isEmpty()) {
          $$0.a(() -> wu.c("commands.datapack.list.available.none"), false);
       } else {
@@ -127,9 +127,9 @@ public class ama {
    }
 
    private static int c(eq $$0) {
-      atf $$1 = $$0.l().aG();
+      ath $$1 = $$0.l().aH();
       $$1.a();
-      Collection<? extends atc> $$2 = $$1.f();
+      Collection<? extends ate> $$2 = $$1.f();
       if ($$2.isEmpty()) {
          $$0.a(() -> wu.c("commands.datapack.list.enabled.none"), false);
       } else {
@@ -139,10 +139,10 @@ public class ama {
       return $$2.size();
    }
 
-   private static atc a(CommandContext<eq> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+   private static ate a(CommandContext<eq> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
       String $$3 = StringArgumentType.getString($$0, $$1);
-      atf $$4 = ((eq)$$0.getSource()).l().aG();
-      atc $$5 = $$4.c($$3);
+      ath $$4 = ((eq)$$0.getSource()).l().aH();
+      ate $$5 = $$4.c($$3);
       if ($$5 == null) {
          throw a.create($$3);
       } else {
@@ -152,12 +152,12 @@ public class ama {
          } else if (!$$2 && !$$6) {
             throw c.create($$3);
          } else {
-            cov $$7 = ((eq)$$0.getSource()).w();
-            cov $$8 = $$5.e();
-            if (!$$2 && !$$8.b() && $$5.l() == atg.d) {
+            coy $$7 = ((eq)$$0.getSource()).w();
+            coy $$8 = $$5.e();
+            if (!$$2 && !$$8.b() && $$5.l() == ati.d) {
                throw d.create($$3);
             } else if (!$$8.a($$7)) {
-               throw e.create($$3, cox.a($$7, $$8));
+               throw e.create($$3, cpa.a($$7, $$8));
             } else {
                return $$5;
             }
@@ -166,6 +166,6 @@ public class ama {
    }
 
    interface a {
-      void apply(List<atc> var1, atc var2) throws CommandSyntaxException;
+      void apply(List<ate> var1, ate var2) throws CommandSyntaxException;
    }
 }

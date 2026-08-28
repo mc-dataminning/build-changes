@@ -5,12 +5,12 @@ public class afu implements zb<abn> {
    private static final int d = 4;
    private static final int e = 8;
    private final int f;
-   private final jj<brj> g;
+   private final jj<brm> g;
    private final int h;
    private final int i;
    private final byte j;
 
-   public afu(int $$0, brl $$1, boolean $$2) {
+   public afu(int $$0, bro $$1, boolean $$2) {
       this.f = $$0;
       this.g = $$1.c();
       this.h = $$1.e();
@@ -64,7 +64,7 @@ public class afu implements zb<abn> {
       return this.f;
    }
 
-   public jj<brj> e() {
+   public jj<brm> e() {
       return this.g;
    }
 

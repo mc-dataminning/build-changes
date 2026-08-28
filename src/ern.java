@@ -1,93 +1,58 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class ern extends esb {
+public class ern extends erm {
    public static final MapCodec<ern> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  lq.e.s().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dtk::f).toList())
-               )
-            )
-            .apply($$0, ern::new)
+      $$0 -> $$0.group(Codec.either(akj.a(lr.bb), eqz.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ern::new)
    );
-   private final jj<dff> b;
-   private final Set<dtk<?>> c;
+   private final Either<akj<eqz>, eqz> j;
 
-   ern(List<etz> $$0, jj<dff> $$1, Set<dtk<?>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   private ern(List<etz> $$0, jj<dff> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   private ern(Either<akj<eqz>, eqz> $$0, int $$1, int $$2, List<euf> $$3, List<esi> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public esd<ern> b() {
-      return ese.D;
+   public erl a() {
+      return eri.d;
    }
 
    @Override
-   public Set<eth<?>> a() {
-      return ImmutableSet.of(etk.g);
+   public void a(Consumer<cuc> $$0, equ $$1) {
+      ((eqz)this.j.map($$1x -> $$1.a().a(lr.bb, $$1x).map(jj::a).orElse(eqz.a), $$0x -> $$0x)).a($$1, $$0);
    }
 
    @Override
-   protected cua a(cua $$0, eqo $$1) {
-      dsh $$2 = $$1.c(etk.g);
-      if ($$2 != null) {
-         $$0.a(kn.ab, cwk.a, $$1x -> {
-            for (dtk<?> $$2x : this.c) {
-               if ($$2.b($$2x)) {
-                  $$1x = $$1x.a($$2x, $$2);
-               }
-            }
-
-            return $$1x;
-         });
-      }
-
-      return $$0;
-   }
-
-   public static ern.a a(dff $$0) {
-      return new ern.a($$0);
-   }
-
-   public static class a extends esb.a<ern.a> {
-      private final jj<dff> a;
-      private final Builder<dtk<?>> b = ImmutableSet.builder();
-
-      a(dff $$0) {
-         this.a = $$0.s();
-      }
-
-      public ern.a a(dtk<?> $$0) {
-         if (!this.a.a().l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
+   public void a(era $$0) {
+      Optional<akj<eqz>> $$1 = this.j.left();
+      if ($$1.isPresent()) {
+         akj<eqz> $$2 = $$1.get();
+         if ($$0.a($$2)) {
+            $$0.b("Table " + $$2.a() + " is recursively called");
+            return;
          }
       }
 
-      protected ern.a a() {
-         return this;
-      }
+      super.a($$0);
+      this.j
+         .ifLeft(
+            $$1x -> $$0.a()
+                  .a(lr.bb, $$1x)
+                  .ifPresentOrElse($$2x -> ((eqz)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
+         )
+         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
+   }
 
-      @Override
-      public esc b() {
-         return new ern(this.g(), this.a, this.b.build());
-      }
+   public static erm.a<?> a(akj<eqz> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ern(Either.left($$0), $$1, $$2, $$3, $$4));
+   }
+
+   public static erm.a<?> a(eqz $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ern(Either.right($$0), $$1, $$2, $$3, $$4));
    }
 }

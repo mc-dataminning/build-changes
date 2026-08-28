@@ -1,41 +1,13 @@
-public class fyl {
-   private final gcz a;
-   private final fyd b;
-   private final gdv c;
-   private fyl.a d = fyl.a.a;
+import java.util.List;
 
-   public fyl(gcz $$0, fyd $$1, gdv $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+public enum fyl {
+   a,
+   b;
 
-   public void a() {
-      switch (this.d) {
-         case b:
-            ja $$0 = this.a.dp();
-            boolean $$1 = this.b.d($$0.v());
-            if ($$1 || this.c.a($$0) || this.a.N_() || !this.a.bD()) {
-               this.d = fyl.a.c;
-            }
-         case a:
-         case c:
-      }
-   }
+   private static final List<fyl> c = List.of(values());
+   private static final jx.b d = jx.a(lq.aA);
 
-   public boolean b() {
-      return this.d == fyl.a.c;
-   }
-
-   public void c() {
-      if (this.d == fyl.a.a) {
-         this.d = fyl.a.b;
-      }
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+   public static jq<fyl> a() {
+      return new jq<>(c).a(a, d);
    }
 }

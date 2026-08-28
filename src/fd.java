@@ -32,7 +32,7 @@ public class fd implements ArgumentType<hf> {
       return new fd(true, false);
    }
 
-   public static bsd a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static bsg a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return ((hf)$$0.getArgument($$1, hf.class)).a((eq)$$0.getSource());
    }
 
@@ -40,8 +40,8 @@ public class fd implements ArgumentType<hf> {
       return new fd(false, false);
    }
 
-   public static Collection<? extends bsd> b(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
-      Collection<? extends bsd> $$2 = c($$0, $$1);
+   public static Collection<? extends bsg> b(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+      Collection<? extends bsg> $$2 = c($$0, $$1);
       if ($$2.isEmpty()) {
          throw d.create();
       } else {
@@ -49,11 +49,11 @@ public class fd implements ArgumentType<hf> {
       }
    }
 
-   public static Collection<? extends bsd> c(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<? extends bsg> c(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return ((hf)$$0.getArgument($$1, hf.class)).b((eq)$$0.getSource());
    }
 
-   public static Collection<aql> d(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<aqn> d(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return ((hf)$$0.getArgument($$1, hf.class)).d((eq)$$0.getSource());
    }
 
@@ -61,7 +61,7 @@ public class fd implements ArgumentType<hf> {
       return new fd(true, true);
    }
 
-   public static aql e(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static aqn e(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return ((hf)$$0.getArgument($$1, hf.class)).c((eq)$$0.getSource());
    }
 
@@ -69,8 +69,8 @@ public class fd implements ArgumentType<hf> {
       return new fd(false, true);
    }
 
-   public static Collection<aql> f(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
-      List<aql> $$2 = ((hf)$$0.getArgument($$1, hf.class)).d((eq)$$0.getSource());
+   public static Collection<aqn> f(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+      List<aqn> $$2 = ((hf)$$0.getArgument($$1, hf.class)).d((eq)$$0.getSource());
       if ($$2.isEmpty()) {
          throw e.create();
       } else {

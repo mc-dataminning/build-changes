@@ -1,127 +1,193 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dqy {
-   private static final Codec<wu[]> c = ww.g
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ac.a($$0, 4).map($$0x -> new wu[]{(wu)$$0x.get(0), (wu)$$0x.get(1), (wu)$$0x.get(2), (wu)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dqy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.lenientOptionalFieldOf("filtered_messages").forGetter(dqy::d),
-               cst.q.fieldOf("color").orElse(cst.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dqy::a)
-   );
-   public static final int b = 4;
-   private final wu[] d;
-   private final wu[] e;
-   private final cst f;
-   private final boolean g;
+public class dqy extends dpp implements dxi.b<dxp.b>, dxp {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
+   private static final int d = 20;
+   private static final int e = 5;
+   private static final int h = 6;
+   private static final int i = 40;
+   private static final int j = 90;
+   private static final Int2ObjectMap<avg> k = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, avh.BQ);
+      $$0.put(2, avh.BR);
+      $$0.put(3, avh.BS);
+      $$0.put(4, avh.BP);
+   });
+   private int l;
+   private final dxp.d m = new dqy.a();
+   private dxp.a q = new dxp.a();
+   private final dxp.b r = new dxp.b(this);
+
+   public dqy(ja $$0, dsk $$1) {
+      super(dpr.L, $$0, $$1);
+   }
+
+   @Override
+   public dxp.a gq() {
+      return this.q;
+   }
+
+   @Override
+   public dxp.d gr() {
+      return this.m;
+   }
+
+   @Override
+   protected void a(tx $$0, jl.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("warning_level", 99)) {
+         this.l = $$0.h("warning_level");
+      }
+
+      if ($$0.b("listener", 10)) {
+         dxp.a.a.parse(new Dynamic(ul.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.q = $$0x);
+      }
+   }
+
+   @Override
+   protected void b(tx $$0, jl.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("warning_level", this.l);
+      dxp.a.a.encodeStart(ul.a, this.q).resultOrPartial(b::error).ifPresent($$1x -> $$0.a("listener", $$1x));
+   }
+
    @Nullable
-   private axq[] h;
-   private boolean i;
+   public static aqn a(@Nullable bsg $$0) {
+      if ($$0 instanceof aqn) {
+         return (aqn)$$0;
+      } else {
+         if ($$0 != null) {
+            btb $$6 = $$0.cR();
+            if ($$6 instanceof aqn) {
+               return (aqn)$$6;
+            }
+         }
 
-   public dqy() {
-      this(c(), c(), cst.p, false);
+         if ($$0 instanceof cnc $$3) {
+            bsg var3 = $$3.s();
+            if (var3 instanceof aqn) {
+               return (aqn)var3;
+            }
+         }
+
+         if ($$0 instanceof ciu $$5) {
+            bsg var9 = $$5.s();
+            if (var9 instanceof aqn) {
+               return (aqn)var9;
+            }
+         }
+
+         return null;
+      }
    }
 
-   public dqy(wu[] $$0, wu[] $$1, cst $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-   }
-
-   private static wu[] c() {
-      return new wu[]{wt.a, wt.a, wt.a, wt.a};
-   }
-
-   private static dqy a(wu[] $$0, Optional<wu[]> $$1, cst $$2, boolean $$3) {
-      return new dqy($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
-   }
-
-   public boolean a() {
-      return this.g;
-   }
-
-   public dqy a(boolean $$0) {
-      return $$0 == this.g ? this : new dqy(this.d, this.e, this.f, $$0);
-   }
-
-   public cst b() {
-      return this.f;
-   }
-
-   public dqy a(cst $$0) {
-      return $$0 == this.b() ? this : new dqy(this.d, this.e, $$0, this.g);
-   }
-
-   public wu a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
-   }
-
-   public dqy a(int $$0, wu $$1) {
-      return this.a($$0, $$1, $$1);
-   }
-
-   public dqy a(int $$0, wu $$1, wu $$2) {
-      wu[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      wu[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dqy($$3, $$4, this.f, this.g);
-   }
-
-   public boolean a(cmh $$0) {
-      return Arrays.stream(this.b($$0.Y())).anyMatch($$0x -> !$$0x.getString().isEmpty());
-   }
-
-   public wu[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public axq[] a(boolean $$0, Function<wu, axq> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new axq[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
+   public void a(aqm $$0, @Nullable aqn $$1) {
+      if ($$1 != null) {
+         dsk $$2 = this.n();
+         if (!$$2.c(dmb.b)) {
+            this.l = 0;
+            if (!this.b($$0) || this.b($$0, $$1)) {
+               this.a($$0, (bsg)$$1);
+            }
          }
       }
-
-      return this.h;
    }
 
-   private Optional<wu[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
-      }
-
-      return Optional.empty();
+   private boolean b(aqm $$0, aqn $$1) {
+      OptionalInt $$2 = clq.a($$0, this.az_(), $$1);
+      $$2.ifPresent($$0x -> this.l = $$0x);
+      return $$2.isPresent();
    }
 
-   public boolean b(cmh $$0) {
-      for (wu $$1 : this.b($$0.Y())) {
-         xr $$2 = $$1.a();
-         ws $$3 = $$2.h();
-         if ($$3 != null && $$3.a() == ws.a.c) {
-            return true;
+   private void a(aqm $$0, @Nullable bsg $$1) {
+      ja $$2 = this.az_();
+      dsk $$3 = this.n();
+      $$0.a($$2, $$3.a(dmb.b, Boolean.valueOf(true)), 2);
+      $$0.a($$2, $$3.b(), 90);
+      $$0.c(3007, $$2, 0);
+      $$0.a(dxg.N, $$2, dxg.a.a($$1));
+   }
+
+   private boolean b(aqm $$0) {
+      return this.n().c(dmb.d) && $$0.al() != bqd.a && $$0.ab().b(dcb.M);
+   }
+
+   public void a(aqm $$0) {
+      if (this.b($$0) && this.l > 0) {
+         if (!this.c($$0)) {
+            this.b((dcf)$$0);
          }
+
+         clo.a($$0, ewf.b(this.az_()), null, 40);
+      }
+   }
+
+   private void b(dcf $$0) {
+      avg $$1 = (avg)k.get(this.l);
+      if ($$1 != null) {
+         ja $$2 = this.az_();
+         int $$3 = $$2.u() + ayg.b($$0.z, -10, 10);
+         int $$4 = $$2.v() + ayg.b($$0.z, -10, 10);
+         int $$5 = $$2.w() + ayg.b($$0.z, -10, 10);
+         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, avi.f, 5.0F, 1.0F);
+      }
+   }
+
+   private boolean c(aqm $$0) {
+      return this.l < 4 ? false : ayz.a(bsm.bm, btf.k, $$0, this.az_(), 20, 5, 6, ayz.a.b).isPresent();
+   }
+
+   public dxp.b b() {
+      return this.r;
+   }
+
+   class a implements dxp.d {
+      private static final int b = 8;
+      private final dxk c = new dxc(dqy.this.o);
+
+      public a() {
       }
 
-      return false;
+      @Override
+      public int a() {
+         return 8;
+      }
+
+      @Override
+      public dxk b() {
+         return this.c;
+      }
+
+      @Override
+      public awm<dxg> c() {
+         return awd.c;
+      }
+
+      @Override
+      public boolean a(aqm $$0, ja $$1, jj<dxg> $$2, dxg.a $$3) {
+         return !dqy.this.n().c(dmb.b) && dqy.a($$3.a()) != null;
+      }
+
+      @Override
+      public void a(aqm $$0, ja $$1, jj<dxg> $$2, @Nullable bsg $$3, @Nullable bsg $$4, float $$5) {
+         dqy.this.a($$0, dqy.a($$4 != null ? $$4 : $$3));
+      }
+
+      @Override
+      public void e() {
+         dqy.this.e();
+      }
+
+      @Override
+      public boolean f() {
+         return true;
+      }
    }
 }
