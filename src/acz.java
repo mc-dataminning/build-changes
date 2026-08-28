@@ -1,57 +1,20 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
+public record acz(dcb b) implements zf<abt> {
+   public static final yw<vv, acz> a = zf.a(acz::a, acz::new);
 
-public class acz implements zb<abn> {
-   public static final ys<wf, acz> a = zb.a(acz::a, acz::new);
-   private final int b;
-   private final int c;
-   private final acy d;
-   private final add e;
-
-   public acz(dur $$0, eny $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      dbn $$4 = $$0.f();
-      this.b = $$4.e;
-      this.c = $$4.f;
-      this.d = new acy($$0);
-      this.e = new add($$4, $$1, $$2, $$3);
+   private acz(vv $$0) {
+      this($$0.f());
    }
 
-   private acz(wf $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = new acy($$0, this.b, this.c);
-      this.e = new add($$0, this.b, this.c);
-   }
-
-   private void a(wf $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
+   private void a(vv $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zd<acz> a() {
-      return afz.K;
+   public zh<acz> a() {
+      return agf.F;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public acy f() {
-      return this.d;
-   }
-
-   public add g() {
-      return this.e;
    }
 }

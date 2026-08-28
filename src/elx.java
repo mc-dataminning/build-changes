@@ -1,49 +1,60 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.Optional;
 
-public class elx extends eml {
-   public static final MapCodec<elx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
-               jf.a.e.fieldOf("axis").orElse(jf.a.b).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, elx::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
-   private final jf.a g;
+public class elx extends ejm {
+   public static final MapCodec<elx> d = a(elx::new);
 
-   public elx(float $$0, float $$1, int $$2, int $$3, jf.a $$4) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+   public elx(ejm.c $$0) {
+      super($$0);
+   }
+
+   @Override
+   public Optional<ejm.b> a(ejm.a $$0) {
+      int $$1 = $$0.h().a(9);
+      int $$2 = $$0.h().b(9);
+
+      for (jm<ddu> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
+         if (!$$4.a(awc.X)) {
+            return Optional.empty();
+         }
+      }
+
+      return a($$0, dyv.a.c, $$1x -> a($$1x, $$0));
+   }
+
+   private static ejq a(dcb $$0, dzu $$1) {
+      int $$2 = $$0.d() - 29;
+      int $$3 = $$0.e() - 29;
+      ji $$4 = ji.c.a.a($$1);
+      return new elw.h($$1, $$2, $$3, $$4);
+   }
+
+   private static void a(eke $$0, ejm.a $$1) {
+      $$0.a(a($$1.h(), $$1.f()));
+   }
+
+   public static ekb a(dcb $$0, long $$1, ekb $$2) {
+      if ($$2.a()) {
+         return $$2;
       } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
+         dzu $$3 = new dzu(new dyw(dzk.a()));
+         $$3.c($$1, $$0.e, $$0.f);
+         ejq $$4 = $$2.c().get(0);
+         eje $$5 = $$4.f();
+         int $$6 = $$5.h();
+         int $$7 = $$5.j();
+         ji $$8 = ji.c.a.a($$3);
+         ji $$9 = Objects.requireNonNullElse($$4.i(), $$8);
+         ejq $$10 = new elw.h($$3, $$6, $$7, $$9);
+         eke $$11 = new eke();
+         $$11.a($$10);
+         return $$11.a();
       }
    }
 
    @Override
-   public boolean a(ja $$0, ja $$1, ja $$2, ayo $$3) {
-      jf $$4 = jf.a(jf.b.a, this.g);
-      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
-      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
-      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
-      int $$8 = (int)($$5 + $$6 + $$7);
-      float $$9 = $$3.i();
-      return $$9 <= ayg.b(this.b, this.d, ayg.g((float)$$8, (float)this.e, (float)this.f));
-   }
-
-   @Override
-   protected emm<?> a() {
-      return emm.c;
+   public ejv<?> e() {
+      return ejv.j;
    }
 }

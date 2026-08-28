@@ -1,47 +1,58 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public enum fzm {
-   a("generic_violation"),
-   b("false_reporting"),
-   c("hate_speech"),
-   d("hate_terrorism_notorious_figure"),
-   e("harassment_or_bullying"),
-   f("defamation_impersonation_false_information"),
-   g("drugs"),
-   h("fraud"),
-   i("spam_or_advertising"),
-   j("nudity_or_pornography"),
-   k("sexually_inappropriate"),
-   l("extreme_violence_or_gore"),
-   m("imminent_harm_to_person_or_property");
-
-   private final wu n;
-
-   private fzm(final String $$0) {
-      this.n = wu.c("gui.banned.reason." + $$0);
-   }
-
-   public wu a() {
-      return this.n;
-   }
-
+public class fzm {
    @Nullable
-   public static fzm a(int $$0) {
-      return switch ($$0) {
-         case 2 -> b;
-         default -> null;
-         case 5 -> c;
-         case 16, 25 -> d;
-         case 17, 19, 23, 31 -> a;
-         case 21 -> e;
-         case 27 -> f;
-         case 28 -> g;
-         case 29 -> h;
-         case 30 -> i;
-         case 32 -> j;
-         case 33 -> k;
-         case 34 -> l;
-         case 53 -> m;
-      };
+   private fzm.a a;
+   @Nullable
+   private fzr b;
+
+   public void a(akp<? extends jz<?>> $$0, List<kd.a> $$1) {
+      if (this.a == null) {
+         this.a = new fzm.a();
+      }
+
+      this.a.a($$0, $$1);
+   }
+
+   public void a(Map<akp<? extends jz<?>>, aww.a> $$0) {
+      if (this.b == null) {
+         this.b = new fzr();
+      }
+
+      $$0.forEach(this.b::a);
+   }
+
+   public ka.b a(aug $$0, ka $$1, boolean $$2) {
+      jt<fzb> $$3 = fzb.a();
+      ka $$6;
+      if (this.a != null) {
+         ka.b $$4 = $$3.b(fzb.b);
+         ka.b $$5 = this.a.a($$0, $$4).d();
+         $$6 = $$3.a(fzb.b, $$5).a();
+      } else {
+         $$6 = $$1;
+      }
+
+      if (this.b != null) {
+         this.b.a($$6, $$2);
+      }
+
+      return $$6.d();
+   }
+
+   static class a {
+      private final Map<akp<? extends jz<?>>, List<kd.a>> a = new HashMap<>();
+
+      public void a(akp<? extends jz<?>> $$0, List<kd.a> $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
+      }
+
+      public ka a(aug $$0, ka $$1) {
+         return akl.a(this.a, $$0, $$1, akl.c);
+      }
    }
 }

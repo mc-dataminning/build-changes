@@ -1,13 +1,24 @@
-public class gmy extends goa<ckn, ftz<ckn>> {
-   private static final gen a = gen.q(new akk("textures/entity/breeze/breeze_eyes.png"));
+public class gmy extends glj<cmi, fxp<cmi>> {
+   private static final akq a = akq.b("textures/entity/villager/villager.png");
 
-   public gmy(glk<ckn, ftz<ckn>> $$0) {
-      super($$0);
+   public gmy(gkd.a $$0) {
+      super($$0, new fxp<>($$0.a(fyd.bQ)), 0.5F);
+      this.a(new gnu<>(this, $$0.f(), $$0.d()));
+      this.a(new gpa<>(this, $$0.e(), "villager"));
+      this.a(new gnt<>(this, $$0.d()));
    }
 
-   public void a(fao $$0, gef $$1, int $$2, ckn $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      fas $$10 = $$1.getBuffer(a);
-      ftz<ckn> $$11 = this.c();
-      giu.a($$11, $$11.b(), $$11.c()).a($$0, $$10, $$2, gph.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public akq a(cmi $$0) {
+      return a;
+   }
+
+   protected void a(cmi $$0, fbc $$1, float $$2) {
+      float $$3 = 0.9375F * $$0.eb();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected float b(cmi $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.5F : $$1;
    }
 }

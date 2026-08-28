@@ -1,29 +1,25 @@
-public class zv implements zb<zs> {
-   public static final ys<vr, zv> a = zb.a(zv::a, zv::new);
-   private final long b;
+public record zv(String b, int c) implements zf<zl> {
+   public static final yw<vv, zv> a = zf.a(zv::a, zv::new);
 
-   public zv(long $$0) {
-      this.b = $$0;
+   private zv(vv $$0) {
+      this($$0.p(), $$0.l());
    }
 
-   private zv(vr $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(vr $$0) {
-      $$0.b(this.b);
+   private void a(vv $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zd<zv> a() {
-      return zr.l;
+   public zh<zv> a() {
+      return zx.j;
    }
 
-   public void a(zs $$0) {
+   public void a(zl $$0) {
       $$0.a(this);
    }
 
-   public long b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

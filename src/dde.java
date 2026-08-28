@@ -1,42 +1,50 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class dde {
-   public static final Codec<dde> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avg.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dde::new)
-   );
-   public static final dde b = new dde(avh.h, 6000, 8, 2.0);
-   private final jj<avg> c;
-   private final int d;
-   private final int e;
-   private final double f;
+   private final Long2ObjectMap<List<aqu>> a = new Long2ObjectOpenHashMap();
+   private final Map<aqu, dde.a> b = Maps.newHashMap();
+   private final aqa c;
 
-   public dde(jj<avg> $$0, int $$1, int $$2, double $$3) {
+   public dde(aqa $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
    }
 
-   public jj<avg> a() {
-      return this.c;
+   private List<aqu> a(dcb $$0) {
+      return (List<aqu>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.c($$0));
    }
 
-   public int b() {
-      return this.d;
+   public void a(dcb $$0, bto $$1) {
+      for (aqu $$2 : this.a($$0)) {
+         this.b.computeIfAbsent($$2, $$0x -> new dde.a()).a($$1);
+      }
    }
 
-   public int c() {
-      return this.e;
+   public boolean a(bto $$0, dcb $$1) {
+      for (aqu $$2 : this.a($$1)) {
+         dde.a $$3 = this.b.get($$2);
+         if ($$3 == null || $$3.b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public double d() {
-      return this.f;
+   static class a {
+      private final Object2IntMap<bto> a = new Object2IntOpenHashMap(bto.values().length);
+
+      public void a(bto $$0) {
+         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
+      }
+
+      public boolean b(bto $$0) {
+         return this.a.getOrDefault($$0, 0) < $$0.b();
+      }
    }
 }

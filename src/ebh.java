@@ -1,111 +1,45 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
 
-public class ebh {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
-
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+public class ebh extends eca<edx> {
+   public ebh(Codec<edx> $$0) {
+      super($$0);
    }
 
-   protected static boolean a(ddc $$0, ja $$1, int $$2) {
-      if (b($$0, $$1)) {
+   @Override
+   public boolean a(ecc<edx> $$0) {
+      jd $$1 = $$0.e();
+      ddq $$2 = $$0.b();
+      ayv $$3 = $$0.d();
+
+      edx $$4;
+      for ($$4 = $$0.f(); $$1.v() > $$2.I_() + 3; $$1 = $$1.d()) {
+         if (!$$2.u($$1.d())) {
+            dta $$5 = $$2.a_($$1.d());
+            if (b($$5) || a($$5)) {
+               break;
+            }
+         }
+      }
+
+      if ($$1.v() <= $$2.I_() + 3) {
          return false;
       } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            int $$7 = $$3.a(2);
+            int $$8 = $$3.a(2);
+            int $$9 = $$3.a(2);
+            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
 
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(ayg.b($$5) * (float)$$2);
-            int $$7 = (int)(ayg.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
+            for (jd $$11 : jd.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
+               if ($$11.j($$1) <= (double)($$10 * $$10)) {
+                  $$2.a($$11, $$4.b, 3);
+               }
             }
+
+            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
          }
 
          return true;
       }
-   }
-
-   protected static boolean a(dch $$0, ja $$1) {
-      return $$0.a($$1, ebh::c);
-   }
-
-   protected static boolean b(dch $$0, ja $$1) {
-      return $$0.a($$1, ebh::e);
-   }
-
-   protected static void a(jf $$0, int $$1, boolean $$2, Consumer<dsl> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, dti.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, dti.d));
-         }
-      }
-
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, dti.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? dti.a : dti.b));
-      }
-   }
-
-   protected static void a(dch $$0, ja $$1, jf $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         ja.a $$5 = $$1.j();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(dfk.st)) {
-               $$3x = $$3x.a(dla.d, Boolean.valueOf($$0.z($$5)));
-            }
-
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
-      }
-   }
-
-   protected static boolean c(dch $$0, ja $$1) {
-      dsl $$2 = $$0.a_($$1);
-      if ($$2.a(avw.bs)) {
-         $$0.a($$1, dfk.su.o(), 2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static dsl a(jf $$0, dti $$1) {
-      return dfk.st.o().a(dla.b, $$0).a(dla.c, $$1);
-   }
-
-   public static boolean a(dsl $$0) {
-      return b($$0) || $$0.a(dfk.H);
-   }
-
-   public static boolean b(dsl $$0) {
-      return $$0.a(dfk.su) || $$0.a(avw.bs);
-   }
-
-   public static boolean c(dsl $$0) {
-      return $$0.i() || $$0.a(dfk.G);
-   }
-
-   public static boolean d(dsl $$0) {
-      return !$$0.i() && !$$0.a(dfk.G);
-   }
-
-   public static boolean e(dsl $$0) {
-      return $$0.i() || $$0.a(dfk.G) || $$0.a(dfk.H);
    }
 }

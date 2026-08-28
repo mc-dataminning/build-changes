@@ -1,98 +1,27 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Predicate;
 
-public record cp(Optional<jn<cty>> b, de.d c, kl d, Map<cq.a<?>, cq> e) implements Predicate<cud> {
+public record cp(Optional<bd<cxj, co.a>> c, dh.d d) implements dw<cxk> {
    public static final Codec<cp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jy.a(lr.K).optionalFieldOf("items").forGetter(cp::a),
-               de.d.d.optionalFieldOf("count", de.d.c).forGetter(cp::b),
-               kl.a.optionalFieldOf("components", kl.c).forGetter(cp::c),
-               cq.b.optionalFieldOf("predicates", Map.of()).forGetter(cp::d)
-            )
+      $$0 -> $$0.group(bd.a(co.a.a).optionalFieldOf("explosions").forGetter(cp::b), dh.d.d.optionalFieldOf("flight_duration", dh.d.c).forGetter(cp::c))
             .apply($$0, cp::new)
    );
 
-   public boolean a(cud $$0) {
-      if (this.b.isPresent() && !$$0.a(this.b.get())) {
-         return false;
-      } else if (!this.c.d($$0.H())) {
-         return false;
-      } else if (!this.d.a($$0)) {
-         return false;
-      } else {
-         for (cq $$1 : this.e.values()) {
-            if (!$$1.a($$0)) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   @Override
+   public kp<cxk> a() {
+      return kq.V;
    }
 
-   public Optional<jn<cty>> a() {
-      return this.b;
+   public boolean a(cuo $$0, cxk $$1) {
+      return this.c.isPresent() && !this.c.get().a($$1.b()) ? false : this.d.d($$1.a());
    }
 
-   public de.d b() {
+   public Optional<bd<cxj, co.a>> b() {
       return this.c;
    }
 
-   public kl c() {
+   public dh.d c() {
       return this.d;
-   }
-
-   public Map<cq.a<?>, cq> d() {
-      return this.e;
-   }
-
-   public static class a {
-      private Optional<jn<cty>> a = Optional.empty();
-      private de.d b = de.d.c;
-      private kl c;
-      private final Builder<cq.a<?>, cq> d;
-
-      private a() {
-         this.c = kl.c;
-         this.d = ImmutableMap.builder();
-      }
-
-      public static cp.a a() {
-         return new cp.a();
-      }
-
-      public cp.a a(dcf... $$0) {
-         this.a = Optional.of(jn.a($$0x -> $$0x.r().o(), $$0));
-         return this;
-      }
-
-      public cp.a a(awm<cty> $$0) {
-         this.a = Optional.of(lq.g.a($$0));
-         return this;
-      }
-
-      public cp.a a(de.d $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public <T extends cq> cp.a a(cq.a<T> $$0, T $$1) {
-         this.d.put($$0, $$1);
-         return this;
-      }
-
-      public cp.a a(kl $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public cp b() {
-         return new cp(this.a, this.b, this.c, this.d.build());
-      }
    }
 }

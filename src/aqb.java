@@ -1,85 +1,113 @@
-public class aqb extends aqo {
-   public static final int a = 5;
-   public static final int b = 120500;
-   private boolean e;
-   private boolean f;
-   private int g;
-   private int h;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public aqb(aqn $$0) {
-      super($$0);
+public interface aqb<T> {
+   static <T> aqb<T> a(T $$0) {
+      return new aqb.b<>($$0);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.h++;
-      long $$0 = this.c.Z();
-      long $$1 = $$0 / 24000L + 1L;
-      if (!this.e && this.h > 20) {
-         this.e = true;
-         this.d.c.b(new acu(acu.g, 0.0F));
+   static <T> aqb<T> a(String $$0) {
+      return a(() -> $$0);
+   }
+
+   static <T> aqb<T> a(Supplier<String> $$0) {
+      return new aqb.a<>($$0);
+   }
+
+   boolean a();
+
+   @Nullable
+   T b(@Nullable T var1);
+
+   @Nullable
+   static <R> R a(aqb<? extends R> $$0, @Nullable R $$1) {
+      R $$2 = (R)$$0.b(null);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   @Nullable
+   String b();
+
+   aqb<T> a(Consumer<T> var1);
+
+   <R> aqb<R> a(Function<T, R> var1);
+
+   <E extends Throwable> T b(Supplier<E> var1) throws E;
+
+   public static record a<T>(Supplier<String> a) implements aqb<T> {
+      @Override
+      public boolean a() {
+         return false;
       }
 
-      this.f = $$0 > 120500L;
-      if (this.f) {
-         this.g++;
+      @Nullable
+      @Override
+      public T b(@Nullable T $$0) {
+         return $$0;
       }
 
-      if ($$0 % 24000L == 500L) {
-         if ($$1 <= 6L) {
-            if ($$1 == 6L) {
-               this.d.c.b(new acu(acu.g, 104.0F));
-            } else {
-               this.d.a(wu.c("demo.day." + $$1));
-            }
-         }
-      } else if ($$1 == 1L) {
-         if ($$0 == 100L) {
-            this.d.c.b(new acu(acu.g, 101.0F));
-         } else if ($$0 == 175L) {
-            this.d.c.b(new acu(acu.g, 102.0F));
-         } else if ($$0 == 250L) {
-            this.d.c.b(new acu(acu.g, 103.0F));
-         }
-      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
-         this.d.a(wu.c("demo.day.warning"));
+      @Override
+      public String b() {
+         return this.a.get();
+      }
+
+      @Override
+      public aqb<T> a(Consumer<T> $$0) {
+         return this;
+      }
+
+      @Override
+      public <R> aqb<R> a(Function<T, R> $$0) {
+         return new aqb.a(this.a);
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         throw $$0.get();
+      }
+
+      public Supplier<String> c() {
+         return this.a;
       }
    }
 
-   private void f() {
-      if (this.g > 100) {
-         this.d.a(wu.c("demo.reminder"));
-         this.g = 0;
+   public static record b<T>(T a) implements aqb<T> {
+      @Override
+      public boolean a() {
+         return true;
       }
-   }
 
-   @Override
-   public void a(ja $$0, ahf.a $$1, jf $$2, int $$3, int $$4) {
-      if (this.f) {
-         this.f();
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
+      @Override
+      public T b(@Nullable T $$0) {
+         return this.a;
       }
-   }
 
-   @Override
-   public bqh a(aqn $$0, dcg $$1, cud $$2, bqg $$3) {
-      if (this.f) {
-         this.f();
-         return bqh.e;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
+      @Nullable
+      @Override
+      public String b() {
+         return null;
       }
-   }
 
-   @Override
-   public bqh a(aqn $$0, dcg $$1, cud $$2, bqg $$3, ewd $$4) {
-      if (this.f) {
-         this.f();
-         return bqh.e;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
+      @Override
+      public aqb<T> a(Consumer<T> $$0) {
+         $$0.accept(this.a);
+         return this;
+      }
+
+      @Override
+      public <R> aqb<R> a(Function<T, R> $$0) {
+         return new aqb.b<>($$0.apply(this.a));
+      }
+
+      @Override
+      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
+         return this.a;
+      }
+
+      public T c() {
+         return this.a;
       }
    }
 }

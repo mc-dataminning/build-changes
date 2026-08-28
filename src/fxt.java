@@ -1,61 +1,44 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class fxt<T extends bsq> extends fxp<T> {
+   private boolean b;
 
-public final class fxt {
-   @Nullable
-   private final String a;
-   private final Vector3f b;
-   private final Vector3f c;
-   private final fxu d;
-   private final boolean e;
-   private final fya f;
-   private final fya g;
-   private final Set<jf> h;
-
-   protected fxt(
-      @Nullable String $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      fxu $$9,
-      boolean $$10,
-      float $$11,
-      float $$12,
-      Set<jf> $$13
-   ) {
-      this.a = $$0;
-      this.f = new fya($$1, $$2);
-      this.b = new Vector3f($$3, $$4, $$5);
-      this.c = new Vector3f($$6, $$7, $$8);
-      this.d = $$9;
-      this.e = $$10;
-      this.g = new fya($$11, $$12);
-      this.h = $$13;
+   public fxt(fye $$0) {
+      super($$0);
    }
 
-   public fxq.a a(int $$0, int $$1) {
-      return new fxq.a(
-         (int)this.f.a(),
-         (int)this.f.b(),
-         this.b.x(),
-         this.b.y(),
-         this.b.z(),
-         this.c.x(),
-         this.c.y(),
-         this.c.z(),
-         this.d.b,
-         this.d.c,
-         this.d.d,
-         this.e,
-         (float)$$0 * this.g.a(),
-         (float)$$1 * this.g.b(),
-         this.h
+   public static fyk c() {
+      fym $$0 = fxp.b();
+      fyn $$1 = $$0.a();
+      fyn $$2 = $$1.a("head", fyj.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), fyg.a);
+      fyn $$3 = $$2.a("hat", fyj.c().a(0, 64).a(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), fyg.a(-5.0F, -10.03125F, -5.0F));
+      fyn $$4 = $$3.a("hat2", fyj.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), fyg.a(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F));
+      fyn $$5 = $$4.a("hat3", fyj.c().a(0, 87).a(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), fyg.a(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
+      $$5.a(
+         "hat4", fyj.c().a(0, 95).a(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new fyi(0.25F)), fyg.a(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
       );
+      fyn $$6 = $$2.a("nose");
+      $$6.a("mole", fyj.c().a(0, 0).a(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new fyi(-0.25F)), fyg.a(0.0F, -2.0F, 0.0F));
+      return fyk.a($$0, 64, 128);
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.a(0.0F, -2.0F, 0.0F);
+      float $$6 = 0.01F * (float)($$0.an() % 10);
+      this.a.e = ayn.a((float)$$0.ai * $$6) * 4.5F * (float) (Math.PI / 180.0);
+      this.a.f = 0.0F;
+      this.a.g = ayn.b((float)$$0.ai * $$6) * 2.5F * (float) (Math.PI / 180.0);
+      if (this.b) {
+         this.a.a(0.0F, 1.0F, -1.5F);
+         this.a.e = -0.9F;
+      }
+   }
+
+   public fye e() {
+      return this.a;
+   }
+
+   public void b(boolean $$0) {
+      this.b = $$0;
    }
 }

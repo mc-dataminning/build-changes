@@ -1,58 +1,52 @@
 import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.Optional;
 
-public class ebp extends ebl<ebq> {
-   public ebp(Codec<ebq> $$0) {
+public abstract class ebp extends eca<eel> {
+   public ebp(Codec<eel> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebn<ebq> $$0) {
-      ayo $$1 = $$0.d();
-      ddc $$2 = $$0.b();
-      ja $$3 = $$0.e();
-      dlv $$4 = dlv.a($$1);
-      ebq $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      emz $$7 = $$2.E().o().bb();
-      emy $$8 = $$7.a($$5.b.get($$6));
-      emy $$9 = $$7.a($$5.c.get($$6));
-      dbn $$10 = new dbn($$3);
-      eip $$11 = new eip($$10.d() - 16, $$2.I_(), $$10.e() - 16, $$10.f() + 16, $$2.am(), $$10.g() + 16);
-      emu $$12 = new emu().a($$4).a($$11).a($$1);
-      ke $$13 = $$8.a($$4);
-      ja $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
-
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(dyg.a.c, $$14.u() + $$16, $$14.w() + $$17));
-         }
-      }
-
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.I_() + 10);
-      ja $$19 = $$8.a($$14.h($$18), dkf.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
-         return false;
-      } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
-         return true;
-      }
+   public boolean a(ecc<eel> $$0) {
+      ayv $$1 = $$0.d();
+      ddq $$2 = $$0.b();
+      jd $$3 = $$0.e();
+      Optional<dfw> $$4 = lt.e.a(awd.aq, $$1).map(jm::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
    }
 
-   private static int a(ddc $$0, eip $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         dsl $$3 = $$0.a_($$2x);
-         if ($$3.i() || $$3.a(dfk.H) || $$3.a(dfk.G)) {
-            $$2.add(1);
+   protected abstract boolean a(dcv var1, ayv var2, jd var3, dta var4);
+
+   protected boolean b(dcv $$0, ayv $$1, jd $$2, dta $$3) {
+      jd $$4 = $$2.c();
+      dta $$5 = $$0.a_($$2);
+      if (($$5.a(dfy.G) || $$5.a(awd.at)) && $$0.a_($$4).a(dfy.G)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            lt.e.a(awd.at, $$1).map(jm::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, dfy.mV.o().a(dmu.c, Integer.valueOf($$1.a(4) + 1)), 2);
          }
-      });
-      return $$2.getValue();
+
+         for (ji $$6 : ji.c.a) {
+            if ($$1.i() < 0.2F) {
+               jd $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(dfy.G)) {
+                  lt.e.a(awd.ar, $$1).map(jm::a).ifPresent($$3x -> {
+                     dta $$4x = $$3x.o();
+                     if ($$4x.b(dfh.c)) {
+                        $$4x = $$4x.a(dfh.c, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

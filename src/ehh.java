@@ -1,50 +1,29 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class ehh extends ehe {
-   public static final MapCodec<ehh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dza.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dza.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, ehh::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dza d;
-   private final dza e;
-   private final LongSet f = new LongOpenHashSet();
+public class ehh extends ehi {
+   public static final MapCodec<ehh> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehh::new));
 
-   private ehh(dza $$0, dza $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static ehh a(dza $$0, dza $$1) {
-      return new ehh($$0, $$1);
+   public ehh(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public int a(ayo $$0, dzd $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
-            b.warn("Empty height range: {}", this);
-         }
+   protected ehj<?> a() {
+      return ehj.a;
+   }
 
-         return $$2;
-      } else {
-         return ayg.b($$0, $$2, $$3);
+   @Override
+   public List<efq.a> a(dda $$0, BiConsumer<jd, dta> $$1, ayv $$2, int $$3, jd $$4, efa $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
       }
-   }
 
-   @Override
-   public ehf<?> a() {
-      return ehf.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.d + "-" + this.e + "]";
+      return ImmutableList.of(new efq.a($$4.b($$3), 0, false));
    }
 }

@@ -1,151 +1,345 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dlx extends dfi implements dmj {
-   public static final MapCodec<dlx> a = b(dlx::new);
-   private static final int f = 1;
-   private static final exa g;
-   private static final exa h;
-   private static final exa i = dfi.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   private static final exa j = ewx.b().a(0.0, -1.0, 0.0);
-   public static final int b = 7;
-   public static final dtl c = dtb.aW;
-   public static final dtc d = dtb.C;
-   public static final dtc e = dtb.b;
+public class dlx {
+   private final dcu a;
+   private final jd b;
+   private final dfl c;
+   private dta d;
+   private final boolean e;
+   private final List<jd> f = Lists.newArrayList();
 
-   @Override
-   public MapCodec<dlx> a() {
-      return a;
+   public dlx(dcu $$0, jd $$1, dta $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = (dfl)$$2.b();
+      due $$3 = $$2.c(this.c.c());
+      this.e = this.c.b();
+      this.a($$3);
    }
 
-   protected dlx(dsk.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(7)).a(d, Boolean.valueOf(false)).a(e, Boolean.valueOf(false)));
+   public List<jd> a() {
+      return this.f;
    }
 
-   @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(c, d, e);
+   private void a(due $$0) {
+      this.f.clear();
+      switch ($$0) {
+         case a:
+            this.f.add(this.b.e());
+            this.f.add(this.b.f());
+            break;
+         case b:
+            this.f.add(this.b.g());
+            this.f.add(this.b.h());
+            break;
+         case c:
+            this.f.add(this.b.g());
+            this.f.add(this.b.h().c());
+            break;
+         case d:
+            this.f.add(this.b.g().c());
+            this.f.add(this.b.h());
+            break;
+         case e:
+            this.f.add(this.b.e().c());
+            this.f.add(this.b.f());
+            break;
+         case f:
+            this.f.add(this.b.e());
+            this.f.add(this.b.f().c());
+            break;
+         case g:
+            this.f.add(this.b.h());
+            this.f.add(this.b.f());
+            break;
+         case h:
+            this.f.add(this.b.g());
+            this.f.add(this.b.f());
+            break;
+         case i:
+            this.f.add(this.b.g());
+            this.f.add(this.b.e());
+            break;
+         case j:
+            this.f.add(this.b.h());
+            this.f.add(this.b.e());
+      }
    }
 
-   @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      if (!$$3.a($$0.b().r())) {
-         return $$0.c(e) ? h : g;
+   private void d() {
+      for (int $$0 = 0; $$0 < this.f.size(); $$0++) {
+         dlx $$1 = this.b(this.f.get($$0));
+         if ($$1 != null && $$1.a(this)) {
+            this.f.set($$0, $$1.b);
+         } else {
+            this.f.remove($$0--);
+         }
+      }
+   }
+
+   private boolean a(jd $$0) {
+      return dfl.a(this.a, $$0) || dfl.a(this.a, $$0.c()) || dfl.a(this.a, $$0.d());
+   }
+
+   @Nullable
+   private dlx b(jd $$0) {
+      dta $$2 = this.a.a_($$0);
+      if (dfl.g($$2)) {
+         return new dlx(this.a, $$0, $$2);
       } else {
-         return ewx.b();
+         jd $$1 = $$0.c();
+         $$2 = this.a.a_($$1);
+         if (dfl.g($$2)) {
+            return new dlx(this.a, $$1, $$2);
+         } else {
+            $$1 = $$0.d();
+            $$2 = this.a.a_($$1);
+            return dfl.g($$2) ? new dlx(this.a, $$1, $$2) : null;
+         }
       }
    }
 
-   @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2) {
-      return ewx.b();
+   private boolean a(dlx $$0) {
+      return this.c($$0.b);
    }
 
-   @Override
-   protected boolean a(dsl $$0, cxn $$1) {
-      return $$1.n().a(this.r());
-   }
-
-   @Override
-   public dsl a(cxn $$0) {
-      ja $$1 = $$0.a();
-      dcg $$2 = $$0.q();
-      int $$3 = a($$2, $$1);
-      return this.o().a(d, Boolean.valueOf($$2.b_($$1).a() == eok.c)).a(c, Integer.valueOf($$3)).a(e, Boolean.valueOf(this.a($$2, $$1, $$3)));
-   }
-
-   @Override
-   protected void b(dsl $$0, dcg $$1, ja $$2, dsl $$3, boolean $$4) {
-      if (!$$1.B) {
-         $$1.a($$2, this, 1);
-      }
-   }
-
-   @Override
-   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, eok.c, eok.c.a($$3));
+   private boolean c(jd $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         jd $$2 = this.f.get($$1);
+         if ($$2.u() == $$0.u() && $$2.w() == $$0.w()) {
+            return true;
+         }
       }
 
-      if (!$$3.x_()) {
-         $$3.a($$4, this, 1);
+      return false;
+   }
+
+   protected int b() {
+      int $$0 = 0;
+
+      for (ji $$1 : ji.c.a) {
+         if (this.a(this.b.a($$1))) {
+            $$0++;
+         }
       }
 
       return $$0;
    }
 
-   @Override
-   protected void a(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      int $$4 = a($$1, $$2);
-      dsl $$5 = $$0.a(c, Integer.valueOf($$4)).a(e, Boolean.valueOf(this.a($$1, $$2, $$4)));
-      if ($$5.c(c) == 7) {
-         if ($$0.c(c) == 7) {
-            ciu.a($$1, $$2, $$5);
-         } else {
-            $$1.b($$2, true);
+   private boolean b(dlx $$0) {
+      return this.a($$0) || this.f.size() != 2;
+   }
+
+   private void c(dlx $$0) {
+      this.f.add($$0.b);
+      jd $$1 = this.b.e();
+      jd $$2 = this.b.f();
+      jd $$3 = this.b.g();
+      jd $$4 = this.b.h();
+      boolean $$5 = this.c($$1);
+      boolean $$6 = this.c($$2);
+      boolean $$7 = this.c($$3);
+      boolean $$8 = this.c($$4);
+      due $$9 = null;
+      if ($$5 || $$6) {
+         $$9 = due.a;
+      }
+
+      if ($$7 || $$8) {
+         $$9 = due.b;
+      }
+
+      if (!this.e) {
+         if ($$6 && $$8 && !$$5 && !$$7) {
+            $$9 = due.g;
          }
-      } else if ($$0 != $$5) {
-         $$1.a($$2, $$5, 3);
+
+         if ($$6 && $$7 && !$$5 && !$$8) {
+            $$9 = due.h;
+         }
+
+         if ($$5 && $$7 && !$$6 && !$$8) {
+            $$9 = due.i;
+         }
+
+         if ($$5 && $$8 && !$$6 && !$$7) {
+            $$9 = due.j;
+         }
       }
+
+      if ($$9 == due.a) {
+         if (dfl.a(this.a, $$1.c())) {
+            $$9 = due.e;
+         }
+
+         if (dfl.a(this.a, $$2.c())) {
+            $$9 = due.f;
+         }
+      }
+
+      if ($$9 == due.b) {
+         if (dfl.a(this.a, $$4.c())) {
+            $$9 = due.c;
+         }
+
+         if (dfl.a(this.a, $$3.c())) {
+            $$9 = due.d;
+         }
+      }
+
+      if ($$9 == null) {
+         $$9 = due.a;
+      }
+
+      this.d = this.d.a(this.c.c(), $$9);
+      this.a.a(this.b, this.d, 3);
    }
 
-   @Override
-   protected boolean a(dsl $$0, dcj $$1, ja $$2) {
-      return a($$1, $$2) < 7;
-   }
-
-   @Override
-   protected exa b(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      if ($$3.a(ewx.b(), $$2, true) && !$$3.b()) {
-         return g;
+   private boolean d(jd $$0) {
+      dlx $$1 = this.b($$0);
+      if ($$1 == null) {
+         return false;
       } else {
-         return $$0.c(c) != 0 && $$0.c(e) && $$3.a(j, $$2, true) ? i : ewx.a();
+         $$1.d();
+         return $$1.b(this);
       }
    }
 
-   @Override
-   protected eoj b_(dsl $$0) {
-      return $$0.c(d) ? eok.c.a(false) : super.b_($$0);
-   }
-
-   private boolean a(dbm $$0, ja $$1, int $$2) {
-      return $$2 > 0 && !$$0.a_($$1.d()).a(this);
-   }
-
-   public static int a(dbm $$0, ja $$1) {
-      ja.a $$2 = $$1.j().c(jf.a);
-      dsl $$3 = $$0.a_($$2);
-      int $$4 = 7;
-      if ($$3.a(dfk.nS)) {
-         $$4 = $$3.c(c);
-      } else if ($$3.d($$0, $$2, jf.b)) {
-         return 0;
+   public dlx a(boolean $$0, boolean $$1, due $$2) {
+      jd $$3 = this.b.e();
+      jd $$4 = this.b.f();
+      jd $$5 = this.b.g();
+      jd $$6 = this.b.h();
+      boolean $$7 = this.d($$3);
+      boolean $$8 = this.d($$4);
+      boolean $$9 = this.d($$5);
+      boolean $$10 = this.d($$6);
+      due $$11 = null;
+      boolean $$12 = $$7 || $$8;
+      boolean $$13 = $$9 || $$10;
+      if ($$12 && !$$13) {
+         $$11 = due.a;
       }
 
-      for (jf $$5 : jf.c.a) {
-         dsl $$6 = $$0.a_($$2.a($$1, $$5));
-         if ($$6.a(dfk.nS)) {
-            $$4 = Math.min($$4, $$6.c(c) + 1);
-            if ($$4 == 1) {
-               break;
+      if ($$13 && !$$12) {
+         $$11 = due.b;
+      }
+
+      boolean $$14 = $$8 && $$10;
+      boolean $$15 = $$8 && $$9;
+      boolean $$16 = $$7 && $$10;
+      boolean $$17 = $$7 && $$9;
+      if (!this.e) {
+         if ($$14 && !$$7 && !$$9) {
+            $$11 = due.g;
+         }
+
+         if ($$15 && !$$7 && !$$10) {
+            $$11 = due.h;
+         }
+
+         if ($$17 && !$$8 && !$$10) {
+            $$11 = due.i;
+         }
+
+         if ($$16 && !$$8 && !$$9) {
+            $$11 = due.j;
+         }
+      }
+
+      if ($$11 == null) {
+         if ($$12 && $$13) {
+            $$11 = $$2;
+         } else if ($$12) {
+            $$11 = due.a;
+         } else if ($$13) {
+            $$11 = due.b;
+         }
+
+         if (!this.e) {
+            if ($$0) {
+               if ($$14) {
+                  $$11 = due.g;
+               }
+
+               if ($$15) {
+                  $$11 = due.h;
+               }
+
+               if ($$16) {
+                  $$11 = due.j;
+               }
+
+               if ($$17) {
+                  $$11 = due.i;
+               }
+            } else {
+               if ($$17) {
+                  $$11 = due.i;
+               }
+
+               if ($$16) {
+                  $$11 = due.j;
+               }
+
+               if ($$15) {
+                  $$11 = due.h;
+               }
+
+               if ($$14) {
+                  $$11 = due.g;
+               }
             }
          }
       }
 
-      return $$4;
+      if ($$11 == due.a) {
+         if (dfl.a(this.a, $$3.c())) {
+            $$11 = due.e;
+         }
+
+         if (dfl.a(this.a, $$4.c())) {
+            $$11 = due.f;
+         }
+      }
+
+      if ($$11 == due.b) {
+         if (dfl.a(this.a, $$6.c())) {
+            $$11 = due.c;
+         }
+
+         if (dfl.a(this.a, $$5.c())) {
+            $$11 = due.d;
+         }
+      }
+
+      if ($$11 == null) {
+         $$11 = $$2;
+      }
+
+      this.a($$11);
+      this.d = this.d.a(this.c.c(), $$11);
+      if ($$1 || this.a.a_(this.b) != this.d) {
+         this.a.a(this.b, this.d, 3);
+
+         for (int $$18 = 0; $$18 < this.f.size(); $$18++) {
+            dlx $$19 = this.b(this.f.get($$18));
+            if ($$19 != null) {
+               $$19.d();
+               if ($$19.b(this)) {
+                  $$19.c(this);
+               }
+            }
+         }
+      }
+
+      return this;
    }
 
-   static {
-      exa $$0 = dfi.a(0.0, 14.0, 0.0, 16.0, 16.0, 16.0);
-      exa $$1 = dfi.a(0.0, 0.0, 0.0, 2.0, 16.0, 2.0);
-      exa $$2 = dfi.a(14.0, 0.0, 0.0, 16.0, 16.0, 2.0);
-      exa $$3 = dfi.a(0.0, 0.0, 14.0, 2.0, 16.0, 16.0);
-      exa $$4 = dfi.a(14.0, 0.0, 14.0, 16.0, 16.0, 16.0);
-      g = ewx.a($$0, $$1, $$2, $$3, $$4);
-      exa $$5 = dfi.a(0.0, 0.0, 0.0, 2.0, 2.0, 16.0);
-      exa $$6 = dfi.a(14.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-      exa $$7 = dfi.a(0.0, 0.0, 14.0, 16.0, 2.0, 16.0);
-      exa $$8 = dfi.a(0.0, 0.0, 0.0, 16.0, 2.0, 2.0);
-      h = ewx.a(dlx.i, g, $$6, $$5, $$8, $$7);
+   public dta c() {
+      return this.d;
    }
 }

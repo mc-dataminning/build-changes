@@ -1,22 +1,22 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class end implements eng {
-   public static final MapCodec<end> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(tx.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, end::new));
-   private final tx b;
+public class end extends enk {
+   public final awt<dfw> a;
+   public static final MapCodec<end> b = awt.b(lu.f).xmap(end::new, $$0 -> $$0.a).fieldOf("value");
 
-   public end(tx $$0) {
-      this.b = $$0;
+   public end(awt<dfw> $$0) {
+      this.a = $$0;
+   }
+
+   @Nullable
+   @Override
+   public enn.c a(dcx $$0, jd $$1, jd $$2, enn.c $$3, enn.c $$4, enj $$5) {
+      return eca.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
    }
 
    @Override
-   public tx a(ayo $$0, @Nullable tx $$1) {
-      return $$1 == null ? this.b.i() : $$1.a(this.b);
-   }
-
-   @Override
-   public enh<?> a() {
-      return enh.c;
+   protected enm<?> a() {
+      return enm.n;
    }
 }

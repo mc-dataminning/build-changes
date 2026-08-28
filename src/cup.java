@@ -1,24 +1,20 @@
-public class cup extends cty {
-   public cup(cty.a $$0) {
-      super($$0);
-   }
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   @Override
-   public bqh a(cud $$0, cml $$1, btc $$2, bqg $$3) {
-      wu $$4 = $$0.a(kn.g);
-      if ($$4 != null && !($$2 instanceof cml)) {
-         if (!$$1.dR().B && $$2.bF()) {
-            $$2.b($$4);
-            if ($$2 instanceof bte $$5) {
-               $$5.fQ();
-            }
-
-            $$0.h(1);
-         }
-
-         return bqh.a($$1.dR().B);
-      } else {
-         return bqh.e;
+public class cup {
+   private static final Strategy<? super cuo> a = new Strategy<cuo>() {
+      public int a(@Nullable cuo $$0) {
+         return cuo.a($$0);
       }
+
+      public boolean a(@Nullable cuo $$0, @Nullable cuo $$1) {
+         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.e() == $$1.e() && cuo.c($$0, $$1);
+      }
+   };
+
+   public static Set<cuo> a() {
+      return new ObjectLinkedOpenCustomHashSet(a);
    }
 }

@@ -1,92 +1,47 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
 import java.util.Collection;
 import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class anv {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.schedule.same_tick"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wu.b("commands.schedule.cleared.failure", $$0));
-   private static final SuggestionProvider<eq> c = ($$0, $$1) -> ev.b(((eq)$$0.getSource()).l().bc().I().s().a(), $$1);
+   private static final Logger a = LogUtils.getLogger();
 
-   public static void a(CommandDispatcher<eq> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("schedule").requires($$0x -> $$0x.c(2)))
-               .then(
-                  er.a("function")
-                     .then(
-                        er.a("function", gy.a())
-                           .suggests(amq.b)
-                           .then(
-                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)er.a("time", gf.a())
-                                       .executes($$0x -> a((eq)$$0x.getSource(), gy.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true)))
-                                    .then(
-                                       er.a("append")
-                                          .executes(
-                                             $$0x -> a((eq)$$0x.getSource(), gy.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), false)
-                                          )
-                                    ))
-                                 .then(
-                                    er.a("replace")
-                                       .executes($$0x -> a((eq)$$0x.getSource(), gy.b($$0x, "function"), IntegerArgumentType.getInteger($$0x, "time"), true))
-                                 )
-                           )
-                     )
-               ))
-            .then(
-               er.a("clear")
-                  .then(
-                     er.a("function", StringArgumentType.greedyString())
-                        .suggests(c)
-                        .executes($$0x -> a((eq)$$0x.getSource(), StringArgumentType.getString($$0x, "function")))
-                  )
-            )
-      );
+   public static void a(Collection<String> $$0, et $$1) {
+      $$1.l().a($$0).exceptionally($$1x -> {
+         a.warn("Failed to execute reload", $$1x);
+         $$1.b(wy.c("commands.reload.failure"));
+         return null;
+      });
    }
 
-   private static int a(eq $$0, Pair<akk, Either<ic<eq>, Collection<ic<eq>>>> $$1, int $$2, boolean $$3) throws CommandSyntaxException {
-      if ($$2 == 0) {
-         throw a.create();
-      } else {
-         long $$4 = $$0.e().Z() + (long)$$2;
-         akk $$5 = (akk)$$1.getFirst();
-         evu<MinecraftServer> $$6 = $$0.l().bc().I().s();
-         ((Either)$$1.getSecond()).ifLeft($$6x -> {
-            String $$7 = $$5.toString();
-            if ($$3) {
-               $$6.a($$7);
-            }
+   private static Collection<String> a(ato $$0, erf $$1, Collection<String> $$2) {
+      $$0.a();
+      Collection<String> $$3 = Lists.newArrayList($$2);
+      Collection<String> $$4 = $$1.D().a().b();
 
-            $$6.a($$7, $$4, new evq($$5));
-            $$0.a(() -> wu.a("commands.schedule.created.function", wu.a($$5), $$2, $$4), true);
-         }).ifRight($$6x -> {
-            String $$7 = "#" + $$5;
-            if ($$3) {
-               $$6.a($$7);
-            }
-
-            $$6.a($$7, $$4, new evr($$5));
-            $$0.a(() -> wu.a("commands.schedule.created.tag", wu.a($$5), $$2, $$4), true);
-         });
-         return Math.floorMod($$4, Integer.MAX_VALUE);
+      for (String $$5 : $$0.b()) {
+         if (!$$4.contains($$5) && !$$3.contains($$5)) {
+            $$3.add($$5);
+         }
       }
+
+      return $$3;
    }
 
-   private static int a(eq $$0, String $$1) throws CommandSyntaxException {
-      int $$2 = $$0.l().bc().I().s().a($$1);
-      if ($$2 == 0) {
-         throw b.create($$1);
-      } else {
-         $$0.a(() -> wu.a("commands.schedule.cleared.success", $$2, $$1), true);
-         return $$2;
-      }
+   public static void a(CommandDispatcher<et> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         et $$1 = (et)$$0x.getSource();
+         MinecraftServer $$2 = $$1.l();
+         ato $$3 = $$2.aG();
+         erf $$4 = $$2.bb();
+         Collection<String> $$5 = $$3.d();
+         Collection<String> $$6 = a($$3, $$4, $$5);
+         $$1.a(() -> wy.c("commands.reload.success"), true);
+         a($$6, $$1);
+         return 0;
+      }));
    }
 }

@@ -1,75 +1,35 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Arrays;
-import java.util.function.Function;
+import java.util.Optional;
 
-public class bcr extends DataFix {
-   public bcr(Schema $$0) {
-      super($$0, false);
+public class bcr extends bfm {
+   public bcr(Schema $$0, boolean $$1) {
+      super($$0, $$1, "EntityHorseSaddleFix", bgq.B, "EntityHorse");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("EntityProjectileOwner", $$0.getType(bgh.B), this::a);
-   }
-
-   private Typed<?> a(Typed<?> $$0) {
-      $$0 = this.a($$0, "minecraft:egg", this::d);
-      $$0 = this.a($$0, "minecraft:ender_pearl", this::d);
-      $$0 = this.a($$0, "minecraft:experience_bottle", this::d);
-      $$0 = this.a($$0, "minecraft:snowball", this::d);
-      $$0 = this.a($$0, "minecraft:potion", this::d);
-      $$0 = this.a($$0, "minecraft:potion", this::c);
-      $$0 = this.a($$0, "minecraft:llama_spit", this::b);
-      $$0 = this.a($$0, "minecraft:arrow", this::a);
-      $$0 = this.a($$0, "minecraft:spectral_arrow", this::a);
-      return this.a($$0, "minecraft:trident", this::a);
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      long $$1 = $$0.get("OwnerUUIDMost").asLong(0L);
-      long $$2 = $$0.get("OwnerUUIDLeast").asLong(0L);
-      return this.a($$0, $$1, $$2).remove("OwnerUUIDMost").remove("OwnerUUIDLeast");
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      OptionalDynamic<?> $$1 = $$0.get("Owner");
-      long $$2 = $$1.get("OwnerUUIDMost").asLong(0L);
-      long $$3 = $$1.get("OwnerUUIDLeast").asLong(0L);
-      return this.a($$0, $$2, $$3).remove("Owner");
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      OptionalDynamic<?> $$1 = $$0.get("Potion");
-      return $$0.set("Item", $$1.orElseEmptyMap()).remove("Potion");
-   }
-
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      String $$1 = "owner";
-      OptionalDynamic<?> $$2 = $$0.get("owner");
-      long $$3 = $$2.get("M").asLong(0L);
-      long $$4 = $$2.get("L").asLong(0L);
-      return this.a($$0, $$3, $$4).remove("owner");
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0, long $$1, long $$2) {
-      String $$3 = "OwnerUUID";
-      return $$1 != 0L && $$2 != 0L ? $$0.set("OwnerUUID", $$0.createIntList(Arrays.stream(a($$1, $$2)))) : $$0;
-   }
-
-   private static int[] a(long $$0, long $$1) {
-      return new int[]{(int)($$0 >> 32), (int)$$0, (int)($$1 >> 32), (int)$$1};
-   }
-
-   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bgh.B, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(bgh.B, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgq.D.typeName(), bic.a()));
+      Type<?> $$2 = this.getInputSchema().getTypeRaw(bgq.t);
+      OpticFinder<?> $$3 = DSL.fieldFinder("SaddleItem", $$2);
+      Optional<? extends Typed<?>> $$4 = $$0.getOptionalTyped($$3);
+      Dynamic<?> $$5 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      if ($$4.isEmpty() && $$5.get("Saddle").asBoolean(false)) {
+         Typed<?> $$6 = (Typed<?>)$$2.pointTyped($$0.getOps()).orElseThrow(IllegalStateException::new);
+         $$6 = $$6.set($$1, Pair.of(bgq.D.typeName(), "minecraft:saddle"));
+         Dynamic<?> $$7 = $$5.emptyMap();
+         $$7 = $$7.set("Count", $$7.createByte((byte)1));
+         $$7 = $$7.set("Damage", $$7.createShort((short)0));
+         $$6 = $$6.set(DSL.remainderFinder(), $$7);
+         $$5.remove("Saddle");
+         return $$0.set($$3, $$6).set(DSL.remainderFinder(), $$5);
+      } else {
+         return $$0;
+      }
    }
 }

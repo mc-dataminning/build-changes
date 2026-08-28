@@ -1,397 +1,250 @@
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
-import java.util.List;
 
 public class rd {
-   public static final akj<ekh> a = qt.a("trial_chambers/chamber/end");
-   public static final akj<ekh> b = qt.a("trial_chambers/hallway/fallback");
-   public static final akj<ekh> c = qt.a("trial_chambers/chamber/entrance_cap");
-   public static final List<ekj> d = ImmutableList.builder()
-      .add(
-         ekj.a(
-            bor.<List<ekj>>a()
-               .a(List.of(ekj.a(a("contents/ranged"), a("ranged/skeleton")), ekj.a(a("contents/slow_ranged"), a("slow_ranged/skeleton"))))
-               .a(List.of(ekj.a(a("contents/ranged"), a("ranged/stray")), ekj.a(a("contents/slow_ranged"), a("slow_ranged/stray"))))
-               .a(List.of(ekj.a(a("contents/ranged"), a("ranged/poison_skeleton")), ekj.a(a("contents/slow_ranged"), a("slow_ranged/poison_skeleton"))))
-               .a()
-         )
-      )
-      .add(ekj.a(a("contents/melee"), bor.<String>a().a(a("melee/zombie")).a(a("melee/husk")).a(a("melee/spider")).a()))
-      .add(
-         ekj.a(
-            a("contents/small_melee"),
-            bor.<String>a().a(a("small_melee/slime")).a(a("small_melee/cave_spider")).a(a("small_melee/silverfish")).a(a("small_melee/baby_zombie")).a()
-         )
-      )
-      .build();
+   public static final akp<ekw> a = qw.a("village/taiga/town_centers");
+   private static final akp<ekw> b = qw.a("village/taiga/terminators");
 
-   public static String a(String $$0) {
-      return "trial_chambers/spawner/" + $$0;
-   }
-
-   public static void a(qm<ekh> $$0) {
-      jk<ekh> $$1 = $$0.a(lr.aT);
-      jj<ekh> $$2 = $$1.b(qt.a);
-      jj<ekh> $$3 = $$1.b(b);
-      jj<ekh> $$4 = $$1.b(c);
-      jk<emw> $$5 = $$0.a(lr.aR);
-      jj<emw> $$6 = $$5.b(qu.M);
-      $$0.a(a, new ekh($$2, List.of(Pair.of(ekf.b("trial_chambers/corridor/end_1", $$6), 1), Pair.of(ekf.b("trial_chambers/corridor/end_2", $$6), 1)), ekh.a.b));
-      qt.a($$0, "trial_chambers/chamber/entrance_cap", new ekh($$4, List.of(Pair.of(ekf.b("trial_chambers/chamber/entrance_cap", $$6), 1)), ekh.a.b));
-      qt.a(
-         $$0,
-         "trial_chambers/chambers/end",
-         new ekh(
-            $$3,
-            List.of(
-               Pair.of(ekf.b("trial_chambers/chamber/chamber_1", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/eruption", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted", $$6), 1)
+   public static void a(qp<ekw> $$0) {
+      jn<eiq> $$1 = $$0.a(lu.aQ);
+      jm<eiq> $$2 = $$1.b(si.h);
+      jm<eiq> $$3 = $$1.b(si.i);
+      jm<eiq> $$4 = $$1.b(si.e);
+      jm<eiq> $$5 = $$1.b(si.l);
+      jm<eiq> $$6 = $$1.b(si.m);
+      jn<enl> $$7 = $$0.a(lu.aS);
+      jm<enl> $$8 = $$7.b(qx.f);
+      jm<enl> $$9 = $$7.b(qx.d);
+      jm<enl> $$10 = $$7.b(qx.k);
+      jm<enl> $$11 = $$7.b(qx.o);
+      jn<ekw> $$12 = $$0.a(lu.aU);
+      jm<ekw> $$13 = $$12.b(qw.a);
+      jm<ekw> $$14 = $$12.b(b);
+      $$0.a(
+         a,
+         new ekw(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eku.a("village/taiga/town_centers/taiga_meeting_point_1", $$8), 49),
+               Pair.of(eku.a("village/taiga/town_centers/taiga_meeting_point_2", $$8), 49),
+               Pair.of(eku.a("village/taiga/zombie/town_centers/taiga_meeting_point_1", $$9), 1),
+               Pair.of(eku.a("village/taiga/zombie/town_centers/taiga_meeting_point_2", $$9), 1)
             ),
-            ekh.a.b
+            ekw.a.b
          )
       );
-      qt.a(
+      qw.a(
          $$0,
-         "trial_chambers/corridor",
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.b("trial_chambers/corridor/second_plate"), 1),
-               Pair.of(ekf.b("trial_chambers/intersection/intersection_1", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/intersection/intersection_2", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/intersection/intersection_3", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/first_plate"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/atrium_1", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/entrance_1", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/entrance_2", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/entrance_3", $$6), 1)
+         "village/taiga/streets",
+         new ekw(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eku.a("village/taiga/streets/corner_01", $$10), 2),
+               Pair.of(eku.a("village/taiga/streets/corner_02", $$10), 2),
+               Pair.of(eku.a("village/taiga/streets/corner_03", $$10), 2),
+               Pair.of(eku.a("village/taiga/streets/straight_01", $$10), 4),
+               Pair.of(eku.a("village/taiga/streets/straight_02", $$10), 4),
+               Pair.of(eku.a("village/taiga/streets/straight_03", $$10), 4),
+               Pair.of(eku.a("village/taiga/streets/straight_04", $$10), 7),
+               Pair.of(eku.a("village/taiga/streets/straight_05", $$10), 7),
+               Pair.of(eku.a("village/taiga/streets/straight_06", $$10), 4),
+               Pair.of(eku.a("village/taiga/streets/crossroad_01", $$10), 1),
+               Pair.of(eku.a("village/taiga/streets/crossroad_02", $$10), 1),
+               Pair.of(eku.a("village/taiga/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(eku.a("village/taiga/streets/crossroad_04", $$10), 2),
+                  Pair.of(eku.a("village/taiga/streets/crossroad_05", $$10), 2),
+                  Pair.of(eku.a("village/taiga/streets/crossroad_06", $$10), 2),
+                  Pair.of(eku.a("village/taiga/streets/turn_01", $$10), 3)
+               }
             ),
-            ekh.a.b
+            ekw.a.a
          )
       );
-      qt.a(
+      qw.a(
          $$0,
-         "trial_chambers/chamber/addon",
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.b("trial_chambers/chamber/addon/full_stacked_walkway"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/addon/full_stacked_walkway_2"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/addon/full_corner_column"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/addon/grate_bridge"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/addon/hanging_platform"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/addon/short_grate_platform"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/addon/short_platform"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/addon/lower_staircase_down"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/addon/walkway_with_bridge_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/addon/c1_breeze"), 1)
+         "village/taiga/zombie/streets",
+         new ekw(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eku.a("village/taiga/zombie/streets/corner_01", $$10), 2),
+               Pair.of(eku.a("village/taiga/zombie/streets/corner_02", $$10), 2),
+               Pair.of(eku.a("village/taiga/zombie/streets/corner_03", $$10), 2),
+               Pair.of(eku.a("village/taiga/zombie/streets/straight_01", $$10), 4),
+               Pair.of(eku.a("village/taiga/zombie/streets/straight_02", $$10), 4),
+               Pair.of(eku.a("village/taiga/zombie/streets/straight_03", $$10), 4),
+               Pair.of(eku.a("village/taiga/zombie/streets/straight_04", $$10), 7),
+               Pair.of(eku.a("village/taiga/zombie/streets/straight_05", $$10), 7),
+               Pair.of(eku.a("village/taiga/zombie/streets/straight_06", $$10), 4),
+               Pair.of(eku.a("village/taiga/zombie/streets/crossroad_01", $$10), 1),
+               Pair.of(eku.a("village/taiga/zombie/streets/crossroad_02", $$10), 1),
+               Pair.of(eku.a("village/taiga/zombie/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(eku.a("village/taiga/zombie/streets/crossroad_04", $$10), 2),
+                  Pair.of(eku.a("village/taiga/zombie/streets/crossroad_05", $$10), 2),
+                  Pair.of(eku.a("village/taiga/zombie/streets/crossroad_06", $$10), 2),
+                  Pair.of(eku.a("village/taiga/zombie/streets/turn_01", $$10), 3)
+               }
             ),
-            ekh.a.b
+            ekw.a.a
          )
       );
-      qt.a(
+      qw.a(
          $$0,
-         "trial_chambers/chamber/assembly",
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/full_column"), 2),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/cover_1"), 2),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/cover_2"), 2),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/cover_3"), 2),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/cover_4"), 2),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/cover_5"), 2),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/cover_6"), 2),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/cover_7"), 5),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/platform_1"), 2),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/spawner_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/hanging_1"), 2),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/hanging_2"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/hanging_3"), 2),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/hanging_4"), 2),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/hanging_5"), 4),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/left_staircase_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/left_staircase_2"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/left_staircase_3"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/right_staircase_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/right_staircase_2"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly/right_staircase_3"), 1)
+         "village/taiga/houses",
+         new ekw(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eku.a("village/taiga/houses/taiga_small_house_1", $$8), 4),
+               Pair.of(eku.a("village/taiga/houses/taiga_small_house_2", $$8), 4),
+               Pair.of(eku.a("village/taiga/houses/taiga_small_house_3", $$8), 4),
+               Pair.of(eku.a("village/taiga/houses/taiga_small_house_4", $$8), 4),
+               Pair.of(eku.a("village/taiga/houses/taiga_small_house_5", $$8), 4),
+               Pair.of(eku.a("village/taiga/houses/taiga_medium_house_1", $$8), 2),
+               Pair.of(eku.a("village/taiga/houses/taiga_medium_house_2", $$8), 2),
+               Pair.of(eku.a("village/taiga/houses/taiga_medium_house_3", $$8), 2),
+               Pair.of(eku.a("village/taiga/houses/taiga_medium_house_4", $$8), 2),
+               Pair.of(eku.a("village/taiga/houses/taiga_butcher_shop_1", $$8), 2),
+               Pair.of(eku.a("village/taiga/houses/taiga_tool_smith_1", $$8), 2),
+               Pair.of(eku.a("village/taiga/houses/taiga_fletcher_house_1", $$8), 2),
+               new Pair[]{
+                  Pair.of(eku.a("village/taiga/houses/taiga_shepherds_house_1", $$8), 2),
+                  Pair.of(eku.a("village/taiga/houses/taiga_armorer_house_1", $$8), 1),
+                  Pair.of(eku.a("village/taiga/houses/taiga_armorer_2", $$8), 1),
+                  Pair.of(eku.a("village/taiga/houses/taiga_fisher_cottage_1", $$8), 3),
+                  Pair.of(eku.a("village/taiga/houses/taiga_tannery_1", $$8), 2),
+                  Pair.of(eku.a("village/taiga/houses/taiga_cartographer_house_1", $$8), 2),
+                  Pair.of(eku.a("village/taiga/houses/taiga_library_1", $$8), 2),
+                  Pair.of(eku.a("village/taiga/houses/taiga_masons_house_1", $$8), 2),
+                  Pair.of(eku.a("village/taiga/houses/taiga_weaponsmith_1", $$8), 2),
+                  Pair.of(eku.a("village/taiga/houses/taiga_weaponsmith_2", $$8), 2),
+                  Pair.of(eku.a("village/taiga/houses/taiga_temple_1", $$8), 2),
+                  Pair.of(eku.a("village/taiga/houses/taiga_large_farm_1", $$11), 6),
+                  Pair.of(eku.a("village/taiga/houses/taiga_large_farm_2", $$11), 6),
+                  Pair.of(eku.a("village/taiga/houses/taiga_small_farm_1", $$8), 1),
+                  Pair.of(eku.a("village/taiga/houses/taiga_animal_pen_1", $$8), 2),
+                  Pair.of(eku.g(), 6)
+               }
             ),
-            ekh.a.b
+            ekw.a.b
          )
       );
-      qt.a(
+      qw.a(
          $$0,
-         "trial_chambers/chamber/eruption",
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.b("trial_chambers/chamber/eruption/center_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/eruption/breeze_slice_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/eruption/slice_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/eruption/slice_2"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/eruption/slice_3"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/eruption/quadrant_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/eruption/quadrant_2"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/eruption/quadrant_3"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/eruption/quadrant_4"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/eruption/quadrant_5"), 1)
+         "village/taiga/zombie/houses",
+         new ekw(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eku.a("village/taiga/zombie/houses/taiga_small_house_1", $$9), 4),
+               Pair.of(eku.a("village/taiga/zombie/houses/taiga_small_house_2", $$9), 4),
+               Pair.of(eku.a("village/taiga/zombie/houses/taiga_small_house_3", $$9), 4),
+               Pair.of(eku.a("village/taiga/zombie/houses/taiga_small_house_4", $$9), 4),
+               Pair.of(eku.a("village/taiga/zombie/houses/taiga_small_house_5", $$9), 4),
+               Pair.of(eku.a("village/taiga/zombie/houses/taiga_medium_house_1", $$9), 2),
+               Pair.of(eku.a("village/taiga/zombie/houses/taiga_medium_house_2", $$9), 2),
+               Pair.of(eku.a("village/taiga/zombie/houses/taiga_medium_house_3", $$9), 2),
+               Pair.of(eku.a("village/taiga/zombie/houses/taiga_medium_house_4", $$9), 2),
+               Pair.of(eku.a("village/taiga/houses/taiga_butcher_shop_1", $$9), 2),
+               Pair.of(eku.a("village/taiga/zombie/houses/taiga_tool_smith_1", $$9), 2),
+               Pair.of(eku.a("village/taiga/houses/taiga_fletcher_house_1", $$9), 2),
+               new Pair[]{
+                  Pair.of(eku.a("village/taiga/zombie/houses/taiga_shepherds_house_1", $$9), 2),
+                  Pair.of(eku.a("village/taiga/houses/taiga_armorer_house_1", $$9), 1),
+                  Pair.of(eku.a("village/taiga/zombie/houses/taiga_fisher_cottage_1", $$9), 2),
+                  Pair.of(eku.a("village/taiga/houses/taiga_tannery_1", $$9), 2),
+                  Pair.of(eku.a("village/taiga/zombie/houses/taiga_cartographer_house_1", $$9), 2),
+                  Pair.of(eku.a("village/taiga/zombie/houses/taiga_library_1", $$9), 2),
+                  Pair.of(eku.a("village/taiga/houses/taiga_masons_house_1", $$9), 2),
+                  Pair.of(eku.a("village/taiga/houses/taiga_weaponsmith_1", $$9), 2),
+                  Pair.of(eku.a("village/taiga/zombie/houses/taiga_weaponsmith_2", $$9), 2),
+                  Pair.of(eku.a("village/taiga/zombie/houses/taiga_temple_1", $$9), 2),
+                  Pair.of(eku.a("village/taiga/houses/taiga_large_farm_1", $$9), 6),
+                  Pair.of(eku.a("village/taiga/zombie/houses/taiga_large_farm_2", $$9), 6),
+                  Pair.of(eku.a("village/taiga/houses/taiga_small_farm_1", $$9), 1),
+                  Pair.of(eku.a("village/taiga/houses/taiga_animal_pen_1", $$9), 2),
+                  Pair.of(eku.g(), 6)
+               }
             ),
-            ekh.a.b
-         )
-      );
-      qt.a(
-         $$0,
-         "trial_chambers/chamber/slanted",
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/center"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/hallway_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/hallway_2"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/hallway_3"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/hallway_4"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/hallway_5"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/quadrant_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/quadrant_2"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/quadrant_3"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/quadrant_4"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/ramp_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/ramp_2"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/ramp_3"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/ramp_4"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/ominous_upper_arm_1"), 1)
-            ),
-            ekh.a.b
-         )
-      );
-      qt.a(
-         $$0,
-         "trial_chambers/chamber/pedestal",
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.b("trial_chambers/chamber/pedestal/center_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/pedestal/slice_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/pedestal/slice_2"), 3),
-               Pair.of(ekf.b("trial_chambers/chamber/pedestal/slice_3"), 3),
-               Pair.of(ekf.b("trial_chambers/chamber/pedestal/slice_4"), 3),
-               Pair.of(ekf.b("trial_chambers/chamber/pedestal/slice_5"), 3),
-               Pair.of(ekf.b("trial_chambers/chamber/pedestal/ominous_slice_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/pedestal/quadrant_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/pedestal/quadrant_2"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/pedestal/quadrant_3"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/quadrant_1"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/quadrant_2"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/quadrant_3"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted/quadrant_4"), 1)
-            ),
-            ekh.a.b
-         )
-      );
-      qt.a(
-         $$0,
-         "trial_chambers/corridor/slices",
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.b("trial_chambers/corridor/straight_1", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/straight_2", $$6), 2),
-               Pair.of(ekf.b("trial_chambers/corridor/straight_3", $$6), 2),
-               Pair.of(ekf.b("trial_chambers/corridor/straight_4", $$6), 2),
-               Pair.of(ekf.b("trial_chambers/corridor/straight_5", $$6), 2),
-               Pair.of(ekf.b("trial_chambers/corridor/straight_6", $$6), 2),
-               Pair.of(ekf.b("trial_chambers/corridor/straight_7", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/straight_8", $$6), 2)
-            ),
-            ekh.a.b
+            ekw.a.b
          )
       );
       $$0.a(
          b,
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.b("trial_chambers/hallway/rubble"), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/rubble_chamber"), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/rubble_thin"), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/rubble_chamber_thin"), 1)
+         new ekw(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eku.a("village/plains/terminators/terminator_01", $$10), 1),
+               Pair.of(eku.a("village/plains/terminators/terminator_02", $$10), 1),
+               Pair.of(eku.a("village/plains/terminators/terminator_03", $$10), 1),
+               Pair.of(eku.a("village/plains/terminators/terminator_04", $$10), 1)
             ),
-            ekh.a.b
+            ekw.a.a
          )
       );
-      qt.a(
+      qw.a(
          $$0,
-         "trial_chambers/hallway",
-         new ekh(
-            $$3,
-            List.of(
-               Pair.of(ekf.b("trial_chambers/hallway/corridor_connector_1"), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/upper_hallway_connector", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/lower_hallway_connector", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/rubble"), 1),
-               Pair.of(ekf.b("trial_chambers/chamber/chamber_1", $$6), 150),
-               Pair.of(ekf.b("trial_chambers/chamber/chamber_2", $$6), 150),
-               Pair.of(ekf.b("trial_chambers/chamber/chamber_4", $$6), 150),
-               Pair.of(ekf.b("trial_chambers/chamber/chamber_8", $$6), 150),
-               Pair.of(ekf.b("trial_chambers/chamber/assembly", $$6), 150),
-               Pair.of(ekf.b("trial_chambers/chamber/eruption", $$6), 150),
-               Pair.of(ekf.b("trial_chambers/chamber/slanted", $$6), 150),
-               Pair.of(ekf.b("trial_chambers/chamber/pedestal", $$6), 150),
-               Pair.of(ekf.b("trial_chambers/hallway/rubble_chamber", $$6), 10),
-               Pair.of(ekf.b("trial_chambers/hallway/rubble_chamber_thin", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/cache_1", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/left_corner", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/right_corner", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/corner_staircase", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/corner_staircase_down", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/long_straight_staircase", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/long_straight_staircase_down", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/straight", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/straight_staircase", $$6), 1),
-               Pair.of(ekf.b("trial_chambers/hallway/straight_staircase_down", $$6), 1)
+         "village/taiga/decor",
+         new ekw(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eku.a("village/taiga/taiga_lamp_post_1"), 10),
+               Pair.of(eku.a("village/taiga/taiga_decoration_1"), 4),
+               Pair.of(eku.a("village/taiga/taiga_decoration_2"), 1),
+               Pair.of(eku.a("village/taiga/taiga_decoration_3"), 1),
+               Pair.of(eku.a("village/taiga/taiga_decoration_4"), 1),
+               Pair.of(eku.a("village/taiga/taiga_decoration_5"), 2),
+               Pair.of(eku.a("village/taiga/taiga_decoration_6"), 1),
+               Pair.of(eku.a($$2), 4),
+               Pair.of(eku.a($$3), 4),
+               Pair.of(eku.a($$4), 2),
+               Pair.of(eku.a($$5), 4),
+               Pair.of(eku.a($$6), 1),
+               new Pair[]{Pair.of(eku.g(), 4)}
             ),
-            ekh.a.b
+            ekw.a.b
          )
       );
-      qt.a(
+      qw.a(
          $$0,
-         "trial_chambers/corridors/addon/lower",
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.g(), 8),
-               Pair.of(ekf.b("trial_chambers/corridor/addon/staircase"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/addon/wall"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/addon/ladder_to_middle"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/addon/arrow_dispenser"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/addon/bridge_lower"), 2)
+         "village/taiga/zombie/decor",
+         new ekw(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eku.a("village/taiga/taiga_decoration_1"), 4),
+               Pair.of(eku.a("village/taiga/taiga_decoration_2"), 1),
+               Pair.of(eku.a("village/taiga/taiga_decoration_3"), 1),
+               Pair.of(eku.a("village/taiga/taiga_decoration_4"), 1),
+               Pair.of(eku.a($$2), 4),
+               Pair.of(eku.a($$3), 4),
+               Pair.of(eku.a($$4), 2),
+               Pair.of(eku.a($$5), 4),
+               Pair.of(eku.a($$6), 1),
+               Pair.of(eku.g(), 4)
             ),
-            ekh.a.b
+            ekw.a.b
          )
       );
-      qt.a(
+      qw.a(
          $$0,
-         "trial_chambers/corridors/addon/middle",
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.g(), 8),
-               Pair.of(ekf.b("trial_chambers/corridor/addon/open_walkway"), 2),
-               Pair.of(ekf.b("trial_chambers/corridor/addon/walled_walkway"), 1)
+         "village/taiga/villagers",
+         new ekw(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eku.a("village/taiga/villagers/nitwit"), 1),
+               Pair.of(eku.a("village/taiga/villagers/baby"), 1),
+               Pair.of(eku.a("village/taiga/villagers/unemployed"), 10)
             ),
-            ekh.a.b
+            ekw.a.b
          )
       );
-      qt.a(
+      qw.a(
          $$0,
-         "trial_chambers/corridors/addon/middle_upper",
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.g(), 6),
-               Pair.of(ekf.b("trial_chambers/corridor/addon/open_walkway_upper"), 2),
-               Pair.of(ekf.b("trial_chambers/corridor/addon/chandelier_upper"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/addon/decoration_upper"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/addon/head_upper"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/addon/reward_upper"), 1)
-            ),
-            ekh.a.b
+         "village/taiga/zombie/villagers",
+         new ekw(
+            $$13,
+            ImmutableList.of(Pair.of(eku.a("village/taiga/zombie/villagers/nitwit"), 1), Pair.of(eku.a("village/taiga/zombie/villagers/unemployed"), 10)),
+            ekw.a.b
          )
       );
-      qt.a(
-         $$0,
-         "trial_chambers/atrium",
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.b("trial_chambers/corridor/atrium/bogged_relief"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/atrium/breeze_relief"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/atrium/spiral_relief"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/atrium/spider_relief"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/atrium/grand_staircase_1"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/atrium/grand_staircase_2"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/atrium/grand_staircase_3"), 1)
-            ),
-            ekh.a.b
-         )
-      );
-      qt.a(
-         $$0,
-         "trial_chambers/decor",
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.g(), 22),
-               Pair.of(ekf.b("trial_chambers/decor/empty_pot"), 2),
-               Pair.of(ekf.b("trial_chambers/decor/dead_bush_pot"), 2),
-               Pair.of(ekf.b("trial_chambers/decor/undecorated_pot"), 10),
-               Pair.of(ekf.b("trial_chambers/decor/flow_pot"), 1),
-               Pair.of(ekf.b("trial_chambers/decor/guster_pot"), 1),
-               Pair.of(ekf.b("trial_chambers/decor/scrape_pot"), 1),
-               Pair.of(ekf.b("trial_chambers/decor/candle_1"), 1),
-               Pair.of(ekf.b("trial_chambers/decor/candle_2"), 1),
-               Pair.of(ekf.b("trial_chambers/decor/candle_3"), 1),
-               Pair.of(ekf.b("trial_chambers/decor/candle_4"), 1),
-               Pair.of(ekf.b("trial_chambers/decor/barrel"), 2)
-            ),
-            ekh.a.b
-         )
-      );
-      qt.a(
-         $$0,
-         "trial_chambers/entrance",
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.b("trial_chambers/corridor/addon/display_1"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/addon/display_2"), 1),
-               Pair.of(ekf.b("trial_chambers/corridor/addon/display_3"), 1)
-            ),
-            ekh.a.b
-         )
-      );
-      qt.a($$0, "trial_chambers/decor/chamber", new ekh($$2, List.of(Pair.of(ekf.g(), 4), Pair.of(ekf.b("trial_chambers/decor/undecorated_pot"), 1)), ekh.a.b));
-      qt.a($$0, "trial_chambers/reward/all", new ekh($$2, List.of(Pair.of(ekf.b("trial_chambers/reward/vault"), 1)), ekh.a.b));
-      qt.a($$0, "trial_chambers/reward/ominous_vault", new ekh($$2, List.of(Pair.of(ekf.b("trial_chambers/reward/ominous_vault"), 1)), ekh.a.b));
-      qt.a($$0, "trial_chambers/reward/contents/default", new ekh($$2, List.of(Pair.of(ekf.b("trial_chambers/reward/vault"), 1)), ekh.a.b));
-      qt.a($$0, "trial_chambers/chests/supply", new ekh($$2, List.of(Pair.of(ekf.b("trial_chambers/chests/connectors/supply"), 1)), ekh.a.b));
-      qt.a($$0, "trial_chambers/chests/contents/supply", new ekh($$2, List.of(Pair.of(ekf.b("trial_chambers/chests/supply"), 1)), ekh.a.b));
-      qt.a($$0, "trial_chambers/spawner/ranged", new ekh($$2, List.of(Pair.of(ekf.b("trial_chambers/spawner/connectors/ranged"), 1)), ekh.a.b));
-      qt.a($$0, "trial_chambers/spawner/slow_ranged", new ekh($$2, List.of(Pair.of(ekf.b("trial_chambers/spawner/connectors/slow_ranged"), 1)), ekh.a.b));
-      qt.a($$0, "trial_chambers/spawner/melee", new ekh($$2, List.of(Pair.of(ekf.b("trial_chambers/spawner/connectors/melee"), 1)), ekh.a.b));
-      qt.a($$0, "trial_chambers/spawner/small_melee", new ekh($$2, List.of(Pair.of(ekf.b("trial_chambers/spawner/connectors/small_melee"), 1)), ekh.a.b));
-      qt.a($$0, "trial_chambers/spawner/breeze", new ekh($$2, List.of(Pair.of(ekf.b("trial_chambers/spawner/connectors/breeze"), 1)), ekh.a.b));
-      qt.a(
-         $$0,
-         "trial_chambers/spawner/all",
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.b("trial_chambers/spawner/connectors/ranged"), 1),
-               Pair.of(ekf.b("trial_chambers/spawner/connectors/melee"), 1),
-               Pair.of(ekf.b("trial_chambers/spawner/connectors/small_melee"), 1)
-            ),
-            ekh.a.b
-         )
-      );
-      qt.a($$0, "trial_chambers/spawner/contents/breeze", new ekh($$2, List.of(Pair.of(ekf.b("trial_chambers/spawner/breeze/breeze"), 1)), ekh.a.b));
-      qt.a(
-         $$0,
-         "trial_chambers/dispensers/chamber",
-         new ekh(
-            $$2,
-            List.of(
-               Pair.of(ekf.g(), 1),
-               Pair.of(ekf.b("trial_chambers/dispensers/chamber"), 1),
-               Pair.of(ekf.b("trial_chambers/dispensers/wall_dispenser"), 1),
-               Pair.of(ekf.b("trial_chambers/dispensers/floor_dispenser"), 1)
-            ),
-            ekh.a.b
-         )
-      );
-      ekk.a($$0, $$2, d);
    }
 }

@@ -1,36 +1,23 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import java.util.UUID;
 
-public class ady implements zb<abn> {
-   public static final ys<vr, ady> a = zb.a(ady::a, ady::new);
-   private final IntList b;
+public record ady(List<UUID> b) implements zf<abt> {
+   public static final yw<vv, ady> a = zf.a(ady::a, ady::new);
 
-   public ady(IntList $$0) {
-      this.b = new IntArrayList($$0);
+   private ady(vv $$0) {
+      this($$0.a(kg.g));
    }
 
-   public ady(int... $$0) {
-      this.b = new IntArrayList($$0);
-   }
-
-   private ady(vr $$0) {
-      this.b = $$0.a();
-   }
-
-   private void a(vr $$0) {
-      $$0.a(this.b);
+   private void a(vv $$0) {
+      $$0.a(this.b, kg.g);
    }
 
    @Override
-   public zd<ady> a() {
-      return afz.aj;
+   public zh<ady> a() {
+      return agf.ae;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
-   }
-
-   public IntList b() {
-      return this.b;
    }
 }

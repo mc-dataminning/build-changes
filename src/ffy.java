@@ -1,37 +1,38 @@
-import java.util.function.IntFunction;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public enum ffy {
-   a(0, "options.narrator.off"),
-   b(1, "options.narrator.all"),
-   c(2, "options.narrator.chat"),
-   d(3, "options.narrator.system");
+public class ffy {
+   private final fza a;
+   private int b = -1;
+   @Nullable
+   private Consumer<ua> c;
 
-   private static final IntFunction<ffy> e = aww.a(ffy::a, values(), aww.a.b);
-   private final int f;
-   private final wu g;
-
-   private ffy(final int $$0, final String $$1) {
-      this.f = $$0;
-      this.g = wu.c($$1);
+   public ffy(fza $$0) {
+      this.a = $$0;
    }
 
-   public int a() {
-      return this.f;
+   public boolean a(int $$0, @Nullable ua $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public wu b() {
-      return this.g;
+   private int a(Consumer<ua> $$0) {
+      this.c = $$0;
+      return ++this.b;
    }
 
-   public static ffy a(int $$0) {
-      return e.apply($$0);
+   public void a(int $$0, Consumer<ua> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new ahb($$2, $$0));
    }
 
-   public boolean c() {
-      return this == b || this == c;
-   }
-
-   public boolean d() {
-      return this == b || this == d;
+   public void a(jd $$0, Consumer<ua> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new agk($$2, $$0));
    }
 }

@@ -1,37 +1,28 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class gtr extends auj {
+public class gtr {
+   private final List<gtq> a;
+   private final boolean b;
    @Nullable
-   private tx h;
+   private final String c;
 
-   public gtr(gts $$0, jq<akt> $$1, eqn $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public gtr(List<gtq> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   protected void b(aqn $$0) {
-      if (this.b().a($$0.fZ())) {
-         this.h = $$0.f(new tx());
-      }
-
-      super.b($$0);
+   public List<gtq> a() {
+      return this.a;
    }
 
-   @Override
-   public wu a(SocketAddress $$0, GameProfile $$1) {
-      return (wu)(this.b().a($$1) && this.a($$1.getName()) != null ? wu.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public gts b() {
-      return (gts)super.c();
+   public boolean b() {
+      return this.b;
    }
 
    @Nullable
-   @Override
-   public tx r() {
-      return this.h;
+   public String c() {
+      return this.c;
    }
 }

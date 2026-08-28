@@ -1,49 +1,14 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface enw extends eob {
-   @Nullable
-   dum a(kc var1);
+public interface enw<P extends env> {
+   enw<ent> a = a("clear", ent.a);
+   enw<enu> b = a("passthrough", enu.b);
+   enw<ens> c = a("append_static", ens.a);
+   enw<enr> d = a("append_loot", enr.a);
 
-   int b(ja var1);
+   MapCodec<P> codec();
 
-   public static enum a implements enw {
-      a;
-
-      @Nullable
-      @Override
-      public dum a(kc $$0) {
-         return null;
-      }
-
-      @Override
-      public int b(ja $$0) {
-         return 0;
-      }
-
-      @Override
-      public void a(ja $$0) {
-      }
-
-      @Override
-      public boolean K_() {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public void a(kc $$0, boolean $$1) {
-      }
-
-      @Override
-      public void a(dbn $$0, boolean $$1) {
-      }
-
-      @Override
-      public void b(dbn $$0) {
-      }
+   private static <P extends env> enw<P> a(String $$0, MapCodec<P> $$1) {
+      return jz.a(lt.n, $$0, () -> $$1);
    }
 }

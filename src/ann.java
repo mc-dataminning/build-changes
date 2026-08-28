@@ -1,82 +1,130 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import java.util.Collections;
 
 public class ann {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.recipe.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.recipe.take.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.particle.failed"));
 
-   public static void a(CommandDispatcher<eq> $$0) {
+   public static void a(CommandDispatcher<et> $$0, ep $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("recipe").requires($$0x -> $$0x.c(2)))
-               .then(
-                  er.a("give")
-                     .then(
-                        ((RequiredArgumentBuilder)er.a("targets", fd.d())
-                              .then(
-                                 er.a("recipe", fr.a())
-                                    .suggests(ip.b)
-                                    .executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), Collections.singleton(fr.b($$0x, "recipe"))))
-                              ))
-                           .then(er.a("*").executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), ((eq)$$0x.getSource()).l().aK().d())))
-                     )
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("particle").requires($$0x -> $$0x.c(2)))
             .then(
-               er.a("take")
+               ((RequiredArgumentBuilder)eu.a("name", fq.a($$1))
+                     .executes(
+                        $$0x -> a(
+                              (et)$$0x.getSource(), fq.a($$0x, "name"), ((et)$$0x.getSource()).d(), eww.b, 0.0F, 0, false, ((et)$$0x.getSource()).l().ah().t()
+                           )
+                     ))
                   .then(
-                     ((RequiredArgumentBuilder)er.a("targets", fd.d())
-                           .then(
-                              er.a("recipe", fr.a())
-                                 .suggests(ip.b)
-                                 .executes($$0x -> b((eq)$$0x.getSource(), fd.f($$0x, "targets"), Collections.singleton(fr.b($$0x, "recipe"))))
+                     ((RequiredArgumentBuilder)eu.a("pos", gw.a())
+                           .executes(
+                              $$0x -> a((et)$$0x.getSource(), fq.a($$0x, "name"), gw.a($$0x, "pos"), eww.b, 0.0F, 0, false, ((et)$$0x.getSource()).l().ah().t())
                            ))
-                        .then(er.a("*").executes($$0x -> b((eq)$$0x.getSource(), fd.f($$0x, "targets"), ((eq)$$0x.getSource()).l().aK().d())))
+                        .then(
+                           eu.a("delta", gw.a(false))
+                              .then(
+                                 eu.a("speed", FloatArgumentType.floatArg(0.0F))
+                                    .then(
+                                       ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("count", IntegerArgumentType.integer(0))
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (et)$$0x.getSource(),
+                                                         fq.a($$0x, "name"),
+                                                         gw.a($$0x, "pos"),
+                                                         gw.a($$0x, "delta"),
+                                                         FloatArgumentType.getFloat($$0x, "speed"),
+                                                         IntegerArgumentType.getInteger($$0x, "count"),
+                                                         false,
+                                                         ((et)$$0x.getSource()).l().ah().t()
+                                                      )
+                                                ))
+                                             .then(
+                                                ((LiteralArgumentBuilder)eu.a("force")
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (et)$$0x.getSource(),
+                                                               fq.a($$0x, "name"),
+                                                               gw.a($$0x, "pos"),
+                                                               gw.a($$0x, "delta"),
+                                                               FloatArgumentType.getFloat($$0x, "speed"),
+                                                               IntegerArgumentType.getInteger($$0x, "count"),
+                                                               true,
+                                                               ((et)$$0x.getSource()).l().ah().t()
+                                                            )
+                                                      ))
+                                                   .then(
+                                                      eu.a("viewers", fg.d())
+                                                         .executes(
+                                                            $$0x -> a(
+                                                                  (et)$$0x.getSource(),
+                                                                  fq.a($$0x, "name"),
+                                                                  gw.a($$0x, "pos"),
+                                                                  gw.a($$0x, "delta"),
+                                                                  FloatArgumentType.getFloat($$0x, "speed"),
+                                                                  IntegerArgumentType.getInteger($$0x, "count"),
+                                                                  true,
+                                                                  fg.f($$0x, "viewers")
+                                                               )
+                                                         )
+                                                   )
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)eu.a("normal")
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (et)$$0x.getSource(),
+                                                            fq.a($$0x, "name"),
+                                                            gw.a($$0x, "pos"),
+                                                            gw.a($$0x, "delta"),
+                                                            FloatArgumentType.getFloat($$0x, "speed"),
+                                                            IntegerArgumentType.getInteger($$0x, "count"),
+                                                            false,
+                                                            ((et)$$0x.getSource()).l().ah().t()
+                                                         )
+                                                   ))
+                                                .then(
+                                                   eu.a("viewers", fg.d())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (et)$$0x.getSource(),
+                                                               fq.a($$0x, "name"),
+                                                               gw.a($$0x, "pos"),
+                                                               gw.a($$0x, "delta"),
+                                                               FloatArgumentType.getFloat($$0x, "speed"),
+                                                               IntegerArgumentType.getInteger($$0x, "count"),
+                                                               false,
+                                                               fg.f($$0x, "viewers")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
                   )
             )
       );
    }
 
-   private static int a(eq $$0, Collection<aqn> $$1, Collection<cyl<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
+   private static int a(et $$0, lk $$1, eww $$2, eww $$3, float $$4, int $$5, boolean $$6, Collection<aqu> $$7) throws CommandSyntaxException {
+      int $$8 = 0;
 
-      for (aqn $$4 : $$1) {
-         $$3 += $$4.a($$2);
+      for (aqu $$9 : $$7) {
+         if ($$0.e().a($$9, $$1, $$6, $$2.c, $$2.d, $$2.e, $$5, $$3.c, $$3.d, $$3.e, (double)$$4)) {
+            $$8++;
+         }
       }
 
-      if ($$3 == 0) {
+      if ($$8 == 0) {
          throw a.create();
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wu.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> wu.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
-         }
-
-         return $$3;
-      }
-   }
-
-   private static int b(eq $$0, Collection<aqn> $$1, Collection<cyl<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (aqn $$4 : $$1) {
-         $$3 += $$4.b($$2);
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wu.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().O_()), true);
-         } else {
-            $$0.a(() -> wu.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
-         }
-
-         return $$3;
+         $$0.a(() -> wy.a("commands.particle.success", lt.i.b($$1.a()).toString()), true);
+         return $$8;
       }
    }
 }

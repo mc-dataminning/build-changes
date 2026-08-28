@@ -1,54 +1,21 @@
-import java.util.List;
-
 public class rn {
-   public static void a(qm<eay<?, ?>> $$0) {
-      rk.a($$0);
-      rl.a($$0);
-      rm.a($$0);
-      ro.a($$0);
-      rp.a($$0);
-      rq.a($$0);
-      rr.a($$0);
-      rs.a($$0);
-      rt.a($$0);
-   }
+   public static final akp<ebn<?, ?>> a = rq.a("seagrass_short");
+   public static final akp<ebn<?, ?>> b = rq.a("seagrass_slightly_less_short");
+   public static final akp<ebn<?, ?>> c = rq.a("seagrass_mid");
+   public static final akp<ebn<?, ?>> d = rq.a("seagrass_tall");
+   public static final akp<ebn<?, ?>> e = rq.a("sea_pickle");
+   public static final akp<ebn<?, ?>> f = rq.a("seagrass_simple");
+   public static final akp<ebn<?, ?>> g = rq.a("kelp");
+   public static final akp<ebn<?, ?>> h = rq.a("warm_ocean_vegetation");
 
-   private static dzn a(List<dfi> $$0) {
-      dzn $$1;
-      if (!$$0.isEmpty()) {
-         $$1 = dzn.a(dzn.c, dzn.a(jf.a.q(), $$0));
-      } else {
-         $$1 = dzn.c;
-      }
-
-      return $$1;
-   }
-
-   public static eec a(int $$0, jj<eib> $$1) {
-      return new eec($$0, 7, 3, $$1);
-   }
-
-   public static <FC extends edp, F extends ebl<FC>> eec a(F $$0, FC $$1, List<dfi> $$2, int $$3) {
-      return a($$3, sc.a($$0, $$1, a($$2)));
-   }
-
-   public static <FC extends edp, F extends ebl<FC>> eec a(F $$0, FC $$1, List<dfi> $$2) {
-      return a($$0, $$1, $$2, 96);
-   }
-
-   public static <FC extends edp, F extends ebl<FC>> eec a(F $$0, FC $$1) {
-      return a($$0, $$1, List.of(), 96);
-   }
-
-   public static akj<eay<?, ?>> a(String $$0) {
-      return akj.a(lr.aH, new akk($$0));
-   }
-
-   public static void a(qm<eay<?, ?>> $$0, akj<eay<?, ?>> $$1, ebl<edw> $$2) {
-      a($$0, $$1, $$2, edp.m);
-   }
-
-   public static <FC extends edp, F extends ebl<FC>> void a(qm<eay<?, ?>> $$0, akj<eay<?, ?>> $$1, F $$2, FC $$3) {
-      $$0.a($$1, new eay($$2, $$3));
+   public static void a(qp<ebn<?, ?>> $$0) {
+      rq.a($$0, a, eca.M, new eeo(0.3F));
+      rq.a($$0, b, eca.M, new eeo(0.4F));
+      rq.a($$0, c, eca.M, new eeo(0.6F));
+      rq.a($$0, d, eca.M, new eeo(0.8F));
+      rq.a($$0, e, eca.R, new edz(20));
+      rq.a($$0, f, eca.S, new eew(egf.a(dfy.bw)));
+      rq.a($$0, g, eca.N);
+      rq.a($$0, h, eca.ag, new eex(jq.a(sf.a(eca.O, eee.m), sf.a(eca.Q, eee.m), sf.a(eca.P, eee.m))));
    }
 }

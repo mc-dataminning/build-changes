@@ -1,20 +1,33 @@
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.function.Consumer;
 
-class sq {
-   @Nullable
-   public final Long a;
-   public final Runnable b;
+public record sq(String b, Collection<sw> c, Consumer<aqt> d, Consumer<aqt> e) {
+   public static final String a = "defaultBatch";
 
-   private sq(@Nullable Long $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public sq(String b, Collection<sw> c, Consumer<aqt> d, Consumer<aqt> e) {
+      if (c.isEmpty()) {
+         throw new IllegalArgumentException("A GameTestBatch must include at least one GameTestInfo!");
+      } else {
+         this.b = b;
+         this.c = c;
+         this.d = d;
+         this.e = e;
+      }
    }
 
-   static sq a(Runnable $$0) {
-      return new sq(null, $$0);
+   public String a() {
+      return this.b;
    }
 
-   static sq a(long $$0, Runnable $$1) {
-      return new sq($$0, $$1);
+   public Collection<sw> b() {
+      return this.c;
+   }
+
+   public Consumer<aqt> c() {
+      return this.d;
+   }
+
+   public Consumer<aqt> d() {
+      return this.e;
    }
 }

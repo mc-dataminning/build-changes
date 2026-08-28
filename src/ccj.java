@@ -1,35 +1,39 @@
-public class ccj {
-   private final bwj a;
-   private final float b;
-   private final int c;
+import java.util.List;
 
-   public ccj(ja $$0, float $$1, int $$2) {
-      this(new buy($$0), $$1, $$2);
+public class ccj<T extends btn & btr> extends cak {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
+
+   public ccj(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public ccj(ewh $$0, float $$1, int $$2) {
-      this(new buy(ja.a($$0)), $$1, $$2);
+   @Override
+   public boolean b() {
+      return this.b.dQ().ab().b(dcq.O) && this.h();
    }
 
-   public ccj(bsh $$0, float $$1, int $$2) {
-      this(new bvg($$0, false), $$1, $$2);
+   private boolean h() {
+      return this.b.ej() != null && this.b.ej().am() == bsw.by && this.b.ek() > this.d;
    }
 
-   public ccj(bwj $$0, float $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   @Override
+   public void d() {
+      this.d = this.b.ek();
+      this.b.aa_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (btr)$$0).forEach(btr::aa_);
+      }
+
+      super.d();
    }
 
-   public bwj a() {
-      return this.a;
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   public int c() {
-      return this.c;
+   private List<? extends btn> i() {
+      double $$0 = this.b.g(buu.m);
+      ewr $$1 = ewr.a(this.b.do()).c($$0, 10.0, $$0);
+      return this.b.dQ().a((Class<? extends btn>)this.b.getClass(), $$1, bsv.f);
    }
 }

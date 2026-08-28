@@ -1,45 +1,29 @@
-public class agx implements zb<agb> {
-   public static final ys<vr, agx> a = zb.a(agx::a, agx::new);
-   private final ja b;
-   private final int c;
-   private final boolean d;
+public class agx implements zf<agh> {
+   public static final yw<vv, agx> a = zf.a(agx::a, agx::new);
+   private final int b;
 
-   public agx(ja $$0, int $$1, boolean $$2) {
+   public agx(int $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
    }
 
-   private agx(vr $$0) {
-      this.b = $$0.e();
-      this.c = $$0.l();
-      this.d = $$0.readBoolean();
+   private agx(vv $$0) {
+      this.b = $$0.readByte();
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private void a(vv $$0) {
+      $$0.k(this.b);
    }
 
    @Override
-   public zd<agx> a() {
-      return afz.bz;
+   public zh<agx> a() {
+      return agf.bt;
    }
 
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
-   public ja b() {
+   public int b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

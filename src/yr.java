@@ -1,90 +1,36 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
 
-public class yr<B extends ByteBuf, V, T> implements ys<B, V> {
-   private static final int a = -1;
-   private final Function<V, ? extends T> b;
-   private final List<yr.b<B, V, T>> c;
-   private final Object2IntMap<T> d;
+public class yr implements yo {
+   public static final yp<yr> a = new yp<yr>() {
+      private static final MapCodec<yr> a = xv.b.a.xmap(yr::new, $$0 -> $$0.e);
+      private static final yw<wj, yr> b = yw.a(xv.b.c, $$0 -> $$0.e, yr::new);
 
-   yr(Function<V, ? extends T> $$0, List<yr.b<B, V, T>> $$1, Object2IntMap<T> $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   public V a(B $$0) {
-      int $$1 = wl.a($$0);
-      if ($$1 >= 0 && $$1 < this.c.size()) {
-         yr.b<B, V, T> $$2 = this.c.get($$1);
-
-         try {
-            return (V)$$2.a.decode($$0);
-         } catch (Exception var5) {
-            throw new DecoderException("Failed to decode packet '" + $$2.b + "'", var5);
-         }
-      } else {
-         throw new DecoderException("Received unknown packet id " + $$1);
-      }
-   }
-
-   public void a(B $$0, V $$1) {
-      T $$2 = (T)this.b.apply($$1);
-      int $$3 = this.d.getOrDefault($$2, -1);
-      if ($$3 == -1) {
-         throw new EncoderException("Sending unknown packet '" + $$2 + "'");
-      } else {
-         wl.a($$0, $$3);
-         yr.b<B, V, T> $$4 = this.c.get($$3);
-
-         try {
-            ys<? super B, V> $$5 = (ys<? super B, V>)$$4.a;
-            $$5.encode($$0, $$1);
-         } catch (Exception var7) {
-            throw new EncoderException("Failed to encode packet '" + $$2 + "'", var7);
-         }
-      }
-   }
-
-   public static <B extends ByteBuf, V, T> yr.a<B, V, T> a(Function<V, ? extends T> $$0) {
-      return new yr.a<>($$0);
-   }
-
-   public static class a<B extends ByteBuf, V, T> {
-      private final List<yr.b<B, V, T>> a = new ArrayList<>();
-      private final Function<V, ? extends T> b;
-
-      a(Function<V, ? extends T> $$0) {
-         this.b = $$0;
+      @Override
+      public MapCodec<yr> a() {
+         return a;
       }
 
-      public yr.a<B, V, T> a(T $$0, ys<? super B, ? extends V> $$1) {
-         this.a.add(new yr.b<>($$1, $$0));
-         return this;
+      @Override
+      public yw<wj, yr> b() {
+         return b;
       }
+   };
+   public static final yr b = new yr(xv.a);
+   public static final yr c = new yr(xv.a.a(n.m));
+   public static final yr d = new yr(xv.a.a(n.o));
+   final xv e;
 
-      public yr<B, V, T> a() {
-         Object2IntOpenHashMap<T> $$0 = new Object2IntOpenHashMap();
-         $$0.defaultReturnValue(-2);
-
-         for (yr.b<B, V, T> $$1 : this.a) {
-            int $$2 = $$0.size();
-            int $$3 = $$0.putIfAbsent($$1.b, $$2);
-            if ($$3 != -2) {
-               throw new IllegalStateException("Duplicate registration for type " + $$1.b);
-            }
-         }
-
-         return new yr<>(this.b, List.copyOf(this.a), $$0);
-      }
+   public yr(xv $$0) {
+      this.e = $$0;
    }
 
-   static record b<B, V, T>(ys<? super B, ? extends V> a, T b) {
+   @Override
+   public xm a(int $$0) {
+      return wy.b(Integer.toString($$0)).c(this.e);
+   }
+
+   @Override
+   public yp<yr> a() {
+      return a;
    }
 }

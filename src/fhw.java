@@ -1,135 +1,147 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import org.joml.Matrix4f;
 
-public class fhw extends fhl {
-   private static final akk a = new akk("widget/checkbox_selected_highlighted");
-   private static final akk b = new akk("widget/checkbox_selected");
-   private static final akk c = new akk("widget/checkbox_highlighted");
-   private static final akk d = new akk("widget/checkbox");
-   private static final int f = 14737632;
-   private static final int m = 4;
-   private static final int n = 8;
-   private boolean o;
-   private final fhw.b p;
+public class fhw implements AutoCloseable {
+   private static final int a = 128;
+   private static final int b = 128;
+   final gqg c;
+   final grc d;
+   private final Int2ObjectMap<fhw.a> e = new Int2ObjectOpenHashMap();
 
-   fhw(int $$0, int $$1, wu $$2, fhf $$3, boolean $$4, fhw.b $$5) {
-      super($$0, $$1, a($$3) + 4 + $$3.a($$2), a($$3), $$2);
-      this.o = $$4;
-      this.p = $$5;
+   public fhw(gqg $$0, grc $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static fhw.a a(wu $$0, fhf $$1) {
-      return new fhw.a($$0, $$1);
+   public void a(eql $$0, eqn $$1) {
+      this.b($$0, $$1).a();
    }
 
-   public static int a(fhf $$0) {
-      return 9 + 8;
+   public void a(fbc $$0, get $$1, eql $$2, eqn $$3, boolean $$4, int $$5) {
+      this.b($$2, $$3).a($$0, $$1, $$4, $$5);
    }
 
-   @Override
-   public void b() {
-      this.o = !this.o;
-      this.p.onValueChange(this, this.o);
-   }
-
-   public boolean a() {
-      return this.o;
-   }
-
-   @Override
-   public void a(flq $$0) {
-      $$0.a(flp.a, this.aM_());
-      if (this.j) {
-         if (this.aK_()) {
-            $$0.a(flp.d, wu.c("narration.checkbox.usage.focused"));
+   private fhw.a b(eql $$0, eqn $$1) {
+      return (fhw.a)this.e.compute($$0.b(), ($$1x, $$2) -> {
+         if ($$2 == null) {
+            return new fhw.a($$1x, $$1);
          } else {
-            $$0.a(flp.d, wu.c("narration.checkbox.usage.hovered"));
+            $$2.a($$1);
+            return $$2;
+         }
+      });
+   }
+
+   public void a() {
+      ObjectIterator var1 = this.e.values().iterator();
+
+      while (var1.hasNext()) {
+         fhw.a $$0 = (fhw.a)var1.next();
+         $$0.close();
+      }
+
+      this.e.clear();
+   }
+
+   @Override
+   public void close() {
+      this.a();
+   }
+
+   class a implements AutoCloseable {
+      private eqn b;
+      private final gps c;
+      private final gfb d;
+      private boolean e = true;
+
+      a(final int $$0, final eqn $$1) {
+         this.b = $$1;
+         this.c = new gps(128, 128, true);
+         akq $$2 = fhw.this.c.a("map/" + $$0, this.c);
+         this.d = gfb.t($$2);
+      }
+
+      void a(eqn $$0) {
+         boolean $$1 = this.b != $$0;
+         this.b = $$0;
+         this.e |= $$1;
+      }
+
+      public void a() {
+         this.e = true;
+      }
+
+      private void b() {
+         for (int $$0 = 0; $$0 < 128; $$0++) {
+            for (int $$1 = 0; $$1 < 128; $$1++) {
+               int $$2 = $$1 + $$0 * 128;
+               this.c.e().a($$1, $$0, epc.b(this.b.g[$$2]));
+            }
+         }
+
+         this.c.d();
+      }
+
+      void a(fbc $$0, get $$1, boolean $$2, int $$3) {
+         if (this.e) {
+            this.b();
+            this.e = false;
+         }
+
+         int $$4 = 0;
+         int $$5 = 0;
+         float $$6 = 0.0F;
+         Matrix4f $$7 = $$0.c().a();
+         fbg $$8 = $$1.getBuffer(this.d);
+         $$8.a($$7, 0.0F, 128.0F, -0.01F).a(-1).a(0.0F, 1.0F).c($$3);
+         $$8.a($$7, 128.0F, 128.0F, -0.01F).a(-1).a(1.0F, 1.0F).c($$3);
+         $$8.a($$7, 128.0F, 0.0F, -0.01F).a(-1).a(1.0F, 0.0F).c($$3);
+         $$8.a($$7, 0.0F, 0.0F, -0.01F).a(-1).a(0.0F, 0.0F).c($$3);
+         int $$9 = 0;
+
+         for (eqh $$10 : this.b.h()) {
+            if (!$$2 || $$10.b()) {
+               $$0.a();
+               $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F, -0.02F);
+               $$0.a(a.f.rotationDegrees((float)($$10.f() * 360) / 16.0F));
+               $$0.b(4.0F, 4.0F, 3.0F);
+               $$0.a(-0.125F, 0.125F, 0.0F);
+               Matrix4f $$11 = $$0.c().a();
+               float $$12 = -0.001F;
+               gqf $$13 = fhw.this.d.a($$10);
+               float $$14 = $$13.c();
+               float $$15 = $$13.g();
+               float $$16 = $$13.d();
+               float $$17 = $$13.h();
+               fbg $$18 = $$1.getBuffer(gfb.t($$13.i()));
+               $$18.a($$11, -1.0F, 1.0F, (float)$$9 * -0.001F).a(-1).a($$14, $$15).c($$3);
+               $$18.a($$11, 1.0F, 1.0F, (float)$$9 * -0.001F).a(-1).a($$16, $$15).c($$3);
+               $$18.a($$11, 1.0F, -1.0F, (float)$$9 * -0.001F).a(-1).a($$16, $$17).c($$3);
+               $$18.a($$11, -1.0F, -1.0F, (float)$$9 * -0.001F).a(-1).a($$14, $$17).c($$3);
+               $$0.b();
+               if ($$10.g().isPresent()) {
+                  fhr $$19 = fgi.Q().h;
+                  wy $$20 = $$10.g().get();
+                  float $$21 = (float)$$19.a($$20);
+                  float $$22 = ayn.a(25.0F / $$21, 0.0F, 6.0F / 9.0F);
+                  $$0.a();
+                  $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F - $$21 * $$22 / 2.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F + 4.0F, -0.025F);
+                  $$0.b($$22, $$22, 1.0F);
+                  $$0.a(0.0F, 0.0F, -0.1F);
+                  $$19.a($$20, 0.0F, 0.0F, -1, false, $$0.c().a(), $$1, fhr.a.a, Integer.MIN_VALUE, $$3);
+                  $$0.b();
+               }
+
+               $$9++;
+            }
          }
       }
-   }
 
-   @Override
-   public void b(fhh $$0, int $$1, int $$2, float $$3) {
-      ffw $$4 = ffw.Q();
-      RenderSystem.enableDepthTest();
-      fhf $$5 = $$4.h;
-      $$0.a(1.0F, 1.0F, 1.0F, this.l);
-      RenderSystem.enableBlend();
-      akk $$6;
-      if (this.o) {
-         $$6 = this.aK_() ? a : b;
-      } else {
-         $$6 = this.aK_() ? c : d;
+      @Override
+      public void close() {
+         this.c.close();
       }
-
-      int $$8 = a($$5);
-      int $$9 = this.D() + $$8 + 4;
-      int $$10 = this.E() + (this.h >> 1) - (9 >> 1);
-      $$0.a($$6, this.D(), this.E(), $$8, $$8);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      $$0.b($$5, this.z(), $$9, $$10, 14737632 | ayg.f(this.l * 255.0F) << 24);
-   }
-
-   public static class a {
-      private final wu a;
-      private final fhf b;
-      private int c = 0;
-      private int d = 0;
-      private fhw.b e = fhw.b.a;
-      private boolean f = false;
-      @Nullable
-      private ffz<Boolean> g = null;
-      @Nullable
-      private fjf h = null;
-
-      a(wu $$0, fhf $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public fhw.a a(int $$0, int $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         return this;
-      }
-
-      public fhw.a a(fhw.b $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fhw.a a(boolean $$0) {
-         this.f = $$0;
-         this.g = null;
-         return this;
-      }
-
-      public fhw.a a(ffz<Boolean> $$0) {
-         this.g = $$0;
-         this.f = $$0.c();
-         return this;
-      }
-
-      public fhw.a a(fjf $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public fhw a() {
-         fhw.b $$0 = this.g == null ? this.e : ($$0x, $$1x) -> {
-            this.g.a($$1x);
-            this.e.onValueChange($$0x, $$1x);
-         };
-         fhw $$1 = new fhw(this.c, this.d, this.a, this.b, this.f, $$0);
-         $$1.a(this.h);
-         return $$1;
-      }
-   }
-
-   public interface b {
-      fhw.b a = ($$0, $$1) -> {
-      };
-
-      void onValueChange(fhw var1, boolean var2);
    }
 }

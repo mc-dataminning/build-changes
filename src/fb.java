@@ -5,39 +5,40 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class fb implements ArgumentType<akk> {
-   private static final Collection<String> a = Stream.of(dcg.h, dcg.i).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wu.b("argument.dimension.invalid", $$0));
+public class fb implements ArgumentType<n> {
+   private static final Collection<String> b = Arrays.asList("red", "green");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wy.b("argument.color.invalid", $$0));
 
-   public akk a(StringReader $$0) throws CommandSyntaxException {
-      return akk.a($$0);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof ev ? ev.a(((ev)$$0.getSource()).u().stream().map(akj::a), $$1) : Suggestions.empty();
-   }
-
-   public Collection<String> getExamples() {
-      return a;
+   private fb() {
    }
 
    public static fb a() {
       return new fb();
    }
 
-   public static aqm a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
-      akk $$2 = (akk)$$0.getArgument($$1, akk.class);
-      akj<dcg> $$3 = akj.a(lr.aZ, $$2);
-      aqm $$4 = ((eq)$$0.getSource()).l().a($$3);
-      if ($$4 == null) {
-         throw b.create($$2);
+   public static n a(CommandContext<et> $$0, String $$1) {
+      return (n)$$0.getArgument($$1, n.class);
+   }
+
+   public n a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      n $$2 = n.b($$1);
+      if ($$2 != null && !$$2.d()) {
+         return $$2;
       } else {
-         return $$4;
+         throw a.createWithContext($$0, $$1);
       }
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return ey.b(n.a(true, false), $$1);
+   }
+
+   public Collection<String> getExamples() {
+      return b;
    }
 }

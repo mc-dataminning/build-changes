@@ -1,45 +1,74 @@
-public class afe implements zb<abn> {
-   public static final ys<vr, afe> a = zb.a(afe::a, afe::new);
-   private final long b;
-   private final long c;
+import java.util.Optional;
 
-   public afe(long $$0, long $$1, boolean $$2) {
-      this.b = $$0;
-      long $$3 = $$1;
-      if (!$$2) {
-         $$3 = -$$1;
-         if ($$3 == 0L) {
-            $$3 = -1L;
-         }
+public class afe implements zf<abt> {
+   public static final yw<wj, afe> a = zf.a(afe::a, afe::new);
+   public static final int b = 0;
+   public static final int c = 1;
+   public static final int d = 2;
+   private final String e;
+   private final wy f;
+   private final eyd.a g;
+   private final Optional<yo> h;
+   private final int i;
+
+   public afe(exs $$0, int $$1) {
+      this.e = $$0.b();
+      this.f = $$0.d();
+      this.g = $$0.h();
+      this.h = Optional.ofNullable($$0.f());
+      this.i = $$1;
+   }
+
+   private afe(wj $$0) {
+      this.e = $$0.p();
+      this.i = $$0.readByte();
+      if (this.i != 0 && this.i != 2) {
+         this.f = wx.a;
+         this.g = eyd.a.a;
+         this.h = Optional.empty();
+      } else {
+         this.f = xa.d.decode($$0);
+         this.g = $$0.b(eyd.a.class);
+         this.h = yq.d.decode($$0);
       }
-
-      this.c = $$3;
    }
 
-   private afe(vr $$0) {
-      this.b = $$0.readLong();
-      this.c = $$0.readLong();
-   }
-
-   private void a(vr $$0) {
-      $$0.b(this.b);
-      $$0.b(this.c);
+   private void a(wj $$0) {
+      $$0.a(this.e);
+      $$0.k(this.i);
+      if (this.i == 0 || this.i == 2) {
+         xa.d.encode($$0, this.f);
+         $$0.a(this.g);
+         yq.d.encode($$0, this.h);
+      }
    }
 
    @Override
-   public zd<afe> a() {
-      return afz.aO;
+   public zh<afe> a() {
+      return agf.aI;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public long b() {
-      return this.b;
+   public String b() {
+      return this.e;
    }
 
-   public long e() {
-      return this.c;
+   public wy e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.i;
+   }
+
+   public eyd.a g() {
+      return this.g;
+   }
+
+   public Optional<yo> h() {
+      return this.h;
    }
 }

@@ -1,37 +1,86 @@
-public class bqi<T> {
-   private final bqh a;
-   private final T b;
+public class bqi implements bqj {
+   private final bqj b;
+   private final bqj c;
 
-   public bqi(bqh $$0, T $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public bqi(bqj $$0, bqj $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public bqh a() {
-      return this.a;
+   @Override
+   public int b() {
+      return this.b.b() + this.c.b();
    }
 
-   public T b() {
-      return this.b;
+   @Override
+   public boolean c() {
+      return this.b.c() && this.c.c();
    }
 
-   public static <T> bqi<T> a(T $$0) {
-      return new bqi<>(bqh.a, $$0);
+   public boolean a(bqj $$0) {
+      return this.b == $$0 || this.c == $$0;
    }
 
-   public static <T> bqi<T> b(T $$0) {
-      return new bqi<>(bqh.c, $$0);
+   @Override
+   public cuo a(int $$0) {
+      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
    }
 
-   public static <T> bqi<T> c(T $$0) {
-      return new bqi<>(bqh.e, $$0);
+   @Override
+   public cuo a(int $$0, int $$1) {
+      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
    }
 
-   public static <T> bqi<T> d(T $$0) {
-      return new bqi<>(bqh.f, $$0);
+   @Override
+   public cuo b(int $$0) {
+      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
    }
 
-   public static <T> bqi<T> a(T $$0, boolean $$1) {
-      return $$1 ? a($$0) : b($$0);
+   @Override
+   public void a(int $$0, cuo $$1) {
+      if ($$0 >= this.b.b()) {
+         this.c.a($$0 - this.b.b(), $$1);
+      } else {
+         this.b.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public int ah_() {
+      return this.b.ah_();
+   }
+
+   @Override
+   public void e() {
+      this.b.e();
+      this.c.e();
+   }
+
+   @Override
+   public boolean a(cmv $$0) {
+      return this.b.a($$0) && this.c.a($$0);
+   }
+
+   @Override
+   public void d_(cmv $$0) {
+      this.b.d_($$0);
+      this.c.d_($$0);
+   }
+
+   @Override
+   public void c(cmv $$0) {
+      this.b.c($$0);
+      this.c.c($$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cuo $$1) {
+      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
+   }
+
+   @Override
+   public void a() {
+      this.b.a();
+      this.c.a();
    }
 }

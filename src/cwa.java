@@ -1,13 +1,11 @@
-public class cwa extends cty {
-   public cwa(cty.a $$0) {
+public class cwa extends cwf {
+   public cwa(cuj.a $$0) {
       super($$0);
    }
 
    @Override
-   public bqi<cud> a(dcg $$0, cml $$1, bqg $$2) {
-      cud $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(avr.c.b(this));
-      return bqi.a($$3, $$0.x_());
+   public bqr<cuo> a(dcu $$0, cmv $$1, bqp $$2) {
+      $$0.a(null, $$1.dv(), $$1.dx(), $$1.dB(), avo.yQ, avp.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

@@ -1,24 +1,11 @@
-import com.mojang.serialization.MapCodec;
-
-public class dir extends dje {
-   public static final MapCodec<dir> a = b(dir::new);
-
-   @Override
-   public MapCodec<dir> a() {
-      return a;
+public interface dir {
+   default void a(dcu $$0, jd $$1, dta $$2, dta $$3, cje $$4) {
    }
 
-   public dir(dsk.d $$0) {
-      super($$0);
+   default void a(dcu $$0, jd $$1, cje $$2) {
    }
 
-   @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(aE);
-   }
-
-   @Override
-   public dsl a(cxn $$0) {
-      return this.o().a(aE, $$0.g().g());
+   default brj a(bsq $$0) {
+      return $$0.dR().a($$0);
    }
 }

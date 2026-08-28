@@ -1,29 +1,13 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public class ffl extends ffm {
+   private final fcy b;
 
-public class ffl {
-   private final List<wz> a = Lists.newArrayList();
-
-   public void a(wz $$0) {
-      this.a.add($$0);
+   public ffl(fcy $$0, long $$1, wy $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
-   @Nullable
-   public wz a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : wz.a(this.a);
-      }
-   }
-
-   public wz b() {
-      wz $$0 = this.a();
-      return $$0 != null ? $$0 : wz.b;
-   }
-
-   public void c() {
-      this.a.clear();
+   @Override
+   protected void a(fbs $$0, long $$1) throws fdd {
+      $$0.d($$1, this.b.a);
    }
 }

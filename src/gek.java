@@ -1,70 +1,51 @@
-public class gek {
-   private int a;
-   private int b;
-   private int c;
-   private int d;
+public enum gek {
+   a(new gek.b(gek.a.f, gek.a.e, gek.a.a), new gek.b(gek.a.f, gek.a.e, gek.a.d), new gek.b(gek.a.c, gek.a.e, gek.a.d), new gek.b(gek.a.c, gek.a.e, gek.a.a)),
+   b(new gek.b(gek.a.f, gek.a.b, gek.a.d), new gek.b(gek.a.f, gek.a.b, gek.a.a), new gek.b(gek.a.c, gek.a.b, gek.a.a), new gek.b(gek.a.c, gek.a.b, gek.a.d)),
+   c(new gek.b(gek.a.c, gek.a.b, gek.a.d), new gek.b(gek.a.c, gek.a.e, gek.a.d), new gek.b(gek.a.f, gek.a.e, gek.a.d), new gek.b(gek.a.f, gek.a.b, gek.a.d)),
+   d(new gek.b(gek.a.f, gek.a.b, gek.a.a), new gek.b(gek.a.f, gek.a.e, gek.a.a), new gek.b(gek.a.c, gek.a.e, gek.a.a), new gek.b(gek.a.c, gek.a.b, gek.a.a)),
+   e(new gek.b(gek.a.f, gek.a.b, gek.a.d), new gek.b(gek.a.f, gek.a.e, gek.a.d), new gek.b(gek.a.f, gek.a.e, gek.a.a), new gek.b(gek.a.f, gek.a.b, gek.a.a)),
+   f(new gek.b(gek.a.c, gek.a.b, gek.a.a), new gek.b(gek.a.c, gek.a.e, gek.a.a), new gek.b(gek.a.c, gek.a.e, gek.a.d), new gek.b(gek.a.c, gek.a.b, gek.a.d));
 
-   public gek(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   private static final gek[] g = ad.a(new gek[6], $$0 -> {
+      $$0[gek.a.e] = a;
+      $$0[gek.a.b] = b;
+      $$0[gek.a.d] = c;
+      $$0[gek.a.a] = d;
+      $$0[gek.a.f] = e;
+      $$0[gek.a.c] = f;
+   });
+   private final gek.b[] h;
+
+   public static gek a(ji $$0) {
+      return g[$$0.d()];
    }
 
-   public gek a(gek $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      int $$3 = this.a + this.c;
-      int $$4 = this.b + this.d;
-      int $$5 = $$0.a();
-      int $$6 = $$0.b();
-      int $$7 = $$5 + $$0.c();
-      int $$8 = $$6 + $$0.d();
-      this.a = Math.max($$1, $$5);
-      this.b = Math.max($$2, $$6);
-      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
-      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
-      return this;
+   private gek(final gek.b... $$0) {
+      this.h = $$0;
    }
 
-   public int a() {
-      return this.a;
+   public gek.b a(int $$0) {
+      return this.h[$$0];
    }
 
-   public int b() {
-      return this.b;
+   public static final class a {
+      public static final int a = ji.d.d();
+      public static final int b = ji.b.d();
+      public static final int c = ji.f.d();
+      public static final int d = ji.c.d();
+      public static final int e = ji.a.d();
+      public static final int f = ji.e.d();
    }
 
-   public void a(int $$0) {
-      this.a = $$0;
-   }
+   public static class b {
+      public final int a;
+      public final int b;
+      public final int c;
 
-   public void b(int $$0) {
-      this.b = $$0;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public void d(int $$0) {
-      this.d = $$0;
-   }
-
-   public void a(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
+      b(int $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
    }
 }

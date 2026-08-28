@@ -1,42 +1,55 @@
-import com.mojang.datafixers.DSL.TypeReference;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.Const.PrimitiveType;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.PrimitiveCodec;
+import com.mojang.serialization.Dynamic;
+import java.util.Set;
 
-public class bht extends Schema {
-   public static final PrimitiveCodec<String> a = new PrimitiveCodec<String>() {
-      public <T> DataResult<String> read(DynamicOps<T> $$0, T $$1) {
-         return $$0.getStringValue($$1).map(bht::a);
+public class bht extends DataFix {
+   private static final Set<String> a = ImmutableSet.of(
+      "minecraft:andesite_wall",
+      "minecraft:brick_wall",
+      "minecraft:cobblestone_wall",
+      "minecraft:diorite_wall",
+      "minecraft:end_stone_brick_wall",
+      "minecraft:granite_wall",
+      new String[]{
+         "minecraft:mossy_cobblestone_wall",
+         "minecraft:mossy_stone_brick_wall",
+         "minecraft:nether_brick_wall",
+         "minecraft:prismarine_wall",
+         "minecraft:red_nether_brick_wall",
+         "minecraft:red_sandstone_wall",
+         "minecraft:sandstone_wall",
+         "minecraft:stone_brick_wall"
       }
+   );
 
-      public <T> T a(DynamicOps<T> $$0, String $$1) {
-         return (T)$$0.createString($$1);
-      }
-
-      @Override
-      public String toString() {
-         return "NamespacedString";
-      }
-   };
-   private static final Type<String> b = new PrimitiveType(a);
-
-   public bht(int $$0, Schema $$1) {
+   public bht(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public static String a(String $$0) {
-      akk $$1 = akk.a($$0);
-      return $$1 != null ? $$1.toString() : $$0;
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("WallPropertyFix", this.getInputSchema().getType(bgq.u), $$0 -> $$0.update(DSL.remainderFinder(), bht::a));
    }
 
-   public static Type<String> a() {
-      return b;
+   private static String a(String $$0) {
+      return "true".equals($$0) ? "low" : "none";
    }
 
-   public Type<?> getChoiceType(TypeReference $$0, String $$1) {
-      return super.getChoiceType($$0, a($$1));
+   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1) {
+      return $$0.update($$1, $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().result().map(bht::a).map($$0x::createString), $$0x));
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("Name").asString().result().filter(a::contains).isPresent();
+      return !$$1 ? $$0 : $$0.update("Properties", $$0x -> {
+         Dynamic<?> $$1x = a($$0x, "east");
+         $$1x = a((Dynamic<T>)$$1x, "west");
+         $$1x = a((Dynamic<T>)$$1x, "north");
+         return a((Dynamic<T>)$$1x, "south");
+      });
    }
 }

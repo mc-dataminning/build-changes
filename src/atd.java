@@ -1,31 +1,28 @@
-import io.netty.buffer.ByteBuf;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
 
-public record atd(String c, String d, String e) {
-   public static final ys<ByteBuf, atd> a = ys.a(yq.l, atd::b, yq.l, atd::c, yq.l, atd::d, atd::new);
-   public static final String b = "minecraft";
+public interface atd<T> extends atc<T> {
+   JsonObject a(T var1);
 
-   public static atd a(String $$0) {
-      return new atd("minecraft", $$0, aa.b().b());
-   }
+   static <T> atd<T> a(final String $$0, final Codec<T> $$1) {
+      return new atd<T>() {
+         @Override
+         public String a() {
+            return $$0;
+         }
 
-   public boolean a() {
-      return this.c.equals("minecraft");
-   }
+         @Override
+         public T a(JsonObject $$0x) {
+            return (T)$$1.parse(JsonOps.INSTANCE, $$0).getOrThrow(JsonParseException::new);
+         }
 
-   @Override
-   public String toString() {
-      return this.c + ":" + this.d + ":" + this.e;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public String c() {
-      return this.d;
-   }
-
-   public String d() {
-      return this.e;
+         @Override
+         public JsonObject a(T $$0x) {
+            return ((JsonElement)$$1.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IllegalArgumentException::new)).getAsJsonObject();
+         }
+      };
    }
 }

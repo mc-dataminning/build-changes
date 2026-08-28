@@ -1,73 +1,108 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+import com.mojang.logging.LogUtils;
+import java.time.Instant;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class xs {
-   private final String a;
-   private final List<xr> b;
-   private final Int2IntFunction c;
+   static final Logger a = LogUtils.getLogger();
+   @Nullable
+   xt b;
+   Instant c = Instant.EPOCH;
 
-   private xs(String $$0, List<xr> $$1, Int2IntFunction $$2) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      this.c = $$2;
+   public xs(UUID $$0, UUID $$1) {
+      this.b = xt.a($$0, $$1);
    }
 
-   public String a() {
-      return this.a;
+   public xs.c a(azb $$0) {
+      return $$1 -> {
+         xt $$2 = this.b;
+         if ($$2 == null) {
+            return null;
+         } else {
+            this.b = $$2.a();
+            return new xk($$0.sign($$2x -> xo.a($$2x, $$2, $$1)));
+         }
+      };
    }
 
-   public List<axs> a(int $$0, int $$1, boolean $$2) {
-      if ($$1 == 0) {
-         return ImmutableList.of();
-      } else {
-         List<axs> $$3 = Lists.newArrayList();
-         xr $$4 = this.b.get($$0);
-         int $$5 = $$0;
+   public xs.b a(final cmy $$0) {
+      final aza $$1 = $$0.a();
+      return new xs.b() {
+         @Override
+         public xo unpack(@Nullable xk $$0x, xr $$1x) throws xs.a {
+            if ($$0 == null) {
+               throw new xs.a(xs.a.a);
+            } else if ($$0.b().a()) {
+               throw new xs.a(xs.a.c);
+            } else {
+               xt $$2 = xs.this.b;
+               if ($$2 == null) {
+                  throw new xs.a(xs.a.b);
+               } else if ($$1.b().isBefore(xs.this.c)) {
+                  this.setChainBroken();
+                  throw new xs.a(xs.a.e);
+               } else {
+                  xs.this.c = $$1.b();
+                  xo $$3 = new xo($$2, $$0, $$1, null, xc.c);
+                  if (!$$3.a($$1)) {
+                     this.setChainBroken();
+                     throw new xs.a(xs.a.d);
+                  } else {
+                     if ($$3.a(Instant.now())) {
+                        xs.a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$1.a());
+                     }
 
-         for (int $$6 = 1; $$6 < $$1; $$6++) {
-            int $$7 = $$0 + $$6;
-            xr $$8 = this.b.get($$7);
-            if (!$$8.equals($$4)) {
-               String $$9 = this.a.substring($$5, $$7);
-               $$3.add($$2 ? axs.backward($$9, $$4, this.c) : axs.forward($$9, $$4));
-               $$4 = $$8;
-               $$5 = $$7;
+                     xs.this.b = $$2.a();
+                     return $$3;
+                  }
+               }
             }
          }
 
-         if ($$5 < $$0 + $$1) {
-            String $$10 = this.a.substring($$5, $$0 + $$1);
-            $$3.add($$2 ? axs.backward($$10, $$4, this.c) : axs.forward($$10, $$4));
+         @Override
+         public void setChainBroken() {
+            xs.this.b = null;
          }
+      };
+   }
 
-         return $$2 ? Lists.reverse($$3) : $$3;
+   public static class a extends xy {
+      static final wy a = wy.c("chat.disabled.missingProfileKey");
+      static final wy b = wy.c("chat.disabled.chain_broken");
+      static final wy c = wy.c("chat.disabled.expiredProfileKey");
+      static final wy d = wy.c("chat.disabled.invalid_signature");
+      static final wy e = wy.c("chat.disabled.out_of_order_chat");
+
+      public a(wy $$0) {
+         super($$0);
       }
    }
 
-   public static xs a(wz $$0) {
-      return a($$0, $$0x -> $$0x, $$0x -> $$0x);
+   @FunctionalInterface
+   public interface b {
+      static xs.b unsigned(UUID $$0, BooleanSupplier $$1) {
+         return ($$2, $$3) -> {
+            if ($$1.getAsBoolean()) {
+               throw new xs.a(xs.a.a);
+            } else {
+               return xo.a($$0, $$3.a());
+            }
+         };
+      }
+
+      xo unpack(@Nullable xk var1, xr var2) throws xs.a;
+
+      default void setChainBroken() {
+      }
    }
 
-   public static xs a(wz $$0, Int2IntFunction $$1, UnaryOperator<String> $$2) {
-      StringBuilder $$3 = new StringBuilder();
-      List<xr> $$4 = Lists.newArrayList();
-      $$0.a(($$2x, $$3x) -> {
-         azb.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
-            $$3.appendCodePoint($$4x);
-            int $$5 = Character.charCount($$4x);
+   @FunctionalInterface
+   public interface c {
+      xs.c a = $$0 -> null;
 
-            for (int $$6 = 0; $$6 < $$5; $$6++) {
-               $$4.add($$3xx);
-            }
-
-            return true;
-         });
-         return Optional.empty();
-      }, xr.a);
-      return new xs($$2.apply($$3.toString()), $$4, $$1);
+      @Nullable
+      xk pack(xr var1);
    }
 }

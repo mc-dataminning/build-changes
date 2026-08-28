@@ -1,41 +1,49 @@
-public record aii(int b, aiv c) implements zb<aih> {
-   public static final ys<vr, aii> a = zb.a(aii::a, aii::new);
-   private static final int d = 1048576;
+public record aii(int b, String c, int d, aih e) implements zf<ail> {
+   public static final yw<vv, aii> a = zf.a(aii::a, aii::new);
+   private static final int f = 255;
 
-   private aii(vr $$0) {
-      this($$0.l(), a($$0.q(), $$0));
+   @Deprecated
+   public aii(int b, String c, int d, aih e) {
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
-   private static aiv a(akk $$0, vr $$1) {
-      return b($$0, $$1);
+   private aii(vv $$0) {
+      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), aih.a($$0.l()));
    }
 
-   private static aix b(akk $$0, vr $$1) {
-      int $$2 = $$1.readableBytes();
-      if ($$2 >= 0 && $$2 <= 1048576) {
-         $$1.j($$2);
-         return new aix($$0);
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
-   }
-
-   private void a(vr $$0) {
+   private void a(vv $$0) {
       $$0.c(this.b);
-      $$0.a(this.c.a());
-      this.c.a($$0);
+      $$0.a(this.c);
+      $$0.l(this.d);
+      $$0.c(this.e.a());
    }
 
    @Override
-   public zd<aii> a() {
-      return ain.a;
+   public zh<aii> a() {
+      return aij.a;
    }
 
-   public void a(aih $$0) {
+   public void a(ail $$0) {
       $$0.a(this);
    }
 
-   public aiv e() {
+   @Override
+   public boolean d() {
+      return true;
+   }
+
+   public String e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public aih g() {
+      return this.e;
    }
 }

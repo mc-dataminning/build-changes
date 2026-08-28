@@ -1,11 +1,12 @@
-public class gls extends gku<chj, fwp<chj>> {
-   private static final akk a = new akk("textures/entity/sniffer/sniffer.png");
+public class gls extends glj<cft, fwg<cft>> {
+   private static final akq a = akq.b("textures/entity/pig/pig.png");
 
-   public gls(gjo.a $$0) {
-      super($$0, new fwp<>($$0.a(fxp.bu)), 1.1F);
+   public gls(gkd.a $$0) {
+      super($$0, new fwg<>($$0.a(fyd.aJ)), 0.7F);
+      this.a(new goq<>(this, new fwg<>($$0.a(fyd.aR)), akq.b("textures/entity/pig/pig_saddle.png")));
    }
 
-   public akk a(chj $$0) {
+   public akq a(cft $$0) {
       return a;
    }
 }

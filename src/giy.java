@@ -1,17 +1,16 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public abstract class giy<T extends cku, M extends fxw<T>> extends gku<T, M> {
+   private static final akq a = akq.b("textures/entity/zombie/zombie.png");
 
-public class giy<T extends cgv> extends gii<T, fue<T>> {
-   private static final Map<bsn<?>, akk> a = Maps.newHashMap(
-      ImmutableMap.of(bsn.z, new akk("textures/entity/horse/donkey.png"), bsn.at, new akk("textures/entity/horse/mule.png"))
-   );
-
-   public giy(gjo.a $$0, float $$1, fxo $$2) {
-      super($$0, new fue<>($$0.a($$2)), $$1);
+   protected giy(gkd.a $$0, M $$1, M $$2, M $$3) {
+      super($$0, $$1, 0.5F);
+      this.a(new gof<>(this, $$2, $$3, $$0.g()));
    }
 
-   public akk a(T $$0) {
-      return a.get($$0.am());
+   public akq a(cku $$0) {
+      return a;
+   }
+
+   protected boolean b(T $$0) {
+      return super.a($$0) || $$0.gt();
    }
 }

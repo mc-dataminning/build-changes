@@ -1,61 +1,42 @@
-public class fwl<T extends bte & cjv> extends fvd<T> {
-   public fwl(fxq $$0) {
-      super($$0);
+public class fwl<T extends bsq> extends fvn<T> {
+   private final fye a;
+   private final fye b;
+   private final fye f;
+
+   public fwl(fye $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_blue_fin");
+      this.f = $$0.b("right_blue_fin");
    }
 
-   public static fxw e() {
-      fxy $$0 = fvd.a(fxu.a, 0.0F);
-      fxz $$1 = $$0.a();
-      a($$1);
-      return fxw.a($$0, 64, 32);
-   }
-
-   protected static void a(fxz $$0) {
-      $$0.a("right_arm", fxv.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fxs.a(-5.0F, 2.0F, 0.0F));
-      $$0.a("left_arm", fxv.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fxs.a(5.0F, 2.0F, 0.0F));
-      $$0.a("right_leg", fxv.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fxs.a(-2.0F, 12.0F, 0.0F));
-      $$0.a("left_leg", fxv.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fxs.a(2.0F, 12.0F, 0.0F));
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fvd.a.a;
-      this.r = fvd.a.a;
-      cud $$4 = $$0.b(bqg.a);
-      if ($$4.a(cug.ov) && $$0.ge()) {
-         if ($$0.fs() == bsw.b) {
-            this.s = fvd.a.d;
-         } else {
-            this.r = fvd.a.d;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      cud $$6 = $$0.eV();
-      if ($$0.ge() && ($$6.e() || !$$6.a(cug.ov))) {
-         float $$7 = ayg.a(this.c * (float) Math.PI);
-         float $$8 = ayg.a((1.0F - (1.0F - this.c) * (1.0F - this.c)) * (float) Math.PI);
-         this.n.g = 0.0F;
-         this.o.g = 0.0F;
-         this.n.f = -(0.1F - $$7 * 0.6F);
-         this.o.f = 0.1F - $$7 * 0.6F;
-         this.n.e = (float) (-Math.PI / 2);
-         this.o.e = (float) (-Math.PI / 2);
-         this.n.e -= $$7 * 1.2F - $$8 * 0.4F;
-         this.o.e -= $$7 * 1.2F - $$8 * 0.4F;
-         ftn.a(this.n, this.o, $$3);
-      }
+   public static fyk b() {
+      fym $$0 = new fym();
+      fyn $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", fyj.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fyg.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", fyj.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fyg.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", fyj.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fyg.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", fyj.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fyg.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", fyj.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), fyg.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", fyj.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fyg.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", fyj.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fyg.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", fyj.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fyg.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", fyj.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fyg.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", fyj.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fyg.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", fyj.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fyg.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", fyj.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fyg.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", fyj.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fyg.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return fyk.a($$0, 32, 32);
    }
 
    @Override
-   public void a(bsw $$0, fao $$1) {
-      float $$2 = $$0 == bsw.b ? 1.0F : -1.0F;
-      fxq $$3 = this.a($$0);
-      $$3.b += $$2;
-      $$3.a($$1);
-      $$3.b -= $$2;
+   public fye a() {
+      return this.a;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.g = -0.2F + 0.4F * ayn.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * ayn.a($$3 * 0.2F);
    }
 }

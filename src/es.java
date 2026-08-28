@@ -1,32 +1,34 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.ResultConsumer;
-import com.mojang.brigadier.exceptions.CommandExceptionType;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import javax.annotation.Nullable;
+public interface es {
+   es a = new es() {
+      @Override
+      public void a(wy $$0) {
+      }
 
-public interface es<T extends es<T>> {
-   boolean c(int var1);
+      @Override
+      public boolean k_() {
+         return false;
+      }
 
-   T b(en var1);
+      @Override
+      public boolean w_() {
+         return false;
+      }
 
-   en p();
+      @Override
+      public boolean U_() {
+         return false;
+      }
+   };
 
-   default T a_() {
-      return this.b(en.a);
-   }
+   void a(wy var1);
 
-   CommandDispatcher<T> x();
+   boolean k_();
 
-   void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable hs var4);
+   boolean w_();
 
-   boolean y();
+   boolean U_();
 
-   default void a(CommandSyntaxException $$0, boolean $$1, @Nullable hs $$2) {
-      this.a($$0.getType(), $$0.getRawMessage(), $$1, $$2);
-   }
-
-   static <T extends es<T>> ResultConsumer<T> b_() {
-      return ($$0, $$1, $$2) -> ((es)$$0.getSource()).p().onResult($$1, $$2);
+   default boolean l_() {
+      return false;
    }
 }

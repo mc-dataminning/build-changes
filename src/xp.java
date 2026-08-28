@@ -1,36 +1,44 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.SignatureException;
+import com.mojang.authlib.GameProfile;
+import java.time.Duration;
 import java.util.UUID;
-import javax.annotation.Nullable;
 
-public record xp(int b, UUID c, UUID d) {
-   public static final Codec<xp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axo.k.fieldOf("index").forGetter(xp::b), kd.a.fieldOf("sender").forGetter(xp::c), kd.a.fieldOf("session_id").forGetter(xp::d))
-            .apply($$0, xp::new)
-   );
-
-   public static xp a(UUID $$0) {
-      return a($$0, ac.e);
+public record xp(UUID a, cmy b) {
+   public xu a(Duration $$0) {
+      return new xu.a(this.b.a(), () -> this.b.b().a($$0));
    }
 
-   public static xp a(UUID $$0, UUID $$1) {
-      return new xp(0, $$0, $$1);
+   public xs.b a(UUID $$0) {
+      return new xs($$0, this.a).a(this.b);
    }
 
-   public void a(ays.a $$0) throws SignatureException {
-      $$0.update(kd.b(this.c));
-      $$0.update(kd.b(this.d));
-      $$0.update(Ints.toByteArray(this.b));
+   public xp.a a() {
+      return new xp.a(this.a, this.b.b());
    }
 
-   public boolean a(xp $$0) {
-      return this.b > $$0.b() && this.c.equals($$0.c()) && this.d.equals($$0.d());
+   public boolean b() {
+      return this.b.b().a();
    }
 
-   @Nullable
-   public xp a() {
-      return this.b == Integer.MAX_VALUE ? null : new xp(this.b + 1, this.c, this.d);
+   public UUID c() {
+      return this.a;
+   }
+
+   public cmy d() {
+      return this.b;
+   }
+
+   public static record a(UUID a, cmy.a b) {
+      public static xp.a a(vv $$0) {
+         return new xp.a($$0.n(), new cmy.a($$0));
+      }
+
+      public static void a(vv $$0, xp.a $$1) {
+         $$0.a($$1.a);
+         $$1.b.a($$0);
+      }
+
+      public xp a(GameProfile $$0, aza $$1) throws cmy.b {
+         return new xp(this.a, cmy.a($$1, $$0.getId(), this.b));
+      }
    }
 }

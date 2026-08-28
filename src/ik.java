@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.brigadier.CommandDispatcher;
+import java.util.List;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ik {
+public record ik<T>(akq a, List<hw<T>> b) implements ig<T>, ii<T> {
+   @Override
+   public ii<T> a(@Nullable ua $$0, CommandDispatcher<T> $$1) throws ew {
+      return this;
+   }
 }

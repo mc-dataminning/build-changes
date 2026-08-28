@@ -1,76 +1,167 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class fdz extends gvu {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wu b = wu.c("mco.terms.title");
-   private static final wu c = wu.c("mco.terms.sentence.1");
-   private static final wu A = wt.a().b(wu.c("mco.terms.sentence.2").c(xr.a.c(true)));
-   private final fnl B;
-   private final fbv C;
-   private boolean D;
+public class fdz extends gwj {
+   private static final akq a = akq.b("icon/unseen_notification");
+   private static final akq b = akq.b("icon/news");
+   private static final akq c = akq.b("icon/invite");
+   private static final akq A = akq.b("icon/trial_available");
+   private final CompletableFuture<Boolean> B = fbm.a().thenApply($$0 -> $$0.a() == fbm.b.a);
+   @Nullable
+   private fep.c C;
+   @Nullable
+   private fdz.a D;
+   private volatile int E;
+   private static boolean F;
+   private static boolean G;
+   private static boolean H;
+   private final fdz.a I = new fdz.a() {
+      @Override
+      public fep.c a(fdg $$0) {
+         fep.c $$1 = $$0.a.a();
+         fdz.this.a($$0, $$1);
+         fdz.this.b($$0, $$1);
+         return $$1;
+      }
 
-   public fdz(fnl $$0, fbv $$1) {
-      super(b);
-      this.B = $$0;
-      this.C = $$1;
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final fdz.a J = new fdz.a() {
+      @Override
+      public fep.c a(fdg $$0) {
+         fep.c $$1 = $$0.a.a();
+         fdz.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public fdz() {
+      super(fga.a);
    }
 
    @Override
    public void aP_() {
-      int $$0 = this.m / 4 - 2;
-      this.c(fhu.a(wu.c("mco.terms.buttons.agree"), $$0x -> this.D()).a(this.m / 4, g(12), $$0, 20).a());
-      this.c(fhu.a(wu.c("mco.terms.buttons.disagree"), $$0x -> this.l.a(this.B)).a(this.m / 2 + 4, g(12), $$0, 20).a());
+      if (this.C != null) {
+         this.C.a();
+      }
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.l.a(this.B);
-         return true;
+   public void aH_() {
+      super.aH_();
+      this.l.aY().b.a();
+   }
+
+   @Nullable
+   private fdz.a D() {
+      boolean $$0 = this.F() && this.B.getNow(false);
+      if (!$$0) {
+         return null;
       } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   private void D() {
-      fbe $$0 = fbe.a();
-
-      try {
-         $$0.j();
-         this.l.a(new fdl(this.B, new feu(this.B, this.C)));
-      } catch (fcr var3) {
-         a.error("Couldn't agree to TOS", var3);
+         return this.E() ? this.I : this.J;
       }
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.D) {
-         this.l.o.a("https://aka.ms/MinecraftRealmsTerms");
-         ac.k().a("https://aka.ms/MinecraftRealmsTerms");
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   public void e() {
+      fdz.a $$0 = this.D();
+      if (!Objects.equals(this.D, $$0)) {
+         this.D = $$0;
+         if (this.D != null) {
+            this.C = this.D.a(this.l.aY());
+         } else {
+            this.C = null;
+         }
+      }
+
+      if (this.C != null) {
+         this.C.b();
       }
    }
 
-   @Override
-   public wu i() {
-      return wt.a(super.i(), c).b(wt.v).b(A);
+   private boolean E() {
+      return this.l.m.T().c();
+   }
+
+   private boolean F() {
+      return this.l.y instanceof fnz;
    }
 
    @Override
-   public void a(fhh $$0, int $$1, int $$2, float $$3) {
+   public void a(fht $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 17, -1);
-      $$0.a(this.o, c, this.m / 2 - 120, g(5), -1, false);
-      int $$4 = this.o.a(c);
-      int $$5 = this.m / 2 - 121 + $$4;
-      int $$6 = g(5);
-      int $$7 = $$5 + this.o.a(A) + 1;
-      int $$8 = $$6 + 1 + 9;
-      this.D = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
-      $$0.a(this.o, A, this.m / 2 - 120 + $$4, g(5), this.D ? 7107012 : 3368635, false);
+      if (this.B.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(fht $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(fht $$0) {
+      int $$1 = this.E;
+      int $$2 = 24;
+      int $$3 = this.n / 4 + 48;
+      int $$4 = this.m / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (H) {
+         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
+      }
+
+      if (this.D != null && this.D.a()) {
+         if (G) {
+            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if ($$1 != 0) {
+            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if (F) {
+            $$0.a(A, $$6 - 10, $$5 + 4, 8, 8);
+         }
+      }
+   }
+
+   void a(fdg $$0, fep.c $$1) {
+      $$1.a($$0.d, $$0x -> this.E = $$0x);
+      $$1.a($$0.e, $$0x -> F = $$0x);
+      $$1.a($$0.f, $$1x -> {
+         $$0.h.a($$1x);
+         G = $$0.h.a();
+      });
+   }
+
+   void b(fdg $$0, fep.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         H = false;
+
+         for (fci $$1x : $$0x) {
+            if (!$$1x.a()) {
+               H = true;
+               break;
+            }
+         }
+      });
+   }
+
+   interface a {
+      fep.c a(fdg var1);
+
+      boolean a();
    }
 }

@@ -1,83 +1,30 @@
-public class gat extends gct {
-   gat(fyl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.7F;
-      this.u = 0.5F;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4 * 0.4;
-      this.k += $$5 * 0.4;
-      this.l += $$6 * 0.4;
-      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.D *= 0.75F;
-      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
-      this.n = false;
-      this.a();
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+
+public class gat {
+   public static final gat a = new gat(gas.b, gau.createDnsSrvRedirectHandler(), gap.a());
+   private final gas b;
+   private final gau c;
+   private final gap d;
+
+   @VisibleForTesting
+   gat(gas $$0, gau $$1, gap $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * ayg.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   public Optional<gaq> a(gar $$0) {
+      Optional<gaq> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<gar> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-   @Override
-   public void a() {
-      super.a();
-      this.w *= 0.96F;
-      this.x *= 0.9F;
-   }
-
-   @Override
-   public gbx b() {
-      return gbx.b;
-   }
-
-   public static class a implements gbw<ln> {
-      private final gco a;
-
-      public a(gco $$0) {
-         this.a = $$0;
-      }
-
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gat $$8 = new gat($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
-         $$8.a(20);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements gbw<ln> {
-      private final gco a;
-
-      public b(gco $$0) {
-         this.a = $$0;
-      }
-
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gat $$8 = new gat($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.v *= 0.3F;
-         $$8.w *= 0.8F;
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class c implements gbw<ln> {
-      private final gco a;
-
-      public c(gco $$0) {
-         this.a = $$0;
-      }
-
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gat $$8 = new gat($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+         return $$1;
+      } else {
+         return Optional.empty();
       }
    }
 }

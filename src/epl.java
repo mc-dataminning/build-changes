@@ -1,141 +1,91 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class epl implements epn {
-   private static final Logger b = LogUtils.getLogger();
-   private final dcg c;
-   private final int d;
-   private final ArrayDeque<epl.c> e = new ArrayDeque<>();
-   private final List<epl.c> f = new ArrayList<>();
-   private int g = 0;
+public abstract class epl {
+   protected epr a;
+   protected btn b;
+   protected final Int2ObjectMap<epk> c = new Int2ObjectOpenHashMap();
+   protected int d;
+   protected int e;
+   protected int f;
+   protected boolean g;
+   protected boolean h;
+   protected boolean i;
+   protected boolean j;
 
-   public epl(dcg $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public void a(ddh $$0, btn $$1) {
+      this.a = new epr($$0, $$1);
+      this.b = $$1;
+      this.c.clear();
+      this.d = ayn.d($$1.dk() + 1.0F);
+      this.e = ayn.d($$1.dl() + 1.0F);
+      this.f = ayn.d($$1.dk() + 1.0F);
    }
 
-   @Override
-   public void a(jf $$0, dsl $$1, ja $$2, ja $$3, int $$4, int $$5) {
-      this.a($$2, new epl.d($$0, $$1, $$2.i(), $$3.i(), $$4, $$5));
+   public void b() {
+      this.a = null;
+      this.b = null;
    }
 
-   @Override
-   public void a(ja $$0, dfi $$1, ja $$2) {
-      this.a($$0, new epl.e($$0, $$1, $$2.i()));
+   protected epk b(jd $$0) {
+      return this.c($$0.u(), $$0.v(), $$0.w());
    }
 
-   @Override
-   public void a(dsl $$0, ja $$1, dfi $$2, ja $$3, boolean $$4) {
-      this.a($$1, new epl.a($$0, $$1.i(), $$2, $$3.i(), $$4));
+   protected epk c(int $$0, int $$1, int $$2) {
+      return (epk)this.c.computeIfAbsent(epk.b($$0, $$1, $$2), $$3 -> new epk($$0, $$1, $$2));
    }
 
-   @Override
-   public void a(ja $$0, dfi $$1, @Nullable jf $$2) {
-      this.a($$0, new epl.b($$0.i(), $$1, $$2));
+   public abstract epk a();
+
+   public abstract ept a(double var1, double var3, double var5);
+
+   protected ept b(double $$0, double $$1, double $$2) {
+      return new ept(this.c(ayn.a($$0), ayn.a($$1), ayn.a($$2)));
    }
 
-   private void a(ja $$0, epl.c $$1) {
-      boolean $$2 = this.g > 0;
-      boolean $$3 = this.d >= 0 && this.g >= this.d;
-      this.g++;
-      if (!$$3) {
-         if ($$2) {
-            this.f.add($$1);
-         } else {
-            this.e.push($$1);
-         }
-      } else if (this.g - 1 == this.d) {
-         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
-      }
+   public abstract int a(epk[] var1, epk var2);
 
-      if (!$$2) {
-         this.a();
-      }
+   public abstract epp a(epr var1, int var2, int var3, int var4, btn var5);
+
+   public abstract epp a(epr var1, int var2, int var3, int var4);
+
+   public epp a(btn $$0, jd $$1) {
+      return this.a(new epr($$0.dQ(), $$0), $$1.u(), $$1.v(), $$1.w());
    }
 
-   private void a() {
-      try {
-         while (!this.e.isEmpty() || !this.f.isEmpty()) {
-            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
-               this.e.push(this.f.get($$0));
-            }
-
-            this.f.clear();
-            epl.c $$1 = this.e.peek();
-
-            while (this.f.isEmpty()) {
-               if (!$$1.a(this.c)) {
-                  this.e.pop();
-                  break;
-               }
-            }
-         }
-      } finally {
-         this.e.clear();
-         this.f.clear();
-         this.g = 0;
-      }
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 
-   static record a(dsl a, ja b, dfi c, ja d, boolean e) implements epl.c {
-      @Override
-      public boolean a(dcg $$0) {
-         epn.a($$0, this.a, this.b, this.c, this.d, this.e);
-         return false;
-      }
+   public void b(boolean $$0) {
+      this.h = $$0;
    }
 
-   static final class b implements epl.c {
-      private final ja a;
-      private final dfi b;
-      @Nullable
-      private final jf c;
-      private int d = 0;
-
-      b(ja $$0, dfi $$1, @Nullable jf $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         if (epn.a[this.d] == $$2) {
-            this.d++;
-         }
-      }
-
-      @Override
-      public boolean a(dcg $$0) {
-         ja $$1 = this.a.a(epn.a[this.d++]);
-         dsl $$2 = $$0.a_($$1);
-         epn.a($$0, $$2, $$1, this.b, this.a, false);
-         if (this.d < epn.a.length && epn.a[this.d] == this.c) {
-            this.d++;
-         }
-
-         return this.d < epn.a.length;
-      }
+   public void c(boolean $$0) {
+      this.i = $$0;
    }
 
-   interface c {
-      boolean a(dcg var1);
+   public void d(boolean $$0) {
+      this.j = $$0;
    }
 
-   static record d(jf a, dsl b, ja c, ja d, int e, int f) implements epl.c {
-      @Override
-      public boolean a(dcg $$0) {
-         epn.a($$0, this.a, this.b, this.c, this.d, this.e, this.f);
-         return false;
-      }
+   public boolean d() {
+      return this.g;
    }
 
-   static record e(ja a, dfi b, ja c) implements epl.c {
-      @Override
-      public boolean a(dcg $$0) {
-         dsl $$1 = $$0.a_(this.a);
-         epn.a($$0, $$1, this.a, this.b, this.c, false);
-         return false;
-      }
+   public boolean e() {
+      return this.h;
+   }
+
+   public boolean f() {
+      return this.i;
+   }
+
+   public boolean g() {
+      return this.j;
+   }
+
+   public static boolean a(dta $$0) {
+      return $$0.a(awd.aK) || $$0.a(dfy.H) || $$0.a(dfy.kJ) || dgk.g($$0) || $$0.a(dfy.fv);
    }
 }

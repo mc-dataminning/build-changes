@@ -1,62 +1,32 @@
-public class cxo extends cxn {
-   private final jf b;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   public cxo(dcg $$0, ja $$1, jf $$2, cud $$3, jf $$4) {
-      super($$0, null, bqg.a, $$3, new ewd(ewh.c($$1), $$4, $$1, false));
-      this.b = $$2;
-   }
+public record cxo(Optional<jl> c, boolean d) {
+   public static final Codec<cxo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jl.b.optionalFieldOf("target").forGetter(cxo::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(cxo::b)).apply($$0, cxo::new)
+   );
+   public static final yw<ByteBuf, cxo> b = yw.a(jl.c.a(yu::a), cxo::a, yu.b, cxo::b, cxo::new);
 
-   @Override
-   public ja a() {
-      return this.j().a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().a()).a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public jf d() {
-      return jf.a;
-   }
-
-   @Override
-   public jf[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new jf[]{jf.a, jf.c, jf.f, jf.d, jf.e, jf.b};
-         case b:
-            return new jf[]{jf.a, jf.b, jf.c, jf.f, jf.d, jf.e};
-         case c:
-            return new jf[]{jf.a, jf.c, jf.f, jf.e, jf.b, jf.d};
-         case d:
-            return new jf[]{jf.a, jf.d, jf.f, jf.e, jf.b, jf.c};
-         case e:
-            return new jf[]{jf.a, jf.e, jf.d, jf.b, jf.c, jf.f};
-         case f:
-            return new jf[]{jf.a, jf.f, jf.d, jf.b, jf.c, jf.e};
+   public cxo a(aqt $$0) {
+      if (this.d && !this.c.isEmpty()) {
+         if (this.c.get().a() != $$0.af()) {
+            return this;
+         } else {
+            jd $$1 = this.c.get().b();
+            return $$0.k($$1) && $$0.y().a(ceu.s, $$1) ? this : new cxo(Optional.empty(), true);
+         }
+      } else {
+         return this;
       }
    }
 
-   @Override
-   public jf g() {
-      return this.b.o() == jf.a.b ? jf.c : this.b;
+   public Optional<jl> a() {
+      return this.c;
    }
 
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   public boolean b() {
+      return this.d;
    }
 }

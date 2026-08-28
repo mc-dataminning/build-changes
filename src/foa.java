@@ -1,598 +1,289 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public abstract class foa<T extends cpi> extends fnl implements fpg<T> {
-   public static final akk a = new akk("textures/gui/container/inventory.png");
-   private static final float D = 100.0F;
-   private static final int E = 500;
-   public static final int b = 100;
-   private static final int F = 200;
-   protected int c = 176;
-   protected int q = 166;
-   protected int r;
-   protected int s;
-   protected int u;
-   protected int v;
-   protected final T w;
-   protected final wu x;
-   @Nullable
-   protected cre y;
-   @Nullable
-   private cre G;
-   @Nullable
-   private cre H;
-   @Nullable
-   private cre I;
-   @Nullable
-   private cre J;
-   protected int z;
-   protected int A;
-   private boolean K;
-   private cud L = cud.l;
-   private int M;
-   private int N;
-   private long O;
-   private cud P = cud.l;
-   private long Q;
-   protected final Set<cre> B = Sets.newHashSet();
-   protected boolean C;
-   private int R;
-   private int S;
-   private boolean T;
-   private int U;
-   private long V;
-   private int W;
-   private boolean X;
-   private cud Y = cud.l;
+public class foa extends fnx {
+   private static final Logger a = LogUtils.getLogger();
+   private static final akq b = akq.b("textures/misc/credits_vignette.png");
+   private static final wy c = wy.b("============").a(n.p);
+   private static final String q = "           ";
+   private static final String r = "" + n.p + n.q + n.k + n.l;
+   private static final float s = 5.0F;
+   private static final float u = 15.0F;
+   private static final akq v = akq.b("texts/end.txt");
+   private static final akq w = akq.b("texts/credits.json");
+   private static final akq x = akq.b("texts/postcredits.txt");
+   private final boolean y;
+   private final Runnable z;
+   private float A;
+   private List<axz> B;
+   private IntSet C;
+   private int D;
+   private boolean E;
+   private final IntSet F = new IntOpenHashSet();
+   private float G;
+   private final float H;
+   private int I;
+   private final fix J = new fix(false);
 
-   public foa(T $$0, cmk $$1, wu $$2) {
-      super($$2);
-      this.w = $$0;
-      this.x = $$1.O_();
-      this.T = true;
-      this.r = 8;
-      this.s = 6;
-      this.u = 8;
-      this.v = this.q - 94;
-   }
-
-   @Override
-   protected void aP_() {
-      this.z = (this.m - this.c) / 2;
-      this.A = (this.n - this.q) / 2;
-   }
-
-   @Override
-   public void a(fhh $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.z;
-      int $$5 = this.A;
-      super.a($$0, $$1, $$2, $$3);
-      RenderSystem.disableDepthTest();
-      $$0.c().a();
-      $$0.c().a((float)$$4, (float)$$5, 0.0F);
-      this.y = null;
-
-      for (int $$6 = 0; $$6 < this.w.i.size(); $$6++) {
-         cre $$7 = this.w.i.get($$6);
-         if ($$7.d()) {
-            this.a($$0, $$7);
-         }
-
-         if (this.a($$7, (double)$$1, (double)$$2) && $$7.d()) {
-            this.y = $$7;
-            int $$8 = $$7.e;
-            int $$9 = $$7.f;
-            if (this.y.e()) {
-               a($$0, $$8, $$9, 0);
-            }
-         }
-      }
-
-      this.b($$0, $$1, $$2);
-      cud $$10 = this.L.e() ? this.w.g() : this.L;
-      if (!$$10.e()) {
-         int $$11 = 8;
-         int $$12 = this.L.e() ? 8 : 16;
-         String $$13 = null;
-         if (!this.L.e() && this.K) {
-            $$10 = $$10.c(ayg.f((float)$$10.H() / 2.0F));
-         } else if (this.C && this.B.size() > 1) {
-            $$10 = $$10.c(this.U);
-            if ($$10.e()) {
-               $$13 = n.o + "0";
-            }
-         }
-
-         this.a($$0, $$10, $$1 - $$4 - 8, $$2 - $$5 - $$12, $$13);
-      }
-
-      if (!this.P.e()) {
-         float $$14 = (float)(ac.c() - this.O) / 100.0F;
-         if ($$14 >= 1.0F) {
-            $$14 = 1.0F;
-            this.P = cud.l;
-         }
-
-         int $$15 = this.H.e - this.M;
-         int $$16 = this.H.f - this.N;
-         int $$17 = this.M + (int)((float)$$15 * $$14);
-         int $$18 = this.N + (int)((float)$$16 * $$14);
-         this.a($$0, this.P, $$17, $$18, null);
-      }
-
-      $$0.c().b();
-      RenderSystem.enableDepthTest();
-   }
-
-   @Override
-   public void b(fhh $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-      this.a($$0, $$3, $$1, $$2);
-   }
-
-   public static void a(fhh $$0, int $$1, int $$2, int $$3) {
-      $$0.a(gen.E(), $$1, $$2, $$1 + 16, $$2 + 16, -2130706433, -2130706433, $$3);
-   }
-
-   protected void a(fhh $$0, int $$1, int $$2) {
-      if (this.w.g().e() && this.y != null && this.y.h()) {
-         cud $$3 = this.y.g();
-         $$0.a(this.o, this.a($$3), $$3.b(), $$1, $$2);
-      }
-   }
-
-   protected List<wu> a(cud $$0) {
-      return a(this.l, $$0);
-   }
-
-   private void a(fhh $$0, cud $$1, int $$2, int $$3, String $$4) {
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 232.0F);
-      $$0.a($$1, $$2, $$3);
-      $$0.a(this.o, $$1, $$2, $$3 - (this.L.e() ? 0 : 8), $$4);
-      $$0.c().b();
-   }
-
-   protected void b(fhh $$0, int $$1, int $$2) {
-      $$0.a(this.o, this.k, this.r, this.s, 4210752, false);
-      $$0.a(this.o, this.x, this.u, this.v, 4210752, false);
-   }
-
-   protected abstract void a(fhh var1, float var2, int var3, int var4);
-
-   protected void a(fhh $$0, cre $$1) {
-      int $$2 = $$1.e;
-      int $$3 = $$1.f;
-      cud $$4 = $$1.g();
-      boolean $$5 = false;
-      boolean $$6 = $$1 == this.G && !this.L.e() && !this.K;
-      cud $$7 = this.w.g();
-      String $$8 = null;
-      if ($$1 == this.G && !this.L.e() && this.K && !$$4.e()) {
-         $$4 = $$4.c($$4.H() / 2);
-      } else if (this.C && this.B.contains($$1) && !$$7.e()) {
-         if (this.B.size() == 1) {
-            return;
-         }
-
-         if (cpi.a($$1, $$7, true) && this.w.b($$1)) {
-            $$5 = true;
-            int $$9 = Math.min($$7.j(), $$1.a_($$7));
-            int $$10 = $$1.g().e() ? 0 : $$1.g().H();
-            int $$11 = cpi.a(this.B, this.R, $$7) + $$10;
-            if ($$11 > $$9) {
-               $$11 = $$9;
-               $$8 = n.o.toString() + $$9;
-            }
-
-            $$4 = $$7.c($$11);
-         } else {
-            this.B.remove($$1);
-            this.J();
-         }
-      }
-
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 100.0F);
-      if ($$4.e() && $$1.d()) {
-         Pair<akk, akk> $$12 = $$1.b();
-         if ($$12 != null) {
-            gpq $$13 = this.l.a((akk)$$12.getFirst()).apply((akk)$$12.getSecond());
-            $$0.a($$2, $$3, 0, 16, 16, $$13);
-            $$6 = true;
-         }
-      }
-
-      if (!$$6) {
-         if ($$5) {
-            $$0.a($$2, $$3, $$2 + 16, $$3 + 16, -2130706433);
-         }
-
-         int $$14 = $$1.e + $$1.f * this.c;
-         if ($$1.f()) {
-            $$0.b($$4, $$2, $$3, $$14);
-         } else {
-            $$0.a($$4, $$2, $$3, $$14);
-         }
-
-         $$0.a(this.o, $$4, $$2, $$3, $$8);
-      }
-
-      $$0.c().b();
-   }
-
-   private void J() {
-      cud $$0 = this.w.g();
-      if (!$$0.e() && this.C) {
-         if (this.R == 2) {
-            this.U = $$0.j();
-         } else {
-            this.U = $$0.H();
-
-            for (cre $$1 : this.B) {
-               cud $$2 = $$1.g();
-               int $$3 = $$2.e() ? 0 : $$2.H();
-               int $$4 = Math.min($$0.j(), $$1.a_($$0));
-               int $$5 = Math.min(cpi.a(this.B, this.R, $$0) + $$3, $$4);
-               this.U -= $$5 - $$3;
-            }
-         }
-      }
-   }
-
-   @Nullable
-   private cre b(double $$0, double $$1) {
-      for (int $$2 = 0; $$2 < this.w.i.size(); $$2++) {
-         cre $$3 = this.w.i.get($$2);
-         if (this.a($$3, $$0, $$1) && $$3.d()) {
-            return $$3;
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
+   public foa(boolean $$0, Runnable $$1) {
+      super(fga.a);
+      this.y = $$0;
+      this.z = $$1;
+      if (!$$0) {
+         this.H = 0.75F;
       } else {
-         boolean $$3 = this.l.m.I.a($$2) && this.l.q.f();
-         cre $$4 = this.b($$0, $$1);
-         long $$5 = ac.c();
-         this.X = this.J == $$4 && $$5 - this.V < 250L && this.W == $$2;
-         this.T = false;
-         if ($$2 != 0 && $$2 != 1 && !$$3) {
-            this.a($$2);
-         } else {
-            int $$6 = this.z;
-            int $$7 = this.A;
-            boolean $$8 = this.a($$0, $$1, $$6, $$7, $$2);
-            int $$9 = -1;
-            if ($$4 != null) {
-               $$9 = $$4.d;
-            }
-
-            if ($$8) {
-               $$9 = -999;
-            }
-
-            if (this.l.m.Z().c() && $$8 && this.w.g().e()) {
-               this.d();
-               return true;
-            }
-
-            if ($$9 != -1) {
-               if (this.l.m.Z().c()) {
-                  if ($$4 != null && $$4.h()) {
-                     this.G = $$4;
-                     this.L = cud.l;
-                     this.K = $$2 == 1;
-                  } else {
-                     this.G = null;
-                  }
-               } else if (!this.C) {
-                  if (this.w.g().e()) {
-                     if ($$3) {
-                        this.a($$4, $$9, $$2, cps.d);
-                     } else {
-                        boolean $$10 = $$9 != -999 && (ezj.a(ffw.Q().aM().i(), 340) || ezj.a(ffw.Q().aM().i(), 344));
-                        cps $$11 = cps.a;
-                        if ($$10) {
-                           this.Y = $$4 != null && $$4.h() ? $$4.g().s() : cud.l;
-                           $$11 = cps.b;
-                        } else if ($$9 == -999) {
-                           $$11 = cps.e;
-                        }
-
-                        this.a($$4, $$9, $$2, $$11);
-                     }
-
-                     this.T = true;
-                  } else {
-                     this.C = true;
-                     this.S = $$2;
-                     this.B.clear();
-                     if ($$2 == 0) {
-                        this.R = 0;
-                     } else if ($$2 == 1) {
-                        this.R = 1;
-                     } else if ($$3) {
-                        this.R = 2;
-                     }
-                  }
-               }
-            }
-         }
-
-         this.J = $$4;
-         this.V = $$5;
-         this.W = $$2;
-         return true;
+         this.H = 0.5F;
       }
+
+      this.I = 1;
+      this.G = this.H;
    }
 
-   private void a(int $$0) {
-      if (this.y != null && this.w.g().e()) {
-         if (this.l.m.E.a($$0)) {
-            this.a(this.y, this.y.d, 40, cps.c);
-            return;
-         }
-
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            if (this.l.m.T[$$1].a($$0)) {
-               this.a(this.y, this.y.d, $$1, cps.c);
-            }
-         }
-      }
-   }
-
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      return $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.q);
+   private float m() {
+      return this.E ? this.H * (5.0F + (float)this.F.size() * 15.0F) * (float)this.I : this.H * (float)this.I;
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      cre $$5 = this.b($$0, $$1);
-      cud $$6 = this.w.g();
-      if (this.G != null && this.l.m.Z().c()) {
-         if ($$2 == 0 || $$2 == 1) {
-            if (this.L.e()) {
-               if ($$5 != this.G && !this.G.g().e()) {
-                  this.L = this.G.g().s();
-               }
-            } else if (this.L.H() > 1 && $$5 != null && cpi.a($$5, this.L, false)) {
-               long $$7 = ac.c();
-               if (this.I == $$5) {
-                  if ($$7 - this.Q > 500L) {
-                     this.a(this.G, this.G.d, 0, cps.a);
-                     this.a($$5, $$5.d, 1, cps.a);
-                     this.a(this.G, this.G.d, 0, cps.a);
-                     this.Q = $$7 + 750L;
-                     this.L.h(1);
-                  }
-               } else {
-                  this.I = $$5;
-                  this.Q = $$7;
-               }
-            }
-         }
-      } else if (this.C && $$5 != null && !$$6.e() && ($$6.H() > this.B.size() || this.R == 2) && cpi.a($$5, $$6, true) && $$5.a($$6) && this.w.b($$5)) {
-         this.B.add($$5);
-         this.J();
+   public void e() {
+      this.l.s().a();
+      this.l.aj().a(false);
+      float $$0 = (float)(this.D + this.n + this.n + 24);
+      if (this.A > $$0) {
+         this.D();
       }
-
-      return true;
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      cre $$3 = this.b($$0, $$1);
-      int $$4 = this.z;
-      int $$5 = this.A;
-      boolean $$6 = this.a($$0, $$1, $$4, $$5, $$2);
-      int $$7 = -1;
-      if ($$3 != null) {
-         $$7 = $$3.d;
-      }
-
-      if ($$6) {
-         $$7 = -999;
-      }
-
-      if (this.X && $$3 != null && $$2 == 0 && this.w.a(cud.l, $$3)) {
-         if (s()) {
-            if (!this.Y.e()) {
-               for (cre $$8 : this.w.i) {
-                  if ($$8 != null && $$8.a(this.l.s) && $$8.h() && $$8.c == $$3.c && cpi.a($$8, this.Y, true)) {
-                     this.a($$8, $$8.d, $$2, cps.b);
-                  }
-               }
-            }
-         } else {
-            this.a($$3, $$7, $$2, cps.g);
-         }
-
-         this.X = false;
-         this.V = 0L;
-      } else {
-         if (this.C && this.S != $$2) {
-            this.C = false;
-            this.B.clear();
-            this.T = true;
-            return true;
-         }
-
-         if (this.T) {
-            this.T = false;
-            return true;
-         }
-
-         if (this.G != null && this.l.m.Z().c()) {
-            if ($$2 == 0 || $$2 == 1) {
-               if (this.L.e() && $$3 != this.G) {
-                  this.L = this.G.g();
-               }
-
-               boolean $$9 = cpi.a($$3, this.L, false);
-               if ($$7 != -1 && !this.L.e() && $$9) {
-                  this.a(this.G, this.G.d, $$2, cps.a);
-                  this.a($$3, $$7, 0, cps.a);
-                  if (this.w.g().e()) {
-                     this.P = cud.l;
-                  } else {
-                     this.a(this.G, this.G.d, $$2, cps.a);
-                     this.M = ayg.a($$0 - (double)$$4);
-                     this.N = ayg.a($$1 - (double)$$5);
-                     this.H = this.G;
-                     this.P = this.L;
-                     this.O = ac.c();
-                  }
-               } else if (!this.L.e()) {
-                  this.M = ayg.a($$0 - (double)$$4);
-                  this.N = ayg.a($$1 - (double)$$5);
-                  this.H = this.G;
-                  this.P = this.L;
-                  this.O = ac.c();
-               }
-
-               this.m();
-            }
-         } else if (this.C && !this.B.isEmpty()) {
-            this.a(null, -999, cpi.b(0, this.R), cps.f);
-
-            for (cre $$10 : this.B) {
-               this.a($$10, $$10.d, cpi.b(1, this.R), cps.f);
-            }
-
-            this.a(null, -999, cpi.b(2, this.R), cps.f);
-         } else if (!this.w.g().e()) {
-            if (this.l.m.I.a($$2)) {
-               this.a($$3, $$7, $$2, cps.d);
-            } else {
-               boolean $$11 = $$7 != -999 && (ezj.a(ffw.Q().aM().i(), 340) || ezj.a(ffw.Q().aM().i(), 344));
-               if ($$11) {
-                  this.Y = $$3 != null && $$3.h() ? $$3.g().s() : cud.l;
-               }
-
-               this.a($$3, $$7, $$2, $$11 ? cps.b : cps.a);
-            }
-         }
-      }
-
-      if (this.w.g().e()) {
-         this.V = 0L;
-      }
-
-      this.C = false;
-      return true;
-   }
-
-   public void m() {
-      this.L = cud.l;
-      this.G = null;
-   }
-
-   private boolean a(cre $$0, double $$1, double $$2) {
-      return this.a($$0.e, $$0.f, 16, 16, $$1, $$2);
-   }
-
-   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
-      int $$6 = this.z;
-      int $$7 = this.A;
-      $$4 -= (double)$$6;
-      $$5 -= (double)$$7;
-      return $$4 >= (double)($$0 - 1) && $$4 < (double)($$0 + $$2 + 1) && $$5 >= (double)($$1 - 1) && $$5 < (double)($$1 + $$3 + 1);
-   }
-
-   protected void a(cre $$0, int $$1, int $$2, cps $$3) {
-      if ($$0 != null) {
-         $$1 = $$0.d;
-      }
-
-      this.l.q.a(this.w.j, $$1, $$2, $$3, this.l.s);
-   }
-
-   protected void a(int $$0, int $$1, boolean $$2) {
-      this.l.q.a($$0, $$1, $$2);
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if (this.l.m.D.a($$0, $$1)) {
-         this.d();
-         return true;
-      } else {
-         this.a($$0, $$1);
-         if (this.y != null && this.y.h()) {
-            if (this.l.m.I.a($$0, $$1)) {
-               this.a(this.y, this.y.d, 0, cps.d);
-            } else if (this.l.m.F.a($$0, $$1)) {
-               this.a(this.y, this.y.d, r() ? 1 : 0, cps.e);
-            }
-         }
-
-         return true;
-      }
-   }
-
-   protected boolean a(int $$0, int $$1) {
-      if (this.w.g().e() && this.y != null) {
-         if (this.l.m.E.a($$0, $$1)) {
-            this.a(this.y, this.y.d, 40, cps.c);
-            return true;
-         }
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            if (this.l.m.T[$$2].a($$0, $$1)) {
-               this.a(this.y, this.y.d, $$2, cps.c);
-               return true;
-            }
-         }
+      if ($$0 == 265) {
+         this.I = -1;
+      } else if ($$0 == 341 || $$0 == 345) {
+         this.F.add($$0);
+      } else if ($$0 == 32) {
+         this.E = true;
       }
 
-      return false;
+      this.G = this.m();
+      return super.a($$0, $$1, $$2);
    }
 
    @Override
-   public void j() {
-      if (this.l.s != null) {
-         this.w.a(this.l.s);
+   public boolean c(int $$0, int $$1, int $$2) {
+      if ($$0 == 265) {
+         this.I = 1;
       }
-   }
 
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   @Override
-   public final void e() {
-      super.e();
-      if (this.l.s.bF() && !this.l.s.dM()) {
-         this.D();
-      } else {
-         this.l.s.s();
+      if ($$0 == 32) {
+         this.E = false;
+      } else if ($$0 == 341 || $$0 == 345) {
+         this.F.remove($$0);
       }
-   }
 
-   protected void D() {
-   }
-
-   @Override
-   public T E() {
-      return this.w;
+      this.G = this.m();
+      return super.c($$0, $$1, $$2);
    }
 
    @Override
    public void d() {
-      this.l.s.s();
-      super.d();
+      this.D();
+   }
+
+   private void D() {
+      this.z.run();
+   }
+
+   @Override
+   protected void aP_() {
+      if (this.B == null) {
+         this.B = Lists.newArrayList();
+         this.C = new IntOpenHashSet();
+         if (this.y) {
+            this.a(v, this::a);
+         }
+
+         this.a(w, this::b);
+         if (this.y) {
+            this.a(x, this::a);
+         }
+
+         this.D = this.B.size() * 12;
+      }
+   }
+
+   private void a(akq $$0, foa.a $$1) {
+      try (Reader $$2 = this.l.ab().openAsReader($$0)) {
+         $$1.read($$2);
+      } catch (Exception var8) {
+         a.error("Couldn't load credits from file {}", $$0, var8);
+      }
+   }
+
+   private void a(Reader $$0) throws IOException {
+      BufferedReader $$1 = new BufferedReader($$0);
+      ayv $$2 = ayv.a(8124371L);
+
+      String $$3;
+      while (($$3 = $$1.readLine()) != null) {
+         $$3 = $$3.replaceAll("PLAYERNAME", this.l.X().c());
+
+         int $$4;
+         while (($$4 = $$3.indexOf(r)) != -1) {
+            String $$5 = $$3.substring(0, $$4);
+            String $$6 = $$3.substring($$4 + r.length());
+            $$3 = $$5 + n.p + n.q + "XXXXXXXX".substring(0, $$2.a(4) + 3) + $$6;
+         }
+
+         this.a($$3);
+         this.E();
+      }
+
+      for (int $$7 = 0; $$7 < 8; $$7++) {
+         this.E();
+      }
+   }
+
+   private void b(Reader $$0) {
+      for (JsonElement $$2 : ayd.b($$0)) {
+         JsonObject $$3 = $$2.getAsJsonObject();
+         String $$4 = $$3.get("section").getAsString();
+         this.a(c, true);
+         this.a(wy.b($$4).a(n.o), true);
+         this.a(c, true);
+         this.E();
+         this.E();
+
+         for (JsonElement $$6 : $$3.getAsJsonArray("disciplines")) {
+            JsonObject $$7 = $$6.getAsJsonObject();
+            String $$8 = $$7.get("discipline").getAsString();
+            if (StringUtils.isNotEmpty($$8)) {
+               this.a(wy.b($$8).a(n.o), true);
+               this.E();
+               this.E();
+            }
+
+            for (JsonElement $$10 : $$7.getAsJsonArray("titles")) {
+               JsonObject $$11 = $$10.getAsJsonObject();
+               String $$12 = $$11.get("title").getAsString();
+               JsonArray $$13 = $$11.getAsJsonArray("names");
+               this.a(wy.b($$12).a(n.h), false);
+
+               for (JsonElement $$14 : $$13) {
+                  String $$15 = $$14.getAsString();
+                  this.a(wy.b("           ").f($$15).a(n.p), false);
+               }
+
+               this.E();
+               this.E();
+            }
+         }
+      }
+   }
+
+   private void E() {
+      this.B.add(axz.a);
+   }
+
+   private void a(String $$0) {
+      this.B.addAll(this.l.h.c(wy.b($$0), 256));
+   }
+
+   private void a(wy $$0, boolean $$1) {
+      if ($$1) {
+         this.C.add(this.B.size());
+      }
+
+      this.B.add($$0.g());
+   }
+
+   @Override
+   public void a(fht $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0);
+      this.A = Math.max(0.0F, this.A + $$3 * this.G);
+      int $$4 = this.m / 2 - 128;
+      int $$5 = this.n + 50;
+      float $$6 = -this.A;
+      $$0.c().a();
+      $$0.c().a(0.0F, $$6, 0.0F);
+      this.J.a($$0, this.m, 1.0F, $$5);
+      int $$7 = $$5 + 100;
+
+      for (int $$8 = 0; $$8 < this.B.size(); $$8++) {
+         if ($$8 == this.B.size() - 1) {
+            float $$9 = (float)$$7 + $$6 - (float)(this.n / 2 - 6);
+            if ($$9 < 0.0F) {
+               $$0.c().a(0.0F, -$$9, 0.0F);
+            }
+         }
+
+         if ((float)$$7 + $$6 + 12.0F + 8.0F > 0.0F && (float)$$7 + $$6 < (float)this.n) {
+            axz $$10 = this.B.get($$8);
+            if (this.C.contains($$8)) {
+               $$0.a(this.o, $$10, $$4 + 128, $$7, -1);
+            } else {
+               $$0.b(this.o, $$10, $$4, $$7, -1);
+            }
+         }
+
+         $$7 += 12;
+      }
+
+      $$0.c().b();
+   }
+
+   private void c(fht $$0) {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
+      $$0.a(b, 0, 0, 0, 0.0F, 0.0F, this.m, this.n, this.m, this.n);
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   }
+
+   @Override
+   public void b(fht $$0, int $$1, int $$2, float $$3) {
+      if (this.y) {
+         $$0.b(gfb.s(), 0, 0, this.m, this.n, 0);
+      } else {
+         super.b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   protected void a(fht $$0, int $$1, int $$2, int $$3, int $$4) {
+      float $$5 = this.A * 0.5F;
+      fnx.a($$0, fnx.f, 0, 0, 0.0F, $$5, $$3, $$4);
+   }
+
+   @Override
+   public boolean k() {
+      return !this.y;
+   }
+
+   @Override
+   public void j() {
+      this.l.s().b(avm.c);
+   }
+
+   @Override
+   public avl C() {
+      return avm.c;
+   }
+
+   @FunctionalInterface
+   interface a {
+      void read(Reader var1) throws IOException;
    }
 }

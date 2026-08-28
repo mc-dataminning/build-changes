@@ -1,10 +1,21 @@
-public class csb extends csc {
-   public csb(dfi $$0, cty.a $$1) {
-      super($$0, $$1);
+import java.util.List;
+
+public class csb extends cuj {
+   private final dfw a;
+
+   public csb(dfw $$0, cuj.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   protected boolean a(cxn $$0, dsl $$1) {
-      return $$0.q().a($$0.a(), $$1, 26);
+   public String a() {
+      return this.a.g();
+   }
+
+   @Override
+   public void a(cuo $$0, cuj.b $$1, List<wy> $$2, cwk $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
    }
 }

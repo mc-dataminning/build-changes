@@ -1,46 +1,31 @@
-public record aas(ja c, float d, float e, float f, float g, float h) implements aac {
-   public static final ys<vr, aas> a = aac.a(aas::a, aas::new);
-   public static final aac.b<aas> b = aac.a("debug/worldgen_attempt");
+public record aas(jd c, String d, int e) implements aai {
+   public static final yw<vv, aas> a = aai.a(aas::a, aas::new);
+   public static final aai.b<aas> b = aai.a("debug/poi_added");
 
-   private aas(vr $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+   private aas(vv $$0) {
+      this($$0.e(), $$0.p(), $$0.readInt());
    }
 
-   private void a(vr $$0) {
+   private void a(vv $$0) {
       $$0.a(this.c);
       $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
+      $$0.p(this.e);
    }
 
    @Override
-   public aac.b<aas> a() {
+   public aai.b<aas> a() {
       return b;
    }
 
-   public ja b() {
+   public jd b() {
       return this.c;
    }
 
-   public float c() {
+   public String c() {
       return this.d;
    }
 
-   public float d() {
+   public int d() {
       return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
    }
 }

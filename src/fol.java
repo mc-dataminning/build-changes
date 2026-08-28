@@ -1,27 +1,140 @@
-public class fol extends foa<cpq> implements fpg<cpq> {
-   private static final akk D = new akk("textures/gui/container/generic_54.png");
-   private final int E;
+public abstract class fol extends fnx {
+   private static final wy s = wy.c("advMode.setCommand");
+   private static final wy u = wy.c("advMode.command");
+   private static final wy v = wy.c("advMode.previousOutput");
+   protected fip a;
+   protected fip b;
+   protected fig c;
+   protected fig q;
+   protected fin<Boolean> r;
+   fij w;
 
-   public fol(cpq $$0, cmk $$1, wu $$2) {
-      super($$0, $$1, $$2);
-      int $$3 = 222;
-      int $$4 = 114;
-      this.E = $$0.m();
-      this.q = 114 + this.E * 18;
-      this.v = this.q - 94;
+   public fol() {
+      super(fga.a);
    }
 
    @Override
-   public void a(fhh $$0, int $$1, int $$2, float $$3) {
+   public void e() {
+      if (!this.m().j()) {
+         this.d();
+      }
+   }
+
+   abstract dbv m();
+
+   abstract int D();
+
+   @Override
+   protected void aP_() {
+      this.c = this.c(fig.a(wx.d, $$0x -> this.E()).a(this.m / 2 - 4 - 150, this.n / 4 + 120 + 12, 150, 20).a());
+      this.q = this.c(fig.a(wx.e, $$0x -> this.d()).a(this.m / 2 + 4, this.n / 4 + 120 + 12, 150, 20).a());
+      boolean $$0 = this.m().p();
+      this.r = this.c(fin.a(wy.b("O"), wy.b("X")).a($$0).a().a(this.m / 2 + 150 - 20, this.D(), 20, 20, wy.c("advMode.trackOutput"), ($$0x, $$1) -> {
+         dbv $$2 = this.m();
+         $$2.a($$1);
+         this.c($$1);
+      }));
+      this.a = new fip(this.o, this.m / 2 - 150, 50, 300, 20, wy.c("advMode.command")) {
+         @Override
+         protected xm aM_() {
+            return super.aM_().b(fol.this.w.e());
+         }
+      };
+      this.a.f(32500);
+      this.a.b(this::a);
+      this.d(this.a);
+      this.b = new fip(this.o, this.m / 2 - 150, this.D(), 276, 20, wy.c("advMode.previousOutput"));
+      this.b.f(32500);
+      this.b.e(false);
+      this.b.a("-");
+      this.d(this.b);
+      this.w = new fij(this.l, this, this.a, this.o, true, true, 0, 7, false, Integer.MIN_VALUE);
+      this.w.a(true);
+      this.w.d();
+      this.c($$0);
+   }
+
+   @Override
+   protected void aE_() {
+      this.b(this.a);
+   }
+
+   @Override
+   protected wy z() {
+      return this.w.a() ? this.w.b() : super.z();
+   }
+
+   @Override
+   public void a(fgi $$0, int $$1, int $$2) {
+      String $$3 = this.a.a();
+      this.b($$0, $$1, $$2);
+      this.a.a($$3);
+      this.w.d();
+   }
+
+   @Override
+   protected void c(boolean $$0) {
+      this.b.a($$0 ? this.m().l().getString() : "-");
+   }
+
+   protected void E() {
+      dbv $$0 = this.m();
+      this.a($$0);
+      if (!$$0.p()) {
+         $$0.c(null);
+      }
+
+      this.l.a(null);
+   }
+
+   protected abstract void a(dbv var1);
+
+   private void a(String $$0) {
+      this.w.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.w.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
+      } else {
+         this.E();
+         return true;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.w.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return this.w.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(fht $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+      $$0.a(this.o, s, this.m / 2, 20, 16777215);
+      $$0.b(this.o, u, this.m / 2 - 150 + 1, 40, 10526880);
+      this.a.a($$0, $$1, $$2, $$3);
+      int $$4 = 75;
+      if (!this.b.a().isEmpty()) {
+         $$4 += 5 * 9 + 1 + this.D() - 135;
+         $$0.b(this.o, v, this.m / 2 - 150 + 1, $$4 + 4, 10526880);
+         this.b.a($$0, $$1, $$2, $$3);
+      }
+
+      this.w.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(fhh $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.m - this.c) / 2;
-      int $$5 = (this.n - this.q) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.E * 18 + 17);
-      $$0.a(D, $$4, $$5 + this.E * 18 + 17, 0, 126, this.c, 96);
+   public void b(fht $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

@@ -1,119 +1,89 @@
 import java.util.EnumSet;
 import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cah extends caa {
-   public final cgz a;
-   private double b;
-   private static final int c = 8;
-   private int d;
+public class cah extends cak {
+   private final btn a;
+   private final Predicate<btn> b;
+   @Nullable
+   private btn c;
+   private final double d;
+   private final ccy e;
+   private int f;
+   private final float g;
+   private float h;
+   private final float i;
 
-   public cah(cgz $$0, double $$1) {
+   public cah(btn $$0, double $$1, float $$2, float $$3) {
       this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(caa.a.a));
-   }
-
-   @Override
-   public boolean a() {
-      if (!this.a.fZ() && !this.a.gZ()) {
-         List<bsh> $$0 = this.a.dR().a(this.a, this.a.cM().c(9.0, 4.0, 9.0), $$0x -> {
-            bsn<?> $$1x = $$0x.am();
-            return $$1x == bsn.an || $$1x == bsn.be;
-         });
-         cgz $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (bsh $$3 : $$0) {
-            cgz $$4 = (cgz)$$3;
-            if ($$4.gZ() && !$$4.gY()) {
-               double $$5 = this.a.g($$4);
-               if (!($$5 > $$2)) {
-                  $$2 = $$5;
-                  $$1 = $$4;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            for (bsh $$6 : $$0) {
-               cgz $$7 = (cgz)$$6;
-               if ($$7.fZ() && !$$7.gY()) {
-                  double $$8 = this.a.g($$7);
-                  if (!($$8 > $$2)) {
-                     $$2 = $$8;
-                     $$1 = $$7;
-                  }
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 4.0) {
-            return false;
-         } else if (!$$1.fZ() && !this.a($$1, 1)) {
-            return false;
-         } else {
-            this.a.a($$1);
-            return true;
-         }
-      } else {
-         return false;
+      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
+      this.d = $$1;
+      this.e = $$0.J();
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(cak.a.a, cak.a.b));
+      if (!($$0.J() instanceof ccx) && !($$0.J() instanceof ccw)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
       }
    }
 
    @Override
    public boolean b() {
-      if (this.a.gZ() && this.a.ha().bF() && this.a(this.a, 0)) {
-         double $$0 = this.a.g(this.a.ha());
-         if ($$0 > 676.0) {
-            if (this.b <= 3.0) {
-               this.b *= 1.2;
-               this.d = b(40);
+      List<btn> $$0 = this.a.dQ().a(btn.class, this.a.cL().g((double)this.i), this.b);
+      if (!$$0.isEmpty()) {
+         for (btn $$1 : $$0) {
+            if (!$$1.ci()) {
+               this.c = $$1;
                return true;
             }
-
-            if (this.d == 0) {
-               return false;
-            }
          }
-
-         if (this.d > 0) {
-            this.d--;
-         }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return false;
+   }
+
+   @Override
+   public boolean c() {
+      return this.c != null && !this.e.l() && this.a.g(this.c) > (double)(this.g * this.g);
    }
 
    @Override
    public void d() {
-      this.a.gX();
-      this.b = 2.1;
+      this.f = 0;
+      this.h = this.a.a(epp.j);
+      this.a.a(epp.j, 0.0F);
    }
 
    @Override
    public void e() {
-      if (this.a.gZ()) {
-         if (!(this.a.gb() instanceof cip)) {
-            cgz $$0 = this.a.ha();
-            double $$1 = (double)this.a.f($$0);
-            float $$2 = 2.0F;
-            ewh $$3 = new ewh($$0.dw() - this.a.dw(), $$0.dy() - this.a.dy(), $$0.dC() - this.a.dC()).d().a(Math.max($$1 - 2.0, 0.0));
-            this.a.J().a(this.a.dw() + $$3.c, this.a.dy() + $$3.d, this.a.dC() + $$3.e, this.b);
-         }
-      }
+      this.c = null;
+      this.e.n();
+      this.a.a(epp.j, this.h);
    }
 
-   private boolean a(cgz $$0, int $$1) {
-      if ($$1 > 8) {
-         return false;
-      } else if ($$0.gZ()) {
-         return $$0.ha().fZ() ? true : this.a($$0.ha(), ++$$1);
-      } else {
-         return false;
+   @Override
+   public void a() {
+      if (this.c != null && !this.a.fY()) {
+         this.a.F().a(this.c, 10.0F, (float)this.a.aa());
+         if (--this.f <= 0) {
+            this.f = this.a(10);
+            double $$0 = this.a.dv() - this.c.dv();
+            double $$1 = this.a.dx() - this.c.dx();
+            double $$2 = this.a.dB() - this.c.dB();
+            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+            if (!($$3 <= (double)(this.g * this.g))) {
+               this.e.a(this.c, this.d);
+            } else {
+               this.e.n();
+               bzm $$4 = this.c.F();
+               if ($$3 <= (double)this.g || $$4.e() == this.a.dv() && $$4.f() == this.a.dx() && $$4.g() == this.a.dB()) {
+                  double $$5 = this.c.dv() - this.a.dv();
+                  double $$6 = this.c.dB() - this.a.dB();
+                  this.e.a(this.a.dv() - $$5, this.a.dx(), this.a.dB() - $$6, this.d);
+               }
+            }
+         }
       }
    }
 }

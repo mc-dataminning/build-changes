@@ -1,26 +1,75 @@
-import java.util.IllegalFormatException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class gqw {
-   private static volatile ts a = ts.a();
+public class gqw extends ati {
+   private static final ate d = new ate(wy.c("resourcePack.vanilla.description"), ab.b().a(asr.a), Optional.empty());
+   private static final ash e = ash.a(ate.b, d);
+   public static final String c = "high_contrast";
+   private static final Map<String, wy> f = Map.of(
+      "programmer_art", wy.c("resourcePack.programmer_art.name"), "high_contrast", wy.c("resourcePack.high_contrast.name")
+   );
+   private static final aso g = new aso("vanilla", wy.c("resourcePack.vanilla.name"), atp.c, Optional.of(b));
+   private static final asq h = new asq(true, atl.b.b, false);
+   private static final asq i = new asq(false, atl.b.a, false);
+   private static final akq j = akq.b("resourcepacks");
+   @Nullable
+   private final Path k;
 
-   private gqw() {
+   public gqw(Path $$0, ewm $$1) {
+      super(asr.a, b($$0), j, $$1);
+      this.k = this.a($$0);
    }
 
-   static void a(ts $$0) {
-      a = $$0;
+   private static aso a(String $$0, wy $$1) {
+      return new aso($$0, $$1, atp.c, Optional.of(atk.a($$0)));
    }
 
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
-      try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
+   @Nullable
+   private Path a(Path $$0) {
+      if (ab.aV && $$0.getFileSystem() == FileSystems.getDefault()) {
+         Path $$1 = $$0.getParent().resolve("resourcepacks");
+         if (Files.isDirectory($$1)) {
+            return $$1;
+         }
       }
+
+      return null;
    }
 
-   public static boolean a(String $$0) {
-      return a.b($$0);
+   private static ast b(Path $$0) {
+      asu $$1 = new asu().a(e).a("minecraft", "realms");
+      return $$1.b().a().a(asr.a, $$0).a(g);
+   }
+
+   @Override
+   protected wy a(String $$0) {
+      wy $$1 = f.get($$0);
+      return (wy)($$1 != null ? $$1 : wy.b($$0));
+   }
+
+   @Nullable
+   @Override
+   protected atl a(asp $$0) {
+      return atl.a(g, b($$0), asr.a, h);
+   }
+
+   @Nullable
+   @Override
+   protected atl a(String $$0, atl.c $$1, wy $$2) {
+      return atl.a(a($$0, $$2), $$1, asr.a, i);
+   }
+
+   @Override
+   protected void a(BiConsumer<String, Function<String, atl>> $$0) {
+      super.a($$0);
+      if (this.k != null) {
+         this.a(this.k, $$0);
+      }
    }
 }

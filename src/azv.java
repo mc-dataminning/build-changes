@@ -1,69 +1,76 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
+import com.mojang.serialization.DynamicOps;
+import java.util.Set;
 
-public abstract class azv extends DataFix {
-   protected TypeReference a;
+public enum azv {
+   a(bgq.a),
+   b(bgq.b),
+   c(bgq.c),
+   d(bgq.d),
+   e(bgq.e),
+   f(bgq.f),
+   g(bgq.g),
+   h(bgq.h),
+   i(bgq.i),
+   j(bgq.j),
+   k(bgq.k),
+   l(bgq.l),
+   m(bgq.m),
+   n(bgq.o),
+   o(bgq.n),
+   p(bgq.p),
+   q(bgq.q),
+   r(bgq.M),
+   s(bgq.r);
 
-   public azv(Schema $$0, TypeReference $$1) {
-      super($$0, false);
-      this.a = $$1;
+   public static final Set<TypeReference> t;
+   private final TypeReference u;
+
+   private azv(final TypeReference $$0) {
+      this.u = $$0;
    }
 
-   protected Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(this.a, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(this.a, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+   static int a() {
+      return ab.b().d().c();
    }
 
-   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0, String $$1, String $$2) {
-      return a($$0, $$1).map($$3 -> $$0.remove($$1).set($$2, $$3));
-   }
-
-   protected static Optional<Dynamic<?>> b(Dynamic<?> $$0, String $$1, String $$2) {
-      return $$0.get($$1).result().flatMap(azv::a).map($$3 -> $$0.remove($$1).set($$2, $$3));
-   }
-
-   protected static Optional<Dynamic<?>> c(Dynamic<?> $$0, String $$1, String $$2) {
-      String $$3 = $$1 + "Most";
-      String $$4 = $$1 + "Least";
-      return d($$0, $$3, $$4).map($$4x -> $$0.remove($$3).remove($$4).set($$2, $$4x));
-   }
-
-   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0, String $$1) {
-      return $$0.get($$1).result().flatMap($$1x -> {
-         String $$2 = $$1x.asString(null);
-         if ($$2 != null) {
-            try {
-               UUID $$3 = UUID.fromString($$2);
-               return a($$0, $$3.getMostSignificantBits(), $$3.getLeastSignificantBits());
-            } catch (IllegalArgumentException var4) {
-            }
+   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
+      return new Codec<A>() {
+         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
+            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(azv.a())));
          }
 
-         return Optional.empty();
-      });
+         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
+            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
+            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
+            Dynamic<T> $$4 = azv.this.a($$1, $$3, $$2);
+            return $$0.decode($$4);
+         }
+      };
    }
 
-   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0) {
-      return d($$0, "M", "L");
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
+      return $$0.update(this.u, $$1, $$2, $$3);
    }
 
-   protected static Optional<Dynamic<?>> d(Dynamic<?> $$0, String $$1, String $$2) {
-      long $$3 = $$0.get($$1).asLong(0L);
-      long $$4 = $$0.get($$2).asLong(0L);
-      return $$3 != 0L && $$4 != 0L ? a($$0, $$3, $$4) : Optional.empty();
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
    }
 
-   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0, long $$1, long $$2) {
-      return Optional.of($$0.createIntList(Arrays.stream(new int[]{(int)($$1 >> 32), (int)$$1, (int)($$2 >> 32), (int)$$2})));
+   public ua a(DataFixer $$0, ua $$1, int $$2, int $$3) {
+      return (ua)this.a($$0, new Dynamic(uo.a, $$1), $$2, $$3).getValue();
+   }
+
+   public ua a(DataFixer $$0, ua $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   static {
+      t = Set.of(a.u);
    }
 }

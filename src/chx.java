@@ -1,69 +1,126 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class chx extends chq {
+public class chx extends bsq {
+   private static final ajv<Optional<jd>> c = ajz.a(chx.class, ajx.p);
+   private static final ajv<Boolean> d = ajz.a(chx.class, ajx.k);
+   public int b;
+
+   public chx(bsw<? extends chx> $$0, dcu $$1) {
+      super($$0, $$1);
+      this.J = true;
+      this.b = this.ah.a(100000);
+   }
+
+   public chx(dcu $$0, double $$1, double $$2, double $$3) {
+      this(bsw.E, $$0);
+      this.a_($$1, $$2, $$3);
+   }
+
+   @Override
+   protected bsq.b bc() {
+      return bsq.b.a;
+   }
+
+   @Override
+   protected void a(ajz.a $$0) {
+      $$0.a(c, Optional.empty());
+      $$0.a(d, true);
+   }
+
+   @Override
+   public void l() {
+      this.b++;
+      if (this.dQ() instanceof aqt) {
+         jd $$0 = this.dq();
+         if (((aqt)this.dQ()).D() != null && this.dQ().a_($$0).i()) {
+            this.dQ().b($$0, dfj.a(this.dQ(), $$0));
+         }
+      }
+   }
+
+   @Override
+   protected void b(ua $$0) {
+      if (this.p() != null) {
+         $$0.a("beam_target", up.a(this.p()));
+      }
+
+      $$0.a("ShowBottom", this.s());
+   }
+
+   @Override
+   protected void a(ua $$0) {
+      up.a($$0, "beam_target").ifPresent(this::a);
+      if ($$0.b("ShowBottom", 1)) {
+         this.a($$0.q("ShowBottom"));
+      }
+   }
+
+   @Override
+   public boolean bA() {
+      return true;
+   }
+
+   @Override
+   public boolean a(brj $$0, float $$1) {
+      if (this.b($$0)) {
+         return false;
+      } else if ($$0.d() instanceof chy) {
+         return false;
+      } else {
+         if (!this.dL() && !this.dQ().B) {
+            this.a(bsq.c.a);
+            if (!$$0.a(awf.l)) {
+               brj $$2 = $$0.d() != null ? this.dR().d(this, $$0.d()) : null;
+               this.dQ().a(this, $$2, null, this.dv(), this.dx(), this.dB(), 6.0F, false, dcu.a.b);
+            }
+
+            this.a($$0);
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   public void ap() {
+      this.a(this.dR().o());
+      super.ap();
+   }
+
+   private void a(brj $$0) {
+      if (this.dQ() instanceof aqt) {
+         dwy $$1 = ((aqt)this.dQ()).D();
+         if ($$1 != null) {
+            $$1.a(this, $$0);
+         }
+      }
+   }
+
+   public void a(@Nullable jd $$0) {
+      this.ar().a(c, Optional.ofNullable($$0));
+   }
+
    @Nullable
-   private ewh b;
+   public jd p() {
+      return this.ar().a(c).orElse(null);
+   }
 
-   public chx(cho $$0) {
-      super($$0);
+   public void a(boolean $$0) {
+      this.ar().a(d, $$0);
+   }
+
+   public boolean s() {
+      return this.ar().a(d);
    }
 
    @Override
-   public void b() {
-      ewh $$0 = this.a.G(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.e.dw();
-      double $$2 = this.a.e.e(0.5);
-      double $$3 = this.a.e.dC();
-
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         ayo $$5 = this.a.dU();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         ewh $$9 = this.a.du();
-         this.a.dR().a(lj.h, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
-         $$0.b((float) (Math.PI / 16));
-      }
+   public boolean a(double $$0) {
+      return super.a($$0) || this.p() != null;
    }
 
    @Override
-   public void c() {
-      if (this.b == null) {
-         this.b = ewh.c(this.a.dR().a(dyg.a.f, ebk.a(this.a.s())));
-      }
-
-      if (this.b.c(this.a.dw(), this.a.dy(), this.a.dC()) < 1.0) {
-         this.a.gk().b(cie.f).j();
-         this.a.gk().a(cie.g);
-      }
-   }
-
-   @Override
-   public float f() {
-      return 1.5F;
-   }
-
-   @Override
-   public float h() {
-      float $$0 = (float)this.a.du().h() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
-   }
-
-   @Nullable
-   @Override
-   public ewh g() {
-      return this.b;
-   }
-
-   @Override
-   public cie<chx> i() {
-      return cie.d;
+   public cuo dD() {
+      return new cuo(cur.vf);
    }
 }

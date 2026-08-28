@@ -1,31 +1,36 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnh extends dfi {
-   public static final MapCodec<dnh> a = b(dnh::new);
-   private static final double b = 5.0;
-   private static final exa c = dfi.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+public class dnh extends dfw {
+   public static final MapCodec<dnh> b = b(dnh::new);
+   public static final dtr c = dtq.z;
 
    @Override
-   public MapCodec<dnh> a() {
-      return a;
+   protected MapCodec<? extends dnh> a() {
+      return b;
    }
 
-   protected dnh(dsk.d $$0) {
+   protected dnh(dsz.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected dlo a_(dsl $$0) {
-      return dlo.a;
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      return $$1 == ji.b ? $$0.a(c, Boolean.valueOf(m($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return c;
+   public dta a(cyb $$0) {
+      dta $$1 = $$0.q().a_($$0.a().c());
+      return this.o().a(c, Boolean.valueOf(m($$1)));
+   }
+
+   private static boolean m(dta $$0) {
+      return $$0.a(awd.bz);
    }
 
    @Override
-   protected float d(dsl $$0, dbm $$1, ja $$2) {
-      return 1.0F;
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(c);
    }
 }

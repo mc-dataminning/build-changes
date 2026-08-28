@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class crm extends cro {
+   public crm(bqj $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface crm {
+   @Override
+   public boolean a(cuo $$0) {
+      return $$0.g().an_();
+   }
 }

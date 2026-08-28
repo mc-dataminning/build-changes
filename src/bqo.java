@@ -1,171 +1,59 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import org.slf4j.Logger;
+import javax.annotation.concurrent.Immutable;
 
-public class bqo extends epq {
-   private static final Logger a = LogUtils.getLogger();
-   private final long b;
-   private int c;
-   private boolean d = true;
-   private boolean e = true;
-   private final Map<akk, bqn> f = new Object2ObjectOpenHashMap();
+@Immutable
+public class bqo {
+   private static final float a = -72000.0F;
+   private static final float b = 1440000.0F;
+   private static final float c = 3600000.0F;
+   private final bqn d;
+   private final float e;
 
-   public static epq.a<bqo> a(long $$0) {
-      return new epq.a<>(() -> new bqo($$0), ($$1, $$2) -> a($$0, $$1), azo.m);
+   public bqo(bqn $$0, long $$1, long $$2, float $$3) {
+      this.d = $$0;
+      this.e = this.a($$0, $$1, $$2, $$3);
    }
 
-   public bqo(long $$0) {
-      this.b = $$0;
+   public bqn a() {
+      return this.d;
    }
 
-   public ayo a(akk $$0) {
-      ayo $$1 = this.f.computeIfAbsent($$0, this::c).a();
-      return new bqo.a($$1);
+   public float b() {
+      return this.e;
    }
 
-   private bqn c(akk $$0) {
-      return this.b($$0, this.c, this.d, this.e);
+   public boolean c() {
+      return this.e >= (float)bqn.d.ordinal();
    }
 
-   private bqn b(akk $$0, int $$1, boolean $$2, boolean $$3) {
-      long $$4 = ($$2 ? this.b : 0L) ^ (long)$$1;
-      return new bqn($$4, $$3 ? Optional.of($$0) : Optional.empty());
+   public boolean a(float $$0) {
+      return this.e > $$0;
    }
 
-   public void a(BiConsumer<akk, bqn> $$0) {
-      this.f.forEach($$0);
+   public float d() {
+      if (this.e < 2.0F) {
+         return 0.0F;
+      } else {
+         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
+      }
    }
 
-   public void a(int $$0, boolean $$1, boolean $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   @Override
-   public tx a(tx $$0, jl.a $$1) {
-      $$0.a("salt", this.c);
-      $$0.a("include_world_seed", this.d);
-      $$0.a("include_sequence_id", this.e);
-      tx $$2 = new tx();
-      this.f.forEach(($$1x, $$2x) -> $$2.a($$1x.toString(), (uu)bqn.a.encodeStart(ul.a, $$2x).result().orElseThrow()));
-      $$0.a("sequences", $$2);
-      return $$0;
-   }
-
-   private static boolean a(tx $$0, String $$1, boolean $$2) {
-      return $$0.b($$1, 1) ? $$0.q($$1) : $$2;
-   }
-
-   public static bqo a(long $$0, tx $$1) {
-      bqo $$2 = new bqo($$0);
-      $$2.a($$1.h("salt"), a($$1, "include_world_seed", true), a($$1, "include_sequence_id", true));
-      tx $$3 = $$1.p("sequences");
-
-      for (String $$5 : $$3.e()) {
-         try {
-            bqn $$6 = (bqn)((Pair)bqn.a.decode(ul.a, $$3.c($$5)).result().get()).getFirst();
-            $$2.f.put(new akk($$5), $$6);
-         } catch (Exception var9) {
-            a.error("Failed to load random sequence {}", $$5, var9);
+   private float a(bqn $$0, long $$1, long $$2, float $$3) {
+      if ($$0 == bqn.a) {
+         return 0.0F;
+      } else {
+         boolean $$4 = $$0 == bqn.d;
+         float $$5 = 0.75F;
+         float $$6 = ayn.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+         $$5 += $$6;
+         float $$7 = 0.0F;
+         $$7 += ayn.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
+         $$7 += ayn.a($$3 * 0.25F, 0.0F, $$6);
+         if ($$0 == bqn.b) {
+            $$7 *= 0.5F;
          }
-      }
 
-      return $$2;
-   }
-
-   public int a() {
-      int $$0 = this.f.size();
-      this.f.clear();
-      return $$0;
-   }
-
-   public void b(akk $$0) {
-      this.f.put($$0, this.c($$0));
-   }
-
-   public void a(akk $$0, int $$1, boolean $$2, boolean $$3) {
-      this.f.put($$0, this.b($$0, $$1, $$2, $$3));
-   }
-
-   class a implements ayo {
-      private final ayo c;
-
-      a(final ayo $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public ayo d() {
-         bqo.this.c();
-         return this.c.d();
-      }
-
-      @Override
-      public dyt e() {
-         bqo.this.c();
-         return this.c.e();
-      }
-
-      @Override
-      public void b(long $$0) {
-         bqo.this.c();
-         this.c.b($$0);
-      }
-
-      @Override
-      public int f() {
-         bqo.this.c();
-         return this.c.f();
-      }
-
-      @Override
-      public int a(int $$0) {
-         bqo.this.c();
-         return this.c.a($$0);
-      }
-
-      @Override
-      public long g() {
-         bqo.this.c();
-         return this.c.g();
-      }
-
-      @Override
-      public boolean h() {
-         bqo.this.c();
-         return this.c.h();
-      }
-
-      @Override
-      public float i() {
-         bqo.this.c();
-         return this.c.i();
-      }
-
-      @Override
-      public double j() {
-         bqo.this.c();
-         return this.c.j();
-      }
-
-      @Override
-      public double k() {
-         bqo.this.c();
-         return this.c.k();
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return $$0 instanceof bqo.a $$1 ? this.c.equals($$1.c) : false;
-         }
+         $$5 += $$7;
+         return (float)$$0.a() * $$5;
       }
    }
 }

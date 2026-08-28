@@ -1,49 +1,62 @@
 public class cyc extends cyb {
-   public cyc(cxy $$0) {
-      super($$0);
+   private final ji b;
+
+   public cyc(dcu $$0, jd $$1, ji $$2, cuo $$3, ji $$4) {
+      super($$0, null, bqp.a, $$3, new ews(eww.c($$1), $$4, $$1, false));
+      this.b = $$2;
    }
 
-   public boolean a(cxz $$0, dcg $$1) {
-      if (!this.a($$0.f(), $$0.g())) {
-         return false;
-      } else {
-         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-            cud $$3 = $$0.a($$2);
-            switch ($$2) {
-               case 1:
-               case 3:
-               case 5:
-               case 7:
-                  if (!$$3.a(awf.bq)) {
-                     return false;
-                  }
-                  break;
-               case 2:
-               case 4:
-               case 6:
-               default:
-                  if (!$$3.a(cug.a)) {
-                     return false;
-                  }
-            }
-         }
+   @Override
+   public jd a() {
+      return this.j().a();
+   }
 
-         return true;
+   @Override
+   public boolean b() {
+      return this.q().a_(this.j().a()).a(this);
+   }
+
+   @Override
+   public boolean c() {
+      return this.b();
+   }
+
+   @Override
+   public ji d() {
+      return ji.a;
+   }
+
+   @Override
+   public ji[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new ji[]{ji.a, ji.c, ji.f, ji.d, ji.e, ji.b};
+         case b:
+            return new ji[]{ji.a, ji.b, ji.c, ji.f, ji.d, ji.e};
+         case c:
+            return new ji[]{ji.a, ji.c, ji.f, ji.e, ji.b, ji.d};
+         case d:
+            return new ji[]{ji.a, ji.d, ji.f, ji.e, ji.b, ji.c};
+         case e:
+            return new ji[]{ji.a, ji.e, ji.d, ji.b, ji.c, ji.f};
+         case f:
+            return new ji[]{ji.a, ji.f, ji.d, ji.b, ji.c, ji.e};
       }
    }
 
-   public cud a(cxz $$0, jl.a $$1) {
-      dqv $$2 = new dqv($$0.a(1).g(), $$0.a(3).g(), $$0.a(5).g(), $$0.a(7).g());
-      return dqg.a($$2);
+   @Override
+   public ji g() {
+      return this.b.o() == ji.a.b ? ji.c : this.b;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 == 3 && $$1 == 3;
+   public boolean h() {
+      return false;
    }
 
    @Override
-   public cyo<?> ap_() {
-      return cyo.w;
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

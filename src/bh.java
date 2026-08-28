@@ -1,47 +1,35 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 
-public class bh extends ds<bh.a> {
-   @Override
-   public Codec<bh.a> a() {
-      return bh.a.a;
+public class bh {
+   private final ayt a;
+   private final jn.a b;
+
+   public bh(ayt $$0, jn.a $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(aqn $$0, ckk $$1, cly $$2) {
-      eqw $$3 = bu.b($$0, $$1);
-      eqw $$4 = bu.b($$0, $$2);
-      this.a($$0, $$2x -> $$2x.a($$3, $$4));
+   public void a(Optional<bg> $$0, String $$1) {
+      $$0.ifPresent($$1x -> this.a($$1x, $$1));
    }
 
-   public static record a(Optional<bf> b, Optional<bf> c, Optional<bf> d) implements ds.a {
-      public static final Codec<bh.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bu.b.optionalFieldOf("player").forGetter(bh.a::a),
-                  bu.b.optionalFieldOf("zombie").forGetter(bh.a::c),
-                  bu.b.optionalFieldOf("villager").forGetter(bh.a::d)
-               )
-               .apply($$0, bh.a::new)
-      );
+   public void a(List<bg> $$0, String $$1) {
+      this.a($$0, eug.n, $$1);
+   }
 
-      public static an<bh.a> b() {
-         return am.s.a(new bh.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
+   public void a(bg $$0, String $$1) {
+      this.a($$0, eug.n, $$1);
+   }
 
-      public boolean a(eqw $$0, eqw $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
-      }
+   public void a(bg $$0, euf $$1, String $$2) {
+      $$0.a(new err(this.a.a($$2), $$1, this.b));
+   }
 
-      @Override
-      public void a(bg $$0) {
-         ds.a.super.a($$0);
-         $$0.a(this.c, ".zombie");
-         $$0.a(this.d, ".villager");
-      }
-
-      @Override
-      public Optional<bf> a() {
-         return this.b;
+   public void a(List<bg> $$0, euf $$1, String $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         bg $$4 = $$0.get($$3);
+         $$4.a(new err(this.a.a($$2 + "[" + $$3 + "]"), $$1, this.b));
       }
    }
 }

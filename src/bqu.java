@@ -1,3 +1,3 @@
-public interface bqu {
-   bqt a(dsl var1, dch var2, ja var3);
+public interface bqu extends cqz {
+   wy O_();
 }

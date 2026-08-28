@@ -1,24 +1,30 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class eih extends eid {
-   public static final MapCodec<eih> a = axo.l.fieldOf("chance").xmap(eih::new, $$0 -> $$0.c);
-   private final int c;
+public enum eih implements azj {
+   a(ji.b, 1, "ceiling"),
+   b(ji.a, -1, "floor");
 
-   private eih(int $$0) {
-      this.c = $$0;
+   public static final Codec<eih> c = azj.a(eih::values);
+   private final ji d;
+   private final int e;
+   private final String f;
+
+   private eih(final ji $$0, final int $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static eih a(int $$0) {
-      return new eih($$0);
+   public ji a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
    }
 
    @Override
-   protected boolean a(eic $$0, ayo $$1, ja $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
-   }
-
-   @Override
-   public eif<?> b() {
-      return eif.b;
+   public String c() {
+      return this.f;
    }
 }

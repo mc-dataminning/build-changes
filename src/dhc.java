@@ -1,31 +1,96 @@
 import com.mojang.serialization.MapCodec;
 
-public class dhc extends dfi {
+public class dhc extends dlk {
    public static final MapCodec<dhc> a = b(dhc::new);
-   private static final wu b = wu.c("container.crafting");
 
    @Override
-   public MapCodec<? extends dhc> a() {
+   public MapCodec<dhc> a() {
       return a;
    }
 
-   protected dhc(dsk.d $$0) {
-      super($$0);
+   protected dhc(dsz.d $$0) {
+      super(0.3125F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+            .a(f, Boolean.valueOf(false))
+            .a(g, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected bqh a(dsl $$0, dcg $$1, ja $$2, cml $$3, ewd $$4) {
-      if ($$1.B) {
-         return bqh.a;
+   public dta a(cyb $$0) {
+      return a($$0.q(), $$0.a(), this.o());
+   }
+
+   public static dta a(dca $$0, jd $$1, dta $$2) {
+      dta $$3 = $$0.a_($$1.d());
+      dta $$4 = $$0.a_($$1.c());
+      dta $$5 = $$0.a_($$1.e());
+      dta $$6 = $$0.a_($$1.h());
+      dta $$7 = $$0.a_($$1.f());
+      dta $$8 = $$0.a_($$1.g());
+      dfw $$9 = $$2.b();
+      return $$2.b(g, Boolean.valueOf($$3.a($$9) || $$3.a(dfy.kv) || $$3.a(dfy.fz)))
+         .b(f, Boolean.valueOf($$4.a($$9) || $$4.a(dfy.kv)))
+         .b(b, Boolean.valueOf($$5.a($$9) || $$5.a(dfy.kv)))
+         .b(c, Boolean.valueOf($$6.a($$9) || $$6.a(dfy.kv)))
+         .b(d, Boolean.valueOf($$7.a($$9) || $$7.a(dfy.kv)))
+         .b(e, Boolean.valueOf($$8.a($$9) || $$8.a(dfy.kv)));
+   }
+
+   @Override
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(avr.an);
-         return bqh.c;
+         boolean $$6 = $$2.a(this) || $$2.a(dfy.kv) || $$1 == ji.a && $$2.a(dfy.fz);
+         return $$0.a(h.get($$1), Boolean.valueOf($$6));
       }
    }
 
    @Override
-   protected bql b(dsl $$0, dcg $$1, ja $$2) {
-      return new bqr(($$2x, $$3, $$4) -> new cqa($$2x, $$3, cpu.a($$1, $$2)), b);
+   protected void a(dta $$0, aqt $$1, jd $$2, ayv $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   protected boolean a(dta $$0, dcx $$1, jd $$2) {
+      dta $$3 = $$1.a_($$2.d());
+      boolean $$4 = !$$1.a_($$2.c()).i() && !$$3.i();
+
+      for (ji $$5 : ji.c.a) {
+         jd $$6 = $$2.a($$5);
+         dta $$7 = $$1.a_($$6);
+         if ($$7.a(this)) {
+            if ($$4) {
+               return false;
+            }
+
+            dta $$8 = $$1.a_($$6.d());
+            if ($$8.a(this) || $$8.a(dfy.fz)) {
+               return true;
+            }
+         }
+      }
+
+      return $$3.a(this) || $$3.a(dfy.fz);
+   }
+
+   @Override
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(b, c, d, e, f, g);
+   }
+
+   @Override
+   protected boolean a(dta $$0, epn $$1) {
+      return false;
    }
 }

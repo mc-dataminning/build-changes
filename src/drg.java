@@ -1,430 +1,143 @@
-import java.util.Iterator;
-import java.util.Objects;
+import java.util.Arrays;
 import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public class drg extends dpq {
-   private static final int d = 5;
-   public static final int a = 48;
-   public static final int b = 48;
-   public static final String c = "author";
-   @Nullable
-   private akk e;
-   private String f = "";
-   private String g = "";
-   private ja h = new ja(0, 1, 0);
-   private ke i = ke.g;
-   private dkf j = dkf.a;
-   private dlv k = dlv.a;
-   private dtv l;
-   private boolean m = true;
-   private boolean q;
-   private boolean r;
-   private boolean s = true;
-   private float t = 1.0F;
-   private long u;
+public class drg extends dqf {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "placement_priority";
+   public static final String e = "selection_priority";
+   public static final String f = "name";
+   public static final String g = "final_state";
+   private akq h = akq.b("empty");
+   private akq i = akq.b("empty");
+   private akp<ekw> j = akp.a(lu.aU, akq.b("empty"));
+   private drg.a k = drg.a.a;
+   private String l = "minecraft:air";
+   private int m;
+   private int q;
 
-   public drg(ja $$0, dsl $$1) {
-      super(dps.u, $$0, $$1);
-      this.l = $$1.c(dng.b);
+   public drg(jd $$0, dta $$1) {
+      super(dqh.F, $$0, $$1);
    }
 
-   @Override
-   protected void b(tx $$0, jl.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("name", this.c());
-      $$0.a("author", this.f);
-      $$0.a("metadata", this.g);
-      $$0.a("posX", this.h.u());
-      $$0.a("posY", this.h.v());
-      $$0.a("posZ", this.h.w());
-      $$0.a("sizeX", this.i.u());
-      $$0.a("sizeY", this.i.v());
-      $$0.a("sizeZ", this.i.w());
-      $$0.a("rotation", this.k.toString());
-      $$0.a("mirror", this.j.toString());
-      $$0.a("mode", this.l.toString());
-      $$0.a("ignoreEntities", this.m);
-      $$0.a("powered", this.q);
-      $$0.a("showair", this.r);
-      $$0.a("showboundingbox", this.s);
-      $$0.a("integrity", this.t);
-      $$0.a("seed", this.u);
-   }
-
-   @Override
-   protected void a(tx $$0, jl.a $$1) {
-      super.a($$0, $$1);
-      this.a($$0.l("name"));
-      this.f = $$0.l("author");
-      this.g = $$0.l("metadata");
-      int $$2 = ayg.a($$0.h("posX"), -48, 48);
-      int $$3 = ayg.a($$0.h("posY"), -48, 48);
-      int $$4 = ayg.a($$0.h("posZ"), -48, 48);
-      this.h = new ja($$2, $$3, $$4);
-      int $$5 = ayg.a($$0.h("sizeX"), 0, 48);
-      int $$6 = ayg.a($$0.h("sizeY"), 0, 48);
-      int $$7 = ayg.a($$0.h("sizeZ"), 0, 48);
-      this.i = new ke($$5, $$6, $$7);
-
-      try {
-         this.k = dlv.valueOf($$0.l("rotation"));
-      } catch (IllegalArgumentException var12) {
-         this.k = dlv.a;
-      }
-
-      try {
-         this.j = dkf.valueOf($$0.l("mirror"));
-      } catch (IllegalArgumentException var11) {
-         this.j = dkf.a;
-      }
-
-      try {
-         this.l = dtv.valueOf($$0.l("mode"));
-      } catch (IllegalArgumentException var10) {
-         this.l = dtv.d;
-      }
-
-      this.m = $$0.q("ignoreEntities");
-      this.q = $$0.q("powered");
-      this.r = $$0.q("showair");
-      this.s = $$0.q("showboundingbox");
-      if ($$0.e("integrity")) {
-         this.t = $$0.j("integrity");
-      } else {
-         this.t = 1.0F;
-      }
-
-      this.u = $$0.i("seed");
-      this.G();
-   }
-
-   private void G() {
-      if (this.n != null) {
-         ja $$0 = this.az_();
-         dsl $$1 = this.n.a_($$0);
-         if ($$1.a(dfk.pa)) {
-            this.n.a($$0, $$1.a(dng.b, this.l), 2);
-         }
-      }
-   }
-
-   public abu b() {
-      return abu.a(this);
-   }
-
-   @Override
-   public tx a(jl.a $$0) {
-      return this.e($$0);
-   }
-
-   public boolean a(cml $$0) {
-      if (!$$0.gx()) {
-         return false;
-      } else {
-         if ($$0.cP().B) {
-            $$0.a(this);
-         }
-
-         return true;
-      }
-   }
-
-   public String c() {
-      return this.e == null ? "" : this.e.toString();
-   }
-
-   public boolean d() {
-      return this.e != null;
-   }
-
-   public void a(@Nullable String $$0) {
-      this.a(azd.b($$0) ? null : akk.a($$0));
-   }
-
-   public void a(@Nullable akk $$0) {
-      this.e = $$0;
-   }
-
-   public void a(btc $$0) {
-      this.f = $$0.ah().getString();
-   }
-
-   public ja f() {
+   public akq b() {
       return this.h;
    }
 
-   public void a(ja $$0) {
-      this.h = $$0;
-   }
-
-   public ke j() {
+   public akq c() {
       return this.i;
    }
 
-   public void a(ke $$0) {
-      this.i = $$0;
-   }
-
-   public dkf k() {
+   public akp<ekw> d() {
       return this.j;
    }
 
-   public void a(dkf $$0) {
-      this.j = $$0;
-   }
-
-   public dlv l() {
-      return this.k;
-   }
-
-   public void a(dlv $$0) {
-      this.k = $$0;
-   }
-
-   public String u() {
-      return this.g;
-   }
-
-   public void b(String $$0) {
-      this.g = $$0;
-   }
-
-   public dtv v() {
+   public String f() {
       return this.l;
    }
 
-   public void a(dtv $$0) {
-      this.l = $$0;
-      dsl $$1 = this.n.a_(this.az_());
-      if ($$1.a(dfk.pa)) {
-         this.n.a(this.az_(), $$1.a(dng.b, $$0), 2);
-      }
+   public drg.a j() {
+      return this.k;
    }
 
-   public boolean w() {
+   public int k() {
       return this.m;
    }
 
-   public void a(boolean $$0) {
-      this.m = $$0;
-   }
-
-   public float x() {
-      return this.t;
-   }
-
-   public void a(float $$0) {
-      this.t = $$0;
-   }
-
-   public long y() {
-      return this.u;
-   }
-
-   public void a(long $$0) {
-      this.u = $$0;
-   }
-
-   public boolean z() {
-      if (this.l != dtv.a) {
-         return false;
-      } else {
-         ja $$0 = this.az_();
-         int $$1 = 80;
-         ja $$2 = new ja($$0.u() - 80, this.n.I_(), $$0.w() - 80);
-         ja $$3 = new ja($$0.u() + 80, this.n.am() - 1, $$0.w() + 80);
-         Stream<ja> $$4 = this.a($$2, $$3);
-         return a($$0, $$4).filter($$1x -> {
-            int $$2x = $$1x.k() - $$1x.h();
-            int $$3x = $$1x.l() - $$1x.i();
-            int $$4x = $$1x.m() - $$1x.j();
-            if ($$2x > 1 && $$3x > 1 && $$4x > 1) {
-               this.h = new ja($$1x.h() - $$0.u() + 1, $$1x.i() - $$0.v() + 1, $$1x.j() - $$0.w() + 1);
-               this.i = new ke($$2x - 1, $$3x - 1, $$4x - 1);
-               this.e();
-               dsl $$5 = this.n.a_($$0);
-               this.n.a($$0, $$5, $$5, 3);
-               return true;
-            } else {
-               return false;
-            }
-         }).isPresent();
-      }
-   }
-
-   private Stream<ja> a(ja $$0, ja $$1) {
-      return ja.d($$0, $$1)
-         .filter($$0x -> this.n.a_($$0x).a(dfk.pa))
-         .map(this.n::c_)
-         .filter($$0x -> $$0x instanceof drg)
-         .map($$0x -> (drg)$$0x)
-         .filter($$0x -> $$0x.l == dtv.c && Objects.equals(this.e, $$0x.e))
-         .map(dpq::az_);
-   }
-
-   private static Optional<eip> a(ja $$0, Stream<ja> $$1) {
-      Iterator<ja> $$2 = $$1.iterator();
-      if (!$$2.hasNext()) {
-         return Optional.empty();
-      } else {
-         ja $$3 = $$2.next();
-         eip $$4 = new eip($$3);
-         if ($$2.hasNext()) {
-            $$2.forEachRemaining($$4::a);
-         } else {
-            $$4.a($$0);
-         }
-
-         return Optional.of($$4);
-      }
-   }
-
-   public boolean A() {
-      return this.l != dtv.a ? false : this.b(true);
-   }
-
-   public boolean b(boolean $$0) {
-      if (this.e == null) {
-         return false;
-      } else {
-         ja $$1 = this.az_().a((ke)this.h);
-         aqm $$2 = (aqm)this.n;
-         emz $$3 = $$2.q();
-
-         emy $$4;
-         try {
-            $$4 = $$3.a(this.e);
-         } catch (z var8) {
-            return false;
-         }
-
-         $$4.a(this.n, $$1, this.i, !this.m, dfk.kN);
-         $$4.a(this.f);
-         if ($$0) {
-            try {
-               return $$3.c(this.e);
-            } catch (z var7) {
-               return false;
-            }
-         } else {
-            return true;
-         }
-      }
-   }
-
-   public static ayo b(long $$0) {
-      return $$0 == 0L ? ayo.a(ac.c()) : ayo.a($$0);
-   }
-
-   public boolean a(aqm $$0) {
-      if (this.l == dtv.b && this.e != null) {
-         emy $$1 = $$0.q().b(this.e).orElse(null);
-         if ($$1 == null) {
-            return false;
-         } else if ($$1.a().equals(this.i)) {
-            this.a($$0, $$1);
-            return true;
-         } else {
-            this.a($$1);
-            return false;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public boolean b(aqm $$0) {
-      emy $$1 = this.d($$0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         this.a($$1);
-         return true;
-      }
-   }
-
-   private void a(emy $$0) {
-      this.f = !azd.b($$0.b()) ? $$0.b() : "";
-      this.i = $$0.a();
-      this.e();
-   }
-
-   public void c(aqm $$0) {
-      emy $$1 = this.d($$0);
-      if ($$1 != null) {
-         this.a($$0, $$1);
-      }
-   }
-
-   @Nullable
-   private emy d(aqm $$0) {
-      return this.e == null ? null : $$0.q().b(this.e).orElse(null);
-   }
-
-   private void a(aqm $$0, emy $$1) {
-      this.a($$1);
-      emu $$2 = new emu().a(this.j).a(this.k).a(this.m);
-      if (this.t < 1.0F) {
-         $$2.b().a(new emc(ayg.a(this.t, 0.0F, 1.0F))).a(b(this.u));
-      }
-
-      ja $$3 = this.az_().a((ke)this.h);
-      $$1.a($$0, $$3, $$3, $$2, b(this.u), 2);
-   }
-
-   public void B() {
-      if (this.e != null) {
-         aqm $$0 = (aqm)this.n;
-         emz $$1 = $$0.q();
-         $$1.d(this.e);
-      }
-   }
-
-   public boolean C() {
-      if (this.l == dtv.b && !this.n.B && this.e != null) {
-         aqm $$0 = (aqm)this.n;
-         emz $$1 = $$0.q();
-
-         try {
-            return $$1.b(this.e).isPresent();
-         } catch (z var4) {
-            return false;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public boolean D() {
+   public int l() {
       return this.q;
    }
 
-   public void c(boolean $$0) {
+   public void a(akq $$0) {
+      this.h = $$0;
+   }
+
+   public void b(akq $$0) {
+      this.i = $$0;
+   }
+
+   public void a(akp<ekw> $$0) {
+      this.j = $$0;
+   }
+
+   public void a(String $$0) {
+      this.l = $$0;
+   }
+
+   public void a(drg.a $$0) {
+      this.k = $$0;
+   }
+
+   public void a(int $$0) {
+      this.m = $$0;
+   }
+
+   public void b(int $$0) {
       this.q = $$0;
    }
 
-   public boolean E() {
-      return this.r;
+   @Override
+   protected void b(ua $$0, jo.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("name", this.h.toString());
+      $$0.a("target", this.i.toString());
+      $$0.a("pool", this.j.a().toString());
+      $$0.a("final_state", this.l);
+      $$0.a("joint", this.k.c());
+      $$0.a("placement_priority", this.m);
+      $$0.a("selection_priority", this.q);
    }
 
-   public void d(boolean $$0) {
-      this.r = $$0;
+   @Override
+   protected void a(ua $$0, jo.a $$1) {
+      super.a($$0, $$1);
+      this.h = akq.a($$0.l("name"));
+      this.i = akq.a($$0.l("target"));
+      this.j = akp.a(lu.aU, akq.a($$0.l("pool")));
+      this.l = $$0.l("final_state");
+      this.k = drg.a.a($$0.l("joint")).orElseGet(() -> djy.m(this.n()).o().d() ? drg.a.b : drg.a.a);
+      this.m = $$0.h("placement_priority");
+      this.q = $$0.h("selection_priority");
    }
 
-   public boolean F() {
-      return this.s;
+   public aca u() {
+      return aca.a(this);
    }
 
-   public void e(boolean $$0) {
-      this.s = $$0;
+   @Override
+   public ua a(jo.a $$0) {
+      return this.e($$0);
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   public void a(aqt $$0, int $$1, boolean $$2) {
+      jd $$3 = this.az_().a(this.n().c(djy.b).a());
+      jz<ekw> $$4 = $$0.H_().d(lu.aU);
+      jm<ekw> $$5 = $$4.g(this.j);
+      ekq.a($$0, $$5, this.i, $$1, $$3, $$2);
+   }
+
+   public static enum a implements azj {
+      a("rollable"),
+      b("aligned");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.c;
+      }
+
+      public static Optional<drg.a> a(String $$0) {
+         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
+      }
+
+      public wy a() {
+         return wy.c("jigsaw_block.joint." + this.c);
+      }
    }
 }

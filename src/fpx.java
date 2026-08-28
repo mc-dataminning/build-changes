@@ -1,39 +1,47 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class fpx implements fpv {
-   private static final int c = 5;
-   private static final int d = 12;
-   public static final int a = 3;
-   public static final int b = 5;
-   private final fma e;
+public class fpx extends foo {
+   public static final float b = 62.500004F;
+   public static final float c = 0.9765628F;
+   private static final Vector3f q = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
+   @Nullable
+   private ghh.a r;
 
-   public fpx(fma $$0) {
-      this.e = $$0;
+   public fpx(drq $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
-      if ($$6.x + $$4 > $$0 - 5) {
-         $$6.x = Math.max($$2 - 12 - $$4, 9);
-      }
-
-      $$6.y += 3;
-      int $$7 = $$5 + 3 + 3;
-      int $$8 = this.e.c() + 3 + a(0, 0, this.e.h());
-      int $$9 = $$1 - 5;
-      if ($$8 + $$7 <= $$9) {
-         $$6.y = $$6.y + a($$6.y, this.e.b(), this.e.h());
-      } else {
-         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.c(), this.e.h()));
-      }
-
-      return $$6;
+   protected void aP_() {
+      super.aP_();
+      this.r = ghh.a(this.l.aP(), this.a);
    }
 
-   private static int a(int $$0, int $$1, int $$2) {
-      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
-      return Math.round(ayg.i((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
+   @Override
+   protected void b(fht $$0, dta $$1) {
+      super.b($$0, $$1);
+      boolean $$2 = $$1.b() instanceof dns;
+      if (!$$2) {
+         $$0.c().a(0.0F, 35.0F, 0.0F);
+      }
+   }
+
+   @Override
+   protected void a(fht $$0, dta $$1) {
+      if (this.r != null) {
+         boolean $$2 = $$1.b() instanceof dns;
+         $$0.c().a(0.0F, 31.0F, 0.0F);
+         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
+         gsj $$3 = gfi.a(this.a);
+         fbg $$4 = $$3.a($$0.d(), this.r::a);
+         this.r.b.k = $$2;
+         this.r.a.a($$0.c(), $$4, 15728880, gpw.d);
+      }
+   }
+
+   @Override
+   protected Vector3f m() {
+      return q;
    }
 }

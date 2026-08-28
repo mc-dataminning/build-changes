@@ -1,41 +1,30 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dr extends ds<dr.a> {
+public record dr(boolean d, boolean e) implements bw {
+   public static final MapCodec<dr> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("has_raid", false).forGetter(dr::b), Codec.BOOL.optionalFieldOf("is_captain", false).forGetter(dr::c))
+            .apply($$0, dr::new)
+   );
+   public static final dr c = new dr(false, true);
+
    @Override
-   public Codec<dr.a> a() {
-      return dr.a.a;
+   public MapCodec<dr> a() {
+      return bx.e;
    }
 
-   public void a(aqn $$0, cud $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   @Override
+   public boolean a(bsq $$0, aqt $$1, @Nullable eww $$2) {
+      return !($$0 instanceof coh $$3) ? false : $$3.gC() == this.d && $$3.gB() == this.e;
    }
 
-   public static record a(Optional<bf> b, Optional<cp> c) implements ds.a {
-      public static final Codec<dr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(dr.a::a), cp.a.optionalFieldOf("item").forGetter(dr.a::b)).apply($$0, dr.a::new)
-      );
+   public boolean b() {
+      return this.d;
+   }
 
-      public static an<dr.a> a(Optional<cp> $$0) {
-         return am.G.a(new dr.a(Optional.empty(), $$0));
-      }
-
-      public static an<dr.a> a(dcf $$0) {
-         return am.G.a(new dr.a(Optional.empty(), Optional.of(cp.a.a().a($$0).b())));
-      }
-
-      public boolean a(cud $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
-      }
-
-      @Override
-      public Optional<bf> a() {
-         return this.b;
-      }
-
-      public Optional<cp> b() {
-         return this.c;
-      }
+   public boolean c() {
+      return this.e;
    }
 }

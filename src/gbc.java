@@ -1,79 +1,40 @@
-import javax.annotation.Nullable;
-
-public class gbc extends gct {
-   private final float a;
-   private final gco b;
-
-   gbc(fyl $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gco $$7) {
+public class gbc extends gdh {
+   gbc(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
-   }
-
-   @Override
-   public gbx b() {
-      return gbx.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * ayg.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      this.u = -0.125F;
+      this.B = 0.85F;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
+      super.a();
+      if (!this.o && !this.c.b_(jd.a(this.g, this.h, this.i)).a(awj.a)) {
          this.k();
-      } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
-         }
-
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
       }
    }
 
-   public static class a implements gbw<lb> {
-      private final gco a;
+   @Override
+   public gcl b() {
+      return gcl.b;
+   }
 
-      public a(gco $$0) {
+   public static class a implements gck<lq> {
+      private final gdc a;
+
+      public a(gdc $$0) {
          this.a = $$0;
       }
 
-      @Nullable
-      public gbt a(lb $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dsl $$8 = $$0.b();
-         if (!$$8.i() && $$8.l() == dlo.a) {
-            return null;
-         } else {
-            ja $$9 = ja.a($$2, $$3, $$4);
-            int $$10 = ffw.Q().au().a($$8, $$1, $$9);
-            if ($$8.b() instanceof die) {
-               $$10 = ((die)$$8.b()).b($$8, $$1, $$9);
-            }
-
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new gbc($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
-         }
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbc $$8 = new gbc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

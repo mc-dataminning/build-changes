@@ -1,53 +1,58 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public final class guz extends gux {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public class guz implements gva<gtq> {
+   private final List<gva<gtq>> a = Lists.newArrayList();
+   @Nullable
+   private final wy b;
+
+   public guz(akq $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : wy.c($$1);
+   }
 
    @Override
-   public void a(gur $$0) {
-      if (ffw.Q().C()) {
-         super.a($$0);
+   public int e() {
+      int $$0 = 0;
+
+      for (gva<gtq> $$1 : this.a) {
+         $$0 += $$1.e();
+      }
+
+      return $$0;
+   }
+
+   public gtq a(ayv $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
+
+         for (gva<gtq> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
+            }
+         }
+
+         return guy.b;
+      } else {
+         return guy.b;
       }
    }
 
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
+   public void a(gva<gtq> $$0) {
+      this.a.add($$0);
+   }
+
+   @Nullable
+   public wy a() {
+      return this.b;
    }
 
    @Override
-   public void f() {
-      this.b.add((long)ffw.Q().o());
-      this.h();
-      this.c.add(ffw.Q().p());
-   }
-
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
-   }
-
-   @Override
-   public void b(gur $$0) {
-      $$0.send(gus.c, $$0x -> {
-         $$0x.a(guu.r, new LongArrayList(this.b));
-         $$0x.a(guu.s, new LongArrayList(this.c));
-         $$0x.a(guu.t, new LongArrayList(this.d));
-         $$0x.a(guu.u, this.e());
-         $$0x.a(guu.v, ffw.Q().m.aD());
-         $$0x.a(guu.w, (int)a);
-      });
-      this.g();
-   }
-
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   public void a(guv $$0) {
+      for (gva<gtq> $$1 : this.a) {
+         $$1.a($$0);
+      }
    }
 }

@@ -1,123 +1,123 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Locale;
+import java.util.function.BiConsumer;
 
-public record cxl(ard<String> k, String l, int m, List<ard<wu>> n, boolean o) implements cwo<wu, cxl> {
-   public static final cxl a = new cxl(ard.a(""), "", 0, List.of(), true);
-   public static final int b = 32767;
-   public static final int c = 16;
-   public static final int d = 32;
-   public static final int e = 3;
-   public static final int f = 2;
-   public static final Codec<wu> g = ww.a(32767);
-   public static final Codec<List<ard<wu>>> h = a(g);
-   public static final Codec<cxl> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ard.a(Codec.string(0, 32)).fieldOf("title").forGetter(cxl::d),
-               Codec.STRING.fieldOf("author").forGetter(cxl::e),
-               axo.a(0, 3).optionalFieldOf("generation", 0).forGetter(cxl::f),
-               h.optionalFieldOf("pages", List.of()).forGetter(cxl::a),
-               Codec.BOOL.optionalFieldOf("resolved", false).forGetter(cxl::g)
-            )
+public record cxl(List<cxl.b> e, boolean f) {
+   public static final cxl a = new cxl(List.of(), true);
+   private static final Codec<cxl> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cxl.b.a.listOf().fieldOf("modifiers").forGetter(cxl::b), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cxl::c))
             .apply($$0, cxl::new)
    );
-   public static final ys<wf, cxl> j = ys.a(ard.a(yq.b(32)), cxl::d, yq.l, cxl::e, yq.g, cxl::f, ard.a(ww.b).a(yq.a()), cxl::a, yq.b, cxl::g, cxl::new);
+   public static final Codec<cxl> b = Codec.withAlternative(g, cxl.b.a.listOf(), $$0 -> new cxl($$0, true));
+   public static final yw<wj, cxl> c = yw.a(cxl.b.b.a(yu.a()), cxl::b, yu.b, cxl::c, cxl::new);
+   public static final DecimalFormat d = ad.a(new DecimalFormat("#.##"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
 
-   public cxl(ard<String> k, String l, int m, List<ard<wu>> n, boolean o) {
-      if (m >= 0 && m <= 3) {
-         this.k = k;
-         this.l = l;
-         this.m = m;
-         this.n = n;
-         this.o = o;
-      } else {
-         throw new IllegalArgumentException("Generation was " + m + ", but must be between 0 and 3");
+   public cxl a(boolean $$0) {
+      return new cxl(this.e, $$0);
+   }
+
+   public static cxl.a a() {
+      return new cxl.a();
+   }
+
+   public cxl a(jm<bup> $$0, bus $$1, bsy $$2) {
+      Builder<cxl.b> $$3 = ImmutableList.builderWithExpectedSize(this.e.size() + 1);
+
+      for (cxl.b $$4 : this.e) {
+         if (!$$4.a($$0, $$1.b())) {
+            $$3.add($$4);
+         }
+      }
+
+      $$3.add(new cxl.b($$0, $$1, $$2));
+      return new cxl($$3.build(), this.f);
+   }
+
+   public void a(bsy $$0, BiConsumer<jm<bup>, bus> $$1) {
+      for (cxl.b $$2 : this.e) {
+         if ($$2.e.equals($$0)) {
+            $$1.accept($$2.c, $$2.d);
+         }
       }
    }
 
-   private static Codec<ard<wu>> b(Codec<wu> $$0) {
-      return ard.a($$0);
-   }
-
-   public static Codec<List<ard<wu>>> a(Codec<wu> $$0) {
-      return b($$0).listOf();
-   }
-
-   @Nullable
-   public cxl b() {
-      return this.m >= 2 ? null : new cxl(this.k, this.l, this.m + 1, this.n, this.o);
-   }
-
-   @Nullable
-   public cxl a(eq $$0, @Nullable cml $$1) {
-      if (this.o) {
-         return null;
-      } else {
-         Builder<ard<wu>> $$2 = ImmutableList.builderWithExpectedSize(this.n.size());
-
-         for (ard<wu> $$3 : this.n) {
-            Optional<ard<wu>> $$4 = a($$0, $$1, $$3);
-            if ($$4.isEmpty()) {
-               return null;
-            }
-
-            $$2.add($$4.get());
+   public void a(bsx $$0, BiConsumer<jm<bup>, bus> $$1) {
+      for (cxl.b $$2 : this.e) {
+         if ($$2.e.b($$0)) {
+            $$1.accept($$2.c, $$2.d);
          }
-
-         return new cxl(this.k, this.l, this.m, $$2.build(), true);
       }
    }
 
-   public cxl c() {
-      return new cxl(this.k, this.l, this.m, this.n, true);
-   }
+   public double a(double $$0, bsx $$1) {
+      double $$2 = $$0;
 
-   private static Optional<ard<wu>> a(eq $$0, @Nullable cml $$1, ard<wu> $$2) {
-      return $$2.b($$2x -> {
-         try {
-            wu $$3 = wx.a($$0, $$2x, $$1, 0);
-            return a($$3, $$0.v()) ? Optional.empty() : Optional.of($$3);
-         } catch (Exception var4) {
-            return Optional.of($$2x);
+      for (cxl.b $$3 : this.e) {
+         if ($$3.e.b($$1)) {
+            double $$4 = $$3.d.c();
+
+            $$2 += switch ($$3.d.d()) {
+               case a -> $$4;
+               case b -> $$4 * $$0;
+               case c -> $$4 * $$2;
+            };
          }
-      });
+      }
+
+      return $$2;
    }
 
-   private static boolean a(wu $$0, jl.a $$1) {
-      return wu.a.a($$0, $$1).length() > 32767;
+   public List<cxl.b> b() {
+      return this.e;
    }
 
-   public List<wu> a(boolean $$0) {
-      return Lists.transform(this.n, $$1 -> (wu)$$1.a($$0));
+   public boolean c() {
+      return this.f;
    }
 
-   public cxl b(List<ard<wu>> $$0) {
-      return new cxl(this.k, this.l, this.m, $$0, false);
+   public static class a {
+      private final Builder<cxl.b> a = ImmutableList.builder();
+
+      a() {
+      }
+
+      public cxl.a a(jm<bup> $$0, bus $$1, bsy $$2) {
+         this.a.add(new cxl.b($$0, $$1, $$2));
+         return this;
+      }
+
+      public cxl a() {
+         return new cxl(this.a.build(), true);
+      }
    }
 
-   public ard<String> d() {
-      return this.k;
-   }
+   public static record b(jm<bup> c, bus d, bsy e) {
+      public static final Codec<cxl.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bup.a.fieldOf("type").forGetter(cxl.b::a), bus.a.forGetter(cxl.b::b), bsy.l.optionalFieldOf("slot", bsy.a).forGetter(cxl.b::c))
+               .apply($$0, cxl.b::new)
+      );
+      public static final yw<wj, cxl.b> b = yw.a(bup.b, cxl.b::a, bus.c, cxl.b::b, bsy.m, cxl.b::c, cxl.b::new);
 
-   public String e() {
-      return this.l;
-   }
+      public boolean a(jm<bup> $$0, akq $$1) {
+         return $$0.equals(this.c) && $$1.equals(this.d);
+      }
 
-   public int f() {
-      return this.m;
-   }
+      public jm<bup> a() {
+         return this.c;
+      }
 
-   @Override
-   public List<ard<wu>> a() {
-      return this.n;
-   }
+      public bus b() {
+         return this.d;
+      }
 
-   public boolean g() {
-      return this.o;
+      public bsy c() {
+         return this.e;
+      }
    }
 }

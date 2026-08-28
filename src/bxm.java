@@ -1,26 +1,19 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.function.Predicate;
 
 public class bxm {
-   private static final int a = 180;
-   private static final int b = 8;
-   private static final int c = 6;
+   public static bwq<btl> a(float $$0, int $$1) {
+      return a($$0x -> true, $$1x -> $$0, $$1);
+   }
 
-   public static bwg<btl> a(ccg<ji> $$0, float $$1, int $$2) {
-      MutableLong $$3 = new MutableLong(0L);
-      return byi.a(
-         (Function<byi.b<btl>, ? extends App<byi.c<btl>, byl<btl>>>)($$4 -> $$4.group($$4.a(ccg.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                  ji $$9 = $$4.b($$5);
-                  if ($$6.af() != $$9.a() || !$$9.b().a($$7.dp(), (double)$$2)) {
+   public static bwq<btl> a(Predicate<btl> $$0, Function<btl, Float> $$1, int $$2) {
+      return bys.a(
+         (Function<bys.b<btl>, ? extends App<bys.c<btl>, byv<btl>>>)($$3 -> $$3.group($$3.c(ccq.m), $$3.b(ccq.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  if (!$$0.test($$7)) {
                      return false;
-                  } else if ($$8 <= $$3.getValue()) {
-                     return true;
                   } else {
-                     Optional<ewh> $$10 = Optional.ofNullable(cea.a($$7, 8, 6));
-                     $$4x.a($$10.map($$1xxxx -> new ccj($$1xxxx, $$1, 1)));
-                     $$3.setValue($$8 + 180L);
+                     $$4.a(new cct($$3.b($$5), $$1.apply($$7), $$2));
                      return true;
                   }
                }))

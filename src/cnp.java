@@ -1,168 +1,144 @@
-import it.unimi.dsi.fastutil.doubles.DoubleDoubleImmutablePair;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cnp extends cnk implements cna {
-   public static final double b = 4.0;
-   private static final double d = 16.0;
-   public static final Predicate<btc> c = $$0 -> $$0.fn() || $$0.bS();
+public final class cnp {
+   private static final float a = 0.3F;
 
-   public cnp(bsn<? extends cnp> $$0, dcg $$1) {
-      super($$0, $$1);
+   public static ewu a(bsq $$0, Predicate<bsq> $$1) {
+      eww $$2 = $$0.dt();
+      dcu $$3 = $$0.dQ();
+      eww $$4 = $$0.do();
+      return a($$4, $$0, $$1, $$2, $$3, 0.3F, dcd.a.a);
    }
 
-   public cnp(dcg $$0, btc $$1) {
-      super(bsn.aE, $$1, $$0);
+   public static ewu a(bsq $$0, Predicate<bsq> $$1, dcd.a $$2) {
+      eww $$3 = $$0.dt();
+      dcu $$4 = $$0.dQ();
+      eww $$5 = $$0.do();
+      return a($$5, $$0, $$1, $$3, $$4, 0.3F, $$2);
    }
 
-   public cnp(dcg $$0, double $$1, double $$2, double $$3) {
-      super(bsn.aE, $$1, $$2, $$3, $$0);
+   public static ewu a(bsq $$0, Predicate<bsq> $$1, double $$2) {
+      eww $$3 = $$0.g(0.0F).a($$2);
+      dcu $$4 = $$0.dQ();
+      eww $$5 = $$0.by();
+      return a($$5, $$0, $$1, $$3, $$4, 0.0F, dcd.a.a);
    }
 
-   @Override
-   protected cty t() {
-      return cug.vo;
-   }
-
-   @Override
-   protected double ba() {
-      return 0.05;
-   }
-
-   @Override
-   protected void a(ewd $$0) {
-      super.a($$0);
-      if (!this.dR().B) {
-         cud $$1 = this.p();
-         jf $$2 = $$0.b();
-         ja $$3 = $$0.a();
-         ja $$4 = $$3.a($$2);
-         cwe $$5 = $$1.a(kn.G, cwe.a);
-         if ($$5.a(cwf.a)) {
-            this.a($$4);
-            this.a($$4.a($$2.g()));
-
-            for (jf $$6 : jf.c.a) {
-               this.a($$4.a($$6));
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(ewf $$0) {
-      super.a($$0);
-      if (!this.dR().B) {
-         cud $$1 = this.p();
-         cwe $$2 = $$1.a(kn.G, cwe.a);
-         if ($$2.a(cwf.a)) {
-            this.v();
-         } else if ($$2.c()) {
-            if (this.w()) {
-               this.a($$2);
-            } else {
-               this.a($$2.a(), $$0.c() == ewf.a.c ? ((ewe)$$0).a() : null);
-            }
-         }
-
-         int $$3 = $$2.e().isPresent() && $$2.e().get().a().b() ? 2007 : 2002;
-         this.dR().c($$3, this.dr(), $$2.b());
-         this.aq();
-      }
-   }
-
-   private void v() {
-      ewc $$0 = this.cM().c(4.0, 2.0, 4.0);
-
-      for (btc $$2 : this.dR().a(btc.class, $$0, c)) {
-         double $$3 = this.g($$2);
-         if ($$3 < 16.0) {
-            if ($$2.fn()) {
-               $$2.a(this.dS().c(this, this.s()), 1.0F);
-            }
-
-            if ($$2.bS() && $$2.bF()) {
-               $$2.aJ();
-            }
-         }
+   private static ewu a(eww $$0, bsq $$1, Predicate<bsq> $$2, eww $$3, dcu $$4, float $$5, dcd.a $$6) {
+      eww $$7 = $$0.e($$3);
+      ewu $$8 = $$4.a(new dcd($$0, $$7, $$6, dcd.b.a, $$1));
+      if ($$8.c() != ewu.a.a) {
+         $$7 = $$8.e();
       }
 
-      for (cge $$5 : this.dR().a(cge.class, $$0)) {
-         $$5.s();
+      ewu $$9 = a($$4, $$1, $$0, $$7, $$1.cL().b($$3).g(1.0), $$2, $$5);
+      if ($$9 != null) {
+         $$8 = $$9;
       }
+
+      return $$8;
    }
 
-   private void a(Iterable<brp> $$0, @Nullable bsh $$1) {
-      ewc $$2 = this.cM().c(4.0, 2.0, 4.0);
-      List<btc> $$3 = this.dR().a(btc.class, $$2);
-      if (!$$3.isEmpty()) {
-         bsh $$4 = this.I();
+   @Nullable
+   public static ewt a(bsq $$0, eww $$1, eww $$2, ewr $$3, Predicate<bsq> $$4, double $$5) {
+      dcu $$6 = $$0.dQ();
+      double $$7 = $$5;
+      bsq $$8 = null;
+      eww $$9 = null;
 
-         for (btc $$5 : $$3) {
-            if ($$5.fE()) {
-               double $$6 = this.g($$5);
-               if ($$6 < 16.0) {
-                  double $$7;
-                  if ($$5 == $$1) {
-                     $$7 = 1.0;
-                  } else {
-                     $$7 = 1.0 - Math.sqrt($$6) / 4.0;
+      for (bsq $$10 : $$6.a($$0, $$3, $$4)) {
+         ewr $$11 = $$10.cL().g((double)$$10.bL());
+         Optional<eww> $$12 = $$11.b($$1, $$2);
+         if ($$11.d($$1)) {
+            if ($$7 >= 0.0) {
+               $$8 = $$10;
+               $$9 = $$12.orElse($$1);
+               $$7 = 0.0;
+            }
+         } else if ($$12.isPresent()) {
+            eww $$13 = $$12.get();
+            double $$14 = $$1.g($$13);
+            if ($$14 < $$7 || $$7 == 0.0) {
+               if ($$10.da() == $$0.da()) {
+                  if ($$7 == 0.0) {
+                     $$8 = $$10;
+                     $$9 = $$13;
                   }
-
-                  for (brp $$9 : $$0) {
-                     jj<brn> $$10 = $$9.c();
-                     if ($$10.a().a()) {
-                        $$10.a().a(this, this.s(), $$5, $$9.e(), $$7);
-                     } else {
-                        int $$11 = $$9.a($$1x -> (int)($$7 * (double)$$1x + 0.5));
-                        brp $$12 = new brp($$10, $$11, $$9.e(), $$9.f(), $$9.g());
-                        if (!$$12.a(20)) {
-                           $$5.b($$12, $$4);
-                        }
-                     }
-                  }
+               } else {
+                  $$8 = $$10;
+                  $$9 = $$13;
+                  $$7 = $$14;
                }
             }
          }
       }
+
+      return $$8 == null ? null : new ewt($$8, $$9);
    }
 
-   private void a(cwe $$0) {
-      bsd $$1 = new bsd(this.dR(), this.dw(), this.dy(), this.dC());
-      if (this.s() instanceof btc $$2) {
-         $$1.a($$2);
+   @Nullable
+   public static ewt a(dcu $$0, bsq $$1, eww $$2, eww $$3, ewr $$4, Predicate<bsq> $$5) {
+      return a($$0, $$1, $$2, $$3, $$4, $$5, 0.3F);
+   }
+
+   @Nullable
+   public static ewt a(dcu $$0, bsq $$1, eww $$2, eww $$3, ewr $$4, Predicate<bsq> $$5, float $$6) {
+      double $$7 = Double.MAX_VALUE;
+      bsq $$8 = null;
+
+      for (bsq $$9 : $$0.a($$1, $$4, $$5)) {
+         ewr $$10 = $$9.cL().g((double)$$6);
+         Optional<eww> $$11 = $$10.b($$2, $$3);
+         if ($$11.isPresent()) {
+            double $$12 = $$2.g($$11.get());
+            if ($$12 < $$7) {
+               $$8 = $$9;
+               $$7 = $$12;
+            }
+         }
       }
 
-      $$1.a(3.0F);
-      $$1.b(-0.5F);
-      $$1.c(10);
-      $$1.c(-$$1.g() / (float)$$1.j());
-      $$1.a($$0);
-      this.dR().b($$1);
+      return $$8 == null ? null : new ewt($$8);
    }
 
-   private boolean w() {
-      return this.p().a(cug.vr);
-   }
+   public static void a(bsq $$0, float $$1) {
+      eww $$2 = $$0.dt();
+      if ($$2.g() != 0.0) {
+         double $$3 = $$2.h();
+         $$0.s((float)(ayn.d($$2.e, $$2.c) * 180.0F / (float)Math.PI) + 90.0F);
+         $$0.t((float)(ayn.d($$3, $$2.d) * 180.0F / (float)Math.PI) - 90.0F);
 
-   private void a(ja $$0) {
-      dsl $$1 = this.dR().a_($$0);
-      if ($$1.a(avw.aK)) {
-         this.dR().a($$0, false, this);
-      } else if (dea.c($$1)) {
-         dea.a(null, $$1, this.dR(), $$0);
-      } else if (dfw.g($$1)) {
-         this.dR().a(null, 1009, $$0, 0);
-         dfw.a(this.s(), this.dR(), $$0, $$1);
-         this.dR().b($$0, $$1.a(dfw.c, Boolean.valueOf(false)));
+         while ($$0.dI() - $$0.P < -180.0F) {
+            $$0.P -= 360.0F;
+         }
+
+         while ($$0.dI() - $$0.P >= 180.0F) {
+            $$0.P += 360.0F;
+         }
+
+         while ($$0.dG() - $$0.O < -180.0F) {
+            $$0.O -= 360.0F;
+         }
+
+         while ($$0.dG() - $$0.O >= 180.0F) {
+            $$0.O += 360.0F;
+         }
+
+         $$0.t(ayn.i($$1, $$0.P, $$0.dI()));
+         $$0.s(ayn.i($$1, $$0.O, $$0.dG()));
       }
    }
 
-   @Override
-   public DoubleDoubleImmutablePair a_(btc $$0, bra $$1) {
-      double $$2 = $$0.dp().c - this.dp().c;
-      double $$3 = $$0.dp().e - this.dp().e;
-      return DoubleDoubleImmutablePair.of($$2, $$3);
+   public static bqp a(btl $$0, cuj $$1) {
+      return $$0.eU().a($$1) ? bqp.a : bqp.b;
+   }
+
+   public static cnb a(btl $$0, cuo $$1, float $$2, @Nullable cuo $$3) {
+      csh $$4 = (csh)($$1.g() instanceof csh ? $$1.g() : cur.ow);
+      cnb $$5 = $$4.a($$0.dQ(), $$1, $$0, $$3);
+      $$5.a($$2);
+      return $$5;
    }
 }

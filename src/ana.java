@@ -1,103 +1,72 @@
-import com.google.common.base.Stopwatch;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Collection;
 
 public class ana {
-   private static final Logger a = LogUtils.getLogger();
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wu.b("commands.locate.structure.not_found", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wu.b("commands.locate.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> wu.b("commands.locate.biome.not_found", $$0));
-   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> wu.b("commands.locate.poi.not_found", $$0));
-   private static final int f = 100;
-   private static final int g = 6400;
-   private static final int h = 32;
-   private static final int i = 64;
-   private static final int j = 256;
+   public static final int a = 100;
 
-   public static void a(CommandDispatcher<eq> $$0, em $$1) {
+   public static void a(CommandDispatcher<et> $$0, ep $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("locate").requires($$0x -> $$0x.c(2)))
-                  .then(er.a("structure").then(er.a("structure", fu.a(lr.aQ)).executes($$0x -> a((eq)$$0x.getSource(), fu.a($$0x, "structure", lr.aQ, c))))))
-               .then(er.a("biome").then(er.a("biome", ft.a($$1, lr.aE)).executes($$0x -> a((eq)$$0x.getSource(), ft.a($$0x, "biome", lr.aE))))))
-            .then(er.a("poi").then(er.a("poi", ft.a($$1, lr.Z)).executes($$0x -> b((eq)$$0x.getSource(), ft.a($$0x, "poi", lr.Z)))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("give").requires($$0x -> $$0x.c(2)))
+            .then(
+               eu.a("targets", fg.d())
+                  .then(
+                     ((RequiredArgumentBuilder)eu.a("item", hc.a($$1)).executes($$0x -> a((et)$$0x.getSource(), hc.a($$0x, "item"), fg.f($$0x, "targets"), 1)))
+                        .then(
+                           eu.a("count", IntegerArgumentType.integer(1))
+                              .executes(
+                                 $$0x -> a((et)$$0x.getSource(), hc.a($$0x, "item"), fg.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static Optional<? extends jn.b<eix>> a(fu.c<eix> $$0, jw<eix> $$1) {
-      return (Optional<? extends jn.b<eix>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> jn.a($$0xx)), $$1::b);
-   }
-
-   private static int a(eq $$0, fu.c<eix> $$1) throws CommandSyntaxException {
-      jw<eix> $$2 = $$0.e().H_().d(lr.aQ);
-      jn<eix> $$3 = (jn<eix>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
-      ja $$4 = ja.a($$0.d());
-      aqm $$5 = $$0.e();
-      Stopwatch $$6 = Stopwatch.createStarted(ac.d);
-      Pair<ja, jj<eix>> $$7 = $$5.l().g().a($$5, $$3, $$4, 100, false);
-      $$6.stop();
-      if ($$7 == null) {
-         throw b.create($$1.b());
+   private static int a(et $$0, hd $$1, Collection<aqu> $$2, int $$3) throws CommandSyntaxException {
+      cuo $$4 = $$1.a(1, false);
+      int $$5 = $$4.j();
+      int $$6 = $$5 * 100;
+      if ($$3 > $$6) {
+         $$0.b(wy.a("commands.give.failed.toomanyitems", $$6, $$4.F()));
+         return 0;
       } else {
-         return a($$0, $$1, $$4, $$7, "commands.locate.structure.success", false, $$6.elapsed());
+         for (aqu $$7 : $$2) {
+            int $$8 = $$3;
+
+            while ($$8 > 0) {
+               int $$9 = Math.min($$5, $$8);
+               $$8 -= $$9;
+               cuo $$10 = $$1.a($$9, false);
+               boolean $$11 = $$7.fZ().f($$10);
+               if ($$11 && $$10.e()) {
+                  cjf $$13 = $$7.a($$4, false);
+                  if ($$13 != null) {
+                     $$13.B();
+                  }
+
+                  $$7.dQ().a(null, $$7.dv(), $$7.dx(), $$7.dB(), avo.nC, avp.h, 0.2F, (($$7.dT().i() - $$7.dT().i()) * 0.7F + 1.0F) * 2.0F);
+                  $$7.cd.d();
+               } else {
+                  cjf $$12 = $$7.a($$10, false);
+                  if ($$12 != null) {
+                     $$12.w();
+                     $$12.b($$7.cA());
+                  }
+               }
+            }
+         }
+
+         if ($$2.size() == 1) {
+            $$0.a(() -> wy.a("commands.give.success.single", $$3, $$4.F(), $$2.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wy.a("commands.give.success.single", $$3, $$4.F(), $$2.size()), true);
+         }
+
+         return $$2.size();
       }
-   }
-
-   private static int a(eq $$0, ft.c<ddg> $$1) throws CommandSyntaxException {
-      ja $$2 = ja.a($$0.d());
-      Stopwatch $$3 = Stopwatch.createStarted(ac.d);
-      Pair<ja, jj<ddg>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
-      $$3.stop();
-      if ($$4 == null) {
-         throw d.create($$1.b());
-      } else {
-         return a($$0, $$1, $$2, $$4, "commands.locate.biome.success", true, $$3.elapsed());
-      }
-   }
-
-   private static int b(eq $$0, ft.c<cej> $$1) throws CommandSyntaxException {
-      ja $$2 = ja.a($$0.d());
-      aqm $$3 = $$0.e();
-      Stopwatch $$4 = Stopwatch.createStarted(ac.d);
-      Optional<Pair<jj<cej>, ja>> $$5 = $$3.y().e($$1, $$2, 256, ceg.b.c);
-      $$4.stop();
-      if ($$5.isEmpty()) {
-         throw e.create($$1.b());
-      } else {
-         return a($$0, $$1, $$2, $$5.get().swap(), "commands.locate.poi.success", false, $$4.elapsed());
-      }
-   }
-
-   public static int a(eq $$0, ft.c<?> $$1, ja $$2, Pair<ja, ? extends jj<?>> $$3, String $$4, boolean $$5, Duration $$6) {
-      String $$7 = (String)$$1.a().map($$1x -> $$1.b(), $$2x -> $$1.b() + " (" + ((jj)$$3.getSecond()).g() + ")");
-      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
-   }
-
-   public static int a(eq $$0, fu.c<?> $$1, ja $$2, Pair<ja, ? extends jj<?>> $$3, String $$4, boolean $$5, Duration $$6) {
-      String $$7 = (String)$$1.a().map($$0x -> $$0x.a().toString(), $$1x -> "#" + $$1x.b() + " (" + ((jj)$$3.getSecond()).g() + ")");
-      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
-   }
-
-   private static int a(eq $$0, ja $$1, Pair<ja, ? extends jj<?>> $$2, String $$3, boolean $$4, String $$5, Duration $$6) {
-      ja $$7 = (ja)$$2.getFirst();
-      int $$8 = $$4 ? ayg.d(ayg.c((float)$$1.j($$7))) : ayg.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
-      String $$9 = $$4 ? String.valueOf($$7.v()) : "~";
-      wu $$10 = wx.a((wu)wu.a("chat.coordinates", $$7.u(), $$9, $$7.w()))
-         .a($$2x -> $$2x.a(n.k).a(new ws(ws.a.d, "/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new xa(xa.a.a, wu.c("chat.coordinates.tooltip"))));
-      $$0.a(() -> wu.a($$3, $$5, $$10, $$8), false);
-      a.info("Locating element " + $$5 + " took " + $$6.toMillis() + " ms");
-      return $$8;
-   }
-
-   private static float a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$2 - $$0;
-      int $$5 = $$3 - $$1;
-      return ayg.c((float)($$4 * $$4 + $$5 * $$5));
    }
 }

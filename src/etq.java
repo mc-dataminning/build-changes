@@ -1,74 +1,46 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Set;
 
-public class etq {
-   private final Set<etp<?>> a;
-   private final Set<etp<?>> b;
+public class etq extends esy {
+   public static final MapCodec<etq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(evt.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, etq::new)
+   );
+   private final evs b;
+   private final boolean c;
 
-   etq(Set<etp<?>> $$0, Set<etp<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
-   }
-
-   public boolean a(etp<?> $$0) {
-      return this.b.contains($$0);
-   }
-
-   public Set<etp<?>> a() {
-      return this.a;
-   }
-
-   public Set<etp<?>> b() {
-      return this.b;
+   private etq(List<euw> $$0, evs $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   public eta<etq> b() {
+      return etb.e;
    }
 
-   public void a(erc $$0, eqx $$1) {
-      this.a($$0.b(), $$1);
+   @Override
+   public Set<eue<?>> a() {
+      return this.b.a();
    }
 
-   public void a(aym $$0, eqx $$1) {
-      Set<etp<?>> $$2 = $$1.a();
-      Set<etp<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.b("Parameters " + $$3 + " are not provided in this context");
-      }
+   @Override
+   public cuo a(cuo $$0, erl $$1) {
+      int $$2 = this.c ? $$0.H() : 0;
+      $$0.e($$2 + this.b.a($$1));
+      return $$0;
    }
 
-   public static etq.a c() {
-      return new etq.a();
+   public static esy.a<?> a(evs $$0) {
+      return a($$1 -> new etq($$1, $$0, false));
    }
 
-   public static class a {
-      private final Set<etp<?>> a = Sets.newIdentityHashSet();
-      private final Set<etp<?>> b = Sets.newIdentityHashSet();
-
-      public etq.a a(etp<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
-      }
-
-      public etq.a b(etp<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      public etq a() {
-         return new etq(this.a, this.b);
-      }
+   public static esy.a<?> a(evs $$0, boolean $$1) {
+      return a($$2 -> new etq($$2, $$0, $$1));
    }
 }

@@ -1,68 +1,38 @@
-import org.joml.Quaternionf;
+public class gce extends gch {
+   private final fwa a;
+   private final gfb b = gfb.i(gjw.a);
 
-public class gce extends gct {
-   private static final float a = 1.0472F;
-   private int b;
-
-   gce(fyl $$0, double $$1, double $$2, double $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.85F;
-      this.b = $$4;
-      this.t = 30;
+   gce(fyz $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a = new fvl(fgi.Q().aP().a(fyd.W));
       this.u = 0.0F;
-      this.j = 0.0;
-      this.k = 0.1;
-      this.l = 0.0;
+      this.t = 30;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * ayg.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
+   public gcl b() {
+      return gcl.e;
    }
 
    @Override
-   public void a(fas $$0, ffg $$1, float $$2) {
-      if (this.b <= 0) {
-         this.y = 1.0F - ayg.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
-         Quaternionf $$3 = new Quaternionf();
-         $$3.rotationX(-1.0472F);
-         this.a($$0, $$1, $$3, $$2);
-         $$3.rotationYXZ((float) -Math.PI, 1.0472F, 0.0F);
-         this.a($$0, $$1, $$3, $$2);
-      }
+   public void a(fbg $$0, ffs $$1, float $$2) {
+      float $$3 = ((float)this.s + $$2) / (float)this.t;
+      float $$4 = 0.05F + 0.5F * ayn.a($$3 * (float) Math.PI);
+      int $$5 = axx.b.a($$4, 1.0F, 1.0F, 1.0F);
+      fbc $$6 = new fbc();
+      $$6.a($$1.f());
+      $$6.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
+      $$6.b(1.0F, -1.0F, -1.0F);
+      $$6.a(0.0F, -1.101F, 1.5F);
+      get.a $$7 = fgi.Q().aO().c();
+      fbg $$8 = $$7.getBuffer(this.b);
+      this.a.a($$6, $$8, 15728880, gpw.d, $$5);
+      $$7.b();
    }
 
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public gbx b() {
-      return gbx.c;
-   }
-
-   @Override
-   public void a() {
-      if (this.b > 0) {
-         this.b--;
-      } else {
-         super.a();
-      }
-   }
-
-   public static class a implements gbw<lm> {
-      private final gco a;
-
-      public a(gco $$0) {
-         this.a = $$0;
-      }
-
-      public gbt a(lm $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gce $$8 = new gce($$1, $$2, $$3, $$4, $$0.b());
-         $$8.a(this.a);
-         $$8.e(1.0F);
-         return $$8;
+   public static class a implements gck<lq> {
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gce($$1, $$2, $$3, $$4);
       }
    }
 }

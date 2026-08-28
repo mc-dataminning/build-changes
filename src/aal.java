@@ -1,31 +1,17 @@
-public record aal(int c, eox d, float e) implements aac {
-   public static final ys<vr, aal> a = aac.a(aal::a, aal::new);
-   public static final aac.b<aal> b = aac.a("debug/path");
-
-   private aal(vr $$0) {
-      this($$0.readInt(), eox.b($$0), $$0.readFloat());
-   }
-
-   private void a(vr $$0) {
-      $$0.p(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
-   }
+public record aal(dya c, int d) implements aai {
+   public static final yw<wj, aal> a = yw.a(dya.d, aal::b, yu.g, aal::c, aal::new);
+   public static final aai.b<aal> b = aai.a("debug/game_event_listeners");
 
    @Override
-   public aac.b<aal> a() {
+   public aai.b<aal> a() {
       return b;
    }
 
-   public int b() {
+   public dya b() {
       return this.c;
    }
 
-   public eox c() {
+   public int c() {
       return this.d;
-   }
-
-   public float d() {
-      return this.e;
    }
 }

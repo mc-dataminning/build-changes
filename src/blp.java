@@ -1,44 +1,66 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.Closeable;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.Reader;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.EnumMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
 
-public interface blp<T> extends Closeable {
-   static <T> blp<T> a(final Codec<T> $$0, Reader $$1) {
-      final JsonReader $$2 = new JsonReader($$1);
-      $$2.setLenient(true);
-      return new blp<T>() {
-         @Nullable
-         @Override
-         public T a() throws IOException {
-            try {
-               if (!$$2.hasNext()) {
-                  return null;
-               } else {
-                  JsonElement $$0 = JsonParser.parseReader($$2);
-                  return (T)$$0.parse(JsonOps.INSTANCE, $$0).getOrThrow(IOException::new);
-               }
-            } catch (JsonParseException var2) {
-               throw new IOException(var2);
-            } catch (EOFException var3) {
-               return null;
-            }
-         }
+public class blp {
+   public static final int a = 200;
+   public static final int b = 10000;
+   private final auq c;
+   private final EnumMap<blr, Map<aqu, blp.b>> d;
+   private final Queue<blp.a> e = new LinkedList<>();
 
-         @Override
-         public void close() throws IOException {
-            $$2.close();
-         }
-      };
+   public blp(auq $$0) {
+      this.c = $$0;
+      this.d = new EnumMap<>(blr.class);
+
+      for (blr $$1 : blr.values()) {
+         this.d.put($$1, Maps.newHashMap());
+      }
    }
 
-   @Nullable
-   T a() throws IOException;
+   public boolean a(blr $$0) {
+      return !this.d.get($$0).isEmpty();
+   }
+
+   public void a(acu $$0) {
+      for (aqu $$2 : this.d.get($$0.e()).keySet()) {
+         $$2.c.b($$0);
+      }
+   }
+
+   public void a(aqu $$0, blr $$1) {
+      if (this.c.f($$0.fY())) {
+         this.e.add(new blp.a($$0, $$1));
+      }
+   }
+
+   public void a(int $$0) {
+      long $$1 = ad.c();
+      this.a($$1, $$0);
+      this.b($$1, $$0);
+   }
+
+   private void a(long $$0, int $$1) {
+      for (blp.a $$2 : this.e) {
+         this.d.get($$2.b()).put($$2.a(), new blp.b($$0, $$1));
+      }
+   }
+
+   private void b(long $$0, int $$1) {
+      for (Map<aqu, blp.b> $$2 : this.d.values()) {
+         $$2.entrySet().removeIf($$2x -> {
+            boolean $$3 = !this.c.f(((aqu)$$2x.getKey()).fY());
+            blp.b $$4 = (blp.b)$$2x.getValue();
+            return $$3 || $$1 > $$4.b() + 200 && $$0 > $$4.a() + 10000L;
+         });
+      }
+   }
+
+   static record a(aqu a, blr b) {
+   }
+
+   static record b(long a, int b) {
+   }
 }

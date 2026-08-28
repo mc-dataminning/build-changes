@@ -1,37 +1,79 @@
-public class gbq extends gbt {
-   private final fvm a;
-   private final gen b = gen.i(gjh.a);
+import javax.annotation.Nullable;
 
-   gbq(fyl $$0, double $$1, double $$2, double $$3) {
+public class gbq extends gdh {
+   private final float a;
+   private final gdc b;
+
+   gbq(fyz $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gdc $$7) {
       super($$0, $$1, $$2, $$3);
-      this.a = new fux(ffw.Q().aP().a(fxp.V));
-      this.u = 0.0F;
-      this.t = 30;
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public gbx b() {
-      return gbx.e;
+   public gcl b() {
+      return gcl.b;
    }
 
    @Override
-   public void a(fas $$0, ffg $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * ayg.a($$3 * (float) Math.PI);
-      fao $$5 = new fao();
-      $$5.a($$1.f());
-      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
-      $$5.b(-1.0F, -1.0F, 1.0F);
-      $$5.a(0.0F, -1.101F, 1.5F);
-      gef.a $$6 = ffw.Q().aO().c();
-      fas $$7 = $$6.getBuffer(this.b);
-      this.a.a($$5, $$7, 15728880, gph.d, 1.0F, 1.0F, 1.0F, $$4);
-      $$6.b();
+   public float b(float $$0) {
+      return this.D * ayn.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public static class a implements gbw<ln> {
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbq($$1, $$2, $$3, $$4);
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
+         }
+
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
+      }
+   }
+
+   public static class a implements gck<le> {
+      private final gdc a;
+
+      public a(gdc $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      public gch a(le $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dta $$8 = $$0.b();
+         if (!$$8.i() && $$8.l() == dmd.a) {
+            return null;
+         } else {
+            jd $$9 = jd.a($$2, $$3, $$4);
+            int $$10 = fgi.Q().au().a($$8, $$1, $$9);
+            if ($$8.b() instanceof dis) {
+               $$10 = ((dis)$$8.b()).b($$8, $$1, $$9);
+            }
+
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new gbq($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
       }
    }
 }

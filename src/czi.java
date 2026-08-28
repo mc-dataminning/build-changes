@@ -1,51 +1,74 @@
-public class czi extends cyb {
-   public czi(cxy $$0) {
+public class czi extends cyp {
+   public czi(cym $$0) {
       super($$0);
    }
 
-   public boolean a(cxz $$0, dcg $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3) {
-         for (int $$2 = 0; $$2 < $$0.g(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.f(); $$3++) {
-               cud $$4 = $$0.a($$3, $$2);
-               if ($$4.e()) {
+   public boolean a(cyn $$0, dcu $$1) {
+      cuo $$2 = cuo.l;
+      cuo $$3 = cuo.l;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cuo $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.g() instanceof csj) {
+               if (!$$3.e()) {
                   return false;
                }
 
-               if ($$3 == 1 && $$2 == 1) {
-                  if (!$$4.a(cug.vr)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cug.ow)) {
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cur.vs)) {
                   return false;
                }
+
+               if (!$$2.e()) {
+                  return false;
+               }
+
+               dpw $$6 = $$5.a(kq.Y, dpw.a);
+               if (!$$6.b().isEmpty()) {
+                  return false;
+               }
+
+               $$2 = $$5;
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return !$$2.e() && !$$3.e();
    }
 
-   public cud a(cxz $$0, jl.a $$1) {
-      cud $$2 = $$0.a(1, 1);
-      if (!$$2.a(cug.vr)) {
-         return cud.l;
+   public cuo a(cyn $$0, jo.a $$1) {
+      cuo $$2 = cuo.l;
+      cuo $$3 = cuo.l;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cuo $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.g() instanceof csj) {
+               $$2 = $$5;
+            } else if ($$5.a(cur.vs)) {
+               $$3 = $$5.s();
+            }
+         }
+      }
+
+      if ($$3.e()) {
+         return $$3;
       } else {
-         cud $$3 = new cud(cug.vq, 8);
-         $$3.b(kn.G, $$2.a(kn.G));
+         $$3.b(kq.Y, $$2.a(kq.Y));
+         $$3.b(kq.Z, ((csj)$$2.g()).b());
          return $$3;
       }
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public cyo<?> ap_() {
-      return cyo.j;
+   public czc<?> ap_() {
+      return czc.l;
    }
 }

@@ -1,24 +1,20 @@
-public class gnb extends goa<cjh, fuo<cjh>> {
-   private final gez a;
+public class gnb extends glj<clz, fxq<clz>> {
+   private static final akq a = akq.b("textures/entity/warden/warden.png");
+   private static final akq i = akq.b("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final akq j = akq.b("textures/entity/warden/warden_heart.png");
+   private static final akq k = akq.b("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final akq l = akq.b("textures/entity/warden/warden_pulsating_spots_2.png");
 
-   public gnb(glk<cjh, fuo<cjh>> $$0, gez $$1) {
-      super($$0);
-      this.a = $$1;
+   public gnb(gkd.a $$0) {
+      super($$0, new fxq<>($$0.a(fyd.bS)), 0.9F);
+      this.a(new gpb<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fxq::e));
+      this.a(new gpb<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, ayn.b($$2 * 0.045F) * 0.25F), fxq::f));
+      this.a(new gpb<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, ayn.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fxq::f));
+      this.a(new gpb<>(this, a, ($$0x, $$1, $$2) -> $$0x.H($$1), fxq::c));
+      this.a(new gpb<>(this, j, ($$0x, $$1, $$2) -> $$0x.I($$1), fxq::d));
    }
 
-   public void a(fao $$0, gef $$1, int $$2, cjh $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      dsl $$10 = $$3.gn();
-      if ($$10 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$11 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$10, $$0, $$1, $$2, gph.d);
-         $$0.b();
-      }
+   public akq a(clz $$0) {
+      return a;
    }
 }

@@ -1,34 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record czy(czt d, czt e, jj<brc> f) implements dac {
-   public static final MapCodec<czy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               czt.b.fieldOf("min_damage").forGetter(czy::b), czt.b.fieldOf("max_damage").forGetter(czy::c), brc.b.fieldOf("damage_type").forGetter(czy::d)
-            )
-            .apply($$0, czy::new)
-   );
-
-   @Override
-   public void a(aqm $$0, int $$1, czl $$2, bsh $$3, ewh $$4) {
-      float $$5 = ayg.b($$3.dU(), this.d.a($$1), this.e.a($$1));
-      $$3.a(new bra(this.f, $$2.c()), $$5);
+public record czy<T>(T a, Optional<euw> b) {
+   public static Codec<euw> a(euf $$0) {
+      return euw.e
+         .validate(
+            $$1 -> {
+               ayt.a $$2 = new ayt.a();
+               $$0.a($$2, $$1);
+               return $$2.b()
+                  .map($$0xx -> DataResult.error(() -> "Validation error in enchantment effect condition: " + $$0xx))
+                  .orElseGet(() -> DataResult.success($$1));
+            }
+         );
    }
 
-   @Override
-   public MapCodec<czy> a() {
-      return a;
+   public static <T> Codec<czy<T>> a(Codec<T> $$0, euf $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group($$0.fieldOf("effect").forGetter(czy::a), a($$1).optionalFieldOf("requirements").forGetter(czy::b)).apply($$2, czy::new)
+      );
    }
 
-   public czt b() {
-      return this.d;
-   }
-
-   public czt c() {
-      return this.e;
-   }
-
-   public jj<brc> d() {
-      return this.f;
+   public boolean a(erl $$0) {
+      return this.b.isEmpty() ? true : this.b.get().test($$0);
    }
 }

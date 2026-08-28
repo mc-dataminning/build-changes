@@ -1,49 +1,39 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public abstract class eba extends ebl<edw> {
-   public eba(Codec<edw> $$0) {
+public class eba extends eay {
+   public eba(Codec<eax> $$0) {
       super($$0);
+      this.h = ImmutableSet.of(eoz.e, eoz.c);
    }
 
    @Override
-   public boolean a(ebn<edw> $$0) {
-      ayo $$1 = $$0.d();
-      ddc $$2 = $$0.b();
-      ja $$3 = $$0.e();
-      Optional<dfi> $$4 = lq.e.a(avw.aq, $$1).map(jj::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
+   protected int a() {
+      return 10;
    }
 
-   protected abstract boolean a(dch var1, ayo var2, ja var3, dsl var4);
+   @Override
+   protected float a(ayv $$0) {
+      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   }
 
-   protected boolean b(dch $$0, ayo $$1, ja $$2, dsl $$3) {
-      ja $$4 = $$2.c();
-      dsl $$5 = $$0.a_($$2);
-      if (($$5.a(dfk.G) || $$5.a(avw.at)) && $$0.a_($$4).a(dfk.G)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            lq.e.a(avw.at, $$1).map(jj::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, dfk.mV.o().a(dmf.c, Integer.valueOf($$1.a(4) + 1)), 2);
+   @Override
+   protected double b() {
+      return 5.0;
+   }
+
+   protected boolean a(eaw $$0, eax $$1, duw $$2, Function<jd, jm<ddu>> $$3, duv $$4, jd.a $$5, jd.a $$6, dyh $$7, MutableBoolean $$8) {
+      if (this.a($$1, $$2.a_($$5))) {
+         dta $$9;
+         if ($$5.v() <= $$0.a() + 31) {
+            $$9 = g.g();
+         } else {
+            $$9 = e;
          }
 
-         for (jf $$6 : jf.c.a) {
-            if ($$1.i() < 0.2F) {
-               ja $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(dfk.G)) {
-                  lq.e.a(avw.ar, $$1).map(jj::a).ifPresent($$3x -> {
-                     dsl $$4x = $$3x.o();
-                     if ($$4x.b(det.c)) {
-                        $$4x = $$4x.a(det.c, $$6);
-                     }
-
-                     $$0.a($$7, $$4x, 2);
-                  });
-               }
-            }
-         }
-
+         $$2.a($$5, $$9, false);
          return true;
       } else {
          return false;

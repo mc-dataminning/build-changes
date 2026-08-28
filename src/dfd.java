@@ -1,59 +1,67 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dfd extends dhd {
+public class dfd extends dfw implements dmy {
    public static final MapCodec<dfd> a = b(dfd::new);
-   public static final int b = 3;
-   public static final dtl c = dtb.as;
-   private static final exa[] g = new exa[]{
-      dfi.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dfi.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dfi.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dfi.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
-   };
+   public static final dtr b = dtq.C;
 
    @Override
    public MapCodec<dfd> a() {
       return a;
    }
 
-   public dfd(dsk.d $$0) {
+   protected dfd(dsz.d $$0) {
       super($$0);
+      this.k(this.o().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected dtl b() {
-      return c;
+   protected boolean a_(dta $$0, dca $$1, jd $$2) {
+      return $$0.u().c();
    }
 
    @Override
-   public int c() {
-      return 3;
+   protected dmd a_(dta $$0) {
+      return dmd.a;
    }
 
    @Override
-   protected dcf d() {
-      return cug.vl;
+   protected float d(dta $$0, dca $$1, jd $$2) {
+      return 1.0F;
    }
 
    @Override
-   protected void b(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eoz.c, eoz.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected int a(dcg $$0) {
-      return super.a($$0) / 3;
+   protected eoy b_(dta $$0) {
+      return $$0.c(b) ? eoz.c.a(false) : super.b_($$0);
+   }
+
+   @Nullable
+   @Override
+   public dta a(cyb $$0) {
+      return this.o().a(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == eoz.c));
    }
 
    @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(c);
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return g[this.g($$0)];
+   public cuo a(@Nullable cmv $$0, dcv $$1, jd $$2, dta $$3) {
+      return $$0 != null && $$0.f() ? dmy.super.a($$0, $$1, $$2, $$3) : cuo.l;
+   }
+
+   @Override
+   public boolean a(@Nullable cmv $$0, dca $$1, jd $$2, dta $$3, eox $$4) {
+      return $$0 != null && $$0.f() ? dmy.super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 }

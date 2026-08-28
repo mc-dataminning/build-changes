@@ -1,43 +1,50 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class ccz extends cdm<ckv> {
-   @Override
-   public Set<ccg<?>> a() {
-      return ImmutableSet.of(ccg.h, ccg.aw, ccg.aq, ccg.ap, ccg.as, ccg.at, new ccg[0]);
+public class ccz extends ccx {
+   @Nullable
+   private jd p;
+
+   public ccz(btn $$0, dcu $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(aqm $$0, ckv $$1) {
-      bue<?> $$2 = $$1.dV();
-      $$2.a(ccg.aw, this.b($$0, $$1));
-      Optional<clb> $$3 = Optional.empty();
-      int $$4 = 0;
-      List<ckv> $$5 = Lists.newArrayList();
-      cci $$6 = $$2.c(ccg.h).orElse(cci.a());
+   @Override
+   public epm a(jd $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
+   }
 
-      for (btc $$7 : $$6.b($$0x -> !$$0x.o_() && ($$0x instanceof clb || $$0x instanceof ckv))) {
-         if ($$7 instanceof clb $$8) {
-            $$4++;
-            if ($$3.isEmpty()) {
-               $$3 = Optional.of($$8);
+   @Override
+   public epm a(bsq $$0, int $$1) {
+      this.p = $$0.dq();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(bsq $$0, double $$1) {
+      epm $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dq();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.l()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.do(), (double)this.a.dk())
+               && (!(this.a.dx() > (double)this.p.v()) || !jd.a((double)this.p.u(), this.a.dx(), (double)this.p.w()).a(this.a.do(), (double)this.a.dk()))) {
+               this.a.H().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
             }
          }
-
-         if ($$7 instanceof ckv $$9) {
-            $$5.add($$9);
-         }
       }
-
-      $$2.a(ccg.aq, $$3);
-      $$2.a(ccg.ap, $$5);
-      $$2.a(ccg.as, $$4);
-      $$2.a(ccg.at, $$5.size());
-   }
-
-   private Optional<ja> b(aqm $$0, ckv $$1) {
-      return ja.a($$1.dr(), 8, 4, $$1x -> $$0.a_($$1x).a(avw.aS));
    }
 }

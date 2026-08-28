@@ -1,158 +1,149 @@
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import java.util.BitSet;
-import java.util.function.Function;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class ecg extends ebl<edx> {
-   public ecg(Codec<edx> $$0) {
+public class ecg extends eca<eef> {
+   private static final ji[] a = ji.values();
+
+   public ecg(Codec<eef> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebn<edx> $$0) {
-      ayo $$1 = $$0.d();
-      ja $$2 = $$0.e();
-      ddc $$3 = $$0.b();
-      edx $$4 = $$0.f();
-      float $$5 = $$1.i() * (float) Math.PI;
-      float $$6 = (float)$$4.c / 8.0F;
-      int $$7 = ayg.f(((float)$$4.c / 16.0F * 2.0F + 1.0F) / 2.0F);
-      double $$8 = (double)$$2.u() + Math.sin((double)$$5) * (double)$$6;
-      double $$9 = (double)$$2.u() - Math.sin((double)$$5) * (double)$$6;
-      double $$10 = (double)$$2.w() + Math.cos((double)$$5) * (double)$$6;
-      double $$11 = (double)$$2.w() - Math.cos((double)$$5) * (double)$$6;
-      int $$12 = 2;
-      double $$13 = (double)($$2.v() + $$1.a(3) - 2);
-      double $$14 = (double)($$2.v() + $$1.a(3) - 2);
-      int $$15 = $$2.u() - ayg.f($$6) - $$7;
-      int $$16 = $$2.v() - 2 - $$7;
-      int $$17 = $$2.w() - ayg.f($$6) - $$7;
-      int $$18 = 2 * (ayg.f($$6) + $$7);
-      int $$19 = 2 * (2 + $$7);
+   public boolean a(ecc<eef> $$0) {
+      eef $$1 = $$0.f();
+      ayv $$2 = $$0.d();
+      jd $$3 = $$0.e();
+      ddq $$4 = $$0.b();
+      int $$5 = $$1.l;
+      int $$6 = $$1.n;
+      List<Pair<jd, Integer>> $$7 = Lists.newLinkedList();
+      int $$8 = $$1.j.a($$2);
+      dzu $$9 = new dzu(new dyw($$4.C()));
+      eob $$10 = eob.a($$9, -4, 1.0);
+      List<jd> $$11 = Lists.newLinkedList();
+      double $$12 = (double)$$8 / (double)$$1.i.b();
+      dyu $$13 = $$1.d;
+      dys $$14 = $$1.c;
+      dyt $$15 = $$1.e;
+      double $$16 = 1.0 / Math.sqrt($$13.b);
+      double $$17 = 1.0 / Math.sqrt($$13.c + $$12);
+      double $$18 = 1.0 / Math.sqrt($$13.d + $$12);
+      double $$19 = 1.0 / Math.sqrt($$13.e + $$12);
+      double $$20 = 1.0 / Math.sqrt($$15.c + $$2.j() / 2.0 + ($$8 > 3 ? $$12 : 0.0));
+      boolean $$21 = (double)$$2.i() < $$15.b;
+      int $$22 = 0;
 
-      for (int $$20 = $$15; $$20 <= $$15 + $$18; $$20++) {
-         for (int $$21 = $$17; $$21 <= $$17 + $$18; $$21++) {
-            if ($$16 <= $$3.a(dyg.a.c, $$20, $$21)) {
-               return this.a($$3, $$1, $$4, $$8, $$9, $$10, $$11, $$13, $$14, $$15, $$16, $$17, $$18, $$19);
+      for (int $$23 = 0; $$23 < $$8; $$23++) {
+         int $$24 = $$1.i.a($$2);
+         int $$25 = $$1.i.a($$2);
+         int $$26 = $$1.i.a($$2);
+         jd $$27 = $$3.b($$24, $$25, $$26);
+         dta $$28 = $$4.a_($$27);
+         if ($$28.i() || $$28.a(awd.bQ)) {
+            if (++$$22 > $$1.p) {
+               return false;
             }
+         }
+
+         $$7.add(Pair.of($$27, $$1.k.a($$2)));
+      }
+
+      if ($$21) {
+         int $$29 = $$2.a(4);
+         int $$30 = $$8 * 2 + 1;
+         if ($$29 == 0) {
+            $$11.add($$3.b($$30, 7, 0));
+            $$11.add($$3.b($$30, 5, 0));
+            $$11.add($$3.b($$30, 1, 0));
+         } else if ($$29 == 1) {
+            $$11.add($$3.b(0, 7, $$30));
+            $$11.add($$3.b(0, 5, $$30));
+            $$11.add($$3.b(0, 1, $$30));
+         } else if ($$29 == 2) {
+            $$11.add($$3.b($$30, 7, $$30));
+            $$11.add($$3.b($$30, 5, $$30));
+            $$11.add($$3.b($$30, 1, $$30));
+         } else {
+            $$11.add($$3.b(0, 7, 0));
+            $$11.add($$3.b(0, 5, 0));
+            $$11.add($$3.b(0, 1, 0));
          }
       }
 
-      return false;
-   }
+      List<jd> $$31 = Lists.newArrayList();
+      Predicate<dta> $$32 = a($$1.c.g);
 
-   protected boolean a(
-      ddc $$0, ayo $$1, edx $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8, int $$9, int $$10, int $$11, int $$12, int $$13
-   ) {
-      int $$14 = 0;
-      BitSet $$15 = new BitSet($$12 * $$13 * $$12);
-      ja.a $$16 = new ja.a();
-      int $$17 = $$2.c;
-      double[] $$18 = new double[$$17 * 4];
+      for (jd $$33 : jd.c($$3.b($$5, $$5, $$5), $$3.b($$6, $$6, $$6))) {
+         double $$34 = $$10.a((double)$$33.u(), (double)$$33.v(), (double)$$33.w()) * $$1.o;
+         double $$35 = 0.0;
+         double $$36 = 0.0;
 
-      for (int $$19 = 0; $$19 < $$17; $$19++) {
-         float $$20 = (float)$$19 / (float)$$17;
-         double $$21 = ayg.d((double)$$20, $$3, $$4);
-         double $$22 = ayg.d((double)$$20, $$7, $$8);
-         double $$23 = ayg.d((double)$$20, $$5, $$6);
-         double $$24 = $$1.j() * (double)$$17 / 16.0;
-         double $$25 = ((double)(ayg.a((float) Math.PI * $$20) + 1.0F) * $$24 + 1.0) / 2.0;
-         $$18[$$19 * 4 + 0] = $$21;
-         $$18[$$19 * 4 + 1] = $$22;
-         $$18[$$19 * 4 + 2] = $$23;
-         $$18[$$19 * 4 + 3] = $$25;
-      }
+         for (Pair<jd, Integer> $$37 : $$7) {
+            $$35 += ayn.f($$33.j((kh)$$37.getFirst()) + (double)((Integer)$$37.getSecond()).intValue()) + $$34;
+         }
 
-      for (int $$26 = 0; $$26 < $$17 - 1; $$26++) {
-         if (!($$18[$$26 * 4 + 3] <= 0.0)) {
-            for (int $$27 = $$26 + 1; $$27 < $$17; $$27++) {
-               if (!($$18[$$27 * 4 + 3] <= 0.0)) {
-                  double $$28 = $$18[$$26 * 4 + 0] - $$18[$$27 * 4 + 0];
-                  double $$29 = $$18[$$26 * 4 + 1] - $$18[$$27 * 4 + 1];
-                  double $$30 = $$18[$$26 * 4 + 2] - $$18[$$27 * 4 + 2];
-                  double $$31 = $$18[$$26 * 4 + 3] - $$18[$$27 * 4 + 3];
-                  if ($$31 * $$31 > $$28 * $$28 + $$29 * $$29 + $$30 * $$30) {
-                     if ($$31 > 0.0) {
-                        $$18[$$27 * 4 + 3] = -1.0;
-                     } else {
-                        $$18[$$26 * 4 + 3] = -1.0;
-                     }
+         for (jd $$38 : $$11) {
+            $$36 += ayn.f($$33.j($$38) + (double)$$15.d) + $$34;
+         }
+
+         if (!($$35 < $$19)) {
+            if ($$21 && $$36 >= $$20 && $$35 < $$16) {
+               this.a($$4, $$33, dfy.a.o(), $$32);
+
+               for (ji $$39 : a) {
+                  jd $$40 = $$33.a($$39);
+                  eoy $$41 = $$4.b_($$40);
+                  if (!$$41.c()) {
+                     $$4.a($$40, $$41.a(), 0);
                   }
                }
-            }
-         }
-      }
-
-      try (duf $$32 = new duf($$0)) {
-         for (int $$33 = 0; $$33 < $$17; $$33++) {
-            double $$34 = $$18[$$33 * 4 + 3];
-            if (!($$34 < 0.0)) {
-               double $$35 = $$18[$$33 * 4 + 0];
-               double $$36 = $$18[$$33 * 4 + 1];
-               double $$37 = $$18[$$33 * 4 + 2];
-               int $$38 = Math.max(ayg.a($$35 - $$34), $$9);
-               int $$39 = Math.max(ayg.a($$36 - $$34), $$10);
-               int $$40 = Math.max(ayg.a($$37 - $$34), $$11);
-               int $$41 = Math.max(ayg.a($$35 + $$34), $$38);
-               int $$42 = Math.max(ayg.a($$36 + $$34), $$39);
-               int $$43 = Math.max(ayg.a($$37 + $$34), $$40);
-
-               for (int $$44 = $$38; $$44 <= $$41; $$44++) {
-                  double $$45 = ((double)$$44 + 0.5 - $$35) / $$34;
-                  if ($$45 * $$45 < 1.0) {
-                     for (int $$46 = $$39; $$46 <= $$42; $$46++) {
-                        double $$47 = ((double)$$46 + 0.5 - $$36) / $$34;
-                        if ($$45 * $$45 + $$47 * $$47 < 1.0) {
-                           for (int $$48 = $$40; $$48 <= $$43; $$48++) {
-                              double $$49 = ((double)$$48 + 0.5 - $$37) / $$34;
-                              if ($$45 * $$45 + $$47 * $$47 + $$49 * $$49 < 1.0 && !$$0.d($$46)) {
-                                 int $$50 = $$44 - $$9 + ($$46 - $$10) * $$12 + ($$48 - $$11) * $$12 * $$13;
-                                 if (!$$15.get($$50)) {
-                                    $$15.set($$50);
-                                    $$16.d($$44, $$46, $$48);
-                                    if ($$0.f_($$16)) {
-                                       dus $$51 = $$32.a($$16);
-                                       if ($$51 != null) {
-                                          int $$52 = kc.b($$44);
-                                          int $$53 = kc.b($$46);
-                                          int $$54 = kc.b($$48);
-                                          dsl $$55 = $$51.a($$52, $$53, $$54);
-
-                                          for (edx.a $$56 : $$2.b) {
-                                             if (a($$55, $$32::b, $$1, $$2, $$56, $$16)) {
-                                                $$51.a($$52, $$53, $$54, $$56.c, false);
-                                                $$14++;
-                                                break;
-                                             }
-                                          }
-                                       }
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
+            } else if ($$35 >= $$16) {
+               this.a($$4, $$33, $$14.a.a($$2, $$33), $$32);
+            } else if ($$35 >= $$17) {
+               boolean $$42 = (double)$$2.i() < $$1.g;
+               if ($$42) {
+                  this.a($$4, $$33, $$14.c.a($$2, $$33), $$32);
+               } else {
+                  this.a($$4, $$33, $$14.b.a($$2, $$33), $$32);
                }
+
+               if ((!$$1.h || $$42) && (double)$$2.i() < $$1.f) {
+                  $$31.add($$33.i());
+               }
+            } else if ($$35 >= $$18) {
+               this.a($$4, $$33, $$14.d.a($$2, $$33), $$32);
+            } else if ($$35 >= $$19) {
+               this.a($$4, $$33, $$14.e.a($$2, $$33), $$32);
             }
          }
       }
 
-      return $$14 > 0;
-   }
+      List<dta> $$43 = $$14.f;
 
-   public static boolean a(dsl $$0, Function<ja, dsl> $$1, ayo $$2, edx $$3, edx.a $$4, ja.a $$5) {
-      if (!$$4.b.a($$0, $$2)) {
-         return false;
-      } else {
-         return a($$2, $$3.d) ? true : !a($$1, $$5);
-      }
-   }
+      for (jd $$44 : $$31) {
+         dta $$45 = ad.a($$43, $$2);
 
-   protected static boolean a(ayo $$0, float $$1) {
-      if ($$1 <= 0.0F) {
-         return true;
-      } else {
-         return $$1 >= 1.0F ? false : $$0.i() >= $$1;
+         for (ji $$46 : a) {
+            if ($$45.b(dtq.P)) {
+               $$45 = $$45.a(dtq.P, $$46);
+            }
+
+            jd $$47 = $$44.a($$46);
+            dta $$48 = $$4.a_($$47);
+            if ($$45.b(dtq.C)) {
+               $$45 = $$45.a(dtq.C, Boolean.valueOf($$48.u().b()));
+            }
+
+            if (dge.g($$48)) {
+               this.a($$4, $$47, $$45, $$32);
+               break;
+            }
+         }
       }
+
+      return true;
    }
 }

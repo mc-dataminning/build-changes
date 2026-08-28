@@ -1,32 +1,62 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ax extends ds<ax.a> {
+public class ax extends dv<ax.a> {
    @Override
    public Codec<ax.a> a() {
       return ax.a.a;
    }
 
-   public void a(aqn $$0, jj<cwc> $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public void a(aqu $$0, cfc $$1, cfc $$2, @Nullable bsk $$3) {
+      erl $$4 = bv.b($$0, $$1);
+      erl $$5 = bv.b($$0, $$2);
+      erl $$6 = $$3 != null ? bv.b($$0, $$3) : null;
+      this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
-   public static record a(Optional<bf> b, Optional<jj<cwc>> c) implements ds.a {
+   public static record a(Optional<bg> b, Optional<bg> c, Optional<bg> d, Optional<bg> e) implements dv.a {
       public static final Codec<ax.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(ax.a::a), cwc.a.optionalFieldOf("potion").forGetter(ax.a::c)).apply($$0, ax.a::new)
+         $$0 -> $$0.group(
+                  bv.b.optionalFieldOf("player").forGetter(ax.a::a),
+                  bv.b.optionalFieldOf("parent").forGetter(ax.a::c),
+                  bv.b.optionalFieldOf("partner").forGetter(ax.a::d),
+                  bv.b.optionalFieldOf("child").forGetter(ax.a::e)
+               )
+               .apply($$0, ax.a::new)
       );
 
-      public static an<ax.a> b() {
-         return am.l.a(new ax.a(Optional.empty(), Optional.empty()));
+      public static ao<ax.a> b() {
+         return an.p.a(new ax.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(jj<cwc> $$0) {
-         return !this.c.isPresent() || this.c.get().equals($$0);
+      public static ao<ax.a> a(bv.a $$0) {
+         return an.p.a(new ax.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.of(bv.a($$0))));
+      }
+
+      public static ao<ax.a> a(Optional<bv> $$0, Optional<bv> $$1, Optional<bv> $$2) {
+         return an.p.a(new ax.a(Optional.empty(), bv.a($$0), bv.a($$1), bv.a($$2)));
+      }
+
+      public boolean a(erl $$0, erl $$1, @Nullable erl $$2) {
+         return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
+      }
+
+      private static boolean a(Optional<bg> $$0, erl $$1) {
+         return $$0.isEmpty() || $$0.get().a($$1);
       }
 
       @Override
-      public Optional<bf> a() {
+      public void a(bh $$0) {
+         dv.a.super.a($$0);
+         $$0.a(this.c, ".parent");
+         $$0.a(this.d, ".partner");
+         $$0.a(this.e, ".child");
+      }
+
+      @Override
+      public Optional<bg> a() {
          return this.b;
       }
    }

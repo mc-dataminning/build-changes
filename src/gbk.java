@@ -1,53 +1,43 @@
-public class gbk extends gct {
-   gbk(fyl $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+import org.joml.Vector3f;
+
+public class gbk extends gbm<lg> {
+   private final Vector3f a;
+   private final Vector3f b;
+
+   protected gbk(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lg $$7, gdc $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.b(), $$9);
+      this.b = this.a($$7.c(), $$9);
+   }
+
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   }
+
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   public gbx b() {
-      return gbx.b;
+   public void a(fbg $$0, ffs $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * ayg.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   public static class a implements gck<lg> {
+      private final gdc a;
 
-   public static class a implements gbw<ln> {
-      private final gco a;
-
-      public a(gco $$0) {
+      public a(gdc $$0) {
          this.a = $$0;
       }
 
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbk $$8 = new gbk($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class b implements gbw<ln> {
-      private final gco a;
-
-      public b(gco $$0) {
-         this.a = $$0;
-      }
-
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbk $$8 = new gbk($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public gch a(lg $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbk($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

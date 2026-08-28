@@ -1,29 +1,19 @@
-public class ael implements zb<abn> {
-   public static final ys<vr, ael> a = zb.a(ael::a, ael::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   public ael(duc $$0) {
-      this.b = $$0.r();
-   }
-
-   private ael(vr $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vr $$0) {
-      $$0.c(this.b);
-   }
+public record ael(wy b, Optional<byte[]> c) implements zf<abt> {
+   public static final yw<ByteBuf, ael> a = yw.a(xa.f, ael::b, yu.k.a(yu::a), ael::e, ael::new);
 
    @Override
-   public zd<ael> a() {
-      return afz.av;
+   public zh<ael> a() {
+      return agf.ap;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public Optional<byte[]> e() {
+      return this.c;
    }
 }

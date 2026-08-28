@@ -1,60 +1,43 @@
-import com.google.common.collect.Maps;
-import java.util.Collection;
-import java.util.Map;
+import com.mojang.authlib.GameProfileRepository;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.authlib.yggdrasil.ServicesKeyType;
+import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
+import java.io.File;
 import javax.annotation.Nullable;
 
-public class all {
-   private final Map<akk, alk> a = Maps.newHashMap();
+public record all(MinecraftSessionService a, ServicesKeySet b, GameProfileRepository c, aum d) {
+   private static final String e = "usercache.json";
+
+   public static all a(YggdrasilAuthenticationService $$0, File $$1) {
+      MinecraftSessionService $$2 = $$0.createMinecraftSessionService();
+      GameProfileRepository $$3 = $$0.createProfileRepository();
+      aum $$4 = new aum($$3, new File($$1, "usercache.json"));
+      return new all($$2, $$0.getServicesKeySet(), $$3, $$4);
+   }
 
    @Nullable
-   public alk a(akk $$0) {
-      return this.a.get($$0);
+   public aza a() {
+      return aza.a(this.b, ServicesKeyType.PROFILE_KEY);
    }
 
-   public alk a(akk $$0, wu $$1) {
-      alk $$2 = new alk($$0, $$1);
-      this.a.put($$0, $$2);
-      return $$2;
+   public boolean b() {
+      return !this.b.keys(ServicesKeyType.PROFILE_KEY).isEmpty();
    }
 
-   public void a(alk $$0) {
-      this.a.remove($$0.a());
+   public MinecraftSessionService c() {
+      return this.a;
    }
 
-   public Collection<akk> a() {
-      return this.a.keySet();
+   public ServicesKeySet d() {
+      return this.b;
    }
 
-   public Collection<alk> b() {
-      return this.a.values();
+   public GameProfileRepository e() {
+      return this.c;
    }
 
-   public tx a(jl.a $$0) {
-      tx $$1 = new tx();
-
-      for (alk $$2 : this.a.values()) {
-         $$1.a($$2.a().toString(), $$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public void a(tx $$0, jl.a $$1) {
-      for (String $$2 : $$0.e()) {
-         akk $$3 = new akk($$2);
-         this.a.put($$3, alk.a($$0.p($$2), $$3, $$1));
-      }
-   }
-
-   public void a(aqn $$0) {
-      for (alk $$1 : this.a.values()) {
-         $$1.c($$0);
-      }
-   }
-
-   public void b(aqn $$0) {
-      for (alk $$1 : this.a.values()) {
-         $$1.d($$0);
-      }
+   public aum f() {
+      return this.d;
    }
 }

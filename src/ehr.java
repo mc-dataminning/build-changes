@@ -1,26 +1,53 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class ehr extends eie {
-   public static final MapCodec<ehr> a = dyc.a.c.fieldOf("step").xmap(ehr::new, $$0 -> $$0.c);
-   private final dyc.a c;
+public class ehr extends eht {
+   public static final MapCodec<ehr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dzp.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dzp.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ehr::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final dzp d;
+   private final dzp e;
+   private final int f;
 
-   private ehr(dyc.a $$0) {
-      this.c = $$0;
+   private ehr(dzp $$0, dzp $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static ehr a(dyc.a $$0) {
-      return new ehr($$0);
+   public static ehr a(dzp $$0, dzp $$1, int $$2) {
+      return new ehr($$0, $$1, $$2);
    }
 
    @Override
-   public Stream<ja> a_(eic $$0, ayo $$1, ja $$2) {
-      dbn $$3 = new dbn($$2);
-      return $$0.a($$3, this.c).a($$3);
+   public int a(ayv $$0, dzs $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
+         return $$0.a($$4 + this.f) + $$2;
+      }
    }
 
    @Override
-   public eif<?> b() {
-      return eif.o;
+   public ehu<?> a() {
+      return ehu.c;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

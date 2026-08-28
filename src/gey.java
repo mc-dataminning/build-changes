@@ -1,61 +1,70 @@
-import java.util.Map;
-import java.util.Map.Entry;
-
 public class gey {
-   private Map<dsl, grr> a = Map.of();
-   private final grx b;
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-   public gey(grx $$0) {
-      this.b = $$0;
+   public gey(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public gpq a(dsl $$0) {
-      return this.b($$0).e();
+   public gey a(gey $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
    }
 
-   public grr b(dsl $$0) {
-      grr $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
-      }
-
-      return $$1;
+   public int a() {
+      return this.a;
    }
 
-   public grx a() {
+   public int b() {
       return this.b;
    }
 
-   public void a(Map<dsl, grr> $$0) {
+   public void a(int $$0) {
       this.a = $$0;
    }
 
-   public static gry c(dsl $$0) {
-      return a(lq.e.b($$0.b()), $$0);
+   public void b(int $$0) {
+      this.b = $$0;
    }
 
-   public static gry a(akk $$0, dsl $$1) {
-      return new gry($$0, b($$1.C()));
+   public int c() {
+      return this.c;
    }
 
-   public static String b(Map<dto<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<dto<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
-         }
-
-         dto<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
-      }
-
-      return $$1.toString();
+   public int d() {
+      return this.d;
    }
 
-   private static <T extends Comparable<T>> String a(dto<T> $$0, Comparable<?> $$1) {
-      return $$0.a((T)$$1);
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public void d(int $$0) {
+      this.d = $$0;
+   }
+
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

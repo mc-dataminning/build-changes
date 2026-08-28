@@ -1,63 +1,20 @@
-public class cjo extends ckk {
-   public cjo(bsn<? extends cjo> $$0, dcg $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   public static boolean a(bsn<cjo> $$0, dcv $$1, btg $$2, ja $$3, ayo $$4) {
-      return b($$0, $$1, $$2, $$3, $$4) && (btg.a($$2) || $$1.h($$3));
-   }
+public interface cjo extends ckf {
+   void b(boolean var1);
 
-   @Override
-   protected boolean ad_() {
-      return false;
-   }
+   @Nullable
+   btl p();
 
-   @Override
-   protected avg v() {
-      return avh.mZ;
-   }
+   void a();
 
-   @Override
-   protected avg d(bra $$0) {
-      return avh.nc;
-   }
-
-   @Override
-   protected avg n_() {
-      return avh.nb;
-   }
-
-   @Override
-   protected avg gn() {
-      return avh.nd;
-   }
-
-   @Override
-   public boolean D(bsh $$0) {
-      boolean $$1 = super.D($$0);
-      if ($$1 && this.eV().e() && $$0 instanceof btc) {
-         float $$2 = this.dR().d_(this.dr()).b();
-         ((btc)$$0).b(new brp(brr.q, 140 * (int)$$2), this);
+   default void b(btl $$0, float $$1) {
+      bqp $$2 = cnp.a($$0, cur.vW);
+      cuo $$3 = $$0.b($$2);
+      if ($$3.g() instanceof cta $$4) {
+         $$4.a($$0.dQ(), $$0, $$2, $$3, $$1, (float)(14 - $$0.dQ().al().a() * 4), this.p());
       }
 
-      return $$1;
-   }
-
-   @Override
-   protected boolean gp() {
-      return true;
-   }
-
-   @Override
-   protected void ac_() {
-      this.b(bsn.bu);
-      if (!this.aY()) {
-         this.dR().a(null, 1041, this.dr(), 0);
-      }
-   }
-
-   @Override
-   protected cud go() {
-      return cud.l;
+      this.a();
    }
 }

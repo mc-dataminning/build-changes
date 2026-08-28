@@ -1,17 +1,28 @@
-public class gne<T extends btc, M extends fuq<T>> extends goa<T, M> {
-   private final geb a;
+public class gne extends glj<cis, fxu<cis>> {
+   private static final akq a = akq.b("textures/entity/wither/wither_invulnerable.png");
+   private static final akq i = akq.b("textures/entity/wither/wither.png");
 
-   public gne(glk<T, M> $$0, geb $$1) {
-      super($$0);
-      this.a = $$1;
+   public gne(gkd.a $$0) {
+      super($$0, new fxu<>($$0.a(fyd.bW)), 1.0F);
+      this.a(new gpd(this, $$0.f()));
    }
 
-   public void a(fao $$0, gef $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      $$0.a();
-      $$0.a(0.0F, 0.4F, -0.4F);
-      $$0.a(a.b.rotationDegrees(180.0F));
-      cud $$10 = $$3.a(bso.a);
-      this.a.a($$3, $$10, cua.h, false, $$0, $$1, $$2);
-      $$0.b();
+   protected int a(cis $$0, jd $$1) {
+      return 15;
+   }
+
+   public akq a(cis $$0) {
+      int $$1 = $$0.x();
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   }
+
+   protected void a(cis $$0, fbc $$1, float $$2) {
+      float $$3 = 2.0F;
+      int $$4 = $$0.x();
+      if ($$4 > 0) {
+         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
+      }
+
+      $$1.b($$3, $$3, $$3);
    }
 }

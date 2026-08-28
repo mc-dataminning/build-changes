@@ -1,65 +1,85 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class diz extends dfi implements dmj {
-   public static final MapCodec<diz> a = b(diz::new);
-   private static final dtc c = dtb.C;
-   protected static final exa b = dfi.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
+public class diz extends dfw {
+   public static final MapCodec<diz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lt.e.r().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, diz::new)
+   );
+   private static final Map<dfw, dfw> d = Maps.newHashMap();
+   public static final float b = 3.0F;
+   protected static final exp c = dfw.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final dfw e;
 
    @Override
    public MapCodec<diz> a() {
       return a;
    }
 
-   protected diz(dsk.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
+   public diz(dfw $$0, dsz.d $$1) {
+      super($$1);
+      this.e = $$0;
+      d.put($$0, this);
    }
 
    @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(c);
+   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
+      return c;
    }
 
    @Override
-   protected eoj b_(dsl $$0) {
-      return $$0.c(c) ? eok.c.a(false) : super.b_($$0);
-   }
-
-   @Nullable
-   @Override
-   public dsl a(cxn $$0) {
-      dsl $$1 = super.a($$0);
-      if ($$1 != null) {
-         eoj $$2 = $$0.q().b_($$0.a());
-         return $$1.a(c, Boolean.valueOf($$2.a() == eok.c));
+   protected bqs a(cuo $$0, dta $$1, dcu $$2, jd $$3, cmv $$4, bqp $$5, ews $$6) {
+      dta $$8 = ($$0.g() instanceof csm $$7 ? d.getOrDefault($$7.d(), dfy.a) : dfy.a).o();
+      if ($$8.i()) {
+         return bqs.d;
+      } else if (!this.m()) {
+         return bqs.b;
       } else {
-         return null;
+         $$2.a($$3, $$8, 3);
+         $$2.a($$4, dxw.c, $$3);
+         $$4.a(avy.ah);
+         $$0.a(1, $$4);
+         return bqs.a($$2.B);
       }
    }
 
    @Override
-   protected boolean a(dsl $$0, dcj $$1, ja $$2) {
-      ja $$3 = $$2.c();
-      dsl $$4 = $$1.a_($$3);
-      return $$4.d($$1, $$3, jf.a);
-   }
-
-   @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return b;
-   }
-
-   @Override
-   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
-      if ($$1 == jf.b && !this.a($$0, $$3, $$4)) {
-         return dfk.a.o();
+   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
+      if (this.m()) {
+         return bqq.c;
       } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, eok.c, eok.c.a($$3));
+         cuo $$5 = new cuo(this.e);
+         if (!$$3.i($$5)) {
+            $$3.a($$5, false);
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         $$1.a($$2, dfy.fR.o(), 3);
+         $$1.a($$3, dxw.c, $$2);
+         return bqq.a($$1.B);
       }
+   }
+
+   @Override
+   public cuo a(dcx $$0, jd $$1, dta $$2) {
+      return this.m() ? super.a($$0, $$1, $$2) : new cuo(this.e);
+   }
+
+   private boolean m() {
+      return this.e == dfy.a;
+   }
+
+   @Override
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      return $$1 == ji.a && !$$0.a($$3, $$4) ? dfy.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public dfw b() {
+      return this.e;
+   }
+
+   @Override
+   protected boolean a(dta $$0, epn $$1) {
+      return false;
    }
 }

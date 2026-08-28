@@ -1,40 +1,38 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record daw(jn<czm> c, int d, int e) implements dat {
-   public static final MapCodec<daw> b = RecordCodecBuilder.mapCodec(
+public record daw(jm<avn> d, bpt e, bpt f) implements daq {
+   public static final MapCodec<daw> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               jy.a(lr.aK).fieldOf("enchantments").forGetter(daw::b),
-               axo.l.fieldOf("min_cost").forGetter(daw::c),
-               axo.k.fieldOf("max_cost_span").forGetter(daw::d)
+               avn.b.fieldOf("sound").forGetter(daw::b),
+               bpt.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(daw::c),
+               bpt.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(daw::d)
             )
             .apply($$0, daw::new)
    );
 
    @Override
-   public void a(cud $$0, czs.a $$1, ayo $$2, bqf $$3) {
-      float $$4 = $$3.d();
-      int $$5 = ayg.b($$2, this.d, this.d + (int)($$4 * (float)this.e));
-
-      for (czp $$7 : czo.b($$2, $$0, $$5, this.c.a())) {
-         $$1.b($$7.a, $$7.b);
+   public void a(aqt $$0, int $$1, czz $$2, bsq $$3, eww $$4) {
+      ayv $$5 = $$3.dT();
+      if (!$$3.aX()) {
+         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.df(), this.e.a($$5), this.f.a($$5));
       }
    }
 
    @Override
    public MapCodec<daw> a() {
-      return b;
+      return a;
    }
 
-   public jn<czm> b() {
-      return this.c;
-   }
-
-   public int c() {
+   public jm<avn> b() {
       return this.d;
    }
 
-   public int d() {
+   public bpt c() {
       return this.e;
+   }
+
+   public bpt d() {
+      return this.f;
    }
 }

@@ -1,32 +1,49 @@
-public class cvr extends cuu implements cuv {
-   public cvr(cty.a $$0) {
+import java.util.List;
+
+public class cvr extends cuj implements ctq {
+   public static final int a = 5;
+   public static final float b = 3.0F;
+
+   public cvr(cuj.a $$0) {
       super($$0);
+      dib.a(this, csd.a);
    }
 
    @Override
-   public bqi<cud> a(dcg $$0, cml $$1, bqg $$2) {
-      cud $$3 = $$1.b($$2);
-      if (!$$0.B) {
-         cnp $$4 = new cnp($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dJ(), $$1.dH(), -20.0F, 0.5F, 1.0F);
-         $$0.b($$4);
-      }
-
-      $$1.b(avr.c.b(this));
-      $$3.a(1, $$1);
-      return bqi.a($$3, $$0.x_());
+   public String h(cuo $$0) {
+      ctg $$1 = $$0.a(kq.Z);
+      return $$1 != null ? this.a() + "." + $$1.b() : super.h($$0);
    }
 
    @Override
-   public cnd a(dcg $$0, jt $$1, cud $$2, jf $$3) {
-      cnp $$4 = new cnp($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
+   public void a(cuo $$0, cuj.b $$1, List<wy> $$2, cwk $$3) {
+      csj.a($$0, $$2);
    }
 
    @Override
-   public cuv.a c() {
-      return cuv.a.a().a(cuv.a.a.c() * 0.5F).b(cuv.a.a.d() * 1.25F).a();
+   public cwm b(cuo $$0) {
+      return cwm.d;
+   }
+
+   @Override
+   public int a(cuo $$0, btl $$1) {
+      return 72000;
+   }
+
+   @Override
+   public bqr<cuo> a(dcu $$0, cmv $$1, bqp $$2) {
+      cuo $$3 = $$1.b($$2);
+      $$1.c($$2);
+      return bqr.b($$3);
+   }
+
+   @Override
+   public boolean a(cuo $$0, cuo $$1) {
+      return $$1.a(awm.b) || super.a($$0, $$1);
+   }
+
+   @Override
+   public bsx m() {
+      return bsx.b;
    }
 }

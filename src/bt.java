@@ -2,40 +2,137 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bt extends ds<bt.a> {
-   @Override
-   public Codec<bt.a> a() {
-      return bt.a.a;
+public record bt(
+   Optional<Boolean> b, Optional<Boolean> c, Optional<Boolean> d, Optional<Boolean> e, Optional<Boolean> f, Optional<Boolean> g, Optional<Boolean> h
+) {
+   public static final Codec<bt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("is_on_ground").forGetter(bt::a),
+               Codec.BOOL.optionalFieldOf("is_on_fire").forGetter(bt::b),
+               Codec.BOOL.optionalFieldOf("is_sneaking").forGetter(bt::c),
+               Codec.BOOL.optionalFieldOf("is_sprinting").forGetter(bt::d),
+               Codec.BOOL.optionalFieldOf("is_swimming").forGetter(bt::e),
+               Codec.BOOL.optionalFieldOf("is_flying").forGetter(bt::f),
+               Codec.BOOL.optionalFieldOf("is_baby").forGetter(bt::g)
+            )
+            .apply($$0, bt::new)
+   );
+
+   public boolean a(bsq $$0) {
+      if (this.b.isPresent() && $$0.aF() != this.b.get()) {
+         return false;
+      } else if (this.c.isPresent() && $$0.bR() != this.c.get()) {
+         return false;
+      } else if (this.d.isPresent() && $$0.cb() != this.d.get()) {
+         return false;
+      } else if (this.e.isPresent() && $$0.cc() != this.e.get()) {
+         return false;
+      } else if (this.f.isPresent() && $$0.cd() != this.f.get()) {
+         return false;
+      } else {
+         if (this.g.isPresent()) {
+            boolean var10000;
+            label53: {
+               if ($$0 instanceof btl $$1 && ($$1.fB() || $$1 instanceof cmv $$2 && $$2.ga().b)) {
+                  var10000 = true;
+                  break label53;
+               }
+
+               var10000 = false;
+            }
+
+            boolean $$3 = var10000;
+            if ($$3 != this.g.get()) {
+               return false;
+            }
+         }
+
+         if (this.h.isPresent() && $$0 instanceof btl $$4 && $$4.o_() != this.h.get()) {
+            return false;
+         }
+
+         return true;
+      }
    }
 
-   public void a(aqn $$0, bra $$1, float $$2, float $$3, boolean $$4) {
-      this.a($$0, $$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
+   public Optional<Boolean> a() {
+      return this.b;
    }
 
-   public static record a(Optional<bf> b, Optional<bi> c) implements ds.a {
-      public static final Codec<bt.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(bt.a::a), bi.a.optionalFieldOf("damage").forGetter(bt.a::c)).apply($$0, bt.a::new)
-      );
+   public Optional<Boolean> b() {
+      return this.c;
+   }
 
-      public static an<bt.a> b() {
-         return am.i.a(new bt.a(Optional.empty(), Optional.empty()));
+   public Optional<Boolean> c() {
+      return this.d;
+   }
+
+   public Optional<Boolean> d() {
+      return this.e;
+   }
+
+   public Optional<Boolean> e() {
+      return this.f;
+   }
+
+   public Optional<Boolean> f() {
+      return this.g;
+   }
+
+   public Optional<Boolean> g() {
+      return this.h;
+   }
+
+   public static class a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+      private Optional<Boolean> c = Optional.empty();
+      private Optional<Boolean> d = Optional.empty();
+      private Optional<Boolean> e = Optional.empty();
+      private Optional<Boolean> f = Optional.empty();
+      private Optional<Boolean> g = Optional.empty();
+
+      public static bt.a a() {
+         return new bt.a();
       }
 
-      public static an<bt.a> a(bi $$0) {
-         return am.i.a(new bt.a(Optional.empty(), Optional.of($$0)));
+      public bt.a a(Boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
       }
 
-      public static an<bt.a> a(bi.a $$0) {
-         return am.i.a(new bt.a(Optional.empty(), Optional.of($$0.b())));
+      public bt.a b(Boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
       }
 
-      public boolean a(aqn $$0, bra $$1, float $$2, float $$3, boolean $$4) {
-         return !this.c.isPresent() || this.c.get().a($$0, $$1, $$2, $$3, $$4);
+      public bt.a c(Boolean $$0) {
+         this.c = Optional.of($$0);
+         return this;
       }
 
-      @Override
-      public Optional<bf> a() {
-         return this.b;
+      public bt.a d(Boolean $$0) {
+         this.d = Optional.of($$0);
+         return this;
+      }
+
+      public bt.a e(Boolean $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public bt.a f(Boolean $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public bt.a g(Boolean $$0) {
+         this.g = Optional.of($$0);
+         return this;
+      }
+
+      public bt b() {
+         return new bt(this.a, this.b, this.c, this.d, this.e, this.f, this.g);
       }
    }
 }

@@ -1,113 +1,63 @@
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+import javax.swing.JComponent;
+import javax.swing.Timer;
+import net.minecraft.server.MinecraftServer;
 
-public interface apu<T> {
-   static <T> apu<T> a(T $$0) {
-      return new apu.b<>($$0);
+public class apu extends JComponent {
+   private static final DecimalFormat a = ad.a(
+      new DecimalFormat("########0.000"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT))
+   );
+   private final int[] b = new int[256];
+   private int c;
+   private final String[] d = new String[11];
+   private final MinecraftServer e;
+   private final Timer f;
+
+   public apu(MinecraftServer $$0) {
+      this.e = $$0;
+      this.setPreferredSize(new Dimension(456, 246));
+      this.setMinimumSize(new Dimension(456, 246));
+      this.setMaximumSize(new Dimension(456, 246));
+      this.f = new Timer(500, $$0x -> this.b());
+      this.f.start();
+      this.setBackground(Color.BLACK);
    }
 
-   static <T> apu<T> a(String $$0) {
-      return a(() -> $$0);
+   private void b() {
+      long $$0 = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+      this.d[0] = "Memory use: " + $$0 / 1024L / 1024L + " mb (" + Runtime.getRuntime().freeMemory() * 100L / Runtime.getRuntime().maxMemory() + "% free)";
+      this.d[1] = "Avg tick: " + a.format((double)this.e.aR() / (double)azo.b) + " ms";
+      this.b[this.c++ & 0xFF] = (int)($$0 * 100L / Runtime.getRuntime().maxMemory());
+      this.repaint();
    }
 
-   static <T> apu<T> a(Supplier<String> $$0) {
-      return new apu.a<>($$0);
-   }
+   @Override
+   public void paint(Graphics $$0) {
+      $$0.setColor(new Color(16777215));
+      $$0.fillRect(0, 0, 456, 246);
 
-   boolean a();
-
-   @Nullable
-   T b(@Nullable T var1);
-
-   @Nullable
-   static <R> R a(apu<? extends R> $$0, @Nullable R $$1) {
-      R $$2 = (R)$$0.b(null);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   @Nullable
-   String b();
-
-   apu<T> a(Consumer<T> var1);
-
-   <R> apu<R> a(Function<T, R> var1);
-
-   <E extends Throwable> T b(Supplier<E> var1) throws E;
-
-   public static record a<T>(Supplier<String> a) implements apu<T> {
-      @Override
-      public boolean a() {
-         return false;
+      for (int $$1 = 0; $$1 < 256; $$1++) {
+         int $$2 = this.b[$$1 + this.c & 0xFF];
+         $$0.setColor(new Color($$2 + 28 << 16));
+         $$0.fillRect($$1, 100 - $$2, 1, $$2);
       }
 
-      @Nullable
-      @Override
-      public T b(@Nullable T $$0) {
-         return $$0;
-      }
+      $$0.setColor(Color.BLACK);
 
-      @Override
-      public String b() {
-         return this.a.get();
-      }
-
-      @Override
-      public apu<T> a(Consumer<T> $$0) {
-         return this;
-      }
-
-      @Override
-      public <R> apu<R> a(Function<T, R> $$0) {
-         return new apu.a(this.a);
-      }
-
-      @Override
-      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
-         throw $$0.get();
-      }
-
-      public Supplier<String> c() {
-         return this.a;
+      for (int $$3 = 0; $$3 < this.d.length; $$3++) {
+         String $$4 = this.d[$$3];
+         if ($$4 != null) {
+            $$0.drawString($$4, 32, 116 + $$3 * 16);
+         }
       }
    }
 
-   public static record b<T>(T a) implements apu<T> {
-      @Override
-      public boolean a() {
-         return true;
-      }
-
-      @Override
-      public T b(@Nullable T $$0) {
-         return this.a;
-      }
-
-      @Nullable
-      @Override
-      public String b() {
-         return null;
-      }
-
-      @Override
-      public apu<T> a(Consumer<T> $$0) {
-         $$0.accept(this.a);
-         return this;
-      }
-
-      @Override
-      public <R> apu<R> a(Function<T, R> $$0) {
-         return new apu.b<>($$0.apply(this.a));
-      }
-
-      @Override
-      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
-         return this.a;
-      }
-
-      public T c() {
-         return this.a;
-      }
+   public void a() {
+      this.f.stop();
    }
 }

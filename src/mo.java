@@ -1,46 +1,91 @@
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mojang.serialization.JsonOps;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 
-public class mo implements lx {
-   private final lz d;
+public class mo implements ma {
+   private final mc d;
+   private final CompletableFuture<jo.a> e;
 
-   public mo(lz $$0) {
+   public mo(mc $$0, CompletableFuture<jo.a> $$1) {
       this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public CompletableFuture<?> a(lv $$0) {
-      JsonObject $$1 = new JsonObject();
-      lq.aA.i().forEach($$1x -> $$1.add($$1x.h().a().toString(), a((jw)$$1x.a())));
-      Path $$2 = this.d.a(lz.b.c).resolve("registries.json");
-      return lx.a($$0, $$1, $$2);
-   }
+   public CompletableFuture<?> a(ly $$0) {
+      Path $$1 = this.d.a(mc.b.c).resolve("blocks.json");
+      return this.e
+         .thenCompose(
+            $$2 -> {
+               JsonObject $$3 = new JsonObject();
+               ako<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+               $$2.b(lu.f)
+                  .b()
+                  .forEach(
+                     $$2x -> {
+                        JsonObject $$3x = new JsonObject();
+                        dtb<dfw, dta> $$4x = ((dfw)$$2x.a()).l();
+                        if (!$$4x.d().isEmpty()) {
+                           JsonObject $$5 = new JsonObject();
 
-   private static <T> JsonElement a(jw<T> $$0) {
-      JsonObject $$1 = new JsonObject();
-      if ($$0 instanceof je) {
-         akk $$2 = ((je)$$0).b();
-         $$1.addProperty("default", $$2.toString());
-      }
+                           for (dud<?> $$6 : $$4x.d()) {
+                              JsonArray $$7 = new JsonArray();
 
-      int $$3 = lq.aA.a($$0);
-      $$1.addProperty("protocol_id", $$3);
-      JsonObject $$4 = new JsonObject();
-      $$0.i().forEach($$2 -> {
-         T $$3x = $$2.a();
-         int $$4x = $$0.a($$3x);
-         JsonObject $$5 = new JsonObject();
-         $$5.addProperty("protocol_id", $$4x);
-         $$4.add($$2.h().a().toString(), $$5);
-      });
-      $$1.add("entries", $$4);
-      return $$1;
+                              for (Comparable<?> $$8 : $$6.a()) {
+                                 $$7.add(ad.a($$6, $$8));
+                              }
+
+                              $$5.add($$6.f(), $$7);
+                           }
+
+                           $$3x.add("properties", $$5);
+                        }
+
+                        JsonArray $$9 = new JsonArray();
+                        UnmodifiableIterator var13 = $$4x.a().iterator();
+
+                        while (var13.hasNext()) {
+                           dta $$10 = (dta)var13.next();
+                           JsonObject $$11 = new JsonObject();
+                           JsonObject $$12 = new JsonObject();
+
+                           for (dud<?> $$13 : $$4x.d()) {
+                              $$12.addProperty($$13.f(), ad.a($$13, $$10.c($$13)));
+                           }
+
+                           if ($$12.size() > 0) {
+                              $$11.add("properties", $$12);
+                           }
+
+                           $$11.addProperty("id", dfw.i($$10));
+                           if ($$10 == ((dfw)$$2x.a()).o()) {
+                              $$11.addProperty("default", true);
+                           }
+
+                           $$9.add($$11);
+                        }
+
+                        $$3x.add("states", $$9);
+                        String $$14 = $$2x.g();
+                        JsonElement $$15 = (JsonElement)dfx.a
+                           .codec()
+                           .encodeStart($$4, (dfw)$$2x.a())
+                           .getOrThrow($$1xxx -> new AssertionError("Failed to serialize block " + $$14 + " (is type registered in BlockTypes?): " + $$1xxx));
+                        $$3x.add("definition", $$15);
+                        $$3.add($$14, $$3x);
+                     }
+                  );
+               return ma.a($$0, $$3, $$1);
+            }
+         );
    }
 
    @Override
    public final String a() {
-      return "Registry Dump";
+      return "Block List";
    }
 }

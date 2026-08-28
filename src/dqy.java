@@ -1,117 +1,93 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class dqy extends drl {
+   public static final int d = 9;
+   private jv<cuo> e = jv.a(9, cuo.l);
 
-public class dqy extends dpq implements dxj.b<dxq.b>, dxq {
-   private static final Logger b = LogUtils.getLogger();
-   private dxq.a c;
-   private final dxq.b d;
-   private final dxq.d e = this.b();
-   private int h;
-
-   protected dqy(dps<?> $$0, ja $$1, dsl $$2) {
+   protected dqy(dqh<?> $$0, jd $$1, dta $$2) {
       super($$0, $$1, $$2);
-      this.c = new dxq.a();
-      this.d = new dxq.b(this);
    }
 
-   public dqy(ja $$0, dsl $$1) {
-      this(dps.I, $$0, $$1);
-   }
-
-   public dxq.d b() {
-      return new dqy.a(this.az_());
+   public dqy(jd $$0, dta $$1) {
+      this(dqh.f, $$0, $$1);
    }
 
    @Override
-   protected void a(tx $$0, jl.a $$1) {
-      super.a($$0, $$1);
-      this.h = $$0.h("last_vibration_frequency");
-      if ($$0.b("listener", 10)) {
-         dxq.a.a.parse(new Dynamic(ul.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
-      }
+   public int b() {
+      return 9;
    }
 
-   @Override
-   protected void b(tx $$0, jl.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("last_vibration_frequency", this.h);
-      dxq.a.a.encodeStart(ul.a, this.c).resultOrPartial(b::error).ifPresent($$1x -> $$0.a("listener", $$1x));
-   }
+   public int a(ayv $$0) {
+      this.e_(null);
+      int $$1 = -1;
+      int $$2 = 1;
 
-   @Override
-   public dxq.a gp() {
-      return this.c;
-   }
-
-   @Override
-   public dxq.d gq() {
-      return this.e;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public dxq.b f() {
-      return this.d;
-   }
-
-   protected class a implements dxq.d {
-      public static final int b = 8;
-      protected final ja c;
-      private final dxl a;
-
-      public a(final ja $$1) {
-         this.c = $$1;
-         this.a = new dxd($$1);
+      for (int $$3 = 0; $$3 < this.e.size(); $$3++) {
+         if (!this.e.get($$3).e() && $$0.a($$2++) == 0) {
+            $$1 = $$3;
+         }
       }
 
-      @Override
-      public int a() {
-         return 8;
-      }
+      return $$1;
+   }
 
-      @Override
-      public dxl b() {
-         return this.a;
-      }
+   public cuo b(cuo $$0) {
+      int $$1 = this.e_($$0);
 
-      @Override
-      public boolean d() {
-         return true;
-      }
+      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
+         cuo $$3 = this.e.get($$2);
+         if ($$3.e() || cuo.c($$0, $$3)) {
+            int $$4 = Math.min($$0.H(), $$1 - $$3.H());
+            if ($$4 > 0) {
+               if ($$3.e()) {
+                  this.a($$2, $$0.a($$4));
+               } else {
+                  $$0.h($$4);
+                  $$3.g($$4);
+               }
+            }
 
-      @Override
-      public boolean a(aqm $$0, ja $$1, jj<dxh> $$2, @Nullable dxh.a $$3) {
-         return !$$1.equals(this.c) || !$$2.a(dxh.f) && !$$2.a(dxh.i) ? dmb.n(dqy.this.n()) : false;
-      }
-
-      @Override
-      public void a(aqm $$0, ja $$1, jj<dxh> $$2, @Nullable bsh $$3, @Nullable bsh $$4, float $$5) {
-         dsl $$6 = dqy.this.n();
-         if (dmb.n($$6)) {
-            dqy.this.a(dxq.a_($$2));
-            int $$7 = dxq.a_($$5, this.a());
-            if ($$6.b() instanceof dmb $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dqy.this.d());
+            if ($$0.e()) {
+               break;
             }
          }
       }
 
-      @Override
-      public void e() {
-         dqy.this.e();
-      }
+      return $$0;
+   }
 
-      @Override
-      public boolean f() {
-         return true;
+   @Override
+   protected wy k() {
+      return wy.c("container.dispenser");
+   }
+
+   @Override
+   protected void a(ua $$0, jo.a $$1) {
+      super.a($$0, $$1);
+      this.e = jv.a(this.b(), cuo.l);
+      if (!this.a_($$0)) {
+         bqk.b($$0, this.e, $$1);
       }
+   }
+
+   @Override
+   protected void b(ua $$0, jo.a $$1) {
+      super.b($$0, $$1);
+      if (!this.b_($$0)) {
+         bqk.a($$0, this.e, $$1);
+      }
+   }
+
+   @Override
+   protected jv<cuo> j() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(jv<cuo> $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   protected cps a(int $$0, cmu $$1) {
+      return new cqm($$0, $$1, this);
    }
 }

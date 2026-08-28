@@ -1,147 +1,33 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+public class fxc<T extends bsq> extends fvn<T> {
+   private final fye a;
 
-public class fxc<T extends clp> extends fuz<T> {
-   private static final float o = 13.0F;
-   private static final float p = 1.0F;
-   private final fxq q;
-   protected final fxq a;
-   protected final fxq b;
-   protected final fxq f;
-   protected final fxq g;
-   protected final fxq h;
-   protected final fxq i;
-   protected final fxq j;
-   protected final fxq k;
-   protected final fxq l;
-   protected final fxq m;
-   protected final fxq n;
-   private final List<fxq> r;
-   private final List<fxq> s;
-   private final List<fxq> t;
-   private final List<fxq> u;
-
-   public fxc(fxq $$0) {
-      super(gen::e);
-      this.q = $$0;
-      this.a = $$0.b("bone");
-      this.b = this.a.b("body");
-      this.f = this.b.b("head");
-      this.m = this.a.b("right_leg");
-      this.i = this.a.b("left_leg");
-      this.l = this.b.b("right_arm");
-      this.j = this.b.b("left_arm");
-      this.g = this.f.b("right_tendril");
-      this.h = this.f.b("left_tendril");
-      this.n = this.b.b("right_ribcage");
-      this.k = this.b.b("left_ribcage");
-      this.r = ImmutableList.of(this.h, this.g);
-      this.s = ImmutableList.of(this.b);
-      this.t = ImmutableList.of(this.f, this.j, this.l, this.i, this.m);
-      this.u = ImmutableList.of(this.b, this.f, this.j, this.l, this.i, this.m);
+   public fxc(fye $$0) {
+      this.a = $$0;
    }
 
-   public static fxw b() {
-      fxy $$0 = new fxy();
-      fxz $$1 = $$0.a();
-      fxz $$2 = $$1.a("bone", fxv.c(), fxs.a(0.0F, 24.0F, 0.0F));
-      fxz $$3 = $$2.a("body", fxv.c().a(0, 0).a(-9.0F, -13.0F, -4.0F, 18.0F, 21.0F, 11.0F), fxs.a(0.0F, -21.0F, 0.0F));
-      $$3.a("right_ribcage", fxv.c().a(90, 11).a(-2.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F), fxs.a(-7.0F, -2.0F, -4.0F));
-      $$3.a("left_ribcage", fxv.c().a(90, 11).a().a(-7.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F).a(false), fxs.a(7.0F, -2.0F, -4.0F));
-      fxz $$4 = $$3.a("head", fxv.c().a(0, 32).a(-8.0F, -16.0F, -5.0F, 16.0F, 16.0F, 10.0F), fxs.a(0.0F, -13.0F, 0.0F));
-      $$4.a("right_tendril", fxv.c().a(52, 32).a(-16.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), fxs.a(-8.0F, -12.0F, 0.0F));
-      $$4.a("left_tendril", fxv.c().a(58, 0).a(0.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), fxs.a(8.0F, -12.0F, 0.0F));
-      $$3.a("right_arm", fxv.c().a(44, 50).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), fxs.a(-13.0F, -13.0F, 1.0F));
-      $$3.a("left_arm", fxv.c().a(0, 58).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), fxs.a(13.0F, -13.0F, 1.0F));
-      $$2.a("right_leg", fxv.c().a(76, 48).a(-3.1F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), fxs.a(-5.9F, -13.0F, 0.0F));
-      $$2.a("left_leg", fxv.c().a(76, 76).a(-2.9F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), fxs.a(5.9F, -13.0F, 0.0F));
-      return fxw.a($$0, 128, 128);
+   public static fyk b() {
+      fym $$0 = new fym();
+      fyn $$1 = $$0.a();
+      $$1.a("cube", fyj.c().a(0, 0).a(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), fyg.a);
+      return fyk.a($$0, 64, 32);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fxq::c);
-      float $$6 = $$3 - (float)$$0.ai;
-      this.a($$4, $$5);
-      this.b($$1, $$2);
-      this.a($$3);
-      this.a($$0, $$3, $$6);
-      this.a($$0.ca, fgu.e, $$3);
-      this.a($$0.cb, fgu.f, $$3);
-      this.a($$0.e, fgu.b, $$3);
-      this.a($$0.d, fgu.a, $$3);
-      this.a($$0.b, fgu.c, $$3);
-      this.a($$0.c, fgu.d, $$3);
-   }
-
-   private void a(float $$0, float $$1) {
-      this.f.e = $$1 * (float) (Math.PI / 180.0);
-      this.f.f = $$0 * (float) (Math.PI / 180.0);
-   }
-
-   private void a(float $$0) {
-      float $$1 = $$0 * 0.1F;
-      float $$2 = ayg.b($$1);
-      float $$3 = ayg.a($$1);
-      this.f.g += 0.06F * $$2;
-      this.f.e += 0.06F * $$3;
-      this.b.g += 0.025F * $$3;
-      this.b.e += 0.025F * $$2;
-   }
-
-   private void b(float $$0, float $$1) {
-      float $$2 = Math.min(0.5F, 3.0F * $$1);
-      float $$3 = $$0 * 0.8662F;
-      float $$4 = ayg.b($$3);
-      float $$5 = ayg.a($$3);
-      float $$6 = Math.min(0.35F, $$2);
-      this.f.g += 0.3F * $$5 * $$2;
-      this.f.e = this.f.e + 1.2F * ayg.b($$3 + (float) (Math.PI / 2)) * $$6;
-      this.b.g = 0.1F * $$5 * $$2;
-      this.b.e = 1.0F * $$4 * $$6;
-      this.i.e = 1.0F * $$4 * $$2;
-      this.m.e = 1.0F * ayg.b($$3 + (float) Math.PI) * $$2;
-      this.j.e = -(0.8F * $$4 * $$2);
-      this.j.g = 0.0F;
-      this.l.e = -(0.8F * $$5 * $$2);
-      this.l.g = 0.0F;
-      this.g();
-   }
-
-   private void g() {
-      this.j.f = 0.0F;
-      this.j.d = 1.0F;
-      this.j.b = 13.0F;
-      this.j.c = -13.0F;
-      this.l.f = 0.0F;
-      this.l.d = 1.0F;
-      this.l.b = -13.0F;
-      this.l.c = -13.0F;
-   }
-
-   private void a(T $$0, float $$1, float $$2) {
-      float $$3 = $$0.H($$2) * (float)(Math.cos((double)$$1 * 2.25) * Math.PI * 0.1F);
-      this.h.e = $$3;
-      this.g.e = -$$3;
+   public static fyk c() {
+      fym $$0 = new fym();
+      fyn $$1 = $$0.a();
+      $$1.a("cube", fyj.c().a(0, 16).a(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), fyg.a);
+      $$1.a("right_eye", fyj.c().a(32, 0).a(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), fyg.a);
+      $$1.a("left_eye", fyj.c().a(32, 4).a(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), fyg.a);
+      $$1.a("mouth", fyj.c().a(32, 8).a(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), fyg.a);
+      return fyk.a($$0, 64, 32);
    }
 
    @Override
-   public fxq a() {
-      return this.q;
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
    }
 
-   public List<fxq> c() {
-      return this.r;
-   }
-
-   public List<fxq> d() {
-      return this.s;
-   }
-
-   public List<fxq> e() {
-      return this.t;
-   }
-
-   public List<fxq> f() {
-      return this.u;
+   @Override
+   public fye a() {
+      return this.a;
    }
 }

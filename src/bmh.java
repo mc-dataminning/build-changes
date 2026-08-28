@@ -1,33 +1,45 @@
-import com.mojang.brigadier.ImmutableStringReader;
-import com.mojang.brigadier.StringReader;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class bmh<C, V> implements bmb<StringReader, V>, bmi {
-   private final blv<akk> b;
-   protected final C a;
+public interface bmh<S> {
+   void a(int var1, bmm<S> var2, Object var3);
 
-   protected bmh(blv<akk> $$0, C $$1) {
-      this.b = $$0;
-      this.a = $$1;
+   default void a(int $$0, Object $$1) {
+      this.a($$0, bmm.b(), $$1);
    }
 
-   @Override
-   public Optional<V> a(bma<StringReader> $$0) {
-      $$0.b().skipWhitespace();
-      int $$1 = $$0.c();
-      Optional<akk> $$2 = $$0.b(this.b);
-      if ($$2.isPresent()) {
-         try {
-            return Optional.of(this.a((ImmutableStringReader)$$0.b(), $$2.get()));
-         } catch (Exception var5) {
-            $$0.a().a($$1, this, var5);
-            return Optional.empty();
+   void a(int var1);
+
+   public static class a<S> implements bmh<S> {
+      private final List<bmi<S>> a = new ArrayList<>();
+      private int b = -1;
+
+      private void b(int $$0) {
+         if ($$0 > this.b) {
+            this.b = $$0;
+            this.a.clear();
          }
-      } else {
-         $$0.a().a($$1, this, akk.c.createWithContext((ImmutableStringReader)$$0.b()));
-         return Optional.empty();
+      }
+
+      @Override
+      public void a(int $$0) {
+         this.b($$0);
+      }
+
+      @Override
+      public void a(int $$0, bmm<S> $$1, Object $$2) {
+         this.b($$0);
+         if ($$0 == this.b) {
+            this.a.add(new bmi<>($$0, $$1, $$2));
+         }
+      }
+
+      public List<bmi<S>> a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
       }
    }
-
-   protected abstract V a(ImmutableStringReader var1, akk var2) throws Exception;
 }

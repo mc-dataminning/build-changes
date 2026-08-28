@@ -1,90 +1,97 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
-public interface ceu {
-   boolean t();
+public class ceu {
+   public static final akp<cet> a = a("armorer");
+   public static final akp<cet> b = a("butcher");
+   public static final akp<cet> c = a("cartographer");
+   public static final akp<cet> d = a("cleric");
+   public static final akp<cet> e = a("farmer");
+   public static final akp<cet> f = a("fisherman");
+   public static final akp<cet> g = a("fletcher");
+   public static final akp<cet> h = a("leatherworker");
+   public static final akp<cet> i = a("librarian");
+   public static final akp<cet> j = a("mason");
+   public static final akp<cet> k = a("shepherd");
+   public static final akp<cet> l = a("toolsmith");
+   public static final akp<cet> m = a("weaponsmith");
+   public static final akp<cet> n = a("home");
+   public static final akp<cet> o = a("meeting");
+   public static final akp<cet> p = a("beehive");
+   public static final akp<cet> q = a("bee_nest");
+   public static final akp<cet> r = a("nether_portal");
+   public static final akp<cet> s = a("lodestone");
+   public static final akp<cet> t = a("lightning_rod");
+   private static final Set<dta> u = ImmutableList.of(
+         dfy.bn, dfy.bo, dfy.bk, dfy.bl, dfy.bi, dfy.bg, dfy.bm, dfy.bc, dfy.bh, dfy.be, dfy.bb, dfy.ba, new dfw[]{dfy.bf, dfy.bj, dfy.aZ, dfy.bd}
+      )
+      .stream()
+      .flatMap($$0 -> $$0.l().a().stream())
+      .filter($$0 -> $$0.c(dfp.b) == dtn.a)
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Set<dta> v = ImmutableList.of(dfy.ft, dfy.fv, dfy.fu, dfy.fw)
+      .stream()
+      .flatMap($$0 -> $$0.l().a().stream())
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Map<dta, jm<cet>> w = Maps.newHashMap();
 
-   void w(boolean var1);
+   private static Set<dta> a(dfw $$0) {
+      return ImmutableSet.copyOf($$0.l().a());
+   }
 
-   void n(cud var1);
+   private static akp<cet> a(String $$0) {
+      return akp.a(lu.aa, akq.b($$0));
+   }
 
-   void c(tx var1);
+   private static cet a(jz<cet> $$0, akp<cet> $$1, Set<dta> $$2, int $$3, int $$4) {
+      cet $$5 = new cet($$2, $$3, $$4);
+      jz.a($$0, $$1, $$5);
+      a($$0.g($$1), $$2);
+      return $$5;
+   }
 
-   cud b();
-
-   avg x();
-
-   @Deprecated
-   static void a(bte $$0, cud $$1) {
-      $$1.b(kn.g, $$0.aj());
-      cwr.a(kn.N, $$1, $$1x -> {
-         if ($$0.gc()) {
-            $$1x.a("NoAI", $$0.gc());
+   private static void a(jm<cet> $$0, Set<dta> $$1) {
+      $$1.forEach($$1x -> {
+         jm<cet> $$2 = w.put($$1x, $$0);
+         if ($$2 != null) {
+            throw (IllegalStateException)ad.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
          }
-
-         if ($$0.aY()) {
-            $$1x.a("Silent", $$0.aY());
-         }
-
-         if ($$0.aZ()) {
-            $$1x.a("NoGravity", $$0.aZ());
-         }
-
-         if ($$0.ch()) {
-            $$1x.a("Glowing", $$0.ch());
-         }
-
-         if ($$0.cw()) {
-            $$1x.a("Invulnerable", $$0.cw());
-         }
-
-         $$1x.a("Health", $$0.ey());
       });
    }
 
-   @Deprecated
-   static void a(bte $$0, tx $$1) {
-      if ($$1.e("NoAI")) {
-         $$0.c($$1.q("NoAI"));
-      }
-
-      if ($$1.e("Silent")) {
-         $$0.f($$1.q("Silent"));
-      }
-
-      if ($$1.e("NoGravity")) {
-         $$0.g($$1.q("NoGravity"));
-      }
-
-      if ($$1.e("Glowing")) {
-         $$0.k($$1.q("Glowing"));
-      }
-
-      if ($$1.e("Invulnerable")) {
-         $$0.o($$1.q("Invulnerable"));
-      }
-
-      if ($$1.b("Health", 99)) {
-         $$0.u($$1.j("Health"));
-      }
+   public static Optional<jm<cet>> a(dta $$0) {
+      return Optional.ofNullable(w.get($$0));
    }
 
-   static <T extends btc & ceu> Optional<bqh> a(cml $$0, bqg $$1, T $$2) {
-      cud $$3 = $$0.b($$1);
-      if ($$3.g() == cug.qz && $$2.bF()) {
-         $$2.a($$2.x(), 1.0F, 1.0F);
-         cud $$4 = $$2.b();
-         $$2.n($$4);
-         cud $$5 = cuf.a($$3, $$0, $$4, false);
-         $$0.a($$1, $$5);
-         dcg $$6 = $$2.dR();
-         if (!$$6.B) {
-            am.k.a((aqn)$$0, $$4);
-         }
+   public static boolean b(dta $$0) {
+      return w.containsKey($$0);
+   }
 
-         $$2.aq();
-         return Optional.of(bqh.a($$6.B));
-      } else {
-         return Optional.empty();
-      }
+   public static cet a(jz<cet> $$0) {
+      a($$0, a, a(dfy.nW), 1, 1);
+      a($$0, b, a(dfy.nV), 1, 1);
+      a($$0, c, a(dfy.nX), 1, 1);
+      a($$0, d, a(dfy.fs), 1, 1);
+      a($$0, e, a(dfy.pc), 1, 1);
+      a($$0, f, a(dfy.nU), 1, 1);
+      a($$0, g, a(dfy.nY), 1, 1);
+      a($$0, h, v, 1, 1);
+      a($$0, i, a(dfy.oa), 1, 1);
+      a($$0, j, a(dfy.oc), 1, 1);
+      a($$0, k, a(dfy.nT), 1, 1);
+      a($$0, l, a(dfy.ob), 1, 1);
+      a($$0, m, a(dfy.nZ), 1, 1);
+      a($$0, n, u, 1, 1);
+      a($$0, o, a(dfy.od), 32, 6);
+      a($$0, p, a(dfy.pf), 0, 1);
+      a($$0, q, a(dfy.pe), 0, 1);
+      a($$0, r, a(dfy.ed), 0, 1);
+      a($$0, s, a(dfy.pq), 0, 1);
+      return a($$0, t, a(dfy.ss), 0, 1);
    }
 }

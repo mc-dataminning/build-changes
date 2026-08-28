@@ -1,29 +1,44 @@
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dge {
-   exa q_ = dfi.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dtc r_ = dtb.D;
+public class dge extends deu {
+   public static final MapCodec<dge> b = b(dge::new);
+   public static final int c = 5;
+   private static final ji[] d = ji.values();
 
-   static bqh a(@Nullable bsh $$0, dsl $$1, dcg $$2, ja $$3) {
-      if ($$1.c(r_)) {
-         dfi.a($$2, $$3, new cud(cug.wv, 1));
-         float $$4 = ayg.b($$2.z, 0.8F, 1.2F);
-         $$2.a(null, $$3, avh.ee, avi.e, 1.0F, $$4);
-         dsl $$5 = $$1.a(r_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(dxh.c, $$3, dxh.a.a($$0, $$5));
-         return bqh.a($$2.B);
-      } else {
-         return bqh.e;
+   @Override
+   public MapCodec<dge> a() {
+      return b;
+   }
+
+   public dge(dsz.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
+      if ($$3.a(5) == 0) {
+         ji $$4 = d[$$3.a(d.length)];
+         jd $$5 = $$2.a($$4);
+         dta $$6 = $$1.a_($$5);
+         dfw $$7 = null;
+         if (g($$6)) {
+            $$7 = dfy.qy;
+         } else if ($$6.a(dfy.qy) && $$6.c(dev.d) == $$4) {
+            $$7 = dfy.qx;
+         } else if ($$6.a(dfy.qx) && $$6.c(dev.d) == $$4) {
+            $$7 = dfy.qw;
+         } else if ($$6.a(dfy.qw) && $$6.c(dev.d) == $$4) {
+            $$7 = dfy.qv;
+         }
+
+         if ($$7 != null) {
+            dta $$8 = $$7.o().a(dev.d, $$4).a(dev.c, Boolean.valueOf($$6.u().a() == eoz.c));
+            $$1.b($$5, $$8);
+         }
       }
    }
 
-   static boolean h_(dsl $$0) {
-      return $$0.b(r_) && $$0.c(r_);
-   }
-
-   static ToIntFunction<dsl> h_(int $$0) {
-      return $$1 -> $$1.c(dtb.D) ? $$0 : 0;
+   public static boolean g(dta $$0) {
+      return $$0.i() || $$0.a(dfy.G) && $$0.u().e() == 8;
    }
 }

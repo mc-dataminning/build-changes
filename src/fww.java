@@ -1,36 +1,38 @@
-public class fww<T extends bsh> extends fui<T> {
-   private final fxq a;
-   private final fxq b;
+public class fww<T extends bsq> extends fvn<T> {
+   private static final String a = "main";
+   private final fye b;
+   private final fye f;
 
-   public fww(fxq $$0) {
-      this.a = $$0;
-      this.b = $$0.b("tail");
+   public fww(fye $$0) {
+      this.b = $$0;
+      this.f = $$0.b("main");
    }
 
-   public static fxw a(fxu $$0) {
-      fxy $$1 = new fxy();
-      fxz $$2 = $$1.a();
-      int $$3 = 22;
-      $$2.a("body", fxv.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), fxs.a(0.0F, 22.0F, 0.0F));
-      $$2.a("tail", fxv.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fxs.a(0.0F, 22.0F, 3.0F));
-      $$2.a("right_fin", fxv.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fxs.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", fxv.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fxs.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", fxv.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fxs.a(0.0F, 20.5F, -3.0F));
-      return fxw.a($$1, 32, 32);
+   public static fyk b() {
+      fym $$0 = new fym();
+      fyn $$1 = $$0.a();
+      $$1.a(
+         "main",
+         fyj.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -1.0F, 8.0F, 8.0F, 2.0F)
+            .a(0, 10)
+            .a(-1.0F, -4.0F, -4.0F, 2.0F, 8.0F, 8.0F)
+            .a(20, 0)
+            .a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F),
+         fyg.a
+      );
+      return fyk.a($$0, 64, 32);
    }
 
    @Override
-   public fxq a() {
-      return this.a;
+   public fye a() {
+      return this.b;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      if (!$$0.bg()) {
-         $$6 = 1.5F;
-      }
-
-      this.b.f = -$$6 * 0.45F * ayg.a(0.6F * $$3);
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

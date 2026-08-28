@@ -1,124 +1,56 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record br(Optional<cp> b, Optional<cp> c, Optional<cp> d, Optional<cp> e, Optional<cp> f, Optional<cp> g, Optional<cp> h) {
-   public static final Codec<br> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cp.a.optionalFieldOf("head").forGetter(br::a),
-               cp.a.optionalFieldOf("chest").forGetter(br::b),
-               cp.a.optionalFieldOf("legs").forGetter(br::c),
-               cp.a.optionalFieldOf("feet").forGetter(br::d),
-               cp.a.optionalFieldOf("body").forGetter(br::e),
-               cp.a.optionalFieldOf("mainhand").forGetter(br::f),
-               cp.a.optionalFieldOf("offhand").forGetter(br::g)
+public class br extends dv<br.a> {
+   @Override
+   public Codec<br.a> a() {
+      return br.a.a;
+   }
+
+   public void a(aqu $$0, dta $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
+   }
+
+   public static record a(Optional<bg> b, Optional<jm<dfw>> c, Optional<eb> d) implements dv.a {
+      public static final Codec<br.a> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     bv.b.optionalFieldOf("player").forGetter(br.a::a),
+                     lt.e.s().optionalFieldOf("block").forGetter(br.a::b),
+                     eb.a.optionalFieldOf("state").forGetter(br.a::c)
+                  )
+                  .apply($$0, br.a::new)
+         )
+         .validate(br.a::a);
+
+      private static DataResult<br.a> a(br.a $$0) {
+         return $$0.c
+            .<DataResult<br.a>>flatMap(
+               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((dfw)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
             )
-            .apply($$0, br::new)
-   );
-
-   public static br a(jk<dpg> $$0) {
-      return br.a.a().a(cp.a.a().a(cug.uP).a(kl.a(cnw.a($$0).a()))).b();
-   }
-
-   public boolean a(@Nullable bsh $$0) {
-      if ($$0 instanceof btc $$1) {
-         if (this.b.isPresent() && !this.b.get().a($$1.a(bso.f))) {
-            return false;
-         } else if (this.c.isPresent() && !this.c.get().a($$1.a(bso.e))) {
-            return false;
-         } else if (this.d.isPresent() && !this.d.get().a($$1.a(bso.d))) {
-            return false;
-         } else if (this.e.isPresent() && !this.e.get().a($$1.a(bso.c))) {
-            return false;
-         } else if (this.f.isPresent() && !this.f.get().a($$1.a(bso.g))) {
-            return false;
-         } else {
-            return this.g.isPresent() && !this.g.get().a($$1.a(bso.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.a(bso.b));
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public Optional<cp> a() {
-      return this.b;
-   }
-
-   public Optional<cp> b() {
-      return this.c;
-   }
-
-   public Optional<cp> c() {
-      return this.d;
-   }
-
-   public Optional<cp> d() {
-      return this.e;
-   }
-
-   public Optional<cp> e() {
-      return this.f;
-   }
-
-   public Optional<cp> f() {
-      return this.g;
-   }
-
-   public Optional<cp> g() {
-      return this.h;
-   }
-
-   public static class a {
-      private Optional<cp> a = Optional.empty();
-      private Optional<cp> b = Optional.empty();
-      private Optional<cp> c = Optional.empty();
-      private Optional<cp> d = Optional.empty();
-      private Optional<cp> e = Optional.empty();
-      private Optional<cp> f = Optional.empty();
-      private Optional<cp> g = Optional.empty();
-
-      public static br.a a() {
-         return new br.a();
+            .orElseGet(() -> DataResult.success($$0));
       }
 
-      public br.a a(cp.a $$0) {
-         this.a = Optional.of($$0.b());
-         return this;
+      public static ao<br.a> a(dfw $$0) {
+         return an.e.a(new br.a(Optional.empty(), Optional.of($$0.s()), Optional.empty()));
       }
 
-      public br.a b(cp.a $$0) {
-         this.b = Optional.of($$0.b());
-         return this;
+      public boolean a(dta $$0) {
+         return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 
-      public br.a c(cp.a $$0) {
-         this.c = Optional.of($$0.b());
-         return this;
+      @Override
+      public Optional<bg> a() {
+         return this.b;
       }
 
-      public br.a d(cp.a $$0) {
-         this.d = Optional.of($$0.b());
-         return this;
+      public Optional<jm<dfw>> b() {
+         return this.c;
       }
 
-      public br.a e(cp.a $$0) {
-         this.e = Optional.of($$0.b());
-         return this;
-      }
-
-      public br.a f(cp.a $$0) {
-         this.f = Optional.of($$0.b());
-         return this;
-      }
-
-      public br.a g(cp.a $$0) {
-         this.g = Optional.of($$0.b());
-         return this;
-      }
-
-      public br b() {
-         return new br(this.a, this.b, this.c, this.d, this.e, this.f, this.g);
+      public Optional<eb> c() {
+         return this.d;
       }
    }
 }

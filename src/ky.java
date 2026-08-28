@@ -1,25 +1,16 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public abstract class ky extends kw {
+   private boolean c = true;
 
-public class ky extends kv {
-   private static final Logger c = LogUtils.getLogger();
+   public boolean b() {
+      return this.c;
+   }
+
+   public void a(boolean $$0) {
+      this.c = $$0;
+   }
 
    @Override
-   protected cud a(kr $$0, cud $$1) {
-      this.a(false);
-      cty $$2 = $$1.g();
-      if ($$2 instanceof csc) {
-         jf $$3 = $$0.d().c(dhn.b);
-         ja $$4 = $$0.c().a($$3);
-         jf $$5 = $$0.b().u($$4.d()) ? $$3 : jf.b;
-
-         try {
-            this.a(((csc)$$2).a((cxn)(new cxo($$0.b(), $$4, $$3, $$1, $$5))).a());
-         } catch (Exception var8) {
-            c.error("Error trying to place shulker box at {}", $$4, var8);
-         }
-      }
-
-      return $$1;
+   protected void a(ku $$0) {
+      $$0.b().c(this.b() ? 1000 : 1001, $$0.c(), 0);
    }
 }

@@ -1,76 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.serialization.Dynamic;
 
-public record dcy(tx d, Optional<dcy.a> e, Optional<bsq> f) {
-   public static final String a = "entity";
-   public static final Codec<dcy> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               tx.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
-               dcy.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
-               bsq.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dcy::new)
-   );
-   public static final Codec<bor<dcy>> c = bor.a(b);
+public final class dcy {
+   private final String a;
+   private final dcr b;
+   private final boolean c;
+   private final bqn d;
+   private final boolean e;
+   private final dcq f;
+   private final ddp g;
 
-   public dcy() {
-      this(new tx(), Optional.empty(), Optional.empty());
+   public dcy(String $$0, dcr $$1, boolean $$2, bqn $$3, boolean $$4, dcq $$5, ddp $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   public dcy(tx d, Optional<dcy.a> e, Optional<bsq> f) {
-      if (d.e("id")) {
-         akk $$3 = akk.a(d.l("id"));
-         if ($$3 != null) {
-            d.a("id", $$3.toString());
-         } else {
-            d.r("id");
-         }
-      }
-
-      this.d = d;
-      this.e = e;
-      this.f = f;
+   public static dcy a(Dynamic<?> $$0, ddp $$1) {
+      dcr $$2 = dcr.a($$0.get("GameType").asInt(0));
+      return new dcy(
+         $$0.get("LevelName").asString(""),
+         $$2,
+         $$0.get("hardcore").asBoolean(false),
+         $$0.get("Difficulty").asNumber().map($$0x -> bqn.a($$0x.byteValue())).result().orElse(bqn.c),
+         $$0.get("allowCommands").asBoolean($$2 == dcr.b),
+         new dcq($$0.get("GameRules")),
+         $$1
+      );
    }
 
-   public tx a() {
+   public String a() {
+      return this.a;
+   }
+
+   public dcr b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public bqn d() {
       return this.d;
    }
 
-   public Optional<dcy.a> b() {
+   public boolean e() {
       return this.e;
    }
 
-   public Optional<bsq> c() {
+   public dcq f() {
       return this.f;
    }
 
-   public static record a(axy<Integer> b, axy<Integer> c) {
-      private static final axy<Integer> d = new axy<>(0, 15);
-      public static final Codec<dcy.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dcy.a::new)
-      );
+   public ddp g() {
+      return this.g;
+   }
 
-      private static DataResult<axy<Integer>> a(axy<Integer> $$0) {
-         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
-      }
+   public dcy a(dcr $$0) {
+      return new dcy(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   }
 
-      private static MapCodec<axy<Integer>> a(String $$0) {
-         return axy.a.lenientOptionalFieldOf($$0, d).validate(dcy.a::a);
-      }
+   public dcy a(bqn $$0) {
+      return new dcy(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   }
 
-      public boolean a(ja $$0, aqm $$1) {
-         return this.b.a($$1.a(dcp.b, $$0)) && this.c.a($$1.a(dcp.a, $$0));
-      }
+   public dcy a(ddp $$0) {
+      return new dcy(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   }
 
-      public axy<Integer> a() {
-         return this.b;
-      }
-
-      public axy<Integer> b() {
-         return this.c;
-      }
+   public dcy h() {
+      return new dcy(this.a, this.b, this.c, this.d, this.e, this.f.b(), this.g);
    }
 }

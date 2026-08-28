@@ -1,7 +1,5 @@
-import java.util.function.BiConsumer;
+public interface dut {
+   dta a(int var1);
 
-public interface dut extends dbm {
-   void a(BiConsumer<ja, dsl> var1);
-
-   ent B();
+   void a(int var1, dta var2);
 }

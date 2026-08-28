@@ -1,13 +1,21 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public class ewt extends ewu {
+   private final bsq b;
 
-interface ewt {
-   DoubleList a();
+   public ewt(bsq $$0) {
+      this($$0, $$0.do());
+   }
 
-   boolean a(ewt.a var1);
+   public ewt(bsq $$0, eww $$1) {
+      super($$1);
+      this.b = $$0;
+   }
 
-   int size();
+   public bsq a() {
+      return this.b;
+   }
 
-   public interface a {
-      boolean merge(int var1, int var2, int var3);
+   @Override
+   public ewu.a c() {
+      return ewu.a.c;
    }
 }

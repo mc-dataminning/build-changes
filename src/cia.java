@@ -1,100 +1,57 @@
 import javax.annotation.Nullable;
 
-public class cia extends chr {
-   private static final int b = 200;
-   private static final int c = 4;
-   private static final int d = 10;
-   private int e;
-   private int f;
-   @Nullable
-   private bsd g;
+public abstract class cia implements cii {
+   protected final chy a;
 
-   public cia(cho $$0) {
-      super($$0);
+   public cia(chy $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return false;
    }
 
    @Override
    public void b() {
-      this.e++;
-      if (this.e % 2 == 0 && this.e < 10) {
-         ewh $$0 = this.a.G(1.0F).d();
-         $$0.b((float) (-Math.PI / 4));
-         double $$1 = this.a.e.dw();
-         double $$2 = this.a.e.e(0.5);
-         double $$3 = this.a.e.dC();
-
-         for (int $$4 = 0; $$4 < 8; $$4++) {
-            double $$5 = $$1 + this.a.dU().k() / 2.0;
-            double $$6 = $$2 + this.a.dU().k() / 2.0;
-            double $$7 = $$3 + this.a.dU().k() / 2.0;
-
-            for (int $$8 = 0; $$8 < 6; $$8++) {
-               this.a.dR().a(lj.h, $$5, $$6, $$7, -$$0.c * 0.08F * (double)$$8, -$$0.d * 0.6F, -$$0.e * 0.08F * (double)$$8);
-            }
-
-            $$0.b((float) (Math.PI / 16));
-         }
-      }
    }
 
    @Override
    public void c() {
-      this.e++;
-      if (this.e >= 200) {
-         if (this.f >= 4) {
-            this.a.gk().a(cie.e);
-         } else {
-            this.a.gk().a(cie.g);
-         }
-      } else if (this.e == 10) {
-         ewh $$0 = new ewh(this.a.e.dw() - this.a.dw(), 0.0, this.a.e.dC() - this.a.dC()).d();
-         float $$1 = 5.0F;
-         double $$2 = this.a.e.dw() + $$0.c * 5.0 / 2.0;
-         double $$3 = this.a.e.dC() + $$0.e * 5.0 / 2.0;
-         double $$4 = this.a.e.e(0.5);
-         double $$5 = $$4;
-         ja.a $$6 = new ja.a($$2, $$4, $$3);
+   }
 
-         while (this.a.dR().u($$6)) {
-            if (--$$5 < 0.0) {
-               $$5 = $$4;
-               break;
-            }
-
-            $$6.b($$2, $$5, $$3);
-         }
-
-         $$5 = (double)(ayg.a($$5) + 1);
-         this.g = new bsd(this.a.dR(), $$2, $$5, $$3);
-         this.g.a(this.a);
-         this.g.a(5.0F);
-         this.g.a(200);
-         this.g.a(lj.h);
-         this.g.a(new brp(brr.g));
-         this.a.dR().b(this.g);
-      }
+   @Override
+   public void a(chx $$0, jd $$1, brj $$2, @Nullable cmv $$3) {
    }
 
    @Override
    public void d() {
-      this.e = 0;
-      this.f++;
    }
 
    @Override
    public void e() {
-      if (this.g != null) {
-         this.g.aq();
-         this.g = null;
-      }
    }
 
    @Override
-   public cie<cia> i() {
-      return cie.f;
+   public float f() {
+      return 0.6F;
    }
 
-   public void j() {
-      this.f = 0;
+   @Nullable
+   @Override
+   public eww g() {
+      return null;
+   }
+
+   @Override
+   public float a(brj $$0, float $$1) {
+      return $$1;
+   }
+
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.dt().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

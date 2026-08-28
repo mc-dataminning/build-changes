@@ -1,92 +1,67 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Optional;
-import java.util.Set;
 
-public class cw extends ds<cw.a> {
+public class cw extends dv<cw.a> {
    @Override
    public Codec<cw.a> a() {
       return cw.a.a;
    }
 
-   public void a(aqn $$0, Collection<bsh> $$1) {
-      List<eqw> $$2 = Lists.newArrayList();
-      Set<bsn<?>> $$3 = Sets.newHashSet();
-
-      for (bsh $$4 : $$1) {
-         $$3.add($$4.am());
-         $$2.add(bu.b($$0, $$4));
-      }
-
-      this.a($$0, $$2x -> $$2x.a($$2, $$3.size()));
+   public void a(aqu $$0, jd $$1, cuo $$2) {
+      aqt $$3 = $$0.A();
+      dta $$4 = $$3.a_($$1);
+      ero $$5 = new ero.a($$3).a(euh.f, $$1.b()).a(euh.a, $$0).a(euh.g, $$4).a(euh.i, $$2).a(eug.o);
+      erl $$6 = new erl.a($$5).a(Optional.empty());
+      this.a($$0, $$1x -> $$1x.a($$6));
    }
 
-   public static record a(Optional<bf> b, List<bf> c, de.d d) implements ds.a {
+   public static record a(Optional<bg> b, Optional<bg> c) implements dv.a {
       public static final Codec<cw.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bu.b.optionalFieldOf("player").forGetter(cw.a::a),
-                  bu.b.listOf().optionalFieldOf("victims", List.of()).forGetter(cw.a::b),
-                  de.d.d.optionalFieldOf("unique_entity_types", de.d.c).forGetter(cw.a::c)
-               )
-               .apply($$0, cw.a::new)
+         $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(cw.a::a), bg.a.optionalFieldOf("location").forGetter(cw.a::b)).apply($$0, cw.a::new)
       );
 
-      public static an<cw.a> a(bu.a... $$0) {
-         return am.H.a(new cw.a(Optional.empty(), bu.a($$0), de.d.c));
+      public static ao<cw.a> a(dfw $$0) {
+         bg $$1 = bg.a(euv.a($$0).build());
+         return an.z.a(new cw.a(Optional.empty(), Optional.of($$1)));
       }
 
-      public static an<cw.a> a(de.d $$0) {
-         return am.H.a(new cw.a(Optional.empty(), List.of(), $$0));
+      public static ao<cw.a> a(euw.a... $$0) {
+         bg $$1 = bg.a(Arrays.stream($$0).map(euw.a::build).toArray(euw[]::new));
+         return an.z.a(new cw.a(Optional.empty(), Optional.of($$1)));
       }
 
-      public boolean a(Collection<eqw> $$0, int $$1) {
-         if (!this.c.isEmpty()) {
-            List<eqw> $$2 = Lists.newArrayList($$0);
+      private static cw.a c(df.a $$0, cs.a $$1) {
+         bg $$2 = bg.a(euu.a($$0).build(), evd.a($$1).build());
+         return new cw.a(Optional.empty(), Optional.of($$2));
+      }
 
-            for (bf $$3 : this.c) {
-               boolean $$4 = false;
-               Iterator<eqw> $$5 = $$2.iterator();
+      public static ao<cw.a> a(df.a $$0, cs.a $$1) {
+         return an.N.a(c($$0, $$1));
+      }
 
-               while ($$5.hasNext()) {
-                  eqw $$6 = $$5.next();
-                  if ($$3.a($$6)) {
-                     $$5.remove();
-                     $$4 = true;
-                     break;
-                  }
-               }
+      public static ao<cw.a> b(df.a $$0, cs.a $$1) {
+         return an.aa.a(c($$0, $$1));
+      }
 
-               if (!$$4) {
-                  return false;
-               }
-            }
-         }
-
-         return this.d.d($$1);
+      public boolean a(erl $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
-      public void a(bg $$0) {
-         ds.a.super.a($$0);
-         $$0.a(this.c, ".victims");
+      public void a(bh $$0) {
+         dv.a.super.a($$0);
+         this.c.ifPresent($$1 -> $$0.a($$1, eug.o, ".location"));
       }
 
       @Override
-      public Optional<bf> a() {
+      public Optional<bg> a() {
          return this.b;
       }
 
-      public List<bf> b() {
+      public Optional<bg> b() {
          return this.c;
-      }
-
-      public de.d c() {
-         return this.d;
       }
    }
 }

@@ -1,74 +1,102 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 
-public class fmv implements AutoCloseable {
-   private static final akk a = new akk("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final gpr d;
-   private final akk e;
-   @Nullable
-   private gpd f;
-   private boolean g;
+public class fmv extends fnx {
+   private static final int q = 20;
+   private final wy r;
+   private fiz s = fiz.a;
+   protected wy a;
+   protected wy b;
+   private int u;
+   protected final BooleanConsumer c;
+   private final List<fig> v = Lists.newArrayList();
 
-   private fmv(gpr $$0, akk $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public fmv(BooleanConsumer $$0, wy $$1, wy $$2) {
+      this($$0, $$1, $$2, wx.f, wx.g);
    }
 
-   public static fmv a(gpr $$0, String $$1) {
-      return new fmv($$0, new akk("minecraft", "worlds/" + ac.a($$1, akk::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public static fmv b(gpr $$0, String $$1) {
-      return new fmv($$0, new akk("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public void a(ezp $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new gpd($$0);
-            } else {
-               this.f.a($$0);
-               this.f.d();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
-   }
-
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
-      }
-   }
-
-   public akk b() {
-      return this.f != null ? this.e : a;
+   public fmv(BooleanConsumer $$0, wy $$1, wy $$2, wy $$3, wy $$4) {
+      super($$1);
+      this.c = $$0;
+      this.r = $$2;
+      this.a = $$3;
+      this.b = $$4;
    }
 
    @Override
-   public void close() {
-      this.a();
-      this.g = true;
+   public wy i() {
+      return wx.a(super.i(), this.r);
    }
 
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
+   @Override
+   protected void aP_() {
+      super.aP_();
+      this.s = fiz.a(this.o, this.r, this.m - 50);
+      int $$0 = ayn.a(this.D() + this.E() + 20, this.n / 6 + 96, this.n - 24);
+      this.v.clear();
+      this.a($$0);
+   }
+
+   protected void a(int $$0) {
+      this.a(fig.a(this.a, $$0x -> this.c.accept(true)).a(this.m / 2 - 155, $$0, 150, 20).a());
+      this.a(fig.a(this.b, $$0x -> this.c.accept(false)).a(this.m / 2 - 155 + 160, $$0, 150, 20).a());
+   }
+
+   protected void a(fig $$0) {
+      this.v.add(this.c($$0));
+   }
+
+   @Override
+   public void a(fht $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, this.m(), 16777215);
+      this.s.a($$0, this.m / 2, this.D());
+   }
+
+   private int m() {
+      int $$0 = (this.n - this.E()) / 2;
+      return ayn.a($$0 - 20 - 9, 10, 80);
+   }
+
+   private int D() {
+      return this.m() + 20;
+   }
+
+   private int E() {
+      return this.s.a() * 9;
+   }
+
+   public void b(int $$0) {
+      this.u = $$0;
+
+      for (fig $$1 : this.v) {
+         $$1.j = false;
+      }
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      if (--this.u == 0) {
+         for (fig $$0 : this.v) {
+            $$0.j = true;
+         }
+      }
+   }
+
+   @Override
+   public boolean aF_() {
+      return false;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.accept(false);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 }

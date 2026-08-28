@@ -1,113 +1,85 @@
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-public class gds implements atx {
-   private static final dra[] a = Arrays.stream(csw.values())
-      .sorted(Comparator.comparingInt(csw::a))
-      .map($$0 -> new dra($$0, ja.c, dfk.kP.o()))
-      .toArray(dra[]::new);
-   private static final dra b = new dra(ja.c, dfk.kP.o());
-   private final dpx c = new dpx(ja.c, dfk.cv.o());
-   private final dpx d = new drk(ja.c, dfk.gV.o());
-   private final dqm e = new dqm(ja.c, dfk.fG.o());
-   private final dpf f = new dpf(ja.c, dfk.iJ.o());
-   private final dpm g = new dpm(ja.c, dfk.bn.o());
-   private final dqc h = new dqc(ja.c, dfk.mX.o());
-   private final dqg i = new dqg(ja.c, dfk.tp.o());
-   private fwh j;
-   private fwv k;
-   private Map<dmk.a, fwn> l;
-   private final gge m;
-   private final fxm n;
+public abstract class gds extends cmv {
+   @Nullable
+   private fzk g;
+   protected eww b;
+   public float c;
+   public float d;
+   public float e;
+   public final fyz f;
 
-   public gds(gge $$0, fxm $$1) {
-      this.m = $$0;
-      this.n = $$1;
+   public gds(fyz $$0, GameProfile $$1) {
+      super($$0, $$0.V(), $$0.W(), $$1);
+      this.b = eww.b;
+      this.f = $$0;
    }
 
    @Override
-   public void a(atw $$0) {
-      this.j = new fwh(this.n.a(fxp.bj));
-      this.k = new fwv(this.n.a(fxp.bI));
-      this.l = ggu.a(this.n);
+   public boolean N_() {
+      fzk $$0 = this.a();
+      return $$0 != null && $$0.e() == dcr.d;
    }
 
-   public void a(cud $$0, cua $$1, fao $$2, gef $$3, int $$4, int $$5) {
-      cty $$6 = $$0.g();
-      if ($$6 instanceof csc) {
-         dfi $$7 = ((csc)$$6).d();
-         if ($$7 instanceof dee $$8) {
-            cxe $$9 = $$0.a(kn.V);
-            if ($$9 != null && !$$9.b()) {
-               $$0.c(kn.V);
-               $$9.a().thenAcceptAsync($$1x -> $$0.b(kn.V, $$1x), ffw.Q());
-               $$9 = null;
-            }
+   @Override
+   public boolean f() {
+      fzk $$0 = this.a();
+      return $$0 != null && $$0.e() == dcr.b;
+   }
 
-            fwn $$10 = this.l.get($$8.b());
-            gen $$11 = ggu.a($$8.b(), $$9);
-            ggu.a(null, 180.0F, 0.0F, $$2, $$3, $$4, $$10, $$11);
-         } else {
-            dsl $$12 = $$7.o();
-            dpq $$13;
-            if ($$7 instanceof ddz) {
-               this.f.a($$0, ((ddz)$$7).b());
-               $$13 = this.f;
-            } else if ($$7 instanceof dfb) {
-               this.g.a(((dfb)$$7).b());
-               $$13 = this.g;
-            } else if ($$12.a(dfk.mX)) {
-               $$13 = this.h;
-            } else if ($$12.a(dfk.cv)) {
-               $$13 = this.c;
-            } else if ($$12.a(dfk.fG)) {
-               $$13 = this.e;
-            } else if ($$12.a(dfk.gV)) {
-               $$13 = this.d;
-            } else if ($$12.a(dfk.tp)) {
-               this.i.c($$0);
-               $$13 = this.i;
+   @Nullable
+   protected fzk a() {
+      if (this.g == null) {
+         this.g = fgi.Q().L().a(this.cA());
+      }
+
+      return this.g;
+   }
+
+   @Override
+   public void l() {
+      this.b = this.dt();
+      super.l();
+   }
+
+   public eww F(float $$0) {
+      return this.b.a(this.dt(), (double)$$0);
+   }
+
+   public grf b() {
+      fzk $$0 = this.a();
+      return $$0 == null ? gqx.a(this.cA()) : $$0.g();
+   }
+
+   public float c() {
+      float $$0 = 1.0F;
+      if (this.ga().b) {
+         $$0 *= 1.1F;
+      }
+
+      $$0 *= ((float)this.g(buu.v) / this.ga().b() + 1.0F) / 2.0F;
+      if (this.ga().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
+         $$0 = 1.0F;
+      }
+
+      cuo $$1 = this.fu();
+      if (this.fs()) {
+         if ($$1.a(cur.ov)) {
+            int $$2 = this.fw();
+            float $$3 = (float)$$2 / 20.0F;
+            if ($$3 > 1.0F) {
+               $$3 = 1.0F;
             } else {
-               if (!($$7 instanceof dmh)) {
-                  return;
-               }
-
-               csw $$20 = dmh.b($$6);
-               if ($$20 == null) {
-                  $$13 = b;
-               } else {
-                  $$13 = a[$$20.a()];
-               }
+               $$3 *= $$3;
             }
 
-            this.m.a($$13, $$2, $$3, $$4, $$5);
-         }
-      } else {
-         if ($$0.a(cug.vs)) {
-            dph $$24 = $$0.a(kn.X, dph.a);
-            csw $$25 = $$0.a(kn.Y);
-            boolean $$26 = !$$24.b().isEmpty() || $$25 != null;
-            $$2.a();
-            $$2.b(1.0F, -1.0F, -1.0F);
-            gru $$27 = $$26 ? grw.g : grw.h;
-            fas $$28 = $$27.c().a(gkm.c($$3, this.j.a($$27.a()), true, $$0.x()));
-            this.j.c().a($$2, $$28, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-            if ($$26) {
-               gga.a($$2, $$3, $$4, $$5, this.j.b(), $$27, false, Objects.requireNonNullElse($$25, csw.a), $$24, $$0.x());
-            } else {
-               this.j.b().a($$2, $$28, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-            }
-
-            $$2.b();
-         } else if ($$0.a(cug.vS)) {
-            $$2.a();
-            $$2.b(1.0F, -1.0F, -1.0F);
-            fas $$29 = gkm.c($$3, this.k.a(fwv.a), false, $$0.x());
-            this.k.a($$2, $$29, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-            $$2.b();
+            $$0 *= 1.0F - $$3 * 0.15F;
+         } else if (fgi.Q().m.aA().a() && this.gx()) {
+            return 0.1F;
          }
       }
+
+      return ayn.i(fgi.Q().m.ak().c().floatValue(), 1.0F, $$0);
    }
 }

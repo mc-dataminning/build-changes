@@ -1,28 +1,60 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record eum(evd b) implements euh {
-   public static final MapCodec<eum> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(eve.a.fieldOf("chance").forGetter(eum::c)).apply($$0, eum::new));
+public abstract class eum implements euw {
+   protected final List<euw> c;
+   private final Predicate<erl> a;
+
+   protected eum(List<euw> $$0, Predicate<erl> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends eum> MapCodec<T> a(Function<List<euw>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(euw.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends eum> Codec<T> b(Function<List<euw>, T> $$0) {
+      return euw.e.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(erl $$0) {
+      return this.a.test($$0);
+   }
 
    @Override
-   public eui b() {
-      return euj.d;
+   public void a(err $$0) {
+      euw.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+      }
    }
 
-   public boolean a(eqw $$0) {
-      float $$1 = this.b.b($$0);
-      return $$0.b().i() < $$1;
-   }
+   public abstract static class a implements euw.a {
+      private final Builder<euw> a = ImmutableList.builder();
 
-   public static euh.a a(float $$0) {
-      return () -> new eum(eva.a($$0));
-   }
+      protected a(euw.a... $$0) {
+         for (euw.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
+      }
 
-   public static euh.a a(evd $$0) {
-      return () -> new eum($$0);
-   }
+      public void a(euw.a $$0) {
+         this.a.add($$0.build());
+      }
 
-   public evd c() {
-      return this.b;
+      @Override
+      public euw build() {
+         return this.a(this.a.build());
+      }
+
+      protected abstract euw a(List<euw> var1);
    }
 }

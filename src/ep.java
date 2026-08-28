@@ -1,34 +1,18 @@
-public interface ep {
-   ep a = new ep() {
-      @Override
-      public void a(wu $$0) {
-      }
+import java.util.Optional;
+import java.util.stream.Stream;
 
-      @Override
-      public boolean k_() {
-         return false;
-      }
+public interface ep extends jo.a {
+   static ep a(final jo.a $$0, final cpj $$1) {
+      return new ep() {
+         @Override
+         public Stream<akp<? extends jz<?>>> a() {
+            return $$0.a();
+         }
 
-      @Override
-      public boolean w_() {
-         return false;
-      }
-
-      @Override
-      public boolean U_() {
-         return false;
-      }
-   };
-
-   void a(wu var1);
-
-   boolean k_();
-
-   boolean w_();
-
-   boolean U_();
-
-   default boolean l_() {
-      return false;
+         @Override
+         public <T> Optional<jo.b<T>> a(akp<? extends jz<? extends T>> $$0x) {
+            return $$0.a($$0).map($$1xx -> $$1xx.a($$1));
+         }
+      };
    }
 }

@@ -1,42 +1,48 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dmj extends dfp, djz {
+public class dmj extends dfw {
+   public static final MapCodec<dmj> h = b(dmj::new);
+   public static final dty<ji.a> i = dtq.I;
+
    @Override
-   default boolean a(@Nullable cml $$0, dbm $$1, ja $$2, dsl $$3, eoi $$4) {
-      return $$4 == eok.c;
+   public MapCodec<? extends dmj> a() {
+      return h;
+   }
+
+   public dmj(dsz.d $$0) {
+      super($$0);
+      this.k(this.o().a(i, ji.a.b));
    }
 
    @Override
-   default boolean a(dch $$0, ja $$1, dsl $$2, eoj $$3) {
-      if (!$$2.c(dtb.C) && $$3.a() == eok.c) {
-         if (!$$0.x_()) {
-            $$0.a($$1, $$2.a(dtb.C, Boolean.valueOf(true)), 3);
-            $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         }
+   protected dta a(dta $$0, dmk $$1) {
+      return b($$0, $$1);
+   }
 
-         return true;
-      } else {
-         return false;
+   public static dta b(dta $$0, dmk $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((ji.a)$$0.c(i)) {
+               case a:
+                  return $$0.a(i, ji.a.c);
+               case c:
+                  return $$0.a(i, ji.a.a);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
       }
    }
 
    @Override
-   default cud a(@Nullable cml $$0, dch $$1, ja $$2, dsl $$3) {
-      if ($$3.c(dtb.C)) {
-         $$1.a($$2, $$3.a(dtb.C, Boolean.valueOf(false)), 3);
-         if (!$$3.a($$1, $$2)) {
-            $$1.b($$2, true);
-         }
-
-         return new cud(cug.qz);
-      } else {
-         return cud.l;
-      }
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(i);
    }
 
    @Override
-   default Optional<avg> as_() {
-      return eok.c.j();
+   public dta a(cyb $$0) {
+      return this.o().a(i, $$0.k().o());
    }
 }

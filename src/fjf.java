@@ -1,47 +1,39 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public class fjf implements flr {
-   private static final int a = 170;
-   private final wu b;
-   @Nullable
-   private List<axs> c;
-   @Nullable
-   private ts d;
-   @Nullable
-   private final wu e;
+public class fjf {
+   public static final int a = 8;
+   public static final int b = 8;
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 40;
+   public static final int f = 8;
+   public static final int g = 8;
+   public static final int h = 8;
+   public static final int i = 64;
+   public static final int j = 64;
 
-   private fjf(wu $$0, @Nullable wu $$1) {
-      this.b = $$0;
-      this.e = $$1;
+   public static void a(fht $$0, grf $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1.a(), $$2, $$3, $$4);
    }
 
-   public static fjf a(wu $$0, @Nullable wu $$1) {
-      return new fjf($$0, $$1);
+   public static void a(fht $$0, akq $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, true, false);
    }
 
-   public static fjf a(wu $$0) {
-      return new fjf($$0, $$0);
-   }
-
-   @Override
-   public void b(flq $$0) {
-      if (this.e != null) {
-         $$0.a(flp.c, this.e);
+   public static void a(fht $$0, akq $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6) {
+      int $$7 = 8 + ($$6 ? 8 : 0);
+      int $$8 = 8 * ($$6 ? -1 : 1);
+      $$0.a($$1, $$2, $$3, $$4, $$4, 8.0F, (float)$$7, 8, $$8, 64, 64);
+      if ($$5) {
+         a($$0, $$1, $$2, $$3, $$4, $$6);
       }
    }
 
-   public List<axs> a(ffw $$0) {
-      ts $$1 = ts.a();
-      if (this.c == null || $$1 != this.d) {
-         this.c = a($$0, this.b);
-         this.d = $$1;
-      }
-
-      return this.c;
-   }
-
-   public static List<axs> a(ffw $$0, wu $$1) {
-      return $$0.h.c($$1, 170);
+   private static void a(fht $$0, akq $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6 = 8 + ($$5 ? 8 : 0);
+      int $$7 = 8 * ($$5 ? -1 : 1);
+      RenderSystem.enableBlend();
+      $$0.a($$1, $$2, $$3, $$4, $$4, 40.0F, (float)$$6, 8, $$7, 64, 64);
+      RenderSystem.disableBlend();
    }
 }

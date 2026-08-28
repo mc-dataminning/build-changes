@@ -1,38 +1,59 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ffm {
-   private final fym a;
-   private int b = -1;
-   @Nullable
-   private Consumer<tx> c;
+public abstract class ffm extends ffh {
+   private static final Logger b = LogUtils.getLogger();
+   private final long c;
+   private final wy d;
+   private final Runnable e;
 
-   public ffm(fym $$0) {
-      this.a = $$0;
+   public ffm(long $$0, wy $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public boolean a(int $$0, @Nullable tx $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
+   protected abstract void a(fbs var1, long var2) throws fdd;
+
+   @Override
+   public void run() {
+      fbs $$0 = fbs.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
+            }
+
+            this.e.run();
+            return;
+         } catch (fde var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't reset world");
+            this.a(var5);
+            return;
+         }
       }
    }
 
-   private int a(Consumer<tx> $$0) {
-      this.c = $$0;
-      return ++this.b;
-   }
-
-   public void a(int $$0, Consumer<tx> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new agv($$2, $$0));
-   }
-
-   public void a(ja $$0, Consumer<tx> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new age($$2, $$0));
+   @Override
+   public wy a() {
+      return this.d;
    }
 }

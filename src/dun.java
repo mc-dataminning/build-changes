@@ -1,69 +1,57 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class dun extends dur {
-   private final jj<ddg> n;
+public record dun(String m, dtp n, dnk o, dnk p, avn q, avn r) {
+   private static final Map<String, dun> s = new Object2ObjectArrayMap();
+   public static final Codec<dun> a = Codec.stringResolver(dun::b, s::get);
+   public static final dun b = a(new dun("oak", dtp.g));
+   public static final dun c = a(new dun("spruce", dtp.h));
+   public static final dun d = a(new dun("birch", dtp.i));
+   public static final dun e = a(new dun("acacia", dtp.j));
+   public static final dun f = a(new dun("cherry", dtp.k, dnk.aU, dnk.aX, avo.eM, avo.eN));
+   public static final dun g = a(new dun("jungle", dtp.l));
+   public static final dun h = a(new dun("dark_oak", dtp.m));
+   public static final dun i = a(new dun("crimson", dtp.n, dnk.aT, dnk.aQ, avo.qW, avo.qX));
+   public static final dun j = a(new dun("warped", dtp.o, dnk.aT, dnk.aQ, avo.qW, avo.qX));
+   public static final dun k = a(new dun("mangrove", dtp.p));
+   public static final dun l = a(new dun("bamboo", dtp.q, dnk.aS, dnk.aR, avo.bw, avo.bx));
 
-   public dun(dcg $$0, dbn $$1, jj<ddg> $$2) {
-      super($$0, $$1);
-      this.n = $$2;
+   public dun(String $$0, dtp $$1) {
+      this($$0, $$1, dnk.b, dnk.aP, avo.iI, avo.iJ);
    }
 
-   @Override
-   public dsl a_(ja $$0) {
-      return dfk.nb.o();
+   private static dun a(dun $$0) {
+      s.put($$0.b(), $$0);
+      return $$0;
    }
 
-   @Nullable
-   @Override
-   public dsl a(ja $$0, dsl $$1, boolean $$2) {
-      return null;
+   public static Stream<dun> a() {
+      return s.values().stream();
    }
 
-   @Override
-   public eoj b_(ja $$0) {
-      return eok.a.g();
+   public String b() {
+      return this.m;
    }
 
-   @Override
-   public int i(ja $$0) {
-      return 0;
-   }
-
-   @Nullable
-   @Override
-   public dpq a(ja $$0, dur.b $$1) {
-      return null;
-   }
-
-   @Override
-   public void b(dpq $$0) {
-   }
-
-   @Override
-   public void a(dpq $$0) {
-   }
-
-   @Override
-   public void d(ja $$0) {
-   }
-
-   @Override
-   public boolean C() {
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public aqd D() {
-      return aqd.b;
-   }
-
-   @Override
-   public jj<ddg> getNoiseBiome(int $$0, int $$1, int $$2) {
+   public dtp c() {
       return this.n;
+   }
+
+   public dnk d() {
+      return this.o;
+   }
+
+   public dnk e() {
+      return this.p;
+   }
+
+   public avn f() {
+      return this.q;
+   }
+
+   public avn g() {
+      return this.r;
    }
 }

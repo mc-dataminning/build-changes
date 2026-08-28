@@ -1,54 +1,44 @@
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class gtn extends gtc {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cmv p;
+   private final cor q;
+   private final boolean r;
 
-public interface gtn<T> {
-   static <T> gtn<T> a() {
-      return new gtn<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
-         }
-
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
+   public gtn(cmv $$0, cor $$1, boolean $$2) {
+      super($$2 ? avo.oL : avo.oM, avp.g, gtt.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = gtt.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
-   static <T> gtn<T> a(List<T> $$0, Function<T, Stream<akk>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
+   @Override
+   public boolean s() {
+      return !this.q.aX();
+   }
+
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.q.dL() || !this.p.bS() || this.p.dd() != this.q) {
+         this.n();
+      } else if (this.r != this.p.bk()) {
+         this.d = 0.0F;
       } else {
-         final gtp<T> $$2 = new gtp<>();
-         final gtp<T> $$3 = new gtp<>();
-
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
+         float $$0 = (float)this.q.dt().h();
+         if ($$0 >= 0.01F) {
+            this.d = ayn.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
          }
-
-         $$2.a();
-         $$3.a();
-         return new gtn<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
       }
    }
-
-   List<T> a(String var1);
-
-   List<T> b(String var1);
 }

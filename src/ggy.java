@@ -1,46 +1,30 @@
-import org.joml.Matrix4f;
+public class ggy implements ggt<dql> {
+   private static final float a = 0.375F;
+   private final glb b;
 
-public class ggy<T extends dri> implements ggf<T> {
-   public static final akk a = new akk("textures/environment/end_sky.png");
-   public static final akk b = new akk("textures/entity/end_portal.png");
-
-   public ggy(ggg.a $$0) {
+   public ggy(ggu.a $$0) {
+      this.b = $$0.d();
    }
 
-   public void a(T $$0, float $$1, fao $$2, gef $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
-   }
+   public void a(dql $$0, float $$1, fbc $$2, get $$3, int $$4, int $$5) {
+      ji $$6 = $$0.n().c(dgk.f);
+      jv<cuo> $$7 = $$0.b();
+      int $$8 = (int)$$0.az_().a();
 
-   private void a(T $$0, Matrix4f $$1, fas $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jf.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jf.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jf.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jf.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jf.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jf.b);
-   }
-
-   private void a(T $$0, Matrix4f $$1, fas $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jf $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7).e();
-         $$2.a($$1, $$4, $$5, $$8).e();
-         $$2.a($$1, $$4, $$6, $$9).e();
-         $$2.a($$1, $$3, $$6, $$10).e();
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         cuo $$10 = $$7.get($$9);
+         if ($$10 != cuo.l) {
+            $$2.a();
+            $$2.a(0.5F, 0.44921875F, 0.5F);
+            ji $$11 = ji.b(($$9 + $$6.e()) % 4);
+            float $$12 = -$$11.p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(a.b.rotationDegrees(90.0F));
+            $$2.a(-0.3125F, -0.3125F, 0.0F);
+            $$2.b(0.375F, 0.375F, 0.375F);
+            this.b.a($$10, cul.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
+            $$2.b();
+         }
       }
-   }
-
-   protected float b() {
-      return 0.75F;
-   }
-
-   protected float c() {
-      return 0.375F;
-   }
-
-   protected gen d() {
-      return gen.u();
    }
 }

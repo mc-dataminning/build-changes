@@ -1,37 +1,58 @@
-public class fwx<T extends bsh> extends fui<T> {
-   private final fxq a;
-   private final fxq b;
+import com.google.common.collect.ImmutableList;
 
-   public fwx(fxq $$0) {
-      this.a = $$0;
-      this.b = $$0.b("tail");
+public class fwx<T extends ckh> extends fvw<T> {
+   private static final String a = "lid";
+   private static final String b = "base";
+   private final fye f;
+   private final fye g;
+   private final fye h;
+
+   public fwx(fye $$0) {
+      super(gfb::f);
+      this.g = $$0.b("lid");
+      this.f = $$0.b("base");
+      this.h = $$0.b("head");
    }
 
-   public static fxw a(fxu $$0) {
-      fxy $$1 = new fxy();
-      fxz $$2 = $$1.a();
-      int $$3 = 19;
-      $$2.a("body", fxv.c().a(0, 20).a(-1.0F, -3.0F, -3.0F, 2.0F, 6.0F, 6.0F, $$0), fxs.a(0.0F, 19.0F, 0.0F));
-      $$2.a("tail", fxv.c().a(21, 16).a(0.0F, -3.0F, 0.0F, 0.0F, 6.0F, 5.0F, $$0), fxs.a(0.0F, 19.0F, 3.0F));
-      $$2.a("right_fin", fxv.c().a(2, 16).a(-2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fxs.a(-1.0F, 20.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", fxv.c().a(2, 12).a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fxs.a(1.0F, 20.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", fxv.c().a(20, 11).a(0.0F, -4.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fxs.a(0.0F, 16.0F, -3.0F));
-      $$2.a("bottom_fin", fxv.c().a(20, 21).a(0.0F, 0.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fxs.a(0.0F, 22.0F, -3.0F));
-      return fxw.a($$1, 32, 32);
+   public static fyk a() {
+      fym $$0 = new fym();
+      fyn $$1 = $$0.a();
+      $$1.a("lid", fyj.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fyg.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", fyj.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fyg.a(0.0F, 24.0F, 0.0F));
+      $$1.a("head", fyj.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fyg.a(0.0F, 12.0F, 0.0F));
+      return fyk.a($$0, 64, 64);
    }
 
-   @Override
-   public fxq a() {
-      return this.a;
-   }
-
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      if (!$$0.bg()) {
-         $$6 = 1.5F;
+      float $$6 = $$3 - (float)$$0.ai;
+      float $$7 = (0.5F + $$0.H($$6)) * (float) Math.PI;
+      float $$8 = -1.0F + ayn.a($$7);
+      float $$9 = 0.0F;
+      if ($$7 > (float) Math.PI) {
+         $$9 = ayn.a($$3 * 0.1F) * 0.7F;
       }
 
-      this.b.f = -$$6 * 0.45F * ayg.a(0.6F * $$3);
+      this.g.a(0.0F, 16.0F + ayn.a($$7) * 8.0F + $$9, 0.0F);
+      if ($$0.H($$6) > 0.3F) {
+         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
+      } else {
+         this.g.f = 0.0F;
+      }
+
+      this.h.e = $$5 * (float) (Math.PI / 180.0);
+      this.h.f = ($$0.ba - 180.0F - $$0.aY) * (float) (Math.PI / 180.0);
+   }
+
+   @Override
+   public Iterable<fye> d() {
+      return ImmutableList.of(this.f, this.g);
+   }
+
+   public fye b() {
+      return this.g;
+   }
+
+   public fye c() {
+      return this.h;
    }
 }

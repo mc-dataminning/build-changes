@@ -1,140 +1,74 @@
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.List;
 
-public class eod extends enx<eod.a> {
-   protected eod(duu $$0) {
-      super(dcp.a, $$0, new eod.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
+public class eod {
+   private final eoe[] a;
+   private final double b;
+   private final double c;
+
+   public eod(ayv $$0, List<Integer> $$1) {
+      this($$0, new IntRBTreeSet($$1));
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.e($$0, false);
-   }
+   private eod(ayv $$0, IntSortedSet $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
+      } else {
+         int $$2 = -$$1.firstInt();
+         int $$3 = $$1.lastInt();
+         int $$4 = $$2 + $$3 + 1;
+         if ($$4 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         } else {
+            eoe $$5 = new eoe($$0);
+            int $$6 = $$3;
+            this.a = new eoe[$$4];
+            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
+               this.a[$$3] = $$5;
+            }
 
-   protected int e(long $$0, boolean $$1) {
-      long $$2 = kc.e($$0);
-      int $$3 = kc.c($$2);
-      eod.a $$4 = $$1 ? this.d : this.c;
-      int $$5 = $$4.c.get(kc.f($$2));
-      if ($$5 != $$4.b && $$3 < $$5) {
-         dum $$6 = this.a($$4, $$2);
-         if ($$6 == null) {
-            for ($$0 = ja.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
-               if (++$$3 >= $$5) {
-                  return 15;
+            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
+               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
+                  this.a[$$7] = new eoe($$0);
+               } else {
+                  $$0.b(262);
                }
-
-               $$2 = kc.a($$2, jf.b);
-            }
-         }
-
-         return $$6.a(kc.b(ja.a($$0)), kc.b(ja.b($$0)), kc.b(ja.c($$0)));
-      } else {
-         return $$1 && !this.j($$2) ? 0 : 15;
-      }
-   }
-
-   @Override
-   protected void h(long $$0) {
-      int $$1 = kc.c($$0);
-      if (this.d.b > $$1) {
-         this.d.b = $$1;
-         this.d.c.defaultReturnValue(this.d.b);
-      }
-
-      long $$2 = kc.f($$0);
-      int $$3 = this.d.c.get($$2);
-      if ($$3 < $$1 + 1) {
-         this.d.c.put($$2, $$1 + 1);
-      }
-   }
-
-   @Override
-   protected void i(long $$0) {
-      long $$1 = kc.f($$0);
-      int $$2 = kc.c($$0);
-      if (this.d.c.get($$1) == $$2 + 1) {
-         long $$3;
-         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = kc.a($$3, jf.a)) {
-            $$2--;
-         }
-
-         if (this.b($$3)) {
-            this.d.c.put($$1, $$2 + 1);
-         } else {
-            this.d.c.remove($$1);
-         }
-      }
-   }
-
-   @Override
-   protected dum g(long $$0) {
-      dum $$1 = (dum)this.g.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         int $$2 = this.d.c.get(kc.f($$0));
-         if ($$2 != this.d.b && kc.c($$0) < $$2) {
-            long $$3 = kc.a($$0, jf.b);
-
-            dum $$4;
-            while (($$4 = this.a($$3, true)) == null) {
-               $$3 = kc.a($$3, jf.b);
             }
 
-            return a($$4);
-         } else {
-            return this.j($$0) ? new dum(15) : new dum();
+            if ($$3 > 0) {
+               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
+               ayv $$9 = new dzu(new dyw($$8));
+
+               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
+                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
+                     this.a[$$10] = new eoe($$9);
+                  } else {
+                     $$9.b(262);
+                  }
+               }
+            }
+
+            this.c = Math.pow(2.0, (double)$$3);
+            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
          }
       }
    }
 
-   private static dum a(dum $$0) {
-      if ($$0.c()) {
-         return $$0.b();
-      } else {
-         byte[] $$1 = $$0.a();
-         byte[] $$2 = new byte[2048];
+   public double a(double $$0, double $$1, boolean $$2) {
+      double $$3 = 0.0;
+      double $$4 = this.c;
+      double $$5 = this.b;
 
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+      for (eoe $$6 : this.a) {
+         if ($$6 != null) {
+            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
          }
 
-         return new dum($$2);
-      }
-   }
-
-   protected boolean a(int $$0) {
-      return $$0 >= this.d.b;
-   }
-
-   protected boolean l(long $$0) {
-      long $$1 = kc.f($$0);
-      int $$2 = this.d.c.get($$1);
-      return $$2 == this.d.b || kc.c($$0) >= $$2;
-   }
-
-   protected int m(long $$0) {
-      return this.d.c.get($$0);
-   }
-
-   protected int c() {
-      return this.d.b;
-   }
-
-   protected static final class a extends enu<eod.a> {
-      int b;
-      final Long2IntOpenHashMap c;
-
-      public a(Long2ObjectOpenHashMap<dum> $$0, Long2IntOpenHashMap $$1, int $$2) {
-         super($$0);
-         this.c = $$1;
-         $$1.defaultReturnValue($$2);
-         this.b = $$2;
+         $$4 /= 2.0;
+         $$5 *= 2.0;
       }
 
-      public eod.a a() {
-         return new eod.a(this.a.clone(), this.c.clone(), this.b);
-      }
+      return $$3;
    }
 }

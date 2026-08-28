@@ -1,6 +1,7 @@
-import java.util.Set;
-import java.util.function.Supplier;
+import jdk.jfr.consumer.RecordedEvent;
 
-public interface boe {
-   Set<boc> a(Supplier<bmt> var1);
+public record boe(String a, String b, String c) {
+   public static boe a(RecordedEvent $$0) {
+      return new boe($$0.getString("packetDirection"), $$0.getString("protocolId"), $$0.getString("packetId"));
+   }
 }

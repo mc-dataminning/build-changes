@@ -1,29 +1,41 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class bf {
-   public static final Codec<bf> a = euh.e.listOf().xmap(bf::new, $$0 -> $$0.b);
-   private final List<euh> b;
-   private final Predicate<eqw> c;
-
-   bf(List<euh> $$0) {
-      this.b = $$0;
-      this.c = ac.a($$0);
+public class bf extends dv<bf.a> {
+   @Override
+   public Codec<bf.a> a() {
+      return bf.a.a;
    }
 
-   public static bf a(euh... $$0) {
-      return new bf(List.of($$0));
+   public void a(aqu $$0, cuo $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public boolean a(eqw $$0) {
-      return this.c.test($$0);
-   }
+   public static record a(Optional<bg> b, Optional<cs> c) implements dv.a {
+      public static final Codec<bf.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(bf.a::a), cs.a.optionalFieldOf("item").forGetter(bf.a::c)).apply($$0, bf.a::new)
+      );
 
-   public void a(erc $$0) {
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         euh $$2 = this.b.get($$1);
-         $$2.a($$0.a("[" + $$1 + "]"));
+      public static ao<bf.a> b() {
+         return an.A.a(new bf.a(Optional.empty(), Optional.empty()));
+      }
+
+      public static ao<bf.a> a(dct $$0) {
+         return a(cs.a.a().a($$0.r()));
+      }
+
+      public static ao<bf.a> a(cs.a $$0) {
+         return an.A.a(new bf.a(Optional.empty(), Optional.of($$0.b())));
+      }
+
+      public boolean a(cuo $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
+      }
+
+      @Override
+      public Optional<bg> a() {
+         return this.b;
       }
    }
 }

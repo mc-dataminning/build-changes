@@ -1,21 +1,15 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.Locale;
 
-public class gqd implements gpu {
-   public static final MapCodec<gqd> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayp.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gqd::new));
-   private final ayp c;
+public class gqd extends RuntimeException {
+   private final Collection<gqc.a> a;
 
-   public gqd(ayp $$0) {
-      this.c = $$0;
+   public gqd(gqc.a $$0, Collection<gqc.a> $$1) {
+      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
+      this.a = $$1;
    }
 
-   @Override
-   public void a(atw $$0, gpu.a $$1) {
-      $$1.a(this.c.c());
-   }
-
-   @Override
-   public gpw a() {
-      return gpx.c;
+   public Collection<gqc.a> a() {
+      return this.a;
    }
 }

@@ -1,81 +1,220 @@
-import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrays;
+import java.util.AbstractSet;
 import java.util.Arrays;
-import java.util.Objects;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class azf {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final Semaphore c = new Semaphore(1);
-   private final Lock d = new ReentrantLock();
-   @Nullable
-   private volatile Thread e;
-   @Nullable
-   private volatile y f;
+public class azf<T> extends AbstractSet<T> {
+   private static final int a = 10;
+   private final Comparator<T> b;
+   T[] c;
+   int d;
 
-   public azf(String $$0) {
-      this.b = $$0;
-   }
-
-   public void a() {
-      boolean $$0 = false;
-
-      try {
-         this.d.lock();
-         if (!this.c.tryAcquire()) {
-            this.e = Thread.currentThread();
-            $$0 = true;
-            this.d.unlock();
-
-            try {
-               this.c.acquire();
-            } catch (InterruptedException var6) {
-               Thread.currentThread().interrupt();
-            }
-
-            throw this.f;
-         }
-      } finally {
-         if (!$$0) {
-            this.d.unlock();
-         }
+   private azf(int $$0, Comparator<T> $$1) {
+      this.b = $$1;
+      if ($$0 < 0) {
+         throw new IllegalArgumentException("Initial capacity (" + $$0 + ") is negative");
+      } else {
+         this.c = (T[])a(new Object[$$0]);
       }
    }
 
-   public void b() {
-      try {
-         this.d.lock();
-         Thread $$0 = this.e;
-         if ($$0 != null) {
-            y $$1 = a(this.b, $$0);
-            this.f = $$1;
-            this.c.release();
-            throw $$1;
-         }
+   public static <T extends Comparable<T>> azf<T> a() {
+      return a(10);
+   }
 
-         this.c.release();
-      } finally {
-         this.d.unlock();
+   public static <T extends Comparable<T>> azf<T> a(int $$0) {
+      return new azf<>($$0, Comparator.naturalOrder());
+   }
+
+   public static <T> azf<T> a(Comparator<T> $$0) {
+      return a($$0, 10);
+   }
+
+   public static <T> azf<T> a(Comparator<T> $$0, int $$1) {
+      return new azf<>($$1, $$0);
+   }
+
+   private static <T> T[] a(Object[] $$0) {
+      return (T[])$$0;
+   }
+
+   private int c(T $$0) {
+      return Arrays.binarySearch(this.c, 0, this.d, $$0, this.b);
+   }
+
+   private static int b(int $$0) {
+      return -$$0 - 1;
+   }
+
+   @Override
+   public boolean add(T $$0) {
+      int $$1 = this.c($$0);
+      if ($$1 >= 0) {
+         return false;
+      } else {
+         int $$2 = b($$1);
+         this.a($$0, $$2);
+         return true;
       }
    }
 
-   public static y a(String $$0, @Nullable Thread $$1) {
-      String $$2 = Stream.of(Thread.currentThread(), $$1).filter(Objects::nonNull).map(azf::a).collect(Collectors.joining("\n"));
-      String $$3 = "Accessing " + $$0 + " from multiple threads";
-      o $$4 = new o($$3, new IllegalStateException($$3));
-      p $$5 = $$4.a("Thread dumps");
-      $$5.a("Thread dumps", $$2);
-      a.error("Thread dumps: \n" + $$2);
-      return new y($$4);
+   private void c(int $$0) {
+      if ($$0 > this.c.length) {
+         if (this.c != ObjectArrays.DEFAULT_EMPTY_ARRAY) {
+            $$0 = (int)Math.max(Math.min((long)this.c.length + (long)(this.c.length >> 1), 2147483639L), (long)$$0);
+         } else if ($$0 < 10) {
+            $$0 = 10;
+         }
+
+         Object[] $$1 = new Object[$$0];
+         System.arraycopy(this.c, 0, $$1, 0, this.d);
+         this.c = (T[])a($$1);
+      }
    }
 
-   private static String a(Thread $$0) {
-      return $$0.getName() + ": \n\tat " + Arrays.stream($$0.getStackTrace()).map(Object::toString).collect(Collectors.joining("\n\tat "));
+   private void a(T $$0, int $$1) {
+      this.c(this.d + 1);
+      if ($$1 != this.d) {
+         System.arraycopy(this.c, $$1, this.c, $$1 + 1, this.d - $$1);
+      }
+
+      this.c[$$1] = $$0;
+      this.d++;
+   }
+
+   void d(int $$0) {
+      this.d--;
+      if ($$0 != this.d) {
+         System.arraycopy(this.c, $$0 + 1, this.c, $$0, this.d - $$0);
+      }
+
+      this.c[this.d] = null;
+   }
+
+   private T e(int $$0) {
+      return this.c[$$0];
+   }
+
+   public T a(T $$0) {
+      int $$1 = this.c($$0);
+      if ($$1 >= 0) {
+         return this.e($$1);
+      } else {
+         this.a($$0, b($$1));
+         return $$0;
+      }
+   }
+
+   @Override
+   public boolean remove(Object $$0) {
+      int $$1 = this.c((T)$$0);
+      if ($$1 >= 0) {
+         this.d($$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Nullable
+   public T b(T $$0) {
+      int $$1 = this.c($$0);
+      return $$1 >= 0 ? this.e($$1) : null;
+   }
+
+   public T b() {
+      return this.e(0);
+   }
+
+   public T c() {
+      return this.e(this.d - 1);
+   }
+
+   @Override
+   public boolean contains(Object $$0) {
+      int $$1 = this.c((T)$$0);
+      return $$1 >= 0;
+   }
+
+   @Override
+   public Iterator<T> iterator() {
+      return new azf.a();
+   }
+
+   @Override
+   public int size() {
+      return this.d;
+   }
+
+   @Override
+   public Object[] toArray() {
+      return Arrays.copyOf(this.c, this.d, Object[].class);
+   }
+
+   @Override
+   public <U> U[] toArray(U[] $$0) {
+      if ($$0.length < this.d) {
+         return (U[])Arrays.copyOf(this.c, this.d, (Class<? extends T[]>)$$0.getClass());
+      } else {
+         System.arraycopy(this.c, 0, $$0, 0, this.d);
+         if ($$0.length > this.d) {
+            $$0[this.d] = null;
+         }
+
+         return $$0;
+      }
+   }
+
+   @Override
+   public void clear() {
+      Arrays.fill(this.c, 0, this.d, null);
+      this.d = 0;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof azf<?> $$1 && this.b.equals($$1.b)) {
+            return this.d == $$1.d && Arrays.equals(this.c, $$1.c);
+         }
+
+         return super.equals($$0);
+      }
+   }
+
+   class a implements Iterator<T> {
+      private int b;
+      private int c = -1;
+
+      @Override
+      public boolean hasNext() {
+         return this.b < azf.this.d;
+      }
+
+      @Override
+      public T next() {
+         if (this.b >= azf.this.d) {
+            throw new NoSuchElementException();
+         } else {
+            this.c = this.b++;
+            return azf.this.c[this.c];
+         }
+      }
+
+      @Override
+      public void remove() {
+         if (this.c == -1) {
+            throw new IllegalStateException();
+         } else {
+            azf.this.d(this.c);
+            this.b--;
+            this.c = -1;
+         }
+      }
    }
 }

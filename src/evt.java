@@ -1,49 +1,21 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class evt<C> {
-   private static final Logger b = LogUtils.getLogger();
-   public static final evt<MinecraftServer> a = new evt<MinecraftServer>().a(new evq.a()).a(new evr.a());
-   private final Map<akk, evs.a<C, ?>> c = Maps.newHashMap();
-   private final Map<Class<?>, evs.a<C, ?>> d = Maps.newHashMap();
+public class evt {
+   private static final Codec<evs> h = lt.G.r().dispatch(evs::b, evr::a);
+   public static final Codec<evs> a = Codec.lazyInitialized(() -> {
+      Codec<evs> $$0 = Codec.withAlternative(h, evw.a.codec());
+      return Codec.either(evp.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof evp $$1 ? Either.left($$1) : Either.right($$0x));
+   });
+   public static final evr b = a("constant", evp.a);
+   public static final evr c = a("uniform", evw.a);
+   public static final evr d = a("binomial", evo.a);
+   public static final evr e = a("score", evu.a);
+   public static final evr f = a("storage", evv.a);
+   public static final evr g = a("enchantment_level", evq.a);
 
-   public evt<C> a(evs.a<C, ?> $$0) {
-      this.c.put($$0.a(), $$0);
-      this.d.put($$0.b(), $$0);
-      return this;
-   }
-
-   private <T extends evs<C>> evs.a<C, T> a(Class<?> $$0) {
-      return (evs.a<C, T>)this.d.get($$0);
-   }
-
-   public <T extends evs<C>> tx a(T $$0) {
-      evs.a<C, T> $$1 = this.a($$0.getClass());
-      tx $$2 = new tx();
-      $$1.a($$2, $$0);
-      $$2.a("Type", $$1.a().toString());
-      return $$2;
-   }
-
-   @Nullable
-   public evs<C> a(tx $$0) {
-      akk $$1 = akk.a($$0.l("Type"));
-      evs.a<C, ?> $$2 = this.c.get($$1);
-      if ($$2 == null) {
-         b.error("Failed to deserialize timer callback: {}", $$0);
-         return null;
-      } else {
-         try {
-            return $$2.b($$0);
-         } catch (Exception var5) {
-            b.error("Failed to deserialize timer callback: {}", $$0, var5);
-            return null;
-         }
-      }
+   private static evr a(String $$0, MapCodec<? extends evs> $$1) {
+      return jz.a(lt.G, akq.b($$0), new evr($$1));
    }
 }

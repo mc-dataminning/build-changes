@@ -1,38 +1,71 @@
-public enum fnu {
-   a(
-      new akk("advancements/box_obtained"),
-      new akk("advancements/task_frame_obtained"),
-      new akk("advancements/challenge_frame_obtained"),
-      new akk("advancements/goal_frame_obtained")
-   ),
-   b(
-      new akk("advancements/box_unobtained"),
-      new akk("advancements/task_frame_unobtained"),
-      new akk("advancements/challenge_frame_unobtained"),
-      new akk("advancements/goal_frame_unobtained")
-   );
+import javax.annotation.Nullable;
 
-   private final akk c;
-   private final akk d;
-   private final akk e;
-   private final akk f;
+public class fnu extends fnx implements ayu {
+   @Nullable
+   private wy a;
+   @Nullable
+   private wy b;
+   private int c;
+   private boolean q;
+   private final boolean r;
 
-   private fnu(final akk $$0, final akk $$1, final akk $$2, final akk $$3) {
+   public fnu(boolean $$0) {
+      super(fga.a);
+      this.r = $$0;
+   }
+
+   @Override
+   public boolean aF_() {
+      return false;
+   }
+
+   @Override
+   protected boolean aO_() {
+      return false;
+   }
+
+   @Override
+   public void a(wy $$0) {
+      this.b($$0);
+   }
+
+   @Override
+   public void b(wy $$0) {
+      this.a = $$0;
+      this.c(wy.c("menu.working"));
+   }
+
+   @Override
+   public void c(wy $$0) {
+      this.b = $$0;
+      this.a(0);
+   }
+
+   @Override
+   public void a(int $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
    }
 
-   public akk a() {
-      return this.c;
+   @Override
+   public void a() {
+      this.q = true;
    }
 
-   public akk a(al $$0) {
-      return switch ($$0) {
-         case a -> this.d;
-         case b -> this.e;
-         case c -> this.f;
-      };
+   @Override
+   public void a(fht $$0, int $$1, int $$2, float $$3) {
+      if (this.q) {
+         if (this.r) {
+            this.l.a(null);
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         if (this.a != null) {
+            $$0.a(this.o, this.a, this.m / 2, 70, 16777215);
+         }
+
+         if (this.b != null && this.c != 0) {
+            $$0.a(this.o, wy.i().b(this.b).f(" " + this.c + "%"), this.m / 2, 90, 16777215);
+         }
+      }
    }
 }

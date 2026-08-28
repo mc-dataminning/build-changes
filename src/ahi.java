@@ -1,45 +1,29 @@
-public class ahi implements zb<agb> {
-   public static final ys<vr, ahi> a = zb.a(ahi::a, ahi::new);
-   private final cqx b;
-   private final boolean c;
-   private final boolean d;
+public class ahi implements zf<agh> {
+   public static final yw<vv, ahi> a = zf.a(ahi::a, ahi::new);
+   private final int b;
 
-   public ahi(cqx $$0, boolean $$1, boolean $$2) {
+   public ahi(int $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
    }
 
-   private ahi(vr $$0) {
-      this.b = $$0.b(cqx.class);
-      this.c = $$0.readBoolean();
-      this.d = $$0.readBoolean();
+   private ahi(vv $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(vv $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zd<ahi> a() {
-      return afz.bN;
+   public zh<ahi> a() {
+      return agf.bH;
    }
 
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
-   public cqx b() {
+   public int b() {
       return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

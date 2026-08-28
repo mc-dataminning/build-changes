@@ -1,4 +1,2 @@
-enum bzj {
-   a,
-   b;
+public interface bzj {
 }

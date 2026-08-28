@@ -1,31 +1,42 @@
-public class abw implements zb<abn> {
-   public static final ys<wf, abw> a = ys.a(ja.b, abw::e, yq.a(dfi.q), abw::b, abw::new);
-   private final ja b;
-   private final dsl c;
+public class abw implements zf<abt> {
+   public static final yw<vv, abw> a = zf.a(abw::a, abw::new);
+   public static final int b = 0;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
+   private final int g;
+   private final int h;
 
-   public abw(ja $$0, dsl $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public abw(bsq $$0, int $$1) {
+      this.g = $$0.an();
+      this.h = $$1;
    }
 
-   public abw(dbm $$0, ja $$1) {
-      this($$1, $$0.a_($$1));
+   private abw(vv $$0) {
+      this.g = $$0.l();
+      this.h = $$0.readUnsignedByte();
+   }
+
+   private void a(vv $$0) {
+      $$0.c(this.g);
+      $$0.k(this.h);
    }
 
    @Override
-   public zd<abw> a() {
-      return afz.k;
+   public zh<abw> a() {
+      return agf.e;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public dsl b() {
-      return this.c;
+   public int b() {
+      return this.g;
    }
 
-   public ja e() {
-      return this.b;
+   public int e() {
+      return this.h;
    }
 }

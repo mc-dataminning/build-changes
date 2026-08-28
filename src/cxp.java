@@ -1,71 +1,44 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class cxp {
-   @Nullable
-   private final cml a;
-   private final bqg b;
-   private final ewd c;
-   private final dcg d;
-   private final cud e;
+public record cxp(Map<String, cxp.a> c) {
+   public static final cxp a = new cxp(Map.of());
+   public static final Codec<cxp> b = Codec.unboundedMap(Codec.STRING, cxp.a.a).xmap(cxp::new, cxp::a);
 
-   public cxp(cml $$0, bqg $$1, ewd $$2) {
-      this($$0.dR(), $$0, $$1, $$0.b($$1), $$2);
+   public cxp a(String $$0, cxp.a $$1) {
+      return new cxp(ad.a(this.c, $$0, $$1));
    }
 
-   protected cxp(dcg $$0, @Nullable cml $$1, bqg $$2, cud $$3, ewd $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
-   }
-
-   protected final ewd j() {
+   public Map<String, cxp.a> a() {
       return this.c;
    }
 
-   public ja a() {
-      return this.c.a();
-   }
+   public static record a(jm<eqi> b, double c, double d, float e) {
+      public static final Codec<cxp.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  eqi.b.fieldOf("type").forGetter(cxp.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(cxp.a::b),
+                  Codec.DOUBLE.fieldOf("z").forGetter(cxp.a::c),
+                  Codec.FLOAT.fieldOf("rotation").forGetter(cxp.a::d)
+               )
+               .apply($$0, cxp.a::new)
+      );
 
-   public jf k() {
-      return this.c.b();
-   }
+      public jm<eqi> a() {
+         return this.b;
+      }
 
-   public ewh l() {
-      return this.c.e();
-   }
+      public double b() {
+         return this.c;
+      }
 
-   public boolean m() {
-      return this.c.d();
-   }
+      public double c() {
+         return this.d;
+      }
 
-   public cud n() {
-      return this.e;
-   }
-
-   @Nullable
-   public cml o() {
-      return this.a;
-   }
-
-   public bqg p() {
-      return this.b;
-   }
-
-   public dcg q() {
-      return this.d;
-   }
-
-   public jf g() {
-      return this.a == null ? jf.c : this.a.cJ();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fP();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dH();
+      public float d() {
+         return this.e;
+      }
    }
 }

@@ -1,54 +1,65 @@
-import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.logging.LogUtils;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.util.Collection;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import java.util.Optional;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public interface ayt {
-   ayt a = ($$0, $$1) -> true;
-   Logger b = LogUtils.getLogger();
+   ayt a(String var1);
 
-   boolean validate(ays var1, byte[] var2);
+   void b(String var1);
 
-   default boolean a(byte[] $$0, byte[] $$1) {
-      return this.validate($$1x -> $$1x.update($$0), $$1);
-   }
+   public static class a implements ayt {
+      private final Multimap<String, String> a;
+      private final Supplier<String> b;
+      @Nullable
+      private String c;
 
-   private static boolean a(ays $$0, byte[] $$1, Signature $$2) throws SignatureException {
-      $$0.update($$2::update);
-      return $$2.verify($$1);
-   }
+      public a() {
+         this(HashMultimap.create(), () -> "");
+      }
 
-   static ayt a(PublicKey $$0, String $$1) {
-      return ($$2, $$3) -> {
-         try {
-            Signature $$4 = Signature.getInstance($$1);
-            $$4.initVerify($$0);
-            return a($$2, $$3, $$4);
-         } catch (Exception var5) {
-            b.error("Failed to verify signature", var5);
-            return false;
+      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      private String c() {
+         if (this.c == null) {
+            this.c = this.b.get();
          }
-      };
-   }
 
-   @Nullable
-   static ayt a(ServicesKeySet $$0, ServicesKeyType $$1) {
-      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
-      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
-            Signature $$3 = $$2xx.signature();
+         return this.c;
+      }
 
-            try {
-               return a($$1x, $$2x, $$3);
-            } catch (SignatureException var5) {
-               b.error("Failed to verify Services signature", var5);
-               return false;
-            }
-         });
+      @Override
+      public ayt a(String $$0) {
+         return new ayt.a(this.a, () -> this.c() + $$0);
+      }
+
+      @Override
+      public void b(String $$0) {
+         this.a.put(this.c(), $$0);
+      }
+
+      public Multimap<String, String> a() {
+         return ImmutableMultimap.copyOf(this.a);
+      }
+
+      public Optional<String> b() {
+         Multimap<String, String> $$0 = this.a();
+         if (!$$0.isEmpty()) {
+            String $$1 = $$0.asMap()
+               .entrySet()
+               .stream()
+               .map($$0x -> "  at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
+               .collect(Collectors.joining("\n"));
+            return Optional.of($$1);
+         } else {
+            return Optional.empty();
+         }
+      }
    }
 }

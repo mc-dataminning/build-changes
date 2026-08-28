@@ -1,121 +1,185 @@
-public class fod extends fpc<cpk> {
-   private static final akk D = new akk("container/anvil/text_field");
-   private static final akk E = new akk("container/anvil/text_field_disabled");
-   private static final akk F = new akk("container/anvil/error");
-   private static final akk G = new akk("textures/gui/container/anvil.png");
-   private static final wu H = wu.c("container.repair.expensive");
-   private fid I;
-   private final cml J;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public fod(cpk $$0, cmk $$1, wu $$2) {
-      super($$0, $$1, $$2, G);
-      this.J = $$1.l;
-      this.r = 60;
+public class fod {
+   private final fgi a;
+   private final foh b;
+   private final foe c;
+   private final int d;
+   private final ah e;
+   private final as f;
+   private final cuo g;
+   private final wy h;
+   private final fof i;
+   private final Map<ag, fof> j = Maps.newLinkedHashMap();
+   private double k;
+   private double l;
+   private int m = Integer.MAX_VALUE;
+   private int n = Integer.MAX_VALUE;
+   private int o = Integer.MIN_VALUE;
+   private int p = Integer.MIN_VALUE;
+   private float q;
+   private boolean r;
+
+   public fod(fgi $$0, foh $$1, foe $$2, int $$3, ah $$4, as $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$5.c();
+      this.h = $$5.a();
+      this.i = new fof(this, $$0, $$4, $$5);
+      this.a(this.i, $$4.b());
    }
 
-   @Override
-   protected void F() {
-      int $$0 = (this.m - this.c) / 2;
-      int $$1 = (this.n - this.q) / 2;
-      this.I = new fid(this.o, $$0 + 62, $$1 + 24, 103, 12, wu.c("container.repair"));
-      this.I.f(false);
-      this.I.g(-1);
-      this.I.h(-1);
-      this.I.d(false);
-      this.I.f(50);
-      this.I.b(this::a);
-      this.I.a("");
-      this.d(this.I);
-      this.I.e(this.w.b(0).h());
+   public foe a() {
+      return this.c;
    }
 
-   @Override
-   protected void aE_() {
-      this.b(this.I);
+   public int b() {
+      return this.d;
    }
 
-   @Override
-   public void a(ffw $$0, int $$1, int $$2) {
-      String $$3 = this.I.a();
-      this.b($$0, $$1, $$2);
-      this.I.a($$3);
+   public ah c() {
+      return this.e;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.l.s.s();
+   public wy d() {
+      return this.h;
+   }
+
+   public as e() {
+      return this.f;
+   }
+
+   public void a(fht $$0, int $$1, int $$2, boolean $$3) {
+      this.c.a($$0, $$1, $$2, $$3, this.d);
+   }
+
+   public void a(fht $$0, int $$1, int $$2) {
+      this.c.a($$0, $$1, $$2, this.d, this.g);
+   }
+
+   public void b(fht $$0, int $$1, int $$2) {
+      if (!this.r) {
+         this.k = (double)(117 - (this.o + this.m) / 2);
+         this.l = (double)(56 - (this.p + this.n) / 2);
+         this.r = true;
       }
 
-      return !this.I.a($$0, $$1, $$2) && !this.I.c() ? super.a($$0, $$1, $$2) : true;
-   }
+      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
+      $$0.c().a();
+      $$0.c().a((float)$$1, (float)$$2, 0.0F);
+      akq $$3 = this.f.d().orElse(gqg.a);
+      int $$4 = ayn.a(this.k);
+      int $$5 = ayn.a(this.l);
+      int $$6 = $$4 % 16;
+      int $$7 = $$5 % 16;
 
-   private void a(String $$0) {
-      cre $$1 = this.w.b(0);
-      if ($$1.h()) {
-         String $$2 = $$0;
-         if (!$$1.g().b(kn.g) && $$0.equals($$1.g().w().getString())) {
-            $$2 = "";
-         }
-
-         if (this.w.a($$2)) {
-            this.l.s.h.b(new ahk($$2));
+      for (int $$8 = -1; $$8 <= 15; $$8++) {
+         for (int $$9 = -1; $$9 <= 8; $$9++) {
+            $$0.a($$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
          }
       }
+
+      this.i.a($$0, $$4, $$5, true);
+      this.i.a($$0, $$4, $$5, false);
+      this.i.a($$0, $$4, $$5);
+      $$0.c().b();
+      $$0.f();
    }
 
-   @Override
-   protected void b(fhh $$0, int $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      int $$3 = this.w.n();
-      if ($$3 > 0) {
-         int $$4 = 8453920;
-         wu $$5;
-         if ($$3 >= 40 && !this.l.s.gb().d) {
-            $$5 = H;
-            $$4 = 16736352;
-         } else if (!this.w.b(2).h()) {
-            $$5 = null;
-         } else {
-            $$5 = wu.a("container.repair.cost", $$3);
-            if (!this.w.b(2).a(this.J)) {
-               $$4 = 16736352;
+   public void a(fht $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, -200.0F);
+      $$0.a(0, 0, 234, 113, ayn.d(this.q * 255.0F) << 24);
+      boolean $$5 = false;
+      int $$6 = ayn.a(this.k);
+      int $$7 = ayn.a(this.l);
+      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
+         for (fof $$8 : this.j.values()) {
+            if ($$8.a($$6, $$7, $$1, $$2)) {
+               $$5 = true;
+               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
+               break;
             }
          }
+      }
 
-         if ($$5 != null) {
-            int $$8 = this.c - 8 - this.o.a($$5) - 2;
-            int $$9 = 69;
-            $$0.a($$8 - 2, 67, this.c - 8, 79, 1325400064);
-            $$0.b(this.o, $$5, $$8, 69, $$4);
+      $$0.c().b();
+      if ($$5) {
+         this.q = ayn.a(this.q + 0.02F, 0.0F, 0.3F);
+      } else {
+         this.q = ayn.a(this.q - 0.04F, 0.0F, 1.0F);
+      }
+   }
+
+   public boolean a(int $$0, int $$1, double $$2, double $$3) {
+      return this.c.a($$0, $$1, this.d, $$2, $$3);
+   }
+
+   @Nullable
+   public static fod a(fgi $$0, foh $$1, int $$2, ah $$3) {
+      Optional<as> $$4 = $$3.a().c();
+      if ($$4.isEmpty()) {
+         return null;
+      } else {
+         for (foe $$5 : foe.values()) {
+            if ($$2 < $$5.a()) {
+               return new fod($$0, $$1, $$5, $$2, $$3, $$4.get());
+            }
+
+            $$2 -= $$5.a();
          }
+
+         return null;
       }
    }
 
-   @Override
-   protected void a(fhh $$0, float $$1, int $$2, int $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.w.b(0).h() ? D : E, this.z + 59, this.A + 20, 110, 16);
-   }
+   public void a(double $$0, double $$1) {
+      if (this.o - this.m > 234) {
+         this.k = ayn.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
+      }
 
-   @Override
-   public void d(fhh $$0, int $$1, int $$2, float $$3) {
-      this.I.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void c(fhh $$0, int $$1, int $$2) {
-      if ((this.w.b(0).h() || this.w.b(1).h()) && !this.w.b(this.w.o()).h()) {
-         $$0.a(F, $$1 + 99, $$2 + 45, 28, 21);
+      if (this.p - this.n > 113) {
+         this.l = ayn.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
       }
    }
 
-   @Override
-   public void a(cpi $$0, int $$1, cud $$2) {
-      if ($$1 == 0) {
-         this.I.a($$2.e() ? "" : $$2.w().getString());
-         this.I.e(!$$2.e());
-         this.a(this.I);
+   public void a(ah $$0) {
+      Optional<as> $$1 = $$0.a().c();
+      if (!$$1.isEmpty()) {
+         fof $$2 = new fof(this, this.a, $$0, $$1.get());
+         this.a($$2, $$0.b());
       }
+   }
+
+   private void a(fof $$0, ag $$1) {
+      this.j.put($$1, $$0);
+      int $$2 = $$0.d();
+      int $$3 = $$2 + 28;
+      int $$4 = $$0.c();
+      int $$5 = $$4 + 27;
+      this.m = Math.min(this.m, $$2);
+      this.o = Math.max(this.o, $$3);
+      this.n = Math.min(this.n, $$4);
+      this.p = Math.max(this.p, $$5);
+
+      for (fof $$6 : this.j.values()) {
+         $$6.b();
+      }
+   }
+
+   @Nullable
+   public fof a(ag $$0) {
+      return this.j.get($$0);
+   }
+
+   public foh f() {
+      return this.b;
    }
 }

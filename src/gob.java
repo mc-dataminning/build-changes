@@ -1,21 +1,13 @@
-public class gob<T extends bsh & bts, M extends fuq<T>> extends goa<T, M> {
-   private final akk a;
-   private final M b;
-
-   public gob(glk<T, M> $$0, M $$1, akk $$2) {
+public abstract class gob<T extends bsq, M extends fve<T>> extends gop<T, M> {
+   public gob(glz<T, M> $$0) {
       super($$0);
-      this.b = $$1;
-      this.a = $$2;
    }
 
    @Override
-   public void a(fao $$0, gef $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         fas $$10 = $$1.getBuffer(gen.e(this.a));
-         this.b.a($$0, $$10, $$2, gph.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      }
+   public void a(fbc $$0, get $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      fbg $$10 = $$1.getBuffer(this.a());
+      this.c().a($$0, $$10, 15728640, gpw.d);
    }
+
+   public abstract gfb a();
 }

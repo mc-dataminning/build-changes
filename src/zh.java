@@ -1,19 +1,6 @@
-public interface zh extends abh, vm {
-   void a(zk var1);
-
-   void a(zl var1);
-
-   void a(zi var1);
-
-   void a(zj var1);
-
-   void a(zn var1);
-
-   void a(zm var1);
-
-   void a(zq var1);
-
-   void a(zo var1);
-
-   void a(zp var1);
+public record zh<T extends zf<?>>(zg a, akq b) {
+   @Override
+   public String toString() {
+      return this.a.b() + "/" + this.b;
+   }
 }

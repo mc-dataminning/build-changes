@@ -1,30 +1,29 @@
 import com.mojang.serialization.MapCodec;
 
-public class dob extends dix {
+public class dob extends die implements dfz {
    public static final MapCodec<dob> c = b(dob::new);
-   public static final exa g = dfi.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
 
    @Override
    public MapCodec<dob> a() {
       return c;
    }
 
-   public dob(dsk.d $$0) {
-      super($$0, jf.b, g, false, 0.1);
+   public dob(dsz.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected int a(ayo $$0) {
-      return dko.a($$0);
+   public boolean b(dcx $$0, jd $$1, dta $$2) {
+      return true;
    }
 
    @Override
-   protected dfi b() {
-      return dfk.oC;
+   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
+      return true;
    }
 
    @Override
-   protected boolean g(dsl $$0) {
-      return dko.a($$0);
+   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
+      a($$0, $$2, new cuo(this));
    }
 }

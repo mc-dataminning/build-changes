@@ -1,164 +1,49 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.Arrays;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
 public class fgz {
-   private static final int a = 256;
-   private final ThreadLocal<fgz.b> b = ThreadLocal.withInitial(fgz.b::new);
-   private final Long2ObjectLinkedOpenHashMap<fgz.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
-   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
-   private final ToIntFunction<ja> e;
+   public static void a(fvn<?> $$0, fgx $$1, long $$2, float $$3, Vector3f $$4) {
+      float $$5 = a($$1, $$2);
 
-   public fgz(ToIntFunction<ja> $$0) {
-      this.e = $$0;
-   }
-
-   public int a(ja $$0) {
-      int $$1 = kc.a($$0.u());
-      int $$2 = kc.a($$0.w());
-      fgz.b $$3 = this.b.get();
-      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
-         $$3.a = $$1;
-         $$3.b = $$2;
-         $$3.c = this.b($$1, $$2);
-      }
-
-      int[] $$4 = $$3.c.a($$0.v());
-      int $$5 = $$0.u() & 15;
-      int $$6 = $$0.w() & 15;
-      int $$7 = $$6 << 4 | $$5;
-      int $$8 = $$4[$$7];
-      if ($$8 != -1) {
-         return $$8;
-      } else {
-         int $$9 = this.e.applyAsInt($$0);
-         $$4[$$7] = $$9;
-         return $$9;
-      }
-   }
-
-   public void a(int $$0, int $$1) {
-      try {
-         this.d.writeLock().lock();
-
-         for (int $$2 = -1; $$2 <= 1; $$2++) {
-            for (int $$3 = -1; $$3 <= 1; $$3++) {
-               long $$4 = dbn.c($$0 + $$2, $$1 + $$3);
-               fgz.a $$5 = (fgz.a)this.c.remove($$4);
-               if ($$5 != null) {
-                  $$5.b();
+      for (Entry<String, List<fgw>> $$6 : $$1.c().entrySet()) {
+         Optional<fye> $$7 = $$0.a($$6.getKey());
+         List<fgw> $$8 = $$6.getValue();
+         $$7.ifPresent($$4x -> $$8.forEach($$4xx -> {
+               fgy[] $$5x = $$4xx.b();
+               int $$6x = Math.max(0, ayn.a(0, $$5x.length, $$2xxx -> $$5 <= $$5x[$$2xxx].a()) - 1);
+               int $$7x = Math.min($$5x.length - 1, $$6x + 1);
+               fgy $$8x = $$5x[$$6x];
+               fgy $$9 = $$5x[$$7x];
+               float $$10 = $$5 - $$8x.a();
+               float $$11;
+               if ($$7x != $$6x) {
+                  $$11 = ayn.a($$10 / ($$9.a() - $$8x.a()), 0.0F, 1.0F);
+               } else {
+                  $$11 = 0.0F;
                }
-            }
-         }
-      } finally {
-         this.d.writeLock().unlock();
+
+               $$9.c().apply($$4, $$11, $$5x, $$6x, $$7x, $$3);
+               $$4xx.a().apply($$4x, $$4);
+            }));
       }
    }
 
-   public void a() {
-      try {
-         this.d.writeLock().lock();
-         this.c.values().forEach(fgz.a::b);
-         this.c.clear();
-      } finally {
-         this.d.writeLock().unlock();
-      }
+   private static float a(fgx $$0, long $$1) {
+      float $$2 = (float)$$1 / 1000.0F;
+      return $$0.b() ? $$2 % $$0.a() : $$2;
    }
 
-   private fgz.a b(int $$0, int $$1) {
-      long $$2 = dbn.c($$0, $$1);
-      this.d.readLock().lock();
-
-      try {
-         fgz.a $$3 = (fgz.a)this.c.get($$2);
-         if ($$3 != null) {
-            return $$3;
-         }
-      } finally {
-         this.d.readLock().unlock();
-      }
-
-      this.d.writeLock().lock();
-
-      fgz.a $$5;
-      try {
-         fgz.a $$4 = (fgz.a)this.c.get($$2);
-         if ($$4 == null) {
-            $$5 = new fgz.a();
-            if (this.c.size() >= 256) {
-               fgz.a $$6 = (fgz.a)this.c.removeFirst();
-               if ($$6 != null) {
-                  $$6.b();
-               }
-            }
-
-            this.c.put($$2, $$5);
-            return $$5;
-         }
-
-         $$5 = $$4;
-      } finally {
-         this.d.writeLock().unlock();
-      }
-
-      return $$5;
+   public static Vector3f a(float $$0, float $$1, float $$2) {
+      return new Vector3f($$0, -$$1, $$2);
    }
 
-   static class a {
-      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
-      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
-      private static final int c = ayg.h(16);
-      private volatile boolean d;
-
-      public int[] a(int $$0) {
-         this.b.readLock().lock();
-
-         try {
-            int[] $$1 = (int[])this.a.get($$0);
-            if ($$1 != null) {
-               return $$1;
-            }
-         } finally {
-            this.b.readLock().unlock();
-         }
-
-         this.b.writeLock().lock();
-
-         int[] var12;
-         try {
-            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
-         } finally {
-            this.b.writeLock().unlock();
-         }
-
-         return var12;
-      }
-
-      private int[] c() {
-         int[] $$0 = new int[c];
-         Arrays.fill($$0, -1);
-         return $$0;
-      }
-
-      public boolean a() {
-         return this.d;
-      }
-
-      public void b() {
-         this.d = true;
-      }
+   public static Vector3f b(float $$0, float $$1, float $$2) {
+      return new Vector3f($$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), $$2 * (float) (Math.PI / 180.0));
    }
 
-   static class b {
-      public int a = Integer.MIN_VALUE;
-      public int b = Integer.MIN_VALUE;
-      @Nullable
-      fgz.a c;
-
-      private b() {
-      }
+   public static Vector3f a(double $$0, double $$1, double $$2) {
+      return new Vector3f((float)($$0 - 1.0), (float)($$1 - 1.0), (float)($$2 - 1.0));
    }
 }

@@ -1,14 +1,9 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface enh<P extends eng> {
-   enh<ene> a = a("clear", ene.a);
-   enh<enf> b = a("passthrough", enf.b);
-   enh<end> c = a("append_static", end.a);
-   enh<enc> d = a("append_loot", enc.a);
+public abstract class enh {
+   public static final Codec<enh> c = lt.m.r().dispatch("predicate_type", enh::a, eni::codec);
 
-   MapCodec<P> codec();
+   public abstract boolean a(dta var1, ayv var2);
 
-   private static <P extends eng> enh<P> a(String $$0, MapCodec<P> $$1) {
-      return jw.a(lq.n, $$0, () -> $$1);
-   }
+   protected abstract eni<?> a();
 }

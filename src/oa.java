@@ -1,166 +1,17 @@
-import java.util.Optional;
-import java.util.stream.IntStream;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.function.Supplier;
 
-public class oa {
-   public static final nz a = a("cube", oc.c, oc.j, oc.k, oc.l, oc.m, oc.n, oc.o);
-   public static final nz b = a("cube_directional", oc.c, oc.j, oc.k, oc.l, oc.m, oc.n, oc.o);
-   public static final nz c = a("cube_all", oc.a);
-   public static final nz d = a("cube_all_inner_faces", oc.a);
-   public static final nz e = a("cube_mirrored_all", "_mirrored", oc.a);
-   public static final nz f = a("cube_north_west_mirrored_all", "_north_west_mirrored", oc.a);
-   public static final nz g = a("cube_column_uv_locked_x", "_x", oc.d, oc.i);
-   public static final nz h = a("cube_column_uv_locked_y", "_y", oc.d, oc.i);
-   public static final nz i = a("cube_column_uv_locked_z", "_z", oc.d, oc.i);
-   public static final nz j = a("cube_column", oc.d, oc.i);
-   public static final nz k = a("cube_column_horizontal", "_horizontal", oc.d, oc.i);
-   public static final nz l = a("cube_column_mirrored", "_mirrored", oc.d, oc.i);
-   public static final nz m = a("cube_top", oc.f, oc.i);
-   public static final nz n = a("cube_bottom_top", oc.f, oc.e, oc.i);
-   public static final nz o = a("cube_bottom_top_inner_faces", oc.f, oc.e, oc.i);
-   public static final nz p = a("orientable", oc.f, oc.g, oc.i);
-   public static final nz q = a("orientable_with_bottom", oc.f, oc.e, oc.i, oc.g);
-   public static final nz r = a("orientable_vertical", "_vertical", oc.g, oc.i);
-   public static final nz s = a("button", oc.b);
-   public static final nz t = a("button_pressed", "_pressed", oc.b);
-   public static final nz u = a("button_inventory", "_inventory", oc.b);
-   public static final nz v = a("door_bottom_left", "_bottom_left", oc.f, oc.e);
-   public static final nz w = a("door_bottom_left_open", "_bottom_left_open", oc.f, oc.e);
-   public static final nz x = a("door_bottom_right", "_bottom_right", oc.f, oc.e);
-   public static final nz y = a("door_bottom_right_open", "_bottom_right_open", oc.f, oc.e);
-   public static final nz z = a("door_top_left", "_top_left", oc.f, oc.e);
-   public static final nz A = a("door_top_left_open", "_top_left_open", oc.f, oc.e);
-   public static final nz B = a("door_top_right", "_top_right", oc.f, oc.e);
-   public static final nz C = a("door_top_right_open", "_top_right_open", oc.f, oc.e);
-   public static final nz D = a("custom_fence_post", "_post", oc.b, oc.c);
-   public static final nz E = a("custom_fence_side_north", "_side_north", oc.b);
-   public static final nz F = a("custom_fence_side_east", "_side_east", oc.b);
-   public static final nz G = a("custom_fence_side_south", "_side_south", oc.b);
-   public static final nz H = a("custom_fence_side_west", "_side_west", oc.b);
-   public static final nz I = a("custom_fence_inventory", "_inventory", oc.b);
-   public static final nz J = a("fence_post", "_post", oc.b);
-   public static final nz K = a("fence_side", "_side", oc.b);
-   public static final nz L = a("fence_inventory", "_inventory", oc.b);
-   public static final nz M = a("template_wall_post", "_post", oc.r);
-   public static final nz N = a("template_wall_side", "_side", oc.r);
-   public static final nz O = a("template_wall_side_tall", "_side_tall", oc.r);
-   public static final nz P = a("wall_inventory", "_inventory", oc.r);
-   public static final nz Q = a("template_custom_fence_gate", oc.b, oc.c);
-   public static final nz R = a("template_custom_fence_gate_open", "_open", oc.b, oc.c);
-   public static final nz S = a("template_custom_fence_gate_wall", "_wall", oc.b, oc.c);
-   public static final nz T = a("template_custom_fence_gate_wall_open", "_wall_open", oc.b, oc.c);
-   public static final nz U = a("template_fence_gate", oc.b);
-   public static final nz V = a("template_fence_gate_open", "_open", oc.b);
-   public static final nz W = a("template_fence_gate_wall", "_wall", oc.b);
-   public static final nz X = a("template_fence_gate_wall_open", "_wall_open", oc.b);
-   public static final nz Y = a("pressure_plate_up", oc.b);
-   public static final nz Z = a("pressure_plate_down", "_down", oc.b);
-   public static final nz aa = a(oc.c);
-   public static final nz ab = a("slab", oc.e, oc.f, oc.i);
-   public static final nz ac = a("slab_top", "_top", oc.e, oc.f, oc.i);
-   public static final nz ad = a("leaves", oc.a);
-   public static final nz ae = a("stairs", oc.e, oc.f, oc.i);
-   public static final nz af = a("inner_stairs", "_inner", oc.e, oc.f, oc.i);
-   public static final nz ag = a("outer_stairs", "_outer", oc.e, oc.f, oc.i);
-   public static final nz ah = a("template_trapdoor_top", "_top", oc.b);
-   public static final nz ai = a("template_trapdoor_bottom", "_bottom", oc.b);
-   public static final nz aj = a("template_trapdoor_open", "_open", oc.b);
-   public static final nz ak = a("template_orientable_trapdoor_top", "_top", oc.b);
-   public static final nz al = a("template_orientable_trapdoor_bottom", "_bottom", oc.b);
-   public static final nz am = a("template_orientable_trapdoor_open", "_open", oc.b);
-   public static final nz an = a("pointed_dripstone", oc.p);
-   public static final nz ao = a("cross", oc.p);
-   public static final nz ap = a("tinted_cross", oc.p);
-   public static final nz aq = a("flower_pot_cross", oc.q);
-   public static final nz ar = a("tinted_flower_pot_cross", oc.q);
-   public static final nz as = a("rail_flat", oc.s);
-   public static final nz at = a("rail_curved", "_corner", oc.s);
-   public static final nz au = a("template_rail_raised_ne", "_raised_ne", oc.s);
-   public static final nz av = a("template_rail_raised_sw", "_raised_sw", oc.s);
-   public static final nz aw = a("carpet", oc.t);
-   public static final nz ax = a("flowerbed_1", "_1", oc.P, oc.y);
-   public static final nz ay = a("flowerbed_2", "_2", oc.P, oc.y);
-   public static final nz az = a("flowerbed_3", "_3", oc.P, oc.y);
-   public static final nz aA = a("flowerbed_4", "_4", oc.P, oc.y);
-   public static final nz aB = a("coral_fan", oc.x);
-   public static final nz aC = a("coral_wall_fan", oc.x);
-   public static final nz aD = a("template_glazed_terracotta", oc.u);
-   public static final nz aE = a("template_chorus_flower", oc.b);
-   public static final nz aF = a("template_daylight_detector", oc.f, oc.i);
-   public static final nz aG = a("template_glass_pane_noside", "_noside", oc.v);
-   public static final nz aH = a("template_glass_pane_noside_alt", "_noside_alt", oc.v);
-   public static final nz aI = a("template_glass_pane_post", "_post", oc.v, oc.w);
-   public static final nz aJ = a("template_glass_pane_side", "_side", oc.v, oc.w);
-   public static final nz aK = a("template_glass_pane_side_alt", "_side_alt", oc.v, oc.w);
-   public static final nz aL = a("template_command_block", oc.g, oc.h, oc.i);
-   public static final nz aM = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", oc.b);
-   public static final nz aN = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", oc.b);
-   public static final nz aO = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", oc.b);
-   public static final nz aP = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", oc.b);
-   public static final nz aQ = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", oc.b);
-   public static final nz aR = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", oc.b);
-   public static final nz aS = a("template_anvil", oc.f);
-   public static final nz[] aT = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, oc.y)).toArray(nz[]::new);
-   public static final nz aU = a("stem_fruit", oc.y, oc.z);
-   public static final nz aV = a("crop", oc.A);
-   public static final nz aW = a("template_farmland", oc.B, oc.f);
-   public static final nz aX = a("template_fire_floor", oc.C);
-   public static final nz aY = a("template_fire_side", oc.C);
-   public static final nz aZ = a("template_fire_side_alt", oc.C);
-   public static final nz ba = a("template_fire_up", oc.C);
-   public static final nz bb = a("template_fire_up_alt", oc.C);
-   public static final nz bc = a("template_campfire", oc.C, oc.K);
-   public static final nz bd = a("template_lantern", oc.D);
-   public static final nz be = a("template_hanging_lantern", "_hanging", oc.D);
-   public static final nz bf = a("template_torch", oc.G);
-   public static final nz bg = a("template_torch_wall", oc.G);
-   public static final nz bh = a("template_piston", oc.E, oc.e, oc.i);
-   public static final nz bi = a("template_piston_head", oc.E, oc.i, oc.F);
-   public static final nz bj = a("template_piston_head_short", oc.E, oc.i, oc.F);
-   public static final nz bk = a("template_seagrass", oc.b);
-   public static final nz bl = a("template_turtle_egg", oc.a);
-   public static final nz bm = a("template_two_turtle_eggs", oc.a);
-   public static final nz bn = a("template_three_turtle_eggs", oc.a);
-   public static final nz bo = a("template_four_turtle_eggs", oc.a);
-   public static final nz bp = a("template_single_face", oc.b);
-   public static final nz bq = a("template_cauldron_level1", oc.N, oc.M, oc.c, oc.f, oc.e, oc.i);
-   public static final nz br = a("template_cauldron_level2", oc.N, oc.M, oc.c, oc.f, oc.e, oc.i);
-   public static final nz bs = a("template_cauldron_full", oc.N, oc.M, oc.c, oc.f, oc.e, oc.i);
-   public static final nz bt = a("template_azalea", oc.f, oc.i);
-   public static final nz bu = a("template_potted_azalea_bush", oc.q, oc.f, oc.i);
-   public static final nz bv = a("template_potted_azalea_bush", oc.q, oc.f, oc.i);
-   public static final nz bw = a("sniffer_egg", oc.f, oc.e, oc.j, oc.k, oc.l, oc.m);
-   public static final nz bx = b("generated", oc.H);
-   public static final nz by = b("template_music_disc", oc.H);
-   public static final nz bz = b("handheld", oc.H);
-   public static final nz bA = b("handheld_rod", oc.H);
-   public static final nz bB = b("generated", oc.H, oc.I);
-   public static final nz bC = b("generated", oc.H, oc.I, oc.J);
-   public static final nz bD = b("template_shulker_box", oc.c);
-   public static final nz bE = b("template_bed", oc.c);
-   public static final nz bF = b("template_banner");
-   public static final nz bG = b("template_skull");
-   public static final nz bH = a("template_candle", oc.a, oc.c);
-   public static final nz bI = a("template_two_candles", oc.a, oc.c);
-   public static final nz bJ = a("template_three_candles", oc.a, oc.c);
-   public static final nz bK = a("template_four_candles", oc.a, oc.c);
-   public static final nz bL = a("template_cake_with_candle", oc.L, oc.e, oc.i, oc.f, oc.c);
-   public static final nz bM = a("template_sculk_shrieker", oc.e, oc.i, oc.f, oc.c, oc.O);
-   public static final nz bN = a("template_vault", oc.f, oc.e, oc.i, oc.g);
-   public static final nz bO = b("handheld_mace", oc.H);
+public class oa implements Supplier<JsonElement> {
+   private final akq a;
 
-   private static nz a(oc... $$0) {
-      return new nz(Optional.empty(), Optional.empty(), $$0);
+   public oa(akq $$0) {
+      this.a = $$0;
    }
 
-   private static nz a(String $$0, oc... $$1) {
-      return new nz(Optional.of(new akk("minecraft", "block/" + $$0)), Optional.empty(), $$1);
-   }
-
-   private static nz b(String $$0, oc... $$1) {
-      return new nz(Optional.of(new akk("minecraft", "item/" + $$0)), Optional.empty(), $$1);
-   }
-
-   private static nz a(String $$0, String $$1, oc... $$2) {
-      return new nz(Optional.of(new akk("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
+   public JsonElement a() {
+      JsonObject $$0 = new JsonObject();
+      $$0.addProperty("parent", this.a.toString());
+      return $$0;
    }
 }

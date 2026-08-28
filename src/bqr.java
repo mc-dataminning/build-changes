@@ -1,19 +1,37 @@
-public final class bqr implements bql {
-   private final wu a;
-   private final cqp b;
+public class bqr<T> {
+   private final bqq a;
+   private final T b;
 
-   public bqr(cqp $$0, wu $$1) {
-      this.b = $$0;
-      this.a = $$1;
+   public bqr(bqq $$0, T $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public wu O_() {
+   public bqq a() {
       return this.a;
    }
 
-   @Override
-   public cpi createMenu(int $$0, cmk $$1, cml $$2) {
-      return this.b.createMenu($$0, $$1, $$2);
+   public T b() {
+      return this.b;
+   }
+
+   public static <T> bqr<T> a(T $$0) {
+      return new bqr<>(bqq.a, $$0);
+   }
+
+   public static <T> bqr<T> b(T $$0) {
+      return new bqr<>(bqq.c, $$0);
+   }
+
+   public static <T> bqr<T> c(T $$0) {
+      return new bqr<>(bqq.e, $$0);
+   }
+
+   public static <T> bqr<T> d(T $$0) {
+      return new bqr<>(bqq.f, $$0);
+   }
+
+   public static <T> bqr<T> a(T $$0, boolean $$1) {
+      return $$1 ? a($$0) : b($$0);
    }
 }

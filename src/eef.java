@@ -1,52 +1,53 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eef implements edp {
-   public static final Codec<eef> a = RecordCodecBuilder.create(
+public class eef implements eee {
+   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
+   public static final Codec<eef> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               eib.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
-               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
-               awm.b(lr.f).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
-               efq.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
-               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
-               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
-               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
-               efq.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
-               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
-               dzn.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
+               dys.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
+               dyu.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
+               dyt.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
+               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
+               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
+               bpv.b(1, 20).fieldOf("outer_wall_distance").orElse(bqb.a(4, 5)).forGetter($$0x -> $$0x.i),
+               bpv.b(1, 20).fieldOf("distribution_points").orElse(bqb.a(3, 4)).forGetter($$0x -> $$0x.j),
+               bpv.b(0, 10).fieldOf("point_offset").orElse(bqb.a(1, 2)).forGetter($$0x -> $$0x.k),
+               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
+               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
+               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
+               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
             )
             .apply($$0, eef::new)
    );
-   public final jj<eib> b;
-   public final int c;
-   public final int d;
-   public final awm<dfi> e;
-   public final efq f;
-   public final int g;
-   public final int h;
-   public final int i;
-   public final int j;
-   public final efq k;
+   public final dys c;
+   public final dyu d;
+   public final dyt e;
+   public final double f;
+   public final double g;
+   public final boolean h;
+   public final bpv i;
+   public final bpv j;
+   public final bpv k;
    public final int l;
    public final int n;
-   public final dzn o;
+   public final double o;
+   public final int p;
 
-   public eef(jj<eib> $$0, int $$1, int $$2, awm<dfi> $$3, efq $$4, int $$5, int $$6, int $$7, int $$8, efq $$9, int $$10, int $$11, dzn $$12) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.n = $$11;
-      this.o = $$12;
+   public eef(dys $$0, dyu $$1, dyt $$2, double $$3, double $$4, boolean $$5, bpv $$6, bpv $$7, bpv $$8, int $$9, int $$10, double $$11, int $$12) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+      this.n = $$10;
+      this.o = $$11;
+      this.p = $$12;
    }
 }

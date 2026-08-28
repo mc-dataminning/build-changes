@@ -1,117 +1,43 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+public class gbx extends gcf {
+   private final double a;
+   private final int b;
 
-public interface gbx {
-   gbx a = new gbx() {
-      @Override
-      public void a(faj $$0, gpr $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gpp.e);
-         $$0.a(fat.b.h, fam.l);
-      }
+   gbx(fyz $$0, double $$1, double $$2, double $$3, double $$4, int $$5, int $$6) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$4;
+      this.t = $$5;
+      this.b = $$6;
+   }
 
-      @Override
-      public void a(faq $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   gbx b = new gbx() {
-      @Override
-      public void a(faj $$0, gpr $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(gdy::t);
-         RenderSystem.setShaderTexture(0, gpp.f);
-         $$0.a(fat.b.h, fam.l);
+   @Override
+   public void a() {
+      if (this.s % (this.b + 1) == 0) {
+         for (int $$0 = 0; $$0 < 3; $$0++) {
+            double $$1 = this.g + (this.r.j() - this.r.j()) * this.a;
+            double $$2 = this.h + (this.r.j() - this.r.j()) * this.a;
+            double $$3 = this.i + (this.r.j() - this.r.j()) * this.a;
+            this.c.a(lm.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+         }
       }
 
-      @Override
-      public void a(faq $$0) {
-         $$0.c();
+      if (this.s++ == this.t) {
+         this.k();
+      }
+   }
+
+   public static class a implements gck<lq> {
+      private final double a;
+      private final int b;
+      private final int c;
+
+      public a(double $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbx($$1, $$2, $$3, $$4, this.a, this.b, this.c);
       }
-   };
-   gbx c = new gbx() {
-      @Override
-      public void a(faj $$0, gpr $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gpp.f);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         $$0.a(fat.b.h, fam.l);
-      }
-
-      @Override
-      public void a(faq $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
-      }
-   };
-   gbx d = new gbx() {
-      @Override
-      public void a(faj $$0, gpr $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gpp.f);
-         $$0.a(fat.b.h, fam.l);
-      }
-
-      @Override
-      public void a(faq $$0) {
-         $$0.c();
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_LIT";
-      }
-   };
-   gbx e = new gbx() {
-      @Override
-      public void a(faj $$0, gpr $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-      }
-
-      @Override
-      public void a(faq $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   gbx f = new gbx() {
-      @Override
-      public void a(faj $$0, gpr $$1) {
-      }
-
-      @Override
-      public void a(faq $$0) {
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
-
-   void a(faj var1, gpr var2);
-
-   void a(faq var1);
+   }
 }

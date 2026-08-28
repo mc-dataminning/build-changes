@@ -4,13 +4,13 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class big extends bht {
+public class big extends Schema {
    public big(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(false, bgh.C, () -> DSL.constType(a()));
+      $$0.registerType(true, bgq.F, () -> DSL.optionalFields("SpawnPotentials", DSL.list(DSL.fields("Entity", bgq.A.in($$0))), "SpawnData", bgq.A.in($$0)));
    }
 }

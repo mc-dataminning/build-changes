@@ -1,61 +1,48 @@
-public class adi implements zb<abn> {
-   public static final ys<vr, adi> a = zb.a(adi::a, adi::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-   public adi(bsh $$0) {
-      this.b = $$0.dw();
-      this.c = $$0.dy();
-      this.d = $$0.dC();
-      this.e = $$0.dH();
-      this.f = $$0.dJ();
+public class adi implements zf<abt> {
+   public static final yw<vv, adi> a = zf.a(adi::a, adi::new);
+   private final int b;
+   private final int c;
+   private final adj d;
+
+   public adi(dcb $$0, eon $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = $$0.e;
+      this.c = $$0.f;
+      this.d = new adj($$0, $$1, $$2, $$3);
    }
 
-   private adi(vr $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
+   private adi(vv $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = new adj($$0, this.b, this.c);
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+   private void a(vv $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      this.d.a($$0);
    }
 
    @Override
-   public zd<adi> a() {
-      return afz.U;
+   public zh<adi> a() {
+      return agf.N;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public int b() {
       return this.b;
    }
 
-   public double e() {
+   public int e() {
       return this.c;
    }
 
-   public double f() {
+   public adj f() {
       return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
    }
 }

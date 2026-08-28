@@ -1,49 +1,50 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class efv extends eft {
-   public static final MapCodec<efv> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
+public class efv extends efq {
+   public static final MapCodec<efv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0)
             .and(
                $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dsl.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(dsl.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(dsl.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+                  bpv.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
                )
             )
             .apply($$0, efv::new)
    );
-   private final float g;
-   private final float h;
-   private final dsl i;
-   private final List<dsl> j;
-   private final List<dsl> k;
+   private final bpv b;
+   private final int c;
 
-   public efv(long $$0, enm.a $$1, float $$2, float $$3, float $$4, dsl $$5, List<dsl> $$6, List<dsl> $$7) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+   public efv(bpv $$0, bpv $$1, bpv $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
    @Override
    protected efr<?> a() {
-      return efr.c;
+      return efr.j;
    }
 
    @Override
-   public dsl a(ayo $$0, ja $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ac.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ac.a(this.k, $$0) : this.i;
+   protected void a(dda $$0, efq.b $$1, ayv $$2, efa $$3, int $$4, efq.a $$5, int $$6, int $$7, int $$8) {
+      jd $$9 = $$5.a();
+      jd.a $$10 = $$9.j();
+
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
       }
+   }
+
+   @Override
+   public int a(ayv $$0, int $$1, efa $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(ayv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

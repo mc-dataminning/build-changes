@@ -1,45 +1,71 @@
-public class sf {
-   public static final akj<eib> a = sc.a("pile_hay");
-   public static final akj<eib> b = sc.a("pile_melon");
-   public static final akj<eib> c = sc.a("pile_snow");
-   public static final akj<eib> d = sc.a("pile_ice");
-   public static final akj<eib> e = sc.a("pile_pumpkin");
-   public static final akj<eib> f = sc.a("oak");
-   public static final akj<eib> g = sc.a("acacia");
-   public static final akj<eib> h = sc.a("spruce");
-   public static final akj<eib> i = sc.a("pine");
-   public static final akj<eib> j = sc.a("patch_cactus");
-   public static final akj<eib> k = sc.a("flower_plain");
-   public static final akj<eib> l = sc.a("patch_taiga_grass");
-   public static final akj<eib> m = sc.a("patch_berry_bush");
+import java.util.List;
 
-   public static void a(qm<eib> $$0) {
-      jk<eay<?, ?>> $$1 = $$0.a(lr.aH);
-      jj<eay<?, ?>> $$2 = $$1.b(rr.a);
-      jj<eay<?, ?>> $$3 = $$1.b(rr.b);
-      jj<eay<?, ?>> $$4 = $$1.b(rr.c);
-      jj<eay<?, ?>> $$5 = $$1.b(rr.d);
-      jj<eay<?, ?>> $$6 = $$1.b(rr.e);
-      jj<eay<?, ?>> $$7 = $$1.b(rs.g);
-      jj<eay<?, ?>> $$8 = $$1.b(rs.j);
-      jj<eay<?, ?>> $$9 = $$1.b(rs.k);
-      jj<eay<?, ?>> $$10 = $$1.b(rs.l);
-      jj<eay<?, ?>> $$11 = $$1.b(rt.r);
-      jj<eay<?, ?>> $$12 = $$1.b(rt.w);
-      jj<eay<?, ?>> $$13 = $$1.b(rt.i);
-      jj<eay<?, ?>> $$14 = $$1.b(rt.h);
-      sc.a($$0, a, $$2);
-      sc.a($$0, b, $$3);
-      sc.a($$0, c, $$4);
-      sc.a($$0, d, $$5);
-      sc.a($$0, e, $$6);
-      sc.a($$0, f, $$7, sc.a(dfk.x));
-      sc.a($$0, g, $$8, sc.a(dfk.B));
-      sc.a($$0, h, $$9, sc.a(dfk.y));
-      sc.a($$0, i, $$10, sc.a(dfk.y));
-      sc.a($$0, j, $$11);
-      sc.a($$0, k, $$12);
-      sc.a($$0, l, $$13);
-      sc.a($$0, m, $$14);
+public class sf {
+   public static final eit a = eim.a(dyv.a.e);
+   public static final eit b = eim.a(dyv.a.c);
+   public static final eit c = eim.a(dyv.a.a);
+   public static final eit d = eim.a(dyv.a.d);
+   public static final eit e = eil.a(dzp.a(), dzp.b());
+   public static final eit f = eil.a(dzp.b(10), dzp.c(10));
+   public static final eit g = eil.a(dzp.b(8), dzp.c(8));
+   public static final eit h = eil.a(dzp.b(4), dzp.c(4));
+   public static final eit i = eil.a(dzp.a(), dzp.a(256));
+
+   public static void a(qp<eiq> $$0) {
+      rz.a($$0);
+      sa.a($$0);
+      sb.a($$0);
+      sc.a($$0);
+      sd.a($$0);
+      se.a($$0);
+      sg.a($$0);
+      sh.a($$0);
+      si.a($$0);
+   }
+
+   public static akp<eiq> a(String $$0) {
+      return akp.a(lu.aQ, akq.b($$0));
+   }
+
+   public static void a(qp<eiq> $$0, akp<eiq> $$1, jm<ebn<?, ?>> $$2, List<eit> $$3) {
+      $$0.a($$1, new eiq($$2, List.copyOf($$3)));
+   }
+
+   public static void a(qp<eiq> $$0, akp<eiq> $$1, jm<ebn<?, ?>> $$2, eit... $$3) {
+      a($$0, $$1, $$2, List.of($$3));
+   }
+
+   public static eit a(int $$0, float $$1, int $$2) {
+      float $$3 = 1.0F / $$1;
+      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
+         throw new IllegalStateException("Chance data cannot be represented as list weight");
+      } else {
+         bpa<bpv> $$4 = bpa.<bpv>a().a(bps.a($$0), (int)$$3 - 1).a(bps.a($$0 + $$2), 1).a();
+         return eij.a(new bqc($$4));
+      }
+   }
+
+   public static eis a() {
+      return eif.a(eac.c);
+   }
+
+   public static eif a(dfw $$0) {
+      return eif.a(eac.a($$0.o(), jd.c));
+   }
+
+   public static jm<eiq> a(jm<ebn<?, ?>> $$0, eit... $$1) {
+      return jm.a(new eiq($$0, List.of($$1)));
+   }
+
+   public static <FC extends eee, F extends eca<FC>> jm<eiq> a(F $$0, FC $$1, eit... $$2) {
+      return a(jm.a(new ebn($$0, $$1)), $$2);
+   }
+
+   public static <FC extends eee, F extends eca<FC>> jm<eiq> a(F $$0, FC $$1) {
+      return a($$0, $$1, eac.c);
+   }
+
+   public static <FC extends eee, F extends eca<FC>> jm<eiq> a(F $$0, FC $$1, eac $$2) {
+      return a($$0, $$1, eif.a($$2));
    }
 }

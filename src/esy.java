@@ -1,52 +1,80 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class esy extends esj {
-   public static final MapCodec<esy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  cwv.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  cwv.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  cwv.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, esy::new)
-   );
-   public static final cwv b = new cwv(cwv.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<cwv.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+public abstract class esy implements esz {
+   protected final List<euw> g;
+   private final Predicate<erl> a;
 
-   public esy(List<euh> $$0, Optional<cwv.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+   protected esy(List<euw> $$0) {
+      this.g = $$0;
+      this.a = ad.a($$0);
    }
 
    @Override
-   protected cud a(cud $$0, eqw $$1) {
-      $$0.a(kn.T, b, this::a);
-      return $$0;
+   public abstract eta<? extends esy> b();
+
+   protected static <T extends esy> P1<Mu<T>, List<euw>> a(Instance<T> $$0) {
+      return $$0.group(euw.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
    }
 
-   private cwv a(cwv $$0) {
-      return new cwv(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
+   public final cuo b(cuo $$0, erl $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
    }
+
+   protected abstract cuo a(cuo var1, erl var2);
 
    @Override
-   public esl<esy> b() {
-      return esm.L;
+   public void a(err $$0) {
+      esz.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
+      }
+   }
+
+   protected static esy.a<?> a(Function<List<euw>, esz> $$0) {
+      return new esy.b($$0);
+   }
+
+   public abstract static class a<T extends esy.a<T>> implements esz.a, euo<T> {
+      private final Builder<euw> a = ImmutableList.builder();
+
+      public T a(euw.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
+      }
+
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected List<euw> g() {
+         return this.a.build();
+      }
+   }
+
+   static final class b extends esy.a<esy.b> {
+      private final Function<List<euw>, esz> a;
+
+      public b(Function<List<euw>, esz> $$0) {
+         this.a = $$0;
+      }
+
+      protected esy.b a() {
+         return this;
+      }
+
+      @Override
+      public esz b() {
+         return this.a.apply(this.g());
+      }
    }
 }

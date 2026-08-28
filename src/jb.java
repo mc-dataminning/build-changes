@@ -1,35 +1,85 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JavaOps;
-import java.util.HashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.Iterator;
 
-public class jb<T> {
-   private final Codec<T> a;
+public record jb(jd b, jd c) implements Iterable<jd> {
+   public static final yw<ByteBuf, jb> a = new yw<ByteBuf, jb>() {
+      public jb a(ByteBuf $$0) {
+         return new jb(vv.b($$0), vv.b($$0));
+      }
 
-   jb(Codec<T> $$0) {
-      this.a = $$0;
+      public void a(ByteBuf $$0, jb $$1) {
+         vv.a($$0, $$1.f());
+         vv.a($$0, $$1.g());
+      }
+   };
+
+   public jb(final jd b, final jd c) {
+      this.b = jd.a(b, c);
+      this.c = jd.b(b, c);
    }
 
-   public T a(T $$0, jl.a $$1, jl.a $$2) {
-      DynamicOps<Object> $$3 = $$1.a(JavaOps.INSTANCE);
-      DynamicOps<Object> $$4 = $$2.a(JavaOps.INSTANCE);
-      Object $$5 = this.a.encodeStart($$3, $$0).getOrThrow($$0x -> new IllegalStateException("Failed to encode: " + $$0x));
-      return (T)this.a.parse($$4, $$5).getOrThrow($$0x -> new IllegalStateException("Failed to decode: " + $$0x));
+   public static jb a(jd $$0) {
+      return new jb($$0, $$0);
    }
 
-   public static class a {
-      private final Map<akj<? extends jw<?>>, jb<?>> a = new HashMap<>();
+   public static jb a(jd $$0, jd $$1) {
+      return new jb($$0, $$1);
+   }
 
-      public <T> jb.a a(akj<? extends jw<? extends T>> $$0, Codec<T> $$1) {
-         this.a.put($$0, new jb($$1));
+   public jb b(jd $$0) {
+      return new jb(jd.a(this.b, $$0), jd.b(this.c, $$0));
+   }
+
+   public boolean a() {
+      return this.b.equals(this.c);
+   }
+
+   public boolean c(jd $$0) {
+      return $$0.u() >= this.b.u() && $$0.v() >= this.b.v() && $$0.w() >= this.b.w() && $$0.u() <= this.c.u() && $$0.v() <= this.c.v() && $$0.w() <= this.c.w();
+   }
+
+   public ewr b() {
+      return ewr.a(this.b, this.c);
+   }
+
+   @Override
+   public Iterator<jd> iterator() {
+      return jd.c(this.b, this.c).iterator();
+   }
+
+   public int c() {
+      return this.c.u() - this.b.u() + 1;
+   }
+
+   public int d() {
+      return this.c.v() - this.b.v() + 1;
+   }
+
+   public int e() {
+      return this.c.w() - this.b.w() + 1;
+   }
+
+   public jb a(ji $$0, int $$1) {
+      if ($$1 == 0) {
          return this;
+      } else {
+         return $$0.f() == ji.b.a ? a(this.b, jd.b(this.b, this.c.a($$0, $$1))) : a(jd.a(this.b.a($$0, $$1), this.c), this.c);
       }
+   }
 
-      @Nullable
-      public <T> jb<T> a(akj<? extends jw<? extends T>> $$0) {
-         return (jb<T>)this.a.get($$0);
-      }
+   public jb b(ji $$0, int $$1) {
+      return $$1 == 0 ? this : new jb(this.b.a($$0, $$1), this.c.a($$0, $$1));
+   }
+
+   public jb a(kh $$0) {
+      return new jb(this.b.a($$0), this.c.a($$0));
+   }
+
+   public jd f() {
+      return this.b;
+   }
+
+   public jd g() {
+      return this.c;
    }
 }

@@ -1,56 +1,54 @@
-import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class fcn extends fck {
-   private static final Logger e = LogUtils.getLogger();
-   public List<fcm> a;
-   public int b;
-   public int c;
-   public int d;
+public class fcn {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
+   @Nullable
+   private final String[] d;
 
-   public fcn() {
-   }
-
-   public fcn(int $$0) {
-      this.a = Collections.emptyList();
-      this.b = 0;
+   private fcn(String $$0, @Nullable String[] $$1) {
       this.c = $$0;
-      this.d = -1;
+      this.d = $$1;
    }
 
-   public boolean a() {
-      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
+   public wy a(wy $$0) {
+      return Objects.requireNonNullElse(this.a(), $$0);
    }
 
-   public static fcn a(String $$0) {
-      fcn $$1 = new fcn();
-      $$1.a = Lists.newArrayList();
+   @Nullable
+   public wy a() {
+      if (!grl.a(this.c)) {
+         return null;
+      } else {
+         return this.d == null ? wy.c(this.c) : wy.a(this.c, this.d);
+      }
+   }
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("templates").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
+   public static fcn a(JsonObject $$0) {
+      String $$1 = fet.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
 
-            while ($$4.hasNext()) {
-               $$1.a.add(fcm.a($$4.next().getAsJsonObject()));
-            }
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
          }
-
-         $$1.b = feh.a("page", $$3, 0);
-         $$1.c = feh.a("size", $$3, 0);
-         $$1.d = feh.a("total", $$3, 0);
-      } catch (Exception var5) {
-         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
+      } else {
+         $$5 = null;
       }
 
-      return $$1;
+      return new fcn($$1, $$5);
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 }

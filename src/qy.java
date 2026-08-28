@@ -1,122 +1,270 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class qy {
-   public static eix.c a(jn<ddg> $$0, Map<btf, eje> $$1, dyc.b $$2, eji $$3) {
-      return new eix.c($$0, $$1, $$2, $$3);
-   }
+   public static final akp<ekw> a = qw.a("village/savanna/town_centers");
+   private static final akp<ekw> b = qw.a("village/savanna/terminators");
+   private static final akp<ekw> c = qw.a("village/savanna/zombie/terminators");
 
-   private static eix.c a(jn<ddg> $$0, dyc.b $$1, eji $$2) {
-      return a($$0, Map.of(), $$1, $$2);
-   }
-
-   private static eix.c a(jn<ddg> $$0, eji $$1) {
-      return a($$0, Map.of(), dyc.b.e, $$1);
-   }
-
-   public static void a(qm<eix> $$0) {
-      jk<ddg> $$1 = $$0.a(lr.aE);
-      jk<ekh> $$2 = $$0.a(lr.aT);
+   public static void a(qp<ekw> $$0) {
+      jn<eiq> $$1 = $$0.a(lu.aQ);
+      jm<eiq> $$2 = $$1.b(si.g);
+      jm<eiq> $$3 = $$1.b(si.a);
+      jm<eiq> $$4 = $$1.b(si.b);
+      jn<enl> $$5 = $$0.a(lu.aS);
+      jm<enl> $$6 = $$5.b(qx.b);
+      jm<enl> $$7 = $$5.b(qx.j);
+      jm<enl> $$8 = $$5.b(qx.m);
+      jn<ekw> $$9 = $$0.a(lu.aU);
+      jm<ekw> $$10 = $$9.b(qw.a);
+      jm<ekw> $$11 = $$9.b(b);
+      jm<ekw> $$12 = $$9.b(c);
       $$0.a(
-         eir.a,
-         new eky(
-            a($$1.b(avv.y), Map.of(btf.a, new eje(eje.a.b, bov.a(new dds.c(bsn.aC, 1, 1, 1)))), dyc.b.e, eji.c), $$2.b(qr.a), 7, ehd.a(dza.a(0)), true, dyg.a.a
+         a,
+         new ekw(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eku.a("village/savanna/town_centers/savanna_meeting_point_1"), 100),
+               Pair.of(eku.a("village/savanna/town_centers/savanna_meeting_point_2"), 50),
+               Pair.of(eku.a("village/savanna/town_centers/savanna_meeting_point_3"), 150),
+               Pair.of(eku.a("village/savanna/town_centers/savanna_meeting_point_4"), 150),
+               Pair.of(eku.a("village/savanna/zombie/town_centers/savanna_meeting_point_1", $$6), 2),
+               Pair.of(eku.a("village/savanna/zombie/town_centers/savanna_meeting_point_2", $$6), 1),
+               Pair.of(eku.a("village/savanna/zombie/town_centers/savanna_meeting_point_3", $$6), 3),
+               Pair.of(eku.a("village/savanna/zombie/town_centers/savanna_meeting_point_4", $$6), 3)
+            ),
+            ekw.a.b
          )
       );
-      $$0.a(eir.b, new elc(a($$1.b(avv.t), dyc.b.d, eji.a), elc.a.a));
-      $$0.a(eir.c, new elc(a($$1.b(avv.u), dyc.b.d, eji.a), elc.a.b));
-      $$0.a(eir.d, new elu(a($$1.b(avv.Q), eji.a)));
-      $$0.a(eir.e, new ela(a($$1.b(avv.s), eji.a)));
-      $$0.a(eir.f, new ekt(a($$1.b(avv.q), eji.a)));
-      $$0.a(eir.g, new ekx(a($$1.b(avv.r), eji.a)));
-      $$0.a(eir.h, new elo(a($$1.b(avv.G), eji.a), false));
-      $$0.a(eir.i, new elo(a($$1.b(avv.F), eji.a), true));
-      $$0.a(
-         eir.j,
-         new els(
-            a(
-               $$1.b(avv.J),
-               Map.of(btf.a, new eje(eje.a.a, bov.a(new dds.c(bsn.bo, 1, 1, 1))), btf.b, new eje(eje.a.a, bov.a(new dds.c(bsn.p, 1, 1, 1)))),
-               dyc.b.e,
-               eji.a
-            )
+      qw.a(
+         $$0,
+         "village/savanna/streets",
+         new ekw(
+            $$11,
+            ImmutableList.of(
+               Pair.of(eku.a("village/savanna/streets/corner_01", $$7), 2),
+               Pair.of(eku.a("village/savanna/streets/corner_03", $$7), 2),
+               Pair.of(eku.a("village/savanna/streets/straight_02", $$7), 4),
+               Pair.of(eku.a("village/savanna/streets/straight_04", $$7), 7),
+               Pair.of(eku.a("village/savanna/streets/straight_05", $$7), 3),
+               Pair.of(eku.a("village/savanna/streets/straight_06", $$7), 4),
+               Pair.of(eku.a("village/savanna/streets/straight_08", $$7), 4),
+               Pair.of(eku.a("village/savanna/streets/straight_09", $$7), 4),
+               Pair.of(eku.a("village/savanna/streets/straight_10", $$7), 4),
+               Pair.of(eku.a("village/savanna/streets/straight_11", $$7), 4),
+               Pair.of(eku.a("village/savanna/streets/crossroad_02", $$7), 1),
+               Pair.of(eku.a("village/savanna/streets/crossroad_03", $$7), 2),
+               new Pair[]{
+                  Pair.of(eku.a("village/savanna/streets/crossroad_04", $$7), 2),
+                  Pair.of(eku.a("village/savanna/streets/crossroad_05", $$7), 2),
+                  Pair.of(eku.a("village/savanna/streets/crossroad_06", $$7), 2),
+                  Pair.of(eku.a("village/savanna/streets/crossroad_07", $$7), 2),
+                  Pair.of(eku.a("village/savanna/streets/split_01", $$7), 2),
+                  Pair.of(eku.a("village/savanna/streets/split_02", $$7), 2),
+                  Pair.of(eku.a("village/savanna/streets/turn_01", $$7), 3)
+               }
+            ),
+            ekw.a.a
          )
       );
-      $$0.a(eir.k, new elq(a($$1.b(avv.H), eji.b)));
-      $$0.a(
-         eir.l,
-         new eli(
-            a(
-               $$1.b(avv.v),
-               Map.of(btf.a, new eje(eje.a.b, bov.a(new dds.c(bsn.Y, 1, 2, 4))), btf.e, new eje(eje.a.b, dds.a), btf.d, new eje(eje.a.b, dds.a)),
-               dyc.b.e,
-               eji.a
-            )
+      qw.a(
+         $$0,
+         "village/savanna/zombie/streets",
+         new ekw(
+            $$12,
+            ImmutableList.of(
+               Pair.of(eku.a("village/savanna/zombie/streets/corner_01", $$7), 2),
+               Pair.of(eku.a("village/savanna/zombie/streets/corner_03", $$7), 2),
+               Pair.of(eku.a("village/savanna/zombie/streets/straight_02", $$7), 4),
+               Pair.of(eku.a("village/savanna/zombie/streets/straight_04", $$7), 7),
+               Pair.of(eku.a("village/savanna/zombie/streets/straight_05", $$7), 3),
+               Pair.of(eku.a("village/savanna/zombie/streets/straight_06", $$7), 4),
+               Pair.of(eku.a("village/savanna/zombie/streets/straight_08", $$7), 4),
+               Pair.of(eku.a("village/savanna/zombie/streets/straight_09", $$7), 4),
+               Pair.of(eku.a("village/savanna/zombie/streets/straight_10", $$7), 4),
+               Pair.of(eku.a("village/savanna/zombie/streets/straight_11", $$7), 4),
+               Pair.of(eku.a("village/savanna/zombie/streets/crossroad_02", $$7), 1),
+               Pair.of(eku.a("village/savanna/zombie/streets/crossroad_03", $$7), 2),
+               new Pair[]{
+                  Pair.of(eku.a("village/savanna/zombie/streets/crossroad_04", $$7), 2),
+                  Pair.of(eku.a("village/savanna/zombie/streets/crossroad_05", $$7), 2),
+                  Pair.of(eku.a("village/savanna/zombie/streets/crossroad_06", $$7), 2),
+                  Pair.of(eku.a("village/savanna/zombie/streets/crossroad_07", $$7), 2),
+                  Pair.of(eku.a("village/savanna/zombie/streets/split_01", $$7), 2),
+                  Pair.of(eku.a("village/savanna/zombie/streets/split_02", $$7), 2),
+                  Pair.of(eku.a("village/savanna/zombie/streets/turn_01", $$7), 3)
+               }
+            ),
+            ekw.a.a
          )
       );
-      $$0.a(eir.m, new elk(a($$1.b(avv.w), eji.a), elk.a.b, 0.3F, 0.9F));
-      $$0.a(eir.n, new elk(a($$1.b(avv.x), eji.a), elk.a.a, 0.3F, 0.9F));
-      $$0.a(eir.o, new ele(a($$1.b(avv.R), Map.of(btf.a, new eje(eje.a.a, ele.d)), dyc.b.h, eji.a)));
-      $$0.a(eir.p, new elg(a($$1.b(avv.S), dyc.b.h, eji.c), ehh.a(dza.a(32), dza.c(2))));
-      $$0.a(eir.q, new ekv(a($$1.b(avv.W), eji.a)));
-      $$0.a(eir.r, new ekr(a($$1.b(avv.p), dyc.b.d, eji.a)));
-      $$0.a(eir.s, new eky(a($$1.b(avv.T), eji.a), $$2.b(qi.a), 6, ehd.a(dza.a(33)), false));
-      $$0.a(eir.t, new eky(a($$1.b(avv.L), eji.c), $$2.b(qs.a), 6, ehd.a(dza.a(0)), true, dyg.a.a));
-      $$0.a(eir.u, new eky(a($$1.b(avv.K), eji.c), $$2.b(qo.a), 6, ehd.a(dza.a(0)), true, dyg.a.a));
-      $$0.a(eir.v, new eky(a($$1.b(avv.M), eji.c), $$2.b(qv.a), 6, ehd.a(dza.a(0)), true, dyg.a.a));
-      $$0.a(eir.w, new eky(a($$1.b(avv.N), eji.c), $$2.b(qw.a), 6, ehd.a(dza.a(0)), true, dyg.a.a));
-      $$0.a(eir.x, new eky(a($$1.b(avv.O), eji.c), $$2.b(ra.a), 6, ehd.a(dza.a(0)), true, dyg.a.a));
-      $$0.a(
-         eir.y,
-         new elm(
-            a($$1.b(avv.E), eji.a),
-            List.of(new elm.a(ell.b.e, 1.0F, 0.2F, false, false, true, false, 0.5F), new elm.a(ell.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+      qw.a(
+         $$0,
+         "village/savanna/houses",
+         new ekw(
+            $$11,
+            ImmutableList.of(
+               Pair.of(eku.a("village/savanna/houses/savanna_small_house_1"), 2),
+               Pair.of(eku.a("village/savanna/houses/savanna_small_house_2"), 2),
+               Pair.of(eku.a("village/savanna/houses/savanna_small_house_3"), 2),
+               Pair.of(eku.a("village/savanna/houses/savanna_small_house_4"), 2),
+               Pair.of(eku.a("village/savanna/houses/savanna_small_house_5"), 2),
+               Pair.of(eku.a("village/savanna/houses/savanna_small_house_6"), 2),
+               Pair.of(eku.a("village/savanna/houses/savanna_small_house_7"), 2),
+               Pair.of(eku.a("village/savanna/houses/savanna_small_house_8"), 2),
+               Pair.of(eku.a("village/savanna/houses/savanna_medium_house_1"), 2),
+               Pair.of(eku.a("village/savanna/houses/savanna_medium_house_2"), 2),
+               Pair.of(eku.a("village/savanna/houses/savanna_butchers_shop_1"), 2),
+               Pair.of(eku.a("village/savanna/houses/savanna_butchers_shop_2"), 2),
+               new Pair[]{
+                  Pair.of(eku.a("village/savanna/houses/savanna_tool_smith_1"), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_fletcher_house_1"), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_shepherd_1"), 7),
+                  Pair.of(eku.a("village/savanna/houses/savanna_armorer_1"), 1),
+                  Pair.of(eku.a("village/savanna/houses/savanna_fisher_cottage_1"), 3),
+                  Pair.of(eku.a("village/savanna/houses/savanna_tannery_1"), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_cartographer_1"), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_library_1"), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_mason_1"), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_weaponsmith_1"), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_weaponsmith_2"), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_temple_1"), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_temple_2"), 3),
+                  Pair.of(eku.a("village/savanna/houses/savanna_large_farm_1", $$8), 4),
+                  Pair.of(eku.a("village/savanna/houses/savanna_large_farm_2", $$8), 6),
+                  Pair.of(eku.a("village/savanna/houses/savanna_small_farm", $$8), 4),
+                  Pair.of(eku.a("village/savanna/houses/savanna_animal_pen_1"), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_animal_pen_2"), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_animal_pen_3"), 2),
+                  Pair.of(eku.g(), 5)
+               }
+            ),
+            ekw.a.b
          )
       );
-      $$0.a(eir.z, new elm(a($$1.b(avv.z), eji.a), new elm.a(ell.b.b, 0.0F, 0.0F, false, false, false, false, 1.0F)));
-      $$0.a(eir.A, new elm(a($$1.b(avv.A), eji.a), new elm.a(ell.b.a, 0.5F, 0.8F, true, true, false, false, 1.0F)));
-      $$0.a(eir.B, new elm(a($$1.b(avv.C), eji.a), new elm.a(ell.b.c, 0.0F, 0.5F, false, true, false, false, 1.0F)));
-      $$0.a(
-         eir.C,
-         new elm(
-            a($$1.b(avv.D), eji.a),
-            List.of(new elm.a(ell.b.d, 1.0F, 0.2F, false, false, true, false, 0.5F), new elm.a(ell.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+      qw.a(
+         $$0,
+         "village/savanna/zombie/houses",
+         new ekw(
+            $$12,
+            ImmutableList.of(
+               Pair.of(eku.a("village/savanna/zombie/houses/savanna_small_house_1", $$6), 2),
+               Pair.of(eku.a("village/savanna/zombie/houses/savanna_small_house_2", $$6), 2),
+               Pair.of(eku.a("village/savanna/zombie/houses/savanna_small_house_3", $$6), 2),
+               Pair.of(eku.a("village/savanna/zombie/houses/savanna_small_house_4", $$6), 2),
+               Pair.of(eku.a("village/savanna/zombie/houses/savanna_small_house_5", $$6), 2),
+               Pair.of(eku.a("village/savanna/zombie/houses/savanna_small_house_6", $$6), 2),
+               Pair.of(eku.a("village/savanna/zombie/houses/savanna_small_house_7", $$6), 2),
+               Pair.of(eku.a("village/savanna/zombie/houses/savanna_small_house_8", $$6), 2),
+               Pair.of(eku.a("village/savanna/zombie/houses/savanna_medium_house_1", $$6), 2),
+               Pair.of(eku.a("village/savanna/zombie/houses/savanna_medium_house_2", $$6), 2),
+               Pair.of(eku.a("village/savanna/houses/savanna_butchers_shop_1", $$6), 2),
+               Pair.of(eku.a("village/savanna/houses/savanna_butchers_shop_2", $$6), 2),
+               new Pair[]{
+                  Pair.of(eku.a("village/savanna/houses/savanna_tool_smith_1", $$6), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_fletcher_house_1", $$6), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_shepherd_1", $$6), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_armorer_1", $$6), 1),
+                  Pair.of(eku.a("village/savanna/houses/savanna_fisher_cottage_1", $$6), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_tannery_1", $$6), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_cartographer_1", $$6), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_library_1", $$6), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_mason_1", $$6), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_weaponsmith_1", $$6), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_weaponsmith_2", $$6), 2),
+                  Pair.of(eku.a("village/savanna/houses/savanna_temple_1", $$6), 1),
+                  Pair.of(eku.a("village/savanna/houses/savanna_temple_2", $$6), 3),
+                  Pair.of(eku.a("village/savanna/houses/savanna_large_farm_1", $$6), 4),
+                  Pair.of(eku.a("village/savanna/zombie/houses/savanna_large_farm_2", $$6), 4),
+                  Pair.of(eku.a("village/savanna/houses/savanna_small_farm", $$6), 4),
+                  Pair.of(eku.a("village/savanna/houses/savanna_animal_pen_1", $$6), 2),
+                  Pair.of(eku.a("village/savanna/zombie/houses/savanna_animal_pen_2", $$6), 2),
+                  Pair.of(eku.a("village/savanna/zombie/houses/savanna_animal_pen_3", $$6), 2),
+                  Pair.of(eku.g(), 5)
+               }
+            ),
+            ekw.a.b
          )
       );
-      $$0.a(eir.D, new elm(a($$1.b(avv.B), eji.a), new elm.a(ell.b.c, 0.0F, 0.8F, false, false, true, false, 1.0F)));
-      $$0.a(eir.E, new elm(a($$1.b(avv.V), eji.a), new elm.a(ell.b.f, 0.5F, 0.0F, false, false, false, true, 1.0F)));
       $$0.a(
-         eir.F,
-         new eky(
-            a($$1.b(avv.U), Arrays.stream(btf.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new eje(eje.a.b, bov.c()))), dyc.b.h, eji.d),
-            $$2.b(qd.a),
-            Optional.of(new akk("city_anchor")),
-            7,
-            ehd.a(dza.a(-27)),
-            false,
-            Optional.empty(),
-            116,
-            List.of(),
-            eky.d
+         b,
+         new ekw(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eku.a("village/plains/terminators/terminator_01", $$7), 1),
+               Pair.of(eku.a("village/plains/terminators/terminator_02", $$7), 1),
+               Pair.of(eku.a("village/plains/terminators/terminator_03", $$7), 1),
+               Pair.of(eku.a("village/plains/terminators/terminator_04", $$7), 1),
+               Pair.of(eku.a("village/savanna/terminators/terminator_05", $$7), 1)
+            ),
+            ekw.a.a
          )
       );
-      $$0.a(eir.G, new eky(a($$1.b(avv.P), Map.of(), dyc.b.d, eji.b), $$2.b(rc.a), 7, ehd.a(dza.a(-15)), false, dyg.a.a));
       $$0.a(
-         eir.H,
-         new eky(
-            a($$1.b(avv.I), Arrays.stream(btf.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new eje(eje.a.a, bov.c()))), dyc.b.d, eji.e),
-            $$2.b(rd.a),
-            Optional.empty(),
-            20,
-            ehh.a(dza.a(-40), dza.a(-20)),
-            false,
-            Optional.empty(),
-            116,
-            rd.d,
-            new ejx(10)
+         c,
+         new ekw(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eku.a("village/plains/terminators/terminator_01", $$7), 1),
+               Pair.of(eku.a("village/plains/terminators/terminator_02", $$7), 1),
+               Pair.of(eku.a("village/plains/terminators/terminator_03", $$7), 1),
+               Pair.of(eku.a("village/plains/terminators/terminator_04", $$7), 1),
+               Pair.of(eku.a("village/savanna/zombie/terminators/terminator_05", $$7), 1)
+            ),
+            ekw.a.a
+         )
+      );
+      qw.a($$0, "village/savanna/trees", new ekw($$10, ImmutableList.of(Pair.of(eku.a($$2), 1)), ekw.a.b));
+      qw.a(
+         $$0,
+         "village/savanna/decor",
+         new ekw(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eku.a("village/savanna/savanna_lamp_post_01"), 4),
+               Pair.of(eku.a($$2), 4),
+               Pair.of(eku.a($$3), 4),
+               Pair.of(eku.a($$4), 1),
+               Pair.of(eku.g(), 4)
+            ),
+            ekw.a.b
+         )
+      );
+      qw.a(
+         $$0,
+         "village/savanna/zombie/decor",
+         new ekw(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eku.a("village/savanna/savanna_lamp_post_01", $$6), 4),
+               Pair.of(eku.a($$2), 4),
+               Pair.of(eku.a($$3), 4),
+               Pair.of(eku.a($$4), 1),
+               Pair.of(eku.g(), 4)
+            ),
+            ekw.a.b
+         )
+      );
+      qw.a(
+         $$0,
+         "village/savanna/villagers",
+         new ekw(
+            $$10,
+            ImmutableList.of(
+               Pair.of(eku.a("village/savanna/villagers/nitwit"), 1),
+               Pair.of(eku.a("village/savanna/villagers/baby"), 1),
+               Pair.of(eku.a("village/savanna/villagers/unemployed"), 10)
+            ),
+            ekw.a.b
+         )
+      );
+      qw.a(
+         $$0,
+         "village/savanna/zombie/villagers",
+         new ekw(
+            $$10,
+            ImmutableList.of(Pair.of(eku.a("village/savanna/zombie/villagers/nitwit"), 1), Pair.of(eku.a("village/savanna/zombie/villagers/unemployed"), 10)),
+            ekw.a.b
          )
       );
    }

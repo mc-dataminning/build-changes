@@ -1,25 +1,37 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
 public class cdv {
-   @Nullable
-   public static ewh a(btl $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = cdy.a($$0, $$1);
-      return ceb.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   private final btn a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
+
+   public cdv(btn $$0) {
+      this.a = $$0;
    }
 
-   @Nullable
-   public static ja a(btl $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      ja $$8 = ceb.a($$0.dU(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
+   public void a() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   public boolean a(bsq $$0) {
+      int $$1 = $$0.an();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
       } else {
-         ja $$9 = ceb.a($$0, $$1, $$0.dU(), $$8);
-         if (!cdy.a($$9, $$0) && !cdy.a($$7, $$0, $$9)) {
-            $$9 = ceb.a($$9, $$0.dR().am(), $$1x -> cdy.c($$0, $$1x));
-            return cdy.b($$0, $$9) ? null : $$9;
+         this.a.dQ().ag().a("hasLineOfSight");
+         boolean $$2 = this.a.F($$0);
+         this.a.dQ().ag().c();
+         if ($$2) {
+            this.b.add($$1);
          } else {
-            return null;
+            this.c.add($$1);
          }
+
+         return $$2;
       }
    }
 }

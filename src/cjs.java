@@ -1,180 +1,101 @@
-import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
+public class cjs extends ckb {
+   private static final int b = 2400;
+   private int c;
 
-public abstract class cjs extends cjr {
-   @Nullable
-   private ja b;
-   private boolean c;
-   private boolean d;
-
-   protected cjs(bsn<? extends cjs> $$0, dcg $$1) {
+   public cjs(bsw<? extends cjs> $$0, dcu $$1) {
       super($$0, $$1);
+      this.bP = 3;
    }
 
    @Override
    protected void z() {
-      super.z();
-      this.bU.a(4, new cjs.a<>(this, 0.7, 0.595));
+      this.bU.a(1, new cae(this));
+      this.bU.a(1, new bzz(this, this.dQ()));
+      this.bU.a(2, new cau(this, 1.0, false));
+      this.bU.a(3, new cbx(this, 1.0));
+      this.bU.a(7, new cas(this, cmv.class, 8.0F));
+      this.bU.a(8, new cbf(this));
+      this.bV.a(1, new ccc(this).a());
+      this.bV.a(2, new ccd<>(this, cmv.class, true));
+   }
+
+   public static but.a s() {
+      return ckb.gs().a(buu.s, 8.0).a(buu.v, 0.25).a(buu.c, 2.0);
    }
 
    @Override
-   public void b(tx $$0) {
-      super.b($$0);
-      if (this.b != null) {
-         $$0.a("patrol_target", um.a(this.b));
-      }
-
-      $$0.a("PatrolLeader", this.c);
-      $$0.a("Patrolling", this.d);
+   protected bsq.b bc() {
+      return bsq.b.c;
    }
 
    @Override
-   public void a(tx $$0) {
+   protected avn v() {
+      return avo.ip;
+   }
+
+   @Override
+   protected avn d(brj $$0) {
+      return avo.ir;
+   }
+
+   @Override
+   protected avn n_() {
+      return avo.iq;
+   }
+
+   @Override
+   protected void b(jd $$0, dta $$1) {
+      this.a(avo.is, 0.15F, 1.0F);
+   }
+
+   @Override
+   public void a(ua $$0) {
       super.a($$0);
-      um.a($$0, "patrol_target").ifPresent($$0x -> this.b = $$0x);
-      this.c = $$0.q("PatrolLeader");
-      this.d = $$0.q("Patrolling");
-   }
-
-   public boolean go() {
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public btv a(dcv $$0, bqf $$1, btg $$2, @Nullable btv $$3) {
-      if ($$2 != btg.p && $$2 != btg.h && $$2 != btg.d && $$0.E_().i() < 0.06F && this.go()) {
-         this.c = true;
-      }
-
-      if (this.gr()) {
-         this.a(bso.f, cnw.a(this.dT().b(lr.d)));
-         this.a(bso.f, 2.0F);
-      }
-
-      if ($$2 == btg.p) {
-         this.d = true;
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   public static boolean b(bsn<? extends cjs> $$0, dch $$1, btg $$2, ja $$3, ayo $$4) {
-      return $$1.a(dcp.b, $$3) > 8 ? false : c($$0, $$1, $$2, $$3, $$4);
+      this.c = $$0.h("Lifetime");
    }
 
    @Override
-   public boolean h(double $$0) {
-      return !this.d || $$0 > 16384.0;
+   public void b(ua $$0) {
+      super.b($$0);
+      $$0.a("Lifetime", this.c);
    }
 
-   public void h(ja $$0) {
-      this.b = $$0;
-      this.d = true;
+   @Override
+   public void l() {
+      this.aY = this.dG();
+      super.l();
    }
 
-   public ja gp() {
-      return this.b;
+   @Override
+   public void p(float $$0) {
+      this.s($$0);
+      super.p($$0);
    }
 
-   public boolean gq() {
-      return this.b != null;
-   }
+   @Override
+   public void m_() {
+      super.m_();
+      if (this.dQ().B) {
+         for (int $$0 = 0; $$0 < 2; $$0++) {
+            this.dQ().a(lm.ac, this.d(0.5), this.dy(), this.g(0.5), (this.ah.j() - 0.5) * 2.0, -this.ah.j(), (this.ah.j() - 0.5) * 2.0);
+         }
+      } else {
+         if (!this.fR()) {
+            this.c++;
+         }
 
-   public void w(boolean $$0) {
-      this.c = $$0;
-      this.d = true;
-   }
-
-   public boolean gr() {
-      return this.c;
-   }
-
-   public boolean gu() {
-      return true;
-   }
-
-   public void gv() {
-      this.b = this.dr().b(-500 + this.ah.a(1000), 0, -500 + this.ah.a(1000));
-      this.d = true;
-   }
-
-   protected boolean gw() {
-      return this.d;
-   }
-
-   protected void x(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public static class a<T extends cjs> extends caa {
-      private static final int a = 200;
-      private final T b;
-      private final double c;
-      private final double d;
-      private long e;
-
-      public a(T $$0, double $$1, double $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = -1L;
-         this.a(EnumSet.of(caa.a.a));
-      }
-
-      @Override
-      public boolean a() {
-         boolean $$0 = this.b.dR().Z() < this.e;
-         return this.b.gw() && this.b.p() == null && !this.b.cT() && this.b.gq() && !$$0;
-      }
-
-      @Override
-      public void c() {
-      }
-
-      @Override
-      public void d() {
-      }
-
-      @Override
-      public void e() {
-         boolean $$0 = this.b.gr();
-         cco $$1 = this.b.J();
-         if ($$1.l()) {
-            List<cjs> $$2 = this.h();
-            if (this.b.gw() && $$2.isEmpty()) {
-               this.b.x(false);
-            } else if ($$0 && this.b.gp().a(this.b.dp(), 10.0)) {
-               this.b.gv();
-            } else {
-               ewh $$3 = ewh.c(this.b.gp());
-               ewh $$4 = this.b.dp();
-               ewh $$5 = $$4.d($$3);
-               $$3 = $$5.b(90.0F).a(0.4).e($$3);
-               ewh $$6 = $$3.d($$4).d().a(10.0).e($$4);
-               ja $$7 = ja.a($$6);
-               $$7 = this.b.dR().a(dyg.a.f, $$7);
-               if (!$$1.a((double)$$7.u(), (double)$$7.v(), (double)$$7.w(), $$0 ? this.d : this.c)) {
-                  this.i();
-                  this.e = this.b.dR().Z() + 200L;
-               } else if ($$0) {
-                  for (cjs $$8 : $$2) {
-                     $$8.h($$7);
-                  }
-               }
-            }
+         if (this.c >= 2400) {
+            this.aq();
          }
       }
+   }
 
-      private List<cjs> h() {
-         return this.b.dR().a(cjs.class, this.b.cM().g(16.0), $$0 -> $$0.gu() && !$$0.t(this.b));
-      }
-
-      private boolean i() {
-         ayo $$0 = this.b.dU();
-         ja $$1 = this.b.dR().a(dyg.a.f, this.b.dr().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
-         return this.b.J().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), this.c);
+   public static boolean b(bsw<cjs> $$0, dcv $$1, btp $$2, jd $$3, ayv $$4) {
+      if (c($$0, $$1, $$2, $$3, $$4)) {
+         cmv $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
+         return $$5 == null;
+      } else {
+         return false;
       }
    }
 }

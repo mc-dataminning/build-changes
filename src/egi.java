@@ -1,23 +1,30 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class egi<P extends egh> {
-   public static final egi<egj> a = a("trunk_vine", egj.a);
-   public static final egi<egg> b = a("leave_vine", egg.a);
-   public static final egi<egf> c = a("cocoa", egf.a);
-   public static final egi<ege> d = a("beehive", ege.a);
-   public static final egi<egc> e = a("alter_ground", egc.a);
-   public static final egi<egd> f = a("attached_to_leaves", egd.a);
-   private final MapCodec<P> g;
+public abstract class egi extends egf {
+   protected final long c;
+   protected final eob.a d;
+   protected final float e;
+   protected final eob f;
 
-   private static <P extends egh> egi<P> a(String $$0, MapCodec<P> $$1) {
-      return jw.a(lq.X, $$0, new egi<>($$1));
+   protected static <P extends egi> P3<Mu<P>, Long, eob.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         eob.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         axv.m.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   private egi(MapCodec<P> $$0) {
-      this.g = $$0;
+   protected egi(long $$0, eob.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = eob.b(new dzu(new dyw($$0)), $$1);
    }
 
-   public MapCodec<P> a() {
-      return this.g;
+   protected double a(jd $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

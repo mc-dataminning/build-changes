@@ -1,41 +1,75 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edl implements edp {
-   public static final Codec<edl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dsl.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dsl.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               bpm.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               bpm.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, edl::new)
-   );
-   private final dsl b;
-   private final dsl c;
-   private final bpm d;
-   private final bpm e;
-
-   public edl(dsl $$0, dsl $$1, bpm $$2, bpm $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public class edl extends eca<eez> {
+   public edl(Codec<eez> $$0) {
+      super($$0);
    }
 
-   public dsl a() {
-      return this.b;
-   }
+   @Override
+   public boolean a(ecc<eez> $$0) {
+      eez $$1 = $$0.f();
+      ddq $$2 = $$0.b();
+      jd $$3 = $$0.e();
+      if (!$$2.a_($$3.c()).a($$1.f)) {
+         return false;
+      } else if ($$1.c && !$$2.a_($$3.d()).a($$1.f)) {
+         return false;
+      } else {
+         dta $$4 = $$2.a_($$3);
+         if (!$$4.i() && !$$4.a($$1.f)) {
+            return false;
+         } else {
+            int $$5 = 0;
+            int $$6 = 0;
+            if ($$2.a_($$3.g()).a($$1.f)) {
+               $$6++;
+            }
 
-   public dsl b() {
-      return this.c;
-   }
+            if ($$2.a_($$3.h()).a($$1.f)) {
+               $$6++;
+            }
 
-   public bpm c() {
-      return this.d;
-   }
+            if ($$2.a_($$3.e()).a($$1.f)) {
+               $$6++;
+            }
 
-   public bpm d() {
-      return this.e;
+            if ($$2.a_($$3.f()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.d()).a($$1.f)) {
+               $$6++;
+            }
+
+            int $$7 = 0;
+            if ($$2.u($$3.g())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.h())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.e())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.f())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.d())) {
+               $$7++;
+            }
+
+            if ($$6 == $$1.d && $$7 == $$1.e) {
+               $$2.a($$3, $$1.b.g(), 2);
+               $$2.a($$3, $$1.b.a(), 0);
+               $$5++;
+            }
+
+            return $$5 > 0;
+         }
+      }
    }
 }

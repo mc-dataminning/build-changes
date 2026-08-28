@@ -1,108 +1,92 @@
-public class gcl extends gct {
-   private static final ayo a = ayo.a();
-   private final gco b;
-   private float F = 1.0F;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   gcl(fyl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gco $$7) {
-      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.b = $$7;
-      this.k *= 0.2F;
-      if ($$4 == 0.0 && $$6 == 0.0) {
-         this.j *= 0.1F;
-         this.l *= 0.1F;
+public interface gcl {
+   gcl a = new gcl() {
+      @Override
+      public fax a(fbe $$0, gqg $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gqe.e);
+         return $$0.a(fbh.c.h, fba.d);
       }
 
-      this.D *= 0.75F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.b($$7);
-      if (this.g()) {
-         this.e(0.0F);
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
       }
-   }
-
-   @Override
-   public gbx b() {
-      return gbx.c;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.b);
-      if (this.g()) {
-         this.y = 0.0F;
-      } else {
-         this.y = ayg.i(0.05F, this.y, this.F);
-      }
-   }
-
-   @Override
-   protected void e(float $$0) {
-      super.e($$0);
-      this.F = $$0;
-   }
-
-   private boolean g() {
-      ffw $$0 = ffw.Q();
-      gdh $$1 = $$0.s;
-      return $$1 != null && $$1.bz().c(this.g, this.h, this.i) <= 9.0 && $$0.m.aA().a() && $$1.gy();
-   }
-
-   public static class a implements gbw<ln> {
-      private final gco a;
-
-      public a(gco $$0) {
-         this.a = $$0;
+   };
+   gcl b = new gcl() {
+      @Override
+      public fax a(fbe $$0, gqg $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(gem::s);
+         RenderSystem.setShaderTexture(0, gqe.f);
+         return $$0.a(fbh.c.h, fba.d);
       }
 
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gcl($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
       }
-   }
-
-   public static class b implements gbw<lc> {
-      private final gco a;
-
-      public b(gco $$0) {
-         this.a = $$0;
-      }
-
-      public gbt a(lc $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbt $$8 = new gcl($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a($$0.b(), $$0.c(), $$0.d());
-         $$8.e($$0.e());
-         return $$8;
-      }
-   }
-
-   public static class c implements gbw<ln> {
-      private final gco a;
-
-      public c(gco $$0) {
-         this.a = $$0;
+   };
+   gcl c = new gcl() {
+      @Override
+      public fax a(fbe $$0, gqg $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gqe.f);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         return $$0.a(fbh.c.h, fba.d);
       }
 
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gcl($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
       }
-   }
-
-   public static class d implements gbw<ln> {
-      private final gco a;
-
-      public d(gco $$0) {
-         this.a = $$0;
+   };
+   gcl d = new gcl() {
+      @Override
+      public fax a(fbe $$0, gqg $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gqe.f);
+         return $$0.a(fbh.c.h, fba.d);
       }
 
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcl $$8 = new gcl($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         float $$9 = $$1.z.i() * 0.5F + 0.35F;
-         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
-         return $$8;
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_LIT";
       }
-   }
+   };
+   gcl e = new gcl() {
+      @Override
+      public fax a(fbe $$0, gqg $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+         return $$0.a(fbh.c.h, fba.d);
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   gcl f = new gcl() {
+      @Nullable
+      @Override
+      public fax a(fbe $$0, gqg $$1) {
+         return null;
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   @Nullable
+   fax a(fbe var1, gqg var2);
 }

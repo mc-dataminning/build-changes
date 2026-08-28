@@ -1,175 +1,64 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public abstract class fho extends fhs implements fix, fjq {
-   private static final fjh a = new fjh(new akk("widget/text_field"), new akk("widget/text_field_highlighted"));
-   private static final akk b = new akk("widget/scroller");
-   private static final int c = 4;
-   private static final int d = 8;
-   private double e;
-   private boolean f;
+public class fho {
+   private static final int a = -1;
+   private final js<fhn> b = new js<>(32);
 
-   public fho(int $$0, int $$1, int $$2, int $$3, wu $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (!this.k) {
-         return false;
-      } else {
-         boolean $$3 = this.b($$0, $$1);
-         boolean $$4 = this.e()
-            && $$0 >= (double)(this.D() + this.g)
-            && $$0 <= (double)(this.D() + this.g + 8)
-            && $$1 >= (double)this.E()
-            && $$1 < (double)(this.E() + this.h);
-         if ($$4 && $$2 == 0) {
-            this.f = true;
-            return true;
+   public static fho a(fhk $$0) {
+      fho $$1 = new fho();
+      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : cxi.a($$0x, -6265536), cur.py, cur.pz, cur.pA, cur.pB, cur.uJ);
+      $$1.a(($$0x, $$1x) -> $$1x != 1 ? -1 : cxi.a($$0x, 0), cur.or);
+      $$1.a(($$0x, $$1x) -> dcs.a(0.5, 1.0), dfy.iH, dfy.iI);
+      $$1.a(($$0x, $$1x) -> {
+         if ($$1x != 1) {
+            return -1;
          } else {
-            return $$3 || $$4;
+            cxj $$2x = $$0x.a(kq.U);
+            IntList $$3 = $$2x != null ? $$2x.b() : IntList.of();
+            int $$4 = $$3.size();
+            if ($$4 == 0) {
+               return -7697782;
+            } else if ($$4 == 1) {
+               return axx.b.e($$3.getInt(0));
+            } else {
+               int $$5 = 0;
+               int $$6 = 0;
+               int $$7 = 0;
+
+               for (int $$8 = 0; $$8 < $$4; $$8++) {
+                  int $$9 = $$3.getInt($$8);
+                  $$5 += axx.b.b($$9);
+                  $$6 += axx.b.c($$9);
+                  $$7 += axx.b.d($$9);
+               }
+
+               return axx.b.a($$5 / $$4, $$6 / $$4, $$7 / $$4);
+            }
          }
-      }
-   }
+      }, cur.uv);
+      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : axx.b.e($$0x.a(kq.G, cws.a).b()), cur.sk, cur.vo, cur.vr, cur.vq);
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         this.f = false;
+      for (cvy $$2 : cvy.h()) {
+         $$1.a(($$1x, $$2x) -> axx.b.e($$2.a($$2x)), $$2);
       }
 
-      return super.b($$0, $$1, $$2);
+      $$1.a(($$1x, $$2x) -> {
+         dta $$3 = ((csm)$$1x.g()).d().o();
+         return $$0.a($$3, null, null, $$2x);
+      }, dfy.i, dfy.bt, dfy.bu, dfy.ff, dfy.aE, dfy.aF, dfy.aG, dfy.aH, dfy.aI, dfy.aK, dfy.fm);
+      $$1.a(($$0x, $$1x) -> dco.d(), dfy.aL);
+      $$1.a(($$0x, $$1x) -> $$1x == 0 ? -1 : axx.b.e($$0x.a(kq.A, cxq.c).a()), cur.rU);
+      return $$1;
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.k && this.aK_() && this.f) {
-         if ($$1 < (double)this.E()) {
-            this.a(0.0);
-         } else if ($$1 > (double)(this.E() + this.h)) {
-            this.a((double)this.d());
-         } else {
-            int $$5 = this.j();
-            double $$6 = (double)Math.max(1, this.d() / (this.h - $$5));
-            this.a(this.e + $$4 * $$6);
-         }
+   public int a(cuo $$0, int $$1) {
+      fhn $$2 = this.b.a(lt.g.a($$0.g()));
+      return $$2 == null ? -1 : $$2.getColor($$0, $$1);
+   }
 
-         return true;
-      } else {
-         return false;
+   public void a(fhn $$0, dct... $$1) {
+      for (dct $$2 : $$1) {
+         this.b.a($$0, cuj.a($$2.r()));
       }
    }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (!this.k) {
-         return false;
-      } else {
-         this.a(this.e - $$3 * this.i());
-         return true;
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      boolean $$3 = $$0 == 265;
-      boolean $$4 = $$0 == 264;
-      if ($$3 || $$4) {
-         double $$5 = this.e;
-         this.a(this.e + (double)($$3 ? -1 : 1) * this.i());
-         if ($$5 != this.e) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void b(fhh $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         this.b($$0);
-         $$0.c(this.D() + 1, this.E() + 1, this.D() + this.g - 1, this.E() + this.h - 1);
-         $$0.c().a();
-         $$0.c().a(0.0, -this.e, 0.0);
-         this.c($$0, $$1, $$2, $$3);
-         $$0.c().b();
-         $$0.f();
-         this.a($$0);
-      }
-   }
-
-   private int j() {
-      return ayg.a((int)((float)(this.h * this.h) / (float)this.k()), 32, this.h);
-   }
-
-   protected void a(fhh $$0) {
-      if (this.e()) {
-         this.c($$0);
-      }
-   }
-
-   protected int a() {
-      return 4;
-   }
-
-   protected int b() {
-      return this.a() * 2;
-   }
-
-   protected double c() {
-      return this.e;
-   }
-
-   protected void a(double $$0) {
-      this.e = ayg.a($$0, 0.0, (double)this.d());
-   }
-
-   protected int d() {
-      return Math.max(0, this.k() - (this.h - 4));
-   }
-
-   private int k() {
-      return this.h() + 4;
-   }
-
-   protected void b(fhh $$0) {
-      this.a($$0, this.D(), this.E(), this.y(), this.w());
-   }
-
-   protected void a(fhh $$0, int $$1, int $$2, int $$3, int $$4) {
-      akk $$5 = a.a(this.C(), this.aK_());
-      $$0.a($$5, $$1, $$2, $$3, $$4);
-   }
-
-   private void c(fhh $$0) {
-      int $$1 = this.j();
-      int $$2 = this.D() + this.g;
-      int $$3 = Math.max(this.E(), (int)this.e * (this.h - $$1) / this.d() + this.E());
-      RenderSystem.enableBlend();
-      $$0.a(b, $$2, $$3, 8, $$1);
-      RenderSystem.disableBlend();
-   }
-
-   protected boolean a(int $$0, int $$1) {
-      return (double)$$1 - this.e >= (double)this.E() && (double)$$0 - this.e <= (double)(this.E() + this.h);
-   }
-
-   protected boolean b(double $$0, double $$1) {
-      return $$0 >= (double)this.D() && $$0 < (double)(this.D() + this.g) && $$1 >= (double)this.E() && $$1 < (double)(this.E() + this.h);
-   }
-
-   protected boolean e() {
-      return this.h() > this.w();
-   }
-
-   public int f() {
-      return 8;
-   }
-
-   protected abstract int h();
-
-   protected abstract double i();
-
-   protected abstract void c(fhh var1, int var2, int var3, float var4);
 }

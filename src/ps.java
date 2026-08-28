@@ -1,60 +1,14 @@
 import java.util.concurrent.CompletableFuture;
 
-public class ps extends pv<cir> {
-   public ps(lz $$0, CompletableFuture<jl.a> $$1) {
-      super($$0, lr.W, $$1);
+public class ps extends py<cug> {
+   public ps(mc $$0, CompletableFuture<jo.a> $$1) {
+      super($$0, lu.I, $$1);
    }
 
    @Override
-   protected void a(jl.a $$0) {
-      this.b(awg.a)
-         .a(
-            cis.a,
-            cis.b,
-            cis.c,
-            cis.d,
-            cis.e,
-            cis.f,
-            cis.g,
-            cis.h,
-            cis.i,
-            cis.j,
-            cis.k,
-            cis.l,
-            cis.m,
-            cis.n,
-            cis.o,
-            cis.p,
-            cis.q,
-            cis.r,
-            cis.s,
-            cis.t,
-            cis.u,
-            cis.v,
-            cis.w,
-            cis.x,
-            cis.y,
-            cis.z,
-            cis.E,
-            cis.F,
-            cis.G,
-            cis.H,
-            cis.I,
-            cis.J,
-            cis.K,
-            cis.L,
-            cis.M,
-            cis.N,
-            cis.O,
-            cis.P,
-            cis.Q,
-            cis.R,
-            cis.S,
-            cis.T,
-            cis.U,
-            cis.V,
-            cis.W,
-            cis.X
-         );
+   protected void a(jo.a $$0) {
+      this.b(awl.a).a(cui.c).a(cui.d).a(cui.e).a(cui.f);
+      this.b(awl.b).a(cui.g).a(cui.h).a(cui.i).a(cui.j);
+      this.b(awl.c).b(awl.a).b(awl.b);
    }
 }

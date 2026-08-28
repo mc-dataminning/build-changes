@@ -1,36 +1,29 @@
-public class ahe implements zb<agb> {
-   public static final ys<vr, ahe> a = zb.a(ahe::a, ahe::new);
-   private static final int b = 2;
-   private final boolean c;
+public class ahe implements zf<agh> {
+   public static final yw<vv, ahe> a = zf.a(ahe::a, ahe::new);
+   private final boolean b;
 
-   public ahe(cmi $$0) {
-      this.c = $$0.b;
+   public ahe(boolean $$0) {
+      this.b = $$0;
    }
 
-   private ahe(vr $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
+   private ahe(vv $$0) {
+      this.b = $$0.readBoolean();
    }
 
-   private void a(vr $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   private void a(vv $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zd<ahe> a() {
-      return afz.bJ;
+   public zh<ahe> a() {
+      return agf.bA;
    }
 
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
    public boolean b() {
-      return this.c;
+      return this.b;
    }
 }

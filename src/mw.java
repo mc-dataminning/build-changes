@@ -1,9 +1,6 @@
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 
-public class mw {
-   public static ms a(lz $$0, CompletableFuture<jl.a> $$1) {
-      return new ms($$0, Set.of(), List.of(new ms.a(mv::new, etr.c)), $$1);
-   }
+@FunctionalInterface
+public interface mw {
+   void generate(BiConsumer<akp<erq>, erq.a> var1);
 }

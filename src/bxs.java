@@ -1,39 +1,26 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bxs {
-   private static final int a = 60;
-
-   public static buw<btl> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return byi.a(
-         (Function<byi.b<btl>, ? extends App<byi.c<btl>, byl<btl>>>)($$3 -> $$3.group($$3.c(ccg.o), $$3.c(ccg.m), $$3.a(ccg.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if (!$$5x.b_($$6.dr()).a(awc.a)) {
+   public static bvg<btl> a(int $$0, BiPredicate<btl, btl> $$1) {
+      return bys.a(
+         (Function<bys.b<btl>, ? extends App<bys.c<btl>, byv<btl>>>)($$2 -> $$2.group($$2.b(ccq.o), $$2.a(ccq.ab), $$2.c(ccq.ai), $$2.a(ccq.aj))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     btl $$10 = $$2.b($$3);
+                     if (!$$10.ey()) {
                         return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 60L);
-                        return true;
                      } else {
-                        ja $$8 = $$6.dr();
-                        ja.a $$9 = new ja.a();
-                        ewm $$10 = ewm.a($$6);
-
-                        for (ja $$11 : ja.a($$8, $$0, $$0, $$0)) {
-                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
-                              dsl $$12 = $$5x.a_($$11);
-                              dsl $$13 = $$5x.a_($$9.a($$11, jf.a));
-                              if (!$$12.a(dfk.G) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.d($$5x, $$9, jf.b)) {
-                                 ja $$14 = $$11.i();
-                                 $$5.a(new buy($$14));
-                                 $$4.a(new ccj(new buy($$14), $$1, 1));
-                                 break;
-                              }
-                           }
+                        if ($$1.test($$8, $$10)) {
+                           $$6.a(true, (long)$$0);
                         }
 
-                        $$2.setValue($$7 + 60L);
+                        $$5.a($$10.dq(), (long)$$0);
+                        if ($$10.am() != bsw.by || $$7.ab().b(dcq.N)) {
+                           $$3.b();
+                           $$4.b();
+                        }
+
                         return true;
                      }
                   }))

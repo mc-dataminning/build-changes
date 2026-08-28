@@ -1,63 +1,31 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class elk extends eix {
-   public static final MapCodec<elk> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               a($$0),
-               elk.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, elk::new)
-   );
-   public final elk.a e;
-   public final float f;
-   public final float g;
+public class elk extends ejm {
+   public static final MapCodec<elk> d = a(elk::new);
 
-   public elk(eix.c $$0, elk.a $$1, float $$2, float $$3) {
+   public elk(ejm.c $$0) {
       super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
    }
 
    @Override
-   public Optional<eix.b> a(eix.a $$0) {
-      return a($$0, dyg.a.c, $$1 -> this.a($$1, $$0));
+   public Optional<ejm.b> a(ejm.a $$0) {
+      dmk $$1 = dmk.a($$0.f());
+      jd $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new ejm.b($$2, (Consumer<eke>)($$3 -> this.a($$3, $$2, $$1, $$0))));
    }
 
-   private void a(ejp $$0, eix.a $$1) {
-      ja $$2 = new ja($$1.h().d(), 90, $$1.h().e());
-      dlv $$3 = dlv.a($$1.f());
-      elj.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
+   private void a(eke $$0, jd $$1, dmk $$2, ejm.a $$3) {
+      List<ejq> $$4 = Lists.newArrayList();
+      elj.a($$3.e(), $$1, $$2, $$4, $$3.f());
+      $$4.forEach($$0::a);
    }
 
    @Override
-   public ejg<?> e() {
-      return ejg.k;
-   }
-
-   public static enum a implements azc {
-      a("warm"),
-      b("cold");
-
-      public static final Codec<elk.a> c = azc.a(elk.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public ejv<?> e() {
+      return ejv.c;
    }
 }

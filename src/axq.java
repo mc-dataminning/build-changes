@@ -1,89 +1,80 @@
-public class axq {
-   public static int a(float $$0) {
-      return ayg.d($$0 * 255.0F);
+import java.io.DataOutput;
+import java.io.IOException;
+
+public class axq implements DataOutput {
+   private final DataOutput a;
+
+   public axq(DataOutput $$0) {
+      this.a = $$0;
    }
 
-   public static class a {
-      public static int a(int $$0) {
-         return $$0 >>> 24;
-      }
-
-      public static int b(int $$0) {
-         return $$0 & 0xFF;
-      }
-
-      public static int c(int $$0) {
-         return $$0 >> 8 & 0xFF;
-      }
-
-      public static int d(int $$0) {
-         return $$0 >> 16 & 0xFF;
-      }
-
-      public static int e(int $$0) {
-         return $$0 & 16777215;
-      }
-
-      public static int f(int $$0) {
-         return $$0 | 0xFF000000;
-      }
-
-      public static int a(int $$0, int $$1, int $$2, int $$3) {
-         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
-      }
-
-      public static int a(int $$0, int $$1) {
-         return $$0 << 24 | $$1 & 16777215;
-      }
+   @Override
+   public void write(int $$0) throws IOException {
+      this.a.write($$0);
    }
 
-   public static class b {
-      public static int a(int $$0) {
-         return $$0 >>> 24;
-      }
+   @Override
+   public void write(byte[] $$0) throws IOException {
+      this.a.write($$0);
+   }
 
-      public static int b(int $$0) {
-         return $$0 >> 16 & 0xFF;
-      }
+   @Override
+   public void write(byte[] $$0, int $$1, int $$2) throws IOException {
+      this.a.write($$0, $$1, $$2);
+   }
 
-      public static int c(int $$0) {
-         return $$0 >> 8 & 0xFF;
-      }
+   @Override
+   public void writeBoolean(boolean $$0) throws IOException {
+      this.a.writeBoolean($$0);
+   }
 
-      public static int d(int $$0) {
-         return $$0 & 0xFF;
-      }
+   @Override
+   public void writeByte(int $$0) throws IOException {
+      this.a.writeByte($$0);
+   }
 
-      public static int a(int $$0, int $$1, int $$2, int $$3) {
-         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
-      }
+   @Override
+   public void writeShort(int $$0) throws IOException {
+      this.a.writeShort($$0);
+   }
 
-      public static int a(int $$0, int $$1, int $$2) {
-         return a(255, $$0, $$1, $$2);
-      }
+   @Override
+   public void writeChar(int $$0) throws IOException {
+      this.a.writeChar($$0);
+   }
 
-      public static int a(int $$0, int $$1) {
-         return a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
-      }
+   @Override
+   public void writeInt(int $$0) throws IOException {
+      this.a.writeInt($$0);
+   }
 
-      public static int a(float $$0, int $$1, int $$2) {
-         int $$3 = ayg.a($$0, a($$1), a($$2));
-         int $$4 = ayg.a($$0, b($$1), b($$2));
-         int $$5 = ayg.a($$0, c($$1), c($$2));
-         int $$6 = ayg.a($$0, d($$1), d($$2));
-         return a($$3, $$4, $$5, $$6);
-      }
+   @Override
+   public void writeLong(long $$0) throws IOException {
+      this.a.writeLong($$0);
+   }
 
-      public static int e(int $$0) {
-         return $$0 | 0xFF000000;
-      }
+   @Override
+   public void writeFloat(float $$0) throws IOException {
+      this.a.writeFloat($$0);
+   }
 
-      public static int b(int $$0, int $$1) {
-         return $$0 << 24 | $$1 & 16777215;
-      }
+   @Override
+   public void writeDouble(double $$0) throws IOException {
+      this.a.writeDouble($$0);
+   }
 
-      public static int a(float $$0, float $$1, float $$2, float $$3) {
-         return a(axq.a($$0), axq.a($$1), axq.a($$2), axq.a($$3));
-      }
+   @Override
+   public void writeBytes(String $$0) throws IOException {
+      this.a.writeBytes($$0);
+   }
+
+   @Override
+   public void writeChars(String $$0) throws IOException {
+      this.a.writeChars($$0);
+   }
+
+   @Override
+   public void writeUTF(String $$0) throws IOException {
+      this.a.writeUTF($$0);
    }
 }

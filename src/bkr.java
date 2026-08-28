@@ -4,13 +4,28 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bkr extends bht {
+public class bkr extends bic {
    public bkr(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, bgh.y, () -> DSL.optionalFields("item", bgh.t.in($$0), "block_state", bgh.u.in($$0)));
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:breeze", () -> bid.a($$0));
+      $$0.registerSimple($$1, "minecraft:wind_charge");
+      $$0.registerSimple($$1, "minecraft:breeze_wind_charge");
+      return $$1;
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$0.register(
+         $$1,
+         "minecraft:trial_spawner",
+         () -> DSL.optionalFields(
+               "spawn_potentials", DSL.list(DSL.fields("data", DSL.fields("entity", bgq.A.in($$0)))), "spawn_data", DSL.fields("entity", bgq.A.in($$0))
+            )
+      );
+      return $$1;
    }
 }

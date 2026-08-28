@@ -1,37 +1,16 @@
-import javax.annotation.Nullable;
+import com.mojang.brigadier.RedirectModifier;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Collection;
+import java.util.List;
 
 public interface hq<T> {
-   void a(ho<T> var1);
+   void a(T var1, List<T> var2, ContextChain<T> var3, hn var4, ht<T> var5);
 
-   void a(@Nullable hs var1);
-
-   @Nullable
-   hs a();
-
-   hr b();
-
-   static <T extends es<T>> hq<T> a(final hp<T> $$0, final hr $$1) {
-      return new hq<T>() {
-         @Override
-         public void a(ho<T> $$0x) {
-            $$0.a(new hl<>($$1, $$0));
-         }
-
-         @Override
-         public void a(@Nullable hs $$0x) {
-            $$0.a($$0);
-         }
-
-         @Nullable
-         @Override
-         public hs a() {
-            return $$0.b();
-         }
-
-         @Override
-         public hr b() {
-            return $$1;
-         }
-      };
+   public interface a<T> extends RedirectModifier<T>, hq<T> {
+      default Collection<T> apply(CommandContext<T> $$0) throws CommandSyntaxException {
+         throw new UnsupportedOperationException("This function should not run");
+      }
    }
 }

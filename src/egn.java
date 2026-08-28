@@ -1,72 +1,49 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class egn extends egt {
-   public static final MapCodec<egn> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, egn::new));
+public record egn(egf b, List<egn.a> c) {
+   public static final Codec<egn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(egf.a.fieldOf("fallback").forGetter(egn::a), egn.a.a.listOf().fieldOf("rules").forGetter(egn::b)).apply($$0, egn::new)
+   );
 
-   public egn(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public static egn a(egf $$0) {
+      return new egn($$0, List.of());
    }
 
-   @Override
-   protected egu<?> a() {
-      return egu.e;
+   public static egn a(dfw $$0) {
+      return a(egf.a($$0));
    }
 
-   @Override
-   public List<efb.a> a(dcm $$0, BiConsumer<ja, dsl> $$1, ayo $$2, int $$3, ja $$4, eel $$5) {
-      List<efb.a> $$6 = Lists.newArrayList();
-      ja $$7 = $$4.d();
-      a($$0, $$1, $$2, $$7, $$5);
-      a($$0, $$1, $$2, $$7.h(), $$5);
-      a($$0, $$1, $$2, $$7.f(), $$5);
-      a($$0, $$1, $$2, $$7.f().h(), $$5);
-      jf $$8 = jf.c.a.a($$2);
-      int $$9 = $$3 - $$2.a(4);
-      int $$10 = 2 - $$2.a(3);
-      int $$11 = $$4.u();
-      int $$12 = $$4.v();
-      int $$13 = $$4.w();
-      int $$14 = $$11;
-      int $$15 = $$13;
-      int $$16 = $$12 + $$3 - 1;
-
-      for (int $$17 = 0; $$17 < $$3; $$17++) {
-         if ($$17 >= $$9 && $$10 > 0) {
-            $$14 += $$8.j();
-            $$15 += $$8.l();
-            $$10--;
-         }
-
-         int $$18 = $$12 + $$17;
-         ja $$19 = new ja($$14, $$18, $$15);
-         if (ecx.b($$0, $$19)) {
-            this.b($$0, $$1, $$2, $$19, $$5);
-            this.b($$0, $$1, $$2, $$19.h(), $$5);
-            this.b($$0, $$1, $$2, $$19.f(), $$5);
-            this.b($$0, $$1, $$2, $$19.h().f(), $$5);
+   public dta a(ddq $$0, ayv $$1, jd $$2) {
+      for (egn.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
          }
       }
 
-      $$6.add(new efb.a(new ja($$14, $$16, $$15), 0, true));
+      return this.b.a($$1, $$2);
+   }
 
-      for (int $$20 = -1; $$20 <= 2; $$20++) {
-         for (int $$21 = -1; $$21 <= 2; $$21++) {
-            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
-               int $$22 = $$2.a(3) + 2;
+   public egf a() {
+      return this.b;
+   }
 
-               for (int $$23 = 0; $$23 < $$22; $$23++) {
-                  this.b($$0, $$1, $$2, new ja($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
-               }
+   public List<egn.a> b() {
+      return this.c;
+   }
 
-               $$6.add(new efb.a(new ja($$14 + $$20, $$16, $$15 + $$21), 0, false));
-            }
-         }
+   public static record a(eac b, egf c) {
+      public static final Codec<egn.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eac.b.fieldOf("if_true").forGetter(egn.a::a), egf.a.fieldOf("then").forGetter(egn.a::b)).apply($$0, egn.a::new)
+      );
+
+      public eac a() {
+         return this.b;
       }
 
-      return $$6;
+      public egf b() {
+         return this.c;
+      }
    }
 }

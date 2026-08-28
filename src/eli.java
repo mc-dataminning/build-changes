@@ -1,60 +1,52 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Set;
 
-public class eli extends eix {
+public class eli extends ejl {
    public static final MapCodec<eli> d = a(eli::new);
 
-   public eli(eix.c $$0) {
-      super($$0);
+   public eli(ejm.c $$0) {
+      super(elh::new, 21, 21, $$0);
    }
 
    @Override
-   public Optional<eix.b> a(eix.a $$0) {
-      int $$1 = $$0.h().a(9);
-      int $$2 = $$0.h().b(9);
+   public void a(ddq $$0, ddo $$1, dux $$2, ayv $$3, eje $$4, dcb $$5, ekb $$6) {
+      Set<jd> $$7 = azf.a(kh::i);
 
-      for (jj<ddg> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
-         if (!$$4.a(avv.X)) {
-            return Optional.empty();
+      for (ejq $$8 : $$6.c()) {
+         if ($$8 instanceof elh $$9) {
+            $$7.addAll($$9.b());
+            a($$4, $$0, $$9.c());
          }
       }
 
-      return a($$0, dyg.a.c, $$1x -> a($$1x, $$0));
+      ObjectArrayList<jd> $$10 = new ObjectArrayList($$7.stream().toList());
+      ayv $$11 = ayv.a($$0.C()).e().a($$6.b().g());
+      ad.c($$10, $$11);
+      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
+      ObjectListIterator var12 = $$10.iterator();
+
+      while (var12.hasNext()) {
+         jd $$13 = (jd)var12.next();
+         if ($$12 > 0) {
+            $$12--;
+            a($$4, $$0, $$13);
+         } else if ($$4.b($$13)) {
+            $$0.a($$13, dfy.I.o(), 2);
+         }
+      }
    }
 
-   private static ejb a(dbn $$0, dzf $$1) {
-      int $$2 = $$0.d() - 29;
-      int $$3 = $$0.e() - 29;
-      jf $$4 = jf.c.a.a($$1);
-      return new elh.h($$1, $$2, $$3, $$4);
-   }
-
-   private static void a(ejp $$0, eix.a $$1) {
-      $$0.a(a($$1.h(), $$1.f()));
-   }
-
-   public static ejm a(dbn $$0, long $$1, ejm $$2) {
-      if ($$2.a()) {
-         return $$2;
-      } else {
-         dzf $$3 = new dzf(new dyh(dyv.a()));
-         $$3.c($$1, $$0.e, $$0.f);
-         ejb $$4 = $$2.c().get(0);
-         eip $$5 = $$4.f();
-         int $$6 = $$5.h();
-         int $$7 = $$5.j();
-         jf $$8 = jf.c.a.a($$3);
-         jf $$9 = Objects.requireNonNullElse($$4.i(), $$8);
-         ejb $$10 = new elh.h($$3, $$6, $$7, $$9);
-         ejp $$11 = new ejp();
-         $$11.a($$10);
-         return $$11.a();
+   private static void a(eje $$0, ddq $$1, jd $$2) {
+      if ($$0.b($$2)) {
+         $$1.a($$2, dfy.J.o(), 2);
+         $$1.a($$2, dqh.N).ifPresent($$1x -> $$1x.a(erh.be, $$2.a()));
       }
    }
 
    @Override
-   public ejg<?> e() {
-      return ejg.j;
+   public ejv<?> e() {
+      return ejv.b;
    }
 }

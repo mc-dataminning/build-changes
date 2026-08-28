@@ -1,46 +1,43 @@
-public abstract class bst extends bte {
-   protected bst(bsn<? extends bst> $$0, dcg $$1) {
-      super($$0, $$1);
+public record bst(float a, float b, float c, bss d, boolean e) {
+   private bst(float $$0, float $$1, boolean $$2) {
+      this($$0, $$1, c($$1), bss.a($$0, $$1), $$2);
    }
 
-   @Override
-   protected void a(double $$0, boolean $$1, dsl $$2, ja $$3) {
+   private static float c(float $$0) {
+      return $$0 * 0.85F;
    }
 
-   @Override
-   public void a(ewh $$0) {
-      if (this.dc()) {
-         if (this.bg()) {
-            this.a(0.02F, $$0);
-            this.a(bth.a, this.du());
-            this.j(this.du().a(0.8F));
-         } else if (this.bu()) {
-            this.a(0.02F, $$0);
-            this.a(bth.a, this.du());
-            this.j(this.du().a(0.5));
-         } else {
-            float $$1 = 0.91F;
-            if (this.aG()) {
-               $$1 = this.dR().a_(this.aM()).b().h() * 0.91F;
-            }
-
-            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-            $$1 = 0.91F;
-            if (this.aG()) {
-               $$1 = this.dR().a_(this.aM()).b().h() * 0.91F;
-            }
-
-            this.a(this.aG() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(bth.a, this.du());
-            this.j(this.du().a((double)$$1));
-         }
-      }
-
-      this.s(false);
+   public ewr a(eww $$0) {
+      return this.a($$0.c, $$0.d, $$0.e);
    }
 
-   @Override
-   public boolean p_() {
-      return false;
+   public ewr a(double $$0, double $$1, double $$2) {
+      float $$3 = this.a / 2.0F;
+      float $$4 = this.b;
+      return new ewr($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
+   }
+
+   public bst a(float $$0) {
+      return this.a($$0, $$0);
+   }
+
+   public bst a(float $$0, float $$1) {
+      return !this.e && ($$0 != 1.0F || $$1 != 1.0F) ? new bst(this.a * $$0, this.b * $$1, this.c * $$1, this.d.a($$0, $$1, $$0), false) : this;
+   }
+
+   public static bst b(float $$0, float $$1) {
+      return new bst($$0, $$1, false);
+   }
+
+   public static bst c(float $$0, float $$1) {
+      return new bst($$0, $$1, true);
+   }
+
+   public bst b(float $$0) {
+      return new bst(this.a, this.b, $$0, this.d, this.e);
+   }
+
+   public bst a(bss.a $$0) {
+      return new bst(this.a, this.b, this.c, $$0.a(this.a, this.b), this.e);
    }
 }

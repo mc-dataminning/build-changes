@@ -1,80 +1,112 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableObject;
 
 public class ekw {
-   public static final int a = 90;
-   static final akk b = new akk("igloo/top");
-   private static final akk c = new akk("igloo/middle");
-   private static final akk d = new akk("igloo/bottom");
-   static final Map<akk, ja> e = ImmutableMap.of(b, new ja(3, 5, 5), c, new ja(1, 3, 1), d, new ja(3, 6, 7));
-   static final Map<akk, ja> f = ImmutableMap.of(b, ja.c, c, new ja(2, -3, 4), d, new ja(0, -3, -2));
+   private static final int c = Integer.MIN_VALUE;
+   private static final MutableObject<Codec<jm<ekw>>> d = new MutableObject();
+   public static final Codec<ekw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.lazyInitialized(d::getValue).fieldOf("fallback").forGetter(ekw::a),
+               Codec.mapPair(eku.e.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ekw::new)
+   );
+   public static final Codec<jm<ekw>> b = ad.a(akm.a(lu.aU, a), d::setValue);
+   private final List<Pair<eku, Integer>> e;
+   private final ObjectArrayList<eku> f;
+   private final jm<ekw> g;
+   private int h = Integer.MIN_VALUE;
 
-   public static void a(emz $$0, ja $$1, dlv $$2, ejc $$3, ayo $$4) {
-      if ($$4.j() < 0.5) {
-         int $$5 = $$4.a(8) + 4;
-         $$3.a(new ekw.a($$0, d, $$1, $$2, $$5 * 3));
+   public ekw(jm<ekw> $$0, List<Pair<eku, Integer>> $$1) {
+      this.e = $$1;
+      this.f = new ObjectArrayList();
 
-         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
-            $$3.a(new ekw.a($$0, c, $$1, $$2, $$6 * 3));
+      for (Pair<eku, Integer> $$2 : $$1) {
+         eku $$3 = (eku)$$2.getFirst();
+
+         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
+            this.f.add($$3);
          }
       }
 
-      $$3.a(new ekw.a($$0, b, $$1, $$2, 0));
+      this.g = $$0;
    }
 
-   public static class a extends ejh {
-      public a(emz $$0, akk $$1, ja $$2, dlv $$3, int $$4) {
-         super(ejo.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
-      }
+   public ekw(jm<ekw> $$0, List<Pair<Function<ekw.a, ? extends eku>, Integer>> $$1, ekw.a $$2) {
+      this.e = Lists.newArrayList();
+      this.f = new ObjectArrayList();
 
-      public a(emz $$0, tx $$1) {
-         super(ejo.I, $$1, $$0, $$1x -> a(dlv.valueOf($$1.l("Rot")), $$1x));
-      }
+      for (Pair<Function<ekw.a, ? extends eku>, Integer> $$3 : $$1) {
+         eku $$4 = (eku)((Function)$$3.getFirst()).apply($$2);
+         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
 
-      private static emu a(dlv $$0, akk $$1) {
-         return new emu().a($$0).a(dkf.a).a(ekw.e.get($$1)).a(ema.b);
-      }
-
-      private static ja a(akk $$0, ja $$1, int $$2) {
-         return $$1.a(ekw.f.get($$0)).c($$2);
-      }
-
-      @Override
-      protected void a(ejn $$0, tx $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      @Override
-      protected void a(String $$0, ja $$1, dcv $$2, ayo $$3, eip $$4) {
-         if ("chest".equals($$0)) {
-            $$2.a($$1, dfk.a.o(), 3);
-            dpq $$5 = $$2.c_($$1.d());
-            if ($$5 instanceof dpx) {
-               ((dpx)$$5).a(eqs.C, $$3.g());
-            }
+         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
+            this.f.add($$4);
          }
       }
 
-      @Override
-      public void a(ddc $$0, dda $$1, dui $$2, ayo $$3, eip $$4, dbn $$5, ja $$6) {
-         akk $$7 = new akk(this.a);
-         emu $$8 = a(this.c.d(), $$7);
-         ja $$9 = ekw.f.get($$7);
-         ja $$10 = this.d.a((ke)emy.a($$8, new ja(3 - $$9.u(), 0, -$$9.w())));
-         int $$11 = $$0.a(dyg.a.a, $$10.u(), $$10.w());
-         ja $$12 = this.d;
-         this.d = this.d.b(0, $$11 - 90 - 1, 0);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         if ($$7.equals(ekw.b)) {
-            ja $$13 = this.d.a((ke)emy.a($$8, new ja(3, 0, 5)));
-            dsl $$14 = $$0.a_($$13.d());
-            if (!$$14.i() && !$$14.a(dfk.cO)) {
-               $$0.a($$13, dfk.dP.o(), 3);
-            }
-         }
+      this.g = $$0;
+   }
 
-         this.d = $$12;
+   public int a(eno $$0) {
+      if (this.h == Integer.MIN_VALUE) {
+         this.h = this.f.stream().filter($$0x -> $$0x != ekn.b).mapToInt($$1 -> $$1.a($$0, jd.c, dmk.a).e()).max().orElse(0);
+      }
+
+      return this.h;
+   }
+
+   public jm<ekw> a() {
+      return this.g;
+   }
+
+   public eku a(ayv $$0) {
+      return (eku)(this.f.isEmpty() ? ekn.b : (eku)this.f.get($$0.a(this.f.size())));
+   }
+
+   public List<eku> b(ayv $$0) {
+      return ad.a(this.f, $$0);
+   }
+
+   public int b() {
+      return this.f.size();
+   }
+
+   public static enum a implements azj {
+      a("terrain_matching", ImmutableList.of(new emu(dyv.a.a, -1))),
+      b("rigid", ImmutableList.of());
+
+      public static final azj.a<ekw.a> c = azj.a(ekw.a::values);
+      private final String d;
+      private final ImmutableList<enk> e;
+
+      private a(final String $$0, final ImmutableList<enk> $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      public static ekw.a a(String $$0) {
+         return c.a($$0);
+      }
+
+      public ImmutableList<enk> b() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
       }
    }
 }

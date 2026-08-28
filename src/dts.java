@@ -1,7 +1,7 @@
-public enum dts implements azc {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+public enum dts implements azj {
+   a("single"),
+   b("left"),
+   c("right");
 
    private final String d;
 
@@ -10,12 +10,15 @@ public enum dts implements azc {
    }
 
    @Override
-   public String toString() {
+   public String c() {
       return this.d;
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public dts a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

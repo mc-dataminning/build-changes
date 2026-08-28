@@ -1,173 +1,103 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public abstract class dev extends dfi {
-   private static final int c = 8;
-   private final float d;
-   protected static final float a = 1.0F;
-   protected static final exa b = dfi.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
-
-   public dev(dsk.d $$0, float $$1) {
-      super($$0);
-      this.d = $$1;
-   }
-
-   @Override
-   protected abstract MapCodec<? extends dev> a();
-
-   @Override
-   public dsl a(cxn $$0) {
-      return a($$0.q(), $$0.a());
-   }
-
-   public static dsl a(dbm $$0, ja $$1) {
-      ja $$2 = $$1.d();
-      dsl $$3 = $$0.a_($$2);
-      return dmt.m($$3) ? dfk.cs.o() : ((dii)dfk.cr).b($$0, $$1);
-   }
+public class dev extends deu implements dmy {
+   public static final MapCodec<dev> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.FLOAT.fieldOf("height").forGetter($$0x -> $$0x.k), Codec.FLOAT.fieldOf("aabb_offset").forGetter($$0x -> $$0x.l), u())
+            .apply($$0, dev::new)
+   );
+   public static final dtr c = dtq.C;
+   public static final dtu d = dtq.P;
+   private final float k;
+   private final float l;
+   protected final exp e;
+   protected final exp f;
+   protected final exp g;
+   protected final exp h;
+   protected final exp i;
+   protected final exp j;
 
    @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
+   public MapCodec<dev> a() {
       return b;
    }
 
-   @Override
-   public void a(dsl $$0, dcg $$1, ja $$2, ayo $$3) {
-      if ($$3.a(24) == 0) {
-         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, avh.iT, avi.e, 1.0F + $$3.i(), $$3.i() * 0.7F + 0.3F, false);
-      }
-
-      ja $$4 = $$2.d();
-      dsl $$5 = $$1.a_($$4);
-      if (!this.f($$5) && !$$5.d($$1, $$4, jf.b)) {
-         if (this.f($$1.a_($$2.g()))) {
-            for (int $$10 = 0; $$10 < 2; $$10++) {
-               double $$11 = (double)$$2.u() + $$3.j() * 0.1F;
-               double $$12 = (double)$$2.v() + $$3.j();
-               double $$13 = (double)$$2.w() + $$3.j();
-               $$1.a(lj.X, $$11, $$12, $$13, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.f($$1.a_($$2.h()))) {
-            for (int $$14 = 0; $$14 < 2; $$14++) {
-               double $$15 = (double)($$2.u() + 1) - $$3.j() * 0.1F;
-               double $$16 = (double)$$2.v() + $$3.j();
-               double $$17 = (double)$$2.w() + $$3.j();
-               $$1.a(lj.X, $$15, $$16, $$17, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.f($$1.a_($$2.e()))) {
-            for (int $$18 = 0; $$18 < 2; $$18++) {
-               double $$19 = (double)$$2.u() + $$3.j();
-               double $$20 = (double)$$2.v() + $$3.j();
-               double $$21 = (double)$$2.w() + $$3.j() * 0.1F;
-               $$1.a(lj.X, $$19, $$20, $$21, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.f($$1.a_($$2.f()))) {
-            for (int $$22 = 0; $$22 < 2; $$22++) {
-               double $$23 = (double)$$2.u() + $$3.j();
-               double $$24 = (double)$$2.v() + $$3.j();
-               double $$25 = (double)($$2.w() + 1) - $$3.j() * 0.1F;
-               $$1.a(lj.X, $$23, $$24, $$25, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if (this.f($$1.a_($$2.c()))) {
-            for (int $$26 = 0; $$26 < 2; $$26++) {
-               double $$27 = (double)$$2.u() + $$3.j();
-               double $$28 = (double)($$2.v() + 1) - $$3.j() * 0.1F;
-               double $$29 = (double)$$2.w() + $$3.j();
-               $$1.a(lj.X, $$27, $$28, $$29, 0.0, 0.0, 0.0);
-            }
-         }
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j() * 0.5 + 0.5;
-            double $$9 = (double)$$2.w() + $$3.j();
-            $$1.a(lj.X, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   protected abstract boolean f(dsl var1);
-
-   @Override
-   protected void a(dsl $$0, dcg $$1, ja $$2, bsh $$3) {
-      if (!$$3.bf()) {
-         $$3.h($$3.aD() + 1);
-         if ($$3.aD() == 0) {
-            $$3.d(8.0F);
-         }
-      }
-
-      $$3.a($$1.aj().a(), this.d);
-      super.a($$0, $$1, $$2, $$3);
+   public dev(float $$0, float $$1, dsz.d $$2) {
+      super($$2);
+      this.k(this.o().a(c, Boolean.valueOf(false)).a(d, ji.b));
+      this.i = dfw.a((double)$$1, 0.0, (double)$$1, (double)(16.0F - $$1), (double)$$0, (double)(16.0F - $$1));
+      this.j = dfw.a((double)$$1, (double)(16.0F - $$0), (double)$$1, (double)(16.0F - $$1), 16.0, (double)(16.0F - $$1));
+      this.e = dfw.a((double)$$1, (double)$$1, (double)(16.0F - $$0), (double)(16.0F - $$1), (double)(16.0F - $$1), 16.0);
+      this.f = dfw.a((double)$$1, (double)$$1, 0.0, (double)(16.0F - $$1), (double)(16.0F - $$1), (double)$$0);
+      this.g = dfw.a(0.0, (double)$$1, (double)$$1, (double)$$0, (double)(16.0F - $$1), (double)(16.0F - $$1));
+      this.h = dfw.a((double)(16.0F - $$0), (double)$$1, (double)$$1, 16.0, (double)(16.0F - $$1), (double)(16.0F - $$1));
+      this.k = $$0;
+      this.l = $$1;
    }
 
    @Override
-   protected void b(dsl $$0, dcg $$1, ja $$2, dsl $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         if (a($$1)) {
-            Optional<epj> $$5 = epj.a($$1, $$2, jf.a.a);
-            if ($$5.isPresent()) {
-               $$5.get().b();
-               return;
-            }
-         }
-
-         if (!$$0.a((dcj)$$1, $$2)) {
-            $$1.a($$2, false);
-         }
+   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
+      ji $$4 = $$0.c(d);
+      switch ($$4) {
+         case c:
+            return this.e;
+         case d:
+            return this.f;
+         case f:
+            return this.g;
+         case e:
+            return this.h;
+         case a:
+            return this.j;
+         case b:
+         default:
+            return this.i;
       }
-   }
-
-   private static boolean a(dcg $$0) {
-      return $$0.af() == dcg.h || $$0.af() == dcg.i;
    }
 
    @Override
-   protected void a(dcg $$0, cml $$1, ja $$2, dsl $$3) {
+   protected boolean a(dta $$0, dcx $$1, jd $$2) {
+      ji $$3 = $$0.c(d);
+      jd $$4 = $$2.a($$3.g());
+      return $$1.a_($$4).d($$1, $$4, $$3);
    }
 
    @Override
-   public dsl a(dcg $$0, ja $$1, dsl $$2, cml $$3) {
-      if (!$$0.x_()) {
-         $$0.a(null, 1009, $$1, 0);
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eoz.c, eoz.c.a($$3));
       }
 
-      return super.a($$0, $$1, $$2, $$3);
+      return $$1 == $$0.c(d).g() && !$$0.a($$3, $$4) ? dfy.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static boolean a(dcg $$0, ja $$1, jf $$2) {
-      dsl $$3 = $$0.a_($$1);
-      return !$$3.i() ? false : a($$0, $$1).a((dcj)$$0, $$1) || b($$0, $$1, $$2);
+   @Nullable
+   @Override
+   public dta a(cyb $$0) {
+      dcv $$1 = $$0.q();
+      jd $$2 = $$0.a();
+      return this.o().a(c, Boolean.valueOf($$1.b_($$2).a() == eoz.c)).a(d, $$0.k());
    }
 
-   private static boolean b(dcg $$0, ja $$1, jf $$2) {
-      if (!a($$0)) {
-         return false;
-      } else {
-         ja.a $$3 = $$1.j();
-         boolean $$4 = false;
+   @Override
+   protected dta a(dta $$0, dmk $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
+   }
 
-         for (jf $$5 : jf.values()) {
-            if ($$0.a_($$3.g($$1).c($$5)).a(dfk.co)) {
-               $$4 = true;
-               break;
-            }
-         }
+   @Override
+   protected dta a(dta $$0, dkt $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
 
-         if (!$$4) {
-            return false;
-         } else {
-            jf.a $$6 = $$2.o().d() ? $$2.i().o() : jf.c.a.b($$0.z);
-            return epj.a($$0, $$1, $$6).isPresent();
-         }
-      }
+   @Override
+   protected eoy b_(dta $$0) {
+      return $$0.c(c) ? eoz.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(c, d);
    }
 }

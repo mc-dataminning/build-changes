@@ -1,75 +1,130 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
 
-public record xm<S>(List<xm.a<S>> a) {
-   public static <S> boolean a(ParseResults<S> $$0) {
-      return !b($$0).a().isEmpty();
-   }
-
-   public static <S> xm<S> b(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<xm.a<S>> $$4 = a($$1, $$2);
-
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null && $$5.getRootNode() != $$2.getRootNode()) {
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
-      }
-
-      return new xm<>($$4);
-   }
-
-   private static <S> List<xm.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<xm.a<S>> $$2 = new ArrayList<>();
-
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof fx) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new xm.a<>($$4, $$6));
-               }
-            }
-         }
-      }
-
-      return $$2;
-   }
-
+public class xm implements wy {
+   private final wz c;
+   private final List<wy> d;
+   private xv e;
+   private axz f = axz.a;
    @Nullable
-   public xm.a<S> a(String $$0) {
-      for (xm.a<S> $$1 : this.a) {
-         if ($$0.equals($$1.a())) {
-            return $$1;
-         }
-      }
+   private tv g;
 
-      return null;
+   xm(wz $$0, List<wy> $$1, xv $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
+   public static xm a(wz $$0) {
+      return new xm($$0, Lists.newArrayList(), xv.a);
+   }
+
+   @Override
+   public wz b() {
+      return this.c;
+   }
+
+   @Override
+   public List<wy> c() {
+      return this.d;
+   }
+
+   public xm b(xv $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   @Override
+   public xv a() {
+      return this.e;
+   }
+
+   public xm f(String $$0) {
+      return $$0.isEmpty() ? this : this.b(wy.b($$0));
+   }
+
+   public xm b(wy $$0) {
+      this.d.add($$0);
+      return this;
+   }
+
+   public xm a(UnaryOperator<xv> $$0) {
+      this.b($$0.apply(this.a()));
+      return this;
+   }
+
+   public xm c(xv $$0) {
+      this.b($$0.a(this.a()));
+      return this;
+   }
+
+   public xm a(n... $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   public xm a(n $$0) {
+      this.b(this.a().b($$0));
+      return this;
+   }
+
+   public xm b(int $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   @Override
+   public axz g() {
+      tv $$0 = tv.a();
+      if (this.g != $$0) {
+         this.f = $$0.a(this);
+         this.g = $$0;
       }
 
-      public ArgumentCommandNode<S, ?> b() {
-         return this.a;
+      return this.f;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof xm $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.e, this.d);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder(this.c.toString());
+      boolean $$1 = !this.e.g();
+      boolean $$2 = !this.d.isEmpty();
+      if ($$1 || $$2) {
+         $$0.append('[');
+         if ($$1) {
+            $$0.append("style=");
+            $$0.append(this.e);
+         }
+
+         if ($$1 && $$2) {
+            $$0.append(", ");
+         }
+
+         if ($$2) {
+            $$0.append("siblings=");
+            $$0.append(this.d);
+         }
+
+         $$0.append(']');
       }
 
-      public String c() {
-         return this.b;
-      }
+      return $$0.toString();
    }
 }

@@ -1,32 +1,54 @@
-import org.lwjgl.openal.AL10;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
 
-public class eyl {
-   private float a = 1.0F;
-   private eym b = eym.a;
+public class eyl<T> implements eyo<T>, eyq<T> {
+   private final List<eym<T>> a = Lists.newArrayList();
+   private final Set<eym<?>> b = new ObjectOpenCustomHashSet(eym.a);
 
-   public void a(eym $$0) {
-      this.b = $$0;
-      ewh $$1 = $$0.b();
-      ewh $$2 = $$0.c();
-      ewh $$3 = $$0.d();
-      AL10.alListener3f(4100, (float)$$1.c, (float)$$1.d, (float)$$1.e);
-      AL10.alListenerfv(4111, new float[]{(float)$$2.c, (float)$$2.d, (float)$$2.e, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
+   @Override
+   public void a(eyn<T> $$0) {
+      eym<T> $$1 = new eym<>($$0.a(), $$0.b(), 0, $$0.d());
+      this.a($$1);
    }
 
-   public void a(float $$0) {
-      AL10.alListenerf(4106, $$0);
-      this.a = $$0;
+   private void a(eym<T> $$0) {
+      if (this.b.add($$0)) {
+         this.a.add($$0);
+      }
    }
 
-   public float a() {
-      return this.a;
+   @Override
+   public boolean a(jd $$0, T $$1) {
+      return this.b.contains(eym.a($$1, $$0));
    }
 
-   public void b() {
-      this.a(eym.a);
+   @Override
+   public int a() {
+      return this.a.size();
    }
 
-   public eym c() {
-      return this.b;
+   @Override
+   public ux b(long $$0, Function<T, String> $$1) {
+      ug $$2 = new ug();
+
+      for (eym<T> $$3 : this.a) {
+         $$2.add($$3.a($$1));
+      }
+
+      return $$2;
+   }
+
+   public List<eym<T>> b() {
+      return List.copyOf(this.a);
+   }
+
+   public static <T> eyl<T> a(ug $$0, Function<String, Optional<T>> $$1, dcb $$2) {
+      eyl<T> $$3 = new eyl<>();
+      eym.a($$0, $$1, $$2, $$3::a);
+      return $$3;
    }
 }

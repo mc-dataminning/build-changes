@@ -1,26 +1,29 @@
-public enum aib {
-   a,
-   b,
-   c;
+public class aib implements zf<agh> {
+   public static final yw<vv, aib> a = zf.a(aib::a, aib::new);
+   private final bqp b;
 
-   private static final int d = 1;
-   private static final int e = 2;
-   private static final int f = 3;
-
-   public static aib a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         case 3 -> c;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   public aib(bqp $$0) {
+      this.b = $$0;
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-         case c -> 3;
-      };
+   private aib(vv $$0) {
+      this.b = $$0.b(bqp.class);
+   }
+
+   private void a(vv $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public zh<aib> a() {
+      return agf.ca;
+   }
+
+   public void a(agh $$0) {
+      $$0.a(this);
+   }
+
+   public bqp b() {
+      return this.b;
    }
 }

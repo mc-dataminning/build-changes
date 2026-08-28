@@ -1,126 +1,116 @@
+import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import java.util.function.Function;
+import java.util.Set;
 
 public class aoq {
-   public static void a(CommandDispatcher<eq> $$0, em $$1) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.tag.add.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("commands.tag.remove.failed"));
+
+   public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("title").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("tag").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)er.a(
-                                    "targets", fd.d()
-                                 )
-                                 .then(er.a("clear").executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets")))))
-                              .then(er.a("reset").executes($$0x -> b((eq)$$0x.getSource(), fd.f($$0x, "targets")))))
-                           .then(
-                              er.a("title")
-                                 .then(
-                                    er.a("title", ez.a($$1))
-                                       .executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), ez.a($$0x, "title"), "title", aff::new))
-                                 )
-                           ))
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("targets", fg.b())
                         .then(
-                           er.a("subtitle")
+                           eu.a("add")
                               .then(
-                                 er.a("title", ez.a($$1))
-                                    .executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), ez.a($$0x, "title"), "subtitle", afd::new))
+                                 eu.a("name", StringArgumentType.word())
+                                    .executes($$0x -> a((et)$$0x.getSource(), fg.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
                               )
                         ))
                      .then(
-                        er.a("actionbar")
+                        eu.a("remove")
                            .then(
-                              er.a("title", ez.a($$1))
-                                 .executes($$0x -> a((eq)$$0x.getSource(), fd.f($$0x, "targets"), ez.a($$0x, "title"), "actionbar", aeg::new))
+                              eu.a("name", StringArgumentType.word())
+                                 .suggests(($$0x, $$1) -> ey.b(a(fg.b($$0x, "targets")), $$1))
+                                 .executes($$0x -> b((et)$$0x.getSource(), fg.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
                            )
                      ))
-                  .then(
-                     er.a("times")
-                        .then(
-                           er.a("fadeIn", gf.a())
-                              .then(
-                                 er.a("stay", gf.a())
-                                    .then(
-                                       er.a("fadeOut", gf.a())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (eq)$$0x.getSource(),
-                                                   fd.f($$0x, "targets"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
-                                                   IntegerArgumentType.getInteger($$0x, "stay"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
+                  .then(eu.a("list").executes($$0x -> a((et)$$0x.getSource(), fg.b($$0x, "targets"))))
             )
       );
    }
 
-   private static int a(eq $$0, Collection<aqn> $$1) {
-      ace $$2 = new ace(false);
+   private static Collection<String> a(Collection<? extends bsq> $$0) {
+      Set<String> $$1 = Sets.newHashSet();
 
-      for (aqn $$3 : $$1) {
-         $$3.c.b($$2);
+      for (bsq $$2 : $$0) {
+         $$1.addAll($$2.ao());
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> wu.a("commands.title.cleared.single", $$1.iterator().next().O_()), true);
-      } else {
-         $$0.a(() -> wu.a("commands.title.cleared.multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+      return $$1;
    }
 
-   private static int b(eq $$0, Collection<aqn> $$1) {
-      ace $$2 = new ace(true);
+   private static int a(et $$0, Collection<? extends bsq> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
 
-      for (aqn $$3 : $$1) {
-         $$3.c.b($$2);
+      for (bsq $$4 : $$1) {
+         if ($$4.a($$2)) {
+            $$3++;
+         }
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> wu.a("commands.title.reset.single", $$1.iterator().next().O_()), true);
+      if ($$3 == 0) {
+         throw a.create();
       } else {
-         $$0.a(() -> wu.a("commands.title.reset.multiple", $$1.size()), true);
-      }
+         if ($$1.size() == 1) {
+            $$0.a(() -> wy.a("commands.tag.add.success.single", $$2, $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wy.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
+         }
 
-      return $$1.size();
+         return $$3;
+      }
    }
 
-   private static int a(eq $$0, Collection<aqn> $$1, wu $$2, String $$3, Function<wu, zb<?>> $$4) throws CommandSyntaxException {
-      for (aqn $$5 : $$1) {
-         $$5.c.b($$4.apply(wx.a($$0, $$2, $$5, 0)));
+   private static int b(et $$0, Collection<? extends bsq> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (bsq $$4 : $$1) {
+         if ($$4.b($$2)) {
+            $$3++;
+         }
       }
 
-      if ($$1.size() == 1) {
-         $$0.a(() -> wu.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().O_()), true);
+      if ($$3 == 0) {
+         throw b.create();
       } else {
-         $$0.a(() -> wu.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
-      }
+         if ($$1.size() == 1) {
+            $$0.a(() -> wy.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().O_()), true);
+         } else {
+            $$0.a(() -> wy.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
+         }
 
-      return $$1.size();
+         return $$3;
+      }
    }
 
-   private static int a(eq $$0, Collection<aqn> $$1, int $$2, int $$3, int $$4) {
-      afg $$5 = new afg($$2, $$3, $$4);
+   private static int a(et $$0, Collection<? extends bsq> $$1) {
+      Set<String> $$2 = Sets.newHashSet();
 
-      for (aqn $$6 : $$1) {
-         $$6.c.b($$5);
+      for (bsq $$3 : $$1) {
+         $$2.addAll($$3.ao());
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> wu.a("commands.title.times.single", $$1.iterator().next().O_()), true);
+         bsq $$4 = $$1.iterator().next();
+         if ($$2.isEmpty()) {
+            $$0.a(() -> wy.a("commands.tag.list.single.empty", $$4.O_()), false);
+         } else {
+            $$0.a(() -> wy.a("commands.tag.list.single.success", $$4.O_(), $$2.size(), xb.a($$2)), false);
+         }
+      } else if ($$2.isEmpty()) {
+         $$0.a(() -> wy.a("commands.tag.list.multiple.empty", $$1.size()), false);
       } else {
-         $$0.a(() -> wu.a("commands.title.times.multiple", $$1.size()), true);
+         $$0.a(() -> wy.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), xb.a($$2)), false);
       }
 
-      return $$1.size();
+      return $$2.size();
    }
 }

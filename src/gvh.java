@@ -1,65 +1,130 @@
-public class gvh implements gvn {
-   private static final int a = 1200;
-   private static final wu b = wu.c("tutorial.craft_planks.title");
-   private static final wu c = wu.c("tutorial.craft_planks.description");
-   private final gvm d;
-   private fkf e;
-   private int f;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
 
-   public gvh(gvm $$0) {
-      this.d = $$0;
+public class gvh {
+   static final Map<String, gvh> h = new Object2ObjectLinkedOpenHashMap();
+   public static final Codec<gvh> a = Codec.STRING.comapFlatMap($$0 -> {
+      gvh $$1 = h.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No TelemetryEventType with key: '" + $$0 + "'");
+   }, gvh::a);
+   private static final List<gvj<?>> i = List.of(gvj.a, gvj.b, gvj.c, gvj.d, gvj.e, gvj.f, gvj.g, gvj.h, gvj.m, gvj.l);
+   private static final List<gvj<?>> j = Stream.concat(i.stream(), Stream.of(gvj.i, gvj.j, gvj.k)).toList();
+   public static final gvh b = a("world_loaded", "WorldLoaded").a(j).a(gvj.n).a(gvj.o).b();
+   public static final gvh c = a("performance_metrics", "PerformanceMetrics").a(j).a(gvj.r).a(gvj.s).a(gvj.t).a(gvj.u).a(gvj.v).a(gvj.w).a().b();
+   public static final gvh d = a("world_load_times", "WorldLoadTimes").a(j).a(gvj.x).a(gvj.y).a().b();
+   public static final gvh e = a("world_unloaded", "WorldUnloaded").a(j).a(gvj.p).a(gvj.q).b();
+   public static final gvh f = a("advancement_made", "AdvancementMade").a(j).a(gvj.D).a(gvj.E).a().b();
+   public static final gvh g = a("game_load_times", "GameLoadTimes").a(i).a(gvj.z).a(gvj.A).a(gvj.B).a(gvj.C).a().b();
+   private final String k;
+   private final String l;
+   private final List<gvj<?>> m;
+   private final boolean n;
+   private final MapCodec<gvd> o;
+
+   gvh(String $$0, String $$1, List<gvj<?>> $$2, boolean $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.o = gvk.a($$2).xmap($$0x -> new gvd(this, $$0x), gvd::b);
+   }
+
+   public static gvh.a a(String $$0, String $$1) {
+      return new gvh.a($$0, $$1);
+   }
+
+   public String a() {
+      return this.k;
+   }
+
+   public List<gvj<?>> b() {
+      return this.m;
+   }
+
+   public MapCodec<gvd> c() {
+      return this.o;
+   }
+
+   public boolean d() {
+      return this.n;
+   }
+
+   public TelemetryEvent a(TelemetrySession $$0, gvk $$1) {
+      TelemetryEvent $$2 = $$0.createNewEvent(this.l);
+
+      for (gvj<?> $$3 : this.m) {
+         $$3.a($$1, $$2);
+      }
+
+      return $$2;
+   }
+
+   public <T> boolean a(gvj<T> $$0) {
+      return this.m.contains($$0);
    }
 
    @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gvo.f);
-      } else {
-         if (this.f == 1) {
-            gdh $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.ga().a(awf.b)) {
-                  this.d.a(gvo.f);
-                  return;
-               }
-
-               if (a($$0, awf.b)) {
-                  this.d.a(gvo.f);
-                  return;
-               }
-            }
-         }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fkf(fkf.a.e, b, c, false);
-            this.d.e().aw().a(this.e);
-         }
-      }
+   public String toString() {
+      return "TelemetryEventType[" + this.k + "]";
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
+   public xm e() {
+      return this.a("title");
    }
 
-   @Override
-   public void a(cud $$0) {
-      if ($$0.a(awf.b)) {
-         this.d.a(gvo.f);
-      }
+   public xm f() {
+      return this.a("description");
    }
 
-   public static boolean a(gdh $$0, awm<cty> $$1) {
-      for (jj<cty> $$2 : lq.g.c($$1)) {
-         if ($$0.j().a(avr.b.b($$2.a())) > 0) {
-            return true;
+   private xm a(String $$0) {
+      return wy.c("telemetry.event." + this.k + "." + $$0);
+   }
+
+   public static List<gvh> g() {
+      return List.copyOf(h.values());
+   }
+
+   public static class a {
+      private final String a;
+      private final String b;
+      private final List<gvj<?>> c = new ArrayList<>();
+      private boolean d;
+
+      a(String $$0, String $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public gvh.a a(List<gvj<?>> $$0) {
+         this.c.addAll($$0);
+         return this;
+      }
+
+      public <T> gvh.a a(gvj<T> $$0) {
+         this.c.add($$0);
+         return this;
+      }
+
+      public gvh.a a() {
+         this.d = true;
+         return this;
+      }
+
+      public gvh b() {
+         gvh $$0 = new gvh(this.a, this.b, List.copyOf(this.c), this.d);
+         if (gvh.h.putIfAbsent(this.a, $$0) != null) {
+            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.a + "'");
+         } else {
+            return $$0;
          }
       }
-
-      return false;
    }
 }

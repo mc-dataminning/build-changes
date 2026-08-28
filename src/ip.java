@@ -1,55 +1,102 @@
 import com.google.common.collect.Maps;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.LongArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
 
 public class ip {
-   private static final Map<akk, SuggestionProvider<ev>> e = Maps.newHashMap();
-   private static final akk f = new akk("ask_server");
-   public static final SuggestionProvider<ev> a = a(f, ($$0, $$1) -> ((ev)$$0.getSource()).a($$0));
-   public static final SuggestionProvider<eq> b = a(new akk("all_recipes"), ($$0, $$1) -> ev.a(((ev)$$0.getSource()).t(), $$1));
-   public static final SuggestionProvider<eq> c = a(new akk("available_sounds"), ($$0, $$1) -> ev.a(((ev)$$0.getSource()).s(), $$1));
-   public static final SuggestionProvider<eq> d = a(
-      new akk("summonable_entities"),
-      ($$0, $$1) -> ev.a(lq.f.t().filter($$1x -> $$1x.a(((ev)$$0.getSource()).w()) && $$1x.c()), $$1, bsn::a, $$0x -> wu.c(ac.a("entity", bsn.a($$0x))))
-   );
+   private static final Map<Class<?>, io<?, ?>> a = Maps.newHashMap();
 
-   public static <S extends ev> SuggestionProvider<S> a(akk $$0, SuggestionProvider<ev> $$1) {
-      if (e.containsKey($$0)) {
-         throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
+   private static <A extends ArgumentType<?>, T extends io.a<A>> io<A, T> a(jz<io<?, ?>> $$0, String $$1, Class<? extends A> $$2, io<A, T> $$3) {
+      a.put($$2, $$3);
+      return jz.a($$0, $$1, $$3);
+   }
+
+   public static io<?, ?> a(jz<io<?, ?>> $$0) {
+      a($$0, "brigadier:bool", BoolArgumentType.class, ir.a(BoolArgumentType::bool));
+      a($$0, "brigadier:float", FloatArgumentType.class, new iu());
+      a($$0, "brigadier:double", DoubleArgumentType.class, new it());
+      a($$0, "brigadier:integer", IntegerArgumentType.class, new iv());
+      a($$0, "brigadier:long", LongArgumentType.class, new iw());
+      a($$0, "brigadier:string", StringArgumentType.class, new ix());
+      a($$0, "entity", fg.class, new fg.a());
+      a($$0, "game_profile", fi.class, ir.a(fi::a));
+      a($$0, "block_pos", gp.class, ir.a(gp::a));
+      a($$0, "column_pos", gq.class, ir.a(gq::a));
+      a($$0, "vec3", gw.class, ir.a(gw::a));
+      a($$0, "vec2", gv.class, ir.a(gv::a));
+      a($$0, "block_state", gm.class, ir.a(gm::a));
+      a($$0, "block_predicate", gl.class, ir.a(gl::a));
+      a($$0, "item_stack", hc.class, ir.a(hc::a));
+      a($$0, "item_predicate", hf.class, ir.a(hf::a));
+      a($$0, "color", fb.class, ir.a(fb::a));
+      a($$0, "component", fc.class, ir.a(fc::a));
+      a($$0, "style", ge.class, ir.a(ge::a));
+      a($$0, "message", fk.class, ir.a(fk::a));
+      a($$0, "nbt_compound_tag", fd.class, ir.a(fd::a));
+      a($$0, "nbt_tag", fm.class, ir.a(fm::a));
+      a($$0, "nbt_path", fl.class, ir.a(fl::a));
+      a($$0, "objective", fn.class, ir.a(fn::a));
+      a($$0, "objective_criteria", fo.class, ir.a(fo::a));
+      a($$0, "operation", fp.class, ir.a(fp::a));
+      a($$0, "particle", fq.class, ir.a(fq::a));
+      a($$0, "angle", ez.class, ir.a(ez::a));
+      a($$0, "rotation", gt.class, ir.a(gt::a));
+      a($$0, "scoreboard_slot", fz.class, ir.a(fz::a));
+      a($$0, "score_holder", fy.class, new fy.a());
+      a($$0, "swizzle", gu.class, ir.a(gu::a));
+      a($$0, "team", gf.class, ir.a(gf::a));
+      a($$0, "item_slot", gb.class, ir.a(gb::a));
+      a($$0, "item_slots", gc.class, ir.a(gc::a));
+      a($$0, "resource_location", fu.class, ir.a(fu::a));
+      a($$0, "function", hb.class, ir.a(hb::a));
+      a($$0, "entity_anchor", ff.class, ir.a(ff::a));
+      a($$0, "int_range", fr.b.class, ir.a(fr::a));
+      a($$0, "float_range", fr.a.class, ir.a(fr::b));
+      a($$0, "dimension", fe.class, ir.a(fe::a));
+      a($$0, "gamemode", fh.class, ir.a(fh::a));
+      a($$0, "time", gi.class, new gi.a());
+      a($$0, "resource_or_tag", b(fw.class), new fw.a());
+      a($$0, "resource_or_tag_key", b(fx.class), new fx.a());
+      a($$0, "resource", b(fs.class), new fs.a());
+      a($$0, "resource_key", b(ft.class), new ft.a());
+      a($$0, "template_mirror", gg.class, ir.a(gg::a));
+      a($$0, "template_rotation", gh.class, ir.a(gh::a));
+      a($$0, "heightmap", fj.class, ir.a(fj::a));
+      a($$0, "loot_table", fv.c.class, ir.a(fv::a));
+      a($$0, "loot_predicate", fv.b.class, ir.a(fv::c));
+      a($$0, "loot_modifier", fv.a.class, ir.a(fv::b));
+      if (ab.aV) {
+         a($$0, "test_argument", tr.class, ir.a(tr::a));
+         a($$0, "test_class", tn.class, ir.a(tn::a));
+      }
+
+      return a($$0, "uuid", gj.class, ir.a(gj::a));
+   }
+
+   private static <T extends ArgumentType<?>> Class<T> b(Class<? super T> $$0) {
+      return (Class<T>)$$0;
+   }
+
+   public static boolean a(Class<?> $$0) {
+      return a.containsKey($$0);
+   }
+
+   public static <A extends ArgumentType<?>> io<A, ?> a(A $$0) {
+      io<?, ?> $$1 = a.get($$0.getClass());
+      if ($$1 == null) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "Unrecognized argument type %s (%s)", $$0, $$0.getClass()));
       } else {
-         e.put($$0, $$1);
-         return new ip.a($$0, $$1);
+         return (io<A, ?>)$$1;
       }
    }
 
-   public static SuggestionProvider<ev> a(akk $$0) {
-      return e.getOrDefault($$0, a);
-   }
-
-   public static akk a(SuggestionProvider<ev> $$0) {
-      return $$0 instanceof ip.a ? ((ip.a)$$0).b : f;
-   }
-
-   public static SuggestionProvider<ev> b(SuggestionProvider<ev> $$0) {
-      return $$0 instanceof ip.a ? $$0 : a;
-   }
-
-   protected static class a implements SuggestionProvider<ev> {
-      private final SuggestionProvider<ev> a;
-      final akk b;
-
-      public a(akk $$0, SuggestionProvider<ev> $$1) {
-         this.a = $$1;
-         this.b = $$0;
-      }
-
-      public CompletableFuture<Suggestions> getSuggestions(CommandContext<ev> $$0, SuggestionsBuilder $$1) throws CommandSyntaxException {
-         return this.a.getSuggestions($$0, $$1);
-      }
+   public static <A extends ArgumentType<?>> io.a<A> b(A $$0) {
+      return a($$0).a($$0);
    }
 }

@@ -1,9 +1,11 @@
-public interface awe {
-   awm<ctv> a = a("regular_goat_horns");
-   awm<ctv> b = a("screaming_goat_horns");
-   awm<ctv> c = a("goat_horns");
+public class awe {
+   public static final awt<cfg> a = a("default_spawns");
+   public static final awt<cfg> b = a("full_moon_spawns");
 
-   private static awm<ctv> a(String $$0) {
-      return awm.a(lr.I, new akk($$0));
+   private awe() {
+   }
+
+   private static awt<cfg> a(String $$0) {
+      return awt.a(lu.l, akq.b($$0));
    }
 }

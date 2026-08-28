@@ -1,223 +1,157 @@
 import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
 import java.util.Map;
-import java.util.stream.Stream;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.Validate;
+import org.slf4j.Logger;
 
 public class lt {
-   private static final Map<dfi, lu> ap = Maps.newHashMap();
-   private static final String aq = "wooden";
-   private static final String ar = "has_planks";
-   public static final lu a = a(dfk.r)
-      .a(dfk.gz)
-      .h(dfk.kg)
-      .j(dfk.jY)
-      .m(dfk.dD)
-      .a(dfk.cH, dfk.cU)
-      .k(dfk.jx)
-      .l(dfk.hP)
-      .f(dfk.ko)
-      .o(dfk.eC)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lu b = a(dfk.s)
-      .a(dfk.gA)
-      .h(dfk.kh)
-      .j(dfk.jZ)
-      .m(dfk.dE)
-      .a(dfk.cI, dfk.cV)
-      .k(dfk.jy)
-      .l(dfk.hQ)
-      .f(dfk.kp)
-      .o(dfk.eD)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lu c = a(dfk.p)
-      .a(dfk.gx)
-      .h(dfk.ke)
-      .j(dfk.jW)
-      .m(dfk.dB)
-      .a(dfk.cG, dfk.cT)
-      .k(dfk.jv)
-      .l(dfk.fL)
-      .f(dfk.km)
-      .o(dfk.eA)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lu d = a(dfk.oE)
-      .a(dfk.oS)
-      .h(dfk.oK)
-      .j(dfk.oO)
-      .m(dfk.oI)
-      .a(dfk.oW, dfk.oY)
-      .k(dfk.oG)
-      .l(dfk.oQ)
-      .f(dfk.oU)
-      .o(dfk.oM)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lu e = a(dfk.q)
-      .a(dfk.gy)
-      .h(dfk.kf)
-      .j(dfk.jX)
-      .m(dfk.dC)
-      .a(dfk.cJ, dfk.cW)
-      .k(dfk.jw)
-      .l(dfk.fM)
-      .f(dfk.kn)
-      .o(dfk.eB)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lu f = a(dfk.n)
-      .a(dfk.gv)
-      .h(dfk.dU)
-      .j(dfk.fh)
-      .m(dfk.dz)
-      .a(dfk.cE, dfk.cR)
-      .k(dfk.jt)
-      .l(dfk.cu)
-      .f(dfk.cN)
-      .o(dfk.ey)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lu g = a(dfk.t)
-      .a(dfk.gB)
-      .h(dfk.ki)
-      .j(dfk.ka)
-      .m(dfk.dF)
-      .a(dfk.cK, dfk.cX)
-      .k(dfk.jz)
-      .l(dfk.hR)
-      .f(dfk.kq)
-      .o(dfk.eE)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lu h = a(dfk.o)
-      .a(dfk.gw)
-      .h(dfk.kd)
-      .j(dfk.jV)
-      .m(dfk.dA)
-      .a(dfk.cF, dfk.cS)
-      .k(dfk.ju)
-      .l(dfk.fK)
-      .f(dfk.kl)
-      .o(dfk.ez)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lu i = a(dfk.oF)
-      .a(dfk.oT)
-      .h(dfk.oL)
-      .j(dfk.oP)
-      .m(dfk.oJ)
-      .a(dfk.oX, dfk.oZ)
-      .k(dfk.oH)
-      .l(dfk.oR)
-      .f(dfk.oV)
-      .o(dfk.oN)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lu j = a(dfk.u)
-      .a(dfk.gC)
-      .k(dfk.jA)
-      .l(dfk.hS)
-      .h(dfk.kj)
-      .j(dfk.kb)
-      .m(dfk.dG)
-      .a(dfk.cL, dfk.cY)
-      .f(dfk.kr)
-      .o(dfk.eF)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lu k = a(dfk.v)
-      .a(dfk.gD)
-      .k(dfk.jB)
-      .l(dfk.hT)
-      .g(dfk.kk)
-      .i(dfk.kc)
-      .m(dfk.dH)
-      .a(dfk.cM, dfk.cZ)
-      .f(dfk.ks)
-      .o(dfk.eG)
-      .c(dfk.w)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lu l = a(dfk.w).k(dfk.jC).l(dfk.hU).a();
-   public static final lu m = a(dfk.eM).p(dfk.nL).l(dfk.fk).k(dfk.jL).a();
-   public static final lu n = a(dfk.g).p(dfk.nN).l(dfk.no).k(dfk.nB).n(dfk.h).a();
-   public static final lu o = a(dfk.h).l(dfk.nq).k(dfk.nD).a();
-   public static final lu p = a(dfk.pr).p(dfk.pt).l(dfk.ps).k(dfk.pu).n(dfk.pv).a();
-   public static final lu q = a(dfk.pv).p(dfk.pH).m(dfk.pF).a(dfk.pG).l(dfk.pD).k(dfk.pE).n(dfk.pw).b(dfk.py).a();
-   public static final lu r = a(dfk.pw).p(dfk.pB).l(dfk.pA).k(dfk.pz).d(dfk.px).a();
-   public static final lu s = a(dfk.cj).p(dfk.nF).l(dfk.fi).k(dfk.jJ).a();
-   public static final lu t = a(dfk.kz).p(dfk.nQ).l(dfk.nj).k(dfk.nx).a();
-   public static final lu u = a(dfk.eI).p(dfk.nI).l(dfk.ng).k(dfk.nu).a();
-   public static final lu v = a(dfk.qW).e(dfk.rf).b().a();
-   public static final lu w = a(dfk.rf).k(dfk.rv).l(dfk.rr).b(dfk.rj).b().a();
-   public static final lu x = a(dfk.rw).e(dfk.rD).a("waxed_cut_copper").b().a();
-   public static final lu y = a(dfk.rD).k(dfk.rL).l(dfk.rH).b(dfk.rn).a("waxed_cut_copper").b().a();
-   public static final lu z = a(dfk.qX).e(dfk.re).b().a();
-   public static final lu A = a(dfk.re).k(dfk.ru).l(dfk.rq).b(dfk.ri).b().a();
-   public static final lu B = a(dfk.ry).e(dfk.rC).a("waxed_exposed_cut_copper").b().a();
-   public static final lu C = a(dfk.rC).k(dfk.rK).l(dfk.rG).b(dfk.rm).a("waxed_exposed_cut_copper").b().a();
-   public static final lu D = a(dfk.qY).e(dfk.rd).b().a();
-   public static final lu E = a(dfk.rd).k(dfk.rt).l(dfk.rp).b(dfk.rh).b().a();
-   public static final lu F = a(dfk.rx).e(dfk.rB).a("waxed_weathered_cut_copper").b().a();
-   public static final lu G = a(dfk.rB).k(dfk.rJ).l(dfk.rF).b(dfk.rl).a("waxed_weathered_cut_copper").b().a();
-   public static final lu H = a(dfk.qZ).e(dfk.rc).b().a();
-   public static final lu I = a(dfk.rc).k(dfk.rs).l(dfk.ro).b(dfk.rg).b().a();
-   public static final lu J = a(dfk.rz).e(dfk.rA).a("waxed_oxidized_cut_copper").b().a();
-   public static final lu K = a(dfk.rA).k(dfk.rI).l(dfk.rE).b(dfk.rk).a("waxed_oxidized_cut_copper").b().a();
-   public static final lu L = a(dfk.m).p(dfk.fP).l(dfk.cQ).k(dfk.jI).a();
-   public static final lu M = a(dfk.cn).p(dfk.fQ).l(dfk.ni).k(dfk.nw).a();
-   public static final lu N = a(dfk.e).p(dfk.nR).l(dfk.nr).k(dfk.nE).n(dfk.f).a();
-   public static final lu O = a(dfk.f).l(dfk.nh).k(dfk.nv).a();
-   public static final lu P = a(dfk.c).p(dfk.nJ).l(dfk.nn).k(dfk.nA).n(dfk.d).a();
-   public static final lu Q = a(dfk.d).l(dfk.ne).k(dfk.ns).a();
-   public static final lu R = a(dfk.qz).p(dfk.qC).l(dfk.qB).k(dfk.qA).b(dfk.qH).n(dfk.qD).a();
-   public static final lu S = a(dfk.qD).p(dfk.qG).l(dfk.qF).k(dfk.qE).n(dfk.qI).a();
-   public static final lu T = a(dfk.qI).p(dfk.qL).l(dfk.qK).k(dfk.qJ).b(dfk.qM).a();
-   public static final lu U = a(dfk.fn).h(dfk.fo).p(dfk.nM).l(dfk.fp).k(dfk.jM).b(dfk.pI).d(dfk.pJ).a();
-   public static final lu V = a(dfk.kL).k(dfk.nC).l(dfk.np).p(dfk.nO).a();
-   public static final lu W = a(dfk.hZ).p(dfk.nG).l(dfk.ic).k(dfk.if).a();
-   public static final lu X = a(dfk.kw).l(dfk.ky).k(dfk.jQ).c().a();
-   public static final lu Y = a(dfk.ia).l(dfk.id).k(dfk.ig).a();
-   public static final lu Z = a(dfk.ib).l(dfk.ie).k(dfk.ih).a();
-   public static final lu aa = a(dfk.hd).l(dfk.hg).k(dfk.jN).b(dfk.he).c().a();
-   public static final lu ab = a(dfk.jT).l(dfk.nm).k(dfk.nz).a();
-   public static final lu ac = a(dfk.aV).p(dfk.nP).l(dfk.fD).k(dfk.jF).b(dfk.aW).e(dfk.aX).c().a();
-   public static final lu ad = a(dfk.aX).k(dfk.jG).a();
-   public static final lu ae = a(dfk.jS).k(dfk.ny).l(dfk.nl).a();
-   public static final lu af = a(dfk.jp).p(dfk.nH).l(dfk.js).k(dfk.jO).b(dfk.jq).e(dfk.jr).c().a();
-   public static final lu ag = a(dfk.jr).k(dfk.jP).a();
-   public static final lu ah = a(dfk.jU).k(dfk.nt).l(dfk.nf).a();
-   public static final lu ai = a(dfk.b).k(dfk.jD).m(dfk.dx).a(dfk.dM).l(dfk.nk).a();
-   public static final lu aj = a(dfk.eH).p(dfk.nK).l(dfk.fj).k(dfk.jK).b(dfk.eK).d(dfk.eJ).c().a();
-   public static final lu ak = a(dfk.sJ).a();
-   public static final lu al = a(dfk.sK).k(dfk.sM).l(dfk.sL).p(dfk.sN).b(dfk.ta).n(dfk.sO).a();
-   public static final lu am = a(dfk.sO).k(dfk.sQ).l(dfk.sP).p(dfk.sR).a();
-   public static final lu an = a(dfk.sW).k(dfk.sY).l(dfk.sX).p(dfk.sZ).d(dfk.tb).a();
-   public static final lu ao = a(dfk.sS).k(dfk.sU).l(dfk.sT).p(dfk.sV).d(dfk.tc).a();
+   private static final Logger aB = LogUtils.getLogger();
+   private static final Map<akq, Supplier<?>> aC = Maps.newLinkedHashMap();
+   private static final ki<ki<?>> aD = new ju<>(akp.a(lu.a), Lifecycle.stable());
+   public static final jh<dxw> a = a(lu.G, "step", dxw::a);
+   public static final jz<avn> b = a(lu.al, $$0 -> avo.nC);
+   public static final jh<eox> c = b(lu.D, "empty", $$0 -> eoz.a);
+   public static final jz<brw> d = a(lu.W, bsa::a);
+   public static final jh<dfw> e = b(lu.f, "air", $$0 -> dfy.a);
+   public static final jh<bsw<?>> f = b(lu.z, "pig", $$0 -> bsw.az);
+   public static final jh<cuj> g = b(lu.K, "air", $$0 -> cur.a);
+   public static final jz<cwq> h = a(lu.ad, cwt::a);
+   public static final jz<ll<?>> i = a(lu.Y, $$0 -> lm.b);
+   public static final jz<dqh<?>> j = b(lu.h, $$0 -> dqh.a);
+   public static final jz<akq> k = a(lu.r, $$0 -> avy.E);
+   public static final jh<dvx> l = a(lu.o, "empty", $$0 -> dvx.c);
+   public static final jz<eni<?>> m = a(lu.ah, $$0 -> eni.a);
+   public static final jz<enw<?>> n = a(lu.ai, $$0 -> enw.b);
+   public static final jz<enb<?>> o = a(lu.ac, $$0 -> enb.a);
+   public static final jz<cra<?>> p = a(lu.V, $$0 -> cra.i);
+   public static final jz<czd<?>> q = a(lu.af, $$0 -> czd.a);
+   public static final jz<czc<?>> r = a(lu.ae, $$0 -> czc.b);
+   public static final jz<bup> s = a(lu.c, buu::a);
+   public static final jz<dyb<?>> t = a(lu.ab, $$0 -> dyb.a);
+   public static final jz<io<?, ?>> u = a(lu.p, ip::a);
+   public static final jz<avx<?>> v = a(lu.am, $$0 -> avy.c);
+   public static final jh<cmn> w = a(lu.aw, "plains", $$0 -> cmn.c);
+   public static final jh<cml> x = a(lu.av, "none", $$0 -> cml.b);
+   public static final jz<cet> y = a(lu.aa, ceu::a);
+   public static final jh<ccq<?>> z = a(lu.U, "dummy", $$0 -> ccq.a);
+   public static final jh<cdx<?>> A = a(lu.ak, "dummy", $$0 -> cdx.a);
+   public static final jz<com> B = a(lu.aj, $$0 -> com.c);
+   public static final jz<cok> C = a(lu.b, $$0 -> cok.b);
+   public static final jz<esc> D = a(lu.Q, $$0 -> erz.b);
+   public static final jz<eta<?>> E = a(lu.N, $$0 -> etb.e);
+   public static final jz<eux> F = a(lu.M, $$0 -> euy.a);
+   public static final jz<evr> G = a(lu.P, $$0 -> evt.b);
+   public static final jz<evj> H = a(lu.O, $$0 -> evl.c);
+   public static final jz<ewa> I = a(lu.R, $$0 -> ewc.c);
+   public static final jz<bpu<?>> J = a(lu.C, $$0 -> bpu.a);
+   public static final jz<bpw<?>> K = a(lu.J, $$0 -> bpw.a);
+   public static final jz<ehu<?>> L = a(lu.H, $$0 -> ehu.a);
+   public static final jz<ead<?>> M = a(lu.i, $$0 -> ead.k);
+   public static final jz<ebb<?>> N = a(lu.k, $$0 -> ebb.a);
+   public static final jz<eca<?>> O = a(lu.A, $$0 -> eca.I);
+   public static final jz<ekk<?>> P = a(lu.ao, $$0 -> ekk.a);
+   public static final jz<ekd> Q = a(lu.an, $$0 -> ekd.c);
+   public static final jz<ejv<?>> R = a(lu.as, $$0 -> ejv.f);
+   public static final jz<eiu<?>> S = a(lu.Z, $$0 -> eiu.f);
+   public static final jz<egg<?>> T = a(lu.j, $$0 -> egg.a);
+   public static final jz<efr<?>> U = a(lu.E, $$0 -> efr.a);
+   public static final jz<ehj<?>> V = a(lu.au, $$0 -> ehj.a);
+   public static final jz<egd<?>> W = a(lu.ag, $$0 -> egd.a);
+   public static final jz<egx<?>> X = a(lu.at, $$0 -> egx.b);
+   public static final jz<efg<?>> Y = a(lu.B, $$0 -> efg.a);
+   public static final jz<MapCodec<? extends ddy>> Z = a(lu.e, ddz::a);
+   public static final jz<MapCodec<? extends dux>> aa = a(lu.n, duz::a);
+   public static final jz<MapCodec<? extends dzm.f>> ab = a(lu.S, dzm.f::a);
+   public static final jz<MapCodec<? extends dzm.o>> ac = a(lu.T, dzm.o::a);
+   public static final jz<MapCodec<? extends dyo>> ad = a(lu.t, dyp::a);
+   public static final jz<MapCodec<? extends dfw>> ae = a(lu.g, dfx::a);
+   public static final jz<enm<?>> af = a(lu.ar, $$0 -> enm.e);
+   public static final jz<ekv<?>> ag = a(lu.ap, $$0 -> ekv.d);
+   public static final jz<MapCodec<? extends eky>> ah = a(lu.aq, ekz::a);
+   public static final jz<cfg> ai = a(lu.l, cfg::a);
+   public static final jz<cfn> aj = a(lu.F, cfn::a);
+   public static final jz<cug> ak = a(lu.I, cui::a);
+   public static final jz<dqw> al = a(lu.ax, dqx::a);
+   public static final jz<csy> am = a(lu.q, csz::a);
+   public static final jz<aq<?>> an = a(lu.aV, an::a);
+   public static final jz<yp<?>> ao = a(lu.ay, yq::a);
+   public static final jz<cse> ap = a(lu.az, csf::a);
+   public static final jz<kp<?>> aq = a(lu.aA, kq::a);
+   public static final jz<MapCodec<? extends bw>> ar = a(lu.aB, bx::a);
+   public static final jz<ct.a<?>> as = a(lu.aC, cu::a);
+   public static final jz<eqi> at = a(lu.aD, eqj::a);
+   public static final jz<kp<?>> au = a(lu.aE, dab::a);
+   public static final jz<MapCodec<? extends dah>> av = a(lu.v, dah::a);
+   public static final jz<MapCodec<? extends daq>> aw = a(lu.u, daq::a);
+   public static final jz<MapCodec<? extends dar>> ax = a(lu.w, dar::b);
+   public static final jz<MapCodec<? extends das>> ay = a(lu.y, das::a);
+   public static final jz<MapCodec<? extends dbh>> az = a(lu.x, dbi::a);
+   public static final jz<? extends jz<?>> aA = aD;
 
-   private static lu.a a(dfi $$0) {
-      lu.a $$1 = new lu.a($$0);
-      lu $$2 = ap.put($$0, $$1.a());
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate family definition for " + lq.e.b($$0));
-      } else {
-         return $$1;
+   private static <T> jz<T> a(akp<? extends jz<T>> $$0, lt.a<T> $$1) {
+      return a($$0, new ju<>($$0, Lifecycle.stable(), false), $$1);
+   }
+
+   private static <T> jz<T> b(akp<? extends jz<T>> $$0, lt.a<T> $$1) {
+      return a($$0, new ju<>($$0, Lifecycle.stable(), true), $$1);
+   }
+
+   private static <T> jh<T> a(akp<? extends jz<T>> $$0, String $$1, lt.a<T> $$2) {
+      return a($$0, new jg<>($$1, $$0, Lifecycle.stable(), false), $$2);
+   }
+
+   private static <T> jh<T> b(akp<? extends jz<T>> $$0, String $$1, lt.a<T> $$2) {
+      return a($$0, new jg<>($$1, $$0, Lifecycle.stable(), true), $$2);
+   }
+
+   private static <T, R extends ki<T>> R a(akp<? extends jz<T>> $$0, R $$1, lt.a<T> $$2) {
+      aks.a(() -> "registry " + $$0);
+      akq $$3 = $$0.a();
+      aC.put($$3, () -> $$2.run($$1));
+      aD.a((akp<ki<?>>)$$0, $$1, jy.a);
+      return $$1;
+   }
+
+   public static void a() {
+      b();
+      c();
+      a(aA);
+   }
+
+   private static void b() {
+      aC.forEach(($$0, $$1) -> {
+         if ($$1.get() == null) {
+            aB.error("Unable to bootstrap registry '{}'", $$0);
+         }
+      });
+   }
+
+   private static void c() {
+      aA.m();
+
+      for (jz<?> $$0 : aA) {
+         $$0.m();
       }
    }
 
-   public static Stream<lu> a() {
-      return ap.values().stream();
+   private static <T extends jz<?>> void a(jz<T> $$0) {
+      $$0.forEach($$1 -> {
+         if ($$1.f().isEmpty()) {
+            ad.a("Registry '" + $$0.b((T)$$1) + "' was empty after loading");
+         }
+
+         if ($$1 instanceof jh) {
+            akq $$2 = ((jh)$$1).b();
+            Validate.notNull($$1.a($$2), "Missing default of DefaultedMappedRegistry: " + $$2, new Object[0]);
+         }
+      });
+   }
+
+   @FunctionalInterface
+   interface a<T> {
+      Object run(jz<T> var1);
    }
 }

@@ -1,29 +1,24 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 
-public abstract class eiw extends eix {
-   private final eiw.a d;
-   private final int e;
-   private final int f;
+public class eiw extends eis {
+   public static final MapCodec<eiw> a = axv.l.fieldOf("chance").xmap(eiw::new, $$0 -> $$0.c);
+   private final int c;
 
-   protected eiw(eiw.a $$0, int $$1, int $$2, eix.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private eiw(int $$0) {
+      this.c = $$0;
+   }
+
+   public static eiw a(int $$0) {
+      return new eiw($$0);
    }
 
    @Override
-   public Optional<eix.b> a(eix.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, dyg.a.a, $$1 -> this.a($$1, $$0));
+   protected boolean a(eir $$0, ayv $$1, jd $$2) {
+      return $$1.i() < 1.0F / (float)this.c;
    }
 
-   private void a(ejp $$0, eix.a $$1) {
-      dbn $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
-   }
-
-   @FunctionalInterface
-   protected interface a {
-      ejb construct(dzf var1, int var2, int var3);
+   @Override
+   public eiu<?> b() {
+      return eiu.b;
    }
 }

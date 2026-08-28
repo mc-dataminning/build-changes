@@ -1,25 +1,24 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class cr {
-   public static final cq.a<cj> a = a("damage", cj.a);
-   public static final cq.a<cl.a> b = a("enchantments", cl.a.a);
-   public static final cq.a<cl.b> c = a("stored_enchantments", cl.b.a);
-   public static final cq.a<co> d = a("potion_contents", co.a);
-   public static final cq.a<ci> e = a("custom_data", ci.a);
-   public static final cq.a<ch> f = a("container", ch.a);
-   public static final cq.a<cg> g = a("bundle_contents", cg.a);
-   public static final cq.a<cm> h = a("firework_explosion", cm.a);
-   public static final cq.a<cn> i = a("fireworks", cn.a);
-   public static final cq.a<cu> j = a("writable_book_content", cu.a);
-   public static final cq.a<cv> k = a("written_book_content", cv.a);
-   public static final cq.a<cf> l = a("attribute_modifiers", cf.a);
-   public static final cq.a<cs> m = a("trim", cs.a);
+public record cr(jq<cwq> c) implements dw<cws> {
+   public static final Codec<cr> a = kb.a(lu.ad).xmap(cr::new, cr::b);
 
-   private static <T extends cq> cq.a<T> a(String $$0, Codec<T> $$1) {
-      return jw.a(lq.as, $$0, new cq.a<>($$1));
+   @Override
+   public kp<cws> a() {
+      return kq.G;
    }
 
-   public static cq.a<?> a(jw<cq.a<?>> $$0) {
-      return a;
+   public boolean a(cuo $$0, cws $$1) {
+      Optional<jm<cwq>> $$2 = $$1.e();
+      return !$$2.isEmpty() && this.c.a($$2.get());
+   }
+
+   public static ct a(jq<cwq> $$0) {
+      return new cr($$0);
+   }
+
+   public jq<cwq> b() {
+      return this.c;
    }
 }

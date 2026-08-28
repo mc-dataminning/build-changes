@@ -1,19 +1,35 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+public class cct {
+   private final bwt a;
+   private final float b;
+   private final int c;
 
-public class cct extends cdm<bsb> {
-   @Override
-   public Set<ccg<?>> a() {
-      return ImmutableSet.of(ccg.K, ccg.h);
+   public cct(jd $$0, float $$1, int $$2) {
+      this(new bvi($$0), $$1, $$2);
    }
 
-   protected void a(aqm $$0, bsb $$1) {
-      $$1.dV().c(ccg.h).ifPresent($$1x -> this.a($$1, $$1x));
+   public cct(eww $$0, float $$1, int $$2) {
+      this(new bvi(jd.a((jw)$$0)), $$1, $$2);
    }
 
-   private void a(bsb $$0, cci $$1) {
-      Optional<bsb> $$2 = $$1.a($$1x -> $$1x.am() == $$0.am() && !$$1x.o_()).map(bsb.class::cast);
-      $$0.dV().a(ccg.K, $$2);
+   public cct(bsq $$0, float $$1, int $$2) {
+      this(new bvq($$0, false), $$1, $$2);
+   }
+
+   public cct(bwt $$0, float $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public bwt a() {
+      return this.a;
+   }
+
+   public float b() {
+      return this.b;
+   }
+
+   public int c() {
+      return this.c;
    }
 }

@@ -1,199 +1,146 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
 
-public interface esi {
-   MapCodec<esi> a = a(Integer.MAX_VALUE);
+public class esi extends esy {
+   private static final Map<akq, esi.c> b = Stream.of(esi.a.a, esi.d.b, esi.e.b).collect(Collectors.toMap(esi.c::a, Function.identity()));
+   private static final Codec<esi.c> c = akq.a.comapFlatMap($$0 -> {
+      esi.c $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
+   }, esi.c::a);
+   private static final MapCodec<esi.b> d = axv.a("formula", "parameters", c, esi.b::a, esi.c::b);
+   public static final MapCodec<esi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(daa.c.fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, esi::new)
+   );
+   private final jm<daa> e;
+   private final esi.b f;
 
-   static MapCodec<esi> a(int $$0) {
-      return esi.f.e.dispatchMap("mode", esi::a, $$0x -> $$0x.g).validate($$1 -> {
-         if ($$1 instanceof esi.d $$2 && $$2.c().isPresent()) {
-            int $$3 = $$2.c().get();
-            if ($$3 > $$0) {
-               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
+   private esi(List<euw> $$0, jm<daa> $$1, esi.b $$2) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   @Override
+   public eta<esi> b() {
+      return etb.x;
+   }
+
+   @Override
+   public Set<eue<?>> a() {
+      return ImmutableSet.of(euh.i);
+   }
+
+   @Override
+   public cuo a(cuo $$0, erl $$1) {
+      cuo $$2 = $$1.c(euh.i);
+      if ($$2 != null) {
+         int $$3 = dac.a(this.e, $$2);
+         int $$4 = this.f.a($$1.b(), $$0.H(), $$3);
+         $$0.e($$4);
+      }
+
+      return $$0;
+   }
+
+   public static esy.a<?> a(jm<daa> $$0, float $$1, int $$2) {
+      return a($$3 -> new esi($$3, $$0, new esi.a($$2, $$1)));
+   }
+
+   public static esy.a<?> a(jm<daa> $$0) {
+      return a($$1 -> new esi($$1, $$0, new esi.d()));
+   }
+
+   public static esy.a<?> b(jm<daa> $$0) {
+      return a($$1 -> new esi($$1, $$0, new esi.e(1)));
+   }
+
+   public static esy.a<?> a(jm<daa> $$0, int $$1) {
+      return a($$2 -> new esi($$2, $$0, new esi.e($$1)));
+   }
+
+   static record a(int b, float c) implements esi.b {
+      private static final Codec<esi.a> d = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(esi.a::b), Codec.FLOAT.fieldOf("probability").forGetter(esi.a::c)).apply($$0, esi.a::new)
+      );
+      public static final esi.c a = new esi.c(akq.b("binomial_with_bonus_count"), d);
+
+      @Override
+      public int a(ayv $$0, int $$1, int $$2) {
+         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
+            if ($$0.i() < this.c) {
+               $$1++;
             }
          }
 
-         return DataResult.success($$1);
-      });
-   }
-
-   esi.f a();
-
-   default <T> List<T> a(List<T> $$0, List<T> $$1) {
-      return this.a($$0, $$1, Integer.MAX_VALUE);
-   }
-
-   <T> List<T> a(List<T> var1, List<T> var2, int var3);
-
-   public static class a implements esi {
-      private static final Logger d = LogUtils.getLogger();
-      public static final esi.a b = new esi.a();
-      public static final MapCodec<esi.a> c = MapCodec.unit(() -> b);
-
-      private a() {
-      }
-
-      @Override
-      public esi.f a() {
-         return esi.f.d;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         if ($$0.size() + $$1.size() > $$2) {
-            d.error("Contents overflow in section append");
-            return $$0;
-         } else {
-            return Stream.concat($$0.stream(), $$1.stream()).toList();
-         }
-      }
-   }
-
-   public static record b(int c) implements esi {
-      private static final Logger d = LogUtils.getLogger();
-      public static final MapCodec<esi.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(axo.k.optionalFieldOf("offset", 0).forGetter(esi.b::b)).apply($$0, esi.b::new)
-      );
-
-      @Override
-      public esi.f a() {
-         return esi.f.c;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.c > $$3) {
-            d.error("Cannot insert when offset is out of bounds");
-            return $$0;
-         } else if ($$3 + $$1.size() > $$2) {
-            d.error("Contents overflow in section insertion");
-            return $$0;
-         } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.c));
-            $$4.addAll($$1);
-            $$4.addAll($$0.subList(this.c, $$3));
-            return $$4.build();
-         }
-      }
-
-      public int b() {
-         return this.c;
-      }
-   }
-
-   public static class c implements esi {
-      public static final esi.c b = new esi.c();
-      public static final MapCodec<esi.c> c = MapCodec.unit(() -> b);
-
-      private c() {
-      }
-
-      @Override
-      public esi.f a() {
-         return esi.f.a;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
          return $$1;
       }
+
+      @Override
+      public esi.c a() {
+         return a;
+      }
    }
 
-   public static record d(int c, Optional<Integer> d) implements esi {
-      private static final Logger e = LogUtils.getLogger();
-      public static final MapCodec<esi.d> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(axo.k.optionalFieldOf("offset", 0).forGetter(esi.d::b), axo.k.optionalFieldOf("size").forGetter(esi.d::c)).apply($$0, esi.d::new)
-      );
+   interface b {
+      int a(ayv var1, int var2, int var3);
 
-      public d(int $$0) {
-         this($$0, Optional.empty());
-      }
+      esi.c a();
+   }
 
-      @Override
-      public esi.f a() {
-         return esi.f.b;
-      }
+   static record c(akq a, Codec<? extends esi.b> b) {
+   }
+
+   static record d() implements esi.b {
+      public static final Codec<esi.d> a = Codec.unit(esi.d::new);
+      public static final esi.c b = new esi.c(akq.b("ore_drops"), a);
 
       @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.c > $$3) {
-            e.error("Cannot replace when offset is out of bounds");
-            return $$0;
+      public int a(ayv $$0, int $$1, int $$2) {
+         if ($$2 > 0) {
+            int $$3 = $$0.a($$2 + 2) - 1;
+            if ($$3 < 0) {
+               $$3 = 0;
+            }
+
+            return $$1 * ($$3 + 1);
          } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.c));
-            $$4.addAll($$1);
-            int $$5 = this.c + this.d.orElse($$1.size());
-            if ($$5 < $$3) {
-               $$4.addAll($$0.subList($$5, $$3));
-            }
-
-            List<T> $$6 = $$4.build();
-            if ($$6.size() > $$2) {
-               e.error("Contents overflow in section replacement");
-               return $$0;
-            } else {
-               return $$6;
-            }
+            return $$1;
          }
+      }
+
+      @Override
+      public esi.c a() {
+         return b;
+      }
+   }
+
+   static record e(int c) implements esi.b {
+      public static final Codec<esi.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(esi.e::b)).apply($$0, esi.e::new)
+      );
+      public static final esi.c b = new esi.c(akq.b("uniform_bonus_count"), a);
+
+      @Override
+      public int a(ayv $$0, int $$1, int $$2) {
+         return $$1 + $$0.a(this.c * $$2 + 1);
+      }
+
+      @Override
+      public esi.c a() {
+         return b;
       }
 
       public int b() {
          return this.c;
-      }
-
-      public Optional<Integer> c() {
-         return this.d;
-      }
-   }
-
-   public static record e<T>(List<T> a, esi b) {
-      public static <T> Codec<esi.e<T>> a(Codec<T> $$0, int $$1) {
-         return RecordCodecBuilder.create(
-            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), esi.a($$1).forGetter($$0xx -> $$0xx.b))
-                  .apply($$2, esi.e::new)
-         );
-      }
-
-      public List<T> a(List<T> $$0) {
-         return this.b.a($$0, this.a);
-      }
-   }
-
-   public static enum f implements azc {
-      a("replace_all", esi.c.c),
-      b("replace_section", esi.d.b),
-      c("insert", esi.b.b),
-      d("append", esi.a.c);
-
-      public static final Codec<esi.f> e = azc.a(esi.f::values);
-      private final String f;
-      final MapCodec<? extends esi> g;
-
-      private f(final String $$0, final MapCodec<? extends esi> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public MapCodec<? extends esi> a() {
-         return this.g;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
       }
    }
 }

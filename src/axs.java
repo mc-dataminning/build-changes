@@ -1,80 +1,100 @@
-import com.google.common.collect.ImmutableList;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import java.util.List;
+import com.google.common.base.Charsets;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
+import java.nio.file.AccessDeniedException;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 
-@FunctionalInterface
-public interface axs {
-   axs a = $$0 -> true;
+public class axs implements AutoCloseable {
+   public static final String a = "session.lock";
+   private final FileChannel b;
+   private final FileLock c;
+   private static final ByteBuffer d;
 
-   boolean accept(axt var1);
+   public static axs a(Path $$0) throws IOException {
+      Path $$1 = $$0.resolve("session.lock");
+      v.c($$0);
+      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
 
-   static axs codepoint(int $$0, xr $$1) {
-      return $$2 -> $$2.accept(0, $$1, $$0);
-   }
+      try {
+         $$2.write(d.duplicate());
+         $$2.force(true);
+         FileLock $$3 = $$2.tryLock();
+         if ($$3 == null) {
+            throw axs.a.a($$1);
+         } else {
+            return new axs($$2, $$3);
+         }
+      } catch (IOException var6) {
+         try {
+            $$2.close();
+         } catch (IOException var5) {
+            var6.addSuppressed(var5);
+         }
 
-   static axs forward(String $$0, xr $$1) {
-      return $$0.isEmpty() ? a : $$2 -> azb.a($$0, $$1, $$2);
-   }
-
-   static axs forward(String $$0, xr $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> azb.a($$0, $$1, decorateOutput($$3, $$2));
-   }
-
-   static axs backward(String $$0, xr $$1) {
-      return $$0.isEmpty() ? a : $$2 -> azb.b($$0, $$1, $$2);
-   }
-
-   static axs backward(String $$0, xr $$1, Int2IntFunction $$2) {
-      return $$0.isEmpty() ? a : $$3 -> azb.b($$0, $$1, decorateOutput($$3, $$2));
-   }
-
-   static axt decorateOutput(axt $$0, Int2IntFunction $$1) {
-      return ($$2, $$3, $$4) -> $$0.accept($$2, $$3, (Integer)$$1.apply($$4));
-   }
-
-   static axs composite() {
-      return a;
-   }
-
-   static axs composite(axs $$0) {
-      return $$0;
-   }
-
-   static axs composite(axs $$0, axs $$1) {
-      return fromPair($$0, $$1);
-   }
-
-   static axs composite(axs... $$0) {
-      return fromList(ImmutableList.copyOf($$0));
-   }
-
-   static axs composite(List<axs> $$0) {
-      int $$1 = $$0.size();
-      switch ($$1) {
-         case 0:
-            return a;
-         case 1:
-            return $$0.get(0);
-         case 2:
-            return fromPair($$0.get(0), $$0.get(1));
-         default:
-            return fromList(ImmutableList.copyOf($$0));
+         throw var6;
       }
    }
 
-   static axs fromPair(axs $$0, axs $$1) {
-      return $$2 -> $$0.accept($$2) && $$1.accept($$2);
+   private axs(FileChannel $$0, FileLock $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   static axs fromList(List<axs> $$0) {
-      return $$1 -> {
-         for (axs $$2 : $$0) {
-            if (!$$2.accept($$1)) {
-               return false;
-            }
+   @Override
+   public void close() throws IOException {
+      try {
+         if (this.c.isValid()) {
+            this.c.release();
+         }
+      } finally {
+         if (this.b.isOpen()) {
+            this.b.close();
+         }
+      }
+   }
+
+   public boolean a() {
+      return this.c.isValid();
+   }
+
+   public static boolean b(Path $$0) throws IOException {
+      Path $$1 = $$0.resolve("session.lock");
+
+      try {
+         boolean var4;
+         try (
+            FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE);
+            FileLock $$3 = $$2.tryLock();
+         ) {
+            var4 = $$3 == null;
          }
 
+         return var4;
+      } catch (AccessDeniedException var10) {
          return true;
-      };
+      } catch (NoSuchFileException var11) {
+         return false;
+      }
+   }
+
+   static {
+      byte[] $$0 = "☃".getBytes(Charsets.UTF_8);
+      d = ByteBuffer.allocateDirect($$0.length);
+      d.put($$0);
+      d.flip();
+   }
+
+   public static class a extends IOException {
+      private a(Path $$0, String $$1) {
+         super($$0.toAbsolutePath() + ": " + $$1);
+      }
+
+      public static axs.a a(Path $$0) {
+         return new axs.a($$0, "already locked (possibly by other Minecraft instance?)");
+      }
    }
 }

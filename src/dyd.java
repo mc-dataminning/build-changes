@@ -1,38 +1,70 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class dyd {
-   public final efq a;
-   public final efq b;
-   public final efq c;
-   public final efq d;
-   public final efq e;
-   public final List<dsl> f;
-   public final awm<dfi> g;
-   public final awm<dfi> h;
-   public static final Codec<dyd> i = RecordCodecBuilder.create(
+public record dyd(jm<dxw> b, float c, eww d, @Nullable UUID e, @Nullable UUID f, @Nullable bsq g) {
+   public static final Codec<dyd> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               efq.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
-               efq.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
-               efq.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
-               efq.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
-               efq.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
-               axo.a(dsl.b.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
-               awm.b(lr.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
-               awm.b(lr.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
+               dxw.aj.fieldOf("game_event").forGetter(dyd::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dyd::b),
+               eww.a.fieldOf("pos").forGetter(dyd::c),
+               kg.a.lenientOptionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               kg.a.lenientOptionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
             )
-            .apply($$0, dyd::new)
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dyd($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
    );
 
-   public dyd(efq $$0, efq $$1, efq $$2, efq $$3, efq $$4, List<dsl> $$5, awm<dfi> $$6, awm<dfi> $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   public dyd(jm<dxw> $$0, float $$1, eww $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
+   }
+
+   public dyd(jm<dxw> $$0, float $$1, eww $$2, @Nullable bsq $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cA(), a($$3), $$3);
+   }
+
+   @Nullable
+   private static UUID a(@Nullable bsq $$0) {
+      if ($$0 instanceof cnn $$1 && $$1.s() != null) {
+         return $$1.s().cA();
+      }
+
+      return null;
+   }
+
+   public Optional<bsq> a(aqt $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
+   }
+
+   public Optional<bsq> b(aqt $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof cnn).map($$0x -> (cnn)$$0x).map(cnn::s).or(() -> Optional.ofNullable(this.f).map($$0::a));
+   }
+
+   public jm<dxw> a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public eww c() {
+      return this.d;
+   }
+
+   @Nullable
+   public UUID d() {
+      return this.e;
+   }
+
+   @Nullable
+   public UUID e() {
+      return this.f;
+   }
+
+   @Nullable
+   public bsq f() {
+      return this.g;
    }
 }

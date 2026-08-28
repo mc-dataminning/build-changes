@@ -1,48 +1,29 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
+public record adc(int b, float c) implements zf<abt> {
+   public static final yw<vv, adc> a = zf.a(adc::a, adc::new);
 
-public class adc implements zb<abn> {
-   public static final ys<vr, adc> a = zb.a(adc::a, adc::new);
-   private final int b;
-   private final int c;
-   private final add d;
-
-   public adc(dbn $$0, eny $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = $$0.e;
-      this.c = $$0.f;
-      this.d = new add($$0, $$1, $$2, $$3);
+   public adc(btl $$0) {
+      this($$0.an(), $$0.eF());
    }
 
-   private adc(vr $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = new add($$0, this.b, this.c);
+   private adc(vv $$0) {
+      this($$0.l(), $$0.readFloat());
    }
 
-   private void a(vr $$0) {
+   private void a(vv $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
-      this.d.a($$0);
+      $$0.a(this.c);
    }
 
    @Override
-   public zd<adc> a() {
-      return afz.N;
+   public zh<adc> a() {
+      return agf.I;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
+   public float e() {
       return this.c;
-   }
-
-   public add f() {
-      return this.d;
    }
 }

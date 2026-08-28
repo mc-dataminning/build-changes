@@ -1,45 +1,20 @@
-public class acv implements zb<abn> {
-   public static final ys<vr, acv> a = zb.a(acv::a, acv::new);
-   private final int b;
-   private final int c;
-   private final int d;
+public record acv(xk.a b) implements zf<abt> {
+   public static final yw<vv, acv> a = zf.a(acv::a, acv::new);
 
-   public acv(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private acv(vv $$0) {
+      this(xk.a.a($$0));
    }
 
-   private acv(vr $$0) {
-      this.b = $$0.readUnsignedByte();
-      this.c = $$0.l();
-      this.d = $$0.readInt();
-   }
-
-   private void a(vr $$0) {
-      $$0.k(this.b);
-      $$0.c(this.c);
-      $$0.p(this.d);
+   private void a(vv $$0) {
+      xk.a.a($$0, this.b);
    }
 
    @Override
-   public zd<acv> a() {
-      return afz.H;
+   public zh<acv> a() {
+      return agf.B;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

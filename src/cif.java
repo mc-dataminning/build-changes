@@ -1,45 +1,43 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cif {
-   private static final Logger a = LogUtils.getLogger();
-   private final cho b;
-   private final chy[] c = new chy[cie.c()];
+public class cif extends cia {
    @Nullable
-   private chy d;
+   private eww b;
 
-   public cif(cho $$0) {
-      this.b = $$0;
-      this.a(cie.k);
+   public cif(chy $$0) {
+      super($$0);
    }
 
-   public void a(cie<?> $$0) {
-      if (this.d == null || $$0 != this.d.i()) {
-         if (this.d != null) {
-            this.d.e();
-         }
-
-         this.d = this.b((cie<chy>)$$0);
-         if (!this.b.dR().B) {
-            this.b.ar().a(cho.b, $$0.b());
-         }
-
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dR().B ? "client" : "server");
-         this.d.d();
+   @Override
+   public void c() {
+      if (this.b == null) {
+         this.b = this.a.do();
       }
    }
 
-   public chy a() {
-      return this.d;
+   @Override
+   public boolean a() {
+      return true;
    }
 
-   public <T extends chy> T b(cie<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
-      }
+   @Override
+   public void d() {
+      this.b = null;
+   }
 
-      return (T)this.c[$$1];
+   @Override
+   public float f() {
+      return 1.0F;
+   }
+
+   @Nullable
+   @Override
+   public eww g() {
+      return this.b;
+   }
+
+   @Override
+   public cio<cif> i() {
+      return cio.k;
    }
 }

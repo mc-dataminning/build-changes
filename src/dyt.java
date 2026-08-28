@@ -1,20 +1,22 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dyt {
-   default ayo a(ja $$0) {
-      return this.a($$0.u(), $$0.v(), $$0.w());
+public class dyt {
+   public static final Codec<dyt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eef.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
+               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, dyt::new)
+   );
+   public final double b;
+   public final double c;
+   public final int d;
+
+   public dyt(double $$0, double $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
-
-   default ayo a(akk $$0) {
-      return this.a($$0.toString());
-   }
-
-   ayo a(String var1);
-
-   ayo a(long var1);
-
-   ayo a(int var1, int var2, int var3);
-
-   @VisibleForTesting
-   void a(StringBuilder var1);
 }

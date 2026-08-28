@@ -1,23 +1,18 @@
-public enum dti implements azc {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String f;
+public class dti implements Predicate<dta> {
+   private final dfw a;
 
-   private dti(final String $$0) {
-      this.f = $$0;
+   public dti(dfw $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.f;
+   public static dti a(dfw $$0) {
+      return new dti($$0);
    }
 
-   @Override
-   public String c() {
-      return this.f;
+   public boolean a(@Nullable dta $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

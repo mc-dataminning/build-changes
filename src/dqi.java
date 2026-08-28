@@ -1,95 +1,220 @@
-import java.util.Map;
+import java.util.Arrays;
 import javax.annotation.Nullable;
 
-public class dqi {
-   public static final akj<dqh> a = a("blank");
-   public static final akj<dqh> b = a("angler");
-   public static final akj<dqh> c = a("archer");
-   public static final akj<dqh> d = a("arms_up");
-   public static final akj<dqh> e = a("blade");
-   public static final akj<dqh> f = a("brewer");
-   public static final akj<dqh> g = a("burn");
-   public static final akj<dqh> h = a("danger");
-   public static final akj<dqh> i = a("explorer");
-   public static final akj<dqh> j = a("flow");
-   public static final akj<dqh> k = a("friend");
-   public static final akj<dqh> l = a("guster");
-   public static final akj<dqh> m = a("heart");
-   public static final akj<dqh> n = a("heartbreak");
-   public static final akj<dqh> o = a("howl");
-   public static final akj<dqh> p = a("miner");
-   public static final akj<dqh> q = a("mourner");
-   public static final akj<dqh> r = a("plenty");
-   public static final akj<dqh> s = a("prize");
-   public static final akj<dqh> t = a("scrape");
-   public static final akj<dqh> u = a("sheaf");
-   public static final akj<dqh> v = a("shelter");
-   public static final akj<dqh> w = a("skull");
-   public static final akj<dqh> x = a("snort");
-   private static final Map<cty, akj<dqh>> y = Map.ofEntries(
-      Map.entry(cug.qL, a),
-      Map.entry(cug.xO, b),
-      Map.entry(cug.xP, c),
-      Map.entry(cug.xQ, d),
-      Map.entry(cug.xR, e),
-      Map.entry(cug.xS, f),
-      Map.entry(cug.xT, g),
-      Map.entry(cug.xU, h),
-      Map.entry(cug.xV, i),
-      Map.entry(cug.xW, j),
-      Map.entry(cug.xX, k),
-      Map.entry(cug.xY, l),
-      Map.entry(cug.xZ, m),
-      Map.entry(cug.ya, n),
-      Map.entry(cug.yb, o),
-      Map.entry(cug.yc, p),
-      Map.entry(cug.yd, q),
-      Map.entry(cug.ye, r),
-      Map.entry(cug.yf, s),
-      Map.entry(cug.yg, t),
-      Map.entry(cug.yh, u),
-      Map.entry(cug.yi, v),
-      Map.entry(cug.yj, w),
-      Map.entry(cug.yk, x)
-   );
+public class dqi extends dpz implements brc {
+   private static final int g = 3;
+   private static final int h = 4;
+   private static final int[] i = new int[]{3};
+   private static final int[] j = new int[]{0, 1, 2, 3};
+   private static final int[] k = new int[]{0, 1, 2, 4};
+   public static final int b = 20;
+   public static final int c = 0;
+   public static final int d = 1;
+   public static final int e = 2;
+   private jv<cuo> l = jv.a(5, cuo.l);
+   int m;
+   private boolean[] q;
+   private cuj r;
+   int s;
+   protected final cqd f = new cqd() {
+      @Override
+      public int a(int $$0) {
+         return switch ($$0) {
+            case 0 -> dqi.this.m;
+            case 1 -> dqi.this.s;
+            default -> 0;
+         };
+      }
 
-   @Nullable
-   public static akj<dqh> a(cty $$0) {
-      return y.get($$0);
+      @Override
+      public void a(int $$0, int $$1) {
+         switch ($$0) {
+            case 0:
+               dqi.this.m = $$1;
+               break;
+            case 1:
+               dqi.this.s = $$1;
+         }
+      }
+
+      @Override
+      public int a() {
+         return 2;
+      }
+   };
+
+   public dqi(jd $$0, dta $$1) {
+      super(dqh.l, $$0, $$1);
    }
 
-   private static akj<dqh> a(String $$0) {
-      return akj.a(lr.aw, new akk($$0));
+   @Override
+   protected wy k() {
+      return wy.c("container.brewing");
    }
 
-   public static dqh a(jw<dqh> $$0) {
-      a($$0, b, "angler_pottery_pattern");
-      a($$0, c, "archer_pottery_pattern");
-      a($$0, d, "arms_up_pottery_pattern");
-      a($$0, e, "blade_pottery_pattern");
-      a($$0, f, "brewer_pottery_pattern");
-      a($$0, g, "burn_pottery_pattern");
-      a($$0, h, "danger_pottery_pattern");
-      a($$0, i, "explorer_pottery_pattern");
-      a($$0, j, "flow_pottery_pattern");
-      a($$0, k, "friend_pottery_pattern");
-      a($$0, l, "guster_pottery_pattern");
-      a($$0, m, "heart_pottery_pattern");
-      a($$0, n, "heartbreak_pottery_pattern");
-      a($$0, o, "howl_pottery_pattern");
-      a($$0, p, "miner_pottery_pattern");
-      a($$0, q, "mourner_pottery_pattern");
-      a($$0, r, "plenty_pottery_pattern");
-      a($$0, s, "prize_pottery_pattern");
-      a($$0, t, "scrape_pottery_pattern");
-      a($$0, u, "sheaf_pottery_pattern");
-      a($$0, v, "shelter_pottery_pattern");
-      a($$0, w, "skull_pottery_pattern");
-      a($$0, x, "snort_pottery_pattern");
-      return a($$0, a, "decorated_pot_side");
+   @Override
+   public int b() {
+      return this.l.size();
    }
 
-   private static dqh a(jw<dqh> $$0, akj<dqh> $$1, String $$2) {
-      return jw.a($$0, $$1, new dqh(new akk($$2)));
+   @Override
+   protected jv<cuo> j() {
+      return this.l;
+   }
+
+   @Override
+   protected void a(jv<cuo> $$0) {
+      this.l = $$0;
+   }
+
+   public static void a(dcu $$0, jd $$1, dta $$2, dqi $$3) {
+      cuo $$4 = $$3.l.get(4);
+      if ($$3.s <= 0 && $$4.a(cur.so)) {
+         $$3.s = 20;
+         $$4.h(1);
+         a($$0, $$1, $$2);
+      }
+
+      boolean $$5 = a($$0.K(), $$3.l);
+      boolean $$6 = $$3.m > 0;
+      cuo $$7 = $$3.l.get(3);
+      if ($$6) {
+         $$3.m--;
+         boolean $$8 = $$3.m == 0;
+         if ($$8 && $$5) {
+            a($$0, $$1, $$3.l);
+         } else if (!$$5 || !$$7.a($$3.r)) {
+            $$3.m = 0;
+         }
+
+         a($$0, $$1, $$2);
+      } else if ($$5 && $$3.s > 0) {
+         $$3.s--;
+         $$3.m = 400;
+         $$3.r = $$7.g();
+         a($$0, $$1, $$2);
+      }
+
+      boolean[] $$9 = $$3.f();
+      if (!Arrays.equals($$9, $$3.q)) {
+         $$3.q = $$9;
+         dta $$10 = $$2;
+         if (!($$2.b() instanceof dga)) {
+            return;
+         }
+
+         for (int $$11 = 0; $$11 < dga.b.length; $$11++) {
+            $$10 = $$10.a(dga.b[$$11], Boolean.valueOf($$9[$$11]));
+         }
+
+         $$0.a($$1, $$10, 2);
+      }
+   }
+
+   private boolean[] f() {
+      boolean[] $$0 = new boolean[3];
+
+      for (int $$1 = 0; $$1 < 3; $$1++) {
+         if (!this.l.get($$1).e()) {
+            $$0[$$1] = true;
+         }
+      }
+
+      return $$0;
+   }
+
+   private static boolean a(cwr $$0, jv<cuo> $$1) {
+      cuo $$2 = $$1.get(3);
+      if ($$2.e()) {
+         return false;
+      } else if (!$$0.a($$2)) {
+         return false;
+      } else {
+         for (int $$3 = 0; $$3 < 3; $$3++) {
+            cuo $$4 = $$1.get($$3);
+            if (!$$4.e() && $$0.a($$4, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private static void a(dcu $$0, jd $$1, jv<cuo> $$2) {
+      cuo $$3 = $$2.get(3);
+      cwr $$4 = $$0.K();
+
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         $$2.set($$5, $$4.d($$3, $$2.get($$5)));
+      }
+
+      $$3.h(1);
+      if ($$3.g().v()) {
+         cuo $$6 = new cuo($$3.g().u());
+         if ($$3.e()) {
+            $$3 = $$6;
+         } else {
+            bqm.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$6);
+         }
+      }
+
+      $$2.set(3, $$3);
+      $$0.c(1035, $$1, 0);
+   }
+
+   @Override
+   protected void a(ua $$0, jo.a $$1) {
+      super.a($$0, $$1);
+      this.l = jv.a(this.b(), cuo.l);
+      bqk.b($$0, this.l, $$1);
+      this.m = $$0.g("BrewTime");
+      if (this.m > 0) {
+         this.r = this.l.get(3).g();
+      }
+
+      this.s = $$0.f("Fuel");
+   }
+
+   @Override
+   protected void b(ua $$0, jo.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("BrewTime", (short)this.m);
+      bqk.a($$0, this.l, $$1);
+      $$0.a("Fuel", (byte)this.s);
+   }
+
+   @Override
+   public boolean b(int $$0, cuo $$1) {
+      if ($$0 == 3) {
+         cwr $$2 = this.n != null ? this.n.K() : cwr.b;
+         return $$2.a($$1);
+      } else {
+         return $$0 == 4 ? $$1.a(cur.so) : ($$1.a(cur.sk) || $$1.a(cur.vo) || $$1.a(cur.vr) || $$1.a(cur.sl)) && this.a($$0).e();
+      }
+   }
+
+   @Override
+   public int[] a(ji $$0) {
+      if ($$0 == ji.b) {
+         return i;
+      } else {
+         return $$0 == ji.a ? j : k;
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, cuo $$1, @Nullable ji $$2) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public boolean b(int $$0, cuo $$1, ji $$2) {
+      return $$0 == 3 ? $$1.a(cur.sl) : true;
+   }
+
+   @Override
+   protected cps a(int $$0, cmu $$1) {
+      return new cpy($$0, $$1, this, this.f);
    }
 }

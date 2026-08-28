@@ -1,49 +1,48 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class bn extends ds<bn.a> {
+public class bn extends dv<bn.a> {
    @Override
    public Codec<bn.a> a() {
       return bn.a.a;
    }
 
-   public void a(aqn $$0, @Nullable bsh $$1) {
-      eqw $$2 = $$1 != null ? bu.b($$0, $$1) : null;
-      this.a($$0, $$2x -> $$2x.a($$0, $$2));
+   public void a(aqu $$0, eww $$1) {
+      eww $$2 = $$0.do();
+      this.a($$0, $$3 -> $$3.a($$0.A(), $$1, $$2));
    }
 
-   public static record a(Optional<bf> b, Optional<df> c, Optional<bf> d) implements ds.a {
+   public static record a(Optional<bg> b, Optional<df> c, Optional<bm> d) implements dv.a {
       public static final Codec<bn.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  bu.b.optionalFieldOf("player").forGetter(bn.a::a),
-                  df.a.optionalFieldOf("effects").forGetter(bn.a::b),
-                  bu.b.optionalFieldOf("source").forGetter(bn.a::c)
+                  bv.b.optionalFieldOf("player").forGetter(bn.a::a),
+                  df.a.optionalFieldOf("start_position").forGetter(bn.a::b),
+                  bm.a.optionalFieldOf("distance").forGetter(bn.a::c)
                )
                .apply($$0, bn.a::new)
       );
 
-      public static an<bn.a> a(df.a $$0) {
-         return am.B.a(new bn.a(Optional.empty(), $$0.b(), Optional.empty()));
+      public static ao<bn.a> a(bv.a $$0, bm $$1, df.a $$2) {
+         return an.X.a(new bn.a(Optional.of(bv.a($$0)), Optional.of($$2.b()), Optional.of($$1)));
       }
 
-      public static an<bn.a> a(bu.a $$0) {
-         return am.B.a(new bn.a(Optional.empty(), Optional.empty(), Optional.of(bu.a($$0.b()))));
+      public static ao<bn.a> a(bv.a $$0, bm $$1) {
+         return an.Y.a(new bn.a(Optional.of(bv.a($$0)), Optional.empty(), Optional.of($$1)));
       }
 
-      public boolean a(aqn $$0, @Nullable eqw $$1) {
-         return this.c.isPresent() && !this.c.get().a((btc)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
+      public static ao<bn.a> a(bm $$0) {
+         return an.D.a(new bn.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
+      }
+
+      public boolean a(aqt $$0, eww $$1, eww $$2) {
+         return this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)
+            ? false
+            : !this.d.isPresent() || this.d.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e);
       }
 
       @Override
-      public void a(bg $$0) {
-         ds.a.super.a($$0);
-         $$0.a(this.d, ".source");
-      }
-
-      @Override
-      public Optional<bf> a() {
+      public Optional<bg> a() {
          return this.b;
       }
 
@@ -51,7 +50,7 @@ public class bn extends ds<bn.a> {
          return this.c;
       }
 
-      public Optional<bf> c() {
+      public Optional<bm> c() {
          return this.d;
       }
    }

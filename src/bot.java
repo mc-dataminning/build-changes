@@ -1,48 +1,30 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
-public interface bot {
-   bos a();
+public class bot {
+   private final Set<String> a = new ObjectOpenHashSet();
 
-   static <T> bot.b<T> a(T $$0, int $$1) {
-      return new bot.b<>($$0, bos.a($$1));
+   public Set<bol> a(Supplier<bnc> $$0) {
+      Set<bol> $$1 = $$0.get()
+         .e()
+         .stream()
+         .filter($$0x -> !this.a.contains($$0x.getLeft()))
+         .map($$1x -> a($$0, (String)$$1x.getLeft(), (bok)$$1x.getRight()))
+         .collect(Collectors.toSet());
+
+      for (bol $$2 : $$1) {
+         this.a.add($$2.d());
+      }
+
+      return $$1;
    }
 
-   public static class a implements bot {
-      private final bos a;
-
-      public a(int $$0) {
-         this.a = bos.a($$0);
-      }
-
-      public a(bos $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public bos a() {
-         return this.a;
-      }
-   }
-
-   public static record b<T>(T a, bos b) implements bot {
-      @Override
-      public bos a() {
-         return this.b;
-      }
-
-      public static <E> Codec<bot.b<E>> a(Codec<E> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bot.b::b), bos.a.fieldOf("weight").forGetter(bot.b::c)).apply($$1, bot.b::new)
-         );
-      }
-
-      public T b() {
-         return this.a;
-      }
-
-      public bos c() {
-         return this.b;
-      }
+   private static bol a(Supplier<bnc> $$0, String $$1, bok $$2) {
+      return bol.a($$1, $$2, () -> {
+         bmx.a $$2x = $$0.get().c($$1);
+         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)azo.b;
+      });
    }
 }

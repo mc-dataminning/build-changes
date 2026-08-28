@@ -1,29 +1,45 @@
-public class aho implements zb<agb> {
-   public static final ys<vr, aho> a = zb.a(aho::a, aho::new);
-   private final int b;
+public class aho implements zf<agh> {
+   public static final yw<vv, aho> a = zf.a(aho::a, aho::new);
+   private final crh b;
+   private final boolean c;
+   private final boolean d;
 
-   public aho(int $$0) {
+   public aho(crh $$0, boolean $$1, boolean $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private aho(vr $$0) {
-      this.b = $$0.readShort();
+   private aho(vv $$0) {
+      this.b = $$0.b(crh.class);
+      this.c = $$0.readBoolean();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(vr $$0) {
-      $$0.l(this.b);
+   private void a(vv $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zd<aho> a() {
-      return afz.bT;
+   public zh<aho> a() {
+      return agf.bN;
    }
 
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public crh b() {
       return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

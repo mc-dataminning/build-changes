@@ -1,52 +1,32 @@
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public record aes(int c, List<ajt.c<?>> d) implements zb<abn> {
-   public static final ys<wf, aes> a = zb.a(aes::b, aes::new);
-   public static final int b = 255;
+public class aes implements zf<abt> {
+   public static final yw<vv, aes> a = zf.a(aes::a, aes::new);
+   private final int b;
 
-   private aes(wf $$0) {
-      this($$0.l(), a($$0));
+   public aes(bsq $$0) {
+      this.b = $$0.an();
    }
 
-   private static void a(List<ajt.c<?>> $$0, wf $$1) {
-      for (ajt.c<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.k(255);
+   private aes(vv $$0) {
+      this.b = $$0.l();
    }
 
-   private static List<ajt.c<?>> a(wf $$0) {
-      List<ajt.c<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(ajt.c.a($$0, $$2));
-      }
-
-      return $$1;
-   }
-
-   private void b(wf $$0) {
-      $$0.c(this.c);
-      a(this.d, $$0);
+   private void a(vv $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zd<aes> a() {
-      return afz.aC;
+   public zh<aes> a() {
+      return agf.aw;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public List<ajt.c<?>> e() {
-      return this.d;
+   @Nullable
+   public bsq a(dcu $$0) {
+      return $$0.a(this.b);
    }
 }

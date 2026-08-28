@@ -1,109 +1,68 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dif extends dfi {
+public class dif extends dis {
    public static final MapCodec<dif> a = b(dif::new);
-   public static final dtl b = dtb.aQ;
-   protected static final exa c = dfi.a(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
-   public static final int d = 7;
+   protected static final exp b = dfw.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<dif> a() {
       return a;
    }
 
-   protected dif(dsk.d $$0) {
+   public dif(dsz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
-      if ($$1 == jf.b && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
+      return b;
    }
 
    @Override
-   protected boolean a(dsl $$0, dcj $$1, ja $$2) {
-      dsl $$3 = $$1.a_($$2.c());
-      return !$$3.e() || $$3.b() instanceof dih || $$3.b() instanceof dsd;
+   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
+      this.d($$0, $$1, $$2);
+      return bqq.a($$1.B);
    }
 
    @Override
-   public dsl a(cxn $$0) {
-      return !this.o().a((dcj)$$0.q(), $$0.a()) ? dfk.j.o() : super.a($$0);
+   protected void a_(dta $$0, dcu $$1, jd $$2, cmv $$3) {
+      this.d($$0, $$1, $$2);
    }
 
-   @Override
-   protected boolean f_(dsl $$0) {
-      return true;
-   }
+   private void d(dta $$0, dcu $$1, jd $$2) {
+      dur $$3 = $$1.C_();
 
-   @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return c;
-   }
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         jd $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
+         if ($$1.a_($$5).i() && $$3.a($$5)) {
+            if ($$1.B) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.z.j();
+                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
+                  double $$11 = ayn.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
+                  double $$12 = ayn.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
+                  double $$13 = ayn.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
+                  $$1.a(lm.ac, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
+            }
 
-   @Override
-   protected void a(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      if (!$$0.a($$1, $$2)) {
-         a(null, $$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void b(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      int $$4 = $$0.c(b);
-      if (!a((dcj)$$1, $$2) && !$$1.r($$2.c())) {
-         if ($$4 > 0) {
-            $$1.a($$2, $$0.a(b, Integer.valueOf($$4 - 1)), 2);
-         } else if (!a((dbm)$$1, $$2)) {
-            a(null, $$0, $$1, $$2);
-         }
-      } else if ($$4 < 7) {
-         $$1.a($$2, $$0.a(b, Integer.valueOf(7)), 2);
-      }
-   }
-
-   @Override
-   public void a(dcg $$0, dsl $$1, ja $$2, bsh $$3, float $$4) {
-      if (!$$0.B && $$0.z.i() < $$4 - 0.5F && $$3 instanceof btc && ($$3 instanceof cml || $$0.ab().b(dcc.c)) && $$3.dl() * $$3.dl() * $$3.dm() > 0.512F) {
-         a($$3, $$1, $$0, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static void a(@Nullable bsh $$0, dsl $$1, dcg $$2, ja $$3) {
-      dsl $$4 = a($$1, dfk.j.o(), $$2, $$3);
-      $$2.b($$3, $$4);
-      $$2.a(dxh.c, $$3, dxh.a.a($$0, $$4));
-   }
-
-   private static boolean a(dbm $$0, ja $$1) {
-      return $$0.a_($$1.c()).a(avw.cx);
-   }
-
-   private static boolean a(dcj $$0, ja $$1) {
-      for (ja $$2 : ja.c($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
-         if ($$0.b_($$2).a(awc.a)) {
-            return true;
+            return;
          }
       }
-
-      return false;
    }
 
    @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(b);
+   protected int b() {
+      return 5;
    }
 
    @Override
-   protected boolean a(dsl $$0, eoy $$1) {
+   protected boolean a(dta $$0, epn $$1) {
       return false;
    }
 }

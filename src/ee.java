@@ -2,36 +2,43 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class ee extends ds<ee.a> {
+public class ee extends dv<ee.a> {
    @Override
    public Codec<ee.a> a() {
       return ee.a.a;
    }
 
-   public void a(aqn $$0, ja $$1) {
-      double $$2 = $$0.dw() - (double)$$1.u();
-      double $$3 = $$0.dC() - (double)$$1.w();
-      double $$4 = $$2 * $$2 + $$3 * $$3;
-      this.a($$0, $$1x -> $$1x.a($$4));
+   public void a(aqu $$0, cfc $$1) {
+      erl $$2 = bv.b($$0, $$1);
+      this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   public static record a(Optional<bf> b, de.c c) implements ds.a {
+   public static record a(Optional<bg> b, Optional<bg> c) implements dv.a {
       public static final Codec<ee.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(ee.a::a), de.c.d.optionalFieldOf("distance", de.c.c).forGetter(ee.a::b))
-               .apply($$0, ee.a::new)
+         $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(ee.a::a), bv.b.optionalFieldOf("entity").forGetter(ee.a::c)).apply($$0, ee.a::new)
       );
 
-      public boolean a(double $$0) {
-         return this.c.e($$0);
+      public static ao<ee.a> b() {
+         return an.y.a(new ee.a(Optional.empty(), Optional.empty()));
+      }
+
+      public static ao<ee.a> a(bv.a $$0) {
+         return an.y.a(new ee.a(Optional.empty(), Optional.of(bv.a($$0))));
+      }
+
+      public boolean a(erl $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
-      public Optional<bf> a() {
-         return this.b;
+      public void a(bh $$0) {
+         dv.a.super.a($$0);
+         $$0.a(this.c, ".entity");
       }
 
-      public de.c b() {
-         return this.c;
+      @Override
+      public Optional<bg> a() {
+         return this.b;
       }
    }
 }

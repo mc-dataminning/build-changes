@@ -1,25 +1,25 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-record eki(akj<ekh> c, akj<ekh> d) implements ekj {
-   static MapCodec<eki> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akj.a(lr.aT).fieldOf("alias").forGetter(eki::c), akj.a(lr.aT).fieldOf("target").forGetter(eki::d)).apply($$0, eki::new)
-   );
+public enum eki implements azj {
+   a("linear"),
+   b("triangular");
 
-   @Override
-   public void a(ayo $$0, BiConsumer<akj<ekh>, akj<ekh>> $$1) {
-      $$1.accept(this.c, this.d);
+   public static final Codec<eki> c = azj.a(eki::values);
+   private final String d;
+
+   private eki(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public Stream<akj<ekh>> a() {
-      return Stream.of(this.d);
+   public String c() {
+      return this.d;
    }
 
-   @Override
-   public MapCodec<eki> b() {
-      return a;
+   public int a(ayv $$0, int $$1) {
+      return switch (this) {
+         case a -> $$0.a($$1);
+         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
+      };
    }
 }

@@ -1,112 +1,115 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Map;
 
-public class cyt implements cya {
-   final String a;
-   final cxy b;
-   final cud c;
-   final js<cyg> d;
+public class cyt extends cyp {
+   private static final cyu a = cyu.a(cur.tX, cur.pt, cur.si, cur.ul, cur.um, cur.up, cur.un, cur.uq, cur.uo, cur.ur);
+   private static final cyu b = cyu.a(cur.oz);
+   private static final cyu c = cyu.a(cur.qY);
+   private static final Map<cuj, cxj.a> d = ad.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cur.tX, cxj.a.b);
+      $$0.put(cur.pt, cxj.a.e);
+      $$0.put(cur.si, cxj.a.c);
+      $$0.put(cur.ul, cxj.a.d);
+      $$0.put(cur.um, cxj.a.d);
+      $$0.put(cur.up, cxj.a.d);
+      $$0.put(cur.un, cxj.a.d);
+      $$0.put(cur.uq, cxj.a.d);
+      $$0.put(cur.uo, cxj.a.d);
+      $$0.put(cur.ur, cxj.a.d);
+   });
+   private static final cyu e = cyu.a(cur.pu);
 
-   public cyt(String $$0, cxy $$1, cud $$2, js<cyg> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public cyt(cym $$0) {
+      super($$0);
    }
 
-   @Override
-   public cyo<?> ap_() {
-      return cyo.b;
-   }
+   public boolean a(cyn $$0, dcu $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
+      boolean $$6 = false;
 
-   @Override
-   public String c() {
-      return this.a;
-   }
+      for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
+         cuo $$8 = $$0.a($$7);
+         if (!$$8.e()) {
+            if (a.a($$8)) {
+               if ($$4) {
+                  return false;
+               }
 
-   @Override
-   public cxy d() {
-      return this.b;
-   }
+               $$4 = true;
+            } else if (c.a($$8)) {
+               if ($$6) {
+                  return false;
+               }
 
-   @Override
-   public cud a(jl.a $$0) {
-      return this.c;
-   }
+               $$6 = true;
+            } else if (b.a($$8)) {
+               if ($$5) {
+                  return false;
+               }
 
-   @Override
-   public js<cyg> a() {
-      return this.d;
-   }
+               $$5 = true;
+            } else if (e.a($$8)) {
+               if ($$2) {
+                  return false;
+               }
 
-   public boolean a(cxz $$0, dcg $$1) {
-      if ($$0.e() != this.d.size()) {
-         return false;
-      } else {
-         return $$0.a() == 1 && this.d.size() == 1 ? this.d.getFirst().a($$0.a(0)) : $$0.c().a(this, null);
+               $$2 = true;
+            } else {
+               if (!($$8.g() instanceof cth)) {
+                  return false;
+               }
+
+               $$3 = true;
+            }
+         }
       }
+
+      return $$2 && $$3;
    }
 
-   public cud a(cxz $$0, jl.a $$1) {
-      return this.c.s();
+   public cuo a(cyn $$0, jo.a $$1) {
+      cxj.a $$2 = cxj.a.a;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      IntList $$5 = new IntArrayList();
+
+      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
+         cuo $$7 = $$0.a($$6);
+         if (!$$7.e()) {
+            if (a.a($$7)) {
+               $$2 = d.get($$7.g());
+            } else if (c.a($$7)) {
+               $$3 = true;
+            } else if (b.a($$7)) {
+               $$4 = true;
+            } else if ($$7.g() instanceof cth) {
+               $$5.add(((cth)$$7.g()).c().f());
+            }
+         }
+      }
+
+      cuo $$8 = new cuo(cur.uv);
+      $$8.b(kq.U, new cxj($$2, $$5, IntList.of(), $$4, $$3));
+      return $$8;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= this.d.size();
+      return $$0 * $$1 >= 2;
    }
 
-   public static class a implements cyo<cyt> {
-      private static final MapCodec<cyt> y = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.a),
-                  cxy.e.fieldOf("category").orElse(cxy.d).forGetter($$0x -> $$0x.b),
-                  cud.d.fieldOf("result").forGetter($$0x -> $$0x.c),
-                  cyg.d.listOf().fieldOf("ingredients").flatXmap($$0x -> {
-                     cyg[] $$1 = $$0x.stream().filter($$0xx -> !$$0xx.c()).toArray(cyg[]::new);
-                     if ($$1.length == 0) {
-                        return DataResult.error(() -> "No ingredients for shapeless recipe");
-                     } else {
-                        return $$1.length > 9 ? DataResult.error(() -> "Too many ingredients for shapeless recipe") : DataResult.success(js.a(cyg.a, $$1));
-                     }
-                  }, DataResult::success).forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, cyt::new)
-      );
-      public static final ys<wf, cyt> x = ys.a(cyt.a::a, cyt.a::a);
+   @Override
+   public cuo a(jo.a $$0) {
+      return new cuo(cur.uv);
+   }
 
-      @Override
-      public MapCodec<cyt> a() {
-         return y;
-      }
-
-      @Override
-      public ys<wf, cyt> b() {
-         return x;
-      }
-
-      private static cyt a(wf $$0) {
-         String $$1 = $$0.p();
-         cxy $$2 = $$0.b(cxy.class);
-         int $$3 = $$0.l();
-         js<cyg> $$4 = js.a($$3, cyg.a);
-         $$4.replaceAll($$1x -> cyg.b.decode($$0));
-         cud $$5 = cud.i.decode($$0);
-         return new cyt($$1, $$2, $$5, $$4);
-      }
-
-      private static void a(wf $$0, cyt $$1) {
-         $$0.a($$1.a);
-         $$0.a($$1.b);
-         $$0.c($$1.d.size());
-
-         for (cyg $$2 : $$1.d) {
-            cyg.b.encode($$0, $$2);
-         }
-
-         cud.i.encode($$0, $$1.c);
-      }
+   @Override
+   public czc<?> ap_() {
+      return czc.h;
    }
 }

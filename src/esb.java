@@ -1,95 +1,66 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Predicate;
 
-public class esb extends esj {
-   public static final int a = 0;
-   public static final MapCodec<esb> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  czm.c.fieldOf("enchantment").forGetter($$0x -> $$0x.c),
-                  eve.a.fieldOf("count").forGetter($$0x -> $$0x.d),
-                  Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.e)
-               )
-            )
-            .apply($$0, esb::new)
-   );
-   private final jj<czm> c;
-   private final evd d;
-   private final int e;
+public abstract class esb implements ert {
+   protected final List<euw> e;
+   private final Predicate<erl> a;
 
-   esb(List<euh> $$0, jj<czm> $$1, evd $$2, int $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   protected esb(List<euw> $$0) {
+      this.e = $$0;
+      this.a = ad.a($$0);
    }
 
-   @Override
-   public esl<esb> b() {
-      return esm.m;
+   protected static <T extends esb> P1<Mu<T>, List<euw>> a(Instance<T> $$0) {
+      return $$0.group(euw.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public Set<etp<?>> a() {
-      return Sets.union(ImmutableSet.of(ets.d), this.d.a());
+   public void a(err $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
    }
 
-   private boolean c() {
-      return this.e > 0;
+   protected final boolean a(erl $$0) {
+      return this.a.test($$0);
    }
 
-   @Override
-   public cud a(cud $$0, eqw $$1) {
-      bsh $$2 = $$1.c(ets.d);
-      if ($$2 instanceof btc $$3) {
-         int $$4 = czo.a(this.c, $$3);
-         if ($$4 == 0) {
-            return $$0;
-         }
+   public abstract esc a();
 
-         float $$5 = (float)$$4 * this.d.b($$1);
-         $$0.g(Math.round($$5));
-         if (this.c()) {
-            $$0.f(this.e);
-         }
+   public abstract static class a<T extends esb.a<T>> implements euo<T> {
+      private final Builder<euw> a = ImmutableList.builder();
+
+      protected abstract T aD_();
+
+      public T a(euw.a $$0) {
+         this.a.add($$0.build());
+         return this.aD_();
       }
 
-      return $$0;
-   }
-
-   public static esb.a a(jl.a $$0, evd $$1) {
-      jl.b<czm> $$2 = $$0.b(lr.aK);
-      return new esb.a($$2.b(czr.s), $$1);
-   }
-
-   public static class a extends esj.a<esb.a> {
-      private final jj<czm> a;
-      private final evd b;
-      private int c = 0;
-
-      public a(jj<czm> $$0, evd $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      public final T e() {
+         return this.aD_();
       }
 
-      protected esb.a a() {
-         return this;
+      protected List<euw> f() {
+         return this.a.build();
       }
 
-      public esb.a a(int $$0) {
-         this.c = $$0;
-         return this;
+      public ers.a a(esb.a<?> $$0) {
+         return new ers.a(this, $$0);
       }
 
-      @Override
-      public esk b() {
-         return new esb(this.g(), this.a, this.b, this.c);
+      public erx.a b(esb.a<?> $$0) {
+         return new erx.a(this, $$0);
       }
+
+      public esf.a c(esb.a<?> $$0) {
+         return new esf.a(this, $$0);
+      }
+
+      public abstract esb b();
    }
 }

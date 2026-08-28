@@ -1,93 +1,24 @@
-import java.util.UUID;
+public record afx(int b) implements zf<abt> {
+   public static final yw<vv, afx> a = zf.a(afx::a, afx::new);
 
-public class afx {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
-
-   public static String a(bsh $$0) {
-      if ($$0 instanceof cml) {
-         return $$0.ah().getString();
-      } else {
-         wu $$1 = $$0.aj();
-         return $$1 != null ? $$1.getString() : a($$0.cB());
-      }
+   private afx(vv $$0) {
+      this($$0.l());
    }
 
-   public static String a(UUID $$0) {
-      ayo $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
+   public static afx a(brb $$0) {
+      return new afx($$0.k());
    }
 
-   private static String a(ayo $$0, String[] $$1) {
-      return ac.a($$1, $$0);
+   private void a(vv $$0) {
+      $$0.c(this.b);
    }
 
-   private static ayo b(UUID $$0) {
-      return ayo.a((long)($$0.hashCode() >> 2));
+   @Override
+   public zh<afx> a() {
+      return agf.cg;
+   }
+
+   public void a(abt $$0) {
+      $$0.a(this);
    }
 }

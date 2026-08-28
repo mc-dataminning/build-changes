@@ -1,66 +1,21 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class by extends ds<by.a> {
-   @Override
-   public Codec<by.a> a() {
-      return by.a.a;
+public record by(jq<bsw<?>> b) {
+   public static final Codec<by> a = kb.a(lu.z).xmap(by::new, by::a);
+
+   public static by a(bsw<?> $$0) {
+      return new by(jq.a($$0.r()));
    }
 
-   public void a(aqn $$0, ewh $$1, @Nullable bsh $$2) {
-      ewh $$3 = $$0.dp();
-      eqw $$4 = $$2 != null ? bu.b($$0, $$2) : null;
-      this.a($$0, $$4x -> $$4x.a($$0.A(), $$1, $$3, $$4));
+   public static by a(awt<bsw<?>> $$0) {
+      return new by(lt.f.a($$0));
    }
 
-   public static record a(Optional<bf> b, Optional<dc> c, Optional<bl> d, Optional<bf> e) implements ds.a {
-      public static final Codec<by.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bu.b.optionalFieldOf("player").forGetter(by.a::a),
-                  dc.a.optionalFieldOf("start_position").forGetter(by.a::b),
-                  bl.a.optionalFieldOf("distance").forGetter(by.a::c),
-                  bu.b.optionalFieldOf("cause").forGetter(by.a::d)
-               )
-               .apply($$0, by.a::new)
-      );
+   public boolean b(bsw<?> $$0) {
+      return $$0.a(this.b);
+   }
 
-      public static an<by.a> a(bl $$0, bu.a $$1) {
-         return am.ae.a(new by.a(Optional.empty(), Optional.empty(), Optional.of($$0), Optional.of(bu.a($$1))));
-      }
-
-      @Override
-      public void a(bg $$0) {
-         ds.a.super.a($$0);
-         $$0.a(this.d(), ".cause");
-      }
-
-      public boolean a(aqm $$0, ewh $$1, ewh $$2, @Nullable eqw $$3) {
-         if (this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)) {
-            return false;
-         } else {
-            return this.d.isPresent() && !this.d.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e)
-               ? false
-               : !this.e.isPresent() || $$3 != null && this.e.get().a($$3);
-         }
-      }
-
-      @Override
-      public Optional<bf> a() {
-         return this.b;
-      }
-
-      public Optional<dc> b() {
-         return this.c;
-      }
-
-      public Optional<bl> c() {
-         return this.d;
-      }
-
-      public Optional<bf> d() {
-         return this.e;
-      }
+   public jq<bsw<?>> a() {
+      return this.b;
    }
 }

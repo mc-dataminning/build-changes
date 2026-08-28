@@ -1,42 +1,48 @@
 import java.util.EnumSet;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class cbr extends cca {
-   private final cfe a;
+public class cbr extends cak {
+   private final cjn a;
    @Nullable
-   private btc b;
-   private final cdt c = cdt.a().a(64.0);
+   private btl b;
 
-   public cbr(cfe $$0) {
-      super($$0, false, true);
+   public cbr(cjn $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(caa.a.d));
+      this.a(EnumSet.of(cak.a.a));
    }
 
    @Override
-   public boolean a() {
-      ewc $$0 = this.a.cM().c(10.0, 8.0, 10.0);
-      List<? extends btc> $$1 = this.a.dR().a(cly.class, this.c, this.a, $$0);
-      List<cml> $$2 = this.a.dR().a(this.c, this.a, $$0);
+   public boolean b() {
+      btl $$0 = this.a.p();
+      return this.a.t() > 0 || $$0 != null && this.a.g((bsq)$$0) < 9.0;
+   }
 
-      for (btc $$3 : $$1) {
-         cly $$4 = (cly)$$3;
+   @Override
+   public void d() {
+      this.a.J().n();
+      this.b = this.a.p();
+   }
 
-         for (cml $$5 : $$2) {
-            int $$6 = $$4.g($$5);
-            if ($$6 <= -100) {
-               this.b = $$5;
-            }
-         }
+   @Override
+   public void e() {
+      this.b = null;
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.g((bsq)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.L().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
       }
-
-      return this.b == null ? false : !(this.b instanceof cml) || !this.b.N_() && !((cml)this.b).f();
-   }
-
-   @Override
-   public void c() {
-      this.a.h(this.b);
-      super.c();
    }
 }

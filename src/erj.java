@@ -1,30 +1,69 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class erj extends ero {
-   public static final MapCodec<erj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lq.g.s().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, erj::new)
-   );
-   private final jj<cty> j;
+public interface erj {
+   eri<cxm> a = new eri<cxm>() {
+      @Override
+      public kp<cxm> a() {
+         return kq.ab;
+      }
 
-   private erj(jj<cty> $$0, int $$1, int $$2, List<euh> $$3, List<esk> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
-   }
+      public Stream<cuo> a(cxm $$0) {
+         return $$0.b();
+      }
 
-   @Override
-   public ern a() {
-      return erk.c;
-   }
+      public cxm c() {
+         return cxm.a;
+      }
 
-   @Override
-   public void a(Consumer<cud> $$0, eqw $$1) {
-      $$0.accept(new cud(this.j));
-   }
+      public cxm a(cxm $$0, Stream<cuo> $$1) {
+         return cxm.a($$1.toList());
+      }
+   };
+   eri<cxd> b = new eri<cxd>() {
+      @Override
+      public kp<cxd> a() {
+         return kq.F;
+      }
 
-   public static ero.a<?> a(dcf $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new erj($$0.r().o(), $$1, $$2, $$3, $$4));
-   }
+      public cxd c() {
+         return cxd.a;
+      }
+
+      public Stream<cuo> a(cxd $$0) {
+         return $$0.a();
+      }
+
+      public cxd a(cxd $$0, Stream<cuo> $$1) {
+         cxd.a $$2 = new cxd.a($$0).a();
+         $$1.forEach($$2::a);
+         return $$2.d();
+      }
+   };
+   eri<cxe> c = new eri<cxe>() {
+      @Override
+      public kp<cxe> a() {
+         return kq.E;
+      }
+
+      public cxe c() {
+         return cxe.a;
+      }
+
+      public Stream<cuo> a(cxe $$0) {
+         return $$0.a().stream();
+      }
+
+      public cxe a(cxe $$0, Stream<cuo> $$1) {
+         return cxe.a($$1.toList());
+      }
+   };
+   Map<kp<?>, eri<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(eri::a, $$0 -> (eri<?>)$$0));
+   Codec<eri<?>> e = lt.aq.r().comapFlatMap($$0 -> {
+      eri<?> $$1 = d.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
+   }, eri::a);
 }

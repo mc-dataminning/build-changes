@@ -1,24 +1,31 @@
-public class glq<T extends ciz> extends gkf<T, fwl<T>> {
-   private static final akk a = new akk("textures/entity/skeleton/skeleton.png");
+public class glq extends glj<cfs, fwe> {
+   private static final akq a = akq.b("textures/entity/parrot/parrot_red_blue.png");
+   private static final akq i = akq.b("textures/entity/parrot/parrot_blue.png");
+   private static final akq j = akq.b("textures/entity/parrot/parrot_green.png");
+   private static final akq k = akq.b("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final akq l = akq.b("textures/entity/parrot/parrot_grey.png");
 
-   public glq(gjo.a $$0) {
-      this($$0, fxp.bn, fxp.bp, fxp.bq);
+   public glq(gkd.a $$0) {
+      super($$0, new fwe($$0.a(fyd.aH)), 0.3F);
    }
 
-   public glq(gjo.a $$0, fxo $$1, fxo $$2, fxo $$3) {
-      this($$0, $$2, $$3, new fwl<>($$0.a($$1)));
+   public akq a(cfs $$0) {
+      return a($$0.gy());
    }
 
-   public glq(gjo.a $$0, fxo $$1, fxo $$2, fwl<T> $$3) {
-      super($$0, $$3, 0.5F);
-      this.a(new gnq<>(this, new fwl($$0.a($$1)), new fwl($$0.a($$2)), $$0.g()));
+   public static akq a(cfs.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+         case e -> l;
+      };
    }
 
-   public akk a(T $$0) {
-      return a;
-   }
-
-   protected boolean b(T $$0) {
-      return $$0.gp();
+   public float a(cfs $$0, float $$1) {
+      float $$2 = ayn.i($$1, $$0.ch, $$0.ce);
+      float $$3 = ayn.i($$1, $$0.cg, $$0.cf);
+      return (ayn.a($$2) + 1.0F) * $$3;
    }
 }

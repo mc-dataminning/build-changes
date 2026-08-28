@@ -1,29 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 public class bxi {
-   public static buw<btc> a(int $$0, BiPredicate<btc, btc> $$1) {
-      return byi.a(
-         (Function<byi.b<btc>, ? extends App<byi.c<btc>, byl<btc>>>)($$2 -> $$2.group($$2.b(ccg.o), $$2.a(ccg.ab), $$2.c(ccg.ai), $$2.a(ccg.aj))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     btc $$10 = $$2.b($$3);
-                     if (!$$10.ez()) {
-                        return false;
-                     } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
-                        }
+   public static bvg<btl> a() {
+      return bys.a((Function<bys.b<btl>, ? extends App<bys.c<btl>, byv<btl>>>)($$0 -> $$0.a((byv<btl>)(($$0x, $$1, $$2) -> {
+            if ($$0x.z.a(20) != 0) {
+               return false;
+            } else {
+               buo<?> $$3 = $$1.dU();
+               cog $$4 = $$0x.d($$1.dq());
+               if ($$4 != null) {
+                  if ($$4.c() && !$$4.b()) {
+                     $$3.b(cok.h);
+                     $$3.a(cok.h);
+                  } else {
+                     $$3.b(cok.i);
+                     $$3.a(cok.i);
+                  }
+               }
 
-                        $$5.a($$10.dr(), (long)$$0);
-                        if ($$10.am() != bsn.by || $$7.ab().b(dcc.N)) {
-                           $$3.b();
-                           $$4.b();
-                        }
-
-                        return true;
-                     }
-                  }))
-      );
+               return true;
+            }
+         }))));
    }
 }

@@ -1,57 +1,38 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public class grt implements grr {
-   private final gfo a;
-   private final gfm b;
-   private final gpq c;
-   private final boolean d;
+public class grt {
+   public static final gru a = new gru();
+   public static final String b = "villager";
+   private final grt.a c;
 
-   public grt(gfo $$0, gfm $$1, gpq $$2, boolean $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public grt(grt.a $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public List<gfc> a(@Nullable dsl $$0, @Nullable jf $$1, ayo $$2) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public boolean a() {
-      return false;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d;
-   }
-
-   @Override
-   public boolean d() {
-      return true;
-   }
-
-   @Override
-   public gpq e() {
+   public grt.a a() {
       return this.c;
    }
 
-   @Override
-   public gfo f() {
-      return this.a;
-   }
+   public static enum a {
+      a("none"),
+      b("partial"),
+      c("full");
 
-   @Override
-   public gfm g() {
-      return this.b;
+      private static final Map<String, grt.a> d = Arrays.stream(values()).collect(Collectors.toMap(grt.a::a, $$0 -> (grt.a)$$0));
+      private final String e;
+
+      private a(final String $$0) {
+         this.e = $$0;
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      public static grt.a a(String $$0) {
+         return d.getOrDefault($$0, a);
+      }
    }
 }

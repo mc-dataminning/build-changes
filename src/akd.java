@@ -1,33 +1,53 @@
-import java.util.List;
-import java.util.Map;
+import java.util.Iterator;
 
-public class akd {
-   private final String a;
-   private final String b;
+public interface akd<T> {
+   default void a(int $$0, int $$1, int $$2, cyz<?> $$3, Iterator<T> $$4, int $$5) {
+      int $$6 = $$0;
+      int $$7 = $$1;
+      if ($$3.b() instanceof czf $$9) {
+         $$6 = $$9.j();
+         $$7 = $$9.k();
+      }
 
-   public akd(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+      int $$10 = 0;
+
+      for (int $$11 = 0; $$11 < $$1; $$11++) {
+         if ($$10 == $$2) {
+            $$10++;
+         }
+
+         boolean $$12 = (float)$$7 < (float)$$1 / 2.0F;
+         int $$13 = ayn.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
+         if ($$12 && $$13 > $$11) {
+            $$10 += $$0;
+            $$11++;
+         }
+
+         for (int $$14 = 0; $$14 < $$0; $$14++) {
+            if (!$$4.hasNext()) {
+               return;
+            }
+
+            $$12 = (float)$$6 < (float)$$0 / 2.0F;
+            $$13 = ayn.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
+            int $$15 = $$6;
+            boolean $$16 = $$14 < $$6;
+            if ($$12) {
+               $$15 = $$13 + $$6;
+               $$16 = $$13 <= $$14 && $$14 < $$13 + $$6;
+            }
+
+            if ($$16) {
+               this.a($$4.next(), $$10, $$5, $$14, $$11);
+            } else if ($$15 == $$14) {
+               $$10 += $$0 - $$14;
+               break;
+            }
+
+            $$10++;
+         }
+      }
    }
 
-   public static akd a(String $$0) {
-      return new akd($$0, ".json");
-   }
-
-   public akk a(akk $$0) {
-      return $$0.c(this.a + "/" + $$0.a() + this.b);
-   }
-
-   public akk b(akk $$0) {
-      String $$1 = $$0.a();
-      return $$0.c($$1.substring(this.a.length() + 1, $$1.length() - this.b.length()));
-   }
-
-   public Map<akk, atu> a(atw $$0) {
-      return $$0.b(this.a, $$0x -> $$0x.a().endsWith(this.b));
-   }
-
-   public Map<akk, List<atu>> b(atw $$0) {
-      return $$0.c(this.a, $$0x -> $$0x.a().endsWith(this.b));
-   }
+   void a(T var1, int var2, int var3, int var4, int var5);
 }

@@ -1,72 +1,62 @@
-public class gdo {
-   public static final wu a = wu.c("quickplay.error.title");
-   private static final wu b = wu.c("quickplay.error.invalid_identifier");
-   private static final wu c = wu.c("quickplay.error.realm_connect");
-   private static final wu d = wu.c("quickplay.error.realm_permission");
-   private static final wu e = wu.c("gui.toTitle");
-   private static final wu f = wu.c("gui.toWorld");
-   private static final wu g = wu.c("gui.toRealms");
-
-   public static void a(ffw $$0, ftg.c $$1, fbe $$2) {
-      String $$3 = $$1.c();
-      String $$4 = $$1.d();
-      String $$5 = $$1.e();
-      if (!azd.h($$3)) {
-         a($$0, $$3);
-      } else if (!azd.h($$4)) {
-         b($$0, $$4);
-      } else if (!azd.h($$5)) {
-         a($$0, $$2, $$5);
-      }
+public class gdo extends gdh {
+   protected gdo(fyz $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
-   private static void a(ffw $$0, String $$1) {
-      if (!$$0.m().b($$1)) {
-         fnl $$2 = new fso(new fnn());
-         $$0.a(new fms($$2, a, b, f));
+   @Override
+   public gcl b() {
+      return gcl.b;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
       } else {
-         $$0.x().a($$1, () -> $$0.a(new fnn()));
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         if (this.m) {
+            if (Math.random() < 0.5) {
+               this.k();
+            }
+
+            this.j *= 0.7F;
+            this.l *= 0.7F;
+         }
+
+         jd $$0 = jd.a(this.g, this.h, this.i);
+         double $$1 = Math.max(
+            this.c.a_($$0).k(this.c, $$0).b(ji.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a((dca)this.c, $$0)
+         );
+         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
+            this.k();
+         }
       }
    }
 
-   private static void b(ffw $$0, String $$1) {
-      fza $$2 = new fza($$0);
-      $$2.a();
-      fyz $$3 = $$2.a($$1);
-      if ($$3 == null) {
-         $$3 = new fyz(gqw.a("selectServer.defaultName"), $$1, fyz.c.c);
-         $$2.a($$3, true);
-         $$2.b();
+   public static class a implements gck<lq> {
+      private final gdc a;
+
+      public a(gdc $$0) {
+         this.a = $$0;
       }
 
-      gad $$4 = gad.a($$1);
-      fmk.a(new fqa(new fnn()), $$0, $$4, $$3, true, null);
-   }
-
-   private static void a(ffw $$0, fbe $$1, String $$2) {
-      long $$3;
-      fbx $$4;
-      try {
-         $$3 = Long.parseLong($$2);
-         $$4 = $$1.b();
-      } catch (NumberFormatException var9) {
-         fnl $$6 = new faz(new fnn());
-         $$0.a(new fms($$6, a, b, g));
-         return;
-      } catch (fcr var10) {
-         fnl $$8 = new fnn();
-         $$0.a(new fms($$8, a, c, e));
-         return;
-      }
-
-      fbv $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
-      if ($$11 == null) {
-         fnl $$12 = new faz(new fnn());
-         $$0.a(new fms($$12, a, d, g));
-      } else {
-         fnn $$13 = new fnn();
-         feu $$14 = new feu($$13, $$11);
-         $$0.a(new fdl($$13, $$14));
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gdo $$8 = new gdo($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

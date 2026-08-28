@@ -1,7 +1,52 @@
-public class ux {
-   private static final uw<?>[] a = new uw[]{tz.a, tv.a, up.a, uc.a, uf.a, ua.b, ty.b, tu.a, us.a, ud.a, tx.b, ub.a, ue.a};
+import java.io.DataOutput;
+import java.io.IOException;
 
-   public static uw<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < a.length ? a[$$0] : uw.a($$0);
+public interface ux {
+   int d = 8;
+   int e = 12;
+   int f = 4;
+   int g = 28;
+   byte h = 0;
+   byte i = 1;
+   byte j = 2;
+   byte k = 3;
+   byte l = 4;
+   byte m = 5;
+   byte n = 6;
+   byte o = 7;
+   byte p = 8;
+   byte q = 9;
+   byte r = 10;
+   byte s = 11;
+   byte t = 12;
+   byte u = 99;
+   int v = 512;
+
+   void a(DataOutput var1) throws IOException;
+
+   @Override
+   String toString();
+
+   byte b();
+
+   uz<?> c();
+
+   ux d();
+
+   int a();
+
+   default String s_() {
+      return new uw().a(this);
+   }
+
+   void a(vb var1);
+
+   uu.b a(uu var1);
+
+   default void b(uu $$0) {
+      uu.b $$1 = $$0.b(this.c());
+      if ($$1 == uu.b.a) {
+         this.a($$0);
+      }
    }
 }

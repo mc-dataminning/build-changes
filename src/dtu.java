@@ -1,23 +1,27 @@
-public enum dtu implements azc {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   private final String f;
-
-   private dtu(final String $$0) {
-      this.f = $$0;
+public class dtu extends dty<ji> {
+   protected dtu(String $$0, Collection<ji> $$1) {
+      super($$0, ji.class, $$1);
    }
 
-   @Override
-   public String toString() {
-      return this.f;
+   public static dtu a(String $$0) {
+      return a($$0, $$0x -> true);
    }
 
-   @Override
-   public String c() {
-      return this.f;
+   public static dtu a(String $$0, Predicate<ji> $$1) {
+      return a($$0, Arrays.stream(ji.values()).filter($$1).collect(Collectors.toList()));
+   }
+
+   public static dtu a(String $$0, ji... $$1) {
+      return a($$0, Lists.newArrayList($$1));
+   }
+
+   public static dtu a(String $$0, Collection<ji> $$1) {
+      return new dtu($$0, $$1);
    }
 }

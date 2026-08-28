@@ -1,52 +1,28 @@
-public class gnv<T extends cff> extends goa<T, fuj<T>> {
-   private final gez a;
-
-   public gnv(glk<T, fuj<T>> $$0, gez $$1) {
+public class gnv extends gop<gds, fwj<gds>> {
+   public gnv(glz<gds, fwj<gds>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(fao $$0, gef $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.o_()) {
-         ffw $$10 = ffw.Q();
-         boolean $$11 = $$10.b($$3) && $$3.cj();
-         if (!$$3.cj() || $$11) {
-            dsl $$12 = $$3.t().a();
-            int $$13 = gkp.c($$3, 0.0F);
-            grr $$14 = this.a.a($$12);
+   public void a(fbc $$0, get $$1, int $$2, gds $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ("deadmau5".equals($$3.ah().getString()) && !$$3.ci()) {
+         fbg $$10 = $$1.getBuffer(gfb.c($$3.b().a()));
+         int $$11 = gle.c($$3, 0.0F);
+
+         for (int $$12 = 0; $$12 < 2; $$12++) {
+            float $$13 = ayn.i($$6, $$3.O, $$3.dG()) - ayn.i($$6, $$3.aZ, $$3.aY);
+            float $$14 = ayn.i($$6, $$3.P, $$3.dI());
             $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            this.c().d().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.a(a.d.rotationDegrees($$13));
+            $$0.a(a.b.rotationDegrees($$14));
+            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
+            $$0.a(0.0F, -0.375F, 0.0F);
+            $$0.a(a.b.rotationDegrees(-$$14));
+            $$0.a(a.d.rotationDegrees(-$$13));
+            float $$15 = 1.3333334F;
+            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
+            this.c().b($$0, $$10, $$2, $$11);
             $$0.b();
          }
-      }
-   }
-
-   private void a(fao $$0, gef $$1, int $$2, boolean $$3, dsl $$4, int $$5, grr $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(gen.r(gpp.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
       }
    }
 }

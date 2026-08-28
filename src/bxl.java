@@ -3,20 +3,40 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class bxl {
-   public static buw<btc> a() {
-      return byi.a(
-         (Function<byi.b<btc>, ? extends App<byi.c<btc>, byl<btc>>>)($$0 -> $$0.group($$0.b(ccg.ab))
-               .apply(
-                  $$0,
-                  $$1 -> ($$2, $$3, $$4) -> {
-                        Optional.ofNullable($$2.a($$0.b($$1)))
-                           .map($$0xxx -> $$0xxx instanceof btc $$1xx ? $$1xx : null)
-                           .filter(btc::ez)
-                           .filter($$1xx -> $$1xx.am() != bsn.by || $$2.ab().b(dcc.N))
-                           .ifPresent($$1xx -> $$1.b());
-                        return true;
+   public static bwq<cmi> a(ccq<jl> $$0, float $$1, int $$2, int $$3, int $$4) {
+      return bys.a(
+         (Function<bys.b<cmi>, ? extends App<bys.c<cmi>, byv<cmi>>>)($$5 -> $$5.group($$5.a(ccq.E), $$5.c(ccq.m), $$5.b($$0))
+               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
+                     jl $$12 = $$5.b($$8);
+                     Optional<Long> $$13 = $$5.a($$6);
+                     if ($$12.a() == $$9.af() && (!$$13.isPresent() || $$9.Z() - $$13.get() <= (long)$$4)) {
+                        if ($$12.b().k($$10.dq()) > $$3) {
+                           eww $$14 = null;
+                           int $$15 = 0;
+                           int $$16 = 1000;
+
+                           while ($$14 == null || jd.a((jw)$$14).k($$10.dq()) > $$3) {
+                              $$14 = ceh.a($$10, 15, 7, eww.c($$12.b()), (float) (Math.PI / 2));
+                              if (++$$15 == 1000) {
+                                 $$10.a($$0);
+                                 $$8.b();
+                                 $$6.a($$11);
+                                 return true;
+                              }
+                           }
+
+                           $$7.a(new cct($$14, $$1, $$2));
+                        } else if ($$12.b().k($$10.dq()) > $$2) {
+                           $$7.a(new cct($$12.b(), $$1, $$2));
+                        }
+                     } else {
+                        $$10.a($$0);
+                        $$8.b();
+                        $$6.a($$11);
                      }
-               ))
+
+                     return true;
+                  }))
       );
    }
 }

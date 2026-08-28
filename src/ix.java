@@ -1,80 +1,49 @@
-public enum ix {
-   a {
-      @Override
-      public int a(int $$0, int $$1, int $$2, jf.a $$3) {
-         return $$3.a($$0, $$1, $$2);
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType.StringType;
+
+public class ix implements io<StringArgumentType, ix.a> {
+   public void a(ix.a $$0, vv $$1) {
+      $$1.a((Enum<?>)$$0.b);
+   }
+
+   public ix.a a(vv $$0) {
+      StringType $$1 = $$0.b(StringType.class);
+      return new ix.a($$1);
+   }
+
+   public void a(ix.a $$0, JsonObject $$1) {
+      $$1.addProperty("type", switch ($$0.b) {
+         case SINGLE_WORD -> "word";
+         case QUOTABLE_PHRASE -> "phrase";
+         case GREEDY_PHRASE -> "greedy";
+         default -> throw new MatchException(null, null);
+      });
+   }
+
+   public ix.a a(StringArgumentType $$0) {
+      return new ix.a($$0.getType());
+   }
+
+   public final class a implements io.a<StringArgumentType> {
+      final StringType b;
+
+      public a(final StringType $$1) {
+         this.b = $$1;
+      }
+
+      public StringArgumentType a(ep $$0) {
+         return switch (this.b) {
+            case SINGLE_WORD -> StringArgumentType.word();
+            case QUOTABLE_PHRASE -> StringArgumentType.string();
+            case GREEDY_PHRASE -> StringArgumentType.greedyString();
+            default -> throw new MatchException(null, null);
+         };
       }
 
       @Override
-      public double a(double $$0, double $$1, double $$2, jf.a $$3) {
-         return $$3.a($$0, $$1, $$2);
+      public io<StringArgumentType, ?> a() {
+         return ix.this;
       }
-
-      @Override
-      public jf.a a(jf.a $$0) {
-         return $$0;
-      }
-
-      @Override
-      public ix a() {
-         return this;
-      }
-   },
-   b {
-      @Override
-      public int a(int $$0, int $$1, int $$2, jf.a $$3) {
-         return $$3.a($$2, $$0, $$1);
-      }
-
-      @Override
-      public double a(double $$0, double $$1, double $$2, jf.a $$3) {
-         return $$3.a($$2, $$0, $$1);
-      }
-
-      @Override
-      public jf.a a(jf.a $$0) {
-         return d[Math.floorMod($$0.ordinal() + 1, 3)];
-      }
-
-      @Override
-      public ix a() {
-         return c;
-      }
-   },
-   c {
-      @Override
-      public int a(int $$0, int $$1, int $$2, jf.a $$3) {
-         return $$3.a($$1, $$2, $$0);
-      }
-
-      @Override
-      public double a(double $$0, double $$1, double $$2, jf.a $$3) {
-         return $$3.a($$1, $$2, $$0);
-      }
-
-      @Override
-      public jf.a a(jf.a $$0) {
-         return d[Math.floorMod($$0.ordinal() - 1, 3)];
-      }
-
-      @Override
-      public ix a() {
-         return b;
-      }
-   };
-
-   public static final jf.a[] d = jf.a.values();
-   public static final ix[] e = values();
-
-   public abstract int a(int var1, int var2, int var3, jf.a var4);
-
-   public abstract double a(double var1, double var3, double var5, jf.a var7);
-
-   public abstract jf.a a(jf.a var1);
-
-   public abstract ix a();
-
-   public static ix a(jf.a $$0, jf.a $$1) {
-      return e[Math.floorMod($$1.ordinal() - $$0.ordinal(), 3)];
    }
 }

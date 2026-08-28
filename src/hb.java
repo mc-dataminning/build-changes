@@ -1,279 +1,98 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import it.unimi.dsi.fastutil.objects.ReferenceArraySet;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
-public class hb {
-   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wu.b("argument.item.id.invalid", $$0));
-   static final DynamicCommandExceptionType g = new DynamicCommandExceptionType($$0 -> wu.b("arguments.item.component.unknown", $$0));
-   static final Dynamic2CommandExceptionType h = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("arguments.item.component.malformed", $$0, $$1));
-   static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wu.c("arguments.item.component.expected"));
-   static final DynamicCommandExceptionType j = new DynamicCommandExceptionType($$0 -> wu.b("arguments.item.component.repeated", $$0));
-   private static final DynamicCommandExceptionType k = new DynamicCommandExceptionType($$0 -> wu.b("arguments.item.malformed", $$0));
-   public static final char a = '[';
-   public static final char b = ']';
-   public static final char c = ',';
-   public static final char d = '=';
-   public static final char e = '!';
-   static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> l = SuggestionsBuilder::buildFuture;
-   final jl.b<cty> m;
-   final DynamicOps<uu> n;
+public class hb implements ArgumentType<hb.a> {
+   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "#foo");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wy.b("arguments.function.tag.unknown", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wy.b("arguments.function.unknown", $$0));
 
-   public hb(jl.a $$0) {
-      this.m = $$0.b(lr.K);
-      this.n = $$0.a(ul.a);
+   public static hb a() {
+      return new hb();
    }
 
    public hb.a a(StringReader $$0) throws CommandSyntaxException {
-      final MutableObject<jj<cty>> $$1 = new MutableObject();
-      final kk.a $$2 = kk.a();
-      this.a($$0, new hb.d() {
-         @Override
-         public void a(jj<cty> $$0) {
-            $$1.setValue($$0);
-         }
-
-         @Override
-         public <T> void a(km<T> $$0, T $$1x) {
-            $$2.a($$0, $$1);
-         }
-
-         @Override
-         public <T> void a(km<T> $$0) {
-            $$2.a($$0);
-         }
-      });
-      jj<cty> $$3 = Objects.requireNonNull((jj<cty>)$$1.getValue(), "Parser gave no item");
-      kk $$4 = $$2.a();
-      a($$0, $$3, $$4);
-      return new hb.a($$3, $$4);
-   }
-
-   private static void a(StringReader $$0, jj<cty> $$1, kk $$2) throws CommandSyntaxException {
-      kj $$3 = ko.a($$1.a().p(), $$2);
-      DataResult<azk> $$4 = cud.a($$3);
-      $$4.getOrThrow($$1x -> k.createWithContext($$0, $$1x));
-   }
-
-   public void a(StringReader $$0, hb.d $$1) throws CommandSyntaxException {
-      int $$2 = $$0.getCursor();
-
-      try {
-         new hb.b($$0, $$1).a();
-      } catch (CommandSyntaxException var5) {
-         $$0.setCursor($$2);
-         throw var5;
-      }
-   }
-
-   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-      StringReader $$1 = new StringReader($$0.getInput());
-      $$1.setCursor($$0.getStart());
-      hb.c $$2 = new hb.c();
-      hb.b $$3 = new hb.b($$1, $$2);
-
-      try {
-         $$3.a();
-      } catch (CommandSyntaxException var6) {
-      }
-
-      return $$2.a($$0, $$1);
-   }
-
-   public static record a(jj<cty> a, kk b) {
-   }
-
-   class b {
-      private final StringReader b;
-      private final hb.d c;
-
-      b(final StringReader $$0, final hb.d $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public void a() throws CommandSyntaxException {
-         this.c.a(this::d);
-         this.b();
-         this.c.a(this::a);
-         if (this.b.canRead() && this.b.peek() == '[') {
-            this.c.a(hb.l);
-            this.c();
-         }
-      }
-
-      private void b() throws CommandSyntaxException {
-         int $$0 = this.b.getCursor();
-         akk $$1 = akk.a(this.b);
-         this.c.a(hb.this.m.a(akj.a(lr.K, $$1)).orElseThrow(() -> {
-            this.b.setCursor($$0);
-            return hb.f.createWithContext(this.b, $$1);
-         }));
-      }
-
-      private void c() throws CommandSyntaxException {
-         this.b.expect('[');
-         this.c.a(this::e);
-         Set<km<?>> $$0 = new ReferenceArraySet();
-
-         while (this.b.canRead() && this.b.peek() != ']') {
-            this.b.skipWhitespace();
-            if (this.b.canRead() && this.b.peek() == '!') {
-               this.b.skip();
-               this.c.a(this::f);
-               km<?> $$1 = a(this.b);
-               if (!$$0.add($$1)) {
-                  throw hb.j.create($$1);
-               }
-
-               this.c.a($$1);
-               this.c.a(hb.l);
-               this.b.skipWhitespace();
-            } else {
-               km<?> $$2 = a(this.b);
-               if (!$$0.add($$2)) {
-                  throw hb.j.create($$2);
-               }
-
-               this.c.a(this::c);
-               this.b.skipWhitespace();
-               this.b.expect('=');
-               this.c.a(hb.l);
-               this.b.skipWhitespace();
-               this.a($$2);
-               this.b.skipWhitespace();
+      if ($$0.canRead() && $$0.peek() == '#') {
+         $$0.skip();
+         final akq $$1 = akq.a($$0);
+         return new hb.a() {
+            @Override
+            public Collection<ig<et>> a(CommandContext<et> $$0) throws CommandSyntaxException {
+               return hb.b($$0, $$1);
             }
 
-            this.c.a(this::b);
-            if (!this.b.canRead() || this.b.peek() != ',') {
-               break;
+            @Override
+            public Pair<akq, Either<ig<et>, Collection<ig<et>>>> b(CommandContext<et> $$0) throws CommandSyntaxException {
+               return Pair.of($$1, Either.right(hb.b($$0, $$1)));
             }
 
-            this.b.skip();
-            this.b.skipWhitespace();
-            this.c.a(this::e);
-            if (!this.b.canRead()) {
-               throw hb.i.createWithContext(this.b);
+            @Override
+            public Pair<akq, Collection<ig<et>>> c(CommandContext<et> $$0) throws CommandSyntaxException {
+               return Pair.of($$1, hb.b($$0, $$1));
             }
-         }
-
-         this.b.expect(']');
-         this.c.a(hb.l);
-      }
-
-      public static km<?> a(StringReader $$0) throws CommandSyntaxException {
-         if (!$$0.canRead()) {
-            throw hb.i.createWithContext($$0);
-         } else {
-            int $$1 = $$0.getCursor();
-            akk $$2 = akk.a($$0);
-            km<?> $$3 = lq.aq.a($$2);
-            if ($$3 != null && !$$3.d()) {
-               return $$3;
-            } else {
-               $$0.setCursor($$1);
-               throw hb.g.createWithContext($$0, $$2);
+         };
+      } else {
+         final akq $$2 = akq.a($$0);
+         return new hb.a() {
+            @Override
+            public Collection<ig<et>> a(CommandContext<et> $$0) throws CommandSyntaxException {
+               return Collections.singleton(hb.a($$0, $$2));
             }
-         }
-      }
 
-      private <T> void a(km<T> $$0) throws CommandSyntaxException {
-         int $$1 = this.b.getCursor();
-         uu $$2 = new uv(this.b).d();
-         DataResult<T> $$3 = $$0.c().parse(hb.this.n, $$2);
-         this.c.a($$0, (T)$$3.getOrThrow($$2x -> {
-            this.b.setCursor($$1);
-            return hb.h.createWithContext(this.b, $$0.toString(), $$2x);
-         }));
-      }
-
-      private CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-         if ($$0.getRemaining().isEmpty()) {
-            $$0.suggest(String.valueOf('['));
-         }
-
-         return $$0.buildFuture();
-      }
-
-      private CompletableFuture<Suggestions> b(SuggestionsBuilder $$0) {
-         if ($$0.getRemaining().isEmpty()) {
-            $$0.suggest(String.valueOf(','));
-            $$0.suggest(String.valueOf(']'));
-         }
-
-         return $$0.buildFuture();
-      }
-
-      private CompletableFuture<Suggestions> c(SuggestionsBuilder $$0) {
-         if ($$0.getRemaining().isEmpty()) {
-            $$0.suggest(String.valueOf('='));
-         }
-
-         return $$0.buildFuture();
-      }
-
-      private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0) {
-         return ev.a(hb.this.m.c().map(akj::a), $$0);
-      }
-
-      private CompletableFuture<Suggestions> e(SuggestionsBuilder $$0) {
-         $$0.suggest(String.valueOf('!'));
-         return this.a($$0, String.valueOf('='));
-      }
-
-      private CompletableFuture<Suggestions> f(SuggestionsBuilder $$0) {
-         return this.a($$0, "");
-      }
-
-      private CompletableFuture<Suggestions> a(SuggestionsBuilder $$0, String $$1) {
-         String $$2 = $$0.getRemaining().toLowerCase(Locale.ROOT);
-         ev.a(lq.aq.h(), $$2, $$0x -> ((akj)$$0x.getKey()).a(), $$2x -> {
-            km<?> $$3 = (km<?>)$$2x.getValue();
-            if ($$3.b() != null) {
-               akk $$4 = ((akj)$$2x.getKey()).a();
-               $$0.suggest($$4 + $$1);
+            @Override
+            public Pair<akq, Either<ig<et>, Collection<ig<et>>>> b(CommandContext<et> $$0) throws CommandSyntaxException {
+               return Pair.of($$2, Either.left(hb.a($$0, $$2)));
             }
-         });
-         return $$0.buildFuture();
+
+            @Override
+            public Pair<akq, Collection<ig<et>>> c(CommandContext<et> $$0) throws CommandSyntaxException {
+               return Pair.of($$2, Collections.singleton(hb.a($$0, $$2)));
+            }
+         };
       }
    }
 
-   static class c implements hb.d {
-      private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> a = hb.l;
+   static ig<et> a(CommandContext<et> $$0, akq $$1) throws CommandSyntaxException {
+      return ((et)$$0.getSource()).l().aF().a($$1).orElseThrow(() -> c.create($$1.toString()));
+   }
 
-      @Override
-      public void a(Function<SuggestionsBuilder, CompletableFuture<Suggestions>> $$0) {
-         this.a = $$0;
-      }
-
-      public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0, StringReader $$1) {
-         return this.a.apply($$0.createOffset($$1.getCursor()));
+   static Collection<ig<et>> b(CommandContext<et> $$0, akq $$1) throws CommandSyntaxException {
+      Collection<ig<et>> $$2 = ((et)$$0.getSource()).l().aF().b($$1);
+      if ($$2 == null) {
+         throw b.create($$1.toString());
+      } else {
+         return $$2;
       }
    }
 
-   public interface d {
-      default void a(jj<cty> $$0) {
-      }
+   public static Collection<ig<et>> a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+      return ((hb.a)$$0.getArgument($$1, hb.a.class)).a($$0);
+   }
 
-      default <T> void a(km<T> $$0, T $$1) {
-      }
+   public static Pair<akq, Either<ig<et>, Collection<ig<et>>>> b(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+      return ((hb.a)$$0.getArgument($$1, hb.a.class)).b($$0);
+   }
 
-      default <T> void a(km<T> $$0) {
-      }
+   public static Pair<akq, Collection<ig<et>>> c(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+      return ((hb.a)$$0.getArgument($$1, hb.a.class)).c($$0);
+   }
 
-      default void a(Function<SuggestionsBuilder, CompletableFuture<Suggestions>> $$0) {
-      }
+   public Collection<String> getExamples() {
+      return a;
+   }
+
+   public interface a {
+      Collection<ig<et>> a(CommandContext<et> var1) throws CommandSyntaxException;
+
+      Pair<akq, Either<ig<et>, Collection<ig<et>>>> b(CommandContext<et> var1) throws CommandSyntaxException;
+
+      Pair<akq, Collection<ig<et>>> c(CommandContext<et> var1) throws CommandSyntaxException;
    }
 }

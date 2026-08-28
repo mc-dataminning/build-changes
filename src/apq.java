@@ -1,159 +1,205 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import com.google.common.base.MoreObjects;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Objects;
+import java.util.Properties;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class apq {
-   private final aqe b;
-   private final dbn c;
-   @Nullable
-   private dvi d = null;
-   public final dvi a;
-   private volatile boolean e;
-   private final List<CompletableFuture<apu<duh>>> f = new ArrayList<>();
-   private final aza<aqf> g;
-   private boolean h;
+public abstract class apq<T extends apq<T>> {
+   private static final Logger a = LogUtils.getLogger();
+   protected final Properties ac;
 
-   private apq(aqe $$0, dvi $$1, dbn $$2, aza<aqf> $$3) {
-      this.b = $$0;
-      this.a = $$1;
-      this.c = $$2;
-      this.g = $$3;
+   public apq(Properties $$0) {
+      this.ac = $$0;
    }
 
-   public static apq a(aqe $$0, dvi $$1, dbn $$2) {
-      int $$3 = dvh.a.a($$1).a(dvi.c);
-      aza<aqf> $$4 = aza.a($$2.e, $$2.f, $$3, ($$1x, $$2x) -> $$0.d(dbn.c($$1x, $$2x)));
-      return new apq($$0, $$1, $$2, $$4);
-   }
+   public static Properties b(Path $$0) {
+      try {
+         try {
+            Properties var13;
+            try (InputStream $$1 = Files.newInputStream($$0)) {
+               CharsetDecoder $$2 = StandardCharsets.UTF_8
+                  .newDecoder()
+                  .onMalformedInput(CodingErrorAction.REPORT)
+                  .onUnmappableCharacter(CodingErrorAction.REPORT);
+               Properties $$3 = new Properties();
+               $$3.load(new InputStreamReader($$1, $$2));
+               var13 = $$3;
+            }
 
-   @Nullable
-   public CompletableFuture<?> a() {
-      while (true) {
-         CompletableFuture<?> $$0 = this.g();
-         if ($$0 != null) {
-            return $$0;
+            return var13;
+         } catch (CharacterCodingException var9) {
+            a.info("Failed to load properties as UTF-8 from file {}, trying ISO_8859_1", $$0);
+
+            Properties var4;
+            try (Reader $$5 = Files.newBufferedReader($$0, StandardCharsets.ISO_8859_1)) {
+               Properties $$6 = new Properties();
+               $$6.load($$5);
+               var4 = $$6;
+            }
+
+            return var4;
          }
+      } catch (IOException var10) {
+         a.error("Failed to load properties from file: {}", $$0, var10);
+         return new Properties();
+      }
+   }
 
-         if (this.e || this.d == this.a) {
-            this.e();
+   public void c(Path $$0) {
+      try (Writer $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8)) {
+         this.ac.store($$1, "Minecraft server properties");
+      } catch (IOException var7) {
+         a.error("Failed to store properties to file: {}", $$0);
+      }
+   }
+
+   private static <V extends Number> Function<String, V> a(Function<String, V> $$0) {
+      return $$1 -> {
+         try {
+            return $$0.apply($$1);
+         } catch (NumberFormatException var3) {
             return null;
          }
-
-         this.d();
-      }
+      };
    }
 
-   private void d() {
-      dvi $$0;
-      if (this.d == null) {
-         $$0 = dvi.c;
-      } else if (!this.h && this.d == dvi.c && !this.f()) {
-         this.h = true;
-         $$0 = dvi.c;
-      } else {
-         $$0 = dvi.a().get(this.d.b() + 1);
-      }
-
-      this.a($$0, this.h);
-      this.d = $$0;
-   }
-
-   public void b() {
-      this.e = true;
-   }
-
-   private void e() {
-      aqf $$0 = this.g.a(this.c.e, this.c.f);
-      $$0.a(this);
-      this.g.a(this.b::a);
-   }
-
-   private boolean f() {
-      if (this.a == dvi.c) {
-         return true;
-      } else {
-         dvi $$0 = this.g.a(this.c.e, this.c.f).q();
-         if ($$0 != null && !$$0.d(this.a)) {
-            dvg $$1 = dvh.b.a(this.a).c();
-            int $$2 = $$1.c();
-
-            for (int $$3 = this.c.e - $$2; $$3 <= this.c.e + $$2; $$3++) {
-               for (int $$4 = this.c.f - $$2; $$4 <= this.c.f + $$2; $$4++) {
-                  int $$5 = this.c.e($$3, $$4);
-                  dvi $$6 = $$1.a($$5);
-                  dvi $$7 = this.g.a($$3, $$4).q();
-                  if ($$7 == null || $$7.d($$6)) {
-                     return false;
-                  }
-               }
-            }
-
-            return true;
-         } else {
-            return false;
+   protected static <V> Function<String, V> a(IntFunction<V> $$0, Function<String, V> $$1) {
+      return $$2 -> {
+         try {
+            return $$0.apply(Integer.parseInt($$2));
+         } catch (NumberFormatException var4) {
+            return $$1.apply($$2);
          }
-      }
-   }
-
-   public aqf c() {
-      return this.g.a(this.c.e, this.c.f);
-   }
-
-   private void a(dvi $$0, boolean $$1) {
-      int $$2 = this.b($$0, $$1);
-
-      for (int $$3 = this.c.e - $$2; $$3 <= this.c.e + $$2; $$3++) {
-         for (int $$4 = this.c.f - $$2; $$4 <= this.c.f + $$2; $$4++) {
-            aqf $$5 = this.g.a($$3, $$4);
-            if (this.e || !this.a($$0, $$1, $$5)) {
-               return;
-            }
-         }
-      }
-   }
-
-   private int b(dvi $$0, boolean $$1) {
-      dvh $$2 = $$1 ? dvh.a : dvh.b;
-      return $$2.a(this.a).a($$0);
-   }
-
-   private boolean a(dvi $$0, boolean $$1, aqf $$2) {
-      dvi $$3 = $$2.q();
-      boolean $$4 = $$3 != null && $$0.b($$3);
-      dvh $$5 = $$4 ? dvh.a : dvh.b;
-      if ($$4 && !$$1) {
-         throw new IllegalStateException("Can't load chunk, but didn't expect to need to generate");
-      } else {
-         CompletableFuture<apu<duh>> $$6 = $$2.a($$5.a($$0), this.b, this.g);
-         apu<duh> $$7 = $$6.getNow(null);
-         if ($$7 == null) {
-            this.f.add($$6);
-            return true;
-         } else if ($$7.a()) {
-            return true;
-         } else {
-            this.b();
-            return false;
-         }
-      }
+      };
    }
 
    @Nullable
-   private CompletableFuture<?> g() {
-      while (!this.f.isEmpty()) {
-         CompletableFuture<apu<duh>> $$0 = this.f.getLast();
-         apu<duh> $$1 = $$0.getNow(null);
-         if ($$1 == null) {
-            return $$0;
-         }
+   private String c(String $$0) {
+      return (String)this.ac.get($$0);
+   }
 
-         this.f.removeLast();
-         if (!$$1.a()) {
-            this.b();
-         }
+   @Nullable
+   protected <V> V a(String $$0, Function<String, V> $$1) {
+      String $$2 = this.c($$0);
+      if ($$2 == null) {
+         return null;
+      } else {
+         this.ac.remove($$0);
+         return $$1.apply($$2);
+      }
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.ac.put($$0, $$2.apply($$5));
+      return $$5;
+   }
+
+   protected <V> apq<T>.a<V> b(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.ac.put($$0, $$2.apply($$5));
+      return new apq.a<>($$0, $$5, $$2);
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, UnaryOperator<V> $$2, Function<V, String> $$3, V $$4) {
+      return this.a($$0, $$2x -> {
+         V $$3x = $$1.apply($$2x);
+         return $$3x != null ? $$2.apply($$3x) : null;
+      }, $$3, $$4);
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, V $$2) {
+      return this.a($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected <V> apq<T>.a<V> b(String $$0, Function<String, V> $$1, V $$2) {
+      return this.b($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected String a(String $$0, String $$1) {
+      return this.a($$0, Function.identity(), Function.identity(), $$1);
+   }
+
+   @Nullable
+   protected String a(String $$0) {
+      return this.a($$0, Function.identity());
+   }
+
+   protected int a(String $$0, int $$1) {
+      return this.a($$0, a(Integer::parseInt), Integer.valueOf($$1));
+   }
+
+   protected apq<T>.a<Integer> b(String $$0, int $$1) {
+      return this.b($$0, a(Integer::parseInt), $$1);
+   }
+
+   protected int a(String $$0, UnaryOperator<Integer> $$1, int $$2) {
+      return this.a($$0, a(Integer::parseInt), $$1, Objects::toString, $$2);
+   }
+
+   protected long a(String $$0, long $$1) {
+      return this.a($$0, a(Long::parseLong), $$1);
+   }
+
+   protected boolean a(String $$0, boolean $$1) {
+      return this.a($$0, Boolean::valueOf, $$1);
+   }
+
+   protected apq<T>.a<Boolean> b(String $$0, boolean $$1) {
+      return this.b($$0, Boolean::valueOf, $$1);
+   }
+
+   @Nullable
+   protected Boolean b(String $$0) {
+      return this.a($$0, Boolean::valueOf);
+   }
+
+   protected Properties a() {
+      Properties $$0 = new Properties();
+      $$0.putAll(this.ac);
+      return $$0;
+   }
+
+   protected abstract T b(ka var1, Properties var2);
+
+   public class a<V> implements Supplier<V> {
+      private final String b;
+      private final V c;
+      private final Function<V, String> d;
+
+      a(final String $$1, final V $$2, final Function<V, String> $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      return null;
+      @Override
+      public V get() {
+         return this.c;
+      }
+
+      public T a(ka $$0, V $$1) {
+         Properties $$2 = apq.this.a();
+         $$2.put(this.b, this.d.apply($$1));
+         return apq.this.b($$0, $$2);
+      }
    }
 }

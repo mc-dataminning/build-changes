@@ -1,35 +1,32 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bif extends bht {
+public class bif extends Schema {
    public bif(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.registerSimple($$1, "minecraft:egg");
-      $$0.registerSimple($$1, "minecraft:ender_pearl");
-      $$0.registerSimple($$1, "minecraft:fireball");
-      $$0.register($$1, "minecraft:potion", $$1x -> DSL.optionalFields("Potion", bgh.t.in($$0)));
-      $$0.registerSimple($$1, "minecraft:small_fireball");
-      $$0.registerSimple($$1, "minecraft:snowball");
-      $$0.registerSimple($$1, "minecraft:wither_skull");
-      $$0.registerSimple($$1, "minecraft:xp_bottle");
-      $$0.register($$1, "minecraft:arrow", () -> DSL.optionalFields("inBlockState", bgh.u.in($$0)));
-      $$0.register($$1, "minecraft:enderman", () -> DSL.optionalFields("carriedBlockState", bgh.u.in($$0), bhu.a($$0)));
-      $$0.register($$1, "minecraft:falling_block", () -> DSL.optionalFields("BlockState", bgh.u.in($$0), "TileEntityData", bgh.s.in($$0)));
-      $$0.register($$1, "minecraft:spectral_arrow", () -> DSL.optionalFields("inBlockState", bgh.u.in($$0)));
-      $$0.register($$1, "minecraft:chest_minecart", () -> DSL.optionalFields("DisplayState", bgh.u.in($$0), "Items", DSL.list(bgh.t.in($$0))));
-      $$0.register($$1, "minecraft:commandblock_minecart", () -> DSL.optionalFields("DisplayState", bgh.u.in($$0)));
-      $$0.register($$1, "minecraft:furnace_minecart", () -> DSL.optionalFields("DisplayState", bgh.u.in($$0)));
-      $$0.register($$1, "minecraft:hopper_minecart", () -> DSL.optionalFields("DisplayState", bgh.u.in($$0), "Items", DSL.list(bgh.t.in($$0))));
-      $$0.register($$1, "minecraft:minecart", () -> DSL.optionalFields("DisplayState", bgh.u.in($$0)));
-      $$0.register($$1, "minecraft:spawner_minecart", () -> DSL.optionalFields("DisplayState", bgh.u.in($$0), bgh.F.in($$0)));
-      $$0.register($$1, "minecraft:tnt_minecart", () -> DSL.optionalFields("DisplayState", bgh.u.in($$0)));
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(false, bgq.J, () -> DSL.constType(bic.a()));
+      $$0.registerType(
+         false,
+         bgq.b,
+         () -> DSL.optionalFields(
+               new Pair[]{
+                  Pair.of("RootVehicle", DSL.optionalFields("Entity", bgq.A.in($$0))),
+                  Pair.of("Inventory", DSL.list(bgq.t.in($$0))),
+                  Pair.of("EnderItems", DSL.list(bgq.t.in($$0))),
+                  Pair.of("ShoulderEntityLeft", bgq.A.in($$0)),
+                  Pair.of("ShoulderEntityRight", bgq.A.in($$0)),
+                  Pair.of("recipeBook", DSL.optionalFields("recipes", DSL.list(bgq.J.in($$0)), "toBeDisplayed", DSL.list(bgq.J.in($$0))))
+               }
+            )
+      );
+      $$0.registerType(false, bgq.d, () -> DSL.compoundList(DSL.list(bgq.t.in($$0))));
    }
 }

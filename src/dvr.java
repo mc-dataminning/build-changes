@@ -1,110 +1,89 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.MapCodec;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class dvr implements AutoCloseable {
-   public static final int d = 1493;
-   private final dvt a;
-   protected final DataFixer e;
+public class dvr<T> implements dvm<T> {
+   private final jr<T> a;
    @Nullable
-   private volatile eis b;
+   private T b;
+   private final dvn<T> c;
 
-   public dvr(dwa $$0, Path $$1, DataFixer $$2, boolean $$3) {
-      this.e = $$2;
-      this.a = new dvt($$0, $$1, $$3);
-   }
-
-   public boolean b(dbn $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   public tx a(akj<dcg> $$0, Supplier<eqe> $$1, tx $$2, Optional<akj<MapCodec<? extends dui>>> $$3) {
-      int $$4 = a($$2);
-      if ($$4 == aa.b().d().c()) {
-         return $$2;
-      } else {
-         try {
-            if ($$4 < 1493) {
-               $$2 = azo.c.a(this.e, $$2, $$4, 1493);
-               if ($$2.p("Level").q("hasLegacyStructureData")) {
-                  eis $$5 = this.a($$0, $$1);
-                  $$2 = $$5.a($$2);
-               }
-            }
-
-            a($$2, $$0, $$3);
-            $$2 = azo.c.a(this.e, $$2, Math.max(1493, $$4));
-            b($$2);
-            um.e($$2);
-            return $$2;
-         } catch (Exception var9) {
-            o $$7 = o.a(var9, "Updated chunk");
-            p $$8 = $$7.a("Updated chunk details");
-            $$8.a("Data version", $$4);
-            throw new y($$7);
-         }
+   public dvr(jr<T> $$0, dvn<T> $$1, List<T> $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
       }
    }
 
-   private eis a(akj<dcg> $$0, Supplier<eqe> $$1) {
-      eis $$2 = this.b;
-      if ($$2 == null) {
-         synchronized (this) {
-            $$2 = this.b;
-            if ($$2 == null) {
-               this.b = $$2 = eis.a($$0, $$1.get());
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   public static void a(tx $$0, akj<dcg> $$1, Optional<akj<MapCodec<? extends dui>>> $$2) {
-      tx $$3 = new tx();
-      $$3.a("dimension", $$1.a().toString());
-      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
-      $$0.a("__context", $$3);
-   }
-
-   private static void b(tx $$0) {
-      $$0.r("__context");
-   }
-
-   public static int a(tx $$0) {
-      return um.b($$0, -1);
-   }
-
-   public CompletableFuture<Optional<tx>> d(dbn $$0) {
-      return this.a.a($$0);
-   }
-
-   public CompletableFuture<Void> a(dbn $$0, tx $$1) {
-      this.e($$0);
-      return this.a.a($$0, $$1);
-   }
-
-   protected void e(dbn $$0) {
-      if (this.b != null) {
-         this.b.a($$0.a());
-      }
-   }
-
-   public void o() {
-      this.a.a(true).join();
+   public static <A> dvm<A> a(int $$0, jr<A> $$1, dvn<A> $$2, List<A> $$3) {
+      return new dvr<>($$1, $$2, $$3);
    }
 
    @Override
-   public void close() throws IOException {
-      this.a.close();
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
+      } else {
+         this.b = $$0;
+         return 0;
+      }
    }
 
-   public dvp p() {
-      return this.a;
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
+      }
+   }
+
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+      }
+   }
+
+   @Override
+   public void a(vv $$0) {
+      this.b = this.a.b($$0.l());
+   }
+
+   @Override
+   public void b(vv $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return wp.a(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int b() {
+      return 1;
+   }
+
+   @Override
+   public dvm<T> c() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
+      }
    }
 }

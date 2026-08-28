@@ -1,88 +1,58 @@
-import javax.annotation.Nullable;
+public class fqu extends frb {
+   public static final wy a = wy.c("options.accessibility.title");
 
-public class fqu extends fqn {
-   private static final wu u = wu.c("controls.keybinds.title");
-   @Nullable
-   public ffu a;
-   public long s;
-   private fqt v;
-   private fhu w;
+   private static fgl<?>[] a(fgm $$0) {
+      return new fgl[]{
+         $$0.as(),
+         $$0.W(),
+         $$0.t(),
+         $$0.H(),
+         $$0.p(),
+         $$0.r(),
+         $$0.Y(),
+         $$0.n(),
+         $$0.o(),
+         $$0.A(),
+         $$0.B(),
+         $$0.ac(),
+         $$0.ad(),
+         $$0.aj(),
+         $$0.ak(),
+         $$0.al(),
+         $$0.ao(),
+         $$0.am(),
+         $$0.an(),
+         $$0.b(),
+         $$0.a(),
+         $$0.s(),
+         $$0.c(),
+         $$0.u()
+      };
+   }
 
-   public fqu(fnl $$0, fga $$1) {
-      super($$0, $$1, u);
+   public fqu(fnx $$0, fgm $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
-   protected void aQ_() {
-      this.v = this.r.c(new fqt(this, this.l));
+   protected void aP_() {
+      super.aP_();
+      fie $$0 = this.q.b(this.c.t());
+      if ($$0 != null && !this.l.ac().b().contains("high_contrast")) {
+         $$0.j = false;
+         $$0.a(fjr.a(wy.c("options.accessibility.high_contrast.error.tooltip")));
+      }
    }
 
    @Override
    protected void m() {
+      this.q.a(a(this.c));
    }
 
    @Override
    protected void D() {
-      this.w = fhu.a(wu.c("controls.resetAll"), $$0x -> {
-         for (ffu $$1 : this.c.W) {
-            $$1.b($$1.i());
-         }
-
-         this.v.c();
-      }).a();
-      fll $$0 = this.r.b(fll.e().a(8));
-      $$0.a(this.w);
-      $$0.a(fhu.a(wt.d, $$0x -> this.d()).a());
-   }
-
-   @Override
-   protected void c() {
-      this.r.a();
-      this.v.a(this.m, this.r);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.a != null) {
-         this.c.a(this.a, ezj.b.c.a($$2));
-         this.a = null;
-         this.v.c();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.a != null) {
-         if ($$0 == 256) {
-            this.c.a(this.a, ezj.bv);
-         } else {
-            this.c.a(this.a, ezj.a($$0, $$1));
-         }
-
-         this.a = null;
-         this.s = ac.c();
-         this.v.c();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(fhh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      boolean $$4 = false;
-
-      for (ffu $$5 : this.c.W) {
-         if (!$$5.l()) {
-            $$4 = true;
-            break;
-         }
-      }
-
-      this.w.j = $$4;
+      flx $$0 = this.r.b(flx.e().a(8));
+      $$0.a(fig.a(wy.c("options.accessibility.link"), fmu.b(this, "https://aka.ms/MinecraftJavaAccessibility")).a());
+      $$0.a(fig.a(wx.d, $$0x -> this.l.a(this.b)).a());
    }
 }

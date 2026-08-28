@@ -1,59 +1,16 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
+public class coe extends cod {
+   private static final float f = 3.0F;
 
-public class coe {
-   private final List<cob> a = Lists.newArrayList();
-   private int b;
-
-   public ImmutableList<cob> a() {
-      return ImmutableList.copyOf(this.a);
+   public coe(bsw<? extends cod> $$0, dcu $$1) {
+      super($$0, $$1);
    }
 
-   public coe a(int $$0, float $$1) {
-      this.a.add(new cob($$0, $$1));
-      this.b();
-      return this;
+   public coe(ckx $$0, dcu $$1) {
+      super(bsw.n, $$1, $$0, $$0.dv(), $$0.go(), $$0.dB());
    }
 
-   public coe a(Collection<cob> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
-   }
-
-   private void b() {
-      Int2ObjectSortedMap<cob> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
-   }
-
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         cob $$1 = this.a.get(this.b);
-         cob $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
-
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cob $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
-      }
+   @Override
+   protected void y() {
+      this.dQ().a(this, null, e, this.dv(), this.dx(), this.dB(), 3.0F, false, dcu.a.e, lm.A, lm.z, avo.cQ);
    }
 }

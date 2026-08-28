@@ -1,27 +1,54 @@
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public interface jk<T> {
-   Optional<jj.c<T>> a(akj<T> var1);
+public enum jk implements azj {
+   a("down_east", ji.a, ji.f),
+   b("down_north", ji.a, ji.c),
+   c("down_south", ji.a, ji.d),
+   d("down_west", ji.a, ji.e),
+   e("up_east", ji.b, ji.f),
+   f("up_north", ji.b, ji.c),
+   g("up_south", ji.b, ji.d),
+   h("up_west", ji.b, ji.e),
+   i("west_up", ji.e, ji.b),
+   j("east_up", ji.f, ji.b),
+   k("north_up", ji.c, ji.b),
+   l("south_up", ji.d, ji.b);
 
-   default jj.c<T> b(akj<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
+   private static final Int2ObjectMap<jk> m = ad.a(new Int2ObjectOpenHashMap(values().length), $$0 -> {
+      for (jk $$1 : values()) {
+         $$0.put(b($$1.p, $$1.o), $$1);
+      }
+   });
+   private final String n;
+   private final ji o;
+   private final ji p;
+
+   private static int b(ji $$0, ji $$1) {
+      return $$1.ordinal() << 3 | $$0.ordinal();
    }
 
-   Optional<jn.c<T>> a(awm<T> var1);
-
-   default jn.c<T> b(awm<T> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
+   private jk(final String $$0, final ji $$1, final ji $$2) {
+      this.n = $$0;
+      this.p = $$1;
+      this.o = $$2;
    }
 
-   public interface a {
-      <T> Optional<jk<T>> a(akj<? extends jw<? extends T>> var1);
+   @Override
+   public String c() {
+      return this.n;
+   }
 
-      default <T> jk<T> b(akj<? extends jw<? extends T>> $$0) {
-         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
-      }
+   public static jk a(ji $$0, ji $$1) {
+      int $$2 = b($$0, $$1);
+      return (jk)m.get($$2);
+   }
 
-      default <T> Optional<jj.c<T>> a(akj<? extends jw<? extends T>> $$0, akj<T> $$1) {
-         return this.a($$0).flatMap($$1x -> $$1x.a($$1));
-      }
+   public ji a() {
+      return this.p;
+   }
+
+   public ji b() {
+      return this.o;
    }
 }

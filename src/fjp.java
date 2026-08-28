@@ -1,231 +1,70 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.joml.Vector2i;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public interface fjp extends fjq {
-   List<? extends fjq> aG_();
+public class fjp extends fie {
+   private static final fjt a = new fjt(
+      akq.b("widget/tab_selected"), akq.b("widget/tab"), akq.b("widget/tab_selected_highlighted"), akq.b("widget/tab_highlighted")
+   );
+   private static final int b = 3;
+   private static final int c = 1;
+   private static final int d = 1;
+   private static final int e = 4;
+   private static final int f = 2;
+   private final fkj m;
+   private final fki n;
 
-   default Optional<fjq> b_(double $$0, double $$1) {
-      for (fjq $$2 : this.aG_()) {
-         if ($$2.c($$0, $$1)) {
-            return Optional.of($$2);
-         }
-      }
-
-      return Optional.empty();
+   public fjp(fkj $$0, fki $$1, int $$2, int $$3) {
+      super(0, 0, $$2, $$3, $$1.a());
+      this.m = $$0;
+      this.n = $$1;
    }
 
    @Override
-   default boolean a(double $$0, double $$1, int $$2) {
-      for (fjq $$3 : this.aG_()) {
-         if ($$3.a($$0, $$1, $$2)) {
-            this.a($$3);
-            if ($$2 == 0) {
-               this.b_(true);
-            }
-
-            return true;
-         }
+   public void b(fht $$0, int $$1, int $$2, float $$3) {
+      RenderSystem.enableBlend();
+      $$0.a(a.a(this.b(), this.B()), this.D(), this.E(), this.g, this.h);
+      RenderSystem.disableBlend();
+      fhr $$4 = fgi.Q().h;
+      int $$5 = this.j ? -1 : -6250336;
+      this.a($$0, $$4, $$5);
+      if (this.b()) {
+         this.a($$0, this.D() + 2, this.E() + 2, this.F() - 2, this.G());
+         this.b($$0, $$4, $$5);
       }
+   }
 
-      return false;
+   protected void a(fht $$0, int $$1, int $$2, int $$3, int $$4) {
+      fnx.a($$0, fnx.f, $$1, $$2, 0.0F, 0.0F, $$3 - $$1, $$4 - $$2);
+   }
+
+   public void a(fht $$0, fhr $$1, int $$2) {
+      int $$3 = this.D() + 1;
+      int $$4 = this.E() + (this.b() ? 0 : 3);
+      int $$5 = this.D() + this.y() - 1;
+      int $$6 = this.E() + this.w();
+      a($$0, $$1, this.z(), $$3, $$4, $$5, $$6, $$2);
+   }
+
+   private void b(fht $$0, fhr $$1, int $$2) {
+      int $$3 = Math.min($$1.a(this.z()), this.y() - 4);
+      int $$4 = this.D() + (this.y() - $$3) / 2;
+      int $$5 = this.E() + this.w() - 2;
+      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
    }
 
    @Override
-   default boolean b(double $$0, double $$1, int $$2) {
-      if ($$2 == 0 && this.aI_()) {
-         this.b_(false);
-         if (this.aJ_() != null) {
-            return this.aJ_().b($$0, $$1, $$2);
-         }
-      }
-
-      return this.b_($$0, $$1).filter($$3 -> $$3.b($$0, $$1, $$2)).isPresent();
+   protected void a(fmc $$0) {
+      $$0.a(fmb.a, wy.a("gui.narrate.tab", this.n.a()));
    }
 
    @Override
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return this.aJ_() != null && this.aI_() && $$2 == 0 ? this.aJ_().a($$0, $$1, $$2, $$3, $$4) : false;
+   public void a(guy $$0) {
    }
 
-   boolean aI_();
-
-   void b_(boolean var1);
-
-   @Override
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.b_($$0, $$1).filter($$4 -> $$4.a($$0, $$1, $$2, $$3)).isPresent();
+   public fki a() {
+      return this.n;
    }
 
-   @Override
-   default boolean a(int $$0, int $$1, int $$2) {
-      return this.aJ_() != null && this.aJ_().a($$0, $$1, $$2);
-   }
-
-   @Override
-   default boolean c(int $$0, int $$1, int $$2) {
-      return this.aJ_() != null && this.aJ_().c($$0, $$1, $$2);
-   }
-
-   @Override
-   default boolean a(char $$0, int $$1) {
-      return this.aJ_() != null && this.aJ_().a($$0, $$1);
-   }
-
-   @Nullable
-   fjq aJ_();
-
-   void a(@Nullable fjq var1);
-
-   @Override
-   default void a(boolean $$0) {
-   }
-
-   @Override
-   default boolean aK_() {
-      return this.aJ_() != null;
-   }
-
-   @Nullable
-   @Override
-   default fhe aL_() {
-      fjq $$0 = this.aJ_();
-      return $$0 != null ? fhe.a(this, $$0.aL_()) : null;
-   }
-
-   @Nullable
-   @Override
-   default fhe a(flw $$0) {
-      fjq $$1 = this.aJ_();
-      if ($$1 != null) {
-         fhe $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return fhe.a(this, $$2);
-         }
-      }
-
-      if ($$0 instanceof flw.c $$3) {
-         return this.a($$3);
-      } else {
-         return $$0 instanceof flw.a $$4 ? this.a($$4) : null;
-      }
-   }
-
-   @Nullable
-   private fhe a(flw.c $$0) {
-      boolean $$1 = $$0.b();
-      fjq $$2 = this.aJ_();
-      List<? extends fjq> $$3 = new ArrayList<>(this.aG_());
-      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.I()));
-      int $$4 = $$3.indexOf($$2);
-      int $$5;
-      if ($$2 != null && $$4 >= 0) {
-         $$5 = $$4 + ($$1 ? 1 : 0);
-      } else if ($$1) {
-         $$5 = 0;
-      } else {
-         $$5 = $$3.size();
-      }
-
-      ListIterator<? extends fjq> $$8 = $$3.listIterator($$5);
-      BooleanSupplier $$9 = $$1 ? $$8::hasNext : $$8::hasPrevious;
-      Supplier<? extends fjq> $$10 = $$1 ? $$8::next : $$8::previous;
-
-      while ($$9.getAsBoolean()) {
-         fjq $$11 = $$10.get();
-         fhe $$12 = $$11.a($$0);
-         if ($$12 != null) {
-            return fhe.a(this, $$12);
-         }
-      }
-
-      return null;
-   }
-
-   @Nullable
-   private fhe a(flw.a $$0) {
-      fjq $$1 = this.aJ_();
-      if ($$1 == null) {
-         fly $$2 = $$0.b();
-         fma $$3 = this.H().c($$2.b());
-         return fhe.a(this, this.a($$3, $$2, null, $$0));
-      } else {
-         fma $$4 = $$1.H();
-         return fhe.a(this, this.a($$4, $$0.b(), $$1, $$0));
-      }
-   }
-
-   @Nullable
-   private fhe a(fma $$0, fly $$1, @Nullable fjq $$2, flw $$3) {
-      flx $$4 = $$1.a();
-      flx $$5 = $$4.a();
-      fly $$6 = $$5.b();
-      int $$7 = $$0.b($$1.b());
-      List<fjq> $$8 = new ArrayList<>();
-
-      for (fjq $$9 : this.aG_()) {
-         if ($$9 != $$2) {
-            fma $$10 = $$9.H();
-            if ($$10.a($$0, $$5)) {
-               int $$11 = $$10.b($$1.b());
-               if ($$1.a($$11, $$7)) {
-                  $$8.add($$9);
-               } else if ($$11 == $$7 && $$1.a($$10.b($$1), $$0.b($$1))) {
-                  $$8.add($$9);
-               }
-            }
-         }
-      }
-
-      Comparator<fjq> $$12 = Comparator.comparing($$1x -> $$1x.H().b($$1.b()), $$1.d());
-      Comparator<fjq> $$13 = Comparator.comparing($$1x -> $$1x.H().b($$6.b()), $$6.d());
-      $$8.sort($$12.thenComparing($$13));
-
-      for (fjq $$14 : $$8) {
-         fhe $$15 = $$14.a($$3);
-         if ($$15 != null) {
-            return $$15;
-         }
-      }
-
-      return this.b($$0, $$1, $$2, $$3);
-   }
-
-   @Nullable
-   private fhe b(fma $$0, fly $$1, @Nullable fjq $$2, flw $$3) {
-      flx $$4 = $$1.a();
-      flx $$5 = $$4.a();
-      List<Pair<fjq, Long>> $$6 = new ArrayList<>();
-      flz $$7 = flz.a($$4, $$0.b($$1), $$0.b($$5));
-
-      for (fjq $$8 : this.aG_()) {
-         if ($$8 != $$2) {
-            fma $$9 = $$8.H();
-            flz $$10 = flz.a($$4, $$9.b($$1.b()), $$9.b($$5));
-            if ($$1.a($$10.a($$4), $$7.a($$4))) {
-               long $$11 = Vector2i.distanceSquared($$7.a(), $$7.b(), $$10.a(), $$10.b());
-               $$6.add(Pair.of($$8, $$11));
-            }
-         }
-      }
-
-      $$6.sort(Comparator.comparingDouble(Pair::getSecond));
-
-      for (Pair<fjq, Long> $$12 : $$6) {
-         fhe $$13 = ((fjq)$$12.getFirst()).a($$3);
-         if ($$13 != null) {
-            return $$13;
-         }
-      }
-
-      return null;
+   public boolean b() {
+      return this.m.a() == this.n;
    }
 }

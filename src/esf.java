@@ -1,63 +1,64 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
 
-public class esf extends esj {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<esf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(akj.a(lr.bc).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, esf::new)
-   );
-   private final akj<esk> c;
+public class esf extends eru {
+   public static final MapCodec<esf> a = a(esf::new);
 
-   private esf(List<euh> $$0, akj<esk> $$1) {
-      super($$0);
-      this.c = $$1;
+   esf(List<esb> $$0, List<euw> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public esl<esf> b() {
-      return esm.H;
+   public esc a() {
+      return erz.h;
    }
 
    @Override
-   public void a(erc $$0) {
-      if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a()
-            .a(lr.bc, this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
-      }
-   }
-
-   @Override
-   protected cud a(cud $$0, eqw $$1) {
-      esk $$2 = $$1.a().a(lr.bc, this.c).map(jj::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
-         return $$0;
-      } else {
-         eqw.c<?> $$3 = eqw.a($$2);
-         if ($$1.b($$3)) {
-            cud var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
+   protected ert a(List<? extends ert> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ert)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (ert $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
             }
+         }
 
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
+         return true;
+      };
+      };
+   }
+
+   public static esf.a a(esb.a<?>... $$0) {
+      return new esf.a($$0);
+   }
+
+   public static class a extends esb.a<esf.a> {
+      private final Builder<esb> a = ImmutableList.builder();
+
+      public a(esb.a<?>... $$0) {
+         for (esb.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
          }
       }
-   }
 
-   public static esj.a<?> a(akj<esk> $$0) {
-      return a($$1 -> new esf($$1, $$0));
+      protected esf.a a() {
+         return this;
+      }
+
+      @Override
+      public esf.a c(esb.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public esb b() {
+         return new esf(this.a.build(), this.f());
+      }
    }
 }

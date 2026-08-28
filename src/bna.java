@@ -1,238 +1,287 @@
+import com.google.common.base.Splitter;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.SocketAddress;
-import java.net.URL;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import it.unimi.dsi.fastutil.objects.Object2LongMaps;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.text.ParseException;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import javax.annotation.Nullable;
-import jdk.jfr.Configuration;
-import jdk.jfr.Event;
-import jdk.jfr.FlightRecorder;
-import jdk.jfr.FlightRecorderListener;
-import jdk.jfr.Recording;
-import jdk.jfr.RecordingState;
-import net.minecraft.util.profiling.jfr.event.ChunkGenerationEvent;
-import net.minecraft.util.profiling.jfr.event.ChunkRegionReadEvent;
-import net.minecraft.util.profiling.jfr.event.ChunkRegionWriteEvent;
-import net.minecraft.util.profiling.jfr.event.NetworkSummaryEvent;
-import net.minecraft.util.profiling.jfr.event.PacketReceivedEvent;
-import net.minecraft.util.profiling.jfr.event.PacketSentEvent;
-import net.minecraft.util.profiling.jfr.event.ServerTickTimeEvent;
-import net.minecraft.util.profiling.jfr.event.WorldLoadFinishedEvent;
+import java.util.Map.Entry;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 
-public class bna implements bnb {
-   private static final Logger g = LogUtils.getLogger();
-   public static final String a = "Minecraft";
-   public static final String b = "World Generation";
-   public static final String c = "Ticking";
-   public static final String d = "Network";
-   public static final String e = "Storage";
-   private static final List<Class<? extends Event>> h = List.of(
-      ChunkGenerationEvent.class,
-      ChunkRegionReadEvent.class,
-      ChunkRegionWriteEvent.class,
-      PacketReceivedEvent.class,
-      PacketSentEvent.class,
-      NetworkSummaryEvent.class,
-      ServerTickTimeEvent.class,
-      WorldLoadFinishedEvent.class
-   );
-   private static final String i = "/flightrecorder-config.jfc";
-   private static final DateTimeFormatter j = new DateTimeFormatterBuilder().appendPattern("yyyy-MM-dd-HHmmss").toFormatter().withZone(ZoneId.systemDefault());
-   private static final bna k = new bna();
-   @Nullable
-   Recording l;
-   private float m;
-   private final Map<String, NetworkSummaryEvent.b> n = new ConcurrentHashMap<>();
+public class bna implements bnd {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bnf b = new bnf() {
+      @Override
+      public long a() {
+         return 0L;
+      }
 
-   private bna() {
-      h.forEach(FlightRecorder::register);
-      FlightRecorder.addPeriodicEvent(ServerTickTimeEvent.class, () -> new ServerTickTimeEvent(this.m).commit());
-      FlightRecorder.addPeriodicEvent(NetworkSummaryEvent.class, () -> {
-         Iterator<NetworkSummaryEvent.b> $$0 = this.n.values().iterator();
+      @Override
+      public long b() {
+         return 0L;
+      }
 
-         while ($$0.hasNext()) {
-            $$0.next().a();
-            $$0.remove();
+      @Override
+      public long c() {
+         return 0L;
+      }
+
+      @Override
+      public Object2LongMap<String> d() {
+         return Object2LongMaps.emptyMap();
+      }
+   };
+   private static final Splitter c = Splitter.on('\u001e');
+   private static final Comparator<Entry<String, bna.a>> e = Entry.<String, bna.a>comparingByValue(Comparator.comparingLong($$0 -> $$0.b)).reversed();
+   private final Map<String, ? extends bnf> f;
+   private final long g;
+   private final int h;
+   private final long i;
+   private final int j;
+   private final int k;
+
+   public bna(Map<String, ? extends bnf> $$0, long $$1, int $$2, long $$3, int $$4) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
+      this.k = $$4 - $$2;
+   }
+
+   private bnf c(String $$0) {
+      bnf $$1 = this.f.get($$0);
+      return $$1 != null ? $$1 : b;
+   }
+
+   @Override
+   public List<bng> a(String $$0) {
+      String $$1 = $$0;
+      bnf $$2 = this.c("root");
+      long $$3 = $$2.a();
+      bnf $$4 = this.c($$0);
+      long $$5 = $$4.a();
+      long $$6 = $$4.c();
+      List<bng> $$7 = Lists.newArrayList();
+      if (!$$0.isEmpty()) {
+         $$0 = $$0 + "\u001e";
+      }
+
+      long $$8 = 0L;
+
+      for (String $$9 : this.f.keySet()) {
+         if (a($$0, $$9)) {
+            $$8 += this.c($$9).a();
+         }
+      }
+
+      float $$10 = (float)$$8;
+      if ($$8 < $$5) {
+         $$8 = $$5;
+      }
+
+      if ($$3 < $$8) {
+         $$3 = $$8;
+      }
+
+      for (String $$11 : this.f.keySet()) {
+         if (a($$0, $$11)) {
+            bnf $$12 = this.c($$11);
+            long $$13 = $$12.a();
+            double $$14 = (double)$$13 * 100.0 / (double)$$8;
+            double $$15 = (double)$$13 * 100.0 / (double)$$3;
+            String $$16 = $$11.substring($$0.length());
+            $$7.add(new bng($$16, $$14, $$15, $$12.c()));
+         }
+      }
+
+      if ((float)$$8 > $$10) {
+         $$7.add(new bng("unspecified", (double)((float)$$8 - $$10) * 100.0 / (double)$$8, (double)((float)$$8 - $$10) * 100.0 / (double)$$3, $$6));
+      }
+
+      Collections.sort($$7);
+      $$7.add(0, new bng($$1, 100.0, (double)$$8 * 100.0 / (double)$$3, $$6));
+      return $$7;
+   }
+
+   private static boolean a(String $$0, String $$1) {
+      return $$1.length() > $$0.length() && $$1.startsWith($$0) && $$1.indexOf(30, $$0.length() + 1) < 0;
+   }
+
+   private Map<String, bna.a> h() {
+      Map<String, bna.a> $$0 = Maps.newTreeMap();
+      this.f.forEach(($$1, $$2) -> {
+         Object2LongMap<String> $$3 = $$2.d();
+         if (!$$3.isEmpty()) {
+            List<String> $$4 = c.splitToList($$1);
+            $$3.forEach(($$2x, $$3x) -> $$0.computeIfAbsent($$2x, $$0xxx -> new bna.a()).a($$4.iterator(), $$3x));
          }
       });
-   }
-
-   public static bna a() {
-      return k;
+      return $$0;
    }
 
    @Override
-   public boolean a(bmz $$0) {
-      URL $$1 = bna.class.getResource("/flightrecorder-config.jfc");
-      if ($$1 == null) {
-         g.warn("Could not find default flight recorder config at {}", "/flightrecorder-config.jfc");
-         return false;
-      } else {
-         try {
-            boolean var4;
-            try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1.openStream()))) {
-               var4 = this.a($$2, $$0);
-            }
-
-            return var4;
-         } catch (IOException var8) {
-            g.warn("Failed to start flight recorder using configuration at {}", $$1, var8);
-            return false;
-         }
-      }
+   public long a() {
+      return this.g;
    }
 
    @Override
-   public Path b() {
-      if (this.l == null) {
-         throw new IllegalStateException("Not currently profiling");
-      } else {
-         this.n.clear();
-         Path $$0 = this.l.getDestination();
-         this.l.stop();
-         return $$0;
-      }
+   public int b() {
+      return this.h;
    }
 
    @Override
-   public boolean c() {
-      return this.l != null;
+   public long c() {
+      return this.i;
    }
 
    @Override
-   public boolean d() {
-      return FlightRecorder.isAvailable();
+   public int d() {
+      return this.j;
    }
 
-   private boolean a(Reader $$0, bmz $$1) {
-      if (this.c()) {
-         g.warn("Profiling already in progress");
-         return false;
-      } else {
-         try {
-            Configuration $$2 = Configuration.create($$0);
-            String $$3 = j.format(Instant.now());
-            this.l = ac.a(new Recording($$2), $$2x -> {
-               h.forEach($$2x::enable);
-               $$2x.setDumpOnExit(true);
-               $$2x.setToDisk(true);
-               $$2x.setName(String.format(Locale.ROOT, "%s-%s-%s", $$1.a(), aa.b().c(), $$3));
-            });
-            Path $$4 = Paths.get(String.format(Locale.ROOT, "debug/%s-%s.jfr", $$1.a(), $$3));
-            v.c($$4.getParent());
-            this.l.setDestination($$4);
-            this.l.start();
-            this.f();
-         } catch (ParseException | IOException var6) {
-            g.warn("Failed to start jfr profiling", var6);
-            return false;
-         }
+   @Override
+   public boolean a(Path $$0) {
+      Writer $$1 = null;
 
-         g.info(
-            "Started flight recorder profiling id({}):name({}) - will dump to {} on exit or stop command",
-            new Object[]{this.l.getId(), this.l.getName(), this.l.getDestination()}
-         );
+      boolean var4;
+      try {
+         Files.createDirectories($$0.getParent());
+         $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8);
+         $$1.write(this.a(this.g(), this.f()));
          return true;
+      } catch (Throwable var8) {
+         a.error("Could not save profiler results to {}", $$0, var8);
+         var4 = false;
+      } finally {
+         IOUtils.closeQuietly($$1);
+      }
+
+      return var4;
+   }
+
+   protected String a(long $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      y.b.a($$2, List.of());
+      $$2.append("Version: ").append(ab.b().b()).append('\n');
+      $$2.append("Time span: ").append($$0 / 1000000L).append(" ms\n");
+      $$2.append("Tick span: ").append($$1).append(" ticks\n");
+      $$2.append("// This is approximately ")
+         .append(String.format(Locale.ROOT, "%.2f", (float)$$1 / ((float)$$0 / 1.0E9F)))
+         .append(" ticks per second. It should be ")
+         .append(20)
+         .append(" ticks per second\n\n");
+      $$2.append("--- BEGIN PROFILE DUMP ---\n\n");
+      this.a(0, "root", $$2);
+      $$2.append("--- END PROFILE DUMP ---\n\n");
+      Map<String, bna.a> $$3 = this.h();
+      if (!$$3.isEmpty()) {
+         $$2.append("--- BEGIN COUNTER DUMP ---\n\n");
+         this.a($$3, $$2, $$1);
+         $$2.append("--- END COUNTER DUMP ---\n\n");
+      }
+
+      return $$2.toString();
+   }
+
+   @Override
+   public String e() {
+      StringBuilder $$0 = new StringBuilder();
+      this.a(0, "root", $$0);
+      return $$0.toString();
+   }
+
+   private static StringBuilder a(StringBuilder $$0, int $$1) {
+      $$0.append(String.format(Locale.ROOT, "[%02d] ", $$1));
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0.append("|   ");
+      }
+
+      return $$0;
+   }
+
+   private void a(int $$0, String $$1, StringBuilder $$2) {
+      List<bng> $$3 = this.a($$1);
+      Object2LongMap<String> $$4 = ((bnf)ObjectUtils.firstNonNull(new bnf[]{this.f.get($$1), b})).d();
+      $$4.forEach(($$2x, $$3x) -> a($$2, $$0).append('#').append($$2x).append(' ').append($$3x).append('/').append($$3x / (long)this.k).append('\n'));
+      if ($$3.size() >= 3) {
+         for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
+            bng $$6 = $$3.get($$5);
+            a($$2, $$0)
+               .append($$6.d)
+               .append('(')
+               .append($$6.c)
+               .append('/')
+               .append(String.format(Locale.ROOT, "%.0f", (float)$$6.c / (float)this.k))
+               .append(')')
+               .append(" - ")
+               .append(String.format(Locale.ROOT, "%.2f", $$6.a))
+               .append("%/")
+               .append(String.format(Locale.ROOT, "%.2f", $$6.b))
+               .append("%\n");
+            if (!"unspecified".equals($$6.d)) {
+               try {
+                  this.a($$0 + 1, $$1 + "\u001e" + $$6.d, $$2);
+               } catch (Exception var9) {
+                  $$2.append("[[ EXCEPTION ").append(var9).append(" ]]");
+               }
+            }
+         }
       }
    }
 
-   private void f() {
-      FlightRecorder.addListener(new FlightRecorderListener() {
-         final bnd a = new bnd(() -> bna.this.l = null);
+   private void a(int $$0, String $$1, bna.a $$2, int $$3, StringBuilder $$4) {
+      a($$4, $$0)
+         .append($$1)
+         .append(" total:")
+         .append($$2.a)
+         .append('/')
+         .append($$2.b)
+         .append(" average: ")
+         .append($$2.a / (long)$$3)
+         .append('/')
+         .append($$2.b / (long)$$3)
+         .append('\n');
+      $$2.c.entrySet().stream().sorted(e).forEach($$3x -> this.a($$0 + 1, (String)$$3x.getKey(), (bna.a)$$3x.getValue(), $$3, $$4));
+   }
 
-         @Override
-         public void recordingStateChanged(Recording $$0) {
-            if ($$0 == bna.this.l && $$0.getState() == RecordingState.STOPPED) {
-               this.a.a($$0.getDestination());
-               FlightRecorder.removeListener(this);
-            }
-         }
+   private void a(Map<String, bna.a> $$0, StringBuilder $$1, int $$2) {
+      $$0.forEach(($$2x, $$3) -> {
+         $$1.append("-- Counter: ").append($$2x).append(" --\n");
+         this.a(0, "root", $$3.c.get("root"), $$2, $$1);
+         $$1.append("\n\n");
       });
    }
 
    @Override
-   public void a(float $$0) {
-      if (ServerTickTimeEvent.TYPE.isEnabled()) {
-         this.m = $$0;
-      }
+   public int f() {
+      return this.k;
    }
 
-   @Override
-   public void a(vq $$0, zd<?> $$1, SocketAddress $$2, int $$3) {
-      if (PacketReceivedEvent.TYPE.isEnabled()) {
-         new PacketReceivedEvent($$0.a(), $$1.a().b(), $$1.b().toString(), $$2, $$3).commit();
-      }
+   static class a {
+      long a;
+      long b;
+      final Map<String, bna.a> c = Maps.newHashMap();
 
-      if (NetworkSummaryEvent.TYPE.isEnabled()) {
-         this.a($$2).b($$3);
-      }
-   }
-
-   @Override
-   public void b(vq $$0, zd<?> $$1, SocketAddress $$2, int $$3) {
-      if (PacketSentEvent.TYPE.isEnabled()) {
-         new PacketSentEvent($$0.a(), $$1.a().b(), $$1.b().toString(), $$2, $$3).commit();
-      }
-
-      if (NetworkSummaryEvent.TYPE.isEnabled()) {
-         this.a($$2).a($$3);
-      }
-   }
-
-   private NetworkSummaryEvent.b a(SocketAddress $$0) {
-      return this.n.computeIfAbsent($$0.toString(), NetworkSummaryEvent.b::new);
-   }
-
-   @Override
-   public void a(dwa $$0, dbn $$1, dvz $$2, int $$3) {
-      if (ChunkRegionReadEvent.TYPE.isEnabled()) {
-         new ChunkRegionReadEvent($$0, $$1, $$2, $$3).commit();
-      }
-   }
-
-   @Override
-   public void b(dwa $$0, dbn $$1, dvz $$2, int $$3) {
-      if (ChunkRegionWriteEvent.TYPE.isEnabled()) {
-         new ChunkRegionWriteEvent($$0, $$1, $$2, $$3).commit();
-      }
-   }
-
-   @Nullable
-   @Override
-   public bne e() {
-      if (!WorldLoadFinishedEvent.TYPE.isEnabled()) {
-         return null;
-      } else {
-         WorldLoadFinishedEvent $$0 = new WorldLoadFinishedEvent();
-         $$0.begin();
-         return $$0::commit;
-      }
-   }
-
-   @Nullable
-   @Override
-   public bne a(dbn $$0, akj<dcg> $$1, String $$2) {
-      if (!ChunkGenerationEvent.TYPE.isEnabled()) {
-         return null;
-      } else {
-         ChunkGenerationEvent $$3 = new ChunkGenerationEvent($$0, $$1, $$2);
-         $$3.begin();
-         return $$3::commit;
+      public void a(Iterator<String> $$0, long $$1) {
+         this.b += $$1;
+         if (!$$0.hasNext()) {
+            this.a += $$1;
+         } else {
+            this.c.computeIfAbsent($$0.next(), $$0x -> new bna.a()).a($$0, $$1);
+         }
       }
    }
 }

@@ -1,23 +1,26 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehj extends ehe {
-   public static final MapCodec<ehj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bor.b(ehe.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, ehj::new)
-   );
-   private final bor<ehe> b;
+public class ehj<P extends ehi> {
+   public static final ehj<ehh> a = a("straight_trunk_placer", ehh.a);
+   public static final ehj<ehe> b = a("forking_trunk_placer", ehe.a);
+   public static final ehj<ehf> c = a("giant_trunk_placer", ehf.a);
+   public static final ehj<ehg> d = a("mega_jungle_trunk_placer", ehg.b);
+   public static final ehj<ehc> e = a("dark_oak_trunk_placer", ehc.a);
+   public static final ehj<ehd> f = a("fancy_trunk_placer", ehd.a);
+   public static final ehj<eha> g = a("bending_trunk_placer", eha.a);
+   public static final ehj<ehk> h = a("upwards_branching_trunk_placer", ehk.a);
+   public static final ehj<ehb> i = a("cherry_trunk_placer", ehb.a);
+   private final MapCodec<P> j;
 
-   public ehj(bor<ehe> $$0) {
-      this.b = $$0;
+   private static <P extends ehi> ehj<P> a(String $$0, MapCodec<P> $$1) {
+      return jz.a(lt.V, $$0, new ehj<>($$1));
    }
 
-   @Override
-   public int a(ayo $$0, dzd $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   private ehj(MapCodec<P> $$0) {
+      this.j = $$0;
    }
 
-   @Override
-   public ehf<?> a() {
-      return ehf.f;
+   public MapCodec<P> a() {
+      return this.j;
    }
 }

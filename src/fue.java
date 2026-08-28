@@ -1,33 +1,37 @@
-public class fue<T extends cgv> extends fvb<T> {
-   private final fxq g = this.b.b("left_chest");
-   private final fxq h = this.b.b("right_chest");
-
-   public fue(fxq $$0) {
+public class fue extends fvr<ciu> {
+   public fue(fye $$0) {
       super($$0);
    }
 
-   public static fxw c() {
-      fxy $$0 = fvb.a(fxu.a);
-      fxz $$1 = $$0.a();
-      fxz $$2 = $$1.a("body");
-      fxv $$3 = fxv.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
-      $$2.a("left_chest", $$3, fxs.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$2.a("right_chest", $$3, fxs.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      fxz $$4 = $$1.a("head_parts").a("head");
-      fxv $$5 = fxv.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
-      $$4.a("left_ear", $$5, fxs.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
-      $$4.a("right_ear", $$5, fxs.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
-      return fxw.a($$0, 64, 64);
+   public static fyk a(fyi $$0) {
+      fym $$1 = fvr.a($$0, 0.0F);
+      fyn $$2 = $$1.a();
+      $$2.a("head", fyj.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fyg.a(0.0F, 1.0F, 0.0F));
+      $$2.a("hat", fyj.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), fyg.a(0.0F, 1.0F, 0.0F));
+      $$2.a("right_leg", fyj.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fyg.a(-1.9F, 11.0F, 0.0F));
+      $$2.a("left_leg", fyj.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fyg.a(1.9F, 11.0F, 0.0F));
+      return fyk.a($$1, 64, 32);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.t()) {
-         this.g.k = true;
-         this.h.k = true;
-      } else {
-         this.g.k = false;
-         this.h.k = false;
-      }
+   public void a(ciu $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.k.e = (float) (Math.PI / 180.0) * $$0.A().b();
+      this.k.f = (float) (Math.PI / 180.0) * $$0.A().c();
+      this.k.g = (float) (Math.PI / 180.0) * $$0.A().d();
+      this.m.e = (float) (Math.PI / 180.0) * $$0.B().b();
+      this.m.f = (float) (Math.PI / 180.0) * $$0.B().c();
+      this.m.g = (float) (Math.PI / 180.0) * $$0.B().d();
+      this.o.e = (float) (Math.PI / 180.0) * $$0.C().b();
+      this.o.f = (float) (Math.PI / 180.0) * $$0.C().c();
+      this.o.g = (float) (Math.PI / 180.0) * $$0.C().d();
+      this.n.e = (float) (Math.PI / 180.0) * $$0.D().b();
+      this.n.f = (float) (Math.PI / 180.0) * $$0.D().c();
+      this.n.g = (float) (Math.PI / 180.0) * $$0.D().d();
+      this.q.e = (float) (Math.PI / 180.0) * $$0.E().b();
+      this.q.f = (float) (Math.PI / 180.0) * $$0.E().c();
+      this.q.g = (float) (Math.PI / 180.0) * $$0.E().d();
+      this.p.e = (float) (Math.PI / 180.0) * $$0.F().b();
+      this.p.f = (float) (Math.PI / 180.0) * $$0.F().c();
+      this.p.g = (float) (Math.PI / 180.0) * $$0.F().d();
+      this.l.a(this.k);
    }
 }

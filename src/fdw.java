@@ -1,41 +1,47 @@
-public class fdw extends gvu {
-   private static final int a = 212;
-   private static final wu b = wu.c("mco.configure.world.name");
-   private static final wu c = wu.c("mco.configure.world.description");
-   private final fdf A;
-   private final fbv B;
-   private fid C;
-   private fid D;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public fdw(fdf $$0, fbv $$1) {
-      super(wu.c("mco.configure.world.settings.title"));
-      this.A = $$0;
-      this.B = $$1;
+public class fdw extends gwj {
+   private static final Logger a = LogUtils.getLogger();
+   private static final wy b = wy.c("mco.configure.world.buttons.invite");
+   private static final wy c = wy.c("mco.configure.world.invite.profile.name").b(-6250336);
+   private static final wy A = wy.c("mco.configure.world.players.inviting").b(-6250336);
+   private static final wy B = wy.c("mco.configure.world.players.error").b(-65536);
+   private final flt C = new flt(this);
+   private fip D;
+   private fig E;
+   private final fcj F;
+   private final fdr G;
+   private final fnx H;
+   @Nullable
+   private wy I;
+
+   public fdw(fdr $$0, fnx $$1, fcj $$2) {
+      super(b);
+      this.G = $$0;
+      this.H = $$1;
+      this.F = $$2;
    }
 
    @Override
    public void aP_() {
-      int $$0 = this.m / 2 - 106;
-      String $$1 = this.B.e == fbv.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
-      fhu $$2 = fhu.a(wu.c($$1), $$0x -> {
-         if (this.B.e == fbv.c.b) {
-            this.l.a(fdr.a(this, wu.c("mco.configure.world.close.question.line1"), $$0xx -> this.A.b()));
-         } else {
-            this.A.b(false);
-         }
-      }).a(this.m / 2 - 53, g(0), 106, 20).a();
-      this.c($$2);
-      this.D = new fid(this.l.h, $$0, g(4), 212, 20, wu.c("mco.configure.world.name"));
-      this.D.f(32);
-      this.D.a(this.B.b());
-      this.c(this.D);
-      this.C = new fid(this.l.h, $$0, g(8), 212, 20, wu.c("mco.configure.world.description"));
-      this.C.f(32);
-      this.C.a(this.B.a());
-      this.c(this.C);
-      fhu $$3 = this.c(fhu.a(wu.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
-      this.D.b($$1x -> $$3.j = !azd.h($$1x));
-      this.c(fhu.a(wt.e, $$0x -> this.d()).a(this.m / 2 + 2, g(12), 106, 20).a());
+      this.C.a(b, this.o);
+      flx $$0 = this.C.c(flx.d().a(8));
+      this.D = new fip(this.l.h, 200, 20, wy.c("mco.configure.world.invite.profile.name"));
+      $$0.a(flp.a(this.o, this.D, c));
+      this.E = $$0.a(fig.a(b, $$0x -> this.D()).a(200).a());
+      this.C.b(fig.a(wx.k, $$0x -> this.d()).a(200).a());
+      this.C.a($$1 -> {
+         fie var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.C.a();
    }
 
    @Override
@@ -43,20 +49,51 @@ public class fdw extends gvu {
       this.b(this.D);
    }
 
+   private void D() {
+      if (azk.h(this.D.a())) {
+         this.a(B);
+      } else {
+         long $$0 = this.F.a;
+         String $$1 = this.D.a().trim();
+         this.E.j = false;
+         this.D.e(false);
+         this.a(A);
+         CompletableFuture.<fcj>supplyAsync(() -> {
+            try {
+               return fbs.a().a($$0, $$1);
+            } catch (Exception var4) {
+               a.error("Couldn't invite user");
+               return null;
+            }
+         }, ad.h()).thenAcceptAsync($$0x -> {
+            if ($$0x != null) {
+               this.F.h = $$0x.h;
+               this.l.a(new fec(this.G, this.F));
+            } else {
+               this.a(B);
+            }
+
+            this.D.e(true);
+            this.E.j = true;
+         }, this.p);
+      }
+   }
+
+   private void a(wy $$0) {
+      this.I = $$0;
+      this.l.aV().c($$0);
+   }
+
    @Override
    public void d() {
-      this.l.a(this.A);
+      this.l.a(this.H);
    }
 
    @Override
-   public void a(fhh $$0, int $$1, int $$2, float $$3) {
+   public void a(fht $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 17, -1);
-      $$0.a(this.o, b, this.m / 2 - 106, g(3), -1, false);
-      $$0.a(this.o, c, this.m / 2 - 106, g(7), -1, false);
-   }
-
-   public void g() {
-      this.A.a(this.D.a(), this.C.a());
+      if (this.I != null) {
+         $$0.a(this.o, this.I, this.m / 2, this.E.E() + this.E.w() + 8, -1);
+      }
    }
 }

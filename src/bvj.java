@@ -1,113 +1,49 @@
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableMap;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class bvj<E extends btc> implements buw<E> {
-   private final Map<ccg<?>, cch> a;
-   private final Set<ccg<?>> b;
-   private final bvj.a c;
-   private final bvj.b d;
-   private final bxe<buw<? super E>> e = new bxe<>();
-   private buv.a f = buv.a.a;
+public class bvj extends bvf<cmi> {
+   @Nullable
+   private cog c;
 
-   public bvj(Map<ccg<?>, cch> $$0, Set<ccg<?>> $$1, bvj.a $$2, bvj.b $$3, List<Pair<? extends buw<? super E>, Integer>> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      $$4.forEach($$0x -> this.e.a((buw<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
+   public bvj(int $$0, int $$1) {
+      super(ImmutableMap.of(), $$0, $$1);
    }
 
-   @Override
-   public buv.a a() {
-      return this.f;
+   protected boolean a(aqt $$0, cmi $$1) {
+      jd $$2 = $$1.dq();
+      this.c = $$0.d($$2);
+      return this.c != null && this.c.e() && bwo.a($$0, $$1, $$2);
    }
 
-   private boolean a(E $$0) {
-      for (Entry<ccg<?>, cch> $$1 : this.a.entrySet()) {
-         ccg<?> $$2 = $$1.getKey();
-         cch $$3 = $$1.getValue();
-         if (!$$0.dV().a($$2, $$3)) {
-            return false;
-         }
+   protected boolean a(aqt $$0, cmi $$1, long $$2) {
+      return this.c != null && !this.c.d();
+   }
+
+   protected void b(aqt $$0, cmi $$1, long $$2) {
+      this.c = null;
+      $$1.dU().a($$0.aa(), $$0.Z());
+   }
+
+   protected void c(aqt $$0, cmi $$1, long $$2) {
+      ayv $$3 = $$1.dT();
+      if ($$3.a(100) == 0) {
+         $$1.gr();
       }
 
-      return true;
-   }
-
-   @Override
-   public final boolean e(aqm $$0, E $$1, long $$2) {
-      if (this.a($$1)) {
-         this.f = buv.a.b;
-         this.c.a(this.e);
-         this.d.a(this.e.b(), $$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
+      if ($$3.a(200) == 0 && bwo.a($$0, $$1, $$1.dq())) {
+         ctg $$4 = ad.a(ctg.values(), $$3);
+         int $$5 = $$3.a(3);
+         cuo $$6 = this.a($$4, $$5);
+         cni $$7 = new cni($$1.dQ(), $$1, $$1.dv(), $$1.dz(), $$1.dB(), $$6);
+         $$1.dQ().b($$7);
       }
    }
 
-   @Override
-   public final void f(aqm $$0, E $$1, long $$2) {
-      this.e.b().filter($$0x -> $$0x.a() == buv.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
-      if (this.e.b().noneMatch($$0x -> $$0x.a() == buv.a.b)) {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public final void g(aqm $$0, E $$1, long $$2) {
-      this.f = buv.a.a;
-      this.e.b().filter($$0x -> $$0x.a() == buv.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
-      this.b.forEach($$1.dV()::b);
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   @Override
-   public String toString() {
-      Set<? extends buw<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == buv.a.b).collect(Collectors.toSet());
-      return "(" + this.getClass().getSimpleName() + "): " + $$0;
-   }
-
-   public static enum a {
-      a($$0 -> {
-      }),
-      b(bxe::a);
-
-      private final Consumer<bxe<?>> c;
-
-      private a(final Consumer<bxe<?>> $$0) {
-         this.c = $$0;
-      }
-
-      public void a(bxe<?> $$0) {
-         this.c.accept($$0);
-      }
-   }
-
-   public static enum b {
-      a {
-         @Override
-         public <E extends btc> void a(Stream<buw<? super E>> $$0, aqm $$1, E $$2, long $$3) {
-            $$0.filter($$0x -> $$0x.a() == buv.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
-         }
-      },
-      b {
-         @Override
-         public <E extends btc> void a(Stream<buw<? super E>> $$0, aqm $$1, E $$2, long $$3) {
-            $$0.filter($$0x -> $$0x.a() == buv.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
-         }
-      };
-
-      public abstract <E extends btc> void a(Stream<buw<? super E>> var1, aqm var2, E var3, long var4);
+   private cuo a(ctg $$0, int $$1) {
+      cuo $$2 = new cuo(cur.uu);
+      $$2.b(kq.V, new cxk((byte)$$1, List.of(new cxj(cxj.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
+      return $$2;
    }
 }

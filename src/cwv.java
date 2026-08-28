@@ -1,131 +1,103 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
+import java.util.Map;
 import java.util.function.Consumer;
-import java.util.function.IntFunction;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
-public record cwv(cwv.a e, IntList f, IntList g, boolean h, boolean i) implements cxi {
-   public static final cwv a = new cwv(cwv.a.a, IntList.of(), IntList.of(), false, false);
-   public static final Codec<IntList> b = Codec.INT.listOf().xmap(IntArrayList::new, ArrayList::new);
-   public static final Codec<cwv> c = RecordCodecBuilder.create(
+public class cwv implements cxw {
+   public static final Codec<cwv> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cwv.a.g.fieldOf("shape").forGetter(cwv::a),
-               b.optionalFieldOf("colors", IntList.of()).forGetter(cwv::b),
-               b.optionalFieldOf("fade_colors", IntList.of()).forGetter(cwv::c),
-               Codec.BOOL.optionalFieldOf("has_trail", false).forGetter(cwv::d),
-               Codec.BOOL.optionalFieldOf("has_twinkle", false).forGetter(cwv::e)
+               cww.c.fieldOf("material").forGetter(cwv::b),
+               cwy.c.fieldOf("pattern").forGetter(cwv::a),
+               Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.f)
             )
             .apply($$0, cwv::new)
    );
-   private static final ys<ByteBuf, IntList> j = yq.f.a(yq.a()).a(IntArrayList::new, ArrayList::new);
-   public static final ys<ByteBuf, cwv> d = ys.a(cwv.a.f, cwv::a, j, cwv::b, j, cwv::c, yq.b, cwv::d, yq.b, cwv::e, cwv::new);
-   private static final wu k = wu.c("item.minecraft.firework_star.custom_color");
+   public static final yw<wj, cwv> b = yw.a(cww.d, cwv::b, cwy.d, cwv::a, yu.b, $$0 -> $$0.f, cwv::new);
+   private static final wy c = wy.c(ad.a("item", akq.b("smithing_template.upgrade"))).a(n.h);
+   private final jm<cww> d;
+   private final jm<cwy> e;
+   private final boolean f;
+   private final Function<jm<cse>, akq> g;
+   private final Function<jm<cse>, akq> h;
 
-   @Override
-   public void a(cty.b $$0, Consumer<wu> $$1, cvw $$2) {
-      this.a($$1);
-      this.b($$1);
+   private cwv(jm<cww> $$0, jm<cwy> $$1, boolean $$2, Function<jm<cse>, akq> $$3, Function<jm<cse>, akq> $$4) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
    }
 
-   public void a(Consumer<wu> $$0) {
-      $$0.accept(this.e.a().a(n.h));
+   public cwv(jm<cww> $$0, jm<cwy> $$1, boolean $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.g = ad.b($$2x -> {
+         akq $$3 = $$1.a().a();
+         String $$4 = b($$0, $$2x);
+         return $$3.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$4));
+      });
+      this.h = ad.b($$2x -> {
+         akq $$3 = $$1.a().a();
+         String $$4 = b($$0, $$2x);
+         return $$3.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$4));
+      });
+      this.f = $$2;
    }
 
-   public void b(Consumer<wu> $$0) {
-      if (!this.f.isEmpty()) {
-         $$0.accept(a(wu.i().a(n.h), this.f));
-      }
-
-      if (!this.g.isEmpty()) {
-         $$0.accept(a(wu.c("item.minecraft.firework_star.fade_to").b(wt.v).a(n.h), this.g));
-      }
-
-      if (this.h) {
-         $$0.accept(wu.c("item.minecraft.firework_star.trail").a(n.h));
-      }
-
-      if (this.i) {
-         $$0.accept(wu.c("item.minecraft.firework_star.flicker").a(n.h));
-      }
+   public cwv(jm<cww> $$0, jm<cwy> $$1) {
+      this($$0, $$1, true);
    }
 
-   private static wu a(xi $$0, IntList $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         if ($$2 > 0) {
-            $$0.f(", ");
-         }
-
-         $$0.b(a($$1.getInt($$2)));
-      }
-
-      return $$0;
+   private static String b(jm<cww> $$0, jm<cse> $$1) {
+      Map<jm<cse>, String> $$2 = $$0.a().d();
+      String $$3 = $$2.get($$1);
+      return $$3 != null ? $$3 : $$0.a().a();
    }
 
-   private static wu a(int $$0) {
-      csw $$1 = csw.b($$0);
-      return (wu)($$1 == null ? k : wu.c("item.minecraft.firework_star." + $$1.b()));
+   public boolean a(jm<cwy> $$0, jm<cww> $$1) {
+      return $$0.equals(this.e) && $$1.equals(this.d);
    }
 
-   public cwv a(IntList $$0) {
-      return new cwv(this.e, this.f, new IntArrayList($$0), this.h, this.i);
-   }
-
-   public cwv.a a() {
+   public jm<cwy> a() {
       return this.e;
    }
 
-   public IntList b() {
-      return this.f;
+   public jm<cww> b() {
+      return this.d;
    }
 
-   public IntList c() {
-      return this.g;
+   public akq a(jm<cse> $$0) {
+      return this.g.apply($$0);
    }
 
-   public boolean d() {
-      return this.h;
+   public akq b(jm<cse> $$0) {
+      return this.h.apply($$0);
    }
 
-   public boolean e() {
-      return this.i;
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof cwv $$1) ? false : this.f == $$1.f && this.e.equals($$1.e) && this.d.equals($$1.d);
    }
 
-   public static enum a implements azc {
-      a(0, "small_ball"),
-      b(1, "large_ball"),
-      c(2, "star"),
-      d(3, "creeper"),
-      e(4, "burst");
+   @Override
+   public int hashCode() {
+      int $$0 = this.d.hashCode();
+      $$0 = 31 * $$0 + this.e.hashCode();
+      return 31 * $$0 + (this.f ? 1 : 0);
+   }
 
-      private static final IntFunction<cwv.a> h = aww.a(cwv.a::b, values(), aww.a.a);
-      public static final ys<ByteBuf, cwv.a> f = yq.a(h, cwv.a::b);
-      public static final Codec<cwv.a> g = azc.b(cwv.a::values);
-      private final int i;
-      private final String j;
-
-      private a(final int $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
+   @Override
+   public void a(cuj.b $$0, Consumer<wy> $$1, cwk $$2) {
+      if (this.f) {
+         $$1.accept(c);
+         $$1.accept(wx.a().b(this.e.a().a(this.d)));
+         $$1.accept(wx.a().b(this.d.a().e()));
       }
+   }
 
-      public xi a() {
-         return wu.c("item.minecraft.firework_star.shape." + this.j);
-      }
-
-      public int b() {
-         return this.i;
-      }
-
-      public static cwv.a a(int $$0) {
-         return h.apply($$0);
-      }
-
-      @Override
-      public String c() {
-         return this.j;
-      }
+   public cwv a(boolean $$0) {
+      return new cwv(this.d, this.e, $$0, this.g, this.h);
    }
 }

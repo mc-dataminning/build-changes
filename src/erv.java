@@ -1,93 +1,30 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.function.Consumer;
 
-public class erv extends esj {
+public class erv extends esd {
    public static final MapCodec<erv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  lq.e.s().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dto::f).toList())
-               )
-            )
-            .apply($$0, erv::new)
+      $$0 -> $$0.group(akq.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, erv::new)
    );
-   private final jj<dfi> b;
-   private final Set<dto<?>> c;
+   private final akq j;
 
-   erv(List<euh> $$0, jj<dfi> $$1, Set<dto<?>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   private erv(List<euh> $$0, jj<dfi> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   private erv(akq $$0, int $$1, int $$2, List<euw> $$3, List<esz> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public esl<erv> b() {
-      return esm.D;
+   public esc a() {
+      return erz.e;
    }
 
    @Override
-   public Set<etp<?>> a() {
-      return ImmutableSet.of(ets.g);
+   public void a(Consumer<cuo> $$0, erl $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   @Override
-   protected cud a(cud $$0, eqw $$1) {
-      dsl $$2 = $$1.c(ets.g);
-      if ($$2 != null) {
-         $$0.a(kn.ab, cwn.a, $$1x -> {
-            for (dto<?> $$2x : this.c) {
-               if ($$2.b($$2x)) {
-                  $$1x = $$1x.a($$2x, $$2);
-               }
-            }
-
-            return $$1x;
-         });
-      }
-
-      return $$0;
-   }
-
-   public static erv.a a(dfi $$0) {
-      return new erv.a($$0);
-   }
-
-   public static class a extends esj.a<erv.a> {
-      private final jj<dfi> a;
-      private final Builder<dto<?>> b = ImmutableSet.builder();
-
-      a(dfi $$0) {
-         this.a = $$0.s();
-      }
-
-      public erv.a a(dto<?> $$0) {
-         if (!this.a.a().l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      protected erv.a a() {
-         return this;
-      }
-
-      @Override
-      public esk b() {
-         return new erv(this.g(), this.a, this.b.build());
-      }
+   public static esd.a<?> a(akq $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new erv($$0, $$1, $$2, $$3, $$4));
    }
 }

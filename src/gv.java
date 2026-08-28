@@ -1,113 +1,71 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
 
-public class gv implements go {
-   private final gu a;
-   private final gu b;
-   private final gu c;
+public class gv implements ArgumentType<gr> {
+   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "0.1 -0.5", "~1 ~-2");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("argument.pos2d.incomplete"));
+   private final boolean c;
 
-   public gv(gu $$0, gu $$1, gu $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public gv(boolean $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public ewh a(eq $$0) {
-      ewh $$1 = $$0.d();
-      return new ewh(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
+   public static gv a() {
+      return new gv(true);
    }
 
-   @Override
-   public ewg b(eq $$0) {
-      ewg $$1 = $$0.k();
-      return new ewg((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public static gv a(boolean $$0) {
+      return new gv($$0);
    }
 
-   @Override
-   public boolean a() {
-      return this.a.a();
+   public static ewv a(CommandContext<et> $$0, String $$1) {
+      eww $$2 = ((gr)$$0.getArgument($$1, gr.class)).a((et)$$0.getSource());
+      return new ewv((float)$$2.c, (float)$$2.e);
    }
 
-   @Override
-   public boolean b() {
-      return this.b.a();
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.a();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof gv $$1)) {
-         return false;
-      } else if (!this.a.equals($$1.a)) {
-         return false;
-      } else {
-         return !this.b.equals($$1.b) ? false : this.c.equals($$1.c);
-      }
-   }
-
-   public static gv a(StringReader $$0) throws CommandSyntaxException {
+   public gr a(StringReader $$0) throws CommandSyntaxException {
       int $$1 = $$0.getCursor();
-      gu $$2 = gu.a($$0);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         gu $$3 = gu.a($$0);
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         gx $$2 = gx.a($$0, this.c);
          if ($$0.canRead() && $$0.peek() == ' ') {
             $$0.skip();
-            gu $$4 = gu.a($$0);
-            return new gv($$2, $$3, $$4);
+            gx $$3 = gx.a($$0, this.c);
+            return new gy($$2, new gx(true, 0.0), $$3);
          } else {
             $$0.setCursor($$1);
-            throw gt.a.createWithContext($$0);
+            throw a.createWithContext($$0);
          }
-      } else {
-         $$0.setCursor($$1);
-         throw gt.a.createWithContext($$0);
       }
    }
 
-   public static gv a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      int $$2 = $$0.getCursor();
-      gu $$3 = gu.a($$0, $$1);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         gu $$4 = gu.a($$0, false);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            gu $$5 = gu.a($$0, $$1);
-            return new gv($$3, $$4, $$5);
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      if (!($$0.getSource() instanceof ey)) {
+         return Suggestions.empty();
+      } else {
+         String $$2 = $$1.getRemaining();
+         Collection<ey.b> $$3;
+         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
+            $$3 = Collections.singleton(ey.b.a);
          } else {
-            $$0.setCursor($$2);
-            throw gt.a.createWithContext($$0);
+            $$3 = ((ey)$$0.getSource()).C();
          }
-      } else {
-         $$0.setCursor($$2);
-         throw gt.a.createWithContext($$0);
+
+         return ey.b($$2, $$3, $$1, eu.a(this::a));
       }
    }
 
-   public static gv a(double $$0, double $$1, double $$2) {
-      return new gv(new gu(false, $$0), new gu(false, $$1), new gu(false, $$2));
-   }
-
-   public static gv a(ewg $$0) {
-      return new gv(new gu(false, (double)$$0.i), new gu(false, (double)$$0.j), new gu(true, 0.0));
-   }
-
-   public static gv d() {
-      return new gv(new gu(true, 0.0), new gu(true, 0.0), new gu(true, 0.0));
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public Collection<String> getExamples() {
+      return b;
    }
 }

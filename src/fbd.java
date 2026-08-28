@@ -1,73 +1,67 @@
-import com.google.common.collect.Lists;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Comparator;
-import java.util.List;
-import org.apache.commons.io.IOUtils;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public class fbd {
-   public static List<fcf> a(fbd.a... $$0) {
-      for (fbd.a $$1 : $$0) {
-         a($$1.j);
-      }
+public class fbd implements fbg {
+   private final fbg a;
+   private final Matrix4f b;
+   private final Matrix3f c;
+   private final float d;
+   private final Vector3f e = new Vector3f();
+   private final Vector3f f = new Vector3f();
+   private float g;
+   private float h;
+   private float i;
 
-      List<fcf> $$2 = Lists.newArrayList();
-
-      for (fbd.a $$3 : $$0) {
-         $$2.add(new fcf($$3.i, a($$3.j)));
-      }
-
-      $$2.sort(Comparator.comparingInt(fcf::a));
-      return $$2;
+   public fbd(fbg $$0, fbc.a $$1, float $$2) {
+      this.a = $$0;
+      this.b = new Matrix4f($$1.a()).invert();
+      this.c = new Matrix3f($$1.b()).invert();
+      this.d = $$2;
    }
 
-   private static int a(String $$0) {
-      int $$1 = 700;
-      long $$2 = 0L;
-      Socket $$3 = null;
-
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         try {
-            SocketAddress $$5 = new InetSocketAddress($$0, 80);
-            $$3 = new Socket();
-            long $$6 = b();
-            $$3.connect($$5, 700);
-            $$2 += b() - $$6;
-         } catch (Exception var12) {
-            $$2 += 700L;
-         } finally {
-            IOUtils.closeQuietly($$3);
-         }
-      }
-
-      return (int)((double)$$2 / 5.0);
+   @Override
+   public fbg a(float $$0, float $$1, float $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.a.a($$0, $$1, $$2);
+      return this;
    }
 
-   private static long b() {
-      return ac.c();
+   @Override
+   public fbg a(int $$0, int $$1, int $$2, int $$3) {
+      this.a.a(-1);
+      return this;
    }
 
-   public static List<fcf> a() {
-      return a(fbd.a.values());
+   @Override
+   public fbg a(float $$0, float $$1) {
+      return this;
    }
 
-   static enum a {
-      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
-      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
-      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
-      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
-      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
-      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
-      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
-      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
+   @Override
+   public fbg a(int $$0, int $$1) {
+      this.a.a($$0, $$1);
+      return this;
+   }
 
-      final String i;
-      final String j;
+   @Override
+   public fbg b(int $$0, int $$1) {
+      this.a.b($$0, $$1);
+      return this;
+   }
 
-      private a(final String $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
-      }
+   @Override
+   public fbg b(float $$0, float $$1, float $$2) {
+      this.a.b($$0, $$1, $$2);
+      Vector3f $$3 = this.c.transform($$0, $$1, $$2, this.f);
+      ji $$4 = ji.a($$3.x(), $$3.y(), $$3.z());
+      Vector3f $$5 = this.b.transformPosition(this.g, this.h, this.i, this.e);
+      $$5.rotateY((float) Math.PI);
+      $$5.rotateX((float) (-Math.PI / 2));
+      $$5.rotate($$4.b());
+      this.a.a(-$$5.x() * this.d, -$$5.y() * this.d);
+      return this;
    }
 }

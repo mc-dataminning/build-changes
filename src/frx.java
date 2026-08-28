@@ -1,77 +1,136 @@
-import java.util.UUID;
-import java.util.function.Supplier;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class frx extends frq<fzv.a> {
-   private static final int y = 120;
-   private static final int z = 85;
-   private static final int A = 178;
-   private static final wu B = wu.c("gui.abuseReport.skin.title");
-   private final fll C = fll.d().a(8);
-   private fim D;
-   private fhu E;
-   private fhu F;
+public class frx extends fie {
+   private static final akq b = akq.b("recipe_book/slot_many_craftable");
+   private static final akq c = akq.b("recipe_book/slot_craftable");
+   private static final akq d = akq.b("recipe_book/slot_many_uncraftable");
+   private static final akq e = akq.b("recipe_book/slot_uncraftable");
+   private static final float f = 15.0F;
+   private static final int m = 25;
+   public static final int a = 30;
+   private static final wy n = wy.c("gui.recipebook.moreRecipes");
+   private crg<?, ?> o;
+   private avr p;
+   private fry q;
+   private float r;
+   private float s;
+   private int u;
 
-   private frx(fnl $$0, fzu $$1, fzv.a $$2) {
-      super(B, $$0, $$1, $$2);
+   public frx() {
+      super(0, 0, 25, 25, wx.a);
    }
 
-   public frx(fnl $$0, fzu $$1, UUID $$2, Supplier<gqq> $$3) {
-      this($$0, $$1, new fzv.a($$2, $$3, $$1.a().b()));
+   public void a(fry $$0, frv $$1) {
+      this.q = $$0;
+      this.o = (crg<?, ?>)$$1.d().s.cd;
+      this.p = $$1.e();
+      List<cyz<?>> $$2 = $$0.a(this.p.a(this.o));
+
+      for (cyz<?> $$3 : $$2) {
+         if (this.p.d($$3)) {
+            $$1.a($$2);
+            this.s = 15.0F;
+            break;
+         }
+      }
    }
 
-   public frx(fnl $$0, fzu $$1, fzv $$2) {
-      this($$0, $$1, new fzv.a($$2, $$1.a().b()));
-   }
-
-   @Override
-   protected void aP_() {
-      this.C.c().b();
-      this.C.a(new fjb(this.k, this.o));
-      fll $$0 = this.C.a(fll.e().a(8));
-      $$0.c().e();
-      $$0.a(new fiu(85, 120, this.l.aP(), this.x.e().a()));
-      fll $$1 = $$0.a(fll.d().a(8));
-      this.F = fhu.a(c, $$0x -> this.l.a(new frw(this, this.x.h(), $$0xx -> {
-            this.x.a($$0xx);
-            this.D();
-         }))).a(178).a();
-      $$1.a(fld.a(this.o, this.F, b));
-      this.D = this.a(178, 9 * 8, $$0x -> {
-         this.x.a($$0x);
-         this.D();
-      });
-      $$1.a(fld.a(this.o, this.D, q, $$0x -> $$0x.e(12)));
-      fll $$2 = this.C.a(fll.e().a(8));
-      $$2.a(fhu.a(wt.k, $$0x -> this.d()).a(120).a());
-      this.E = $$2.a(fhu.a(a, $$0x -> this.m()).a(120).a());
-      this.C.a($$1x -> {
-         fhs var10000 = this.c($$1x);
-      });
-      this.c();
-      this.D();
+   public fry a() {
+      return this.q;
    }
 
    @Override
-   protected void c() {
-      this.C.a();
-      flf.a(this.C, this.H());
-   }
-
-   private void D() {
-      fzs $$0 = this.x.h();
-      if ($$0 != null) {
-         this.F.b($$0.b());
-      } else {
-         this.F.b(c);
+   public void b(fht $$0, int $$1, int $$2, float $$3) {
+      if (!fnx.r()) {
+         this.r += $$3;
       }
 
-      fzq.b $$1 = this.x.c();
-      this.E.j = $$1 == null;
-      this.E.a(x.a($$1, fzq.b::a));
+      akq $$4;
+      if (this.q.c()) {
+         if (this.q.a(this.p.a(this.o)).size() > 1) {
+            $$4 = b;
+         } else {
+            $$4 = c;
+         }
+      } else if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$4 = d;
+      } else {
+         $$4 = e;
+      }
+
+      boolean $$8 = this.s > 0.0F;
+      if ($$8) {
+         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.s / 15.0F * (float) Math.PI));
+         $$0.c().a();
+         $$0.c().a((float)(this.D() + 8), (float)(this.E() + 12), 0.0F);
+         $$0.c().b($$9, $$9, 1.0F);
+         $$0.c().a((float)(-(this.D() + 8)), (float)(-(this.E() + 12)), 0.0F);
+         this.s -= $$3;
+      }
+
+      $$0.a($$4, this.D(), this.E(), this.g, this.h);
+      List<cyz<?>> $$10 = this.f();
+      this.u = ayn.d(this.r / 30.0F) % $$10.size();
+      cuo $$11 = $$10.get(this.u).b().a(this.q.a());
+      int $$12 = 4;
+      if (this.q.f() && this.f().size() > 1) {
+         $$0.a($$11, this.D() + $$12 + 1, this.E() + $$12 + 1, 0, 10);
+         $$12--;
+      }
+
+      $$0.b($$11, this.D() + $$12, this.E() + $$12);
+      if ($$8) {
+         $$0.c().b();
+      }
+   }
+
+   private List<cyz<?>> f() {
+      List<cyz<?>> $$0 = this.q.b(true);
+      if (!this.p.a(this.o)) {
+         $$0.addAll(this.q.b(false));
+      }
+
+      return $$0;
+   }
+
+   public boolean b() {
+      return this.f().size() == 1;
+   }
+
+   public cyz<?> c() {
+      List<cyz<?>> $$0 = this.f();
+      return $$0.get(this.u);
+   }
+
+   public List<wy> e() {
+      cuo $$0 = this.f().get(this.u).b().a(this.q.a());
+      List<wy> $$1 = Lists.newArrayList(fnx.a(fgi.Q(), $$0));
+      if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$1.add(n);
+      }
+
+      return $$1;
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.D.b($$0, $$1, $$2);
+   public void a(fmc $$0) {
+      cuo $$1 = this.f().get(this.u).b().a(this.q.a());
+      $$0.a(fmb.a, wy.a("narration.recipe", $$1.w()));
+      if (this.q.a(this.p.a(this.o)).size() > 1) {
+         $$0.a(fmb.d, wy.c("narration.button.usage.hovered"), wy.c("narration.recipe.usage.more"));
+      } else {
+         $$0.a(fmb.d, wy.c("narration.button.usage.hovered"));
+      }
+   }
+
+   @Override
+   public int y() {
+      return 25;
+   }
+
+   @Override
+   protected boolean j(int $$0) {
+      return $$0 == 0 || $$0 == 1;
    }
 }

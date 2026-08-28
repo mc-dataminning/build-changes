@@ -1,31 +1,92 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public record cz(de.d b) {
-   public static final Codec<cz> a = RecordCodecBuilder.create($$0 -> $$0.group(de.d.d.optionalFieldOf("light", de.d.c).forGetter(cz::a)).apply($$0, cz::new));
-
-   public boolean a(aqm $$0, ja $$1) {
-      return !$$0.p($$1) ? false : this.b.d($$0.A($$1));
+public class cz extends dv<cz.a> {
+   @Override
+   public Codec<cz.a> a() {
+      return cz.a.a;
    }
 
-   public de.d a() {
-      return this.b;
+   public void a(aqu $$0, Collection<bsq> $$1) {
+      List<erl> $$2 = Lists.newArrayList();
+      Set<bsw<?>> $$3 = Sets.newHashSet();
+
+      for (bsq $$4 : $$1) {
+         $$3.add($$4.am());
+         $$2.add(bv.b($$0, $$4));
+      }
+
+      this.a($$0, $$2x -> $$2x.a($$2, $$3.size()));
    }
 
-   public static class a {
-      private de.d a = de.d.c;
+   public static record a(Optional<bg> b, List<bg> c, dh.d d) implements dv.a {
+      public static final Codec<cz.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bv.b.optionalFieldOf("player").forGetter(cz.a::a),
+                  bv.b.listOf().optionalFieldOf("victims", List.of()).forGetter(cz.a::b),
+                  dh.d.d.optionalFieldOf("unique_entity_types", dh.d.c).forGetter(cz.a::c)
+               )
+               .apply($$0, cz.a::new)
+      );
 
-      public static cz.a a() {
-         return new cz.a();
+      public static ao<cz.a> a(bv.a... $$0) {
+         return an.H.a(new cz.a(Optional.empty(), bv.a($$0), dh.d.c));
       }
 
-      public cz.a a(de.d $$0) {
-         this.a = $$0;
-         return this;
+      public static ao<cz.a> a(dh.d $$0) {
+         return an.H.a(new cz.a(Optional.empty(), List.of(), $$0));
       }
 
-      public cz b() {
-         return new cz(this.a);
+      public boolean a(Collection<erl> $$0, int $$1) {
+         if (!this.c.isEmpty()) {
+            List<erl> $$2 = Lists.newArrayList($$0);
+
+            for (bg $$3 : this.c) {
+               boolean $$4 = false;
+               Iterator<erl> $$5 = $$2.iterator();
+
+               while ($$5.hasNext()) {
+                  erl $$6 = $$5.next();
+                  if ($$3.a($$6)) {
+                     $$5.remove();
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  return false;
+               }
+            }
+         }
+
+         return this.d.d($$1);
+      }
+
+      @Override
+      public void a(bh $$0) {
+         dv.a.super.a($$0);
+         $$0.a(this.c, ".victims");
+      }
+
+      @Override
+      public Optional<bg> a() {
+         return this.b;
+      }
+
+      public List<bg> b() {
+         return this.c;
+      }
+
+      public dh.d c() {
+         return this.d;
       }
    }
 }

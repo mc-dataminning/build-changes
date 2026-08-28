@@ -1,84 +1,42 @@
-public abstract class eiv extends ejb {
-   protected final int a;
-   protected final int b;
-   protected final int c;
-   protected int d = -1;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-   protected eiv(ejo $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, jf $$7) {
-      super($$0, 0, ejb.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
-      this.a = $$4;
-      this.b = $$5;
-      this.c = $$6;
-      this.a($$7);
+public class eiv extends eit {
+   public static final MapCodec<eiv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bpv.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bpv.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+            .apply($$0, eiv::new)
+   );
+   private final bpv c;
+   private final bpv d;
+
+   public static eiv a(bpv $$0, bpv $$1) {
+      return new eiv($$0, $$1);
    }
 
-   protected eiv(ejo $$0, tx $$1) {
-      super($$0, $$1);
-      this.a = $$1.h("Width");
-      this.b = $$1.h("Height");
-      this.c = $$1.h("Depth");
-      this.d = $$1.h("HPos");
+   public static eiv a(bpv $$0) {
+      return new eiv(bps.a(0), $$0);
+   }
+
+   public static eiv b(bpv $$0) {
+      return new eiv($$0, bps.a(0));
+   }
+
+   private eiv(bpv $$0, bpv $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected void a(ejn $$0, tx $$1) {
-      $$1.a("Width", this.a);
-      $$1.a("Height", this.b);
-      $$1.a("Depth", this.c);
-      $$1.a("HPos", this.d);
+   public Stream<jd> a_(eir $$0, ayv $$1, jd $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new jd($$3, $$4, $$5));
    }
 
-   protected boolean a(dch $$0, eip $$1, int $$2) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$3 = 0;
-         int $$4 = 0;
-         ja.a $$5 = new ja.a();
-
-         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
-            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
-               $$5.d($$7, 64, $$6);
-               if ($$1.b($$5)) {
-                  $$3 += $$0.a(dyg.a.f, $$5).v();
-                  $$4++;
-               }
-            }
-         }
-
-         if ($$4 == 0) {
-            return false;
-         } else {
-            this.d = $$3 / $$4;
-            this.f.a(0, this.d - this.f.i() + $$2, 0);
-            return true;
-         }
-      }
-   }
-
-   protected boolean a(dch $$0, int $$1) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$2 = $$0.am();
-         boolean $$3 = false;
-         ja.a $$4 = new ja.a();
-
-         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
-            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
-               $$4.d($$6, 0, $$5);
-               $$2 = Math.min($$2, $$0.a(dyg.a.f, $$4).v());
-               $$3 = true;
-            }
-         }
-
-         if (!$$3) {
-            return false;
-         } else {
-            this.d = $$2;
-            this.f.a(0, this.d - this.f.i() + $$1, 0);
-            return true;
-         }
-      }
+   @Override
+   public eiu<?> b() {
+      return eiu.n;
    }
 }

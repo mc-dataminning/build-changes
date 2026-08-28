@@ -1,25 +1,133 @@
-public enum dtq implements azc {
-   a("up"),
-   b("side"),
-   c("none");
-
-   private final String d;
-
-   private dtq(final String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
-   }
-
-   @Override
-   public String c() {
-      return this.d;
-   }
-
-   public boolean a() {
-      return this != c;
-   }
+public class dtq {
+   public static final dtr a = dtr.a("attached");
+   public static final dtr b = dtr.a("bottom");
+   public static final dtr c = dtr.a("conditional");
+   public static final dtr d = dtr.a("disarmed");
+   public static final dtr e = dtr.a("drag");
+   public static final dtr f = dtr.a("enabled");
+   public static final dtr g = dtr.a("extended");
+   public static final dtr h = dtr.a("eye");
+   public static final dtr i = dtr.a("falling");
+   public static final dtr j = dtr.a("hanging");
+   public static final dtr k = dtr.a("has_bottle_0");
+   public static final dtr l = dtr.a("has_bottle_1");
+   public static final dtr m = dtr.a("has_bottle_2");
+   public static final dtr n = dtr.a("has_record");
+   public static final dtr o = dtr.a("has_book");
+   public static final dtr p = dtr.a("inverted");
+   public static final dtr q = dtr.a("in_wall");
+   public static final dtr r = dtr.a("lit");
+   public static final dtr s = dtr.a("locked");
+   public static final dtr t = dtr.a("occupied");
+   public static final dtr u = dtr.a("open");
+   public static final dtr v = dtr.a("persistent");
+   public static final dtr w = dtr.a("powered");
+   public static final dtr x = dtr.a("short");
+   public static final dtr y = dtr.a("signal_fire");
+   public static final dtr z = dtr.a("snowy");
+   public static final dtr A = dtr.a("triggered");
+   public static final dtr B = dtr.a("unstable");
+   public static final dtr C = dtr.a("waterlogged");
+   public static final dtr D = dtr.a("berries");
+   public static final dtr E = dtr.a("bloom");
+   public static final dtr F = dtr.a("shrieking");
+   public static final dtr G = dtr.a("can_summon");
+   public static final dty<ji.a> H = dty.a("axis", ji.a.class, ji.a.a, ji.a.c);
+   public static final dty<ji.a> I = dty.a("axis", ji.a.class);
+   public static final dtr J = dtr.a("up");
+   public static final dtr K = dtr.a("down");
+   public static final dtr L = dtr.a("north");
+   public static final dtr M = dtr.a("east");
+   public static final dtr N = dtr.a("south");
+   public static final dtr O = dtr.a("west");
+   public static final dtu P = dtu.a("facing", ji.c, ji.f, ji.d, ji.e, ji.b, ji.a);
+   public static final dtu Q = dtu.a("facing", $$0 -> $$0 != ji.b);
+   public static final dtu R = dtu.a("facing", ji.c.a);
+   public static final dua S = dua.a("flower_amount", 1, 4);
+   public static final dty<jk> T = dty.a("orientation", jk.class);
+   public static final dty<dtl> U = dty.a("face", dtl.class);
+   public static final dty<dto> V = dty.a("attachment", dto.class);
+   public static final dty<dum> W = dty.a("east", dum.class);
+   public static final dty<dum> X = dty.a("north", dum.class);
+   public static final dty<dum> Y = dty.a("south", dum.class);
+   public static final dty<dum> Z = dty.a("west", dum.class);
+   public static final dty<duf> aa = dty.a("east", duf.class);
+   public static final dty<duf> ab = dty.a("north", duf.class);
+   public static final dty<duf> ac = dty.a("south", duf.class);
+   public static final dty<duf> ad = dty.a("west", duf.class);
+   public static final dty<dtw> ae = dty.a("half", dtw.class);
+   public static final dty<dtz> af = dty.a("half", dtz.class);
+   public static final dty<due> ag = dty.a("shape", due.class);
+   public static final dty<due> ah = dty.a("shape", due.class, $$0 -> $$0 != due.j && $$0 != due.i && $$0 != due.g && $$0 != due.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dua aq = dua.a("age", 0, 1);
+   public static final dua ar = dua.a("age", 0, 2);
+   public static final dua as = dua.a("age", 0, 3);
+   public static final dua at = dua.a("age", 0, 4);
+   public static final dua au = dua.a("age", 0, 5);
+   public static final dua av = dua.a("age", 0, 7);
+   public static final dua aw = dua.a("age", 0, 15);
+   public static final dua ax = dua.a("age", 0, 25);
+   public static final dua ay = dua.a("bites", 0, 6);
+   public static final dua az = dua.a("candles", 1, 4);
+   public static final dua aA = dua.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dua aC = dua.a("distance", 1, 7);
+   public static final dua aD = dua.a("eggs", 1, 4);
+   public static final dua aE = dua.a("hatch", 0, 2);
+   public static final dua aF = dua.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dua aK = dua.a("level", 1, 3);
+   public static final dua aL = dua.a("level", 0, 8);
+   public static final dua aM = dua.a("level", 1, 8);
+   public static final dua aN = dua.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dua aP = dua.a("level", 0, 15);
+   public static final dua aQ = dua.a("moisture", 0, 7);
+   public static final dua aR = dua.a("note", 0, 24);
+   public static final dua aS = dua.a("pickles", 1, 4);
+   public static final dua aT = dua.a("power", 0, 15);
+   public static final dua aU = dua.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dua aW = dua.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dua aZ = dua.a("charges", 0, 4);
+   public static final dua ba = dua.a("rotation", 0, dug.a());
+   public static final dty<dtn> bb = dty.a("part", dtn.class);
+   public static final dty<dts> bc = dty.a("type", dts.class);
+   public static final dty<dtt> bd = dty.a("mode", dtt.class);
+   public static final dty<dtv> be = dty.a("hinge", dtv.class);
+   public static final dty<dub> bf = dty.a("instrument", dub.class);
+   public static final dty<duc> bg = dty.a("type", duc.class);
+   public static final dty<dui> bh = dty.a("type", dui.class);
+   public static final dty<duj> bi = dty.a("shape", duj.class);
+   public static final dty<duk> bj = dty.a("mode", duk.class);
+   public static final dty<dtm> bk = dty.a("leaves", dtm.class);
+   public static final dty<dul> bl = dty.a("tilt", dul.class);
+   public static final dtu bm = dtu.a("vertical_direction", ji.b, ji.a);
+   public static final dty<dtx> bn = dty.a("thickness", dtx.class);
+   public static final dty<duh> bo = dty.a("sculk_sensor_phase", duh.class);
+   public static final dtr bp = dtr.a("slot_0_occupied");
+   public static final dtr bq = dtr.a("slot_1_occupied");
+   public static final dtr br = dtr.a("slot_2_occupied");
+   public static final dtr bs = dtr.a("slot_3_occupied");
+   public static final dtr bt = dtr.a("slot_4_occupied");
+   public static final dtr bu = dtr.a("slot_5_occupied");
+   public static final dua bv = dua.a("dusted", 0, 3);
+   public static final dtr bw = dtr.a("cracked");
+   public static final dtr bx = dtr.a("crafting");
+   public static final dty<dsg> by = dty.a("trial_spawner_state", dsg.class);
+   public static final dty<dsn> bz = dty.a("vault_state", dsn.class);
+   public static final dtr bA = dtr.a("ominous");
 }

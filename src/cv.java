@@ -1,66 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Predicate;
 
-public record cv(Optional<bc<ard<wu>, cv.a>> c, Optional<String> d, Optional<String> e, de.d f, Optional<Boolean> g) implements dt<cxl> {
+public record cv(Optional<jq<cww>> c, Optional<jq<cwy>> d) implements dw<cwv> {
    public static final Codec<cv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               bc.a(cv.a.a).optionalFieldOf("pages").forGetter(cv::b),
-               Codec.STRING.optionalFieldOf("author").forGetter(cv::c),
-               Codec.STRING.optionalFieldOf("title").forGetter(cv::d),
-               de.d.d.optionalFieldOf("generation", de.d.c).forGetter(cv::e),
-               Codec.BOOL.optionalFieldOf("resolved").forGetter(cv::f)
-            )
-            .apply($$0, cv::new)
+      $$0 -> $$0.group(kb.a(lu.aW).optionalFieldOf("material").forGetter(cv::b), kb.a(lu.aX).optionalFieldOf("pattern").forGetter(cv::c)).apply($$0, cv::new)
    );
 
    @Override
-   public km<cxl> a() {
-      return kn.J;
+   public kp<cwv> a() {
+      return kq.K;
    }
 
-   public boolean a(cud $$0, cxl $$1) {
-      if (this.d.isPresent() && !this.d.get().equals($$1.e())) {
-         return false;
-      } else if (this.e.isPresent() && !this.e.get().equals($$1.d().a())) {
-         return false;
-      } else if (!this.f.d($$1.f())) {
-         return false;
-      } else {
-         return this.g.isPresent() && this.g.get() != $$1.g() ? false : !this.c.isPresent() || this.c.get().a($$1.a());
-      }
+   public boolean a(cuo $$0, cwv $$1) {
+      return this.c.isPresent() && !this.c.get().a($$1.b()) ? false : !this.d.isPresent() || this.d.get().a($$1.a());
    }
 
-   public Optional<bc<ard<wu>, cv.a>> b() {
+   public Optional<jq<cww>> b() {
       return this.c;
    }
 
-   public Optional<String> c() {
+   public Optional<jq<cwy>> c() {
       return this.d;
-   }
-
-   public Optional<String> d() {
-      return this.e;
-   }
-
-   public de.d e() {
-      return this.f;
-   }
-
-   public Optional<Boolean> f() {
-      return this.g;
-   }
-
-   public static record a(wu b) implements Predicate<ard<wu>> {
-      public static final Codec<cv.a> a = ww.a.xmap(cv.a::new, cv.a::a);
-
-      public boolean a(ard<wu> $$0) {
-         return $$0.a().equals(this.b);
-      }
-
-      public wu a() {
-         return this.b;
-      }
    }
 }

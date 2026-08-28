@@ -1,11 +1,11 @@
 import java.util.function.IntFunction;
 
-public enum fgb implements ayj {
-   a(0, "options.particles.all"),
-   b(1, "options.particles.decreased"),
-   c(2, "options.particles.minimal");
+public enum fgb implements ayq {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
 
-   private static final IntFunction<fgb> d = aww.a(fgb::a, values(), aww.a.b);
+   private static final IntFunction<fgb> d = axd.a(fgb::a, values(), axd.a.b);
    private final int e;
    private final String f;
 
@@ -15,13 +15,22 @@ public enum fgb implements ayj {
    }
 
    @Override
+   public int a() {
+      return this.e;
+   }
+
+   @Override
    public String b() {
       return this.f;
    }
 
    @Override
-   public int a() {
-      return this.e;
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
+      };
    }
 
    public static fgb a(int $$0) {

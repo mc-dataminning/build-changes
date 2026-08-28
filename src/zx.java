@@ -1,42 +1,26 @@
-import java.util.UUID;
+public class zx {
+   public static final zh<zm> a = a("custom_payload");
+   public static final zh<zn> b = a("custom_report_details");
+   public static final zh<zo> c = a("disconnect");
+   public static final zh<zp> d = a("keep_alive");
+   public static final zh<zq> e = a("ping");
+   public static final zh<zr> f = a("resource_pack_pop");
+   public static final zh<zs> g = a("resource_pack_push");
+   public static final zh<zt> h = a("server_links");
+   public static final zh<zu> i = a("store_cookie");
+   public static final zh<zv> j = a("transfer");
+   public static final zh<zw> k = a("update_tags");
+   public static final zh<zz> l = b("client_information");
+   public static final zh<aaa> m = b("custom_payload");
+   public static final zh<aab> n = b("keep_alive");
+   public static final zh<aac> o = b("pong");
+   public static final zh<aad> p = b("resource_pack");
 
-public record zx(UUID b, zx.a c) implements zb<zs> {
-   public static final ys<vr, zx> a = zb.a(zx::a, zx::new);
-
-   private zx(vr $$0) {
-      this($$0.n(), $$0.b(zx.a.class));
+   private static <T extends zf<zl>> zh<T> a(String $$0) {
+      return new zh<>(zg.b, akq.b($$0));
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
-
-   @Override
-   public zd<zx> a() {
-      return zr.n;
-   }
-
-   public void a(zs $$0) {
-      $$0.a(this);
-   }
-
-   public zx.a e() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      public boolean a() {
-         return this != d && this != e;
-      }
+   private static <T extends zf<zy>> zh<T> b(String $$0) {
+      return new zh<>(zg.a, akq.b($$0));
    }
 }

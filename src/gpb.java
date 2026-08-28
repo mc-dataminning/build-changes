@@ -1,72 +1,43 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.util.concurrent.Executor;
+import java.util.List;
 
-public abstract class gpb implements AutoCloseable {
-   public static final int a = -1;
-   protected int b = -1;
-   protected boolean c;
-   protected boolean d;
+public class gpb<T extends clz, M extends fxq<T>> extends gop<T, M> {
+   private final akq a;
+   private final gpb.a<T> b;
+   private final gpb.b<T, M> c;
 
-   public void a(boolean $$0, boolean $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.c = $$0;
-      this.d = $$1;
-      int $$2;
-      int $$3;
-      if ($$0) {
-         $$2 = $$1 ? 9987 : 9729;
-         $$3 = 9729;
-      } else {
-         $$2 = $$1 ? 9986 : 9728;
-         $$3 = 9728;
-      }
-
-      this.c();
-      GlStateManager._texParameter(3553, 10241, $$2);
-      GlStateManager._texParameter(3553, 10240, $$3);
+   public gpb(glz<T, M> $$0, akq $$1, gpb.a<T> $$2, gpb.b<T, M> $$3) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public int a() {
-      RenderSystem.assertOnRenderThreadOrInit();
-      if (this.b == -1) {
-         this.b = TextureUtil.generateTextureId();
-      }
-
-      return this.b;
-   }
-
-   public void b() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            if (this.b != -1) {
-               TextureUtil.releaseTextureId(this.b);
-               this.b = -1;
-            }
-         });
-      } else if (this.b != -1) {
-         TextureUtil.releaseTextureId(this.b);
-         this.b = -1;
+   public void a(fbc $$0, get $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ci()) {
+         this.a();
+         fbg $$10 = $$1.getBuffer(gfb.j(this.a));
+         float $$11 = this.b.apply($$3, $$6, $$7);
+         int $$12 = axx.b.a(ayn.d($$11 * 255.0F), 255, 255, 255);
+         this.c().a($$0, $$10, $$2, gle.c($$3, 0.0F), $$12);
+         this.b();
       }
    }
 
-   public abstract void a(atw var1) throws IOException;
-
-   public void c() {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
-      } else {
-         GlStateManager._bindTexture(this.a());
-      }
+   private void a() {
+      List<fye> $$0 = this.c.getPartsToDraw(this.c());
+      this.c().a().e().forEach($$0x -> $$0x.l = true);
+      $$0.forEach($$0x -> $$0x.l = false);
    }
 
-   public void a(gpr $$0, atw $$1, akk $$2, Executor $$3) {
-      $$0.a($$2, this);
+   private void b() {
+      this.c().a().e().forEach($$0 -> $$0.l = false);
    }
 
-   @Override
-   public void close() {
+   public interface a<T extends clz> {
+      float apply(T var1, float var2, float var3);
+   }
+
+   public interface b<T extends clz, M extends fve<T>> {
+      List<fye> getPartsToDraw(M var1);
    }
 }

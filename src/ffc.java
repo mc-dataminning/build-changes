@@ -1,34 +1,35 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class ffc extends fev {
+public class ffc extends ffh {
    private static final Logger b = LogUtils.getLogger();
-   private static final wu c = wu.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final fcm e;
-   private final fdf f;
+   private static final wy c = wy.c("mco.configure.world.closing");
+   private final fcj d;
+   private final fdr e;
 
-   public ffc(long $$0, fcm $$1, fdf $$2) {
+   public ffc(fcj $$0, fdr $$1) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$2;
    }
 
    @Override
    public void run() {
-      fbe $$0 = fbe.a();
+      fbs $$0 = fbs.a();
 
       for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
+         if (this.d()) {
+            return;
+         }
 
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.f();
+               this.d.e = fcj.c.a;
+               a(this.e);
                break;
             }
-         } catch (fcs var4) {
+         } catch (fde var4) {
             if (this.d()) {
                return;
             }
@@ -39,14 +40,14 @@ public class ffc extends fev {
                return;
             }
 
-            b.error("Couldn't start mini game!");
+            b.error("Failed to close server", var5);
             this.a(var5);
          }
       }
    }
 
    @Override
-   public wu a() {
+   public wy a() {
       return c;
    }
 }

@@ -1,52 +1,59 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Predicate;
 
-public record cm(cm.a c) implements dt<cwv> {
-   public static final Codec<cm> a = cm.a.a.xmap(cm::new, cm::b);
-
+public class cm extends dv<cm.a> {
    @Override
-   public km<cwv> a() {
-      return kn.T;
+   public Codec<cm.a> a() {
+      return cm.a.a;
    }
 
-   public boolean a(cud $$0, cwv $$1) {
-      return this.c.a($$1);
+   public void a(aqu $$0, cuo $$1, int $$2) {
+      this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
-   public cm.a b() {
-      return this.c;
-   }
-
-   public static record a(Optional<cwv.a> b, Optional<Boolean> c, Optional<Boolean> d) implements Predicate<cwv> {
+   public static record a(Optional<bg> b, Optional<cs> c, dh.d d, dh.d e) implements dv.a {
       public static final Codec<cm.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  cwv.a.g.optionalFieldOf("shape").forGetter(cm.a::a),
-                  Codec.BOOL.optionalFieldOf("has_twinkle").forGetter(cm.a::b),
-                  Codec.BOOL.optionalFieldOf("has_trail").forGetter(cm.a::c)
+                  bv.b.optionalFieldOf("player").forGetter(cm.a::a),
+                  cs.a.optionalFieldOf("item").forGetter(cm.a::b),
+                  dh.d.d.optionalFieldOf("durability", dh.d.c).forGetter(cm.a::c),
+                  dh.d.d.optionalFieldOf("delta", dh.d.c).forGetter(cm.a::d)
                )
                .apply($$0, cm.a::new)
       );
 
-      public boolean a(cwv $$0) {
-         if (this.b.isPresent() && this.b.get() != $$0.a()) {
+      public static ao<cm.a> a(Optional<cs> $$0, dh.d $$1) {
+         return a(Optional.empty(), $$0, $$1);
+      }
+
+      public static ao<cm.a> a(Optional<bg> $$0, Optional<cs> $$1, dh.d $$2) {
+         return an.u.a(new cm.a($$0, $$1, $$2, dh.d.c));
+      }
+
+      public boolean a(cuo $$0, int $$1) {
+         if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
          } else {
-            return this.c.isPresent() && this.c.get() != $$0.e() ? false : !this.d.isPresent() || this.d.get() == $$0.d();
+            return !this.d.d($$0.o() - $$1) ? false : this.e.d($$0.n() - $$1);
          }
       }
 
-      public Optional<cwv.a> a() {
+      @Override
+      public Optional<bg> a() {
          return this.b;
       }
 
-      public Optional<Boolean> b() {
+      public Optional<cs> b() {
          return this.c;
       }
 
-      public Optional<Boolean> c() {
+      public dh.d c() {
          return this.d;
+      }
+
+      public dh.d d() {
+         return this.e;
       }
    }
 }

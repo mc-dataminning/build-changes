@@ -1,87 +1,166 @@
-import com.google.gson.JsonElement;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
 public class od {
-   public static final od.a a = a(ob::a, oa.c);
-   public static final od.a b = a(ob::a, oa.d);
-   public static final od.a c = a(ob::a, oa.e);
-   public static final od.a d = a(ob::k, oa.j);
-   public static final od.a e = a(ob::k, oa.k);
-   public static final od.a f = a(ob::q, oa.n);
-   public static final od.a g = a(ob::l, oa.m);
-   public static final od.a h = a(ob::B, oa.p);
-   public static final od.a i = a(ob::A, oa.q);
-   public static final od.a j = a(ob::f, oa.aw);
-   public static final od.a k = a(ob::g, oa.ax);
-   public static final od.a l = a(ob::g, oa.ay);
-   public static final od.a m = a(ob::g, oa.az);
-   public static final od.a n = a(ob::g, oa.aA);
-   public static final od.a o = a(ob::i, oa.aD);
-   public static final od.a p = a(ob::j, oa.aB);
-   public static final od.a q = a(ob::u, oa.aa);
-   public static final od.a r = a(ob::D, oa.aS);
-   public static final od.a s = a(ob::a, oa.ad);
-   public static final od.a t = a(ob::x, oa.bd);
-   public static final od.a u = a(ob::x, oa.be);
-   public static final od.a v = a(ob::b, oa.bk);
-   public static final od.a w = a(ob::n, oa.j);
-   public static final od.a x = a(ob::n, oa.k);
-   public static final od.a y = a(ob::r, oa.n);
-   public static final od.a z = a(ob::s, oa.j);
-   private final ob A;
-   private final nz B;
+   public static final oc a = a("cube", of.c, of.j, of.k, of.l, of.m, of.n, of.o);
+   public static final oc b = a("cube_directional", of.c, of.j, of.k, of.l, of.m, of.n, of.o);
+   public static final oc c = a("cube_all", of.a);
+   public static final oc d = a("cube_all_inner_faces", of.a);
+   public static final oc e = a("cube_mirrored_all", "_mirrored", of.a);
+   public static final oc f = a("cube_north_west_mirrored_all", "_north_west_mirrored", of.a);
+   public static final oc g = a("cube_column_uv_locked_x", "_x", of.d, of.i);
+   public static final oc h = a("cube_column_uv_locked_y", "_y", of.d, of.i);
+   public static final oc i = a("cube_column_uv_locked_z", "_z", of.d, of.i);
+   public static final oc j = a("cube_column", of.d, of.i);
+   public static final oc k = a("cube_column_horizontal", "_horizontal", of.d, of.i);
+   public static final oc l = a("cube_column_mirrored", "_mirrored", of.d, of.i);
+   public static final oc m = a("cube_top", of.f, of.i);
+   public static final oc n = a("cube_bottom_top", of.f, of.e, of.i);
+   public static final oc o = a("cube_bottom_top_inner_faces", of.f, of.e, of.i);
+   public static final oc p = a("orientable", of.f, of.g, of.i);
+   public static final oc q = a("orientable_with_bottom", of.f, of.e, of.i, of.g);
+   public static final oc r = a("orientable_vertical", "_vertical", of.g, of.i);
+   public static final oc s = a("button", of.b);
+   public static final oc t = a("button_pressed", "_pressed", of.b);
+   public static final oc u = a("button_inventory", "_inventory", of.b);
+   public static final oc v = a("door_bottom_left", "_bottom_left", of.f, of.e);
+   public static final oc w = a("door_bottom_left_open", "_bottom_left_open", of.f, of.e);
+   public static final oc x = a("door_bottom_right", "_bottom_right", of.f, of.e);
+   public static final oc y = a("door_bottom_right_open", "_bottom_right_open", of.f, of.e);
+   public static final oc z = a("door_top_left", "_top_left", of.f, of.e);
+   public static final oc A = a("door_top_left_open", "_top_left_open", of.f, of.e);
+   public static final oc B = a("door_top_right", "_top_right", of.f, of.e);
+   public static final oc C = a("door_top_right_open", "_top_right_open", of.f, of.e);
+   public static final oc D = a("custom_fence_post", "_post", of.b, of.c);
+   public static final oc E = a("custom_fence_side_north", "_side_north", of.b);
+   public static final oc F = a("custom_fence_side_east", "_side_east", of.b);
+   public static final oc G = a("custom_fence_side_south", "_side_south", of.b);
+   public static final oc H = a("custom_fence_side_west", "_side_west", of.b);
+   public static final oc I = a("custom_fence_inventory", "_inventory", of.b);
+   public static final oc J = a("fence_post", "_post", of.b);
+   public static final oc K = a("fence_side", "_side", of.b);
+   public static final oc L = a("fence_inventory", "_inventory", of.b);
+   public static final oc M = a("template_wall_post", "_post", of.r);
+   public static final oc N = a("template_wall_side", "_side", of.r);
+   public static final oc O = a("template_wall_side_tall", "_side_tall", of.r);
+   public static final oc P = a("wall_inventory", "_inventory", of.r);
+   public static final oc Q = a("template_custom_fence_gate", of.b, of.c);
+   public static final oc R = a("template_custom_fence_gate_open", "_open", of.b, of.c);
+   public static final oc S = a("template_custom_fence_gate_wall", "_wall", of.b, of.c);
+   public static final oc T = a("template_custom_fence_gate_wall_open", "_wall_open", of.b, of.c);
+   public static final oc U = a("template_fence_gate", of.b);
+   public static final oc V = a("template_fence_gate_open", "_open", of.b);
+   public static final oc W = a("template_fence_gate_wall", "_wall", of.b);
+   public static final oc X = a("template_fence_gate_wall_open", "_wall_open", of.b);
+   public static final oc Y = a("pressure_plate_up", of.b);
+   public static final oc Z = a("pressure_plate_down", "_down", of.b);
+   public static final oc aa = a(of.c);
+   public static final oc ab = a("slab", of.e, of.f, of.i);
+   public static final oc ac = a("slab_top", "_top", of.e, of.f, of.i);
+   public static final oc ad = a("leaves", of.a);
+   public static final oc ae = a("stairs", of.e, of.f, of.i);
+   public static final oc af = a("inner_stairs", "_inner", of.e, of.f, of.i);
+   public static final oc ag = a("outer_stairs", "_outer", of.e, of.f, of.i);
+   public static final oc ah = a("template_trapdoor_top", "_top", of.b);
+   public static final oc ai = a("template_trapdoor_bottom", "_bottom", of.b);
+   public static final oc aj = a("template_trapdoor_open", "_open", of.b);
+   public static final oc ak = a("template_orientable_trapdoor_top", "_top", of.b);
+   public static final oc al = a("template_orientable_trapdoor_bottom", "_bottom", of.b);
+   public static final oc am = a("template_orientable_trapdoor_open", "_open", of.b);
+   public static final oc an = a("pointed_dripstone", of.p);
+   public static final oc ao = a("cross", of.p);
+   public static final oc ap = a("tinted_cross", of.p);
+   public static final oc aq = a("flower_pot_cross", of.q);
+   public static final oc ar = a("tinted_flower_pot_cross", of.q);
+   public static final oc as = a("rail_flat", of.s);
+   public static final oc at = a("rail_curved", "_corner", of.s);
+   public static final oc au = a("template_rail_raised_ne", "_raised_ne", of.s);
+   public static final oc av = a("template_rail_raised_sw", "_raised_sw", of.s);
+   public static final oc aw = a("carpet", of.t);
+   public static final oc ax = a("flowerbed_1", "_1", of.P, of.y);
+   public static final oc ay = a("flowerbed_2", "_2", of.P, of.y);
+   public static final oc az = a("flowerbed_3", "_3", of.P, of.y);
+   public static final oc aA = a("flowerbed_4", "_4", of.P, of.y);
+   public static final oc aB = a("coral_fan", of.x);
+   public static final oc aC = a("coral_wall_fan", of.x);
+   public static final oc aD = a("template_glazed_terracotta", of.u);
+   public static final oc aE = a("template_chorus_flower", of.b);
+   public static final oc aF = a("template_daylight_detector", of.f, of.i);
+   public static final oc aG = a("template_glass_pane_noside", "_noside", of.v);
+   public static final oc aH = a("template_glass_pane_noside_alt", "_noside_alt", of.v);
+   public static final oc aI = a("template_glass_pane_post", "_post", of.v, of.w);
+   public static final oc aJ = a("template_glass_pane_side", "_side", of.v, of.w);
+   public static final oc aK = a("template_glass_pane_side_alt", "_side_alt", of.v, of.w);
+   public static final oc aL = a("template_command_block", of.g, of.h, of.i);
+   public static final oc aM = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", of.b);
+   public static final oc aN = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", of.b);
+   public static final oc aO = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", of.b);
+   public static final oc aP = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", of.b);
+   public static final oc aQ = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", of.b);
+   public static final oc aR = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", of.b);
+   public static final oc aS = a("template_anvil", of.f);
+   public static final oc[] aT = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, of.y)).toArray(oc[]::new);
+   public static final oc aU = a("stem_fruit", of.y, of.z);
+   public static final oc aV = a("crop", of.A);
+   public static final oc aW = a("template_farmland", of.B, of.f);
+   public static final oc aX = a("template_fire_floor", of.C);
+   public static final oc aY = a("template_fire_side", of.C);
+   public static final oc aZ = a("template_fire_side_alt", of.C);
+   public static final oc ba = a("template_fire_up", of.C);
+   public static final oc bb = a("template_fire_up_alt", of.C);
+   public static final oc bc = a("template_campfire", of.C, of.K);
+   public static final oc bd = a("template_lantern", of.D);
+   public static final oc be = a("template_hanging_lantern", "_hanging", of.D);
+   public static final oc bf = a("template_torch", of.G);
+   public static final oc bg = a("template_torch_wall", of.G);
+   public static final oc bh = a("template_piston", of.E, of.e, of.i);
+   public static final oc bi = a("template_piston_head", of.E, of.i, of.F);
+   public static final oc bj = a("template_piston_head_short", of.E, of.i, of.F);
+   public static final oc bk = a("template_seagrass", of.b);
+   public static final oc bl = a("template_turtle_egg", of.a);
+   public static final oc bm = a("template_two_turtle_eggs", of.a);
+   public static final oc bn = a("template_three_turtle_eggs", of.a);
+   public static final oc bo = a("template_four_turtle_eggs", of.a);
+   public static final oc bp = a("template_single_face", of.b);
+   public static final oc bq = a("template_cauldron_level1", of.N, of.M, of.c, of.f, of.e, of.i);
+   public static final oc br = a("template_cauldron_level2", of.N, of.M, of.c, of.f, of.e, of.i);
+   public static final oc bs = a("template_cauldron_full", of.N, of.M, of.c, of.f, of.e, of.i);
+   public static final oc bt = a("template_azalea", of.f, of.i);
+   public static final oc bu = a("template_potted_azalea_bush", of.q, of.f, of.i);
+   public static final oc bv = a("template_potted_azalea_bush", of.q, of.f, of.i);
+   public static final oc bw = a("sniffer_egg", of.f, of.e, of.j, of.k, of.l, of.m);
+   public static final oc bx = b("generated", of.H);
+   public static final oc by = b("template_music_disc", of.H);
+   public static final oc bz = b("handheld", of.H);
+   public static final oc bA = b("handheld_rod", of.H);
+   public static final oc bB = b("generated", of.H, of.I);
+   public static final oc bC = b("generated", of.H, of.I, of.J);
+   public static final oc bD = b("template_shulker_box", of.c);
+   public static final oc bE = b("template_bed", of.c);
+   public static final oc bF = b("template_banner");
+   public static final oc bG = b("template_skull");
+   public static final oc bH = a("template_candle", of.a, of.c);
+   public static final oc bI = a("template_two_candles", of.a, of.c);
+   public static final oc bJ = a("template_three_candles", of.a, of.c);
+   public static final oc bK = a("template_four_candles", of.a, of.c);
+   public static final oc bL = a("template_cake_with_candle", of.L, of.e, of.i, of.f, of.c);
+   public static final oc bM = a("template_sculk_shrieker", of.e, of.i, of.f, of.c, of.O);
+   public static final oc bN = a("template_vault", of.f, of.e, of.i, of.g);
+   public static final oc bO = b("handheld_mace", of.H);
 
-   private od(ob $$0, nz $$1) {
-      this.A = $$0;
-      this.B = $$1;
+   private static oc a(of... $$0) {
+      return new oc(Optional.empty(), Optional.empty(), $$0);
    }
 
-   public nz a() {
-      return this.B;
+   private static oc a(String $$0, of... $$1) {
+      return new oc(Optional.of(akq.b("block/" + $$0)), Optional.empty(), $$1);
    }
 
-   public ob b() {
-      return this.A;
+   private static oc b(String $$0, of... $$1) {
+      return new oc(Optional.of(akq.b("item/" + $$0)), Optional.empty(), $$1);
    }
 
-   public od a(Consumer<ob> $$0) {
-      $$0.accept(this.A);
-      return this;
-   }
-
-   public akk a(dfi $$0, BiConsumer<akk, Supplier<JsonElement>> $$1) {
-      return this.B.a($$0, this.A, $$1);
-   }
-
-   public akk a(dfi $$0, String $$1, BiConsumer<akk, Supplier<JsonElement>> $$2) {
-      return this.B.a($$0, $$1, this.A, $$2);
-   }
-
-   private static od.a a(Function<dfi, ob> $$0, nz $$1) {
-      return $$2 -> new od($$0.apply($$2), $$1);
-   }
-
-   public static od a(akk $$0) {
-      return new od(ob.b($$0), oa.c);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      od get(dfi var1);
-
-      default akk create(dfi $$0, BiConsumer<akk, Supplier<JsonElement>> $$1) {
-         return this.get($$0).a($$0, $$1);
-      }
-
-      default akk createWithSuffix(dfi $$0, String $$1, BiConsumer<akk, Supplier<JsonElement>> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
-
-      default od.a updateTexture(Consumer<ob> $$0) {
-         return $$1 -> this.get($$1).a($$0);
-      }
+   private static oc a(String $$0, String $$1, of... $$2) {
+      return new oc(Optional.of(akq.b("block/" + $$0)), Optional.of($$1), $$2);
    }
 }

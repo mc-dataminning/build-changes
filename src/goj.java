@@ -1,34 +1,46 @@
-public abstract class goj<T extends btc, M extends fvv<T>> extends goa<T, M> {
-   public goj(gkp<T, M> $$0) {
+public class goj extends gop<chj, fvx<chj>> {
+   private static final akq[] a = new akq[]{
+      akq.b("textures/entity/llama/decor/white.png"),
+      akq.b("textures/entity/llama/decor/orange.png"),
+      akq.b("textures/entity/llama/decor/magenta.png"),
+      akq.b("textures/entity/llama/decor/light_blue.png"),
+      akq.b("textures/entity/llama/decor/yellow.png"),
+      akq.b("textures/entity/llama/decor/lime.png"),
+      akq.b("textures/entity/llama/decor/pink.png"),
+      akq.b("textures/entity/llama/decor/gray.png"),
+      akq.b("textures/entity/llama/decor/light_gray.png"),
+      akq.b("textures/entity/llama/decor/cyan.png"),
+      akq.b("textures/entity/llama/decor/purple.png"),
+      akq.b("textures/entity/llama/decor/blue.png"),
+      akq.b("textures/entity/llama/decor/brown.png"),
+      akq.b("textures/entity/llama/decor/green.png"),
+      akq.b("textures/entity/llama/decor/red.png"),
+      akq.b("textures/entity/llama/decor/black.png")
+   };
+   private static final akq b = akq.b("textures/entity/llama/decor/trader_llama.png");
+   private final fvx<chj> c;
+
+   public goj(glz<chj, fvx<chj>> $$0, fya $$1) {
       super($$0);
+      this.c = new fvx<>($$1.a(fyd.az));
    }
 
-   protected abstract int a(T var1);
-
-   protected abstract void a(fao var1, gef var2, int var3, bsh var4, float var5, float var6, float var7, float var8);
-
-   public void a(fao $$0, gef $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      int $$10 = this.a($$3);
-      ayo $$11 = ayo.a((long)$$3.an());
-      if ($$10 > 0) {
-         for (int $$12 = 0; $$12 < $$10; $$12++) {
-            $$0.a();
-            fxq $$13 = this.c().a($$11);
-            fxq.a $$14 = $$13.a($$11);
-            $$13.a($$0);
-            float $$15 = $$11.i();
-            float $$16 = $$11.i();
-            float $$17 = $$11.i();
-            float $$18 = ayg.i($$15, $$14.a, $$14.d) / 16.0F;
-            float $$19 = ayg.i($$16, $$14.b, $$14.e) / 16.0F;
-            float $$20 = ayg.i($$17, $$14.c, $$14.f) / 16.0F;
-            $$0.a($$18, $$19, $$20);
-            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
-            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
-            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
-            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
-            $$0.b();
+   public void a(fbc $$0, get $$1, int $$2, chj $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      ctg $$10 = $$3.gz();
+      akq $$11;
+      if ($$10 != null) {
+         $$11 = a[$$10.a()];
+      } else {
+         if (!$$3.gq()) {
+            return;
          }
+
+         $$11 = b;
       }
+
+      this.c().a(this.c);
+      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
+      fbg $$14 = $$1.getBuffer(gfb.e($$11));
+      this.c.a($$0, $$14, $$2, gpw.d);
    }
 }

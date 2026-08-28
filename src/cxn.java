@@ -1,77 +1,42 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class cxn extends cxp {
-   private final ja b;
-   protected boolean a = true;
+public record cxn(List<wy> e, List<wy> f) implements cxw {
+   public static final cxn a = new cxn(List.of());
+   public static final int b = 256;
+   private static final xv g = xv.a.a(n.f).b(true);
+   public static final Codec<cxn> c = xa.g.sizeLimitedListOf(256).xmap(cxn::new, cxn::a);
+   public static final yw<wj, cxn> d = xa.b.a(yu.c(256)).a(cxn::new, cxn::a);
 
-   public cxn(cml $$0, bqg $$1, cud $$2, ewd $$3) {
-      this($$0.dR(), $$0, $$1, $$2, $$3);
+   public cxn(List<wy> $$0) {
+      this($$0, Lists.transform($$0, $$0x -> xb.a($$0x.f(), g)));
    }
 
-   public cxn(cxp $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   public cxn(List<wy> e, List<wy> f) {
+      if (e.size() > 256) {
+         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
+      } else {
+         this.e = e;
+         this.f = f;
+      }
    }
 
-   protected cxn(dcg $$0, @Nullable cml $$1, bqg $$2, cud $$3, ewd $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.a().a($$4.b());
-      this.a = $$0.a_($$4.a()).a(this);
-   }
-
-   public static cxn a(cxn $$0, ja $$1, jf $$2) {
-      return new cxn(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new ewd(
-            new ewh((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
+   public cxn a(wy $$0) {
+      return new cxn(ad.a(this.e, $$0));
    }
 
    @Override
-   public ja a() {
-      return this.a ? super.a() : this.b;
+   public void a(cuj.b $$0, Consumer<wy> $$1, cwk $$2) {
+      this.f.forEach($$1);
    }
 
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
+   public List<wy> a() {
+      return this.e;
    }
 
-   public boolean c() {
-      return this.a;
-   }
-
-   public jf d() {
-      return jf.a(this.o())[0];
-   }
-
-   public jf e() {
-      return jf.a(this.o(), jf.a.b);
-   }
-
-   public jf[] f() {
-      jf[] $$0 = jf.a(this.o());
-      if (this.a) {
-         return $$0;
-      } else {
-         jf $$1 = this.k();
-         int $$2 = 0;
-
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
-         }
-
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
-
-         return $$0;
-      }
+   public List<wy> b() {
+      return this.f;
    }
 }

@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dxc {
+@FunctionalInterface
+public interface dxc {
+   void onChunkStatusChange(dcb var1, aqk var2);
 }

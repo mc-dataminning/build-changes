@@ -1,49 +1,69 @@
+import com.mojang.serialization.MapCodec;
 import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cvd extends cty implements ctf {
-   public static final int a = 5;
-   public static final float b = 3.0F;
+public class cvd extends cst {
+   private static final MapCodec<cgc.d> a = cgc.d.a.fieldOf("BucketVariantTag");
+   private final bsw<?> b;
+   private final avn c;
 
-   public cvd(cty.a $$0) {
-      super($$0);
-      dhn.a(this, crt.a);
+   public cvd(bsw<?> $$0, eox $$1, avn $$2, cuj.a $$3) {
+      super($$1, $$3);
+      this.b = $$0;
+      this.c = $$2;
    }
 
    @Override
-   public String h(cud $$0) {
-      csw $$1 = $$0.a(kn.Y);
-      return $$1 != null ? this.a() + "." + $$1.b() : super.h($$0);
+   public void a(@Nullable cmv $$0, dcu $$1, cuo $$2, jd $$3) {
+      if ($$1 instanceof aqt) {
+         this.a((aqt)$$1, $$2, $$3);
+         $$1.a($$0, dxw.t, $$3);
+      }
    }
 
    @Override
-   public void a(cud $$0, cty.b $$1, List<wu> $$2, cvw $$3) {
-      crz.a($$0, $$2);
+   protected void a(@Nullable cmv $$0, dcv $$1, jd $$2) {
+      $$1.a($$0, $$2, this.c, avp.g, 1.0F, 1.0F);
+   }
+
+   private void a(aqt $$0, cuo $$1, jd $$2) {
+      if (this.b.a($$0, $$1, null, $$2, btp.l, true, false) instanceof cfe $$4) {
+         cxf $$5 = $$1.a(kq.N, cxf.a);
+         $$4.c($$5.c());
+         $$4.w(true);
+      }
    }
 
    @Override
-   public cvy b(cud $$0) {
-      return cvy.d;
-   }
+   public void a(cuo $$0, cuj.b $$1, List<wy> $$2, cwk $$3) {
+      if (this.b == bsw.bg) {
+         cxf $$4 = $$0.a(kq.N, cxf.a);
+         if ($$4.b()) {
+            return;
+         }
 
-   @Override
-   public int a(cud $$0, btc $$1) {
-      return 72000;
-   }
+         Optional<cgc.d> $$5 = $$4.a(a).result();
+         if ($$5.isPresent()) {
+            cgc.d $$6 = $$5.get();
+            n[] $$7 = new n[]{n.u, n.h};
+            String $$8 = "color.minecraft." + $$6.c();
+            String $$9 = "color.minecraft." + $$6.d();
+            int $$10 = cgc.c.indexOf($$6);
+            if ($$10 != -1) {
+               $$2.add(wy.c(cgc.c($$10)).a($$7));
+               return;
+            }
 
-   @Override
-   public bqi<cud> a(dcg $$0, cml $$1, bqg $$2) {
-      cud $$3 = $$1.b($$2);
-      $$1.c($$2);
-      return bqi.b($$3);
-   }
+            $$2.add($$6.b().d().e().a($$7));
+            xm $$11 = wy.c($$8);
+            if (!$$8.equals($$9)) {
+               $$11.f(", ").b(wy.c($$9));
+            }
 
-   @Override
-   public boolean a(cud $$0, cud $$1) {
-      return $$1.a(awf.b) || super.a($$0, $$1);
-   }
-
-   @Override
-   public bso m() {
-      return bso.b;
+            $$11.a($$7);
+            $$2.add($$11);
+         }
+      }
    }
 }

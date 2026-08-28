@@ -1,49 +1,33 @@
-public record aic(int b, String c, int d, aib e) implements zb<aif> {
-   public static final ys<vr, aic> a = zb.a(aic::a, aic::new);
-   private static final int f = 255;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   @Deprecated
-   public aic(int b, String c, int d, aib e) {
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
+public class aic implements zf<agh> {
+   public static final yw<vv, aic> a = zf.a(aic::a, aic::new);
+   private final UUID b;
+
+   public aic(UUID $$0) {
+      this.b = $$0;
    }
 
-   private aic(vr $$0) {
-      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), aib.a($$0.l()));
+   private aic(vv $$0) {
+      this.b = $$0.n();
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.l(this.d);
-      $$0.c(this.e.a());
+   private void a(vv $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zd<aic> a() {
-      return aid.a;
+   public zh<aic> a() {
+      return agf.cb;
    }
 
-   public void a(aif $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
-   }
-
-   public String e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public aib g() {
-      return this.e;
+   @Nullable
+   public bsq a(aqt $$0) {
+      return $$0.a(this.b);
    }
 }

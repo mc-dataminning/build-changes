@@ -1,57 +1,55 @@
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.google.common.collect.Maps;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
-public class is implements il<IntegerArgumentType, is.a> {
-   public void a(is.a $$0, vr $$1) {
-      boolean $$2 = $$0.b != Integer.MIN_VALUE;
-      boolean $$3 = $$0.c != Integer.MAX_VALUE;
-      $$1.k(in.a($$2, $$3));
-      if ($$2) {
-         $$1.p($$0.b);
-      }
+public class is {
+   private static final Map<akq, SuggestionProvider<ey>> e = Maps.newHashMap();
+   private static final akq f = akq.b("ask_server");
+   public static final SuggestionProvider<ey> a = a(f, ($$0, $$1) -> ((ey)$$0.getSource()).a($$0));
+   public static final SuggestionProvider<et> b = a(akq.b("all_recipes"), ($$0, $$1) -> ey.a(((ey)$$0.getSource()).t(), $$1));
+   public static final SuggestionProvider<et> c = a(akq.b("available_sounds"), ($$0, $$1) -> ey.a(((ey)$$0.getSource()).s(), $$1));
+   public static final SuggestionProvider<et> d = a(
+      akq.b("summonable_entities"),
+      ($$0, $$1) -> ey.a(lt.f.t().filter($$1x -> $$1x.a(((ey)$$0.getSource()).w()) && $$1x.c()), $$1, bsw::a, $$0x -> wy.c(ad.a("entity", bsw.a($$0x))))
+   );
 
-      if ($$3) {
-         $$1.p($$0.c);
-      }
-   }
-
-   public is.a a(vr $$0) {
-      byte $$1 = $$0.readByte();
-      int $$2 = in.a($$1) ? $$0.readInt() : Integer.MIN_VALUE;
-      int $$3 = in.b($$1) ? $$0.readInt() : Integer.MAX_VALUE;
-      return new is.a($$2, $$3);
-   }
-
-   public void a(is.a $$0, JsonObject $$1) {
-      if ($$0.b != Integer.MIN_VALUE) {
-         $$1.addProperty("min", $$0.b);
-      }
-
-      if ($$0.c != Integer.MAX_VALUE) {
-         $$1.addProperty("max", $$0.c);
+   public static <S extends ey> SuggestionProvider<S> a(akq $$0, SuggestionProvider<ey> $$1) {
+      if (e.containsKey($$0)) {
+         throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
+      } else {
+         e.put($$0, $$1);
+         return new is.a($$0, $$1);
       }
    }
 
-   public is.a a(IntegerArgumentType $$0) {
-      return new is.a($$0.getMinimum(), $$0.getMaximum());
+   public static SuggestionProvider<ey> a(akq $$0) {
+      return e.getOrDefault($$0, a);
    }
 
-   public final class a implements il.a<IntegerArgumentType> {
-      final int b;
-      final int c;
+   public static akq a(SuggestionProvider<ey> $$0) {
+      return $$0 instanceof is.a ? ((is.a)$$0).b : f;
+   }
 
-      a(final int $$1, final int $$2) {
-         this.b = $$1;
-         this.c = $$2;
+   public static SuggestionProvider<ey> b(SuggestionProvider<ey> $$0) {
+      return $$0 instanceof is.a ? $$0 : a;
+   }
+
+   protected static class a implements SuggestionProvider<ey> {
+      private final SuggestionProvider<ey> a;
+      final akq b;
+
+      public a(akq $$0, SuggestionProvider<ey> $$1) {
+         this.a = $$1;
+         this.b = $$0;
       }
 
-      public IntegerArgumentType a(em $$0) {
-         return IntegerArgumentType.integer(this.b, this.c);
-      }
-
-      @Override
-      public il<IntegerArgumentType, ?> a() {
-         return is.this;
+      public CompletableFuture<Suggestions> getSuggestions(CommandContext<ey> $$0, SuggestionsBuilder $$1) throws CommandSyntaxException {
+         return this.a.getSuggestions($$0, $$1);
       }
    }
 }

@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 
-@eyg
+@eyv
 public class GLX {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static String cpuInfo;
@@ -31,9 +31,9 @@ public class GLX {
          : GlStateManager._getString(7937) + " GL version " + GlStateManager._getString(7938) + ", " + GlStateManager._getString(7936);
    }
 
-   public static int _getRefreshRate(ezs $$0) {
+   public static int _getRefreshRate(fag $$0) {
       RenderSystem.assertOnRenderThread();
-      long $$1 = GLFW.glfwGetWindowMonitor($$0.i());
+      long $$1 = GLFW.glfwGetWindowMonitor($$0.j());
       if ($$1 == 0L) {
          $$1 = GLFW.glfwGetPrimaryMonitor();
       }
@@ -47,7 +47,7 @@ public class GLX {
    }
 
    public static LongSupplier _initGlfw() {
-      ezs.a(($$0x, $$1x) -> {
+      fag.a(($$0x, $$1x) -> {
          throw new IllegalStateException(String.format(Locale.ROOT, "GLFW error before init: [0x%X]%s", $$0x, $$1x));
       });
       List<String> $$0 = Lists.newArrayList();
@@ -76,8 +76,8 @@ public class GLX {
       }
    }
 
-   public static boolean _shouldClose(ezs $$0) {
-      return GLFW.glfwWindowShouldClose($$0.i());
+   public static boolean _shouldClose(fag $$0) {
+      return GLFW.glfwWindowShouldClose($$0.j());
    }
 
    public static void _init(int $$0, boolean $$1) {
@@ -87,7 +87,7 @@ public class GLX {
       } catch (Throwable var3) {
       }
 
-      ezg.a($$0, $$1);
+      ezv.a($$0, $$1);
    }
 
    public static String _getCpuInfo() {
@@ -95,51 +95,52 @@ public class GLX {
    }
 
    public static void _renderCrosshair(int $$0, boolean $$1, boolean $$2, boolean $$3) {
-      RenderSystem.assertOnRenderThread();
-      GlStateManager._depthMask(false);
-      GlStateManager._disableCull();
-      RenderSystem.setShader(gdy::ao);
-      faq $$4 = RenderSystem.renderThreadTesselator();
-      faj $$5 = $$4.d();
-      RenderSystem.lineWidth(4.0F);
-      $$5.a(fat.b.a, fam.o);
-      if ($$1) {
-         $$5.a(0.0, 0.0, 0.0).a(0, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
-         $$5.a((double)$$0, 0.0, 0.0).a(0, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
-      }
+      if ($$1 || $$2 || $$3) {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager._depthMask(false);
+         GlStateManager._disableCull();
+         RenderSystem.setShader(gem::an);
+         fbe $$4 = RenderSystem.renderThreadTesselator();
+         fax $$5 = $$4.a(fbh.c.a, fba.g);
+         RenderSystem.lineWidth(4.0F);
+         if ($$1) {
+            $$5.a(0.0F, 0.0F, 0.0F).a(-16777216).b(1.0F, 0.0F, 0.0F);
+            $$5.a((float)$$0, 0.0F, 0.0F).a(-16777216).b(1.0F, 0.0F, 0.0F);
+         }
 
-      if ($$2) {
-         $$5.a(0.0, 0.0, 0.0).a(0, 0, 0, 255).a(0.0F, 1.0F, 0.0F).e();
-         $$5.a(0.0, (double)$$0, 0.0).a(0, 0, 0, 255).a(0.0F, 1.0F, 0.0F).e();
-      }
+         if ($$2) {
+            $$5.a(0.0F, 0.0F, 0.0F).a(-16777216).b(0.0F, 1.0F, 0.0F);
+            $$5.a(0.0F, (float)$$0, 0.0F).a(-16777216).b(0.0F, 1.0F, 0.0F);
+         }
 
-      if ($$3) {
-         $$5.a(0.0, 0.0, 0.0).a(0, 0, 0, 255).a(0.0F, 0.0F, 1.0F).e();
-         $$5.a(0.0, 0.0, (double)$$0).a(0, 0, 0, 255).a(0.0F, 0.0F, 1.0F).e();
-      }
+         if ($$3) {
+            $$5.a(0.0F, 0.0F, 0.0F).a(-16777216).b(0.0F, 0.0F, 1.0F);
+            $$5.a(0.0F, 0.0F, (float)$$0).a(-16777216).b(0.0F, 0.0F, 1.0F);
+         }
 
-      $$4.c();
-      RenderSystem.lineWidth(2.0F);
-      $$5.a(fat.b.a, fam.o);
-      if ($$1) {
-         $$5.a(0.0, 0.0, 0.0).a(255, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
-         $$5.a((double)$$0, 0.0, 0.0).a(255, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
-      }
+         fay.a($$5.b());
+         RenderSystem.lineWidth(2.0F);
+         $$5 = $$4.a(fbh.c.a, fba.g);
+         if ($$1) {
+            $$5.a(0.0F, 0.0F, 0.0F).a(-65536).b(1.0F, 0.0F, 0.0F);
+            $$5.a((float)$$0, 0.0F, 0.0F).a(-65536).b(1.0F, 0.0F, 0.0F);
+         }
 
-      if ($$2) {
-         $$5.a(0.0, 0.0, 0.0).a(0, 255, 0, 255).a(0.0F, 1.0F, 0.0F).e();
-         $$5.a(0.0, (double)$$0, 0.0).a(0, 255, 0, 255).a(0.0F, 1.0F, 0.0F).e();
-      }
+         if ($$2) {
+            $$5.a(0.0F, 0.0F, 0.0F).a(-16711936).b(0.0F, 1.0F, 0.0F);
+            $$5.a(0.0F, (float)$$0, 0.0F).a(-16711936).b(0.0F, 1.0F, 0.0F);
+         }
 
-      if ($$3) {
-         $$5.a(0.0, 0.0, 0.0).a(127, 127, 255, 255).a(0.0F, 0.0F, 1.0F).e();
-         $$5.a(0.0, 0.0, (double)$$0).a(127, 127, 255, 255).a(0.0F, 0.0F, 1.0F).e();
-      }
+         if ($$3) {
+            $$5.a(0.0F, 0.0F, 0.0F).a(-8421377).b(0.0F, 0.0F, 1.0F);
+            $$5.a(0.0F, 0.0F, (float)$$0).a(-8421377).b(0.0F, 0.0F, 1.0F);
+         }
 
-      $$4.c();
-      RenderSystem.lineWidth(1.0F);
-      GlStateManager._enableCull();
-      GlStateManager._depthMask(true);
+         fay.a($$5.b());
+         RenderSystem.lineWidth(1.0F);
+         GlStateManager._enableCull();
+         GlStateManager._depthMask(true);
+      }
    }
 
    public static <T> T make(Supplier<T> $$0) {

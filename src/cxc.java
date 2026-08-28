@@ -1,12 +1,7 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public record cxc(int d) {
-   public static final Codec<cxc> a = Codec.INT.xmap(cxc::new, cxc::a);
-   public static final ys<ByteBuf, cxc> b = yq.f.a(cxc::new, cxc::a);
-   public static final cxc c = new cxc(4603950);
+public interface cxc<T, C> {
+   List<ark<T>> a();
 
-   public int a() {
-      return this.d;
-   }
+   C a(List<ark<T>> var1);
 }

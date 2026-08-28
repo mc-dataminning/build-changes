@@ -1,36 +1,34 @@
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record euq(evd b, eqv c) implements euh {
-   public static final MapCodec<euq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eve.a.fieldOf("value").forGetter(euq::c), eqv.a.fieldOf("range").forGetter(euq::d)).apply($$0, euq::new)
-   );
+public record euq(boolean b) implements euw {
+   public static final MapCodec<euq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(euq::e)).apply($$0, euq::new));
 
-   @Override
-   public eui b() {
-      return euj.r;
+   public boolean a(erl $$0) {
+      return $$0.b(euh.l) == this.b;
    }
 
    @Override
-   public Set<etp<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public eux b() {
+      return euy.s;
    }
 
-   public boolean a(eqw $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   @Override
+   public Set<eue<?>> a() {
+      return Set.of(euh.l);
    }
 
-   public static euh.a a(evd $$0, eqv $$1) {
-      return () -> new euq($$0, $$1);
+   public static euw.a c() {
+      return () -> new euq(true);
    }
 
-   public evd c() {
+   public static euw.a d() {
+      return () -> new euq(false);
+   }
+
+   public boolean e() {
       return this.b;
-   }
-
-   public eqv d() {
-      return this.c;
    }
 }

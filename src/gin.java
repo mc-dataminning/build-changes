@@ -1,55 +1,59 @@
-public abstract class gin<T extends cmr> extends gjn<T> {
-   public gin(gjo.a $$0) {
-      super($$0);
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+
+public class gin implements gig.a {
+   private final fgi a;
+   private final Map<Long, Map<jd, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+
+   gin(fgi $$0) {
+      this.a = $$0;
    }
 
-   public void a(T $$0, float $$1, float $$2, fao $$3, gef $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(ayg.i($$2, $$0.O, $$0.dH()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(ayg.i($$2, $$0.P, $$0.dJ())));
-      int $$6 = 0;
-      float $$7 = 0.0F;
-      float $$8 = 0.5F;
-      float $$9 = 0.0F;
-      float $$10 = 0.15625F;
-      float $$11 = 0.0F;
-      float $$12 = 0.15625F;
-      float $$13 = 0.15625F;
-      float $$14 = 0.3125F;
-      float $$15 = 0.05625F;
-      float $$16 = (float)$$0.e - $$2;
-      if ($$16 > 0.0F) {
-         float $$17 = -ayg.a($$16 * 3.0F) * $$16;
-         $$3.a(a.f.rotationDegrees($$17));
-      }
-
-      $$3.a(a.b.rotationDegrees(45.0F));
-      $$3.b(0.05625F, 0.05625F, 0.05625F);
-      $$3.a(-4.0F, 0.0F, 0.0F);
-      fas $$18 = $$4.getBuffer(gen.d(this.a($$0)));
-      fao.a $$19 = $$3.c();
-      this.a($$19, $$18, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$19, $$18, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$19, $$18, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$19, $$18, -7, 2, -2, 0.0F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$19, $$18, -7, 2, -2, 0.0F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$19, $$18, -7, 2, 2, 0.15625F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$19, $$18, -7, -2, 2, 0.15625F, 0.3125F, 1, 0, 0, $$5);
-      this.a($$19, $$18, -7, -2, -2, 0.0F, 0.3125F, 1, 0, 0, $$5);
-
-      for (int $$20 = 0; $$20 < 4; $$20++) {
-         $$3.a(a.b.rotationDegrees(90.0F));
-         this.a($$19, $$18, -8, -2, 0, 0.0F, 0.0F, 0, 1, 0, $$5);
-         this.a($$19, $$18, 8, -2, 0, 0.5F, 0.0F, 0, 1, 0, $$5);
-         this.a($$19, $$18, 8, 2, 0, 0.5F, 0.15625F, 0, 1, 0, $$5);
-         this.a($$19, $$18, -8, 2, 0, 0.0F, 0.15625F, 0, 1, 0, $$5);
-      }
-
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(long $$0, jd $$1) {
+      Map<jd, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
-   public void a(fao.a $$0, fas $$1, int $$2, int $$3, int $$4, float $$5, float $$6, int $$7, int $$8, int $$9, int $$10) {
-      $$1.a($$0, (float)$$2, (float)$$3, (float)$$4).a(255, 255, 255, 255).a($$5, $$6).c(gph.d).b($$10).b($$0, (float)$$7, (float)$$9, (float)$$8).e();
+   @Override
+   public void a(fbc $$0, get $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.r.Z();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<jd> $$8 = Sets.newHashSet();
+      Map<jd, Integer> $$9 = Maps.newHashMap();
+      fbg $$10 = $$1.getBuffer(gfb.w());
+      Iterator<Entry<Long, Map<jd, Integer>>> $$11 = this.b.entrySet().iterator();
+
+      while ($$11.hasNext()) {
+         Entry<Long, Map<jd, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<jd, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<jd, Integer> $$16 : $$14.entrySet()) {
+               jd $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  ewr $$19 = new ewr(jd.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  ger.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
+         }
+      }
+
+      for (Entry<jd, Integer> $$20 : $$9.entrySet()) {
+         jd $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         gig.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      }
    }
 }

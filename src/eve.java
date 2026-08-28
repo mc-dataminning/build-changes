@@ -1,21 +1,61 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class eve {
-   private static final Codec<evd> h = lq.G.r().dispatch(evd::b, evc::a);
-   public static final Codec<evd> a = Codec.lazyInitialized(() -> {
-      Codec<evd> $$0 = Codec.withAlternative(h, evh.a.codec());
-      return Codec.either(eva.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof eva $$1 ? Either.left($$1) : Either.right($$0x));
-   });
-   public static final evc b = a("constant", eva.a);
-   public static final evc c = a("uniform", evh.a);
-   public static final evc d = a("binomial", euz.a);
-   public static final evc e = a("score", evf.a);
-   public static final evc f = a("storage", evg.a);
-   public static final evc g = a("enchantment_level", evb.a);
+public record eve(Optional<Long> b, erk c) implements euw {
+   public static final MapCodec<eve> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(eve::c), erk.a.fieldOf("value").forGetter(eve::d)).apply($$0, eve::new)
+   );
 
-   private static evc a(String $$0, MapCodec<? extends evd> $$1) {
-      return jw.a(lq.G, new akk($$0), new evc($$1));
+   @Override
+   public eux b() {
+      return euy.q;
+   }
+
+   @Override
+   public Set<eue<?>> a() {
+      return this.c.a();
+   }
+
+   public boolean a(erl $$0) {
+      aqt $$1 = $$0.d();
+      long $$2 = $$1.aa();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
+      }
+
+      return this.c.b($$0, (int)$$2);
+   }
+
+   public static eve.a a(erk $$0) {
+      return new eve.a($$0);
+   }
+
+   public Optional<Long> c() {
+      return this.b;
+   }
+
+   public erk d() {
+      return this.c;
+   }
+
+   public static class a implements euw.a {
+      private Optional<Long> a = Optional.empty();
+      private final erk b;
+
+      public a(erk $$0) {
+         this.b = $$0;
+      }
+
+      public eve.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public eve a() {
+         return new eve(this.a, this.b);
+      }
    }
 }

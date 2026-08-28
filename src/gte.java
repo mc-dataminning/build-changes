@@ -1,47 +1,16 @@
-import javax.annotation.Nullable;
-
-public interface gte {
-   akk a();
-
-   @Nullable
-   guk a(guj var1);
-
-   gtb b();
-
-   avi c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   gte.a k();
-
-   default boolean r() {
-      return false;
+public class gte extends gtg {
+   public gte(cfd $$0) {
+      super($$0, avo.bQ, avp.g);
+      this.j = 0;
    }
 
-   default boolean s() {
-      return true;
+   @Override
+   protected gtc o() {
+      return new gtf(this.n);
    }
 
-   static ayo t() {
-      return ayo.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   @Override
+   protected boolean p() {
+      return !this.n.Z_();
    }
 }

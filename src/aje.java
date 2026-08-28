@@ -1,3 +1,8 @@
-public interface aje extends wa {
-   void a(ajf var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aje {
 }

@@ -1,79 +1,56 @@
+import com.mojang.datafixers.util.Pair;
+import java.time.Duration;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.WeakHashMap;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public class bod {
-   public static final bod a = new bod();
-   private final WeakHashMap<bof, Void> b = new WeakHashMap<>();
+public final class bod<T> {
+   private final bod.a a;
+   private final List<Pair<T, bod.a>> b;
+   private final Duration c;
 
-   private bod() {
+   public bod(Duration $$0, List<Pair<T, bod.a>> $$1) {
+      this.c = $$0;
+      this.a = $$1.stream().<bod.a>map(Pair::getSecond).reduce(new bod.a(0L, 0L), bod.a::a);
+      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, bod.a.c)).limit(10L).toList();
    }
 
-   public void a(bof $$0) {
-      this.b.put($$0, null);
+   public double a() {
+      return (double)this.a.a / (double)this.c.getSeconds();
    }
 
-   public List<boc> a() {
-      Map<String, List<boc>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bw().stream()).collect(Collectors.groupingBy(boc::d));
-      return a($$0);
+   public double b() {
+      return (double)this.a.b / (double)this.c.getSeconds();
    }
 
-   private static List<boc> a(Map<String, List<boc>> $$0) {
-      return $$0.entrySet().stream().map($$0x -> {
-         String $$1 = (String)$$0x.getKey();
-         List<boc> $$2 = (List<boc>)$$0x.getValue();
-         return (boc)($$2.size() > 1 ? new bod.a($$1, $$2) : $$2.get(0));
-      }).collect(Collectors.toList());
+   public long c() {
+      return this.a.a;
    }
 
-   static class a extends boc {
-      private final List<boc> b;
+   public long d() {
+      return this.a.b;
+   }
 
-      a(String $$0, List<boc> $$1) {
-         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
-         this.b = $$1;
+   public List<Pair<T, bod.a>> e() {
+      return this.b;
+   }
+
+   public static record a(long a, long b) {
+      static final Comparator<bod.a> c = Comparator.comparing(bod.a::c).thenComparing(bod.a::b).reversed();
+
+      bod.a a(bod.a $$0) {
+         return new bod.a(this.a + $$0.a, this.b + $$0.b);
       }
 
-      private static boc.c a(List<boc> $$0) {
-         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
+      public float a() {
+         return (float)this.b / (float)this.a;
       }
 
-      private static void b(List<boc> $$0) {
-         for (boc $$1 : $$0) {
-            $$1.a();
-         }
+      public long b() {
+         return this.a;
       }
 
-      private static double c(List<boc> $$0) {
-         double $$1 = 0.0;
-
-         for (boc $$2 : $$0) {
-            $$1 += $$2.c().getAsDouble();
-         }
-
-         return $$1 / (double)$$0.size();
-      }
-
-      @Override
-      public boolean equals(@Nullable Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
-            return false;
-         } else if (!super.equals($$0)) {
-            return false;
-         } else {
-            bod.a $$1 = (bod.a)$$0;
-            return this.b.equals($$1.b);
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(super.hashCode(), this.b);
+      public long c() {
+         return this.b;
       }
    }
 }

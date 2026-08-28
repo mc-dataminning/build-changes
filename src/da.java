@@ -1,33 +1,109 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record da(de.d c, Optional<bu> d) implements bv {
-   public static final MapCodec<da> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(de.d.d.optionalFieldOf("blocks_set_on_fire", de.d.c).forGetter(da::b), bu.a.optionalFieldOf("entity_struck").forGetter(da::c))
-            .apply($$0, da::new)
-   );
-
-   public static da a(de.d $$0) {
-      return new da($$0, Optional.empty());
-   }
-
+public class da extends dv<da.a> {
    @Override
-   public MapCodec<da> a() {
-      return bw.a;
+   public Codec<da.a> a() {
+      return da.a.a;
    }
 
-   @Override
-   public boolean a(bsh $$0, aqm $$1, @Nullable ewh $$2) {
-      return !($$0 instanceof btb $$3) ? false : this.c.d($$3.s()) && (this.d.isEmpty() || $$3.t().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+   public void a(aqu $$0, bsq $$1, brj $$2) {
+      erl $$3 = bv.b($$0, $$1);
+      this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
    }
 
-   public de.d b() {
-      return this.c;
-   }
+   public static record a(Optional<bg> b, Optional<bg> c, Optional<bk> d) implements dv.a {
+      public static final Codec<da.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bv.b.optionalFieldOf("player").forGetter(da.a::a),
+                  bv.b.optionalFieldOf("entity").forGetter(da.a::e),
+                  bk.a.optionalFieldOf("killing_blow").forGetter(da.a::f)
+               )
+               .apply($$0, da.a::new)
+      );
 
-   public Optional<bu> c() {
-      return this.d;
+      public static ao<da.a> a(Optional<bv> $$0) {
+         return an.c.a(new da.a(Optional.empty(), bv.a($$0), Optional.empty()));
+      }
+
+      public static ao<da.a> a(bv.a $$0) {
+         return an.c.a(new da.a(Optional.empty(), Optional.of(bv.a($$0)), Optional.empty()));
+      }
+
+      public static ao<da.a> b() {
+         return an.c.a(new da.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      }
+
+      public static ao<da.a> a(Optional<bv> $$0, Optional<bk> $$1) {
+         return an.c.a(new da.a(Optional.empty(), bv.a($$0), $$1));
+      }
+
+      public static ao<da.a> a(bv.a $$0, Optional<bk> $$1) {
+         return an.c.a(new da.a(Optional.empty(), Optional.of(bv.a($$0)), $$1));
+      }
+
+      public static ao<da.a> a(Optional<bv> $$0, bk.a $$1) {
+         return an.c.a(new da.a(Optional.empty(), bv.a($$0), Optional.of($$1.b())));
+      }
+
+      public static ao<da.a> a(bv.a $$0, bk.a $$1) {
+         return an.c.a(new da.a(Optional.empty(), Optional.of(bv.a($$0)), Optional.of($$1.b())));
+      }
+
+      public static ao<da.a> c() {
+         return an.Z.a(new da.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      }
+
+      public static ao<da.a> b(Optional<bv> $$0) {
+         return an.d.a(new da.a(Optional.empty(), bv.a($$0), Optional.empty()));
+      }
+
+      public static ao<da.a> b(bv.a $$0) {
+         return an.d.a(new da.a(Optional.empty(), Optional.of(bv.a($$0)), Optional.empty()));
+      }
+
+      public static ao<da.a> d() {
+         return an.d.a(new da.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      }
+
+      public static ao<da.a> b(Optional<bv> $$0, Optional<bk> $$1) {
+         return an.d.a(new da.a(Optional.empty(), bv.a($$0), $$1));
+      }
+
+      public static ao<da.a> b(bv.a $$0, Optional<bk> $$1) {
+         return an.d.a(new da.a(Optional.empty(), Optional.of(bv.a($$0)), $$1));
+      }
+
+      public static ao<da.a> b(Optional<bv> $$0, bk.a $$1) {
+         return an.d.a(new da.a(Optional.empty(), bv.a($$0), Optional.of($$1.b())));
+      }
+
+      public static ao<da.a> b(bv.a $$0, bk.a $$1) {
+         return an.d.a(new da.a(Optional.empty(), Optional.of(bv.a($$0)), Optional.of($$1.b())));
+      }
+
+      public boolean a(aqu $$0, erl $$1, brj $$2) {
+         return this.d.isPresent() && !this.d.get().a($$0, $$2) ? false : this.c.isEmpty() || this.c.get().a($$1);
+      }
+
+      @Override
+      public void a(bh $$0) {
+         dv.a.super.a($$0);
+         $$0.a(this.c, ".entity");
+      }
+
+      @Override
+      public Optional<bg> a() {
+         return this.b;
+      }
+
+      public Optional<bg> e() {
+         return this.c;
+      }
+
+      public Optional<bk> f() {
+         return this.d;
+      }
    }
 }

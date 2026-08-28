@@ -1,57 +1,38 @@
 import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public enum btf implements azc {
-   a("monster", 70, false, false, 128),
-   b("creature", 10, true, true, 128),
-   c("ambient", 15, true, false, 128),
-   d("axolotls", 5, true, false, 128),
-   e("underground_water_creature", 5, true, false, 128),
-   f("water_creature", 5, true, false, 128),
-   g("water_ambient", 20, true, false, 64),
-   h("misc", -1, true, true, 128);
+public enum btf implements ayq, azj {
+   a(0, "left", "options.mainHand.left"),
+   b(1, "right", "options.mainHand.right");
 
-   public static final Codec<btf> i = azc.a(btf::values);
-   private final int j;
-   private final boolean k;
-   private final boolean l;
-   private final String m;
-   private final int n = 32;
-   private final int o;
+   public static final Codec<btf> c = azj.a(btf::values);
+   public static final IntFunction<btf> d = axd.a(btf::a, values(), axd.a.a);
+   private final int e;
+   private final String f;
+   private final String g;
 
-   private btf(final String $$0, final int $$1, final boolean $$2, final boolean $$3, final int $$4) {
-      this.m = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.o = $$4;
+   private btf(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public String a() {
-      return this.m;
+   public btf e() {
+      return this == a ? b : a;
+   }
+
+   @Override
+   public int a() {
+      return this.e;
+   }
+
+   @Override
+   public String b() {
+      return this.g;
    }
 
    @Override
    public String c() {
-      return this.m;
-   }
-
-   public int b() {
-      return this.j;
-   }
-
-   public boolean d() {
-      return this.k;
-   }
-
-   public boolean e() {
-      return this.l;
-   }
-
-   public int f() {
-      return this.o;
-   }
-
-   public int g() {
-      return 32;
+      return this.f;
    }
 }

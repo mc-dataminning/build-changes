@@ -1,61 +1,38 @@
-public class aha implements zb<agb> {
-   public static final ys<vr, aha> a = zb.a(aha::a, aha::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+import java.util.List;
+import java.util.Optional;
 
-   public aha(bsh $$0) {
-      this.b = $$0.dw();
-      this.c = $$0.dy();
-      this.d = $$0.dC();
-      this.e = $$0.dH();
-      this.f = $$0.dJ();
-   }
+public record aha(int c, List<String> d, Optional<String> e) implements zf<agh> {
+   public static final int a = 4;
+   private static final int f = 128;
+   private static final int g = 8192;
+   private static final int h = 200;
+   public static final yw<vv, aha> b = yw.a(yu.g, aha::b, yu.b(8192).a(yu.c(200)), aha::e, yu.b(128).a(yu::a), aha::f, aha::new);
 
-   private aha(vr $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-   }
-
-   private void a(vr $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+   public aha(int c, List<String> d, Optional<String> e) {
+      d = List.copyOf(d);
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
    @Override
-   public zd<aha> a() {
-      return afz.bF;
+   public zh<aha> a() {
+      return agf.bw;
    }
 
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
-   }
-
-   public double e() {
+   public int b() {
       return this.c;
    }
 
-   public double f() {
+   public List<String> e() {
       return this.d;
    }
 
-   public float g() {
+   public Optional<String> f() {
       return this.e;
-   }
-
-   public float h() {
-      return this.f;
    }
 }

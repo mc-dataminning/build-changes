@@ -1,29 +1,23 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public class egx {
-   public static final Codec<egx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, dwg.c).fieldOf("height").forGetter(egx::a), lq.e.r().fieldOf("block").orElse(dfk.a).forGetter($$0x -> $$0x.b().b()))
-            .apply($$0, egx::new)
-   );
-   private final dfi b;
-   private final int c;
+public class egx<P extends egw> {
+   public static final egx<egy> a = a("trunk_vine", egy.a);
+   public static final egx<egv> b = a("leave_vine", egv.a);
+   public static final egx<egu> c = a("cocoa", egu.a);
+   public static final egx<egt> d = a("beehive", egt.a);
+   public static final egx<egr> e = a("alter_ground", egr.a);
+   public static final egx<egs> f = a("attached_to_leaves", egs.a);
+   private final MapCodec<P> g;
 
-   public egx(int $$0, dfi $$1) {
-      this.c = $$0;
-      this.b = $$1;
+   private static <P extends egw> egx<P> a(String $$0, MapCodec<P> $$1) {
+      return jz.a(lt.X, $$0, new egx<>($$1));
    }
 
-   public int a() {
-      return this.c;
+   private egx(MapCodec<P> $$0) {
+      this.g = $$0;
    }
 
-   public dsl b() {
-      return this.b.o();
-   }
-
-   @Override
-   public String toString() {
-      return (this.c != 1 ? this.c + "*" : "") + lq.e.b(this.b);
+   public MapCodec<P> a() {
+      return this.g;
    }
 }

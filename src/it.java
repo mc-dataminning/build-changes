@@ -1,56 +1,56 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.LongArgumentType;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 
-public class it implements il<LongArgumentType, it.a> {
-   public void a(it.a $$0, vr $$1) {
-      boolean $$2 = $$0.b != Long.MIN_VALUE;
-      boolean $$3 = $$0.c != Long.MAX_VALUE;
-      $$1.k(in.a($$2, $$3));
+public class it implements io<DoubleArgumentType, it.a> {
+   public void a(it.a $$0, vv $$1) {
+      boolean $$2 = $$0.b != -Double.MAX_VALUE;
+      boolean $$3 = $$0.c != Double.MAX_VALUE;
+      $$1.k(iq.a($$2, $$3));
       if ($$2) {
-         $$1.b($$0.b);
+         $$1.a($$0.b);
       }
 
       if ($$3) {
-         $$1.b($$0.c);
+         $$1.a($$0.c);
       }
    }
 
-   public it.a a(vr $$0) {
+   public it.a a(vv $$0) {
       byte $$1 = $$0.readByte();
-      long $$2 = in.a($$1) ? $$0.readLong() : Long.MIN_VALUE;
-      long $$3 = in.b($$1) ? $$0.readLong() : Long.MAX_VALUE;
+      double $$2 = iq.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
+      double $$3 = iq.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;
       return new it.a($$2, $$3);
    }
 
    public void a(it.a $$0, JsonObject $$1) {
-      if ($$0.b != Long.MIN_VALUE) {
+      if ($$0.b != -Double.MAX_VALUE) {
          $$1.addProperty("min", $$0.b);
       }
 
-      if ($$0.c != Long.MAX_VALUE) {
+      if ($$0.c != Double.MAX_VALUE) {
          $$1.addProperty("max", $$0.c);
       }
    }
 
-   public it.a a(LongArgumentType $$0) {
+   public it.a a(DoubleArgumentType $$0) {
       return new it.a($$0.getMinimum(), $$0.getMaximum());
    }
 
-   public final class a implements il.a<LongArgumentType> {
-      final long b;
-      final long c;
+   public final class a implements io.a<DoubleArgumentType> {
+      final double b;
+      final double c;
 
-      a(final long $$1, final long $$2) {
+      a(final double $$1, final double $$2) {
          this.b = $$1;
          this.c = $$2;
       }
 
-      public LongArgumentType a(em $$0) {
-         return LongArgumentType.longArg(this.b, this.c);
+      public DoubleArgumentType a(ep $$0) {
+         return DoubleArgumentType.doubleArg(this.b, this.c);
       }
 
       @Override
-      public il<LongArgumentType, ?> a() {
+      public io<DoubleArgumentType, ?> a() {
          return it.this;
       }
    }

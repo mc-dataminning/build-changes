@@ -1,27 +1,33 @@
-public class gms extends gku<cfv, fxh<cfv>> {
-   public gms(gjo.a $$0) {
-      super($$0, new fxh<>($$0.a(fxp.cc)), 0.5F);
-      this.a(new gop(this, $$0.f()));
-      this.a(new goq(this));
+public class gms extends gli<cpd> {
+   private final gfn f;
+
+   public gms(gkd.a $$0) {
+      super($$0, fyd.bH);
+      this.f = $$0.c();
    }
 
-   protected float a(cfv $$0, float $$1) {
-      return $$0.gx();
-   }
-
-   public void a(cfv $$0, float $$1, float $$2, fao $$3, gef $$4, int $$5) {
-      if ($$0.gw()) {
-         float $$6 = $$0.H($$2);
-         this.f.a($$6, $$6, $$6);
+   protected void a(cpd $$0, float $$1, dta $$2, fbc $$3, get $$4, int $$5) {
+      int $$6 = $$0.C();
+      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
+         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
+         $$7 = ayn.a($$7, 0.0F, 1.0F);
+         $$7 *= $$7;
+         $$7 *= $$7;
+         float $$8 = 1.0F + $$7 * 0.3F;
+         $$3.b($$8, $$8, $$8);
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gw()) {
-         this.f.a(1.0F, 1.0F, 1.0F);
-      }
+      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
    }
 
-   public akk a(cfv $$0) {
-      return $$0.gt();
+   public static void a(gfn $$0, dta $$1, fbc $$2, get $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = gpw.a(gpw.a(1.0F), 10);
+      } else {
+         $$6 = gpw.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 }

@@ -1,4 +1,4 @@
-// 24w20a	2026-08-28T01:53:07.036663022	vanilla/Tags for minecraft:item
+// 24w21a	2026-08-28T01:55:46.081769466	vanilla/Tags for minecraft:item
 82edd6d1ec8e7fe75b955b3a41a45d38cc77c262 data/minecraft/tags/item/wolf_food.json
 c573efc219c198638b6916e5de42b196f8267a1e data/minecraft/tags/item/horse_tempt_items.json
 a91a14b0d844c2e8beb882a51072178e0667620c data/minecraft/tags/item/jungle_logs.json
@@ -34,7 +34,6 @@ daec9f32b34c685d972f66ea58ffc7ef3fc977a5 data/minecraft/tags/item/wooden_fences.
 2bf3a7eafd69c022433bc4f2776944d90e7c7cbf data/minecraft/tags/item/enchantable/trident.json
 913bc5c31b098eada6b776a32e560c19f9515e61 data/minecraft/tags/item/emerald_ores.json
 e6756cdd6fb03cf772eba210ae3f93335e83dcd6 data/minecraft/tags/item/enchantable/sword.json
-4f398c1174a9f155eea0e4d5bfaa9618618990dd data/minecraft/tags/item/music_discs.json
 3b84566bb28aa982abda5bf5c27806edbc350c63 data/minecraft/tags/item/hoglin_food.json
 4b41342be611564da2a2009e3322c8fd08f20cdd data/minecraft/tags/item/warped_stems.json
 8a43b6a8e479edbb422584cf21be637710ab1e49 data/minecraft/tags/item/swords.json
@@ -55,8 +54,8 @@ d1b3de80a7e228bb1b85aa05703471032bc2a8c8 data/minecraft/tags/item/redstone_ores.
 31855d768b20e56a7ad007279733d27e91becc21 data/minecraft/tags/item/dark_oak_logs.json
 30cba093322f9f2391402da95a9ae4b07afeea00 data/minecraft/tags/item/stone_crafting_materials.json
 f651379db3bd93084b50c5759f13066cb9859ee2 data/minecraft/tags/item/pig_food.json
-47be456ad97366b91300f74739cd8cac544f698d data/minecraft/tags/item/creeper_igniters.json
 49731163f40c037fed63e50ebb86dc7fd3d2722b data/minecraft/tags/item/sniffer_food.json
+47be456ad97366b91300f74739cd8cac544f698d data/minecraft/tags/item/creeper_igniters.json
 002646611f726ba21cc4b5060d0258c405ae2291 data/minecraft/tags/item/lectern_books.json
 de497bdbd607638702d22bef902ced0dabe1d293 data/minecraft/tags/item/stairs.json
 3c79ca784535e4edb6ad3bf6da109ba0a651018b data/minecraft/tags/item/walls.json

@@ -1,47 +1,84 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.logging.LogUtils;
-import java.util.Collection;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Locale;
+import java.util.function.Consumer;
 import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 
 public class ano {
    private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("commands.perf.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wy.c("commands.perf.alreadyRunning"));
 
-   public static void a(Collection<String> $$0, eq $$1) {
-      $$1.l().a($$0).exceptionally($$1x -> {
-         a.warn("Failed to execute reload", $$1x);
-         $$1.b(wu.c("commands.reload.failure"));
-         return null;
-      });
+   public static void a(CommandDispatcher<et> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("perf").requires($$0x -> $$0x.c(4)))
+               .then(eu.a("start").executes($$0x -> a((et)$$0x.getSource()))))
+            .then(eu.a("stop").executes($$0x -> b((et)$$0x.getSource())))
+      );
    }
 
-   private static Collection<String> a(ath $$0, eqq $$1, Collection<String> $$2) {
-      $$0.a();
-      Collection<String> $$3 = Lists.newArrayList($$2);
-      Collection<String> $$4 = $$1.D().a().b();
+   private static int a(et $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.aV()) {
+         throw c.create();
+      } else {
+         Consumer<bnd> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
+         $$1.a($$2, $$3);
+         $$0.a(() -> wy.c("commands.perf.started"), false);
+         return 0;
+      }
+   }
 
-      for (String $$5 : $$0.b()) {
-         if (!$$4.contains($$5) && !$$3.contains($$5)) {
-            $$3.add($$5);
-         }
+   private static int b(et $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.aV()) {
+         throw b.create();
+      } else {
+         $$1.aX();
+         return 0;
+      }
+   }
+
+   private static void a(et $$0, Path $$1, MinecraftServer $$2) {
+      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ad.f(), $$2.bb().e(), ab.b().b());
+
+      String $$4;
+      try {
+         $$4 = v.a(bow.a, $$3, ".zip");
+      } catch (IOException var11) {
+         $$0.b(wy.c("commands.perf.reportFailed"));
+         a.error("Failed to create report name", var11);
+         return;
       }
 
-      return $$3;
+      try (axy $$7 = new axy(bow.a.resolve($$4))) {
+         $$7.a(Paths.get("system.txt"), $$2.b(new ac()).a());
+         $$7.a($$1);
+      }
+
+      try {
+         FileUtils.forceDelete($$1.toFile());
+      } catch (IOException var9) {
+         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
+      }
+
+      $$0.a(() -> wy.a("commands.perf.reportSaved", $$4), false);
    }
 
-   public static void a(CommandDispatcher<eq> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         eq $$1 = (eq)$$0x.getSource();
-         MinecraftServer $$2 = $$1.l();
-         ath $$3 = $$2.aH();
-         eqq $$4 = $$2.bc();
-         Collection<String> $$5 = $$3.d();
-         Collection<String> $$6 = a($$3, $$4, $$5);
-         $$1.a(() -> wu.c("commands.reload.success"), true);
-         a($$6, $$1);
-         return 0;
-      }));
+   private static void a(et $$0, bnd $$1) {
+      if ($$1 != bmz.a) {
+         int $$2 = $$1.f();
+         double $$3 = (double)$$1.g() / (double)azo.a;
+         $$0.a(() -> wy.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+      }
    }
 }

@@ -1,53 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edq implements edp {
-   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
-   public static final Codec<edq> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dyd.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
-               dyf.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
-               dye.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
-               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
-               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
-               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
-               bpm.b(1, 20).fieldOf("outer_wall_distance").orElse(bps.a(4, 5)).forGetter($$0x -> $$0x.i),
-               bpm.b(1, 20).fieldOf("distribution_points").orElse(bps.a(3, 4)).forGetter($$0x -> $$0x.j),
-               bpm.b(0, 10).fieldOf("point_offset").orElse(bps.a(1, 2)).forGetter($$0x -> $$0x.k),
-               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
-               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
-               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
-               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
-            )
-            .apply($$0, edq::new)
-   );
-   public final dyd c;
-   public final dyf d;
-   public final dye e;
-   public final double f;
-   public final double g;
-   public final boolean h;
-   public final bpm i;
-   public final bpm j;
-   public final bpm k;
-   public final int l;
-   public final int n;
-   public final double o;
-   public final int p;
+public class edq extends eca<eel> {
+   public edq(Codec<eel> $$0) {
+      super($$0);
+   }
 
-   public edq(dyd $$0, dyf $$1, dye $$2, double $$3, double $$4, boolean $$5, bpm $$6, bpm $$7, bpm $$8, int $$9, int $$10, double $$11, int $$12) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
-      this.n = $$10;
-      this.o = $$11;
-      this.p = $$12;
+   @Override
+   public boolean a(ecc<eel> $$0) {
+      ddq $$1 = $$0.b();
+      jd $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         for (ji $$3 : ji.values()) {
+            if ($$3 != ji.a && dot.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, dfy.ff.o().a(dot.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 }

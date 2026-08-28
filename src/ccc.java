@@ -1,235 +1,102 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.DoublePredicate;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class ccc {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 2;
-   private final Map<UUID, ccc.a> c = Maps.newHashMap();
+public class ccc extends cck {
+   private static final ced a = ced.a().d().e();
+   private static final int b = 10;
+   private boolean c;
+   private int d;
+   private final Class<?>[] i;
+   @Nullable
+   private Class<?>[] j;
 
-   @azl
-   public Map<UUID, Object2IntMap<ccd>> a() {
-      Map<UUID, Object2IntMap<ccd>> $$0 = Maps.newHashMap();
-      this.c.keySet().forEach($$1 -> {
-         ccc.a $$2 = this.c.get($$1);
-         $$0.put($$1, $$2.a);
-      });
-      return $$0;
+   public ccc(btu $$0, Class<?>... $$1) {
+      super($$0, true);
+      this.i = $$1;
+      this.a(EnumSet.of(cak.a.d));
    }
 
-   public void b() {
-      Iterator<ccc.a> $$0 = this.c.values().iterator();
+   @Override
+   public boolean b() {
+      int $$0 = this.e.ek();
+      btl $$1 = this.e.ej();
+      if ($$0 != this.d && $$1 != null) {
+         if ($$1.am() == bsw.by && this.e.dQ().ab().b(dcq.O)) {
+            return false;
+         } else {
+            for (Class<?> $$2 : this.i) {
+               if ($$2.isAssignableFrom($$1.getClass())) {
+                  return false;
+               }
+            }
 
-      while ($$0.hasNext()) {
-         ccc.a $$1 = $$0.next();
-         $$1.a();
-         if ($$1.b()) {
-            $$0.remove();
+            return this.a($$1, a);
          }
-      }
-   }
-
-   private Stream<ccc.b> c() {
-      return this.c.entrySet().stream().flatMap($$0 -> $$0.getValue().a($$0.getKey()));
-   }
-
-   private Collection<ccc.b> a(ayo $$0, int $$1) {
-      List<ccc.b> $$2 = this.c().toList();
-      if ($$2.isEmpty()) {
-         return Collections.emptyList();
       } else {
-         int[] $$3 = new int[$$2.size()];
-         int $$4 = 0;
-
-         for (int $$5 = 0; $$5 < $$2.size(); $$5++) {
-            ccc.b $$6 = $$2.get($$5);
-            $$4 += Math.abs($$6.a());
-            $$3[$$5] = $$4 - 1;
-         }
-
-         Set<ccc.b> $$7 = Sets.newIdentityHashSet();
-
-         for (int $$8 = 0; $$8 < $$1; $$8++) {
-            int $$9 = $$0.a($$4);
-            int $$10 = Arrays.binarySearch($$3, $$9);
-            $$7.add($$2.get($$10 < 0 ? -$$10 - 1 : $$10));
-         }
-
-         return $$7;
+         return false;
       }
    }
 
-   private ccc.a a(UUID $$0) {
-      return this.c.computeIfAbsent($$0, $$0x -> new ccc.a());
+   public ccc a(Class<?>... $$0) {
+      this.c = true;
+      this.j = $$0;
+      return this;
    }
 
-   public void a(ccc $$0, ayo $$1, int $$2) {
-      Collection<ccc.b> $$3 = $$0.a($$1, $$2);
-      $$3.forEach($$0x -> {
-         int $$1x = $$0x.e - $$0x.d.m;
-         if ($$1x >= 2) {
-            this.a($$0x.c).a.mergeInt($$0x.d, $$1x, ccc::a);
-         }
-      });
-   }
-
-   public int a(UUID $$0, Predicate<ccd> $$1) {
-      ccc.a $$2 = this.c.get($$0);
-      return $$2 != null ? $$2.a($$1) : 0;
-   }
-
-   public long a(ccd $$0, DoublePredicate $$1) {
-      return this.c.values().stream().filter($$2 -> $$1.test((double)($$2.a.getOrDefault($$0, 0) * $$0.j))).count();
-   }
-
-   public void a(UUID $$0, ccd $$1, int $$2) {
-      ccc.a $$3 = this.a($$0);
-      $$3.a.mergeInt($$1, $$2, ($$1x, $$2x) -> this.a($$1, $$1x, $$2x));
-      $$3.a($$1);
-      if ($$3.b()) {
-         this.c.remove($$0);
-      }
-   }
-
-   public void b(UUID $$0, ccd $$1, int $$2) {
-      this.a($$0, $$1, -$$2);
-   }
-
-   public void a(UUID $$0, ccd $$1) {
-      ccc.a $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.b($$1);
-         if ($$2.b()) {
-            this.c.remove($$0);
-         }
-      }
-   }
-
-   public void a(ccd $$0) {
-      Iterator<ccc.a> $$1 = this.c.values().iterator();
-
-      while ($$1.hasNext()) {
-         ccc.a $$2 = $$1.next();
-         $$2.b($$0);
-         if ($$2.b()) {
-            $$1.remove();
-         }
-      }
-   }
-
-   public <T> T a(DynamicOps<T> $$0) {
-      return (T)ccc.b.b.encodeStart($$0, this.c().toList()).resultOrPartial($$0x -> b.warn("Failed to serialize gossips: {}", $$0x)).orElseGet($$0::emptyList);
-   }
-
-   public void a(Dynamic<?> $$0) {
-      ccc.b.b
-         .decode($$0)
-         .resultOrPartial($$0x -> b.warn("Failed to deserialize gossips: {}", $$0x))
-         .stream()
-         .flatMap($$0x -> ((List)$$0x.getFirst()).stream())
-         .forEach($$0x -> this.a($$0x.c).a.put($$0x.d, $$0x.e));
-   }
-
-   private static int a(int $$0, int $$1) {
-      return Math.max($$0, $$1);
-   }
-
-   private int a(ccd $$0, int $$1, int $$2) {
-      int $$3 = $$1 + $$2;
-      return $$3 > $$0.k ? Math.max($$0.k, $$1) : $$3;
-   }
-
-   static class a {
-      final Object2IntMap<ccd> a = new Object2IntOpenHashMap();
-
-      public int a(Predicate<ccd> $$0) {
-         return this.a
-            .object2IntEntrySet()
-            .stream()
-            .filter($$1 -> $$0.test((ccd)$$1.getKey()))
-            .mapToInt($$0x -> $$0x.getIntValue() * ((ccd)$$0x.getKey()).j)
-            .sum();
+   @Override
+   public void d() {
+      this.e.h(this.e.ej());
+      this.g = this.e.p();
+      this.d = this.e.ek();
+      this.h = 300;
+      if (this.c) {
+         this.h();
       }
 
-      public Stream<ccc.b> a(UUID $$0) {
-         return this.a.object2IntEntrySet().stream().map($$1 -> new ccc.b($$0, (ccd)$$1.getKey(), $$1.getIntValue()));
-      }
+      super.d();
+   }
 
-      public void a() {
-         ObjectIterator<Entry<ccd>> $$0 = this.a.object2IntEntrySet().iterator();
+   protected void h() {
+      double $$0 = this.l();
+      ewr $$1 = ewr.a(this.e.do()).c($$0, 10.0, $$0);
+      List<? extends btn> $$2 = this.e.dQ().a((Class<? extends btn>)this.e.getClass(), $$1, bsv.f);
+      Iterator var5 = $$2.iterator();
 
-         while ($$0.hasNext()) {
-            Entry<ccd> $$1 = (Entry<ccd>)$$0.next();
-            int $$2 = $$1.getIntValue() - ((ccd)$$1.getKey()).l;
-            if ($$2 < 2) {
-               $$0.remove();
-            } else {
-               $$1.setValue($$2);
+      while (true) {
+         btn $$3;
+         while (true) {
+            if (!var5.hasNext()) {
+               return;
+            }
+
+            $$3 = (btn)var5.next();
+            if (this.e != $$3 && $$3.p() == null && (!(this.e instanceof buj) || ((buj)this.e).P_() == ((buj)$$3).P_()) && !$$3.s(this.e.ej())) {
+               if (this.j == null) {
+                  break;
+               }
+
+               boolean $$4 = false;
+
+               for (Class<?> $$5 : this.j) {
+                  if ($$3.getClass() == $$5) {
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  break;
+               }
             }
          }
-      }
 
-      public boolean b() {
-         return this.a.isEmpty();
-      }
-
-      public void a(ccd $$0) {
-         int $$1 = this.a.getInt($$0);
-         if ($$1 > $$0.k) {
-            this.a.put($$0, $$0.k);
-         }
-
-         if ($$1 < 2) {
-            this.b($$0);
-         }
-      }
-
-      public void b(ccd $$0) {
-         this.a.removeInt($$0);
+         this.a($$3, this.e.ej());
       }
    }
 
-   static record b(UUID c, ccd d, int e) {
-      public static final Codec<ccc.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(kd.a.fieldOf("Target").forGetter(ccc.b::b), ccd.n.fieldOf("Type").forGetter(ccc.b::c), axo.l.fieldOf("Value").forGetter(ccc.b::d))
-               .apply($$0, ccc.b::new)
-      );
-      public static final Codec<List<ccc.b>> b = a.listOf();
-
-      public int a() {
-         return this.e * this.d.j;
-      }
-
-      public UUID b() {
-         return this.c;
-      }
-
-      public ccd c() {
-         return this.d;
-      }
-
-      public int d() {
-         return this.e;
-      }
+   protected void a(btn $$0, btl $$1) {
+      $$0.h($$1);
    }
 }

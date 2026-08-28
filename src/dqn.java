@@ -1,15 +1,23 @@
-public class dqn extends dpe {
-   public dqn(ja $$0, dsl $$1) {
-      super(dps.a, $$0, $$1, cyp.b);
+public class dqn {
+   private boolean a;
+   private float b;
+   private float c;
+
+   public void a() {
+      this.c = this.b;
+      float $$0 = 0.1F;
+      if (!this.a && this.b > 0.0F) {
+         this.b = Math.max(this.b - 0.1F, 0.0F);
+      } else if (this.a && this.b < 1.0F) {
+         this.b = Math.min(this.b + 0.1F, 1.0F);
+      }
    }
 
-   @Override
-   protected wu k() {
-      return wu.c("container.furnace");
+   public float a(float $$0) {
+      return ayn.i($$0, this.c, this.b);
    }
 
-   @Override
-   protected cpi a(int $$0, cmk $$1) {
-      return new cqf($$0, $$1, this, this.m);
+   public void a(boolean $$0) {
+      this.a = $$0;
    }
 }

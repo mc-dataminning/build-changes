@@ -1,136 +1,166 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Supplier;
 
-public class fgg {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "screenshots";
-   private int c;
-   private final DataOutputStream d;
-   private final byte[] e;
-   private final int f;
-   private final int g;
-   private File h;
+public class fgg implements Comparable<fgg> {
+   private static final Map<String, fgg> h = Maps.newHashMap();
+   private static final Map<ezy.a, fgg> i = Maps.newHashMap();
+   private static final Set<String> j = Sets.newHashSet();
+   public static final String a = "key.categories.movement";
+   public static final String b = "key.categories.misc";
+   public static final String c = "key.categories.multiplayer";
+   public static final String d = "key.categories.gameplay";
+   public static final String e = "key.categories.inventory";
+   public static final String f = "key.categories.ui";
+   public static final String g = "key.categories.creative";
+   private static final Map<String, Integer> k = ad.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("key.categories.movement", 1);
+      $$0.put("key.categories.gameplay", 2);
+      $$0.put("key.categories.inventory", 3);
+      $$0.put("key.categories.creative", 4);
+      $$0.put("key.categories.multiplayer", 5);
+      $$0.put("key.categories.ui", 6);
+      $$0.put("key.categories.misc", 7);
+   });
+   private final String l;
+   private final ezy.a m;
+   private final String n;
+   private ezy.a o;
+   private boolean p;
+   private int q;
 
-   public static void a(File $$0, eza $$1, Consumer<wu> $$2) {
-      a($$0, null, $$1, $$2);
-   }
-
-   public static void a(File $$0, @Nullable String $$1, eza $$2, Consumer<wu> $$3) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
-      } else {
-         b($$0, $$1, $$2, $$3);
+   public static void a(ezy.a $$0) {
+      fgg $$1 = i.get($$0);
+      if ($$1 != null) {
+         $$1.q++;
       }
    }
 
-   private static void b(File $$0, @Nullable String $$1, eza $$2, Consumer<wu> $$3) {
-      ezp $$4 = a($$2);
-      File $$5 = new File($$0, "screenshots");
-      $$5.mkdir();
-      File $$6;
-      if ($$1 == null) {
-         $$6 = a($$5);
-      } else {
-         $$6 = new File($$5, $$1);
+   public static void a(ezy.a $$0, boolean $$1) {
+      fgg $$2 = i.get($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
       }
+   }
 
-      ac.h().execute(() -> {
-         try {
-            $$4.a($$6);
-            wu $$3x = wu.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new ws(ws.a.b, $$6.getAbsolutePath())));
-            $$3.accept(wu.a("screenshot.success", $$3x));
-         } catch (Exception var7) {
-            b.warn("Couldn't save screenshot", var7);
-            $$3.accept(wu.a("screenshot.failure", var7.getMessage()));
-         } finally {
-            $$4.close();
+   public static void a() {
+      for (fgg $$0 : h.values()) {
+         if ($$0.o.a() == ezy.b.a && $$0.o.b() != ezy.bv.b()) {
+            $$0.a(ezy.a(fgi.Q().aM().j(), $$0.o.b()));
          }
-      });
+      }
    }
 
-   public static ezp a(eza $$0) {
-      int $$1 = $$0.c;
-      int $$2 = $$0.d;
-      ezp $$3 = new ezp($$1, $$2, false);
-      RenderSystem.bindTexture($$0.f());
-      $$3.a(0, true);
-      $$3.h();
-      return $$3;
+   public static void b() {
+      for (fgg $$0 : h.values()) {
+         $$0.n();
+      }
    }
 
-   private static File a(File $$0) {
-      String $$1 = ac.f();
-      int $$2 = 1;
-
-      while (true) {
-         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
-         if (!$$3.exists()) {
-            return $$3;
+   public static void c() {
+      for (fgg $$0 : h.values()) {
+         if ($$0 instanceof fgu $$1) {
+            $$1.n();
          }
-
-         $$2++;
       }
    }
 
-   public fgg(File $$0, int $$1, int $$2, int $$3) throws IOException {
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      File $$4 = new File($$0, "screenshots");
-      $$4.mkdir();
-      String $$5 = "huge_" + ac.f();
-      int $$6 = 1;
+   public static void d() {
+      i.clear();
 
-      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
-         $$6++;
-      }
-
-      byte[] $$7 = new byte[18];
-      $$7[2] = 2;
-      $$7[12] = (byte)($$1 % 256);
-      $$7[13] = (byte)($$1 / 256);
-      $$7[14] = (byte)($$2 % 256);
-      $$7[15] = (byte)($$2 / 256);
-      $$7[16] = 24;
-      this.e = new byte[$$1 * $$3 * 3];
-      this.d = new DataOutputStream(new FileOutputStream(this.h));
-      this.d.write($$7);
-   }
-
-   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$3;
-      int $$6 = $$4;
-      if ($$3 > this.f - $$1) {
-         $$5 = this.f - $$1;
-      }
-
-      if ($$4 > this.g - $$2) {
-         $$6 = this.g - $$2;
-      }
-
-      this.c = $$6;
-
-      for (int $$7 = 0; $$7 < $$6; $$7++) {
-         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
-         int $$8 = ($$1 + $$7 * this.f) * 3;
-         $$0.get(this.e, $$8, $$5 * 3);
+      for (fgg $$0 : h.values()) {
+         i.put($$0.o, $$0);
       }
    }
 
-   public void a() throws IOException {
-      this.d.write(this.e, 0, this.f * 3 * this.c);
+   public fgg(String $$0, int $$1, String $$2) {
+      this($$0, ezy.b.a, $$1, $$2);
    }
 
-   public File b() throws IOException {
-      this.d.close();
-      return this.h;
+   public fgg(String $$0, ezy.b $$1, int $$2, String $$3) {
+      this.l = $$0;
+      this.o = $$1.a($$2);
+      this.m = this.o;
+      this.n = $$3;
+      h.put($$0, this);
+      i.put(this.o, this);
+      j.add($$3);
+   }
+
+   public boolean e() {
+      return this.p;
+   }
+
+   public String f() {
+      return this.n;
+   }
+
+   public boolean g() {
+      if (this.q == 0) {
+         return false;
+      } else {
+         this.q--;
+         return true;
+      }
+   }
+
+   private void n() {
+      this.q = 0;
+      this.a(false);
+   }
+
+   public String h() {
+      return this.l;
+   }
+
+   public ezy.a i() {
+      return this.m;
+   }
+
+   public void b(ezy.a $$0) {
+      this.o = $$0;
+   }
+
+   public int a(fgg $$0) {
+      return this.n.equals($$0.n) ? grl.a(this.l).compareTo(grl.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
+   }
+
+   public static Supplier<wy> a(String $$0) {
+      fgg $$1 = h.get($$0);
+      return $$1 == null ? () -> wy.c($$0) : $$1::k;
+   }
+
+   public boolean b(fgg $$0) {
+      return this.o.equals($$0.o);
+   }
+
+   public boolean j() {
+      return this.o.equals(ezy.bv);
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 == ezy.bv.b() ? this.o.a() == ezy.b.b && this.o.b() == $$1 : this.o.a() == ezy.b.a && this.o.b() == $$0;
+   }
+
+   public boolean a(int $$0) {
+      return this.o.a() == ezy.b.c && this.o.b() == $$0;
+   }
+
+   public wy k() {
+      return this.o.d();
+   }
+
+   public boolean l() {
+      return this.o.equals(this.m);
+   }
+
+   public String m() {
+      return this.o.c();
+   }
+
+   public void a(boolean $$0) {
+      this.p = $$0;
    }
 }

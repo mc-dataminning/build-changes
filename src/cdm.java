@@ -1,47 +1,52 @@
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
-public abstract class cdm<E extends btc> {
-   private static final ayo a = ayo.b();
-   private static final int c = 20;
-   protected static final int b = 16;
-   private static final cdt d = cdt.b().a(16.0);
-   private static final cdt e = cdt.b().a(16.0).e();
-   private static final cdt f = cdt.a().a(16.0);
-   private static final cdt g = cdt.a().a(16.0).e();
-   private static final cdt h = cdt.a().a(16.0).d();
-   private static final cdt i = cdt.a().a(16.0).d().e();
-   private final int j;
-   private long k;
+public class cdm<T extends btl> extends cdw<T> {
+   private final BiPredicate<T, btl> a;
+   private final Predicate<T> c;
+   private final ccq<Boolean> d;
+   private final int e;
 
-   public cdm(int $$0) {
-      this.j = $$0;
-      this.k = (long)a.a($$0);
+   public cdm(int $$0, BiPredicate<T, btl> $$1, Predicate<T> $$2, ccq<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public cdm() {
-      this(20);
-   }
-
-   public final void b(aqm $$0, E $$1) {
-      if (--this.k <= 0L) {
-         this.k = (long)this.j;
-         this.a($$0, $$1);
+   @Override
+   protected void a(aqt $$0, T $$1) {
+      if (!this.c.test($$1)) {
+         this.c($$1);
+      } else {
+         this.a($$1);
       }
    }
 
-   protected abstract void a(aqm var1, E var2);
-
-   public abstract Set<ccg<?>> a();
-
-   public static boolean b(btc $$0, btc $$1) {
-      return $$0.dV().b(ccg.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
+   @Override
+   public Set<ccq<?>> a() {
+      return Set.of(ccq.g);
    }
 
-   public static boolean c(btc $$0, btc $$1) {
-      return $$0.dV().b(ccg.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
+   public void a(T $$0) {
+      Optional<List<btl>> $$1 = $$0.dU().c(ccq.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
    }
 
-   public static boolean d(btc $$0, btc $$1) {
-      return $$0.dV().b(ccg.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
+   public void b(T $$0) {
+      $$0.dU().a(this.d, true, (long)this.e);
+   }
+
+   public void c(T $$0) {
+      $$0.dU().b(this.d);
    }
 }

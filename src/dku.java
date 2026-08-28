@@ -1,33 +1,34 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public class dku extends doj {
-   public static final MapCodec<dku> b = b(dku::new);
-   private static final Map<jf, exa> e = Maps.immutableEnumMap(
-      Map.of(
-         jf.c,
-         dfi.a(3.0, 4.0, 8.0, 13.0, 12.0, 16.0),
-         jf.d,
-         dfi.a(3.0, 4.0, 0.0, 13.0, 12.0, 8.0),
-         jf.f,
-         dfi.a(0.0, 4.0, 3.0, 8.0, 12.0, 13.0),
-         jf.e,
-         dfi.a(8.0, 4.0, 3.0, 16.0, 12.0, 13.0)
-      )
-   );
+public class dku extends dfw implements dfz {
+   public static final MapCodec<dku> a = b(dku::new);
 
    @Override
    public MapCodec<dku> a() {
-      return b;
+      return a;
    }
 
-   public dku(dsk.d $$0) {
-      super(dmk.b.h, $$0);
+   public dku(dsz.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return e.get($$0.c(d));
+   public boolean b(dcx $$0, jd $$1, dta $$2) {
+      return $$0.a_($$1.c()).i();
+   }
+
+   @Override
+   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
+      $$0.H_().c(lu.aI).flatMap($$0x -> $$0x.b(ro.n)).ifPresent($$3x -> ((ebn)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
+   }
+
+   @Override
+   public dfz.a aq_() {
+      return dfz.a.a;
    }
 }

@@ -1,153 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class djv extends dic {
-   public static final MapCodec<djv> a = b(djv::new);
-   public static final dtc b = dtb.w;
-   protected static final int c = 6;
-   protected static final int d = 6;
-   protected static final int e = 8;
-   protected static final exa f = dfi.a(5.0, 4.0, 10.0, 11.0, 12.0, 16.0);
-   protected static final exa g = dfi.a(5.0, 4.0, 0.0, 11.0, 12.0, 6.0);
-   protected static final exa h = dfi.a(10.0, 4.0, 5.0, 16.0, 12.0, 11.0);
-   protected static final exa i = dfi.a(0.0, 4.0, 5.0, 6.0, 12.0, 11.0);
-   protected static final exa j = dfi.a(5.0, 0.0, 4.0, 11.0, 6.0, 12.0);
-   protected static final exa k = dfi.a(4.0, 0.0, 5.0, 12.0, 6.0, 11.0);
-   protected static final exa l = dfi.a(5.0, 10.0, 4.0, 11.0, 16.0, 12.0);
-   protected static final exa m = dfi.a(4.0, 10.0, 5.0, 12.0, 16.0, 11.0);
+public class djv extends dfw {
+   public static final MapCodec<djv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lt.e.r().fieldOf("host").forGetter(djv::b), u()).apply($$0, djv::new));
+   private final dfw b;
+   private static final Map<dfw, dfw> c = Maps.newIdentityHashMap();
+   private static final Map<dta, dta> d = Maps.newIdentityHashMap();
+   private static final Map<dta, dta> e = Maps.newIdentityHashMap();
 
    @Override
-   public MapCodec<djv> a() {
+   public MapCodec<? extends djv> a() {
       return a;
    }
 
-   protected djv(dsk.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(aE, jf.c).a(b, Boolean.valueOf(false)).a(K, dsw.b));
+   public djv(dfw $$0, dsz.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
    }
 
-   @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      switch ((dsw)$$0.c(K)) {
-         case a:
-            switch ($$0.c(aE).o()) {
-               case a:
-                  return k;
-               case c:
-               default:
-                  return j;
-            }
-         case b:
-            switch ((jf)$$0.c(aE)) {
-               case f:
-                  return i;
-               case e:
-                  return h;
-               case d:
-                  return g;
-               case c:
-               default:
-                  return f;
-            }
-         case c:
-         default:
-            switch ($$0.c(aE).o()) {
-               case a:
-                  return m;
-               case c:
-               default:
-                  return l;
-            }
+   public dfw b() {
+      return this.b;
+   }
+
+   public static boolean m(dta $$0) {
+      return c.containsKey($$0.b());
+   }
+
+   private void a(aqt $$0, jd $$1) {
+      cki $$2 = bsw.aM.a((dcu)$$0);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.R();
       }
    }
 
    @Override
-   protected bqh a(dsl $$0, dcg $$1, ja $$2, cml $$3, ewd $$4) {
-      if ($$1.B) {
-         dsl $$5 = $$0.a(b);
-         if ($$5.c(b)) {
-            a($$5, $$1, $$2, 1.0F);
-         }
-
-         return bqh.a;
-      } else {
-         this.b($$0, $$1, $$2, null);
-         return bqh.c;
-      }
-   }
-
-   @Override
-   protected void a(dsl $$0, dcg $$1, ja $$2, dby $$3, BiConsumer<cud, ja> $$4) {
-      if ($$3.n()) {
-         this.b($$0, $$1, $$2, null);
-      }
-
+   protected void a(dta $$0, aqt $$1, jd $$2, cuo $$3, boolean $$4) {
       super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public void b(dsl $$0, dcg $$1, ja $$2, @Nullable cml $$3) {
-      $$0 = $$0.a(b);
-      $$1.a($$2, $$0, 3);
-      this.d($$0, $$1, $$2);
-      a($$3, $$1, $$2, $$0);
-      $$1.a($$3, $$0.c(b) ? dxh.a : dxh.e, $$2);
-   }
-
-   protected static void a(@Nullable cml $$0, dch $$1, ja $$2, dsl $$3) {
-      float $$4 = $$3.c(b) ? 0.6F : 0.5F;
-      $$1.a($$0, $$2, avh.nU, avi.e, 0.3F, $$4);
-   }
-
-   private static void a(dsl $$0, dch $$1, ja $$2, float $$3) {
-      jf $$4 = $$0.c(aE).g();
-      jf $$5 = m($$0).g();
-      double $$6 = (double)$$2.u() + 0.5 + 0.1 * (double)$$4.j() + 0.2 * (double)$$5.j();
-      double $$7 = (double)$$2.v() + 0.5 + 0.1 * (double)$$4.k() + 0.2 * (double)$$5.k();
-      double $$8 = (double)$$2.w() + 0.5 + 0.1 * (double)$$4.l() + 0.2 * (double)$$5.l();
-      $$1.a(new le(le.a, $$3), $$6, $$7, $$8, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public void a(dsl $$0, dcg $$1, ja $$2, ayo $$3) {
-      if ($$0.c(b) && $$3.i() < 0.25F) {
-         a($$0, $$1, $$2, 0.5F);
+      if ($$1.ab().b(dcq.h) && !dac.a($$3, awg.t)) {
+         this.a($$1, $$2);
       }
    }
 
-   @Override
-   protected void a(dsl $$0, dcg $$1, ja $$2, dsl $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         if ($$0.c(b)) {
-            this.d($$0, $$1, $$2);
+   public static dta n(dta $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).o());
+   }
+
+   public dta o(dta $$0) {
+      return a(e, $$0, () -> this.b().o());
+   }
+
+   private static dta a(Map<dta, dta> $$0, dta $$1, Supplier<dta> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dta $$2x = $$2.get();
+
+         for (dud $$3 : $$1x.B()) {
+            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
          }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected int a(dsl $$0, dbm $$1, ja $$2, jf $$3) {
-      return $$0.c(b) ? 15 : 0;
-   }
-
-   @Override
-   protected int b(dsl $$0, dbm $$1, ja $$2, jf $$3) {
-      return $$0.c(b) && m($$0) == $$3 ? 15 : 0;
-   }
-
-   @Override
-   protected boolean e_(dsl $$0) {
-      return true;
-   }
-
-   private void d(dsl $$0, dcg $$1, ja $$2) {
-      $$1.a($$2, this);
-      $$1.a($$2.a(m($$0).g()), this);
-   }
-
-   @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(K, aE, b);
+         return $$2x;
+      });
    }
 }

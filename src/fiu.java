@@ -1,84 +1,31 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public class fiu extends fhs {
-   private static final float a = 0.0625F;
-   private static final float b = 2.125F;
-   private static final float c = 100.0F;
-   private static final float d = 2.5F;
-   private static final float e = -5.0F;
-   private static final float f = 30.0F;
-   private static final float m = 50.0F;
-   private final fiu.a n;
-   private final Supplier<gqq> o;
-   private float p = -5.0F;
-   private float q = 30.0F;
+public class fiu extends bqg {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
 
-   public fiu(int $$0, int $$1, fxm $$2, Supplier<gqq> $$3) {
-      super(0, 0, $$0, $$1, wt.a);
-      this.n = fiu.a.a($$2);
-      this.o = $$3;
+   public fiu(UUID $$0, wy $$1, float $$2, bqg.a $$3, bqg.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ad.c();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
    @Override
-   protected void b(fhh $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)this.D() + (float)this.y() / 2.0F, (float)(this.E() + this.w()), 100.0F);
-      float $$4 = (float)this.w() / 2.125F;
-      $$0.c().b($$4, $$4, $$4);
-      $$0.c().a(0.0F, -0.0625F, 0.0F);
-      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
-      $$0.c().a(a.d.rotationDegrees(this.q));
-      $$0.e();
-      ezk.a(a.b.rotationDegrees(this.p));
-      this.n.a($$0, this.o.get());
-      $$0.e();
-      ezk.d();
-      $$0.c().b();
+   public void a(float $$0) {
+      this.b = this.j();
+      this.h = $$0;
+      this.i = ad.c();
    }
 
    @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.p = ayg.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
-      this.q += (float)$$2 * 2.5F;
-   }
-
-   @Override
-   public void a(guj $$0) {
-   }
-
-   @Override
-   protected void a(flq $$0) {
-   }
-
-   @Override
-   public boolean C() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public fhe a(flw $$0) {
-      return null;
-   }
-
-   static record a(fvv<?> a, fvv<?> b) {
-      public static fiu.a a(fxm $$0) {
-         fvv<?> $$1 = new fvv($$0.a(fxp.aS), false);
-         fvv<?> $$2 = new fvv($$0.a(fxp.aW), true);
-         $$1.e = false;
-         $$2.e = false;
-         return new fiu.a($$1, $$2);
-      }
-
-      public void a(fhh $$0, gqq $$1) {
-         $$0.c().a();
-         $$0.c().b(1.0F, 1.0F, -1.0F);
-         $$0.c().a(0.0F, -1.5F, 0.0F);
-         fvv<?> $$2 = $$1.e() == gqq.a.a ? this.b : this.a;
-         gen $$3 = $$2.a($$1.a());
-         $$2.a($$0.c(), $$0.d().getBuffer($$3), 15728880, gph.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.c().b();
-      }
+   public float j() {
+      long $$0 = ad.c() - this.i;
+      float $$1 = ayn.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return ayn.i($$1, this.b, this.h);
    }
 }

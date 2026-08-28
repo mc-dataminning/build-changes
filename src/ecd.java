@@ -1,73 +1,29 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class ecd extends ebl<edu> {
-   public ecd(Codec<edu> $$0) {
+public class ecd extends eca<eei> {
+   public ecd(Codec<eei> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebn<edu> $$0) {
-      ddc $$1 = $$0.b();
-      ja $$2 = $$0.e();
-      ayo $$3 = $$0.d();
-      edu $$4 = $$0.f();
-      if (!c($$1.a_($$2))) {
-         return false;
-      } else {
-         List<jf> $$5 = $$4.a($$3);
-         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
-            return true;
-         } else {
-            ja.a $$6 = $$2.j();
+   public boolean a(ecc<eei> $$0) {
+      jd $$1 = $$0.e();
+      eei $$2 = $$0.f();
+      ddq $$3 = $$0.b();
+      jd.a $$4 = new jd.a();
 
-            for (jf $$7 : $$5) {
-               $$6.g($$2);
-               List<jf> $$8 = $$4.a($$3, $$7.g());
-
-               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
-                  $$6.a($$2, $$7);
-                  dsl $$10 = $$1.a_($$6);
-                  if (!c($$10) && !$$10.a($$4.b)) {
-                     break;
-                  }
-
-                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
-                     return true;
-                  }
-               }
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$1.u() + $$5;
+            int $$8 = $$1.w() + $$6;
+            int $$9 = $$3.I_() + $$2.b;
+            $$4.d($$7, $$9, $$8);
+            if ($$3.a_($$4).i()) {
+               $$3.a($$4, $$2.c, 2);
             }
-
-            return false;
-         }
-      }
-   }
-
-   public static boolean a(ddc $$0, ja $$1, dsl $$2, edu $$3, ayo $$4, List<jf> $$5) {
-      ja.a $$6 = $$1.j();
-
-      for (jf $$7 : $$5) {
-         dsl $$8 = $$0.a_($$6.a($$1, $$7));
-         if ($$8.a($$3.h)) {
-            dsl $$9 = $$3.b.c($$2, $$0, $$1, $$7);
-            if ($$9 == null) {
-               return false;
-            }
-
-            $$0.a($$1, $$9, 3);
-            $$0.y($$1).e($$1);
-            if ($$4.i() < $$3.g) {
-               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
-            }
-
-            return true;
          }
       }
 
-      return false;
-   }
-
-   private static boolean c(dsl $$0) {
-      return $$0.i() || $$0.a(dfk.G);
+      return true;
    }
 }

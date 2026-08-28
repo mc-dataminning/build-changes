@@ -1,105 +1,235 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
 
-public record df(Map<jj<brn>, df.b> b) {
-   public static final Codec<df> a = Codec.unboundedMap(brn.a, df.b.a).xmap(df::new, df::a);
+public record df(
+   Optional<df.b> b,
+   Optional<jq<ddu>> c,
+   Optional<jq<ejm>> d,
+   Optional<akp<dcu>> e,
+   Optional<Boolean> f,
+   Optional<dc> g,
+   Optional<aw> h,
+   Optional<cd> i,
+   Optional<Boolean> j
+) {
+   public static final Codec<df> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               df.b.a.optionalFieldOf("position").forGetter(df::a),
+               kb.a(lu.aF).optionalFieldOf("biomes").forGetter(df::b),
+               kb.a(lu.aR).optionalFieldOf("structures").forGetter(df::c),
+               akp.a(lu.ba).optionalFieldOf("dimension").forGetter(df::d),
+               Codec.BOOL.optionalFieldOf("smokey").forGetter(df::e),
+               dc.a.optionalFieldOf("light").forGetter(df::f),
+               aw.a.optionalFieldOf("block").forGetter(df::g),
+               cd.a.optionalFieldOf("fluid").forGetter(df::h),
+               Codec.BOOL.optionalFieldOf("can_see_sky").forGetter(df::i)
+            )
+            .apply($$0, df::new)
+   );
 
-   public boolean a(bsh $$0) {
-      if ($$0 instanceof btc $$1 && this.a($$1.ew())) {
-         return true;
-      }
-
-      return false;
-   }
-
-   public boolean a(btc $$0) {
-      return this.a($$0.ew());
-   }
-
-   public boolean a(Map<jj<brn>, brp> $$0) {
-      for (Entry<jj<brn>, df.b> $$1 : this.b.entrySet()) {
-         brp $$2 = $$0.get($$1.getKey());
-         if (!$$1.getValue().a($$2)) {
+   public boolean a(aqt $$0, double $$1, double $$2, double $$3) {
+      if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
+         return false;
+      } else if (this.e.isPresent() && this.e.get() != $$0.af()) {
+         return false;
+      } else {
+         jd $$4 = jd.a($$1, $$2, $$3);
+         boolean $$5 = $$0.p($$4);
+         if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
+            if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dgk.a($$0, $$4)) {
+                  if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
+                     return false;
+                  } else if (this.h.isPresent() && !this.h.get().a($$0, $$4)) {
+                     return false;
+                  } else {
+                     return this.i.isPresent() && !this.i.get().a($$0, $$4) ? false : !this.j.isPresent() || this.j.get() == $$0.h($$4);
+                  }
+               } else {
+                  return false;
+               }
+            } else {
+               return false;
+            }
+         } else {
             return false;
          }
       }
-
-      return true;
    }
 
-   public Map<jj<brn>, df.b> a() {
+   public Optional<df.b> a() {
       return this.b;
    }
 
+   public Optional<jq<ddu>> b() {
+      return this.c;
+   }
+
+   public Optional<jq<ejm>> c() {
+      return this.d;
+   }
+
+   public Optional<akp<dcu>> d() {
+      return this.e;
+   }
+
+   public Optional<Boolean> e() {
+      return this.f;
+   }
+
+   public Optional<dc> f() {
+      return this.g;
+   }
+
+   public Optional<aw> g() {
+      return this.h;
+   }
+
+   public Optional<cd> h() {
+      return this.i;
+   }
+
+   public Optional<Boolean> i() {
+      return this.j;
+   }
+
    public static class a {
-      private final Builder<jj<brn>, df.b> a = ImmutableMap.builder();
+      private dh.c a;
+      private dh.c b;
+      private dh.c c;
+      private Optional<jq<ddu>> d;
+      private Optional<jq<ejm>> e;
+      private Optional<akp<dcu>> f;
+      private Optional<Boolean> g;
+      private Optional<dc> h;
+      private Optional<aw> i;
+      private Optional<cd> j;
+      private Optional<Boolean> k;
+
+      public a() {
+         this.a = dh.c.c;
+         this.b = dh.c.c;
+         this.c = dh.c.c;
+         this.d = Optional.empty();
+         this.e = Optional.empty();
+         this.f = Optional.empty();
+         this.g = Optional.empty();
+         this.h = Optional.empty();
+         this.i = Optional.empty();
+         this.j = Optional.empty();
+         this.k = Optional.empty();
+      }
 
       public static df.a a() {
          return new df.a();
       }
 
-      public df.a a(jj<brn> $$0) {
-         this.a.put($$0, new df.b());
+      public static df.a a(jm<ddu> $$0) {
+         return a().a(jq.a($$0));
+      }
+
+      public static df.a a(akp<dcu> $$0) {
+         return a().b($$0);
+      }
+
+      public static df.a b(jm<ejm> $$0) {
+         return a().b(jq.a($$0));
+      }
+
+      public static df.a a(dh.c $$0) {
+         return a().c($$0);
+      }
+
+      public df.a b(dh.c $$0) {
+         this.a = $$0;
          return this;
       }
 
-      public df.a a(jj<brn> $$0, df.b $$1) {
-         this.a.put($$0, $$1);
+      public df.a c(dh.c $$0) {
+         this.b = $$0;
          return this;
       }
 
-      public Optional<df> b() {
-         return Optional.of(new df(this.a.build()));
+      public df.a d(dh.c $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public df.a a(jq<ddu> $$0) {
+         this.d = Optional.of($$0);
+         return this;
+      }
+
+      public df.a b(jq<ejm> $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public df.a b(akp<dcu> $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public df.a a(dc.a $$0) {
+         this.h = Optional.of($$0.b());
+         return this;
+      }
+
+      public df.a a(aw.a $$0) {
+         this.i = Optional.of($$0.b());
+         return this;
+      }
+
+      public df.a a(cd.a $$0) {
+         this.j = Optional.of($$0.b());
+         return this;
+      }
+
+      public df.a a(boolean $$0) {
+         this.g = Optional.of($$0);
+         return this;
+      }
+
+      public df.a b(boolean $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
+      public df b() {
+         Optional<df.b> $$0 = df.b.a(this.a, this.b, this.c);
+         return new df($$0, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k);
       }
    }
 
-   public static record b(de.d b, de.d c, Optional<Boolean> d, Optional<Boolean> e) {
+   static record b(dh.c b, dh.c c, dh.c d) {
       public static final Codec<df.b> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  de.d.d.optionalFieldOf("amplifier", de.d.c).forGetter(df.b::a),
-                  de.d.d.optionalFieldOf("duration", de.d.c).forGetter(df.b::b),
-                  Codec.BOOL.optionalFieldOf("ambient").forGetter(df.b::c),
-                  Codec.BOOL.optionalFieldOf("visible").forGetter(df.b::d)
+                  dh.c.d.optionalFieldOf("x", dh.c.c).forGetter(df.b::a),
+                  dh.c.d.optionalFieldOf("y", dh.c.c).forGetter(df.b::b),
+                  dh.c.d.optionalFieldOf("z", dh.c.c).forGetter(df.b::c)
                )
                .apply($$0, df.b::new)
       );
 
-      public b() {
-         this(de.d.c, de.d.c, Optional.empty(), Optional.empty());
+      static Optional<df.b> a(dh.c $$0, dh.c $$1, dh.c $$2) {
+         return $$0.c() && $$1.c() && $$2.c() ? Optional.empty() : Optional.of(new df.b($$0, $$1, $$2));
       }
 
-      public boolean a(@Nullable brp $$0) {
-         if ($$0 == null) {
-            return false;
-         } else if (!this.b.d($$0.e())) {
-            return false;
-         } else if (!this.c.d($$0.d())) {
-            return false;
-         } else {
-            return this.d.isPresent() && this.d.get() != $$0.f() ? false : !this.e.isPresent() || this.e.get() == $$0.g();
-         }
+      public boolean a(double $$0, double $$1, double $$2) {
+         return this.b.d($$0) && this.c.d($$1) && this.d.d($$2);
       }
 
-      public de.d a() {
+      public dh.c a() {
          return this.b;
       }
 
-      public de.d b() {
+      public dh.c b() {
          return this.c;
       }
 
-      public Optional<Boolean> c() {
+      public dh.c c() {
          return this.d;
-      }
-
-      public Optional<Boolean> d() {
-         return this.e;
       }
    }
 }

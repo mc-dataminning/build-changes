@@ -1,12 +1,36 @@
-public abstract class ftj<T extends cjr> extends fvd<T> {
-   protected ftj(fxq $$0) {
-      super($$0);
+import com.mojang.authlib.GameProfile;
+import java.util.function.Supplier;
+
+public class ftj implements ftn {
+   private final GameProfile a;
+   private final Supplier<grf> b;
+   private final wy c;
+
+   public ftj(GameProfile $$0) {
+      this.a = $$0;
+      this.b = fgi.Q().am().a($$0);
+      this.c = wy.b($$0.getName());
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      ftn.a(this.o, this.n, this.a($$0), this.c, $$3);
+   @Override
+   public void a(ftl $$0) {
+      fgi.Q().L().b(new aic(this.a.getId()));
    }
 
-   public abstract boolean a(T var1);
+   @Override
+   public wy aR_() {
+      return this.c;
+   }
+
+   @Override
+   public void a(fht $$0, float $$1, int $$2) {
+      $$0.a(1.0F, 1.0F, 1.0F, (float)$$2 / 255.0F);
+      fjf.a($$0, this.b.get(), 2, 2, 12);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   @Override
+   public boolean aS_() {
+      return true;
+   }
 }

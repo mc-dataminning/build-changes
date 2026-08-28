@@ -1,8 +1,8 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 
 public class bfh extends DataFix {
    public bfh(Schema $$0, boolean $$1) {
@@ -10,9 +10,10 @@ public class bfh extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgh.H);
       return this.fixTypeEverywhereTyped(
-         "ObjectiveDisplayNameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("DisplayName", azn::a))
+         "Map id fix",
+         this.getInputSchema().getType(bgq.j),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.createMap(ImmutableMap.of($$0x.createString("data"), $$0x)))
       );
    }
 }

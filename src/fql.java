@@ -1,58 +1,47 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+public class fql {
+   public static final int a = 12;
+   private static final int f = 3;
+   public static final int b = 3;
+   public static final int c = 3;
+   public static final int d = 3;
+   public static final int e = 3;
+   private static final int g = -267386864;
+   private static final int h = 1347420415;
+   private static final int i = 1344798847;
 
-public class fql extends fqn {
-   private static final wu a = wu.c("options.online.title");
-   @Nullable
-   private ffz<Unit> s;
-
-   public fql(fnl $$0, fga $$1) {
-      super($$0, $$1, a);
+   public static void a(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$1 - 3;
+      int $$7 = $$2 - 3;
+      int $$8 = $$3 + 3 + 3;
+      int $$9 = $$4 + 3 + 3;
+      c($$0, $$6, $$7 - 1, $$8, $$5, -267386864);
+      c($$0, $$6, $$7 + $$9, $$8, $$5, -267386864);
+      b($$0, $$6, $$7, $$8, $$9, $$5, -267386864);
+      b($$0, $$6 - 1, $$7, $$9, $$5, -267386864);
+      b($$0, $$6 + $$8, $$7, $$9, $$5, -267386864);
+      a($$0, $$6, $$7 + 1, $$8, $$9, $$5, 1347420415, 1344798847);
    }
 
-   @Override
-   protected void aP_() {
-      super.aP_();
-      if (this.s != null) {
-         fhs $$0 = this.q.b(this.s);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
+   private static void a(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, $$2, $$4 - 2, $$5, $$6, $$7);
+      a($$0, $$1 + $$3 - 1, $$2, $$4 - 2, $$5, $$6, $$7);
+      c($$0, $$1, $$2 - 1, $$3, $$5, $$6);
+      c($$0, $$1, $$2 - 1 + $$4 - 1, $$3, $$5, $$7);
    }
 
-   private ffz<?>[] a(fga $$0, ffw $$1) {
-      List<ffz<?>> $$2 = new ArrayList<>();
-      $$2.add($$0.T());
-      $$2.add($$0.U());
-      ffz<Unit> $$3 = x.a(
-         $$1.r,
-         $$0x -> {
-            bqe $$1x = $$0x.al();
-            return new ffz<>(
-               "options.difficulty.online",
-               ffz.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new ffz.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$3 != null) {
-         this.s = $$3;
-         $$2.add($$3);
-      }
-
-      return $$2.toArray(new ffz[0]);
+   private static void b(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5);
    }
 
-   @Override
-   protected void m() {
-      this.q.a(this.a(this.c, this.l));
+   private static void a(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5, $$6);
+   }
+
+   private static void c(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      $$0.a($$1, $$2, $$1 + $$3, $$2 + 1, $$4, $$5);
+   }
+
+   private static void b(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$2, $$1 + $$3, $$2 + $$4, $$5, $$6);
    }
 }

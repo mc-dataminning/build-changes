@@ -1,546 +1,193 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dla extends dfi implements did, dmj {
+public class dla extends dfw implements dlp {
    public static final MapCodec<dla> a = b(dla::new);
-   public static final dtf b = dtb.bm;
-   public static final dtj<dti> c = dtb.bn;
-   public static final dtc d = dtb.C;
-   private static final int e = 11;
-   private static final int f = 2;
-   private static final float g = 0.02F;
-   private static final float h = 0.12F;
-   private static final int i = 11;
-   private static final float j = 0.17578125F;
-   private static final float k = 0.05859375F;
-   private static final double l = 0.6;
-   private static final float m = 1.0F;
-   private static final int n = 40;
-   private static final int o = 6;
-   private static final float F = 2.0F;
-   private static final int G = 2;
-   private static final float H = 5.0F;
-   private static final float I = 0.011377778F;
-   private static final int J = 7;
-   private static final int K = 10;
-   private static final float L = 0.6875F;
-   private static final exa M = dfi.a(5.0, 0.0, 5.0, 11.0, 16.0, 11.0);
-   private static final exa N = dfi.a(5.0, 0.0, 5.0, 11.0, 11.0, 11.0);
-   private static final exa O = dfi.a(5.0, 5.0, 5.0, 11.0, 16.0, 11.0);
-   private static final exa P = dfi.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
-   private static final exa Q = dfi.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
-   private static final exa R = dfi.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
-   private static final float S = 0.125F;
-   private static final exa T = dfi.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   public static final dty<ji.a> b = dtq.H;
+   private static final Logger f = LogUtils.getLogger();
+   protected static final int c = 2;
+   protected static final exp d = dfw.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
+   protected static final exp e = dfw.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
 
    @Override
    public MapCodec<dla> a() {
       return a;
    }
 
-   public dla(dsk.d $$0) {
+   public dla(dsz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, jf.b).a(c, dti.b).a(d, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, ji.a.a));
    }
 
    @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(b, c, d);
-   }
-
-   @Override
-   protected boolean a(dsl $$0, dcj $$1, ja $$2) {
-      return c($$1, $$2, $$0.c(b));
-   }
-
-   @Override
-   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, eok.c, eok.c.a($$3));
+   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
+      switch ((ji.a)$$0.c(b)) {
+         case c:
+            return e;
+         case a:
+         default:
+            return d;
       }
+   }
 
-      if ($$1 != jf.b && $$1 != jf.a) {
-         return $$0;
-      } else {
-         jf $$6 = $$0.c(b);
-         if ($$6 == jf.a && $$3.P().a($$4, this)) {
-            return $$0;
-         } else if ($$1 == $$6.g() && !this.a($$0, (dcj)$$3, $$4)) {
-            if ($$6 == jf.a) {
-               $$3.a($$4, this, 2);
-            } else {
-               $$3.a($$4, this, 1);
-            }
-
-            return $$0;
-         } else {
-            boolean $$7 = $$0.c(c) == dti.a;
-            dti $$8 = a($$3, $$4, $$6, $$7);
-            return $$0.a(c, $$8);
+   @Override
+   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
+      if ($$1.D_().j() && $$1.ab().b(dcq.e) && $$3.a(2000) < $$1.al().a()) {
+         while ($$1.a_($$2).a(this)) {
+            $$2 = $$2.d();
          }
-      }
-   }
 
-   @Override
-   protected void a(dcg $$0, dsl $$1, ewd $$2, cnd $$3) {
-      if (!$$0.B) {
-         ja $$4 = $$2.a();
-         if ($$3.a($$0, $$4) && $$3.b($$0) && $$3 instanceof cnq && $$3.du().f() > 0.6) {
-            $$0.b($$4, true);
-         }
-      }
-   }
-
-   @Override
-   public void a(dcg $$0, dsl $$1, ja $$2, bsh $$3, float $$4) {
-      if ($$1.c(b) == jf.b && $$1.c(c) == dti.b) {
-         $$3.a($$4 + 2.0F, 2.0F, $$0.aj().v());
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public void a(dsl $$0, dcg $$1, ja $$2, ayo $$3) {
-      if (m($$0)) {
-         float $$4 = $$3.i();
-         if (!($$4 > 0.12F)) {
-            b($$1, $$2, $$0).filter($$1x -> $$4 < 0.02F || a($$1x.b)).ifPresent($$3x -> a($$1, $$2, $$0, $$3x.b));
-         }
-      }
-   }
-
-   @Override
-   protected void a(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      if (o($$0) && !this.a($$0, (dcj)$$1, $$2)) {
-         $$1.b($$2, true);
-      } else {
-         a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void b(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      a($$0, $$1, $$2, $$3.i());
-      if ($$3.i() < 0.011377778F && b($$0, (dcj)$$1, $$2)) {
-         c($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @VisibleForTesting
-   public static void a(dsl $$0, aqm $$1, ja $$2, float $$3) {
-      if (!($$3 > 0.17578125F) || !($$3 > 0.05859375F)) {
-         if (b($$0, (dcj)$$1, $$2)) {
-            Optional<dla.a> $$4 = b($$1, $$2, $$0);
-            if (!$$4.isEmpty()) {
-               eoi $$5 = $$4.get().b;
-               float $$6;
-               if ($$5 == eok.c) {
-                  $$6 = 0.17578125F;
-               } else {
-                  if ($$5 != eok.e) {
-                     return;
-                  }
-
-                  $$6 = 0.05859375F;
-               }
-
-               if (!($$3 >= $$6)) {
-                  ja $$9 = a($$0, $$1, $$2, 11, false);
-                  if ($$9 != null) {
-                     if ($$4.get().c.a(dfk.sI) && $$5 == eok.c) {
-                        dsl $$10 = dfk.dR.o();
-                        $$1.b($$4.get().a, $$10);
-                        dfi.a($$4.get().c, $$10, $$1, $$4.get().a);
-                        $$1.a(dxh.c, $$4.get().a, dxh.a.a($$10));
-                        $$1.c(1504, $$9, 0);
-                     } else {
-                        ja $$11 = a($$1, $$9, $$5);
-                        if ($$11 != null) {
-                           $$1.c(1504, $$9, 0);
-                           int $$12 = $$9.v() - $$11.v();
-                           int $$13 = 50 + $$12;
-                           dsl $$14 = $$1.a_($$11);
-                           $$1.a($$11, $$14.b(), $$13);
-                        }
-                     }
-                  }
-               }
+         if ($$1.a_($$2).a($$1, $$2, bsw.bx)) {
+            bsq $$4 = bsw.bx.a($$1, $$2.c(), btp.d);
+            if ($$4 != null) {
+               $$4.ay();
             }
          }
       }
    }
 
-   @Nullable
    @Override
-   public dsl a(cxn $$0) {
-      dch $$1 = $$0.q();
-      ja $$2 = $$0.a();
-      jf $$3 = $$0.e().g();
-      jf $$4 = b($$1, $$2, $$3);
-      if ($$4 == null) {
-         return null;
-      } else {
-         boolean $$5 = !$$0.h();
-         dti $$6 = a($$1, $$2, $$4, $$5);
-         return $$6 == null ? null : this.o().a(b, $$4).a(c, $$6).a(d, Boolean.valueOf($$1.b_($$2).a() == eok.c));
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      ji.a $$6 = $$1.o();
+      ji.a $$7 = $$0.c(b);
+      boolean $$8 = $$7 != $$6 && $$6.d();
+      return !$$8 && !$$2.a(this) && !new epy($$3, $$4, $$7).c() ? dfy.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dta $$0, dcu $$1, jd $$2, bsq $$3) {
+      if ($$3.cx()) {
+         $$3.a(this, $$2);
       }
    }
 
    @Override
-   protected eoj b_(dsl $$0) {
-      return $$0.c(d) ? eok.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected exa f(dsl $$0, dbm $$1, ja $$2) {
-      return ewx.a();
-   }
-
-   @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      dti $$4 = $$0.c(c);
-      exa $$5;
-      if ($$4 == dti.a) {
-         $$5 = M;
-      } else if ($$4 == dti.b) {
-         if ($$0.c(b) == jf.a) {
-            $$5 = O;
-         } else {
-            $$5 = N;
-         }
-      } else if ($$4 == dti.c) {
-         $$5 = P;
-      } else if ($$4 == dti.d) {
-         $$5 = Q;
-      } else {
-         $$5 = R;
-      }
-
-      ewh $$11 = $$0.n($$1, $$2);
-      return $$5.a($$11.c, 0.0, $$11.e);
-   }
-
-   @Override
-   protected boolean c(dsl $$0, dbm $$1, ja $$2) {
-      return false;
-   }
-
-   @Override
-   protected float ar_() {
-      return 0.125F;
-   }
-
-   @Override
-   public void a(dcg $$0, ja $$1, ciu $$2) {
-      if (!$$2.aY()) {
-         $$0.c(1045, $$1, 0);
-      }
-   }
-
-   @Override
-   public bra a(bsh $$0) {
-      return $$0.dS().c($$0);
-   }
-
-   private static void a(dsl $$0, aqm $$1, ja $$2) {
-      ja.a $$3 = $$2.j();
-      dsl $$4 = $$0;
-
-      while (n($$4)) {
-         ciu $$5 = ciu.a($$1, $$3, $$4);
-         if (a($$4, true)) {
-            int $$6 = Math.max(1 + $$2.v() - $$3.v(), 6);
-            float $$7 = 1.0F * (float)$$6;
-            $$5.b($$7, 40);
-            break;
-         }
-
-         $$3.c(jf.a);
-         $$4 = $$1.a_($$3);
-      }
-   }
-
-   @VisibleForTesting
-   public static void c(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      dsl $$4 = $$1.a_($$2.b(1));
-      dsl $$5 = $$1.a_($$2.b(2));
-      if (a($$4, $$5)) {
-         ja $$6 = a($$0, $$1, $$2, 7, false);
-         if ($$6 != null) {
-            dsl $$7 = $$1.a_($$6);
-            if (m($$7) && b($$7, $$1, $$6)) {
-               if ($$3.h()) {
-                  a($$1, $$6, jf.a);
-               } else {
-                  b($$1, $$6);
-               }
-            }
-         }
-      }
-   }
-
-   private static void b(aqm $$0, ja $$1) {
-      ja.a $$2 = $$1.j();
-
-      for (int $$3 = 0; $$3 < 10; $$3++) {
-         $$2.c(jf.a);
-         dsl $$4 = $$0.a_($$2);
-         if (!$$4.u().c()) {
-            return;
-         }
-
-         if (a($$4, jf.b) && b($$4, $$0, $$2)) {
-            a($$0, $$2, jf.b);
-            return;
-         }
-
-         if (c($$0, $$2, jf.b) && !$$0.z($$2.d())) {
-            a($$0, $$2.d(), jf.b);
-            return;
-         }
-
-         if (!a((dbm)$$0, $$2, $$4)) {
-            return;
-         }
-      }
-   }
-
-   private static void a(aqm $$0, ja $$1, jf $$2) {
-      ja $$3 = $$1.a($$2);
-      dsl $$4 = $$0.a_($$3);
-      if (a($$4, $$2.g())) {
-         a($$4, (dch)$$0, $$3);
-      } else if ($$4.i() || $$4.a(dfk.G)) {
-         a($$0, $$3, $$2, dti.b);
-      }
-   }
-
-   private static void a(dch $$0, ja $$1, jf $$2, dti $$3) {
-      dsl $$4 = dfk.st.o().a(b, $$2).a(c, $$3).a(d, Boolean.valueOf($$0.b_($$1).a() == eok.c));
-      $$0.a($$1, $$4, 3);
-   }
-
-   private static void a(dsl $$0, dch $$1, ja $$2) {
-      ja $$4;
-      ja $$3;
-      if ($$0.c(b) == jf.b) {
-         $$3 = $$2;
-         $$4 = $$2.c();
-      } else {
-         $$4 = $$2;
-         $$3 = $$2.d();
-      }
-
-      a($$1, $$4, jf.a, dti.a);
-      a($$1, $$3, jf.b, dti.a);
-   }
-
-   public static void a(dcg $$0, ja $$1, dsl $$2) {
-      b($$0, $$1, $$2).ifPresent($$3 -> a($$0, $$1, $$2, $$3.b));
-   }
-
-   private static void a(dcg $$0, ja $$1, dsl $$2, eoi $$3) {
-      ewh $$4 = $$2.n($$0, $$1);
-      double $$5 = 0.0625;
-      double $$6 = (double)$$1.u() + 0.5 + $$4.c;
-      double $$7 = (double)((float)($$1.v() + 1) - 0.6875F) - 0.0625;
-      double $$8 = (double)$$1.w() + 0.5 + $$4.e;
-      eoi $$9 = a($$0, $$3);
-      lh $$10 = $$9.a(awc.b) ? lj.aL : lj.aN;
-      $$0.a($$10, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   public int a(aqt $$0, bsq $$1) {
+      return $$1 instanceof cmv $$2 ? Math.max(1, $$0.ab().c($$2.ga().a ? dcq.F : dcq.E)) : 0;
    }
 
    @Nullable
-   private static ja a(dsl $$0, dch $$1, ja $$2, int $$3, boolean $$4) {
-      if (a($$0, $$4)) {
-         return $$2;
-      } else {
-         jf $$5 = $$0.c(b);
-         BiPredicate<ja, dsl> $$6 = ($$1x, $$2x) -> $$2x.a(dfk.st) && $$2x.c(b) == $$5;
-         return a($$1, $$2, $$5.f(), $$6, $$1x -> a($$1x, $$4), $$3).orElse(null);
-      }
+   @Override
+   public epw a(aqt $$0, bsq $$1, jd $$2) {
+      akp<dcu> $$3 = $$0.af() == dcu.i ? dcu.h : dcu.i;
+      aqt $$4 = $$0.o().a($$3);
+      boolean $$5 = $$4.af() == dcu.i;
+      dur $$6 = $$4.C_();
+      double $$7 = dwv.a($$0.D_(), $$4.D_());
+      jd $$8 = $$6.b($$1.dv() * $$7, $$1.dx(), $$1.dB() * $$7);
+      return this.a($$4, $$1, $$2, $$8, $$5, $$6);
    }
 
    @Nullable
-   private static jf b(dcj $$0, ja $$1, jf $$2) {
-      jf $$3;
-      if (c($$0, $$1, $$2)) {
-         $$3 = $$2;
-      } else {
-         if (!c($$0, $$1, $$2.g())) {
+   private epw a(aqt $$0, bsq $$1, jd $$2, jd $$3, boolean $$4, dur $$5) {
+      Optional<l.a> $$6 = $$0.p().a($$3, $$4, $$5);
+      if ($$6.isEmpty()) {
+         ji.a $$7 = $$1.dQ().a_($$2).d(b).orElse(ji.a.a);
+         Optional<l.a> $$8 = $$0.p().a($$3, $$7);
+         if ($$8.isEmpty()) {
+            f.error("Unable to create a portal, likely target out of worldborder");
             return null;
-         }
-
-         $$3 = $$2.g();
-      }
-
-      return $$3;
-   }
-
-   private static dti a(dcj $$0, ja $$1, jf $$2, boolean $$3) {
-      jf $$4 = $$2.g();
-      dsl $$5 = $$0.a_($$1.a($$2));
-      if (b($$5, $$4)) {
-         return !$$3 && $$5.c(c) != dti.a ? dti.b : dti.a;
-      } else if (!b($$5, $$2)) {
-         return dti.b;
-      } else {
-         dti $$6 = $$5.c(c);
-         if ($$6 != dti.b && $$6 != dti.a) {
-            dsl $$7 = $$0.a_($$1.a($$4));
-            return !b($$7, $$2) ? dti.e : dti.d;
          } else {
-            return dti.c;
+            return a($$1, $$2, $$8.get(), $$0);
          }
-      }
-   }
-
-   public static boolean m(dsl $$0) {
-      return n($$0) && $$0.c(c) == dti.b && !$$0.c(d);
-   }
-
-   private static boolean b(dsl $$0, aqm $$1, ja $$2) {
-      jf $$3 = $$0.c(b);
-      ja $$4 = $$2.a($$3);
-      dsl $$5 = $$1.a_($$4);
-      if (!$$5.u().c()) {
-         return false;
       } else {
-         return $$5.i() ? true : a($$5, $$3.g());
+         return $$6.<epw>map($$3x -> a($$1, $$2, $$3x, $$0)).orElse(null);
       }
    }
 
-   private static Optional<ja> a(dcg $$0, ja $$1, dsl $$2, int $$3) {
-      jf $$4 = $$2.c(b);
-      BiPredicate<ja, dsl> $$5 = ($$1x, $$2x) -> $$2x.a(dfk.st) && $$2x.c(b) == $$4;
-      return a($$0, $$1, $$4.g().f(), $$5, $$0x -> !$$0x.a(dfk.st), $$3);
-   }
-
-   private static boolean c(dcj $$0, ja $$1, jf $$2) {
-      ja $$3 = $$1.a($$2.g());
-      dsl $$4 = $$0.a_($$3);
-      return $$4.d($$0, $$3, $$2) || b($$4, $$2);
-   }
-
-   private static boolean a(dsl $$0, boolean $$1) {
-      if (!$$0.a(dfk.st)) {
-         return false;
+   private static epw a(bsq $$0, jd $$1, l.a $$2, aqt $$3) {
+      dta $$4 = $$0.dQ().a_($$1);
+      ji.a $$5;
+      eww $$7;
+      if ($$4.b(dtq.H)) {
+         $$5 = $$4.c(dtq.H);
+         l.a $$6 = l.a($$1, $$5, 21, ji.a.b, 21, $$2x -> $$0.dQ().a_($$2x) == $$4);
+         $$7 = $$0.a($$5, $$6);
       } else {
-         dti $$2 = $$0.c(c);
-         return $$2 == dti.b || $$1 && $$2 == dti.a;
+         $$5 = ji.a.a;
+         $$7 = new eww(0.5, 0.0, 0.0);
       }
+
+      return a($$3, $$2, $$5, $$7, $$0, $$0.dt(), $$0.dG(), $$0.dI());
    }
 
-   private static boolean a(dsl $$0, jf $$1) {
-      return a($$0, false) && $$0.c(b) == $$1;
-   }
-
-   private static boolean n(dsl $$0) {
-      return b($$0, jf.a);
-   }
-
-   private static boolean o(dsl $$0) {
-      return b($$0, jf.b);
-   }
-
-   private static boolean b(dsl $$0, dcj $$1, ja $$2) {
-      return n($$0) && !$$1.a_($$2.c()).a(dfk.st);
+   private static epw a(aqt $$0, l.a $$1, ji.a $$2, eww $$3, bsq $$4, eww $$5, float $$6, float $$7) {
+      jd $$8 = $$1.a;
+      dta $$9 = $$0.a_($$8);
+      ji.a $$10 = $$9.d(dtq.H).orElse(ji.a.a);
+      double $$11 = (double)$$1.b;
+      double $$12 = (double)$$1.c;
+      bst $$13 = $$4.a($$4.at());
+      int $$14 = $$2 == $$10 ? 0 : 90;
+      eww $$15 = $$2 == $$10 ? $$5 : new eww($$5.e, $$5.d, -$$5.c);
+      double $$16 = (double)$$13.a() / 2.0 + ($$11 - (double)$$13.a()) * $$3.a();
+      double $$17 = ($$12 - (double)$$13.b()) * $$3.b();
+      double $$18 = 0.5 + $$3.c();
+      boolean $$19 = $$10 == ji.a.a;
+      eww $$20 = new eww((double)$$8.u() + ($$19 ? $$16 : $$18), (double)$$8.v() + $$17, (double)$$8.w() + ($$19 ? $$18 : $$16));
+      eww $$21 = epy.a($$20, $$0, $$4, $$13);
+      return new epw($$0, $$21, $$15, $$6 + (float)$$14, $$7);
    }
 
    @Override
-   protected boolean a(dsl $$0, eoy $$1) {
-      return false;
+   public dlp.a b() {
+      return dlp.a.a;
    }
 
-   private static boolean b(dsl $$0, jf $$1) {
-      return $$0.a(dfk.st) && $$0.c(b) == $$1;
-   }
+   @Override
+   public void a(dta $$0, dcu $$1, jd $$2, ayv $$3) {
+      if ($$3.a(100) == 0) {
+         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, avo.uH, avp.e, 0.5F, $$3.i() * 0.4F + 0.8F, false);
+      }
 
-   @Nullable
-   private static ja a(dcg $$0, ja $$1, eoi $$2) {
-      Predicate<dsl> $$3 = $$1x -> $$1x.b() instanceof deb && ((deb)$$1x.b()).a($$2);
-      BiPredicate<ja, dsl> $$4 = ($$1x, $$2x) -> a((dbm)$$0, $$1x, $$2x);
-      return a($$0, $$1, jf.a.f(), $$4, $$3, 11).orElse(null);
-   }
-
-   @Nullable
-   public static ja a(dcg $$0, ja $$1) {
-      BiPredicate<ja, dsl> $$2 = ($$1x, $$2x) -> a((dbm)$$0, $$1x, $$2x);
-      return a($$0, $$1, jf.b.f(), $$2, dla::m, 11).orElse(null);
-   }
-
-   public static eoi a(aqm $$0, ja $$1) {
-      return b($$0, $$1, $$0.a_($$1)).map($$0x -> $$0x.b).filter(dla::a).orElse(eok.a);
-   }
-
-   private static Optional<dla.a> b(dcg $$0, ja $$1, dsl $$2) {
-      return !n($$2) ? Optional.empty() : a($$0, $$1, $$2, 11).map($$1x -> {
-         ja $$2x = $$1x.c();
-         dsl $$3 = $$0.a_($$2x);
-         eoi $$4;
-         if ($$3.a(dfk.sI) && !$$0.D_().i()) {
-            $$4 = eok.c;
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         double $$5 = (double)$$2.u() + $$3.j();
+         double $$6 = (double)$$2.v() + $$3.j();
+         double $$7 = (double)$$2.w() + $$3.j();
+         double $$8 = ((double)$$3.i() - 0.5) * 0.5;
+         double $$9 = ((double)$$3.i() - 0.5) * 0.5;
+         double $$10 = ((double)$$3.i() - 0.5) * 0.5;
+         int $$11 = $$3.a(2) * 2 - 1;
+         if (!$$1.a_($$2.g()).a(this) && !$$1.a_($$2.h()).a(this)) {
+            $$5 = (double)$$2.u() + 0.5 + 0.25 * (double)$$11;
+            $$8 = (double)($$3.i() * 2.0F * (float)$$11);
          } else {
-            $$4 = $$0.b_($$2x).a();
+            $$7 = (double)$$2.w() + 0.5 + 0.25 * (double)$$11;
+            $$10 = (double)($$3.i() * 2.0F * (float)$$11);
          }
 
-         return new dla.a($$2x, $$4, $$3);
-      });
-   }
-
-   private static boolean a(eoi $$0) {
-      return $$0 == eok.e || $$0 == eok.c;
-   }
-
-   private static boolean a(dsl $$0, dsl $$1) {
-      return $$0.a(dfk.su) && $$1.a(dfk.G) && $$1.u().b();
-   }
-
-   private static eoi a(dcg $$0, eoi $$1) {
-      if ($$1.a(eok.a)) {
-         return $$0.D_().i() ? eok.e : eok.c;
-      } else {
-         return $$1;
+         $$1.a(lm.ac, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 
-   private static Optional<ja> a(dch $$0, ja $$1, jf.b $$2, BiPredicate<ja, dsl> $$3, Predicate<dsl> $$4, int $$5) {
-      jf $$6 = jf.a($$2, jf.a.b);
-      ja.a $$7 = $$1.j();
-
-      for (int $$8 = 1; $$8 < $$5; $$8++) {
-         $$7.c($$6);
-         dsl $$9 = $$0.a_($$7);
-         if ($$4.test($$9)) {
-            return Optional.of($$7.i());
-         }
-
-         if ($$0.d($$7.v()) || !$$3.test($$7, $$9)) {
-            return Optional.empty();
-         }
-      }
-
-      return Optional.empty();
+   @Override
+   public cuo a(dcx $$0, jd $$1, dta $$2) {
+      return cuo.l;
    }
 
-   private static boolean a(dbm $$0, ja $$1, dsl $$2) {
-      if ($$2.i()) {
-         return true;
-      } else if ($$2.i($$0, $$1)) {
-         return false;
-      } else if (!$$2.u().c()) {
-         return false;
-      } else {
-         exa $$3 = $$2.k($$0, $$1);
-         return !ewx.c(T, $$3, ewl.i);
+   @Override
+   protected dta a(dta $$0, dmk $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((ji.a)$$0.c(b)) {
+               case c:
+                  return $$0.a(b, ji.a.a);
+               case a:
+                  return $$0.a(b, ji.a.c);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
       }
    }
 
-   static record a(ja a, eoi b, dsl c) {
+   @Override
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(b);
    }
 }

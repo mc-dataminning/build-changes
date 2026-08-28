@@ -1,209 +1,59 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import it.unimi.dsi.fastutil.ints.Int2DoubleMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleOpenHashMap;
-import java.util.Locale;
-import java.util.function.Consumer;
-import java.util.function.DoubleSupplier;
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import jdk.jfr.consumer.RecordedEvent;
 
-public class boc {
-   private final String b;
-   private final bob c;
-   private final DoubleSupplier d;
-   private final ByteBuf e;
-   private final ByteBuf f;
-   private volatile boolean g;
-   @Nullable
-   private final Runnable h;
-   @Nullable
-   final boc.c a;
-   private double i;
-
-   protected boc(String $$0, bob $$1, DoubleSupplier $$2, @Nullable Runnable $$3, @Nullable boc.c $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.h = $$3;
-      this.d = $$2;
-      this.a = $$4;
-      this.f = ByteBufAllocator.DEFAULT.buffer();
-      this.e = ByteBufAllocator.DEFAULT.buffer();
-      this.g = true;
+public record boc(Instant a, long b, boc.b c) {
+   public static boc a(RecordedEvent $$0) {
+      return new boc($$0.getStartTime(), $$0.getLong("heapUsed"), $$0.getString("when").equalsIgnoreCase("before gc") ? boc.b.a : boc.b.b);
    }
 
-   public static boc a(String $$0, bob $$1, DoubleSupplier $$2) {
-      return new boc($$0, $$1, $$2, null, null);
+   public static boc.a a(Duration $$0, List<boc> $$1, Duration $$2, int $$3) {
+      return new boc.a($$0, $$2, $$3, a($$1));
    }
 
-   public static <T> boc a(String $$0, bob $$1, T $$2, ToDoubleFunction<T> $$3) {
-      return a($$0, $$1, $$3, $$2).a();
-   }
+   private static double a(List<boc> $$0) {
+      long $$1 = 0L;
+      Map<boc.b, List<boc>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.c));
+      List<boc> $$3 = $$2.get(boc.b.a);
+      List<boc> $$4 = $$2.get(boc.b.b);
 
-   public static <T> boc.a<T> a(String $$0, bob $$1, ToDoubleFunction<T> $$2, T $$3) {
-      return new boc.a<>($$0, $$1, $$2, $$3);
-   }
-
-   public void a() {
-      if (!this.g) {
-         throw new IllegalStateException("Not running");
-      } else {
-         if (this.h != null) {
-            this.h.run();
-         }
-      }
-   }
-
-   public void a(int $$0) {
-      this.h();
-      this.i = this.d.getAsDouble();
-      this.f.writeDouble(this.i);
-      this.e.writeInt($$0);
-   }
-
-   public void b() {
-      this.h();
-      this.f.release();
-      this.e.release();
-      this.g = false;
-   }
-
-   private void h() {
-      if (!this.g) {
-         throw new IllegalStateException(String.format(Locale.ROOT, "Sampler for metric %s not started!", this.b));
-      }
-   }
-
-   DoubleSupplier c() {
-      return this.d;
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public bob e() {
-      return this.c;
-   }
-
-   public boc.b f() {
-      Int2DoubleMap $$0 = new Int2DoubleOpenHashMap();
-      int $$1 = Integer.MIN_VALUE;
-      int $$2 = Integer.MIN_VALUE;
-
-      while (this.f.isReadable(8)) {
-         int $$3 = this.e.readInt();
-         if ($$1 == Integer.MIN_VALUE) {
-            $$1 = $$3;
-         }
-
-         $$0.put($$3, this.f.readDouble());
-         $$2 = $$3;
+      for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
+         boc $$6 = $$3.get($$5);
+         boc $$7 = $$4.get($$5 - 1);
+         $$1 += $$6.b - $$7.b;
       }
 
-      return new boc.b($$1, $$2, $$0);
+      Duration $$8 = Duration.between($$0.get(1).a, $$0.get($$0.size() - 1).a);
+      return (double)$$1 / (double)$$8.getSeconds();
    }
 
-   public boolean g() {
-      return this.a != null && this.a.test(this.i);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         boc $$1 = (boc)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   public static class a<T> {
-      private final String a;
-      private final bob b;
-      private final DoubleSupplier c;
-      private final T d;
-      @Nullable
-      private Runnable e;
-      @Nullable
-      private boc.c f;
-
-      public a(String $$0, bob $$1, ToDoubleFunction<T> $$2, T $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = () -> $$2.applyAsDouble($$3);
-         this.d = $$3;
+   public static record a(Duration a, Duration b, int c, double d) {
+      public float a() {
+         return (float)this.b.toMillis() / (float)this.a.toMillis();
       }
 
-      public boc.a<T> a(Consumer<T> $$0) {
-         this.e = () -> $$0.accept(this.d);
-         return this;
+      public Duration b() {
+         return this.a;
       }
 
-      public boc.a<T> a(boc.c $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public boc a() {
-         return new boc(this.a, this.b, this.c, this.e, this.f);
-      }
-   }
-
-   public static class b {
-      private final Int2DoubleMap a;
-      private final int b;
-      private final int c;
-
-      public b(int $$0, int $$1, Int2DoubleMap $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$2;
-      }
-
-      public double a(int $$0) {
-         return this.a.get($$0);
-      }
-
-      public int a() {
+      public Duration c() {
          return this.b;
       }
 
-      public int b() {
+      public int d() {
          return this.c;
       }
+
+      public double e() {
+         return this.d;
+      }
    }
 
-   public interface c {
-      boolean test(double var1);
-   }
-
-   public static class d implements boc.c {
-      private final float a;
-      private double b = Double.MIN_VALUE;
-
-      public d(float $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public boolean test(double $$0) {
-         boolean $$2;
-         if (this.b != Double.MIN_VALUE && !($$0 <= this.b)) {
-            $$2 = ($$0 - this.b) / this.b >= (double)this.a;
-         } else {
-            $$2 = false;
-         }
-
-         this.b = $$0;
-         return $$2;
-      }
+   static enum b {
+      a,
+      b;
    }
 }

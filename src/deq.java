@@ -1,20 +1,16 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
-public class deq extends des {
-   public static final MapCodec<deq> a = b(deq::new);
-   private static final exa b = dfi.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+public abstract class deq<E extends dqf> extends dfi {
+   protected final Supplier<dqh<? extends E>> a;
 
-   @Override
-   public MapCodec<? extends deq> a() {
-      return a;
-   }
-
-   protected deq(dsk.d $$0) {
+   protected deq(dsz.d $$0, Supplier<dqh<? extends E>> $$1) {
       super($$0);
+      this.a = $$1;
    }
 
    @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return b;
-   }
+   protected abstract MapCodec<? extends deq<E>> a();
+
+   public abstract did.c<? extends dqm> a(dta var1, dcu var2, jd var3, boolean var4);
 }

@@ -1,110 +1,89 @@
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 
-public abstract class cer extends cep {
-   @Nullable
-   private cer b;
-   private int c = 1;
+public class cer {
+   private final jd a;
+   private final jm<cet> b;
+   private int c;
+   private final Runnable d;
 
-   public cer(bsn<? extends cer> $$0, dcg $$1) {
-      super($$0, $$1);
+   public static Codec<cer> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  jd.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
+                  akn.a(lu.aa).fieldOf("type").forGetter($$0xx -> $$0xx.b),
+                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
+                  RecordCodecBuilder.point($$0)
+               )
+               .apply($$1, cer::new)
+      );
    }
 
-   @Override
-   protected void z() {
-      super.z();
-      this.bU.a(5, new bzw(this));
+   private cer(jd $$0, jm<cet> $$1, int $$2, Runnable $$3) {
+      this.a = $$0.i();
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public int af() {
-      return this.gp();
+   public cer(jd $$0, jm<cet> $$1, Runnable $$2) {
+      this($$0, $$1, $$1.a().b(), $$2);
    }
 
-   public int gp() {
-      return super.af();
+   @Deprecated
+   @azs
+   public int a() {
+      return this.c;
    }
 
-   @Override
-   protected boolean gn() {
-      return !this.gq();
-   }
-
-   public boolean gq() {
-      return this.b != null && this.b.bF();
-   }
-
-   public cer a(cer $$0) {
-      this.b = $$0;
-      $$0.gw();
-      return $$0;
-   }
-
-   public void gr() {
-      this.b.gx();
-      this.b = null;
-   }
-
-   private void gw() {
-      this.c++;
-   }
-
-   private void gx() {
-      this.c--;
-   }
-
-   public boolean gs() {
-      return this.gt() && this.c < this.gp();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.gt() && this.dR().z.a(200) == 1) {
-         List<? extends cep> $$0 = this.dR().a((Class<? extends cep>)this.getClass(), this.cM().c(8.0, 8.0, 8.0));
-         if ($$0.size() <= 1) {
-            this.c = 1;
-         }
-      }
-   }
-
-   public boolean gt() {
-      return this.c > 1;
-   }
-
-   public boolean gu() {
-      return this.g(this.b) <= 121.0;
-   }
-
-   public void gv() {
-      if (this.gq()) {
-         this.J().a(this.b, 1.0);
-      }
-   }
-
-   public void a(Stream<? extends cer> $$0) {
-      $$0.limit((long)(this.gp() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
-   }
-
-   @Nullable
-   @Override
-   public btv a(dcv $$0, bqf $$1, btg $$2, @Nullable btv $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3 == null) {
-         $$3 = new cer.a(this);
+   protected boolean b() {
+      if (this.c <= 0) {
+         return false;
       } else {
-         this.a(((cer.a)$$3).a);
+         this.c--;
+         this.d.run();
+         return true;
       }
-
-      return $$3;
    }
 
-   public static class a implements btv {
-      public final cer a;
-
-      public a(cer $$0) {
-         this.a = $$0;
+   protected boolean c() {
+      if (this.c >= this.b.a().b()) {
+         return false;
+      } else {
+         this.c++;
+         this.d.run();
+         return true;
       }
+   }
+
+   public boolean d() {
+      return this.c > 0;
+   }
+
+   public boolean e() {
+      return this.c != this.b.a().b();
+   }
+
+   public jd f() {
+      return this.a;
+   }
+
+   public jm<cet> g() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((cer)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

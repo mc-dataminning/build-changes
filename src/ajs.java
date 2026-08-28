@@ -1,7 +1,12 @@
-import java.util.List;
+public class ajs {
+   public static final zh<ajo> a = a("status_response");
+   public static final zh<ajr> b = b("status_request");
 
-public interface ajs {
-   void a(ajp<?> var1);
+   private static <T extends zf<ajn>> zh<T> a(String $$0) {
+      return new zh<>(zg.b, akq.b($$0));
+   }
 
-   void a(List<ajt.c<?>> var1);
+   private static <T extends zf<ajq>> zh<T> b(String $$0) {
+      return new zh<>(zg.a, akq.b($$0));
+   }
 }

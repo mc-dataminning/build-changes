@@ -1,50 +1,59 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class ccp extends ccn {
-   @Nullable
-   private ja p;
+public class ccp<T> {
+   private final T a;
+   private long b;
 
-   public ccp(bte $$0, dcg $$1) {
-      super($$0, $$1);
+   public ccp(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public eox a(ja $$0, int $$1) {
-      this.p = $$0;
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public eox a(bsh $$0, int $$1) {
-      this.p = $$0.dr();
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(bsh $$0, double $$1) {
-      eox $$2 = this.a($$0, 0);
-      if ($$2 != null) {
-         return this.a($$2, $$1);
-      } else {
-         this.p = $$0.dr();
-         this.d = $$1;
-         return true;
+   public void a() {
+      if (this.e()) {
+         this.b--;
       }
    }
 
+   public static <T> ccp<T> a(T $$0) {
+      return new ccp<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> ccp<T> a(T $$0, long $$1) {
+      return new ccp<>($$0, $$1);
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
+   }
+
    @Override
-   public void c() {
-      if (!this.l()) {
-         super.c();
-      } else {
-         if (this.p != null) {
-            if (!this.p.a(this.a.dp(), (double)this.a.dl())
-               && (!(this.a.dy() > (double)this.p.v()) || !ja.a((double)this.p.u(), this.a.dy(), (double)this.p.w()).a(this.a.dp(), (double)this.a.dl()))) {
-               this.a.H().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
-            } else {
-               this.p = null;
-            }
-         }
-      }
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   }
+
+   @azs
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
+   }
+
+   public static <T> Codec<ccp<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new ccp<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

@@ -1,106 +1,83 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.EnumSet;
 import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class fyj extends fyi implements aav, wi {
-   private static final Logger k = LogUtils.getLogger();
-   private final GameProfile l;
-   private coz m;
-   private final jx.b n;
-   private final fyy o = new fyy();
-   @Nullable
-   private fyr p;
-   @Nullable
-   protected fhv.b j;
+public class fyj {
+   private static final Set<ji> a = EnumSet.allOf(ji.class);
+   private final List<fyh> b = Lists.newArrayList();
+   private int c;
+   private int d;
+   private boolean e;
 
-   public fyj(ffw $$0, vp $$1, fyp $$2) {
-      super($$0, $$1, $$2);
-      this.l = $$2.a();
-      this.n = $$2.c();
-      this.m = $$2.d();
-      this.j = $$2.i();
+   public fyj a(int $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      return this;
    }
 
-   @Override
-   public boolean c() {
-      return this.b.i();
+   public fyj a() {
+      return this.a(true);
    }
 
-   @Override
-   protected void a(aac $$0) {
-      this.b($$0);
+   public fyj a(boolean $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   private void b(aac $$0) {
-      k.warn("Unknown custom packet payload: {}", $$0.a().a());
+   public fyj a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, fyi $$7, int $$8, int $$9) {
+      this.a($$8, $$9);
+      this.b.add(new fyh($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   @Override
-   public void a(aax $$0) {
-      ze.a($$0, this, this.a);
-      this.o.a($$0.b(), $$0.e());
+   public fyj a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      this.a($$7, $$8);
+      this.b.add(new fyh($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, fyi.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   @Override
-   public void a(zq $$0) {
-      ze.a($$0, this, this.a);
-      this.o.a($$0.b());
+   public fyj a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.add(new fyh(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fyi.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   @Override
-   public void a(aba $$0) {
-      this.m = cpb.d.a($$0.b());
+   public fyj a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<ji> $$6) {
+      this.b.add(new fyh(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fyi.a, this.e, 1.0F, 1.0F, $$6));
+      return this;
    }
 
-   @Override
-   public void a(aaz $$0) {
-      ze.a($$0, this, this.a);
-      if (this.p == null) {
-         this.p = new fyr();
-      }
-
-      List<atd> $$1 = this.p.a($$0.b());
-      this.b(new abf($$1));
+   public fyj a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.b.add(new fyh($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, fyi.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   @Override
-   public void a(aay $$0) {
-      this.j = null;
+   public fyj a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, fyi $$7) {
+      this.b.add(new fyh($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   private <T> T a(Function<atz, T> $$0) {
-      if (this.p == null) {
-         return $$0.apply(atz.b);
-      } else {
-         Object var3;
-         try (atm $$1 = this.p.a()) {
-            var3 = $$0.apply($$1);
-         }
-
-         return (T)var3;
-      }
+   public fyj a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
+      this.b.add(new fyh(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, fyi.a, $$6, 1.0F, 1.0F, a));
+      return this;
    }
 
-   @Override
-   public void a(aaw $$0) {
-      ze.a($$0, this, this.a);
-      jx.b $$1 = this.a($$0x -> this.o.a($$0x, this.n, this.b.e()));
-      this.b.a(aga.b.bind(wf.a($$1)), new fym(this.a, this.b, new fyp(this.l, this.e, $$1, this.m, this.d, this.c, this.f, this.i, this.j, this.h)));
-      this.b.a(abe.a);
-      this.b.a(aga.a.bind(wf.a($$1)));
+   public fyj a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fyi $$6, float $$7, float $$8) {
+      this.b.add(new fyh(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
+      return this;
    }
 
-   @Override
-   public void d() {
-      this.e();
+   public fyj a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, fyi $$6) {
+      this.b.add(new fyh(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   @Override
-   public void a(wu $$0) {
-      super.a($$0);
-      this.a.z();
+   public List<fyh> b() {
+      return ImmutableList.copyOf(this.b);
+   }
+
+   public static fyj c() {
+      return new fyj();
    }
 }

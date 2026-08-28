@@ -1,19 +1,32 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface exh {
-   int a();
+public class exh implements exi {
+   private final DoubleList a;
 
-   boolean b();
-
-   @Nullable
-   yk c();
-
-   default xi a(yk $$0) {
-      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
+   public exh(DoubleList $$0) {
+      this.a = $$0;
    }
 
-   static xi a(@Nullable exh $$0, yk $$1) {
-      return $$0 != null ? $$0.a($$1) : $$1.a(0);
+   @Override
+   public boolean a(exi.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, $$2, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

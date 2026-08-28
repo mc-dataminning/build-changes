@@ -1,28 +1,57 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class cd implements ap<cd.a> {
-   @Override
-   public void a(aks $$0, ap.a<cd.a> $$1) {
+public record cd(Optional<jq<eox>> b, Optional<eb> c) {
+   public static final Codec<cd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(kb.a(lu.D).optionalFieldOf("fluids").forGetter(cd::a), eb.a.optionalFieldOf("state").forGetter(cd::b)).apply($$0, cd::new)
+   );
+
+   public boolean a(aqt $$0, jd $$1) {
+      if (!$$0.p($$1)) {
+         return false;
+      } else {
+         eoy $$2 = $$0.b_($$1);
+         return this.b.isPresent() && !$$2.a(this.b.get()) ? false : !this.c.isPresent() || this.c.get().a($$2);
+      }
    }
 
-   @Override
-   public void b(aks $$0, ap.a<cd.a> $$1) {
+   public Optional<jq<eox>> a() {
+      return this.b;
    }
 
-   @Override
-   public void a(aks $$0) {
+   public Optional<eb> b() {
+      return this.c;
    }
 
-   @Override
-   public Codec<cd.a> a() {
-      return cd.a.a;
-   }
+   public static class a {
+      private Optional<jq<eox>> a = Optional.empty();
+      private Optional<eb> b = Optional.empty();
 
-   public static record a() implements aq {
-      public static final Codec<cd.a> a = Codec.unit(new cd.a());
+      private a() {
+      }
 
-      @Override
-      public void a(bg $$0) {
+      public static cd.a a() {
+         return new cd.a();
+      }
+
+      public cd.a a(eox $$0) {
+         this.a = Optional.of(jq.a($$0.k()));
+         return this;
+      }
+
+      public cd.a a(jq<eox> $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public cd.a a(eb $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public cd b() {
+         return new cd(this.a, this.b);
       }
    }
 }

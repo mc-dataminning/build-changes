@@ -1,43 +1,87 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 
-public class bk extends ds<bk.a> {
-   @Override
-   public Codec<bk.a> a() {
-      return bk.a.a;
+public record bk(List<ed<brl>> b, Optional<bv> c, Optional<bv> d, Optional<Boolean> e) {
+   public static final Codec<bk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ed.a(lu.s).listOf().optionalFieldOf("tags", List.of()).forGetter(bk::a),
+               bv.a.optionalFieldOf("direct_entity").forGetter(bk::b),
+               bv.a.optionalFieldOf("source_entity").forGetter(bk::c),
+               Codec.BOOL.optionalFieldOf("is_direct").forGetter(bk::d)
+            )
+            .apply($$0, bk::new)
+   );
+
+   public boolean a(aqu $$0, brj $$1) {
+      return this.a($$0.A(), $$0.do(), $$1);
    }
 
-   public void a(aqn $$0, ja $$1) {
-      aqm $$2 = $$0.A();
-      dsl $$3 = $$2.a_($$1);
-      eqz $$4 = new eqz.a($$2).a(ets.f, $$1.b()).a(ets.a, $$0).a(ets.g, $$3).a(etr.p);
-      eqw $$5 = new eqw.a($$4).a(Optional.empty());
-      this.a($$0, $$1x -> $$1x.a($$5));
+   public boolean a(aqt $$0, eww $$1, brj $$2) {
+      for (ed<brl> $$3 : this.b) {
+         if (!$$3.a($$2.k())) {
+            return false;
+         }
+      }
+
+      if (this.c.isPresent() && !this.c.get().a($$0, $$1, $$2.c())) {
+         return false;
+      } else {
+         return this.d.isPresent() && !this.d.get().a($$0, $$1, $$2.d()) ? false : !this.e.isPresent() || this.e.get() == $$2.b();
+      }
    }
 
-   public static record a(Optional<bf> b, Optional<bf> c) implements ds.a {
-      public static final Codec<bk.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(bk.a::a), bf.a.optionalFieldOf("location").forGetter(bk.a::b)).apply($$0, bk.a::new)
-      );
+   public List<ed<brl>> a() {
+      return this.b;
+   }
 
-      public boolean a(eqw $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
+   public Optional<bv> b() {
+      return this.c;
+   }
+
+   public Optional<bv> c() {
+      return this.d;
+   }
+
+   public Optional<Boolean> d() {
+      return this.e;
+   }
+
+   public static class a {
+      private final Builder<ed<brl>> a = ImmutableList.builder();
+      private Optional<bv> b = Optional.empty();
+      private Optional<bv> c = Optional.empty();
+      private Optional<Boolean> d = Optional.empty();
+
+      public static bk.a a() {
+         return new bk.a();
       }
 
-      @Override
-      public void a(bg $$0) {
-         ds.a.super.a($$0);
-         this.c.ifPresent($$1 -> $$0.a($$1, etr.p, ".location"));
+      public bk.a a(ed<brl> $$0) {
+         this.a.add($$0);
+         return this;
       }
 
-      @Override
-      public Optional<bf> a() {
-         return this.b;
+      public bk.a a(bv.a $$0) {
+         this.b = Optional.of($$0.b());
+         return this;
       }
 
-      public Optional<bf> b() {
-         return this.c;
+      public bk.a b(bv.a $$0) {
+         this.c = Optional.of($$0.b());
+         return this;
+      }
+
+      public bk.a a(boolean $$0) {
+         this.d = Optional.of($$0);
+         return this;
+      }
+
+      public bk b() {
+         return new bk(this.a.build(), this.b, this.c, this.d);
       }
    }
 }

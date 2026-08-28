@@ -1,20 +1,60 @@
-public record ahr(short b, cud c) implements zb<agb> {
-   public static final ys<wf, ahr> a = ys.a(yq.d, ahr::b, cud.a(cud.h), ahr::e, ahr::new);
+import javax.annotation.Nullable;
 
-   public ahr(int $$0, cud $$1) {
-      this((short)$$0, $$1);
+public class ahr implements zf<agh> {
+   public static final yw<vv, ahr> a = zf.a(ahr::a, ahr::new);
+   private final ahr.a b;
+   @Nullable
+   private final akq c;
+
+   public ahr(ahr.a $$0, @Nullable akq $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public static ahr a(ag $$0) {
+      return new ahr(ahr.a.a, $$0.a());
+   }
+
+   public static ahr b() {
+      return new ahr(ahr.a.b, null);
+   }
+
+   private ahr(vv $$0) {
+      this.b = $$0.b(ahr.a.class);
+      if (this.b == ahr.a.a) {
+         this.c = $$0.q();
+      } else {
+         this.c = null;
+      }
+   }
+
+   private void a(vv $$0) {
+      $$0.a(this.b);
+      if (this.b == ahr.a.a) {
+         $$0.a(this.c);
+      }
    }
 
    @Override
-   public zd<ahr> a() {
-      return afz.bW;
+   public zh<ahr> a() {
+      return agf.bQ;
    }
 
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
-   public cud e() {
+   public ahr.a e() {
+      return this.b;
+   }
+
+   @Nullable
+   public akq f() {
       return this.c;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

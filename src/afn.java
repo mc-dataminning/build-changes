@@ -1,46 +1,69 @@
-import javax.annotation.Nullable;
+public class afn implements zf<abt> {
+   public static final yw<wj, afn> a = zf.a(afn::a, afn::new);
+   private final jm<avn> b;
+   private final avp c;
+   private final int d;
+   private final float e;
+   private final float f;
+   private final long g;
 
-public class afn implements zb<abn> {
-   public static final ys<vr, afn> a = zb.a(afn::a, afn::new);
-   private final int b;
-   @Nullable
-   private final tx c;
-
-   public afn(int $$0, @Nullable tx $$1) {
+   public afn(jm<avn> $$0, avp $$1, bsq $$2, float $$3, float $$4, long $$5) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2.an();
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   private afn(vr $$0) {
-      this.b = $$0.l();
-      this.c = $$0.o();
+   private afn(wj $$0) {
+      this.b = avn.d.decode($$0);
+      this.c = $$0.b(avp.class);
+      this.d = $$0.l();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readLong();
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.b);
-      $$0.a((uu)this.c);
+   private void a(wj $$0) {
+      avn.d.encode($$0, this.b);
+      $$0.a(this.c);
+      $$0.c(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.b(this.g);
    }
 
    @Override
-   public zd<afn> a() {
-      return afz.aX;
+   public zh<afn> a() {
+      return agf.aR;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public jm<avn> b() {
       return this.b;
    }
 
-   @Nullable
-   public tx e() {
+   public avp e() {
       return this.c;
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public int f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
+   }
+
+   public long i() {
+      return this.g;
    }
 }

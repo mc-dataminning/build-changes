@@ -1,9 +1,3 @@
 public interface drj {
-   void a();
-
-   boolean b();
-
-   ja c();
-
-   String d();
+   float a(float var1);
 }

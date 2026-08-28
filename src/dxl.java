@@ -1,11 +1,15 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
+public interface dxl<T> {
+   void g(T var1);
 
-public interface dxl {
-   Codec<dxl> c = lq.t.r().dispatch(dxl::a, dxm::a);
-   ys<wf, dxl> d = yq.a(lr.aa).b(dxl::a, dxm::b);
+   void f(T var1);
 
-   Optional<ewh> a(dcg var1);
+   void e(T var1);
 
-   dxm<? extends dxl> a();
+   void d(T var1);
+
+   void c(T var1);
+
+   void b(T var1);
+
+   void a(T var1);
 }

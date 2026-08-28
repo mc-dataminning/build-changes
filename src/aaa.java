@@ -1,21 +1,16 @@
-public record aaa(String c) implements aac {
-   public static final ys<vr, aaa> a = aac.a(aaa::a, aaa::new);
-   public static final aac.b<aaa> b = aac.a("brand");
+import com.google.common.collect.Lists;
 
-   private aaa(vr $$0) {
-      this($$0.p());
-   }
-
-   private void a(vr $$0) {
-      $$0.a(this.c);
-   }
+public record aaa(aai b) implements zf<zy> {
+   private static final int c = 32767;
+   public static final yw<vv, aaa> a = aai.<vv>a($$0 -> aaj.a($$0, 32767), ad.a(Lists.newArrayList(new aai.c[]{new aai.c<>(aag.b, aag.a)}), $$0 -> {
+   })).a(aaa::new, aaa::b);
 
    @Override
-   public aac.b<aaa> a() {
-      return b;
+   public zh<aaa> a() {
+      return zx.m;
    }
 
-   public String b() {
-      return this.c;
+   public void a(zy $$0) {
+      $$0.a(this);
    }
 }

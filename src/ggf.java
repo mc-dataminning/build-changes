@@ -1,15 +1,19 @@
-public interface ggf<T extends dpq> {
-   void a(T var1, float var2, fao var3, gef var4, int var5, int var6);
+import com.google.common.collect.Streams;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   default boolean a(T $$0) {
-      return false;
+public class ggf implements ggg {
+   public static final String a = "AND";
+   private final Iterable<? extends ggg> d;
+
+   public ggf(Iterable<? extends ggg> $$0) {
+      this.d = $$0;
    }
 
-   default int aT_() {
-      return 64;
-   }
-
-   default boolean a(T $$0, ewh $$1) {
-      return ewh.b($$0.az_()).a((jt)$$1, (double)this.aT_());
+   @Override
+   public Predicate<dta> getPredicate(dtb<dfw, dta> $$0) {
+      List<Predicate<dta>> $$1 = Streams.stream(this.d).map($$1x -> $$1x.getPredicate($$0)).collect(Collectors.toList());
+      return $$1x -> $$1.stream().allMatch($$1xx -> $$1xx.test($$1x));
    }
 }

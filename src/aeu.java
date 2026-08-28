@@ -1,45 +1,29 @@
-public class aeu implements zb<abn> {
-   public static final ys<vr, aeu> a = zb.a(aeu::a, aeu::new);
+public class aeu implements zf<abt> {
+   public static final yw<vv, aeu> a = zf.a(aeu::a, aeu::new);
    private final int b;
    private final int c;
-   private final int d;
-   private final int e;
 
-   public aeu(bsh $$0) {
-      this($$0.an(), $$0.du());
-   }
-
-   public aeu(int $$0, ewh $$1) {
+   public aeu(int $$0, int $$1) {
       this.b = $$0;
-      double $$2 = 3.9;
-      double $$3 = ayg.a($$1.c, -3.9, 3.9);
-      double $$4 = ayg.a($$1.d, -3.9, 3.9);
-      double $$5 = ayg.a($$1.e, -3.9, 3.9);
-      this.c = (int)($$3 * 8000.0);
-      this.d = (int)($$4 * 8000.0);
-      this.e = (int)($$5 * 8000.0);
+      this.c = $$1;
    }
 
-   private aeu(vr $$0) {
+   private aeu(vv $$0) {
       this.b = $$0.l();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-      this.e = $$0.readShort();
+      this.c = $$0.l();
    }
 
-   private void a(vr $$0) {
+   private void a(vv $$0) {
       $$0.c(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
-      $$0.l(this.e);
+      $$0.c(this.c);
    }
 
    @Override
-   public zd<aeu> a() {
-      return afz.aE;
+   public zh<aeu> a() {
+      return agf.ay;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
@@ -47,15 +31,7 @@ public class aeu implements zb<abn> {
       return this.b;
    }
 
-   public double e() {
-      return (double)this.c / 8000.0;
-   }
-
-   public double f() {
-      return (double)this.d / 8000.0;
-   }
-
-   public double g() {
-      return (double)this.e / 8000.0;
+   public int e() {
+      return this.c;
    }
 }

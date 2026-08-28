@@ -1,71 +1,36 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class ghc implements ggt<dra> {
+   public static final gsj a = new gsj(gqe.e, akq.b("entity/enchanting_table_book"));
+   private final fum b;
 
-class ghc {
-   private final Map<ja, dpq> a;
-   @Nullable
-   private final List<duz<dsl>> b;
-   private final boolean c;
-   private final dur d;
-
-   ghc(dur $$0) {
-      this.d = $$0;
-      this.c = $$0.F().ai();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof dun) {
-         this.b = null;
-      } else {
-         dus[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dus $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
-      }
+   public ghc(ggu.a $$0) {
+      this.b = new fum($$0.a(fyd.r));
    }
 
-   @Nullable
-   public dpq a(ja $$0) {
-      return this.a.get($$0);
-   }
+   public void a(dra $$0, float $$1, fbc $$2, get $$3, int $$4, int $$5) {
+      $$2.a();
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + ayn.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
 
-   public dsl b(ja $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dsl $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dfk.hW.o();
-         }
-
-         if ($$2 == 70) {
-            $$4 = dxx.a($$1, $$3);
-         }
-
-         return $$4 == null ? dfk.a.o() : $$4;
-      } else if (this.b == null) {
-         return dfk.a.o();
-      } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               duz<dsl> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
-
-            return dfk.a.o();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
-         }
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
       }
+
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
+      }
+
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = ayn.i($$1, $$0.c, $$0.b);
+      float $$10 = ayn.h($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = ayn.h($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = ayn.i($$1, $$0.g, $$0.f);
+      this.b.a($$6, ayn.a($$10, 0.0F, 1.0F), ayn.a($$11, 0.0F, 1.0F), $$12);
+      fbg $$13 = a.a($$3, gfb::c);
+      this.b.b($$2, $$13, $$4, $$5, -1);
+      $$2.b();
    }
 }

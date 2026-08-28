@@ -1,21 +1,19 @@
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class bgj extends bfe {
-   public bgj(Schema $$0) {
-      super($$0, false, "RemoveEmptyItemInSuspiciousBlockFix", bgh.s, "minecraft:brushable_block");
+public class bgj extends bab {
+   private final Function<String, String> a;
+
+   public bgj(Schema $$0, String $$1, Function<String, String> $$2) {
+      super($$0, $$1);
+      this.a = $$2;
    }
 
    @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("item").result();
-      return $$1.isPresent() && b($$1.get()) ? $$0.remove("item") : $$0;
-   }
-
-   private static boolean b(Dynamic<?> $$0) {
-      String $$1 = bht.a($$0.get("id").asString("minecraft:air"));
-      int $$2 = $$0.get("count").asInt(0);
-      return $$1.equals("minecraft:air") || $$2 == 0;
+   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.map($$0x -> $$0x.update("type", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map(this.a).map($$0xx::createString).result(), $$0xx)));
    }
 }

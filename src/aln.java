@@ -1,141 +1,89 @@
-import com.google.common.base.Charsets;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.Socket;
 import java.util.List;
-import java.util.Locale;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-import java.util.Scanner;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
 public class aln {
    private static final Logger a = LogUtils.getLogger();
-   private static final int b = 5;
-   private final String c;
-   private final int d;
-   private final MinecraftServer e;
-   private volatile boolean f;
-   @Nullable
-   private Socket g;
-   @Nullable
-   private Thread h;
 
-   public aln(String $$0, int $$1, MinecraftServer $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public void a() {
-      if (this.h != null && this.h.isAlive()) {
-         a.warn("Remote control client was asked to start, but it is already running. Will ignore.");
-      }
-
-      this.f = true;
-      this.h = new Thread(this::c, "chase-client");
-      this.h.setDaemon(true);
-      this.h.start();
-   }
-
-   public void b() {
-      this.f = false;
-      IOUtils.closeQuietly(this.g);
-      this.g = null;
-      this.h = null;
-   }
-
-   public void c() {
-      String $$0 = this.c + ":" + this.d;
-
-      while (this.f) {
-         try {
-            a.info("Connecting to remote control server {}", $$0);
-            this.g = new Socket(this.c, this.d);
-            a.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
-
-            try (BufferedReader $$1 = new BufferedReader(new InputStreamReader(this.g.getInputStream(), Charsets.US_ASCII))) {
-               while (this.f) {
-                  String $$2 = $$1.readLine();
-                  if ($$2 == null) {
-                     a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
-                     break;
-                  }
-
-                  this.a($$2);
-               }
-            } catch (IOException var8) {
-               a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
+   public static <D, R> CompletableFuture<R> a(aln.c $$0, aln.f<D> $$1, aln.e<D, R> $$2, Executor $$3, Executor $$4) {
+      try {
+         Pair<ddp, att> $$5 = $$0.a.a();
+         att $$6 = (att)$$5.getSecond();
+         jt<akz> $$7 = akz.a();
+         jt<akz> $$8 = b($$6, $$7, akz.b, akl.a);
+         ka.b $$9 = $$8.b(akz.c);
+         ka.b $$10 = akl.a($$6, $$9, akl.b);
+         ddp $$11 = (ddp)$$5.getFirst();
+         aln.b<D> $$12 = $$1.get(new aln.a($$6, $$11, $$9, $$10));
+         jt<akz> $$13 = $$8.a(akz.c, $$12.b);
+         return alb.a($$6, $$13, $$11.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
+            if ($$2x != null) {
+               $$6.close();
             }
-         } catch (IOException var9) {
-            a.warn("Failed to connect to remote control server {}. Will retry in {}s.", $$0, 5);
-         }
-
-         if (this.f) {
-            try {
-               Thread.sleep(5000L);
-            } catch (InterruptedException var5) {
-            }
-         }
+         }).thenApplyAsync($$4x -> {
+            $$4x.g();
+            return $$2.create($$6, $$4x, $$13, $$12.a);
+         }, $$4);
+      } catch (Exception var14) {
+         return CompletableFuture.failedFuture(var14);
       }
    }
 
-   private void a(String $$0) {
-      try (Scanner $$1 = new Scanner(new StringReader($$0))) {
-         $$1.useLocale(Locale.ROOT);
-         String $$2 = $$1.next();
-         if ("t".equals($$2)) {
-            this.a($$1);
-         } else {
-            a.warn("Unknown message type '{}'", $$2);
-         }
-      } catch (NoSuchElementException var7) {
-         a.warn("Could not parse message '{}', ignoring", $$0);
+   private static ka.b a(aud $$0, jt<akz> $$1, akz $$2, List<akl.c<?>> $$3) {
+      ka.b $$4 = $$1.b($$2);
+      return akl.a($$0, $$4, $$3);
+   }
+
+   private static jt<akz> b(aud $$0, jt<akz> $$1, akz $$2, List<akl.c<?>> $$3) {
+      ka.b $$4 = a($$0, $$1, $$2, $$3);
+      return $$1.a($$2, $$4);
+   }
+
+   public static record a(aud a, ddp b, ka.b c, ka.b d) {
+   }
+
+   public static record b<D>(D a, ka.b b) {
+   }
+
+   public static record c(aln.d a, eu.a b, int c) {
+   }
+
+   public static record d(ato a, ddp b, boolean c, boolean d) {
+      public Pair<ddp, att> a() {
+         ddp $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
+         List<asp> $$1 = this.a.g();
+         att $$2 = new atw(asr.b, $$1);
+         return Pair.of($$0, $$2);
+      }
+
+      public ato b() {
+         return this.a;
+      }
+
+      public ddp c() {
+         return this.b;
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
       }
    }
 
-   private void a(Scanner $$0) {
-      this.b($$0)
-         .ifPresent(
-            $$0x -> this.b(
-                  String.format(Locale.ROOT, "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f", $$0x.a.a(), $$0x.b.c, $$0x.b.d, $$0x.b.e, $$0x.c.j, $$0x.c.i)
-               )
-         );
+   @FunctionalInterface
+   public interface e<D, R> {
+      R create(att var1, alb var2, jt<akz> var3, D var4);
    }
 
-   private Optional<aln.a> b(Scanner $$0) {
-      akj<dcg> $$1 = (akj<dcg>)alw.a.get($$0.next());
-      if ($$1 == null) {
-         return Optional.empty();
-      } else {
-         float $$2 = $$0.nextFloat();
-         float $$3 = $$0.nextFloat();
-         float $$4 = $$0.nextFloat();
-         float $$5 = $$0.nextFloat();
-         float $$6 = $$0.nextFloat();
-         return Optional.of(new aln.a($$1, new ewh((double)$$2, (double)$$3, (double)$$4), new ewg($$6, $$5)));
-      }
-   }
-
-   private void b(String $$0) {
-      this.e.execute(() -> {
-         List<aqn> $$1 = this.e.ai().t();
-         if (!$$1.isEmpty()) {
-            aqn $$2 = $$1.get(0);
-            aqm $$3 = this.e.J();
-            eq $$4 = new eq($$2, ewh.a($$3.V()), ewg.a, $$3, 4, "", wt.a, this.e, $$2);
-            er $$5 = this.e.aI();
-            $$5.a($$4, $$0);
-         }
-      });
-   }
-
-   static record a(akj<dcg> a, ewh b, ewg c) {
+   @FunctionalInterface
+   public interface f<D> {
+      aln.b<D> get(aln.a var1);
    }
 }

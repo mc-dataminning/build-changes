@@ -1,77 +1,38 @@
-public enum bso implements azc {
-   a(bso.a.a, 0, 0, "mainhand"),
-   b(bso.a.a, 1, 5, "offhand"),
-   c(bso.a.b, 0, 1, 1, "feet"),
-   d(bso.a.b, 1, 1, 2, "legs"),
-   e(bso.a.b, 2, 1, 3, "chest"),
-   f(bso.a.b, 3, 1, 4, "head"),
-   g(bso.a.c, 0, 1, 6, "body");
+public class bso {
+   public static final bso a = new bso(0.75F, 0.5F, 0.25F);
+   public static final bso b = new bso(0.95F, 0.69F, 0.32F);
+   private final float c;
+   private final float d;
+   private final float e;
 
-   public static final int h = 0;
-   public static final azc.a<bso> i = azc.a(bso::values);
-   private final bso.a j;
-   private final int k;
-   private final int l;
-   private final int m;
-   private final String n;
-
-   private bso(final bso.a $$0, final int $$1, final int $$2, final int $$3, final String $$4) {
-      this.j = $$0;
-      this.k = $$1;
-      this.l = $$2;
-      this.m = $$3;
-      this.n = $$4;
+   private bso(float $$0, float $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private bso(final bso.a $$0, final int $$1, final int $$2, final String $$3) {
-      this($$0, $$1, 0, $$2, $$3);
-   }
-
-   public bso.a a() {
-      return this.j;
-   }
-
-   public int b() {
-      return this.k;
-   }
-
-   public int a(int $$0) {
-      return $$0 + this.k;
-   }
-
-   public cud a(cud $$0) {
-      return this.l > 0 ? $$0.a(this.l) : $$0;
-   }
-
-   public int d() {
-      return this.m;
-   }
-
-   public String e() {
-      return this.n;
-   }
-
-   public boolean f() {
-      return this.j == bso.a.b || this.j == bso.a.c;
-   }
-
-   @Override
-   public String c() {
-      return this.n;
-   }
-
-   public static bso a(String $$0) {
-      bso $$1 = i.a($$0);
-      if ($$1 != null) {
-         return $$1;
+   public bso.a a(float $$0) {
+      if ($$0 < this.e) {
+         return bso.a.d;
+      } else if ($$0 < this.d) {
+         return bso.a.c;
       } else {
-         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+         return $$0 < this.c ? bso.a.b : bso.a.a;
       }
+   }
+
+   public bso.a a(cuo $$0) {
+      return !$$0.l() ? bso.a.a : this.a($$0.n(), $$0.o());
+   }
+
+   public bso.a a(int $$0, int $$1) {
+      return this.a((float)($$1 - $$0) / (float)$$1);
    }
 
    public static enum a {
       a,
       b,
-      c;
+      c,
+      d;
    }
 }

@@ -1,59 +1,79 @@
-public class fnd extends fnl {
-   private static final wu a = wu.c("symlink_warning.title.world").a(n.r);
-   private static final wu b = wu.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
-   private static final wu c = wu.c("symlink_warning.title.pack").a(n.r);
-   private static final wu q = wu.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
-   private final wu r;
-   private final String s;
-   private final Runnable u;
-   private final flg v = new flg().b(10);
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public fnd(wu $$0, wu $$1, String $$2, Runnable $$3) {
-      super($$0);
+public class fnd extends fnx {
+   private static final wy a = wy.c("addServer.enterIp");
+   private fig b;
+   private final fzn c;
+   private fip q;
+   private final BooleanConsumer r;
+   private final fnx s;
+
+   public fnd(fnx $$0, BooleanConsumer $$1, fzn $$2) {
+      super(wy.c("selectServer.direct"));
+      this.s = $$0;
+      this.c = $$2;
       this.r = $$1;
-      this.s = $$2;
-      this.u = $$3;
    }
 
-   public static fnl a(Runnable $$0) {
-      return new fnd(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
-   }
-
-   public static fnl b(Runnable $$0) {
-      return new fnd(c, q, "https://aka.ms/MinecraftSymLinks", $$0);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.b.j || this.aJ_() != this.q || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.m();
+         return true;
+      }
    }
 
    @Override
    protected void aP_() {
-      super.aP_();
-      this.v.c().b();
-      flg.b $$0 = this.v.d(1);
-      $$0.a(new fjb(this.k, this.o));
-      $$0.a(new fio(this.r, this.o).d(this.m - 50).b(true));
-      int $$1 = 120;
-      flg $$2 = new flg().a(5);
-      flg.b $$3 = $$2.d(3);
-      $$3.a(fhu.a(wt.n, $$0x -> ac.k().a(this.s)).b(120, 20).a());
-      $$3.a(fhu.a(wt.o, $$0x -> this.l.o.a(this.s)).b(120, 20).a());
-      $$3.a(fhu.a(wt.k, $$0x -> this.d()).b(120, 20).a());
-      $$0.a($$2);
-      this.c();
-      this.v.a(this::c);
+      this.q = new fip(this.o, this.m / 2 - 100, 116, 200, 20, wy.c("addServer.enterIp"));
+      this.q.f(128);
+      this.q.a(this.l.m.Z);
+      this.q.b($$0 -> this.D());
+      this.d(this.q);
+      this.b = this.c(fig.a(wy.c("selectServer.select"), $$0 -> this.m()).a(this.m / 2 - 100, this.n / 4 + 96 + 12, 200, 20).a());
+      this.c(fig.a(wx.e, $$0 -> this.r.accept(false)).a(this.m / 2 - 100, this.n / 4 + 120 + 12, 200, 20).a());
+      this.D();
    }
 
    @Override
-   protected void c() {
-      this.v.a();
-      flf.a(this.v, this.H());
+   protected void aE_() {
+      this.b(this.q);
    }
 
    @Override
-   public wu i() {
-      return wt.a(super.i(), this.r);
+   public void a(fgi $$0, int $$1, int $$2) {
+      String $$3 = this.q.a();
+      this.b($$0, $$1, $$2);
+      this.q.a($$3);
+   }
+
+   private void m() {
+      this.c.b = this.q.a();
+      this.r.accept(true);
    }
 
    @Override
    public void d() {
-      this.u.run();
+      this.l.a(this.s);
+   }
+
+   @Override
+   public void j() {
+      this.l.m.Z = this.q.a();
+      this.l.m.av();
+   }
+
+   private void D() {
+      this.b.j = gar.b(this.q.a());
+   }
+
+   @Override
+   public void a(fht $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, 20, 16777215);
+      $$0.b(this.o, a, this.m / 2 - 100 + 1, 100, 10526880);
+      this.q.a($$0, $$1, $$2, $$3);
    }
 }

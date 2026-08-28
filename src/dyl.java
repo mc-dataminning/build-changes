@@ -1,117 +1,181 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public record dyl(dyo j, dsl k, dsl l, dym m, dyx.o n, List<ddp.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
-   public static final Codec<dyl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dyo.a.fieldOf("noise").forGetter(dyl::f),
-               dsl.b.fieldOf("default_block").forGetter(dyl::g),
-               dsl.b.fieldOf("default_fluid").forGetter(dyl::h),
-               dym.a.fieldOf("noise_router").forGetter(dyl::i),
-               dyx.o.b.fieldOf("surface_rule").forGetter(dyl::j),
-               ddp.d.a.listOf().fieldOf("spawn_target").forGetter(dyl::k),
-               Codec.INT.fieldOf("sea_level").forGetter(dyl::l),
-               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dyl::a),
-               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dyl::b),
-               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dyl::c),
-               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dyl::n)
-            )
-            .apply($$0, dyl::new)
-   );
-   public static final Codec<jj<dyl>> b = akg.a(lr.aN, a);
-   public static final akj<dyl> c = akj.a(lr.aN, new akk("overworld"));
-   public static final akj<dyl> d = akj.a(lr.aN, new akk("large_biomes"));
-   public static final akj<dyl> e = akj.a(lr.aN, new akk("amplified"));
-   public static final akj<dyl> f = akj.a(lr.aN, new akk("nether"));
-   public static final akj<dyl> g = akj.a(lr.aN, new akk("end"));
-   public static final akj<dyl> h = akj.a(lr.aN, new akk("caves"));
-   public static final akj<dyl> i = akj.a(lr.aN, new akk("floating_islands"));
-
-   @Deprecated
-   public boolean a() {
-      return this.q;
+public abstract class dyl {
+   public static dyl.b a(int $$0, int $$1) {
+      return new dyl.b($$0 - 1, $$1 + 1);
    }
 
-   public boolean b() {
-      return this.r;
+   public static dyl.b b(int $$0, int $$1) {
+      return new dyl.b($$0, $$1);
    }
 
-   public boolean c() {
-      return this.s;
+   public static dyl a(int $$0) {
+      return new dyl.c($$0, false);
    }
 
-   public dzf.a d() {
-      return this.t ? dzf.a.a : dzf.a.b;
+   public static dyl b(int $$0) {
+      return new dyl.c($$0 + 1, false);
    }
 
-   public static void a(qm<dyl> $$0) {
-      $$0.a(c, a($$0, false, false));
-      $$0.a(d, a($$0, false, true));
-      $$0.a(e, a($$0, true, false));
-      $$0.a(f, c($$0));
-      $$0.a(g, b($$0));
-      $$0.a(h, d($$0));
-      $$0.a(i, e($$0));
+   public static dyl c(int $$0) {
+      return new dyl.c($$0, true);
    }
 
-   private static dyl b(qm<?> $$0) {
-      return new dyl(dyo.d, dfk.fz.o(), dfk.a.o(), dyn.a($$0.a(lr.aI)), qz.c(), List.of(), 0, true, false, false, true);
+   public static dyl d(int $$0) {
+      return new dyl.c($$0 - 1, true);
    }
 
-   private static dyl c(qm<?> $$0) {
-      return new dyl(dyo.c, dfk.dV.o(), dfk.H.o(), dyn.a($$0.a(lr.aI), $$0.a(lr.aO)), qz.b(), List.of(), 32, false, false, false, true);
+   public static dyl a() {
+      return dyl.a.a;
    }
 
-   private static dyl a(qm<?> $$0, boolean $$1, boolean $$2) {
-      return new dyl(dyo.b, dfk.b.o(), dfk.G.o(), dyn.a($$0.a(lr.aI), $$0.a(lr.aO), $$2, $$1), qz.a(), new ddw().a(), 63, false, true, true, false);
+   public static dyl a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
+      } else {
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
+      }
    }
 
-   private static dyl d(qm<?> $$0) {
-      return new dyl(dyo.e, dfk.b.o(), dfk.G.o(), dyn.b($$0.a(lr.aI), $$0.a(lr.aO)), qz.a(false, true, true), List.of(), 32, false, false, false, true);
+   public abstract OptionalInt b();
+
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public dyl a(OptionalInt $$0) {
+      return a($$0, this.b());
    }
 
-   private static dyl e(qm<?> $$0) {
-      return new dyl(dyo.f, dfk.b.o(), dfk.G.o(), dyn.c($$0.a(lr.aI), $$0.a(lr.aO)), qz.a(false, false, false), List.of(), -64, false, false, false, true);
+   public dyl b(OptionalInt $$0) {
+      return a(this.c(), $$0);
    }
 
-   public static dyl e() {
-      return new dyl(dyo.b, dfk.b.o(), dfk.a.o(), dyn.a(), qz.d(), List.of(), 63, true, false, false, false);
+   public static Optional<dyl> a(dda $$0, jd $$1, int $$2, Predicate<dta> $$3, Predicate<dta> $$4) {
+      jd.a $$5 = $$1.j();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ji.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ji.a);
+         return Optional.of(a($$8, $$7));
+      }
    }
 
-   public dyo f() {
-      return this.j;
+   private static OptionalInt a(dda $$0, int $$1, Predicate<dta> $$2, Predicate<dta> $$3, jd.a $$4, int $$5, ji $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
    }
 
-   public dsl g() {
-      return this.k;
+   public static final class a extends dyl {
+      static final dyl.a a = new dyl.a();
+
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
    }
 
-   public dsl h() {
-      return this.l;
+   public static final class b extends dyl {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
+         }
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
    }
 
-   public dym i() {
-      return this.m;
-   }
+   public static final class c extends dyl {
+      private final int a;
+      private final boolean b;
 
-   public dyx.o j() {
-      return this.n;
-   }
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   public List<ddp.d> k() {
-      return this.o;
-   }
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
 
-   public int l() {
-      return this.p;
-   }
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
 
-   public boolean m() {
-      return this.r;
-   }
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
 
-   public boolean n() {
-      return this.t;
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+      }
    }
 }

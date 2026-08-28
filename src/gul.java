@@ -1,7 +1,8 @@
-public interface gul<T> {
-   int e();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   T b(ayo var1);
-
-   void a(gug var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gul {
 }

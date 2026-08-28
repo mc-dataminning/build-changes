@@ -1,59 +1,181 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.Path;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.NoSuchElementException;
+import java.util.Spliterators;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 import jdk.jfr.consumer.RecordedEvent;
+import jdk.jfr.consumer.RecordingFile;
 
-public record bnt(Instant a, long b, bnt.b c) {
-   public static bnt a(RecordedEvent $$0) {
-      return new bnt($$0.getStartTime(), $$0.getLong("heapUsed"), $$0.getString("when").equalsIgnoreCase("before gc") ? bnt.b.a : bnt.b.b);
+public class bnt {
+   private Instant a = Instant.EPOCH;
+   private Instant b = Instant.EPOCH;
+   private final List<bny> c = Lists.newArrayList();
+   private final List<boa> d = Lists.newArrayList();
+   private final Map<boe, bnt.a> e = Maps.newHashMap();
+   private final Map<boe, bnt.a> f = Maps.newHashMap();
+   private final Map<bnz, bnt.a> g = Maps.newHashMap();
+   private final Map<bnz, bnt.a> h = Maps.newHashMap();
+   private final List<bob> i = Lists.newArrayList();
+   private final List<bob> j = Lists.newArrayList();
+   private int k;
+   private Duration l = Duration.ZERO;
+   private final List<boc> m = Lists.newArrayList();
+   private final List<bof> n = Lists.newArrayList();
+   private final List<bog> o = Lists.newArrayList();
+   @Nullable
+   private Duration p = null;
+
+   private bnt(Stream<RecordedEvent> $$0) {
+      this.a($$0);
    }
 
-   public static bnt.a a(Duration $$0, List<bnt> $$1, Duration $$2, int $$3) {
-      return new bnt.a($$0, $$2, $$3, a($$1));
-   }
+   public static bnu a(Path $$0) {
+      try {
+         bnu var4;
+         try (final RecordingFile $$1 = new RecordingFile($$0)) {
+            Iterator<RecordedEvent> $$2 = new Iterator<RecordedEvent>() {
+               @Override
+               public boolean hasNext() {
+                  return $$1.hasMoreEvents();
+               }
 
-   private static double a(List<bnt> $$0) {
-      long $$1 = 0L;
-      Map<bnt.b, List<bnt>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.c));
-      List<bnt> $$3 = $$2.get(bnt.b.a);
-      List<bnt> $$4 = $$2.get(bnt.b.b);
+               public RecordedEvent a() {
+                  if (!this.hasNext()) {
+                     throw new NoSuchElementException();
+                  } else {
+                     try {
+                        return $$1.readEvent();
+                     } catch (IOException var2) {
+                        throw new UncheckedIOException(var2);
+                     }
+                  }
+               }
+            };
+            Stream<RecordedEvent> $$3 = StreamSupport.stream(Spliterators.spliteratorUnknownSize($$2, 1297), false);
+            var4 = new bnt($$3).a();
+         }
 
-      for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
-         bnt $$6 = $$3.get($$5);
-         bnt $$7 = $$4.get($$5 - 1);
-         $$1 += $$6.b - $$7.b;
-      }
-
-      Duration $$8 = Duration.between($$0.get(1).a, $$0.get($$0.size() - 1).a);
-      return (double)$$1 / (double)$$8.getSeconds();
-   }
-
-   public static record a(Duration a, Duration b, int c, double d) {
-      public float a() {
-         return (float)this.b.toMillis() / (float)this.a.toMillis();
-      }
-
-      public Duration b() {
-         return this.a;
-      }
-
-      public Duration c() {
-         return this.b;
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public double e() {
-         return this.d;
+         return var4;
+      } catch (IOException var7) {
+         throw new UncheckedIOException(var7);
       }
    }
 
-   static enum b {
-      a,
-      b;
+   private bnu a() {
+      Duration $$0 = Duration.between(this.a, this.b);
+      return new bnu(
+         this.a,
+         this.b,
+         $$0,
+         this.p,
+         this.o,
+         this.d,
+         boc.a($$0, this.m, this.l, this.k),
+         bof.a(this.n),
+         a($$0, this.e),
+         a($$0, this.f),
+         a($$0, this.h),
+         a($$0, this.g),
+         bob.a($$0, this.i),
+         bob.a($$0, this.j),
+         this.c
+      );
+   }
+
+   private void a(Stream<RecordedEvent> $$0) {
+      $$0.forEach($$0x -> {
+         if ($$0x.getEndTime().isAfter(this.b) || this.b.equals(Instant.EPOCH)) {
+            this.b = $$0x.getEndTime();
+         }
+
+         if ($$0x.getStartTime().isBefore(this.a) || this.a.equals(Instant.EPOCH)) {
+            this.a = $$0x.getStartTime();
+         }
+
+         String var2 = $$0x.getEventType().getName();
+         switch (var2) {
+            case "minecraft.ChunkGeneration":
+               this.c.add(bny.a($$0x));
+               break;
+            case "minecraft.LoadWorld":
+               this.p = $$0x.getDuration();
+               break;
+            case "minecraft.ServerTickTime":
+               this.o.add(bog.a($$0x));
+               break;
+            case "minecraft.PacketReceived":
+               this.a($$0x, $$0x.getInt("bytes"), this.e);
+               break;
+            case "minecraft.PacketSent":
+               this.a($$0x, $$0x.getInt("bytes"), this.f);
+               break;
+            case "minecraft.ChunkRegionRead":
+               this.b($$0x, $$0x.getInt("bytes"), this.g);
+               break;
+            case "minecraft.ChunkRegionWrite":
+               this.b($$0x, $$0x.getInt("bytes"), this.h);
+               break;
+            case "jdk.ThreadAllocationStatistics":
+               this.n.add(bof.a($$0x));
+               break;
+            case "jdk.GCHeapSummary":
+               this.m.add(boc.a($$0x));
+               break;
+            case "jdk.CPULoad":
+               this.d.add(boa.a($$0x));
+               break;
+            case "jdk.FileWrite":
+               this.a($$0x, this.i, "bytesWritten");
+               break;
+            case "jdk.FileRead":
+               this.a($$0x, this.j, "bytesRead");
+               break;
+            case "jdk.GarbageCollection":
+               this.k++;
+               this.l = this.l.plus($$0x.getDuration());
+         }
+      });
+   }
+
+   private void a(RecordedEvent $$0, int $$1, Map<boe, bnt.a> $$2) {
+      $$2.computeIfAbsent(boe.a($$0), $$0x -> new bnt.a()).a($$1);
+   }
+
+   private void b(RecordedEvent $$0, int $$1, Map<bnz, bnt.a> $$2) {
+      $$2.computeIfAbsent(bnz.a($$0), $$0x -> new bnt.a()).a($$1);
+   }
+
+   private void a(RecordedEvent $$0, List<bob> $$1, String $$2) {
+      $$1.add(new bob($$0.getDuration(), $$0.getString("path"), $$0.getLong($$2)));
+   }
+
+   private static <T> bod<T> a(Duration $$0, Map<T, bnt.a> $$1) {
+      List<Pair<T, bod.a>> $$2 = $$1.entrySet().stream().map($$0x -> Pair.of($$0x.getKey(), ((bnt.a)$$0x.getValue()).a())).toList();
+      return new bod<>($$0, $$2);
+   }
+
+   public static final class a {
+      private long a;
+      private long b;
+
+      public void a(int $$0) {
+         this.b += (long)$$0;
+         this.a++;
+      }
+
+      public bod.a a() {
+         return new bod.a(this.a, this.b);
+      }
    }
 }

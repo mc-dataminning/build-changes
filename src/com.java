@@ -1,48 +1,39 @@
-public class com extends cog {
-   public com(bsn<?> $$0, dcg $$1) {
-      super($$0, $$1);
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
+public class com {
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final com c = a("empty").a(0, cok.b).a();
+   public static final com d = a("simple").a(5000, cok.c).a(11000, cok.e).a();
+   public static final com e = a("villager_baby").a(10, cok.b).a(3000, cok.d).a(6000, cok.b).a(10000, cok.d).a(12000, cok.e).a();
+   public static final com f = a("villager_default").a(10, cok.b).a(2000, cok.c).a(9000, cok.f).a(11000, cok.b).a(12000, cok.e).a();
+   private final Map<cok, cop> g = Maps.newHashMap();
+
+   protected static coo a(String $$0) {
+      com $$1 = jz.a(lt.B, $$0, new com());
+      return new coo($$1);
    }
 
-   public com(dcg $$0, double $$1, double $$2, double $$3) {
-      super(bsn.ar, $$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public bqh a(cml $$0, bqg $$1) {
-      if ($$0.fP()) {
-         return bqh.e;
-      } else if (this.bU()) {
-         return bqh.e;
-      } else if (!this.dR().B) {
-         return $$0.n(this) ? bqh.c : bqh.e;
-      } else {
-         return bqh.a;
+   protected void a(cok $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new cop());
       }
    }
 
-   @Override
-   protected cty ag_() {
-      return cug.nM;
+   protected cop b(cok $$0) {
+      return this.g.get($$0);
    }
 
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3) {
-         if (this.bU()) {
-            this.bJ();
-         }
-
-         if (this.O() == 0) {
-            this.m(-this.P());
-            this.d(10);
-            this.b(50.0F);
-            this.bx();
-         }
-      }
+   protected List<cop> c(cok $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
    }
 
-   @Override
-   public cog.a v() {
-      return cog.a.a;
+   public cok a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cok.b);
    }
 }

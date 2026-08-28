@@ -1,49 +1,43 @@
-import java.util.Arrays;
+public class fws<T extends bsq> extends fvn<T> {
+   private static final String a = "body_front";
+   private static final String b = "body_back";
+   private final fye f;
+   private final fye g;
 
-public class fws<T extends bsh> extends fuz<T> {
-   private final fxq[] a = new fxq[8];
-   private final fxq b;
-
-   public fws(fxq $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
+   public fws(fye $$0) {
+      this.f = $$0;
+      this.g = $$0.b("body_back");
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
+   public static fyk b() {
+      fym $$0 = new fym();
+      fyn $$1 = $$0.a();
+      int $$2 = 20;
+      fyn $$3 = $$1.a("body_front", fyj.c().a(0, 0).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fyg.a(0.0F, 20.0F, 0.0F));
+      fyn $$4 = $$1.a("body_back", fyj.c().a(0, 13).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), fyg.a(0.0F, 20.0F, 8.0F));
+      $$1.a("head", fyj.c().a(22, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), fyg.a(0.0F, 20.0F, 0.0F));
+      $$4.a("back_fin", fyj.c().a(20, 10).a(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 6.0F), fyg.a(0.0F, 0.0F, 8.0F));
+      $$3.a("top_front_fin", fyj.c().a(2, 1).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F), fyg.a(0.0F, -4.5F, 5.0F));
+      $$4.a("top_back_fin", fyj.c().a(0, 2).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 4.0F), fyg.a(0.0F, -4.5F, -1.0F));
+      $$1.a("right_fin", fyj.c().a(-4, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fyg.a(-1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
+      $$1.a("left_fin", fyj.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fyg.a(1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
+      return fyk.a($$0, 32, 32);
    }
 
-   public static fxw b() {
-      fxy $$0 = new fxy();
-      fxz $$1 = $$0.a();
-      fxu $$2 = new fxu(0.02F);
-      int $$3 = -16;
-      $$1.a("body", fxv.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), fxs.a(0.0F, 8.0F, 0.0F));
-      int $$4 = 8;
-      fxv $$5 = fxv.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
-
-      for (int $$6 = 0; $$6 < 8; $$6++) {
-         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
-         float $$8 = (float)Math.cos($$7) * 5.0F;
-         float $$9 = 15.0F;
-         float $$10 = (float)Math.sin($$7) * 5.0F;
-         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float $$11 = (float)$$7;
-         $$1.a(a($$6), $$5, fxs.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
-      }
-
-      return fxw.a($$0, 64, 32);
+   @Override
+   public fye a() {
+      return this.f;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (fxq $$6 : this.a) {
-         $$6.e = $$3;
+      float $$6 = 1.0F;
+      float $$7 = 1.0F;
+      if (!$$0.bf()) {
+         $$6 = 1.3F;
+         $$7 = 1.7F;
       }
-   }
 
-   @Override
-   public fxq a() {
-      return this.b;
+      this.g.f = -$$6 * 0.25F * ayn.a($$7 * 0.6F * $$3);
    }
 }

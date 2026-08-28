@@ -1,94 +1,87 @@
-import com.google.common.base.Suppliers;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Supplier;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class gun implements AutoCloseable {
-   private static final AtomicInteger a = new AtomicInteger(1);
-   private static final Executor b = Executors.newSingleThreadExecutor($$0 -> {
-      Thread $$1 = new Thread($$0);
-      $$1.setName("Telemetry-Sender-#" + a.getAndIncrement());
-      return $$1;
-   });
-   private final ffw c;
-   private final UserApiService d;
-   private final guv e;
-   private final Path f;
-   private final CompletableFuture<Optional<gut>> g;
-   private final Supplier<gur> h = Suppliers.memoize(this::c);
+public class gun {
+   private final Set<gun.a> a = Sets.newIdentityHashSet();
+   final eyz b;
+   final Executor c;
 
-   public gun(ffw $$0, UserApiService $$1, fgj $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      guv.a $$3 = guv.a();
-      $$2.f().ifPresent($$1x -> $$3.a(guu.a, $$1x));
-      $$2.e().ifPresent($$1x -> $$3.a(guu.b, $$1x));
-      $$3.a(guu.c, UUID.randomUUID());
-      $$3.a(guu.d, aa.b().b());
-      $$3.a(guu.e, ac.k().a());
-      $$3.a(guu.f, System.getProperty("os.name"));
-      $$3.a(guu.g, ffw.e().a());
-      $$3.b(guu.h, ffw.bc());
-      this.e = $$3.a();
-      this.f = $$0.p.toPath().resolve("logs/telemetry");
-      this.g = gut.a(this.f);
+   public gun(eyz $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public guw a(boolean $$0, @Nullable Duration $$1, @Nullable String $$2) {
-      return new guw(this.c(), $$0, $$1, $$2);
-   }
-
-   public gur a() {
-      return this.h.get();
-   }
-
-   private gur c() {
-      if (!this.c.E()) {
-         return gur.a;
-      } else {
-         TelemetrySession $$0 = this.d.newTelemetrySession(b);
-         if (!$$0.isEnabled()) {
-            return gur.a;
+   public CompletableFuture<gun.a> a(eyz.c $$0) {
+      CompletableFuture<gun.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         eyy $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            gun.a $$3 = new gun.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
          } else {
-            CompletableFuture<Optional<guq>> $$1 = this.g
-               .thenCompose($$0x -> $$0x.<CompletionStage<Optional<guq>>>map(gut::a).orElseGet(() -> CompletableFuture.completedFuture(Optional.empty())));
-            return ($$2, $$3) -> {
-               if (!$$2.d() || ffw.Q().C()) {
-                  guv.a $$4 = guv.a();
-                  $$4.a(this.e);
-                  $$4.a(guu.m, Instant.now());
-                  $$4.a(guu.l, $$2.d());
-                  $$3.accept($$4);
-                  guo $$5 = new guo($$2, $$4.a());
-                  $$1.thenAccept($$2x -> {
-                     if (!$$2x.isEmpty()) {
-                        ((guq)$$2x.get()).log($$5);
-                        $$5.a($$0).send();
-                     }
-                  });
-               }
-            };
+            $$1.complete(null);
          }
+      });
+      return $$1;
+   }
+
+   public void a(Consumer<Stream<eyy>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   }
+
+   public void a() {
+      this.c.execute(() -> {
+         Iterator<gun.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            gun.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
+            }
+         }
+      });
+   }
+
+   public void b() {
+      this.a.forEach(gun.a::b);
+      this.a.clear();
+   }
+
+   public class a {
+      @Nullable
+      eyy b;
+      private boolean c;
+
+      public boolean a() {
+         return this.c;
       }
-   }
 
-   public Path b() {
-      return this.f;
-   }
+      public a(final eyy $$1) {
+         this.b = $$1;
+      }
 
-   @Override
-   public void close() {
-      this.g.thenAccept($$0 -> $$0.ifPresent(gut::close));
+      public void a(Consumer<eyy> $$0) {
+         gun.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
+            }
+         });
+      }
+
+      public void b() {
+         this.c = true;
+         gun.this.b.a(this.b);
+         this.b = null;
+      }
    }
 }

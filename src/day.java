@@ -1,78 +1,44 @@
-public interface day {
-   akj<dat> a = daz.a("trades/desert_armorer_boots_4");
-   akj<dat> b = daz.a("trades/desert_armorer_leggings_4");
-   akj<dat> c = daz.a("trades/desert_armorer_chestplate_4");
-   akj<dat> d = daz.a("trades/desert_armorer_helmet_4");
-   akj<dat> e = daz.a("trades/desert_armorer_leggings_5");
-   akj<dat> f = daz.a("trades/desert_armorer_chestplate_5");
-   akj<dat> g = daz.a("trades/plains_armorer_boots_4");
-   akj<dat> h = daz.a("trades/plains_armorer_leggings_4");
-   akj<dat> i = daz.a("trades/plains_armorer_chestplate_4");
-   akj<dat> j = daz.a("trades/plains_armorer_helmet_4");
-   akj<dat> k = daz.a("trades/plains_armorer_boots_5");
-   akj<dat> l = daz.a("trades/plains_armorer_leggings_5");
-   akj<dat> m = daz.a("trades/savanna_armorer_boots_4");
-   akj<dat> n = daz.a("trades/savanna_armorer_leggings_4");
-   akj<dat> o = daz.a("trades/savanna_armorer_chestplate_4");
-   akj<dat> p = daz.a("trades/savanna_armorer_helmet_4");
-   akj<dat> q = daz.a("trades/savanna_armorer_chestplate_5");
-   akj<dat> r = daz.a("trades/savanna_armorer_helmet_5");
-   akj<dat> s = daz.a("trades/snow_armorer_boots_4");
-   akj<dat> t = daz.a("trades/snow_armorer_helmet_4");
-   akj<dat> u = daz.a("trades/snow_armorer_boots_5");
-   akj<dat> v = daz.a("trades/snow_armorer_helmet_5");
-   akj<dat> w = daz.a("trades/jungle_armorer_boots_4");
-   akj<dat> x = daz.a("trades/jungle_armorer_leggings_4");
-   akj<dat> y = daz.a("trades/jungle_armorer_chestplate_4");
-   akj<dat> z = daz.a("trades/jungle_armorer_helmet_4");
-   akj<dat> A = daz.a("trades/jungle_armorer_boots_5");
-   akj<dat> B = daz.a("trades/jungle_armorer_helmet_5");
-   akj<dat> C = daz.a("trades/swamp_armorer_boots_4");
-   akj<dat> D = daz.a("trades/swamp_armorer_leggings_4");
-   akj<dat> E = daz.a("trades/swamp_armorer_chestplate_4");
-   akj<dat> F = daz.a("trades/swamp_armorer_helmet_4");
-   akj<dat> G = daz.a("trades/swamp_armorer_boots_5");
-   akj<dat> H = daz.a("trades/swamp_armorer_helmet_5");
-   akj<dat> I = daz.a("trades/taiga_armorer_leggings_5");
-   akj<dat> J = daz.a("trades/taiga_armorer_chestplate_5");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   static void a(qm<dat> $$0) {
-      jk<czm> $$1 = $$0.a(lr.aK);
-      $$0.a(a, new dax($$1.b(czr.h), bpj.a(1)));
-      $$0.a(b, new dax($$1.b(czr.h), bpj.a(1)));
-      $$0.a(c, new dax($$1.b(czr.h), bpj.a(1)));
-      $$0.a(d, new dax($$1.b(czr.h), bpj.a(1)));
-      $$0.a(e, new dax($$1.b(czr.h), bpj.a(1)));
-      $$0.a(f, new dax($$1.b(czr.h), bpj.a(1)));
-      $$0.a(g, new dax($$1.b(czr.a), bpj.a(1)));
-      $$0.a(h, new dax($$1.b(czr.a), bpj.a(1)));
-      $$0.a(i, new dax($$1.b(czr.a), bpj.a(1)));
-      $$0.a(j, new dax($$1.b(czr.a), bpj.a(1)));
-      $$0.a(k, new dax($$1.b(czr.a), bpj.a(1)));
-      $$0.a(l, new dax($$1.b(czr.a), bpj.a(1)));
-      $$0.a(m, new dax($$1.b(czr.k), bpj.a(1)));
-      $$0.a(n, new dax($$1.b(czr.k), bpj.a(1)));
-      $$0.a(o, new dax($$1.b(czr.k), bpj.a(1)));
-      $$0.a(p, new dax($$1.b(czr.k), bpj.a(1)));
-      $$0.a(q, new dax($$1.b(czr.k), bpj.a(1)));
-      $$0.a(r, new dax($$1.b(czr.k), bpj.a(1)));
-      $$0.a(s, new dax($$1.b(czr.j), bpj.a(1)));
-      $$0.a(t, new dax($$1.b(czr.g), bpj.a(1)));
-      $$0.a(u, new dax($$1.b(czr.j), bpj.a(1)));
-      $$0.a(v, new dax($$1.b(czr.g), bpj.a(1)));
-      $$0.a(w, new dax($$1.b(czr.w), bpj.a(1)));
-      $$0.a(x, new dax($$1.b(czr.w), bpj.a(1)));
-      $$0.a(y, new dax($$1.b(czr.w), bpj.a(1)));
-      $$0.a(z, new dax($$1.b(czr.w), bpj.a(1)));
-      $$0.a(A, new dax($$1.b(czr.c), bpj.a(1)));
-      $$0.a(B, new dax($$1.b(czr.e), bpj.a(1)));
-      $$0.a(C, new dax($$1.b(czr.O), bpj.a(1)));
-      $$0.a(D, new dax($$1.b(czr.O), bpj.a(1)));
-      $$0.a(E, new dax($$1.b(czr.O), bpj.a(1)));
-      $$0.a(F, new dax($$1.b(czr.O), bpj.a(1)));
-      $$0.a(G, new dax($$1.b(czr.i), bpj.a(1)));
-      $$0.a(H, new dax($$1.b(czr.f), bpj.a(1)));
-      $$0.a(I, new dax($$1.b(czr.d), bpj.a(1)));
-      $$0.a(J, new dax($$1.b(czr.d), bpj.a(1)));
+public record day(kh d, Optional<eac> e, egf f, Optional<jm<dxw>> g) implements daq {
+   public static final MapCodec<day> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kh.f.optionalFieldOf("offset", kh.g).forGetter(day::b),
+               eac.b.optionalFieldOf("predicate").forGetter(day::c),
+               egf.a.fieldOf("block_state").forGetter(day::d),
+               dxw.aj.optionalFieldOf("trigger_game_event").forGetter(day::e)
+            )
+            .apply($$0, day::new)
+   );
+
+   @Override
+   public void a(aqt $$0, int $$1, czz $$2, bsq $$3, eww $$4) {
+      jd $$5 = jd.a((jw)$$4).a(this.d);
+      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dT(), $$5))) {
+         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+      }
+   }
+
+   @Override
+   public MapCodec<day> a() {
+      return a;
+   }
+
+   public kh b() {
+      return this.d;
+   }
+
+   public Optional<eac> c() {
+      return this.e;
+   }
+
+   public egf d() {
+      return this.f;
+   }
+
+   public Optional<jm<dxw>> e() {
+      return this.g;
    }
 }

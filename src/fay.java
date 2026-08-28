@@ -1,71 +1,56 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class fay {
-   private static final Logger a = LogUtils.getLogger();
    @Nullable
-   private static CompletableFuture<fay.a> b;
+   private static fbf a;
 
-   public static CompletableFuture<fay.a> a() {
-      if (b == null || a(b)) {
-         b = b();
-      }
-
-      return b;
-   }
-
-   private static boolean a(CompletableFuture<fay.a> $$0) {
-      fay.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
-   }
-
-   private static CompletableFuture<fay.a> b() {
-      fgj $$0 = ffw.Q().X();
-      return $$0.g() != fgj.a.c ? CompletableFuture.completedFuture(new fay.a(fay.b.d)) : CompletableFuture.supplyAsync(() -> {
-         fbe $$0x = fbe.a();
-
-         try {
-            if ($$0x.g() != fbe.a.a) {
-               return new fay.a(fay.b.b);
-            } else {
-               return !$$0x.f() ? new fay.a(fay.b.c) : new fay.a(fay.b.a);
-            }
-         } catch (fcr var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new fay.a(fay.b.d) : new fay.a(var2);
-         }
-      }, ac.h());
-   }
-
-   public static record a(fay.b a, @Nullable fcr b) {
-      public a(fay.b $$0) {
-         this($$0, null);
-      }
-
-      public a(fcr $$0) {
-         this(fay.b.e, $$0);
-      }
-
-      @Nullable
-      public fnl a(fnl $$0) {
-         return (fnl)(switch (this.a) {
-            case a -> null;
-            case b -> new fde($$0);
-            case c -> new fdo($$0);
-            case d -> new fdj(wu.c("mco.error.invalid.session.title"), wu.c("mco.error.invalid.session.message"), $$0);
-            case e -> new fdj(Objects.requireNonNull(this.b), $$0);
-         });
+   public static void a() {
+      if (a != null) {
+         b();
+         fbf.b();
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public static void b() {
+      a = null;
+   }
+
+   public static void a(fbb $$0) {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> c($$0));
+      } else {
+         c($$0);
+      }
+   }
+
+   private static void c(fbb $$0) {
+      fbf $$1 = d($$0);
+      $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+   }
+
+   public static void b(fbb $$0) {
+      fbf $$1 = d($$0);
+      $$1.c();
+   }
+
+   private static fbf d(fbb $$0) {
+      RenderSystem.assertOnRenderThread();
+      fbf $$1 = a($$0.c().a());
+      $$1.a($$0);
+      return $$1;
+   }
+
+   private static fbf a(fbh $$0) {
+      fbf $$1 = $$0.i();
+      a($$1);
+      return $$1;
+   }
+
+   private static void a(fbf $$0) {
+      if ($$0 != a) {
+         $$0.a();
+         a = $$0;
+      }
    }
 }

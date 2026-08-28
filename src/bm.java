@@ -1,57 +1,58 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class bm extends ds<bm.a> {
-   @Override
-   public Codec<bm.a> a() {
-      return bm.a.a;
+public record bm(dh.c b, dh.c c, dh.c d, dh.c e, dh.c f) {
+   public static final Codec<bm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dh.c.d.optionalFieldOf("x", dh.c.c).forGetter(bm::a),
+               dh.c.d.optionalFieldOf("y", dh.c.c).forGetter(bm::b),
+               dh.c.d.optionalFieldOf("z", dh.c.c).forGetter(bm::c),
+               dh.c.d.optionalFieldOf("horizontal", dh.c.c).forGetter(bm::d),
+               dh.c.d.optionalFieldOf("absolute", dh.c.c).forGetter(bm::e)
+            )
+            .apply($$0, bm::new)
+   );
+
+   public static bm a(dh.c $$0) {
+      return new bm(dh.c.c, dh.c.c, dh.c.c, $$0, dh.c.c);
    }
 
-   public void a(aqn $$0, ewh $$1) {
-      ewh $$2 = $$0.dp();
-      this.a($$0, $$3 -> $$3.a($$0.A(), $$1, $$2));
+   public static bm b(dh.c $$0) {
+      return new bm(dh.c.c, $$0, dh.c.c, dh.c.c, dh.c.c);
    }
 
-   public static record a(Optional<bf> b, Optional<dc> c, Optional<bl> d) implements ds.a {
-      public static final Codec<bm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bu.b.optionalFieldOf("player").forGetter(bm.a::a),
-                  dc.a.optionalFieldOf("start_position").forGetter(bm.a::b),
-                  bl.a.optionalFieldOf("distance").forGetter(bm.a::c)
-               )
-               .apply($$0, bm.a::new)
-      );
+   public static bm c(dh.c $$0) {
+      return new bm(dh.c.c, dh.c.c, dh.c.c, dh.c.c, $$0);
+   }
 
-      public static an<bm.a> a(bu.a $$0, bl $$1, dc.a $$2) {
-         return am.X.a(new bm.a(Optional.of(bu.a($$0)), Optional.of($$2.b()), Optional.of($$1)));
+   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      float $$6 = (float)($$0 - $$3);
+      float $$7 = (float)($$1 - $$4);
+      float $$8 = (float)($$2 - $$5);
+      if (!this.b.d((double)ayn.e($$6)) || !this.c.d((double)ayn.e($$7)) || !this.d.d((double)ayn.e($$8))) {
+         return false;
+      } else {
+         return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));
       }
+   }
 
-      public static an<bm.a> a(bu.a $$0, bl $$1) {
-         return am.Y.a(new bm.a(Optional.of(bu.a($$0)), Optional.empty(), Optional.of($$1)));
-      }
+   public dh.c a() {
+      return this.b;
+   }
 
-      public static an<bm.a> a(bl $$0) {
-         return am.D.a(new bm.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
-      }
+   public dh.c b() {
+      return this.c;
+   }
 
-      public boolean a(aqm $$0, ewh $$1, ewh $$2) {
-         return this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)
-            ? false
-            : !this.d.isPresent() || this.d.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e);
-      }
+   public dh.c c() {
+      return this.d;
+   }
 
-      @Override
-      public Optional<bf> a() {
-         return this.b;
-      }
+   public dh.c d() {
+      return this.e;
+   }
 
-      public Optional<dc> b() {
-         return this.c;
-      }
-
-      public Optional<bl> c() {
-         return this.d;
-      }
+   public dh.c e() {
+      return this.f;
    }
 }

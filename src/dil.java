@@ -1,85 +1,82 @@
-import com.google.common.collect.Maps;
+import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 
-public class dil extends dfi {
-   public static final MapCodec<dil> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lq.e.r().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, dil::new)
-   );
-   private static final Map<dfi, dfi> d = Maps.newHashMap();
-   public static final float b = 3.0F;
-   protected static final exa c = dfi.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final dfi e;
+public class dil extends dfw {
+   public static final MapCodec<dil> a = b(dil::new);
+   public static final dtu b = djs.aE;
+   public static final dtr c = dtq.h;
+   protected static final exp d = dfw.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
+   protected static final exp e = dfw.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
+   protected static final exp f = exm.a(d, e);
+   private static dtf g;
 
    @Override
    public MapCodec<dil> a() {
       return a;
    }
 
-   public dil(dfi $$0, dsk.d $$1) {
-      super($$1);
-      this.e = $$0;
-      d.put($$0, this);
+   public dil(dsz.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, ji.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return c;
+   protected boolean f_(dta $$0) {
+      return true;
    }
 
    @Override
-   protected bqj a(cud $$0, dsl $$1, dcg $$2, ja $$3, cml $$4, bqg $$5, ewd $$6) {
-      dsl $$8 = ($$0.g() instanceof csc $$7 ? d.getOrDefault($$7.d(), dfk.a) : dfk.a).o();
-      if ($$8.i()) {
-         return bqj.d;
-      } else if (!this.m()) {
-         return bqj.b;
-      } else {
-         $$2.a($$3, $$8, 3);
-         $$2.a($$4, dxh.c, $$3);
-         $$4.a(avr.ah);
-         $$0.a(1, $$4);
-         return bqj.a($$2.B);
+   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
+      return $$0.c(c) ? f : d;
+   }
+
+   @Override
+   public dta a(cyb $$0) {
+      return this.o().a(b, $$0.g().g()).a(c, Boolean.valueOf(false));
+   }
+
+   @Override
+   protected boolean c_(dta $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dta $$0, dcu $$1, jd $$2) {
+      return $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   protected dta a(dta $$0, dmk $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dta a(dta $$0, dkt $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(b, c);
+   }
+
+   public static dtf b() {
+      if (g == null) {
+         g = dtg.a()
+            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+            .a('?', dte.a(dtj.a))
+            .a('^', dte.a(dtj.a(dfy.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ji.d))))
+            .a('>', dte.a(dtj.a(dfy.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ji.e))))
+            .a('v', dte.a(dtj.a(dfy.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ji.c))))
+            .a('<', dte.a(dtj.a(dfy.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ji.f))))
+            .b();
       }
+
+      return g;
    }
 
    @Override
-   protected bqh a(dsl $$0, dcg $$1, ja $$2, cml $$3, ewd $$4) {
-      if (this.m()) {
-         return bqh.c;
-      } else {
-         cud $$5 = new cud(this.e);
-         if (!$$3.i($$5)) {
-            $$3.a($$5, false);
-         }
-
-         $$1.a($$2, dfk.fR.o(), 3);
-         $$1.a($$3, dxh.c, $$2);
-         return bqh.a($$1.B);
-      }
-   }
-
-   @Override
-   public cud a(dcj $$0, ja $$1, dsl $$2) {
-      return this.m() ? super.a($$0, $$1, $$2) : new cud(this.e);
-   }
-
-   private boolean m() {
-      return this.e == dfk.a;
-   }
-
-   @Override
-   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
-      return $$1 == jf.a && !$$0.a($$3, $$4) ? dfk.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public dfi b() {
-      return this.e;
-   }
-
-   @Override
-   protected boolean a(dsl $$0, eoy $$1) {
+   protected boolean a(dta $$0, epn $$1) {
       return false;
    }
 }

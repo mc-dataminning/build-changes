@@ -1,50 +1,31 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public interface bmk {
-   static bme<StringReader> a(String $$0) {
-      return new bmk.b($$0);
+public interface bmk<S, T> {
+   Optional<T> a(bmj<S> var1);
+
+   static <S, T> bmk<S, T> a(bmn<S> $$0, bmk.a<S, T> $$1) {
+      return new bmk.c<>($$1, $$0);
    }
 
-   static bme<StringReader> a(char $$0) {
-      return new bmk.a($$0);
+   static <S, T> bmk<S, T> a(bmn<S> $$0, bmk.b<T> $$1) {
+      return new bmk.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
    }
 
-   public static record a(char a) implements bme<StringReader> {
+   @FunctionalInterface
+   public interface a<S, T> {
+      Optional<T> run(bmj<S> var1, bml var2);
+   }
+
+   @FunctionalInterface
+   public interface b<T> {
+      T run(bml var1);
+   }
+
+   public static record c<S, T>(bmk.a<S, T> a, bmn<S> b) implements bmk<S, T> {
       @Override
-      public boolean a(bma<StringReader> $$0, bmc $$1, blw $$2) {
-         $$0.b().skipWhitespace();
-         int $$3 = $$0.c();
-         if ($$0.b().canRead() && $$0.b().read() == this.a) {
-            return true;
-         } else {
-            $$0.a().a($$3, $$0x -> Stream.of(String.valueOf(this.a)), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
-            return false;
-         }
-      }
-
-      public char c() {
-         return this.a;
-      }
-   }
-
-   public static record b(String a) implements bme<StringReader> {
-      @Override
-      public boolean a(bma<StringReader> $$0, bmc $$1, blw $$2) {
-         $$0.b().skipWhitespace();
-         int $$3 = $$0.c();
-         String $$4 = $$0.b().readUnquotedString();
-         if (!$$4.equals(this.a)) {
-            $$0.a().a($$3, $$0x -> Stream.of(this.a), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
-            return false;
-         } else {
-            return true;
-         }
-      }
-
-      public String c() {
-         return this.a;
+      public Optional<T> a(bmj<S> $$0) {
+         bml $$1 = new bml();
+         return this.b.a($$0, $$1, bmf.a) ? this.a.run($$0, $$1) : Optional.empty();
       }
    }
 }

@@ -1,70 +1,61 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Map;
 import java.util.UUID;
-import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dxf implements dxl {
-   public static final MapCodec<dxf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kd.a.fieldOf("source_entity").forGetter(dxf::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
-            .apply($$0, ($$0x, $$1) -> new dxf(Either.right(Either.left($$0x)), $$1))
-   );
-   public static final ys<ByteBuf, dxf> b = ys.a(yq.g, dxf::c, yq.i, $$0 -> $$0.f, ($$0, $$1) -> new dxf(Either.right(Either.right($$0)), $$1));
-   private Either<bsh, Either<UUID, Integer>> e;
-   private final float f;
+public class dxf<T extends dxd> {
+   private static final Logger a = LogUtils.getLogger();
+   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
+   private final Map<UUID, T> c = Maps.newHashMap();
 
-   public dxf(bsh $$0, float $$1) {
-      this(Either.left($$0), $$1);
-   }
+   public <U extends T> void a(dxk<T, U> $$0, awz<U> $$1) {
+      ObjectIterator var3 = this.b.values().iterator();
 
-   private dxf(Either<bsh, Either<UUID, Integer>> $$0, float $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   @Override
-   public Optional<ewh> a(dcg $$0) {
-      if (this.e.left().isEmpty()) {
-         this.b($$0);
+      while (var3.hasNext()) {
+         T $$2 = (T)var3.next();
+         U $$3 = (U)$$0.a($$2);
+         if ($$3 != null && $$1.accept($$3).a()) {
+            return;
+         }
       }
-
-      return this.e.left().map($$0x -> $$0x.dp().b(0.0, (double)this.f, 0.0));
    }
 
-   private void b(dcg $$0) {
-      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((bsh)$$1.map($$1x -> $$0 instanceof aqm $$2 ? $$2.a($$1x) : null, $$0::a))))
-         .ifPresent($$0x -> this.e = Either.left($$0x));
+   public Iterable<T> a() {
+      return Iterables.unmodifiableIterable(this.b.values());
    }
 
-   private UUID b() {
-      return (UUID)this.e.map(bsh::cB, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
-            throw new RuntimeException("Unable to get entityId from uuid");
-         }));
-   }
-
-   private int c() {
-      return (Integer)this.e.map(bsh::an, $$0 -> (Integer)$$0.map($$0x -> {
-            throw new IllegalStateException("Unable to get entityId from uuid");
-         }, Function.identity()));
-   }
-
-   @Override
-   public dxm<dxf> a() {
-      return dxm.b;
-   }
-
-   public static class a implements dxm<dxf> {
-      @Override
-      public MapCodec<dxf> a() {
-         return dxf.a;
+   public void a(T $$0) {
+      UUID $$1 = $$0.cA();
+      if (this.c.containsKey($$1)) {
+         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
+      } else {
+         this.c.put($$1, $$0);
+         this.b.put($$0.an(), $$0);
       }
+   }
 
-      @Override
-      public ys<ByteBuf, dxf> b() {
-         return dxf.b;
-      }
+   public void b(T $$0) {
+      this.c.remove($$0.cA());
+      this.b.remove($$0.an());
+   }
+
+   @Nullable
+   public T a(int $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   @Nullable
+   public T a(UUID $$0) {
+      return this.c.get($$0);
+   }
+
+   public int b() {
+      return this.c.size();
    }
 }

@@ -1,26 +1,29 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dax(jj<czm> c, bpm d) implements dat {
-   public static final MapCodec<dax> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(czm.c.fieldOf("enchantment").forGetter(dax::b), bpm.c.fieldOf("level").forGetter(dax::c)).apply($$0, dax::new)
-   );
+public record dax(dah c) implements das {
+   public static final MapCodec<dax> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dah.b.fieldOf("chance").forGetter(dax::b)).apply($$0, dax::new));
 
    @Override
-   public void a(cud $$0, czs.a $$1, ayo $$2, bqf $$3) {
-      $$1.b(this.c, ayg.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
+   public float a(int $$0, ayv $$1, float $$2) {
+      float $$3 = this.c.a($$0);
+      int $$4 = 0;
+
+      for (int $$5 = 0; (float)$$5 < $$2; $$5++) {
+         if ($$1.i() < $$3) {
+            $$4++;
+         }
+      }
+
+      return $$2 - (float)$$4;
    }
 
    @Override
    public MapCodec<dax> a() {
-      return b;
+      return a;
    }
 
-   public jj<czm> b() {
+   public dah b() {
       return this.c;
-   }
-
-   public bpm c() {
-      return this.d;
    }
 }

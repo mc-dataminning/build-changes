@@ -1,42 +1,17 @@
-public class gcv extends gbr {
-   private final bsh a;
-   private int b;
-   private final int D;
-   private final lh E;
-
-   public gcv(fyl $$0, bsh $$1, lh $$2) {
-      this($$0, $$1, $$2, 3);
+public class gcv extends gaz {
+   protected gcv(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gdc $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
    }
 
-   public gcv(fyl $$0, bsh $$1, lh $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.du());
-   }
+   public static class a implements gck<lq> {
+      private final gdc a;
 
-   private gcv(fyl $$0, bsh $$1, lh $$2, int $$3, ewh $$4) {
-      super($$0, $$1.dw(), $$1.e(0.5), $$1.dC(), $$4.c, $$4.d, $$4.e);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
-   }
-
-   @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
-         }
+      public a(gdc $$0) {
+         this.a = $$0;
       }
 
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gcv($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

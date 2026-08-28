@@ -1,50 +1,50 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
 public class bgu extends DataFix {
-   public bgu(Schema $$0) {
-      super($$0, true);
+   final String a;
+   final Map<String, String> b;
+
+   public bgu(Schema $$0, String $$1, Map<String, String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgh.F);
-      Type<?> $$1 = this.getOutputSchema().getType(bgh.F);
-      OpticFinder<?> $$2 = $$0.findField("SpawnData");
-      Type<?> $$3 = $$1.findField("SpawnData").type();
-      OpticFinder<?> $$4 = $$0.findField("SpawnPotentials");
-      Type<?> $$5 = $$1.findField("SpawnPotentials").type();
-      return this.fixTypeEverywhereTyped(
-         "Fix mob spawner data structure",
-         $$0,
+      Type<?> $$0 = this.getInputSchema().getType(bgq.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      $$0 = this.a($$0, "Enchantments");
+      return this.a($$0, "StoredEnchantments");
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.update(
          $$1,
-         $$4x -> $$4x.updateTyped($$2, $$3, $$1xx -> this.a($$3, $$1xx)).updateTyped($$4, $$5, $$1xx -> this.b($$5, $$1xx))
+         $$0x -> (Dynamic)$$0x.asStreamOpt()
+               .map(
+                  $$0xx -> $$0xx.map(
+                        $$0xxx -> $$0xxx.update(
+                              "id",
+                              $$1x -> (Dynamic)$$1x.asString()
+                                    .map($$1xx -> $$0xxx.createString(this.b.getOrDefault(bic.a($$1xx), $$1xx)))
+                                    .mapOrElse(Function.identity(), $$1xx -> $$1x)
+                           )
+                     )
+               )
+               .map($$0x::createList)
+               .mapOrElse(Function.identity(), $$1x -> $$0x)
       );
-   }
-
-   private <T> Typed<T> a(Type<T> $$0, Typed<?> $$1) {
-      DynamicOps<?> $$2 = $$1.getOps();
-      return new Typed($$0, $$2, Pair.of($$1.getValue(), new Dynamic($$2)));
-   }
-
-   private <T> Typed<T> b(Type<T> $$0, Typed<?> $$1) {
-      DynamicOps<?> $$2 = $$1.getOps();
-      List<?> $$3 = (List<?>)$$1.getValue();
-      List<?> $$4 = $$3.stream().map($$1x -> {
-         Pair<Object, Dynamic<?>> $$2x = (Pair<Object, Dynamic<?>>)$$1x;
-         int $$3x = ((Dynamic)$$2x.getSecond()).get("Weight").asNumber().result().orElse(1).intValue();
-         Dynamic<?> $$4x = new Dynamic($$2);
-         $$4x = $$4x.set("weight", $$4x.createInt($$3x));
-         Dynamic<?> $$5 = ((Dynamic)$$2x.getSecond()).remove("Weight").remove("Entity");
-         return Pair.of(Pair.of($$2x.getFirst(), $$5), $$4x);
-      }).toList();
-      return new Typed($$0, $$2, $$4);
    }
 }

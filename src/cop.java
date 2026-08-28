@@ -1,118 +1,59 @@
-public class cop extends cog {
-   static final ajp<String> c = ajt.a(cop.class, ajr.e);
-   static final ajp<wu> d = ajt.a(cop.class, ajr.f);
-   private final dbh e = new cop.a();
-   private static final int i = 4;
-   private int j;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
 
-   public cop(bsn<? extends cop> $$0, dcg $$1) {
-      super($$0, $$1);
+public class cop {
+   private final List<col> a = Lists.newArrayList();
+   private int b;
+
+   public ImmutableList<col> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   public cop(dcg $$0, double $$1, double $$2, double $$3) {
-      super(bsn.v, $$0, $$1, $$2, $$3);
+   public cop a(int $$0, float $$1) {
+      this.a.add(new col($$0, $$1));
+      this.b();
+      return this;
    }
 
-   @Override
-   protected cty ag_() {
-      return cug.nM;
+   public cop a(Collection<col> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
    }
 
-   @Override
-   protected void a(ajt.a $$0) {
-      super.a($$0);
-      $$0.a(c, "");
-      $$0.a(d, wt.a);
+   private void b() {
+      Int2ObjectSortedMap<col> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
    }
 
-   @Override
-   protected void a(tx $$0) {
-      super.a($$0);
-      this.e.b($$0, this.dT());
-      this.ar().a(c, this.B().m());
-      this.ar().a(d, this.B().l());
-   }
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
+      } else {
+         col $$1 = this.a.get(this.b);
+         col $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
 
-   @Override
-   protected void b(tx $$0) {
-      super.b($$0);
-      this.e.a($$0, this.dT());
-   }
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            col $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
 
-   @Override
-   public cog.a v() {
-      return cog.a.g;
-   }
-
-   @Override
-   public dsl x() {
-      return dfk.fN.o();
-   }
-
-   public dbh B() {
-      return this.e;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ai - this.j >= 4) {
-         this.B().a(this.dR());
-         this.j = this.ai;
-      }
-   }
-
-   @Override
-   public bqh a(cml $$0, bqg $$1) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public void a(ajp<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.ar().a(d));
-         } catch (Throwable var3) {
+            this.b = $$6;
+            $$5 = $$7.b();
          }
-      } else if (c.equals($$0)) {
-         this.e.a(this.ar().a(c));
-      }
-   }
 
-   @Override
-   public boolean cR() {
-      return true;
-   }
-
-   public class a extends dbh {
-      @Override
-      public aqm e() {
-         return (aqm)cop.this.dR();
-      }
-
-      @Override
-      public void f() {
-         cop.this.ar().a(cop.c, this.m());
-         cop.this.ar().a(cop.d, this.l());
-      }
-
-      @Override
-      public ewh g() {
-         return cop.this.dp();
-      }
-
-      public cop h() {
-         return cop.this;
-      }
-
-      @Override
-      public eq i() {
-         return new eq(this, cop.this.dp(), cop.this.bO(), this.e(), 2, this.n().getString(), cop.this.O_(), this.e().o(), cop.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !cop.this.dM();
+         return $$5;
       }
    }
 }

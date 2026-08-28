@@ -1,82 +1,42 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.channels.Channels;
-import java.nio.channels.FileChannel;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+public abstract class blo implements blt {
+   protected final long[] a;
+   protected final long[] b;
 
-public class blo<T> implements Closeable {
-   private static final Gson a = new Gson();
-   private final Codec<T> b;
-   final FileChannel c;
-   private final AtomicInteger d = new AtomicInteger(1);
-
-   public blo(Codec<T> $$0, FileChannel $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public static <T> blo<T> a(Codec<T> $$0, Path $$1) throws IOException {
-      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
-      return new blo<>($$0, $$2);
-   }
-
-   public void a(T $$0) throws IOException {
-      JsonElement $$1 = (JsonElement)this.b.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IOException::new);
-      this.c.position(this.c.size());
-      Writer $$2 = Channels.newWriter(this.c, StandardCharsets.UTF_8);
-      a.toJson($$1, a.newJsonWriter($$2));
-      $$2.write(10);
-      $$2.flush();
-   }
-
-   public blp<T> a() throws IOException {
-      if (this.d.get() <= 0) {
-         throw new IOException("Event log has already been closed");
+   protected blo(int $$0, long[] $$1) {
+      if ($$1.length != $$0) {
+         throw new IllegalArgumentException("defaults have incorrect length of " + $$1.length);
       } else {
-         this.d.incrementAndGet();
-         final blp<T> $$0 = blp.a(this.b, Channels.newReader(this.c, StandardCharsets.UTF_8));
-         return new blp<T>() {
-            private volatile long c;
-
-            @Nullable
-            @Override
-            public T a() throws IOException {
-               Object var1;
-               try {
-                  blo.this.c.position(this.c);
-                  var1 = $$0.a();
-               } finally {
-                  this.c = blo.this.c.position();
-               }
-
-               return (T)var1;
-            }
-
-            @Override
-            public void close() throws IOException {
-               blo.this.b();
-            }
-         };
+         this.b = new long[$$0];
+         this.a = $$1;
       }
    }
 
    @Override
-   public void close() throws IOException {
+   public void a(long[] $$0) {
+      System.arraycopy($$0, 0, this.b, 0, $$0.length);
+      this.a();
       this.b();
    }
 
-   void b() throws IOException {
-      if (this.d.decrementAndGet() <= 0) {
-         this.c.close();
+   @Override
+   public void a(long $$0) {
+      this.b[0] = $$0;
+      this.a();
+      this.b();
+   }
+
+   @Override
+   public void a(long $$0, int $$1) {
+      if ($$1 >= 1 && $$1 < this.b.length) {
+         this.b[$$1] = $$0;
+      } else {
+         throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + this.b.length);
       }
+   }
+
+   protected abstract void a();
+
+   protected void b() {
+      System.arraycopy(this.a, 0, this.b, 0, this.a.length);
    }
 }

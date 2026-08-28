@@ -1,33 +1,40 @@
-import java.time.Duration;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fcu {
-   public final fed a = new fed(ac.h(), TimeUnit.MILLISECONDS, ac.c);
-   private final List<fed.e<?>> h;
-   public final fed.e<List<fbu>> b;
-   public final fed.e<fcu.a> c;
-   public final fed.e<Integer> d;
-   public final fed.e<Boolean> e;
-   public final fed.e<fbt> f;
-   public final fcv g = new fcv(new fej());
+public class fcu extends fcw {
+   private static final Logger d = LogUtils.getLogger();
+   public long a;
+   public int b;
+   public fcu.a c = fcu.a.a;
 
-   public fcu(fbe $$0) {
-      this.c = this.a.a("server list", () -> {
-         fbx $$1 = $$0.b();
-         return faz.b() ? new fcu.a($$1.a, $$0.c()) : new fcu.a($$1.a, List.of());
-      }, Duration.ofSeconds(60L), fee.a);
-      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), fee.a(360));
-      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), fee.a(60));
-      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), fee.a);
-      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), fee.a);
-      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
+   public static fcu a(String $$0) {
+      fcu $$1 = new fcu();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = fet.a("startDate", $$3, 0L);
+         $$1.b = fet.a("daysLeft", $$3, 0);
+         $$1.c = b(fet.b("subscriptionType", $$3, fcu.a.a.name()));
+      } catch (Exception var4) {
+         d.error("Could not parse Subscription: {}", var4.getMessage());
+      }
+
+      return $$1;
    }
 
-   public List<fed.e<?>> a() {
-      return this.h;
+   private static fcu.a b(String $$0) {
+      try {
+         return fcu.a.valueOf($$0);
+      } catch (Exception var2) {
+         return fcu.a.a;
+      }
    }
 
-   public static record a(List<fbv> a, List<fbv> b) {
+   public static enum a {
+      a,
+      b;
    }
 }

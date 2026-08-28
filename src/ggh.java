@@ -1,51 +1,61 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class ggh {
-   private static final Map<dps<?>, ggg<?>> a = Maps.newHashMap();
+public class ggh implements ggg {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
 
-   private static <T extends dpq> void a(dps<? extends T> $$0, ggg<T> $$1) {
-      a.put($$0, $$1);
+   public ggh(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static Map<dps<?>, ggf<?>> a(ggg.a $$0) {
-      Builder<dps<?>, ggf<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + lq.j.b((dps<?>)$$2), var5);
+   @Override
+   public Predicate<dta> getPredicate(dtb<dfw, dta> $$0) {
+      dud<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
+      } else {
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
          }
-      });
-      return $$1.build();
+
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+         } else {
+            Predicate<dta> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               List<Predicate<dta>> $$6 = $$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).collect(Collectors.toList());
+               $$5 = $$1x -> $$6.stream().anyMatch($$1xx -> $$1xx.test($$1x));
+            }
+
+            return $$3 ? $$5.negate() : $$5;
+         }
+      }
    }
 
-   static {
-      a(dps.h, ggt::new);
-      a(dps.i, ggp::new);
-      a(dps.j, ggv::new);
-      a(dps.k, ggr::new);
-      a(dps.b, ggl::new);
-      a(dps.d, ggl::new);
-      a(dps.c, ggl::new);
-      a(dps.m, ggo::new);
-      a(dps.D, ggq::new);
-      a(dps.n, ggy::new);
-      a(dps.v, ggx::new);
-      a(dps.o, ggb::new);
-      a(dps.p, ggu::new);
-      a(dps.t, gga::new);
-      a(dps.u, ggw::new);
-      a(dps.x, ggs::new);
-      a(dps.y, ggc::new);
-      a(dps.z, ggm::new);
-      a(dps.E, ggd::new);
-      a(dps.G, ggk::new);
-      a(dps.N, ggj::new);
-      a(dps.O, ggn::new);
-      a(dps.Q, ggz::new);
-      a(dps.R, gha::new);
+   private Predicate<dta> a(dtb<dfw, dta> $$0, dud<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
+      }
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

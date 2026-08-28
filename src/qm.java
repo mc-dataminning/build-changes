@@ -1,11 +1,42 @@
-import com.mojang.serialization.Lifecycle;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
-public interface qm<T> {
-   jj.c<T> a(akj<T> var1, T var2, Lifecycle var3);
-
-   default jj.c<T> a(akj<T> $$0, T $$1) {
-      return this.a($$0, $$1, Lifecycle.stable());
+public class qm {
+   public static void a(qp<ekw> $$0) {
+      jn<ekw> $$1 = $$0.a(lu.aU);
+      jm<ekw> $$2 = $$1.b(qw.a);
+      qw.a(
+         $$0,
+         "bastion/mobs/piglin",
+         new ekw(
+            $$2,
+            ImmutableList.of(
+               Pair.of(eku.b("bastion/mobs/melee_piglin"), 1),
+               Pair.of(eku.b("bastion/mobs/sword_piglin"), 4),
+               Pair.of(eku.b("bastion/mobs/crossbow_piglin"), 4),
+               Pair.of(eku.b("bastion/mobs/empty"), 1)
+            ),
+            ekw.a.b
+         )
+      );
+      qw.a(
+         $$0, "bastion/mobs/hoglin", new ekw($$2, ImmutableList.of(Pair.of(eku.b("bastion/mobs/hoglin"), 2), Pair.of(eku.b("bastion/mobs/empty"), 1)), ekw.a.b)
+      );
+      qw.a(
+         $$0, "bastion/blocks/gold", new ekw($$2, ImmutableList.of(Pair.of(eku.b("bastion/blocks/air"), 3), Pair.of(eku.b("bastion/blocks/gold"), 1)), ekw.a.b)
+      );
+      qw.a(
+         $$0,
+         "bastion/mobs/piglin_melee",
+         new ekw(
+            $$2,
+            ImmutableList.of(
+               Pair.of(eku.b("bastion/mobs/melee_piglin_always"), 1),
+               Pair.of(eku.b("bastion/mobs/melee_piglin"), 5),
+               Pair.of(eku.b("bastion/mobs/sword_piglin"), 1)
+            ),
+            ekw.a.b
+         )
+      );
    }
-
-   <S> jk<S> a(akj<? extends jw<? extends S>> var1);
 }

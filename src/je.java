@@ -1,18 +1,35 @@
-import javax.annotation.Nonnull;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JavaOps;
+import java.util.HashMap;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public interface je<T> extends jw<T> {
-   @Nonnull
-   @Override
-   akk b(T var1);
+public class je<T> {
+   private final Codec<T> a;
 
-   @Nonnull
-   @Override
-   T a(@Nullable akk var1);
+   je(Codec<T> $$0) {
+      this.a = $$0;
+   }
 
-   @Nonnull
-   @Override
-   T a(int var1);
+   public T a(T $$0, jo.a $$1, jo.a $$2) {
+      DynamicOps<Object> $$3 = $$1.a(JavaOps.INSTANCE);
+      DynamicOps<Object> $$4 = $$2.a(JavaOps.INSTANCE);
+      Object $$5 = this.a.encodeStart($$3, $$0).getOrThrow($$0x -> new IllegalStateException("Failed to encode: " + $$0x));
+      return (T)this.a.parse($$4, $$5).getOrThrow($$0x -> new IllegalStateException("Failed to decode: " + $$0x));
+   }
 
-   akk b();
+   public static class a {
+      private final Map<akp<? extends jz<?>>, je<?>> a = new HashMap<>();
+
+      public <T> je.a a(akp<? extends jz<? extends T>> $$0, Codec<T> $$1) {
+         this.a.put($$0, new je($$1));
+         return this;
+      }
+
+      @Nullable
+      public <T> je<T> a(akp<? extends jz<? extends T>> $$0) {
+         return (je<T>)this.a.get($$0);
+      }
+   }
 }

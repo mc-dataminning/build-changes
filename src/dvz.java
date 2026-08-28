@@ -1,98 +1,136 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.InflaterInputStream;
-import javax.annotation.Nullable;
-import net.jpountz.lz4.LZ4BlockInputStream;
-import net.jpountz.lz4.LZ4BlockOutputStream;
-import org.slf4j.Logger;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class dvz {
-   private static final Logger g = LogUtils.getLogger();
-   private static final Int2ObjectMap<dvz> h = new Int2ObjectOpenHashMap();
-   private static final Object2ObjectMap<String, dvz> i = new Object2ObjectOpenHashMap();
-   public static final dvz a = a(new dvz(1, null, $$0 -> new axp(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
-   public static final dvz b = a(
-      new dvz(2, "deflate", $$0 -> new axp(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
-   );
-   public static final dvz c = a(new dvz(3, "none", axp::new, BufferedOutputStream::new));
-   public static final dvz d = a(
-      new dvz(4, "lz4", $$0 -> new axp(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
-   );
-   public static final dvz e = a(new dvz(127, null, $$0 -> {
-      throw new UnsupportedOperationException();
-   }, $$0 -> {
-      throw new UnsupportedOperationException();
-   }));
-   public static final dvz f = b;
-   private static volatile dvz j = f;
-   private final int k;
-   @Nullable
-   private final String l;
-   private final dvz.a<InputStream> m;
-   private final dvz.a<OutputStream> n;
-
-   private dvz(int $$0, @Nullable String $$1, dvz.a<InputStream> $$2, dvz.a<OutputStream> $$3) {
-      this.k = $$0;
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
+   private static boolean a(duw $$0) {
+      return $$0.j().a(dvx.l) && $$0.v();
    }
 
-   private static dvz a(dvz $$0) {
-      h.put($$0.k, $$0);
-      if ($$0.l != null) {
-         i.put($$0.l, $$0);
+   static CompletableFuture<duw> a(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<duw> b(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
+      aqt $$4 = $$0.a();
+      if ($$4.o().bb().y().c()) {
+         $$0.b().a($$4.H_(), $$4.l().h(), $$4.a(), $$3, $$0.c());
       }
 
-      return $$0;
+      $$4.a($$3);
+      return CompletableFuture.completedFuture($$3);
    }
 
-   @Nullable
-   public static dvz a(int $$0) {
-      return (dvz)h.get($$0);
+   static CompletableFuture<duw> c(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
+      $$0.a().a($$3);
+      return CompletableFuture.completedFuture($$3);
    }
 
-   public static void a(String $$0) {
-      dvz $$1 = (dvz)i.get($$0);
-      if ($$1 != null) {
-         j = $$1;
-      } else {
-         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
+   static CompletableFuture<duw> d(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
+      aqt $$4 = $$0.a();
+      ara $$5 = new ara($$4, $$2, $$1, $$3);
+      $$0.b().a($$5, $$4.a().a($$5), $$3);
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<duw> e(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
+      aqt $$4 = $$0.a();
+      ara $$5 = new ara($$4, $$2, $$1, $$3);
+      return $$0.b().a($$4.l().i(), dzx.a($$5), $$4.a().a($$5), $$3);
+   }
+
+   static CompletableFuture<duw> f(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
+      aqt $$4 = $$0.a();
+      ara $$5 = new ara($$4, $$2, $$1, $$3);
+      return $$0.b().a(dzx.a($$5), $$4.l().i(), $$4.a().a($$5), $$3).thenApply($$0x -> {
+         if ($$0x instanceof dvq $$1x) {
+            dyj $$2x = $$1x.x();
+            if ($$2x != null) {
+               dyj.a($$1x);
+               if ($$2x.b()) {
+                  $$2x.b($$1x);
+               }
+            }
+         }
+
+         return $$0x;
+      });
+   }
+
+   static CompletableFuture<duw> g(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
+      aqt $$4 = $$0.a();
+      ara $$5 = new ara($$4, $$2, $$1, $$3);
+      $$0.b().a($$5, $$4.a().a($$5), $$4.l().i(), $$3);
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<duw> h(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
+      aqt $$4 = $$0.a();
+      ara $$5 = new ara($$4, $$2, $$1, $$3);
+      if ($$3 instanceof dvq $$6) {
+         dzx.a($$5, $$6);
       }
+
+      $$0.b().a($$5, $$4.C(), $$4.l().i(), $$4.F_(), $$4.a().a($$5), $$3, dyr.a.a);
+      return CompletableFuture.completedFuture($$3);
    }
 
-   public static dvz a() {
-      return j;
+   static CompletableFuture<duw> i(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
+      aqt $$4 = $$0.a();
+      dyv.a($$3, EnumSet.of(dyv.a.e, dyv.a.f, dyv.a.d, dyv.a.b));
+      ara $$5 = new ara($$4, $$2, $$1, $$3);
+      $$0.b().a($$5, $$3, $$4.a().a($$5));
+      dzx.a($$5, $$3);
+      return CompletableFuture.completedFuture($$3);
    }
 
-   public static boolean b(int $$0) {
-      return h.containsKey($$0);
+   static CompletableFuture<duw> j(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
+      aqw $$4 = $$0.d();
+      $$3.A();
+      ((dvq)$$3).a($$4);
+      boolean $$5 = a($$3);
+      return $$4.a($$3, $$5);
    }
 
-   public int b() {
-      return this.k;
+   static CompletableFuture<duw> k(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
+      boolean $$4 = a($$3);
+      return $$0.d().b($$3, $$4);
    }
 
-   public OutputStream a(OutputStream $$0) throws IOException {
-      return this.n.wrap($$0);
+   static CompletableFuture<duw> l(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
+      if (!$$3.y()) {
+         $$0.b().a(new ara($$0.a(), $$2, $$1, $$3));
+      }
+
+      return CompletableFuture.completedFuture($$3);
    }
 
-   public InputStream a(InputStream $$0) throws IOException {
-      return this.m.wrap($$0);
+   static CompletableFuture<duw> m(dwc $$0, dwa $$1, azh<aqm> $$2, duw $$3) {
+      dcb $$4 = $$3.f();
+      aqm $$5 = $$2.a($$4.e, $$4.f);
+      return CompletableFuture.supplyAsync(() -> {
+         dvq $$3x = (dvq)$$3;
+         aqt $$4x = $$0.a();
+         dvg $$5x;
+         if ($$3x instanceof dvf) {
+            $$5x = ((dvf)$$3x).C();
+         } else {
+            $$5x = new dvg($$4x, $$3x, $$2xx -> a($$4x, $$3x.E()));
+            $$5.a(new dvf($$5x, false));
+         }
+
+         $$5x.b($$5::s);
+         $$5x.E();
+         $$5x.c(true);
+         $$5x.J();
+         $$5x.a($$4x);
+         return $$5x;
+      }, $$3x -> $$0.e().a(aqd.a($$3x, $$4.a(), $$5::i)));
    }
 
-   @FunctionalInterface
-   interface a<O> {
-      O wrap(O var1) throws IOException;
+   private static void a(aqt $$0, List<ua> $$1) {
+      if (!$$1.isEmpty()) {
+         $$0.b(bsw.a($$1, $$0));
+      }
    }
 }

@@ -1,8 +1,3 @@
-public interface ajk extends agc, aje {
-   @Override
-   default vq b() {
-      return vq.c;
-   }
-
+public interface ajk extends we {
    void a(ajl var1);
 }

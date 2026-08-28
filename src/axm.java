@@ -1,65 +1,54 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
+import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringEscapeUtils;
 
 public class axm {
-   final LoadingCache<axm.a<?, ?>, DataResult<?>> a;
+   private static final String a = "\r\n";
+   private static final String b = ",";
+   private final Writer c;
+   private final int d;
 
-   public axm(int $$0) {
-      this.a = CacheBuilder.newBuilder().maximumSize((long)$$0).concurrencyLevel(1).softValues().build(new CacheLoader<axm.a<?, ?>, DataResult<?>>() {
-         public DataResult<?> a(axm.a<?, ?> $$0) {
-            return $$0.a();
-         }
-      });
+   axm(Writer $$0, List<String> $$1) throws IOException {
+      this.c = $$0;
+      this.d = $$1.size();
+      this.a($$1.stream());
    }
 
-   public <A> Codec<A> a(final Codec<A> $$0) {
-      return new Codec<A>() {
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1) {
-            return $$0.decode($$0, $$1);
-         }
-
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1, T $$2) {
-            return ((DataResult)axm.this.a.getUnchecked(new axm.a($$0, $$0, $$1))).map($$0xx -> $$0xx instanceof uu $$1x ? $$1x.d() : $$0xx);
-         }
-      };
+   public static axm.a a() {
+      return new axm.a();
    }
 
-   static record a<A, T>(Codec<A> a, A b, DynamicOps<T> c) {
-      public DataResult<T> a() {
-         return this.a.encodeStart(this.c, this.b);
+   public void a(Object... $$0) throws IOException {
+      if ($$0.length != this.d) {
+         throw new IllegalArgumentException("Invalid number of columns, expected " + this.d + ", but got " + $$0.length);
+      } else {
+         this.a(Stream.of($$0));
+      }
+   }
+
+   private void a(Stream<?> $$0) throws IOException {
+      this.c.write($$0.<CharSequence>map(axm::a).collect(Collectors.joining(",")) + "\r\n");
+   }
+
+   private static String a(@Nullable Object $$0) {
+      return StringEscapeUtils.escapeCsv($$0 != null ? $$0.toString() : "[null]");
+   }
+
+   public static class a {
+      private final List<String> a = Lists.newArrayList();
+
+      public axm.a a(String $$0) {
+         this.a.add($$0);
+         return this;
       }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return !($$0 instanceof axm.a<?, ?> $$1) ? false : this.a == $$1.a && this.b.equals($$1.b) && this.c.equals($$1.c);
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int $$0 = System.identityHashCode(this.a);
-         $$0 = 31 * $$0 + this.b.hashCode();
-         return 31 * $$0 + this.c.hashCode();
-      }
-
-      public Codec<A> b() {
-         return this.a;
-      }
-
-      public A c() {
-         return this.b;
-      }
-
-      public DynamicOps<T> d() {
-         return this.c;
+      public axm a(Writer $$0) throws IOException {
+         return new axm($$0, this.a);
       }
    }
 }

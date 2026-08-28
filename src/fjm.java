@@ -1,32 +1,39 @@
-import java.util.Locale;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class fjm extends fjj {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = 500;
+public class fjm extends fie {
+   @Nullable
+   protected fjt a;
+   protected boolean b;
 
-   public fjm(fhf $$0, bll $$1) {
-      super($$0, $$1);
+   public fjm(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, wx.a);
+      this.b = $$4;
+   }
+
+   public void a(fjt $$0) {
+      this.a = $$0;
+   }
+
+   public void b(boolean $$0) {
+      this.b = $$0;
+   }
+
+   public boolean a() {
+      return this.b;
    }
 
    @Override
-   protected void d(fhh $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
+   public void a(fmc $$0) {
+      this.c($$0);
    }
 
    @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
-   }
-
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round($$0 * 60.0 / 500.0);
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
+   public void b(fht $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         RenderSystem.disableDepthTest();
+         $$0.a(this.a.a(this.b, this.B()), this.D(), this.E(), this.g, this.h);
+         RenderSystem.enableDepthTest();
+      }
    }
 }

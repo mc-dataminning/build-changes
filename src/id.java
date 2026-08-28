@@ -1,60 +1,18 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-class id<T extends es<T>> {
-   @Nullable
-   private List<ht<T>> a = new ArrayList<>();
-   @Nullable
-   private List<ig.a<T>> b;
-   private final List<String> c = new ArrayList<>();
+public class id<T extends ev<T>> implements hr<T> {
+   private final Consumer<ht<T>> a;
+   private final eq b;
 
-   public void a(ht<T> $$0) {
-      if (this.b != null) {
-         this.b.add(new ig.c<>($$0));
-      } else {
-         this.a.add($$0);
-      }
+   public id(Consumer<ht<T>> $$0, eq $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private int a(String $$0) {
-      int $$1 = this.c.indexOf($$0);
-      if ($$1 == -1) {
-         $$1 = this.c.size();
-         this.c.add($$0);
-      }
-
-      return $$1;
-   }
-
-   private IntList a(List<String> $$0) {
-      IntArrayList $$1 = new IntArrayList($$0.size());
-
-      for (String $$2 : $$0) {
-         $$1.add(this.a($$2));
-      }
-
-      return $$1;
-   }
-
-   public void a(String $$0, int $$1, T $$2) {
-      ii $$3 = ii.a($$0, $$1);
-      if (this.a != null) {
-         this.b = new ArrayList<>(this.a.size() + 1);
-
-         for (ht<T> $$4 : this.a) {
-            this.b.add(new ig.c<>($$4));
-         }
-
-         this.a = null;
-      }
-
-      this.b.add(new ig.b<>($$3, this.a($$3.b()), $$2));
-   }
-
-   public ic<T> a(akk $$0) {
-      return (ic<T>)(this.b != null ? new ig<>($$0, this.b, this.c) : new ih<>($$0, this.a));
+   @Override
+   public void execute(hs<T> $$0, hu $$1) {
+      int $$2 = $$1.c() + 1;
+      hu $$3 = new hu($$2, this.b, $$0.b($$2));
+      this.a.accept(ht.a($$0, $$3));
    }
 }

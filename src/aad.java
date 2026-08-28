@@ -1,23 +1,42 @@
-public record aad(akk a) implements aac {
-   public static <T extends vr> ys<T, aad> a(akk $$0, int $$1) {
-      return aac.a(($$0x, $$1x) -> {
-      }, $$2 -> {
-         int $$3 = $$2.readableBytes();
-         if ($$3 >= 0 && $$3 <= $$1) {
-            $$2.j($$3);
-            return new aad($$0);
-         } else {
-            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
-         }
-      });
+import java.util.UUID;
+
+public record aad(UUID b, aad.a c) implements zf<zy> {
+   public static final yw<vv, aad> a = zf.a(aad::a, aad::new);
+
+   private aad(vv $$0) {
+      this($$0.n(), $$0.b(aad.a.class));
+   }
+
+   private void a(vv $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public aac.b<aad> a() {
-      return new aac.b<>(this.a);
+   public zh<aad> a() {
+      return zx.p;
    }
 
-   public akk b() {
-      return this.a;
+   public void a(zy $$0) {
+      $$0.a(this);
+   }
+
+   public aad.a e() {
+      return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
+
+      public boolean a() {
+         return this != d && this != e;
+      }
    }
 }

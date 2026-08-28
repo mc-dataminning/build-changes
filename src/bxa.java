@@ -1,29 +1,21 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class bxa {
-   private static final int a = 1;
+   public static bvg<btl> a() {
+      return bys.a((Function<bys.b<btl>, ? extends App<bys.c<btl>, byv<btl>>>)($$0 -> $$0.a((byv<btl>)(($$0x, $$1, $$2) -> {
+            if ($$0x.z.a(20) != 0) {
+               return false;
+            } else {
+               buo<?> $$3 = $$1.dU();
+               cog $$4 = $$0x.d($$1.dq());
+               if ($$4 == null || $$4.d() || $$4.f()) {
+                  $$3.b(cok.b);
+                  $$3.a($$0x.aa(), $$0x.Z());
+               }
 
-   public static buw<bte> a(float $$0) {
-      return a($$1 -> $$0);
-   }
-
-   public static buw<bte> a(Function<btc, Float> $$0) {
-      return byi.a(
-         (Function<byi.b<bte>, ? extends App<byi.c<bte>, byl<bte>>>)($$1 -> $$1.group($$1.a(ccg.m), $$1.a(ccg.n), $$1.b(ccg.o), $$1.a(ccg.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     btc $$9 = $$1.b($$4);
-                     Optional<cci> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bux.a($$7, $$9, 1)) {
-                        $$2.b();
-                     } else {
-                        $$3.a(new bvg($$9, true));
-                        $$2.a(new ccj(new bvg($$9, false), $$0.apply($$7), 0));
-                     }
-
-                     return true;
-                  }))
-      );
+               return true;
+            }
+         }))));
    }
 }

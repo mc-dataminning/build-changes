@@ -1,90 +1,197 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
 import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ake<E> implements Codec<jn<E>> {
-   private final akj<? extends jw<E>> a;
-   private final Codec<jj<E>> b;
-   private final Codec<List<jj<E>>> c;
-   private final Codec<Either<awm<E>, List<jj<E>>>> d;
+public class ake<I extends cza, R extends cyx<I>> implements akd<Integer> {
+   private static final int d = -1;
+   protected final cmz a = new cmz();
+   protected cmu b;
+   protected crg<I, R> c;
 
-   private static <E> Codec<List<jj<E>>> a(Codec<jj<E>> $$0, boolean $$1) {
-      Codec<List<jj<E>>> $$2 = $$0.listOf().validate(axo.b(jj::f));
-      return $$1
-         ? $$2
-         : Codec.either($$2, $$0)
-            .xmap($$0x -> (List)$$0x.map($$0xx -> $$0xx, List::of), $$0x -> $$0x.size() == 1 ? Either.right((jj)$$0x.get(0)) : Either.left($$0x));
+   public ake(crg<I, R> $$0) {
+      this.c = $$0;
    }
 
-   public static <E> Codec<jn<E>> a(akj<? extends jw<E>> $$0, Codec<jj<E>> $$1, boolean $$2) {
-      return new ake<>($$0, $$1, $$2);
+   public void a(aqu $$0, @Nullable cyz<R> $$1, boolean $$2) {
+      if ($$1 != null && $$0.J().b($$1)) {
+         this.b = $$0.fZ();
+         if (this.b() || $$0.f()) {
+            this.a.a();
+            $$0.fZ().a(this.a);
+            this.c.a(this.a);
+            if (this.a.a($$1.b(), null)) {
+               this.a($$1, $$2);
+            } else {
+               this.a();
+               $$0.c.b(new ads($$0.cd.j, $$1));
+            }
+
+            $$0.fZ().e();
+         }
+      }
    }
 
-   private ake(akj<? extends jw<E>> $$0, Codec<jj<E>> $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = a($$1, $$2);
-      this.d = Codec.either(awm.b($$0), this.c);
-   }
-
-   public <T> DataResult<Pair<jn<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
-      if ($$0 instanceof aki<T> $$2) {
-         Optional<jk<E>> $$3 = $$2.b(this.a);
-         if ($$3.isPresent()) {
-            jk<E> $$4 = $$3.get();
-            return this.d.decode($$0, $$1).flatMap($$1x -> {
-               DataResult<jn<E>> $$2x = (DataResult<jn<E>>)((Either)$$1x.getFirst()).map($$1xx -> a($$4, $$1xx), $$0xx -> DataResult.success(jn.a($$0xx)));
-               return $$2x.map($$1xx -> Pair.of($$1xx, $$1x.getSecond()));
-            });
+   protected void a() {
+      for (int $$0 = 0; $$0 < this.c.p(); $$0++) {
+         if (this.c.e($$0)) {
+            cuo $$1 = this.c.b($$0).g().s();
+            this.b.a($$1, false);
+            this.c.b($$0).f($$1);
          }
       }
 
-      return this.a($$0, $$1);
+      this.c.l();
    }
 
-   private static <E> DataResult<jn<E>> a(jk<E> $$0, awm<E> $$1) {
-      return $$0.a($$1)
-         .<DataResult<jn<E>>>map(DataResult::success)
-         .orElseGet(() -> DataResult.error(() -> "Missing tag: '" + $$1.b() + "' in '" + $$1.a().a() + "'"));
-   }
-
-   public <T> DataResult<T> a(jn<E> $$0, DynamicOps<T> $$1, T $$2) {
-      if ($$1 instanceof aki<T> $$3) {
-         Optional<jm<E>> $$4 = $$3.a(this.a);
-         if ($$4.isPresent()) {
-            if (!$$0.a($$4.get())) {
-               return DataResult.error(() -> "HolderSet " + $$0 + " is not valid in current registry set");
+   protected void a(cyz<R> $$0, boolean $$1) {
+      boolean $$2 = this.c.a($$0);
+      int $$3 = this.a.a($$0, null);
+      if ($$2) {
+         for (int $$4 = 0; $$4 < this.c.o() * this.c.n() + 1; $$4++) {
+            if ($$4 != this.c.m()) {
+               cuo $$5 = this.c.b($$4).g();
+               if (!$$5.e() && Math.min($$3, $$5.j()) < $$5.H() + 1) {
+                  return;
+               }
             }
-
-            return this.d.encode($$0.c().mapRight(List::copyOf), $$1, $$2);
          }
       }
 
-      return this.b($$0, $$1, $$2);
-   }
+      int $$6 = this.a($$1, $$3, $$2);
+      IntList $$7 = new IntArrayList();
+      if (this.a.a($$0.b(), $$7, $$6)) {
+         int $$8 = $$6;
+         IntListIterator var8 = $$7.iterator();
 
-   private <T> DataResult<Pair<jn<E>, T>> a(DynamicOps<T> $$0, T $$1) {
-      return this.b.listOf().decode($$0, $$1).flatMap($$0x -> {
-         List<jj.a<E>> $$1x = new ArrayList<>();
-
-         for (jj<E> $$2 : (List)$$0x.getFirst()) {
-            if (!($$2 instanceof jj.a<E> $$3)) {
-               return DataResult.error(() -> "Can't decode element " + $$2 + " without registry");
+         while (var8.hasNext()) {
+            int $$9 = (Integer)var8.next();
+            cuo $$10 = cmz.a($$9);
+            if (!$$10.e()) {
+               int $$11 = $$10.j();
+               if ($$11 < $$8) {
+                  $$8 = $$11;
+               }
             }
-
-            $$1x.add($$3);
          }
 
-         return DataResult.success(new Pair(jn.a($$1x), $$0x.getSecond()));
-      });
+         if (this.a.a($$0.b(), $$7, $$8)) {
+            this.a();
+            this.a(this.c.n(), this.c.o(), this.c.m(), $$0, $$7.iterator(), $$8);
+         }
+      }
    }
 
-   private <T> DataResult<T> b(jn<E> $$0, DynamicOps<T> $$1, T $$2) {
-      return this.c.encode($$0.a().toList(), $$1, $$2);
+   public void a(Integer $$0, int $$1, int $$2, int $$3, int $$4) {
+      cro $$5 = this.c.b($$1);
+      cuo $$6 = cmz.a($$0);
+      if (!$$6.e()) {
+         int $$7 = $$2;
+
+         while ($$7 > 0) {
+            $$7 = this.a($$5, $$6, $$7);
+            if ($$7 == -1) {
+               return;
+            }
+         }
+      }
+   }
+
+   protected int a(boolean $$0, int $$1, boolean $$2) {
+      int $$3 = 1;
+      if ($$0) {
+         $$3 = $$1;
+      } else if ($$2) {
+         $$3 = Integer.MAX_VALUE;
+
+         for (int $$4 = 0; $$4 < this.c.n() * this.c.o() + 1; $$4++) {
+            if ($$4 != this.c.m()) {
+               cuo $$5 = this.c.b($$4).g();
+               if (!$$5.e() && $$3 > $$5.H()) {
+                  $$3 = $$5.H();
+               }
+            }
+         }
+
+         if ($$3 != Integer.MAX_VALUE) {
+            $$3++;
+         }
+      }
+
+      return $$3;
+   }
+
+   protected int a(cro $$0, cuo $$1, int $$2) {
+      int $$3 = this.b.d($$1);
+      if ($$3 == -1) {
+         return -1;
+      } else {
+         cuo $$4 = this.b.a($$3);
+         int $$5;
+         if ($$2 < $$4.H()) {
+            this.b.a($$3, $$2);
+            $$5 = $$2;
+         } else {
+            this.b.b($$3);
+            $$5 = $$4.H();
+         }
+
+         if ($$0.g().e()) {
+            $$0.f($$4.c($$5));
+         } else {
+            $$0.g().g($$5);
+         }
+
+         return $$2 - $$5;
+      }
+   }
+
+   private boolean b() {
+      List<cuo> $$0 = Lists.newArrayList();
+      int $$1 = this.c();
+
+      for (int $$2 = 0; $$2 < this.c.n() * this.c.o() + 1; $$2++) {
+         if ($$2 != this.c.m()) {
+            cuo $$3 = this.c.b($$2).g().s();
+            if (!$$3.e()) {
+               int $$4 = this.b.e($$3);
+               if ($$4 == -1 && $$0.size() <= $$1) {
+                  for (cuo $$5 : $$0) {
+                     if (cuo.b($$5, $$3) && $$5.H() != $$5.j() && $$5.H() + $$3.H() <= $$5.j()) {
+                        $$5.g($$3.H());
+                        $$3.e(0);
+                        break;
+                     }
+                  }
+
+                  if (!$$3.e()) {
+                     if ($$0.size() >= $$1) {
+                        return false;
+                     }
+
+                     $$0.add($$3);
+                  }
+               } else if ($$4 == -1) {
+                  return false;
+               }
+            }
+         }
+      }
+
+      return true;
+   }
+
+   private int c() {
+      int $$0 = 0;
+
+      for (cuo $$1 : this.b.h) {
+         if ($$1.e()) {
+            $$0++;
+         }
+      }
+
+      return $$0;
    }
 }

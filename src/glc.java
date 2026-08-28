@@ -1,24 +1,23 @@
-public class glc extends gku<cjt, fvr<cjt>> {
-   private static final akk a = new akk("textures/entity/phantom.png");
+public class glc extends gkc<ciz> {
+   private static final akq a = akq.b("textures/entity/lead_knot.png");
+   private final fvv<ciz> f;
 
-   public glc(gjo.a $$0) {
-      super($$0, new fvr<>($$0.a(fxp.aH)), 0.75F);
-      this.a(new gny<>(this));
+   public glc(gkd.a $$0) {
+      super($$0);
+      this.f = new fvv<>($$0.a(fyd.ax));
    }
 
-   public akk a(cjt $$0) {
-      return a;
-   }
-
-   protected void a(cjt $$0, fao $$1, float $$2) {
-      int $$3 = $$0.s();
-      float $$4 = 1.0F + 0.15F * (float)$$3;
-      $$1.b($$4, $$4, $$4);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
-   }
-
-   protected void a(cjt $$0, fao $$1, float $$2, float $$3, float $$4, float $$5) {
+   public void a(ciz $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      this.f.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+      fbg $$6 = $$4.getBuffer(this.f.a(a));
+      this.f.a($$3, $$6, $$5, gpw.d);
+      $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$1.a(a.b.rotationDegrees($$0.dJ()));
+   }
+
+   public akq a(ciz $$0) {
+      return a;
    }
 }

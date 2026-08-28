@@ -1,133 +1,159 @@
-public class dtb {
-   public static final dtc a = dtc.a("attached");
-   public static final dtc b = dtc.a("bottom");
-   public static final dtc c = dtc.a("conditional");
-   public static final dtc d = dtc.a("disarmed");
-   public static final dtc e = dtc.a("drag");
-   public static final dtc f = dtc.a("enabled");
-   public static final dtc g = dtc.a("extended");
-   public static final dtc h = dtc.a("eye");
-   public static final dtc i = dtc.a("falling");
-   public static final dtc j = dtc.a("hanging");
-   public static final dtc k = dtc.a("has_bottle_0");
-   public static final dtc l = dtc.a("has_bottle_1");
-   public static final dtc m = dtc.a("has_bottle_2");
-   public static final dtc n = dtc.a("has_record");
-   public static final dtc o = dtc.a("has_book");
-   public static final dtc p = dtc.a("inverted");
-   public static final dtc q = dtc.a("in_wall");
-   public static final dtc r = dtc.a("lit");
-   public static final dtc s = dtc.a("locked");
-   public static final dtc t = dtc.a("occupied");
-   public static final dtc u = dtc.a("open");
-   public static final dtc v = dtc.a("persistent");
-   public static final dtc w = dtc.a("powered");
-   public static final dtc x = dtc.a("short");
-   public static final dtc y = dtc.a("signal_fire");
-   public static final dtc z = dtc.a("snowy");
-   public static final dtc A = dtc.a("triggered");
-   public static final dtc B = dtc.a("unstable");
-   public static final dtc C = dtc.a("waterlogged");
-   public static final dtc D = dtc.a("berries");
-   public static final dtc E = dtc.a("bloom");
-   public static final dtc F = dtc.a("shrieking");
-   public static final dtc G = dtc.a("can_summon");
-   public static final dtj<jf.a> H = dtj.a("axis", jf.a.class, jf.a.a, jf.a.c);
-   public static final dtj<jf.a> I = dtj.a("axis", jf.a.class);
-   public static final dtc J = dtc.a("up");
-   public static final dtc K = dtc.a("down");
-   public static final dtc L = dtc.a("north");
-   public static final dtc M = dtc.a("east");
-   public static final dtc N = dtc.a("south");
-   public static final dtc O = dtc.a("west");
-   public static final dtf P = dtf.a("facing", jf.c, jf.f, jf.d, jf.e, jf.b, jf.a);
-   public static final dtf Q = dtf.a("facing", $$0 -> $$0 != jf.b);
-   public static final dtf R = dtf.a("facing", jf.c.a);
-   public static final dtl S = dtl.a("flower_amount", 1, 4);
-   public static final dtj<jh> T = dtj.a("orientation", jh.class);
-   public static final dtj<dsw> U = dtj.a("face", dsw.class);
-   public static final dtj<dsz> V = dtj.a("attachment", dsz.class);
-   public static final dtj<dtx> W = dtj.a("east", dtx.class);
-   public static final dtj<dtx> X = dtj.a("north", dtx.class);
-   public static final dtj<dtx> Y = dtj.a("south", dtx.class);
-   public static final dtj<dtx> Z = dtj.a("west", dtx.class);
-   public static final dtj<dtq> aa = dtj.a("east", dtq.class);
-   public static final dtj<dtq> ab = dtj.a("north", dtq.class);
-   public static final dtj<dtq> ac = dtj.a("south", dtq.class);
-   public static final dtj<dtq> ad = dtj.a("west", dtq.class);
-   public static final dtj<dth> ae = dtj.a("half", dth.class);
-   public static final dtj<dtk> af = dtj.a("half", dtk.class);
-   public static final dtj<dtp> ag = dtj.a("shape", dtp.class);
-   public static final dtj<dtp> ah = dtj.a("shape", dtp.class, $$0 -> $$0 != dtp.j && $$0 != dtp.i && $$0 != dtp.g && $$0 != dtp.h);
-   public static final int ai = 1;
-   public static final int aj = 2;
-   public static final int ak = 3;
-   public static final int al = 4;
-   public static final int am = 5;
-   public static final int an = 7;
-   public static final int ao = 15;
-   public static final int ap = 25;
-   public static final dtl aq = dtl.a("age", 0, 1);
-   public static final dtl ar = dtl.a("age", 0, 2);
-   public static final dtl as = dtl.a("age", 0, 3);
-   public static final dtl at = dtl.a("age", 0, 4);
-   public static final dtl au = dtl.a("age", 0, 5);
-   public static final dtl av = dtl.a("age", 0, 7);
-   public static final dtl aw = dtl.a("age", 0, 15);
-   public static final dtl ax = dtl.a("age", 0, 25);
-   public static final dtl ay = dtl.a("bites", 0, 6);
-   public static final dtl az = dtl.a("candles", 1, 4);
-   public static final dtl aA = dtl.a("delay", 1, 4);
-   public static final int aB = 7;
-   public static final dtl aC = dtl.a("distance", 1, 7);
-   public static final dtl aD = dtl.a("eggs", 1, 4);
-   public static final dtl aE = dtl.a("hatch", 0, 2);
-   public static final dtl aF = dtl.a("layers", 1, 8);
-   public static final int aG = 0;
-   public static final int aH = 1;
-   public static final int aI = 3;
-   public static final int aJ = 8;
-   public static final dtl aK = dtl.a("level", 1, 3);
-   public static final dtl aL = dtl.a("level", 0, 8);
-   public static final dtl aM = dtl.a("level", 1, 8);
-   public static final dtl aN = dtl.a("honey_level", 0, 5);
-   public static final int aO = 15;
-   public static final dtl aP = dtl.a("level", 0, 15);
-   public static final dtl aQ = dtl.a("moisture", 0, 7);
-   public static final dtl aR = dtl.a("note", 0, 24);
-   public static final dtl aS = dtl.a("pickles", 1, 4);
-   public static final dtl aT = dtl.a("power", 0, 15);
-   public static final dtl aU = dtl.a("stage", 0, 1);
-   public static final int aV = 7;
-   public static final dtl aW = dtl.a("distance", 0, 7);
-   public static final int aX = 0;
-   public static final int aY = 4;
-   public static final dtl aZ = dtl.a("charges", 0, 4);
-   public static final dtl ba = dtl.a("rotation", 0, dtr.a());
-   public static final dtj<dsy> bb = dtj.a("part", dsy.class);
-   public static final dtj<dtd> bc = dtj.a("type", dtd.class);
-   public static final dtj<dte> bd = dtj.a("mode", dte.class);
-   public static final dtj<dtg> be = dtj.a("hinge", dtg.class);
-   public static final dtj<dtm> bf = dtj.a("instrument", dtm.class);
-   public static final dtj<dtn> bg = dtj.a("type", dtn.class);
-   public static final dtj<dtt> bh = dtj.a("type", dtt.class);
-   public static final dtj<dtu> bi = dtj.a("shape", dtu.class);
-   public static final dtj<dtv> bj = dtj.a("mode", dtv.class);
-   public static final dtj<dsx> bk = dtj.a("leaves", dsx.class);
-   public static final dtj<dtw> bl = dtj.a("tilt", dtw.class);
-   public static final dtf bm = dtf.a("vertical_direction", jf.b, jf.a);
-   public static final dtj<dti> bn = dtj.a("thickness", dti.class);
-   public static final dtj<dts> bo = dtj.a("sculk_sensor_phase", dts.class);
-   public static final dtc bp = dtc.a("slot_0_occupied");
-   public static final dtc bq = dtc.a("slot_1_occupied");
-   public static final dtc br = dtc.a("slot_2_occupied");
-   public static final dtc bs = dtc.a("slot_3_occupied");
-   public static final dtc bt = dtc.a("slot_4_occupied");
-   public static final dtc bu = dtc.a("slot_5_occupied");
-   public static final dtl bv = dtl.a("dusted", 0, 3);
-   public static final dtc bw = dtc.a("cracked");
-   public static final dtc bx = dtc.a("crafting");
-   public static final dtj<drr> by = dtj.a("trial_spawner_state", drr.class);
-   public static final dtj<dry> bz = dtj.a("vault_state", dry.class);
-   public static final dtc bA = dtc.a("ominous");
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Decoder;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+
+public class dtb<O, S extends dtc<O, S>> {
+   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
+   private final O b;
+   private final ImmutableSortedMap<String, dud<?>> c;
+   private final ImmutableList<S> d;
+
+   protected dtb(Function<O, S> $$0, O $$1, dtb.b<O, S> $$2, Map<String, dud<?>> $$3) {
+      this.b = $$1;
+      this.c = ImmutableSortedMap.copyOf($$3);
+      Supplier<S> $$4 = () -> $$0.apply($$1);
+      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
+      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
+
+      while ($$7.hasNext()) {
+         Entry<String, dud<?>> $$6 = (Entry<String, dud<?>>)$$7.next();
+         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
+      }
+
+      MapCodec<S> $$7x = $$5;
+      Map<Map<dud<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
+      List<S> $$9 = Lists.newArrayList();
+      Stream<List<Pair<dud<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
+      UnmodifiableIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         dud<?> $$11 = (dud<?>)var11.next();
+         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
+               List<Pair<dud<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
+               $$3x.add(Pair.of($$11, $$2x));
+               return $$3x;
+            }));
+      }
+
+      $$10.forEach($$5x -> {
+         Reference2ObjectArrayMap<dud<?>, Comparable<?>> $$6 = new Reference2ObjectArrayMap($$5x.size());
+
+         for (Pair<dud<?>, Comparable<?>> $$7xx : $$5x) {
+            $$6.put((dud)$$7xx.getFirst(), (Comparable)$$7xx.getSecond());
+         }
+
+         S $$8x = $$2.create($$1, $$6, $$7);
+         $$8.put($$6, $$8x);
+         $$9.add($$8x);
+      });
+
+      for (S $$12 : $$9) {
+         $$12.a($$8);
+      }
+
+      this.d = ImmutableList.copyOf($$9);
+   }
+
+   private static <S extends dtc<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dud<T> $$3) {
+      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
+      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dtc)((dtc)$$1x.getFirst()).a($$3, ((dud.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
+   }
+
+   public ImmutableList<S> a() {
+      return this.d;
+   }
+
+   public S b() {
+      return (S)this.d.get(0);
+   }
+
+   public O c() {
+      return this.b;
+   }
+
+   public Collection<dud<?>> d() {
+      return this.c.values();
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this)
+         .add("block", this.b)
+         .add("properties", this.c.values().stream().map(dud::f).collect(Collectors.toList()))
+         .toString();
+   }
+
+   @Nullable
+   public dud<?> a(String $$0) {
+      return (dud<?>)this.c.get($$0);
+   }
+
+   public static class a<O, S extends dtc<O, S>> {
+      private final O a;
+      private final Map<String, dud<?>> b = Maps.newHashMap();
+
+      public a(O $$0) {
+         this.a = $$0;
+      }
+
+      public dtb.a<O, S> a(dud<?>... $$0) {
+         for (dud<?> $$1 : $$0) {
+            this.a($$1);
+            this.b.put($$1.f(), $$1);
+         }
+
+         return this;
+      }
+
+      private <T extends Comparable<T>> void a(dud<T> $$0) {
+         String $$1 = $$0.f();
+         if (!dtb.a.matcher($$1).matches()) {
+            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
+         } else {
+            Collection<T> $$2 = $$0.a();
+            if ($$2.size() <= 1) {
+               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
+            } else {
+               for (T $$3 : $$2) {
+                  String $$4 = $$0.a($$3);
+                  if (!dtb.a.matcher($$4).matches()) {
+                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
+                  }
+               }
+
+               if (this.b.containsKey($$1)) {
+                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
+               }
+            }
+         }
+      }
+
+      public dtb<O, S> a(Function<O, S> $$0, dtb.b<O, S> $$1) {
+         return new dtb<>($$0, this.a, $$1, this.b);
+      }
+   }
+
+   public interface b<O, S> {
+      S create(O var1, Reference2ObjectArrayMap<dud<?>, Comparable<?>> var2, MapCodec<S> var3);
+   }
 }

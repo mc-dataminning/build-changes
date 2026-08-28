@@ -1,43 +1,18 @@
-public class gbf extends gct {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final int G;
-   private final int H;
-
-   gbf(fyl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
+public class gbf extends gdh {
+   gbf(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
       super($$0, $$1, $$2, $$3);
+      this.d(3.0F);
+      this.b(0.25F, 0.25F);
+      if ($$7) {
+         this.t = this.r.a(50) + 280;
+      } else {
+         this.t = this.r.a(50) + 80;
+      }
+
+      this.u = 3.0E-6F;
       this.j = $$4;
-      this.k = $$5;
+      this.k = $$5 + (double)(this.r.i() / 500.0F);
       this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      this.n = false;
-      this.t = (int)(Math.random() * 5.0) + 25;
-      this.G = $$7;
-      this.H = $$8;
-   }
-
-   @Override
-   public gbx b() {
-      return gbx.b;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
    }
 
    @Override
@@ -45,30 +20,49 @@ public class gbf extends gct {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+      if (this.s++ < this.t && !(this.y <= 0.0F)) {
+         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         if (this.s >= this.t - 60 && this.y > 0.01F) {
+            this.y -= 0.015F;
+         }
       } else {
-         float $$0 = (float)this.s / (float)this.t;
-         float $$1 = 1.0F - $$0;
-         this.g = this.a + this.j * (double)$$1;
-         this.h = this.b + this.k * (double)$$1;
-         this.i = this.F + this.l * (double)$$1;
-         int $$2 = axq.b.a($$0, this.G, this.H);
-         this.a((float)axq.b.b($$2) / 255.0F, (float)axq.b.c($$2) / 255.0F, (float)axq.b.d($$2) / 255.0F);
-         this.e((float)axq.b.a($$2) / 255.0F);
+         this.k();
       }
    }
 
-   public static class a implements gbw<ln> {
-      private final gco a;
+   @Override
+   public gcl b() {
+      return gcl.c;
+   }
 
-      public a(gco $$0) {
+   public static class a implements gck<lq> {
+      private final gdc a;
+
+      public a(gdc $$0) {
          this.a = $$0;
       }
 
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbf $$8 = new gbf($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
-         $$8.d(ayg.b($$1.E_(), 3.0F, 5.0F));
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbf $$8 = new gbf($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+         $$8.e(0.9F);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements gck<lq> {
+      private final gdc a;
+
+      public b(gdc $$0) {
+         this.a = $$0;
+      }
+
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbf $$8 = new gbf($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
+         $$8.e(0.95F);
          $$8.a(this.a);
          return $$8;
       }

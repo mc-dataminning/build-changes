@@ -1,45 +1,44 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.io.Closeable;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.Reader;
+import javax.annotation.Nullable;
 
-public interface bly<S> {
-   void a(int var1, bmd<S> var2, Object var3);
+public interface bly<T> extends Closeable {
+   static <T> bly<T> a(final Codec<T> $$0, Reader $$1) {
+      final JsonReader $$2 = new JsonReader($$1);
+      $$2.setLenient(true);
+      return new bly<T>() {
+         @Nullable
+         @Override
+         public T a() throws IOException {
+            try {
+               if (!$$2.hasNext()) {
+                  return null;
+               } else {
+                  JsonElement $$0 = JsonParser.parseReader($$2);
+                  return (T)$$0.parse(JsonOps.INSTANCE, $$0).getOrThrow(IOException::new);
+               }
+            } catch (JsonParseException var2) {
+               throw new IOException(var2);
+            } catch (EOFException var3) {
+               return null;
+            }
+         }
 
-   default void a(int $$0, Object $$1) {
-      this.a($$0, bmd.b(), $$1);
+         @Override
+         public void close() throws IOException {
+            $$2.close();
+         }
+      };
    }
 
-   void a(int var1);
-
-   public static class a<S> implements bly<S> {
-      private final List<blz<S>> a = new ArrayList<>();
-      private int b = -1;
-
-      private void b(int $$0) {
-         if ($$0 > this.b) {
-            this.b = $$0;
-            this.a.clear();
-         }
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.b($$0);
-      }
-
-      @Override
-      public void a(int $$0, bmd<S> $$1, Object $$2) {
-         this.b($$0);
-         if ($$0 == this.b) {
-            this.a.add(new blz<>($$0, $$1, $$2));
-         }
-      }
-
-      public List<blz<S>> a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-   }
+   @Nullable
+   T a() throws IOException;
 }

@@ -1,19 +1,41 @@
-public class dko {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(dsl $$0) {
-      return $$0.i();
+public class dko extends djs {
+   public static final MapCodec<dko> a = b(dko::new);
+   private static final wy b = wy.c("container.loom");
+
+   @Override
+   public MapCodec<dko> a() {
+      return a;
    }
 
-   public static int a(ayo $$0) {
-      double $$1 = 1.0;
+   protected dko(dsz.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
+   @Override
+   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
+      if ($$1.B) {
+         return bqq.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(avy.ax);
+         return bqq.c;
       }
+   }
 
-      return $$2;
+   @Override
+   protected bqu b(dta $$0, dcu $$1, jd $$2) {
+      return new bra(($$2x, $$3, $$4) -> new cqy($$2x, $$3, cqe.a($$1, $$2)), b);
+   }
+
+   @Override
+   public dta a(cyb $$0) {
+      return this.o().a(aE, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(aE);
    }
 }

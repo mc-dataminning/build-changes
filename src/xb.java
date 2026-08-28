@@ -1,71 +1,131 @@
-import com.google.common.primitives.Ints;
-import com.mojang.serialization.Codec;
-import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.BitSet;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public record xb(List<xg> d) {
-   public static final Codec<xb> a = xg.a.listOf().xmap(xb::new, xb::a);
-   public static xb b = new xb(List.of());
-   public static final int c = 20;
+public class xb {
+   public static final String a = ", ";
+   public static final wy b = wy.b(", ").a(n.h);
+   public static final wy c = wy.b(", ");
 
-   public void a(ays.a $$0) throws SignatureException {
-      $$0.update(Ints.toByteArray(this.d.size()));
-
-      for (xg $$1 : this.d) {
-         $$0.update($$1.b());
+   public static xm a(xm $$0, xv $$1) {
+      if ($$1.g()) {
+         return $$0;
+      } else {
+         xv $$2 = $$0.a();
+         if ($$2.g()) {
+            return $$0.b($$1);
+         } else {
+            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
+         }
       }
    }
 
-   public xb.a a(xh $$0) {
-      return new xb.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
+   public static Optional<xm> a(@Nullable et $$0, Optional<wy> $$1, @Nullable bsq $$2, int $$3) throws CommandSyntaxException {
+      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   public List<xg> a() {
-      return this.d;
-   }
+   public static xm a(@Nullable et $$0, wy $$1, @Nullable bsq $$2, int $$3) throws CommandSyntaxException {
+      if ($$3 > 100) {
+         return $$1.f();
+      } else {
+         xm $$4 = $$1.b().a($$0, $$2, $$3 + 1);
 
-   public static record a(List<xg.a> b) {
-      public static final xb.a a = new xb.a(List.of());
-
-      public a(vr $$0) {
-         this($$0.a(vr.a(ArrayList::new, 20), xg.a::a));
-      }
-
-      public void a(vr $$0) {
-         $$0.a(this.b, xg.a::a);
-      }
-
-      public Optional<xb> a(xh $$0) {
-         List<xg> $$1 = new ArrayList<>(this.b.size());
-
-         for (xg.a $$2 : this.b) {
-            Optional<xg> $$3 = $$2.a($$0);
-            if ($$3.isEmpty()) {
-               return Optional.empty();
-            }
-
-            $$1.add($$3.get());
+         for (wy $$5 : $$1.c()) {
+            $$4.b(a($$0, $$5, $$2, $$3 + 1));
          }
 
-         return Optional.of(new xb($$1));
-      }
-
-      public List<xg.a> a() {
-         return this.b;
+         return $$4.c(a($$0, $$1.a(), $$2, $$3));
       }
    }
 
-   public static record b(int a, BitSet b) {
-      public b(vr $$0) {
-         this($$0.l(), $$0.e(20));
+   private static xv a(@Nullable et $$0, xv $$1, @Nullable bsq $$2, int $$3) throws CommandSyntaxException {
+      xe $$4 = $$1.i();
+      if ($$4 != null) {
+         wy $$5 = $$4.a(xe.a.a);
+         if ($$5 != null) {
+            xe $$6 = new xe(xe.a.a, a($$0, $$5, $$2, $$3 + 1));
+            return $$1.a($$6);
+         }
       }
 
-      public void a(vr $$0) {
-         $$0.c(this.a);
-         $$0.a(this.b, 20);
+      return $$1;
+   }
+
+   public static wy a(Collection<String> $$0) {
+      return a($$0, $$0x -> wy.b($$0x).a(n.k));
+   }
+
+   public static <T extends Comparable<T>> wy a(Collection<T> $$0, Function<T, wy> $$1) {
+      if ($$0.isEmpty()) {
+         return wx.a;
+      } else if ($$0.size() == 1) {
+         return $$1.apply($$0.iterator().next());
+      } else {
+         List<T> $$2 = Lists.newArrayList($$0);
+         $$2.sort(Comparable::compareTo);
+         return b($$2, $$1);
       }
+   }
+
+   public static <T> wy b(Collection<? extends T> $$0, Function<T, wy> $$1) {
+      return a($$0, b, $$1);
+   }
+
+   public static <T> xm a(Collection<? extends T> $$0, Optional<? extends wy> $$1, Function<T, wy> $$2) {
+      return a($$0, (wy)DataFixUtils.orElse($$1, b), $$2);
+   }
+
+   public static wy a(Collection<? extends wy> $$0, wy $$1) {
+      return a($$0, $$1, Function.identity());
+   }
+
+   public static <T> xm a(Collection<? extends T> $$0, wy $$1, Function<T, wy> $$2) {
+      if ($$0.isEmpty()) {
+         return wy.i();
+      } else if ($$0.size() == 1) {
+         return $$2.apply((T)$$0.iterator().next()).f();
+      } else {
+         xm $$3 = wy.i();
+         boolean $$4 = true;
+
+         for (T $$5 : $$0) {
+            if (!$$4) {
+               $$3.b($$1);
+            }
+
+            $$3.b($$2.apply($$5));
+            $$4 = false;
+         }
+
+         return $$3;
+      }
+   }
+
+   public static xm a(wy $$0) {
+      return wy.a("chat.square_brackets", $$0);
+   }
+
+   public static wy a(Message $$0) {
+      return (wy)($$0 instanceof wy ? (wy)$$0 : wy.b($$0.getString()));
+   }
+
+   public static boolean b(@Nullable wy $$0) {
+      if ($$0 != null && $$0.b() instanceof yj $$1) {
+         String $$2 = $$1.b();
+         String $$3 = $$1.c();
+         return $$3 != null || tv.a().b($$2);
+      } else {
+         return true;
+      }
+   }
+
+   public static xm a(String $$0) {
+      return a((wy)wy.b($$0).a($$1 -> $$1.a(n.k).a(new ww(ww.a.f, $$0)).a(new xe(xe.a.a, wy.c("chat.copy.click"))).a($$0)));
    }
 }

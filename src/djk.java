@@ -1,78 +1,73 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public class djk extends dfi implements dia, diq {
-   public static final MapCodec<djk> a = b(djk::new);
-   public static final dtj<jh> b = dtb.T;
-
-   @Override
-   public MapCodec<djk> a() {
-      return a;
-   }
-
-   protected djk(dsk.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, jh.k));
+public abstract class djk extends djj implements dfz {
+   protected djk(dsz.d $$0, ji $$1, exp $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(b);
+   protected abstract MapCodec<? extends djk> a();
+
+   protected dta a(dta $$0, dta $$1) {
+      return $$1;
    }
 
    @Override
-   protected dsl a(dsl $$0, dlv $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   protected dsl a(dsl $$0, dkf $$1) {
-      return $$0.a(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   public dsl a(cxn $$0) {
-      jf $$1 = $$0.k();
-      jf $$2;
-      if ($$1.o() == jf.a.b) {
-         $$2 = $$0.g().g();
-      } else {
-         $$2 = jf.b;
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
 
-      return this.o().a(b, jh.a($$1, $$2));
-   }
-
-   @Override
-   public dpq a(ja $$0, dsl $$1) {
-      return new dqr($$0, $$1);
-   }
-
-   @Override
-   protected bqh a(dsl $$0, dcg $$1, ja $$2, cml $$3, ewd $$4) {
-      dpq $$5 = $$1.c_($$2);
-      if ($$5 instanceof dqr && $$3.gx()) {
-         $$3.a((dqr)$$5);
-         return bqh.a($$1.B);
+      djl $$6 = this.c();
+      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
+         return this.a($$0, $$6.a($$3));
       } else {
-         return bqh.e;
+         if (this.b) {
+            $$3.a($$4, eoz.c, eoz.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   public static boolean a(emy.c $$0, emy.c $$1) {
-      jf $$2 = m($$0.b());
-      jf $$3 = m($$1.b());
-      jf $$4 = n($$0.b());
-      jf $$5 = n($$1.b());
-      dqr.a $$6 = dqr.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dqr.a.b : dqr.a.a);
-      boolean $$7 = $$6 == dqr.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
+   @Override
+   public cuo a(dcx $$0, jd $$1, dta $$2) {
+      return new cuo(this.c());
    }
 
-   public static jf m(dsl $$0) {
-      return $$0.c(b).a();
+   @Override
+   public boolean b(dcx $$0, jd $$1, dta $$2) {
+      Optional<jd> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
    }
 
-   public static jf n(dsl $$0) {
-      return $$0.c(b).b();
+   @Override
+   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
+      Optional<jd> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dta $$5 = $$0.a_($$4.get());
+         ((djl)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+      }
+   }
+
+   private Optional<jd> a(dca $$0, jd $$1, dfw $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.c());
+   }
+
+   @Override
+   protected boolean a(dta $$0, cyb $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.c().r()) ? false : $$2;
+   }
+
+   @Override
+   protected dfw b() {
+      return this;
    }
 }

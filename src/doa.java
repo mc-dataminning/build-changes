@@ -1,144 +1,108 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class doa extends dfi {
+public class doa extends dgf implements dfz {
    public static final MapCodec<doa> a = b(doa::new);
-   public static final int b = 2;
-   public static final int c = 1;
-   public static final int d = 4;
-   private static final exa g = dfi.a(3.0, 0.0, 3.0, 12.0, 7.0, 12.0);
-   private static final exa h = dfi.a(1.0, 0.0, 1.0, 15.0, 7.0, 15.0);
-   public static final dtl e = dtb.aE;
-   public static final dtl f = dtb.aD;
+   private static final float d = 0.003F;
+   public static final int b = 3;
+   public static final dua c = dtq.as;
+   private static final exp e = dfw.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+   private static final exp f = dfw.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<doa> a() {
       return a;
    }
 
-   public doa(dsk.d $$0) {
+   public doa(dsz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(e, Integer.valueOf(0)).a(f, Integer.valueOf(1)));
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public void a(dcg $$0, ja $$1, dsl $$2, bsh $$3) {
-      if (!$$3.bY()) {
-         this.a($$0, $$2, $$1, $$3, 100);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   public cuo a(dcx $$0, jd $$1, dta $$2) {
+      return new cuo(cur.wu);
    }
 
    @Override
-   public void a(dcg $$0, dsl $$1, ja $$2, bsh $$3, float $$4) {
-      if (!($$3 instanceof ckk)) {
-         this.a($$0, $$1, $$2, $$3, 3);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   private void a(dcg $$0, dsl $$1, ja $$2, bsh $$3, int $$4) {
-      if (this.a($$0, $$3)) {
-         if (!$$0.B && $$0.z.a($$4) == 0 && $$1.a(dfk.mf)) {
-            this.a($$0, $$2, $$1);
-         }
-      }
-   }
-
-   private void a(dcg $$0, ja $$1, dsl $$2) {
-      $$0.a(null, $$1, avh.Ai, avi.e, 0.7F, 0.9F + $$0.z.i() * 0.2F);
-      int $$3 = $$2.c(f);
-      if ($$3 <= 1) {
-         $$0.b($$1, false);
+   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
+      if ($$0.c(c) == 0) {
+         return e;
       } else {
-         $$0.a($$1, $$2.a(f, Integer.valueOf($$3 - 1)), 2);
-         $$0.a(dxh.f, $$1, dxh.a.a($$2));
-         $$0.c(2001, $$1, dfi.i($$2));
+         return $$0.c(c) < 3 ? f : super.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   protected void b(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      if (this.a($$1) && a($$1, $$2)) {
-         int $$4 = $$0.c(e);
-         if ($$4 < 2) {
-            $$1.a(null, $$2, avh.Aj, avi.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-            $$1.a($$2, $$0.a(e, Integer.valueOf($$4 + 1)), 2);
-            $$1.a(dxh.c, $$2, dxh.a.a($$0));
-         } else {
-            $$1.a(null, $$2, avh.Ak, avi.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-            $$1.a($$2, false);
-            $$1.a(dxh.f, $$2, dxh.a.a($$0));
+   protected boolean d_(dta $$0) {
+      return $$0.c(c) < 3;
+   }
 
-            for (int $$5 = 0; $$5 < $$0.c(f); $$5++) {
-               $$1.c(2001, $$2, dfi.i($$0));
-               cft $$6 = bsn.bh.a((dcg)$$1);
-               if ($$6 != null) {
-                  $$6.c_(-24000);
-                  $$6.h($$2);
-                  $$6.b((double)$$2.u() + 0.3 + (double)$$5 * 0.2, (double)$$2.v(), (double)$$2.w() + 0.3, 0.0F, 0.0F);
-                  $$1.b($$6);
-               }
+   @Override
+   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(5) == 0 && $$1.b($$2.c(), 0) >= 9) {
+         dta $$5 = $$0.a(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$5, 2);
+         $$1.a(dxw.c, $$2, dxw.a.a($$5));
+      }
+   }
+
+   @Override
+   protected void a(dta $$0, dcu $$1, jd $$2, bsq $$3) {
+      if ($$3 instanceof btl && $$3.am() != bsw.Q && $$3.am() != bsw.h) {
+         $$3.a($$0, new eww(0.8F, 0.75, 0.8F));
+         if (!$$1.B && $$0.c(c) > 0 && ($$3.ad != $$3.dv() || $$3.af != $$3.dB())) {
+            double $$4 = Math.abs($$3.dv() - $$3.ad);
+            double $$5 = Math.abs($$3.dB() - $$3.af);
+            if ($$4 >= 0.003F || $$5 >= 0.003F) {
+               $$3.a($$1.aj().t(), 1.0F);
             }
          }
       }
    }
 
-   public static boolean a(dbm $$0, ja $$1) {
-      return b($$0, $$1.d());
-   }
-
-   public static boolean b(dbm $$0, ja $$1) {
-      return $$0.a_($$1).a(avw.H);
+   @Override
+   protected bqs a(cuo $$0, dta $$1, dcu $$2, jd $$3, cmv $$4, bqp $$5, ews $$6) {
+      int $$7 = $$1.c(c);
+      boolean $$8 = $$7 == 3;
+      return !$$8 && $$0.a(cur.ry) ? bqs.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   protected void b(dsl $$0, dcg $$1, ja $$2, dsl $$3, boolean $$4) {
-      if (a($$1, $$2) && !$$1.B) {
-         $$1.c(2012, $$2, 15);
-      }
-   }
-
-   private boolean a(dcg $$0) {
-      float $$1 = $$0.f(1.0F);
-      return (double)$$1 < 0.69 && (double)$$1 > 0.65 ? true : $$0.z.a(500) == 0;
-   }
-
-   @Override
-   public void a(dcg $$0, cml $$1, ja $$2, dsl $$3, @Nullable dpq $$4, cud $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.a($$0, $$2, $$3);
-   }
-
-   @Override
-   protected boolean a(dsl $$0, cxn $$1) {
-      return !$$1.h() && $$1.n().a(this.r()) && $$0.c(f) < 4 ? true : super.a($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public dsl a(cxn $$0) {
-      dsl $$1 = $$0.q().a_($$0.a());
-      return $$1.a(this) ? $$1.a(f, Integer.valueOf(Math.min(4, $$1.c(f) + 1))) : super.a($$0);
-   }
-
-   @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return $$0.c(f) > 1 ? h : g;
-   }
-
-   @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(e, f);
-   }
-
-   private boolean a(dcg $$0, bsh $$1) {
-      if ($$1 instanceof cft || $$1 instanceof cen) {
-         return false;
+   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
+      int $$5 = $$0.c(c);
+      boolean $$6 = $$5 == 3;
+      if ($$5 > 1) {
+         int $$7 = 1 + $$1.z.a(2);
+         a($$1, $$2, new cuo(cur.wu, $$7 + ($$6 ? 1 : 0)));
+         $$1.a(null, $$2, avo.zs, avp.e, 1.0F, 0.8F + $$1.z.i() * 0.4F);
+         dta $$8 = $$0.a(c, Integer.valueOf(1));
+         $$1.a($$2, $$8, 2);
+         $$1.a(dxw.c, $$2, dxw.a.a($$3, $$8));
+         return bqq.a($$1.B);
       } else {
-         return !($$1 instanceof btc) ? false : $$1 instanceof cml || $$0.ab().b(dcc.c);
+         return super.a($$0, $$1, $$2, $$3, $$4);
       }
+   }
+
+   @Override
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public boolean b(dcx $$0, jd $$1, dta $$2) {
+      return $$2.c(c) < 3;
+   }
+
+   @Override
+   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
+      int $$4 = Math.min(3, $$3.c(c) + 1);
+      $$0.a($$2, $$3.a(c, Integer.valueOf($$4)), 2);
    }
 }

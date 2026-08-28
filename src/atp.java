@@ -1,119 +1,33 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.UnaryOperator;
 
-public class atp implements atm {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<String, atn> c;
-   private final List<asi> d;
+public interface atp {
+   UnaryOperator<wy> a = UnaryOperator.identity();
+   atp b = a(a, true);
+   atp c = a(a("pack.source.builtin"), true);
+   atp d = a(a("pack.source.feature"), false);
+   atp e = a(a("pack.source.world"), true);
+   atp f = a(a("pack.source.server"), true);
 
-   public atp(ask $$0, List<asi> $$1) {
-      this.d = List.copyOf($$1);
-      Map<String, atn> $$2 = new HashMap<>();
-      List<String> $$3 = $$1.stream().flatMap($$1x -> $$1x.a($$0).stream()).distinct().toList();
+   wy a(wy var1);
 
-      for (asi $$4 : $$1) {
-         atv $$5 = this.a($$4);
-         Set<String> $$6 = $$4.a($$0);
-         Predicate<akk> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
+   boolean a();
 
-         for (String $$8 : $$3) {
-            boolean $$9 = $$6.contains($$8);
-            boolean $$10 = $$5 != null && $$5.a($$8);
-            if ($$9 || $$10) {
-               atn $$11 = $$2.get($$8);
-               if ($$11 == null) {
-                  $$11 = new atn($$0, $$8);
-                  $$2.put($$8, $$11);
-               }
-
-               if ($$9 && $$10) {
-                  $$11.a($$4, $$7);
-               } else if ($$9) {
-                  $$11.a($$4);
-               } else {
-                  $$11.a($$4.b(), $$7);
-               }
-            }
+   static atp a(final UnaryOperator<wy> $$0, final boolean $$1) {
+      return new atp() {
+         @Override
+         public wy a(wy $$0x) {
+            return $$0.apply($$0);
          }
-      }
 
-      this.c = $$2;
+         @Override
+         public boolean a() {
+            return $$1;
+         }
+      };
    }
 
-   @Nullable
-   private atv a(asi $$0) {
-      try {
-         return $$0.a(atv.a);
-      } catch (IOException var3) {
-         a.error("Failed to get filter section from pack {}", $$0.b());
-         return null;
-      }
-   }
-
-   @Override
-   public Set<String> a() {
-      return this.c.keySet();
-   }
-
-   @Override
-   public Optional<atu> getResource(akk $$0) {
-      atw $$1 = this.c.get($$0.b());
-      return $$1 != null ? $$1.getResource($$0) : Optional.empty();
-   }
-
-   @Override
-   public List<atu> a(akk $$0) {
-      atw $$1 = this.c.get($$0.b());
-      return $$1 != null ? $$1.a($$0) : List.of();
-   }
-
-   @Override
-   public Map<akk, atu> b(String $$0, Predicate<akk> $$1) {
-      a($$0);
-      Map<akk, atu> $$2 = new TreeMap<>();
-
-      for (atn $$3 : this.c.values()) {
-         $$2.putAll($$3.b($$0, $$1));
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public Map<akk, List<atu>> c(String $$0, Predicate<akk> $$1) {
-      a($$0);
-      Map<akk, List<atu>> $$2 = new TreeMap<>();
-
-      for (atn $$3 : this.c.values()) {
-         $$2.putAll($$3.c($$0, $$1));
-      }
-
-      return $$2;
-   }
-
-   private static void a(String $$0) {
-      if ($$0.endsWith("/")) {
-         throw new IllegalArgumentException("Trailing slash in path " + $$0);
-      }
-   }
-
-   @Override
-   public Stream<asi> b() {
-      return this.d.stream();
-   }
-
-   @Override
-   public void close() {
-      this.d.forEach(asi::close);
+   private static UnaryOperator<wy> a(String $$0) {
+      wy $$1 = wy.c($$0);
+      return $$1x -> wy.a("pack.nameAndSource", $$1x, $$1).a(n.h);
    }
 }

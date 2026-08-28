@@ -1,37 +1,44 @@
-public class aca implements zb<abn> {
-   public static final ys<vr, aca> a = zb.a(aca::a, aca::new);
-   private final bqe b;
-   private final boolean c;
+import java.util.function.BiFunction;
 
-   public aca(bqe $$0, boolean $$1) {
+public class aca implements zf<abt> {
+   public static final yw<wj, aca> a = yw.a(jd.b, aca::b, yu.a(lu.h), aca::e, yu.p, aca::f, aca::new);
+   private final jd b;
+   private final dqh<?> c;
+   private final ua d;
+
+   public static aca a(dqf $$0, BiFunction<dqf, ka, ua> $$1) {
+      ka $$2 = $$0.i().H_();
+      return new aca($$0.az_(), $$0.r(), $$1.apply($$0, $$2));
+   }
+
+   public static aca a(dqf $$0) {
+      return a($$0, dqf::a);
+   }
+
+   private aca(jd $$0, dqh<?> $$1, ua $$2) {
       this.b = $$0;
       this.c = $$1;
-   }
-
-   private aca(vr $$0) {
-      this.b = bqe.a($$0.readUnsignedByte());
-      this.c = $$0.readBoolean();
-   }
-
-   private void a(vr $$0) {
-      $$0.k(this.b.a());
-      $$0.a(this.c);
+      this.d = $$2;
    }
 
    @Override
-   public zd<aca> a() {
-      return afz.m;
+   public zh<aca> a() {
+      return agf.i;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public jd b() {
+      return this.b;
+   }
+
+   public dqh<?> e() {
       return this.c;
    }
 
-   public bqe e() {
-      return this.b;
+   public ua f() {
+      return this.d;
    }
 }

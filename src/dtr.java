@@ -1,37 +1,47 @@
+import com.google.common.collect.ImmutableSet;
+import java.util.Collection;
 import java.util.Optional;
 
-public class dtr {
-   private static final ayq a = new ayq(4);
-   private static final int b = a.a();
-   private static final int c = 0;
-   private static final int d = 4;
-   private static final int e = 8;
-   private static final int f = 12;
+public class dtr extends dud<Boolean> {
+   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
 
-   public static int a() {
-      return b;
+   protected dtr(String $$0) {
+      super($$0, Boolean.class);
    }
 
-   public static int a(jf $$0) {
-      return a.a($$0);
+   @Override
+   public Collection<Boolean> a() {
+      return this.a;
    }
 
-   public static int a(float $$0) {
-      return a.b($$0);
+   public static dtr a(String $$0) {
+      return new dtr($$0);
    }
 
-   public static Optional<jf> a(int $$0) {
-      jf $$1 = switch ($$0) {
-         case 0 -> jf.c;
-         case 4 -> jf.f;
-         case 8 -> jf.d;
-         case 12 -> jf.e;
-         default -> null;
-      };
-      return Optional.ofNullable($$1);
+   @Override
+   public Optional<Boolean> b(String $$0) {
+      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
    }
 
-   public static float b(int $$0) {
-      return a.b($$0);
+   public String a(Boolean $$0) {
+      return $$0.toString();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dtr $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
    }
 }

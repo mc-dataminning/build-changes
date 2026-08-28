@@ -1,57 +1,78 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Map;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public record dty(String m, dta n, dmv o, dmv p, avg q, avg r) {
-   private static final Map<String, dty> s = new Object2ObjectArrayMap();
-   public static final Codec<dty> a = Codec.stringResolver(dty::b, s::get);
-   public static final dty b = a(new dty("oak", dta.g));
-   public static final dty c = a(new dty("spruce", dta.h));
-   public static final dty d = a(new dty("birch", dta.i));
-   public static final dty e = a(new dty("acacia", dta.j));
-   public static final dty f = a(new dty("cherry", dta.k, dmv.aU, dmv.aX, avh.eM, avh.eN));
-   public static final dty g = a(new dty("jungle", dta.l));
-   public static final dty h = a(new dty("dark_oak", dta.m));
-   public static final dty i = a(new dty("crimson", dta.n, dmv.aT, dmv.aQ, avh.qW, avh.qX));
-   public static final dty j = a(new dty("warped", dta.o, dmv.aT, dmv.aQ, avh.qW, avh.qX));
-   public static final dty k = a(new dty("mangrove", dta.p));
-   public static final dty l = a(new dty("bamboo", dta.q, dmv.aS, dmv.aR, avh.bw, avh.bx));
+public class dty<T extends Enum<T> & azj> extends dud<T> {
+   private final ImmutableSet<T> a;
+   private final Map<String, T> b = Maps.newHashMap();
 
-   public dty(String $$0, dta $$1) {
-      this($$0, $$1, dmv.b, dmv.aP, avh.iI, avh.iJ);
+   protected dty(String $$0, Class<T> $$1, Collection<T> $$2) {
+      super($$0, $$1);
+      this.a = ImmutableSet.copyOf($$2);
+
+      for (T $$3 : $$2) {
+         String $$4 = $$3.c();
+         if (this.b.containsKey($$4)) {
+            throw new IllegalArgumentException("Multiple values have the same name '" + $$4 + "'");
+         }
+
+         this.b.put($$4, $$3);
+      }
    }
 
-   private static dty a(dty $$0) {
-      s.put($$0.b(), $$0);
-      return $$0;
+   @Override
+   public Collection<T> a() {
+      return this.a;
    }
 
-   public static Stream<dty> a() {
-      return s.values().stream();
+   @Override
+   public Optional<T> b(String $$0) {
+      return Optional.ofNullable(this.b.get($$0));
    }
 
-   public String b() {
-      return this.m;
+   public String a(T $$0) {
+      return $$0.c();
    }
 
-   public dta c() {
-      return this.n;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dty<?> $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a) && this.b.equals($$1.b);
+         }
+
+         return false;
+      }
    }
 
-   public dmv d() {
-      return this.o;
+   @Override
+   public int b() {
+      int $$0 = super.b();
+      $$0 = 31 * $$0 + this.a.hashCode();
+      return 31 * $$0 + this.b.hashCode();
    }
 
-   public dmv e() {
-      return this.p;
+   public static <T extends Enum<T> & azj> dty<T> a(String $$0, Class<T> $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   public avg f() {
-      return this.q;
+   public static <T extends Enum<T> & azj> dty<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
+      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
    }
 
-   public avg g() {
-      return this.r;
+   public static <T extends Enum<T> & azj> dty<T> a(String $$0, Class<T> $$1, T... $$2) {
+      return a($$0, $$1, Lists.newArrayList($$2));
+   }
+
+   public static <T extends Enum<T> & azj> dty<T> a(String $$0, Class<T> $$1, Collection<T> $$2) {
+      return new dty<>($$0, $$1, $$2);
    }
 }

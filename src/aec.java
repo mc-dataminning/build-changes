@@ -1,37 +1,37 @@
-public class aec implements zb<abn> {
-   public static final ys<vr, aec> a = zb.a(aec::a, aec::new);
+public class aec implements zf<abt> {
+   public static final yw<vv, aec> a = zf.a(aec::a, aec::new);
    private final int b;
-   private final byte c;
+   private final double c;
 
-   public aec(bsh $$0, byte $$1) {
-      this.b = $$0.an();
+   public aec(int $$0, double $$1) {
+      this.b = $$0;
       this.c = $$1;
    }
 
-   private aec(vr $$0) {
+   private aec(vv $$0) {
       this.b = $$0.l();
-      this.c = $$0.readByte();
+      this.c = $$0.readDouble();
    }
 
-   private void a(vr $$0) {
+   private void a(vv $$0) {
       $$0.c(this.b);
-      $$0.k(this.c);
+      $$0.a(this.c);
    }
 
    @Override
-   public zd<aec> a() {
-      return afz.am;
+   public zh<aec> a() {
+      return agf.be;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public bsh a(dcg $$0) {
-      return $$0.a(this.b);
+   public int b() {
+      return this.b;
    }
 
-   public byte b() {
+   public double e() {
       return this.c;
    }
 }

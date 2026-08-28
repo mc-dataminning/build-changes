@@ -1,88 +1,68 @@
-import javax.annotation.Nullable;
+import org.joml.Quaternionf;
 
-public class gcs extends gct {
-   private final ja a;
-   private final float b;
-   private final float F;
+public class gcs extends gdh {
+   private static final float a = 1.0472F;
+   private int b;
 
-   public gcs(fyl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dsl $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, ja.a($$1, $$2, $$3));
+   gcs(fyz $$0, double $$1, double $$2, double $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.85F;
+      this.b = $$4;
+      this.t = 30;
+      this.u = 0.0F;
+      this.j = 0.0;
+      this.k = 0.1;
+      this.l = 0.0;
    }
 
-   public gcs(fyl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dsl $$7, ja $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$8;
-      this.a(ffw.Q().ao().a().a($$7));
-      this.u = 1.0F;
-      this.v = 0.6F;
-      this.w = 0.6F;
-      this.x = 0.6F;
-      if (!$$7.a(dfk.i)) {
-         int $$9 = ffw.Q().au().a($$7, $$0, $$8, 0);
-         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
-         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
-         this.x *= (float)($$9 & 0xFF) / 255.0F;
+   @Override
+   public float b(float $$0) {
+      return this.D * ayn.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
+   }
+
+   @Override
+   public void a(fbg $$0, ffs $$1, float $$2) {
+      if (this.b <= 0) {
+         this.y = 1.0F - ayn.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
+         Quaternionf $$3 = new Quaternionf();
+         $$3.rotationX(-1.0472F);
+         this.a($$0, $$1, $$3, $$2);
+         $$3.rotationYXZ((float) -Math.PI, 1.0472F, 0.0F);
+         this.a($$0, $$1, $$3, $$2);
       }
-
-      this.D /= 2.0F;
-      this.b = this.r.i() * 3.0F;
-      this.F = this.r.i() * 3.0F;
-   }
-
-   @Override
-   public gbx b() {
-      return gbx.a;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.b + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.b / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.F / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.F + 1.0F) / 4.0F);
    }
 
    @Override
    public int a(float $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == 0 && this.c.B(this.a) ? ged.a(this.c, this.a) : $$1;
+      return 240;
    }
 
-   @Nullable
-   static gcs a(lb $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      dsl $$8 = $$0.b();
-      return !$$8.i() && !$$8.a(dfk.bQ) && $$8.z() ? new gcs($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
+   @Override
+   public gcl b() {
+      return gcl.c;
    }
 
-   public static class a implements gbw<lb> {
-      @Nullable
-      public gbt a(lb $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbt $$8 = gcs.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         if ($$8 != null) {
-            $$8.b($$1.z.k() / 30.0, $$6 + $$1.z.k() / 2.0, $$1.z.k() / 30.0);
-            $$8.a($$1.z.a(20) + 20);
-         }
-
-         return $$8;
+   @Override
+   public void a() {
+      if (this.b > 0) {
+         this.b--;
+      } else {
+         super.a();
       }
    }
 
-   public static class b implements gbw<lb> {
-      @Nullable
-      public gbt a(lb $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return gcs.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public static class a implements gck<lp> {
+      private final gdc a;
+
+      public a(gdc $$0) {
+         this.a = $$0;
+      }
+
+      public gch a(lp $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcs $$8 = new gcs($$1, $$2, $$3, $$4, $$0.b());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

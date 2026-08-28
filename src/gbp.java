@@ -1,57 +1,43 @@
-public class gbp extends gct {
-   gbp(fyl $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.u = 0.75F;
-      this.B = 0.999F;
-      this.j *= 0.8F;
-      this.k *= 0.8F;
-      this.l *= 0.8F;
-      this.k = (double)(this.r.i() * 0.4F + 0.05F);
-      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+public class gbp extends gdh {
+   private final gdc a;
+
+   protected gbp(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gdc $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.1F;
+      this.B = 0.9F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      float $$8 = this.r.i() * 0.3F + 0.7F;
+      this.v = $$8;
+      this.w = $$8;
+      this.x = $$8;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
    @Override
-   public gbx b() {
-      return gbx.b;
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      int $$2 = 240;
-      int $$3 = $$1 >> 16 & 0xFF;
-      return 240 | $$3 << 16;
-   }
-
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1);
+   public gcl b() {
+      return gcl.b;
    }
 
    @Override
    public void a() {
       super.a();
-      if (!this.o) {
-         float $$0 = (float)this.s / (float)this.t;
-         if (this.r.i() > $$0) {
-            this.c.a(lj.ae, this.g, this.h, this.i, this.j, this.k, this.l);
-         }
-      }
+      this.b(this.a);
    }
 
-   public static class a implements gbw<ln> {
-      private final gco a;
+   public static class a implements gck<lq> {
+      private final gdc a;
 
-      public a(gco $$0) {
+      public a(gdc $$0) {
          this.a = $$0;
       }
 
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbp $$8 = new gbp($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbp($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

@@ -1,30 +1,59 @@
-public class gaz extends gal {
-   private static final int a = 12235202;
+public class gaz extends gdh {
+   private final gdc a;
 
-   protected gaz(fyl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gco $$8) {
-      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
-      float $$9 = (float)Math.random() * 0.2F;
-      this.v = (float)axq.b.b(12235202) / 255.0F - $$9;
-      this.w = (float)axq.b.c(12235202) / 255.0F - $$9;
-      this.x = (float)axq.b.d(12235202) / 255.0F - $$9;
+   protected gaz(
+      fyz $$0,
+      double $$1,
+      double $$2,
+      double $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      float $$10,
+      gdc $$11,
+      float $$12,
+      int $$13,
+      float $$14,
+      boolean $$15
+   ) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.96F;
+      this.u = $$14;
+      this.C = true;
+      this.a = $$11;
+      this.j *= (double)$$4;
+      this.k *= (double)$$5;
+      this.l *= (double)$$6;
+      this.j += $$7;
+      this.k += $$8;
+      this.l += $$9;
+      float $$16 = $$0.z.i() * $$12;
+      this.v = $$16;
+      this.w = $$16;
+      this.x = $$16;
+      this.D *= 0.75F * $$10;
+      this.t = (int)((double)$$13 / ((double)$$0.z.i() * 0.8 + 0.2) * (double)$$10);
+      this.t = Math.max(this.t, 1);
+      this.b($$11);
+      this.n = $$15;
+   }
+
+   @Override
+   public gcl b() {
+      return gcl.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * ayn.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      this.u = 0.88F * this.u;
-      this.B = 0.92F * this.B;
       super.a();
-   }
-
-   public static class a implements gbw<ln> {
-      private final gco a;
-
-      public a(gco $$0) {
-         this.a = $$0;
-      }
-
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gaz($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
-      }
+      this.b(this.a);
    }
 }

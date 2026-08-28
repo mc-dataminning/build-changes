@@ -1,37 +1,33 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dd extends ds<dd.a> {
+public record dd(dh.d c, Optional<bv> d) implements bw {
+   public static final MapCodec<dd> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dh.d.d.optionalFieldOf("blocks_set_on_fire", dh.d.c).forGetter(dd::b), bv.a.optionalFieldOf("entity_struck").forGetter(dd::c))
+            .apply($$0, dd::new)
+   );
+
+   public static dd a(dh.d $$0) {
+      return new dd($$0, Optional.empty());
+   }
+
    @Override
-   public Codec<dd.a> a() {
-      return dd.a.a;
+   public MapCodec<dd> a() {
+      return bx.a;
    }
 
-   public void a(aqn $$0, akj<erb> $$1) {
-      this.a($$0, $$1x -> $$1x.b($$1));
+   @Override
+   public boolean a(bsq $$0, aqt $$1, @Nullable eww $$2) {
+      return !($$0 instanceof btk $$3) ? false : this.c.d($$3.s()) && (this.d.isEmpty() || $$3.t().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
-   public static record a(Optional<bf> b, akj<erb> c) implements ds.a {
-      public static final Codec<dd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(dd.a::a), akj.a(lr.bb).fieldOf("loot_table").forGetter(dd.a::b)).apply($$0, dd.a::new)
-      );
+   public dh.d b() {
+      return this.c;
+   }
 
-      public static an<dd.a> a(akj<erb> $$0) {
-         return am.Q.a(new dd.a(Optional.empty(), $$0));
-      }
-
-      public boolean b(akj<erb> $$0) {
-         return this.c == $$0;
-      }
-
-      @Override
-      public Optional<bf> a() {
-         return this.b;
-      }
-
-      public akj<erb> b() {
-         return this.c;
-      }
+   public Optional<bv> c() {
+      return this.d;
    }
 }

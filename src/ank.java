@@ -1,56 +1,38 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import javax.annotation.Nullable;
+import java.util.Collection;
 
 public class ank {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.publish.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wu.b("commands.publish.alreadyPublished", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.op.failed"));
 
-   public static void a(CommandDispatcher<eq> $$0) {
+   public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("publish").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((eq)$$0x.getSource(), axx.a(), false, null)))
-            .then(
-               ((RequiredArgumentBuilder)er.a("allowCommands", BoolArgumentType.bool())
-                     .executes($$0x -> a((eq)$$0x.getSource(), axx.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
-                  .then(
-                     ((RequiredArgumentBuilder)er.a("gamemode", fe.a())
-                           .executes($$0x -> a((eq)$$0x.getSource(), axx.a(), BoolArgumentType.getBool($$0x, "allowCommands"), fe.a($$0x, "gamemode"))))
-                        .then(
-                           er.a("port", IntegerArgumentType.integer(0, 65535))
-                              .executes(
-                                 $$0x -> a(
-                                       (eq)$$0x.getSource(),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       BoolArgumentType.getBool($$0x, "allowCommands"),
-                                       fe.a($$0x, "gamemode")
-                                    )
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("op").requires($$0x -> $$0x.c(3))).then(eu.a("targets", fi.a()).suggests(($$0x, $$1) -> {
+            auq $$2 = ((et)$$0x.getSource()).l().ah();
+            return ey.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.fY())).map($$0xx -> $$0xx.fY().getName()), $$1);
+         }).executes($$0x -> a((et)$$0x.getSource(), fi.a($$0x, "targets"))))
       );
    }
 
-   private static int a(eq $$0, int $$1, boolean $$2, @Nullable dcd $$3) throws CommandSyntaxException {
-      if ($$0.l().r()) {
-         throw b.create($$0.l().S());
-      } else if (!$$0.l().a($$3, $$2, $$1)) {
+   private static int a(et $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      auq $$2 = $$0.l().ah();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if (!$$2.f($$4)) {
+            $$2.a($$4);
+            $$3++;
+            $$0.a(() -> wy.a("commands.op.success", $$1.iterator().next().getName()), true);
+         }
+      }
+
+      if ($$3 == 0) {
          throw a.create();
       } else {
-         $$0.a(() -> a($$1), true);
-         return $$1;
+         return $$3;
       }
-   }
-
-   public static xi a(int $$0) {
-      wu $$1 = wx.a(String.valueOf($$0));
-      return wu.a("commands.publish.started", $$1);
    }
 }

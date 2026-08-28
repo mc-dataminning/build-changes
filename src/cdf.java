@@ -1,29 +1,36 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public class cdf<T extends btc> extends cdm<T> {
+public class cdf extends cdp<ckx> {
+   public static final int a = 24;
+
    @Override
-   protected void a(aqm $$0, T $$1) {
-      ewc $$2 = $$1.cM().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<btc> $$3 = $$0.a(btc.class, $$2, $$1x -> $$1x != $$1 && $$1x.bF());
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      bue<?> $$4 = $$1.dV();
-      $$4.a(ccg.g, $$3);
-      $$4.a(ccg.h, new cci($$1, $$3));
+   public Set<ccq<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(ccq.B)));
    }
 
+   protected void a(aqt $$0, ckx $$1) {
+      super.a($$0, $$1);
+      $$1.dU()
+         .c(ccq.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(bsv.e)
+         .filter($$1x -> cdw.c($$1, $$1x))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.dU().a(ccq.B, $$1x), () -> $$1.dU().b(ccq.B));
+   }
+
+   @Override
    protected int b() {
-      return 16;
-   }
-
-   protected int c() {
-      return 16;
+      return 24;
    }
 
    @Override
-   public Set<ccg<?>> a() {
-      return ImmutableSet.of(ccg.g, ccg.h);
+   protected int c() {
+      return 24;
    }
 }

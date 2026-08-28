@@ -1,80 +1,108 @@
-import com.google.common.collect.ImmutableList;
+public class fun<T extends ckx> extends fvn<T> {
+   private static final float a = 0.6F;
+   private static final float b = 0.8F;
+   private static final float f = 1.0F;
+   private final fye g;
+   private final fye h;
+   private final fye i;
+   private final fye j;
+   private final fye k;
+   private final fye l;
+   private final fye m;
+   private final fye n;
 
-public class fun<T extends btc> extends ftl<T> {
-   private final fxq a;
-   private final fxq b;
-
-   public fun(fxq $$0) {
-      this.b = $$0.b("left_wing");
-      this.a = $$0.b("right_wing");
+   public fun(fye $$0) {
+      super(gfb::i);
+      this.g = $$0;
+      this.j = $$0.b("wind_body");
+      this.m = this.j.b("wind_bottom");
+      this.l = this.m.b("wind_mid");
+      this.k = this.l.b("wind_top");
+      this.h = $$0.b("body").b("head");
+      this.i = this.h.b("eyes");
+      this.n = $$0.b("body").b("rods");
    }
 
-   public static fxw c() {
-      fxy $$0 = new fxy();
-      fxz $$1 = $$0.a();
-      fxu $$2 = new fxu(1.0F);
-      $$1.a(
-         "left_wing",
-         fxv.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         fxs.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
+   public static fyk a(int $$0, int $$1) {
+      fym $$2 = new fym();
+      fyn $$3 = $$2.a();
+      fyn $$4 = $$3.a("body", fyj.c(), fyg.a(0.0F, 0.0F, 0.0F));
+      fyn $$5 = $$4.a("rods", fyj.c(), fyg.a(0.0F, 8.0F, 0.0F));
+      $$5.a("rod_1", fyj.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fyi(0.0F)), fyg.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
+      $$5.a("rod_2", fyj.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fyi(0.0F)), fyg.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
+      $$5.a("rod_3", fyj.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fyi(0.0F)), fyg.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
+      fyn $$6 = $$4.a(
+         "head",
+         fyj.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new fyi(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fyi(0.0F)),
+         fyg.a(0.0F, 4.0F, 0.0F)
       );
-      $$1.a(
-         "right_wing",
-         fxv.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         fxs.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
+      $$6.a(
+         "eyes",
+         fyj.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new fyi(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fyi(0.0F)),
+         fyg.a(0.0F, 0.0F, 0.0F)
       );
-      return fxw.a($$0, 64, 32);
-   }
-
-   @Override
-   protected Iterable<fxq> a() {
-      return ImmutableList.of();
-   }
-
-   @Override
-   protected Iterable<fxq> b() {
-      return ImmutableList.of(this.b, this.a);
+      fyn $$7 = $$3.a("wind_body", fyj.c(), fyg.a(0.0F, 0.0F, 0.0F));
+      fyn $$8 = $$7.a("wind_bottom", fyj.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new fyi(0.0F)), fyg.a(0.0F, 24.0F, 0.0F));
+      fyn $$9 = $$8.a(
+         "wind_mid",
+         fyj.c()
+            .a(74, 28)
+            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new fyi(0.0F))
+            .a(78, 32)
+            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new fyi(0.0F))
+            .a(49, 71)
+            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new fyi(0.0F)),
+         fyg.a(0.0F, -7.0F, 0.0F)
+      );
+      $$9.a(
+         "wind_top",
+         fyj.c()
+            .a(0, 0)
+            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new fyi(0.0F))
+            .a(6, 6)
+            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new fyi(0.0F))
+            .a(105, 57)
+            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new fyi(0.0F)),
+         fyg.a(0.0F, -6.0F, 0.0F)
+      );
+      return fyk.a($$2, $$0, $$1);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = (float) (Math.PI / 12);
-      float $$7 = (float) (-Math.PI / 12);
-      float $$8 = 0.0F;
-      float $$9 = 0.0F;
-      if ($$0.fC()) {
-         float $$10 = 1.0F;
-         ewh $$11 = $$0.du();
-         if ($$11.d < 0.0) {
-            ewh $$12 = $$11.d();
-            $$10 = 1.0F - (float)Math.pow(-$$12.d, 1.5);
-         }
+      this.a().e().forEach(fye::c);
+      float $$6 = $$3 * (float) Math.PI * -0.1F;
+      this.k.b = ayn.b($$6) * 1.0F * 0.6F;
+      this.k.d = ayn.a($$6) * 1.0F * 0.6F;
+      this.l.b = ayn.a($$6) * 0.5F * 0.8F;
+      this.l.d = ayn.b($$6) * 0.8F;
+      this.m.b = ayn.b($$6) * -0.25F * 1.0F;
+      this.m.d = ayn.a($$6) * -0.25F * 1.0F;
+      this.h.c = 4.0F + ayn.b($$6) / 4.0F;
+      this.n.f = $$3 * (float) Math.PI * 0.1F;
+      this.a($$0.ca, fhc.a, $$3);
+      this.a($$0.c, fhc.c, $$3);
+      this.a($$0.d, fhc.d, $$3);
+      this.a($$0.e, fhc.b, $$3);
+   }
 
-         $$6 = $$10 * (float) (Math.PI / 9) + (1.0F - $$10) * $$6;
-         $$7 = $$10 * (float) (-Math.PI / 2) + (1.0F - $$10) * $$7;
-      } else if ($$0.cc()) {
-         $$6 = (float) (Math.PI * 2.0 / 9.0);
-         $$7 = (float) (-Math.PI / 4);
-         $$8 = 3.0F;
-         $$9 = 0.08726646F;
-      }
+   @Override
+   public fye a() {
+      return this.g;
+   }
 
-      this.b.c = $$8;
-      if ($$0 instanceof gde $$13) {
-         $$13.c = $$13.c + ($$6 - $$13.c) * 0.1F;
-         $$13.d = $$13.d + ($$9 - $$13.d) * 0.1F;
-         $$13.e = $$13.e + ($$7 - $$13.e) * 0.1F;
-         this.b.e = $$13.c;
-         this.b.f = $$13.d;
-         this.b.g = $$13.e;
-      } else {
-         this.b.e = $$6;
-         this.b.g = $$7;
-         this.b.f = $$9;
-      }
+   public fye b() {
+      return this.h;
+   }
 
-      this.a.f = -this.b.f;
-      this.a.c = this.b.c;
-      this.a.e = this.b.e;
-      this.a.g = -this.b.g;
+   public fye c() {
+      return this.i;
+   }
+
+   public fye d() {
+      return this.n;
+   }
+
+   public fye e() {
+      return this.j;
    }
 }

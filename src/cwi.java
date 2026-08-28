@@ -1,46 +1,57 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
+import com.google.common.base.Suppliers;
+import java.util.function.Supplier;
 
-public record cwi(String e, jj<cty> f, float g, Map<jj<cru>, String> h, wu i) {
-   public static final Codec<cwi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axo.A.fieldOf("asset_name").forGetter(cwi::a),
-               akh.a(lr.K).fieldOf("ingredient").forGetter(cwi::b),
-               Codec.FLOAT.fieldOf("item_model_index").forGetter(cwi::c),
-               Codec.unboundedMap(cru.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cwi::d),
-               ww.a.fieldOf("description").forGetter(cwi::e)
-            )
-            .apply($$0, cwi::new)
-   );
-   public static final ys<wf, cwi> b = ys.a(
-      yq.l, cwi::a, yq.b(lr.K), cwi::b, yq.i, cwi::c, yq.a(Object2ObjectOpenHashMap::new, yq.b(lr.ay), yq.l), cwi::d, ww.b, cwi::e, cwi::new
-   );
-   public static final Codec<jj<cwi>> c = akg.a(lr.aV, a);
-   public static final ys<wf, jj<cwi>> d = yq.a(lr.aV, b);
+public enum cwi implements cwg {
+   a(awd.bN, 59, 2.0F, 0.0F, 15, () -> cyu.a(awm.b)),
+   b(awd.bL, 131, 4.0F, 1.0F, 5, () -> cyu.a(awm.aX)),
+   c(awd.bK, 250, 6.0F, 2.0F, 14, () -> cyu.a(cur.oF)),
+   d(awd.bJ, 1561, 8.0F, 3.0F, 10, () -> cyu.a(cur.oz)),
+   e(awd.bM, 32, 12.0F, 0.0F, 22, () -> cyu.a(cur.oJ)),
+   f(awd.bI, 2031, 9.0F, 4.0F, 15, () -> cyu.a(cur.oK));
 
-   public static cwi a(String $$0, cty $$1, float $$2, wu $$3, Map<jj<cru>, String> $$4) {
-      return new cwi($$0, lq.g.e($$1), $$2, $$4, $$3);
+   private final awt<dfw> g;
+   private final int h;
+   private final float i;
+   private final float j;
+   private final int k;
+   private final Supplier<cyu> l;
+
+   private cwi(final awt<dfw> $$0, final int $$1, final float $$2, final float $$3, final int $$4, final Supplier<cyu> $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = Suppliers.memoize($$5::get);
    }
 
-   public String a() {
-      return this.e;
-   }
-
-   public jj<cty> b() {
-      return this.f;
-   }
-
-   public float c() {
-      return this.g;
-   }
-
-   public Map<jj<cru>, String> d() {
+   @Override
+   public int a() {
       return this.h;
    }
 
-   public wu e() {
+   @Override
+   public float b() {
       return this.i;
+   }
+
+   @Override
+   public float c() {
+      return this.j;
+   }
+
+   @Override
+   public awt<dfw> d() {
+      return this.g;
+   }
+
+   @Override
+   public int e() {
+      return this.k;
+   }
+
+   @Override
+   public cyu f() {
+      return this.l.get();
    }
 }

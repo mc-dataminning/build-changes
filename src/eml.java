@@ -1,9 +1,19 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class eml {
-   public static final Codec<eml> c = lq.o.r().dispatch("predicate_type", eml::a, emm::codec);
+public class eml extends enh {
+   public static final MapCodec<eml> a = MapCodec.unit(() -> eml.b);
+   public static final eml b = new eml();
 
-   public abstract boolean a(ja var1, ja var2, ja var3, ayo var4);
+   private eml() {
+   }
 
-   protected abstract emm<?> a();
+   @Override
+   public boolean a(dta $$0, ayv $$1) {
+      return true;
+   }
+
+   @Override
+   protected eni<?> a() {
+      return eni.a;
+   }
 }

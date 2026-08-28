@@ -1,166 +1,83 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class agw implements zb<agb> {
-   public static final ys<vr, agw> a = zb.a(agw::a, agw::new);
-   private final int b;
-   private final agw.a c;
-   private final boolean d;
-   static final agw.a e = new agw.a() {
-      @Override
-      public agw.b a() {
-         return agw.b.b;
-      }
+public class agw implements zf<agh> {
+   public static final yw<wj, agw> a = zf.a(agw::a, agw::new);
+   private static final int b = 128;
+   private static final yw<wj, Int2ObjectMap<cuo>> c = yu.a(Int2ObjectOpenHashMap::new, yu.d.a(Short::intValue, Integer::shortValue), cuo.h, 128);
+   private final int d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final cqc h;
+   private final cuo i;
+   private final Int2ObjectMap<cuo> j;
 
-      @Override
-      public void a(agw.c $$0) {
-         $$0.a();
-      }
-
-      @Override
-      public void a(vr $$0) {
-      }
-   };
-
-   private agw(int $$0, boolean $$1, agw.a $$2) {
-      this.b = $$0;
-      this.c = $$2;
-      this.d = $$1;
+   public agw(int $$0, int $$1, int $$2, int $$3, cqc $$4, cuo $$5, Int2ObjectMap<cuo> $$6) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = Int2ObjectMaps.unmodifiable($$6);
    }
 
-   public static agw a(bsh $$0, boolean $$1) {
-      return new agw($$0.an(), $$1, e);
+   private agw(wj $$0) {
+      this.d = $$0.readByte();
+      this.e = $$0.l();
+      this.f = $$0.readShort();
+      this.g = $$0.readByte();
+      this.h = $$0.b(cqc.class);
+      this.j = Int2ObjectMaps.unmodifiable(c.decode($$0));
+      this.i = cuo.h.decode($$0);
    }
 
-   public static agw a(bsh $$0, boolean $$1, bqg $$2) {
-      return new agw($$0.an(), $$1, new agw.d($$2));
-   }
-
-   public static agw a(bsh $$0, boolean $$1, bqg $$2, ewh $$3) {
-      return new agw($$0.an(), $$1, new agw.e($$2, $$3));
-   }
-
-   private agw(vr $$0) {
-      this.b = $$0.l();
-      agw.b $$1 = $$0.b(agw.b.class);
-      this.c = $$1.d.apply($$0);
-      this.d = $$0.readBoolean();
-   }
-
-   private void a(vr $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c.a());
-      this.c.a($$0);
-      $$0.a(this.d);
+   private void a(wj $$0) {
+      $$0.k(this.d);
+      $$0.c(this.e);
+      $$0.l(this.f);
+      $$0.k(this.g);
+      $$0.a(this.h);
+      c.encode($$0, this.j);
+      cuo.h.encode($$0, this.i);
    }
 
    @Override
-   public zd<agw> a() {
-      return afz.by;
+   public zh<agw> a() {
+      return agf.bs;
    }
 
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bsh a(aqm $$0) {
-      return $$0.b(this.b);
-   }
-
-   public boolean b() {
+   public int b() {
       return this.d;
    }
 
-   public void a(agw.c $$0) {
-      this.c.a($$0);
+   public int e() {
+      return this.f;
    }
 
-   interface a {
-      agw.b a();
-
-      void a(agw.c var1);
-
-      void a(vr var1);
+   public int f() {
+      return this.g;
    }
 
-   static enum b {
-      a(agw.d::new),
-      b($$0 -> agw.e),
-      c(agw.e::new);
-
-      final Function<vr, agw.a> d;
-
-      private b(final Function<vr, agw.a> $$0) {
-         this.d = $$0;
-      }
+   public cuo g() {
+      return this.i;
    }
 
-   public interface c {
-      void a(bqg var1);
-
-      void a(bqg var1, ewh var2);
-
-      void a();
+   public Int2ObjectMap<cuo> h() {
+      return this.j;
    }
 
-   static class d implements agw.a {
-      private final bqg a;
-
-      d(bqg $$0) {
-         this.a = $$0;
-      }
-
-      private d(vr $$0) {
-         this.a = $$0.b(bqg.class);
-      }
-
-      @Override
-      public agw.b a() {
-         return agw.b.a;
-      }
-
-      @Override
-      public void a(agw.c $$0) {
-         $$0.a(this.a);
-      }
-
-      @Override
-      public void a(vr $$0) {
-         $$0.a(this.a);
-      }
+   public cqc i() {
+      return this.h;
    }
 
-   static class e implements agw.a {
-      private final bqg a;
-      private final ewh b;
-
-      e(bqg $$0, ewh $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private e(vr $$0) {
-         this.b = new ewh((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(bqg.class);
-      }
-
-      @Override
-      public agw.b a() {
-         return agw.b.c;
-      }
-
-      @Override
-      public void a(agw.c $$0) {
-         $$0.a(this.a, this.b);
-      }
-
-      @Override
-      public void a(vr $$0) {
-         $$0.a((float)this.b.c);
-         $$0.a((float)this.b.d);
-         $$0.a((float)this.b.e);
-         $$0.a(this.a);
-      }
+   public int j() {
+      return this.e;
    }
 }

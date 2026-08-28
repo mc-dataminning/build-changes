@@ -1,36 +1,20 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class fca extends fck {
-   private static final Logger b = LogUtils.getLogger();
-   public List<fbz> a;
+public class fca {
+   private final Gson a = new Gson();
 
-   public static fca a(String $$0) {
-      fca $$1 = new fca();
-      $$1.a = Lists.newArrayList();
+   public String a(fcq $$0) {
+      return this.a.toJson($$0);
+   }
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("lists").isJsonArray()) {
-            JsonArray $$4 = $$3.get("lists").getAsJsonArray();
-            Iterator<JsonElement> $$5 = $$4.iterator();
+   public String a(JsonElement $$0) {
+      return this.a.toJson($$0);
+   }
 
-            while ($$5.hasNext()) {
-               $$1.a.add(fbz.a($$5.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var6) {
-         b.error("Could not parse RealmsServerPlayerLists: {}", var6.getMessage());
-      }
-
-      return $$1;
+   @Nullable
+   public <T extends fcq> T a(String $$0, Class<T> $$1) {
+      return (T)this.a.fromJson($$0, $$1);
    }
 }

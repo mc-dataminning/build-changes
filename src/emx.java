@@ -1,26 +1,42 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface emx<P extends emv> {
-   Codec<emv> a = lq.af.r().dispatch("processor_type", emv::a, emx::codec);
-   Codec<emw> b = a.listOf().xmap(emw::new, emw::a);
-   Codec<emw> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
-   Codec<jj<emw>> d = akg.a(lr.aR, c);
-   emx<ema> e = a("block_ignore", ema.a);
-   emx<emc> f = a("block_rot", emc.a);
-   emx<emf> g = a("gravity", emf.a);
-   emx<emg> h = a("jigsaw_replacement", emg.a);
-   emx<emr> i = a("rule", emr.a);
-   emx<emj> j = a("nop", emj.a);
-   emx<elz> k = a("block_age", elz.a);
-   emx<ely> l = a("blackstone_replace", ely.a);
-   emx<emh> m = a("lava_submerged_block", emh.a);
-   emx<emo> n = a("protected_blocks", emo.b);
-   emx<eme> o = a("capped", eme.a);
+public class emx extends ena {
+   public static final MapCodec<emx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, emx::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
 
-   MapCodec<P> codec();
+   public emx(float $$0, float $$1, int $$2, int $$3) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+      } else {
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
+   }
 
-   static <P extends emv> emx<P> a(String $$0, MapCodec<P> $$1) {
-      return jw.a(lq.af, $$0, () -> $$1);
+   @Override
+   public boolean a(jd $$0, jd $$1, jd $$2, ayv $$3) {
+      int $$4 = $$1.k($$2);
+      float $$5 = $$3.i();
+      return $$5 <= ayn.b(this.b, this.d, ayn.g((float)$$4, (float)this.e, (float)this.f));
+   }
+
+   @Override
+   protected enb<?> a() {
+      return enb.b;
    }
 }

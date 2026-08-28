@@ -1,24 +1,18 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public class ln extends li<ln> implements lh {
-   private final MapCodec<ln> a = MapCodec.unit(this::e);
-   private final ys<wf, ln> b = ys.a(this);
+public abstract class ln implements lk {
+   public static final float e = 0.01F;
+   public static final float f = 4.0F;
+   protected static final Codec<Float> g = Codec.FLOAT
+      .validate($$0 -> $$0 >= 0.01F && $$0 <= 4.0F ? DataResult.success($$0) : DataResult.error(() -> "Value must be within range [0.01;4.0]: " + $$0));
+   private final float a;
 
-   protected ln(boolean $$0) {
-      super($$0);
+   public ln(float $$0) {
+      this.a = ayn.a($$0, 0.01F, 4.0F);
    }
 
-   public ln e() {
-      return this;
-   }
-
-   @Override
-   public MapCodec<ln> c() {
+   public float d() {
       return this.a;
-   }
-
-   @Override
-   public ys<wf, ln> d() {
-      return this.b;
    }
 }

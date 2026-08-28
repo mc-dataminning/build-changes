@@ -1,25 +1,19 @@
-public final class dcs implements due {
-   private final int a;
-   private final dsl[] b;
+public class dcs {
+   private static int[] a = new int[65536];
 
-   public dcs(int $$0, dsl[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   @Override
-   public dsl a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dfk.a.o();
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? -65281 : a[$$4];
    }
 
-   @Override
-   public void a(int $$0, dsl $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
-      } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
-      }
+   public static int a() {
+      return a(0.5, 1.0);
    }
 }

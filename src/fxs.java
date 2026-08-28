@@ -1,30 +1,36 @@
-public class fxs {
-   public static final fxs a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-   public final float b;
-   public final float c;
-   public final float d;
-   public final float e;
-   public final float f;
-   public final float g;
+public class fxs extends fvn<cod> {
+   private static final int a = 16;
+   private final fye b;
+   private final fye f;
+   private final fye g;
 
-   private fxs(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public fxs(fye $$0) {
+      super(gfb::i);
+      this.b = $$0.b("bone");
+      this.g = this.b.b("wind");
+      this.f = this.b.b("wind_charge");
    }
 
-   public static fxs a(float $$0, float $$1, float $$2) {
-      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
+   public static fyk b() {
+      fym $$0 = new fym();
+      fyn $$1 = $$0.a();
+      fyn $$2 = $$1.a("bone", fyj.c(), fyg.a(0.0F, 0.0F, 0.0F));
+      $$2.a(
+         "wind",
+         fyj.c().a(15, 20).a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F, new fyi(0.0F)).a(0, 9).a(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F, new fyi(0.0F)),
+         fyg.a(0.0F, 0.0F, 0.0F, 0.0F, -0.7854F, 0.0F)
+      );
+      $$2.a("wind_charge", fyj.c().a(0, 0).a(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, new fyi(0.0F)), fyg.a(0.0F, 0.0F, 0.0F));
+      return fyk.a($$0, 64, 32);
    }
 
-   public static fxs b(float $$0, float $$1, float $$2) {
-      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
+   public void a(cod $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.f = -$$3 * 16.0F * (float) (Math.PI / 180.0);
+      this.g.f = $$3 * 16.0F * (float) (Math.PI / 180.0);
    }
 
-   public static fxs a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      return new fxs($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   public fye a() {
+      return this.b;
    }
 }

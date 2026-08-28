@@ -1,24 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class pu extends pv<eix> {
-   public pu(lz $$0, CompletableFuture<jl.a> $$1) {
-      super($$0, lr.aQ, $$1);
+public abstract class pu extends pt<cuj> {
+   private final CompletableFuture<py.c<dfw>> d;
+   private final Map<awt<dfw>, awt<cuj>> g = new HashMap<>();
+
+   public pu(mc $$0, CompletableFuture<jo.a> $$1, CompletableFuture<py.c<dfw>> $$2) {
+      super($$0, lu.K, $$1, $$0x -> $$0x.o().h());
+      this.d = $$2;
+   }
+
+   public pu(mc $$0, CompletableFuture<jo.a> $$1, CompletableFuture<py.c<cuj>> $$2, CompletableFuture<py.c<dfw>> $$3) {
+      super($$0, lu.K, $$1, $$2, $$0x -> $$0x.o().h());
+      this.d = $$3;
+   }
+
+   protected void a(awt<dfw> $$0, awt<cuj> $$1) {
+      this.g.put($$0, $$1);
    }
 
    @Override
-   protected void a(jl.a $$0) {
-      this.b(awi.p).a(eir.t).a(eir.u).a(eir.v).a(eir.w).a(eir.x);
-      this.b(awi.q).a(eir.b).a(eir.c);
-      this.b(awi.t).a(eir.m).a(eir.n);
-      this.b(awi.r).a(eir.h).a(eir.i);
-      this.b(awi.s).a(eir.z).a(eir.A).a(eir.C).a(eir.E).a(eir.D).a(eir.y).a(eir.B);
-      this.b(awi.n).a(eir.j);
-      this.b(awi.o).a(eir.j);
-      this.b(awi.a).a(eir.k);
-      this.b(awi.b).b(awi.t).b(awi.r);
-      this.b(awi.c).a(eir.d);
-      this.b(awi.d).a(eir.l);
-      this.b(awi.l).a(eir.r);
-      this.b(awi.m).a(eir.H);
+   protected CompletableFuture<jo.a> b() {
+      return super.b().thenCombineAsync(this.d, ($$0, $$1) -> {
+         this.g.forEach(($$1x, $$2) -> {
+            awq $$3 = this.c((awt<cuj>)$$2);
+            Optional<awq> $$4 = $$1.apply($$1x);
+            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
+         });
+         return (jo.a)$$0;
+      });
    }
 }

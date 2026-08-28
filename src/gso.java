@@ -1,3 +1,9 @@
 public interface gso {
-   void a();
+   default j b() {
+      return j.a();
+   }
+
+   default boolean c() {
+      return false;
+   }
 }

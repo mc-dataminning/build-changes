@@ -1,35 +1,11 @@
-import java.util.ArrayList;
-import java.util.List;
+public final class awj {
+   public static final awt<eox> a = a("water");
+   public static final awt<eox> b = a("lava");
 
-public class awj {
-   private final List<awk> a = new ArrayList<>();
-
-   public static awj a() {
-      return new awj();
+   private awj() {
    }
 
-   public List<awk> b() {
-      return List.copyOf(this.a);
-   }
-
-   public awj a(awk $$0) {
-      this.a.add($$0);
-      return this;
-   }
-
-   public awj a(akk $$0) {
-      return this.a(awk.a($$0));
-   }
-
-   public awj b(akk $$0) {
-      return this.a(awk.b($$0));
-   }
-
-   public awj c(akk $$0) {
-      return this.a(awk.c($$0));
-   }
-
-   public awj d(akk $$0) {
-      return this.a(awk.d($$0));
+   private static awt<eox> a(String $$0) {
+      return awt.a(lu.D, akq.b($$0));
    }
 }

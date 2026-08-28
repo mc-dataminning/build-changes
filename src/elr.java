@@ -1,98 +1,97 @@
-public class elr extends eiv {
-   private boolean h;
-   private boolean i;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.IntFunction;
 
-   public elr(ayo $$0, int $$1, int $$2) {
-      super(ejo.K, $$1, 64, $$2, 7, 7, 9, a($$0));
-   }
+public class elr extends ejm {
+   public static final MapCodec<elr> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), elr.a.c.fieldOf("mineshaft_type").forGetter($$0x -> $$0x.e)).apply($$0, elr::new)
+   );
+   private final elr.a e;
 
-   public elr(tx $$0) {
-      super(ejo.K, $$0);
-      this.h = $$0.q("Witch");
-      this.i = $$0.q("Cat");
-   }
-
-   @Override
-   protected void a(ejn $$0, tx $$1) {
-      super.a($$0, $$1);
-      $$1.a("Witch", this.h);
-      $$1.a("Cat", this.i);
+   public elr(ejm.c $$0, elr.a $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public void a(ddc $$0, dda $$1, dui $$2, ayo $$3, eip $$4, dbn $$5, ja $$6) {
-      if (this.a($$0, $$4, 0)) {
-         this.a($$0, $$4, 1, 1, 1, 5, 1, 7, dfk.o.o(), dfk.o.o(), false);
-         this.a($$0, $$4, 1, 4, 2, 5, 4, 7, dfk.o.o(), dfk.o.o(), false);
-         this.a($$0, $$4, 2, 1, 0, 4, 1, 0, dfk.o.o(), dfk.o.o(), false);
-         this.a($$0, $$4, 2, 2, 2, 3, 3, 2, dfk.o.o(), dfk.o.o(), false);
-         this.a($$0, $$4, 1, 2, 3, 1, 3, 6, dfk.o.o(), dfk.o.o(), false);
-         this.a($$0, $$4, 5, 2, 3, 5, 3, 6, dfk.o.o(), dfk.o.o(), false);
-         this.a($$0, $$4, 2, 2, 7, 4, 3, 7, dfk.o.o(), dfk.o.o(), false);
-         this.a($$0, $$4, 1, 0, 2, 1, 3, 2, dfk.U.o(), dfk.U.o(), false);
-         this.a($$0, $$4, 5, 0, 2, 5, 3, 2, dfk.U.o(), dfk.U.o(), false);
-         this.a($$0, $$4, 1, 0, 7, 1, 3, 7, dfk.U.o(), dfk.U.o(), false);
-         this.a($$0, $$4, 5, 0, 7, 5, 3, 7, dfk.U.o(), dfk.U.o(), false);
-         this.a($$0, dfk.dU.o(), 2, 3, 2, $$4);
-         this.a($$0, dfk.dU.o(), 3, 3, 7, $$4);
-         this.a($$0, dfk.a.o(), 1, 3, 4, $$4);
-         this.a($$0, dfk.a.o(), 5, 3, 4, $$4);
-         this.a($$0, dfk.a.o(), 5, 3, 5, $$4);
-         this.a($$0, dfk.gp.o(), 1, 3, 5, $$4);
-         this.a($$0, dfk.cA.o(), 3, 2, 6, $$4);
-         this.a($$0, dfk.ft.o(), 4, 2, 6, $$4);
-         this.a($$0, dfk.dU.o(), 1, 2, 1, $$4);
-         this.a($$0, dfk.dU.o(), 5, 2, 1, $$4);
-         dsl $$7 = dfk.fK.o().a(dnc.b, jf.c);
-         dsl $$8 = dfk.fK.o().a(dnc.b, jf.f);
-         dsl $$9 = dfk.fK.o().a(dnc.b, jf.e);
-         dsl $$10 = dfk.fK.o().a(dnc.b, jf.d);
-         this.a($$0, $$4, 0, 4, 1, 6, 4, 1, $$7, $$7, false);
-         this.a($$0, $$4, 0, 4, 2, 0, 4, 7, $$8, $$8, false);
-         this.a($$0, $$4, 6, 4, 2, 6, 4, 7, $$9, $$9, false);
-         this.a($$0, $$4, 0, 4, 8, 6, 4, 8, $$10, $$10, false);
-         this.a($$0, $$7.a(dnc.d, dtu.e), 0, 4, 1, $$4);
-         this.a($$0, $$7.a(dnc.d, dtu.d), 6, 4, 1, $$4);
-         this.a($$0, $$10.a(dnc.d, dtu.d), 0, 4, 8, $$4);
-         this.a($$0, $$10.a(dnc.d, dtu.e), 6, 4, 8, $$4);
+   public Optional<ejm.b> a(ejm.a $$0) {
+      $$0.f().j();
+      dcb $$1 = $$0.h();
+      jd $$2 = new jd($$1.b(), 50, $$1.e());
+      eke $$3 = new eke();
+      int $$4 = this.a($$3, $$0);
+      return Optional.of(new ejm.b($$2.b(0, $$4, 0), Either.right($$3)));
+   }
 
-         for (int $$11 = 2; $$11 <= 7; $$11 += 5) {
-            for (int $$12 = 1; $$12 <= 5; $$12 += 4) {
-               this.b($$0, dfk.U.o(), $$12, -1, $$11, $$4);
-            }
-         }
-
-         if (!this.h) {
-            ja $$13 = this.b(2, 2, 5);
-            if ($$4.b($$13)) {
-               this.h = true;
-               ckh $$14 = bsn.bo.a((dcg)$$0.E());
-               if ($$14 != null) {
-                  $$14.fQ();
-                  $$14.b((double)$$13.u() + 0.5, (double)$$13.v(), (double)$$13.w() + 0.5, 0.0F, 0.0F);
-                  $$14.a($$0, $$0.d_($$13), btg.d, null);
-                  $$0.a_($$14);
-               }
-            }
-         }
-
-         this.a($$0, $$4);
+   private int a(eke $$0, ejm.a $$1) {
+      dcb $$2 = $$1.h();
+      dzu $$3 = $$1.f();
+      dux $$4 = $$1.b();
+      elq.d $$5 = new elq.d(0, $$3, $$2.a(2), $$2.b(2), this.e);
+      $$0.a($$5);
+      $$5.a($$5, $$0, $$3);
+      int $$6 = $$4.f();
+      if (this.e == elr.a.b) {
+         jd $$7 = $$0.d().g();
+         int $$8 = $$4.a($$7.u(), $$7.w(), dyv.a.a, $$1.i(), $$1.d());
+         int $$9 = $$8 <= $$6 ? $$6 : ayn.b($$3, $$6, $$8);
+         int $$10 = $$9 - $$7.v();
+         $$0.a($$10);
+         return $$10;
+      } else {
+         return $$0.a($$6, $$4.g(), $$3, 10);
       }
    }
 
-   private void a(dcv $$0, eip $$1) {
-      if (!this.i) {
-         ja $$2 = this.b(2, 2, 5);
-         if ($$1.b($$2)) {
-            this.i = true;
-            cev $$3 = bsn.p.a((dcg)$$0.E());
-            if ($$3 != null) {
-               $$3.fQ();
-               $$3.b((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 0.0F, 0.0F);
-               $$3.a($$0, $$0.d_($$2), btg.d, null);
-               $$0.a_($$3);
-            }
-         }
+   @Override
+   public ejv<?> e() {
+      return ejv.h;
+   }
+
+   public static enum a implements azj {
+      a("normal", dfy.U, dfy.n, dfy.dU),
+      b("mesa", dfy.aa, dfy.t, dfy.ki);
+
+      public static final Codec<elr.a> c = azj.a(elr.a::values);
+      private static final IntFunction<elr.a> d = axd.a(Enum::ordinal, values(), axd.a.a);
+      private final String e;
+      private final dta f;
+      private final dta g;
+      private final dta h;
+
+      private a(final String $$0, final dfw $$1, final dfw $$2, final dfw $$3) {
+         this.e = $$0;
+         this.f = $$1.o();
+         this.g = $$2.o();
+         this.h = $$3.o();
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      public static elr.a a(int $$0) {
+         return d.apply($$0);
+      }
+
+      public dta b() {
+         return this.f;
+      }
+
+      public dta d() {
+         return this.g;
+      }
+
+      public dta e() {
+         return this.h;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
       }
    }
 }

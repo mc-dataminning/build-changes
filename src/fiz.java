@@ -1,111 +1,146 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.List;
 
-public abstract class fiz extends fhu {
-   protected final akk a;
-   protected final int b;
-   protected final int c;
+public interface fiz {
+   fiz a = new fiz() {
+      @Override
+      public int a(fht $$0, int $$1, int $$2) {
+         return $$2;
+      }
 
-   fiz(int $$0, int $$1, wu $$2, int $$3, int $$4, akk $$5, fhu.c $$6, @Nullable fhu.b $$7) {
-      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
-      this.b = $$3;
-      this.c = $$4;
-      this.a = $$5;
+      @Override
+      public int a(fht $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int b(fht $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public int c(fht $$0, int $$1, int $$2, int $$3, int $$4) {
+         return $$2;
+      }
+
+      @Override
+      public void a(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public int b() {
+         return 0;
+      }
+   };
+
+   static fiz a(fhr $$0, xd $$1, int $$2) {
+      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new fiz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
 
-   public static fiz.a a(wu $$0, fhu.c $$1, boolean $$2) {
-      return new fiz.a($$0, $$1, $$2);
+   static fiz a(fhr $$0, xd $$1, int $$2, int $$3) {
+      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new fiz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
    }
+
+   static fiz a(fhr $$0, wy... $$1) {
+      return b($$0, Arrays.stream($$1).map(wy::g).map($$1x -> new fiz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static fiz a(fhr $$0, List<wy> $$1) {
+      return b($$0, $$1.stream().map(wy::g).map($$1x -> new fiz.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   }
+
+   static fiz b(final fhr $$0, final List<fiz.a> $$1) {
+      return $$1.isEmpty() ? a : new fiz() {
+         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
+
+         @Override
+         public int a(fht $$0x, int $$1x, int $$2) {
+            return this.a($$0, $$1, $$2, 9, 16777215);
+         }
+
+         @Override
+         public int a(fht $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fiz.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public int b(fht $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fiz.a $$6 : $$1) {
+               $$0.b($$0, $$6.a, $$1, $$5, $$4);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public int c(fht $$0x, int $$1x, int $$2, int $$3, int $$4) {
+            int $$5 = $$2;
+
+            for (fiz.a $$6 : $$1) {
+               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
+               $$5 += $$3;
+            }
+
+            return $$5;
+         }
+
+         @Override
+         public void a(fht $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
+            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
+            if ($$6 > 0) {
+               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
+            }
+         }
+
+         @Override
+         public int a() {
+            return $$1.size();
+         }
+
+         @Override
+         public int b() {
+            return this.d;
+         }
+      };
+   }
+
+   int a(fht var1, int var2, int var3);
+
+   int a(fht var1, int var2, int var3, int var4, int var5);
+
+   int b(fht var1, int var2, int var3, int var4, int var5);
+
+   int c(fht var1, int var2, int var3, int var4, int var5);
+
+   void a(fht var1, int var2, int var3, int var4, int var5, int var6);
+
+   int a();
+
+   int b();
 
    public static class a {
-      private final wu b;
-      private final fhu.c c;
-      private final boolean d;
-      private int e = 150;
-      private int f = 20;
-      @Nullable
-      private akk g;
-      private int h;
-      private int i;
-      @Nullable
-      fhu.b a;
+      final axz a;
+      final int b;
 
-      public a(wu $$0, fhu.c $$1, boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public fiz.a a(int $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fiz.a a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public fiz.a a(akk $$0, int $$1, int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      public fiz.a a(fhu.b $$0) {
+      a(axz $$0, int $$1) {
          this.a = $$0;
-         return this;
-      }
-
-      public fiz a() {
-         if (this.g == null) {
-            throw new IllegalStateException("Sprite not set");
-         } else {
-            return (fiz)(this.d
-               ? new fiz.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
-               : new fiz.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
-         }
-      }
-   }
-
-   public static class b extends fiz {
-      protected b(int $$0, int $$1, wu $$2, int $$3, int $$4, akk $$5, fhu.c $$6, @Nullable fhu.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void b(fhh $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.D() + this.y() / 2 - this.b / 2;
-         int $$5 = this.E() + this.w() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fhh $$0, fhf $$1, int $$2) {
-      }
-   }
-
-   public static class c extends fiz {
-      protected c(int $$0, int $$1, wu $$2, int $$3, int $$4, akk $$5, fhu.c $$6, @Nullable fhu.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void b(fhh $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.D() + this.y() - this.b - 2;
-         int $$5 = this.E() + this.w() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fhh $$0, fhf $$1, int $$2) {
-         int $$3 = this.D() + 2;
-         int $$4 = this.D() + this.y() - this.b - 4;
-         int $$5 = this.D() + this.y() / 2;
-         a($$0, $$1, this.z(), $$5, $$3, this.E(), $$4, this.E() + this.w(), $$2);
+         this.b = $$1;
       }
    }
 }

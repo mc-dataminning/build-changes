@@ -1,56 +1,58 @@
+import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public abstract class fev implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+public class fev {
+   private static final String a = "realms_persistence.json";
+   private static final fca b = new fca();
+   private static final Logger c = LogUtils.getLogger();
 
-   protected static void a(long $$0) {
+   public fev.a a() {
+      return b();
+   }
+
+   public void a(fev.a $$0) {
+      b($$0);
+   }
+
+   public static fev.a b() {
+      Path $$0 = c();
+
       try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         fev.a $$2 = b.a($$1, fev.a.class);
+         if ($$2 != null) {
+            return $$2;
+         }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new fev.a();
+   }
+
+   public static void b(fev.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   public static void a(fnl $$0) {
-      ffw $$1 = ffw.Q();
-      $$1.execute(() -> $$1.a($$0));
+   private static Path c() {
+      return fgi.Q().p.toPath().resolve("realms_persistence.json");
    }
 
-   protected void a(wu $$0) {
-      this.b();
-      ffw $$1 = ffw.Q();
-      $$1.execute(() -> $$1.a(new fdj($$0, new faz(new fnn()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof fcr $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(wu.b($$0.getMessage()));
-      }
-   }
-
-   protected void a(fcr $$0) {
-      this.a($$0.a.b());
-   }
-
-   public abstract wu a();
-
-   public boolean d() {
-      return this.c;
-   }
-
-   public void c() {
-   }
-
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+   public static class a implements fcq {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

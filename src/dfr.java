@@ -1,35 +1,59 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dfr extends dfi {
-   protected dfr(dsk.d $$0) {
+public class dfr extends dhr {
+   public static final MapCodec<dfr> a = b(dfr::new);
+   public static final int b = 3;
+   public static final dua c = dtq.as;
+   private static final exp[] g = new exp[]{
+      dfw.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
+   };
+
+   @Override
+   public MapCodec<dfr> a() {
+      return a;
+   }
+
+   public dfr(dsz.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dfr> a();
-
-   protected boolean b(dsl $$0, dbm $$1, ja $$2) {
-      return $$0.a(avw.af) || $$0.a(dfk.cC);
+   protected dua b() {
+      return c;
    }
 
    @Override
-   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
-      return !$$0.a($$3, $$4) ? dfk.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public int c() {
+      return 3;
    }
 
    @Override
-   protected boolean a(dsl $$0, dcj $$1, ja $$2) {
-      ja $$3 = $$2.d();
-      return this.b($$1.a_($$3), $$1, $$3);
+   protected dct d() {
+      return cur.vl;
    }
 
    @Override
-   protected boolean a_(dsl $$0, dbm $$1, ja $$2) {
-      return $$0.u().c();
+   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
+      if ($$3.a(3) != 0) {
+         super.b($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
-   protected boolean a(dsl $$0, eoy $$1) {
-      return $$1 == eoy.c && !this.aG ? true : super.a($$0, $$1);
+   protected int a(dcu $$0) {
+      return super.a($$0) / 3;
+   }
+
+   @Override
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
+      return g[this.g($$0)];
    }
 }

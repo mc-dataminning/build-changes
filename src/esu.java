@@ -1,59 +1,63 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import org.slf4j.Logger;
 
-public class esu extends esj {
+public class esu extends esy {
+   private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<esu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  akj.a(lr.bb).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
-                  lq.j.s().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, esu::new)
+      $$0 -> a($$0).and(akp.a(lu.bd).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, esu::new)
    );
-   private final akj<erb> b;
-   private final long c;
-   private final jj<dps<?>> d;
+   private final akp<esz> c;
 
-   private esu(List<euh> $$0, akj<erb> $$1, long $$2, jj<dps<?>> $$3) {
+   private esu(List<euw> $$0, akp<esz> $$1) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = $$1;
    }
 
    @Override
-   public esl<esu> b() {
-      return esm.y;
+   public eta<esu> b() {
+      return etb.H;
    }
 
    @Override
-   public cud a(cud $$0, eqw $$1) {
-      if ($$0.e()) {
+   public void a(err $$0) {
+      if ($$0.a(this.c)) {
+         $$0.b("Function " + this.c.a() + " is recursively called");
+      } else {
+         super.a($$0);
+         $$0.a()
+            .a(lu.bd, this.c)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
+      }
+   }
+
+   @Override
+   protected cuo a(cuo $$0, erl $$1) {
+      esz $$2 = $$1.a().a(lu.bd, this.c).map(jm::a).orElse(null);
+      if ($$2 == null) {
+         b.warn("Unknown function: {}", this.c.a());
          return $$0;
       } else {
-         $$0.b(kn.ae, new cxf(this.b, this.c));
-         return $$0;
+         erl.c<?> $$3 = erl.a($$2);
+         if ($$1.b($$3)) {
+            cuo var5;
+            try {
+               var5 = $$2.apply($$0, $$1);
+            } finally {
+               $$1.c($$3);
+            }
+
+            return var5;
+         } else {
+            b.warn("Detected infinite loop in loot tables");
+            return $$0;
+         }
       }
    }
 
-   @Override
-   public void a(erc $$0) {
-      super.a($$0);
-      if ($$0.a().a(lr.bb, this.b).isEmpty()) {
-         $$0.b("Missing loot table used for container: " + this.b.a());
-      }
-   }
-
-   public static esj.a<?> a(dps<?> $$0, akj<erb> $$1) {
-      return a($$2 -> new esu($$2, $$1, 0L, $$0.a()));
-   }
-
-   public static esj.a<?> a(dps<?> $$0, akj<erb> $$1, long $$2) {
-      return a($$3 -> new esu($$3, $$1, $$2, $$0.a()));
+   public static esy.a<?> a(akp<esz> $$0) {
+      return a($$1 -> new esu($$1, $$0));
    }
 }

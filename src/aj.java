@@ -1,119 +1,119 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import com.mojang.serialization.DataResult;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public record aj(int c, List<akj<erb>> d, List<akk> e, Optional<el> f) {
-   public static final Codec<aj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("experience", 0).forGetter(aj::a),
-               akj.a(lr.bb).listOf().optionalFieldOf("loot", List.of()).forGetter(aj::b),
-               akk.a.listOf().optionalFieldOf("recipes", List.of()).forGetter(aj::c),
-               el.a.optionalFieldOf("function").forGetter(aj::d)
-            )
-            .apply($$0, aj::new)
-   );
-   public static final aj b = new aj(0, List.of(), List.of(), Optional.empty());
+public record aj(List<List<String>> c) {
+   public static final Codec<aj> a = Codec.STRING.listOf().listOf().xmap(aj::new, aj::d);
+   public static final aj b = new aj(List.of());
 
-   public void a(aqn $$0) {
-      $$0.d(this.c);
-      eqz $$1 = new eqz.a($$0.A()).a(ets.a, $$0).a(ets.f, $$0.dp()).a(etr.m);
-      boolean $$2 = false;
+   public aj(vv $$0) {
+      this($$0.a((yx<? super vv, List<String>>)($$0x -> $$0x.a(vv::p))));
+   }
 
-      for (akj<erb> $$3 : this.d) {
-         ObjectListIterator var6 = $$0.d.bf().b($$3).a($$1).iterator();
+   public void a(vv $$0) {
+      $$0.a(this.c, ($$0x, $$1) -> $$0x.a($$1, vv::a));
+   }
 
-         while (var6.hasNext()) {
-            cud $$4 = (cud)var6.next();
-            if ($$0.i($$4)) {
-               $$0.dR().a(null, $$0.dw(), $$0.dy(), $$0.dC(), avh.nC, avi.h, 0.2F, (($$0.dU().i() - $$0.dU().i()) * 0.7F + 1.0F) * 2.0F);
-               $$2 = true;
-            } else {
-               civ $$5 = $$0.a($$4, false);
-               if ($$5 != null) {
-                  $$5.w();
-                  $$5.b($$0.cB());
-               }
-            }
-         }
-      }
+   public static aj a(Collection<String> $$0) {
+      return new aj($$0.stream().map(List::of).toList());
+   }
 
-      if ($$2) {
-         $$0.ce.d();
-      }
-
-      if (!this.e.isEmpty()) {
-         $$0.b(this.e);
-      }
-
-      MinecraftServer $$6 = $$0.d;
-      this.f.flatMap($$1x -> $$1x.a($$6.aG())).ifPresent($$2x -> $$6.aG().a($$2x, $$0.di().a().a(2)));
+   public static aj b(Collection<String> $$0) {
+      return new aj(List.of(List.copyOf($$0)));
    }
 
    public int a() {
+      return this.c.size();
+   }
+
+   public boolean a(Predicate<String> $$0) {
+      if (this.c.isEmpty()) {
+         return false;
+      } else {
+         for (List<String> $$1 : this.c) {
+            if (!a($$1, $$0)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public int b(Predicate<String> $$0) {
+      int $$1 = 0;
+
+      for (List<String> $$2 : this.c) {
+         if (a($$2, $$0)) {
+            $$1++;
+         }
+      }
+
+      return $$1;
+   }
+
+   private static boolean a(List<String> $$0, Predicate<String> $$1) {
+      for (String $$2 : $$0) {
+         if ($$1.test($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public DataResult<aj> a(Set<String> $$0) {
+      Set<String> $$1 = new ObjectOpenHashSet();
+
+      for (List<String> $$2 : this.c) {
+         if ($$2.isEmpty() && $$0.isEmpty()) {
+            return DataResult.error(() -> "Requirement entry cannot be empty");
+         }
+
+         $$1.addAll($$2);
+      }
+
+      if (!$$0.equals($$1)) {
+         Set<String> $$3 = Sets.difference($$0, $$1);
+         Set<String> $$4 = Sets.difference($$1, $$0);
+         return DataResult.error(() -> "Advancement completion requirements did not exactly match specified criteria. Missing: " + $$3 + ". Unknown: " + $$4);
+      } else {
+         return DataResult.success(this);
+      }
+   }
+
+   public boolean b() {
+      return this.c.isEmpty();
+   }
+
+   @Override
+   public String toString() {
+      return this.c.toString();
+   }
+
+   public Set<String> c() {
+      Set<String> $$0 = new ObjectOpenHashSet();
+
+      for (List<String> $$1 : this.c) {
+         $$0.addAll($$1);
+      }
+
+      return $$0;
+   }
+
+   public List<List<String>> d() {
       return this.c;
    }
 
-   public List<akj<erb>> b() {
-      return this.d;
-   }
+   public interface a {
+      aj.a a = aj::a;
+      aj.a b = aj::b;
 
-   public List<akk> c() {
-      return this.e;
-   }
-
-   public Optional<el> d() {
-      return this.f;
-   }
-
-   public static class a {
-      private int a;
-      private final Builder<akj<erb>> b = ImmutableList.builder();
-      private final Builder<akk> c = ImmutableList.builder();
-      private Optional<akk> d = Optional.empty();
-
-      public static aj.a a(int $$0) {
-         return new aj.a().b($$0);
-      }
-
-      public aj.a b(int $$0) {
-         this.a += $$0;
-         return this;
-      }
-
-      public static aj.a a(akj<erb> $$0) {
-         return new aj.a().b($$0);
-      }
-
-      public aj.a b(akj<erb> $$0) {
-         this.b.add($$0);
-         return this;
-      }
-
-      public static aj.a a(akk $$0) {
-         return new aj.a().b($$0);
-      }
-
-      public aj.a b(akk $$0) {
-         this.c.add($$0);
-         return this;
-      }
-
-      public static aj.a c(akk $$0) {
-         return new aj.a().d($$0);
-      }
-
-      public aj.a d(akk $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public aj a() {
-         return new aj(this.a, this.b.build(), this.c.build(), this.d.map(el::new));
-      }
+      aj create(Collection<String> var1);
    }
 }

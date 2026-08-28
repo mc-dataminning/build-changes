@@ -1,16 +1,27 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.function.Predicate;
 
-public class euw {
-   private static final Codec<euv> d = lq.H.r().dispatch(euv::a, euu::a);
-   public static final Codec<euv> a = Codec.lazyInitialized(
-      () -> Codec.either(eut.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof eut $$1 ? Either.left($$1) : Either.right($$0))
-   );
-   public static final euu b = a("storage", eux.a);
-   public static final euu c = a("context", eut.b);
+public interface euw extends erm, Predicate<erl> {
+   Codec<euw> d = lt.F.r().dispatch("condition", euw::b, eux::a);
+   Codec<euw> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, euj.b));
+   Codec<jm<euw>> f = akm.a(lu.be, e);
 
-   private static euu a(String $$0, MapCodec<? extends euv> $$1) {
-      return jw.a(lq.H, new akk($$0), new euu($$1));
+   eux b();
+
+   @FunctionalInterface
+   public interface a {
+      euw build();
+
+      default euw.a invert() {
+         return eut.a(this);
+      }
+
+      default euk.a or(euw.a $$0) {
+         return euk.a(this, $$0);
+      }
+
+      default euj.a and(euw.a $$0) {
+         return euj.a(this, $$0);
+      }
    }
 }

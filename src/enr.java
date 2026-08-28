@@ -1,113 +1,30 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class enr extends eoa<ens.a, ens> {
-   private final ja.a g = new ja.a();
+public class enr implements env {
+   private static final Logger b = LogUtils.getLogger();
+   public static final MapCodec<enr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akp.a(lu.bc).fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, enr::new)
+   );
+   private final akp<erq> d;
 
-   public enr(duu $$0) {
-      this($$0, new ens($$0));
-   }
-
-   @VisibleForTesting
-   public enr(duu $$0, ens $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected void a(long $$0) {
-      long $$1 = kc.e($$0);
-      if (this.f.b($$1)) {
-         dsl $$2 = this.c(this.g.f($$0));
-         int $$3 = this.a($$0, $$2);
-         int $$4 = this.f.e($$0);
-         if ($$3 < $$4) {
-            this.f.a($$0, 0);
-            this.b($$0, eoa.a.a($$4));
-         } else {
-            this.b($$0, c);
-         }
-
-         if ($$3 > 0) {
-            this.c($$0, eoa.a.a($$3, a($$2)));
-         }
-      }
+   public enr(akp<erq> $$0) {
+      this.d = $$0;
    }
 
    @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      dsl $$3 = null;
-
-      for (jf $$4 : d) {
-         if (eoa.a.a($$1, $$4)) {
-            long $$5 = ja.a($$0, $$4);
-            if (this.f.b(kc.e($$5))) {
-               int $$6 = this.f.e($$5);
-               int $$7 = $$2 - 1;
-               if ($$7 > $$6) {
-                  this.g.f($$5);
-                  dsl $$8 = this.c(this.g);
-                  int $$9 = $$2 - this.a($$8, this.g);
-                  if ($$9 > $$6) {
-                     if ($$3 == null) {
-                        $$3 = eoa.a.b($$1) ? dfk.a.o() : this.c(this.g.f($$0));
-                     }
-
-                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
-                        this.f.a($$5, $$9);
-                        if ($$9 > 1) {
-                           this.c($$5, eoa.a.a($$9, a($$8), $$4.g()));
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
+   public ua a(ayv $$0, @Nullable ua $$1) {
+      ua $$2 = $$1 == null ? new ua() : $$1.i();
+      akp.a(lu.bc).encodeStart(uo.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
+      $$2.a("LootTableSeed", $$0.g());
+      return $$2;
    }
 
    @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = eoa.a.a($$1);
-
-      for (jf $$3 : d) {
-         if (eoa.a.a($$1, $$3)) {
-            long $$4 = ja.a($$0, $$3);
-            if (this.f.b(kc.e($$4))) {
-               int $$5 = this.f.e($$4);
-               if ($$5 != 0) {
-                  if ($$5 <= $$2 - 1) {
-                     dsl $$6 = this.c(this.g.f($$4));
-                     int $$7 = this.a($$4, $$6);
-                     this.f.a($$4, 0);
-                     if ($$7 < $$5) {
-                        this.b($$4, eoa.a.a($$5, $$3.g()));
-                     }
-
-                     if ($$7 > 0) {
-                        this.c($$4, eoa.a.a($$7, a($$6)));
-                     }
-                  } else {
-                     this.c($$4, eoa.a.b($$5, false, $$3.g()));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private int a(long $$0, dsl $$1) {
-      int $$2 = $$1.h();
-      return $$2 > 0 && this.f.j(kc.e($$0)) ? $$2 : 0;
-   }
-
-   @Override
-   public void b(dbn $$0) {
-      this.a($$0, true);
-      dut $$1 = this.e.c($$0.e, $$0.f);
-      if ($$1 != null) {
-         $$1.a(($$0x, $$1x) -> {
-            int $$2 = $$1x.h();
-            this.c($$0x.a(), eoa.a.a($$2, a($$1x)));
-         });
-      }
+   public enw<?> a() {
+      return enw.d;
    }
 }

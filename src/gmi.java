@@ -1,17 +1,12 @@
-public class gmi extends gku<ckf, fwz> {
-   private static final akk a = new akk("textures/entity/illager/vex.png");
-   private static final akk i = new akk("textures/entity/illager/vex_charging.png");
+public class gmi extends glj<cga, fxe<cga>> {
+   private static final akq a = akq.b("textures/entity/snow_golem.png");
 
-   public gmi(gjo.a $$0) {
-      super($$0, new fwz($$0.a(fxp.bO)), 0.3F);
-      this.a(new gnt<>(this, $$0.d()));
+   public gmi(gkd.a $$0) {
+      super($$0, new fxe<>($$0.a(fyd.bw)), 0.5F);
+      this.a(new gov(this, $$0.c(), $$0.b()));
    }
 
-   protected int a(ckf $$0, ja $$1) {
-      return 15;
-   }
-
-   public akk a(ckf $$0) {
-      return $$0.go() ? i : a;
+   public akq a(cga $$0) {
+      return a;
    }
 }

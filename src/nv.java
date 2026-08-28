@@ -1,43 +1,49 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class nv<T> {
-   final String a;
-   final Function<T, JsonElement> b;
+public final class nv {
+   private static final nv a = new nv(ImmutableList.of());
+   private static final Comparator<dud.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
+   private final List<dud.a<?>> c;
 
-   public nv(String $$0, Function<T, JsonElement> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public nv a(dud.a<?> $$0) {
+      return new nv(ImmutableList.builder().addAll(this.c).add($$0).build());
    }
 
-   public nv<T>.a a(T $$0) {
-      return new nv.a($$0);
+   public nv a(nv $$0) {
+      return new nv(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
+   }
+
+   private nv(List<dud.a<?>> $$0) {
+      this.c = $$0;
+   }
+
+   public static nv a() {
+      return a;
+   }
+
+   public static nv a(dud.a<?>... $$0) {
+      return new nv(ImmutableList.copyOf($$0));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof nv && this.c.equals(((nv)$$0).c);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
+
+   public String b() {
+      return this.c.stream().sorted(b).map(dud.a::toString).collect(Collectors.joining(","));
    }
 
    @Override
    public String toString() {
-      return this.a;
-   }
-
-   public class a {
-      private final T b;
-
-      public a(final T $$1) {
-         this.b = $$1;
-      }
-
-      public nv<T> a() {
-         return nv.this;
-      }
-
-      public void a(JsonObject $$0) {
-         $$0.add(nv.this.a, nv.this.b.apply(this.b));
-      }
-
-      @Override
-      public String toString() {
-         return nv.this.a + "=" + this.b;
-      }
+      return this.b();
    }
 }

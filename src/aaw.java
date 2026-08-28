@@ -1,23 +1,57 @@
-import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public class aaw implements zb<aav> {
-   public static final aaw a = new aaw();
-   public static final ys<ByteBuf, aaw> b = ys.a(a);
+public record aaw(akp<dcu> c, eje d, List<aaw.a> e) implements aai {
+   public static final yw<vv, aaw> a = aai.a(aaw::a, aaw::new);
+   public static final aai.b<aaw> b = aai.a("debug/structures");
 
-   private aaw() {
+   private aaw(vv $$0) {
+      this($$0.a(lu.ba), b($$0), $$0.a(aaw.a::new));
+   }
+
+   private void a(vv $$0) {
+      $$0.b(this.c);
+      a($$0, this.d);
+      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
    }
 
    @Override
-   public zd<aaw> a() {
-      return abb.a;
+   public aai.b<aaw> a() {
+      return b;
    }
 
-   public void a(aav $$0) {
-      $$0.a(this);
+   static eje b(vv $$0) {
+      return new eje($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   static void a(vv $$0, eje $$1) {
+      $$0.p($$1.h());
+      $$0.p($$1.i());
+      $$0.p($$1.j());
+      $$0.p($$1.k());
+      $$0.p($$1.l());
+      $$0.p($$1.m());
+   }
+
+   public akp<dcu> b() {
+      return this.c;
+   }
+
+   public eje c() {
+      return this.d;
+   }
+
+   public List<aaw.a> d() {
+      return this.e;
+   }
+
+   public static record a(eje a, boolean b) {
+      public a(vv $$0) {
+         this(aaw.b($$0), $$0.readBoolean());
+      }
+
+      public void a(vv $$0) {
+         aaw.a($$0, this.a);
+         $$0.a(this.b);
+      }
    }
 }

@@ -1,16 +1,35 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class dec<E extends dpq> extends deu {
-   protected final Supplier<dps<? extends E>> a;
+public class dec extends ddy {
+   public static final MapCodec<dec> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ddu.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
+            .apply($$0, dec::new)
+   );
+   private final jq<ddu> c;
+   private final int d;
+   private final int e;
 
-   protected dec(dsk.d $$0, Supplier<dps<? extends E>> $$1) {
-      super($$0);
-      this.a = $$1;
+   public dec(jq<ddu> $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1 + 2;
+      this.e = $$1;
    }
 
    @Override
-   protected abstract MapCodec<? extends dec<E>> a();
+   protected Stream<jm<ddu>> b() {
+      return this.c.a();
+   }
 
-   public abstract dhp.c<? extends dpx> a(dsl var1, dcg var2, ja var3, boolean var4);
+   @Override
+   protected MapCodec<? extends ddy> a() {
+      return b;
+   }
+
+   @Override
+   public jm<ddu> getNoiseBiome(int $$0, int $$1, int $$2, ded.f $$3) {
+      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
+   }
 }

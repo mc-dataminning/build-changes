@@ -1,12 +1,136 @@
-public interface hs extends AutoCloseable {
-   void a(int var1, String var2);
+import com.google.common.collect.Queues;
+import com.mojang.brigadier.context.ContextChain;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Deque;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   void a(int var1, String var2, int var3);
+public class hs<T> implements AutoCloseable {
+   private static final int a = 10000000;
+   private static final Logger b = LogUtils.getLogger();
+   private final int c;
+   private final int d;
+   private final bne e;
+   @Nullable
+   private hv f;
+   private int g;
+   private boolean h;
+   private final Deque<ho<T>> i = Queues.newArrayDeque();
+   private final List<ho<T>> j = new ObjectArrayList();
+   private int k;
 
-   void a(String var1);
+   public hs(int $$0, int $$1, bne $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.g = $$0;
+   }
 
-   void a(int var1, akk var2, int var3);
+   private static <T extends ev<T>> hu a(hs<T> $$0, eq $$1) {
+      if ($$0.k == 0) {
+         return new hu(0, $$1, $$0.i::clear);
+      } else {
+         int $$2 = $$0.k + 1;
+         return new hu($$2, $$1, $$0.b($$2));
+      }
+   }
+
+   public static <T extends ev<T>> void a(hs<T> $$0, ii<T> $$1, T $$2, eq $$3) {
+      $$0.a(new ho<>(a($$0, $$3), new hz<>($$1, $$2.p(), false).bind($$2)));
+   }
+
+   public static <T extends ev<T>> void a(hs<T> $$0, String $$1, ContextChain<T> $$2, T $$3, eq $$4) {
+      $$0.a(new ho<>(a($$0, $$4), new hy.b<>($$1, $$2, $$3)));
+   }
+
+   private void f() {
+      this.h = true;
+      this.j.clear();
+      this.i.clear();
+   }
+
+   public void a(ho<T> $$0) {
+      if (this.j.size() + this.i.size() > 10000000) {
+         this.f();
+      }
+
+      if (!this.h) {
+         this.j.add($$0);
+      }
+   }
+
+   public void a(int $$0) {
+      while (!this.i.isEmpty() && this.i.peek().a().c() >= $$0) {
+         this.i.removeFirst();
+      }
+   }
+
+   public hu.a b(int $$0) {
+      return () -> this.a($$0);
+   }
+
+   public void a() {
+      this.g();
+
+      while (true) {
+         if (this.g <= 0) {
+            b.info("Command execution stopped due to limit (executed {} commands)", this.c);
+            break;
+         }
+
+         ho<T> $$0 = this.i.pollFirst();
+         if ($$0 == null) {
+            return;
+         }
+
+         this.k = $$0.a().c();
+         $$0.a(this);
+         if (this.h) {
+            b.error("Command execution stopped due to command queue overflow (max {})", 10000000);
+            break;
+         }
+
+         this.g();
+      }
+
+      this.k = 0;
+   }
+
+   private void g() {
+      for (int $$0 = this.j.size() - 1; $$0 >= 0; $$0--) {
+         this.i.addFirst(this.j.get($$0));
+      }
+
+      this.j.clear();
+   }
+
+   public void a(@Nullable hv $$0) {
+      this.f = $$0;
+   }
+
+   @Nullable
+   public hv b() {
+      return this.f;
+   }
+
+   public bne c() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public void e() {
+      this.g--;
+   }
 
    @Override
-   void close();
+   public void close() {
+      if (this.f != null) {
+         this.f.close();
+      }
+   }
 }

@@ -1,42 +1,30 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class etl extends esj {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<etl> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, etl::new));
+public class etl extends esy {
+   static final MapCodec<etl> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(evt.a.fieldOf("value").forGetter($$0x -> $$0x.b)).apply($$0, etl::new));
+   private final evs b;
 
-   private etl(List<euh> $$0) {
+   private etl(List<euw> $$0, evs $$1) {
       super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public esl<etl> b() {
-      return esm.l;
+   public Set<eue<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public cud a(cud $$0, eqw $$1) {
-      if ($$0.e()) {
-         return $$0;
-      } else {
-         Optional<cyl<cza>> $$2 = $$1.d().r().a(cyp.b, new cyz($$0), $$1.d());
-         if ($$2.isPresent()) {
-            cud $$3 = $$2.get().b().a($$1.d().H_());
-            if (!$$3.e()) {
-               return $$3.c($$0.H());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
+   public eta<etl> b() {
+      return etb.R;
    }
 
-   public static esj.a<?> c() {
-      return a(etl::new);
+   @Override
+   public cuo a(cuo $$0, erl $$1) {
+      $$0.b(kq.o, new cxg(this.b.a($$1)));
+      return $$0;
    }
 }

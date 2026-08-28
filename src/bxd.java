@@ -1,124 +1,65 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bxd extends buv<cly> {
-   private static final int c = 900;
-   private static final int d = 40;
-   @Nullable
-   private cud e;
-   private final List<cud> f = Lists.newArrayList();
-   private int g;
-   private int h;
-   private int i;
+public class bxd {
+   private static final int a = 40;
+   private static final int b = 5;
+   private static final int c = 20;
+   private static final int d = 4;
 
-   public bxd(int $$0, int $$1) {
-      super(ImmutableMap.of(ccg.q, cch.a), $$0, $$1);
-   }
+   public static bvg<btu> a(float $$0) {
+      Long2LongMap $$1 = new Long2LongOpenHashMap();
+      MutableLong $$2 = new MutableLong(0L);
+      return bys.a(
+         (Function<bys.b<btu>, ? extends App<bys.c<btu>, byv<btu>>>)($$3 -> $$3.group($$3.c(ccq.m), $$3.c(ccq.b))
+               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
+                     if ($$4x.Z() - $$2.getValue() < 20L) {
+                        return false;
+                     } else {
+                        ceq $$7 = $$4x.y();
+                        Optional<jd> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(ceu.n), $$5.dq(), 48, ceq.b.c);
+                        if (!$$8.isEmpty() && !($$8.get().j($$5.dq()) <= 4.0)) {
+                           MutableInt $$9 = new MutableInt(0);
+                           $$2.setValue($$4x.Z() + (long)$$4x.E_().a(20));
+                           Predicate<jd> $$10 = $$3xxx -> {
+                              long $$4xx = $$3xxx.a();
+                              if ($$1.containsKey($$4xx)) {
+                                 return false;
+                              } else if ($$9.incrementAndGet() >= 5) {
+                                 return false;
+                              } else {
+                                 $$1.put($$4xx, $$2.getValue() + 40L);
+                                 return true;
+                              }
+                           };
+                           Set<Pair<jm<cet>, jd>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(ceu.n), $$10, $$5.dq(), 48, ceq.b.c).collect(Collectors.toSet());
+                           epm $$12 = buy.a($$5, $$11);
+                           if ($$12 != null && $$12.j()) {
+                              jd $$13 = $$12.l();
+                              Optional<jm<cet>> $$14 = $$7.c($$13);
+                              if ($$14.isPresent()) {
+                                 $$3x.a(new cct($$13, $$0, 1));
+                                 age.c($$4x, $$13);
+                              }
+                           } else if ($$9.getValue() < 5) {
+                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
+                           }
 
-   public boolean a(aqm $$0, cly $$1) {
-      bue<?> $$2 = $$1.dV();
-      if ($$2.c(ccg.q).isEmpty()) {
-         return false;
-      } else {
-         btc $$3 = $$2.c(ccg.q).get();
-         return $$3.am() == bsn.by && $$1.bF() && $$3.bF() && !$$1.o_() && $$1.g($$3) <= 17.0;
-      }
-   }
-
-   public boolean a(aqm $$0, cly $$1, long $$2) {
-      return this.a($$0, $$1) && this.i > 0 && $$1.dV().c(ccg.q).isPresent();
-   }
-
-   public void b(aqm $$0, cly $$1, long $$2) {
-      super.d($$0, $$1, $$2);
-      this.d($$1);
-      this.g = 0;
-      this.h = 0;
-      this.i = 40;
-   }
-
-   public void c(aqm $$0, cly $$1, long $$2) {
-      btc $$3 = this.d($$1);
-      this.a($$3, $$1);
-      if (!this.f.isEmpty()) {
-         this.e($$1);
-      } else {
-         c($$1);
-         this.i = Math.min(this.i, 40);
-      }
-
-      this.i--;
-   }
-
-   public void d(aqm $$0, cly $$1, long $$2) {
-      super.b($$0, $$1, $$2);
-      $$1.dV().b(ccg.q);
-      c($$1);
-      this.e = null;
-   }
-
-   private void a(btc $$0, cly $$1) {
-      boolean $$2 = false;
-      cud $$3 = $$0.eV();
-      if (this.e == null || !cud.b(this.e, $$3)) {
-         this.e = $$3;
-         $$2 = true;
-         this.f.clear();
-      }
-
-      if ($$2 && !this.e.e()) {
-         this.b($$1);
-         if (!this.f.isEmpty()) {
-            this.i = 900;
-            this.a($$1);
-         }
-      }
-   }
-
-   private void a(cly $$0) {
-      a($$0, this.f.get(0));
-   }
-
-   private void b(cly $$0) {
-      for (dbe $$1 : $$0.gp()) {
-         if (!$$1.r() && this.a($$1)) {
-            this.f.add($$1.h());
-         }
-      }
-   }
-
-   private boolean a(dbe $$0) {
-      return cud.b(this.e, $$0.b()) || cud.b(this.e, $$0.c());
-   }
-
-   private static void c(cly $$0) {
-      $$0.a(bso.a, cud.l);
-      $$0.a(bso.a, 0.085F);
-   }
-
-   private static void a(cly $$0, cud $$1) {
-      $$0.a(bso.a, $$1);
-      $$0.a(bso.a, 0.0F);
-   }
-
-   private btc d(cly $$0) {
-      bue<?> $$1 = $$0.dV();
-      btc $$2 = $$1.c(ccg.q).get();
-      $$1.a(ccg.n, new bvg($$2, true));
-      return $$2;
-   }
-
-   private void e(cly $$0) {
-      if (this.f.size() >= 2 && ++this.g >= 40) {
-         this.h++;
-         this.g = 0;
-         if (this.h > this.f.size() - 1) {
-            this.h = 0;
-         }
-
-         a($$0, this.f.get(this.h));
-      }
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

@@ -1,65 +1,15 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
-public class ctz {
-   private final Map<cty, ctz.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(cty $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+public class ctz extends cuj implements cvt {
+   public ctz(cuj.a $$0) {
+      super($$0);
    }
 
-   public float a(cty $$0, float $$1) {
-      ctz.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return ayg.a($$4 / $$3, 0.0F, 1.0F);
+   @Override
+   public boolean a(dcu $$0, drq $$1, boolean $$2, cmv $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.az_(), avo.kA, avp.e, 1.0F, 1.0F);
+         return true;
       } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<cty, ctz.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<cty, ctz.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
-            }
-         }
-      }
-   }
-
-   public void a(cty $$0, int $$1) {
-      this.a.put($$0, new ctz.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void b(cty $$0) {
-      this.a.remove($$0);
-      this.c($$0);
-   }
-
-   protected void b(cty $$0, int $$1) {
-   }
-
-   protected void c(cty $$0) {
-   }
-
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+         return false;
       }
    }
 }

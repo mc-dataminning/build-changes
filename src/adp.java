@@ -1,29 +1,29 @@
-public class adp implements zb<abn> {
-   public static final ys<vr, adp> a = zb.a(adp::a, adp::new);
-   private final int b;
+public class adp implements zf<abt> {
+   public static final yw<vv, adp> a = zf.a(adp::a, adp::new);
+   private final bqp b;
 
-   public adp(bqx $$0) {
-      this($$0.b());
-   }
-
-   public adp(int $$0) {
+   public adp(bqp $$0) {
       this.b = $$0;
    }
 
-   private adp(vr $$0) {
-      this.b = $$0.l();
+   private adp(vv $$0) {
+      this.b = $$0.b(bqp.class);
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.b);
+   private void a(vv $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zd<adp> a() {
-      return afz.ab;
+   public zh<adp> a() {
+      return agf.V;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
+   }
+
+   public bqp b() {
+      return this.b;
    }
 }

@@ -1,28 +1,47 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import java.util.Collection;
+import java.util.Collections;
 
 public class amy {
-   public static void a(CommandDispatcher<eq> $$0) {
+   public static final int a = 2;
+
+   public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("kill").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((eq)$$0x.getSource(), ImmutableList.of(((eq)$$0x.getSource()).g()))))
-            .then(er.a("targets", fd.b()).executes($$0x -> a((eq)$$0x.getSource(), fd.b($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("gamemode").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)eu.a("gamemode", fh.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((et)$$0x.getSource()).h()), fh.a($$0x, "gamemode"))))
+                  .then(eu.a("target", fg.d()).executes($$0x -> a($$0x, fg.f($$0x, "target"), fh.a($$0x, "gamemode"))))
+            )
       );
    }
 
-   private static int a(eq $$0, Collection<? extends bsh> $$1) {
-      for (bsh $$2 : $$1) {
-         $$2.ap();
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> wu.a("commands.kill.success.single", $$1.iterator().next().O_()), true);
+   private static void a(et $$0, aqu $$1, dcr $$2) {
+      wy $$3 = wy.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> wy.a("commands.gamemode.success.self", $$3), true);
       } else {
-         $$0.a(() -> wu.a("commands.kill.success.multiple", $$1.size()), true);
+         if ($$0.e().ab().b(dcq.p)) {
+            $$1.a(wy.a("gameMode.changed", $$3));
+         }
+
+         $$0.a(() -> wy.a("commands.gamemode.success.other", $$1.O_(), $$3), true);
+      }
+   }
+
+   private static int a(CommandContext<et> $$0, Collection<aqu> $$1, dcr $$2) {
+      int $$3 = 0;
+
+      for (aqu $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((et)$$0.getSource(), $$4, $$2);
+            $$3++;
+         }
       }
 
-      return $$1.size();
+      return $$3;
    }
 }

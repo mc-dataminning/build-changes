@@ -1,27 +1,18 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+public class euh {
+   public static final eue<bsq> a = a("this_entity");
+   public static final eue<cmv> b = a("last_damage_player");
+   public static final eue<brj> c = a("damage_source");
+   public static final eue<bsq> d = a("attacking_entity");
+   public static final eue<bsq> e = a("direct_attacking_entity");
+   public static final eue<eww> f = a("origin");
+   public static final eue<dta> g = a("block_state");
+   public static final eue<dqf> h = a("block_entity");
+   public static final eue<cuo> i = a("tool");
+   public static final eue<Float> j = a("explosion_radius");
+   public static final eue<Integer> k = a("enchantment_level");
+   public static final eue<Boolean> l = a("enchantment_active");
 
-public interface euh extends eqx, Predicate<eqw> {
-   Codec<euh> d = lq.F.r().dispatch("condition", euh::b, eui::a);
-   Codec<euh> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, etu.b));
-   Codec<jj<euh>> f = akg.a(lr.bd, e);
-
-   eui b();
-
-   @FunctionalInterface
-   public interface a {
-      euh build();
-
-      default euh.a invert() {
-         return eue.a(this);
-      }
-
-      default etv.a or(euh.a $$0) {
-         return etv.a(this, $$0);
-      }
-
-      default etu.a and(euh.a $$0) {
-         return etu.a(this, $$0);
-      }
+   private static <T> eue<T> a(String $$0) {
+      return new eue<>(akq.b($$0));
    }
 }

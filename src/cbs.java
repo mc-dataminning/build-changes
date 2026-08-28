@@ -1,102 +1,103 @@
 import java.util.EnumSet;
-import java.util.Iterator;
-import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cbs extends cca {
-   private static final cdt a = cdt.a().d().e();
-   private static final int b = 10;
-   private boolean c;
-   private int d;
-   private final Class<?>[] i;
+public class cbs extends cak {
+   private static final ced c = ced.b().a(10.0).d();
+   private final ced d;
+   protected final btu a;
+   private final double e;
+   private double f;
+   private double g;
+   private double h;
+   private double i;
+   private double j;
    @Nullable
-   private Class<?>[] j;
+   protected cmv b;
+   private int k;
+   private boolean l;
+   private final Predicate<cuo> m;
+   private final boolean n;
 
-   public cbs(btl $$0, Class<?>... $$1) {
-      super($$0, true);
-      this.i = $$1;
-      this.a(EnumSet.of(caa.a.d));
+   public cbs(btu $$0, double $$1, Predicate<cuo> $$2, boolean $$3) {
+      this.a = $$0;
+      this.e = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.a(EnumSet.of(cak.a.a, cak.a.b));
+      this.d = c.c().a(this::a);
    }
 
    @Override
-   public boolean a() {
-      int $$0 = this.e.el();
-      btc $$1 = this.e.ek();
-      if ($$0 != this.d && $$1 != null) {
-         if ($$1.am() == bsn.by && this.e.dR().ab().b(dcc.O)) {
-            return false;
-         } else {
-            for (Class<?> $$2 : this.i) {
-               if ($$2.isAssignableFrom($$1.getClass())) {
-                  return false;
-               }
-            }
-
-            return this.a($$1, a);
-         }
-      } else {
+   public boolean b() {
+      if (this.k > 0) {
+         this.k--;
          return false;
+      } else {
+         this.b = this.a.dQ().a(this.d, this.a);
+         return this.b != null;
       }
    }
 
-   public cbs a(Class<?>... $$0) {
-      this.c = true;
-      this.j = $$0;
-      return this;
+   private boolean a(btl $$0) {
+      return this.m.test($$0.eU()) || this.m.test($$0.eV());
    }
 
    @Override
-   public void c() {
-      this.e.h(this.e.ek());
-      this.g = this.e.p();
-      this.d = this.e.el();
-      this.h = 300;
-      if (this.c) {
-         this.h();
-      }
-
-      super.c();
-   }
-
-   protected void h() {
-      double $$0 = this.l();
-      ewc $$1 = ewc.a(this.e.dp()).c($$0, 10.0, $$0);
-      List<? extends bte> $$2 = this.e.dR().a((Class<? extends bte>)this.e.getClass(), $$1, bsm.f);
-      Iterator var5 = $$2.iterator();
-
-      while (true) {
-         bte $$3;
-         while (true) {
-            if (!var5.hasNext()) {
-               return;
+   public boolean c() {
+      if (this.h()) {
+         if (this.a.g(this.b) < 36.0) {
+            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
+               return false;
             }
 
-            $$3 = (bte)var5.next();
-            if (this.e != $$3 && $$3.p() == null && (!(this.e instanceof btz) || ((btz)this.e).P_() == ((btz)$$3).P_()) && !$$3.s(this.e.ek())) {
-               if (this.j == null) {
-                  break;
-               }
-
-               boolean $$4 = false;
-
-               for (Class<?> $$5 : this.j) {
-                  if ($$3.getClass() == $$5) {
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
-                  break;
-               }
+            if (Math.abs((double)this.b.dI() - this.i) > 5.0 || Math.abs((double)this.b.dG() - this.j) > 5.0) {
+               return false;
             }
+         } else {
+            this.f = this.b.dv();
+            this.g = this.b.dx();
+            this.h = this.b.dB();
          }
 
-         this.a($$3, this.e.ek());
+         this.i = (double)this.b.dI();
+         this.j = (double)this.b.dG();
+      }
+
+      return this.b();
+   }
+
+   protected boolean h() {
+      return this.n;
+   }
+
+   @Override
+   public void d() {
+      this.f = this.b.dv();
+      this.g = this.b.dx();
+      this.h = this.b.dB();
+      this.l = true;
+   }
+
+   @Override
+   public void e() {
+      this.b = null;
+      this.a.J().n();
+      this.k = b(100);
+      this.l = false;
+   }
+
+   @Override
+   public void a() {
+      this.a.F().a(this.b, (float)(this.a.ab() + 20), (float)this.a.aa());
+      if (this.a.g(this.b) < 6.25) {
+         this.a.J().n();
+      } else {
+         this.a.J().a(this.b, this.e);
       }
    }
 
-   protected void a(bte $$0, btc $$1) {
-      $$0.h($$1);
+   public boolean i() {
+      return this.l;
    }
 }

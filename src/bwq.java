@@ -1,21 +1,37 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public abstract class bwq<E extends btl> implements bvg<E>, byv<E> {
+   private bvf.a a;
 
-public class bwq {
-   public static buw<btc> a() {
-      return byi.a((Function<byi.b<btc>, ? extends App<byi.c<btc>, byl<btc>>>)($$0 -> $$0.a((byl<btc>)(($$0x, $$1, $$2) -> {
-            if ($$0x.z.a(20) != 0) {
-               return false;
-            } else {
-               bue<?> $$3 = $$1.dV();
-               cnw $$4 = $$0x.d($$1.dr());
-               if ($$4 == null || $$4.d() || $$4.f()) {
-                  $$3.b(coa.b);
-                  $$3.a($$0x.aa(), $$0x.Z());
-               }
+   public bwq() {
+      this.a = bvf.a.a;
+   }
 
-               return true;
-            }
-         }))));
+   @Override
+   public final bvf.a a() {
+      return this.a;
+   }
+
+   @Override
+   public final boolean e(aqt $$0, E $$1, long $$2) {
+      if (this.trigger($$0, $$1, $$2)) {
+         this.a = bvf.a.b;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public final void f(aqt $$0, E $$1, long $$2) {
+      this.g($$0, $$1, $$2);
+   }
+
+   @Override
+   public final void g(aqt $$0, E $$1, long $$2) {
+      this.a = bvf.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

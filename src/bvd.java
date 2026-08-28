@@ -1,81 +1,21 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bvd<E extends bte & cje, T extends btc> extends buv<E> {
-   private static final int c = 1200;
-   private int d;
-   private bvd.a e = bvd.a.a;
-
-   public bvd() {
-      super(ImmutableMap.of(ccg.n, cch.c, ccg.o, cch.a), 1200);
-   }
-
-   protected boolean a(aqm $$0, E $$1) {
-      btc $$2 = b($$1);
-      return $$1.b(cug.vW) && bux.b($$1, $$2) && bux.a($$1, $$2, 0);
-   }
-
-   protected boolean a(aqm $$0, E $$1, long $$2) {
-      return $$1.dV().a(ccg.o) && this.a($$0, $$1);
-   }
-
-   protected void b(aqm $$0, E $$1, long $$2) {
-      btc $$3 = b($$1);
-      this.b($$1, $$3);
-      this.a($$1, $$3);
-   }
-
-   protected void c(aqm $$0, E $$1, long $$2) {
-      if ($$1.ft()) {
-         $$1.fz();
-      }
-
-      if ($$1.b(cug.vW)) {
-         $$1.b(false);
-         $$1.fv().b(kn.E, cwq.a);
-      }
-   }
-
-   private void a(E $$0, btc $$1) {
-      if (this.e == bvd.a.a) {
-         $$0.c(cnf.a($$0, cug.vW));
-         this.e = bvd.a.b;
-         $$0.b(true);
-      } else if (this.e == bvd.a.b) {
-         if (!$$0.ft()) {
-            this.e = bvd.a.a;
-         }
-
-         int $$2 = $$0.fx();
-         cud $$3 = $$0.fv();
-         if ($$2 >= csq.a($$0)) {
-            $$0.fy();
-            this.e = bvd.a.c;
-            this.d = 20 + $$0.dU().a(20);
-            $$0.b(false);
-         }
-      } else if (this.e == bvd.a.c) {
-         this.d--;
-         if (this.d == 0) {
-            this.e = bvd.a.d;
-         }
-      } else if (this.e == bvd.a.d) {
-         $$0.a($$1, 1.0F);
-         this.e = bvd.a.a;
-      }
-   }
-
-   private void b(bte $$0, btc $$1) {
-      $$0.dV().a(ccg.n, new bvg($$1, true));
-   }
-
-   private static btc b(btc $$0) {
-      return $$0.dV().c(ccg.o).get();
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+public class bvd {
+   public static bwq<btn> a(int $$0, float $$1) {
+      return bys.a(
+         (Function<bys.b<btn>, ? extends App<bys.c<btn>, byv<btn>>>)($$2 -> $$2.group($$2.c(ccq.m), $$2.a(ccq.n), $$2.b(ccq.o), $$2.b(ccq.h))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     btl $$9 = $$2.b($$5);
+                     if ($$9.a($$7, (double)$$0) && $$2.<ccs>b($$6).a($$9)) {
+                        $$4.a(new bvq($$9, true));
+                        $$7.H().a(-$$1, 0.0F);
+                        $$7.s(ayn.c($$7.dG(), $$7.ba, 0.0F));
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

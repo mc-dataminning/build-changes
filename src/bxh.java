@@ -1,34 +1,23 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bxh {
-   public static <E extends bte> buw<E> a(Function<E, Optional<? extends btc>> $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static <E extends bte> buw<E> a(Predicate<E> $$0, Function<E, Optional<? extends btc>> $$1) {
-      return byi.a(
-         (Function<byi.b<E>, ? extends App<byi.c<E>, byl<E>>>)($$2 -> $$2.group($$2.c(ccg.o), $$2.a(ccg.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
-                  if (!$$0.test((E)$$5)) {
-                     return false;
-                  } else {
-                     Optional<? extends btc> $$7 = $$1.apply((E)$$5);
-                     if ($$7.isEmpty()) {
+   public static bvg<btl> a(bsw<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return bys.a(
+         (Function<bys.b<btl>, ? extends App<bys.c<btl>, byv<btl>>>)($$2x -> $$2x.group($$2x.a(ccq.n), $$2x.c(ccq.q), $$2x.b(ccq.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<btl> $$9 = $$2x.<ccs>b($$5).a($$3xx -> $$3xx.g((bsq)$$7) <= (double)$$2 && $$0.equals($$3xx.am()));
+                     if ($$9.isEmpty()) {
                         return false;
                      } else {
-                        btc $$8 = $$7.get();
-                        if (!$$5.c($$8)) {
-                           return false;
-                        } else {
-                           $$2x.a($$8);
-                           $$3.b();
-                           return true;
-                        }
+                        btl $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new bvq($$10, true));
+                        return true;
                      }
-                  }
-               }))
+                  }))
       );
    }
 }

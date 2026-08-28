@@ -1,87 +1,110 @@
-public class gga implements ggf<dpf> {
-   private static final int b = 20;
-   private static final int c = 40;
-   private static final int d = 16;
-   public static final String a = "flag";
-   private static final String e = "pole";
-   private static final String f = "bar";
-   private final fxq g;
-   private final fxq h;
-   private final fxq i;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public gga(ggg.a $$0) {
-      fxq $$1 = $$0.a(fxp.g);
-      this.g = $$1.b("flag");
-      this.h = $$1.b("pole");
-      this.i = $$1.b("bar");
+public class gga {
+   public static final gga a = new gga();
+   public static final float b = Float.NEGATIVE_INFINITY;
+   private final gga.a[] c;
+   private final akq[] d;
+
+   private gga() {
+      this.c = new gga.a[0];
+      this.d = new akq[0];
    }
 
-   public static fxw a() {
-      fxy $$0 = new fxy();
-      fxz $$1 = $$0.a();
-      $$1.a("flag", fxv.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), fxs.a);
-      $$1.a("pole", fxv.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), fxs.a);
-      $$1.a("bar", fxv.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), fxs.a);
-      return fxw.a($$0, 64, 64);
+   public gga(gsk $$0, gfv $$1, List<gfz> $$2) {
+      this.d = $$2.stream().flatMap(gfz::b).map(gfz.b::a).distinct().toArray(akq[]::new);
+      Object2IntMap<akq> $$3 = new Object2IntOpenHashMap();
+
+      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
+         $$3.put(this.d[$$4], $$4);
+      }
+
+      List<gga.a> $$5 = Lists.newArrayList();
+
+      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
+         gfz $$7 = $$2.get($$6);
+         gsg $$8 = this.a($$0, $$1, $$7);
+         gga.b[] $$9 = $$7.b().map($$1x -> {
+            int $$2x = $$3.getInt($$1x.a());
+            return new gga.b($$2x, $$1x.b());
+         }).toArray(gga.b[]::new);
+         $$5.add(new gga.a($$9, $$8));
+      }
+
+      this.c = $$5.toArray(new gga.a[0]);
    }
 
-   public void a(dpf $$0, float $$1, fao $$2, gef $$3, int $$4, int $$5) {
-      float $$6 = 0.6666667F;
-      boolean $$7 = $$0.i() == null;
-      $$2.a();
-      long $$8;
-      if ($$7) {
-         $$8 = 0L;
-         $$2.a(0.5F, 0.5F, 0.5F);
-         this.h.k = true;
-      } else {
-         $$8 = $$0.i().Z();
-         dsl $$10 = $$0.n();
-         if ($$10.b() instanceof den) {
-            $$2.a(0.5F, 0.5F, 0.5F);
-            float $$11 = -dtr.b($$10.c(den.b));
-            $$2.a(a.d.rotationDegrees($$11));
-            this.h.k = true;
-         } else {
-            $$2.a(0.5F, -0.16666667F, 0.5F);
-            float $$12 = -$$10.c(dof.b).p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(0.0F, -0.3125F, -0.4375F);
-            this.h.k = false;
+   @Nullable
+   private gsg a(gsk $$0, gfv $$1, gfz $$2) {
+      gsr $$3 = $$0.a($$2.a());
+      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gsh.a);
+   }
+
+   @Nullable
+   public gsg a(gsg $$0, cuo $$1, @Nullable fyz $$2, @Nullable btl $$3, int $$4) {
+      if (this.c.length != 0) {
+         int $$5 = this.d.length;
+         float[] $$6 = new float[$$5];
+
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            akq $$8 = this.d[$$7];
+            gpn $$9 = gpm.a($$1, $$8);
+            if ($$9 != null) {
+               $$6[$$7] = $$9.call($$1, $$2, $$3, $$4);
+            } else {
+               $$6[$$7] = Float.NEGATIVE_INFINITY;
+            }
+         }
+
+         for (gga.a $$10 : this.c) {
+            if ($$10.a($$6)) {
+               gsg $$11 = $$10.b;
+               if ($$11 == null) {
+                  return $$0;
+               }
+
+               return $$11;
+            }
          }
       }
 
-      $$2.a();
-      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
-      fas $$13 = grw.f.a($$3, gen::c);
-      this.h.a($$2, $$13, $$4, $$5);
-      this.i.a($$2, $$13, $$4, $$5);
-      ja $$14 = $$0.az_();
-      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$8, 100L) + $$1) / 100.0F;
-      this.g.e = (-0.0125F + 0.01F * ayg.b((float) (Math.PI * 2) * $$15)) * (float) Math.PI;
-      this.g.c = -32.0F;
-      a($$2, $$3, $$4, $$5, this.g, grw.f, true, $$0.f(), $$0.b());
-      $$2.b();
-      $$2.b();
+      return $$0;
    }
 
-   public static void a(fao $$0, gef $$1, int $$2, int $$3, fxq $$4, gru $$5, boolean $$6, csw $$7, dph $$8) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false);
-   }
+   static class a {
+      private final gga.b[] a;
+      @Nullable
+      final gsg b;
 
-   public static void a(fao $$0, gef $$1, int $$2, int $$3, fxq $$4, gru $$5, boolean $$6, csw $$7, dph $$8, boolean $$9) {
-      $$4.a($$0, $$5.a($$1, gen::c, $$9), $$2, $$3);
-      a($$0, $$1, $$2, $$3, $$4, $$6 ? geu.m : geu.n, $$7);
+      a(gga.b[] $$0, @Nullable gsg $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-      for (int $$10 = 0; $$10 < 16 && $$10 < $$8.b().size(); $$10++) {
-         dph.b $$11 = $$8.b().get($$10);
-         gru $$12 = $$6 ? geu.a($$11.b()) : geu.b($$11.b());
-         a($$0, $$1, $$2, $$3, $$4, $$12, $$11.c());
+      boolean a(float[] $$0) {
+         for (gga.b $$1 : this.a) {
+            float $$2 = $$0[$$1.a];
+            if ($$2 < $$1.b) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 
-   private static void a(fao $$0, gef $$1, int $$2, int $$3, fxq $$4, gru $$5, csw $$6) {
-      float[] $$7 = $$6.d();
-      $$4.a($$0, $$5.a($$1, gen::m), $$2, $$3, $$7[0], $$7[1], $$7[2], 1.0F);
+   static class b {
+      public final int a;
+      public final float b;
+
+      b(int $$0, float $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

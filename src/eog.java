@@ -1,61 +1,113 @@
-public class eog extends eoi {
-   @Override
-   public cty a() {
-      return cug.a;
+import com.google.common.annotations.VisibleForTesting;
+
+public final class eog extends eop<eoh.a, eoh> {
+   private final jd.a g = new jd.a();
+
+   public eog(dvj $$0) {
+      this($$0, new eoh($$0));
+   }
+
+   @VisibleForTesting
+   public eog(dvj $$0, eoh $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean a(eoj $$0, dbm $$1, ja $$2, eoi $$3, jf $$4) {
-      return true;
+   protected void a(long $$0) {
+      long $$1 = kf.e($$0);
+      if (this.f.b($$1)) {
+         dta $$2 = this.c(this.g.f($$0));
+         int $$3 = this.a($$0, $$2);
+         int $$4 = this.f.e($$0);
+         if ($$3 < $$4) {
+            this.f.a($$0, 0);
+            this.b($$0, eop.a.a($$4));
+         } else {
+            this.b($$0, c);
+         }
+
+         if ($$3 > 0) {
+            this.c($$0, eop.a.a($$3, a($$2)));
+         }
+      }
    }
 
    @Override
-   public ewh a(dbm $$0, ja $$1, eoj $$2) {
-      return ewh.b;
+   protected void a(long $$0, long $$1, int $$2) {
+      dta $$3 = null;
+
+      for (ji $$4 : d) {
+         if (eop.a.a($$1, $$4)) {
+            long $$5 = jd.a($$0, $$4);
+            if (this.f.b(kf.e($$5))) {
+               int $$6 = this.f.e($$5);
+               int $$7 = $$2 - 1;
+               if ($$7 > $$6) {
+                  this.g.f($$5);
+                  dta $$8 = this.c(this.g);
+                  int $$9 = $$2 - this.a($$8, this.g);
+                  if ($$9 > $$6) {
+                     if ($$3 == null) {
+                        $$3 = eop.a.b($$1) ? dfy.a.o() : this.c(this.g.f($$0));
+                     }
+
+                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
+                        this.f.a($$5, $$9);
+                        if ($$9 > 1) {
+                           this.c($$5, eop.a.a($$9, a($$8), $$4.g()));
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
    }
 
    @Override
-   public int a(dcj $$0) {
-      return 0;
+   protected void a(long $$0, long $$1) {
+      int $$2 = eop.a.a($$1);
+
+      for (ji $$3 : d) {
+         if (eop.a.a($$1, $$3)) {
+            long $$4 = jd.a($$0, $$3);
+            if (this.f.b(kf.e($$4))) {
+               int $$5 = this.f.e($$4);
+               if ($$5 != 0) {
+                  if ($$5 <= $$2 - 1) {
+                     dta $$6 = this.c(this.g.f($$4));
+                     int $$7 = this.a($$4, $$6);
+                     this.f.a($$4, 0);
+                     if ($$7 < $$5) {
+                        this.b($$4, eop.a.a($$5, $$3.g()));
+                     }
+
+                     if ($$7 > 0) {
+                        this.c($$4, eop.a.a($$7, a($$6)));
+                     }
+                  } else {
+                     this.c($$4, eop.a.b($$5, false, $$3.g()));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private int a(long $$0, dta $$1) {
+      int $$2 = $$1.h();
+      return $$2 > 0 && this.f.j(kf.e($$0)) ? $$2 : 0;
    }
 
    @Override
-   protected boolean b() {
-      return true;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(eoj $$0, dbm $$1, ja $$2) {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(eoj $$0) {
-      return 0.0F;
-   }
-
-   @Override
-   protected dsl b(eoj $$0) {
-      return dfk.a.o();
-   }
-
-   @Override
-   public boolean c(eoj $$0) {
-      return false;
-   }
-
-   @Override
-   public int d(eoj $$0) {
-      return 0;
-   }
-
-   @Override
-   public exa b(eoj $$0, dbm $$1, ja $$2) {
-      return ewx.a();
+   public void b(dcb $$0) {
+      this.a($$0, true);
+      dvi $$1 = this.e.c($$0.e, $$0.f);
+      if ($$1 != null) {
+         $$1.a(($$0x, $$1x) -> {
+            int $$2 = $$1x.h();
+            this.c($$0x.a(), eop.a.a($$2, a($$1x)));
+         });
+      }
    }
 }

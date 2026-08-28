@@ -1,44 +1,88 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.Function;
 
-public record dak(ke d, Optional<dzn> e, efq f, Optional<jj<dxh>> g) implements dac {
-   public static final MapCodec<dak> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ke.f.optionalFieldOf("offset", ke.g).forGetter(dak::b),
-               dzn.b.optionalFieldOf("predicate").forGetter(dak::c),
-               efq.a.fieldOf("block_state").forGetter(dak::d),
-               dxh.aj.optionalFieldOf("trigger_game_event").forGetter(dak::e)
-            )
-            .apply($$0, dak::new)
-   );
+public interface dak {
+   static <T, A extends T> MapCodec<A> a(Codec<T> $$0, Function<List<T>, A> $$1, Function<A, List<T>> $$2) {
+      return RecordCodecBuilder.mapCodec($$3 -> $$3.group($$0.listOf().fieldOf("effects").forGetter($$2)).apply($$3, $$1));
+   }
 
-   @Override
-   public void a(aqm $$0, int $$1, czl $$2, bsh $$3, ewh $$4) {
-      ja $$5 = ja.a($$4).a(this.d);
-      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dU(), $$5))) {
-         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+   static dak.a a(daq... $$0) {
+      return new dak.a(List.of($$0));
+   }
+
+   static dak.b a(dar... $$0) {
+      return new dak.b(List.of($$0));
+   }
+
+   static dak.c a(das... $$0) {
+      return new dak.c(List.of($$0));
+   }
+
+   public static record a(List<daq> d) implements daq {
+      public static final MapCodec<dak.a> a = dak.a(daq.b, dak.a::new, dak.a::b);
+
+      @Override
+      public void a(aqt $$0, int $$1, czz $$2, bsq $$3, eww $$4) {
+         for (daq $$5 : this.d) {
+            $$5.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
+
+      @Override
+      public MapCodec<dak.a> a() {
+         return a;
+      }
+
+      public List<daq> b() {
+         return this.d;
       }
    }
 
-   @Override
-   public MapCodec<dak> a() {
-      return a;
+   public static record b(List<dar> b) implements dar {
+      public static final MapCodec<dak.b> a = dak.a(dar.c, dak.b::new, dak.b::b);
+
+      @Override
+      public void a(aqt $$0, int $$1, czz $$2, bsq $$3, eww $$4, boolean $$5) {
+         for (dar $$6 : this.b) {
+            $$6.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
+      }
+
+      @Override
+      public void a(czz $$0, bsq $$1, eww $$2, int $$3) {
+         for (dar $$4 : this.b) {
+            $$4.a($$0, $$1, $$2, $$3);
+         }
+      }
+
+      @Override
+      public MapCodec<dak.b> a() {
+         return a;
+      }
    }
 
-   public ke b() {
-      return this.d;
-   }
+   public static record c(List<das> c) implements das {
+      public static final MapCodec<dak.c> a = dak.a(das.b, dak.c::new, dak.c::b);
 
-   public Optional<dzn> c() {
-      return this.e;
-   }
+      @Override
+      public float a(int $$0, ayv $$1, float $$2) {
+         for (das $$3 : this.c) {
+            $$2 = $$3.a($$0, $$1, $$2);
+         }
 
-   public efq d() {
-      return this.f;
-   }
+         return $$2;
+      }
 
-   public Optional<jj<dxh>> e() {
-      return this.g;
+      @Override
+      public MapCodec<dak.c> a() {
+         return a;
+      }
+
+      public List<das> b() {
+         return this.c;
+      }
    }
 }

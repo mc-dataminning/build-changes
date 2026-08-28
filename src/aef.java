@@ -1,19 +1,23 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record aef(wu b, Optional<byte[]> c) implements zb<abn> {
-   public static final ys<ByteBuf, aef> a = ys.a(ww.f, aef::b, yq.k.a(yq::a), aef::e, aef::new);
+public record aef(int b, jm<brw> c) implements zf<abt> {
+   public static final yw<wj, aef> a = yw.a(yu.g, aef::b, brw.b, aef::e, aef::new);
 
    @Override
-   public zd<aef> a() {
-      return afz.ap;
+   public zh<aef> a() {
+      return agf.ak;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public Optional<byte[]> e() {
+   @Nullable
+   public bsq a(dcu $$0) {
+      return $$0.a(this.b);
+   }
+
+   public jm<brw> e() {
       return this.c;
    }
 }

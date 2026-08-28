@@ -1,18 +1,7 @@
-import javax.annotation.Nullable;
+public interface ki<T> extends jz<T> {
+   jm.c<T> a(akp<T> var1, T var2, jy var3);
 
-public interface ki {
-   kj a();
+   boolean l();
 
-   @Nullable
-   default <T> T a(km<? extends T> $$0) {
-      return this.a().a($$0);
-   }
-
-   default <T> T a(km<? extends T> $$0, T $$1) {
-      return this.a().a($$0, $$1);
-   }
-
-   default boolean b(km<?> $$0) {
-      return this.a().b($$0);
-   }
+   jn<T> o();
 }

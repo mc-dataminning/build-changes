@@ -1,97 +1,89 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.BiFunction;
 
-public class dlj extends dfi {
+public class dlj extends dgf implements dfz {
    public static final MapCodec<dlj> a = b(dlj::new);
-   public static final dtc b = dlm.d;
+   public static final int b = 1;
+   public static final int c = 4;
+   public static final dtu d = dtq.R;
+   public static final dua e = dtq.S;
+   private static final BiFunction<ji, Integer, exp> f = ad.a(
+      ($$0, $$1) -> {
+         exp[] $$2 = new exp[]{
+            dfw.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
+            dfw.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
+            dfw.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
+            dfw.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
+         };
+         exp $$3 = exm.a();
+
+         for (int $$4 = 0; $$4 < $$1; $$4++) {
+            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
+            $$3 = exm.a($$3, $$2[$$5]);
+         }
+
+         return $$3.b();
+      }
+   );
 
    @Override
    public MapCodec<dlj> a() {
       return a;
    }
 
-   public dlj(dsk.d $$0) {
+   protected dlj(dsz.d $$0) {
       super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
+      this.k(this.E.b().a(d, ji.c).a(e, Integer.valueOf(1)));
    }
 
    @Override
-   protected void a_(dsl $$0, dcg $$1, ja $$2, cml $$3) {
-      d($$0, $$1, $$2);
-      super.a_($$0, $$1, $$2, $$3);
+   public dta a(dta $$0, dmk $$1) {
+      return $$0.a(d, $$1.a($$0.c(d)));
    }
 
    @Override
-   public void a(dcg $$0, ja $$1, dsl $$2, bsh $$3) {
-      if (!$$3.bY()) {
-         d($$2, $$0, $$1);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   public dta a(dta $$0, dkt $$1) {
+      return $$0.a($$1.a($$0.c(d)));
    }
 
    @Override
-   protected bqj a(cud $$0, dsl $$1, dcg $$2, ja $$3, cml $$4, bqg $$5, ewd $$6) {
-      if ($$2.B) {
-         a($$2, $$3);
+   public boolean a(dta $$0, cyb $$1) {
+      return !$$1.h() && $$1.n().a(this.r()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
+      return f.apply($$0.c(d), $$0.c(e));
+   }
+
+   @Override
+   public dta a(cyb $$0) {
+      dta $$1 = $$0.q().a_($$0.a());
+      return $$1.a(this) ? $$1.a(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.o().a(d, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(d, e);
+   }
+
+   @Override
+   public boolean b(dcx $$0, jd $$1, dta $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
+      int $$4 = $$3.c(e);
+      if ($$4 < 4) {
+         $$0.a($$2, $$3.a(e, Integer.valueOf($$4 + 1)), 2);
       } else {
-         d($$1, $$2, $$3);
+         a($$0, $$2, new cuo(this));
       }
-
-      return $$0.g() instanceof csc && new cxn($$4, $$5, $$0, $$6).b() ? bqj.e : bqj.a;
-   }
-
-   private static void d(dsl $$0, dcg $$1, ja $$2) {
-      a($$1, $$2);
-      if (!$$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
-      }
-   }
-
-   @Override
-   protected boolean d_(dsl $$0) {
-      return $$0.c(b);
-   }
-
-   @Override
-   protected void b(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
-      }
-   }
-
-   @Override
-   protected void a(dsl $$0, aqm $$1, ja $$2, cud $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, bps.a(1, 5));
-      }
-   }
-
-   @Override
-   public void a(dsl $$0, dcg $$1, ja $$2, ayo $$3) {
-      if ($$0.c(b)) {
-         a($$1, $$2);
-      }
-   }
-
-   private static void a(dcg $$0, ja $$1) {
-      double $$2 = 0.5625;
-      ayo $$3 = $$0.z;
-
-      for (jf $$4 : jf.values()) {
-         ja $$5 = $$1.a($$4);
-         if (!$$0.a_($$5).i($$0, $$5)) {
-            jf.a $$6 = $$4.o();
-            double $$7 = $$6 == jf.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
-            double $$8 = $$6 == jf.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
-            double $$9 = $$6 == jf.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
-            $$0.a(le.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(b);
    }
 }

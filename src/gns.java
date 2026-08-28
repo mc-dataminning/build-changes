@@ -1,24 +1,24 @@
-public class gns extends goa<cfe, fvf<cfe>> {
-   private final gez a;
+public class gns extends goa<cjn, fuy<cjn>> {
+   private static final akq a = akq.b("textures/entity/creeper/creeper_armor.png");
+   private final fuy<cjn> b;
 
-   public gns(glk<cfe, fvf<cfe>> $$0, gez $$1) {
+   public gns(glz<cjn, fuy<cjn>> $$0, fya $$1) {
       super($$0);
-      this.a = $$1;
+      this.b = new fuy<>($$1.a(fyd.J));
    }
 
-   public void a(fao $$0, gef $$1, int $$2, cfe $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gn() != 0) {
-         $$0.a();
-         fxq $$10 = this.c().c();
-         $$10.a($$0);
-         $$0.a(-1.1875F, 1.0625F, -0.9375F);
-         $$0.a(0.5F, 0.5F, 0.5F);
-         float $$11 = 0.5F;
-         $$0.b(0.5F, 0.5F, 0.5F);
-         $$0.a(a.b.rotationDegrees(-90.0F));
-         $$0.a(-0.5F, -0.5F, -0.5F);
-         this.a.a(dfk.bT.o(), $$0, $$1, $$2, gph.d);
-         $$0.b();
-      }
+   @Override
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
+   }
+
+   @Override
+   protected akq a() {
+      return a;
+   }
+
+   @Override
+   protected fve<cjn> b() {
+      return this.b;
    }
 }

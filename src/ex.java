@@ -1,47 +1,64 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.internal.Streams;
+import com.google.gson.stream.JsonReader;
+import com.mojang.brigadier.StringReader;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.lang.reflect.Field;
 
-public record ex(List<ex.a> b) {
-   public static final ex a = new ex(List.of());
-   private static final int c = 8;
-   private static final int d = 16;
-
-   public ex(vr $$0) {
-      this($$0.a(vr.a(ArrayList::new, 8), ex.a::new));
-   }
-
-   public void a(vr $$0) {
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
-   }
-
-   public static ex a(xm<?> $$0, ex.b $$1) {
-      List<ex.a> $$2 = $$0.a().stream().map($$1x -> {
-         xg $$2x = $$1.sign($$1x.c());
-         return $$2x != null ? new ex.a($$1x.a(), $$2x) : null;
-      }).filter(Objects::nonNull).toList();
-      return new ex($$2);
-   }
-
-   public List<ex.a> a() {
-      return this.b;
-   }
-
-   public static record a(String a, xg b) {
-      public a(vr $$0) {
-         this($$0.d(16), xg.a($$0));
+public class ex {
+   private static final Field a = ad.a(() -> {
+      try {
+         Field $$0 = JsonReader.class.getDeclaredField("pos");
+         $$0.setAccessible(true);
+         return $$0;
+      } catch (NoSuchFieldException var1) {
+         throw new IllegalStateException("Couldn't get field 'pos' for JsonReader", var1);
       }
+   });
+   private static final Field b = ad.a(() -> {
+      try {
+         Field $$0 = JsonReader.class.getDeclaredField("lineStart");
+         $$0.setAccessible(true);
+         return $$0;
+      } catch (NoSuchFieldException var1) {
+         throw new IllegalStateException("Couldn't get field 'lineStart' for JsonReader", var1);
+      }
+   });
 
-      public void a(vr $$0) {
-         $$0.a(this.a, 16);
-         xg.a($$0, this.b);
+   private static int a(JsonReader $$0) {
+      try {
+         return a.getInt($$0) - b.getInt($$0);
+      } catch (IllegalAccessException var2) {
+         throw new IllegalStateException("Couldn't read position of JsonReader", var2);
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      @Nullable
-      xg sign(String var1);
+   public static <T> T a(jo.a $$0, StringReader $$1, Codec<T> $$2) {
+      JsonReader $$3 = new JsonReader(new java.io.StringReader($$1.getRemaining()));
+      $$3.setLenient(false);
+
+      Object var5;
+      try {
+         JsonElement $$4 = Streams.parse($$3);
+         var5 = $$2.parse($$0.a(JsonOps.INSTANCE), $$4).getOrThrow(JsonParseException::new);
+      } catch (StackOverflowError var9) {
+         throw new JsonParseException(var9);
+      } finally {
+         $$1.setCursor($$1.getCursor() + a($$3));
+      }
+
+      return (T)var5;
+   }
+
+   public static String a(StringReader $$0, m $$1) {
+      int $$2 = $$0.getCursor();
+
+      while ($$0.canRead() && $$1.test($$0.peek())) {
+         $$0.skip();
+      }
+
+      return $$0.getString().substring($$2, $$0.getCursor());
    }
 }

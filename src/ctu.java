@@ -1,15 +1,15 @@
-public class ctu extends cty implements cvf {
-   public ctu(cty.a $$0) {
+import java.util.List;
+
+public class ctu extends cuj {
+   public ctu(cuj.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dcg $$0, drb $$1, boolean $$2, cml $$3) {
-      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
-         $$0.a(null, $$1.az_(), avh.nl, avi.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
+   public void a(cuo $$0, cuj.b $$1, List<wy> $$2, cwk $$3) {
+      cxj $$4 = $$0.a(kq.U);
+      if ($$4 != null) {
+         $$4.a($$1, $$2::add, $$3);
       }
    }
 }

@@ -1,40 +1,47 @@
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public enum ezi {
-   a("icons"),
-   b("icons", "snapshot");
+public class ezi implements ezg {
+   private final Int2ObjectMap<ezf.a> b;
 
-   private final String[] c;
-
-   private ezi(final String... $$0) {
-      this.c = $$0;
+   public ezi(Map<Integer, Float> $$0) {
+      this.b = new Int2ObjectOpenHashMap($$0.size());
+      $$0.forEach(($$0x, $$1) -> this.b.put($$0x, (ezf.a)() -> $$1));
    }
 
-   public List<ato<InputStream>> a(asi $$0) throws IOException {
-      return List.of(
-         this.a($$0, "icon_16x16.png"),
-         this.a($$0, "icon_32x32.png"),
-         this.a($$0, "icon_48x48.png"),
-         this.a($$0, "icon_128x128.png"),
-         this.a($$0, "icon_256x256.png")
+   @Nullable
+   @Override
+   public ezf a(int $$0) {
+      return (ezf)this.b.get($$0);
+   }
+
+   @Override
+   public IntSet a() {
+      return IntSets.unmodifiable(this.b.keySet());
+   }
+
+   public static record a(Map<Integer, Float> c) implements fli {
+      public static final MapCodec<ezi.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.unboundedMap(axv.z, Codec.FLOAT).fieldOf("advances").forGetter(ezi.a::c)).apply($$0, ezi.a::new)
       );
-   }
 
-   public ato<InputStream> b(asi $$0) throws IOException {
-      return this.a($$0, "minecraft.icns");
-   }
+      @Override
+      public flj a() {
+         return flj.c;
+      }
 
-   private ato<InputStream> a(asi $$0, String $$1) throws IOException {
-      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
-      ato<InputStream> $$3 = $$0.a($$2);
-      if ($$3 == null) {
-         throw new FileNotFoundException(String.join("/", $$2));
-      } else {
-         return $$3;
+      @Override
+      public Either<fli.b, fli.c> b() {
+         fli.b $$0 = $$0x -> new ezi(this.c);
+         return Either.left($$0);
       }
    }
 }

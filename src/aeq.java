@@ -1,37 +1,29 @@
-public class aeq implements zb<abn> {
-   public static final ys<vr, aeq> a = zb.a(aeq::a, aeq::new);
-   private final ja b;
-   private final float c;
+public class aeq implements zf<abt> {
+   public static final yw<vv, aeq> a = zf.a(aeq::a, aeq::new);
+   private final int b;
 
-   public aeq(ja $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aeq(dur $$0) {
+      this.b = $$0.q();
    }
 
-   private aeq(vr $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+   private aeq(vv $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vv $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zd<aeq> a() {
-      return afz.aA;
+   public zh<aeq> a() {
+      return agf.au;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public ja b() {
+   public int b() {
       return this.b;
-   }
-
-   public float e() {
-      return this.c;
    }
 }

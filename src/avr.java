@@ -1,98 +1,93 @@
-public class avr {
-   public static final avq<dfi> a = a("mined", lq.e);
-   public static final avq<cty> b = a("crafted", lq.g);
-   public static final avq<cty> c = a("used", lq.g);
-   public static final avq<cty> d = a("broken", lq.g);
-   public static final avq<cty> e = a("picked_up", lq.g);
-   public static final avq<cty> f = a("dropped", lq.g);
-   public static final avq<bsn<?>> g = a("killed", lq.f);
-   public static final avq<bsn<?>> h = a("killed_by", lq.f);
-   public static final avq<akk> i = a("custom", lq.k);
-   public static final akk j = a("leave_game", avp.b);
-   public static final akk k = a("play_time", avp.e);
-   public static final akk l = a("total_world_time", avp.e);
-   public static final akk m = a("time_since_death", avp.e);
-   public static final akk n = a("time_since_rest", avp.e);
-   public static final akk o = a("sneak_time", avp.e);
-   public static final akk p = a("walk_one_cm", avp.d);
-   public static final akk q = a("crouch_one_cm", avp.d);
-   public static final akk r = a("sprint_one_cm", avp.d);
-   public static final akk s = a("walk_on_water_one_cm", avp.d);
-   public static final akk t = a("fall_one_cm", avp.d);
-   public static final akk u = a("climb_one_cm", avp.d);
-   public static final akk v = a("fly_one_cm", avp.d);
-   public static final akk w = a("walk_under_water_one_cm", avp.d);
-   public static final akk x = a("minecart_one_cm", avp.d);
-   public static final akk y = a("boat_one_cm", avp.d);
-   public static final akk z = a("pig_one_cm", avp.d);
-   public static final akk A = a("horse_one_cm", avp.d);
-   public static final akk B = a("aviate_one_cm", avp.d);
-   public static final akk C = a("swim_one_cm", avp.d);
-   public static final akk D = a("strider_one_cm", avp.d);
-   public static final akk E = a("jump", avp.b);
-   public static final akk F = a("drop", avp.b);
-   public static final akk G = a("damage_dealt", avp.c);
-   public static final akk H = a("damage_dealt_absorbed", avp.c);
-   public static final akk I = a("damage_dealt_resisted", avp.c);
-   public static final akk J = a("damage_taken", avp.c);
-   public static final akk K = a("damage_blocked_by_shield", avp.c);
-   public static final akk L = a("damage_absorbed", avp.c);
-   public static final akk M = a("damage_resisted", avp.c);
-   public static final akk N = a("deaths", avp.b);
-   public static final akk O = a("mob_kills", avp.b);
-   public static final akk P = a("animals_bred", avp.b);
-   public static final akk Q = a("player_kills", avp.b);
-   public static final akk R = a("fish_caught", avp.b);
-   public static final akk S = a("talked_to_villager", avp.b);
-   public static final akk T = a("traded_with_villager", avp.b);
-   public static final akk U = a("eat_cake_slice", avp.b);
-   public static final akk V = a("fill_cauldron", avp.b);
-   public static final akk W = a("use_cauldron", avp.b);
-   public static final akk X = a("clean_armor", avp.b);
-   public static final akk Y = a("clean_banner", avp.b);
-   public static final akk Z = a("clean_shulker_box", avp.b);
-   public static final akk aa = a("interact_with_brewingstand", avp.b);
-   public static final akk ab = a("interact_with_beacon", avp.b);
-   public static final akk ac = a("inspect_dropper", avp.b);
-   public static final akk ad = a("inspect_hopper", avp.b);
-   public static final akk ae = a("inspect_dispenser", avp.b);
-   public static final akk af = a("play_noteblock", avp.b);
-   public static final akk ag = a("tune_noteblock", avp.b);
-   public static final akk ah = a("pot_flower", avp.b);
-   public static final akk ai = a("trigger_trapped_chest", avp.b);
-   public static final akk aj = a("open_enderchest", avp.b);
-   public static final akk ak = a("enchant_item", avp.b);
-   public static final akk al = a("play_record", avp.b);
-   public static final akk am = a("interact_with_furnace", avp.b);
-   public static final akk an = a("interact_with_crafting_table", avp.b);
-   public static final akk ao = a("open_chest", avp.b);
-   public static final akk ap = a("sleep_in_bed", avp.b);
-   public static final akk aq = a("open_shulker_box", avp.b);
-   public static final akk ar = a("open_barrel", avp.b);
-   public static final akk as = a("interact_with_blast_furnace", avp.b);
-   public static final akk at = a("interact_with_smoker", avp.b);
-   public static final akk au = a("interact_with_lectern", avp.b);
-   public static final akk av = a("interact_with_campfire", avp.b);
-   public static final akk aw = a("interact_with_cartography_table", avp.b);
-   public static final akk ax = a("interact_with_loom", avp.b);
-   public static final akk ay = a("interact_with_stonecutter", avp.b);
-   public static final akk az = a("bell_ring", avp.b);
-   public static final akk aA = a("raid_trigger", avp.b);
-   public static final akk aB = a("raid_win", avp.b);
-   public static final akk aC = a("interact_with_anvil", avp.b);
-   public static final akk aD = a("interact_with_grindstone", avp.b);
-   public static final akk aE = a("target_hit", avp.b);
-   public static final akk aF = a("interact_with_smithing_table", avp.b);
+import com.google.common.collect.Sets;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   private static akk a(String $$0, avp $$1) {
-      akk $$2 = new akk($$0);
-      jw.a(lq.k, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+public class avr {
+   protected final Set<akq> a = Sets.newHashSet();
+   protected final Set<akq> b = Sets.newHashSet();
+   private final avs c = new avs();
+
+   public void a(avr $$0) {
+      this.a.clear();
+      this.b.clear();
+      this.c.a($$0.c);
+      this.a.addAll($$0.a);
+      this.b.addAll($$0.b);
    }
 
-   private static <T> avq<T> a(String $$0, jw<T> $$1) {
-      wu $$2 = wu.c("stat_type.minecraft." + $$0);
-      return jw.a(lq.v, $$0, new avq<>($$1, $$2));
+   public void a(cyz<?> $$0) {
+      if (!$$0.b().ao_()) {
+         this.a($$0.a());
+      }
+   }
+
+   protected void a(akq $$0) {
+      this.a.add($$0);
+   }
+
+   public boolean b(@Nullable cyz<?> $$0) {
+      return $$0 == null ? false : this.a.contains($$0.a());
+   }
+
+   public boolean b(akq $$0) {
+      return this.a.contains($$0);
+   }
+
+   public void c(cyz<?> $$0) {
+      this.c($$0.a());
+   }
+
+   protected void c(akq $$0) {
+      this.a.remove($$0);
+      this.b.remove($$0);
+   }
+
+   public boolean d(cyz<?> $$0) {
+      return this.b.contains($$0.a());
+   }
+
+   public void e(cyz<?> $$0) {
+      this.b.remove($$0.a());
+   }
+
+   public void f(cyz<?> $$0) {
+      this.d($$0.a());
+   }
+
+   protected void d(akq $$0) {
+      this.b.add($$0);
+   }
+
+   public boolean a(crh $$0) {
+      return this.c.a($$0);
+   }
+
+   public void a(crh $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+   }
+
+   public boolean a(crg<?, ?> $$0) {
+      return this.b($$0.t());
+   }
+
+   public boolean b(crh $$0) {
+      return this.c.b($$0);
+   }
+
+   public void b(crh $$0, boolean $$1) {
+      this.c.b($$0, $$1);
+   }
+
+   public void a(avs $$0) {
+      this.c.a($$0);
+   }
+
+   public avs a() {
+      return this.c.a();
+   }
+
+   public void a(crh $$0, boolean $$1, boolean $$2) {
+      this.c.a($$0, $$1);
+      this.c.b($$0, $$2);
    }
 }

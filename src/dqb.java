@@ -1,27 +1,25 @@
-public class dqb extends dpq {
-   private int a;
+public class dqb extends dqf {
+   private ctg a;
 
-   public dqb(ja $$0, dsl $$1) {
-      super(dps.s, $$0, $$1);
+   public dqb(jd $$0, dta $$1) {
+      super(dqh.y, $$0, $$1);
+      this.a = ((dfp)$$1.b()).b();
    }
 
-   @Override
-   protected void b(tx $$0, jl.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("OutputSignal", this.a);
+   public dqb(jd $$0, dta $$1, ctg $$2) {
+      super(dqh.y, $$0, $$1);
+      this.a = $$2;
    }
 
-   @Override
-   protected void a(tx $$0, jl.a $$1) {
-      super.a($$0, $$1);
-      this.a = $$0.h("OutputSignal");
+   public aca b() {
+      return aca.a(this);
    }
 
-   public int b() {
+   public ctg c() {
       return this.a;
    }
 
-   public void a(int $$0) {
+   public void a(ctg $$0) {
       this.a = $$0;
    }
 }

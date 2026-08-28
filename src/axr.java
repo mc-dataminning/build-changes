@@ -1,84 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import java.io.Closeable;
-import java.io.File;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystem;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-public class axr implements Closeable {
-   private static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final Path c;
-   private final FileSystem d;
+public class axr<K, V extends axr.a<K>> {
+   private final Map<K, V> a = new HashMap<>();
 
-   public axr(Path $$0) {
-      this.b = $$0;
-      this.c = $$0.resolveSibling($$0.getFileName().toString() + "_tmp");
-
-      try {
-         this.d = ac.f.newFileSystem(this.c, ImmutableMap.of("create", "true"));
-      } catch (IOException var3) {
-         throw new UncheckedIOException(var3);
-      }
+   public axr<K, V> a(K $$0, V $$1) {
+      this.a.put($$0, $$1);
+      return this;
    }
 
-   public void a(Path $$0, String $$1) {
-      try {
-         Path $$2 = this.d.getPath(File.separator);
-         Path $$3 = $$2.resolve($$0.toString());
-         Files.createDirectories($$3.getParent());
-         Files.write($$3, $$1.getBytes(StandardCharsets.UTF_8));
-      } catch (IOException var5) {
-         throw new UncheckedIOException(var5);
-      }
-   }
-
-   public void a(Path $$0, File $$1) {
-      try {
-         Path $$2 = this.d.getPath(File.separator);
-         Path $$3 = $$2.resolve($$0.toString());
-         Files.createDirectories($$3.getParent());
-         Files.copy($$1.toPath(), $$3);
-      } catch (IOException var5) {
-         throw new UncheckedIOException(var5);
-      }
-   }
-
-   public void a(Path $$0) {
-      try {
-         Path $$1 = this.d.getPath(File.separator);
-         if (Files.isRegularFile($$0)) {
-            Path $$2 = $$1.resolve($$0.getParent().relativize($$0).toString());
-            Files.copy($$2, $$0);
-         } else {
-            try (Stream<Path> $$3 = Files.find($$0, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
-               for (Path $$4 : $$3.collect(Collectors.toList())) {
-                  Path $$5 = $$1.resolve($$0.relativize($$4).toString());
-                  Files.createDirectories($$5.getParent());
-                  Files.copy($$4, $$5);
-               }
-            }
+   private void a(Multimap<K, K> $$0, Set<K> $$1, K $$2, BiConsumer<K, V> $$3) {
+      if ($$1.add($$2)) {
+         $$0.get($$2).forEach($$3x -> this.a($$0, $$1, (K)$$3x, $$3));
+         V $$4 = this.a.get($$2);
+         if ($$4 != null) {
+            $$3.accept($$2, $$4);
          }
-      } catch (IOException var9) {
-         throw new UncheckedIOException(var9);
       }
    }
 
-   @Override
-   public void close() {
-      try {
-         this.d.close();
-         Files.move(this.c, this.b);
-         a.info("Compressed to {}", this.b);
-      } catch (IOException var2) {
-         throw new UncheckedIOException(var2);
+   private static <K> boolean a(Multimap<K, K> $$0, K $$1, K $$2) {
+      Collection<K> $$3 = $$0.get($$2);
+      return $$3.contains($$1) ? true : $$3.stream().anyMatch($$2x -> a($$0, $$1, $$2x));
+   }
+
+   private static <K> void b(Multimap<K, K> $$0, K $$1, K $$2) {
+      if (!a($$0, $$1, $$2)) {
+         $$0.put($$1, $$2);
       }
+   }
+
+   public void a(BiConsumer<K, V> $$0) {
+      Multimap<K, K> $$1 = HashMultimap.create();
+      this.a.forEach(($$1x, $$2x) -> $$2x.a($$2xx -> b($$1, $$1x, $$2xx)));
+      this.a.forEach(($$1x, $$2x) -> $$2x.b($$2xx -> b($$1, $$1x, $$2xx)));
+      Set<K> $$2 = new HashSet<>();
+      this.a.keySet().forEach($$3 -> this.a($$1, $$2, (K)$$3, $$0));
+   }
+
+   public interface a<K> {
+      void a(Consumer<K> var1);
+
+      void b(Consumer<K> var1);
    }
 }

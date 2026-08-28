@@ -1,25 +1,29 @@
-public record zp(String b, int c) implements zb<zh> {
-   public static final ys<vr, zp> a = zb.a(zp::a, zp::new);
+public class zp implements zf<zl> {
+   public static final yw<vv, zp> a = zf.a(zp::a, zp::new);
+   private final long b;
 
-   private zp(vr $$0) {
-      this($$0.p(), $$0.l());
+   public zp(long $$0) {
+      this.b = $$0;
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+   private zp(vv $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(vv $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public zd<zp> a() {
-      return zr.h;
+   public zh<zp> a() {
+      return zx.d;
    }
 
-   public void a(zh $$0) {
+   public void a(zl $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public long b() {
+      return this.b;
    }
 }

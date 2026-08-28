@@ -1,66 +1,69 @@
-import it.unimi.dsi.fastutil.shorts.ShortIterator;
-import it.unimi.dsi.fastutil.shorts.ShortSet;
-import java.util.function.BiConsumer;
+import com.google.common.collect.ImmutableList;
+import java.util.Collection;
+import java.util.List;
 
-public class aed implements zb<abn> {
-   public static final ys<vr, aed> a = zb.a(aed::a, aed::new);
-   private static final int b = 12;
-   private final kc c;
-   private final short[] d;
-   private final dsl[] e;
+public class aed implements zf<abt> {
+   public static final yw<vv, aed> a = zf.a(aed::a, aed::new);
+   private final aed.a b;
+   private final List<akq> c;
+   private final List<akq> d;
+   private final avs e;
 
-   public aed(kc $$0, ShortSet $$1, dus $$2) {
-      this.c = $$0;
-      int $$3 = $$1.size();
-      this.d = new short[$$3];
-      this.e = new dsl[$$3];
-      int $$4 = 0;
+   public aed(aed.a $$0, Collection<akq> $$1, Collection<akq> $$2, avs $$3) {
+      this.b = $$0;
+      this.c = ImmutableList.copyOf($$1);
+      this.d = ImmutableList.copyOf($$2);
+      this.e = $$3;
+   }
 
-      for (ShortIterator var6 = $$1.iterator(); var6.hasNext(); $$4++) {
-         short $$5 = (Short)var6.next();
-         this.d[$$4] = $$5;
-         this.e[$$4] = $$2.a(kc.a($$5), kc.b($$5), kc.c($$5));
+   private aed(vv $$0) {
+      this.b = $$0.b(aed.a.class);
+      this.e = avs.a($$0);
+      this.c = $$0.a(vv::q);
+      if (this.b == aed.a.a) {
+         this.d = $$0.a(vv::q);
+      } else {
+         this.d = ImmutableList.of();
       }
    }
 
-   private aed(vr $$0) {
-      this.c = kc.a($$0.readLong());
-      int $$1 = $$0.l();
-      this.d = new short[$$1];
-      this.e = new dsl[$$1];
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         long $$3 = $$0.m();
-         this.d[$$2] = (short)((int)($$3 & 4095L));
-         this.e[$$2] = dfi.q.a((int)($$3 >>> 12));
-      }
-   }
-
-   private void a(vr $$0) {
-      $$0.b(this.c.s());
-      $$0.c(this.d.length);
-
-      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
-         $$0.a((long)dfi.i(this.e[$$1]) << 12 | (long)this.d[$$1]);
+   private void a(vv $$0) {
+      $$0.a(this.b);
+      this.e.b($$0);
+      $$0.a(this.c, vv::a);
+      if (this.b == aed.a.a) {
+         $$0.a(this.d, vv::a);
       }
    }
 
    @Override
-   public zd<aed> a() {
-      return afz.an;
+   public zh<aed> a() {
+      return agf.ai;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public void a(BiConsumer<ja, dsl> $$0) {
-      ja.a $$1 = new ja.a();
+   public List<akq> b() {
+      return this.c;
+   }
 
-      for (int $$2 = 0; $$2 < this.d.length; $$2++) {
-         short $$3 = this.d[$$2];
-         $$1.d(this.c.d($$3), this.c.e($$3), this.c.f($$3));
-         $$0.accept($$1, this.e[$$2]);
-      }
+   public List<akq> e() {
+      return this.d;
+   }
+
+   public avs f() {
+      return this.e;
+   }
+
+   public aed.a g() {
+      return this.b;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

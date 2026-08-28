@@ -1,12 +1,28 @@
-public record aeg(wu b) implements zb<abn> {
-   public static final ys<wf, aeg> a = ys.a(ww.d, aeg::b, aeg::new);
+import javax.annotation.Nullable;
 
-   @Override
-   public zd<aeg> a() {
-      return afz.aq;
+public record aeg(String b, @Nullable String c) implements zf<abt> {
+   public static final yw<vv, aeg> a = zf.a(aeg::a, aeg::new);
+
+   private aeg(vv $$0) {
+      this($$0.p(), $$0.c(vv::p));
    }
 
-   public void a(abn $$0) {
+   private void a(vv $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, vv::a);
+   }
+
+   @Override
+   public zh<aeg> a() {
+      return agf.ce;
+   }
+
+   public void a(abt $$0) {
       $$0.a(this);
+   }
+
+   @Nullable
+   public String e() {
+      return this.c;
    }
 }

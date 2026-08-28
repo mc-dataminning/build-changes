@@ -1,64 +1,37 @@
-public class ahh implements zb<agb> {
-   public static final ys<vr, ahh> a = zb.a(ahh::a, ahh::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private final float d;
-   private final float e;
-   private final boolean f;
-   private final boolean g;
+public class ahh implements zf<agh> {
+   public static final yw<vv, ahh> a = zf.a(ahh::a, ahh::new);
+   private final boolean b;
+   private final boolean c;
 
-   public ahh(float $$0, float $$1, boolean $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public ahh(boolean $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private ahh(vr $$0) {
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      byte $$1 = $$0.readByte();
-      this.f = ($$1 & 1) > 0;
-      this.g = ($$1 & 2) > 0;
+   private ahh(vv $$0) {
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.d);
-      $$0.a(this.e);
-      byte $$1 = 0;
-      if (this.f) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.g) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   private void a(vv $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   @Override
-   public zd<ahh> a() {
-      return afz.bM;
-   }
-
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
-   public float b() {
-      return this.d;
+   @Override
+   public zh<ahh> a() {
+      return agf.bG;
    }
 
-   public float e() {
-      return this.e;
+   public boolean b() {
+      return this.b;
    }
 
-   public boolean f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
+   public boolean e() {
+      return this.c;
    }
 }

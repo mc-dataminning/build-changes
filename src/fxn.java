@@ -1,232 +1,106 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+public class fxn extends fvn<ckp> implements fud {
+   private final fye a;
+   private final fye b;
+   private final fye f;
+   private final fye g;
+   private final fye h;
+   private final fye i;
+   private final fye j;
 
-public class fxn {
-   private static final fxu a = new fxu(0.008F);
-   private static final fxu b = new fxu(1.0F);
-   private static final fxu c = new fxu(0.5F);
+   public fxn(fye $$0) {
+      super(gfb::i);
+      this.a = $$0.b("root");
+      this.b = this.a.b("body");
+      this.f = this.b.b("right_arm");
+      this.g = this.b.b("left_arm");
+      this.h = this.b.b("right_wing");
+      this.i = this.b.b("left_wing");
+      this.j = this.a.b("head");
+   }
 
-   public static Map<fxo, fxw> a() {
-      Builder<fxo, fxw> $$0 = ImmutableMap.builder();
-      fxw $$1 = fxw.a(fvd.a(fxu.a, 0.0F), 64, 64);
-      fxw $$2 = fxw.a(fvc.a(b), 64, 32);
-      fxw $$3 = fxw.a(fvc.a(new fxu(1.02F)), 64, 32);
-      fxw $$4 = fxw.a(fvc.a(c), 64, 32);
-      fxw $$5 = fvl.b();
-      fxw $$6 = fwm.c();
-      fxw $$7 = fxw.a(fvb.a(fxu.a), 64, 64);
-      fxw $$8 = fve.b();
-      fxw $$9 = fuj.c();
-      fxw $$10 = fxw.a(fvo.a(fxu.a), 64, 32);
-      fxw $$11 = fxw.a(fvu.a(fxu.a), 64, 64);
-      fxw $$12 = fxw.a(fvt.a(), 64, 64);
-      fxw $$13 = fwm.b();
-      fxw $$14 = fvj.a(fxu.a);
-      fxw $$15 = fwt.b();
-      fxw $$16 = fva.c();
-      fxw $$17 = fwl.e();
-      fxw $$18 = fxw.a(fxb.b(), 64, 64);
-      fxw $$19 = fwr.b();
-      $$0.put(fxp.a, ftm.b());
-      $$0.put(fxp.b, fto.b());
-      $$0.put(fxp.c, ftr.c());
-      $$0.put(fxp.d, ftq.a(c));
-      $$0.put(fxp.e, ftq.a(b));
-      $$0.put(fxp.f, fts.c());
-      $$0.put(fxp.g, gga.a());
-      $$0.put(fxp.h, ftt.b());
-      $$0.put(fxp.i, ggc.c());
-      $$0.put(fxp.j, ggc.b());
-      $$0.put(fxp.k, ftu.c());
-      $$0.put(fxp.l, ggd.b());
-      $$0.put(fxp.m, ftv.b());
-      $$0.put(fxp.n, ftx.c());
-      $$0.put(fxp.o, $$4);
-      $$0.put(fxp.p, $$2);
-      $$0.put(fxp.q, fxw.a(fvd.a(new fxu(0.2F), 0.0F), 64, 32));
-      $$0.put(fxp.r, fty.a());
-      $$0.put(fxp.s, ftz.a(32, 32));
-      $$0.put(fxp.t, $$10);
-      $$0.put(fxp.u, fxw.a(fvo.a(new fxu(0.01F)), 64, 32));
-      $$0.put(fxp.v, fua.b());
-      $$0.put(fxp.w, $$19);
-      $$0.put(fxp.x, ggl.b());
-      $$0.put(fxp.y, $$5);
-      $$0.put(fxp.z, fuf.c());
-      $$0.put(fxp.A, fug.b());
-      $$0.put(fxp.B, $$5);
-      $$0.put(fxp.D, ggm.b());
-      $$0.put(fxp.F, ggm.c());
-      $$0.put(fxp.E, ggm.d());
-      $$0.put(fxp.C, ggm.e());
-      $$0.put(fxp.G, $$9);
-      $$0.put(fxp.H, fuk.a(fxu.a));
-      $$0.put(fxp.I, fuk.a(new fxu(2.0F)));
-      $$0.put(fxp.J, $$6);
-      $$0.put(fxp.K, ggn.b());
-      $$0.put(fxp.L, ggn.c());
-      $$0.put(fxp.M, ful.b());
-      $$0.put(fxp.N, fue.c());
-      $$0.put(fxp.O, ggl.d());
-      $$0.put(fxp.P, ggl.c());
-      $$0.put(fxp.Q, fxk.a());
-      $$0.put(fxp.R, fum.a(fxu.a));
-      $$0.put(fxp.S, $$4);
-      $$0.put(fxp.T, $$4);
-      $$0.put(fxp.U, fum.a(new fxu(0.25F)));
-      $$0.put(fxp.V, fux.b());
-      $$0.put(fxp.W, fun.c());
-      $$0.put(fxp.X, fuo.c());
-      $$0.put(fxp.Y, fup.b());
-      $$0.put(fxp.Z, gjj.a());
-      $$0.put(fxp.aa, gji.a());
-      $$0.put(fxp.ab, $$8);
-      $$0.put(fxp.ac, fur.b());
-      $$0.put(fxp.ad, fus.c());
-      $$0.put(fxp.ae, fut.b());
-      $$0.put(fxp.af, $$5);
-      $$0.put(fxp.ag, fuu.b());
-      $$0.put(fxp.ah, $$1);
-      $$0.put(fxp.ai, $$4);
-      $$0.put(fxp.aj, $$2);
-      $$0.put(fxp.ak, fws.b());
-      $$0.put(fxp.al, fuw.c());
-      $$0.put(fxp.am, fux.b());
-      $$0.put(fxp.an, $$16);
-      $$0.put(fxp.ao, $$5);
-      $$0.put(fxp.ap, $$7);
-      $$0.put(fxp.aq, fxw.a(fvb.a(new fxu(0.1F)), 64, 64));
-      $$0.put(fxp.ar, $$1);
-      $$0.put(fxp.as, $$4);
-      $$0.put(fxp.at, $$2);
-      $$0.put(fxp.au, $$8);
-      $$0.put(fxp.av, fvf.b());
-      $$0.put(fxp.aw, fvh.b());
-      $$0.put(fxp.ax, $$14);
-      $$0.put(fxp.ay, fvj.a(new fxu(0.5F)));
-      $$0.put(fxp.az, fvk.b());
-      $$0.put(fxp.aA, fvg.b());
-      $$0.put(fxp.aB, $$5);
-      $$0.put(fxp.aC, $$9);
-      $$0.put(fxp.aD, fue.c());
-      $$0.put(fxp.aE, $$10);
-      $$0.put(fxp.aF, fvp.c());
-      $$0.put(fxp.aG, fvq.b());
-      $$0.put(fxp.aH, fvr.b());
-      $$0.put(fxp.aI, fvs.a(fxu.a));
-      $$0.put(fxp.aQ, fvs.a(new fxu(0.5F)));
-      $$0.put(fxp.aJ, $$11);
-      $$0.put(fxp.aO, $$4);
-      $$0.put(fxp.aP, $$3);
-      $$0.put(fxp.aK, $$11);
-      $$0.put(fxp.aL, $$4);
-      $$0.put(fxp.aM, $$3);
-      $$0.put(fxp.aN, $$12);
-      $$0.put(fxp.aR, $$8);
-      $$0.put(fxp.aS, fxw.a(fvv.a(fxu.a, false), 64, 64));
-      $$0.put(fxp.aT, $$13);
-      $$0.put(fxp.aU, $$4);
-      $$0.put(fxp.aV, $$2);
-      $$0.put(fxp.aW, fxw.a(fvv.a(fxu.a, true), 64, 64));
-      $$0.put(fxp.aX, $$4);
-      $$0.put(fxp.aY, $$2);
-      $$0.put(fxp.aZ, goi.a());
-      $$0.put(fxp.ba, fvw.c());
-      $$0.put(fxp.bb, fvx.b());
-      $$0.put(fxp.bc, fvy.b());
-      $$0.put(fxp.bd, fvz.b());
-      $$0.put(fxp.be, fwb.a());
-      $$0.put(fxp.bf, fwd.b());
-      $$0.put(fxp.bg, fwe.b());
-      $$0.put(fxp.bh, fwg.c());
-      $$0.put(fxp.bi, fwf.c());
-      $$0.put(fxp.bj, fwh.a());
-      $$0.put(fxp.bk, fwj.a());
-      $$0.put(fxp.bl, fwi.b());
-      $$0.put(fxp.bm, fwk.b());
-      $$0.put(fxp.bn, $$17);
-      $$0.put(fxp.bp, $$4);
-      $$0.put(fxp.bq, $$2);
-      $$0.put(fxp.bo, $$7);
-      $$0.put(fxp.br, $$6);
-      $$0.put(fxp.bs, fwo.c());
-      $$0.put(fxp.bt, fwo.b());
-      $$0.put(fxp.bu, fwp.b());
-      $$0.put(fxp.bv, fwq.b());
-      $$0.put(fxp.bw, $$5);
-      $$0.put(fxp.bx, $$19);
-      $$0.put(fxp.by, fws.b());
-      $$0.put(fxp.bz, $$17);
-      $$0.put(fxp.bA, $$4);
-      $$0.put(fxp.bB, $$2);
-      $$0.put(fxp.bC, fxw.a(fvd.a(new fxu(0.25F), 0.0F), 64, 32));
-      $$0.put(fxp.bD, $$15);
-      $$0.put(fxp.bE, $$15);
-      $$0.put(fxp.bF, fwu.c());
-      $$0.put(fxp.bG, $$5);
-      $$0.put(fxp.bH, $$14);
-      $$0.put(fxp.bI, fwv.a());
-      $$0.put(fxp.bJ, fwx.a(fxu.a));
-      $$0.put(fxp.bK, fwx.a(a));
-      $$0.put(fxp.bL, fww.a(fxu.a));
-      $$0.put(fxp.bM, fww.a(a));
-      $$0.put(fxp.bN, fwy.c());
-      $$0.put(fxp.bO, fwz.b());
-      $$0.put(fxp.bP, $$18);
-      $$0.put(fxp.bQ, $$8);
-      $$0.put(fxp.bR, fxc.b());
-      $$0.put(fxp.bS, $$18);
-      $$0.put(fxp.bT, fxe.b());
-      $$0.put(fxp.bU, fxf.c());
-      $$0.put(fxp.bV, fxg.a(fxu.a));
-      $$0.put(fxp.bW, fxg.a(c));
-      $$0.put(fxp.cb, gmr.a());
-      $$0.put(fxp.bX, $$17);
-      $$0.put(fxp.bY, $$4);
-      $$0.put(fxp.bZ, $$2);
-      $$0.put(fxp.ca, $$6);
-      $$0.put(fxp.cc, fxw.a(fxh.a(fxu.a), 64, 32));
-      $$0.put(fxp.cd, fxw.a(fxh.a(new fxu(0.2F)), 64, 32));
-      $$0.put(fxp.ce, $$16);
-      $$0.put(fxp.cf, $$1);
-      $$0.put(fxp.ci, $$4);
-      $$0.put(fxp.cj, $$2);
-      $$0.put(fxp.cg, $$13);
-      $$0.put(fxp.ch, $$7);
-      $$0.put(fxp.ck, fxj.c());
-      $$0.put(fxp.cl, fxj.a(c));
-      $$0.put(fxp.cm, fxj.a(b));
-      $$0.put(fxp.cn, $$11);
-      $$0.put(fxp.co, $$4);
-      $$0.put(fxp.cp, $$3);
-      fxw $$20 = ftw.a();
-      fxw $$21 = fuc.e();
-      fxw $$22 = fwc.b();
-      fxw $$23 = fud.a();
+   public static fyk b() {
+      fym $$0 = new fym();
+      fyn $$1 = $$0.a();
+      fyn $$2 = $$1.a("root", fyj.c(), fyg.a(0.0F, -2.5F, 0.0F));
+      $$2.a("head", fyj.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new fyi(0.0F)), fyg.a(0.0F, 20.0F, 0.0F));
+      fyn $$3 = $$2.a(
+         "body",
+         fyj.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new fyi(0.0F)).a(0, 16).a(-1.5F, 1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fyi(-0.2F)),
+         fyg.a(0.0F, 20.0F, 0.0F)
+      );
+      $$3.a("right_arm", fyj.c().a(23, 0).a(-1.25F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new fyi(-0.1F)), fyg.a(-1.75F, 0.25F, 0.0F));
+      $$3.a("left_arm", fyj.c().a(23, 6).a(-0.75F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new fyi(-0.1F)), fyg.a(1.75F, 0.25F, 0.0F));
+      $$3.a("left_wing", fyj.c().a(16, 14).a().a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fyi(0.0F)).a(false), fyg.a(0.5F, 1.0F, 1.0F));
+      $$3.a("right_wing", fyj.c().a(16, 14).a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fyi(0.0F)), fyg.a(-0.5F, 1.0F, 1.0F));
+      return fyk.a($$0, 32, 32);
+   }
 
-      for (coi.b $$24 : coi.b.values()) {
-         if ($$24 == coi.b.i) {
-            $$0.put(fxp.c($$24), $$22);
-            $$0.put(fxp.d($$24), $$23);
-         } else {
-            $$0.put(fxp.c($$24), $$20);
-            $$0.put(fxp.d($$24), $$21);
-         }
+   public void a(ckp $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a().e().forEach(fye::c);
+      this.j.f = $$4 * (float) (Math.PI / 180.0);
+      this.j.e = $$5 * (float) (Math.PI / 180.0);
+      float $$6 = ayn.b($$3 * 5.5F * (float) (Math.PI / 180.0)) * 0.1F;
+      this.f.g = (float) (Math.PI / 5) + $$6;
+      this.g.g = -((float) (Math.PI / 5) + $$6);
+      if ($$0.gn()) {
+         this.b.e = 0.0F;
+         this.a($$0.eU(), $$0.eV(), $$6);
+      } else {
+         this.b.e = (float) (Math.PI / 20);
       }
 
-      fxw $$25 = ggt.f();
-      dty.a().forEach($$2x -> $$0.put(fxp.a($$2x), $$25));
-      fxw $$26 = ggp.e();
-      dty.a().forEach($$2x -> $$0.put(fxp.b($$2x), $$26));
-      ImmutableMap<fxo, fxw> $$27 = $$0.build();
-      List<fxo> $$28 = fxp.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
-      if (!$$28.isEmpty()) {
-         throw new IllegalStateException("Missing layer definitions: " + $$28);
+      this.i.f = 1.0995574F + ayn.b($$3 * 45.836624F * (float) (Math.PI / 180.0)) * (float) (Math.PI / 180.0) * 16.2F;
+      this.h.f = -this.i.f;
+      this.i.e = 0.47123888F;
+      this.i.g = -0.47123888F;
+      this.h.e = 0.47123888F;
+      this.h.g = 0.47123888F;
+   }
+
+   private void a(cuo $$0, cuo $$1, float $$2) {
+      if ($$0.e() && $$1.e()) {
+         this.f.e = -1.2217305F;
+         this.f.f = (float) (Math.PI / 12);
+         this.f.g = -0.47123888F - $$2;
+         this.g.e = -1.2217305F;
+         this.g.f = (float) (-Math.PI / 12);
+         this.g.g = 0.47123888F + $$2;
       } else {
-         return $$27;
+         if (!$$0.e()) {
+            this.f.e = (float) (Math.PI * 7.0 / 6.0);
+            this.f.f = (float) (Math.PI / 12);
+            this.f.g = -0.47123888F - $$2;
+         }
+
+         if (!$$1.e()) {
+            this.g.e = (float) (Math.PI * 7.0 / 6.0);
+            this.g.f = (float) (-Math.PI / 12);
+            this.g.g = 0.47123888F + $$2;
+         }
+      }
+   }
+
+   @Override
+   public fye a() {
+      return this.a;
+   }
+
+   @Override
+   public void a(btf $$0, fbc $$1) {
+      boolean $$2 = $$0 == btf.b;
+      fye $$3 = $$2 ? this.f : this.g;
+      this.a.a($$1);
+      this.b.a($$1);
+      $$3.a($$1);
+      $$1.b(0.55F, 0.55F, 0.55F);
+      this.a($$1, $$2);
+   }
+
+   private void a(fbc $$0, boolean $$1) {
+      if ($$1) {
+         $$0.a(0.046875, -0.15625, 0.078125);
+      } else {
+         $$0.a(-0.046875, -0.15625, 0.078125);
       }
    }
 }

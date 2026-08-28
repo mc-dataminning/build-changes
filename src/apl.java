@@ -1,170 +1,127 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogQueues;
+import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.Collection;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
+import java.io.IOException;
 import org.slf4j.Logger;
 
-public class apl extends JComponent {
-   private static final Font a = new Font("Monospaced", 0, 12);
-   private static final Logger b = LogUtils.getLogger();
-   private static final String c = "Minecraft server";
-   private static final String d = "Minecraft server - shutting down!";
-   private final apf e;
-   private Thread f;
-   private final Collection<Runnable> g = Lists.newArrayList();
-   final AtomicBoolean h = new AtomicBoolean();
+public class apl extends auq {
+   private static final Logger h = LogUtils.getLogger();
 
-   public static apl a(final apf $$0) {
-      try {
-         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-      } catch (Exception var3) {
-      }
-
-      final JFrame $$1 = new JFrame("Minecraft server");
-      final apl $$2 = new apl($$0);
-      $$1.setDefaultCloseOperation(2);
-      $$1.add($$2);
-      $$1.pack();
-      $$1.setLocationRelativeTo(null);
-      $$1.setVisible(true);
-      $$1.addWindowListener(new WindowAdapter() {
-         @Override
-         public void windowClosing(WindowEvent $$0x) {
-            if (!$$2.h.getAndSet(true)) {
-               $$1.setTitle("Minecraft server - shutting down!");
-               $$0.a(true);
-               $$2.f();
-            }
-         }
-      });
-      $$2.a($$1::dispose);
-      $$2.a();
-      return $$2;
-   }
-
-   private apl(apf $$0) {
-      this.e = $$0;
-      this.setPreferredSize(new Dimension(854, 480));
-      this.setLayout(new BorderLayout());
-
-      try {
-         this.add(this.e(), "Center");
-         this.add(this.c(), "West");
-      } catch (Exception var3) {
-         b.error("Couldn't build server GUI", var3);
+   public apl(apm $$0, jt<akz> $$1, erc $$2) {
+      super($$0, $$1, $$2, $$0.a().I);
+      apn $$3 = $$0.a();
+      this.a($$3.G);
+      this.b($$3.H);
+      super.a($$3.X.get());
+      this.z();
+      this.x();
+      this.y();
+      this.w();
+      this.A();
+      this.C();
+      this.B();
+      if (!this.i().b().exists()) {
+         this.D();
       }
    }
 
-   public void a(Runnable $$0) {
-      this.g.add($$0);
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      this.b().i($$0);
    }
 
-   private JComponent c() {
-      JPanel $$0 = new JPanel(new BorderLayout());
-      apn $$1 = new apn(this.e);
-      this.g.add($$1::a);
-      $$0.add($$1, "North");
-      $$0.add(this.d(), "Center");
-      $$0.setBorder(new TitledBorder(new EtchedBorder(), "Stats"));
-      return $$0;
+   @Override
+   public void a(GameProfile $$0) {
+      super.a($$0);
+      this.B();
    }
 
-   private JComponent d() {
-      JList<?> $$0 = new apm(this.e);
-      JScrollPane $$1 = new JScrollPane($$0, 22, 30);
-      $$1.setBorder(new TitledBorder(new EtchedBorder(), "Players"));
-      return $$1;
+   @Override
+   public void b(GameProfile $$0) {
+      super.b($$0);
+      this.B();
    }
 
-   private JComponent e() {
-      JPanel $$0 = new JPanel(new BorderLayout());
-      JTextArea $$1 = new JTextArea();
-      JScrollPane $$2 = new JScrollPane($$1, 22, 30);
-      $$1.setEditable(false);
-      $$1.setFont(a);
-      JTextField $$3 = new JTextField();
-      $$3.addActionListener($$1x -> {
-         String $$2x = $$3.getText().trim();
-         if (!$$2x.isEmpty()) {
-            this.e.a($$2x, this.e.aJ());
-         }
-
-         $$3.setText("");
-      });
-      $$1.addFocusListener(new FocusAdapter() {
-         @Override
-         public void focusGained(FocusEvent $$0) {
-         }
-      });
-      $$0.add($$2, "Center");
-      $$0.add($$3, "South");
-      $$0.setBorder(new TitledBorder(new EtchedBorder(), "Log and chat"));
-      this.f = new Thread(() -> {
-         String $$2x;
-         while (($$2x = LogQueues.getNextLogEvent("ServerGuiConsole")) != null) {
-            this.a($$1, $$2, $$2x);
-         }
-      });
-      this.f.setUncaughtExceptionHandler(new r(b));
-      this.f.setDaemon(true);
-      return $$0;
-   }
-
+   @Override
    public void a() {
-      this.f.start();
+      this.C();
    }
 
-   public void b() {
-      if (!this.h.getAndSet(true)) {
-         this.f();
+   private void w() {
+      try {
+         this.g().e();
+      } catch (IOException var2) {
+         h.warn("Failed to save ip banlist: ", var2);
       }
    }
 
-   void f() {
-      this.g.forEach(Runnable::run);
+   private void x() {
+      try {
+         this.f().e();
+      } catch (IOException var2) {
+         h.warn("Failed to save user banlist: ", var2);
+      }
    }
 
-   public void a(JTextArea $$0, JScrollPane $$1, String $$2) {
-      if (!SwingUtilities.isEventDispatchThread()) {
-         SwingUtilities.invokeLater(() -> this.a($$0, $$1, $$2));
-      } else {
-         Document $$3 = $$0.getDocument();
-         JScrollBar $$4 = $$1.getVerticalScrollBar();
-         boolean $$5 = false;
-         if ($$1.getViewport().getView() == $$0) {
-            $$5 = (double)$$4.getValue() + $$4.getSize().getHeight() + (double)(a.getSize() * 4) > (double)$$4.getMaximum();
-         }
-
-         try {
-            $$3.insertString($$3.getLength(), $$2, null);
-         } catch (BadLocationException var8) {
-         }
-
-         if ($$5) {
-            $$4.setValue(Integer.MAX_VALUE);
-         }
+   private void y() {
+      try {
+         this.g().f();
+      } catch (IOException var2) {
+         h.warn("Failed to load ip banlist: ", var2);
       }
+   }
+
+   private void z() {
+      try {
+         this.f().f();
+      } catch (IOException var2) {
+         h.warn("Failed to load user banlist: ", var2);
+      }
+   }
+
+   private void A() {
+      try {
+         this.k().f();
+      } catch (Exception var2) {
+         h.warn("Failed to load operators list: ", var2);
+      }
+   }
+
+   private void B() {
+      try {
+         this.k().e();
+      } catch (Exception var2) {
+         h.warn("Failed to save operators list: ", var2);
+      }
+   }
+
+   private void C() {
+      try {
+         this.i().f();
+      } catch (Exception var2) {
+         h.warn("Failed to load white-list: ", var2);
+      }
+   }
+
+   private void D() {
+      try {
+         this.i().e();
+      } catch (Exception var2) {
+         h.warn("Failed to save white-list: ", var2);
+      }
+   }
+
+   @Override
+   public boolean c(GameProfile $$0) {
+      return !this.o() || this.f($$0) || this.i().a($$0);
+   }
+
+   public apm b() {
+      return (apm)super.c();
+   }
+
+   @Override
+   public boolean d(GameProfile $$0) {
+      return this.k().a($$0);
    }
 }

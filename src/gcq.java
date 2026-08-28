@@ -1,99 +1,40 @@
-import java.util.Optional;
+public class gcq extends gdh {
+   private final gdc a;
 
-public class gcq extends gct {
-   gcq(fyl $$0, gco $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$2, $$3 - 0.125, $$4);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+   gcq(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gdc $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
       this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
-   }
-
-   gcq(fyl $$0, gco $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
+      this.b($$7);
    }
 
    @Override
-   public gbx b() {
-      return gbx.b;
+   public int a(float $$0) {
+      return 240;
    }
 
-   public static class a implements gbw<ln> {
-      private final gco a;
-
-      public a(gco $$0) {
-         this.a = $$0;
-      }
-
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ayo $$8 = $$1.z;
-         double $$9 = $$8.k() * 1.0E-6F;
-         double $$10 = $$8.k() * 1.0E-4F;
-         double $$11 = $$8.k() * 1.0E-6F;
-         gcq $$12 = new gcq($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
-         $$12.a(0.9F, 0.4F, 0.5F);
-         return $$12;
-      }
+   @Override
+   public gcl b() {
+      return gcl.c;
    }
 
-   public static class b implements gbw<ln> {
-      private final gco a;
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
 
-      public b(gco $$0) {
-         this.a = $$0;
-      }
-
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcq $$8 = new gcq($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
-            @Override
-            public Optional<lg> o() {
-               return Optional.of(lg.a);
-            }
-         };
-         $$8.t = ayg.b($$1.z, 500, 1000);
-         $$8.u = 0.01F;
-         $$8.a(0.32F, 0.5F, 0.22F);
+   public static record a(gdc a) implements gck<lo> {
+      public gch a(lo $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcq $$8 = new gcq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.z.a(12) + 8);
          return $$8;
-      }
-   }
-
-   public static class c implements gbw<ln> {
-      private final gco a;
-
-      public c(gco $$0) {
-         this.a = $$0;
-      }
-
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcq $$8 = new gcq($$1, this.a, $$2, $$3, $$4);
-         $$8.a(0.4F, 0.4F, 0.7F);
-         return $$8;
-      }
-   }
-
-   public static class d implements gbw<ln> {
-      private final gco a;
-
-      public d(gco $$0) {
-         this.a = $$0;
-      }
-
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
-         gcq $$9 = new gcq($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
-         $$9.a(0.1F, 0.1F, 0.3F);
-         $$9.b(0.001F, 0.001F);
-         return $$9;
       }
    }
 }

@@ -1,33 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
 
-public record cu(Optional<bc<ard<String>, cu.a>> c) implements dt<cxk> {
-   public static final Codec<cu> a = RecordCodecBuilder.create($$0 -> $$0.group(bc.a(cu.a.a).optionalFieldOf("pages").forGetter(cu::b)).apply($$0, cu::new));
+public class cu {
+   public static final ct.a<cl> a = a("damage", cl.a);
+   public static final ct.a<cn.a> b = a("enchantments", cn.a.a);
+   public static final ct.a<cn.b> c = a("stored_enchantments", cn.b.a);
+   public static final ct.a<cr> d = a("potion_contents", cr.a);
+   public static final ct.a<ck> e = a("custom_data", ck.a);
+   public static final ct.a<cj> f = a("container", cj.a);
+   public static final ct.a<ci> g = a("bundle_contents", ci.a);
+   public static final ct.a<co> h = a("firework_explosion", co.a);
+   public static final ct.a<cp> i = a("fireworks", cp.a);
+   public static final ct.a<cx> j = a("writable_book_content", cx.a);
+   public static final ct.a<cy> k = a("written_book_content", cy.a);
+   public static final ct.a<ch> l = a("attribute_modifiers", ch.a);
+   public static final ct.a<cv> m = a("trim", cv.a);
+   public static final ct.a<cq> n = a("jukebox_playable", cq.a);
 
-   @Override
-   public km<cxk> a() {
-      return kn.I;
+   private static <T extends ct> ct.a<T> a(String $$0, Codec<T> $$1) {
+      return jz.a(lt.as, $$0, new ct.a<>($$1));
    }
 
-   public boolean a(cud $$0, cxk $$1) {
-      return !this.c.isPresent() || this.c.get().a($$1.a());
-   }
-
-   public Optional<bc<ard<String>, cu.a>> b() {
-      return this.c;
-   }
-
-   public static record a(String b) implements Predicate<ard<String>> {
-      public static final Codec<cu.a> a = Codec.STRING.xmap(cu.a::new, cu.a::a);
-
-      public boolean a(ard<String> $$0) {
-         return $$0.a().equals(this.b);
-      }
-
-      public String a() {
-         return this.b;
-      }
+   public static ct.a<?> a(jz<ct.a<?>> $$0) {
+      return a;
    }
 }

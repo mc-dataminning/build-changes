@@ -1,18 +1,34 @@
-import java.util.function.Consumer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public interface fli extends flj {
-   void b(Consumer<flj> var1);
+public interface fli {
+   MapCodec<fli> b = flj.f.dispatchMap(fli::a, flj::a);
 
-   @Override
-   default void a(Consumer<fhs> $$0) {
-      this.b($$1 -> $$1.a($$0));
+   flj a();
+
+   Either<fli.b, fli.c> b();
+
+   public static record a(fli b, fkw.a c) {
+      public static final Codec<fli.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fli.b.forGetter(fli.a::a), fkw.a.a.optionalFieldOf("filter", fkw.a.b).forGetter(fli.a::b)).apply($$0, fli.a::new)
+      );
+
+      public fli a() {
+         return this.b;
+      }
+
+      public fkw.a b() {
+         return this.c;
+      }
    }
 
-   default void a() {
-      this.b($$0 -> {
-         if ($$0 instanceof fli $$1) {
-            $$1.a();
-         }
-      });
+   public interface b {
+      ezg load(aud var1) throws IOException;
+   }
+
+   public static record c(akq a) {
    }
 }

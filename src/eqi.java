@@ -1,28 +1,31 @@
-public class eqi {
-   public static final eqi a = new eqi("advancements");
-   public static final eqi b = new eqi("stats");
-   public static final eqi c = new eqi("playerdata");
-   public static final eqi d = new eqi("players");
-   public static final eqi e = new eqi("level.dat");
-   public static final eqi f = new eqi("level.dat_old");
-   public static final eqi g = new eqi("icon.png");
-   public static final eqi h = new eqi("session.lock");
-   public static final eqi i = new eqi("generated");
-   public static final eqi j = new eqi("datapacks");
-   public static final eqi k = new eqi("resources.zip");
-   public static final eqi l = new eqi(".");
-   private final String m;
+import com.mojang.serialization.Codec;
 
-   private eqi(String $$0) {
-      this.m = $$0;
+public record eqi(akq d, boolean e, int f, boolean g, boolean h) {
+   public static final int a = -1;
+   public static final Codec<jm<eqi>> b = lt.at.s();
+   public static final yw<wj, jm<eqi>> c = yu.b(lu.aD);
+
+   public boolean a() {
+      return this.f != -1;
    }
 
-   public String a() {
-      return this.m;
+   public akq b() {
+      return this.d;
    }
 
-   @Override
-   public String toString() {
-      return "/" + this.m;
+   public boolean c() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public boolean f() {
+      return this.h;
    }
 }

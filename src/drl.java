@@ -1,77 +1,103 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class drl extends dpq implements dcz, dro.b {
-   private static final Logger a = LogUtils.getLogger();
-   private dro b;
+public abstract class drl extends dpz implements bqy {
+   @Nullable
+   protected akp<erq> l;
+   protected long m = 0L;
 
-   public drl(ja $$0, dsl $$1) {
-      super(dps.Q, $$0, $$1);
-      drn $$2 = drn.a;
-      drn.a $$3 = drn.a.a;
-      this.b = new dro(this, $$2, $$3);
+   protected drl(dqh<?> $$0, jd $$1, dta $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   @Nullable
+   @Override
+   public akp<erq> ax_() {
+      return this.l;
    }
 
    @Override
-   protected void a(tx $$0, jl.a $$1) {
+   public void a(@Nullable akp<erq> $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public long ay_() {
+      return this.m;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public boolean c() {
+      this.e_(null);
+      return super.c();
+   }
+
+   @Override
+   public cuo a(int $$0) {
+      this.e_(null);
+      return super.a($$0);
+   }
+
+   @Override
+   public cuo a(int $$0, int $$1) {
+      this.e_(null);
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public cuo b(int $$0) {
+      this.e_(null);
+      return super.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, cuo $$1) {
+      this.e_(null);
       super.a($$0, $$1);
-      if ($$0.e("normal_config")) {
-         tx $$2 = $$0.p("normal_config").i();
-         $$0.a("ominous_config", $$2.a($$0.p("ominous_config")));
+   }
+
+   @Override
+   public boolean d(cmv $$0) {
+      return super.d($$0) && (this.l == null || !$$0.N_());
+   }
+
+   @Nullable
+   @Override
+   public cps createMenu(int $$0, cmu $$1, cmv $$2) {
+      if (this.d($$2)) {
+         this.e_($$1.l);
+         return this.a($$0, $$1);
+      } else {
+         return null;
       }
+   }
 
-      this.b.a().parse(ul.a, $$0).resultOrPartial(a::error).ifPresent($$0x -> this.b = $$0x);
-      if (this.n != null) {
-         this.f();
+   @Override
+   protected void a(dqf.b $$0) {
+      super.a($$0);
+      cxt $$1 = $$0.a(kq.af);
+      if ($$1 != null) {
+         this.l = $$1.a();
+         this.m = $$1.b();
       }
    }
 
    @Override
-   protected void b(tx $$0, jl.a $$1) {
-      super.b($$0, $$1);
-      this.b.a().encodeStart(ul.a, this.b).ifSuccess($$1x -> $$0.a((tx)$$1x)).ifError($$0x -> a.warn("Failed to encode TrialSpawner {}", $$0x.message()));
-   }
-
-   public abu b() {
-      return abu.a(this);
-   }
-
-   @Override
-   public tx a(jl.a $$0) {
-      return this.b.f().a(this.n().c(dnx.b));
-   }
-
-   @Override
-   public boolean q() {
-      return true;
-   }
-
-   @Override
-   public void a(bsn<?> $$0, ayo $$1) {
-      this.b.f().a(this.b, $$1, $$0);
-      this.e();
-   }
-
-   public dro c() {
-      return this.b;
-   }
-
-   @Override
-   public drr d() {
-      return !this.n().b(dtb.by) ? drr.a : this.n().c(dtb.by);
-   }
-
-   @Override
-   public void a(dcg $$0, drr $$1) {
-      this.e();
-      $$0.b(this.o, this.n().a(dtb.by, $$1));
-   }
-
-   @Override
-   public void f() {
-      this.e();
-      if (this.n != null) {
-         this.n.a(this.o, this.n(), this.n(), 3);
+   protected void a(km.a $$0) {
+      super.a($$0);
+      if (this.l != null) {
+         $$0.a(kq.af, new cxt(this.l, this.m));
       }
+   }
+
+   @Override
+   public void a(ua $$0) {
+      super.a($$0);
+      $$0.r("LootTable");
+      $$0.r("LootTableSeed");
    }
 }

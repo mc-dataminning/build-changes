@@ -2,54 +2,42 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class au extends ds<au.a> {
+public class au extends dv<au.a> {
    @Override
    public Codec<au.a> a() {
       return au.a.a;
    }
 
-   public void a(aqn $$0, dsl $$1, cud $$2, int $$3) {
-      this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
+   public void a(aqu $$0, jd $$1, cuo $$2) {
+      aqt $$3 = $$0.A();
+      dta $$4 = $$3.a_($$1);
+      ero $$5 = new ero.a($$3).a(euh.f, $$1.b()).a(euh.a, $$0).a(euh.g, $$4).a(euh.i, $$2).a(eug.o);
+      erl $$6 = new erl.a($$5).a(Optional.empty());
+      this.a($$0, $$1x -> $$1x.a($$6));
    }
 
-   public static record a(Optional<bf> b, Optional<jj<dfi>> c, Optional<cp> d, de.d e) implements ds.a {
+   public static record a(Optional<bg> b, Optional<bg> c) implements dv.a {
       public static final Codec<au.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bu.b.optionalFieldOf("player").forGetter(au.a::a),
-                  lq.e.s().optionalFieldOf("block").forGetter(au.a::b),
-                  cp.a.optionalFieldOf("item").forGetter(au.a::c),
-                  de.d.d.optionalFieldOf("num_bees_inside", de.d.c).forGetter(au.a::d)
-               )
-               .apply($$0, au.a::new)
+         $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(au.a::a), bg.a.optionalFieldOf("location").forGetter(au.a::b)).apply($$0, au.a::new)
       );
 
-      public static an<au.a> a(dfi $$0, cp.a $$1, de.d $$2) {
-         return am.L.a(new au.a(Optional.empty(), Optional.of($$0.s()), Optional.of($$1.b()), $$2));
-      }
-
-      public boolean a(dsl $$0, cud $$1, int $$2) {
-         if (this.c.isPresent() && !$$0.a(this.c.get())) {
-            return false;
-         } else {
-            return this.d.isPresent() && !this.d.get().a($$1) ? false : this.e.d($$2);
-         }
+      public boolean a(erl $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
-      public Optional<bf> a() {
+      public void a(bh $$0) {
+         dv.a.super.a($$0);
+         this.c.ifPresent($$1 -> $$0.a($$1, eug.o, ".location"));
+      }
+
+      @Override
+      public Optional<bg> a() {
          return this.b;
       }
 
-      public Optional<jj<dfi>> b() {
+      public Optional<bg> b() {
          return this.c;
-      }
-
-      public Optional<cp> c() {
-         return this.d;
-      }
-
-      public de.d d() {
-         return this.e;
       }
    }
 }

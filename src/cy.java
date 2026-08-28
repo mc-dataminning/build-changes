@@ -1,46 +1,66 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Predicate;
 
-public class cy extends ds<cy.a> {
+public record cy(Optional<bd<ark<wy>, cy.a>> c, Optional<String> d, Optional<String> e, dh.d f, Optional<Boolean> g) implements dw<cxz> {
+   public static final Codec<cy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               bd.a(cy.a.a).optionalFieldOf("pages").forGetter(cy::b),
+               Codec.STRING.optionalFieldOf("author").forGetter(cy::c),
+               Codec.STRING.optionalFieldOf("title").forGetter(cy::d),
+               dh.d.d.optionalFieldOf("generation", dh.d.c).forGetter(cy::e),
+               Codec.BOOL.optionalFieldOf("resolved").forGetter(cy::f)
+            )
+            .apply($$0, cy::new)
+   );
+
    @Override
-   public Codec<cy.a> a() {
-      return cy.a.a;
+   public kp<cxz> a() {
+      return kq.J;
    }
 
-   public void a(aqn $$0, ewh $$1, int $$2) {
-      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
+   public boolean a(cuo $$0, cxz $$1) {
+      if (this.d.isPresent() && !this.d.get().equals($$1.e())) {
+         return false;
+      } else if (this.e.isPresent() && !this.e.get().equals($$1.d().a())) {
+         return false;
+      } else if (!this.f.d($$1.f())) {
+         return false;
+      } else {
+         return this.g.isPresent() && this.g.get() != $$1.g() ? false : !this.c.isPresent() || this.c.get().a($$1.a());
+      }
    }
 
-   public static record a(Optional<bf> b, Optional<bl> c, de.d d) implements ds.a {
-      public static final Codec<cy.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bu.b.optionalFieldOf("player").forGetter(cy.a::a),
-                  bl.a.optionalFieldOf("distance").forGetter(cy.a::b),
-                  de.d.d.optionalFieldOf("duration", de.d.c).forGetter(cy.a::c)
-               )
-               .apply($$0, cy.a::new)
-      );
+   public Optional<bd<ark<wy>, cy.a>> b() {
+      return this.c;
+   }
 
-      public static an<cy.a> a(bl $$0) {
-         return am.v.a(new cy.a(Optional.empty(), Optional.of($$0), de.d.c));
+   public Optional<String> c() {
+      return this.d;
+   }
+
+   public Optional<String> d() {
+      return this.e;
+   }
+
+   public dh.d e() {
+      return this.f;
+   }
+
+   public Optional<Boolean> f() {
+      return this.g;
+   }
+
+   public static record a(wy b) implements Predicate<ark<wy>> {
+      public static final Codec<cy.a> a = xa.a.xmap(cy.a::new, cy.a::a);
+
+      public boolean a(ark<wy> $$0) {
+         return $$0.a().equals(this.b);
       }
 
-      public boolean a(aqn $$0, ewh $$1, int $$2) {
-         return this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$0.dw(), $$0.dy(), $$0.dC()) ? false : this.d.d($$2);
-      }
-
-      @Override
-      public Optional<bf> a() {
+      public wy a() {
          return this.b;
-      }
-
-      public Optional<bl> b() {
-         return this.c;
-      }
-
-      public de.d c() {
-         return this.d;
       }
    }
 }

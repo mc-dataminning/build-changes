@@ -1,17 +1,26 @@
-import java.util.OptionalInt;
+import java.util.function.Function;
 
-public class ezf {
-   public final int a;
-   public final int b;
-   public final OptionalInt c;
-   public final OptionalInt d;
-   public final boolean e;
+public interface ezf {
+   float getAdvance();
 
-   public ezf(int $$0, int $$1, OptionalInt $$2, OptionalInt $$3, boolean $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   default float a(boolean $$0) {
+      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
+   }
+
+   default float a() {
+      return 1.0F;
+   }
+
+   default float b() {
+      return 1.0F;
+   }
+
+   flb bake(Function<ezh, flb> var1);
+
+   public interface a extends ezf {
+      @Override
+      default flb bake(Function<ezh, flb> $$0) {
+         return flc.a;
+      }
    }
 }

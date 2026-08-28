@@ -1,14 +1,12 @@
 import java.util.concurrent.CompletableFuture;
 
-public class pp extends pv<ctv> {
-   public pp(lz $$0, CompletableFuture<jl.a> $$1) {
-      super($$0, lr.I, $$1);
+public class pp extends py<ehn> {
+   public pp(mc $$0, CompletableFuture<jo.a> $$1) {
+      super($$0, lu.aN, $$1);
    }
 
    @Override
-   protected void a(jl.a $$0) {
-      this.b(awe.a).a(ctx.c).a(ctx.d).a(ctx.e).a(ctx.f);
-      this.b(awe.b).a(ctx.g).a(ctx.h).a(ctx.i).a(ctx.j);
-      this.b(awe.c).b(awe.a).b(awe.b);
+   protected void a(jo.a $$0) {
+      this.b(awi.a).a(eho.a).a(eho.b).a(eho.c).a(eho.d).a(eho.e).a(eho.f).a(eho.g).a(eho.h).a(eho.i);
    }
 }

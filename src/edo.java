@@ -1,32 +1,56 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class edo implements edp {
-   public static final Codec<edo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ja.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, edo::new)
-   );
-   private final Optional<ja> b;
-   private final boolean c;
-
-   private edo(Optional<ja> $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class edo extends eca<efc> {
+   public edo(Codec<efc> $$0) {
+      super($$0);
    }
 
-   public static edo a(ja $$0, boolean $$1) {
-      return new edo(Optional.of($$0), $$1);
+   @Override
+   public boolean a(ecc<efc> $$0) {
+      ddq $$1 = $$0.b();
+      jd $$2 = $$0.e();
+      efc $$3 = $$0.f();
+      ayv $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         jd $$6 = $$2.h($$5.getAsInt());
+         kh $$7 = new kh($$3.c, $$3.c, $$3.c);
+         eje $$8 = eje.a($$6.b($$7), $$6.a($$7));
+         return jd.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, dfy.kJ.o(), 2);
+            return 1;
+         }).sum() > 0;
+      }
    }
 
-   public static edo a() {
-      return new edo(Optional.empty(), false);
+   private static OptionalInt a(ddq $$0, jd $$1, efc $$2) {
+      Predicate<dta> $$3 = $$0x -> $$0x.a(dfy.G);
+      Predicate<dta> $$4 = $$0x -> !$$0x.a(dfy.G);
+      Optional<dyl> $$5 = dyl.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(dyl::c).orElseGet(OptionalInt::empty);
    }
 
-   public Optional<ja> b() {
-      return this.b;
+   private boolean b(ddq $$0, jd $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
+         for (ji $$2 : ji.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public boolean c() {
-      return this.c;
+   private boolean a(dcv $$0, jd $$1) {
+      dta $$2 = $$0.a_($$1);
+      return $$2.a(dfy.G) || $$2.i();
    }
 }

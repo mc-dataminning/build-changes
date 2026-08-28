@@ -1,16 +1,15 @@
-public class gka extends glw<bsu> {
-   private static final akk a = new akk("textures/entity/squid/glow_squid.png");
+public class gka extends glj<cjs, fvd<cjs>> {
+   private static final akq a = akq.b("textures/entity/endermite.png");
 
-   public gka(gjo.a $$0, fws<bsu> $$1) {
-      super($$0, $$1);
+   public gka(gkd.a $$0) {
+      super($$0, new fvd<>($$0.a(fyd.Z)), 0.3F);
    }
 
-   public akk a(bsu $$0) {
+   protected float a(cjs $$0) {
+      return 180.0F;
+   }
+
+   public akq b(cjs $$0) {
       return a;
-   }
-
-   protected int a(bsu $$0, ja $$1) {
-      int $$2 = (int)ayg.b(0.0F, 15.0F, 1.0F - (float)$$0.x() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

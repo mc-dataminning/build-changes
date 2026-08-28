@@ -1,43 +1,72 @@
-public class gbb extends gct {
-   private final gco a;
+public class gbb extends gdh {
+   private final float a;
+   private final float b;
 
-   protected gbb(fyl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gco $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.u = -0.1F;
-      this.B = 0.9F;
-      this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      float $$8 = this.r.i() * 0.3F + 0.7F;
-      this.v = $$8;
-      this.w = $$8;
-      this.x = $$8;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
-      this.b($$7);
+   gbb(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cuo $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
    @Override
-   public gbx b() {
-      return gbx.b;
+   public gcl b() {
+      return gcl.a;
+   }
+
+   protected gbb(fyz $$0, double $$1, double $$2, double $$3, cuo $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a(fgi.Q().ar().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
    }
 
-   public static class a implements gbw<ln> {
-      private final gco a;
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
 
-      public a(gco $$0) {
-         this.a = $$0;
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a implements gck<lq> {
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbb($$1, $$2, $$3, $$4, new cuo(cur.cM));
       }
+   }
 
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbb($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+   public static class b implements gck<li> {
+      public gch a(li $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbb($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
+      }
+   }
+
+   public static class c implements gck<lq> {
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbb($$1, $$2, $$3, $$4, new cuo(cur.qQ));
+      }
+   }
+
+   public static class d implements gck<lq> {
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbb($$1, $$2, $$3, $$4, new cuo(cur.qC));
       }
    }
 }

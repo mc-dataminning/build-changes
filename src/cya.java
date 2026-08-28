@@ -1,8 +1,8 @@
-public interface cya extends cyj<cxz> {
-   @Override
-   default cyp<?> e() {
-      return cyp.a;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   cxy d();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cya {
 }

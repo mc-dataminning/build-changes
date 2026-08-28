@@ -1,83 +1,236 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.UUID;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public record cmo(cmo.a d) {
-   public static final wu a = wu.c("multiplayer.disconnect.expired_public_key");
-   private static final wu e = wu.c("multiplayer.disconnect.invalid_public_key_signature.new");
-   public static final Duration b = Duration.ofHours(8L);
-   public static final Codec<cmo> c = cmo.a.a.xmap(cmo::new, cmo::b);
+public class cmo extends cmd {
+   private static final int cc = 5;
+   @Nullable
+   private jd cd;
+   private int ce;
 
-   public static cmo a(ayt $$0, UUID $$1, cmo.a $$2) throws cmo.b {
-      if (!$$2.a($$0, $$1)) {
-         throw new cmo.b(e);
+   public cmo(bsw<? extends cmo> $$0, dcu $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   protected void z() {
+      this.bU.a(0, new cae(this));
+      this.bU.a(0, new cbv<>(this, cws.a(cur.sk, cwt.g), avo.By, $$0 -> this.dQ().S() && !$$0.ci()));
+      this.bU.a(0, new cbv<>(this, new cuo(cur.qE), avo.BD, $$0 -> this.dQ().R() && $$0.ci()));
+      this.bU.a(1, new cbt(this));
+      this.bU.a(1, new bzr<>(this, cku.class, 8.0F, 0.5, 0.5));
+      this.bU.a(1, new bzr<>(this, cju.class, 12.0F, 0.5, 0.5));
+      this.bU.a(1, new bzr<>(this, ckq.class, 8.0F, 0.5, 0.5));
+      this.bU.a(1, new bzr<>(this, ckp.class, 8.0F, 0.5, 0.5));
+      this.bU.a(1, new bzr<>(this, cke.class, 15.0F, 0.5, 0.5));
+      this.bU.a(1, new bzr<>(this, cjz.class, 12.0F, 0.5, 0.5));
+      this.bU.a(1, new bzr<>(this, ckt.class, 10.0F, 0.5, 0.5));
+      this.bU.a(1, new cbd(this, 0.5));
+      this.bU.a(1, new cat(this));
+      this.bU.a(2, new cmo.a(this, 2.0, 0.35));
+      this.bU.a(4, new cay(this, 0.35));
+      this.bU.a(8, new cbx(this, 0.35));
+      this.bU.a(9, new can(this, cmv.class, 3.0F, 1.0F));
+      this.bU.a(10, new cas(this, btn.class, 8.0F));
+   }
+
+   @Nullable
+   @Override
+   public bsk a(aqt $$0, bsk $$1) {
+      return null;
+   }
+
+   @Override
+   public boolean gp() {
+      return false;
+   }
+
+   @Override
+   public bqq b(cmv $$0, bqp $$1) {
+      cuo $$2 = $$0.b($$1);
+      if (!$$2.a(cur.tJ) && this.bE() && !this.gn() && !this.o_()) {
+         if ($$1 == bqp.a) {
+            $$0.a(avy.S);
+         }
+
+         if (!this.dQ().B) {
+            if (this.go().isEmpty()) {
+               return bqq.c;
+            }
+
+            this.f($$0);
+            this.a($$0, this.O_(), 1);
+         }
+
+         return bqq.a(this.dQ().B);
       } else {
-         return new cmo($$2);
+         return super.b($$0, $$1);
       }
    }
 
-   public ayt a() {
-      return ayt.a(this.d.c, "SHA256withRSA");
+   @Override
+   protected void gt() {
+      if (this.dQ().J().b(cpl.c)) {
+         this.gw();
+      } else {
+         cmm.g[] $$0 = (cmm.g[])cmm.b.get(1);
+         cmm.g[] $$1 = (cmm.g[])cmm.b.get(2);
+         if ($$0 != null && $$1 != null) {
+            dbt $$2 = this.go();
+            this.a($$2, $$0, 5);
+            int $$3 = this.ah.a($$1.length);
+            cmm.g $$4 = $$1[$$3];
+            dbs $$5 = $$4.a(this, this.ah);
+            if ($$5 != null) {
+               $$2.add($$5);
+            }
+         }
+      }
    }
 
-   public cmo.a b() {
-      return this.d;
+   private void gw() {
+      dbt $$0 = this.go();
+
+      for (Pair<cmm.g[], Integer> $$1 : cmm.d) {
+         cmm.g[] $$2 = (cmm.g[])$$1.getLeft();
+         this.a($$0, $$2, (Integer)$$1.getRight());
+      }
    }
 
-   public static record a(Instant b, PublicKey c, byte[] d) {
-      private static final int e = 4096;
-      public static final Codec<cmo.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  axo.o.fieldOf("expires_at").forGetter(cmo.a::b), axd.f.fieldOf("key").forGetter(cmo.a::c), axo.p.fieldOf("signature_v2").forGetter(cmo.a::d)
-               )
-               .apply($$0, cmo.a::new)
-      );
+   @Override
+   public void b(ua $$0) {
+      super.b($$0);
+      $$0.a("DespawnDelay", this.ce);
+      if (this.cd != null) {
+         $$0.a("wander_target", up.a(this.cd));
+      }
+   }
 
-      public a(vr $$0) {
-         this($$0.t(), $$0.u(), $$0.a(4096));
+   @Override
+   public void a(ua $$0) {
+      super.a($$0);
+      if ($$0.b("DespawnDelay", 99)) {
+         this.ce = $$0.h("DespawnDelay");
       }
 
-      public void a(vr $$0) {
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-      }
+      up.a($$0, "wander_target").ifPresent($$0x -> this.cd = $$0x);
+      this.c_(Math.max(0, this.g()));
+   }
 
-      boolean a(ayt $$0, UUID $$1) {
-         return $$0.a(this.a($$1), this.d);
-      }
+   @Override
+   public boolean h(double $$0) {
+      return false;
+   }
 
-      private byte[] a(UUID $$0) {
-         byte[] $$1 = this.c.getEncoded();
-         byte[] $$2 = new byte[24 + $$1.length];
-         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
-         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
-         return $$2;
+   @Override
+   protected void b(dbs $$0) {
+      if ($$0.u()) {
+         int $$1 = 3 + this.ah.a(4);
+         this.dQ().b(new btb(this.dQ(), this.dv(), this.dx() + 0.5, this.dB(), $$1));
       }
+   }
 
-      public boolean a() {
-         return this.b.isBefore(Instant.now());
+   @Override
+   protected avn v() {
+      return this.gn() ? avo.BE : avo.Bw;
+   }
+
+   @Override
+   protected avn d(brj $$0) {
+      return avo.BB;
+   }
+
+   @Override
+   protected avn n_() {
+      return avo.Bx;
+   }
+
+   @Override
+   protected avn c(cuo $$0) {
+      return $$0.a(cur.qE) ? avo.Bz : avo.BA;
+   }
+
+   @Override
+   protected avn w(boolean $$0) {
+      return $$0 ? avo.BF : avo.BC;
+   }
+
+   @Override
+   public avn gq() {
+      return avo.BF;
+   }
+
+   public void u(int $$0) {
+      this.ce = $$0;
+   }
+
+   public int gv() {
+      return this.ce;
+   }
+
+   @Override
+   public void m_() {
+      super.m_();
+      if (!this.dQ().B) {
+         this.gx();
       }
+   }
 
-      public boolean a(Duration $$0) {
-         return this.b.plus($$0).isBefore(Instant.now());
+   private void gx() {
+      if (this.ce > 0 && !this.gn() && --this.ce == 0) {
+         this.aq();
+      }
+   }
+
+   public void g(@Nullable jd $$0) {
+      this.cd = $$0;
+   }
+
+   @Nullable
+   jd gz() {
+      return this.cd;
+   }
+
+   class a extends cak {
+      final cmo a;
+      final double b;
+      final double c;
+
+      a(final cmo $$0, final double $$1, final double $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.a(EnumSet.of(cak.a.a));
       }
 
       @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof cmo.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
+      public void e() {
+         this.a.g(null);
+         cmo.this.bT.n();
       }
-   }
 
-   public static class b extends xu {
-      public b(wu $$0) {
-         super($$0);
+      @Override
+      public boolean b() {
+         jd $$0 = this.a.gz();
+         return $$0 != null && this.a($$0, this.b);
+      }
+
+      @Override
+      public void a() {
+         jd $$0 = this.a.gz();
+         if ($$0 != null && cmo.this.bT.l()) {
+            if (this.a($$0, 10.0)) {
+               eww $$1 = new eww((double)$$0.u() - this.a.dv(), (double)$$0.v() - this.a.dx(), (double)$$0.w() - this.a.dB()).d();
+               eww $$2 = $$1.a(10.0).b(this.a.dv(), this.a.dx(), this.a.dB());
+               cmo.this.bT.a($$2.c, $$2.d, $$2.e, this.c);
+            } else {
+               cmo.this.bT.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), this.c);
+            }
+         }
+      }
+
+      private boolean a(jd $$0, double $$1) {
+         return !$$0.a(this.a.do(), $$1);
       }
    }
 }

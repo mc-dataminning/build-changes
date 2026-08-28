@@ -1,40 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class eds implements edp {
-   public static final Codec<eds> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bpm.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bpk.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bpk.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bpk.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bpk.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, eds::new)
-   );
-   public final int b;
-   public final bpm c;
-   public final bpk d;
-   public final float e;
-   public final bpk f;
-   public final bpk g;
-   public final bpk h;
-   public final int i;
-   public final float j;
+public class eds extends edp {
+   public eds(Codec<efd> $$0) {
+      super($$0);
+   }
 
-   public eds(int $$0, bpm $$1, bpk $$2, float $$3, bpk $$4, bpk $$5, bpk $$6, int $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   @Override
+   protected Set<jd> a(ddq $$0, efd $$1, ayv $$2, jd $$3, Predicate<dta> $$4, int $$5, int $$6) {
+      Set<jd> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<jd> $$8 = new HashSet<>();
+      jd.a $$9 = new jd.a();
+
+      for (jd $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (jd $$11 : $$8) {
+         $$0.a($$11, dfy.G.o(), 2);
+      }
+
+      return $$8;
+   }
+
+   private static boolean a(ddq $$0, Set<jd> $$1, jd $$2, jd.a $$3) {
+      return a($$0, $$2, $$3, ji.c) || a($$0, $$2, $$3, ji.f) || a($$0, $$2, $$3, ji.d) || a($$0, $$2, $$3, ji.e) || a($$0, $$2, $$3, ji.a);
+   }
+
+   private static boolean a(ddq $$0, jd $$1, jd.a $$2, ji $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
+   }
+
+   @Override
+   protected boolean a(ddq $$0, efd $$1, dux $$2, ayv $$3, jd $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         dta $$5 = $$0.a_($$4);
+         if ($$5.b(dtq.C) && !$$5.c(dtq.C)) {
+            $$0.a($$4, $$5.a(dtq.C, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

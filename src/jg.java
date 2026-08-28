@@ -1,38 +1,71 @@
-import com.google.common.collect.Sets;
-import java.util.Arrays;
-import java.util.Set;
+import com.mojang.serialization.Lifecycle;
+import java.util.Optional;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-public enum jg {
-   a(jf.c),
-   b(jf.c, jf.f),
-   c(jf.f),
-   d(jf.d, jf.f),
-   e(jf.d),
-   f(jf.d, jf.e),
-   g(jf.e),
-   h(jf.c, jf.e);
+public class jg<T> extends ju<T> implements jh<T> {
+   private final akq b;
+   private jm.c<T> c;
 
-   private final Set<jf> i;
-   private final ke j;
+   public jg(String $$0, akp<? extends jz<T>> $$1, Lifecycle $$2, boolean $$3) {
+      super($$1, $$2, $$3);
+      this.b = akq.a($$0);
+   }
 
-   private jg(final jf... $$0) {
-      this.i = Sets.immutableEnumSet(Arrays.asList($$0));
-      this.j = new ke(0, 0, 0);
-
-      for (jf $$1 : $$0) {
-         this.j.u(this.j.u() + $$1.j()).t(this.j.v() + $$1.k()).s(this.j.w() + $$1.l());
+   @Override
+   public jm.c<T> a(akp<T> $$0, T $$1, jy $$2) {
+      jm.c<T> $$3 = super.a($$0, $$1, $$2);
+      if (this.b.equals($$0.a())) {
+         this.c = $$3;
       }
+
+      return $$3;
    }
 
-   public Set<jf> a() {
-      return this.i;
+   @Override
+   public int a(@Nullable T $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == -1 ? super.a(this.c.a()) : $$1;
    }
 
-   public int b() {
-      return this.j.u();
+   @Nonnull
+   @Override
+   public akq b(T $$0) {
+      akq $$1 = super.b($$0);
+      return $$1 == null ? this.b : $$1;
    }
 
-   public int c() {
-      return this.j.w();
+   @Nonnull
+   @Override
+   public T a(@Nullable akq $$0) {
+      T $$1 = super.a($$0);
+      return $$1 == null ? this.c.a() : $$1;
+   }
+
+   @Override
+   public Optional<T> b(@Nullable akq $$0) {
+      return Optional.ofNullable(super.a($$0));
+   }
+
+   @Override
+   public Optional<jm.c<T>> a() {
+      return Optional.ofNullable(this.c);
+   }
+
+   @Nonnull
+   @Override
+   public T a(int $$0) {
+      T $$1 = super.a($$0);
+      return $$1 == null ? this.c.a() : $$1;
+   }
+
+   @Override
+   public Optional<jm.c<T>> a(ayv $$0) {
+      return super.a($$0).or(() -> Optional.of(this.c));
+   }
+
+   @Override
+   public akq b() {
+      return this.b;
    }
 }

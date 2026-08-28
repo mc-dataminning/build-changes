@@ -1,30 +1,22 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.UUID;
 
-public class cdh extends cdm<btc> {
+public class cdh extends cdq {
+   public static final float a = 10.0F;
+
    @Override
-   public Set<ccg<?>> a() {
-      return ImmutableSet.of(ccg.h, ccg.M, ccg.an);
+   protected boolean a(btl $$0, btl $$1) {
+      return !$$0.dU().a(ccq.U) && cdw.c($$0, $$1) && cgw.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   }
+
+   private boolean e(btl $$0, btl $$1) {
+      List<UUID> $$2 = $$0.dU().c(ccq.aa).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cA());
    }
 
    @Override
-   protected void a(aqm $$0, btc $$1) {
-      bue<?> $$2 = $$1.dV();
-      List<cla> $$3 = Lists.newArrayList();
-      cci $$4 = $$2.c(ccg.h).orElse(cci.a());
-      Optional<bte> $$5 = $$4.a($$0x -> $$0x instanceof cki || $$0x instanceof cii).map(bte.class::cast);
-
-      for (btc $$7 : $$2.c(ccg.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof cla && ((cla)$$7).go()) {
-            $$3.add((cla)$$7);
-         }
-      }
-
-      $$2.a(ccg.M, $$5);
-      $$2.a(ccg.an, $$3);
+   protected ccq<btl> b() {
+      return ccq.B;
    }
 }

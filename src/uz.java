@@ -1,272 +1,92 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.bytes.ByteCollection;
-import it.unimi.dsi.fastutil.bytes.ByteOpenHashSet;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.regex.Pattern;
-import org.slf4j.Logger;
+import java.io.DataInput;
+import java.io.IOException;
 
-public class uz implements uy {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 8;
-   private static final int c = 64;
-   private static final int d = 128;
-   private static final ByteCollection e = new ByteOpenHashSet(Arrays.asList((byte)1, (byte)2, (byte)3, (byte)4, (byte)5, (byte)6));
-   private static final n f = n.l;
-   private static final n g = n.k;
-   private static final n h = n.g;
-   private static final n i = n.m;
-   private static final Pattern j = Pattern.compile("[A-Za-z0-9._+-]+");
-   private static final String k = "[";
-   private static final String l = "]";
-   private static final String m = ";";
-   private static final String n = " ";
-   private static final String o = "{";
-   private static final String p = "}";
-   private static final String q = "\n";
-   private static final String r = ": ";
-   private static final String s = String.valueOf(',');
-   private static final String t = s + "\n";
-   private static final String u = s + " ";
-   private static final wu v = wu.b("<...>").a(n.h);
-   private static final wu w = wu.b("b").a(i);
-   private static final wu x = wu.b("s").a(i);
-   private static final wu y = wu.b("I").a(i);
-   private static final wu z = wu.b("L").a(i);
-   private static final wu A = wu.b("f").a(i);
-   private static final wu B = wu.b("d").a(i);
-   private static final wu C = wu.b("B").a(i);
-   private final String D;
-   private int E;
-   private int F;
-   private final xi G = wu.i();
+public interface uz<T extends ux> {
+   T c(DataInput var1, uj var2) throws IOException;
 
-   public uz(String $$0) {
-      this.D = $$0;
-   }
+   uu.b a(DataInput var1, uu var2, uj var3) throws IOException;
 
-   public wu a(uu $$0) {
-      $$0.a(this);
-      return this.G;
-   }
-
-   @Override
-   public void a(us $$0) {
-      String $$1 = us.b($$0.s_());
-      String $$2 = $$1.substring(0, 1);
-      wu $$3 = wu.b($$1.substring(1, $$1.length() - 1)).a(g);
-      this.G.f($$2).b($$3).f($$2);
-   }
-
-   @Override
-   public void a(tv $$0) {
-      this.G.b(wu.b(String.valueOf($$0.l())).a(h)).b(w);
-   }
-
-   @Override
-   public void a(up $$0) {
-      this.G.b(wu.b(String.valueOf($$0.l())).a(h)).b(x);
-   }
-
-   @Override
-   public void a(uc $$0) {
-      this.G.b(wu.b(String.valueOf($$0.l())).a(h));
-   }
-
-   @Override
-   public void a(uf $$0) {
-      this.G.b(wu.b(String.valueOf($$0.l())).a(h)).b(z);
-   }
-
-   @Override
-   public void a(ua $$0) {
-      this.G.b(wu.b(String.valueOf($$0.k())).a(h)).b(A);
-   }
-
-   @Override
-   public void a(ty $$0) {
-      this.G.b(wu.b(String.valueOf($$0.j())).a(h)).b(B);
-   }
-
-   @Override
-   public void a(tu $$0) {
-      this.G.f("[").b(C).f(";");
-      byte[] $$1 = $$0.e();
-
-      for (int $$2 = 0; $$2 < $$1.length && $$2 < 128; $$2++) {
-         xi $$3 = wu.b(String.valueOf($$1[$$2])).a(h);
-         this.G.f(" ").b($$3).b(C);
-         if ($$2 != $$1.length - 1) {
-            this.G.f(s);
-         }
-      }
-
-      if ($$1.length > 128) {
-         this.G.b(v);
-      }
-
-      this.G.f("]");
-   }
-
-   @Override
-   public void a(ub $$0) {
-      this.G.f("[").b(y).f(";");
-      int[] $$1 = $$0.g();
-
-      for (int $$2 = 0; $$2 < $$1.length && $$2 < 128; $$2++) {
-         this.G.f(" ").b(wu.b(String.valueOf($$1[$$2])).a(h));
-         if ($$2 != $$1.length - 1) {
-            this.G.f(s);
-         }
-      }
-
-      if ($$1.length > 128) {
-         this.G.b(v);
-      }
-
-      this.G.f("]");
-   }
-
-   @Override
-   public void a(ue $$0) {
-      this.G.f("[").b(z).f(";");
-      long[] $$1 = $$0.g();
-
-      for (int $$2 = 0; $$2 < $$1.length && $$2 < 128; $$2++) {
-         wu $$3 = wu.b(String.valueOf($$1[$$2])).a(h);
-         this.G.f(" ").b($$3).b(z);
-         if ($$2 != $$1.length - 1) {
-            this.G.f(s);
-         }
-      }
-
-      if ($$1.length > 128) {
-         this.G.b(v);
-      }
-
-      this.G.f("]");
-   }
-
-   @Override
-   public void a(ud $$0) {
-      if ($$0.isEmpty()) {
-         this.G.f("[]");
-      } else if (this.F >= 64) {
-         this.G.f("[" + v + "]");
-      } else if (e.contains($$0.f()) && $$0.size() <= 8) {
-         this.G.f("[");
-
-         for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-            if ($$1 != 0) {
-               this.G.f(u);
-            }
-
-            this.a($$0.k($$1), false);
-         }
-
-         this.G.f("]");
-      } else {
-         this.G.f("[");
-         if (!this.D.isEmpty()) {
-            this.G.f("\n");
-         }
-
-         String $$2 = Strings.repeat(this.D, this.E + 1);
-
-         for (int $$3 = 0; $$3 < $$0.size() && $$3 < 128; $$3++) {
-            this.G.f($$2);
-            this.a($$0.k($$3), true);
-            if ($$3 != $$0.size() - 1) {
-               this.G.f(this.D.isEmpty() ? u : t);
-            }
-         }
-
-         if ($$0.size() > 128) {
-            this.G.f($$2 + v);
-         }
-
-         if (!this.D.isEmpty()) {
-            this.G.f("\n" + Strings.repeat(this.D, this.E));
-         }
-
-         this.G.f("]");
+   default void b(DataInput $$0, uu $$1, uj $$2) throws IOException {
+      switch ($$1.b(this)) {
+         case a:
+            this.a($$0, $$1, $$2);
+         case c:
+         default:
+            break;
+         case b:
+            this.b($$0, $$2);
       }
    }
 
-   @Override
-   public void a(tx $$0) {
-      if ($$0.g()) {
-         this.G.f("{}");
-      } else if (this.F >= 64) {
-         this.G.f("{" + v + "}");
-      } else {
-         this.G.f("{");
-         Collection<String> $$1 = $$0.e();
-         if (a.isDebugEnabled()) {
-            List<String> $$2 = Lists.newArrayList($$0.e());
-            Collections.sort($$2);
-            $$1 = $$2;
-         }
+   void a(DataInput var1, int var2, uj var3) throws IOException;
 
-         if (!this.D.isEmpty()) {
-            this.G.f("\n");
-         }
+   void b(DataInput var1, uj var2) throws IOException;
 
-         String $$3 = Strings.repeat(this.D, this.E + 1);
-         Iterator<String> $$4 = $$1.iterator();
-
-         while ($$4.hasNext()) {
-            String $$5 = $$4.next();
-            this.G.f($$3).b(a($$5)).f(": ");
-            this.a($$0.c($$5), true);
-            if ($$4.hasNext()) {
-               this.G.f(this.D.isEmpty() ? u : t);
-            }
-         }
-
-         if (!this.D.isEmpty()) {
-            this.G.f("\n" + Strings.repeat(this.D, this.E));
-         }
-
-         this.G.f("}");
-      }
+   default boolean d() {
+      return false;
    }
 
-   private void a(uu $$0, boolean $$1) {
-      if ($$1) {
-         this.E++;
-      }
+   String a();
 
-      this.F++;
+   String b();
 
-      try {
-         $$0.a(this);
-      } finally {
-         if ($$1) {
-            this.E--;
+   static uz<uc> a(final int $$0) {
+      return new uz<uc>() {
+         private IOException c() {
+            return new IOException("Invalid tag id: " + $$0);
          }
 
-         this.F--;
-      }
+         public uc a(DataInput $$0x, uj $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public uu.b a(DataInput $$0x, uu $$1, uj $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void a(DataInput $$0x, int $$1, uj $$2) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public void b(DataInput $$0x, uj $$1) throws IOException {
+            throw this.c();
+         }
+
+         @Override
+         public String a() {
+            return "INVALID[" + $$0 + "]";
+         }
+
+         @Override
+         public String b() {
+            return "UNKNOWN_" + $$0;
+         }
+      };
    }
 
-   protected static wu a(String $$0) {
-      if (j.matcher($$0).matches()) {
-         return wu.b($$0).a(f);
-      } else {
-         String $$1 = us.b($$0);
-         String $$2 = $$1.substring(0, 1);
-         wu $$3 = wu.b($$1.substring(1, $$1.length() - 1)).a(f);
-         return wu.b($$2).b($$3).f($$2);
+   public interface a<T extends ux> extends uz<T> {
+      @Override
+      default void b(DataInput $$0, uj $$1) throws IOException {
+         $$0.skipBytes(this.c());
       }
+
+      @Override
+      default void a(DataInput $$0, int $$1, uj $$2) throws IOException {
+         $$0.skipBytes(this.c() * $$1);
+      }
+
+      int c();
    }
 
-   @Override
-   public void a(tz $$0) {
+   public interface b<T extends ux> extends uz<T> {
+      @Override
+      default void a(DataInput $$0, int $$1, uj $$2) throws IOException {
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            this.b($$0, $$2);
+         }
+      }
    }
 }

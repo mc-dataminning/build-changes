@@ -1,95 +1,37 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetSocketAddress;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
 public class gvr {
-   static final Logger a = LogUtils.getLogger();
-   final fnl b;
-   volatile boolean c;
-   @Nullable
-   vp d;
-
-   public gvr(fnl $$0) {
-      this.b = $$0;
-   }
-
-   public void a(final fbv $$0, gad $$1) {
-      final ffw $$2 = ffw.Q();
-      $$2.aR();
-      $$2.aV().c(wu.c("mco.connect.success"));
-      final String $$3 = $$1.a();
-      final int $$4 = $$1.b();
-      (new Thread("Realms-connect-task") {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
-
-            try {
-               $$0 = new InetSocketAddress($$3, $$4);
-               if (gvr.this.c) {
-                  return;
-               }
-
-               gvr.this.d = vp.a($$0, $$2.m.az(), $$2.aN().n());
-               if (gvr.this.c) {
-                  return;
-               }
-
-               fyk $$1 = new fyk(gvr.this.d, $$2, $$0.e($$3), gvr.this.b, false, null, $$0xx -> {
-               }, null);
-               if ($$0.i()) {
-                  $$1.a($$0.o);
-               }
-
-               if (gvr.this.c) {
-                  return;
-               }
-
-               gvr.this.d.a($$3, $$4, $$1);
-               if (gvr.this.c) {
-                  return;
-               }
-
-               gvr.this.d.a(new air($$2.X().c(), $$2.X().b()));
-               $$2.a(fzr.a($$0));
-               $$2.aZ().a(gdp.c.c, String.valueOf($$0.a), $$0.c);
-               $$2.ae().a(gvr.this.d, gsk.c.b);
-            } catch (Exception var5) {
-               $$2.ae().i();
-               if (gvr.this.c) {
-                  return;
-               }
-
-               gvr.a.error("Couldn't connect to world", var5);
-               String $$3 = var5.toString();
-               if ($$0 != null) {
-                  String $$4 = $$0 + ":" + $$4;
-                  $$3 = $$3.replaceAll($$4, "");
-               }
-
-               gvq $$5 = new gvq(gvr.this.b, wt.r, wu.a("disconnect.genericReason", $$3));
-               $$2.execute(() -> $$2.a($$5));
-            }
-         }
-      }).start();
-   }
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
 
    public void a() {
-      this.c = true;
-      if (this.d != null && this.d.i()) {
-         this.d.a(wu.c("disconnect.genericReason"));
-         this.d.n();
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
       }
    }
 
-   public void b() {
-      if (this.d != null) {
-         if (this.d.i()) {
-            this.d.b();
-         } else {
-            this.d.n();
-         }
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
       }
+
+      this.d = $$0;
+   }
+
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
+   }
+
+   public void a(gvg $$0) {
+      this.b.ifPresent($$1 -> $$0.send(gvh.e, $$1x -> {
+            $$1x.a(gvj.p, this.a($$1));
+            $$1x.a(gvj.q, (int)this.c);
+         }));
    }
 }

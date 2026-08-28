@@ -1,91 +1,68 @@
-import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
-import java.nio.file.Path;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.tuple.Pair;
 
-public interface bnb {
-   bnb f = (bnb)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bna.a() : new bnb.a());
+public class bnb implements bnc {
+   public static final bnb a = new bnb();
 
-   boolean a(bmz var1);
+   private bnb() {
+   }
 
-   Path b();
+   @Override
+   public void a() {
+   }
 
-   boolean c();
+   @Override
+   public void b() {
+   }
 
-   boolean d();
+   @Override
+   public void a(String $$0) {
+   }
 
-   void a(float var1);
+   @Override
+   public void a(Supplier<String> $$0) {
+   }
 
-   void a(vq var1, zd<?> var2, SocketAddress var3, int var4);
+   @Override
+   public void a(bok $$0) {
+   }
 
-   void b(vq var1, zd<?> var2, SocketAddress var3, int var4);
+   @Override
+   public void c() {
+   }
 
-   void a(dwa var1, dbn var2, dvz var3, int var4);
+   @Override
+   public void b(String $$0) {
+   }
 
-   void b(dwa var1, dbn var2, dvz var3, int var4);
+   @Override
+   public void b(Supplier<String> $$0) {
+   }
+
+   @Override
+   public void a(String $$0, int $$1) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+   }
+
+   @Override
+   public bnd d() {
+      return bmz.a;
+   }
 
    @Nullable
-   bne e();
+   @Override
+   public bmx.a c(String $$0) {
+      return null;
+   }
 
-   @Nullable
-   bne a(dbn var1, akj<dcg> var2, String var3);
-
-   public static class a implements bnb {
-      private static final Logger b = LogUtils.getLogger();
-      static final bne a = () -> {
-      };
-
-      @Override
-      public boolean a(bmz $$0) {
-         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
-      }
-
-      @Override
-      public Path b() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
-      }
-
-      @Override
-      public boolean c() {
-         return false;
-      }
-
-      @Override
-      public boolean d() {
-         return false;
-      }
-
-      @Override
-      public void a(vq $$0, zd<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void b(vq $$0, zd<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void a(dwa $$0, dbn $$1, dvz $$2, int $$3) {
-      }
-
-      @Override
-      public void b(dwa $$0, dbn $$1, dvz $$2, int $$3) {
-      }
-
-      @Override
-      public void a(float $$0) {
-      }
-
-      @Override
-      public bne e() {
-         return a;
-      }
-
-      @Nullable
-      @Override
-      public bne a(dbn $$0, akj<dcg> $$1, String $$2) {
-         return null;
-      }
+   @Override
+   public Set<Pair<String, bok>> e() {
+      return ImmutableSet.of();
    }
 }

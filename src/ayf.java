@@ -1,49 +1,65 @@
-import java.util.function.Supplier;
-import org.apache.commons.lang3.ObjectUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public record ayf(ayf.a a, String b) {
-   public static ayf a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
-      String $$4 = $$1.get();
-      if (!$$0.equals($$4)) {
-         return new ayf(ayf.a.c, $$2 + " brand changed to '" + $$4 + "'");
+public record ayf<T extends Comparable<T>>(T b, T c) {
+   public static final Codec<ayf<Integer>> a = a(Codec.INT);
+
+   public ayf(T b, T c) {
+      if (b.compareTo(c) > 0) {
+         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
       } else {
-         return $$3.getSigners() == null
-            ? new ayf(ayf.a.b, $$2 + " jar signature invalidated")
-            : new ayf(ayf.a.a, $$2 + " jar signature and brand is untouched");
+         this.b = b;
+         this.c = c;
       }
    }
 
-   public boolean a() {
-      return this.a.e;
+   public ayf(T $$0) {
+      this($$0, $$0);
    }
 
-   public ayf a(ayf $$0) {
-      return new ayf((ayf.a)ObjectUtils.max(new ayf.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
+   public static <T extends Comparable<T>> Codec<ayf<T>> a(Codec<T> $$0) {
+      return axv.a($$0, "min_inclusive", "max_inclusive", ayf::a, ayf::a, ayf::b);
    }
 
-   public String b() {
-      return this.a.d + " " + this.b;
+   public static <T extends Comparable<T>> Codec<ayf<T>> a(Codec<T> $$0, T $$1, T $$2) {
+      return a($$0)
+         .validate(
+            $$2x -> {
+               if ($$2x.a().compareTo($$1) < 0) {
+                  return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+               } else {
+                  return $$2x.b().compareTo($$2) > 0
+                     ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                     : DataResult.success($$2x);
+               }
+            }
+         );
    }
 
-   public ayf.a c() {
-      return this.a;
+   public static <T extends Comparable<T>> DataResult<ayf<T>> a(T $$0, T $$1) {
+      return $$0.compareTo($$1) <= 0
+         ? DataResult.success(new ayf($$0, $$1))
+         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
    }
 
-   public String d() {
+   public boolean a(T $$0) {
+      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
+   }
+
+   public boolean a(ayf<T> $$0) {
+      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + ", " + this.c + "]";
+   }
+
+   public T a() {
       return this.b;
    }
 
-   public static enum a {
-      a("Probably not.", false),
-      b("Very likely;", true),
-      c("Definitely;", true);
-
-      final String d;
-      final boolean e;
-
-      private a(final String $$0, final boolean $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
+   public T b() {
+      return this.c;
    }
 }

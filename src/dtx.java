@@ -1,21 +1,23 @@
-public enum dtx implements azc {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum dtx implements azj {
+   a("tip_merge"),
+   b("tip"),
+   c("frustum"),
+   d("middle"),
+   e("base");
 
-   private final String d;
+   private final String f;
 
    private dtx(final String $$0) {
-      this.d = $$0;
+      this.f = $$0;
    }
 
    @Override
    public String toString() {
-      return this.c();
+      return this.f;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.f;
    }
 }

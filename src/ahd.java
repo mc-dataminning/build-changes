@@ -1,41 +1,41 @@
-public class ahd implements zb<agb> {
-   public static final ys<vr, ahd> a = zb.a(ahd::a, ahd::new);
-   private final int b;
-   private final akk c;
+public class ahd implements zf<agh> {
+   public static final yw<vv, ahd> a = zf.a(ahd::a, ahd::new);
+   private final jd b;
+   private final int c;
    private final boolean d;
 
-   public ahd(int $$0, cyl<?> $$1, boolean $$2) {
+   public ahd(jd $$0, int $$1, boolean $$2) {
       this.b = $$0;
-      this.c = $$1.a();
+      this.c = $$1;
       this.d = $$2;
    }
 
-   private ahd(vr $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.q();
+   private ahd(vv $$0) {
+      this.b = $$0.e();
+      this.c = $$0.l();
       this.d = $$0.readBoolean();
    }
 
-   private void a(vr $$0) {
-      $$0.k(this.b);
-      $$0.a(this.c);
+   private void a(vv $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
       $$0.a(this.d);
    }
 
    @Override
-   public zd<ahd> a() {
-      return afz.bI;
+   public zh<ahd> a() {
+      return agf.bz;
    }
 
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public jd b() {
       return this.b;
    }
 
-   public akk e() {
+   public int e() {
       return this.c;
    }
 

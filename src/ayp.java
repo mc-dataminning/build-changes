@@ -1,37 +1,192 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.RecordBuilder.AbstractUniversalBuilder;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public class ayp {
-   public static final Codec<ayp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(axo.n.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), axo.n.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
-            .apply($$0, ayp::new)
-   );
-   private final Optional<Pattern> b;
-   private final Predicate<String> c;
-   private final Optional<Pattern> d;
-   private final Predicate<String> e;
-   private final Predicate<akk> f;
+public class ayp implements DynamicOps<azr> {
+   public static final ayp a = new ayp();
 
-   private ayp(Optional<Pattern> $$0, Optional<Pattern> $$1) {
-      this.b = $$0;
-      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.d = $$1;
-      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
+   private ayp() {
    }
 
-   public Predicate<String> a() {
-      return this.c;
+   public <U> U a(DynamicOps<U> $$0, azr $$1) {
+      return (U)$$0.empty();
    }
 
-   public Predicate<String> b() {
-      return this.e;
+   public azr a() {
+      return azr.a;
    }
 
-   public Predicate<akk> c() {
-      return this.f;
+   public azr b() {
+      return azr.a;
+   }
+
+   public azr c() {
+      return azr.a;
+   }
+
+   public azr a(Number $$0) {
+      return azr.a;
+   }
+
+   public azr a(byte $$0) {
+      return azr.a;
+   }
+
+   public azr a(short $$0) {
+      return azr.a;
+   }
+
+   public azr a(int $$0) {
+      return azr.a;
+   }
+
+   public azr a(long $$0) {
+      return azr.a;
+   }
+
+   public azr a(float $$0) {
+      return azr.a;
+   }
+
+   public azr a(double $$0) {
+      return azr.a;
+   }
+
+   public azr a(boolean $$0) {
+      return azr.a;
+   }
+
+   public azr a(String $$0) {
+      return azr.a;
+   }
+
+   public DataResult<Number> a(azr $$0) {
+      return DataResult.error(() -> "Not a number");
+   }
+
+   public DataResult<Boolean> b(azr $$0) {
+      return DataResult.error(() -> "Not a boolean");
+   }
+
+   public DataResult<String> c(azr $$0) {
+      return DataResult.error(() -> "Not a string");
+   }
+
+   public DataResult<azr> a(azr $$0, azr $$1) {
+      return DataResult.success(azr.a);
+   }
+
+   public DataResult<azr> a(azr $$0, List<azr> $$1) {
+      return DataResult.success(azr.a);
+   }
+
+   public DataResult<azr> a(azr $$0, azr $$1, azr $$2) {
+      return DataResult.success(azr.a);
+   }
+
+   public DataResult<azr> a(azr $$0, Map<azr, azr> $$1) {
+      return DataResult.success(azr.a);
+   }
+
+   public DataResult<azr> a(azr $$0, MapLike<azr> $$1) {
+      return DataResult.success(azr.a);
+   }
+
+   public DataResult<Stream<Pair<azr, azr>>> d(azr $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Consumer<BiConsumer<azr, azr>>> e(azr $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<MapLike<azr>> f(azr $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Stream<azr>> g(azr $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<Consumer<Consumer<azr>>> h(azr $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<ByteBuffer> i(azr $$0) {
+      return DataResult.error(() -> "Not a byte list");
+   }
+
+   public DataResult<IntStream> j(azr $$0) {
+      return DataResult.error(() -> "Not an int list");
+   }
+
+   public DataResult<LongStream> k(azr $$0) {
+      return DataResult.error(() -> "Not a long list");
+   }
+
+   public azr a(Stream<Pair<azr, azr>> $$0) {
+      return azr.a;
+   }
+
+   public azr a(Map<azr, azr> $$0) {
+      return azr.a;
+   }
+
+   public azr b(Stream<azr> $$0) {
+      return azr.a;
+   }
+
+   public azr a(ByteBuffer $$0) {
+      return azr.a;
+   }
+
+   public azr a(IntStream $$0) {
+      return azr.a;
+   }
+
+   public azr a(LongStream $$0) {
+      return azr.a;
+   }
+
+   public azr a(azr $$0, String $$1) {
+      return $$0;
+   }
+
+   public RecordBuilder<azr> mapBuilder() {
+      return new ayp.a(this);
+   }
+
+   @Override
+   public String toString() {
+      return "Null";
+   }
+
+   static final class a extends AbstractUniversalBuilder<azr, azr> {
+      public a(DynamicOps<azr> $$0) {
+         super($$0);
+      }
+
+      protected azr a() {
+         return azr.a;
+      }
+
+      protected azr a(azr $$0, azr $$1, azr $$2) {
+         return $$2;
+      }
+
+      protected DataResult<azr> a(azr $$0, azr $$1) {
+         return DataResult.success($$1);
+      }
    }
 }

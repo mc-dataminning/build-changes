@@ -1,178 +1,130 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Locale;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.lwjgl.system.MemoryStack;
 
 public interface fbg {
-   wu a = wu.c("mco.errorMessage.noDetails");
-   Logger b = LogUtils.getLogger();
+   fbg a(float var1, float var2, float var3);
 
-   int a();
+   fbg a(int var1, int var2, int var3, int var4);
 
-   wu b();
+   fbg a(float var1, float var2);
 
-   String c();
+   fbg a(int var1, int var2);
 
-   static fbg a(int $$0, String $$1) {
-      if ($$0 == 429) {
-         return fbg.b.c;
-      } else if (Strings.isNullOrEmpty($$1)) {
-         return fbg.b.b($$0);
-      } else {
-         try {
-            JsonObject $$2 = JsonParser.parseString($$1).getAsJsonObject();
-            String $$3 = axw.a($$2, "reason", null);
-            String $$4 = axw.a($$2, "errorMsg", null);
-            int $$5 = axw.a($$2, "errorCode", -1);
-            if ($$4 != null || $$3 != null || $$5 != -1) {
-               return new fbg.c($$0, $$5 != -1 ? $$5 : $$0, $$3, $$4);
-            }
-         } catch (Exception var6) {
-            b.error("Could not parse RealmsError", var6);
-         }
+   fbg b(int var1, int var2);
 
-         return new fbg.d($$0, $$1);
-      }
+   fbg b(float var1, float var2, float var3);
+
+   default void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      this.a($$0, $$1, $$2);
+      this.a($$3);
+      this.a($$4, $$5);
+      this.b($$6);
+      this.c($$7);
+      this.b($$8, $$9, $$10);
    }
 
-   public static record a(String d) implements fbg {
-      public static final int c = 401;
-
-      @Override
-      public int a() {
-         return 401;
-      }
-
-      @Override
-      public wu b() {
-         return wu.b(this.d);
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms authentication error with message '%s'", this.d);
-      }
+   default fbg a(float $$0, float $$1, float $$2, float $$3) {
+      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
    }
 
-   public static record b(int e, @Nullable wu f) implements fbg {
-      public static final fbg.b c = new fbg.b(429, wu.c("mco.errorMessage.serviceBusy"));
-      public static final wu d = wu.c("mco.errorMessage.retry");
-
-      public static fbg.b a(String $$0) {
-         return new fbg.b(500, wu.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
-      }
-
-      public static fbg.b a(fcq $$0) {
-         return new fbg.b(500, wu.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
-      }
-
-      public static fbg.b a(int $$0) {
-         return new fbg.b($$0, d);
-      }
-
-      public static fbg.b b(int $$0) {
-         return new fbg.b($$0, null);
-      }
-
-      @Override
-      public int a() {
-         return this.e;
-      }
-
-      @Override
-      public wu b() {
-         return this.f != null ? this.f : a;
-      }
-
-      @Override
-      public String c() {
-         return this.f != null
-            ? String.format(Locale.ROOT, "Realms service error (%d) with message '%s'", this.e, this.f.getString())
-            : String.format(Locale.ROOT, "Realms service error (%d) with no payload", this.e);
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      @Nullable
-      public wu e() {
-         return this.f;
-      }
+   default fbg a(int $$0) {
+      return this.a(axx.b.b($$0), axx.b.c($$0), axx.b.d($$0), axx.b.a($$0));
    }
 
-   public static record c(int c, int d, @Nullable String e, @Nullable String f) implements fbg {
-      @Override
-      public int a() {
-         return this.d;
-      }
+   default fbg d(int $$0) {
+      return this.a(axx.b.b($$0, -1));
+   }
 
-      @Override
-      public wu b() {
-         String $$0 = "mco.errorMessage." + this.d;
-         if (gqw.a($$0)) {
-            return wu.c($$0);
-         } else {
-            if (this.e != null) {
-               String $$1 = "mco.errorReason." + this.e;
-               if (gqw.a($$1)) {
-                  return wu.c($$1);
-               }
+   default fbg c(int $$0) {
+      return this.b($$0 & 65535, $$0 >> 16 & 65535);
+   }
+
+   default fbg b(int $$0) {
+      return this.a($$0 & 65535, $$0 >> 16 & 65535);
+   }
+
+   default void a(fbc.a $$0, gfq $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
+      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
+   }
+
+   default void a(fbc.a $$0, gfq $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
+      int[] $$10 = $$1.b();
+      kh $$11 = $$1.e().q();
+      Matrix4f $$12 = $$0.a();
+      Vector3f $$13 = $$0.a((float)$$11.u(), (float)$$11.v(), (float)$$11.w(), new Vector3f());
+      int $$14 = 8;
+      int $$15 = $$10.length / 8;
+      int $$16 = (int)($$6 * 255.0F);
+      MemoryStack $$17 = MemoryStack.stackPush();
+
+      try {
+         ByteBuffer $$18 = $$17.malloc(fba.b.b());
+         IntBuffer $$19 = $$18.asIntBuffer();
+
+         for (int $$20 = 0; $$20 < $$15; $$20++) {
+            $$19.clear();
+            $$19.put($$10, $$20 * 8, 8);
+            float $$21 = $$18.getFloat(0);
+            float $$22 = $$18.getFloat(4);
+            float $$23 = $$18.getFloat(8);
+            float $$27;
+            float $$28;
+            float $$29;
+            if ($$9) {
+               float $$24 = (float)($$18.get(12) & 255);
+               float $$25 = (float)($$18.get(13) & 255);
+               float $$26 = (float)($$18.get(14) & 255);
+               $$27 = $$24 * $$2[$$20] * $$3;
+               $$28 = $$25 * $$2[$$20] * $$4;
+               $$29 = $$26 * $$2[$$20] * $$5;
+            } else {
+               $$27 = $$2[$$20] * $$3 * 255.0F;
+               $$28 = $$2[$$20] * $$4 * 255.0F;
+               $$29 = $$2[$$20] * $$5 * 255.0F;
             }
 
-            return (wu)(this.f != null ? wu.b(this.f) : a);
+            int $$33 = axx.b.a($$16, (int)$$27, (int)$$28, (int)$$29);
+            int $$34 = $$7[$$20];
+            float $$35 = $$18.getFloat(16);
+            float $$36 = $$18.getFloat(20);
+            Vector3f $$37 = $$12.transformPosition($$21, $$22, $$23, new Vector3f());
+            this.a($$37.x(), $$37.y(), $$37.z(), $$33, $$35, $$36, $$8, $$34, $$13.x(), $$13.y(), $$13.z());
          }
+      } catch (Throwable var34) {
+         if ($$17 != null) {
+            try {
+               $$17.close();
+            } catch (Throwable var33) {
+               var34.addSuppressed(var33);
+            }
+         }
+
+         throw var34;
       }
 
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d/%d/%s) with message '%s'", this.c, this.d, this.e, this.f);
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public int e() {
-         return this.d;
-      }
-
-      @Nullable
-      public String f() {
-         return this.e;
-      }
-
-      @Nullable
-      public String g() {
-         return this.f;
+      if ($$17 != null) {
+         $$17.close();
       }
    }
 
-   public static record d(int c, String d) implements fbg {
-      @Override
-      public int a() {
-         return this.c;
-      }
+   default fbg a(Vector3f $$0) {
+      return this.a($$0.x(), $$0.y(), $$0.z());
+   }
 
-      @Override
-      public wu b() {
-         return wu.b(this.d);
-      }
+   default fbg a(fbc.a $$0, float $$1, float $$2, float $$3) {
+      return this.a($$0.a(), $$1, $$2, $$3);
+   }
 
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d) with raw payload '%s'", this.c, this.d);
-      }
+   default fbg a(Matrix4f $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
+      return this.a($$4.x(), $$4.y(), $$4.z());
+   }
 
-      public int d() {
-         return this.c;
-      }
-
-      public String e() {
-         return this.d;
-      }
+   default fbg b(fbc.a $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
+      return this.b($$4.x(), $$4.y(), $$4.z());
    }
 }

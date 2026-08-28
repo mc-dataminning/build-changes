@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.joml.Matrix3f;
 
-public enum h implements azc {
+public enum h implements azj {
    a("identity", i.a, false, false, false),
    b("rot_180_face_xy", i.a, true, true, false),
    c("rot_180_face_xz", i.a, true, false, true),
@@ -61,12 +61,12 @@ public enum h implements azc {
    private final Matrix3f X;
    private final String Y;
    @Nullable
-   private Map<jf, jf> Z;
+   private Map<ji, ji> Z;
    private final boolean aa;
    private final boolean ab;
    private final boolean ac;
    private final i ad;
-   private static final h[][] ae = ac.a(new h[values().length][values().length], $$0 -> {
+   private static final h[][] ae = ad.a(new h[values().length][values().length], $$0 -> {
       Map<Pair<i, BooleanList>, h> $$1 = Arrays.stream(values()).collect(Collectors.toMap($$0x -> Pair.of($$0x.ad, $$0x.d()), $$0x -> $$0x));
 
       for (h $$2 : values()) {
@@ -122,17 +122,17 @@ public enum h implements azc {
       return this.Y;
    }
 
-   public jf a(jf $$0) {
+   public ji a(ji $$0) {
       if (this.Z == null) {
-         this.Z = Maps.newEnumMap(jf.class);
-         jf.a[] $$1 = jf.a.values();
+         this.Z = Maps.newEnumMap(ji.class);
+         ji.a[] $$1 = ji.a.values();
 
-         for (jf $$2 : jf.values()) {
-            jf.a $$3 = $$2.o();
-            jf.b $$4 = $$2.f();
-            jf.a $$5 = $$1[this.ad.a($$3.ordinal())];
-            jf.b $$6 = this.a($$5) ? $$4.c() : $$4;
-            jf $$7 = jf.a($$5, $$6);
+         for (ji $$2 : ji.values()) {
+            ji.a $$3 = $$2.o();
+            ji.b $$4 = $$2.f();
+            ji.a $$5 = $$1[this.ad.a($$3.ordinal())];
+            ji.b $$6 = this.a($$5) ? $$4.c() : $$4;
+            ji $$7 = ji.a($$5, $$6);
             this.Z.put($$2, $$7);
          }
       }
@@ -140,7 +140,7 @@ public enum h implements azc {
       return this.Z.get($$0);
    }
 
-   public boolean a(jf.a $$0) {
+   public boolean a(ji.a $$0) {
       switch ($$0) {
          case a:
             return this.aa;
@@ -152,7 +152,7 @@ public enum h implements azc {
       }
    }
 
-   public jh a(jh $$0) {
-      return jh.a(this.a($$0.a()), this.a($$0.b()));
+   public jk a(jk $$0) {
+      return jk.a(this.a($$0.a()), this.a($$0.b()));
    }
 }

@@ -1,188 +1,94 @@
-public class aga {
-   public static final wc.a<agb, wf> a = zg.c(
-      vq.b,
-      $$0 -> $$0.a(afz.bf, agd.a)
-            .a(afz.bg, age.a)
-            .a(afz.bh, agf.a)
-            .a(afz.bi, agg.a)
-            .a(afz.bj, agh.a)
-            .a(afz.bk, agi.a)
-            .a(afz.bl, agj.a)
-            .a(afz.bm, agk.a)
-            .a(afz.bn, agl.a)
-            .a(afz.bo, agm.a)
-            .a(zr.j, zt.a)
-            .a(afz.bp, agn.a)
-            .a(afz.bq, ago.b)
-            .a(afz.br, agp.a)
-            .a(afz.bs, agq.a)
-            .a(afz.bt, agr.a)
-            .a(afz.bu, ags.a)
-            .a(abj.b, abl.a)
-            .a(zr.k, zu.a)
-            .a(afz.bv, agt.a)
-            .a(afz.bw, agu.b)
-            .a(afz.bx, agv.a)
-            .a(afz.by, agw.a)
-            .a(afz.bz, agx.a)
-            .a(zr.l, zv.a)
-            .a(afz.bA, agy.a)
-            .a(afz.bB, agz.a.i)
-            .a(afz.bC, agz.b.i)
-            .a(afz.bD, agz.c.i)
-            .a(afz.bE, agz.d.i)
-            .a(afz.bF, aha.a)
-            .a(afz.bG, ahb.a)
-            .a(afz.bH, ahc.a)
-            .a(ajd.b, ajf.a)
-            .a(afz.bI, ahd.a)
-            .a(afz.bJ, ahe.a)
-            .a(afz.bK, ahf.a)
-            .a(afz.bL, ahg.a)
-            .a(afz.bM, ahh.a)
-            .a(zr.m, zw.a)
-            .a(afz.bN, ahi.a)
-            .a(afz.bO, ahj.a)
-            .a(afz.bP, ahk.a)
-            .a(zr.n, zx.a)
-            .a(afz.bQ, ahl.a)
-            .a(afz.bR, ahm.a)
-            .a(afz.bS, ahn.a)
-            .a(afz.bT, aho.a)
-            .a(afz.bU, ahp.a)
-            .a(afz.bV, ahq.a)
-            .a(afz.bW, ahr.a)
-            .a(afz.bX, ahs.a)
-            .a(afz.bY, aht.a)
-            .a(afz.bZ, ahu.a)
-            .a(afz.ca, ahv.a)
-            .a(afz.cb, ahw.a)
-            .a(afz.cc, ahx.a)
-            .a(afz.cd, ahy.a)
-   );
-   public static final wc.a<abn, wf> b = zg.d(
-      vq.b,
-      $$0 -> $$0.a(afz.a, abz::new, new aby())
-            .a(afz.c, abo.a)
-            .a(afz.d, abp.a)
-            .a(afz.e, abq.a)
-            .a(afz.f, abr.a)
-            .a(afz.g, abs.a)
-            .a(afz.h, abt.a)
-            .a(afz.i, abu.a)
-            .a(afz.j, abv.a)
-            .a(afz.k, abw.a)
-            .a(afz.l, abx.a)
-            .a(afz.m, aca.a)
-            .a(afz.n, acb.a)
-            .a(afz.o, acc.b)
-            .a(afz.p, acd.a)
-            .a(afz.q, ace.a)
-            .a(afz.r, acf.a)
-            .a(afz.s, acg.a)
-            .a(afz.t, ach.a)
-            .a(afz.u, aci.a)
-            .a(afz.v, acj.a)
-            .a(afz.w, ack.a)
-            .a(abj.a, abi.a)
-            .a(afz.x, acl.a)
-            .a(afz.y, acm.a)
-            .a(zr.a, zi.a)
-            .a(afz.z, acn.a)
-            .a(afz.A, aco.a)
-            .a(afz.B, acp.a)
-            .a(zr.b, zj.a)
-            .a(afz.C, acq.a)
-            .a(afz.D, acr.a)
-            .a(afz.E, acs.a)
-            .a(afz.F, act.a)
-            .a(afz.G, acu.a)
-            .a(afz.H, acv.a)
-            .a(afz.I, acw.a)
-            .a(afz.J, acx.a)
-            .a(zr.c, zk.a)
-            .a(afz.K, acz.a)
-            .a(afz.L, ada.a)
-            .a(afz.M, adb.a)
-            .a(afz.N, adc.a)
-            .a(afz.O, ade.a)
-            .a(afz.P, adf.a)
-            .a(afz.Q, adg.a)
-            .a(afz.R, adh.a.j)
-            .a(afz.S, adh.b.j)
-            .a(afz.T, adh.c.j)
-            .a(afz.U, adi.a)
-            .a(afz.V, adj.a)
-            .a(afz.W, adk.a)
-            .a(afz.X, adl.a)
-            .a(zr.d, zl.a)
-            .a(ajd.a, ajc.a)
-            .a(afz.Y, adm.a)
-            .a(afz.Z, adn.a)
-            .a(afz.aa, ado.a)
-            .a(afz.ab, adp.a)
-            .a(afz.ac, adq.b)
-            .a(afz.ad, adr.a)
-            .a(afz.ae, ads.a)
-            .a(afz.af, adt.a)
-            .a(afz.ag, adu.a)
-            .a(afz.ah, adv.a)
-            .a(afz.ai, adx.a)
-            .a(afz.aj, ady.a)
-            .a(afz.ak, adz.a)
-            .a(afz.ce, aea.a)
-            .a(zr.e, zm.a)
-            .a(zr.f, zn.b)
-            .a(afz.al, aeb.a)
-            .a(afz.am, aec.a)
-            .a(afz.an, aed.a)
-            .a(afz.ao, aee.a)
-            .a(afz.ap, aef.a)
-            .a(afz.aq, aeg.a)
-            .a(afz.ar, aeh.a)
-            .a(afz.as, aei.a)
-            .a(afz.at, aej.a)
-            .a(afz.au, aek.a)
-            .a(afz.av, ael.a)
-            .a(afz.aw, aem.a)
-            .a(afz.ax, aen.a)
-            .a(afz.ay, aeo.a)
-            .a(afz.az, aep.a)
-            .a(afz.aA, aeq.a)
-            .a(afz.aB, aer.a)
-            .a(afz.aC, aes.a)
-            .a(afz.aD, aet.a)
-            .a(afz.aE, aeu.a)
-            .a(afz.aF, aev.a)
-            .a(afz.aG, aew.a)
-            .a(afz.aH, aex.a)
-            .a(afz.aI, aey.a)
-            .a(afz.aJ, aez.a)
-            .a(afz.aK, afa.a)
-            .a(afz.aL, afb.a)
-            .a(afz.aM, afc.a)
-            .a(afz.aN, afd.a)
-            .a(afz.aO, afe.a)
-            .a(afz.aP, aff.a)
-            .a(afz.aQ, afg.a)
-            .a(afz.aR, afh.a)
-            .a(afz.aS, afi.a)
-            .a(afz.aT, afj.b)
-            .a(afz.aU, afk.a)
-            .a(zr.g, zo.a)
-            .a(afz.aV, afl.a)
-            .a(afz.aW, afm.a)
-            .a(afz.aX, afn.a)
-            .a(afz.aY, afo.a)
-            .a(afz.aZ, afp.a)
-            .a(afz.cf, afq.a)
-            .a(afz.cg, afr.a)
-            .a(zr.h, zp.a)
-            .a(afz.ba, afs.a)
-            .a(afz.bb, aft.a)
-            .a(afz.bc, afu.a)
-            .a(afz.bd, afv.a)
-            .a(zr.i, zq.a)
-            .a(afz.be, adw.a)
-   );
+public class aga implements zf<abt> {
+   public static final yw<wj, aga> a = zf.a(aga::a, aga::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private static final int e = 8;
+   private final int f;
+   private final jm<brw> g;
+   private final int h;
+   private final int i;
+   private final byte j;
+
+   public aga(int $$0, bry $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1.c();
+      this.h = $$1.e();
+      this.i = $$1.d();
+      byte $$3 = 0;
+      if ($$1.f()) {
+         $$3 = (byte)($$3 | 1);
+      }
+
+      if ($$1.g()) {
+         $$3 = (byte)($$3 | 2);
+      }
+
+      if ($$1.h()) {
+         $$3 = (byte)($$3 | 4);
+      }
+
+      if ($$2) {
+         $$3 = (byte)($$3 | 8);
+      }
+
+      this.j = $$3;
+   }
+
+   private aga(wj $$0) {
+      this.f = $$0.l();
+      this.g = brw.b.decode($$0);
+      this.h = $$0.l();
+      this.i = $$0.l();
+      this.j = $$0.readByte();
+   }
+
+   private void a(wj $$0) {
+      $$0.c(this.f);
+      brw.b.encode($$0, this.g);
+      $$0.c(this.h);
+      $$0.c(this.i);
+      $$0.k(this.j);
+   }
+
+   @Override
+   public zh<aga> a() {
+      return agf.bc;
+   }
+
+   public void a(abt $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.f;
+   }
+
+   public jm<brw> e() {
+      return this.g;
+   }
+
+   public int f() {
+      return this.h;
+   }
+
+   public int g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return (this.j & 2) != 0;
+   }
+
+   public boolean i() {
+      return (this.j & 1) != 0;
+   }
+
+   public boolean j() {
+      return (this.j & 4) != 0;
+   }
+
+   public boolean k() {
+      return (this.j & 8) != 0;
+   }
 }

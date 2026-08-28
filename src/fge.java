@@ -1,51 +1,66 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
-public enum fge {
-   a(new cud(cug.qS)),
-   b(new cud(dfk.cj)),
-   c(new cud(cug.lH)),
-   d(new cud(cug.pe), new cud(cug.oW)),
-   e(new cud(cug.qA), new cud(cug.ou)),
-   f(new cud(cug.qS)),
-   g(new cud(cug.pX)),
-   h(new cud(dfk.b)),
-   i(new cud(cug.qA), new cud(cug.oA)),
-   j(new cud(cug.qS)),
-   k(new cud(dfk.dI)),
-   l(new cud(cug.pc), new cud(cug.pQ)),
-   m(new cud(cug.qS)),
-   n(new cud(cug.pX)),
-   o(new cud(cug.fF)),
-   p(new cud(cug.pT)),
-   q(new cud(cug.pX)),
-   r(new cud(cug.hB));
+public class fge {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 9;
+   private final Path c;
+   private final DataFixer d;
+   private final gdx[] e = new gdx[9];
+   private boolean f;
 
-   public static final List<fge> s = ImmutableList.of(m, n);
-   public static final List<fge> t = ImmutableList.of(j, k, l);
-   public static final List<fge> u = ImmutableList.of(f, g, h, i);
-   public static final List<fge> v = ImmutableList.of(a, d, b, e, c);
-   public static final Map<fge, List<fge>> w = ImmutableMap.of(
-      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
-   );
-   private final List<cud> x;
+   public fge(Path $$0, DataFixer $$1) {
+      this.c = $$0.resolve("hotbar.nbt");
+      this.d = $$1;
 
-   private fge(final cud... $$0) {
-      this.x = ImmutableList.copyOf($$0);
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new gdx();
+      }
    }
 
-   public static List<fge> a(cqx $$0) {
-      return switch ($$0) {
-         case a -> v;
-         case b -> u;
-         case c -> t;
-         case d -> s;
-      };
+   private void b() {
+      try {
+         ua $$0 = un.a(this.c);
+         if ($$0 == null) {
+            return;
+         }
+
+         int $$1 = up.b($$0, 1343);
+         $$0 = azv.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2] = gdx.a.parse(uo.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gdx::new);
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
+      }
    }
 
-   public List<cud> a() {
-      return this.x;
+   public void a() {
+      try {
+         ua $$0 = up.e(new ua());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            gdx $$2 = this.a($$1);
+            DataResult<ux> $$3 = gdx.a.encodeStart(uo.a, $$2);
+            $$0.a(String.valueOf($$1), (ux)$$3.getOrThrow());
+         }
+
+         un.b($$0, this.c);
+      } catch (Exception var5) {
+         b.error("Failed to save creative mode options", var5);
+      }
+   }
+
+   public gdx a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
+      }
+
+      return this.e[$$0];
    }
 }

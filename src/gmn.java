@@ -1,25 +1,28 @@
-public class gmn extends gjn<cnt> {
-   private static final akk a = new akk("textures/entity/projectiles/wind_charge.png");
-   private final fxe f;
+public class gmn extends glj<cko, fxh<cko>> {
+   private static final akq a = akq.b("textures/entity/strider/strider.png");
+   private static final akq i = akq.b("textures/entity/strider/strider_cold.png");
+   private static final float j = 0.5F;
 
-   public gmn(gjo.a $$0) {
-      super($$0);
-      this.f = new fxe($$0.a(fxp.bT));
+   public gmn(gkd.a $$0) {
+      super($$0, new fxh<>($$0.a(fyd.bE)), 0.5F);
+      this.a(new goq<>(this, new fxh<>($$0.a(fyd.bF)), akq.b("textures/entity/strider/strider_saddle.png")));
    }
 
-   public void a(cnt $$0, float $$1, float $$2, fao $$3, gef $$4, int $$5) {
-      float $$6 = (float)$$0.ai + $$2;
-      fas $$7 = $$4.getBuffer(gen.a(a, this.a($$6) % 1.0F, 0.0F));
-      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
-      this.f.a($$3, $$7, $$5, gph.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public akq a(cko $$0) {
+      return $$0.s() ? i : a;
    }
 
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
+   protected float b(cko $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.5F : $$1;
    }
 
-   public akk a(cnt $$0) {
-      return a;
+   protected void a(cko $$0, fbc $$1, float $$2) {
+      float $$3 = $$0.eb();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected boolean c(cko $$0) {
+      return super.a($$0) || $$0.s();
    }
 }

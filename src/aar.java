@@ -1,29 +1,31 @@
-import java.util.HashSet;
-import java.util.Set;
+public record aar(int c, epm d, float e) implements aai {
+   public static final yw<vv, aar> a = aai.a(aar::a, aar::new);
+   public static final aai.b<aar> b = aai.a("debug/path");
 
-public record aar(Set<kc> c, Set<kc> d) implements aac {
-   public static final ys<vr, aar> a = aac.a(aar::a, aar::new);
-   public static final aac.b<aar> b = aac.a("debug/village_sections");
-
-   private aar(vr $$0) {
-      this($$0.a(HashSet::new, vr::g), $$0.a(HashSet::new, vr::g));
+   private aar(vv $$0) {
+      this($$0.readInt(), epm.b($$0), $$0.readFloat());
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.c, vr::a);
-      $$0.a(this.d, vr::a);
+   private void a(vv $$0) {
+      $$0.p(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public aac.b<aar> a() {
+   public aai.b<aar> a() {
       return b;
    }
 
-   public Set<kc> b() {
+   public int b() {
       return this.c;
    }
 
-   public Set<kc> c() {
+   public epm c() {
       return this.d;
+   }
+
+   public float d() {
+      return this.e;
    }
 }

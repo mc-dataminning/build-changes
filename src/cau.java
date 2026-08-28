@@ -1,56 +1,140 @@
-import com.google.common.collect.Sets;
 import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
 
-public class cau<T extends cnx> extends caa {
-   private static final int a = 20;
-   private static final float b = 1.0F;
-   private final T c;
-   private int d;
+public class cau extends cak {
+   protected final btu a;
+   private final double b;
+   private final boolean c;
+   private epm d;
+   private double e;
+   private double f;
+   private double g;
+   private int h;
+   private int i;
+   private final int j = 20;
+   private long k;
+   private static final long l = 20L;
 
-   public cau(T $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(caa.a.a));
-   }
-
-   @Override
-   public boolean a() {
-      return this.c.p() == null && !this.c.cT() && this.c.gE() && !this.c.gB().a() && !((aqm)this.c.dR()).c(this.c.dr());
+   public cau(btu $$0, double $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.a(EnumSet.of(cak.a.a, cak.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.c.gE() && !this.c.gB().a() && this.c.dR() instanceof aqm && !((aqm)this.c.dR()).c(this.c.dr());
+      long $$0 = this.a.dQ().Z();
+      if ($$0 - this.k < 20L) {
+         return false;
+      } else {
+         this.k = $$0;
+         btl $$1 = this.a.p();
+         if ($$1 == null) {
+            return false;
+         } else if (!$$1.bE()) {
+            return false;
+         } else {
+            this.d = this.a.J().a($$1, 0);
+            return this.d != null ? true : this.a.i($$1);
+         }
+      }
+   }
+
+   @Override
+   public boolean c() {
+      btl $$0 = this.a.p();
+      if ($$0 == null) {
+         return false;
+      } else if (!$$0.bE()) {
+         return false;
+      } else if (!this.c) {
+         return !this.a.J().l();
+      } else {
+         return !this.a.a($$0.dq()) ? false : !($$0 instanceof cmv) || !$$0.N_() && !((cmv)$$0).f();
+      }
+   }
+
+   @Override
+   public void d() {
+      this.a.J().a(this.d, this.b);
+      this.a.v(true);
+      this.h = 0;
+      this.i = 0;
    }
 
    @Override
    public void e() {
-      if (this.c.gE()) {
-         cnw $$0 = this.c.gB();
-         if (this.c.ai > this.d) {
-            this.d = this.c.ai + 20;
-            this.a($$0);
+      btl $$0 = this.a.p();
+      if (!bsv.e.test($$0)) {
+         this.a.h(null);
+      }
+
+      this.a.v(false);
+      this.a.J().n();
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      btl $$0 = this.a.p();
+      if ($$0 != null) {
+         this.a.F().a($$0, 30.0F, 30.0F);
+         this.h = Math.max(this.h - 1, 0);
+         if ((this.c || this.a.L().a($$0))
+            && this.h <= 0
+            && (this.e == 0.0 && this.f == 0.0 && this.g == 0.0 || $$0.i(this.e, this.f, this.g) >= 1.0 || this.a.dT().i() < 0.05F)) {
+            this.e = $$0.dv();
+            this.f = $$0.dx();
+            this.g = $$0.dB();
+            this.h = 4 + this.a.dT().a(7);
+            double $$1 = this.a.g((bsq)$$0);
+            if ($$1 > 1024.0) {
+               this.h += 10;
+            } else if ($$1 > 256.0) {
+               this.h += 5;
+            }
+
+            if (!this.a.J().a($$0, this.b)) {
+               this.h += 15;
+            }
+
+            this.h = this.a(this.h);
          }
 
-         if (!this.c.gj()) {
-            ewh $$1 = cdx.a(this.c, 15, 4, ewh.c($$0.s()), (float) (Math.PI / 2));
-            if ($$1 != null) {
-               this.c.J().a($$1.c, $$1.d, $$1.e, 1.0);
-            }
-         }
+         this.i = Math.max(this.i - 1, 0);
+         this.a($$0);
       }
    }
 
-   private void a(cnw $$0) {
-      if ($$0.u()) {
-         Set<cnx> $$1 = Sets.newHashSet();
-         List<cnx> $$2 = this.c.dR().a(cnx.class, this.c.cM().g(16.0), $$1x -> !$$1x.gE() && cny.a($$1x, $$0));
-         $$1.addAll($$2);
-
-         for (cnx $$3 : $$1) {
-            $$0.a($$0.k(), $$3, null, true);
-         }
+   protected void a(btl $$0) {
+      if (this.b($$0)) {
+         this.h();
+         this.a.a(bqp.a);
+         this.a.D($$0);
       }
+   }
+
+   protected void h() {
+      this.i = this.a(20);
+   }
+
+   protected boolean i() {
+      return this.i <= 0;
+   }
+
+   protected boolean b(btl $$0) {
+      return this.i() && this.a.i($$0) && this.a.L().a($$0);
+   }
+
+   protected int k() {
+      return this.i;
+   }
+
+   protected int l() {
+      return this.a(20);
    }
 }

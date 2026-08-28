@@ -1,89 +1,42 @@
 import com.mojang.serialization.Codec;
 
-public class ebx extends ebl<edw> {
-   public ebx(Codec<edw> $$0) {
+public class ebx extends eca<eed> {
+   public ebx(Codec<eed> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebn<edw> $$0) {
-      ja $$1 = $$0.e();
-      ayo $$2 = $$0.d();
-      ddc $$3 = $$0.b();
+   public boolean a(ecc<eed> $$0) {
+      jd $$1 = $$0.e();
+      ddq $$2 = $$0.b();
+      eed $$3 = $$0.f();
 
-      while ($$3.u($$1) && $$1.v() > $$3.I_() + 2) {
-         $$1 = $$1.d();
+      for (jd $$4 : jd.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            jd $$9 = $$4.i();
+            this.a($$2, $$9, dfy.kF.o());
+            $$3.b().ifPresent($$3x -> {
+               dqf $$4x = $$2.c_($$9);
+               if ($$4x instanceof drw $$5x) {
+                  $$5x.a($$3x, $$3.c());
+                  $$4x.e();
+               }
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, dfy.a.o());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, dfy.F.o());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, dfy.F.o());
+         } else {
+            this.a($$2, $$4, dfy.a.o());
+         }
       }
 
-      if (!$$3.a_($$1).a(dfk.dP)) {
-         return false;
-      } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
-         }
-
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = ayg.f($$7);
-
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)ayg.a($$9) - 0.25F;
-
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)ayg.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     dsl $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.i() || b($$13) || $$13.a(dfk.dP) || $$13.a(dfk.dO)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), dfk.iC.o());
-                     }
-
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.i() || b($$13) || $$13.a(dfk.dP) || $$13.a(dfk.dO)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), dfk.iC.o());
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
-
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               ja $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  dsl $$19 = $$3.a_($$17);
-                  if (!$$19.i() && !b($$19) && !$$19.a(dfk.dP) && !$$19.a(dfk.dO) && !$$19.a(dfk.iC)) {
-                     break;
-                  }
-
-                  this.a($$3, $$17, dfk.iC.o());
-                  $$17 = $$17.d();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
-                  }
-               }
-            }
-         }
-
-         return true;
-      }
+      return true;
    }
 }

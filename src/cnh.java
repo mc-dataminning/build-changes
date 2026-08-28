@@ -1,57 +1,58 @@
-public class cnh extends cmx {
-   public cnh(bsn<? extends cnh> $$0, dcg $$1) {
+public abstract class cnh extends cnc implements cnk {
+   private static final ajv<cuo> e = ajz.a(cnh.class, ajx.h);
+
+   public cnh(bsw<? extends cnh> $$0, dcu $$1) {
       super($$0, $$1);
    }
 
-   public cnh(dcg $$0, btc $$1, ewh $$2) {
-      super(bsn.aQ, $$1, $$2, $$0);
+   public cnh(bsw<? extends cnh> $$0, double $$1, double $$2, double $$3, eww $$4, dcu $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public cnh(dcg $$0, double $$1, double $$2, double $$3, ewh $$4) {
-      super(bsn.aQ, $$1, $$2, $$3, $$4, $$0);
+   public cnh(bsw<? extends cnh> $$0, btl $$1, eww $$2, dcu $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   protected void a(ewe $$0) {
-      super.a($$0);
-      if (this.dR() instanceof aqm $$1) {
-         bsh var7 = $$0.a();
-         bsh $$4 = this.s();
-         int $$5 = var7.aD();
-         var7.d(5.0F);
-         bra $$6 = this.dS().a((cmx)this, $$4);
-         if (!var7.a($$6, 5.0F)) {
-            var7.h($$5);
-         } else {
-            czo.a($$1, var7, $$6);
-         }
+   public void a(cuo $$0) {
+      if ($$0.e()) {
+         this.ar().a(e, this.y());
+      } else {
+         this.ar().a(e, $$0.c(1));
       }
    }
 
    @Override
-   protected void a(ewd $$0) {
-      super.a($$0);
-      if (!this.dR().B) {
-         bsh $$1 = this.s();
-         if (!($$1 instanceof bte) || this.dR().ab().b(dcc.c)) {
-            ja $$2 = $$0.a().a($$0.b());
-            if (this.dR().u($$2)) {
-               this.dR().b($$2, dev.a(this.dR(), $$2));
-            }
-         }
-      }
+   public cuo p() {
+      return this.ar().a(e);
    }
 
    @Override
-   protected void a(ewf $$0) {
-      super.a($$0);
-      if (!this.dR().B) {
-         this.aq();
-      }
+   protected void a(ajz.a $$0) {
+      $$0.a(e, this.y());
    }
 
    @Override
-   public boolean a(bra $$0, float $$1) {
-      return false;
+   public void b(ua $$0) {
+      super.b($$0);
+      $$0.a("Item", this.p().a(this.dS()));
+   }
+
+   @Override
+   public void a(ua $$0) {
+      super.a($$0);
+      if ($$0.b("Item", 10)) {
+         this.a(cuo.a(this.dS(), (ux)$$0.p("Item")).orElse(this.y()));
+      } else {
+         this.a(this.y());
+      }
+   }
+
+   private cuo y() {
+      return new cuo(cur.tX);
+   }
+
+   @Override
+   public bue a_(int $$0) {
+      return $$0 == 0 ? bue.a(this::p, this::a) : super.a_($$0);
    }
 }

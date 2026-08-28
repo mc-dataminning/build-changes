@@ -1,32 +1,64 @@
-import com.mojang.serialization.Codec;
+import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public enum ccd implements azc {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public class ccd<T extends btl> extends cck {
+   private static final int i = 10;
+   protected final Class<T> a;
+   protected final int b;
+   @Nullable
+   protected btl c;
+   protected ced d;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<ccd> n = azc.a(ccd::values);
+   public ccd(btn $$0, Class<T> $$1, boolean $$2) {
+      this($$0, $$1, 10, $$2, false, null);
+   }
 
-   private ccd(final String $$0, final int $$1, final int $$2, final int $$3, final int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public ccd(btn $$0, Class<T> $$1, boolean $$2, Predicate<btl> $$3) {
+      this($$0, $$1, 10, $$2, false, $$3);
+   }
+
+   public ccd(btn $$0, Class<T> $$1, boolean $$2, boolean $$3) {
+      this($$0, $$1, 10, $$2, $$3, null);
+   }
+
+   public ccd(btn $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<btl> $$5) {
+      super($$0, $$3, $$4);
+      this.a = $$1;
+      this.b = b($$2);
+      this.a(EnumSet.of(cak.a.d));
+      this.d = ced.a().a(this.l()).a($$5);
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public boolean b() {
+      if (this.b > 0 && this.e.dT().a(this.b) != 0) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
+   }
+
+   protected ewr a(double $$0) {
+      return this.e.cL().c($$0, 4.0, $$0);
+   }
+
+   protected void h() {
+      if (this.a != cmv.class && this.a != aqu.class) {
+         this.c = this.e.dQ().a(this.e.dQ().a(this.a, this.a(this.l()), $$0 -> true), this.d, this.e, this.e.dv(), this.e.dz(), this.e.dB());
+      } else {
+         this.c = this.e.dQ().a(this.d, this.e, this.e.dv(), this.e.dz(), this.e.dB());
+      }
+   }
+
+   @Override
+   public void d() {
+      this.e.h(this.c);
+      super.d();
+   }
+
+   public void a(@Nullable btl $$0) {
+      this.c = $$0;
    }
 }

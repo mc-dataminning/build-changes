@@ -1,63 +1,171 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.EnumSet;
+import java.util.Set;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public final class dyv {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+public class dyv {
+   private static final Logger a = LogUtils.getLogger();
+   static final Predicate<dta> b = $$0 -> !$$0.i();
+   static final Predicate<dta> c = dsz.a::d;
+   private final axb d;
+   private final Predicate<dta> e;
+   private final duw f;
 
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+   public dyv(duw $$0, dyv.a $$1) {
+      this.e = $$1.e();
+      this.f = $$0;
+      int $$2 = ayn.e($$0.J_() + 1);
+      this.d = new azc($$2, 256);
    }
 
-   public static dyv.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new dyv.a($$1, $$2);
+   public static void a(duw $$0, Set<dyv.a> $$1) {
+      int $$2 = $$1.size();
+      ObjectList<dyv> $$3 = new ObjectArrayList($$2);
+      ObjectListIterator<dyv> $$4 = $$3.iterator();
+      int $$5 = $$0.b() + 16;
+      jd.a $$6 = new jd.a();
+
+      for (int $$7 = 0; $$7 < 16; $$7++) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            for (dyv.a $$9 : $$1) {
+               $$3.add($$0.a($$9));
+            }
+
+            for (int $$10 = $$5 - 1; $$10 >= $$0.I_(); $$10--) {
+               $$6.d($$7, $$10, $$8);
+               dta $$11 = $$0.a_($$6);
+               if (!$$11.a(dfy.a)) {
+                  while ($$4.hasNext()) {
+                     dyv $$12 = (dyv)$$4.next();
+                     if ($$12.e.test($$11)) {
+                        $$12.a($$7, $$8, $$10 + 1);
+                        $$4.remove();
+                     }
+                  }
+
+                  if ($$3.isEmpty()) {
+                     break;
+                  }
+
+                  $$4.back($$2);
+               }
+            }
+         }
+      }
    }
 
-   public static dyv.a c(long $$0) {
-      return b($$0).a();
+   public boolean a(int $$0, int $$1, int $$2, dta $$3) {
+      int $$4 = this.a($$0, $$2);
+      if ($$1 <= $$4 - 2) {
+         return false;
+      } else {
+         if (this.e.test($$3)) {
+            if ($$1 >= $$4) {
+               this.a($$0, $$2, $$1 + 1);
+               return true;
+            }
+         } else if ($$4 - 1 == $$1) {
+            jd.a $$5 = new jd.a();
+
+            for (int $$6 = $$1 - 1; $$6 >= this.f.I_(); $$6--) {
+               $$5.d($$0, $$6, $$2);
+               if (this.e.test(this.f.a_($$5))) {
+                  this.a($$0, $$2, $$6 + 1);
+                  return true;
+               }
+            }
+
+            this.a($$0, $$2, this.f.I_());
+            return true;
+         }
+
+         return false;
+      }
    }
 
-   public static dyv.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new dyv.a($$2, $$3);
+   public int a(int $$0, int $$1) {
+      return this.a(c($$0, $$1));
    }
 
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   public int b(int $$0, int $$1) {
+      return this.a(c($$0, $$1)) - 1;
    }
 
-   public static record a(long a, long b) {
-      public dyv.a a(long $$0, long $$1) {
-         return new dyv.a(this.a ^ $$0, this.b ^ $$1);
+   private int a(int $$0) {
+      return this.d.a($$0) + this.f.I_();
+   }
+
+   private void a(int $$0, int $$1, int $$2) {
+      this.d.b(c($$0, $$1), $$2 - this.f.I_());
+   }
+
+   public void a(duw $$0, dyv.a $$1, long[] $$2) {
+      long[] $$3 = this.d.a();
+      if ($$3.length == $$2.length) {
+         System.arraycopy($$2, 0, $$3, 0, $$2.length);
+      } else {
+         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
+         a($$0, EnumSet.of($$1));
+      }
+   }
+
+   public long[] a() {
+      return this.d.a();
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
+   }
+
+   public static enum a implements azj {
+      a("WORLD_SURFACE_WG", dyv.b.a, dyv.b),
+      b("WORLD_SURFACE", dyv.b.c, dyv.b),
+      c("OCEAN_FLOOR_WG", dyv.b.a, dyv.c),
+      d("OCEAN_FLOOR", dyv.b.b, dyv.c),
+      e("MOTION_BLOCKING", dyv.b.c, $$0 -> $$0.d() || !$$0.u().c()),
+      f("MOTION_BLOCKING_NO_LEAVES", dyv.b.b, $$0 -> ($$0.d() || !$$0.u().c()) && !($$0.b() instanceof dkg));
+
+      public static final Codec<dyv.a> g = azj.a(dyv.a::values);
+      private final String h;
+      private final dyv.b i;
+      private final Predicate<dta> j;
+
+      private a(final String $$0, final dyv.b $$1, final Predicate<dta> $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
       }
 
-      public dyv.a a(dyv.a $$0) {
-         return this.a($$0.a, $$0.b);
+      public String a() {
+         return this.h;
       }
 
-      public dyv.a a() {
-         return new dyv.a(dyv.a(this.a), dyv.a(this.b));
+      public boolean b() {
+         return this.i == dyv.b.c;
       }
 
-      public long b() {
-         return this.a;
+      public boolean d() {
+         return this.i != dyv.b.a;
       }
 
-      public long c() {
-         return this.b;
+      public Predicate<dta> e() {
+         return this.j;
       }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

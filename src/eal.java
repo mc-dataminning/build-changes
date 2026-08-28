@@ -1,42 +1,20 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eal extends eaj {
-   public eal(Codec<eai> $$0) {
+class eal extends ean {
+   public static final MapCodec<eal> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eal::new));
+
+   public eal(kh $$0) {
       super($$0);
-      this.h = ImmutableSet.of(eok.e, eok.c);
    }
 
    @Override
-   protected int a() {
-      return 10;
+   protected boolean a(dta $$0) {
+      return $$0.r();
    }
 
    @Override
-   protected float a(ayo $$0) {
-      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
-   }
-
-   @Override
-   protected double b() {
-      return 5.0;
-   }
-
-   protected boolean a(eah $$0, eai $$1, duh $$2, Function<ja, jj<ddg>> $$3, dug $$4, ja.a $$5, ja.a $$6, dxs $$7, MutableBoolean $$8) {
-      if (this.a($$1, $$2.a_($$5))) {
-         dsl $$9;
-         if ($$5.v() <= $$0.a() + 31) {
-            $$9 = g.g();
-         } else {
-            $$9 = e;
-         }
-
-         $$2.a($$5, $$9, false);
-         return true;
-      } else {
-         return false;
-      }
+   public ead<?> a() {
+      return ead.f;
    }
 }

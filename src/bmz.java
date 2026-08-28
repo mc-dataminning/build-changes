@@ -1,20 +1,45 @@
-import net.minecraft.server.MinecraftServer;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 
-public enum bmz {
-   a("client"),
-   b("server");
+public class bmz implements bnd {
+   public static final bmz a = new bmz();
 
-   private final String c;
-
-   private bmz(final String $$0) {
-      this.c = $$0;
+   private bmz() {
    }
 
-   public static bmz a(MinecraftServer $$0) {
-      return $$0.n() ? b : a;
+   @Override
+   public List<bng> a(String $$0) {
+      return Collections.emptyList();
    }
 
-   public String a() {
-      return this.c;
+   @Override
+   public boolean a(Path $$0) {
+      return false;
+   }
+
+   @Override
+   public long a() {
+      return 0L;
+   }
+
+   @Override
+   public int b() {
+      return 0;
+   }
+
+   @Override
+   public long c() {
+      return 0L;
+   }
+
+   @Override
+   public int d() {
+      return 0;
+   }
+
+   @Override
+   public String e() {
+      return "";
    }
 }

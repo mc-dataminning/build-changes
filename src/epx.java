@@ -1,48 +1,161 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Comparator;
+import java.util.Optional;
 
-public class epx extends epq {
-   public static final String a = "idcounts";
-   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
+public class epx {
+   public static final int a = 3;
+   private static final int b = 128;
+   private static final int c = 16;
+   private static final int d = 5;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = -1;
+   private static final int h = 4;
+   private static final int i = -1;
+   private static final int j = 3;
+   private static final int k = -1;
+   private static final int l = 2;
+   private static final int m = -1;
+   private final aqt n;
 
-   public static epq.a<epx> a() {
-      return new epq.a<>(epx::new, epx::b, azo.k);
+   public epx(aqt $$0) {
+      this.n = $$0;
    }
 
-   public epx() {
-      this.b.defaultReturnValue(-1);
+   public Optional<l.a> a(jd $$0, boolean $$1, dur $$2) {
+      ceq $$3 = this.n.y();
+      int $$4 = $$1 ? 16 : 128;
+      $$3.a(this.n, $$0, $$4);
+      Optional<cer> $$5 = $$3.b($$0x -> $$0x.a(ceu.r), $$0, $$4, ceq.b.c)
+         .filter($$1x -> $$2.a($$1x.f()))
+         .sorted(Comparator.<cer>comparingDouble($$1x -> $$1x.f().j($$0)).thenComparingInt($$0x -> $$0x.f().v()))
+         .filter($$0x -> this.n.a_($$0x.f()).b(dtq.H))
+         .findFirst();
+      return $$5.map($$0x -> {
+         jd $$1x = $$0x.f();
+         dta $$2x = this.n.a_($$1x);
+         return l.a($$1x, $$2x.c(dtq.H), 21, ji.a.b, 21, $$1xx -> this.n.a_($$1xx) == $$2x);
+      });
    }
 
-   public static epx b(tx $$0, jl.a $$1) {
-      epx $$2 = new epx();
+   public Optional<l.a> a(jd $$0, ji.a $$1) {
+      ji $$2 = ji.a(ji.b.a, $$1);
+      double $$3 = -1.0;
+      jd $$4 = null;
+      double $$5 = -1.0;
+      jd $$6 = null;
+      dur $$7 = this.n.C_();
+      int $$8 = Math.min(this.n.am(), this.n.I_() + this.n.k()) - 1;
+      jd.a $$9 = $$0.j();
 
-      for (String $$3 : $$0.e()) {
-         if ($$0.b($$3, 99)) {
-            $$2.b.put($$3, $$0.h($$3));
+      for (jd.a $$10 : jd.a($$0, 16, ji.f, ji.d)) {
+         int $$11 = Math.min($$8, this.n.a(dyv.a.e, $$10.u(), $$10.w()));
+         int $$12 = 1;
+         if ($$7.a($$10) && $$7.a($$10.c($$2, 1))) {
+            $$10.c($$2.g(), 1);
+
+            for (int $$13 = $$11; $$13 >= this.n.I_(); $$13--) {
+               $$10.q($$13);
+               if (this.a($$10)) {
+                  int $$14 = $$13;
+
+                  while ($$13 > this.n.I_() && this.a($$10.c(ji.a))) {
+                     $$13--;
+                  }
+
+                  if ($$13 + 4 <= $$8) {
+                     int $$15 = $$14 - $$13;
+                     if ($$15 <= 0 || $$15 >= 3) {
+                        $$10.q($$13);
+                        if (this.a($$10, $$9, $$2, 0)) {
+                           double $$16 = $$0.j($$10);
+                           if (this.a($$10, $$9, $$2, -1) && this.a($$10, $$9, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
+                              $$3 = $$16;
+                              $$4 = $$10.i();
+                           }
+
+                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
+                              $$5 = $$16;
+                              $$6 = $$10.i();
+                           }
+                        }
+                     }
+                  }
+               }
+            }
          }
       }
 
-      return $$2;
-   }
-
-   @Override
-   public tx a(tx $$0, jl.a $$1) {
-      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<String> $$2 = (Entry<String>)var3.next();
-         $$0.a((String)$$2.getKey(), $$2.getIntValue());
+      if ($$3 == -1.0 && $$5 != -1.0) {
+         $$4 = $$6;
+         $$3 = $$5;
       }
 
-      return $$0;
+      if ($$3 == -1.0) {
+         int $$17 = Math.max(this.n.I_() - -1, 70);
+         int $$18 = $$8 - 9;
+         if ($$18 < $$17) {
+            return Optional.empty();
+         }
+
+         $$4 = new jd($$0.u(), ayn.a($$0.v(), $$17, $$18), $$0.w()).i();
+         ji $$19 = $$2.h();
+         if (!$$7.a($$4)) {
+            return Optional.empty();
+         }
+
+         for (int $$20 = -1; $$20 < 2; $$20++) {
+            for (int $$21 = 0; $$21 < 2; $$21++) {
+               for (int $$22 = -1; $$22 < 3; $$22++) {
+                  dta $$23 = $$22 < 0 ? dfy.co.o() : dfy.a.o();
+                  $$9.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
+                  this.n.b($$9, $$23);
+               }
+            }
+         }
+      }
+
+      for (int $$24 = -1; $$24 < 3; $$24++) {
+         for (int $$25 = -1; $$25 < 4; $$25++) {
+            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
+               $$9.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
+               this.n.a($$9, dfy.co.o(), 3);
+            }
+         }
+      }
+
+      dta $$26 = dfy.ed.o().a(dla.b, $$1);
+
+      for (int $$27 = 0; $$27 < 2; $$27++) {
+         for (int $$28 = 0; $$28 < 3; $$28++) {
+            $$9.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
+            this.n.a($$9, $$26, 18);
+         }
+      }
+
+      return Optional.of(new l.a($$4.i(), 2, 3));
    }
 
-   public epw b() {
-      int $$0 = this.b.getInt("map") + 1;
-      this.b.put("map", $$0);
-      this.c();
-      return new epw($$0);
+   private boolean a(jd.a $$0) {
+      dta $$1 = this.n.a_($$0);
+      return $$1.r() && $$1.u().c();
+   }
+
+   private boolean a(jd $$0, jd.a $$1, ji $$2, int $$3) {
+      ji $$4 = $$2.h();
+
+      for (int $$5 = -1; $$5 < 3; $$5++) {
+         for (int $$6 = -1; $$6 < 4; $$6++) {
+            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
+            if ($$6 < 0 && !this.n.a_($$1).e()) {
+               return false;
+            }
+
+            if ($$6 >= 0 && !this.a($$1)) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 }

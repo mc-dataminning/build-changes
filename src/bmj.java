@@ -1,24 +1,67 @@
-import com.mojang.brigadier.StringReader;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bmj extends bma<StringReader> {
-   private final StringReader a;
+public abstract class bmj<S> {
+   private final Map<bmj.b<?>, bmj.a<?>> a = new HashMap<>();
+   private final bmg<S> b;
+   private final bmh<S> c;
 
-   public bmj(blx<StringReader> $$0, bly<StringReader> $$1, StringReader $$2) {
-      super($$0, $$1);
-      this.a = $$2;
+   protected bmj(bmg<S> $$0, bmh<S> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public StringReader d() {
-      return this.a;
+   public bmh<S> a() {
+      return this.c;
    }
 
-   @Override
-   public int c() {
-      return this.a.getCursor();
+   public <T> Optional<T> a(bme<T> $$0) {
+      Optional<T> $$1 = this.b($$0);
+      if ($$1.isPresent()) {
+         this.c.a(this.c());
+      }
+
+      return $$1;
    }
 
-   @Override
-   public void a(int $$0) {
-      this.a.setCursor($$0);
+   public <T> Optional<T> b(bme<T> $$0) {
+      bmj.b<T> $$1 = new bmj.b<>($$0, this.c());
+      bmj.a<T> $$2 = this.a($$1);
+      if ($$2 != null) {
+         this.a($$2.b());
+         return $$2.a;
+      } else {
+         bmk<S, T> $$3 = this.b.a($$0);
+         if ($$3 == null) {
+            throw new IllegalStateException("No symbol " + $$0);
+         } else {
+            Optional<T> $$4 = $$3.a(this);
+            this.a($$1, $$4);
+            return $$4;
+         }
+      }
+   }
+
+   @Nullable
+   private <T> bmj.a<T> a(bmj.b<T> $$0) {
+      return (bmj.a<T>)this.a.get($$0);
+   }
+
+   private <T> void a(bmj.b<T> $$0, Optional<T> $$1) {
+      this.a.put($$0, new bmj.a<>($$1, this.c()));
+   }
+
+   public abstract S b();
+
+   public abstract int c();
+
+   public abstract void a(int var1);
+
+   static record a<T>(Optional<T> a, int b) {
+   }
+
+   static record b<T>(bme<T> a, int b) {
    }
 }

@@ -1,57 +1,83 @@
-public class gbi extends gct {
-   private final gco a;
+public class gbi extends gdh {
+   private static final int a = 11993298;
+   private static final int b = 14614777;
+   private static final float F = 0.7176471F;
+   private static final float G = 0.0F;
+   private static final float H = 0.8235294F;
+   private static final float I = 0.8745098F;
+   private static final float J = 0.0F;
+   private static final float K = 0.9764706F;
+   private boolean L;
+   private final gdc M;
 
-   protected gbi(fyl $$0, double $$1, double $$2, double $$3, gco $$4) {
+   gbi(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gdc $$7) {
       super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-      this.b($$4);
-      this.t = 12 + this.r.a(4);
-      this.D = 1.0F;
-      this.b(1.0F, 1.0F);
-   }
-
-   @Override
-   public gbx b() {
-      return gbx.d;
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+      this.B = 0.96F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.v = ayn.a(this.r, 0.7176471F, 0.8745098F);
+      this.w = ayn.a(this.r, 0.0F, 0.0F);
+      this.x = ayn.a(this.r, 0.8235294F, 0.9764706F);
+      this.D *= 0.75F;
+      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
+      this.L = false;
+      this.n = false;
+      this.M = $$7;
+      this.b($$7);
    }
 
    @Override
    public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.b(this.a);
+         this.b(this.M);
+         if (this.m) {
+            this.k = 0.0;
+            this.L = true;
+         }
+
+         if (this.L) {
+            this.k += 0.002;
+         }
+
+         this.a(this.j, this.k, this.l);
+         if (this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
+         }
+
+         this.j = this.j * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.L) {
+            this.k = this.k * (double)this.B;
+         }
       }
    }
 
-   public static class a implements gbw<ln> {
-      private final gco a;
-
-      public a(gco $$0) {
-         this.a = $$0;
-      }
-
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbi($$1, $$2, $$3, $$4, this.a);
-      }
+   @Override
+   public gcl b() {
+      return gcl.b;
    }
 
-   public static class b implements gbw<ln> {
-      private final gco a;
+   @Override
+   public float b(float $$0) {
+      return this.D * ayn.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      public b(gco $$0) {
+   public static class a implements gck<lq> {
+      private final gdc a;
+
+      public a(gdc $$0) {
          this.a = $$0;
       }
 
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbt $$8 = new gbi($$1, $$2, $$3, $$4, this.a);
-         $$8.d(0.15F);
-         return $$8;
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gbi($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

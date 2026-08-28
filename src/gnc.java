@@ -1,16 +1,25 @@
-public class gnc extends goa<cev, fub<cev>> {
-   private static final akk a = new akk("textures/entity/cat/cat_collar.png");
-   private final fub<cev> b;
+public class gnc extends gkc<cod> {
+   private static final akq a = akq.b("textures/entity/projectiles/wind_charge.png");
+   private final fxs f;
 
-   public gnc(glk<cev, fub<cev>> $$0, fxm $$1) {
+   public gnc(gkd.a $$0) {
       super($$0);
-      this.b = new fub<>($$1.a(fxp.u));
+      this.f = new fxs($$0.a(fyd.bU));
    }
 
-   public void a(fao $$0, gef $$1, int $$2, cev $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s()) {
-         float[] $$10 = $$3.gw().d();
-         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
-      }
+   public void a(cod $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
+      float $$6 = (float)$$0.ai + $$2;
+      fbg $$7 = $$4.getBuffer(gfb.a(a, this.a($$6) % 1.0F, 0.0F));
+      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
+      this.f.a($$3, $$7, $$5, gpw.d);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
+   }
+
+   public akq a(cod $$0) {
+      return a;
    }
 }

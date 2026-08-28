@@ -1,88 +1,80 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class cyy implements cyj<cyz> {
-   protected final cyg a;
-   protected final cud b;
-   private final cyp<?> d;
-   private final cyo<?> e;
-   protected final String c;
+public class cyy {
+   private final cyy.a[] a;
+   private WeakReference<czb> b = new WeakReference<>(null);
 
-   public cyy(cyp<?> $$0, cyo<?> $$1, String $$2, cyg $$3, cud $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.a = $$3;
-      this.b = $$4;
+   public cyy(int $$0) {
+      this.a = new cyy.a[$$0];
    }
 
-   @Override
-   public cyp<?> e() {
-      return this.d;
+   public Optional<cyz<cyo>> a(dcu $$0, cyn $$1) {
+      if ($$1.b()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
+
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            cyy.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1)) {
+               this.a($$2);
+               return Optional.ofNullable($$3.d());
+            }
+         }
+
+         return this.a($$1, $$0);
+      }
    }
 
-   @Override
-   public cyo<?> ap_() {
-      return this.e;
+   private void a(dcu $$0) {
+      czb $$1 = $$0.r();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   private Optional<cyz<cyo>> a(cyn $$0, dcu $$1) {
+      Optional<cyz<cyo>> $$2 = $$1.r().a(czd.a, $$0, $$1);
+      this.a($$0, $$2.orElse(null));
+      return $$2;
    }
 
-   @Override
-   public cud a(jl.a $$0) {
-      return this.b;
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         cyy.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
    }
 
-   @Override
-   public js<cyg> a() {
-      js<cyg> $$0 = js.a();
-      $$0.add(this.a);
-      return $$0;
-   }
+   private void a(cyn $$0, @Nullable cyz<cyo> $$1) {
+      jv<cuo> $$2 = jv.a($$0.a(), cuo.l);
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   public cud a(cyz $$0, jl.a $$1) {
-      return this.b.s();
-   }
-
-   public interface a<T extends cyy> {
-      T create(String var1, cyg var2, cud var3);
-   }
-
-   public static class b<T extends cyy> implements cyo<T> {
-      final cyy.a<T> x;
-      private final MapCodec<T> y;
-      private final ys<wf, T> z;
-
-      protected b(cyy.a<T> $$0) {
-         this.x = $$0;
-         this.y = RecordCodecBuilder.mapCodec(
-            $$1 -> $$1.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter($$0xx -> $$0xx.c),
-                     cyg.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
-                     cud.d.fieldOf("result").forGetter($$0xx -> $$0xx.b)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.z = ys.a(yq.l, $$0x -> $$0x.c, cyg.b, $$0x -> $$0x.a, cud.i, $$0x -> $$0x.b, $$0::create);
+      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
+         $$2.set($$3, $$0.a($$3).c(1));
       }
 
-      @Override
-      public MapCodec<T> a() {
-         return this.y;
-      }
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new cyy.a($$2, $$0.f(), $$0.g(), $$1);
+   }
 
-      @Override
-      public ys<wf, T> b() {
-         return this.z;
+   static record a(jv<cuo> a, int b, int c, @Nullable cyz<cyo> d) {
+      public boolean a(cyn $$0) {
+         if (this.b == $$0.f() && this.c == $$0.g()) {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cuo.c(this.a.get($$1), $$0.a($$1))) {
+                  return false;
+               }
+            }
+
+            return true;
+         } else {
+            return false;
+         }
       }
    }
 }

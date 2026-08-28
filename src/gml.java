@@ -1,18 +1,25 @@
-public class gml extends gku<cme, fxb<cme>> {
-   private static final akk a = new akk("textures/entity/wandering_trader.png");
+public class gml<T extends cgb> extends glj<T, fxg<T>> {
+   private static final akq a = akq.b("textures/entity/squid/squid.png");
 
-   public gml(gjo.a $$0) {
-      super($$0, new fxb<>($$0.a(fxp.bS)), 0.5F);
-      this.a(new gnf<>(this, $$0.f(), $$0.d()));
-      this.a(new gne<>(this, $$0.d()));
+   public gml(gkd.a $$0, fxg<T> $$1) {
+      super($$0, $$1, 0.7F);
    }
 
-   public akk a(cme $$0) {
+   public akq a(T $$0) {
       return a;
    }
 
-   protected void a(cme $$0, fao $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   protected void a(T $$0, fbc $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = ayn.i($$4, $$0.c, $$0.b);
+      float $$7 = ayn.i($$4, $$0.e, $$0.d);
+      $$1.a(0.0F, 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$3));
+      $$1.a(a.b.rotationDegrees($$6));
+      $$1.a(a.d.rotationDegrees($$7));
+      $$1.a(0.0F, -1.2F, 0.0F);
+   }
+
+   protected float a(T $$0, float $$1) {
+      return ayn.i($$1, $$0.cd, $$0.cc);
    }
 }

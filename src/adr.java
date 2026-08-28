@@ -1,21 +1,37 @@
-public record adr(int b, wu c) implements zb<abn> {
-   public static final ys<wf, adr> a = ys.a(yq.g, adr::b, ww.d, adr::e, adr::new);
+public class adr implements zf<abt> {
+   public static final yw<vv, adr> a = zf.a(adr::a, adr::new);
+   private final jd b;
+   private final boolean c;
 
-   @Override
-   public zd<adr> a() {
-      return afz.ad;
+   public adr(jd $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(abn $$0) {
+   private adr(vv $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(vv $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public zh<adr> a() {
+      return agf.X;
+   }
+
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public jd b() {
+      return this.b;
    }
 
-   public wu e() {
+   public boolean e() {
       return this.c;
    }
 }

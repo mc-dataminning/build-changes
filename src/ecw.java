@@ -1,74 +1,56 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class ecw extends ebl<eek> {
-   public ecw(Codec<eek> $$0) {
+public class ecw extends eca<een> {
+   public ecw(Codec<een> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebn<eek> $$0) {
-      eek $$1 = $$0.f();
-      ddc $$2 = $$0.b();
-      ja $$3 = $$0.e();
-      if (!$$2.a_($$3.c()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.d()).a($$1.f)) {
+   public boolean a(ecc<een> $$0) {
+      dcv $$1 = $$0.b();
+      jd $$2 = $$0.e();
+      ayv $$3 = $$0.d();
+      een $$4 = $$0.f();
+      Optional<ji> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
          return false;
       } else {
-         dsl $$4 = $$2.a_($$3);
-         if (!$$4.i() && !$$4.a($$1.f)) {
-            return false;
-         } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
-            }
+         jd $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && ebw.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         ebw.a($$1, $$2, $$5.get(), $$7, false);
+         return true;
+      }
+   }
 
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
-            }
+   private static Optional<ji> a(dcv $$0, jd $$1, ayv $$2) {
+      boolean $$3 = ebw.b($$0.a_($$1.c()));
+      boolean $$4 = ebw.b($$0.a_($$1.d()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? ji.a : ji.b);
+      } else if ($$3) {
+         return Optional.of(ji.a);
+      } else {
+         return $$4 ? Optional.of(ji.b) : Optional.empty();
+      }
+   }
 
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
-            }
+   private static void a(dcv $$0, ayv $$1, jd $$2, een $$3) {
+      ebw.c($$0, $$2);
 
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
+      for (ji $$4 : ji.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            jd $$5 = $$2.a($$4);
+            ebw.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               jd $$6 = $$5.a(ji.b($$1));
+               ebw.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  jd $$7 = $$6.a(ji.b($$1));
+                  ebw.c($$0, $$7);
+               }
             }
-
-            if ($$2.a_($$3.d()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.u($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.e())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.d())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
          }
       }
    }

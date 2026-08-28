@@ -1,63 +1,60 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public final class cwq {
-   public static final cwq a = new cwq(List.of());
-   public static final Codec<cwq> b = cud.b.listOf().xmap(cwq::new, $$0 -> $$0.d);
-   public static final ys<wf, cwq> c = cud.i.a(yq.a()).a(cwq::new, $$0 -> $$0.d);
-   private final List<cud> d;
+public class cwq implements cpg {
+   public static final Codec<jm<cwq>> a = lt.h.s();
+   public static final yw<wj, jm<cwq>> b = yu.b(lu.ad);
+   @Nullable
+   private final String c;
+   private final List<bry> d;
+   private cpj e = cpl.f;
 
-   private cwq(List<cud> $$0) {
-      this.d = $$0;
+   public cwq(bry... $$0) {
+      this(null, $$0);
    }
 
-   public static cwq a(cud $$0) {
-      return new cwq(List.of($$0.s()));
+   public cwq(@Nullable String $$0, bry... $$1) {
+      this.c = $$0;
+      this.d = List.of($$1);
    }
 
-   public static cwq a(List<cud> $$0) {
-      return new cwq(List.copyOf(Lists.transform($$0, cud::s)));
+   public cwq a(cph... $$0) {
+      this.e = cpl.d.a($$0);
+      return this;
    }
 
-   public boolean a(cty $$0) {
-      for (cud $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
+   @Override
+   public cpj i() {
+      return this.e;
+   }
+
+   public static String a(Optional<jm<cwq>> $$0, String $$1) {
+      if ($$0.isPresent()) {
+         String $$2 = $$0.get().a().c;
+         if ($$2 != null) {
+            return $$1 + $$2;
+         }
+      }
+
+      String $$3 = $$0.flatMap(jm::e).map($$0x -> $$0x.a().a()).orElse("empty");
+      return $$1 + $$3;
+   }
+
+   public List<bry> a() {
+      return this.d;
+   }
+
+   public boolean b() {
+      if (!this.d.isEmpty()) {
+         for (bry $$0 : this.d) {
+            if ($$0.c().a().a()) {
+               return true;
+            }
          }
       }
 
       return false;
-   }
-
-   public List<cud> a() {
-      return Lists.transform(this.d, cud::s);
-   }
-
-   public boolean b() {
-      return this.d.isEmpty();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cwq $$1 && cud.a(this.d, $$1.d)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return cud.a(this.d);
-   }
-
-   @Override
-   public String toString() {
-      return "ChargedProjectiles[items=" + this.d + "]";
    }
 }

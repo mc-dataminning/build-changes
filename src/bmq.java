@@ -1,45 +1,33 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.brigadier.ImmutableStringReader;
+import com.mojang.brigadier.StringReader;
+import java.util.Optional;
 
-public class bmq implements bmu {
-   public static final bmq a = new bmq();
+public abstract class bmq<C, V> implements bmk<StringReader, V>, bmr {
+   private final bme<akq> b;
+   protected final C a;
 
-   private bmq() {
+   protected bmq(bme<akq> $$0, C $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public List<bmx> a(String $$0) {
-      return Collections.emptyList();
+   public Optional<V> a(bmj<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+      int $$1 = $$0.c();
+      Optional<akq> $$2 = $$0.b(this.b);
+      if ($$2.isPresent()) {
+         try {
+            return Optional.of(this.a((ImmutableStringReader)$$0.b(), $$2.get()));
+         } catch (Exception var5) {
+            $$0.a().a($$1, this, var5);
+            return Optional.empty();
+         }
+      } else {
+         $$0.a().a($$1, this, akq.c.createWithContext((ImmutableStringReader)$$0.b()));
+         return Optional.empty();
+      }
    }
 
-   @Override
-   public boolean a(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public long a() {
-      return 0L;
-   }
-
-   @Override
-   public int b() {
-      return 0;
-   }
-
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
-   }
+   protected abstract V a(ImmutableStringReader var1, akq var2) throws Exception;
 }

@@ -1,26 +1,25 @@
-public class gdb extends gal {
-   private static final int a = 12235202;
-
-   protected gdb(fyl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gco $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = (float)axq.b.b(12235202) / 255.0F;
-      this.w = (float)axq.b.c(12235202) / 255.0F;
-      this.x = (float)axq.b.d(12235202) / 255.0F;
+public class gdb extends gdo {
+   gdb(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.04F;
+      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
+         this.j = $$4;
+         this.k = 0.1;
+         this.l = $$6;
+      }
    }
 
-   public static class a implements gbw<ln> {
-      private final gco a;
+   public static class a implements gck<lq> {
+      private final gdc a;
 
-      public a(gco $$0) {
+      public a(gdc $$0) {
          this.a = $$0;
       }
 
-      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ayo $$8 = $$1.z;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new gdb($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gdb $$8 = new gdb($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

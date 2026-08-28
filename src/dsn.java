@@ -1,169 +1,116 @@
-import com.google.common.collect.ArrayTable;
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-
-public abstract class dsn<O, S> {
-   public static final String c = "Name";
-   public static final String d = "Properties";
-   private static final Function<Entry<dto<?>, Comparable<?>>, String> a = new Function<Entry<dto<?>, Comparable<?>>, String>() {
-      public String a(@Nullable Entry<dto<?>, Comparable<?>> $$0) {
-         if ($$0 == null) {
-            return "<NULL>";
-         } else {
-            dto<?> $$1 = $$0.getKey();
-            return $$1.f() + "=" + this.a($$1, $$0.getValue());
+public enum dsn implements azj {
+   a("inactive", dsn.a.a) {
+      @Override
+      protected void a(aqt $$0, jd $$1, dsk $$2, dsm $$3, boolean $$4) {
+         $$3.a(cuo.l);
+         $$0.c(3016, $$1, $$4 ? 1 : 0);
+      }
+   },
+   b("active", dsn.a.b) {
+      @Override
+      protected void a(aqt $$0, jd $$1, dsk $$2, dsm $$3, boolean $$4) {
+         if (!$$3.b()) {
+            dsi.b.a($$0, this, $$2, $$3, $$1);
          }
+
+         $$0.c(3015, $$1, $$4 ? 1 : 0);
+      }
+   },
+   c("unlocking", dsn.a.b) {
+      @Override
+      protected void a(aqt $$0, jd $$1, dsk $$2, dsm $$3, boolean $$4) {
+         $$0.a(null, $$1, avo.AJ, avp.e);
+      }
+   },
+   d("ejecting", dsn.a.b) {
+      @Override
+      protected void a(aqt $$0, jd $$1, dsk $$2, dsm $$3, boolean $$4) {
+         $$0.a(null, $$1, avo.AL, avp.e);
       }
 
-      private <T extends Comparable<T>> String a(dto<T> $$0, Comparable<?> $$1) {
-         return $$0.a((T)$$1);
+      @Override
+      protected void a(aqt $$0, jd $$1, dsk $$2, dsm $$3) {
+         $$0.a(null, $$1, avo.AD, avp.e);
       }
    };
-   protected final O e;
-   private final Reference2ObjectArrayMap<dto<?>, Comparable<?>> b;
-   private Table<dto<?>, Comparable<?>, S> g;
-   protected final MapCodec<S> f;
 
-   protected dsn(O $$0, Reference2ObjectArrayMap<dto<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
-      this.e = $$0;
-      this.b = $$1;
-      this.f = $$2;
-   }
+   private static final int e = 20;
+   private static final int f = 20;
+   private static final int g = 20;
+   private static final int h = 20;
+   private final String i;
+   private final dsn.a j;
 
-   public <T extends Comparable<T>> S a(dto<T> $$0) {
-      return this.a($$0, a($$0.a(), this.c($$0)));
-   }
-
-   protected static <T> T a(Collection<T> $$0, T $$1) {
-      Iterator<T> $$2 = $$0.iterator();
-
-      while ($$2.hasNext()) {
-         if ($$2.next().equals($$1)) {
-            if ($$2.hasNext()) {
-               return $$2.next();
-            }
-
-            return $$0.iterator().next();
-         }
-      }
-
-      return $$2.next();
+   dsn(final String $$0, final dsn.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(this.e);
-      if (!this.C().isEmpty()) {
-         $$0.append('[');
-         $$0.append(this.C().entrySet().stream().map(a).collect(Collectors.joining(",")));
-         $$0.append(']');
-      }
-
-      return $$0.toString();
+   public String c() {
+      return this.i;
    }
 
-   public Collection<dto<?>> B() {
-      return Collections.unmodifiableCollection(this.b.keySet());
+   public int a() {
+      return this.j.c;
    }
 
-   public <T extends Comparable<T>> boolean b(dto<T> $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public <T extends Comparable<T>> T c(dto<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.e);
-      } else {
-         return $$0.g().cast($$1);
-      }
-   }
-
-   public <T extends Comparable<T>> Optional<T> d(dto<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
-      return $$1 == null ? Optional.empty() : Optional.of($$0.g().cast($$1));
-   }
-
-   public <T extends Comparable<T>, V extends T> S a(dto<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.e);
-      } else if ($$2.equals($$1)) {
-         return (S)this;
-      } else {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
-         } else {
-            return $$3;
+   public dsn a(aqt $$0, jd $$1, dsk $$2, dsl $$3, dsm $$4) {
+      return switch (this) {
+         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
+         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
+         case c -> {
+            $$3.b($$0.Z() + 20L);
+            yield d;
          }
-      }
-   }
-
-   public <T extends Comparable<T>, V extends T> S b(dto<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
-      if ($$2 != null && !$$2.equals($$1)) {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
-         } else {
-            return $$3;
-         }
-      } else {
-         return (S)this;
-      }
-   }
-
-   public void a(Map<Map<dto<?>, Comparable<?>>, S> $$0) {
-      if (this.g != null) {
-         throw new IllegalStateException();
-      } else {
-         Table<dto<?>, Comparable<?>, S> $$1 = HashBasedTable.create();
-         ObjectIterator var3 = this.b.entrySet().iterator();
-
-         while (var3.hasNext()) {
-            Entry<dto<?>, Comparable<?>> $$2 = (Entry<dto<?>, Comparable<?>>)var3.next();
-            dto<?> $$3 = $$2.getKey();
-
-            for (Comparable<?> $$4 : $$3.a()) {
-               if (!$$4.equals($$2.getValue())) {
-                  $$1.put($$3, $$4, $$0.get(this.c($$3, $$4)));
-               }
+         case d -> {
+            if ($$3.d().isEmpty()) {
+               $$3.e();
+               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
+            } else {
+               float $$5 = $$3.h();
+               this.a($$0, $$1, $$3.g(), $$5);
+               $$4.a($$3.f());
+               boolean $$6 = $$3.d().isEmpty();
+               int $$7 = $$6 ? 20 : 20;
+               $$3.b($$0.Z() + (long)$$7);
+               yield d;
             }
          }
+      };
+   }
 
-         this.g = (Table<dto<?>, Comparable<?>, S>)($$1.isEmpty() ? $$1 : ArrayTable.create($$1));
+   private static dsn a(aqt $$0, jd $$1, dsk $$2, dsl $$3, dsm $$4, double $$5) {
+      $$4.a($$0, $$1, $$3, $$2, $$5);
+      $$3.b($$0.Z() + 20L);
+      return $$4.c() ? b : a;
+   }
+
+   public void a(aqt $$0, jd $$1, dsn $$2, dsk $$3, dsm $$4, boolean $$5) {
+      this.a($$0, $$1, $$3, $$4);
+      $$2.a($$0, $$1, $$3, $$4, $$5);
+   }
+
+   protected void a(aqt $$0, jd $$1, dsk $$2, dsm $$3, boolean $$4) {
+   }
+
+   protected void a(aqt $$0, jd $$1, dsk $$2, dsm $$3) {
+   }
+
+   private void a(aqt $$0, jd $$1, cuo $$2, float $$3) {
+      kw.a($$0, $$2, 2, ji.b, eww.c($$1).a(ji.b, 1.2));
+      $$0.c(3017, $$1, 0);
+      $$0.a(null, $$1, avo.AF, avp.e, 1.0F, 0.8F + 0.4F * $$3);
+   }
+
+   static enum a {
+      a(6),
+      b(12);
+
+      final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
       }
-   }
-
-   private Map<dto<?>, Comparable<?>> c(dto<?> $$0, Comparable<?> $$1) {
-      Map<dto<?>, Comparable<?>> $$2 = new Reference2ObjectArrayMap(this.b);
-      $$2.put($$0, $$1);
-      return $$2;
-   }
-
-   public Map<dto<?>, Comparable<?>> C() {
-      return this.b;
-   }
-
-   protected static <O, S extends dsn<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
-      return $$0.dispatch("Name", $$0x -> $$0x.e, $$1x -> {
-         S $$2 = $$1.apply((O)$$1x);
-         return $$2.C().isEmpty() ? MapCodec.unit($$2) : $$2.f.codec().lenientOptionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of);
-      });
    }
 }

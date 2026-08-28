@@ -1,30 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record cj(de.d c, de.d d) implements dt<Integer> {
-   public static final Codec<cj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(de.d.d.optionalFieldOf("durability", de.d.c).forGetter(cj::b), de.d.d.optionalFieldOf("damage", de.d.c).forGetter(cj::c))
-            .apply($$0, cj::new)
-   );
+public record cj(Optional<bd<cuo, cs>> c) implements dw<cxm> {
+   public static final Codec<cj> a = RecordCodecBuilder.create($$0 -> $$0.group(bd.a(cs.a).optionalFieldOf("items").forGetter(cj::b)).apply($$0, cj::new));
 
    @Override
-   public km<Integer> a() {
-      return kn.e;
+   public kp<cxm> a() {
+      return kq.ab;
    }
 
-   public boolean a(cud $$0, Integer $$1) {
-      return !this.c.d($$0.o() - $$1) ? false : this.d.d($$1);
+   public boolean a(cuo $$0, cxm $$1) {
+      return !this.c.isPresent() || this.c.get().a($$1.d());
    }
 
-   public static cj a(de.d $$0) {
-      return new cj($$0, de.d.c);
-   }
-
-   public de.d b() {
+   public Optional<bd<cuo, cs>> b() {
       return this.c;
-   }
-
-   public de.d c() {
-      return this.d;
    }
 }

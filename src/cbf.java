@@ -1,44 +1,42 @@
 import java.util.EnumSet;
 
-public class cbf extends caa {
-   private final btz a;
+public class cbf extends cak {
+   private final btn a;
+   private double b;
+   private double c;
+   private int d;
 
-   public cbf(btz $$0) {
+   public cbf(btn $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(caa.a.c, caa.a.a));
+      this.a(EnumSet.of(cak.a.a, cak.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.a.gn();
+      return this.a.dT().i() < 0.02F;
    }
 
    @Override
-   public boolean a() {
-      if (!this.a.s()) {
-         return false;
-      } else if (this.a.bj()) {
-         return false;
-      } else if (!this.a.aG()) {
-         return false;
-      } else {
-         btc $$0 = this.a.P_();
-         if ($$0 == null) {
-            return true;
-         } else {
-            return this.a.g((bsh)$$0) < 144.0 && $$0.ek() != null ? false : this.a.gn();
-         }
-      }
-   }
-
-   @Override
-   public void c() {
-      this.a.J().n();
-      this.a.x(true);
+   public boolean c() {
+      return this.d >= 0;
    }
 
    @Override
    public void d() {
-      this.a.x(false);
+      double $$0 = (Math.PI * 2) * this.a.dT().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.dT().a(20);
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.d--;
+      this.a.F().a(this.a.dv() + this.b, this.a.dz(), this.a.dB() + this.c);
    }
 }

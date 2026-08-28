@@ -3,60 +3,39 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.concurrent.CompletableFuture;
 
-public class gt implements ArgumentType<go> {
-   private static final Collection<String> c = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "0.1 -0.5 .9", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("argument.pos3d.incomplete"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("argument.pos.mixed"));
-   private final boolean d;
-
-   public gt(boolean $$0) {
-      this.d = $$0;
-   }
+public class gt implements ArgumentType<gr> {
+   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "~-5 ~5");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("argument.rotation.incomplete"));
 
    public static gt a() {
-      return new gt(true);
+      return new gt();
    }
 
-   public static gt a(boolean $$0) {
-      return new gt($$0);
+   public static gr a(CommandContext<et> $$0, String $$1) {
+      return (gr)$$0.getArgument($$1, gr.class);
    }
 
-   public static ewh a(CommandContext<eq> $$0, String $$1) {
-      return ((go)$$0.getArgument($$1, go.class)).a((eq)$$0.getSource());
-   }
-
-   public static go b(CommandContext<eq> $$0, String $$1) {
-      return (go)$$0.getArgument($$1, go.class);
-   }
-
-   public go a(StringReader $$0) throws CommandSyntaxException {
-      return (go)($$0.canRead() && $$0.peek() == '^' ? gp.a($$0) : gv.a($$0, this.d));
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      if (!($$0.getSource() instanceof ev)) {
-         return Suggestions.empty();
+   public gr a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
       } else {
-         String $$2 = $$1.getRemaining();
-         Collection<ev.b> $$3;
-         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
-            $$3 = Collections.singleton(ev.b.a);
+         gx $$2 = gx.a($$0, false);
+         if ($$0.canRead() && $$0.peek() == ' ') {
+            $$0.skip();
+            gx $$3 = gx.a($$0, false);
+            return new gy($$3, $$2, new gx(true, 0.0));
          } else {
-            $$3 = ((ev)$$0.getSource()).C();
+            $$0.setCursor($$1);
+            throw a.createWithContext($$0);
          }
-
-         return ev.a($$2, $$3, $$1, er.a(this::a));
       }
    }
 
    public Collection<String> getExamples() {
-      return c;
+      return b;
    }
 }

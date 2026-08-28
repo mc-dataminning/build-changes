@@ -1,242 +1,68 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.chars.CharArraySet;
-import it.unimi.dsi.fastutil.chars.CharSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public final class cys {
-   private static final int c = 3;
-   public static final MapCodec<cys> a = cys.a.a
-      .flatXmap(cys::a, $$0 -> $$0.g.<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Cannot encode unpacked recipe")));
-   public static final ys<wf, cys> b = ys.a(cys::a, cys::b);
-   private final int d;
-   private final int e;
-   private final js<cyg> f;
-   private final Optional<cys.a> g;
-   private final int h;
-   private final boolean i;
+public class cys extends cyp {
+   private static final cyu a = cyu.a(cur.uv);
 
-   public cys(int $$0, int $$1, js<cyg> $$2, Optional<cys.a> $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      int $$4 = 0;
-
-      for (cyg $$5 : $$2) {
-         if (!$$5.c()) {
-            $$4++;
-         }
-      }
-
-      this.h = $$4;
-      this.i = ac.a($$0, $$1, $$2);
+   public cys(cym $$0) {
+      super($$0);
    }
 
-   public static cys a(Map<Character, cyg> $$0, String... $$1) {
-      return a($$0, List.of($$1));
-   }
+   public boolean a(cyn $$0, dcu $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
 
-   public static cys a(Map<Character, cyg> $$0, List<String> $$1) {
-      cys.a $$2 = new cys.a($$0, $$1);
-      return (cys)a($$2).getOrThrow();
-   }
-
-   private static DataResult<cys> a(cys.a $$0) {
-      String[] $$1 = a($$0.c);
-      int $$2 = $$1[0].length();
-      int $$3 = $$1.length;
-      js<cyg> $$4 = js.a($$2 * $$3, cyg.a);
-      CharSet $$5 = new CharArraySet($$0.b.keySet());
-
-      for (int $$6 = 0; $$6 < $$1.length; $$6++) {
-         String $$7 = $$1[$$6];
-
-         for (int $$8 = 0; $$8 < $$7.length(); $$8++) {
-            char $$9 = $$7.charAt($$8);
-            cyg $$10 = $$9 == ' ' ? cyg.a : $$0.b.get($$9);
-            if ($$10 == null) {
-               return DataResult.error(() -> "Pattern references symbol '" + $$9 + "' but it's not defined in the key");
-            }
-
-            $$5.remove($$9);
-            $$4.set($$8 + $$2 * $$6, $$10);
-         }
-      }
-
-      return !$$5.isEmpty()
-         ? DataResult.error(() -> "Key defines symbols that aren't used in pattern: " + $$5)
-         : DataResult.success(new cys($$2, $$3, $$4, Optional.of($$0)));
-   }
-
-   @VisibleForTesting
-   static String[] a(List<String> $$0) {
-      int $$1 = Integer.MAX_VALUE;
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
-         String $$6 = $$0.get($$5);
-         $$1 = Math.min($$1, a($$6));
-         int $$7 = b($$6);
-         $$2 = Math.max($$2, $$7);
-         if ($$7 < 0) {
-            if ($$3 == $$5) {
-               $$3++;
-            }
-
-            $$4++;
-         } else {
-            $$4 = 0;
-         }
-      }
-
-      if ($$0.size() == $$4) {
-         return new String[0];
-      } else {
-         String[] $$8 = new String[$$0.size() - $$4 - $$3];
-
-         for (int $$9 = 0; $$9 < $$8.length; $$9++) {
-            $$8[$$9] = $$0.get($$9 + $$3).substring($$1, $$2 + 1);
-         }
-
-         return $$8;
-      }
-   }
-
-   private static int a(String $$0) {
-      int $$1 = 0;
-
-      while ($$1 < $$0.length() && $$0.charAt($$1) == ' ') {
-         $$1++;
-      }
-
-      return $$1;
-   }
-
-   private static int b(String $$0) {
-      int $$1 = $$0.length() - 1;
-
-      while ($$1 >= 0 && $$0.charAt($$1) == ' ') {
-         $$1--;
-      }
-
-      return $$1;
-   }
-
-   public boolean a(cxz $$0) {
-      if ($$0.e() != this.h) {
-         return false;
-      } else {
-         if ($$0.f() == this.d && $$0.g() == this.e) {
-            if (!this.i && this.a($$0, true)) {
-               return true;
-            }
-
-            if (this.a($$0, false)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   private boolean a(cxz $$0, boolean $$1) {
-      for (int $$2 = 0; $$2 < this.e; $$2++) {
-         for (int $$3 = 0; $$3 < this.d; $$3++) {
-            cyg $$4;
-            if ($$1) {
-               $$4 = this.f.get(this.d - $$3 - 1 + $$2 * this.d);
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cuo $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if ($$5.g() instanceof cth) {
+               $$2 = true;
             } else {
-               $$4 = this.f.get($$3 + $$2 * this.d);
-            }
-
-            cud $$6 = $$0.a($$3, $$2);
-            if (!$$4.a($$6)) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   private void a(wf $$0) {
-      $$0.c(this.d);
-      $$0.c(this.e);
-
-      for (cyg $$1 : this.f) {
-         cyg.b.encode($$0, $$1);
-      }
-   }
-
-   private static cys b(wf $$0) {
-      int $$1 = $$0.l();
-      int $$2 = $$0.l();
-      js<cyg> $$3 = js.a($$1 * $$2, cyg.a);
-      $$3.replaceAll($$1x -> cyg.b.decode($$0));
-      return new cys($$1, $$2, $$3, Optional.empty());
-   }
-
-   public int a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   public js<cyg> c() {
-      return this.f;
-   }
-
-   public static record a(Map<Character, cyg> b, List<String> c) {
-      private static final Codec<List<String>> d = Codec.STRING.listOf().comapFlatMap($$0 -> {
-         if ($$0.size() > 3) {
-            return DataResult.error(() -> "Invalid pattern: too many rows, 3 is maximum");
-         } else if ($$0.isEmpty()) {
-            return DataResult.error(() -> "Invalid pattern: empty pattern not allowed");
-         } else {
-            int $$1 = ((String)$$0.getFirst()).length();
-
-            for (String $$2 : $$0) {
-               if ($$2.length() > 3) {
-                  return DataResult.error(() -> "Invalid pattern: too many columns, 3 is maximum");
+               if (!a.a($$5)) {
+                  return false;
                }
 
-               if ($$1 != $$2.length()) {
-                  return DataResult.error(() -> "Invalid pattern: each row must be the same width");
+               if ($$3) {
+                  return false;
                }
+
+               $$3 = true;
             }
-
-            return DataResult.success($$0);
          }
-      }, Function.identity());
-      private static final Codec<Character> e = Codec.STRING.comapFlatMap($$0 -> {
-         if ($$0.length() != 1) {
-            return DataResult.error(() -> "Invalid key entry: '" + $$0 + "' is an invalid symbol (must be 1 character only).");
-         } else {
-            return " ".equals($$0) ? DataResult.error(() -> "Invalid key entry: ' ' is a reserved symbol.") : DataResult.success($$0.charAt(0));
-         }
-      }, String::valueOf);
-      public static final MapCodec<cys.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(axo.b(e, cyg.d).fieldOf("key").forGetter($$0x -> $$0x.b), d.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, cys.a::new)
-      );
-
-      public Map<Character, cyg> a() {
-         return this.b;
       }
 
-      public List<String> b() {
-         return this.c;
+      return $$3 && $$2;
+   }
+
+   public cuo a(cyn $$0, jo.a $$1) {
+      IntList $$2 = new IntArrayList();
+      cuo $$3 = null;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cuo $$5 = $$0.a($$4);
+         cuj $$6 = $$5.g();
+         if ($$6 instanceof cth) {
+            $$2.add(((cth)$$6).c().f());
+         } else if (a.a($$5)) {
+            $$3 = $$5.c(1);
+         }
       }
+
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a(kq.U, cxj.a, $$2, cxj::a);
+         return $$3;
+      } else {
+         return cuo.l;
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public czc<?> ap_() {
+      return czc.i;
    }
 }

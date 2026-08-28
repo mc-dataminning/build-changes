@@ -1,119 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.List;
-import java.util.Locale;
-import java.util.function.BiConsumer;
+import java.util.Map;
+import java.util.Optional;
 
-public record cwx(List<cwx.b> e, boolean f) {
-   public static final cwx a = new cwx(List.of(), true);
-   private static final Codec<cwx> g = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cwx.b.a.listOf().fieldOf("modifiers").forGetter(cwx::b), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cwx::c))
-            .apply($$0, cwx::new)
-   );
-   public static final Codec<cwx> b = Codec.withAlternative(g, cwx.b.a.listOf(), $$0 -> new cwx($$0, true));
-   public static final ys<wf, cwx> c = ys.a(cwx.b.b.a(yq.a()), cwx::b, yq.b, cwx::c, cwx::new);
-   public static final DecimalFormat d = ac.a(new DecimalFormat("#.##"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+public class cwx {
+   public static final akp<cww> a = a("quartz");
+   public static final akp<cww> b = a("iron");
+   public static final akp<cww> c = a("netherite");
+   public static final akp<cww> d = a("redstone");
+   public static final akp<cww> e = a("copper");
+   public static final akp<cww> f = a("gold");
+   public static final akp<cww> g = a("emerald");
+   public static final akp<cww> h = a("diamond");
+   public static final akp<cww> i = a("lapis");
+   public static final akp<cww> j = a("amethyst");
 
-   public cwx a(boolean $$0) {
-      return new cwx(this.e, $$0);
+   public static void a(qp<cww> $$0) {
+      a($$0, a, cur.oC, xv.a.a(14931140), 0.1F);
+      a($$0, b, cur.oF, xv.a.a(15527148), 0.2F, Map.of(csf.c, "iron_darker"));
+      a($$0, c, cur.oK, xv.a.a(6445145), 0.3F, Map.of(csf.g, "netherite_darker"));
+      a($$0, d, cur.lH, xv.a.a(9901575), 0.4F);
+      a($$0, e, cur.oH, xv.a.a(11823181), 0.5F);
+      a($$0, f, cur.oJ, xv.a.a(14594349), 0.6F, Map.of(csf.d, "gold_darker"));
+      a($$0, g, cur.oA, xv.a.a(1155126), 0.7F);
+      a($$0, h, cur.oz, xv.a.a(7269586), 0.8F, Map.of(csf.e, "diamond_darker"));
+      a($$0, i, cur.oB, xv.a.a(4288151), 0.9F);
+      a($$0, j, cur.oD, xv.a.a(10116294), 1.0F);
    }
 
-   public static cwx.a a() {
-      return new cwx.a();
+   public static Optional<jm.c<cww>> a(jo.a $$0, cuo $$1) {
+      return $$0.b(lu.aW).b().filter($$1x -> $$1.a(((cww)$$1x.a()).b())).findFirst();
    }
 
-   public cwx a(jj<buf> $$0, bui $$1, bsp $$2) {
-      Builder<cwx.b> $$3 = ImmutableList.builderWithExpectedSize(this.e.size() + 1);
-
-      for (cwx.b $$4 : this.e) {
-         if (!$$4.d.b().equals($$1.b())) {
-            $$3.add($$4);
-         }
-      }
-
-      $$3.add(new cwx.b($$0, $$1, $$2));
-      return new cwx($$3.build(), this.f);
+   private static void a(qp<cww> $$0, akp<cww> $$1, cuj $$2, xv $$3, float $$4) {
+      a($$0, $$1, $$2, $$3, $$4, Map.of());
    }
 
-   public void a(bsp $$0, BiConsumer<jj<buf>, bui> $$1) {
-      for (cwx.b $$2 : this.e) {
-         if ($$2.e.equals($$0)) {
-            $$1.accept($$2.c, $$2.d);
-         }
-      }
+   private static void a(qp<cww> $$0, akp<cww> $$1, cuj $$2, xv $$3, float $$4, Map<jm<cse>, String> $$5) {
+      cww $$6 = cww.a($$1.a().a(), $$2, $$4, wy.c(ad.a("trim_material", $$1.a())).c($$3), $$5);
+      $$0.a($$1, $$6);
    }
 
-   public void a(bso $$0, BiConsumer<jj<buf>, bui> $$1) {
-      for (cwx.b $$2 : this.e) {
-         if ($$2.e.b($$0)) {
-            $$1.accept($$2.c, $$2.d);
-         }
-      }
-   }
-
-   public double a(double $$0, bso $$1) {
-      double $$2 = $$0;
-
-      for (cwx.b $$3 : this.e) {
-         if ($$3.e.b($$1)) {
-            double $$4 = $$3.d.d();
-
-            $$2 += switch ($$3.d.e()) {
-               case a -> $$4;
-               case b -> $$4 * $$0;
-               case c -> $$4 * $$2;
-            };
-         }
-      }
-
-      return $$2;
-   }
-
-   public List<cwx.b> b() {
-      return this.e;
-   }
-
-   public boolean c() {
-      return this.f;
-   }
-
-   public static class a {
-      private final Builder<cwx.b> a = ImmutableList.builder();
-
-      a() {
-      }
-
-      public cwx.a a(jj<buf> $$0, bui $$1, bsp $$2) {
-         this.a.add(new cwx.b($$0, $$1, $$2));
-         return this;
-      }
-
-      public cwx a() {
-         return new cwx(this.a.build(), true);
-      }
-   }
-
-   public static record b(jj<buf> c, bui d, bsp e) {
-      public static final Codec<cwx.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(buf.a.fieldOf("type").forGetter(cwx.b::a), bui.a.forGetter(cwx.b::b), bsp.l.optionalFieldOf("slot", bsp.a).forGetter(cwx.b::c))
-               .apply($$0, cwx.b::new)
-      );
-      public static final ys<wf, cwx.b> b = ys.a(buf.b, cwx.b::a, bui.c, cwx.b::b, bsp.m, cwx.b::c, cwx.b::new);
-
-      public jj<buf> a() {
-         return this.c;
-      }
-
-      public bui b() {
-         return this.d;
-      }
-
-      public bsp c() {
-         return this.e;
-      }
+   private static akp<cww> a(String $$0) {
+      return akp.a(lu.aW, akq.b($$0));
    }
 }

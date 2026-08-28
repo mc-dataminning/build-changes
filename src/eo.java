@@ -1,27 +1,39 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public interface eo {
-   eo a = new eo() {
-      @Nullable
-      @Override
-      public xk a(String $$0) {
-         return null;
-      }
-   };
+public class eo {
+   public static final Codec<eo> a = akq.a.xmap(eo::new, eo::a);
+   private final akq b;
+   private boolean c;
+   private Optional<ig<et>> d = Optional.empty();
 
-   @Nullable
-   xk a(String var1);
+   public eo(akq $$0) {
+      this.b = $$0;
+   }
 
-   public static record a(Map<String, xk> b) implements eo {
-      @Nullable
-      @Override
-      public xk a(String $$0) {
-         return this.b.get($$0);
+   public Optional<ig<et>> a(alf $$0) {
+      if (!this.c) {
+         this.d = $$0.a(this.b);
+         this.c = true;
       }
 
-      public Map<String, xk> a() {
-         return this.b;
+      return this.d;
+   }
+
+   public akq a() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         if ($$0 instanceof eo $$1 && this.a().equals($$1.a())) {
+            return true;
+         }
+
+         return false;
       }
    }
 }

@@ -1,60 +1,127 @@
-import java.util.Objects;
+import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
+import java.util.function.Function;
 
-public final class aqq<T> implements Comparable<aqq<?>> {
-   private final aqr<T> a;
-   private final int b;
-   private final T c;
-   private long d;
+public class aqq extends bqg {
+   private final Set<aqu> h = Sets.newHashSet();
+   private final Set<aqu> i = Collections.unmodifiableSet(this.h);
+   private boolean j = true;
 
-   protected aqq(aqr<T> $$0, int $$1, T $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public aqq(wy $$0, bqg.a $$1, bqg.b $$2) {
+      super(ayn.a(), $$0, $$1, $$2);
    }
 
-   public int a(aqq<?> $$0) {
-      int $$1 = Integer.compare(this.b, $$0.b);
-      if ($$1 != 0) {
-         return $$1;
-      } else {
-         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
-         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
+   @Override
+   public void a(float $$0) {
+      if ($$0 != this.b) {
+         super.a($$0);
+         this.a(acd::b);
       }
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof aqq<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
+   public void a(bqg.a $$0) {
+      if ($$0 != this.c) {
+         super.a($$0);
+         this.a(acd::d);
       }
    }
 
    @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c);
+   public void a(bqg.b $$0) {
+      if ($$0 != this.d) {
+         super.a($$0);
+         this.a(acd::d);
+      }
    }
 
    @Override
-   public String toString() {
-      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
+   public bqg a(boolean $$0) {
+      if ($$0 != this.e) {
+         super.a($$0);
+         this.a(acd::e);
+      }
+
+      return this;
    }
 
-   public aqr<T> a() {
-      return this.a;
+   @Override
+   public bqg b(boolean $$0) {
+      if ($$0 != this.f) {
+         super.b($$0);
+         this.a(acd::e);
+      }
+
+      return this;
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public bqg c(boolean $$0) {
+      if ($$0 != this.g) {
+         super.c($$0);
+         this.a(acd::e);
+      }
+
+      return this;
    }
 
-   protected void a(long $$0) {
-      this.d = $$0;
+   @Override
+   public void a(wy $$0) {
+      if (!Objects.equal($$0, this.a)) {
+         super.a($$0);
+         this.a(acd::c);
+      }
    }
 
-   protected boolean b(long $$0) {
-      long $$1 = this.a.b();
-      return $$1 != 0L && $$0 - this.d > $$1;
+   private void a(Function<bqg, acd> $$0) {
+      if (this.j) {
+         acd $$1 = $$0.apply(this);
+
+         for (aqu $$2 : this.h) {
+            $$2.c.b($$1);
+         }
+      }
+   }
+
+   public void a(aqu $$0) {
+      if (this.h.add($$0) && this.j) {
+         $$0.c.b(acd.a(this));
+      }
+   }
+
+   public void b(aqu $$0) {
+      if (this.h.remove($$0) && this.j) {
+         $$0.c.b(acd.a(this.h()));
+      }
+   }
+
+   public void b() {
+      if (!this.h.isEmpty()) {
+         for (aqu $$0 : Lists.newArrayList(this.h)) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public boolean f() {
+      return this.j;
+   }
+
+   public void d(boolean $$0) {
+      if ($$0 != this.j) {
+         this.j = $$0;
+
+         for (aqu $$1 : this.h) {
+            $$1.c.b($$0 ? acd.a(this) : acd.a(this.h()));
+         }
+      }
+   }
+
+   public Collection<aqu> g() {
+      return this.i;
    }
 }

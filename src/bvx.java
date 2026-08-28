@@ -1,48 +1,41 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
 
-public class bvx<E extends bte> extends bvy<E> {
-   private final awm<dfi> m;
-   private final float n;
-   private final List<bvy.a> o = new ArrayList<>();
-   private boolean p;
+public class bvx extends bvf<cmi> {
+   private static final int d = 1200;
+   final float c;
 
-   public bvx(bps $$0, int $$1, int $$2, float $$3, Function<E, avg> $$4, awm<dfi> $$5, float $$6, BiPredicate<E, ja> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
+   public bvx(float $$0) {
+      super(ImmutableMap.of(ccq.d, ccr.a), 1200);
+      this.c = $$0;
    }
 
-   @Override
-   protected void a(aqm $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.dU().i() < this.n;
+   protected boolean a(aqt $$0, cmi $$1) {
+      return $$1.dU().g().map($$0x -> $$0x == cok.b || $$0x == cok.c || $$0x == cok.d).orElse(true);
    }
 
-   @Override
-   protected Optional<bvy.a> a(aqm $$0) {
-      if (!this.p) {
-         return super.a($$0);
-      } else {
-         ja.a $$1 = new ja.a();
+   protected boolean a(aqt $$0, cmi $$1, long $$2) {
+      return $$1.dU().a(ccq.d);
+   }
 
-         while (!this.h.isEmpty()) {
-            Optional<bvy.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               bvy.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.b(), jf.a)).a(this.m)) {
-                  return $$2;
-               }
+   protected void b(aqt $$0, cmi $$1, long $$2) {
+      bvh.a($$1, $$1.dU().c(ccq.d).get().b(), this.c, 1);
+   }
 
-               this.o.add($$3);
+   protected void c(aqt $$0, cmi $$1, long $$2) {
+      Optional<jl> $$3 = $$1.dU().c(ccq.d);
+      $$3.ifPresent($$1x -> {
+         jd $$2x = $$1x.b();
+         aqt $$3x = $$0.o().a($$1x.a());
+         if ($$3x != null) {
+            ceq $$4 = $$3x.y();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
             }
-         }
 
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
-      }
+            age.c($$0, $$2x);
+         }
+      });
+      $$1.dU().b(ccq.d);
    }
 }

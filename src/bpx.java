@@ -1,147 +1,25 @@
-import java.util.UUID;
+import java.util.Arrays;
 
-public abstract class bpx {
-   private final UUID h;
-   protected wu a;
-   protected float b;
-   protected bpx.a c;
-   protected bpx.b d;
-   protected boolean e;
-   protected boolean f;
-   protected boolean g;
+public class bpx implements bpy {
+   private final bpy[] a;
 
-   public bpx(UUID $$0, wu $$1, bpx.a $$2, bpx.b $$3) {
-      this.h = $$0;
-      this.a = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.b = 1.0F;
-   }
-
-   public UUID h() {
-      return this.h;
-   }
-
-   public wu i() {
-      return this.a;
-   }
-
-   public void a(wu $$0) {
+   public bpx(bpy... $$0) {
       this.a = $$0;
    }
 
-   public float j() {
-      return this.b;
-   }
+   @Override
+   public float a(ayv $$0) {
+      float $$1 = 1.0F;
 
-   public void a(float $$0) {
-      this.b = $$0;
-   }
-
-   public bpx.a k() {
-      return this.c;
-   }
-
-   public void a(bpx.a $$0) {
-      this.c = $$0;
-   }
-
-   public bpx.b l() {
-      return this.d;
-   }
-
-   public void a(bpx.b $$0) {
-      this.d = $$0;
-   }
-
-   public boolean m() {
-      return this.e;
-   }
-
-   public bpx a(boolean $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public boolean n() {
-      return this.f;
-   }
-
-   public bpx b(boolean $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public bpx c(boolean $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean o() {
-      return this.g;
-   }
-
-   public static enum a {
-      a("pink", n.m),
-      b("blue", n.j),
-      c("red", n.e),
-      d("green", n.k),
-      e("yellow", n.o),
-      f("purple", n.b),
-      g("white", n.p);
-
-      private final String h;
-      private final n i;
-
-      private a(final String $$0, final n $$1) {
-         this.h = $$0;
-         this.i = $$1;
+      for (bpy $$2 : this.a) {
+         $$1 *= $$2.a($$0);
       }
 
-      public n a() {
-         return this.i;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public static bpx.a a(String $$0) {
-         for (bpx.a $$1 : values()) {
-            if ($$1.h.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return g;
-      }
+      return $$1;
    }
 
-   public static enum b {
-      a("progress"),
-      b("notched_6"),
-      c("notched_10"),
-      d("notched_12"),
-      e("notched_20");
-
-      private final String f;
-
-      private b(final String $$0) {
-         this.f = $$0;
-      }
-
-      public String a() {
-         return this.f;
-      }
-
-      public static bpx.b a(String $$0) {
-         for (bpx.b $$1 : values()) {
-            if ($$1.f.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return a;
-      }
+   @Override
+   public String toString() {
+      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
    }
 }

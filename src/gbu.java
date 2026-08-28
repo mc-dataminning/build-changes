@@ -1,27 +1,136 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
+public class gbu extends gdh {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final boolean G;
+   private final gch.a H;
 
-public class gbu {
-   private final List<akk> a;
-
-   private gbu(List<akk> $$0) {
-      this.a = $$0;
+   gbu(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, gch.a.a);
    }
 
-   public List<akk> a() {
-      return this.a;
+   gbu(fyz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, gch.a $$8) {
+      super($$0, $$1, $$2, $$3);
+      this.G = $$7;
+      this.H = $$8;
+      this.e($$8.b());
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
+      float $$9 = this.r.i() * 0.6F + 0.4F;
+      this.v = 0.9F * $$9;
+      this.w = 0.9F * $$9;
+      this.x = $$9;
+      this.n = false;
+      this.t = (int)(Math.random() * 10.0) + 30;
    }
 
-   public static gbu a(JsonObject $$0) {
-      JsonArray $$1 = axw.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new gbu(List.of());
+   @Override
+   public gcl b() {
+      return this.H.a() ? gcl.b : gcl.c;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public int a(float $$0) {
+      if (this.G) {
+         return 240;
       } else {
-         List<akk> $$2 = Streams.stream($$1).map($$0x -> axw.a($$0x, "texture")).map(akk::new).collect(ImmutableList.toImmutableList());
-         return new gbu($$2);
+         int $$1 = super.a($$0);
+         float $$2 = (float)this.s / (float)this.t;
+         $$2 *= $$2;
+         $$2 *= $$2;
+         int $$3 = $$1 & 0xFF;
+         int $$4 = $$1 >> 16 & 0xFF;
+         $$4 += (int)($$2 * 15.0F * 16.0F);
+         if ($$4 > 240) {
+            $$4 = 240;
+         }
+
+         return $$3 | $$4 << 16;
+      }
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         $$0 = 1.0F - $$0;
+         float $$1 = 1.0F - $$0;
+         $$1 *= $$1;
+         $$1 *= $$1;
+         this.g = this.a + this.j * (double)$$0;
+         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
+         this.i = this.F + this.l * (double)$$0;
+      }
+   }
+
+   @Override
+   public void a(fbg $$0, ffs $$1, float $$2) {
+      this.e(this.H.a(this.s, this.t, $$2));
+      super.a($$0, $$1, $$2);
+   }
+
+   public static class a implements gck<lq> {
+      private final gdc a;
+
+      public a(gdc $$0) {
+         this.a = $$0;
+      }
+
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbu $$8 = new gbu($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements gck<lq> {
+      private final gdc a;
+
+      public b(gdc $$0) {
+         this.a = $$0;
+      }
+
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbu $$8 = new gbu($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class c implements gck<lq> {
+      private final gdc a;
+
+      public c(gdc $$0) {
+         this.a = $$0;
+      }
+
+      public gch a(lq $$0, fyz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gbu $$8 = new gbu($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new gch.a(0.0F, 0.6F, 0.25F, 1.0F));
+         $$8.d(1.5F);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

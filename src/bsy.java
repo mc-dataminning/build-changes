@@ -1,61 +1,55 @@
-public class bsy {
-   private static final int a = 140;
-   private static final int b = 700;
-   private final ajt c;
-   private final ajp<Integer> d;
-   private final ajp<Boolean> e;
-   private boolean f;
-   private int g;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
 
-   public bsy(ajt $$0, ajp<Integer> $$1, ajp<Boolean> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+public enum bsy implements azj {
+   a(0, "any", $$0 -> true),
+   b(1, "mainhand", bsx.a),
+   c(2, "offhand", bsx.b),
+   d(3, "hand", $$0 -> $$0.a() == bsx.a.a),
+   e(4, "feet", bsx.c),
+   f(5, "legs", bsx.d),
+   g(6, "chest", bsx.e),
+   h(7, "head", bsx.f),
+   i(8, "armor", bsx::f),
+   j(9, "body", bsx.g);
+
+   public static final IntFunction<bsy> k = axd.a($$0 -> $$0.n, values(), axd.a.a);
+   public static final Codec<bsy> l = azj.a(bsy::values);
+   public static final yw<ByteBuf, bsy> m = yu.a(k, $$0 -> $$0.n);
+   private final int n;
+   private final String o;
+   private final Predicate<bsx> p;
+
+   private bsy(final int $$0, final String $$1, final Predicate<bsx> $$2) {
+      this.n = $$0;
+      this.o = $$1;
+      this.p = $$2;
    }
 
-   public void a() {
-      this.f = true;
-      this.g = 0;
+   private bsy(final int $$0, final String $$1, final bsx $$2) {
+      this($$0, $$1, $$1x -> $$1x == $$2);
    }
 
-   public boolean a(ayo $$0) {
-      if (this.f) {
-         return false;
-      } else {
-         this.f = true;
-         this.g = 0;
-         this.c.a(this.d, $$0.a(841) + 140);
-         return true;
-      }
+   public static bsy a(bsx $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> c;
+         case c -> e;
+         case d -> f;
+         case e -> g;
+         case f -> h;
+         case g -> j;
+      };
    }
 
-   public void b() {
-      if (this.f && this.g++ > this.e()) {
-         this.f = false;
-      }
+   @Override
+   public String c() {
+      return this.o;
    }
 
-   public float c() {
-      return this.f ? 1.0F + 1.15F * ayg.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
-   }
-
-   private int e() {
-      return this.c.a(this.d);
-   }
-
-   public void a(tx $$0) {
-      $$0.a("Saddle", this.d());
-   }
-
-   public void b(tx $$0) {
-      this.a($$0.q("Saddle"));
-   }
-
-   public void a(boolean $$0) {
-      this.c.a(this.e, $$0);
-   }
-
-   public boolean d() {
-      return this.c.a(this.e);
+   public boolean b(bsx $$0) {
+      return this.p.test($$0);
    }
 }

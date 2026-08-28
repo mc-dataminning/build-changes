@@ -1,29 +1,22 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Arrays;
+import java.util.function.Function;
 
-public class esv extends esj {
-   public static final MapCodec<esv> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(uv.j.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, esv::new));
-   private final tx b;
+public interface esv<T extends esv<T>> {
+   T b(esz.a var1);
 
-   private esv(List<euh> $$0, tx $$1) {
-      super($$0);
-      this.b = $$1;
+   default <E> T a(Iterable<E> $$0, Function<E, esz.a> $$1) {
+      T $$2 = this.c();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
 
-   @Override
-   public esl<esv> b() {
-      return esm.j;
+   default <E> T a(E[] $$0, Function<E, esz.a> $$1) {
+      return this.a(Arrays.asList($$0), $$1);
    }
 
-   @Override
-   public cud a(cud $$0, eqw $$1) {
-      cwr.a(kn.b, $$0, $$0x -> $$0x.a(this.b));
-      return $$0;
-   }
-
-   @Deprecated
-   public static esj.a<?> a(tx $$0) {
-      return a($$1 -> new esv($$1, $$0));
-   }
+   T c();
 }

@@ -1,182 +1,123 @@
-import java.time.LocalDate;
-import java.time.temporal.ChronoField;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class ciz extends cjr implements cjv {
-   private static final int b = 20;
-   private static final int c = 40;
-   private final cba<ciz> d = new cba<>(this, 1.0, 20, 15.0F);
-   private final cak e = new cak(this, 1.2, false) {
-      @Override
-      public void d() {
-         super.d();
-         ciz.this.v(false);
-      }
+public class ciz extends civ {
+   public static final double c = 0.375;
 
-      @Override
-      public void c() {
-         super.c();
-         ciz.this.v(true);
-      }
-   };
-
-   protected ciz(bsn<? extends ciz> $$0, dcg $$1) {
+   public ciz(bsw<? extends ciz> $$0, dcu $$1) {
       super($$0, $$1);
-      this.x();
+   }
+
+   public ciz(dcu $$0, jd $$1) {
+      super(bsw.al, $$0, $$1);
+      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
    }
 
    @Override
-   protected void z() {
-      this.bU.a(2, new cbd(this));
-      this.bU.a(3, new bzt(this, 1.0));
-      this.bU.a(3, new bzh<>(this, cfv.class, 6.0F, 1.0, 1.2));
-      this.bU.a(5, new cbn(this, 1.0));
-      this.bU.a(6, new cai(this, cml.class, 8.0F));
-      this.bU.a(6, new cav(this));
-      this.bV.a(1, new cbs(this));
-      this.bV.a(2, new cbt<>(this, cml.class, true));
-      this.bV.a(3, new cbt<>(this, cfe.class, true));
-      this.bV.a(3, new cbt<>(this, cft.class, 10, true, false, cft.ca));
-   }
-
-   public static buj.a s() {
-      return cjr.gt().a(buk.v, 0.25);
+   protected void a(ajz.a $$0) {
    }
 
    @Override
-   protected void b(ja $$0, dsl $$1) {
-      this.a(this.t(), 0.15F, 1.0F);
+   protected void p() {
+      this.o((double)this.b.u() + 0.5, (double)this.b.v() + 0.375, (double)this.b.w() + 0.5);
+      double $$0 = (double)this.am().l() / 2.0;
+      double $$1 = (double)this.am().m();
+      this.a(new ewr(this.dv() - $$0, this.dx(), this.dB() - $$0, this.dv() + $$0, this.dx() + $$1, this.dB() + $$0));
    }
 
-   abstract avg t();
+   @Override
+   public boolean a(double $$0) {
+      return $$0 < 1024.0;
+   }
 
    @Override
-   public void m_() {
-      boolean $$0 = this.gh();
-      if ($$0) {
-         cud $$1 = this.a(bso.f);
-         if (!$$1.e()) {
-            if ($$1.l()) {
-               cty $$2 = $$1.g();
-               $$1.b($$1.n() + this.ah.a(2));
-               if ($$1.n() >= $$1.o()) {
-                  this.a($$2, bso.f);
-                  this.a(bso.f, cud.l);
+   public void b(@Nullable bsq $$0) {
+      this.a(avo.nS, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(ua $$0) {
+   }
+
+   @Override
+   public void a(ua $$0) {
+   }
+
+   @Override
+   public bqq a(cmv $$0, bqp $$1) {
+      if (this.dQ().B) {
+         return bqq.a;
+      } else {
+         boolean $$2 = false;
+         double $$3 = 7.0;
+         List<btn> $$4 = this.dQ().a(btn.class, new ewr(this.dv() - 7.0, this.dx() - 7.0, this.dB() - 7.0, this.dv() + 7.0, this.dx() + 7.0, this.dB() + 7.0));
+
+         for (btn $$5 : $$4) {
+            if ($$5.ga() == $$0) {
+               $$5.b(this, true);
+               $$2 = true;
+            }
+         }
+
+         boolean $$6 = false;
+         if (!$$2) {
+            this.aq();
+            if ($$0.ga().d) {
+               for (btn $$7 : $$4) {
+                  if ($$7.fY() && $$7.ga() == this) {
+                     $$7.a(true, false);
+                     $$6 = true;
+                  }
                }
             }
-
-            $$0 = false;
          }
 
-         if ($$0) {
-            this.d(8.0F);
+         if ($$2 || $$6) {
+            this.a(dxw.b, $$0);
          }
-      }
 
-      super.m_();
-   }
-
-   @Override
-   public void u() {
-      super.u();
-      if (this.df() instanceof btl $$0) {
-         this.aZ = $$0.aZ;
+         return bqq.c;
       }
    }
 
    @Override
-   protected void a(ayo $$0, bqf $$1) {
-      super.a($$0, $$1);
-      this.a(bso.a, new cud(cug.ov));
+   public boolean s() {
+      return this.dQ().a_(this.b).a(awd.S);
    }
 
-   @Nullable
-   @Override
-   public btv a(dcv $$0, bqf $$1, btg $$2, @Nullable btv $$3) {
-      $$3 = super.a($$0, $$1, $$2, $$3);
-      ayo $$4 = $$0.E_();
-      this.a($$4, $$1);
-      this.a($$0, $$4, $$1);
-      this.x();
-      this.a_($$4.i() < 0.55F * $$1.d());
-      if (this.a(bso.f).e()) {
-         LocalDate $$5 = LocalDate.now();
-         int $$6 = $$5.get(ChronoField.DAY_OF_MONTH);
-         int $$7 = $$5.get(ChronoField.MONTH_OF_YEAR);
-         if ($$7 == 10 && $$6 == 31 && $$4.i() < 0.25F) {
-            this.a(bso.f, new cud($$4.i() < 0.1F ? dfk.ef : dfk.ee));
-            this.bX[bso.f.b()] = 0.0F;
+   public static ciz b(dcu $$0, jd $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+
+      for (ciz $$6 : $$0.a(ciz.class, new ewr((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
+         if ($$6.t().equals($$1)) {
+            return $$6;
          }
       }
 
-      return $$3;
-   }
-
-   public void x() {
-      if (this.dR() != null && !this.dR().B) {
-         this.bU.a(this.e);
-         this.bU.a(this.d);
-         cud $$0 = this.b(cnf.a(this, cug.ov));
-         if ($$0.a(cug.ov)) {
-            int $$1 = this.gn();
-            if (this.dR().al() != bqe.d) {
-               $$1 = this.go();
-            }
-
-            this.d.c($$1);
-            this.bU.a(4, this.d);
-         } else {
-            this.bU.a(4, this.e);
-         }
-      }
-   }
-
-   protected int gn() {
-      return 20;
-   }
-
-   protected int go() {
-      return 40;
+      ciz $$7 = new ciz($$0, $$1);
+      $$0.b($$7);
+      return $$7;
    }
 
    @Override
-   public void a(btc $$0, float $$1) {
-      cud $$2 = this.b(cnf.a(this, cug.ov));
-      cud $$3 = this.g($$2);
-      cmr $$4 = this.a($$3, $$1, $$2);
-      double $$5 = $$0.dw() - this.dw();
-      double $$6 = $$0.e(0.3333333333333333) - $$4.dy();
-      double $$7 = $$0.dC() - this.dC();
-      double $$8 = Math.sqrt($$5 * $$5 + $$7 * $$7);
-      $$4.c($$5, $$6 + $$8 * 0.2F, $$7, 1.6F, (float)(14 - this.dR().al().a() * 4));
-      this.a(avh.xn, 1.0F, 1.0F / (this.dU().i() * 0.4F + 0.8F));
-      this.dR().b($$4);
-   }
-
-   protected cmr a(cud $$0, float $$1, @Nullable cud $$2) {
-      return cnf.a(this, $$0, $$1, $$2);
+   public void v() {
+      this.a(avo.nT, 1.0F, 1.0F);
    }
 
    @Override
-   public boolean a(cuw $$0) {
-      return $$0 == cug.ov;
+   public zf<abt> dm() {
+      return new abu(this, 0, this.t());
    }
 
    @Override
-   public void a(tx $$0) {
-      super.a($$0);
-      this.x();
+   public eww r(float $$0) {
+      return this.m($$0).b(0.0, 0.2, 0.0);
    }
 
    @Override
-   public void a(bso $$0, cud $$1) {
-      super.a($$0, $$1);
-      if (!this.dR().B) {
-         this.x();
-      }
-   }
-
-   public boolean gp() {
-      return this.cq();
+   public cuo dD() {
+      return new cuo(cur.uK);
    }
 }

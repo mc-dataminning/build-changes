@@ -1,70 +1,54 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class ejp implements ejc {
-   private final List<ejb> a = Lists.newArrayList();
+public class ejp extends eqf {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
+
+   public static eqf.a<ejp> a() {
+      return new eqf.a<>(ejp::new, ejp::b, azv.o);
+   }
+
+   private ejp(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public ejp() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public static ejp b(ua $$0, jo.a $$1) {
+      return new ejp(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   }
 
    @Override
-   public void a(ejb $$0) {
-      this.a.add($$0);
+   public ua a(ua $$0, jo.a $$1) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
    }
 
-   @Nullable
-   @Override
-   public ejb a(eip $$0) {
-      return ejb.a(this.a, $$0);
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
    }
 
-   @Deprecated
-   public void a(int $$0) {
-      for (ejb $$1 : this.a) {
-         $$1.a(0, $$0, 0);
-      }
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
    }
 
-   @Deprecated
-   public int a(int $$0, int $$1, ayo $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      eip $$5 = this.d();
-      int $$6 = $$5.e() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
-      }
-
-      int $$7 = $$6 - $$5.l();
-      this.a($$7);
-      return $$7;
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
    }
 
-   /** @deprecated */
-   public void a(ayo $$0, int $$1, int $$2) {
-      eip $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.e();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
-      } else {
-         $$5 = $$1;
-      }
-
-      int $$7 = $$5 - $$3.i();
-      this.a($$7);
+   public void d(long $$0) {
+      this.d.remove($$0);
    }
 
-   public ejm a() {
-      return new ejm(this.a);
-   }
-
-   public void b() {
-      this.a.clear();
-   }
-
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public eip d() {
-      return ejb.a(this.a.stream());
+   public LongSet b() {
+      return this.c;
    }
 }

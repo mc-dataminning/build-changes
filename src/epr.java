@@ -1,53 +1,37 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record epr(ja c, csw d, Optional<wu> e) {
-   public static final Codec<epr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ja.a.fieldOf("pos").forGetter(epr::c),
-               csw.q.lenientOptionalFieldOf("color", csw.a).forGetter(epr::d),
-               ww.g.lenientOptionalFieldOf("name").forGetter(epr::e)
-            )
-            .apply($$0, epr::new)
-   );
-   public static final Codec<List<epr>> b = a.listOf();
-
+public class epr {
+   private final dce a;
    @Nullable
-   public static epr a(dbm $$0, ja $$1) {
-      if ($$0.c_($$1) instanceof dpf $$3) {
-         csw $$4 = $$3.f();
-         Optional<wu> $$5 = Optional.ofNullable($$3.aj());
-         return new epr($$1, $$4, $$5);
+   private final epq b;
+   private final jd c;
+   private final jd.a d = new jd.a();
+
+   public epr(dce $$0, btn $$1) {
+      this.a = $$0;
+      if ($$1.dQ() instanceof aqt $$2) {
+         this.b = $$2.H();
       } else {
-         return null;
+         this.b = null;
       }
+
+      this.c = $$1.dq();
    }
 
-   public jj<ept> a() {
-      return switch (this.d) {
-         case a -> epu.k;
-         case b -> epu.l;
-         case c -> epu.m;
-         case d -> epu.n;
-         case e -> epu.o;
-         case f -> epu.p;
-         case g -> epu.q;
-         case h -> epu.r;
-         case i -> epu.s;
-         case j -> epu.t;
-         case k -> epu.u;
-         case l -> epu.v;
-         case m -> epu.w;
-         case n -> epu.x;
-         case o -> epu.y;
-         case p -> epu.z;
-      };
+   public epp a(int $$0, int $$1, int $$2) {
+      jd $$3 = this.d.d($$0, $$1, $$2);
+      return this.b == null ? epu.b(this.a, $$3) : this.b.a(this.a, $$3);
    }
 
-   public String b() {
-      return "banner-" + this.c.u() + "," + this.c.v() + "," + this.c.w();
+   public dta a(jd $$0) {
+      return this.a.a_($$0);
+   }
+
+   public dce a() {
+      return this.a;
+   }
+
+   public jd b() {
+      return this.c;
    }
 }

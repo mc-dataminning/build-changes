@@ -1,63 +1,165 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlw extends dfr implements dfl {
-   public static final MapCodec<dlw> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dsa.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dlw::new)
-   );
-   public static final dtl f = dtb.aU;
-   protected static final float g = 6.0F;
-   protected static final exa h = dfi.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-   protected final dsa i;
+public class dlw extends dfl {
+   public static final MapCodec<dlw> d = b(dlw::new);
+   public static final dty<due> e = dtq.ag;
 
    @Override
-   public MapCodec<? extends dlw> a() {
+   public MapCodec<dlw> a() {
+      return d;
+   }
+
+   protected dlw(dsz.d $$0) {
+      super(false, $$0);
+      this.k(this.E.b().a(e, due.a).a(c, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected void a(dta $$0, dcu $$1, jd $$2, dfw $$3) {
+      if ($$3.o().m() && new dlx($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
+      }
+   }
+
+   @Override
+   public dud<due> c() {
       return e;
    }
 
-   protected dlw(dsa $$0, dsk.d $$1) {
-      super($$1);
-      this.i = $$0;
-      this.k(this.E.b().a(f, Integer.valueOf(0)));
+   @Override
+   protected dta a(dta $$0, dmk $$1) {
+      due $$2 = $$0.c(e);
+
+      return $$0.a(e, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield due.a;
+               case b:
+                  yield due.b;
+               case c:
+                  yield due.d;
+               case d:
+                  yield due.c;
+               case e:
+                  yield due.f;
+               case f:
+                  yield due.e;
+               case g:
+                  yield due.i;
+               case h:
+                  yield due.j;
+               case i:
+                  yield due.g;
+               case j:
+                  yield due.h;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield due.b;
+               case b:
+                  yield due.a;
+               case c:
+                  yield due.e;
+               case d:
+                  yield due.f;
+               case e:
+                  yield due.d;
+               case f:
+                  yield due.c;
+               case g:
+                  yield due.j;
+               case h:
+                  yield due.g;
+               case i:
+                  yield due.h;
+               case j:
+                  yield due.i;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield due.b;
+               case b:
+                  yield due.a;
+               case c:
+                  yield due.f;
+               case d:
+                  yield due.e;
+               case e:
+                  yield due.c;
+               case f:
+                  yield due.d;
+               case g:
+                  yield due.h;
+               case h:
+                  yield due.i;
+               case i:
+                  yield due.j;
+               case j:
+                  yield due.g;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> $$2;
+      });
    }
 
    @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return h;
-   }
-
-   @Override
-   protected void b(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      if ($$1.A($$2.c()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
+   protected dta a(dta $$0, dkt $$1) {
+      due $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(e, due.f);
+               case f:
+                  return $$0.a(e, due.e);
+               case g:
+                  return $$0.a(e, due.j);
+               case h:
+                  return $$0.a(e, due.i);
+               case i:
+                  return $$0.a(e, due.h);
+               case j:
+                  return $$0.a(e, due.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(e, due.d);
+               case d:
+                  return $$0.a(e, due.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(e, due.h);
+               case h:
+                  return $$0.a(e, due.g);
+               case i:
+                  return $$0.a(e, due.j);
+               case j:
+                  return $$0.a(e, due.i);
+            }
       }
-   }
 
-   public void a(aqm $$0, ja $$1, dsl $$2, ayo $$3) {
-      if ($$2.c(f) == 0) {
-         $$0.a($$1, $$2.a(f), 4);
-      } else {
-         this.i.a($$0, $$0.l().g(), $$1, $$2, $$3);
-      }
+      return super.a($$0, $$1);
    }
 
    @Override
-   public boolean b(dcj $$0, ja $$1, dsl $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dcg $$0, ayo $$1, ja $$2, dsl $$3) {
-      return (double)$$0.z.i() < 0.45;
-   }
-
-   @Override
-   public void a(aqm $$0, ayo $$1, ja $$2, dsl $$3) {
-      this.a($$0, $$2, $$3, $$1);
-   }
-
-   @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(f);
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(e, c);
    }
 }

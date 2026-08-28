@@ -1,66 +1,63 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class ehv extends eie {
-   private final jf c;
-   private final dzn d;
-   private final dzn e;
-   private final int f;
+public class ehv extends eht {
    public static final MapCodec<ehv> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               jf.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
-               dzn.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
-               dzn.b.optionalFieldOf("allowed_search_condition", dzn.e()).forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
+               dzp.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               dzp.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
             )
             .apply($$0, ehv::new)
    );
+   private static final Logger b = LogUtils.getLogger();
+   private final dzp d;
+   private final dzp e;
+   private final int f;
 
-   private ehv(jf $$0, dzn $$1, dzn $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   private ehv(dzp $$0, dzp $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static ehv a(jf $$0, dzn $$1, dzn $$2, int $$3) {
-      return new ehv($$0, $$1, $$2, $$3);
+   public static ehv a(dzp $$0, dzp $$1, int $$2) {
+      return new ehv($$0, $$1, $$2);
    }
 
-   public static ehv a(jf $$0, dzn $$1, int $$2) {
-      return a($$0, $$1, dzn.e(), $$2);
+   public static ehv a(dzp $$0, dzp $$1) {
+      return a($$0, $$1, 0);
    }
 
    @Override
-   public Stream<ja> a_(eic $$0, ayo $$1, ja $$2) {
-      ja.a $$3 = $$2.j();
-      ddc $$4 = $$0.d();
-      if (!this.e.test($$4, $$3)) {
-         return Stream.of();
+   public int a(ayv $$0, dzs $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
       } else {
-         for (int $$5 = 0; $$5 < this.f; $$5++) {
-            if (this.d.test($$4, $$3)) {
-               return Stream.of($$3);
-            }
-
-            $$3.c(this.c);
-            if ($$4.d($$3.v())) {
-               return Stream.of();
-            }
-
-            if (!this.e.test($$4, $$3)) {
-               break;
-            }
+         int $$4 = $$3 - $$2;
+         if (this.f >= $$4) {
+            return ayn.b($$0, $$2, $$3);
+         } else {
+            int $$5 = ($$4 - this.f) / 2;
+            int $$6 = $$4 - $$5;
+            return $$2 + ayn.b($$0, 0, $$6) + ayn.b($$0, 0, $$5);
          }
-
-         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
       }
    }
 
    @Override
-   public eif<?> b() {
-      return eif.j;
+   public ehu<?> a() {
+      return ehu.e;
+   }
+
+   @Override
+   public String toString() {
+      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
    }
 }

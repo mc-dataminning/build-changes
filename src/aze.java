@@ -1,28 +1,25 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+public class aze {
+   private double a;
+   private double b;
+   private double c;
 
-@FunctionalInterface
-public interface aze {
-   Logger a = LogUtils.getLogger();
+   public double a(double $$0, double $$1) {
+      this.a += $$0;
+      double $$2 = this.a - this.b;
+      double $$3 = ayn.d(0.5, this.c, $$2);
+      double $$4 = Math.signum($$2);
+      if ($$4 * $$2 > $$4 * this.c) {
+         $$2 = $$3;
+      }
 
-   static aze immediate(final Executor $$0) {
-      return new aze() {
-         @Override
-         public <T> void append(CompletableFuture<T> $$0x, Consumer<T> $$1) {
-            $$0.thenAcceptAsync($$1, $$0).exceptionally($$0xx -> {
-               a.error("Task failed", $$0xx);
-               return null;
-            });
-         }
-      };
+      this.c = $$3;
+      this.b += $$2 * $$1;
+      return $$2 * $$1;
    }
 
-   default void append(Runnable $$0) {
-      this.append(CompletableFuture.completedFuture(null), $$1 -> $$0.run());
+   public void a() {
+      this.a = 0.0;
+      this.b = 0.0;
+      this.c = 0.0;
    }
-
-   <T> void append(CompletableFuture<T> var1, Consumer<T> var2);
 }

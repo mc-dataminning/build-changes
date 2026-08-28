@@ -1,46 +1,71 @@
+import com.google.common.hash.Hashing;
+import com.google.common.hash.HashingOutputStream;
+import com.google.gson.JsonElement;
+import com.google.gson.stream.JsonWriter;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.Comparator;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
+import java.util.function.ToIntFunction;
+import org.slf4j.Logger;
 
-public class ma implements lx {
-   private final lz.a d;
-   private final List<mb> e;
-   private final CompletableFuture<jl.a> f;
+public interface ma {
+   ToIntFunction<String> a = ad.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.put("type", 0);
+      $$0.put("parent", 1);
+      $$0.defaultReturnValue(2);
+   });
+   Comparator<String> b = Comparator.comparingInt(a).thenComparing($$0 -> (String)$$0);
+   Logger c = LogUtils.getLogger();
 
-   public ma(lz $$0, CompletableFuture<jl.a> $$1, List<mb> $$2) {
-      this.d = $$0.a(lz.b.a, "advancements");
-      this.e = $$2;
-      this.f = $$1;
+   CompletableFuture<?> a(ly var1);
+
+   String a();
+
+   static <T> CompletableFuture<?> a(ly $$0, jo.a $$1, Codec<T> $$2, T $$3, Path $$4) {
+      ako<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
+      JsonElement $$6 = (JsonElement)$$2.encodeStart($$5, $$3).getOrThrow();
+      return a($$0, $$6, $$4);
    }
 
-   @Override
-   public CompletableFuture<?> a(lv $$0) {
-      return this.f.thenCompose($$1 -> {
-         Set<akk> $$2 = new HashSet<>();
-         List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         Consumer<af> $$4 = $$4x -> {
-            if (!$$2.add($$4x.a())) {
-               throw new IllegalStateException("Duplicate advancement " + $$4x.a());
-            } else {
-               Path $$5x = this.d.a($$4x.a());
-               $$3.add(lx.a($$0, $$1, ae.a, $$4x.b(), $$5x));
+   static CompletableFuture<?> a(ly $$0, JsonElement $$1, Path $$2) {
+      return CompletableFuture.runAsync(() -> {
+         try {
+            ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
+            HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
+            JsonWriter $$5 = new JsonWriter(new OutputStreamWriter($$4, StandardCharsets.UTF_8));
+
+            try {
+               $$5.setSerializeNulls(false);
+               $$5.setIndent("  ");
+               ayd.a($$5, $$1, b);
+            } catch (Throwable var9) {
+               try {
+                  $$5.close();
+               } catch (Throwable var8) {
+                  var9.addSuppressed(var8);
+               }
+
+               throw var9;
             }
-         };
 
-         for (mb $$5 : this.e) {
-            $$5.a($$1, $$4);
+            $$5.close();
+            $$0.writeIfNeeded($$2, $$3.toByteArray(), $$4.hash());
+         } catch (IOException var10) {
+            c.error("Failed to save file to {}", $$2, var10);
          }
-
-         return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
-      });
+      }, ad.g());
    }
 
-   @Override
-   public final String a() {
-      return "Advancements";
+   @FunctionalInterface
+   public interface a<T extends ma> {
+      T create(mc var1);
    }
 }

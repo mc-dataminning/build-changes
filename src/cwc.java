@@ -1,60 +1,44 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cwc implements cow {
-   public static final Codec<jj<cwc>> a = lq.h.s();
-   public static final ys<wf, jj<cwc>> b = yq.b(lr.ac);
+public class cwc extends csm {
+   protected final dfw a;
+   private final ji b;
+
+   public cwc(dfw $$0, dfw $$1, cuj.a $$2, ji $$3) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+   }
+
+   protected boolean a(dcx $$0, dta $$1, jd $$2) {
+      return $$1.a($$0, $$2);
+   }
+
    @Nullable
-   private final String c;
-   private final List<brp> d;
-   private coz e = cpb.f;
-
-   public cwc(brp... $$0) {
-      this(null, $$0);
-   }
-
-   public cwc(@Nullable String $$0, brp... $$1) {
-      this.c = $$0;
-      this.d = List.of($$1);
-   }
-
-   public cwc a(cox... $$0) {
-      this.e = cpb.d.a($$0);
-      return this;
-   }
-
    @Override
-   public coz i() {
-      return this.e;
-   }
+   protected dta c(cyb $$0) {
+      dta $$1 = this.a.a($$0);
+      dta $$2 = null;
+      dcx $$3 = $$0.q();
+      jd $$4 = $$0.a();
 
-   public static String a(Optional<jj<cwc>> $$0, String $$1) {
-      if ($$0.isPresent()) {
-         String $$2 = $$0.get().a().c;
-         if ($$2 != null) {
-            return $$1 + $$2;
-         }
-      }
-
-      String $$3 = $$0.flatMap(jj::e).map($$0x -> $$0x.a().a()).orElse("empty");
-      return $$1 + $$3;
-   }
-
-   public List<brp> a() {
-      return this.d;
-   }
-
-   public boolean b() {
-      if (!this.d.isEmpty()) {
-         for (brp $$0 : this.d) {
-            if ($$0.c().a().a()) {
-               return true;
+      for (ji $$5 : $$0.f()) {
+         if ($$5 != this.b.g()) {
+            dta $$6 = $$5 == this.b ? this.d().a($$0) : $$1;
+            if ($$6 != null && this.a($$3, $$6, $$4)) {
+               $$2 = $$6;
+               break;
             }
          }
       }
 
-      return false;
+      return $$2 != null && $$3.a($$2, $$4, exb.a()) ? $$2 : null;
+   }
+
+   @Override
+   public void a(Map<dfw, cuj> $$0, cuj $$1) {
+      super.a($$0, $$1);
+      $$0.put(this.a, $$1);
    }
 }

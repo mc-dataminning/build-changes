@@ -4,28 +4,16 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bki extends bht {
+public class bki extends bic {
    public bki(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:breeze", () -> bhu.a($$0));
-      $$0.registerSimple($$1, "minecraft:wind_charge");
-      $$0.registerSimple($$1, "minecraft:breeze_wind_charge");
-      return $$1;
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register(
-         $$1,
-         "minecraft:trial_spawner",
-         () -> DSL.optionalFields(
-               "spawn_potentials", DSL.list(DSL.fields("data", DSL.fields("entity", bgh.A.in($$0)))), "spawn_data", DSL.fields("entity", bgh.A.in($$0))
-            )
-      );
+      $$0.register($$1, "minecraft:item_display", $$1x -> DSL.optionalFields("item", bgq.t.in($$0)));
+      $$0.register($$1, "minecraft:block_display", $$1x -> DSL.optionalFields("block_state", bgq.u.in($$0)));
+      $$0.registerSimple($$1, "minecraft:text_display");
       return $$1;
    }
 }

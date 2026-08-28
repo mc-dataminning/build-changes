@@ -1,30 +1,34 @@
-public record ags(int b, int c, boolean d) implements zb<agb> {
-   public static final ys<vr, ags> a = zb.a(ags::a, ags::new);
+public class ags implements zf<agh> {
+   public static final yw<vv, ags> a = zf.a(ags::a, ags::new);
+   private final ags.a b;
 
-   private ags(vr $$0) {
-      this($$0.l(), $$0.l(), $$0.readBoolean());
+   public ags(ags.a $$0) {
+      this.b = $$0;
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private ags(vv $$0) {
+      this.b = $$0.b(ags.a.class);
+   }
+
+   private void a(vv $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zd<ags> a() {
-      return afz.bu;
+   public zh<ags> a() {
+      return agf.bo;
    }
 
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public ags.a b() {
+      return this.b;
    }
 
-   public boolean f() {
-      return this.d;
+   public static enum a {
+      a,
+      b;
    }
 }

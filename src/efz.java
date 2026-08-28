@@ -1,20 +1,20 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efz extends efq {
-   public static final MapCodec<efz> b = dsl.b.fieldOf("state").xmap(efz::new, $$0 -> $$0.c);
-   private final dsl c;
+public record efz(egf b, float c) {
+   public static final Codec<efz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               egf.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, efz::new)
+   );
 
-   protected efz(dsl $$0) {
-      this.c = $$0;
+   public egf a() {
+      return this.b;
    }
 
-   @Override
-   protected efr<?> a() {
-      return efr.a;
-   }
-
-   @Override
-   public dsl a(ayo $$0, ja $$1) {
+   public float b() {
       return this.c;
    }
 }

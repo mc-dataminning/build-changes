@@ -1,6 +1,3 @@
-import javax.annotation.Nullable;
-
 public interface bub {
-   @Nullable
-   bsh s();
+   void a(cen var1, bsq var2);
 }

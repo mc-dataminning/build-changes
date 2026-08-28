@@ -1,233 +1,110 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
-import java.util.OptionalLong;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public record dwg(
-   OptionalLong l, boolean m, boolean n, boolean o, boolean p, double q, boolean r, boolean s, int t, int u, int v, awm<dfi> w, akk x, float y, dwg.a z
-) {
-   public static final int a = ja.d;
-   public static final int b = 16;
-   public static final int c = (1 << a) - 32;
-   public static final int d = (c >> 1) - 1;
-   public static final int e = d - c + 1;
-   public static final int f = d << 4;
-   public static final int g = e << 4;
-   public static final Codec<dwg> h = axo.c(
-      RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  axo.a(Codec.LONG.lenientOptionalFieldOf("fixed_time")).forGetter(dwg::f),
-                  Codec.BOOL.fieldOf("has_skylight").forGetter(dwg::g),
-                  Codec.BOOL.fieldOf("has_ceiling").forGetter(dwg::h),
-                  Codec.BOOL.fieldOf("ultrawarm").forGetter(dwg::i),
-                  Codec.BOOL.fieldOf("natural").forGetter(dwg::j),
-                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(dwg::k),
-                  Codec.BOOL.fieldOf("bed_works").forGetter(dwg::l),
-                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(dwg::m),
-                  Codec.intRange(e, d).fieldOf("min_y").forGetter(dwg::n),
-                  Codec.intRange(16, c).fieldOf("height").forGetter(dwg::o),
-                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(dwg::p),
-                  awm.b(lr.f).fieldOf("infiniburn").forGetter(dwg::q),
-                  akk.a.fieldOf("effects").orElse(dwe.e).forGetter(dwg::r),
-                  Codec.FLOAT.fieldOf("ambient_light").forGetter(dwg::s),
-                  dwg.a.a.forGetter(dwg::t)
-               )
-               .apply($$0, dwg::new)
-      )
-   );
-   public static final ys<wf, jj<dwg>> i = yq.b(lr.aJ);
-   private static final int A = 8;
-   public static final float[] j = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
-   public static final Codec<jj<dwg>> k = akg.a(lr.aJ, h);
+public class dwg implements AutoCloseable {
+   public static final int d = 1493;
+   private final dwi a;
+   protected final DataFixer e;
+   @Nullable
+   private volatile ejh b;
 
-   public dwg(
-      OptionalLong l, boolean m, boolean n, boolean o, boolean p, double q, boolean r, boolean s, int t, int u, int v, awm<dfi> w, akk x, float y, dwg.a z
-   ) {
-      if (u < 16) {
-         throw new IllegalStateException("height has to be at least 16");
-      } else if (t + u > d + 1) {
-         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
-      } else if (v > u) {
-         throw new IllegalStateException("logical_height cannot be higher than height");
-      } else if (u % 16 != 0) {
-         throw new IllegalStateException("height has to be multiple of 16");
-      } else if (t % 16 != 0) {
-         throw new IllegalStateException("min_y has to be a multiple of 16");
+   public dwg(dwp $$0, Path $$1, DataFixer $$2, boolean $$3) {
+      this.e = $$2;
+      this.a = new dwi($$0, $$1, $$3);
+   }
+
+   public boolean b(dcb $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   public ua a(akp<dcu> $$0, Supplier<eqt> $$1, ua $$2, Optional<akp<MapCodec<? extends dux>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 == ab.b().d().c()) {
+         return $$2;
       } else {
-         this.l = l;
-         this.m = m;
-         this.n = n;
-         this.o = o;
-         this.p = p;
-         this.q = q;
-         this.r = r;
-         this.s = s;
-         this.t = t;
-         this.u = u;
-         this.v = v;
-         this.w = w;
-         this.x = x;
-         this.y = y;
-         this.z = z;
+         try {
+            if ($$4 < 1493) {
+               $$2 = azv.c.a(this.e, $$2, $$4, 1493);
+               if ($$2.p("Level").q("hasLegacyStructureData")) {
+                  ejh $$5 = this.a($$0, $$1);
+                  $$2 = $$5.a($$2);
+               }
+            }
+
+            a($$2, $$0, $$3);
+            $$2 = azv.c.a(this.e, $$2, Math.max(1493, $$4));
+            b($$2);
+            up.e($$2);
+            return $$2;
+         } catch (Exception var9) {
+            o $$7 = o.a(var9, "Updated chunk");
+            p $$8 = $$7.a("Updated chunk details");
+            $$8.a("Data version", $$4);
+            throw new z($$7);
+         }
       }
    }
 
-   @Deprecated
-   public static DataResult<akj<dcg>> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.asNumber().result();
-      if ($$1.isPresent()) {
-         int $$2 = $$1.get().intValue();
-         if ($$2 == -1) {
-            return DataResult.success(dcg.i);
-         }
-
-         if ($$2 == 0) {
-            return DataResult.success(dcg.h);
-         }
-
-         if ($$2 == 1) {
-            return DataResult.success(dcg.j);
+   private ejh a(akp<dcu> $$0, Supplier<eqt> $$1) {
+      ejh $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = ejh.a($$0, $$1.get());
+            }
          }
       }
 
-      return dcg.g.parse($$0);
+      return $$2;
    }
 
-   public static double a(dwg $$0, dwg $$1) {
-      double $$2 = $$0.k();
-      double $$3 = $$1.k();
-      return $$2 / $$3;
+   public static void a(ua $$0, akp<dcu> $$1, Optional<akp<MapCodec<? extends dux>>> $$2) {
+      ua $$3 = new ua();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
    }
 
-   public static Path a(akj<dcg> $$0, Path $$1) {
-      if ($$0 == dcg.h) {
-         return $$1;
-      } else if ($$0 == dcg.j) {
-         return $$1.resolve("DIM1");
-      } else {
-         return $$0 == dcg.i ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
+   private static void b(ua $$0) {
+      $$0.r("__context");
+   }
+
+   public static int a(ua $$0) {
+      return up.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<ua>> d(dcb $$0) {
+      return this.a.a($$0);
+   }
+
+   public CompletableFuture<Void> a(dcb $$0, ua $$1) {
+      this.e($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   protected void e(dcb $$0) {
+      if (this.b != null) {
+         this.b.a($$0.a());
       }
    }
 
-   public boolean a() {
-      return this.l.isPresent();
+   public void o() {
+      this.a.a(true).join();
    }
 
-   public float a(long $$0) {
-      double $$1 = ayg.e((double)this.l.orElse($$0) / 24000.0 - 0.25);
-      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
-      return (float)($$1 * 2.0 + $$2) / 3.0F;
+   @Override
+   public void close() throws IOException {
+      this.a.close();
    }
 
-   public int b(long $$0) {
-      return (int)($$0 / 24000L % 8L + 8L) % 8;
-   }
-
-   public boolean b() {
-      return this.z.a();
-   }
-
-   public boolean c() {
-      return this.z.b();
-   }
-
-   public bpm d() {
-      return this.z.c();
-   }
-
-   public int e() {
-      return this.z.d();
-   }
-
-   public OptionalLong f() {
-      return this.l;
-   }
-
-   public boolean g() {
-      return this.m;
-   }
-
-   public boolean h() {
-      return this.n;
-   }
-
-   public boolean i() {
-      return this.o;
-   }
-
-   public boolean j() {
-      return this.p;
-   }
-
-   public double k() {
-      return this.q;
-   }
-
-   public boolean l() {
-      return this.r;
-   }
-
-   public boolean m() {
-      return this.s;
-   }
-
-   public int n() {
-      return this.t;
-   }
-
-   public int o() {
-      return this.u;
-   }
-
-   public int p() {
-      return this.v;
-   }
-
-   public awm<dfi> q() {
-      return this.w;
-   }
-
-   public akk r() {
-      return this.x;
-   }
-
-   public float s() {
-      return this.y;
-   }
-
-   public dwg.a t() {
-      return this.z;
-   }
-
-   public static record a(boolean b, boolean c, bpm d, int e) {
-      public static final MapCodec<dwg.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("piglin_safe").forGetter(dwg.a::a),
-                  Codec.BOOL.fieldOf("has_raids").forGetter(dwg.a::b),
-                  bpm.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(dwg.a::c),
-                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(dwg.a::d)
-               )
-               .apply($$0, dwg.a::new)
-      );
-
-      public boolean a() {
-         return this.b;
-      }
-
-      public boolean b() {
-         return this.c;
-      }
-
-      public bpm c() {
-         return this.d;
-      }
-
-      public int d() {
-         return this.e;
-      }
+   public dwe p() {
+      return this.a;
    }
 }

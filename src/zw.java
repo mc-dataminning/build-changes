@@ -1,29 +1,31 @@
-public class zw implements zb<zs> {
-   public static final ys<vr, zw> a = zb.a(zw::a, zw::new);
-   private final int b;
+import java.util.Map;
 
-   public zw(int $$0) {
+public class zw implements zf<zl> {
+   public static final yw<vv, zw> a = zf.a(zw::a, zw::new);
+   private final Map<akp<? extends jz<?>>, aww.a> b;
+
+   public zw(Map<akp<? extends jz<?>>, aww.a> $$0) {
       this.b = $$0;
    }
 
-   private zw(vr $$0) {
-      this.b = $$0.readInt();
+   private zw(vv $$0) {
+      this.b = $$0.a(vv::r, aww.a::b);
    }
 
-   private void a(vr $$0) {
-      $$0.p(this.b);
+   private void a(vv $$0) {
+      $$0.a(this.b, vv::b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zd<zw> a() {
-      return zr.m;
+   public zh<zw> a() {
+      return zx.k;
    }
 
-   public void a(zs $$0) {
+   public void a(zl $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public Map<akp<? extends jz<?>>, aww.a> b() {
       return this.b;
    }
 }

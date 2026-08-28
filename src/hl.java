@@ -1,5 +1,8 @@
-public record hl<T>(hr a, ho<T> b) {
-   public void a(hp<T> $$0) {
-      this.b.execute($$0, this.a);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hl {
 }

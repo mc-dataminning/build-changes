@@ -1,48 +1,52 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
 
-public record evg(akk b, fi.g c) implements evd {
+public record evg(Optional<Boolean> b, Optional<Boolean> c) implements euw {
    public static final MapCodec<evg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akk.a.fieldOf("storage").forGetter(evg::c), fi.g.a.fieldOf("path").forGetter(evg::d)).apply($$0, evg::new)
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(evg::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(evg::e))
+            .apply($$0, evg::new)
    );
 
    @Override
-   public evc b() {
-      return eve.f;
+   public eux b() {
+      return euy.o;
    }
 
-   private Optional<un> c(eqw $$0) {
-      tx $$1 = $$0.d().o().aM().a(this.b);
-
-      try {
-         List<uu> $$2 = this.c.a($$1);
-         if ($$2.size() == 1 && $$2.get(0) instanceof un $$3) {
-            return Optional.of($$3);
-         }
-      } catch (CommandSyntaxException var6) {
-      }
-
-      return Optional.empty();
+   public boolean a(erl $$0) {
+      aqt $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.ad() ? false : !this.c.isPresent() || this.c.get() == $$1.ac();
    }
 
-   @Override
-   public float b(eqw $$0) {
-      return this.c($$0).map(un::k).orElse(0.0F);
+   public static evg.a c() {
+      return new evg.a();
    }
 
-   @Override
-   public int a(eqw $$0) {
-      return this.c($$0).map(un::g).orElse(0);
-   }
-
-   public akk c() {
+   public Optional<Boolean> d() {
       return this.b;
    }
 
-   public fi.g d() {
+   public Optional<Boolean> e() {
       return this.c;
+   }
+
+   public static class a implements euw.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+
+      public evg.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public evg.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public evg a() {
+         return new evg(this.a, this.b);
+      }
    }
 }

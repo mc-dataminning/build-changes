@@ -1,38 +1,53 @@
-import java.util.function.ToIntFunction;
-import org.joml.Vector3f;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class brl extends brn {
-   private final float c;
-   private final ToIntFunction<ayo> d;
+public record brl(String d, bri e, float f, brh g, brn h) {
+   public static final Codec<brl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(brl::a),
+               bri.d.fieldOf("scaling").forGetter(brl::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(brl::c),
+               brh.g.optionalFieldOf("effects", brh.a).forGetter(brl::d),
+               brn.d.optionalFieldOf("death_message_type", brn.a).forGetter(brl::e)
+            )
+            .apply($$0, brl::new)
+   );
+   public static final Codec<jm<brl>> b = akn.a(lu.s);
+   public static final yw<wj, jm<brl>> c = yu.b(lu.s);
 
-   protected brl(bro $$0, int $$1, float $$2, ToIntFunction<ayo> $$3) {
-      super($$0, $$1, lj.G);
-      this.c = $$2;
-      this.d = $$3;
+   public brl(String $$0, bri $$1, float $$2) {
+      this($$0, $$1, $$2, brh.a, brn.a);
    }
 
-   @Override
-   public void a(btc $$0, int $$1, bra $$2, float $$3) {
-      if ($$0.dU().i() <= this.c) {
-         int $$4 = this.d.applyAsInt($$0.dU());
-
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            this.a($$0.dR(), $$0, $$0.dw(), $$0.dy() + (double)$$0.dm() / 2.0, $$0.dC());
-         }
-      }
+   public brl(String $$0, bri $$1, float $$2, brh $$3) {
+      this($$0, $$1, $$2, $$3, brn.a);
    }
 
-   private void a(dcg $$0, btc $$1, double $$2, double $$3, double $$4) {
-      cjy $$5 = bsn.aM.a($$0);
-      if ($$5 != null) {
-         ayo $$6 = $$1.dU();
-         float $$7 = (float) (Math.PI / 2);
-         float $$8 = ayg.b($$6, (float) (-Math.PI / 2), (float) (Math.PI / 2));
-         Vector3f $$9 = $$1.bN().j().mul(0.3F).mul(1.0F, 1.5F, 1.0F).rotateY($$8);
-         $$5.b($$2, $$3, $$4, $$0.E_().i() * 360.0F, 0.0F);
-         $$5.j(new ewh($$9));
-         $$0.b($$5);
-         $$5.a(avh.wZ);
-      }
+   public brl(String $$0, float $$1, brh $$2) {
+      this($$0, bri.b, $$1, $$2);
+   }
+
+   public brl(String $$0, float $$1) {
+      this($$0, bri.b, $$1);
+   }
+
+   public String a() {
+      return this.d;
+   }
+
+   public bri b() {
+      return this.e;
+   }
+
+   public float c() {
+      return this.f;
+   }
+
+   public brh d() {
+      return this.g;
+   }
+
+   public brn e() {
+      return this.h;
    }
 }

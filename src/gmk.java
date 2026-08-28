@@ -1,18 +1,20 @@
-public class gmk extends gkh<ckg> {
-   private static final akk a = new akk("textures/entity/illager/vindicator.png");
+public class gmk<T extends ckm> extends glj<T, fxf<T>> {
+   private static final akq a = akq.b("textures/entity/spider/spider.png");
 
-   public gmk(gjo.a $$0) {
-      super($$0, new fve<>($$0.a(fxp.bQ)), 0.5F);
-      this.a(new gnt<ckg, fve<ckg>>(this, $$0.d()) {
-         public void a(fao $$0, gef $$1, int $$2, ckg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.ge()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+   public gmk(gkd.a $$0) {
+      this($$0, fyd.by);
    }
 
-   public akk a(ckg $$0) {
+   public gmk(gkd.a $$0, fyc $$1) {
+      super($$0, new fxf<>($$0.a($$1)), 0.8F);
+      this.a(new gow<>(this));
+   }
+
+   protected float b(T $$0) {
+      return 180.0F;
+   }
+
+   public akq a(T $$0) {
       return a;
    }
 }

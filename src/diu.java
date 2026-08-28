@@ -1,168 +1,100 @@
 import com.mojang.serialization.MapCodec;
 
-public class diu extends dic {
-   public static final MapCodec<diu> a = b(diu::new);
-   public static final exa b = dfi.a(2.0, 0.0, 6.0, 4.0, 7.0, 10.0);
-   public static final exa c = dfi.a(12.0, 0.0, 6.0, 14.0, 7.0, 10.0);
-   public static final exa d = dfi.a(2.0, 7.0, 5.0, 4.0, 13.0, 11.0);
-   public static final exa e = dfi.a(12.0, 7.0, 5.0, 14.0, 13.0, 11.0);
-   public static final exa f = ewx.a(b, d);
-   public static final exa g = ewx.a(c, e);
-   public static final exa h = ewx.a(f, g);
-   public static final exa i = ewx.a(h, dfi.a(4.0, 4.0, 2.0, 12.0, 16.0, 14.0));
-   public static final exa j = dfi.a(6.0, 0.0, 2.0, 10.0, 7.0, 4.0);
-   public static final exa k = dfi.a(6.0, 0.0, 12.0, 10.0, 7.0, 14.0);
-   public static final exa l = dfi.a(5.0, 7.0, 2.0, 11.0, 13.0, 4.0);
-   public static final exa m = dfi.a(5.0, 7.0, 12.0, 11.0, 13.0, 14.0);
-   public static final exa n = ewx.a(j, l);
-   public static final exa o = ewx.a(k, m);
-   public static final exa F = ewx.a(n, o);
-   public static final exa G = ewx.a(F, dfi.a(2.0, 4.0, 4.0, 14.0, 16.0, 12.0));
-   public static final exa H = dfi.a(2.0, 6.0, 0.0, 4.0, 10.0, 7.0);
-   public static final exa I = dfi.a(12.0, 6.0, 0.0, 14.0, 10.0, 7.0);
-   public static final exa J = dfi.a(2.0, 5.0, 7.0, 4.0, 11.0, 13.0);
-   public static final exa L = dfi.a(12.0, 5.0, 7.0, 14.0, 11.0, 13.0);
-   public static final exa M = ewx.a(H, J);
-   public static final exa N = ewx.a(I, L);
-   public static final exa O = ewx.a(M, N);
-   public static final exa P = ewx.a(O, dfi.a(4.0, 2.0, 4.0, 12.0, 14.0, 16.0));
-   public static final exa Q = dfi.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0);
-   public static final exa R = dfi.a(12.0, 6.0, 7.0, 14.0, 10.0, 16.0);
-   public static final exa S = dfi.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0);
-   public static final exa T = dfi.a(12.0, 5.0, 3.0, 14.0, 11.0, 9.0);
-   public static final exa U = ewx.a(Q, S);
-   public static final exa V = ewx.a(R, T);
-   public static final exa W = ewx.a(U, V);
-   public static final exa X = ewx.a(W, dfi.a(4.0, 2.0, 0.0, 12.0, 14.0, 12.0));
-   public static final exa Y = dfi.a(7.0, 6.0, 2.0, 16.0, 10.0, 4.0);
-   public static final exa Z = dfi.a(7.0, 6.0, 12.0, 16.0, 10.0, 14.0);
-   public static final exa aa = dfi.a(3.0, 5.0, 2.0, 9.0, 11.0, 4.0);
-   public static final exa ab = dfi.a(3.0, 5.0, 12.0, 9.0, 11.0, 14.0);
-   public static final exa ac = ewx.a(Y, aa);
-   public static final exa ad = ewx.a(Z, ab);
-   public static final exa ae = ewx.a(ac, ad);
-   public static final exa af = ewx.a(ae, dfi.a(0.0, 2.0, 4.0, 12.0, 14.0, 12.0));
-   public static final exa ag = dfi.a(0.0, 6.0, 2.0, 9.0, 10.0, 4.0);
-   public static final exa ah = dfi.a(0.0, 6.0, 12.0, 9.0, 10.0, 14.0);
-   public static final exa ai = dfi.a(7.0, 5.0, 2.0, 13.0, 11.0, 4.0);
-   public static final exa aj = dfi.a(7.0, 5.0, 12.0, 13.0, 11.0, 14.0);
-   public static final exa ak = ewx.a(ag, ai);
-   public static final exa al = ewx.a(ah, aj);
-   public static final exa am = ewx.a(ak, al);
-   public static final exa an = ewx.a(am, dfi.a(4.0, 2.0, 4.0, 16.0, 14.0, 12.0));
-   public static final exa ao = dfi.a(2.0, 9.0, 6.0, 4.0, 16.0, 10.0);
-   public static final exa ap = dfi.a(12.0, 9.0, 6.0, 14.0, 16.0, 10.0);
-   public static final exa aq = dfi.a(2.0, 3.0, 5.0, 4.0, 9.0, 11.0);
-   public static final exa ar = dfi.a(12.0, 3.0, 5.0, 14.0, 9.0, 11.0);
-   public static final exa as = ewx.a(ao, aq);
-   public static final exa at = ewx.a(ap, ar);
-   public static final exa au = ewx.a(as, at);
-   public static final exa av = ewx.a(au, dfi.a(4.0, 0.0, 2.0, 12.0, 12.0, 14.0));
-   public static final exa aw = dfi.a(6.0, 9.0, 2.0, 10.0, 16.0, 4.0);
-   public static final exa ax = dfi.a(6.0, 9.0, 12.0, 10.0, 16.0, 14.0);
-   public static final exa ay = dfi.a(5.0, 3.0, 2.0, 11.0, 9.0, 4.0);
-   public static final exa az = dfi.a(5.0, 3.0, 12.0, 11.0, 9.0, 14.0);
-   public static final exa aA = ewx.a(aw, ay);
-   public static final exa aB = ewx.a(ax, az);
-   public static final exa aC = ewx.a(aA, aB);
-   public static final exa aD = ewx.a(aC, dfi.a(2.0, 0.0, 4.0, 14.0, 12.0, 12.0));
-   private static final wu aR = wu.c("container.grindstone_title");
+public class diu extends dhs {
+   public static final MapCodec<diu> i = b(diu::new);
+   private final exp[] j;
 
    @Override
    public MapCodec<diu> a() {
-      return a;
+      return i;
    }
 
-   protected diu(dsk.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(aE, jf.c).a(K, dsw.b));
-   }
-
-   @Override
-   protected dlo a_(dsl $$0) {
-      return dlo.c;
-   }
-
-   private exa n(dsl $$0) {
-      jf $$1 = $$0.c(aE);
-      switch ((dsw)$$0.c(K)) {
-         case a:
-            if ($$1 != jf.c && $$1 != jf.d) {
-               return G;
-            }
-
-            return i;
-         case b:
-            if ($$1 == jf.c) {
-               return X;
-            } else if ($$1 == jf.d) {
-               return P;
-            } else {
-               if ($$1 == jf.f) {
-                  return an;
-               }
-
-               return af;
-            }
-         case c:
-            if ($$1 != jf.c && $$1 != jf.d) {
-               return aD;
-            }
-
-            return av;
-         default:
-            return G;
-      }
+   public diu(dsz.d $$0) {
+      super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, $$0);
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
+      this.j = this.a(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
    }
 
    @Override
-   protected exa b(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return this.n($$0);
+   protected exp f(dta $$0, dca $$1, jd $$2) {
+      return this.j[this.g($$0)];
    }
 
    @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return this.n($$0);
+   protected exp c(dta $$0, dca $$1, jd $$2, exb $$3) {
+      return this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean a(dsl $$0, dcj $$1, ja $$2) {
-      return true;
-   }
-
-   @Override
-   protected bqh a(dsl $$0, dcg $$1, ja $$2, cml $$3, ewd $$4) {
-      if ($$1.B) {
-         return bqh.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(avr.aD);
-         return bqh.c;
-      }
-   }
-
-   @Override
-   protected bql b(dsl $$0, dcg $$1, ja $$2) {
-      return new bqr(($$2x, $$3, $$4) -> new cqh($$2x, $$3, cpu.a($$1, $$2)), aR);
-   }
-
-   @Override
-   protected dsl a(dsl $$0, dlv $$1) {
-      return $$0.a(aE, $$1.a($$0.c(aE)));
-   }
-
-   @Override
-   protected dsl a(dsl $$0, dkf $$1) {
-      return $$0.a($$1.a($$0.c(aE)));
-   }
-
-   @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(aE, K);
-   }
-
-   @Override
-   protected boolean a(dsl $$0, eoy $$1) {
+   protected boolean a(dta $$0, epn $$1) {
       return false;
+   }
+
+   public boolean a(dta $$0, boolean $$1, ji $$2) {
+      dfw $$3 = $$0.b();
+      boolean $$4 = this.m($$0);
+      boolean $$5 = $$3 instanceof div && div.a($$0, $$2);
+      return !j($$0) && $$1 || $$4 || $$5;
+   }
+
+   private boolean m(dta $$0) {
+      return $$0.a(awd.S) && $$0.a(awd.k) == this.o().a(awd.k);
+   }
+
+   @Override
+   protected bqs a(cuo $$0, dta $$1, dcu $$2, jd $$3, cmv $$4, bqp $$5, ews $$6) {
+      if ($$2.B) {
+         return $$0.a(cur.uK) ? bqs.a : bqs.e;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
+   }
+
+   @Override
+   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
+      return !$$1.x_() ? cux.a($$3, $$1, $$2) : bqq.e;
+   }
+
+   @Override
+   public dta a(cyb $$0) {
+      dca $$1 = $$0.q();
+      jd $$2 = $$0.a();
+      eoy $$3 = $$0.q().b_($$0.a());
+      jd $$4 = $$2.e();
+      jd $$5 = $$2.h();
+      jd $$6 = $$2.f();
+      jd $$7 = $$2.g();
+      dta $$8 = $$1.a_($$4);
+      dta $$9 = $$1.a_($$5);
+      dta $$10 = $$1.a_($$6);
+      dta $$11 = $$1.a_($$7);
+      return super.a($$0)
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ji.d), ji.d)))
+         .a(b, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ji.e), ji.e)))
+         .a(c, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ji.c), ji.c)))
+         .a(d, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ji.f), ji.f)))
+         .a(e, Boolean.valueOf($$3.a() == eoz.c));
+   }
+
+   @Override
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, eoz.c, eoz.c.a($$3));
+      }
+
+      return $$1.o().e() == ji.c.a ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g()), $$1.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

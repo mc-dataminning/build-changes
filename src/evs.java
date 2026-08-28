@@ -1,26 +1,9 @@
-@FunctionalInterface
-public interface evs<T> {
-   void handle(T var1, evu<T> var2, long var3);
+public interface evs extends erm {
+   float b(erl var1);
 
-   public abstract static class a<T, C extends evs<T>> {
-      private final akk a;
-      private final Class<?> b;
-
-      public a(akk $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public akk a() {
-         return this.a;
-      }
-
-      public Class<?> b() {
-         return this.b;
-      }
-
-      public abstract void a(tx var1, C var2);
-
-      public abstract C b(tx var1);
+   default int a(erl $$0) {
+      return Math.round(this.b($$0));
    }
+
+   evr b();
 }

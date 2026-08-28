@@ -1,46 +1,70 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 
-public abstract class aua extends aub<Map<akk, JsonElement>> {
+public class aua implements aud, AutoCloseable {
    private static final Logger a = LogUtils.getLogger();
-   private final Gson b;
-   private final String c;
+   private att c;
+   private final List<atx> d = Lists.newArrayList();
+   private final asr e;
 
-   public aua(Gson $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aua(asr $$0) {
+      this.e = $$0;
+      this.c = new atw($$0, List.of());
    }
 
-   protected Map<akk, JsonElement> a(atw $$0, bmv $$1) {
-      Map<akk, JsonElement> $$2 = new HashMap<>();
-      a($$0, this.c, this.b, $$2);
-      return $$2;
+   @Override
+   public void close() {
+      this.c.close();
    }
 
-   public static void a(atw $$0, String $$1, Gson $$2, Map<akk, JsonElement> $$3) {
-      akd $$4 = akd.a($$1);
+   public void a(atx $$0) {
+      this.d.add($$0);
+   }
 
-      for (Entry<akk, atu> $$5 : $$4.a($$0).entrySet()) {
-         akk $$6 = $$5.getKey();
-         akk $$7 = $$4.b($$6);
+   public atz a(Executor $$0, Executor $$1, CompletableFuture<azr> $$2, List<asp> $$3) {
+      a.info("Reloading ResourceManager: {}", LogUtils.defer(() -> $$3.stream().map(asp::b).collect(Collectors.joining(", "))));
+      this.c.close();
+      this.c = new atw(this.e, $$3);
+      return auj.a(this.c, this.d, $$0, $$1, $$2, a.isDebugEnabled());
+   }
 
-         try (Reader $$8 = $$5.getValue().e()) {
-            JsonElement $$9 = axw.a($$2, $$8, JsonElement.class);
-            JsonElement $$10 = $$3.put($$7, $$9);
-            if ($$10 != null) {
-               throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
-            }
-         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
-            a.error("Couldn't parse data file {} from {}", new Object[]{$$7, $$6, var14});
-         }
-      }
+   @Override
+   public Optional<aub> getResource(akq $$0) {
+      return this.c.getResource($$0);
+   }
+
+   @Override
+   public Set<String> a() {
+      return this.c.a();
+   }
+
+   @Override
+   public List<aub> a(akq $$0) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public Map<akq, aub> b(String $$0, Predicate<akq> $$1) {
+      return this.c.b($$0, $$1);
+   }
+
+   @Override
+   public Map<akq, List<aub>> c(String $$0, Predicate<akq> $$1) {
+      return this.c.c($$0, $$1);
+   }
+
+   @Override
+   public Stream<asp> b() {
+      return this.c.b();
    }
 }

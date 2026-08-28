@@ -1,26 +1,29 @@
 import java.util.Optional;
-import java.util.function.Predicate;
 
-@FunctionalInterface
-public interface ejl<C extends edp> {
-   Optional<ejk<C>> createGenerator(ejl.a<C> var1);
+public abstract class ejl extends ejm {
+   private final ejl.a d;
+   private final int e;
+   private final int f;
 
-   static <C extends edp> ejl<C> simple(Predicate<ejl.a<C>> $$0, ejk<C> $$1) {
-      Optional<ejk<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
+   protected ejl(ejl.a $$0, int $$1, int $$2, ejm.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   static <C extends edp> Predicate<ejl.a<C>> checkForBiomeOnTop(dyg.a $$0) {
-      return $$1 -> $$1.a($$0);
+   @Override
+   public Optional<ejm.b> a(ejm.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, dyv.a.a, $$1 -> this.a($$1, $$0));
    }
 
-   public static record a<C extends edp>(dui a, ddk b, dyu c, long d, dbn e, C f, dci g, Predicate<jj<ddg>> h, emz i, jx j) {
-      public boolean a(dyg.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         jj<ddg> $$4 = this.a.d().getNoiseBiome(ju.a($$1), ju.a($$3), ju.a($$2), this.c.b());
-         return this.h.test($$4);
-      }
+   private void a(eke $$0, ejm.a $$1) {
+      dcb $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   }
+
+   @FunctionalInterface
+   protected interface a {
+      ejq construct(dzu var1, int var2, int var3);
    }
 }

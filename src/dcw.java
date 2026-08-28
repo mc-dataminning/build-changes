@@ -1,92 +1,55 @@
-public interface dcw extends dbm {
-   jf[] C = jf.values();
+public interface dcw {
+   int J_();
 
-   default int a(ja $$0, jf $$1) {
-      return this.a_($$0).c(this, $$0, $$1);
+   int I_();
+
+   default int am() {
+      return this.I_() + this.J_();
    }
 
-   default int e_(ja $$0) {
-      int $$1 = 0;
-      $$1 = Math.max($$1, this.a($$0.d(), jf.a));
-      if ($$1 >= 15) {
-         return $$1;
-      } else {
-         $$1 = Math.max($$1, this.a($$0.c(), jf.b));
-         if ($$1 >= 15) {
+   default int an() {
+      return this.ap() - this.ao();
+   }
+
+   default int ao() {
+      return kf.a(this.I_());
+   }
+
+   default int ap() {
+      return kf.a(this.am() - 1) + 1;
+   }
+
+   default boolean s(jd $$0) {
+      return this.d($$0.v());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 < this.I_() || $$0 >= this.am();
+   }
+
+   default int e(int $$0) {
+      return this.f(kf.a($$0));
+   }
+
+   default int f(int $$0) {
+      return $$0 - this.ao();
+   }
+
+   default int g(int $$0) {
+      return $$0 + this.ao();
+   }
+
+   static dcw e(final int $$0, final int $$1) {
+      return new dcw() {
+         @Override
+         public int J_() {
             return $$1;
-         } else {
-            $$1 = Math.max($$1, this.a($$0.e(), jf.c));
-            if ($$1 >= 15) {
-               return $$1;
-            } else {
-               $$1 = Math.max($$1, this.a($$0.f(), jf.d));
-               if ($$1 >= 15) {
-                  return $$1;
-               } else {
-                  $$1 = Math.max($$1, this.a($$0.g(), jf.e));
-                  if ($$1 >= 15) {
-                     return $$1;
-                  } else {
-                     $$1 = Math.max($$1, this.a($$0.h(), jf.f));
-                     return $$1 >= 15 ? $$1 : $$1;
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   default int a(ja $$0, jf $$1, boolean $$2) {
-      dsl $$3 = this.a_($$0);
-      if ($$2) {
-         return dhk.m($$3) ? this.a($$0, $$1) : 0;
-      } else if ($$3.a(dfk.ha)) {
-         return 15;
-      } else if ($$3.a(dfk.cw)) {
-         return $$3.c(dlk.f);
-      } else {
-         return $$3.m() ? this.a($$0, $$1) : 0;
-      }
-   }
-
-   default boolean b(ja $$0, jf $$1) {
-      return this.c($$0, $$1) > 0;
-   }
-
-   default int c(ja $$0, jf $$1) {
-      dsl $$2 = this.a_($$0);
-      int $$3 = $$2.b(this, $$0, $$1);
-      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
-   }
-
-   default boolean C(ja $$0) {
-      if (this.c($$0.d(), jf.a) > 0) {
-         return true;
-      } else if (this.c($$0.c(), jf.b) > 0) {
-         return true;
-      } else if (this.c($$0.e(), jf.c) > 0) {
-         return true;
-      } else if (this.c($$0.f(), jf.d) > 0) {
-         return true;
-      } else {
-         return this.c($$0.g(), jf.e) > 0 ? true : this.c($$0.h(), jf.f) > 0;
-      }
-   }
-
-   default int D(ja $$0) {
-      int $$1 = 0;
-
-      for (jf $$2 : C) {
-         int $$3 = this.c($$0.a($$2), $$2);
-         if ($$3 >= 15) {
-            return 15;
          }
 
-         if ($$3 > $$1) {
-            $$1 = $$3;
+         @Override
+         public int I_() {
+            return $$0;
          }
-      }
-
-      return $$1;
+      };
    }
 }

@@ -1,142 +1,171 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import org.slf4j.Logger;
 
-public class bqx {
-   public static final int a = 100;
-   public static final int b = 300;
-   private static final xr c = xr.a.a(new ws(ws.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new xa(xa.a.a, wu.b("MCPE-28723")));
-   private final List<bqv> d = Lists.newArrayList();
-   private final btc e;
-   private int f;
-   private int g;
-   private int h;
-   private boolean i;
-   private boolean j;
+public class bqx extends eqf {
+   private static final Logger a = LogUtils.getLogger();
+   private final long b;
+   private int c;
+   private boolean d = true;
+   private boolean e = true;
+   private final Map<akq, bqw> f = new Object2ObjectOpenHashMap();
 
-   public bqx(btc $$0) {
-      this.e = $$0;
+   public static eqf.a<bqx> a(long $$0) {
+      return new eqf.a<>(() -> new bqx($$0), ($$1, $$2) -> a($$0, $$1), azv.m);
    }
 
-   public void a(bra $$0, float $$1) {
-      this.c();
-      brf $$2 = brf.a(this.e);
-      bqv $$3 = new bqv($$0, $$1, $$2, this.e.ac);
-      this.d.add($$3);
-      this.f = this.e.ai;
-      this.j = true;
-      if (!this.i && this.e.bF() && a($$0)) {
-         this.i = true;
-         this.g = this.e.ai;
-         this.h = this.g;
-         this.e.f_();
+   public bqx(long $$0) {
+      this.b = $$0;
+   }
+
+   public ayv a(akq $$0) {
+      ayv $$1 = this.f.computeIfAbsent($$0, this::c).a();
+      return new bqx.a($$1);
+   }
+
+   private bqw c(akq $$0) {
+      return this.b($$0, this.c, this.d, this.e);
+   }
+
+   private bqw b(akq $$0, int $$1, boolean $$2, boolean $$3) {
+      long $$4 = ($$2 ? this.b : 0L) ^ (long)$$1;
+      return new bqw($$4, $$3 ? Optional.of($$0) : Optional.empty());
+   }
+
+   public void a(BiConsumer<akq, bqw> $$0) {
+      this.f.forEach($$0);
+   }
+
+   public void a(int $$0, boolean $$1, boolean $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   @Override
+   public ua a(ua $$0, jo.a $$1) {
+      $$0.a("salt", this.c);
+      $$0.a("include_world_seed", this.d);
+      $$0.a("include_sequence_id", this.e);
+      ua $$2 = new ua();
+      this.f.forEach(($$1x, $$2x) -> $$2.a($$1x.toString(), (ux)bqw.a.encodeStart(uo.a, $$2x).result().orElseThrow()));
+      $$0.a("sequences", $$2);
+      return $$0;
+   }
+
+   private static boolean a(ua $$0, String $$1, boolean $$2) {
+      return $$0.b($$1, 1) ? $$0.q($$1) : $$2;
+   }
+
+   public static bqx a(long $$0, ua $$1) {
+      bqx $$2 = new bqx($$0);
+      $$2.a($$1.h("salt"), a($$1, "include_world_seed", true), a($$1, "include_sequence_id", true));
+      ua $$3 = $$1.p("sequences");
+
+      for (String $$5 : $$3.e()) {
+         try {
+            bqw $$6 = (bqw)((Pair)bqw.a.decode(uo.a, $$3.c($$5)).result().get()).getFirst();
+            $$2.f.put(akq.a($$5), $$6);
+         } catch (Exception var9) {
+            a.error("Failed to load random sequence {}", $$5, var9);
+         }
       }
+
+      return $$2;
    }
 
-   private static boolean a(bra $$0) {
-      return $$0.d() instanceof btc;
+   public int a() {
+      int $$0 = this.f.size();
+      this.f.clear();
+      return $$0;
    }
 
-   private wu a(bsh $$0, wu $$1, String $$2, String $$3) {
-      cud $$5 = $$0 instanceof btc $$4 ? $$4.eV() : cud.l;
-      return !$$5.e() && $$5.b(kn.g) ? wu.a($$2, this.e.O_(), $$1, $$5.F()) : wu.a($$3, this.e.O_(), $$1);
+   public void b(akq $$0) {
+      this.f.put($$0, this.c($$0));
    }
 
-   private wu a(bqv $$0, @Nullable bsh $$1) {
-      bra $$2 = $$0.a();
-      if (!$$2.a(avy.n) && !$$2.a(avy.t)) {
-         wu $$4 = a($$1);
-         bsh $$5 = $$2.d();
-         wu $$6 = a($$5);
-         if ($$6 != null && !$$6.equals($$4)) {
-            return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
+   public void a(akq $$0, int $$1, boolean $$2, boolean $$3) {
+      this.f.put($$0, this.b($$0, $$1, $$2, $$3));
+   }
+
+   class a implements ayv {
+      private final ayv c;
+
+      a(final ayv $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public ayv d() {
+         bqx.this.c();
+         return this.c.d();
+      }
+
+      @Override
+      public dzi e() {
+         bqx.this.c();
+         return this.c.e();
+      }
+
+      @Override
+      public void b(long $$0) {
+         bqx.this.c();
+         this.c.b($$0);
+      }
+
+      @Override
+      public int f() {
+         bqx.this.c();
+         return this.c.f();
+      }
+
+      @Override
+      public int a(int $$0) {
+         bqx.this.c();
+         return this.c.a($$0);
+      }
+
+      @Override
+      public long g() {
+         bqx.this.c();
+         return this.c.g();
+      }
+
+      @Override
+      public boolean h() {
+         bqx.this.c();
+         return this.c.h();
+      }
+
+      @Override
+      public float i() {
+         bqx.this.c();
+         return this.c.i();
+      }
+
+      @Override
+      public double j() {
+         bqx.this.c();
+         return this.c.j();
+      }
+
+      @Override
+      public double k() {
+         bqx.this.c();
+         return this.c.k();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
          } else {
-            return (wu)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : wu.a("death.fell.killer", this.e.O_()));
+            return $$0 instanceof bqx.a $$1 ? this.c.equals($$1.c) : false;
          }
-      } else {
-         brf $$3 = Objects.requireNonNullElse($$0.c(), brf.a);
-         return wu.a($$3.a(), this.e.O_());
-      }
-   }
-
-   @Nullable
-   private static wu a(@Nullable bsh $$0) {
-      return $$0 == null ? null : $$0.O_();
-   }
-
-   public wu a() {
-      if (this.d.isEmpty()) {
-         return wu.a("death.attack.generic", this.e.O_());
-      } else {
-         bqv $$0 = this.d.get(this.d.size() - 1);
-         bra $$1 = $$0.a();
-         bqv $$2 = this.d();
-         bre $$3 = $$1.j().e();
-         if ($$3 == bre.b && $$2 != null) {
-            return this.a($$2, $$1.d());
-         } else if ($$3 == bre.c) {
-            String $$4 = "death.attack." + $$1.e();
-            wu $$5 = wx.a((wu)wu.c($$4 + ".link")).c(c);
-            return wu.a($$4 + ".message", this.e.O_(), $$5);
-         } else {
-            return $$1.a(this.e);
-         }
-      }
-   }
-
-   @Nullable
-   private bqv d() {
-      bqv $$0 = null;
-      bqv $$1 = null;
-      float $$2 = 0.0F;
-      float $$3 = 0.0F;
-
-      for (int $$4 = 0; $$4 < this.d.size(); $$4++) {
-         bqv $$5 = this.d.get($$4);
-         bqv $$6 = $$4 > 0 ? this.d.get($$4 - 1) : null;
-         bra $$7 = $$5.a();
-         boolean $$8 = $$7.a(avy.t);
-         float $$9 = $$8 ? Float.MAX_VALUE : $$5.d();
-         if (($$7.a(avy.n) || $$8) && $$9 > 0.0F && ($$0 == null || $$9 > $$3)) {
-            if ($$4 > 0) {
-               $$0 = $$6;
-            } else {
-               $$0 = $$5;
-            }
-
-            $$3 = $$9;
-         }
-
-         if ($$5.c() != null && ($$1 == null || $$5.b() > $$2)) {
-            $$1 = $$5;
-            $$2 = $$5.b();
-         }
-      }
-
-      if ($$3 > 5.0F && $$0 != null) {
-         return $$0;
-      } else {
-         return $$2 > 5.0F && $$1 != null ? $$1 : null;
-      }
-   }
-
-   public int b() {
-      return this.i ? this.e.ai - this.g : this.h - this.g;
-   }
-
-   public void c() {
-      int $$0 = this.i ? 300 : 100;
-      if (this.j && (!this.e.bF() || this.e.ai - this.f > $$0)) {
-         boolean $$1 = this.i;
-         this.j = false;
-         this.i = false;
-         this.h = this.e.ai;
-         if ($$1) {
-            this.e.g_();
-         }
-
-         this.d.clear();
       }
    }
 }

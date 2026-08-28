@@ -1,97 +1,69 @@
-import java.util.List;
+public class crl extends cps {
+   private static final int k = 27;
+   private final bqj l;
 
-public class crl implements cpz {
-   private final js<cud> b;
-   private final int c;
-   private final int d;
-   private final cpi e;
-
-   public crl(cpi $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, js.a($$1 * $$2, cud.l));
+   public crl(int $$0, cmu $$1) {
+      this($$0, $$1, new bqz(27));
    }
 
-   public crl(cpi $$0, int $$1, int $$2, js<cud> $$3) {
-      this.b = $$3;
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+   public crl(int $$0, cmu $$1, bqj $$2) {
+      super(cra.u, $$0);
+      a($$2, 27);
+      this.l = $$2;
+      $$2.d_($$1.l);
+      int $$3 = 3;
+      int $$4 = 9;
 
-   @Override
-   public int b() {
-      return this.b.size();
-   }
-
-   @Override
-   public boolean c() {
-      for (cud $$0 : this.b) {
-         if (!$$0.e()) {
-            return false;
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new crm($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
          }
       }
 
-      return true;
+      for (int $$7 = 0; $$7 < 3; $$7++) {
+         for (int $$8 = 0; $$8 < 9; $$8++) {
+            this.a(new cro($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
+         }
+      }
+
+      for (int $$9 = 0; $$9 < 9; $$9++) {
+         this.a(new cro($$1, $$9, 8 + $$9 * 18, 142));
+      }
    }
 
    @Override
-   public cud a(int $$0) {
-      return $$0 >= this.b() ? cud.l : this.b.get($$0);
+   public boolean b(cmv $$0) {
+      return this.l.a($$0);
    }
 
    @Override
-   public cud b(int $$0) {
-      return bqb.a(this.b, $$0);
-   }
+   public cuo b(cmv $$0, int $$1) {
+      cuo $$2 = cuo.l;
+      cro $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cuo $$4 = $$3.g();
+         $$2 = $$4.s();
+         if ($$1 < this.l.b()) {
+            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
+               return cuo.l;
+            }
+         } else if (!this.a($$4, 0, this.l.b(), false)) {
+            return cuo.l;
+         }
 
-   @Override
-   public cud a(int $$0, int $$1) {
-      cud $$2 = bqb.a(this.b, $$0, $$1);
-      if (!$$2.e()) {
-         this.e.a(this);
+         if ($$4.e()) {
+            $$3.e(cuo.l);
+         } else {
+            $$3.c();
+         }
       }
 
       return $$2;
    }
 
    @Override
-   public void a(int $$0, cud $$1) {
-      this.b.set($$0, $$1);
-      this.e.a(this);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cml $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public int g() {
-      return this.d;
-   }
-
-   @Override
-   public int f() {
-      return this.c;
-   }
-
-   @Override
-   public List<cud> h() {
-      return List.copyOf(this.b);
-   }
-
-   @Override
-   public void a(cmp $$0) {
-      for (cud $$1 : this.b) {
-         $$0.a($$1);
-      }
+   public void a(cmv $$0) {
+      super.a($$0);
+      this.l.c($$0);
    }
 }

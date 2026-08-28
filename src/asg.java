@@ -1,34 +1,61 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.regex.Pattern;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record asg(List<asg.a> b) {
-   private static final Pattern c = Pattern.compile("[-_a-zA-Z0-9.]+");
-   private static final Codec<asg> d = RecordCodecBuilder.create($$0 -> $$0.group(asg.a.c.listOf().fieldOf("entries").forGetter(asg::a)).apply($$0, asg::new));
-   public static final asw<asg> a = asw.a("overlays", d);
+public abstract class asg implements asp {
+   private static final Logger c = LogUtils.getLogger();
+   private final aso d;
 
-   private static DataResult<String> a(String $$0) {
-      return !c.matcher($$0).matches() ? DataResult.error(() -> $$0 + " is not accepted directory name") : DataResult.success($$0);
+   protected asg(aso $$0) {
+      this.d = $$0;
    }
 
-   public List<String> a(int $$0) {
-      return this.b.stream().filter($$1 -> $$1.a($$0)).map(asg.a::b).toList();
-   }
+   @Nullable
+   @Override
+   public <T> T a(atc<T> $$0) throws IOException {
+      atv<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
+      if ($$1 == null) {
+         return null;
+      } else {
+         Object var4;
+         try (InputStream $$2 = $$1.get()) {
+            var4 = a($$0, $$2);
+         }
 
-   public List<asg.a> a() {
-      return this.b;
-   }
-
-   public static record a(axy<Integer> a, String b) {
-      static final Codec<asg.a> c = RecordCodecBuilder.create(
-         $$0 -> $$0.group(axy.a(Codec.INT).fieldOf("formats").forGetter(asg.a::a), Codec.STRING.validate(asg::a).fieldOf("directory").forGetter(asg.a::b))
-               .apply($$0, asg.a::new)
-      );
-
-      public boolean a(int $$0) {
-         return this.a.a($$0);
+         return (T)var4;
       }
+   }
+
+   @Nullable
+   public static <T> T a(atc<T> $$0, InputStream $$1) {
+      JsonObject $$3;
+      try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
+         $$3 = ayd.a($$2);
+      } catch (Exception var9) {
+         c.error("Couldn't load {} metadata", $$0.a(), var9);
+         return null;
+      }
+
+      if (!$$3.has($$0.a())) {
+         return null;
+      } else {
+         try {
+            return $$0.a(ayd.u($$3, $$0.a()));
+         } catch (Exception var7) {
+            c.error("Couldn't load {} metadata", $$0.a(), var7);
+            return null;
+         }
+      }
+   }
+
+   @Override
+   public aso a() {
+      return this.d;
    }
 }

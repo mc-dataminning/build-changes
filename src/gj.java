@@ -2,38 +2,44 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
+import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class gj implements ArgumentType<gh> {
-   private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "foo{bar=baz}");
-   private final jl<dfi> b;
+public class gj implements ArgumentType<UUID> {
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("argument.uuid.invalid"));
+   private static final Collection<String> b = Arrays.asList("dd12be42-52a9-4a91-a8a1-11c01849e498");
+   private static final Pattern c = Pattern.compile("^([-A-Fa-f0-9]+)");
 
-   public gj(em $$0) {
-      this.b = $$0.b(lr.f);
+   public static UUID a(CommandContext<et> $$0, String $$1) {
+      return (UUID)$$0.getArgument($$1, UUID.class);
    }
 
-   public static gj a(em $$0) {
-      return new gj($$0);
+   public static gj a() {
+      return new gj();
    }
 
-   public gh a(StringReader $$0) throws CommandSyntaxException {
-      gk.a $$1 = gk.a(this.b, $$0, true);
-      return new gh($$1.a(), $$1.b().keySet(), $$1.c());
-   }
+   public UUID a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.getRemaining();
+      Matcher $$2 = c.matcher($$1);
+      if ($$2.find()) {
+         String $$3 = $$2.group(1);
 
-   public static gh a(CommandContext<eq> $$0, String $$1) {
-      return (gh)$$0.getArgument($$1, gh.class);
-   }
+         try {
+            UUID $$4 = UUID.fromString($$3);
+            $$0.setCursor($$0.getCursor() + $$3.length());
+            return $$4;
+         } catch (IllegalArgumentException var6) {
+         }
+      }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return gk.a(this.b, $$1, false, true);
+      throw a.createWithContext($$0);
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 }

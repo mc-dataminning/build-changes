@@ -1,64 +1,15 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class clv implements dbd {
-   private final cml a;
-   private dbf b = new dbf();
-   private int c;
-
-   public clv(cml $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public cml gn() {
-      return this.a;
-   }
-
-   @Override
-   public void f(@Nullable cml $$0) {
-   }
-
-   @Override
-   public dbf gp() {
-      return this.b;
-   }
-
-   @Override
-   public void a(dbf $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(dbe $$0) {
-      $$0.l();
-   }
-
-   @Override
-   public void n(cud $$0) {
-   }
-
-   @Override
-   public boolean gv() {
-      return this.a.dR().B;
-   }
-
-   @Override
-   public int t() {
-      return this.c;
-   }
-
-   @Override
-   public void t(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public boolean gq() {
-      return true;
-   }
-
-   @Override
-   public avg gr() {
-      return avh.AX;
+public class clv {
+   public static bvg<cll> a() {
+      return bys.a((Function<bys.b<cll>, ? extends App<bys.c<cll>, byv<cll>>>)($$0 -> $$0.group($$0.c(ccq.ad)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               if (!$$1.eV().e() && !$$1.eV().a(cur.vs)) {
+                  clm.a($$1, true);
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 }

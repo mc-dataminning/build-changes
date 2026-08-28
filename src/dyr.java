@@ -1,95 +1,54 @@
-public class dyr implements dbt {
-   private int a;
+import com.mojang.serialization.Codec;
 
-   @Override
-   public int a(aqm $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.ab().b(dcc.K)) {
-         return 0;
-      } else {
-         ayo $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.aa() / 24000L;
-            if ($$4 < 5L || !$$0.R()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
-            } else {
-               int $$5 = $$0.x().size();
-               if ($$5 < 1) {
-                  return 0;
-               } else {
-                  cml $$6 = $$0.x().get($$3.a($$5));
-                  if ($$6.N_()) {
-                     return 0;
-                  } else if ($$0.a($$6.dr(), 2)) {
-                     return 0;
-                  } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     ja.a $$9 = $$6.dr().j().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        jj<ddg> $$11 = $$0.t($$9);
-                        if ($$11.a(avv.ag)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+public class dyr {
+   public static enum a implements azj {
+      a("air"),
+      b("liquid");
 
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(dyg.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
+      public static final Codec<dyr.a> c = azj.a(dyr.a::values);
+      private final String d;
 
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
+      private a(final String $$0) {
+         this.d = $$0;
+      }
 
-                           return $$12;
-                        }
-                     }
-                  }
-               }
-            }
-         }
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
       }
    }
 
-   private boolean a(aqm $$0, ja $$1, ayo $$2, boolean $$3) {
-      dsl $$4 = $$0.a_($$1);
-      if (!dcr.a($$0, $$1, $$4, $$4.u(), bsn.aC)) {
-         return false;
-      } else if (!cjs.b(bsn.aC, $$0, btg.p, $$1, $$2)) {
-         return false;
-      } else {
-         cjs $$5 = bsn.aC.a((dcg)$$0);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.w(true);
-               $$5.gv();
-            }
+   public static enum b implements azj {
+      a("raw_generation"),
+      b("lakes"),
+      c("local_modifications"),
+      d("underground_structures"),
+      e("surface_structures"),
+      f("strongholds"),
+      g("underground_ores"),
+      h("underground_decoration"),
+      i("fluid_springs"),
+      j("vegetal_decoration"),
+      k("top_layer_modification");
 
-            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), btg.p, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
-         }
+      public static final Codec<dyr.b> l = azj.a(dyr.b::values);
+      private final String m;
+
+      private b(final String $$0) {
+         this.m = $$0;
+      }
+
+      public String a() {
+         return this.m;
+      }
+
+      @Override
+      public String c() {
+         return this.m;
       }
    }
 }

@@ -1,39 +1,25 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
 public class fil {
-   public static final akk a = new akk("textures/gui/title/minecraft.png");
-   public static final akk b = new akk("textures/gui/title/minceraft.png");
-   public static final akk c = new akk("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)ayo.a().i() < 1.0E-4;
-   private final boolean o;
+   private static final axz a = axz.codepoint(32, xv.a);
 
-   public fil(boolean $$0) {
-      this.o = $$0;
+   private static String a(String $$0) {
+      return fgi.Q().m.K().c() ? $$0 : n.a($$0);
    }
 
-   public void a(fhh $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
-   }
-
-   public void a(fhh $$0, int $$1, float $$2, int $$3) {
-      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
-      RenderSystem.enableBlend();
-      int $$4 = $$1 / 2 - 128;
-      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
-      int $$5 = $$1 / 2 - 64;
-      int $$6 = $$3 + 44 - 7;
-      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
+   public static List<axz> a(xd $$0, int $$1, fhr $$2) {
+      ffx $$3 = new ffx();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(xd.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, xv.a);
+      List<axz> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, xv.a, ($$1x, $$2x) -> {
+         axz $$3x = tv.a().a($$1x);
+         $$4.add($$2x ? axz.composite(a, $$3x) : $$3x);
+      });
+      return (List<axz>)($$4.isEmpty() ? Lists.newArrayList(new axz[]{axz.a}) : $$4);
    }
 }

@@ -1,29 +1,40 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ega extends efq {
-   public static final MapCodec<ega> b = bor.b(dsl.b).comapFlatMap(ega::a, $$0 -> $$0.c).fieldOf("entries");
-   private final bor<dsl> c;
+public record ega(jq<dfw> b, jq<dfw> c, egf d, int e, int f, float g) {
+   public static final Codec<ega> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kb.a(lu.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               kb.a(lu.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               egf.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, ega::new)
+   );
 
-   private static DataResult<ega> a(bor<dsl> $$0) {
-      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new ega($$0));
+   public jq<dfw> a() {
+      return this.b;
    }
 
-   public ega(bor<dsl> $$0) {
-      this.c = $$0;
+   public jq<dfw> b() {
+      return this.c;
    }
 
-   public ega(bor.a<dsl> $$0) {
-      this($$0.a());
+   public egf c() {
+      return this.d;
    }
 
-   @Override
-   protected efr<?> a() {
-      return efr.b;
+   public int d() {
+      return this.e;
    }
 
-   @Override
-   public dsl a(ayo $$0, ja $$1) {
-      return this.c.a($$0).orElseThrow(IllegalStateException::new);
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

@@ -1,517 +1,130 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public class faf extends ezx implements AutoCloseable {
-   private static final Logger l = LogUtils.getLogger();
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   public static final int d = 3;
-   public static final int e = 4;
-   public static final int f = 5;
-   public static final int g = 6;
-   public static final int h = 7;
-   public static final int i = 8;
-   public static final int j = 9;
-   public static final int k = 10;
-   private static final boolean m = false;
-   private int n;
-   private final int o;
-   private final int p;
-   private final IntBuffer q;
-   private final FloatBuffer r;
-   private final String s;
-   private boolean t;
-   private final fae u;
+public final class faf {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final int f;
+   private static final Pattern g = Pattern.compile("(\\d+)x(\\d+)(?:@(\\d+)(?::(\\d+))?)?");
 
-   public faf(String $$0, int $$1, int $$2, fae $$3) {
-      this.s = $$0;
-      this.o = $$2;
-      this.p = $$1;
-      this.u = $$3;
-      if ($$1 <= 3) {
-         this.q = MemoryUtil.memAllocInt($$2);
-         this.r = null;
-      } else {
-         this.q = null;
-         this.r = MemoryUtil.memAllocFloat($$2);
-      }
-
-      this.n = -1;
-      this.h();
+   public faf(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public static int a(int $$0, CharSequence $$1) {
-      return GlStateManager._glGetUniformLocation($$0, $$1);
+   public faf(Buffer $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
    }
 
-   public static void b(int $$0, int $$1) {
-      RenderSystem.glUniform1i($$0, $$1);
+   public faf(GLFWVidMode $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
    }
 
-   public static int b(int $$0, CharSequence $$1) {
-      return GlStateManager._glGetAttribLocation($$0, $$1);
+   public int a() {
+      return this.a;
    }
 
-   public static void a(int $$0, int $$1, CharSequence $$2) {
-      GlStateManager._glBindAttribLocation($$0, $$1, $$2);
-   }
-
-   @Override
-   public void close() {
-      if (this.q != null) {
-         MemoryUtil.memFree(this.q);
-      }
-
-      if (this.r != null) {
-         MemoryUtil.memFree(this.r);
-      }
-   }
-
-   private void h() {
-      this.t = true;
-      if (this.u != null) {
-         this.u.b();
-      }
-   }
-
-   public static int a(String $$0) {
-      int $$1 = -1;
-      if ("int".equals($$0)) {
-         $$1 = 0;
-      } else if ("float".equals($$0)) {
-         $$1 = 4;
-      } else if ($$0.startsWith("matrix")) {
-         if ($$0.endsWith("2x2")) {
-            $$1 = 8;
-         } else if ($$0.endsWith("3x3")) {
-            $$1 = 9;
-         } else if ($$0.endsWith("4x4")) {
-            $$1 = 10;
-         }
-      }
-
-      return $$1;
-   }
-
-   public void b(int $$0) {
-      this.n = $$0;
-   }
-
-   public String a() {
-      return this.s;
-   }
-
-   @Override
-   public final void a(float $$0) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.h();
-   }
-
-   public final void a(int $$0, float $$1) {
-      this.r.position(0);
-      this.r.put($$0, $$1);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.h();
-   }
-
-   @Override
-   public final void a(Vector3f $$0) {
-      this.r.position(0);
-      $$0.get(this.r);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2, float $$3) {
-      this.r.position(0);
-      this.r.put($$0);
-      this.r.put($$1);
-      this.r.put($$2);
-      this.r.put($$3);
-      this.r.flip();
-      this.h();
-   }
-
-   @Override
-   public final void a(Vector4f $$0) {
-      this.r.position(0);
-      $$0.get(this.r);
-      this.h();
-   }
-
-   @Override
-   public final void b(float $$0, float $$1, float $$2, float $$3) {
-      this.r.position(0);
-      if (this.p >= 4) {
-         this.r.put(0, $$0);
-      }
-
-      if (this.p >= 5) {
-         this.r.put(1, $$1);
-      }
-
-      if (this.p >= 6) {
-         this.r.put(2, $$2);
-      }
-
-      if (this.p >= 7) {
-         this.r.put(3, $$3);
-      }
-
-      this.h();
-   }
-
-   @Override
-   public final void a(int $$0, int $$1, int $$2, int $$3) {
-      this.q.position(0);
-      if (this.p >= 0) {
-         this.q.put(0, $$0);
-      }
-
-      if (this.p >= 1) {
-         this.q.put(1, $$1);
-      }
-
-      if (this.p >= 2) {
-         this.q.put(2, $$2);
-      }
-
-      if (this.p >= 3) {
-         this.q.put(3, $$3);
-      }
-
-      this.h();
-   }
-
-   @Override
-   public final void a(int $$0) {
-      this.q.position(0);
-      this.q.put(0, $$0);
-      this.h();
-   }
-
-   @Override
-   public final void a(int $$0, int $$1) {
-      this.q.position(0);
-      this.q.put(0, $$0);
-      this.q.put(1, $$1);
-      this.h();
-   }
-
-   @Override
-   public final void a(int $$0, int $$1, int $$2) {
-      this.q.position(0);
-      this.q.put(0, $$0);
-      this.q.put(1, $$1);
-      this.q.put(2, $$2);
-      this.h();
-   }
-
-   @Override
-   public final void b(int $$0, int $$1, int $$2, int $$3) {
-      this.q.position(0);
-      this.q.put(0, $$0);
-      this.q.put(1, $$1);
-      this.q.put(2, $$2);
-      this.q.put(3, $$3);
-      this.h();
-   }
-
-   @Override
-   public final void a(float[] $$0) {
-      if ($$0.length < this.o) {
-         l.warn("Uniform.set called with a too-small value array (expected {}, got {}). Ignoring.", this.o, $$0.length);
-      } else {
-         this.r.position(0);
-         this.r.put($$0);
-         this.r.position(0);
-         this.h();
-      }
-   }
-
-   @Override
-   public final void c(float $$0, float $$1, float $$2, float $$3) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.h();
-   }
-
-   @Override
-   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.r.put(8, $$8);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.r.put(8, $$8);
-      this.r.put(9, $$9);
-      this.r.put(10, $$10);
-      this.r.put(11, $$11);
-      this.h();
-   }
-
-   @Override
-   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.h();
-   }
-
-   @Override
-   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.r.put(8, $$8);
-      this.r.put(9, $$9);
-      this.r.put(10, $$10);
-      this.r.put(11, $$11);
-      this.h();
-   }
-
-   @Override
-   public final void a(
-      float $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.r.put(8, $$8);
-      this.r.put(9, $$9);
-      this.r.put(10, $$10);
-      this.r.put(11, $$11);
-      this.r.put(12, $$12);
-      this.r.put(13, $$13);
-      this.r.put(14, $$14);
-      this.r.put(15, $$15);
-      this.h();
-   }
-
-   @Override
-   public final void a(Matrix4f $$0) {
-      this.r.position(0);
-      $$0.get(this.r);
-      this.h();
-   }
-
-   @Override
-   public final void a(Matrix3f $$0) {
-      this.r.position(0);
-      $$0.get(this.r);
-      this.h();
-   }
-
-   public void b() {
-      if (!this.t) {
-      }
-
-      this.t = false;
-      if (this.p <= 3) {
-         this.i();
-      } else if (this.p <= 7) {
-         this.j();
-      } else {
-         if (this.p > 10) {
-            l.warn("Uniform.upload called, but type value ({}) is not a valid type. Ignoring.", this.p);
-            return;
-         }
-
-         this.k();
-      }
-   }
-
-   private void i() {
-      this.q.rewind();
-      switch (this.p) {
-         case 0:
-            RenderSystem.glUniform1(this.n, this.q);
-            break;
-         case 1:
-            RenderSystem.glUniform2(this.n, this.q);
-            break;
-         case 2:
-            RenderSystem.glUniform3(this.n, this.q);
-            break;
-         case 3:
-            RenderSystem.glUniform4(this.n, this.q);
-            break;
-         default:
-            l.warn("Uniform.upload called, but count value ({}) is  not in the range of 1 to 4. Ignoring.", this.o);
-      }
-   }
-
-   private void j() {
-      this.r.rewind();
-      switch (this.p) {
-         case 4:
-            RenderSystem.glUniform1(this.n, this.r);
-            break;
-         case 5:
-            RenderSystem.glUniform2(this.n, this.r);
-            break;
-         case 6:
-            RenderSystem.glUniform3(this.n, this.r);
-            break;
-         case 7:
-            RenderSystem.glUniform4(this.n, this.r);
-            break;
-         default:
-            l.warn("Uniform.upload called, but count value ({}) is not in the range of 1 to 4. Ignoring.", this.o);
-      }
-   }
-
-   private void k() {
-      this.r.clear();
-      switch (this.p) {
-         case 8:
-            RenderSystem.glUniformMatrix2(this.n, false, this.r);
-            break;
-         case 9:
-            RenderSystem.glUniformMatrix3(this.n, false, this.r);
-            break;
-         case 10:
-            RenderSystem.glUniformMatrix4(this.n, false, this.r);
-      }
+   public int b() {
+      return this.b;
    }
 
    public int c() {
-      return this.n;
+      return this.c;
    }
 
    public int d() {
-      return this.o;
+      return this.d;
    }
 
    public int e() {
-      return this.p;
+      return this.e;
    }
 
-   public IntBuffer f() {
-      return this.q;
+   public int f() {
+      return this.f;
    }
 
-   public FloatBuffer g() {
-      return this.r;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         faf $$1 = (faf)$$0;
+         return this.a == $$1.a && this.b == $$1.b && this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b, this.c, this.d, this.e, this.f);
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "%sx%s@%s (%sbit)", this.a, this.b, this.f, this.c + this.d + this.e);
+   }
+
+   public static Optional<faf> a(@Nullable String $$0) {
+      if ($$0 == null) {
+         return Optional.empty();
+      } else {
+         try {
+            Matcher $$1 = g.matcher($$0);
+            if ($$1.matches()) {
+               int $$2 = Integer.parseInt($$1.group(1));
+               int $$3 = Integer.parseInt($$1.group(2));
+               String $$4 = $$1.group(3);
+               int $$5;
+               if ($$4 == null) {
+                  $$5 = 60;
+               } else {
+                  $$5 = Integer.parseInt($$4);
+               }
+
+               String $$7 = $$1.group(4);
+               int $$8;
+               if ($$7 == null) {
+                  $$8 = 24;
+               } else {
+                  $$8 = Integer.parseInt($$7);
+               }
+
+               int $$10 = $$8 / 3;
+               return Optional.of(new faf($$2, $$3, $$10, $$10, $$10, $$5));
+            }
+         } catch (Exception var9) {
+         }
+
+         return Optional.empty();
+      }
+   }
+
+   public String g() {
+      return String.format(Locale.ROOT, "%sx%s@%s:%s", this.a, this.b, this.f, this.c + this.d + this.e);
    }
 }

@@ -1,13 +1,37 @@
-public class git extends glq<cjb> {
-   private static final akk a = new akk("textures/entity/skeleton/bogged.png");
-   private static final akk i = new akk("textures/entity/skeleton/bogged_overlay.png");
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public git(gjo.a $$0) {
-      super($$0, fxp.o, fxp.p, new ftx($$0.a(fxp.n)));
-      this.a(new goe<>(this, $$0.f(), fxp.q, i));
+public class git implements gig.a {
+   private static final int a = 60;
+   private final Set<kf> b = Sets.newHashSet();
+
+   git() {
    }
 
-   public akk a(cjb $$0) {
-      return a;
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   public void a(kf $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(kf $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(fbc $$0, get $$1, double $$2, double $$3, double $$4) {
+      jd $$5 = jd.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.q(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(fbc $$0, get $$1, kf $$2) {
+      gig.a($$0, $$1, $$2.q(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

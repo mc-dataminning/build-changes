@@ -1,72 +1,35 @@
 import com.mojang.serialization.MapCodec;
 
-public class dgf extends dix implements dfl, dge {
-   public static final MapCodec<dgf> c = b(dgf::new);
-   private static final float g = 0.11F;
-
-   @Override
-   public MapCodec<dgf> a() {
-      return c;
-   }
-
-   public dgf(dsk.d $$0) {
-      super($$0, jf.a, q_, false, 0.1);
-      this.k(this.E.b().a(e, Integer.valueOf(0)).a(r_, Boolean.valueOf(false)));
+public abstract class dgf extends dfw {
+   protected dgf(dsz.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected int a(ayo $$0) {
-      return 1;
+   protected abstract MapCodec<? extends dgf> a();
+
+   protected boolean b(dta $$0, dca $$1, jd $$2) {
+      return $$0.a(awd.af) || $$0.a(dfy.cC);
    }
 
    @Override
-   protected boolean g(dsl $$0) {
-      return $$0.i();
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      return !$$0.a($$3, $$4) ? dfy.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected dfi b() {
-      return dfk.sw;
+   protected boolean a(dta $$0, dcx $$1, jd $$2) {
+      jd $$3 = $$2.d();
+      return this.b($$1.a_($$3), $$1, $$3);
    }
 
    @Override
-   protected dsl a(dsl $$0, dsl $$1) {
-      return $$1.a(r_, $$0.c(r_));
+   protected boolean a_(dta $$0, dca $$1, jd $$2) {
+      return $$0.u().c();
    }
 
    @Override
-   protected dsl a(dsl $$0, ayo $$1) {
-      return super.a($$0, $$1).a(r_, Boolean.valueOf($$1.i() < 0.11F));
-   }
-
-   @Override
-   public cud a(dcj $$0, ja $$1, dsl $$2) {
-      return new cud(cug.wv);
-   }
-
-   @Override
-   protected bqh a(dsl $$0, dcg $$1, ja $$2, cml $$3, ewd $$4) {
-      return dge.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      super.a($$0);
-      $$0.a(r_);
-   }
-
-   @Override
-   public boolean b(dcj $$0, ja $$1, dsl $$2) {
-      return !$$2.c(r_);
-   }
-
-   @Override
-   public boolean a(dcg $$0, ayo $$1, ja $$2, dsl $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqm $$0, ayo $$1, ja $$2, dsl $$3) {
-      $$0.a($$2, $$3.a(r_, Boolean.valueOf(true)), 2);
+   protected boolean a(dta $$0, epn $$1) {
+      return $$1 == epn.c && !this.aG ? true : super.a($$0, $$1);
    }
 }

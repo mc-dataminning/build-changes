@@ -1,109 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Predicate;
 
-public class cx extends ds<cx.a> {
+public record cx(Optional<bd<ark<String>, cx.a>> c) implements dw<cxy> {
+   public static final Codec<cx> a = RecordCodecBuilder.create($$0 -> $$0.group(bd.a(cx.a.a).optionalFieldOf("pages").forGetter(cx::b)).apply($$0, cx::new));
+
    @Override
-   public Codec<cx.a> a() {
-      return cx.a.a;
+   public kp<cxy> a() {
+      return kq.I;
    }
 
-   public void a(aqn $$0, bsh $$1, bra $$2) {
-      eqw $$3 = bu.b($$0, $$1);
-      this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
+   public boolean a(cuo $$0, cxy $$1) {
+      return !this.c.isPresent() || this.c.get().a($$1.a());
    }
 
-   public static record a(Optional<bf> b, Optional<bf> c, Optional<bj> d) implements ds.a {
-      public static final Codec<cx.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bu.b.optionalFieldOf("player").forGetter(cx.a::a),
-                  bu.b.optionalFieldOf("entity").forGetter(cx.a::e),
-                  bj.a.optionalFieldOf("killing_blow").forGetter(cx.a::f)
-               )
-               .apply($$0, cx.a::new)
-      );
+   public Optional<bd<ark<String>, cx.a>> b() {
+      return this.c;
+   }
 
-      public static an<cx.a> a(Optional<bu> $$0) {
-         return am.c.a(new cx.a(Optional.empty(), bu.a($$0), Optional.empty()));
+   public static record a(String b) implements Predicate<ark<String>> {
+      public static final Codec<cx.a> a = Codec.STRING.xmap(cx.a::new, cx.a::a);
+
+      public boolean a(ark<String> $$0) {
+         return $$0.a().equals(this.b);
       }
 
-      public static an<cx.a> a(bu.a $$0) {
-         return am.c.a(new cx.a(Optional.empty(), Optional.of(bu.a($$0)), Optional.empty()));
-      }
-
-      public static an<cx.a> b() {
-         return am.c.a(new cx.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static an<cx.a> a(Optional<bu> $$0, Optional<bj> $$1) {
-         return am.c.a(new cx.a(Optional.empty(), bu.a($$0), $$1));
-      }
-
-      public static an<cx.a> a(bu.a $$0, Optional<bj> $$1) {
-         return am.c.a(new cx.a(Optional.empty(), Optional.of(bu.a($$0)), $$1));
-      }
-
-      public static an<cx.a> a(Optional<bu> $$0, bj.a $$1) {
-         return am.c.a(new cx.a(Optional.empty(), bu.a($$0), Optional.of($$1.b())));
-      }
-
-      public static an<cx.a> a(bu.a $$0, bj.a $$1) {
-         return am.c.a(new cx.a(Optional.empty(), Optional.of(bu.a($$0)), Optional.of($$1.b())));
-      }
-
-      public static an<cx.a> c() {
-         return am.Z.a(new cx.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static an<cx.a> b(Optional<bu> $$0) {
-         return am.d.a(new cx.a(Optional.empty(), bu.a($$0), Optional.empty()));
-      }
-
-      public static an<cx.a> b(bu.a $$0) {
-         return am.d.a(new cx.a(Optional.empty(), Optional.of(bu.a($$0)), Optional.empty()));
-      }
-
-      public static an<cx.a> d() {
-         return am.d.a(new cx.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static an<cx.a> b(Optional<bu> $$0, Optional<bj> $$1) {
-         return am.d.a(new cx.a(Optional.empty(), bu.a($$0), $$1));
-      }
-
-      public static an<cx.a> b(bu.a $$0, Optional<bj> $$1) {
-         return am.d.a(new cx.a(Optional.empty(), Optional.of(bu.a($$0)), $$1));
-      }
-
-      public static an<cx.a> b(Optional<bu> $$0, bj.a $$1) {
-         return am.d.a(new cx.a(Optional.empty(), bu.a($$0), Optional.of($$1.b())));
-      }
-
-      public static an<cx.a> b(bu.a $$0, bj.a $$1) {
-         return am.d.a(new cx.a(Optional.empty(), Optional.of(bu.a($$0)), Optional.of($$1.b())));
-      }
-
-      public boolean a(aqn $$0, eqw $$1, bra $$2) {
-         return this.d.isPresent() && !this.d.get().a($$0, $$2) ? false : this.c.isEmpty() || this.c.get().a($$1);
-      }
-
-      @Override
-      public void a(bg $$0) {
-         ds.a.super.a($$0);
-         $$0.a(this.c, ".entity");
-      }
-
-      @Override
-      public Optional<bf> a() {
+      public String a() {
          return this.b;
-      }
-
-      public Optional<bf> e() {
-         return this.c;
-      }
-
-      public Optional<bj> f() {
-         return this.d;
       }
    }
 }

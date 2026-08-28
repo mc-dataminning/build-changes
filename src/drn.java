@@ -1,64 +1,117 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface drn {
-   drn a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dr().a($$2, $$3) && !$$2x.f() && !$$2x.N_())
-         .stream()
-         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bz()))
-         .map(bsh::cB)
-         .toList();
-   drn b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dr().a($$2, $$3) && !$$2x.N_())
-         .stream()
-         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bz()))
-         .map(bsh::cB)
-         .toList();
-   drn c = ($$0, $$1, $$2, $$3, $$4) -> {
-      ewc $$5 = new ewc($$2).g($$3);
-      return $$1.a($$0, bsn.aJ, $$5, btc::bF).stream().filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bz())).map(bsh::cB).toList();
-   };
+public class drn extends dqf implements dxy.b<dyf.b>, dyf {
+   private static final Logger b = LogUtils.getLogger();
+   private dyf.a c;
+   private final dyf.b d;
+   private final dyf.d e = this.b();
+   private int h;
 
-   List<UUID> detect(aqm var1, drn.a var2, ja var3, double var4, boolean var6);
-
-   private static boolean a(dcg $$0, ewh $$1, ewh $$2) {
-      ewd $$3 = $$0.a(new dbp($$2, $$1, dbp.a.c, dbp.b.a, ewm.a()));
-      return $$3.a().equals(ja.a($$1)) || $$3.c() == ewf.a.a;
+   protected drn(dqh<?> $$0, jd $$1, dta $$2) {
+      super($$0, $$1, $$2);
+      this.c = new dyf.a();
+      this.d = new dyf.b(this);
    }
 
-   public interface a {
-      drn.a a = new drn.a() {
-         @Override
-         public List<aqn> a(aqm $$0, Predicate<? super cml> $$1) {
-            return $$0.a($$1);
-         }
+   public drn(jd $$0, dta $$1) {
+      this(dqh.I, $$0, $$1);
+   }
 
-         @Override
-         public <T extends bsh> List<T> a(aqm $$0, dwv<bsh, T> $$1, ewc $$2, Predicate<? super T> $$3) {
-            return $$0.a($$1, $$2, $$3);
-         }
-      };
+   public dyf.d b() {
+      return new drn.a(this.az_());
+   }
 
-      List<? extends cml> a(aqm var1, Predicate<? super cml> var2);
+   @Override
+   protected void a(ua $$0, jo.a $$1) {
+      super.a($$0, $$1);
+      this.h = $$0.h("last_vibration_frequency");
+      if ($$0.b("listener", 10)) {
+         dyf.a.a.parse(new Dynamic(uo.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
+      }
+   }
 
-      <T extends bsh> List<T> a(aqm var1, dwv<bsh, T> var2, ewc var3, Predicate<? super T> var4);
+   @Override
+   protected void b(ua $$0, jo.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("last_vibration_frequency", this.h);
+      dyf.a.a.encodeStart(uo.a, this.c).resultOrPartial(b::error).ifPresent($$1x -> $$0.a("listener", $$1x));
+   }
 
-      static drn.a a(cml $$0) {
-         return a(List.of($$0));
+   @Override
+   public dyf.a go() {
+      return this.c;
+   }
+
+   @Override
+   public dyf.d gp() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public dyf.b f() {
+      return this.d;
+   }
+
+   protected class a implements dyf.d {
+      public static final int b = 8;
+      protected final jd c;
+      private final dya a;
+
+      public a(final jd $$1) {
+         this.c = $$1;
+         this.a = new dxs($$1);
       }
 
-      static drn.a a(final List<cml> $$0) {
-         return new drn.a() {
-            @Override
-            public List<cml> a(aqm $$0x, Predicate<? super cml> $$1) {
-               return $$0.stream().filter($$1).toList();
-            }
+      @Override
+      public int a() {
+         return 8;
+      }
 
-            @Override
-            public <T extends bsh> List<T> a(aqm $$0x, dwv<bsh, T> $$1, ewc $$2, Predicate<? super T> $$3) {
-               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
+      @Override
+      public dya b() {
+         return this.a;
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+
+      @Override
+      public boolean a(aqt $$0, jd $$1, jm<dxw> $$2, @Nullable dxw.a $$3) {
+         return !$$1.equals(this.c) || !$$2.a(dxw.f) && !$$2.a(dxw.i) ? dmq.n(drn.this.n()) : false;
+      }
+
+      @Override
+      public void a(aqt $$0, jd $$1, jm<dxw> $$2, @Nullable bsq $$3, @Nullable bsq $$4, float $$5) {
+         dta $$6 = drn.this.n();
+         if (dmq.n($$6)) {
+            drn.this.a(dyf.a_($$2));
+            int $$7 = dyf.a_($$5, this.a());
+            if ($$6.b() instanceof dmq $$8) {
+               $$8.a($$3, $$0, this.c, $$6, $$7, drn.this.d());
             }
-         };
+         }
+      }
+
+      @Override
+      public void e() {
+         drn.this.e();
+      }
+
+      @Override
+      public boolean f() {
+         return true;
       }
    }
 }

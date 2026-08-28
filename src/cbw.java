@@ -1,21 +1,16 @@
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cbw<T extends btc> extends cbt<T> {
-   private final btz i;
-
-   public cbw(btz $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<btc> $$3) {
-      super($$0, $$1, 10, $$2, false, $$3);
-      this.i = $$0;
+public class cbw extends cbx {
+   public cbw(btu $$0, double $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public boolean a() {
-      return !this.i.s() && super.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.d != null ? this.d.a(this.e, this.c) : super.b();
+   protected eww h() {
+      eww $$0 = this.b.g(0.0F);
+      int $$1 = 8;
+      eww $$2 = cej.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : cef.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
    }
 }

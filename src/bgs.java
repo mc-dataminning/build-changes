@@ -1,19 +1,21 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public abstract class bgs extends bcv {
-   public bgs(String $$0, Schema $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+public class bgs extends bfn {
+   public bgs(Schema $$0) {
+      super($$0, false, "RemoveEmptyItemInSuspiciousBlockFix", bgq.s, "minecraft:brushable_block");
    }
 
    @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      Pair<String, Dynamic<?>> $$2 = this.a($$0, (Dynamic<?>)$$1.getOrCreate(DSL.remainderFinder()));
-      return Pair.of((String)$$2.getFirst(), $$1.set(DSL.remainderFinder(), (Dynamic)$$2.getSecond()));
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("item").result();
+      return $$1.isPresent() && b($$1.get()) ? $$0.remove("item") : $$0;
    }
 
-   protected abstract Pair<String, Dynamic<?>> a(String var1, Dynamic<?> var2);
+   private static boolean b(Dynamic<?> $$0) {
+      String $$1 = bic.a($$0.get("id").asString("minecraft:air"));
+      int $$2 = $$0.get("count").asInt(0);
+      return $$1.equals("minecraft:air") || $$2 == 0;
+   }
 }

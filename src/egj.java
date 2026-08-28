@@ -1,45 +1,41 @@
+import com.mojang.datafixers.Products.P4;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
 
-public class egj extends egh {
-   public static final MapCodec<egj> a = MapCodec.unit(() -> egj.b);
-   public static final egj b = new egj();
+public class egj extends egi {
+   public static final MapCodec<egj> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, egj::new));
+   protected final List<dta> h;
 
-   @Override
-   protected egi<?> a() {
-      return egi.a;
+   protected static <P extends egj> P4<Mu<P>, Long, eob.a, Float, List<dta>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(dta.b).fieldOf("states").forGetter($$0x -> $$0x.h));
+   }
+
+   public egj(long $$0, eob.a $$1, float $$2, List<dta> $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   public void a(egh.a $$0) {
-      ayo $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            ja $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, doe.d);
-            }
-         }
+   protected egg<?> a() {
+      return egg.d;
+   }
 
-         if ($$1.a(3) > 0) {
-            ja $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, doe.f);
-            }
-         }
+   @Override
+   public dta a(ayv $$0, jd $$1) {
+      return this.a(this.h, $$1, (double)this.e);
+   }
 
-         if ($$1.a(3) > 0) {
-            ja $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, doe.e);
-            }
-         }
+   protected dta a(List<dta> $$0, jd $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
 
-         if ($$1.a(3) > 0) {
-            ja $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, doe.c);
-            }
-         }
-      });
+   protected dta a(List<dta> $$0, double $$1) {
+      double $$2 = ayn.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

@@ -1,62 +1,72 @@
-import javax.annotation.Nullable;
+public class fiq extends fia {
+   private final fhr a;
+   private final fja b;
 
-public abstract class fiq<E extends fiq.a<E>> extends fhp<E> {
-   private static final wu a = wu.c("narration.selection.usage");
-
-   public fiq(ffw $$0, int $$1, int $$2, int $$3, int $$4) {
+   public fiq(int $$0, int $$1, int $$2, int $$3, wy $$4, fhr $$5) {
       super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.b = new fja($$4, $$5).d(this.y() - this.b());
    }
 
-   @Nullable
-   @Override
-   public fhe a(flw $$0) {
-      if (this.l() == 0) {
-         return null;
-      } else if (this.aK_() && $$0 instanceof flw.a $$1) {
-         E $$2 = this.a($$1.b());
-         return $$2 != null ? fhe.a(this, fhe.a($$2)) : null;
-      } else if (!this.aK_()) {
-         E $$3 = this.h();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : fhe.a(this, fhe.a($$3));
-      } else {
-         return null;
-      }
+   public fiq a(int $$0) {
+      this.b.c($$0);
+      return this;
    }
 
    @Override
-   public void a(flq $$0) {
-      E $$1 = this.v();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.h();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
+   public void k(int $$0) {
+      super.k($$0);
+      this.b.d(this.y() - this.b());
+   }
 
-      if (this.aK_()) {
-         $$0.a(flp.d, a);
+   @Override
+   protected int h() {
+      return this.b.w();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void b(fht $$0) {
+      if (this.e()) {
+         super.b($$0);
+      } else if (this.aK_()) {
+         this.a($$0, this.D() - this.a(), this.E() - this.a(), this.y() + this.b(), this.w() + this.b());
       }
    }
 
-   public abstract static class a<E extends fiq.a<E>> extends fhp.a<E> implements flr {
-      public abstract wu a();
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
+   @Override
+   public void b(fht $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (!this.e()) {
+            this.b($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.D(), (float)this.E(), 0.0F);
+            this.b.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
+         } else {
+            super.b($$0, $$1, $$2, $$3);
+         }
       }
+   }
 
-      @Override
-      public void b(flq $$0) {
-         $$0.a(flp.a, this.a());
-      }
+   public boolean j() {
+      return super.e();
+   }
+
+   @Override
+   protected void c(fht $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)(this.D() + this.a()), (float)(this.E() + this.a()), 0.0F);
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fmc $$0) {
+      $$0.a(fmb.a, this.z());
    }
 }

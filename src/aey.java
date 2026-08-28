@@ -1,74 +1,52 @@
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aey implements zb<abn> {
-   public static final ys<wf, aey> a = zb.a(aey::a, aey::new);
-   public static final int b = 0;
-   public static final int c = 1;
-   public static final int d = 2;
-   private final String e;
-   private final wu f;
-   private final exo.a g;
-   private final Optional<yk> h;
-   private final int i;
+public record aey(int c, List<ajz.c<?>> d) implements zf<abt> {
+   public static final yw<wj, aey> a = zf.a(aey::b, aey::new);
+   public static final int b = 255;
 
-   public aey(exd $$0, int $$1) {
-      this.e = $$0.b();
-      this.f = $$0.d();
-      this.g = $$0.h();
-      this.h = Optional.ofNullable($$0.f());
-      this.i = $$1;
+   private aey(wj $$0) {
+      this($$0.l(), a($$0));
    }
 
-   private aey(wf $$0) {
-      this.e = $$0.p();
-      this.i = $$0.readByte();
-      if (this.i != 0 && this.i != 2) {
-         this.f = wt.a;
-         this.g = exo.a.a;
-         this.h = Optional.empty();
-      } else {
-         this.f = ww.d.decode($$0);
-         this.g = $$0.b(exo.a.class);
-         this.h = ym.d.decode($$0);
+   private static void a(List<ajz.c<?>> $$0, wj $$1) {
+      for (ajz.c<?> $$2 : $$0) {
+         $$2.a($$1);
       }
+
+      $$1.k(255);
    }
 
-   private void a(wf $$0) {
-      $$0.a(this.e);
-      $$0.k(this.i);
-      if (this.i == 0 || this.i == 2) {
-         ww.d.encode($$0, this.f);
-         $$0.a(this.g);
-         ym.d.encode($$0, this.h);
+   private static List<ajz.c<?>> a(wj $$0) {
+      List<ajz.c<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(ajz.c.a($$0, $$2));
       }
+
+      return $$1;
+   }
+
+   private void b(wj $$0) {
+      $$0.c(this.c);
+      a(this.d, $$0);
    }
 
    @Override
-   public zd<aey> a() {
-      return afz.aI;
+   public zh<aey> a() {
+      return agf.aC;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.e;
+   public int b() {
+      return this.c;
    }
 
-   public wu e() {
-      return this.f;
-   }
-
-   public int f() {
-      return this.i;
-   }
-
-   public exo.a g() {
-      return this.g;
-   }
-
-   public Optional<yk> h() {
-      return this.h;
+   public List<ajz.c<?>> e() {
+      return this.d;
    }
 }

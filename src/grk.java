@@ -1,12 +1,31 @@
-import com.mojang.serialization.Codec;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
+import java.util.List;
 
-public record grk(Map<String, gqx> d) {
-   public static final Codec<String> a = Codec.string(1, 16);
-   public static final Codec<grk> b = Codec.unboundedMap(a, gqx.a).xmap(grk::new, grk::a);
-   public static final asw<grk> c = asw.a("language", b);
+public class grk {
+   public static axz a(xd $$0, boolean $$1) {
+      xw $$2 = xw.a($$0, UCharacter::getMirror, grk::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<axz> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
 
-   public Map<String, gqx> a() {
-      return this.d;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
+      }
+
+      return axz.composite($$4);
+   }
+
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
+      }
    }
 }

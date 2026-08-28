@@ -1,80 +1,34 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class byf extends byg {
-   private static final List<cty> c = ImmutableList.of(cug.pv, cug.vl);
+public class byf {
+   public static bvg<btl> a(dfw $$0) {
+      return bys.a(
+         (Function<bys.b<btl>, ? extends App<bys.c<btl>, byv<btl>>>)($$1 -> $$1.group($$1.c(ccq.o), $$1.b(ccq.m), $$1.b(ccq.Y))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.bf() && $$3x.aF()) {
+                        jd $$5 = $$3x.dq().d();
 
-   @Override
-   protected void a(aqm $$0, cly $$1) {
-      Optional<ji> $$2 = $$1.dV().c(ccg.c);
-      if (!$$2.isEmpty()) {
-         ji $$3 = $$2.get();
-         dsl $$4 = $$0.a_($$3.b());
-         if ($$4.a(dfk.pc)) {
-            this.a($$1);
-            this.a($$0, $$1, $$3, $$4);
-         }
-      }
-   }
+                        for (ji $$6 : ji.c.a) {
+                           jd $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).k($$2x, $$7).a(ji.b).c() && $$2x.b_($$7).b(eoz.c)) {
+                              jd $$8 = $$7.c();
+                              if ($$2x.a_($$8).i()) {
+                                 dta $$9 = $$0.o();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(dxw.i, $$8, dxw.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, avo.jP, avp.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
+                              }
+                           }
+                        }
 
-   private void a(aqm $$0, cly $$1, ji $$2, dsl $$3) {
-      ja $$4 = $$2.b();
-      if ($$3.c(dgt.e) == 8) {
-         $$3 = dgt.a($$1, $$3, (dcg)$$0, $$4);
-      }
-
-      int $$5 = 20;
-      int $$6 = 10;
-      int[] $$7 = new int[c.size()];
-      bqq $$8 = $$1.x();
-      int $$9 = $$8.b();
-      dsl $$10 = $$3;
-
-      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
-         cud $$12 = $$8.a($$11);
-         int $$13 = c.indexOf($$12.g());
-         if ($$13 != -1) {
-            int $$14 = $$12.H();
-            int $$15 = $$7[$$13] + $$14;
-            $$7[$$13] = $$15;
-            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
-            if ($$16 > 0) {
-               $$5 -= $$16;
-
-               for (int $$17 = 0; $$17 < $$16; $$17++) {
-                  $$10 = dgt.a($$1, $$10, $$0, $$12, $$4);
-                  if ($$10.c(dgt.e) == 7) {
-                     this.a($$0, $$3, $$4, $$10);
-                     return;
-                  }
-               }
-            }
-         }
-      }
-
-      this.a($$0, $$3, $$4, $$10);
-   }
-
-   private void a(aqm $$0, dsl $$1, ja $$2, dsl $$3) {
-      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
-   }
-
-   private void a(cly $$0) {
-      bqq $$1 = $$0.x();
-      if ($$1.a_(cug.px) <= 36) {
-         int $$2 = $$1.a_(cug.pw);
-         int $$3 = 3;
-         int $$4 = 3;
-         int $$5 = Math.min(3, $$2 / 3);
-         if ($$5 != 0) {
-            int $$6 = $$5 * 3;
-            $$1.a(cug.pw, $$6);
-            cud $$7 = $$1.b(new cud(cug.px, $$5));
-            if (!$$7.e()) {
-               $$0.a($$7, 0.5F);
-            }
-         }
-      }
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

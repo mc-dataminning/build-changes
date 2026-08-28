@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface yx {
+@FunctionalInterface
+public interface yx<I, T> {
+   T decode(I var1);
 }

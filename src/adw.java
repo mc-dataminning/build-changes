@@ -1,37 +1,18 @@
-public class adw implements zb<abn> {
-   public static final ys<vr, adw> a = zb.a(adw::a, adw::new);
-   private final int b;
-   private final double c;
+import io.netty.buffer.ByteBuf;
 
-   public adw(int $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public class adw implements zf<abt> {
+   public static final adw a = new adw();
+   public static final yw<ByteBuf, adw> b = yw.a(a);
 
-   private adw(vr $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readDouble();
-   }
-
-   private void a(vr $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private adw() {
    }
 
    @Override
-   public zd<adw> a() {
-      return afz.be;
+   public zh<adw> a() {
+      return agf.ac;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public double e() {
-      return this.c;
    }
 }

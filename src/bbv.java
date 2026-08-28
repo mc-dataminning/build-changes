@@ -1,10 +1,29 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public class bbv {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:cactus_green", "minecraft:green_dye")
-      .put("minecraft:rose_red", "minecraft:red_dye")
-      .put("minecraft:dandelion_yellow", "minecraft:yellow_dye")
-      .build();
+public class bbv extends DataFix {
+   public bbv(Schema $$0, boolean $$1) {
+      super($$0, $$1);
+   }
+
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bgq.c);
+      Type<?> $$1 = $$0.findFieldType("Level");
+      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
+      return this.fixTypeEverywhereTyped("ChunkStatusFix", $$0, this.getOutputSchema().getType(bgq.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
+            Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
+            String $$2x = $$1xx.get("Status").asString("empty");
+            if (Objects.equals($$2x, "postprocessed")) {
+               $$1xx = $$1xx.set("Status", $$1xx.createString("fullchunk"));
+            }
+
+            return $$0xx.set(DSL.remainderFinder(), $$1xx);
+         }));
+   }
 }

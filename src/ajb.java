@@ -1,3 +1,5 @@
-public interface ajb extends wa {
-   void a(ajc var1);
+public interface ajb {
+   akq a();
+
+   void a(vv var1);
 }

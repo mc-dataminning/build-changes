@@ -1,28 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecj extends ebl<eec> {
-   public ecj(Codec<eec> $$0) {
-      super($$0);
-   }
+public class ecj implements eee {
+   public static final Codec<ecj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dta.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
+               dta.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
+               dta.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
+               dta.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
+               eac.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, ecj::new)
+   );
+   public final dta b;
+   public final dta c;
+   public final dta d;
+   public final dta e;
+   public final eac f;
+   public final boolean g;
 
-   @Override
-   public boolean a(ebn<eec> $$0) {
-      eec $$1 = $$0.f();
-      ayo $$2 = $$0.d();
-      ja $$3 = $$0.e();
-      ddc $$4 = $$0.b();
-      int $$5 = 0;
-      ja.a $$6 = new ja.a();
-      int $$7 = $$1.b() + 1;
-      int $$8 = $$1.c() + 1;
-
-      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
-         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
-         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
-            $$5++;
-         }
-      }
-
-      return $$5 > 0;
+   public ecj(dta $$0, dta $$1, dta $$2, dta $$3, eac $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 }

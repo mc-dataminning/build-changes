@@ -1,33 +1,36 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public class aee implements zb<abn> {
-   public static final ys<vr, aee> a = zb.a(aee::a, aee::new);
-   @Nullable
-   private final akk b;
+public class aee implements zf<abt> {
+   public static final yw<vv, aee> a = zf.a(aee::a, aee::new);
+   private final IntList b;
 
-   public aee(@Nullable akk $$0) {
-      this.b = $$0;
+   public aee(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private aee(vr $$0) {
-      this.b = $$0.c(vr::q);
+   public aee(int... $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.b, vr::a);
+   private aee(vv $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(vv $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zd<aee> a() {
-      return afz.ao;
+   public zh<aee> a() {
+      return agf.aj;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public akk b() {
+   public IntList b() {
       return this.b;
    }
 }

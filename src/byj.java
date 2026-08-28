@@ -1,35 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
 import java.util.Optional;
+import java.util.function.Function;
 
-public final class byj<F extends K1, Value> {
-   private final bue<?> a;
-   private final ccg<Value> b;
-   private final App<F, Value> c;
+public class byj {
+   private static final int a = 10;
+   private static final int b = 7;
 
-   public byj(bue<?> $$0, ccg<Value> $$1, App<F, Value> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static bwq<btu> a(float $$0) {
+      return a($$0, 10, 7);
    }
 
-   public App<F, Value> a() {
-      return this.c;
-   }
+   public static bwq<btu> a(float $$0, int $$1, int $$2) {
+      return bys.a((Function<bys.b<btu>, ? extends App<bys.c<btu>, byv<btu>>>)($$3 -> $$3.group($$3.c(ccq.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               jd $$7 = $$5.dq();
+               eww $$8;
+               if ($$4.c($$7)) {
+                  $$8 = cek.a($$5, $$1, $$2);
+               } else {
+                  kf $$9 = kf.a($$7);
+                  kf $$10 = bvh.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = ceh.a($$5, $$1, $$2, eww.c($$10.q()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = cek.a($$5, $$1, $$2);
+                  }
+               }
 
-   public void a(Value $$0) {
-      this.a.a(this.b, Optional.of($$0));
-   }
-
-   public void a(Optional<Value> $$0) {
-      this.a.a(this.b, $$0);
-   }
-
-   public void a(Value $$0, long $$1) {
-      this.a.a(this.b, $$0, $$1);
-   }
-
-   public void b() {
-      this.a.b(this.b);
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cct($$1xxxx, $$0, 0)));
+               return true;
+            })));
    }
 }

@@ -1,107 +1,48 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 public class aos {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.trigger.failed.invalid"));
+   private static final xv a = xv.a.a(new xe(xe.a.a, wy.c("chat.type.team.hover"))).a(new ww(ww.a.d, "/teammsg "));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("commands.teammsg.failed.noteam"));
 
-   public static void a(CommandDispatcher<eq> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)er.a("trigger")
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)er.a("objective", fk.a())
-                        .suggests(($$0x, $$1) -> a((eq)$$0x.getSource(), $$1))
-                        .executes($$0x -> a((eq)$$0x.getSource(), ((eq)$$0x.getSource()).h(), fk.a($$0x, "objective"))))
-                     .then(
-                        er.a("add")
-                           .then(
-                              er.a("value", IntegerArgumentType.integer())
-                                 .executes(
-                                    $$0x -> a(
-                                          (eq)$$0x.getSource(),
-                                          ((eq)$$0x.getSource()).h(),
-                                          fk.a($$0x, "objective"),
-                                          IntegerArgumentType.getInteger($$0x, "value")
-                                       )
-                                 )
-                           )
-                     ))
-                  .then(
-                     er.a("set")
-                        .then(
-                           er.a("value", IntegerArgumentType.integer())
-                              .executes(
-                                 $$0x -> b(
-                                       (eq)$$0x.getSource(), ((eq)$$0x.getSource()).h(), fk.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+   public static void a(CommandDispatcher<et> $$0) {
+      LiteralCommandNode<et> $$1 = $$0.register((LiteralArgumentBuilder)eu.a("teammsg").then(eu.a("message", fk.a()).executes($$0x -> {
+         et $$1x = (et)$$0x.getSource();
+         bsq $$2 = $$1x.g();
+         exv $$3 = $$2.ck();
+         if ($$3 == null) {
+            throw b.create();
+         } else {
+            List<aqu> $$4 = $$1x.l().ah().t().stream().filter($$2x -> $$2x == $$2 || $$2x.ck() == $$3).toList();
+            if (!$$4.isEmpty()) {
+               fk.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
+            }
+
+            return $$4.size();
+         }
+      })));
+      $$0.register((LiteralArgumentBuilder)eu.a("tm").redirect($$1));
    }
 
-   public static CompletableFuture<Suggestions> a(eq $$0, SuggestionsBuilder $$1) {
-      exk $$2 = $$0.f();
-      List<String> $$3 = Lists.newArrayList();
-      if ($$2 != null) {
-         exl $$4 = $$0.l().aL();
+   private static void a(et $$0, bsq $$1, exv $$2, List<aqu> $$3, xo $$4) {
+      wy $$5 = $$2.d().c(a);
+      wu.a $$6 = wu.a(wu.i, $$0).c($$5);
+      wu.a $$7 = wu.a(wu.j, $$0).c($$5);
+      xn $$8 = xn.a($$4);
+      boolean $$9 = false;
 
-         for (exd $$5 : $$4.c()) {
-            if ($$5.c() == exo.c) {
-               exh $$6 = $$4.d($$2, $$5);
-               if ($$6 != null && !$$6.b()) {
-                  $$3.add($$5.b());
-               }
-            }
-         }
+      for (aqu $$10 : $$3) {
+         wu.a $$11 = $$10 == $$1 ? $$7 : $$6;
+         boolean $$12 = $$0.a($$10);
+         $$10.a($$8, $$12, $$11);
+         $$9 |= $$12 && $$4.j();
       }
 
-      return ev.b($$3, $$1);
-   }
-
-   private static int a(eq $$0, aqn $$1, exd $$2, int $$3) throws CommandSyntaxException {
-      exj $$4 = a($$0.l().aL(), $$1, $$2);
-      int $$5 = $$4.b($$3);
-      $$0.a(() -> wu.a("commands.trigger.add.success", $$2.g(), $$3), true);
-      return $$5;
-   }
-
-   private static int b(eq $$0, aqn $$1, exd $$2, int $$3) throws CommandSyntaxException {
-      exj $$4 = a($$0.l().aL(), $$1, $$2);
-      $$4.a($$3);
-      $$0.a(() -> wu.a("commands.trigger.set.success", $$2.g(), $$3), true);
-      return $$3;
-   }
-
-   private static int a(eq $$0, aqn $$1, exd $$2) throws CommandSyntaxException {
-      exj $$3 = a($$0.l().aL(), $$1, $$2);
-      int $$4 = $$3.b(1);
-      $$0.a(() -> wu.a("commands.trigger.simple.success", $$2.g()), true);
-      return $$4;
-   }
-
-   private static exj a(exl $$0, exk $$1, exd $$2) throws CommandSyntaxException {
-      if ($$2.c() != exo.c) {
-         throw b.create();
-      } else {
-         exh $$3 = $$0.d($$1, $$2);
-         if ($$3 != null && !$$3.b()) {
-            exj $$4 = $$0.c($$1, $$2);
-            $$4.f();
-            return $$4;
-         } else {
-            throw a.create();
-         }
+      if ($$9) {
+         $$0.a(auq.e);
       }
    }
 }

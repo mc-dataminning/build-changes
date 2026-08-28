@@ -1,61 +1,53 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-public class err extends ero {
-   public static final MapCodec<err> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(awm.a(lr.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, err::new)
-   );
-   private final awm<cty> j;
-   private final boolean k;
+public class err {
+   private final ayt a;
+   private final euf b;
+   private final jn.a c;
+   private final Set<akp<?>> d;
 
-   private err(awm<cty> $$0, boolean $$1, int $$2, int $$3, List<euh> $$4, List<esk> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   public err(ayt $$0, euf $$1, jn.a $$2) {
+      this($$0, $$1, $$2, Set.of());
    }
 
-   @Override
-   public ern a() {
-      return erk.f;
+   private err(ayt $$0, euf $$1, jn.a $$2, Set<akp<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public void a(Consumer<cud> $$0, eqw $$1) {
-      lq.g.c(this.j).forEach($$1x -> $$0.accept(new cud($$1x)));
+   public err a(String $$0) {
+      return new err(this.a.a($$0), this.b, this.c, this.d);
    }
 
-   private boolean a(eqw $$0, Consumer<erl> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final jj<cty> $$2 : lq.g.c(this.j)) {
-            $$1.accept(new ero.c() {
-               @Override
-               public void a(Consumer<cud> $$0, eqw $$1) {
-                  $$0.accept(new cud($$2));
-               }
-            });
-         }
-
-         return true;
-      }
+   public err a(String $$0, akp<?> $$1) {
+      Set<akp<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new err(this.a.a($$0), this.b, this.c, $$2);
    }
 
-   @Override
-   public boolean expand(eqw $$0, Consumer<erl> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   public boolean a(akp<?> $$0) {
+      return this.d.contains($$0);
    }
 
-   public static ero.a<?> a(awm<cty> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new err($$0, false, $$1, $$2, $$3, $$4));
+   public void b(String $$0) {
+      this.a.b($$0);
    }
 
-   public static ero.a<?> b(awm<cty> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new err($$0, true, $$1, $$2, $$3, $$4));
+   public void a(erm $$0) {
+      this.b.a(this, $$0);
+   }
+
+   public jn.a a() {
+      return this.c;
+   }
+
+   public err a(euf $$0) {
+      return new err(this.a, $$0, this.c, this.d);
+   }
+
+   public ayt b() {
+      return this.a;
    }
 }

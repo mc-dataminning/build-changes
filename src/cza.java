@@ -1,15 +1,15 @@
-public class cza extends cxr {
-   public cza(String $$0, cxx $$1, cyg $$2, cud $$3, float $$4, int $$5) {
-      super(cyp.b, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
+public interface cza {
+   cuo a(int var1);
 
-   @Override
-   public cud g() {
-      return new cud(dfk.cD);
-   }
+   int a();
 
-   @Override
-   public cyo<?> ap_() {
-      return cyo.p;
+   default boolean b() {
+      for (int $$0 = 0; $$0 < this.a(); $$0++) {
+         if (!this.a($$0).e()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 }

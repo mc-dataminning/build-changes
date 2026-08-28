@@ -1,28 +1,18 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class bfx extends bfd {
-   public bfx(Schema $$0) {
-      super($$0, false, "PlayerHeadBlockProfileFix", bgh.s, "minecraft:skull");
+public class bfx extends DataFix {
+   public bfx(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("SkullOwner").result();
-      Optional<Dynamic<T>> $$2 = $$0.get("ExtraType").result();
-      Optional<Dynamic<T>> $$3 = $$1.or(() -> $$2);
-      if ($$3.isEmpty()) {
-         return $$0;
-      } else {
-         $$0 = $$0.remove("SkullOwner").remove("ExtraType");
-         return $$0.set("profile", bee.a($$3.get()));
-      }
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsForceVBOFix",
+         this.getInputSchema().getType(bgq.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("useVbo", $$0x.createString("true")))
+      );
    }
 }

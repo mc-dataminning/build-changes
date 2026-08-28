@@ -1,35 +1,34 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ebq implements edp {
-   public static final Codec<ebq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               akk.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               akk.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               emx.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               emx.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ebq::new)
-   );
-   public final List<akk> b;
-   public final List<akk> c;
-   public final jj<emw> d;
-   public final jj<emw> e;
-   public final int f;
+public class ebq extends ebp {
+   public ebq(Codec<eel> $$0) {
+      super($$0);
+   }
 
-   public ebq(List<akk> $$0, List<akk> $$1, jj<emw> $$2, jj<emw> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+   @Override
+   protected boolean a(dcv $$0, ayv $$1, jd $$2, dta $$3) {
+      int $$4 = $$1.a(3) + 3;
+      int $$5 = $$1.a(3) + 3;
+      int $$6 = $$1.a(3) + 3;
+      int $$7 = $$1.a(3) + 1;
+      jd.a $$8 = $$2.j();
+
+      for (int $$9 = 0; $$9 <= $$5; $$9++) {
+         for (int $$10 = 0; $$10 <= $$4; $$10++) {
+            for (int $$11 = 0; $$11 <= $$6; $$11++) {
+               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
+               $$8.c(ji.a, $$7);
+               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
+                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
+                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
+                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
+                  && !($$1.i() < 0.1F)
+                  && !this.b($$0, $$1, $$8, $$3)) {
+               }
+            }
+         }
       }
+
+      return true;
    }
 }

@@ -1,218 +1,240 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class flg extends flc {
-   private final List<flj> c = new ArrayList<>();
-   private final List<flg.a> d = new ArrayList<>();
-   private final flk e = flk.i();
-   private int f = 0;
-   private int g = 0;
+public class flg implements ezg {
+   static final Logger b = LogUtils.getLogger();
+   private final fad c;
+   private final fku<flg.b> d;
 
-   public flg() {
-      this(0, 0);
-   }
-
-   public flg(int $$0, int $$1) {
-      super($$0, $$1, 0, 0);
+   flg(fad $$0, fku<flg.b> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a() {
-      super.a();
-      int $$0 = 0;
-      int $$1 = 0;
-
-      for (flg.a $$2 : this.d) {
-         $$0 = Math.max($$2.c(), $$0);
-         $$1 = Math.max($$2.d(), $$1);
-      }
-
-      int[] $$3 = new int[$$1 + 1];
-      int[] $$4 = new int[$$0 + 1];
-
-      for (flg.a $$5 : this.d) {
-         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
-         c $$7 = new c($$6, $$5.e);
-
-         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
-            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
-         }
-
-         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
-         c $$10 = new c($$9, $$5.f);
-
-         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
-            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
-         }
-      }
-
-      int[] $$12 = new int[$$1 + 1];
-      int[] $$13 = new int[$$0 + 1];
-      $$12[0] = 0;
-
-      for (int $$14 = 1; $$14 <= $$1; $$14++) {
-         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
-      }
-
-      $$13[0] = 0;
-
-      for (int $$15 = 1; $$15 <= $$0; $$15++) {
-         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
-      }
-
-      for (flg.a $$16 : this.d) {
-         int $$17 = 0;
-
-         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
-            $$17 += $$3[$$18];
-         }
-
-         $$17 += this.g * ($$16.f - 1);
-         $$16.a(this.D() + $$12[$$16.d], $$17);
-         int $$19 = 0;
-
-         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
-            $$19 += $$4[$$20];
-         }
-
-         $$19 += this.f * ($$16.e - 1);
-         $$16.b(this.E() + $$13[$$16.c], $$19);
-      }
-
-      this.a = $$12[$$1] + $$3[$$1];
-      this.b = $$13[$$0] + $$4[$$0];
+   public void close() {
+      this.c.close();
    }
 
-   public <T extends flj> T a(T $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2, this.b());
-   }
-
-   public <T extends flj> T a(T $$0, int $$1, int $$2, flk $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, $$3);
-   }
-
-   public <T extends flj> T a(T $$0, int $$1, int $$2, Consumer<flk> $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, ac.a(this.b(), $$3));
-   }
-
-   public <T extends flj> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
-   }
-
-   public <T extends flj> T a(T $$0, int $$1, int $$2, int $$3, int $$4, flk $$5) {
-      if ($$3 < 1) {
-         throw new IllegalArgumentException("Occupied rows must be at least 1");
-      } else if ($$4 < 1) {
-         throw new IllegalArgumentException("Occupied columns must be at least 1");
-      } else {
-         this.d.add(new flg.a($$0, $$1, $$2, $$3, $$4, $$5));
-         this.c.add($$0);
-         return $$0;
-      }
-   }
-
-   public <T extends flj> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<flk> $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, ac.a(this.b(), $$5));
-   }
-
-   public flg a(int $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public flg b(int $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public flg c(int $$0) {
-      return this.a($$0).b($$0);
+   @Nullable
+   @Override
+   public ezf a(int $$0) {
+      return this.d.a($$0);
    }
 
    @Override
-   public void b(Consumer<flj> $$0) {
-      this.c.forEach($$0);
+   public IntSet a() {
+      return IntSets.unmodifiable(this.d.b());
    }
 
-   public flk b() {
-      return this.e.g();
-   }
+   public static record a(akq c, int d, int e, int[][] f) implements fli {
+      private static final Codec<int[][]> g = Codec.STRING.listOf().xmap($$0 -> {
+         int $$1 = $$0.size();
+         int[][] $$2 = new int[$$1][];
 
-   public flk c() {
-      return this.e;
-   }
-
-   public flg.b d(int $$0) {
-      return new flg.b($$0);
-   }
-
-   static class a extends flc.a {
-      final int c;
-      final int d;
-      final int e;
-      final int f;
-
-      a(flj $$0, int $$1, int $$2, int $$3, int $$4, flk $$5) {
-         super($$0, $$5.h());
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-      }
-
-      public int c() {
-         return this.c + this.e - 1;
-      }
-
-      public int d() {
-         return this.d + this.f - 1;
-      }
-   }
-
-   public final class b {
-      private final int b;
-      private int c;
-
-      b(final int $$1) {
-         this.b = $$1;
-      }
-
-      public <T extends flj> T a(T $$0) {
-         return this.a($$0, 1);
-      }
-
-      public <T extends flj> T a(T $$0, int $$1) {
-         return this.a($$0, $$1, this.c());
-      }
-
-      public <T extends flj> T a(T $$0, flk $$1) {
-         return this.a($$0, 1, $$1);
-      }
-
-      public <T extends flj> T a(T $$0, int $$1, flk $$2) {
-         int $$3 = this.c / this.b;
-         int $$4 = this.c % this.b;
-         if ($$4 + $$1 > this.b) {
-            $$3++;
-            $$4 = 0;
-            this.c = ayg.d(this.c, this.b);
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
          }
 
-         this.c += $$1;
-         return flg.this.a($$0, $$3, $$4, 1, $$1, $$2);
+         return $$2;
+      }, $$0 -> {
+         List<String> $$1 = new ArrayList<>($$0.length);
+
+         for (int[] $$2 : $$0) {
+            $$1.add(new String($$2, 0, $$2.length));
+         }
+
+         return $$1;
+      }).validate(flg.a::a);
+      public static final MapCodec<flg.a> a = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     akq.a.fieldOf("file").forGetter(flg.a::c),
+                     Codec.INT.optionalFieldOf("height", 8).forGetter(flg.a::d),
+                     Codec.INT.fieldOf("ascent").forGetter(flg.a::e),
+                     g.fieldOf("chars").forGetter(flg.a::f)
+                  )
+                  .apply($$0, flg.a::new)
+         )
+         .validate(flg.a::a);
+
+      private static DataResult<int[][]> a(int[][] $$0) {
+         int $$1 = $$0.length;
+         if ($$1 == 0) {
+            return DataResult.error(() -> "Expected to find data in codepoint grid");
+         } else {
+            int[] $$2 = $$0[0];
+            int $$3 = $$2.length;
+            if ($$3 == 0) {
+               return DataResult.error(() -> "Expected to find data in codepoint grid");
+            } else {
+               for (int $$4 = 1; $$4 < $$1; $$4++) {
+                  int[] $$5 = $$0[$$4];
+                  if ($$5.length != $$3) {
+                     return DataResult.error(
+                        () -> "Lines in codepoint grid have to be the same length (found: "
+                              + $$5.length
+                              + " codepoints, expected: "
+                              + $$3
+                              + "), pad with \\u0000"
+                     );
+                  }
+               }
+
+               return DataResult.success($$0);
+            }
+         }
       }
 
-      public flg a() {
-         return flg.this;
+      private static DataResult<flg.a> a(flg.a $$0) {
+         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
       }
 
-      public flk b() {
-         return flg.this.b();
+      @Override
+      public flj a() {
+         return flj.a;
       }
 
-      public flk c() {
-         return flg.this.c();
+      @Override
+      public Either<fli.b, fli.c> b() {
+         return Either.left(this::a);
+      }
+
+      private ezg a(aud $$0) throws IOException {
+         akq $$1 = this.c.f("textures/");
+
+         flg var22;
+         try (InputStream $$2 = $$0.open($$1)) {
+            fad $$3 = fad.a(fad.a.a, $$2);
+            int $$4 = $$3.a();
+            int $$5 = $$3.b();
+            int $$6 = $$4 / this.f[0].length;
+            int $$7 = $$5 / this.f.length;
+            float $$8 = (float)this.d / (float)$$7;
+            fku<flg.b> $$9 = new fku<>(flg.b[]::new, flg.b[][]::new);
+
+            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
+               int $$11 = 0;
+
+               for (int $$12 : this.f[$$10]) {
+                  int $$13 = $$11++;
+                  if ($$12 != 0) {
+                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
+                     flg.b $$15 = $$9.a($$12, new flg.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
+                     if ($$15 != null) {
+                        flg.b.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
+                     }
+                  }
+               }
+            }
+
+            var22 = new flg($$3, $$9);
+         }
+
+         return var22;
+      }
+
+      private int a(fad $$0, int $$1, int $$2, int $$3, int $$4) {
+         int $$5;
+         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
+            int $$6 = $$3 * $$1 + $$5;
+
+            for (int $$7 = 0; $$7 < $$2; $$7++) {
+               int $$8 = $$4 * $$2 + $$7;
+               if ($$0.e($$6, $$8) != 0) {
+                  return $$5 + 1;
+               }
+            }
+         }
+
+         return $$5 + 1;
+      }
+   }
+
+   static record b(float a, fad b, int c, int d, int e, int f, int g, int h) implements ezf {
+
+      @Override
+      public float getAdvance() {
+         return (float)this.g;
+      }
+
+      @Override
+      public flb bake(Function<ezh, flb> $$0) {
+         return $$0.apply(new ezh() {
+            @Override
+            public float d() {
+               return 1.0F / b.this.a;
+            }
+
+            @Override
+            public int a() {
+               return b.this.e;
+            }
+
+            @Override
+            public int b() {
+               return b.this.f;
+            }
+
+            @Override
+            public float j() {
+               return (float)b.this.h;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               b.this.b.a(0, $$0, $$1, b.this.c, b.this.d, b.this.e, b.this.f, false, false);
+            }
+
+            @Override
+            public boolean c() {
+               return b.this.b.c().a() > 1;
+            }
+         });
+      }
+
+      public float c() {
+         return this.a;
+      }
+
+      public fad d() {
+         return this.b;
+      }
+
+      public int e() {
+         return this.c;
+      }
+
+      public int f() {
+         return this.d;
+      }
+
+      public int g() {
+         return this.e;
+      }
+
+      public int h() {
+         return this.f;
+      }
+
+      public int i() {
+         return this.g;
+      }
+
+      public int j() {
+         return this.h;
       }
    }
 }

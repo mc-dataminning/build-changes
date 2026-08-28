@@ -1,76 +1,59 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class del extends dfi implements dfl {
-   public static final MapCodec<del> a = b(del::new);
-   protected static final float b = 4.0F;
-   protected static final exa c = dfi.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+public class del extends ddy {
+   public static final MapCodec<del> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ako.d(deb.ah), ako.d(deb.ai), ako.d(deb.aj), ako.d(deb.ak), ako.d(deb.al)).apply($$0, $$0.stable(del::new))
+   );
+   private final jm<ddu> c;
+   private final jm<ddu> d;
+   private final jm<ddu> e;
+   private final jm<ddu> f;
+   private final jm<ddu> g;
 
-   @Override
-   public MapCodec<del> a() {
-      return a;
+   public static del a(jn<ddu> $$0) {
+      return new del($$0.b(deb.ah), $$0.b(deb.ai), $$0.b(deb.aj), $$0.b(deb.ak), $$0.b(deb.al));
    }
 
-   public del(dsk.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      ewh $$4 = $$0.n($$1, $$2);
-      return c.a($$4.c, $$4.d, $$4.e);
-   }
-
-   @Override
-   protected void b(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      if ($$3.a(3) == 0 && $$1.u($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-         this.a($$1, $$2);
-      }
+   private del(jm<ddu> $$0, jm<ddu> $$1, jm<ddu> $$2, jm<ddu> $$3, jm<ddu> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected boolean a(dsl $$0, dcj $$1, ja $$2) {
-      return $$1.a_($$2.d()).a(avw.au);
+   protected Stream<jm<ddu>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
    @Override
-   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
-      if (!$$0.a($$3, $$4)) {
-         return dfk.a.o();
+   protected MapCodec<? extends ddy> a() {
+      return b;
+   }
+
+   @Override
+   public jm<ddu> getNoiseBiome(int $$0, int $$1, int $$2, ded.f $$3) {
+      int $$4 = jx.c($$0);
+      int $$5 = jx.c($$1);
+      int $$6 = jx.c($$2);
+      int $$7 = kf.a($$4);
+      int $$8 = kf.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
       } else {
-         if ($$1 == jf.b && $$2.a(dfk.mZ)) {
-            $$3.a($$4, dfk.mZ.o(), 2);
+         int $$9 = (kf.a($$4) * 2 + 1) * 8;
+         int $$10 = (kf.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new dyo.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
-   }
-
-   @Override
-   public cud a(dcj $$0, ja $$1, dsl $$2) {
-      return new cud(cug.dR);
-   }
-
-   @Override
-   public boolean b(dcj $$0, ja $$1, dsl $$2) {
-      return $$0.a_($$1.c()).i();
-   }
-
-   @Override
-   public boolean a(dcg $$0, ayo $$1, ja $$2, dsl $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqm $$0, ayo $$1, ja $$2, dsl $$3) {
-      this.a($$0, $$2);
-   }
-
-   @Override
-   protected float a(dsl $$0, cml $$1, dbm $$2, ja $$3) {
-      return $$1.eV().g() instanceof cvq ? 1.0F : super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(dcg $$0, ja $$1) {
-      $$0.a($$1.c(), dfk.mZ.o().a(dem.i, dsx.b), 3);
    }
 }

@@ -1,64 +1,42 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+public class gdj extends gcf {
+   private final bsq a;
+   private int b;
+   private final int D;
+   private final lk E;
 
-public class gdj {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = cmk.g();
-   public static final Codec<gdj> a = Codec.PASSTHROUGH.listOf().validate($$0 -> ac.a($$0, c)).xmap(gdj::new, $$0 -> $$0.f);
-   private static final DynamicOps<uu> d = ul.a;
-   private static final Dynamic<?> e = new Dynamic(d, (uu)cud.f.encodeStart(d, cud.l).getOrThrow());
-   private List<Dynamic<?>> f;
-
-   private gdj(List<Dynamic<?>> $$0) {
-      this.f = $$0;
+   public gdj(fyz $$0, bsq $$1, lk $$2) {
+      this($$0, $$1, $$2, 3);
    }
 
-   public gdj() {
-      this(Collections.nCopies(c, e));
+   public gdj(fyz $$0, bsq $$1, lk $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.dt());
    }
 
-   public List<cud> a(jl.a $$0) {
-      return this.f
-         .stream()
-         .map($$1 -> cud.f.parse(aki.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(cud.l))
-         .toList();
+   private gdj(fyz $$0, bsq $$1, lk $$2, int $$3, eww $$4) {
+      super($$0, $$1.dv(), $$1.e(0.5), $$1.dB(), $$4.c, $$4.d, $$4.e);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
    }
 
-   public void a(cmk $$0, jx $$1) {
-      aki<uu> $$2 = $$1.a(d);
-      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
-
-      for (int $$4 = 0; $$4 < c; $$4++) {
-         cud $$5 = $$0.a($$4);
-         Optional<Dynamic<?>> $$6 = cud.f
-            .encodeStart($$2, $$5)
-            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
-            .map($$0x -> new Dynamic(d, $$0x));
-         $$3.add($$6.orElse(e));
-      }
-
-      this.f = $$3.build();
-   }
-
-   public boolean a() {
-      for (Dynamic<?> $$0 : this.f) {
-         if (!a($$0)) {
-            return false;
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
          }
       }
 
-      return true;
-   }
-
-   private static boolean a(Dynamic<?> $$0) {
-      return e.equals($$0);
+      this.b++;
+      if (this.b >= this.D) {
+         this.k();
+      }
    }
 }

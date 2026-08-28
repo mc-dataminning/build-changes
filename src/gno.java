@@ -1,34 +1,20 @@
-public class gno extends goa<cgy, fvb<cgy>> {
-   private final fvb<cgy> a;
+public class gno extends gop<ckx, fun<ckx>> {
+   private static final akq a = akq.b("textures/entity/breeze/breeze_wind.png");
+   private final fun<ckx> b;
 
-   public gno(glk<cgy, fvb<cgy>> $$0, fxm $$1) {
-      super($$0);
-      this.a = new fvb<>($$1.a(fxp.aq));
+   public gno(gkd.a $$0, glz<ckx, fun<ckx>> $$1) {
+      super($$1);
+      this.b = new fun<>($$0.a(fyd.t));
    }
 
-   public void a(fao $$0, gef $$1, int $$2, cgy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cud $$10 = $$3.fO();
-      if ($$10.g() instanceof crs $$11 && $$11.d() == crs.a.a) {
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         float $$15;
-         float $$16;
-         float $$14;
-         if ($$10.a(awf.by)) {
-            int $$13 = cwu.a($$10, -6265536);
-            $$14 = (float)axq.b.b($$13) / 255.0F;
-            $$15 = (float)axq.b.c($$13) / 255.0F;
-            $$16 = (float)axq.b.d($$13) / 255.0F;
-         } else {
-            $$14 = 1.0F;
-            $$15 = 1.0F;
-            $$16 = 1.0F;
-         }
+   public void a(fbc $$0, get $$1, int $$2, ckx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      float $$10 = (float)$$3.ai + $$6;
+      fbg $$11 = $$1.getBuffer(gfb.a(a, this.a($$10) % 1.0F, 0.0F));
+      this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+      gjj.a(this.b, this.b.e()).a($$0, $$11, $$2, gpw.d);
+   }
 
-         fas $$20 = $$1.getBuffer(gen.e($$11.b()));
-         this.a.a($$0, $$20, $$2, gph.d, $$14, $$15, $$16, 1.0F);
-         return;
-      }
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

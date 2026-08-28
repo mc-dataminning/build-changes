@@ -1,41 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.server.MinecraftServer;
 
-public class ave {
-   public static final Codec<ave> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avg.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ave::new)
-   );
-   private final jj<avg> b;
-   private final int c;
-   private final int d;
-   private final boolean e;
+public class ave implements es {
+   private static final String b = "Rcon";
+   private static final wy c = wy.b("Rcon");
+   private final StringBuffer d = new StringBuffer();
+   private final MinecraftServer e;
 
-   public ave(jj<avg> $$0, int $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public ave(MinecraftServer $$0) {
+      this.e = $$0;
    }
 
-   public jj<avg> a() {
-      return this.b;
+   public void e() {
+      this.d.setLength(0);
    }
 
-   public int b() {
-      return this.c;
+   public String f() {
+      return this.d.toString();
    }
 
-   public int c() {
-      return this.d;
+   public et g() {
+      aqt $$0 = this.e.I();
+      return new et(this, eww.a($$0.V()), ewv.a, $$0, 4, "Rcon", c, this.e, null);
    }
 
-   public boolean d() {
-      return this.e;
+   @Override
+   public void a(wy $$0) {
+      this.d.append($$0.getString());
+   }
+
+   @Override
+   public boolean k_() {
+      return true;
+   }
+
+   @Override
+   public boolean w_() {
+      return true;
+   }
+
+   @Override
+   public boolean U_() {
+      return this.e.m();
    }
 }

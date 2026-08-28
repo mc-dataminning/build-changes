@@ -1,119 +1,177 @@
-import com.google.common.base.Strings;
+import com.google.common.collect.EvictingQueue;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import com.mojang.blaze3d.platform.GLX;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Queue;
 import javax.annotation.Nullable;
+import org.lwjgl.opengl.ARBDebugOutput;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GLCapabilities;
+import org.lwjgl.opengl.GLDebugMessageARBCallback;
+import org.lwjgl.opengl.GLDebugMessageCallback;
+import org.lwjgl.opengl.KHRDebug;
+import org.slf4j.Logger;
 
-public abstract class ezv {
-   private static final String a = "/\\*(?:[^*]|\\*+[^*/])*\\*+/";
-   private static final String b = "//[^\\v]*";
-   private static final Pattern c = Pattern.compile(
-      "(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*moj_import(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(?:\"(.*)\"|<(.*)>))"
-   );
-   private static final Pattern d = Pattern.compile("(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*version(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(\\d+))\\b");
-   private static final Pattern e = Pattern.compile("(?:^|\\v)(?:\\s|/\\*(?:[^*]|\\*+[^*/])*\\*+/|(//[^\\v]*))*\\z");
+public class ezv {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 10;
+   private static final Queue<ezv.a> c = EvictingQueue.create(10);
+   @Nullable
+   private static volatile ezv.a d;
+   private static final List<Integer> e = ImmutableList.of(37190, 37191, 37192, 33387);
+   private static final List<Integer> f = ImmutableList.of(37190, 37191, 37192);
+   private static boolean g;
 
-   public List<String> a(String $$0) {
-      ezv.a $$1 = new ezv.a();
-      List<String> $$2 = this.a($$0, $$1, "");
-      $$2.set(0, this.a($$2.get(0), $$1.a));
-      return $$2;
+   private static String d(int $$0) {
+      return "Unknown (0x" + Integer.toHexString($$0).toUpperCase() + ")";
    }
 
-   private List<String> a(String $$0, ezv.a $$1, String $$2) {
-      int $$3 = $$1.b;
-      int $$4 = 0;
-      String $$5 = "";
-      List<String> $$6 = Lists.newArrayList();
-      Matcher $$7 = c.matcher($$0);
+   public static String a(int $$0) {
+      switch ($$0) {
+         case 33350:
+            return "API";
+         case 33351:
+            return "WINDOW SYSTEM";
+         case 33352:
+            return "SHADER COMPILER";
+         case 33353:
+            return "THIRD PARTY";
+         case 33354:
+            return "APPLICATION";
+         case 33355:
+            return "OTHER";
+         default:
+            return d($$0);
+      }
+   }
 
-      while ($$7.find()) {
-         if (!a($$0, $$7, $$4)) {
-            String $$8 = $$7.group(2);
-            boolean $$9 = $$8 != null;
-            if (!$$9) {
-               $$8 = $$7.group(3);
-            }
+   public static String b(int $$0) {
+      switch ($$0) {
+         case 33356:
+            return "ERROR";
+         case 33357:
+            return "DEPRECATED BEHAVIOR";
+         case 33358:
+            return "UNDEFINED BEHAVIOR";
+         case 33359:
+            return "PORTABILITY";
+         case 33360:
+            return "PERFORMANCE";
+         case 33361:
+            return "OTHER";
+         case 33384:
+            return "MARKER";
+         default:
+            return d($$0);
+      }
+   }
 
-            if ($$8 != null) {
-               String $$10 = $$0.substring($$4, $$7.start(1));
-               String $$11 = $$2 + $$8;
-               String $$12 = this.a($$9, $$11);
-               if (!Strings.isNullOrEmpty($$12)) {
-                  if (!azd.d($$12)) {
-                     $$12 = $$12 + System.lineSeparator();
-                  }
+   public static String c(int $$0) {
+      switch ($$0) {
+         case 33387:
+            return "NOTIFICATION";
+         case 37190:
+            return "HIGH";
+         case 37191:
+            return "MEDIUM";
+         case 37192:
+            return "LOW";
+         default:
+            return d($$0);
+      }
+   }
 
-                  $$1.b++;
-                  int $$13 = $$1.b;
-                  List<String> $$14 = this.a($$12, $$1, $$9 ? v.a($$11) : "");
-                  $$14.set(0, String.format(Locale.ROOT, "#line %d %d\n%s", 0, $$13, this.a($$14.get(0), $$1)));
-                  if (!azd.h($$10)) {
-                     $$6.add($$10);
-                  }
-
-                  $$6.addAll($$14);
-               } else {
-                  String $$15 = $$9 ? String.format(Locale.ROOT, "/*#moj_import \"%s\"*/", $$8) : String.format(Locale.ROOT, "/*#moj_import <%s>*/", $$8);
-                  $$6.add($$5 + $$10 + $$15);
-               }
-
-               int $$16 = azd.c($$0.substring(0, $$7.end(1)));
-               $$5 = String.format(Locale.ROOT, "#line %d %d", $$16, $$3);
-               $$4 = $$7.end(1);
-            }
+   private static void a(int $$0, int $$1, int $$2, int $$3, int $$4, long $$5, long $$6) {
+      String $$7 = GLDebugMessageCallback.getMessage($$4, $$5);
+      ezv.a $$8;
+      synchronized (c) {
+         $$8 = d;
+         if ($$8 != null && $$8.a($$0, $$1, $$2, $$3, $$7)) {
+            $$8.f++;
+         } else {
+            $$8 = new ezv.a($$0, $$1, $$2, $$3, $$7);
+            c.add($$8);
+            d = $$8;
          }
       }
 
-      String $$17 = $$0.substring($$4);
-      if (!azd.h($$17)) {
-         $$6.add($$5 + $$17);
-      }
-
-      return $$6;
+      a.info("OpenGL debug message: {}", $$8);
    }
 
-   private String a(String $$0, ezv.a $$1) {
-      Matcher $$2 = d.matcher($$0);
-      if ($$2.find() && a($$0, $$2)) {
-         $$1.a = Math.max($$1.a, Integer.parseInt($$2.group(2)));
-         return $$0.substring(0, $$2.start(1)) + "/*" + $$0.substring($$2.start(1), $$2.end(1)) + "*/" + $$0.substring($$2.end(1));
-      } else {
+   public static List<String> a() {
+      synchronized (c) {
+         List<String> $$0 = Lists.newArrayListWithCapacity(c.size());
+
+         for (ezv.a $$1 : c) {
+            $$0.add($$1 + " x " + $$1.f);
+         }
+
          return $$0;
       }
    }
 
-   private String a(String $$0, int $$1) {
-      Matcher $$2 = d.matcher($$0);
-      return $$2.find() && a($$0, $$2) ? $$0.substring(0, $$2.start(2)) + Math.max($$1, Integer.parseInt($$2.group(2))) + $$0.substring($$2.end(2)) : $$0;
+   public static boolean b() {
+      return g;
    }
 
-   private static boolean a(String $$0, Matcher $$1) {
-      return !a($$0, $$1, 0);
-   }
+   public static void a(int $$0, boolean $$1) {
+      if ($$0 > 0) {
+         GLCapabilities $$2 = GL.getCapabilities();
+         if ($$2.GL_KHR_debug) {
+            g = true;
+            GL11.glEnable(37600);
+            if ($$1) {
+               GL11.glEnable(33346);
+            }
 
-   private static boolean a(String $$0, Matcher $$1, int $$2) {
-      int $$3 = $$1.start() - $$2;
-      if ($$3 == 0) {
-         return false;
-      } else {
-         Matcher $$4 = e.matcher($$0.substring($$2, $$1.start()));
-         if (!$$4.find()) {
-            return true;
-         } else {
-            int $$5 = $$4.end(1);
-            return $$5 == $$1.start();
+            for (int $$3 = 0; $$3 < e.size(); $$3++) {
+               boolean $$4 = $$3 < $$0;
+               KHRDebug.glDebugMessageControl(4352, 4352, e.get($$3), (int[])null, $$4);
+            }
+
+            KHRDebug.glDebugMessageCallback(GLX.make(GLDebugMessageCallback.create(ezv::a), ezt::a), 0L);
+         } else if ($$2.GL_ARB_debug_output) {
+            g = true;
+            if ($$1) {
+               GL11.glEnable(33346);
+            }
+
+            for (int $$5 = 0; $$5 < f.size(); $$5++) {
+               boolean $$6 = $$5 < $$0;
+               ARBDebugOutput.glDebugMessageControlARB(4352, 4352, f.get($$5), (int[])null, $$6);
+            }
+
+            ARBDebugOutput.glDebugMessageCallbackARB(GLX.make(GLDebugMessageARBCallback.create(ezv::a), ezt::a), 0L);
          }
       }
    }
 
-   @Nullable
-   public abstract String a(boolean var1, String var2);
+   static class a {
+      private final int a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final String e;
+      int f = 1;
 
-   static final class a {
-      int a;
-      int b;
+      a(int $$0, int $$1, int $$2, int $$3, String $$4) {
+         this.a = $$2;
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      boolean a(int $$0, int $$1, int $$2, int $$3, String $$4) {
+         return $$1 == this.c && $$0 == this.b && $$2 == this.a && $$3 == this.d && $$4.equals(this.e);
+      }
+
+      @Override
+      public String toString() {
+         return "id=" + this.a + ", source=" + ezv.a(this.b) + ", type=" + ezv.b(this.c) + ", severity=" + ezv.c(this.d) + ", message='" + this.e + "'";
+      }
    }
 }

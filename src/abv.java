@@ -1,53 +1,61 @@
-public class abv implements zb<abn> {
-   public static final ys<wf, abv> a = zb.a(abv::a, abv::new);
-   private final ja b;
-   private final int c;
-   private final int d;
-   private final dfi e;
+public class abv implements zf<abt> {
+   public static final yw<vv, abv> a = zf.a(abv::a, abv::new);
+   private final int b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final int f;
 
-   public abv(ja $$0, dfi $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public abv(btb $$0) {
+      this.b = $$0.an();
+      this.c = $$0.dv();
+      this.d = $$0.dx();
+      this.e = $$0.dB();
+      this.f = $$0.p();
    }
 
-   private abv(wf $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
-      this.d = $$0.readUnsignedByte();
-      this.e = yq.a(lr.f).decode($$0);
+   private abv(vv $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readShort();
    }
 
-   private void a(wf $$0) {
-      $$0.a(this.b);
-      $$0.k(this.c);
-      $$0.k(this.d);
-      yq.a(lr.f).encode($$0, this.e);
+   private void a(vv $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.l(this.f);
    }
 
    @Override
-   public zd<abv> a() {
-      return afz.j;
+   public zh<abv> a() {
+      return agf.d;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public ja b() {
+   public int b() {
       return this.b;
    }
 
-   public int e() {
+   public double e() {
       return this.c;
    }
 
-   public int f() {
+   public double f() {
       return this.d;
    }
 
-   public dfi g() {
+   public double g() {
       return this.e;
+   }
+
+   public int h() {
+      return this.f;
    }
 }

@@ -1,22 +1,28 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Set;
 
-public class cdz {
-   @Nullable
-   public static ewh a(btl $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = cdy.a($$0, $$1);
-      return ceb.a($$0, () -> {
-         ja $$9 = ceb.a($$0.dU(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
-         } else {
-            ja $$10 = cea.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = ceb.a($$10, $$0.dU().a($$6 - $$7 + 1) + $$7, $$0.dR().am(), $$1xx -> cdy.c($$0, $$1xx));
-               return !cdy.a($$0, $$10) && !cdy.b($$0, $$10) ? $$10 : null;
-            }
-         }
-      });
+public class cdz extends cdw<btl> {
+   @Override
+   public Set<ccq<?>> a() {
+      return ImmutableSet.of(ccq.i);
+   }
+
+   @Override
+   protected void a(aqt $$0, btl $$1) {
+      $$1.dU().a(ccq.i, this.a($$1));
+   }
+
+   private List<btl> a(btl $$0) {
+      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   }
+
+   private boolean b(btl $$0) {
+      return $$0.am() == bsw.bj && $$0.o_();
+   }
+
+   private ccs c(btl $$0) {
+      return $$0.dU().c(ccq.h).orElse(ccs.a());
    }
 }

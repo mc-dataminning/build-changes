@@ -1,10 +1,14 @@
-public class cub extends ctp {
-   public cub(bsn<? extends cin> $$0, cty.a $$1) {
-      super($$0, $$1);
+public class cub extends cvu {
+   public cub(dfw $$0, dfw $$1, cuj.a $$2) {
+      super($$2, $$0, $$1, ji.b);
    }
 
    @Override
-   protected boolean a(cml $$0, jf $$1, cud $$2, ja $$3) {
-      return !$$0.dR().s($$3) && $$0.a($$3, $$1, $$2);
+   protected boolean a(dcx $$0, dta $$1, jd $$2) {
+      if ($$1.b() instanceof dow $$3 && !$$3.b($$1, $$0, $$2)) {
+         return false;
+      }
+
+      return super.a($$0, $$1, $$2);
    }
 }

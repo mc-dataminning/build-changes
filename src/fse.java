@@ -1,149 +1,152 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.DoubleConsumer;
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class fse extends fho {
-   private static final int a = 32;
-   private static final String b = "telemetry.event.required";
-   private static final String c = "telemetry.event.optional";
-   private static final String d = "telemetry.event.optional.disabled";
-   private static final wu e = wu.c("telemetry_info.property_title").a(n.t);
-   private final fhf f;
-   private fse.a m;
-   @Nullable
-   private DoubleConsumer n;
+public abstract class fse<B extends gae.a<?>> extends fnx {
+   private static final wy y = wy.c("gui.abuseReport.report_sent_msg");
+   private static final wy z = wy.c("gui.abuseReport.sending.title").a(n.r);
+   private static final wy A = wy.c("gui.abuseReport.sent.title").a(n.r);
+   private static final wy B = wy.c("gui.abuseReport.error.title").a(n.r);
+   private static final wy C = wy.c("gui.abuseReport.send.generic_error");
+   protected static final wy a = wy.c("gui.abuseReport.send");
+   protected static final wy b = wy.c("gui.abuseReport.observed_what");
+   protected static final wy c = wy.c("gui.abuseReport.select_reason");
+   private static final wy D = wy.c("gui.abuseReport.describe");
+   protected static final wy q = wy.c("gui.abuseReport.more_comments");
+   private static final wy E = wy.c("gui.abuseReport.comments");
+   protected static final int r = 20;
+   protected static final int s = 280;
+   protected static final int u = 8;
+   private static final Logger F = LogUtils.getLogger();
+   protected final fnx v;
+   protected final gai w;
+   protected B x;
 
-   public fse(int $$0, int $$1, int $$2, int $$3, fhf $$4) {
-      super($$0, $$1, $$2, $$3, wu.i());
-      this.f = $$4;
-      this.m = this.c(ffw.Q().C());
+   protected fse(wy $$0, fnx $$1, gai $$2, B $$3) {
+      super($$0);
+      this.v = $$1;
+      this.w = $$2;
+      this.x = $$3;
    }
 
-   public void b(boolean $$0) {
-      this.m = this.c($$0);
-      this.a(this.c());
+   protected fiy a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.w.a().b();
+      fiy $$4 = new fiy(this.o, 0, 0, $$0, $$1, D, E);
+      $$4.a(this.x.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
    }
 
+   protected void m() {
+      this.x.a(this.w).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.w.a().a($$0.a(), $$0.b(), $$0.c());
+         this.l.a(fnj.a(z, wx.e, () -> {
+            this.l.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.D();
+            } else {
+               if ($$1x instanceof CancellationException) {
+                  return null;
+               }
+
+               this.a($$1x);
+            }
+
+            return null;
+         }, this.l);
+      }).ifRight($$0 -> this.a($$0.b()));
+   }
+
+   private void D() {
+      this.F();
+      this.l.a(fnj.a(A, y, wx.d, () -> this.l.a(null)));
+   }
+
+   private void a(Throwable $$0) {
+      F.error("Encountered error while sending abuse report", $$0);
+      wy $$2;
+      if ($$0.getCause() instanceof xy $$1) {
+         $$2 = $$1.a();
+      } else {
+         $$2 = C;
+      }
+
+      this.a($$2);
+   }
+
+   private void a(wy $$0) {
+      wy $$1 = $$0.f().a(n.m);
+      this.l.a(fnj.a(B, $$1, wx.k, () -> this.l.a(this)));
+   }
+
+   void E() {
+      if (this.x.b()) {
+         this.w.a(this.x.e().b());
+      }
+   }
+
+   void F() {
+      this.w.a(null);
+   }
+
+   @Override
+   public void d() {
+      if (this.x.b()) {
+         this.l.a(new fse.a());
+      } else {
+         this.l.a(this.v);
+      }
+   }
+
+   @Override
    public void j() {
-      this.m = this.c(ffw.Q().C());
-      this.a(this.c());
+      this.E();
+      super.j();
    }
 
-   private fse.a c(boolean $$0) {
-      fse.b $$1 = new fse.b(this.k());
-      List<gus> $$2 = new ArrayList<>(gus.g());
-      $$2.sort(Comparator.comparing(gus::d));
+   class a extends fqs {
+      private static final wy c = wy.c("gui.abuseReport.discard.title").a(n.r);
+      private static final wy q = wy.c("gui.abuseReport.discard.content");
+      private static final wy r = wy.c("gui.abuseReport.discard.return");
+      private static final wy s = wy.c("gui.abuseReport.discard.draft");
+      private static final wy u = wy.c("gui.abuseReport.discard.discard");
 
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         gus $$4 = $$2.get($$3);
-         boolean $$5 = $$4.d() && !$$0;
-         this.a($$1, $$4, $$5);
-         if ($$3 < $$2.size() - 1) {
-            $$1.a(9);
-         }
+      protected a() {
+         super(c, q, q);
       }
 
-      return $$1.a();
-   }
-
-   public void a(@Nullable DoubleConsumer $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   protected void a(double $$0) {
-      super.a($$0);
-      if (this.n != null) {
-         this.n.accept(this.c());
-      }
-   }
-
-   @Override
-   protected int h() {
-      return this.m.a().w();
-   }
-
-   @Override
-   protected double i() {
-      return 9.0;
-   }
-
-   @Override
-   protected void c(fhh $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.E() + this.a();
-      int $$5 = this.D() + this.a();
-      $$0.c().a();
-      $$0.c().a((double)$$5, (double)$$4, 0.0);
-      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
-      $$0.c().b();
-   }
-
-   @Override
-   protected void a(flq $$0) {
-      $$0.a(flp.a, this.m.b());
-   }
-
-   private wu a(wu $$0, boolean $$1) {
-      return (wu)($$1 ? $$0.f().a(n.h) : $$0);
-   }
-
-   private void a(fse.b $$0, gus $$1, boolean $$2) {
-      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
-      $$0.b(this.f, this.a(wu.a($$3, $$1.e()), $$2));
-      $$0.b(this.f, $$1.f().a(n.h));
-      $$0.a(9 / 2);
-      $$0.a(this.f, this.a(e, $$2), 2);
-      this.a($$1, $$0, $$2);
-   }
-
-   private void a(gus $$0, fse.b $$1, boolean $$2) {
-      for (guu<?> $$3 : $$0.b()) {
-         $$1.a(this.f, this.a($$3.a(), $$2));
-      }
-   }
-
-   private int k() {
-      return this.g - this.b();
-   }
-
-   static record a(fli a, wu b) {
-   }
-
-   static class b {
-      private final int a;
-      private final fll b;
-      private final xi c = wu.i();
-
-      public b(int $$0) {
-         this.a = $$0;
-         this.b = fll.d();
-         this.b.c().a();
-         this.b.a(flm.a($$0));
+      @Override
+      protected flu m() {
+         flx $$0 = flx.d().a(8);
+         $$0.c().b();
+         flx $$1 = $$0.a(flx.e().a(8));
+         $$1.a(fig.a(r, $$0x -> this.d()).a());
+         $$1.a(fig.a(s, $$0x -> {
+            fse.this.E();
+            this.l.a(fse.this.v);
+         }).a());
+         $$0.a(fig.a(u, $$0x -> {
+            fse.this.F();
+            this.l.a(fse.this.v);
+         }).a());
+         return $$0;
       }
 
-      public void a(fhf $$0, wu $$1) {
-         this.a($$0, $$1, 0);
+      @Override
+      public void d() {
+         this.l.a(fse.this);
       }
 
-      public void a(fhf $$0, wu $$1, int $$2) {
-         this.b.a(new fio($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
-         this.c.b($$1).f("\n");
-      }
-
-      public void b(fhf $$0, wu $$1) {
-         this.b.a(new fio($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
-         this.c.b($$1).f("\n");
-      }
-
-      public void a(int $$0) {
-         this.b.a(flm.b($$0));
-      }
-
-      public fse.a a() {
-         this.b.a();
-         return new fse.a(this.b, this.c);
+      @Override
+      public boolean aF_() {
+         return false;
       }
    }
 }

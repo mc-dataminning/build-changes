@@ -1,25 +1,29 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekr extends eix {
-   public static final MapCodec<ekr> d = a(ekr::new);
+public class ekr extends ekt {
+   public static final MapCodec<ekr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c(), b(), d()).apply($$0, ekr::new));
 
-   public ekr(eix.c $$0) {
-      super($$0);
+   protected ekr(Either<akq, enn> $$0, jm<enl> $$1, ekw.a $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public Optional<eix.b> a(eix.a $$0) {
-      return a($$0, dyg.a.c, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(ejp $$0, eix.a $$1) {
-      ja $$2 = new ja($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new ekq.a($$2));
+   protected enj a(dmk $$0, eje $$1, boolean $$2) {
+      enj $$3 = super.a($$0, $$1, $$2);
+      $$3.b(emp.b);
+      $$3.a(emp.d);
+      return $$3;
    }
 
    @Override
-   public ejg<?> e() {
-      return ejg.a;
+   public ekv<?> a() {
+      return ekv.e;
+   }
+
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
 }

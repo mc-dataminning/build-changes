@@ -1,22 +1,20 @@
-public class fya {
-   private final float a;
-   private final float b;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public fya(float $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public class fya implements aue {
+   private Map<fyc, fyk> a = ImmutableMap.of();
 
-   public float a() {
-      return this.a;
-   }
-
-   public float b() {
-      return this.b;
+   public fye a(fyc $$0) {
+      fyk $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("No model for layer " + $$0);
+      } else {
+         return $$1.a();
+      }
    }
 
    @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
+   public void a(aud $$0) {
+      this.a = ImmutableMap.copyOf(fyb.a());
    }
 }

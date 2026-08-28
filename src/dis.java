@@ -1,72 +1,54 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
 
-public class dis extends dki implements dfl, dmj {
-   public static final MapCodec<dis> a = b(dis::new);
-   private static final dtc c = dtb.C;
-   private final dkj d = new dkj(this);
-
-   @Override
-   public MapCodec<dis> a() {
-      return a;
-   }
-
-   public dis(dsk.d $$0) {
+public abstract class dis extends dfw implements dir {
+   public dis(dsz.d $$0) {
       super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)));
-   }
-
-   public static ToIntFunction<dsl> b(int $$0) {
-      return $$1 -> dki.n($$1) ? $$0 : 0;
    }
 
    @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      super.a($$0);
-      $$0.a(c);
+   protected abstract MapCodec<? extends dis> a();
+
+   @Override
+   protected void b(dta $$0, dcu $$1, jd $$2, dta $$3, boolean $$4) {
+      $$1.a($$2, this, this.b());
    }
 
    @Override
-   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eok.c, eok.c.a($$3));
-      }
-
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      $$3.a($$4, this, this.b());
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dsl $$0, cxn $$1) {
-      return !$$1.n().a(cug.fW) || super.a($$0, $$1);
+   protected void a(dta $$0, aqt $$1, jd $$2, ayv $$3) {
+      if (m($$1.a_($$2.d())) && $$2.v() >= $$1.I_()) {
+         cje $$4 = cje.a($$1, $$2, $$0);
+         this.a($$4);
+      }
+   }
+
+   protected void a(cje $$0) {
+   }
+
+   protected int b() {
+      return 2;
+   }
+
+   public static boolean m(dta $$0) {
+      return $$0.i() || $$0.a(awd.aK) || $$0.k() || $$0.r();
    }
 
    @Override
-   public boolean b(dcj $$0, ja $$1, dsl $$2) {
-      return jf.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
+   public void a(dta $$0, dcu $$1, jd $$2, ayv $$3) {
+      if ($$3.a(16) == 0) {
+         jd $$4 = $$2.d();
+         if (m($$1.a_($$4))) {
+            ayr.a($$1, $$2, $$3, new le(lm.C, $$0));
+         }
+      }
    }
 
-   @Override
-   public boolean a(dcg $$0, ayo $$1, ja $$2, dsl $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqm $$0, ayo $$1, ja $$2, dsl $$3) {
-      this.d.a($$3, $$0, $$2, $$1);
-   }
-
-   @Override
-   protected eoj b_(dsl $$0) {
-      return $$0.c(c) ? eok.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a_(dsl $$0, dbm $$1, ja $$2) {
-      return $$0.u().c();
-   }
-
-   @Override
-   public dkj c() {
-      return this.d;
+   public int b(dta $$0, dca $$1, jd $$2) {
+      return -16777216;
    }
 }

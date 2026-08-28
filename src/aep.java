@@ -1,29 +1,29 @@
-public class aep implements zb<abn> {
-   public static final ys<vr, aep> a = zb.a(aep::a, aep::new);
-   private final int b;
+public class aep implements zf<abt> {
+   public static final yw<vv, aep> a = zf.a(aep::a, aep::new);
+   private final double b;
 
-   public aep(int $$0) {
-      this.b = $$0;
+   public aep(dur $$0) {
+      this.b = $$0.k();
    }
 
-   private aep(vr $$0) {
-      this.b = $$0.l();
+   private aep(vv $$0) {
+      this.b = $$0.readDouble();
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.b);
+   private void a(vv $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zd<aep> a() {
-      return afz.az;
+   public zh<aep> a() {
+      return agf.at;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 }

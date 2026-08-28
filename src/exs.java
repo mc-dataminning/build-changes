@@ -1,59 +1,87 @@
-public interface exs extends bqa {
-   cud f();
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   default cud c(int $$0) {
-      return this.f().a($$0);
+public class exs {
+   private final eya a;
+   private final String b;
+   private final eyd c;
+   private wy d;
+   private wy e;
+   private eyd.a f;
+   private boolean g;
+   @Nullable
+   private yo h;
+
+   public exs(eya $$0, String $$1, eyd $$2, wy $$3, eyd.a $$4, boolean $$5, @Nullable yo $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = this.i();
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   void b(cud var1);
-
-   default cud h() {
-      return this.c(this.ah_());
+   public eya a() {
+      return this.a;
    }
 
-   @Override
-   default int b() {
-      return 1;
+   public String b() {
+      return this.b;
    }
 
-   @Override
-   default boolean c() {
-      return this.f().e();
+   public eyd c() {
+      return this.c;
    }
 
-   @Override
-   default void a() {
-      this.h();
+   public wy d() {
+      return this.d;
    }
 
-   @Override
-   default cud b(int $$0) {
-      return this.a($$0, this.ah_());
+   public boolean e() {
+      return this.g;
    }
 
-   @Override
-   default cud a(int $$0) {
-      return $$0 == 0 ? this.f() : cud.l;
+   @Nullable
+   public yo f() {
+      return this.h;
    }
 
-   @Override
-   default cud a(int $$0, int $$1) {
-      return $$0 != 0 ? cud.l : this.c($$1);
+   public yo a(yo $$0) {
+      return Objects.requireNonNullElse(this.h, $$0);
    }
 
-   @Override
-   default void a(int $$0, cud $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
-      }
+   private wy i() {
+      return xb.a((wy)this.d.f().a($$0 -> $$0.a(new xe(xe.a.a, wy.b(this.b)))));
    }
 
-   public interface a extends exs {
-      dpq v();
+   public wy g() {
+      return this.e;
+   }
 
-      @Override
-      default boolean a(cml $$0) {
-         return bqa.a(this.v(), $$0);
-      }
+   public void a(wy $$0) {
+      this.d = $$0;
+      this.e = this.i();
+      this.a.b(this);
+   }
+
+   public eyd.a h() {
+      return this.f;
+   }
+
+   public void a(eyd.a $$0) {
+      this.f = $$0;
+      this.a.b(this);
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
+      this.a.b(this);
+   }
+
+   public void b(@Nullable yo $$0) {
+      this.h = $$0;
+      this.a.b(this);
    }
 }

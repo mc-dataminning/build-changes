@@ -1,45 +1,37 @@
-public class aew implements zb<abn> {
-   public static final ys<vr, aew> a = zb.a(aew::a, aew::new);
-   private final float b;
-   private final int c;
-   private final int d;
+public class aew implements zf<abt> {
+   public static final yw<vv, aew> a = zf.a(aew::a, aew::new);
+   private final jd b;
+   private final float c;
 
-   public aew(float $$0, int $$1, int $$2) {
+   public aew(jd $$0, float $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
-   private aew(vr $$0) {
-      this.b = $$0.readFloat();
-      this.d = $$0.l();
-      this.c = $$0.l();
+   private aew(vv $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readFloat();
    }
 
-   private void a(vr $$0) {
+   private void a(vv $$0) {
       $$0.a(this.b);
-      $$0.c(this.d);
-      $$0.c(this.c);
+      $$0.a(this.c);
    }
 
    @Override
-   public zd<aew> a() {
-      return afz.aG;
+   public zh<aew> a() {
+      return agf.aA;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public jd b() {
       return this.b;
    }
 
-   public int e() {
+   public float e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

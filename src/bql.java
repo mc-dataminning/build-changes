@@ -1,3 +1,3 @@
-public interface bql extends cqp {
-   wu O_();
+public interface bql {
+   void a(bqj var1);
 }

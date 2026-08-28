@@ -1,18 +1,109 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class erk {
-   public static final Codec<erm> a = lq.D.r().dispatch(erm::a, ern::a);
-   public static final ern b = a("empty", erh.a);
-   public static final ern c = a("item", erj.a);
-   public static final ern d = a("loot_table", erp.a);
-   public static final ern e = a("dynamic", erg.a);
-   public static final ern f = a("tag", err.a);
-   public static final ern g = a("alternatives", erd.a);
-   public static final ern h = a("sequence", erq.a);
-   public static final ern i = a("group", eri.a);
+   private static final Codec<erk> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               evt.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               evt.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, erk::new)
+   );
+   public static final Codec<erk> a = Codec.either(Codec.INT, b).xmap($$0 -> (erk)$$0.map(erk::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final evs c;
+   @Nullable
+   private final evs d;
+   private final erk.b e;
+   private final erk.a f;
 
-   private static ern a(String $$0, MapCodec<? extends erm> $$1) {
-      return jw.a(lq.D, new akk($$0), new ern($$1));
+   public Set<eue<?>> a() {
+      Builder<eue<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
+   }
+
+   private erk(Optional<evs> $$0, Optional<evs> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
+   }
+
+   private erk(@Nullable evs $$0, @Nullable evs $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> ayn.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
+      }
+   }
+
+   public static erk a(int $$0) {
+      evp $$1 = evp.a((float)$$0);
+      return new erk(Optional.of($$1), Optional.of($$1));
+   }
+
+   public static erk a(int $$0, int $$1) {
+      return new erk(Optional.of(evp.a((float)$$0)), Optional.of(evp.a((float)$$1)));
+   }
+
+   public static erk b(int $$0) {
+      return new erk(Optional.of(evp.a((float)$$0)), Optional.empty());
+   }
+
+   public static erk c(int $$0) {
+      return new erk(Optional.empty(), Optional.of(evp.a((float)$$0)));
+   }
+
+   public int a(erl $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(erl $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof evp $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(erl var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(erl var1, int var2);
    }
 }

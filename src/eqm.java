@@ -1,54 +1,48 @@
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public class eqm {
-   private final int a;
-   private final long b;
-   private final String c;
-   private final eqc d;
-   private final boolean e;
+public class eqm extends eqf {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
 
-   private eqm(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = new eqc($$3, $$4);
-      this.e = $$5;
+   public static eqf.a<eqm> a() {
+      return new eqf.a<>(eqm::new, eqm::b, azv.k);
    }
 
-   public static eqm a(Dynamic<?> $$0) {
-      int $$1 = $$0.get("version").asInt(0);
-      long $$2 = $$0.get("LastPlayed").asLong(0L);
-      OptionalDynamic<?> $$3 = $$0.get("Version");
-      return $$3.result().isPresent()
-         ? new eqm(
-            $$1,
-            $$2,
-            $$3.get("Name").asString(aa.b().c()),
-            $$3.get("Id").asInt(aa.b().d().c()),
-            $$3.get("Series").asString(eqc.a),
-            $$3.get("Snapshot").asBoolean(!aa.b().g())
-         )
-         : new eqm($$1, $$2, "", 0, eqc.a, false);
+   public eqm() {
+      this.b.defaultReturnValue(-1);
    }
 
-   public int a() {
-      return this.a;
+   public static eqm b(ua $$0, jo.a $$1) {
+      eqm $$2 = new eqm();
+
+      for (String $$3 : $$0.e()) {
+         if ($$0.b($$3, 99)) {
+            $$2.b.put($$3, $$0.h($$3));
+         }
+      }
+
+      return $$2;
    }
 
-   public long b() {
-      return this.b;
+   @Override
+   public ua a(ua $$0, jo.a $$1) {
+      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<String> $$2 = (Entry<String>)var3.next();
+         $$0.a((String)$$2.getKey(), $$2.getIntValue());
+      }
+
+      return $$0;
    }
 
-   public String c() {
-      return this.c;
-   }
-
-   public eqc d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.e;
+   public eql b() {
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.c();
+      return new eql($$0);
    }
 }

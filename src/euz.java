@@ -1,53 +1,47 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record euz(evd b, evd c) implements evd {
+public record euz(Optional<bv> b, erl.b c) implements euw {
    public static final MapCodec<euz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eve.a.fieldOf("n").forGetter(euz::c), eve.a.fieldOf("p").forGetter(euz::d)).apply($$0, euz::new)
+      $$0 -> $$0.group(bv.a.optionalFieldOf("predicate").forGetter(euz::c), erl.b.e.fieldOf("entity").forGetter(euz::d)).apply($$0, euz::new)
    );
 
    @Override
-   public evc b() {
-      return eve.d;
+   public eux b() {
+      return euy.f;
    }
 
    @Override
-   public int a(eqw $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      ayo $$3 = $$0.b();
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
-      }
-
-      return $$4;
+   public Set<eue<?>> a() {
+      return ImmutableSet.of(euh.f, this.c.a());
    }
 
-   @Override
-   public float b(eqw $$0) {
-      return (float)this.a($$0);
+   public boolean a(erl $$0) {
+      bsq $$1 = $$0.c(this.c.a());
+      eww $$2 = $$0.c(euh.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
    }
 
-   public static euz a(int $$0, float $$1) {
-      return new euz(eva.a((float)$$0), eva.a($$1));
+   public static euw.a a(erl.b $$0) {
+      return a($$0, bv.a.a());
    }
 
-   @Override
-   public Set<etp<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public static euw.a a(erl.b $$0, bv.a $$1) {
+      return () -> new euz(Optional.of($$1.b()), $$0);
    }
 
-   public evd c() {
+   public static euw.a a(erl.b $$0, bv $$1) {
+      return () -> new euz(Optional.of($$1), $$0);
+   }
+
+   public Optional<bv> c() {
       return this.b;
    }
 
-   public evd d() {
+   public erl.b d() {
       return this.c;
    }
 }

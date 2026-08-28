@@ -1,6 +1,11 @@
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
 public interface dvj {
-   CompletableFuture<duh> doWork(dvn var1, dvl var2, aza<aqf> var3, duh var4);
+   @Nullable
+   dvi c(int var1, int var2);
+
+   default void a(ddd $$0, kf $$1) {
+   }
+
+   dca q();
 }

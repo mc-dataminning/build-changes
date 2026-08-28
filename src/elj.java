@@ -2,251 +2,263 @@ import com.google.common.collect.Lists;
 import java.util.List;
 
 public class elj {
-   static final emv a = a(dfk.I, dfk.J, eqs.bh);
-   static final emv b = a(dfk.L, dfk.M, eqs.bi);
-   private static final akk[] c = new akk[]{
-      new akk("underwater_ruin/warm_1"),
-      new akk("underwater_ruin/warm_2"),
-      new akk("underwater_ruin/warm_3"),
-      new akk("underwater_ruin/warm_4"),
-      new akk("underwater_ruin/warm_5"),
-      new akk("underwater_ruin/warm_6"),
-      new akk("underwater_ruin/warm_7"),
-      new akk("underwater_ruin/warm_8")
-   };
-   private static final akk[] d = new akk[]{
-      new akk("underwater_ruin/brick_1"),
-      new akk("underwater_ruin/brick_2"),
-      new akk("underwater_ruin/brick_3"),
-      new akk("underwater_ruin/brick_4"),
-      new akk("underwater_ruin/brick_5"),
-      new akk("underwater_ruin/brick_6"),
-      new akk("underwater_ruin/brick_7"),
-      new akk("underwater_ruin/brick_8")
-   };
-   private static final akk[] e = new akk[]{
-      new akk("underwater_ruin/cracked_1"),
-      new akk("underwater_ruin/cracked_2"),
-      new akk("underwater_ruin/cracked_3"),
-      new akk("underwater_ruin/cracked_4"),
-      new akk("underwater_ruin/cracked_5"),
-      new akk("underwater_ruin/cracked_6"),
-      new akk("underwater_ruin/cracked_7"),
-      new akk("underwater_ruin/cracked_8")
-   };
-   private static final akk[] f = new akk[]{
-      new akk("underwater_ruin/mossy_1"),
-      new akk("underwater_ruin/mossy_2"),
-      new akk("underwater_ruin/mossy_3"),
-      new akk("underwater_ruin/mossy_4"),
-      new akk("underwater_ruin/mossy_5"),
-      new akk("underwater_ruin/mossy_6"),
-      new akk("underwater_ruin/mossy_7"),
-      new akk("underwater_ruin/mossy_8")
-   };
-   private static final akk[] g = new akk[]{
-      new akk("underwater_ruin/big_brick_1"),
-      new akk("underwater_ruin/big_brick_2"),
-      new akk("underwater_ruin/big_brick_3"),
-      new akk("underwater_ruin/big_brick_8")
-   };
-   private static final akk[] h = new akk[]{
-      new akk("underwater_ruin/big_mossy_1"),
-      new akk("underwater_ruin/big_mossy_2"),
-      new akk("underwater_ruin/big_mossy_3"),
-      new akk("underwater_ruin/big_mossy_8")
-   };
-   private static final akk[] i = new akk[]{
-      new akk("underwater_ruin/big_cracked_1"),
-      new akk("underwater_ruin/big_cracked_2"),
-      new akk("underwater_ruin/big_cracked_3"),
-      new akk("underwater_ruin/big_cracked_8")
-   };
-   private static final akk[] j = new akk[]{
-      new akk("underwater_ruin/big_warm_4"),
-      new akk("underwater_ruin/big_warm_5"),
-      new akk("underwater_ruin/big_warm_6"),
-      new akk("underwater_ruin/big_warm_7")
-   };
-
-   private static emv a(dfi $$0, dfi $$1, akj<erb> $$2) {
-      return new eme(new emr(List.of(new emn(new emb($$0), elw.b, emk.b, $$1.o(), new enc($$2)))), bpj.a(5));
-   }
-
-   private static akk a(ayo $$0) {
-      return ac.a(c, $$0);
-   }
-
-   private static akk b(ayo $$0) {
-      return ac.a(j, $$0);
-   }
-
-   public static void a(emz $$0, ja $$1, dlv $$2, ejc $$3, ayo $$4, elk $$5) {
-      boolean $$6 = $$4.i() <= $$5.f;
-      float $$7 = $$6 ? 0.9F : 0.8F;
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      if ($$6 && $$4.i() <= $$5.g) {
-         a($$0, $$4, $$2, $$1, $$5, $$3);
+   private static final int a = 8;
+   static final elj.b b = new elj.b() {
+      @Override
+      public void a() {
       }
-   }
 
-   private static void a(emz $$0, ayo $$1, dlv $$2, ja $$3, elk $$4, ejc $$5) {
-      ja $$6 = new ja($$3.u(), 90, $$3.w());
-      ja $$7 = emy.a(new ja(15, 0, 15), dkf.a, $$2, ja.c).a((ke)$$6);
-      eip $$8 = eip.a($$6, $$7);
-      ja $$9 = new ja(Math.min($$6.u(), $$7.u()), $$6.v(), Math.min($$6.w(), $$7.w()));
-      List<ja> $$10 = a($$1, $$9);
-      int $$11 = ayg.a($$1, 4, 8);
-
-      for (int $$12 = 0; $$12 < $$11; $$12++) {
-         if (!$$10.isEmpty()) {
-            int $$13 = $$1.a($$10.size());
-            ja $$14 = $$10.remove($$13);
-            dlv $$15 = dlv.a($$1);
-            ja $$16 = emy.a(new ja(5, 0, 6), dkf.a, $$15, ja.c).a((ke)$$14);
-            eip $$17 = eip.a($$14, $$16);
-            if (!$$17.a($$8)) {
-               a($$0, $$14, $$15, $$5, $$1, $$4, false, 0.8F);
+      @Override
+      public boolean a(eno $$0, int $$1, elj.a $$2, jd $$3, List<ejq> $$4, ayv $$5) {
+         if ($$1 > 8) {
+            return false;
+         } else {
+            dmk $$6 = $$2.e().d();
+            elj.a $$7 = elj.a($$4, elj.a($$0, $$2, $$3, "base_floor", $$6, true));
+            int $$8 = $$5.a(3);
+            if ($$8 == 0) {
+               $$7 = elj.a($$4, elj.a($$0, $$7, new jd(-1, 4, -1), "base_roof", $$6, true));
+            } else if ($$8 == 1) {
+               $$7 = elj.a($$4, elj.a($$0, $$7, new jd(-1, 0, -1), "second_floor_2", $$6, false));
+               $$7 = elj.a($$4, elj.a($$0, $$7, new jd(-1, 8, -1), "second_roof", $$6, false));
+               elj.a($$0, elj.d, $$1 + 1, $$7, null, $$4, $$5);
+            } else if ($$8 == 2) {
+               $$7 = elj.a($$4, elj.a($$0, $$7, new jd(-1, 0, -1), "second_floor_2", $$6, false));
+               $$7 = elj.a($$4, elj.a($$0, $$7, new jd(-1, 4, -1), "third_floor_2", $$6, false));
+               $$7 = elj.a($$4, elj.a($$0, $$7, new jd(-1, 8, -1), "third_roof", $$6, true));
+               elj.a($$0, elj.d, $$1 + 1, $$7, null, $$4, $$5);
             }
+
+            return true;
          }
       }
-   }
-
-   private static List<ja> a(ayo $$0, ja $$1) {
-      List<ja> $$2 = Lists.newArrayList();
-      $$2.add($$1.b(-16 + ayg.a($$0, 1, 8), 0, 16 + ayg.a($$0, 1, 7)));
-      $$2.add($$1.b(-16 + ayg.a($$0, 1, 8), 0, ayg.a($$0, 1, 7)));
-      $$2.add($$1.b(-16 + ayg.a($$0, 1, 8), 0, -16 + ayg.a($$0, 4, 8)));
-      $$2.add($$1.b(ayg.a($$0, 1, 7), 0, 16 + ayg.a($$0, 1, 7)));
-      $$2.add($$1.b(ayg.a($$0, 1, 7), 0, -16 + ayg.a($$0, 4, 6)));
-      $$2.add($$1.b(16 + ayg.a($$0, 1, 7), 0, 16 + ayg.a($$0, 3, 8)));
-      $$2.add($$1.b(16 + ayg.a($$0, 1, 7), 0, ayg.a($$0, 1, 7)));
-      $$2.add($$1.b(16 + ayg.a($$0, 1, 7), 0, -16 + ayg.a($$0, 4, 8)));
-      return $$2;
-   }
-
-   private static void a(emz $$0, ja $$1, dlv $$2, ejc $$3, ayo $$4, elk $$5, boolean $$6, float $$7) {
-      switch ($$5.e) {
-         case a:
-         default:
-            akk $$8 = $$6 ? b($$4) : a($$4);
-            $$3.a(new elj.a($$0, $$8, $$1, $$2, $$7, $$5.e, $$6));
-            break;
-         case b:
-            akk[] $$9 = $$6 ? g : d;
-            akk[] $$10 = $$6 ? i : e;
-            akk[] $$11 = $$6 ? h : f;
-            int $$12 = $$4.a($$9.length);
-            $$3.a(new elj.a($$0, $$9[$$12], $$1, $$2, $$7, $$5.e, $$6));
-            $$3.a(new elj.a($$0, $$10[$$12], $$1, $$2, 0.7F, $$5.e, $$6));
-            $$3.a(new elj.a($$0, $$11[$$12], $$1, $$2, 0.5F, $$5.e, $$6));
-      }
-   }
-
-   public static class a extends ejh {
-      private final elk.a h;
-      private final float i;
-      private final boolean j;
-
-      public a(emz $$0, akk $$1, ja $$2, dlv $$3, float $$4, elk.a $$5, boolean $$6) {
-         super(ejo.H, 0, $$0, $$1, $$1.toString(), a($$3, $$4, $$5), $$2);
-         this.i = $$4;
-         this.h = $$5;
-         this.j = $$6;
-      }
-
-      private a(emz $$0, tx $$1, dlv $$2, float $$3, elk.a $$4, boolean $$5) {
-         super(ejo.H, $$1, $$0, $$3x -> a($$2, $$3, $$4));
-         this.i = $$3;
-         this.h = $$4;
-         this.j = $$5;
-      }
-
-      private static emu a(dlv $$0, float $$1, elk.a $$2) {
-         emv $$3 = $$2 == elk.a.b ? elj.b : elj.a;
-         return new emu().a($$0).a(dkf.a).a(new emc($$1)).a(ema.d).a($$3);
-      }
-
-      public static elj.a a(emz $$0, tx $$1) {
-         dlv $$2 = dlv.valueOf($$1.l("Rot"));
-         float $$3 = $$1.j("Integrity");
-         elk.a $$4 = elk.a.valueOf($$1.l("BiomeType"));
-         boolean $$5 = $$1.q("IsLarge");
-         return new elj.a($$0, $$1, $$2, $$3, $$4, $$5);
+   };
+   static final List<azq<dmk, jd>> c = Lists.newArrayList(
+      new azq[]{new azq<>(dmk.a, new jd(1, -1, 0)), new azq<>(dmk.b, new jd(6, -1, 1)), new azq<>(dmk.d, new jd(0, -1, 5)), new azq<>(dmk.c, new jd(5, -1, 6))}
+   );
+   static final elj.b d = new elj.b() {
+      @Override
+      public void a() {
       }
 
       @Override
-      protected void a(ejn $$0, tx $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-         $$1.a("Integrity", this.i);
-         $$1.a("BiomeType", this.h.toString());
-         $$1.a("IsLarge", this.j);
-      }
+      public boolean a(eno $$0, int $$1, elj.a $$2, jd $$3, List<ejq> $$4, ayv $$5) {
+         dmk $$6 = $$2.e().d();
+         elj.a $$7 = elj.a($$4, elj.a($$0, $$2, new jd(3 + $$5.a(2), -3, 3 + $$5.a(2)), "tower_base", $$6, true));
+         $$7 = elj.a($$4, elj.a($$0, $$7, new jd(0, 7, 0), "tower_piece", $$6, true));
+         elj.a $$8 = $$5.a(3) == 0 ? $$7 : null;
+         int $$9 = 1 + $$5.a(3);
 
-      @Override
-      protected void a(String $$0, ja $$1, dcv $$2, ayo $$3, eip $$4) {
-         if ("chest".equals($$0)) {
-            $$2.a($$1, dfk.cv.o().a(dgl.e, Boolean.valueOf($$2.b_($$1).a(awc.a))), 2);
-            dpq $$5 = $$2.c_($$1);
-            if ($$5 instanceof dpx) {
-               ((dpx)$$5).a(this.j ? eqs.F : eqs.E, $$3.g());
+         for (int $$10 = 0; $$10 < $$9; $$10++) {
+            $$7 = elj.a($$4, elj.a($$0, $$7, new jd(0, 4, 0), "tower_piece", $$6, true));
+            if ($$10 < $$9 - 1 && $$5.h()) {
+               $$8 = $$7;
             }
-         } else if ("drowned".equals($$0)) {
-            cjf $$6 = bsn.B.a((dcg)$$2.E());
-            if ($$6 != null) {
-               $$6.fQ();
-               $$6.a($$1, 0.0F, 0.0F);
-               $$6.a($$2, $$2.d_($$1), btg.d, null);
-               $$2.a_($$6);
-               if ($$1.v() > $$2.z_()) {
-                  $$2.a($$1, dfk.a.o(), 2);
+         }
+
+         if ($$8 != null) {
+            for (azq<dmk, jd> $$11 : elj.c) {
+               if ($$5.h()) {
+                  elj.a $$12 = elj.a($$4, elj.a($$0, $$8, $$11.b(), "bridge_end", $$6.a($$11.a()), true));
+                  elj.a($$0, elj.e, $$1 + 1, $$12, null, $$4, $$5);
+               }
+            }
+
+            $$7 = elj.a($$4, elj.a($$0, $$7, new jd(-1, 4, -1), "tower_top", $$6, true));
+         } else {
+            if ($$1 != 7) {
+               return elj.a($$0, elj.g, $$1 + 1, $$7, null, $$4, $$5);
+            }
+
+            $$7 = elj.a($$4, elj.a($$0, $$7, new jd(-1, 4, -1), "tower_top", $$6, true));
+         }
+
+         return true;
+      }
+   };
+   static final elj.b e = new elj.b() {
+      public boolean a;
+
+      @Override
+      public void a() {
+         this.a = false;
+      }
+
+      @Override
+      public boolean a(eno $$0, int $$1, elj.a $$2, jd $$3, List<ejq> $$4, ayv $$5) {
+         dmk $$6 = $$2.e().d();
+         int $$7 = $$5.a(4) + 1;
+         elj.a $$8 = elj.a($$4, elj.a($$0, $$2, new jd(0, 0, -4), "bridge_piece", $$6, true));
+         $$8.a(-1);
+         int $$9 = 0;
+
+         for (int $$10 = 0; $$10 < $$7; $$10++) {
+            if ($$5.h()) {
+               $$8 = elj.a($$4, elj.a($$0, $$8, new jd(0, $$9, -4), "bridge_piece", $$6, true));
+               $$9 = 0;
+            } else {
+               if ($$5.h()) {
+                  $$8 = elj.a($$4, elj.a($$0, $$8, new jd(0, $$9, -4), "bridge_steep_stairs", $$6, true));
                } else {
-                  $$2.a($$1, dfk.G.o(), 2);
+                  $$8 = elj.a($$4, elj.a($$0, $$8, new jd(0, $$9, -8), "bridge_gentle_stairs", $$6, true));
+               }
+
+               $$9 = 4;
+            }
+         }
+
+         if (!this.a && $$5.a(10 - $$1) == 0) {
+            elj.a($$4, elj.a($$0, $$8, new jd(-8 + $$5.a(8), $$9, -70 + $$5.a(10)), "ship", $$6, true));
+            this.a = true;
+         } else if (!elj.a($$0, elj.b, $$1 + 1, $$8, new jd(-3, $$9 + 1, -11), $$4, $$5)) {
+            return false;
+         }
+
+         $$8 = elj.a($$4, elj.a($$0, $$8, new jd(4, $$9, 0), "bridge_end", $$6.a(dmk.c), true));
+         $$8.a(-1);
+         return true;
+      }
+   };
+   static final List<azq<dmk, jd>> f = Lists.newArrayList(
+      new azq[]{
+         new azq<>(dmk.a, new jd(4, -1, 0)), new azq<>(dmk.b, new jd(12, -1, 4)), new azq<>(dmk.d, new jd(0, -1, 8)), new azq<>(dmk.c, new jd(8, -1, 12))
+      }
+   );
+   static final elj.b g = new elj.b() {
+      @Override
+      public void a() {
+      }
+
+      @Override
+      public boolean a(eno $$0, int $$1, elj.a $$2, jd $$3, List<ejq> $$4, ayv $$5) {
+         dmk $$6 = $$2.e().d();
+         elj.a $$7 = elj.a($$4, elj.a($$0, $$2, new jd(-3, 4, -3), "fat_tower_base", $$6, true));
+         $$7 = elj.a($$4, elj.a($$0, $$7, new jd(0, 4, 0), "fat_tower_middle", $$6, true));
+
+         for (int $$8 = 0; $$8 < 2 && $$5.a(3) != 0; $$8++) {
+            $$7 = elj.a($$4, elj.a($$0, $$7, new jd(0, 8, 0), "fat_tower_middle", $$6, true));
+
+            for (azq<dmk, jd> $$9 : elj.f) {
+               if ($$5.h()) {
+                  elj.a $$10 = elj.a($$4, elj.a($$0, $$7, $$9.b(), "bridge_end", $$6.a($$9.a()), true));
+                  elj.a($$0, elj.e, $$1 + 1, $$10, null, $$4, $$5);
                }
             }
          }
+
+         $$7 = elj.a($$4, elj.a($$0, $$7, new jd(-2, 8, -2), "fat_tower_top", $$6, true));
+         return true;
+      }
+   };
+
+   static elj.a a(eno $$0, elj.a $$1, jd $$2, String $$3, dmk $$4, boolean $$5) {
+      elj.a $$6 = new elj.a($$0, $$3, $$1.d(), $$4, $$5);
+      jd $$7 = $$1.c().a($$1.e(), $$2, $$6.e(), jd.c);
+      $$6.a($$7.u(), $$7.v(), $$7.w());
+      return $$6;
+   }
+
+   public static void a(eno $$0, jd $$1, dmk $$2, List<ejq> $$3, ayv $$4) {
+      g.a();
+      b.a();
+      e.a();
+      d.a();
+      elj.a $$5 = a($$3, new elj.a($$0, "base_floor", $$1, $$2, true));
+      $$5 = a($$3, a($$0, $$5, new jd(-1, 0, -1), "second_floor_1", $$2, false));
+      $$5 = a($$3, a($$0, $$5, new jd(-1, 4, -1), "third_floor_1", $$2, false));
+      $$5 = a($$3, a($$0, $$5, new jd(-1, 8, -1), "third_roof", $$2, true));
+      a($$0, d, 1, $$5, null, $$3, $$4);
+   }
+
+   static elj.a a(List<ejq> $$0, elj.a $$1) {
+      $$0.add($$1);
+      return $$1;
+   }
+
+   static boolean a(eno $$0, elj.b $$1, int $$2, elj.a $$3, jd $$4, List<ejq> $$5, ayv $$6) {
+      if ($$2 > 8) {
+         return false;
+      } else {
+         List<ejq> $$7 = Lists.newArrayList();
+         if ($$1.a($$0, $$2, $$3, $$4, $$7, $$6)) {
+            boolean $$8 = false;
+            int $$9 = $$6.f();
+
+            for (ejq $$10 : $$7) {
+               $$10.a($$9);
+               ejq $$11 = ejq.a($$5, $$10.f());
+               if ($$11 != null && $$11.g() != $$3.g()) {
+                  $$8 = true;
+                  break;
+               }
+            }
+
+            if (!$$8) {
+               $$5.addAll($$7);
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public static class a extends ejw {
+      public a(eno $$0, String $$1, jd $$2, dmk $$3, boolean $$4) {
+         super(ekd.Y, 0, $$0, a($$1), $$1, a($$4, $$3), $$2);
+      }
+
+      public a(eno $$0, ua $$1) {
+         super(ekd.Y, $$1, $$0, $$1x -> a($$1.q("OW"), dmk.valueOf($$1.l("Rot"))));
+      }
+
+      private static enj a(boolean $$0, dmk $$1) {
+         emp $$2 = $$0 ? emp.b : emp.d;
+         return new enj().a(true).a($$2).a($$1);
       }
 
       @Override
-      public void a(ddc $$0, dda $$1, dui $$2, ayo $$3, eip $$4, dbn $$5, ja $$6) {
-         int $$7 = $$0.a(dyg.a.c, this.d.u(), this.d.w());
-         this.d = new ja(this.d.u(), $$7, this.d.w());
-         ja $$8 = emy.a(new ja(this.b.a().u() - 1, 0, this.b.a().w() - 1), dkf.a, this.c.d(), ja.c).a((ke)this.d);
-         this.d = new ja(this.d.u(), this.a(this.d, $$0, $$8), this.d.w());
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      protected akq b() {
+         return a(this.a);
       }
 
-      private int a(ja $$0, dbm $$1, ja $$2) {
-         int $$3 = $$0.v();
-         int $$4 = 512;
-         int $$5 = $$3 - 1;
-         int $$6 = 0;
-
-         for (ja $$7 : ja.c($$0, $$2)) {
-            int $$8 = $$7.u();
-            int $$9 = $$7.w();
-            int $$10 = $$0.v() - 1;
-            ja.a $$11 = new ja.a($$8, $$10, $$9);
-            dsl $$12 = $$1.a_($$11);
-
-            for (eoj $$13 = $$1.b_($$11); ($$12.i() || $$13.a(awc.a) || $$12.a(avw.am)) && $$10 > $$1.I_() + 1; $$13 = $$1.b_($$11)) {
-               $$11.d($$8, --$$10, $$9);
-               $$12 = $$1.a_($$11);
-            }
-
-            $$4 = Math.min($$4, $$10);
-            if ($$10 < $$5 - 2) {
-               $$6++;
-            }
-         }
-
-         int $$14 = Math.abs($$0.u() - $$2.u());
-         if ($$5 - $$4 > 2 && $$6 > $$14 - 2) {
-            $$3 = $$4 + 1;
-         }
-
-         return $$3;
+      private static akq a(String $$0) {
+         return akq.b("end_city/" + $$0);
       }
+
+      @Override
+      protected void a(ekc $$0, ua $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+         $$1.a("OW", this.c.i().get(0) == emp.b);
+      }
+
+      @Override
+      protected void a(String $$0, jd $$1, ddj $$2, ayv $$3, eje $$4) {
+         if ($$0.startsWith("Chest")) {
+            jd $$5 = $$1.d();
+            if ($$4.b($$5)) {
+               bqy.a($$2, $$3, $$5, erh.c);
+            }
+         } else if ($$4.b($$1) && dcu.l($$1)) {
+            if ($$0.startsWith("Sentry")) {
+               ckh $$6 = bsw.aK.a((dcu)$$2.E());
+               if ($$6 != null) {
+                  $$6.a_((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5);
+                  $$2.b($$6);
+               }
+            } else if ($$0.startsWith("Elytra")) {
+               ciy $$7 = new ciy($$2.E(), $$1, this.c.d().a(ji.d));
+               $$7.a(new cuo(cur.nT), false);
+               $$2.b($$7);
+            }
+         }
+      }
+   }
+
+   interface b {
+      void a();
+
+      boolean a(eno var1, int var2, elj.a var3, jd var4, List<ejq> var5, ayv var6);
    }
 }

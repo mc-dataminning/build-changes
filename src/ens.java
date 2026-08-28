@@ -1,24 +1,22 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class ens extends enx<ens.a> {
-   protected ens(duu $$0) {
-      super(dcp.b, $$0, new ens.a(new Long2ObjectOpenHashMap()));
+public class ens implements env {
+   public static final MapCodec<ens> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ua.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, ens::new));
+   private final ua b;
+
+   public ens(ua $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected int a(long $$0) {
-      long $$1 = kc.e($$0);
-      dum $$2 = this.a($$1, false);
-      return $$2 == null ? 0 : $$2.a(kc.b(ja.a($$0)), kc.b(ja.b($$0)), kc.b(ja.c($$0)));
+   public ua a(ayv $$0, @Nullable ua $$1) {
+      return $$1 == null ? this.b.i() : $$1.a(this.b);
    }
 
-   protected static final class a extends enu<ens.a> {
-      public a(Long2ObjectOpenHashMap<dum> $$0) {
-         super($$0);
-      }
-
-      public ens.a a() {
-         return new ens.a(this.a.clone());
-      }
+   @Override
+   public enw<?> a() {
+      return enw.c;
    }
 }

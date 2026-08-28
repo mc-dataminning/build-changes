@@ -1,7 +1,49 @@
-import jdk.jfr.consumer.RecordedEvent;
+import java.net.SocketAddress;
+import jdk.jfr.Category;
+import jdk.jfr.DataAmount;
+import jdk.jfr.Enabled;
+import jdk.jfr.Event;
+import jdk.jfr.Label;
+import jdk.jfr.Name;
+import jdk.jfr.StackTrace;
 
-public record bnq(String a, String b, int c, int d) {
-   public static bnq a(RecordedEvent $$0) {
-      return new bnq($$0.getString("level"), $$0.getString("dimension"), $$0.getInt("chunkPosX"), $$0.getInt("chunkPosZ"));
+@Category({"Minecraft", "Network"})
+@StackTrace(false)
+@Enabled(false)
+public abstract class bnq extends Event {
+   @Name("protocolId")
+   @Label("Protocol Id")
+   public final String protocolId;
+   @Name("packetDirection")
+   @Label("Packet Direction")
+   public final String packetDirection;
+   @Name("packetId")
+   @Label("Packet Id")
+   public final String packetId;
+   @Name("remoteAddress")
+   @Label("Remote Address")
+   public final String remoteAddress;
+   @Name("bytes")
+   @Label("Bytes")
+   @DataAmount
+   public final int bytes;
+
+   public bnq(String $$0, String $$1, String $$2, SocketAddress $$3, int $$4) {
+      this.protocolId = $$0;
+      this.packetDirection = $$1;
+      this.packetId = $$2;
+      this.remoteAddress = $$3.toString();
+      this.bytes = $$4;
+   }
+
+   public static final class a {
+      public static final String a = "remoteAddress";
+      public static final String b = "protocolId";
+      public static final String c = "packetDirection";
+      public static final String d = "packetId";
+      public static final String e = "bytes";
+
+      private a() {
+      }
    }
 }

@@ -1,105 +1,37 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum dlv implements azc {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class dlv extends dfw {
+   public static final MapCodec<dlv> a = b(dlv::new);
 
-   public static final Codec<dlv> e = azc.a(dlv::values);
-   private final String f;
-   private final h g;
-
-   private dlv(final String $$0, final h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<dlv> a() {
+      return a;
    }
 
-   public dlv a(dlv $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public jf a(jf $$0) {
-      if ($$0.o() == jf.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static dlv a(ayo $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<dlv> b(ayo $$0) {
-      return ac.b(values(), $$0);
+   protected dlv(dsz.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected bqs a(cuo $$0, dta $$1, dcu $$2, jd $$3, cmv $$4, bqp $$5, ews $$6) {
+      if (!$$0.a(cur.rV)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$2.B) {
+         return bqs.a($$2.B);
+      } else {
+         ji $$7 = $$6.b();
+         ji $$8 = $$7.o() == ji.a.b ? $$4.cI().g() : $$7;
+         $$2.a(null, $$3, avo.uW, avp.e, 1.0F, 1.0F);
+         $$2.a($$3, dfy.ee.o().a(dgq.b, $$8), 11);
+         cjf $$9 = new cjf(
+            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cuo(cur.rY, 4)
+         );
+         $$9.n(0.05 * (double)$$8.j() + $$2.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.z.j() * 0.02);
+         $$2.b($$9);
+         $$0.a(1, $$4, btl.d($$5));
+         $$2.a($$4, dxw.M, $$3);
+         $$4.b(avy.c.b(cur.rV));
+         return bqs.a($$2.B);
+      }
    }
 }

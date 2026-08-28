@@ -1,19 +1,30 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class cbu extends cak {
+   private final btu a;
 
-public class cbu<T extends btc> extends cbt<T> {
-   private boolean i = true;
-
-   public cbu(cnx $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<btc> $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(boolean $$0) {
-      this.i = $$0;
+   public cbu(btu $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean a() {
-      return this.i && super.a();
+   public boolean b() {
+      return this.a.aF() && !this.a.dQ().b_(this.a.dq()).a(awj.a);
+   }
+
+   @Override
+   public void d() {
+      jd $$0 = null;
+
+      for (jd $$2 : jd.b(
+         ayn.a(this.a.dv() - 2.0), ayn.a(this.a.dx() - 2.0), ayn.a(this.a.dB() - 2.0), ayn.a(this.a.dv() + 2.0), this.a.dw(), ayn.a(this.a.dB() + 2.0)
+      )) {
+         if (this.a.dQ().b_($$2).a(awj.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      }
    }
 }

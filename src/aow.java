@@ -1,194 +1,54 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
-import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
 
 public class aow {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("commands.worldborder.center.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.worldborder.set.failed.nochange"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wu.c("commands.worldborder.set.failed.small"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wu.a("commands.worldborder.set.failed.big", 5.999997E7F));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wu.a("commands.worldborder.set.failed.far", 2.9999984E7));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(wu.c("commands.worldborder.warning.time.failed"));
-   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(wu.c("commands.worldborder.warning.distance.failed"));
-   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(wu.c("commands.worldborder.damage.buffer.failed"));
-   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wu.c("commands.worldborder.damage.amount.failed"));
-
-   public static void a(CommandDispatcher<eq> $$0) {
+   public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a(
-                                 "worldborder"
-                              )
-                              .requires($$0x -> $$0x.c(2)))
-                           .then(
-                              er.a("add")
-                                 .then(
-                                    ((RequiredArgumentBuilder)er.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (eq)$$0x.getSource(),
-                                                   ((eq)$$0x.getSource()).e().C_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
-                                                   0L
-                                                )
-                                          ))
-                                       .then(
-                                          er.a("time", IntegerArgumentType.integer(0))
-                                             .executes(
-                                                $$0x -> a(
-                                                      (eq)$$0x.getSource(),
-                                                      ((eq)$$0x.getSource()).e().C_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
-                                                      ((eq)$$0x.getSource()).e().C_().j() + (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
-                                                   )
-                                             )
-                                       )
-                                 )
-                           ))
-                        .then(
-                           er.a("set")
-                              .then(
-                                 ((RequiredArgumentBuilder)er.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
-                                       .executes($$0x -> a((eq)$$0x.getSource(), DoubleArgumentType.getDouble($$0x, "distance"), 0L)))
-                                    .then(
-                                       er.a("time", IntegerArgumentType.integer(0))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (eq)$$0x.getSource(),
-                                                   DoubleArgumentType.getDouble($$0x, "distance"),
-                                                   (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
-                                                )
-                                          )
-                                    )
-                              )
-                        ))
-                     .then(er.a("center").then(er.a("pos", gs.a()).executes($$0x -> a((eq)$$0x.getSource(), gs.a($$0x, "pos"))))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("time").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ((LiteralArgumentBuilder)er.a("damage")
-                           .then(
-                              er.a("amount")
-                                 .then(
-                                    er.a("damagePerBlock", FloatArgumentType.floatArg(0.0F))
-                                       .executes($$0x -> b((eq)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "damagePerBlock")))
-                                 )
-                           ))
-                        .then(
-                           er.a("buffer")
-                              .then(
-                                 er.a("distance", FloatArgumentType.floatArg(0.0F))
-                                    .executes($$0x -> a((eq)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "distance")))
-                              )
-                        )
+                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("set")
+                                    .then(eu.a("day").executes($$0x -> a((et)$$0x.getSource(), 1000))))
+                                 .then(eu.a("noon").executes($$0x -> a((et)$$0x.getSource(), 6000))))
+                              .then(eu.a("night").executes($$0x -> a((et)$$0x.getSource(), 13000))))
+                           .then(eu.a("midnight").executes($$0x -> a((et)$$0x.getSource(), 18000))))
+                        .then(eu.a("time", gi.a()).executes($$0x -> a((et)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
                   ))
-               .then(er.a("get").executes($$0x -> a((eq)$$0x.getSource()))))
+               .then(eu.a("add").then(eu.a("time", gi.a()).executes($$0x -> b((et)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
             .then(
-               ((LiteralArgumentBuilder)er.a("warning")
-                     .then(
-                        er.a("distance")
-                           .then(
-                              er.a("distance", IntegerArgumentType.integer(0))
-                                 .executes($$0x -> b((eq)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "distance")))
-                           )
-                     ))
-                  .then(
-                     er.a("time")
-                        .then(
-                           er.a("time", IntegerArgumentType.integer(0)).executes($$0x -> a((eq)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                        )
-                  )
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("query")
+                        .then(eu.a("daytime").executes($$0x -> c((et)$$0x.getSource(), a(((et)$$0x.getSource()).e())))))
+                     .then(eu.a("gametime").executes($$0x -> c((et)$$0x.getSource(), (int)(((et)$$0x.getSource()).e().Z() % 2147483647L)))))
+                  .then(eu.a("day").executes($$0x -> c((et)$$0x.getSource(), (int)(((et)$$0x.getSource()).e().aa() / 24000L % 2147483647L))))
             )
       );
    }
 
-   private static int a(eq $$0, float $$1) throws CommandSyntaxException {
-      duc $$2 = $$0.l().J().C_();
-      if ($$2.n() == (double)$$1) {
-         throw h.create();
-      } else {
-         $$2.b((double)$$1);
-         $$0.a(() -> wu.a("commands.worldborder.damage.buffer.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
-         return (int)$$1;
-      }
+   private static int a(aqt $$0) {
+      return (int)($$0.aa() % 24000L);
    }
 
-   private static int b(eq $$0, float $$1) throws CommandSyntaxException {
-      duc $$2 = $$0.l().J().C_();
-      if ($$2.o() == (double)$$1) {
-         throw i.create();
-      } else {
-         $$2.c((double)$$1);
-         $$0.a(() -> wu.a("commands.worldborder.damage.amount.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
-         return (int)$$1;
-      }
+   private static int c(et $$0, int $$1) {
+      $$0.a(() -> wy.a("commands.time.query", $$1), false);
+      return $$1;
    }
 
-   private static int a(eq $$0, int $$1) throws CommandSyntaxException {
-      duc $$2 = $$0.l().J().C_();
-      if ($$2.q() == $$1) {
-         throw f.create();
-      } else {
-         $$2.b($$1);
-         $$0.a(() -> wu.a("commands.worldborder.warning.time.success", $$1), true);
-         return $$1;
+   public static int a(et $$0, int $$1) {
+      for (aqt $$2 : $$0.l().K()) {
+         $$2.b((long)$$1);
       }
+
+      $$0.a(() -> wy.a("commands.time.set", $$1), true);
+      return a($$0.e());
    }
 
-   private static int b(eq $$0, int $$1) throws CommandSyntaxException {
-      duc $$2 = $$0.l().J().C_();
-      if ($$2.r() == $$1) {
-         throw g.create();
-      } else {
-         $$2.c($$1);
-         $$0.a(() -> wu.a("commands.worldborder.warning.distance.success", $$1), true);
-         return $$1;
+   public static int b(et $$0, int $$1) {
+      for (aqt $$2 : $$0.l().K()) {
+         $$2.b($$2.aa() + (long)$$1);
       }
-   }
 
-   private static int a(eq $$0) {
-      double $$1 = $$0.l().J().C_().i();
-      $$0.a(() -> wu.a("commands.worldborder.get", String.format(Locale.ROOT, "%.0f", $$1)), false);
-      return ayg.a($$1 + 0.5);
-   }
-
-   private static int a(eq $$0, ewg $$1) throws CommandSyntaxException {
-      duc $$2 = $$0.l().J().C_();
-      if ($$2.a() == (double)$$1.i && $$2.b() == (double)$$1.j) {
-         throw a.create();
-      } else if (!((double)Math.abs($$1.i) > 2.9999984E7) && !((double)Math.abs($$1.j) > 2.9999984E7)) {
-         $$2.c((double)$$1.i, (double)$$1.j);
-         $$0.a(() -> wu.a("commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", $$1.i), String.format(Locale.ROOT, "%.2f", $$1.j)), true);
-         return 0;
-      } else {
-         throw e.create();
-      }
-   }
-
-   private static int a(eq $$0, double $$1, long $$2) throws CommandSyntaxException {
-      duc $$3 = $$0.l().J().C_();
-      double $$4 = $$3.i();
-      if ($$4 == $$1) {
-         throw b.create();
-      } else if ($$1 < 1.0) {
-         throw c.create();
-      } else if ($$1 > 5.999997E7F) {
-         throw d.create();
-      } else {
-         if ($$2 > 0L) {
-            $$3.a($$4, $$1, $$2);
-            if ($$1 > $$4) {
-               $$0.a(() -> wu.a("commands.worldborder.set.grow", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
-            } else {
-               $$0.a(() -> wu.a("commands.worldborder.set.shrink", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
-            }
-         } else {
-            $$3.a($$1);
-            $$0.a(() -> wu.a("commands.worldborder.set.immediate", String.format(Locale.ROOT, "%.1f", $$1)), true);
-         }
-
-         return (int)($$1 - $$4);
-      }
+      int $$3 = a($$0.e());
+      $$0.a(() -> wy.a("commands.time.set", $$3), true);
+      return $$3;
    }
 }

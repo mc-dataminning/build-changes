@@ -1,12 +1,11 @@
 import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -24,10 +23,10 @@ public class o {
    private final Throwable d;
    private final List<p> e = Lists.newArrayList();
    @Nullable
-   private File f;
+   private Path f;
    private boolean g = true;
    private StackTraceElement[] h = new StackTraceElement[0];
-   private final ab i = new ab();
+   private final ac i = new ac();
 
    public o(String $$0, Throwable $$1) {
       this.c = $$0;
@@ -104,63 +103,63 @@ public class o {
       return var4;
    }
 
-   public String e() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("---- Minecraft Crash Report ----\n");
-      $$0.append("// ");
-      $$0.append(i());
-      $$0.append("\n\n");
-      $$0.append("Time: ");
-      $$0.append(b.format(ZonedDateTime.now()));
-      $$0.append("\n");
-      $$0.append("Description: ");
-      $$0.append(this.c);
-      $$0.append("\n\n");
-      $$0.append(this.d());
-      $$0.append("\n\nA detailed walkthrough of the error, its code path and all known details is as follows:\n");
+   public String a(y $$0, List<String> $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      $$0.a($$2, $$1);
+      $$2.append("Time: ");
+      $$2.append(b.format(ZonedDateTime.now()));
+      $$2.append("\n");
+      $$2.append("Description: ");
+      $$2.append(this.c);
+      $$2.append("\n\n");
+      $$2.append(this.d());
+      $$2.append("\n\nA detailed walkthrough of the error, its code path and all known details is as follows:\n");
 
-      for (int $$1 = 0; $$1 < 87; $$1++) {
-         $$0.append("-");
+      for (int $$3 = 0; $$3 < 87; $$3++) {
+         $$2.append("-");
       }
 
-      $$0.append("\n\n");
-      this.a($$0);
-      return $$0.toString();
+      $$2.append("\n\n");
+      this.a($$2);
+      return $$2.toString();
+   }
+
+   public String a(y $$0) {
+      return this.a($$0, List.of());
    }
 
    @Nullable
-   public File f() {
+   public Path e() {
       return this.f;
    }
 
-   public boolean a(File $$0) {
+   public boolean a(Path $$0, y $$1, List<String> $$2) {
       if (this.f != null) {
          return false;
       } else {
-         if ($$0.getParentFile() != null) {
-            $$0.getParentFile().mkdirs();
-         }
-
-         Writer $$1 = null;
-
-         boolean var4;
          try {
-            $$1 = new OutputStreamWriter(new FileOutputStream($$0), StandardCharsets.UTF_8);
-            $$1.write(this.e());
+            if ($$0.getParent() != null) {
+               v.c($$0.getParent());
+            }
+
+            try (Writer $$3 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8)) {
+               $$3.write(this.a($$1, $$2));
+            }
+
             this.f = $$0;
             return true;
-         } catch (Throwable var8) {
-            a.error("Could not save crash report to {}", $$0, var8);
-            var4 = false;
-         } finally {
-            IOUtils.closeQuietly($$1);
+         } catch (Throwable var9) {
+            a.error("Could not save crash report to {}", $$0, var9);
+            return false;
          }
-
-         return var4;
       }
    }
 
-   public ab g() {
+   public boolean a(Path $$0, y $$1) {
+      return this.a($$0, $$1, List.of());
+   }
+
+   public ac f() {
       return this.i;
    }
 
@@ -200,58 +199,13 @@ public class o {
       return $$2;
    }
 
-   private static String i() {
-      String[] $$0 = new String[]{
-         "Who set us up the TNT?",
-         "Everything's going to plan. No, really, that was supposed to happen.",
-         "Uh... Did I do that?",
-         "Oops.",
-         "Why did you do that?",
-         "I feel sad now :(",
-         "My bad.",
-         "I'm sorry, Dave.",
-         "I let you down. Sorry :(",
-         "On the bright side, I bought you a teddy bear!",
-         "Daisy, daisy...",
-         "Oh - I know what I did wrong!",
-         "Hey, that tickles! Hehehe!",
-         "I blame Dinnerbone.",
-         "You should try our sister game, Minceraft!",
-         "Don't be sad. I'll do better next time, I promise!",
-         "Don't be sad, have a hug! <3",
-         "I just don't know what went wrong :(",
-         "Shall we play a game?",
-         "Quite honestly, I wouldn't worry myself about that.",
-         "I bet Cylons wouldn't have this problem.",
-         "Sorry :(",
-         "Surprise! Haha. Well, this is awkward.",
-         "Would you like a cupcake?",
-         "Hi. I'm Minecraft, and I'm a crashaholic.",
-         "Ooh. Shiny.",
-         "This doesn't make any sense!",
-         "Why is it breaking :(",
-         "Don't do that.",
-         "Ouch. That hurt :(",
-         "You're mean.",
-         "This is a token for 1 free hug. Redeem at your nearest Mojangsta: [~~HUG~~]",
-         "There are four lights!",
-         "But it works on my machine."
-      };
-
-      try {
-         return $$0[(int)(ac.d() % (long)$$0.length)];
-      } catch (Throwable var2) {
-         return "Witty comment unavailable :(";
-      }
-   }
-
    public static o a(Throwable $$0, String $$1) {
       while ($$0 instanceof CompletionException && $$0.getCause() != null) {
          $$0 = $$0.getCause();
       }
 
       o $$3;
-      if ($$0 instanceof y $$2) {
+      if ($$0 instanceof z $$2) {
          $$3 = $$2.a();
       } else {
          $$3 = new o($$1, $$0);
@@ -260,8 +214,8 @@ public class o {
       return $$3;
    }
 
-   public static void h() {
-      aye.a();
-      new o("Don't panic!", new Throwable()).e();
+   public static void g() {
+      ayl.a();
+      new o("Don't panic!", new Throwable()).a(y.a);
    }
 }

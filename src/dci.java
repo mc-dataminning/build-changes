@@ -1,55 +1,27 @@
-public interface dci {
-   int J_();
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   int I_();
+public class dci {
+   public static final dci a = new dci(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<dci> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, dci::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
 
-   default int am() {
-      return this.I_() + this.J_();
+   public dci(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   default int an() {
-      return this.ap() - this.ao();
+   public List<String> a() {
+      return this.c;
    }
 
-   default int ao() {
-      return kc.a(this.I_());
-   }
-
-   default int ap() {
-      return kc.a(this.am() - 1) + 1;
-   }
-
-   default boolean s(ja $$0) {
-      return this.d($$0.v());
-   }
-
-   default boolean d(int $$0) {
-      return $$0 < this.I_() || $$0 >= this.am();
-   }
-
-   default int e(int $$0) {
-      return this.f(kc.a($$0));
-   }
-
-   default int f(int $$0) {
-      return $$0 - this.ao();
-   }
-
-   default int g(int $$0) {
-      return $$0 + this.ao();
-   }
-
-   static dci e(final int $$0, final int $$1) {
-      return new dci() {
-         @Override
-         public int J_() {
-            return $$1;
-         }
-
-         @Override
-         public int I_() {
-            return $$0;
-         }
-      };
+   public List<String> b() {
+      return this.d;
    }
 }

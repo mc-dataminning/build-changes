@@ -1,61 +1,70 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class efn {
-   public static final Codec<efn> d = lq.W.r().dispatch(efn::a, efo::a);
-   protected final bpm e;
-   protected final efq f;
-   protected final Optional<efk> g;
+public class efn extends efq {
+   public static final MapCodec<efn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bpv.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
+               )
+            )
+            .apply($$0, efn::new)
+   );
+   private final bpv b;
+   private final float c;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   protected static <P extends efn> P3<Mu<P>, bpm, efq, Optional<efk>> a(Instance<P> $$0) {
-      return $$0.group(
-         bpm.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         efq.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         efk.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   public efn(bpv $$0, bpv $$1, bpv $$2, float $$3, float $$4, float $$5, float $$6) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
-   public efn(bpm $$0, efq $$1, Optional<efk> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   protected efr<?> a() {
+      return efr.k;
    }
 
-   protected abstract efo<?> a();
+   @Override
+   protected void a(dda $$0, efq.b $$1, ayv $$2, efa $$3, int $$4, efq.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      jd $$10 = $$5.a().b($$8);
+      int $$11 = $$7 + $$5.b() - 1;
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
 
-   public abstract boolean a(dcm var1, BiConsumer<ja, dsl> var2, ayo var3, ja var4, ja var5, eel var6);
-
-   protected boolean a(dcm $$0, ja $$1) {
-      return ecx.c($$0, $$1);
-   }
-
-   protected void a(dcm $$0, BiConsumer<ja, dsl> $$1, ayo $$2, ja $$3, eel $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            efk $$5 = this.g.get();
-            ja $$6 = $$3.c();
-            if ($$2.i() < $$5.b() && $$0.a($$6, dsk.a::i)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
-            }
-         }
+      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
+         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
       }
+
+      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
    }
 
-   protected dsl a(dcm $$0, ja $$1, dsl $$2) {
-      if ($$2.b(dtb.C)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(awc.a));
-         return $$2.a(dtb.C, Boolean.valueOf($$3));
+   @Override
+   public int a(ayv $$0, int $$1, efa $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(ayv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
+         return true;
       } else {
-         return $$2;
+         boolean $$6 = $$1 == $$4 && $$3 == $$4;
+         boolean $$7 = $$4 > 2;
+         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
       }
-   }
-
-   public ja a(ja $$0, ayo $$1) {
-      return $$0.b(this.e.a($$1));
    }
 }

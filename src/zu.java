@@ -1,16 +1,33 @@
-import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
 
-public record zu(aac b) implements zb<zs> {
-   private static final int c = 32767;
-   public static final ys<vr, zu> a = aac.<vr>a($$0 -> aad.a($$0, 32767), ac.a(Lists.newArrayList(new aac.c[]{new aac.c<>(aaa.b, aaa.a)}), $$0 -> {
-   })).a(zu::new, zu::b);
+public record zu(akq c, byte[] d) implements zf<zl> {
+   public static final yw<vv, zu> a = zf.a(zu::a, zu::new);
+   private static final int e = 5120;
+   public static final yw<ByteBuf, byte[]> b = yu.a(5120);
 
-   @Override
-   public zd<zu> a() {
-      return zr.k;
+   private zu(vv $$0) {
+      this($$0.q(), b.decode($$0));
    }
 
-   public void a(zs $$0) {
+   private void a(vv $$0) {
+      $$0.a(this.c);
+      b.encode($$0, this.d);
+   }
+
+   @Override
+   public zh<zu> a() {
+      return zx.i;
+   }
+
+   public void a(zl $$0) {
       $$0.a(this);
+   }
+
+   public akq b() {
+      return this.c;
+   }
+
+   public byte[] e() {
+      return this.d;
    }
 }

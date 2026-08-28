@@ -1,43 +1,56 @@
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class cdn<U extends cdm<?>> {
-   public static final cdn<ccw> a = a("dummy", ccw::new);
-   public static final cdn<cde> b = a("nearest_items", cde::new);
-   public static final cdn<cdf<btc>> c = a("nearest_living_entities", cdf::new);
-   public static final cdn<cdj> d = a("nearest_players", cdj::new);
-   public static final cdn<cdd> e = a("nearest_bed", cdd::new);
-   public static final cdn<cda> f = a("hurt_by", cda::new);
-   public static final cdn<cdq> g = a("villager_hostiles", cdq::new);
-   public static final cdn<cdp> h = a("villager_babies", cdp::new);
-   public static final cdn<cdk> i = a("secondary_pois", cdk::new);
-   public static final cdn<ccy> j = a("golem_detected", ccy::new);
-   public static final cdn<cdc<cgb>> k = a("armadillo_scare_detected", () -> new cdc<>(5, cgb::j, cgb::gy, ccg.G, 80));
-   public static final cdn<cdi> l = a("piglin_specific_sensor", cdi::new);
-   public static final cdn<cdh> m = a("piglin_brute_specific_sensor", cdh::new);
-   public static final cdn<ccz> n = a("hoglin_specific_sensor", ccz::new);
-   public static final cdn<cct> o = a("nearest_adult", cct::new);
-   public static final cdn<ccu> p = a("axolotl_attackables", ccu::new);
-   public static final cdn<cdo> q = a("axolotl_temptations", () -> new cdo(cgf.a()));
-   public static final cdn<cdo> r = a("goat_temptations", () -> new cdo(cgt.a()));
-   public static final cdn<cdo> s = a("frog_temptations", () -> new cdo(cgn.a()));
-   public static final cdn<cdo> t = a("camel_temptations", () -> new cdo(cgk.b()));
-   public static final cdn<cdo> u = a("armadillo_temptations", () -> new cdo(cgc.b()));
-   public static final cdn<ccx> v = a("frog_attackables", ccx::new);
-   public static final cdn<cdb> w = a("is_in_water", cdb::new);
-   public static final cdn<cdr> x = a("warden_entity_sensor", cdr::new);
-   public static final cdn<cdo> y = a("sniffer_temptations", () -> new cdo(chk.a()));
-   public static final cdn<ccv> z = a("breeze_attack_entity_sensor", ccv::new);
-   private final Supplier<U> A;
+public class cdn extends cdw<btn> {
+   private static final int a = 40;
+   private static final int c = 5;
+   private static final int d = 20;
+   private final Long2LongMap e = new Long2LongOpenHashMap();
+   private int f;
+   private long g;
 
-   private cdn(Supplier<U> $$0) {
-      this.A = $$0;
+   public cdn() {
+      super(20);
    }
 
-   public U a() {
-      return this.A.get();
+   @Override
+   public Set<ccq<?>> a() {
+      return ImmutableSet.of(ccq.w);
    }
 
-   private static <U extends cdm<?>> cdn<U> a(String $$0, Supplier<U> $$1) {
-      return jw.a(lq.A, new akk($$0), new cdn<>($$1));
+   protected void a(aqt $$0, btn $$1) {
+      if ($$1.o_()) {
+         this.f = 0;
+         this.g = $$0.Z() + (long)$$0.E_().a(20);
+         ceq $$2 = $$0.y();
+         Predicate<jd> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.e.containsKey($$1x)) {
+               return false;
+            } else if (++this.f >= 5) {
+               return false;
+            } else {
+               this.e.put($$1x, this.g + 40L);
+               return true;
+            }
+         };
+         Set<Pair<jm<cet>, jd>> $$4 = $$2.b($$0x -> $$0x.a(ceu.n), $$3, $$1.dq(), 48, ceq.b.c).collect(Collectors.toSet());
+         epm $$5 = buy.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            jd $$6 = $$5.l();
+            Optional<jm<cet>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.dU().a(ccq.w, $$6);
+            }
+         } else if (this.f < 5) {
+            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
+         }
+      }
    }
 }

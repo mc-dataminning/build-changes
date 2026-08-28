@@ -1,174 +1,137 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import org.joml.Matrix4f;
 
 public class gfd {
-   private static final boolean f = false;
-   private static final float g = -16.0F;
-   private static final float h = 32.0F;
-   public final Vector3f a;
-   public final Vector3f b;
-   public final Map<jf, gfe> c;
-   public final gff d;
-   public final boolean e;
+   private static final akq a = akq.b("textures/misc/underwater.png");
 
-   public gfd(Vector3f $$0, Vector3f $$1, Map<jf, gfe> $$2, @Nullable gff $$3, boolean $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.a();
-   }
+   public static void a(fgi $$0, fbc $$1) {
+      cmv $$2 = $$0.s;
+      if (!$$2.ag) {
+         dta $$3 = a($$2);
+         if ($$3 != null) {
+            a($$0.ao().a().a($$3), $$1);
+         }
+      }
 
-   private void a() {
-      for (Entry<jf, gfe> $$0 : this.c.entrySet()) {
-         float[] $$1 = this.a($$0.getKey());
-         $$0.getValue().e.a($$1);
+      if (!$$0.s.N_()) {
+         if ($$0.s.a(awj.a)) {
+            b($$0, $$1);
+         }
+
+         if ($$0.s.bR()) {
+            c($$0, $$1);
+         }
       }
    }
 
-   private float[] a(jf $$0) {
-      switch ($$0) {
-         case a:
-            return new float[]{this.a.x(), 16.0F - this.b.z(), this.b.x(), 16.0F - this.a.z()};
-         case b:
-            return new float[]{this.a.x(), this.a.z(), this.b.x(), this.b.z()};
-         case c:
-         default:
-            return new float[]{16.0F - this.b.x(), 16.0F - this.b.y(), 16.0F - this.a.x(), 16.0F - this.a.y()};
-         case d:
-            return new float[]{this.a.x(), 16.0F - this.b.y(), this.b.x(), 16.0F - this.a.y()};
-         case e:
-            return new float[]{this.a.z(), 16.0F - this.b.y(), this.b.z(), 16.0F - this.a.y()};
-         case f:
-            return new float[]{16.0F - this.b.z(), 16.0F - this.b.y(), 16.0F - this.a.z(), 16.0F - this.a.y()};
+   @Nullable
+   private static dta a(cmv $$0) {
+      jd.a $$1 = new jd.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         double $$3 = $$0.dv() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dk() * 0.8F);
+         double $$4 = $$0.dz() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F * $$0.ec());
+         double $$5 = $$0.dB() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dk() * 0.8F);
+         $$1.b($$3, $$4, $$5);
+         dta $$6 = $$0.dQ().a_($$1);
+         if ($$6.l() != dmd.a && $$6.p($$0.dQ(), $$1)) {
+            return $$6;
+         }
       }
+
+      return null;
    }
 
-   protected static class a implements JsonDeserializer<gfd> {
-      private static final boolean a = true;
+   private static void a(gqf $$0, fbc $$1) {
+      RenderSystem.setShaderTexture(0, $$0.i());
+      RenderSystem.setShader(gem::r);
+      float $$2 = 0.1F;
+      float $$3 = -1.0F;
+      float $$4 = 1.0F;
+      float $$5 = -1.0F;
+      float $$6 = 1.0F;
+      float $$7 = -0.5F;
+      float $$8 = $$0.c();
+      float $$9 = $$0.d();
+      float $$10 = $$0.g();
+      float $$11 = $$0.h();
+      Matrix4f $$12 = $$1.c().a();
+      fax $$13 = fbe.b().a(fbh.c.h, fba.j);
+      $$13.a($$12, -1.0F, -1.0F, -0.5F).a($$9, $$11).a(0.1F, 0.1F, 0.1F, 1.0F);
+      $$13.a($$12, 1.0F, -1.0F, -0.5F).a($$8, $$11).a(0.1F, 0.1F, 0.1F, 1.0F);
+      $$13.a($$12, 1.0F, 1.0F, -0.5F).a($$8, $$10).a(0.1F, 0.1F, 0.1F, 1.0F);
+      $$13.a($$12, -1.0F, 1.0F, -0.5F).a($$9, $$10).a(0.1F, 0.1F, 0.1F, 1.0F);
+      fay.a($$13.b());
+   }
 
-      public gfd a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.e($$3);
-         Vector3f $$5 = this.d($$3);
-         gff $$6 = this.a($$3);
-         Map<jf, gfe> $$7 = this.a($$2, $$3);
-         if ($$3.has("shade") && !axw.c($$3, "shade")) {
-            throw new JsonParseException("Expected shade to be a Boolean");
-         } else {
-            boolean $$8 = axw.a($$3, "shade", true);
-            return new gfd($$4, $$5, $$7, $$6, $$8);
-         }
+   private static void b(fgi $$0, fbc $$1) {
+      RenderSystem.setShader(gem::q);
+      RenderSystem.setShaderTexture(0, a);
+      jd $$2 = jd.a($$0.s.dv(), $$0.s.dz(), $$0.s.dB());
+      float $$3 = ges.a($$0.s.dQ().D_(), $$0.s.dQ().A($$2));
+      RenderSystem.enableBlend();
+      RenderSystem.setShaderColor($$3, $$3, $$3, 0.1F);
+      float $$4 = 4.0F;
+      float $$5 = -1.0F;
+      float $$6 = 1.0F;
+      float $$7 = -1.0F;
+      float $$8 = 1.0F;
+      float $$9 = -0.5F;
+      float $$10 = -$$0.s.dG() / 64.0F;
+      float $$11 = $$0.s.dI() / 64.0F;
+      Matrix4f $$12 = $$1.c().a();
+      fax $$13 = fbe.b().a(fbh.c.h, fba.i);
+      $$13.a($$12, -1.0F, -1.0F, -0.5F).a(4.0F + $$10, 4.0F + $$11);
+      $$13.a($$12, 1.0F, -1.0F, -0.5F).a(0.0F + $$10, 4.0F + $$11);
+      $$13.a($$12, 1.0F, 1.0F, -0.5F).a(0.0F + $$10, 0.0F + $$11);
+      $$13.a($$12, -1.0F, 1.0F, -0.5F).a(4.0F + $$10, 0.0F + $$11);
+      fay.a($$13.b());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
+   }
+
+   private static void c(fgi $$0, fbc $$1) {
+      RenderSystem.setShader(gem::r);
+      RenderSystem.depthFunc(519);
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      gqf $$2 = gsl.b.c();
+      RenderSystem.setShaderTexture(0, $$2.i());
+      float $$3 = $$2.c();
+      float $$4 = $$2.d();
+      float $$5 = ($$3 + $$4) / 2.0F;
+      float $$6 = $$2.g();
+      float $$7 = $$2.h();
+      float $$8 = ($$6 + $$7) / 2.0F;
+      float $$9 = $$2.k();
+      float $$10 = ayn.i($$9, $$3, $$5);
+      float $$11 = ayn.i($$9, $$4, $$5);
+      float $$12 = ayn.i($$9, $$6, $$8);
+      float $$13 = ayn.i($$9, $$7, $$8);
+      float $$14 = 1.0F;
+
+      for (int $$15 = 0; $$15 < 2; $$15++) {
+         $$1.a();
+         float $$16 = -0.5F;
+         float $$17 = 0.5F;
+         float $$18 = -0.5F;
+         float $$19 = 0.5F;
+         float $$20 = -0.5F;
+         $$1.a((float)(-($$15 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+         $$1.a(a.d.rotationDegrees((float)($$15 * 2 - 1) * 10.0F));
+         Matrix4f $$21 = $$1.c().a();
+         fax $$22 = fbe.b().a(fbh.c.h, fba.j);
+         $$22.a($$21, -0.5F, -0.5F, -0.5F).a($$11, $$13).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$22.a($$21, 0.5F, -0.5F, -0.5F).a($$10, $$13).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$22.a($$21, 0.5F, 0.5F, -0.5F).a($$10, $$12).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$22.a($$21, -0.5F, 0.5F, -0.5F).a($$11, $$12).a(1.0F, 1.0F, 1.0F, 0.9F);
+         fay.a($$22.b());
+         $$1.b();
       }
 
-      @Nullable
-      private gff a(JsonObject $$0) {
-         gff $$1 = null;
-         if ($$0.has("rotation")) {
-            JsonObject $$2 = axw.u($$0, "rotation");
-            Vector3f $$3 = this.a($$2, "origin");
-            $$3.mul(0.0625F);
-            jf.a $$4 = this.c($$2);
-            float $$5 = this.b($$2);
-            boolean $$6 = axw.a($$2, "rescale", false);
-            $$1 = new gff($$3, $$4, $$5, $$6);
-         }
-
-         return $$1;
-      }
-
-      private float b(JsonObject $$0) {
-         float $$1 = axw.m($$0, "angle");
-         if ($$1 != 0.0F && ayg.e($$1) != 22.5F && ayg.e($$1) != 45.0F) {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
-         } else {
-            return $$1;
-         }
-      }
-
-      private jf.a c(JsonObject $$0) {
-         String $$1 = axw.i($$0, "axis");
-         jf.a $$2 = jf.a.a($$1.toLowerCase(Locale.ROOT));
-         if ($$2 == null) {
-            throw new JsonParseException("Invalid rotation axis: " + $$1);
-         } else {
-            return $$2;
-         }
-      }
-
-      private Map<jf, gfe> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<jf, gfe> $$2 = this.b($$0, $$1);
-         if ($$2.isEmpty()) {
-            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
-         } else {
-            return $$2;
-         }
-      }
-
-      private Map<jf, gfe> b(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<jf, gfe> $$2 = Maps.newEnumMap(jf.class);
-         JsonObject $$3 = axw.u($$1, "faces");
-
-         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-            jf $$5 = this.a($$4.getKey());
-            $$2.put($$5, (gfe)$$0.deserialize($$4.getValue(), gfe.class));
-         }
-
-         return $$2;
-      }
-
-      private jf a(String $$0) {
-         jf $$1 = jf.a($$0);
-         if ($$1 == null) {
-            throw new JsonParseException("Unknown facing: " + $$0);
-         } else {
-            return $$1;
-         }
-      }
-
-      private Vector3f d(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "to");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
-         }
-      }
-
-      private Vector3f e(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "from");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
-         }
-      }
-
-      private Vector3f a(JsonObject $$0, String $$1) {
-         JsonArray $$2 = axw.v($$0, $$1);
-         if ($$2.size() != 3) {
-            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
-         } else {
-            float[] $$3 = new float[3];
-
-            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-               $$3[$$4] = axw.e($$2.get($$4), $$1 + "[" + $$4 + "]");
-            }
-
-            return new Vector3f($$3[0], $$3[1], $$3[2]);
-         }
-      }
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.depthFunc(515);
    }
 }

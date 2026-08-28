@@ -1,30 +1,23 @@
-import com.mojang.serialization.MapCodec;
+public interface dfz {
+   boolean b(dcx var1, jd var2, dta var3);
 
-public class dfz extends dfi {
-   public static final MapCodec<dfz> a = b(dfz::new);
-   protected static final exa b = dfi.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+   boolean a(dcu var1, ayv var2, jd var3, dta var4);
 
-   @Override
-   public MapCodec<? extends dfz> a() {
-      return a;
+   void a(aqt var1, ayv var2, jd var3, dta var4);
+
+   default jd a(jd $$0) {
+      return switch (this.aq_()) {
+         case a -> $$0.c();
+         case b -> $$0;
+      };
    }
 
-   public dfz(dsk.d $$0) {
-      super($$0);
+   default dfz.a aq_() {
+      return dfz.a.b;
    }
 
-   @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return b;
-   }
-
-   @Override
-   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
-      return !$$0.a($$3, $$4) ? dfk.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dsl $$0, dcj $$1, ja $$2) {
-      return !$$1.u($$2.d());
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,51 +1,58 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class avg {
-   public static final Codec<avg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(akk.a.fieldOf("sound_id").forGetter(avg::a), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(avg::b)).apply($$0, avg::a)
-   );
-   public static final Codec<jj<avg>> b = akg.a(lr.ak, a);
-   public static final ys<ByteBuf, avg> c = ys.a(akk.b, avg::a, yq.i.a(yq::a), avg::b, avg::a);
-   public static final ys<wf, jj<avg>> d = yq.a(lr.ak, c);
-   private static final float e = 16.0F;
-   private final akk f;
-   private final float g;
-   private final boolean h;
+public abstract class avg implements Runnable {
+   private static final Logger d = LogUtils.getLogger();
+   private static final AtomicInteger e = new AtomicInteger(0);
+   private static final int f = 5;
+   protected volatile boolean a;
+   protected final String b;
+   @Nullable
+   protected Thread c;
 
-   private static avg a(akk $$0, Optional<Float> $$1) {
-      return $$1.<avg>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+   protected avg(String $$0) {
+      this.b = $$0;
    }
 
-   public static avg a(akk $$0) {
-      return new avg($$0, 16.0F, false);
-   }
-
-   public static avg a(akk $$0, float $$1) {
-      return new avg($$0, $$1, true);
-   }
-
-   private avg(akk $$0, float $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-   }
-
-   public akk a() {
-      return this.f;
-   }
-
-   public float a(float $$0) {
-      if (this.h) {
-         return this.g;
+   public synchronized boolean a() {
+      if (this.a) {
+         return true;
       } else {
-         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
+         this.a = true;
+         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
+         this.c.setUncaughtExceptionHandler(new s(d));
+         this.c.start();
+         d.info("Thread {} started", this.b);
+         return true;
       }
    }
 
-   private Optional<Float> b() {
-      return this.h ? Optional.of(this.g) : Optional.empty();
+   public synchronized void b() {
+      this.a = false;
+      if (null != this.c) {
+         int $$0 = 0;
+
+         while (this.c.isAlive()) {
+            try {
+               this.c.join(1000L);
+               if (++$$0 >= 5) {
+                  d.warn("Waited {} seconds attempting force stop!", $$0);
+               } else if (this.c.isAlive()) {
+                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
+                  this.c.interrupt();
+               }
+            } catch (InterruptedException var3) {
+            }
+         }
+
+         d.info("Thread {} stopped", this.b);
+         this.c = null;
+      }
+   }
+
+   public boolean c() {
+      return this.a;
    }
 }

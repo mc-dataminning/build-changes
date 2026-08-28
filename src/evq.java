@@ -1,29 +1,25 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class evq implements evs<MinecraftServer> {
-   final akk a;
+public record evq(dah b) implements evs {
+   public static final MapCodec<evq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dah.b.fieldOf("amount").forGetter(evq::c)).apply($$0, evq::new));
 
-   public evq(akk $$0) {
-      this.a = $$0;
+   @Override
+   public float b(erl $$0) {
+      int $$1 = $$0.b(euh.k);
+      return this.b.a($$1);
    }
 
-   public void a(MinecraftServer $$0, evu<MinecraftServer> $$1, long $$2) {
-      akz $$3 = $$0.aG();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   @Override
+   public evr b() {
+      return evt.g;
    }
 
-   public static class a extends evs.a<MinecraftServer, evq> {
-      public a() {
-         super(new akk("function"), evq.class);
-      }
+   public static evq a(dah $$0) {
+      return new evq($$0);
+   }
 
-      public void a(tx $$0, evq $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
-
-      public evq a(tx $$0) {
-         akk $$1 = new akk($$0.l("Name"));
-         return new evq($$1);
-      }
+   public dah c() {
+      return this.b;
    }
 }

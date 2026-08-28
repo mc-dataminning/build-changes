@@ -1,48 +1,56 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType.StringType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 
-public class iu implements il<StringArgumentType, iu.a> {
-   public void a(iu.a $$0, vr $$1) {
-      $$1.a((Enum<?>)$$0.b);
+public class iu implements io<FloatArgumentType, iu.a> {
+   public void a(iu.a $$0, vv $$1) {
+      boolean $$2 = $$0.b != -Float.MAX_VALUE;
+      boolean $$3 = $$0.c != Float.MAX_VALUE;
+      $$1.k(iq.a($$2, $$3));
+      if ($$2) {
+         $$1.a($$0.b);
+      }
+
+      if ($$3) {
+         $$1.a($$0.c);
+      }
    }
 
-   public iu.a a(vr $$0) {
-      StringType $$1 = $$0.b(StringType.class);
-      return new iu.a($$1);
+   public iu.a a(vv $$0) {
+      byte $$1 = $$0.readByte();
+      float $$2 = iq.a($$1) ? $$0.readFloat() : -Float.MAX_VALUE;
+      float $$3 = iq.b($$1) ? $$0.readFloat() : Float.MAX_VALUE;
+      return new iu.a($$2, $$3);
    }
 
    public void a(iu.a $$0, JsonObject $$1) {
-      $$1.addProperty("type", switch ($$0.b) {
-         case SINGLE_WORD -> "word";
-         case QUOTABLE_PHRASE -> "phrase";
-         case GREEDY_PHRASE -> "greedy";
-         default -> throw new MatchException(null, null);
-      });
-   }
-
-   public iu.a a(StringArgumentType $$0) {
-      return new iu.a($$0.getType());
-   }
-
-   public final class a implements il.a<StringArgumentType> {
-      final StringType b;
-
-      public a(final StringType $$1) {
-         this.b = $$1;
+      if ($$0.b != -Float.MAX_VALUE) {
+         $$1.addProperty("min", $$0.b);
       }
 
-      public StringArgumentType a(em $$0) {
-         return switch (this.b) {
-            case SINGLE_WORD -> StringArgumentType.word();
-            case QUOTABLE_PHRASE -> StringArgumentType.string();
-            case GREEDY_PHRASE -> StringArgumentType.greedyString();
-            default -> throw new MatchException(null, null);
-         };
+      if ($$0.c != Float.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
+      }
+   }
+
+   public iu.a a(FloatArgumentType $$0) {
+      return new iu.a($$0.getMinimum(), $$0.getMaximum());
+   }
+
+   public final class a implements io.a<FloatArgumentType> {
+      final float b;
+      final float c;
+
+      a(final float $$1, final float $$2) {
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public FloatArgumentType a(ep $$0) {
+         return FloatArgumentType.floatArg(this.b, this.c);
       }
 
       @Override
-      public il<StringArgumentType, ?> a() {
+      public io<FloatArgumentType, ?> a() {
          return iu.this;
       }
    }

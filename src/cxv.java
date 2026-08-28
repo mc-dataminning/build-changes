@@ -1,95 +1,101 @@
-public class cxv extends cyb {
-   public cxv(cxy $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
-   public boolean a(cxz $$0, dcg $$1) {
-      int $$2 = 0;
-      cud $$3 = cud.l;
+public record cxv(List<cxv.a> c, float d, int e) {
+   public static final Codec<cxv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cxv.a.a.listOf().fieldOf("rules").forGetter(cxv::a),
+               Codec.FLOAT.optionalFieldOf("default_mining_speed", 1.0F).forGetter(cxv::b),
+               axv.k.optionalFieldOf("damage_per_block", 1).forGetter(cxv::c)
+            )
+            .apply($$0, cxv::new)
+   );
+   public static final yw<wj, cxv> b = yw.a(cxv.a.b.a(yu.a()), cxv::a, yu.i, cxv::b, yu.g, cxv::c, cxv::new);
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cud $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(cug.ua)) {
-               if (!$$3.e()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cug.tZ)) {
-                  return false;
-               }
-
-               $$2++;
-            }
+   public float a(dta $$0) {
+      for (cxv.a $$1 : this.c) {
+         if ($$1.d.isPresent() && $$0.a($$1.c)) {
+            return $$1.d.get();
          }
       }
 
-      return !$$3.e() && $$2 > 0;
+      return this.d;
    }
 
-   public cud a(cxz $$0, jl.a $$1) {
-      int $$2 = 0;
-      cud $$3 = cud.l;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cud $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(cug.ua)) {
-               if (!$$3.e()) {
-                  return cud.l;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cug.tZ)) {
-                  return cud.l;
-               }
-
-               $$2++;
-            }
+   public boolean b(dta $$0) {
+      for (cxv.a $$1 : this.c) {
+         if ($$1.e.isPresent() && $$0.a($$1.c)) {
+            return $$1.e.get();
          }
       }
 
-      cxl $$6 = $$3.a(kn.J);
-      if (!$$3.e() && $$2 >= 1 && $$6 != null) {
-         cxl $$7 = $$6.b();
-         if ($$7 == null) {
-            return cud.l;
-         } else {
-            cud $$8 = $$3.c($$2);
-            $$8.b(kn.J, $$7);
-            return $$8;
-         }
-      } else {
-         return cud.l;
+      return false;
+   }
+
+   public List<cxv.a> a() {
+      return this.c;
+   }
+
+   public float b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public static record a(jq<dfw> c, Optional<Float> d, Optional<Boolean> e) {
+      public static final Codec<cxv.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  kb.a(lu.f).fieldOf("blocks").forGetter(cxv.a::a),
+                  axv.m.optionalFieldOf("speed").forGetter(cxv.a::b),
+                  Codec.BOOL.optionalFieldOf("correct_for_drops").forGetter(cxv.a::c)
+               )
+               .apply($$0, cxv.a::new)
+      );
+      public static final yw<wj, cxv.a> b = yw.a(yu.c(lu.f), cxv.a::a, yu.i.a(yu::a), cxv.a::b, yu.b.a(yu::a), cxv.a::c, cxv.a::new);
+
+      public static cxv.a a(List<dfw> $$0, float $$1) {
+         return a($$0, Optional.of($$1), Optional.of(true));
       }
-   }
 
-   public js<cud> a(cxz $$0) {
-      js<cud> $$1 = js.a($$0.a(), cud.l);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cud $$3 = $$0.a($$2);
-         if ($$3.g().v()) {
-            $$1.set($$2, new cud($$3.g().u()));
-         } else if ($$3.g() instanceof cwb) {
-            $$1.set($$2, $$3.c(1));
-            break;
-         }
+      public static cxv.a a(awt<dfw> $$0, float $$1) {
+         return a($$0, Optional.of($$1), Optional.of(true));
       }
 
-      return $$1;
-   }
+      public static cxv.a a(awt<dfw> $$0) {
+         return a($$0, Optional.empty(), Optional.of(false));
+      }
 
-   @Override
-   public cyo<?> ap_() {
-      return cyo.d;
-   }
+      public static cxv.a b(awt<dfw> $$0, float $$1) {
+         return a($$0, Optional.of($$1), Optional.empty());
+      }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      public static cxv.a b(List<dfw> $$0, float $$1) {
+         return a($$0, Optional.of($$1), Optional.empty());
+      }
+
+      private static cxv.a a(awt<dfw> $$0, Optional<Float> $$1, Optional<Boolean> $$2) {
+         return new cxv.a(lt.e.a($$0), $$1, $$2);
+      }
+
+      private static cxv.a a(List<dfw> $$0, Optional<Float> $$1, Optional<Boolean> $$2) {
+         return new cxv.a(jq.a($$0.stream().map(dfw::s).collect(Collectors.toList())), $$1, $$2);
+      }
+
+      public jq<dfw> a() {
+         return this.c;
+      }
+
+      public Optional<Float> b() {
+         return this.d;
+      }
+
+      public Optional<Boolean> c() {
+         return this.e;
+      }
    }
 }

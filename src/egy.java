@@ -1,17 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record egy(jj<cty> c, eha d) {
-   public static final Codec<egy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(akh.a(lr.K).fieldOf("display").forGetter($$0x -> $$0x.c), eha.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, egy::new)
-   );
-   public static final Codec<jj<egy>> b = akg.a(lr.aM, a);
+public class egy extends egw {
+   public static final MapCodec<egy> a = MapCodec.unit(() -> egy.b);
+   public static final egy b = new egy();
 
-   public jj<cty> a() {
-      return this.c;
+   @Override
+   protected egx<?> a() {
+      return egx.a;
    }
 
-   public eha b() {
-      return this.d;
+   @Override
+   public void a(egw.a $$0) {
+      ayv $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            jd $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dot.d);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            jd $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dot.f);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            jd $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dot.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            jd $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dot.c);
+            }
+         }
+      });
    }
 }

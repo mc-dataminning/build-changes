@@ -1,36 +1,39 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class etv extends etx {
-   public static final MapCodec<etv> a = a(etv::new);
+public class etv extends esy {
+   static final MapCodec<etv> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(evt.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, etv::new));
+   private final evs b;
 
-   etv(List<euh> $$0) {
-      super($$0, ac.b($$0));
+   private etv(List<euw> $$0, evs $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public eui b() {
-      return euj.b;
+   public Set<eue<?>> a() {
+      return this.b.a();
    }
 
-   public static etv.a a(euh.a... $$0) {
-      return new etv.a($$0);
+   @Override
+   public eta<etv> b() {
+      return etb.Q;
    }
 
-   public static class a extends etx.a {
-      public a(euh.a... $$0) {
-         super($$0);
-      }
+   @Override
+   public cuo a(cuo $$0, erl $$1) {
+      int $$2 = ayn.a(this.b.a($$1), 0, 4);
+      $$0.b(kq.Q, Integer.valueOf($$2));
+      return $$0;
+   }
 
-      @Override
-      public etv.a or(euh.a $$0) {
-         this.a($$0);
-         return this;
-      }
+   public evs c() {
+      return this.b;
+   }
 
-      @Override
-      protected euh a(List<euh> $$0) {
-         return new etv($$0);
-      }
+   public static esy.a<?> a(evs $$0) {
+      return a($$1 -> new etv($$1, $$0));
    }
 }

@@ -1,26 +1,56 @@
-public enum ffh {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   private static final ffh[] d = values();
-   private final boolean e;
-   private final boolean f;
+public abstract class ffh implements Runnable {
+   protected static final int a = 25;
+   private static final Logger b = LogUtils.getLogger();
+   private boolean c = false;
 
-   private ffh(final boolean $$0, final boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
+      }
    }
 
-   public boolean a() {
-      return this.e;
+   public static void a(fnx $$0) {
+      fgi $$1 = fgi.Q();
+      $$1.execute(() -> $$1.a($$0));
    }
 
-   public boolean b() {
-      return this.f;
+   protected void a(wy $$0) {
+      this.b();
+      fgi $$1 = fgi.Q();
+      $$1.execute(() -> $$1.a(new fdv($$0, new fbn(new fnz()))));
    }
 
-   public ffh c() {
-      return d[(this.ordinal() + 1) % d.length];
+   protected void a(Exception $$0) {
+      if ($$0 instanceof fdd $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(wy.b($$0.getMessage()));
+      }
+   }
+
+   protected void a(fdd $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract wy a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

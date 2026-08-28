@@ -1,118 +1,77 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import javax.annotation.Nullable;
 
-public final class eoj extends dsn<eoi, eoj> {
-   public static final Codec<eoj> a = a(lq.c.r(), eoi::g).stable();
-   public static final int b = 9;
-   public static final int g = 8;
+public abstract class eoj<M extends eoj<M>> {
+   private static final int b = 2;
+   private final long[] c = new long[2];
+   private final dvb[] d = new dvb[2];
+   private boolean e;
+   protected final Long2ObjectOpenHashMap<dvb> a;
 
-   public eoj(eoi $$0, Reference2ObjectArrayMap<dto<?>, Comparable<?>> $$1, MapCodec<eoj> $$2) {
-      super($$0, $$1, $$2);
+   protected eoj(Long2ObjectOpenHashMap<dvb> $$0) {
+      this.a = $$0;
+      this.c();
+      this.e = true;
    }
 
-   public eoi a() {
-      return this.e;
+   public abstract M b();
+
+   public dvb a(long $$0) {
+      dvb $$1 = ((dvb)this.a.get($$0)).b();
+      this.a.put($$0, $$1);
+      this.c();
+      return $$1;
    }
 
-   public boolean b() {
-      return this.a().c(this);
+   public boolean b(long $$0) {
+      return this.a.containsKey($$0);
    }
 
-   public boolean a(eoi $$0) {
-      return this.e == $$0 && this.e.c(this);
-   }
-
-   public boolean c() {
-      return this.a().b();
-   }
-
-   public float a(dbm $$0, ja $$1) {
-      return this.a().a(this, $$0, $$1);
-   }
-
-   public float d() {
-      return this.a().a(this);
-   }
-
-   public int e() {
-      return this.a().d(this);
-   }
-
-   public boolean b(dbm $$0, ja $$1) {
-      for (int $$2 = -1; $$2 <= 1; $$2++) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            ja $$4 = $$1.b($$2, 0, $$3);
-            eoj $$5 = $$0.b_($$4);
-            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
-               return true;
+   @Nullable
+   public dvb c(long $$0) {
+      if (this.e) {
+         for (int $$1 = 0; $$1 < 2; $$1++) {
+            if ($$0 == this.c[$$1]) {
+               return this.d[$$1];
             }
          }
       }
 
-      return false;
-   }
+      dvb $$2 = (dvb)this.a.get($$0);
+      if ($$2 == null) {
+         return null;
+      } else {
+         if (this.e) {
+            for (int $$3 = 1; $$3 > 0; $$3--) {
+               this.c[$$3] = this.c[$$3 - 1];
+               this.d[$$3] = this.d[$$3 - 1];
+            }
 
-   public void a(dcg $$0, ja $$1) {
-      this.a().b($$0, $$1, this);
-   }
+            this.c[0] = $$0;
+            this.d[0] = $$2;
+         }
 
-   public void a(dcg $$0, ja $$1, ayo $$2) {
-      this.a().a($$0, $$1, this, $$2);
-   }
-
-   public boolean f() {
-      return this.a().i();
-   }
-
-   public void b(dcg $$0, ja $$1, ayo $$2) {
-      this.a().b($$0, $$1, this, $$2);
-   }
-
-   public ewh c(dbm $$0, ja $$1) {
-      return this.a().a($$0, $$1, this);
-   }
-
-   public dsl g() {
-      return this.a().b(this);
+         return $$2;
+      }
    }
 
    @Nullable
-   public lh h() {
-      return this.a().h();
+   public dvb d(long $$0) {
+      return (dvb)this.a.remove($$0);
    }
 
-   public boolean a(awm<eoi> $$0) {
-      return this.a().k().a($$0);
+   public void a(long $$0, dvb $$1) {
+      this.a.put($$0, $$1);
    }
 
-   public boolean a(jn<eoi> $$0) {
-      return $$0.a(this.a().k());
+   public void c() {
+      for (int $$0 = 0; $$0 < 2; $$0++) {
+         this.c[$$0] = Long.MAX_VALUE;
+         this.d[$$0] = null;
+      }
    }
 
-   public boolean b(eoi $$0) {
-      return this.a() == $$0;
-   }
-
-   public float i() {
-      return this.a().c();
-   }
-
-   public boolean a(dbm $$0, ja $$1, eoi $$2, jf $$3) {
-      return this.a().a(this, $$0, $$1, $$2, $$3);
-   }
-
-   public exa d(dbm $$0, ja $$1) {
-      return this.a().b(this, $$0, $$1);
-   }
-
-   public jj<eoi> j() {
-      return this.e.k();
-   }
-
-   public Stream<awm<eoi>> k() {
-      return this.e.k().c();
+   public void d() {
+      this.e = false;
    }
 }

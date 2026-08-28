@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.stream.Stream;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bmm {
+public interface bmm<S> {
+   Stream<String> possibleValues(bmj<S> var1);
+
+   static <S> bmm<S> b() {
+      return $$0 -> Stream.empty();
+   }
 }

@@ -1,130 +1,86 @@
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class cam extends caa {
-   protected final btl a;
-   private final double b;
-   @Nullable
-   private eox c;
-   private ja d;
-   private final boolean e;
-   private final List<ja> f = Lists.newArrayList();
-   private final int g;
-   private final BooleanSupplier h;
+public class cam extends cbh {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
 
-   public cam(btl $$0, double $$1, boolean $$2, int $$3, BooleanSupplier $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.e = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.a(EnumSet.of(caa.a.a));
-      if (!cdy.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob for MoveThroughVillageGoal");
-      }
+   public cam(btu $$0, double $$1) {
+      super($$0, $$1, 240, false);
    }
 
+   @Nullable
    @Override
-   public boolean a() {
-      if (!cdy.a(this.a)) {
-         return false;
+   protected eww h() {
+      float $$0 = this.b.dQ().z.i();
+      if (this.b.dQ().z.i() < 0.3F) {
+         return this.k();
       } else {
-         this.h();
-         if (this.e && this.a.dR().R()) {
-            return false;
+         eww $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
+            }
          } else {
-            aqm $$0 = (aqm)this.a.dR();
-            ja $$1 = this.a.dr();
-            if (!$$0.a($$1, 6)) {
-               return false;
-            } else {
-               ewh $$2 = cea.a(this.a, 15, 7, $$2x -> {
-                  if (!$$0.c($$2x)) {
-                     return Double.NEGATIVE_INFINITY;
-                  } else {
-                     Optional<ja> $$3x = $$0.y().d($$0xx -> $$0xx.a(awh.b), this::a, $$2x, 10, ceg.b.b);
-                     return $$3x.<Double>map($$1xx -> -$$1xx.j($$1)).orElse(Double.NEGATIVE_INFINITY);
-                  }
-               });
-               if ($$2 == null) {
-                  return false;
-               } else {
-                  Optional<ja> $$3 = $$0.y().d($$0x -> $$0x.a(awh.b), this::a, ja.a($$2), 10, ceg.b.b);
-                  if ($$3.isEmpty()) {
-                     return false;
-                  } else {
-                     this.d = $$3.get().i();
-                     ccn $$4 = (ccn)this.a.J();
-                     boolean $$5 = $$4.f();
-                     $$4.b(this.h.getAsBoolean());
-                     this.c = $$4.a(this.d, 0);
-                     $$4.b($$5);
-                     if (this.c == null) {
-                        ewh $$6 = cdx.a(this.a, 10, 7, ewh.c(this.d), (float) (Math.PI / 2));
-                        if ($$6 == null) {
-                           return false;
-                        }
-
-                        $$4.b(this.h.getAsBoolean());
-                        this.c = this.a.J().a($$6.c, $$6.d, $$6.e, 0);
-                        $$4.b($$5);
-                        if (this.c == null) {
-                           return false;
-                        }
-                     }
-
-                     for (int $$7 = 0; $$7 < this.c.e(); $$7++) {
-                        eov $$8 = this.c.a($$7);
-                        ja $$9 = new ja($$8.a, $$8.b + 1, $$8.c);
-                        if (dho.a(this.a.dR(), $$9)) {
-                           this.c = this.a.J().a((double)$$8.a, (double)$$8.b, (double)$$8.c, 0);
-                           break;
-                        }
-                     }
-
-                     return this.c != null;
-                  }
-               }
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
             }
          }
+
+         return $$1 == null ? this.k() : $$1;
       }
    }
 
-   @Override
-   public boolean b() {
-      return this.a.J().l() ? false : !this.d.a(this.a.dp(), (double)(this.a.dl() + (float)this.g));
+   @Nullable
+   private eww k() {
+      return cek.a(this.b, 10, 7);
    }
 
-   @Override
-   public void c() {
-      this.a.J().a(this.c, this.b);
-   }
-
-   @Override
-   public void d() {
-      if (this.a.J().l() || this.d.a(this.a.dp(), (double)this.g)) {
-         this.f.add(this.d);
+   @Nullable
+   private eww l() {
+      aqt $$0 = (aqt)this.b.dQ();
+      List<cmi> $$1 = $$0.a(bsw.bj, this.b.cL().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         cmi $$2 = $$1.get(this.b.dQ().z.a($$1.size()));
+         eww $$3 = $$2.do();
+         return cek.a(this.b, 10, 7, $$3);
       }
    }
 
-   private boolean a(ja $$0) {
-      for (ja $$1 : this.f) {
-         if (Objects.equals($$0, $$1)) {
-            return false;
-         }
+   @Nullable
+   private eww m() {
+      kf $$0 = this.n();
+      if ($$0 == null) {
+         return null;
+      } else {
+         jd $$1 = this.a($$0);
+         return $$1 == null ? null : cek.a(this.b, 10, 7, eww.c($$1));
       }
-
-      return true;
    }
 
-   private void h() {
-      if (this.f.size() > 15) {
-         this.f.remove(0);
-      }
+   @Nullable
+   private kf n() {
+      aqt $$0 = (aqt)this.b.dQ();
+      List<kf> $$1 = kf.a(kf.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
+   }
+
+   @Nullable
+   private jd a(kf $$0) {
+      aqt $$1 = (aqt)this.b.dQ();
+      ceq $$2 = $$1.y();
+      List<jd> $$3 = $$2.c($$0x -> true, $$0.q(), 8, ceq.b.b).map(cer::f).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
+   }
+
+   private boolean a(cmi $$0) {
+      return $$0.a(this.b.dQ().Z());
    }
 }

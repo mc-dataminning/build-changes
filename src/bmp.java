@@ -1,33 +1,21 @@
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Optional;
 
-public class bmp {
-   private final LongSupplier a;
-   private final IntSupplier b;
-   private bmt c = bms.a;
+public class bmp implements bmk<StringReader, akq> {
+   public static final bmk<StringReader, akq> a = new bmp();
 
-   public bmp(LongSupplier $$0, IntSupplier $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private bmp() {
    }
 
-   public boolean a() {
-      return this.c != bms.a;
-   }
+   @Override
+   public Optional<akq> a(bmj<StringReader> $$0) {
+      $$0.b().skipWhitespace();
 
-   public void b() {
-      this.c = bms.a;
-   }
-
-   public void c() {
-      this.c = new bmo(this.a, this.b, true);
-   }
-
-   public bmv d() {
-      return this.c;
-   }
-
-   public bmu e() {
-      return this.c.d();
+      try {
+         return Optional.of(akq.b($$0.b()));
+      } catch (CommandSyntaxException var3) {
+         return Optional.empty();
+      }
    }
 }

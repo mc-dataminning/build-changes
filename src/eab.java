@@ -1,25 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eab implements dzn {
-   public static final MapCodec<eab> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ke.v(16).optionalFieldOf("offset", ke.g).forGetter($$0x -> $$0x.e), dsl.b.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, eab::new)
-   );
-   private final ke e;
-   private final dsl f;
+class eab extends eae {
+   public static final MapCodec<eab> a = a(eab::new);
 
-   protected eab(ke $$0, dsl $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public eab(List<eac> $$0) {
+      super($$0);
    }
 
-   public boolean a(ddc $$0, ja $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   public boolean a(ddq $$0, jd $$1) {
+      for (eac $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   public dzo<?> a() {
-      return dzo.g;
+   public ead<?> a() {
+      return ead.i;
    }
 }

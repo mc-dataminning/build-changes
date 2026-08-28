@@ -1,29 +1,21 @@
-public record acw(int b, float c) implements zb<abn> {
-   public static final ys<vr, acw> a = zb.a(acw::a, acw::new);
-
-   public acw(btc $$0) {
-      this($$0.an(), $$0.eG());
-   }
-
-   private acw(vr $$0) {
-      this($$0.l(), $$0.readFloat());
-   }
-
-   private void a(vr $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-   }
+public record acw(wy b, wu.a c) implements zf<abt> {
+   public static final yw<wj, acw> a = yw.a(xa.d, acw::b, wu.a.a, acw::e, acw::new);
 
    @Override
-   public zd<acw> a() {
-      return afz.I;
+   public zh<acw> a() {
+      return agf.C;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public float e() {
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   public wu.a e() {
       return this.c;
    }
 }

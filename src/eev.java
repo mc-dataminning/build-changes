@@ -1,34 +1,33 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eev extends efb {
-   public static final MapCodec<eev> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eev::new));
+public record eev(int b, int c, int d, int e, int f, bpv g, float h) implements eee {
+   public static final Codec<eev> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(eev::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(eev::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(eev::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(eev::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(eev::f),
+               bpv.c.fieldOf("extra_rare_growths").forGetter(eev::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(eev::h)
+            )
+            .apply($$0, eev::new)
+   );
 
-   public eev(bpm $$0, bpm $$1) {
-      super($$0, $$1);
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected efc<?> a() {
-      return efc.d;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected void a(dcm $$0, efb.b $$1, ayo $$2, eel $$3, int $$4, efb.a $$5, int $$6, int $$7, int $$8) {
-      boolean $$9 = $$5.c();
-      ja $$10 = $$5.a().b($$8);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
-      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
+   public int c() {
+      return this.d;
    }
 
-   @Override
-   public int a(ayo $$0, int $$1, eel $$2) {
-      return 0;
-   }
-
-   @Override
-   protected boolean a(ayo $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public int d() {
+      return this.e;
    }
 }

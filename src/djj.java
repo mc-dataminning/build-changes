@@ -1,82 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class djj extends dhe {
-   public static final MapCodec<djj> i = b(djj::new);
+public abstract class djj extends dfw {
+   protected final ji a;
+   protected final boolean b;
+   protected final exp d;
 
-   @Override
-   public MapCodec<? extends djj> a() {
-      return i;
-   }
-
-   protected djj(dsk.d $$0) {
-      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
-      this.k(
-         this.E
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
+   protected djj(dsz.d $$0, ji $$1, exp $$2, boolean $$3) {
+      super($$0);
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
-   public dsl a(cxn $$0) {
-      dbm $$1 = $$0.q();
-      ja $$2 = $$0.a();
-      eoj $$3 = $$0.q().b_($$0.a());
-      ja $$4 = $$2.e();
-      ja $$5 = $$2.f();
-      ja $$6 = $$2.g();
-      ja $$7 = $$2.h();
-      dsl $$8 = $$1.a_($$4);
-      dsl $$9 = $$1.a_($$5);
-      dsl $$10 = $$1.a_($$6);
-      dsl $$11 = $$1.a_($$7);
-      return this.o()
-         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, jf.d))))
-         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, jf.c))))
-         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, jf.f))))
-         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, jf.e))))
-         .a(e, Boolean.valueOf($$3.a() == eok.c));
+   protected abstract MapCodec<? extends djj> a();
+
+   @Nullable
+   @Override
+   public dta a(cyb $$0) {
+      dta $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().o();
+   }
+
+   public dta a(dcv $$0) {
+      return this.o();
    }
 
    @Override
-   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, eok.c, eok.c.a($$3));
+   protected boolean a(dta $$0, dcx $$1, jd $$2) {
+      jd $$3 = $$2.a(this.a.g());
+      dta $$4 = $$1.a_($$3);
+      return !this.m($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.d($$1, $$3, this.a);
+   }
+
+   @Override
+   protected void a(dta $$0, aqt $$1, jd $$2, ayv $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
+   }
 
-      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean m(dta $$0) {
+      return true;
    }
 
    @Override
-   protected exa c(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return ewx.a();
+   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
+      return this.d;
    }
 
-   @Override
-   protected boolean a(dsl $$0, dsl $$1, jf $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
-         }
+   protected abstract djl c();
 
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   public final boolean a(dsl $$0, boolean $$1) {
-      return !j($$0) && $$1 || $$0.b() instanceof djj || $$0.a(avw.L);
-   }
-
-   @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(a, b, d, c, e);
-   }
+   protected abstract dfw b();
 }

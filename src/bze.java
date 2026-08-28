@@ -1,32 +1,35 @@
-public class bze extends bzc {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import com.google.common.collect.ImmutableMap;
 
-   public bze(bte $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
+public class bze<E extends clz> extends bvf<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
+
+   public bze(int $$0) {
+      super(ImmutableMap.of(ccq.aB, ccr.a, ccq.o, ccr.b, ccq.m, ccr.b, ccq.n, ccr.c, ccq.B, ccr.c, ccq.az, ccr.c, ccq.aG, ccr.c), $$0);
    }
 
-   @Override
-   public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.bb = this.a(this.a.bb, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.t(this.a(this.a.dJ(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.J().l()) {
-            this.a.t(this.a(this.a.dJ(), 0.0F, 5.0F));
+   protected boolean a(aqt $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(aqt $$0, E $$1, long $$2) {
+      $$1.a(avo.BV, 5.0F, 1.0F);
+   }
+
+   protected void c(aqt $$0, E $$1, long $$2) {
+      if ($$1.c(bty.m)) {
+         $$1.b(bty.a);
+      }
+
+      $$1.dU().b(ccq.aB);
+      $$1.dU().c(ccq.B).filter($$1::b).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.d($$1x);
          }
 
-         this.a.bb = this.a(this.a.bb, this.a.aZ, this.b);
-      }
-
-      float $$0 = ayg.g(this.a.bb - this.a.aZ);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aZ -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aZ += 4.0F;
-      }
+         if (!$$1.dU().a(ccq.az)) {
+            cma.a($$1, $$1x.dq());
+         }
+      });
    }
 }

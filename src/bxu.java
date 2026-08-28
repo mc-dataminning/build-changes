@@ -1,53 +1,42 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.function.Predicate;
 
 public class bxu {
-   public static buw<btl> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return byi.a(
-         (Function<byi.b<btl>, ? extends App<byi.c<btl>, byl<btl>>>)($$3 -> $$3.group($$3.c(ccg.o), $$3.c(ccg.m), $$3.a(ccg.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if ($$5x.b_($$6.dr()).a(awc.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 20L + 2L);
-                        return true;
-                     } else {
-                        ja $$8 = null;
-                        ja $$9 = null;
-                        ja $$10 = $$6.dr();
+   private static final int a = 200;
 
-                        for (ja $$12 : ja.a($$10, $$0, $$0, $$0)) {
-                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
-                              dsl $$13 = $$6.dR().a_($$12.c());
-                              dsl $$14 = $$6.dR().a_($$12);
-                              if ($$14.a(dfk.G)) {
-                                 if ($$13.i()) {
-                                    $$8 = $$12.i();
-                                    break;
-                                 }
+   public static <E extends btn> bvg<E> a(BiConsumer<E, btl> $$0) {
+      return a($$0x -> false, $$0, true);
+   }
 
-                                 if ($$9 == null && !$$12.a($$6.dp(), 1.5)) {
-                                    $$9 = $$12.i();
-                                 }
-                              }
-                           }
-                        }
+   public static <E extends btn> bvg<E> a(Predicate<btl> $$0) {
+      return a($$0, ($$0x, $$1) -> {
+      }, true);
+   }
 
-                        if ($$8 == null) {
-                           $$8 = $$9;
-                        }
+   public static <E extends btn> bvg<E> a() {
+      return a($$0 -> false, ($$0, $$1) -> {
+      }, true);
+   }
 
-                        if ($$8 != null) {
-                           $$5.a(new buy($$8));
-                           $$4.a(new ccj(new buy($$8), $$1, 0));
-                        }
-
-                        $$2.setValue($$7 + 40L);
-                        return true;
-                     }
-                  }))
+   public static <E extends btn> bvg<E> a(Predicate<btl> $$0, BiConsumer<E, btl> $$1, boolean $$2) {
+      return bys.a(
+         (Function<bys.b<E>, ? extends App<bys.c<E>, byv<E>>>)($$3 -> $$3.group($$3.b(ccq.o), $$3.a(ccq.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  btl $$9 = $$3.b($$4);
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bE() && $$9.dQ() == $$7.dQ() && !$$0.test($$9)) {
+                     return true;
+                  } else {
+                     $$1.accept((E)$$7, $$9);
+                     $$4.b();
+                     return true;
+                  }
+               }))
       );
+   }
+
+   private static boolean a(btl $$0, Optional<Long> $$1) {
+      return $$1.isPresent() && $$0.dQ().Z() - $$1.get() > 200L;
    }
 }

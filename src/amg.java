@@ -1,29 +1,89 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class amg {
-   public static void a(CommandDispatcher<eq> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.damage.invulnerable"));
+
+   public static void a(CommandDispatcher<et> $$0, ep $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("defaultgamemode").requires($$0x -> $$0x.c(2)))
-            .then(er.a("gamemode", fe.a()).executes($$0x -> a((eq)$$0x.getSource(), fe.a($$0x, "gamemode"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("damage").requires($$0x -> $$0x.c(2)))
+            .then(
+               eu.a("target", fg.a())
+                  .then(
+                     ((RequiredArgumentBuilder)eu.a("amount", FloatArgumentType.floatArg(0.0F))
+                           .executes(
+                              $$0x -> a(
+                                    (et)$$0x.getSource(), fg.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((et)$$0x.getSource()).e().aj().o()
+                                 )
+                           ))
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("damageType", fs.a($$1, lu.s))
+                                    .executes(
+                                       $$0x -> a(
+                                             (et)$$0x.getSource(),
+                                             fg.a($$0x, "target"),
+                                             FloatArgumentType.getFloat($$0x, "amount"),
+                                             new brj(fs.a($$0x, "damageType", lu.s))
+                                          )
+                                    ))
+                                 .then(
+                                    eu.a("at")
+                                       .then(
+                                          eu.a("location", gw.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (et)$$0x.getSource(),
+                                                      fg.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new brj(fs.a($$0x, "damageType", lu.s), gw.a($$0x, "location"))
+                                                   )
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 eu.a("by")
+                                    .then(
+                                       ((RequiredArgumentBuilder)eu.a("entity", fg.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (et)$$0x.getSource(),
+                                                      fg.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new brj(fs.a($$0x, "damageType", lu.s), fg.a($$0x, "entity"))
+                                                   )
+                                             ))
+                                          .then(
+                                             eu.a("from")
+                                                .then(
+                                                   eu.a("cause", fg.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (et)$$0x.getSource(),
+                                                               fg.a($$0x, "target"),
+                                                               FloatArgumentType.getFloat($$0x, "amount"),
+                                                               new brj(fs.a($$0x, "damageType", lu.s), fg.a($$0x, "entity"), fg.a($$0x, "cause"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(eq $$0, dcd $$1) {
-      int $$2 = 0;
-      MinecraftServer $$3 = $$0.l();
-      $$3.a($$1);
-      dcd $$4 = $$3.bg();
-      if ($$4 != null) {
-         for (aqn $$5 : $$3.ai().t()) {
-            if ($$5.a($$4)) {
-               $$2++;
-            }
-         }
+   private static int a(et $$0, bsq $$1, float $$2, brj $$3) throws CommandSyntaxException {
+      if ($$1.a($$3, $$2)) {
+         $$0.a(() -> wy.a("commands.damage.success", $$2, $$1.O_()), true);
+         return 1;
+      } else {
+         throw a.create();
       }
-
-      $$0.a(() -> wu.a("commands.defaultgamemode.success", $$1.d()), true);
-      return $$2;
    }
 }

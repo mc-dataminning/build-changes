@@ -1,47 +1,99 @@
-public class fpa extends foa<cqj> {
-   private static final akk D = new akk("container/horse/chest_slots");
-   private static final akk E = new akk("container/horse/saddle_slot");
-   private static final akk F = new akk("container/horse/llama_armor_slot");
-   private static final akk G = new akk("container/horse/armor_slot");
-   private static final akk H = new akk("textures/gui/container/horse.png");
-   private final cgw I;
-   private float J;
-   private float K;
+public class fpa extends fom<cqk> implements fsa {
+   private static final akq D = akq.b("textures/gui/container/crafting_table.png");
+   private final fru E = new fru();
+   private boolean F;
 
-   public fpa(cqj $$0, cmk $$1, cgw $$2) {
-      super($$0, $$1, $$2.O_());
-      this.I = $$2;
+   public fpa(cqk $$0, cmu $$1, wy $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(fhh $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.m - this.c) / 2;
-      int $$5 = (this.n - this.q) / 2;
-      $$0.a(H, $$4, $$5, 0, 0, this.c, this.q);
-      if (this.I instanceof cgv $$6 && $$6.t()) {
-         $$0.a(D, 90, 54, 0, 0, $$4 + 79, $$5 + 17, $$6.gv() * 18, 54);
-      }
-
-      if (this.I.f()) {
-         $$0.a(E, $$4 + 7, $$5 + 35 - 18, 18, 18);
-      }
-
-      if (this.I.d(bso.g)) {
-         if (this.I instanceof cgz) {
-            $$0.a(F, $$4 + 7, $$5 + 35, 18, 18);
-         } else {
-            $$0.a(G, $$4 + 7, $$5 + 35, 18, 18);
-         }
-      }
-
-      fpb.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.J, this.K, this.I);
+   protected void aP_() {
+      super.aP_();
+      this.F = this.m < 379;
+      this.E.a(this.m, this.n, this.l, this.F, this.w);
+      this.z = this.E.a(this.m, this.c);
+      this.c(new fis(this.z + 5, this.n / 2 - 49, 20, 18, fru.a, $$0 -> {
+         this.E.e();
+         this.z = this.E.a(this.m, this.c);
+         $$0.c(this.z + 5, this.n / 2 - 49);
+      }));
+      this.d(this.E);
+      this.r = 29;
    }
 
    @Override
-   public void a(fhh $$0, int $$1, int $$2, float $$3) {
-      this.J = (float)$$1;
-      this.K = (float)$$2;
-      super.a($$0, $$1, $$2, $$3);
+   public void D() {
+      super.D();
+      this.E.h();
+   }
+
+   @Override
+   public void a(fht $$0, int $$1, int $$2, float $$3) {
+      if (this.E.f() && this.F) {
+         this.b($$0, $$1, $$2, $$3);
+         this.E.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         this.E.a($$0, $$1, $$2, $$3);
+         this.E.a($$0, this.z, this.A, true, $$3);
+      }
+
       this.a($$0, $$1, $$2);
+      this.E.a($$0, this.z, this.A, $$1, $$2);
+   }
+
+   @Override
+   protected void a(fht $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.z;
+      int $$5 = (this.n - this.q) / 2;
+      $$0.a(D, $$4, $$5, 0, 0, this.c, this.q);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.E.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.E.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
+      return (!this.F || !this.E.f()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.E.a($$0, $$1, $$2)) {
+         this.a(this.E);
+         return true;
+      } else {
+         return this.F && this.E.f() ? true : super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.q);
+      return this.E.a($$0, $$1, this.z, this.A, this.c, this.q, $$4) && $$5;
+   }
+
+   @Override
+   protected void a(cro $$0, int $$1, int $$2, cqc $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.E.a($$0);
+   }
+
+   @Override
+   public void F() {
+      this.E.i();
+   }
+
+   @Override
+   public fru G() {
+      return this.E;
    }
 }

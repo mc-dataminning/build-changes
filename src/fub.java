@@ -1,80 +1,70 @@
-public class fub<T extends cev> extends fvo<T> {
-   private float q;
-   private float r;
-   private float s;
-
-   public fub(fxq $$0) {
-      super($$0);
+public class fub {
+   public static void a(fye $$0, fye $$1, fye $$2, boolean $$3) {
+      fye $$4 = $$3 ? $$0 : $$1;
+      fye $$5 = $$3 ? $$1 : $$0;
+      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
+      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
+      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
+      $$5.e = -1.5F + $$2.e;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.q = $$0.H($$3);
-      this.r = $$0.I($$3);
-      this.s = $$0.J($$3);
-      if (this.q <= 0.0F) {
-         this.n.e = 0.0F;
-         this.n.g = 0.0F;
-         this.j.e = 0.0F;
-         this.j.g = 0.0F;
-         this.k.e = 0.0F;
-         this.k.g = 0.0F;
-         this.k.b = -1.2F;
-         this.h.e = 0.0F;
-         this.i.e = 0.0F;
-         this.i.g = 0.0F;
-         this.i.b = -1.1F;
-         this.i.c = 18.0F;
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-      if ($$0.x()) {
-         this.o.e = (float) (Math.PI / 4);
-         this.o.c += -4.0F;
-         this.o.d += 5.0F;
-         this.n.c += -3.3F;
-         this.n.d++;
-         this.l.c += 8.0F;
-         this.l.d += -2.0F;
-         this.m.c += 2.0F;
-         this.m.d += -0.8F;
-         this.l.e = 1.7278761F;
-         this.m.e = 2.670354F;
-         this.j.e = (float) (-Math.PI / 20);
-         this.j.c = 16.1F;
-         this.j.d = -7.0F;
-         this.k.e = (float) (-Math.PI / 20);
-         this.k.c = 16.1F;
-         this.k.d = -7.0F;
-         this.h.e = (float) (-Math.PI / 2);
-         this.h.c = 21.0F;
-         this.h.d = 1.0F;
-         this.i.e = (float) (-Math.PI / 2);
-         this.i.c = 21.0F;
-         this.i.d = 1.0F;
-         this.p = 3;
-      }
+   public static void a(fye $$0, fye $$1, btl $$2, boolean $$3) {
+      fye $$4 = $$3 ? $$0 : $$1;
+      fye $$5 = $$3 ? $$1 : $$0;
+      $$4.f = $$3 ? -0.8F : 0.8F;
+      $$4.e = -0.97079635F;
+      $$5.e = $$4.e;
+      float $$6 = (float)cta.a($$2);
+      float $$7 = ayn.a((float)$$2.fw(), 0.0F, $$6);
+      float $$8 = $$7 / $$6;
+      $$5.f = ayn.i($$8, 0.4F, 0.85F) * (float)($$3 ? 1 : -1);
+      $$5.e = ayn.i($$8, $$5.e, (float) (-Math.PI / 2));
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (this.q > 0.0F) {
-         this.n.g = fvn.a(this.n.g, -1.2707963F, this.q);
-         this.n.f = fvn.a(this.n.f, 1.2707963F, this.q);
-         this.j.e = -1.2707963F;
-         this.k.e = -0.47079635F;
-         this.k.g = -0.2F;
-         this.k.b = -0.2F;
-         this.h.e = -0.4F;
-         this.i.e = 0.5F;
-         this.i.g = -0.5F;
-         this.i.b = -0.3F;
-         this.i.c = 20.0F;
-         this.l.e = fvn.a(this.l.e, 0.8F, this.r);
-         this.m.e = fvn.a(this.m.e, -0.4F, this.r);
+   public static <T extends btn> void a(fye $$0, fye $$1, T $$2, float $$3, float $$4) {
+      float $$5 = ayn.a($$3 * (float) Math.PI);
+      float $$6 = ayn.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$0.g = 0.0F;
+      $$1.g = 0.0F;
+      $$0.f = (float) (Math.PI / 20);
+      $$1.f = (float) (-Math.PI / 20);
+      if ($$2.fr() == btf.b) {
+         $$0.e = -1.8849558F + ayn.b($$4 * 0.09F) * 0.15F;
+         $$1.e = -0.0F + ayn.b($$4 * 0.19F) * 0.5F;
+         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      } else {
+         $$0.e = -0.0F + ayn.b($$4 * 0.19F) * 0.5F;
+         $$1.e = -1.8849558F + ayn.b($$4 * 0.09F) * 0.15F;
+         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
       }
 
-      if (this.s > 0.0F) {
-         this.n.e = fvn.a(this.n.e, -0.58177644F, this.s);
-      }
+      a($$0, $$1, $$4);
+   }
+
+   public static void a(fye $$0, float $$1, float $$2) {
+      $$0.g = $$0.g + $$2 * (ayn.b($$1 * 0.09F) * 0.05F + 0.05F);
+      $$0.e = $$0.e + $$2 * ayn.a($$1 * 0.067F) * 0.05F;
+   }
+
+   public static void a(fye $$0, fye $$1, float $$2) {
+      a($$0, $$2, 1.0F);
+      a($$1, $$2, -1.0F);
+   }
+
+   public static void a(fye $$0, fye $$1, boolean $$2, float $$3, float $$4) {
+      float $$5 = ayn.a($$3 * (float) Math.PI);
+      float $$6 = ayn.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$1.g = 0.0F;
+      $$0.g = 0.0F;
+      $$1.f = -(0.1F - $$5 * 0.6F);
+      $$0.f = 0.1F - $$5 * 0.6F;
+      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
+      $$1.e = $$7;
+      $$0.e = $$7;
+      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+      a($$1, $$0, $$4);
    }
 }

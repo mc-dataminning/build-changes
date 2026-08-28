@@ -1,45 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eau extends ebl<edh> {
-   public eau(Codec<edh> $$0) {
+public class eau extends eeo {
+   public static final MapCodec<eau> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               eht.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               bpt.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               dzp.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               eav.b.optionalFieldOf("debug_settings", eav.a).forGetter($$0x -> $$0x.h),
+               kb.a(lu.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, eau::new)
+   );
+   public final eht e;
+   public final bpt f;
+   public final dzp g;
+   public final eav h;
+   public final jq<dfw> i;
+
+   public eau(float $$0, eht $$1, bpt $$2, dzp $$3, eav $$4, jq<dfw> $$5) {
       super($$0);
-   }
-
-   @Override
-   public boolean a(ebn<edh> $$0) {
-      ja $$1 = $$0.e();
-      ddc $$2 = $$0.b();
-      ayo $$3 = $$0.d();
-      edh $$4 = $$0.f();
-      if ($$1.v() < $$2.I_() + 5) {
-         return false;
-      } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
-
-         for (ja $$7 : ja.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private boolean a(dch $$0, ja $$1, ayo $$2) {
-      ja $$3 = $$1.d();
-      dsl $$4 = $$0.a_($$3);
-      return $$4.a(dfk.kE) ? $$2.h() : $$4.d($$0, $$3, jf.b);
-   }
-
-   private void a(dch $$0, ja $$1, ayo $$2, edh $$3) {
-      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 4);
-      }
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

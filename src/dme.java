@@ -1,195 +1,81 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Collection;
 
-public class dme extends dki implements dly, dmj {
-   public static final MapCodec<dme> c = b(dme::new);
-   private static final dtc d = dtb.C;
-   private final dkj e = new dkj(new dme.a(dkj.a));
-   private final dkj f = new dkj(new dme.a(dkj.e.a));
+public class dme extends dhy {
+   public static final MapCodec<dme> a = b(dme::new);
+   public static final dtr b = dtq.s;
+   public static final dua e = dtq.aA;
 
    @Override
    public MapCodec<dme> a() {
-      return c;
+      return a;
    }
 
-   public dme(dsk.d $$0) {
+   protected dme(dsz.d $$0) {
       super($$0);
-      this.k(this.o().a(d, Boolean.valueOf(false)));
+      this.k(this.E.b().a(aE, ji.c).a(e, Integer.valueOf(1)).a(b, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public dkj c() {
-      return this.e;
-   }
-
-   public dkj m() {
-      return this.f;
-   }
-
-   public static boolean a(dch $$0, ja $$1, dsl $$2, Collection<jf> $$3) {
-      boolean $$4 = false;
-      dsl $$5 = dfk.qT.o();
-
-      for (jf $$6 : $$3) {
-         ja $$7 = $$1.a($$6);
-         if (a($$0, $$6, $$7, $$0.a_($$7))) {
-            $$5 = $$5.a(b($$6), Boolean.valueOf(true));
-            $$4 = true;
-         }
-      }
-
-      if (!$$4) {
-         return false;
+   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
+      if (!$$3.ga().e) {
+         return bqq.e;
       } else {
-         if (!$$2.u().c()) {
-            $$5 = $$5.a(d, Boolean.valueOf(true));
-         }
-
-         $$0.a($$1, $$5, 3);
-         return true;
+         $$1.a($$2, $$0.a(e), 3);
+         return bqq.a($$1.B);
       }
    }
 
    @Override
-   public void a(dch $$0, dsl $$1, ja $$2, ayo $$3) {
-      if ($$1.a(this)) {
-         for (jf $$4 : b) {
-            dtc $$5 = b($$4);
-            if ($$1.c($$5) && $$0.a_($$2.a($$4)).a(dfk.qS)) {
-               $$1 = $$1.a($$5, Boolean.valueOf(false));
-            }
-         }
-
-         if (!n($$1)) {
-            eoj $$6 = $$0.b_($$2);
-            $$1 = ($$6.c() ? dfk.a : dfk.G).o();
-         }
-
-         $$0.a($$2, $$1, 3);
-         dly.super.a($$0, $$1, $$2, $$3);
-      }
+   protected int g(dta $$0) {
+      return $$0.c(e) * 2;
    }
 
    @Override
-   public int a(dmd.a $$0, dch $$1, ja $$2, ayo $$3, dmd $$4, boolean $$5) {
-      if ($$5 && this.a($$4, $$1, $$0.a(), $$3)) {
-         return $$0.b() - 1;
+   public dta a(cyb $$0) {
+      dta $$1 = super.a($$0);
+      return $$1.a(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
+   }
+
+   @Override
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      if ($$1 == ji.a && !this.b($$3, $$5, $$2)) {
+         return dfy.a.o();
       } else {
-         return $$3.a($$4.f()) == 0 ? ayg.d((float)$$0.b() * 0.5F) : $$0.b();
-      }
-   }
-
-   private boolean a(dmd $$0, dch $$1, ja $$2, ayo $$3) {
-      dsl $$4 = $$1.a_($$2);
-      awm<dfi> $$5 = $$0.c();
-
-      for (jf $$6 : jf.a($$3)) {
-         if (a($$4, $$6)) {
-            ja $$7 = $$2.a($$6);
-            dsl $$8 = $$1.a_($$7);
-            if ($$8.a($$5)) {
-               dsl $$9 = dfk.qS.o();
-               $$1.a($$7, $$9, 3);
-               dfi.a($$8, $$9, $$1, $$7);
-               $$1.a(null, $$7, avh.vT, avi.e, 1.0F, 1.0F);
-               this.e.a($$9, $$1, $$7, $$0.h());
-               jf $$10 = $$6.g();
-
-               for (jf $$11 : b) {
-                  if ($$11 != $$10) {
-                     ja $$12 = $$7.a($$11);
-                     dsl $$13 = $$1.a_($$12);
-                     if ($$13.a(this)) {
-                        this.a($$1, $$13, $$12, $$3);
-                     }
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public static boolean a(dch $$0, dsl $$1, ja $$2) {
-      if (!$$1.a(dfk.qT)) {
-         return false;
-      } else {
-         for (jf $$3 : b) {
-            if (a($$1, $$3) && $$0.a_($$2.a($$3)).a(avw.bS)) {
-               return true;
-            }
-         }
-
-         return false;
+         return !$$3.x_() && $$1.o() != $$0.c(aE).o() ? $$0.a(b, Boolean.valueOf(this.c($$3, $$4, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
    @Override
-   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
+   public boolean c(dcx $$0, jd $$1, dta $$2) {
+      return this.a((ddk)$$0, $$1, $$2) > 0;
+   }
+
+   @Override
+   protected boolean b() {
+      return true;
+   }
+
+   @Override
+   public void a(dta $$0, dcu $$1, jd $$2, ayv $$3) {
       if ($$0.c(d)) {
-         $$3.a($$4, eok.c, eok.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      super.a($$0);
-      $$0.a(d);
-   }
-
-   @Override
-   protected boolean a(dsl $$0, cxn $$1) {
-      return !$$1.n().a(cug.gi) || super.a($$0, $$1);
-   }
-
-   @Override
-   protected eoj b_(dsl $$0) {
-      return $$0.c(d) ? eok.c.a(false) : super.b_($$0);
-   }
-
-   class a extends dkj.a {
-      private final dkj.e[] b;
-
-      public a(final dkj.e... $$0) {
-         super(dme.this);
-         this.b = $$0;
-      }
-
-      @Override
-      public boolean a(dbm $$0, ja $$1, ja $$2, jf $$3, dsl $$4) {
-         dsl $$5 = $$0.a_($$2.a($$3));
-         if (!$$5.a(dfk.qS) && !$$5.a(dfk.qU) && !$$5.a(dfk.bQ)) {
-            if ($$1.k($$2) == 2) {
-               ja $$6 = $$1.a($$3.g());
-               if ($$0.a_($$6).d($$0, $$6, $$3)) {
-                  return false;
-               }
-            }
-
-            eoj $$7 = $$4.u();
-            if (!$$7.c() && !$$7.b(eok.c)) {
-               return false;
-            } else {
-               return $$4.a(avw.aK) ? false : $$4.r() || super.a($$0, $$1, $$2, $$3, $$4);
-            }
-         } else {
-            return false;
+         ji $$4 = $$0.c(aE);
+         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
+         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         float $$8 = -5.0F;
+         if ($$3.h()) {
+            $$8 = (float)($$0.c(e) * 2 - 1);
          }
-      }
 
-      @Override
-      public dkj.e[] a() {
-         return this.b;
+         $$8 /= 16.0F;
+         double $$9 = (double)($$8 * (float)$$4.j());
+         double $$10 = (double)($$8 * (float)$$4.l());
+         $$1.a(lh.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
       }
+   }
 
-      @Override
-      public boolean a(dsl $$0) {
-         return !$$0.a(dfk.qT);
-      }
+   @Override
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(aE, e, b, d);
    }
 }

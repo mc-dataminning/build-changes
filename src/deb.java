@@ -1,76 +1,70 @@
-import com.mojang.serialization.MapCodec;
+public abstract class deb {
+   public static final akp<ddu> a = a("the_void");
+   public static final akp<ddu> b = a("plains");
+   public static final akp<ddu> c = a("sunflower_plains");
+   public static final akp<ddu> d = a("snowy_plains");
+   public static final akp<ddu> e = a("ice_spikes");
+   public static final akp<ddu> f = a("desert");
+   public static final akp<ddu> g = a("swamp");
+   public static final akp<ddu> h = a("mangrove_swamp");
+   public static final akp<ddu> i = a("forest");
+   public static final akp<ddu> j = a("flower_forest");
+   public static final akp<ddu> k = a("birch_forest");
+   public static final akp<ddu> l = a("dark_forest");
+   public static final akp<ddu> m = a("old_growth_birch_forest");
+   public static final akp<ddu> n = a("old_growth_pine_taiga");
+   public static final akp<ddu> o = a("old_growth_spruce_taiga");
+   public static final akp<ddu> p = a("taiga");
+   public static final akp<ddu> q = a("snowy_taiga");
+   public static final akp<ddu> r = a("savanna");
+   public static final akp<ddu> s = a("savanna_plateau");
+   public static final akp<ddu> t = a("windswept_hills");
+   public static final akp<ddu> u = a("windswept_gravelly_hills");
+   public static final akp<ddu> v = a("windswept_forest");
+   public static final akp<ddu> w = a("windswept_savanna");
+   public static final akp<ddu> x = a("jungle");
+   public static final akp<ddu> y = a("sparse_jungle");
+   public static final akp<ddu> z = a("bamboo_jungle");
+   public static final akp<ddu> A = a("badlands");
+   public static final akp<ddu> B = a("eroded_badlands");
+   public static final akp<ddu> C = a("wooded_badlands");
+   public static final akp<ddu> D = a("meadow");
+   public static final akp<ddu> E = a("cherry_grove");
+   public static final akp<ddu> F = a("grove");
+   public static final akp<ddu> G = a("snowy_slopes");
+   public static final akp<ddu> H = a("frozen_peaks");
+   public static final akp<ddu> I = a("jagged_peaks");
+   public static final akp<ddu> J = a("stony_peaks");
+   public static final akp<ddu> K = a("river");
+   public static final akp<ddu> L = a("frozen_river");
+   public static final akp<ddu> M = a("beach");
+   public static final akp<ddu> N = a("snowy_beach");
+   public static final akp<ddu> O = a("stony_shore");
+   public static final akp<ddu> P = a("warm_ocean");
+   public static final akp<ddu> Q = a("lukewarm_ocean");
+   public static final akp<ddu> R = a("deep_lukewarm_ocean");
+   public static final akp<ddu> S = a("ocean");
+   public static final akp<ddu> T = a("deep_ocean");
+   public static final akp<ddu> U = a("cold_ocean");
+   public static final akp<ddu> V = a("deep_cold_ocean");
+   public static final akp<ddu> W = a("frozen_ocean");
+   public static final akp<ddu> X = a("deep_frozen_ocean");
+   public static final akp<ddu> Y = a("mushroom_fields");
+   public static final akp<ddu> Z = a("dripstone_caves");
+   public static final akp<ddu> aa = a("lush_caves");
+   public static final akp<ddu> ab = a("deep_dark");
+   public static final akp<ddu> ac = a("nether_wastes");
+   public static final akp<ddu> ad = a("warped_forest");
+   public static final akp<ddu> ae = a("crimson_forest");
+   public static final akp<ddu> af = a("soul_sand_valley");
+   public static final akp<ddu> ag = a("basalt_deltas");
+   public static final akp<ddu> ah = a("the_end");
+   public static final akp<ddu> ai = a("end_highlands");
+   public static final akp<ddu> aj = a("end_midlands");
+   public static final akp<ddu> ak = a("small_end_islands");
+   public static final akp<ddu> al = a("end_barrens");
 
-public abstract class deb extends dfi {
-   private static final int d = 2;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 2;
-   protected static final int a = 4;
-   private static final exa h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final exa b = ewx.a(
-      ewx.b(), ewx.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), ewl.e
-   );
-   protected final kg.a c;
-
-   @Override
-   protected abstract MapCodec<? extends deb> a();
-
-   public deb(dsk.d $$0, kg.a $$1) {
-      super($$0);
-      this.c = $$1;
-   }
-
-   protected double b(dsl $$0) {
-      return 0.0;
-   }
-
-   protected boolean a(dsl $$0, ja $$1, bsh $$2) {
-      return $$2.dy() < (double)$$1.v() + this.b($$0) && $$2.cM().e > (double)$$1.v() + 0.25;
-   }
-
-   @Override
-   protected bqj a(cud $$0, dsl $$1, dcg $$2, ja $$3, cml $$4, bqg $$5, ewd $$6) {
-      kg $$7 = this.c.b().get($$0.g());
-      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
-   }
-
-   @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return b;
-   }
-
-   @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2) {
-      return h;
-   }
-
-   @Override
-   protected boolean c_(dsl $$0) {
-      return true;
-   }
-
-   @Override
-   protected boolean a(dsl $$0, eoy $$1) {
-      return false;
-   }
-
-   public abstract boolean d(dsl var1);
-
-   @Override
-   protected void a(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      ja $$4 = dla.a((dcg)$$1, $$2);
-      if ($$4 != null) {
-         eoi $$5 = dla.a($$1, $$4);
-         if ($$5 != eok.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
-         }
-      }
-   }
-
-   protected boolean a(eoi $$0) {
-      return false;
-   }
-
-   protected void a(dsl $$0, dcg $$1, ja $$2, eoi $$3) {
+   private static akp<ddu> a(String $$0) {
+      return akp.a(lu.aF, akq.b($$0));
    }
 }

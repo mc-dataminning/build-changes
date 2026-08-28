@@ -1,12 +1,20 @@
-import java.util.Collection;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class gsc {
+   public static final gsd a = new gsd();
+   public static final boolean b = false;
+   public static final boolean c = false;
+   private final boolean d;
+   private final boolean e;
 
-public interface gsc {
-   Collection<akk> f();
+   public gsc(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
 
-   void a(Function<akk, gsc> var1);
+   public boolean a() {
+      return this.d;
+   }
 
-   @Nullable
-   grr a(grv var1, Function<gru, gpq> var2, grz var3, akk var4);
+   public boolean b() {
+      return this.e;
+   }
 }

@@ -1,31 +1,36 @@
-public record aam(ja c, String d, int e) implements aac {
-   public static final ys<vr, aam> a = aac.a(aam::a, aam::new);
-   public static final aac.b<aam> b = aac.a("debug/poi_added");
+public record aam(jd c, int d, String e, int f) implements aai {
+   public static final yw<vv, aam> a = aai.a(aam::a, aam::new);
+   public static final aai.b<aam> b = aai.a("debug/game_test_add_marker");
 
-   private aam(vr $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
+   private aam(vv $$0) {
+      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
    }
 
-   private void a(vr $$0) {
+   private void a(vv $$0) {
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.p(this.e);
+      $$0.p(this.d);
+      $$0.a(this.e);
+      $$0.p(this.f);
    }
 
    @Override
-   public aac.b<aam> a() {
+   public aai.b<aam> a() {
       return b;
    }
 
-   public ja b() {
+   public jd b() {
       return this.c;
    }
 
-   public String c() {
+   public int c() {
       return this.d;
    }
 
-   public int d() {
+   public String d() {
       return this.e;
+   }
+
+   public int e() {
+      return this.f;
    }
 }

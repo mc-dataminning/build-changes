@@ -1,19 +1,33 @@
-import com.mojang.serialization.Codec;
-
-public enum czq implements azc {
-   a("attacker"),
-   b("damaging_entity"),
-   c("victim");
-
-   public static final Codec<czq> d = azc.a(czq::values);
-   private final String e;
-
-   private czq(final String $$0) {
-      this.e = $$0;
+public record czq(cuo a, cuo b, cuo c) implements cza {
+   @Override
+   public cuo a(int $$0) {
+      return switch ($$0) {
+         case 0 -> this.a;
+         case 1 -> this.b;
+         case 2 -> this.c;
+         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
+      };
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.e() && this.b.e() && this.c.e();
+   }
+
+   public cuo c() {
+      return this.a;
+   }
+
+   public cuo d() {
+      return this.b;
+   }
+
+   public cuo e() {
+      return this.c;
    }
 }

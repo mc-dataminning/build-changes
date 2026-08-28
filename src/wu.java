@@ -1,258 +1,86 @@
-import com.google.common.collect.Lists;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.stream.JsonReader;
-import com.mojang.brigadier.Message;
-import com.mojang.serialization.JsonOps;
-import java.io.StringReader;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
 
-public interface wu extends Message, wz {
-   xr a();
+public record wu(wv l, wv m) {
+   public static final Codec<wu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(wv.a.fieldOf("chat").forGetter(wu::a), wv.a.fieldOf("narration").forGetter(wu::b)).apply($$0, wu::new)
+   );
+   public static final yw<wj, wu> b = yw.a(wv.b, wu::a, wv.b, wu::b, wu::new);
+   public static final yw<wj, jm<wu>> c = yu.a(lu.aG, b);
+   public static final wv d = wv.a("chat.type.text");
+   public static final akp<wu> e = a("chat");
+   public static final akp<wu> f = a("say_command");
+   public static final akp<wu> g = a("msg_command_incoming");
+   public static final akp<wu> h = a("msg_command_outgoing");
+   public static final akp<wu> i = a("team_msg_command_incoming");
+   public static final akp<wu> j = a("team_msg_command_outgoing");
+   public static final akp<wu> k = a("emote_command");
 
-   wv b();
-
-   @Override
-   default String getString() {
-      return wz.super.getString();
+   private static akp<wu> a(String $$0) {
+      return akp.a(lu.aG, akq.b($$0));
    }
 
-   default String a(int $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      this.a((wz.a)($$2 -> {
-         int $$3 = $$0 - $$1.length();
-         if ($$3 <= 0) {
-            return a;
-         } else {
-            $$1.append($$2.length() <= $$3 ? $$2 : $$2.substring(0, $$3));
-            return Optional.empty();
-         }
-      }));
-      return $$1.toString();
+   public static void a(qp<wu> $$0) {
+      $$0.a(e, new wu(d, wv.a("chat.type.text.narrate")));
+      $$0.a(f, new wu(wv.a("chat.type.announcement"), wv.a("chat.type.text.narrate")));
+      $$0.a(g, new wu(wv.b("commands.message.display.incoming"), wv.a("chat.type.text.narrate")));
+      $$0.a(h, new wu(wv.c("commands.message.display.outgoing"), wv.a("chat.type.text.narrate")));
+      $$0.a(i, new wu(wv.d("chat.type.team.text"), wv.a("chat.type.text.narrate")));
+      $$0.a(j, new wu(wv.d("chat.type.team.sent"), wv.a("chat.type.text.narrate")));
+      $$0.a(k, new wu(wv.a("chat.type.emote"), wv.a("chat.type.emote")));
    }
 
-   List<wu> c();
+   public static wu.a a(akp<wu> $$0, bsq $$1) {
+      return a($$0, $$1.dQ().H_(), $$1.O_());
+   }
 
-   @Nullable
-   default String d() {
-      if (this.b() instanceof yb $$0 && this.c().isEmpty() && this.a().g()) {
-         return $$0.b();
+   public static wu.a a(akp<wu> $$0, et $$1) {
+      return a($$0, $$1.v(), $$1.b());
+   }
+
+   public static wu.a a(akp<wu> $$0, ka $$1, wy $$2) {
+      jz<wu> $$3 = $$1.d(lu.aG);
+      return new wu.a($$3.g($$0), $$2);
+   }
+
+   public wv a() {
+      return this.l;
+   }
+
+   public wv b() {
+      return this.m;
+   }
+
+   public static record a(jm<wu> b, wy c, Optional<wy> d) {
+      public static final yw<wj, wu.a> a = yw.a(wu.c, wu.a::a, xa.d, wu.a::b, xa.e, wu.a::c, wu.a::new);
+
+      a(jm<wu> $$0, wy $$1) {
+         this($$0, $$1, Optional.empty());
       }
 
-      return null;
-   }
-
-   default xi e() {
-      return xi.a(this.b());
-   }
-
-   default xi f() {
-      return new xi(this.b(), new ArrayList<>(this.c()), this.a());
-   }
-
-   axs g();
-
-   @Override
-   default <T> Optional<T> a(wz.b<T> $$0, xr $$1) {
-      xr $$2 = this.a().a($$1);
-      Optional<T> $$3 = this.b().a($$0, $$2);
-      if ($$3.isPresent()) {
-         return $$3;
-      } else {
-         for (wu $$4 : this.c()) {
-            Optional<T> $$5 = $$4.a($$0, $$2);
-            if ($$5.isPresent()) {
-               return $$5;
-            }
-         }
-
-         return Optional.empty();
-      }
-   }
-
-   @Override
-   default <T> Optional<T> a(wz.a<T> $$0) {
-      Optional<T> $$1 = this.b().a($$0);
-      if ($$1.isPresent()) {
-         return $$1;
-      } else {
-         for (wu $$2 : this.c()) {
-            Optional<T> $$3 = $$2.a($$0);
-            if ($$3.isPresent()) {
-               return $$3;
-            }
-         }
-
-         return Optional.empty();
-      }
-   }
-
-   default List<wu> h() {
-      return this.a(xr.a);
-   }
-
-   default List<wu> a(xr $$0) {
-      List<wu> $$1 = Lists.newArrayList();
-      this.a(($$1x, $$2) -> {
-         if (!$$2.isEmpty()) {
-            $$1.add(b($$2).c($$1x));
-         }
-
-         return Optional.empty();
-      }, $$0);
-      return $$1;
-   }
-
-   default boolean a(wu $$0) {
-      if (this.equals($$0)) {
-         return true;
-      } else {
-         List<wu> $$1 = this.h();
-         List<wu> $$2 = $$0.a(this.a());
-         return Collections.indexOfSubList($$1, $$2) != -1;
-      }
-   }
-
-   static wu a(@Nullable String $$0) {
-      return (wu)($$0 != null ? b($$0) : wt.a);
-   }
-
-   static xi b(String $$0) {
-      return xi.a(yb.a($$0));
-   }
-
-   static xi c(String $$0) {
-      return xi.a(new yf($$0, null, yf.a));
-   }
-
-   static xi a(String $$0, Object... $$1) {
-      return xi.a(new yf($$0, null, $$1));
-   }
-
-   static xi b(String $$0, Object... $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         Object $$3 = $$1[$$2];
-         if (!yf.a($$3) && !($$3 instanceof wu)) {
-            $$1[$$2] = String.valueOf($$3);
-         }
+      public wy a(wy $$0) {
+         return this.b.a().a().a($$0, this);
       }
 
-      return a($$0, $$1);
-   }
-
-   static xi a(String $$0, @Nullable String $$1) {
-      return xi.a(new yf($$0, $$1, yf.a));
-   }
-
-   static xi a(String $$0, @Nullable String $$1, Object... $$2) {
-      return xi.a(new yf($$0, $$1, $$2));
-   }
-
-   static xi i() {
-      return xi.a(yb.c);
-   }
-
-   static xi d(String $$0) {
-      return xi.a(new xy($$0));
-   }
-
-   static xi a(String $$0, boolean $$1, Optional<wu> $$2, xw $$3) {
-      return xi.a(new ya($$0, $$1, $$2, $$3));
-   }
-
-   static xi b(String $$0, String $$1) {
-      return xi.a(new yc($$0, $$1));
-   }
-
-   static xi a(String $$0, Optional<wu> $$1) {
-      return xi.a(new yd($$0, $$1));
-   }
-
-   static wu a(Date $$0) {
-      return b($$0.toString());
-   }
-
-   static wu a(Message $$0) {
-      return (wu)($$0 instanceof wu $$1 ? $$1 : b($$0.getString()));
-   }
-
-   static wu a(UUID $$0) {
-      return b($$0.toString());
-   }
-
-   static wu a(akk $$0) {
-      return b($$0.toString());
-   }
-
-   static wu a(dbn $$0) {
-      return b($$0.toString());
-   }
-
-   public static class a {
-      private static final Gson a = new GsonBuilder().disableHtmlEscaping().create();
-
-      private a() {
+      public wy b(wy $$0) {
+         return this.b.a().b().a($$0, this);
       }
 
-      static xi b(JsonElement $$0, jl.a $$1) {
-         return (xi)ww.a.parse($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
+      public wu.a c(wy $$0) {
+         return new wu.a(this.b, this.c, Optional.of($$0));
       }
 
-      static JsonElement b(wu $$0, jl.a $$1) {
-         return (JsonElement)ww.a.encodeStart($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
+      public jm<wu> a() {
+         return this.b;
       }
 
-      public static String a(wu $$0, jl.a $$1) {
-         return a.toJson(b($$0, $$1));
+      public wy b() {
+         return this.c;
       }
 
-      @Nullable
-      public static xi a(String $$0, jl.a $$1) {
-         JsonElement $$2 = JsonParser.parseString($$0);
-         return $$2 == null ? null : b($$2, $$1);
-      }
-
-      @Nullable
-      public static xi a(@Nullable JsonElement $$0, jl.a $$1) {
-         return $$0 == null ? null : b($$0, $$1);
-      }
-
-      @Nullable
-      public static xi b(String $$0, jl.a $$1) {
-         JsonReader $$2 = new JsonReader(new StringReader($$0));
-         $$2.setLenient(true);
-         JsonElement $$3 = JsonParser.parseReader($$2);
-         return $$3 == null ? null : b($$3, $$1);
-      }
-   }
-
-   public static class b implements JsonDeserializer<xi>, JsonSerializer<wu> {
-      private final jl.a a;
-
-      public b(jl.a $$0) {
-         this.a = $$0;
-      }
-
-      public xi a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return wu.a.b($$0, this.a);
-      }
-
-      public JsonElement a(wu $$0, Type $$1, JsonSerializationContext $$2) {
-         return wu.a.b($$0, this.a);
+      public Optional<wy> c() {
+         return this.d;
       }
    }
 }

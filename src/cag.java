@@ -1,48 +1,61 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class cag extends caa {
-   private final bte a;
-   private btc b;
-   private final float c;
+public class cag extends cak {
+   private static final int a = 200;
+   private final cfb b;
+   private int c;
+   private int d;
 
-   public cag(bte $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(caa.a.c, caa.a.a));
+   public cag(cfb $$0) {
+      this.b = $$0;
+      this.d = this.a($$0);
    }
 
-   @Override
-   public boolean a() {
-      if (this.a.cT()) {
-         return false;
-      } else {
-         this.b = this.a.p();
-         if (this.b == null) {
-            return false;
-         } else {
-            double $$0 = this.a.g((bsh)this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
-               return false;
-            } else {
-               return !this.a.aG() ? false : this.a.dU().a(b(5)) == 0;
-            }
-         }
-      }
+   protected int a(cfb $$0) {
+      return b(200 + $$0.dT().a(200) % 20);
    }
 
    @Override
    public boolean b() {
-      return !this.a.aG();
+      if (this.b.gs()) {
+         return false;
+      } else if (this.b.gp()) {
+         return true;
+      } else if (this.d > 0) {
+         this.d--;
+         return false;
+      } else {
+         this.d = this.a(this.b);
+         Predicate<cfb> $$0 = $$0x -> $$0x.gr() || !$$0x.gp();
+         List<? extends cfb> $$1 = this.b.dQ().a((Class<? extends cfb>)this.b.getClass(), this.b.cL().c(8.0, 8.0, 8.0), $$0);
+         cfb $$2 = (cfb)DataFixUtils.orElse($$1.stream().filter(cfb::gr).findAny(), this.b);
+         $$2.a($$1.stream().filter($$0x -> !$$0x.gp()));
+         return this.b.gp();
+      }
    }
 
    @Override
-   public void c() {
-      ewh $$0 = this.a.du();
-      ewh $$1 = new ewh(this.b.dw() - this.a.dw(), 0.0, this.b.dC() - this.a.dC());
-      if ($$1.g() > 1.0E-7) {
-         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
-      }
+   public boolean c() {
+      return this.b.gp() && this.b.gt();
+   }
 
-      this.a.o($$1.c, (double)this.c, $$1.e);
+   @Override
+   public void d() {
+      this.c = 0;
+   }
+
+   @Override
+   public void e() {
+      this.b.gq();
+   }
+
+   @Override
+   public void a() {
+      if (--this.c <= 0) {
+         this.c = this.a(10);
+         this.b.gu();
+      }
    }
 }

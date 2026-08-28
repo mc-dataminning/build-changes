@@ -1,144 +1,139 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public final class cnf {
-   private static final float a = 0.3F;
+public class cnf extends bsq implements bul {
+   public static final int b = 20;
+   public static final int c = 2;
+   public static final int d = 14;
+   private int e;
+   private boolean f;
+   private int g = 22;
+   private boolean h;
+   @Nullable
+   private btl i;
+   @Nullable
+   private UUID j;
 
-   public static ewf a(bsh $$0, Predicate<bsh> $$1) {
-      ewh $$2 = $$0.du();
-      dcg $$3 = $$0.dR();
-      ewh $$4 = $$0.dp();
-      return a($$4, $$0, $$1, $$2, $$3, 0.3F, dbp.a.a);
+   public cnf(bsw<? extends cnf> $$0, dcu $$1) {
+      super($$0, $$1);
    }
 
-   public static ewf a(bsh $$0, Predicate<bsh> $$1, dbp.a $$2) {
-      ewh $$3 = $$0.du();
-      dcg $$4 = $$0.dR();
-      ewh $$5 = $$0.dp();
-      return a($$5, $$0, $$1, $$3, $$4, 0.3F, $$2);
+   public cnf(dcu $$0, double $$1, double $$2, double $$3, float $$4, int $$5, btl $$6) {
+      this(bsw.K, $$0);
+      this.e = $$5;
+      this.a($$6);
+      this.s($$4 * (180.0F / (float)Math.PI));
+      this.a_($$1, $$2, $$3);
    }
 
-   public static ewf a(bsh $$0, Predicate<bsh> $$1, double $$2) {
-      ewh $$3 = $$0.g(0.0F).a($$2);
-      dcg $$4 = $$0.dR();
-      ewh $$5 = $$0.bz();
-      return a($$5, $$0, $$1, $$3, $$4, 0.0F, dbp.a.a);
+   @Override
+   protected void a(ajz.a $$0) {
    }
 
-   private static ewf a(ewh $$0, bsh $$1, Predicate<bsh> $$2, ewh $$3, dcg $$4, float $$5, dbp.a $$6) {
-      ewh $$7 = $$0.e($$3);
-      ewf $$8 = $$4.a(new dbp($$0, $$7, $$6, dbp.b.a, $$1));
-      if ($$8.c() != ewf.a.a) {
-         $$7 = $$8.e();
-      }
-
-      ewf $$9 = a($$4, $$1, $$0, $$7, $$1.cM().b($$3).g(1.0), $$2, $$5);
-      if ($$9 != null) {
-         $$8 = $$9;
-      }
-
-      return $$8;
+   public void a(@Nullable btl $$0) {
+      this.i = $$0;
+      this.j = $$0 == null ? null : $$0.cA();
    }
 
    @Nullable
-   public static ewe a(bsh $$0, ewh $$1, ewh $$2, ewc $$3, Predicate<bsh> $$4, double $$5) {
-      dcg $$6 = $$0.dR();
-      double $$7 = $$5;
-      bsh $$8 = null;
-      ewh $$9 = null;
+   public btl p() {
+      if (this.i == null && this.j != null && this.dQ() instanceof aqt) {
+         bsq $$0 = ((aqt)this.dQ()).a(this.j);
+         if ($$0 instanceof btl) {
+            this.i = (btl)$$0;
+         }
+      }
 
-      for (bsh $$10 : $$6.a($$0, $$3, $$4)) {
-         ewc $$11 = $$10.cM().g((double)$$10.bM());
-         Optional<ewh> $$12 = $$11.b($$1, $$2);
-         if ($$11.d($$1)) {
-            if ($$7 >= 0.0) {
-               $$8 = $$10;
-               $$9 = $$12.orElse($$1);
-               $$7 = 0.0;
-            }
-         } else if ($$12.isPresent()) {
-            ewh $$13 = $$12.get();
-            double $$14 = $$1.g($$13);
-            if ($$14 < $$7 || $$7 == 0.0) {
-               if ($$10.db() == $$0.db()) {
-                  if ($$7 == 0.0) {
-                     $$8 = $$10;
-                     $$9 = $$13;
-                  }
-               } else {
-                  $$8 = $$10;
-                  $$9 = $$13;
-                  $$7 = $$14;
+      return this.i;
+   }
+
+   @Override
+   protected void a(ua $$0) {
+      this.e = $$0.h("Warmup");
+      if ($$0.b("Owner")) {
+         this.j = $$0.a("Owner");
+      }
+   }
+
+   @Override
+   protected void b(ua $$0) {
+      $$0.a("Warmup", this.e);
+      if (this.j != null) {
+         $$0.a("Owner", this.j);
+      }
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.dQ().B) {
+         if (this.h) {
+            this.g--;
+            if (this.g == 14) {
+               for (int $$0 = 0; $$0 < 12; $$0++) {
+                  double $$1 = this.dv() + (this.ah.j() * 2.0 - 1.0) * (double)this.dk() * 0.5;
+                  double $$2 = this.dx() + 0.05 + this.ah.j();
+                  double $$3 = this.dB() + (this.ah.j() * 2.0 - 1.0) * (double)this.dk() * 0.5;
+                  double $$4 = (this.ah.j() * 2.0 - 1.0) * 0.3;
+                  double $$5 = 0.3 + this.ah.j() * 0.3;
+                  double $$6 = (this.ah.j() * 2.0 - 1.0) * 0.3;
+                  this.dQ().a(lm.f, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
                }
             }
          }
+      } else if (--this.e < 0) {
+         if (this.e == -8) {
+            for (btl $$8 : this.dQ().a(btl.class, this.cL().c(0.2, 0.0, 0.2))) {
+               this.c($$8);
+            }
+         }
+
+         if (!this.f) {
+            this.dQ().a(this, (byte)4);
+            this.f = true;
+         }
+
+         if (--this.g < 0) {
+            this.aq();
+         }
       }
-
-      return $$8 == null ? null : new ewe($$8, $$9);
    }
 
-   @Nullable
-   public static ewe a(dcg $$0, bsh $$1, ewh $$2, ewh $$3, ewc $$4, Predicate<bsh> $$5) {
-      return a($$0, $$1, $$2, $$3, $$4, $$5, 0.3F);
-   }
+   private void c(btl $$0) {
+      btl $$1 = this.p();
+      if ($$0.bE() && !$$0.cv() && $$0 != $$1) {
+         if ($$1 == null) {
+            $$0.a(this.dR().p(), 6.0F);
+         } else {
+            if ($$1.s($$0)) {
+               return;
+            }
 
-   @Nullable
-   public static ewe a(dcg $$0, bsh $$1, ewh $$2, ewh $$3, ewc $$4, Predicate<bsh> $$5, float $$6) {
-      double $$7 = Double.MAX_VALUE;
-      bsh $$8 = null;
-
-      for (bsh $$9 : $$0.a($$1, $$4, $$5)) {
-         ewc $$10 = $$9.cM().g((double)$$6);
-         Optional<ewh> $$11 = $$10.b($$2, $$3);
-         if ($$11.isPresent()) {
-            double $$12 = $$2.g($$11.get());
-            if ($$12 < $$7) {
-               $$8 = $$9;
-               $$7 = $$12;
+            brj $$2 = this.dR().c(this, (bsq)$$1);
+            if ($$0.a($$2, 6.0F) && this.dQ() instanceof aqt $$3) {
+               dac.a($$3, (bsq)$$0, $$2);
             }
          }
       }
-
-      return $$8 == null ? null : new ewe($$8);
    }
 
-   public static void a(bsh $$0, float $$1) {
-      ewh $$2 = $$0.du();
-      if ($$2.g() != 0.0) {
-         double $$3 = $$2.h();
-         $$0.s((float)(ayg.d($$2.e, $$2.c) * 180.0F / (float)Math.PI) + 90.0F);
-         $$0.t((float)(ayg.d($$3, $$2.d) * 180.0F / (float)Math.PI) - 90.0F);
-
-         while ($$0.dJ() - $$0.P < -180.0F) {
-            $$0.P -= 360.0F;
+   @Override
+   public void b(byte $$0) {
+      super.b($$0);
+      if ($$0 == 4) {
+         this.h = true;
+         if (!this.aX()) {
+            this.dQ().a(this.dv(), this.dx(), this.dB(), avo.iB, this.df(), 1.0F, this.ah.i() * 0.2F + 0.85F, false);
          }
-
-         while ($$0.dJ() - $$0.P >= 180.0F) {
-            $$0.P += 360.0F;
-         }
-
-         while ($$0.dH() - $$0.O < -180.0F) {
-            $$0.O -= 360.0F;
-         }
-
-         while ($$0.dH() - $$0.O >= 180.0F) {
-            $$0.O += 360.0F;
-         }
-
-         $$0.t(ayg.i($$1, $$0.P, $$0.dJ()));
-         $$0.s(ayg.i($$1, $$0.O, $$0.dH()));
       }
    }
 
-   public static bqg a(btc $$0, cty $$1) {
-      return $$0.eV().a($$1) ? bqg.a : bqg.b;
-   }
-
-   public static cmr a(btc $$0, cud $$1, float $$2, @Nullable cud $$3) {
-      crx $$4 = (crx)($$1.g() instanceof crx ? $$1.g() : cug.ow);
-      cmr $$5 = $$4.a($$0.dR(), $$1, $$0, $$3);
-      $$5.a($$2);
-      return $$5;
+   public float a(float $$0) {
+      if (!this.h) {
+         return 0.0F;
+      } else {
+         int $$1 = this.g - 2;
+         return $$1 <= 0 ? 1.0F : 1.0F - ((float)$$1 - $$0) / 20.0F;
+      }
    }
 }

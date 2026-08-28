@@ -1,33 +1,30 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Objects;
 
-public class bck extends bcv {
+public class bck extends bhb {
    public bck(Schema $$0, boolean $$1) {
-      super("EntityHorseSplitFix", $$0, $$1);
+      super("EntityCatSplitFix", $$0, $$1);
    }
 
    @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      if (Objects.equals("EntityHorse", $$0)) {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-         int $$3 = $$2.get("Type").asInt(0);
-
-         String $$4 = switch ($$3) {
-            case 1 -> "Donkey";
-            case 2 -> "Mule";
-            case 3 -> "ZombieHorse";
-            case 4 -> "SkeletonHorse";
-            default -> "Horse";
-         };
-         Type<?> $$5 = (Type<?>)this.getOutputSchema().findChoiceType(bgh.B).types().get($$4);
-         return Pair.of($$4, ac.a($$1, $$5, $$0x -> $$0x.remove("Type")));
-      } else {
-         return Pair.of($$0, $$1);
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      if (Objects.equals("minecraft:ocelot", $$0)) {
+         int $$2 = $$1.get("CatType").asInt(0);
+         if ($$2 == 0) {
+            String $$3 = $$1.get("Owner").asString("");
+            String $$4 = $$1.get("OwnerUUID").asString("");
+            if ($$3.length() > 0 || $$4.length() > 0) {
+               $$1.set("Trusting", $$1.createBoolean(true));
+            }
+         } else if ($$2 > 0 && $$2 < 4) {
+            $$1 = $$1.set("CatType", $$1.createInt($$2));
+            $$1 = $$1.set("OwnerUUID", $$1.createString($$1.get("OwnerUUID").asString("")));
+            return Pair.of("minecraft:cat", $$1);
+         }
       }
+
+      return Pair.of($$0, $$1);
    }
 }

@@ -1,70 +1,105 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public record dyo(int g, int h, int i, int j) {
-   public static final Codec<dyo> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(dwg.e, dwg.d).fieldOf("min_y").forGetter(dyo::c),
-                  Codec.intRange(0, dwg.c).fieldOf("height").forGetter(dyo::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dyo::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dyo::f)
-               )
-               .apply($$0, dyo::new)
-      )
-      .comapFlatMap(dyo::a, Function.identity());
-   protected static final dyo b = a(-64, 384, 1, 2);
-   protected static final dyo c = a(0, 128, 1, 2);
-   protected static final dyo d = a(0, 128, 2, 1);
-   protected static final dyo e = a(-64, 192, 1, 2);
-   protected static final dyo f = a(0, 256, 2, 1);
+public interface dyo {
+   Codec<dyo> b = dyp.b;
+   Codec<jm<dyo>> c = akm.a(lu.aJ, b);
+   Codec<dyo> d = c.xmap(dyp.j::new, $$0 -> (jm)($$0 instanceof dyp.j $$1 ? $$1.j() : new jm.a<>($$0)));
 
-   private static DataResult<dyo> a(dyo $$0) {
-      if ($$0.c() + $$0.d() > dwg.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dwg.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+   double a(dyo.b var1);
+
+   void a(double[] var1, dyo.a var2);
+
+   dyo a(dyo.f var1);
+
+   double a();
+
+   double b();
+
+   ayg<? extends dyo> c();
+
+   default dyo a(double $$0, double $$1) {
+      return new dyp.g(this, $$0, $$1);
+   }
+
+   default dyo d() {
+      return dyp.a(this, dyp.k.a.a);
+   }
+
+   default dyo e() {
+      return dyp.a(this, dyp.k.a.b);
+   }
+
+   default dyo f() {
+      return dyp.a(this, dyp.k.a.c);
+   }
+
+   default dyo g() {
+      return dyp.a(this, dyp.k.a.d);
+   }
+
+   default dyo h() {
+      return dyp.a(this, dyp.k.a.e);
+   }
+
+   default dyo i() {
+      return dyp.a(this, dyp.k.a.f);
+   }
+
+   public interface a {
+      dyo.b a(int var1);
+
+      void a(double[] var1, dyo var2);
+   }
+
+   public interface b {
+      int a();
+
+      int b();
+
+      int c();
+
+      default dzx d() {
+         return dzx.a();
       }
    }
 
-   public static dyo a(int $$0, int $$1, int $$2, int $$3) {
-      dyo $$4 = new dyo($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
-      return $$4;
+   public static record c(jm<eob.a> b, @Nullable eob c) {
+      public static final Codec<dyo.c> a = eob.a.b.xmap($$0 -> new dyo.c($$0, null), dyo.c::b);
+
+      public c(jm<eob.a> $$0) {
+         this($$0, null);
+      }
+
+      public double a(double $$0, double $$1, double $$2) {
+         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
+      }
+
+      public double a() {
+         return this.c == null ? 2.0 : this.c.a();
+      }
    }
 
-   public int a() {
-      return ju.c(this.f());
+   public interface d extends dyo {
+      @Override
+      default void a(double[] $$0, dyo.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      default dyo a(dyo.f $$0) {
+         return $$0.apply(this);
+      }
    }
 
-   public int b() {
-      return ju.c(this.e());
+   public static record e(int a, int b, int c) implements dyo.b {
    }
 
-   public dyo a(dci $$0) {
-      int $$1 = Math.max(this.g, $$0.I_());
-      int $$2 = Math.min(this.g + this.h, $$0.am()) - $$1;
-      return new dyo($$1, $$2, this.i, this.j);
-   }
+   public interface f {
+      dyo apply(dyo var1);
 
-   public int c() {
-      return this.g;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public int e() {
-      return this.i;
-   }
-
-   public int f() {
-      return this.j;
+      default dyo.c a(dyo.c $$0) {
+         return $$0;
+      }
    }
 }

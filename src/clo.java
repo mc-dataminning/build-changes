@@ -1,192 +1,118 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
 
-public class clo {
-   @VisibleForTesting
-   protected static final int a = 2;
-   @VisibleForTesting
-   protected static final int b = 150;
-   private static final int f = 1;
-   private int g = ayg.b(ayo.a(), 0, 2);
-   int h;
-   private static final Codec<Pair<UUID, Integer>> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(kd.a.fieldOf("uuid").forGetter(Pair::getFirst), axo.k.fieldOf("anger").forGetter(Pair::getSecond)).apply($$0, Pair::of)
+public class clo extends clk {
+   private static final int cb = 50;
+   private static final float cc = 0.35F;
+   private static final int cd = 7;
+   protected static final ImmutableList<cdx<? extends cdw<? super clo>>> e = ImmutableList.of(cdx.c, cdx.d, cdx.b, cdx.f, cdx.m);
+   protected static final ImmutableList<ccq<?>> ca = ImmutableList.of(
+      ccq.n, ccq.v, ccq.g, ccq.h, ccq.k, ccq.l, ccq.ao, ccq.an, ccq.x, ccq.y, ccq.m, ccq.E, new ccq[]{ccq.o, ccq.p, ccq.q, ccq.t, ccq.ab, ccq.M, ccq.b}
    );
-   private final Predicate<bsh> j;
-   @VisibleForTesting
-   protected final ArrayList<bsh> c;
-   private final clo.a k;
-   @VisibleForTesting
-   protected final Object2IntMap<bsh> d;
-   @VisibleForTesting
-   protected final Object2IntMap<UUID> e;
 
-   public static Codec<clo> a(Predicate<bsh> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(i.listOf().fieldOf("suspects").orElse(Collections.emptyList()).forGetter(clo::b)).apply($$1, $$1x -> new clo($$0, $$1x))
-      );
+   public clo(bsw<? extends clo> $$0, dcu $$1) {
+      super($$0, $$1);
+      this.bP = 20;
    }
 
-   public clo(Predicate<bsh> $$0, List<Pair<UUID, Integer>> $$1) {
-      this.j = $$0;
-      this.c = new ArrayList<>();
-      this.k = new clo.a(this);
-      this.d = new Object2IntOpenHashMap();
-      this.e = new Object2IntOpenHashMap($$1.size());
-      $$1.forEach($$0x -> this.e.put((UUID)$$0x.getFirst(), (Integer)$$0x.getSecond()));
-   }
-
-   private List<Pair<UUID, Integer>> b() {
-      return Streams.concat(
-            new Stream[]{
-               this.c.stream().map($$0 -> Pair.of($$0.cB(), this.d.getInt($$0))),
-               this.e.object2IntEntrySet().stream().map($$0 -> Pair.of((UUID)$$0.getKey(), $$0.getIntValue()))
-            }
-         )
-         .collect(Collectors.toList());
-   }
-
-   public void a(aqm $$0, Predicate<bsh> $$1) {
-      this.g--;
-      if (this.g <= 0) {
-         this.a($$0);
-         this.g = 2;
-      }
-
-      ObjectIterator<Entry<UUID>> $$2 = this.e.object2IntEntrySet().iterator();
-
-      while ($$2.hasNext()) {
-         Entry<UUID> $$3 = (Entry<UUID>)$$2.next();
-         int $$4 = $$3.getIntValue();
-         if ($$4 <= 1) {
-            $$2.remove();
-         } else {
-            $$3.setValue($$4 - 1);
-         }
-      }
-
-      ObjectIterator<Entry<bsh>> $$5 = this.d.object2IntEntrySet().iterator();
-
-      while ($$5.hasNext()) {
-         Entry<bsh> $$6 = (Entry<bsh>)$$5.next();
-         int $$7 = $$6.getIntValue();
-         bsh $$8 = (bsh)$$6.getKey();
-         bsh.d $$9 = $$8.dN();
-         if ($$7 > 1 && $$1.test($$8) && $$9 == null) {
-            $$6.setValue($$7 - 1);
-         } else {
-            this.c.remove($$8);
-            $$5.remove();
-            if ($$7 > 1 && $$9 != null) {
-               switch ($$9) {
-                  case e:
-                  case c:
-                  case d:
-                     this.e.put($$8.cB(), $$7 - 1);
-               }
-            }
-         }
-      }
-
-      this.c();
-   }
-
-   private void c() {
-      this.h = 0;
-      this.c.sort(this.k);
-      if (this.c.size() == 1) {
-         this.h = this.d.getInt(this.c.get(0));
-      }
-   }
-
-   private void a(aqm $$0) {
-      ObjectIterator<Entry<UUID>> $$1 = this.e.object2IntEntrySet().iterator();
-
-      while ($$1.hasNext()) {
-         Entry<UUID> $$2 = (Entry<UUID>)$$1.next();
-         int $$3 = $$2.getIntValue();
-         bsh $$4 = $$0.a((UUID)$$2.getKey());
-         if ($$4 != null) {
-            this.d.put($$4, $$3);
-            this.c.add($$4);
-            $$1.remove();
-         }
-      }
-   }
-
-   public int a(bsh $$0, int $$1) {
-      boolean $$2 = !this.d.containsKey($$0);
-      int $$3 = this.d.computeInt($$0, ($$1x, $$2x) -> Math.min(150, ($$2x == null ? 0 : $$2x) + $$1));
-      if ($$2) {
-         int $$4 = this.e.removeInt($$0.cB());
-         $$3 += $$4;
-         this.d.put($$0, $$3);
-         this.c.add($$0);
-      }
-
-      this.c();
-      return $$3;
-   }
-
-   public void a(bsh $$0) {
-      this.d.removeInt($$0);
-      this.c.remove($$0);
-      this.c();
+   public static but.a x() {
+      return ckb.gs().a(buu.s, 50.0).a(buu.v, 0.35F).a(buu.c, 7.0);
    }
 
    @Nullable
-   private bsh d() {
-      return this.c.stream().filter(this.j).findFirst().orElse(null);
+   @Override
+   public buf a(ddj $$0, bqo $$1, btp $$2, @Nullable buf $$3) {
+      clp.a(this);
+      this.a($$0.E_(), $$1);
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   public int b(@Nullable bsh $$0) {
-      return $$0 == null ? this.h : this.d.getInt($$0);
+   @Override
+   protected void a(ayv $$0, bqo $$1) {
+      this.a(bsx.a, new cuo(cur.oZ));
    }
 
-   public Optional<btc> a() {
-      return Optional.ofNullable(this.d()).filter($$0 -> $$0 instanceof btc).map($$0 -> (btc)$$0);
+   @Override
+   protected buo.b<clo> dV() {
+      return buo.a(ca, e);
    }
 
-   @VisibleForTesting
-   protected static record a(clo a) implements Comparator<bsh> {
-      public int a(bsh $$0, bsh $$1) {
-         if ($$0.equals($$1)) {
-            return 0;
-         } else {
-            int $$2 = this.a.d.getOrDefault($$0, 0);
-            int $$3 = this.a.d.getOrDefault($$1, 0);
-            this.a.h = Math.max(this.a.h, Math.max($$2, $$3));
-            boolean $$4 = cln.a($$2).d();
-            boolean $$5 = cln.a($$3).d();
-            if ($$4 != $$5) {
-               return $$4 ? -1 : 1;
-            } else {
-               boolean $$6 = $$0 instanceof cml;
-               boolean $$7 = $$1 instanceof cml;
-               if ($$6 != $$7) {
-                  return $$6 ? -1 : 1;
-               } else {
-                  return Integer.compare($$3, $$2);
-               }
-            }
+   @Override
+   protected buo<?> a(Dynamic<?> $$0) {
+      return clp.a(this, this.dV().a($$0));
+   }
+
+   @Override
+   public buo<clo> dU() {
+      return (buo<clo>)super.dU();
+   }
+
+   @Override
+   public boolean s() {
+      return false;
+   }
+
+   @Override
+   public boolean k(cuo $$0) {
+      return $$0.a(cur.oZ) ? super.k($$0) : false;
+   }
+
+   @Override
+   protected void Z() {
+      this.dQ().ag().a("piglinBruteBrain");
+      this.dU().a((aqt)this.dQ(), this);
+      this.dQ().ag().c();
+      clp.b(this);
+      clp.c(this);
+      super.Z();
+   }
+
+   @Override
+   public cln go() {
+      return this.gd() && this.gp() ? cln.a : cln.f;
+   }
+
+   @Override
+   public boolean a(brj $$0, float $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      if (this.dQ().B) {
+         return false;
+      } else {
+         if ($$2 && $$0.d() instanceof btl) {
+            clp.a(this, (btl)$$0.d());
          }
+
+         return $$2;
       }
+   }
+
+   @Override
+   protected avn v() {
+      return avo.tP;
+   }
+
+   @Override
+   protected avn d(brj $$0) {
+      return avo.tS;
+   }
+
+   @Override
+   protected avn n_() {
+      return avo.tR;
+   }
+
+   @Override
+   protected void b(jd $$0, dta $$1) {
+      this.a(avo.tT, 0.15F, 1.0F);
+   }
+
+   protected void gt() {
+      this.b(avo.tQ);
+   }
+
+   @Override
+   protected void gq() {
+      this.b(avo.tU);
    }
 }

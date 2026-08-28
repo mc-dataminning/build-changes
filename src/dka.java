@@ -1,41 +1,59 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dka extends dje {
-   public static final MapCodec<dka> a = b(dka::new);
-   private static final wu b = wu.c("container.loom");
+public class dka extends djl implements dkn {
+   public static final MapCodec<dka> c = b(dka::new);
+   protected static final exp g = dfw.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double h = 0.14;
 
    @Override
    public MapCodec<dka> a() {
-      return a;
+      return c;
    }
 
-   protected dka(dsk.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected bqh a(dsl $$0, dcg $$1, ja $$2, cml $$3, ewd $$4) {
-      if ($$1.B) {
-         return bqh.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(avr.ax);
-         return bqh.c;
-      }
+   protected dka(dsz.d $$0) {
+      super($$0, ji.b, g, true, 0.14);
    }
 
    @Override
-   protected bql b(dsl $$0, dcg $$1, ja $$2) {
-      return new bqr(($$2x, $$3, $$4) -> new cqo($$2x, $$3, cpu.a($$1, $$2)), b);
+   protected boolean g(dta $$0) {
+      return $$0.a(dfy.G);
    }
 
    @Override
-   public dsl a(cxn $$0) {
-      return this.o().a(aE, $$0.g().g());
+   protected dfw b() {
+      return dfy.md;
    }
 
    @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(aE);
+   protected boolean m(dta $$0) {
+      return !$$0.a(dfy.kJ);
+   }
+
+   @Override
+   public boolean a(@Nullable cmv $$0, dca $$1, jd $$2, dta $$3, eox $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dcv $$0, jd $$1, dta $$2, eoy $$3) {
+      return false;
+   }
+
+   @Override
+   protected int a(ayv $$0) {
+      return 1;
+   }
+
+   @Nullable
+   @Override
+   public dta a(cyb $$0) {
+      eoy $$1 = $$0.q().b_($$0.a());
+      return $$1.a(awj.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   protected eoy b_(dta $$0) {
+      return eoz.c.a(false);
    }
 }

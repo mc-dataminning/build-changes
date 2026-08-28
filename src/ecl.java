@@ -1,54 +1,53 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class ecl extends ebl<eee> {
-   public ecl(Codec<eee> $$0) {
+public class ecl extends ebd {
+   public ecl(Codec<eeg> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebn<eee> $$0) {
-      eee $$1 = $$0.f();
-      ddc $$2 = $$0.b();
-      ayo $$3 = $$0.d();
-      dfi $$4 = $$1.b.b();
-      ja $$5 = a($$2, $$0.e().j().a(jf.a.b, $$2.I_() + 1, $$2.am() - 1), $$4);
-      if ($$5 == null) {
-         return false;
-      } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
+   protected void a(dcv $$0, ayv $$1, jd $$2, int $$3, jd.a $$4, eeg $$5) {
+      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
+         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
+         int $$8 = $$5.d - 2;
 
-         for (ja $$11 : ja.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
-            }
+         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
+            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
+               boolean $$11 = $$9 == -$$7;
+               boolean $$12 = $$9 == $$7;
+               boolean $$13 = $$10 == -$$7;
+               boolean $$14 = $$10 == $$7;
+               boolean $$15 = $$11 || $$12;
+               boolean $$16 = $$13 || $$14;
+               if ($$6 >= $$3 || $$15 != $$16) {
+                  $$4.a($$2, $$9, $$6, $$10);
+                  if (!$$0.a_($$4).i($$0, $$4)) {
+                     dta $$17 = $$5.b.a($$1, $$2);
+                     if ($$17.b(djt.e) && $$17.b(djt.c) && $$17.b(djt.b) && $$17.b(djt.d) && $$17.b(djt.f)) {
+                        $$17 = $$17.a(djt.f, Boolean.valueOf($$6 >= $$3 - 1))
+                           .a(djt.e, Boolean.valueOf($$9 < -$$8))
+                           .a(djt.c, Boolean.valueOf($$9 > $$8))
+                           .a(djt.b, Boolean.valueOf($$10 < -$$8))
+                           .a(djt.d, Boolean.valueOf($$10 > $$8));
+                     }
 
-            dsl $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
+                     this.a($$0, $$4, $$17);
+                  }
+               }
             }
          }
-
-         return $$10;
       }
    }
 
-   @Nullable
-   private static ja a(dch $$0, ja.a $$1, dfi $$2) {
-      while ($$1.v() > $$0.I_() + 1) {
-         dsl $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
-
-         $$1.c(jf.a);
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+      if ($$3 < $$1 && $$3 >= $$1 - 3) {
+         $$4 = $$2;
+      } else if ($$3 == $$1) {
+         $$4 = $$2;
       }
 
-      return null;
+      return $$4;
    }
 }

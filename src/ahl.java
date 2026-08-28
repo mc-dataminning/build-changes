@@ -1,60 +1,67 @@
-import javax.annotation.Nullable;
+public class ahl implements zf<agh> {
+   public static final yw<vv, ahl> a = zf.a(ahl::a, ahl::new);
+   private final jd b;
+   private final ji c;
+   private final ahl.a d;
+   private final int e;
 
-public class ahl implements zb<agb> {
-   public static final ys<vr, ahl> a = zb.a(ahl::a, ahl::new);
-   private final ahl.a b;
-   @Nullable
-   private final akk c;
-
-   public ahl(ahl.a $$0, @Nullable akk $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ahl(ahl.a $$0, jd $$1, ji $$2, int $$3) {
+      this.d = $$0;
+      this.b = $$1.i();
+      this.c = $$2;
+      this.e = $$3;
    }
 
-   public static ahl a(af $$0) {
-      return new ahl(ahl.a.a, $$0.a());
+   public ahl(ahl.a $$0, jd $$1, ji $$2) {
+      this($$0, $$1, $$2, 0);
    }
 
-   public static ahl b() {
-      return new ahl(ahl.a.b, null);
+   private ahl(vv $$0) {
+      this.d = $$0.b(ahl.a.class);
+      this.b = $$0.e();
+      this.c = ji.a($$0.readUnsignedByte());
+      this.e = $$0.l();
    }
 
-   private ahl(vr $$0) {
-      this.b = $$0.b(ahl.a.class);
-      if (this.b == ahl.a.a) {
-         this.c = $$0.q();
-      } else {
-         this.c = null;
-      }
-   }
-
-   private void a(vr $$0) {
+   private void a(vv $$0) {
+      $$0.a(this.d);
       $$0.a(this.b);
-      if (this.b == ahl.a.a) {
-         $$0.a(this.c);
-      }
+      $$0.k(this.c.d());
+      $$0.c(this.e);
    }
 
    @Override
-   public zd<ahl> a() {
-      return afz.bQ;
+   public zh<ahl> a() {
+      return agf.bK;
    }
 
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
-   public ahl.a e() {
+   public jd b() {
       return this.b;
    }
 
-   @Nullable
-   public akk f() {
+   public ji e() {
       return this.c;
+   }
+
+   public ahl.a f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
    }
 
    public static enum a {
       a,
-      b;
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

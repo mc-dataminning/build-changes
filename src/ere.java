@@ -1,20 +1,67 @@
-import java.util.Objects;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-@FunctionalInterface
-interface ere {
-   ere b = ($$0, $$1) -> false;
-   ere c = ($$0, $$1) -> true;
+public interface ere extends erg {
+   @Override
+   String e();
 
-   boolean expand(eqw var1, Consumer<erl> var2);
+   void a(boolean var1);
 
-   default ere and(ere $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
+
+   @Override
+   default void a(p $$0, dcw $$1) {
+      erg.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
 
-   default ere or(ere $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
-   }
+   int f();
+
+   void a(int var1);
+
+   int t();
+
+   void d(int var1);
+
+   int u();
+
+   void e(int var1);
+
+   @Nullable
+   UUID v();
+
+   void a(UUID var1);
+
+   dcr k();
+
+   void a(dur.c var1);
+
+   dur.c p();
+
+   boolean n();
+
+   void c(boolean var1);
+
+   boolean m();
+
+   void a(dcr var1);
+
+   ewj<MinecraftServer> s();
+
+   void a(long var1);
+
+   void b(long var1);
 }

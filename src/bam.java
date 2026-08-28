@@ -3,6 +3,8 @@ import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -12,12 +14,17 @@ public class bam extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bht.a());
-      return this.fixTypeEverywhereTyped(
-         "BlockEntityCustomNameToComponentFix", this.getInputSchema().getType(bgh.s), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
-               Optional<String> $$3 = $$1.getOptional($$0);
-               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:command_block") ? $$2 : bce.a($$2);
-            })
-      );
+      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bgq.D.typeName(), bic.a()));
+      return this.fixTypeEverywhereTyped("BedItemColorFix", this.getInputSchema().getType(bgq.t), $$1 -> {
+         Optional<Pair<String, String>> $$2 = $$1.getOptional($$0);
+         if ($$2.isPresent() && Objects.equals($$2.get().getSecond(), "minecraft:bed")) {
+            Dynamic<?> $$3 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
+            if ($$3.get("Damage").asInt(0) == 0) {
+               return $$1.set(DSL.remainderFinder(), $$3.set("Damage", $$3.createShort((short)14)));
+            }
+         }
+
+         return $$1;
+      });
    }
 }

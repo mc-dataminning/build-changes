@@ -1,20 +1,9 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class ena extends ems {
-   public static final MapCodec<ena> a = awm.a(lr.f).fieldOf("tag").xmap(ena::new, $$0 -> $$0.b);
-   private final awm<dfi> b;
+public abstract class ena {
+   public static final Codec<ena> c = lt.o.r().dispatch("predicate_type", ena::a, enb::codec);
 
-   public ena(awm<dfi> $$0) {
-      this.b = $$0;
-   }
+   public abstract boolean a(jd var1, jd var2, jd var3, ayv var4);
 
-   @Override
-   public boolean a(dsl $$0, ayo $$1) {
-      return $$0.a(this.b);
-   }
-
-   @Override
-   protected emt<?> a() {
-      return emt.d;
-   }
+   protected abstract enb<?> a();
 }

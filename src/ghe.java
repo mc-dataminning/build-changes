@@ -1,76 +1,23 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+public class ghe implements ggt<dri> {
+   private final fum a;
 
-public class ghe {
-   private final Long2ObjectMap<ghe.a> a = new Long2ObjectOpenHashMap();
-
-   @Nullable
-   public ghd a(dcg $$0, ja $$1, ja $$2, int $$3) {
-      int $$4 = kc.a($$1.u() - $$3);
-      int $$5 = kc.a($$1.w() - $$3);
-      int $$6 = kc.a($$2.u() + $$3);
-      int $$7 = kc.a($$2.w() + $$3);
-      ghe.a[][] $$8 = new ghe.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
-         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
-            $$8[$$9 - $$4][$$10 - $$5] = (ghe.a)this.a.computeIfAbsent(dbn.c($$9, $$10), $$1x -> new ghe.a($$0.d(dbn.a($$1x), dbn.b($$1x))));
-         }
-      }
-
-      if (a($$1, $$2, $$4, $$5, $$8)) {
-         return null;
-      } else {
-         ghc[][] $$11 = new ghc[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
-            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
-               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
-            }
-         }
-
-         return new ghd($$0, $$4, $$5, $$11);
-      }
+   public ghe(ggu.a $$0) {
+      this.a = new fum($$0.a(fyd.r));
    }
 
-   private static boolean a(ja $$0, ja $$1, int $$2, int $$3, ghe.a[][] $$4) {
-      int $$5 = kc.a($$0.u());
-      int $$6 = kc.a($$0.w());
-      int $$7 = kc.a($$1.u());
-      int $$8 = kc.a($$1.w());
-
-      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
-         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-            dur $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
-            if (!$$11.a($$0.v(), $$1.v())) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   static final class a {
-      private final dur a;
-      @Nullable
-      private ghc b;
-
-      a(dur $$0) {
-         this.a = $$0;
-      }
-
-      public dur a() {
-         return this.a;
-      }
-
-      public ghc b() {
-         if (this.b == null) {
-            this.b = new ghc(this.a);
-         }
-
-         return this.b;
+   public void a(dri $$0, float $$1, fbc $$2, get $$3, int $$4, int $$5) {
+      dta $$6 = $$0.n();
+      if ($$6.c(dkh.d)) {
+         $$2.a();
+         $$2.a(0.5F, 1.0625F, 0.5F);
+         float $$7 = $$6.c(dkh.b).h().p();
+         $$2.a(a.d.rotationDegrees(-$$7));
+         $$2.a(a.f.rotationDegrees(67.5F));
+         $$2.a(0.0F, -0.125F, 0.0F);
+         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
+         fbg $$8 = ghc.a.a($$3, gfb::c);
+         this.a.b($$2, $$8, $$4, $$5, -1);
+         $$2.b();
       }
    }
 }

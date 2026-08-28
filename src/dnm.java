@@ -1,29 +1,73 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnm extends dhq implements dfl {
-   public static final MapCodec<dnm> c = b(dnm::new);
+public class dnm extends dfw {
+   public static final MapCodec<dnm> a = b(dnm::new);
+   public static final int b = 6;
+   public static final int c = 64;
+   private static final ji[] d = ji.values();
 
    @Override
    public MapCodec<dnm> a() {
-      return c;
+      return a;
    }
 
-   public dnm(dsk.d $$0) {
+   protected dnm(dsz.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean b(dcj $$0, ja $$1, dsl $$2) {
-      return true;
+   protected void b(dta $$0, dcu $$1, jd $$2, dta $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
+      }
    }
 
    @Override
-   public boolean a(dcg $$0, ayo $$1, ja $$2, dsl $$3) {
-      return true;
+   protected void a(dta $$0, dcu $$1, jd $$2, dfw $$3, jd $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public void a(aqm $$0, ayo $$1, ja $$2, dsl $$3) {
-      a($$0, $$2, new cud(this));
+   protected void a(dcu $$0, jd $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, dfy.aP.o(), 2);
+         $$0.a(null, $$1, avo.yW, avp.e, 1.0F, 1.0F);
+      }
+   }
+
+   private boolean b(dcu $$0, jd $$1) {
+      return jd.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (ji $$2 : d) {
+            $$1x.accept($$0x.a($$2));
+         }
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return true;
+         } else {
+            dta $$3 = $$0.a_($$2);
+            eoy $$4 = $$0.b_($$2);
+            if (!$$4.a(awj.a)) {
+               return false;
+            } else {
+               if ($$3.b() instanceof dgd $$6 && !$$6.a(null, $$0, $$2, $$3).e()) {
+                  return true;
+               }
+
+               if ($$3.b() instanceof dkm) {
+                  $$0.a($$2, dfy.a.o(), 3);
+               } else {
+                  if (!$$3.a(dfy.mc) && !$$3.a(dfy.md) && !$$3.a(dfy.bw) && !$$3.a(dfy.bx)) {
+                     return false;
+                  }
+
+                  dqf $$7 = $$3.t() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, dfy.a.o(), 3);
+               }
+
+               return true;
+            }
+         }
+      }) > 1;
    }
 }

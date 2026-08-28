@@ -1,20 +1,25 @@
-public interface ewl {
-   ewl a = ($$0, $$1) -> false;
-   ewl b = ($$0, $$1) -> !$$0 && !$$1;
-   ewl c = ($$0, $$1) -> $$1 && !$$0;
-   ewl d = ($$0, $$1) -> !$$0;
-   ewl e = ($$0, $$1) -> $$0 && !$$1;
-   ewl f = ($$0, $$1) -> !$$1;
-   ewl g = ($$0, $$1) -> $$0 != $$1;
-   ewl h = ($$0, $$1) -> !$$0 || !$$1;
-   ewl i = ($$0, $$1) -> $$0 && $$1;
-   ewl j = ($$0, $$1) -> $$0 == $$1;
-   ewl k = ($$0, $$1) -> $$1;
-   ewl l = ($$0, $$1) -> !$$0 || $$1;
-   ewl m = ($$0, $$1) -> $$0;
-   ewl n = ($$0, $$1) -> $$0 || !$$1;
-   ewl o = ($$0, $$1) -> $$0 || $$1;
-   ewl p = ($$0, $$1) -> true;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.stream.Collectors;
 
-   boolean apply(boolean var1, boolean var2);
+public class ewl extends Exception {
+   private final Path a;
+   private final List<ewn> b;
+
+   public ewl(Path $$0, List<ewn> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public String getMessage() {
+      return a(this.a, this.b);
+   }
+
+   public static String a(Path $$0, List<ewn> $$1) {
+      return "Failed to validate '"
+         + $$0
+         + "'. Found forbidden symlinks: "
+         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   }
 }

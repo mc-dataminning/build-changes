@@ -1,44 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class eco extends ebl<edx> {
-   private static final int a = 7;
-
-   eco(Codec<edx> $$0) {
+public class eco extends eca<eel> {
+   public eco(Codec<eel> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebn<edx> $$0) {
-      ddc $$1 = $$0.b();
-      ayo $$2 = $$0.d();
-      edx $$3 = $$0.f();
-      ja $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      ja.a $$6 = new ja.a();
+   public boolean a(ecc<eel> $$0) {
+      int $$1 = 0;
+      ddq $$2 = $$0.b();
+      jd $$3 = $$0.e();
+      ayv $$4 = $$0.d();
+      int $$5 = $$2.a(dyv.a.d, $$3.u(), $$3.w());
+      jd $$6 = new jd($$3.u(), $$5, $$3.w());
+      if ($$2.a_($$6).a(dfy.G)) {
+         dta $$7 = dfy.mc.o();
+         dta $$8 = dfy.md.o();
+         int $$9 = 1 + $$4.a(10);
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dsl $$8 = $$1.a_($$6);
-
-         for (edx.a $$9 : $$3.b) {
-            if (ecg.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
+         for (int $$10 = 0; $$10 <= $$9; $$10++) {
+            if ($$2.a_($$6).a(dfy.G) && $$2.a_($$6.c()).a(dfy.G) && $$8.a($$2, $$6)) {
+               if ($$10 == $$9) {
+                  $$2.a($$6, $$7.a(dka.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               } else {
+                  $$2.a($$6, $$8, 2);
+               }
+            } else if ($$10 > 0) {
+               jd $$11 = $$6.d();
+               if ($$7.a($$2, $$11) && !$$2.a_($$11.d()).a(dfy.mc)) {
+                  $$2.a($$11, $$7.a(dka.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               }
                break;
             }
+
+            $$6 = $$6.c();
          }
       }
 
-      return true;
-   }
-
-   private void a(ja.a $$0, ayo $$1, ja $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(ayo $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+      return $$1 > 0;
    }
 }

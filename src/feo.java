@@ -1,4 +1,8 @@
-import java.util.Set;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record feo(String a, fei b, boolean c, Set<String> d) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface feo {
 }

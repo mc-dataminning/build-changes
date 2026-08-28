@@ -1,9 +1,23 @@
-import com.mojang.serialization.MapCodec;
+public enum duk implements azj {
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
-public class duk {
-   public static MapCodec<? extends dui> a(jw<MapCodec<? extends dui>> $$0) {
-      jw.a($$0, "noise", dyj.c);
-      jw.a($$0, "flat", dyb.c);
-      return jw.a($$0, "debug", dxx.c);
+   private final String e;
+   private final wy f;
+
+   private duk(final String $$0) {
+      this.e = $$0;
+      this.f = wy.c("structure_block.mode_info." + $$0);
+   }
+
+   @Override
+   public String c() {
+      return this.e;
+   }
+
+   public wy a() {
+      return this.f;
    }
 }

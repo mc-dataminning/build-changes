@@ -1,27 +1,71 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public record dv(de.d c) implements bv {
-   public static final MapCodec<dv> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(de.d.d.optionalFieldOf("size", de.d.c).forGetter(dv::b)).apply($$0, dv::new)
-   );
+public abstract class dv<T extends dv.a> implements aq<T> {
+   private final Map<aky, Set<aq.a<T>>> a = Maps.newIdentityHashMap();
 
-   public static dv a(de.d $$0) {
-      return new dv($$0);
+   @Override
+   public final void a(aky $$0, aq.a<T> $$1) {
+      this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
    }
 
    @Override
-   public boolean a(bsh $$0, aqm $$1, @Nullable ewh $$2) {
-      return $$0 instanceof cka $$3 ? this.c.d($$3.go()) : false;
+   public final void b(aky $$0, aq.a<T> $$1) {
+      Set<aq.a<T>> $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         $$2.remove($$1);
+         if ($$2.isEmpty()) {
+            this.a.remove($$0);
+         }
+      }
    }
 
    @Override
-   public MapCodec<dv> a() {
-      return bw.d;
+   public final void a(aky $$0) {
+      this.a.remove($$0);
    }
 
-   public de.d b() {
-      return this.c;
+   protected void a(aqu $$0, Predicate<T> $$1) {
+      aky $$2 = $$0.R();
+      Set<aq.a<T>> $$3 = this.a.get($$2);
+      if ($$3 != null && !$$3.isEmpty()) {
+         erl $$4 = bv.b($$0, $$0);
+         List<aq.a<T>> $$5 = null;
+
+         for (aq.a<T> $$6 : $$3) {
+            T $$7 = $$6.a();
+            if ($$1.test($$7)) {
+               Optional<bg> $$8 = $$7.a();
+               if ($$8.isEmpty() || $$8.get().a($$4)) {
+                  if ($$5 == null) {
+                     $$5 = Lists.newArrayList();
+                  }
+
+                  $$5.add($$6);
+               }
+            }
+         }
+
+         if ($$5 != null) {
+            for (aq.a<T> $$9 : $$5) {
+               $$9.a($$2);
+            }
+         }
+      }
+   }
+
+   public interface a extends ar {
+      @Override
+      default void a(bh $$0) {
+         $$0.a(this.a(), ".player");
+      }
+
+      Optional<bg> a();
    }
 }

@@ -1,83 +1,77 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.function.IntFunction;
-import java.util.function.ToIntFunction;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class aww {
-   private static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1) {
-      if ($$1.length == 0) {
-         throw new IllegalArgumentException("Empty value list");
-      } else {
-         Int2ObjectMap<T> $$2 = new Int2ObjectOpenHashMap();
+   public static Map<akp<? extends jz<?>>, aww.a> a(jt<akz> $$0) {
+      return kd.b($$0)
+         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
+         .filter($$0x -> ((aww.a)$$0x.getSecond()).a() > 0)
+         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+   }
 
-         for (T $$3 : $$1) {
-            int $$4 = $$0.applyAsInt($$3);
-            T $$5 = (T)$$2.put($$4, $$3);
-            if ($$5 != null) {
-               throw new IllegalArgumentException("Duplicate entry on id " + $$4 + ": current=" + $$3 + ", previous=" + $$5);
+   private static <T> aww.a a(jz<T> $$0) {
+      Map<akq, IntList> $$1 = new HashMap<>();
+      $$0.j().forEach($$2 -> {
+         jq<T> $$3 = (jq<T>)$$2.getSecond();
+         IntList $$4 = new IntArrayList($$3.b());
+
+         for (jm<T> $$5 : $$3) {
+            if ($$5.f() != jm.b.a) {
+               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
             }
+
+            $$4.add($$0.a($$5.a()));
          }
 
-         return $$2;
+         $$1.put(((awt)$$2.getFirst()).b(), $$4);
+      });
+      return new aww.a($$1);
+   }
+
+   static <T> void a(akp<? extends jz<T>> $$0, jz<T> $$1, aww.a $$2, aww.b<T> $$3) {
+      $$2.a.forEach(($$3x, $$4) -> {
+         awt<T> $$5 = awt.a($$0, $$3x);
+         List<jm<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
+         $$3.accept($$5, $$6);
+      });
+   }
+
+   public static final class a {
+      final Map<akq, IntList> a;
+
+      a(Map<akq, IntList> $$0) {
+         this.a = $$0;
+      }
+
+      public void a(vv $$0) {
+         $$0.a(this.a, vv::a, vv::a);
+      }
+
+      public static aww.a b(vv $$0) {
+         return new aww.a($$0.a(vv::q, vv::a));
+      }
+
+      public int a() {
+         return this.a.size();
+      }
+
+      public <T> void a(jz<T> $$0) {
+         if (this.a() != 0) {
+            Map<awt<T>, List<jm<T>>> $$1 = new HashMap<>(this.a());
+            aww.a($$0.d(), $$0, this, $$1::put);
+            $$0.a($$1);
+         }
       }
    }
 
-   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, T $$2) {
-      IntFunction<T> $$3 = a($$0, $$1);
-      return $$2x -> Objects.requireNonNullElse($$3.apply($$2x), $$2);
-   }
-
-   private static <T> T[] b(ToIntFunction<T> $$0, T[] $$1) {
-      int $$2 = $$1.length;
-      if ($$2 == 0) {
-         throw new IllegalArgumentException("Empty value list");
-      } else {
-         T[] $$3 = (T[])$$1.clone();
-         Arrays.fill($$3, null);
-
-         for (T $$4 : $$1) {
-            int $$5 = $$0.applyAsInt($$4);
-            if ($$5 < 0 || $$5 >= $$2) {
-               throw new IllegalArgumentException("Values are not continous, found index " + $$5 + " for value " + $$4);
-            }
-
-            T $$6 = $$3[$$5];
-            if ($$6 != null) {
-               throw new IllegalArgumentException("Duplicate entry on id " + $$5 + ": current=" + $$4 + ", previous=" + $$6);
-            }
-
-            $$3[$$5] = $$4;
-         }
-
-         for (int $$7 = 0; $$7 < $$2; $$7++) {
-            if ($$3[$$7] == null) {
-               throw new IllegalArgumentException("Missing value at index: " + $$7);
-            }
-         }
-
-         return $$3;
-      }
-   }
-
-   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, aww.a $$2) {
-      T[] $$3 = b($$0, $$1);
-      int $$4 = $$3.length;
-
-      return switch ($$2) {
-         case a -> {
-            T $$5 = $$3[0];
-            yield $$3x -> $$3x >= 0 && $$3x < $$4 ? $$3[$$3x] : $$5;
-         }
-         case b -> $$2x -> $$3[ayg.b($$2x, $$4)];
-         case c -> $$2x -> $$3[ayg.a($$2x, 0, $$4 - 1)];
-      };
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+   @FunctionalInterface
+   public interface b<T> {
+      void accept(awt<T> var1, List<jm<T>> var2);
    }
 }

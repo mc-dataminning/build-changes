@@ -2,228 +2,110 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class qk {
-   public static void a(qm<ekh> $$0) {
-      jk<emw> $$1 = $$0.a(lr.aR);
-      jj<emw> $$2 = $$1.b(qu.s);
-      jj<emw> $$3 = $$1.b(qu.B);
-      jj<emw> $$4 = $$1.b(qu.r);
-      jj<emw> $$5 = $$1.b(qu.C);
-      jj<emw> $$6 = $$1.b(qu.A);
-      jk<ekh> $$7 = $$0.a(lr.aT);
-      jj<ekh> $$8 = $$7.b(qt.a);
-      qt.a($$0, "bastion/treasure/bases", new ekh($$8, ImmutableList.of(Pair.of(ekf.b("bastion/treasure/bases/lava_basin", $$2), 1)), ekh.a.b));
-      qt.a($$0, "bastion/treasure/stairs", new ekh($$8, ImmutableList.of(Pair.of(ekf.b("bastion/treasure/stairs/lower_stairs", $$2), 1)), ekh.a.b));
-      qt.a(
+   public static void a(qp<ekw> $$0) {
+      jn<enl> $$1 = $$0.a(lu.aS);
+      jm<enl> $$2 = $$1.b(qx.t);
+      jn<ekw> $$3 = $$0.a(lu.aU);
+      jm<ekw> $$4 = $$3.b(qw.a);
+      qw.a(
          $$0,
-         "bastion/treasure/bases/centers",
-         new ekh(
-            $$8,
+         "bastion/units/center_pieces",
+         new ekw(
+            $$4,
             ImmutableList.of(
-               Pair.of(ekf.b("bastion/treasure/bases/centers/center_0", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/bases/centers/center_1", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/bases/centers/center_2", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/bases/centers/center_3", $$2), 1)
+               Pair.of(eku.b("bastion/units/center_pieces/center_0", $$2), 1),
+               Pair.of(eku.b("bastion/units/center_pieces/center_1", $$2), 1),
+               Pair.of(eku.b("bastion/units/center_pieces/center_2", $$2), 1)
             ),
-            ekh.a.b
+            ekw.a.b
          )
       );
-      qt.a($$0, "bastion/treasure/brains", new ekh($$8, ImmutableList.of(Pair.of(ekf.b("bastion/treasure/brains/center_brain", $$2), 1)), ekh.a.b));
-      qt.a(
+      qw.a(
          $$0,
-         "bastion/treasure/walls",
-         new ekh(
-            $$8,
-            ImmutableList.of(Pair.of(ekf.b("bastion/treasure/walls/lava_wall", $$2), 1), Pair.of(ekf.b("bastion/treasure/walls/entrance_wall", $$3), 1)),
-            ekh.a.b
+         "bastion/units/pathways",
+         new ekw(
+            $$4,
+            ImmutableList.of(Pair.of(eku.b("bastion/units/pathways/pathway_0", $$2), 1), Pair.of(eku.b("bastion/units/pathways/pathway_wall_0", $$2), 1)),
+            ekw.a.b
          )
       );
-      qt.a(
+      qw.a(
          $$0,
-         "bastion/treasure/walls/outer",
-         new ekh(
-            $$8,
+         "bastion/units/walls/wall_bases",
+         new ekw(
+            $$4,
+            ImmutableList.of(Pair.of(eku.b("bastion/units/walls/wall_base", $$2), 1), Pair.of(eku.b("bastion/units/walls/connected_wall", $$2), 1)),
+            ekw.a.b
+         )
+      );
+      qw.a(
+         $$0,
+         "bastion/units/stages/stage_0",
+         new ekw(
+            $$4,
             ImmutableList.of(
-               Pair.of(ekf.b("bastion/treasure/walls/outer/top_corner", $$3), 1),
-               Pair.of(ekf.b("bastion/treasure/walls/outer/mid_corner", $$3), 1),
-               Pair.of(ekf.b("bastion/treasure/walls/outer/bottom_corner", $$3), 1),
-               Pair.of(ekf.b("bastion/treasure/walls/outer/outer_wall", $$3), 1),
-               Pair.of(ekf.b("bastion/treasure/walls/outer/medium_outer_wall", $$3), 1),
-               Pair.of(ekf.b("bastion/treasure/walls/outer/tall_outer_wall", $$3), 1)
+               Pair.of(eku.b("bastion/units/stages/stage_0_0", $$2), 1),
+               Pair.of(eku.b("bastion/units/stages/stage_0_1", $$2), 1),
+               Pair.of(eku.b("bastion/units/stages/stage_0_2", $$2), 1),
+               Pair.of(eku.b("bastion/units/stages/stage_0_3", $$2), 1)
             ),
-            ekh.a.b
+            ekw.a.b
          )
       );
-      qt.a(
+      qw.a(
          $$0,
-         "bastion/treasure/walls/bottom",
-         new ekh(
-            $$8,
+         "bastion/units/stages/stage_1",
+         new ekw(
+            $$4,
             ImmutableList.of(
-               Pair.of(ekf.b("bastion/treasure/walls/bottom/wall_0", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/walls/bottom/wall_1", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/walls/bottom/wall_2", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/walls/bottom/wall_3", $$2), 1)
+               Pair.of(eku.b("bastion/units/stages/stage_1_0", $$2), 1),
+               Pair.of(eku.b("bastion/units/stages/stage_1_1", $$2), 1),
+               Pair.of(eku.b("bastion/units/stages/stage_1_2", $$2), 1),
+               Pair.of(eku.b("bastion/units/stages/stage_1_3", $$2), 1)
             ),
-            ekh.a.b
+            ekw.a.b
          )
       );
-      qt.a(
+      qw.a($$0, "bastion/units/stages/rot/stage_1", new ekw($$4, ImmutableList.of(Pair.of(eku.b("bastion/units/stages/rot/stage_1_0", $$2), 1)), ekw.a.b));
+      qw.a(
          $$0,
-         "bastion/treasure/walls/mid",
-         new ekh(
-            $$8,
+         "bastion/units/stages/stage_2",
+         new ekw(
+            $$4, ImmutableList.of(Pair.of(eku.b("bastion/units/stages/stage_2_0", $$2), 1), Pair.of(eku.b("bastion/units/stages/stage_2_1", $$2), 1)), ekw.a.b
+         )
+      );
+      qw.a(
+         $$0,
+         "bastion/units/stages/stage_3",
+         new ekw(
+            $$4,
             ImmutableList.of(
-               Pair.of(ekf.b("bastion/treasure/walls/mid/wall_0", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/walls/mid/wall_1", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/walls/mid/wall_2", $$2), 1)
+               Pair.of(eku.b("bastion/units/stages/stage_3_0", $$2), 1),
+               Pair.of(eku.b("bastion/units/stages/stage_3_1", $$2), 1),
+               Pair.of(eku.b("bastion/units/stages/stage_3_2", $$2), 1),
+               Pair.of(eku.b("bastion/units/stages/stage_3_3", $$2), 1)
             ),
-            ekh.a.b
+            ekw.a.b
          )
       );
-      qt.a(
+      qw.a($$0, "bastion/units/fillers/stage_0", new ekw($$4, ImmutableList.of(Pair.of(eku.b("bastion/units/fillers/stage_0", $$2), 1)), ekw.a.b));
+      qw.a($$0, "bastion/units/edges", new ekw($$4, ImmutableList.of(Pair.of(eku.b("bastion/units/edges/edge_0", $$2), 1)), ekw.a.b));
+      qw.a($$0, "bastion/units/wall_units", new ekw($$4, ImmutableList.of(Pair.of(eku.b("bastion/units/wall_units/unit_0", $$2), 1)), ekw.a.b));
+      qw.a($$0, "bastion/units/edge_wall_units", new ekw($$4, ImmutableList.of(Pair.of(eku.b("bastion/units/wall_units/edge_0_large", $$2), 1)), ekw.a.b));
+      qw.a(
          $$0,
-         "bastion/treasure/walls/top",
-         new ekh(
-            $$8,
+         "bastion/units/ramparts",
+         new ekw(
+            $$4,
             ImmutableList.of(
-               Pair.of(ekf.b("bastion/treasure/walls/top/main_entrance", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/walls/top/wall_0", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/walls/top/wall_1", $$2), 1)
+               Pair.of(eku.b("bastion/units/ramparts/ramparts_0", $$2), 1),
+               Pair.of(eku.b("bastion/units/ramparts/ramparts_1", $$2), 1),
+               Pair.of(eku.b("bastion/units/ramparts/ramparts_2", $$2), 1)
             ),
-            ekh.a.b
+            ekw.a.b
          )
       );
-      qt.a(
-         $$0,
-         "bastion/treasure/connectors",
-         new ekh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ekf.b("bastion/treasure/connectors/center_to_wall_middle", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/connectors/center_to_wall_top", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/connectors/center_to_wall_top_entrance", $$2), 1)
-            ),
-            ekh.a.b
-         )
-      );
-      qt.a($$0, "bastion/treasure/entrances", new ekh($$8, ImmutableList.of(Pair.of(ekf.b("bastion/treasure/entrances/entrance_0", $$2), 1)), ekh.a.b));
-      qt.a(
-         $$0,
-         "bastion/treasure/ramparts",
-         new ekh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ekf.b("bastion/treasure/ramparts/mid_wall_main", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/ramparts/mid_wall_side", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/ramparts/bottom_wall_0", $$4), 1),
-               Pair.of(ekf.b("bastion/treasure/ramparts/top_wall", $$5), 1),
-               Pair.of(ekf.b("bastion/treasure/ramparts/lava_basin_side", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/ramparts/lava_basin_main", $$2), 1)
-            ),
-            ekh.a.b
-         )
-      );
-      qt.a(
-         $$0,
-         "bastion/treasure/corners/bottom",
-         new ekh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ekf.b("bastion/treasure/corners/bottom/corner_0", $$2), 1), Pair.of(ekf.b("bastion/treasure/corners/bottom/corner_1", $$2), 1)
-            ),
-            ekh.a.b
-         )
-      );
-      qt.a(
-         $$0,
-         "bastion/treasure/corners/edges",
-         new ekh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ekf.b("bastion/treasure/corners/edges/bottom", $$3), 1),
-               Pair.of(ekf.b("bastion/treasure/corners/edges/middle", $$3), 1),
-               Pair.of(ekf.b("bastion/treasure/corners/edges/top", $$3), 1)
-            ),
-            ekh.a.b
-         )
-      );
-      qt.a(
-         $$0,
-         "bastion/treasure/corners/middle",
-         new ekh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ekf.b("bastion/treasure/corners/middle/corner_0", $$2), 1), Pair.of(ekf.b("bastion/treasure/corners/middle/corner_1", $$2), 1)
-            ),
-            ekh.a.b
-         )
-      );
-      qt.a(
-         $$0,
-         "bastion/treasure/corners/top",
-         new ekh(
-            $$8,
-            ImmutableList.of(Pair.of(ekf.b("bastion/treasure/corners/top/corner_0", $$2), 1), Pair.of(ekf.b("bastion/treasure/corners/top/corner_1", $$2), 1)),
-            ekh.a.b
-         )
-      );
-      qt.a(
-         $$0,
-         "bastion/treasure/extensions/large_pool",
-         new ekh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ekf.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/extensions/fire_room", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/extensions/large_bridge_0", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/extensions/large_bridge_1", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/extensions/large_bridge_2", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/extensions/large_bridge_3", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/extensions/roofed_bridge", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/extensions/empty", $$2), 1)
-            ),
-            ekh.a.b
-         )
-      );
-      qt.a(
-         $$0,
-         "bastion/treasure/extensions/small_pool",
-         new ekh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ekf.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/extensions/fire_room", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/extensions/small_bridge_0", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/extensions/small_bridge_1", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/extensions/small_bridge_2", $$2), 1),
-               Pair.of(ekf.b("bastion/treasure/extensions/small_bridge_3", $$2), 1)
-            ),
-            ekh.a.b
-         )
-      );
-      qt.a(
-         $$0,
-         "bastion/treasure/extensions/houses",
-         new ekh(
-            $$8,
-            ImmutableList.of(Pair.of(ekf.b("bastion/treasure/extensions/house_0", $$2), 1), Pair.of(ekf.b("bastion/treasure/extensions/house_1", $$2), 1)),
-            ekh.a.b
-         )
-      );
-      qt.a(
-         $$0,
-         "bastion/treasure/roofs",
-         new ekh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(ekf.b("bastion/treasure/roofs/wall_roof", $$6), 1),
-               Pair.of(ekf.b("bastion/treasure/roofs/corner_roof", $$6), 1),
-               Pair.of(ekf.b("bastion/treasure/roofs/center_roof", $$6), 1)
-            ),
-            ekh.a.b
-         )
-      );
+      qw.a($$0, "bastion/units/large_ramparts", new ekw($$4, ImmutableList.of(Pair.of(eku.b("bastion/units/ramparts/ramparts_0", $$2), 1)), ekw.a.b));
+      qw.a($$0, "bastion/units/rampart_plates", new ekw($$4, ImmutableList.of(Pair.of(eku.b("bastion/units/rampart_plates/plate_0", $$2), 1)), ekw.a.b));
    }
 }

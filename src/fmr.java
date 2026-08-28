@@ -1,79 +1,57 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class fmr extends fnx {
+   private final Runnable c;
+   protected final fmr.a a;
+   private final wy q;
+   private final boolean r;
+   private fiz s = fiz.a;
+   protected int b;
+   private fii u;
 
-public class fmr extends fnl {
-   private static final wu a = wu.c("addServer.enterIp");
-   private fhu b;
-   private final fyz c;
-   private fid q;
-   private final BooleanConsumer r;
-   private final fnl s;
-
-   public fmr(fnl $$0, BooleanConsumer $$1, fyz $$2) {
-      super(wu.c("selectServer.direct"));
-      this.s = $$0;
-      this.c = $$2;
-      this.r = $$1;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aJ_() != this.q || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.m();
-         return true;
-      }
+   public fmr(Runnable $$0, fmr.a $$1, wy $$2, wy $$3, boolean $$4) {
+      super($$2);
+      this.c = $$0;
+      this.a = $$1;
+      this.q = $$3;
+      this.r = $$4;
    }
 
    @Override
    protected void aP_() {
-      this.q = new fid(this.o, this.m / 2 - 100, 116, 200, 20, wu.c("addServer.enterIp"));
-      this.q.f(128);
-      this.q.a(this.l.m.Z);
-      this.q.b($$0 -> this.D());
-      this.d(this.q);
-      this.b = this.c(fhu.a(wu.c("selectServer.select"), $$0 -> this.m()).a(this.m / 2 - 100, this.n / 4 + 96 + 12, 200, 20).a());
-      this.c(fhu.a(wt.e, $$0 -> this.r.accept(false)).a(this.m / 2 - 100, this.n / 4 + 120 + 12, 200, 20).a());
-      this.D();
+      super.aP_();
+      this.s = fiz.a(this.o, this.q, this.m - 50);
+      int $$0 = (this.s.a() + 1) * 9;
+      this.c(fig.a(wy.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.u.a())).a(this.m / 2 - 155, 100 + $$0, 150, 20).a());
+      this.c(fig.a(wy.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.u.a())).a(this.m / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+      this.c(fig.a(wx.e, $$0x -> this.c.run()).a(this.m / 2 - 155 + 80, 124 + $$0, 150, 20).a());
+      this.u = fii.a(wy.c("selectWorld.backupEraseCache"), this.o).a(this.m / 2 - 155 + 80, 76 + $$0).a();
+      if (this.r) {
+         this.c(this.u);
+      }
    }
 
    @Override
-   protected void aE_() {
-      this.b(this.q);
-   }
-
-   @Override
-   public void a(ffw $$0, int $$1, int $$2) {
-      String $$3 = this.q.a();
-      this.b($$0, $$1, $$2);
-      this.q.a($$3);
-   }
-
-   private void m() {
-      this.c.b = this.q.a();
-      this.r.accept(true);
-   }
-
-   @Override
-   public void d() {
-      this.l.a(this.s);
-   }
-
-   @Override
-   public void j() {
-      this.l.m.Z = this.q.a();
-      this.l.m.av();
-   }
-
-   private void D() {
-      this.b.j = gad.b(this.q.a());
-   }
-
-   @Override
-   public void a(fhh $$0, int $$1, int $$2, float $$3) {
+   public void a(fht $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 20, 16777215);
-      $$0.b(this.o, a, this.m / 2 - 100 + 1, 100, 10526880);
-      this.q.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, 50, 16777215);
+      this.s.a($$0, this.m / 2, 70);
+   }
+
+   @Override
+   public boolean aF_() {
+      return false;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.run();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   public interface a {
+      void proceed(boolean var1, boolean var2);
    }
 }

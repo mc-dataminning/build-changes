@@ -1,51 +1,54 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record zi(aac c) implements zb<zh> {
-   private static final int d = 1048576;
-   public static final ys<wf, zi> a = aac.<wf>a(
-         $$0 -> aad.a($$0, 1048576),
-         ac.a(
-            Lists.newArrayList(
-               new aac.c[]{
-                  new aac.c<>(aaa.b, aaa.a),
-                  new aac.c<>(zy.b, zy.a),
-                  new aac.c<>(zz.b, zz.a),
-                  new aac.c<>(aab.b, aab.a),
-                  new aac.c<>(aae.b, aae.a),
-                  new aac.c<>(aaf.b, aaf.a),
-                  new aac.c<>(aag.b, aag.a),
-                  new aac.c<>(aah.b, aah.a),
-                  new aac.c<>(aai.b, aai.a),
-                  new aac.c<>(aaj.b, aaj.a),
-                  new aac.c<>(aak.b, aak.a),
-                  new aac.c<>(aal.b, aal.a),
-                  new aac.c<>(aam.b, aam.a),
-                  new aac.c<>(aan.b, aan.a),
-                  new aac.c<>(aao.b, aao.a),
-                  new aac.c<>(aap.b, aap.a),
-                  new aac.c<>(aaq.b, aaq.a),
-                  new aac.c<>(aar.b, aar.a),
-                  new aac.c<>(aas.b, aas.a)
+public class zi {
+   private static final Logger a = LogUtils.getLogger();
+
+   public static <T extends we> void a(zf<T> $$0, T $$1, aqt $$2) throws alc {
+      a($$0, $$1, $$2.o());
+   }
+
+   public static <T extends we> void a(zf<T> $$0, T $$1, bpg<?> $$2) throws alc {
+      if (!$$2.bx()) {
+         $$2.c(() -> {
+            if ($$1.a($$0)) {
+               try {
+                  $$0.a($$1);
+               } catch (Exception var4) {
+                  if (var4 instanceof z $$3 && $$3.getCause() instanceof OutOfMemoryError) {
+                     throw a(var4, $$0, $$1);
+                  }
+
+                  $$1.a($$0, var4);
                }
-            ),
-            $$0 -> {
+            } else {
+               a.debug("Ignoring packet due to disconnection: {}", $$0);
             }
-         )
-      )
-      .a(zi::new, zi::b);
-   public static final ys<vr, zi> b = aac.<vr>a($$0 -> aad.a($$0, 1048576), List.of(new aac.c<>(aaa.b, aaa.a))).a(zi::new, zi::b);
-
-   @Override
-   public zd<zi> a() {
-      return zr.a;
+         });
+         throw alc.a;
+      }
    }
 
-   public void a(zh $$0) {
-      $$0.a(this);
+   public static <T extends we> z a(Exception $$0, zf<T> $$1, T $$2) {
+      if ($$0 instanceof z $$3) {
+         a($$3.a(), $$2, $$1);
+         return $$3;
+      } else {
+         o $$4 = o.a($$0, "Main thread packet handler");
+         a($$4, $$2, $$1);
+         return new z($$4);
+      }
    }
 
-   public aac b() {
-      return this.c;
+   public static <T extends we> void a(o $$0, T $$1, @Nullable zf<T> $$2) {
+      if ($$2 != null) {
+         p $$3 = $$0.a("Incoming Packet");
+         $$3.a("Type", () -> $$2.a().toString());
+         $$3.a("Is Terminal", () -> Boolean.toString($$2.d()));
+         $$3.a("Is Skippable", () -> Boolean.toString($$2.c()));
+      }
+
+      $$1.a($$0);
    }
 }

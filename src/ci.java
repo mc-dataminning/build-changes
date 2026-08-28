@@ -1,18 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record ci(dh c) implements cq {
-   public static final Codec<ci> a = dh.a.xmap(ci::new, ci::a);
+public record ci(Optional<bd<cuo, cs>> c) implements dw<cxd> {
+   public static final Codec<ci> a = RecordCodecBuilder.create($$0 -> $$0.group(bd.a(cs.a).optionalFieldOf("items").forGetter(ci::b)).apply($$0, ci::new));
 
    @Override
-   public boolean a(cud $$0) {
-      return this.c.a($$0);
+   public kp<cxd> a() {
+      return kq.F;
    }
 
-   public static ci a(dh $$0) {
-      return new ci($$0);
+   public boolean a(cuo $$0, cxd $$1) {
+      return !this.c.isPresent() || this.c.get().a($$1.b());
    }
 
-   public dh a() {
+   public Optional<bd<cuo, cs>> b() {
       return this.c;
    }
 }

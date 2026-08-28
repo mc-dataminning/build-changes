@@ -1,65 +1,84 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystem;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public record axy<T extends Comparable<T>>(T b, T c) {
-   public static final Codec<axy<Integer>> a = a(Codec.INT);
+public class axy implements Closeable {
+   private static final Logger a = LogUtils.getLogger();
+   private final Path b;
+   private final Path c;
+   private final FileSystem d;
 
-   public axy(T b, T c) {
-      if (b.compareTo(c) > 0) {
-         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
-      } else {
-         this.b = b;
-         this.c = c;
+   public axy(Path $$0) {
+      this.b = $$0;
+      this.c = $$0.resolveSibling($$0.getFileName().toString() + "_tmp");
+
+      try {
+         this.d = ad.f.newFileSystem(this.c, ImmutableMap.of("create", "true"));
+      } catch (IOException var3) {
+         throw new UncheckedIOException(var3);
       }
    }
 
-   public axy(T $$0) {
-      this($$0, $$0);
+   public void a(Path $$0, String $$1) {
+      try {
+         Path $$2 = this.d.getPath(File.separator);
+         Path $$3 = $$2.resolve($$0.toString());
+         Files.createDirectories($$3.getParent());
+         Files.write($$3, $$1.getBytes(StandardCharsets.UTF_8));
+      } catch (IOException var5) {
+         throw new UncheckedIOException(var5);
+      }
    }
 
-   public static <T extends Comparable<T>> Codec<axy<T>> a(Codec<T> $$0) {
-      return axo.a($$0, "min_inclusive", "max_inclusive", axy::a, axy::a, axy::b);
+   public void a(Path $$0, File $$1) {
+      try {
+         Path $$2 = this.d.getPath(File.separator);
+         Path $$3 = $$2.resolve($$0.toString());
+         Files.createDirectories($$3.getParent());
+         Files.copy($$1.toPath(), $$3);
+      } catch (IOException var5) {
+         throw new UncheckedIOException(var5);
+      }
    }
 
-   public static <T extends Comparable<T>> Codec<axy<T>> a(Codec<T> $$0, T $$1, T $$2) {
-      return a($$0)
-         .validate(
-            $$2x -> {
-               if ($$2x.a().compareTo($$1) < 0) {
-                  return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
-               } else {
-                  return $$2x.b().compareTo($$2) > 0
-                     ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
-                     : DataResult.success($$2x);
+   public void a(Path $$0) {
+      try {
+         Path $$1 = this.d.getPath(File.separator);
+         if (Files.isRegularFile($$0)) {
+            Path $$2 = $$1.resolve($$0.getParent().relativize($$0).toString());
+            Files.copy($$2, $$0);
+         } else {
+            try (Stream<Path> $$3 = Files.find($$0, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
+               for (Path $$4 : $$3.collect(Collectors.toList())) {
+                  Path $$5 = $$1.resolve($$0.relativize($$4).toString());
+                  Files.createDirectories($$5.getParent());
+                  Files.copy($$4, $$5);
                }
             }
-         );
-   }
-
-   public static <T extends Comparable<T>> DataResult<axy<T>> a(T $$0, T $$1) {
-      return $$0.compareTo($$1) <= 0
-         ? DataResult.success(new axy($$0, $$1))
-         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
-   }
-
-   public boolean a(T $$0) {
-      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
-   }
-
-   public boolean a(axy<T> $$0) {
-      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
+         }
+      } catch (IOException var9) {
+         throw new UncheckedIOException(var9);
+      }
    }
 
    @Override
-   public String toString() {
-      return "[" + this.b + ", " + this.c + "]";
-   }
-
-   public T a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+   public void close() {
+      try {
+         this.d.close();
+         Files.move(this.c, this.b);
+         a.info("Compressed to {}", this.b);
+      } catch (IOException var2) {
+         throw new UncheckedIOException(var2);
+      }
    }
 }

@@ -1,24 +1,21 @@
-public record afr(int b) implements zb<abn> {
-   public static final ys<vr, afr> a = zb.a(afr::a, afr::new);
+public record afr(wy b, boolean c) implements zf<abt> {
+   public static final yw<wj, afr> a = yw.a(xa.d, afr::b, yu.b, afr::e, afr::new);
 
-   private afr(vr $$0) {
-      this($$0.l());
+   @Override
+   public zh<afr> a() {
+      return agf.aV;
    }
 
-   public static afr a(bqs $$0) {
-      return new afr($$0.k());
-   }
-
-   private void a(vr $$0) {
-      $$0.c(this.b);
+   public void a(abt $$0) {
+      $$0.a(this);
    }
 
    @Override
-   public zd<afr> a() {
-      return afz.cg;
+   public boolean c() {
+      return true;
    }
 
-   public void a(abn $$0) {
-      $$0.a(this);
+   public boolean e() {
+      return this.c;
    }
 }

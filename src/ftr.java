@@ -1,75 +1,112 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-public class ftr extends ftq {
-   private static final String a = "right_body_stick";
-   private static final String b = "left_body_stick";
-   private static final String w = "shoulder_stick";
-   private static final String x = "base_plate";
-   private final fxq y;
-   private final fxq z;
-   private final fxq A;
-   private final fxq B;
+public class ftr implements ftm, ftn {
+   private static final akq a = akq.b("spectator/teleport_to_team");
+   private static final wy b = wy.c("spectatorMenu.team_teleport");
+   private static final wy c = wy.c("spectatorMenu.team_teleport.prompt");
+   private final List<ftn> d;
 
-   public ftr(fxq $$0) {
-      super($$0);
-      this.y = $$0.b("right_body_stick");
-      this.z = $$0.b("left_body_stick");
-      this.A = $$0.b("shoulder_stick");
-      this.B = $$0.b("base_plate");
-      this.l.k = false;
+   public ftr() {
+      fgi $$0 = fgi.Q();
+      this.d = a($$0, $$0.r.M());
    }
 
-   public static fxw c() {
-      fxy $$0 = fvd.a(fxu.a, 0.0F);
-      fxz $$1 = $$0.a();
-      $$1.a("head", fxv.c().a(0, 0).a(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), fxs.a(0.0F, 1.0F, 0.0F));
-      $$1.a("body", fxv.c().a(0, 26).a(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), fxs.a);
-      $$1.a("right_arm", fxv.c().a(24, 0).a(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fxs.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", fxv.c().a(32, 16).a().a(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fxs.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", fxv.c().a(8, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fxs.a(-1.9F, 12.0F, 0.0F));
-      $$1.a("left_leg", fxv.c().a(40, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fxs.a(1.9F, 12.0F, 0.0F));
-      $$1.a("right_body_stick", fxv.c().a(16, 0).a(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fxs.a);
-      $$1.a("left_body_stick", fxv.c().a(48, 16).a(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fxs.a);
-      $$1.a("shoulder_stick", fxv.c().a(0, 48).a(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), fxs.a);
-      $$1.a("base_plate", fxv.c().a(0, 32).a(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), fxs.a(0.0F, 12.0F, 0.0F));
-      return fxw.a($$0, 64, 64);
-   }
-
-   public void a(cik $$0, float $$1, float $$2, float $$3) {
-      this.B.e = 0.0F;
-      this.B.f = (float) (Math.PI / 180.0) * -ayg.j($$3, $$0.O, $$0.dH());
-      this.B.g = 0.0F;
+   private static List<ftn> a(fgi $$0, eya $$1) {
+      return $$1.g().stream().flatMap($$1x -> ftr.a.a($$0, $$1x).stream()).toList();
    }
 
    @Override
-   public void a(cik $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.o.k = $$0.v();
-      this.n.k = $$0.v();
-      this.B.k = !$$0.x();
-      this.y.e = (float) (Math.PI / 180.0) * $$0.B().b();
-      this.y.f = (float) (Math.PI / 180.0) * $$0.B().c();
-      this.y.g = (float) (Math.PI / 180.0) * $$0.B().d();
-      this.z.e = (float) (Math.PI / 180.0) * $$0.B().b();
-      this.z.f = (float) (Math.PI / 180.0) * $$0.B().c();
-      this.z.g = (float) (Math.PI / 180.0) * $$0.B().d();
-      this.A.e = (float) (Math.PI / 180.0) * $$0.B().b();
-      this.A.f = (float) (Math.PI / 180.0) * $$0.B().c();
-      this.A.g = (float) (Math.PI / 180.0) * $$0.B().d();
+   public List<ftn> a() {
+      return this.d;
    }
 
    @Override
-   protected Iterable<fxq> b() {
-      return Iterables.concat(super.b(), ImmutableList.of(this.y, this.z, this.A, this.B));
+   public wy b() {
+      return c;
    }
 
    @Override
-   public void a(bsw $$0, fao $$1) {
-      fxq $$2 = this.a($$0);
-      boolean $$3 = $$2.k;
-      $$2.k = true;
-      super.a($$0, $$1);
-      $$2.k = $$3;
+   public void a(ftl $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public wy aR_() {
+      return b;
+   }
+
+   @Override
+   public void a(fht $$0, float $$1, int $$2) {
+      $$0.a(a, 0, 0, 16, 16);
+   }
+
+   @Override
+   public boolean aS_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements ftn {
+      private final exv a;
+      private final Supplier<grf> b;
+      private final List<fzk> c;
+
+      private a(exv $$0, List<fzk> $$1, Supplier<grf> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
+      }
+
+      public static Optional<ftn> a(fgi $$0, exv $$1) {
+         List<fzk> $$2 = new ArrayList<>();
+
+         for (String $$3 : $$1.g()) {
+            fzk $$4 = $$0.L().a($$3);
+            if ($$4 != null && $$4.e() != dcr.d) {
+               $$2.add($$4);
+            }
+         }
+
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(ayv.a().a($$2.size())).a();
+            Supplier<grf> $$6 = $$0.am().a($$5);
+            return Optional.of(new ftr.a($$1, $$2, $$6));
+         }
+      }
+
+      @Override
+      public void a(ftl $$0) {
+         $$0.a(new ftq(this.c));
+      }
+
+      @Override
+      public wy aR_() {
+         return this.a.c();
+      }
+
+      @Override
+      public void a(fht $$0, float $$1, int $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, ayn.f($$4 * $$1, $$5 * $$1, $$6 * $$1) | $$2 << 24);
+         }
+
+         $$0.a($$1, $$1, $$1, (float)$$2 / 255.0F);
+         fjf.a($$0, this.b.get(), 2, 2, 12);
+         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      }
+
+      @Override
+      public boolean aS_() {
+         return true;
+      }
    }
 }

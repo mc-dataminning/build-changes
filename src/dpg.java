@@ -1,19 +1,33 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dpg(akk e, String f) {
-   public static final Codec<dpg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(akk.a.fieldOf("asset_id").forGetter(dpg::a), Codec.STRING.fieldOf("translation_key").forGetter(dpg::b)).apply($$0, dpg::new)
+public class dpg extends dpb implements dpc {
+   public static final MapCodec<dpg> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dpc.a.e.fieldOf("weathering_state").forGetter(dpg::m), u()).apply($$0, dpg::new)
    );
-   public static final ys<wf, dpg> b = ys.a(akk.b, dpg::a, yq.l, dpg::b, dpg::new);
-   public static final Codec<jj<dpg>> c = akg.a(lr.d, a);
-   public static final ys<wf, jj<dpg>> d = yq.a(lr.d, b);
+   private final dpc.a f;
 
-   public akk a() {
-      return this.e;
+   @Override
+   protected MapCodec<dpg> a() {
+      return e;
    }
 
-   public String b() {
+   protected dpg(dpc.a $$0, dsz.d $$1) {
+      super($$1);
+      this.f = $$0;
+   }
+
+   @Override
+   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean d_(dta $$0) {
+      return dpc.c($$0.b()).isPresent();
+   }
+
+   public dpc.a m() {
       return this.f;
    }
 }

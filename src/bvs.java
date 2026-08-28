@@ -1,32 +1,73 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
-public class bvs {
-   public static <T extends btc> buw<btc> a(bsn<? extends T> $$0, int $$1, ccg<T> $$2, float $$3, int $$4) {
-      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
+public class bvs extends bvf<btu> {
+   public static final int c = 100;
+   public static final double d = 2.5;
+   public static final double e = 3.5;
+   private final Function<btl, Float> f;
+   private final Function<btl, Double> g;
+
+   public bvs(Function<btl, Float> $$0) {
+      this($$0, $$0x -> 2.5);
    }
 
-   public static <E extends btc, T extends btc> buw<E> a(bsn<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, ccg<T> $$4, float $$5, int $$6) {
-      int $$7 = $$1 * $$1;
-      Predicate<btc> $$8 = $$2x -> $$0.equals($$2x.am()) && $$3.test((T)$$2x);
-      return byi.a(
-         (Function<byi.b<E>, ? extends App<byi.c<E>, byl<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(ccg.n), $$6x.c(ccg.m), $$6x.b(ccg.h))
-               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
-                     cci $$13 = $$6x.b($$9);
-                     if ($$2.test((E)$$11) && $$13.d($$8)) {
-                        Optional<btc> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((bsh)$$11) <= (double)$$7 && $$8.test($$3xxxx));
-                        $$14.ifPresent($$5xxxx -> {
-                           $$6xx.a($$5xxxx);
-                           $$7x.a(new bvg($$5xxxx, true));
-                           $$8x.a(new ccj(new bvg($$5xxxx, false), $$5, $$6));
-                        });
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   public bvs(Function<btl, Float> $$0, Function<btl, Double> $$1) {
+      super(ad.a(() -> {
+         Builder<ccq<?>, ccr> $$0x = ImmutableMap.builder();
+         $$0x.put(ccq.n, ccr.c);
+         $$0x.put(ccq.m, ccr.c);
+         $$0x.put(ccq.P, ccr.b);
+         $$0x.put(ccq.R, ccr.c);
+         $$0x.put(ccq.O, ccr.a);
+         $$0x.put(ccq.r, ccr.b);
+         $$0x.put(ccq.Z, ccr.b);
+         return $$0x.build();
+      }));
+      this.f = $$0;
+      this.g = $$1;
+   }
+
+   protected float a(btu $$0) {
+      return this.f.apply($$0);
+   }
+
+   private Optional<cmv> b(btu $$0) {
+      return $$0.dU().c(ccq.O);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   protected boolean a(aqt $$0, btu $$1, long $$2) {
+      return this.b($$1).isPresent() && !$$1.dU().a(ccq.r) && !$$1.dU().a(ccq.Z);
+   }
+
+   protected void b(aqt $$0, btu $$1, long $$2) {
+      $$1.dU().a(ccq.R, true);
+   }
+
+   protected void c(aqt $$0, btu $$1, long $$2) {
+      buo<?> $$3 = $$1.dU();
+      $$3.a(ccq.P, 100);
+      $$3.a(ccq.R, false);
+      $$3.b(ccq.m);
+      $$3.b(ccq.n);
+   }
+
+   protected void d(aqt $$0, btu $$1, long $$2) {
+      cmv $$3 = this.b($$1).get();
+      buo<?> $$4 = $$1.dU();
+      $$4.a(ccq.n, new bvq($$3, true));
+      double $$5 = this.g.apply($$1);
+      if ($$1.g($$3) < ayn.k($$5)) {
+         $$4.b(ccq.m);
+      } else {
+         $$4.a(ccq.m, new cct(new bvq($$3, false), this.a($$1), 2));
+      }
    }
 }

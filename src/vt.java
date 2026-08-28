@@ -1,19 +1,17 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+public enum vt {
+   a("handshake"),
+   b("play"),
+   c("status"),
+   d("login"),
+   e("configuration");
 
-public class vt extends ChannelInboundHandlerAdapter {
-   private final vi a;
+   private final String f;
 
-   public vt(vi $$0) {
-      this.a = $$0;
+   private vt(final String $$0) {
+      this.f = $$0;
    }
 
-   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-      if ($$1 instanceof ByteBuf $$2) {
-         this.a.a($$2.readableBytes());
-      }
-
-      $$0.fireChannelRead($$1);
+   public String a() {
+      return this.f;
    }
 }

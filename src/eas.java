@@ -1,45 +1,52 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eas extends ebl<edi> {
-   public eas(Codec<edi> $$0) {
-      super($$0);
+public class eas extends eau {
+   public static final Codec<eas> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eau.d.forGetter($$0x -> $$0x), bpt.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), eas.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, eas::new)
+   );
+   public final bpt b;
+   public final eas.a c;
+
+   public eas(float $$0, eht $$1, bpt $$2, dzp $$3, eav $$4, jq<dfw> $$5, bpt $$6, eas.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   @Override
-   public boolean a(ebn<edi> $$0) {
-      ja $$1 = $$0.e();
-      ddc $$2 = $$0.b();
-      ayo $$3 = $$0.d();
+   public eas(eau $$0, bpt $$1, eas.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
+   }
 
-      edi $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.I_() + 3; $$1 = $$1.d()) {
-         if (!$$2.u($$1.d())) {
-            dsl $$5 = $$2.a_($$1.d());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
-      }
+   public static class a {
+      public static final Codec<eas.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bpt.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  bpt.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  axv.k.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  bpt.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, eas.a::new)
+      );
+      public final bpt b;
+      public final bpt c;
+      public final int d;
+      public final bpt e;
+      public final float f;
+      public final float g;
 
-      if ($$1.v() <= $$2.I_() + 3) {
-         return false;
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
-
-            for (ja $$11 : ja.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
-               }
-            }
-
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
-         }
-
-         return true;
+      public a(bpt $$0, bpt $$1, int $$2, bpt $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
       }
    }
 }

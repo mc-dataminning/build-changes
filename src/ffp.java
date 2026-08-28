@@ -1,39 +1,52 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum ffp implements ayj {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
-
-   private static final IntFunction<ffp> d = aww.a(ffp::a, values(), aww.a.b);
+public class ffp extends ffh {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wy c = wy.c("mco.minigame.world.slot.screen.title");
+   private final long d;
    private final int e;
-   private final String f;
+   private final Runnable f;
 
-   private ffp(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public ffp(long $$0, int $$1, Runnable $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public int a() {
-      return this.e;
+   public void run() {
+      fbs $$0 = fbs.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
+               break;
+            }
+         } catch (fde var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't switch world!");
+            this.a(var5);
+         }
+      }
    }
 
    @Override
-   public String b() {
-      return this.f;
-   }
-
-   @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
-   }
-
-   public static ffp a(int $$0) {
-      return d.apply($$0);
+   public wy a() {
+      return c;
    }
 }

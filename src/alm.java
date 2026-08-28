@@ -1,8 +1,18 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class alm implements Runnable {
+   private final int a;
+   private final Runnable b;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface alm {
+   public alm(int $$0, Runnable $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   @Override
+   public void run() {
+      this.b.run();
+   }
 }

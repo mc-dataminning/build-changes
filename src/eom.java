@@ -1,213 +1,321 @@
-import java.util.Optional;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import javax.annotation.Nullable;
 
-public abstract class eom extends eoh {
-   public static final float e = 0.44444445F;
+public abstract class eom<M extends eoj<M>> {
+   private final ddd i;
+   protected final dvj a;
+   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   protected volatile M c;
+   protected final M d;
+   protected final LongSet e = new LongOpenHashSet();
+   protected final LongSet f = new LongOpenHashSet();
+   protected final Long2ObjectMap<dvb> g = Long2ObjectMaps.synchronize(new Long2ObjectOpenHashMap());
+   private final LongSet k = new LongOpenHashSet();
+   private final LongSet l = new LongOpenHashSet();
+   protected volatile boolean h;
 
-   @Override
-   public eoi d() {
-      return eok.d;
+   protected eom(ddd $$0, dvj $$1, M $$2) {
+      this.i = $$0;
+      this.a = $$1;
+      this.d = $$2;
+      this.c = $$2.b();
+      this.c.d();
+      this.b.defaultReturnValue((byte)0);
    }
 
-   @Override
-   public eoi e() {
-      return eok.e;
-   }
-
-   @Override
-   public cty a() {
-      return cug.qA;
-   }
-
-   @Override
-   public void a(dcg $$0, ja $$1, eoj $$2, ayo $$3) {
-      ja $$4 = $$1.c();
-      if ($$0.a_($$4).i() && !$$0.a_($$4).i($$0, $$4)) {
-         if ($$3.a(100) == 0) {
-            double $$5 = (double)$$1.u() + $$3.j();
-            double $$6 = (double)$$1.v() + 1.0;
-            double $$7 = (double)$$1.w() + $$3.j();
-            $$0.a(lj.Y, $$5, $$6, $$7, 0.0, 0.0, 0.0);
-            $$0.a($$5, $$6, $$7, avh.nR, avi.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-
-         if ($$3.a(200) == 0) {
-            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), avh.nP, avi.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      }
-   }
-
-   @Override
-   public void b(dcg $$0, ja $$1, eoj $$2, ayo $$3) {
-      if ($$0.ab().b(dcc.b)) {
-         int $$4 = $$3.a(3);
-         if ($$4 > 0) {
-            ja $$5 = $$1;
-
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
-               if (!$$0.p($$5)) {
-                  return;
-               }
-
-               dsl $$7 = $$0.a_($$5);
-               if ($$7.i()) {
-                  if (this.a((dcj)$$0, $$5)) {
-                     $$0.b($$5, dev.a($$0, $$5));
-                     return;
-                  }
-               } else if ($$7.d()) {
-                  return;
-               }
-            }
-         } else {
-            for (int $$8 = 0; $$8 < 3; $$8++) {
-               ja $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
-               if (!$$0.p($$9)) {
-                  return;
-               }
-
-               if ($$0.u($$9.c()) && this.b($$0, $$9)) {
-                  $$0.b($$9.c(), dev.a($$0, $$9));
-               }
-            }
-         }
-      }
-   }
-
-   private boolean a(dcj $$0, ja $$1) {
-      for (jf $$2 : jf.values()) {
-         if (this.b($$0, $$1.a($$2))) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private boolean b(dcj $$0, ja $$1) {
-      return $$1.v() >= $$0.I_() && $$1.v() < $$0.am() && !$$0.B($$1) ? false : $$0.a_($$1).j();
+   protected boolean b(long $$0) {
+      return this.a($$0, true) != null;
    }
 
    @Nullable
-   @Override
-   public lh h() {
-      return lj.i;
+   protected dvb a(long $$0, boolean $$1) {
+      return this.a($$1 ? this.d : this.c, $$0);
    }
 
-   @Override
-   protected void a(dch $$0, ja $$1, dsl $$2) {
-      this.a($$0, $$1);
+   @Nullable
+   protected dvb a(M $$0, long $$1) {
+      return $$0.c($$1);
    }
 
-   @Override
-   public int b(dcj $$0) {
-      return $$0.D_().i() ? 4 : 2;
+   @Nullable
+   protected dvb c(long $$0) {
+      dvb $$1 = this.d.c($$0);
+      if ($$1 == null) {
+         return null;
+      } else {
+         if (this.e.add($$0)) {
+            $$1 = $$1.b();
+            this.d.a($$0, $$1);
+            this.d.c();
+         }
+
+         return $$1;
+      }
    }
 
-   @Override
-   public dsl b(eoj $$0) {
-      return dfk.H.o().a(djy.b, Integer.valueOf(e($$0)));
+   @Nullable
+   public dvb d(long $$0) {
+      dvb $$1 = (dvb)this.g.get($$0);
+      return $$1 != null ? $$1 : this.a($$0, false);
    }
 
-   @Override
-   public boolean a(eoi $$0) {
-      return $$0 == eok.e || $$0 == eok.d;
+   protected abstract int a(long var1);
+
+   protected int e(long $$0) {
+      long $$1 = kf.e($$0);
+      dvb $$2 = this.a($$1, true);
+      return $$2.a(kf.b(jd.a($$0)), kf.b(jd.b($$0)), kf.b(jd.c($$0)));
    }
 
-   @Override
-   public int c(dcj $$0) {
-      return $$0.D_().i() ? 1 : 2;
-   }
-
-   @Override
-   public boolean a(eoj $$0, dbm $$1, ja $$2, eoi $$3, jf $$4) {
-      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(awc.a);
-   }
-
-   @Override
-   public int a(dcj $$0) {
-      return $$0.D_().i() ? 10 : 30;
-   }
-
-   @Override
-   public int a(dcg $$0, ja $$1, eoj $$2, eoj $$3) {
-      int $$4 = this.a((dcj)$$0);
-      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a((dbm)$$0, $$1) > $$2.a((dbm)$$0, $$1) && $$0.E_().a(4) != 0) {
-         $$4 *= 4;
+   protected void a(long $$0, int $$1) {
+      long $$2 = kf.e($$0);
+      dvb $$3;
+      if (this.e.add($$2)) {
+         $$3 = this.d.a($$2);
+      } else {
+         $$3 = this.a($$2, true);
       }
 
-      return $$4;
+      $$3.a(kf.b(jd.a($$0)), kf.b(jd.b($$0)), kf.b(jd.c($$0)), $$1);
+      kf.a($$0, this.f::add);
    }
 
-   private void a(dch $$0, ja $$1) {
-      $$0.c(1501, $$1, 0);
-   }
+   protected void f(long $$0) {
+      int $$1 = kf.b($$0);
+      int $$2 = kf.c($$0);
+      int $$3 = kf.d($$0);
 
-   @Override
-   protected boolean a(dcg $$0) {
-      return $$0.ab().b(dcc.V);
-   }
-
-   @Override
-   protected void a(dch $$0, ja $$1, dsl $$2, jf $$3, eoj $$4) {
-      if ($$3 == jf.a) {
-         eoj $$5 = $$0.b_($$1);
-         if (this.a(awc.b) && $$5.a(awc.a)) {
-            if ($$2.b() instanceof djy) {
-               $$0.a($$1, dfk.b.o(), 3);
+      for (int $$4 = -1; $$4 <= 1; $$4++) {
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               this.f.add(kf.b($$1 + $$5, $$2 + $$6, $$3 + $$4));
             }
+         }
+      }
+   }
 
-            this.a($$0, $$1);
-            return;
+   protected dvb g(long $$0) {
+      dvb $$1 = (dvb)this.g.get($$0);
+      return $$1 != null ? $$1 : new dvb();
+   }
+
+   protected boolean a() {
+      return this.h;
+   }
+
+   protected void a(eop<M, ?> $$0) {
+      if (this.h) {
+         this.h = false;
+         LongIterator $$5 = this.l.iterator();
+
+         while ($$5.hasNext()) {
+            long $$1 = (Long)$$5.next();
+            dvb $$2 = (dvb)this.g.remove($$1);
+            dvb $$3 = this.d.d($$1);
+            if (this.k.contains(kf.f($$1))) {
+               if ($$2 != null) {
+                  this.g.put($$1, $$2);
+               } else if ($$3 != null) {
+                  this.g.put($$1, $$3);
+               }
+            }
+         }
+
+         this.d.c();
+         $$5 = this.l.iterator();
+
+         while ($$5.hasNext()) {
+            long $$4 = (Long)$$5.next();
+            this.i($$4);
+            this.e.add($$4);
+         }
+
+         this.l.clear();
+         ObjectIterator<Entry<dvb>> $$5x = Long2ObjectMaps.fastIterator(this.g);
+
+         while ($$5x.hasNext()) {
+            Entry<dvb> $$6 = (Entry<dvb>)$$5x.next();
+            long $$7 = $$6.getLongKey();
+            if (this.b($$7)) {
+               dvb $$8 = (dvb)$$6.getValue();
+               if (this.d.c($$7) != $$8) {
+                  this.d.a($$7, $$8);
+                  this.e.add($$7);
+               }
+
+               $$5x.remove();
+            }
+         }
+
+         this.d.c();
+      }
+   }
+
+   protected void h(long $$0) {
+   }
+
+   protected void i(long $$0) {
+   }
+
+   protected void b(long $$0, boolean $$1) {
+      if ($$1) {
+         this.j.add($$0);
+      } else {
+         this.j.remove($$0);
+      }
+   }
+
+   protected boolean j(long $$0) {
+      long $$1 = kf.f($$0);
+      return this.j.contains($$1);
+   }
+
+   public void c(long $$0, boolean $$1) {
+      if ($$1) {
+         this.k.add($$0);
+      } else {
+         this.k.remove($$0);
+      }
+   }
+
+   protected void a(long $$0, @Nullable dvb $$1) {
+      if ($$1 != null) {
+         this.g.put($$0, $$1);
+         this.h = true;
+      } else {
+         this.g.remove($$0);
+      }
+   }
+
+   protected void d(long $$0, boolean $$1) {
+      byte $$2 = this.b.get($$0);
+      byte $$3 = eom.a.a($$2, !$$1);
+      if ($$2 != $$3) {
+         this.a($$0, $$3);
+         int $$4 = $$1 ? -1 : 1;
+
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               for (int $$7 = -1; $$7 <= 1; $$7++) {
+                  if ($$5 != 0 || $$6 != 0 || $$7 != 0) {
+                     long $$8 = kf.a($$0, $$5, $$6, $$7);
+                     byte $$9 = this.b.get($$8);
+                     this.a($$8, eom.a.a($$9, eom.a.b($$9) + $$4));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   protected void a(long $$0, byte $$1) {
+      if ($$1 != 0) {
+         if (this.b.put($$0, $$1) == 0) {
+            this.l($$0);
+         }
+      } else if (this.b.remove($$0) != 0) {
+         this.m($$0);
+      }
+   }
+
+   private void l(long $$0) {
+      if (!this.l.remove($$0)) {
+         this.d.a($$0, this.g($$0));
+         this.e.add($$0);
+         this.h($$0);
+         this.f($$0);
+         this.h = true;
+      }
+   }
+
+   private void m(long $$0) {
+      this.l.add($$0);
+      this.h = true;
+   }
+
+   protected void b() {
+      if (!this.e.isEmpty()) {
+         M $$0 = this.d.b();
+         $$0.d();
+         this.c = $$0;
+         this.e.clear();
+      }
+
+      if (!this.f.isEmpty()) {
+         LongIterator $$1 = this.f.iterator();
+
+         while ($$1.hasNext()) {
+            long $$2 = $$1.nextLong();
+            this.a.a(this.i, kf.a($$2));
+         }
+
+         this.f.clear();
+      }
+   }
+
+   public eom.b k(long $$0) {
+      return eom.a.c(this.b.get($$0));
+   }
+
+   protected static class a {
+      public static final byte a = 0;
+      private static final int b = 0;
+      private static final int c = 26;
+      private static final byte d = 32;
+      private static final byte e = 31;
+
+      public static byte a(byte $$0, boolean $$1) {
+         return (byte)($$1 ? $$0 | 32 : $$0 & -33);
+      }
+
+      public static byte a(byte $$0, int $$1) {
+         if ($$1 >= 0 && $$1 <= 26) {
+            return (byte)($$0 & -32 | $$1 & 31);
+         } else {
+            throw new IllegalArgumentException("Neighbor count was not within range [0; 26]");
          }
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected boolean i() {
-      return true;
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<avg> j() {
-      return Optional.of(avh.dl);
-   }
-
-   public static class a extends eom {
-      @Override
-      protected void a(dsm.a<eoi, eoj> $$0) {
-         super.a($$0);
-         $$0.a(b);
+      public static boolean a(byte $$0) {
+         return ($$0 & 32) != 0;
       }
 
-      @Override
-      public int d(eoj $$0) {
-         return $$0.c(b);
+      public static int b(byte $$0) {
+         return $$0 & 31;
       }
 
-      @Override
-      public boolean c(eoj $$0) {
-         return false;
+      public static eom.b c(byte $$0) {
+         if ($$0 == 0) {
+            return eom.b.a;
+         } else {
+            return a($$0) ? eom.b.c : eom.b.b;
+         }
       }
    }
 
-   public static class b extends eom {
-      @Override
-      public int d(eoj $$0) {
-         return 8;
+   public static enum b {
+      a("2"),
+      b("1"),
+      c("0");
+
+      private final String d;
+
+      private b(final String $$0) {
+         this.d = $$0;
       }
 
-      @Override
-      public boolean c(eoj $$0) {
-         return true;
+      public String a() {
+         return this.d;
       }
    }
 }

@@ -1,35 +1,23 @@
-public record aaj(aaj.a c) implements aac {
-   public static final ys<vr, aaj> a = aac.a(aaj::a, aaj::new);
-   public static final aac.b<aaj> b = aac.a("debug/hive");
-
-   private aaj(vr $$0) {
-      this(new aaj.a($$0));
-   }
-
-   private void a(vr $$0) {
-      this.c.a($$0);
+public record aaj(akq a) implements aai {
+   public static <T extends vv> yw<T, aaj> a(akq $$0, int $$1) {
+      return aai.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.j($$3);
+            return new aaj($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
    }
 
    @Override
-   public aac.b<aaj> a() {
-      return b;
+   public aai.b<aaj> a() {
+      return new aai.b<>(this.a);
    }
 
-   public aaj.a b() {
-      return this.c;
-   }
-
-   public static record a(ja a, String b, int c, int d, boolean e) {
-      public a(vr $$0) {
-         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
-      }
-
-      public void a(vr $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.p(this.c);
-         $$0.p(this.d);
-         $$0.a(this.e);
-      }
+   public akq b() {
+      return this.a;
    }
 }

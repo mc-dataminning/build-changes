@@ -1,56 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-public class db extends ds<db.a> {
+public class db extends dv<db.a> {
    @Override
    public Codec<db.a> a() {
       return db.a.a;
    }
 
-   public void a(aqn $$0, btb $$1, List<bsh> $$2) {
-      List<eqw> $$3 = $$2.stream().map($$1x -> bu.b($$0, $$1x)).collect(Collectors.toList());
-      eqw $$4 = bu.b($$0, $$1);
-      this.a($$0, $$2x -> $$2x.a($$4, $$3));
+   public void a(aqu $$0, eww $$1, int $$2) {
+      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
-   public static record a(Optional<bf> b, Optional<bf> c, Optional<bf> d) implements ds.a {
+   public static record a(Optional<bg> b, Optional<bm> c, dh.d d) implements dv.a {
       public static final Codec<db.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  bu.b.optionalFieldOf("player").forGetter(db.a::a),
-                  bu.b.optionalFieldOf("lightning").forGetter(db.a::b),
-                  bu.b.optionalFieldOf("bystander").forGetter(db.a::c)
+                  bv.b.optionalFieldOf("player").forGetter(db.a::a),
+                  bm.a.optionalFieldOf("distance").forGetter(db.a::b),
+                  dh.d.d.optionalFieldOf("duration", dh.d.c).forGetter(db.a::c)
                )
                .apply($$0, db.a::new)
       );
 
-      public static an<db.a> a(Optional<bu> $$0, Optional<bu> $$1) {
-         return am.V.a(new db.a(Optional.empty(), bu.a($$0), bu.a($$1)));
+      public static ao<db.a> a(bm $$0) {
+         return an.v.a(new db.a(Optional.empty(), Optional.of($$0), dh.d.c));
       }
 
-      public boolean a(eqw $$0, List<eqw> $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || !$$1.stream().noneMatch(this.d.get()::a);
-      }
-
-      @Override
-      public void a(bg $$0) {
-         ds.a.super.a($$0);
-         $$0.a(this.c, ".lightning");
-         $$0.a(this.d, ".bystander");
+      public boolean a(aqu $$0, eww $$1, int $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1.c, $$1.d, $$1.e, $$0.dv(), $$0.dx(), $$0.dB()) ? false : this.d.d($$2);
       }
 
       @Override
-      public Optional<bf> a() {
+      public Optional<bg> a() {
          return this.b;
       }
 
-      public Optional<bf> b() {
+      public Optional<bm> b() {
          return this.c;
       }
 
-      public Optional<bf> c() {
+      public dh.d c() {
          return this.d;
       }
    }

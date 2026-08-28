@@ -1,23 +1,23 @@
 import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehy extends eie {
-   private static final ehy c = new ehy();
-   public static final MapCodec<ehy> a = MapCodec.unit(() -> c);
+public class ehy extends eht {
+   public static final MapCodec<ehy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bpa.b(eht.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, ehy::new)
+   );
+   private final bpa<eht> b;
 
-   public static ehy a() {
-      return c;
+   public ehy(bpa<eht> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public Stream<ja> a_(eic $$0, ayo $$1, ja $$2) {
-      int $$3 = $$1.a(16) + $$2.u();
-      int $$4 = $$1.a(16) + $$2.w();
-      return Stream.of(new ja($$3, $$2.v(), $$4));
+   public int a(ayv $$0, dzs $$1) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
    }
 
    @Override
-   public eif<?> b() {
-      return eif.m;
+   public ehu<?> a() {
+      return ehu.f;
    }
 }

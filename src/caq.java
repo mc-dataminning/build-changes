@@ -1,65 +1,48 @@
 import java.util.EnumSet;
 
-public class caq extends caa {
-   private final bte a;
-   private btc b;
-   private int c;
+public class caq extends cak {
+   private final btn a;
+   private btl b;
+   private final float c;
 
-   public caq(bte $$0) {
+   public caq(btn $$0, float $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(caa.a.a, caa.a.b));
-   }
-
-   @Override
-   public boolean a() {
-      btc $$0 = this.a.p();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0;
-         return true;
-      }
+      this.c = $$1;
+      this.a(EnumSet.of(cak.a.c, cak.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!this.b.bF()) {
+      if (this.a.cS()) {
          return false;
       } else {
-         return this.a.g((bsh)this.b) > 225.0 ? false : !this.a.J().l() || this.a();
+         this.b = this.a.p();
+         if (this.b == null) {
+            return false;
+         } else {
+            double $$0 = this.a.g((bsq)this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aF() ? false : this.a.dT().a(b(5)) == 0;
+            }
+         }
       }
+   }
+
+   @Override
+   public boolean c() {
+      return !this.a.aF();
    }
 
    @Override
    public void d() {
-      this.b = null;
-      this.a.J().n();
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      this.a.F().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dl() * 2.0F * this.a.dl() * 2.0F);
-      double $$1 = this.a.i(this.b.dw(), this.b.dy(), this.b.dC());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
+      eww $$0 = this.a.dt();
+      eww $$1 = new eww(this.b.dv() - this.a.dv(), 0.0, this.b.dB() - this.a.dB());
+      if ($$1.g() > 1.0E-7) {
+         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
       }
 
-      this.a.J().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.D(this.b);
-         }
-      }
+      this.a.n($$1.c, (double)this.c, $$1.e);
    }
 }

@@ -1,33 +1,48 @@
-public class cdy {
-   public static boolean a(bte $$0) {
-      return $$0.J() instanceof ccn;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+public class cdy extends cdw<btu> {
+   public static final int a = 10;
+   private static final ced c = ced.b().a(10.0).d();
+   private final Predicate<cuo> d;
+
+   public cdy(Predicate<cuo> $$0) {
+      this.d = $$0;
    }
 
-   public static boolean a(btl $$0, int $$1) {
-      return $$0.fX() && $$0.fU().a($$0.dp(), (double)($$0.fV() + (float)$$1) + 1.0);
+   protected void a(aqt $$0, btu $$1) {
+      buo<?> $$2 = $$1.dU();
+      List<cmv> $$3 = $$0.x()
+         .stream()
+         .filter(bsv.f)
+         .filter($$1x -> c.a($$1, $$1x))
+         .filter($$1x -> $$1.a($$1x, 10.0))
+         .filter(this::a)
+         .filter($$1x -> !$$1.x($$1x))
+         .sorted(Comparator.comparingDouble($$1::g))
+         .collect(Collectors.toList());
+      if (!$$3.isEmpty()) {
+         cmv $$4 = $$3.get(0);
+         $$2.a(ccq.O, $$4);
+      } else {
+         $$2.b(ccq.O);
+      }
    }
 
-   public static boolean a(ja $$0, btl $$1) {
-      return $$0.v() < $$1.dR().I_() || $$0.v() > $$1.dR().am();
+   private boolean a(cmv $$0) {
+      return this.a($$0.eU()) || this.a($$0.eV());
    }
 
-   public static boolean a(boolean $$0, btl $$1, ja $$2) {
-      return $$0 && !$$1.a($$2);
+   private boolean a(cuo $$0) {
+      return this.d.test($$0);
    }
 
-   public static boolean a(cco $$0, ja $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(btl $$0, ja $$1) {
-      return $$0.dR().b_($$1).a(awc.a);
-   }
-
-   public static boolean b(btl $$0, ja $$1) {
-      return $$0.a(epf.b($$0, $$1)) != 0.0F;
-   }
-
-   public static boolean c(btl $$0, ja $$1) {
-      return $$0.dR().a_($$1).e();
+   @Override
+   public Set<ccq<?>> a() {
+      return ImmutableSet.of(ccq.O);
    }
 }

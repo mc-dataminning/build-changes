@@ -2,27 +2,29 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eth extends esj {
-   public static final MapCodec<eth> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(cwc.a.fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, eth::new));
-   private final jj<cwc> b;
+public class eth extends esy {
+   public static final MapCodec<eth> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(kn.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, eth::new)
+   );
+   private final kn b;
 
-   private eth(List<euh> $$0, jj<cwc> $$1) {
+   private eth(List<euw> $$0, kn $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   public esl<eth> b() {
-      return esm.F;
+   public eta<eth> b() {
+      return etb.k;
    }
 
    @Override
-   public cud a(cud $$0, eqw $$1) {
-      $$0.a(kn.G, cwe.a, this.b, cwe::b);
+   public cuo a(cuo $$0, erl $$1) {
+      $$0.a(this.b);
       return $$0;
    }
 
-   public static esj.a<?> a(jj<cwc> $$0) {
-      return a($$1 -> new eth($$1, $$0));
+   public static <T> esy.a<?> a(kp<T> $$0, T $$1) {
+      return a($$2 -> new eth($$2, kn.a().a($$0, $$1).a()));
    }
 }

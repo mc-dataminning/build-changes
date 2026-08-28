@@ -1,11 +1,30 @@
-public interface buw<E extends btc> {
-   buv.a a();
+public class buw extends bup {
+   private final double c;
+   private final double d;
 
-   boolean e(aqm var1, E var2, long var3);
+   public buw(String $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1);
+      this.c = $$2;
+      this.d = $$3;
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
+      } else if ($$1 < $$2) {
+         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
+      } else if ($$1 > $$3) {
+         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
+      }
+   }
 
-   void f(aqm var1, E var2, long var3);
+   public double d() {
+      return this.c;
+   }
 
-   void g(aqm var1, E var2, long var3);
+   public double e() {
+      return this.d;
+   }
 
-   String b();
+   @Override
+   public double a(double $$0) {
+      return Double.isNaN($$0) ? this.c : ayn.a($$0, this.c, this.d);
+   }
 }

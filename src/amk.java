@@ -1,78 +1,58 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
 public class amk {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wu.b("commands.enchant.failed.entity", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wu.b("commands.enchant.failed.itemless", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wu.b("commands.enchant.failed.incompatible", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("commands.enchant.failed.level", $$0, $$1));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wu.c("commands.enchant.failed"));
-
-   public static void a(CommandDispatcher<eq> $$0, em $$1) {
+   public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("enchant").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("debugconfig").requires($$0x -> $$0x.c(3)))
+               .then(eu.a("config").then(eu.a("target", fg.c()).executes($$0x -> a((et)$$0x.getSource(), fg.e($$0x, "target"))))))
             .then(
-               er.a("targets", fd.b())
+               eu.a("unconfig")
                   .then(
-                     ((RequiredArgumentBuilder)er.a("enchantment", fp.a($$1, lr.aK))
-                           .executes($$0x -> a((eq)$$0x.getSource(), fd.b($$0x, "targets"), fp.g($$0x, "enchantment"), 1)))
-                        .then(
-                           er.a("level", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a(
-                                       (eq)$$0x.getSource(), fd.b($$0x, "targets"), fp.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
-                                    )
-                              )
-                        )
+                     eu.a("target", gj.a())
+                        .suggests(($$0x, $$1) -> ey.b(a(((et)$$0x.getSource()).l()), $$1))
+                        .executes($$0x -> a((et)$$0x.getSource(), gj.a($$0x, "target")))
                   )
             )
       );
    }
 
-   private static int a(eq $$0, Collection<? extends bsh> $$1, jj<czm> $$2, int $$3) throws CommandSyntaxException {
-      czm $$4 = $$2.a();
-      if ($$3 > $$4.e()) {
-         throw d.create($$3, $$4.e());
-      } else {
-         int $$5 = 0;
+   private static Iterable<String> a(MinecraftServer $$0) {
+      Set<String> $$1 = new HashSet<>();
 
-         for (bsh $$6 : $$1) {
-            if ($$6 instanceof btc) {
-               btc $$7 = (btc)$$6;
-               cud $$8 = $$7.eV();
-               if (!$$8.e()) {
-                  if ($$4.c($$8) && czo.a(czo.b($$8).a(), $$2)) {
-                     $$8.a($$2, $$3);
-                     $$5++;
-                  } else if ($$1.size() == 1) {
-                     throw c.create($$8.g().n($$8).getString());
-                  }
-               } else if ($$1.size() == 1) {
-                  throw b.create($$7.ah().getString());
-               }
-            } else if ($$1.size() == 1) {
-               throw a.create($$6.ah().getString());
-            }
-         }
-
-         if ($$5 == 0) {
-            throw e.create();
-         } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> wu.a("commands.enchant.success.single", czm.a($$2, $$3), $$1.iterator().next().O_()), true);
-            } else {
-               $$0.a(() -> wu.a("commands.enchant.success.multiple", czm.a($$2, $$3), $$1.size()), true);
-            }
-
-            return $$5;
+      for (vs $$2 : $$0.ai().e()) {
+         if ($$2.k() instanceof arr $$3) {
+            $$1.add($$3.j().getId().toString());
          }
       }
+
+      return $$1;
+   }
+
+   private static int a(et $$0, aqu $$1) {
+      GameProfile $$2 = $$1.fY();
+      $$1.c.n();
+      $$0.a(() -> wy.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
+      return 1;
+   }
+
+   private static int a(et $$0, UUID $$1) {
+      for (vs $$2 : $$0.l().ai().e()) {
+         we var5 = $$2.k();
+         if (var5 instanceof arr) {
+            arr $$3 = (arr)var5;
+            if ($$3.j().getId().equals($$1)) {
+               $$3.m();
+            }
+         }
+      }
+
+      $$0.b(wy.b("Can't find player to unconfig"));
+      return 0;
    }
 }

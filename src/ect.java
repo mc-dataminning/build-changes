@@ -1,19 +1,37 @@
 import com.mojang.serialization.Codec;
 
-public class ect extends ebl<eei> {
-   public ect(Codec<eei> $$0) {
+public class ect extends eca<eek> {
+   public ect(Codec<eek> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebn<eei> $$0) {
-      ayo $$1 = $$0.d();
-      eei $$2 = $$0.f();
-      ddc $$3 = $$0.b();
-      ja $$4 = $$0.e();
-      dui $$5 = $$0.c();
-      int $$6 = $$1.a($$2.b.b());
-      eib $$7 = $$2.b.a($$6).a();
-      return $$7.a($$3, $$5, $$1, $$4);
+   public boolean a(ecc<eek> $$0) {
+      ddq $$1 = $$0.b();
+      jd $$2 = $$0.e();
+      dta $$3 = $$1.a_($$2.d());
+      eek $$4 = $$0.f();
+      ayv $$5 = $$0.d();
+      if (!$$3.a(awd.aL)) {
+         return false;
+      } else {
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.I_() + 1 && $$6 + 1 < $$1.am()) {
+            int $$7 = 0;
+
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               jd $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               dta $$10 = $$4.b.a($$5, $$9);
+               if ($$1.u($$9) && $$9.v() > $$1.I_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
+            }
+
+            return $$7 > 0;
+         } else {
+            return false;
+         }
+      }
    }
 }

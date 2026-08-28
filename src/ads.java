@@ -1,23 +1,37 @@
-import java.util.List;
-import java.util.UUID;
+public class ads implements zf<abt> {
+   public static final yw<vv, ads> a = zf.a(ads::a, ads::new);
+   private final int b;
+   private final akq c;
 
-public record ads(List<UUID> b) implements zb<abn> {
-   public static final ys<vr, ads> a = zb.a(ads::a, ads::new);
-
-   private ads(vr $$0) {
-      this($$0.a(kd.g));
+   public ads(int $$0, cyz<?> $$1) {
+      this.b = $$0;
+      this.c = $$1.a();
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.b, kd.g);
+   private ads(vv $$0) {
+      this.b = $$0.readByte();
+      this.c = $$0.q();
+   }
+
+   private void a(vv $$0) {
+      $$0.k(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zd<ads> a() {
-      return afz.ae;
+   public zh<ads> a() {
+      return agf.Y;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
+   }
+
+   public akq b() {
+      return this.c;
+   }
+
+   public int e() {
+      return this.b;
    }
 }

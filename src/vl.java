@@ -1,16 +1,18 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import javax.crypto.Cipher;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class vl extends MessageToByteEncoder<ByteBuf> {
-   private final vj a;
+public class vl {
+   private final AtomicInteger a = new AtomicInteger();
+   private final blq b;
 
-   public vl(Cipher $$0) {
-      this.a = new vj($$0);
+   public vl(blq $$0) {
+      this.b = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) throws Exception {
-      this.a.a($$1, $$2);
+   public void a(int $$0) {
+      this.a.getAndAdd($$0);
+   }
+
+   public void a() {
+      this.b.a((long)this.a.getAndSet(0));
    }
 }

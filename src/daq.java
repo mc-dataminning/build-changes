@@ -1,45 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.Function;
 
-public record daq(jn<bsn<?>> d, boolean e) implements dac {
-   public static final MapCodec<daq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(jy.a(lr.z).fieldOf("entity").forGetter(daq::b), Codec.BOOL.optionalFieldOf("join_team", false).forGetter(daq::c)).apply($$0, daq::new)
-   );
+public interface daq extends dar {
+   Codec<daq> b = lt.aw.r().dispatch(daq::a, Function.identity());
+
+   static MapCodec<? extends daq> a(jz<MapCodec<? extends daq>> $$0) {
+      jz.a($$0, "all_of", dak.a.a);
+      jz.a($$0, "apply_mob_effect", dal.a);
+      jz.a($$0, "damage_entity", dam.a);
+      jz.a($$0, "damage_item", dao.a);
+      jz.a($$0, "explode", dat.a);
+      jz.a($$0, "ignite", dau.a);
+      jz.a($$0, "play_sound", daw.a);
+      jz.a($$0, "replace_block", day.a);
+      jz.a($$0, "replace_disc", daz.a);
+      jz.a($$0, "run_function", dba.a);
+      jz.a($$0, "set_block_properties", dbb.a);
+      jz.a($$0, "spawn_particles", dbd.a);
+      return jz.a($$0, "summon_entity", dbe.a);
+   }
+
+   void a(aqt var1, int var2, czz var3, bsq var4, eww var5);
 
    @Override
-   public void a(aqm $$0, int $$1, czl $$2, bsh $$3, ewh $$4) {
-      ja $$5 = ja.a($$4);
-      if (dcg.l($$5)) {
-         Optional<jj<bsn<?>>> $$6 = this.b().a($$0.E_());
-         if (!$$6.isEmpty()) {
-            bsh $$7 = $$6.get().a().a($$0, $$5, btg.k);
-            if ($$7 != null) {
-               if ($$7 instanceof btb $$8 && $$2.c() instanceof aqn $$9) {
-                  $$8.b($$9);
-               }
-
-               if (this.e && $$3.cl() != null) {
-                  $$0.f().a($$7.cD(), $$3.cl());
-               }
-
-               $$7.b($$4.c, $$4.d, $$4.e, $$7.dH(), $$7.dJ());
-            }
-         }
-      }
+   default void a(aqt $$0, int $$1, czz $$2, bsq $$3, eww $$4, boolean $$5) {
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public MapCodec<daq> a() {
-      return a;
-   }
-
-   public jn<bsn<?>> b() {
-      return this.d;
-   }
-
-   public boolean c() {
-      return this.e;
-   }
+   MapCodec<? extends daq> a();
 }

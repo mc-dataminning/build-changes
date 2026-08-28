@@ -1,12 +1,11 @@
-public class glm extends gku<cfo, fwg<cfo>> {
-   private static final akk a = new akk("textures/entity/sheep/sheep.png");
+public class glm extends glj<cfq, fwc<cfq>> {
+   private static final akq a = akq.b("textures/entity/cat/ocelot.png");
 
-   public glm(gjo.a $$0) {
-      super($$0, new fwg<>($$0.a(fxp.bh)), 0.7F);
-      this.a(new goc(this, $$0.f()));
+   public glm(gkd.a $$0) {
+      super($$0, new fwc<>($$0.a(fyd.aF)), 0.4F);
    }
 
-   public akk a(cfo $$0) {
+   public akq a(cfq $$0) {
       return a;
    }
 }

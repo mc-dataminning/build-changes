@@ -1,120 +1,169 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.ArrayList;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class fzn extends fzq {
-   final IntSet f = new IntOpenHashSet();
+public class fzn {
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 1024;
+   public String a;
+   public String b;
+   public wy c;
+   public wy d;
+   @Nullable
+   public ajp.b e;
+   public long f;
+   public int g = ab.b().e();
+   public wy h = wy.b(ab.b().c());
+   public List<wy> i = Collections.emptyList();
+   private fzn.a l = fzn.a.c;
+   @Nullable
+   private byte[] m;
+   private fzn.c n;
+   private fzn.b o = fzn.b.a;
 
-   fzn(UUID $$0, Instant $$1, UUID $$2) {
-      super($$0, $$1, $$2);
+   public fzn(String $$0, String $$1, fzn.c $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.n = $$2;
    }
 
-   public void a(int $$0, AbuseReportLimits $$1) {
-      if (this.f.contains($$0)) {
-         this.f.remove($$0);
-      } else if (this.f.size() < $$1.maxReportedMessageCount()) {
-         this.f.add($$0);
+   public ua a() {
+      ua $$0 = new ua();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.m != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
       }
-   }
 
-   public fzn a() {
-      fzn $$0 = new fzn(this.a, this.b, this.c);
-      $$0.f.addAll(this.f);
-      $$0.d = this.d;
-      $$0.e = this.e;
+      if (this.l == fzn.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.l == fzn.a.b) {
+         $$0.a("acceptTextures", false);
+      }
+
       return $$0;
    }
 
-   @Override
-   public fnl a(fnl $$0, fzu $$1) {
-      return new frr($$0, $$1, this);
+   public fzn.a b() {
+      return this.l;
    }
 
-   public static class a extends fzq.a<fzn> {
-      public a(fzn $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
+   public void a(fzn.a $$0) {
+      this.l = $$0;
+   }
 
-      public a(UUID $$0, AbuseReportLimits $$1) {
-         super(new fzn(UUID.randomUUID(), Instant.now(), $$0), $$1);
-      }
-
-      public IntSet a() {
-         return this.a.f;
-      }
-
-      public void a(int $$0) {
-         this.a.a($$0, this.b);
-      }
-
-      public boolean b(int $$0) {
-         return this.a.f.contains($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.h() != null;
-      }
-
-      @Nullable
-      @Override
-      public fzq.b c() {
-         if (this.a.f.isEmpty()) {
-            return fzq.b.b;
-         } else if (this.a.f.size() > this.b.maxReportedMessageCount()) {
-            return fzq.b.c;
-         } else if (this.a.e == null) {
-            return fzq.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fzq.b.d : null;
+   public static fzn a(ua $$0) {
+      fzn $$1 = new fzn($$0.l("name"), $$0.l("ip"), fzn.c.c);
+      if ($$0.b("icon", 8)) {
+         try {
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            j.warn("Malformed base64 server icon", var3);
          }
       }
 
-      @Override
-      public Either<fzq.c, fzq.b> a(fzu $$0) {
-         fzq.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
+      if ($$0.b("acceptTextures", 1)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(fzn.a.a);
          } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportEvidence $$3 = this.b($$0);
-            ReportedEntity $$4 = new ReportedEntity(this.a.c);
-            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
-            return Either.left(new fzq.c(this.a.a, fzt.a, $$5));
+            $$1.a(fzn.a.b);
+         }
+      } else {
+         $$1.a(fzn.a.c);
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   public byte[] c() {
+      return this.m;
+   }
+
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
+   }
+
+   public boolean d() {
+      return this.n == fzn.c.a;
+   }
+
+   public boolean e() {
+      return this.n == fzn.c.b;
+   }
+
+   public fzn.c f() {
+      return this.n;
+   }
+
+   public void a(fzn $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
+   }
+
+   public void b(fzn $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+   }
+
+   public fzn.b g() {
+      return this.o;
+   }
+
+   public void a(fzn.b $$0) {
+      this.o = $$0;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            ays $$1 = ays.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
+            }
+         } catch (IOException var2) {
+            j.warn("Failed to decode server icon", var2);
          }
       }
 
-      private ReportEvidence b(fzu $$0) {
-         List<ReportChatMessage> $$1 = new ArrayList<>();
-         fzo $$2 = new fzo(this.b.leadingContextMessageCount());
-         $$2.a($$0.b(), this.a.f, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-         return new ReportEvidence(Lists.reverse($$1));
+      return null;
+   }
+
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final wy d;
+
+      private a(final String $$0) {
+         this.d = wy.c("addServer.resourcePack." + $$0);
       }
 
-      private ReportChatMessage a(fzj.a $$0, boolean $$1) {
-         xp $$2 = $$0.g().k();
-         xn $$3 = $$0.g().m();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(xg::a).toList();
-         ByteBuffer $$5 = x.a($$0.g().l(), xg::a);
-         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
+      public wy a() {
+         return this.d;
       }
+   }
 
-      public fzn.a d() {
-         return new fzn.a(this.a.a(), this.b);
-      }
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
+   }
+
+   public static enum c {
+      a,
+      b,
+      c;
    }
 }

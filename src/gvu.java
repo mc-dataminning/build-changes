@@ -1,33 +1,50 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public abstract class gvu extends fnl {
-   protected static final int q = 17;
-   protected static final int r = 7;
-   protected static final long s = 5368709120L;
-   protected static final int u = 5000268;
-   protected static final int v = 7105644;
-   protected static final int w = 8388479;
-   protected static final int x = 3368635;
-   protected static final int y = 7107012;
-   protected static final int z = 32;
-   private final List<gvs> a = Lists.newArrayList();
+public class gvu {
+   private final gwb a;
+   private final fgm b;
+   @Nullable
+   private fkr c;
 
-   public gvu(wu $$0) {
-      super($$0);
+   public gvu(gwb $$0, fgm $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   private void a() {
+      if (this.c != null) {
+         this.a.a(this.c);
+      }
+
+      wy $$0 = wy.c("tutorial.bundleInsert.title");
+      wy $$1 = wy.c("tutorial.bundleInsert.description");
+      this.c = new fkr(fkr.a.g, $$0, $$1, true);
+      this.a.a(this.c, 160);
    }
 
-   protected gvs a(gvs $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   private void b() {
+      if (this.c != null) {
+         this.a.a(this.c);
+         this.c = null;
+      }
+
+      if (!this.b.t) {
+         this.b.t = true;
+         this.b.av();
+      }
    }
 
-   public wu m() {
-      return wt.a(this.a.stream().map(gvs::a).collect(Collectors.toList()));
+   public void a(cuo $$0, cuo $$1, cqb $$2) {
+      if (!this.b.t) {
+         if (!$$0.e() && $$1.a(cur.qU)) {
+            if ($$2 == cqb.a) {
+               this.a();
+            } else if ($$2 == cqb.b) {
+               this.b();
+            }
+         } else if ($$0.a(cur.qU) && !$$1.e() && $$2 == cqb.b) {
+            this.b();
+         }
+      }
    }
 }

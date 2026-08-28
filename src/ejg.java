@@ -1,26 +1,40 @@
-import com.mojang.serialization.MapCodec;
+public interface ejg {
+   akp<ejm> a = a("pillager_outpost");
+   akp<ejm> b = a("mineshaft");
+   akp<ejm> c = a("mineshaft_mesa");
+   akp<ejm> d = a("mansion");
+   akp<ejm> e = a("jungle_pyramid");
+   akp<ejm> f = a("desert_pyramid");
+   akp<ejm> g = a("igloo");
+   akp<ejm> h = a("shipwreck");
+   akp<ejm> i = a("shipwreck_beached");
+   akp<ejm> j = a("swamp_hut");
+   akp<ejm> k = a("stronghold");
+   akp<ejm> l = a("monument");
+   akp<ejm> m = a("ocean_ruin_cold");
+   akp<ejm> n = a("ocean_ruin_warm");
+   akp<ejm> o = a("fortress");
+   akp<ejm> p = a("nether_fossil");
+   akp<ejm> q = a("end_city");
+   akp<ejm> r = a("buried_treasure");
+   akp<ejm> s = a("bastion_remnant");
+   akp<ejm> t = a("village_plains");
+   akp<ejm> u = a("village_desert");
+   akp<ejm> v = a("village_savanna");
+   akp<ejm> w = a("village_snowy");
+   akp<ejm> x = a("village_taiga");
+   akp<ejm> y = a("ruined_portal");
+   akp<ejm> z = a("ruined_portal_desert");
+   akp<ejm> A = a("ruined_portal_jungle");
+   akp<ejm> B = a("ruined_portal_swamp");
+   akp<ejm> C = a("ruined_portal_mountain");
+   akp<ejm> D = a("ruined_portal_ocean");
+   akp<ejm> E = a("ruined_portal_nether");
+   akp<ejm> F = a("ancient_city");
+   akp<ejm> G = a("trail_ruins");
+   akp<ejm> H = a("trial_chambers");
 
-public interface ejg<S extends eix> {
-   ejg<ekr> a = a("buried_treasure", ekr.d);
-   ejg<ekt> b = a("desert_pyramid", ekt.d);
-   ejg<ekv> c = a("end_city", ekv.d);
-   ejg<ele> d = a("fortress", ele.e);
-   ejg<ekx> e = a("igloo", ekx.d);
-   ejg<eky> f = a("jigsaw", eky.h);
-   ejg<ela> g = a("jungle_temple", ela.d);
-   ejg<elc> h = a("mineshaft", elc.d);
-   ejg<elg> i = a("nether_fossil", elg.d);
-   ejg<eli> j = a("ocean_monument", eli.d);
-   ejg<elk> k = a("ocean_ruin", elk.d);
-   ejg<elm> l = a("ruined_portal", elm.d);
-   ejg<elo> m = a("shipwreck", elo.d);
-   ejg<elq> n = a("stronghold", elq.d);
-   ejg<els> o = a("swamp_hut", els.d);
-   ejg<elu> p = a("woodland_mansion", elu.d);
-
-   MapCodec<S> codec();
-
-   private static <S extends eix> ejg<S> a(String $$0, MapCodec<S> $$1) {
-      return jw.a(lq.R, $$0, () -> $$1);
+   private static akp<ejm> a(String $$0) {
+      return akp.a(lu.aR, akq.b($$0));
    }
 }

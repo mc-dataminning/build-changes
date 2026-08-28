@@ -1,110 +1,107 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
-public record dym(dxz b, dxz c, dxz d, dxz e, dxz f, dxz g, dxz h, dxz i, dxz j, dxz k, dxz l, dxz m, dxz n, dxz o, dxz p) {
-   public static final Codec<dym> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a("barrier", dym::a),
-               a("fluid_level_floodedness", dym::b),
-               a("fluid_level_spread", dym::c),
-               a("lava", dym::d),
-               a("temperature", dym::e),
-               a("vegetation", dym::f),
-               a("continents", dym::g),
-               a("erosion", dym::h),
-               a("depth", dym::i),
-               a("ridges", dym::j),
-               a("initial_density_without_jaggedness", dym::k),
-               a("final_density", dym::l),
-               a("vein_toggle", dym::m),
-               a("vein_ridged", dym::n),
-               a("vein_gap", dym::o)
-            )
-            .apply($$0, dym::new)
-   );
+public class dym extends dux {
+   public static final MapCodec<dym> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ako.d(deb.b)).apply($$0, $$0.stable(dym::new)));
+   private static final int h = 2;
+   private static final List<dta> i = StreamSupport.stream(lt.e.spliterator(), false).flatMap($$0 -> $$0.l().a().stream()).collect(Collectors.toList());
+   private static final int j = ayn.f(ayn.c((float)i.size()));
+   private static final int k = ayn.f((float)i.size() / (float)j);
+   protected static final dta d = dfy.a.o();
+   protected static final dta e = dfy.hW.o();
+   public static final int f = 70;
+   public static final int g = 60;
 
-   private static RecordCodecBuilder<dym, dxz> a(String $$0, Function<dym, dxz> $$1) {
-      return dxz.d.fieldOf($$0).forGetter($$1);
+   public dym(jm.c<ddu> $$0) {
+      super(new def($$0));
    }
 
-   public dym a(dxz.f $$0) {
-      return new dym(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   @Override
+   protected MapCodec<? extends dux> b() {
+      return c;
    }
 
-   public dxz a() {
-      return this.b;
+   @Override
+   public void a(ara $$0, ddo $$1, dzj $$2, duw $$3) {
    }
 
-   public dxz b() {
-      return this.c;
+   @Override
+   public void a(ddq $$0, duw $$1, ddo $$2) {
+      jd.a $$3 = new jd.a();
+      dcb $$4 = $$1.f();
+      int $$5 = $$4.e;
+      int $$6 = $$4.f;
+
+      for (int $$7 = 0; $$7 < 16; $$7++) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            int $$9 = kf.a($$5, $$7);
+            int $$10 = kf.a($$6, $$8);
+            $$0.a($$3.d($$9, 60, $$10), e, 2);
+            dta $$11 = a($$9, $$10);
+            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
+         }
+      }
    }
 
-   public dxz c() {
-      return this.d;
+   @Override
+   public CompletableFuture<duw> a(dzx $$0, dzj $$1, ddo $$2, duw $$3) {
+      return CompletableFuture.completedFuture($$3);
    }
 
-   public dxz d() {
-      return this.e;
+   @Override
+   public int a(int $$0, int $$1, dyv.a $$2, dcw $$3, dzj $$4) {
+      return 0;
    }
 
-   public dxz e() {
-      return this.f;
+   @Override
+   public ddg a(int $$0, int $$1, dcw $$2, dzj $$3) {
+      return new ddg(0, new dta[0]);
    }
 
-   public dxz f() {
-      return this.g;
+   @Override
+   public void a(List<String> $$0, dzj $$1, jd $$2) {
    }
 
-   public dxz g() {
-      return this.h;
+   public static dta a(int $$0, int $$1) {
+      dta $$2 = d;
+      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
+         $$0 /= 2;
+         $$1 /= 2;
+         if ($$0 <= j && $$1 <= k) {
+            int $$3 = ayn.a($$0 * j + $$1);
+            if ($$3 < i.size()) {
+               $$2 = i.get($$3);
+            }
+         }
+      }
+
+      return $$2;
    }
 
-   public dxz h() {
-      return this.i;
+   @Override
+   public void a(ara $$0, long $$1, dzj $$2, ddw $$3, ddo $$4, duw $$5, dyr.a $$6) {
    }
 
-   public dxz i() {
-      return this.j;
+   @Override
+   public void a(ara $$0) {
    }
 
-   public dxz j() {
-      return this.k;
+   @Override
+   public int g() {
+      return 0;
    }
 
-   public dxz k() {
-      return this.l;
+   @Override
+   public int e() {
+      return 384;
    }
 
-   public dxz l() {
-      return this.m;
-   }
-
-   public dxz m() {
-      return this.n;
-   }
-
-   public dxz n() {
-      return this.o;
-   }
-
-   public dxz o() {
-      return this.p;
+   @Override
+   public int f() {
+      return 63;
    }
 }

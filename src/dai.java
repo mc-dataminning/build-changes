@@ -1,38 +1,36 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dai(jj<avg> d, bpk e, bpk f) implements dac {
-   public static final MapCodec<dai> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               avg.b.fieldOf("sound").forGetter(dai::b),
-               bpk.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(dai::c),
-               bpk.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(dai::d)
-            )
-            .apply($$0, dai::new)
-   );
-
-   @Override
-   public void a(aqm $$0, int $$1, czl $$2, bsh $$3, ewh $$4) {
-      ayo $$5 = $$3.dU();
-      if (!$$3.aY()) {
-         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.dg(), this.e.a($$5), this.f.a($$5));
-      }
+public record dai<T>(dae a, dae b, T c, Optional<euw> d) {
+   public static <S> Codec<dai<S>> a(Codec<S> $$0, euf $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  dae.d.fieldOf("enchanted").forGetter(dai::a),
+                  dae.d.fieldOf("affected").forGetter(dai::b),
+                  $$0.fieldOf("effect").forGetter(dai::c),
+                  czy.a($$1).optionalFieldOf("requirements").forGetter(dai::d)
+               )
+               .apply($$2, dai::new)
+      );
    }
 
-   @Override
-   public MapCodec<dai> a() {
-      return a;
+   public static <S> Codec<dai<S>> b(Codec<S> $$0, euf $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  dae.d
+                     .validate($$0xx -> $$0xx != dae.b ? DataResult.success($$0xx) : DataResult.error(() -> "enchanted must be attacker or victim"))
+                     .fieldOf("enchanted")
+                     .forGetter(dai::a),
+                  $$0.fieldOf("effect").forGetter(dai::c),
+                  czy.a($$1).optionalFieldOf("requirements").forGetter(dai::d)
+               )
+               .apply($$2, ($$0xx, $$1xx, $$2x) -> new dai<>($$0xx, dae.c, $$1xx, $$2x))
+      );
    }
 
-   public jj<avg> b() {
-      return this.d;
-   }
-
-   public bpk c() {
-      return this.e;
-   }
-
-   public bpk d() {
-      return this.f;
+   public boolean a(erl $$0) {
+      return this.d.isEmpty() ? true : this.d.get().test($$0);
    }
 }

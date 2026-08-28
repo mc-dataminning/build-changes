@@ -1,23 +1,26 @@
-public class gkj extends gku<cfe, fvf<cfe>> {
-   private static final akk a = new akk("textures/entity/iron_golem/iron_golem.png");
+public class gkj extends gkc<cni> {
+   private final glb a;
 
-   public gkj(gjo.a $$0) {
-      super($$0, new fvf<>($$0.a(fxp.av)), 0.7F);
-      this.a(new gnr(this));
-      this.a(new gns(this, $$0.c()));
+   public gkj(gkd.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   public akk a(cfe $$0) {
-      return a;
-   }
-
-   protected void a(cfe $$0, fao $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!((double)$$0.aV.a() < 0.01)) {
-         float $$6 = 13.0F;
-         float $$7 = $$0.aV.c($$4) + 6.0F;
-         float $$8 = (Math.abs($$7 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$8));
+   public void a(cni $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
+      $$3.a();
+      $$3.a(this.c.b());
+      if ($$0.t()) {
+         $$3.a(a.f.rotationDegrees(180.0F));
+         $$3.a(a.d.rotationDegrees(180.0F));
+         $$3.a(a.b.rotationDegrees(90.0F));
       }
+
+      this.a.a($$0.p(), cul.h, $$5, gpw.d, $$3, $$4, $$0.dQ(), $$0.an());
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public akq a(cni $$0) {
+      return gqe.e;
    }
 }

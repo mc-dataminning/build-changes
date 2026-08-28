@@ -1,70 +1,34 @@
-public abstract class ddn {
-   public static final akj<ddg> a = a("the_void");
-   public static final akj<ddg> b = a("plains");
-   public static final akj<ddg> c = a("sunflower_plains");
-   public static final akj<ddg> d = a("snowy_plains");
-   public static final akj<ddg> e = a("ice_spikes");
-   public static final akj<ddg> f = a("desert");
-   public static final akj<ddg> g = a("swamp");
-   public static final akj<ddg> h = a("mangrove_swamp");
-   public static final akj<ddg> i = a("forest");
-   public static final akj<ddg> j = a("flower_forest");
-   public static final akj<ddg> k = a("birch_forest");
-   public static final akj<ddg> l = a("dark_forest");
-   public static final akj<ddg> m = a("old_growth_birch_forest");
-   public static final akj<ddg> n = a("old_growth_pine_taiga");
-   public static final akj<ddg> o = a("old_growth_spruce_taiga");
-   public static final akj<ddg> p = a("taiga");
-   public static final akj<ddg> q = a("snowy_taiga");
-   public static final akj<ddg> r = a("savanna");
-   public static final akj<ddg> s = a("savanna_plateau");
-   public static final akj<ddg> t = a("windswept_hills");
-   public static final akj<ddg> u = a("windswept_gravelly_hills");
-   public static final akj<ddg> v = a("windswept_forest");
-   public static final akj<ddg> w = a("windswept_savanna");
-   public static final akj<ddg> x = a("jungle");
-   public static final akj<ddg> y = a("sparse_jungle");
-   public static final akj<ddg> z = a("bamboo_jungle");
-   public static final akj<ddg> A = a("badlands");
-   public static final akj<ddg> B = a("eroded_badlands");
-   public static final akj<ddg> C = a("wooded_badlands");
-   public static final akj<ddg> D = a("meadow");
-   public static final akj<ddg> E = a("cherry_grove");
-   public static final akj<ddg> F = a("grove");
-   public static final akj<ddg> G = a("snowy_slopes");
-   public static final akj<ddg> H = a("frozen_peaks");
-   public static final akj<ddg> I = a("jagged_peaks");
-   public static final akj<ddg> J = a("stony_peaks");
-   public static final akj<ddg> K = a("river");
-   public static final akj<ddg> L = a("frozen_river");
-   public static final akj<ddg> M = a("beach");
-   public static final akj<ddg> N = a("snowy_beach");
-   public static final akj<ddg> O = a("stony_shore");
-   public static final akj<ddg> P = a("warm_ocean");
-   public static final akj<ddg> Q = a("lukewarm_ocean");
-   public static final akj<ddg> R = a("deep_lukewarm_ocean");
-   public static final akj<ddg> S = a("ocean");
-   public static final akj<ddg> T = a("deep_ocean");
-   public static final akj<ddg> U = a("cold_ocean");
-   public static final akj<ddg> V = a("deep_cold_ocean");
-   public static final akj<ddg> W = a("frozen_ocean");
-   public static final akj<ddg> X = a("deep_frozen_ocean");
-   public static final akj<ddg> Y = a("mushroom_fields");
-   public static final akj<ddg> Z = a("dripstone_caves");
-   public static final akj<ddg> aa = a("lush_caves");
-   public static final akj<ddg> ab = a("deep_dark");
-   public static final akj<ddg> ac = a("nether_wastes");
-   public static final akj<ddg> ad = a("warped_forest");
-   public static final akj<ddg> ae = a("crimson_forest");
-   public static final akj<ddg> af = a("soul_sand_valley");
-   public static final akj<ddg> ag = a("basalt_deltas");
-   public static final akj<ddg> ah = a("the_end");
-   public static final akj<ddg> ai = a("end_highlands");
-   public static final akj<ddg> aj = a("end_midlands");
-   public static final akj<ddg> ak = a("small_end_islands");
-   public static final akj<ddg> al = a("end_barrens");
+import java.util.List;
+import javax.annotation.Nullable;
 
-   private static akj<ddg> a(String $$0) {
-      return akj.a(lr.aE, new akk($$0));
+public interface ddn {
+   void a(bsw<?> var1, ayv var2);
+
+   static void a(cuo $$0, List<wy> $$1, String $$2) {
+      wy $$3 = a($$0, $$2);
+      if ($$3 != null) {
+         $$1.add($$3);
+      } else {
+         $$1.add(wx.a);
+         $$1.add(wy.c("block.minecraft.spawner.desc1").a(n.h));
+         $$1.add(wx.a().b(wy.c("block.minecraft.spawner.desc2").a(n.j)));
+      }
+   }
+
+   @Nullable
+   static wy a(cuo $$0, String $$1) {
+      ua $$2 = $$0.a(kq.O, cxf.a).d();
+      akq $$3 = a($$2, $$1);
+      return $$3 != null ? lt.f.b($$3).map($$0x -> wy.c($$0x.g()).a(n.h)).orElse(null) : null;
+   }
+
+   @Nullable
+   private static akq a(ua $$0, String $$1) {
+      if ($$0.b($$1, 10)) {
+         String $$2 = $$0.p($$1).p("entity").l("id");
+         return akq.c($$2);
+      } else {
+         return null;
+      }
    }
 }

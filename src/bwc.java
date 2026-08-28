@@ -1,29 +1,32 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bwc {
-   public static bwg<bte> a(int $$0) {
-      return byi.a(
-         (Function<byi.b<bte>, ? extends App<byi.c<bte>, byl<bte>>>)($$1 -> $$1.group($$1.a(ccg.n), $$1.b(ccg.o), $$1.c(ccg.p), $$1.b(ccg.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     btc $$9 = $$1.b($$3);
-                     if (!a($$7) && $$7.i($$9) && $$1.<cci>b($$5).a($$9)) {
-                        $$2.a(new bvg($$9, true));
-                        $$7.a(bqg.a);
-                        $$7.D($$9);
-                        $$4.a(true, (long)$$0);
+   public static <T extends btl> bvg<btl> a(bsw<? extends T> $$0, int $$1, ccq<T> $$2, float $$3, int $$4) {
+      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
+   }
+
+   public static <E extends btl, T extends btl> bvg<E> a(bsw<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, ccq<T> $$4, float $$5, int $$6) {
+      int $$7 = $$1 * $$1;
+      Predicate<btl> $$8 = $$2x -> $$0.equals($$2x.am()) && $$3.test((T)$$2x);
+      return bys.a(
+         (Function<bys.b<E>, ? extends App<bys.c<E>, byv<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(ccq.n), $$6x.c(ccq.m), $$6x.b(ccq.h))
+               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
+                     ccs $$13 = $$6x.b($$9);
+                     if ($$2.test((E)$$11) && $$13.d($$8)) {
+                        Optional<btl> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((bsq)$$11) <= (double)$$7 && $$8.test($$3xxxx));
+                        $$14.ifPresent($$5xxxx -> {
+                           $$6xx.a($$5xxxx);
+                           $$7x.a(new bvq($$5xxxx, true));
+                           $$8x.a(new cct(new bvq($$5xxxx, false), $$5, $$6));
+                        });
                         return true;
                      } else {
                         return false;
                      }
                   }))
       );
-   }
-
-   private static boolean a(bte $$0) {
-      return $$0.b($$1 -> {
-         cty $$2 = $$1.g();
-         return $$2 instanceof cuw && $$0.a((cuw)$$2);
-      });
    }
 }

@@ -1,73 +1,59 @@
-public class gvi implements gvn {
-   private static final int a = 6000;
-   private static final wu b = wu.c("tutorial.find_tree.title");
-   private static final wu c = wu.c("tutorial.find_tree.description");
-   private final gvm d;
-   private fkf e;
-   private int f;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public gvi(gvm $$0) {
+public class gvi implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = ".json";
+   private static final int c = 7;
+   private final blw d;
+   @Nullable
+   private CompletableFuture<Optional<gve>> e;
+
+   private gvi(blw $$0) {
       this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gvo.f);
-      } else {
-         if (this.f == 1) {
-            gdh $$0 = this.d.e().s;
-            if ($$0 != null && (b($$0) || a($$0))) {
-               this.d.a(gvo.e);
-               return;
+   public static CompletableFuture<Optional<gvi>> a(Path $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            blw $$1 = blw.a($$0, ".json");
+            $$1.a().a(LocalDate.now(), 7).a();
+            return Optional.of(new gvi($$1));
+         } catch (Exception var2) {
+            a.error("Failed to create telemetry log manager", var2);
+            return Optional.empty();
+         }
+      }, ad.g());
+   }
+
+   public CompletableFuture<Optional<gvf>> a() {
+      if (this.e == null) {
+         this.e = CompletableFuture.supplyAsync(() -> {
+            try {
+               blw.e $$0 = this.d.a(LocalDate.now());
+               FileChannel $$1 = $$0.e();
+               return Optional.of(new gve($$1, ad.g()));
+            } catch (IOException var3) {
+               a.error("Failed to open channel for telemetry event log", var3);
+               return Optional.empty();
             }
-         }
-
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new fkf(fkf.a.c, b, c, false);
-            this.d.e().aw().a(this.e);
-         }
+         }, ad.g());
       }
+
+      return this.e.thenApply($$0 -> $$0.map(gve::a));
    }
 
    @Override
-   public void b() {
+   public void close() {
       if (this.e != null) {
-         this.e.c();
-         this.e = null;
+         this.e.thenAccept($$0 -> $$0.ifPresent(gve::close));
       }
-   }
-
-   @Override
-   public void a(fyl $$0, ewf $$1) {
-      if ($$1.c() == ewf.a.b) {
-         dsl $$2 = $$0.a_(((ewd)$$1).a());
-         if ($$2.a(avw.aj)) {
-            this.d.a(gvo.c);
-         }
-      }
-   }
-
-   @Override
-   public void a(cud $$0) {
-      if ($$0.a(awf.aM)) {
-         this.d.a(gvo.e);
-      }
-   }
-
-   private static boolean b(gdh $$0) {
-      return $$0.ga().a_($$0x -> $$0x.a(awf.aM));
-   }
-
-   public static boolean a(gdh $$0) {
-      for (jj<dfi> $$1 : lq.e.c(avw.aj)) {
-         dfi $$2 = $$1.a();
-         if ($$0.j().a(avr.a.b($$2)) > 0) {
-            return true;
-         }
-      }
-
-      return false;
    }
 }

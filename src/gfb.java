@@ -1,617 +1,712 @@
-import it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2IntLinkedOpenHashMap;
-import java.util.BitSet;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
-public class gfb {
-   private static final int a = 0;
-   private static final int b = 1;
-   static final jf[] c = jf.values();
-   private final fgy d;
-   private static final int e = 100;
-   static final ThreadLocal<gfb.d> f = ThreadLocal.withInitial(gfb.d::new);
+public abstract class gfb extends gfa {
+   private static final int aV = 1048576;
+   public static final int aQ = 4194304;
+   public static final int aR = 786432;
+   public static final int aS = 1536;
+   private static final gfb aW = a("solid", fba.b, fbh.c.h, 4194304, true, false, gfb.b.a().a(aq).a(o).a(ak).a(true));
+   private static final gfb aX = a("cutout_mipped", fba.b, fbh.c.h, 4194304, true, false, gfb.b.a().a(aq).a(p).a(ak).a(true));
+   private static final gfb aY = a("cutout", fba.b, fbh.c.h, 786432, true, false, gfb.b.a().a(aq).a(q).a(al).a(true));
+   private static final gfb aZ = a("translucent", fba.b, fbh.c.h, 786432, true, true, a(r));
+   private static final gfb ba = a("translucent_moving_block", fba.b, fbh.c.h, 786432, false, true, O());
+   private static final Function<akq, gfb> bb = ad.b($$0 -> a("armor_cutout_no_cull", $$0, false));
+   private static final Function<akq, gfb> bc = ad.b($$0 -> {
+      gfb.b $$1 = gfb.b.a().a(u).a(new gfa.n($$0, false, false)).a(c).a(aq).a(as).a(true);
+      return a("entity_solid", fba.c, fbh.c.h, 1536, true, false, $$1);
+   });
+   private static final Function<akq, gfb> bd = ad.b($$0 -> {
+      gfb.b $$1 = gfb.b.a().a(v).a(new gfa.n($$0, false, false)).a(c).a(aq).a(as).a(true);
+      return a("entity_cutout", fba.c, fbh.c.h, 1536, true, false, $$1);
+   });
+   private static final BiFunction<akq, Boolean, gfb> be = ad.a(($$0, $$1) -> {
+      gfb.b $$2 = gfb.b.a().a(w).a(new gfa.n($$0, false, false)).a(c).a(av).a(aq).a(as).a($$1);
+      return a("entity_cutout_no_cull", fba.c, fbh.c.h, 1536, true, false, $$2);
+   });
+   private static final BiFunction<akq, Boolean, gfb> bf = ad.a(($$0, $$1) -> {
+      gfb.b $$2 = gfb.b.a().a(x).a(new gfa.n($$0, false, false)).a(c).a(av).a(aq).a(as).a(aF).a($$1);
+      return a("entity_cutout_no_cull_z_offset", fba.c, fbh.c.h, 1536, true, false, $$2);
+   });
+   private static final Function<akq, gfb> bg = ad.b($$0 -> {
+      gfb.b $$1 = gfb.b.a().a(y).a(new gfa.n($$0, false, false)).a(h).a(aM).a(aq).a(as).a(gfa.aA).a(true);
+      return a("item_entity_translucent_cull", fba.c, fbh.c.h, 1536, true, true, $$1);
+   });
+   private static final Function<akq, gfb> bh = ad.b($$0 -> {
+      gfb.b $$1 = gfb.b.a().a(z).a(new gfa.n($$0, false, false)).a(h).a(aq).a(as).a(true);
+      return a("entity_translucent_cull", fba.c, fbh.c.h, 1536, true, true, $$1);
+   });
+   private static final BiFunction<akq, Boolean, gfb> bi = ad.a(($$0, $$1) -> {
+      gfb.b $$2 = gfb.b.a().a(A).a(new gfa.n($$0, false, false)).a(h).a(av).a(aq).a(as).a($$1);
+      return a("entity_translucent", fba.c, fbh.c.h, 1536, true, true, $$2);
+   });
+   private static final BiFunction<akq, Boolean, gfb> bj = ad.a(($$0, $$1) -> {
+      gfb.b $$2 = gfb.b.a().a(B).a(new gfa.n($$0, false, false)).a(h).a(av).a(aB).a(as).a($$1);
+      return a("entity_translucent_emissive", fba.c, fbh.c.h, 1536, true, true, $$2);
+   });
+   private static final Function<akq, gfb> bk = ad.b($$0 -> {
+      gfb.b $$1 = gfb.b.a().a(C).a(new gfa.n($$0, false, false)).a(av).a(aq).a(true);
+      return a("entity_smooth_cutout", fba.c, fbh.c.h, 1536, $$1);
+   });
+   private static final BiFunction<akq, Boolean, gfb> bl = ad.a(($$0, $$1) -> {
+      gfb.b $$2 = gfb.b.a().a(D).a(new gfa.n($$0, false, false)).a($$1 ? h : c).a($$1 ? aB : aA).a(false);
+      return a("beacon_beam", fba.b, fbh.c.h, 1536, false, true, $$2);
+   });
+   private static final Function<akq, gfb> bm = ad.b($$0 -> {
+      gfb.b $$1 = gfb.b.a().a(E).a(new gfa.n($$0, false, false)).a(ax).a(av).a(aq).a(as).a(false);
+      return a("entity_decal", fba.c, fbh.c.h, 1536, $$1);
+   });
+   private static final Function<akq, gfb> bn = ad.b($$0 -> {
+      gfb.b $$1 = gfb.b.a().a(F).a(new gfa.n($$0, false, false)).a(h).a(av).a(aq).a(as).a(aB).a(false);
+      return a("entity_no_outline", fba.c, fbh.c.h, 1536, false, true, $$1);
+   });
+   private static final Function<akq, gfb> bo = ad.b($$0 -> {
+      gfb.b $$1 = gfb.b.a().a(G).a(new gfa.n($$0, false, false)).a(h).a(au).a(aq).a(as).a(aB).a(ay).a(aF).a(false);
+      return a("entity_shadow", fba.c, fbh.c.h, 1536, false, false, $$1);
+   });
+   private static final Function<akq, gfb> bp = ad.b($$0 -> {
+      gfb.b $$1 = gfb.b.a().a(H).a(new gfa.n($$0, false, false)).a(av).a(true);
+      return a("entity_alpha", fba.c, fbh.c.h, 1536, $$1);
+   });
+   private static final BiFunction<akq, gfa.p, gfb> bq = ad.a(($$0, $$1) -> {
+      gfa.n $$2 = new gfa.n($$0, false, false);
+      return a("eyes", fba.c, fbh.c.h, 1536, false, true, gfb.b.a().a(I).a($$2).a($$1).a(aB).a(false));
+   });
+   private static final gfb br = a("leash", fba.h, fbh.c.f, 1536, gfb.b.a().a(K).a(am).a(av).a(aq).a(false));
+   private static final gfb bs = a("water_mask", fba.e, fbh.c.h, 1536, gfb.b.a().a(L).a(am).a(aC).a(false));
+   private static final gfb bt = a(
+      "armor_entity_glint", fba.i, fbh.c.h, 1536, gfb.b.a().a(N).a(new gfa.n(glb.a, true, false)).a(aB).a(av).a(ax).a(f).a(ap).a(aF).a(false)
+   );
+   private static final gfb bu = a(
+      "glint_translucent", fba.i, fbh.c.h, 1536, gfb.b.a().a(O).a(new gfa.n(glb.b, true, false)).a(aB).a(av).a(ax).a(f).a(ao).a(aM).a(false)
+   );
+   private static final gfb bv = a("glint", fba.i, fbh.c.h, 1536, gfb.b.a().a(P).a(new gfa.n(glb.b, true, false)).a(aB).a(av).a(ax).a(f).a(ao).a(false));
+   private static final gfb bw = a(
+      "entity_glint", fba.i, fbh.c.h, 1536, gfb.b.a().a(Q).a(new gfa.n(glb.a, true, false)).a(aB).a(av).a(ax).a(f).a(aM).a(ap).a(false)
+   );
+   private static final gfb bx = a(
+      "entity_glint_direct", fba.i, fbh.c.h, 1536, gfb.b.a().a(R).a(new gfa.n(glb.a, true, false)).a(aB).a(av).a(ax).a(f).a(ap).a(false)
+   );
+   private static final Function<akq, gfb> by = ad.b($$0 -> {
+      gfa.n $$1 = new gfa.n($$0, false, false);
+      return a("crumbling", fba.b, fbh.c.h, 1536, false, true, gfb.b.a().a(S).a($$1).a(g).a(aB).a(aE).a(false));
+   });
+   private static final Function<akq, gfb> bz = ad.b(
+      $$0 -> a("text", fba.k, fbh.c.h, 786432, false, true, gfb.b.a().a(T).a(new gfa.n($$0, false, false)).a(h).a(aq).a(false))
+   );
+   private static final gfb bA = a("text_background", fba.h, fbh.c.h, 1536, false, true, gfb.b.a().a(U).a(am).a(h).a(aq).a(false));
+   private static final Function<akq, gfb> bB = ad.b(
+      $$0 -> a("text_intensity", fba.k, fbh.c.h, 786432, false, true, gfb.b.a().a(V).a(new gfa.n($$0, false, false)).a(h).a(aq).a(false))
+   );
+   private static final Function<akq, gfb> bC = ad.b(
+      $$0 -> a("text_polygon_offset", fba.k, fbh.c.h, 1536, false, true, gfb.b.a().a(T).a(new gfa.n($$0, false, false)).a(h).a(aq).a(aE).a(false))
+   );
+   private static final Function<akq, gfb> bD = ad.b(
+      $$0 -> a("text_intensity_polygon_offset", fba.k, fbh.c.h, 1536, false, true, gfb.b.a().a(V).a(new gfa.n($$0, false, false)).a(h).a(aq).a(aE).a(false))
+   );
+   private static final Function<akq, gfb> bE = ad.b(
+      $$0 -> a("text_see_through", fba.k, fbh.c.h, 1536, false, true, gfb.b.a().a(W).a(new gfa.n($$0, false, false)).a(h).a(aq).a(aw).a(aB).a(false))
+   );
+   private static final gfb bF = a("text_background_see_through", fba.h, fbh.c.h, 1536, false, true, gfb.b.a().a(X).a(am).a(h).a(aq).a(aw).a(aB).a(false));
+   private static final Function<akq, gfb> bG = ad.b(
+      $$0 -> a("text_intensity_see_through", fba.k, fbh.c.h, 1536, false, true, gfb.b.a().a(Y).a(new gfa.n($$0, false, false)).a(h).a(aq).a(aw).a(aB).a(false))
+   );
+   private static final gfb bH = a("lightning", fba.f, fbh.c.h, 1536, false, true, gfb.b.a().a(Z).a(aA).a(e).a(aK).a(false));
+   private static final gfb bI = a("tripwire", fba.b, fbh.c.h, 1536, true, true, P());
+   private static final gfb bJ = a(
+      "end_portal", fba.e, fbh.c.h, 1536, false, false, gfb.b.a().a(ab).a(gfa.i.d().a(ghm.a, false, false).a(ghm.b, false, false).a()).a(false)
+   );
+   private static final gfb bK = a(
+      "end_gateway", fba.e, fbh.c.h, 1536, false, false, gfb.b.a().a(ac).a(gfa.i.d().a(ghm.a, false, false).a(ghm.b, false, false).a()).a(false)
+   );
+   private static final gfb bL = a(false);
+   private static final gfb bM = a(true);
+   public static final gfb.a aT = a("lines", fba.g, fbh.c.a, 1536, gfb.b.a().a(ae).a(new gfa.h(OptionalDouble.empty())).a(aF).a(h).a(aM).a(aA).a(av).a(false));
+   public static final gfb.a aU = a(
+      "line_strip", fba.g, fbh.c.b, 1536, gfb.b.a().a(ae).a(new gfa.h(OptionalDouble.empty())).a(aF).a(h).a(aM).a(aA).a(av).a(false)
+   );
+   private static final Function<Double, gfb.a> bN = ad.b(
+      $$0 -> a("debug_line_strip", fba.f, fbh.c.d, 1536, gfb.b.a().a(n).a(new gfa.h(OptionalDouble.of($$0))).a(c).a(av).a(false))
+   );
+   private static final gfb.a bO = a("debug_filled_box", fba.f, fbh.c.f, 1536, false, true, gfb.b.a().a(n).a(aF).a(h).a(false));
+   private static final gfb.a bP = a("debug_quads", fba.f, fbh.c.h, 1536, false, true, gfb.b.a().a(n).a(h).a(av).a(false));
+   private static final gfb.a bQ = a("debug_section_quads", fba.f, fbh.c.h, 1536, false, true, gfb.b.a().a(n).a(aF).a(h).a(au).a(false));
+   private static final gfb.a bR = a("gui", fba.f, fbh.c.h, 786432, gfb.b.a().a(af).a(h).a(ay).a(false));
+   private static final gfb.a bS = a("gui_overlay", fba.f, fbh.c.h, 1536, gfb.b.a().a(ag).a(h).a(aw).a(aB).a(false));
+   private static final gfb.a bT = a("gui_text_highlight", fba.f, fbh.c.h, 1536, gfb.b.a().a(ah).a(h).a(aw).a(aP).a(false));
+   private static final gfb.a bU = a("gui_ghost_recipe_overlay", fba.f, fbh.c.h, 1536, gfb.b.a().a(ai).a(h).a(az).a(aB).a(false));
+   private static final ImmutableList<gfb> bV = ImmutableList.of(c(), d(), e(), f(), r());
+   private final fbh bW;
+   private final fbh.c bX;
+   private final int bY;
+   private final boolean bZ;
+   private final boolean ca;
 
-   public gfb(fgy $$0) {
-      this.d = $$0;
+   public static gfb c() {
+      return aW;
    }
 
-   public void a(dbj $$0, grr $$1, dsl $$2, ja $$3, fao $$4, fas $$5, boolean $$6, ayo $$7, long $$8, int $$9) {
-      boolean $$10 = ffw.P() && $$2.h() == 0 && $$1.a();
-      ewh $$11 = $$2.n($$0, $$3);
-      $$4.a($$11.c, $$11.d, $$11.e);
-
-      try {
-         if ($$10) {
-            this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-         } else {
-            this.c($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-         }
-      } catch (Throwable var17) {
-         o $$13 = o.a(var17, "Tesselating block model");
-         p $$14 = $$13.a("Block model being tesselated");
-         p.a($$14, $$0, $$3, $$2);
-         $$14.a("Using AO", $$10);
-         throw new y($$13);
-      }
+   public static gfb d() {
+      return aX;
    }
 
-   public void b(dbj $$0, grr $$1, dsl $$2, ja $$3, fao $$4, fas $$5, boolean $$6, ayo $$7, long $$8, int $$9) {
-      float[] $$10 = new float[c.length * 2];
-      BitSet $$11 = new BitSet(3);
-      gfb.b $$12 = new gfb.b();
-      ja.a $$13 = $$3.j();
-
-      for (jf $$14 : c) {
-         $$7.b($$8);
-         List<gfc> $$15 = $$1.a($$2, $$14, $$7);
-         if (!$$15.isEmpty()) {
-            $$13.a($$3, $$14);
-            if (!$$6 || dfi.a($$2, $$0, $$3, $$14, $$13)) {
-               this.a($$0, $$2, $$3, $$4, $$5, $$15, $$10, $$11, $$12, $$9);
-            }
-         }
-      }
-
-      $$7.b($$8);
-      List<gfc> $$16 = $$1.a($$2, null, $$7);
-      if (!$$16.isEmpty()) {
-         this.a($$0, $$2, $$3, $$4, $$5, $$16, $$10, $$11, $$12, $$9);
-      }
+   public static gfb e() {
+      return aY;
    }
 
-   public void c(dbj $$0, grr $$1, dsl $$2, ja $$3, fao $$4, fas $$5, boolean $$6, ayo $$7, long $$8, int $$9) {
-      BitSet $$10 = new BitSet(3);
-      ja.a $$11 = $$3.j();
-
-      for (jf $$12 : c) {
-         $$7.b($$8);
-         List<gfc> $$13 = $$1.a($$2, $$12, $$7);
-         if (!$$13.isEmpty()) {
-            $$11.a($$3, $$12);
-            if (!$$6 || dfi.a($$2, $$0, $$3, $$12, $$11)) {
-               int $$14 = ged.a($$0, $$2, $$11);
-               this.a($$0, $$2, $$3, $$14, $$9, false, $$4, $$5, $$13, $$10);
-            }
-         }
-      }
-
-      $$7.b($$8);
-      List<gfc> $$15 = $$1.a($$2, null, $$7);
-      if (!$$15.isEmpty()) {
-         this.a($$0, $$2, $$3, -1, $$9, true, $$4, $$5, $$15, $$10);
-      }
+   private static gfb.b a(gfa.m $$0) {
+      return gfb.b.a().a(aq).a($$0).a(ak).a(h).a(aI).a(true);
    }
 
-   private void a(dbj $$0, dsl $$1, ja $$2, fao $$3, fas $$4, List<gfc> $$5, float[] $$6, BitSet $$7, gfb.b $$8, int $$9) {
-      for (gfc $$10 : $$5) {
-         this.a($$0, $$1, $$2, $$10.b(), $$10.e(), $$6, $$7);
-         $$8.a($$0, $$1, $$2, $$10.e(), $$6, $$7, $$10.f());
-         this.a($$0, $$1, $$2, $$4, $$3.c(), $$10, $$8.a[0], $$8.a[1], $$8.a[2], $$8.a[3], $$8.b[0], $$8.b[1], $$8.b[2], $$8.b[3], $$9);
-      }
+   public static gfb f() {
+      return aZ;
    }
 
-   private void a(
-      dbj $$0, dsl $$1, ja $$2, fas $$3, fao.a $$4, gfc $$5, float $$6, float $$7, float $$8, float $$9, int $$10, int $$11, int $$12, int $$13, int $$14
-   ) {
-      float $$16;
-      float $$17;
-      float $$18;
-      if ($$5.c()) {
-         int $$15 = this.d.a($$1, $$0, $$2, $$5.d());
-         $$16 = (float)($$15 >> 16 & 0xFF) / 255.0F;
-         $$17 = (float)($$15 >> 8 & 0xFF) / 255.0F;
-         $$18 = (float)($$15 & 0xFF) / 255.0F;
-      } else {
-         $$16 = 1.0F;
-         $$17 = 1.0F;
-         $$18 = 1.0F;
-      }
-
-      $$3.a($$4, $$5, new float[]{$$6, $$7, $$8, $$9}, $$16, $$17, $$18, 1.0F, new int[]{$$10, $$11, $$12, $$13}, $$14, true);
+   private static gfb.b O() {
+      return gfb.b.a().a(aq).a(s).a(ak).a(h).a(aM).a(true);
    }
 
-   private void a(dbj $$0, dsl $$1, ja $$2, int[] $$3, jf $$4, @Nullable float[] $$5, BitSet $$6) {
-      float $$7 = 32.0F;
-      float $$8 = 32.0F;
-      float $$9 = 32.0F;
-      float $$10 = -32.0F;
-      float $$11 = -32.0F;
-      float $$12 = -32.0F;
-
-      for (int $$13 = 0; $$13 < 4; $$13++) {
-         float $$14 = Float.intBitsToFloat($$3[$$13 * 8]);
-         float $$15 = Float.intBitsToFloat($$3[$$13 * 8 + 1]);
-         float $$16 = Float.intBitsToFloat($$3[$$13 * 8 + 2]);
-         $$7 = Math.min($$7, $$14);
-         $$8 = Math.min($$8, $$15);
-         $$9 = Math.min($$9, $$16);
-         $$10 = Math.max($$10, $$14);
-         $$11 = Math.max($$11, $$15);
-         $$12 = Math.max($$12, $$16);
-      }
-
-      if ($$5 != null) {
-         $$5[jf.e.d()] = $$7;
-         $$5[jf.f.d()] = $$10;
-         $$5[jf.a.d()] = $$8;
-         $$5[jf.b.d()] = $$11;
-         $$5[jf.c.d()] = $$9;
-         $$5[jf.d.d()] = $$12;
-         int $$17 = c.length;
-         $$5[jf.e.d() + $$17] = 1.0F - $$7;
-         $$5[jf.f.d() + $$17] = 1.0F - $$10;
-         $$5[jf.a.d() + $$17] = 1.0F - $$8;
-         $$5[jf.b.d() + $$17] = 1.0F - $$11;
-         $$5[jf.c.d() + $$17] = 1.0F - $$9;
-         $$5[jf.d.d() + $$17] = 1.0F - $$12;
-      }
-
-      float $$18 = 1.0E-4F;
-      float $$19 = 0.9999F;
-      switch ($$4) {
-         case a:
-            $$6.set(1, $$7 >= 1.0E-4F || $$9 >= 1.0E-4F || $$10 <= 0.9999F || $$12 <= 0.9999F);
-            $$6.set(0, $$8 == $$11 && ($$8 < 1.0E-4F || $$1.r($$0, $$2)));
-            break;
-         case b:
-            $$6.set(1, $$7 >= 1.0E-4F || $$9 >= 1.0E-4F || $$10 <= 0.9999F || $$12 <= 0.9999F);
-            $$6.set(0, $$8 == $$11 && ($$11 > 0.9999F || $$1.r($$0, $$2)));
-            break;
-         case c:
-            $$6.set(1, $$7 >= 1.0E-4F || $$8 >= 1.0E-4F || $$10 <= 0.9999F || $$11 <= 0.9999F);
-            $$6.set(0, $$9 == $$12 && ($$9 < 1.0E-4F || $$1.r($$0, $$2)));
-            break;
-         case d:
-            $$6.set(1, $$7 >= 1.0E-4F || $$8 >= 1.0E-4F || $$10 <= 0.9999F || $$11 <= 0.9999F);
-            $$6.set(0, $$9 == $$12 && ($$12 > 0.9999F || $$1.r($$0, $$2)));
-            break;
-         case e:
-            $$6.set(1, $$8 >= 1.0E-4F || $$9 >= 1.0E-4F || $$11 <= 0.9999F || $$12 <= 0.9999F);
-            $$6.set(0, $$7 == $$10 && ($$7 < 1.0E-4F || $$1.r($$0, $$2)));
-            break;
-         case f:
-            $$6.set(1, $$8 >= 1.0E-4F || $$9 >= 1.0E-4F || $$11 <= 0.9999F || $$12 <= 0.9999F);
-            $$6.set(0, $$7 == $$10 && ($$10 > 0.9999F || $$1.r($$0, $$2)));
-      }
+   public static gfb g() {
+      return ba;
    }
 
-   private void a(dbj $$0, dsl $$1, ja $$2, int $$3, int $$4, boolean $$5, fao $$6, fas $$7, List<gfc> $$8, BitSet $$9) {
-      for (gfc $$10 : $$8) {
-         if ($$5) {
-            this.a($$0, $$1, $$2, $$10.b(), $$10.e(), null, $$9);
-            ja $$11 = $$9.get(0) ? $$2.a($$10.e()) : $$2;
-            $$3 = ged.a($$0, $$1, $$11);
-         }
-
-         float $$12 = $$0.a($$10.e(), $$10.f());
-         this.a($$0, $$1, $$2, $$7, $$6.c(), $$10, $$12, $$12, $$12, $$12, $$3, $$3, $$3, $$3, $$4);
-      }
+   private static gfb.a a(String $$0, akq $$1, boolean $$2) {
+      gfb.b $$3 = gfb.b.a().a(t).a(new gfa.n($$1, false, false)).a(c).a(av).a(aq).a(as).a(aF).a($$2 ? ax : ay).a(true);
+      return a($$0, fba.c, fbh.c.h, 1536, true, false, $$3);
    }
 
-   public void a(fao.a $$0, fas $$1, @Nullable dsl $$2, grr $$3, float $$4, float $$5, float $$6, int $$7, int $$8) {
-      ayo $$9 = ayo.a();
-      long $$10 = 42L;
-
-      for (jf $$11 : c) {
-         $$9.b(42L);
-         a($$0, $$1, $$4, $$5, $$6, $$3.a($$2, $$11, $$9), $$7, $$8);
-      }
-
-      $$9.b(42L);
-      a($$0, $$1, $$4, $$5, $$6, $$3.a($$2, null, $$9), $$7, $$8);
+   public static gfb a(akq $$0) {
+      return bb.apply($$0);
    }
 
-   private static void a(fao.a $$0, fas $$1, float $$2, float $$3, float $$4, List<gfc> $$5, int $$6, int $$7) {
-      for (gfc $$8 : $$5) {
-         float $$9;
-         float $$10;
-         float $$11;
-         if ($$8.c()) {
-            $$9 = ayg.a($$2, 0.0F, 1.0F);
-            $$10 = ayg.a($$3, 0.0F, 1.0F);
-            $$11 = ayg.a($$4, 0.0F, 1.0F);
-         } else {
-            $$9 = 1.0F;
-            $$10 = 1.0F;
-            $$11 = 1.0F;
-         }
-
-         $$1.a($$0, $$8, $$9, $$10, $$11, 1.0F, $$6, $$7);
-      }
+   public static gfb b(akq $$0) {
+      return a("armor_decal_cutout_no_cull", $$0, true);
    }
 
-   public static void a() {
-      f.get().a();
+   public static gfb c(akq $$0) {
+      return bc.apply($$0);
    }
 
-   public static void b() {
-      f.get().b();
+   public static gfb d(akq $$0) {
+      return bd.apply($$0);
    }
 
-   protected static enum a {
-      a(
-         new jf[]{jf.e, jf.f, jf.c, jf.d},
-         0.5F,
+   public static gfb a(akq $$0, boolean $$1) {
+      return be.apply($$0, $$1);
+   }
+
+   public static gfb e(akq $$0) {
+      return a($$0, true);
+   }
+
+   public static gfb b(akq $$0, boolean $$1) {
+      return bf.apply($$0, $$1);
+   }
+
+   public static gfb f(akq $$0) {
+      return b($$0, true);
+   }
+
+   public static gfb g(akq $$0) {
+      return bg.apply($$0);
+   }
+
+   public static gfb h(akq $$0) {
+      return bh.apply($$0);
+   }
+
+   public static gfb c(akq $$0, boolean $$1) {
+      return bi.apply($$0, $$1);
+   }
+
+   public static gfb i(akq $$0) {
+      return c($$0, true);
+   }
+
+   public static gfb d(akq $$0, boolean $$1) {
+      return bj.apply($$0, $$1);
+   }
+
+   public static gfb j(akq $$0) {
+      return d($$0, true);
+   }
+
+   public static gfb k(akq $$0) {
+      return bk.apply($$0);
+   }
+
+   public static gfb e(akq $$0, boolean $$1) {
+      return bl.apply($$0, $$1);
+   }
+
+   public static gfb l(akq $$0) {
+      return bm.apply($$0);
+   }
+
+   public static gfb m(akq $$0) {
+      return bn.apply($$0);
+   }
+
+   public static gfb n(akq $$0) {
+      return bo.apply($$0);
+   }
+
+   public static gfb o(akq $$0) {
+      return bp.apply($$0);
+   }
+
+   public static gfb p(akq $$0) {
+      return bq.apply($$0, d);
+   }
+
+   public static gfb q(akq $$0) {
+      return bj.apply($$0, false);
+   }
+
+   public static gfb a(akq $$0, float $$1, float $$2) {
+      return a(
+         "breeze_wind",
+         fba.c,
+         fbh.c.h,
+         1536,
+         false,
          true,
-         new gfb.e[]{gfb.e.k, gfb.e.d, gfb.e.k, gfb.e.j, gfb.e.e, gfb.e.j, gfb.e.e, gfb.e.d},
-         new gfb.e[]{gfb.e.k, gfb.e.c, gfb.e.k, gfb.e.i, gfb.e.e, gfb.e.i, gfb.e.e, gfb.e.c},
-         new gfb.e[]{gfb.e.l, gfb.e.c, gfb.e.l, gfb.e.i, gfb.e.f, gfb.e.i, gfb.e.f, gfb.e.c},
-         new gfb.e[]{gfb.e.l, gfb.e.d, gfb.e.l, gfb.e.j, gfb.e.f, gfb.e.j, gfb.e.f, gfb.e.d}
-      ),
-      b(
-         new jf[]{jf.f, jf.e, jf.c, jf.d},
-         1.0F,
-         true,
-         new gfb.e[]{gfb.e.f, gfb.e.d, gfb.e.f, gfb.e.j, gfb.e.l, gfb.e.j, gfb.e.l, gfb.e.d},
-         new gfb.e[]{gfb.e.f, gfb.e.c, gfb.e.f, gfb.e.i, gfb.e.l, gfb.e.i, gfb.e.l, gfb.e.c},
-         new gfb.e[]{gfb.e.e, gfb.e.c, gfb.e.e, gfb.e.i, gfb.e.k, gfb.e.i, gfb.e.k, gfb.e.c},
-         new gfb.e[]{gfb.e.e, gfb.e.d, gfb.e.e, gfb.e.j, gfb.e.k, gfb.e.j, gfb.e.k, gfb.e.d}
-      ),
-      c(
-         new jf[]{jf.b, jf.a, jf.f, jf.e},
-         0.8F,
-         true,
-         new gfb.e[]{gfb.e.b, gfb.e.k, gfb.e.b, gfb.e.e, gfb.e.h, gfb.e.e, gfb.e.h, gfb.e.k},
-         new gfb.e[]{gfb.e.b, gfb.e.l, gfb.e.b, gfb.e.f, gfb.e.h, gfb.e.f, gfb.e.h, gfb.e.l},
-         new gfb.e[]{gfb.e.a, gfb.e.l, gfb.e.a, gfb.e.f, gfb.e.g, gfb.e.f, gfb.e.g, gfb.e.l},
-         new gfb.e[]{gfb.e.a, gfb.e.k, gfb.e.a, gfb.e.e, gfb.e.g, gfb.e.e, gfb.e.g, gfb.e.k}
-      ),
-      d(
-         new jf[]{jf.e, jf.f, jf.a, jf.b},
-         0.8F,
-         true,
-         new gfb.e[]{gfb.e.b, gfb.e.k, gfb.e.h, gfb.e.k, gfb.e.h, gfb.e.e, gfb.e.b, gfb.e.e},
-         new gfb.e[]{gfb.e.a, gfb.e.k, gfb.e.g, gfb.e.k, gfb.e.g, gfb.e.e, gfb.e.a, gfb.e.e},
-         new gfb.e[]{gfb.e.a, gfb.e.l, gfb.e.g, gfb.e.l, gfb.e.g, gfb.e.f, gfb.e.a, gfb.e.f},
-         new gfb.e[]{gfb.e.b, gfb.e.l, gfb.e.h, gfb.e.l, gfb.e.h, gfb.e.f, gfb.e.b, gfb.e.f}
-      ),
-      e(
-         new jf[]{jf.b, jf.a, jf.c, jf.d},
-         0.6F,
-         true,
-         new gfb.e[]{gfb.e.b, gfb.e.d, gfb.e.b, gfb.e.j, gfb.e.h, gfb.e.j, gfb.e.h, gfb.e.d},
-         new gfb.e[]{gfb.e.b, gfb.e.c, gfb.e.b, gfb.e.i, gfb.e.h, gfb.e.i, gfb.e.h, gfb.e.c},
-         new gfb.e[]{gfb.e.a, gfb.e.c, gfb.e.a, gfb.e.i, gfb.e.g, gfb.e.i, gfb.e.g, gfb.e.c},
-         new gfb.e[]{gfb.e.a, gfb.e.d, gfb.e.a, gfb.e.j, gfb.e.g, gfb.e.j, gfb.e.g, gfb.e.d}
-      ),
-      f(
-         new jf[]{jf.a, jf.b, jf.c, jf.d},
-         0.6F,
-         true,
-         new gfb.e[]{gfb.e.g, gfb.e.d, gfb.e.g, gfb.e.j, gfb.e.a, gfb.e.j, gfb.e.a, gfb.e.d},
-         new gfb.e[]{gfb.e.g, gfb.e.c, gfb.e.g, gfb.e.i, gfb.e.a, gfb.e.i, gfb.e.a, gfb.e.c},
-         new gfb.e[]{gfb.e.h, gfb.e.c, gfb.e.h, gfb.e.i, gfb.e.b, gfb.e.i, gfb.e.b, gfb.e.c},
-         new gfb.e[]{gfb.e.h, gfb.e.d, gfb.e.h, gfb.e.j, gfb.e.b, gfb.e.j, gfb.e.b, gfb.e.d}
+         gfb.b.a().a(aj).a(new gfa.n($$0, false, false)).a(new gfa.j($$1, $$2)).a(h).a(av).a(aq).a(at).a(false)
       );
+   }
 
-      final jf[] g;
-      final boolean h;
-      final gfb.e[] i;
-      final gfb.e[] j;
-      final gfb.e[] k;
-      final gfb.e[] l;
-      private static final gfb.a[] m = ac.a(new gfb.a[6], $$0 -> {
-         $$0[jf.a.d()] = a;
-         $$0[jf.b.d()] = b;
-         $$0[jf.c.d()] = c;
-         $$0[jf.d.d()] = d;
-         $$0[jf.e.d()] = e;
-         $$0[jf.f.d()] = f;
-      });
+   public static gfb b(akq $$0, float $$1, float $$2) {
+      return a(
+         "energy_swirl",
+         fba.c,
+         fbh.c.h,
+         1536,
+         false,
+         true,
+         gfb.b.a().a(J).a(new gfa.n($$0, false, false)).a(new gfa.j($$1, $$2)).a(d).a(av).a(aq).a(as).a(false)
+      );
+   }
 
-      private a(final jf[] $$0, final float $$1, final boolean $$2, final gfb.e[] $$3, final gfb.e[] $$4, final gfb.e[] $$5, final gfb.e[] $$6) {
-         this.g = $$0;
-         this.h = $$2;
-         this.i = $$3;
-         this.j = $$4;
-         this.k = $$5;
-         this.l = $$6;
+   public static gfb h() {
+      return br;
+   }
+
+   public static gfb i() {
+      return bs;
+   }
+
+   public static gfb r(akq $$0) {
+      return gfb.a.aV.apply($$0, av);
+   }
+
+   public static gfb j() {
+      return bt;
+   }
+
+   public static gfb k() {
+      return bu;
+   }
+
+   public static gfb l() {
+      return bv;
+   }
+
+   public static gfb m() {
+      return bw;
+   }
+
+   public static gfb n() {
+      return bx;
+   }
+
+   public static gfb s(akq $$0) {
+      return by.apply($$0);
+   }
+
+   public static gfb t(akq $$0) {
+      return bz.apply($$0);
+   }
+
+   public static gfb o() {
+      return bA;
+   }
+
+   public static gfb u(akq $$0) {
+      return bB.apply($$0);
+   }
+
+   public static gfb v(akq $$0) {
+      return bC.apply($$0);
+   }
+
+   public static gfb w(akq $$0) {
+      return bD.apply($$0);
+   }
+
+   public static gfb x(akq $$0) {
+      return bE.apply($$0);
+   }
+
+   public static gfb p() {
+      return bF;
+   }
+
+   public static gfb y(akq $$0) {
+      return bG.apply($$0);
+   }
+
+   public static gfb q() {
+      return bH;
+   }
+
+   private static gfb.b P() {
+      return gfb.b.a().a(aq).a(aa).a(ak).a(h).a(aK).a(true);
+   }
+
+   public static gfb r() {
+      return bI;
+   }
+
+   public static gfb s() {
+      return bJ;
+   }
+
+   public static gfb t() {
+      return bK;
+   }
+
+   private static gfb.a a(boolean $$0) {
+      return a("clouds", fba.m, fbh.c.h, 786432, false, false, gfb.b.a().a(ad).a(new gfa.n(ger.c, false, false)).a(h).a(av).a($$0 ? aC : aA).a(aL).a(true));
+   }
+
+   public static gfb u() {
+      return bL;
+   }
+
+   public static gfb v() {
+      return bM;
+   }
+
+   public static gfb w() {
+      return aT;
+   }
+
+   public static gfb x() {
+      return aU;
+   }
+
+   public static gfb a(double $$0) {
+      return bN.apply($$0);
+   }
+
+   public static gfb y() {
+      return bO;
+   }
+
+   public static gfb z() {
+      return bP;
+   }
+
+   public static gfb A() {
+      return bQ;
+   }
+
+   public static gfb B() {
+      return bR;
+   }
+
+   public static gfb C() {
+      return bS;
+   }
+
+   public static gfb D() {
+      return bT;
+   }
+
+   public static gfb E() {
+      return bU;
+   }
+
+   public gfb(String $$0, fbh $$1, fbh.c $$2, int $$3, boolean $$4, boolean $$5, Runnable $$6, Runnable $$7) {
+      super($$0, $$6, $$7);
+      this.bW = $$1;
+      this.bX = $$2;
+      this.bY = $$3;
+      this.bZ = $$4;
+      this.ca = $$5;
+   }
+
+   static gfb.a a(String $$0, fbh $$1, fbh.c $$2, int $$3, gfb.b $$4) {
+      return a($$0, $$1, $$2, $$3, false, false, $$4);
+   }
+
+   private static gfb.a a(String $$0, fbh $$1, fbh.c $$2, int $$3, boolean $$4, boolean $$5, gfb.b $$6) {
+      return new gfb.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public void a(fbb $$0) {
+      this.a();
+      fay.a($$0);
+      this.b();
+   }
+
+   @Override
+   public String toString() {
+      return this.b;
+   }
+
+   public static List<gfb> F() {
+      return bV;
+   }
+
+   public int G() {
+      return this.bY;
+   }
+
+   public fbh H() {
+      return this.bW;
+   }
+
+   public fbh.c I() {
+      return this.bX;
+   }
+
+   public Optional<gfb> J() {
+      return Optional.empty();
+   }
+
+   public boolean K() {
+      return false;
+   }
+
+   public boolean L() {
+      return this.bZ;
+   }
+
+   public boolean M() {
+      return !this.bX.l;
+   }
+
+   public boolean N() {
+      return this.ca;
+   }
+
+   static final class a extends gfb {
+      static final BiFunction<akq, gfa.c, gfb> aV = ad.a(
+         ($$0, $$1) -> gfb.a("outline", fba.j, fbh.c.h, 1536, gfb.b.a().a(M).a(new gfa.n($$0, false, false)).a($$1).a(aw).a(aH).a(gfb.c.b))
+      );
+      private final gfb.b aW;
+      private final Optional<gfb> aX;
+      private final boolean aY;
+
+      a(String $$0, fbh $$1, fbh.c $$2, int $$3, boolean $$4, boolean $$5, gfb.b $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, () -> $$6.o.forEach(gfa::a), () -> $$6.o.forEach(gfa::b));
+         this.aW = $$6;
+         this.aX = $$6.n == gfb.c.c ? $$6.a.c().map($$1x -> aV.apply($$1x, $$6.e)) : Optional.empty();
+         this.aY = $$6.n == gfb.c.b;
       }
 
-      public static gfb.a a(jf $$0) {
-         return m[$$0.d()];
+      @Override
+      public Optional<gfb> J() {
+         return this.aX;
+      }
+
+      @Override
+      public boolean K() {
+         return this.aY;
+      }
+
+      protected final gfb.b O() {
+         return this.aW;
+      }
+
+      @Override
+      public String toString() {
+         return "RenderType[" + this.b + ":" + this.aW + "]";
       }
    }
 
-   static class b {
-      final float[] a = new float[4];
-      final int[] b = new int[4];
+   protected static final class b {
+      final gfa.e a;
+      private final gfa.m b;
+      private final gfa.p c;
+      private final gfa.d d;
+      final gfa.c e;
+      private final gfa.g f;
+      private final gfa.l g;
+      private final gfa.f h;
+      private final gfa.k i;
+      private final gfa.o j;
+      private final gfa.q k;
+      private final gfa.h l;
+      private final gfa.b m;
+      final gfb.c n;
+      final ImmutableList<gfa> o;
 
-      public b() {
+      b(
+         gfa.e $$0,
+         gfa.m $$1,
+         gfa.p $$2,
+         gfa.d $$3,
+         gfa.c $$4,
+         gfa.g $$5,
+         gfa.l $$6,
+         gfa.f $$7,
+         gfa.k $$8,
+         gfa.o $$9,
+         gfa.q $$10,
+         gfa.h $$11,
+         gfa.b $$12,
+         gfb.c $$13
+      ) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
+         this.j = $$9;
+         this.k = $$10;
+         this.l = $$11;
+         this.m = $$12;
+         this.n = $$13;
+         this.o = ImmutableList.of(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.m, new gfa[]{this.l});
       }
 
-      public void a(dbj $$0, dsl $$1, ja $$2, jf $$3, float[] $$4, BitSet $$5, boolean $$6) {
-         ja $$7 = $$5.get(0) ? $$2.a($$3) : $$2;
-         gfb.a $$8 = gfb.a.a($$3);
-         ja.a $$9 = new ja.a();
-         gfb.d $$10 = gfb.f.get();
-         $$9.a($$7, $$8.g[0]);
-         dsl $$11 = $$0.a_($$9);
-         int $$12 = $$10.a($$11, $$0, $$9);
-         float $$13 = $$10.b($$11, $$0, $$9);
-         $$9.a($$7, $$8.g[1]);
-         dsl $$14 = $$0.a_($$9);
-         int $$15 = $$10.a($$14, $$0, $$9);
-         float $$16 = $$10.b($$14, $$0, $$9);
-         $$9.a($$7, $$8.g[2]);
-         dsl $$17 = $$0.a_($$9);
-         int $$18 = $$10.a($$17, $$0, $$9);
-         float $$19 = $$10.b($$17, $$0, $$9);
-         $$9.a($$7, $$8.g[3]);
-         dsl $$20 = $$0.a_($$9);
-         int $$21 = $$10.a($$20, $$0, $$9);
-         float $$22 = $$10.b($$20, $$0, $$9);
-         dsl $$23 = $$0.a_($$9.a($$7, $$8.g[0]).c($$3));
-         boolean $$24 = !$$23.p($$0, $$9) || $$23.b($$0, $$9) == 0;
-         dsl $$25 = $$0.a_($$9.a($$7, $$8.g[1]).c($$3));
-         boolean $$26 = !$$25.p($$0, $$9) || $$25.b($$0, $$9) == 0;
-         dsl $$27 = $$0.a_($$9.a($$7, $$8.g[2]).c($$3));
-         boolean $$28 = !$$27.p($$0, $$9) || $$27.b($$0, $$9) == 0;
-         dsl $$29 = $$0.a_($$9.a($$7, $$8.g[3]).c($$3));
-         boolean $$30 = !$$29.p($$0, $$9) || $$29.b($$0, $$9) == 0;
-         float $$34;
-         int $$35;
-         if (!$$28 && !$$24) {
-            $$34 = $$13;
-            $$35 = $$12;
-         } else {
-            $$9.a($$7, $$8.g[0]).c($$8.g[2]);
-            dsl $$31 = $$0.a_($$9);
-            $$34 = $$10.b($$31, $$0, $$9);
-            $$35 = $$10.a($$31, $$0, $$9);
-         }
-
-         float $$39;
-         int $$40;
-         if (!$$30 && !$$24) {
-            $$39 = $$13;
-            $$40 = $$12;
-         } else {
-            $$9.a($$7, $$8.g[0]).c($$8.g[3]);
-            dsl $$36 = $$0.a_($$9);
-            $$39 = $$10.b($$36, $$0, $$9);
-            $$40 = $$10.a($$36, $$0, $$9);
-         }
-
-         float $$44;
-         int $$45;
-         if (!$$28 && !$$26) {
-            $$44 = $$13;
-            $$45 = $$12;
-         } else {
-            $$9.a($$7, $$8.g[1]).c($$8.g[2]);
-            dsl $$41 = $$0.a_($$9);
-            $$44 = $$10.b($$41, $$0, $$9);
-            $$45 = $$10.a($$41, $$0, $$9);
-         }
-
-         float $$49;
-         int $$50;
-         if (!$$30 && !$$26) {
-            $$49 = $$13;
-            $$50 = $$12;
-         } else {
-            $$9.a($$7, $$8.g[1]).c($$8.g[3]);
-            dsl $$46 = $$0.a_($$9);
-            $$49 = $$10.b($$46, $$0, $$9);
-            $$50 = $$10.a($$46, $$0, $$9);
-         }
-
-         int $$51 = $$10.a($$1, $$0, $$2);
-         $$9.a($$2, $$3);
-         dsl $$52 = $$0.a_($$9);
-         if ($$5.get(0) || !$$52.i($$0, $$9)) {
-            $$51 = $$10.a($$52, $$0, $$9);
-         }
-
-         float $$53 = $$5.get(0) ? $$10.b($$0.a_($$7), $$0, $$7) : $$10.b($$0.a_($$2), $$0, $$2);
-         gfb.c $$54 = gfb.c.a($$3);
-         if ($$5.get(1) && $$8.h) {
-            float $$59 = ($$22 + $$13 + $$39 + $$53) * 0.25F;
-            float $$60 = ($$19 + $$13 + $$34 + $$53) * 0.25F;
-            float $$61 = ($$19 + $$16 + $$44 + $$53) * 0.25F;
-            float $$62 = ($$22 + $$16 + $$49 + $$53) * 0.25F;
-            float $$63 = $$4[$$8.i[0].m] * $$4[$$8.i[1].m];
-            float $$64 = $$4[$$8.i[2].m] * $$4[$$8.i[3].m];
-            float $$65 = $$4[$$8.i[4].m] * $$4[$$8.i[5].m];
-            float $$66 = $$4[$$8.i[6].m] * $$4[$$8.i[7].m];
-            float $$67 = $$4[$$8.j[0].m] * $$4[$$8.j[1].m];
-            float $$68 = $$4[$$8.j[2].m] * $$4[$$8.j[3].m];
-            float $$69 = $$4[$$8.j[4].m] * $$4[$$8.j[5].m];
-            float $$70 = $$4[$$8.j[6].m] * $$4[$$8.j[7].m];
-            float $$71 = $$4[$$8.k[0].m] * $$4[$$8.k[1].m];
-            float $$72 = $$4[$$8.k[2].m] * $$4[$$8.k[3].m];
-            float $$73 = $$4[$$8.k[4].m] * $$4[$$8.k[5].m];
-            float $$74 = $$4[$$8.k[6].m] * $$4[$$8.k[7].m];
-            float $$75 = $$4[$$8.l[0].m] * $$4[$$8.l[1].m];
-            float $$76 = $$4[$$8.l[2].m] * $$4[$$8.l[3].m];
-            float $$77 = $$4[$$8.l[4].m] * $$4[$$8.l[5].m];
-            float $$78 = $$4[$$8.l[6].m] * $$4[$$8.l[7].m];
-            this.a[$$54.g] = $$59 * $$63 + $$60 * $$64 + $$61 * $$65 + $$62 * $$66;
-            this.a[$$54.h] = $$59 * $$67 + $$60 * $$68 + $$61 * $$69 + $$62 * $$70;
-            this.a[$$54.i] = $$59 * $$71 + $$60 * $$72 + $$61 * $$73 + $$62 * $$74;
-            this.a[$$54.j] = $$59 * $$75 + $$60 * $$76 + $$61 * $$77 + $$62 * $$78;
-            int $$79 = this.a($$21, $$12, $$40, $$51);
-            int $$80 = this.a($$18, $$12, $$35, $$51);
-            int $$81 = this.a($$18, $$15, $$45, $$51);
-            int $$82 = this.a($$21, $$15, $$50, $$51);
-            this.b[$$54.g] = this.a($$79, $$80, $$81, $$82, $$63, $$64, $$65, $$66);
-            this.b[$$54.h] = this.a($$79, $$80, $$81, $$82, $$67, $$68, $$69, $$70);
-            this.b[$$54.i] = this.a($$79, $$80, $$81, $$82, $$71, $$72, $$73, $$74);
-            this.b[$$54.j] = this.a($$79, $$80, $$81, $$82, $$75, $$76, $$77, $$78);
-         } else {
-            float $$55 = ($$22 + $$13 + $$39 + $$53) * 0.25F;
-            float $$56 = ($$19 + $$13 + $$34 + $$53) * 0.25F;
-            float $$57 = ($$19 + $$16 + $$44 + $$53) * 0.25F;
-            float $$58 = ($$22 + $$16 + $$49 + $$53) * 0.25F;
-            this.b[$$54.g] = this.a($$21, $$12, $$40, $$51);
-            this.b[$$54.h] = this.a($$18, $$12, $$35, $$51);
-            this.b[$$54.i] = this.a($$18, $$15, $$45, $$51);
-            this.b[$$54.j] = this.a($$21, $$15, $$50, $$51);
-            this.a[$$54.g] = $$55;
-            this.a[$$54.h] = $$56;
-            this.a[$$54.i] = $$57;
-            this.a[$$54.j] = $$58;
-         }
-
-         float $$83 = $$0.a($$3, $$6);
-
-         for (int $$84 = 0; $$84 < this.a.length; $$84++) {
-            this.a[$$84] = this.a[$$84] * $$83;
-         }
+      @Override
+      public String toString() {
+         return "CompositeState[" + this.o + ", outlineProperty=" + this.n + "]";
       }
 
-      private int a(int $$0, int $$1, int $$2, int $$3) {
-         if ($$0 == 0) {
-            $$0 = $$3;
-         }
-
-         if ($$1 == 0) {
-            $$1 = $$3;
-         }
-
-         if ($$2 == 0) {
-            $$2 = $$3;
-         }
-
-         return $$0 + $$1 + $$2 + $$3 >> 2 & 16711935;
+      public static gfb.b.a a() {
+         return new gfb.b.a();
       }
 
-      private int a(int $$0, int $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         int $$8 = (int)((float)($$0 >> 16 & 0xFF) * $$4 + (float)($$1 >> 16 & 0xFF) * $$5 + (float)($$2 >> 16 & 0xFF) * $$6 + (float)($$3 >> 16 & 0xFF) * $$7)
-            & 0xFF;
-         int $$9 = (int)((float)($$0 & 0xFF) * $$4 + (float)($$1 & 0xFF) * $$5 + (float)($$2 & 0xFF) * $$6 + (float)($$3 & 0xFF) * $$7) & 0xFF;
-         return $$8 << 16 | $$9;
+      public static class a {
+         private gfa.e a = gfa.am;
+         private gfa.m b = gfa.i;
+         private gfa.p c;
+         private gfa.d d;
+         private gfa.c e;
+         private gfa.g f;
+         private gfa.l g;
+         private gfa.f h;
+         private gfa.k i;
+         private gfa.o j;
+         private gfa.q k;
+         private gfa.h l;
+         private gfa.b m;
+
+         a() {
+            this.c = gfa.c;
+            this.d = gfa.ay;
+            this.e = gfa.au;
+            this.f = gfa.ar;
+            this.g = gfa.at;
+            this.h = gfa.aD;
+            this.i = gfa.aG;
+            this.j = gfa.an;
+            this.k = gfa.aA;
+            this.l = gfa.aN;
+            this.m = gfa.aO;
+         }
+
+         public gfb.b.a a(gfa.e $$0) {
+            this.a = $$0;
+            return this;
+         }
+
+         public gfb.b.a a(gfa.m $$0) {
+            this.b = $$0;
+            return this;
+         }
+
+         public gfb.b.a a(gfa.p $$0) {
+            this.c = $$0;
+            return this;
+         }
+
+         public gfb.b.a a(gfa.d $$0) {
+            this.d = $$0;
+            return this;
+         }
+
+         public gfb.b.a a(gfa.c $$0) {
+            this.e = $$0;
+            return this;
+         }
+
+         public gfb.b.a a(gfa.g $$0) {
+            this.f = $$0;
+            return this;
+         }
+
+         public gfb.b.a a(gfa.l $$0) {
+            this.g = $$0;
+            return this;
+         }
+
+         public gfb.b.a a(gfa.f $$0) {
+            this.h = $$0;
+            return this;
+         }
+
+         public gfb.b.a a(gfa.k $$0) {
+            this.i = $$0;
+            return this;
+         }
+
+         public gfb.b.a a(gfa.o $$0) {
+            this.j = $$0;
+            return this;
+         }
+
+         public gfb.b.a a(gfa.q $$0) {
+            this.k = $$0;
+            return this;
+         }
+
+         public gfb.b.a a(gfa.h $$0) {
+            this.l = $$0;
+            return this;
+         }
+
+         public gfb.b.a a(gfa.b $$0) {
+            this.m = $$0;
+            return this;
+         }
+
+         public gfb.b a(boolean $$0) {
+            return this.a($$0 ? gfb.c.c : gfb.c.a);
+         }
+
+         public gfb.b a(gfb.c $$0) {
+            return new gfb.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, $$0);
+         }
       }
    }
 
    static enum c {
-      a(0, 1, 2, 3),
-      b(2, 3, 0, 1),
-      c(3, 0, 1, 2),
-      d(0, 1, 2, 3),
-      e(3, 0, 1, 2),
-      f(1, 2, 3, 0);
+      a("none"),
+      b("is_outline"),
+      c("affects_outline");
 
-      final int g;
-      final int h;
-      final int i;
-      final int j;
-      private static final gfb.c[] k = ac.a(new gfb.c[6], $$0 -> {
-         $$0[jf.a.d()] = a;
-         $$0[jf.b.d()] = b;
-         $$0[jf.c.d()] = c;
-         $$0[jf.d.d()] = d;
-         $$0[jf.e.d()] = e;
-         $$0[jf.f.d()] = f;
-      });
+      private final String d;
 
-      private c(final int $$0, final int $$1, final int $$2, final int $$3) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         this.j = $$3;
+      private c(final String $$0) {
+         this.d = $$0;
       }
 
-      public static gfb.c a(jf $$0) {
-         return k[$$0.d()];
-      }
-   }
-
-   static class d {
-      private boolean a;
-      private final Long2IntLinkedOpenHashMap b = ac.a(() -> {
-         Long2IntLinkedOpenHashMap $$0 = new Long2IntLinkedOpenHashMap(100, 0.25F) {
-            protected void rehash(int $$0) {
-            }
-         };
-         $$0.defaultReturnValue(Integer.MAX_VALUE);
-         return $$0;
-      });
-      private final Long2FloatLinkedOpenHashMap c = ac.a(() -> {
-         Long2FloatLinkedOpenHashMap $$0 = new Long2FloatLinkedOpenHashMap(100, 0.25F) {
-            protected void rehash(int $$0) {
-            }
-         };
-         $$0.defaultReturnValue(Float.NaN);
-         return $$0;
-      });
-
-      private d() {
-      }
-
-      public void a() {
-         this.a = true;
-      }
-
-      public void b() {
-         this.a = false;
-         this.b.clear();
-         this.c.clear();
-      }
-
-      public int a(dsl $$0, dbj $$1, ja $$2) {
-         long $$3 = $$2.a();
-         if (this.a) {
-            int $$4 = this.b.get($$3);
-            if ($$4 != Integer.MAX_VALUE) {
-               return $$4;
-            }
-         }
-
-         int $$5 = ged.a($$1, $$0, $$2);
-         if (this.a) {
-            if (this.b.size() == 100) {
-               this.b.removeFirstInt();
-            }
-
-            this.b.put($$3, $$5);
-         }
-
-         return $$5;
-      }
-
-      public float b(dsl $$0, dbj $$1, ja $$2) {
-         long $$3 = $$2.a();
-         if (this.a) {
-            float $$4 = this.c.get($$3);
-            if (!Float.isNaN($$4)) {
-               return $$4;
-            }
-         }
-
-         float $$5 = $$0.f($$1, $$2);
-         if (this.a) {
-            if (this.c.size() == 100) {
-               this.c.removeFirstFloat();
-            }
-
-            this.c.put($$3, $$5);
-         }
-
-         return $$5;
-      }
-   }
-
-   protected static enum e {
-      a(jf.a, false),
-      b(jf.b, false),
-      c(jf.c, false),
-      d(jf.d, false),
-      e(jf.e, false),
-      f(jf.f, false),
-      g(jf.a, true),
-      h(jf.b, true),
-      i(jf.c, true),
-      j(jf.d, true),
-      k(jf.e, true),
-      l(jf.f, true);
-
-      final int m;
-
-      private e(final jf $$0, final boolean $$1) {
-         this.m = $$0.d() + ($$1 ? gfb.c.length : 0);
+      @Override
+      public String toString() {
+         return this.d;
       }
    }
 }

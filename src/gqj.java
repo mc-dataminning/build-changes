@@ -1,17 +1,25 @@
-import java.io.IOException;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class gqj extends aub<int[]> {
-   private static final akk a = new akk("textures/colormap/foliage.png");
+public interface gqj {
+   akj a = new akj("textures", ".png");
 
-   protected int[] a(atw $$0, bmv $$1) {
-      try {
-         return gqm.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load foliage color texture", var4);
+   void a(aud var1, gqj.a var2);
+
+   gql a();
+
+   public interface a {
+      default void a(akq $$0, aub $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
       }
+
+      void a(akq var1, gqj.b var2);
+
+      void a(Predicate<akq> var1);
    }
 
-   protected void a(int[] $$0, atw $$1, bmv $$2) {
-      dca.a($$0);
+   public interface b extends Function<gqi, gpz> {
+      default void a() {
+      }
    }
 }

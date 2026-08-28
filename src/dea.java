@@ -1,76 +1,245 @@
-import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
-public abstract class dea extends dfi {
-   public static final int a = 3;
-   public static final dtc b = dtb.r;
+public class dea {
+   public static final Codec<dea> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
+               dea.b.d.optionalFieldOf("grass_color_modifier", dea.b.a).forGetter($$0x -> $$0x.h),
+               ddt.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
+               avn.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
+               dds.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
+               ddr.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
+               avl.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
+            )
+            .apply($$0, dea::new)
+   );
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final Optional<Integer> f;
+   private final Optional<Integer> g;
+   private final dea.b h;
+   private final Optional<ddt> i;
+   private final Optional<jm<avn>> j;
+   private final Optional<dds> k;
+   private final Optional<ddr> l;
+   private final Optional<avl> m;
 
-   @Override
-   protected abstract MapCodec<? extends dea> a();
-
-   protected dea(dsk.d $$0) {
-      super($$0);
+   dea(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      Optional<Integer> $$4,
+      Optional<Integer> $$5,
+      dea.b $$6,
+      Optional<ddt> $$7,
+      Optional<jm<avn>> $$8,
+      Optional<dds> $$9,
+      Optional<ddr> $$10,
+      Optional<avl> $$11
+   ) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.m = $$11;
    }
 
-   protected abstract Iterable<ewh> b(dsl var1);
-
-   public static boolean c(dsl $$0) {
-      return $$0.b(b) && ($$0.a(avw.ae) || $$0.a(avw.bk)) && $$0.c(b);
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected void a(dcg $$0, dsl $$1, ewd $$2, cnd $$3) {
-      if (!$$0.B && $$3.bS() && this.d($$1)) {
-         a($$0, $$1, $$2.a(), true);
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public Optional<Integer> e() {
+      return this.f;
+   }
+
+   public Optional<Integer> f() {
+      return this.g;
+   }
+
+   public dea.b g() {
+      return this.h;
+   }
+
+   public Optional<ddt> h() {
+      return this.i;
+   }
+
+   public Optional<jm<avn>> i() {
+      return this.j;
+   }
+
+   public Optional<dds> j() {
+      return this.k;
+   }
+
+   public Optional<ddr> k() {
+      return this.l;
+   }
+
+   public Optional<avl> l() {
+      return this.m;
+   }
+
+   public static class a {
+      private OptionalInt a = OptionalInt.empty();
+      private OptionalInt b = OptionalInt.empty();
+      private OptionalInt c = OptionalInt.empty();
+      private OptionalInt d = OptionalInt.empty();
+      private Optional<Integer> e = Optional.empty();
+      private Optional<Integer> f = Optional.empty();
+      private dea.b g = dea.b.a;
+      private Optional<ddt> h = Optional.empty();
+      private Optional<jm<avn>> i = Optional.empty();
+      private Optional<dds> j = Optional.empty();
+      private Optional<ddr> k = Optional.empty();
+      private Optional<avl> l = Optional.empty();
+
+      public dea.a a(int $$0) {
+         this.a = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dea.a b(int $$0) {
+         this.b = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dea.a c(int $$0) {
+         this.c = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dea.a d(int $$0) {
+         this.d = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dea.a e(int $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public dea.a f(int $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public dea.a a(dea.b $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public dea.a a(ddt $$0) {
+         this.h = Optional.of($$0);
+         return this;
+      }
+
+      public dea.a a(jm<avn> $$0) {
+         this.i = Optional.of($$0);
+         return this;
+      }
+
+      public dea.a a(dds $$0) {
+         this.j = Optional.of($$0);
+         return this;
+      }
+
+      public dea.a a(ddr $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
+      public dea.a a(@Nullable avl $$0) {
+         this.l = Optional.ofNullable($$0);
+         return this;
+      }
+
+      public dea a() {
+         return new dea(
+            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
+            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
+            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
+            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
+            this.e,
+            this.f,
+            this.g,
+            this.h,
+            this.i,
+            this.j,
+            this.k,
+            this.l
+         );
       }
    }
 
-   protected boolean d(dsl $$0) {
-      return !$$0.c(b);
-   }
-
-   @Override
-   public void a(dsl $$0, dcg $$1, ja $$2, ayo $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
-   }
-
-   private static void a(dcg $$0, ewh $$1, ayo $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(lj.ae, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, avh.dJ, avi.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+   public static enum b implements azj {
+      a("none") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return $$2;
          }
+      },
+      b("dark_forest") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return ($$2 & 16711422) + 2634762 >> 1;
+         }
+      },
+      c("swamp") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            double $$3 = ddu.e.a($$0 * 0.0225, $$1 * 0.0225, false);
+            return $$3 < -0.1 ? 5011004 : 6975545;
+         }
+      };
+
+      private final String e;
+      public static final Codec<dea.b> d = azj.a(dea.b::values);
+
+      public abstract int a(double var1, double var3, int var5);
+
+      b(final String $$0) {
+         this.e = $$0;
       }
 
-      $$0.a(lj.aJ, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(@Nullable cml $$0, dsl $$1, dch $$2, ja $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof dea) {
-         ((dea)$$1.b())
-            .b($$1)
-            .forEach($$2x -> $$2.a(lj.ae, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+      public String a() {
+         return this.e;
       }
 
-      $$2.a(null, $$3, avh.dL, avi.e, 1.0F, 1.0F);
-      $$2.a($$0, dxh.c, $$3);
-   }
-
-   private static void a(dch $$0, dsl $$1, ja $$2, boolean $$3) {
-      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
-   }
-
-   @Override
-   protected void a(dsl $$0, dcg $$1, ja $$2, dby $$3, BiConsumer<cud, ja> $$4) {
-      if ($$3.n() && $$0.c(b)) {
-         a(null, $$0, $$1, $$2);
+      @Override
+      public String c() {
+         return this.e;
       }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
    }
 }

@@ -1,61 +1,46 @@
-import java.util.List;
+import com.google.gson.JsonElement;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.JsonOps;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import org.slf4j.Logger;
 
-public class oz {
-   private static final jz a = new jz()
-      .a(lr.aJ, qp::a)
-      .a(lr.aG, qn::a)
-      .a(lr.aH, rn::a)
-      .a(lr.aP, sc::a)
-      .a(lr.aQ, qy::a)
-      .a(lr.aS, qx::a)
-      .a(lr.aR, qu::a)
-      .a(lr.aT, qt::a)
-      .a(lr.aE, rf::a)
-      .a(lr.aY, ddv::a)
-      .a(lr.aO, qq::a)
-      .a(lr.aI, dyn::a)
-      .a(lr.aN, dyl::a)
-      .a(lr.aX, ein::a)
-      .a(lr.aM, egz::a)
-      .a(lr.aF, wq::a)
-      .a(lr.aW, cwl::a)
-      .a(lr.aV, cwj::a)
-      .a(lr.m, cfx::a)
-      .a(lr.W, cis::a)
-      .a(lr.s, brd::a)
-      .a(lr.d, dpi::a)
-      .a(lr.aK, czr::a)
-      .a(lr.aL, daz::a);
+public class oz implements ma {
+   private static final Logger d = LogUtils.getLogger();
+   private final mc e;
+   private final CompletableFuture<jo.a> f;
 
-   private static void a(jl.a $$0) {
-      a($$0.b(lr.aP), $$0.b(lr.aE));
+   public oz(mc $$0, CompletableFuture<jo.a> $$1) {
+      this.f = $$1;
+      this.e = $$0;
    }
 
-   public static void a(jk<eib> $$0, jl<ddg> $$1) {
-      $$1.b().forEach($$1x -> {
-         akk $$2 = $$1x.h().a();
-         List<jn<eib>> $$3 = ((ddg)$$1x.a()).d().b();
-         $$3.stream().flatMap(jn::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
-               jj.c<eib> $$3xx = $$0.b($$2xx);
-               if (!a($$3xx.a())) {
-                  ac.a("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
-               }
-            }).ifRight($$1xxx -> {
-               if (!a($$1xxx)) {
-                  ac.a("Placed inline feature in biome " + $$1x + " is missing BiomeFilter.biome()");
-               }
-            }));
+   @Override
+   public CompletableFuture<?> a(ly $$0) {
+      return this.f.thenCompose($$1 -> {
+         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
+         return CompletableFuture.allOf(akl.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (akl.c<?>)$$3).stream()).toArray(CompletableFuture[]::new));
       });
    }
 
-   private static boolean a(eib $$0) {
-      return $$0.c().contains(ehp.a());
+   private <T> Optional<CompletableFuture<?>> a(ly $$0, jo.a $$1, DynamicOps<JsonElement> $$2, akl.c<T> $$3) {
+      akp<? extends jz<T>> $$4 = $$3.a();
+      return $$1.a($$4).map($$4x -> {
+         mc.a $$5 = this.e.a($$4);
+         return CompletableFuture.allOf($$4x.b().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));
+      });
    }
 
-   public static jl.a a() {
-      jx.b $$0 = jx.a(lq.aA);
-      jl.a $$1 = a.a($$0);
-      a($$1);
-      return $$1;
+   private static <E> CompletableFuture<?> a(Path $$0, ly $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
+      Optional<JsonElement> $$5 = $$3.encodeStart($$2, $$4).resultOrPartial($$1x -> d.error("Couldn't serialize element {}: {}", $$0, $$1x));
+      return $$5.isPresent() ? ma.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
+   }
+
+   @Override
+   public final String a() {
+      return "Registries";
    }
 }

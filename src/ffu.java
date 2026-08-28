@@ -1,166 +1,113 @@
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.common.collect.Table;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public class ffu implements Comparable<ffu> {
-   private static final Map<String, ffu> h = Maps.newHashMap();
-   private static final Map<ezj.a, ffu> i = Maps.newHashMap();
-   private static final Set<String> j = Sets.newHashSet();
-   public static final String a = "key.categories.movement";
-   public static final String b = "key.categories.misc";
-   public static final String c = "key.categories.multiplayer";
-   public static final String d = "key.categories.gameplay";
-   public static final String e = "key.categories.inventory";
-   public static final String f = "key.categories.ui";
-   public static final String g = "key.categories.creative";
-   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("key.categories.movement", 1);
-      $$0.put("key.categories.gameplay", 2);
-      $$0.put("key.categories.inventory", 3);
-      $$0.put("key.categories.creative", 4);
-      $$0.put("key.categories.multiplayer", 5);
-      $$0.put("key.categories.ui", 6);
-      $$0.put("key.categories.misc", 7);
-   });
-   private final String l;
-   private final ezj.a m;
-   private final String n;
-   private ezj.a o;
-   private boolean p;
-   private int q;
+public class ffu extends avr {
+   private static final Logger c = LogUtils.getLogger();
+   private Map<fgq, List<fry>> d = ImmutableMap.of();
+   private List<fry> e = ImmutableList.of();
 
-   public static void a(ezj.a $$0) {
-      ffu $$1 = i.get($$0);
-      if ($$1 != null) {
-         $$1.q++;
-      }
+   public void a(Iterable<cyz<?>> $$0, ka $$1) {
+      Map<fgq, List<List<cyz<?>>>> $$2 = a($$0);
+      Map<fgq, List<fry>> $$3 = Maps.newHashMap();
+      Builder<fry> $$4 = ImmutableList.builder();
+      $$2.forEach(($$3x, $$4x) -> $$3.put($$3x, $$4x.stream().map($$1xx -> new fry($$1, $$1xx)).peek($$4::add).collect(ImmutableList.toImmutableList())));
+      fgq.w
+         .forEach(
+            ($$1x, $$2x) -> $$3.put(
+                  $$1x, $$2x.stream().flatMap($$1xx -> $$3.getOrDefault($$1xx, ImmutableList.of()).stream()).collect(ImmutableList.toImmutableList())
+               )
+         );
+      this.d = ImmutableMap.copyOf($$3);
+      this.e = $$4.build();
    }
 
-   public static void a(ezj.a $$0, boolean $$1) {
-      ffu $$2 = i.get($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
-      }
-   }
+   private static Map<fgq, List<List<cyz<?>>>> a(Iterable<cyz<?>> $$0) {
+      Map<fgq, List<List<cyz<?>>>> $$1 = Maps.newHashMap();
+      Table<fgq, String, List<cyz<?>>> $$2 = HashBasedTable.create();
 
-   public static void a() {
-      for (ffu $$0 : h.values()) {
-         if ($$0.o.a() == ezj.b.a && $$0.o.b() != ezj.bv.b()) {
-            $$0.a(ezj.a(ffw.Q().aM().i(), $$0.o.b()));
+      for (cyz<?> $$3 : $$0) {
+         cyx<?> $$4 = $$3.b();
+         if (!$$4.ao_() && !$$4.i()) {
+            fgq $$5 = g($$3);
+            String $$6 = $$4.c();
+            if ($$6.isEmpty()) {
+               $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add(ImmutableList.of($$3));
+            } else {
+               List<cyz<?>> $$7 = (List<cyz<?>>)$$2.get($$5, $$6);
+               if ($$7 == null) {
+                  $$7 = Lists.newArrayList();
+                  $$2.put($$5, $$6, $$7);
+                  $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add($$7);
+               }
+
+               $$7.add($$3);
+            }
          }
       }
+
+      return $$1;
    }
 
-   public static void b() {
-      for (ffu $$0 : h.values()) {
-         $$0.n();
-      }
-   }
-
-   public static void c() {
-      for (ffu $$0 : h.values()) {
-         if ($$0 instanceof fgi $$1) {
-            $$1.n();
-         }
-      }
-   }
-
-   public static void d() {
-      i.clear();
-
-      for (ffu $$0 : h.values()) {
-         i.put($$0.o, $$0);
-      }
-   }
-
-   public ffu(String $$0, int $$1, String $$2) {
-      this($$0, ezj.b.a, $$1, $$2);
-   }
-
-   public ffu(String $$0, ezj.b $$1, int $$2, String $$3) {
-      this.l = $$0;
-      this.o = $$1.a($$2);
-      this.m = this.o;
-      this.n = $$3;
-      h.put($$0, this);
-      i.put(this.o, this);
-      j.add($$3);
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public String f() {
-      return this.n;
-   }
-
-   public boolean g() {
-      if (this.q == 0) {
-         return false;
+   private static fgq g(cyz<?> $$0) {
+      cyx<?> $$1 = $$0.b();
+      if ($$1 instanceof cyo $$2) {
+         return switch ($$2.d()) {
+            case a -> fgq.b;
+            case c -> fgq.d;
+            case b -> fgq.c;
+            case d -> fgq.e;
+         };
       } else {
-         this.q--;
-         return true;
+         czd<?> $$3 = $$1.e();
+         if ($$1 instanceof cyf $$4) {
+            cyl $$5 = $$4.f();
+            if ($$3 == czd.b) {
+               return switch ($$5) {
+                  case b -> fgq.h;
+                  case a -> fgq.g;
+                  case c -> fgq.i;
+               };
+            }
+
+            if ($$3 == czd.c) {
+               return $$5 == cyl.b ? fgq.k : fgq.l;
+            }
+
+            if ($$3 == czd.d) {
+               return fgq.n;
+            }
+
+            if ($$3 == czd.e) {
+               return fgq.q;
+            }
+         }
+
+         if ($$3 == czd.f) {
+            return fgq.o;
+         } else if ($$3 == czd.g) {
+            return fgq.p;
+         } else {
+            c.warn("Unknown recipe category: {}/{}", LogUtils.defer(() -> lt.q.b($$1.e())), LogUtils.defer($$0::a));
+            return fgq.r;
+         }
       }
    }
 
-   private void n() {
-      this.q = 0;
-      this.a(false);
+   public List<fry> b() {
+      return this.e;
    }
 
-   public String h() {
-      return this.l;
-   }
-
-   public ezj.a i() {
-      return this.m;
-   }
-
-   public void b(ezj.a $$0) {
-      this.o = $$0;
-   }
-
-   public int a(ffu $$0) {
-      return this.n.equals($$0.n) ? gqw.a(this.l).compareTo(gqw.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
-   }
-
-   public static Supplier<wu> a(String $$0) {
-      ffu $$1 = h.get($$0);
-      return $$1 == null ? () -> wu.c($$0) : $$1::k;
-   }
-
-   public boolean b(ffu $$0) {
-      return this.o.equals($$0.o);
-   }
-
-   public boolean j() {
-      return this.o.equals(ezj.bv);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 == ezj.bv.b() ? this.o.a() == ezj.b.b && this.o.b() == $$1 : this.o.a() == ezj.b.a && this.o.b() == $$0;
-   }
-
-   public boolean a(int $$0) {
-      return this.o.a() == ezj.b.c && this.o.b() == $$0;
-   }
-
-   public wu k() {
-      return this.o.d();
-   }
-
-   public boolean l() {
-      return this.o.equals(this.m);
-   }
-
-   public String m() {
-      return this.o.c();
-   }
-
-   public void a(boolean $$0) {
-      this.p = $$0;
+   public List<fry> a(fgq $$0) {
+      return this.d.getOrDefault($$0, Collections.emptyList());
    }
 }

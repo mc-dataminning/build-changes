@@ -1,23 +1,71 @@
-import java.util.UUID;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.Codec;
+import java.security.SignatureException;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.List;
+import java.util.Optional;
 
-public record xf(UUID a, cmn b) {
-   public static xf a(cmn $$0) {
-      return new xf(UUID.randomUUID(), $$0);
+public record xf(List<xk> d) {
+   public static final Codec<xf> a = xk.a.listOf().xmap(xf::new, xf::a);
+   public static xf b = new xf(List.of());
+   public static final int c = 20;
+
+   public void a(ayz.a $$0) throws SignatureException {
+      $$0.update(Ints.toByteArray(this.d.size()));
+
+      for (xk $$1 : this.d) {
+         $$0.update($$1.b());
+      }
    }
 
-   public xo.c a(UUID $$0) {
-      return new xo($$0, this.a).a(ayu.a(this.b.b(), "SHA256withRSA"));
+   public xf.a a(xl $$0) {
+      return new xf.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
    }
 
-   public xl a() {
-      return new xl(this.a, this.b.c());
+   public List<xk> a() {
+      return this.d;
    }
 
-   public UUID b() {
-      return this.a;
+   public static record a(List<xk.a> b) {
+      public static final xf.a a = new xf.a(List.of());
+
+      public a(vv $$0) {
+         this($$0.a(vv.a(ArrayList::new, 20), xk.a::a));
+      }
+
+      public void a(vv $$0) {
+         $$0.a(this.b, xk.a::a);
+      }
+
+      public Optional<xf> a(xl $$0) {
+         List<xk> $$1 = new ArrayList<>(this.b.size());
+
+         for (xk.a $$2 : this.b) {
+            Optional<xk> $$3 = $$2.a($$0);
+            if ($$3.isEmpty()) {
+               return Optional.empty();
+            }
+
+            $$1.add($$3.get());
+         }
+
+         return Optional.of(new xf($$1));
+      }
+
+      public List<xk.a> a() {
+         return this.b;
+      }
    }
 
-   public cmn c() {
-      return this.b;
+   public static record b(int a, BitSet b) {
+      public b(vv $$0) {
+         this($$0.l(), $$0.e(20));
+      }
+
+      public void a(vv $$0) {
+         $$0.c(this.a);
+         $$0.a(this.b, 20);
+      }
    }
 }

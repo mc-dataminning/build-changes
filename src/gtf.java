@@ -1,5 +1,15 @@
-public interface gtf extends gte {
-   boolean m();
+public class gtf extends gtg {
+   public gtf(cfd $$0) {
+      super($$0, avo.bR, avp.g);
+   }
 
-   void q();
+   @Override
+   protected gtc o() {
+      return new gte(this.n);
+   }
+
+   @Override
+   protected boolean p() {
+      return this.n.Z_();
+   }
 }

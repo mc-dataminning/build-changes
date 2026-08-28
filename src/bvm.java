@@ -1,37 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bvm {
-   public static buw<cly> a(float $$0, int $$1) {
-      return byi.a((Function<byi.b<cly>, ? extends App<byi.c<cly>, byl<cly>>>)($$2 -> $$2.group($$2.c(ccg.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               if ($$3.c($$4.dr())) {
-                  return false;
-               } else {
-                  ceg $$6 = $$3.y();
-                  int $$7 = $$6.a(kc.a($$4.dr()));
-                  ewh $$8 = null;
+public class bvm extends bvf<cgw> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
 
-                  for (int $$9 = 0; $$9 < 5; $$9++) {
-                     ewh $$10 = cea.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kc.a($$1xxxx))));
-                     if ($$10 != null) {
-                        int $$11 = $$6.a(kc.a(ja.a($$10)));
-                        if ($$11 < $$7) {
-                           $$8 = $$10;
-                           break;
-                        }
+   public bvm() {
+      super(ImmutableMap.of(ccq.m, ccr.b), 100);
+   }
 
-                        if ($$11 == $$7) {
-                           $$8 = $$10;
-                        }
-                     }
-                  }
+   protected boolean a(aqt $$0, cgw $$1) {
+      return $$1.at() == bty.a;
+   }
 
-                  if ($$8 != null) {
-                     $$2x.a(new ccj($$8, $$0, $$1));
-                  }
+   protected boolean a(aqt $$0, cgw $$1, long $$2) {
+      return this.e < 60;
+   }
 
-                  return true;
-               }
-            })));
+   protected void b(aqt $$0, cgw $$1, long $$2) {
+      if (!$$1.bj()) {
+         $$1.b(bty.i);
+         this.e = 0;
+      }
+   }
+
+   protected void c(aqt $$0, cgw $$1, long $$2) {
+      $$1.b(bty.a);
+   }
+
+   protected void d(aqt $$0, cgw $$1, long $$2) {
+      this.e++;
    }
 }

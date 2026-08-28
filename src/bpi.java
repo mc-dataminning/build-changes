@@ -1,45 +1,50 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.util.Either;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
-public class bpi extends bpk {
-   public static final bpi a = new bpi(0.0F);
-   public static final MapCodec<bpi> b = Codec.FLOAT.fieldOf("value").xmap(bpi::a, bpi::d);
-   private final float d;
+public interface bpi<Msg> extends AutoCloseable {
+   String bz();
 
-   public static bpi a(float $$0) {
-      return $$0 == 0.0F ? a : new bpi($$0);
-   }
-
-   private bpi(float $$0) {
-      this.d = $$0;
-   }
-
-   public float d() {
-      return this.d;
-   }
+   void a(Msg var1);
 
    @Override
-   public float a(ayo $$0) {
-      return this.d;
+   default void close() {
    }
 
-   @Override
-   public float a() {
-      return this.d;
+   default <Source> CompletableFuture<Source> b(Function<? super bpi<Source>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
+      this.a($$2);
+      return $$1;
    }
 
-   @Override
-   public float b() {
-      return this.d + 1.0F;
+   default <Source> CompletableFuture<Source> c(Function<? super bpi<Either<Source, Exception>>, ? extends Msg> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
+         $$1x.ifLeft($$1::complete);
+         $$1x.ifRight($$1::completeExceptionally);
+      }));
+      this.a($$2);
+      return $$1;
    }
 
-   @Override
-   public bpl<?> c() {
-      return bpl.a;
-   }
+   static <Msg> bpi<Msg> a(final String $$0, final Consumer<Msg> $$1) {
+      return new bpi<Msg>() {
+         @Override
+         public String bz() {
+            return $$0;
+         }
 
-   @Override
-   public String toString() {
-      return Float.toString(this.d);
+         @Override
+         public void a(Msg $$0x) {
+            $$1.accept($$0);
+         }
+
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

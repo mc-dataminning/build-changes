@@ -1,45 +1,45 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class emf extends emv {
-   public static final MapCodec<emf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dyg.a.g.fieldOf("heightmap").orElse(dyg.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
-            .apply($$0, emf::new)
-   );
-   private final dyg.a b;
-   private final int c;
+public class emf extends ejm {
+   public static final MapCodec<emf> d = a(emf::new);
 
-   public emf(dyg.a $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public emf(ejm.c $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   public emy.c a(dcj $$0, ja $$1, ja $$2, emy.c $$3, emy.c $$4, emu $$5) {
-      dyg.a $$6;
-      if ($$0 instanceof aqm) {
-         if (this.b == dyg.a.a) {
-            $$6 = dyg.a.b;
-         } else if (this.b == dyg.a.c) {
-            $$6 = dyg.a.d;
-         } else {
-            $$6 = this.b;
+   public Optional<ejm.b> a(ejm.a $$0) {
+      return Optional.of(new ejm.b($$0.h().l(), (Consumer<eke>)($$1 -> a($$1, $$0))));
+   }
+
+   private static void a(eke $$0, ejm.a $$1) {
+      int $$2 = 0;
+
+      eme.m $$3;
+      do {
+         $$0.b();
+         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
+         eme.a();
+         $$3 = new eme.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
+         $$0.a($$3);
+         $$3.a($$3, $$0, $$1.f());
+         List<ejq> $$4 = $$3.c;
+
+         while (!$$4.isEmpty()) {
+            int $$5 = $$1.f().a($$4.size());
+            ejq $$6 = $$4.remove($$5);
+            $$6.a($$3, $$0, $$1.f());
          }
-      } else {
-         $$6 = this.b;
-      }
 
-      ja $$10 = $$4.a();
-      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
-      int $$12 = $$3.a().v();
-      return new emy.c(new ja($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
+         $$0.a($$1.b().f(), $$1.b().g(), $$1.f(), 10);
+      } while ($$0.c() || $$3.b == null);
    }
 
    @Override
-   protected emx<?> a() {
-      return emx.g;
+   public ejv<?> e() {
+      return ejv.n;
    }
 }

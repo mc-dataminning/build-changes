@@ -1,21 +1,28 @@
-class brh extends brn {
-   protected brh(bro $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum brh implements azj {
+   a("hurt", avo.ul),
+   b("thorns", avo.zx),
+   c("drowning", avo.um),
+   d("burning", avo.uo),
+   e("poking", avo.up),
+   f("freezing", avo.un);
+
+   public static final Codec<brh> g = azj.a(brh::values);
+   private final String h;
+   private final avn i;
+
+   private brh(final String $$0, final avn $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public boolean a(btc $$0, int $$1) {
-      return $$0.fq() > 0.0F || $$0.dR().B;
+   public String c() {
+      return this.h;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public void b(btc $$0, int $$1) {
-      super.b($$0, $$1);
-      $$0.B(Math.max($$0.fq(), (float)(4 * (1 + $$1))));
+   public avn a() {
+      return this.i;
    }
 }

@@ -1,76 +1,71 @@
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cyd extends cyb {
-   private static final cyg a = cyg.a(cug.qO);
-   private static final cyg b = cyg.a(cug.pu);
-   private static final cyg c = cyg.a(cug.uv);
+public class cyd {
+   @Nullable
+   private final cmv a;
+   private final bqp b;
+   private final ews c;
+   private final dcu d;
+   private final cuo e;
 
-   public cyd(cxy $$0) {
-      super($$0);
+   public cyd(cmv $$0, bqp $$1, ews $$2) {
+      this($$0.dQ(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(cxz $$0, dcg $$1) {
-      boolean $$2 = false;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cud $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if (a.a($$5)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
-                  return false;
-               }
-            } else if (!c.a($$5)) {
-               return false;
-            }
-         }
-      }
-
-      return $$2 && $$3 >= 1;
+   protected cyd(dcu $$0, @Nullable cmv $$1, bqp $$2, cuo $$3, ews $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public cud a(cxz $$0, jl.a $$1) {
-      List<cwv> $$2 = new ArrayList<>();
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cud $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if (b.a($$5)) {
-               $$3++;
-            } else if (c.a($$5)) {
-               cwv $$6 = $$5.a(kn.T);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
-            }
-         }
-      }
-
-      cud $$7 = new cud(cug.uu, 3);
-      $$7.b(kn.U, new cww($$3, $$2));
-      return $$7;
+   protected final ews j() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public jd a() {
+      return this.c.a();
    }
 
-   @Override
-   public cud a(jl.a $$0) {
-      return new cud(cug.uu);
+   public ji k() {
+      return this.c.b();
    }
 
-   @Override
-   public cyo<?> ap_() {
-      return cyo.g;
+   public eww l() {
+      return this.c.e();
+   }
+
+   public boolean m() {
+      return this.c.d();
+   }
+
+   public cuo n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cmv o() {
+      return this.a;
+   }
+
+   public bqp p() {
+      return this.b;
+   }
+
+   public dcu q() {
+      return this.d;
+   }
+
+   public ji g() {
+      return this.a == null ? ji.c : this.a.cI();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fO();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dG();
    }
 }

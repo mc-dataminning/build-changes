@@ -1,23 +1,47 @@
-import com.mojang.serialization.MapCodec;
+import java.util.concurrent.atomic.AtomicLong;
 
-public interface dzo<P extends dzn> {
-   dzo<dzt> a = a("matching_blocks", dzt.a);
-   dzo<dzs> b = a("matching_block_tag", dzs.e);
-   dzo<dzu> c = a("matching_fluids", dzu.a);
-   dzo<dzq> d = a("has_sturdy_face", dzq.a);
-   dzo<dzx> e = a("solid", dzx.a);
-   dzo<dzw> f = a("replaceable", dzw.a);
-   dzo<eab> g = a("would_survive", eab.a);
-   dzo<dzr> h = a("inside_world_bounds", dzr.a);
-   dzo<dzm> i = a("any_of", dzm.a);
-   dzo<dzl> j = a("all_of", dzl.a);
-   dzo<dzv> k = a("not", dzv.a);
-   dzo<dzz> l = a("true", dzz.e);
-   dzo<eaa> m = a("unobstructed", eaa.a);
+@Deprecated
+public class dzo implements dyk {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dyx i = new dyx(this);
 
-   MapCodec<P> codec();
+   public dzo(long $$0) {
+      this.b($$0);
+   }
 
-   private static <P extends dzn> dzo<P> a(String $$0, MapCodec<P> $$1) {
-      return jw.a(lq.M, $$0, () -> $$1);
+   @Override
+   public ayv d() {
+      return new dzo(this.g());
+   }
+
+   @Override
+   public dzi e() {
+      return new dyw.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1;
+      long $$2;
+      do {
+         $$1 = this.h.get();
+         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      } while (!this.h.compareAndSet($$1, $$2));
+
+      return (int)($$2 >>> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

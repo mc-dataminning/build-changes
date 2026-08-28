@@ -1,9 +1,13 @@
-import javax.annotation.Nullable;
+public interface btw extends btv {
+   void b(int var1);
 
-public interface btw {
-   boolean isSpawnPositionOk(dcj var1, ja var2, @Nullable bsn<?> var3);
+   boolean a();
 
-   default ja a(dcj $$0, ja $$1) {
-      return $$1;
+   void c(int var1);
+
+   void b();
+
+   default int c() {
+      return 0;
    }
 }

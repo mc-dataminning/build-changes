@@ -1,62 +1,30 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class ery extends esj {
+public class ery extends esd {
    public static final MapCodec<ery> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ery.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, ery::new)
+      $$0 -> $$0.group(lt.g.s().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ery::new)
    );
-   private final ery.a b;
+   private final jm<cuj> j;
 
-   private ery(List<euh> $$0, ery.a $$1) {
-      super($$0);
-      this.b = $$1;
+   private ery(jm<cuj> $$0, int $$1, int $$2, List<euw> $$3, List<esz> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public esl<ery> b() {
-      return esm.s;
+   public esc a() {
+      return erz.c;
    }
 
    @Override
-   public Set<etp<?>> a() {
-      return ImmutableSet.of(this.b.g);
+   public void a(Consumer<cuo> $$0, erl $$1) {
+      $$0.accept(new cuo(this.j));
    }
 
-   @Override
-   public cud a(cud $$0, eqw $$1) {
-      if ($$1.c(this.b.g) instanceof bqm $$3) {
-         $$0.b(kn.g, $$3.aj());
-      }
-
-      return $$0;
-   }
-
-   public static esj.a<?> a(ery.a $$0) {
-      return a($$1 -> new ery($$1, $$0));
-   }
-
-   public static enum a implements azc {
-      a("this", ets.a),
-      b("attacking_entity", ets.d),
-      c("last_damage_player", ets.b),
-      d("block_entity", ets.h);
-
-      public static final Codec<ery.a> e = azc.a(ery.a::values);
-      private final String f;
-      final etp<?> g;
-
-      private a(final String $$0, final etp<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   public static esd.a<?> a(dct $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ery($$0.r().o(), $$1, $$2, $$3, $$4));
    }
 }

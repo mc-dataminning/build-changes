@@ -1,24 +1,31 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public interface we {
+   zg a();
 
-public class we extends vp {
-   private static final Logger h = LogUtils.getLogger();
-   private static final wu i = wu.c("disconnect.exceeded_packet_rate");
-   private final int j;
+   vt b();
 
-   public we(int $$0) {
-      super(zc.a);
-      this.j = $$0;
+   void a(vu var1);
+
+   default void a(zf $$0, Exception $$1) throws z {
+      throw zi.a($$1, $$0, this);
    }
 
-   @Override
-   protected void c() {
-      super.c();
-      float $$0 = this.o();
-      if ($$0 > (float)this.j) {
-         h.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
-         this.a(new zj(i), wb.a(() -> this.a(i)));
-         this.m();
-      }
+   default vu a(wy $$0, Throwable $$1) {
+      return new vu($$0);
+   }
+
+   boolean c();
+
+   default boolean a(zf<?> $$0) {
+      return this.c();
+   }
+
+   default void a(o $$0) {
+      p $$1 = $$0.a("Connection");
+      $$1.a("Protocol", () -> this.b().a());
+      $$1.a("Flow", () -> this.a().toString());
+      this.a($$0, $$1);
+   }
+
+   default void a(o $$0, p $$1) {
    }
 }

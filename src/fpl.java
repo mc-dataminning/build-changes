@@ -1,47 +1,22 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class fpl extends fom<cqs> {
+   private static final akq D = akq.b("textures/gui/container/hopper.png");
 
-public class fpl extends foc {
-   public static final float b = 62.500004F;
-   public static final float c = 0.9765628F;
-   private static final Vector3f q = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   @Nullable
-   private ggt.a r;
-
-   public fpl(drb $$0, boolean $$1, boolean $$2) {
+   public fpl(cqs $$0, cmu $$1, wy $$2) {
       super($$0, $$1, $$2);
+      this.q = 133;
+      this.v = this.q - 94;
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      this.r = ggt.a(this.l.aP(), this.a);
+   public void a(fht $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void b(fhh $$0, dsl $$1) {
-      super.b($$0, $$1);
-      boolean $$2 = $$1.b() instanceof dnd;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
-      }
-   }
-
-   @Override
-   protected void a(fhh $$0, dsl $$1) {
-      if (this.r != null) {
-         boolean $$2 = $$1.b() instanceof dnd;
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         gru $$3 = geu.a(this.a);
-         fas $$4 = $$3.a($$0.d(), this.r::a);
-         this.r.b.k = $$2;
-         this.r.a.a($$0.c(), $$4, 15728880, gph.d);
-      }
-   }
-
-   @Override
-   protected Vector3f m() {
-      return q;
+   protected void a(fht $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.m - this.c) / 2;
+      int $$5 = (this.n - this.q) / 2;
+      $$0.a(D, $$4, $$5, 0, 0, this.c, this.q);
    }
 }

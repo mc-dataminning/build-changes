@@ -1,20 +1,29 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-public record aax(akj<? extends jw<?>> b, List<ka.a> c) implements zb<aav> {
-   private static final ys<ByteBuf, akj<? extends jw<?>>> d = akk.b.a(akj::a, akj::a);
-   public static final ys<vr, aax> a = ys.a(d, aax::b, ka.a.a.a(yq.a()), aax::e, aax::new);
+public record aax(Set<kf> c, Set<kf> d) implements aai {
+   public static final yw<vv, aax> a = aai.a(aax::a, aax::new);
+   public static final aai.b<aax> b = aai.a("debug/village_sections");
+
+   private aax(vv $$0) {
+      this($$0.a(HashSet::new, vv::g), $$0.a(HashSet::new, vv::g));
+   }
+
+   private void a(vv $$0) {
+      $$0.a(this.c, vv::a);
+      $$0.a(this.d, vv::a);
+   }
 
    @Override
-   public zd<aax> a() {
-      return abb.b;
+   public aai.b<aax> a() {
+      return b;
    }
 
-   public void a(aav $$0) {
-      $$0.a(this);
-   }
-
-   public List<ka.a> e() {
+   public Set<kf> b() {
       return this.c;
+   }
+
+   public Set<kf> c() {
+      return this.d;
    }
 }

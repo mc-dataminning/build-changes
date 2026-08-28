@@ -1,110 +1,84 @@
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.UUID;
 
-public class fsf extends fnl {
-   private static final wu a = wu.c("telemetry_info.screen.title");
-   private static final wu b = wu.c("telemetry_info.screen.description").b(-4539718);
-   private static final wu c = wu.c("telemetry_info.button.privacy_statement");
-   private static final wu q = wu.c("telemetry_info.button.give_feedback");
-   private static final wu r = wu.c("telemetry_info.button.show_data");
-   private static final wu s = wu.c("telemetry_info.opt_in.description");
-   private static final int u = 8;
-   private static final boolean v = ffw.Q().D();
-   private final fnl w;
-   private final fga x;
-   private final flh y = new flh(this, 16 + 9 * 5 + 20, v ? 33 + fhw.a(ffw.Q().h) : 33);
-   @Nullable
-   private fse z;
-   @Nullable
-   private fio A;
-   private double B;
+public class fsf extends fse<gab.a> {
+   private static final int y = 120;
+   private static final wy z = wy.c("gui.chatReport.title");
+   private static final wy A = wy.c("gui.chatReport.select_chat");
+   private final flx B = flx.d().a(8);
+   private fiy C;
+   private fig D;
+   private fig E;
+   private fig F;
 
-   public fsf(fnl $$0, fga $$1) {
-      super(a);
-      this.w = $$0;
-      this.x = $$1;
+   private fsf(fnx $$0, gai $$1, gab.a $$2) {
+      super(z, $$0, $$1, $$2);
    }
 
-   @Override
-   public wu i() {
-      return wt.a(super.i(), b);
+   public fsf(fnx $$0, gai $$1, UUID $$2) {
+      this($$0, $$1, new gab.a($$2, $$1.a().b()));
+   }
+
+   public fsf(fnx $$0, gai $$1, gab $$2) {
+      this($$0, $$1, new gab.a($$2, $$1.a().b()));
    }
 
    @Override
    protected void aP_() {
-      fll $$0 = this.y.a(fll.d().a(4));
-      $$0.c().b();
-      $$0.a(new fjb(a, this.o));
-      this.A = $$0.a(new fio(b, this.o).b(true));
-      fll $$1 = $$0.a(fll.e().a(8));
-      $$1.a(fhu.a(c, this::a).a());
-      $$1.a(fhu.a(q, this::b).a());
-      fll $$2 = this.y.b(fll.d().a(4));
-      if (v) {
-         $$2.a(this.m());
-      }
-
-      fll $$3 = $$2.a(fll.e().a(8));
-      $$3.a(fhu.a(r, this::c).a());
-      $$3.a(fhu.a(wt.d, $$0x -> this.d()).a());
-      fll $$4 = this.y.c(fll.d().a(8));
-      this.z = $$4.a(new fse(0, 0, this.m - 40, this.y.d(), this.o));
-      this.z.a($$0x -> this.B = $$0x);
-      this.y.a($$1x -> {
-         fhs var10000 = this.c($$1x);
+      this.B.c().b();
+      this.B.a(new fjn(this.k, this.o));
+      this.E = this.B.a(fig.a(A, $$0x -> this.l.a(new fsh(this, this.w, this.x, $$0xx -> {
+            this.x = $$0xx;
+            this.D();
+         }))).a(280).a());
+      this.F = fig.a(c, $$0x -> this.l.a(new fsk(this, this.x.h(), $$0xx -> {
+            this.x.a($$0xx);
+            this.D();
+         }))).a(280).a();
+      this.B.a(flp.a(this.o, this.F, b));
+      this.C = this.a(280, 9 * 8, $$0x -> {
+         this.x.a($$0x);
+         this.D();
+      });
+      this.B.a(flp.a(this.o, this.C, q, $$0x -> $$0x.e(12)));
+      flx $$0 = this.B.a(flx.e().a(8));
+      $$0.a(fig.a(wx.k, $$0x -> this.d()).a(120).a());
+      this.D = $$0.a(fig.a(a, $$0x -> this.m()).a(120).a());
+      this.B.a($$1 -> {
+         fie var10000 = this.c($$1);
       });
       this.c();
+      this.D();
    }
 
    @Override
    protected void c() {
-      if (this.z != null) {
-         this.z.a(this.B);
-         this.z.k(this.m - 40);
-         this.z.l(this.y.d());
-         this.z.j();
+      this.B.a();
+      flr.a(this.B, this.H());
+   }
+
+   private void D() {
+      IntSet $$0 = this.x.a();
+      if ($$0.isEmpty()) {
+         this.E.b(A);
+      } else {
+         this.E.b(wy.a("gui.chatReport.selected_chat", $$0.size()));
       }
 
-      if (this.A != null) {
-         this.A.d(this.m - 16);
+      gag $$1 = this.x.h();
+      if ($$1 != null) {
+         this.F.b($$1.b());
+      } else {
+         this.F.b(c);
       }
 
-      this.y.a();
+      gae.b $$2 = this.x.c();
+      this.D.j = $$2 == null;
+      this.D.a(x.a($$2, gae.b::a));
    }
 
    @Override
-   protected void aE_() {
-      if (this.z != null) {
-         this.b(this.z);
-      }
-   }
-
-   private fhs m() {
-      ffz<Boolean> $$0 = this.x.ai();
-      return fhw.a(s, this.o).a($$0).a(this::a).a();
-   }
-
-   private void a(fhs $$0, boolean $$1) {
-      if (this.z != null) {
-         this.z.b($$1);
-      }
-   }
-
-   private void a(fhu $$0) {
-      fmi.a(this, "http://go.microsoft.com/fwlink/?LinkId=521839");
-   }
-
-   private void b(fhu $$0) {
-      fmi.a(this, "https://aka.ms/javafeedback?ref=game");
-   }
-
-   private void c(fhu $$0) {
-      Path $$1 = this.l.u().b();
-      ac.k().a($$1.toUri());
-   }
-
-   @Override
-   public void d() {
-      this.l.a(this.w);
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.C.b($$0, $$1, $$2);
    }
 }

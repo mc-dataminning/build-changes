@@ -1,28 +1,16 @@
 import com.mojang.serialization.MapCodec;
 
-public class ehu extends eii {
-   public static final MapCodec<ehu> a = bpm.b(0, 256).fieldOf("count").xmap(ehu::new, $$0 -> $$0.c);
-   private final bpm c;
+public interface ehu<P extends eht> {
+   ehu<ehs> a = a("constant", ehs.b);
+   ehu<ehw> b = a("uniform", ehw.a);
+   ehu<ehr> c = a("biased_to_bottom", ehr.a);
+   ehu<ehx> d = a("very_biased_to_bottom", ehx.a);
+   ehu<ehv> e = a("trapezoid", ehv.a);
+   ehu<ehy> f = a("weighted_list", ehy.a);
 
-   private ehu(bpm $$0) {
-      this.c = $$0;
-   }
+   MapCodec<P> codec();
 
-   public static ehu a(bpm $$0) {
-      return new ehu($$0);
-   }
-
-   public static ehu a(int $$0) {
-      return a(bpj.a($$0));
-   }
-
-   @Override
-   protected int a(ayo $$0, ja $$1) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public eif<?> b() {
-      return eif.f;
+   private static <P extends eht> ehu<P> a(String $$0, MapCodec<P> $$1) {
+      return jz.a(lt.L, $$0, () -> $$1);
    }
 }

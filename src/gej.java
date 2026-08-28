@@ -1,94 +1,396 @@
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InvalidClassException;
+import java.io.Reader;
 import java.util.List;
+import java.util.Map;
 import java.util.function.IntSupplier;
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gej implements AutoCloseable {
-   private final gdv c;
-   public final eza a;
-   public final eza b;
-   private final List<IntSupplier> d = Lists.newArrayList();
-   private final List<String> e = Lists.newArrayList();
-   private final List<Integer> f = Lists.newArrayList();
-   private final List<Integer> g = Lists.newArrayList();
-   private Matrix4f h;
-   private final int i;
+public class gej implements fan, AutoCloseable {
+   private static final String a = "shaders/program/";
+   private static final Logger b = LogUtils.getLogger();
+   private static final fal c = new fal();
+   private static final boolean d = true;
+   private static gej e;
+   private static int f = -1;
+   private final Map<String, IntSupplier> g = Maps.newHashMap();
+   private final List<String> h = Lists.newArrayList();
+   private final List<Integer> i = Lists.newArrayList();
+   private final List<fat> j = Lists.newArrayList();
+   private final List<Integer> k = Lists.newArrayList();
+   private final Map<String, fat> l = Maps.newHashMap();
+   private final int m;
+   private final String n;
+   private boolean o;
+   private final fam p;
+   private final List<Integer> q;
+   private final List<String> r;
+   private final fao s;
+   private final fao t;
 
-   public gej(atz $$0, String $$1, eza $$2, eza $$3, boolean $$4) throws IOException {
-      this.c = new gdv($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
-      this.i = $$4 ? 9729 : 9728;
-   }
+   public gej(aug $$0, String $$1) throws IOException {
+      akq $$2 = akq.b("shaders/program/" + $$1 + ".json");
+      this.n = $$1;
+      aub $$3 = $$0.getResourceOrThrow($$2);
 
-   @Override
-   public void close() {
-      this.c.close();
-   }
+      try (Reader $$4 = $$3.e()) {
+         JsonObject $$5 = ayd.a($$4);
+         String $$6 = ayd.i($$5, "vertex");
+         String $$7 = ayd.i($$5, "fragment");
+         JsonArray $$8 = ayd.a($$5, "samplers", null);
+         if ($$8 != null) {
+            int $$9 = 0;
 
-   public final String a() {
-      return this.c.h();
-   }
+            for (JsonElement $$10 : $$8) {
+               try {
+                  this.a($$10);
+               } catch (Exception var20) {
+                  akt $$12 = akt.a(var20);
+                  $$12.a("samplers[" + $$9 + "]");
+                  throw $$12;
+               }
 
-   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
-      this.e.add(this.e.size(), $$0);
-      this.d.add(this.d.size(), $$1);
-      this.f.add(this.f.size(), $$2);
-      this.g.add(this.g.size(), $$3);
-   }
+               $$9++;
+            }
+         }
 
-   public void a(Matrix4f $$0) {
-      this.h = $$0;
-   }
+         JsonArray $$13 = ayd.a($$5, "attributes", null);
+         if ($$13 != null) {
+            int $$14 = 0;
+            this.q = Lists.newArrayListWithCapacity($$13.size());
+            this.r = Lists.newArrayListWithCapacity($$13.size());
 
-   public void a(float $$0) {
-      this.a.e();
-      float $$1 = (float)this.b.c;
-      float $$2 = (float)this.b.d;
-      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
-      this.c.a("DiffuseSampler", this.a::f);
+            for (JsonElement $$15 : $$13) {
+               try {
+                  this.r.add(ayd.a($$15, "attribute"));
+               } catch (Exception var19) {
+                  akt $$17 = akt.a(var19);
+                  $$17.a("attributes[" + $$14 + "]");
+                  throw $$17;
+               }
 
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.c.a(this.e.get($$3), this.d.get($$3));
-         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
+               $$14++;
+            }
+         } else {
+            this.q = null;
+            this.r = null;
+         }
+
+         JsonArray $$18 = ayd.a($$5, "uniforms", null);
+         if ($$18 != null) {
+            int $$19 = 0;
+
+            for (JsonElement $$20 : $$18) {
+               try {
+                  this.b($$20);
+               } catch (Exception var18) {
+                  akt $$22 = akt.a(var18);
+                  $$22.a("uniforms[" + $$19 + "]");
+                  throw $$22;
+               }
+
+               $$19++;
+            }
+         }
+
+         this.p = a(ayd.a($$5, "blend", null));
+         this.s = a($$0, faq.a.a, $$6);
+         this.t = a($$0, faq.a.b, $$7);
+         this.m = far.a();
+         far.b(this);
+         this.i();
+         if (this.r != null) {
+            for (String $$23 : this.r) {
+               int $$24 = fat.b(this.m, $$23);
+               this.q.add($$24);
+            }
+         }
+      } catch (Exception var22) {
+         akt $$26 = akt.a(var22);
+         $$26.b($$2.a() + " (" + $$3.b() + ")");
+         throw $$26;
       }
 
-      this.c.b("ProjMat").a(this.h);
-      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
-      this.c.b("OutSize").a($$1, $$2);
-      this.c.b("Time").a($$0);
-      ffw $$4 = ffw.Q();
-      this.c.b("ScreenSize").a((float)$$4.aM().k(), (float)$$4.aM().l());
-      this.c.g();
-      this.b.b(ffw.a);
-      this.b.a(false);
-      RenderSystem.depthFunc(519);
-      faj $$5 = faq.b().d();
-      $$5.a(fat.b.h, fam.m);
-      $$5.a(0.0, 0.0, 500.0).e();
-      $$5.a((double)$$1, 0.0, 500.0).e();
-      $$5.a((double)$$1, (double)$$2, 500.0).e();
-      $$5.a(0.0, (double)$$2, 500.0).e();
-      fak.b($$5.d());
-      RenderSystem.depthFunc(515);
-      this.c.f();
-      this.b.e();
-      this.a.d();
+      this.b();
+   }
 
-      for (Object $$6 : this.d) {
-         if ($$6 instanceof eza) {
-            ((eza)$$6).d();
+   public static fao a(aug $$0, faq.a $$1, String $$2) throws IOException {
+      faq $$3 = $$1.c().get($$2);
+      if ($$3 != null && !($$3 instanceof fao)) {
+         throw new InvalidClassException("Program is not of type EffectProgram");
+      } else {
+         fao $$7;
+         if ($$3 == null) {
+            akq $$4 = akq.b("shaders/program/" + $$2 + $$1.b());
+            aub $$5 = $$0.getResourceOrThrow($$4);
+
+            try (InputStream $$6 = $$5.d()) {
+               $$7 = fao.a($$1, $$2, $$6, $$5.b());
+            }
+         } else {
+            $$7 = (fao)$$3;
+         }
+
+         return $$7;
+      }
+   }
+
+   public static fam a(@Nullable JsonObject $$0) {
+      if ($$0 == null) {
+         return new fam();
+      } else {
+         int $$1 = 32774;
+         int $$2 = 1;
+         int $$3 = 0;
+         int $$4 = 1;
+         int $$5 = 0;
+         boolean $$6 = true;
+         boolean $$7 = false;
+         if (ayd.a($$0, "func")) {
+            $$1 = fam.a($$0.get("func").getAsString());
+            if ($$1 != 32774) {
+               $$6 = false;
+            }
+         }
+
+         if (ayd.a($$0, "srcrgb")) {
+            $$2 = fam.b($$0.get("srcrgb").getAsString());
+            if ($$2 != 1) {
+               $$6 = false;
+            }
+         }
+
+         if (ayd.a($$0, "dstrgb")) {
+            $$3 = fam.b($$0.get("dstrgb").getAsString());
+            if ($$3 != 0) {
+               $$6 = false;
+            }
+         }
+
+         if (ayd.a($$0, "srcalpha")) {
+            $$4 = fam.b($$0.get("srcalpha").getAsString());
+            if ($$4 != 1) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if (ayd.a($$0, "dstalpha")) {
+            $$5 = fam.b($$0.get("dstalpha").getAsString());
+            if ($$5 != 0) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if ($$6) {
+            return new fam();
+         } else {
+            return $$7 ? new fam($$2, $$3, $$4, $$5, $$1) : new fam($$2, $$3, $$1);
          }
       }
    }
 
-   public gdv b() {
-      return this.c;
+   @Override
+   public void close() {
+      for (fat $$0 : this.j) {
+         $$0.close();
+      }
+
+      far.a(this);
    }
 
-   public int c() {
-      return this.i;
+   public void f() {
+      RenderSystem.assertOnRenderThread();
+      far.a(0);
+      f = -1;
+      e = null;
+
+      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
+         if (this.g.get(this.h.get($$0)) != null) {
+            GlStateManager._activeTexture(33984 + $$0);
+            GlStateManager._bindTexture(0);
+         }
+      }
+   }
+
+   public void g() {
+      this.o = false;
+      e = this;
+      this.p.a();
+      if (this.m != f) {
+         far.a(this.m);
+         f = this.m;
+      }
+
+      for (int $$0 = 0; $$0 < this.i.size(); $$0++) {
+         String $$1 = this.h.get($$0);
+         IntSupplier $$2 = this.g.get($$1);
+         if ($$2 != null) {
+            RenderSystem.activeTexture(33984 + $$0);
+            int $$3 = $$2.getAsInt();
+            if ($$3 != -1) {
+               RenderSystem.bindTexture($$3);
+               fat.b(this.i.get($$0), $$0);
+            }
+         }
+      }
+
+      for (fat $$4 : this.j) {
+         $$4.b();
+      }
+   }
+
+   @Override
+   public void b() {
+      this.o = true;
+   }
+
+   @Nullable
+   public fat a(String $$0) {
+      RenderSystem.assertOnRenderThread();
+      return this.l.get($$0);
+   }
+
+   public fal b(String $$0) {
+      fat $$1 = this.a($$0);
+      return (fal)($$1 == null ? c : $$1);
+   }
+
+   private void i() {
+      RenderSystem.assertOnRenderThread();
+      IntList $$0 = new IntArrayList();
+
+      for (int $$1 = 0; $$1 < this.h.size(); $$1++) {
+         String $$2 = this.h.get($$1);
+         int $$3 = fat.a(this.m, $$2);
+         if ($$3 == -1) {
+            b.warn("Shader {} could not find sampler named {} in the specified shader program.", this.n, $$2);
+            this.g.remove($$2);
+            $$0.add($$1);
+         } else {
+            this.i.add($$3);
+         }
+      }
+
+      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
+         this.h.remove($$0.getInt($$4));
+      }
+
+      for (fat $$5 : this.j) {
+         String $$6 = $$5.a();
+         int $$7 = fat.a(this.m, $$6);
+         if ($$7 == -1) {
+            b.warn("Shader {} could not find uniform named {} in the specified shader program.", this.n, $$6);
+         } else {
+            this.k.add($$7);
+            $$5.b($$7);
+            this.l.put($$6, $$5);
+         }
+      }
+   }
+
+   private void a(JsonElement $$0) {
+      JsonObject $$1 = ayd.m($$0, "sampler");
+      String $$2 = ayd.i($$1, "name");
+      if (!ayd.a($$1, "file")) {
+         this.g.put($$2, null);
+         this.h.add($$2);
+      } else {
+         this.h.add($$2);
+      }
+   }
+
+   public void a(String $$0, IntSupplier $$1) {
+      if (this.g.containsKey($$0)) {
+         this.g.remove($$0);
+      }
+
+      this.g.put($$0, $$1);
+      this.b();
+   }
+
+   private void b(JsonElement $$0) throws akt {
+      JsonObject $$1 = ayd.m($$0, "uniform");
+      String $$2 = ayd.i($$1, "name");
+      int $$3 = fat.a(ayd.i($$1, "type"));
+      int $$4 = ayd.o($$1, "count");
+      float[] $$5 = new float[Math.max($$4, 16)];
+      JsonArray $$6 = ayd.v($$1, "values");
+      if ($$6.size() != $$4 && $$6.size() > 1) {
+         throw new akt("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
+      } else {
+         int $$7 = 0;
+
+         for (JsonElement $$8 : $$6) {
+            try {
+               $$5[$$7] = ayd.e($$8, "value");
+            } catch (Exception var13) {
+               akt $$10 = akt.a(var13);
+               $$10.a("values[" + $$7 + "]");
+               throw $$10;
+            }
+
+            $$7++;
+         }
+
+         if ($$4 > 1 && $$6.size() == 1) {
+            while ($$7 < $$4) {
+               $$5[$$7] = $$5[0];
+               $$7++;
+            }
+         }
+
+         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
+         fat $$12 = new fat($$2, $$3 + $$11, $$4, this);
+         if ($$3 <= 3) {
+            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
+         } else if ($$3 <= 7) {
+            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
+         } else {
+            $$12.a($$5);
+         }
+
+         this.j.add($$12);
+      }
+   }
+
+   @Override
+   public faq c() {
+      return this.s;
+   }
+
+   @Override
+   public faq d() {
+      return this.t;
+   }
+
+   @Override
+   public void e() {
+      this.t.a(this);
+      this.s.a(this);
+   }
+
+   public String h() {
+      return this.n;
+   }
+
+   @Override
+   public int a() {
+      return this.m;
    }
 }

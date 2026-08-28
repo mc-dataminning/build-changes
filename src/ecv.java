@@ -1,172 +1,158 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
+import java.util.BitSet;
+import java.util.function.Function;
 
-public class ecv extends ebl<eej> {
-   public static final int a = 10;
-   private static final int b = 42;
-   private static final LoadingCache<Long, List<ecv.a>> c = CacheBuilder.newBuilder().expireAfterWrite(5L, TimeUnit.MINUTES).build(new ecv.b());
-
-   public ecv(Codec<eej> $$0) {
+public class ecv extends eca<eem> {
+   public ecv(Codec<eem> $$0) {
       super($$0);
    }
 
-   public static List<ecv.a> a(ddc $$0) {
-      ayo $$1 = ayo.a($$0.C());
-      long $$2 = $$1.g() & 65535L;
-      return (List<ecv.a>)c.getUnchecked($$2);
-   }
-
    @Override
-   public boolean a(ebn<eej> $$0) {
-      eej $$1 = $$0.f();
-      ddc $$2 = $$0.b();
-      ayo $$3 = $$0.d();
-      ja $$4 = $$0.e();
-      List<ecv.a> $$5 = $$1.b();
-      if ($$5.isEmpty()) {
-         $$5 = a($$2);
-      }
+   public boolean a(ecc<eem> $$0) {
+      ayv $$1 = $$0.d();
+      jd $$2 = $$0.e();
+      ddq $$3 = $$0.b();
+      eem $$4 = $$0.f();
+      float $$5 = $$1.i() * (float) Math.PI;
+      float $$6 = (float)$$4.c / 8.0F;
+      int $$7 = ayn.f(((float)$$4.c / 16.0F * 2.0F + 1.0F) / 2.0F);
+      double $$8 = (double)$$2.u() + Math.sin((double)$$5) * (double)$$6;
+      double $$9 = (double)$$2.u() - Math.sin((double)$$5) * (double)$$6;
+      double $$10 = (double)$$2.w() + Math.cos((double)$$5) * (double)$$6;
+      double $$11 = (double)$$2.w() - Math.cos((double)$$5) * (double)$$6;
+      int $$12 = 2;
+      double $$13 = (double)($$2.v() + $$1.a(3) - 2);
+      double $$14 = (double)($$2.v() + $$1.a(3) - 2);
+      int $$15 = $$2.u() - ayn.f($$6) - $$7;
+      int $$16 = $$2.v() - 2 - $$7;
+      int $$17 = $$2.w() - ayn.f($$6) - $$7;
+      int $$18 = 2 * (ayn.f($$6) + $$7);
+      int $$19 = 2 * (2 + $$7);
 
-      for (ecv.a $$6 : $$5) {
-         if ($$6.a($$4)) {
-            this.a($$2, $$3, $$1, $$6);
+      for (int $$20 = $$15; $$20 <= $$15 + $$18; $$20++) {
+         for (int $$21 = $$17; $$21 <= $$17 + $$18; $$21++) {
+            if ($$16 <= $$3.a(dyv.a.c, $$20, $$21)) {
+               return this.a($$3, $$1, $$4, $$8, $$9, $$10, $$11, $$13, $$14, $$15, $$16, $$17, $$18, $$19);
+            }
          }
       }
 
-      return true;
+      return false;
    }
 
-   private void a(dcv $$0, ayo $$1, eej $$2, ecv.a $$3) {
-      int $$4 = $$3.c();
+   protected boolean a(
+      ddq $$0, ayv $$1, eem $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8, int $$9, int $$10, int $$11, int $$12, int $$13
+   ) {
+      int $$14 = 0;
+      BitSet $$15 = new BitSet($$12 * $$13 * $$12);
+      jd.a $$16 = new jd.a();
+      int $$17 = $$2.c;
+      double[] $$18 = new double[$$17 * 4];
 
-      for (ja $$5 : ja.c(new ja($$3.a() - $$4, $$0.I_(), $$3.b() - $$4), new ja($$3.a() + $$4, $$3.d() + 10, $$3.b() + $$4))) {
-         if ($$5.d((double)$$3.a(), (double)$$5.v(), (double)$$3.b()) <= (double)($$4 * $$4 + 1) && $$5.v() < $$3.d()) {
-            this.a($$0, $$5, dfk.co.o());
-         } else if ($$5.v() > 65) {
-            this.a($$0, $$5, dfk.a.o());
-         }
+      for (int $$19 = 0; $$19 < $$17; $$19++) {
+         float $$20 = (float)$$19 / (float)$$17;
+         double $$21 = ayn.d((double)$$20, $$3, $$4);
+         double $$22 = ayn.d((double)$$20, $$7, $$8);
+         double $$23 = ayn.d((double)$$20, $$5, $$6);
+         double $$24 = $$1.j() * (double)$$17 / 16.0;
+         double $$25 = ((double)(ayn.a((float) Math.PI * $$20) + 1.0F) * $$24 + 1.0) / 2.0;
+         $$18[$$19 * 4 + 0] = $$21;
+         $$18[$$19 * 4 + 1] = $$22;
+         $$18[$$19 * 4 + 2] = $$23;
+         $$18[$$19 * 4 + 3] = $$25;
       }
 
-      if ($$3.e()) {
-         int $$6 = -2;
-         int $$7 = 2;
-         int $$8 = 3;
-         ja.a $$9 = new ja.a();
-
-         for (int $$10 = -2; $$10 <= 2; $$10++) {
-            for (int $$11 = -2; $$11 <= 2; $$11++) {
-               for (int $$12 = 0; $$12 <= 3; $$12++) {
-                  boolean $$13 = ayg.a($$10) == 2;
-                  boolean $$14 = ayg.a($$11) == 2;
-                  boolean $$15 = $$12 == 3;
-                  if ($$13 || $$14 || $$15) {
-                     boolean $$16 = $$10 == -2 || $$10 == 2 || $$15;
-                     boolean $$17 = $$11 == -2 || $$11 == 2 || $$15;
-                     dsl $$18 = dfk.eW
-                        .o()
-                        .a(djj.a, Boolean.valueOf($$16 && $$11 != -2))
-                        .a(djj.c, Boolean.valueOf($$16 && $$11 != 2))
-                        .a(djj.d, Boolean.valueOf($$17 && $$10 != -2))
-                        .a(djj.b, Boolean.valueOf($$17 && $$10 != 2));
-                     this.a($$0, $$9.d($$3.a() + $$10, $$3.d() + $$12, $$3.b() + $$11), $$18);
+      for (int $$26 = 0; $$26 < $$17 - 1; $$26++) {
+         if (!($$18[$$26 * 4 + 3] <= 0.0)) {
+            for (int $$27 = $$26 + 1; $$27 < $$17; $$27++) {
+               if (!($$18[$$27 * 4 + 3] <= 0.0)) {
+                  double $$28 = $$18[$$26 * 4 + 0] - $$18[$$27 * 4 + 0];
+                  double $$29 = $$18[$$26 * 4 + 1] - $$18[$$27 * 4 + 1];
+                  double $$30 = $$18[$$26 * 4 + 2] - $$18[$$27 * 4 + 2];
+                  double $$31 = $$18[$$26 * 4 + 3] - $$18[$$27 * 4 + 3];
+                  if ($$31 * $$31 > $$28 * $$28 + $$29 * $$29 + $$30 * $$30) {
+                     if ($$31 > 0.0) {
+                        $$18[$$27 * 4 + 3] = -1.0;
+                     } else {
+                        $$18[$$26 * 4 + 3] = -1.0;
+                     }
                   }
                }
             }
          }
       }
 
-      chn $$19 = bsn.E.a((dcg)$$0.E());
-      if ($$19 != null) {
-         $$19.a($$2.c());
-         $$19.o($$2.a());
-         $$19.b((double)$$3.a() + 0.5, (double)($$3.d() + 1), (double)$$3.b() + 0.5, $$1.i() * 360.0F, 0.0F);
-         $$0.b($$19);
-         ja $$20 = $$19.dr();
-         this.a($$0, $$20.d(), dfk.F.o());
-         this.a($$0, $$20, dii.a($$0, $$20));
-      }
-   }
+      try (duu $$32 = new duu($$0)) {
+         for (int $$33 = 0; $$33 < $$17; $$33++) {
+            double $$34 = $$18[$$33 * 4 + 3];
+            if (!($$34 < 0.0)) {
+               double $$35 = $$18[$$33 * 4 + 0];
+               double $$36 = $$18[$$33 * 4 + 1];
+               double $$37 = $$18[$$33 * 4 + 2];
+               int $$38 = Math.max(ayn.a($$35 - $$34), $$9);
+               int $$39 = Math.max(ayn.a($$36 - $$34), $$10);
+               int $$40 = Math.max(ayn.a($$37 - $$34), $$11);
+               int $$41 = Math.max(ayn.a($$35 + $$34), $$38);
+               int $$42 = Math.max(ayn.a($$36 + $$34), $$39);
+               int $$43 = Math.max(ayn.a($$37 + $$34), $$40);
 
-   public static class a {
-      public static final Codec<ecv.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.INT.fieldOf("centerX").orElse(0).forGetter($$0x -> $$0x.b),
-                  Codec.INT.fieldOf("centerZ").orElse(0).forGetter($$0x -> $$0x.c),
-                  Codec.INT.fieldOf("radius").orElse(0).forGetter($$0x -> $$0x.d),
-                  Codec.INT.fieldOf("height").orElse(0).forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.fieldOf("guarded").orElse(false).forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, ecv.a::new)
-      );
-      private final int b;
-      private final int c;
-      private final int d;
-      private final int e;
-      private final boolean f;
-      private final ewc g;
+               for (int $$44 = $$38; $$44 <= $$41; $$44++) {
+                  double $$45 = ((double)$$44 + 0.5 - $$35) / $$34;
+                  if ($$45 * $$45 < 1.0) {
+                     for (int $$46 = $$39; $$46 <= $$42; $$46++) {
+                        double $$47 = ((double)$$46 + 0.5 - $$36) / $$34;
+                        if ($$45 * $$45 + $$47 * $$47 < 1.0) {
+                           for (int $$48 = $$40; $$48 <= $$43; $$48++) {
+                              double $$49 = ((double)$$48 + 0.5 - $$37) / $$34;
+                              if ($$45 * $$45 + $$47 * $$47 + $$49 * $$49 < 1.0 && !$$0.d($$46)) {
+                                 int $$50 = $$44 - $$9 + ($$46 - $$10) * $$12 + ($$48 - $$11) * $$12 * $$13;
+                                 if (!$$15.get($$50)) {
+                                    $$15.set($$50);
+                                    $$16.d($$44, $$46, $$48);
+                                    if ($$0.f_($$16)) {
+                                       dvh $$51 = $$32.a($$16);
+                                       if ($$51 != null) {
+                                          int $$52 = kf.b($$44);
+                                          int $$53 = kf.b($$46);
+                                          int $$54 = kf.b($$48);
+                                          dta $$55 = $$51.a($$52, $$53, $$54);
 
-      public a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = new ewc((double)($$0 - $$2), (double)dwg.e, (double)($$1 - $$2), (double)($$0 + $$2), (double)dwg.d, (double)($$1 + $$2));
-      }
-
-      public boolean a(ja $$0) {
-         return kc.a($$0.u()) == kc.a(this.b) && kc.a($$0.w()) == kc.a(this.c);
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public boolean e() {
-         return this.f;
-      }
-
-      public ewc f() {
-         return this.g;
-      }
-   }
-
-   static class b extends CacheLoader<Long, List<ecv.a>> {
-      public List<ecv.a> a(Long $$0) {
-         IntArrayList $$1 = ac.a(IntStream.range(0, 10), ayo.a($$0));
-         List<ecv.a> $$2 = Lists.newArrayList();
-
-         for (int $$3 = 0; $$3 < 10; $$3++) {
-            int $$4 = ayg.a(42.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
-            int $$5 = ayg.a(42.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
-            int $$6 = $$1.get($$3);
-            int $$7 = 2 + $$6 / 3;
-            int $$8 = 76 + $$6 * 3;
-            boolean $$9 = $$6 == 1 || $$6 == 2;
-            $$2.add(new ecv.a($$4, $$5, $$7, $$8, $$9));
+                                          for (eem.a $$56 : $$2.b) {
+                                             if (a($$55, $$32::b, $$1, $$2, $$56, $$16)) {
+                                                $$51.a($$52, $$53, $$54, $$56.c, false);
+                                                $$14++;
+                                                break;
+                                             }
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
          }
+      }
 
-         return $$2;
+      return $$14 > 0;
+   }
+
+   public static boolean a(dta $$0, Function<jd, dta> $$1, ayv $$2, eem $$3, eem.a $$4, jd.a $$5) {
+      if (!$$4.b.a($$0, $$2)) {
+         return false;
+      } else {
+         return a($$2, $$3.d) ? true : !a($$1, $$5);
+      }
+   }
+
+   protected static boolean a(ayv $$0, float $$1) {
+      if ($$1 <= 0.0F) {
+         return true;
+      } else {
+         return $$1 >= 1.0F ? false : $$0.i() >= $$1;
       }
    }
 }

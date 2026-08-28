@@ -1,42 +1,29 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.function.BiConsumer;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bxk {
-   private static final int a = 200;
+   private static final int a = 1;
 
-   public static <E extends bte> buw<E> a(BiConsumer<E, btc> $$0) {
-      return a($$0x -> false, $$0, true);
+   public static bvg<btn> a(float $$0) {
+      return a($$1 -> $$0);
    }
 
-   public static <E extends bte> buw<E> a(Predicate<btc> $$0) {
-      return a($$0, ($$0x, $$1) -> {
-      }, true);
-   }
+   public static bvg<btn> a(Function<btl, Float> $$0) {
+      return bys.a(
+         (Function<bys.b<btn>, ? extends App<bys.c<btn>, byv<btn>>>)($$1 -> $$1.group($$1.a(ccq.m), $$1.a(ccq.n), $$1.b(ccq.o), $$1.a(ccq.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     btl $$9 = $$1.b($$4);
+                     Optional<ccs> $$10 = $$1.a($$5);
+                     if ($$10.isPresent() && $$10.get().a($$9) && bvh.a($$7, $$9, 1)) {
+                        $$2.b();
+                     } else {
+                        $$3.a(new bvq($$9, true));
+                        $$2.a(new cct(new bvq($$9, false), $$0.apply($$7), 0));
+                     }
 
-   public static <E extends bte> buw<E> a() {
-      return a($$0 -> false, ($$0, $$1) -> {
-      }, true);
-   }
-
-   public static <E extends bte> buw<E> a(Predicate<btc> $$0, BiConsumer<E, btc> $$1, boolean $$2) {
-      return byi.a(
-         (Function<byi.b<E>, ? extends App<byi.c<E>, byl<E>>>)($$3 -> $$3.group($$3.b(ccg.o), $$3.a(ccg.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  btc $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bF() && $$9.dR() == $$7.dR() && !$$0.test($$9)) {
                      return true;
-                  } else {
-                     $$1.accept((E)$$7, $$9);
-                     $$4.b();
-                     return true;
-                  }
-               }))
+                  }))
       );
-   }
-
-   private static boolean a(btc $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dR().Z() - $$1.get() > 200L;
    }
 }

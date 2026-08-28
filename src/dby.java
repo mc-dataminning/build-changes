@@ -1,366 +1,80 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import com.google.common.collect.AbstractIterator;
+import java.util.function.BiFunction;
 import javax.annotation.Nullable;
 
-public class dby {
-   private static final dbz a = new dbz();
-   private static final int b = 16;
-   private final boolean c;
-   private final dby.a d;
-   private final ayo e = ayo.a();
-   private final dcg f;
-   private final double g;
-   private final double h;
-   private final double i;
+public class dby<T> extends AbstractIterator<T> {
+   private final ewr a;
+   private final exb b;
+   private final jf c;
+   private final jd.a d;
+   private final exp e;
+   private final dce f;
+   private final boolean g;
    @Nullable
-   private final bsh j;
-   private final float k;
-   private final bra l;
-   private final dbz m;
-   private final lh n;
-   private final lh o;
-   private final jj<avg> p;
-   private final ObjectArrayList<ja> q = new ObjectArrayList();
-   private final Map<cml, ewh> r = Maps.newHashMap();
+   private dca h;
+   private long i;
+   private final BiFunction<jd.a, exp, T> j;
 
-   public static bra a(dcg $$0, @Nullable bsh $$1) {
-      return $$0.aj().d($$1, b($$1));
-   }
-
-   public dby(dcg $$0, @Nullable bsh $$1, double $$2, double $$3, double $$4, float $$5, List<ja> $$6, dby.a $$7, lh $$8, lh $$9, jj<avg> $$10) {
-      this($$0, $$1, a($$0, $$1), null, $$2, $$3, $$4, $$5, false, $$7, $$8, $$9, $$10);
-      this.q.addAll($$6);
-   }
-
-   public dby(dcg $$0, @Nullable bsh $$1, double $$2, double $$3, double $$4, float $$5, boolean $$6, dby.a $$7, List<ja> $$8) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      this.q.addAll($$8);
-   }
-
-   public dby(dcg $$0, @Nullable bsh $$1, double $$2, double $$3, double $$4, float $$5, boolean $$6, dby.a $$7) {
-      this($$0, $$1, a($$0, $$1), null, $$2, $$3, $$4, $$5, $$6, $$7, lj.w, lj.v, avh.ke);
-   }
-
-   public dby(
-      dcg $$0,
-      @Nullable bsh $$1,
-      @Nullable bra $$2,
-      @Nullable dbz $$3,
-      double $$4,
-      double $$5,
-      double $$6,
-      float $$7,
-      boolean $$8,
-      dby.a $$9,
-      lh $$10,
-      lh $$11,
-      jj<avg> $$12
-   ) {
+   public dby(dce $$0, @Nullable bsq $$1, ewr $$2, boolean $$3, BiFunction<jd.a, exp, T> $$4) {
+      this.b = $$1 == null ? exb.a() : exb.a($$1);
+      this.d = new jd.a();
+      this.e = exm.a($$2);
       this.f = $$0;
-      this.j = $$1;
-      this.k = $$7;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.c = $$8;
-      this.d = $$9;
-      this.l = $$2 == null ? $$0.aj().a(this) : $$2;
-      this.m = $$3 == null ? this.a($$1) : $$3;
-      this.n = $$10;
-      this.o = $$11;
-      this.p = $$12;
+      this.a = $$2;
+      this.g = $$3;
+      this.j = $$4;
+      int $$5 = ayn.a($$2.a - 1.0E-7) - 1;
+      int $$6 = ayn.a($$2.d + 1.0E-7) + 1;
+      int $$7 = ayn.a($$2.b - 1.0E-7) - 1;
+      int $$8 = ayn.a($$2.e + 1.0E-7) + 1;
+      int $$9 = ayn.a($$2.c - 1.0E-7) - 1;
+      int $$10 = ayn.a($$2.f + 1.0E-7) + 1;
+      this.c = new jf($$5, $$7, $$9, $$6, $$8, $$10);
    }
 
-   private dbz a(@Nullable bsh $$0) {
-      return (dbz)($$0 == null ? a : new dbw($$0));
-   }
-
-   public static float a(ewh $$0, bsh $$1) {
-      ewc $$2 = $$1.cM();
-      double $$3 = 1.0 / (($$2.d - $$2.a) * 2.0 + 1.0);
-      double $$4 = 1.0 / (($$2.e - $$2.b) * 2.0 + 1.0);
-      double $$5 = 1.0 / (($$2.f - $$2.c) * 2.0 + 1.0);
-      double $$6 = (1.0 - Math.floor(1.0 / $$3) * $$3) / 2.0;
-      double $$7 = (1.0 - Math.floor(1.0 / $$5) * $$5) / 2.0;
-      if (!($$3 < 0.0) && !($$4 < 0.0) && !($$5 < 0.0)) {
-         int $$8 = 0;
-         int $$9 = 0;
-
-         for (double $$10 = 0.0; $$10 <= 1.0; $$10 += $$3) {
-            for (double $$11 = 0.0; $$11 <= 1.0; $$11 += $$4) {
-               for (double $$12 = 0.0; $$12 <= 1.0; $$12 += $$5) {
-                  double $$13 = ayg.d($$10, $$2.a, $$2.d);
-                  double $$14 = ayg.d($$11, $$2.b, $$2.e);
-                  double $$15 = ayg.d($$12, $$2.c, $$2.f);
-                  ewh $$16 = new ewh($$13 + $$6, $$14, $$15 + $$7);
-                  if ($$1.dR().a(new dbp($$16, $$0, dbp.a.a, dbp.b.a, $$1)).c() == ewf.a.a) {
-                     $$8++;
-                  }
-
-                  $$9++;
-               }
-            }
-         }
-
-         return (float)$$8 / (float)$$9;
+   @Nullable
+   private dca a(int $$0, int $$1) {
+      int $$2 = kf.a($$0);
+      int $$3 = kf.a($$1);
+      long $$4 = dcb.c($$2, $$3);
+      if (this.h != null && this.i == $$4) {
+         return this.h;
       } else {
-         return 0.0F;
+         dca $$5 = this.f.c($$2, $$3);
+         this.h = $$5;
+         this.i = $$4;
+         return $$5;
       }
    }
 
-   public float a() {
-      return this.k;
-   }
-
-   public ewh b() {
-      return new ewh(this.g, this.h, this.i);
-   }
-
-   public void c() {
-      this.f.a(this.j, dxh.w, new ewh(this.g, this.h, this.i));
-      Set<ja> $$0 = Sets.newHashSet();
-      int $$1 = 16;
-
-      for (int $$2 = 0; $$2 < 16; $$2++) {
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            for (int $$4 = 0; $$4 < 16; $$4++) {
-               if ($$2 == 0 || $$2 == 15 || $$3 == 0 || $$3 == 15 || $$4 == 0 || $$4 == 15) {
-                  double $$5 = (double)((float)$$2 / 15.0F * 2.0F - 1.0F);
-                  double $$6 = (double)((float)$$3 / 15.0F * 2.0F - 1.0F);
-                  double $$7 = (double)((float)$$4 / 15.0F * 2.0F - 1.0F);
-                  double $$8 = Math.sqrt($$5 * $$5 + $$6 * $$6 + $$7 * $$7);
-                  $$5 /= $$8;
-                  $$6 /= $$8;
-                  $$7 /= $$8;
-                  float $$9 = this.k * (0.7F + this.f.z.i() * 0.6F);
-                  double $$10 = this.g;
-                  double $$11 = this.h;
-                  double $$12 = this.i;
-
-                  for (float $$13 = 0.3F; $$9 > 0.0F; $$9 -= 0.22500001F) {
-                     ja $$14 = ja.a($$10, $$11, $$12);
-                     dsl $$15 = this.f.a_($$14);
-                     eoj $$16 = this.f.b_($$14);
-                     if (!this.f.k($$14)) {
-                        break;
+   protected T computeNext() {
+      while (this.c.a()) {
+         int $$0 = this.c.b();
+         int $$1 = this.c.c();
+         int $$2 = this.c.d();
+         int $$3 = this.c.e();
+         if ($$3 != 3) {
+            dca $$4 = this.a($$0, $$2);
+            if ($$4 != null) {
+               this.d.d($$0, $$1, $$2);
+               dta $$5 = $$4.a_(this.d);
+               if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(dfy.bQ))) {
+                  exp $$6 = $$5.b(this.f, this.d, this.b);
+                  if ($$6 == exm.b()) {
+                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
+                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
                      }
-
-                     Optional<Float> $$17 = this.m.a(this, this.f, $$14, $$15, $$16);
-                     if ($$17.isPresent()) {
-                        $$9 -= ($$17.get() + 0.3F) * 0.3F;
-                     }
-
-                     if ($$9 > 0.0F && this.m.a(this, this.f, $$14, $$15, $$9)) {
-                        $$0.add($$14);
-                     }
-
-                     $$10 += $$5 * 0.3F;
-                     $$11 += $$6 * 0.3F;
-                     $$12 += $$7 * 0.3F;
-                  }
-               }
-            }
-         }
-      }
-
-      this.q.addAll($$0);
-      float $$18 = this.k * 2.0F;
-      int $$19 = ayg.a(this.g - (double)$$18 - 1.0);
-      int $$20 = ayg.a(this.g + (double)$$18 + 1.0);
-      int $$21 = ayg.a(this.h - (double)$$18 - 1.0);
-      int $$22 = ayg.a(this.h + (double)$$18 + 1.0);
-      int $$23 = ayg.a(this.i - (double)$$18 - 1.0);
-      int $$24 = ayg.a(this.i + (double)$$18 + 1.0);
-      List<bsh> $$25 = this.f.a_(this.j, new ewc((double)$$19, (double)$$21, (double)$$23, (double)$$20, (double)$$22, (double)$$24));
-      ewh $$26 = new ewh(this.g, this.h, this.i);
-
-      for (bsh $$27 : $$25) {
-         if (!$$27.a(this)) {
-            double $$28 = Math.sqrt($$27.g($$26)) / (double)$$18;
-            if ($$28 <= 1.0) {
-               double $$29 = $$27.dw() - this.g;
-               double $$30 = ($$27 instanceof ciw ? $$27.dy() : $$27.dA()) - this.h;
-               double $$31 = $$27.dC() - this.i;
-               double $$32 = Math.sqrt($$29 * $$29 + $$30 * $$30 + $$31 * $$31);
-               if ($$32 != 0.0) {
-                  $$29 /= $$32;
-                  $$30 /= $$32;
-                  $$31 /= $$32;
-                  if (this.m.a(this, $$27)) {
-                     $$27.a(this.l, this.m.b(this, $$27));
-                  }
-
-                  double $$33 = (1.0 - $$28) * (double)a($$26, $$27) * (double)this.m.a($$27);
-                  double $$35;
-                  if ($$27 instanceof btc $$34) {
-                     $$35 = $$33 * (1.0 - $$34.g(buk.i));
                   } else {
-                     $$35 = $$33;
-                  }
-
-                  $$29 *= $$35;
-                  $$30 *= $$35;
-                  $$31 *= $$35;
-                  ewh $$37 = new ewh($$29, $$30, $$31);
-                  $$27.j($$27.du().e($$37));
-                  if ($$27 instanceof cml) {
-                     cml $$38 = (cml)$$27;
-                     if (!$$38.N_() && (!$$38.f() || !$$38.gb().b)) {
-                        this.r.put($$38, $$37);
+                     exp $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
+                     if (!$$7.c() && exm.c($$7, this.e, exa.i)) {
+                        return this.j.apply(this.d, $$7);
                      }
                   }
-
-                  $$27.a(this.j);
                }
             }
          }
       }
-   }
 
-   public void a(boolean $$0) {
-      if (this.f.B) {
-         this.f.a(this.g, this.h, this.i, this.p.a(), avi.e, 4.0F, (1.0F + (this.f.z.i() - this.f.z.i()) * 0.2F) * 0.7F, false);
-      }
-
-      boolean $$1 = this.d();
-      if ($$0) {
-         lh $$3;
-         if (!(this.k < 2.0F) && $$1) {
-            $$3 = this.o;
-         } else {
-            $$3 = this.n;
-         }
-
-         this.f.a($$3, this.g, this.h, this.i, 1.0, 0.0, 0.0);
-      }
-
-      if ($$1) {
-         this.f.ag().a("explosion_blocks");
-         List<Pair<cud, ja>> $$4 = new ArrayList<>();
-         ac.c(this.q, this.f.z);
-         ObjectListIterator $$7 = this.q.iterator();
-
-         while ($$7.hasNext()) {
-            ja $$5 = (ja)$$7.next();
-            this.f.a_($$5).a(this.f, $$5, this, ($$1x, $$2) -> a($$4, $$1x, $$2));
-         }
-
-         for (Pair<cud, ja> $$6 : $$4) {
-            dfi.a(this.f, (ja)$$6.getSecond(), (cud)$$6.getFirst());
-         }
-
-         this.f.ag().c();
-      }
-
-      if (this.c) {
-         ObjectListIterator var7 = this.q.iterator();
-
-         while (var7.hasNext()) {
-            ja $$7 = (ja)var7.next();
-            if (this.e.a(3) == 0 && this.f.a_($$7).i() && this.f.a_($$7.d()).i(this.f, $$7.d())) {
-               this.f.b($$7, dev.a(this.f, $$7));
-            }
-         }
-      }
-   }
-
-   private static void a(List<Pair<cud, ja>> $$0, cud $$1, ja $$2) {
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         Pair<cud, ja> $$4 = $$0.get($$3);
-         cud $$5 = (cud)$$4.getFirst();
-         if (civ.a($$5, $$1)) {
-            $$0.set($$3, Pair.of(civ.a($$5, $$1, 16), (ja)$$4.getSecond()));
-            if ($$1.e()) {
-               return;
-            }
-         }
-      }
-
-      $$0.add(Pair.of($$1, $$2));
-   }
-
-   public boolean d() {
-      return this.d != dby.a.a;
-   }
-
-   public Map<cml, ewh> e() {
-      return this.r;
-   }
-
-   @Nullable
-   private static btc b(@Nullable bsh $$0) {
-      if ($$0 == null) {
-         return null;
-      } else if ($$0 instanceof ciw $$1) {
-         return $$1.p();
-      } else if ($$0 instanceof btc) {
-         return (btc)$$0;
-      } else {
-         if ($$0 instanceof cnd $$3) {
-            bsh $$4 = $$3.s();
-            if ($$4 instanceof btc) {
-               return (btc)$$4;
-            }
-         }
-
-         return null;
-      }
-   }
-
-   @Nullable
-   public btc f() {
-      return b(this.j);
-   }
-
-   @Nullable
-   public bsh g() {
-      return this.j;
-   }
-
-   public void h() {
-      this.q.clear();
-   }
-
-   public List<ja> i() {
-      return this.q;
-   }
-
-   public dby.a j() {
-      return this.d;
-   }
-
-   public lh k() {
-      return this.n;
-   }
-
-   public lh l() {
-      return this.o;
-   }
-
-   public jj<avg> m() {
-      return this.p;
-   }
-
-   public boolean n() {
-      if (this.d == dby.a.d && !this.f.x_()) {
-         return this.j != null && this.j.am() == bsn.n ? this.f.ab().b(dcc.c) : true;
-      } else {
-         return false;
-      }
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+      return (T)this.endOfData();
    }
 }

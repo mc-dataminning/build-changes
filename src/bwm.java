@@ -1,29 +1,29 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bwm extends buv<bte> {
-   private final bpm c;
-   private final float d;
-   private final float e;
-   private final float f;
-
-   public bwm(bpm $$0, float $$1, float $$2, float $$3) {
-      super(ImmutableMap.of(ccg.n, cch.b, ccg.Q, cch.b));
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
-      } else {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3 - $$2;
-      }
+public class bwm {
+   public static bwq<btn> a(int $$0) {
+      return bys.a(
+         (Function<bys.b<btn>, ? extends App<bys.c<btn>, byv<btn>>>)($$1 -> $$1.group($$1.a(ccq.n), $$1.b(ccq.o), $$1.c(ccq.p), $$1.b(ccq.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     btl $$9 = $$1.b($$3);
+                     if (!a($$7) && $$7.i($$9) && $$1.<ccs>b($$5).a($$9)) {
+                        $$2.a(new bvq($$9, true));
+                        $$7.a(bqp.a);
+                        $$7.D($$9);
+                        $$4.a(true, (long)$$0);
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 
-   protected void a(aqm $$0, bte $$1, long $$2) {
-      ayo $$3 = $$1.dU();
-      float $$4 = ayg.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = ayg.g($$1.dH() + 2.0F * $$3.i() * this.d - this.d);
-      ewh $$6 = ewh.a($$4, $$5);
-      $$1.dV().a(ccg.n, new buy($$1.bz().e($$6)));
-      $$1.dV().a(ccg.Q, this.c.a($$3));
+   private static boolean a(btn $$0) {
+      return $$0.b($$1 -> {
+         cuj $$2 = $$1.g();
+         return $$2 instanceof cvl && $$0.a((cvl)$$2);
+      });
    }
 }

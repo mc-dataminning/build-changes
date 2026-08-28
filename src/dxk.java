@@ -1,34 +1,38 @@
-public interface dxk {
-   dxk a = new dxk() {
-      @Override
-      public boolean a() {
-         return true;
-      }
+import javax.annotation.Nullable;
 
-      @Override
-      public void a(dxj $$0) {
-      }
+public interface dxk<B, T extends B> {
+   static <B, T extends B> dxk<B, T> a(final Class<T> $$0) {
+      return new dxk<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.isInstance($$0) ? $$0 : null);
+         }
 
-      @Override
-      public void b(dxj $$0) {
-      }
-
-      @Override
-      public boolean a(jj<dxh> $$0, ewh $$1, dxh.a $$2, dxk.a $$3) {
-         return false;
-      }
-   };
-
-   boolean a();
-
-   void a(dxj var1);
-
-   void b(dxj var1);
-
-   boolean a(jj<dxh> var1, ewh var2, dxh.a var3, dxk.a var4);
-
-   @FunctionalInterface
-   public interface a {
-      void visit(dxj var1, ewh var2);
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
    }
+
+   static <B, T extends B> dxk<B, T> b(final Class<T> $$0) {
+      return new dxk<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
+         }
+
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
+   }
+
+   @Nullable
+   T a(B var1);
+
+   Class<? extends B> a();
 }

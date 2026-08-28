@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import net.minecraft.server.MinecraftServer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bni {
+public enum bni {
+   a("client"),
+   b("server");
+
+   private final String c;
+
+   private bni(final String $$0) {
+      this.c = $$0;
+   }
+
+   public static bni a(MinecraftServer $$0) {
+      return $$0.n() ? b : a;
+   }
+
+   public String a() {
+      return this.c;
+   }
 }

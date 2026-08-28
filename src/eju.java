@@ -1,151 +1,128 @@
-import com.mojang.datafixers.Products.P5;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class eju {
-   public static final Codec<eju> b = lq.P.r().dispatch(eju::e, ejv::codec);
-   private static final int a = 10387320;
-   private final ke c;
-   private final eju.c d;
-   private final float e;
-   private final int f;
-   private final Optional<eju.a> g;
+public final class eju {
+   public static final String a = "INVALID";
+   public static final eju b = new eju(null, new dcb(0, 0), 0, new ekb(List.of()));
+   private static final Logger c = LogUtils.getLogger();
+   private final ejm d;
+   private final ekb e;
+   private final dcb f;
+   private int g;
+   @Nullable
+   private volatile eje h;
 
-   protected static <S extends eju> P5<Mu<S>, ke, eju.c, Float, Integer, Optional<eju.a>> a(Instance<S> $$0) {
-      return $$0.group(
-         ke.v(16).optionalFieldOf("locate_offset", ke.g).forGetter(eju::f),
-         eju.c.e.optionalFieldOf("frequency_reduction_method", eju.c.a).forGetter(eju::g),
-         Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(eju::h),
-         axo.k.fieldOf("salt").forGetter(eju::i),
-         eju.a.a.optionalFieldOf("exclusion_zone").forGetter(eju::j)
-      );
+   public eju(ejm $$0, dcb $$1, int $$2, ekb $$3) {
+      this.d = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.e = $$3;
    }
 
-   protected eju(ke $$0, eju.c $$1, float $$2, int $$3, Optional<eju.a> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   @Nullable
+   public static eju a(ekc $$0, ua $$1, long $$2) {
+      String $$3 = $$1.l("id");
+      if ("INVALID".equals($$3)) {
+         return b;
+      } else {
+         jz<ejm> $$4 = $$0.b().d(lu.aR);
+         ejm $$5 = $$4.a(akq.a($$3));
+         if ($$5 == null) {
+            c.error("Unknown stucture id: {}", $$3);
+            return null;
+         } else {
+            dcb $$6 = new dcb($$1.h("ChunkX"), $$1.h("ChunkZ"));
+            int $$7 = $$1.h("references");
+            ug $$8 = $$1.c("Children", 10);
+
+            try {
+               ekb $$9 = ekb.a($$8, $$0);
+               if ($$5 instanceof elx) {
+                  $$9 = elx.a($$6, $$2, $$9);
+               }
+
+               return new eju($$5, $$6, $$7, $$9);
+            } catch (Exception var11) {
+               c.error("Failed Start with id {}", $$3, var11);
+               return null;
+            }
+         }
+      }
    }
 
-   protected ke f() {
-      return this.c;
+   public eje a() {
+      eje $$0 = this.h;
+      if ($$0 == null) {
+         $$0 = this.d.a(this.e.b());
+         this.h = $$0;
+      }
+
+      return $$0;
    }
 
-   protected eju.c g() {
-      return this.d;
+   public void a(ddq $$0, ddo $$1, dux $$2, ayv $$3, eje $$4, dcb $$5) {
+      List<ejq> $$6 = this.e.c();
+      if (!$$6.isEmpty()) {
+         eje $$7 = $$6.get(0).f;
+         jd $$8 = $$7.g();
+         jd $$9 = new jd($$8.u(), $$7.i(), $$8.w());
+
+         for (ejq $$10 : $$6) {
+            if ($$10.f().a($$4)) {
+               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
+            }
+         }
+
+         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
+      }
    }
 
-   protected float h() {
-      return this.e;
+   public ua a(ekc $$0, dcb $$1) {
+      ua $$2 = new ua();
+      if (this.b()) {
+         $$2.a("id", $$0.b().d(lu.aR).b(this.d).toString());
+         $$2.a("ChunkX", $$1.e);
+         $$2.a("ChunkZ", $$1.f);
+         $$2.a("references", this.g);
+         $$2.a("Children", this.e.a($$0));
+         return $$2;
+      } else {
+         $$2.a("id", "INVALID");
+         return $$2;
+      }
    }
 
-   protected int i() {
+   public boolean b() {
+      return !this.e.a();
+   }
+
+   public dcb c() {
       return this.f;
    }
 
-   protected Optional<eju.a> j() {
+   public boolean d() {
+      return this.g < this.g();
+   }
+
+   public void e() {
+      this.g++;
+   }
+
+   public int f() {
       return this.g;
    }
 
-   public boolean b(duj $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2) && this.a($$1, $$2, $$0.d()) && this.c($$0, $$1, $$2);
+   protected int g() {
+      return 1;
    }
 
-   public boolean a(int $$0, int $$1, long $$2) {
-      return !(this.e < 1.0F) || this.d.a($$2, this.f, $$0, $$1, this.e);
+   public ejm h() {
+      return this.d;
    }
 
-   public boolean c(duj $$0, int $$1, int $$2) {
-      return !this.g.isPresent() || !this.g.get().a($$0, $$1, $$2);
-   }
-
-   protected abstract boolean a(duj var1, int var2, int var3);
-
-   public ja a(dbn $$0) {
-      return new ja($$0.d(), 0, $$0.e()).a(this.f());
-   }
-
-   public abstract ejv<?> e();
-
-   private static boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      dzf $$5 = new dzf(new dyh(0L));
-      $$5.a($$0, $$1, $$2, $$3);
-      return $$5.i() < $$4;
-   }
-
-   private static boolean b(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      dzf $$5 = new dzf(new dyh(0L));
-      $$5.c($$0, $$2, $$3);
-      return $$5.j() < (double)$$4;
-   }
-
-   private static boolean c(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      dzf $$5 = new dzf(new dyh(0L));
-      $$5.a($$0, $$2, $$3, 10387320);
-      return $$5.i() < $$4;
-   }
-
-   private static boolean d(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      int $$5 = $$2 >> 4;
-      int $$6 = $$3 >> 4;
-      dzf $$7 = new dzf(new dyh(0L));
-      $$7.b((long)($$5 ^ $$6 << 4) ^ $$0);
-      $$7.f();
-      return $$7.a((int)(1.0F / $$4)) == 0;
-   }
-
-   @Deprecated
-   public static record a(jj<ejd> b, int c) {
-      public static final Codec<eju.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(akg.a(lr.aS, ejd.a, false).fieldOf("other_set").forGetter(eju.a::a), Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(eju.a::b))
-               .apply($$0, eju.a::new)
-      );
-
-      boolean a(duj $$0, int $$1, int $$2) {
-         return $$0.a(this.b, $$1, $$2, this.c);
-      }
-
-      public jj<ejd> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      boolean shouldGenerate(long var1, int var3, int var4, int var5, float var6);
-   }
-
-   public static enum c implements azc {
-      a("default", eju::a),
-      b("legacy_type_1", eju::d),
-      c("legacy_type_2", eju::c),
-      d("legacy_type_3", eju::b);
-
-      public static final Codec<eju.c> e = azc.a(eju.c::values);
-      private final String f;
-      private final eju.b g;
-
-      private c(final String $$0, final eju.b $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
-         return this.g.shouldGenerate($$0, $$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   public List<ejq> i() {
+      return this.e.c();
    }
 }

@@ -1,34 +1,20 @@
-public class agm implements zb<agb> {
-   public static final ys<vr, agm> a = zb.a(agm::a, agm::new);
-   private final agm.a b;
+public record agm(int b) implements zf<agh> {
+   public static final yw<vv, agm> a = zf.a(agm::a, agm::new);
 
-   public agm(agm.a $$0) {
-      this.b = $$0;
+   private agm(vv $$0) {
+      this($$0.l());
    }
 
-   private agm(vr $$0) {
-      this.b = $$0.b(agm.a.class);
-   }
-
-   private void a(vr $$0) {
-      $$0.a(this.b);
+   private void a(vv $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zd<agm> a() {
-      return afz.bo;
+   public zh<agm> a() {
+      return agf.bi;
    }
 
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
-   }
-
-   public agm.a b() {
-      return this.b;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

@@ -1,173 +1,167 @@
-import java.util.ArrayList;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-class fsp {
-   private static final int a = 44;
-   private final List<fsp.c> b;
+public class fsp extends fim<fsn> {
+   private final fsq a;
+   private final List<fsn> m = Lists.newArrayList();
+   @Nullable
+   private String n;
 
-   fsp(List<fsp.c> $$0) {
-      this.b = $$0;
+   public fsp(fsq $$0, fgi $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$1, $$2, $$3, $$4, $$5);
+      this.a = $$0;
    }
 
-   public void a() {
-      this.b.forEach(fsp.c::a);
+   @Override
+   protected void b(fht $$0) {
    }
 
-   public static fsp.a a(int $$0) {
-      return new fsp.a($$0);
+   @Override
+   protected void a(fht $$0) {
    }
 
-   public static class a {
-      final int a;
-      private final List<fsp.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<fsp.b> f = Optional.empty();
-
-      public a(int $$0) {
-         this.a = $$0;
-      }
-
-      void a() {
-         this.e++;
-      }
-
-      public fsp.d a(wu $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         fsp.d $$3 = new fsp.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
-      }
-
-      public fsp.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fsp.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fsp a(Consumer<flj> $$0) {
-         flg $$1 = new flg().b(this.d);
-         $$1.a(flm.a(this.a - 44), 0, 0);
-         $$1.a(flm.a(44), 0, 1);
-         List<fsp.c> $$2 = new ArrayList<>();
-         this.e = 0;
-
-         for (fsp.d $$3 : this.b) {
-            $$2.add($$3.a(this, $$1, 0));
-         }
-
-         $$1.a();
-         $$0.accept($$1);
-         fsp $$4 = new fsp($$2);
-         $$4.a();
-         return $$4;
-      }
-
-      public fsp.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new fsp.b($$0, $$1));
-         return this;
-      }
+   @Override
+   protected void c(fht $$0) {
+      $$0.c(this.D(), this.E() + 4, this.F(), this.G());
    }
 
-   static record b(int a, boolean b) {
+   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
+      Map<UUID, fsn> $$3 = new HashMap<>();
+      this.a($$0, $$3);
+      this.a($$3, $$2);
+      this.a($$3.values(), $$1);
    }
 
-   static record c(fib<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.j = this.c.getAsBoolean();
+   private void a(Collection<UUID> $$0, Map<UUID, fsn> $$1) {
+      fza $$2 = this.c.s.h;
+
+      for (UUID $$3 : $$0) {
+         fzk $$4 = $$2.a($$3);
+         if ($$4 != null) {
+            boolean $$5 = $$4.d();
+            $$1.put($$3, new fsn(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
          }
       }
-
-      public fib<Boolean> b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
-
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
-      }
    }
 
-   public static class d {
-      private final wu a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private wu d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
-
-      d(wu $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
-      }
-
-      public fsp.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fsp.d a(wu $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      fsp.c a(fsp.a $$0, flg $$1, int $$2) {
-         $$0.a();
-         fjb $$3 = new fjb(this.a, ffw.Q().h).c();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<fsp.b> $$4 = $$0.f;
-         fib.a<Boolean> $$5 = fib.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            fjf $$7 = fjf.a(this.d);
-            $$5.a($$1x -> $$7);
-         }
-
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> wt.a(this.a, $$0x.c(), this.d));
-         } else {
-            $$5.a($$0x -> wt.a(this.a, $$0x.c()));
-         }
-
-         fib<Boolean> $$8 = $$5.a(0, 0, this.f, 20, wu.i(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.j = this.e.getAsBoolean();
-         }
-
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               wu $$4x = this.d.f().a(n.h);
-               fhf $$5x = ffw.Q().h;
-               fio $$6x = new fio($$4x, $$5x);
-               $$6x.d($$0.a - $$0.c - this.f);
-               $$6x.e($$3x.a());
-               $$0.a();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.w() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
+   private void a(Map<UUID, fsn> $$0, boolean $$1) {
+      for (GameProfile $$3 : a(this.c.aX().b())) {
+         fsn $$4;
+         if ($$1) {
+            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
+               fsn $$2 = new fsn(this.c, this.a, $$3.getId(), $$3.getName(), this.c.am().a($$3), true);
+               $$2.c(true);
+               return $$2;
             });
+         } else {
+            $$4 = $$0.get($$3.getId());
+            if ($$4 == null) {
+               continue;
+            }
          }
 
-         return new fsp.c($$8, this.b, this.e);
+         $$4.d(true);
+      }
+   }
+
+   private static Collection<GameProfile> a(fzu $$0) {
+      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
+
+      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
+         fzw $$3 = $$0.b($$2);
+         if ($$3 instanceof fzx.a) {
+            fzx.a $$4 = (fzx.a)$$3;
+            if ($$4.g().i()) {
+               $$1.add($$4.f());
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private void J() {
+      this.m.sort(Comparator.<fsn, Integer>comparing($$0 -> {
+         if (this.c.b($$0.d())) {
+            return 0;
+         } else if (this.c.aX().a($$0.d())) {
+            return 1;
+         } else if ($$0.d().version() == 2) {
+            return 4;
+         } else {
+            return $$0.j() ? 2 : 3;
+         }
+      }).thenComparing($$0 -> {
+         if (!$$0.c().isBlank()) {
+            int $$1 = $$0.c().codePointAt(0);
+            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
+               return 0;
+            }
+         }
+
+         return 1;
+      }).thenComparing(fsn::c, String::compareToIgnoreCase));
+   }
+
+   private void a(Collection<fsn> $$0, double $$1) {
+      this.m.clear();
+      this.m.addAll($$0);
+      this.J();
+      this.K();
+      this.a(this.m);
+      this.b($$1);
+   }
+
+   private void K() {
+      if (this.n != null) {
+         this.m.removeIf($$0 -> !$$0.c().toLowerCase(Locale.ROOT).contains(this.n));
+         this.a(this.m);
+      }
+   }
+
+   public void a(String $$0) {
+      this.n = $$0;
+   }
+
+   public boolean c() {
+      return this.m.isEmpty();
+   }
+
+   public void a(fzk $$0, fsq.a $$1) {
+      UUID $$2 = $$0.a().getId();
+
+      for (fsn $$3 : this.m) {
+         if ($$3.d().equals($$2)) {
+            $$3.c(false);
+            return;
+         }
+      }
+
+      if (($$1 == fsq.a.a || this.c.aL().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
+         boolean $$4 = $$0.d();
+         fsn $$5 = new fsn(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
+         this.b((fsn)$$5);
+         this.m.add($$5);
+      }
+   }
+
+   public void a(UUID $$0) {
+      for (fsn $$1 : this.m) {
+         if ($$1.d().equals($$0)) {
+            $$1.c(true);
+            return;
+         }
       }
    }
 }

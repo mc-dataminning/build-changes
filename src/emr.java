@@ -1,36 +1,42 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class emr extends emv {
-   public static final MapCodec<emr> a = emn.b.listOf().fieldOf("rules").xmap(emr::new, $$0 -> $$0.b);
-   private final ImmutableList<emn> b;
+public class emr extends enk {
+   public static final MapCodec<emr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kb.a(lu.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, emr::new)
+   );
+   private final Optional<jq<dfw>> b;
+   private final float c;
 
-   public emr(List<? extends emn> $$0) {
-      this.b = ImmutableList.copyOf($$0);
+   public emr(jq<dfw> $$0, float $$1) {
+      this(Optional.of($$0), $$1);
+   }
+
+   public emr(float $$0) {
+      this(Optional.empty(), $$0);
+   }
+
+   private emr(Optional<jq<dfw>> $$0, float $$1) {
+      this.c = $$1;
+      this.b = $$0;
    }
 
    @Nullable
    @Override
-   public emy.c a(dcj $$0, ja $$1, ja $$2, emy.c $$3, emy.c $$4, emu $$5) {
-      ayo $$6 = ayo.a(ayg.a($$4.a()));
-      dsl $$7 = $$0.a_($$4.a());
-      UnmodifiableIterator var9 = this.b.iterator();
-
-      while (var9.hasNext()) {
-         emn $$8 = (emn)var9.next();
-         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
-            return new emy.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
-         }
-      }
-
-      return $$4;
+   public enn.c a(dcx $$0, jd $$1, jd $$2, enn.c $$3, enn.c $$4, enj $$5) {
+      ayv $$6 = $$5.b($$4.a());
+      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
    }
 
    @Override
-   protected emx<?> a() {
-      return emx.i;
+   protected enm<?> a() {
+      return enm.f;
    }
 }

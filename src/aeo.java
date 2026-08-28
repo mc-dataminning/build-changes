@@ -1,37 +1,45 @@
-public class aeo implements zb<abn> {
-   public static final ys<vr, aeo> a = zb.a(aeo::a, aeo::new);
-   private final int b;
-   private final int c;
+public class aeo implements zf<abt> {
+   public static final yw<vv, aeo> a = zf.a(aeo::a, aeo::new);
+   private final double b;
+   private final double c;
+   private final long d;
 
-   public aeo(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aeo(dur $$0) {
+      this.b = $$0.i();
+      this.c = $$0.k();
+      this.d = $$0.j();
    }
 
-   private aeo(vr $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
+   private aeo(vv $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.m();
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private void a(vv $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zd<aeo> a() {
-      return afz.ay;
+   public zh<aeo> a() {
+      return agf.as;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 
-   public int e() {
+   public double e() {
       return this.c;
+   }
+
+   public long f() {
+      return this.d;
    }
 }

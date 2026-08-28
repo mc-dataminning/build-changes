@@ -1,17 +1,17 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ll(float c) implements lh {
-   public static final MapCodec<ll> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("roll").forGetter($$0x -> $$0x.c)).apply($$0, ll::new));
-   public static final ys<wf, ll> b = ys.a(yq.i, $$0 -> $$0.c, ll::new);
+public abstract class ll<T extends lk> {
+   private final boolean a;
 
-   @Override
-   public li<ll> a() {
-      return lj.J;
+   protected ll(boolean $$0) {
+      this.a = $$0;
    }
 
-   public float b() {
-      return this.c;
+   public boolean b() {
+      return this.a;
    }
+
+   public abstract MapCodec<T> c();
+
+   public abstract yw<? super wj, T> d();
 }

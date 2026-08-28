@@ -1,47 +1,20 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
 public class aou {
-   private static final int a = -1;
-
-   public static void a(CommandDispatcher<eq> $$0) {
+   public static void a(CommandDispatcher<et> $$0, ep $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("weather").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)er.a("clear").executes($$0x -> a((eq)$$0x.getSource(), -1)))
-                        .then(er.a("duration", gf.a(1)).executes($$0x -> a((eq)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)er.a("rain").executes($$0x -> b((eq)$$0x.getSource(), -1)))
-                     .then(er.a("duration", gf.a(1)).executes($$0x -> b((eq)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-               ))
-            .then(
-               ((LiteralArgumentBuilder)er.a("thunder").executes($$0x -> c((eq)$$0x.getSource(), -1)))
-                  .then(er.a("duration", gf.a(1)).executes($$0x -> c((eq)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("tellraw").requires($$0x -> $$0x.c(2)))
+            .then(eu.a("targets", fg.d()).then(eu.a("message", fc.a($$1)).executes($$0x -> {
+               int $$1x = 0;
+
+               for (aqu $$2 : fg.f($$0x, "targets")) {
+                  $$2.b(xb.a((et)$$0x.getSource(), fc.a($$0x, "message"), $$2, 0), false);
+                  $$1x++;
+               }
+
+               return $$1x;
+            })))
       );
-   }
-
-   private static int a(eq $$0, int $$1, bpm $$2) {
-      return $$1 == -1 ? $$2.a($$0.l().J().E_()) : $$1;
-   }
-
-   private static int a(eq $$0, int $$1) {
-      $$0.l().J().a(a($$0, $$1, aqm.b), 0, false, false);
-      $$0.a(() -> wu.c("commands.weather.set.clear"), true);
-      return $$1;
-   }
-
-   private static int b(eq $$0, int $$1) {
-      $$0.l().J().a(0, a($$0, $$1, aqm.c), true, false);
-      $$0.a(() -> wu.c("commands.weather.set.rain"), true);
-      return $$1;
-   }
-
-   private static int c(eq $$0, int $$1) {
-      $$0.l().J().a(0, a($$0, $$1, aqm.d), true, true);
-      $$0.a(() -> wu.c("commands.weather.set.thunder"), true);
-      return $$1;
    }
 }

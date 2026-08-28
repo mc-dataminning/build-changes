@@ -1,30 +1,49 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eft extends efq {
-   protected final long c;
-   protected final enm.a d;
-   protected final float e;
-   protected final enm f;
+public class eft extends efq {
+   public static final MapCodec<eft> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bpv.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, eft::new)
+   );
+   private final bpv b;
 
-   protected static <P extends eft> P3<Mu<P>, Long, enm.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         enm.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         axo.m.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   public eft(bpv $$0, bpv $$1, bpv $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   protected eft(long $$0, enm.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = enm.b(new dzf(new dyh($$0)), $$1);
+   @Override
+   protected efr<?> a() {
+      return efr.h;
    }
 
-   protected double a(ja $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   @Override
+   protected void a(dda $$0, efq.b $$1, ayv $$2, efa $$3, int $$4, efq.a $$5, int $$6, int $$7, int $$8) {
+      jd $$9 = $$5.a();
+      int $$10 = 0;
+
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + ayn.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
+         }
+
+         this.a($$0, $$1, $$2, $$3, new jd($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
+      }
+   }
+
+   @Override
+   public int a(ayv $$0, int $$1, efa $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(ayv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

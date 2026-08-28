@@ -1,5 +1,13 @@
-public interface buc<T> {
-   void a(T var1);
+import javax.annotation.Nullable;
 
-   T d();
+public interface buc {
+   boolean f();
+
+   void a(@Nullable avp var1);
+
+   default avn Y_() {
+      return avo.mQ;
+   }
+
+   boolean i();
 }

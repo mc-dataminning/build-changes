@@ -1,28 +1,17 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public abstract class gtc extends gtb implements gtu {
+   private boolean n;
 
-public class gtc {
-   private final List<gtb> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
-
-   public gtc(List<gtb> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   protected gtc(avn $$0, avp $$1, ayv $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public List<gtb> a() {
-      return this.a;
+   @Override
+   public boolean m() {
+      return this.n;
    }
 
-   public boolean b() {
-      return this.b;
-   }
-
-   @Nullable
-   public String c() {
-      return this.c;
+   protected final void n() {
+      this.n = true;
+      this.i = false;
    }
 }

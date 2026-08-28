@@ -1,50 +1,36 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public class fbk extends fck {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public Date b;
-   public long c;
-   private boolean g;
-   public Map<String, String> d = Maps.newHashMap();
-   public Map<String, String> e = Maps.newHashMap();
+public interface fbk {
+   fbk a = a(0.0F, 0.0F, 0.0F);
+   fbk b = a((fbk.a)($$0 -> -$$0.z()));
 
-   public static fbk a(JsonElement $$0) {
-      JsonObject $$1 = $$0.getAsJsonObject();
-      fbk $$2 = new fbk();
+   static fbk a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
+   }
 
-      try {
-         $$2.a = feh.b("backupId", $$1, "");
-         $$2.b = feh.b("lastModifiedDate", $$1);
-         $$2.c = feh.a("size", $$1, 0L);
-         if ($$1.has("metadata")) {
-            JsonObject $$3 = $$1.getAsJsonObject("metadata");
+   static fbk a(Vector3f $$0) {
+      return a($$0::distanceSquared);
+   }
 
-            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
-               if (!$$5.getValue().isJsonNull()) {
-                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
-               }
-            }
+   static fbk a(fbk.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
+
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
          }
-      } catch (Exception var7) {
-         f.error("Could not parse Backup: {}", var7.getMessage());
-      }
 
-      return $$2;
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
    }
 
-   public boolean a() {
-      return this.g;
-   }
+   int[] sort(Vector3f[] var1);
 
-   public void a(boolean $$0) {
-      this.g = $$0;
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

@@ -1,68 +1,112 @@
-public final class dyq {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-   private dyq() {
+public class dyq extends dux {
+   public static final MapCodec<dyq> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ehp.a.fieldOf("settings").forGetter(dyq::h)).apply($$0, $$0.stable(dyq::new))
+   );
+   private final ehp d;
+
+   public dyq(ehp $$0) {
+      super(new def($$0.d()), ad.b($$0::a));
+      this.d = $$0;
    }
 
-   protected static dyk.c a(dxz $$0, dxz $$1, dxz $$2, dyt $$3) {
-      dsl $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         dyq.a $$8 = $$6 > 0.0 ? dyq.a.a : dyq.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = ayg.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               ayo $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = ayg.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
+   @Override
+   public duy a(jo<ejs> $$0, dzj $$1, long $$2) {
+      Stream<jm<ejs>> $$3 = this.d.c().map(jq::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
+      return duy.a($$1, $$2, this.b, $$3);
+   }
+
+   @Override
+   protected MapCodec<? extends dux> b() {
+      return c;
+   }
+
+   public ehp h() {
+      return this.d;
+   }
+
+   @Override
+   public void a(ara $$0, ddo $$1, dzj $$2, duw $$3) {
+   }
+
+   @Override
+   public int a(dcw $$0) {
+      return $$0.I_() + Math.min($$0.J_(), this.d.f().size());
+   }
+
+   @Override
+   public CompletableFuture<duw> a(dzx $$0, dzj $$1, ddo $$2, duw $$3) {
+      List<dta> $$4 = this.d.f();
+      jd.a $$5 = new jd.a();
+      dyv $$6 = $$3.a(dyv.a.c);
+      dyv $$7 = $$3.a(dyv.a.a);
+
+      for (int $$8 = 0; $$8 < Math.min($$3.J_(), $$4.size()); $$8++) {
+         dta $$9 = $$4.get($$8);
+         if ($$9 != null) {
+            int $$10 = $$3.I_() + $$8;
+
+            for (int $$11 = 0; $$11 < 16; $$11++) {
+               for (int $$12 = 0; $$12 < 16; $$12++) {
+                  $$3.a($$5.d($$11, $$10, $$12), $$9, false);
+                  $$6.a($$11, $$10, $$12, $$9);
+                  $$7.a($$11, $$10, $$12, $$9);
                }
             }
-         } else {
-            return $$4;
          }
-      };
+      }
+
+      return CompletableFuture.completedFuture($$3);
    }
 
-   protected static enum a {
-      a(dfk.ra.o(), dfk.tg.o(), dfk.c.o(), 0, 50),
-      b(dfk.Q.o(), dfk.tf.o(), dfk.qz.o(), -60, -8);
+   @Override
+   public int a(int $$0, int $$1, dyv.a $$2, dcw $$3, dzj $$4) {
+      List<dta> $$5 = this.d.f();
 
-      final dsl e;
-      final dsl f;
-      final dsl g;
-      protected final int c;
-      protected final int d;
-
-      private a(final dsl $$0, final dsl $$1, final dsl $$2, final int $$3, final int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
+      for (int $$6 = Math.min($$5.size(), $$3.am()) - 1; $$6 >= 0; $$6--) {
+         dta $$7 = $$5.get($$6);
+         if ($$7 != null && $$2.e().test($$7)) {
+            return $$3.I_() + $$6 + 1;
+         }
       }
+
+      return $$3.I_();
+   }
+
+   @Override
+   public ddg a(int $$0, int $$1, dcw $$2, dzj $$3) {
+      return new ddg($$2.I_(), this.d.f().stream().limit((long)$$2.J_()).map($$0x -> $$0x == null ? dfy.a.o() : $$0x).toArray(dta[]::new));
+   }
+
+   @Override
+   public void a(List<String> $$0, dzj $$1, jd $$2) {
+   }
+
+   @Override
+   public void a(ara $$0, long $$1, dzj $$2, ddw $$3, ddo $$4, duw $$5, dyr.a $$6) {
+   }
+
+   @Override
+   public void a(ara $$0) {
+   }
+
+   @Override
+   public int g() {
+      return 0;
+   }
+
+   @Override
+   public int e() {
+      return 384;
+   }
+
+   @Override
+   public int f() {
+      return -63;
    }
 }

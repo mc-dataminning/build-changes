@@ -1,94 +1,84 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public interface eqq {
-   int d = 19133;
-   int e = 19132;
+public class eqq {
+   private static final String a = "command_storage_";
+   private final Map<String, eqq.a> b = Maps.newHashMap();
+   private final eqt c;
 
-   ddb D();
-
-   void a(ddb var1);
-
-   boolean F();
-
-   Set<String> G();
-
-   Set<String> H();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.G()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.x();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
-      });
+   public eqq(eqt $$0) {
+      this.c = $$0;
    }
 
-   default String f(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
+   private eqq.a a(String $$0) {
+      eqq.a $$1 = new eqq.a();
+      this.b.put($$0, $$1);
+      return $$1;
+   }
+
+   private eqf.a<eqq.a> b(String $$0) {
+      return new eqf.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), azv.h);
+   }
+
+   public ua a(akq $$0) {
+      String $$1 = $$0.b();
+      eqq.a $$2 = this.c.b(this.b($$1), c($$1));
+      return $$2 != null ? $$2.a($$0.a()) : new ua();
+   }
+
+   public void a(akq $$0, ua $$1) {
+      String $$2 = $$0.b();
+      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
+   }
+
+   public Stream<akq> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
+   }
+
+   private static String c(String $$0) {
+      return "command_storage_" + $$0;
+   }
+
+   static class a extends eqf {
+      private static final String a = "contents";
+      private final Map<String, ua> b = Maps.newHashMap();
+
+      eqq.a a(ua $$0) {
+         ua $$1 = $$0.p("contents");
+
+         for (String $$2 : $$1.e()) {
+            this.b.put($$2, $$1.p($$2));
+         }
+
+         return this;
       }
-   }
 
-   @Nullable
-   tx E();
+      @Override
+      public ua a(ua $$0, jo.a $$1) {
+         ua $$2 = new ua();
+         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.i()));
+         $$0.a("contents", $$2);
+         return $$0;
+      }
 
-   void a(@Nullable tx var1);
+      public ua a(String $$0) {
+         ua $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new ua();
+      }
 
-   eqp I();
+      public void a(String $$0, ua $$1) {
+         if ($$1.g()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
 
-   dck J();
+         this.c();
+      }
 
-   tx a(jx var1, @Nullable tx var2);
-
-   boolean l();
-
-   int x();
-
-   String e();
-
-   dcd k();
-
-   void a(dcd var1);
-
-   boolean m();
-
-   bqe q();
-
-   void a(bqe var1);
-
-   boolean r();
-
-   void d(boolean var1);
-
-   dcc o();
-
-   @Nullable
-   tx w();
-
-   dwj.a C();
-
-   void a(dwj.a var1);
-
-   dze y();
-
-   boolean z();
-
-   boolean A();
-
-   Lifecycle B();
-
-   default coz K() {
-      return this.D().b();
+      public Stream<akq> b(String $$0) {
+         return this.b.keySet().stream().map($$1 -> akq.a($$0, $$1));
+      }
    }
 }

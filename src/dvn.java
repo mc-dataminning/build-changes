@@ -1,2 +1,3 @@
-public record dvn(aqm a, dui b, emz c, aqp d, boz<apw.a<Runnable>> e) {
+interface dvn<T> {
+   int onResize(int var1, T var2);
 }

@@ -1,63 +1,124 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class cie<T extends chy> {
-   private static cie<?>[] l = new cie[0];
-   public static final cie<chu> a = a(chu.class, "HoldingPattern");
-   public static final cie<cic> b = a(cic.class, "StrafePlayer");
-   public static final cie<chw> c = a(chw.class, "LandingApproach");
-   public static final cie<chx> d = a(chx.class, "Landing");
-   public static final cie<cid> e = a(cid.class, "Takeoff");
-   public static final cie<cia> f = a(cia.class, "SittingFlaming");
-   public static final cie<cib> g = a(cib.class, "SittingScanning");
-   public static final cie<chz> h = a(chz.class, "SittingAttacking");
-   public static final cie<chs> i = a(chs.class, "ChargingPlayer");
-   public static final cie<cht> j = a(cht.class, "Dying");
-   public static final cie<chv> k = a(chv.class, "Hover");
-   private final Class<? extends chy> m;
-   private final int n;
-   private final String o;
+public class cie extends cia {
+   private static final ced b = ced.a().d();
+   @Nullable
+   private epm c;
+   @Nullable
+   private eww d;
+   private boolean e;
 
-   private cie(int $$0, Class<? extends chy> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public chy a(cho $$0) {
-      try {
-         Constructor<? extends chy> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends chy> a() throws NoSuchMethodException {
-      return this.m.getConstructor(cho.class);
-   }
-
-   public int b() {
-      return this.n;
+   public cie(chy $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public cio<cie> i() {
+      return cio.a;
    }
 
-   public static cie<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void c() {
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dv(), this.a.dx(), this.a.dB());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
+         this.j();
+      }
    }
 
-   public static int c() {
-      return l.length;
+   @Override
+   public void d() {
+      this.c = null;
+      this.d = null;
    }
 
-   private static <T extends chy> cie<T> a(Class<T> $$0, String $$1) {
-      cie<T> $$2 = new cie<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   @Nullable
+   @Override
+   public eww g() {
+      return this.d;
+   }
+
+   private void j() {
+      if (this.c != null && this.c.c()) {
+         jd $$0 = this.a.dQ().a(dyv.a.f, new jd(ebz.a(this.a.s())));
+         int $$1 = this.a.gk() == null ? 0 : this.a.gk().e();
+         if (this.a.dT().a($$1 + 3) == 0) {
+            this.a.gj().a(cio.c);
+            return;
+         }
+
+         cmv $$2 = this.a.dQ().a(b, this.a, (double)$$0.u(), (double)$$0.v(), (double)$$0.w());
+         double $$3;
+         if ($$2 != null) {
+            $$3 = $$0.b($$2.do()) / 512.0;
+         } else {
+            $$3 = 64.0;
+         }
+
+         if ($$2 != null && (this.a.dT().a((int)($$3 + 2.0)) == 0 || this.a.dT().a($$1 + 2) == 0)) {
+            this.a($$2);
+            return;
+         }
+      }
+
+      if (this.c == null || this.c.c()) {
+         int $$5 = this.a.x();
+         int $$6 = $$5;
+         if (this.a.dT().a(8) == 0) {
+            this.e = !this.e;
+            $$6 = $$5 + 6;
+         }
+
+         if (this.e) {
+            $$6++;
+         } else {
+            $$6--;
+         }
+
+         if (this.a.gk() != null && this.a.gk().e() >= 0) {
+            $$6 %= 12;
+            if ($$6 < 0) {
+               $$6 += 12;
+            }
+         } else {
+            $$6 -= 12;
+            $$6 &= 7;
+            $$6 += 12;
+         }
+
+         this.c = this.a.a($$5, $$6, null);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.k();
+   }
+
+   private void a(cmv $$0) {
+      this.a.gj().a(cio.b);
+      this.a.gj().b(cio.b).a($$0);
+   }
+
+   private void k() {
+      if (this.c != null && !this.c.c()) {
+         kh $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.dT().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new eww($$1, $$3, $$2);
+      }
+   }
+
+   @Override
+   public void a(chx $$0, jd $$1, brj $$2, @Nullable cmv $$3) {
+      if ($$3 != null && this.a.c($$3)) {
+         this.a($$3);
+      }
    }
 }

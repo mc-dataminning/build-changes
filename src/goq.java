@@ -1,15 +1,21 @@
-public class goq extends goa<cfv, fxh<cfv>> {
-   private static final akk a = new akk("textures/entity/wolf/wolf_collar.png");
+public class goq<T extends bsq & buc, M extends fve<T>> extends gop<T, M> {
+   private final akq a;
+   private final M b;
 
-   public goq(glk<cfv, fxh<cfv>> $$0) {
+   public goq(glz<T, M> $$0, M $$1, akq $$2) {
       super($$0);
+      this.b = $$1;
+      this.a = $$2;
    }
 
-   public void a(fao $$0, gef $$1, int $$2, cfv $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s() && !$$3.cj()) {
-         float[] $$10 = $$3.gy().d();
-         fas $$11 = $$1.getBuffer(gen.e(a));
-         this.c().a($$0, $$11, $$2, gph.d, $$10[0], $$10[1], $$10[2], 1.0F);
+   @Override
+   public void a(fbc $$0, get $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.i()) {
+         this.c().a(this.b);
+         this.b.a($$3, $$4, $$5, $$6);
+         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+         fbg $$10 = $$1.getBuffer(gfb.e(this.a));
+         this.b.a($$0, $$10, $$2, gpw.d);
       }
    }
 }

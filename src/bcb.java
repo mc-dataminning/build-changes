@@ -1,19 +1,18 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.Type;
 
-public class bcb extends bfd {
+public class bcb extends DataFix {
+   private static final String a = "minecraft:decorated_pot";
+
    public bcb(Schema $$0) {
-      super($$0, false, "EntityBrushableBlockFieldsRenameFix", bgh.s, "minecraft:brushable_block");
+      super($$0, true);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.renameField("loot_table", "LootTable").renameField("loot_table_seed", "LootTableSeed");
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bgq.s, "minecraft:decorated_pot");
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(bgq.s, "minecraft:decorated_pot");
+      return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
    }
 }

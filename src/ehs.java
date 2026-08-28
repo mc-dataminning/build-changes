@@ -1,30 +1,34 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum ehs implements azc {
-   a(jf.b, 1, "ceiling"),
-   b(jf.a, -1, "floor");
+public class ehs extends eht {
+   public static final ehs a = new ehs(dzp.a(0));
+   public static final MapCodec<ehs> b = dzp.a.fieldOf("value").xmap(ehs::new, ehs::b);
+   private final dzp d;
 
-   public static final Codec<ehs> c = azc.a(ehs::values);
-   private final jf d;
-   private final int e;
-   private final String f;
-
-   private ehs(final jf $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public static ehs a(dzp $$0) {
+      return new ehs($$0);
    }
 
-   public jf a() {
+   private ehs(dzp $$0) {
+      this.d = $$0;
+   }
+
+   public dzp b() {
       return this.d;
    }
 
-   public int b() {
-      return this.e;
+   @Override
+   public int a(ayv $$0, dzs $$1) {
+      return this.d.a($$1);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public ehu<?> a() {
+      return ehu.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

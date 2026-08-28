@@ -1,84 +1,29 @@
-public class ahp implements zb<agb> {
-   public static final ys<vr, ahp> a = zb.a(ahp::a, ahp::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private final ja e;
-   private final String f;
-   private final boolean g;
-   private final boolean h;
-   private final boolean i;
-   private final dqa.a j;
+public class ahp implements zf<agh> {
+   public static final yw<vv, ahp> a = zf.a(ahp::a, ahp::new);
+   private final akq b;
 
-   public ahp(ja $$0, String $$1, dqa.a $$2, boolean $$3, boolean $$4, boolean $$5) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$2;
+   public ahp(cyz<?> $$0) {
+      this.b = $$0.a();
    }
 
-   private ahp(vr $$0) {
-      this.e = $$0.e();
-      this.f = $$0.p();
-      this.j = $$0.b(dqa.a.class);
-      int $$1 = $$0.readByte();
-      this.g = ($$1 & 1) != 0;
-      this.h = ($$1 & 2) != 0;
-      this.i = ($$1 & 4) != 0;
+   private ahp(vv $$0) {
+      this.b = $$0.q();
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.j);
-      int $$1 = 0;
-      if (this.g) {
-         $$1 |= 1;
-      }
-
-      if (this.h) {
-         $$1 |= 2;
-      }
-
-      if (this.i) {
-         $$1 |= 4;
-      }
-
-      $$0.k($$1);
+   private void a(vv $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zd<ahp> a() {
-      return afz.bU;
+   public zh<ahp> a() {
+      return agf.bO;
    }
 
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
-   public ja b() {
-      return this.e;
-   }
-
-   public String e() {
-      return this.f;
-   }
-
-   public boolean f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return this.h;
-   }
-
-   public boolean h() {
-      return this.i;
-   }
-
-   public dqa.a i() {
-      return this.j;
+   public akq b() {
+      return this.b;
    }
 }

@@ -1,65 +1,80 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dj extends ds<dj.a> {
-   @Override
-   public Codec<dj.a> a() {
-      return dj.a.a;
+public record dj(dh.c b, dh.c c, dh.c d, dh.c e, dh.c f, dh.c g, dh.c h) {
+   public static final Codec<dj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dh.c.d.optionalFieldOf("x", dh.c.c).forGetter(dj::a),
+               dh.c.d.optionalFieldOf("y", dh.c.c).forGetter(dj::b),
+               dh.c.d.optionalFieldOf("z", dh.c.c).forGetter(dj::c),
+               dh.c.d.optionalFieldOf("speed", dh.c.c).forGetter(dj::d),
+               dh.c.d.optionalFieldOf("horizontal_speed", dh.c.c).forGetter(dj::e),
+               dh.c.d.optionalFieldOf("vertical_speed", dh.c.c).forGetter(dj::f),
+               dh.c.d.optionalFieldOf("fall_distance", dh.c.c).forGetter(dj::g)
+            )
+            .apply($$0, dj::new)
+   );
+
+   public static dj a(dh.c $$0) {
+      return new dj(dh.c.c, dh.c.c, dh.c.c, $$0, dh.c.c, dh.c.c, dh.c.c);
    }
 
-   public void a(aqn $$0, bsh $$1, bra $$2, float $$3, float $$4, boolean $$5) {
-      eqw $$6 = bu.b($$0, $$1);
-      this.a($$0, $$6x -> $$6x.a($$0, $$6, $$2, $$3, $$4, $$5));
+   public static dj b(dh.c $$0) {
+      return new dj(dh.c.c, dh.c.c, dh.c.c, dh.c.c, $$0, dh.c.c, dh.c.c);
    }
 
-   public static record a(Optional<bf> b, Optional<bi> c, Optional<bf> d) implements ds.a {
-      public static final Codec<dj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bu.b.optionalFieldOf("player").forGetter(dj.a::a),
-                  bi.a.optionalFieldOf("damage").forGetter(dj.a::c),
-                  bu.b.optionalFieldOf("entity").forGetter(dj.a::d)
-               )
-               .apply($$0, dj.a::new)
-      );
+   public static dj c(dh.c $$0) {
+      return new dj(dh.c.c, dh.c.c, dh.c.c, dh.c.c, dh.c.c, $$0, dh.c.c);
+   }
 
-      public static an<dj.a> b() {
-         return am.h.a(new dj.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
+   public static dj d(dh.c $$0) {
+      return new dj(dh.c.c, dh.c.c, dh.c.c, dh.c.c, dh.c.c, dh.c.c, $$0);
+   }
 
-      public static an<dj.a> a(Optional<bi> $$0) {
-         return am.h.a(new dj.a(Optional.empty(), $$0, Optional.empty()));
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (this.b.d($$0) && this.c.d($$1) && this.d.d($$2)) {
+         double $$4 = ayn.f($$0, $$1, $$2);
+         if (!this.e.e($$4)) {
+            return false;
+         } else {
+            double $$5 = ayn.e($$0, $$2);
+            if (!this.f.e($$5)) {
+               return false;
+            } else {
+               double $$6 = Math.abs($$1);
+               return !this.g.d($$6) ? false : this.h.d($$3);
+            }
+         }
+      } else {
+         return false;
       }
+   }
 
-      public static an<dj.a> a(bi.a $$0) {
-         return am.h.a(new dj.a(Optional.empty(), Optional.of($$0.b()), Optional.empty()));
-      }
+   public dh.c a() {
+      return this.b;
+   }
 
-      public static an<dj.a> b(Optional<bu> $$0) {
-         return am.h.a(new dj.a(Optional.empty(), Optional.empty(), bu.a($$0)));
-      }
+   public dh.c b() {
+      return this.c;
+   }
 
-      public static an<dj.a> a(Optional<bi> $$0, Optional<bu> $$1) {
-         return am.h.a(new dj.a(Optional.empty(), $$0, bu.a($$1)));
-      }
+   public dh.c c() {
+      return this.d;
+   }
 
-      public static an<dj.a> a(bi.a $$0, Optional<bu> $$1) {
-         return am.h.a(new dj.a(Optional.empty(), Optional.of($$0.b()), bu.a($$1)));
-      }
+   public dh.c d() {
+      return this.e;
+   }
 
-      public boolean a(aqn $$0, eqw $$1, bra $$2, float $$3, float $$4, boolean $$5) {
-         return this.c.isPresent() && !this.c.get().a($$0, $$2, $$3, $$4, $$5) ? false : !this.d.isPresent() || this.d.get().a($$1);
-      }
+   public dh.c e() {
+      return this.f;
+   }
 
-      @Override
-      public void a(bg $$0) {
-         ds.a.super.a($$0);
-         $$0.a(this.d, ".entity");
-      }
+   public dh.c f() {
+      return this.g;
+   }
 
-      @Override
-      public Optional<bf> a() {
-         return this.b;
-      }
+   public dh.c g() {
+      return this.h;
    }
 }

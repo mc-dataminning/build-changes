@@ -1,140 +1,25 @@
-import java.util.concurrent.CompletableFuture;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ph extends pv<ddg> {
-   public ph(lz $$0, CompletableFuture<jl.a> $$1) {
-      super($$0, lr.aE, $$1);
-   }
+public class ph implements pg.a {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = asr.b.a() + "/minecraft/structure/";
 
    @Override
-   protected void a(jl.a $$0) {
-      this.b(avv.a).a(ddn.X).a(ddn.V).a(ddn.T).a(ddn.R);
-      this.b(avv.b).b(avv.a).a(ddn.W).a(ddn.S).a(ddn.U).a(ddn.Q).a(ddn.P);
-      this.b(avv.c).a(ddn.M).a(ddn.N);
-      this.b(avv.d).a(ddn.K).a(ddn.L);
-      this.b(avv.e).a(ddn.D).a(ddn.H).a(ddn.I).a(ddn.J).a(ddn.G).a(ddn.E);
-      this.b(avv.f).a(ddn.A).a(ddn.B).a(ddn.C);
-      this.b(avv.g).a(ddn.t).a(ddn.v).a(ddn.u);
-      this.b(avv.h).a(ddn.p).a(ddn.q).a(ddn.n).a(ddn.o);
-      this.b(avv.i).a(ddn.z).a(ddn.x).a(ddn.y);
-      this.b(avv.j).a(ddn.i).a(ddn.j).a(ddn.k).a(ddn.m).a(ddn.l).a(ddn.F);
-      this.b(avv.k).a(ddn.r).a(ddn.s).a(ddn.w);
-      pv.b<ddg> $$1 = this.b(avv.m);
-      ddu.a.a.a().forEach($$1::a);
-      pv.b<ddg> $$2 = this.b(avv.l);
-      ddu.a.b.a().forEach($$2::a);
-      this.b(avv.n).a(ddn.ah).a(ddn.ai).a(ddn.aj).a(ddn.ak).a(ddn.al);
-      this.b(avv.p).b(avv.c);
-      this.b(avv.q).a(ddn.f);
-      this.b(avv.r).a(ddn.q).a(ddn.d).a(ddn.G);
-      this.b(avv.s).a(ddn.z).a(ddn.x);
-      this.b(avv.t)
-         .b(avv.b)
-         .b(avv.d)
-         .b(avv.c)
-         .b(avv.e)
-         .b(avv.g)
-         .b(avv.h)
-         .b(avv.i)
-         .b(avv.j)
-         .a(ddn.O)
-         .a(ddn.Y)
-         .a(ddn.e)
-         .a(ddn.w)
-         .a(ddn.f)
-         .a(ddn.r)
-         .a(ddn.d)
-         .a(ddn.b)
-         .a(ddn.c)
-         .a(ddn.g)
-         .a(ddn.h)
-         .a(ddn.s)
-         .a(ddn.Z)
-         .a(ddn.aa);
-      this.b(avv.u).b(avv.f);
-      this.b(avv.Y).a(ddn.ab);
-      this.b(avv.v).b(avv.a);
-      this.b(avv.X).b(avv.b).b(avv.d);
-      this.b(avv.w).a(ddn.W).a(ddn.U).a(ddn.S).a(ddn.X).a(ddn.V).a(ddn.T);
-      this.b(avv.x).a(ddn.Q).a(ddn.P).a(ddn.R);
-      this.b(avv.y).a(ddn.f).a(ddn.b).a(ddn.r).a(ddn.d).a(ddn.p).b(avv.e).a(ddn.F);
-      this.b(avv.z).a(ddn.f);
-      this.b(avv.A).b(avv.i);
-      this.b(avv.B).b(avv.b);
-      this.b(avv.C).a(ddn.g).a(ddn.h);
-      this.b(avv.D).b(avv.f).b(avv.g).a(ddn.s).a(ddn.w).a(ddn.O).b(avv.e);
-      this.b(avv.E).b(avv.c).b(avv.d).b(avv.h).b(avv.j).a(ddn.Y).a(ddn.e).a(ddn.Z).a(ddn.aa).a(ddn.r).a(ddn.d).a(ddn.b).a(ddn.c);
-      this.b(avv.F).b(avv.c);
-      this.b(avv.G).b(avv.b);
-      this.b(avv.J).a(ddn.g);
-      this.b(avv.K).a(ddn.f);
-      this.b(avv.L).a(ddn.b).a(ddn.D);
-      this.b(avv.M).a(ddn.r);
-      this.b(avv.N).a(ddn.d);
-      this.b(avv.O).a(ddn.p);
-      this.b(avv.P).a(ddn.p).a(ddn.q).a(ddn.n).a(ddn.o).a(ddn.m).a(ddn.x);
-      this.b(avv.Q).a(ddn.l);
-      this.b(avv.o)
-         .a(ddn.b)
-         .a(ddn.c)
-         .a(ddn.d)
-         .a(ddn.e)
-         .a(ddn.f)
-         .a(ddn.i)
-         .a(ddn.j)
-         .a(ddn.k)
-         .a(ddn.l)
-         .a(ddn.m)
-         .a(ddn.n)
-         .a(ddn.o)
-         .a(ddn.p)
-         .a(ddn.q)
-         .a(ddn.r)
-         .a(ddn.s)
-         .a(ddn.t)
-         .a(ddn.u)
-         .a(ddn.v)
-         .a(ddn.w)
-         .a(ddn.x)
-         .a(ddn.y)
-         .a(ddn.z)
-         .a(ddn.A)
-         .a(ddn.B)
-         .a(ddn.C)
-         .a(ddn.D)
-         .a(ddn.F)
-         .a(ddn.G)
-         .a(ddn.H)
-         .a(ddn.I)
-         .a(ddn.J)
-         .a(ddn.Y)
-         .a(ddn.Z)
-         .a(ddn.aa);
-      this.b(avv.H).b(avv.l);
-      this.b(avv.I).b(avv.l);
-      this.b(avv.R).b(avv.m);
-      this.b(avv.S).a(ddn.af);
-      this.b(avv.T).a(ddn.ae).a(ddn.ac).a(ddn.af).a(ddn.ad);
-      this.b(avv.U).a(ddn.ab);
-      this.b(avv.V).b(avv.m);
-      this.b(avv.W).a(ddn.ai).a(ddn.aj);
-      this.b(avv.ac).a(ddn.P);
-      this.b(avv.Z).b(avv.b).b(avv.d);
-      this.b(avv.aa).a(ddn.g).a(ddn.h);
-      this.b(avv.ab).b(avv.b).b(avv.d).a(ddn.g).a(ddn.h);
-      this.b(avv.af).a(ddn.Y);
-      this.b(avv.ag).a(ddn.Y);
-      this.b(avv.ah).a(ddn.a);
-      this.b(avv.ai).a(ddn.d).a(ddn.e).a(ddn.H).a(ddn.I).a(ddn.G).a(ddn.W).a(ddn.X).a(ddn.F).a(ddn.ab).a(ddn.L).a(ddn.q).a(ddn.N).b(avv.n);
-      this.b(avv.aj).a(ddn.f).a(ddn.P).b(avv.i).b(avv.k).b(avv.m).b(avv.f).a(ddn.h);
-      this.b(avv.ak).a(ddn.f);
-      this.b(avv.al).a(ddn.d).a(ddn.e).a(ddn.W).a(ddn.q).a(ddn.L).a(ddn.N).a(ddn.H).a(ddn.I).a(ddn.G).a(ddn.F);
-      this.b(avv.am).b(avv.d);
-      this.b(avv.an).a(ddn.aa);
-      this.b(avv.ao).a(ddn.W).a(ddn.X);
-      this.b(avv.ap).b(avv.d);
-      this.b(avv.aq).a(ddn.g).a(ddn.h);
-      this.b(avv.ar).a(ddn.d).a(ddn.e).a(ddn.W).a(ddn.q).a(ddn.L).a(ddn.N).a(ddn.H).a(ddn.I).a(ddn.G).a(ddn.F);
-      this.b(avv.ad).a(ddn.z).a(ddn.Y).a(ddn.h).a(ddn.G).a(ddn.H).a(ddn.I).a(ddn.g).a(ddn.x);
-      this.b(avv.ae).a(ddn.A).a(ddn.ag).a(ddn.ae).a(ddn.f).a(ddn.B).a(ddn.ac).a(ddn.r).a(ddn.s).a(ddn.af).a(ddn.ad).a(ddn.w).a(ddn.C);
+   public ua apply(String $$0, ua $$1) {
+      return $$0.startsWith(b) ? a($$0, $$1) : $$1;
+   }
+
+   public static ua a(String $$0, ua $$1) {
+      enn $$2 = new enn();
+      int $$3 = up.b($$1, 500);
+      int $$4 = 3937;
+      if ($$3 < 3937) {
+         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3937, $$0});
+      }
+
+      ua $$5 = azv.f.a(azw.a(), $$1, $$3);
+      $$2.a(lt.e.q(), $$5);
+      return $$2.a(new ua());
    }
 }

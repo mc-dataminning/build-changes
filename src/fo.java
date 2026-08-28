@@ -1,48 +1,63 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public interface fo<T extends de<?>> extends ArgumentType<T> {
-   static fo.b a() {
-      return new fo.b();
+public class fo implements ArgumentType<eyd> {
+   private static final Collection<String> b = Arrays.asList("foo", "foo.bar.baz", "minecraft:foo");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wy.b("argument.criteria.invalid", $$0));
+
+   private fo() {
    }
 
-   static fo.a b() {
-      return new fo.a();
+   public static fo a() {
+      return new fo();
    }
 
-   public static class a implements fo<de.c> {
-      private static final Collection<String> a = Arrays.asList("0..5.2", "0", "-5.4", "-100.76..", "..100");
-
-      public static de.c a(CommandContext<eq> $$0, String $$1) {
-         return (de.c)$$0.getArgument($$1, de.c.class);
-      }
-
-      public de.c a(StringReader $$0) throws CommandSyntaxException {
-         return de.c.a($$0);
-      }
-
-      public Collection<String> getExamples() {
-         return a;
-      }
+   public static eyd a(CommandContext<et> $$0, String $$1) {
+      return (eyd)$$0.getArgument($$1, eyd.class);
    }
 
-   public static class b implements fo<de.d> {
-      private static final Collection<String> a = Arrays.asList("0..5", "0", "-5", "-100..", "..100");
+   public eyd a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
 
-      public static de.d a(CommandContext<eq> $$0, String $$1) {
-         return (de.d)$$0.getArgument($$1, de.d.class);
+      while ($$0.canRead() && $$0.peek() != ' ') {
+         $$0.skip();
       }
 
-      public de.d a(StringReader $$0) throws CommandSyntaxException {
-         return de.d.a($$0);
+      String $$2 = $$0.getString().substring($$1, $$0.getCursor());
+      return eyd.a($$2).orElseThrow(() -> {
+         $$0.setCursor($$1);
+         return a.createWithContext($$0, $$2);
+      });
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      List<String> $$2 = Lists.newArrayList(eyd.c());
+
+      for (avx<?> $$3 : lt.v) {
+         for (Object $$4 : $$3.b()) {
+            String $$5 = this.a($$3, $$4);
+            $$2.add($$5);
+         }
       }
 
-      public Collection<String> getExamples() {
-         return a;
-      }
+      return ey.b($$2, $$1);
+   }
+
+   public <T> String a(avx<T> $$0, Object $$1) {
+      return avv.a($$0, (T)$$1);
+   }
+
+   public Collection<String> getExamples() {
+      return b;
    }
 }

@@ -1,42 +1,27 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cav extends caa {
-   private final bte a;
-   private double b;
-   private double c;
-   private int d;
+public class cav extends cbh {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public cav(bte $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(caa.a.a, caa.a.b));
-   }
-
-   @Override
-   public boolean a() {
-      return this.a.dU().i() < 0.02F;
+   public cav(btu $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean b() {
-      return this.d >= 0;
+      aqt $$0 = (aqt)this.b.dQ();
+      jd $$1 = this.b.dq();
+      return $$0.c($$1) ? false : super.b();
    }
 
+   @Nullable
    @Override
-   public void c() {
-      double $$0 = (Math.PI * 2) * this.a.dU().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.dU().a(20);
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      this.d--;
-      this.a.F().a(this.a.dw() + this.b, this.a.dA(), this.a.dC() + this.c);
+   protected eww h() {
+      aqt $$0 = (aqt)this.b.dQ();
+      jd $$1 = this.b.dq();
+      kf $$2 = kf.a($$1);
+      kf $$3 = bvh.a($$0, $$2, 2);
+      return $$3 != $$2 ? ceh.a(this.b, 10, 7, eww.c($$3.q()), (float) (Math.PI / 2)) : null;
    }
 }

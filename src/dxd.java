@@ -1,36 +1,24 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Stream;
 
-public class dxd implements dxl {
-   public static final MapCodec<dxd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ja.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, dxd::new));
-   public static final ys<ByteBuf, dxd> b = ys.a(ja.b, $$0 -> $$0.e, dxd::new);
-   private final ja e;
+public interface dxd {
+   int an();
 
-   public dxd(ja $$0) {
-      this.e = $$0;
-   }
+   UUID cA();
 
-   @Override
-   public Optional<ewh> a(dcg $$0) {
-      return Optional.of(ewh.b(this.e));
-   }
+   jd dq();
 
-   @Override
-   public dxm<dxd> a() {
-      return dxm.a;
-   }
+   ewr cL();
 
-   public static class a implements dxm<dxd> {
-      @Override
-      public MapCodec<dxd> a() {
-         return dxd.a;
-      }
+   void a(dxe var1);
 
-      @Override
-      public ys<ByteBuf, dxd> b() {
-         return dxd.b;
-      }
-   }
+   Stream<? extends dxd> cV();
+
+   Stream<? extends dxd> cW();
+
+   void b(bsq.c var1);
+
+   boolean dO();
+
+   boolean dP();
 }

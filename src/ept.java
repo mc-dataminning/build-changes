@@ -1,31 +1,38 @@
-import com.mojang.serialization.Codec;
+public class ept extends epk {
+   private float m = Float.MAX_VALUE;
+   private epk n;
+   private boolean o;
 
-public record ept(akk d, boolean e, int f, boolean g, boolean h) {
-   public static final int a = -1;
-   public static final Codec<jj<ept>> b = lq.at.s();
-   public static final ys<wf, jj<ept>> c = yq.b(lr.aC);
-
-   public boolean a() {
-      return this.f != -1;
+   public ept(epk $$0) {
+      super($$0.a, $$0.b, $$0.c);
    }
 
-   public akk b() {
-      return this.d;
+   public ept(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public boolean c() {
-      return this.e;
+   public void a(float $$0, epk $$1) {
+      if ($$0 < this.m) {
+         this.m = $$0;
+         this.n = $$1;
+      }
    }
 
-   public int d() {
-      return this.f;
+   public epk d() {
+      return this.n;
    }
 
-   public boolean e() {
-      return this.g;
+   public void e() {
+      this.o = true;
    }
 
    public boolean f() {
-      return this.h;
+      return this.o;
+   }
+
+   public static ept c(vv $$0) {
+      ept $$1 = new ept($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 }

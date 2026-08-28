@@ -1,21 +1,20 @@
-public enum dtt implements azc {
-   a("top"),
-   b("bottom"),
-   c("double");
+public enum dtt implements azj {
+   a("compare"),
+   b("subtract");
 
-   private final String d;
+   private final String c;
 
    private dtt(final String $$0) {
-      this.d = $$0;
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.d;
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.c;
    }
 }

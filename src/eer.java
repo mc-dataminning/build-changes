@@ -1,19 +1,30 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eer<P extends eeq> {
-   public static final eer<eet> a = a("two_layers_feature_size", eet.d);
-   public static final eer<ees> b = a("three_layers_feature_size", ees.d);
-   private final MapCodec<P> c;
+public record eer(int b, int c, int d, jm<eiq> e) implements eee {
+   public static final Codec<eer> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axv.l.fieldOf("tries").orElse(128).forGetter(eer::a),
+               axv.k.fieldOf("xz_spread").orElse(7).forGetter(eer::b),
+               axv.k.fieldOf("y_spread").orElse(3).forGetter(eer::c),
+               eiq.b.fieldOf("feature").forGetter(eer::d)
+            )
+            .apply($$0, eer::new)
+   );
 
-   private static <P extends eeq> eer<P> a(String $$0, MapCodec<P> $$1) {
-      return jw.a(lq.Y, $$0, new eer<>($$1));
+   public int a() {
+      return this.b;
    }
 
-   private eer(MapCodec<P> $$0) {
-      this.c = $$0;
-   }
-
-   public MapCodec<P> a() {
+   public int b() {
       return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public jm<eiq> d() {
+      return this.e;
    }
 }

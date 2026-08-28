@@ -1,76 +1,70 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
-public final class oc {
-   public static final oc a = a("all");
-   public static final oc b = a("texture", a);
-   public static final oc c = a("particle", b);
-   public static final oc d = a("end", a);
-   public static final oc e = a("bottom", d);
-   public static final oc f = a("top", d);
-   public static final oc g = a("front", a);
-   public static final oc h = a("back", a);
-   public static final oc i = a("side", a);
-   public static final oc j = a("north", i);
-   public static final oc k = a("south", i);
-   public static final oc l = a("east", i);
-   public static final oc m = a("west", i);
-   public static final oc n = a("up");
-   public static final oc o = a("down");
-   public static final oc p = a("cross");
-   public static final oc q = a("plant");
-   public static final oc r = a("wall", a);
-   public static final oc s = a("rail");
-   public static final oc t = a("wool");
-   public static final oc u = a("pattern");
-   public static final oc v = a("pane");
-   public static final oc w = a("edge");
-   public static final oc x = a("fan");
-   public static final oc y = a("stem");
-   public static final oc z = a("upperstem");
-   public static final oc A = a("crop");
-   public static final oc B = a("dirt");
-   public static final oc C = a("fire");
-   public static final oc D = a("lantern");
-   public static final oc E = a("platform");
-   public static final oc F = a("unsticky");
-   public static final oc G = a("torch");
-   public static final oc H = a("layer0");
-   public static final oc I = a("layer1");
-   public static final oc J = a("layer2");
-   public static final oc K = a("lit_log");
-   public static final oc L = a("candle");
-   public static final oc M = a("inside");
-   public static final oc N = a("content");
-   public static final oc O = a("inner_top");
-   public static final oc P = a("flowerbed");
-   private final String Q;
-   @Nullable
-   private final oc R;
+public class oc {
+   private final Optional<akq> a;
+   private final Set<of> b;
+   private final Optional<String> c;
 
-   private static oc a(String $$0) {
-      return new oc($$0, null);
+   public oc(Optional<akq> $$0, Optional<String> $$1, of... $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      this.b = ImmutableSet.copyOf($$2);
    }
 
-   private static oc a(String $$0, oc $$1) {
-      return new oc($$0, $$1);
+   public akq a(dfw $$0) {
+      return ob.a($$0, this.c.orElse(""));
    }
 
-   private oc(String $$0, @Nullable oc $$1) {
-      this.Q = $$0;
-      this.R = $$1;
+   public akq a(dfw $$0, oe $$1, BiConsumer<akq, Supplier<JsonElement>> $$2) {
+      return this.a(ob.a($$0, this.c.orElse("")), $$1, $$2);
    }
 
-   public String a() {
-      return this.Q;
+   public akq a(dfw $$0, String $$1, oe $$2, BiConsumer<akq, Supplier<JsonElement>> $$3) {
+      return this.a(ob.a($$0, $$1 + this.c.orElse("")), $$2, $$3);
    }
 
-   @Nullable
-   public oc b() {
-      return this.R;
+   public akq b(dfw $$0, String $$1, oe $$2, BiConsumer<akq, Supplier<JsonElement>> $$3) {
+      return this.a(ob.a($$0, $$1), $$2, $$3);
    }
 
-   @Override
-   public String toString() {
-      return "#" + this.Q;
+   public akq a(akq $$0, oe $$1, BiConsumer<akq, Supplier<JsonElement>> $$2) {
+      return this.a($$0, $$1, $$2, this::a);
+   }
+
+   public akq a(akq $$0, oe $$1, BiConsumer<akq, Supplier<JsonElement>> $$2, oc.a $$3) {
+      Map<of, akq> $$4 = this.a($$1);
+      $$2.accept($$0, () -> $$3.create($$0, $$4));
+      return $$0;
+   }
+
+   public JsonObject a(akq $$0, Map<of, akq> $$1) {
+      JsonObject $$2 = new JsonObject();
+      this.a.ifPresent($$1x -> $$2.addProperty("parent", $$1x.toString()));
+      if (!$$1.isEmpty()) {
+         JsonObject $$3 = new JsonObject();
+         $$1.forEach(($$1x, $$2x) -> $$3.addProperty($$1x.a(), $$2x.toString()));
+         $$2.add("textures", $$3);
+      }
+
+      return $$2;
+   }
+
+   private Map<of, akq> a(oe $$0) {
+      return Streams.concat(new Stream[]{this.b.stream(), $$0.a()}).collect(ImmutableMap.toImmutableMap(Function.identity(), $$0::a));
+   }
+
+   public interface a {
+      JsonObject create(akq var1, Map<of, akq> var2);
    }
 }

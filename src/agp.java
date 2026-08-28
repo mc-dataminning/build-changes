@@ -1,16 +1,44 @@
-public record agp(int b, int c) implements zb<agb> {
-   public static final ys<vr, agp> a = ys.a(yq.g, agp::b, yq.g, agp::e, agp::new);
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   @Override
-   public zd<agp> a() {
-      return afz.br;
+public record agp(String b, Instant c, long d, @Nullable xk e, xf.b f) implements zf<agh> {
+   public static final yw<vv, agp> a = zf.a(agp::a, agp::new);
+
+   private agp(vv $$0) {
+      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xk::a), new xf.b($$0));
    }
 
-   public void a(agb $$0) {
+   private void a(vv $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      $$0.a(this.e, xk::a);
+      this.f.a($$0);
+   }
+
+   @Override
+   public zh<agp> a() {
+      return agf.bl;
+   }
+
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
-   public int e() {
+   public Instant e() {
       return this.c;
+   }
+
+   public long f() {
+      return this.d;
+   }
+
+   @Nullable
+   public xk g() {
+      return this.e;
+   }
+
+   public xf.b h() {
+      return this.f;
    }
 }

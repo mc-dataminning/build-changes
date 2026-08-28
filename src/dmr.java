@@ -1,124 +1,117 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dmr extends dfi {
+public class dmr extends dfi implements dmy {
    public static final MapCodec<dmr> a = b(dmr::new);
-   public static final int b = 8;
-   public static final dtl c = dtb.aF;
-   protected static final exa[] d = new exa[]{
-      ewx.a(),
-      dfi.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dfi.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dfi.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dfi.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dfi.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      dfi.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      dfi.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      dfi.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
-   };
-   public static final int e = 5;
+   public static final dtr b = dtq.F;
+   public static final dtr c = dtq.C;
+   public static final dtr d = dtq.G;
+   protected static final exp e = dfw.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   public static final double f = e.c(ji.a.b);
 
    @Override
    public MapCodec<dmr> a() {
       return a;
    }
 
-   protected dmr(dsk.d $$0) {
+   public dmr(dsz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(1)));
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(dsl $$0, eoy $$1) {
-      switch ($$1) {
-         case a:
-            return $$0.c(c) < 5;
-         case b:
-            return false;
-         case c:
-            return false;
-         default:
-            return false;
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(b);
+      $$0.a(c);
+      $$0.a(d);
+   }
+
+   @Override
+   public void a(dcu $$0, jd $$1, dta $$2, bsq $$3) {
+      if ($$0 instanceof aqt $$4) {
+         aqu $$5 = dro.a($$3);
+         if ($$5 != null) {
+            $$4.a($$1, dqh.L).ifPresent($$2x -> $$2x.a($$4, $$5));
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void a(dta $$0, dcu $$1, jd $$2, dta $$3, boolean $$4) {
+      if ($$1 instanceof aqt $$5 && $$0.c(b) && !$$0.a($$3.b())) {
+         $$5.a($$2, dqh.L).ifPresent($$1x -> $$1x.a($$5));
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected void a(dta $$0, aqt $$1, jd $$2, ayv $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+         $$1.a($$2, dqh.L).ifPresent($$1x -> $$1x.a($$1));
       }
    }
 
    @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return d[$$0.c(c)];
+   protected dmd a_(dta $$0) {
+      return dmd.c;
    }
 
    @Override
-   protected exa b(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return d[$$0.c(c) - 1];
+   protected exp b(dta $$0, dca $$1, jd $$2, exb $$3) {
+      return e;
    }
 
    @Override
-   protected exa b_(dsl $$0, dbm $$1, ja $$2) {
-      return d[$$0.c(c)];
+   protected exp f(dta $$0, dca $$1, jd $$2) {
+      return e;
    }
 
    @Override
-   protected exa c(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected boolean f_(dsl $$0) {
+   protected boolean f_(dta $$0) {
       return true;
    }
 
+   @Nullable
    @Override
-   protected float d(dsl $$0, dbm $$1, ja $$2) {
-      return $$0.c(c) == 8 ? 0.2F : 1.0F;
+   public dqf a(jd $$0, dta $$1) {
+      return new dro($$0, $$1);
    }
 
    @Override
-   protected boolean a(dsl $$0, dcj $$1, ja $$2) {
-      dsl $$3 = $$1.a_($$2.d());
-      if ($$3.a(avw.co)) {
-         return false;
-      } else {
-         return $$3.a(avw.cp) ? true : dfi.a($$3.k($$1, $$2.d()), jf.b) || $$3.a(this) && $$3.c(c) == 8;
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eoz.c, eoz.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Nullable
+   @Override
+   public dta a(cyb $$0) {
+      return this.o().a(c, Boolean.valueOf($$0.q().b_($$0.a()).a() == eoz.c));
    }
 
    @Override
-   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
-      return !$$0.a($$3, $$4) ? dfk.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected eoy b_(dta $$0) {
+      return $$0.c(c) ? eoz.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected void b(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      if ($$1.a(dcp.b, $$2) > 11) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   @Override
-   protected boolean a(dsl $$0, cxn $$1) {
-      int $$2 = $$0.c(c);
-      if (!$$1.n().a(this.r()) || $$2 >= 8) {
-         return $$2 == 1;
-      } else {
-         return $$1.c() ? $$1.k() == jf.b : true;
+   protected void a(dta $$0, aqt $$1, jd $$2, cuo $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, bps.a(5));
       }
    }
 
    @Nullable
    @Override
-   public dsl a(cxn $$0) {
-      dsl $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         int $$2 = $$1.c(c);
-         return $$1.a(c, Integer.valueOf(Math.min(8, $$2 + 1)));
-      } else {
-         return super.a($$0);
-      }
-   }
-
-   @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(c);
+   public <T extends dqf> dqg<T> a(dcu $$0, dta $$1, dqh<T> $$2) {
+      return !$$0.B ? dfi.a($$2, dqh.L, ($$0x, $$1x, $$2x, $$3) -> dyf.c.a($$0x, $$3.go(), $$3.gp())) : null;
    }
 }

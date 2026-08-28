@@ -1,23 +1,28 @@
-public enum dtw implements azc {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
+public enum dtw implements azj {
+   a(ji.a),
+   b(ji.b);
 
-   private final String e;
-   private final boolean f;
+   private final ji c;
 
-   private dtw(final String $$0, final boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   private dtw(final ji $$0) {
+      this.c = $$0;
+   }
+
+   public ji a() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.e;
+      return this == a ? "upper" : "lower";
    }
 
-   public boolean a() {
-      return this.f;
+   public dtw b() {
+      return this == a ? b : a;
    }
 }

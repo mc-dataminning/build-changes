@@ -1,58 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record bl(de.c b, de.c c, de.c d, de.c e, de.c f) {
-   public static final Codec<bl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               de.c.d.optionalFieldOf("x", de.c.c).forGetter(bl::a),
-               de.c.d.optionalFieldOf("y", de.c.c).forGetter(bl::b),
-               de.c.d.optionalFieldOf("z", de.c.c).forGetter(bl::c),
-               de.c.d.optionalFieldOf("horizontal", de.c.c).forGetter(bl::d),
-               de.c.d.optionalFieldOf("absolute", de.c.c).forGetter(bl::e)
-            )
-            .apply($$0, bl::new)
-   );
-
-   public static bl a(de.c $$0) {
-      return new bl(de.c.c, de.c.c, de.c.c, $$0, de.c.c);
+public class bl extends dv<bl.a> {
+   @Override
+   public Codec<bl.a> a() {
+      return bl.a.a;
    }
 
-   public static bl b(de.c $$0) {
-      return new bl(de.c.c, $$0, de.c.c, de.c.c, de.c.c);
+   public void a(aqu $$0, jd $$1) {
+      aqt $$2 = $$0.A();
+      dta $$3 = $$2.a_($$1);
+      ero $$4 = new ero.a($$2).a(euh.f, $$1.b()).a(euh.a, $$0).a(euh.g, $$3).a(eug.p);
+      erl $$5 = new erl.a($$4).a(Optional.empty());
+      this.a($$0, $$1x -> $$1x.a($$5));
    }
 
-   public static bl c(de.c $$0) {
-      return new bl(de.c.c, de.c.c, de.c.c, de.c.c, $$0);
-   }
+   public static record a(Optional<bg> b, Optional<bg> c) implements dv.a {
+      public static final Codec<bl.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(bl.a::a), bg.a.optionalFieldOf("location").forGetter(bl.a::b)).apply($$0, bl.a::new)
+      );
 
-   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      float $$6 = (float)($$0 - $$3);
-      float $$7 = (float)($$1 - $$4);
-      float $$8 = (float)($$2 - $$5);
-      if (!this.b.d((double)ayg.e($$6)) || !this.c.d((double)ayg.e($$7)) || !this.d.d((double)ayg.e($$8))) {
-         return false;
-      } else {
-         return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));
+      public boolean a(erl $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
-   }
 
-   public de.c a() {
-      return this.b;
-   }
+      @Override
+      public void a(bh $$0) {
+         dv.a.super.a($$0);
+         this.c.ifPresent($$1 -> $$0.a($$1, eug.p, ".location"));
+      }
 
-   public de.c b() {
-      return this.c;
-   }
+      @Override
+      public Optional<bg> a() {
+         return this.b;
+      }
 
-   public de.c c() {
-      return this.d;
-   }
-
-   public de.c d() {
-      return this.e;
-   }
-
-   public de.c e() {
-      return this.f;
+      public Optional<bg> b() {
+         return this.c;
+      }
    }
 }

@@ -1,26 +1,27 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class emp extends ems {
-   public static final MapCodec<emp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lq.e.r().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, emp::new)
-   );
-   private final dfi b;
-   private final float d;
+public class emp extends enk {
+   public static final MapCodec<emp> a = dta.b.xmap(dsz.a::b, dfw::o).listOf().fieldOf("blocks").xmap(emp::new, $$0 -> $$0.e);
+   public static final emp b = new emp(ImmutableList.of(dfy.pa));
+   public static final emp c = new emp(ImmutableList.of(dfy.a));
+   public static final emp d = new emp(ImmutableList.of(dfy.a, dfy.pa));
+   private final ImmutableList<dfw> e;
 
-   public emp(dfi $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public emp(List<dfw> $$0) {
+      this.e = ImmutableList.copyOf($$0);
+   }
+
+   @Nullable
+   @Override
+   public enn.c a(dcx $$0, jd $$1, jd $$2, enn.c $$3, enn.c $$4, enj $$5) {
+      return this.e.contains($$4.b().b()) ? null : $$4;
    }
 
    @Override
-   public boolean a(dsl $$0, ayo $$1) {
-      return $$0.a(this.b) && $$1.i() < this.d;
-   }
-
-   @Override
-   protected emt<?> a() {
-      return emt.e;
+   protected enm<?> a() {
+      return enm.e;
    }
 }

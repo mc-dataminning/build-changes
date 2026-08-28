@@ -1,53 +1,53 @@
 public class elf {
-   private static final akk[] a = new akk[]{
-      new akk("nether_fossils/fossil_1"),
-      new akk("nether_fossils/fossil_2"),
-      new akk("nether_fossils/fossil_3"),
-      new akk("nether_fossils/fossil_4"),
-      new akk("nether_fossils/fossil_5"),
-      new akk("nether_fossils/fossil_6"),
-      new akk("nether_fossils/fossil_7"),
-      new akk("nether_fossils/fossil_8"),
-      new akk("nether_fossils/fossil_9"),
-      new akk("nether_fossils/fossil_10"),
-      new akk("nether_fossils/fossil_11"),
-      new akk("nether_fossils/fossil_12"),
-      new akk("nether_fossils/fossil_13"),
-      new akk("nether_fossils/fossil_14")
-   };
-
-   public static void a(emz $$0, ejc $$1, ayo $$2, ja $$3) {
-      dlv $$4 = dlv.a($$2);
-      $$1.a(new elf.a($$0, ac.a(a, $$2), $$3, $$4));
-   }
-
-   public static class a extends ejh {
-      public a(emz $$0, akk $$1, ja $$2, dlv $$3) {
-         super(ejo.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+   public static class a extends ejq {
+      public a(jd $$0) {
+         super(ekd.aa, 0, new eje($$0));
       }
 
-      public a(emz $$0, tx $$1) {
-         super(ejo.ac, $$1, $$0, $$1x -> a(dlv.valueOf($$1.l("Rot"))));
-      }
-
-      private static emu a(dlv $$0) {
-         return new emu().a($$0).a(dkf.a).a(ema.d);
+      public a(ua $$0) {
+         super(ekd.aa, $$0);
       }
 
       @Override
-      protected void a(ejn $$0, tx $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
+      protected void a(ekc $$0, ua $$1) {
       }
 
       @Override
-      protected void a(String $$0, ja $$1, dcv $$2, ayo $$3, eip $$4) {
+      public void a(ddq $$0, ddo $$1, dux $$2, ayv $$3, eje $$4, dcb $$5, jd $$6) {
+         int $$7 = $$0.a(dyv.a.c, this.f.h(), this.f.j());
+         jd.a $$8 = new jd.a(this.f.h(), $$7, this.f.j());
+
+         while ($$8.v() > $$0.I_()) {
+            dta $$9 = $$0.a_($$8);
+            dta $$10 = $$0.a_($$8.d());
+            if ($$10 == dfy.aV.o() || $$10 == dfy.b.o() || $$10 == dfy.g.o() || $$10 == dfy.c.o() || $$10 == dfy.e.o()) {
+               dta $$11 = !$$9.i() && !this.b($$9) ? $$9 : dfy.I.o();
+
+               for (ji $$12 : ji.values()) {
+                  jd $$13 = $$8.a($$12);
+                  dta $$14 = $$0.a_($$13);
+                  if ($$14.i() || this.b($$14)) {
+                     jd $$15 = $$13.d();
+                     dta $$16 = $$0.a_($$15);
+                     if (($$16.i() || this.b($$16)) && $$12 != ji.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
+               }
+
+               this.f = new eje($$8);
+               this.a($$0, $$4, $$3, $$8, erh.G, null);
+               return;
+            }
+
+            $$8.e(0, -1, 0);
+         }
       }
 
-      @Override
-      public void a(ddc $$0, dda $$1, dui $$2, ayo $$3, eip $$4, dbn $$5, ja $$6) {
-         $$4.b(this.b.b(this.c, this.d));
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      private boolean b(dta $$0) {
+         return $$0 == dfy.G.o() || $$0 == dfy.H.o();
       }
    }
 }

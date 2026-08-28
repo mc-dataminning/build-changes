@@ -1,37 +1,37 @@
-import org.joml.Vector3f;
+import java.util.function.IntFunction;
 
-public record fgk(fgk.c a, fgm... b) {
-   public interface a {
-      Vector3f apply(Vector3f var1, float var2, fgm[] var3, int var4, int var5, float var6);
+public enum fgk {
+   a(0, "options.narrator.off"),
+   b(1, "options.narrator.all"),
+   c(2, "options.narrator.chat"),
+   d(3, "options.narrator.system");
+
+   private static final IntFunction<fgk> e = axd.a(fgk::a, values(), axd.a.b);
+   private final int f;
+   private final wy g;
+
+   private fgk(final int $$0, final String $$1) {
+      this.f = $$0;
+      this.g = wy.c($$1);
    }
 
-   public static class b {
-      public static final fgk.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[$$3].b();
-         Vector3f $$7 = $$2[$$4].b();
-         return $$6.lerp($$7, $$1, $$0).mul($$5);
-      };
-      public static final fgk.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
-         Vector3f $$7 = $$2[$$3].b();
-         Vector3f $$8 = $$2[$$4].b();
-         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
-         $$0.set(
-            ayg.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
-            ayg.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
-            ayg.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
-         );
-         return $$0;
-      };
+   public int a() {
+      return this.f;
    }
 
-   public interface c {
-      void apply(fxq var1, Vector3f var2);
+   public wy b() {
+      return this.g;
    }
 
-   public static class d {
-      public static final fgk.c a = fxq::a;
-      public static final fgk.c b = fxq::b;
-      public static final fgk.c c = fxq::c;
+   public static fgk a(int $$0) {
+      return e.apply($$0);
+   }
+
+   public boolean c() {
+      return this == b || this == c;
+   }
+
+   public boolean d() {
+      return this == b || this == d;
    }
 }

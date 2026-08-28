@@ -1,20 +1,37 @@
-public record agk(xl.a b) implements zb<agb> {
-   public static final ys<vr, agk> a = zb.a(agk::a, agk::new);
+public class agk implements zf<agh> {
+   public static final yw<vv, agk> a = zf.a(agk::a, agk::new);
+   private final int b;
+   private final jd c;
 
-   private agk(vr $$0) {
-      this(xl.a.a($$0));
+   public agk(int $$0, jd $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(vr $$0) {
-      xl.a.a($$0, this.b);
+   private agk(vv $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
+   }
+
+   private void a(vv $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zd<agk> a() {
-      return afz.bm;
+   public zh<agk> a() {
+      return agf.bg;
    }
 
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public jd e() {
+      return this.c;
    }
 }

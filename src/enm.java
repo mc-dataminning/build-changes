@@ -1,112 +1,26 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public class enm {
-   private static final double a = 1.0181268882175227;
-   private static final double b = 0.3333333333333333;
-   private final double c;
-   private final enn d;
-   private final enn e;
-   private final double f;
-   private final enm.a g;
+public interface enm<P extends enk> {
+   Codec<enk> a = lt.af.r().dispatch("processor_type", enk::a, enm::codec);
+   Codec<enl> b = a.listOf().xmap(enl::new, enl::a);
+   Codec<enl> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
+   Codec<jm<enl>> d = akm.a(lu.aS, c);
+   enm<emp> e = a("block_ignore", emp.a);
+   enm<emr> f = a("block_rot", emr.a);
+   enm<emu> g = a("gravity", emu.a);
+   enm<emv> h = a("jigsaw_replacement", emv.a);
+   enm<eng> i = a("rule", eng.a);
+   enm<emy> j = a("nop", emy.a);
+   enm<emo> k = a("block_age", emo.a);
+   enm<emn> l = a("blackstone_replace", emn.a);
+   enm<emw> m = a("lava_submerged_block", emw.a);
+   enm<end> n = a("protected_blocks", end.b);
+   enm<emt> o = a("capped", emt.a);
 
-   @Deprecated
-   public static enm a(ayo $$0, enm.a $$1) {
-      return new enm($$0, $$1, false);
-   }
+   MapCodec<P> codec();
 
-   public static enm a(ayo $$0, int $$1, double... $$2) {
-      return b($$0, new enm.a($$1, new DoubleArrayList($$2)));
-   }
-
-   public static enm b(ayo $$0, enm.a $$1) {
-      return new enm($$0, $$1, true);
-   }
-
-   private enm(ayo $$0, enm.a $$1, boolean $$2) {
-      int $$3 = $$1.c;
-      DoubleList $$4 = $$1.d;
-      this.g = $$1;
-      if ($$2) {
-         this.d = enn.b($$0, $$3, $$4);
-         this.e = enn.b($$0, $$3, $$4);
-      } else {
-         this.d = enn.a($$0, $$3, $$4);
-         this.e = enn.a($$0, $$3, $$4);
-      }
-
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = Integer.MIN_VALUE;
-      DoubleListIterator $$7 = $$4.iterator();
-
-      while ($$7.hasNext()) {
-         int $$8 = $$7.nextIndex();
-         double $$9 = $$7.nextDouble();
-         if ($$9 != 0.0) {
-            $$5 = Math.min($$5, $$8);
-            $$6 = Math.max($$6, $$8);
-         }
-      }
-
-      this.c = 0.16666666666666666 / a($$6 - $$5);
-      this.f = (this.d.a() + this.e.a()) * this.c;
-   }
-
-   public double a() {
-      return this.f;
-   }
-
-   private static double a(int $$0) {
-      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
-   }
-
-   public double a(double $$0, double $$1, double $$2) {
-      double $$3 = $$0 * 1.0181268882175227;
-      double $$4 = $$1 * 1.0181268882175227;
-      double $$5 = $$2 * 1.0181268882175227;
-      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
-   }
-
-   public enm.a b() {
-      return this.g;
-   }
-
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("NormalNoise {");
-      $$0.append("first: ");
-      this.d.a($$0);
-      $$0.append(", second: ");
-      this.e.a($$0);
-      $$0.append("}");
-   }
-
-   public static record a(int c, DoubleList d) {
-      public static final Codec<enm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(enm.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(enm.a::b))
-               .apply($$0, enm.a::new)
-      );
-      public static final Codec<jj<enm.a>> b = akg.a(lr.aO, a);
-
-      public a(int $$0, List<Double> $$1) {
-         this($$0, new DoubleArrayList($$1));
-      }
-
-      public a(int $$0, double $$1, double... $$2) {
-         this($$0, ac.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
-      }
-
-      public int a() {
-         return this.c;
-      }
-
-      public DoubleList b() {
-         return this.d;
-      }
+   static <P extends enk> enm<P> a(String $$0, MapCodec<P> $$1) {
+      return jz.a(lt.af, $$0, () -> $$1);
    }
 }

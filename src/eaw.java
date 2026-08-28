@@ -1,48 +1,31 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class eaw extends ebl<edw> {
-   public eaw(Codec<edw> $$0) {
-      super($$0);
+public class eaw extends dzs {
+   private final ka a;
+   private final dyz b;
+   private final dzj c;
+   private final dzm.o d;
+
+   public eaw(dyy $$0, ka $$1, dcw $$2, dyz $$3, dzj $$4, dzm.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   @Override
-   public boolean a(ebn<edw> $$0) {
-      ayo $$1 = $$0.d();
-      ddc $$2 = $$0.b();
-      dbn $$3 = new dbn($$0.e());
-      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      ja.a $$6 = new ja.a();
-      IntListIterator var8 = $$4.iterator();
+   @Deprecated
+   public Optional<dta> a(Function<jd, jm<ddu>> $$0, duw $$1, jd $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   }
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
+   @Deprecated
+   public ka c() {
+      return this.a;
+   }
 
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            ja $$9 = $$2.a(dyg.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
-               $$2.a($$9, dfk.cv.o(), 2);
-               bqp.a($$2, $$1, $$9, eqs.b);
-               dsl $$10 = dfk.cp.o();
-
-               for (jf $$11 : jf.c.a) {
-                  ja $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
+   public dzj d() {
+      return this.c;
    }
 }

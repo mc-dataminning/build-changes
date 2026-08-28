@@ -1,57 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
+import javax.annotation.Nullable;
 
-public class dk extends ds<dk.a> {
-   @Override
-   public Codec<dk.a> a() {
-      return dk.a.a;
+public record dk(ua c) {
+   public static final Codec<dk> a = uy.j.xmap(dk::new, dk::a);
+   public static final yw<ByteBuf, dk> b = yu.o.a(dk::new, dk::a);
+
+   public boolean a(cuo $$0) {
+      cxf $$1 = $$0.a(kq.b, cxf.a);
+      return $$1.b(this.c);
    }
 
-   public void a(aqn $$0, cud $$1, bsh $$2) {
-      eqw $$3 = bu.b($$0, $$2);
-      this.a($$0, $$2x -> $$2x.a($$1, $$3));
+   public boolean a(bsq $$0) {
+      return this.a(b($$0));
    }
 
-   public static record a(Optional<bf> b, Optional<cp> c, Optional<bf> d) implements ds.a {
-      public static final Codec<dk.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bu.b.optionalFieldOf("player").forGetter(dk.a::a),
-                  cp.a.optionalFieldOf("item").forGetter(dk.a::b),
-                  bu.b.optionalFieldOf("entity").forGetter(dk.a::c)
-               )
-               .apply($$0, dk.a::new)
-      );
+   public boolean a(@Nullable ux $$0) {
+      return $$0 != null && up.a(this.c, $$0, true);
+   }
 
-      public static an<dk.a> a(Optional<bf> $$0, cp.a $$1, Optional<bf> $$2) {
-         return am.T.a(new dk.a($$0, Optional.of($$1.b()), $$2));
+   public static ua b(bsq $$0) {
+      ua $$1 = $$0.f(new ua());
+      if ($$0 instanceof cmv) {
+         cuo $$2 = ((cmv)$$0).fZ().f();
+         if (!$$2.e()) {
+            $$1.a("SelectedItem", $$2.a($$0.dS()));
+         }
       }
 
-      public static an<dk.a> a(cp.a $$0, Optional<bf> $$1) {
-         return a(Optional.empty(), $$0, $$1);
-      }
+      return $$1;
+   }
 
-      public boolean a(cud $$0, eqw $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
-      }
-
-      @Override
-      public void a(bg $$0) {
-         ds.a.super.a($$0);
-         $$0.a(this.d, ".entity");
-      }
-
-      @Override
-      public Optional<bf> a() {
-         return this.b;
-      }
-
-      public Optional<cp> b() {
-         return this.c;
-      }
-
-      public Optional<bf> c() {
-         return this.d;
-      }
+   public ua a() {
+      return this.c;
    }
 }

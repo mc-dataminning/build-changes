@@ -1,99 +1,107 @@
-import javax.annotation.Nullable;
+public abstract class gtb implements gtt {
+   protected gtq a;
+   protected final avp b;
+   protected final akq c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected gtt.a k = gtt.a.b;
+   protected boolean l;
+   protected ayv m;
 
-public class gtb implements gul<gtb> {
-   public static final akd a = new akd("sounds", ".ogg");
-   private final akk b;
-   private final bpp c;
-   private final bpp d;
-   private final int e;
-   private final gtb.a f;
-   private final boolean g;
-   private final boolean h;
-   private final int i;
-
-   public gtb(String $$0, bpp $$1, bpp $$2, int $$3, gtb.a $$4, boolean $$5, boolean $$6, int $$7) {
-      this.b = new akk($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+   protected gtb(avn $$0, avp $$1, ayv $$2) {
+      this($$0.a(), $$1, $$2);
    }
 
-   public akk a() {
-      return this.b;
+   protected gtb(akq $$0, avp $$1, ayv $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
    }
 
-   public akk b() {
-      return a.a(this.b);
-   }
-
-   public bpp c() {
+   @Override
+   public akq a() {
       return this.c;
    }
 
-   public bpp d() {
-      return this.d;
-   }
-
    @Override
-   public int e() {
-      return this.e;
-   }
+   public guz a(guy $$0) {
+      if (this.c.equals(guy.c)) {
+         this.a = guy.e;
+         return guy.d;
+      } else {
+         guz $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = guy.b;
+         } else {
+            this.a = $$1.a(this.m);
+         }
 
-   public gtb a(ayo $$0) {
-      return this;
-   }
-
-   @Override
-   public void a(gug $$0) {
-      if (this.h) {
-         $$0.a(this);
+         return $$1;
       }
    }
 
-   public gtb.a f() {
-      return this.f;
+   @Override
+   public gtq b() {
+      return this.a;
    }
 
-   public boolean g() {
-      return this.g;
+   @Override
+   public avp c() {
+      return this.b;
    }
 
-   public boolean h() {
-      return this.h;
-   }
-
-   public int i() {
+   @Override
+   public boolean d() {
       return this.i;
    }
 
    @Override
-   public String toString() {
-      return "Sound[" + this.b + "]";
+   public int e() {
+      return this.j;
    }
 
-   public static enum a {
-      a("file"),
-      b("event");
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
 
-      private final String c;
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
 
-      private a(final String $$0) {
-         this.c = $$0;
-      }
+   @Override
+   public double h() {
+      return this.f;
+   }
 
-      @Nullable
-      public static gtb.a a(String $$0) {
-         for (gtb.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
-         }
+   @Override
+   public double i() {
+      return this.g;
+   }
 
-         return null;
-      }
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public gtt.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

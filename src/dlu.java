@@ -1,48 +1,43 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlu extends dfi {
-   public static final MapCodec<dlu> h = b(dlu::new);
-   public static final dtj<jf.a> i = dtb.I;
-
-   @Override
-   public MapCodec<? extends dlu> a() {
-      return h;
-   }
-
-   public dlu(dsk.d $$0) {
-      super($$0);
-      this.k(this.o().a(i, jf.a.b));
-   }
+public class dlu extends dfk {
+   public static final MapCodec<dlu> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dtp.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u()).apply($$0, dlu::new)
+   );
+   public static final dtr f = dtq.w;
 
    @Override
-   protected dsl a(dsl $$0, dlv $$1) {
-      return b($$0, $$1);
+   public MapCodec<dlu> a() {
+      return e;
    }
 
-   public static dsl b(dsl $$0, dlv $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((jf.a)$$0.c(i)) {
-               case a:
-                  return $$0.a(i, jf.a.c);
-               case c:
-                  return $$0.a(i, jf.a.a);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
+   protected dlu(dtp $$0, dsz.d $$1) {
+      super($$1, $$0);
+      this.k(this.E.b().a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(i);
+   protected int g(dta $$0) {
+      return $$0.c(f) ? 15 : 0;
    }
 
    @Override
-   public dsl a(cxn $$0) {
-      return this.o().a(i, $$0.k().o());
+   protected dta a(dta $$0, int $$1) {
+      return $$0.a(f, Boolean.valueOf($$1 > 0));
+   }
+
+   @Override
+   protected int b(dcu $$0, jd $$1) {
+      Class<? extends bsq> $$2 = switch (this.d.f()) {
+         case a -> bsq.class;
+         case b -> btl.class;
+      };
+      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
+   }
+
+   @Override
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(f);
    }
 }

@@ -1,101 +1,106 @@
+import com.google.common.collect.ImmutableMap;
+import com.mojang.logging.LogUtils;
 import java.util.Map;
-import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-public abstract class buv<E extends btc> implements buw<E> {
-   public static final int a = 60;
-   protected final Map<ccg<?>, cch> b;
-   private buv.a c = buv.a.a;
-   private long d;
-   private final int e;
-   private final int f;
+public class buv {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<bsw<? extends btl>, but> b = ImmutableMap.builder()
+      .put(bsw.a, cgi.s().a())
+      .put(bsw.c, cgl.s().a())
+      .put(bsw.d, ciu.s().a())
+      .put(bsw.f, cgo.go().a())
+      .put(bsw.g, cex.s().a())
+      .put(bsw.h, cfd.gy().a())
+      .put(bsw.i, cjk.s().a())
+      .put(bsw.l, cjl.gp().a())
+      .put(bsw.p, cff.gB().a())
+      .put(bsw.o, cgt.s().a())
+      .put(bsw.q, cjm.s().a())
+      .put(bsw.t, cfh.s().a())
+      .put(bsw.u, cez.s().a())
+      .put(bsw.w, cfj.s().a())
+      .put(bsw.x, cjn.s().a())
+      .put(bsw.y, cfk.gm().a())
+      .put(bsw.z, chf.s().a())
+      .put(bsw.B, cjp.s().a())
+      .put(bsw.D, cjq.s().a())
+      .put(bsw.H, cjr.s().a())
+      .put(bsw.I, cjs.s().a())
+      .put(bsw.F, chy.t().a())
+      .put(bsw.J, cju.t().a())
+      .put(bsw.m, ckx.s().a())
+      .put(bsw.Q, cfm.s().a())
+      .put(bsw.R, cgw.gm().a())
+      .put(bsw.T, cjv.x().a())
+      .put(bsw.U, cjw.s().a())
+      .put(bsw.W, btd.gm().a())
+      .put(bsw.X, chc.t().a())
+      .put(bsw.Y, cjx.gm().a())
+      .put(bsw.Z, clf.s().a())
+      .put(bsw.ab, chg.gL().a())
+      .put(bsw.ac, cku.gq().a())
+      .put(bsw.ad, cjz.t().a())
+      .put(bsw.af, cfo.s().a())
+      .put(bsw.an, chj.gx().a())
+      .put(bsw.ap, cka.s().a())
+      .put(bsw.as, cfj.s().a())
+      .put(bsw.at, chf.s().a())
+      .put(bsw.au, cfq.s().a())
+      .put(bsw.aw, cfr.gx().a())
+      .put(bsw.ax, cfs.gw().a())
+      .put(bsw.ay, ckb.gs().a())
+      .put(bsw.az, cft.s().a())
+      .put(bsw.aA, cll.gt().a())
+      .put(bsw.aB, clo.x().a())
+      .put(bsw.aC, cke.t().a())
+      .put(bsw.by, cmv.fN().a())
+      .put(bsw.aD, cfu.s().a())
+      .put(bsw.aF, cez.s().a())
+      .put(bsw.aG, cfw.t().a())
+      .put(bsw.aH, ckg.s().a())
+      .put(bsw.aI, cez.s().a())
+      .put(bsw.aJ, cfy.s().a())
+      .put(bsw.aK, ckh.s().a())
+      .put(bsw.aM, cki.s().a())
+      .put(bsw.aN, cjj.s().a())
+      .put(bsw.aO, chm.s().a())
+      .put(bsw.aP, ckb.gs().a())
+      .put(bsw.aR, cht.s().a())
+      .put(bsw.aS, cga.s().a())
+      .put(bsw.aW, ckm.t().a())
+      .put(bsw.aX, cgb.gm().a())
+      .put(bsw.aY, cjj.s().a())
+      .put(bsw.aZ, cko.t().a())
+      .put(bsw.ba, cgz.go().a())
+      .put(bsw.be, chj.gx().a())
+      .put(bsw.bg, cez.s().a())
+      .put(bsw.bh, cgd.x().a())
+      .put(bsw.bi, ckp.t().a())
+      .put(bsw.bj, cmi.gv().a())
+      .put(bsw.bk, ckq.t().a())
+      .put(bsw.bm, clz.s().a())
+      .put(bsw.bl, btn.A().a())
+      .put(bsw.bo, ckr.t().a())
+      .put(bsw.bp, cis.t().a())
+      .put(bsw.bq, cjj.s().a())
+      .put(bsw.bs, cgf.gy().a())
+      .put(bsw.bt, ckt.s().a())
+      .put(bsw.bu, cku.gq().a())
+      .put(bsw.bv, chq.s().a())
+      .put(bsw.bw, cku.gq().a())
+      .put(bsw.bx, ckw.gw().a())
+      .build();
 
-   public buv(Map<ccg<?>, cch> $$0) {
-      this($$0, 60);
+   public static but a(bsw<? extends btl> $$0) {
+      return b.get($$0);
    }
 
-   public buv(Map<ccg<?>, cch> $$0, int $$1) {
-      this($$0, $$1, $$1);
+   public static boolean b(bsw<?> $$0) {
+      return b.containsKey($$0);
    }
 
-   public buv(Map<ccg<?>, cch> $$0, int $$1, int $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.b = $$0;
-   }
-
-   @Override
-   public buv.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(aqm $$0, E $$1, long $$2) {
-      if (this.a($$1) && this.a($$0, $$1)) {
-         this.c = buv.a.b;
-         int $$3 = this.e + $$0.E_().a(this.f + 1 - this.e);
-         this.d = $$2 + (long)$$3;
-         this.d($$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void d(aqm $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void f(aqm $$0, E $$1, long $$2) {
-      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
-         this.c($$0, $$1, $$2);
-      } else {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   protected void c(aqm $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void g(aqm $$0, E $$1, long $$2) {
-      this.c = buv.a.a;
-      this.b($$0, $$1, $$2);
-   }
-
-   protected void b(aqm $$0, E $$1, long $$2) {
-   }
-
-   protected boolean a(aqm $$0, E $$1, long $$2) {
-      return false;
-   }
-
-   protected boolean a(long $$0) {
-      return $$0 > this.d;
-   }
-
-   protected boolean a(aqm $$0, E $$1) {
-      return true;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   protected boolean a(E $$0) {
-      for (Entry<ccg<?>, cch> $$1 : this.b.entrySet()) {
-         ccg<?> $$2 = $$1.getKey();
-         cch $$3 = $$1.getValue();
-         if (!$$0.dV().a($$2, $$3)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static enum a {
-      a,
-      b;
+   public static void a() {
+      lt.f.t().filter($$0 -> $$0.f() != bto.h).filter($$0 -> !b((bsw<?>)$$0)).map(lt.f::b).forEach($$0 -> ad.a("Entity " + $$0 + " has no attributes"));
    }
 }

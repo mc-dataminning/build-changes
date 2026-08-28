@@ -1,99 +1,59 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class fdk extends gvu {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wu b = wu.c("mco.configure.world.buttons.invite");
-   private static final wu c = wu.c("mco.configure.world.invite.profile.name").b(-6250336);
-   private static final wu A = wu.c("mco.configure.world.players.inviting").b(-6250336);
-   private static final wu B = wu.c("mco.configure.world.players.error").b(-65536);
-   private final flh C = new flh(this);
-   private fid D;
-   private fhu E;
-   private final fbv F;
-   private final fdf G;
-   private final fnl H;
-   @Nullable
-   private wu I;
+public abstract class fdk {
+   public final int a;
+   public final int b;
+   public final int c;
+   public final int d;
 
-   public fdk(fdf $$0, fnl $$1, fbv $$2) {
-      super(b);
-      this.G = $$0;
-      this.H = $$1;
-      this.F = $$2;
+   public fdk(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public void aP_() {
-      this.C.a(b, this.o);
-      fll $$0 = this.C.c(fll.d().a(8));
-      this.D = new fid(this.l.h, 200, 20, wu.c("mco.configure.world.invite.profile.name"));
-      $$0.a(fld.a(this.o, this.D, c));
-      this.E = $$0.a(fhu.a(b, $$0x -> this.D()).a(200).a());
-      this.C.b(fhu.a(wt.k, $$0x -> this.d()).a(200).a());
-      this.C.a($$1 -> {
-         fhs var10000 = this.c($$1);
-      });
-      this.c();
+   public void a(fht $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
    }
 
-   @Override
-   protected void c() {
-      this.C.a();
+   protected abstract void a(fht var1, int var2, int var3, boolean var4);
+
+   public int a() {
+      return this.c + this.a;
    }
 
-   @Override
-   protected void aE_() {
-      this.b(this.D);
+   public int b() {
+      return this.d + this.b;
    }
 
-   private void D() {
-      if (azd.h(this.D.a())) {
-         this.a(B);
-      } else {
-         long $$0 = this.F.a;
-         String $$1 = this.D.a().trim();
-         this.E.j = false;
-         this.D.e(false);
-         this.a(A);
-         CompletableFuture.<fbv>supplyAsync(() -> {
-            try {
-               return fbe.a().a($$0, $$1);
-            } catch (Exception var4) {
-               a.error("Couldn't invite user");
-               return null;
-            }
-         }, ac.h()).thenAcceptAsync($$0x -> {
-            if ($$0x != null) {
-               this.F.h = $$0x.h;
-               this.l.a(new fdq(this.G, this.F));
-            } else {
-               this.a(B);
-            }
+   public abstract void a(int var1);
 
-            this.D.e(true);
-            this.E.j = true;
-         }, this.p);
+   public static void a(fht $$0, List<fdk> $$1, gwi<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (fdk $$7 : $$1) {
+         if ($$2.b() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
+         }
       }
    }
 
-   private void a(wu $$0) {
-      this.I = $$0;
-      this.l.aV().c($$0);
-   }
+   public static void a(gwi<?> $$0, fjc.a<?> $$1, List<fdk> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.aG_().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.b($$6);
+         int $$7 = $$0.s();
+         int $$8 = $$0.g($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
 
-   @Override
-   public void d() {
-      this.l.a(this.H);
-   }
-
-   @Override
-   public void a(fhh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.I != null) {
-         $$0.a(this.o, this.I, this.m / 2, this.E.E() + this.E.w() + 8, -1);
+         for (fdk $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
+            }
+         }
       }
    }
 }

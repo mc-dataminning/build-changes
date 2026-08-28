@@ -1,41 +1,48 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class efu extends eft {
-   public static final MapCodec<efu> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, efu::new));
-   protected final List<dsl> h;
+public class efu extends efq {
+   public static final MapCodec<efu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bpv.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, efu::new)
+   );
+   private final bpv b;
 
-   protected static <P extends efu> P4<Mu<P>, Long, enm.a, Float, List<dsl>> b(Instance<P> $$0) {
-      return a($$0).and(Codec.list(dsl.b).fieldOf("states").forGetter($$0x -> $$0x.h));
-   }
-
-   public efu(long $$0, enm.a $$1, float $$2, List<dsl> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public efu(bpv $$0, bpv $$1, bpv $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
    protected efr<?> a() {
-      return efr.d;
+      return efr.c;
    }
 
    @Override
-   public dsl a(ayo $$0, ja $$1) {
-      return this.a(this.h, $$1, (double)this.e);
+   protected void a(dda $$0, efq.b $$1, ayv $$2, efa $$3, int $$4, efq.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
+         }
+      }
    }
 
-   protected dsl a(List<dsl> $$0, ja $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
+   @Override
+   public int a(ayv $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
    }
 
-   protected dsl a(List<dsl> $$0, double $$1) {
-      double $$2 = ayg.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   @Override
+   public int a(ayv $$0, int $$1, efa $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(ayv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

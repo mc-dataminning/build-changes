@@ -1,89 +1,38 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
+import javax.annotation.Nullable;
 
 public class ceh {
-   private final ja a;
-   private final jj<cej> b;
-   private int c;
-   private final Runnable d;
-
-   public static Codec<ceh> a(Runnable $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  ja.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
-                  akh.a(lr.Z).fieldOf("type").forGetter($$0xx -> $$0xx.b),
-                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
-                  RecordCodecBuilder.point($$0)
-               )
-               .apply($$1, ceh::new)
-      );
+   @Nullable
+   public static eww a(btu $$0, int $$1, int $$2) {
+      boolean $$3 = cei.a($$0, $$1);
+      return cel.a($$0, () -> {
+         jd $$4 = cel.a($$0.dT(), $$1, $$2);
+         return a($$0, $$1, $$3, $$4);
+      });
    }
 
-   private ceh(ja $$0, jj<cej> $$1, int $$2, Runnable $$3) {
-      this.a = $$0.i();
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   @Nullable
+   public static eww a(btu $$0, int $$1, int $$2, eww $$3, double $$4) {
+      eww $$5 = $$3.a($$0.dv(), $$0.dx(), $$0.dB());
+      boolean $$6 = cei.a($$0, $$1);
+      return cel.a($$0, () -> {
+         jd $$6x = cel.a($$0.dT(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
+         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
+      });
    }
 
-   public ceh(ja $$0, jj<cej> $$1, Runnable $$2) {
-      this($$0, $$1, $$1.a().b(), $$2);
+   @Nullable
+   public static eww a(btu $$0, int $$1, int $$2, eww $$3) {
+      eww $$4 = $$0.do().d($$3);
+      boolean $$5 = cei.a($$0, $$1);
+      return cel.a($$0, () -> {
+         jd $$5x = cel.a($$0.dT(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
+         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
+      });
    }
 
-   @Deprecated
-   @azl
-   public int a() {
-      return this.c;
-   }
-
-   protected boolean b() {
-      if (this.c <= 0) {
-         return false;
-      } else {
-         this.c--;
-         this.d.run();
-         return true;
-      }
-   }
-
-   protected boolean c() {
-      if (this.c >= this.b.a().b()) {
-         return false;
-      } else {
-         this.c++;
-         this.d.run();
-         return true;
-      }
-   }
-
-   public boolean d() {
-      return this.c > 0;
-   }
-
-   public boolean e() {
-      return this.c != this.b.a().b();
-   }
-
-   public ja f() {
-      return this.a;
-   }
-
-   public jj<cej> g() {
-      return this.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((ceh)$$0).a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   @Nullable
+   private static jd a(btu $$0, int $$1, boolean $$2, jd $$3) {
+      jd $$4 = cel.a($$0, $$1, $$0.dT(), $$3);
+      return !cei.a($$4, $$0) && !cei.a($$2, $$0, $$4) && !cei.a($$0.J(), $$4) && !cei.b($$0, $$4) ? $$4 : null;
    }
 }

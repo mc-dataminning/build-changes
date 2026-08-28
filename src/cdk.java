@@ -1,42 +1,30 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
 import java.util.Set;
 
-public class cdk extends cdm<cly> {
-   private static final int a = 40;
-
-   public cdk() {
-      super(40);
-   }
-
-   protected void a(aqm $$0, cly $$1) {
-      akj<dcg> $$2 = $$0.af();
-      ja $$3 = $$1.dr();
-      List<ji> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               ja $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gy().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(ji.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bue<?> $$10 = $$1.dV();
-      if (!$$4.isEmpty()) {
-         $$10.a(ccg.f, $$4);
-      } else {
-         $$10.b(ccg.f);
-      }
+public class cdk extends cdw<btl> {
+   @Override
+   public Set<ccq<?>> a() {
+      return ImmutableSet.of(ccq.x, ccq.y);
    }
 
    @Override
-   public Set<ccg<?>> a() {
-      return ImmutableSet.of(ccg.f);
+   protected void a(aqt $$0, btl $$1) {
+      buo<?> $$2 = $$1.dU();
+      brj $$3 = $$1.ez();
+      if ($$3 != null) {
+         $$2.a(ccq.x, $$1.ez());
+         bsq $$4 = $$3.d();
+         if ($$4 instanceof btl) {
+            $$2.a(ccq.y, (btl)$$4);
+         }
+      } else {
+         $$2.b(ccq.x);
+      }
+
+      $$2.c(ccq.y).ifPresent($$2x -> {
+         if (!$$2x.bE() || $$2x.dQ() != $$0) {
+            $$2.b(ccq.y);
+         }
+      });
    }
 }

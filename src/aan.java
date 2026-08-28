@@ -1,21 +1,16 @@
-public record aan(ja c) implements aac {
-   public static final ys<vr, aan> a = aac.a(aan::a, aan::new);
-   public static final aac.b<aan> b = aac.a("debug/poi_removed");
+public record aan() implements aai {
+   public static final yw<vv, aan> a = aai.a(aan::a, aan::new);
+   public static final aai.b<aan> b = aai.a("debug/game_test_clear");
 
-   private aan(vr $$0) {
-      this($$0.e());
+   private aan(vv $$0) {
+      this();
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.c);
+   private void a(vv $$0) {
    }
 
    @Override
-   public aac.b<aan> a() {
+   public aai.b<aan> a() {
       return b;
-   }
-
-   public ja b() {
-      return this.c;
    }
 }

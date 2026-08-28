@@ -1,116 +1,71 @@
-import com.mojang.logging.LogUtils;
-import java.io.PrintStream;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import java.util.Optional;
 
-public class akm {
-   public static final PrintStream a = System.out;
-   private static volatile boolean c;
-   private static final Logger d = LogUtils.getLogger();
-   public static final AtomicLong b = new AtomicLong(-1L);
+public final class akm<E> implements Codec<jm<E>> {
+   private final akp<? extends jz<E>> a;
+   private final Codec<E> b;
+   private final boolean c;
 
-   public static void a() {
-      if (!c) {
-         c = true;
-         Instant $$0 = Instant.now();
-         if (lq.aA.f().isEmpty()) {
-            throw new IllegalStateException("Unable to load registries");
+   public static <E> akm<E> a(akp<? extends jz<E>> $$0, Codec<E> $$1) {
+      return a($$0, $$1, true);
+   }
+
+   public static <E> akm<E> a(akp<? extends jz<E>> $$0, Codec<E> $$1, boolean $$2) {
+      return new akm<>($$0, $$1, $$2);
+   }
+
+   private akm(akp<? extends jz<E>> $$0, Codec<E> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <T> DataResult<T> a(jm<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof ako<?> $$3) {
+         Optional<jp<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+            }
+
+            return (DataResult<T>)$$0.d().map($$2x -> akq.a.encode($$2x.a(), $$1, $$2), $$2x -> this.b.encode($$2x, $$1, $$2));
+         }
+      }
+
+      return this.b.encode($$0.a(), $$1, $$2);
+   }
+
+   public <T> DataResult<Pair<jm<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof ako<?> $$2) {
+         Optional<jn<E>> $$3 = $$2.b(this.a);
+         if ($$3.isEmpty()) {
+            return DataResult.error(() -> "Registry does not exist: " + this.a);
          } else {
-            dii.b();
-            dgt.b();
-            if (bsn.a(bsn.by) == null) {
-               throw new IllegalStateException("Failed loading EntityTypes");
+            jn<E> $$4 = $$3.get();
+            DataResult<Pair<akq, T>> $$5 = akq.a.decode($$0, $$1);
+            if ($$5.result().isEmpty()) {
+               return !this.c ? DataResult.error(() -> "Inline definitions not allowed here") : this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(jm::a));
             } else {
-               hh.a();
-               ku.a();
-               kg.a();
-               lq.a();
-               csp.a();
-               d();
-               b.set(Duration.between($$0, Instant.now()).toMillis());
+               Pair<akq, T> $$6 = (Pair<akq, T>)$$5.result().get();
+               akp<E> $$7 = akp.a(this.a, (akq)$$6.getFirst());
+               return $$4.a($$7)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$7))
+                  .map($$1x -> Pair.of($$1x, $$6.getSecond()))
+                  .setLifecycle(Lifecycle.stable());
             }
          }
-      }
-   }
-
-   private static <T> void a(Iterable<T> $$0, Function<T, String> $$1, Set<String> $$2) {
-      ts $$3 = ts.a();
-      $$0.forEach($$3x -> {
-         String $$4 = $$1.apply((T)$$3x);
-         if (!$$3.b($$4)) {
-            $$2.add($$4);
-         }
-      });
-   }
-
-   private static void a(final Set<String> $$0) {
-      final ts $$1 = ts.a();
-      dcc.a(new dcc.c() {
-         @Override
-         public <T extends dcc.g<T>> void a(dcc.e<T> $$0x, dcc.f<T> $$1x) {
-            if (!$$1.b($$0.b())) {
-               $$0.add($$0.a());
-            }
-         }
-      });
-   }
-
-   public static Set<String> b() {
-      Set<String> $$0 = new TreeSet<>();
-      a(lq.s, buf::c, $$0);
-      a(lq.f, bsn::g, $$0);
-      a(lq.d, brn::d, $$0);
-      a(lq.g, cty::a, $$0);
-      a(lq.e, dfi::g, $$0);
-      a(lq.k, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
-      a($$0);
-      return $$0;
-   }
-
-   public static void a(Supplier<String> $$0) {
-      if (!c) {
-         throw b($$0);
-      }
-   }
-
-   private static RuntimeException b(Supplier<String> $$0) {
-      try {
-         String $$1 = $$0.get();
-         return new IllegalArgumentException("Not bootstrapped (called from " + $$1 + ")");
-      } catch (Exception var3) {
-         RuntimeException $$3 = new IllegalArgumentException("Not bootstrapped (failed to resolve location)");
-         $$3.addSuppressed(var3);
-         return $$3;
-      }
-   }
-
-   public static void c() {
-      a(() -> "validate");
-      if (aa.aU) {
-         b().forEach($$0 -> d.error("Missing translations: {}", $$0));
-         er.b();
-      }
-
-      bul.a();
-   }
-
-   private static void d() {
-      if (d.isDebugEnabled()) {
-         System.setErr(new akp("STDERR", System.err));
-         System.setOut(new akp("STDOUT", a));
       } else {
-         System.setErr(new akr("STDERR", System.err));
-         System.setOut(new akr("STDOUT", a));
+         return this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(jm::a));
       }
    }
 
-   public static void a(String $$0) {
-      a.println($$0);
+   @Override
+   public String toString() {
+      return "RegistryFileCodec[" + this.a + " " + this.b + "]";
    }
 }

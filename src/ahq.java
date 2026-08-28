@@ -1,49 +1,29 @@
-import javax.annotation.Nullable;
+public class ahq implements zf<agh> {
+   public static final yw<vv, ahq> a = zf.a(ahq::a, ahq::new);
+   private final String b;
 
-public class ahq implements zb<agb> {
-   public static final ys<vr, ahq> a = zb.a(ahq::a, ahq::new);
-   private final int b;
-   private final String c;
-   private final boolean d;
-
-   public ahq(int $$0, String $$1, boolean $$2) {
+   public ahq(String $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
    }
 
-   private ahq(vr $$0) {
-      this.b = $$0.l();
-      this.c = $$0.p();
-      this.d = $$0.readBoolean();
+   private ahq(vv $$0) {
+      this.b = $$0.p();
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(vv $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zd<ahq> a() {
-      return afz.bV;
+   public zh<ahq> a() {
+      return agf.bP;
    }
 
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public dbh a(dcg $$0) {
-      bsh $$1 = $$0.a(this.b);
-      return $$1 instanceof cop ? ((cop)$$1).B() : null;
-   }
-
    public String b() {
-      return this.c;
-   }
-
-   public boolean e() {
-      return this.d;
+      return this.b;
    }
 }

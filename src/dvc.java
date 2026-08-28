@@ -1,89 +1,74 @@
-import java.util.List;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
 
-public class dvc<T> implements dux<T> {
-   private final jo<T> a;
+public class dvc extends dvg {
+   private final jm<ddu> n;
+
+   public dvc(dcu $$0, dcb $$1, jm<ddu> $$2) {
+      super($$0, $$1);
+      this.n = $$2;
+   }
+
+   @Override
+   public dta a_(jd $$0) {
+      return dfy.nb.o();
+   }
+
    @Nullable
-   private T b;
-   private final duy<T> c;
-
-   public dvc(jo<T> $$0, duy<T> $$1, List<T> $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      if ($$2.size() > 0) {
-         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
-         this.b = $$2.get(0);
-      }
-   }
-
-   public static <A> dux<A> a(int $$0, jo<A> $$1, duy<A> $$2, List<A> $$3) {
-      return new dvc<>($$1, $$2, $$3);
+   @Override
+   public dta a(jd $$0, dta $$1, boolean $$2) {
+      return null;
    }
 
    @Override
-   public int a(T $$0) {
-      if (this.b != null && this.b != $$0) {
-         return this.c.onResize(1, $$0);
-      } else {
-         this.b = $$0;
-         return 0;
-      }
+   public eoy b_(jd $$0) {
+      return eoz.a.g();
    }
 
    @Override
-   public boolean a(Predicate<T> $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return $$0.test(this.b);
-      }
+   public int i(jd $$0) {
+      return 0;
+   }
+
+   @Nullable
+   @Override
+   public dqf a(jd $$0, dvg.b $$1) {
+      return null;
    }
 
    @Override
-   public T a(int $$0) {
-      if (this.b != null && $$0 == 0) {
-         return this.b;
-      } else {
-         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
-      }
+   public void b(dqf $$0) {
    }
 
    @Override
-   public void a(vr $$0) {
-      this.b = this.a.b($$0.l());
+   public void a(dqf $$0) {
    }
 
    @Override
-   public void b(vr $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         $$0.c(this.a.a(this.b));
-      }
+   public void d(jd $$0) {
    }
 
    @Override
-   public int a() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return wl.a(this.a.a(this.b));
-      }
+   public boolean C() {
+      return true;
    }
 
    @Override
-   public int b() {
-      return 1;
+   public boolean a(int $$0, int $$1) {
+      return true;
    }
 
    @Override
-   public dux<T> c() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return this;
-      }
+   public boolean c(int $$0) {
+      return true;
+   }
+
+   @Override
+   public aqk D() {
+      return aqk.b;
+   }
+
+   @Override
+   public jm<ddu> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n;
    }
 }

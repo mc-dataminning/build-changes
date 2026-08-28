@@ -1,118 +1,84 @@
-public class cpe {
-   private int a = 20;
-   private float b;
-   private float c;
-   private int d;
-   private int e = 20;
+public abstract class cpe extends bsq {
+   protected static final ajv<Integer> f = ajz.a(cpe.class, ajx.b);
+   protected static final ajv<Integer> g = ajz.a(cpe.class, ajx.b);
+   protected static final ajv<Float> h = ajz.a(cpe.class, ajx.d);
 
-   public cpe() {
-      this.b = 5.0F;
+   public cpe(bsw<?> $$0, dcu $$1) {
+      super($$0, $$1);
    }
 
-   private void b(int $$0, float $$1) {
-      this.a = ayg.a($$0 + this.a, 0, 20);
-      this.b = ayg.a($$1 + this.b, 0.0F, (float)this.a);
-   }
-
-   public void a(int $$0, float $$1) {
-      this.b($$0, cpd.a($$0, $$1));
-   }
-
-   public void a(cpf $$0) {
-      this.b($$0.b(), $$0.c());
-   }
-
-   public void a(cml $$0) {
-      bqe $$1 = $$0.dR().al();
-      this.e = this.a;
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$1 != bqe.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
-      }
-
-      boolean $$2 = $$0.dR().ab().b(dcc.k);
-      if ($$2 && this.b > 0.0F && $$0.gl() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$3 = Math.min(this.b, 6.0F);
-            $$0.c($$3 / 6.0F);
-            this.a($$3);
-            this.d = 0;
-         }
-      } else if ($$2 && this.a >= 18 && $$0.gl()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.c(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.ey() > 10.0F || $$1 == bqe.d || $$0.ey() > 1.0F && $$1 == bqe.c) {
-               $$0.a($$0.dS().j(), 1.0F);
-            }
-
-            this.d = 0;
-         }
+   @Override
+   public boolean a(brj $$0, float $$1) {
+      if (this.dQ().B || this.dL()) {
+         return true;
+      } else if (this.b($$0)) {
+         return false;
       } else {
-         this.d = 0;
+         this.m(-this.P());
+         this.d(10);
+         this.bw();
+         this.b(this.N() + $$1 * 10.0F);
+         this.a(dxw.o, $$0.d());
+         boolean $$2 = $$0.d() instanceof cmv && ((cmv)$$0.d()).ga().d;
+         if (($$2 || !(this.N() > 40.0F)) && !this.d($$0)) {
+            if ($$2) {
+               this.aq();
+            }
+         } else {
+            this.a($$0);
+         }
+
+         return true;
       }
    }
 
-   public void a(tx $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
+   boolean d(brj $$0) {
+      return false;
+   }
+
+   public void b(cuj $$0) {
+      this.ap();
+      if (this.dQ().ab().b(dcq.i)) {
+         cuo $$1 = new cuo($$0);
+         $$1.b(kq.g, this.aj());
+         this.b($$1);
       }
    }
 
-   public void b(tx $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
+   @Override
+   protected void a(ajz.a $$0) {
+      $$0.a(f, 0);
+      $$0.a(g, 1);
+      $$0.a(h, 0.0F);
    }
 
-   public int a() {
-      return this.a;
+   public void d(int $$0) {
+      this.ao.a(f, $$0);
    }
 
-   public int b() {
-      return this.e;
-   }
-
-   public boolean c() {
-      return this.a < 20;
-   }
-
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
-   }
-
-   public float d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      this.a = $$0;
+   public void m(int $$0) {
+      this.ao.a(g, $$0);
    }
 
    public void b(float $$0) {
-      this.b = $$0;
+      this.ao.a(h, $$0);
    }
 
-   public void c(float $$0) {
-      this.c = $$0;
+   public float N() {
+      return this.ao.a(h);
    }
+
+   public int O() {
+      return this.ao.a(f);
+   }
+
+   public int P() {
+      return this.ao.a(g);
+   }
+
+   protected void a(brj $$0) {
+      this.b(this.ag_());
+   }
+
+   abstract cuj ag_();
 }

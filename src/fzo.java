@@ -1,102 +1,166 @@
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
-import java.util.Set;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fzo {
-   final int a;
-   private final List<fzo.a> b = new ArrayList<>();
+   private static final Logger a = LogUtils.getLogger();
+   private static final bpj<Runnable> b = bpj.a(ad.g(), "server-list-io");
+   private static final int c = 16;
+   private final fgi d;
+   private final List<fzn> e = Lists.newArrayList();
+   private final List<fzn> f = Lists.newArrayList();
 
-   public fzo(int $$0) {
-      this.a = $$0;
+   public fzo(fgi $$0) {
+      this.d = $$0;
    }
 
-   public void a(fzg $$0, IntCollection $$1, fzo.b $$2) {
-      IntSortedSet $$3 = new IntRBTreeSet($$1);
+   public void a() {
+      try {
+         this.e.clear();
+         this.f.clear();
+         ua $$0 = un.a(this.d.p.toPath().resolve("servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
 
-      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
-         fzi $$6 = $$0.b($$4);
-         if ($$6 instanceof fzj.a) {
-            fzj.a $$5 = (fzj.a)$$6;
-            boolean $$6x = this.b($$5.g());
-            if ($$3.remove($$4)) {
-               this.a($$5.g());
-               $$2.accept($$4, $$5);
-            } else if ($$6x) {
-               $$2.accept($$4, $$5);
+         ug $$1 = $$0.c("servers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            ua $$3 = $$1.a($$2);
+            fzn $$4 = fzn.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
+            } else {
+               this.e.add($$4);
             }
          }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
       }
    }
 
-   public void a(xk $$0) {
-      this.b.add(new fzo.a($$0));
-   }
+   public void b() {
+      try {
+         ug $$0 = new ug();
 
-   public boolean b(xk $$0) {
-      boolean $$1 = false;
-      Iterator<fzo.a> $$2 = this.b.iterator();
-
-      while ($$2.hasNext()) {
-         fzo.a $$3 = $$2.next();
-         if ($$3.a($$0)) {
-            $$1 = true;
-            if ($$3.a()) {
-               $$2.remove();
-            }
+         for (fzn $$1 : this.e) {
+            ua $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
          }
-      }
 
-      return $$1;
+         for (fzn $$3 : this.f) {
+            ua $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         ua $$5 = new ua();
+         $$5.a("servers", $$0);
+         Path $$6 = this.d.p.toPath();
+         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
+         un.b($$5, $$7);
+         Path $$8 = $$6.resolve("servers.dat_old");
+         Path $$9 = $$6.resolve("servers.dat");
+         ad.a($$9, $$7, $$8);
+      } catch (Exception var7) {
+         a.error("Couldn't save server list", var7);
+      }
    }
 
-   public boolean a() {
-      return !this.b.isEmpty();
+   public fzn a(int $$0) {
+      return this.e.get($$0);
    }
 
-   class a {
-      private final Set<xg> b;
-      private xk c;
-      private boolean d = true;
-      private int e;
-
-      a(final xk $$0) {
-         this.b = new ObjectOpenHashSet($$0.m().d().a());
-         this.c = $$0;
-      }
-
-      boolean a(xk $$0) {
-         if ($$0.equals(this.c)) {
-            return false;
-         } else {
-            boolean $$1 = this.b.remove($$0.l());
-            if (this.d && this.c.g().equals($$0.g())) {
-               if (this.c.k().a($$0.k())) {
-                  $$1 = true;
-                  this.c = $$0;
-               } else {
-                  this.d = false;
-               }
-            }
-
-            if ($$1) {
-               this.e++;
-            }
-
+   @Nullable
+   public fzn a(String $$0) {
+      for (fzn $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
             return $$1;
          }
       }
 
-      boolean a() {
-         return this.e >= fzo.this.a || !this.d && this.b.isEmpty();
+      for (fzn $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   @Nullable
+   public fzn b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         fzn $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   public void a(fzn $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
       }
    }
 
-   public interface b {
-      void accept(int var1, fzj.a var2);
+   public void a(fzn $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
+
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      fzn $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, fzn $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(fzn $$0, List<fzn> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         fzn $$3 = $$1.get($$2);
+         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static void b(fzn $$0) {
+      b.a(() -> {
+         fzo $$1 = new fzo(fgi.Q());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
+         }
+
+         $$1.b();
+      });
    }
 }

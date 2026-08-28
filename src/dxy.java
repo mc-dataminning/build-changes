@@ -1,5 +1,20 @@
-public class dxy {
-   public static final double a = 0.0;
-   public static final double b = 64.0;
-   public static final double c = -64.0;
+public interface dxy {
+   dya a();
+
+   int b();
+
+   boolean a(aqt var1, jm<dxw> var2, dxw.a var3, eww var4);
+
+   default dxy.a c() {
+      return dxy.a.a;
+   }
+
+   public static enum a {
+      a,
+      b;
+   }
+
+   public interface b<T extends dxy> {
+      T c();
+   }
 }

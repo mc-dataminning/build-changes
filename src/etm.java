@@ -1,60 +1,84 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Set;
 
-public class etm extends esj {
-   private static final Map<km<?>, etm.a<?>> b = Stream.of(
-         new etm.a<>(kn.K, cwh::a),
-         new etm.a<>(kn.z, cwu::a),
-         new etm.a<>(kn.k, czs::a),
-         new etm.a<>(kn.y, czs::a),
-         new etm.a<>(kn.f, cxj::a),
-         new etm.a<>(kn.m, crq::a),
-         new etm.a<>(kn.l, crq::a),
-         new etm.a<>(kn.n, cwx::a)
-      )
-      .collect(Collectors.toMap(etm.a::a, $$0 -> (etm.a<?>)$$0));
-   private static final Codec<etm.a<?>> c = lq.aq.r().comapFlatMap($$0 -> {
-      etm.a<?> $$1 = b.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Can't toggle tooltip visiblity for " + lq.aq.b($$0));
-   }, etm.a::a);
+public class etm extends esy {
    public static final MapCodec<etm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(Codec.unboundedMap(c, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.d)).apply($$0, etm::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.unboundedMap(daa.c, evt.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, etm::new)
    );
-   private final Map<etm.a<?>, Boolean> d;
+   private final Map<jm<daa>, evs> b;
+   private final boolean c;
 
-   private etm(List<euh> $$0, Map<etm.a<?>, Boolean> $$1) {
+   etm(List<euw> $$0, Map<jm<daa>, evs> $$1, boolean $$2) {
       super($$0);
-      this.d = $$1;
+      this.b = Map.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   protected cud a(cud $$0, eqw $$1) {
-      this.d.forEach(($$1x, $$2) -> $$1x.a($$0, $$2));
+   public eta<etm> b() {
+      return etb.i;
+   }
+
+   @Override
+   public Set<eue<?>> a() {
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public cuo a(cuo $$0, erl $$1) {
+      if ($$0.a(cur.qP)) {
+         $$0 = $$0.a((dct)cur.uw);
+         $$0.b(kq.y, $$0.c(kq.k));
+      }
+
+      dac.a($$0, $$1x -> {
+         if (this.c) {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jm<daa>)$$2, ayn.a($$1x.a((jm<daa>)$$2) + $$3.a($$1), 0, 255)));
+         } else {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jm<daa>)$$2, ayn.a($$3.a($$1), 0, 255)));
+         }
+      });
       return $$0;
    }
 
-   @Override
-   public esl<etm> b() {
-      return esm.P;
-   }
+   public static class a extends esy.a<etm.a> {
+      private final Builder<jm<daa>, evs> a = ImmutableMap.builder();
+      private final boolean b;
 
-   static record a<T>(km<T> a, etm.b<T> b) {
-      public void a(cud $$0, boolean $$1) {
-         T $$2 = $$0.a(this.a);
-         if ($$2 != null) {
-            $$0.b(this.a, this.b.withTooltip($$2, $$1));
-         }
+      public a() {
+         this(false);
       }
-   }
 
-   @FunctionalInterface
-   interface b<T> {
-      T withTooltip(T var1, boolean var2);
+      public a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected etm.a a() {
+         return this;
+      }
+
+      public etm.a a(jm<daa> $$0, evs $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public esz b() {
+         return new etm(this.g(), this.a.build(), this.b);
+      }
    }
 }

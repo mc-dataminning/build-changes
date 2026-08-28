@@ -1,98 +1,95 @@
-import com.google.common.annotations.VisibleForTesting;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dqx extends dpq implements dxj.b<dqx.a> {
-   private final dqx.a a;
+public class dqx {
+   public static final akp<dqw> a = a("blank");
+   public static final akp<dqw> b = a("angler");
+   public static final akp<dqw> c = a("archer");
+   public static final akp<dqw> d = a("arms_up");
+   public static final akp<dqw> e = a("blade");
+   public static final akp<dqw> f = a("brewer");
+   public static final akp<dqw> g = a("burn");
+   public static final akp<dqw> h = a("danger");
+   public static final akp<dqw> i = a("explorer");
+   public static final akp<dqw> j = a("flow");
+   public static final akp<dqw> k = a("friend");
+   public static final akp<dqw> l = a("guster");
+   public static final akp<dqw> m = a("heart");
+   public static final akp<dqw> n = a("heartbreak");
+   public static final akp<dqw> o = a("howl");
+   public static final akp<dqw> p = a("miner");
+   public static final akp<dqw> q = a("mourner");
+   public static final akp<dqw> r = a("plenty");
+   public static final akp<dqw> s = a("prize");
+   public static final akp<dqw> t = a("scrape");
+   public static final akp<dqw> u = a("sheaf");
+   public static final akp<dqw> v = a("shelter");
+   public static final akp<dqw> w = a("skull");
+   public static final akp<dqw> x = a("snort");
+   private static final Map<cuj, akp<dqw>> y = Map.ofEntries(
+      Map.entry(cur.qL, a),
+      Map.entry(cur.xO, b),
+      Map.entry(cur.xP, c),
+      Map.entry(cur.xQ, d),
+      Map.entry(cur.xR, e),
+      Map.entry(cur.xS, f),
+      Map.entry(cur.xT, g),
+      Map.entry(cur.xU, h),
+      Map.entry(cur.xV, i),
+      Map.entry(cur.xW, j),
+      Map.entry(cur.xX, k),
+      Map.entry(cur.xY, l),
+      Map.entry(cur.xZ, m),
+      Map.entry(cur.ya, n),
+      Map.entry(cur.yb, o),
+      Map.entry(cur.yc, p),
+      Map.entry(cur.yd, q),
+      Map.entry(cur.ye, r),
+      Map.entry(cur.yf, s),
+      Map.entry(cur.yg, t),
+      Map.entry(cur.yh, u),
+      Map.entry(cur.yi, v),
+      Map.entry(cur.yj, w),
+      Map.entry(cur.yk, x)
+   );
 
-   public dqx(ja $$0, dsl $$1) {
-      super(dps.K, $$0, $$1);
-      this.a = new dqx.a($$1, new dxd($$0));
+   @Nullable
+   public static akp<dqw> a(cuj $$0) {
+      return y.get($$0);
    }
 
-   public static void a(dcg $$0, ja $$1, dsl $$2, dqx $$3) {
-      $$3.a.d().a($$0, $$1, $$0.E_(), true);
+   private static akp<dqw> a(String $$0) {
+      return akp.a(lu.ax, akq.b($$0));
    }
 
-   @Override
-   protected void a(tx $$0, jl.a $$1) {
-      super.a($$0, $$1);
-      this.a.b.a($$0);
+   public static dqw a(jz<dqw> $$0) {
+      a($$0, b, "angler_pottery_pattern");
+      a($$0, c, "archer_pottery_pattern");
+      a($$0, d, "arms_up_pottery_pattern");
+      a($$0, e, "blade_pottery_pattern");
+      a($$0, f, "brewer_pottery_pattern");
+      a($$0, g, "burn_pottery_pattern");
+      a($$0, h, "danger_pottery_pattern");
+      a($$0, i, "explorer_pottery_pattern");
+      a($$0, j, "flow_pottery_pattern");
+      a($$0, k, "friend_pottery_pattern");
+      a($$0, l, "guster_pottery_pattern");
+      a($$0, m, "heart_pottery_pattern");
+      a($$0, n, "heartbreak_pottery_pattern");
+      a($$0, o, "howl_pottery_pattern");
+      a($$0, p, "miner_pottery_pattern");
+      a($$0, q, "mourner_pottery_pattern");
+      a($$0, r, "plenty_pottery_pattern");
+      a($$0, s, "prize_pottery_pattern");
+      a($$0, t, "scrape_pottery_pattern");
+      a($$0, u, "sheaf_pottery_pattern");
+      a($$0, v, "shelter_pottery_pattern");
+      a($$0, w, "skull_pottery_pattern");
+      a($$0, x, "snort_pottery_pattern");
+      return a($$0, a, "decorated_pot_side");
    }
 
-   @Override
-   protected void b(tx $$0, jl.a $$1) {
-      this.a.b.b($$0);
-      super.b($$0, $$1);
-   }
-
-   public dqx.a b() {
-      return this.a;
-   }
-
-   public static class a implements dxj {
-      public static final int a = 8;
-      final dmd b;
-      private final dsl c;
-      private final dxl d;
-
-      public a(dsl $$0, dxl $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         this.b = dmd.a();
-      }
-
-      @Override
-      public dxl a() {
-         return this.d;
-      }
-
-      @Override
-      public int b() {
-         return 8;
-      }
-
-      @Override
-      public dxj.a c() {
-         return dxj.a.b;
-      }
-
-      @Override
-      public boolean a(aqm $$0, jj<dxh> $$1, dxh.a $$2, ewh $$3) {
-         if ($$1.a(dxh.p) && $$2.a() instanceof btc $$4) {
-            if (!$$4.eF()) {
-               bra $$5 = $$4.eA();
-               int $$6 = $$4.a($$0, x.a($$5, bra::d));
-               if ($$4.eg() && $$6 > 0) {
-                  this.b.a(ja.a($$3.a(jf.b, 0.5)), $$6);
-                  this.a($$0, $$4);
-               }
-
-               $$4.eE();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, ja.a($$1x), this.c, $$0.E_()));
-            }
-
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      @VisibleForTesting
-      public dmd d() {
-         return this.b;
-      }
-
-      private void a(aqm $$0, ja $$1, dsl $$2, ayo $$3) {
-         $$0.a($$1, $$2.a(dma.b, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(lj.I, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, avh.wa, avi.e, 2.0F, 0.6F + $$3.i() * 0.4F);
-      }
-
-      private void a(dcg $$0, btc $$1) {
-         if ($$1.ek() instanceof aqn $$3) {
-            bra $$4 = $$1.eA() == null ? $$0.aj().a((cml)$$3) : $$1.eA();
-            am.Z.a($$3, $$1, $$4);
-         }
-      }
+   private static dqw a(jz<dqw> $$0, akp<dqw> $$1, String $$2) {
+      return jz.a($$0, $$1, new dqw(akq.b($$2)));
    }
 }

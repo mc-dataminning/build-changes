@@ -1,54 +1,19 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class exw<T> implements exz<T>, eyb<T> {
-   private final List<exx<T>> a = Lists.newArrayList();
-   private final Set<exx<?>> b = new ObjectOpenCustomHashSet(exx.a);
+public interface exw {
+   int a();
 
-   @Override
-   public void a(exy<T> $$0) {
-      exx<T> $$1 = new exx<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
+   boolean b();
+
+   @Nullable
+   yo c();
+
+   default xm a(yo $$0) {
+      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
    }
 
-   private void a(exx<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
-      }
-   }
-
-   @Override
-   public boolean a(ja $$0, T $$1) {
-      return this.b.contains(exx.a($$1, $$0));
-   }
-
-   @Override
-   public int a() {
-      return this.a.size();
-   }
-
-   @Override
-   public uu b(long $$0, Function<T, String> $$1) {
-      ud $$2 = new ud();
-
-      for (exx<T> $$3 : this.a) {
-         $$2.add($$3.a($$1));
-      }
-
-      return $$2;
-   }
-
-   public List<exx<T>> b() {
-      return List.copyOf(this.a);
-   }
-
-   public static <T> exw<T> a(ud $$0, Function<String, Optional<T>> $$1, dbn $$2) {
-      exw<T> $$3 = new exw<>();
-      exx.a($$0, $$1, $$2, $$3::a);
-      return $$3;
+   static xm a(@Nullable exw $$0, yo $$1) {
+      return $$0 != null ? $$0.a($$1) : $$1.a(0);
    }
 }

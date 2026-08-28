@@ -1,34 +1,37 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bvw extends buv<bte> {
-   public static final int c = 100;
-   private final bps d;
-   private final avg e;
+public class bvw {
+   public static bvg<cmi> a(float $$0, int $$1) {
+      return bys.a((Function<bys.b<cmi>, ? extends App<bys.c<cmi>, byv<cmi>>>)($$2 -> $$2.group($$2.c(ccq.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.dq())) {
+                  return false;
+               } else {
+                  ceq $$6 = $$3.y();
+                  int $$7 = $$6.a(kf.a($$4.dq()));
+                  eww $$8 = null;
 
-   public bvw(bps $$0, avg $$1) {
-      super(ImmutableMap.of(ccg.n, cch.c, ccg.T, cch.a), 100);
-      this.d = $$0;
-      this.e = $$1;
-   }
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     eww $$10 = cek.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kf.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(kf.a(jd.a((jw)$$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
 
-   protected boolean a(aqm $$0, bte $$1, long $$2) {
-      return !$$1.aG();
-   }
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
+                     }
+                  }
 
-   protected void b(aqm $$0, bte $$1, long $$2) {
-      $$1.r(true);
-      $$1.b(bto.g);
-   }
+                  if ($$8 != null) {
+                     $$2x.a(new cct($$8, $$0, $$1));
+                  }
 
-   protected void c(aqm $$0, bte $$1, long $$2) {
-      if ($$1.aG()) {
-         $$1.j($$1.du().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, avi.g, 2.0F, 1.0F);
-      }
-
-      $$1.r(false);
-      $$1.b(bto.a);
-      $$1.dV().b(ccg.T);
-      $$1.dV().a(ccg.S, this.d.a($$0.z));
+                  return true;
+               }
+            })));
    }
 }

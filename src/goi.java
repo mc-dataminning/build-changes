@@ -1,35 +1,39 @@
-public class goi<T extends btc> extends goa<T, fvv<T>> {
-   public static final akk a = new akk("textures/entity/trident_riptide.png");
-   public static final String b = "box";
-   private final fxq c;
+public class goi<T extends btl, M extends fve<T> & fud> extends gop<T, M> {
+   private final gep a;
 
-   public goi(glk<T, fvv<T>> $$0, fxm $$1) {
+   public goi(glz<T, M> $$0, gep $$1) {
       super($$0);
-      fxq $$2 = $$1.a(fxp.aZ);
-      this.c = $$2.b("box");
+      this.a = $$1;
    }
 
-   public static fxw a() {
-      fxy $$0 = new fxy();
-      fxz $$1 = $$0.a();
-      $$1.a("box", fxv.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fxs.a);
-      return fxw.a($$0, 64, 64);
-   }
-
-   public void a(fao $$0, gef $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.fp()) {
-         fas $$10 = $$1.getBuffer(gen.e(a));
-
-         for (int $$11 = 0; $$11 < 3; $$11++) {
-            $$0.a();
-            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
-            $$0.a(a.d.rotationDegrees($$12));
-            float $$13 = 0.75F * (float)$$11;
-            $$0.b($$13, $$13, $$13);
-            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
-            this.c.a($$0, $$10, $$2, gph.d);
-            $$0.b();
+   public void a(fbc $$0, get $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fr() == btf.b;
+      cuo $$11 = $$10 ? $$3.eV() : $$3.eU();
+      cuo $$12 = $$10 ? $$3.eU() : $$3.eV();
+      if (!$$11.e() || !$$12.e()) {
+         $$0.a();
+         if (this.c().e) {
+            float $$13 = 0.5F;
+            $$0.a(0.0F, 0.75F, 0.0F);
+            $$0.b(0.5F, 0.5F, 0.5F);
          }
+
+         this.a($$3, $$12, cul.c, btf.b, $$0, $$1, $$2);
+         this.a($$3, $$11, cul.b, btf.a, $$0, $$1, $$2);
+         $$0.b();
+      }
+   }
+
+   protected void a(btl $$0, cuo $$1, cul $$2, btf $$3, fbc $$4, get $$5, int $$6) {
+      if (!$$1.e()) {
+         $$4.a();
+         this.c().a($$3, $$4);
+         $$4.a(a.b.rotationDegrees(-90.0F));
+         $$4.a(a.d.rotationDegrees(180.0F));
+         boolean $$7 = $$3 == btf.a;
+         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
+         $$4.b();
       }
    }
 }

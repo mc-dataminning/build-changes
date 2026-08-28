@@ -1,26 +1,28 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public interface flj {
-   void m(int var1);
+public enum flj implements azj {
+   a("bitmap", flg.a.a),
+   b("ttf", fll.a),
+   c("space", ezi.a.a),
+   d("unihex", flm.b.a),
+   e("reference", flk.a);
 
-   void n(int var1);
+   public static final Codec<flj> f = azj.a(flj::values);
+   private final String g;
+   private final MapCodec<? extends fli> h;
 
-   int D();
-
-   int E();
-
-   int y();
-
-   int w();
-
-   default fma H() {
-      return new fma(this.D(), this.E(), this.y(), this.w());
+   private flj(final String $$0, final MapCodec<? extends fli> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   default void c(int $$0, int $$1) {
-      this.m($$0);
-      this.n($$1);
+   @Override
+   public String c() {
+      return this.g;
    }
 
-   void a(Consumer<fhs> var1);
+   public MapCodec<? extends fli> a() {
+      return this.h;
+   }
 }

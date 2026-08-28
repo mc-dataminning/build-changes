@@ -1,51 +1,87 @@
-public enum gdw {
-   a(new gdw.b(gdw.a.f, gdw.a.e, gdw.a.a), new gdw.b(gdw.a.f, gdw.a.e, gdw.a.d), new gdw.b(gdw.a.c, gdw.a.e, gdw.a.d), new gdw.b(gdw.a.c, gdw.a.e, gdw.a.a)),
-   b(new gdw.b(gdw.a.f, gdw.a.b, gdw.a.d), new gdw.b(gdw.a.f, gdw.a.b, gdw.a.a), new gdw.b(gdw.a.c, gdw.a.b, gdw.a.a), new gdw.b(gdw.a.c, gdw.a.b, gdw.a.d)),
-   c(new gdw.b(gdw.a.c, gdw.a.b, gdw.a.d), new gdw.b(gdw.a.c, gdw.a.e, gdw.a.d), new gdw.b(gdw.a.f, gdw.a.e, gdw.a.d), new gdw.b(gdw.a.f, gdw.a.b, gdw.a.d)),
-   d(new gdw.b(gdw.a.f, gdw.a.b, gdw.a.a), new gdw.b(gdw.a.f, gdw.a.e, gdw.a.a), new gdw.b(gdw.a.c, gdw.a.e, gdw.a.a), new gdw.b(gdw.a.c, gdw.a.b, gdw.a.a)),
-   e(new gdw.b(gdw.a.f, gdw.a.b, gdw.a.d), new gdw.b(gdw.a.f, gdw.a.e, gdw.a.d), new gdw.b(gdw.a.f, gdw.a.e, gdw.a.a), new gdw.b(gdw.a.f, gdw.a.b, gdw.a.a)),
-   f(new gdw.b(gdw.a.c, gdw.a.b, gdw.a.a), new gdw.b(gdw.a.c, gdw.a.e, gdw.a.a), new gdw.b(gdw.a.c, gdw.a.e, gdw.a.d), new gdw.b(gdw.a.c, gdw.a.b, gdw.a.d));
+import com.mojang.authlib.GameProfile;
 
-   private static final gdw[] g = ac.a(new gdw[6], $$0 -> {
-      $$0[gdw.a.e] = a;
-      $$0[gdw.a.b] = b;
-      $$0[gdw.a.d] = c;
-      $$0[gdw.a.a] = d;
-      $$0[gdw.a.f] = e;
-      $$0[gdw.a.c] = f;
-   });
-   private final gdw.b[] h;
+public class gdw extends gds {
+   private eww g = eww.b;
+   private int h;
 
-   public static gdw a(jf $$0) {
-      return g[$$0.d()];
+   public gdw(fyz $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.ag = true;
    }
 
-   private gdw(final gdw.b... $$0) {
-      this.h = $$0;
-   }
-
-   public gdw.b a(int $$0) {
-      return this.h[$$0];
-   }
-
-   public static final class a {
-      public static final int a = jf.d.d();
-      public static final int b = jf.b.d();
-      public static final int c = jf.f.d();
-      public static final int d = jf.c.d();
-      public static final int e = jf.a.d();
-      public static final int f = jf.e.d();
-   }
-
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cL().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
       }
+
+      $$1 *= 64.0 * cE();
+      return $$0 < $$1 * $$1;
+   }
+
+   @Override
+   public boolean a(brj $$0, float $$1) {
+      return true;
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      this.s(false);
+   }
+
+   @Override
+   public void m_() {
+      if (this.br > 0) {
+         this.a(this.br, this.bs, this.bt, this.bu, this.bv, this.bw);
+         this.br--;
+      }
+
+      if (this.by > 0) {
+         this.a(this.by, this.bx);
+         this.by--;
+      }
+
+      if (this.h > 0) {
+         this.j(new eww((this.g.c - this.dt().c) / (double)this.h, (this.g.d - this.dt().d) / (double)this.h, (this.g.e - this.dt().e) / (double)this.h));
+         this.h--;
+      }
+
+      this.cg = this.ch;
+      this.eS();
+      float $$1;
+      if (this.aF() && !this.ey()) {
+         $$1 = (float)Math.min(0.1, this.dt().h());
+      } else {
+         $$1 = 0.0F;
+      }
+
+      this.ch = this.ch + ($$1 - this.ch) * 0.4F;
+      this.dQ().ag().a("push");
+      this.r();
+      this.dQ().ag().c();
+   }
+
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.g = new eww($$0, $$1, $$2);
+      this.h = this.am().p() + 1;
+   }
+
+   @Override
+   protected void fS() {
+   }
+
+   @Override
+   public void a(wy $$0) {
+      fgi $$1 = fgi.Q();
+      $$1.l.d().a($$0);
+   }
+
+   @Override
+   public void a(abu $$0) {
+      super.a($$0);
+      this.bv();
    }
 }

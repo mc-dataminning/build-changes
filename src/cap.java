@@ -1,55 +1,36 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class cap extends cak {
+   private final cfz a;
+   private aqu b;
+   private boolean c;
 
-public class cap extends caa {
-   private final btl a;
-   @Nullable
-   private btc b;
-   private double c;
-   private double d;
-   private double e;
-   private final double f;
-   private final float g;
-
-   public cap(btl $$0, double $$1, float $$2) {
+   public cap(cfz $$0) {
       this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.a(EnumSet.of(caa.a.a));
-   }
-
-   @Override
-   public boolean a() {
-      this.b = this.a.p();
-      if (this.b == null) {
-         return false;
-      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
-         return false;
-      } else {
-         ewh $$0 = cdx.a(this.a, 16, 7, this.b.dp(), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            return true;
-         }
-      }
    }
 
    @Override
    public boolean b() {
-      return !this.a.J().l() && this.b.bF() && this.b.g(this.a) < (double)(this.g * this.g);
+      aqu $$0 = (aqu)this.a.P_();
+      boolean $$1 = $$0 != null && !$$0.N_() && !$$0.ga().b && !$$0.bf() && !$$0.az;
+      return !this.a.gm() && $$1 && this.a.gA();
+   }
+
+   @Override
+   public boolean Q_() {
+      return !this.c;
    }
 
    @Override
    public void d() {
-      this.b = null;
+      this.b = (aqu)this.a.P_();
+      this.c = false;
    }
 
    @Override
-   public void c() {
-      this.a.J().a(this.c, this.d, this.e, this.f);
+   public void a() {
+      if (!this.c && !this.a.x() && !this.a.fY()) {
+         if (this.a.cL().c(this.b.cL())) {
+            this.c = this.a.b(this.b);
+         }
+      }
    }
 }

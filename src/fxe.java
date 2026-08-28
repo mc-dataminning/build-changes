@@ -1,36 +1,54 @@
-public class fxe extends fuz<cnt> {
-   private static final int a = 16;
-   private final fxq b;
-   private final fxq f;
-   private final fxq g;
+public class fxe<T extends bsq> extends fvn<T> {
+   private static final String a = "upper_body";
+   private final fye b;
+   private final fye f;
+   private final fye g;
+   private final fye h;
+   private final fye i;
 
-   public fxe(fxq $$0) {
-      super(gen::i);
-      this.b = $$0.b("bone");
-      this.g = this.b.b("wind");
-      this.f = this.b.b("wind_charge");
+   public fxe(fye $$0) {
+      this.b = $$0;
+      this.g = $$0.b("head");
+      this.h = $$0.b("left_arm");
+      this.i = $$0.b("right_arm");
+      this.f = $$0.b("upper_body");
    }
 
-   public static fxw b() {
-      fxy $$0 = new fxy();
-      fxz $$1 = $$0.a();
-      fxz $$2 = $$1.a("bone", fxv.c(), fxs.a(0.0F, 0.0F, 0.0F));
-      $$2.a(
-         "wind",
-         fxv.c().a(15, 20).a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F, new fxu(0.0F)).a(0, 9).a(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F, new fxu(0.0F)),
-         fxs.a(0.0F, 0.0F, 0.0F, 0.0F, -0.7854F, 0.0F)
-      );
-      $$2.a("wind_charge", fxv.c().a(0, 0).a(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, new fxu(0.0F)), fxs.a(0.0F, 0.0F, 0.0F));
-      return fxw.a($$0, 64, 32);
-   }
-
-   public void a(cnt $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.f.f = -$$3 * 16.0F * (float) (Math.PI / 180.0);
-      this.g.f = $$3 * 16.0F * (float) (Math.PI / 180.0);
+   public static fyk b() {
+      fym $$0 = new fym();
+      fyn $$1 = $$0.a();
+      float $$2 = 4.0F;
+      fyi $$3 = new fyi(-0.5F);
+      $$1.a("head", fyj.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), fyg.a(0.0F, 4.0F, 0.0F));
+      fyj $$4 = fyj.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, fyg.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, fyg.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", fyj.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), fyg.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", fyj.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), fyg.a(0.0F, 24.0F, 0.0F));
+      return fyk.a($$0, 64, 64);
    }
 
    @Override
-   public fxq a() {
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.g.f = $$4 * (float) (Math.PI / 180.0);
+      this.g.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.f = $$4 * (float) (Math.PI / 180.0) * 0.25F;
+      float $$6 = ayn.a(this.f.f);
+      float $$7 = ayn.b(this.f.f);
+      this.h.f = this.f.f;
+      this.i.f = this.f.f + (float) Math.PI;
+      this.h.b = $$7 * 5.0F;
+      this.h.d = -$$6 * 5.0F;
+      this.i.b = -$$7 * 5.0F;
+      this.i.d = $$6 * 5.0F;
+   }
+
+   @Override
+   public fye a() {
       return this.b;
+   }
+
+   public fye c() {
+      return this.g;
    }
 }

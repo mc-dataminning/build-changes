@@ -1,67 +1,112 @@
-import java.util.HashMap;
+import com.mojang.logging.LogUtils;
+import java.lang.management.ManagementFactory;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import javax.management.Attribute;
+import javax.management.AttributeList;
+import javax.management.DynamicMBean;
+import javax.management.InstanceAlreadyExistsException;
+import javax.management.MBeanAttributeInfo;
+import javax.management.MBeanInfo;
+import javax.management.MBeanNotificationInfo;
+import javax.management.MBeanRegistrationException;
+import javax.management.MalformedObjectNameException;
+import javax.management.NotCompliantMBeanException;
+import javax.management.ObjectName;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public abstract class bma<S> {
-   private final Map<bma.b<?>, bma.a<?>> a = new HashMap<>();
-   private final blx<S> b;
-   private final bly<S> c;
+public final class bma implements DynamicMBean {
+   private static final Logger a = LogUtils.getLogger();
+   private final MinecraftServer b;
+   private final MBeanInfo c;
+   private final Map<String, bma.a> d = Stream.of(
+         new bma.a("tickTimes", this::b, "Historical tick times (ms)", long[].class),
+         new bma.a("averageTickTime", this::a, "Current average tick time (ms)", long.class)
+      )
+      .collect(Collectors.toMap($$0x -> $$0x.a, Function.identity()));
 
-   protected bma(blx<S> $$0, bly<S> $$1) {
+   private bma(MinecraftServer $$0) {
       this.b = $$0;
-      this.c = $$1;
+      MBeanAttributeInfo[] $$1 = this.d.values().stream().map(bma.a::a).toArray(MBeanAttributeInfo[]::new);
+      this.c = new MBeanInfo(bma.class.getSimpleName(), "metrics for dedicated server", $$1, null, null, new MBeanNotificationInfo[0]);
    }
 
-   public bly<S> a() {
-      return this.c;
-   }
-
-   public <T> Optional<T> a(blv<T> $$0) {
-      Optional<T> $$1 = this.b($$0);
-      if ($$1.isPresent()) {
-         this.c.a(this.c());
+   public static void a(MinecraftServer $$0) {
+      try {
+         ManagementFactory.getPlatformMBeanServer().registerMBean(new bma($$0), new ObjectName("net.minecraft.server:type=Server"));
+      } catch (InstanceAlreadyExistsException | MBeanRegistrationException | NotCompliantMBeanException | MalformedObjectNameException var2) {
+         a.warn("Failed to initialise server as JMX bean", var2);
       }
-
-      return $$1;
    }
 
-   public <T> Optional<T> b(blv<T> $$0) {
-      bma.b<T> $$1 = new bma.b<>($$0, this.c());
-      bma.a<T> $$2 = this.a($$1);
-      if ($$2 != null) {
-         this.a($$2.b());
-         return $$2.a;
-      } else {
-         bmb<S, T> $$3 = this.b.a($$0);
-         if ($$3 == null) {
-            throw new IllegalStateException("No symbol " + $$0);
-         } else {
-            Optional<T> $$4 = $$3.a(this);
-            this.a($$1, $$4);
-            return $$4;
-         }
-      }
+   private float a() {
+      return this.b.aP();
+   }
+
+   private long[] b() {
+      return this.b.aS();
    }
 
    @Nullable
-   private <T> bma.a<T> a(bma.b<T> $$0) {
-      return (bma.a<T>)this.a.get($$0);
+   @Override
+   public Object getAttribute(String $$0) {
+      bma.a $$1 = this.d.get($$0);
+      return $$1 == null ? null : $$1.b.get();
    }
 
-   private <T> void a(bma.b<T> $$0, Optional<T> $$1) {
-      this.a.put($$0, new bma.a<>($$1, this.c()));
+   @Override
+   public void setAttribute(Attribute $$0) {
    }
 
-   public abstract S b();
-
-   public abstract int c();
-
-   public abstract void a(int var1);
-
-   static record a<T>(Optional<T> a, int b) {
+   @Override
+   public AttributeList getAttributes(String[] $$0) {
+      List<Attribute> $$1 = Arrays.stream($$0)
+         .map(this.d::get)
+         .filter(Objects::nonNull)
+         .map($$0x -> new Attribute($$0x.a, $$0x.b.get()))
+         .collect(Collectors.toList());
+      return new AttributeList($$1);
    }
 
-   static record b<T>(blv<T> a, int b) {
+   @Override
+   public AttributeList setAttributes(AttributeList $$0) {
+      return new AttributeList();
+   }
+
+   @Nullable
+   @Override
+   public Object invoke(String $$0, Object[] $$1, String[] $$2) {
+      return null;
+   }
+
+   @Override
+   public MBeanInfo getMBeanInfo() {
+      return this.c;
+   }
+
+   static final class a {
+      final String a;
+      final Supplier<Object> b;
+      private final String c;
+      private final Class<?> d;
+
+      a(String $$0, Supplier<Object> $$1, String $$2, Class<?> $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      private MBeanAttributeInfo a() {
+         return new MBeanAttributeInfo(this.a, this.d.getSimpleName(), this.c, true, false, false);
+      }
    }
 }

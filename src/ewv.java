@@ -1,53 +1,60 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public class ewv {
+   public static final ewv a = new ewv(0.0F, 0.0F);
+   public static final ewv b = new ewv(1.0F, 1.0F);
+   public static final ewv c = new ewv(1.0F, 0.0F);
+   public static final ewv d = new ewv(-1.0F, 0.0F);
+   public static final ewv e = new ewv(0.0F, 1.0F);
+   public static final ewv f = new ewv(0.0F, -1.0F);
+   public static final ewv g = new ewv(Float.MAX_VALUE, Float.MAX_VALUE);
+   public static final ewv h = new ewv(Float.MIN_VALUE, Float.MIN_VALUE);
+   public final float i;
+   public final float j;
 
-public class ewv extends AbstractDoubleList implements ewt {
-   private final DoubleList a;
-   private final DoubleList b;
-   private final boolean c;
-
-   protected ewv(DoubleList $$0, DoubleList $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public ewv(float $$0, float $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   @Override
-   public int size() {
-      return this.a.size() + this.b.size();
+   public ewv a(float $$0) {
+      return new ewv(this.i * $$0, this.j * $$0);
    }
 
-   @Override
-   public boolean a(ewt.a $$0) {
-      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
+   public float a(ewv $$0) {
+      return this.i * $$0.i + this.j * $$0.j;
    }
 
-   private boolean b(ewt.a $$0) {
-      int $$1 = this.a.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, -1, $$2)) {
-            return false;
-         }
-      }
-
-      int $$3 = this.b.size() - 1;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
-            return false;
-         }
-      }
-
-      return true;
+   public ewv b(ewv $$0) {
+      return new ewv(this.i + $$0.i, this.j + $$0.j);
    }
 
-   public double getDouble(int $$0) {
-      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
+   public ewv b(float $$0) {
+      return new ewv(this.i + $$0, this.j + $$0);
    }
 
-   @Override
-   public DoubleList a() {
-      return this;
+   public boolean c(ewv $$0) {
+      return this.i == $$0.i && this.j == $$0.j;
+   }
+
+   public ewv a() {
+      float $$0 = ayn.c(this.i * this.i + this.j * this.j);
+      return $$0 < 1.0E-4F ? a : new ewv(this.i / $$0, this.j / $$0);
+   }
+
+   public float b() {
+      return ayn.c(this.i * this.i + this.j * this.j);
+   }
+
+   public float c() {
+      return this.i * this.i + this.j * this.j;
+   }
+
+   public float d(ewv $$0) {
+      float $$1 = $$0.i - this.i;
+      float $$2 = $$0.j - this.j;
+      return $$1 * $$1 + $$2 * $$2;
+   }
+
+   public ewv d() {
+      return new ewv(-this.i, -this.j);
    }
 }

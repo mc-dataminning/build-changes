@@ -1,45 +1,32 @@
-public class bzo extends can {
-   private final cev g;
+public class bzo extends bzm {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-   public bzo(cev $$0, double $$1) {
-      super($$0, $$1, 8);
-      this.g = $$0;
+   public bzo(btn $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
    @Override
-   public boolean a() {
-      return this.g.s() && !this.g.gn() && super.a();
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.g.x(false);
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.x(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.x(this.m());
-   }
-
-   @Override
-   protected boolean a(dcj $$0, ja $$1) {
-      if (!$$0.u($$1.c())) {
-         return false;
+   public void a() {
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.ba = this.a(this.a.ba, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.t(this.a(this.a.dI(), $$0x + 10.0F, this.c)));
       } else {
-         dsl $$2 = $$0.a_($$1);
-         if ($$2.a(dfk.cv)) {
-            return dpx.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(dfk.cD) && $$2.c(dip.b) ? true : $$2.a(avw.R, $$0x -> $$0x.d(dfb.b).map($$0xx -> $$0xx != dsy.a).orElse(true));
+         if (this.a.J().l()) {
+            this.a.t(this.a(this.a.dI(), 0.0F, 5.0F));
          }
+
+         this.a.ba = this.a(this.a.ba, this.a.aY, this.b);
+      }
+
+      float $$0 = ayn.g(this.a.ba - this.a.aY);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aY -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aY += 4.0F;
       }
    }
 }

@@ -1,71 +1,80 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public abstract class ds<T extends ds.a> implements ap<T> {
-   private final Map<aks, Set<ap.a<T>>> a = Maps.newIdentityHashMap();
-
+public class ds extends dv<ds.a> {
    @Override
-   public final void a(aks $$0, ap.a<T> $$1) {
-      this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
+   public Codec<ds.a> a() {
+      return ds.a.a;
    }
 
-   @Override
-   public final void b(aks $$0, ap.a<T> $$1) {
-      Set<ap.a<T>> $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         $$2.remove($$1);
-         if ($$2.isEmpty()) {
-            this.a.remove($$0);
-         }
+   public void a(aqu $$0, akq $$1, List<cuo> $$2) {
+      this.a($$0, $$2x -> $$2x.b($$1, $$2));
+   }
+
+   public static record a(Optional<bg> b, akq c, List<cs> d) implements dv.a {
+      public static final Codec<ds.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bv.b.optionalFieldOf("player").forGetter(ds.a::a),
+                  akq.a.fieldOf("recipe_id").forGetter(ds.a::b),
+                  cs.a.listOf().optionalFieldOf("ingredients", List.of()).forGetter(ds.a::c)
+               )
+               .apply($$0, ds.a::new)
+      );
+
+      public static ao<ds.a> a(akq $$0, List<cs.a> $$1) {
+         return an.ac.a(new ds.a(Optional.empty(), $$0, $$1.stream().map(cs.a::b).toList()));
       }
-   }
 
-   @Override
-   public final void a(aks $$0) {
-      this.a.remove($$0);
-   }
+      public static ao<ds.a> a(akq $$0) {
+         return an.ac.a(new ds.a(Optional.empty(), $$0, List.of()));
+      }
 
-   protected void a(aqn $$0, Predicate<T> $$1) {
-      aks $$2 = $$0.R();
-      Set<ap.a<T>> $$3 = this.a.get($$2);
-      if ($$3 != null && !$$3.isEmpty()) {
-         eqw $$4 = bu.b($$0, $$0);
-         List<ap.a<T>> $$5 = null;
+      public static ao<ds.a> b(akq $$0) {
+         return an.ad.a(new ds.a(Optional.empty(), $$0, List.of()));
+      }
 
-         for (ap.a<T> $$6 : $$3) {
-            T $$7 = $$6.a();
-            if ($$1.test($$7)) {
-               Optional<bf> $$8 = $$7.a();
-               if ($$8.isEmpty() || $$8.get().a($$4)) {
-                  if ($$5 == null) {
-                     $$5 = Lists.newArrayList();
+      boolean b(akq $$0, List<cuo> $$1) {
+         if (!$$0.equals(this.c)) {
+            return false;
+         } else {
+            List<cuo> $$2 = new ArrayList<>($$1);
+
+            for (cs $$3 : this.d) {
+               boolean $$4 = false;
+               Iterator<cuo> $$5 = $$2.iterator();
+
+               while ($$5.hasNext()) {
+                  if ($$3.a($$5.next())) {
+                     $$5.remove();
+                     $$4 = true;
+                     break;
                   }
+               }
 
-                  $$5.add($$6);
+               if (!$$4) {
+                  return false;
                }
             }
-         }
 
-         if ($$5 != null) {
-            for (ap.a<T> $$9 : $$5) {
-               $$9.a($$2);
-            }
+            return true;
          }
       }
-   }
 
-   public interface a extends aq {
       @Override
-      default void a(bg $$0) {
-         $$0.a(this.a(), ".player");
+      public Optional<bg> a() {
+         return this.b;
       }
 
-      Optional<bf> a();
+      public akq b() {
+         return this.c;
+      }
+
+      public List<cs> c() {
+         return this.d;
+      }
    }
 }

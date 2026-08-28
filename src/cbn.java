@@ -1,26 +1,24 @@
-import javax.annotation.Nullable;
+public class cbn extends cak {
+   private final btu a;
 
-public class cbn extends cax {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public cbn(btl $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public cbn(btu $$0) {
+      this.a = $$0;
    }
 
-   public cbn(btl $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected ewh h() {
-      if (this.b.bj()) {
-         ewh $$0 = cea.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
-      } else {
-         return this.b.dU().i() >= this.j ? cea.a(this.b, 10, 7) : super.h();
+   public boolean b() {
+      return this.a.dQ().R() && this.a.a(bsx.f).e() && cei.a(this.a);
+   }
+
+   @Override
+   public void d() {
+      ((ccx)this.a.J()).d(true);
+   }
+
+   @Override
+   public void e() {
+      if (cei.a(this.a)) {
+         ((ccx)this.a.J()).d(false);
       }
    }
 }

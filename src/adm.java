@@ -1,37 +1,69 @@
-public class adm implements zb<abn> {
-   public static final ys<vr, adm> a = zb.a(adm::a, adm::new);
+public class adm implements zf<abt> {
+   public static final yw<wj, adm> a = zf.a(adm::a, adm::new);
    private final int b;
-   private final akk c;
+   private final dbt c;
+   private final int d;
+   private final int e;
+   private final boolean f;
+   private final boolean g;
 
-   public adm(int $$0, cyl<?> $$1) {
+   public adm(int $$0, dbt $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
       this.b = $$0;
       this.c = $$1.a();
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   private adm(vr $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.q();
+   private adm(wj $$0) {
+      this.b = $$0.l();
+      this.c = dbt.b.decode($$0);
+      this.d = $$0.l();
+      this.e = $$0.l();
+      this.f = $$0.readBoolean();
+      this.g = $$0.readBoolean();
    }
 
-   private void a(vr $$0) {
-      $$0.k(this.b);
-      $$0.a(this.c);
+   private void a(wj $$0) {
+      $$0.c(this.b);
+      dbt.b.encode($$0, this.c);
+      $$0.c(this.d);
+      $$0.c(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
    }
 
    @Override
-   public zd<adm> a() {
-      return afz.Y;
+   public zh<adm> a() {
+      return agf.Q;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public akk b() {
+   public int b() {
+      return this.b;
+   }
+
+   public dbt e() {
       return this.c;
    }
 
-   public int e() {
-      return this.b;
+   public int f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
+   }
+
+   public boolean h() {
+      return this.f;
+   }
+
+   public boolean i() {
+      return this.g;
    }
 }

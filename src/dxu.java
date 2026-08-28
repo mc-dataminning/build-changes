@@ -1,97 +1,70 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.BitSet;
+import io.netty.buffer.ByteBuf;
 import java.util.Optional;
-import java.util.Set;
+import java.util.UUID;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
-import javax.annotation.Nullable;
 
-public final class dxu {
-   private static final BitSet c = new BitSet(0);
-   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
-   private static final Codec<dvi> e = lq.l
-      .r()
-      .comapFlatMap($$0 -> $$0 == dvi.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
-   public static final Codec<dxu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               e.fieldOf("target_status").forGetter(dxu::a),
-               d.lenientOptionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
-            )
-            .apply($$0, dxu::new)
+public class dxu implements dya {
+   public static final MapCodec<dxu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kg.a.fieldOf("source_entity").forGetter(dxu::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
+            .apply($$0, ($$0x, $$1) -> new dxu(Either.right(Either.left($$0x)), $$1))
    );
-   private static final Set<akj<ddg>> f = Set.of(ddn.aa, ddn.Z, ddn.ab);
-   public static final dci b = new dci() {
+   public static final yw<ByteBuf, dxu> b = yw.a(yu.g, dxu::c, yu.i, $$0 -> $$0.f, ($$0, $$1) -> new dxu(Either.right(Either.right($$0)), $$1));
+   private Either<bsq, Either<UUID, Integer>> e;
+   private final float f;
+
+   public dxu(bsq $$0, float $$1) {
+      this(Either.left($$0), $$1);
+   }
+
+   private dxu(Either<bsq, Either<UUID, Integer>> $$0, float $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   @Override
+   public Optional<eww> a(dcu $$0) {
+      if (this.e.left().isEmpty()) {
+         this.b($$0);
+      }
+
+      return this.e.left().map($$0x -> $$0x.do().b(0.0, (double)this.f, 0.0));
+   }
+
+   private void b(dcu $$0) {
+      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((bsq)$$1.map($$1x -> $$0 instanceof aqt $$2 ? $$2.a($$1x) : null, $$0::a))))
+         .ifPresent($$0x -> this.e = Either.left($$0x));
+   }
+
+   private UUID b() {
+      return (UUID)this.e.map(bsq::cA, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+            throw new RuntimeException("Unable to get entityId from uuid");
+         }));
+   }
+
+   private int c() {
+      return (Integer)this.e.map(bsq::an, $$0 -> (Integer)$$0.map($$0x -> {
+            throw new IllegalStateException("Unable to get entityId from uuid");
+         }, Function.identity()));
+   }
+
+   @Override
+   public dyb<dxu> a() {
+      return dyb.b;
+   }
+
+   public static class a implements dyb<dxu> {
       @Override
-      public int J_() {
-         return 64;
+      public MapCodec<dxu> a() {
+         return dxu.a;
       }
 
       @Override
-      public int I_() {
-         return -64;
-      }
-   };
-   private final dvi g;
-   private final BitSet h;
-
-   private dxu(dvi $$0, Optional<BitSet> $$1) {
-      this.g = $$0;
-      this.h = $$1.orElse(c);
-   }
-
-   @Nullable
-   public static dxu a(tx $$0) {
-      dvi $$1 = dvi.a($$0.l("target_status"));
-      return $$1 == dvi.c ? null : new dxu($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
-   }
-
-   public static void a(dvb $$0) {
-      int $$1 = 4;
-      ja.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
-         if ($$0.a_($$1x).a(dfk.F)) {
-            $$0.a($$1x, dfk.sJ.o(), false);
-         }
-      });
-   }
-
-   public void b(dvb $$0) {
-      dci $$1 = $$0.z();
-      int $$2 = $$1.I_();
-      int $$3 = $$1.am() - 1;
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            if (this.a($$4, $$5)) {
-               ja.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dfk.a.o(), false));
-            }
-         }
-      }
-   }
-
-   public dvi a() {
-      return this.g;
-   }
-
-   public boolean b() {
-      return !this.h.isEmpty();
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
-   }
-
-   public static ddj a(ddj $$0, duh $$1) {
-      if (!$$1.y()) {
-         return $$0;
-      } else {
-         Predicate<akj<ddg>> $$2 = f::contains;
-         return ($$3, $$4, $$5, $$6) -> {
-            jj<ddg> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
-            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
-         };
+      public yw<ByteBuf, dxu> b() {
+         return dxu.b;
       }
    }
 }

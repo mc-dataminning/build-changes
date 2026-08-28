@@ -1,15 +1,19 @@
-public interface dww<T> {
-   void g(T var1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   void f(T var1);
+public record dww(jm<dwv> e, dux f) {
+   public static final Codec<dww> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dwv.k.fieldOf("type").forGetter(dww::a), dux.a.fieldOf("generator").forGetter(dww::b)).apply($$0, $$0.stable(dww::new))
+   );
+   public static final akp<dww> b = akp.a(lu.bb, akq.b("overworld"));
+   public static final akp<dww> c = akp.a(lu.bb, akq.b("the_nether"));
+   public static final akp<dww> d = akp.a(lu.bb, akq.b("the_end"));
 
-   void e(T var1);
+   public jm<dwv> a() {
+      return this.e;
+   }
 
-   void d(T var1);
-
-   void c(T var1);
-
-   void b(T var1);
-
-   void a(T var1);
+   public dux b() {
+      return this.f;
+   }
 }

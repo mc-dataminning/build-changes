@@ -1,168 +1,258 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public class cgc {
-   private static final float a = 2.0F;
-   private static final float b = 1.0F;
-   private static final float c = 1.25F;
-   private static final float d = 1.25F;
-   private static final float e = 1.0F;
-   private static final double f = 2.0;
-   private static final double g = 1.0;
-   private static final bps h = bps.a(5, 16);
-   private static final ImmutableList<cdn<? extends cdm<? super cgb>>> i = ImmutableList.of(cdn.c, cdn.f, cdn.u, cdn.o, cdn.k);
-   private static final ImmutableList<ccg<?>> j = ImmutableList.of(
-      ccg.Z, ccg.x, ccg.y, ccg.m, ccg.n, ccg.E, ccg.t, ccg.h, ccg.O, ccg.P, ccg.Q, ccg.R, new ccg[]{ccg.r, ccg.K, ccg.G}
+public class cgc extends cfb implements bum<cgc.b> {
+   public static final String b = "BucketVariantTag";
+   private static final ajv<Integer> d = ajz.a(cgc.class, ajx.b);
+   public static final List<cgc.d> c = List.of(
+      new cgc.d(cgc.b.h, ctg.b, ctg.h),
+      new cgc.d(cgc.b.g, ctg.h, ctg.h),
+      new cgc.d(cgc.b.g, ctg.h, ctg.l),
+      new cgc.d(cgc.b.l, ctg.a, ctg.h),
+      new cgc.d(cgc.b.b, ctg.l, ctg.h),
+      new cgc.d(cgc.b.a, ctg.b, ctg.a),
+      new cgc.d(cgc.b.f, ctg.g, ctg.d),
+      new cgc.d(cgc.b.j, ctg.k, ctg.e),
+      new cgc.d(cgc.b.l, ctg.a, ctg.o),
+      new cgc.d(cgc.b.f, ctg.a, ctg.e),
+      new cgc.d(cgc.b.i, ctg.a, ctg.h),
+      new cgc.d(cgc.b.l, ctg.a, ctg.b),
+      new cgc.d(cgc.b.d, ctg.j, ctg.g),
+      new cgc.d(cgc.b.e, ctg.f, ctg.d),
+      new cgc.d(cgc.b.k, ctg.o, ctg.a),
+      new cgc.d(cgc.b.c, ctg.h, ctg.o),
+      new cgc.d(cgc.b.j, ctg.o, ctg.a),
+      new cgc.d(cgc.b.g, ctg.a, ctg.e),
+      new cgc.d(cgc.b.a, ctg.o, ctg.a),
+      new cgc.d(cgc.b.b, ctg.h, ctg.a),
+      new cgc.d(cgc.b.d, ctg.j, ctg.e),
+      new cgc.d(cgc.b.g, ctg.e, ctg.e)
    );
-   private static final bwg<cgb> k = byi.a(
-      (Function<byi.b<cgb>, ? extends App<byi.c<cgb>, byl<cgb>>>)($$0 -> $$0.group($$0.c(ccg.G)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               if ($$1.t()) {
-                  $$1.gv();
-                  return true;
-               } else {
-                  return false;
-               }
-            }))
-   );
+   private boolean e = true;
 
-   public static bue.b<cgb> a() {
-      return bue.a(j, i);
+   public cgc(bsw<? extends cgc> $$0, dcu $$1) {
+      super($$0, $$1);
    }
 
-   protected static bue<?> a(bue<cgb> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      $$0.a(Set.of(coa.a));
-      $$0.b(coa.b);
-      $$0.f();
-      return $$0;
+   public static String c(int $$0) {
+      return "entity.minecraft.tropical_fish.predefined." + $$0;
    }
 
-   private static void b(bue<cgb> $$0) {
-      $$0.a(coa.a, 0, ImmutableList.of(new bxp(0.8F), new cgc.b(2.0F), new bwb(45, 90), new bwf() {
-         @Override
-         protected boolean a(aqm $$0, bte $$1) {
-            if ($$1 instanceof cgb $$2 && $$2.t()) {
-               return false;
-            }
-
-            return super.a($$0, $$1);
-         }
-      }, new bvb(ccg.P), new bvb(ccg.Q), k));
+   static int a(cgc.b $$0, ctg $$1, ctg $$2) {
+      return $$0.b() & 65535 | ($$1.a() & 0xFF) << 16 | ($$2.a() & 0xFF) << 24;
    }
 
-   private static void c(bue<cgb> $$0) {
-      $$0.a(
-         coa.b,
-         ImmutableList.of(
-            Pair.of(0, bwv.a(bsn.by, 6.0F, bps.a(30, 60))),
-            Pair.of(1, new bup(bsn.c, 1.0F, 1)),
-            Pair.of(2, new bws(ImmutableList.of(Pair.of(new bvi($$0x -> 1.25F, $$0x -> $$0x.o_() ? 1.0 : 2.0), 1), Pair.of(bus.a(h, 1.25F), 1)))),
-            Pair.of(3, new bwm(bps.a(150, 250), 30.0F, 0.0F, 0.0F)),
-            Pair.of(
-               4, new bws(ImmutableMap.of(ccg.m, cch.b), ImmutableList.of(Pair.of(bwn.a(1.0F), 1), Pair.of(bxc.a(1.0F, 3), 1), Pair.of(new bvf(30, 60), 1)))
-            )
-         )
-      );
+   public static ctg s(int $$0) {
+      return ctg.a($$0 >> 16 & 0xFF);
    }
 
-   private static void d(bue<cgb> $$0) {
-      $$0.a(coa.g, ImmutableList.of(Pair.of(0, new cgc.a())), Set.of(Pair.of(ccg.G, cch.a), Pair.of(ccg.Z, cch.b)));
+   public static ctg t(int $$0) {
+      return ctg.a($$0 >> 24 & 0xFF);
    }
 
-   public static void a(cgb $$0) {
-      $$0.dV().a(ImmutableList.of(coa.g, coa.b));
+   public static cgc.b u(int $$0) {
+      return cgc.b.a($$0 & 65535);
    }
 
-   public static Predicate<cud> b() {
-      return $$0 -> $$0.a(awf.ai);
+   @Override
+   protected void a(ajz.a $$0) {
+      super.a($$0);
+      $$0.a(d, 0);
    }
 
-   public static class a extends buv<cgb> {
-      static final int c = 5 * azh.e * 20;
-      static final int d = 5;
-      static final int e = 75;
-      int f = 0;
-      boolean g;
+   @Override
+   public void b(ua $$0) {
+      super.b($$0);
+      $$0.a("Variant", this.gy());
+   }
 
-      public a() {
-         super(Map.of(), c);
-      }
+   @Override
+   public void a(ua $$0) {
+      super.a($$0);
+      this.v($$0.h("Variant"));
+   }
 
-      protected void a(aqm $$0, cgb $$1, long $$2) {
-         super.c($$0, $$1, $$2);
-         if (this.f > 0) {
-            this.f--;
-         }
+   private void v(int $$0) {
+      this.ao.a(d, $$0);
+   }
 
-         if ($$1.gn()) {
-            $$1.a(cgb.a.c);
-            if ($$1.aG()) {
-               $$1.a(avh.aj);
-            }
-         } else {
-            cgb.a $$3 = $$1.gt();
-            long $$4 = $$1.dV().e(ccg.G);
-            boolean $$5 = $$4 > 75L;
-            if ($$5 != this.g) {
-               this.f = this.a($$1);
-            }
+   @Override
+   public boolean d(int $$0) {
+      return !this.e;
+   }
 
-            this.g = $$5;
-            if ($$3 == cgb.a.c) {
-               if (this.f == 0 && $$1.aG() && $$5) {
-                  $$0.a($$1, (byte)64);
-                  this.f = this.a($$1);
-               }
+   private int gy() {
+      return this.ao.a(d);
+   }
 
-               if ($$4 < (long)cgb.a.d.b()) {
-                  $$1.a(avh.an);
-                  $$1.a(cgb.a.d);
-               }
-            } else if ($$3 == cgb.a.d && $$4 > (long)cgb.a.d.b()) {
-               $$1.a(cgb.a.c);
-            }
-         }
-      }
+   public ctg gv() {
+      return s(this.gy());
+   }
 
-      private int a(cgb $$0) {
-         return cgb.a.c.b() + $$0.dU().a(100, 400);
-      }
+   public ctg gw() {
+      return t(this.gy());
+   }
 
-      protected boolean a(aqm $$0, cgb $$1) {
-         return $$1.aG();
-      }
+   public cgc.b gx() {
+      return u(this.gy());
+   }
 
-      protected boolean b(aqm $$0, cgb $$1, long $$2) {
-         return $$1.gt().a();
-      }
+   public void a(cgc.b $$0) {
+      int $$1 = this.gy();
+      ctg $$2 = s($$1);
+      ctg $$3 = t($$1);
+      this.v(a($$0, $$2, $$3));
+   }
 
-      protected void c(aqm $$0, cgb $$1, long $$2) {
-         $$1.gu();
-      }
+   @Override
+   public void n(cuo $$0) {
+      super.n($$0);
+      cxf.a(kq.N, $$0, $$0x -> $$0x.a("BucketVariantTag", this.gy()));
+   }
 
-      protected void d(aqm $$0, cgb $$1, long $$2) {
-         if (!$$1.gy()) {
-            $$1.gv();
-         }
+   @Override
+   public cuo b() {
+      return new cuo(cur.qI);
+   }
+
+   @Override
+   protected avn v() {
+      return avo.zM;
+   }
+
+   @Override
+   protected avn n_() {
+      return avo.zN;
+   }
+
+   @Override
+   protected avn d(brj $$0) {
+      return avo.zP;
+   }
+
+   @Override
+   protected avn gn() {
+      return avo.zO;
+   }
+
+   @Override
+   public void c(ua $$0) {
+      super.c($$0);
+      if ($$0.b("BucketVariantTag", 3)) {
+         this.v($$0.h("BucketVariantTag"));
       }
    }
 
-   public static class b extends buq<cgb> {
-      public b(float $$0) {
-         super($$0, cgb::gw);
+   @Nullable
+   @Override
+   public buf a(ddj $$0, bqo $$1, btp $$2, @Nullable buf $$3) {
+      $$3 = super.a($$0, $$1, $$2, $$3);
+      ayv $$4 = $$0.E_();
+      cgc.d $$6;
+      if ($$3 instanceof cgc.c $$5) {
+         $$6 = $$5.b;
+      } else if ((double)$$4.i() < 0.9) {
+         $$6 = ad.a(c, $$4);
+         $$3 = new cgc.c(this, $$6);
+      } else {
+         this.e = false;
+         cgc.b[] $$8 = cgc.b.values();
+         ctg[] $$9 = ctg.values();
+         cgc.b $$10 = ad.a($$8, $$4);
+         ctg $$11 = ad.a($$9, $$4);
+         ctg $$12 = ad.a($$9, $$4);
+         $$6 = new cgc.d($$10, $$11, $$12);
       }
 
-      protected void a(aqm $$0, cgb $$1, long $$2) {
-         $$1.gv();
-         super.b($$0, $$1, $$2);
+      this.v($$6.a());
+      return $$3;
+   }
+
+   public static boolean b(bsw<cgc> $$0, dcv $$1, btp $$2, jd $$3, ayv $$4) {
+      return $$1.b_($$3.d()).a(awj.a) && $$1.a_($$3.c()).a(dfy.G) && ($$1.t($$3).a(awc.an) || cge.c($$0, $$1, $$2, $$3, $$4));
+   }
+
+   public static enum a {
+      a(0),
+      b(1);
+
+      final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
+      }
+   }
+
+   public static enum b implements azj {
+      a("kob", cgc.a.a, 0),
+      b("sunstreak", cgc.a.a, 1),
+      c("snooper", cgc.a.a, 2),
+      d("dasher", cgc.a.a, 3),
+      e("brinely", cgc.a.a, 4),
+      f("spotty", cgc.a.a, 5),
+      g("flopper", cgc.a.b, 0),
+      h("stripey", cgc.a.b, 1),
+      i("glitter", cgc.a.b, 2),
+      j("blockfish", cgc.a.b, 3),
+      k("betty", cgc.a.b, 4),
+      l("clayfish", cgc.a.b, 5);
+
+      public static final Codec<cgc.b> m = azj.a(cgc.b::values);
+      private static final IntFunction<cgc.b> n = axd.a(cgc.b::b, values(), a);
+      private final String o;
+      private final wy p;
+      private final cgc.a q;
+      private final int r;
+
+      private b(final String $$0, final cgc.a $$1, final int $$2) {
+         this.o = $$0;
+         this.q = $$1;
+         this.r = $$1.c | $$2 << 8;
+         this.p = wy.c("entity.minecraft.tropical_fish.type." + this.o);
+      }
+
+      public static cgc.b a(int $$0) {
+         return n.apply($$0);
+      }
+
+      public cgc.a a() {
+         return this.q;
+      }
+
+      public int b() {
+         return this.r;
+      }
+
+      @Override
+      public String c() {
+         return this.o;
+      }
+
+      public wy d() {
+         return this.p;
+      }
+   }
+
+   static class c extends cfb.a {
+      final cgc.d b;
+
+      c(cgc $$0, cgc.d $$1) {
+         super($$0);
+         this.b = $$1;
+      }
+   }
+
+   public static record d(cgc.b b, ctg c, ctg d) {
+      public static final Codec<cgc.d> a = Codec.INT.xmap(cgc.d::new, cgc.d::a);
+
+      public d(int $$0) {
+         this(cgc.u($$0), cgc.s($$0), cgc.t($$0));
+      }
+
+      public int a() {
+         return cgc.a(this.b, this.c, this.d);
       }
    }
 }

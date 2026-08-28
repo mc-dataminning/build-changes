@@ -1,46 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
 
-public record cww(int d, List<cwv> e) implements cxi {
-   public static final int a = 256;
-   public static final Codec<cww> b = RecordCodecBuilder.create(
+public record cww(String e, jm<cuj> f, float g, Map<jm<cse>, String> h, wy i) {
+   public static final Codec<cww> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               axo.j.optionalFieldOf("flight_duration", 0).forGetter(cww::a),
-               cwv.c.sizeLimitedListOf(256).optionalFieldOf("explosions", List.of()).forGetter(cww::b)
+               axv.A.fieldOf("asset_name").forGetter(cww::a),
+               akn.a(lu.K).fieldOf("ingredient").forGetter(cww::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(cww::c),
+               Codec.unboundedMap(cse.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cww::d),
+               xa.a.fieldOf("description").forGetter(cww::e)
             )
             .apply($$0, cww::new)
    );
-   public static final ys<ByteBuf, cww> c = ys.a(yq.g, cww::a, cwv.d.a(yq.c(256)), cww::b, cww::new);
+   public static final yw<wj, cww> b = yw.a(
+      yu.l, cww::a, yu.b(lu.K), cww::b, yu.i, cww::c, yu.a(Object2ObjectOpenHashMap::new, yu.b(lu.az), yu.l), cww::d, xa.b, cww::e, cww::new
+   );
+   public static final Codec<jm<cww>> c = akm.a(lu.aW, a);
+   public static final yw<wj, jm<cww>> d = yu.a(lu.aW, b);
 
-   public cww(int d, List<cwv> e) {
-      if (e.size() > 256) {
-         throw new IllegalArgumentException("Got " + e.size() + " explosions, but maximum is 256");
-      } else {
-         this.d = d;
-         this.e = e;
-      }
+   public static cww a(String $$0, cuj $$1, float $$2, wy $$3, Map<jm<cse>, String> $$4) {
+      return new cww($$0, lt.g.e($$1), $$2, $$4, $$3);
    }
 
-   @Override
-   public void a(cty.b $$0, Consumer<wu> $$1, cvw $$2) {
-      if (this.d > 0) {
-         $$1.accept(wu.c("item.minecraft.firework_rocket.flight").b(wt.v).f(String.valueOf(this.d)).a(n.h));
-      }
-
-      for (cwv $$3 : this.e) {
-         $$3.a($$1);
-         $$3.b($$1x -> $$1.accept(wu.b("  ").b($$1x)));
-      }
-   }
-
-   public int a() {
-      return this.d;
-   }
-
-   public List<cwv> b() {
+   public String a() {
       return this.e;
+   }
+
+   public jm<cuj> b() {
+      return this.f;
+   }
+
+   public float c() {
+      return this.g;
+   }
+
+   public Map<jm<cse>, String> d() {
+      return this.h;
+   }
+
+   public wy e() {
+      return this.i;
    }
 }

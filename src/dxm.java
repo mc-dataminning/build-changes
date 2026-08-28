@@ -1,14 +1,19 @@
-import com.mojang.serialization.MapCodec;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public interface dxm<T extends dxl> {
-   dxm<dxd> a = a("block", new dxd.a());
-   dxm<dxf> b = a("entity", new dxf.a());
+public interface dxm<T extends dxd> {
+   @Nullable
+   T a(int var1);
 
-   MapCodec<T> a();
+   @Nullable
+   T a(UUID var1);
 
-   ys<? super wf, T> b();
+   Iterable<T> a();
 
-   static <S extends dxm<T>, T extends dxl> S a(String $$0, S $$1) {
-      return jw.a(lq.t, $$0, $$1);
-   }
+   <U extends T> void a(dxk<T, U> var1, awz<U> var2);
+
+   void a(ewr var1, Consumer<T> var2);
+
+   <U extends T> void a(dxk<T, U> var1, ewr var2, awz<U> var3);
 }

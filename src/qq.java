@@ -1,72 +1,65 @@
 public class qq {
-   @Deprecated
-   public static final enm.a a = new enm.a(-3, 1.0, 1.0, 1.0, 0.0);
+   public static final akp<eaz<?>> a = a("cave");
+   public static final akp<eaz<?>> b = a("cave_extra_underground");
+   public static final akp<eaz<?>> c = a("canyon");
+   public static final akp<eaz<?>> d = a("nether_cave");
 
-   public static void a(qm<enm.a> $$0) {
-      a($$0, 0, dyp.a, dyp.b, dyp.c, dyp.d);
-      a($$0, -2, dyp.e, dyp.f, dyp.g, dyp.h);
-      a($$0, dyp.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(dyp.j, a);
-      a($$0, dyp.k, -3, 1.0);
-      a($$0, dyp.l, -7, 1.0);
-      a($$0, dyp.m, -1, 1.0);
-      a($$0, dyp.n, -5, 1.0);
-      a($$0, dyp.o, -7, 1.0, 1.0);
-      a($$0, dyp.p, -8, 1.0);
-      a($$0, dyp.q, -8, 1.0);
-      a($$0, dyp.r, -7, 1.0);
-      a($$0, dyp.s, -8, 1.0);
-      a($$0, dyp.t, -11, 1.0);
-      a($$0, dyp.u, -11, 1.0);
-      a($$0, dyp.v, -7, 1.0);
-      a($$0, dyp.w, -7, 1.0);
-      a($$0, dyp.x, -11, 1.0);
-      a($$0, dyp.y, -8, 1.0);
-      a($$0, dyp.z, -5, 1.0);
-      a($$0, dyp.A, -8, 1.0);
-      a($$0, dyp.B, -7, 0.4, 0.5, 1.0);
-      a($$0, dyp.C, -8, 1.0);
-      a($$0, dyp.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, dyp.E, -8, 1.0);
-      a($$0, dyp.F, -7, 1.0);
-      a($$0, dyp.G, -7, 1.0);
-      a($$0, dyp.H, -5, 1.0);
-      a($$0, dyp.I, -8, 1.0);
-      a($$0, dyp.J, -8, 1.0);
-      a($$0, dyp.K, -7, 1.0);
-      a($$0, dyp.L, -7, 1.0);
-      a($$0, dyp.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dyp.N, -6, 1.0, 1.0, 1.0);
-      a($$0, dyp.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, dyp.P, -8, 1.0);
-      a($$0, dyp.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dyp.R, -8, 1.0);
-      a($$0, dyp.S, -6, 1.0, 1.0, 1.0);
-      a($$0, dyp.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dyp.U, -3, 1.0);
-      a($$0, dyp.V, -6, 1.0, 1.0, 1.0);
-      a($$0, dyp.W, -2, 1.0);
-      a($$0, dyp.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dyp.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dyp.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dyp.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dyp.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dyp.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dyp.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dyp.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dyp.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, dyp.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, dyp.ah, -4, 1.0);
+   private static akp<eaz<?>> a(String $$0) {
+      return akp.a(lu.aH, akq.b($$0));
    }
 
-   private static void a(qm<enm.a> $$0, int $$1, akj<enm.a> $$2, akj<enm.a> $$3, akj<enm.a> $$4, akj<enm.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(qm<enm.a> $$0, akj<enm.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new enm.a($$2, $$3, $$4));
+   public static void a(qp<eaz<?>> $$0) {
+      jn<dfw> $$1 = $$0.a(lu.f);
+      $$0.a(
+         a,
+         ebb.a
+            .a(
+               new eax(
+                  0.15F,
+                  ehw.a(dzp.b(8), dzp.a(180)),
+                  bqa.b(0.1F, 0.9F),
+                  dzp.b(8),
+                  eav.a(false, dfy.oS.o()),
+                  $$1.b(awd.bi),
+                  bqa.b(0.7F, 1.4F),
+                  bqa.b(0.8F, 1.3F),
+                  bqa.b(-1.0F, -0.4F)
+               )
+            )
+      );
+      $$0.a(
+         b,
+         ebb.a
+            .a(
+               new eax(
+                  0.07F,
+                  ehw.a(dzp.b(8), dzp.a(47)),
+                  bqa.b(0.1F, 0.9F),
+                  dzp.b(8),
+                  eav.a(false, dfy.gv.o()),
+                  $$1.b(awd.bi),
+                  bqa.b(0.7F, 1.4F),
+                  bqa.b(0.8F, 1.3F),
+                  bqa.b(-1.0F, -0.4F)
+               )
+            )
+      );
+      $$0.a(
+         c,
+         ebb.c
+            .a(
+               new eas(
+                  0.01F,
+                  ehw.a(dzp.a(10), dzp.a(67)),
+                  bpr.a(3.0F),
+                  dzp.b(8),
+                  eav.a(false, dfy.oT.o()),
+                  $$1.b(awd.bi),
+                  bqa.b(-0.125F, 0.125F),
+                  new eas.a(bqa.b(0.75F, 1.0F), bpz.a(0.0F, 6.0F, 2.0F), 3, bqa.b(0.75F, 1.0F), 1.0F, 0.0F)
+               )
+            )
+      );
+      $$0.a(d, ebb.b.a(new eax(0.2F, ehw.a(dzp.a(0), dzp.c(1)), bpr.a(0.5F), dzp.b(10), $$1.b(awd.bj), bpr.a(1.0F), bpr.a(1.0F), bpr.a(-0.7F))));
    }
 }

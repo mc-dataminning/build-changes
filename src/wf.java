@@ -1,19 +1,38 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class wf extends vr {
-   private final jx d;
+public interface wf {
+   static wf a(final Runnable $$0) {
+      return new wf() {
+         @Override
+         public void a() {
+            $$0.run();
+         }
 
-   public wf(ByteBuf $$0, jx $$1) {
-      super($$0);
-      this.d = $$1;
+         @Nullable
+         @Override
+         public zf<?> b() {
+            $$0.run();
+            return null;
+         }
+      };
    }
 
-   public jx G() {
-      return this.d;
+   static wf a(final Supplier<zf<?>> $$0) {
+      return new wf() {
+         @Nullable
+         @Override
+         public zf<?> b() {
+            return $$0.get();
+         }
+      };
    }
 
-   public static Function<ByteBuf, wf> a(jx $$0) {
-      return $$1 -> new wf($$1, $$0);
+   default void a() {
+   }
+
+   @Nullable
+   default zf<?> b() {
+      return null;
    }
 }

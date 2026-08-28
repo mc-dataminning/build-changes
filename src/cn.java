@@ -1,27 +1,63 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.Function;
 
-public record cn(Optional<bc<cwv, cm.a>> c, de.d d) implements dt<cww> {
-   public static final Codec<cn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bc.a(cm.a.a).optionalFieldOf("explosions").forGetter(cn::b), de.d.d.optionalFieldOf("flight_duration", de.d.c).forGetter(cn::c))
-            .apply($$0, cn::new)
-   );
+public abstract class cn implements dw<dag> {
+   private final List<bq> a;
 
-   @Override
-   public km<cww> a() {
-      return kn.U;
+   protected cn(List<bq> $$0) {
+      this.a = $$0;
    }
 
-   public boolean a(cud $$0, cww $$1) {
-      return this.c.isPresent() && !this.c.get().a($$1.b()) ? false : this.d.d($$1.a());
+   public static <T extends cn> Codec<T> a(Function<List<bq>, T> $$0) {
+      return bq.a.listOf().xmap($$0, cn::b);
    }
 
-   public Optional<bc<cwv, cm.a>> b() {
-      return this.c;
+   protected List<bq> b() {
+      return this.a;
    }
 
-   public de.d c() {
-      return this.d;
+   public boolean a(cuo $$0, dag $$1) {
+      for (bq $$2 : this.a) {
+         if (!$$2.a($$1)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static cn.a a(List<bq> $$0) {
+      return new cn.a($$0);
+   }
+
+   public static cn.b b(List<bq> $$0) {
+      return new cn.b($$0);
+   }
+
+   public static class a extends cn {
+      public static final Codec<cn.a> a = a(cn.a::new);
+
+      protected a(List<bq> $$0) {
+         super($$0);
+      }
+
+      @Override
+      public kp<dag> a() {
+         return kq.k;
+      }
+   }
+
+   public static class b extends cn {
+      public static final Codec<cn.b> a = a(cn.b::new);
+
+      protected b(List<bq> $$0) {
+         super($$0);
+      }
+
+      @Override
+      public kp<dag> a() {
+         return kq.y;
+      }
    }
 }

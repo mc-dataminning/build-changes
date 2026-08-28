@@ -1,14 +1,4 @@
-public abstract class yz<T extends wa> implements zb<T> {
-   private final Iterable<zb<? super T>> a;
-
-   protected yz(Iterable<zb<? super T>> $$0) {
-      this.a = $$0;
-   }
-
-   public final Iterable<zb<? super T>> b() {
-      return this.a;
-   }
-
-   @Override
-   public abstract zd<? extends yz<T>> a();
+@FunctionalInterface
+public interface yz<O, T> {
+   void encode(T var1, O var2);
 }

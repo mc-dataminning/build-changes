@@ -1,52 +1,67 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bpe extends bpm {
-   public static final MapCodec<bpe> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
-               .apply($$0, bpe::new)
-      )
-      .validate(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0)
-      );
-   private final int b;
-   private final int f;
+public class bpe<E extends bpc> {
+   private final int a;
+   private final ImmutableList<E> b;
 
-   private bpe(int $$0, int $$1) {
-      this.b = $$0;
-      this.f = $$1;
+   bpe(List<? extends E> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+      this.a = bpd.a($$0);
    }
 
-   public static bpe a(int $$0, int $$1) {
-      return new bpe($$0, $$1);
+   public static <E extends bpc> bpe<E> c() {
+      return new bpe<>(ImmutableList.of());
    }
 
-   @Override
-   public int a(ayo $$0) {
-      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
+   @SafeVarargs
+   public static <E extends bpc> bpe<E> a(E... $$0) {
+      return new bpe<>(ImmutableList.copyOf($$0));
    }
 
-   @Override
-   public int a() {
+   public static <E extends bpc> bpe<E> a(List<E> $$0) {
+      return new bpe<>($$0);
+   }
+
+   public boolean d() {
+      return this.b.isEmpty();
+   }
+
+   public Optional<E> b(ayv $$0) {
+      if (this.a == 0) {
+         return Optional.empty();
+      } else {
+         int $$1 = $$0.a(this.a);
+         return bpd.a(this.b, $$1);
+      }
+   }
+
+   public List<E> e() {
       return this.b;
    }
 
-   @Override
-   public int b() {
-      return this.f;
+   public static <E extends bpc> Codec<bpe<E>> c(Codec<E> $$0) {
+      return $$0.listOf().xmap(bpe::a, bpe::e);
    }
 
    @Override
-   public bpn<?> c() {
-      return bpn.c;
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bpe<?> $$1 = (bpe<?>)$$0;
+         return this.a == $$1.a && Objects.equals(this.b, $$1.b);
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
    }
 }

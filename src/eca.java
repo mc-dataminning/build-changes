@@ -1,154 +1,144 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-@Deprecated
-public class eca extends ebl<eca.a> {
-   private static final dsl a = dfk.nc.o();
+public abstract class eca<FC extends eee> {
+   public static final eca<eel> e = a("no_op", new ecu(eel.a));
+   public static final eca<efa> f = a("tree", new edm(efa.a));
+   public static final eca<eer> g = a("flower", new ecy(eer.a));
+   public static final eca<eer> h = a("no_bonemeal_flower", new ecy(eer.a));
+   public static final eca<eer> i = a("random_patch", new ecy(eer.a));
+   public static final eca<edw> j = a("block_pile", new ebj(edw.a));
+   public static final eca<eez> k = a("spring_feature", new edl(eez.a));
+   public static final eca<eel> l = a("chorus_plant", new ebm(eel.a));
+   public static final eca<ees> m = a("replace_single_block", new edb(ees.a));
+   public static final eca<eel> n = a("void_start_platform", new edr(eel.a));
+   public static final eca<eel> o = a("desert_well", new ebt(eel.a));
+   public static final eca<ecf> p = a("fossil", new ece(ecf.a));
+   public static final eca<eeg> q = a("huge_red_mushroom", new ecl(eeg.a));
+   public static final eca<eeg> r = a("huge_brown_mushroom", new eci(eeg.a));
+   public static final eca<eel> s = a("ice_spike", new ecm(eel.a));
+   public static final eca<eel> t = a("glowstone_blob", new ech(eel.a));
+   public static final eca<eel> u = a("freeze_top_layer", new edj(eel.a));
+   public static final eca<eel> v = a("vines", new edq(eel.a));
+   public static final eca<edv> w = a("block_column", new ebi(edv.a));
+   public static final eca<efd> x = a("vegetation_patch", new edp(efd.a));
+   public static final eca<efd> y = a("waterlogged_vegetation_patch", new eds(efd.a));
+   public static final eca<eeu> z = a("root_system", new edc(eeu.a));
+   public static final eca<eej> A = a("multiface_growth", new ecs(eej.a));
+   public static final eca<efc> B = a("underwater_magma", new edo(efc.a));
+   public static final eca<eel> C = a("monster_room", new ecr(eel.a));
+   public static final eca<eel> D = a("blue_ice", new ebk(eel.a));
+   public static final eca<edx> E = a("iceberg", new ecn(edx.a));
+   public static final eca<edx> F = a("forest_rock", new ebh(edx.a));
+   public static final eca<eeb> G = a("disk", new ebu(eeb.a));
+   public static final eca<ecp.a> H = a("lake", new ecp(ecp.a.a));
+   public static final eca<eem> I = a("ore", new ecv(eem.a));
+   public static final eca<eey> J = a("end_spike", new edk(eey.a));
+   public static final eca<eel> K = a("end_island", new eby(eel.a));
+   public static final eca<eed> L = a("end_gateway", new ebx(eed.a));
+   public static final edg M = a("seagrass", new edg(eeo.k));
+   public static final eca<eel> N = a("kelp", new eco(eel.a));
+   public static final eca<eel> O = a("coral_tree", new ebr(eel.a));
+   public static final eca<eel> P = a("coral_mushroom", new ebq(eel.a));
+   public static final eca<eel> Q = a("coral_claw", new ebo(eel.a));
+   public static final eca<edz> R = a("sea_pickle", new edf(edz.a));
+   public static final eca<eew> S = a("simple_block", new edh(eew.a));
+   public static final eca<eeo> T = a("bamboo", new ebe(eeo.k));
+   public static final eca<ecj> U = a("huge_fungus", new eck(ecj.a));
+   public static final eca<eek> V = a("nether_forest_vegetation", new ect(eek.c));
+   public static final eca<eel> W = a("weeping_vines", new edt(eel.a));
+   public static final eca<efb> X = a("twisting_vines", new edn(efb.a));
+   public static final eca<edy> Y = a("basalt_columns", new ebf(edy.a));
+   public static final eca<eea> Z = a("delta_feature", new ebs(eea.a));
+   public static final eca<eet> aa = a("netherrack_replace_blobs", new eda(eet.a));
+   public static final eca<eei> ab = a("fill_layer", new ecd(eei.a));
+   public static final ebl ac = a("bonus_chest", new ebl(eel.a));
+   public static final eca<eel> ad = a("basalt_pillar", new ebg(eel.a));
+   public static final eca<eem> ae = a("scattered_ore", new edd(eem.a));
+   public static final eca<eeq> af = a("random_selector", new ecz(eeq.a));
+   public static final eca<eex> ag = a("simple_random_selector", new edi(eex.a));
+   public static final eca<eep> ah = a("random_boolean_selector", new ecx(eep.a));
+   public static final eca<eef> ai = a("geode", new ecg(eef.b));
+   public static final eca<eec> aj = a("dripstone_cluster", new ebv(eec.a));
+   public static final eca<eeh> ak = a("large_dripstone", new ecq(eeh.a));
+   public static final eca<een> al = a("pointed_dripstone", new ecw(een.a));
+   public static final eca<eev> am = a("sculk_patch", new ede(eev.a));
+   private final MapCodec<ebn<FC, eca<FC>>> a;
 
-   public eca(Codec<eca.a> $$0) {
-      super($$0);
+   private static <C extends eee, F extends eca<C>> F a(String $$0, F $$1) {
+      return jz.a(lt.O, $$0, $$1);
    }
 
-   @Override
-   public boolean a(ebn<eca.a> $$0) {
-      ja $$1 = $$0.e();
-      ddc $$2 = $$0.b();
-      ayo $$3 = $$0.d();
-      eca.a $$4 = $$0.f();
-      if ($$1.v() <= $$2.I_() + 4) {
-         return false;
-      } else {
-         $$1 = $$1.c(4);
-         boolean[] $$5 = new boolean[2048];
-         int $$6 = $$3.a(4) + 4;
+   public eca(Codec<FC> $$0) {
+      this.a = $$0.fieldOf("config").xmap($$0x -> new ebn<>(this, $$0x), ebn::c);
+   }
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            double $$8 = $$3.j() * 6.0 + 3.0;
-            double $$9 = $$3.j() * 4.0 + 2.0;
-            double $$10 = $$3.j() * 6.0 + 3.0;
-            double $$11 = $$3.j() * (16.0 - $$8 - 2.0) + 1.0 + $$8 / 2.0;
-            double $$12 = $$3.j() * (8.0 - $$9 - 4.0) + 2.0 + $$9 / 2.0;
-            double $$13 = $$3.j() * (16.0 - $$10 - 2.0) + 1.0 + $$10 / 2.0;
+   public MapCodec<ebn<FC, eca<FC>>> a() {
+      return this.a;
+   }
 
-            for (int $$14 = 1; $$14 < 15; $$14++) {
-               for (int $$15 = 1; $$15 < 15; $$15++) {
-                  for (int $$16 = 1; $$16 < 7; $$16++) {
-                     double $$17 = ((double)$$14 - $$11) / ($$8 / 2.0);
-                     double $$18 = ((double)$$16 - $$12) / ($$9 / 2.0);
-                     double $$19 = ((double)$$15 - $$13) / ($$10 / 2.0);
-                     double $$20 = $$17 * $$17 + $$18 * $$18 + $$19 * $$19;
-                     if ($$20 < 1.0) {
-                        $$5[($$14 * 16 + $$15) * 8 + $$16] = true;
-                     }
-                  }
-               }
-            }
-         }
+   protected void a(ddc $$0, jd $$1, dta $$2) {
+      $$0.a($$1, $$2, 3);
+   }
 
-         dsl $$21 = $$4.a().a($$3, $$1);
+   public static Predicate<dta> a(awt<dfw> $$0) {
+      return $$1 -> !$$1.a($$0);
+   }
 
-         for (int $$22 = 0; $$22 < 16; $$22++) {
-            for (int $$23 = 0; $$23 < 16; $$23++) {
-               for (int $$24 = 0; $$24 < 8; $$24++) {
-                  boolean $$25 = !$$5[($$22 * 16 + $$23) * 8 + $$24]
-                     && (
-                        $$22 < 15 && $$5[(($$22 + 1) * 16 + $$23) * 8 + $$24]
-                           || $$22 > 0 && $$5[(($$22 - 1) * 16 + $$23) * 8 + $$24]
-                           || $$23 < 15 && $$5[($$22 * 16 + $$23 + 1) * 8 + $$24]
-                           || $$23 > 0 && $$5[($$22 * 16 + ($$23 - 1)) * 8 + $$24]
-                           || $$24 < 7 && $$5[($$22 * 16 + $$23) * 8 + $$24 + 1]
-                           || $$24 > 0 && $$5[($$22 * 16 + $$23) * 8 + ($$24 - 1)]
-                     );
-                  if ($$25) {
-                     dsl $$26 = $$2.a_($$1.b($$22, $$24, $$23));
-                     if ($$24 >= 4 && $$26.k()) {
-                        return false;
-                     }
-
-                     if ($$24 < 4 && !$$26.e() && $$2.a_($$1.b($$22, $$24, $$23)) != $$21) {
-                        return false;
-                     }
-                  }
-               }
-            }
-         }
-
-         for (int $$27 = 0; $$27 < 16; $$27++) {
-            for (int $$28 = 0; $$28 < 16; $$28++) {
-               for (int $$29 = 0; $$29 < 8; $$29++) {
-                  if ($$5[($$27 * 16 + $$28) * 8 + $$29]) {
-                     ja $$30 = $$1.b($$27, $$29, $$28);
-                     if (this.c($$2.a_($$30))) {
-                        boolean $$31 = $$29 >= 4;
-                        $$2.a($$30, $$31 ? a : $$21, 2);
-                        if ($$31) {
-                           $$2.a($$30, a.b(), 0);
-                           this.a($$2, $$30);
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         dsl $$32 = $$4.b().a($$3, $$1);
-         if (!$$32.i()) {
-            for (int $$33 = 0; $$33 < 16; $$33++) {
-               for (int $$34 = 0; $$34 < 16; $$34++) {
-                  for (int $$35 = 0; $$35 < 8; $$35++) {
-                     boolean $$36 = !$$5[($$33 * 16 + $$34) * 8 + $$35]
-                        && (
-                           $$33 < 15 && $$5[(($$33 + 1) * 16 + $$34) * 8 + $$35]
-                              || $$33 > 0 && $$5[(($$33 - 1) * 16 + $$34) * 8 + $$35]
-                              || $$34 < 15 && $$5[($$33 * 16 + $$34 + 1) * 8 + $$35]
-                              || $$34 > 0 && $$5[($$33 * 16 + ($$34 - 1)) * 8 + $$35]
-                              || $$35 < 7 && $$5[($$33 * 16 + $$34) * 8 + $$35 + 1]
-                              || $$35 > 0 && $$5[($$33 * 16 + $$34) * 8 + ($$35 - 1)]
-                        );
-                     if ($$36 && ($$35 < 4 || $$3.a(2) != 0)) {
-                        dsl $$37 = $$2.a_($$1.b($$33, $$35, $$34));
-                        if ($$37.e() && !$$37.a(avw.bP)) {
-                           ja $$38 = $$1.b($$33, $$35, $$34);
-                           $$2.a($$38, $$32, 2);
-                           this.a($$2, $$38);
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         if ($$21.u().a(awc.a)) {
-            for (int $$39 = 0; $$39 < 16; $$39++) {
-               for (int $$40 = 0; $$40 < 16; $$40++) {
-                  int $$41 = 4;
-                  ja $$42 = $$1.b($$39, 4, $$40);
-                  if ($$2.t($$42).a().a($$2, $$42, false) && this.c($$2.a_($$42))) {
-                     $$2.a($$42, dfk.dO.o(), 2);
-                  }
-               }
-            }
-         }
-
-         return true;
+   protected void a(ddq $$0, jd $$1, dta $$2, Predicate<dta> $$3) {
+      if ($$3.test($$0.a_($$1))) {
+         $$0.a($$1, $$2, 2);
       }
    }
 
-   private boolean c(dsl $$0) {
-      return !$$0.a(avw.bO);
+   public abstract boolean a(ecc<FC> var1);
+
+   public boolean a(FC $$0, ddq $$1, dux $$2, ayv $$3, jd $$4) {
+      return $$1.f_($$4) ? this.a(new ecc<>(Optional.empty(), $$1, $$2, $$3, $$4, $$0)) : false;
    }
 
-   public static record a(efq b, efq c) implements edp {
-      public static final Codec<eca.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(efq.a.fieldOf("fluid").forGetter(eca.a::a), efq.a.fieldOf("barrier").forGetter(eca.a::b)).apply($$0, eca.a::new)
-      );
+   protected static boolean a(dta $$0) {
+      return $$0.a(awd.be);
+   }
 
-      public efq a() {
-         return this.b;
+   public static boolean b(dta $$0) {
+      return $$0.a(awd.af);
+   }
+
+   public static boolean a(dda $$0, jd $$1) {
+      return $$0.a($$1, eca::b);
+   }
+
+   public static boolean a(Function<jd, dta> $$0, jd $$1, Predicate<dta> $$2) {
+      jd.a $$3 = new jd.a();
+
+      for (ji $$4 : ji.values()) {
+         $$3.a($$1, $$4);
+         if ($$2.test($$0.apply($$3))) {
+            return true;
+         }
       }
 
-      public efq b() {
-         return this.c;
+      return false;
+   }
+
+   public static boolean a(Function<jd, dta> $$0, jd $$1) {
+      return a($$0, $$1, dsz.a::i);
+   }
+
+   protected void a(ddq $$0, jd $$1) {
+      jd.a $$2 = $$1.j();
+
+      for (int $$3 = 0; $$3 < 2; $$3++) {
+         $$2.c(ji.b);
+         if ($$0.a_($$2).i()) {
+            return;
+         }
+
+         $$0.y($$2).e($$2);
       }
    }
 }

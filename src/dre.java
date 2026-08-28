@@ -1,20 +1,15 @@
-public class dre extends dpe {
-   public dre(ja $$0, dsl $$1) {
-      super(dps.B, $$0, $$1, cyp.d);
+public interface dre extends bqj {
+   ewr p_ = dfw.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
+
+   default ewr ai_() {
+      return p_;
    }
 
-   @Override
-   protected wu k() {
-      return wu.c("container.smoker");
-   }
+   double H();
 
-   @Override
-   protected int b(cud $$0) {
-      return super.b($$0) / 2;
-   }
+   double I();
 
-   @Override
-   protected cpi a(int $$0, cmk $$1) {
-      return new cri($$0, $$1, this, this.m);
-   }
+   double J();
+
+   boolean K();
 }

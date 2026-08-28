@@ -1,280 +1,350 @@
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class dyy {
-   private static final dsl a = dfk.hj.o();
-   private static final dsl b = dfk.hk.o();
-   private static final dsl c = dfk.iA.o();
-   private static final dsl d = dfk.hn.o();
-   private static final dsl e = dfk.hv.o();
-   private static final dsl f = dfk.hx.o();
-   private static final dsl g = dfk.hr.o();
-   private static final dsl h = dfk.iC.o();
-   private static final dsl i = dfk.dP.o();
-   private final dsl j;
-   private final int k;
-   private final dsl[] l;
-   private final enm m;
-   private final enm n;
-   private final enm o;
-   private final enm p;
-   private final enm q;
-   private final enm r;
-   private final enm s;
-   private final dyt t;
-   private final enm u;
-   private final enm v;
+public final class dyy extends dux {
+   public static final MapCodec<dyy> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ddy.a.fieldOf("biome_source").forGetter($$0x -> $$0x.b), dza.b.fieldOf("settings").forGetter($$0x -> $$0x.e))
+            .apply($$0, $$0.stable(dyy::new))
+   );
+   private static final dta d = dfy.a.o();
+   private final jm<dza> e;
+   private final Supplier<dyh.a> f;
 
-   public dyy(dyu $$0, dsl $$1, int $$2, dyt $$3) {
-      this.j = $$1;
-      this.k = $$2;
-      this.t = $$3;
-      this.m = $$0.a(dyp.P);
-      this.l = a($$3.a(new akk("clay_bands")));
-      this.u = $$0.a(dyp.N);
-      this.v = $$0.a(dyp.O);
-      this.n = $$0.a(dyp.Q);
-      this.o = $$0.a(dyp.R);
-      this.p = $$0.a(dyp.S);
-      this.q = $$0.a(dyp.T);
-      this.r = $$0.a(dyp.U);
-      this.s = $$0.a(dyp.V);
+   public dyy(ddy $$0, jm<dza> $$1) {
+      super($$0);
+      this.e = $$1;
+      this.f = Suppliers.memoize(() -> a($$1.a()));
    }
 
-   public void a(dyu $$0, ddi $$1, jw<ddg> $$2, boolean $$3, dzd $$4, final duh $$5, dyk $$6, dyx.o $$7) {
-      final ja.a $$8 = new ja.a();
-      final dbn $$9 = $$5.f();
-      int $$10 = $$9.d();
-      int $$11 = $$9.e();
-      due $$12 = new due() {
-         @Override
-         public dsl a(int $$0) {
-            return $$5.a_($$8.q($$0));
+   private static dyh.a a(dza $$0) {
+      dyh.b $$1 = new dyh.b(-54, dfy.H.o());
+      int $$2 = $$0.l();
+      dyh.b $$3 = new dyh.b($$2, $$0.h());
+      dyh.b $$4 = new dyh.b(dwv.e * 2, dfy.a.o());
+      return ($$4x, $$5, $$6) -> $$5 < Math.min(-54, $$2) ? $$1 : $$3;
+   }
+
+   @Override
+   public CompletableFuture<duw> a(dzj $$0, dzx $$1, ddo $$2, duw $$3) {
+      return CompletableFuture.supplyAsync(ad.a("init_biomes", () -> {
+         this.b($$1, $$0, $$2, $$3);
+         return $$3;
+      }), ad.g());
+   }
+
+   private void b(dzx $$0, dzj $$1, ddo $$2, duw $$3) {
+      dyz $$4 = $$3.a($$3x -> this.a($$3x, $$2, $$0, $$1));
+      ddx $$5 = dyj.a($$0.a(this.b), $$3);
+      $$3.a($$5, $$4.a($$1.a(), this.e.a().k()));
+   }
+
+   private dyz a(duw $$0, ddo $$1, dzx $$2, dzj $$3) {
+      return dyz.a($$0, $$3, dyi.a($$1, $$0.f()), this.e.a(), this.f.get(), $$2);
+   }
+
+   @Override
+   protected MapCodec<? extends dux> b() {
+      return c;
+   }
+
+   public jm<dza> h() {
+      return this.e;
+   }
+
+   public boolean a(akp<dza> $$0) {
+      return this.e.a($$0);
+   }
+
+   @Override
+   public int a(int $$0, int $$1, dyv.a $$2, dcw $$3, dzj $$4) {
+      return this.a($$3, $$4, $$0, $$1, null, $$2.e()).orElse($$3.I_());
+   }
+
+   @Override
+   public ddg a(int $$0, int $$1, dcw $$2, dzj $$3) {
+      MutableObject<ddg> $$4 = new MutableObject();
+      this.a($$2, $$3, $$0, $$1, $$4, null);
+      return (ddg)$$4.getValue();
+   }
+
+   @Override
+   public void a(List<String> $$0, dzj $$1, jd $$2) {
+      DecimalFormat $$3 = new DecimalFormat("0.000");
+      dzb $$4 = $$1.a();
+      dyo.e $$5 = new dyo.e($$2.u(), $$2.v(), $$2.w());
+      double $$6 = $$4.j().a($$5);
+      $$0.add(
+         "NoiseRouter T: "
+            + $$3.format($$4.e().a($$5))
+            + " V: "
+            + $$3.format($$4.f().a($$5))
+            + " C: "
+            + $$3.format($$4.g().a($$5))
+            + " E: "
+            + $$3.format($$4.h().a($$5))
+            + " D: "
+            + $$3.format($$4.i().a($$5))
+            + " W: "
+            + $$3.format($$6)
+            + " PV: "
+            + $$3.format((double)dzc.a((float)$$6))
+            + " AS: "
+            + $$3.format($$4.k().a($$5))
+            + " N: "
+            + $$3.format($$4.l().a($$5))
+      );
+   }
+
+   private OptionalInt a(dcw $$0, dzj $$1, int $$2, int $$3, @Nullable MutableObject<ddg> $$4, @Nullable Predicate<dta> $$5) {
+      dzd $$6 = this.e.a().f().a($$0);
+      int $$7 = $$6.a();
+      int $$8 = $$6.c();
+      int $$9 = ayn.a($$8, $$7);
+      int $$10 = ayn.a($$6.d(), $$7);
+      if ($$10 <= 0) {
+         return OptionalInt.empty();
+      } else {
+         dta[] $$11;
+         if ($$4 == null) {
+            $$11 = null;
+         } else {
+            $$11 = new dta[$$6.d()];
+            $$4.setValue(new ddg($$8, $$11));
          }
 
-         @Override
-         public void a(int $$0, dsl $$1) {
-            dci $$2 = $$5.z();
-            if ($$0 >= $$2.I_() && $$0 < $$2.am()) {
-               $$5.a($$8.q($$0), $$1, false);
-               if (!$$1.u().c()) {
-                  $$5.e($$8);
+         int $$13 = $$6.b();
+         int $$14 = Math.floorDiv($$2, $$13);
+         int $$15 = Math.floorDiv($$3, $$13);
+         int $$16 = Math.floorMod($$2, $$13);
+         int $$17 = Math.floorMod($$3, $$13);
+         int $$18 = $$14 * $$13;
+         int $$19 = $$15 * $$13;
+         double $$20 = (double)$$16 / (double)$$13;
+         double $$21 = (double)$$17 / (double)$$13;
+         dyz $$22 = new dyz(1, $$1, $$18, $$19, $$6, dyp.b.a, this.e.a(), this.f.get(), dzx.a());
+         $$22.f();
+         $$22.b(0);
+
+         for (int $$23 = $$10 - 1; $$23 >= 0; $$23--) {
+            $$22.b($$23, 0);
+
+            for (int $$24 = $$7 - 1; $$24 >= 0; $$24--) {
+               int $$25 = ($$9 + $$23) * $$7 + $$24;
+               double $$26 = (double)$$24 / (double)$$7;
+               $$22.a($$25, $$26);
+               $$22.b($$2, $$20);
+               $$22.c($$3, $$21);
+               dta $$27 = $$22.e();
+               dta $$28 = $$27 == null ? this.e.a().g() : $$27;
+               if ($$11 != null) {
+                  int $$29 = $$23 * $$7 + $$24;
+                  $$11[$$29] = $$28;
+               }
+
+               if ($$5 != null && $$5.test($$28)) {
+                  $$22.g();
+                  return OptionalInt.of($$25 + 1);
                }
             }
          }
 
-         @Override
-         public String toString() {
-            return "ChunkBlockColumn " + $$9;
-         }
-      };
-      dyx.g $$13 = new dyx.g(this, $$0, $$5, $$6, $$1::a, $$2, $$4);
-      dyx.u $$14 = $$7.apply($$13);
-      ja.a $$15 = new ja.a();
+         $$22.g();
+         return OptionalInt.empty();
+      }
+   }
 
-      for (int $$16 = 0; $$16 < 16; $$16++) {
-         for (int $$17 = 0; $$17 < 16; $$17++) {
-            int $$18 = $$10 + $$16;
-            int $$19 = $$11 + $$17;
-            int $$20 = $$5.a(dyg.a.a, $$16, $$17) + 1;
-            $$8.p($$18).r($$19);
-            jj<ddg> $$21 = $$1.a($$15.d($$18, $$3 ? 0 : $$20, $$19));
-            if ($$21.a(ddn.B)) {
-               this.a($$12, $$18, $$19, $$20, $$5);
+   @Override
+   public void a(ara $$0, ddo $$1, dzj $$2, duw $$3) {
+      if (!ab.a($$3.f())) {
+         dzs $$4 = new dzs(this, $$0);
+         this.a($$3, $$4, $$2, $$1, $$0.F_(), $$0.H_().d(lu.aF), dzx.a($$0));
+      }
+   }
+
+   @VisibleForTesting
+   public void a(duw $$0, dzs $$1, dzj $$2, ddo $$3, ddw $$4, jz<ddu> $$5, dzx $$6) {
+      dyz $$7 = $$0.a($$3x -> this.a($$3x, $$3, $$6, $$2));
+      dza $$8 = this.e.a();
+      $$2.c().a($$2, $$4, $$5, $$8.n(), $$1, $$0, $$7, $$8.j());
+   }
+
+   @Override
+   public void a(ara $$0, long $$1, dzj $$2, ddw $$3, ddo $$4, duw $$5, dyr.a $$6) {
+      ddw $$7 = $$3.a(($$1x, $$2x, $$3x) -> this.b.getNoiseBiome($$1x, $$2x, $$3x, $$2.b()));
+      dzu $$8 = new dzu(new dyw(dzk.a()));
+      int $$9 = 8;
+      dcb $$10 = $$5.f();
+      dyz $$11 = $$5.a($$3x -> this.a($$3x, $$4, dzx.a($$0), $$2));
+      dyh $$12 = $$11.i();
+      eaw $$13 = new eaw(this, $$0.H_(), $$5.z(), $$11, $$2, this.e.a().j());
+      duv $$14 = ((dvq)$$5).b($$6);
+
+      for (int $$15 = -8; $$15 <= 8; $$15++) {
+         for (int $$16 = -8; $$16 <= 8; $$16++) {
+            dcb $$17 = new dcb($$10.e + $$15, $$10.f + $$16);
+            duw $$18 = $$0.a($$17.e, $$17.f);
+            ddv $$19 = $$18.a(() -> this.a(this.b.getNoiseBiome(jx.a($$17.d()), 0, jx.a($$17.e()), $$2.b())));
+            Iterable<jm<eaz<?>>> $$20 = $$19.a($$6);
+            int $$21 = 0;
+
+            for (jm<eaz<?>> $$22 : $$20) {
+               eaz<?> $$23 = $$22.a();
+               $$8.c($$1 + (long)$$21, $$17.e, $$17.f);
+               if ($$23.a($$8)) {
+                  $$23.a($$13, $$5, $$7::a, $$8, $$12, $$17, $$14);
+               }
+
+               $$21++;
             }
+         }
+      }
+   }
 
-            int $$22 = $$5.a(dyg.a.a, $$16, $$17) + 1;
-            $$13.a($$18, $$19);
-            int $$23 = 0;
-            int $$24 = Integer.MIN_VALUE;
-            int $$25 = Integer.MAX_VALUE;
-            int $$26 = $$5.I_();
+   @Override
+   public CompletableFuture<duw> a(dzx $$0, dzj $$1, ddo $$2, duw $$3) {
+      dzd $$4 = this.e.a().f().a($$3.z());
+      int $$5 = $$4.c();
+      int $$6 = ayn.a($$5, $$4.a());
+      int $$7 = ayn.a($$4.d(), $$4.a());
+      return $$7 <= 0 ? CompletableFuture.completedFuture($$3) : CompletableFuture.supplyAsync(ad.a("wgen_fill_noise", () -> {
+         int $$8 = $$3.e($$7 * $$4.a() - 1 + $$5);
+         int $$9 = $$3.e($$5);
+         Set<dvh> $$10 = Sets.newHashSet();
 
-            for (int $$27 = $$22; $$27 >= $$26; $$27--) {
-               dsl $$28 = $$12.a($$27);
-               if ($$28.i()) {
-                  $$23 = 0;
-                  $$24 = Integer.MIN_VALUE;
-               } else if (!$$28.u().c()) {
-                  if ($$24 == Integer.MIN_VALUE) {
-                     $$24 = $$27 + 1;
+         for (int $$11 = $$8; $$11 >= $$9; $$11--) {
+            dvh $$12 = $$3.b($$11);
+            $$12.a();
+            $$10.add($$12);
+         }
+
+         duw var20;
+         try {
+            var20 = this.a($$0, $$2, $$1, $$3, $$6, $$7);
+         } finally {
+            for (dvh $$14 : $$10) {
+               $$14.b();
+            }
+         }
+
+         return var20;
+      }), ad.g());
+   }
+
+   private duw a(dzx $$0, ddo $$1, dzj $$2, duw $$3, int $$4, int $$5) {
+      dyz $$6 = $$3.a($$3x -> this.a($$3x, $$1, $$0, $$2));
+      dyv $$7 = $$3.a(dyv.a.c);
+      dyv $$8 = $$3.a(dyv.a.a);
+      dcb $$9 = $$3.f();
+      int $$10 = $$9.d();
+      int $$11 = $$9.e();
+      dyh $$12 = $$6.i();
+      $$6.f();
+      jd.a $$13 = new jd.a();
+      int $$14 = $$6.j();
+      int $$15 = $$6.k();
+      int $$16 = 16 / $$14;
+      int $$17 = 16 / $$14;
+
+      for (int $$18 = 0; $$18 < $$16; $$18++) {
+         $$6.b($$18);
+
+         for (int $$19 = 0; $$19 < $$17; $$19++) {
+            int $$20 = $$3.an() - 1;
+            dvh $$21 = $$3.b($$20);
+
+            for (int $$22 = $$5 - 1; $$22 >= 0; $$22--) {
+               $$6.b($$22, $$19);
+
+               for (int $$23 = $$15 - 1; $$23 >= 0; $$23--) {
+                  int $$24 = ($$4 + $$22) * $$15 + $$23;
+                  int $$25 = $$24 & 15;
+                  int $$26 = $$3.e($$24);
+                  if ($$20 != $$26) {
+                     $$20 = $$26;
+                     $$21 = $$3.b($$26);
                   }
-               } else {
-                  if ($$25 >= $$27) {
-                     $$25 = dwg.g;
 
-                     for (int $$29 = $$27 - 1; $$29 >= $$26 - 1; $$29--) {
-                        dsl $$30 = $$12.a($$29);
-                        if (!this.a($$30)) {
-                           $$25 = $$29 + 1;
-                           break;
+                  double $$27 = (double)$$23 / (double)$$15;
+                  $$6.a($$24, $$27);
+
+                  for (int $$28 = 0; $$28 < $$14; $$28++) {
+                     int $$29 = $$10 + $$18 * $$14 + $$28;
+                     int $$30 = $$29 & 15;
+                     double $$31 = (double)$$28 / (double)$$14;
+                     $$6.b($$29, $$31);
+
+                     for (int $$32 = 0; $$32 < $$14; $$32++) {
+                        int $$33 = $$11 + $$19 * $$14 + $$32;
+                        int $$34 = $$33 & 15;
+                        double $$35 = (double)$$32 / (double)$$14;
+                        $$6.c($$33, $$35);
+                        dta $$36 = $$6.e();
+                        if ($$36 == null) {
+                           $$36 = this.e.a().g();
+                        }
+
+                        $$36 = this.a($$6, $$29, $$24, $$33, $$36);
+                        if ($$36 != d && !ab.a($$3.f())) {
+                           $$21.a($$30, $$25, $$34, $$36, false);
+                           $$7.a($$30, $$24, $$34, $$36);
+                           $$8.a($$30, $$24, $$34, $$36);
+                           if ($$12.a() && !$$36.u().c()) {
+                              $$13.d($$29, $$24, $$33);
+                              $$3.e($$13);
+                           }
                         }
                      }
                   }
-
-                  $$23++;
-                  int $$31 = $$27 - $$25 + 1;
-                  $$13.a($$23, $$31, $$24, $$18, $$27, $$19);
-                  if ($$28 == this.j) {
-                     dsl $$32 = $$14.tryApply($$18, $$27, $$19);
-                     if ($$32 != null) {
-                        $$12.a($$27, $$32);
-                     }
-                  }
-               }
-            }
-
-            if ($$21.a(ddn.W) || $$21.a(ddn.X)) {
-               this.a($$13.b(), $$21.a(), $$12, $$15, $$18, $$19, $$20);
-            }
-         }
-      }
-   }
-
-   protected int a(int $$0, int $$1) {
-      double $$2 = this.u.a((double)$$0, 0.0, (double)$$1);
-      return (int)($$2 * 2.75 + 3.0 + this.t.a($$0, 0, $$1).j() * 0.25);
-   }
-
-   protected double b(int $$0, int $$1) {
-      return this.v.a((double)$$0, 0.0, (double)$$1);
-   }
-
-   private boolean a(dsl $$0) {
-      return !$$0.i() && $$0.u().c();
-   }
-
-   @Deprecated
-   public Optional<dsl> a(dyx.o $$0, eah $$1, Function<ja, jj<ddg>> $$2, duh $$3, dyk $$4, ja $$5, boolean $$6) {
-      dyx.g $$7 = new dyx.g(this, $$1.d(), $$3, $$4, $$2, $$1.c().d(lr.aE), $$1);
-      dyx.u $$8 = $$0.apply($$7);
-      int $$9 = $$5.u();
-      int $$10 = $$5.v();
-      int $$11 = $$5.w();
-      $$7.a($$9, $$11);
-      $$7.a(1, 1, $$6 ? $$10 + 1 : Integer.MIN_VALUE, $$9, $$10, $$11);
-      dsl $$12 = $$8.tryApply($$9, $$10, $$11);
-      return Optional.ofNullable($$12);
-   }
-
-   private void a(due $$0, int $$1, int $$2, int $$3, dci $$4) {
-      double $$5 = 0.2;
-      double $$6 = Math.min(Math.abs(this.p.a((double)$$1, 0.0, (double)$$2) * 8.25), this.n.a((double)$$1 * 0.2, 0.0, (double)$$2 * 0.2) * 15.0);
-      if (!($$6 <= 0.0)) {
-         double $$7 = 0.75;
-         double $$8 = 1.5;
-         double $$9 = Math.abs(this.o.a((double)$$1 * 0.75, 0.0, (double)$$2 * 0.75) * 1.5);
-         double $$10 = 64.0 + Math.min($$6 * $$6 * 2.5, Math.ceil($$9 * 50.0) + 24.0);
-         int $$11 = ayg.a($$10);
-         if ($$3 <= $$11) {
-            for (int $$12 = $$11; $$12 >= $$4.I_(); $$12--) {
-               dsl $$13 = $$0.a($$12);
-               if ($$13.a(this.j.b())) {
-                  break;
-               }
-
-               if ($$13.a(dfk.G)) {
-                  return;
-               }
-            }
-
-            for (int $$14 = $$11; $$14 >= $$4.I_() && $$0.a($$14).i(); $$14--) {
-               $$0.a($$14, this.j);
-            }
-         }
-      }
-   }
-
-   private void a(int $$0, ddg $$1, due $$2, ja.a $$3, int $$4, int $$5, int $$6) {
-      double $$7 = 1.28;
-      double $$8 = Math.min(Math.abs(this.s.a((double)$$4, 0.0, (double)$$5) * 8.25), this.q.a((double)$$4 * 1.28, 0.0, (double)$$5 * 1.28) * 15.0);
-      if (!($$8 <= 1.8)) {
-         double $$9 = 1.17;
-         double $$10 = 1.5;
-         double $$11 = Math.abs(this.r.a((double)$$4 * 1.17, 0.0, (double)$$5 * 1.17) * 1.5);
-         double $$12 = Math.min($$8 * $$8 * 1.2, Math.ceil($$11 * 40.0) + 14.0);
-         if ($$1.d($$3.d($$4, 63, $$5))) {
-            $$12 -= 2.0;
-         }
-
-         double $$13;
-         if ($$12 > 2.0) {
-            $$13 = (double)this.k - $$12 - 7.0;
-            $$12 += (double)this.k;
-         } else {
-            $$12 = 0.0;
-            $$13 = 0.0;
-         }
-
-         double $$15 = $$12;
-         ayo $$16 = this.t.a($$4, 0, $$5);
-         int $$17 = 2 + $$16.a(4);
-         int $$18 = this.k + 18 + $$16.a(10);
-         int $$19 = 0;
-
-         for (int $$20 = Math.max($$6, (int)$$12 + 1); $$20 >= $$0; $$20--) {
-            if ($$2.a($$20).i() && $$20 < (int)$$15 && $$16.j() > 0.01
-               || $$2.a($$20).a(dfk.G) && $$20 > (int)$$13 && $$20 < this.k && $$13 != 0.0 && $$16.j() > 0.15) {
-               if ($$19 <= $$17 && $$20 > $$18) {
-                  $$2.a($$20, i);
-                  $$19++;
-               } else {
-                  $$2.a($$20, h);
                }
             }
          }
+
+         $$6.h();
       }
+
+      $$6.g();
+      return $$3;
    }
 
-   private static dsl[] a(ayo $$0) {
-      dsl[] $$1 = new dsl[192];
-      Arrays.fill($$1, c);
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$2 += $$0.a(5) + 1;
-         if ($$2 < $$1.length) {
-            $$1[$$2] = b;
-         }
-      }
-
-      a($$0, $$1, 1, d);
-      a($$0, $$1, 2, e);
-      a($$0, $$1, 1, f);
-      int $$3 = $$0.a(9, 15);
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$4 < $$3 && $$5 < $$1.length; $$5 += $$0.a(16) + 4) {
-         $$1[$$5] = a;
-         if ($$5 - 1 > 0 && $$0.h()) {
-            $$1[$$5 - 1] = g;
-         }
-
-         if ($$5 + 1 < $$1.length && $$0.h()) {
-            $$1[$$5 + 1] = g;
-         }
-
-         $$4++;
-      }
-
-      return $$1;
+   private dta a(dyz $$0, int $$1, int $$2, int $$3, dta $$4) {
+      return $$4;
    }
 
-   private static void a(ayo $$0, dsl[] $$1, int $$2, dsl $$3) {
-      int $$4 = $$0.a(6, 15);
-
-      for (int $$5 = 0; $$5 < $$4; $$5++) {
-         int $$6 = $$2 + $$0.a(3);
-         int $$7 = $$0.a($$1.length);
-
-         for (int $$8 = 0; $$7 + $$8 < $$1.length && $$8 < $$6; $$8++) {
-            $$1[$$7 + $$8] = $$3;
-         }
-      }
+   @Override
+   public int e() {
+      return this.e.a().f().d();
    }
 
-   protected dsl a(int $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.round(this.m.a((double)$$0, 0.0, (double)$$2) * 4.0);
-      return this.l[($$1 + $$3 + this.l.length) % this.l.length];
+   @Override
+   public int f() {
+      return this.e.a().l();
+   }
+
+   @Override
+   public int g() {
+      return this.e.a().f().c();
+   }
+
+   @Override
+   public void a(ara $$0) {
+      if (!this.e.a().a()) {
+         dcb $$1 = $$0.a();
+         jm<ddu> $$2 = $$0.t($$1.l().h($$0.am() - 1));
+         dzu $$3 = new dzu(new dyw(dzk.a()));
+         $$3.a($$0.C(), $$1.d(), $$1.e());
+         ddf.a($$0, $$2, $$1, $$3);
+      }
    }
 }

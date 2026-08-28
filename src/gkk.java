@@ -1,95 +1,92 @@
-import com.google.common.annotations.VisibleForTesting;
+public class gkk extends gkc<cnj> {
+   private static final akq a = akq.b("textures/entity/fishing_hook.png");
+   private static final gfb f = gfb.d(a);
+   private static final double g = 960.0;
 
-public class gkk extends gjn<civ> {
-   private static final float a = 0.15F;
-   private static final float f = 0.0F;
-   private static final float g = 0.0F;
-   private static final float h = 0.09375F;
-   private final gkm i;
-   private final ayo j = ayo.a();
-
-   public gkk(gjo.a $$0) {
+   public gkk(gkd.a $$0) {
       super($$0);
-      this.i = $$0.b();
-      this.d = 0.15F;
-      this.e = 0.75F;
    }
 
-   public akk a(civ $$0) {
-      return gpp.e;
+   public void a(cnj $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
+      cmv $$6 = $$0.t();
+      if ($$6 != null) {
+         $$3.a();
+         $$3.a();
+         $$3.b(0.5F, 0.5F, 0.5F);
+         $$3.a(this.c.b());
+         fbc.a $$7 = $$3.c();
+         fbg $$8 = $$4.getBuffer(f);
+         a($$8, $$7, $$5, 0.0F, 0, 0, 1);
+         a($$8, $$7, $$5, 1.0F, 0, 1, 1);
+         a($$8, $$7, $$5, 1.0F, 1, 1, 0);
+         a($$8, $$7, $$5, 0.0F, 1, 0, 0);
+         $$3.b();
+         float $$9 = $$6.A($$2);
+         float $$10 = ayn.a(ayn.c($$9) * (float) Math.PI);
+         eww $$11 = this.a($$6, $$10, $$2);
+         eww $$12 = $$0.m($$2).b(0.0, 0.25, 0.0);
+         float $$13 = (float)($$11.c - $$12.c);
+         float $$14 = (float)($$11.d - $$12.d);
+         float $$15 = (float)($$11.e - $$12.e);
+         fbg $$16 = $$4.getBuffer(gfb.x());
+         fbc.a $$17 = $$3.c();
+         int $$18 = 16;
+
+         for (int $$19 = 0; $$19 <= 16; $$19++) {
+            a($$13, $$14, $$15, $$16, $$17, a($$19, 16), a($$19 + 1, 16));
+         }
+
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
-   public void a(civ $$0, float $$1, float $$2, fao $$3, gef $$4, int $$5) {
-      $$3.a();
-      cud $$6 = $$0.p();
-      this.j.b((long)a($$6));
-      grr $$7 = this.i.a($$6, $$0.dR(), null, $$0.an());
-      boolean $$8 = $$7.b();
-      float $$9 = 0.25F;
-      float $$10 = ayg.a(((float)$$0.t() + $$2) / 10.0F + $$0.c) * 0.1F + 0.1F;
-      float $$11 = $$7.f().a(cua.h).d.y();
-      $$3.a(0.0F, $$10 + 0.25F * $$11, 0.0F);
-      float $$12 = $$0.a($$2);
-      $$3.a(a.d.rotation($$12));
-      a(this.i, $$3, $$4, $$5, $$6, $$7, $$8, this.j);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   private eww a(cmv $$0, float $$1, float $$2) {
+      int $$3 = $$0.fr() == btf.b ? 1 : -1;
+      cuo $$4 = $$0.eU();
+      if (!$$4.a(cur.qV)) {
+         $$3 = -$$3;
+      }
 
-   public static int a(cud $$0) {
-      return $$0.e() ? 187 : cty.a($$0.g()) + $$0.n();
-   }
-
-   @VisibleForTesting
-   static int a(int $$0) {
-      if ($$0 <= 1) {
-         return 1;
-      } else if ($$0 <= 16) {
-         return 2;
-      } else if ($$0 <= 32) {
-         return 3;
+      if (this.c.d.aA().a() && $$0 == fgi.Q().s) {
+         double $$12 = 960.0 / (double)this.c.d.ah().c().intValue();
+         eww $$13 = this.c.b.j().a((float)$$3 * 0.525F, -0.1F).a($$12).b($$1 * 0.5F).a(-$$1 * 0.7F);
+         return $$0.k($$2).e($$13);
       } else {
-         return $$0 <= 48 ? 4 : 5;
+         float $$5 = ayn.i($$2, $$0.aZ, $$0.aY) * (float) (Math.PI / 180.0);
+         double $$6 = (double)ayn.a($$5);
+         double $$7 = (double)ayn.b($$5);
+         float $$8 = $$0.ec();
+         double $$9 = (double)$$3 * 0.35 * (double)$$8;
+         double $$10 = 0.8 * (double)$$8;
+         float $$11 = $$0.cb() ? -0.1875F : 0.0F;
+         return $$0.k($$2).b(-$$7 * $$9 - $$6 * $$10, (double)$$11 - 0.45 * (double)$$8, -$$6 * $$9 + $$7 * $$10);
       }
    }
 
-   public static void a(gkm $$0, fao $$1, gef $$2, int $$3, cud $$4, ayo $$5, dcg $$6) {
-      grr $$7 = $$0.a($$4, $$6, null, 0);
-      a($$0, $$1, $$2, $$3, $$4, $$7, $$7.b(), $$5);
+   private static float a(int $$0, int $$1) {
+      return (float)$$0 / (float)$$1;
    }
 
-   public static void a(gkm $$0, fao $$1, gef $$2, int $$3, cud $$4, grr $$5, boolean $$6, ayo $$7) {
-      int $$8 = a($$4.H());
-      float $$9 = $$5.f().h.d.x();
-      float $$10 = $$5.f().h.d.y();
-      float $$11 = $$5.f().h.d.z();
-      if (!$$6) {
-         float $$12 = -0.0F * (float)($$8 - 1) * 0.5F * $$9;
-         float $$13 = -0.0F * (float)($$8 - 1) * 0.5F * $$10;
-         float $$14 = -0.09375F * (float)($$8 - 1) * 0.5F * $$11;
-         $$1.a($$12, $$13, $$14);
-      }
+   private static void a(fbg $$0, fbc.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.5F, 0.0F).a(-1).a((float)$$5, (float)$$6).b(gpw.d).c($$2).b($$1, 0.0F, 1.0F, 0.0F);
+   }
 
-      for (int $$15 = 0; $$15 < $$8; $$15++) {
-         $$1.a();
-         if ($$15 > 0) {
-            if ($$6) {
-               float $$16 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               float $$17 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               float $$18 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               $$1.a($$16, $$17, $$18);
-            } else {
-               float $$19 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               float $$20 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               $$1.a($$19, $$20, 0.0F);
-            }
-         }
+   private static void a(float $$0, float $$1, float $$2, fbg $$3, fbc.a $$4, float $$5, float $$6) {
+      float $$7 = $$0 * $$5;
+      float $$8 = $$1 * ($$5 * $$5 + $$5) * 0.5F + 0.25F;
+      float $$9 = $$2 * $$5;
+      float $$10 = $$0 * $$6 - $$7;
+      float $$11 = $$1 * ($$6 * $$6 + $$6) * 0.5F + 0.25F - $$8;
+      float $$12 = $$2 * $$6 - $$9;
+      float $$13 = ayn.c($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
+      $$10 /= $$13;
+      $$11 /= $$13;
+      $$12 /= $$13;
+      $$3.a($$4, $$7, $$8, $$9).a(-16777216).b($$4, $$10, $$11, $$12);
+   }
 
-         $$0.a($$4, cua.h, false, $$1, $$2, $$3, gph.d, $$5);
-         $$1.b();
-         if (!$$6) {
-            $$1.a(0.0F * $$9, 0.0F * $$10, 0.09375F * $$11);
-         }
-      }
+   public akq a(cnj $$0) {
+      return a;
    }
 }

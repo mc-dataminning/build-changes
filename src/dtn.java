@@ -1,6 +1,6 @@
-public enum dtn implements azc {
-   a("normal"),
-   b("sticky");
+public enum dtn implements azj {
+   a("head"),
+   b("foot");
 
    private final String c;
 

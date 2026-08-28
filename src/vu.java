@@ -1,4 +1,8 @@
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import java.nio.file.Path;
+import java.util.Optional;
 
-public class vu extends ChannelInboundHandlerAdapter {
+public record vu(wy a, Optional<Path> b, Optional<String> c) {
+   public vu(wy $$0) {
+      this($$0, Optional.empty(), Optional.empty());
+   }
 }

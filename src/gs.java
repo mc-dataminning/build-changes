@@ -1,71 +1,101 @@
 import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.concurrent.CompletableFuture;
+import java.util.Objects;
 
-public class gs implements ArgumentType<go> {
-   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "0.1 -0.5", "~1 ~-2");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("argument.pos2d.incomplete"));
-   private final boolean c;
+public class gs implements gr {
+   public static final char a = '^';
+   private final double b;
+   private final double c;
+   private final double d;
 
-   public gs(boolean $$0) {
-      this.c = $$0;
+   public gs(double $$0, double $$1, double $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static gs a() {
-      return new gs(true);
+   @Override
+   public eww a(et $$0) {
+      ewv $$1 = $$0.k();
+      eww $$2 = $$0.m().a($$0);
+      float $$3 = ayn.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$4 = ayn.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$5 = ayn.b(-$$1.i * (float) (Math.PI / 180.0));
+      float $$6 = ayn.a(-$$1.i * (float) (Math.PI / 180.0));
+      float $$7 = ayn.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      float $$8 = ayn.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      eww $$9 = new eww((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      eww $$10 = new eww((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      eww $$11 = $$9.c($$10).a(-1.0);
+      double $$12 = $$9.c * this.d + $$10.c * this.c + $$11.c * this.b;
+      double $$13 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
+      double $$14 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
+      return new eww($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
    }
 
-   public static gs a(boolean $$0) {
-      return new gs($$0);
+   @Override
+   public ewv b(et $$0) {
+      return ewv.a;
    }
 
-   public static ewg a(CommandContext<eq> $$0, String $$1) {
-      ewh $$2 = ((go)$$0.getArgument($$1, go.class)).a((eq)$$0.getSource());
-      return new ewg((float)$$2.c, (float)$$2.e);
+   @Override
+   public boolean a() {
+      return true;
    }
 
-   public go a(StringReader $$0) throws CommandSyntaxException {
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   public static gs a(StringReader $$0) throws CommandSyntaxException {
       int $$1 = $$0.getCursor();
-      if (!$$0.canRead()) {
-         throw a.createWithContext($$0);
-      } else {
-         gu $$2 = gu.a($$0, this.c);
+      double $$2 = a($$0, $$1);
+      if ($$0.canRead() && $$0.peek() == ' ') {
+         $$0.skip();
+         double $$3 = a($$0, $$1);
          if ($$0.canRead() && $$0.peek() == ' ') {
             $$0.skip();
-            gu $$3 = gu.a($$0, this.c);
-            return new gv($$2, new gu(true, 0.0), $$3);
+            double $$4 = a($$0, $$1);
+            return new gs($$2, $$3, $$4);
          } else {
             $$0.setCursor($$1);
-            throw a.createWithContext($$0);
+            throw gw.a.createWithContext($$0);
          }
-      }
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      if (!($$0.getSource() instanceof ev)) {
-         return Suggestions.empty();
       } else {
-         String $$2 = $$1.getRemaining();
-         Collection<ev.b> $$3;
-         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
-            $$3 = Collections.singleton(ev.b.a);
-         } else {
-            $$3 = ((ev)$$0.getSource()).C();
-         }
-
-         return ev.b($$2, $$3, $$1, er.a(this::a));
+         $$0.setCursor($$1);
+         throw gw.a.createWithContext($$0);
       }
    }
 
-   public Collection<String> getExamples() {
-      return b;
+   private static double a(StringReader $$0, int $$1) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw gx.a.createWithContext($$0);
+      } else if ($$0.peek() != '^') {
+         $$0.setCursor($$1);
+         throw gw.b.createWithContext($$0);
+      } else {
+         $$0.skip();
+         return $$0.canRead() && $$0.peek() != ' ' ? $$0.readDouble() : 0.0;
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof gs $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.d == $$1.d;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c, this.d);
    }
 }

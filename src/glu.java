@@ -1,11 +1,12 @@
-public class glu extends gin<cnj> {
-   public static final akk a = new akk("textures/entity/projectiles/spectral_arrow.png");
+public class glu extends gkw<cke> {
+   private static final akq a = akq.b("textures/entity/illager/pillager.png");
 
-   public glu(gjo.a $$0) {
-      super($$0);
+   public glu(gkd.a $$0) {
+      super($$0, new fvs<>($$0.a(fyd.aS)), 0.5F);
+      this.a(new goi<>(this, $$0.d()));
    }
 
-   public akk a(cnj $$0) {
+   public akq a(cke $$0) {
       return a;
    }
 }

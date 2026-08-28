@@ -1,75 +1,61 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 
-public class egc extends egh {
-   public static final MapCodec<egc> a = efq.a.fieldOf("provider").xmap(egc::new, $$0 -> $$0.b);
-   private final efq b;
+public abstract class egc {
+   public static final Codec<egc> d = lt.W.r().dispatch(egc::a, egd::a);
+   protected final bpv e;
+   protected final egf f;
+   protected final Optional<efz> g;
 
-   public egc(efq $$0) {
-      this.b = $$0;
+   protected static <P extends egc> P3<Mu<P>, bpv, egf, Optional<efz>> a(Instance<P> $$0) {
+      return $$0.group(
+         bpv.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
+         egf.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
+         efz.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   @Override
-   protected egi<?> a() {
-      return egi.e;
+   public egc(bpv $$0, egf $$1, Optional<efz> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public void a(egh.a $$0) {
-      List<ja> $$1 = Lists.newArrayList();
-      List<ja> $$2 = $$0.e();
-      List<ja> $$3 = $$0.c();
-      if ($$2.isEmpty()) {
-         $$1.addAll($$3);
-      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
-         $$1.addAll($$3);
-         $$1.addAll($$2);
+   protected abstract egd<?> a();
+
+   public abstract boolean a(dda var1, BiConsumer<jd, dta> var2, ayv var3, jd var4, jd var5, efa var6);
+
+   protected boolean a(dda $$0, jd $$1) {
+      return edm.c($$0, $$1);
+   }
+
+   protected void a(dda $$0, BiConsumer<jd, dta> $$1, ayv $$2, jd $$3, efa $$4) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
+         if (this.g.isPresent()) {
+            efz $$5 = this.g.get();
+            jd $$6 = $$3.c();
+            if ($$2.i() < $$5.b() && $$0.a($$6, dsz.a::i)) {
+               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
+            }
+         }
+      }
+   }
+
+   protected dta a(dda $$0, jd $$1, dta $$2) {
+      if ($$2.b(dtq.C)) {
+         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(awj.a));
+         return $$2.a(dtq.C, Boolean.valueOf($$3));
       } else {
-         $$1.addAll($$2);
-      }
-
-      if (!$$1.isEmpty()) {
-         int $$4 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
-            this.a($$0, $$1x.g().e());
-            this.a($$0, $$1x.g(2).e());
-            this.a($$0, $$1x.g().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3x = $$0.b().a(64);
-               int $$4x = $$3x % 8;
-               int $$5 = $$3x / 8;
-               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
-               }
-            }
-         });
+         return $$2;
       }
    }
 
-   private void a(egh.a $$0, ja $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(egh.a $$0, ja $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         ja $$3 = $$1.b($$2);
-         if (ebl.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   public jd a(jd $$0, ayv $$1) {
+      return $$0.b(this.e.a($$1));
    }
 }

@@ -1,59 +1,121 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.LongSortedSet;
+import java.util.Objects;
+import java.util.Spliterators;
+import java.util.PrimitiveIterator.OfLong;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public class dxi {
-   private final aqm a;
+public class dxi<T extends dxd> {
+   private final Class<T> a;
+   private final Long2ObjectFunction<dxq> b;
+   private final Long2ObjectMap<dxh<T>> c = new Long2ObjectOpenHashMap();
+   private final LongSortedSet d = new LongAVLTreeSet();
 
-   public dxi(aqm $$0) {
+   public dxi(Class<T> $$0, Long2ObjectFunction<dxq> $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(jj<dxh> $$0, ewh $$1, dxh.a $$2) {
-      int $$3 = $$0.a().a();
-      ja $$4 = ja.a($$1);
-      int $$5 = kc.a($$4.u() - $$3);
-      int $$6 = kc.a($$4.v() - $$3);
-      int $$7 = kc.a($$4.w() - $$3);
-      int $$8 = kc.a($$4.u() + $$3);
-      int $$9 = kc.a($$4.v() + $$3);
-      int $$10 = kc.a($$4.w() + $$3);
-      List<dxh.b> $$11 = new ArrayList<>();
-      dxk.a $$12 = ($$4x, $$5x) -> {
-         if ($$4x.c() == dxj.a.b) {
-            $$11.add(new dxh.b($$0, $$1, $$2, $$4x, $$5x));
-         } else {
-            $$4x.a(this.a, $$0, $$2, $$1);
-         }
-      };
-      boolean $$13 = false;
+   public void a(ewr $$0, awz<dxh<T>> $$1) {
+      int $$2 = 2;
+      int $$3 = kf.a($$0.a - 2.0);
+      int $$4 = kf.a($$0.b - 4.0);
+      int $$5 = kf.a($$0.c - 2.0);
+      int $$6 = kf.a($$0.d + 2.0);
+      int $$7 = kf.a($$0.e + 0.0);
+      int $$8 = kf.a($$0.f + 2.0);
 
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
-            duh $$16 = this.a.l().a($$14, $$15);
-            if ($$16 != null) {
-               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
-                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
+      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
+         long $$10 = kf.b($$9, 0, 0);
+         long $$11 = kf.b($$9, -1, -1);
+         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
+
+         while ($$12.hasNext()) {
+            long $$13 = $$12.nextLong();
+            int $$14 = kf.c($$13);
+            int $$15 = kf.d($$13);
+            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
+               dxh<T> $$16 = (dxh<T>)this.c.get($$13);
+               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
+                  return;
                }
             }
          }
       }
+   }
 
-      if (!$$11.isEmpty()) {
-         this.a($$11);
-      }
-
-      if ($$13) {
-         afy.a(this.a, $$0, $$1);
+   public LongStream a(long $$0) {
+      int $$1 = dcb.a($$0);
+      int $$2 = dcb.b($$0);
+      LongSortedSet $$3 = this.a($$1, $$2);
+      if ($$3.isEmpty()) {
+         return LongStream.empty();
+      } else {
+         OfLong $$4 = $$3.iterator();
+         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
       }
    }
 
-   private void a(List<dxh.b> $$0) {
-      Collections.sort($$0);
+   private LongSortedSet a(int $$0, int $$1) {
+      long $$2 = kf.b($$0, 0, $$1);
+      long $$3 = kf.b($$0, -1, $$1);
+      return this.d.subSet($$2, $$3 + 1L);
+   }
 
-      for (dxh.b $$1 : $$0) {
-         dxj $$2 = $$1.d();
-         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
-      }
+   public Stream<dxh<T>> b(long $$0) {
+      return this.a($$0).<dxh<T>>mapToObj(this.c::get).filter(Objects::nonNull);
+   }
+
+   private static long f(long $$0) {
+      return dcb.c(kf.b($$0), kf.d($$0));
+   }
+
+   public dxh<T> c(long $$0) {
+      return (dxh<T>)this.c.computeIfAbsent($$0, this::g);
+   }
+
+   @Nullable
+   public dxh<T> d(long $$0) {
+      return (dxh<T>)this.c.get($$0);
+   }
+
+   private dxh<T> g(long $$0) {
+      long $$1 = f($$0);
+      dxq $$2 = (dxq)this.b.get($$1);
+      this.d.add($$0);
+      return new dxh<>(this.a, $$2);
+   }
+
+   public LongSet a() {
+      LongSet $$0 = new LongOpenHashSet();
+      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
+      return $$0;
+   }
+
+   public void b(ewr $$0, awz<T> $$1) {
+      this.a($$0, $$2 -> $$2.a($$0, $$1));
+   }
+
+   public <U extends T> void a(dxk<T, U> $$0, ewr $$1, awz<U> $$2) {
+      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
+   }
+
+   public void e(long $$0) {
+      this.c.remove($$0);
+      this.d.remove($$0);
+   }
+
+   @azs
+   public int b() {
+      return this.d.size();
    }
 }

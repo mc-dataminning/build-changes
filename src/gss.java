@@ -1,123 +1,77 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class gss implements gso {
-   private static final int a = 40;
-   private static final float b = 0.001F;
-   private final gdh c;
-   private final guj d;
-   private final ddi e;
-   private final ayo f;
-   private final Object2ObjectArrayMap<ddg, gss.a> g = new Object2ObjectArrayMap();
-   private Optional<dde> h = Optional.empty();
-   private Optional<ddd> i = Optional.empty();
-   private float j;
-   @Nullable
-   private ddg k;
+public class gss implements gsg {
+   private final int a;
+   private final List<bpc.b<gsg>> b;
+   private final gsg c;
 
-   public gss(gdh $$0, guj $$1, ddi $$2) {
-      this.f = $$0.dR().E_();
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public float b() {
-      return this.j;
+   public gss(List<bpc.b<gsg>> $$0) {
+      this.b = $$0;
+      this.a = bpd.a($$0);
+      this.c = $$0.get(0).b();
    }
 
    @Override
-   public void a() {
-      this.g.values().removeIf(gsn::m);
-      ddg $$0 = this.e.a(this.c.dw(), this.c.dy(), this.c.dC()).a();
-      if ($$0 != this.k) {
-         this.k = $$0;
-         this.h = $$0.m();
-         this.i = $$0.n();
-         this.g.values().forEach(gss.a::o);
-         $$0.l().ifPresent($$1 -> this.g.compute($$0, ($$1x, $$2) -> {
-               if ($$2 == null) {
-                  $$2 = new gss.a((avg)$$1.a());
-                  this.d.a((gte)$$2);
-               }
-
-               $$2.p();
-               return $$2;
-            }));
-      }
-
-      this.i.ifPresent($$0x -> {
-         if (this.f.j() < $$0x.b()) {
-            this.d.a(gsz.b($$0x.a().a()));
-         }
-      });
-      this.h
-         .ifPresent(
-            $$0x -> {
-               dcg $$1 = this.c.dR();
-               int $$2 = $$0x.c() * 2 + 1;
-               ja $$3 = ja.a(
-                  this.c.dw() + (double)this.f.a($$2) - (double)$$0x.c(),
-                  this.c.dA() + (double)this.f.a($$2) - (double)$$0x.c(),
-                  this.c.dC() + (double)this.f.a($$2) - (double)$$0x.c()
-               );
-               int $$4 = $$1.a(dcp.a, $$3);
-               if ($$4 > 0) {
-                  this.j = this.j - (float)$$4 / (float)$$1.Q() * 0.001F;
-               } else {
-                  this.j = this.j - (float)($$1.a(dcp.b, $$3) - 1) / (float)$$0x.b();
-               }
-
-               if (this.j >= 1.0F) {
-                  double $$5 = (double)$$3.u() + 0.5;
-                  double $$6 = (double)$$3.v() + 0.5;
-                  double $$7 = (double)$$3.w() + 0.5;
-                  double $$8 = $$5 - this.c.dw();
-                  double $$9 = $$6 - this.c.dA();
-                  double $$10 = $$7 - this.c.dC();
-                  double $$11 = Math.sqrt($$8 * $$8 + $$9 * $$9 + $$10 * $$10);
-                  double $$12 = $$11 + $$0x.d();
-                  gsz $$13 = gsz.a($$0x.a().a(), this.f, this.c.dw() + $$8 / $$11 * $$12, this.c.dA() + $$9 / $$11 * $$12, this.c.dC() + $$10 / $$11 * $$12);
-                  this.d.a($$13);
-                  this.j = 0.0F;
-               } else {
-                  this.j = Math.max(this.j, 0.0F);
-               }
-            }
-         );
+   public List<gfq> a(@Nullable dta $$0, @Nullable ji $$1, ayv $$2) {
+      return bpd.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
    }
 
-   public static class a extends gsn {
-      private int n;
-      private int o;
+   @Override
+   public boolean a() {
+      return this.c.a();
+   }
 
-      public a(avg $$0) {
-         super($$0, avi.i, gte.t());
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
+   @Override
+   public boolean b() {
+      return this.c.b();
+   }
 
-      @Override
-      public void q() {
-         if (this.o < 0) {
-            this.n();
+   @Override
+   public boolean c() {
+      return this.c.c();
+   }
+
+   @Override
+   public boolean d() {
+      return this.c.d();
+   }
+
+   @Override
+   public gqf e() {
+      return this.c.e();
+   }
+
+   @Override
+   public ggc f() {
+      return this.c.f();
+   }
+
+   @Override
+   public gga g() {
+      return this.c.g();
+   }
+
+   public static class a {
+      private final List<bpc.b<gsg>> a = Lists.newArrayList();
+
+      public gss.a a(@Nullable gsg $$0, int $$1) {
+         if ($$0 != null) {
+            this.a.add(bpc.a($$0, $$1));
          }
 
-         this.o = this.o + this.n;
-         this.d = ayg.a((float)this.o / 40.0F, 0.0F, 1.0F);
+         return this;
       }
 
-      public void o() {
-         this.o = Math.min(this.o, 40);
-         this.n = -1;
-      }
-
-      public void p() {
-         this.o = Math.max(0, this.o);
-         this.n = 1;
+      @Nullable
+      public gsg a() {
+         if (this.a.isEmpty()) {
+            return null;
+         } else {
+            return (gsg)(this.a.size() == 1 ? this.a.get(0).b() : new gss(this.a));
+         }
       }
    }
 }

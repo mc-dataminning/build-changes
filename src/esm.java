@@ -1,76 +1,178 @@
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
+import java.util.Set;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class esm {
-   public static final BiFunction<cud, eqw, cud> a = ($$0, $$1) -> $$0;
-   public static final Codec<esk> b = lq.E.r().dispatch("function", esk::b, esl::a);
-   public static final Codec<esk> c = Codec.lazyInitialized(() -> Codec.withAlternative(b, eso.b));
-   public static final Codec<jj<esk>> d = akg.a(lr.bc, c);
-   public static final esl<etb> e = a("set_count", etb.a);
-   public static final esl<etd> f = a("set_item", etd.a);
-   public static final esl<esa> g = a("enchant_with_levels", esa.a);
-   public static final esl<erz> h = a("enchant_randomly", erz.a);
-   public static final esl<esx> i = a("set_enchantments", esx.a);
-   public static final esl<esv> j = a("set_custom_data", esv.a);
-   public static final esl<ess> k = a("set_components", ess.a);
-   public static final esl<etl> l = a("furnace_smelt", etl.a);
-   public static final esl<esb> m = a("enchanted_count_increase", esb.b);
-   public static final esl<etc> n = a("set_damage", etc.a);
-   public static final esl<esp> o = a("set_attributes", esp.a);
-   public static final esl<etf> p = a("set_name", etf.a);
-   public static final esl<esc> q = a("exploration_map", esc.f);
-   public static final esl<eti> r = a("set_stew_effect", eti.a);
-   public static final esl<ery> s = a("copy_name", ery.a);
-   public static final esl<est> t = a("set_contents", est.a);
-   public static final esl<esn> u = a("modify_contents", esn.a);
-   public static final esl<ese> v = a("filtered", ese.a);
-   public static final esl<esh> w = a("limit_count", esh.a);
-   public static final esl<ert> x = a("apply_bonus", ert.a);
-   public static final esl<esu> y = a("set_loot_table", esu.a);
-   public static final esl<eru> z = a("explosion_decay", eru.a);
-   public static final esl<ete> A = a("set_lore", ete.a);
-   public static final esl<esd> B = a("fill_player_head", esd.a);
-   public static final esl<erx> C = a("copy_custom_data", erx.a);
-   public static final esl<erv> D = a("copy_state", erv.a);
-   public static final esl<esq> E = a("set_banner_pattern", esq.a);
-   public static final esl<eth> F = a("set_potion", eth.a);
-   public static final esl<eta> G = a("set_instrument", eta.a);
-   public static final esl<esf> H = a("reference", esf.a);
-   public static final esl<eso> I = a("sequence", eso.a);
-   public static final esl<erw> J = a("copy_components", erw.a);
-   public static final esl<esz> K = a("set_fireworks", esz.a);
-   public static final esl<esy> L = a("set_firework_explosion", esy.a);
-   public static final esl<esr> M = a("set_book_cover", esr.a);
-   public static final esl<etk> N = a("set_written_book_pages", etk.b);
-   public static final esl<etj> O = a("set_writable_book_pages", etj.a);
-   public static final esl<etm> P = a("toggle_tooltips", etm.a);
-   public static final esl<etg> Q = a("set_ominous_bottle_amplifier", etg.a);
-   public static final esl<esw> R = a("set_custom_model_data", esw.a);
+public class esm extends esy {
+   public static final MapCodec<esm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(evl.a.fieldOf("source").forGetter($$0x -> $$0x.b), esm.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
+            .apply($$0, esm::new)
+   );
+   private final evk b;
+   private final List<esm.b> c;
 
-   private static <T extends esk> esl<T> a(String $$0, MapCodec<T> $$1) {
-      return jw.a(lq.E, new akk($$0), new esl<>($$1));
+   esm(List<euw> $$0, evk $$1, List<esm.b> $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
-   public static BiFunction<cud, eqw, cud> a(List<? extends BiFunction<cud, eqw, cud>> $$0) {
-      List<BiFunction<cud, eqw, cud>> $$1 = List.copyOf($$0);
+   @Override
+   public eta<esm> b() {
+      return etb.C;
+   }
 
-      return switch ($$1.size()) {
-         case 0 -> a;
-         case 1 -> (BiFunction)$$1.get(0);
-         case 2 -> {
-            BiFunction<cud, eqw, cud> $$2 = $$1.get(0);
-            BiFunction<cud, eqw, cud> $$3 = $$1.get(1);
-            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
-         }
-         default -> ($$1x, $$2x) -> {
-         for (BiFunction<cud, eqw, cud> $$3x : $$1) {
-            $$1x = $$3x.apply($$1x, $$2x);
+   @Override
+   public Set<eue<?>> a() {
+      return this.b.b();
+   }
+
+   @Override
+   public cuo a(cuo $$0, erl $$1) {
+      ux $$2 = this.b.a($$1);
+      if ($$2 == null) {
+         return $$0;
+      } else {
+         MutableObject<ua> $$3 = new MutableObject();
+         Supplier<ux> $$4 = () -> {
+            if ($$3.getValue() == null) {
+               $$3.setValue($$0.a(kq.b, cxf.a).c());
+            }
+
+            return (ux)$$3.getValue();
+         };
+         this.c.forEach($$2x -> $$2x.a($$4, $$2));
+         ua $$5 = (ua)$$3.getValue();
+         if ($$5 != null) {
+            cxf.a(kq.b, $$0, $$5);
          }
 
-         return $$1x;
+         return $$0;
+      }
+   }
+
+   @Deprecated
+   public static esm.a a(evk $$0) {
+      return new esm.a($$0);
+   }
+
+   public static esm.a a(erl.b $$0) {
+      return new esm.a(evi.a($$0));
+   }
+
+   public static class a extends esy.a<esm.a> {
+      private final evk a;
+      private final List<esm.b> b = Lists.newArrayList();
+
+      a(evk $$0) {
+         this.a = $$0;
+      }
+
+      public esm.a a(String $$0, String $$1, esm.c $$2) {
+         try {
+            this.b.add(new esm.b(fl.g.a($$0), fl.g.a($$1), $$2));
+            return this;
+         } catch (CommandSyntaxException var5) {
+            throw new IllegalArgumentException(var5);
+         }
+      }
+
+      public esm.a a(String $$0, String $$1) {
+         return this.a($$0, $$1, esm.c.a);
+      }
+
+      protected esm.a a() {
+         return this;
+      }
+
+      @Override
+      public esz b() {
+         return new esm(this.g(), this.a, this.b);
+      }
+   }
+
+   static record b(fl.g b, fl.g c, esm.c d) {
+      public static final Codec<esm.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fl.g.a.fieldOf("source").forGetter(esm.b::a), fl.g.a.fieldOf("target").forGetter(esm.b::b), esm.c.d.fieldOf("op").forGetter(esm.b::c))
+               .apply($$0, esm.b::new)
+      );
+
+      public void a(Supplier<ux> $$0, ux $$1) {
+         try {
+            List<ux> $$2 = this.b.a($$1);
+            if (!$$2.isEmpty()) {
+               this.d.a($$0.get(), this.c, $$2);
+            }
+         } catch (CommandSyntaxException var4) {
+         }
+      }
+
+      public fl.g a() {
+         return this.b;
+      }
+
+      public fl.g b() {
+         return this.c;
+      }
+
+      public esm.c c() {
+         return this.d;
+      }
+   }
+
+   public static enum c implements azj {
+      a("replace") {
+         @Override
+         public void a(ux $$0, fl.g $$1, List<ux> $$2) throws CommandSyntaxException {
+            $$1.a($$0, (ux)Iterables.getLast($$2));
+         }
+      },
+      b("append") {
+         @Override
+         public void a(ux $$0, fl.g $$1, List<ux> $$2) throws CommandSyntaxException {
+            List<ux> $$3 = $$1.a($$0, ug::new);
+            $$3.forEach($$1x -> {
+               if ($$1x instanceof ug) {
+                  $$2.forEach($$1xx -> ((ug)$$1x).add($$1xx.d()));
+               }
+            });
+         }
+      },
+      c("merge") {
+         @Override
+         public void a(ux $$0, fl.g $$1, List<ux> $$2) throws CommandSyntaxException {
+            List<ux> $$3 = $$1.a($$0, ua::new);
+            $$3.forEach($$1x -> {
+               if ($$1x instanceof ua) {
+                  $$2.forEach($$1xx -> {
+                     if ($$1xx instanceof ua) {
+                        ((ua)$$1x).a((ua)$$1xx);
+                     }
+                  });
+               }
+            });
+         }
       };
-      };
+
+      public static final Codec<esm.c> d = azj.a(esm.c::values);
+      private final String e;
+
+      public abstract void a(ux var1, fl.g var2, List<ux> var3) throws CommandSyntaxException;
+
+      c(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

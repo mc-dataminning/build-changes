@@ -1,41 +1,44 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gqi {
-   private static final gqq[] a = new gqq[]{
-      a("textures/entity/player/slim/alex.png", gqq.a.a),
-      a("textures/entity/player/slim/ari.png", gqq.a.a),
-      a("textures/entity/player/slim/efe.png", gqq.a.a),
-      a("textures/entity/player/slim/kai.png", gqq.a.a),
-      a("textures/entity/player/slim/makena.png", gqq.a.a),
-      a("textures/entity/player/slim/noor.png", gqq.a.a),
-      a("textures/entity/player/slim/steve.png", gqq.a.a),
-      a("textures/entity/player/slim/sunny.png", gqq.a.a),
-      a("textures/entity/player/slim/zuri.png", gqq.a.a),
-      a("textures/entity/player/wide/alex.png", gqq.a.b),
-      a("textures/entity/player/wide/ari.png", gqq.a.b),
-      a("textures/entity/player/wide/efe.png", gqq.a.b),
-      a("textures/entity/player/wide/kai.png", gqq.a.b),
-      a("textures/entity/player/wide/makena.png", gqq.a.b),
-      a("textures/entity/player/wide/noor.png", gqq.a.b),
-      a("textures/entity/player/wide/steve.png", gqq.a.b),
-      a("textures/entity/player/wide/sunny.png", gqq.a.b),
-      a("textures/entity/player/wide/zuri.png", gqq.a.b)
-   };
+@FunctionalInterface
+public interface gqi {
+   Logger a = LogUtils.getLogger();
 
-   public static akk a() {
-      return a[6].a();
+   static gqi create(Collection<atc<?>> $$0) {
+      return ($$1, $$2) -> {
+         auf $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
+         }
+
+         fad $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = fad.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         grq $$11 = $$3.a(grq.a).orElse(grq.e);
+         grs $$12 = $$11.a($$7.a(), $$7.b());
+         if (ayn.c($$7.a(), $$12.a()) && ayn.c($$7.b(), $$12.b())) {
+            return new gpz($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
+         }
+      };
    }
 
-   public static gqq a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
-   }
-
-   public static gqq a(GameProfile $$0) {
-      return a($$0.getId());
-   }
-
-   private static gqq a(String $$0, gqq.a $$1) {
-      return new gqq(new akk($$0), null, null, null, $$1, true);
-   }
+   @Nullable
+   gpz loadSprite(akq var1, aub var2);
 }

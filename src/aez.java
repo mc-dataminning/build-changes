@@ -1,44 +1,39 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class aez implements zb<abn> {
-   public static final ys<vr, aez> a = zb.a(aez::a, aez::new);
+public class aez implements zf<abt> {
+   public static final yw<vv, aez> a = zf.a(aez::a, aez::new);
    private final int b;
-   private final int[] c;
+   private final int c;
 
-   public aez(bsh $$0) {
+   public aez(bsq $$0, @Nullable bsq $$1) {
       this.b = $$0.an();
-      List<bsh> $$1 = $$0.cU();
-      this.c = new int[$$1.size()];
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c[$$2] = $$1.get($$2).an();
-      }
+      this.c = $$1 != null ? $$1.an() : 0;
    }
 
-   private aez(vr $$0) {
-      this.b = $$0.l();
-      this.c = $$0.c();
+   private aez(vv $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(vv $$0) {
+      $$0.p(this.b);
+      $$0.p(this.c);
    }
 
    @Override
-   public zd<aez> a() {
-      return afz.aJ;
+   public zh<aez> a() {
+      return agf.aD;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public int[] b() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
    public int e() {
-      return this.b;
+      return this.c;
    }
 }

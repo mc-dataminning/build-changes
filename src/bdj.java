@@ -1,48 +1,57 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Map;
 
-public class bdj extends DataFix {
-   private final String a;
-   private final Set<String> b;
+public class bdj extends bhc {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:commandblock_minecart", "minecraft:command_block_minecart")
+      .put("minecraft:ender_crystal", "minecraft:end_crystal")
+      .put("minecraft:snowman", "minecraft:snow_golem")
+      .put("minecraft:evocation_illager", "minecraft:evoker")
+      .put("minecraft:evocation_fangs", "minecraft:evoker_fangs")
+      .put("minecraft:illusion_illager", "minecraft:illusioner")
+      .put("minecraft:vindication_illager", "minecraft:vindicator")
+      .put("minecraft:villager_golem", "minecraft:iron_golem")
+      .put("minecraft:xp_orb", "minecraft:experience_orb")
+      .put("minecraft:xp_bottle", "minecraft:experience_bottle")
+      .put("minecraft:eye_of_ender_signal", "minecraft:eye_of_ender")
+      .put("minecraft:fireworks_rocket", "minecraft:firework_rocket")
+      .build();
+   public static final Map<String, String> b = ImmutableMap.builder()
+      .put("minecraft:portal", "minecraft:nether_portal")
+      .put("minecraft:oak_bark", "minecraft:oak_wood")
+      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
+      .put("minecraft:birch_bark", "minecraft:birch_wood")
+      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
+      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
+      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
+      .put("minecraft:stripped_oak_bark", "minecraft:stripped_oak_wood")
+      .put("minecraft:stripped_spruce_bark", "minecraft:stripped_spruce_wood")
+      .put("minecraft:stripped_birch_bark", "minecraft:stripped_birch_wood")
+      .put("minecraft:stripped_jungle_bark", "minecraft:stripped_jungle_wood")
+      .put("minecraft:stripped_acacia_bark", "minecraft:stripped_acacia_wood")
+      .put("minecraft:stripped_dark_oak_bark", "minecraft:stripped_dark_oak_wood")
+      .put("minecraft:mob_spawner", "minecraft:spawner")
+      .build();
+   public static final Map<String, String> c = ImmutableMap.builder()
+      .putAll(b)
+      .put("minecraft:clownfish", "minecraft:tropical_fish")
+      .put("minecraft:chorus_fruit_popped", "minecraft:popped_chorus_fruit")
+      .put("minecraft:evocation_illager_spawn_egg", "minecraft:evoker_spawn_egg")
+      .put("minecraft:vindication_illager_spawn_egg", "minecraft:vindicator_spawn_egg")
+      .build();
+   private static final String d = "minecraft:bred_";
 
-   public bdj(Schema $$0, String $$1, Set<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+   public bdj(Schema $$0, boolean $$1) {
+      super("EntityTheRenameningBlock", $$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bgh.a), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
-   }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      List<Dynamic<T>> $$1 = $$0.get("removed_features").asStream().collect(Collectors.toCollection(ArrayList::new));
-      Dynamic<T> $$2 = $$0.update("enabled_features", $$2x -> (Dynamic)DataFixUtils.orElse($$2x.asStreamOpt().result().map($$2xx -> $$2xx.filter($$2xxx -> {
-               Optional<String> $$3 = $$2xxx.asString().result();
-               if ($$3.isEmpty()) {
-                  return true;
-               } else {
-                  boolean $$4 = this.b.contains($$3.get());
-                  if ($$4) {
-                     $$1.add($$0.createString($$3.get()));
-                  }
-
-                  return !$$4;
-               }
-            })).map($$0::createList), $$2x));
-      if (!$$1.isEmpty()) {
-         $$2 = $$2.set("removed_features", $$0.createList($$1.stream()));
+   @Override
+   protected String a(String $$0) {
+      if ($$0.startsWith("minecraft:bred_")) {
+         $$0 = "minecraft:" + $$0.substring("minecraft:bred_".length());
       }
 
-      return $$2;
+      return a.getOrDefault($$0, $$0);
    }
 }

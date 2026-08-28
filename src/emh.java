@@ -1,20 +1,24 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class emh extends emv {
-   public static final MapCodec<emh> a = MapCodec.unit(() -> emh.b);
-   public static final emh b = new emh();
+public class emh extends ejm {
+   public static final MapCodec<emh> d = a(emh::new);
 
-   @Nullable
-   @Override
-   public emy.c a(dcj $$0, ja $$1, ja $$2, emy.c $$3, emy.c $$4, emu $$5) {
-      ja $$6 = $$4.a();
-      boolean $$7 = $$0.a_($$6).a(dfk.H);
-      return $$7 && !dfi.a($$4.b().j($$0, $$6)) ? new emy.c($$6, dfk.H.o(), $$4.c()) : $$4;
+   public emh(ejm.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected emx<?> a() {
-      return emx.m;
+   public Optional<ejm.b> a(ejm.a $$0) {
+      return a($$0, dyv.a.a, $$1 -> a($$1, $$0));
+   }
+
+   private static void a(eke $$0, ejm.a $$1) {
+      $$0.a(new emg($$1.f(), $$1.h().d(), $$1.h().e()));
+   }
+
+   @Override
+   public ejv<?> e() {
+      return ejv.o;
    }
 }

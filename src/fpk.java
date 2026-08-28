@@ -1,21 +1,30 @@
-public class fpk extends foa<crb> {
-   private static final akk D = new akk("textures/gui/container/shulker_box.png");
+import org.joml.Vector3f;
 
-   public fpk(crb $$0, cmk $$1, wu $$2) {
-      super($$0, $$1, $$2);
-      this.q++;
+public class fpk extends foo {
+   public static final float b = 4.5F;
+   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int q = 16;
+   private static final int r = 16;
+   private final akq s = akq.b("textures/gui/hanging_signs/" + this.a.b() + ".png");
+
+   public fpk(drq $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, wy.c("hanging_sign.edit"));
    }
 
    @Override
-   public void a(fhh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   protected void b(fht $$0, dta $$1) {
+      $$0.c().a((float)this.m / 2.0F, 125.0F, 50.0F);
    }
 
    @Override
-   protected void a(fhh $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.m - this.c) / 2;
-      int $$5 = (this.n - this.q) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.q);
+   protected void a(fht $$0, dta $$1) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(this.s, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
+   }
+
+   @Override
+   protected Vector3f m() {
+      return c;
    }
 }

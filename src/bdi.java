@@ -1,17 +1,33 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
 
-public class bdi extends bgt {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
-
-   public bdi(Schema $$0) {
-      super("EntityZombifiedPiglinRenameFix", $$0, true);
+public class bdi extends DataFix {
+   public bdi(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:zombie_pigman", $$0) ? "minecraft:zombified_piglin" : $$0;
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "EntityStringUuidFix",
+         this.getInputSchema().getType(bgq.B),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(),
+               $$0x -> {
+                  Optional<String> $$1 = $$0x.get("UUID").asString().result();
+                  if ($$1.isPresent()) {
+                     UUID $$2 = UUID.fromString($$1.get());
+                     return $$0x.remove("UUID")
+                        .set("UUIDMost", $$0x.createLong($$2.getMostSignificantBits()))
+                        .set("UUIDLeast", $$0x.createLong($$2.getLeastSignificantBits()));
+                  } else {
+                     return $$0x;
+                  }
+               }
+            )
+      );
    }
 }

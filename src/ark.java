@@ -1,143 +1,47 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class ark extends arj implements abd, wi {
-   private static final Logger f = LogUtils.getLogger();
-   private static final wu g = wu.c("multiplayer.disconnect.invalid_player_data");
-   private final GameProfile h;
-   private final Queue<arc> i = new ConcurrentLinkedQueue<>();
-   @Nullable
-   private arc j;
-   private apz k;
-   @Nullable
-   private arv l;
-
-   public ark(MinecraftServer $$0, vp $$1, arb $$2) {
-      super($$0, $$1, $$2);
-      this.h = $$2.a();
-      this.k = $$2.c();
+public record ark<T>(T a, Optional<T> b) {
+   public static <T> Codec<ark<T>> a(Codec<T> $$0) {
+      Codec<ark<T>> $$1 = RecordCodecBuilder.create(
+         $$1x -> $$1x.group($$0.fieldOf("raw").forGetter(ark::a), $$0.optionalFieldOf("filtered").forGetter(ark::b)).apply($$1x, ark::new)
+      );
+      Codec<ark<T>> $$2 = $$0.xmap(ark::a, ark::a);
+      return Codec.withAlternative($$1, $$2);
    }
 
-   @Override
-   protected GameProfile i() {
-      return this.h;
+   public static <B extends ByteBuf, T> yw<B, ark<T>> a(yw<B, T> $$0) {
+      return yw.a($$0, ark::a, $$0.a(yu::a), ark::b, ark::new);
    }
 
-   @Override
-   public void a(wu $$0) {
-      f.info("{} lost connection: {}", this.h, $$0.getString());
-      super.a($$0);
+   public static <T> ark<T> a(T $$0) {
+      return new ark<>($$0, Optional.empty());
    }
 
-   @Override
-   public boolean c() {
-      return this.e.i();
+   public static ark<String> a(arl $$0) {
+      return new ark<>($$0.d(), $$0.c() ? Optional.of($$0.b()) : Optional.empty());
    }
 
-   @Override
-   public void l() {
-      this.b(new zi(new aaa(this.d.getServerModName())));
-      jq<akt> $$0 = this.d.be();
-      List<atd> $$1 = this.d.bh().b().flatMap($$0x -> $$0x.a().d().stream()).toList();
-      this.b(new aba(cpb.d.b(this.d.bc().K())));
-      this.l = new arv($$1, $$0);
-      this.i.add(this.l);
-      this.n();
-      this.i.add(new art());
-      this.o();
+   public T a(boolean $$0) {
+      return $$0 ? this.b.orElse(this.a) : this.a;
    }
 
-   public void m() {
-      this.i.add(new art());
-      this.o();
+   public <U> ark<U> a(Function<T, U> $$0) {
+      return new ark<>($$0.apply(this.a), this.b.map($$0));
    }
 
-   private void n() {
-      this.d.Y().ifPresent($$0 -> this.i.add(new aru($$0)));
-   }
-
-   @Override
-   public void a(zt $$0) {
-      this.k = $$0.b();
-   }
-
-   @Override
-   public void a(zx $$0) {
-      super.a($$0);
-      if ($$0.e().a()) {
-         this.a(aru.a);
-      }
-   }
-
-   @Override
-   public void a(abf $$0) {
-      ze.a($$0, this, this.d);
-      if (this.l == null) {
-         throw new IllegalStateException("Unexpected response from client: received pack selection, but no negotiation ongoing");
+   public <U> Optional<ark<U>> b(Function<T, Optional<U>> $$0) {
+      Optional<U> $$1 = $$0.apply(this.a);
+      if ($$1.isEmpty()) {
+         return Optional.empty();
+      } else if (this.b.isPresent()) {
+         Optional<U> $$2 = $$0.apply(this.b.get());
+         return $$2.isEmpty() ? Optional.empty() : Optional.of(new ark<>($$1.get(), $$2));
       } else {
-         this.l.a($$0.b(), this::b);
-         this.a(arv.a);
-      }
-   }
-
-   @Override
-   public void a(abe $$0) {
-      ze.a($$0, this, this.d);
-      this.a(art.a);
-      this.e.a(aga.b.bind(wf.a(this.d.bd())));
-
-      try {
-         auj $$1 = this.d.ai();
-         if ($$1.a(this.h.getId()) != null) {
-            this.b(auj.f);
-            return;
-         }
-
-         wu $$2 = $$1.a(this.e.d(), this.h);
-         if ($$2 != null) {
-            this.b($$2);
-            return;
-         }
-
-         aqn $$3 = $$1.a(this.h, this.k);
-         $$1.a(this.e, $$3, this.a(this.k));
-      } catch (Exception var5) {
-         f.error("Couldn't place player in world", var5);
-         this.e.a(new zj(g));
-         this.e.a(g);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.e();
-   }
-
-   private void o() {
-      if (this.j != null) {
-         throw new IllegalStateException("Task " + this.j.a().a() + " has not finished yet");
-      } else if (this.c()) {
-         arc $$0 = this.i.poll();
-         if ($$0 != null) {
-            this.j = $$0;
-            $$0.a(this::b);
-         }
-      }
-   }
-
-   private void a(arc.a $$0) {
-      arc.a $$1 = this.j != null ? this.j.a() : null;
-      if (!$$0.equals($$1)) {
-         throw new IllegalStateException("Unexpected request for task finish, current task: " + $$1 + ", requested: " + $$0);
-      } else {
-         this.j = null;
-         this.o();
+         return Optional.of(new ark<>($$1.get(), Optional.empty()));
       }
    }
 }

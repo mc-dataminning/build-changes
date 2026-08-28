@@ -2,31 +2,27 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record dal(czt d, czt e, ke f, Optional<dzn> g, efq h, Optional<jj<dxh>> i) implements dac {
+public record dal(jq<brw> d, dah e, dah f, dah g, dah h) implements daq {
    public static final MapCodec<dal> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               czt.b.fieldOf("radius").forGetter(dal::b),
-               czt.b.fieldOf("height").forGetter(dal::c),
-               ke.f.optionalFieldOf("offset", ke.g).forGetter(dal::d),
-               dzn.b.optionalFieldOf("predicate").forGetter(dal::e),
-               efq.a.fieldOf("block_state").forGetter(dal::f),
-               dxh.aj.optionalFieldOf("trigger_game_event").forGetter(dal::g)
+               kb.a(lu.W).fieldOf("to_apply").forGetter(dal::b),
+               dah.b.fieldOf("min_duration").forGetter(dal::c),
+               dah.b.fieldOf("max_duration").forGetter(dal::d),
+               dah.b.fieldOf("min_amplifier").forGetter(dal::e),
+               dah.b.fieldOf("max_amplifier").forGetter(dal::f)
             )
             .apply($$0, dal::new)
    );
 
    @Override
-   public void a(aqm $$0, int $$1, czl $$2, bsh $$3, ewh $$4) {
-      ja $$5 = ja.a($$4).a(this.f);
-      ayo $$6 = $$3.dU();
-      int $$7 = (int)this.d.a($$1);
-      int $$8 = (int)this.e.a($$1);
-
-      for (ja $$9 : ja.c($$5.b(-$$7, 0, -$$7), $$5.b($$7, Math.min($$8 - 1, 0), $$7))) {
-         if ($$9.c($$4.a(), (double)$$9.v() + 0.5, $$4.c()) < (double)ayg.h($$7)
-            && this.g.map($$2x -> $$2x.test($$0, $$9)).orElse(true)
-            && $$0.b($$9, this.h.a($$6, $$9))) {
-            this.i.ifPresent($$3x -> $$0.a($$3, $$3x, $$9));
+   public void a(aqt $$0, int $$1, czz $$2, bsq $$3, eww $$4) {
+      if ($$3 instanceof btl $$5) {
+         ayv $$6 = $$5.dT();
+         Optional<jm<brw>> $$7 = this.d.a($$6);
+         if ($$7.isPresent()) {
+            int $$8 = Math.round(ayn.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);
+            int $$9 = Math.max(0, Math.round(ayn.b($$6, this.g.a($$1), this.h.a($$1))));
+            $$5.b(new bry($$7.get(), $$8, $$9));
          }
       }
    }
@@ -36,27 +32,23 @@ public record dal(czt d, czt e, ke f, Optional<dzn> g, efq h, Optional<jj<dxh>> 
       return a;
    }
 
-   public czt b() {
+   public jq<brw> b() {
       return this.d;
    }
 
-   public czt c() {
+   public dah c() {
       return this.e;
    }
 
-   public ke d() {
+   public dah d() {
       return this.f;
    }
 
-   public Optional<dzn> e() {
+   public dah e() {
       return this.g;
    }
 
-   public efq f() {
+   public dah f() {
       return this.h;
-   }
-
-   public Optional<jj<dxh>> g() {
-      return this.i;
    }
 }

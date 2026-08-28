@@ -1,71 +1,74 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.stream.Stream;
-import org.joml.Quaternionf;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.DoubleSupplier;
 
-public class gis extends gjn<coi> {
-   private final Map<coi.b, Pair<akk, fvi<coi>>> a;
+public class gis implements gig.a {
+   private final fgi a;
+   private double b = Double.MIN_VALUE;
+   private List<bsq> c = Collections.emptyList();
 
-   public gis(gjo.a $$0, boolean $$1) {
-      super($$0);
-      this.d = 0.8F;
-      this.a = Stream.of(coi.b.values()).collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$2 -> Pair.of(new akk(a($$2, $$1)), this.a($$0, $$2, $$1))));
+   public gis(fgi $$0) {
+      this.a = $$0;
    }
 
-   private fvi<coi> a(gjo.a $$0, coi.b $$1, boolean $$2) {
-      fxo $$3 = $$2 ? fxp.d($$1) : fxp.c($$1);
-      fxq $$4 = $$0.a($$3);
-      if ($$1 == coi.b.i) {
-         return (fvi<coi>)($$2 ? new fud($$4) : new fwc($$4));
-      } else {
-         return (fvi<coi>)($$2 ? new fuc($$4) : new ftw($$4));
-      }
-   }
-
-   private static String a(coi.b $$0, boolean $$1) {
-      return $$1 ? "textures/entity/chest_boat/" + $$0.a() + ".png" : "textures/entity/boat/" + $$0.a() + ".png";
-   }
-
-   public void a(coi $$0, float $$1, float $$2, fao $$3, gef $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.375F, 0.0F);
-      $$3.a(a.d.rotationDegrees(180.0F - $$1));
-      float $$6 = (float)$$0.O() - $$2;
-      float $$7 = $$0.N() - $$2;
-      if ($$7 < 0.0F) {
-         $$7 = 0.0F;
+   @Override
+   public void a(fbc $$0, get $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ad.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bsq $$6 = this.a.j.l().g();
+         this.c = ImmutableList.copyOf($$6.dQ().a_($$6, $$6.cL().g(16.0)));
       }
 
-      if ($$6 > 0.0F) {
-         $$3.a(a.b.rotationDegrees(ayg.a($$6) * $$6 * $$7 / 10.0F * (float)$$0.P()));
+      cmv $$7 = this.a.s;
+      if ($$7 != null && $$7.aC.isPresent()) {
+         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
       }
 
-      float $$8 = $$0.a($$2);
-      if (!ayg.a($$8, 0.0F)) {
-         $$3.a(new Quaternionf().setAngleAxis($$0.a($$2) * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
-      }
-
-      Pair<akk, fvi<coi>> $$9 = this.a.get($$0.x());
-      akk $$10 = (akk)$$9.getFirst();
-      fvi<coi> $$11 = (fvi<coi>)$$9.getSecond();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      $$11.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
-      fas $$12 = $$4.getBuffer($$11.a($$10));
-      $$11.a($$3, $$12, $$5, gph.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      if (!$$0.bl()) {
-         fas $$13 = $$4.getBuffer(gen.i());
-         if ($$11 instanceof fxd $$14) {
-            $$14.c().a($$3, $$13, $$5, gph.d);
+      for (bsq $$8 : this.c) {
+         if ($$8 != $$7) {
+            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
          }
       }
-
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public akk a(coi $$0) {
-      return (akk)this.a.get($$0.x()).getFirst();
+   private void a(fbc $$0, get $$1, double $$2, double $$3, double $$4, bsq $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
+      $$5.aC.ifPresent($$10 -> {
+         double $$11 = $$6.getAsDouble();
+         jd $$12 = $$5.aM();
+         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
+         jd $$13 = $$5.aK();
+         if (!$$13.equals($$12)) {
+            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
+         }
+      });
+   }
+
+   private double a(bsq $$0) {
+      return 0.02 * (double)(String.valueOf((double)$$0.an() + 0.132453657).hashCode() % 1000) / 1000.0;
+   }
+
+   private void a(jd $$0, fbc $$1, double $$2, double $$3, double $$4, get $$5, double $$6, float $$7, float $$8, float $$9) {
+      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
+      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
+      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
+      double $$13 = $$10 + 1.0 + 4.0 * $$6;
+      double $$14 = $$11 + 1.0 + 4.0 * $$6;
+      double $$15 = $$12 + 1.0 + 4.0 * $$6;
+      ger.a($$1, $$5.getBuffer(gfb.w()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
+      ger.a(
+         $$1,
+         $$5.getBuffer(gfb.w()),
+         this.a.r.a_($$0).b(this.a.r, $$0, exb.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
+         -$$2,
+         -$$3,
+         -$$4,
+         $$7,
+         $$8,
+         $$9,
+         1.0F,
+         false
+      );
    }
 }

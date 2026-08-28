@@ -1,53 +1,27 @@
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class fqh extends fqn {
-   private static final wu a = wu.c("options.chat.title");
-   @Nullable
-   private fhs s;
-
-   private static ffz<?>[] a(fga $$0) {
-      return new ffz[]{
-         $$0.m(),
-         $$0.K(),
-         $$0.L(),
-         $$0.M(),
-         $$0.n(),
-         $$0.r(),
-         $$0.w(),
-         $$0.o(),
-         $$0.A(),
-         $$0.x(),
-         $$0.z(),
-         $$0.y(),
-         $$0.as(),
-         $$0.J(),
-         $$0.ae(),
-         $$0.V(),
-         $$0.ag()
-      };
+public interface fqh {
+   static fqh a(axz $$0) {
+      return new fqg($$0);
    }
 
-   public fqh(fnl $$0, fga $$1) {
-      super($$0, $$1, a);
-   }
-
-   @Override
-   public void aP_() {
-      super.aP_();
-      this.s = this.q.b(this.c.as());
-      if (this.s != null) {
-         this.s.j = this.l.aV().a();
+   static fqh a(cry $$0) {
+      if ($$0 instanceof crx $$1) {
+         return new fqf($$1.a());
+      } else if ($$0 instanceof fqe.a $$2) {
+         return new fqe($$2);
+      } else {
+         throw new IllegalArgumentException("Unknown TooltipComponent");
       }
    }
 
-   @Override
-   protected void m() {
-      this.q.a(a(this.c));
+   int a();
+
+   int a(fhr var1);
+
+   default void a(fhr $$0, int $$1, int $$2, Matrix4f $$3, get.a $$4) {
    }
 
-   public void E() {
-      if (this.s instanceof fib) {
-         ((fib)this.s).a(this.c.as().c());
-      }
+   default void a(fhr $$0, int $$1, int $$2, fht $$3) {
    }
 }

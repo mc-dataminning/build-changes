@@ -1,18 +1,81 @@
-public class giq extends gku<cet, ftu<cet>> {
-   private static final akk a = new akk("textures/entity/bee/bee_angry.png");
-   private static final akk i = new akk("textures/entity/bee/bee_angry_nectar.png");
-   private static final akk j = new akk("textures/entity/bee/bee.png");
-   private static final akk k = new akk("textures/entity/bee/bee_nectar.png");
+import org.joml.Matrix4f;
 
-   public giq(gjo.a $$0) {
-      super($$0, new ftu<>($$0.a(fxp.k)), 0.4F);
+public class giq implements gig.a {
+   private final fgi a;
+
+   public giq(fgi $$0) {
+      this.a = $$0;
    }
 
-   public akk a(cet $$0) {
-      if ($$0.Z_()) {
-         return $$0.gx() ? i : a;
-      } else {
-         return $$0.gx() ? k : j;
+   @Override
+   public void a(fbc $$0, get $$1, double $$2, double $$3, double $$4) {
+      Matrix4f $$5 = $$0.c().a();
+      dca $$6 = this.a.s.dQ();
+      jd $$7 = jd.a($$2, $$3, $$4);
+
+      for (jd $$8 : jd.c($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
+         dta $$9 = $$6.a_($$8);
+         if (!$$9.a(dfy.a)) {
+            exp $$10 = $$9.j($$6, $$8);
+
+            for (ewr $$11 : $$10.e()) {
+               ewr $$12 = $$11.a($$8).g(0.002);
+               float $$13 = (float)($$12.a - $$2);
+               float $$14 = (float)($$12.b - $$3);
+               float $$15 = (float)($$12.c - $$4);
+               float $$16 = (float)($$12.d - $$2);
+               float $$17 = (float)($$12.e - $$3);
+               float $$18 = (float)($$12.f - $$4);
+               int $$19 = -2130771968;
+               if ($$9.d($$6, $$8, ji.e)) {
+                  fbg $$20 = $$1.getBuffer(gfb.y());
+                  $$20.a($$5, $$13, $$14, $$15).a(-2130771968);
+                  $$20.a($$5, $$13, $$14, $$18).a(-2130771968);
+                  $$20.a($$5, $$13, $$17, $$15).a(-2130771968);
+                  $$20.a($$5, $$13, $$17, $$18).a(-2130771968);
+               }
+
+               if ($$9.d($$6, $$8, ji.d)) {
+                  fbg $$21 = $$1.getBuffer(gfb.y());
+                  $$21.a($$5, $$13, $$17, $$18).a(-2130771968);
+                  $$21.a($$5, $$13, $$14, $$18).a(-2130771968);
+                  $$21.a($$5, $$16, $$17, $$18).a(-2130771968);
+                  $$21.a($$5, $$16, $$14, $$18).a(-2130771968);
+               }
+
+               if ($$9.d($$6, $$8, ji.f)) {
+                  fbg $$22 = $$1.getBuffer(gfb.y());
+                  $$22.a($$5, $$16, $$14, $$18).a(-2130771968);
+                  $$22.a($$5, $$16, $$14, $$15).a(-2130771968);
+                  $$22.a($$5, $$16, $$17, $$18).a(-2130771968);
+                  $$22.a($$5, $$16, $$17, $$15).a(-2130771968);
+               }
+
+               if ($$9.d($$6, $$8, ji.c)) {
+                  fbg $$23 = $$1.getBuffer(gfb.y());
+                  $$23.a($$5, $$16, $$17, $$15).a(-2130771968);
+                  $$23.a($$5, $$16, $$14, $$15).a(-2130771968);
+                  $$23.a($$5, $$13, $$17, $$15).a(-2130771968);
+                  $$23.a($$5, $$13, $$14, $$15).a(-2130771968);
+               }
+
+               if ($$9.d($$6, $$8, ji.a)) {
+                  fbg $$24 = $$1.getBuffer(gfb.y());
+                  $$24.a($$5, $$13, $$14, $$15).a(-2130771968);
+                  $$24.a($$5, $$16, $$14, $$15).a(-2130771968);
+                  $$24.a($$5, $$13, $$14, $$18).a(-2130771968);
+                  $$24.a($$5, $$16, $$14, $$18).a(-2130771968);
+               }
+
+               if ($$9.d($$6, $$8, ji.b)) {
+                  fbg $$25 = $$1.getBuffer(gfb.y());
+                  $$25.a($$5, $$13, $$17, $$15).a(-2130771968);
+                  $$25.a($$5, $$13, $$17, $$18).a(-2130771968);
+                  $$25.a($$5, $$16, $$17, $$15).a(-2130771968);
+                  $$25.a($$5, $$16, $$17, $$18).a(-2130771968);
+               }
+            }
+         }
       }
    }
 }

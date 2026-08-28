@@ -1,29 +1,22 @@
-import java.util.function.Function;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public abstract class ftk<E extends bsh> extends fuz<E> {
-   private final float a;
-   private final float b;
+public class ftk implements ftm {
+   private static final wy a = wy.c("spectatorMenu.root.prompt");
+   private final List<ftn> b = Lists.newArrayList();
 
-   public ftk(float $$0, float $$1) {
-      this($$0, $$1, gen::e);
-   }
-
-   public ftk(float $$0, float $$1, Function<akk, gen> $$2) {
-      super($$2);
-      this.b = $$1;
-      this.a = $$0;
+   public ftk() {
+      this.b.add(new ftq());
+      this.b.add(new ftr());
    }
 
    @Override
-   public void a(fao $$0, fas $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         $$0.b(this.a, this.a, this.a);
-         $$0.a(0.0F, this.b / 16.0F, 0.0F);
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$0.b();
-      } else {
-         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   public List<ftn> a() {
+      return this.b;
+   }
+
+   @Override
+   public wy b() {
+      return a;
    }
 }

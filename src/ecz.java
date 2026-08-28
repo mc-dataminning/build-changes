@@ -1,56 +1,24 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
 
-public class ecz extends ebl<een> {
-   public ecz(Codec<een> $$0) {
+public class ecz extends eca<eeq> {
+   public ecz(Codec<eeq> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebn<een> $$0) {
-      ddc $$1 = $$0.b();
-      ja $$2 = $$0.e();
-      een $$3 = $$0.f();
-      ayo $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         ja $$6 = $$2.h($$5.getAsInt());
-         ke $$7 = new ke($$3.c, $$3.c, $$3.c);
-         eip $$8 = eip.a($$6.b($$7), $$6.a($$7));
-         return ja.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, dfk.kJ.o(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
+   public boolean a(ecc<eeq> $$0) {
+      eeq $$1 = $$0.f();
+      ayv $$2 = $$0.d();
+      ddq $$3 = $$0.b();
+      dux $$4 = $$0.c();
+      jd $$5 = $$0.e();
 
-   private static OptionalInt a(ddc $$0, ja $$1, een $$2) {
-      Predicate<dsl> $$3 = $$0x -> $$0x.a(dfk.G);
-      Predicate<dsl> $$4 = $$0x -> !$$0x.a(dfk.G);
-      Optional<dxw> $$5 = dxw.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(dxw::c).orElseGet(OptionalInt::empty);
-   }
-
-   private boolean b(ddc $$0, ja $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
-         for (jf $$2 : jf.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
-            }
+      for (edu $$6 : $$1.b) {
+         if ($$2.i() < $$6.c) {
+            return $$6.a($$3, $$4, $$2, $$5);
          }
-
-         return true;
-      } else {
-         return false;
       }
-   }
 
-   private boolean a(dch $$0, ja $$1) {
-      dsl $$2 = $$0.a_($$1);
-      return $$2.a(dfk.G) || $$2.i();
+      return $$1.c.a().a($$3, $$4, $$2, $$5);
    }
 }

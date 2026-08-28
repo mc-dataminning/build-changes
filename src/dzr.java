@@ -1,22 +1,26 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dzr implements dzn {
-   public static final MapCodec<dzr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ke.v(16).optionalFieldOf("offset", ja.c).forGetter($$0x -> $$0x.e)).apply($$0, dzr::new)
+public record dzr(dzt b, dzq c) {
+   public static final Codec<dzr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dzt.a.forGetter(dzr::a), dzq.a.forGetter(dzr::b)).apply($$0, $$0.stable(dzr::new))
    );
-   private final ke e;
 
-   public dzr(ke $$0) {
-      this.e = $$0;
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dzt $$1, dzq $$2) {
+      return a.encodeStart($$0, new dzr($$1, $$2));
    }
 
-   public boolean a(ddc $$0, ja $$1) {
-      return !$$0.s($$1.a(this.e));
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dzt $$1, ka $$2) {
+      return a($$0, $$1, new dzq($$2.d(lu.bb)));
    }
 
-   @Override
-   public dzo<?> a() {
-      return dzo.h;
+   public dzt a() {
+      return this.b;
+   }
+
+   public dzq b() {
+      return this.c;
    }
 }

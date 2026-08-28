@@ -1,96 +1,39 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public class yc implements wv {
+public class yc implements wz {
    public static final MapCodec<yc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(yc::b), Codec.STRING.fieldOf("objective").forGetter(yc::d)).apply($$0, yc::new)
+      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, yc::new)
    );
-   public static final MapCodec<yc> b = a.fieldOf("score");
-   public static final wv.a<yc> c = new wv.a<>(b, "score");
-   private final String d;
+   public static final wz.a<yc> b = new wz.a<>(a, "keybind");
+   private final String c;
    @Nullable
-   private final hf e;
-   private final String f;
+   private Supplier<wy> d;
 
-   @Nullable
-   private static hf a(String $$0) {
-      try {
-         return new hg(new StringReader($$0)).t();
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
+   public yc(String $$0) {
+      this.c = $$0;
    }
 
-   public yc(String $$0, String $$1) {
-      this.d = $$0;
-      this.e = a($$0);
-      this.f = $$1;
+   private wy c() {
+      if (this.d == null) {
+         this.d = yd.a.apply(this.c);
+      }
+
+      return this.d.get();
    }
 
    @Override
-   public wv.a<?> a() {
-      return c;
-   }
-
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public hf c() {
-      return this.e;
-   }
-
-   public String d() {
-      return this.f;
-   }
-
-   private exk a(eq $$0) throws CommandSyntaxException {
-      if (this.e != null) {
-         List<? extends bsh> $$1 = this.e.b($$0);
-         if (!$$1.isEmpty()) {
-            if ($$1.size() != 1) {
-               throw fd.a.create();
-            }
-
-            return $$1.get(0);
-         }
-      }
-
-      return exk.c(this.d);
-   }
-
-   private xi a(exk $$0, eq $$1) {
-      MinecraftServer $$2 = $$1.l();
-      if ($$2 != null) {
-         exl $$3 = $$2.aL();
-         exd $$4 = $$3.a(this.f);
-         if ($$4 != null) {
-            exh $$5 = $$3.d($$0, $$4);
-            if ($$5 != null) {
-               return $$5.a($$4.a(yn.b));
-            }
-         }
-      }
-
-      return wu.i();
+   public <T> Optional<T> a(xd.a<T> $$0) {
+      return this.c().a($$0);
    }
 
    @Override
-   public xi a(@Nullable eq $$0, @Nullable bsh $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 == null) {
-         return wu.i();
-      } else {
-         exk $$3 = this.a($$0);
-         exk $$4 = (exk)($$1 != null && $$3.equals(exk.cB) ? $$1 : $$3);
-         return this.a($$4, $$0);
-      }
+   public <T> Optional<T> a(xd.b<T> $$0, xv $$1) {
+      return this.c().a($$0, $$1);
    }
 
    @Override
@@ -98,7 +41,7 @@ public class yc implements wv {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof yc $$1 && this.d.equals($$1.d) && this.f.equals($$1.f)) {
+         if ($$0 instanceof yc $$1 && this.c.equals($$1.c)) {
             return true;
          }
 
@@ -108,12 +51,20 @@ public class yc implements wv {
 
    @Override
    public int hashCode() {
-      int $$0 = this.d.hashCode();
-      return 31 * $$0 + this.f.hashCode();
+      return this.c.hashCode();
    }
 
    @Override
    public String toString() {
-      return "score{name='" + this.d + "', objective='" + this.f + "'}";
+      return "keybind{" + this.c + "}";
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   @Override
+   public wz.a<?> a() {
+      return b;
    }
 }

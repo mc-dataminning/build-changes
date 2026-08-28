@@ -1,35 +1,23 @@
-public interface xj {
-   wu a();
+import java.util.UUID;
 
-   void a(aqn var1, boolean var2, wq.a var3);
-
-   static xj a(xk $$0) {
-      return (xj)($$0.h() ? new xj.a($$0.d()) : new xj.b($$0));
+public record xj(UUID a, cmx b) {
+   public static xj a(cmx $$0) {
+      return new xj(UUID.randomUUID(), $$0);
    }
 
-   public static record a(wu a) implements xj {
-      @Override
-      public void a(aqn $$0, boolean $$1, wq.a $$2) {
-         $$0.c.a(this.a, $$2);
-      }
+   public xs.c a(UUID $$0) {
+      return new xs($$0, this.a).a(azb.a(this.b.b(), "SHA256withRSA"));
    }
 
-   public static record b(xk a) implements xj {
-      @Override
-      public wu a() {
-         return this.a.d();
-      }
+   public xp a() {
+      return new xp(this.a, this.b.c());
+   }
 
-      @Override
-      public void a(aqn $$0, boolean $$1, wq.a $$2) {
-         xk $$3 = this.a.a($$1);
-         if (!$$3.j()) {
-            $$0.c.a($$3, $$2);
-         }
-      }
+   public UUID b() {
+      return this.a;
+   }
 
-      public xk b() {
-         return this.a;
-      }
+   public cmx c() {
+      return this.b;
    }
 }

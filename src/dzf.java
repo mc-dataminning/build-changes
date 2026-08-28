@@ -1,84 +1,68 @@
-import java.util.function.LongFunction;
+public final class dzf {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-public class dzf extends dyh {
-   private final ayo d;
-   private int e;
-
-   public dzf(ayo $$0) {
-      super(0L);
-      this.d = $$0;
+   private dzf() {
    }
 
-   public int l() {
-      return this.e;
+   protected static dyz.c a(dyo $$0, dyo $$1, dyo $$2, dzi $$3) {
+      dta $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         dzf.a $$8 = $$6 > 0.0 ? dzf.a.a : dzf.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = ayn.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
+            } else {
+               ayv $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = ayn.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
+               }
+            }
+         } else {
+            return $$4;
+         }
+      };
    }
 
-   @Override
-   public ayo d() {
-      return this.d.d();
-   }
+   protected static enum a {
+      a(dfy.ra.o(), dfy.tg.o(), dfy.c.o(), 0, 50),
+      b(dfy.Q.o(), dfy.tf.o(), dfy.qz.o(), -60, -8);
 
-   @Override
-   public dyt e() {
-      return this.d.e();
-   }
+      final dta e;
+      final dta f;
+      final dta g;
+      protected final int c;
+      protected final int d;
 
-   @Override
-   public int c(int $$0) {
-      this.e++;
-      return this.d instanceof dyh $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
-   }
-
-   @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
-
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static ayo a(int $$0, int $$1, long $$2, long $$3) {
-      return ayo.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(dyh::new),
-      b(dzh::new);
-
-      private final LongFunction<ayo> c;
-
-      private a(final LongFunction<ayo> $$0) {
-         this.c = $$0;
-      }
-
-      public ayo a(long $$0) {
-         return this.c.apply($$0);
+      private a(final dta $$0, final dta $$1, final dta $$2, final int $$3, final int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
       }
    }
 }

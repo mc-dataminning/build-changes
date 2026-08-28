@@ -1,29 +1,36 @@
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
+import java.util.Iterator;
 
-public interface gub extends gua {
-   int a = 8192;
+public class gub<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
 
-   boolean a(FloatConsumer var1) throws IOException;
-
-   @Override
-   default ByteBuffer a(int $$0) throws IOException {
-      gtz $$1 = new gtz($$0 + 8192);
-
-      while (this.a($$1) && $$1.b() < $$0) {
-      }
-
-      return $$1.a();
+   public gub(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   @Override
-   default ByteBuffer b() throws IOException {
-      gtz $$0 = new gtz(16384);
+   protected T computeNext() {
+      boolean $$0 = !this.a.hasNext();
+      boolean $$1 = !this.b.hasNext();
+      if ($$0 && $$1) {
+         return (T)this.endOfData();
+      } else if ($$0) {
+         return (T)this.b.next();
+      } else if ($$1) {
+         return (T)this.a.next();
+      } else {
+         int $$2 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$2 == 0) {
+            this.b.next();
+         }
 
-      while (this.a($$0)) {
+         return (T)($$2 <= 0 ? this.a.next() : this.b.next());
       }
-
-      return $$0.a();
    }
 }

@@ -1,27 +1,35 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public class fdg extends gvu {
-   protected BooleanConsumer a;
-   private final wu b;
-   private final wu c;
+public class fdg {
+   public final fep a = new fep(ad.h(), TimeUnit.MILLISECONDS, ad.c);
+   private final List<fep.e<?>> i;
+   public final fep.e<List<fci>> b;
+   public final fep.e<fdg.a> c;
+   public final fep.e<Integer> d;
+   public final fep.e<Boolean> e;
+   public final fep.e<fch> f;
+   public final fep.e<fcm> g;
+   public final fdh h = new fdh(new fev());
 
-   public fdg(BooleanConsumer $$0, wu $$1, wu $$2) {
-      super(ffo.a);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public fdg(fbs $$0) {
+      this.c = this.a.a("server list", () -> {
+         fcl $$1 = $$0.b();
+         return fbn.b() ? new fdg.a($$1.a, $$0.c()) : new fdg.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), feq.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), feq.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), feq.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), feq.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), feq.a);
+      this.g = this.a.a("online players", $$0::e, Duration.ofSeconds(10L), feq.a);
+      this.i = List.of(this.b, this.c, this.d, this.e, this.f, this.g);
    }
 
-   @Override
-   public void aP_() {
-      this.c(fhu.a(wt.f, $$0 -> this.a.accept(true)).a(this.m / 2 - 105, g(9), 100, 20).a());
-      this.c(fhu.a(wt.g, $$0 -> this.a.accept(false)).a(this.m / 2 + 5, g(9), 100, 20).a());
+   public List<fep.e<?>> a() {
+      return this.i;
    }
 
-   @Override
-   public void a(fhh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.b, this.m / 2, g(3), -1);
-      $$0.a(this.o, this.c, this.m / 2, g(5), -1);
+   public static record a(List<fcj> a, List<fcj> b) {
    }
 }

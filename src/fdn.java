@@ -1,167 +1,125 @@
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public class fdn extends gvu {
-   private static final akk a = new akk("icon/unseen_notification");
-   private static final akk b = new akk("icon/news");
-   private static final akk c = new akk("icon/invite");
-   private static final akk A = new akk("icon/trial_available");
-   private final CompletableFuture<Boolean> B = fay.a().thenApply($$0 -> $$0.a() == fay.b.a);
-   @Nullable
-   private fed.c C;
-   @Nullable
-   private fdn.a D;
-   private volatile int E;
-   private static boolean F;
-   private static boolean G;
-   private static boolean H;
-   private final fdn.a I = new fdn.a() {
-      @Override
-      public fed.c a(fcu $$0) {
-         fed.c $$1 = $$0.a.a();
-         fdn.this.a($$0, $$1);
-         fdn.this.b($$0, $$1);
-         return $$1;
-      }
+public class fdn extends gwj {
+   private static final wy a = wy.c("mco.backup.info.title");
+   private static final wy b = wy.c("mco.backup.unknown");
+   private final fnx c;
+   final fby A;
+   final flt B = new flt(this);
+   private fdn.a C;
 
-      @Override
-      public boolean a() {
-         return true;
-      }
-   };
-   private final fdn.a J = new fdn.a() {
-      @Override
-      public fed.c a(fcu $$0) {
-         fed.c $$1 = $$0.a.a();
-         fdn.this.b($$0, $$1);
-         return $$1;
-      }
-
-      @Override
-      public boolean a() {
-         return false;
-      }
-   };
-
-   public fdn() {
-      super(ffo.a);
+   public fdn(fnx $$0, fby $$1) {
+      super(a);
+      this.c = $$0;
+      this.A = $$1;
    }
 
    @Override
    public void aP_() {
-      if (this.C != null) {
-         this.C.a();
-      }
+      this.B.a(a, this.o);
+      this.C = this.B.c(new fdn.a(this.l));
+      this.B.b(fig.a(wx.k, $$0 -> this.d()).a());
+      this.c();
+      this.B.a($$1 -> {
+         fie var10000 = this.c($$1);
+      });
    }
 
    @Override
-   public void aH_() {
-      super.aH_();
-      this.l.aY().b.a();
+   protected void c() {
+      this.C.b(this.m, this.B.d());
+      this.B.a();
    }
 
-   @Nullable
-   private fdn.a D() {
-      boolean $$0 = this.F() && this.B.getNow(false);
-      if (!$$0) {
-         return null;
+   @Override
+   public void d() {
+      this.l.a(this.c);
+   }
+
+   wy a(String $$0, String $$1) {
+      String $$2 = $$0.toLowerCase(Locale.ROOT);
+      if ($$2.contains("game") && $$2.contains("mode")) {
+         return this.b($$1);
       } else {
-         return this.E() ? this.I : this.J;
+         return (wy)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : wy.b($$1));
       }
    }
 
-   @Override
-   public void e() {
-      fdn.a $$0 = this.D();
-      if (!Objects.equals(this.D, $$0)) {
-         this.D = $$0;
-         if (this.D != null) {
-            this.C = this.D.a(this.l.aY());
-         } else {
-            this.C = null;
-         }
-      }
-
-      if (this.C != null) {
-         this.C.b();
+   private wy a(String $$0) {
+      try {
+         return fej.a.get(Integer.parseInt($$0)).b();
+      } catch (Exception var3) {
+         return b;
       }
    }
 
-   private boolean E() {
-      return this.l.m.T().c();
-   }
-
-   private boolean F() {
-      return this.l.y instanceof fnn;
-   }
-
-   @Override
-   public void a(fhh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.B.getNow(false)) {
-         this.c($$0);
+   private wy b(String $$0) {
+      try {
+         return fej.b.get(Integer.parseInt($$0)).e();
+      } catch (Exception var3) {
+         return b;
       }
    }
 
-   @Override
-   public void b(fhh $$0, int $$1, int $$2, float $$3) {
-   }
-
-   private void c(fhh $$0) {
-      int $$1 = this.E;
-      int $$2 = 24;
-      int $$3 = this.n / 4 + 48;
-      int $$4 = this.m / 2 + 100;
-      int $$5 = $$3 + 48 + 2;
-      int $$6 = $$4 - 3;
-      if (H) {
-         $$0.a(a, $$6 - 12, $$5 + 3, 10, 10);
-         $$6 -= 16;
-      }
-
-      if (this.D != null && this.D.a()) {
-         if (G) {
-            $$0.a(b, $$6 - 14, $$5 + 1, 14, 14);
-            $$6 -= 16;
-         }
-
-         if ($$1 != 0) {
-            $$0.a(c, $$6 - 14, $$5 + 1, 14, 14);
-            $$6 -= 16;
-         }
-
-         if (F) {
-            $$0.a(A, $$6 - 10, $$5 + 4, 8, 8);
+   class a extends fjc<fdn.b> {
+      public a(final fgi $$0) {
+         super($$0, fdn.this.m, fdn.this.B.d(), fdn.this.B.c(), 36);
+         if (fdn.this.A.e != null) {
+            fdn.this.A.e.forEach(($$0x, $$1) -> this.b(fdn.this.new b($$0x, $$1)));
          }
       }
    }
 
-   void a(fcu $$0, fed.c $$1) {
-      $$1.a($$0.d, $$0x -> this.E = $$0x);
-      $$1.a($$0.e, $$0x -> F = $$0x);
-      $$1.a($$0.f, $$1x -> {
-         $$0.g.a($$1x);
-         G = $$0.g.a();
-      });
-   }
+   class b extends fjc.a<fdn.b> {
+      private static final wy b = wy.c("mco.backup.entry.templateName");
+      private static final wy c = wy.c("mco.backup.entry.gameDifficulty");
+      private static final wy d = wy.c("mco.backup.entry.name");
+      private static final wy e = wy.c("mco.backup.entry.gameServerVersion");
+      private static final wy f = wy.c("mco.backup.entry.uploaded");
+      private static final wy g = wy.c("mco.backup.entry.enabledPack");
+      private static final wy h = wy.c("mco.backup.entry.description");
+      private static final wy i = wy.c("mco.backup.entry.gameMode");
+      private static final wy j = wy.c("mco.backup.entry.seed");
+      private static final wy k = wy.c("mco.backup.entry.worldType");
+      private static final wy l = wy.c("mco.backup.entry.undefined");
+      private final String m;
+      private final String n;
 
-   void b(fcu $$0, fed.c $$1) {
-      $$1.a($$0.b, $$0x -> {
-         H = false;
+      public b(final String $$0, final String $$1) {
+         this.m = $$0;
+         this.n = $$1;
+      }
 
-         for (fbu $$1x : $$0x) {
-            if (!$$1x.a()) {
-               H = true;
-               break;
-            }
-         }
-      });
-   }
+      @Override
+      public void a(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(fdn.this.o, this.a(this.m), $$3, $$2, -6250336);
+         $$0.b(fdn.this.o, fdn.this.a(this.m, this.n), $$3, $$2 + 12, -1);
+      }
 
-   interface a {
-      fed.c a(fcu var1);
+      private wy a(String $$0) {
+         return switch ($$0) {
+            case "template_name" -> b;
+            case "game_difficulty" -> c;
+            case "name" -> d;
+            case "game_server_version" -> e;
+            case "uploaded" -> f;
+            case "enabled_packs" -> g;
+            case "description" -> h;
+            case "game_mode" -> i;
+            case "seed" -> j;
+            case "world_type" -> k;
+            default -> l;
+         };
+      }
 
-      boolean a();
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return true;
+      }
+
+      @Override
+      public wy a() {
+         return wy.a("narrator.select", this.m + " " + this.n);
+      }
    }
 }

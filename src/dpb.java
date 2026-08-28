@@ -1,77 +1,43 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dpb extends dmk {
-   public static final MapCodec<dpb> b = b(dpb::new);
-   @Nullable
-   private static dsq h;
-   @Nullable
-   private static dsq i;
+public class dpb extends doj implements dmy {
+   public static final MapCodec<dpb> a = b(dpb::new);
+   public static final dtr c = dtq.C;
 
    @Override
-   public MapCodec<dpb> a() {
-      return b;
+   protected MapCodec<? extends dpb> a() {
+      return a;
    }
 
-   protected dpb(dsk.d $$0) {
-      super(dmk.b.d, $$0);
+   protected dpb(dsz.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dta a(cyb $$0) {
+      eoy $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).a(c, Boolean.valueOf($$1.b(eoz.c)));
    }
 
    @Override
-   public void a(dcg $$0, ja $$1, dsl $$2, @Nullable btc $$3, cud $$4) {
-      a($$0, $$1);
-   }
-
-   public static void a(dcg $$0, ja $$1) {
-      if ($$0.c_($$1) instanceof drd $$2) {
-         a($$0, $$1, $$2);
-      }
-   }
-
-   public static void a(dcg $$0, ja $$1, drd $$2) {
-      if (!$$0.B) {
-         dsl $$3 = $$2.n();
-         boolean $$4 = $$3.a(dfk.gG) || $$3.a(dfk.gH);
-         if ($$4 && $$1.v() >= $$0.I_() && $$0.al() != bqe.a) {
-            dsq.b $$5 = y().a($$0, $$1);
-            if ($$5 != null) {
-               cii $$6 = bsn.bp.a($$0);
-               if ($$6 != null) {
-                  dgc.a($$0, $$5);
-                  ja $$7 = $$5.a(1, 2, 0).d();
-                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == jf.a.a ? 0.0F : 90.0F, 0.0F);
-                  $$6.aZ = $$5.b().o() == jf.a.a ? 0.0F : 90.0F;
-                  $$6.s();
-
-                  for (aqn $$8 : $$0.a(aqn.class, $$6.cM().g(50.0))) {
-                     am.o.a($$8, $$6);
-                  }
-
-                  $$0.b($$6);
-                  dgc.b($$0, $$5);
-               }
-            }
-         }
-      }
-   }
-
-   public static boolean b(dcg $$0, ja $$1, cud $$2) {
-      return $$2.a(cug.um) && $$1.v() >= $$0.I_() + 2 && $$0.al() != bqe.a && !$$0.B ? z().a($$0, $$1) != null : false;
-   }
-
-   private static dsq y() {
-      if (h == null) {
-         h = dsr.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(avw.aF)).a('^', dsp.a(dsu.a(dfk.gG).or(dsu.a(dfk.gH)))).a('~', $$0 -> $$0.a().i()).b();
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eoz.c, eoz.c.a($$3));
       }
 
-      return h;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private static dsq z() {
-      if (i == null) {
-         i = dsr.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(avw.aF)).a('~', $$0 -> $$0.a().i()).b();
-      }
+   @Override
+   protected eoy b_(dta $$0) {
+      return $$0.c(c) ? eoz.c.a(true) : super.b_($$0);
+   }
 
-      return i;
+   @Override
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(c);
    }
 }

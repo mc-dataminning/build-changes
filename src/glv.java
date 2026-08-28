@@ -1,20 +1,16 @@
-public class glv<T extends ckc> extends gku<T, fwr<T>> {
-   private static final akk a = new akk("textures/entity/spider/spider.png");
+public class glv extends glj<cfu, fwk<cfu>> {
+   private static final akq a = akq.b("textures/entity/bear/polarbear.png");
 
-   public glv(gjo.a $$0) {
-      this($$0, fxp.bx);
+   public glv(gkd.a $$0) {
+      super($$0, new fwk<>($$0.a(fyd.bb)), 0.9F);
    }
 
-   public glv(gjo.a $$0, fxo $$1) {
-      super($$0, new fwr<>($$0.a($$1)), 0.8F);
-      this.a(new goh<>(this));
-   }
-
-   protected float b(T $$0) {
-      return 180.0F;
-   }
-
-   public akk a(T $$0) {
+   public akq a(cfu $$0) {
       return a;
+   }
+
+   protected void a(cfu $$0, fbc $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

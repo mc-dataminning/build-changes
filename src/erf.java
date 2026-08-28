@@ -1,45 +1,94 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public abstract class erf extends erm {
-   protected final List<erm> d;
-   private final ere a;
+public interface erf {
+   int d = 19133;
+   int e = 19132;
 
-   protected erf(List<erm> $$0, List<euh> $$1) {
-      super($$1);
-      this.d = $$0;
-      this.a = this.a($$0);
+   ddp D();
+
+   void a(ddp var1);
+
+   boolean F();
+
+   Set<String> G();
+
+   Set<String> H();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.G()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.x();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
+      });
    }
 
-   @Override
-   public void a(erc $$0) {
-      super.a($$0);
-      if (this.d.isEmpty()) {
-         $$0.b("Empty children list");
+   default String f(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
       }
-
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
-      }
    }
 
-   protected abstract ere a(List<? extends ere> var1);
+   @Nullable
+   ua E();
 
-   @Override
-   public final boolean expand(eqw $$0, Consumer<erl> $$1) {
-      return !this.a($$0) ? false : this.a.expand($$0, $$1);
-   }
+   void a(@Nullable ua var1);
 
-   public static <T extends erf> MapCodec<T> a(erf.a<T> $$0) {
-      return RecordCodecBuilder.mapCodec(
-         $$1 -> $$1.group(erk.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
-      );
-   }
+   ere I();
 
-   @FunctionalInterface
-   public interface a<T extends erf> {
-      T create(List<erm> var1, List<euh> var2);
+   dcy J();
+
+   ua a(ka var1, @Nullable ua var2);
+
+   boolean l();
+
+   int x();
+
+   String e();
+
+   dcr k();
+
+   void a(dcr var1);
+
+   boolean m();
+
+   bqn q();
+
+   void a(bqn var1);
+
+   boolean r();
+
+   void d(boolean var1);
+
+   dcq o();
+
+   @Nullable
+   ua w();
+
+   dwy.a C();
+
+   void a(dwy.a var1);
+
+   dzt y();
+
+   boolean z();
+
+   boolean A();
+
+   Lifecycle B();
+
+   default cpj K() {
+      return this.D().b();
    }
 }

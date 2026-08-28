@@ -1,19 +1,18 @@
-public class gmz extends goa<ckn, ftz<ckn>> {
-   private static final akk a = new akk("textures/entity/breeze/breeze_wind.png");
-   private static final ftz<ckn> b = new ftz<>(ftz.a(128, 128).a());
+public class gmz extends gkw<ckq> {
+   private static final akq a = akq.b("textures/entity/illager/vindicator.png");
 
-   public gmz(glk<ckn, ftz<ckn>> $$0) {
-      super($$0);
+   public gmz(gkd.a $$0) {
+      super($$0, new fvs<>($$0.a(fyd.bR)), 0.5F);
+      this.a(new goi<ckq, fvs<ckq>>(this, $$0.d()) {
+         public void a(fbc $$0, get $$1, int $$2, ckq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.gd()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public void a(fao $$0, gef $$1, int $$2, ckn $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      float $$10 = (float)$$3.ai + $$6;
-      fas $$11 = $$1.getBuffer(gen.a(a, this.a($$10) % 1.0F, 0.0F));
-      b.a($$3, $$4, $$5, $$7, $$8, $$9);
-      giu.a(b, b.e()).a($$0, $$11, $$2, gph.d, 1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public akq a(ckq $$0) {
+      return a;
    }
 }

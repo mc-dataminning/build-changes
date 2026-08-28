@@ -1,30 +1,67 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class gaf {
-   public static final gaf a = new gaf(gae.b, gag.createDnsSrvRedirectHandler(), gab.a());
-   private final gae b;
-   private final gag c;
-   private final gab d;
-
-   @VisibleForTesting
-   gaf(gae $$0, gag $$1, gab $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public record gaf(String a, @Nullable gaf.a b) {
+   public static gaf a() {
+      return a(null);
    }
 
-   public Optional<gac> a(gad $$0) {
-      Optional<gac> $$1 = this.b.resolve($$0);
-      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
-         Optional<gad> $$2 = this.c.lookupRedirect($$0);
-         if ($$2.isPresent()) {
-            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
-         }
+   public static gaf a(String $$0) {
+      return a(new gaf.a.b($$0));
+   }
 
-         return $$1;
-      } else {
-         return Optional.empty();
+   public static gaf a(fcj $$0) {
+      return a(new gaf.a.a($$0));
+   }
+
+   public static gaf a(@Nullable gaf.a $$0) {
+      return new gaf(g(), $$0);
+   }
+
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof gaf.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof gaf.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("24w21a");
+      if (fgi.e().a()) {
+         $$0.append(" (modded)");
+      }
+
+      return $$0.toString();
+   }
+
+   public String e() {
+      return this.a;
+   }
+
+   @Nullable
+   public gaf.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements gaf.a {
+         public a(fcj $$0) {
+            this($$0.a, $$0.n);
+         }
+      }
+
+      public static record b(String a) implements gaf.a {
       }
    }
 }

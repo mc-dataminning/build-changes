@@ -1,92 +1,138 @@
-import java.io.DataInput;
-import java.io.IOException;
+import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Pattern;
 
-public interface uw<T extends uu> {
-   T c(DataInput var1, ug var2) throws IOException;
+public class uw implements vb {
+   private static final Pattern a = Pattern.compile("[A-Za-z0-9._+-]+");
+   private final StringBuilder b = new StringBuilder();
 
-   ur.b a(DataInput var1, ur var2, ug var3) throws IOException;
-
-   default void b(DataInput $$0, ur $$1, ug $$2) throws IOException {
-      switch ($$1.b(this)) {
-         case a:
-            this.a($$0, $$1, $$2);
-         case c:
-         default:
-            break;
-         case b:
-            this.b($$0, $$2);
-      }
+   public String a(ux $$0) {
+      $$0.a(this);
+      return this.b.toString();
    }
 
-   void a(DataInput var1, int var2, ug var3) throws IOException;
-
-   void b(DataInput var1, ug var2) throws IOException;
-
-   default boolean d() {
-      return false;
+   @Override
+   public void a(uv $$0) {
+      this.b.append(uv.b($$0.s_()));
    }
 
-   String a();
-
-   String b();
-
-   static uw<tz> a(final int $$0) {
-      return new uw<tz>() {
-         private IOException c() {
-            return new IOException("Invalid tag id: " + $$0);
-         }
-
-         public tz a(DataInput $$0x, ug $$1) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public ur.b a(DataInput $$0x, ur $$1, ug $$2) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public void a(DataInput $$0x, int $$1, ug $$2) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public void b(DataInput $$0x, ug $$1) throws IOException {
-            throw this.c();
-         }
-
-         @Override
-         public String a() {
-            return "INVALID[" + $$0 + "]";
-         }
-
-         @Override
-         public String b() {
-            return "UNKNOWN_" + $$0;
-         }
-      };
+   @Override
+   public void a(ty $$0) {
+      this.b.append($$0.l()).append('b');
    }
 
-   public interface a<T extends uu> extends uw<T> {
-      @Override
-      default void b(DataInput $$0, ug $$1) throws IOException {
-         $$0.skipBytes(this.c());
-      }
-
-      @Override
-      default void a(DataInput $$0, int $$1, ug $$2) throws IOException {
-         $$0.skipBytes(this.c() * $$1);
-      }
-
-      int c();
+   @Override
+   public void a(us $$0) {
+      this.b.append($$0.l()).append('s');
    }
 
-   public interface b<T extends uu> extends uw<T> {
-      @Override
-      default void a(DataInput $$0, int $$1, ug $$2) throws IOException {
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            this.b($$0, $$2);
+   @Override
+   public void a(uf $$0) {
+      this.b.append($$0.l());
+   }
+
+   @Override
+   public void a(ui $$0) {
+      this.b.append($$0.l()).append('L');
+   }
+
+   @Override
+   public void a(ud $$0) {
+      this.b.append($$0.k()).append('f');
+   }
+
+   @Override
+   public void a(ub $$0) {
+      this.b.append($$0.j()).append('d');
+   }
+
+   @Override
+   public void a(tx $$0) {
+      this.b.append("[B;");
+      byte[] $$1 = $$0.e();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
          }
+
+         this.b.append($$1[$$2]).append('B');
       }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(ue $$0) {
+      this.b.append("[I;");
+      int[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]);
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(uh $$0) {
+      this.b.append("[L;");
+      long[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append($$1[$$2]).append('L');
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(ug $$0) {
+      this.b.append('[');
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         if ($$1 != 0) {
+            this.b.append(',');
+         }
+
+         this.b.append(new uw().a($$0.k($$1)));
+      }
+
+      this.b.append(']');
+   }
+
+   @Override
+   public void a(ua $$0) {
+      this.b.append('{');
+      List<String> $$1 = Lists.newArrayList($$0.e());
+      Collections.sort($$1);
+
+      for (String $$2 : $$1) {
+         if (this.b.length() != 1) {
+            this.b.append(',');
+         }
+
+         this.b.append(a($$2)).append(':').append(new uw().a($$0.c($$2)));
+      }
+
+      this.b.append('}');
+   }
+
+   protected static String a(String $$0) {
+      return a.matcher($$0).matches() ? $$0 : uv.b($$0);
+   }
+
+   @Override
+   public void a(uc $$0) {
+      this.b.append("END");
    }
 }

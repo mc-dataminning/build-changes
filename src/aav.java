@@ -1,16 +1,23 @@
-public interface aav extends zh {
-   @Override
-   default vq b() {
-      return vq.e;
+import java.util.List;
+
+public record aav(List<jd> c) implements aai {
+   public static final yw<vv, aav> a = aai.a(aav::a, aav::new);
+   public static final aai.b<aav> b = aai.a("debug/raids");
+
+   private aav(vv $$0) {
+      this($$0.a(jd.b));
    }
 
-   void a(aaw var1);
+   private void a(vv $$0) {
+      $$0.a(this.c, jd.b);
+   }
 
-   void a(aax var1);
+   @Override
+   public aai.b<aav> a() {
+      return b;
+   }
 
-   void a(aba var1);
-
-   void a(aaz var1);
-
-   void a(aay var1);
+   public List<jd> b() {
+      return this.c;
+   }
 }

@@ -1,18 +1,28 @@
-public class gjr<T extends ckb> extends gkh<T> {
-   private static final akk a = new akk("textures/entity/illager/evoker.png");
+public class gjr extends glj<cjn, fuy<cjn>> {
+   private static final akq a = akq.b("textures/entity/creeper/creeper.png");
 
-   public gjr(gjo.a $$0) {
-      super($$0, new fve<>($$0.a(fxp.ab)), 0.5F);
-      this.a(new gnt<T, fve<T>>(this, $$0.d()) {
-         public void a(fao $$0, gef $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.gx()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+   public gjr(gkd.a $$0) {
+      super($$0, new fuy<>($$0.a(fyd.I)), 0.5F);
+      this.a(new gns(this, $$0.f()));
    }
 
-   public akk a(T $$0) {
+   protected void a(cjn $$0, fbc $$1, float $$2) {
+      float $$3 = $$0.H($$2);
+      float $$4 = 1.0F + ayn.a($$3 * 100.0F) * $$3 * 0.01F;
+      $$3 = ayn.a($$3, 0.0F, 1.0F);
+      $$3 *= $$3;
+      $$3 *= $$3;
+      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
+      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
+      $$1.b($$5, $$6, $$5);
+   }
+
+   protected float a(cjn $$0, float $$1) {
+      float $$2 = $$0.H($$1);
+      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : ayn.a($$2, 0.5F, 1.0F);
+   }
+
+   public akq a(cjn $$0) {
       return a;
    }
 }

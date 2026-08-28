@@ -1,121 +1,76 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
 
-public class cyr implements cya {
-   final cys a;
-   final cud b;
-   final String c;
-   final cxy d;
-   final boolean e;
+public class cyr extends cyp {
+   private static final cyu a = cyu.a(cur.qO);
+   private static final cyu b = cyu.a(cur.pu);
+   private static final cyu c = cyu.a(cur.uv);
 
-   public cyr(String $$0, cxy $$1, cys $$2, cud $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
+   public cyr(cym $$0) {
+      super($$0);
    }
 
-   public cyr(String $$0, cxy $$1, cys $$2, cud $$3) {
-      this($$0, $$1, $$2, $$3, true);
+   public boolean a(cyn $$0, dcu $$1) {
+      boolean $$2 = false;
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cuo $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if (a.a($$5)) {
+               if ($$2) {
+                  return false;
+               }
+
+               $$2 = true;
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
+                  return false;
+               }
+            } else if (!c.a($$5)) {
+               return false;
+            }
+         }
+      }
+
+      return $$2 && $$3 >= 1;
    }
 
-   @Override
-   public cyo<?> ap_() {
-      return cyo.a;
-   }
+   public cuo a(cyn $$0, jo.a $$1) {
+      List<cxj> $$2 = new ArrayList<>();
+      int $$3 = 0;
 
-   @Override
-   public String c() {
-      return this.c;
-   }
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cuo $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if (b.a($$5)) {
+               $$3++;
+            } else if (c.a($$5)) {
+               cxj $$6 = $$5.a(kq.U);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
+            }
+         }
+      }
 
-   @Override
-   public cxy d() {
-      return this.d;
-   }
-
-   @Override
-   public cud a(jl.a $$0) {
-      return this.b;
-   }
-
-   @Override
-   public js<cyg> a() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean h() {
-      return this.e;
+      cuo $$7 = new cuo(cur.uu, 3);
+      $$7.b(kq.V, new cxk($$3, $$2));
+      return $$7;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
-   }
-
-   public boolean a(cxz $$0, dcg $$1) {
-      return this.a.a($$0);
-   }
-
-   public cud a(cxz $$0, jl.a $$1) {
-      return this.a($$1).s();
-   }
-
-   public int j() {
-      return this.a.a();
-   }
-
-   public int k() {
-      return this.a.b();
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public boolean i() {
-      js<cyg> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
+   public cuo a(jo.a $$0) {
+      return new cuo(cur.uu);
    }
 
-   public static class a implements cyo<cyr> {
-      public static final MapCodec<cyr> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  cxy.e.fieldOf("category").orElse(cxy.d).forGetter($$0x -> $$0x.d),
-                  cys.a.forGetter($$0x -> $$0x.a),
-                  cud.d.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, cyr::new)
-      );
-      public static final ys<wf, cyr> y = ys.a(cyr.a::a, cyr.a::a);
-
-      @Override
-      public MapCodec<cyr> a() {
-         return x;
-      }
-
-      @Override
-      public ys<wf, cyr> b() {
-         return y;
-      }
-
-      private static cyr a(wf $$0) {
-         String $$1 = $$0.p();
-         cxy $$2 = $$0.b(cxy.class);
-         cys $$3 = cys.b.decode($$0);
-         cud $$4 = cud.i.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new cyr($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private static void a(wf $$0, cyr $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         cys.b.encode($$0, $$1.a);
-         cud.i.encode($$0, $$1.b);
-         $$0.a($$1.e);
-      }
+   @Override
+   public czc<?> ap_() {
+      return czc.g;
    }
 }

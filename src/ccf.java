@@ -1,59 +1,37 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class ccf<T> {
-   private final T a;
-   private long b;
+public class ccf<T extends btl> extends ccd<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public ccf(T $$0, long $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public ccf(coh $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<btl> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
    }
 
-   public void a() {
-      if (this.e()) {
-         this.b--;
-      }
+   public int i() {
+      return this.j;
    }
 
-   public static <T> ccf<T> a(T $$0) {
-      return new ccf<>($$0, Long.MAX_VALUE);
-   }
-
-   public static <T> ccf<T> a(T $$0, long $$1) {
-      return new ccf<>($$0, $$1);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public T c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b <= 0L;
+   public void k() {
+      this.j--;
    }
 
    @Override
-   public String toString() {
-      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   public boolean b() {
+      if (this.j > 0 || !this.e.dT().h()) {
+         return false;
+      } else if (!((coh)this.e).gD()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
    }
 
-   @azl
-   public boolean e() {
-      return this.b != Long.MAX_VALUE;
-   }
-
-   public static <T> Codec<ccf<T>> a(Codec<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
-                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
-               )
-               .apply($$1, ($$0xx, $$1x) -> new ccf<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
-      );
+   @Override
+   public void d() {
+      this.j = b(200);
+      super.d();
    }
 }

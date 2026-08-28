@@ -1,6 +1,6 @@
 import com.mojang.serialization.MapCodec;
 
-public class dlg extends dfi {
+public class dlg extends dfw implements dfz {
    public static final MapCodec<dlg> a = b(dlg::new);
 
    @Override
@@ -8,30 +8,57 @@ public class dlg extends dfi {
       return a;
    }
 
-   protected dlg(dsk.d $$0) {
+   protected dlg(dsz.d $$0) {
       super($$0);
    }
 
+   private static boolean b(dta $$0, dcx $$1, jd $$2) {
+      jd $$3 = $$2.c();
+      dta $$4 = $$1.a_($$3);
+      int $$5 = eop.a($$1, $$0, $$2, $$4, $$3, ji.b, $$4.b($$1, $$3));
+      return $$5 < $$1.Q();
+   }
+
    @Override
-   protected bqj a(cud $$0, dsl $$1, dcg $$2, ja $$3, cml $$4, bqg $$5, ewd $$6) {
-      if (!$$0.a(cug.rV)) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      } else if ($$2.B) {
-         return bqj.a($$2.B);
-      } else {
-         jf $$7 = $$6.b();
-         jf $$8 = $$7.o() == jf.a.b ? $$4.cJ().g() : $$7;
-         $$2.a(null, $$3, avh.uW, avi.e, 1.0F, 1.0F);
-         $$2.a($$3, dfk.ee.o().a(dgc.b, $$8), 11);
-         civ $$9 = new civ(
-            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cud(cug.rY, 4)
-         );
-         $$9.o(0.05 * (double)$$8.j() + $$2.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.z.j() * 0.02);
-         $$2.b($$9);
-         $$0.a(1, $$4, btc.d($$5));
-         $$2.a($$4, dxh.M, $$3);
-         $$4.b(avr.c.b(cug.rV));
-         return bqj.a($$2.B);
+   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dfy.dV.o());
       }
+   }
+
+   @Override
+   public boolean b(dcx $$0, jd $$1, dta $$2) {
+      return $$0.a_($$1.c()).i();
+   }
+
+   @Override
+   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
+      dta $$4 = $$0.a_($$2);
+      jd $$5 = $$2.c();
+      dux $$6 = $$0.l().g();
+      jz<ebn<?, ?>> $$7 = $$0.H_().d(lu.aI);
+      if ($$4.a(dfy.ow)) {
+         this.a($$7, rs.h, $$0, $$6, $$1, $$5);
+      } else if ($$4.a(dfy.on)) {
+         this.a($$7, rs.j, $$0, $$6, $$1, $$5);
+         this.a($$7, rs.l, $$0, $$6, $$1, $$5);
+         if ($$1.a(8) == 0) {
+            this.a($$7, rs.n, $$0, $$6, $$1, $$5);
+         }
+      }
+   }
+
+   private void a(jz<ebn<?, ?>> $$0, akp<ebn<?, ?>> $$1, aqt $$2, dux $$3, ayv $$4, jd $$5) {
+      $$0.b($$1).ifPresent($$4x -> ((ebn)$$4x.a()).a($$2, $$3, $$4, $$5));
+   }
+
+   @Override
+   public dfz.a aq_() {
+      return dfz.a.a;
    }
 }

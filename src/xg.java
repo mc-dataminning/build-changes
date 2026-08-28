@@ -1,104 +1,77 @@
-import com.google.common.base.Preconditions;
-import com.mojang.serialization.Codec;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import java.util.BitSet;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public record xg(byte[] c) {
-   public static final Codec<xg> a = axo.p.xmap(xg::new, xg::b);
-   public static final int b = 256;
+public class xg {
+   private final xi[] a;
+   private int b;
+   private int c;
+   @Nullable
+   private xk d;
 
-   public xg(byte[] c) {
-      Preconditions.checkState(c.length == 256, "Invalid message signature size");
-      this.c = c;
+   public xg(int $$0) {
+      this.a = new xi[$$0];
    }
 
-   public static xg a(vr $$0) {
-      byte[] $$1 = new byte[256];
-      $$0.b($$1);
-      return new xg($$1);
-   }
-
-   public static void a(vr $$0, xg $$1) {
-      $$0.c($$1.c);
-   }
-
-   public boolean a(ayt $$0, ays $$1) {
-      return $$0.validate($$1, this.c);
-   }
-
-   public ByteBuffer a() {
-      return ByteBuffer.wrap(this.c);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof xg $$1 && Arrays.equals(this.c, $$1.c)) {
-            return true;
-         }
-
+   public boolean a(xk $$0, boolean $$1) {
+      if (Objects.equals($$0, this.d)) {
          return false;
+      } else {
+         this.d = $$0;
+         this.a($$1 ? new xi($$0, true) : null);
+         return true;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Arrays.hashCode(this.c);
+   private void a(@Nullable xi $$0) {
+      int $$1 = this.b;
+      this.b = ($$1 + 1) % this.a.length;
+      this.c++;
+      this.a[$$1] = $$0;
    }
 
-   @Override
-   public String toString() {
-      return Base64.getEncoder().encodeToString(this.c);
+   public void a(xk $$0) {
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         xi $$2 = this.a[$$1];
+         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
+            this.a[$$1] = null;
+            break;
+         }
+      }
    }
 
-   public xg.a a(xh $$0) {
-      int $$1 = $$0.a(this);
-      return $$1 != -1 ? new xg.a($$1) : new xg.a(this);
+   public int a() {
+      int $$0 = this.c;
+      this.c = 0;
+      return $$0;
    }
 
-   public byte[] b() {
+   public xg.a b() {
+      int $$0 = this.a();
+      BitSet $$1 = new BitSet(this.a.length);
+      ObjectList<xk> $$2 = new ObjectArrayList(this.a.length);
+
+      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
+         int $$4 = (this.b + $$3) % this.a.length;
+         xi $$5 = this.a[$$4];
+         if ($$5 != null) {
+            $$1.set($$3, true);
+            $$2.add($$5.b());
+            this.a[$$4] = $$5.a();
+         }
+      }
+
+      xf $$6 = new xf($$2);
+      xf.b $$7 = new xf.b($$0, $$1);
+      return new xg.a($$6, $$7);
+   }
+
+   public int c() {
       return this.c;
    }
 
-   public static record a(int b, @Nullable xg c) {
-      public static final int a = -1;
-
-      public a(xg $$0) {
-         this(-1, $$0);
-      }
-
-      public a(int $$0) {
-         this($$0, null);
-      }
-
-      public static xg.a a(vr $$0) {
-         int $$1 = $$0.l() - 1;
-         return $$1 == -1 ? new xg.a(xg.a($$0)) : new xg.a($$1);
-      }
-
-      public static void a(vr $$0, xg.a $$1) {
-         $$0.c($$1.a() + 1);
-         if ($$1.b() != null) {
-            xg.a($$0, $$1.b());
-         }
-      }
-
-      public Optional<xg> a(xh $$0) {
-         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      @Nullable
-      public xg b() {
-         return this.c;
-      }
+   public static record a(xf a, xf.b b) {
    }
 }

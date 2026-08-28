@@ -1,76 +1,24 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gpd extends goa<cis, fxu<cis>> {
+   private static final akq a = akq.b("textures/entity/wither/wither_armor.png");
+   private final fxu<cis> b;
 
-public class gpd extends gpb implements gpc {
-   private static final Logger e = LogUtils.getLogger();
-   @Nullable
-   private ezp f;
-
-   public gpd(ezp $$0) {
-      this.f = $$0;
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-            this.d();
-         });
-      } else {
-         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-         this.d();
-      }
-   }
-
-   public gpd(int $$0, int $$1, boolean $$2) {
-      this.f = new ezp($$0, $$1, $$2);
-      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+   public gpd(glz<cis, fxu<cis>> $$0, fya $$1) {
+      super($$0);
+      this.b = new fxu<>($$1.a(fyd.bX));
    }
 
    @Override
-   public void a(atw $$0) {
+   protected float a(float $$0) {
+      return ayn.b($$0 * 0.02F) * 3.0F;
    }
 
    @Override
-   public void d() {
-      if (this.f != null) {
-         this.c();
-         this.f.a(0, 0, 0, false);
-      } else {
-         e.warn("Trying to upload disposed texture {}", this.a());
-      }
-   }
-
-   @Nullable
-   public ezp e() {
-      return this.f;
-   }
-
-   public void a(ezp $$0) {
-      if (this.f != null) {
-         this.f.close();
-      }
-
-      this.f = $$0;
+   protected akq a() {
+      return a;
    }
 
    @Override
-   public void close() {
-      if (this.f != null) {
-         this.f.close();
-         this.b();
-         this.f = null;
-      }
-   }
-
-   @Override
-   public void a(akk $$0, Path $$1) throws IOException {
-      if (this.f != null) {
-         String $$2 = $$0.c() + ".png";
-         Path $$3 = $$1.resolve($$2);
-         this.f.a($$3);
-      }
+   protected fve<cis> b() {
+      return this.b;
    }
 }

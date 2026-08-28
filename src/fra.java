@@ -1,252 +1,124 @@
-public class fra extends fiq<fra.a> {
-   static final akk a = new akk("transferable_list/select_highlighted");
-   static final akk m = new akk("transferable_list/select");
-   static final akk n = new akk("transferable_list/unselect_highlighted");
-   static final akk o = new akk("transferable_list/unselect");
-   static final akk p = new akk("transferable_list/move_up_highlighted");
-   static final akk q = new akk("transferable_list/move_up");
-   static final akk r = new akk("transferable_list/move_down_highlighted");
-   static final akk s = new akk("transferable_list/move_down");
-   static final wu u = wu.c("pack.incompatible");
-   static final wu v = wu.c("pack.incompatible.confirm.title");
-   private final wu w;
-   final fqz x;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public fra(ffw $$0, fqz $$1, int $$2, int $$3, wu $$4) {
-      super($$0, $$2, $$3, 33, 36);
-      this.x = $$1;
-      this.w = $$4;
-      this.e = false;
-      this.a(true, (int)(9.0F * 1.5F));
+public class fra extends fnx {
+   private static final wy a = wy.c("options.title");
+   private static final wy b = wy.c("options.skinCustomisation");
+   private static final wy c = wy.c("options.sounds");
+   private static final wy q = wy.c("options.video");
+   private static final wy r = wy.c("options.controls");
+   private static final wy s = wy.c("options.language");
+   private static final wy u = wy.c("options.chat");
+   private static final wy v = wy.c("options.resourcepack");
+   private static final wy w = wy.c("options.accessibility");
+   private static final wy x = wy.c("options.telemetry");
+   private static final fjr y = fjr.a(wy.c("options.telemetry.disabled"));
+   private static final wy z = wy.c("options.credits_and_attribution");
+   private static final int A = 2;
+   private final flt B = new flt(this, 61, 33);
+   private final fnx C;
+   private final fgm D;
+   @Nullable
+   private fin<bqn> E;
+   @Nullable
+   private fiw F;
+
+   public fra(fnx $$0, fgm $$1) {
+      super(a);
+      this.C = $$0;
+      this.D = $$1;
    }
 
    @Override
-   protected void a(fhh $$0, int $$1, int $$2) {
-      wu $$3 = wu.i().b(this.w).a(n.t, n.r);
-      $$0.a(this.c.h, $$3, $$1 + this.g / 2 - this.c.h.a($$3) / 2, Math.min(this.E() + 3, $$2), -1, false);
+   protected void aP_() {
+      flx $$0 = this.B.a(flx.d().a(8));
+      $$0.a(new fjn(a, this.o), flw::b);
+      flx $$1 = $$0.a(flx.e()).a(8);
+      $$1.a(this.D.ah().a(this.l.m));
+      $$1.a(this.m());
+      fls $$2 = new fls();
+      $$2.c().f(4).e(4).b();
+      fls.b $$3 = $$2.d(2);
+      $$3.a(this.a(b, () -> new frc(this, this.D)));
+      $$3.a(this.a(c, () -> new frd(this, this.D)));
+      $$3.a(this.a(q, () -> new frf(this, this.l, this.D)));
+      $$3.a(this.a(r, () -> new frg(this, this.D)));
+      $$3.a(this.a(s, () -> new fqx(this, this.D, this.l.ag())));
+      $$3.a(this.a(u, () -> new fqv(this, this.D)));
+      $$3.a(this.a(v, () -> new frn(this.l.ac(), this::a, this.l.af(), wy.c("resourcePack.title"))));
+      $$3.a(this.a(w, () -> new fqu(this, this.D)));
+      fig $$4 = $$3.a(this.a(x, () -> new fst(this, this.D)));
+      if (!this.l.E()) {
+         $$4.j = false;
+         $$4.a(y);
+      }
+
+      $$3.a(this.a(z, () -> new fmz(this)));
+      this.B.c($$2);
+      this.B.b(fig.a(wx.d, $$0x -> this.d()).a(200).a());
+      this.B.a($$1x -> {
+         fie var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   public int b() {
-      return this.g;
+   protected void c() {
+      this.B.a();
    }
 
    @Override
-   protected int q() {
-      return this.F() - 6;
+   public void d() {
+      this.l.a(this.C);
    }
 
-   @Override
-   protected void a(fhh $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      if (this.m()) {
-         int $$6 = 2;
-         int $$7 = this.s() - 2;
-         int $$8 = this.F() - 6 - 1;
-         int $$9 = $$1 - 2;
-         int $$10 = $$1 + $$3 + 2;
-         $$0.a($$7, $$9, $$8, $$10, $$4);
-         $$0.a($$7 + 1, $$9 + 1, $$8 - 1, $$10 - 1, $$5);
+   private void a(ato $$0) {
+      this.D.a($$0);
+      this.l.a(this);
+   }
+
+   private flv m() {
+      if (this.l.r != null && this.l.U()) {
+         this.E = a(0, 0, "options.difficulty", this.l);
+         if (!this.l.r.k().l()) {
+            this.F = new fiw(0, 0, $$0x -> this.l.a(new fmv(this::c, wy.c("difficulty.lock.title"), wy.a("difficulty.lock.question", this.l.r.k().q().b()))));
+            this.E.k(this.E.y() - this.F.y());
+            this.F.b(this.l.r.k().r());
+            this.F.j = !this.F.a();
+            this.E.j = !this.F.a();
+            flq $$0 = new flq(150, 0, flq.b.a);
+            $$0.a(this.E);
+            $$0.a(this.F);
+            return $$0;
+         } else {
+            this.E.j = false;
+            return this.E;
+         }
       } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         return fig.a(wy.c("options.online"), $$0x -> this.l.a(new fqz(this, this.D))).a(this.m / 2 + 5, this.n / 6 - 12 + 24, 150, 20).a();
+      }
+   }
+
+   public static fin<bqn> a(int $$0, int $$1, String $$2, fgi $$3) {
+      return fin.a(bqn::b).a(bqn.values()).a($$3.r.al()).a($$0, $$1, 150, 20, wy.c($$2), ($$1x, $$2x) -> $$3.L().b(new agl($$2x)));
+   }
+
+   private void c(boolean $$0) {
+      this.l.a(this);
+      if ($$0 && this.l.r != null && this.F != null && this.E != null) {
+         this.l.L().b(new ahe(true));
+         this.F.b(true);
+         this.F.j = false;
+         this.E.j = false;
       }
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.h() != null) {
-         switch ($$0) {
-            case 32:
-            case 257:
-               this.h().c();
-               return true;
-            default:
-               if (fnl.s()) {
-                  switch ($$0) {
-                     case 264:
-                        this.h().f();
-                        return true;
-                     case 265:
-                        this.h().e();
-                        return true;
-                  }
-               }
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
+   public void j() {
+      this.D.av();
    }
 
-   public static class a extends fiq.a<fra.a> {
-      private static final int b = 157;
-      private static final int c = 157;
-      private static final String d = "...";
-      private final fra e;
-      protected final ffw a;
-      private final fqy.a f;
-      private final axs g;
-      private final fin h;
-      private final axs i;
-      private final fin j;
-
-      public a(ffw $$0, fra $$1, fqy.a $$2) {
-         this.a = $$0;
-         this.f = $$2;
-         this.e = $$1;
-         this.g = a($$0, $$2.d());
-         this.h = b($$0, $$2.g());
-         this.i = a($$0, fra.u);
-         this.j = b($$0, $$2.b().b());
-      }
-
-      private static axs a(ffw $$0, wu $$1) {
-         int $$2 = $$0.h.a($$1);
-         if ($$2 > 157) {
-            wz $$3 = wz.a($$0.h.a($$1, 157 - $$0.h.b("...")), wz.e("..."));
-            return ts.a().a($$3);
-         } else {
-            return $$1.g();
-         }
-      }
-
-      private static fin b(ffw $$0, wu $$1) {
-         return fin.a($$0.h, $$1, 157, 2);
-      }
-
-      @Override
-      public wu a() {
-         return wu.a("narrator.select", this.f.d());
-      }
-
-      @Override
-      public void a(fhh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         atf $$10 = this.f.b();
-         if (!$$10.a()) {
-            int $$11 = $$3 + $$4 - 3 - (this.e.m() ? 7 : 0);
-            $$0.a($$3 - 1, $$2 - 1, $$11, $$2 + $$5 + 1, -8978432);
-         }
-
-         $$0.a(this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         axs $$12 = this.g;
-         fin $$13 = this.h;
-         if (this.d() && (this.a.m.Z().c() || $$8 || this.e.h() == this && this.e.aK_())) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$14 = $$6 - $$3;
-            int $$15 = $$7 - $$2;
-            if (!this.f.b().a()) {
-               $$12 = this.i;
-               $$13 = this.j;
-            }
-
-            if (this.f.o()) {
-               if ($$14 < 32) {
-                  $$0.a(fra.a, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(fra.m, $$3, $$2, 32, 32);
-               }
-            } else {
-               if (this.f.p()) {
-                  if ($$14 < 16) {
-                     $$0.a(fra.n, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(fra.o, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.q()) {
-                  if ($$14 < 32 && $$14 > 16 && $$15 < 16) {
-                     $$0.a(fra.p, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(fra.q, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.r()) {
-                  if ($$14 < 32 && $$14 > 16 && $$15 > 16) {
-                     $$0.a(fra.r, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(fra.s, $$3, $$2, 32, 32);
-                  }
-               }
-            }
-         }
-
-         $$0.b(this.a.h, $$12, $$3 + 32 + 2, $$2 + 1, 16777215);
-         $$13.b($$0, $$3 + 32 + 2, $$2 + 12, 10, -8355712);
-      }
-
-      public String b() {
-         return this.f.c();
-      }
-
-      private boolean d() {
-         return !this.f.h() || !this.f.i();
-      }
-
-      public void c() {
-         if (this.f.o() && this.h()) {
-            this.e.x.a(this.e);
-         } else if (this.f.p()) {
-            this.f.k();
-            this.e.x.a(this.e);
-         }
-      }
-
-      void e() {
-         if (this.f.q()) {
-            this.f.l();
-         }
-      }
-
-      void f() {
-         if (this.f.r()) {
-            this.f.m();
-         }
-      }
-
-      private boolean h() {
-         if (this.f.b().a()) {
-            this.f.j();
-            return true;
-         } else {
-            wu $$0 = this.f.b().c();
-            this.a.a(new fmj($$0x -> {
-               this.a.a(this.e.x);
-               if ($$0x) {
-                  this.f.j();
-               }
-            }, fra.v, $$0));
-            return false;
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         double $$3 = $$0 - (double)this.e.s();
-         double $$4 = $$1 - (double)this.e.g(this.e.aG_().indexOf(this));
-         if (this.d() && $$3 <= 32.0) {
-            this.e.x.m();
-            if (this.f.o()) {
-               this.h();
-               return true;
-            }
-
-            if ($$3 < 16.0 && this.f.p()) {
-               this.f.k();
-               return true;
-            }
-
-            if ($$3 > 16.0 && $$4 < 16.0 && this.f.q()) {
-               this.f.l();
-               return true;
-            }
-
-            if ($$3 > 16.0 && $$4 > 16.0 && this.f.r()) {
-               this.f.m();
-               return true;
-            }
-         }
-
-         return super.a($$0, $$1, $$2);
-      }
+   private fig a(wy $$0, Supplier<fnx> $$1) {
+      return fig.a($$0, $$1x -> this.l.a($$1.get())).a();
    }
 }

@@ -1,84 +1,124 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dng extends deu implements diq {
+public class dng extends dfw {
    public static final MapCodec<dng> a = b(dng::new);
-   public static final dtj<dtv> b = dtb.bj;
+   public static final int b = 8;
+   public static final dua c = dtq.aF;
+   protected static final exp[] d = new exp[]{
+      exm.a(),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+   };
+   public static final int e = 5;
 
    @Override
    public MapCodec<dng> a() {
       return a;
    }
 
-   protected dng(dsk.d $$0) {
+   protected dng(dsz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dtv.b));
+      this.k(this.E.b().a(c, Integer.valueOf(1)));
    }
 
    @Override
-   public dpq a(ja $$0, dsl $$1) {
-      return new drg($$0, $$1);
-   }
-
-   @Override
-   protected bqh a(dsl $$0, dcg $$1, ja $$2, cml $$3, ewd $$4) {
-      dpq $$5 = $$1.c_($$2);
-      if ($$5 instanceof drg) {
-         return ((drg)$$5).a($$3) ? bqh.a($$1.B) : bqh.e;
-      } else {
-         return bqh.e;
-      }
-   }
-
-   @Override
-   public void a(dcg $$0, ja $$1, dsl $$2, @Nullable btc $$3, cud $$4) {
-      if (!$$0.B) {
-         if ($$3 != null) {
-            dpq $$5 = $$0.c_($$1);
-            if ($$5 instanceof drg) {
-               ((drg)$$5).a($$3);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected dlo a_(dsl $$0) {
-      return dlo.c;
-   }
-
-   @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void a(dsl $$0, dcg $$1, ja $$2, dfi $$3, ja $$4, boolean $$5) {
-      if ($$1 instanceof aqm) {
-         if ($$1.c_($$2) instanceof drg $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.D();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((aqm)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
-   }
-
-   private void a(aqm $$0, drg $$1) {
-      switch ($$1.v()) {
+   protected boolean a(dta $$0, epn $$1) {
+      switch ($$1) {
          case a:
-            $$1.b(false);
-            break;
+            return $$0.c(c) < 5;
          case b:
-            $$1.c($$0);
-            break;
+            return false;
          case c:
-            $$1.B();
-         case d:
+            return false;
+         default:
+            return false;
       }
+   }
+
+   @Override
+   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected exp b(dta $$0, dca $$1, jd $$2, exb $$3) {
+      return d[$$0.c(c) - 1];
+   }
+
+   @Override
+   protected exp b_(dta $$0, dca $$1, jd $$2) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected exp c(dta $$0, dca $$1, jd $$2, exb $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected boolean f_(dta $$0) {
+      return true;
+   }
+
+   @Override
+   protected float d(dta $$0, dca $$1, jd $$2) {
+      return $$0.c(c) == 8 ? 0.2F : 1.0F;
+   }
+
+   @Override
+   protected boolean a(dta $$0, dcx $$1, jd $$2) {
+      dta $$3 = $$1.a_($$2.d());
+      if ($$3.a(awd.co)) {
+         return false;
+      } else {
+         return $$3.a(awd.cp) ? true : dfw.a($$3.k($$1, $$2.d()), ji.b) || $$3.a(this) && $$3.c(c) == 8;
+      }
+   }
+
+   @Override
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      return !$$0.a($$3, $$4) ? dfy.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
+      if ($$1.a(ddd.b, $$2) > 11) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   @Override
+   protected boolean a(dta $$0, cyb $$1) {
+      int $$2 = $$0.c(c);
+      if (!$$1.n().a(this.r()) || $$2 >= 8) {
+         return $$2 == 1;
+      } else {
+         return $$1.c() ? $$1.k() == ji.b : true;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dta a(cyb $$0) {
+      dta $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         int $$2 = $$1.c(c);
+         return $$1.a(c, Integer.valueOf(Math.min(8, $$2 + 1)));
+      } else {
+         return super.a($$0);
+      }
+   }
+
+   @Override
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(c);
    }
 }

@@ -1,24 +1,22 @@
-public class gnd extends gnl<cjd, fuk<cjd>> {
-   private static final akk a = new akk("textures/entity/creeper/creeper_armor.png");
-   private final fuk<cjd> b;
+public class gnd extends glj<ckr, fxt<ckr>> {
+   private static final akq a = akq.b("textures/entity/witch.png");
 
-   public gnd(glk<cjd, fuk<cjd>> $$0, fxm $$1) {
-      super($$0);
-      this.b = new fuk<>($$1.a(fxp.I));
+   public gnd(gkd.a $$0) {
+      super($$0, new fxt<>($$0.a(fyd.bV)), 0.5F);
+      this.a(new gpc<>(this, $$0.d()));
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
+   public void a(ckr $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
+      this.f.b(!$$0.eU().e());
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected akk a() {
+   public akq a(ckr $$0) {
       return a;
    }
 
-   @Override
-   protected fuq<cjd> b() {
-      return this.b;
+   protected void a(ckr $$0, fbc $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

@@ -1,289 +1,222 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Arrays;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class fbh<T extends fbh<T>> {
-   protected HttpURLConnection a;
-   private boolean c;
-   protected String b;
-   private static final int d = 60000;
-   private static final int e = 5000;
-   private static final String f = "Is-Prerelease";
-   private static final String g = "Cookie";
+public class fbh {
+   public static final int a = -1;
+   private final List<fbi> b;
+   private final List<String> c;
+   private final int d;
+   private final int e;
+   private final int[] f = new int[32];
+   @Nullable
+   private fbf g;
 
-   public fbh(String $$0, int $$1, int $$2) {
-      try {
-         this.b = $$0;
-         Proxy $$3 = fbf.a();
-         if ($$3 != null) {
-            this.a = (HttpURLConnection)new URL($$0).openConnection($$3);
-         } else {
-            this.a = (HttpURLConnection)new URL($$0).openConnection();
-         }
+   fbh(List<fbi> $$0, List<String> $$1, IntList $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3;
+      this.e = $$0.stream().mapToInt(fbi::a).reduce(0, ($$0x, $$1x) -> $$0x | $$1x);
 
-         this.a.setConnectTimeout($$1);
-         this.a.setReadTimeout($$2);
-      } catch (MalformedURLException var5) {
-         throw new fcq(var5.getMessage(), var5);
-      } catch (IOException var6) {
-         throw new fcq(var6.getMessage(), var6);
+      for (int $$4 = 0; $$4 < this.f.length; $$4++) {
+         fbi $$5 = fbi.a($$4);
+         int $$6 = $$5 != null ? $$0.indexOf($$5) : -1;
+         this.f[$$4] = $$6 != -1 ? $$2.getInt($$6) : -1;
       }
    }
 
-   public void a(String $$0, String $$1) {
-      a(this.a, $$0, $$1);
+   public static fbh.a a() {
+      return new fbh.a();
    }
 
-   public static void a(HttpURLConnection $$0, String $$1, String $$2) {
-      String $$3 = $$0.getRequestProperty("Cookie");
-      if ($$3 == null) {
-         $$0.setRequestProperty("Cookie", $$1 + "=" + $$2);
-      } else {
-         $$0.setRequestProperty("Cookie", $$3 + ";" + $$1 + "=" + $$2);
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder("Vertex format (").append(this.d).append(" bytes):\n");
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         fbi $$2 = this.b.get($$1);
+         $$0.append($$1).append(". ").append(this.c.get($$1)).append(": ").append($$2).append(" @ ").append(this.a($$2)).append('\n');
       }
-   }
 
-   public void a(boolean $$0) {
-      this.a.addRequestProperty("Is-Prerelease", String.valueOf($$0));
-   }
-
-   public int a() {
-      return a(this.a);
-   }
-
-   public static int a(HttpURLConnection $$0) {
-      String $$1 = $$0.getHeaderField("Retry-After");
-
-      try {
-         return Integer.valueOf($$1);
-      } catch (Exception var3) {
-         return 5;
-      }
+      return $$0.toString();
    }
 
    public int b() {
-      try {
-         this.d();
-         return this.a.getResponseCode();
-      } catch (Exception var2) {
-         throw new fcq(var2.getMessage(), var2);
+      return this.d;
+   }
+
+   public List<fbi> c() {
+      return this.b;
+   }
+
+   public List<String> d() {
+      return this.c;
+   }
+
+   public int[] e() {
+      return this.f;
+   }
+
+   public int a(fbi $$0) {
+      return this.f[$$0.c()];
+   }
+
+   public boolean b(fbi $$0) {
+      return (this.e & $$0.a()) != 0;
+   }
+
+   public int f() {
+      return this.e;
+   }
+
+   public String c(fbi $$0) {
+      int $$1 = this.b.indexOf($$0);
+      if ($$1 == -1) {
+         throw new IllegalArgumentException($$0 + " is not contained in format");
+      } else {
+         return this.c.get($$1);
       }
    }
 
-   public String c() {
-      try {
-         this.d();
-         String $$0;
-         if (this.b() >= 400) {
-            $$0 = this.a(this.a.getErrorStream());
-         } else {
-            $$0 = this.a(this.a.getInputStream());
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof fbh $$1 && this.e == $$1.e && this.d == $$1.d && this.c.equals($$1.c) && Arrays.equals(this.f, $$1.f)) {
+            return true;
          }
 
-         this.f();
-         return $$0;
-      } catch (IOException var2) {
-         throw new fcq(var2.getMessage(), var2);
+         return false;
       }
    }
 
-   private String a(@Nullable InputStream $$0) throws IOException {
+   @Override
+   public int hashCode() {
+      return this.e * 31 + Arrays.hashCode(this.f);
+   }
+
+   public void g() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::j);
+      } else {
+         this.j();
+      }
+   }
+
+   private void j() {
+      int $$0 = this.b();
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         GlStateManager._enableVertexAttribArray($$1);
+         fbi $$2 = this.b.get($$1);
+         $$2.a($$1, (long)this.a($$2), $$0);
+      }
+   }
+
+   public void h() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::k);
+      } else {
+         this.k();
+      }
+   }
+
+   private void k() {
+      for (int $$0 = 0; $$0 < this.b.size(); $$0++) {
+         GlStateManager._disableVertexAttribArray($$0);
+      }
+   }
+
+   public fbf i() {
+      fbf $$0 = this.g;
       if ($$0 == null) {
-         return "";
-      } else {
-         InputStreamReader $$1 = new InputStreamReader($$0, StandardCharsets.UTF_8);
-         StringBuilder $$2 = new StringBuilder();
+         this.g = $$0 = new fbf(fbf.a.b);
+      }
 
-         for (int $$3 = $$1.read(); $$3 != -1; $$3 = $$1.read()) {
-            $$2.append((char)$$3);
-         }
+      return $$0;
+   }
 
-         return $$2.toString();
+   public static class a {
+      private final Builder<String, fbi> a = ImmutableMap.builder();
+      private final IntList b = new IntArrayList();
+      private int c;
+
+      a() {
+      }
+
+      public fbh.a a(String $$0, fbi $$1) {
+         this.a.put($$0, $$1);
+         this.b.add(this.c);
+         this.c = this.c + $$1.b();
+         return this;
+      }
+
+      public fbh.a a(int $$0) {
+         this.c += $$0;
+         return this;
+      }
+
+      public fbh a() {
+         ImmutableMap<String, fbi> $$0 = this.a.buildOrThrow();
+         ImmutableList<fbi> $$1 = $$0.values().asList();
+         ImmutableList<String> $$2 = $$0.keySet().asList();
+         return new fbh($$1, $$2, this.b, this.c);
       }
    }
 
-   private void f() {
-      byte[] $$0 = new byte[1024];
+   public static enum b {
+      a(5123, 2),
+      b(5125, 4);
 
-      try {
-         InputStream $$1 = this.a.getInputStream();
+      public final int c;
+      public final int d;
 
-         while ($$1.read($$0) > 0) {
-         }
+      private b(final int $$0, final int $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
 
-         $$1.close();
-         return;
-      } catch (Exception var9) {
-         try {
-            InputStream $$3 = this.a.getErrorStream();
-            if ($$3 != null) {
-               while ($$3.read($$0) > 0) {
-               }
-
-               $$3.close();
-               return;
-            }
-         } catch (IOException var8) {
-            return;
-         }
-      } finally {
-         if (this.a != null) {
-            this.a.disconnect();
-         }
+      public static fbh.b a(int $$0) {
+         return ($$0 & -65536) != 0 ? b : a;
       }
    }
 
-   protected T d() {
-      if (this.c) {
-         return (T)this;
-      } else {
-         T $$0 = this.e();
-         this.c = true;
-         return $$0;
-      }
-   }
+   public static enum c {
+      a(4, 2, 2, false),
+      b(5, 2, 1, true),
+      c(1, 2, 2, false),
+      d(3, 2, 1, true),
+      e(4, 3, 3, false),
+      f(5, 3, 1, true),
+      g(6, 3, 1, true),
+      h(4, 4, 4, false);
 
-   protected abstract T e();
+      public final int i;
+      public final int j;
+      public final int k;
+      public final boolean l;
 
-   public static fbh<?> a(String $$0) {
-      return new fbh.b($$0, 5000, 60000);
-   }
-
-   public static fbh<?> a(String $$0, int $$1, int $$2) {
-      return new fbh.b($$0, $$1, $$2);
-   }
-
-   public static fbh<?> b(String $$0, String $$1) {
-      return new fbh.c($$0, $$1, 5000, 60000);
-   }
-
-   public static fbh<?> a(String $$0, String $$1, int $$2, int $$3) {
-      return new fbh.c($$0, $$1, $$2, $$3);
-   }
-
-   public static fbh<?> b(String $$0) {
-      return new fbh.a($$0, 5000, 60000);
-   }
-
-   public static fbh<?> c(String $$0, String $$1) {
-      return new fbh.d($$0, $$1, 5000, 60000);
-   }
-
-   public static fbh<?> b(String $$0, String $$1, int $$2, int $$3) {
-      return new fbh.d($$0, $$1, $$2, $$3);
-   }
-
-   public String c(String $$0) {
-      return a(this.a, $$0);
-   }
-
-   public static String a(HttpURLConnection $$0, String $$1) {
-      try {
-         return $$0.getHeaderField($$1);
-      } catch (Exception var3) {
-         return "";
-      }
-   }
-
-   public static class a extends fbh<fbh.a> {
-      public a(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
+      private c(final int $$0, final int $$1, final int $$2, final boolean $$3) {
+         this.i = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
       }
 
-      public fbh.a f() {
-         try {
-            this.a.setDoOutput(true);
-            this.a.setRequestMethod("DELETE");
-            this.a.connect();
-            return this;
-         } catch (Exception var2) {
-            throw new fcq(var2.getMessage(), var2);
-         }
-      }
-   }
-
-   public static class b extends fbh<fbh.b> {
-      public b(String $$0, int $$1, int $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public fbh.b f() {
-         try {
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("GET");
-            return this;
-         } catch (Exception var2) {
-            throw new fcq(var2.getMessage(), var2);
-         }
-      }
-   }
-
-   public static class c extends fbh<fbh.c> {
-      private final String c;
-
-      public c(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
-      }
-
-      public fbh.c f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
-
-            this.a.setDoInput(true);
-            this.a.setDoOutput(true);
-            this.a.setUseCaches(false);
-            this.a.setRequestMethod("POST");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new fcq(var3.getMessage(), var3);
-         }
-      }
-   }
-
-   public static class d extends fbh<fbh.d> {
-      private final String c;
-
-      public d(String $$0, String $$1, int $$2, int $$3) {
-         super($$0, $$2, $$3);
-         this.c = $$1;
-      }
-
-      public fbh.d f() {
-         try {
-            if (this.c != null) {
-               this.a.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-            }
-
-            this.a.setDoOutput(true);
-            this.a.setDoInput(true);
-            this.a.setRequestMethod("PUT");
-            OutputStream $$0 = this.a.getOutputStream();
-            OutputStreamWriter $$1 = new OutputStreamWriter($$0, "UTF-8");
-            $$1.write(this.c);
-            $$1.close();
-            $$0.flush();
-            return this;
-         } catch (Exception var3) {
-            throw new fcq(var3.getMessage(), var3);
-         }
+      public int a(int $$0) {
+         return switch (this) {
+            case a, h -> $$0 / 4 * 6;
+            case b, c, d, e, f, g -> $$0;
+            default -> 0;
+         };
       }
    }
 }

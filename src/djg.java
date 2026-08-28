@@ -1,51 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.function.ToIntFunction;
 
-public class djg extends diy {
-   public static final MapCodec<djg> e = b(djg::new);
+public class djg extends dkw implements dfz, dmy {
+   public static final MapCodec<djg> a = b(djg::new);
+   private static final dtr c = dtq.C;
+   private final dkx d = new dkx(this);
 
    @Override
-   public MapCodec<? extends djg> a() {
-      return e;
+   public MapCodec<djg> a() {
+      return a;
    }
 
-   public djg(dsk.d $$0) {
+   public djg(dsz.d $$0) {
       super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
    }
 
-   public static dsl b() {
-      return dfk.G.o();
-   }
-
-   @Override
-   public void a(dcg $$0, cml $$1, ja $$2, dsl $$3, @Nullable dpq $$4, cud $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!czo.a($$5, avz.s)) {
-         if ($$0.D_().i()) {
-            $$0.a($$2, false);
-            return;
-         }
-
-         dsl $$6 = $$0.a_($$2.d());
-         if ($$6.d() || $$6.k()) {
-            $$0.b($$2, b());
-         }
-      }
+   public static ToIntFunction<dta> b(int $$0) {
+      return $$1 -> dkw.n($$1) ? $$0 : 0;
    }
 
    @Override
-   protected void b(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      if ($$1.a(dcp.b, $$2) > 11 - $$0.b($$1, $$2)) {
-         this.d($$0, $$1, $$2);
-      }
+   protected void a(dtb.a<dfw, dta> $$0) {
+      super.a($$0);
+      $$0.a(c);
    }
 
-   protected void d(dsl $$0, dcg $$1, ja $$2) {
-      if ($$1.D_().i()) {
-         $$1.a($$2, false);
-      } else {
-         $$1.b($$2, b());
-         $$1.a($$2, b().b(), $$2);
+   @Override
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eoz.c, eoz.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dta $$0, cyb $$1) {
+      return !$$1.n().a(cur.fW) || super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean b(dcx $$0, jd $$1, dta $$2) {
+      return ji.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
+   }
+
+   @Override
+   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
+      this.d.a($$3, $$0, $$2, $$1);
+   }
+
+   @Override
+   protected eoy b_(dta $$0) {
+      return $$0.c(c) ? eoz.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a_(dta $$0, dca $$1, jd $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   public dkx c() {
+      return this.d;
    }
 }

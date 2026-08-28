@@ -1,25 +1,33 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum ejt implements azc {
-   a("linear"),
-   b("triangular");
+public record ejt(ejt.a b, bpe<deg.c> c) {
+   public static final Codec<ejt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ejt.a.c.fieldOf("bounding_box").forGetter(ejt::a), bpe.c(deg.c.a).fieldOf("spawns").forGetter(ejt::b)).apply($$0, ejt::new)
+   );
 
-   public static final Codec<ejt> c = azc.a(ejt::values);
-   private final String d;
-
-   private ejt(final String $$0) {
-      this.d = $$0;
+   public ejt.a a() {
+      return this.b;
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public bpe<deg.c> b() {
+      return this.c;
    }
 
-   public int a(ayo $$0, int $$1) {
-      return switch (this) {
-         case a -> $$0.a($$1);
-         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
-      };
+   public static enum a implements azj {
+      a("piece"),
+      b("full");
+
+      public static final Codec<ejt.a> c = azj.a(ejt.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

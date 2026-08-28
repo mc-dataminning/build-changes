@@ -1,486 +1,120 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import java.util.function.DoubleFunction;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.IntSupplier;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import java.util.function.ToIntFunction;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
 
-public final class ffz<T> {
-   private static final Logger c = LogUtils.getLogger();
-   public static final ffz.e<Boolean> a = new ffz.e<>(ImmutableList.of(Boolean.TRUE, Boolean.FALSE), Codec.BOOL);
-   public static final ffz.b<Boolean> b = ($$0, $$1) -> $$1 ? wt.b : wt.c;
-   private final ffz.l<T> d;
-   final Function<T, wu> e;
-   private final ffz.n<T> f;
-   private final Codec<T> g;
-   private final T h;
-   private final Consumer<T> i;
-   final wu j;
-   T k;
+public interface ffz {
+   ffz a = new ffz.a(0.0F);
+   ffz b = new ffz.a(1.0F);
 
-   public static ffz<Boolean> a(String $$0, boolean $$1, Consumer<Boolean> $$2) {
-      return a($$0, a(), $$1, $$2);
-   }
+   float a();
 
-   public static ffz<Boolean> a(String $$0, boolean $$1) {
-      return a($$0, a(), $$1, $$0x -> {
-      });
-   }
+   float a(boolean var1);
 
-   public static ffz<Boolean> a(String $$0, ffz.l<Boolean> $$1, boolean $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
-      });
-   }
+   float b();
 
-   public static ffz<Boolean> a(String $$0, ffz.l<Boolean> $$1, boolean $$2, Consumer<Boolean> $$3) {
-      return a($$0, $$1, b, $$2, $$3);
-   }
+   public static class a implements ffz {
+      private final float c;
 
-   public static ffz<Boolean> a(String $$0, ffz.l<Boolean> $$1, ffz.b<Boolean> $$2, boolean $$3, Consumer<Boolean> $$4) {
-      return new ffz<>($$0, $$1, $$2, a, $$3, $$4);
-   }
-
-   public ffz(String $$0, ffz.l<T> $$1, ffz.b<T> $$2, ffz.n<T> $$3, T $$4, Consumer<T> $$5) {
-      this($$0, $$1, $$2, $$3, $$3.f(), $$4, $$5);
-   }
-
-   public ffz(String $$0, ffz.l<T> $$1, ffz.b<T> $$2, ffz.n<T> $$3, Codec<T> $$4, T $$5, Consumer<T> $$6) {
-      this.j = wu.c($$0);
-      this.d = $$1;
-      this.e = $$1x -> $$2.toString(this.j, (T)$$1x);
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.k = this.h;
-   }
-
-   public static <T> ffz.l<T> a() {
-      return $$0 -> null;
-   }
-
-   public static <T> ffz.l<T> a(wu $$0) {
-      return $$1 -> fjf.a($$0);
-   }
-
-   public static <T extends ayj> ffz.b<T> b() {
-      return ($$0, $$1) -> $$1.d();
-   }
-
-   public fhs a(fga $$0) {
-      return this.a($$0, 0, 0, 150);
-   }
-
-   public fhs a(fga $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, $$0x -> {
-      });
-   }
-
-   public fhs a(fga $$0, int $$1, int $$2, int $$3, Consumer<T> $$4) {
-      return this.f.a(this.d, $$0, $$1, $$2, $$3, $$4).apply(this);
-   }
-
-   public T c() {
-      return this.k;
-   }
-
-   public Codec<T> d() {
-      return this.g;
-   }
-
-   @Override
-   public String toString() {
-      return this.j.getString();
-   }
-
-   public void a(T $$0) {
-      T $$1 = this.f.a($$0).orElseGet(() -> {
-         c.error("Illegal option value " + $$0 + " for " + this.j);
-         return this.h;
-      });
-      if (!ffw.Q().r()) {
-         this.k = $$1;
-      } else {
-         if (!Objects.equals(this.k, $$1)) {
-            this.k = $$1;
-            this.i.accept(this.k);
-         }
-      }
-   }
-
-   public ffz.n<T> e() {
-      return this.f;
-   }
-
-   public static record a<T>(List<T> a, List<T> b, BooleanSupplier c, ffz.d.a<T> d, Codec<T> e) implements ffz.d<T> {
-      @Override
-      public fib.c<T> a() {
-         return fib.c.a(this.c, this.a, this.b);
+      a(float $$0) {
+         this.c = $$0;
       }
 
       @Override
-      public Optional<T> a(T $$0) {
-         return (this.c.getAsBoolean() ? this.b : this.a).contains($$0) ? Optional.of($$0) : Optional.empty();
-      }
-
-      public List<T> b() {
-         return this.a;
-      }
-
-      public List<T> c() {
-         return this.b;
-      }
-
-      public BooleanSupplier d() {
+      public float a() {
          return this.c;
       }
 
       @Override
-      public ffz.d.a<T> e() {
-         return this.d;
+      public float a(boolean $$0) {
+         return this.c;
       }
 
       @Override
-      public Codec<T> f() {
-         return this.e;
-      }
-   }
-
-   public interface b<T> {
-      wu toString(wu var1, T var2);
-   }
-
-   public static record c(int a, IntSupplier b, int c) implements ffz.g, ffz.j<Integer> {
-      public Optional<Integer> a(Integer $$0) {
-         return Optional.of(ayg.a($$0, this.d(), this.b()));
-      }
-
-      @Override
-      public int b() {
-         return this.b.getAsInt();
-      }
-
-      @Override
-      public Codec<Integer> f() {
-         return Codec.INT
-            .validate(
-               $$0 -> {
-                  int $$1 = this.c + 1;
-                  return $$0.compareTo(this.a) >= 0 && $$0.compareTo($$1) <= 0
-                     ? DataResult.success($$0)
-                     : DataResult.error(() -> "Value " + $$0 + " outside of range [" + this.a + ":" + $$1 + "]", $$0);
-               }
-            );
-      }
-
-      @Override
-      public boolean c() {
-         return true;
-      }
-
-      @Override
-      public fib.c<Integer> a() {
-         return fib.c.a(IntStream.range(this.a, this.b() + 1).boxed().toList());
-      }
-
-      @Override
-      public int d() {
-         return this.a;
-      }
-
-      public IntSupplier g() {
-         return this.b;
-      }
-
-      public int h() {
+      public float b() {
          return this.c;
       }
    }
 
-   interface d<T> extends ffz.n<T> {
-      fib.c<T> a();
+   public static class b implements ffz {
+      private float c;
+      private float d;
+      private float e;
+      private float f;
+      private long g;
+      private long h;
+      private final float i;
+      private final FloatUnaryOperator j;
+      private boolean k;
+      private boolean l;
 
-      default ffz.d.a<T> e() {
-         return ffz::a;
+      public b(float $$0, long $$1, FloatUnaryOperator $$2) {
+         this.i = 1000.0F / $$0;
+         this.h = this.g = $$1;
+         this.j = $$2;
       }
 
-      @Override
-      default Function<ffz<T>, fhs> a(ffz.l<T> $$0, fga $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return $$6 -> fib.a($$6.e).a(this.a()).a($$0).a($$6.k).a($$2, $$3, $$4, 20, $$6.j, ($$3xx, $$4xx) -> {
-               this.e().set($$6, (T)$$4xx);
-               $$1.av();
-               $$5.accept((T)$$4xx);
-            });
+      public int a(long $$0, boolean $$1) {
+         this.b($$0);
+         return $$1 ? this.a($$0) : 0;
       }
 
-      public interface a<T> {
-         void set(ffz<T> var1, T var2);
-      }
-   }
-
-   public static record e<T>(List<T> a, Codec<T> b) implements ffz.d<T> {
-      @Override
-      public Optional<T> a(T $$0) {
-         return this.a.contains($$0) ? Optional.of($$0) : Optional.empty();
+      private int a(long $$0) {
+         this.c = (float)($$0 - this.g) / this.j.apply(this.i);
+         this.g = $$0;
+         this.d = this.d + this.c;
+         int $$1 = (int)this.d;
+         this.d -= (float)$$1;
+         return $$1;
       }
 
-      @Override
-      public fib.c<T> a() {
-         return fib.c.a(this.a);
+      private void b(long $$0) {
+         this.e = (float)($$0 - this.h) / this.i;
+         this.h = $$0;
       }
 
-      public List<T> b() {
-         return this.a;
-      }
-
-      @Override
-      public Codec<T> f() {
-         return this.b;
-      }
-   }
-
-   public static record f(int a, int b, boolean c) implements ffz.g {
-      public f(int $$0, int $$1) {
-         this($$0, $$1, true);
-      }
-
-      public Optional<Integer> a(Integer $$0) {
-         return $$0.compareTo(this.d()) >= 0 && $$0.compareTo(this.b()) <= 0 ? Optional.of($$0) : Optional.empty();
-      }
-
-      @Override
-      public Codec<Integer> f() {
-         return Codec.intRange(this.a, this.b + 1);
-      }
-
-      @Override
-      public int d() {
-         return this.a;
-      }
-
-      @Override
-      public boolean aN_() {
-         return this.c;
-      }
-   }
-
-   interface g extends ffz.k<Integer> {
-      int d();
-
-      int b();
-
-      default double b(Integer $$0) {
-         if ($$0 == this.d()) {
-            return 0.0;
-         } else {
-            return $$0 == this.b() ? 1.0 : ayg.b((double)$$0.intValue() + 0.5, (double)this.d(), (double)this.b() + 1.0, 0.0, 1.0);
-         }
-      }
-
-      default Integer a(double $$0) {
-         if ($$0 >= 1.0) {
-            $$0 = 0.99999F;
-         }
-
-         return ayg.a(ayg.b($$0, 0.0, 1.0, (double)this.d(), (double)this.b() + 1.0));
-      }
-
-      default <R> ffz.k<R> a(final IntFunction<? extends R> $$0, final ToIntFunction<? super R> $$1) {
-         return new ffz.k<R>() {
-            @Override
-            public Optional<R> a(R $$0x) {
-               return g.this.a(Integer.valueOf($$1.applyAsInt($$0))).map($$0::apply);
-            }
-
-            @Override
-            public double b(R $$0x) {
-               return g.this.b($$1.applyAsInt($$0));
-            }
-
-            @Override
-            public R b(double $$0x) {
-               return (R)$$0.apply(g.this.a($$0));
-            }
-
-            @Override
-            public Codec<R> f() {
-               return g.this.f().xmap($$0::apply, $$1::applyAsInt);
-            }
-         };
-      }
-   }
-
-   public static record h<T>(Supplier<List<T>> a, Function<T, Optional<T>> b, Codec<T> c) implements ffz.d<T> {
-      @Override
-      public Optional<T> a(T $$0) {
-         return this.b.apply($$0);
-      }
-
-      @Override
-      public fib.c<T> a() {
-         return fib.c.a(this.a.get());
-      }
-
-      public Supplier<List<T>> b() {
-         return this.a;
-      }
-
-      public Function<T, Optional<T>> c() {
-         return this.b;
-      }
-
-      @Override
-      public Codec<T> f() {
-         return this.c;
-      }
-   }
-
-   public static final class i<N> extends fhn {
-      private final ffz<N> d;
-      private final ffz.k<N> e;
-      private final ffz.l<N> f;
-      private final Consumer<N> m;
-      @Nullable
-      private Long n;
-      private final boolean o;
-
-      i(fga $$0, int $$1, int $$2, int $$3, int $$4, ffz<N> $$5, ffz.k<N> $$6, ffz.l<N> $$7, Consumer<N> $$8, boolean $$9) {
-         super($$0, $$1, $$2, $$3, $$4, $$6.b($$5.c()));
-         this.d = $$5;
-         this.e = $$6;
-         this.f = $$7;
-         this.m = $$8;
-         this.o = $$9;
-         this.b();
-      }
-
-      @Override
-      protected void b() {
-         this.b(this.d.e.apply(this.e.b(this.c)));
-         this.a(this.f.apply(this.e.b(this.c)));
-      }
-
-      @Override
-      protected void a() {
-         if (this.o) {
+      public void b(boolean $$0) {
+         if ($$0) {
             this.c();
          } else {
-            this.n = ac.c() + 600L;
+            this.d();
          }
       }
 
-      public void c() {
-         N $$0 = this.e.b(this.c);
-         if (!Objects.equals($$0, this.d.c())) {
-            this.d.a($$0);
-            this.a.av();
-            this.m.accept(this.d.c());
+      private void c() {
+         if (!this.k) {
+            this.f = this.d;
+         }
+
+         this.k = true;
+      }
+
+      private void d() {
+         if (this.k) {
+            this.d = this.f;
+         }
+
+         this.k = false;
+      }
+
+      public void c(boolean $$0) {
+         this.l = $$0;
+      }
+
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         if (!$$0 && this.l) {
+            return 1.0F;
+         } else {
+            return this.k ? this.f : this.d;
          }
       }
 
       @Override
-      public void b(fhh $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         if (this.n != null && ac.c() >= this.n) {
-            this.n = null;
-            this.c();
-         }
+      public float b() {
+         return this.e > 7.0F ? 0.5F : this.e;
       }
-   }
-
-   interface j<T> extends ffz.d<T>, ffz.k<T> {
-      boolean c();
-
-      @Override
-      default Function<ffz<T>, fhs> a(ffz.l<T> $$0, fga $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return this.c() ? ffz.d.super.a($$0, $$1, $$2, $$3, $$4, $$5) : ffz.k.super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   interface k<T> extends ffz.n<T> {
-      double b(T var1);
-
-      T b(double var1);
-
-      default boolean aN_() {
-         return true;
-      }
-
-      @Override
-      default Function<ffz<T>, fhs> a(ffz.l<T> $$0, fga $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return $$6 -> new ffz.i<>($$1, $$2, $$3, $$4, 20, $$6, this, $$0, $$5, this.aN_());
-      }
-   }
-
-   @FunctionalInterface
-   public interface l<T> {
-      @Nullable
-      fjf apply(T var1);
-   }
-
-   public static enum m implements ffz.k<Double> {
-      a;
-
-      public Optional<Double> a(Double $$0) {
-         return $$0 >= 0.0 && $$0 <= 1.0 ? Optional.of($$0) : Optional.empty();
-      }
-
-      public double b(Double $$0) {
-         return $$0;
-      }
-
-      public Double a(double $$0) {
-         return $$0;
-      }
-
-      public <R> ffz.k<R> a(final DoubleFunction<? extends R> $$0, final ToDoubleFunction<? super R> $$1) {
-         return new ffz.k<R>() {
-            @Override
-            public Optional<R> a(R $$0x) {
-               return m.this.a(Double.valueOf($$1.applyAsDouble($$0))).map($$0::apply);
-            }
-
-            @Override
-            public double b(R $$0x) {
-               return m.this.b(Double.valueOf($$1.applyAsDouble($$0)));
-            }
-
-            @Override
-            public R b(double $$0x) {
-               return (R)$$0.apply(m.this.a($$0));
-            }
-
-            @Override
-            public Codec<R> f() {
-               return m.this.f().xmap($$0::apply, $$1::applyAsDouble);
-            }
-         };
-      }
-
-      @Override
-      public Codec<Double> f() {
-         return Codec.withAlternative(Codec.doubleRange(0.0, 1.0), Codec.BOOL, $$0 -> $$0 ? 1.0 : 0.0);
-      }
-   }
-
-   interface n<T> {
-      Function<ffz<T>, fhs> a(ffz.l<T> var1, fga var2, int var3, int var4, int var5, Consumer<T> var6);
-
-      Optional<T> a(T var1);
-
-      Codec<T> f();
    }
 }

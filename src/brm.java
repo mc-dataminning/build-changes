@@ -1,15 +1,99 @@
-public class brm extends brn {
-   public brm(bro $$0, int $$1) {
-      super($$0, $$1);
-   }
+public interface brm {
+   akp<brl> a = akp.a(lu.s, akq.b("in_fire"));
+   akp<brl> b = akp.a(lu.s, akq.b("campfire"));
+   akp<brl> c = akp.a(lu.s, akq.b("lightning_bolt"));
+   akp<brl> d = akp.a(lu.s, akq.b("on_fire"));
+   akp<brl> e = akp.a(lu.s, akq.b("lava"));
+   akp<brl> f = akp.a(lu.s, akq.b("hot_floor"));
+   akp<brl> g = akp.a(lu.s, akq.b("in_wall"));
+   akp<brl> h = akp.a(lu.s, akq.b("cramming"));
+   akp<brl> i = akp.a(lu.s, akq.b("drown"));
+   akp<brl> j = akp.a(lu.s, akq.b("starve"));
+   akp<brl> k = akp.a(lu.s, akq.b("cactus"));
+   akp<brl> l = akp.a(lu.s, akq.b("fall"));
+   akp<brl> m = akp.a(lu.s, akq.b("fly_into_wall"));
+   akp<brl> n = akp.a(lu.s, akq.b("out_of_world"));
+   akp<brl> o = akp.a(lu.s, akq.b("generic"));
+   akp<brl> p = akp.a(lu.s, akq.b("magic"));
+   akp<brl> q = akp.a(lu.s, akq.b("wither"));
+   akp<brl> r = akp.a(lu.s, akq.b("dragon_breath"));
+   akp<brl> s = akp.a(lu.s, akq.b("dry_out"));
+   akp<brl> t = akp.a(lu.s, akq.b("sweet_berry_bush"));
+   akp<brl> u = akp.a(lu.s, akq.b("freeze"));
+   akp<brl> v = akp.a(lu.s, akq.b("stalagmite"));
+   akp<brl> w = akp.a(lu.s, akq.b("falling_block"));
+   akp<brl> x = akp.a(lu.s, akq.b("falling_anvil"));
+   akp<brl> y = akp.a(lu.s, akq.b("falling_stalactite"));
+   akp<brl> z = akp.a(lu.s, akq.b("sting"));
+   akp<brl> A = akp.a(lu.s, akq.b("mob_attack"));
+   akp<brl> B = akp.a(lu.s, akq.b("mob_attack_no_aggro"));
+   akp<brl> C = akp.a(lu.s, akq.b("player_attack"));
+   akp<brl> D = akp.a(lu.s, akq.b("arrow"));
+   akp<brl> E = akp.a(lu.s, akq.b("trident"));
+   akp<brl> F = akp.a(lu.s, akq.b("mob_projectile"));
+   akp<brl> G = akp.a(lu.s, akq.b("spit"));
+   akp<brl> H = akp.a(lu.s, akq.b("wind_charge"));
+   akp<brl> I = akp.a(lu.s, akq.b("fireworks"));
+   akp<brl> J = akp.a(lu.s, akq.b("fireball"));
+   akp<brl> K = akp.a(lu.s, akq.b("unattributed_fireball"));
+   akp<brl> L = akp.a(lu.s, akq.b("wither_skull"));
+   akp<brl> M = akp.a(lu.s, akq.b("thrown"));
+   akp<brl> N = akp.a(lu.s, akq.b("indirect_magic"));
+   akp<brl> O = akp.a(lu.s, akq.b("thorns"));
+   akp<brl> P = akp.a(lu.s, akq.b("explosion"));
+   akp<brl> Q = akp.a(lu.s, akq.b("player_explosion"));
+   akp<brl> R = akp.a(lu.s, akq.b("sonic_boom"));
+   akp<brl> S = akp.a(lu.s, akq.b("bad_respawn_point"));
+   akp<brl> T = akp.a(lu.s, akq.b("outside_border"));
+   akp<brl> U = akp.a(lu.s, akq.b("generic_kill"));
 
-   @Override
-   public boolean a() {
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 1;
+   static void a(qp<brl> $$0) {
+      $$0.a(a, new brl("inFire", 0.1F, brh.d));
+      $$0.a(b, new brl("inFire", 0.1F, brh.d));
+      $$0.a(c, new brl("lightningBolt", 0.1F));
+      $$0.a(d, new brl("onFire", 0.0F, brh.d));
+      $$0.a(e, new brl("lava", 0.1F, brh.d));
+      $$0.a(f, new brl("hotFloor", 0.1F, brh.d));
+      $$0.a(g, new brl("inWall", 0.0F));
+      $$0.a(h, new brl("cramming", 0.0F));
+      $$0.a(i, new brl("drown", 0.0F, brh.c));
+      $$0.a(j, new brl("starve", 0.0F));
+      $$0.a(k, new brl("cactus", 0.1F));
+      $$0.a(l, new brl("fall", bri.b, 0.0F, brh.a, brn.b));
+      $$0.a(m, new brl("flyIntoWall", 0.0F));
+      $$0.a(n, new brl("outOfWorld", 0.0F));
+      $$0.a(o, new brl("generic", 0.0F));
+      $$0.a(p, new brl("magic", 0.0F));
+      $$0.a(q, new brl("wither", 0.0F));
+      $$0.a(r, new brl("dragonBreath", 0.0F));
+      $$0.a(s, new brl("dryout", 0.1F));
+      $$0.a(t, new brl("sweetBerryBush", 0.1F, brh.e));
+      $$0.a(u, new brl("freeze", 0.0F, brh.f));
+      $$0.a(v, new brl("stalagmite", 0.0F));
+      $$0.a(w, new brl("fallingBlock", 0.1F));
+      $$0.a(x, new brl("anvil", 0.1F));
+      $$0.a(y, new brl("fallingStalactite", 0.1F));
+      $$0.a(z, new brl("sting", 0.1F));
+      $$0.a(A, new brl("mob", 0.1F));
+      $$0.a(B, new brl("mob", 0.1F));
+      $$0.a(C, new brl("player", 0.1F));
+      $$0.a(D, new brl("arrow", 0.1F));
+      $$0.a(E, new brl("trident", 0.1F));
+      $$0.a(F, new brl("mob", 0.1F));
+      $$0.a(G, new brl("mob", 0.1F));
+      $$0.a(I, new brl("fireworks", 0.1F));
+      $$0.a(K, new brl("onFire", 0.1F, brh.d));
+      $$0.a(J, new brl("fireball", 0.1F, brh.d));
+      $$0.a(L, new brl("witherSkull", 0.1F));
+      $$0.a(M, new brl("thrown", 0.1F));
+      $$0.a(N, new brl("indirectMagic", 0.0F));
+      $$0.a(O, new brl("thorns", 0.1F, brh.b));
+      $$0.a(P, new brl("explosion", bri.c, 0.1F));
+      $$0.a(Q, new brl("explosion.player", bri.c, 0.1F));
+      $$0.a(R, new brl("sonic_boom", bri.c, 0.0F));
+      $$0.a(S, new brl("badRespawnPoint", bri.c, 0.1F, brh.a, brn.c));
+      $$0.a(T, new brl("outsideBorder", 0.0F));
+      $$0.a(U, new brl("genericKill", 0.0F));
+      $$0.a(H, new brl("mob", 0.1F));
    }
 }

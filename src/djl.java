@@ -1,96 +1,106 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djl extends deu {
-   public static final MapCodec<djl> a = b(djl::new);
-   public static final dtc b = dtb.n;
+public abstract class djl extends djj implements dfz {
+   public static final dua e = dtq.ax;
+   public static final int f = 25;
+   private final double c;
 
-   @Override
-   public MapCodec<djl> a() {
-      return a;
-   }
-
-   protected djl(dsk.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+   protected djl(dsz.d $$0, ji $$1, exp $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.k(this.E.b().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   public void a(dcg $$0, ja $$1, dsl $$2, @Nullable btc $$3, cud $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      cwr $$5 = $$4.a(kn.O, cwr.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
+   protected abstract MapCodec<? extends djl> a();
+
+   @Override
+   public dta a(dcv $$0) {
+      return this.o().a(e, Integer.valueOf($$0.E_().a(25)));
+   }
+
+   @Override
+   protected boolean d_(dta $$0) {
+      return $$0.c(e) < 25;
+   }
+
+   @Override
+   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         jd $$4 = $$2.a(this.a);
+         if (this.g($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.z));
+         }
       }
    }
 
-   @Override
-   protected bqh a(dsl $$0, dcg $$1, ja $$2, cml $$3, ewd $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dqs $$5) {
-         $$5.l();
-         return bqh.a($$1.B);
-      } else {
-         return bqh.e;
-      }
+   protected dta a(dta $$0, ayv $$1) {
+      return $$0.a(e);
+   }
+
+   public dta n(dta $$0) {
+      return $$0.a(e, Integer.valueOf(25));
+   }
+
+   public boolean o(dta $$0) {
+      return $$0.c(e) == 25;
+   }
+
+   protected dta a(dta $$0, dta $$1) {
+      return $$1;
    }
 
    @Override
-   protected void a(dsl $$0, dcg $$1, ja $$2, dsl $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dqs $$5) {
-            $$5.l();
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
+         if (this.b) {
+            $$3.a($$4, eoz.c, eoz.c.a($$3));
          }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return this.a($$0, this.b().o());
       }
    }
 
    @Override
-   public dpq a(ja $$0, dsl $$1) {
-      return new dqs($$0, $$1);
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(e);
    }
 
    @Override
-   public boolean e_(dsl $$0) {
+   public boolean b(dcx $$0, jd $$1, dta $$2) {
+      return this.g($$0.a_($$1.a(this.a)));
+   }
+
+   @Override
+   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
       return true;
    }
 
    @Override
-   public int a(dsl $$0, dbm $$1, ja $$2, jf $$3) {
-      if ($$1.c_($$2) instanceof dqs $$4 && $$4.j()) {
-         return 15;
+   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
+      jd $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.g($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.a(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
       }
-
-      return 0;
    }
 
-   @Override
-   protected boolean c_(dsl $$0) {
-      return true;
-   }
+   protected abstract int a(ayv var1);
+
+   protected abstract boolean g(dta var1);
 
    @Override
-   protected int a(dsl $$0, dcg $$1, ja $$2) {
-      if ($$1.c_($$2) instanceof dqs $$3 && $$3.f().g() instanceof cuy $$4) {
-         return $$4.h();
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected dlo a_(dsl $$0) {
-      return dlo.c;
-   }
-
-   @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dpq> dpr<T> a(dcg $$0, dsl $$1, dps<T> $$2) {
-      return $$1.c(b) ? a($$2, dps.e, dqs::a) : null;
+   protected djl c() {
+      return this;
    }
 }

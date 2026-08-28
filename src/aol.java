@@ -1,48 +1,40 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.List;
+import javax.annotation.Nullable;
 
 public class aol {
-   private static final xr a = xr.a.a(new xa(xa.a.a, wu.c("chat.type.team.hover"))).a(new ws(ws.a.d, "/teammsg "));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.teammsg.failed.noteam"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.spectate.self"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wy.b("commands.spectate.not_spectator", $$0));
 
-   public static void a(CommandDispatcher<eq> $$0) {
-      LiteralCommandNode<eq> $$1 = $$0.register((LiteralArgumentBuilder)er.a("teammsg").then(er.a("message", fh.a()).executes($$0x -> {
-         eq $$1x = (eq)$$0x.getSource();
-         bsh $$2 = $$1x.g();
-         exg $$3 = $$2.cl();
-         if ($$3 == null) {
-            throw b.create();
-         } else {
-            List<aqn> $$4 = $$1x.l().ai().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cl() == $$3).toList();
-            if (!$$4.isEmpty()) {
-               fh.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
-            }
-
-            return $$4.size();
-         }
-      })));
-      $$0.register((LiteralArgumentBuilder)er.a("tm").redirect($$1));
+   public static void a(CommandDispatcher<et> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("spectate").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((et)$$0x.getSource(), null, ((et)$$0x.getSource()).h())))
+            .then(
+               ((RequiredArgumentBuilder)eu.a("target", fg.a()).executes($$0x -> a((et)$$0x.getSource(), fg.a($$0x, "target"), ((et)$$0x.getSource()).h())))
+                  .then(eu.a("player", fg.c()).executes($$0x -> a((et)$$0x.getSource(), fg.a($$0x, "target"), fg.e($$0x, "player"))))
+            )
+      );
    }
 
-   private static void a(eq $$0, bsh $$1, exg $$2, List<aqn> $$3, xk $$4) {
-      wu $$5 = $$2.d().c(a);
-      wq.a $$6 = wq.a(wq.i, $$0).c($$5);
-      wq.a $$7 = wq.a(wq.j, $$0).c($$5);
-      xj $$8 = xj.a($$4);
-      boolean $$9 = false;
+   private static int a(et $$0, @Nullable bsq $$1, aqu $$2) throws CommandSyntaxException {
+      if ($$2 == $$1) {
+         throw a.create();
+      } else if ($$2.e.b() != dcr.d) {
+         throw b.create($$2.O_());
+      } else {
+         $$2.d($$1);
+         if ($$1 != null) {
+            $$0.a(() -> wy.a("commands.spectate.success.started", $$1.O_()), false);
+         } else {
+            $$0.a(() -> wy.c("commands.spectate.success.stopped"), false);
+         }
 
-      for (aqn $$10 : $$3) {
-         wq.a $$11 = $$10 == $$1 ? $$7 : $$6;
-         boolean $$12 = $$0.a($$10);
-         $$10.a($$8, $$12, $$11);
-         $$9 |= $$12 && $$4.j();
-      }
-
-      if ($$9) {
-         $$0.a(auj.e);
+         return 1;
       }
    }
 }

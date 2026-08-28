@@ -1,136 +1,114 @@
-import java.util.EnumSet;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.Validate;
 
-public class dvk {
-   private static boolean a(duh $$0) {
-      return $$0.j().a(dvi.l) && $$0.v();
-   }
+public class dvk<T> implements dvm<T> {
+   private final jr<T> a;
+   private final T[] b;
+   private final dvn<T> c;
+   private final int d;
+   private int e;
 
-   static CompletableFuture<duh> a(dvn $$0, dvl $$1, aza<aqf> $$2, duh $$3) {
-      return CompletableFuture.completedFuture($$3);
-   }
+   private dvk(jr<T> $$0, int $$1, dvn<T> $$2, List<T> $$3) {
+      this.a = $$0;
+      this.b = (T[])(new Object[1 << $$1]);
+      this.d = $$1;
+      this.c = $$2;
+      Validate.isTrue($$3.size() <= this.b.length, "Can't initialize LinearPalette of size %d with %d entries", new Object[]{this.b.length, $$3.size()});
 
-   static CompletableFuture<duh> b(dvn $$0, dvl $$1, aza<aqf> $$2, duh $$3) {
-      aqm $$4 = $$0.a();
-      if ($$4.o().bc().y().c()) {
-         $$0.b().a($$4.H_(), $$4.l().h(), $$4.a(), $$3, $$0.c());
+      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+         this.b[$$4] = $$3.get($$4);
       }
 
-      $$4.a($$3);
-      return CompletableFuture.completedFuture($$3);
+      this.e = $$3.size();
    }
 
-   static CompletableFuture<duh> c(dvn $$0, dvl $$1, aza<aqf> $$2, duh $$3) {
-      $$0.a().a($$3);
-      return CompletableFuture.completedFuture($$3);
+   private dvk(jr<T> $$0, T[] $$1, dvn<T> $$2, int $$3, int $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   static CompletableFuture<duh> d(dvn $$0, dvl $$1, aza<aqf> $$2, duh $$3) {
-      aqm $$4 = $$0.a();
-      aqt $$5 = new aqt($$4, $$2, $$1, $$3);
-      $$0.b().a($$5, $$4.a().a($$5), $$3);
-      return CompletableFuture.completedFuture($$3);
+   public static <A> dvm<A> a(int $$0, jr<A> $$1, dvn<A> $$2, List<A> $$3) {
+      return new dvk<>($$1, $$0, $$2, $$3);
    }
 
-   static CompletableFuture<duh> e(dvn $$0, dvl $$1, aza<aqf> $$2, duh $$3) {
-      aqm $$4 = $$0.a();
-      aqt $$5 = new aqt($$4, $$2, $$1, $$3);
-      return $$0.b().a($$4.l().i(), dzi.a($$5), $$4.a().a($$5), $$3);
-   }
-
-   static CompletableFuture<duh> f(dvn $$0, dvl $$1, aza<aqf> $$2, duh $$3) {
-      aqm $$4 = $$0.a();
-      aqt $$5 = new aqt($$4, $$2, $$1, $$3);
-      return $$0.b().a(dzi.a($$5), $$4.l().i(), $$4.a().a($$5), $$3).thenApply($$0x -> {
-         if ($$0x instanceof dvb $$1x) {
-            dxu $$2x = $$1x.x();
-            if ($$2x != null) {
-               dxu.a($$1x);
-               if ($$2x.b()) {
-                  $$2x.b($$1x);
-               }
-            }
+   @Override
+   public int a(T $$0) {
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         if (this.b[$$1] == $$0) {
+            return $$1;
          }
-
-         return $$0x;
-      });
-   }
-
-   static CompletableFuture<duh> g(dvn $$0, dvl $$1, aza<aqf> $$2, duh $$3) {
-      aqm $$4 = $$0.a();
-      aqt $$5 = new aqt($$4, $$2, $$1, $$3);
-      $$0.b().a($$5, $$4.a().a($$5), $$4.l().i(), $$3);
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   static CompletableFuture<duh> h(dvn $$0, dvl $$1, aza<aqf> $$2, duh $$3) {
-      aqm $$4 = $$0.a();
-      aqt $$5 = new aqt($$4, $$2, $$1, $$3);
-      if ($$3 instanceof dvb $$6) {
-         dzi.a($$5, $$6);
       }
 
-      $$0.b().a($$5, $$4.C(), $$4.l().i(), $$4.F_(), $$4.a().a($$5), $$3, dyc.a.a);
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   static CompletableFuture<duh> i(dvn $$0, dvl $$1, aza<aqf> $$2, duh $$3) {
-      aqm $$4 = $$0.a();
-      dyg.a($$3, EnumSet.of(dyg.a.e, dyg.a.f, dyg.a.d, dyg.a.b));
-      aqt $$5 = new aqt($$4, $$2, $$1, $$3);
-      $$0.b().a($$5, $$3, $$4.a().a($$5));
-      dzi.a($$5, $$3);
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   static CompletableFuture<duh> j(dvn $$0, dvl $$1, aza<aqf> $$2, duh $$3) {
-      aqp $$4 = $$0.d();
-      $$3.A();
-      ((dvb)$$3).a($$4);
-      boolean $$5 = a($$3);
-      return $$4.a($$3, $$5);
-   }
-
-   static CompletableFuture<duh> k(dvn $$0, dvl $$1, aza<aqf> $$2, duh $$3) {
-      boolean $$4 = a($$3);
-      return $$0.d().b($$3, $$4);
-   }
-
-   static CompletableFuture<duh> l(dvn $$0, dvl $$1, aza<aqf> $$2, duh $$3) {
-      if (!$$3.y()) {
-         $$0.b().a(new aqt($$0.a(), $$2, $$1, $$3));
+      int $$2 = this.e;
+      if ($$2 < this.b.length) {
+         this.b[$$2] = $$0;
+         this.e++;
+         return $$2;
+      } else {
+         return this.c.onResize(this.d + 1, $$0);
       }
-
-      return CompletableFuture.completedFuture($$3);
    }
 
-   static CompletableFuture<duh> m(dvn $$0, dvl $$1, aza<aqf> $$2, duh $$3) {
-      dbn $$4 = $$3.f();
-      aqf $$5 = $$2.a($$4.e, $$4.f);
-      return CompletableFuture.supplyAsync(() -> {
-         dvb $$3x = (dvb)$$3;
-         aqm $$4x = $$0.a();
-         dur $$5x;
-         if ($$3x instanceof duq) {
-            $$5x = ((duq)$$3x).C();
-         } else {
-            $$5x = new dur($$4x, $$3x, $$2xx -> a($$4x, $$3x.E()));
-            $$5.a(new duq($$5x, false));
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         if ($$0.test(this.b[$$1])) {
+            return true;
          }
+      }
 
-         $$5x.b($$5::s);
-         $$5x.E();
-         $$5x.c(true);
-         $$5x.J();
-         $$5x.a($$4x);
-         return $$5x;
-      }, $$3x -> $$0.e().a(apw.a($$3x, $$4.a(), $$5::i)));
+      return false;
    }
 
-   private static void a(aqm $$0, List<tx> $$1) {
-      if (!$$1.isEmpty()) {
-         $$0.b(bsn.a($$1, $$0));
+   @Override
+   public T a(int $$0) {
+      if ($$0 >= 0 && $$0 < this.e) {
+         return this.b[$$0];
+      } else {
+         throw new dvl($$0);
       }
+   }
+
+   @Override
+   public void a(vv $$0) {
+      this.e = $$0.l();
+
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         this.b[$$1] = this.a.b($$0.l());
+      }
+   }
+
+   @Override
+   public void b(vv $$0) {
+      $$0.c(this.e);
+
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         $$0.c(this.a.a(this.b[$$1]));
+      }
+   }
+
+   @Override
+   public int a() {
+      int $$0 = wp.a(this.b());
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += wp.a(this.a.a(this.b[$$1]));
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public dvm<T> c() {
+      return new dvk<>(this.a, (T[])((Object[])this.b.clone()), this.c, this.d, this.e);
    }
 }

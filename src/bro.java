@@ -1,15 +1,46 @@
-public enum bro {
-   a(n.j),
-   b(n.m),
-   c(n.j);
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   private final n d;
+public record bro(String i) {
+   public static final bro a = new bro("generic");
+   public static final bro b = new bro("ladder");
+   public static final bro c = new bro("vines");
+   public static final bro d = new bro("weeping_vines");
+   public static final bro e = new bro("twisting_vines");
+   public static final bro f = new bro("scaffolding");
+   public static final bro g = new bro("other_climbable");
+   public static final bro h = new bro("water");
 
-   private bro(final n $$0) {
-      this.d = $$0;
+   public static bro a(dta $$0) {
+      if ($$0.a(dfy.cO) || $$0.a(awd.P)) {
+         return b;
+      } else if ($$0.a(dfy.ff)) {
+         return c;
+      } else if ($$0.a(dfy.oz) || $$0.a(dfy.oA)) {
+         return d;
+      } else if ($$0.a(dfy.oB) || $$0.a(dfy.oC)) {
+         return e;
+      } else {
+         return $$0.a(dfy.nS) ? f : g;
+      }
    }
 
-   public n a() {
-      return this.d;
+   @Nullable
+   public static bro a(btl $$0) {
+      Optional<jd> $$1 = $$0.eJ();
+      if ($$1.isPresent()) {
+         dta $$2 = $$0.dQ().a_($$1.get());
+         return a($$2);
+      } else {
+         return $$0.bf() ? h : null;
+      }
+   }
+
+   public String a() {
+      return "death.fell.accident." + this.i;
+   }
+
+   public String b() {
+      return this.i;
    }
 }

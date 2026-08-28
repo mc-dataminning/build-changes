@@ -1,29 +1,24 @@
-public enum dxb {
-   a(false, false),
-   b(true, false),
-   c(true, true);
+import java.util.List;
+import java.util.stream.Stream;
 
-   private final boolean d;
-   private final boolean e;
+public class dxb<T> {
+   private final dcb a;
+   private final List<T> b;
 
-   private dxb(final boolean $$0, final boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public dxb(dcb $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public boolean a() {
-      return this.e;
+   public dcb a() {
+      return this.a;
    }
 
-   public boolean b() {
-      return this.d;
+   public Stream<T> b() {
+      return this.b.stream();
    }
 
-   public static dxb a(aqd $$0) {
-      if ($$0.a(aqd.d)) {
-         return c;
-      } else {
-         return $$0.a(aqd.b) ? b : a;
-      }
+   public boolean c() {
+      return this.b.isEmpty();
    }
 }

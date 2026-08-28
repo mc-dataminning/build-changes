@@ -1,37 +1,31 @@
-public class fwh extends fvm {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final fxq e;
-   private final fxq f;
-   private final fxq g;
+public class fwh extends fxb {
+   private final fye a;
+   private final fye b;
+   private final fye c;
 
-   public fwh(fxq $$0) {
-      super(gen::c);
-      this.e = $$0;
-      this.f = $$0.b("plate");
-      this.g = $$0.b("handle");
+   public fwh(fye $$0) {
+      this.a = $$0.b("head");
+      this.b = this.a.b("left_ear");
+      this.c = this.a.b("right_ear");
    }
 
-   public static fxw a() {
-      fxy $$0 = new fxy();
-      fxz $$1 = $$0.a();
-      $$1.a("plate", fxv.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fxs.a);
-      $$1.a("handle", fxv.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fxs.a);
-      return fxw.a($$0, 64, 64);
-   }
-
-   public fxq b() {
-      return this.f;
-   }
-
-   public fxq c() {
-      return this.g;
+   public static fym a() {
+      fym $$0 = new fym();
+      fwi.a(fyi.a, $$0);
+      return $$0;
    }
 
    @Override
-   public void a(fao $$0, fas $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+      float $$3 = 1.2F;
+      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
+      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
+   }
+
+   @Override
+   public void a(fbc $$0, fbg $$1, int $$2, int $$3, int $$4) {
+      this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

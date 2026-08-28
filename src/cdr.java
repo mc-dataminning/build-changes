@@ -1,35 +1,30 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
+import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
 
-public class cdr extends cdf<clp> {
+public class cdr extends cdw<btl> {
    @Override
-   public Set<ccg<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(ccg.B)));
-   }
-
-   protected void a(aqm $$0, clp $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.am() == bsn.by)
-         .or(() -> a($$1, $$0xx -> $$0xx.am() != bsn.by))
-         .ifPresentOrElse($$1x -> $$1.dV().a(ccg.B, $$1x), () -> $$1.dV().b(ccg.B));
-   }
-
-   private static Optional<btc> a(clp $$0, Predicate<btc> $$1) {
-      return $$0.dV().c(ccg.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
+   public Set<ccq<?>> a() {
+      return ImmutableSet.of(ccq.h, ccq.M, ccq.an);
    }
 
    @Override
-   protected int b() {
-      return 24;
-   }
+   protected void a(aqt $$0, btl $$1) {
+      buo<?> $$2 = $$1.dU();
+      List<clk> $$3 = Lists.newArrayList();
+      ccs $$4 = $$2.c(ccq.h).orElse(ccs.a());
+      Optional<btn> $$5 = $$4.a($$0x -> $$0x instanceof cks || $$0x instanceof cis).map(btn.class::cast);
 
-   @Override
-   protected int c() {
-      return 24;
+      for (btl $$7 : $$2.c(ccq.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof clk && ((clk)$$7).gn()) {
+            $$3.add((clk)$$7);
+         }
+      }
+
+      $$2.a(ccq.M, $$5);
+      $$2.a(ccq.an, $$3);
    }
 }

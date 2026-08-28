@@ -1,76 +1,63 @@
 import com.mojang.serialization.Codec;
-import java.util.ArrayList;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
-public interface ba<T, P extends Predicate<T>> extends Predicate<Iterable<T>> {
-   List<P> a();
-
-   static <T, P extends Predicate<T>> Codec<ba<T, P>> a(Codec<P> $$0) {
-      return $$0.listOf().xmap(ba::a, ba::a);
+public class ba extends dv<ba.a> {
+   @Override
+   public Codec<ba.a> a() {
+      return ba.a.a;
    }
 
-   @SafeVarargs
-   static <T, P extends Predicate<T>> ba<T, P> a(P... $$0) {
-      return a(List.of($$0));
+   public void a(aqu $$0, Collection<? extends bsq> $$1) {
+      List<erl> $$2 = $$1.stream().map($$1x -> bv.b($$0, $$1x)).collect(Collectors.toList());
+      this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   static <T, P extends Predicate<T>> ba<T, P> a(List<P> $$0) {
-      return (ba<T, P>)(switch ($$0.size()) {
-         case 0 -> new ba.c();
-         case 1 -> new ba.b($$0.getFirst());
-         default -> new ba.a($$0);
-      });
-   }
+   public static record a(Optional<bg> b, List<bg> c) implements dv.a {
+      public static final Codec<ba.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(ba.a::a), bv.b.listOf().optionalFieldOf("victims", List.of()).forGetter(ba.a::b))
+               .apply($$0, ba.a::new)
+      );
 
-   public static record a<T, P extends Predicate<T>>(List<P> a) implements ba<T, P> {
-      public boolean a(Iterable<T> $$0) {
-         List<Predicate<T>> $$1 = new ArrayList<>(this.a);
+      public static ao<ba.a> a(bv.a... $$0) {
+         return an.F.a(new ba.a(Optional.empty(), bv.a($$0)));
+      }
 
-         for (T $$2 : $$0) {
-            $$1.removeIf($$1x -> $$1x.test($$2));
-            if ($$1.isEmpty()) {
-               return true;
+      public boolean a(Collection<? extends erl> $$0) {
+         for (bg $$1 : this.c) {
+            boolean $$2 = false;
+
+            for (erl $$3 : $$0) {
+               if ($$1.a($$3)) {
+                  $$2 = true;
+                  break;
+               }
+            }
+
+            if (!$$2) {
+               return false;
             }
          }
 
-         return false;
-      }
-
-      public List<P> b() {
-         return this.a;
-      }
-   }
-
-   public static record b<T, P extends Predicate<T>>(P a) implements ba<T, P> {
-      public boolean a(Iterable<T> $$0) {
-         for (T $$1 : $$0) {
-            if (this.a.test($$1)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-
-      @Override
-      public List<P> a() {
-         return List.of(this.a);
-      }
-
-      public P b() {
-         return this.a;
-      }
-   }
-
-   public static class c<T, P extends Predicate<T>> implements ba<T, P> {
-      public boolean a(Iterable<T> $$0) {
          return true;
       }
 
       @Override
-      public List<P> a() {
-         return List.of();
+      public void a(bh $$0) {
+         dv.a.super.a($$0);
+         $$0.a(this.c, ".victims");
+      }
+
+      @Override
+      public Optional<bg> a() {
+         return this.b;
+      }
+
+      public List<bg> b() {
+         return this.c;
       }
    }
 }

@@ -1,190 +1,110 @@
-public class cpp extends cpi {
-   public static final int k = 0;
-   public static final int l = 1;
-   public static final int m = 2;
-   private static final int o = 3;
-   private static final int p = 30;
-   private static final int q = 30;
-   private static final int r = 39;
-   private final cpu s;
-   long t;
-   public final bqa n = new bqq(2) {
-      @Override
-      public void e() {
-         cpp.this.a(this);
-         super.e();
-      }
-   };
-   private final cqz u = new cqz() {
-      @Override
-      public void e() {
-         cpp.this.a(this);
-         super.e();
-      }
-   };
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-   public cpp(int $$0, cmk $$1) {
-      this($$0, $$1, cpu.a);
+public record cpp(int c, float d, boolean e, float f, Optional<cuo> g, List<cpp.b> h) {
+   private static final float i = 1.6F;
+   public static final Codec<cpp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axv.k.fieldOf("nutrition").forGetter(cpp::b),
+               Codec.FLOAT.fieldOf("saturation").forGetter(cpp::c),
+               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(cpp::d),
+               axv.m.optionalFieldOf("eat_seconds", 1.6F).forGetter(cpp::e),
+               cuo.c.optionalFieldOf("using_converts_to").forGetter(cpp::f),
+               cpp.b.a.listOf().optionalFieldOf("effects", List.of()).forGetter(cpp::g)
+            )
+            .apply($$0, cpp::new)
+   );
+   public static final yw<wj, cpp> b = yw.a(yu.g, cpp::b, yu.i, cpp::c, yu.b, cpp::d, yu.i, cpp::e, cuo.i.a(yu::a), cpp::f, cpp.b.b.a(yu.a()), cpp::g, cpp::new);
+
+   public int a() {
+      return (int)(this.f * 20.0F);
    }
 
-   public cpp(int $$0, cmk $$1, final cpu $$2) {
-      super(cqq.x, $$0);
-      this.s = $$2;
-      this.a(new cre(this.n, 0, 15, 15) {
-         @Override
-         public boolean a(cud $$0) {
-            return $$0.a(cug.rU);
-         }
-      });
-      this.a(new cre(this.n, 1, 15, 52) {
-         @Override
-         public boolean a(cud $$0) {
-            return $$0.a(cug.qO) || $$0.a(cug.uj) || $$0.a(cug.fT);
-         }
-      });
-      this.a(new cre(this.u, 2, 145, 39) {
-         @Override
-         public boolean a(cud $$0) {
-            return false;
-         }
-
-         @Override
-         public void a(cml $$0, cud $$1) {
-            cpp.this.i.get(0).a(1);
-            cpp.this.i.get(1).a(1);
-            $$1.g().b($$1, $$0.dR(), $$0);
-            $$2.a(($$0x, $$1x) -> {
-               long $$2xx = $$0x.Z();
-               if (cpp.this.t != $$2xx) {
-                  $$0x.a(null, $$1x, avh.Au, avi.e, 1.0F, 1.0F);
-                  cpp.this.t = $$2xx;
-               }
-            });
-            super.a($$0, $$1);
-         }
-      });
-
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new cre($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
-         }
-      }
-
-      for (int $$5 = 0; $$5 < 9; $$5++) {
-         this.a(new cre($$1, $$5, 8 + $$5 * 18, 142));
-      }
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   public boolean b(cml $$0) {
-      return a(this.s, $$0, dfk.nX);
+   public float c() {
+      return this.d;
    }
 
-   @Override
-   public void a(bqa $$0) {
-      cud $$1 = this.n.a(0);
-      cud $$2 = this.n.a(1);
-      cud $$3 = this.u.a(2);
-      if ($$3.e() || !$$1.e() && !$$2.e()) {
-         if (!$$1.e() && !$$2.e()) {
-            this.a($$1, $$2, $$3);
-         }
-      } else {
-         this.u.b(2);
+   public boolean d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public Optional<cuo> f() {
+      return this.g;
+   }
+
+   public List<cpp.b> g() {
+      return this.h;
+   }
+
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+      private float d = 1.6F;
+      private Optional<cuo> e = Optional.empty();
+      private final Builder<cpp.b> f = ImmutableList.builder();
+
+      public cpp.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public cpp.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public cpp.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public cpp.a b() {
+         this.d = 0.8F;
+         return this;
+      }
+
+      public cpp.a a(bry $$0, float $$1) {
+         this.f.add(new cpp.b($$0, $$1));
+         return this;
+      }
+
+      public cpp.a a(dct $$0) {
+         this.e = Optional.of(new cuo($$0));
+         return this;
+      }
+
+      public cpp c() {
+         float $$0 = cpn.a(this.a, this.b);
+         return new cpp(this.a, $$0, this.c, this.d, this.e, this.f.build());
       }
    }
 
-   private void a(cud $$0, cud $$1, cud $$2) {
-      this.s.a(($$3, $$4) -> {
-         epy $$5 = cul.b($$0, $$3);
-         if ($$5 != null) {
-            cud $$6;
-            if ($$1.a(cug.qO) && !$$5.h && $$5.f < 4) {
-               $$6 = $$0.c(1);
-               $$6.b(kn.D, cxd.b);
-               this.d();
-            } else if ($$1.a(cug.fT) && !$$5.h) {
-               $$6 = $$0.c(1);
-               $$6.b(kn.D, cxd.a);
-               this.d();
-            } else {
-               if (!$$1.a(cug.uj)) {
-                  this.u.b(2);
-                  this.d();
-                  return;
-               }
+   public static record b(bry c, float d) {
+      public static final Codec<cpp.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bry.d.fieldOf("effect").forGetter(cpp.b::a), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(cpp.b::b))
+               .apply($$0, cpp.b::new)
+      );
+      public static final yw<wj, cpp.b> b = yw.a(bry.e, cpp.b::a, yu.i, cpp.b::b, cpp.b::new);
 
-               $$6 = $$0.c(2);
-               this.d();
-            }
-
-            if (!cud.a($$6, $$2)) {
-               this.u.a(2, $$6);
-               this.d();
-            }
-         }
-      });
-   }
-
-   @Override
-   public boolean a(cud $$0, cre $$1) {
-      return $$1.c != this.u && super.a($$0, $$1);
-   }
-
-   @Override
-   public cud b(cml $$0, int $$1) {
-      cud $$2 = cud.l;
-      cre $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cud $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 == 2) {
-            $$4.g().b($$4, $$0.dR(), $$0);
-            if (!this.a($$4, 3, 39, true)) {
-               return cud.l;
-            }
-
-            $$3.b($$4, $$2);
-         } else if ($$1 != 1 && $$1 != 0) {
-            if ($$4.a(cug.rU)) {
-               if (!this.a($$4, 0, 1, false)) {
-                  return cud.l;
-               }
-            } else if (!$$4.a(cug.qO) && !$$4.a(cug.uj) && !$$4.a(cug.fT)) {
-               if ($$1 >= 3 && $$1 < 30) {
-                  if (!this.a($$4, 30, 39, false)) {
-                     return cud.l;
-                  }
-               } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-                  return cud.l;
-               }
-            } else if (!this.a($$4, 1, 2, false)) {
-               return cud.l;
-            }
-         } else if (!this.a($$4, 3, 39, false)) {
-            return cud.l;
-         }
-
-         if ($$4.e()) {
-            $$3.e(cud.l);
-         }
-
-         $$3.c();
-         if ($$4.H() == $$2.H()) {
-            return cud.l;
-         }
-
-         $$3.a($$0, $$4);
-         this.d();
+      public bry a() {
+         return new bry(this.c);
       }
 
-      return $$2;
-   }
-
-   @Override
-   public void a(cml $$0) {
-      super.a($$0);
-      this.u.b(2);
-      this.s.a(($$1, $$2) -> this.a($$0, this.n));
+      public float b() {
+         return this.d;
+      }
    }
 }

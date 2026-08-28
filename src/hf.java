@@ -1,240 +1,175 @@
-import com.google.common.collect.Lists;
+import com.mojang.brigadier.ImmutableStringReader;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collections;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Decoder;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
+import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class hf {
-   public static final int a = Integer.MAX_VALUE;
-   public static final BiConsumer<ewh, List<? extends bsh>> b = ($$0, $$1) -> {
-   };
-   private static final dwv<bsh, ?> c = new dwv<bsh, bsh>() {
-      public bsh a(bsh $$0) {
-         return $$0;
+public class hf implements ArgumentType<hf.d> {
+   private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "#stick", "#stick{foo:'bar'}");
+   static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wy.b("argument.item.id.invalid", $$0));
+   static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wy.b("arguments.item.tag.unknown", $$0));
+   static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> wy.b("arguments.item.component.unknown", $$0));
+   static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("arguments.item.component.malformed", $$0, $$1));
+   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wy.b("arguments.item.predicate.unknown", $$0));
+   static final Dynamic2CommandExceptionType g = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("arguments.item.predicate.malformed", $$0, $$1));
+   private static final akq h = akq.b("count");
+   static final Map<akq, hf.a> i = Stream.of(new hf.a(h, $$0 -> true, dh.d.d.map($$0 -> $$1 -> $$0.d($$1.H()))))
+      .collect(Collectors.toUnmodifiableMap(hf.a::a, $$0 -> (hf.a)$$0));
+   static final Map<akq, hf.c> j = Stream.of(new hf.c(h, dh.d.d.map($$0 -> $$1 -> $$0.d($$1.H()))))
+      .collect(Collectors.toUnmodifiableMap(hf.c::a, $$0 -> (hf.c)$$0));
+   private final bmo<List<Predicate<cuo>>> k;
+
+   public hf(ep $$0) {
+      hf.b $$1 = new hf.b($$0);
+      this.k = ha.a($$1);
+   }
+
+   public static hf a(ep $$0) {
+      return new hf($$0);
+   }
+
+   public hf.d a(StringReader $$0) throws CommandSyntaxException {
+      return ad.a(this.k.a($$0))::test;
+   }
+
+   public static hf.d a(CommandContext<et> $$0, String $$1) {
+      return (hf.d)$$0.getArgument($$1, hf.d.class);
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return this.k.a($$1);
+   }
+
+   public Collection<String> getExamples() {
+      return a;
+   }
+
+   static record a(akq a, Predicate<cuo> b, Decoder<? extends Predicate<cuo>> c) {
+
+      public static <T> hf.a a(ImmutableStringReader $$0, akq $$1, kp<T> $$2) throws CommandSyntaxException {
+         Codec<T> $$3 = $$2.b();
+         if ($$3 == null) {
+            throw hf.d.createWithContext($$0, $$1);
+         } else {
+            return new hf.a($$1, $$1x -> $$1x.b($$2), $$3.map($$1x -> $$2x -> {
+                  T $$3x = $$2x.a($$2);
+                  return Objects.equals($$1x, $$3x);
+               }));
+         }
+      }
+
+      public Predicate<cuo> a(ImmutableStringReader $$0, ako<ux> $$1, ux $$2) throws CommandSyntaxException {
+         DataResult<? extends Predicate<cuo>> $$3 = this.c.parse($$1, $$2);
+         return (Predicate<cuo>)$$3.getOrThrow($$1x -> hf.e.createWithContext($$0, this.a.toString(), $$1x));
+      }
+   }
+
+   static class b implements ha.b<Predicate<cuo>, hf.a, hf.c> {
+      private final jo.b<cuj> a;
+      private final jo.b<kp<?>> b;
+      private final jo.b<ct.a<?>> c;
+      private final ako<ux> d;
+
+      b(jo.a $$0) {
+         this.a = $$0.b(lu.K);
+         this.b = $$0.b(lu.aA);
+         this.c = $$0.b(lu.aC);
+         this.d = $$0.a(uo.a);
+      }
+
+      public Predicate<cuo> e(ImmutableStringReader $$0, akq $$1) throws CommandSyntaxException {
+         jm.c<cuj> $$2 = this.a.a(akp.a(lu.K, $$1)).orElseThrow(() -> hf.b.createWithContext($$0, $$1));
+         return $$1x -> $$1x.a($$2);
+      }
+
+      public Predicate<cuo> f(ImmutableStringReader $$0, akq $$1) throws CommandSyntaxException {
+         jq<cuj> $$2 = this.a.a(awt.a(lu.K, $$1)).orElseThrow(() -> hf.c.createWithContext($$0, $$1));
+         return $$1x -> $$1x.a($$2);
+      }
+
+      public hf.a g(ImmutableStringReader $$0, akq $$1) throws CommandSyntaxException {
+         hf.a $$2 = hf.i.get($$1);
+         if ($$2 != null) {
+            return $$2;
+         } else {
+            kp<?> $$3 = this.b.a(akp.a(lu.aA, $$1)).map(jm::a).orElseThrow(() -> hf.d.createWithContext($$0, $$1));
+            return hf.a.a($$0, $$1, $$3);
+         }
+      }
+
+      public Predicate<cuo> a(ImmutableStringReader $$0, hf.a $$1, ux $$2) throws CommandSyntaxException {
+         return $$1.a($$0, this.d, $$2);
+      }
+
+      public Predicate<cuo> a(ImmutableStringReader $$0, hf.a $$1) {
+         return $$1.b;
+      }
+
+      public hf.c h(ImmutableStringReader $$0, akq $$1) throws CommandSyntaxException {
+         hf.c $$2 = hf.j.get($$1);
+         return $$2 != null ? $$2 : this.c.a(akp.a(lu.aC, $$1)).map(hf.c::new).orElseThrow(() -> hf.f.createWithContext($$0, $$1));
+      }
+
+      public Predicate<cuo> a(ImmutableStringReader $$0, hf.c $$1, ux $$2) throws CommandSyntaxException {
+         return $$1.a($$0, this.d, $$2);
       }
 
       @Override
-      public Class<? extends bsh> a() {
-         return bsh.class;
+      public Stream<akq> a() {
+         return this.a.c().map(akp::a);
       }
-   };
-   private final int d;
-   private final boolean e;
-   private final boolean f;
-   private final Predicate<bsh> g;
-   private final de.c h;
-   private final Function<ewh, ewh> i;
-   @Nullable
-   private final ewc j;
-   private final BiConsumer<ewh, List<? extends bsh>> k;
-   private final boolean l;
-   @Nullable
-   private final String m;
-   @Nullable
-   private final UUID n;
-   private final dwv<bsh, ?> o;
-   private final boolean p;
 
-   public hf(
-      int $$0,
-      boolean $$1,
-      boolean $$2,
-      Predicate<bsh> $$3,
-      de.c $$4,
-      Function<ewh, ewh> $$5,
-      @Nullable ewc $$6,
-      BiConsumer<ewh, List<? extends bsh>> $$7,
-      boolean $$8,
-      @Nullable String $$9,
-      @Nullable UUID $$10,
-      @Nullable bsn<?> $$11,
-      boolean $$12
-   ) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$8;
-      this.m = $$9;
-      this.n = $$10;
-      this.o = (dwv<bsh, ?>)($$11 == null ? c : $$11);
-      this.p = $$12;
-   }
+      @Override
+      public Stream<akq> b() {
+         return this.a.e().map(awt::b);
+      }
 
-   public int a() {
-      return this.d;
-   }
+      @Override
+      public Stream<akq> c() {
+         return Stream.concat(hf.i.keySet().stream(), this.b.b().filter($$0 -> !$$0.a().d()).map($$0 -> $$0.h().a()));
+      }
 
-   public boolean b() {
-      return this.e;
-   }
+      @Override
+      public Stream<akq> d() {
+         return Stream.concat(hf.j.keySet().stream(), this.c.c().map(akp::a));
+      }
 
-   public boolean c() {
-      return this.l;
-   }
+      public Predicate<cuo> a(Predicate<cuo> $$0) {
+         return $$0.negate();
+      }
 
-   public boolean d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   private void e(eq $$0) throws CommandSyntaxException {
-      if (this.p && !$$0.c(2)) {
-         throw fd.f.create();
+      public Predicate<cuo> b(List<Predicate<cuo>> $$0) {
+         return ad.b($$0);
       }
    }
 
-   public bsh a(eq $$0) throws CommandSyntaxException {
-      this.e($$0);
-      List<? extends bsh> $$1 = this.b($$0);
-      if ($$1.isEmpty()) {
-         throw fd.d.create();
-      } else if ($$1.size() > 1) {
-         throw fd.a.create();
-      } else {
-         return $$1.get(0);
+   static record c(akq a, Decoder<? extends Predicate<cuo>> b) {
+      public c(jm.c<ct.a<?>> $$0) {
+         this($$0.h().a(), $$0.a().a().map($$0x -> $$0x::a));
+      }
+
+      public Predicate<cuo> a(ImmutableStringReader $$0, ako<ux> $$1, ux $$2) throws CommandSyntaxException {
+         DataResult<? extends Predicate<cuo>> $$3 = this.b.parse($$1, $$2);
+         return (Predicate<cuo>)$$3.getOrThrow($$1x -> hf.g.createWithContext($$0, this.a.toString(), $$1x));
       }
    }
 
-   public List<? extends bsh> b(eq $$0) throws CommandSyntaxException {
-      return this.f($$0).stream().filter($$1 -> $$1.am().a($$0.w())).toList();
-   }
-
-   private List<? extends bsh> f(eq $$0) throws CommandSyntaxException {
-      this.e($$0);
-      if (!this.e) {
-         return this.d($$0);
-      } else if (this.m != null) {
-         aqn $$1 = $$0.l().ai().a(this.m);
-         return (List<? extends bsh>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new aqn[]{$$1}));
-      } else if (this.n != null) {
-         for (aqm $$2 : $$0.l().L()) {
-            bsh $$3 = $$2.a(this.n);
-            if ($$3 != null) {
-               return Lists.newArrayList(new bsh[]{$$3});
-            }
-         }
-
-         return Collections.emptyList();
-      } else {
-         ewh $$4 = this.i.apply($$0.d());
-         Predicate<bsh> $$5 = this.a($$4);
-         if (this.l) {
-            return (List<? extends bsh>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new bsh[]{$$0.f()}) : Collections.emptyList());
-         } else {
-            List<bsh> $$6 = Lists.newArrayList();
-            if (this.d()) {
-               this.a($$6, $$0.e(), $$4, $$5);
-            } else {
-               for (aqm $$7 : $$0.l().L()) {
-                  this.a($$6, $$7, $$4, $$5);
-               }
-            }
-
-            return this.a($$4, $$6);
-         }
-      }
-   }
-
-   private void a(List<bsh> $$0, aqm $$1, ewh $$2, Predicate<bsh> $$3) {
-      int $$4 = this.f();
-      if ($$0.size() < $$4) {
-         if (this.j != null) {
-            $$1.a(this.o, this.j.c($$2), $$3, $$0, $$4);
-         } else {
-            $$1.a(this.o, $$3, $$0, $$4);
-         }
-      }
-   }
-
-   private int f() {
-      return this.k == b ? this.d : Integer.MAX_VALUE;
-   }
-
-   public aqn c(eq $$0) throws CommandSyntaxException {
-      this.e($$0);
-      List<aqn> $$1 = this.d($$0);
-      if ($$1.size() != 1) {
-         throw fd.e.create();
-      } else {
-         return $$1.get(0);
-      }
-   }
-
-   public List<aqn> d(eq $$0) throws CommandSyntaxException {
-      this.e($$0);
-      if (this.m != null) {
-         aqn $$1 = $$0.l().ai().a(this.m);
-         return (List<aqn>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new aqn[]{$$1}));
-      } else if (this.n != null) {
-         aqn $$2 = $$0.l().ai().a(this.n);
-         return (List<aqn>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new aqn[]{$$2}));
-      } else {
-         ewh $$3 = this.i.apply($$0.d());
-         Predicate<bsh> $$4 = this.a($$3);
-         if (this.l) {
-            if ($$0.f() instanceof aqn $$5 && $$4.test($$5)) {
-               return Lists.newArrayList(new aqn[]{$$5});
-            }
-
-            return Collections.emptyList();
-         } else {
-            int $$6 = this.f();
-            List<aqn> $$7;
-            if (this.d()) {
-               $$7 = $$0.e().a($$4, $$6);
-            } else {
-               $$7 = Lists.newArrayList();
-
-               for (aqn $$9 : $$0.l().ai().t()) {
-                  if ($$4.test($$9)) {
-                     $$7.add($$9);
-                     if ($$7.size() >= $$6) {
-                        return $$7;
-                     }
-                  }
-               }
-            }
-
-            return this.a($$3, $$7);
-         }
-      }
-   }
-
-   private Predicate<bsh> a(ewh $$0) {
-      Predicate<bsh> $$1 = this.g;
-      if (this.j != null) {
-         ewc $$2 = this.j.c($$0);
-         $$1 = $$1.and($$1x -> $$2.c($$1x.cM()));
-      }
-
-      if (!this.h.c()) {
-         $$1 = $$1.and($$1x -> this.h.e($$1x.g($$0)));
-      }
-
-      return $$1;
-   }
-
-   private <T extends bsh> List<T> a(ewh $$0, List<T> $$1) {
-      if ($$1.size() > 1) {
-         this.k.accept($$0, $$1);
-      }
-
-      return $$1.subList(0, Math.min(this.d, $$1.size()));
-   }
-
-   public static wu a(List<? extends bsh> $$0) {
-      return wx.b($$0, bsh::O_);
+   public interface d extends Predicate<cuo> {
    }
 }

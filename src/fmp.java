@@ -1,156 +1,110 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
+import com.mojang.text2speech.Narrator;
 import javax.annotation.Nullable;
 
-public class fmp extends fnl {
-   private static final akk a = new akk("icon/draft_report");
-   private int b;
-   private final wu c;
-   private final boolean q;
-   private wu r;
-   private final List<fhu> s = Lists.newArrayList();
+public class fmp extends fnx {
+   private static final wy a = wy.c("accessibility.onboarding.screen.title");
+   private static final wy b = wy.c("accessibility.onboarding.screen.narrator");
+   private static final int c = 4;
+   private static final int q = 16;
+   private final fix r;
+   private final fgm s;
+   private final boolean u;
+   private boolean v;
+   private float w;
+   private final Runnable x;
    @Nullable
-   private fhu u;
+   private fir y;
+   @Nullable
+   private fie z;
+   private final flt A = new flt(this, this.m(), 33);
 
-   public fmp(@Nullable wu $$0, boolean $$1) {
-      super(wu.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
-      this.c = $$0;
-      this.q = $$1;
+   public fmp(fgm $$0, Runnable $$1) {
+      super(a);
+      this.s = $$0;
+      this.x = $$1;
+      this.r = new fix(true);
+      this.u = fgi.Q().aV().a();
    }
 
    @Override
-   protected void aP_() {
-      this.b = 0;
-      this.s.clear();
-      wu $$0 = this.q ? wu.c("deathScreen.spectate") : wu.c("deathScreen.respawn");
-      this.s.add(this.c(fhu.a($$0, $$0x -> {
-         this.l.s.fY();
-         $$0x.j = false;
-      }).a(this.m / 2 - 100, this.n / 4 + 72, 200, 20).a()));
-      this.u = this.c(
-         fhu.a(wu.c("deathScreen.titleScreen"), $$0x -> this.l.aX().a(this.l, this, this::m, true)).a(this.m / 2 - 100, this.n / 4 + 96, 200, 20).a()
-      );
-      this.s.add(this.u);
-      this.c(false);
-      this.r = wu.a("deathScreen.score.value", wu.b(Integer.toString(this.l.s.fU())).a(n.o));
+   public void aP_() {
+      flx $$0 = this.A.c(flx.d());
+      $$0.c().b().a(4);
+      this.y = $$0.a(new fir(this.m, this.k, this.o), $$0x -> $$0x.a(8));
+      this.z = this.s.as().a(this.s);
+      this.z.j = this.u;
+      $$0.a(this.z);
+      $$0.a(fik.b(150, $$0x -> this.a(new fqu(this, this.l.m)), false));
+      $$0.a(fik.a(150, $$0x -> this.a(new fqx(this, this.l.m, this.l.ag())), false));
+      this.A.b(fig.a(wx.j, $$0x -> this.d()).a());
+      this.A.a(this::c);
+      this.c();
    }
 
    @Override
-   public boolean aF_() {
-      return false;
-   }
-
-   private void m() {
-      if (this.q) {
-         this.D();
-      } else {
-         fmj $$0 = new fmp.a($$0x -> {
-            if ($$0x) {
-               this.D();
-            } else {
-               this.l.s.fY();
-               this.l.a(null);
-            }
-         }, wu.c("deathScreen.quit.confirm"), wt.a, wu.c("deathScreen.titleScreen"), wu.c("deathScreen.respawn"));
-         this.l.a($$0);
-         $$0.b(20);
+   protected void c() {
+      if (this.y != null) {
+         this.y.b(this.m);
       }
+
+      this.A.a();
+   }
+
+   @Override
+   protected void aE_() {
+      if (this.u && this.z != null) {
+         this.b(this.z);
+      } else {
+         super.aE_();
+      }
+   }
+
+   private int m() {
+      return 90;
+   }
+
+   @Override
+   public void d() {
+      this.a(this.x);
+   }
+
+   private void a(fnx $$0) {
+      this.a(() -> this.l.a($$0));
+   }
+
+   private void a(Runnable $$0) {
+      this.s.ad = false;
+      this.s.av();
+      Narrator.getNarrator().clear();
+      $$0.run();
+   }
+
+   @Override
+   public void a(fht $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.D();
+      this.r.a($$0, this.m, 1.0F);
+   }
+
+   @Override
+   protected void a(fht $$0, float $$1) {
+      e.a($$0, this.m, this.n, 1.0F, 0.0F);
    }
 
    private void D() {
-      if (this.l.r != null) {
-         this.l.r.Y();
-      }
-
-      this.l.b(new fmw(wu.c("menu.savingLevel")));
-      this.l.a(new fnn());
-   }
-
-   @Override
-   public void a(fhh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().b(2.0F, 2.0F, 2.0F);
-      $$0.a(this.o, this.k, this.m / 2 / 2, 30, 16777215);
-      $$0.c().b();
-      if (this.c != null) {
-         $$0.a(this.o, this.c, this.m / 2, 85, 16777215);
-      }
-
-      $$0.a(this.o, this.r, this.m / 2, 100, 16777215);
-      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
-         xr $$4 = this.a($$1);
-         $$0.a(this.o, $$4, $$1, $$2);
-      }
-
-      if (this.u != null && this.l.aX().c()) {
-         $$0.a(a, this.u.D() + this.u.y() - 17, this.u.E() + 3, 15, 15);
-      }
-   }
-
-   @Override
-   public void b(fhh $$0, int $$1, int $$2, float $$3) {
-      a($$0, this.m, this.n);
-   }
-
-   static void a(fhh $$0, int $$1, int $$2) {
-      $$0.b(0, 0, $$1, $$2, 1615855616, -1602211792);
-   }
-
-   @Nullable
-   private xr a(int $$0) {
-      if (this.c == null) {
-         return null;
-      } else {
-         int $$1 = this.l.h.a(this.c);
-         int $$2 = this.m / 2 - $$1 / 2;
-         int $$3 = this.m / 2 + $$1 / 2;
-         return $$0 >= $$2 && $$0 <= $$3 ? this.l.h.b().a(this.c, $$0 - $$2) : null;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
-         xr $$3 = this.a((int)$$0);
-         if ($$3 != null && $$3.h() != null && $$3.h().a() == ws.a.a) {
-            this.a($$3);
-            return false;
+      if (!this.v && this.u) {
+         if (this.w < 40.0F) {
+            this.w++;
+         } else if (this.l.aA()) {
+            Narrator.getNarrator().say(b.getString(), true);
+            this.v = true;
          }
       }
-
-      return super.a($$0, $$1, $$2);
    }
 
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.b++;
-      if (this.b == 20) {
-         this.c(true);
-      }
-   }
-
-   private void c(boolean $$0) {
-      for (fhu $$1 : this.s) {
-         $$1.j = $$0;
-      }
-   }
-
-   public static class a extends fmj {
-      public a(BooleanConsumer $$0, wu $$1, wu $$2, wu $$3, wu $$4) {
-         super($$0, $$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      public void b(fhh $$0, int $$1, int $$2, float $$3) {
-         fmp.a($$0, this.m, this.n);
+   public void h() {
+      if (this.z instanceof fin) {
+         ((fin)this.z).a(this.s.as().c());
       }
    }
 }

@@ -1,44 +1,84 @@
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class op {
-   private final cyg a;
-   private final cyg b;
-   private final cyg c;
-   private final oi d;
-   private final cty e;
-   private final Map<String, an<?>> f = new LinkedHashMap<>();
+public class op implements ok {
+   private final ol b;
+   private final cuj c;
+   private final int d;
+   private final jv<cyu> e = jv.a();
+   private final Map<String, ao<?>> f = new LinkedHashMap<>();
+   @Nullable
+   private String g;
 
-   public op(cyg $$0, cyg $$1, cyg $$2, oi $$3, cty $$4) {
-      this.d = $$3;
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.e = $$4;
+   public op(ol $$0, dct $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1.r();
+      this.d = $$2;
    }
 
-   public static op a(cyg $$0, cyg $$1, cyg $$2, oi $$3, cty $$4) {
-      return new op($$0, $$1, $$2, $$3, $$4);
+   public static op a(ol $$0, dct $$1) {
+      return new op($$0, $$1, 1);
    }
 
-   public op a(String $$0, an<?> $$1) {
+   public static op a(ol $$0, dct $$1, int $$2) {
+      return new op($$0, $$1, $$2);
+   }
+
+   public op a(awt<cuj> $$0) {
+      return this.a(cyu.a($$0));
+   }
+
+   public op b(dct $$0) {
+      return this.a($$0, 1);
+   }
+
+   public op a(dct $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.a(cyu.a($$0));
+      }
+
+      return this;
+   }
+
+   public op a(cyu $$0) {
+      return this.a($$0, 1);
+   }
+
+   public op a(cyu $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.e.add($$0);
+      }
+
+      return this;
+   }
+
+   public op b(String $$0, ao<?> $$1) {
       this.f.put($$0, $$1);
       return this;
    }
 
-   public void a(oj $$0, String $$1) {
-      this.a($$0, new akk($$1));
+   public op b(@Nullable String $$0) {
+      this.g = $$0;
+      return this;
    }
 
-   public void a(oj $$0, akk $$1) {
+   @Override
+   public cuj a() {
+      return this.c;
+   }
+
+   @Override
+   public void a(om $$0, akq $$1) {
       this.a($$1);
-      ae.a $$2 = $$0.a().a("has_the_recipe", dq.a($$1)).a(aj.a.a($$1)).a(ai.a.b);
+      af.a $$2 = $$0.a().a("has_the_recipe", dt.a($$1)).a(ak.a.a($$1)).a(aj.a.b);
       this.f.forEach($$2::a);
-      czd $$3 = new czd(this.a, this.b, this.c, new cud(this.e));
-      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.d.a() + "/")));
+      czh $$3 = new czh(Objects.requireNonNullElse(this.g, ""), ok.a(this.b), new cuo(this.c, this.d), this.e);
+      $$0.a($$1, $$3, $$2.b($$1.f("recipes/" + this.b.a() + "/")));
    }
 
-   private void a(akk $$0) {
+   private void a(akq $$0) {
       if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }

@@ -1,5 +1,15 @@
-public interface btt {
-   void a(avi var1);
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   boolean a();
+public interface btt {
+   @Nullable
+   UUID W_();
+
+   dcl e();
+
+   @Nullable
+   default btl P_() {
+      UUID $$0 = this.W_();
+      return $$0 == null ? null : this.e().b($$0);
+   }
 }

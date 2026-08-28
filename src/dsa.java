@@ -1,150 +1,77 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public final class dsa {
-   private static final Map<String, dsa> k = new Object2ObjectArrayMap();
-   public static final Codec<dsa> a = Codec.stringResolver($$0 -> $$0.l, k::get);
-   public static final dsa b = new dsa(
-      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(rs.g), Optional.of(rs.n), Optional.of(rs.C), Optional.of(rs.I)
-   );
-   public static final dsa c = new dsa(
-      "spruce", 0.5F, Optional.of(rs.q), Optional.of(rs.r), Optional.of(rs.k), Optional.empty(), Optional.empty(), Optional.empty()
-   );
-   public static final dsa d = new dsa(
-      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(rs.x), Optional.of(rs.y), Optional.empty(), Optional.empty()
-   );
-   public static final dsa e = new dsa("azalea", Optional.empty(), Optional.of(rs.w), Optional.empty());
-   public static final dsa f = new dsa("birch", Optional.empty(), Optional.of(rs.i), Optional.of(rs.F));
-   public static final dsa g = new dsa("jungle", Optional.of(rs.p), Optional.of(rs.o), Optional.empty());
-   public static final dsa h = new dsa("acacia", Optional.empty(), Optional.of(rs.j), Optional.empty());
-   public static final dsa i = new dsa("cherry", Optional.empty(), Optional.of(rs.z), Optional.of(rs.K));
-   public static final dsa j = new dsa("dark_oak", Optional.of(rs.h), Optional.empty(), Optional.empty());
-   private final String l;
-   private final float m;
-   private final Optional<akj<eay<?, ?>>> n;
-   private final Optional<akj<eay<?, ?>>> o;
-   private final Optional<akj<eay<?, ?>>> p;
-   private final Optional<akj<eay<?, ?>>> q;
-   private final Optional<akj<eay<?, ?>>> r;
-   private final Optional<akj<eay<?, ?>>> s;
+public class dsa extends dqf implements ddn, dsd.b {
+   private static final Logger a = LogUtils.getLogger();
+   private dsd b;
 
-   public dsa(String $$0, Optional<akj<eay<?, ?>>> $$1, Optional<akj<eay<?, ?>>> $$2, Optional<akj<eay<?, ?>>> $$3) {
-      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
+   public dsa(jd $$0, dta $$1) {
+      super(dqh.Q, $$0, $$1);
+      dsc $$2 = dsc.a;
+      dsc.a $$3 = dsc.a.a;
+      this.b = new dsd(this, $$2, $$3);
    }
 
-   public dsa(
-      String $$0,
-      float $$1,
-      Optional<akj<eay<?, ?>>> $$2,
-      Optional<akj<eay<?, ?>>> $$3,
-      Optional<akj<eay<?, ?>>> $$4,
-      Optional<akj<eay<?, ?>>> $$5,
-      Optional<akj<eay<?, ?>>> $$6,
-      Optional<akj<eay<?, ?>>> $$7
-   ) {
-      this.l = $$0;
-      this.m = $$1;
-      this.n = $$2;
-      this.o = $$3;
-      this.p = $$4;
-      this.q = $$5;
-      this.r = $$6;
-      this.s = $$7;
-      k.put($$0, this);
-   }
-
-   @Nullable
-   private akj<eay<?, ?>> a(ayo $$0, boolean $$1) {
-      if ($$0.i() < this.m) {
-         if ($$1 && this.s.isPresent()) {
-            return this.s.get();
-         }
-
-         if (this.q.isPresent()) {
-            return this.q.get();
-         }
+   @Override
+   protected void a(ua $$0, jo.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.e("normal_config")) {
+         ua $$2 = $$0.p("normal_config").i();
+         $$0.a("ominous_config", $$2.a($$0.p("ominous_config")));
       }
 
-      return $$1 && this.r.isPresent() ? this.r.get() : this.p.orElse(null);
-   }
-
-   @Nullable
-   private akj<eay<?, ?>> a(ayo $$0) {
-      return this.o.isPresent() && $$0.i() < this.m ? this.o.get() : this.n.orElse(null);
-   }
-
-   public boolean a(aqm $$0, dui $$1, ja $$2, dsl $$3, ayo $$4) {
-      akj<eay<?, ?>> $$5 = this.a($$4);
-      if ($$5 != null) {
-         jj<eay<?, ?>> $$6 = $$0.H_().d(lr.aH).b($$5).orElse(null);
-         if ($$6 != null) {
-            for (int $$7 = 0; $$7 >= -1; $$7--) {
-               for (int $$8 = 0; $$8 >= -1; $$8--) {
-                  if (a($$3, $$0, $$2, $$7, $$8)) {
-                     eay<?, ?> $$9 = $$6.a();
-                     dsl $$10 = dfk.a.o();
-                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
-                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
-                        return true;
-                     }
-
-                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
-                     return false;
-                  }
-               }
-            }
-         }
-      }
-
-      akj<eay<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
-      if ($$11 == null) {
-         return false;
-      } else {
-         jj<eay<?, ?>> $$12 = $$0.H_().d(lr.aH).b($$11).orElse(null);
-         if ($$12 == null) {
-            return false;
-         } else {
-            eay<?, ?> $$13 = $$12.a();
-            dsl $$14 = $$0.b_($$2).g();
-            $$0.a($$2, $$14, 4);
-            if ($$13.a($$0, $$1, $$4, $$2)) {
-               if ($$0.a_($$2) == $$14) {
-                  $$0.a($$2, $$3, $$14, 2);
-               }
-
-               return true;
-            } else {
-               $$0.a($$2, $$3, 4);
-               return false;
-            }
-         }
+      this.b.a().parse(uo.a, $$0).resultOrPartial(a::error).ifPresent($$0x -> this.b = $$0x);
+      if (this.n != null) {
+         this.f();
       }
    }
 
-   private static boolean a(dsl $$0, dbm $$1, ja $$2, int $$3, int $$4) {
-      dfi $$5 = $$0.b();
-      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
+   @Override
+   protected void b(ua $$0, jo.a $$1) {
+      super.b($$0, $$1);
+      this.b.a().encodeStart(uo.a, this.b).ifSuccess($$1x -> $$0.a((ua)$$1x)).ifError($$0x -> a.warn("Failed to encode TrialSpawner {}", $$0x.message()));
    }
 
-   private boolean a(dch $$0, ja $$1) {
-      for (ja $$2 : ja.a.c($$1.d().d(2).f(2), $$1.c().e(2).g(2))) {
-         if ($$0.a_($$2).a(avw.U)) {
-            return true;
-         }
-      }
+   public aca b() {
+      return aca.a(this);
+   }
 
-      return false;
+   @Override
+   public ua a(jo.a $$0) {
+      return this.b.f().a(this.n().c(dom.b));
+   }
+
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   @Override
+   public void a(bsw<?> $$0, ayv $$1) {
+      this.b.f().a(this.b, $$1, $$0);
+      this.e();
+   }
+
+   public dsd c() {
+      return this.b;
+   }
+
+   @Override
+   public dsg d() {
+      return !this.n().b(dtq.by) ? dsg.a : this.n().c(dtq.by);
+   }
+
+   @Override
+   public void a(dcu $$0, dsg $$1) {
+      this.e();
+      $$0.b(this.o, this.n().a(dtq.by, $$1));
+   }
+
+   @Override
+   public void f() {
+      this.e();
+      if (this.n != null) {
+         this.n.a(this.o, this.n(), this.n(), 3);
+      }
    }
 }

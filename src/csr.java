@@ -1,83 +1,79 @@
-import java.util.Collection;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class csr extends cty {
-   public csr(cty.a $$0) {
+public class csr extends cvl {
+   public static final int a = 20;
+   public static final int b = 15;
+
+   public csr(cuj.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dsl $$0, dcg $$1, ja $$2, cml $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2, false, $$3.b(bqg.a));
-      }
-
-      return false;
-   }
-
-   @Override
-   public bqh a(cxp $$0) {
-      cml $$1 = $$0.o();
-      dcg $$2 = $$0.q();
-      if (!$$2.B && $$1 != null) {
-         ja $$3 = $$0.a();
-         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
-            return bqh.f;
-         }
-      }
-
-      return bqh.a($$2.B);
-   }
-
-   private boolean a(cml $$0, dsl $$1, dch $$2, ja $$3, boolean $$4, cud $$5) {
-      if (!$$0.gx()) {
-         return false;
-      } else {
-         jj<dfi> $$6 = $$1.c();
-         dsm<dfi, dsl> $$7 = $$6.a().l();
-         Collection<dto<?>> $$8 = $$7.d();
-         if ($$8.isEmpty()) {
-            a($$0, wu.a(this.a() + ".empty", $$6.g()));
-            return false;
-         } else {
-            cwt $$9 = $$5.a(kn.L);
-            if ($$9 == null) {
-               return false;
-            } else {
-               dto<?> $$10 = $$9.a().get($$6);
-               if ($$4) {
-                  if ($$10 == null) {
-                     $$10 = $$8.iterator().next();
-                  }
-
-                  dsl $$11 = a($$1, $$10, $$0.fP());
-                  $$2.a($$3, $$11, 18);
-                  a($$0, wu.a(this.a() + ".update", $$10.f(), a($$11, $$10)));
-               } else {
-                  $$10 = a($$8, $$10, $$0.fP());
-                  $$5.b(kn.L, $$9.a($$6, $$10));
-                  a($$0, wu.a(this.a() + ".select", $$10.f(), a($$1, $$10)));
+   public void a(cuo $$0, dcu $$1, btl $$2, int $$3) {
+      if ($$2 instanceof cmv $$4) {
+         cuo $$5 = $$4.g($$0);
+         if (!$$5.e()) {
+            int $$6 = this.a($$0, $$2) - $$3;
+            float $$7 = a($$6);
+            if (!((double)$$7 < 0.1)) {
+               List<cuo> $$8 = a($$0, $$5, $$4);
+               if ($$1 instanceof aqt $$9 && !$$8.isEmpty()) {
+                  this.a($$9, $$4, $$4.ft(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
                }
 
-               return true;
+               $$1.a(null, $$4.dv(), $$4.dx(), $$4.dB(), avo.aG, avp.h, 1.0F, 1.0F / ($$1.E_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
+               $$4.b(avy.c.b(this));
             }
          }
       }
    }
 
-   private static <T extends Comparable<T>> dsl a(dsl $$0, dto<T> $$1, boolean $$2) {
-      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
+   @Override
+   protected void a(btl $$0, cnn $$1, int $$2, float $$3, float $$4, float $$5, @Nullable btl $$6) {
+      $$1.a($$0, $$0.dI(), $$0.dG() + $$5, 0.0F, $$3, $$4);
    }
 
-   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
-      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
+   public static float a(int $$0) {
+      float $$1 = (float)$$0 / 20.0F;
+      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
+      if ($$1 > 1.0F) {
+         $$1 = 1.0F;
+      }
+
+      return $$1;
    }
 
-   private static void a(cml $$0, wu $$1) {
-      ((aqn)$$0).b($$1, true);
+   @Override
+   public int a(cuo $$0, btl $$1) {
+      return 72000;
    }
 
-   private static <T extends Comparable<T>> String a(dsl $$0, dto<T> $$1) {
-      return $$1.a($$0.c($$1));
+   @Override
+   public cwm b(cuo $$0) {
+      return cwm.e;
+   }
+
+   @Override
+   public bqr<cuo> a(dcu $$0, cmv $$1, bqp $$2) {
+      cuo $$3 = $$1.b($$2);
+      boolean $$4 = !$$1.g($$3).e();
+      if (!$$1.fM() && !$$4) {
+         return bqr.d($$3);
+      } else {
+         $$1.c($$2);
+         return bqr.b($$3);
+      }
+   }
+
+   @Override
+   public Predicate<cuo> b() {
+      return c;
+   }
+
+   @Override
+   public int c() {
+      return 15;
    }
 }

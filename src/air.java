@@ -1,27 +1,29 @@
-import java.util.UUID;
+public class air implements zf<ain> {
+   public static final yw<vv, air> a = zf.a(air::a, air::new);
+   private final int b;
 
-public record air(String b, UUID c) implements zb<aip> {
-   public static final ys<vr, air> a = zb.a(air::a, air::new);
-
-   private air(vr $$0) {
-      this($$0.d(16), $$0.n());
+   public air(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.b, 16);
-      $$0.a(this.c);
+   private air(vv $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vv $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zd<air> a() {
-      return ain.g;
+   public zh<air> a() {
+      return ait.d;
    }
 
-   public void a(aip $$0) {
+   public void a(ain $$0) {
       $$0.a(this);
    }
 
-   public UUID e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

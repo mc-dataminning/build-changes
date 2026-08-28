@@ -1,30 +1,112 @@
 import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
 
 public class geh {
-   public static final akk a = new akk("textures/gui/title/background/panorama_overlay.png");
-   private final ffw b;
-   private final gdt c;
-   private float d;
-   private float e;
+   private static final int a = 6;
+   private final akq[] b = new akq[6];
 
-   public geh(gdt $$0) {
-      this.c = $$0;
-      this.b = ffw.Q();
+   public geh(akq $$0) {
+      for (int $$1 = 0; $$1 < 6; $$1++) {
+         this.b[$$1] = $$0.e($$0.a() + "_" + $$1 + ".png");
+      }
    }
 
-   public void a(fhh $$0, int $$1, int $$2, float $$3, float $$4) {
-      float $$5 = (float)((double)$$4 * this.b.m.s().c());
-      this.d = a(this.d + $$5 * 0.1F, 360.0F);
-      this.e = a(this.e + $$5 * 0.001F, (float) (Math.PI * 2));
-      this.c.a(this.b, 10.0F, -this.d, $$3);
+   public void a(fgi $$0, float $$1, float $$2, float $$3) {
+      fbe $$4 = fbe.b();
+      Matrix4f $$5 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aM().l() / (float)$$0.aM().m(), 0.05F, 10.0F);
+      RenderSystem.backupProjectionMatrix();
+      RenderSystem.setProjectionMatrix($$5, fbk.a);
+      Matrix4fStack $$6 = RenderSystem.getModelViewStack();
+      $$6.pushMatrix();
+      $$6.rotationX((float) Math.PI);
+      RenderSystem.setShader(gem::r);
       RenderSystem.enableBlend();
-      $$0.a(1.0F, 1.0F, 1.0F, $$3);
-      $$0.a(a, 0, 0, $$1, $$2, 0.0F, 0.0F, 16, 128, 16, 128);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
+      RenderSystem.disableCull();
+      RenderSystem.depthMask(false);
+      int $$7 = 2;
+
+      for (int $$8 = 0; $$8 < 4; $$8++) {
+         $$6.pushMatrix();
+         float $$9 = ((float)($$8 % 2) / 2.0F - 0.5F) / 256.0F;
+         float $$10 = ((float)($$8 / 2) / 2.0F - 0.5F) / 256.0F;
+         float $$11 = 0.0F;
+         $$6.translate($$9, $$10, 0.0F);
+         $$6.rotateX($$1 * (float) (Math.PI / 180.0));
+         $$6.rotateY($$2 * (float) (Math.PI / 180.0));
+         RenderSystem.applyModelViewMatrix();
+
+         for (int $$12 = 0; $$12 < 6; $$12++) {
+            RenderSystem.setShaderTexture(0, this.b[$$12]);
+            fax $$13 = $$4.a(fbh.c.h, fba.j);
+            int $$14 = Math.round(255.0F * $$3) / ($$8 + 1);
+            if ($$12 == 0) {
+               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
+            }
+
+            if ($$12 == 1) {
+               $$13.a(1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
+            }
+
+            if ($$12 == 2) {
+               $$13.a(1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
+            }
+
+            if ($$12 == 3) {
+               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
+            }
+
+            if ($$12 == 4) {
+               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
+            }
+
+            if ($$12 == 5) {
+               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
+            }
+
+            fay.a($$13.b());
+         }
+
+         $$6.popMatrix();
+         RenderSystem.colorMask(true, true, true, false);
+      }
+
+      RenderSystem.colorMask(true, true, true, true);
+      RenderSystem.restoreProjectionMatrix();
+      $$6.popMatrix();
+      RenderSystem.applyModelViewMatrix();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableCull();
+      RenderSystem.enableDepthTest();
    }
 
-   private static float a(float $$0, float $$1) {
-      return $$0 > $$1 ? $$0 - $$1 : $$0;
+   public CompletableFuture<Void> a(gqg $$0, Executor $$1) {
+      CompletableFuture<?>[] $$2 = new CompletableFuture[6];
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         $$2[$$3] = $$0.a(this.b[$$3], $$1);
+      }
+
+      return CompletableFuture.allOf($$2);
    }
 }

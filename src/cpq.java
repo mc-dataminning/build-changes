@@ -1,110 +1,55 @@
-public class cpq extends cpi {
-   private static final int k = 9;
-   private final bqa l;
-   private final int m;
+public class cpq {
+   public static final cpp a = new cpp.a().a(4).a(0.3F).c();
+   public static final cpp b = new cpp.a().a(5).a(0.6F).c();
+   public static final cpp c = new cpp.a().a(3).a(0.3F).c();
+   public static final cpp d = new cpp.a().a(1).a(0.6F).c();
+   public static final cpp e = a(6).c();
+   public static final cpp f = new cpp.a().a(5).a(0.6F).c();
+   public static final cpp g = new cpp.a().a(3).a(0.6F).c();
+   public static final cpp h = new cpp.a().a(2).a(0.3F).a(new bry(bsa.q, 600, 0), 0.3F).c();
+   public static final cpp i = new cpp.a().a(4).a(0.3F).a().c();
+   public static final cpp j = new cpp.a().a(2).a(0.1F).c();
+   public static final cpp k = new cpp.a().a(8).a(0.8F).c();
+   public static final cpp l = new cpp.a().a(6).a(0.6F).c();
+   public static final cpp m = new cpp.a().a(5).a(0.6F).c();
+   public static final cpp n = new cpp.a().a(6).a(0.8F).c();
+   public static final cpp o = new cpp.a().a(8).a(0.8F).c();
+   public static final cpp p = new cpp.a().a(5).a(0.6F).c();
+   public static final cpp q = new cpp.a().a(6).a(0.8F).c();
+   public static final cpp r = new cpp.a().a(2).a(0.1F).c();
+   public static final cpp s = new cpp.a().a(1).a(0.3F).b().c();
+   public static final cpp t = new cpp.a()
+      .a(4)
+      .a(1.2F)
+      .a(new bry(bsa.j, 400, 1), 1.0F)
+      .a(new bry(bsa.k, 6000, 0), 1.0F)
+      .a(new bry(bsa.l, 6000, 0), 1.0F)
+      .a(new bry(bsa.v, 2400, 3), 1.0F)
+      .a()
+      .c();
+   public static final cpp u = new cpp.a().a(4).a(1.2F).a(new bry(bsa.j, 100, 1), 1.0F).a(new bry(bsa.v, 2400, 0), 1.0F).a().c();
+   public static final cpp v = new cpp.a().a(6).a(1.2F).c();
+   public static final cpp w = new cpp.a().a(6).a(0.1F).c();
+   public static final cpp x = new cpp.a().a(2).a(0.3F).c();
+   public static final cpp y = a(6).c();
+   public static final cpp z = new cpp.a().a(2).a(0.3F).c();
+   public static final cpp A = new cpp.a().a(2).a(0.3F).a(new bry(bsa.s, 100, 0), 0.6F).c();
+   public static final cpp B = new cpp.a().a(3).a(0.3F).c();
+   public static final cpp C = new cpp.a().a(1).a(0.3F).c();
+   public static final cpp D = new cpp.a().a(1).a(0.1F).a(new bry(bsa.s, 1200, 1), 1.0F).a(new bry(bsa.q, 300, 2), 1.0F).a(new bry(bsa.i, 300, 0), 1.0F).c();
+   public static final cpp E = new cpp.a().a(8).a(0.3F).c();
+   public static final cpp F = new cpp.a().a(3).a(0.3F).c();
+   public static final cpp G = a(10).c();
+   public static final cpp H = new cpp.a().a(4).a(0.1F).a(new bry(bsa.q, 600, 0), 0.8F).c();
+   public static final cpp I = new cpp.a().a(2).a(0.1F).c();
+   public static final cpp J = new cpp.a().a(2).a(0.8F).a(new bry(bsa.s, 100, 0), 1.0F).c();
+   public static final cpp K = a(6).a().c();
+   public static final cpp L = new cpp.a().a(2).a(0.1F).c();
+   public static final cpp M = new cpp.a().a(2).a(0.1F).c();
+   public static final cpp N = new cpp.a().a(1).a(0.1F).c();
+   public static final cpp O = new cpp.a().a(1).a(0.1F).c();
 
-   private cpq(cqq<?> $$0, int $$1, cmk $$2, int $$3) {
-      this($$0, $$1, $$2, new bqq(9 * $$3), $$3);
-   }
-
-   public static cpq a(int $$0, cmk $$1) {
-      return new cpq(cqq.a, $$0, $$1, 1);
-   }
-
-   public static cpq b(int $$0, cmk $$1) {
-      return new cpq(cqq.b, $$0, $$1, 2);
-   }
-
-   public static cpq c(int $$0, cmk $$1) {
-      return new cpq(cqq.c, $$0, $$1, 3);
-   }
-
-   public static cpq d(int $$0, cmk $$1) {
-      return new cpq(cqq.d, $$0, $$1, 4);
-   }
-
-   public static cpq e(int $$0, cmk $$1) {
-      return new cpq(cqq.e, $$0, $$1, 5);
-   }
-
-   public static cpq f(int $$0, cmk $$1) {
-      return new cpq(cqq.f, $$0, $$1, 6);
-   }
-
-   public static cpq a(int $$0, cmk $$1, bqa $$2) {
-      return new cpq(cqq.c, $$0, $$1, $$2, 3);
-   }
-
-   public static cpq b(int $$0, cmk $$1, bqa $$2) {
-      return new cpq(cqq.f, $$0, $$1, $$2, 6);
-   }
-
-   public cpq(cqq<?> $$0, int $$1, cmk $$2, bqa $$3, int $$4) {
-      super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.l = $$3;
-      this.m = $$4;
-      $$3.d_($$2.l);
-      int $$5 = (this.m - 4) * 18;
-
-      for (int $$6 = 0; $$6 < this.m; $$6++) {
-         for (int $$7 = 0; $$7 < 9; $$7++) {
-            this.a(new cre($$3, $$7 + $$6 * 9, 8 + $$7 * 18, 18 + $$6 * 18));
-         }
-      }
-
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         for (int $$9 = 0; $$9 < 9; $$9++) {
-            this.a(new cre($$2, $$9 + $$8 * 9 + 9, 8 + $$9 * 18, 103 + $$8 * 18 + $$5));
-         }
-      }
-
-      for (int $$10 = 0; $$10 < 9; $$10++) {
-         this.a(new cre($$2, $$10, 8 + $$10 * 18, 161 + $$5));
-      }
-   }
-
-   @Override
-   public boolean b(cml $$0) {
-      return this.l.a($$0);
-   }
-
-   @Override
-   public cud b(cml $$0, int $$1) {
-      cud $$2 = cud.l;
-      cre $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cud $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 < this.m * 9) {
-            if (!this.a($$4, this.m * 9, this.i.size(), true)) {
-               return cud.l;
-            }
-         } else if (!this.a($$4, 0, this.m * 9, false)) {
-            return cud.l;
-         }
-
-         if ($$4.e()) {
-            $$3.e(cud.l);
-         } else {
-            $$3.c();
-         }
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void a(cml $$0) {
-      super.a($$0);
-      this.l.c($$0);
-   }
-
-   public bqa l() {
-      return this.l;
-   }
-
-   public int m() {
-      return this.m;
+   private static cpp.a a(int $$0) {
+      return new cpp.a().a($$0).a(0.6F).a(cur.ot);
    }
 }

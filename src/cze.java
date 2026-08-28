@@ -1,112 +1,75 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.stream.Stream;
+import com.mojang.datafixers.util.Pair;
+import javax.annotation.Nullable;
 
-public class cze implements czb {
-   final cyg a;
-   final cyg b;
-   final cyg c;
-
-   public cze(cyg $$0, cyg $$1, cyg $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class cze extends cyp {
+   public cze(cym $$0) {
+      super($$0);
    }
 
-   public boolean a(czc $$0, dcg $$1) {
-      return this.a.a($$0.c()) && this.b.a($$0.d()) && this.c.a($$0.e());
-   }
+   @Nullable
+   private Pair<cuo, cuo> a(cyn $$0) {
+      cuo $$1 = null;
+      cuo $$2 = null;
 
-   public cud a(czc $$0, jl.a $$1) {
-      cud $$2 = $$0.d();
-      if (this.b.a($$2)) {
-         Optional<jj.c<cwi>> $$3 = cwj.a($$1, $$0.e());
-         Optional<jj.c<cwk>> $$4 = cwl.a($$1, $$0.c());
-         if ($$3.isPresent() && $$4.isPresent()) {
-            cwh $$5 = $$2.a(kn.K);
-            if ($$5 != null && $$5.a($$4.get(), $$3.get())) {
-               return cud.l;
+      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
+         cuo $$4 = $$0.a($$3);
+         if (!$$4.e()) {
+            if ($$1 == null) {
+               $$1 = $$4;
+            } else {
+               if ($$2 != null) {
+                  return null;
+               }
+
+               $$2 = $$4;
             }
-
-            cud $$6 = $$2.c(1);
-            $$6.b(kn.K, new cwh($$3.get(), $$4.get()));
-            return $$6;
          }
       }
 
-      return cud.l;
+      return $$1 != null && $$2 != null && a($$1, $$2) ? Pair.of($$1, $$2) : null;
    }
 
-   @Override
-   public cud a(jl.a $$0) {
-      cud $$1 = new cud(cug.pH);
-      Optional<jj.c<cwk>> $$2 = $$0.b(lr.aW).b().findFirst();
-      Optional<jj.c<cwi>> $$3 = $$0.b(lr.aV).a(cwj.d);
-      if ($$2.isPresent() && $$3.isPresent()) {
-         $$1.b(kn.K, new cwh($$3.get(), $$2.get()));
+   private static boolean a(cuo $$0, cuo $$1) {
+      return $$1.a($$0.g()) && $$0.H() == 1 && $$1.H() == 1 && $$0.b(kq.d) && $$1.b(kq.d) && $$0.b(kq.e) && $$1.b(kq.e);
+   }
+
+   public boolean a(cyn $$0, dcu $$1) {
+      return this.a($$0) != null;
+   }
+
+   public cuo a(cyn $$0, jo.a $$1) {
+      Pair<cuo, cuo> $$2 = this.a($$0);
+      if ($$2 == null) {
+         return cuo.l;
+      } else {
+         cuo $$3 = (cuo)$$2.getFirst();
+         cuo $$4 = (cuo)$$2.getSecond();
+         int $$5 = Math.max($$3.o(), $$4.o());
+         int $$6 = $$3.o() - $$3.n();
+         int $$7 = $$4.o() - $$4.n();
+         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
+         cuo $$9 = new cuo($$3.g());
+         $$9.b(kq.d, Integer.valueOf($$5));
+         $$9.b(Math.max($$5 - $$8, 0));
+         dag $$10 = dac.b($$3);
+         dag $$11 = dac.b($$4);
+         dac.a($$9, $$3x -> $$1.b(lu.aL).b().filter($$0xx -> $$0xx.a(awg.o)).forEach($$3xx -> {
+               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
+               if ($$4x > 0) {
+                  $$3x.b($$3xx, $$4x);
+               }
+            }));
+         return $$9;
       }
-
-      return $$1;
    }
 
    @Override
-   public boolean a(cud $$0) {
-      return this.a.a($$0);
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public boolean b(cud $$0) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   public boolean c(cud $$0) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public cyo<?> ap_() {
-      return cyo.v;
-   }
-
-   @Override
-   public boolean i() {
-      return Stream.of(this.a, this.b, this.c).anyMatch(cyg::c);
-   }
-
-   public static class a implements cyo<cze> {
-      private static final MapCodec<cze> y = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  cyg.c.fieldOf("template").forGetter($$0x -> $$0x.a),
-                  cyg.c.fieldOf("base").forGetter($$0x -> $$0x.b),
-                  cyg.c.fieldOf("addition").forGetter($$0x -> $$0x.c)
-               )
-               .apply($$0, cze::new)
-      );
-      public static final ys<wf, cze> x = ys.a(cze.a::a, cze.a::a);
-
-      @Override
-      public MapCodec<cze> a() {
-         return y;
-      }
-
-      @Override
-      public ys<wf, cze> b() {
-         return x;
-      }
-
-      private static cze a(wf $$0) {
-         cyg $$1 = cyg.b.decode($$0);
-         cyg $$2 = cyg.b.decode($$0);
-         cyg $$3 = cyg.b.decode($$0);
-         return new cze($$1, $$2, $$3);
-      }
-
-      private static void a(wf $$0, cze $$1) {
-         cyg.b.encode($$0, $$1.a);
-         cyg.b.encode($$0, $$1.b);
-         cyg.b.encode($$0, $$1.c);
-      }
+   public czc<?> ap_() {
+      return czc.o;
    }
 }

@@ -1,320 +1,538 @@
-public class gfa {
-   private static final float a = 0.8888889F;
-   private final gpq[] b = new gpq[2];
-   private final gpq[] c = new gpq[2];
-   private gpq d;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.tuple.Triple;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
 
-   protected void a() {
-      this.b[0] = ffw.Q().aC().b().b(dfk.H.o()).e();
-      this.b[1] = grw.c.c();
-      this.c[0] = ffw.Q().aC().b().b(dfk.G.o()).e();
-      this.c[1] = grw.d.c();
-      this.d = grw.e.c();
+public abstract class gfa {
+   private static final float aQ = 0.99975586F;
+   public static final double a = 8.0;
+   protected final String b;
+   private final Runnable aR;
+   private final Runnable aS;
+   protected static final gfa.p c = new gfa.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
+   });
+   protected static final gfa.p d = new gfa.p("additive_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final gfa.p e = new gfa.p("lightning_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final gfa.p f = new gfa.p(
+      "glint_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gfa.p g = new gfa.p(
+      "crumbling_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gfa.p h = new gfa.p(
+      "translucent_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+            GlStateManager.SourceFactor.ONE,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final gfa.m i = new gfa.m();
+   protected static final gfa.m j = new gfa.m(gem::t);
+   protected static final gfa.m k = new gfa.m(gem::o);
+   protected static final gfa.m l = new gfa.m(gem::q);
+   protected static final gfa.m m = new gfa.m(gem::u);
+   protected static final gfa.m n = new gfa.m(gem::p);
+   protected static final gfa.m o = new gfa.m(gem::v);
+   protected static final gfa.m p = new gfa.m(gem::w);
+   protected static final gfa.m q = new gfa.m(gem::x);
+   protected static final gfa.m r = new gfa.m(gem::y);
+   protected static final gfa.m s = new gfa.m(gem::z);
+   protected static final gfa.m t = new gfa.m(gem::A);
+   protected static final gfa.m u = new gfa.m(gem::B);
+   protected static final gfa.m v = new gfa.m(gem::C);
+   protected static final gfa.m w = new gfa.m(gem::D);
+   protected static final gfa.m x = new gfa.m(gem::E);
+   protected static final gfa.m y = new gfa.m(gem::F);
+   protected static final gfa.m z = new gfa.m(gem::G);
+   protected static final gfa.m A = new gfa.m(gem::H);
+   protected static final gfa.m B = new gfa.m(gem::I);
+   protected static final gfa.m C = new gfa.m(gem::J);
+   protected static final gfa.m D = new gfa.m(gem::K);
+   protected static final gfa.m E = new gfa.m(gem::L);
+   protected static final gfa.m F = new gfa.m(gem::M);
+   protected static final gfa.m G = new gfa.m(gem::N);
+   protected static final gfa.m H = new gfa.m(gem::O);
+   protected static final gfa.m I = new gfa.m(gem::P);
+   protected static final gfa.m J = new gfa.m(gem::Q);
+   protected static final gfa.m K = new gfa.m(gem::S);
+   protected static final gfa.m L = new gfa.m(gem::T);
+   protected static final gfa.m M = new gfa.m(gem::U);
+   protected static final gfa.m N = new gfa.m(gem::W);
+   protected static final gfa.m O = new gfa.m(gem::X);
+   protected static final gfa.m P = new gfa.m(gem::Y);
+   protected static final gfa.m Q = new gfa.m(gem::aa);
+   protected static final gfa.m R = new gfa.m(gem::ab);
+   protected static final gfa.m S = new gfa.m(gem::ao);
+   protected static final gfa.m T = new gfa.m(gem::ac);
+   protected static final gfa.m U = new gfa.m(gem::ad);
+   protected static final gfa.m V = new gfa.m(gem::ae);
+   protected static final gfa.m W = new gfa.m(gem::af);
+   protected static final gfa.m X = new gfa.m(gem::ag);
+   protected static final gfa.m Y = new gfa.m(gem::ah);
+   protected static final gfa.m Z = new gfa.m(gem::ai);
+   protected static final gfa.m aa = new gfa.m(gem::aj);
+   protected static final gfa.m ab = new gfa.m(gem::ak);
+   protected static final gfa.m ac = new gfa.m(gem::al);
+   protected static final gfa.m ad = new gfa.m(gem::am);
+   protected static final gfa.m ae = new gfa.m(gem::an);
+   protected static final gfa.m af = new gfa.m(gem::ap);
+   protected static final gfa.m ag = new gfa.m(gem::aq);
+   protected static final gfa.m ah = new gfa.m(gem::ar);
+   protected static final gfa.m ai = new gfa.m(gem::as);
+   protected static final gfa.m aj = new gfa.m(gem::R);
+   protected static final gfa.n ak = new gfa.n(gqe.e, false, true);
+   protected static final gfa.n al = new gfa.n(gqe.e, false, false);
+   protected static final gfa.e am = new gfa.e();
+   protected static final gfa.o an = new gfa.o("default_texturing", () -> {
+   }, () -> {
+   });
+   protected static final gfa.o ao = new gfa.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gfa.o ap = new gfa.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gfa.g aq = new gfa.g(true);
+   protected static final gfa.g ar = new gfa.g(false);
+   protected static final gfa.l as = new gfa.l(true);
+   protected static final gfa.l at = new gfa.l(false);
+   protected static final gfa.c au = new gfa.c(true);
+   protected static final gfa.c av = new gfa.c(false);
+   protected static final gfa.d aw = new gfa.d("always", 519);
+   protected static final gfa.d ax = new gfa.d("==", 514);
+   protected static final gfa.d ay = new gfa.d("<=", 515);
+   protected static final gfa.d az = new gfa.d(">", 516);
+   protected static final gfa.q aA = new gfa.q(true, true);
+   protected static final gfa.q aB = new gfa.q(true, false);
+   protected static final gfa.q aC = new gfa.q(false, true);
+   protected static final gfa.f aD = new gfa.f("no_layering", () -> {
+   }, () -> {
+   });
+   protected static final gfa.f aE = new gfa.f("polygon_offset_layering", () -> {
+      RenderSystem.polygonOffset(-1.0F, -10.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
+   });
+   protected static final gfa.f aF = new gfa.f("view_offset_z_layering", () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.pushMatrix();
+      $$0.scale(0.99975586F, 0.99975586F, 0.99975586F);
+      RenderSystem.applyModelViewMatrix();
+   }, () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.popMatrix();
+      RenderSystem.applyModelViewMatrix();
+   });
+   protected static final gfa.k aG = new gfa.k("main_target", () -> {
+   }, () -> {
+   });
+   protected static final gfa.k aH = new gfa.k("outline_target", () -> fgi.Q().f.s().a(false), () -> fgi.Q().h().a(false));
+   protected static final gfa.k aI = new gfa.k("translucent_target", () -> {
+      if (fgi.O()) {
+         fgi.Q().f.t().a(false);
+      }
+   }, () -> {
+      if (fgi.O()) {
+         fgi.Q().h().a(false);
+      }
+   });
+   protected static final gfa.k aJ = new gfa.k("particles_target", () -> {
+      if (fgi.O()) {
+         fgi.Q().f.v().a(false);
+      }
+   }, () -> {
+      if (fgi.O()) {
+         fgi.Q().h().a(false);
+      }
+   });
+   protected static final gfa.k aK = new gfa.k("weather_target", () -> {
+      if (fgi.O()) {
+         fgi.Q().f.w().a(false);
+      }
+   }, () -> {
+      if (fgi.O()) {
+         fgi.Q().h().a(false);
+      }
+   });
+   protected static final gfa.k aL = new gfa.k("clouds_target", () -> {
+      if (fgi.O()) {
+         fgi.Q().f.x().a(false);
+      }
+   }, () -> {
+      if (fgi.O()) {
+         fgi.Q().h().a(false);
+      }
+   });
+   protected static final gfa.k aM = new gfa.k("item_entity_target", () -> {
+      if (fgi.O()) {
+         fgi.Q().f.u().a(false);
+      }
+   }, () -> {
+      if (fgi.O()) {
+         fgi.Q().h().a(false);
+      }
+   });
+   protected static final gfa.h aN = new gfa.h(OptionalDouble.of(1.0));
+   protected static final gfa.b aO = new gfa.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
+   });
+   protected static final gfa.b aP = new gfa.b("or_reverse", () -> {
+      RenderSystem.enableColorLogicOp();
+      RenderSystem.logicOp(GlStateManager.g.n);
+   }, () -> RenderSystem.disableColorLogicOp());
+
+   public gfa(String $$0, Runnable $$1, Runnable $$2) {
+      this.b = $$0;
+      this.aR = $$1;
+      this.aS = $$2;
    }
 
-   private static boolean a(eoj $$0, eoj $$1) {
-      return $$1.a().a($$0.a());
+   public void a() {
+      this.aR.run();
    }
 
-   private static boolean a(dbm $$0, jf $$1, float $$2, ja $$3, dsl $$4) {
-      if ($$4.p()) {
-         exa $$5 = ewx.a(0.0, 0.0, 0.0, 1.0, (double)$$2, 1.0);
-         exa $$6 = $$4.c($$0, $$3);
-         return ewx.a($$5, $$6, $$1);
-      } else {
-         return false;
+   public void b() {
+      this.aS.run();
+   }
+
+   @Override
+   public String toString() {
+      return this.b;
+   }
+
+   private static void a(float $$0) {
+      long $$1 = (long)((double)ad.c() * fgi.Q().m.am().c() * 8.0);
+      float $$2 = (float)($$1 % 110000L) / 110000.0F;
+      float $$3 = (float)($$1 % 30000L) / 30000.0F;
+      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
+      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
+      RenderSystem.setTextureMatrix($$4);
+   }
+
+   static class a extends gfa {
+      private final boolean aQ;
+
+      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
+         super($$0, $$1, $$2);
+         this.aQ = $$3;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aQ + "]";
       }
    }
 
-   private static boolean a(dbm $$0, ja $$1, jf $$2, float $$3, dsl $$4) {
-      return a($$0, $$2, $$3, $$1.a($$2), $$4);
+   protected static class b extends gfa {
+      public b(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
    }
 
-   private static boolean a(dbm $$0, ja $$1, dsl $$2, jf $$3) {
-      return a($$0, $$3.g(), 1.0F, $$1, $$2);
+   protected static class c extends gfa.a {
+      public c(boolean $$0) {
+         super("cull", () -> {
+            if (!$$0) {
+               RenderSystem.disableCull();
+            }
+         }, () -> {
+            if (!$$0) {
+               RenderSystem.enableCull();
+            }
+         }, $$0);
+      }
    }
 
-   public static boolean a(dbj $$0, ja $$1, eoj $$2, dsl $$3, jf $$4, eoj $$5) {
-      return !a($$0, $$1, $$3, $$4) && !a($$2, $$5);
+   protected static class d extends gfa {
+      private final String aQ;
+
+      public d(String $$0, int $$1) {
+         super("depth_test", () -> {
+            if ($$1 != 519) {
+               RenderSystem.enableDepthTest();
+               RenderSystem.depthFunc($$1);
+            }
+         }, () -> {
+            if ($$1 != 519) {
+               RenderSystem.disableDepthTest();
+               RenderSystem.depthFunc(515);
+            }
+         });
+         this.aQ = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aQ + "]";
+      }
    }
 
-   public void a(dbj $$0, ja $$1, fas $$2, dsl $$3, eoj $$4) {
-      boolean $$5 = $$4.a(awc.b);
-      gpq[] $$6 = $$5 ? this.b : this.c;
-      int $$7 = $$5 ? 16777215 : gdr.c($$0, $$1);
-      float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-      float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-      float $$10 = (float)($$7 & 0xFF) / 255.0F;
-      dsl $$11 = $$0.a_($$1.a(jf.a));
-      eoj $$12 = $$11.u();
-      dsl $$13 = $$0.a_($$1.a(jf.b));
-      eoj $$14 = $$13.u();
-      dsl $$15 = $$0.a_($$1.a(jf.c));
-      eoj $$16 = $$15.u();
-      dsl $$17 = $$0.a_($$1.a(jf.d));
-      eoj $$18 = $$17.u();
-      dsl $$19 = $$0.a_($$1.a(jf.e));
-      eoj $$20 = $$19.u();
-      dsl $$21 = $$0.a_($$1.a(jf.f));
-      eoj $$22 = $$21.u();
-      boolean $$23 = !a($$4, $$14);
-      boolean $$24 = a($$0, $$1, $$4, $$3, jf.a, $$12) && !a($$0, $$1, jf.a, 0.8888889F, $$11);
-      boolean $$25 = a($$0, $$1, $$4, $$3, jf.c, $$16);
-      boolean $$26 = a($$0, $$1, $$4, $$3, jf.d, $$18);
-      boolean $$27 = a($$0, $$1, $$4, $$3, jf.e, $$20);
-      boolean $$28 = a($$0, $$1, $$4, $$3, jf.f, $$22);
-      if ($$23 || $$24 || $$28 || $$27 || $$25 || $$26) {
-         float $$29 = $$0.a(jf.a, true);
-         float $$30 = $$0.a(jf.b, true);
-         float $$31 = $$0.a(jf.c, true);
-         float $$32 = $$0.a(jf.e, true);
-         eoi $$33 = $$4.a();
-         float $$34 = this.a($$0, $$33, $$1, $$3, $$4);
-         float $$35;
-         float $$36;
-         float $$37;
-         float $$38;
-         if ($$34 >= 1.0F) {
-            $$35 = 1.0F;
-            $$36 = 1.0F;
-            $$37 = 1.0F;
-            $$38 = 1.0F;
-         } else {
-            float $$39 = this.a($$0, $$33, $$1.e(), $$15, $$16);
-            float $$40 = this.a($$0, $$33, $$1.f(), $$17, $$18);
-            float $$41 = this.a($$0, $$33, $$1.h(), $$21, $$22);
-            float $$42 = this.a($$0, $$33, $$1.g(), $$19, $$20);
-            $$35 = this.a($$0, $$33, $$34, $$39, $$41, $$1.a(jf.c).a(jf.f));
-            $$36 = this.a($$0, $$33, $$34, $$39, $$42, $$1.a(jf.c).a(jf.e));
-            $$37 = this.a($$0, $$33, $$34, $$40, $$41, $$1.a(jf.d).a(jf.f));
-            $$38 = this.a($$0, $$33, $$34, $$40, $$42, $$1.a(jf.d).a(jf.e));
-         }
+   protected static class e extends gfa {
+      public e(Runnable $$0, Runnable $$1) {
+         super("texture", $$0, $$1);
+      }
 
-         double $$47 = (double)($$1.u() & 15);
-         double $$48 = (double)($$1.v() & 15);
-         double $$49 = (double)($$1.w() & 15);
-         float $$50 = 0.001F;
-         float $$51 = $$24 ? 0.001F : 0.0F;
-         if ($$23 && !a($$0, $$1, jf.b, Math.min(Math.min($$36, $$38), Math.min($$37, $$35)), $$13)) {
-            $$36 -= 0.001F;
-            $$38 -= 0.001F;
-            $$37 -= 0.001F;
-            $$35 -= 0.001F;
-            ewh $$52 = $$4.c($$0, $$1);
-            float $$54;
-            float $$56;
-            float $$58;
-            float $$60;
-            float $$55;
-            float $$57;
-            float $$59;
-            float $$61;
-            if ($$52.c == 0.0 && $$52.e == 0.0) {
-               gpq $$53 = $$6[0];
-               $$54 = $$53.a(0.0F);
-               $$55 = $$53.c(0.0F);
-               $$56 = $$54;
-               $$57 = $$53.c(1.0F);
-               $$58 = $$53.a(1.0F);
-               $$59 = $$57;
-               $$60 = $$58;
-               $$61 = $$55;
-            } else {
-               gpq $$62 = $$6[1];
-               float $$63 = (float)ayg.d($$52.e, $$52.c) - (float) (Math.PI / 2);
-               float $$64 = ayg.a($$63) * 0.25F;
-               float $$65 = ayg.b($$63) * 0.25F;
-               float $$66 = 0.5F;
-               $$54 = $$62.a(0.5F + (-$$65 - $$64));
-               $$55 = $$62.c(0.5F + -$$65 + $$64);
-               $$56 = $$62.a(0.5F + -$$65 + $$64);
-               $$57 = $$62.c(0.5F + $$65 + $$64);
-               $$58 = $$62.a(0.5F + $$65 + $$64);
-               $$59 = $$62.c(0.5F + ($$65 - $$64));
-               $$60 = $$62.a(0.5F + ($$65 - $$64));
-               $$61 = $$62.c(0.5F + (-$$65 - $$64));
+      e() {
+         super("texture", () -> {
+         }, () -> {
+         });
+      }
+
+      protected Optional<akq> c() {
+         return Optional.empty();
+      }
+   }
+
+   protected static class f extends gfa {
+      public f(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class g extends gfa.a {
+      public g(boolean $$0) {
+         super("lightmap", () -> {
+            if ($$0) {
+               fgi.Q().j.m().c();
             }
-
-            float $$75 = ($$54 + $$56 + $$58 + $$60) / 4.0F;
-            float $$76 = ($$55 + $$57 + $$59 + $$61) / 4.0F;
-            float $$77 = $$6[0].k();
-            $$54 = ayg.i($$77, $$54, $$75);
-            $$56 = ayg.i($$77, $$56, $$75);
-            $$58 = ayg.i($$77, $$58, $$75);
-            $$60 = ayg.i($$77, $$60, $$75);
-            $$55 = ayg.i($$77, $$55, $$76);
-            $$57 = ayg.i($$77, $$57, $$76);
-            $$59 = ayg.i($$77, $$59, $$76);
-            $$61 = ayg.i($$77, $$61, $$76);
-            int $$78 = this.a($$0, $$1);
-            float $$79 = $$30 * $$8;
-            float $$80 = $$30 * $$9;
-            float $$81 = $$30 * $$10;
-            this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
-            this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
-            if ($$4.b($$0, $$1.c())) {
-               this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
-               this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
-               this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
-               this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
+         }, () -> {
+            if ($$0) {
+               fgi.Q().j.m().b();
             }
-         }
+         }, $$0);
+      }
+   }
 
-         if ($$24) {
-            float $$82 = $$6[0].c();
-            float $$83 = $$6[0].d();
-            float $$84 = $$6[0].g();
-            float $$85 = $$6[0].h();
-            int $$86 = this.a($$0, $$1.d());
-            float $$87 = $$29 * $$8;
-            float $$88 = $$29 * $$9;
-            float $$89 = $$29 * $$10;
-            this.a($$2, $$47, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$82, $$85, $$86);
-            this.a($$2, $$47, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$82, $$84, $$86);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$83, $$84, $$86);
-            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$83, $$85, $$86);
-         }
+   protected static class h extends gfa {
+      private final OptionalDouble aQ;
 
-         int $$90 = this.a($$0, $$1);
-
-         for (jf $$91 : jf.c.a) {
-            float $$92;
-            float $$93;
-            double $$94;
-            double $$96;
-            double $$95;
-            double $$97;
-            boolean $$98;
-            switch ($$91) {
-               case c:
-                  $$92 = $$36;
-                  $$93 = $$35;
-                  $$94 = $$47;
-                  $$95 = $$47 + 1.0;
-                  $$96 = $$49 + 0.001F;
-                  $$97 = $$49 + 0.001F;
-                  $$98 = $$25;
-                  break;
-               case d:
-                  $$92 = $$37;
-                  $$93 = $$38;
-                  $$94 = $$47 + 1.0;
-                  $$95 = $$47;
-                  $$96 = $$49 + 1.0 - 0.001F;
-                  $$97 = $$49 + 1.0 - 0.001F;
-                  $$98 = $$26;
-                  break;
-               case e:
-                  $$92 = $$38;
-                  $$93 = $$36;
-                  $$94 = $$47 + 0.001F;
-                  $$95 = $$47 + 0.001F;
-                  $$96 = $$49 + 1.0;
-                  $$97 = $$49;
-                  $$98 = $$27;
-                  break;
-               default:
-                  $$92 = $$35;
-                  $$93 = $$37;
-                  $$94 = $$47 + 1.0 - 0.001F;
-                  $$95 = $$47 + 1.0 - 0.001F;
-                  $$96 = $$49;
-                  $$97 = $$49 + 1.0;
-                  $$98 = $$28;
-            }
-
-            if ($$98 && !a($$0, $$1, $$91, Math.max($$92, $$93), $$0.a_($$1.a($$91)))) {
-               ja $$120 = $$1.a($$91);
-               gpq $$121 = $$6[1];
-               if (!$$5) {
-                  dfi $$122 = $$0.a_($$120).b();
-                  if ($$122 instanceof diy || $$122 instanceof djs) {
-                     $$121 = this.d;
-                  }
+      public h(OptionalDouble $$0) {
+         super("line_width", () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               if ($$0.isPresent()) {
+                  RenderSystem.lineWidth((float)$$0.getAsDouble());
+               } else {
+                  RenderSystem.lineWidth(Math.max(2.5F, (float)fgi.Q().aM().l() / 1920.0F * 2.5F));
                }
-
-               float $$123 = $$121.a(0.0F);
-               float $$124 = $$121.a(0.5F);
-               float $$125 = $$121.c((1.0F - $$92) * 0.5F);
-               float $$126 = $$121.c((1.0F - $$93) * 0.5F);
-               float $$127 = $$121.c(0.5F);
-               float $$128 = $$91.o() == jf.a.c ? $$31 : $$32;
-               float $$129 = $$30 * $$128 * $$8;
-               float $$130 = $$30 * $$128 * $$9;
-               float $$131 = $$30 * $$128 * $$10;
-               this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
-               this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
-               this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
-               this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
-               if ($$121 != this.d) {
-                  this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
-                  this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
-                  this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
-                  this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
-               }
             }
+         }, () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               RenderSystem.lineWidth(1.0F);
+            }
+         });
+         this.aQ = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + (this.aQ.isPresent() ? this.aQ.getAsDouble() : "window_scale") + "]";
+      }
+   }
+
+   protected static class i extends gfa.e {
+      private final Optional<akq> aQ;
+
+      i(ImmutableList<Triple<akq, Boolean, Boolean>> $$0) {
+         super(() -> {
+            int $$1 = 0;
+            UnmodifiableIterator var2 = $$0.iterator();
+
+            while (var2.hasNext()) {
+               Triple<akq, Boolean, Boolean> $$2 = (Triple<akq, Boolean, Boolean>)var2.next();
+               gqg $$3 = fgi.Q().aa();
+               $$3.b((akq)$$2.getLeft()).a((Boolean)$$2.getMiddle(), (Boolean)$$2.getRight());
+               RenderSystem.setShaderTexture($$1++, (akq)$$2.getLeft());
+            }
+         }, () -> {
+         });
+         this.aQ = $$0.stream().findFirst().map(Triple::getLeft);
+      }
+
+      @Override
+      protected Optional<akq> c() {
+         return this.aQ;
+      }
+
+      public static gfa.i.a d() {
+         return new gfa.i.a();
+      }
+
+      public static final class a {
+         private final Builder<Triple<akq, Boolean, Boolean>> a = new Builder();
+
+         public gfa.i.a a(akq $$0, boolean $$1, boolean $$2) {
+            this.a.add(Triple.of($$0, $$1, $$2));
+            return this;
+         }
+
+         public gfa.i a() {
+            return new gfa.i(this.a.build());
          }
       }
    }
 
-   private float a(dbj $$0, eoi $$1, float $$2, float $$3, float $$4, ja $$5) {
-      if (!($$4 >= 1.0F) && !($$3 >= 1.0F)) {
-         float[] $$6 = new float[2];
-         if ($$4 > 0.0F || $$3 > 0.0F) {
-            float $$7 = this.a($$0, $$1, $$5);
-            if ($$7 >= 1.0F) {
-               return 1.0F;
+   protected static final class j extends gfa.o {
+      public j(float $$0, float $$1) {
+         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
+      }
+   }
+
+   protected static class k extends gfa {
+      public k(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class l extends gfa.a {
+      public l(boolean $$0) {
+         super("overlay", () -> {
+            if ($$0) {
+               fgi.Q().j.n().a();
+            }
+         }, () -> {
+            if ($$0) {
+               fgi.Q().j.n().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class m extends gfa {
+      private final Optional<Supplier<gfh>> aQ;
+
+      public m(Supplier<gfh> $$0) {
+         super("shader", () -> RenderSystem.setShader($$0), () -> {
+         });
+         this.aQ = Optional.of($$0);
+      }
+
+      public m() {
+         super("shader", () -> RenderSystem.setShader(() -> null), () -> {
+         });
+         this.aQ = Optional.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aQ + "]";
+      }
+   }
+
+   protected static class n extends gfa.e {
+      private final Optional<akq> aQ;
+      private final boolean aR;
+      private final boolean aS;
+
+      public n(akq $$0, boolean $$1, boolean $$2) {
+         super(() -> {
+            gqg $$3 = fgi.Q().aa();
+            $$3.b($$0).a($$1, $$2);
+            RenderSystem.setShaderTexture(0, $$0);
+         }, () -> {
+         });
+         this.aQ = Optional.of($$0);
+         this.aR = $$1;
+         this.aS = $$2;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aQ + "(blur=" + this.aR + ", mipmap=" + this.aS + ")]";
+      }
+
+      @Override
+      protected Optional<akq> c() {
+         return this.aQ;
+      }
+   }
+
+   protected static class o extends gfa {
+      public o(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class p extends gfa {
+      public p(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class q extends gfa {
+      private final boolean aQ;
+      private final boolean aR;
+
+      public q(boolean $$0, boolean $$1) {
+         super("write_mask_state", () -> {
+            if (!$$1) {
+               RenderSystem.depthMask($$1);
             }
 
-            this.a($$6, $$7);
-         }
+            if (!$$0) {
+               RenderSystem.colorMask($$0, $$0, $$0, $$0);
+            }
+         }, () -> {
+            if (!$$1) {
+               RenderSystem.depthMask(true);
+            }
 
-         this.a($$6, $$2);
-         this.a($$6, $$4);
-         this.a($$6, $$3);
-         return $$6[0] / $$6[1];
-      } else {
-         return 1.0F;
+            if (!$$0) {
+               RenderSystem.colorMask(true, true, true, true);
+            }
+         });
+         this.aQ = $$0;
+         this.aR = $$1;
       }
-   }
 
-   private void a(float[] $$0, float $$1) {
-      if ($$1 >= 0.8F) {
-         $$0[0] += $$1 * 10.0F;
-         $$0[1] += 10.0F;
-      } else if ($$1 >= 0.0F) {
-         $$0[0] += $$1;
-         $$0[1]++;
+      @Override
+      public String toString() {
+         return this.b + "[writeColor=" + this.aQ + ", writeDepth=" + this.aR + "]";
       }
-   }
-
-   private float a(dbj $$0, eoi $$1, ja $$2) {
-      dsl $$3 = $$0.a_($$2);
-      return this.a($$0, $$1, $$2, $$3, $$3.u());
-   }
-
-   private float a(dbj $$0, eoi $$1, ja $$2, dsl $$3, eoj $$4) {
-      if ($$1.a($$4.a())) {
-         dsl $$5 = $$0.a_($$2.c());
-         return $$1.a($$5.u().a()) ? 1.0F : $$4.d();
-      } else {
-         return !$$3.e() ? 0.0F : -1.0F;
-      }
-   }
-
-   private void a(fas $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      $$0.a($$1, $$2, $$3).a($$4, $$5, $$6, 1.0F).a($$7, $$8).b($$9).a(0.0F, 1.0F, 0.0F).e();
-   }
-
-   private int a(dbj $$0, ja $$1) {
-      int $$2 = ged.a($$0, $$1);
-      int $$3 = ged.a($$0, $$1.c());
-      int $$4 = $$2 & 0xFF;
-      int $$5 = $$3 & 0xFF;
-      int $$6 = $$2 >> 16 & 0xFF;
-      int $$7 = $$3 >> 16 & 0xFF;
-      return ($$4 > $$5 ? $$4 : $$5) | ($$6 > $$7 ? $$6 : $$7) << 16;
    }
 }

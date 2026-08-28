@@ -1,13 +1,44 @@
-public abstract class gnm<T extends bsh, M extends fuq<T>> extends goa<T, M> {
-   public gnm(glk<T, M> $$0) {
+public class gnm<T extends btl, M extends fwj<T>> extends goy<T, M> {
+   private static final akq a = akq.b("textures/entity/bee/bee_stinger.png");
+
+   public gnm(gle<T, M> $$0) {
       super($$0);
    }
 
    @Override
-   public void a(fao $$0, gef $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      fas $$10 = $$1.getBuffer(this.a());
-      this.c().a($$0, $$10, 15728640, gph.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   protected int a(T $$0) {
+      return $$0.eR();
    }
 
-   public abstract gen a();
+   @Override
+   protected void a(fbc $$0, get $$1, int $$2, bsq $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = ayn.c($$4 * $$4 + $$6 * $$6);
+      float $$9 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
+      float $$10 = (float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI);
+      $$0.a(0.0F, 0.0F, 0.0F);
+      $$0.a(a.d.rotationDegrees($$9 - 90.0F));
+      $$0.a(a.f.rotationDegrees($$10));
+      float $$11 = 0.0F;
+      float $$12 = 0.125F;
+      float $$13 = 0.0F;
+      float $$14 = 0.0625F;
+      float $$15 = 0.03125F;
+      $$0.a(a.b.rotationDegrees(45.0F));
+      $$0.b(0.03125F, 0.03125F, 0.03125F);
+      $$0.a(2.5F, 0.0F, 0.0F);
+      fbg $$16 = $$1.getBuffer(gfb.e(a));
+
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         $$0.a(a.b.rotationDegrees(90.0F));
+         fbc.a $$18 = $$0.c();
+         a($$16, $$18, -4.5F, -1, 0.0F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, -1, 0.125F, 0.0F, $$2);
+         a($$16, $$18, 4.5F, 1, 0.125F, 0.0625F, $$2);
+         a($$16, $$18, -4.5F, 1, 0.0F, 0.0625F, $$2);
+      }
+   }
+
+   private static void a(fbg $$0, fbc.a $$1, float $$2, int $$3, float $$4, float $$5, int $$6) {
+      $$0.a($$1, $$2, (float)$$3, 0.0F).a(-1).a($$4, $$5).b(gpw.d).c($$6).b($$1, 0.0F, 1.0F, 0.0F);
+   }
 }

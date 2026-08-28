@@ -1,17 +1,13 @@
-public class gix extends glv<cjc> {
-   private static final akk a = new akk("textures/entity/spider/cave_spider.png");
-   private static final float i = 0.7F;
+public abstract class gix<T extends chg, M extends fvp<T>> extends glj<T, M> {
+   private final float a;
 
-   public gix(gjo.a $$0) {
-      super($$0, fxp.w);
-      this.d *= 0.7F;
+   public gix(gkd.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   protected void a(cjc $$0, fao $$1, float $$2) {
-      $$1.b(0.7F, 0.7F, 0.7F);
-   }
-
-   public akk a(cjc $$0) {
-      return a;
+   protected void a(T $$0, fbc $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

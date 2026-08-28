@@ -1,31 +1,35 @@
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import org.lwjgl.system.MemoryUtil;
+public interface ezh {
+   int a();
 
-public class ezh {
-   public static ByteBuffer a(int $$0) {
-      return MemoryUtil.memAlloc($$0);
+   int b();
+
+   void a(int var1, int var2);
+
+   boolean c();
+
+   float d();
+
+   default float e() {
+      return this.i();
    }
 
-   public static void a(Buffer $$0) {
-      MemoryUtil.memFree($$0);
+   default float f() {
+      return this.e() + (float)this.a() / this.d();
    }
 
-   public static String a() {
-      return GlStateManager._getString(7936);
+   default float g() {
+      return 7.0F - this.j();
    }
 
-   public static String b() {
-      return GLX._getCpuInfo();
+   default float h() {
+      return this.g() + (float)this.b() / this.d();
    }
 
-   public static String c() {
-      return GlStateManager._getString(7937);
+   default float i() {
+      return 0.0F;
    }
 
-   public static String d() {
-      return GlStateManager._getString(7938);
+   default float j() {
+      return 7.0F;
    }
 }

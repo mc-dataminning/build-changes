@@ -1,28 +1,39 @@
-public class gmp extends gku<cii, fxg<cii>> {
-   private static final akk a = new akk("textures/entity/wither/wither_invulnerable.png");
-   private static final akk i = new akk("textures/entity/wither/wither.png");
+public class gmp<T extends bsq & cnk> extends gkc<T> {
+   private static final float a = 12.25F;
+   private final glb f;
+   private final float g;
+   private final boolean h;
 
-   public gmp(gjo.a $$0) {
-      super($$0, new fxg<>($$0.a(fxp.bV)), 1.0F);
-      this.a(new goo(this, $$0.f()));
+   public gmp(gkd.a $$0, float $$1, boolean $$2) {
+      super($$0);
+      this.f = $$0.b();
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   protected int a(cii $$0, ja $$1) {
-      return 15;
+   public gmp(gkd.a $$0) {
+      this($$0, 1.0F, false);
    }
 
-   public akk a(cii $$0) {
-      int $$1 = $$0.x();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   @Override
+   protected int a(T $$0, jd $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
    }
 
-   protected void a(cii $$0, fao $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.x();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
+   @Override
+   public void a(T $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
+      if ($$0.ai >= 2 || !(this.c.b.g().g($$0) < 12.25)) {
+         $$3.a();
+         $$3.b(this.g, this.g, this.g);
+         $$3.a(this.c.b());
+         this.f.a($$0.p(), cul.h, $$5, gpw.d, $$3, $$4, $$0.dQ(), $$0.an());
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+   }
 
-      $$1.b($$3, $$3, $$3);
+   @Override
+   public akq a(bsq $$0) {
+      return gqe.e;
    }
 }

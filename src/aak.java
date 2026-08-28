@@ -1,26 +1,26 @@
-public record aak(long c, ja d) implements aac {
-   public static final ys<vr, aak> a = aac.a(aak::a, aak::new);
-   public static final aac.b<aak> b = aac.a("debug/neighbors_update");
+public record aak(akp<dxw> c, eww d) implements aai {
+   public static final yw<vv, aak> a = aai.a(aak::a, aak::new);
+   public static final aai.b<aak> b = aai.a("debug/game_event");
 
-   private aak(vr $$0) {
-      this($$0.m(), $$0.e());
+   private aak(vv $$0) {
+      this($$0.a(lu.G), $$0.k());
    }
 
-   private void a(vr $$0) {
-      $$0.a(this.c);
+   private void a(vv $$0) {
+      $$0.b(this.c);
       $$0.a(this.d);
    }
 
    @Override
-   public aac.b<aak> a() {
+   public aai.b<aak> a() {
       return b;
    }
 
-   public long b() {
+   public akp<dxw> b() {
       return this.c;
    }
 
-   public ja c() {
+   public eww c() {
       return this.d;
    }
 }

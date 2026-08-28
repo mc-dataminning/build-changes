@@ -1,112 +1,118 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
-import javax.annotation.Nullable;
+public class coz extends cor {
+   static final ajv<String> c = ajz.a(coz.class, ajx.e);
+   static final ajv<wy> d = ajz.a(coz.class, ajx.f);
+   private final dbv e = new coz.a();
+   private static final int i = 4;
+   private int j;
 
-public final class coz {
-   private static final coz b = new coz(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final cpa c;
-   private final long d;
-
-   private coz(@Nullable cpa $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public coz(bsw<? extends coz> $$0, dcu $$1) {
+      super($$0, $$1);
    }
 
-   static coz a(cpa $$0, Collection<cox> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
-      } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new coz($$0, $$2);
-      }
+   public coz(dcu $$0, double $$1, double $$2, double $$3) {
+      super(bsw.v, $$0, $$1, $$2, $$3);
    }
 
-   public static coz a() {
-      return b;
+   @Override
+   protected cuj ag_() {
+      return cur.nM;
    }
 
-   public static coz a(cox $$0) {
-      return new coz($$0.a, $$0.b);
+   @Override
+   protected void a(ajz.a $$0) {
+      super.a($$0);
+      $$0.a(c, "");
+      $$0.a(d, wx.a);
    }
 
-   public static coz a(cox $$0, cox... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new coz($$0.a, $$2);
+   @Override
+   protected void a(ua $$0) {
+      super.a($$0);
+      this.e.b($$0, this.dS());
+      this.ar().a(c, this.B().m());
+      this.ar().a(d, this.B().l());
    }
 
-   private static long a(cpa $$0, long $$1, Iterable<cox> $$2) {
-      for (cox $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
-         }
-
-         $$1 |= $$3.b;
-      }
-
-      return $$1;
+   @Override
+   protected void b(ua $$0) {
+      super.b($$0);
+      this.e.a($$0, this.dS());
    }
 
-   public boolean b(cox $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
+   @Override
+   public cor.a v() {
+      return cor.a.g;
    }
 
-   public boolean b() {
-      return this.equals(b);
+   @Override
+   public dta x() {
+      return dfy.fN.o();
    }
 
-   public boolean a(coz $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
+   public dbv B() {
+      return this.e;
    }
 
-   public boolean b(coz $$0) {
-      return this.c != null && $$0.c != null && this.c == $$0.c ? (this.d & $$0.d) != 0L : false;
-   }
-
-   public coz c(coz $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new coz(this.c, this.d | $$0.d);
-      }
-   }
-
-   public coz d(coz $$0) {
-      if (this.c == null || $$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         long $$1 = this.d & ~$$0.d;
-         return $$1 == 0L ? b : new coz(this.c, $$1);
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.ai - this.j >= 4) {
+         this.B().a(this.dQ());
+         this.j = this.ai;
       }
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof coz $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
-         }
+   public bqq a(cmv $$0, bqp $$1) {
+      return this.e.a($$0);
+   }
 
-         return false;
+   @Override
+   public void a(ajv<?> $$0) {
+      super.a($$0);
+      if (d.equals($$0)) {
+         try {
+            this.e.c(this.ar().a(d));
+         } catch (Throwable var3) {
+         }
+      } else if (c.equals($$0)) {
+         this.e.a(this.ar().a(c));
       }
    }
 
    @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
+   public boolean cQ() {
+      return true;
+   }
+
+   public class a extends dbv {
+      @Override
+      public aqt e() {
+         return (aqt)coz.this.dQ();
+      }
+
+      @Override
+      public void f() {
+         coz.this.ar().a(coz.c, this.m());
+         coz.this.ar().a(coz.d, this.l());
+      }
+
+      @Override
+      public eww g() {
+         return coz.this.do();
+      }
+
+      public coz h() {
+         return coz.this;
+      }
+
+      @Override
+      public et i() {
+         return new et(this, coz.this.do(), coz.this.bN(), this.e(), 2, this.n().getString(), coz.this.O_(), this.e().o(), coz.this);
+      }
+
+      @Override
+      public boolean j() {
+         return !coz.this.dL();
+      }
    }
 }

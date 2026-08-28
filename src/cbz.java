@@ -1,39 +1,32 @@
-import java.util.List;
+public class cbz extends cau {
+   private final cku b;
+   private int c;
 
-public class cbz<T extends bte & bti> extends caa {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
-
-   public cbz(T $$0, boolean $$1) {
+   public cbz(cku $$0, double $$1, boolean $$2) {
+      super($$0, $$1, $$2);
       this.b = $$0;
-      this.c = $$1;
    }
 
    @Override
-   public boolean a() {
-      return this.b.dR().ab().b(dcc.O) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.ek() != null && this.b.ek().am() == bsn.by && this.b.el() > this.d;
+   public void d() {
+      super.d();
+      this.c = 0;
    }
 
    @Override
-   public void c() {
-      this.d = this.b.el();
-      this.b.aa_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bti)$$0).forEach(bti::aa_);
+   public void e() {
+      super.e();
+      this.b.v(false);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.c++;
+      if (this.c >= 5 && this.k() < this.l() / 2) {
+         this.b.v(true);
+      } else {
+         this.b.v(false);
       }
-
-      super.c();
-   }
-
-   private List<? extends bte> i() {
-      double $$0 = this.b.g(buk.m);
-      ewc $$1 = ewc.a(this.b.dp()).c($$0, 10.0, $$0);
-      return this.b.dR().a((Class<? extends bte>)this.b.getClass(), $$1, bsm.f);
    }
 }

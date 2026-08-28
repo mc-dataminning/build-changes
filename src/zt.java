@@ -1,20 +1,14 @@
-public record zt(apz b) implements zb<zs> {
-   public static final ys<vr, zt> a = zb.a(zt::a, zt::new);
+import io.netty.buffer.ByteBuf;
 
-   private zt(vr $$0) {
-      this(new apz($$0));
-   }
-
-   private void a(vr $$0) {
-      this.b.a($$0);
-   }
+public record zt(ali b) implements zf<zl> {
+   public static final yw<ByteBuf, zt> a = yw.a(ali.b, zt::b, zt::new);
 
    @Override
-   public zd<zt> a() {
-      return zr.j;
+   public zh<zt> a() {
+      return zx.h;
    }
 
-   public void a(zs $$0) {
+   public void a(zl $$0) {
       $$0.a(this);
    }
 }

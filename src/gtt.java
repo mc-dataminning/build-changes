@@ -1,23 +1,47 @@
-public class gtt {
-   private final String a;
-   private final String b;
-   private long c;
+import javax.annotation.Nullable;
 
-   public gtt(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = ac.c();
+public interface gtt {
+   akq a();
+
+   @Nullable
+   guz a(guy var1);
+
+   gtq b();
+
+   avp c();
+
+   boolean d();
+
+   boolean l();
+
+   int e();
+
+   float f();
+
+   float g();
+
+   double h();
+
+   double i();
+
+   double j();
+
+   gtt.a k();
+
+   default boolean r() {
+      return false;
    }
 
-   public String a() {
-      return this.a;
+   default boolean s() {
+      return true;
    }
 
-   public String b() {
-      return this.b;
+   static ayv t() {
+      return ayv.a();
    }
 
-   public void c() {
-      this.c = ac.c();
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,81 +1,97 @@
-import java.util.EnumMap;
 import java.util.List;
-import java.util.function.Supplier;
 
-public class crv {
-   public static final jj<cru> a = a("leather", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
-      $$0.put(crt.a.d, 1);
-      $$0.put(crt.a.c, 2);
-      $$0.put(crt.a.b, 3);
-      $$0.put(crt.a.a, 1);
-      $$0.put(crt.a.e, 3);
-   }), 15, avh.av, 0.0F, 0.0F, () -> cyg.a(cug.qD), List.of(new cru.a(new akk("leather"), "", true), new cru.a(new akk("leather"), "_overlay", false)));
-   public static final jj<cru> b = a("chainmail", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
-      $$0.put(crt.a.d, 1);
-      $$0.put(crt.a.c, 4);
-      $$0.put(crt.a.b, 5);
-      $$0.put(crt.a.a, 2);
-      $$0.put(crt.a.e, 4);
-   }), 12, avh.ap, 0.0F, 0.0F, () -> cyg.a(cug.oF));
-   public static final jj<cru> c = a("iron", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
-      $$0.put(crt.a.d, 2);
-      $$0.put(crt.a.c, 5);
-      $$0.put(crt.a.b, 6);
-      $$0.put(crt.a.a, 2);
-      $$0.put(crt.a.e, 5);
-   }), 9, avh.au, 0.0F, 0.0F, () -> cyg.a(cug.oF));
-   public static final jj<cru> d = a("gold", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
-      $$0.put(crt.a.d, 1);
-      $$0.put(crt.a.c, 3);
-      $$0.put(crt.a.b, 5);
-      $$0.put(crt.a.a, 2);
-      $$0.put(crt.a.e, 7);
-   }), 25, avh.at, 0.0F, 0.0F, () -> cyg.a(cug.oJ));
-   public static final jj<cru> e = a("diamond", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
-      $$0.put(crt.a.d, 3);
-      $$0.put(crt.a.c, 6);
-      $$0.put(crt.a.b, 8);
-      $$0.put(crt.a.a, 3);
-      $$0.put(crt.a.e, 11);
-   }), 10, avh.aq, 2.0F, 0.0F, () -> cyg.a(cug.oz));
-   public static final jj<cru> f = a("turtle", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
-      $$0.put(crt.a.d, 2);
-      $$0.put(crt.a.c, 5);
-      $$0.put(crt.a.b, 6);
-      $$0.put(crt.a.a, 2);
-      $$0.put(crt.a.e, 5);
-   }), 9, avh.ax, 0.0F, 0.0F, () -> cyg.a(cug.op));
-   public static final jj<cru> g = a("netherite", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
-      $$0.put(crt.a.d, 3);
-      $$0.put(crt.a.c, 6);
-      $$0.put(crt.a.b, 8);
-      $$0.put(crt.a.a, 3);
-      $$0.put(crt.a.e, 11);
-   }), 15, avh.aw, 3.0F, 0.1F, () -> cyg.a(cug.oK));
-   public static final jj<cru> h = a("armadillo", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
-      $$0.put(crt.a.d, 3);
-      $$0.put(crt.a.c, 6);
-      $$0.put(crt.a.b, 8);
-      $$0.put(crt.a.a, 3);
-      $$0.put(crt.a.e, 11);
-   }), 10, avh.ay, 0.0F, 0.0F, () -> cyg.a(cug.oq));
+public class crv implements cqj {
+   private final jv<cuo> b;
+   private final int c;
+   private final int d;
+   private final cps e;
 
-   public static jj<cru> a(jw<cru> $$0) {
-      return a;
+   public crv(cps $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, jv.a($$1 * $$2, cuo.l));
    }
 
-   private static jj<cru> a(String $$0, EnumMap<crt.a, Integer> $$1, int $$2, jj<avg> $$3, float $$4, float $$5, Supplier<cyg> $$6) {
-      List<cru.a> $$7 = List.of(new cru.a(new akk($$0)));
-      return a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public crv(cps $$0, int $$1, int $$2, jv<cuo> $$3) {
+      this.b = $$3;
+      this.e = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private static jj<cru> a(String $$0, EnumMap<crt.a, Integer> $$1, int $$2, jj<avg> $$3, float $$4, float $$5, Supplier<cyg> $$6, List<cru.a> $$7) {
-      EnumMap<crt.a, Integer> $$8 = new EnumMap<>(crt.a.class);
+   @Override
+   public int b() {
+      return this.b.size();
+   }
 
-      for (crt.a $$9 : crt.a.values()) {
-         $$8.put($$9, $$1.get($$9));
+   @Override
+   public boolean c() {
+      for (cuo $$0 : this.b) {
+         if (!$$0.e()) {
+            return false;
+         }
       }
 
-      return jw.b(lq.ap, new akk($$0), new cru($$8, $$2, $$3, $$6, $$7, $$4, $$5));
+      return true;
+   }
+
+   @Override
+   public cuo a(int $$0) {
+      return $$0 >= this.b() ? cuo.l : this.b.get($$0);
+   }
+
+   @Override
+   public cuo b(int $$0) {
+      return bqk.a(this.b, $$0);
+   }
+
+   @Override
+   public cuo a(int $$0, int $$1) {
+      cuo $$2 = bqk.a(this.b, $$0, $$1);
+      if (!$$2.e()) {
+         this.e.a(this);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(int $$0, cuo $$1) {
+      this.b.set($$0, $$1);
+      this.e.a(this);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cmv $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public int g() {
+      return this.d;
+   }
+
+   @Override
+   public int f() {
+      return this.c;
+   }
+
+   @Override
+   public List<cuo> h() {
+      return List.copyOf(this.b);
+   }
+
+   @Override
+   public void a(cmz $$0) {
+      for (cuo $$1 : this.b) {
+         $$0.a($$1);
+      }
    }
 }

@@ -1,32 +1,22 @@
-import java.nio.file.Path;
-import java.util.List;
+import com.mojang.brigadier.StringReader;
+import java.util.Optional;
 
-public interface bmu {
-   char d = '\u001e';
+public class bmu implements bmk<StringReader, ux> {
+   public static final bmk<StringReader, ux> a = new bmu();
 
-   List<bmx> a(String var1);
-
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
-
-   int d();
-
-   default long g() {
-      return this.c() - this.a();
+   private bmu() {
    }
 
-   default int f() {
-      return this.d() - this.b();
-   }
+   @Override
+   public Optional<ux> a(bmj<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+      int $$1 = $$0.c();
 
-   String e();
-
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
+      try {
+         return Optional.of(new uy($$0.b()).d());
+      } catch (Exception var4) {
+         $$0.a().a($$1, var4);
+         return Optional.empty();
+      }
    }
 }

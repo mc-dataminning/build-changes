@@ -1,3 +1,4 @@
+@FunctionalInterface
 public interface dcf {
-   cty r();
+   int getColor(ddu var1, double var2, double var4);
 }

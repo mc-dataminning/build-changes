@@ -1,24 +1,29 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import javax.annotation.Nullable;
+public enum eyr {
+   a(-3),
+   b(-2),
+   c(-1),
+   d(0),
+   e(1),
+   f(2),
+   g(3);
 
-public interface eyr extends AutoCloseable {
-   float a = 7.0F;
+   private final int h;
 
-   @Override
-   default void close() {
+   private eyr(final int $$0) {
+      this.h = $$0;
    }
 
-   @Nullable
-   default eyq a(int $$0) {
-      return null;
-   }
-
-   IntSet a();
-
-   public static record a(eyr a, fkk.a b) implements AutoCloseable {
-      @Override
-      public void close() {
-         this.a.close();
+   public static eyr a(int $$0) {
+      for (eyr $$1 : values()) {
+         if ($$1.h == $$0) {
+            return $$1;
+         }
       }
+
+      return $$0 < a.h ? a : g;
+   }
+
+   public int a() {
+      return this.h;
    }
 }

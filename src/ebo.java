@@ -1,29 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class ebo extends ebl<edt> {
-   public ebo(Codec<edt> $$0) {
+public class ebo extends ebp {
+   public ebo(Codec<eel> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebn<edt> $$0) {
-      ja $$1 = $$0.e();
-      edt $$2 = $$0.f();
-      ddc $$3 = $$0.b();
-      ja.a $$4 = new ja.a();
+   protected boolean a(dcv $$0, ayv $$1, jd $$2, dta $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         ji $$4 = ji.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<ji> $$6 = ad.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.I_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).i()) {
-               $$3.a($$4, $$2.c, 2);
+         for (ji $$8 : $$6.subList(0, $$5)) {
+            jd.a $$9 = $$2.j();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            ji $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(ji.b);
+               ji[] $$13 = new ji[]{$$8, ji.b};
+               $$11 = ad.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
+
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(ji.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(ji.b);
+               }
             }
          }
-      }
 
-      return true;
+         return true;
+      }
    }
 }

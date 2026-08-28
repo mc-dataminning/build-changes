@@ -1,27 +1,2 @@
-import java.util.Optional;
-
-public class dbz {
-   public Optional<Float> a(dby $$0, dbm $$1, ja $$2, dsl $$3, eoj $$4) {
-      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
-   }
-
-   public boolean a(dby $$0, dbm $$1, ja $$2, dsl $$3, float $$4) {
-      return true;
-   }
-
-   public boolean a(dby $$0, bsh $$1) {
-      return true;
-   }
-
-   public float a(bsh $$0) {
-      return 1.0F;
-   }
-
-   public float b(dby $$0, bsh $$1) {
-      float $$2 = $$0.a() * 2.0F;
-      ewh $$3 = $$0.b();
-      double $$4 = Math.sqrt($$1.g($$3)) / (double)$$2;
-      double $$5 = (1.0 - $$4) * (double)dby.a($$3, $$1);
-      return (float)(($$5 * $$5 + $$5) / 2.0 * 7.0 * (double)$$2 + 1.0);
-   }
+public record dbz(jd a, dfw b, int c, int d) {
 }

@@ -1,63 +1,44 @@
-import javax.annotation.Nullable;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.List;
 
-public abstract class fqe extends fnl {
-   private static final int b = 100;
-   private final wu c;
-   @Nullable
-   private final wu q;
-   private final wu r;
-   @Nullable
-   protected fhw a;
-   @Nullable
-   private fif s;
-   private final flf u;
+public class fqe implements fqh {
+   private static final int a = 10;
+   private static final int b = 2;
+   private final List<ProfileResult> c;
 
-   protected fqe(wu $$0, wu $$1, wu $$2) {
-      this($$0, $$1, null, $$2);
+   public fqe(fqe.a $$0) {
+      this.c = $$0.a();
    }
-
-   protected fqe(wu $$0, wu $$1, @Nullable wu $$2, wu $$3) {
-      super($$0);
-      this.c = $$1;
-      this.q = $$2;
-      this.r = $$3;
-      this.u = new flf(0, 0, this.m, this.n);
-   }
-
-   protected abstract fli m();
 
    @Override
-   protected void aP_() {
-      fll $$0 = this.u.a(fll.d().a(8));
-      $$0.c().b();
-      $$0.a(new fjb(this.n(), this.o));
-      this.s = $$0.a(new fif(this.m - 100, this.c, this.o, 12), $$0x -> $$0x.a(12));
-      this.s.b(false);
-      fll $$1 = $$0.a(fll.d().a(8));
-      $$1.c().b();
-      if (this.q != null) {
-         this.a = $$1.a(fhw.a(this.q, this.o).a());
+   public int a() {
+      return this.c.size() * 12 + 2;
+   }
+
+   @Override
+   public int a(fhr $$0) {
+      int $$1 = 0;
+
+      for (ProfileResult $$2 : this.c) {
+         int $$3 = $$0.b($$2.profile().getName());
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
       }
 
-      $$1.a(this.m());
-      this.u.a($$1x -> {
-         fhs var10000 = this.c($$1x);
-      });
-      this.c();
+      return $$1 + 10 + 6;
    }
 
    @Override
-   protected void c() {
-      if (this.s != null) {
-         this.s.d(this.m - 100);
+   public void a(fhr $$0, int $$1, int $$2, fht $$3) {
+      for (int $$4 = 0; $$4 < this.c.size(); $$4++) {
+         ProfileResult $$5 = this.c.get($$4);
+         int $$6 = $$2 + 2 + $$4 * 12;
+         fjf.a($$3, fgi.Q().am().b($$5.profile()), $$1 + 2, $$6, 10);
+         $$3.b($$0, $$5.profile().getName(), $$1 + 10 + 4, $$6 + 2, -1);
       }
-
-      this.u.a();
-      flf.a(this.u, this.H());
    }
 
-   @Override
-   public wu i() {
-      return this.r;
+   public static record a(List<ProfileResult> a) implements cry {
    }
 }

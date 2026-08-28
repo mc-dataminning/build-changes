@@ -1,61 +1,7 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+@FunctionalInterface
+public interface ejz<C extends eee> {
+   void generatePieces(eke var1, ejz.a<C> var2);
 
-public class ejz extends ekf {
-   public static final MapCodec<ejz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eib.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, ejz::new)
-   );
-   private final jj<eib> b;
-   private final tx c;
-
-   protected ejz(jj<eib> $$0, ekh.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
-   }
-
-   private tx b() {
-      tx $$0 = new tx();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", dqr.a.a.c());
-      return $$0;
-   }
-
-   @Override
-   public ke a(emz $$0, dlv $$1) {
-      return ke.g;
-   }
-
-   @Override
-   public List<emy.c> a(emz $$0, ja $$1, dlv $$2, ayo $$3) {
-      List<emy.c> $$4 = Lists.newArrayList();
-      $$4.add(new emy.c($$1, dfk.pb.o().a(djk.b, jh.a(jf.a, jf.d)), this.c));
-      return $$4;
-   }
-
-   @Override
-   public eip a(emz $$0, ja $$1, dlv $$2) {
-      ke $$3 = this.a($$0, $$2);
-      return new eip($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
-   }
-
-   @Override
-   public boolean a(emz $$0, ddc $$1, dda $$2, dui $$3, ja $$4, ja $$5, dlv $$6, eip $$7, ayo $$8, boolean $$9) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
-   }
-
-   @Override
-   public ekg<?> a() {
-      return ekg.c;
-   }
-
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+   public static record a<C extends eee>(C a, dux b, eno c, dcb d, dcw e, dzu f, long g) {
    }
 }

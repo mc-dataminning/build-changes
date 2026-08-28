@@ -1,22 +1,32 @@
-import java.util.ArrayList;
-import java.util.List;
+public class fqo extends fqs {
+   private static final wy b = wy.c("multiplayerWarning.header").a(n.r);
+   private static final wy c = wy.c("multiplayerWarning.message");
+   private static final wy q = wy.c("multiplayerWarning.check");
+   private static final wy r = b.f().f("\n").b(c);
+   private final fnx s;
 
-public class fqo extends fqn {
-   private static final wu a = wu.c("options.skinCustomisation.title");
-
-   public fqo(fnl $$0, fga $$1) {
-      super($$0, $$1, a);
+   public fqo(fnx $$0) {
+      super(b, c, q, r);
+      this.s = $$0;
    }
 
    @Override
-   protected void m() {
-      List<fhs> $$0 = new ArrayList<>();
+   protected flu m() {
+      flx $$0 = flx.e().a(8);
+      $$0.a(fig.a(wx.i, $$0x -> {
+         if (this.a.a()) {
+            this.l.m.v = true;
+            this.l.m.av();
+         }
 
-      for (cmm $$1 : cmm.values()) {
-         $$0.add(fib.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
-      }
+         this.l.a(new fqn(this.s));
+      }).a());
+      $$0.a(fig.a(wx.k, $$0x -> this.d()).a());
+      return $$0;
+   }
 
-      $$0.add(this.c.v().a(this.c));
-      this.q.a($$0);
+   @Override
+   public void d() {
+      this.l.a(this.s);
    }
 }

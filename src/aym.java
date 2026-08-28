@@ -1,65 +1,49 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import java.util.Optional;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import org.apache.commons.lang3.ObjectUtils;
 
-public interface aym {
-   aym a(String var1);
-
-   void b(String var1);
-
-   public static class a implements aym {
-      private final Multimap<String, String> a;
-      private final Supplier<String> b;
-      @Nullable
-      private String c;
-
-      public a() {
-         this(HashMultimap.create(), () -> "");
+public record aym(aym.a a, String b) {
+   public static aym a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
+      String $$4 = $$1.get();
+      if (!$$0.equals($$4)) {
+         return new aym(aym.a.c, $$2 + " brand changed to '" + $$4 + "'");
+      } else {
+         return $$3.getSigners() == null
+            ? new aym(aym.a.b, $$2 + " jar signature invalidated")
+            : new aym(aym.a.a, $$2 + " jar signature and brand is untouched");
       }
+   }
 
-      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public boolean a() {
+      return this.a.e;
+   }
 
-      private String c() {
-         if (this.c == null) {
-            this.c = this.b.get();
-         }
+   public aym a(aym $$0) {
+      return new aym((aym.a)ObjectUtils.max(new aym.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
+   }
 
-         return this.c;
-      }
+   public String b() {
+      return this.a.d + " " + this.b;
+   }
 
-      @Override
-      public aym a(String $$0) {
-         return new aym.a(this.a, () -> this.c() + $$0);
-      }
+   public aym.a c() {
+      return this.a;
+   }
 
-      @Override
-      public void b(String $$0) {
-         this.a.put(this.c(), $$0);
-      }
+   public String d() {
+      return this.b;
+   }
 
-      public Multimap<String, String> a() {
-         return ImmutableMultimap.copyOf(this.a);
-      }
+   public static enum a {
+      a("Probably not.", false),
+      b("Very likely;", true),
+      c("Definitely;", true);
 
-      public Optional<String> b() {
-         Multimap<String, String> $$0 = this.a();
-         if (!$$0.isEmpty()) {
-            String $$1 = $$0.asMap()
-               .entrySet()
-               .stream()
-               .map($$0x -> "  at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
-               .collect(Collectors.joining("\n"));
-            return Optional.of($$1);
-         } else {
-            return Optional.empty();
-         }
+      final String d;
+      final boolean e;
+
+      private a(final String $$0, final boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
    }
 }

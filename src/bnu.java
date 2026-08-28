@@ -1,56 +1,100 @@
 import com.mojang.datafixers.util.Pair;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public final class bnu<T> {
-   private final bnu.a a;
-   private final List<Pair<T, bnu.a>> b;
-   private final Duration c;
-
-   public bnu(Duration $$0, List<Pair<T, bnu.a>> $$1) {
-      this.c = $$0;
-      this.a = $$1.stream().<bnu.a>map(Pair::getSecond).reduce(new bnu.a(0L, 0L), bnu.a::a);
-      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, bnu.a.c)).limit(10L).toList();
+public record bnu(
+   Instant a,
+   Instant b,
+   Duration c,
+   @Nullable Duration d,
+   List<bog> e,
+   List<boa> f,
+   boc.a g,
+   bof.a h,
+   bod<boe> i,
+   bod<boe> j,
+   bod<bnz> k,
+   bod<bnz> l,
+   bob.a m,
+   bob.a n,
+   List<bny> o
+) {
+   public List<Pair<dvx, boi<bny>>> a() {
+      Map<dvx, List<bny>> $$0 = this.o.stream().collect(Collectors.groupingBy(bny::d));
+      return $$0.entrySet()
+         .stream()
+         .map($$0x -> Pair.of((dvx)$$0x.getKey(), boi.a((List)$$0x.getValue())))
+         .sorted(Comparator.<Pair<dvx, boi<bny>>, Duration>comparing($$0x -> ((boi)$$0x.getSecond()).f()).reversed())
+         .toList();
    }
 
-   public double a() {
-      return (double)this.a.a / (double)this.c.getSeconds();
+   public String b() {
+      return new bnw().a(this);
    }
 
-   public double b() {
-      return (double)this.a.b / (double)this.c.getSeconds();
+   public Instant c() {
+      return this.a;
    }
 
-   public long c() {
-      return this.a.a;
-   }
-
-   public long d() {
-      return this.a.b;
-   }
-
-   public List<Pair<T, bnu.a>> e() {
+   public Instant d() {
       return this.b;
    }
 
-   public static record a(long a, long b) {
-      static final Comparator<bnu.a> c = Comparator.comparing(bnu.a::c).thenComparing(bnu.a::b).reversed();
+   public Duration e() {
+      return this.c;
+   }
 
-      bnu.a a(bnu.a $$0) {
-         return new bnu.a(this.a + $$0.a, this.b + $$0.b);
-      }
+   @Nullable
+   public Duration f() {
+      return this.d;
+   }
 
-      public float a() {
-         return (float)this.b / (float)this.a;
-      }
+   public List<bog> g() {
+      return this.e;
+   }
 
-      public long b() {
-         return this.a;
-      }
+   public List<boa> h() {
+      return this.f;
+   }
 
-      public long c() {
-         return this.b;
-      }
+   public boc.a i() {
+      return this.g;
+   }
+
+   public bof.a j() {
+      return this.h;
+   }
+
+   public bod<boe> k() {
+      return this.i;
+   }
+
+   public bod<boe> l() {
+      return this.j;
+   }
+
+   public bod<bnz> m() {
+      return this.k;
+   }
+
+   public bod<bnz> n() {
+      return this.l;
+   }
+
+   public bob.a o() {
+      return this.m;
+   }
+
+   public bob.a p() {
+      return this.n;
+   }
+
+   public List<bny> q() {
+      return this.o;
    }
 }

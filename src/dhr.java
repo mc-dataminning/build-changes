@@ -1,68 +1,177 @@
 import com.mojang.serialization.MapCodec;
 
-public class dhr extends die {
-   public static final MapCodec<dhr> a = b(dhr::new);
-   protected static final exa b = dfi.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class dhr extends dgf implements dfz {
+   public static final MapCodec<dhr> d = b(dhr::new);
+   public static final int e = 7;
+   public static final dua f = dtq.av;
+   private static final exp[] a = new exp[]{
+      dfw.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      dfw.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+   };
 
    @Override
-   public MapCodec<dhr> a() {
-      return a;
+   public MapCodec<? extends dhr> a() {
+      return d;
    }
 
-   public dhr(dsk.d $$0) {
+   protected dhr(dsz.d $$0) {
       super($$0);
+      this.k(this.E.b().a(this.b(), Integer.valueOf(0)));
    }
 
    @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return b;
+   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
+      return a[this.g($$0)];
    }
 
    @Override
-   protected bqh a(dsl $$0, dcg $$1, ja $$2, cml $$3, ewd $$4) {
-      this.d($$0, $$1, $$2);
-      return bqh.a($$1.B);
+   protected boolean b(dta $$0, dca $$1, jd $$2) {
+      return $$0.a(dfy.cC);
+   }
+
+   protected dua b() {
+      return f;
+   }
+
+   public int c() {
+      return 7;
+   }
+
+   public int g(dta $$0) {
+      return $$0.c(this.b());
+   }
+
+   public dta b(int $$0) {
+      return this.o().a(this.b(), Integer.valueOf($$0));
+   }
+
+   public final boolean h(dta $$0) {
+      return this.g($$0) >= this.c();
    }
 
    @Override
-   protected void a_(dsl $$0, dcg $$1, ja $$2, cml $$3) {
-      this.d($$0, $$1, $$2);
+   protected boolean d_(dta $$0) {
+      return !this.h($$0);
    }
 
-   private void d(dsl $$0, dcg $$1, ja $$2) {
-      duc $$3 = $$1.C_();
-
-      for (int $$4 = 0; $$4 < 1000; $$4++) {
-         ja $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
-         if ($$1.a_($$5).i() && $$3.a($$5)) {
-            if ($$1.B) {
-               for (int $$6 = 0; $$6 < 128; $$6++) {
-                  double $$7 = $$1.z.j();
-                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
-                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
-                  double $$11 = ayg.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
-                  double $$12 = ayg.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
-                  double $$13 = ayg.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
-                  $$1.a(lj.ac, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
-               }
-            } else {
-               $$1.a($$5, $$0, 2);
-               $$1.a($$2, false);
+   @Override
+   protected void b(dta $$0, aqt $$1, jd $$2, ayv $$3) {
+      if ($$1.b($$2, 0) >= 9) {
+         int $$4 = this.g($$0);
+         if ($$4 < this.c()) {
+            float $$5 = a(this, $$1, $$2);
+            if ($$3.a((int)(25.0F / $$5) + 1) == 0) {
+               $$1.a($$2, this.b($$4 + 1), 2);
             }
-
-            return;
          }
       }
    }
 
-   @Override
-   protected int b() {
-      return 5;
+   public void a(dcu $$0, jd $$1, dta $$2) {
+      int $$3 = this.g($$2) + this.a($$0);
+      int $$4 = this.c();
+      if ($$3 > $$4) {
+         $$3 = $$4;
+      }
+
+      $$0.a($$1, this.b($$3), 2);
+   }
+
+   protected int a(dcu $$0) {
+      return ayn.a($$0.z, 2, 5);
+   }
+
+   protected static float a(dfw $$0, dca $$1, jd $$2) {
+      float $$3 = 1.0F;
+      jd $$4 = $$2.d();
+
+      for (int $$5 = -1; $$5 <= 1; $$5++) {
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            float $$7 = 0.0F;
+            dta $$8 = $$1.a_($$4.b($$5, 0, $$6));
+            if ($$8.a(dfy.cC)) {
+               $$7 = 1.0F;
+               if ($$8.c(dit.b) > 0) {
+                  $$7 = 3.0F;
+               }
+            }
+
+            if ($$5 != 0 || $$6 != 0) {
+               $$7 /= 4.0F;
+            }
+
+            $$3 += $$7;
+         }
+      }
+
+      jd $$9 = $$2.e();
+      jd $$10 = $$2.f();
+      jd $$11 = $$2.g();
+      jd $$12 = $$2.h();
+      boolean $$13 = $$1.a_($$11).a($$0) || $$1.a_($$12).a($$0);
+      boolean $$14 = $$1.a_($$9).a($$0) || $$1.a_($$10).a($$0);
+      if ($$13 && $$14) {
+         $$3 /= 2.0F;
+      } else {
+         boolean $$15 = $$1.a_($$11.e()).a($$0) || $$1.a_($$12.e()).a($$0) || $$1.a_($$12.f()).a($$0) || $$1.a_($$11.f()).a($$0);
+         if ($$15) {
+            $$3 /= 2.0F;
+         }
+      }
+
+      return $$3;
    }
 
    @Override
-   protected boolean a(dsl $$0, eoy $$1) {
-      return false;
+   protected boolean a(dta $$0, dcx $$1, jd $$2) {
+      return a($$1, $$2) && super.a($$0, $$1, $$2);
+   }
+
+   protected static boolean a(dcx $$0, jd $$1) {
+      return $$0.b($$1, 0) >= 8;
+   }
+
+   @Override
+   protected void a(dta $$0, dcu $$1, jd $$2, bsq $$3) {
+      if ($$3 instanceof ckg && $$1.ab().b(dcq.c)) {
+         $$1.a($$2, true, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected dct d() {
+      return cur.pv;
+   }
+
+   @Override
+   public cuo a(dcx $$0, jd $$1, dta $$2) {
+      return new cuo(this.d());
+   }
+
+   @Override
+   public boolean b(dcx $$0, jd $$1, dta $$2) {
+      return !this.h($$2);
+   }
+
+   @Override
+   public boolean a(dcu $$0, ayv $$1, jd $$2, dta $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqt $$0, ayv $$1, jd $$2, dta $$3) {
+      this.a((dcu)$$0, $$2, $$3);
+   }
+
+   @Override
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(f);
    }
 }

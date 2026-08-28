@@ -1,93 +1,166 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class eoi {
+   private static final int b = 16;
+   public static final int a = Integer.MIN_VALUE;
+   private final int c;
+   private final axb d;
+   private final jd.a e = new jd.a();
+   private final jd.a f = new jd.a();
 
-public abstract class eoi {
-   public static final jp<eoj> c = new jp<>();
-   protected final dsm<eoi, eoj> d;
-   private eoj a;
-   private final jj.c<eoi> b = lq.c.f(this);
-
-   protected eoi() {
-      dsm.a<eoi, eoj> $$0 = new dsm.a<>(this);
-      this.a($$0);
-      this.d = $$0.a(eoi::g, eoj::new);
-      this.f(this.d.b());
+   public eoi(dcw $$0) {
+      this.c = $$0.I_() - 1;
+      int $$1 = $$0.am();
+      int $$2 = ayn.e($$1 - this.c + 1);
+      this.d = new azc($$2, 256);
    }
 
-   protected void a(dsm.a<eoi, eoj> $$0) {
+   public void a(duw $$0) {
+      int $$1 = $$0.a();
+      if ($$1 == -1) {
+         this.a(this.c);
+      } else {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            for (int $$3 = 0; $$3 < 16; $$3++) {
+               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
+               this.b(c($$3, $$2), $$4);
+            }
+         }
+      }
    }
 
-   public dsm<eoi, eoj> f() {
-      return this.d;
+   private int a(duw $$0, int $$1, int $$2, int $$3) {
+      int $$4 = kf.c($$0.g($$1) + 1);
+      jd.a $$5 = this.e.d($$2, $$4, $$3);
+      jd.a $$6 = this.f.a($$5, ji.a);
+      dta $$7 = dfy.a.o();
+
+      for (int $$8 = $$1; $$8 >= 0; $$8--) {
+         dvh $$9 = $$0.b($$8);
+         if ($$9.c()) {
+            $$7 = dfy.a.o();
+            int $$10 = $$0.g($$8);
+            $$5.q(kf.c($$10));
+            $$6.q($$5.v() - 1);
+         } else {
+            for (int $$11 = 15; $$11 >= 0; $$11--) {
+               dta $$12 = $$9.a($$2, $$11, $$3);
+               if (a($$0, $$5, $$7, $$6, $$12)) {
+                  return $$5.v();
+               }
+
+               $$7 = $$12;
+               $$5.g($$6);
+               $$6.c(ji.a);
+            }
+         }
+      }
+
+      return this.c;
    }
 
-   protected final void f(eoj $$0) {
-      this.a = $$0;
+   public boolean a(dca $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 + 1;
+      int $$5 = c($$1, $$3);
+      int $$6 = this.b($$5);
+      if ($$4 < $$6) {
+         return false;
+      } else {
+         jd $$7 = this.e.d($$1, $$2 + 1, $$3);
+         dta $$8 = $$0.a_($$7);
+         jd $$9 = this.f.d($$1, $$2, $$3);
+         dta $$10 = $$0.a_($$9);
+         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return true;
+         } else {
+            jd $$11 = this.e.d($$1, $$2 - 1, $$3);
+            dta $$12 = $$0.a_($$11);
+            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
+         }
+      }
    }
 
-   public final eoj g() {
-      return this.a;
-   }
+   private boolean a(dca $$0, int $$1, int $$2, jd $$3, dta $$4, jd $$5, dta $$6) {
+      int $$7 = $$3.v();
+      if (a($$0, $$3, $$4, $$5, $$6)) {
+         if ($$7 > $$2) {
+            this.b($$1, $$7);
+            return true;
+         }
+      } else if ($$7 == $$2) {
+         this.b($$1, this.a($$0, $$5, $$6));
+         return true;
+      }
 
-   public abstract cty a();
-
-   protected void a(dcg $$0, ja $$1, eoj $$2, ayo $$3) {
-   }
-
-   protected void b(dcg $$0, ja $$1, eoj $$2) {
-   }
-
-   protected void b(dcg $$0, ja $$1, eoj $$2, ayo $$3) {
-   }
-
-   @Nullable
-   protected lh h() {
-      return null;
-   }
-
-   protected abstract boolean a(eoj var1, dbm var2, ja var3, eoi var4, jf var5);
-
-   protected abstract ewh a(dbm var1, ja var2, eoj var3);
-
-   public abstract int a(dcj var1);
-
-   protected boolean i() {
       return false;
    }
 
-   protected boolean b() {
-      return false;
+   private int a(dca $$0, jd $$1, dta $$2) {
+      jd.a $$3 = this.e.g($$1);
+      jd.a $$4 = this.f.a($$1, ji.a);
+      dta $$5 = $$2;
+
+      while ($$4.v() >= this.c) {
+         dta $$6 = $$0.a_($$4);
+         if (a($$0, $$3, $$5, $$4, $$6)) {
+            return $$3.v();
+         }
+
+         $$5 = $$6;
+         $$3.g($$4);
+         $$4.c(ji.a);
+      }
+
+      return this.c;
    }
 
-   protected abstract float c();
-
-   public abstract float a(eoj var1, dbm var2, ja var3);
-
-   public abstract float a(eoj var1);
-
-   protected abstract dsl b(eoj var1);
-
-   public abstract boolean c(eoj var1);
-
-   public abstract int d(eoj var1);
-
-   public boolean a(eoi $$0) {
-      return $$0 == this;
+   private static boolean a(dca $$0, jd $$1, dta $$2, jd $$3, dta $$4) {
+      if ($$4.b($$0, $$3) != 0) {
+         return true;
+      } else {
+         exp $$5 = eop.a($$0, $$1, $$2, ji.a);
+         exp $$6 = eop.a($$0, $$3, $$4, ji.b);
+         return exm.b($$5, $$6);
+      }
    }
 
-   @Deprecated
-   public boolean a(awm<eoi> $$0) {
-      return this.b.a($$0);
+   public int a(int $$0, int $$1) {
+      int $$2 = this.b(c($$0, $$1));
+      return this.c($$2);
    }
 
-   public abstract exa b(eoj var1, dbm var2, ja var3);
+   public int a() {
+      int $$0 = Integer.MIN_VALUE;
 
-   public Optional<avg> j() {
-      return Optional.empty();
+      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
+         int $$2 = this.d.a($$1);
+         if ($$2 > $$0) {
+            $$0 = $$2;
+         }
+      }
+
+      return this.c($$0 + this.c);
    }
 
-   @Deprecated
-   public jj.c<eoi> k() {
-      return this.b;
+   private void a(int $$0) {
+      int $$1 = $$0 - this.c;
+
+      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
+         this.d.b($$2, $$1);
+      }
+   }
+
+   private void b(int $$0, int $$1) {
+      this.d.b($$0, $$1 - this.c);
+   }
+
+   private int b(int $$0) {
+      return this.d.a($$0) + this.c;
+   }
+
+   private int c(int $$0) {
+      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
    }
 }

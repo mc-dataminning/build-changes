@@ -1,61 +1,61 @@
-public class ahg implements zb<agb> {
-   public static final ys<vr, ahg> a = zb.a(ahg::a, ahg::new);
-   private final int b;
-   private final ahg.a c;
-   private final int d;
+public class ahg implements zf<agh> {
+   public static final yw<vv, ahg> a = zf.a(ahg::a, ahg::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
 
-   public ahg(bsh $$0, ahg.a $$1) {
-      this($$0, $$1, 0);
+   public ahg(bsq $$0) {
+      this.b = $$0.dv();
+      this.c = $$0.dx();
+      this.d = $$0.dB();
+      this.e = $$0.dG();
+      this.f = $$0.dI();
    }
 
-   public ahg(bsh $$0, ahg.a $$1, int $$2) {
-      this.b = $$0.an();
-      this.c = $$1;
-      this.d = $$2;
+   private ahg(vv $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
    }
 
-   private ahg(vr $$0) {
-      this.b = $$0.l();
-      this.c = $$0.b(ahg.a.class);
-      this.d = $$0.l();
-   }
-
-   private void a(vr $$0) {
-      $$0.c(this.b);
+   private void a(vv $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
-      $$0.c(this.d);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public zd<ahg> a() {
-      return afz.bL;
+   public zh<ahg> a() {
+      return agf.bF;
    }
 
-   public void a(agb $$0) {
+   public void a(agh $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 
-   public ahg.a e() {
+   public double e() {
       return this.c;
    }
 
-   public int f() {
+   public double f() {
       return this.d;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
    }
 }

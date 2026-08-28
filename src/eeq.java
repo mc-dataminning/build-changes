@@ -1,29 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.List;
+import java.util.stream.Stream;
 
-public abstract class eeq {
-   public static final Codec<eeq> a = lq.Y.r().dispatch(eeq::b, eer::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public class eeq implements eee {
+   public static final Codec<eeq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.apply2(eeq::new, edu.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), eiq.b.fieldOf("default").forGetter($$0x -> $$0x.c))
+   );
+   public final List<edu> b;
+   public final jm<eiq> c;
 
-   protected static <S extends eeq> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+   public eeq(List<edu> $$0, jm<eiq> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public eeq(OptionalInt $$0) {
-      this.c = $$0;
-   }
-
-   protected abstract eer<?> b();
-
-   public abstract int a(int var1, int var2);
-
-   public OptionalInt c() {
-      return this.c;
+   @Override
+   public Stream<ebn<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

@@ -1,77 +1,27 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Set;
+public interface vb {
+   void a(uv var1);
 
-public class vb extends vc {
-   private int a;
-   private final Set<uw<?>> b;
-   private final Deque<ve> c = new ArrayDeque<>();
+   void a(ty var1);
 
-   public vb(vd... $$0) {
-      this.a = $$0.length;
-      Builder<uw<?>> $$1 = ImmutableSet.builder();
-      ve $$2 = ve.a();
+   void a(us var1);
 
-      for (vd $$3 : $$0) {
-         $$2.a($$3);
-         $$1.add($$3.b());
-      }
+   void a(uf var1);
 
-      this.c.push($$2);
-      $$1.add(tx.b);
-      this.b = $$1.build();
-   }
+   void a(ui var1);
 
-   @Override
-   public ur.b b(uw<?> $$0) {
-      return $$0 != tx.b ? ur.b.c : super.b($$0);
-   }
+   void a(ud var1);
 
-   @Override
-   public ur.a a(uw<?> $$0) {
-      ve $$1 = this.c.element();
-      if (this.e() > $$1.b()) {
-         return super.a($$0);
-      } else if (this.a <= 0) {
-         return ur.a.d;
-      } else {
-         return !this.b.contains($$0) ? ur.a.b : super.a($$0);
-      }
-   }
+   void a(ub var1);
 
-   @Override
-   public ur.a a(uw<?> $$0, String $$1) {
-      ve $$2 = this.c.element();
-      if (this.e() > $$2.b()) {
-         return super.a($$0, $$1);
-      } else if ($$2.c().remove($$1, $$0)) {
-         this.a--;
-         return super.a($$0, $$1);
-      } else {
-         if ($$0 == tx.b) {
-            ve $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.c.push($$3);
-               return super.a($$0, $$1);
-            }
-         }
+   void a(tx var1);
 
-         return ur.a.b;
-      }
-   }
+   void a(ue var1);
 
-   @Override
-   public ur.b b() {
-      if (this.e() == this.c.element().b()) {
-         this.c.pop();
-      }
+   void a(uh var1);
 
-      return super.b();
-   }
+   void a(ug var1);
 
-   public int c() {
-      return this.a;
-   }
+   void a(ua var1);
+
+   void a(uc var1);
 }

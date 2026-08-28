@@ -1,22 +1,179 @@
-public interface czb extends cyj<czc> {
-   @Override
-   default cyp<?> e() {
-      return cyp.g;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public class czb extends auh {
+   private static final Gson a = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+   private static final Logger b = LogUtils.getLogger();
+   private final jo.a c;
+   private Multimap<czd<?>, cyz<?>> d = ImmutableMultimap.of();
+   private Map<akq, cyz<?>> e = ImmutableMap.of();
+   private boolean f;
+
+   public czb(jo.a $$0) {
+      super(a, lu.c(lu.bg));
+      this.c = $$0;
    }
 
-   @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   protected void a(Map<akq, JsonElement> $$0, aud $$1, bne $$2) {
+      this.f = false;
+      Builder<czd<?>, cyz<?>> $$3 = ImmutableMultimap.builder();
+      com.google.common.collect.ImmutableMap.Builder<akq, cyz<?>> $$4 = ImmutableMap.builder();
+      ako<JsonElement> $$5 = this.c.a(JsonOps.INSTANCE);
+
+      for (Entry<akq, JsonElement> $$6 : $$0.entrySet()) {
+         akq $$7 = $$6.getKey();
+
+         try {
+            cyx<?> $$8 = (cyx<?>)cyx.h.parse($$5, $$6.getValue()).getOrThrow(JsonParseException::new);
+            cyz<?> $$9 = new cyz<>($$7, $$8);
+            $$3.put($$8.e(), $$9);
+            $$4.put($$7, $$9);
+         } catch (IllegalArgumentException | JsonParseException var12) {
+            b.error("Parsing error loading recipe {}", $$7, var12);
+         }
+      }
+
+      this.d = $$3.build();
+      this.e = $$4.build();
+      b.info("Loaded {} recipes", this.d.size());
    }
 
-   @Override
-   default cud g() {
-      return new cud(dfk.ob);
+   public boolean a() {
+      return this.f;
    }
 
-   boolean a(cud var1);
+   public <I extends cza, T extends cyx<I>> Optional<cyz<T>> a(czd<T> $$0, I $$1, dcu $$2) {
+      return this.a($$0, $$1, $$2, (cyz<T>)null);
+   }
 
-   boolean b(cud var1);
+   public <I extends cza, T extends cyx<I>> Optional<cyz<T>> a(czd<T> $$0, I $$1, dcu $$2, @Nullable akq $$3) {
+      cyz<T> $$4 = $$3 != null ? this.a($$0, $$3) : null;
+      return this.a($$0, $$1, $$2, $$4);
+   }
 
-   boolean c(cud var1);
+   public <I extends cza, T extends cyx<I>> Optional<cyz<T>> a(czd<T> $$0, I $$1, dcu $$2, @Nullable cyz<T> $$3) {
+      if ($$1.b()) {
+         return Optional.empty();
+      } else {
+         return $$3 != null && $$3.b().a($$1, $$2) ? Optional.of($$3) : this.c($$0).stream().filter($$2x -> $$2x.b().a($$1, $$2)).findFirst();
+      }
+   }
+
+   public <I extends cza, T extends cyx<I>> List<cyz<T>> a(czd<T> $$0) {
+      return List.copyOf(this.c($$0));
+   }
+
+   public <I extends cza, T extends cyx<I>> List<cyz<T>> b(czd<T> $$0, I $$1, dcu $$2) {
+      return this.c($$0)
+         .stream()
+         .filter($$2x -> $$2x.b().a($$1, $$2))
+         .sorted(Comparator.comparing($$1x -> $$1x.b().a($$2.H_()).t()))
+         .collect(Collectors.toList());
+   }
+
+   private <I extends cza, T extends cyx<I>> Collection<cyz<T>> c(czd<T> $$0) {
+      return this.d.get($$0);
+   }
+
+   public <I extends cza, T extends cyx<I>> jv<cuo> c(czd<T> $$0, I $$1, dcu $$2) {
+      Optional<cyz<T>> $$3 = this.a($$0, $$1, $$2);
+      if ($$3.isPresent()) {
+         return $$3.get().b().a($$1);
+      } else {
+         jv<cuo> $$4 = jv.a($$1.a(), cuo.l);
+
+         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+            $$4.set($$5, $$1.a($$5));
+         }
+
+         return $$4;
+      }
+   }
+
+   public Optional<cyz<?>> a(akq $$0) {
+      return Optional.ofNullable(this.e.get($$0));
+   }
+
+   @Nullable
+   private <T extends cyx<?>> cyz<T> a(czd<T> $$0, akq $$1) {
+      cyz<?> $$2 = this.e.get($$1);
+      return (cyz<T>)($$2 != null && $$2.b().e().equals($$0) ? $$2 : null);
+   }
+
+   public Collection<cyz<?>> b() {
+      return this.d.values();
+   }
+
+   public Collection<cyz<?>> d() {
+      return this.e.values();
+   }
+
+   public Stream<akq> e() {
+      return this.e.keySet().stream();
+   }
+
+   @VisibleForTesting
+   protected static cyz<?> a(akq $$0, JsonObject $$1, jo.a $$2) {
+      cyx<?> $$3 = (cyx<?>)cyx.h.parse($$2.a(JsonOps.INSTANCE), $$1).getOrThrow(JsonParseException::new);
+      return new cyz<>($$0, $$3);
+   }
+
+   public void a(Iterable<cyz<?>> $$0) {
+      this.f = false;
+      Builder<czd<?>, cyz<?>> $$1 = ImmutableMultimap.builder();
+      com.google.common.collect.ImmutableMap.Builder<akq, cyz<?>> $$2 = ImmutableMap.builder();
+
+      for (cyz<?> $$3 : $$0) {
+         czd<?> $$4 = $$3.b().e();
+         $$1.put($$4, $$3);
+         $$2.put($$3.a(), $$3);
+      }
+
+      this.d = $$1.build();
+      this.e = $$2.build();
+   }
+
+   public static <I extends cza, T extends cyx<I>> czb.a<I, T> b(final czd<T> $$0) {
+      return new czb.a<I, T>() {
+         @Nullable
+         private akq b;
+
+         @Override
+         public Optional<cyz<T>> a(I $$0x, dcu $$1) {
+            czb $$2 = $$1.r();
+            Optional<cyz<T>> $$3 = $$2.a($$0, $$0, $$1, this.b);
+            if ($$3.isPresent()) {
+               cyz<T> $$4 = $$3.get();
+               this.b = $$4.a();
+               return Optional.of($$4);
+            } else {
+               return Optional.empty();
+            }
+         }
+      };
+   }
+
+   public interface a<I extends cza, T extends cyx<I>> {
+      Optional<cyz<T>> a(I var1, dcu var2);
+   }
 }

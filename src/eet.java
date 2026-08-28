@@ -1,40 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class eet extends eeq {
-   public static final MapCodec<eet> d = RecordCodecBuilder.mapCodec(
+public class eet implements eee {
+   public static final Codec<eet> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
+               dta.b.fieldOf("target").forGetter($$0x -> $$0x.b),
+               dta.b.fieldOf("state").forGetter($$0x -> $$0x.c),
+               bpv.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, eet::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
+   public final dta b;
+   public final dta c;
+   private final bpv d;
 
-   public eet(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
+   public eet(dta $$0, dta $$1, bpv $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public eet(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   @Override
-   protected eer<?> b() {
-      return eer.a;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   public bpv a() {
+      return this.d;
    }
 }

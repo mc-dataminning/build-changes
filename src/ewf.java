@@ -1,26 +1,29 @@
-public abstract class ewf {
-   protected final ewh a;
+import net.minecraft.server.MinecraftServer;
 
-   protected ewf(ewh $$0) {
+public class ewf implements ewh<MinecraftServer> {
+   final akq a;
+
+   public ewf(akq $$0) {
       this.a = $$0;
    }
 
-   public double a(bsh $$0) {
-      double $$1 = this.a.c - $$0.dw();
-      double $$2 = this.a.d - $$0.dy();
-      double $$3 = this.a.e - $$0.dC();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   public void a(MinecraftServer $$0, ewj<MinecraftServer> $$1, long $$2) {
+      alf $$3 = $$0.aF();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
    }
 
-   public abstract ewf.a c();
+   public static class a extends ewh.a<MinecraftServer, ewf> {
+      public a() {
+         super(akq.b("function"), ewf.class);
+      }
 
-   public ewh e() {
-      return this.a;
-   }
+      public void a(ua $$0, ewf $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
 
-   public static enum a {
-      a,
-      b,
-      c;
+      public ewf a(ua $$0) {
+         akq $$1 = akq.a($$0.l("Name"));
+         return new ewf($$1);
+      }
    }
 }

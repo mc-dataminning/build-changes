@@ -1,58 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class cyw<T extends cxr> implements cyo<T> {
-   private final cxr.a<T> x;
-   private final MapCodec<T> y;
-   private final ys<wf, T> z;
-
-   public cyw(cxr.a<T> $$0, int $$1) {
-      this.x = $$0;
-      this.y = RecordCodecBuilder.mapCodec(
-         $$2 -> $$2.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0xx -> $$0xx.c),
-                  cxx.d.fieldOf("category").orElse(cxx.c).forGetter($$0xx -> $$0xx.b),
-                  cyg.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
-                  cud.e.fieldOf("result").forGetter($$0xx -> $$0xx.e),
-                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
-                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
-               )
-               .apply($$2, $$0::create)
-      );
-      this.z = ys.a(this::a, this::a);
+public class cyw extends czf {
+   public cyw(cym $$0) {
+      super("", $$0, czg.a(Map.of('#', cyu.a(cur.qO), 'x', cyu.a(cur.rU)), "###", "#x#", "###"), new cuo(cur.uj));
    }
 
    @Override
-   public MapCodec<T> a() {
-      return this.y;
+   public boolean a(cyn $$0, dcu $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cuo $$2 = a($$0);
+         if ($$2.e()) {
+            return false;
+         } else {
+            eqn $$3 = cva.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.g() ? false : $$3.f < 4;
+            }
+         }
+      }
    }
 
    @Override
-   public ys<wf, T> b() {
-      return this.z;
+   public cuo a(cyn $$0, jo.a $$1) {
+      cuo $$2 = a($$0).c(1);
+      $$2.b(kq.D, cxr.b);
+      return $$2;
    }
 
-   private T a(wf $$0) {
-      String $$1 = $$0.p();
-      cxx $$2 = $$0.b(cxx.class);
-      cyg $$3 = cyg.b.decode($$0);
-      cud $$4 = cud.i.decode($$0);
-      float $$5 = $$0.readFloat();
-      int $$6 = $$0.l();
-      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
+   private static cuo a(cyn $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         cuo $$2 = $$0.a($$1);
+         if ($$2.a(cur.rU)) {
+            return $$2;
+         }
+      }
+
+      return cuo.l;
    }
 
-   private void a(wf $$0, T $$1) {
-      $$0.a($$1.c);
-      $$0.a($$1.f());
-      cyg.b.encode($$0, $$1.d);
-      cud.i.encode($$0, $$1.e);
-      $$0.a($$1.f);
-      $$0.c($$1.g);
+   @Override
+   public boolean ao_() {
+      return true;
    }
 
-   public cxr a(String $$0, cxx $$1, cyg $$2, cud $$3, float $$4, int $$5) {
-      return this.x.create($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   public czc<?> ap_() {
+      return czc.f;
    }
 }

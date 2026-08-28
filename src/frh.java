@@ -1,183 +1,181 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class frh {
-   public static final int a = 20;
-   private static final fjh b = new fjh(new akk("recipe_book/page_forward"), new akk("recipe_book/page_forward_highlighted"));
-   private static final fjh c = new fjh(new akk("recipe_book/page_backward"), new akk("recipe_book/page_backward_highlighted"));
-   private final List<frj> d = Lists.newArrayListWithCapacity(20);
-   @Nullable
-   private frj e;
-   private final frf f = new frf();
-   private ffw g;
-   private final List<frl> h = Lists.newArrayList();
-   private List<frk> i = ImmutableList.of();
-   private fja j;
-   private fja k;
-   private int l;
-   private int m;
-   private avk n;
-   @Nullable
-   private cyl<?> o;
-   @Nullable
-   private frk p;
+public class frh extends fim<frh.b> {
+   private static final int a = 20;
+   final fri m;
+   private int n;
 
-   public frh() {
-      for (int $$0 = 0; $$0 < 20; $$0++) {
-         this.d.add(new frj());
-      }
-   }
+   public frh(fri $$0, fgi $$1) {
+      super($$1, $$0.m, $$0.r.d(), $$0.r.c(), 20);
+      this.m = $$0;
+      fgg[] $$2 = (fgg[])ArrayUtils.clone($$1.m.W);
+      Arrays.sort((Object[])$$2);
+      String $$3 = null;
 
-   public void a(ffw $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.n = $$0.s.m();
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
-      }
-
-      this.j = new fja($$1 + 93, $$2 + 137, 12, 17, false);
-      this.j.a(b);
-      this.k = new fja($$1 + 38, $$2 + 137, 12, 17, true);
-      this.k.a(c);
-   }
-
-   public void a(frg $$0) {
-      this.h.remove($$0);
-      this.h.add($$0);
-   }
-
-   public void a(List<frk> $$0, boolean $$1) {
-      this.i = $$0;
-      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
-      if (this.l <= this.m || $$1) {
-         this.m = 0;
-      }
-
-      this.f();
-   }
-
-   private void f() {
-      int $$0 = 20 * this.m;
-
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         frj $$2 = this.d.get($$1);
-         if ($$0 + $$1 < this.i.size()) {
-            frk $$3 = this.i.get($$0 + $$1);
-            $$2.a($$3, this);
-            $$2.k = true;
-         } else {
-            $$2.k = false;
+      for (fgg $$4 : $$2) {
+         String $$5 = $$4.f();
+         if (!$$5.equals($$3)) {
+            $$3 = $$5;
+            this.b(new frh.a(wy.c($$5)));
          }
-      }
 
-      this.g();
-   }
-
-   private void g() {
-      this.j.k = this.l > 1 && this.m < this.l - 1;
-      this.k.k = this.l > 1 && this.m > 0;
-   }
-
-   public void a(fhh $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      if (this.l > 1) {
-         wu $$6 = wu.a("gui.recipebook.page", this.m + 1, this.l);
-         int $$7 = this.g.h.a($$6);
-         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
-      }
-
-      this.e = null;
-
-      for (frj $$8 : this.d) {
-         $$8.a($$0, $$3, $$4, $$5);
-         if ($$8.k && $$8.B()) {
-            this.e = $$8;
+         wy $$6 = wy.c($$4.h());
+         int $$7 = $$1.h.a($$6);
+         if ($$7 > this.n) {
+            this.n = $$7;
          }
+
+         this.b(new frh.c($$4, $$6));
       }
-
-      this.k.a($$0, $$3, $$4, $$5);
-      this.j.a($$0, $$3, $$4, $$5);
-      this.f.a($$0, $$3, $$4, $$5);
-   }
-
-   public void a(fhh $$0, int $$1, int $$2) {
-      if (this.g.y != null && this.e != null && !this.f.c()) {
-         $$0.a(this.g.h, this.e.e(), $$1, $$2);
-      }
-   }
-
-   @Nullable
-   public cyl<?> a() {
-      return this.o;
-   }
-
-   @Nullable
-   public frk b() {
-      return this.p;
    }
 
    public void c() {
-      this.f.b(false);
+      fgg.d();
+      this.J();
    }
 
-   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      this.o = null;
-      this.p = null;
-      if (this.f.c()) {
-         if (this.f.a($$0, $$1, $$2)) {
-            this.o = this.f.b();
-            this.p = this.f.a();
-         } else {
-            this.f.b(false);
+   public void J() {
+      this.aG_().forEach(frh.b::c);
+   }
+
+   @Override
+   public int b() {
+      return 340;
+   }
+
+   public class a extends frh.b {
+      final wy b;
+      private final int c;
+
+      public a(final wy $$1) {
+         this.b = $$1;
+         this.c = frh.this.c.h.a(this.b);
+      }
+
+      @Override
+      public void a(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(frh.this.c.h, this.b, frh.this.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, -1, false);
+      }
+
+      @Nullable
+      @Override
+      public fhq a(fmi $$0) {
+         return null;
+      }
+
+      @Override
+      public List<? extends fkc> aG_() {
+         return Collections.emptyList();
+      }
+
+      @Override
+      public List<? extends fma> b() {
+         return ImmutableList.of(new fma() {
+            @Override
+            public fma.a u() {
+               return fma.a.b;
+            }
+
+            @Override
+            public void b(fmc $$0) {
+               $$0.a(fmb.a, a.this.b);
+            }
+         });
+      }
+
+      @Override
+      protected void c() {
+      }
+   }
+
+   public abstract static class b extends fim.a<frh.b> {
+      abstract void c();
+   }
+
+   public class c extends frh.b {
+      private static final wy b = wy.c("controls.reset");
+      private static final int c = 10;
+      private final fgg d;
+      private final wy e;
+      private final fig f;
+      private final fig g;
+      private boolean h = false;
+
+      c(final fgg $$1, final wy $$2) {
+         this.d = $$1;
+         this.e = $$2;
+         this.f = fig.a($$2, $$1x -> {
+            frh.this.m.a = $$1;
+            frh.this.c();
+         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? wy.a("narrator.controls.unbound", $$2) : wy.a("narrator.controls.bound", $$2, $$2x.get())).a();
+         this.g = fig.a(b, $$1x -> {
+            frh.this.c.m.a($$1, $$1.i());
+            frh.this.c();
+         }).a(0, 0, 50, 20).a($$1x -> wy.a("narrator.controls.reset", $$2)).a();
+         this.c();
+      }
+
+      @Override
+      public void a(fht $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = frh.this.q() - this.g.y() - 10;
+         int $$11 = $$2 - 2;
+         this.g.c($$10, $$11);
+         this.g.a($$0, $$6, $$7, $$9);
+         int $$12 = $$10 - 5 - this.f.y();
+         this.f.c($$12, $$11);
+         this.f.a($$0, $$6, $$7, $$9);
+         $$0.b(frh.this.c.h, this.e, $$3, $$2 + $$5 / 2 - 9 / 2, -1);
+         if (this.h) {
+            int $$13 = 3;
+            int $$14 = this.f.D() - 6;
+            $$0.a($$14, $$2 - 1, $$14 + 3, $$2 + $$5, -65536);
          }
+      }
 
-         return true;
-      } else if (this.j.a($$0, $$1, $$2)) {
-         this.m++;
-         this.f();
-         return true;
-      } else if (this.k.a($$0, $$1, $$2)) {
-         this.m--;
-         this.f();
-         return true;
-      } else {
-         for (frj $$7 : this.d) {
-            if ($$7.a($$0, $$1, $$2)) {
-               if ($$2 == 0) {
-                  this.o = $$7.c();
-                  this.p = $$7.a();
-               } else if ($$2 == 1 && !this.f.c() && !$$7.b()) {
-                  this.f.a(this.g, $$7.a(), $$7.D(), $$7.E(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$7.y());
+      @Override
+      public List<? extends fkc> aG_() {
+         return ImmutableList.of(this.f, this.g);
+      }
+
+      @Override
+      public List<? extends fma> b() {
+         return ImmutableList.of(this.f, this.g);
+      }
+
+      @Override
+      protected void c() {
+         this.f.b(this.d.k());
+         this.g.j = !this.d.l();
+         this.h = false;
+         xm $$0 = wy.i();
+         if (!this.d.j()) {
+            for (fgg $$1 : frh.this.c.m.W) {
+               if ($$1 != this.d && this.d.b($$1)) {
+                  if (this.h) {
+                     $$0.f(", ");
+                  }
+
+                  this.h = true;
+                  $$0.b(wy.c($$1.h()));
                }
-
-               return true;
             }
          }
 
-         return false;
+         if (this.h) {
+            this.f.b(wy.b("[ ").b(this.f.z().f().a(n.p)).f(" ]").a(n.m));
+            this.f.a(fjr.a(wy.a("controls.keybinds.duplicateKeybinds", $$0)));
+         } else {
+            this.f.a(null);
+         }
+
+         if (frh.this.m.a == this.d) {
+            this.f.b(wy.b("> ").b(this.f.z().f().a(n.p, n.t)).f(" <").a(n.o));
+         }
       }
-   }
-
-   public void a(List<cyl<?>> $$0) {
-      for (frl $$1 : this.h) {
-         $$1.a($$0);
-      }
-   }
-
-   public ffw d() {
-      return this.g;
-   }
-
-   public avk e() {
-      return this.n;
-   }
-
-   protected void a(Consumer<fhs> $$0) {
-      $$0.accept(this.j);
-      $$0.accept(this.k);
-      this.d.forEach($$0);
    }
 }

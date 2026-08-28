@@ -1,9 +1,20 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dau {
-   static MapCodec<? extends dat> a(jw<MapCodec<? extends dat>> $$0) {
-      jw.a($$0, "by_cost", dav.b);
-      jw.a($$0, "by_cost_with_difficulty", daw.b);
-      return jw.a($$0, "single", dax.b);
+public record dau(dah d) implements daq {
+   public static final MapCodec<dau> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dah.b.fieldOf("duration").forGetter($$0x -> $$0x.d)).apply($$0, dau::new));
+
+   @Override
+   public void a(aqt $$0, int $$1, czz $$2, bsq $$3, eww $$4) {
+      $$3.d(this.d.a($$1));
+   }
+
+   @Override
+   public MapCodec<dau> a() {
+      return a;
+   }
+
+   public dah b() {
+      return this.d;
    }
 }

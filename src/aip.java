@@ -1,14 +1,27 @@
-public interface aip extends abk, agc {
+import com.mojang.authlib.GameProfile;
+import io.netty.buffer.ByteBuf;
+
+public record aip(GameProfile b, @Deprecated(forRemoval = true) boolean c) implements zf<ain> {
+   public static final yw<ByteBuf, aip> a = yw.a(yu.u, aip::b, yu.b, aip::e, aip::new);
+
    @Override
-   default vq b() {
-      return vq.d;
+   public zh<aip> a() {
+      return ait.b;
    }
 
-   void a(air var1);
+   public void a(ain $$0) {
+      $$0.a(this);
+   }
 
-   void a(ais var1);
+   @Override
+   public boolean d() {
+      return true;
+   }
 
-   void a(aiq var1);
-
-   void a(ait var1);
+   @Deprecated(
+      forRemoval = true
+   )
+   public boolean e() {
+      return this.c;
+   }
 }

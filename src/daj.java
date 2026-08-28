@@ -1,21 +1,12 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record daj(czt c) implements dae {
-   public static final MapCodec<daj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(czt.b.fieldOf("chance").forGetter(daj::b)).apply($$0, daj::new));
+public record daj(dah c) implements das {
+   public static final MapCodec<daj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dah.b.fieldOf("value").forGetter(daj::b)).apply($$0, daj::new));
 
    @Override
-   public float a(int $$0, ayo $$1, float $$2) {
-      float $$3 = this.c.a($$0);
-      int $$4 = 0;
-
-      for (int $$5 = 0; (float)$$5 < $$2; $$5++) {
-         if ($$1.i() < $$3) {
-            $$4++;
-         }
-      }
-
-      return $$2 - (float)$$4;
+   public float a(int $$0, ayv $$1, float $$2) {
+      return $$2 + this.c.a($$0);
    }
 
    @Override
@@ -23,7 +14,7 @@ public record daj(czt c) implements dae {
       return a;
    }
 
-   public czt b() {
+   public dah b() {
       return this.c;
    }
 }

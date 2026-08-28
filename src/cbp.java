@@ -1,32 +1,44 @@
-public class cbp extends cak {
-   private final ckk b;
-   private int c;
+import java.util.EnumSet;
 
-   public cbp(ckk $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class cbp extends cak {
+   private final buj a;
+
+   public cbp(buj $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cak.a.c, cak.a.a));
    }
 
    @Override
-   public void c() {
-      super.c();
-      this.c = 0;
+   public boolean c() {
+      return this.a.gm();
+   }
+
+   @Override
+   public boolean b() {
+      if (!this.a.s()) {
+         return false;
+      } else if (this.a.bi()) {
+         return false;
+      } else if (!this.a.aF()) {
+         return false;
+      } else {
+         btl $$0 = this.a.P_();
+         if ($$0 == null) {
+            return true;
+         } else {
+            return this.a.g((bsq)$$0) < 144.0 && $$0.ej() != null ? false : this.a.gm();
+         }
+      }
    }
 
    @Override
    public void d() {
-      super.d();
-      this.b.v(false);
+      this.a.J().n();
+      this.a.x(true);
    }
 
    @Override
    public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
-      }
+      this.a.x(false);
    }
 }

@@ -1,110 +1,61 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class gfm {
-   public static final gfm a = new gfm();
-   public static final float b = Float.NEGATIVE_INFINITY;
-   private final gfm.a[] c;
-   private final akk[] d;
+   private Map<dta, gsg> a = Map.of();
+   private final gsm b;
 
-   private gfm() {
-      this.c = new gfm.a[0];
-      this.d = new akk[0];
+   public gfm(gsm $$0) {
+      this.b = $$0;
    }
 
-   public gfm(grv $$0, gfh $$1, List<gfl> $$2) {
-      this.d = $$2.stream().flatMap(gfl::b).map(gfl.b::a).distinct().toArray(akk[]::new);
-      Object2IntMap<akk> $$3 = new Object2IntOpenHashMap();
+   public gqf a(dta $$0) {
+      return this.b($$0).e();
+   }
 
-      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
-         $$3.put(this.d[$$4], $$4);
+   public gsg b(dta $$0) {
+      gsg $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         $$1 = this.b.a();
       }
 
-      List<gfm.a> $$5 = Lists.newArrayList();
-
-      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
-         gfl $$7 = $$2.get($$6);
-         grr $$8 = this.a($$0, $$1, $$7);
-         gfm.b[] $$9 = $$7.b().map($$1x -> {
-            int $$2x = $$3.getInt($$1x.a());
-            return new gfm.b($$2x, $$1x.b());
-         }).toArray(gfm.b[]::new);
-         $$5.add(new gfm.a($$9, $$8));
-      }
-
-      this.c = $$5.toArray(new gfm.a[0]);
+      return $$1;
    }
 
-   @Nullable
-   private grr a(grv $$0, gfh $$1, gfl $$2) {
-      gsc $$3 = $$0.a($$2.a());
-      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), grs.a);
+   public gsm a() {
+      return this.b;
    }
 
-   @Nullable
-   public grr a(grr $$0, cud $$1, @Nullable fyl $$2, @Nullable btc $$3, int $$4) {
-      if (this.c.length != 0) {
-         int $$5 = this.d.length;
-         float[] $$6 = new float[$$5];
+   public void a(Map<dta, gsg> $$0) {
+      this.a = $$0;
+   }
 
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            akk $$8 = this.d[$$7];
-            goy $$9 = gox.a($$1, $$8);
-            if ($$9 != null) {
-               $$6[$$7] = $$9.call($$1, $$2, $$3, $$4);
-            } else {
-               $$6[$$7] = Float.NEGATIVE_INFINITY;
-            }
+   public static gsn c(dta $$0) {
+      return a(lt.e.b($$0.b()), $$0);
+   }
+
+   public static gsn a(akq $$0, dta $$1) {
+      return new gsn($$0, b($$1.C()));
+   }
+
+   public static String b(Map<dud<?>, Comparable<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (Entry<dud<?>, Comparable<?>> $$2 : $$0.entrySet()) {
+         if ($$1.length() != 0) {
+            $$1.append(',');
          }
 
-         for (gfm.a $$10 : this.c) {
-            if ($$10.a($$6)) {
-               grr $$11 = $$10.b;
-               if ($$11 == null) {
-                  return $$0;
-               }
-
-               return $$11;
-            }
-         }
+         dud<?> $$3 = $$2.getKey();
+         $$1.append($$3.f());
+         $$1.append('=');
+         $$1.append(a($$3, $$2.getValue()));
       }
 
-      return $$0;
+      return $$1.toString();
    }
 
-   static class a {
-      private final gfm.b[] a;
-      @Nullable
-      final grr b;
-
-      a(gfm.b[] $$0, @Nullable grr $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      boolean a(float[] $$0) {
-         for (gfm.b $$1 : this.a) {
-            float $$2 = $$0[$$1.a];
-            if ($$2 < $$1.b) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   static class b {
-      public final int a;
-      public final float b;
-
-      b(int $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   private static <T extends Comparable<T>> String a(dud<T> $$0, Comparable<?> $$1) {
+      return $$0.a((T)$$1);
    }
 }

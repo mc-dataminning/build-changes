@@ -1,21 +1,12 @@
-public record afl(wu b, boolean c) implements zb<abn> {
-   public static final ys<wf, afl> a = ys.a(ww.d, afl::b, yq.b, afl::e, afl::new);
+public record afl(wy b) implements zf<abt> {
+   public static final yw<wj, afl> a = yw.a(xa.d, afl::b, afl::new);
 
    @Override
-   public zd<afl> a() {
-      return afz.aV;
+   public zh<afl> a() {
+      return agf.aP;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

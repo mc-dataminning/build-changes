@@ -1,63 +1,41 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class ehg extends ehe {
-   public static final MapCodec<ehg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dza.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dza.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ehg::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dza d;
-   private final dza e;
-   private final int f;
+public class ehg extends ehf {
+   public static final MapCodec<ehg> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehg::new));
 
-   private ehg(dza $$0, dza $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static ehg a(dza $$0, dza $$1, int $$2) {
-      return new ehg($$0, $$1, $$2);
-   }
-
-   public static ehg a(dza $$0, dza $$1) {
-      return a($$0, $$1, 0);
+   public ehg(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public int a(ayo $$0, dzd $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return ayg.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + ayg.b($$0, 0, $$6) + ayg.b($$0, 0, $$5);
+   protected ehj<?> a() {
+      return ehj.d;
+   }
+
+   @Override
+   public List<efq.a> a(dda $$0, BiConsumer<jd, dta> $$1, ayv $$2, int $$3, jd $$4, efa $$5) {
+      List<efq.a> $$6 = Lists.newArrayList();
+      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+
+      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
+         float $$8 = $$2.i() * (float) (Math.PI * 2);
+         int $$9 = 0;
+         int $$10 = 0;
+
+         for (int $$11 = 0; $$11 < 5; $$11++) {
+            $$9 = (int)(1.5F + ayn.b($$8) * (float)$$11);
+            $$10 = (int)(1.5F + ayn.a($$8) * (float)$$11);
+            jd $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
+            this.b($$0, $$1, $$2, $$12, $$5);
          }
+
+         $$6.add(new efq.a($$4.b($$9, $$7, $$10), -2, false));
       }
-   }
 
-   @Override
-   public ehf<?> a() {
-      return ehf.e;
-   }
-
-   @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
+      return $$6;
    }
 }

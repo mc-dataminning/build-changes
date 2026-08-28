@@ -1,18 +1,31 @@
-import io.netty.buffer.ByteBuf;
+public class acc implements zf<abt> {
+   public static final yw<wj, acc> a = yw.a(jd.b, acc::e, yu.a(dfw.q), acc::b, acc::new);
+   private final jd b;
+   private final dta c;
 
-public class acc implements zb<abn> {
-   public static final acc a = new acc();
-   public static final ys<ByteBuf, acc> b = ys.a(a);
+   public acc(jd $$0, dta $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   private acc() {
+   public acc(dca $$0, jd $$1) {
+      this($$1, $$0.a_($$1));
    }
 
    @Override
-   public zd<acc> a() {
-      return afz.o;
+   public zh<acc> a() {
+      return agf.k;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
+   }
+
+   public dta b() {
+      return this.c;
+   }
+
+   public jd e() {
+      return this.b;
    }
 }

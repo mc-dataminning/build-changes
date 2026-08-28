@@ -1,37 +1,34 @@
-public abstract class bwg<E extends btc> implements buw<E>, byl<E> {
-   private buv.a a;
+import com.google.common.collect.ImmutableMap;
 
-   public bwg() {
-      this.a = buv.a.a;
+public class bwg extends bvf<btn> {
+   public static final int c = 100;
+   private final bqb d;
+   private final avn e;
+
+   public bwg(bqb $$0, avn $$1) {
+      super(ImmutableMap.of(ccq.n, ccr.c, ccq.T, ccr.a), 100);
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public final buv.a a() {
-      return this.a;
+   protected boolean a(aqt $$0, btn $$1, long $$2) {
+      return !$$1.aF();
    }
 
-   @Override
-   public final boolean e(aqm $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = buv.a.b;
-         return true;
-      } else {
-         return false;
+   protected void b(aqt $$0, btn $$1, long $$2) {
+      $$1.r(true);
+      $$1.b(bty.g);
+   }
+
+   protected void c(aqt $$0, btn $$1, long $$2) {
+      if ($$1.aF()) {
+         $$1.i($$1.dt().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, avp.g, 2.0F, 1.0F);
       }
-   }
 
-   @Override
-   public final void f(aqm $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(aqm $$0, E $$1, long $$2) {
-      this.a = buv.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+      $$1.r(false);
+      $$1.b(bty.a);
+      $$1.dU().b(ccq.T);
+      $$1.dU().a(ccq.S, this.d.a($$0.z));
    }
 }

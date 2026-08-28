@@ -1,44 +1,55 @@
-import javax.annotation.Nullable;
+import java.security.PublicKey;
 
-public record aiq(int b, @Nullable aiu c) implements zb<aip> {
-   public static final ys<vr, aiq> a = zb.a(aiq::c, aiq::a);
-   private static final int d = 1048576;
+public class aiq implements zf<ain> {
+   public static final yw<vv, aiq> a = zf.a(aiq::a, aiq::new);
+   private final String b;
+   private final byte[] c;
+   private final byte[] d;
+   private final boolean e;
 
-   private static aiq a(vr $$0) {
-      int $$1 = $$0.l();
-      return new aiq($$1, a($$1, $$0));
+   public aiq(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private static aiu a(int $$0, vr $$1) {
-      return b($$1);
+   private aiq(vv $$0) {
+      this.b = $$0.d(20);
+      this.c = $$0.b();
+      this.d = $$0.b();
+      this.e = $$0.readBoolean();
    }
 
-   private static aiu b(vr $$0) {
-      int $$1 = $$0.readableBytes();
-      if ($$1 >= 0 && $$1 <= 1048576) {
-         $$0.j($$1);
-         return aiw.a;
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
-   }
-
-   private void c(vr $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(vv $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public zd<aiq> a() {
-      return ain.f;
+   public zh<aiq> a() {
+      return ait.c;
    }
 
-   public void a(aip $$0) {
+   public void a(ain $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public aiu e() {
-      return this.c;
+   public String b() {
+      return this.b;
+   }
+
+   public PublicKey e() throws axl {
+      return axk.a(this.c);
+   }
+
+   public byte[] f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

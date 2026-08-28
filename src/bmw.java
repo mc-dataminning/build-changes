@@ -1,11 +1,8 @@
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface bmw {
-   long a();
-
-   long b();
-
-   long c();
-
-   Object2LongMap<String> d();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bmw {
 }

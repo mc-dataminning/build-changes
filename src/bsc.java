@@ -1,58 +1,20 @@
-import java.util.function.Consumer;
-
-public class bsc {
-   private static final long a = Long.MAX_VALUE;
-   private long b = Long.MAX_VALUE;
-   private long c;
-
-   public void a(int $$0) {
-      this.b = (long)$$0 * 1000L / 20L;
-      this.c = 0L;
+class bsc extends brw {
+   protected bsc(brx $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public void b(int $$0) {
-      if (!this.c()) {
-         this.a($$0);
+   @Override
+   public boolean a(btl $$0, int $$1) {
+      if ($$0.ex() > 1.0F) {
+         $$0.a($$0.dR().p(), 1.0F);
       }
+
+      return true;
    }
 
-   public void a(boolean $$0, int $$1) {
-      if ($$0) {
-         this.b($$1);
-      } else {
-         this.a();
-      }
-   }
-
-   public void a() {
-      this.b = Long.MAX_VALUE;
-   }
-
-   public void a(Consumer<bsc> $$0) {
-      if (this.c()) {
-         $$0.accept(this);
-      }
-   }
-
-   public void a(float $$0, float $$1) {
-      if (this.c()) {
-         long $$2 = ayg.b((double)($$0 * 1000.0F / 20.0F));
-         this.c = this.c + (long)((float)($$2 - this.b) * $$1);
-         this.b = $$2;
-      }
-   }
-
-   public void a(int $$0, float $$1) {
-      if (this.c()) {
-         this.c += (long)((float)($$0 * 1000) * $$1) / 20L;
-      }
-   }
-
-   public long b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.b != Long.MAX_VALUE;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 25 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
    }
 }

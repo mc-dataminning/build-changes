@@ -1,99 +1,82 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.ToIntFunction;
 
-public class dkk extends dfr implements dfl {
-   public static final MapCodec<dkk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akj.a(lr.aH).fieldOf("feature").forGetter($$0x -> $$0x.d), u()).apply($$0, dkk::new)
-   );
-   protected static final float b = 3.0F;
-   protected static final exa c = dfi.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final akj<eay<?, ?>> d;
+public class dkk extends dfw implements dmy {
+   public static final MapCodec<dkk> a = b(dkk::new);
+   public static final int b = 15;
+   public static final dua c = dtq.aP;
+   public static final dtr d = dtq.C;
+   public static final ToIntFunction<dta> e = $$0 -> $$0.c(c);
 
    @Override
    public MapCodec<dkk> a() {
       return a;
    }
 
-   public dkk(akj<eay<?, ?>> $$0, dsk.d $$1) {
-      super($$1);
-      this.d = $$0;
+   public dkk(dsz.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      return c;
+   protected void a(dtb.a<dfw, dta> $$0) {
+      $$0.a(c, d);
    }
 
    @Override
-   protected void b(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      if ($$3.a(25) == 0) {
-         int $$4 = 5;
-         int $$5 = 4;
-
-         for (ja $$6 : ja.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
-            if ($$1.a_($$6).a(this)) {
-               if (--$$4 <= 0) {
-                  return;
-               }
-            }
-         }
-
-         ja $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            if ($$1.u($$7) && $$0.a($$1, $$7)) {
-               $$2 = $$7;
-            }
-
-            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-         }
-
-         if ($$1.u($$7) && $$0.a($$1, $$7)) {
-            $$1.a($$7, $$0, 2);
-         }
-      }
-   }
-
-   @Override
-   protected boolean b(dsl $$0, dbm $$1, ja $$2) {
-      return $$0.i($$1, $$2);
-   }
-
-   @Override
-   protected boolean a(dsl $$0, dcj $$1, ja $$2) {
-      ja $$3 = $$2.d();
-      dsl $$4 = $$1.a_($$3);
-      return $$4.a(avw.ba) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
-   }
-
-   public boolean a(aqm $$0, ja $$1, dsl $$2, ayo $$3) {
-      Optional<? extends jj<eay<?, ?>>> $$4 = $$0.H_().d(lr.aH).b(this.d);
-      if ($$4.isEmpty()) {
-         return false;
+   protected bqq a(dta $$0, dcu $$1, jd $$2, cmv $$3, ews $$4) {
+      if (!$$1.B && $$3.gw()) {
+         $$1.a($$2, $$0.a(c), 2);
+         return bqq.a;
       } else {
-         $$0.a($$1, false);
-         if ($$4.get().a().a($$0, $$0.l().g(), $$3, $$1)) {
-            return true;
-         } else {
-            $$0.a($$1, $$2, 3);
-            return false;
-         }
+         return bqq.c;
       }
    }
 
    @Override
-   public boolean b(dcj $$0, ja $$1, dsl $$2) {
-      return true;
+   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
+      return $$3.a(cur.hC) ? exm.b() : exm.a();
    }
 
    @Override
-   public boolean a(dcg $$0, ayo $$1, ja $$2, dsl $$3) {
-      return (double)$$1.i() < 0.4;
+   protected boolean a_(dta $$0, dca $$1, jd $$2) {
+      return $$0.u().c();
    }
 
    @Override
-   public void a(aqm $$0, ayo $$1, ja $$2, dsl $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   protected dmd a_(dta $$0) {
+      return dmd.a;
+   }
+
+   @Override
+   protected float d(dta $$0, dca $$1, jd $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected dta a(dta $$0, ji $$1, dta $$2, dcv $$3, jd $$4, jd $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, eoz.c, eoz.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected eoy b_(dta $$0) {
+      return $$0.c(d) ? eoz.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   public cuo a(dcx $$0, jd $$1, dta $$2) {
+      return a(super.a($$0, $$1, $$2), $$2.c(c));
+   }
+
+   public static cuo a(cuo $$0, int $$1) {
+      if ($$1 != 15) {
+         $$0.b(kq.ac, cxb.a.a(c, $$1));
+      }
+
+      return $$0;
    }
 }

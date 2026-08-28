@@ -1,43 +1,9 @@
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import java.util.Optional;
 
-abstract class aso implements BasicFileAttributes {
-   private static final FileTime a = FileTime.fromMillis(0L);
-
-   @Override
-   public FileTime lastModifiedTime() {
-      return a;
-   }
-
-   @Override
-   public FileTime lastAccessTime() {
-      return a;
-   }
-
-   @Override
-   public FileTime creationTime() {
-      return a;
-   }
-
-   @Override
-   public boolean isSymbolicLink() {
-      return false;
-   }
-
-   @Override
-   public boolean isOther() {
-      return false;
-   }
-
-   @Override
-   public long size() {
-      return 0L;
-   }
-
-   @Nullable
-   @Override
-   public Object fileKey() {
-      return null;
+public record aso(String a, wy b, atp c, Optional<atk> d) {
+   public wy a(boolean $$0, wy $$1) {
+      return xb.a(this.c.a(wy.b(this.a)))
+         .a($$2 -> $$2.a($$0 ? n.k : n.m).a(StringArgumentType.escapeIfRequired(this.a)).a(new xe(xe.a.a, wy.i().b(this.b).f("\n").b($$1))));
    }
 }

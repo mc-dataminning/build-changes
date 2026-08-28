@@ -1,30 +1,9 @@
-public class fpi extends fnz {
-   private final dbh s;
+public class fpi extends fon<cqp> {
+   private static final akq E = akq.b("container/furnace/lit_progress");
+   private static final akq F = akq.b("container/furnace/burn_progress");
+   private static final akq G = akq.b("textures/gui/container/furnace.png");
 
-   public fpi(dbh $$0) {
-      this.s = $$0;
-   }
-
-   @Override
-   public dbh m() {
-      return this.s;
-   }
-
-   @Override
-   int D() {
-      return 150;
-   }
-
-   @Override
-   protected void aP_() {
-      super.aP_();
-      this.a.a(this.m().m());
-   }
-
-   @Override
-   protected void a(dbh $$0) {
-      if ($$0 instanceof cop.a $$1) {
-         this.l.L().b(new ahq($$1.h().an(), this.a.a(), $$0.p()));
-      }
+   public fpi(cqp $$0, cmu $$1, wy $$2) {
+      super($$0, new fsb(), $$1, $$2, G, E, F);
    }
 }

@@ -1,77 +1,29 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.BiConsumer;
 
-public class egp extends egt {
-   public static final MapCodec<egp> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, egp::new));
+public class egp extends egf {
+   public static final MapCodec<egp> b = bpa.b(dta.b).comapFlatMap(egp::a, $$0 -> $$0.c).fieldOf("entries");
+   private final bpa<dta> c;
 
-   public egp(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private static DataResult<egp> a(bpa<dta> $$0) {
+      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new egp($$0));
+   }
+
+   public egp(bpa<dta> $$0) {
+      this.c = $$0;
+   }
+
+   public egp(bpa.a<dta> $$0) {
+      this($$0.a());
    }
 
    @Override
-   protected egu<?> a() {
-      return egu.b;
+   protected egg<?> a() {
+      return egg.b;
    }
 
    @Override
-   public List<efb.a> a(dcm $$0, BiConsumer<ja, dsl> $$1, ayo $$2, int $$3, ja $$4, eel $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      List<efb.a> $$6 = Lists.newArrayList();
-      jf $$7 = jf.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      ja.a $$10 = new ja.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
-
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
-         }
-
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
-         }
-      }
-
-      if ($$13.isPresent()) {
-         $$6.add(new efb.a(new ja($$11, $$13.getAsInt(), $$12), 1, false));
-      }
-
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      jf $$16 = jf.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
-               }
-            }
-
-            $$19++;
-         }
-
-         if ($$13.isPresent()) {
-            $$6.add(new efb.a(new ja($$11, $$13.getAsInt(), $$12), 0, false));
-         }
-      }
-
-      return $$6;
+   public dta a(ayv $$0, jd $$1) {
+      return this.c.a($$0).orElseThrow(IllegalStateException::new);
    }
 }

@@ -1,82 +1,83 @@
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+public abstract class btu extends btn {
+   protected static final float bZ = 0.0F;
 
-public interface btu {
-   btu a = new btu() {
-      @Override
-      public cud a() {
-         return cud.l;
-      }
+   protected btu(bsw<? extends btu> $$0, dcu $$1) {
+      super($$0, $$1);
+   }
 
-      @Override
-      public boolean a(cud $$0) {
+   public float c(jd $$0) {
+      return this.a($$0, this.dQ());
+   }
+
+   public float a(jd $$0, dcx $$1) {
+      return 0.0F;
+   }
+
+   @Override
+   public boolean a(dcv $$0, btp $$1) {
+      return this.a(this.dq(), $$0) >= 0.0F;
+   }
+
+   public boolean gi() {
+      return !this.J().l();
+   }
+
+   public boolean gj() {
+      if (this.bF.a(ccq.Z)) {
+         return this.bF.c(ccq.Z).isPresent();
+      } else {
+         for (cby $$0 : this.bU.b()) {
+            if ($$0.h() && $$0.k() instanceof cbd) {
+               return true;
+            }
+         }
+
          return false;
       }
-   };
-
-   static btu a(final Supplier<cud> $$0, final Consumer<cud> $$1) {
-      return new btu() {
-         @Override
-         public cud a() {
-            return $$0.get();
-         }
-
-         @Override
-         public boolean a(cud $$0x) {
-            $$1.accept($$0);
-            return true;
-         }
-      };
    }
 
-   static btu a(final bqa $$0, final int $$1, final Predicate<cud> $$2) {
-      return new btu() {
-         @Override
-         public cud a() {
-            return $$0.a($$1);
-         }
-
-         @Override
-         public boolean a(cud $$0x) {
-            if (!$$2.test($$0)) {
-               return false;
-            } else {
-               $$0.a($$1, $$0);
-               return true;
+   @Override
+   protected void fX() {
+      super.fX();
+      bsq $$0 = this.ga();
+      if ($$0 != null && $$0.dQ() == this.dQ()) {
+         this.a($$0.dq(), 5);
+         float $$1 = this.f($$0);
+         if (this instanceof buj && ((buj)this).x()) {
+            if ($$1 > 10.0F) {
+               this.a(true, true);
             }
-         }
-      };
-   }
 
-   static btu a(bqa $$0, int $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
-
-   static btu a(final btc $$0, final bso $$1, final Predicate<cud> $$2) {
-      return new btu() {
-         @Override
-         public cud a() {
-            return $$0.a($$1);
+            return;
          }
 
-         @Override
-         public boolean a(cud $$0x) {
-            if (!$$2.test($$0)) {
-               return false;
-            } else {
-               $$0.a($$1, $$0);
-               return true;
-            }
+         this.G($$1);
+         if ($$1 > 10.0F) {
+            this.a(true, true);
+            this.bU.a(cak.a.a);
+         } else if ($$1 > 6.0F) {
+            double $$2 = ($$0.dv() - this.dv()) / (double)$$1;
+            double $$3 = ($$0.dx() - this.dx()) / (double)$$1;
+            double $$4 = ($$0.dB() - this.dB()) / (double)$$1;
+            this.i(this.dt().b(Math.copySign($$2 * $$2 * 0.4, $$2), Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4)));
+            this.cr();
+         } else if (this.gk() && !this.gj()) {
+            this.bU.b(cak.a.a);
+            float $$5 = 2.0F;
+            eww $$6 = new eww($$0.dv() - this.dv(), $$0.dx() - this.dx(), $$0.dB() - this.dB()).d().a((double)Math.max($$1 - 2.0F, 0.0F));
+            this.J().a(this.dv() + $$6.c, this.dx() + $$6.d, this.dB() + $$6.e, this.gl());
          }
-      };
+      }
    }
 
-   static btu a(btc $$0, bso $$1) {
-      return a($$0, $$1, $$0x -> true);
+   protected boolean gk() {
+      return true;
    }
 
-   cud a();
+   protected double gl() {
+      return 1.0;
+   }
 
-   boolean a(cud var1);
+   protected void G(float $$0) {
+   }
 }

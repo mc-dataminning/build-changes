@@ -1,45 +1,79 @@
-public class acj implements zb<abn> {
-   public static final ys<vr, acj> a = zb.a(acj::a, acj::new);
-   private final int b;
-   private final int c;
-   private final int d;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import java.util.List;
 
-   public acj(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public record acj(List<acj.a> b) implements zf<abt> {
+   public static final yw<vv, acj> a = zf.a(acj::a, acj::new);
+   private static final int c = 2097152;
+
+   private acj(vv $$0) {
+      this($$0.a(acj.a::new));
    }
 
-   private acj(vr $$0) {
-      this.b = $$0.readUnsignedByte();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
+   public static acj a(List<dvg> $$0) {
+      return new acj($$0.stream().map(acj.a::new).toList());
    }
 
-   private void a(vr $$0) {
-      $$0.k(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
+   private void a(vv $$0) {
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zd<acj> a() {
-      return afz.v;
+   public zh<acj> a() {
+      return agf.p;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
+   public static record a(dcb a, byte[] b) {
+      public a(dvg $$0) {
+         this($$0.f(), new byte[a($$0)]);
+         a(new vv(this.d()), $$0);
+      }
 
-   public int e() {
-      return this.c;
-   }
+      public a(vv $$0) {
+         this($$0.f(), $$0.a(2097152));
+      }
 
-   public int f() {
-      return this.d;
+      private static int a(dvg $$0) {
+         int $$1 = 0;
+
+         for (dvh $$2 : $$0.d()) {
+            $$1 += $$2.i().c();
+         }
+
+         return $$1;
+      }
+
+      public vv a() {
+         return new vv(Unpooled.wrappedBuffer(this.b));
+      }
+
+      private ByteBuf d() {
+         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
+         $$0.writerIndex(0);
+         return $$0;
+      }
+
+      public static void a(vv $$0, dvg $$1) {
+         for (dvh $$2 : $$1.d()) {
+            $$2.i().b($$0);
+         }
+      }
+
+      public void a(vv $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+      }
+
+      public dcb b() {
+         return this.a;
+      }
+
+      public byte[] c() {
+         return this.b;
+      }
    }
 }

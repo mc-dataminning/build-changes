@@ -1,43 +1,156 @@
-import com.google.common.collect.Interner;
-import com.google.common.collect.Interners;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
+public final class awm {
+   public static final awt<cuj> a = a("wool");
+   public static final awt<cuj> b = a("planks");
+   public static final awt<cuj> c = a("stone_bricks");
+   public static final awt<cuj> d = a("wooden_buttons");
+   public static final awt<cuj> e = a("stone_buttons");
+   public static final awt<cuj> f = a("buttons");
+   public static final awt<cuj> g = a("wool_carpets");
+   public static final awt<cuj> h = a("wooden_doors");
+   public static final awt<cuj> i = a("wooden_stairs");
+   public static final awt<cuj> j = a("wooden_slabs");
+   public static final awt<cuj> k = a("wooden_fences");
+   public static final awt<cuj> l = a("fence_gates");
+   public static final awt<cuj> m = a("wooden_pressure_plates");
+   public static final awt<cuj> n = a("wooden_trapdoors");
+   public static final awt<cuj> o = a("doors");
+   public static final awt<cuj> p = a("saplings");
+   public static final awt<cuj> q = a("logs_that_burn");
+   public static final awt<cuj> r = a("logs");
+   public static final awt<cuj> s = a("dark_oak_logs");
+   public static final awt<cuj> t = a("oak_logs");
+   public static final awt<cuj> u = a("birch_logs");
+   public static final awt<cuj> v = a("acacia_logs");
+   public static final awt<cuj> w = a("cherry_logs");
+   public static final awt<cuj> x = a("jungle_logs");
+   public static final awt<cuj> y = a("spruce_logs");
+   public static final awt<cuj> z = a("mangrove_logs");
+   public static final awt<cuj> A = a("crimson_stems");
+   public static final awt<cuj> B = a("warped_stems");
+   public static final awt<cuj> C = a("bamboo_blocks");
+   public static final awt<cuj> D = a("wart_blocks");
+   public static final awt<cuj> E = a("banners");
+   public static final awt<cuj> F = a("sand");
+   public static final awt<cuj> G = a("smelts_to_glass");
+   public static final awt<cuj> H = a("stairs");
+   public static final awt<cuj> I = a("slabs");
+   public static final awt<cuj> J = a("walls");
+   public static final awt<cuj> K = a("anvil");
+   public static final awt<cuj> L = a("rails");
+   public static final awt<cuj> M = a("leaves");
+   public static final awt<cuj> N = a("trapdoors");
+   public static final awt<cuj> O = a("small_flowers");
+   public static final awt<cuj> P = a("beds");
+   public static final awt<cuj> Q = a("fences");
+   public static final awt<cuj> R = a("tall_flowers");
+   public static final awt<cuj> S = a("flowers");
+   public static final awt<cuj> T = a("piglin_repellents");
+   public static final awt<cuj> U = a("piglin_loved");
+   public static final awt<cuj> V = a("ignored_by_piglin_babies");
+   public static final awt<cuj> W = a("meat");
+   public static final awt<cuj> X = a("sniffer_food");
+   public static final awt<cuj> Y = a("piglin_food");
+   public static final awt<cuj> Z = a("fox_food");
+   public static final awt<cuj> aa = a("cow_food");
+   public static final awt<cuj> ab = a("goat_food");
+   public static final awt<cuj> ac = a("sheep_food");
+   public static final awt<cuj> ad = a("wolf_food");
+   public static final awt<cuj> ae = a("cat_food");
+   public static final awt<cuj> af = a("horse_food");
+   public static final awt<cuj> ag = a("horse_tempt_items");
+   public static final awt<cuj> ah = a("camel_food");
+   public static final awt<cuj> ai = a("armadillo_food");
+   public static final awt<cuj> aj = a("bee_food");
+   public static final awt<cuj> ak = a("chicken_food");
+   public static final awt<cuj> al = a("frog_food");
+   public static final awt<cuj> am = a("hoglin_food");
+   public static final awt<cuj> an = a("llama_food");
+   public static final awt<cuj> ao = a("llama_tempt_items");
+   public static final awt<cuj> ap = a("ocelot_food");
+   public static final awt<cuj> aq = a("panda_food");
+   public static final awt<cuj> ar = a("pig_food");
+   public static final awt<cuj> as = a("rabbit_food");
+   public static final awt<cuj> at = a("strider_food");
+   public static final awt<cuj> au = a("strider_tempt_items");
+   public static final awt<cuj> av = a("turtle_food");
+   public static final awt<cuj> aw = a("parrot_food");
+   public static final awt<cuj> ax = a("parrot_poisonous_food");
+   public static final awt<cuj> ay = a("axolotl_food");
+   public static final awt<cuj> az = a("gold_ores");
+   public static final awt<cuj> aA = a("iron_ores");
+   public static final awt<cuj> aB = a("diamond_ores");
+   public static final awt<cuj> aC = a("redstone_ores");
+   public static final awt<cuj> aD = a("lapis_ores");
+   public static final awt<cuj> aE = a("coal_ores");
+   public static final awt<cuj> aF = a("emerald_ores");
+   public static final awt<cuj> aG = a("copper_ores");
+   public static final awt<cuj> aH = a("non_flammable_wood");
+   public static final awt<cuj> aI = a("soul_fire_base_blocks");
+   public static final awt<cuj> aJ = a("candles");
+   public static final awt<cuj> aK = a("dirt");
+   public static final awt<cuj> aL = a("terracotta");
+   public static final awt<cuj> aM = a("completes_find_tree_tutorial");
+   public static final awt<cuj> aN = a("boats");
+   public static final awt<cuj> aO = a("chest_boats");
+   public static final awt<cuj> aP = a("fishes");
+   public static final awt<cuj> aQ = a("signs");
+   public static final awt<cuj> aR = a("creeper_drop_music_discs");
+   public static final awt<cuj> aS = a("coals");
+   public static final awt<cuj> aT = a("arrows");
+   public static final awt<cuj> aU = a("lectern_books");
+   public static final awt<cuj> aV = a("bookshelf_books");
+   public static final awt<cuj> aW = a("beacon_payment_items");
+   public static final awt<cuj> aX = a("stone_tool_materials");
+   public static final awt<cuj> aY = a("stone_crafting_materials");
+   public static final awt<cuj> aZ = a("freeze_immune_wearables");
+   public static final awt<cuj> ba = a("dampens_vibrations");
+   public static final awt<cuj> bb = a("cluster_max_harvestables");
+   public static final awt<cuj> bc = a("compasses");
+   public static final awt<cuj> bd = a("hanging_signs");
+   public static final awt<cuj> be = a("creeper_igniters");
+   public static final awt<cuj> bf = a("noteblock_top_instruments");
+   public static final awt<cuj> bg = a("foot_armor");
+   public static final awt<cuj> bh = a("leg_armor");
+   public static final awt<cuj> bi = a("chest_armor");
+   public static final awt<cuj> bj = a("head_armor");
+   public static final awt<cuj> bk = a("skulls");
+   public static final awt<cuj> bl = a("trimmable_armor");
+   public static final awt<cuj> bm = a("trim_materials");
+   public static final awt<cuj> bn = a("trim_templates");
+   public static final awt<cuj> bo = a("decorated_pot_sherds");
+   public static final awt<cuj> bp = a("decorated_pot_ingredients");
+   public static final awt<cuj> bq = a("swords");
+   public static final awt<cuj> br = a("axes");
+   public static final awt<cuj> bs = a("hoes");
+   public static final awt<cuj> bt = a("pickaxes");
+   public static final awt<cuj> bu = a("shovels");
+   public static final awt<cuj> bv = a("breaks_decorated_pots");
+   public static final awt<cuj> bw = a("villager_plantable_seeds");
+   public static final awt<cuj> bx = a("dyeable");
+   public static final awt<cuj> by = a("enchantable/foot_armor");
+   public static final awt<cuj> bz = a("enchantable/leg_armor");
+   public static final awt<cuj> bA = a("enchantable/chest_armor");
+   public static final awt<cuj> bB = a("enchantable/head_armor");
+   public static final awt<cuj> bC = a("enchantable/armor");
+   public static final awt<cuj> bD = a("enchantable/sword");
+   public static final awt<cuj> bE = a("enchantable/fire_aspect");
+   public static final awt<cuj> bF = a("enchantable/sharp_weapon");
+   public static final awt<cuj> bG = a("enchantable/weapon");
+   public static final awt<cuj> bH = a("enchantable/mining");
+   public static final awt<cuj> bI = a("enchantable/mining_loot");
+   public static final awt<cuj> bJ = a("enchantable/fishing");
+   public static final awt<cuj> bK = a("enchantable/trident");
+   public static final awt<cuj> bL = a("enchantable/durability");
+   public static final awt<cuj> bM = a("enchantable/bow");
+   public static final awt<cuj> bN = a("enchantable/equippable");
+   public static final awt<cuj> bO = a("enchantable/crossbow");
+   public static final awt<cuj> bP = a("enchantable/vanishing");
+   public static final awt<cuj> bQ = a("enchantable/mace");
 
-public record awm<T>(akj<? extends jw<T>> a, akk b) {
-   private static final Interner<awm<?>> c = Interners.newWeakInterner();
-
-   @Deprecated
-   public awm(akj<? extends jw<T>> a, akk b) {
-      this.a = a;
-      this.b = b;
+   private awm() {
    }
 
-   public static <T> Codec<awm<T>> a(akj<? extends jw<T>> $$0) {
-      return akk.a.xmap($$1 -> a($$0, $$1), awm::b);
-   }
-
-   public static <T> Codec<awm<T>> b(akj<? extends jw<T>> $$0) {
-      return Codec.STRING
-         .comapFlatMap(
-            $$1 -> $$1.startsWith("#") ? akk.b($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
-         );
-   }
-
-   public static <T> awm<T> a(akj<? extends jw<T>> $$0, akk $$1) {
-      return (awm<T>)c.intern(new awm<>($$0, $$1));
-   }
-
-   public boolean c(akj<? extends jw<?>> $$0) {
-      return this.a == $$0;
-   }
-
-   public <E> Optional<awm<E>> d(akj<? extends jw<E>> $$0) {
-      return this.c($$0) ? Optional.of((awm<E>)this) : Optional.empty();
-   }
-
-   @Override
-   public String toString() {
-      return "TagKey[" + this.a.a() + " / " + this.b + "]";
+   private static awt<cuj> a(String $$0) {
+      return awt.a(lu.K, akq.b($$0));
    }
 }

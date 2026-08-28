@@ -1,24 +1,11 @@
-public enum bqh {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f;
+import javax.annotation.Nullable;
 
-   public boolean a() {
-      return this == a || this == c || this == d || this == b;
-   }
+public interface bqh {
+   void a();
 
-   public boolean b() {
-      return this == a || this == b;
-   }
-
-   public boolean c() {
-      return this == a || this == c;
-   }
-
-   public static bqh a(boolean $$0) {
-      return $$0 ? a : c;
+   static void a_(@Nullable Object $$0) {
+      if ($$0 instanceof bqh) {
+         ((bqh)$$0).a();
+      }
    }
 }

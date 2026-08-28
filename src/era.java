@@ -1,146 +1,313 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class era {
-   public static final Codec<era> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               erk.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               euh.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
-               esm.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
-               eve.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               eve.a.fieldOf("bonus_rolls").orElse(eva.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, era::new)
-   );
-   private final List<erm> b;
-   private final List<euh> c;
-   private final Predicate<eqw> d;
-   private final List<esk> e;
-   private final BiFunction<cud, eqw, cud> f;
-   private final evd g;
-   private final evd h;
+public class era implements Comparable<era> {
+   public static final wy a = wy.c("selectWorld.select");
+   private final dcy b;
+   private final erb c;
+   private final String d;
+   private final boolean e;
+   private final boolean f;
+   private final boolean g;
+   private final Path h;
+   @Nullable
+   private wy i;
 
-   era(List<erm> $$0, List<euh> $$1, List<esk> $$2, evd $$3, evd $$4) {
+   public era(dcy $$0, erb $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
       this.b = $$0;
       this.c = $$1;
-      this.d = ac.a($$1);
-      this.e = $$2;
-      this.f = esm.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+      this.d = $$2;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.e = $$3;
    }
 
-   private void b(Consumer<cud> $$0, eqw $$1) {
-      ayo $$2 = $$1.b();
-      List<erl> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
+   public String a() {
+      return this.d;
+   }
 
-      for (erm $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
+   public String b() {
+      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
+   }
+
+   public Path c() {
+      return this.h;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public long f() {
+      return this.c.b();
+   }
+
+   public int a(era $$0) {
+      if (this.f() < $$0.f()) {
+         return 1;
+      } else {
+         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
+      }
+   }
+
+   public dcy g() {
+      return this.b;
+   }
+
+   public dcr h() {
+      return this.b.b();
+   }
+
+   public boolean i() {
+      return this.b.c();
+   }
+
+   public boolean j() {
+      return this.b.e();
+   }
+
+   public xm k() {
+      return azk.b(this.c.c()) ? wy.c("selectWorld.versionUnknown") : wy.b(this.c.c());
+   }
+
+   public erb l() {
+      return this.c;
+   }
+
+   public boolean m() {
+      return this.o().a();
+   }
+
+   public boolean n() {
+      return this.o() == era.a.b;
+   }
+
+   public era.a o() {
+      ae $$0 = ab.b();
+      int $$1 = $$0.d().c();
+      int $$2 = this.c.d().c();
+      if (!$$0.g() && $$2 < $$1) {
+         return era.a.c;
+      } else {
+         return $$2 > $$1 ? era.a.b : era.a.a;
+      }
+   }
+
+   public boolean p() {
+      return this.f;
+   }
+
+   public boolean q() {
+      return !this.p() && !this.d() ? !this.r() : true;
+   }
+
+   public boolean r() {
+      return ab.b().d().a(this.c.d());
+   }
+
+   public wy s() {
+      if (this.i == null) {
+         this.i = this.z();
       }
 
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
+      return this.i;
+   }
+
+   private wy z() {
+      if (this.p()) {
+         return wy.c("selectWorld.locked").a(n.m);
+      } else if (this.d()) {
+         return wy.c("selectWorld.conversion").a(n.m);
+      } else if (!this.r()) {
+         return wy.a("selectWorld.incompatible.info", this.k()).a(n.m);
+      } else {
+         xm $$0 = this.i() ? wy.i().b(wy.c("gameMode.hardcore").b(-65536)) : wy.c("gameMode." + this.h().b());
+         if (this.j()) {
+            $$0.f(", ").b(wy.c("selectWorld.commands"));
+         }
+
+         if (this.e()) {
+            $$0.f(", ").b(wy.c("selectWorld.experimental").a(n.o));
+         }
+
+         xm $$1 = this.k();
+         xm $$2 = wy.b(", ").b(wy.c("selectWorld.version")).b(wx.v);
+         if (this.m()) {
+            $$2.b($$1.a(this.n() ? n.m : n.u));
          } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (erl $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
+            $$2.b($$1);
          }
+
+         $$0.b($$2);
+         return $$0;
       }
    }
 
-   public void a(Consumer<cud> $$0, eqw $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cud> $$2 = esk.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + ayg.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
-      }
+   public wy t() {
+      return a;
    }
 
-   public void a(erc $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
+   public boolean u() {
+      return !this.q();
    }
 
-   public static era.a a() {
-      return new era.a();
+   public boolean v() {
+      return !this.d() && !this.p();
    }
 
-   public static class a implements esg<era.a>, etz<era.a> {
-      private final Builder<erm> a = ImmutableList.builder();
-      private final Builder<euh> b = ImmutableList.builder();
-      private final Builder<esk> c = ImmutableList.builder();
-      private evd d = eva.a(1.0F);
-      private evd e = eva.a(0.0F);
+   public boolean w() {
+      return !this.q();
+   }
 
-      public era.a a(evd $$0) {
+   public boolean x() {
+      return !this.q();
+   }
+
+   public boolean y() {
+      return true;
+   }
+
+   public static enum a {
+      a(false, false, ""),
+      b(true, true, "downgrade"),
+      c(true, false, "snapshot");
+
+      private final boolean d;
+      private final boolean e;
+      private final String f;
+
+      private a(final boolean $$0, final boolean $$1, final String $$2) {
          this.d = $$0;
-         return this;
+         this.e = $$1;
+         this.f = $$2;
       }
 
-      public era.a a() {
-         return this;
+      public boolean a() {
+         return this.d;
       }
 
-      public era.a b(evd $$0) {
-         this.e = $$0;
-         return this;
+      public boolean b() {
+         return this.e;
       }
 
-      public era.a a(erm.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static class b extends era {
+      private static final wy b = wy.c("recover_world.warning").a($$0 -> $$0.a(-65536));
+      private static final wy c = wy.c("recover_world.button");
+      private final long d;
+
+      public b(String $$0, Path $$1, long $$2) {
+         super(null, null, $$0, false, false, false, $$1);
+         this.d = $$2;
       }
 
-      public era.a a(euh.a $$0) {
-         this.b.add($$0.build());
-         return this;
+      @Override
+      public String b() {
+         return this.a();
       }
 
-      public era.a a(esk.a $$0) {
-         this.c.add($$0.b());
-         return this;
+      @Override
+      public wy s() {
+         return b;
       }
 
-      public era b() {
-         return new era(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
+      @Override
+      public long f() {
+         return this.d;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public wy t() {
+         return c;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
+   }
+
+   public static class c extends era {
+      private static final wy b = wy.c("symlink_warning.more_info");
+      private static final wy c = wy.c("symlink_warning.title").b(-65536);
+
+      public c(String $$0, Path $$1) {
+         super(null, null, $$0, false, false, false, $$1);
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public wy s() {
+         return c;
+      }
+
+      @Override
+      public long f() {
+         return -1L;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public wy t() {
+         return b;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
       }
    }
 }

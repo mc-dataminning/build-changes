@@ -1,100 +1,140 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class eos extends epf {
-   private final boolean l;
-   private float m;
-   private float n;
-
-   public eos(boolean $$0) {
-      this.l = $$0;
+public class eos extends eom<eos.a> {
+   protected eos(dvj $$0) {
+      super(ddd.a, $$0, new eos.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
    }
 
    @Override
-   public void a(dct $$0, bte $$1) {
-      super.a($$0, $$1);
-      $$1.a(epa.j, 0.0F);
-      this.m = $$1.a(epa.c);
-      $$1.a(epa.c, 6.0F);
-      this.n = $$1.a(epa.k);
-      $$1.a(epa.k, 4.0F);
+   protected int a(long $$0) {
+      return this.e($$0, false);
    }
 
-   @Override
-   public void b() {
-      this.b.a(epa.c, this.m);
-      this.b.a(epa.k, this.n);
-      super.b();
-   }
+   protected int e(long $$0, boolean $$1) {
+      long $$2 = kf.e($$0);
+      int $$3 = kf.c($$2);
+      eos.a $$4 = $$1 ? this.d : this.c;
+      int $$5 = $$4.c.get(kf.f($$2));
+      if ($$5 != $$4.b && $$3 < $$5) {
+         dvb $$6 = this.a($$4, $$2);
+         if ($$6 == null) {
+            for ($$0 = jd.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
+               if (++$$3 >= $$5) {
+                  return 15;
+               }
 
-   @Override
-   public eov a() {
-      return !this.b.bg() ? super.a() : this.c(new ja(ayg.a(this.b.cM().a), ayg.a(this.b.cM().b + 0.5), ayg.a(this.b.cM().c)));
-   }
-
-   @Override
-   public epe a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1 + 0.5, $$2);
-   }
-
-   @Override
-   public int a(eov[] $$0, eov $$1) {
-      int $$2 = super.a($$0, $$1);
-      epa $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
-      epa $$4 = this.b($$1.a, $$1.b, $$1.c);
-      int $$5;
-      if (this.b.a($$3) >= 0.0F && $$4 != epa.w) {
-         $$5 = ayg.d(Math.max(1.0F, this.b.dL()));
-      } else {
-         $$5 = 0;
-      }
-
-      double $$7 = this.d(new ja($$1.a, $$1.b, $$1.c));
-      eov $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, jf.b, $$4);
-      eov $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, jf.a, $$4);
-      if (this.b($$8, $$1)) {
-         $$0[$$2++] = $$8;
-      }
-
-      if (this.b($$9, $$1) && $$4 != epa.e) {
-         $$0[$$2++] = $$9;
-      }
-
-      for (int $$10 = 0; $$10 < $$2; $$10++) {
-         eov $$11 = $$0[$$10];
-         if ($$11.l == epa.j && this.l && $$11.b < this.b.dR().z_() - 10) {
-            $$11.k++;
-         }
-      }
-
-      return $$2;
-   }
-
-   private boolean b(@Nullable eov $$0, eov $$1) {
-      return this.a($$0, $$1) && $$0.l == epa.j;
-   }
-
-   @Override
-   protected boolean c() {
-      return true;
-   }
-
-   @Override
-   public epa a(epc $$0, int $$1, int $$2, int $$3) {
-      epa $$4 = $$0.a($$1, $$2, $$3);
-      if ($$4 == epa.j) {
-         ja.a $$5 = new ja.a();
-
-         for (jf $$6 : jf.values()) {
-            $$5.d($$1, $$2, $$3).c($$6);
-            epa $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
-            if ($$7 == epa.a) {
-               return epa.k;
+               $$2 = kf.a($$2, ji.b);
             }
          }
 
-         return epa.j;
+         return $$6.a(kf.b(jd.a($$0)), kf.b(jd.b($$0)), kf.b(jd.c($$0)));
       } else {
-         return super.a($$0, $$1, $$2, $$3);
+         return $$1 && !this.j($$2) ? 0 : 15;
+      }
+   }
+
+   @Override
+   protected void h(long $$0) {
+      int $$1 = kf.c($$0);
+      if (this.d.b > $$1) {
+         this.d.b = $$1;
+         this.d.c.defaultReturnValue(this.d.b);
+      }
+
+      long $$2 = kf.f($$0);
+      int $$3 = this.d.c.get($$2);
+      if ($$3 < $$1 + 1) {
+         this.d.c.put($$2, $$1 + 1);
+      }
+   }
+
+   @Override
+   protected void i(long $$0) {
+      long $$1 = kf.f($$0);
+      int $$2 = kf.c($$0);
+      if (this.d.c.get($$1) == $$2 + 1) {
+         long $$3;
+         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = kf.a($$3, ji.a)) {
+            $$2--;
+         }
+
+         if (this.b($$3)) {
+            this.d.c.put($$1, $$2 + 1);
+         } else {
+            this.d.c.remove($$1);
+         }
+      }
+   }
+
+   @Override
+   protected dvb g(long $$0) {
+      dvb $$1 = (dvb)this.g.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         int $$2 = this.d.c.get(kf.f($$0));
+         if ($$2 != this.d.b && kf.c($$0) < $$2) {
+            long $$3 = kf.a($$0, ji.b);
+
+            dvb $$4;
+            while (($$4 = this.a($$3, true)) == null) {
+               $$3 = kf.a($$3, ji.b);
+            }
+
+            return a($$4);
+         } else {
+            return this.j($$0) ? new dvb(15) : new dvb();
+         }
+      }
+   }
+
+   private static dvb a(dvb $$0) {
+      if ($$0.c()) {
+         return $$0.b();
+      } else {
+         byte[] $$1 = $$0.a();
+         byte[] $$2 = new byte[2048];
+
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+         }
+
+         return new dvb($$2);
+      }
+   }
+
+   protected boolean a(int $$0) {
+      return $$0 >= this.d.b;
+   }
+
+   protected boolean l(long $$0) {
+      long $$1 = kf.f($$0);
+      int $$2 = this.d.c.get($$1);
+      return $$2 == this.d.b || kf.c($$0) >= $$2;
+   }
+
+   protected int m(long $$0) {
+      return this.d.c.get($$0);
+   }
+
+   protected int c() {
+      return this.d.b;
+   }
+
+   protected static final class a extends eoj<eos.a> {
+      int b;
+      final Long2IntOpenHashMap c;
+
+      public a(Long2ObjectOpenHashMap<dvb> $$0, Long2IntOpenHashMap $$1, int $$2) {
+         super($$0);
+         this.c = $$1;
+         $$1.defaultReturnValue($$2);
+         this.b = $$2;
+      }
+
+      public eos.a a() {
+         return new eos.a(this.a.clone(), this.c.clone(), this.b);
       }
    }
 }

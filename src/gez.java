@@ -1,84 +1,60 @@
-public class gez implements atx {
-   private final gey a;
-   private final gfb b;
-   private final gds c;
-   private final gfa d;
-   private final ayo e = ayo.a();
-   private final fgy f;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.SortedMap;
 
-   public gez(gey $$0, gds $$1, fgy $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      this.f = $$2;
-      this.b = new gfb(this.f);
-      this.d = new gfa();
+public class gez {
+   private final gfe a = new gfe();
+   private final gff b;
+   private final get.a c;
+   private final get.a d;
+   private final geu e;
+
+   public gez(int $$0) {
+      this.b = gff.a($$0);
+      SortedMap<gfb, faz> $$1 = ad.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
+         $$0x.put(gfi.h(), this.a.a(gfb.c()));
+         $$0x.put(gfi.i(), this.a.a(gfb.e()));
+         $$0x.put(gfi.a(), this.a.a(gfb.d()));
+         $$0x.put(gfi.k(), this.a.a(gfb.f()));
+         a($$0x, gfi.b());
+         a($$0x, gfi.c());
+         a($$0x, gfi.d());
+         a($$0x, gfi.e());
+         a($$0x, gfi.f());
+         $$0x.put(gfi.g(), new faz(786432));
+         a($$0x, gfb.j());
+         a($$0x, gfb.l());
+         a($$0x, gfb.k());
+         a($$0x, gfb.m());
+         a($$0x, gfb.n());
+         a($$0x, gfb.i());
+         gsl.l.forEach($$1x -> a($$0x, $$1x));
+      });
+      this.d = get.a(new faz(1536));
+      this.c = get.a($$1, new faz(786432));
+      this.e = new geu(this.c);
    }
 
-   public gey a() {
+   private static void a(Object2ObjectLinkedOpenHashMap<gfb, faz> $$0, gfb $$1) {
+      $$0.put($$1, new faz($$1.G()));
+   }
+
+   public gfe a() {
       return this.a;
    }
 
-   public void a(dsl $$0, ja $$1, dbj $$2, fao $$3, fas $$4) {
-      if ($$0.l() == dlo.c) {
-         grr $$5 = this.a.b($$0);
-         long $$6 = $$0.a($$1);
-         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, gph.d);
-      }
-   }
-
-   public void a(dsl $$0, ja $$1, dbj $$2, fao $$3, fas $$4, boolean $$5, ayo $$6) {
-      try {
-         dlo $$7 = $$0.l();
-         if ($$7 == dlo.c) {
-            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), gph.d);
-         }
-      } catch (Throwable var11) {
-         o $$9 = o.a(var11, "Tesselating block in world");
-         p $$10 = $$9.a("Block being tesselated");
-         p.a($$10, $$2, $$1, $$0);
-         throw new y($$9);
-      }
-   }
-
-   public void a(ja $$0, dbj $$1, fas $$2, dsl $$3, eoj $$4) {
-      try {
-         this.d.a($$1, $$0, $$2, $$3, $$4);
-      } catch (Throwable var9) {
-         o $$6 = o.a(var9, "Tesselating liquid in world");
-         p $$7 = $$6.a("Block being tesselated");
-         p.a($$7, $$1, $$0, null);
-         throw new y($$6);
-      }
-   }
-
-   public gfb b() {
+   public gff b() {
       return this.b;
    }
 
-   public grr a(dsl $$0) {
-      return this.a.b($$0);
+   public get.a c() {
+      return this.c;
    }
 
-   public void a(dsl $$0, fao $$1, gef $$2, int $$3, int $$4) {
-      dlo $$5 = $$0.l();
-      if ($$5 != dlo.a) {
-         switch ($$5) {
-            case c:
-               grr $$6 = this.a($$0);
-               int $$7 = this.f.a($$0, null, null, 0);
-               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-               float $$10 = (float)($$7 & 0xFF) / 255.0F;
-               this.b.a($$1.c(), $$2.getBuffer(gea.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
-               break;
-            case b:
-               this.c.a(new cud($$0.b()), cua.a, $$1, $$2, $$3, $$4);
-         }
-      }
+   public get.a d() {
+      return this.d;
    }
 
-   @Override
-   public void a(atw $$0) {
-      this.d.a();
+   public geu e() {
+      return this.e;
    }
 }

@@ -1,45 +1,53 @@
-public abstract class gct extends gcg {
-   protected gpq E;
+public class gct extends gdh {
+   protected final gdc a;
+   private float b;
+   private float F;
+   private float G;
+   private boolean H;
 
-   protected gct(fyl $$0, double $$1, double $$2, double $$3) {
+   protected gct(fyz $$0, double $$1, double $$2, double $$3, gdc $$4, float $$5) {
       super($$0, $$1, $$2, $$3);
+      this.B = 0.91F;
+      this.u = $$5;
+      this.a = $$4;
    }
 
-   protected gct(fyl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   public void b(int $$0) {
+      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      float $$4 = 1.0F;
+      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
    }
 
-   protected void a(gpq $$0) {
-      this.E = $$0;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.c();
-   }
-
-   @Override
-   protected float d() {
-      return this.E.d();
-   }
-
-   @Override
-   protected float e() {
-      return this.E.g();
+   public void c(int $$0) {
+      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      this.H = true;
    }
 
    @Override
-   protected float f() {
-      return this.E.h();
+   public gcl b() {
+      return gcl.c;
    }
 
-   public void a(gco $$0) {
-      this.a($$0.a(this.r));
-   }
-
-   public void b(gco $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+      if (this.s > this.t / 2) {
+         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         if (this.H) {
+            this.v = this.v + (this.b - this.v) * 0.2F;
+            this.w = this.w + (this.F - this.w) * 0.2F;
+            this.x = this.x + (this.G - this.x) * 0.2F;
+         }
       }
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 }

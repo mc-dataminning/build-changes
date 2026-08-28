@@ -1,331 +1,217 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.ints.IntBidirectionalIterator;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
 
-public final class eoc extends eoa<eod.a, eod> {
-   private static final long g = eoa.a.a(15);
-   private static final long h = eoa.a.a(15, jf.b);
-   private static final long i = eoa.a.a(15, false, jf.b);
-   private final ja.a j = new ja.a();
-   private final ent k;
+public class eoc {
+   private static final int a = 33554432;
+   private final enz[] b;
+   private final int c;
+   private final DoubleList d;
+   private final double e;
+   private final double f;
+   private final double g;
 
-   public eoc(duu $$0) {
-      this($$0, new eod($$0));
+   @Deprecated
+   public static eoc a(ayv $$0, IntStream $$1) {
+      return new eoc($$0, a(new IntRBTreeSet($$1.boxed().collect(ImmutableList.toImmutableList()))), false);
    }
 
-   @VisibleForTesting
-   protected eoc(duu $$0, eod $$1) {
-      super($$0, $$1);
-      this.k = new ent($$0.q());
+   @Deprecated
+   public static eoc a(ayv $$0, int $$1, DoubleList $$2) {
+      return new eoc($$0, Pair.of($$1, $$2), false);
    }
 
-   private static boolean a(int $$0) {
-      return $$0 == 15;
+   public static eoc b(ayv $$0, IntStream $$1) {
+      return a($$0, $$1.boxed().collect(ImmutableList.toImmutableList()));
    }
 
-   private int a(int $$0, int $$1, int $$2) {
-      ent $$3 = this.b(kc.a($$0), kc.a($$1));
-      return $$3 == null ? $$2 : $$3.a(kc.b($$0), kc.b($$1));
+   public static eoc a(ayv $$0, List<Integer> $$1) {
+      return new eoc($$0, a(new IntRBTreeSet($$1)), true);
+   }
+
+   public static eoc a(ayv $$0, int $$1, double $$2, double... $$3) {
+      DoubleArrayList $$4 = new DoubleArrayList($$3);
+      $$4.add(0, $$2);
+      return new eoc($$0, Pair.of($$1, $$4), true);
+   }
+
+   public static eoc b(ayv $$0, int $$1, DoubleList $$2) {
+      return new eoc($$0, Pair.of($$1, $$2), true);
+   }
+
+   private static Pair<Integer, DoubleList> a(IntSortedSet $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
+      } else {
+         int $$1 = -$$0.firstInt();
+         int $$2 = $$0.lastInt();
+         int $$3 = $$1 + $$2 + 1;
+         if ($$3 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         } else {
+            DoubleList $$4 = new DoubleArrayList(new double[$$3]);
+            IntBidirectionalIterator $$5 = $$0.iterator();
+
+            while ($$5.hasNext()) {
+               int $$6 = $$5.nextInt();
+               $$4.set($$6 + $$1, 1.0);
+            }
+
+            return Pair.of(-$$1, $$4);
+         }
+      }
+   }
+
+   protected eoc(ayv $$0, Pair<Integer, DoubleList> $$1, boolean $$2) {
+      this.c = (Integer)$$1.getFirst();
+      this.d = (DoubleList)$$1.getSecond();
+      int $$3 = this.d.size();
+      int $$4 = -this.c;
+      this.b = new enz[$$3];
+      if ($$2) {
+         dzi $$5 = $$0.e();
+
+         for (int $$6 = 0; $$6 < $$3; $$6++) {
+            if (this.d.getDouble($$6) != 0.0) {
+               int $$7 = this.c + $$6;
+               this.b[$$6] = new enz($$5.a("octave_" + $$7));
+            }
+         }
+      } else {
+         enz $$8 = new enz($$0);
+         if ($$4 >= 0 && $$4 < $$3) {
+            double $$9 = this.d.getDouble($$4);
+            if ($$9 != 0.0) {
+               this.b[$$4] = $$8;
+            }
+         }
+
+         for (int $$10 = $$4 - 1; $$10 >= 0; $$10--) {
+            if ($$10 < $$3) {
+               double $$11 = this.d.getDouble($$10);
+               if ($$11 != 0.0) {
+                  this.b[$$10] = new enz($$0);
+               } else {
+                  a($$0);
+               }
+            } else {
+               a($$0);
+            }
+         }
+
+         if (Arrays.stream(this.b).filter(Objects::nonNull).count() != this.d.stream().filter($$0x -> $$0x != 0.0).count()) {
+            throw new IllegalStateException("Failed to create correct number of noise levels for given non-zero amplitudes");
+         }
+
+         if ($$4 < $$3 - 1) {
+            throw new IllegalArgumentException("Positive octaves are temporarily disabled");
+         }
+      }
+
+      this.f = Math.pow(2.0, (double)(-$$4));
+      this.e = Math.pow(2.0, (double)($$3 - 1)) / (Math.pow(2.0, (double)$$3) - 1.0);
+      this.g = this.c(2.0);
+   }
+
+   protected double a() {
+      return this.g;
+   }
+
+   private static void a(ayv $$0) {
+      $$0.b(262);
+   }
+
+   public double a(double $$0, double $$1, double $$2) {
+      return this.a($$0, $$1, $$2, 0.0, 0.0, false);
+   }
+
+   @Deprecated
+   public double a(double $$0, double $$1, double $$2, double $$3, double $$4, boolean $$5) {
+      double $$6 = 0.0;
+      double $$7 = this.f;
+      double $$8 = this.e;
+
+      for (int $$9 = 0; $$9 < this.b.length; $$9++) {
+         enz $$10 = this.b[$$9];
+         if ($$10 != null) {
+            double $$11 = $$10.a(b($$0 * $$7), $$5 ? -$$10.b : b($$1 * $$7), b($$2 * $$7), $$3 * $$7, $$4 * $$7);
+            $$6 += this.d.getDouble($$9) * $$11 * $$8;
+         }
+
+         $$7 *= 2.0;
+         $$8 /= 2.0;
+      }
+
+      return $$6;
+   }
+
+   public double a(double $$0) {
+      return this.c($$0 + 2.0);
+   }
+
+   private double c(double $$0) {
+      double $$1 = 0.0;
+      double $$2 = this.e;
+
+      for (int $$3 = 0; $$3 < this.b.length; $$3++) {
+         enz $$4 = this.b[$$3];
+         if ($$4 != null) {
+            $$1 += this.d.getDouble($$3) * $$0 * $$2;
+         }
+
+         $$2 /= 2.0;
+      }
+
+      return $$1;
    }
 
    @Nullable
-   private ent b(int $$0, int $$1) {
-      dut $$2 = this.e.c($$0, $$1);
-      return $$2 != null ? $$2.B() : null;
+   public enz a(int $$0) {
+      return this.b[this.b.length - 1 - $$0];
    }
 
-   @Override
-   protected void a(long $$0) {
-      int $$1 = ja.a($$0);
-      int $$2 = ja.b($$0);
-      int $$3 = ja.c($$0);
-      long $$4 = kc.e($$0);
-      int $$5 = this.f.j($$4) ? this.a($$1, $$3, Integer.MAX_VALUE) : Integer.MAX_VALUE;
-      if ($$5 != Integer.MAX_VALUE) {
-         this.b($$1, $$3, $$5);
-      }
+   public static double b(double $$0) {
+      return $$0 - (double)ayn.b($$0 / 3.3554432E7 + 0.5) * 3.3554432E7;
+   }
 
-      if (this.f.b($$4)) {
-         boolean $$6 = $$2 >= $$5;
-         if ($$6) {
-            this.b($$0, h);
-            this.c($$0, i);
+   protected int b() {
+      return this.c;
+   }
+
+   protected DoubleList c() {
+      return this.d;
+   }
+
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("PerlinNoise{");
+      List<String> $$1 = this.d.stream().map($$0x -> String.format(Locale.ROOT, "%.2f", $$0x)).toList();
+      $$0.append("first octave: ").append(this.c).append(", amplitudes: ").append($$1).append(", noise levels: [");
+
+      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
+         $$0.append($$2).append(": ");
+         enz $$3 = this.b[$$2];
+         if ($$3 == null) {
+            $$0.append("null");
          } else {
-            int $$7 = this.f.e($$0);
-            if ($$7 > 0) {
-               this.f.a($$0, 0);
-               this.b($$0, eoa.a.a($$7));
-            } else {
-               this.b($$0, c);
-            }
+            $$3.a($$0);
          }
+
+         $$0.append(", ");
       }
-   }
 
-   private void b(int $$0, int $$1, int $$2) {
-      int $$3 = kc.c(this.f.c());
-      this.a($$0, $$1, $$2, $$3);
-      this.b($$0, $$1, $$2, $$3);
-   }
-
-   private void a(int $$0, int $$1, int $$2, int $$3) {
-      if ($$2 > $$3) {
-         int $$4 = kc.a($$0);
-         int $$5 = kc.a($$1);
-         int $$6 = $$2 - 1;
-
-         for (int $$7 = kc.a($$6); this.f.a($$7); $$7--) {
-            if (this.f.b(kc.b($$4, $$7, $$5))) {
-               int $$8 = kc.c($$7);
-               int $$9 = $$8 + 15;
-
-               for (int $$10 = Math.min($$9, $$6); $$10 >= $$8; $$10--) {
-                  long $$11 = ja.a($$0, $$10, $$1);
-                  if (!a(this.f.e($$11))) {
-                     return;
-                  }
-
-                  this.f.a($$11, 0);
-                  this.b($$11, $$10 == $$2 - 1 ? g : h);
-               }
-            }
-         }
-      }
-   }
-
-   private void b(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = kc.a($$0);
-      int $$5 = kc.a($$1);
-      int $$6 = Math.max(
-         Math.max(this.a($$0 - 1, $$1, Integer.MIN_VALUE), this.a($$0 + 1, $$1, Integer.MIN_VALUE)),
-         Math.max(this.a($$0, $$1 - 1, Integer.MIN_VALUE), this.a($$0, $$1 + 1, Integer.MIN_VALUE))
-      );
-      int $$7 = Math.max($$2, $$3);
-
-      for (long $$8 = kc.b($$4, kc.a($$7), $$5); !this.f.l($$8); $$8 = kc.a($$8, jf.b)) {
-         if (this.f.b($$8)) {
-            int $$9 = kc.c(kc.c($$8));
-            int $$10 = $$9 + 15;
-
-            for (int $$11 = Math.max($$9, $$7); $$11 <= $$10; $$11++) {
-               long $$12 = ja.a($$0, $$11, $$1);
-               if (a(this.f.e($$12))) {
-                  return;
-               }
-
-               this.f.a($$12, 15);
-               if ($$11 < $$6 || $$11 == $$2) {
-                  this.c($$12, i);
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      dsl $$3 = null;
-      int $$4 = this.d($$0);
-
-      for (jf $$5 : d) {
-         if (eoa.a.a($$1, $$5)) {
-            long $$6 = ja.a($$0, $$5);
-            if (this.f.b(kc.e($$6))) {
-               int $$7 = this.f.e($$6);
-               int $$8 = $$2 - 1;
-               if ($$8 > $$7) {
-                  this.j.f($$6);
-                  dsl $$9 = this.c(this.j);
-                  int $$10 = $$2 - this.a($$9, this.j);
-                  if ($$10 > $$7) {
-                     if ($$3 == null) {
-                        $$3 = eoa.a.b($$1) ? dfk.a.o() : this.c(this.j.f($$0));
-                     }
-
-                     if (!this.a($$0, $$3, $$6, $$9, $$5)) {
-                        this.f.a($$6, $$10);
-                        if ($$10 > 1) {
-                           this.c($$6, eoa.a.a($$10, a($$9), $$5.g()));
-                        }
-
-                        this.a($$6, $$5, $$10, true, $$4);
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = this.d($$0);
-      int $$3 = eoa.a.a($$1);
-
-      for (jf $$4 : d) {
-         if (eoa.a.a($$1, $$4)) {
-            long $$5 = ja.a($$0, $$4);
-            if (this.f.b(kc.e($$5))) {
-               int $$6 = this.f.e($$5);
-               if ($$6 != 0) {
-                  if ($$6 <= $$3 - 1) {
-                     this.f.a($$5, 0);
-                     this.b($$5, eoa.a.a($$6, $$4.g()));
-                     this.a($$5, $$4, $$6, false, $$2);
-                  } else {
-                     this.c($$5, eoa.a.b($$6, false, $$4.g()));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private int d(long $$0) {
-      int $$1 = ja.b($$0);
-      int $$2 = kc.b($$1);
-      if ($$2 != 0) {
-         return 0;
-      } else {
-         int $$3 = ja.a($$0);
-         int $$4 = ja.c($$0);
-         int $$5 = kc.b($$3);
-         int $$6 = kc.b($$4);
-         if ($$5 != 0 && $$5 != 15 && $$6 != 0 && $$6 != 15) {
-            return 0;
-         } else {
-            int $$7 = kc.a($$3);
-            int $$8 = kc.a($$1);
-            int $$9 = kc.a($$4);
-            int $$10 = 0;
-
-            while (!this.f.b(kc.b($$7, $$8 - $$10 - 1, $$9)) && this.f.a($$8 - $$10 - 1)) {
-               $$10++;
-            }
-
-            return $$10;
-         }
-      }
-   }
-
-   private void a(long $$0, jf $$1, int $$2, boolean $$3, int $$4) {
-      if ($$4 != 0) {
-         int $$5 = ja.a($$0);
-         int $$6 = ja.c($$0);
-         if (a($$1, kc.b($$5), kc.b($$6))) {
-            int $$7 = ja.b($$0);
-            int $$8 = kc.a($$5);
-            int $$9 = kc.a($$6);
-            int $$10 = kc.a($$7) - 1;
-            int $$11 = $$10 - $$4 + 1;
-
-            while ($$10 >= $$11) {
-               if (!this.f.b(kc.b($$8, $$10, $$9))) {
-                  $$10--;
-               } else {
-                  int $$12 = kc.c($$10);
-
-                  for (int $$13 = 15; $$13 >= 0; $$13--) {
-                     long $$14 = ja.a($$5, $$12 + $$13, $$6);
-                     if ($$3) {
-                        this.f.a($$14, $$2);
-                        if ($$2 > 1) {
-                           this.c($$14, eoa.a.a($$2, true, $$1.g()));
-                        }
-                     } else {
-                        this.f.a($$14, 0);
-                        this.b($$14, eoa.a.a($$2, $$1.g()));
-                     }
-                  }
-
-                  $$10--;
-               }
-            }
-         }
-      }
-   }
-
-   private static boolean a(jf $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case c -> $$2 == 15;
-         case d -> $$2 == 0;
-         case e -> $$1 == 15;
-         case f -> $$1 == 0;
-         default -> false;
-      };
-   }
-
-   @Override
-   public void a(dbn $$0, boolean $$1) {
-      super.a($$0, $$1);
-      if ($$1) {
-         ent $$2 = Objects.requireNonNullElse(this.b($$0.e, $$0.f), this.k);
-         int $$3 = $$2.a() - 1;
-         int $$4 = kc.a($$3) + 1;
-         long $$5 = kc.b($$0.e, $$0.f);
-         int $$6 = this.f.m($$5);
-         int $$7 = Math.max(this.f.c(), $$4);
-
-         for (int $$8 = $$6 - 1; $$8 >= $$7; $$8--) {
-            dum $$9 = this.f.c(kc.b($$0.e, $$8, $$0.f));
-            if ($$9 != null && $$9.d()) {
-               $$9.a(15);
-            }
-         }
-      }
-   }
-
-   @Override
-   public void b(dbn $$0) {
-      long $$1 = kc.b($$0.e, $$0.f);
-      this.f.b($$1, true);
-      ent $$2 = Objects.requireNonNullElse(this.b($$0.e, $$0.f), this.k);
-      ent $$3 = Objects.requireNonNullElse(this.b($$0.e, $$0.f - 1), this.k);
-      ent $$4 = Objects.requireNonNullElse(this.b($$0.e, $$0.f + 1), this.k);
-      ent $$5 = Objects.requireNonNullElse(this.b($$0.e - 1, $$0.f), this.k);
-      ent $$6 = Objects.requireNonNullElse(this.b($$0.e + 1, $$0.f), this.k);
-      int $$7 = this.f.m($$1);
-      int $$8 = this.f.c();
-      int $$9 = kc.c($$0.e);
-      int $$10 = kc.c($$0.f);
-
-      for (int $$11 = $$7 - 1; $$11 >= $$8; $$11--) {
-         long $$12 = kc.b($$0.e, $$11, $$0.f);
-         dum $$13 = this.f.c($$12);
-         if ($$13 != null) {
-            int $$14 = kc.c($$11);
-            int $$15 = $$14 + 15;
-            boolean $$16 = false;
-
-            for (int $$17 = 0; $$17 < 16; $$17++) {
-               for (int $$18 = 0; $$18 < 16; $$18++) {
-                  int $$19 = $$2.a($$18, $$17);
-                  if ($$19 <= $$15) {
-                     int $$20 = $$17 == 0 ? $$3.a($$18, 15) : $$2.a($$18, $$17 - 1);
-                     int $$21 = $$17 == 15 ? $$4.a($$18, 0) : $$2.a($$18, $$17 + 1);
-                     int $$22 = $$18 == 0 ? $$5.a(15, $$17) : $$2.a($$18 - 1, $$17);
-                     int $$23 = $$18 == 15 ? $$6.a(0, $$17) : $$2.a($$18 + 1, $$17);
-                     int $$24 = Math.max(Math.max($$20, $$21), Math.max($$22, $$23));
-
-                     for (int $$25 = $$15; $$25 >= Math.max($$14, $$19); $$25--) {
-                        $$13.a($$18, kc.b($$25), $$17, 15);
-                        if ($$25 == $$19 || $$25 < $$24) {
-                           long $$26 = ja.a($$9 + $$18, $$25, $$10 + $$17);
-                           this.c($$26, eoa.a.a($$25 == $$19, $$25 < $$20, $$25 < $$21, $$25 < $$22, $$25 < $$23));
-                        }
-                     }
-
-                     if ($$19 < $$14) {
-                        $$16 = true;
-                     }
-                  }
-               }
-            }
-
-            if (!$$16) {
-               break;
-            }
-         }
-      }
+      $$0.append("]");
+      $$0.append("}");
    }
 }

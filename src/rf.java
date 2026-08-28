@@ -1,70 +1,168 @@
-public abstract class rf {
-   public static void a(qm<ddg> $$0) {
-      jk<eib> $$1 = $$0.a(lr.aP);
-      jk<eak<?>> $$2 = $$0.a(lr.aG);
-      $$0.a(ddn.a, ri.j($$1, $$2));
-      $$0.a(ddn.b, ri.a($$1, $$2, false, false, false));
-      $$0.a(ddn.c, ri.a($$1, $$2, true, false, false));
-      $$0.a(ddn.d, ri.a($$1, $$2, false, true, false));
-      $$0.a(ddn.e, ri.a($$1, $$2, false, true, true));
-      $$0.a(ddn.f, ri.d($$1, $$2));
-      $$0.a(ddn.g, ri.h($$1, $$2));
-      $$0.a(ddn.h, ri.i($$1, $$2));
-      $$0.a(ddn.i, ri.b($$1, $$2, false, false, false));
-      $$0.a(ddn.j, ri.b($$1, $$2, false, false, true));
-      $$0.a(ddn.k, ri.b($$1, $$2, true, false, false));
-      $$0.a(ddn.l, ri.g($$1, $$2));
-      $$0.a(ddn.m, ri.b($$1, $$2, true, true, false));
-      $$0.a(ddn.n, ri.a($$1, $$2, false));
-      $$0.a(ddn.o, ri.a($$1, $$2, true));
-      $$0.a(ddn.p, ri.h($$1, $$2, false));
-      $$0.a(ddn.q, ri.h($$1, $$2, true));
-      $$0.a(ddn.r, ri.a($$1, $$2, false, false));
-      $$0.a(ddn.s, ri.a($$1, $$2, false, true));
-      $$0.a(ddn.t, ri.b($$1, $$2, false));
-      $$0.a(ddn.u, ri.b($$1, $$2, false));
-      $$0.a(ddn.v, ri.b($$1, $$2, true));
-      $$0.a(ddn.w, ri.a($$1, $$2, true, false));
-      $$0.a(ddn.x, ri.b($$1, $$2));
-      $$0.a(ddn.y, ri.a($$1, $$2));
-      $$0.a(ddn.z, ri.c($$1, $$2));
-      $$0.a(ddn.A, ri.c($$1, $$2, false));
-      $$0.a(ddn.B, ri.c($$1, $$2, false));
-      $$0.a(ddn.C, ri.c($$1, $$2, true));
-      $$0.a(ddn.D, ri.j($$1, $$2, false));
-      $$0.a(ddn.E, ri.j($$1, $$2, true));
-      $$0.a(ddn.F, ri.o($$1, $$2));
-      $$0.a(ddn.G, ri.n($$1, $$2));
-      $$0.a(ddn.H, ri.k($$1, $$2));
-      $$0.a(ddn.I, ri.l($$1, $$2));
-      $$0.a(ddn.J, ri.m($$1, $$2));
-      $$0.a(ddn.K, ri.i($$1, $$2, false));
-      $$0.a(ddn.L, ri.i($$1, $$2, true));
-      $$0.a(ddn.M, ri.b($$1, $$2, false, false));
-      $$0.a(ddn.N, ri.b($$1, $$2, true, false));
-      $$0.a(ddn.O, ri.b($$1, $$2, false, true));
-      $$0.a(ddn.P, ri.f($$1, $$2));
-      $$0.a(ddn.Q, ri.f($$1, $$2, false));
-      $$0.a(ddn.R, ri.f($$1, $$2, true));
-      $$0.a(ddn.S, ri.e($$1, $$2, false));
-      $$0.a(ddn.T, ri.e($$1, $$2, true));
-      $$0.a(ddn.U, ri.d($$1, $$2, false));
-      $$0.a(ddn.V, ri.d($$1, $$2, true));
-      $$0.a(ddn.W, ri.g($$1, $$2, false));
-      $$0.a(ddn.X, ri.g($$1, $$2, true));
-      $$0.a(ddn.Y, ri.e($$1, $$2));
-      $$0.a(ddn.Z, ri.q($$1, $$2));
-      $$0.a(ddn.aa, ri.p($$1, $$2));
-      $$0.a(ddn.ab, ri.r($$1, $$2));
-      $$0.a(ddn.ac, rh.a($$1, $$2));
-      $$0.a(ddn.ad, rh.e($$1, $$2));
-      $$0.a(ddn.ae, rh.d($$1, $$2));
-      $$0.a(ddn.af, rh.b($$1, $$2));
-      $$0.a(ddn.ag, rh.c($$1, $$2));
-      $$0.a(ddn.ah, rg.b($$1, $$2));
-      $$0.a(ddn.ai, rg.d($$1, $$2));
-      $$0.a(ddn.aj, rg.c($$1, $$2));
-      $$0.a(ddn.ak, rg.e($$1, $$2));
-      $$0.a(ddn.al, rg.a($$1, $$2));
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+
+public class rf {
+   public static final akp<ekw> a = qw.a("trail_ruins/tower");
+
+   public static void a(qp<ekw> $$0) {
+      jn<ekw> $$1 = $$0.a(lu.aU);
+      jm<ekw> $$2 = $$1.b(qw.a);
+      jn<enl> $$3 = $$0.a(lu.aS);
+      jm<enl> $$4 = $$3.b(qx.J);
+      jm<enl> $$5 = $$3.b(qx.K);
+      jm<enl> $$6 = $$3.b(qx.L);
+      $$0.a(
+         a,
+         new ekw(
+            $$2,
+            List.of(
+               Pair.of(eku.b("trail_ruins/tower/tower_1", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/tower_2", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/tower_3", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/tower_4", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/tower_5", $$4), 1)
+            ),
+            ekw.a.b
+         )
+      );
+      qw.a(
+         $$0,
+         "trail_ruins/tower/tower_top",
+         new ekw(
+            $$2,
+            List.of(
+               Pair.of(eku.b("trail_ruins/tower/tower_top_1", $$6), 1),
+               Pair.of(eku.b("trail_ruins/tower/tower_top_2", $$6), 1),
+               Pair.of(eku.b("trail_ruins/tower/tower_top_3", $$6), 1),
+               Pair.of(eku.b("trail_ruins/tower/tower_top_4", $$6), 1),
+               Pair.of(eku.b("trail_ruins/tower/tower_top_5", $$6), 1)
+            ),
+            ekw.a.b
+         )
+      );
+      qw.a(
+         $$0,
+         "trail_ruins/tower/additions",
+         new ekw(
+            $$2,
+            List.of(
+               Pair.of(eku.b("trail_ruins/tower/hall_1", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/hall_2", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/hall_3", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/hall_4", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/hall_5", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/large_hall_1", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/large_hall_2", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/large_hall_3", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/large_hall_4", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/large_hall_5", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/one_room_1", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/one_room_2", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/one_room_3", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/one_room_4", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/one_room_5", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/platform_1", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/platform_2", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/platform_3", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/platform_4", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/platform_5", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/stable_1", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/stable_2", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/stable_3", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/stable_4", $$4), 1),
+               Pair.of(eku.b("trail_ruins/tower/stable_5", $$4), 1)
+            ),
+            ekw.a.b
+         )
+      );
+      qw.a(
+         $$0,
+         "trail_ruins/roads",
+         new ekw(
+            $$2,
+            List.of(
+               Pair.of(eku.b("trail_ruins/roads/long_road_end", $$5), 1),
+               Pair.of(eku.b("trail_ruins/roads/road_end_1", $$5), 1),
+               Pair.of(eku.b("trail_ruins/roads/road_section_1", $$5), 1),
+               Pair.of(eku.b("trail_ruins/roads/road_section_2", $$5), 1),
+               Pair.of(eku.b("trail_ruins/roads/road_section_3", $$5), 1),
+               Pair.of(eku.b("trail_ruins/roads/road_section_4", $$5), 1),
+               Pair.of(eku.b("trail_ruins/roads/road_spacer_1", $$5), 1)
+            ),
+            ekw.a.b
+         )
+      );
+      qw.a(
+         $$0,
+         "trail_ruins/buildings",
+         new ekw(
+            $$2,
+            List.of(
+               Pair.of(eku.b("trail_ruins/buildings/group_hall_1", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_hall_2", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_hall_3", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_hall_4", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_hall_5", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/large_room_1", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/large_room_2", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/large_room_3", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/large_room_4", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/large_room_5", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/one_room_1", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/one_room_2", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/one_room_3", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/one_room_4", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/one_room_5", $$4), 1)
+            ),
+            ekw.a.b
+         )
+      );
+      qw.a(
+         $$0,
+         "trail_ruins/buildings/grouped",
+         new ekw(
+            $$2,
+            List.of(
+               Pair.of(eku.b("trail_ruins/buildings/group_full_1", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_full_2", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_full_3", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_full_4", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_full_5", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_lower_1", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_lower_2", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_lower_3", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_lower_4", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_lower_5", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_upper_1", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_upper_2", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_upper_3", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_upper_4", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_upper_5", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_room_1", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_room_2", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_room_3", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_room_4", $$4), 1),
+               Pair.of(eku.b("trail_ruins/buildings/group_room_5", $$4), 1)
+            ),
+            ekw.a.b
+         )
+      );
+      qw.a(
+         $$0,
+         "trail_ruins/decor",
+         new ekw(
+            $$2,
+            List.of(
+               Pair.of(eku.b("trail_ruins/decor/decor_1", $$4), 1),
+               Pair.of(eku.b("trail_ruins/decor/decor_2", $$4), 1),
+               Pair.of(eku.b("trail_ruins/decor/decor_3", $$4), 1),
+               Pair.of(eku.b("trail_ruins/decor/decor_4", $$4), 1),
+               Pair.of(eku.b("trail_ruins/decor/decor_5", $$4), 1),
+               Pair.of(eku.b("trail_ruins/decor/decor_6", $$4), 1),
+               Pair.of(eku.b("trail_ruins/decor/decor_7", $$4), 1)
+            ),
+            ekw.a.b
+         )
+      );
    }
 }

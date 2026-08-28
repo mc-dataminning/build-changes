@@ -1,74 +1,73 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dod extends deu {
-   public static final MapCodec<dod> a = b(dod::new);
-   public static final dto<dry> b = dtb.bz;
-   public static final dtf c = dje.aE;
-   public static final dtc d = dtb.bA;
+public class dod extends die implements dkn {
+   public static final MapCodec<dod> c = b(dod::new);
+   public static final dty<dtw> d = die.b;
+   protected static final float e = 6.0F;
+   protected static final exp f = dfw.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dod> a() {
-      return a;
+      return c;
    }
 
-   public dod(dsk.d $$0) {
+   public dod(dsz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, jf.c).a(b, dry.a).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public bqj a(cud $$0, dsl $$1, dcg $$2, ja $$3, cml $$4, bqg $$5, ewd $$6) {
-      if ($$0.e() || $$1.c(b) != dry.b) {
-         return bqj.d;
-      } else if ($$2 instanceof aqm $$7) {
-         if ($$7.c_($$3) instanceof drt $$9) {
-            drt.b.a($$7, $$3, $$1, $$9.f(), $$9.b(), $$9.c(), $$4, $$0);
-            return bqj.a;
-         } else {
-            return bqj.d;
+   protected exp a(dta $$0, dca $$1, jd $$2, exb $$3) {
+      return f;
+   }
+
+   @Override
+   protected boolean b(dta $$0, dca $$1, jd $$2) {
+      return $$0.d($$1, $$2, ji.b) && !$$0.a(dfy.kJ);
+   }
+
+   @Override
+   public cuo a(dcx $$0, jd $$1, dta $$2) {
+      return new cuo(dfy.bw);
+   }
+
+   @Nullable
+   @Override
+   public dta a(cyb $$0) {
+      dta $$1 = super.a($$0);
+      if ($$1 != null) {
+         eoy $$2 = $$0.q().b_($$0.a().c());
+         if ($$2.a(awj.a) && $$2.e() == 8) {
+            return $$1;
          }
+      }
+
+      return null;
+   }
+
+   @Override
+   protected boolean a(dta $$0, dcx $$1, jd $$2) {
+      if ($$0.c(d) == dtw.a) {
+         dta $$3 = $$1.a_($$2.d());
+         return $$3.a(this) && $$3.c(d) == dtw.b;
       } else {
-         return bqj.b;
+         eoy $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(awj.a) && $$4.e() == 8;
       }
    }
 
-   @Nullable
    @Override
-   public dpq a(ja $$0, dsl $$1) {
-      return new drt($$0, $$1);
+   protected eoy b_(dta $$0) {
+      return eoz.c.a(false);
    }
 
    @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(c, b, d);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dpq> dpr<T> a(dcg $$0, dsl $$1, dps<T> $$2) {
-      return $$0 instanceof aqm $$3
-         ? a($$2, dps.R, ($$1x, $$2x, $$3x, $$4) -> drt.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
-         : a($$2, dps.R, ($$0x, $$1x, $$2x, $$3x) -> drt.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
+   public boolean a(@Nullable cmv $$0, dca $$1, jd $$2, dta $$3, eox $$4) {
+      return false;
    }
 
    @Override
-   public dsl a(cxn $$0) {
-      return this.o().a(c, $$0.g().g());
-   }
-
-   @Override
-   public dsl a(dsl $$0, dlv $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dsl a(dsl $$0, dkf $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dlo a_(dsl $$0) {
-      return dlo.c;
+   public boolean a(dcv $$0, jd $$1, dta $$2, eoy $$3) {
+      return false;
    }
 }

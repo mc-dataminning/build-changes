@@ -1,9 +1,9 @@
 import com.mojang.serialization.MapCodec;
 
-public class yn implements yk {
-   public static final yl<yn> a = new yl<yn>() {
-      private static final MapCodec<yn> a = xr.b.a.xmap(yn::new, $$0 -> $$0.e);
-      private static final ys<wf, yn> b = ys.a(xr.b.c, $$0 -> $$0.e, yn::new);
+public class yn implements yo {
+   public static final yp<yn> a = new yp<yn>() {
+      private static final MapCodec<yn> a = xa.a.fieldOf("value").xmap(yn::new, $$0 -> $$0.b);
+      private static final yw<wj, yn> b = yw.a(xa.d, $$0 -> $$0.b, yn::new);
 
       @Override
       public MapCodec<yn> a() {
@@ -11,26 +11,23 @@ public class yn implements yk {
       }
 
       @Override
-      public ys<wf, yn> b() {
+      public yw<wj, yn> b() {
          return b;
       }
    };
-   public static final yn b = new yn(xr.a);
-   public static final yn c = new yn(xr.a.a(n.m));
-   public static final yn d = new yn(xr.a.a(n.o));
-   final xr e;
+   final wy b;
 
-   public yn(xr $$0) {
-      this.e = $$0;
+   public yn(wy $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public xi a(int $$0) {
-      return wu.b(Integer.toString($$0)).c(this.e);
+   public xm a(int $$0) {
+      return this.b.f();
    }
 
    @Override
-   public yl<yn> a() {
+   public yp<yn> a() {
       return a;
    }
 }

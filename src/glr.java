@@ -1,27 +1,24 @@
-public class glr extends gku<cka, fwo<cka>> {
-   private static final akk a = new akk("textures/entity/slime/slime.png");
+public class glr extends glj<ckd, fwf<ckd>> {
+   private static final akq a = akq.b("textures/entity/phantom.png");
 
-   public glr(gjo.a $$0) {
-      super($$0, new fwo<>($$0.a(fxp.bs)), 0.25F);
-      this.a(new gof<>(this, $$0.f()));
+   public glr(gkd.a $$0) {
+      super($$0, new fwf<>($$0.a(fyd.aI)), 0.75F);
+      this.a(new gon<>(this));
    }
 
-   public void a(cka $$0, float $$1, float $$2, fao $$3, gef $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.go();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected void a(cka $$0, fao $$1, float $$2) {
-      float $$3 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$4 = (float)$$0.go();
-      float $$5 = ayg.i($$2, $$0.ca, $$0.bZ) / ($$4 * 0.5F + 1.0F);
-      float $$6 = 1.0F / ($$5 + 1.0F);
-      $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
-   }
-
-   public akk a(cka $$0) {
+   public akq a(ckd $$0) {
       return a;
+   }
+
+   protected void a(ckd $$0, fbc $$1, float $$2) {
+      int $$3 = $$0.s();
+      float $$4 = 1.0F + 0.15F * (float)$$3;
+      $$1.b($$4, $$4, $$4);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(ckd $$0, fbc $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$1.a(a.b.rotationDegrees($$0.dI()));
    }
 }

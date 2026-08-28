@@ -1,68 +1,59 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
-
-public class bzi extends caa {
-   private final cfv a;
-   @Nullable
-   private cml b;
-   private final dcg c;
-   private final float d;
+public class bzi implements bzj {
+   private final btn a;
+   private static final int b = 15;
+   private static final int c = 10;
+   private static final int d = 10;
    private int e;
-   private final cdt f;
+   private float f;
 
-   public bzi(cfv $$0, float $$1) {
+   public bzi(btn $$0) {
       this.a = $$0;
-      this.c = $$0.dR();
-      this.d = $$1;
-      this.f = cdt.b().a((double)$$1);
-      this.a(EnumSet.of(caa.a.b));
    }
 
-   @Override
-   public boolean a() {
-      this.b = this.c.a(this.f, this.a);
-      return this.b == null ? false : this.a(this.b);
-   }
-
-   @Override
-   public boolean b() {
-      if (!this.b.bF()) {
-         return false;
+   public void a() {
+      if (this.f()) {
+         this.a.aY = this.a.dG();
+         this.c();
+         this.f = this.a.ba;
+         this.e = 0;
       } else {
-         return this.a.g((bsh)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
-      }
-   }
-
-   @Override
-   public void c() {
-      this.a.z(true);
-      this.e = this.a(40 + this.a.dU().a(40));
-   }
-
-   @Override
-   public void d() {
-      this.a.z(false);
-      this.b = null;
-   }
-
-   @Override
-   public void e() {
-      this.a.F().a(this.b.dw(), this.b.dA(), this.b.dC(), 10.0F, (float)this.a.aa());
-      this.e--;
-   }
-
-   private boolean a(cml $$0) {
-      for (bqg $$1 : bqg.values()) {
-         cud $$2 = $$0.b($$1);
-         if (this.a.s() && $$2.a(cug.rz)) {
-            return true;
-         }
-
-         if (this.a.o($$2)) {
-            return true;
+         if (this.e()) {
+            if (Math.abs(this.a.ba - this.f) > 15.0F) {
+               this.e = 0;
+               this.f = this.a.ba;
+               this.b();
+            } else {
+               this.e++;
+               if (this.e > 10) {
+                  this.d();
+               }
+            }
          }
       }
+   }
 
-      return false;
+   private void b() {
+      this.a.aY = ayn.c(this.a.aY, this.a.ba, (float)this.a.ab());
+   }
+
+   private void c() {
+      this.a.ba = ayn.c(this.a.ba, this.a.aY, (float)this.a.ab());
+   }
+
+   private void d() {
+      int $$0 = this.e - 10;
+      float $$1 = ayn.a((float)$$0 / 10.0F, 0.0F, 1.0F);
+      float $$2 = (float)this.a.ab() * (1.0F - $$1);
+      this.a.aY = ayn.c(this.a.aY, this.a.ba, $$2);
+   }
+
+   private boolean e() {
+      return !(this.a.cU() instanceof btn);
+   }
+
+   private boolean f() {
+      double $$0 = this.a.dv() - this.a.L;
+      double $$1 = this.a.dB() - this.a.N;
+      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
    }
 }

@@ -1,117 +1,89 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntLists;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 public class crq {
-   private static final Codec<crq> e = av.a.flatComapMap($$0 -> new crq(List.of($$0), true), $$0 -> DataResult.error(() -> "Cannot encode"));
-   private static final Codec<crq> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axo.a(av.a.listOf()).fieldOf("predicates").forGetter($$0x -> $$0x.h), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(crq::a)
-            )
-            .apply($$0, crq::new)
-   );
-   public static final Codec<crq> a = Codec.withAlternative(f, e);
-   public static final ys<wf, crq> b = ys.a(av.b.a(yq.a()), $$0 -> $$0.h, yq.b, crq::a, crq::new);
-   public static final wu c = wu.c("item.canBreak").a(n.h);
-   public static final wu d = wu.c("item.canPlace").a(n.h);
-   private static final wu g = wu.c("item.canUse.unknown").a(n.h);
-   private final List<av> h;
-   private final boolean i;
-   private final List<wu> j;
+   private static final List<crp> b = ad.a(new ArrayList<>(), $$0 -> {
+      a($$0, "contents", 0);
+      a($$0, "container.", 0, 54);
+      a($$0, "hotbar.", 0, 9);
+      a($$0, "inventory.", 9, 27);
+      a($$0, "enderchest.", 200, 27);
+      a($$0, "villager.", 300, 8);
+      a($$0, "horse.", 500, 15);
+      int $$1 = bsx.a.a(98);
+      int $$2 = bsx.b.a(98);
+      a($$0, "weapon", $$1);
+      a($$0, "weapon.mainhand", $$1);
+      a($$0, "weapon.offhand", $$2);
+      a($$0, "weapon.*", $$1, $$2);
+      $$1 = bsx.f.a(100);
+      $$2 = bsx.e.a(100);
+      int $$5 = bsx.d.a(100);
+      int $$6 = bsx.c.a(100);
+      int $$7 = bsx.g.a(105);
+      a($$0, "armor.head", $$1);
+      a($$0, "armor.chest", $$2);
+      a($$0, "armor.legs", $$5);
+      a($$0, "armor.feet", $$6);
+      a($$0, "armor.body", $$7);
+      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
+      a($$0, "horse.saddle", 400);
+      a($$0, "horse.chest", 499);
+      a($$0, "player.cursor", 499);
+      a($$0, "player.crafting.", 500, 4);
+   });
+   public static final Codec<crp> a = azj.b(() -> b.toArray(new crp[0]));
+   private static final Function<String, crp> c = azj.a(b.toArray(new crp[0]), $$0 -> $$0);
+
+   private static crp a(String $$0, int $$1) {
+      return crp.a($$0, IntLists.singleton($$1));
+   }
+
+   private static crp a(String $$0, IntList $$1) {
+      return crp.a($$0, IntLists.unmodifiable($$1));
+   }
+
+   private static crp a(String $$0, int... $$1) {
+      return crp.a($$0, IntList.of($$1));
+   }
+
+   private static void a(List<crp> $$0, String $$1, int $$2) {
+      $$0.add(a($$1, $$2));
+   }
+
+   private static void a(List<crp> $$0, String $$1, int $$2, int $$3) {
+      IntList $$4 = new IntArrayList($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         int $$6 = $$2 + $$5;
+         $$0.add(a($$1 + $$5, $$6));
+         $$4.add($$6);
+      }
+
+      $$0.add(a($$1 + "*", $$4));
+   }
+
+   private static void a(List<crp> $$0, String $$1, int... $$2) {
+      $$0.add(a($$1, $$2));
+   }
+
    @Nullable
-   private dsp k;
-   private boolean l;
-   private boolean m;
-
-   private crq(List<av> $$0, boolean $$1, List<wu> $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
+   public static crp a(String $$0) {
+      return c.apply($$0);
    }
 
-   public crq(List<av> $$0, boolean $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = a($$0);
+   public static Stream<String> a() {
+      return b.stream().map(azj::c);
    }
 
-   private static boolean a(dsp $$0, @Nullable dsp $$1, boolean $$2) {
-      if ($$1 == null || $$0.a() != $$1.a()) {
-         return false;
-      } else if (!$$2) {
-         return true;
-      } else if ($$0.b() == null && $$1.b() == null) {
-         return true;
-      } else if ($$0.b() != null && $$1.b() != null) {
-         jx $$3 = $$0.c().H_();
-         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
-      } else {
-         return false;
-      }
-   }
-
-   public boolean a(dsp $$0) {
-      if (a($$0, this.k, this.m)) {
-         return this.l;
-      } else {
-         this.k = $$0;
-         this.m = false;
-
-         for (av $$1 : this.h) {
-            if ($$1.a($$0)) {
-               this.m = this.m | $$1.a();
-               this.l = true;
-               return true;
-            }
-         }
-
-         this.l = false;
-         return false;
-      }
-   }
-
-   public void a(Consumer<wu> $$0) {
-      this.j.forEach($$0);
-   }
-
-   public crq a(boolean $$0) {
-      return new crq(this.h, $$0, this.j);
-   }
-
-   private static List<wu> a(List<av> $$0) {
-      for (av $$1 : $$0) {
-         if ($$1.b().isEmpty()) {
-            return List.of(g);
-         }
-      }
-
-      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((dfi)$$0x.a()).f().a(n.i)).toList();
-   }
-
-   public boolean a() {
-      return this.i;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof crq $$1) ? false : this.h.equals($$1.h) && this.i == $$1.i;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.h.hashCode() * 31 + (this.i ? 1 : 0);
-   }
-
-   @Override
-   public String toString() {
-      return "AdventureModePredicate{predicates=" + this.h + ", showInTooltip=" + this.i + "}";
+   public static Stream<String> b() {
+      return b.stream().filter($$0 -> $$0.b() == 1).map(azj::c);
    }
 }

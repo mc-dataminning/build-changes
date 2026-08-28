@@ -1,43 +1,40 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dkb extends dfi {
-   public static final MapCodec<dkb> a = b(dkb::new);
-   private static final int b = 20;
+public class dkb extends djk implements dkn {
+   public static final MapCodec<dkb> c = b(dkb::new);
 
    @Override
    public MapCodec<dkb> a() {
-      return a;
+      return c;
    }
 
-   public dkb(dsk.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void a(dcg $$0, ja $$1, dsl $$2, bsh $$3) {
-      if (!$$3.bY() && $$3 instanceof btc) {
-         $$3.a($$0.aj().f(), 1.0F);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   protected dkb(dsz.d $$0) {
+      super($$0, ji.b, exm.b(), true);
    }
 
    @Override
-   protected void a(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
-      dfo.b($$1, $$2.c(), $$0);
+   protected djl c() {
+      return (djl)dfy.mc;
    }
 
    @Override
-   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
-      if ($$1 == jf.b && $$2.a(dfk.G)) {
-         $$3.a($$4, this, 20);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected eoy b_(dta $$0) {
+      return eoz.c.a(false);
    }
 
    @Override
-   protected void b(dsl $$0, dcg $$1, ja $$2, dsl $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
+   protected boolean m(dta $$0) {
+      return this.c().m($$0);
+   }
+
+   @Override
+   public boolean a(@Nullable cmv $$0, dca $$1, jd $$2, dta $$3, eox $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dcv $$0, jd $$1, dta $$2, eoy $$3) {
+      return false;
    }
 }

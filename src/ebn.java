@@ -1,43 +1,29 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class ebn<FC extends edp> {
-   private final Optional<eay<?, ?>> a;
-   private final ddc b;
-   private final dui c;
-   private final ayo d;
-   private final ja e;
-   private final FC f;
+public record ebn<FC extends eee, F extends eca<FC>>(F d, FC e) {
+   public static final Codec<ebn<?, ?>> a = lt.O.r().dispatch($$0 -> $$0.d, eca::a);
+   public static final Codec<jm<ebn<?, ?>>> b = akm.a(lu.aI, a);
+   public static final Codec<jq<ebn<?, ?>>> c = kb.a(lu.aI, a);
 
-   public ebn(Optional<eay<?, ?>> $$0, ddc $$1, dui $$2, ayo $$3, ja $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public boolean a(ddq $$0, dux $$1, ayv $$2, jd $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
    }
 
-   public Optional<eay<?, ?>> a() {
-      return this.a;
+   public Stream<ebn<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
-   public ddc b() {
-      return this.b;
+   @Override
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
    }
 
-   public dui c() {
-      return this.c;
-   }
-
-   public ayo d() {
+   public F b() {
       return this.d;
    }
 
-   public ja e() {
+   public FC c() {
       return this.e;
-   }
-
-   public FC f() {
-      return this.f;
    }
 }

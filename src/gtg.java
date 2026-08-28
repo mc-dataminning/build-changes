@@ -1,32 +1,65 @@
-public class gtg implements gso {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final gdh e;
-   private final guj f;
-   private int g = 0;
+public abstract class gtg extends gtc {
+   private static final float o = 0.0F;
+   private static final float p = 1.2F;
+   private static final float q = 0.0F;
+   protected final cfd n;
+   private boolean r;
 
-   public gtg(gdh $$0, guj $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public gtg(cfd $$0, avn $$1, avp $$2) {
+      super($$1, $$2, gtt.t());
+      this.n = $$0;
+      this.f = (double)((float)$$0.dv());
+      this.g = (double)((float)$$0.dx());
+      this.h = (double)((float)$$0.dB());
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
    @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bl()) {
-         float $$0 = this.e.dR().z.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((gte)(new gth.a(this.e, avh.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((gte)(new gth.a(this.e, avh.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((gte)(new gth.a(this.e, avh.A)));
+   public void q() {
+      boolean $$0 = this.p();
+      if ($$0 && !this.m()) {
+         fgi.Q().aj().a((gtu)this.o());
+         this.r = true;
+      }
+
+      if (!this.n.dL() && !this.r) {
+         this.f = (double)((float)this.n.dv());
+         this.g = (double)((float)this.n.dx());
+         this.h = (double)((float)this.n.dB());
+         float $$1 = (float)this.n.dt().h();
+         if ($$1 >= 0.01F) {
+            this.e = ayn.i(ayn.a($$1, this.u(), this.v()), this.u(), this.v());
+            this.d = ayn.i(ayn.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
+         } else {
+            this.e = 0.0F;
+            this.d = 0.0F;
          }
+      } else {
+         this.n();
       }
    }
+
+   private float u() {
+      return this.n.o_() ? 1.1F : 0.7F;
+   }
+
+   private float v() {
+      return this.n.o_() ? 1.5F : 1.1F;
+   }
+
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public boolean s() {
+      return !this.n.aX();
+   }
+
+   protected abstract gtc o();
+
+   protected abstract boolean p();
 }

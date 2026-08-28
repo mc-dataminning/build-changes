@@ -1,38 +1,103 @@
-import javax.annotation.Nullable;
-
-public class glo extends gku<cjx, fwj<cjx>> {
-   private static final akk a = new akk("textures/" + geu.i.b().a() + ".png");
-   private static final akk[] i = geu.j.stream().map($$0 -> new akk("textures/" + $$0.b().a() + ".png")).toArray(akk[]::new);
-
-   public glo(gjo.a $$0) {
-      super($$0, new fwj<>($$0.a(fxp.bk)), 0.0F);
-      this.a(new god(this));
+public class glo extends gkc<cja> {
+   public glo(gkd.a $$0) {
+      super($$0);
    }
 
-   public ewh a(cjx $$0, float $$1) {
-      return $$0.I($$1).orElse(super.a($$0, $$1)).a((double)$$0.ed());
+   public void a(cja $$0, float $$1, float $$2, fbc $$3, get $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(180.0F - $$1));
+      cjb $$6 = $$0.v().a();
+      fbg $$7 = $$4.getBuffer(gfb.c(this.a($$0)));
+      gre $$8 = fgi.Q().aD();
+      this.a($$3, $$7, $$0, $$6.b(), $$6.c(), $$8.a($$6), $$8.a());
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public boolean a(cjx $$0, ghj $$1, double $$2, double $$3, double $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4) ? true : $$0.I(0.0F).filter($$2x -> {
-         bsn<?> $$3x = $$0.am();
-         float $$4x = $$3x.m() / 2.0F;
-         float $$5 = $$3x.l() / 2.0F;
-         ewh $$6 = ewh.c($$0.dr());
-         return $$1.a(new ewc($$2x.c, $$2x.d + (double)$$4x, $$2x.e, $$6.c, $$6.d + (double)$$4x, $$6.e).c((double)$$5, (double)$$4x, (double)$$5));
-      }).isPresent();
+   public akq a(cja $$0) {
+      return fgi.Q().aD().a().i();
    }
 
-   public akk a(cjx $$0) {
-      return a($$0.go());
+   private void a(fbc $$0, fbg $$1, cja $$2, int $$3, int $$4, gqf $$5, gqf $$6) {
+      fbc.a $$7 = $$0.c();
+      float $$8 = (float)(-$$3) / 2.0F;
+      float $$9 = (float)(-$$4) / 2.0F;
+      float $$10 = 0.03125F;
+      float $$11 = $$6.c();
+      float $$12 = $$6.d();
+      float $$13 = $$6.g();
+      float $$14 = $$6.h();
+      float $$15 = $$6.c();
+      float $$16 = $$6.d();
+      float $$17 = $$6.g();
+      float $$18 = $$6.c(0.0625F);
+      float $$19 = $$6.c();
+      float $$20 = $$6.a(0.0625F);
+      float $$21 = $$6.g();
+      float $$22 = $$6.h();
+      double $$23 = 1.0 / (double)$$3;
+      double $$24 = 1.0 / (double)$$4;
+
+      for (int $$25 = 0; $$25 < $$3; $$25++) {
+         for (int $$26 = 0; $$26 < $$4; $$26++) {
+            float $$27 = $$8 + (float)($$25 + 1);
+            float $$28 = $$8 + (float)$$25;
+            float $$29 = $$9 + (float)($$26 + 1);
+            float $$30 = $$9 + (float)$$26;
+            int $$31 = $$2.du();
+            int $$32 = ayn.a($$2.dx() + (double)(($$29 + $$30) / 2.0F));
+            int $$33 = $$2.dA();
+            ji $$34 = $$2.cI();
+            if ($$34 == ji.c) {
+               $$31 = ayn.a($$2.dv() + (double)(($$27 + $$28) / 2.0F));
+            }
+
+            if ($$34 == ji.e) {
+               $$33 = ayn.a($$2.dB() - (double)(($$27 + $$28) / 2.0F));
+            }
+
+            if ($$34 == ji.d) {
+               $$31 = ayn.a($$2.dv() - (double)(($$27 + $$28) / 2.0F));
+            }
+
+            if ($$34 == ji.f) {
+               $$33 = ayn.a($$2.dB() + (double)(($$27 + $$28) / 2.0F));
+            }
+
+            int $$35 = ger.a($$2.dQ(), new jd($$31, $$32, $$33));
+            float $$36 = $$5.a((float)($$23 * (double)($$3 - $$25)));
+            float $$37 = $$5.a((float)($$23 * (double)($$3 - ($$25 + 1))));
+            float $$38 = $$5.c((float)($$24 * (double)($$4 - $$26)));
+            float $$39 = $$5.c((float)($$24 * (double)($$4 - ($$26 + 1))));
+            this.a($$7, $$1, $$27, $$30, $$37, $$38, -0.03125F, 0, 0, -1, $$35);
+            this.a($$7, $$1, $$28, $$30, $$36, $$38, -0.03125F, 0, 0, -1, $$35);
+            this.a($$7, $$1, $$28, $$29, $$36, $$39, -0.03125F, 0, 0, -1, $$35);
+            this.a($$7, $$1, $$27, $$29, $$37, $$39, -0.03125F, 0, 0, -1, $$35);
+            this.a($$7, $$1, $$27, $$29, $$12, $$13, 0.03125F, 0, 0, 1, $$35);
+            this.a($$7, $$1, $$28, $$29, $$11, $$13, 0.03125F, 0, 0, 1, $$35);
+            this.a($$7, $$1, $$28, $$30, $$11, $$14, 0.03125F, 0, 0, 1, $$35);
+            this.a($$7, $$1, $$27, $$30, $$12, $$14, 0.03125F, 0, 0, 1, $$35);
+            this.a($$7, $$1, $$27, $$29, $$15, $$17, -0.03125F, 0, 1, 0, $$35);
+            this.a($$7, $$1, $$28, $$29, $$16, $$17, -0.03125F, 0, 1, 0, $$35);
+            this.a($$7, $$1, $$28, $$29, $$16, $$18, 0.03125F, 0, 1, 0, $$35);
+            this.a($$7, $$1, $$27, $$29, $$15, $$18, 0.03125F, 0, 1, 0, $$35);
+            this.a($$7, $$1, $$27, $$30, $$15, $$17, 0.03125F, 0, -1, 0, $$35);
+            this.a($$7, $$1, $$28, $$30, $$16, $$17, 0.03125F, 0, -1, 0, $$35);
+            this.a($$7, $$1, $$28, $$30, $$16, $$18, -0.03125F, 0, -1, 0, $$35);
+            this.a($$7, $$1, $$27, $$30, $$15, $$18, -0.03125F, 0, -1, 0, $$35);
+            this.a($$7, $$1, $$27, $$29, $$20, $$21, 0.03125F, -1, 0, 0, $$35);
+            this.a($$7, $$1, $$27, $$30, $$20, $$22, 0.03125F, -1, 0, 0, $$35);
+            this.a($$7, $$1, $$27, $$30, $$19, $$22, -0.03125F, -1, 0, 0, $$35);
+            this.a($$7, $$1, $$27, $$29, $$19, $$21, -0.03125F, -1, 0, 0, $$35);
+            this.a($$7, $$1, $$28, $$29, $$20, $$21, -0.03125F, 1, 0, 0, $$35);
+            this.a($$7, $$1, $$28, $$30, $$20, $$22, -0.03125F, 1, 0, 0, $$35);
+            this.a($$7, $$1, $$28, $$30, $$19, $$22, 0.03125F, 1, 0, 0, $$35);
+            this.a($$7, $$1, $$28, $$29, $$19, $$21, 0.03125F, 1, 0, 0, $$35);
+         }
+      }
    }
 
-   public static akk a(@Nullable csw $$0) {
-      return $$0 == null ? a : i[$$0.a()];
-   }
-
-   protected void a(cjx $$0, fao $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3 + 180.0F, $$4, $$5);
-      $$1.a($$0.x().g().b(), 0.0F, 0.5F, 0.0F);
+   private void a(fbc.a $$0, fbg $$1, float $$2, float $$3, float $$4, float $$5, float $$6, int $$7, int $$8, int $$9, int $$10) {
+      $$1.a($$0, $$2, $$3, $$6).a(-1).a($$4, $$5).b(gpw.d).c($$10).b($$0, (float)$$7, (float)$$8, (float)$$9);
    }
 }

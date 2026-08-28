@@ -1,78 +1,51 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Map.Entry;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dtj<T extends Enum<T> & azc> extends dto<T> {
-   private final ImmutableSet<T> a;
-   private final Map<String, T> b = Maps.newHashMap();
+public class dtj implements Predicate<dta> {
+   public static final Predicate<dta> a = $$0 -> true;
+   private final dtb<dfw, dta> b;
+   private final Map<dud<?>, Predicate<Object>> c = Maps.newHashMap();
 
-   protected dtj(String $$0, Class<T> $$1, Collection<T> $$2) {
-      super($$0, $$1);
-      this.a = ImmutableSet.copyOf($$2);
+   private dtj(dtb<dfw, dta> $$0) {
+      this.b = $$0;
+   }
 
-      for (T $$3 : $$2) {
-         String $$4 = $$3.c();
-         if (this.b.containsKey($$4)) {
-            throw new IllegalArgumentException("Multiple values have the same name '" + $$4 + "'");
+   public static dtj a(dfw $$0) {
+      return new dtj($$0.l());
+   }
+
+   public boolean a(@Nullable dta $$0) {
+      if ($$0 != null && $$0.b().equals(this.b.c())) {
+         if (this.c.isEmpty()) {
+            return true;
+         } else {
+            for (Entry<dud<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
+               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
+                  return false;
+               }
+            }
+
+            return true;
          }
-
-         this.b.put($$4, $$3);
-      }
-   }
-
-   @Override
-   public Collection<T> a() {
-      return this.a;
-   }
-
-   @Override
-   public Optional<T> b(String $$0) {
-      return Optional.ofNullable(this.b.get($$0));
-   }
-
-   public String a(T $$0) {
-      return $$0.c();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
       } else {
-         if ($$0 instanceof dtj<?> $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a) && this.b.equals($$1.b);
-         }
-
          return false;
       }
    }
 
-   @Override
-   public int b() {
-      int $$0 = super.b();
-      $$0 = 31 * $$0 + this.a.hashCode();
-      return 31 * $$0 + this.b.hashCode();
+   protected <T extends Comparable<T>> boolean a(dta $$0, dud<T> $$1, Predicate<Object> $$2) {
+      T $$3 = $$0.c($$1);
+      return $$2.test($$3);
    }
 
-   public static <T extends Enum<T> & azc> dtj<T> a(String $$0, Class<T> $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
-
-   public static <T extends Enum<T> & azc> dtj<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
-      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
-   }
-
-   public static <T extends Enum<T> & azc> dtj<T> a(String $$0, Class<T> $$1, T... $$2) {
-      return a($$0, $$1, Lists.newArrayList($$2));
-   }
-
-   public static <T extends Enum<T> & azc> dtj<T> a(String $$0, Class<T> $$1, Collection<T> $$2) {
-      return new dtj<>($$0, $$1, $$2);
+   public <V extends Comparable<V>> dtj a(dud<V> $$0, Predicate<Object> $$1) {
+      if (!this.b.d().contains($$0)) {
+         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
+      } else {
+         this.c.put($$0, $$1);
+         return this;
+      }
    }
 }

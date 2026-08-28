@@ -1,53 +1,41 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class feq extends fev {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wu c = wu.c("mco.configure.world.closing");
-   private final fbv d;
-   private final fdf e;
-
-   public feq(fbv $$0, fdf $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   @Override
-   public void run() {
-      fbe $$0 = fbe.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.g(this.d.a);
-            if ($$2) {
-               this.e.f();
-               this.d.e = fbv.c.a;
-               a(this.e);
-               break;
-            }
-         } catch (fcs var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to close server", var5);
-            this.a(var5);
-         }
+public interface feq {
+   feq a = new feq() {
+      @Override
+      public long a() {
+         return 1L;
       }
-   }
 
-   @Override
-   public wu a() {
-      return c;
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
+
+   long a();
+
+   long b();
+
+   static feq a(final int $$0) {
+      return new feq() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

@@ -1,29 +1,33 @@
-public class aek implements zb<abn> {
-   public static final ys<vr, aek> a = zb.a(aek::a, aek::new);
-   private final int b;
+import javax.annotation.Nullable;
 
-   public aek(duc $$0) {
-      this.b = $$0.q();
+public class aek implements zf<abt> {
+   public static final yw<vv, aek> a = zf.a(aek::a, aek::new);
+   @Nullable
+   private final akq b;
+
+   public aek(@Nullable akq $$0) {
+      this.b = $$0;
    }
 
-   private aek(vr $$0) {
-      this.b = $$0.l();
+   private aek(vv $$0) {
+      this.b = $$0.c(vv::q);
    }
 
-   private void a(vr $$0) {
-      $$0.c(this.b);
+   private void a(vv $$0) {
+      $$0.a(this.b, vv::a);
    }
 
    @Override
-   public zd<aek> a() {
-      return afz.au;
+   public zh<aek> a() {
+      return agf.ao;
    }
 
-   public void a(abn $$0) {
+   public void a(abt $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   @Nullable
+   public akq b() {
       return this.b;
    }
 }

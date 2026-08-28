@@ -1,25 +1,42 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
 
-record ekn(bor<List<ekj>> c) implements ekj {
-   static MapCodec<ekn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bor.b(Codec.list(ekj.b)).fieldOf("groups").forGetter(ekn::c)).apply($$0, ekn::new));
+public class ekn extends eku {
+   public static final MapCodec<ekn> a = MapCodec.unit(() -> ekn.b);
+   public static final ekn b = new ekn();
 
-   @Override
-   public void a(ayo $$0, BiConsumer<akj<ekh>, akj<ekh>> $$1) {
-      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
+   private ekn() {
+      super(ekw.a.a);
    }
 
    @Override
-   public Stream<akj<ekh>> a() {
-      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(ekj::a);
+   public kh a(eno $$0, dmk $$1) {
+      return kh.g;
    }
 
    @Override
-   public MapCodec<ekn> b() {
-      return a;
+   public List<enn.c> a(eno $$0, jd $$1, dmk $$2, ayv $$3) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public eje a(eno $$0, jd $$1, dmk $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   }
+
+   @Override
+   public boolean a(eno $$0, ddq $$1, ddo $$2, dux $$3, jd $$4, jd $$5, dmk $$6, eje $$7, ayv $$8, boolean $$9) {
+      return true;
+   }
+
+   @Override
+   public ekv<?> a() {
+      return ekv.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Empty";
    }
 }

@@ -1,133 +1,167 @@
-enum fns {
-   a(
-      new fns.a(
-         new akk("advancements/tab_above_left_selected"), new akk("advancements/tab_above_middle_selected"), new akk("advancements/tab_above_right_selected")
-      ),
-      new fns.a(new akk("advancements/tab_above_left"), new akk("advancements/tab_above_middle"), new akk("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new fns.a(
-         new akk("advancements/tab_below_left_selected"), new akk("advancements/tab_below_middle_selected"), new akk("advancements/tab_below_right_selected")
-      ),
-      new fns.a(new akk("advancements/tab_below_left"), new akk("advancements/tab_below_middle"), new akk("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new fns.a(
-         new akk("advancements/tab_left_top_selected"), new akk("advancements/tab_left_middle_selected"), new akk("advancements/tab_left_bottom_selected")
-      ),
-      new fns.a(new akk("advancements/tab_left_top"), new akk("advancements/tab_left_middle"), new akk("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new fns.a(
-         new akk("advancements/tab_right_top_selected"), new akk("advancements/tab_right_middle_selected"), new akk("advancements/tab_right_bottom_selected")
-      ),
-      new fns.a(new akk("advancements/tab_right_top"), new akk("advancements/tab_right_middle"), new akk("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   private final fns.a e;
-   private final fns.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class fns extends fnx {
+   private static final akq a = akq.b("icon/draft_report");
+   private static final int b = 2;
+   private static final int c = 50;
+   private static final int q = 4;
+   private static final int r = 204;
+   private static final int s = 98;
+   private static final wy u = wy.c("menu.returnToGame");
+   private static final wy v = wy.c("gui.advancements");
+   private static final wy w = wy.c("gui.stats");
+   private static final wy x = wy.c("menu.sendFeedback");
+   private static final wy y = wy.c("menu.reportBugs");
+   private static final wy z = wy.c("menu.feedback");
+   private static final wy A = wy.c("menu.server_links");
+   private static final wy B = wy.c("menu.options");
+   private static final wy C = wy.c("menu.shareToLan");
+   private static final wy D = wy.c("menu.playerReporting");
+   private static final wy E = wy.c("menu.returnToMenu");
+   private static final wy F = wy.c("menu.savingLevel");
+   private static final wy G = wy.c("menu.game");
+   private static final wy H = wy.c("menu.paused");
+   private final boolean I;
+   @Nullable
+   private fig J;
 
-   private fns(final fns.a $$0, final fns.a $$1, final int $$2, final int $$3, final int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public fns(boolean $$0) {
+      super($$0 ? G : H);
+      this.I = $$0;
    }
 
-   public int a() {
-      return this.i;
+   public boolean m() {
+      return this.I;
    }
 
-   public void a(fhh $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      fns.a $$5 = $$3 ? this.e : this.f;
-      akk $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
+   @Override
+   protected void aP_() {
+      if (this.I) {
+         this.D();
+      }
+
+      this.c(new fjn(0, this.I ? 40 : 10, this.m, 9, this.k, this.o));
+   }
+
+   private void D() {
+      fls $$0 = new fls();
+      $$0.c().a(4, 4, 4, 0);
+      fls.b $$1 = $$0.d(2);
+      $$1.a(fig.a(u, $$0x -> {
+         this.l.a(null);
+         this.l.n.i();
+      }).a(204).a(), 2, $$0.b().c(50));
+      $$1.a(this.a(v, () -> new foh(this.l.s.h.p(), this)));
+      $$1.a(this.a(w, () -> new fob(this, this.l.s.j())));
+      ali $$2 = this.l.s.h.C();
+      if ($$2.a()) {
+         a(this, $$1);
       } else {
-         $$6 = $$5.b();
+         $$1.a(this.a(z, () -> new fns.a(this)));
+         $$1.a(this.a(A, () -> new fqp(this, $$2)));
       }
 
-      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
-   }
-
-   public void a(fhh $$0, int $$1, int $$2, int $$3, cud $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
+      $$1.a(this.a(B, () -> new fra(this, this.l.m)));
+      if (this.l.U() && !this.l.V().r()) {
+         $$1.a(this.a(C, () -> new fny(this)));
+      } else {
+         $$1.a(this.a(D, () -> new fsq(this)));
       }
 
-      $$0.b($$4, $$5, $$6);
+      wy $$3 = this.l.T() ? E : wx.p;
+      this.J = $$1.a(fig.a($$3, $$0x -> {
+         $$0x.j = false;
+         this.l.aX().a(this.l, this, this::E, true);
+      }).a(204).a(), 2);
+      $$0.a();
+      flr.a($$0, 0, 0, this.m, this.n, 0.5F, 0.25F);
+      $$0.a(this::c);
    }
 
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+   static void a(fnx $$0, fls.b $$1) {
+      $$1.a(a($$0, x, ab.b().g() ? "https://aka.ms/javafeedback?ref=game" : "https://aka.ms/snapshotfeedback?ref=game"));
+      $$1.a(a($$0, y, "https://aka.ms/snapshotbugs?ref=game")).j = !ab.b().d().a();
+   }
+
+   private void E() {
+      boolean $$0 = this.l.T();
+      fzn $$1 = this.l.S();
+      this.l.r.Y();
+      if ($$0) {
+         this.l.b(new fni(F));
+      } else {
+         this.l.y();
       }
-   }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      fnz $$2 = new fnz();
+      if ($$0) {
+         this.l.a($$2);
+      } else if ($$1 != null && $$1.e()) {
+         this.l.a(new fbn($$2));
+      } else {
+         this.l.a(new fqn($$2));
       }
    }
 
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   @Override
+   public void e() {
+      super.e();
    }
 
-   static record a(akk a, akk b, akk c) {
+   @Override
+   public void a(fht $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.I && this.l != null && this.l.aX().c() && this.J != null) {
+         $$0.a(a, this.J.D() + this.J.y() - 17, this.J.E() + 3, 15, 15);
+      }
+   }
+
+   @Override
+   public void b(fht $$0, int $$1, int $$2, float $$3) {
+      if (this.I) {
+         super.b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private fig a(wy $$0, Supplier<fnx> $$1) {
+      return fig.a($$0, $$1x -> this.l.a($$1.get())).a(98).a();
+   }
+
+   private static fig a(fnx $$0, wy $$1, String $$2) {
+      return fig.a($$1, fmu.b($$0, $$2)).a(98).a();
+   }
+
+   static class a extends fnx {
+      private static final wy b = wy.c("menu.feedback.title");
+      public final fnx a;
+      private final flt c = new flt(this);
+
+      protected a(fnx $$0) {
+         super(b);
+         this.a = $$0;
+      }
+
+      @Override
+      protected void aP_() {
+         this.c.a(b, this.o);
+         fls $$0 = this.c.c(new fls());
+         $$0.c().a(4, 4, 4, 0);
+         fls.b $$1 = $$0.d(2);
+         fns.a(this, $$1);
+         this.c.b(fig.a(wx.k, $$0x -> this.d()).a(200).a());
+         this.c.a(this::c);
+         this.c();
+      }
+
+      @Override
+      protected void c() {
+         this.c.a();
+      }
+
+      @Override
+      public void d() {
+         this.l.a(this.a);
+      }
    }
 }

@@ -1,46 +1,79 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class edn implements edp {
-   public static final Codec<edn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").forGetter($$0x -> $$0x.b),
-               bpm.b(1, 128).fieldOf("height").forGetter($$0x -> $$0x.c),
-               bpm.b(1, 128).fieldOf("radius").forGetter($$0x -> $$0x.d),
-               Codec.intRange(0, 64).fieldOf("max_stalagmite_stalactite_height_diff").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("height_deviation").forGetter($$0x -> $$0x.f),
-               bpm.b(0, 128).fieldOf("dripstone_block_layer_thickness").forGetter($$0x -> $$0x.g),
-               bpk.a(0.0F, 2.0F).fieldOf("density").forGetter($$0x -> $$0x.h),
-               bpk.a(0.0F, 2.0F).fieldOf("wetness").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_dripstone_column_at_max_distance_from_center").forGetter($$0x -> $$0x.j),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_edge_affecting_chance_of_dripstone_column").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 64).fieldOf("max_distance_from_center_affecting_height_bias").forGetter($$0x -> $$0x.l)
-            )
-            .apply($$0, edn::new)
-   );
-   public final int b;
-   public final bpm c;
-   public final bpm d;
-   public final int e;
-   public final int f;
-   public final bpm g;
-   public final bpk h;
-   public final bpk i;
-   public final float j;
-   public final int k;
-   public final int l;
+public class edn extends eca<efb> {
+   public edn(Codec<efb> $$0) {
+      super($$0);
+   }
 
-   public edn(int $$0, bpm $$1, bpm $$2, int $$3, int $$4, bpm $$5, bpk $$6, bpk $$7, float $$8, int $$9, int $$10) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
+   @Override
+   public boolean a(ecc<efb> $$0) {
+      ddq $$1 = $$0.b();
+      jd $$2 = $$0.e();
+      if (a($$1, $$2)) {
+         return false;
+      } else {
+         ayv $$3 = $$0.d();
+         efb $$4 = $$0.f();
+         int $$5 = $$4.a();
+         int $$6 = $$4.b();
+         int $$7 = $$4.c();
+         jd.a $$8 = new jd.a();
+
+         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
+            $$8.g($$2).e(ayn.a($$3, -$$5, $$5), ayn.a($$3, -$$6, $$6), ayn.a($$3, -$$5, $$5));
+            if (a($$1, $$8) && !a($$1, (jd)$$8)) {
+               int $$10 = ayn.a($$3, 1, $$7);
+               if ($$3.a(6) == 0) {
+                  $$10 *= 2;
+               }
+
+               if ($$3.a(5) == 0) {
+                  $$10 = 1;
+               }
+
+               int $$11 = 17;
+               int $$12 = 25;
+               a($$1, $$3, $$8, $$10, 17, 25);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private static boolean a(dcv $$0, jd.a $$1) {
+      do {
+         $$1.e(0, -1, 0);
+         if ($$0.s($$1)) {
+            return false;
+         }
+      } while ($$0.a_($$1).i());
+
+      $$1.e(0, 1, 0);
+      return true;
+   }
+
+   public static void a(dcv $$0, ayv $$1, jd.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 1; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.c())) {
+               $$0.a($$2, dfy.oB.o().a(djl.e, Integer.valueOf(ayn.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dfy.oC.o(), 2);
+         }
+
+         $$2.c(ji.b);
+      }
+   }
+
+   private static boolean a(dcv $$0, jd $$1) {
+      if (!$$0.u($$1)) {
+         return true;
+      } else {
+         dta $$2 = $$0.a_($$1.d());
+         return !$$2.a(dfy.dV) && !$$2.a(dfy.on) && !$$2.a(dfy.op);
+      }
    }
 }

@@ -1,25 +1,8 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+public abstract class fhz extends fic {
+   protected final fgm a;
 
-public class fhz {
-   private static final axs a = axs.codepoint(32, xr.a);
-
-   private static String a(String $$0) {
-      return ffw.Q().m.K().c() ? $$0 : n.a($$0);
-   }
-
-   public static List<axs> a(wz $$0, int $$1, fhf $$2) {
-      ffl $$3 = new ffl();
-      $$0.a(($$1x, $$2x) -> {
-         $$3.a(wz.a(a($$2x), $$1x));
-         return Optional.empty();
-      }, xr.a);
-      List<axs> $$4 = Lists.newArrayList();
-      $$2.b().a($$3.b(), $$1, xr.a, ($$1x, $$2x) -> {
-         axs $$3x = ts.a().a($$1x);
-         $$4.add($$2x ? axs.composite(a, $$3x) : $$3x);
-      });
-      return (List<axs>)($$4.isEmpty() ? Lists.newArrayList(new axs[]{axs.a}) : $$4);
+   protected fhz(fgm $$0, int $$1, int $$2, int $$3, int $$4, double $$5) {
+      super($$1, $$2, $$3, $$4, wx.a, $$5);
+      this.a = $$0;
    }
 }

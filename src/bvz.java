@@ -1,72 +1,27 @@
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public final class bvz {
-   public static Optional<ewh> a(bte $$0, ewh $$1, float $$2, int $$3, boolean $$4) {
-      ewh $$5 = $$0.dp();
-      ewh $$6 = new ewh($$1.c - $$5.c, 0.0, $$1.e - $$5.e).d().a(0.5);
-      ewh $$7 = $$1.d($$6);
-      ewh $$8 = $$7.d($$5);
-      float $$9 = (float)$$3 * (float) Math.PI / 180.0F;
-      double $$10 = Math.atan2($$8.e, $$8.c);
-      double $$11 = $$8.a(0.0, $$8.d, 0.0).g();
-      double $$12 = Math.sqrt($$11);
-      double $$13 = $$8.d;
-      double $$14 = $$0.bb();
-      double $$15 = Math.sin((double)(2.0F * $$9));
-      double $$16 = Math.pow(Math.cos((double)$$9), 2.0);
-      double $$17 = Math.sin((double)$$9);
-      double $$18 = Math.cos((double)$$9);
-      double $$19 = Math.sin($$10);
-      double $$20 = Math.cos($$10);
-      double $$21 = $$11 * $$14 / ($$12 * $$15 - 2.0 * $$13 * $$16);
-      if ($$21 < 0.0) {
-         return Optional.empty();
-      } else {
-         double $$22 = Math.sqrt($$21);
-         if ($$22 > (double)$$2) {
-            return Optional.empty();
-         } else {
-            double $$23 = $$22 * $$18;
-            double $$24 = $$22 * $$17;
-            if ($$4) {
-               int $$25 = ayg.c($$12 / $$23) * 2;
-               double $$26 = 0.0;
-               ewh $$27 = null;
-               bsk $$28 = $$0.a(bto.g);
-
-               for (int $$29 = 0; $$29 < $$25 - 1; $$29++) {
-                  $$26 += $$12 / (double)$$25;
-                  double $$30 = $$17 / $$18 * $$26 - Math.pow($$26, 2.0) * $$14 / (2.0 * $$21 * Math.pow($$18, 2.0));
-                  double $$31 = $$26 * $$20;
-                  double $$32 = $$26 * $$19;
-                  ewh $$33 = new ewh($$5.c + $$31, $$5.d + $$30, $$5.e + $$32);
-                  if ($$27 != null && !a($$0, $$28, $$27, $$33)) {
-                     return Optional.empty();
-                  }
-
-                  $$27 = $$33;
-               }
-            }
-
-            return Optional.of(new ewh($$23 * $$20, $$24, $$23 * $$19).a(0.95F));
-         }
-      }
+public class bvz {
+   public static bvg<btl> a(float $$0, boolean $$1, int $$2) {
+      return a($$0x -> true, $$0, $$1, $$2);
    }
 
-   private static boolean a(bte $$0, bsk $$1, ewh $$2, ewh $$3) {
-      ewh $$4 = $$3.d($$2);
-      double $$5 = (double)Math.min($$1.a(), $$1.b());
-      int $$6 = ayg.c($$4.f() / $$5);
-      ewh $$7 = $$4.d();
-      ewh $$8 = $$2;
-
-      for (int $$9 = 0; $$9 < $$6; $$9++) {
-         $$8 = $$9 == $$6 - 1 ? $$3 : $$8.e($$7.a($$5 * 0.9F));
-         if (!$$0.dR().a($$0, $$1.a($$8))) {
-            return false;
-         }
-      }
-
-      return true;
+   public static <E extends btl> bvg<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
+      return bys.a((Function<bys.b<E>, ? extends App<bys.c<E>, byv<E>>>)($$4 -> {
+         bys<E, ? extends byt<? extends K1, cct>> $$5 = $$2 ? $$4.a(ccq.m) : $$4.c(ccq.m);
+         return $$4.group($$4.a(ccq.n), $$5, $$4.b(ccq.L), $$4.a(ccq.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
+               cjf $$11 = $$4.b($$6);
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dQ().C_().a($$11.dq())) {
+                  cct $$12 = new cct(new bvq($$11, false), $$1, 0);
+                  $$4x.a(new bvq($$11, true));
+                  $$5x.a($$12);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
+      }));
    }
 }

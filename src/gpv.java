@@ -1,75 +1,50 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class gpv {
-   private static final Logger a = LogUtils.getLogger();
-   private static final akd b = new akd("atlases", ".json");
-   private final List<gpu> c;
+public final class gpv {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final akq d = akq.b("missingno");
+   private static final auf e = new auf.a().a(grq.a, new grq(ImmutableList.of(new grp(0, -1)), 16, 16, 1, false)).a();
+   @Nullable
+   private static gps f;
 
-   private gpv(List<gpu> $$0) {
-      this.c = $$0;
-   }
+   private static fad a(int $$0, int $$1) {
+      fad $$2 = new fad($$0, $$1, false);
+      int $$3 = -16777216;
+      int $$4 = -524040;
 
-   public List<Function<gpt, gpk>> a(atw $$0) {
-      final Map<akk, gpu.b> $$1 = new HashMap<>();
-      gpu.a $$2 = new gpu.a() {
-         @Override
-         public void a(akk $$0, gpu.b $$1x) {
-            gpu.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         for (int $$6 = 0; $$6 < $$0; $$6++) {
+            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
+               $$2.a($$6, $$5, -524040);
+            } else {
+               $$2.a($$6, $$5, -16777216);
             }
-         }
-
-         @Override
-         public void a(Predicate<akk> $$0) {
-            Iterator<Entry<akk, gpu.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<akk, gpu.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
-            }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<gpt, gpk>> $$3 = ImmutableList.builder();
-      $$3.add((Function<gpt, gpk>)$$0x -> gpg.a());
-      $$3.addAll($$1.values());
-      return $$3.build();
-   }
-
-   public static gpv a(atw $$0, akk $$1) {
-      akk $$2 = b.a($$1);
-      List<gpu> $$3 = new ArrayList<>();
-
-      for (atu $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends gpu>)gpx.h.parse($$6).getOrThrow());
-         } catch (Exception var11) {
-            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
          }
       }
 
-      return new gpv($$3);
+      return $$2;
+   }
+
+   public static gpz a() {
+      fad $$0 = a(16, 16);
+      return new gpz(d, new grs(16, 16), $$0, e);
+   }
+
+   public static akq b() {
+      return d;
+   }
+
+   public static gps c() {
+      if (f == null) {
+         fad $$0 = a(16, 16);
+         $$0.i();
+         f = new gps($$0);
+         fgi.Q().aa().a(d, f);
+      }
+
+      return f;
    }
 }

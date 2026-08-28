@@ -1,9 +1,30 @@
-public class gqo extends gqt {
-   public gqo(gpr $$0) {
-      super($$0, new akk("textures/atlas/mob_effects.png"), new akk("mob_effects"));
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class gqo implements gqj {
+   public static final MapCodec<gqo> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gqo::new)
+   );
+   private final String c;
+   private final String d;
+
+   public gqo(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public gpq a(jj<brn> $$0) {
-      return this.a($$0.e().map(akj::a).orElseGet(gpg::b));
+   @Override
+   public void a(aud $$0, gqj.a $$1) {
+      akj $$2 = new akj("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         akq $$4 = $$2.b($$2x).f(this.d);
+         $$1.a($$4, $$3);
+      });
+   }
+
+   @Override
+   public gql a() {
+      return gqm.b;
    }
 }

@@ -1,110 +1,89 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class dei extends die {
-   public static final MapCodec<dei> a = b(dei::new);
-   public static final dtf b = dje.aE;
-   private static final exa c = dfi.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-   private static final exa d = dfi.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
-   private static final exa e = dfi.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
-   private static final exa f = dfi.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
-   private static final exa g = dfi.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
-   private static final exa h = dfi.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
-   private static final exa i = dfi.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
-   private static final exa j = ewx.a(c, d, e, f);
-   private static final exa k = ewx.a(c, g, h, i);
-   private static final wu l = wu.c("container.repair");
-   private static final float m = 2.0F;
-   private static final int n = 40;
+public class dei {
+   public static final Codec<dei> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dei.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), ako.c(lu.aF)).apply($$0, dei::new)
+   );
+   public static final Codec<jm<dei>> b = akm.a(lu.aZ, a);
+   private final dei.a c;
+   private final ded.c<jm<ddu>> d;
 
-   @Override
-   public MapCodec<dei> a() {
-      return a;
+   public dei(dei.a $$0, jn<ddu> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   public dei(dsk.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, jf.c));
+   public ded.c<jm<ddu>> a() {
+      return this.d;
    }
 
-   @Override
-   public dsl a(cxn $$0) {
-      return this.o().a(b, $$0.g().h());
+   public static Map<dei.a, ded.c<akp<ddu>>> b() {
+      return dei.a.f.values().stream().collect(Collectors.toMap($$0 -> (dei.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   @Override
-   protected bqh a(dsl $$0, dcg $$1, ja $$2, cml $$3, ewd $$4) {
-      if ($$1.B) {
-         return bqh.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(avr.aC);
-         return bqh.c;
+   public static record a(akq d, dei.a.a e) {
+      public static final dei.a a = new dei.a(
+         akq.b("nether"),
+         new dei.a.a() {
+            @Override
+            public <T> ded.c<T> apply(Function<akp<ddu>, T> $$0) {
+               return new ded.c<>(
+                  List.of(
+                     Pair.of(ded.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(deb.ac)),
+                     Pair.of(ded.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(deb.af)),
+                     Pair.of(ded.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(deb.ae)),
+                     Pair.of(ded.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(deb.ad)),
+                     Pair.of(ded.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(deb.ag))
+                  )
+               );
+            }
+         }
+      );
+      public static final dei.a b = new dei.a(akq.b("overworld"), new dei.a.a() {
+         @Override
+         public <T> ded.c<T> apply(Function<akp<ddu>, T> $$0) {
+            return dei.a.a($$0);
+         }
+      });
+      static final Map<akq, dei.a> f = Stream.of(a, b).collect(Collectors.toMap(dei.a::b, $$0 -> (dei.a)$$0));
+      public static final Codec<dei.a> c = akq.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> ded.c<T> a(Function<akp<ddu>, T> $$0) {
+         Builder<Pair<ded.d, T>> $$1 = ImmutableList.builder();
+         new dek().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new ded.c<>($$1.build());
       }
-   }
 
-   @Nullable
-   @Override
-   protected bql b(dsl $$0, dcg $$1, ja $$2) {
-      return new bqr(($$2x, $$3, $$4) -> new cpk($$2x, $$3, cpu.a($$1, $$2)), l);
-   }
-
-   @Override
-   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
-      jf $$4 = $$0.c(b);
-      return $$4.o() == jf.a.a ? j : k;
-   }
-
-   @Override
-   protected void a(ciu $$0) {
-      $$0.b(2.0F, 40);
-   }
-
-   @Override
-   public void a(dcg $$0, ja $$1, dsl $$2, dsl $$3, ciu $$4) {
-      if (!$$4.aY()) {
-         $$0.c(1031, $$1, 0);
+      public Stream<akp<ddu>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<akp<ddu>>map(Pair::getSecond).distinct();
       }
-   }
 
-   @Override
-   public void a(dcg $$0, ja $$1, ciu $$2) {
-      if (!$$2.aY()) {
-         $$0.c(1029, $$1, 0);
+      public akq b() {
+         return this.d;
       }
-   }
 
-   @Override
-   public bra a(bsh $$0) {
-      return $$0.dS().b($$0);
-   }
-
-   @Nullable
-   public static dsl e(dsl $$0) {
-      if ($$0.a(dfk.gS)) {
-         return dfk.gT.o().a(b, $$0.c(b));
-      } else {
-         return $$0.a(dfk.gT) ? dfk.gU.o().a(b, $$0.c(b)) : null;
+      public dei.a.a c() {
+         return this.e;
       }
-   }
 
-   @Override
-   protected dsl a(dsl $$0, dlv $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dsm.a<dfi, dsl> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dsl $$0, eoy $$1) {
-      return false;
-   }
-
-   @Override
-   public int b(dsl $$0, dbm $$1, ja $$2) {
-      return $$0.d($$1, $$2).ak;
+      @FunctionalInterface
+      interface a {
+         <T> ded.c<T> apply(Function<akp<ddu>, T> var1);
+      }
    }
 }

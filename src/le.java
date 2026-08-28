@@ -1,27 +1,30 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.joml.Vector3f;
 
-public class le extends lk {
-   public static final Vector3f a = ewh.a(16711680).j();
-   public static final le b = new le(a, 1.0F);
-   public static final MapCodec<le> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(axo.c.fieldOf("color").forGetter($$0x -> $$0x.h), g.fieldOf("scale").forGetter(lk::d)).apply($$0, le::new)
-   );
-   public static final ys<wf, le> d = ys.a(yq.r, $$0 -> $$0.h, yq.i, lk::d, le::new);
-   private final Vector3f h;
+public class le implements lk {
+   private static final Codec<dta> a = Codec.withAlternative(dta.b, lt.e.r(), dfw::o);
+   private final ll<le> b;
+   private final dta c;
 
-   public le(Vector3f $$0, float $$1) {
-      super($$1);
-      this.h = $$0;
+   public static MapCodec<le> a(ll<le> $$0) {
+      return a.xmap($$1 -> new le($$0, $$1), $$0x -> $$0x.c).fieldOf("block_state");
+   }
+
+   public static yw<? super wj, le> b(ll<le> $$0) {
+      return yu.a(dfw.q).a($$1 -> new le($$0, $$1), $$0x -> $$0x.c);
+   }
+
+   public le(ll<le> $$0, dta $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public li<le> a() {
-      return lj.n;
+   public ll<le> a() {
+      return this.b;
    }
 
-   public Vector3f b() {
-      return this.h;
+   public dta b() {
+      return this.c;
    }
 }

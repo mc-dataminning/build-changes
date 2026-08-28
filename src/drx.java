@@ -1,76 +1,13 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
-
-public class drx {
-   static final String a = "shared_data";
-   static Codec<drx> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cud.a("display_item").forGetter($$0x -> $$0x.d),
-               kd.c.lenientOptionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.lenientOptionalFieldOf("connected_particles_range", drv.b.d()).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, drx::new)
-   );
-   private cud d = cud.l;
-   private Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private double f = drv.b.d();
-   boolean c;
-
-   drx(cud $$0, Set<UUID> $$1, double $$2) {
-      this.d = $$0;
-      this.e.addAll($$1);
-      this.f = $$2;
+public class drx extends dqf {
+   protected drx(dqh<?> $$0, jd $$1, dta $$2) {
+      super($$0, $$1, $$2);
    }
 
-   drx() {
+   public drx(jd $$0, dta $$1) {
+      this(dqh.n, $$0, $$1);
    }
 
-   public cud a() {
-      return this.d;
-   }
-
-   public boolean b() {
-      return !this.d.e();
-   }
-
-   public void a(cud $$0) {
-      if (!cud.a(this.d, $$0)) {
-         this.d = $$0.s();
-         this.f();
-      }
-   }
-
-   boolean c() {
-      return !this.e.isEmpty();
-   }
-
-   Set<UUID> d() {
-      return this.e;
-   }
-
-   double e() {
-      return this.f;
-   }
-
-   void a(aqm $$0, ja $$1, drw $$2, drv $$3, double $$4) {
-      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4, false).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
-      if (!this.e.equals($$5)) {
-         this.e = $$5;
-         this.f();
-      }
-   }
-
-   private void f() {
-      this.c = true;
-   }
-
-   void a(drx $$0) {
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
+   public boolean a(ji $$0) {
+      return $$0.o() == ji.a.b;
    }
 }

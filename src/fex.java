@@ -1,36 +1,41 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.Date;
+import java.util.UUID;
 
-public class fex extends fev {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wu c = wu.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
+public class fex {
+   private static final wy a = wy.c("mco.util.time.now");
+   private static final int b = 60;
+   private static final int c = 3600;
+   private static final int d = 86400;
 
-   public fex(long $$0, String $$1, String $$2) {
-      this.f = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   @Override
-   public void run() {
-      fbe $$0 = fbe.a();
-
-      try {
-         $$0.a(this.f, this.d, this.e);
-      } catch (fcr var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
+   public static wy a(long $$0) {
+      if ($$0 < 0L) {
+         return a;
+      } else {
+         long $$1 = $$0 / 1000L;
+         if ($$1 < 60L) {
+            return wy.a("mco.time.secondsAgo", $$1);
+         } else if ($$1 < 3600L) {
+            long $$2 = $$1 / 60L;
+            return wy.a("mco.time.minutesAgo", $$2);
+         } else if ($$1 < 86400L) {
+            long $$3 = $$1 / 3600L;
+            return wy.a("mco.time.hoursAgo", $$3);
+         } else {
+            long $$4 = $$1 / 86400L;
+            return wy.a("mco.time.daysAgo", $$4);
+         }
       }
    }
 
-   @Override
-   public wu a() {
-      return c;
+   public static wy a(Date $$0) {
+      return a(System.currentTimeMillis() - $$0.getTime());
+   }
+
+   public static void a(fht $$0, int $$1, int $$2, int $$3, UUID $$4) {
+      fgi $$5 = fgi.Q();
+      ProfileResult $$6 = $$5.al().fetchProfile($$4, false);
+      grf $$7 = $$6 != null ? $$5.am().b($$6.profile()) : gqx.a($$4);
+      fjf.a($$0, $$7.a(), $$1, $$2, $$3);
    }
 }
